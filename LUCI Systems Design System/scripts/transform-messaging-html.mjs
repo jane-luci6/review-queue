@@ -140,8 +140,83 @@ function normalizeCellHtml(cell) {
   return cell.replace(/<p class="[^"]*">/gi, '<p class="doc-prose">').trim();
 }
 
+function isPersonaTable(tableHtml) {
+  return /<p class="p7"><b>/i.test(tableHtml);
+}
+
+function extractPersonaBlockLabel(cellHtml) {
+  const m = cellHtml.match(/<p class="p9"><b>([\s\S]*?)<\/b>/i);
+  return m ? textFromHtml(m[1]) : '';
+}
+
+function normalizePersonaCellBody(cellHtml) {
+  let inner = cellHtml.replace(/<p class="p9"><b>[\s\S]*?<\/b><\/p>/gi, '');
+  inner = inner.replace(/<ul class="ul\d*">/gi, '<ul class="doc-list">');
+  inner = inner.replace(/<li class="li\d+">/gi, '<li>');
+  inner = inner.replace(/<p class="p11">/gi, '<p class="doc-prose">');
+  inner = inner.replace(/<p class="p12">/gi, '<p class="doc-persona__message-kicker">');
+  inner = inner.replace(/<p class="p13">/gi, '<p class="doc-persona__quote">');
+  return inner.trim();
+}
+
+function transformPersonaTable(table) {
+  const rows = [...table.matchAll(/<tr>([\s\S]*?)<\/tr>/gi)].map((m) => m[1]);
+  let head = '';
+  let body = '';
+  let message = '';
+
+  for (const row of rows) {
+    const cells = [...row.matchAll(/<td[^>]*>([\s\S]*?)<\/td>/gi)].map((m) => m[1]);
+    if (cells.length === 1) {
+      const cell = cells[0];
+      if (/<p class="p7"><b>/i.test(cell)) {
+        const titleM = cell.match(/<p class="p7"><b>([\s\S]*?)<\/b>/i);
+        const roleM = cell.match(/<p class="p8"><i>([\s\S]*?)<\/i>/i);
+        const titleText = titleM ? textFromHtml(titleM[1]) : 'Persona';
+        const id = slugify(titleText);
+        head =
+          `<header class="doc-persona__head"><h2 class="doc-persona__title" id="${id}">` +
+          (titleM ? titleM[1] : titleText) +
+          '</h2>';
+        if (roleM) head += `<p class="doc-persona__role">${roleM[1]}</p>`;
+        head += '</header>';
+      } else if (/MESSAGE THAT LANDS/i.test(cell)) {
+        message = `<div class="doc-persona__message">${normalizePersonaCellBody(cell)}</div>`;
+      }
+    } else if (cells.length === 2) {
+      body += '<div class="doc-persona__pair">';
+      for (const cell of cells) {
+        const label = extractPersonaBlockLabel(cell);
+        const inner = normalizePersonaCellBody(cell);
+        body +=
+          `<section class="doc-persona__block"><h3 class="doc-persona__label">${label}</h3>${inner}</section>`;
+      }
+      body += '</div>';
+    }
+  }
+
+  return `<article class="doc-persona">${head}${body}${message}</article>`;
+}
+
+function collectPersonaSections(html) {
+  const sections = [];
+  const re = /<h2 class="doc-persona__title" id="([^"]+)">([\s\S]*?)<\/h2>/gi;
+  let m;
+  while ((m = re.exec(html)) !== null) {
+    sections.push({
+      text: textFromHtml(m[2]),
+      id: m[1],
+      numbered: false,
+      chapter: false,
+    });
+  }
+  return sections;
+}
+
 function transformTables(html) {
   return html.replace(/<table[\s\S]*?<\/table>/gi, (table) => {
+    if (isPersonaTable(table)) return transformPersonaTable(table);
+
     const rows = [...table.matchAll(/<tr>([\s\S]*?)<\/tr>/gi)].map((m) => m[1]);
     if (!rows.length) return '';
 
@@ -257,6 +332,7 @@ export function transformMessagingBody(rawBody) {
   const sections = collectSections(body);
 
   html = transformTables(body);
+  const allSections = [...sections, ...collectPersonaSections(html)];
   html = transformParagraphs(html);
   html = wrapSections(html, sections);
 
@@ -266,7 +342,7 @@ export function transformMessagingBody(rawBody) {
     return `<h3 class="doc-subsection__title" id="${id}">${inner}</h3>`;
   });
 
-  const tocHtml = buildTocFromArticle(html, sections);
+  const tocHtml = buildTocFromArticle(html, allSections);
 
   return { title, deck, bodyHtml: html, tocHtml, sections };
 }

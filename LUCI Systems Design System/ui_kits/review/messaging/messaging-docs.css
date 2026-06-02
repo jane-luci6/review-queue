@@ -466,4 +466,110 @@ body {
   }
 }
 
+/* Persona guide — one card per role (Word table layout) */
+.doc-persona {
+  margin: 36px 0 0;
+  max-width: 52rem;
+  border-top: 1px solid var(--rule-light);
+  padding-top: 32px;
+}
+
+.doc-persona__head {
+  background: var(--navy);
+  padding: 18px 22px;
+}
+
+.doc-persona__title {
+  font-family: var(--display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--off-white);
+  line-height: 1.25;
+  scroll-margin-top: 24px;
+}
+
+.doc-persona__role {
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+  font-style: italic;
+  color: rgba(235, 245, 248, 0.88);
+}
+
+.doc-persona__pair {
+  display: grid;
+  grid-template-columns: 1fr;
+  border-bottom: 1px solid var(--rule-light);
+}
+
+@media (min-width: 720px) {
+  .doc-persona__pair {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.doc-persona__block {
+  padding: 18px 22px;
+  min-width: 0;
+}
+
+@media (min-width: 720px) {
+  .doc-persona__pair .doc-persona__block:first-child {
+    border-right: 1px solid var(--rule-light);
+  }
+}
+
+.doc-persona__label {
+  font-family: var(--display);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+
+.doc-persona__block .doc-list {
+  margin-bottom: 0;
+}
+
+.doc-persona__block .doc-prose {
+  margin-bottom: 0;
+}
+
+.doc-persona__message {
+  padding: 18px 22px;
+  background: var(--off-white);
+  border-left: 4px solid var(--mint);
+}
+
+.doc-persona__message-kicker {
+  font-family: var(--display);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+.doc-persona__message-kicker b {
+  font-weight: inherit;
+  color: inherit;
+}
+
+.doc-persona__quote {
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--navy);
+  margin: 0;
+}
+
+.doc-persona__quote b {
+  font-weight: 600;
+  color: var(--navy);
+}
+
 .doc-raw { display: none; }
