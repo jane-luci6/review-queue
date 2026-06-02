@@ -108,12 +108,20 @@ function syncPreviewAssets(queue) {
     console.log('Preview asset:', publishPath);
   }
 
-  if (count === 0) {
-    const needsPreview = queueItems(queue).filter(
-      (item) => !(item.liveUrl || '').trim() || item.embedPreview === true
-    );
-    if (needsPreview.length) {
-      console.warn('Warning: no preview bundles copied — check hubPreviewPath and source files.');
+  const needsPreview = queueItems(queue).filter(
+    (item) => !(item.liveUrl || '').trim() || item.embedPreview === true
+  );
+  if (needsPreview.length && count === 0) {
+    console.error('Build failed: queue items need previews but nothing was copied.');
+    process.exit(1);
+  }
+  for (const item of needsPreview) {
+    const publishPath = publishPreviewPath(item);
+    if (!publishPath) continue;
+    const dest = path.join(reviewDir, publishPath);
+    if (!fs.existsSync(dest)) {
+      console.error('Build failed: missing preview file', dest);
+      process.exit(1);
     }
   }
 
