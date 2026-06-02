@@ -1,5 +1,5 @@
-# Deploy this folder to Netlify for stakeholder review + live comments API.
-# Site URL → set review-queue.json → commentsApiUrl if using Webflow embed elsewhere.
+# Stakeholder review only — not Preview Hub (index.html stays out of publish).
+# Build copies queue-linked previews (case studies, etc.) into ui_kits/review/.
 
 [build]
   command = "node scripts/build-stakeholder-review.mjs"

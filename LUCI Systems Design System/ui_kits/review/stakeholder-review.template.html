@@ -337,14 +337,14 @@
   }
 
   function previewSrc(item) {
-    if (item.previewUrl) return item.previewUrl;
+    const url = (item.previewUrl || '').trim();
+    if (url) return url.replace(/^\.\.\//, '');
     const base = (q.previewBaseUrl || '').replace(/\/$/, '');
     if (base && item.hubPreviewPath) {
       return base + '/' + item.hubPreviewPath.replace(/^\//, '');
     }
-    if (item.hubPreviewPath) {
-      return '../' + item.hubPreviewPath.replace(/^ui_kits\//, '');
-    }
+    const hub = (item.hubPreviewPath || '').trim();
+    if (hub) return hub.replace(/^ui_kits\//, '');
     return '';
   }
 
