@@ -533,11 +533,18 @@
       const li = document.createElement('li');
       if (doc.url) {
         const a = document.createElement('a');
-        a.href = doc.url;
+        const href = doc.url.startsWith('http') ? doc.url : new URL(doc.url, window.location.origin).href;
+        a.href = href;
         a.target = '_blank';
-        a.rel = 'noopener';
+        a.rel = 'noopener noreferrer';
         a.textContent = doc.title;
         li.appendChild(a);
+        if (doc.note) {
+          const sub = document.createElement('span');
+          sub.className = 'is-sub';
+          sub.textContent = doc.note;
+          li.appendChild(sub);
+        }
       } else {
         const span = document.createElement('span');
         span.className = 'is-muted';

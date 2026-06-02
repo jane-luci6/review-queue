@@ -7,6 +7,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { syncMessagingDocs, applyMessagingDocsToQueue } from './sync-messaging-docs.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(path.join(__dirname, '..'));
@@ -130,6 +131,13 @@ function syncPreviewAssets(queue) {
 
 const queue = JSON.parse(fs.readFileSync(path.join(reviewDir, 'review-queue.json'), 'utf8'));
 const commentsFile = JSON.parse(fs.readFileSync(path.join(reviewDir, 'review-comments.json'), 'utf8'));
+
+try {
+  syncMessagingDocs({ quiet: true });
+} catch (e) {
+  console.warn('Messaging sync skipped:', e.message || e);
+}
+applyMessagingDocsToQueue(queue);
 
 const previewCount = syncPreviewAssets(queue);
 

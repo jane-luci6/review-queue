@@ -4,23 +4,8 @@
   "commentsApiUrl": "",
   "commentsApiNote": "Optional full URL if review page is on Webflow but API is on Netlify. Leave empty when the whole site is on Netlify.",
   "previewBaseUrl": "",
-  "messagingDocs": [
-    {
-      "title": "Brand philosophy",
-      "url": "",
-      "note": "Paste link to latest doc (Notion, Google Docs, etc.)"
-    },
-    {
-      "title": "Messaging guide",
-      "url": "",
-      "note": "Paste link when ready"
-    },
-    {
-      "title": "Voice & tone",
-      "url": "",
-      "note": "Paste link when ready"
-    }
-  ],
+  "messagingDocsNote": "Populated at build from messaging-sources.json + OneDrive .docx (see scripts/sync-messaging-docs.mjs)",
+  "messagingDocs": [],
   "dueForReview": [
     {
       "id": "signal-hub",

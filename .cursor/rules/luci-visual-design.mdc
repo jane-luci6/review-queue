@@ -1,0 +1,36 @@
+---
+description: LUCI visual design — minimalist, de-boxed layout principles for all UI/HTML/CSS work
+alwaysApply: true
+---
+
+# LUCI Design — Minimalist & De-boxed
+
+LUCI is a modern, edgy 2026 tech brand. Let **whitespace, typography, and hairlines** carry structure — not stacked containers. Boxes are the exception, never the default.
+
+## Do
+- **Separate with space and hairlines.** Use a single 1px divider (`rgba(255,255,255,0.1)` on dark, `var(--rule-light)` on light) or generous padding instead of bordered boxes.
+- **Keep corners sharp** (`border-radius: 0`) — a defining brand trait.
+- **Reserve the 4px mint accent bar** for true callouts and pull quotes only (plus the masthead signature). Don't repeat it on every element.
+- **Tabular data → de-boxed lists.** Render comparisons as a definition list / stacked rows with hairline separators, not an HTML `<table>` with cell borders (also avoids mobile horizontal scroll).
+- **Callouts are the exception that *should* be contained.** Tips/asides = a contained block (4px mint left bar, sharp corners, padding) bracketed by whitespace — never a full-bleed section flush against another colored section, or they bleed together.
+- **Newsletter section rhythm:** alternate `sec--white` / `sec--light` for articles; `sec--marquee` (sand + larger headline) for the lead field story; callouts on `sec--white`; reserve `sec--deep` for Closing/Footer — never a mid-issue article.
+- **Minimum label size 10–11px.** Syncopate micro-labels must be ≥10px.
+- **Contrast:** secondary text ≥ ~0.8 opacity on dark; never ship near-invisible text (e.g. 0.35).
+
+## Don't
+- ❌ Don't wrap content in an outer `border: 1px` box and then add internal dividers too — pick one.
+- ❌ Don't build 1px-gap grids that read like a spreadsheet (e.g. results/stat blocks).
+- ❌ No drop shadows on flat content tiles; no gradients.
+- ❌ Don't switch the body font to Arial/Helvetica — keep **Space Grotesk** (body) + **Syncopate** (display).
+
+## Example
+```css
+/* ❌ BAD — boxed + gridlines */
+.items { display: grid; gap: 1px; background: rgba(104,227,190,.12); border: 1px solid; }
+.items li { background: var(--navy-mid); padding: 18px; }
+
+/* ✅ GOOD — airy rows, hairline separators, sharp corners */
+.items li { padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.1); }
+```
+
+See `LUCI Systems Design System/ui_kits/newsletter/the-signal-design-comparison.html` for the reference (Current vs Sharp de-boxed).

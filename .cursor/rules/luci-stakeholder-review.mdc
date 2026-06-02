@@ -1,0 +1,47 @@
+---
+description: Stakeholder review hub — Cursor-managed queue for Mike/Nick
+globs:
+  - LUCI Systems Design System/ui_kits/review/**
+  - LUCI Systems Design System/scripts/build-stakeholder-review.mjs
+  - LUCI Systems Design System/scripts/pull-review-comments.mjs
+  - LUCI Systems Design System/netlify/**
+---
+
+# Stakeholder review (Cursor-first)
+
+Mike & Nick land on a **queue dashboard** first; each asset opens on its own page (`#/review/[id]`). Sidebar = messaging links + published assets.
+
+## Source of truth
+
+| File | Purpose |
+|------|---------|
+| `review-queue.json` | Due / upcoming / finalized, `commentsApiUrl` |
+| `messaging-sources.json` | OneDrive paths → philosophy, messaging guide, personas |
+| `scripts/sync-messaging-docs.mjs` | Word → HTML in `ui_kits/review/messaging/` |
+| `review-comments.json` | Archive — sync from live API with `pull-review-comments.mjs` |
+| `stakeholder-review.template.html` | Edit layout here only |
+| `netlify/functions/comments.mjs` | Live comment storage (Netlify Blobs) |
+
+## Publish workflow
+
+1. Finish asset in Preview Hub.
+2. **"Push [asset] to stakeholder review — due [date], context: …"** → edit `review-queue.json`.
+3. `node scripts/sync-messaging-docs.mjs` (after OneDrive doc edits)
+4. `node scripts/build-stakeholder-review.mjs`
+5. Deploy **LUCI Systems Design System** folder to Netlify (see `netlify.toml`). Publish dir is `ui_kits/review` only — build copies preview HTML/assets and messaging docs; Preview Hub is not deployed.
+6. **Email Mike/Nick manually** when adding or updating an asset — use `notify-email-templates.txt`. Do **not** email on each comment.
+
+## Comments (in-portal)
+
+- Mike/Nick **Post comment** on the live site → saved via `/api/comments`.
+- Jane reads comments on the same page (refresh).
+- Optional archive: `COMMENTS_API_URL=https://…/api/comments node scripts/pull-review-comments.mjs`
+
+## Webflow embed only
+
+If the HTML lives on Webflow, set `commentsApiUrl` in `review-queue.json` to the Netlify API URL (e.g. `https://luci-review.netlify.app/api/comments`) and rebuild. Prefer hosting the full review site on Netlify.
+
+## Do not
+
+- Use mailto or Formspree for per-comment notifications.
+- Put API secrets in HTML.

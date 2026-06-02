@@ -283,21 +283,22 @@ const REVIEW_DATA = {
     "commentsApiUrl": "",
     "commentsApiNote": "Optional full URL if review page is on Webflow but API is on Netlify. Leave empty when the whole site is on Netlify.",
     "previewBaseUrl": "",
+    "messagingDocsNote": "Populated at build from messaging-sources.json + OneDrive .docx (see scripts/sync-messaging-docs.mjs)",
     "messagingDocs": [
       {
         "title": "Brand philosophy",
-        "url": "",
-        "note": "Paste link to latest doc (Notion, Google Docs, etc.)"
+        "url": "/messaging/philosophy.html",
+        "note": "Updated May 7, 2026"
       },
       {
         "title": "Messaging guide",
-        "url": "",
-        "note": "Paste link when ready"
+        "url": "/messaging/messaging-guide.html",
+        "note": "Updated Jun 2, 2026"
       },
       {
-        "title": "Voice & tone",
-        "url": "",
-        "note": "Paste link when ready"
+        "title": "Personas",
+        "url": "/messaging/personas.html",
+        "note": "Updated May 6, 2026"
       }
     ],
     "dueForReview": [
@@ -374,7 +375,8 @@ const REVIEW_DATA = {
         "note": "Welcome through 90-day check-in — series complete.",
         "approved": "2026-06-02"
       }
-    ]
+    ],
+    "messagingDocsUpdated": "2026-06-02"
   },
   "comments": [],
   "commentsUpdated": "2026-06-01"
@@ -635,11 +637,18 @@ const REVIEW_DATA = {
       const li = document.createElement('li');
       if (doc.url) {
         const a = document.createElement('a');
-        a.href = doc.url;
+        const href = doc.url.startsWith('http') ? doc.url : new URL(doc.url, window.location.origin).href;
+        a.href = href;
         a.target = '_blank';
-        a.rel = 'noopener';
+        a.rel = 'noopener noreferrer';
         a.textContent = doc.title;
         li.appendChild(a);
+        if (doc.note) {
+          const sub = document.createElement('span');
+          sub.className = 'is-sub';
+          sub.textContent = doc.note;
+          li.appendChild(sub);
+        }
       } else {
         const span = document.createElement('span');
         span.className = 'is-muted';

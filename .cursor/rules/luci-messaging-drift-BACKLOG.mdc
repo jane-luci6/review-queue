@@ -1,0 +1,35 @@
+---
+description: Messaging doc sync + drift analysis for review portal
+globs:
+  - LUCI Systems Design System/ui_kits/review/messaging-sources.json
+  - LUCI Systems Design System/ui_kits/review/messaging/**
+  - LUCI Systems Design System/scripts/sync-messaging-docs.mjs
+  - LUCI Systems Design System/scripts/build-stakeholder-review.mjs
+---
+
+# Messaging docs → review portal
+
+Canonical Word files live in **OneDrive** (`messaging-sources.json`). HTML for Mike/Nick is generated into `ui_kits/review/messaging/`.
+
+## After you edit philosophy / messaging guide / personas
+
+1. Save the `.docx` in OneDrive (paths in `messaging-sources.json`).
+2. Run:
+   ```bash
+   node "LUCI Systems Design System/scripts/sync-messaging-docs.mjs"
+   node "LUCI Systems Design System/scripts/build-stakeholder-review.mjs"
+   ```
+3. Commit `ui_kits/review/messaging/*.html`, `messaging-manifest.json`, and rebuilt review HTML.
+4. Push → Netlify redeploys. Sidebar links on the review site point to `/messaging/philosophy.html`, etc.
+
+`build-stakeholder-review.mjs` runs sync automatically when OneDrive is available (your Mac). On Netlify CI, committed HTML is used if OneDrive is not present.
+
+## Drift analysis (manual until automated)
+
+When messaging changes and you need an **impact report** (which assets to update):
+
+- Trigger: "Messaging docs updated", "Run messaging drift analysis"
+- Read synced HTML or OneDrive doc; cross-reference `review-queue.json` + Preview Hub assets
+- Output: asset → suggested change → priority
+
+Do not re-paste Google/Notion links in `review-queue.json` — URLs come from the manifest at build.
