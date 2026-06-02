@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #E5E3DF; padding: 24px 28px; display: flex; flex-direction: column; gap: 20px; }
+.group { display: flex; flex-direction: column; gap: 10px; }
+.label { font-family: 'Space Grotesk', sans-serif; font-size: 10px; color: #49616E; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2px; }
+.row { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+
+/* Primary */
+.btn-primary-lg {
+  display: inline-flex; align-items: center; gap: 48px;
+  background: #10232D; color: #F5F8FA;
+  font-family: 'Syncopate', sans-serif; font-weight: 700; font-size: 16px;
+  text-transform: uppercase; padding: 20px 20px; border: none; cursor: pointer;
+}
+.btn-primary-sm {
+  display: inline-flex; align-items: center; gap: 32px;
+  background: #10232D; color: #F5F8FA;
+  font-family: 'Syncopate', sans-serif; font-weight: 700; font-size: 14px;
+  text-transform: uppercase; padding: 13px 16px; border: none; cursor: pointer;
+}
+/* Secondary */
+.btn-secondary-lg {
+  display: inline-flex; align-items: center; gap: 48px;
+  background: transparent; color: #0A161C;
+  font-family: 'Syncopate', sans-serif; font-weight: 700; font-size: 16px;
+  text-transform: uppercase; padding: 18px 20px; border: 2px solid #0A161C; cursor: pointer;
+}
+/* Tertiary */
+.btn-tertiary {
+  display: inline-flex; align-items: center; gap: 16px;
+  background: transparent; color: #0A161C;
+  font-family: 'Syncopate', sans-serif; font-weight: 700; font-size: 16px;
+  text-transform: uppercase; border: none; cursor: pointer; padding: 0;
+}
+/* Text link */
+.text-link {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px;
+  text-decoration: underline; color: #0A161C; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 12px;
+}
+/* Arrow SVG inline */
+.arrow-lg { display: inline-block; width: 59px; height: 12px; position: relative; }
+.arrow-sm { display: inline-block; width: 36px; height: 12px; position: relative; }
+.arrow-txt { display: inline-block; width: 80px; height: 12px; position: relative; }
+</style><link rel="stylesheet" href="../colors_and_type.css">
+</head><body>
+
+<div class="group">
+  <div class="label">Primary — Filled Dark</div>
+  <div class="row">
+    <button class="btn-primary-lg">REQUEST A DEMO
+      <svg width="59" height="12" viewBox="0 0 59 12" fill="none">
+        <line x1="0" y1="6" x2="52" y2="6" stroke="#F5F8FA" stroke-width="1.5"/>
+        <path d="M52 2L59 6L52 10" stroke="#F5F8FA" stroke-width="1.5" fill="none"/>
+      </svg>
+    </button>
+    <button class="btn-primary-sm">LEARN ABOUT LUCI
+      <svg width="36" height="12" viewBox="0 0 36 12" fill="none">
+        <line x1="0" y1="6" x2="29" y2="6" stroke="#F5F8FA" stroke-width="1.5"/>
+        <path d="M29 2L36 6L29 10" stroke="#F5F8FA" stroke-width="1.5" fill="none"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<div class="group">
+  <div class="label">Secondary — Outlined</div>
+  <div class="row">
+    <button class="btn-secondary-lg">SECONDARY LARGE
+      <svg width="59" height="12" viewBox="0 0 59 12" fill="none">
+        <line x1="0" y1="6" x2="52" y2="6" stroke="#0A161C" stroke-width="1.5"/>
+        <path d="M52 2L59 6L52 10" stroke="#0A161C" stroke-width="1.5" fill="none"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<div class="group">
+  <div class="label">Tertiary — Text + Arrow</div>
+  <div class="row">
+    <button class="btn-tertiary">PARTNERSHIP
+      <svg width="80" height="12" viewBox="0 0 80 12" fill="none">
+        <line x1="0" y1="6" x2="73" y2="6" stroke="#0A161C" stroke-width="1.5"/>
+        <path d="M73 2L80 6L73 10" stroke="#0A161C" stroke-width="1.5" fill="none"/>
+      </svg>
+    </button>
+    <button class="btn-tertiary">SOFTWARE
+      <svg width="80" height="12" viewBox="0 0 80 12" fill="none">
+        <line x1="0" y1="6" x2="73" y2="6" stroke="#0A161C" stroke-width="1.5"/>
+        <path d="M73 2L80 6L73 10" stroke="#0A161C" stroke-width="1.5" fill="none"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<div class="group">
+  <div class="label">Text Links</div>
+  <div class="row">
+    <span class="text-link">
+      <svg width="12" height="12" viewBox="0 0 12 12"><path d="M5 0H7V12H5V0Z" fill="#0A161C"/><path d="M12 5V7H0V5H12Z" fill="#0A161C"/></svg>
+      Text Link Icon
+    </span>
+    <span class="text-link">Text Link</span>
+  </div>
+</div>
+
+</body></html>

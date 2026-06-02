@@ -1,0 +1,30 @@
+# Email Mike & Nick — send only when you add or update an asset for review (not per comment).
+
+--- NEW ASSET ---
+Subject: LUCI review — [Asset title]
+
+Hi [Mike/Nick],
+
+[Asset title] is ready for your review.
+
+Context: [one line from review-queue summary or context]
+
+Open review page: https://YOUR-REVIEW-URL/#/review/[asset-id]
+Open live: [liveUrl if any]
+
+Due: [due date]
+
+Thanks,
+Jane
+
+--- UPDATED VERSION ---
+Subject: LUCI review — updated [Asset title]
+
+Hi [Mike/Nick],
+
+I published an updated version of [Asset title]. Please take another look.
+
+Open review page: https://YOUR-REVIEW-URL/#/review/[asset-id]
+
+Thanks,
+Jane

@@ -1,0 +1,78 @@
+{
+  "databaseName": "LUCI Asset Review",
+  "description": "Duplicate this schema in Notion (or add properties to an existing tasks DB). Invite Mike & Nick as members. Share the database URL into asset-review-config.json → notionBoardUrl.",
+  "properties": [
+    {
+      "name": "Asset",
+      "type": "title",
+      "note": "Match titles in asset-review-config.json"
+    },
+    {
+      "name": "Asset ID",
+      "type": "rich_text",
+      "note": "e.g. signal-hub — used by Cursor to sync"
+    },
+    {
+      "name": "Live URL",
+      "type": "url"
+    },
+    {
+      "name": "Preview URL",
+      "type": "url",
+      "note": "Optional design-system preview"
+    },
+    {
+      "name": "Review status",
+      "type": "select",
+      "options": ["Needs review", "Feedback", "Approved"]
+    },
+    {
+      "name": "Feedback",
+      "type": "rich_text",
+      "note": "Mike/Nick general comments"
+    },
+    {
+      "name": "Reviewer",
+      "type": "select",
+      "options": ["Mike", "Nick", "Jane"]
+    },
+    {
+      "name": "Approved",
+      "type": "date",
+      "note": "Set when status → Approved"
+    },
+    {
+      "name": "Related task",
+      "type": "relation",
+      "note": "Optional link to your existing Notion projects/tasks DB"
+    }
+  ],
+  "views": [
+    {
+      "name": "Needs review (Mike & Nick)",
+      "filter": "Review status is Needs review",
+      "sort": "Asset ascending"
+    },
+    {
+      "name": "Approved",
+      "filter": "Review status is Approved"
+    },
+    {
+      "name": "In queue",
+      "note": "Create rows with no Live URL yet — or keep queue only in asset-review-config.json"
+    }
+  ],
+  "reviewerWorkflow": [
+    "Open the Needs review view",
+    "Open Live URL in a new tab and read the asset",
+    "Type general comments in Feedback",
+    "Set Review status to Feedback (changes needed) or Approved (done)",
+    "Set Reviewer to Mike or Nick"
+  ],
+  "seedRows": [
+    { "Asset ID": "signal-hub", "Review status": "Needs review" },
+    { "Asset ID": "signal-issue-01", "Review status": "Needs review" },
+    { "Asset ID": "case-study-ameristar", "Review status": "Needs review" },
+    { "Asset ID": "email-welcome", "Review status": "Needs review" }
+  ]
+}

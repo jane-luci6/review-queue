@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #E5E3DF; padding: 32px; font-family: 'Space Grotesk', sans-serif; color: #10232D; }
+
+.section-title { font-family: 'Syncopate', sans-serif; font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #10232D; padding-bottom: 12px; border-bottom: 2px solid #10232D; margin: 28px 0 20px; display: flex; justify-content: space-between; align-items: baseline; }
+.section-title:first-child { margin-top: 0; }
+.section-title small { font-family: 'Space Grotesk', sans-serif; font-weight: 400; font-size: 11px; letter-spacing: 0; text-transform: none; color: #535559; }
+
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.tile { display: flex; flex-direction: column; }
+.tile-canvas {
+  padding: 32px 24px;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 120px;
+}
+.tile-canvas img { display: block; max-width: 100%; max-height: 64px; height: auto; object-fit: contain; }
+.tile-canvas.bg-dark { background: #10232D; }
+.tile-canvas.bg-mint { background: #68E3BE; }
+.tile-canvas.bg-sand { background: #E5E3DF; border: 1px solid rgba(16,35,45,0.12); }
+.tile-canvas.bg-white { background: #F5F8FA; border: 1px solid rgba(16,35,45,0.12); }
+.tile-canvas.bg-black { background: #0A161C; }
+
+.tile-meta { padding: 10px 2px; }
+.tile-name { font-family: 'Syncopate', sans-serif; font-weight: 700; font-size: 10px; text-transform: uppercase; color: #10232D; letter-spacing: 0.05em; margin-bottom: 4px; }
+.tile-desc { font-family: 'Space Grotesk', sans-serif; font-size: 11px; color: #535559; line-height: 1.5; }
+.tile-path { font-family: 'Space Grotesk', sans-serif; font-size: 10px; color: #2b9e80; font-weight: 500; margin-top: 4px; word-break: break-all; }
+
+.rules { margin-top: 12px; display: flex; flex-direction: column; gap: 8px; }
+.rule { font-family: 'Space Grotesk', sans-serif; font-size: 12px; line-height: 1.6; color: #10232D; padding: 12px 16px; background: rgba(245,248,250,0.5); border: 1px solid rgba(16,35,45,0.12); }
+.rule strong { color: #10232D; font-weight: 600; }
+</style></head><body>
+
+<div class="section-title">FULL LOGO (LOCKUP) <small>Wordmark + logomark — the primary brand mark</small></div>
+
+<div class="grid">
+  <div class="tile">
+    <div class="tile-canvas bg-sand"><img src="../assets/logos/luci-full-black.png" alt="LUCI logo full black"></div>
+    <div class="tile-meta">
+      <div class="tile-name">Full · Black</div>
+      <div class="tile-desc">Default on Sands / Ambient White. Most common usage.</div>
+      <div class="tile-path">assets/logos/luci-full-black.png</div>
+    </div>
+  </div>
+  <div class="tile">
+    <div class="tile-canvas bg-dark"><img src="../assets/logos/luci-full-white.png" alt="LUCI logo full white"></div>
+    <div class="tile-meta">
+      <div class="tile-name">Full · White</div>
+      <div class="tile-desc">Default on Controlled Blue / Pit Boss. Marketing dark sections.</div>
+      <div class="tile-path">assets/logos/luci-full-white.png</div>
+    </div>
+  </div>
+  <div class="tile">
+    <div class="tile-canvas bg-dark"><img src="../assets/logos/luci-full-mint.png" alt="LUCI logo full mint"></div>
+    <div class="tile-meta">
+      <div class="tile-name">Full · Mint</div>
+      <div class="tile-desc">Accent variant — high-impact moments on dark bg only.</div>
+      <div class="tile-path">assets/logos/luci-full-mint.png</div>
+    </div>
+  </div>
+  <div class="tile">
+    <div class="tile-canvas bg-sand"><img src="../assets/logos/luci-full-mintmark-blacktext.png" alt="LUCI logo mint mark + black text"></div>
+    <div class="tile-meta">
+      <div class="tile-name">Full · Mint mark + Black text</div>
+      <div class="tile-desc">Mixed variant — accentuates the mark on light bg.</div>
+      <div class="tile-path">assets/logos/luci-full-mintmark-blacktext.png</div>
+    </div>
+  </div>
+</div>
+
+<div class="section-title">LOGOMARK ONLY <small>Section accents, favicons, social</small></div>
+
+<div class="grid">
+  <div class="tile">
+    <div class="tile-canvas bg-sand"><img src="../assets/logos/luci-mark-black.png" alt="LUCI mark black" style="max-height:72px;"></div>
+    <div class="tile-meta">
+      <div class="tile-name">Mark · Black</div>
+      <div class="tile-desc">Section indicator on light bg.</div>
+      <div class="tile-path">assets/logos/luci-mark-black.png</div>
+    </div>
+  </div>
+  <div class="tile">
+    <div class="tile-canvas bg-dark"><img src="../assets/logos/luci-mark-white.png" alt="LUCI mark white" style="max-height:72px;"></div>
+    <div class="tile-meta">
+      <div class="tile-name">Mark · White</div>
+      <div class="tile-desc">Section indicator on dark bg.</div>
+      <div class="tile-path">assets/logos/luci-mark-white.png</div>
+    </div>
+  </div>
+  <div class="tile">
+    <div class="tile-canvas bg-dark"><img src="../assets/logos/luci-mark-mint.png" alt="LUCI mark mint" style="max-height:72px;"></div>
+    <div class="tile-meta">
+      <div class="tile-name">Mark · Mint</div>
+      <div class="tile-desc">Accent mark on dark bg — primary brand color.</div>
+      <div class="tile-path">assets/logos/luci-mark-mint.png</div>
+    </div>
+  </div>
+  <div class="tile">
+    <div class="tile-canvas bg-mint"><img src="../assets/logos/luci-mark-mint-square.png" alt="LUCI social square" style="max-height:96px;"></div>
+    <div class="tile-meta">
+      <div class="tile-name">Mark · Mint Square (500×500)</div>
+      <div class="tile-desc">Social avatar — Instagram, LinkedIn, X.</div>
+      <div class="tile-path">assets/logos/luci-mark-mint-square.png</div>
+    </div>
+  </div>
+  <div class="tile">
+    <div class="tile-canvas bg-mint"><img src="../assets/logos/luci-social-icon.png" alt="LUCI social icon" style="max-height:96px;"></div>
+    <div class="tile-meta">
+      <div class="tile-name">Social Icon</div>
+      <div class="tile-desc">Mint-bg square — alternate social avatar.</div>
+      <div class="tile-path">assets/logos/luci-social-icon.png</div>
+    </div>
+  </div>
+  <div class="tile">
+    <div class="tile-canvas bg-dark"><img src="../assets/LUCI-logo.svg" alt="LUCI mark SVG" style="max-height:72px; filter: invert(1);"></div>
+    <div class="tile-meta">
+      <div class="tile-name">Mark · SVG (vector)</div>
+      <div class="tile-desc">Scalable — use whenever resolution matters.</div>
+      <div class="tile-path">assets/LUCI-logo.svg</div>
+    </div>
+  </div>
+</div>
+
+<div class="section-title">WORDMARK ONLY <small>Typography lockup — rare standalone use</small></div>
+
+<div class="grid">
+  <div class="tile">
+    <div class="tile-canvas bg-sand"><img src="../assets/logos/luci-wordmark-black.png" alt="LUCI wordmark black" style="max-height:48px;"></div>
+    <div class="tile-meta">
+      <div class="tile-name">Wordmark · Black</div>
+      <div class="tile-desc">Use without the mark only in extreme constraints.</div>
+      <div class="tile-path">assets/logos/luci-wordmark-black.png</div>
+    </div>
+  </div>
+</div>
+
+<div class="section-title">USAGE RULES</div>
+<div class="rules">
+  <div class="rule"><strong>Default to the full lockup.</strong> The mark and wordmark together are the canonical signature. Use mark-only only when space is severely constrained (favicon, social avatar, section accent).</div>
+  <div class="rule"><strong>Pair color with background.</strong> Black on light, white on dark, mint as an accent on dark. Never use the mint variant on a light background — contrast is too low.</div>
+  <div class="rule"><strong>Clear space.</strong> Maintain a minimum padding equal to the mark's height on all sides. Never crop or overlap the logo with photography or other elements.</div>
+  <div class="rule"><strong>Don't recolor.</strong> Use the supplied color variants only. Don't apply gradients, drop shadows, outlines, or rotation. Don't separate the mark from the wordmark to create new lockups.</div>
+</div>
+
+</body></html>

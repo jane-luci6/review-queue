@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #E5E3DF; padding: 32px; font-family: 'Space Grotesk', sans-serif; color: #10232D; }
+
+.section-title { font-family: 'Syncopate', sans-serif; font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #10232D; padding-bottom: 12px; border-bottom: 2px solid #10232D; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: baseline; }
+.section-title small { font-family: 'Space Grotesk', sans-serif; font-weight: 400; font-size: 11px; letter-spacing: 0; text-transform: none; color: #535559; }
+
+.intro { font-family: 'Space Grotesk', sans-serif; font-size: 13px; line-height: 1.6; color: #535559; padding: 14px 18px; background: #F5F8FA; border-left: 3px solid #68E3BE; margin-bottom: 28px; }
+.intro strong { color: #10232D; font-weight: 600; }
+
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-bottom: 36px; }
+.tile { display: flex; flex-direction: column; }
+.tile-img {
+  width: 100%; aspect-ratio: 16/10;
+  background-size: cover; background-position: center;
+  border: 1px solid rgba(16,35,45,0.15);
+}
+.tile-meta { padding: 10px 0 0; }
+.tile-name { font-family: 'Syncopate', sans-serif; font-weight: 700; font-size: 11px; text-transform: uppercase; color: #10232D; letter-spacing: 0.05em; margin-bottom: 4px; }
+.tile-desc { font-family: 'Space Grotesk', sans-serif; font-size: 11px; color: #535559; line-height: 1.5; }
+.tile-path { font-family: 'Space Grotesk', sans-serif; font-size: 10px; color: #2b9e80; font-weight: 500; margin-top: 4px; word-break: break-all; }
+
+.rule { font-family: 'Space Grotesk', sans-serif; font-size: 12px; line-height: 1.6; color: #10232D; padding: 14px 18px; background: rgba(245,248,250,0.5); border: 1px solid rgba(16,35,45,0.12); margin-top: 8px; }
+.rule strong { color: #10232D; }
+</style></head><body>
+
+<div class="intro">
+  <strong>Use sparingly.</strong> These patterns and textures add visual interest to feature sections, hero backgrounds, and accent panels — but they are not standard backgrounds. Default to flat <em>Controlled Blue</em> or <em>The Sands</em>. Reach for these only when a section needs extra weight.
+</div>
+
+<div class="section-title">PATTERNS — LINE WORK <small>Isometric maze pattern · brand motif</small></div>
+
+<div class="grid">
+  <div class="tile">
+    <div class="tile-img" style="background-image:url('../assets/patterns/pattern-2.png');"></div>
+    <div class="tile-meta">
+      <div class="tile-name">Pattern 02 · Dense Navy</div>
+      <div class="tile-desc">Tight isometric weave on Controlled Blue. Heaviest of the dark patterns.</div>
+      <div class="tile-path">assets/patterns/pattern-2.png</div>
+    </div>
+  </div>
+  <div class="tile">
+    <div class="tile-img" style="background-image:url('../assets/patterns/pattern-3.png');"></div>
+    <div class="tile-meta">
+      <div class="tile-name">Pattern 03 · Open Navy</div>
+      <div class="tile-desc">More breathing room. Subtle on dark sections — good for testimonial sidebars.</div>
+      <div class="tile-path">assets/patterns/pattern-3.png</div>
+    </div>
+  </div>
+  <div class="tile">
+    <div class="tile-img" style="background-image:url('../assets/patterns/pattern-4.png');"></div>
+    <div class="tile-meta">
+      <div class="tile-name">Pattern 04 · Red on Sand</div>
+      <div class="tile-desc">Red line work on Ambient White. Use sparingly — red is tertiary in the palette.</div>
+      <div class="tile-path">assets/patterns/pattern-4.png</div>
+    </div>
+  </div>
+  <div class="tile">
+    <div class="tile-img" style="background-image:url('../assets/patterns/pattern-5.svg'); background-color:#10232D;"></div>
+    <div class="tile-meta">
+      <div class="tile-name">Pattern 05 · SVG (1440×1024)</div>
+      <div class="tile-desc">Vector version — scales cleanly. Pairs with Controlled Blue background.</div>
+      <div class="tile-path">assets/patterns/pattern-5.svg</div>
+    </div>
+  </div>
+  <div class="tile">
+    <div class="tile-img" style="background-image:url('../assets/patterns/pattern-6.svg'); background-color:#10232D;"></div>
+    <div class="tile-meta">
+      <div class="tile-name">Pattern 06 · SVG</div>
+      <div class="tile-desc">Vector alt — slightly different rhythm of the weave.</div>
+      <div class="tile-path">assets/patterns/pattern-6.svg</div>
+    </div>
+  </div>
+  <div class="tile">
+    <div class="tile-img" style="background-image:url('../assets/patterns/pattern-7.svg'); background-color:#F5F8FA;"></div>
+    <div class="tile-meta">
+      <div class="tile-name">Pattern 07 · SVG</div>
+      <div class="tile-desc">Vector for light backgrounds (Ambient White / The Sands).</div>
+      <div class="tile-path">assets/patterns/pattern-7.svg</div>
+    </div>
+  </div>
+  <div class="tile">
+    <div class="tile-img" style="background-image:url('../assets/patterns/pattern-8.svg'); background-color:#F5F8FA;"></div>
+    <div class="tile-meta">
+      <div class="tile-name">Pattern 08 · SVG</div>
+      <div class="tile-desc">Vector alt for light. Use as section accent only.</div>
+      <div class="tile-path">assets/patterns/pattern-8.svg</div>
+    </div>
+  </div>
+</div>
+
+<div class="section-title">TEXTURES — HALFTONE GRAIN <small>Soft, atmospheric · for overlays only</small></div>
+
+<div class="grid">
+  <div class="tile">
+    <div class="tile-img" style="background-image:url('../assets/textures/texture-1.png');"></div>
+    <div class="tile-meta">
+      <div class="tile-name">Texture 01 · Dark Halftone</div>
+      <div class="tile-desc">Deep blue blurred halftone. Use as hero overlay with <code>mix-blend-mode: color-burn</code>.</div>
+      <div class="tile-path">assets/textures/texture-1.png</div>
+    </div>
+  </div>
+  <div class="tile">
+    <div class="tile-img" style="background-image:url('../assets/textures/texture-3.png');"></div>
+    <div class="tile-meta">
+      <div class="tile-name">Texture 03 · Cool Halftone</div>
+      <div class="tile-desc">Light blue / silver halftone. Good for mid-tone section transitions.</div>
+      <div class="tile-path">assets/textures/texture-3.png</div>
+    </div>
+  </div>
+  <div class="tile">
+    <div class="tile-img" style="background-image:url('../assets/textures/texture-4.png');"></div>
+    <div class="tile-meta">
+      <div class="tile-name">Texture 04 · Paper Grain</div>
+      <div class="tile-desc">Soft warm grain. Subtle overlay on The Sands for tactile feel.</div>
+      <div class="tile-path">assets/textures/texture-4.png</div>
+    </div>
+  </div>
+</div>
+
+<div class="section-title">USAGE RULES</div>
+
+<div class="rule">
+  <strong>Patterns</strong> — Use as background of a single feature section, not the entire page. Pair colors carefully: dark patterns on dark bg, light patterns on light bg. Apply <code>background-size: cover</code> or <code>800px</code> for tiling. Keep at full opacity — they're already subtle.
+</div>
+<div class="rule">
+  <strong>Textures</strong> — Apply as a full-bleed overlay <code>position: absolute; inset: 0; mix-blend-mode: color-burn; opacity: 0.5–0.94</code>. Stack over a flat-color base. Never use as a primary background.
+</div>
+<div class="rule">
+  <strong>One per page</strong> — A single hero with texture and a single section with a pattern is the maximum. Multiple decorative surfaces compete for attention and dilute the brand's clean, technical voice.
+</div>
+<div class="rule">
+  <strong>Never combine</strong> — Don't stack a pattern and a texture in the same section. Don't tile patterns at a small scale (looks busy). Don't tint patterns to a different color than provided.
+</div>
+
+</body></html>

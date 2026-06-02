@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #E5E3DF; padding: 24px 28px; display: flex; flex-direction: column; gap: 20px; }
+.label { font-family: 'Space Grotesk', sans-serif; font-size: 10px; color: #49616E; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+.spacer-row { display: flex; align-items: center; gap: 12px; }
+.spacer-chip { background: #68E3BE; height: 100%; min-height: 100%; }
+.spacer-val { font-family: 'Syncopate', sans-serif; font-weight: 700; font-size: 11px; color: #10232D; min-width: 32px; }
+.spacer-desc { font-family: 'Space Grotesk', sans-serif; font-size: 12px; color: #535559; }
+</style><link rel="stylesheet" href="../colors_and_type.css">
+</head><body>
+
+<div class="label">Spacing Scale</div>
+<div style="display:flex;flex-direction:column;gap:6px;">
+  <div class="spacer-row"><div class="spacer-chip" style="width:4px;height:18px;"></div><div class="spacer-val">4px</div><div class="spacer-desc">--space-1 · Tight internal gap</div></div>
+  <div class="spacer-row"><div class="spacer-chip" style="width:8px;height:18px;"></div><div class="spacer-val">8px</div><div class="spacer-desc">--space-2 · Label gap</div></div>
+  <div class="spacer-row"><div class="spacer-chip" style="width:12px;height:18px;"></div><div class="spacer-val">12px</div><div class="spacer-desc">--space-3 · CTA icon gap</div></div>
+  <div class="spacer-row"><div class="spacer-chip" style="width:16px;height:18px;"></div><div class="spacer-val">16px</div><div class="spacer-desc">--space-4 · Standard small gap</div></div>
+  <div class="spacer-row"><div class="spacer-chip" style="width:24px;height:18px;"></div><div class="spacer-val">24px</div><div class="spacer-desc">--space-5 · Component gap</div></div>
+  <div class="spacer-row"><div class="spacer-chip" style="width:36px;height:18px;"></div><div class="spacer-val">36px</div><div class="spacer-desc">--space-6 · Content spacing</div></div>
+  <div class="spacer-row"><div class="spacer-chip" style="width:48px;height:18px;"></div><div class="spacer-val">48px</div><div class="spacer-desc">--space-7 · Loose gap</div></div>
+  <div class="spacer-row"><div class="spacer-chip" style="width:64px;height:18px;"></div><div class="spacer-val">64px</div><div class="spacer-desc">--space-8 · Section padding / side margin</div></div>
+</div>
+
+<div class="label" style="margin-top:12px;">Border Radii</div>
+<div style="display:flex;gap:16px;align-items:flex-end;">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+    <div style="width:48px;height:48px;background:#10232D;border-radius:0;"></div>
+    <div class="spacer-desc" style="text-align:center;">0px<br>All standard</div>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+    <div style="width:48px;height:48px;background:#10232D;border-radius:4px;"></div>
+    <div class="spacer-desc" style="text-align:center;">4px<br>Glass cards only</div>
+  </div>
+</div>
+
+<div class="label" style="margin-top:12px;">Layout</div>
+<div style="font-family:'Space Grotesk',sans-serif;font-size:13px;color:#10232D;line-height:1.7;">
+  Desktop: 1440px canvas · 64px side margins<br>
+  Mobile: 390px canvas · 24px side margins<br>
+  Section padding: 64px vertical<br>
+  Nav height: 91px desktop / 64px mobile
+</div>
+
+</body></html>

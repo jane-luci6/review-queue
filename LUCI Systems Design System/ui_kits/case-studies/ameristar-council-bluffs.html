@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Study — Ameristar Council Bluffs · LUCI Systems</title>
+  <meta name="description" content="How LUCI retrofitted Ameristar Council Bluffs Casino's AV infrastructure in under three days, centralizing control on land and preparing the property for its next phase of growth.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --navy-deep:   #0A161C;
+      --navy:        #10232D;
+      --navy-mid:    #314955;
+      --navy-muted:  #49616E;
+      --mint:        #68E3BE;
+      --mint-rgb:    104, 227, 190;
+      --mint-dark:   #2b9e80;
+      --sand:        #E5E3DF;
+      --off-white:   #F5F8FA;
+      --white:       #FFFFFF;
+      --rule-light:  #D4D9DC;
+      --body-ink:    #354F5C;
+
+      --display: 'Syncopate', 'Arial Black', sans-serif;
+      --body:    'Space Grotesk', 'Trebuchet MS', sans-serif;
+
+      --max:  880px;
+      --pad:  clamp(28px, 6vw, 64px);
+      --read: 64ch;
+    }
+
+    body {
+      font-family: var(--body);
+      background: var(--navy-deep);
+      color: var(--body-ink);
+      -webkit-font-smoothing: antialiased;
+      font-size: 18px;
+      line-height: 1.72;
+    }
+
+    .page {
+      max-width: var(--max);
+      margin: 0 auto;
+      background: var(--white);
+    }
+
+    /* ── TOP BAR ──────────────────────────────────────── */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px var(--pad);
+      background: var(--navy-deep);
+      border-bottom: 1px solid rgba(var(--mint-rgb), 0.15);
+    }
+
+    .topbar__logo img { height: 24px; display: block; }
+
+    .topbar__tag {
+      font-family: var(--display);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(var(--mint-rgb), 0.7);
+    }
+
+    /* ── HERO ─────────────────────────────────────────── */
+    .hero {
+      background: var(--navy-deep);
+      padding: clamp(40px, 8vw, 84px) var(--pad) clamp(40px, 7vw, 72px);
+      position: relative;
+      overflow: hidden;
+      border-bottom: 4px solid var(--mint);
+    }
+
+    .hero__kicker {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .hero__kicker span {
+      font-family: var(--display);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--mint);
+    }
+
+    .hero__kicker::before {
+      content: '';
+      width: 28px;
+      height: 2px;
+      background: var(--mint);
+    }
+
+    .hero__title {
+      font-family: var(--body);
+      font-weight: 700;
+      font-size: clamp(34px, 6.5vw, 60px);
+      line-height: 1.04;
+      letter-spacing: -0.03em;
+      color: var(--off-white);
+      max-width: 16ch;
+      margin-bottom: 26px;
+    }
+
+    .hero__title em { font-style: normal; color: var(--mint); }
+
+    .hero__dek {
+      font-size: clamp(17px, 2.2vw, 20px);
+      line-height: 1.6;
+      color: rgba(235, 245, 248, 0.82);
+      max-width: 58ch;
+      margin-bottom: 30px;
+    }
+
+    .hero__property {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--mint);
+      padding-top: 24px;
+      border-top: 1px solid rgba(var(--mint-rgb), 0.15);
+    }
+
+    .hero__property span { color: rgba(165, 179, 188, 0.7); font-weight: 500; }
+
+    /* faint year watermark */
+    .hero__watermark {
+      position: absolute;
+      right: calc(var(--pad) - 10px);
+      bottom: -22px;
+      font-family: var(--display);
+      font-size: clamp(90px, 20vw, 190px);
+      font-weight: 700;
+      line-height: 0.8;
+      letter-spacing: -0.04em;
+      color: rgba(var(--mint-rgb), 0.05);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero > * { position: relative; z-index: 1; }
+
+    /* ── AT A GLANCE (light) ──────────────────────────── */
+    .glance {
+      background: var(--off-white);
+      padding: clamp(32px, 5vw, 48px) var(--pad);
+      border-bottom: 1px solid var(--rule-light);
+    }
+
+    .glance__logo {
+      margin-bottom: 28px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--rule-light);
+    }
+
+    .glance__logo img { height: 44px; display: block; }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 36px;
+    }
+
+    @media (max-width: 620px) {
+      .facts { grid-template-columns: repeat(2, 1fr); gap: 20px 24px; }
+    }
+
+    .facts__label {
+      font-family: var(--display);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--mint-dark);
+      margin-bottom: 8px;
+    }
+
+    .facts__value {
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--navy);
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--rule-light);
+      border: 1px solid var(--rule-light);
+    }
+
+    @media (max-width: 620px) {
+      .summary { grid-template-columns: 1fr; }
+    }
+
+    .summary__cell {
+      background: var(--white);
+      padding: 22px 22px;
+    }
+
+    .summary__label {
+      font-family: var(--display);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--mint-dark);
+      margin-bottom: 10px;
+    }
+
+    .summary__text {
+      font-size: 15px;
+      line-height: 1.55;
+      color: var(--body-ink);
+    }
+
+    /* ── SECTIONS ─────────────────────────────────────── */
+    .sec {
+      padding: clamp(44px, 6vw, 72px) var(--pad);
+      border-bottom: 1px solid var(--rule-light);
+      position: relative;
+    }
+
+    .sec--white { background: var(--white); }
+    .sec--light { background: var(--off-white); }
+    .sec--mid   { background: var(--navy-mid); border-bottom-color: rgba(0,0,0,0.2); }
+    .sec--dark  { background: var(--navy); border-bottom-color: rgba(0,0,0,0.3); }
+    .sec--deep  { background: var(--navy-deep); border-bottom-color: rgba(0,0,0,0.4); }
+
+    .kicker {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .kicker__rule { width: 28px; height: 2px; background: var(--mint); flex-shrink: 0; }
+
+    .kicker__label {
+      font-family: var(--display);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--mint);
+    }
+
+    .sec--white .kicker__rule, .sec--light .kicker__rule { background: var(--mint-dark); }
+    .sec--white .kicker__label, .sec--light .kicker__label { color: var(--mint-dark); }
+
+    .sec__title {
+      font-family: var(--body);
+      font-weight: 700;
+      font-size: clamp(24px, 4vw, 34px);
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+      max-width: 24ch;
+      margin-bottom: 22px;
+    }
+
+    .sec--white .sec__title, .sec--light .sec__title { color: var(--navy); }
+    .sec--mid .sec__title, .sec--dark .sec__title, .sec--deep .sec__title { color: var(--off-white); }
+
+    .body p {
+      font-size: 17px;
+      line-height: 1.72;
+      margin-bottom: 18px;
+      max-width: var(--read);
+    }
+
+    .body p:last-child { margin-bottom: 0; }
+
+    .sec--white .body p, .sec--light .body p { color: var(--body-ink); }
+    .sec--mid .body p  { color: rgba(235, 245, 248, 0.88); }
+    .sec--dark .body p { color: rgba(235, 245, 248, 0.92); }
+    .sec--deep .body p { color: rgba(235, 245, 248, 0.88); }
+
+    .body strong { font-weight: 700; }
+    .sec--white .body strong, .sec--light .body strong { color: var(--navy); }
+    .sec--mid .body strong, .sec--dark .body strong, .sec--deep .body strong { color: var(--off-white); }
+
+    /* scope list */
+    .scope-list {
+      list-style: none;
+      margin: 4px 0 22px 0;
+      padding: 0;
+      max-width: var(--read);
+    }
+
+    .scope-list li {
+      position: relative;
+      padding-left: 24px;
+      font-size: 17px;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .sec--white .scope-list li, .sec--light .scope-list li { color: var(--body-ink); }
+    .sec--mid .scope-list li, .sec--dark .scope-list li { color: rgba(235, 245, 248, 0.9); }
+
+    .scope-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 12px;
+      width: 12px;
+      height: 2px;
+      background: var(--mint);
+    }
+    .sec--white .scope-list li::before, .sec--light .scope-list li::before { background: var(--mint-dark); }
+
+    /* ── RESULTS GRID ─────────────────────────────────── */
+    .results {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 1px;
+      background: rgba(var(--mint-rgb), 0.18);
+      list-style: none;
+      margin: 0 0 32px 0;
+      padding: 0;
+      counter-reset: result;
+    }
+
+    .results li {
+      background: var(--navy);
+      padding: 22px 20px;
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--off-white);
+      margin: 0;
+    }
+
+    .results li::before {
+      content: counter(result, decimal-leading-zero);
+      counter-increment: result;
+      display: block;
+      font-family: var(--display);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--mint);
+      margin-bottom: 10px;
+    }
+
+    /* ── WHAT'S NEXT (checkmarks) ─────────────────────── */
+    .plan-list {
+      list-style: none;
+      margin: 22px 0 26px 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      max-width: var(--read);
+    }
+
+    .plan-list li {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 14px;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .sec--white .plan-list li, .sec--light .plan-list li { color: var(--body-ink); }
+    .sec--mid .plan-list li, .sec--dark .plan-list li { color: rgba(235, 245, 248, 0.9); }
+
+    .plan-list li::before {
+      content: '\2713';
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--mint);
+      line-height: 1.3;
+    }
+    .sec--white .plan-list li::before, .sec--light .plan-list li::before { color: var(--mint-dark); }
+
+    .plan-list strong { font-weight: 700; }
+    .sec--white .plan-list strong, .sec--light .plan-list strong { color: var(--navy); }
+    .sec--mid .plan-list strong, .sec--dark .plan-list strong { color: var(--off-white); }
+
+    .bottom-line {
+      margin-top: 4px;
+      padding-top: 26px;
+      border-top: 1px solid var(--rule-light);
+      font-size: 18px;
+      line-height: 1.6;
+      max-width: var(--read);
+      color: var(--navy);
+    }
+    .sec--light .bottom-line { border-top-color: var(--rule-light); }
+
+    /* ── QUOTE ────────────────────────────────────────── */
+    .quote-sec { background: var(--navy-deep); padding: clamp(44px, 7vw, 76px) var(--pad); border-bottom: 1px solid rgba(var(--mint-rgb), 0.12); }
+
+    .pullquote {
+      font-size: clamp(22px, 3.4vw, 30px);
+      font-style: italic;
+      line-height: 1.4;
+      color: var(--off-white);
+      border-left: 4px solid var(--mint);
+      padding: 8px 0 8px 26px;
+      max-width: 26ch;
+      margin-bottom: 20px;
+    }
+
+    .quote-attrib {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding-left: 30px;
+      line-height: 1.6;
+    }
+
+    .quote-attrib span { display: block; color: var(--mint); }
+
+    /* ── CTA ──────────────────────────────────────────── */
+    .cta {
+      background: var(--navy-deep);
+      padding: clamp(44px, 7vw, 76px) var(--pad);
+      border-top: 4px solid var(--mint);
+    }
+
+    .cta__title {
+      font-family: var(--body);
+      font-weight: 700;
+      font-size: clamp(24px, 4vw, 32px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--off-white);
+      max-width: 20ch;
+      margin-bottom: 16px;
+    }
+
+    .cta__body {
+      font-size: 17px;
+      line-height: 1.65;
+      color: rgba(235, 245, 248, 0.8);
+      max-width: 56ch;
+      margin-bottom: 28px;
+    }
+
+    .cta__statement {
+      font-family: var(--body);
+      font-weight: 600;
+      font-size: clamp(20px, 2.6vw, 25px);
+      line-height: 1.4;
+      letter-spacing: -0.015em;
+      color: var(--off-white);
+      max-width: 44ch;
+      margin-bottom: 22px;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--body);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      color: var(--navy);
+      background: var(--mint);
+      padding: 16px 28px;
+      transition: background 0.15s;
+    }
+
+    .cta-btn:hover { background: #7aedc8; }
+    .cta-btn__arrow { font-size: 18px; font-weight: 700; line-height: 1; }
+
+    /* ── FOOTER ───────────────────────────────────────── */
+    .footer { background: var(--navy); padding: var(--pad); border-top: 1px solid rgba(var(--mint-rgb), 0.12); }
+
+    .footer__top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer__logo img { height: 22px; display: block; }
+
+    .footer__tag {
+      font-family: var(--display);
+      font-size: 9px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(var(--mint-rgb), 0.35);
+      margin-top: 8px;
+    }
+
+    .footer__links { text-align: right; }
+    .footer__links a { display: block; font-size: 13px; color: rgba(var(--mint-rgb), 0.7); text-decoration: none; margin-bottom: 5px; }
+    .footer__links a:hover { color: var(--mint); }
+
+    .footer__legal { font-size: 12px; line-height: 1.7; color: rgba(74, 95, 106, 0.9); }
+  </style>
+</head>
+<body>
+<article class="page">
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <a class="topbar__logo" href="https://lucisystems.com">
+      <img src="../../assets/logos/luci-full-white.png" alt="LUCI Systems">
+    </a>
+    <span class="topbar__tag">lucisystems.com</span>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero__kicker"><span>Case Study</span></div>
+    <h1 class="hero__title">Three days to a <em>future-ready platform</em></h1>
+    <p class="hero__dek">LUCI completed a full retrofit of Ameristar Council Bluffs' AV infrastructure in under three days, modernizing a system that had run since 2012 and centralizing control on land to prepare the property for its next phase of growth.</p>
+    <p class="hero__property">
+      Ameristar Council Bluffs Casino
+      <span>Council Bluffs, Iowa · Penn Entertainment</span>
+    </p>
+  </header>
+
+  <!-- AT A GLANCE -->
+  <section class="glance" aria-label="At a glance">
+    <div class="glance__logo">
+      <img src="../../assets/logos/ameristar-council-bluffs.svg" alt="Ameristar Council Bluffs" height="44">
+    </div>
+
+    <div class="facts">
+      <div>
+        <p class="facts__label">Operator</p>
+        <p class="facts__value">Penn Entertainment</p>
+      </div>
+      <div>
+        <p class="facts__label">Location</p>
+        <p class="facts__value">Council Bluffs, Iowa</p>
+      </div>
+      <div>
+        <p class="facts__label">Retrofit completed</p>
+        <p class="facts__value">Under 3 days</p>
+      </div>
+    </div>
+
+    <div class="summary">
+      <div class="summary__cell">
+        <p class="summary__label">The challenge</p>
+        <p class="summary__text">A decade-old AV system, aging equipment, and a major casino buildout on the way.</p>
+      </div>
+      <div class="summary__cell">
+        <p class="summary__label">The approach</p>
+        <p class="summary__text">A full retrofit in under three days, with all AV processing relocated to the data center on land.</p>
+      </div>
+      <div class="summary__cell">
+        <p class="summary__label">The result</p>
+        <p class="summary__text">A unified, scalable platform built for the property's next phase of growth.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE CHALLENGE -->
+  <section class="sec sec--white">
+    <h2 class="sec__title">A proven system, a bigger future</h2>
+    <div class="body">
+      <p>Ameristar Council Bluffs spans a land-based casino and a riverboat. Its audio-visual system was based on an early LUCI design that had been operating successfully since 2012.</p>
+      <p>Even after more than a decade of daily use, the original system continued to support property operations and guest experience demands. But the property was preparing for a new chapter: a major casino buildout on the land side and a planned transition away from the riverboat casino.</p>
+      <p>With years of ongoing upgrades, aging equipment, and that buildout approaching, Ameristar needed a more unified, scalable, and future-ready approach, one that could carry the property through its next phase of growth.</p>
+    </div>
+  </section>
+
+  <!-- THE APPROACH -->
+  <section class="sec sec--mid">
+    <h2 class="sec__title">Modernize without disrupting the floor</h2>
+    <div class="body">
+      <p>LUCI's goal was to modernize the property's AV foundation and position it for the transition ahead, without disrupting a floor that runs every day.</p>
+      <p>The defining move was location. As part of the upcoming transition away from the riverboat casino, LUCI relocated all new AV processing equipment into the property's IT data center on land. Since much of the previous system's processing was located on the boat, this single move eliminated the need to design additional AV rooms into the new buildout, helping reduce future construction and infrastructure costs.</p>
+      <p>The retrofit installation itself was completed in less than three days. In that window, the team:</p>
+      <ul class="scope-list">
+        <li>Replaced the AV head-end systems, amplifiers, and control infrastructure</li>
+        <li>Relocated all new AV processing into the property's IT data center</li>
+        <li>Completed a full conversion and modernization of the system documentation</li>
+      </ul>
+      <p>The result is a streamlined platform designed for years of reliable, trouble-free operation, with simplified future maintenance and expansion.</p>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="quote-sec">
+    <blockquote class="pullquote">"Well done, LUCI team! This was the best installation &mdash; so seamless."</blockquote>
+    <p class="quote-attrib">
+      <span>Facilities Manager</span>
+      <span>Ameristar Council Bluffs</span>
+    </p>
+  </section>
+
+  <!-- THE RESULTS -->
+  <section class="sec sec--dark">
+    <h2 class="sec__title">What the property gained</h2>
+    <ul class="results">
+      <li>One unified view of every endpoint</li>
+      <li>Broader delegation by zone</li>
+      <li>Faster response to daily needs</li>
+      <li>Automated resets and scheduling</li>
+      <li>Simpler maintenance and expansion</li>
+      <li>Lower long-term infrastructure costs</li>
+    </ul>
+    <div class="body">
+      <p>The upgraded LUCI platform now provides unlimited operational users through any browser-based device, giving the property greater flexibility, broader delegation, and faster response times to daily operational needs.</p>
+      <p>Built-in automation features let the operations team perform daily system resets, scheduled adjustments, and system-wide changes with significantly less hands-on intervention.</p>
+      <p>And because the property now benefits from LUCI's evolving feature set and software enhancements without additional upgrade licensing costs, the platform continues to grow alongside the casino's future operational and guest experience needs.</p>
+    </div>
+  </section>
+
+  <!-- WHAT'S NEXT -->
+  <section class="sec sec--light">
+    <h2 class="sec__title">Built for the moves ahead</h2>
+    <div class="body">
+      <p>With the system centralized on land, the property is set up for what comes next.</p>
+      <ul class="plan-list">
+        <li><span><strong>The boat can sail.</strong> When the time comes, Ameristar can step away from the riverboat as a clean break, and keep running on LUCI.</span></li>
+        <li><span><strong>The new build can plug in.</strong> When the new construction opens, it runs on the platform already powering the property &mdash; no second install, no parallel system to stand up.</span></li>        <li><span><strong>Future growth is built in.</strong> As Ameristar expands, it can do so unobstructed &mdash; LUCI has removed the logistical variables and A/V complications that would otherwise pile up over time.</span></li>
+      </ul>
+      <p class="bottom-line">By modernizing the AV infrastructure and centralizing system control, LUCI helped Ameristar Council Bluffs prepare for its next phase of growth, preserving operational reliability, improving efficiency, and reducing long-term infrastructure costs.</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <p class="cta__statement">LUCI is the operating system for complex properties &mdash; one platform that unifies every A/V, signage, building, and operational system into a single interface your team controls from anywhere so you can strategically activate the guest experience.</p>
+    <p class="cta__body">Curious what this looks like for your property? Let's talk.</p>
+    <a class="cta-btn" href="https://lucisystems.com/contact">Talk to LUCI<span class="cta-btn__arrow">&rarr;</span></a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div>
+        <a class="footer__logo" href="https://lucisystems.com">
+          <img src="../../assets/logos/luci-full-white.png" alt="LUCI Systems">
+        </a>
+        <p class="footer__tag">The Smarter Platform for Enterprise Multimedia</p>
+      </div>
+      <div class="footer__links">
+        <a href="https://lucisystems.com">lucisystems.com</a>
+        <a href="tel:+18333335868">+1 (833) 333-5868</a>
+        <a href="mailto:info@LUCIsystems.com">info@LUCIsystems.com</a>
+      </div>
+    </div>
+    <p class="footer__legal">© 2026 LUCI Systems · The Smarter Platform for Enterprise Multimedia</p>
+  </footer>
+
+</article>
+</body>
+</html>

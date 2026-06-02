@@ -1,0 +1,342 @@
+/*
+ * LUCI Systems — Design Tokens
+ * colors_and_type.css
+ *
+ * Usage:
+ *   from project root:    @import url('colors_and_type.css');
+ *   from preview/:        @import url('../colors_and_type.css');
+ *   from ui_kits/website/: @import url('../../colors_and_type.css');
+ *
+ * Fonts are self-hosted from /fonts/ (paths resolved relative to THIS file).
+ */
+
+/* ─── FONT FACES — self-hosted brand fonts ──────────────────────── */
+
+@font-face {
+  font-family: 'Syncopate';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('fonts/Syncopate-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Syncopate';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('fonts/Syncopate-Bold.ttf') format('truetype');
+}
+
+/* Space Grotesk — full static weight set (300, 400, 500, 600, 700) */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+  src: url('fonts/SpaceGrotesk-Light.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('fonts/SpaceGrotesk-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url('fonts/SpaceGrotesk-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: url('fonts/SpaceGrotesk-SemiBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('fonts/SpaceGrotesk-Bold.ttf') format('truetype');
+}
+
+/* ─── COLOR TOKENS ──────────────────────────────────────────────── */
+:root {
+
+  /* Named Brand Colors */
+  --color-pit-boss-blue:     #0A161C;  /* deepest dark bg */
+  --color-controlled-blue:   #10232D;  /* primary dark bg */
+  --color-sportsbook-blue:   #314955;  /* secondary dark bg */
+  --color-immersive-slate:   #49616E;  /* tertiary dark / client logos bg */
+  --color-loan-shark:        #A6B0B6;  /* subdued borders */
+  --color-integrayted:       #ABADB3;  /* dividers, muted text */
+  --color-unified-gray:      #535559;  /* body text on light */
+  --color-the-sands:         #E5E3DF;  /* primary light bg */
+  --color-ambient-white:     #F5F8FA;  /* cards, frosted glass */
+  --color-high-limit-mint:   #68E3BE;  /* primary accent — interactive */
+  --color-jackpot-red:       #FA564C;  /* secondary accent — key headers */
+
+  /* Semantic Aliases */
+  --bg-dark:         var(--color-controlled-blue);
+  --bg-dark-deep:    var(--color-pit-boss-blue);
+  --bg-dark-mid:     var(--color-sportsbook-blue);
+  --bg-dark-subtle:  var(--color-immersive-slate);
+  --bg-light:        var(--color-the-sands);
+  --bg-surface:      var(--color-ambient-white);
+
+  --fg-on-dark:      var(--color-ambient-white);    /* text on dark bg */
+  --fg-on-light:     var(--color-controlled-blue);  /* text on light bg */
+  --fg-muted:        var(--color-integrayted);
+  --fg-subdued:      var(--color-unified-gray);
+
+  /* Accent hierarchy — Mint is PRIMARY. Red is tertiary/sparingly only. */
+  --accent-primary:  var(--color-high-limit-mint);   /* ← use for CTAs, borders, highlights, numbers */
+  --accent-primary-dark: #2b9e80;                    /* darkened mint for text on light backgrounds */
+  --accent-tertiary: var(--color-jackpot-red);       /* ← use sparingly: section labels, legacy Figma refs only */
+  --accent-border:   var(--color-controlled-blue);
+
+  /* Borders */
+  --border-dark:     1px solid var(--color-controlled-blue);
+  --border-mid:      1px solid var(--color-integrayted);
+  --border-light:    1px solid var(--color-loan-shark);
+
+  /* Shadows */
+  --shadow-card-heavy: 0 0 20px 0 rgba(36, 34, 38, 0.70);
+  --shadow-card-light: 0 0 20px 0 rgba(36, 34, 38, 0.20);
+  --shadow-card-mid:   0 0 20px 0 rgba(36, 34, 38, 0.30);
+
+  /* Backdrop */
+  --blur-card: blur(15px);
+}
+
+/* ─── TYPOGRAPHY TOKENS ─────────────────────────────────────────── */
+:root {
+  --font-display:   'Syncopate', 'Arial Black', sans-serif;
+  --font-body:      'Space Grotesk', 'Trebuchet MS', sans-serif;
+  --font-secondary: 'Montserrat', sans-serif;
+
+  /* Display / Header scale — Syncopate Bold, always uppercase.
+     Each role exposes individual size + line-height tokens.
+     Apply via the .luci-* helper classes below, or compose manually. */
+  --text-hero-size:     55px;  --text-hero-lh:     1.0;
+  --text-h1-size:       64px;  --text-h1-lh:       1.0;
+  --text-h2-size:       36px;  --text-h2-lh:       44px;
+  --text-h3-size:       24px;  --text-h3-lh:       32px;
+  --text-label-lg-size: 18px;  --text-label-lg-lh: 29px;
+  --text-label-md-size: 16px;  --text-label-md-lh: 1.0;
+  --text-label-sm-size: 14px;  --text-label-sm-lh: 1.0;
+
+  /* Body scale — Space Grotesk */
+  --text-body-xl-size:  21px;  --text-body-xl-lh:  1.5;
+  --text-body-lg-size:  18px;  --text-body-lg-lh:  27px;
+  --text-body-md-size:  16px;  --text-body-md-lh:  21px;
+  --text-body-sm-size:  14px;  --text-body-sm-lh:  22px;
+
+  /* Spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 36px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* Layout */
+  --max-width-desktop: 1440px;
+  --max-width-content: 1312px;
+  --padding-desktop: 64px;
+  --padding-mobile: 24px;
+  --section-padding: 64px;
+
+  /* Border radius — sharp by default, frosted cards only exception */
+  --radius-none: 0px;
+  --radius-card: 4px;   /* only for frosted glass quote/content cards */
+}
+
+/* ─── BASE ELEMENT STYLES ───────────────────────────────────────── */
+
+.luci-h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 1.0;
+  text-transform: uppercase;
+  color: var(--fg-on-dark);
+}
+
+.luci-h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 44px;
+  text-transform: uppercase;
+  color: var(--fg-on-light);
+}
+
+.luci-h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  text-transform: uppercase;
+}
+
+.luci-hero {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 55px;
+  line-height: 1.0;
+  text-transform: uppercase;
+}
+
+.luci-label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.0;
+  text-transform: uppercase;
+}
+
+.luci-label-sm {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.0;
+  text-transform: uppercase;
+}
+
+.luci-body-lg {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+}
+
+.luci-body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21px;
+}
+
+.luci-body-sm {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+/* ─── CTA BUTTON STYLES ─────────────────────────────────────────── */
+
+/* Primary: filled dark */
+.luci-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background-color: var(--color-controlled-blue);
+  color: var(--color-ambient-white);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+  padding: 20px 20px;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.luci-btn-primary-sm {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background-color: var(--color-controlled-blue);
+  color: var(--color-ambient-white);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  padding: 13px 16px 12px 16px;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Secondary: outlined */
+.luci-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background-color: transparent;
+  color: var(--color-pit-boss-blue);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+  padding: 18px 20px;
+  border: 2px solid var(--color-pit-boss-blue);
+  border-radius: 0;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Tertiary: text + arrow */
+.luci-btn-tertiary {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background-color: transparent;
+  color: var(--color-pit-boss-blue);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Text link */
+.luci-text-link {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: underline;
+  color: var(--color-pit-boss-blue);
+  cursor: pointer;
+}
+
+/* ─── CARD STYLES ───────────────────────────────────────────────── */
+
+/* Frosted glass card */
+.luci-card-frosted {
+  border-radius: var(--radius-card);
+  background-color: rgba(245, 248, 250, 0.80);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: var(--shadow-card-heavy);
+}
+
+.luci-card-frosted-light {
+  border-radius: var(--radius-card);
+  background-color: rgba(245, 248, 250, 0.65);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: var(--shadow-card-light);
+}
+
+/* Hard-edge card (persons, etc.) */
+.luci-card-hard {
+  border-radius: 0;
+  border: 1.5px solid var(--color-controlled-blue);
+  background-color: var(--color-the-sands);
+  overflow: hidden;
+}

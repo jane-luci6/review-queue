@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="x-apple-disable-message-reformatting">
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light only">
+<title>LUCI — Master Email Template</title>
+
+<!--[if mso]>
+<noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript>
+<![endif]-->
+
+<style type="text/css">
+  /* Reset */
+  body, table, td, p, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+  table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; }
+  img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; display: block; }
+  body { margin: 0 !important; padding: 0 !important; width: 100% !important; height: 100% !important; }
+  a { color: #10232D; }
+
+  /* Force light mode on dark-mode clients to preserve the navy/mint contrast */
+  [data-ogsc] .force-light-bg { background-color: #FFFFFF !important; }
+  [data-ogsc] .force-light-text { color: #10232D !important; }
+
+  /* Mobile */
+  @media only screen and (max-width: 620px) {
+    .container { width: 100% !important; }
+    .px-side { padding-left: 24px !important; padding-right: 24px !important; }
+    .py-section { padding-top: 28px !important; padding-bottom: 28px !important; }
+    .h1 { font-size: 24px !important; line-height: 30px !important; }
+    .body-lg { font-size: 16px !important; line-height: 25px !important; }
+    .header-pad { padding: 28px 24px !important; }
+    .header-logo { height: 26px !important; }
+    .stack { display: block !important; width: 100% !important; }
+    .stack-pad { padding-top: 14px !important; }
+  }
+</style>
+</head>
+
+<body style="margin:0; padding:0; background-color:#E5E3DF; font-family: 'Space Grotesk', 'Segoe UI', system-ui, -apple-system, Helvetica, Arial, sans-serif;">
+
+  <!-- Preheader: hidden but shown in inbox preview list -->
+  <div style="display:none; max-height:0; overflow:hidden; mso-hide:all; font-size:1px; line-height:1px; color:#E5E3DF; opacity:0;">
+    {{preheader_text}}
+  </div>
+
+  <!-- Outer wrapper -->
+  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color:#E5E3DF;">
+    <tr>
+      <td align="center" style="padding: 24px 12px;">
+
+        <!-- ==================== EMAIL CONTAINER ==================== -->
+        <table role="presentation" class="container" cellspacing="0" cellpadding="0" border="0" width="600" style="width:600px; max-width:600px; background-color:#FFFFFF;">
+
+          <!-- ============ MINT ACCENT LINE ============ -->
+          <tr>
+            <td style="background-color:#68E3BE; height:4px; line-height:4px; font-size:4px;">&nbsp;</td>
+          </tr>
+
+          <!-- ============ NAVY HEADER BANNER ============ -->
+          <tr>
+            <td class="header-pad" style="background-color:#10232D; padding: 32px 36px;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                <!-- Top row: tracked label · logo -->
+                <tr>
+                  <td valign="middle" style="font-family:'Syncopate', 'Arial Black', 'Segoe UI', sans-serif; font-weight:700; font-size:10px; line-height:14px; letter-spacing:0.18em; color:#68E3BE; text-transform:uppercase;">
+                    {{eyebrow_label}}
+                  </td>
+                  <td valign="middle" align="right">
+                    <a href="https://lucisystems.com" style="text-decoration:none;">
+                      <img src="../../assets/logos/luci-full-white.png" alt="LUCI Systems" height="28" class="header-logo" style="height:28px; display:block;">
+                    </a>
+                  </td>
+                </tr>
+                <!-- Headline -->
+                <tr>
+                  <td colspan="2" style="padding-top: 18px;">
+                    <h1 class="h1" style="font-family:'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif; font-weight:600; font-size:28px; line-height:34px; color:#F5F8FA; margin:0; letter-spacing:-0.005em;">
+                      {{email_headline}}
+                    </h1>
+                  </td>
+                </tr>
+                <!-- Subtitle -->
+                <tr>
+                  <td colspan="2" style="padding-top: 10px;">
+                    <p style="font-family:'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif; font-weight:400; font-size:14px; line-height:21px; color:#A6B0B6; margin:0;">
+                      {{email_subhead}}
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- ============ GREETING + INTRO ============ -->
+          <tr>
+            <td class="px-side py-section" style="padding: 36px 36px 8px;">
+              <p class="body-lg" style="font-family:'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif; font-weight:400; font-size:17px; line-height:27px; color:#10232D; margin:0 0 20px 0;">
+                Hi {{customer_first_name}},
+              </p>
+              <p class="body-lg" style="font-family:'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif; font-weight:400; font-size:17px; line-height:27px; color:#10232D; margin:0;">
+                {{paragraph_one}}
+              </p>
+            </td>
+          </tr>
+
+          <!-- ============ BODY PARAGRAPH(S) ============ -->
+          <tr>
+            <td class="px-side" style="padding: 16px 36px 8px;">
+              <p class="body-lg" style="font-family:'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif; font-weight:400; font-size:17px; line-height:27px; color:#10232D; margin:0 0 20px 0;">
+                {{paragraph_two}}
+              </p>
+              <p class="body-lg" style="font-family:'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif; font-weight:400; font-size:17px; line-height:27px; color:#10232D; margin:0;">
+                {{paragraph_three}}
+              </p>
+            </td>
+          </tr>
+
+          <!-- ============ HIGHLIGHT CARD (optional — light panel) ============ -->
+          <tr>
+            <td class="px-side" style="padding: 24px 36px 8px;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color:#F6F9FB; border:1px solid #D9DEE1;">
+                <tr>
+                  <!-- Slate accent bar -->
+                  <td width="4" style="width:4px; background-color:#314955; line-height:1px; font-size:1px;">&nbsp;</td>
+                  <td style="padding: 20px 24px;">
+                    <p style="font-family:'Syncopate', 'Arial Black', 'Segoe UI', sans-serif; font-weight:700; font-size:10px; letter-spacing:0.14em; color:#10232D; text-transform:uppercase; margin:0 0 8px 0;">
+                      {{highlight_label}}
+                    </p>
+                    <p style="font-family:'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif; font-weight:500; font-size:15px; line-height:23px; color:#10232D; margin:0;">
+                      {{highlight_content}}
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- ============ PRIMARY CTA ============ -->
+          <tr>
+            <td class="px-side" style="padding: 28px 36px 8px;" align="left">
+              <!--[if mso]>
+              <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word"
+                href="{{cta_url}}" style="height:48px;v-text-anchor:middle;width:240px;" arcsize="0%" stroke="f" fillcolor="#10232D">
+                <w:anchorlock/>
+                <center style="color:#F5F8FA;font-family:Segoe UI,Arial,sans-serif;font-size:14px;font-weight:bold;letter-spacing:1px;">{{cta_label}}</center>
+              </v:roundrect>
+              <![endif]-->
+              <!--[if !mso]><!-- -->
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                  <td bgcolor="#10232D">
+                    <a href="{{cta_url}}" style="display:inline-block; font-family:'Syncopate', 'Arial Black', 'Segoe UI', sans-serif; font-weight:700; font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:#F5F8FA; padding: 16px 24px; text-decoration:none;">
+                      {{cta_label}} &nbsp;→
+                    </a>
+                  </td>
+                </tr>
+              </table>
+              <!--<![endif]-->
+            </td>
+          </tr>
+
+          <!-- ============ DIVIDER ============ -->
+          <tr>
+            <td class="px-side" style="padding: 28px 36px 0;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tr><td style="height:1px; background-color:#D9DEE1; line-height:1px; font-size:1px;">&nbsp;</td></tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- ============ WHAT'S NEXT (optional outro) ============ -->
+          <tr>
+            <td class="px-side" style="padding: 24px 36px 8px;">
+              <p style="font-family:'Syncopate', 'Arial Black', 'Segoe UI', sans-serif; font-weight:700; font-size:10px; letter-spacing:0.14em; color:#10232D; text-transform:uppercase; margin:0 0 12px 0;">
+                What to expect next
+              </p>
+              <p style="font-family:'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif; font-weight:400; font-size:15px; line-height:23px; color:#10232D; margin:0;">
+                {{whats_next_content}}
+              </p>
+            </td>
+          </tr>
+
+          <!-- ============ SIGNATURE ============ -->
+          <tr>
+            <td class="px-side" style="padding: 28px 36px 36px;">
+              <p style="font-family:'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif; font-weight:400; font-size:15px; line-height:22px; color:#10232D; margin:0 0 12px 0;">
+                {{signoff_line}}
+              </p>
+              <p style="font-family:'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif; font-weight:600; font-size:15px; line-height:20px; color:#10232D; margin:0;">
+                {{sender_name}}
+              </p>
+              <p style="font-family:'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif; font-weight:400; font-size:13px; line-height:18px; color:#535559; margin:2px 0 0 0;">
+                {{sender_title}} · LUCI Systems
+              </p>
+            </td>
+          </tr>
+
+          <!-- ============ FOOTER ============ -->
+          <tr>
+            <td style="background-color:#10232D; padding: 24px 36px;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                  <td valign="middle">
+                    <img src="../../assets/logos/luci-mark-mint.png" alt="LUCI" height="24" style="height:24px; display:block;">
+                  </td>
+                  <td valign="middle" align="right" style="font-family:'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif; font-size:11px; line-height:18px; color:#A6B0B6;">
+                    <a href="https://lucisystems.com" style="color:#A6B0B6; text-decoration:none;">lucisystems.com</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2" style="padding-top:14px; font-family:'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif; font-size:11px; line-height:18px; color:#535559;">
+                    <a href="mailto:hello@lucisystems.com" style="color:#A6B0B6; text-decoration:underline;">hello@lucisystems.com</a>
+                    &nbsp;·&nbsp;
+                    <a href="{{help_url}}" style="color:#A6B0B6; text-decoration:underline;">Help center</a>
+                    &nbsp;·&nbsp;
+                    <a href="{{unsubscribe_url}}" style="color:#535559; text-decoration:underline;">Unsubscribe</a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+        </table>
+        <!-- ==================== /EMAIL CONTAINER ==================== -->
+
+        <!-- Tiny legal line below container -->
+        <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" class="container" style="width:600px; max-width:600px;">
+          <tr>
+            <td align="center" style="padding: 14px 12px 4px; font-family:'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif; font-size:11px; line-height:17px; color:#535559;">
+              © {{year}} LUCI Systems · The Smarter Platform for Enterprise Multimedia
+            </td>
+          </tr>
+        </table>
+
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>

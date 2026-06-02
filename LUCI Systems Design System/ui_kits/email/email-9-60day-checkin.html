@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="x-apple-disable-message-reformatting">
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light only">
+<title>LUCI — Email 9 · 60-day Check-in &amp; Field Activation Guide</title>
+
+<!--[if mso]>
+<noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript>
+<![endif]-->
+
+<style type="text/css">
+  /* Reset */
+  body, table, td, p, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+  table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; }
+  img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; display: block; }
+  body { margin: 0 !important; padding: 0 !important; width: 100% !important; height: 100% !important; }
+  a { color: #10232D; }
+
+  /* Force light mode on dark-mode clients to preserve the navy/mint contrast */
+  [data-ogsc] .force-light-bg { background-color: #FFFFFF !important; }
+  [data-ogsc] .force-light-text { color: #10232D !important; }
+
+  /* Mobile */
+  @media only screen and (max-width: 620px) {
+    .container { width: 100% !important; }
+    .px-side { padding-left: 24px !important; padding-right: 24px !important; }
+    .py-section { padding-top: 28px !important; padding-bottom: 28px !important; }
+    .h1 { font-size: 24px !important; line-height: 30px !important; }
+    .body-lg { font-size: 16px !important; line-height: 25px !important; }
+    .header-pad { padding: 28px 24px !important; }
+    .header-logo { height: 26px !important; }
+    .stack { display: block !important; width: 100% !important; }
+    .stack-pad { padding-top: 14px !important; }
+  }
+</style>
+</head>
+
+<body style="margin:0; padding:0; background-color:#E5E3DF; font-family: 'Space Grotesk', 'Segoe UI', system-ui, -apple-system, Helvetica, Arial, sans-serif;">
+
+  <!-- Preheader: hidden but shown in inbox preview list -->
+  <div style="display:none; max-height:0; overflow:hidden; mso-hide:all; font-size:1px; line-height:1px; color:#E5E3DF; opacity:0;">
+    A practical look at what each team can do with the platform.
+  </div>
+
+  <!-- Outer wrapper -->
+  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color:#E5E3DF;">
+    <tr>
+      <td align="center" style="padding: 24px 12px;">
+
+        <!-- ==================== EMAIL CONTAINER ==================== -->
+        <table role="presentation" class="container" cellspacing="0" cellpadding="0" border="0" width="600" style="width:600px; max-width:600px; background-color:#FFFFFF;">
+
+          <!-- ============ MINT ACCENT LINE ============ -->
+          <tr>
+            <td style="background-color:#68E3BE; height:4px; line-height:4px; font-size:4px;">&nbsp;</td>
+          </tr>
+
+          <!-- ============ NAVY HEADER BANNER ============ -->
+          <tr>
+            <td class="header-pad" style="background-color:#10232D; padding: 32px 36px;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                <!-- Top row: logo only -->
+                <tr>
+                  <td valign="middle" align="right">
+                    <a href="https://lucisystems.com" style="text-decoration:none;">
+                      <img src="https://content.app-us1.com/YzzLp9/2026/05/18/fa1f40ee-c6ac-4c7f-bd96-6a34971de1fa.png" alt="LUCI Systems" height="28" class="header-logo" style="height:28px; display:block;">
+                    </a>
+                  </td>
+                </tr>
+                <!-- Headline -->
+                <tr>
+                  <td style="padding-top: 18px;">
+                    <h1 class="h1" style="font-family:'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif; font-weight:600; font-size:28px; line-height:34px; color:#F5F8FA; margin:0; letter-spacing:-0.005em;">
+                      <span style="color:#68E3BE;">60 days running on LUCI.</span>
+                    </h1>
+                  </td>
+                </tr>
+                <!-- Strategic subtitle -->
+                <tr>
+                  <td style="padding-top: 12px;">
+                    <p style="font-family:'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif; font-weight:400; font-size:14px; line-height:22px; color:#A6B0B6; margin:0;">
+                      What the platform makes possible &mdash; <strong style="color:#68E3BE; font-weight:600;">role by role</strong>.
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- ============ GREETING + LEAD-IN ============ -->
+          <tr>
+            <td class="px-side" style="padding: 36px 36px 0;">
+              <p class="body-lg" style="font-family:'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif; font-weight:400; font-size:17px; line-height:27px; color:#10232D; margin:0 0 20px 0;">
+                Hi %FIRSTNAME%,
+              </p>
+              <p class="body-lg" style="font-family:'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif; font-weight:400; font-size:17px; line-height:27px; color:#10232D; margin:0;">
+                We've now hit the two-month mark of LUCI running every A/V system at <strong style="font-weight:600;">%PROPERTY%</strong>, and that means your team now has everything they need to start using it more strategically.
+              </p>
+            </td>
+          </tr>
+
+          <!-- ============ FIELD ACTIVATION GUIDE ============ -->
+          <tr>
+            <td class="px-side" style="padding: 28px 36px 0;">
+              <p class="body-lg" style="font-family:'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif; font-weight:400; font-size:17px; line-height:27px; color:#10232D; margin:0;">
+                We put together the LUCI Field Activation Guide to help each part of your organization understand what's possible beyond day-to-day operation. It's organized by role &mdash; <strong style="font-weight:600;">marketing, operations, IT, and finance</strong> &mdash; so every team has a clear picture of how to turn the platform into a tool for guest experience, revenue, and operational efficiency.
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td class="px-side" style="padding: 20px 36px 0;" align="left">
+              <!--[if mso]>
+              <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word"
+                href="#field-activation-guide" style="height:48px;v-text-anchor:middle;width:300px;" arcsize="0%" stroke="f" fillcolor="#10232D">
+                <w:anchorlock/>
+                <center style="color:#F5F8FA;font-family:Segoe UI,Arial,sans-serif;font-size:13px;font-weight:bold;letter-spacing:1px;">Access the Field Activation Guide</center>
+              </v:roundrect>
+              <![endif]-->
+              <!--[if !mso]><!-- -->
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                  <td bgcolor="#10232D">
+                    <a href="#field-activation-guide" style="display:inline-block; font-family:'Syncopate', 'Arial Black', 'Segoe UI', sans-serif; font-weight:700; font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:#F5F8FA; padding: 16px 24px; text-decoration:none;">
+                      Access the Field Activation Guide &nbsp;&rarr;
+                    </a>
+                  </td>
+                </tr>
+              </table>
+              <!--<![endif]-->
+            </td>
+          </tr>
+
+          <!-- ============ SHARE YOUR EXPERIENCE ============ -->
+          <tr>
+            <td class="px-side" style="padding: 36px 36px 0;">
+              <p class="body-lg" style="font-family:'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif; font-weight:400; font-size:17px; line-height:27px; color:#10232D; margin:0 0 16px 0;">
+                I'm also curious about your experience these past two months. You've had enough time with the system to have a real sense of what's changed, and I'd love to hear it in your own words.
+              </p>
+              <p class="body-lg" style="font-family:'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif; font-weight:500; font-size:17px; line-height:27px; color:#10232D; margin:0;">
+                One question, 30 seconds:
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td class="px-side" style="padding: 20px 36px 0;" align="left">
+              <!--[if mso]>
+              <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word"
+                href="https://lucisystems.activehosted.com/f/2" style="height:48px;v-text-anchor:middle;width:230px;" arcsize="0%" stroke="f" fillcolor="#10232D">
+                <w:anchorlock/>
+                <center style="color:#F5F8FA;font-family:Segoe UI,Arial,sans-serif;font-size:13px;font-weight:bold;letter-spacing:1px;">Share your experience</center>
+              </v:roundrect>
+              <![endif]-->
+              <!--[if !mso]><!-- -->
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                  <td bgcolor="#10232D">
+                    <a href="https://lucisystems.activehosted.com/f/2" style="display:inline-block; font-family:'Syncopate', 'Arial Black', 'Segoe UI', sans-serif; font-weight:700; font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:#F5F8FA; padding: 16px 24px; text-decoration:none;">
+                      Share your experience &nbsp;&rarr;
+                    </a>
+                  </td>
+                </tr>
+              </table>
+              <!--<![endif]-->
+            </td>
+          </tr>
+
+          <!-- ============ CLOSING ============ -->
+          <tr>
+            <td class="px-side" style="padding: 32px 36px 0;">
+              <p class="body-lg" style="font-family:'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif; font-weight:400; font-size:17px; line-height:27px; color:#10232D; margin:0 0 16px 0;">
+                And as always &mdash; my door is open. If anything is on your mind, big or small, you know where to find me.
+              </p>
+              <p class="body-lg" style="font-family:'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif; font-weight:400; font-size:17px; line-height:27px; color:#10232D; margin:0;">
+                Regards,
+              </p>
+            </td>
+          </tr>
+
+          <!-- ============ SIGNATURE (Mike's details) ============ -->
+          <tr>
+            <td class="px-side" style="padding: 28px 36px 36px;">
+              <p style="font-family:'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif; font-weight:700; font-size:16px; line-height:22px; color:#10232D; margin:0 0 8px 0;">
+                Michael Epstein &ndash; CEO
+              </p>
+              <p style="font-family:'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif; font-weight:400; font-size:13px; line-height:20px; color:#535559; margin:0 0 8px 0;">
+                C 702.326.5700 &nbsp;|&nbsp; O 833.333.5868
+              </p>
+              <p style="font-family:'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif; font-weight:400; font-size:13px; line-height:20px; color:#535559; margin:0 0 0 0;">
+                <a href="mailto:mepstein@lucisystems.com" style="color:#2b9e80; text-decoration:underline;">mepstein@lucisystems.com</a> &nbsp;|&nbsp; <a href="https://lucisystems.com" style="color:#2b9e80; text-decoration:underline;">LUCIsystems.com</a>
+              </p>
+              <!-- Environmental + privacy line -->
+              <p style="font-family:'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif; font-weight:400; font-size:11px; line-height:17px; color:#A6B0B6; margin:20px 0 0 0;">
+                <span style="color:#68E3BE;">&#9851;</span> &nbsp;Please consider the environment before printing this e-mail. &nbsp;Reduce &nbsp;|&nbsp; Reuse &nbsp;|&nbsp; Recycle
+              </p>
+              <p style="font-family:'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif; font-weight:400; font-size:11px; line-height:17px; margin:6px 0 0 0;">
+                <a href="http://lucisystems.com/privacy-policy/" style="color:#A6B0B6; text-decoration:underline;">Email Privacy Policy</a>
+              </p>
+            </td>
+          </tr>
+
+          <!-- ============ FOOTER ============ -->
+          <tr>
+            <td style="background-color:#10232D; padding: 24px 36px;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                  <td valign="middle">
+                    <img src="https://content.app-us1.com/YzzLp9/2026/05/18/1bc8b968-9454-4813-a1b1-6477aaa143f2.png" alt="LUCI" height="24" style="height:24px; display:block;">
+                  </td>
+                  <td valign="middle" align="right" style="font-family:'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif; font-size:11px; line-height:18px; color:#A6B0B6;">
+                    <a href="https://lucisystems.com" style="color:#A6B0B6; text-decoration:none;">lucisystems.com</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2" style="padding-top:14px; font-family:'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif; font-size:11px; line-height:18px; color:#535559;">
+                    <a href="mailto:support@lucisystems.com" style="color:#A6B0B6; text-decoration:underline;">support@lucisystems.com</a>
+                    &nbsp;&middot;&nbsp;
+                    <a href="https://lucisystems.com" style="color:#A6B0B6; text-decoration:underline;">Help center</a>
+                    &nbsp;&middot;&nbsp;
+                    <a href="#" style="color:#535559; text-decoration:underline;">Unsubscribe</a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+        </table>
+        <!-- ==================== /EMAIL CONTAINER ==================== -->
+
+        <!-- Tiny legal line below container -->
+        <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" class="container" style="width:600px; max-width:600px;">
+          <tr>
+            <td align="center" style="padding: 14px 12px 4px; font-family:'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif; font-size:11px; line-height:17px; color:#535559;">
+              &copy; 2026 LUCI Systems &middot; The Smarter Platform for Enterprise Multimedia
+            </td>
+          </tr>
+        </table>
+
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>

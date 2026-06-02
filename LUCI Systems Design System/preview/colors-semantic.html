@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #F5F8FA; font-family: 'Space Grotesk', sans-serif; padding: 20px; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; max-width: 660px; }
+.row { display: flex; align-items: center; gap: 12px; padding: 10px 14px; }
+.dot { width: 32px; height: 32px; flex-shrink: 0; border: 1px solid rgba(0,0,0,0.08); }
+.info { display: flex; flex-direction: column; gap: 2px; }
+.role { font-family: 'Syncopate', sans-serif; font-weight: 700; font-size: 9px; text-transform: uppercase; color: #10232D; }
+.desc { font-size: 11px; color: #535559; }
+</style><link rel="stylesheet" href="../colors_and_type.css">
+</head><body>
+<div class="grid">
+  <div class="row" style="background:#10232D">
+    <div class="dot" style="background:#F5F8FA;"></div>
+    <div class="info"><div class="role" style="color:#F5F8FA">bg-dark + fg-on-dark</div><div class="desc" style="color:#ABADB3">Primary dark section</div></div>
+  </div>
+  <div class="row" style="background:#E5E3DF; border: 1px solid #ABADB3;">
+    <div class="dot" style="background:#10232D;"></div>
+    <div class="info"><div class="role">bg-light + fg-on-light</div><div class="desc">Primary light section</div></div>
+  </div>
+  <div class="row" style="background:#E5E3DF; border: 1px solid #ABADB3;">
+    <div class="dot" style="background:#68E3BE;"></div>
+    <div class="info"><div class="role">accent-primary (mint)</div><div class="desc">Interactive, highlights</div></div>
+  </div>
+  <div class="row" style="background:#E5E3DF; border: 1px solid #ABADB3;">
+    <div class="dot" style="background:#FA564C;"></div>
+    <div class="info"><div class="role">accent-red</div><div class="desc">Key headers, attribution</div></div>
+  </div>
+  <div class="row" style="background:#10232D">
+    <div class="dot" style="background:#68E3BE;"></div>
+    <div class="info"><div class="role" style="color:#68E3BE">mint on dark</div><div class="desc" style="color:#ABADB3">Nav accents, borders</div></div>
+  </div>
+  <div class="row" style="background:#314955">
+    <div class="dot" style="background:#F5F8FA;"></div>
+    <div class="info"><div class="role" style="color:#F5F8FA">bg-dark-mid</div><div class="desc" style="color:#A6B0B6">Client logos section</div></div>
+  </div>
+</div>
+</body></html>

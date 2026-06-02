@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUCI Systems — The Modern OS for Multimedia Systems</title>
+<style>
+/* ── RESET & BASE ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background: #E5E3DF;
+  color: #10232D;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── TOKENS ── */
+:root {
+  --pit-boss:   #0A161C;
+  --ctrl-blue:  #10232D;
+  --sport-blue: #314955;
+  --slate:      #49616E;
+  --loan-shark: #A6B0B6;
+  --integrayted:#ABADB3;
+  --unified:    #535559;
+  --sands:      #E5E3DF;
+  --ambient:    #F5F8FA;
+  --mint:       #68E3BE;
+  --mint-dark:  #2b9e80;
+}
+
+/* ── TYPOGRAPHY HELPERS ── */
+.syn { font-family: 'Syncopate', sans-serif; font-weight: 700; text-transform: uppercase; }
+.grotesk { font-family: 'Space Grotesk', sans-serif; }
+
+/* ── ARROW SVG INLINE ── */
+.arrow-lg::after {
+  content: '';
+  display: inline-block;
+  width: 59px; height: 12px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='59' height='12'%3E%3Cline x1='0' y1='6' x2='52' y2='6' stroke='%23F5F8FA' stroke-width='1.5'/%3E%3Cpath d='M52 2L59 6L52 10' stroke='%23F5F8FA' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  margin-left: 12px;
+}
+.arrow-sm::after {
+  content: '';
+  display: inline-block;
+  width: 36px; height: 12px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='12'%3E%3Cline x1='0' y1='6' x2='29' y2='6' stroke='%23F5F8FA' stroke-width='1.5'/%3E%3Cpath d='M29 2L36 6L29 10' stroke='%23F5F8FA' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  margin-left: 12px;
+}
+.arrow-dark::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='12'%3E%3Cline x1='0' y1='6' x2='29' y2='6' stroke='%230A161C' stroke-width='1.5'/%3E%3Cpath d='M29 2L36 6L29 10' stroke='%230A161C' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+}
+.arrow-tert::after {
+  content: '';
+  display: inline-block;
+  width: 80px; height: 12px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='12'%3E%3Cline x1='0' y1='6' x2='73' y2='6' stroke='%230A161C' stroke-width='1.5'/%3E%3Cpath d='M73 2L80 6L73 10' stroke='%230A161C' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  margin-left: 12px;
+}
+
+/* ── CTA BUTTONS ── */
+.btn-primary {
+  display: inline-flex; align-items: center;
+  background: var(--ctrl-blue); color: var(--ambient);
+  font-family: 'Syncopate', sans-serif; font-weight: 700;
+  font-size: 16px; text-transform: uppercase;
+  padding: 20px 20px; border: none; cursor: pointer;
+  text-decoration: none; transition: background 0.2s;
+  white-space: nowrap;
+}
+.btn-primary:hover { background: var(--sport-blue); }
+.btn-primary-sm {
+  display: inline-flex; align-items: center;
+  background: var(--ctrl-blue); color: var(--ambient);
+  font-family: 'Syncopate', sans-serif; font-weight: 700;
+  font-size: 13px; text-transform: uppercase;
+  padding: 12px 16px; border: none; cursor: pointer;
+  text-decoration: none; transition: background 0.2s;
+  white-space: nowrap;
+}
+.btn-primary-sm:hover { background: var(--sport-blue); }
+.btn-secondary {
+  display: inline-flex; align-items: center;
+  background: transparent; color: var(--pit-boss);
+  font-family: 'Syncopate', sans-serif; font-weight: 700;
+  font-size: 16px; text-transform: uppercase;
+  padding: 18px 20px; border: 2px solid var(--pit-boss);
+  cursor: pointer; text-decoration: none; transition: all 0.2s;
+}
+.btn-secondary:hover { background: var(--ctrl-blue); color: var(--ambient); border-color: var(--ctrl-blue); }
+.btn-tertiary {
+  display: inline-flex; align-items: center; gap: 0;
+  background: transparent; color: var(--pit-boss);
+  font-family: 'Syncopate', sans-serif; font-weight: 700;
+  font-size: 16px; text-transform: uppercase;
+  padding: 0; border: none; cursor: pointer;
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  width: 100%; height: 91px;
+  background: var(--sands);
+  border-bottom: 3px solid var(--mint);
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding: 0 64px;
+}
+.nav-logo img { height: 38px; display: block; }
+.nav-right { display: flex; align-items: center; gap: 36px; }
+
+/* ── HERO ── */
+.hero {
+  background: var(--ctrl-blue);
+  padding: 64px 174px 90px;
+  border-bottom: 1px solid var(--ctrl-blue);
+  position: relative;
+  overflow: hidden;
+  min-height: 420px;
+}
+.hero-noise {
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 400px 400px;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+.hero-headline {
+  font-family: 'Syncopate', sans-serif; font-weight: 700;
+  font-size: 55px; line-height: 1.0; text-transform: uppercase;
+  color: var(--sands); max-width: 800px; margin-bottom: 28px;
+}
+.hero-sub {
+  font-family: 'Syncopate', sans-serif; font-weight: 700;
+  font-size: 16px; line-height: 21px; text-transform: uppercase;
+  color: var(--sands); max-width: 500px; margin-bottom: 56px;
+}
+
+/* ── WHAT WE DO ── */
+.section-what {
+  background: var(--sands);
+  border-bottom: 1px solid var(--ctrl-blue);
+  padding: 64px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+}
+.section-header-row {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 24px;
+}
+.section-header-row .logomark { width: 38px; height: 33px; }
+.section-header-row .rule { flex: 1; height: 1px; background: var(--ctrl-blue); }
+.section-title {
+  font-family: 'Syncopate', sans-serif; font-weight: 700;
+  font-size: 36px; text-transform: uppercase; color: var(--mint);
+  white-space: nowrap;
+}
+.what-body {
+  font-family: 'Space Grotesk', sans-serif; font-size: 18px;
+  line-height: 27px; color: var(--ctrl-blue);
+  padding-left: 54px;
+}
+.accordion { display: flex; flex-direction: column; gap: 36px; padding-top: 8px; }
+.accordion-item {
+  display: flex; flex-direction: column; gap: 0;
+  border-bottom: 1px solid var(--ctrl-blue);
+  padding-bottom: 36px;
+}
+.accordion-item:last-child { border-bottom: none; padding-bottom: 0; }
+.accordion-label {
+  display: inline-flex; align-items: center; gap: 0;
+  font-family: 'Syncopate', sans-serif; font-weight: 700;
+  font-size: 16px; text-transform: uppercase; color: var(--pit-boss);
+  cursor: pointer; background: none; border: none;
+}
+
+/* ── BENEFITS ── */
+.benefits {
+  background: var(--sands);
+  border-bottom: 1px solid var(--ctrl-blue);
+  display: grid; grid-template-columns: repeat(3, 1fr);
+}
+.benefit-card {
+  padding: 64px 48px;
+  border-right: 1px solid var(--ctrl-blue);
+}
+.benefit-card:last-child { border-right: none; }
+.benefit-title {
+  font-family: 'Syncopate', sans-serif; font-weight: 700;
+  font-size: 36px; line-height: 1.1; text-transform: uppercase;
+  color: var(--mint); margin-bottom: 24px;
+}
+.benefit-body {
+  font-family: 'Space Grotesk', sans-serif; font-size: 16px;
+  line-height: 25px; color: var(--ctrl-blue);
+}
+
+/* ── PRODUCT OVERVIEW ── */
+.product-overview {
+  background: var(--sands);
+  border-bottom: 1px solid var(--ctrl-blue);
+  padding: 0;
+}
+.product-overview-header {
+  padding: 64px 64px 48px;
+  text-align: center;
+}
+.product-overview-header h2 {
+  font-family: 'Syncopate', sans-serif; font-weight: 700;
+  font-size: 36px; line-height: 44px; text-transform: uppercase;
+  color: var(--ctrl-blue);
+}
+.product-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--integrayted);
+}
+.product-cell {
+  padding: 48px 40px 64px;
+  border-right: 1px solid var(--integrayted);
+  border-bottom: 1px solid var(--integrayted);
+  display: flex; flex-direction: column; align-items: center; gap: 32px;
+}
+.product-cell:nth-child(3n) { border-right: none; }
+.product-cell:nth-child(n+4) { border-bottom: none; }
+.product-cell-label {
+  font-family: 'Space Grotesk', sans-serif; font-size: 16px;
+  line-height: 21px; color: var(--ctrl-blue); text-align: center;
+}
+/* UI mockup illustrations */
+.ui-mockup {
+  width: 100%; max-width: 220px; height: 140px;
+  border: 2px solid var(--ctrl-blue); background: var(--ambient);
+  position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.ui-mockup-inner { width: 90%; height: 90%; position: relative; }
+
+/* ── TESTIMONIALS ── */
+.testimonials {
+  border-bottom: 1px solid var(--ctrl-blue);
+  display: grid; grid-template-columns: 1fr 340px;
+  height: 560px; position: relative;
+}
+.testimonials-photo {
+  background: var(--sport-blue);
+  position: relative; overflow: hidden;
+}
+.testimonials-photo-fill {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, #314955 0%, #10232D 100%);
+  display: flex; align-items: center; justify-content: center;
+}
+.testimonials-photo-fill .placeholder-text {
+  font-family: 'Syncopate', sans-serif; font-weight: 700;
+  font-size: 11px; text-transform: uppercase; color: rgba(245,248,250,0.25);
+  letter-spacing: 0.2em;
+}
+.testimonials-sidebar {
+  background: var(--sport-blue);
+  border-left: 1px solid var(--sands);
+  position: relative; overflow: hidden;
+}
+.dot-grid {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(245,248,250,0.4) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.5;
+}
+.quote-card {
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-65%, -50%);
+  width: 520px;
+  border-radius: 4px;
+  background: rgba(245,248,250,0.82);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 0 0 20px rgba(36,34,38,0.7);
+  padding: 48px 40px 40px;
+}
+.quote-text {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 500;
+  font-size: 17px; line-height: 27px; color: var(--ctrl-blue);
+  text-align: center; margin-bottom: 24px;
+}
+.quote-attrib {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+  font-size: 16px; line-height: 24px; color: var(--mint-dark);
+  text-align: center;
+}
+.quote-dots {
+  display: flex; gap: 10px; justify-content: center; margin-top: 24px;
+}
+.quote-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ctrl-blue); opacity: 0.2; }
+.quote-dot.active { opacity: 1; }
+
+/* ── FOUNDER STORY ── */
+.founders {
+  background: var(--sands);
+  border-bottom: 1px solid var(--ctrl-blue);
+  padding: 64px;
+  position: relative; overflow: hidden;
+}
+.founders-header { text-align: center; margin-bottom: 64px; }
+.founders-header h2 {
+  font-family: 'Syncopate', sans-serif; font-weight: 700;
+  font-size: 56px; line-height: 1.0; text-transform: uppercase; color: var(--mint);
+  margin-bottom: 16px;
+}
+.founders-header h3 {
+  font-family: 'Syncopate', sans-serif; font-weight: 700;
+  font-size: 26px; line-height: 1.1; text-transform: uppercase; color: var(--ctrl-blue);
+}
+.founders-layout {
+  display: grid; grid-template-columns: 1fr 340px;
+  gap: 64px; align-items: start;
+}
+.founders-body-card {
+  border-radius: 4px;
+  background: rgba(245,248,250,0.65);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 0 0 20px rgba(36,34,38,0.2);
+  padding: 40px;
+}
+.founders-body-card p {
+  font-family: 'Space Grotesk', sans-serif; font-size: 18px;
+  line-height: 27px; color: var(--ctrl-blue);
+}
+.founders-cards { display: flex; flex-direction: column; gap: 24px; }
+.person-card {
+  border: 1.5px solid var(--ctrl-blue);
+  background: var(--sands);
+  display: flex; overflow: hidden;
+}
+.person-photo {
+  width: 100px; height: 110px; flex-shrink: 0;
+  background: var(--integrayted);
+  border-right: 1.5px solid var(--ctrl-blue);
+}
+.person-info { padding: 20px 24px; }
+.person-name {
+  font-family: 'Syncopate', sans-serif; font-weight: 700;
+  font-size: 20px; line-height: 1.3; text-transform: uppercase; color: var(--pit-boss);
+  margin-bottom: 4px;
+}
+.person-title {
+  font-family: 'Space Grotesk', sans-serif; font-size: 16px; color: var(--mint-dark, #2b9e80);
+}
+
+/* ── CLIENT LOGOS ── */
+.client-logos {
+  background: var(--slate);
+  border-bottom: 1.5px solid var(--ctrl-blue);
+  padding: 80px 64px;
+}
+.client-logos h2 {
+  font-family: 'Syncopate', sans-serif; font-weight: 700;
+  font-size: 24px; line-height: 32px; text-transform: uppercase;
+  color: var(--ambient); text-align: center; margin-bottom: 64px;
+}
+.logos-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.logo-cell {
+  border: 1px solid rgba(245,248,250,0.15);
+  background: rgba(245,248,250,0.06);
+  padding: 28px 20px;
+  display: flex; align-items: center; justify-content: center;
+}
+.logo-cell span {
+  font-family: 'Syncopate', sans-serif; font-weight: 700;
+  font-size: 10px; text-transform: uppercase; color: rgba(245,248,250,0.6);
+  text-align: center; letter-spacing: 0.08em; line-height: 1.5;
+}
+
+/* ── STATS ── */
+.stats {
+  border-bottom: 1px solid var(--ctrl-blue);
+  background: var(--ambient);
+}
+.stats-header {
+  padding: 64px 64px 0;
+  border-bottom: 1px solid var(--ctrl-blue);
+}
+.stats-header h2 {
+  font-family: 'Syncopate', sans-serif; font-weight: 700;
+  font-size: 24px; line-height: 32px; text-transform: uppercase;
+  color: var(--ctrl-blue); margin-bottom: 64px;
+}
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+.stat-cell {
+  padding: 64px 48px;
+  border-right: 1px solid var(--ctrl-blue);
+  border-bottom: 1px solid var(--ctrl-blue);
+  text-align: center;
+}
+.stat-cell:nth-child(3n) { border-right: none; }
+.stat-sup {
+  font-family: 'Syncopate', sans-serif; font-weight: 700;
+  font-size: 14px; text-transform: uppercase; color: var(--ctrl-blue);
+  display: block; margin-bottom: 8px;
+}
+.stat-num {
+  font-family: 'Syncopate', sans-serif; font-weight: 700;
+  font-size: 80px; line-height: 1; text-transform: uppercase; color: var(--mint-dark);
+  display: block; margin-bottom: 12px;
+}
+.stat-label {
+  font-family: 'Space Grotesk', sans-serif; font-size: 18px;
+  line-height: 27px; color: var(--ctrl-blue);
+}
+
+/* ── CREATING / CTA SECTION ── */
+.cta-section {
+  background: var(--ctrl-blue);
+  border-bottom: 1px solid var(--ctrl-blue);
+  padding: 96px 128px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.cta-noise {
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+  background-repeat: repeat; background-size: 400px;
+  mix-blend-mode: overlay; pointer-events: none;
+}
+.cta-section h2 {
+  font-family: 'Syncopate', sans-serif; font-weight: 700;
+  font-size: 48px; line-height: 1.1; text-transform: uppercase;
+  color: var(--sands); margin-bottom: 16px; position: relative;
+}
+.cta-section p {
+  font-family: 'Space Grotesk', sans-serif; font-size: 18px;
+  line-height: 27px; color: var(--integrayted);
+  margin-bottom: 48px; position: relative;
+}
+.cta-section-btns { display: flex; gap: 24px; justify-content: center; position: relative; }
+.btn-primary-inv {
+  display: inline-flex; align-items: center;
+  background: var(--sands); color: var(--ctrl-blue);
+  font-family: 'Syncopate', sans-serif; font-weight: 700;
+  font-size: 14px; text-transform: uppercase;
+  padding: 18px 24px; border: none; cursor: pointer;
+  text-decoration: none; transition: background 0.2s;
+}
+.btn-primary-inv:hover { background: var(--ambient); }
+.btn-outline-inv {
+  display: inline-flex; align-items: center;
+  background: transparent; color: var(--sands);
+  font-family: 'Syncopate', sans-serif; font-weight: 700;
+  font-size: 14px; text-transform: uppercase;
+  padding: 16px 24px; border: 2px solid var(--sands);
+  cursor: pointer; text-decoration: none; transition: all 0.2s;
+}
+.btn-outline-inv:hover { background: rgba(245,248,250,0.1); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--pit-boss);
+  padding: 64px;
+  border-top: 1px solid var(--sport-blue);
+}
+.footer-inner {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 48px; margin-bottom: 48px;
+}
+.footer-col h4 {
+  font-family: 'Syncopate', sans-serif; font-weight: 700;
+  font-size: 12px; text-transform: uppercase; color: var(--mint);
+  margin-bottom: 16px; letter-spacing: 0.05em;
+}
+.footer-col p, .footer-col a {
+  font-family: 'Space Grotesk', sans-serif; font-size: 14px;
+  line-height: 22px; color: var(--loan-shark); display: block;
+  text-decoration: none;
+}
+.footer-col a:hover { color: var(--ambient); }
+.footer-bottom {
+  border-top: 1px solid var(--sport-blue);
+  padding-top: 32px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-bottom .logo img { height: 26px; opacity: 0.7; }
+.footer-bottom .copy {
+  font-family: 'Space Grotesk', sans-serif; font-size: 12px; color: var(--unified);
+}
+
+/* ── TWEAKS PANEL (design system note) ── */
+</style>
+<link rel="stylesheet" href="../../colors_and_type.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div style="width:100px;"></div>
+  <a class="nav-logo" href="#">
+    <img src="../../assets/logos/luci-full-black.png" alt="LUCI Systems">
+  </a>
+  <div class="nav-right">
+    <a class="btn-primary-sm arrow-sm" href="#contact">REQUEST A DEMO</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-noise"></div>
+  <p class="hero-headline">the modern os for<br>MULTIMEDIA systems</p>
+  <p class="hero-sub">Powering Immersive Guest Experiences<br>with One-touch simplicity</p>
+  <a class="btn-primary arrow-sm" href="#what-we-do">LEARN ABOUT LUCI</a>
+</section>
+
+<!-- WHAT WE DO -->
+<section class="section-what" id="what-we-do">
+  <div>
+    <div class="section-header-row">
+      <img src="../../assets/LUCI-logo.svg" class="logomark" alt="">
+      <span class="section-title">what we do</span>
+      <div class="rule"></div>
+    </div>
+    <p class="what-body">Our software powers unforgettable multimedia experiences.<br><br>
+    We design, implement, and support ambient environments and allow guest-facing staff to control those environments with unprecedented ease.</p>
+  </div>
+  <div>
+    <div class="accordion">
+      <div class="accordion-item">
+        <button class="btn-tertiary accordion-label">PARTNERSHIP<span class="arrow-tert"></span></button>
+      </div>
+      <div class="accordion-item">
+        <button class="btn-tertiary accordion-label">SOFTWARE<span class="arrow-tert"></span></button>
+      </div>
+      <div class="accordion-item">
+        <button class="btn-tertiary accordion-label">HARDWARE<span class="arrow-tert"></span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits">
+  <div class="benefit-card">
+    <div class="benefit-title">infinitely<br>customizable</div>
+    <p class="benefit-body">Build fully-customizable multimedia environments tailored to your venue's exact operational needs. Every zone, every input, every permission — yours to configure.</p>
+  </div>
+  <div class="benefit-card">
+    <div class="benefit-title">indefinitely<br>scalable</div>
+    <p class="benefit-body">Connect an unlimited number of media inputs while reducing operator complexity and rack space. Future-proof your facility in a rapidly changing media ecosystem.</p>
+  </div>
+  <div class="benefit-card">
+    <div class="benefit-title">incredibly<br>simple</div>
+    <p class="benefit-body">Execute from any mobile device with drag-and-drop ease, unlimited user IDs, and fully-customizable permissions. No more running to the server room.</p>
+  </div>
+</section>
+
+<!-- PRODUCT OVERVIEW -->
+<section class="product-overview" id="product">
+  <div class="product-overview-header">
+    <h2>The operating solution for<br>enterprise media systems</h2>
+  </div>
+  <div class="product-grid">
+    <div class="product-cell">
+      <div class="ui-mockup">
+        <div class="ui-mockup-inner">
+          <!-- Tablet schedule preset mockup -->
+          <div style="position:absolute;inset:0;background:#F5F8FA;border:1.5px solid #10232D;">
+            <div style="position:absolute;top:8px;left:8px;right:8px;height:14px;background:#E5E3DF;border:1px solid #10232D;font-family:'Space Grotesk',sans-serif;font-size:8px;color:#68E3BE;padding:2px 4px;">Return sportsbook TVs to ESPN at 3am</div>
+            <div style="position:absolute;top:28px;left:8px;bottom:8px;width:30%;background:#E5E3DF;border:1px solid #10232D;"></div>
+            <div style="position:absolute;top:28px;left:calc(30% + 12px);bottom:8px;right:8px;">
+              <div style="height:12px;background:#68E3BE;border:1px solid #10232D;margin-bottom:2px;"></div>
+              <div style="height:12px;background:#68E3BE;border:1px solid #10232D;margin-bottom:2px;opacity:0.6;"></div>
+              <div style="height:12px;background:#68E3BE;border:1px solid #10232D;margin-bottom:2px;opacity:0.5;"></div>
+              <div style="height:12px;background:#68E3BE;border:1px solid #10232D;margin-bottom:2px;opacity:0.7;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="product-cell-label">Program content presets to set and forget</p>
+    </div>
+    <div class="product-cell">
+      <div class="ui-mockup">
+        <div class="ui-mockup-inner">
+          <!-- Drag-and-drop floorplan mockup -->
+          <div style="position:absolute;inset:0;background:#F5F8FA;border:1.5px solid #10232D;display:flex;align-items:center;justify-content:space-around;padding:8px;">
+            <div style="width:45%;height:90%;border:1px solid #10232D;opacity:0.5;position:relative;">
+              <div style="position:absolute;bottom:8px;right:8px;width:20px;height:14px;background:#68E3BE;border:1px solid #10232D;"></div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;align-items:center;">
+              <svg width="24" height="10" viewBox="0 0 24 10"><line x1="0" y1="5" x2="20" y2="5" stroke="#68E3BE" stroke-width="2" stroke-dasharray="3,2"/><path d="M18 2L23 5L18 8" stroke="#68E3BE" stroke-width="2" fill="none"/></svg>
+            </div>
+            <div style="width:40%;height:75%;border:1px solid #10232D;opacity:0.5;position:relative;">
+              <div style="position:absolute;bottom:6px;right:6px;width:16px;height:11px;background:#68E3BE;border:1px solid #10232D;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="product-cell-label">Change display locations with drag and drop simplicity</p>
+    </div>
+    <div class="product-cell">
+      <div class="ui-mockup">
+        <div class="ui-mockup-inner">
+          <!-- User permissions mockup -->
+          <div style="position:absolute;inset:0;background:#F5F8FA;border:1.5px solid #10232D;padding:8px;display:flex;flex-direction:column;gap:4px;">
+            <div style="display:flex;align-items:center;gap:8px;padding:6px;border:1px solid #10232D;">
+              <div style="width:16px;height:16px;border-radius:50%;background:#ABADB3;flex-shrink:0;"></div>
+              <div style="flex:1;"><div style="font-size:8px;font-family:'Space Grotesk',sans-serif;font-weight:700;color:#10232D;">Mike E.</div><div style="font-size:7px;font-family:'Space Grotesk',sans-serif;color:#2b9e80;">GLOBAL ACCESS</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;padding:6px;border:1px solid #10232D;">
+              <div style="width:16px;height:16px;border-radius:50%;background:#ABADB3;flex-shrink:0;"></div>
+              <div style="flex:1;"><div style="font-size:8px;font-family:'Space Grotesk',sans-serif;font-weight:700;color:#10232D;">Nick J.</div><div style="font-size:7px;font-family:'Space Grotesk',sans-serif;color:#49616E;">Taproom Patio</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;padding:6px;border:1px solid #10232D;">
+              <div style="width:16px;height:16px;border-radius:50%;background:#ABADB3;flex-shrink:0;"></div>
+              <div style="flex:1;"><div style="font-size:8px;font-family:'Space Grotesk',sans-serif;font-weight:700;color:#10232D;">Annie D.</div><div style="font-size:7px;font-family:'Space Grotesk',sans-serif;color:#49616E;">Table Games, Zone 13</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="product-cell-label">Add unlimited users with customizable controls access</p>
+    </div>
+    <div class="product-cell">
+      <div class="ui-mockup">
+        <div class="ui-mockup-inner">
+          <div style="position:absolute;inset:0;background:#10232D;border:1.5px solid #10232D;padding:10px;display:flex;flex-direction:column;gap:6px;justify-content:center;">
+            <div style="display:flex;align-items:center;gap:6px;">
+              <div style="width:18px;height:12px;background:#68E3BE;border:1px solid #68E3BE;flex-shrink:0;"></div>
+              <div style="font-size:8px;font-family:'Space Grotesk',sans-serif;color:#F5F8FA;">Main Bar — ESPN</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;">
+              <div style="width:18px;height:12px;background:#68E3BE;border:1px solid #68E3BE;flex-shrink:0;"></div>
+              <div style="font-size:8px;font-family:'Space Grotesk',sans-serif;color:#F5F8FA;">Audio Zone 3 — Jazz</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;">
+              <div style="width:18px;height:12px;background:#68E3BE;border:1px solid #68E3BE;flex-shrink:0;opacity:0.6;"></div>
+              <div style="font-size:8px;font-family:'Space Grotesk',sans-serif;color:#F5F8FA;">Lobby — Ambient Mix</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="product-cell-label">Manage every zone from one unified dashboard</p>
+    </div>
+    <div class="product-cell">
+      <div class="ui-mockup">
+        <div class="ui-mockup-inner">
+          <div style="position:absolute;inset:0;background:#F5F8FA;border:1.5px solid #10232D;display:flex;align-items:center;justify-content:center;">
+            <div style="text-align:center;">
+              <div style="font-family:'Syncopate',sans-serif;font-weight:700;font-size:28px;color:#2b9e80;line-height:1;">90%</div>
+              <div style="font-family:'Space Grotesk',sans-serif;font-size:9px;color:#10232D;margin-top:4px;">Hardware reduction</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="product-cell-label">Reduce hardware footprint by up to 90%</p>
+    </div>
+    <div class="product-cell">
+      <div class="ui-mockup">
+        <div class="ui-mockup-inner">
+          <div style="position:absolute;inset:0;background:#F5F8FA;border:1.5px solid #10232D;display:flex;flex-direction:column;padding:8px;gap:6px;justify-content:center;">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:8px;color:#49616E;">Deploy in as little as:</div>
+            <div style="font-family:'Syncopate',sans-serif;font-weight:700;font-size:20px;color:#10232D;line-height:1;">48h</div>
+            <div style="width:100%;height:4px;background:#68E3BE;"></div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:7px;color:#49616E;">vs. weeks for legacy systems</div>
+          </div>
+        </div>
+      </div>
+      <p class="product-cell-label">Deploy faster than any legacy AV system</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="testimonials-photo">
+    <div class="testimonials-photo-fill">
+      <span class="placeholder-text">Venue Photography</span>
+    </div>
+  </div>
+  <div class="testimonials-sidebar">
+    <div class="dot-grid"></div>
+  </div>
+  <div class="quote-card">
+    <p class="quote-text">"I truly appreciate the operational and technical expertise that Mike Epstein and LUCI Systems brought to us for our new Tulsa property.<br><br>We were so impressed with LUCI's work that we have decided to push LUCI across our entire brand of casinos."</p>
+    <div class="quote-attrib" style="color:var(--mint-dark);">Joe Roybal<br>CIO, Osage Casino</div>
+    <div class="quote-dots">
+      <div class="quote-dot active"></div>
+      <div class="quote-dot"></div>
+      <div class="quote-dot"></div>
+      <div class="quote-dot"></div>
+      <div class="quote-dot"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDERS -->
+<section class="founders" id="about">
+  <div class="founders-header">
+    <h2>YOUR MULTIMEDIA<br>THOUGHT PARTNERS</h2>
+    <h3>Scalable strategy and support to dazzle guests<br>and optimize operations</h3>
+  </div>
+  <div class="founders-layout">
+    <div class="founders-body-card">
+      <p>Over the past 25 years as integrators, owners, and operators, our team has encountered every conceivable type of commercial multimedia system. We've grown frustrated with custom systems that are slow to deploy, complex to maintain, and too rigid to scale or improve.</p>
+      <br>
+      <p>Scalability begins with long-term thinking, so we take the time to align perspectives and deeply understand your operational challenges and future roadmap. From this foundation, we work with you to strategize, implement, and support scalable, dynamic multimedia environments and optimize their operation.</p>
+    </div>
+    <div class="founders-cards">
+      <div class="person-card">
+        <div class="person-photo"></div>
+        <div class="person-info">
+          <div class="person-name">Mike<br>Epstein</div>
+          <div class="person-title" style="color:var(--mint-dark);">Founder and CEO</div>
+        </div>
+      </div>
+      <div class="person-card">
+        <div class="person-photo"></div>
+        <div class="person-info">
+          <div class="person-name">Nickolas<br>Jensen</div>
+          <div class="person-title" style="color:var(--mint-dark);">Founder and CIO</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENT LOGOS -->
+<section class="client-logos">
+  <h2>Trusted by Four-Star Destinations</h2>
+  <div class="logos-grid">
+    <div class="logo-cell"><span>Seneca Niagara<br>Resort & Casino</span></div>
+    <div class="logo-cell"><span>Spirit Mountain<br>Casino</span></div>
+    <div class="logo-cell"><span>Stanly Ranch</span></div>
+    <div class="logo-cell"><span>Choctaw Casinos<br>& Resort</span></div>
+    <div class="logo-cell"><span>Isleta Resort<br>& Casino</span></div>
+    <div class="logo-cell"><span>Valley View<br>Casino & Hotel</span></div>
+    <div class="logo-cell"><span>Yamava Resort<br>& Casino</span></div>
+    <div class="logo-cell"><span>Osage Casino</span></div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-header">
+    <h2>Quantified Impact</h2>
+  </div>
+  <div class="stats-grid">
+    <div class="stat-cell">
+      <span class="stat-sup">up to</span>
+      <span class="stat-num">90%</span>
+      <span class="stat-label">Reduction in hardware</span>
+    </div>
+    <div class="stat-cell">
+      <span class="stat-sup">over</span>
+      <span class="stat-num">25yr</span>
+      <span class="stat-label">Industry expertise</span>
+    </div>
+    <div class="stat-cell">
+      <span class="stat-sup">across</span>
+      <span class="stat-num">∞</span>
+      <span class="stat-label">Scalable media inputs</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta-section" id="contact">
+  <div class="cta-noise"></div>
+  <h2>CREATING THE FUTURE<br>OF VENUE MEDIA</h2>
+  <p>Ready to transform your multimedia operations?<br>Let's build something unforgettable together.</p>
+  <div class="cta-section-btns">
+    <a class="btn-primary-inv" href="#">REQUEST A DEMO
+      <svg style="margin-left:12px;" width="36" height="12" viewBox="0 0 36 12" fill="none"><line x1="0" y1="6" x2="29" y2="6" stroke="#10232D" stroke-width="1.5"/><path d="M29 2L36 6L29 10" stroke="#10232D" stroke-width="1.5" fill="none"/></svg>
+    </a>
+    <a class="btn-outline-inv" href="#">LEARN MORE
+      <svg style="margin-left:12px;" width="36" height="12" viewBox="0 0 36 12" fill="none"><line x1="0" y1="6" x2="29" y2="6" stroke="#E5E3DF" stroke-width="1.5"/><path d="M29 2L36 6L29 10" stroke="#E5E3DF" stroke-width="1.5" fill="none"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>LUCI Systems</h4>
+      <p>The Smarter Platform for Enterprise Multimedia. Powering immersive guest experiences.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Solutions</h4>
+      <a href="#">Partnership</a>
+      <a href="#">Software</a>
+      <a href="#">Hardware</a>
+      <a href="#">Request a Demo</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="#">lucisystems.com</a>
+      <a href="#">hello@lucisystems.com</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="logo"><img src="../../assets/logos/luci-full-white.png" alt="LUCI Systems"></div>
+    <div class="copy">© 2025 LUCI Systems. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

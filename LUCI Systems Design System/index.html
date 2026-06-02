@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUCI Systems — Design System Hub</title>
+  <link rel="stylesheet" href="colors_and_type.css">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; overflow: hidden; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-dark);
+      color: var(--fg-on-dark);
+      display: flex;
+    }
+
+    .hub-nav {
+      width: 280px;
+      min-width: 280px;
+      height: 100vh;
+      background: var(--color-pit-boss-blue);
+      border-right: var(--border-dark);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+      flex-shrink: 0;
+      transition: width 0.22s ease, min-width 0.22s ease;
+    }
+
+    .hub-nav.is-collapsed {
+      width: 52px;
+      min-width: 52px;
+    }
+
+    .hub-nav__toggle {
+      position: absolute;
+      top: 14px;
+      right: 8px;
+      z-index: 2;
+      width: 36px;
+      height: 36px;
+      padding: 0;
+      border: 1px solid var(--color-controlled-blue);
+      background: var(--color-controlled-blue);
+      color: var(--color-high-limit-mint);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .hub-nav.is-collapsed .hub-nav__toggle {
+      right: 50%;
+      transform: translateX(50%);
+      top: 16px;
+    }
+
+    .hub-nav__toggle:hover {
+      background: rgba(104, 227, 190, 0.12);
+      border-color: var(--color-high-limit-mint);
+    }
+
+    .hub-nav__toggle-icon {
+      display: block;
+      width: 8px;
+      height: 8px;
+      border-right: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      transform: rotate(135deg);
+      margin-left: 3px;
+      transition: transform 0.22s ease;
+    }
+
+    .hub-nav.is-collapsed .hub-nav__toggle-icon {
+      transform: rotate(-45deg);
+      margin-left: -3px;
+    }
+
+    .hub-nav__collapsible {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+      opacity: 1;
+      transition: opacity 0.15s ease;
+    }
+
+    .hub-nav.is-collapsed .hub-nav__collapsible {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .hub-nav__rail {
+      display: none;
+      flex: 1;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      transform: rotate(180deg);
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-5) 0;
+      font-family: var(--font-display);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-loan-shark);
+      user-select: none;
+    }
+
+    .hub-nav.is-collapsed .hub-nav__rail {
+      display: flex;
+    }
+
+    .hub-nav__brand {
+      padding: var(--space-5) calc(var(--space-4) + 40px) var(--space-5) var(--space-4);
+      border-bottom: 1px solid var(--color-controlled-blue);
+      flex-shrink: 0;
+    }
+
+    .hub-nav__brand .mark {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-high-limit-mint);
+      margin-bottom: var(--space-2);
+    }
+
+    .hub-nav__brand h1 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 1.35;
+      text-transform: uppercase;
+      color: var(--fg-on-dark);
+    }
+
+    .hub-nav__scroll {
+      flex: 1;
+      overflow-y: auto;
+      padding: var(--space-3) 0 var(--space-6);
+    }
+
+    .hub-nav__link {
+      display: block;
+      width: 100%;
+      text-align: left;
+      border: none;
+      background: transparent;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--color-loan-shark);
+      padding: 10px var(--space-4);
+      cursor: pointer;
+      border-left: 3px solid transparent;
+      transition: color 0.15s, background 0.15s, border-color 0.15s;
+    }
+
+    .hub-nav__link:hover {
+      color: var(--fg-on-dark);
+      background: rgba(104, 227, 190, 0.06);
+    }
+
+    .hub-nav__link.is-active {
+      color: var(--color-high-limit-mint);
+      background: rgba(104, 227, 190, 0.1);
+      border-left-color: var(--color-high-limit-mint);
+    }
+
+    .hub-nav__link--overview { margin-bottom: var(--space-2); }
+
+    /* Accordion */
+    .hub-accordion { border-bottom: 1px solid rgba(16, 35, 45, 0.6); }
+
+    .hub-accordion__trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 12px var(--space-4);
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      text-align: left;
+      gap: var(--space-3);
+    }
+
+    .hub-accordion__trigger:hover { background: rgba(104, 227, 190, 0.04); }
+
+    .hub-accordion__label {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-loan-shark);
+    }
+
+    .hub-accordion__count {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--color-immersive-slate);
+      margin-left: auto;
+      margin-right: 6px;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
+    .hub-accordion__chevron {
+      flex-shrink: 0;
+      width: 8px;
+      height: 8px;
+      border-right: 2px solid var(--color-loan-shark);
+      border-bottom: 2px solid var(--color-loan-shark);
+      transform: rotate(-45deg);
+      transition: transform 0.2s, border-color 0.15s;
+      margin-top: -2px;
+    }
+
+    .hub-accordion.is-open .hub-accordion__chevron {
+      transform: rotate(45deg);
+      margin-top: 2px;
+      border-color: var(--color-high-limit-mint);
+    }
+
+    .hub-accordion.is-open .hub-accordion__label { color: var(--fg-on-dark); }
+
+    .hub-accordion__panel {
+      display: none;
+      padding-bottom: var(--space-2);
+    }
+
+    .hub-accordion.is-open .hub-accordion__panel { display: block; }
+
+    .hub-accordion__panel .hub-nav__link {
+      font-size: 10px;
+      padding: 8px var(--space-4) 8px calc(var(--space-4) + 6px);
+      letter-spacing: 0.03em;
+    }
+
+    .hub-nav__footer {
+      padding: var(--space-4);
+      border-top: 1px solid var(--color-controlled-blue);
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--color-loan-shark);
+      flex-shrink: 0;
+    }
+
+    .hub-nav__footer a {
+      color: var(--color-high-limit-mint);
+      text-decoration: none;
+    }
+
+    .hub-nav__footer a:hover { text-decoration: underline; }
+
+    .hub-main {
+      flex: 1;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg-light);
+      min-width: 0;
+    }
+
+    .hub-toolbar {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      padding: var(--space-3) var(--space-5);
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--color-integrayted);
+    }
+
+    .hub-toolbar__title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 12px;
+      text-transform: uppercase;
+      color: var(--fg-on-light);
+      letter-spacing: 0.06em;
+    }
+
+    .hub-toolbar__path {
+      font-size: 12px;
+      color: var(--fg-subdued);
+      font-family: monospace;
+    }
+
+    .hub-toolbar__open {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent-primary-dark);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .hub-toolbar__open:hover { text-decoration: underline; }
+
+    .hub-stage {
+      flex: 1;
+      position: relative;
+      min-height: 0;
+    }
+
+    .hub-stage iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: var(--bg-surface);
+    }
+
+    .hub-overview {
+      position: absolute;
+      inset: 0;
+      overflow-y: auto;
+      padding: var(--space-7) var(--space-8) var(--space-8);
+      display: none;
+    }
+
+    .hub-overview.is-visible { display: block; }
+
+    .hub-overview .luci-h2 {
+      color: var(--fg-on-light);
+      margin-bottom: var(--space-3);
+    }
+
+    .hub-overview__lede {
+      font-size: var(--text-body-md-size);
+      line-height: var(--text-body-md-lh);
+      color: var(--fg-subdued);
+      max-width: 40rem;
+      margin-bottom: var(--space-7);
+    }
+
+    .hub-overview__section {
+      margin-bottom: var(--space-7);
+    }
+
+    .hub-overview__heading {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--fg-on-light);
+      margin-bottom: var(--space-4);
+      padding-bottom: var(--space-3);
+      border-bottom: 1px solid var(--color-integrayted);
+    }
+
+    .hub-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: var(--space-4);
+    }
+
+    .hub-card {
+      background: rgba(245, 248, 250, 0.9);
+      border: 1px solid var(--color-integrayted);
+      padding: var(--space-4);
+      cursor: pointer;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      text-align: left;
+    }
+
+    .hub-card:hover {
+      border-color: var(--color-high-limit-mint);
+      box-shadow: 0 4px 16px rgba(16, 35, 45, 0.08);
+    }
+
+    .hub-card__label {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 11px;
+      text-transform: uppercase;
+      color: var(--fg-on-light);
+      margin-bottom: var(--space-2);
+    }
+
+    .hub-card__desc {
+      font-size: 13px;
+      color: var(--fg-subdued);
+      line-height: 1.45;
+    }
+
+    .hub-overview__footnote {
+      font-size: 13px;
+      color: var(--fg-subdued);
+      margin-top: var(--space-6);
+      padding-top: var(--space-5);
+      border-top: 1px solid var(--color-integrayted);
+    }
+
+    .hub-overview__footnote strong {
+      font-weight: 600;
+      color: var(--fg-on-light);
+    }
+
+    .hub-preview-fallback {
+      position: absolute;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-8);
+      background: var(--bg-surface);
+      text-align: center;
+    }
+
+    .hub-preview-fallback.is-visible { display: flex; }
+
+    .hub-preview-fallback p {
+      max-width: 32rem;
+      font-size: var(--text-body-md-size);
+      line-height: var(--text-body-md-lh);
+      color: var(--fg-subdued);
+    }
+
+    .hub-preview-fallback a {
+      display: inline-block;
+      margin-top: var(--space-4);
+      font-weight: 600;
+      color: var(--fg-on-light);
+      text-decoration: underline;
+    }
+
+    .hub-preview-fallback code {
+      font-size: 12px;
+      word-break: break-all;
+    }
+  </style>
+</head>
+<body>
+  <nav class="hub-nav" id="hub-nav" aria-label="Preview hub navigation">
+    <button type="button" class="hub-nav__toggle" id="hub-nav-toggle" aria-expanded="true" aria-label="Collapse navigation" title="Collapse navigation">
+      <span class="hub-nav__toggle-icon" aria-hidden="true"></span>
+    </button>
+    <div class="hub-nav__collapsible">
+      <div class="hub-nav__brand">
+        <div class="mark">LUCI Systems</div>
+        <h1>Preview Hub</h1>
+      </div>
+      <div class="hub-nav__scroll" id="hub-nav-mount"></div>
+      <div class="hub-nav__footer">
+        <a href="README.md" target="_blank" rel="noopener">README</a> · tokens in <code>colors_and_type.css</code>
+      </div>
+    </div>
+    <div class="hub-nav__rail" aria-hidden="true">Navigation</div>
+  </nav>
+
+  <main class="hub-main">
+    <header class="hub-toolbar">
+      <span class="hub-toolbar__title" id="hub-title">Overview</span>
+      <span class="hub-toolbar__path" id="hub-path">—</span>
+      <a class="hub-toolbar__open" id="hub-open" href="#" target="_blank" rel="noopener" hidden>Open in tab</a>
+    </header>
+    <div class="hub-stage">
+      <section class="hub-overview is-visible" id="hub-overview" aria-label="Overview">
+        <h2 class="luci-h2">Work in progress</h2>
+        <p class="hub-overview__lede">
+          Click any card to preview on the right. Stakeholders use the
+          <strong>Stakeholder review</strong> accordion — queue for Mike/Nick; edit <code>review-queue.json</code> in Cursor, then rebuild.
+          Use the sidebar for asset previews (emails, newsletter, design system).
+        </p>
+        <div id="hub-work-mount"></div>
+        <p class="hub-overview__footnote">
+          <strong>Design system</strong> specimens (colors, type, CTAs) live in the
+          <strong>Design system</strong> accordion in the sidebar.
+        </p>
+      </section>
+      <iframe id="hub-frame" title="Asset preview" hidden allow="popups; popups-to-escape-sandbox"></iframe>
+      <div class="hub-preview-fallback" id="hub-preview-fallback" hidden>
+        <div>
+          <p id="hub-preview-fallback-text">Preview could not load in this pane.</p>
+          <a id="hub-preview-fallback-open" href="#" target="_blank" rel="noopener noreferrer">Open preview in a new tab</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    /** Add monthly newsletter issues here (newest first). */
+    const NAV_CONFIG = {
+      review: {
+        label: 'Stakeholder review',
+        defaultOpen: true,
+        items: [
+          { label: 'Stakeholder Review (Mike & Nick)', src: 'ui_kits/review/stakeholder-review.html', desc: 'Queue, previews, comments — publish to Netlify' },
+          { label: 'Review · Webflow embed', src: 'ui_kits/review/stakeholder-review-webflow-embed.html', desc: 'Paste into lucisystems.com/review' },
+          { label: 'Review queue (JSON)', src: 'ui_kits/review/review-queue.json', desc: 'Edit in Cursor — due / upcoming / finalized' },
+          { label: 'Review comments (JSON)', src: 'ui_kits/review/review-comments.json', desc: 'Comments shown on site after rebuild' },
+        ],
+      },
+      newsletter: {
+        label: 'The Signal',
+        defaultOpen: false,
+        items: [
+          { label: 'Newsletter Hub · /newsletter', src: 'ui_kits/newsletter/the-signal-hub.html', desc: 'Landing page — issue index' },
+          { label: 'Hub · Webflow embed (recommended)', src: 'ui_kits/newsletter/the-signal-hub-webflow-embed.html', desc: 'Single Embed block — shows in Designer' },
+          { label: 'Hub · Webflow head code', src: 'ui_kits/newsletter/the-signal-hub-webflow-head.html', desc: 'Paste into Webflow <head>' },
+          { label: 'Hub · Webflow body code', src: 'ui_kits/newsletter/the-signal-hub-webflow-body.html', desc: 'Paste before </body>' },
+          { label: 'Jun 2026 · Issue 01 (web)', src: 'ui_kits/newsletter/the-signal-issue-01-june-2026.html', desc: 'Current draft — full copy' },
+          { label: 'Issue 01 · Webflow head code', src: 'ui_kits/newsletter/the-signal-issue-01-webflow-head.html', desc: 'Paste into Webflow <head>' },
+          { label: 'Issue 01 · Webflow body code', src: 'ui_kits/newsletter/the-signal-issue-01-webflow-body.html', desc: 'Paste before </body>' },
+          { label: 'Issue 01 · Webflow embed', src: 'ui_kits/newsletter/the-signal-issue-01-webflow-embed.html', desc: 'Single Embed block — shows in Designer' },
+          { label: '⚖︎ Design comparison (boxy vs sharp vs soft)', src: 'ui_kits/newsletter/the-signal-design-comparison.html', desc: 'Side-by-side treatments for review' },
+          { label: 'Web · Blank template', src: 'ui_kits/newsletter/the-signal-web-template.html', desc: 'Issue 01 structure — articles, callouts, TOC, color rhythm' },
+          { label: 'Email · Teaser', src: 'uploads/Newsletter Mockup - The Signal.html', desc: 'Inbox teaser' },
+        ],
+      },
+      emails: {
+        label: 'Customer emails',
+        defaultOpen: false,
+        items: [
+          { label: 'Master template', src: 'ui_kits/email/master-template.html', desc: 'Shared layout' },
+          { label: '1 · Welcome', src: 'ui_kits/email/email-1a-welcome.html', desc: 'Champion & tech implementor' },
+          { label: '2 · Pre-kickoff', src: 'ui_kits/email/email-2-pre-kickoff.html', desc: 'Kickoff reminder' },
+          { label: '3 · Install confirmed', src: 'ui_kits/email/email-3-install-confirmed.html', desc: 'Onsite confirmed' },
+          { label: '4 · Pre-install', src: 'ui_kits/email/email-4-pre-install.html', desc: 'One week out' },
+          { label: '5 · Go live', src: 'ui_kits/email/email-5-go-live.html', desc: 'LUCI is live' },
+          { label: '6 · Survey', src: 'ui_kits/email/email-6-survey.html', desc: 'Customer survey' },
+          { label: '7 · Signal welcome', src: 'ui_kits/email/email-7-signal-welcome.html', desc: 'Newsletter opt-in' },
+          { label: '8 · 30-day check-in', src: 'ui_kits/email/email-8-30day-checkin.html', desc: '30 days live' },
+          { label: '9 · 60-day check-in', src: 'ui_kits/email/email-9-60day-checkin.html', desc: 'Field activation' },
+          { label: '10 · 90-day check-in', src: 'ui_kits/email/email-10-90day-checkin.html', desc: '90 days live' },
+        ],
+      },
+      website: {
+        label: 'Website',
+        defaultOpen: false,
+        items: [
+          { label: 'Newsletter Hub · /newsletter', src: 'ui_kits/newsletter/the-signal-hub.html', desc: 'The Signal landing page' },
+          { label: 'Microsite', src: 'ui_kits/website/index.html', desc: 'Full prototype' },
+        ],
+      },
+      caseStudies: {
+        label: 'Case studies',
+        defaultOpen: false,
+        items: [
+          { label: 'Ameristar Council Bluffs', src: 'ui_kits/case-studies/ameristar-council-bluffs.html', desc: 'Standalone — full case study' },
+        ],
+      },
+      designSystem: {
+        label: 'Design system',
+        defaultOpen: false,
+        items: [
+          { label: 'Colors — neutrals', src: 'preview/colors-neutrals.html', desc: '' },
+          { label: 'Colors — brand', src: 'preview/colors-brand.html', desc: '' },
+          { label: 'Colors — semantic', src: 'preview/colors-semantic.html', desc: '' },
+          { label: 'Type — headers', src: 'preview/type-headers.html', desc: '' },
+          { label: 'Type — body', src: 'preview/type-body.html', desc: '' },
+          { label: 'Spacing & layout', src: 'preview/spacing.html', desc: '' },
+          { label: 'CTAs', src: 'preview/ctas.html', desc: '' },
+          { label: 'Cards', src: 'preview/cards.html', desc: '' },
+          { label: 'Logos', src: 'preview/brand-logos.html', desc: '' },
+          { label: 'Patterns', src: 'preview/brand-patterns.html', desc: '' },
+        ],
+      },
+      source: {
+        label: 'Source',
+        defaultOpen: false,
+        items: [
+          { label: 'Tokens (CSS)', src: 'colors_and_type.css', desc: '' },
+        ],
+      },
+    };
+
+    const frame = document.getElementById('hub-frame');
+    const previewFallback = document.getElementById('hub-preview-fallback');
+    const previewFallbackText = document.getElementById('hub-preview-fallback-text');
+    const previewFallbackOpen = document.getElementById('hub-preview-fallback-open');
+    const overview = document.getElementById('hub-overview');
+    const titleEl = document.getElementById('hub-title');
+    const pathEl = document.getElementById('hub-path');
+    const openEl = document.getElementById('hub-open');
+    const navMount = document.getElementById('hub-nav-mount');
+    const workMount = document.getElementById('hub-work-mount');
+    const hubNav = document.getElementById('hub-nav');
+    const navToggle = document.getElementById('hub-nav-toggle');
+
+    let navLinks = [];
+    let overviewBtn = null;
+
+    function setNavCollapsed(collapsed) {
+      hubNav.classList.toggle('is-collapsed', collapsed);
+      navToggle.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+      navToggle.setAttribute('aria-label', collapsed ? 'Expand navigation' : 'Collapse navigation');
+      navToggle.title = collapsed ? 'Expand navigation' : 'Collapse navigation';
+    }
+
+    navToggle.addEventListener('click', () => {
+      setNavCollapsed(!hubNav.classList.contains('is-collapsed'));
+    });
+
+    function encodePath(path) {
+      return path.split('/').map(encodeURIComponent).join('/');
+    }
+
+    function createNavLink(item, navLabel) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'hub-nav__link';
+      btn.dataset.src = item.src;
+      btn.dataset.label = navLabel || item.label;
+      btn.textContent = item.label;
+      btn.addEventListener('click', () => activateLink(btn));
+      return btn;
+    }
+
+    function createAccordion(id, group) {
+      const el = document.createElement('div');
+      el.className = 'hub-accordion' + (group.defaultOpen ? ' is-open' : '');
+      el.dataset.accordion = id;
+
+      const trigger = document.createElement('button');
+      trigger.type = 'button';
+      trigger.className = 'hub-accordion__trigger';
+      trigger.setAttribute('aria-expanded', group.defaultOpen ? 'true' : 'false');
+      trigger.innerHTML = `
+        <span class="hub-accordion__label">${group.label}</span>
+        <span class="hub-accordion__count">${group.items.length}</span>
+        <span class="hub-accordion__chevron" aria-hidden="true"></span>
+      `;
+      trigger.addEventListener('click', () => {
+        const open = el.classList.toggle('is-open');
+        trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+
+      const panel = document.createElement('div');
+      panel.className = 'hub-accordion__panel';
+      group.items.forEach((item) => {
+        const link = createNavLink(item, `${group.label} · ${item.label}`);
+        panel.appendChild(link);
+      });
+
+      el.appendChild(trigger);
+      el.appendChild(panel);
+      return el;
+    }
+
+    function buildSidebar() {
+      overviewBtn = document.createElement('button');
+      overviewBtn.type = 'button';
+      overviewBtn.className = 'hub-nav__link hub-nav__link--overview is-active';
+      overviewBtn.dataset.view = 'overview';
+      overviewBtn.textContent = 'Overview';
+      overviewBtn.addEventListener('click', () => activateLink(overviewBtn));
+      navMount.appendChild(overviewBtn);
+
+      ['review', 'newsletter', 'emails', 'website', 'caseStudies', 'designSystem', 'source'].forEach((key) => {
+        navMount.appendChild(createAccordion(key, NAV_CONFIG[key]));
+      });
+
+      navLinks = [...navMount.querySelectorAll('.hub-nav__link[data-src], .hub-nav__link[data-view]')];
+    }
+
+    function buildOverview() {
+      const workGroups = [
+        { key: 'review', heading: 'Stakeholder review' },
+        { key: 'newsletter', heading: 'The Signal (newsletter)' },
+        { key: 'emails', heading: 'Customer email journey' },
+        { key: 'caseStudies', heading: 'Case studies' },
+        { key: 'website', heading: 'Website' },
+      ];
+
+      workGroups.forEach(({ key, heading }) => {
+        const group = NAV_CONFIG[key];
+        const section = document.createElement('div');
+        section.className = 'hub-overview__section';
+
+        const h = document.createElement('h3');
+        h.className = 'hub-overview__heading';
+        h.textContent = heading;
+        section.appendChild(h);
+
+        const grid = document.createElement('div');
+        grid.className = 'hub-cards';
+
+        group.items.forEach((item) => {
+          const card = document.createElement('button');
+          card.type = 'button';
+          card.className = 'hub-card';
+          card.innerHTML = `
+            <div class="hub-card__label">${item.label}</div>
+            <div class="hub-card__desc">${item.desc || 'Preview'}</div>
+          `;
+          card.addEventListener('click', () => {
+            const navLabel = `${group.label} · ${item.label}`;
+            loadPreview(item.src, navLabel);
+            const match = navLinks.find((l) => l.dataset.src === item.src);
+            if (match) activateLink(match, false);
+          });
+          grid.appendChild(card);
+        });
+
+        section.appendChild(grid);
+        workMount.appendChild(section);
+      });
+    }
+
+    function setActive(link) {
+      navLinks.forEach((l) => l.classList.toggle('is-active', l === link));
+    }
+
+    function openAccordionForLink(link) {
+      const accordion = link.closest('.hub-accordion');
+      if (accordion && !accordion.classList.contains('is-open')) {
+        accordion.classList.add('is-open');
+        const trigger = accordion.querySelector('.hub-accordion__trigger');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+    }
+
+    function absolutePreviewUrl(src) {
+      return new URL(encodePath(src), window.location.href).href;
+    }
+
+    function hidePreviewFallback() {
+      previewFallback.classList.remove('is-visible');
+      previewFallback.hidden = true;
+    }
+
+    function showPreviewFallback(absoluteUrl, label, message) {
+      frame.hidden = true;
+      frame.removeAttribute('src');
+      previewFallbackText.textContent = message;
+      previewFallbackOpen.href = absoluteUrl;
+      previewFallbackOpen.textContent = 'Open ' + (label || 'preview') + ' in a new tab';
+      previewFallback.hidden = false;
+      previewFallback.classList.add('is-visible');
+    }
+
+    function showOverview() {
+      overview.classList.add('is-visible');
+      frame.hidden = true;
+      frame.removeAttribute('src');
+      hidePreviewFallback();
+      titleEl.textContent = 'Overview';
+      pathEl.textContent = '—';
+      openEl.hidden = true;
+      setNavCollapsed(false);
+    }
+
+    function loadPreview(src, label) {
+      const absolute = absolutePreviewUrl(src);
+      overview.classList.remove('is-visible');
+      hidePreviewFallback();
+      titleEl.textContent = label || src;
+      pathEl.textContent = src;
+      openEl.href = absolute;
+      openEl.hidden = false;
+      setNavCollapsed(true);
+
+      if (location.protocol === 'file:') {
+        showPreviewFallback(
+          absolute,
+          label,
+          'Preview Hub cannot embed files when opened directly from Finder. Start a local server, then open http://localhost:8080/index.html — or use the link below.'
+        );
+        return;
+      }
+
+      frame.hidden = false;
+      frame.onload = () => hidePreviewFallback();
+      frame.onerror = () => {
+        showPreviewFallback(absolute, label, 'This preview could not load in the pane.');
+      };
+      frame.src = absolute;
+    }
+
+    function activateLink(link, scrollNav = true) {
+      setActive(link);
+      if (link.dataset.view === 'overview') {
+        showOverview();
+        return;
+      }
+      const src = link.dataset.src;
+      if (src) {
+        loadPreview(src, link.dataset.label || link.textContent.trim());
+        openAccordionForLink(link);
+        if (scrollNav) link.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      }
+    }
+
+    window.addEventListener('message', (event) => {
+      const data = event.data;
+      if (!data || data.type !== 'luci-open-url' || typeof data.url !== 'string') return;
+      window.open(data.url, '_blank', 'noopener,noreferrer');
+    });
+
+    buildSidebar();
+    buildOverview();
+  </script>
+</body>
+</html>

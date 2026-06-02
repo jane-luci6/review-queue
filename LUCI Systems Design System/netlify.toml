@@ -1,0 +1,17 @@
+# Deploy this folder to Netlify for stakeholder review + live comments API.
+# Site URL → set review-queue.json → commentsApiUrl if using Webflow embed elsewhere.
+
+[build]
+  command = "node scripts/build-stakeholder-review.mjs"
+  publish = "ui_kits/review"
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/api/comments"
+  to = "/.netlify/functions/comments"
+  status = 200
+
+[[redirects]]
+  from = "/"
+  to = "/stakeholder-review.html"
+  status = 200

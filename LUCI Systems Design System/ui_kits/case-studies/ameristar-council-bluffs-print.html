@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Case Study — Ameristar Council Bluffs · LUCI Systems</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box; margin: 0; padding: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    :root {
+      --navy-deep: #0A161C;
+      --navy:      #10232D;
+      --navy-mid:  #314955;
+      --mint:      #68E3BE;
+      --mint-rgb:  104, 227, 190;
+      --mint-dark: #2b9e80;
+      --off-white: #F5F8FA;
+      --white:     #FFFFFF;
+      --rule:      #D4D9DC;
+      --ink:       #354F5C;
+      --display:   'Syncopate', 'Arial Black', sans-serif;
+      --body:      'Space Grotesk', 'Trebuchet MS', sans-serif;
+      --px: 52px;
+    }
+
+    @page { size: letter portrait; margin: 0; }
+
+    html, body {
+      background: var(--navy-deep);
+      font-family: var(--body);
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── PAGE CONTAINERS ────────────────────────────────── */
+    /* Each .pg maps to exactly one printed page.
+       height: 100vh = page height in Chrome headless print. */
+    .pg {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      break-before: page;
+      break-inside: avoid;
+    }
+    .pg:first-child { break-before: auto; }
+
+    /* ── PAGE HEADER (repeating on pages 2–4) ───────────── */
+    .pg-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 13px var(--px);
+      background: var(--navy-deep);
+      border-bottom: 1px solid rgba(var(--mint-rgb), 0.12);
+      flex-shrink: 0;
+    }
+    .pg-header img { height: 16px; display: block; }
+    .pg-header__label {
+      font-family: var(--display);
+      font-size: 8px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(var(--mint-rgb), 0.4);
+    }
+
+    /* ── TOPBAR ─────────────────────────────────────────── */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px var(--px);
+      background: var(--navy-deep);
+      border-bottom: 1px solid rgba(var(--mint-rgb), 0.15);
+      flex-shrink: 0;
+    }
+    .topbar img { height: 19px; display: block; }
+    .topbar__tag {
+      font-family: var(--display);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(var(--mint-rgb), 0.65);
+    }
+
+    /* ── HERO ───────────────────────────────────────────── */
+    .hero {
+      background: var(--navy-deep);
+      padding: 40px var(--px) 34px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-bottom: 4px solid var(--mint);
+    }
+    .hero__kicker {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .hero__kicker::before {
+      content: '';
+      width: 22px; height: 2px;
+      background: var(--mint);
+    }
+    .hero__kicker span {
+      font-family: var(--display);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--mint);
+    }
+    .hero__title {
+      font-family: var(--body);
+      font-weight: 700;
+      font-size: 50px;
+      line-height: 1.04;
+      letter-spacing: -0.03em;
+      color: var(--off-white);
+      max-width: 16ch;
+      margin-bottom: 18px;
+    }
+    .hero__title em { font-style: normal; color: var(--mint); }
+    .hero__dek {
+      font-size: 16px;
+      line-height: 1.6;
+      color: rgba(235, 245, 248, 0.82);
+      max-width: 56ch;
+      margin-bottom: 22px;
+    }
+    .hero__property {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--mint);
+      padding-top: 18px;
+      border-top: 1px solid rgba(var(--mint-rgb), 0.15);
+    }
+    .hero__property span { color: rgba(165, 179, 188, 0.65); font-weight: 500; }
+
+    /* ── GLANCE ─────────────────────────────────────────── */
+    .glance {
+      background: var(--off-white);
+      padding: 44px var(--px) 40px;
+      flex: 1; /* equal height split with .hero on page 1 */
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    .glance__logo {
+      margin-bottom: 18px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .glance__logo img { height: 36px; display: block; }
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .facts__label {
+      font-family: var(--display);
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--mint-dark);
+      margin-bottom: 5px;
+    }
+    .facts__value { font-size: 15px; font-weight: 600; line-height: 1.3; color: var(--navy); }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+    .summary__cell { background: var(--white); padding: 16px 18px; }
+    .summary__label {
+      font-family: var(--display);
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mint-dark);
+      margin-bottom: 7px;
+    }
+    .summary__text { font-size: 13px; line-height: 1.55; color: var(--ink); }
+
+    /* ── SHARED SECTION ─────────────────────────────────── */
+    .sec {
+      padding: 36px var(--px);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start; /* content from top — no mid-section gaps */
+    }
+    /* Fixed-height section — does not grow to fill page */
+    .sec--fixed { flex: 0 0 auto; }
+    .sec--white { background: var(--white); }
+    .sec--light { background: var(--off-white); border-top: 1px solid var(--rule); }
+    .sec--mid   { background: var(--navy-mid); }
+    .sec--dark  { background: var(--navy); }
+    .sec--deep  { background: var(--navy-deep); }
+
+    .kicker {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .kicker__rule { width: 22px; height: 2px; background: var(--mint); flex-shrink: 0; }
+    .kicker__label {
+      font-family: var(--display);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--mint);
+    }
+    .sec--white .kicker__rule, .sec--light .kicker__rule { background: var(--mint-dark); }
+    .sec--white .kicker__label, .sec--light .kicker__label { color: var(--mint-dark); }
+
+    .sec__title {
+      font-family: var(--body);
+      font-weight: 700;
+      font-size: 26px;
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+      max-width: 24ch;
+      margin-bottom: 14px;
+    }
+    .sec--white .sec__title, .sec--light .sec__title { color: var(--navy); }
+    .sec--mid .sec__title, .sec--dark .sec__title, .sec--deep .sec__title { color: var(--off-white); }
+
+    .body p {
+      font-size: 14px;
+      line-height: 1.78;
+      margin-bottom: 16px;
+      max-width: 70ch;
+    }
+    .body p:last-child { margin-bottom: 0; }
+    /* Results section gets slightly more generous text for page fill */
+    .sec--dark .body p { font-size: 15px; line-height: 1.82; }
+    .sec--white .body p, .sec--light .body p { color: var(--ink); }
+    .sec--mid .body p, .sec--dark .body p, .sec--deep .body p { color: rgba(235, 245, 248, 0.9); }
+
+    .body strong { font-weight: 700; }
+    .sec--white .body strong, .sec--light .body strong { color: var(--navy); }
+    .sec--mid .body strong, .sec--dark .body strong { color: var(--off-white); }
+
+    .scope-list {
+      list-style: none;
+      margin: 4px 0 12px;
+      padding: 0;
+      max-width: 70ch;
+    }
+    .scope-list li {
+      position: relative;
+      padding-left: 18px;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 7px;
+      color: rgba(235, 245, 248, 0.9);
+    }
+    .scope-list li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 10px;
+      width: 9px; height: 2px;
+      background: var(--mint);
+    }
+
+    /* ── INLINE QUOTE (full-width banner within results) ─── */
+    .inline-quote {
+      margin: 32px calc(-1 * var(--px)) 32px; /* bleed to section edges */
+      padding: 48px var(--px);
+      border-top: 1px solid rgba(var(--mint-rgb), 0.15);
+      border-bottom: 1px solid rgba(var(--mint-rgb), 0.15);
+      background: rgba(var(--mint-rgb), 0.03);
+    }
+    .inline-quote__text {
+      font-size: 22px;
+      font-style: italic;
+      line-height: 1.42;
+      color: rgba(235, 245, 248, 0.96);
+      margin-bottom: 16px;
+      border-left: 4px solid var(--mint);
+      padding-left: 24px;
+      max-width: 34ch;
+    }
+    .inline-quote__attrib {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(var(--mint-rgb), 0.55);
+      padding-left: 28px;
+    }
+    .inline-quote__attrib span { color: var(--mint); margin-right: 8px; }
+
+    /* ── RESULTS ────────────────────────────────────────── */
+    .results {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(var(--mint-rgb), 0.18);
+      list-style: none;
+      margin: 0 0 0;
+      padding: 0;
+      counter-reset: result;
+    }
+    .results li {
+      background: var(--navy);
+      padding: 48px 22px;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--off-white);
+      margin: 0;
+    }
+    .results li::before {
+      content: counter(result, decimal-leading-zero);
+      counter-increment: result;
+      display: block;
+      font-family: var(--display);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--mint);
+      margin-bottom: 9px;
+    }
+
+    /* ── PLAN LIST ──────────────────────────────────────── */
+    .plan-list {
+      list-style: none;
+      margin: 12px 0 18px;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      max-width: 70ch;
+    }
+    .plan-list li {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 10px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--ink);
+    }
+    .plan-list li::before {
+      content: '\2713';
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--mint-dark);
+      line-height: 1.3;
+    }
+    .plan-list strong { font-weight: 700; color: var(--navy); }
+
+    .bottom-line {
+      margin-top: 2px;
+      padding-top: 18px;
+      border-top: 1px solid var(--rule);
+      font-size: 14px;
+      line-height: 1.65;
+      max-width: 70ch;
+      color: var(--ink);
+    }
+
+    /* ── CTA ────────────────────────────────────────────── */
+    .cta {
+      background: var(--navy-deep);
+      padding: 40px var(--px);
+      border-top: 4px solid var(--mint);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start; /* prevents button from stretching full width */
+    }
+    .cta__title {
+      font-family: var(--body);
+      font-weight: 700;
+      font-size: 26px;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--off-white);
+      max-width: 22ch;
+      margin-bottom: 10px;
+    }
+    .cta__body {
+      font-size: 14px;
+      line-height: 1.65;
+      color: rgba(235, 245, 248, 0.8);
+      max-width: 60ch;
+      margin-bottom: 20px;
+    }
+    .cta__statement {
+      font-family: var(--body);
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 1.4;
+      letter-spacing: -0.015em;
+      color: var(--off-white);
+      max-width: 46ch;
+      margin-bottom: 16px;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--body);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      color: var(--navy);
+      background: var(--mint);
+      padding: 12px 22px;
+    }
+    .cta-btn__arrow { font-size: 15px; font-weight: 700; line-height: 1; }
+
+    /* ── FOOTER ─────────────────────────────────────────── */
+    .footer {
+      background: var(--navy);
+      padding: 20px var(--px);
+      border-top: 1px solid rgba(var(--mint-rgb), 0.12);
+      flex-shrink: 0;
+    }
+    .footer__top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      padding-bottom: 12px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer__logo img { height: 17px; display: block; }
+    .footer__tag {
+      font-family: var(--display);
+      font-size: 8px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(var(--mint-rgb), 0.32);
+      margin-top: 6px;
+    }
+    .footer__links { text-align: right; }
+    .footer__links a {
+      display: block;
+      font-size: 11px;
+      color: rgba(var(--mint-rgb), 0.65);
+      text-decoration: none;
+      margin-bottom: 3px;
+    }
+    .footer__legal { font-size: 10px; line-height: 1.6; color: rgba(74, 95, 106, 0.85); }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     PAGE 1 — Cover: Topbar + Hero + Glance
+════════════════════════════════════════════ -->
+<div class="pg">
+
+  <div class="topbar">
+    <img src="../../assets/logos/luci-full-white.png" alt="LUCI Systems">
+    <span class="topbar__tag">lucisystems.com</span>
+  </div>
+
+  <header class="hero">
+    <div class="hero__kicker"><span>Case Study</span></div>
+    <h1 class="hero__title">Three days to a <em>future-ready platform</em></h1>
+    <p class="hero__dek">LUCI completed a full retrofit of Ameristar Council Bluffs' AV infrastructure in under three days, modernizing a system that had run since 2012 and centralizing control on land to prepare the property for its next phase of growth.</p>
+    <p class="hero__property">
+      Ameristar Council Bluffs Casino
+      <span>Council Bluffs, Iowa · Penn Entertainment</span>
+    </p>
+  </header>
+
+  <div class="glance">
+    <div class="glance__logo">
+      <img src="../../assets/logos/ameristar-council-bluffs.svg" alt="Ameristar Council Bluffs" height="36">
+    </div>
+    <div class="facts">
+      <div>
+        <p class="facts__label">Operator</p>
+        <p class="facts__value">Penn Entertainment</p>
+      </div>
+      <div>
+        <p class="facts__label">Location</p>
+        <p class="facts__value">Council Bluffs, Iowa</p>
+      </div>
+      <div>
+        <p class="facts__label">Retrofit completed</p>
+        <p class="facts__value">Under 3 days</p>
+      </div>
+    </div>
+    <div class="summary">
+      <div class="summary__cell">
+        <p class="summary__label">The challenge</p>
+        <p class="summary__text">A decade-old AV system, aging equipment, and a major casino buildout on the way.</p>
+      </div>
+      <div class="summary__cell">
+        <p class="summary__label">The approach</p>
+        <p class="summary__text">A full retrofit in under three days, with all AV processing relocated to the data center on land.</p>
+      </div>
+      <div class="summary__cell">
+        <p class="summary__label">The result</p>
+        <p class="summary__text">A unified, scalable platform built for the property's next phase of growth.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE 2 — Challenge + Approach
+════════════════════════════════════════════ -->
+<div class="pg">
+
+  <div class="pg-header">
+    <img src="../../assets/logos/luci-full-white.png" alt="LUCI Systems">
+    <span class="pg-header__label">Ameristar Council Bluffs &middot; Case Study</span>
+  </div>
+
+  <section class="sec sec--white sec--fixed">
+    <h2 class="sec__title">A proven system, a bigger future</h2>
+    <div class="body">
+      <p>Ameristar Council Bluffs spans a land-based casino and a riverboat. Its audio-visual system was based on an early LUCI design that had been operating successfully since 2012.</p>
+      <p>Even after more than a decade of daily use, the original system continued to support property operations and guest experience demands. But the property was preparing for a new chapter: a major casino buildout on the land side and a planned transition away from the riverboat casino.</p>
+      <p>With years of ongoing upgrades, aging equipment, and that buildout approaching, Ameristar needed a more unified, scalable, and future-ready approach, one that could carry the property through its next phase of growth.</p>
+    </div>
+  </section>
+
+  <section class="sec sec--mid">
+    <h2 class="sec__title">Modernize without disrupting the floor</h2>
+    <div class="body">
+      <p>LUCI's goal was to modernize the property's AV foundation and position it for the transition ahead, without disrupting a floor that runs every day.</p>
+      <p>The defining move was location. As part of the upcoming transition away from the riverboat casino, LUCI relocated all new AV processing equipment into the property's IT data center on land. Since much of the previous system's processing was located on the boat, this single move eliminated the need to design additional AV rooms into the new buildout, helping reduce future construction and infrastructure costs.</p>
+      <p>The retrofit installation itself was completed in less than three days. In that window, the team:</p>
+      <ul class="scope-list">
+        <li>Replaced the AV head-end systems, amplifiers, and control infrastructure</li>
+        <li>Relocated all new AV processing into the property's IT data center</li>
+        <li>Completed a full conversion and modernization of the system documentation</li>
+      </ul>
+      <p>The result is a streamlined platform designed for years of reliable, trouble-free operation, with simplified future maintenance and expansion.</p>
+    </div>
+  </section>
+
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE 3 — Results (with embedded quote)
+════════════════════════════════════════════ -->
+<div class="pg">
+
+  <div class="pg-header">
+    <img src="../../assets/logos/luci-full-white.png" alt="LUCI Systems">
+    <span class="pg-header__label">Ameristar Council Bluffs &middot; Case Study</span>
+  </div>
+
+  <section class="sec sec--dark">
+    <h2 class="sec__title">What the property gained</h2>
+    <div class="body">
+      <p>The upgraded LUCI platform now provides unlimited operational users through any browser-based device, giving the property greater flexibility, broader delegation, and faster response times to daily operational needs.</p>
+      <p>Built-in automation features let the operations team perform daily system resets, scheduled adjustments, and system-wide changes with significantly less hands-on intervention.</p>
+      <p>And because the property now benefits from LUCI's evolving feature set and software enhancements without additional upgrade licensing costs, the platform continues to grow alongside the casino's future operational and guest experience needs.</p>
+    </div>
+    <ul class="results" style="margin-top: 28px;">
+      <li>One unified view of every endpoint</li>
+      <li>Broader delegation by zone</li>
+      <li>Faster response to daily needs</li>
+      <li>Automated resets and scheduling</li>
+      <li>Simpler maintenance and expansion</li>
+      <li>Lower long-term infrastructure costs</li>
+    </ul>
+    <aside class="inline-quote" style="margin-bottom: 0;">
+      <p class="inline-quote__text">"Well done, LUCI team! This was the best installation &mdash; so seamless."</p>
+      <p class="inline-quote__attrib"><span>Facilities Manager</span> Ameristar Council Bluffs</p>
+    </aside>
+  </section>
+
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE 4 — What's Next + CTA + Footer
+════════════════════════════════════════════ -->
+<div class="pg">
+
+  <div class="pg-header">
+    <img src="../../assets/logos/luci-full-white.png" alt="LUCI Systems">
+    <span class="pg-header__label">Ameristar Council Bluffs &middot; Case Study</span>
+  </div>
+
+  <section class="sec sec--light sec--fixed">
+    <h2 class="sec__title">Built for the moves ahead</h2>
+    <div class="body">
+      <p>With the system centralized on land, the property is set up for what comes next.</p>
+      <ul class="plan-list">
+        <li><span><strong>The boat can sail.</strong> When the time comes, Ameristar can step away from the riverboat as a clean break, and keep running on LUCI.</span></li>
+        <li><span><strong>The new build can plug in.</strong> When the new construction opens, it runs on the platform already powering the property &mdash; no second install, no parallel system to stand up.</span></li>
+        <li><span><strong>Future growth is built in.</strong> As Ameristar expands, it can do so unobstructed &mdash; LUCI has removed the logistical variables and A/V complications that would otherwise pile up over time.</span></li>
+      </ul>
+      <p class="bottom-line">By modernizing the AV infrastructure and centralizing system control, LUCI helped Ameristar Council Bluffs prepare for its next phase of growth, preserving operational reliability, improving efficiency, and reducing long-term infrastructure costs.</p>
+    </div>
+  </section>
+
+  <section class="cta">
+    <p class="cta__statement">LUCI is the operating system for complex properties &mdash; one platform that unifies every A/V, signage, building, and operational system into a single interface your team controls from anywhere so you can strategically activate the guest experience.</p>
+    <p class="cta__body">Curious what this looks like for your property? Let's talk.</p>
+    <a class="cta-btn" href="https://lucisystems.com/contact">Talk to LUCI<span class="cta-btn__arrow"> &rarr;</span></a>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__top">
+      <div>
+        <img src="../../assets/logos/luci-full-white.png" alt="LUCI Systems" style="height:17px; display:block;">
+        <p class="footer__tag">The Smarter Platform for Enterprise Multimedia</p>
+      </div>
+      <div class="footer__links">
+        <a href="https://lucisystems.com">lucisystems.com</a>
+        <a href="tel:+18333335868">+1 (833) 333-5868</a>
+        <a href="mailto:info@LUCIsystems.com">info@LUCIsystems.com</a>
+      </div>
+    </div>
+    <p class="footer__legal">&copy; 2026 LUCI Systems &middot; The Smarter Platform for Enterprise Multimedia</p>
+  </footer>
+
+</div>
+
+</body>
+</html>

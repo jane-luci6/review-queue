@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>LUCI · Asset Review Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy-deep: #0A161C;
+      --navy: #10232D;
+      --navy-muted: #49616E;
+      --mint: #68E3BE;
+      --mint-rgb: 104, 227, 190;
+      --mint-dark: #2b9e80;
+      --sand: #E5E3DF;
+      --off-white: #F5F8FA;
+      --white: #FFFFFF;
+      --rule-light: #D4D9DC;
+      --body-ink: #354F5C;
+      --display: 'Syncopate', 'Arial Black', sans-serif;
+      --body: 'Space Grotesk', 'Trebuchet MS', sans-serif;
+      --max: 900px;
+      --pad: clamp(24px, 5vw, 48px);
+    }
+    body {
+      font-family: var(--body);
+      background: var(--off-white);
+      color: var(--body-ink);
+      font-size: 17px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    .board {
+      max-width: var(--max);
+      margin: 0 auto;
+      background: var(--white);
+      min-height: 100vh;
+      border-left: 1px solid var(--rule-light);
+      border-right: 1px solid var(--rule-light);
+    }
+    .masthead {
+      background: var(--navy);
+      padding: var(--pad);
+      position: relative;
+    }
+    .masthead::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--mint);
+    }
+    .masthead__row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .masthead__logo img { height: 24px; display: block; }
+    .masthead__badge {
+      font-family: var(--display);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--mint);
+      border: 1px solid rgba(var(--mint-rgb), 0.35);
+      padding: 4px 10px;
+    }
+    .masthead__title {
+      font-family: var(--display);
+      font-size: clamp(28px, 6vw, 42px);
+      font-weight: 700;
+      line-height: 1.05;
+      color: var(--off-white);
+    }
+    .masthead__title em { font-style: normal; color: var(--mint); display: block; }
+    .masthead__deck {
+      margin-top: 14px;
+      font-size: 16px;
+      color: rgba(235, 245, 248, 0.92);
+      max-width: 52ch;
+    }
+    .notion-cta {
+      padding: 24px var(--pad);
+      background: var(--sand);
+      border-bottom: 1px solid var(--rule-light);
+    }
+    .notion-cta p {
+      font-size: 15px;
+      margin-bottom: 16px;
+      max-width: 58ch;
+    }
+    .notion-cta__btn {
+      display: inline-flex;
+      font-family: var(--display);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 22px;
+      background: var(--navy);
+      color: var(--mint);
+      border-left: 4px solid var(--mint);
+    }
+    .notion-cta__btn:hover { background: var(--navy-deep); }
+    .notion-cta__btn.is-disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+    .howto {
+      padding: 20px var(--pad);
+      border-bottom: 1px solid var(--rule-light);
+      font-size: 15px;
+    }
+    .howto summary {
+      font-family: var(--display);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--mint-dark);
+      cursor: pointer;
+      list-style: none;
+    }
+    .howto summary::-webkit-details-marker { display: none; }
+    .howto ol { margin: 14px 0 0 20px; }
+    .howto li { margin-bottom: 8px; }
+    .setup {
+      margin: 0 var(--pad) 24px;
+      padding: 16px 20px;
+      background: rgba(104, 227, 190, 0.08);
+      border-left: 4px solid var(--mint);
+      font-size: 14px;
+    }
+    .setup code { font-size: 12px; background: var(--off-white); padding: 1px 5px; }
+    .section {
+      padding: clamp(32px, 5vw, 48px) var(--pad);
+      border-bottom: 1px solid var(--rule-light);
+    }
+    .section--accent { background: var(--navy); }
+    .section--queue { background: var(--off-white); }
+    .section__kicker {
+      font-family: var(--display);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--mint-dark);
+      margin-bottom: 8px;
+    }
+    .section--accent .section__kicker { color: var(--mint); }
+    .section__title {
+      font-weight: 700;
+      font-size: clamp(22px, 3.5vw, 28px);
+      color: var(--navy);
+      letter-spacing: -0.02em;
+    }
+    .section--accent .section__title { color: var(--off-white); }
+    .section__sub {
+      margin-top: 8px;
+      font-size: 15px;
+      color: var(--navy-muted);
+      max-width: 58ch;
+    }
+    .section--accent .section__sub { color: rgba(235, 245, 248, 0.85); }
+    .section__head {
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--rule-light);
+    }
+    .section--accent .section__head { border-bottom-color: rgba(var(--mint-rgb), 0.15); }
+    .asset {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--rule-light);
+    }
+    .section--accent .asset { border-bottom-color: rgba(255,255,255,0.1); }
+    .asset:last-child { border-bottom: none; padding-bottom: 0; }
+    .asset__title {
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .section--accent .asset__title { color: var(--off-white); }
+    .asset__desc {
+      font-size: 15px;
+      margin-bottom: 14px;
+      max-width: 62ch;
+    }
+    .section--accent .asset__desc { color: rgba(235, 245, 248, 0.88); }
+    .asset__links { display: flex; flex-wrap: wrap; gap: 10px; }
+    .btn {
+      font-family: var(--display);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 11px 16px;
+    }
+    .btn--primary { background: var(--mint); color: var(--navy); }
+    .btn--ghost {
+      color: var(--mint-dark);
+      box-shadow: inset 0 0 0 1px var(--mint-dark);
+    }
+    .section--accent .btn--ghost {
+      color: var(--mint);
+      box-shadow: inset 0 0 0 1px rgba(var(--mint-rgb), 0.45);
+    }
+    .asset--queue .asset__title,
+    .asset--queue .asset__desc { color: var(--navy-muted); }
+    .footer {
+      padding: var(--pad);
+      background: var(--navy-deep);
+      font-size: 13px;
+      color: rgba(165, 179, 188, 0.75);
+    }
+    .footer a { color: var(--mint); }
+  </style>
+</head>
+<body>
+<article class="board" id="portal"></article>
+<script>
+(function () {
+  const portal = document.getElementById('portal');
+
+  function btn(label, cls, href) {
+    const a = document.createElement('a');
+    a.className = 'btn ' + cls;
+    a.textContent = label;
+    a.href = href;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    return a;
+  }
+
+  function renderAsset(item, queue) {
+    const el = document.createElement('div');
+    el.className = 'asset' + (queue ? ' asset--queue' : '');
+    const h = document.createElement('h3');
+    h.className = 'asset__title';
+    h.textContent = item.title;
+    el.appendChild(h);
+    if (item.desc) {
+      const d = document.createElement('p');
+      d.className = 'asset__desc';
+      d.textContent = item.desc;
+      el.appendChild(d);
+    }
+    if (!queue) {
+      const links = document.createElement('div');
+      links.className = 'asset__links';
+      if (item.liveUrl) links.appendChild(btn('Open live', 'btn--primary', item.liveUrl));
+      if (item.previewUrl) links.appendChild(btn('Open preview', 'btn--ghost', item.previewUrl));
+      el.appendChild(links);
+    }
+    return el;
+  }
+
+  function renderSection(key, title, subtitle, items, accent) {
+    const sec = document.createElement('section');
+    sec.className = 'section' + (accent ? ' section--accent' : key === 'inQueue' ? ' section--queue' : '');
+    sec.innerHTML =
+      '<div class="section__head">' +
+      '<p class="section__kicker">' + (key === 'needsReview' ? 'Open in browser' : key === 'inQueue' ? 'Coming soon' : 'Done') + '</p>' +
+      '<h2 class="section__title">' + title + '</h2>' +
+      (subtitle ? '<p class="section__sub">' + subtitle + '</p>' : '') +
+      '</div>';
+    const list = document.createElement('div');
+    if (!items.length) {
+      const p = document.createElement('p');
+      p.className = 'asset__desc';
+      p.textContent = key === 'published' ? 'Nothing approved yet — see Notion board.' : 'No items.';
+      list.appendChild(p);
+    } else {
+      items.forEach((item) => list.appendChild(renderAsset(item, key === 'inQueue')));
+    }
+    sec.appendChild(list);
+    return sec;
+  }
+
+  function buildPage(cfg) {
+    portal.innerHTML = '';
+    const mast = document.createElement('header');
+    mast.className = 'masthead';
+    mast.innerHTML =
+      '<div class="masthead__row">' +
+      '<a href="https://lucisystems.com" class="masthead__logo"><img src="https://content.app-us1.com/YzzLp9/2026/05/18/fa1f40ee-c6ac-4c7f-bd96-6a34971de1fa.png" alt="LUCI Systems"></a>' +
+      '<span class="masthead__badge">Review portal</span></div>' +
+      '<h1 class="masthead__title">Asset<em>Review.</em></h1>' +
+      '<p class="masthead__deck">Open finished work here. Approve or send feedback in Notion — that&rsquo;s where Mike &amp; Nick record decisions.</p>';
+    portal.appendChild(mast);
+
+    const cta = document.createElement('div');
+    cta.className = 'notion-cta';
+    const hasNotion = cfg.notionBoardUrl && cfg.notionBoardUrl.indexOf('notion') !== -1;
+    cta.innerHTML = '<p><strong>All review actions happen in Notion</strong> — comments, approve, and task updates. This page is only the link list.</p>';
+    const notionBtn = document.createElement('a');
+    notionBtn.className = 'notion-cta__btn' + (hasNotion ? '' : ' is-disabled');
+    notionBtn.textContent = hasNotion ? 'Open review board in Notion' : 'Notion board URL not set yet';
+    if (hasNotion) {
+      notionBtn.href = cfg.notionBoardUrl;
+      notionBtn.target = '_blank';
+      notionBtn.rel = 'noopener';
+    }
+    cta.appendChild(notionBtn);
+    portal.appendChild(cta);
+
+    const howto = document.createElement('details');
+    howto.className = 'howto';
+    howto.innerHTML =
+      '<summary>For Mike &amp; Nick</summary>' +
+      '<ol>' +
+      '<li>Open <strong>review board in Notion</strong> (button above).</li>' +
+      '<li>Use <strong>Live URL</strong> here or in Notion to view each asset.</li>' +
+      '<li>Add comments in the <strong>Feedback</strong> field; set <strong>Review status</strong> to Feedback or Approved.</li>' +
+      '</ol>';
+    portal.appendChild(howto);
+
+    if (!hasNotion) {
+      const setup = document.createElement('div');
+      setup.className = 'setup';
+      setup.innerHTML =
+        '<strong>Jane — one-time setup</strong><br>' +
+        'Create the database using <code>notion-database-spec.json</code>, invite Mike &amp; Nick, then paste the URL into <code>asset-review-config.json</code> → <code>notionBoardUrl</code>.';
+      portal.appendChild(setup);
+    }
+
+    const a = cfg.assets || {};
+    portal.appendChild(renderSection(
+      'needsReview',
+      'Needs your review',
+      'Open each asset below, then record feedback or approval in Notion.',
+      a.needsReview || [],
+      true
+    ));
+    portal.appendChild(renderSection(
+      'published',
+      'Published',
+      'Approved in Notion — catalog for reference.',
+      a.published || [],
+      false
+    ));
+    portal.appendChild(renderSection(
+      'inQueue',
+      'In the queue',
+      'Jane is building these next.',
+      a.inQueue || [],
+      false
+    ));
+
+    const foot = document.createElement('footer');
+    foot.className = 'footer';
+    foot.innerHTML = 'Questions? <a href="mailto:jhaynie@lucisystems.com">Jane</a>. Unlisted page — share the link directly.';
+    portal.appendChild(foot);
+  }
+
+  fetch('asset-review-config.json')
+    .then((r) => (r.ok ? r.json() : Promise.reject()))
+    .then(buildPage)
+    .catch(() => {
+      buildPage({
+        notionBoardUrl: '',
+        assets: {
+          needsReview: [
+            { title: 'Config not loaded', desc: 'Serve this folder over HTTP or embed config in Webflow.', liveUrl: '' }
+          ],
+          published: [],
+          inQueue: []
+        }
+      });
+    });
+})();
+</script>
+</body>
+</html>

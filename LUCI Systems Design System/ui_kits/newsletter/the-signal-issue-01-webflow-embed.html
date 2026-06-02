@@ -1,0 +1,1279 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      /* Brand palette */
+      --navy-deep:   #0A161C;
+      --navy:        #10232D;
+      --navy-mid:    #314955;
+      --navy-muted:  #49616E;
+      --mint:        #68E3BE;
+      --mint-rgb:    104, 227, 190;   /* same as --mint, used for rgba() tints */
+      --mint-dark:   #2b9e80;
+      --sand:        #E5E3DF;
+      --off-white:   #F5F8FA;
+      --white:       #FFFFFF;
+      --rule-light:  #D4D9DC;
+
+      /* Type */
+      --display: 'Syncopate', 'Arial Black', sans-serif;
+      --body:    'Space Grotesk', 'Trebuchet MS', sans-serif;
+
+      /* Layout */
+      --max:  820px;
+      --pad:  clamp(28px, 6vw, 60px);
+      --read: 60ch;
+    }
+
+    body {
+      font-family: var(--body);
+      background: var(--navy-deep);
+      color: #354F5C;
+      -webkit-font-smoothing: antialiased;
+      font-size: 18px;
+      line-height: 1.72;
+    }
+
+    .issue {
+      max-width: var(--max);
+      margin: 0 auto;
+      background: var(--white);
+    }
+
+    /* ── MASTHEAD ─────────────────────────────────────── */
+    .masthead {
+      background: var(--navy);
+      padding: var(--pad);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Mint accent bar at bottom */
+    .masthead::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--mint);
+    }
+
+    .masthead__row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding-bottom: clamp(20px, 3vw, 28px);
+      margin-bottom: clamp(20px, 3vw, 28px);
+      border-bottom: 1px solid rgba(var(--mint-rgb), 0.15);
+    }
+
+    .masthead__logo img { height: 28px; display: block; }
+
+    .masthead__vol {
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(165,179,188,0.82);
+      letter-spacing: 0.05em;
+      text-align: right;
+    }
+
+    /* Publication title — the hero */
+    .masthead__title {
+      font-family: var(--display);
+      font-size: clamp(52px, 12vw, 96px);
+      font-weight: 700;
+      line-height: 0.9;
+      letter-spacing: -0.03em;
+      color: var(--off-white);
+      position: relative;
+      z-index: 1;
+    }
+
+    .masthead__title em {
+      font-style: normal;
+      color: var(--mint);
+      display: block;
+    }
+
+    /* Giant issue number watermark */
+    .masthead__numeral {
+      font-family: var(--display);
+      font-size: clamp(100px, 22vw, 200px);
+      font-weight: 700;
+      line-height: 0.85;
+      letter-spacing: -0.04em;
+      color: rgba(var(--mint-rgb), 0.05);
+      position: absolute;
+      right: calc(var(--pad) - 8px);
+      bottom: -12px;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .masthead__deck {
+      margin-top: 14px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: rgba(165, 179, 188, 0.7);
+      max-width: 44ch;
+      position: relative;
+      z-index: 1;
+    }
+
+    .masthead__issue {
+      margin-top: 30px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .masthead__issue-label {
+      display: block;
+      font-family: var(--display);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--mint);
+      margin-bottom: 8px;
+    }
+
+    .masthead__issue-title {
+      display: block;
+      font-family: var(--body);
+      font-size: clamp(18px, 3vw, 24px);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.015em;
+      color: var(--off-white);
+      max-width: 42ch;
+    }
+
+    .masthead__distro {
+      display: inline-block;
+      margin-top: 18px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mint);
+      border: 1px solid rgba(var(--mint-rgb), 0.4);
+      padding: 4px 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── TABLE OF CONTENTS ────────────────────────────── */
+    .toc {
+      background: var(--navy);
+      padding: clamp(28px, 5vw, 38px) var(--pad);
+      border-bottom: 1px solid rgba(var(--mint-rgb), 0.15);
+    }
+
+    .toc__label {
+      font-family: var(--display);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--mint);
+      margin-bottom: 14px;
+    }
+
+    .toc__list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 36px;
+    }
+
+    @media (max-width: 600px) {
+      .toc__list { grid-template-columns: 1fr; }
+    }
+
+    .toc__list a {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      padding: 13px 2px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+      color: var(--off-white);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1.3;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .toc__num {
+      font-family: var(--display);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--mint);
+      min-width: 22px;
+    }
+
+    .toc__text { flex: 1; }
+
+    .toc__arrow {
+      color: rgba(var(--mint-rgb), 0.4);
+      transition: transform 0.15s, color 0.15s;
+    }
+
+    .toc__list a:hover {
+      color: var(--white);
+      border-color: rgba(var(--mint-rgb), 0.4);
+    }
+
+    .toc__list a:hover .toc__arrow {
+      color: var(--mint);
+      transform: translateX(3px);
+    }
+
+    /* ── SECTION ANATOMY ──────────────────────────────── */
+
+    /*
+      Each section has a kicker (department label), a headline, and body.
+      Visual registers (alternate to keep the reader moving — reserve deep/dark for Closing + Footer only):
+        --sand:     marquee story (In the field) — warm light; transitions cleanly from dark TOC
+        --white:    primary reading sections; required wrapper for callouts
+        --light:    alternate reading sections (off-white)
+        --deep:     Closing only — signals end of issue content
+    */
+
+    .sec {
+      padding: clamp(40px, 6vw, 64px) var(--pad);
+      border-bottom: 1px solid var(--rule-light);
+      position: relative;
+    }
+
+    .sec--white   { background: var(--white); }
+    .sec--light   { background: var(--off-white); }
+    .sec--sand    { background: var(--sand); }
+    .sec--mid     { background: var(--navy-mid); border-bottom-color: rgba(0,0,0,0.2); }
+    .sec--dark    { background: var(--navy); border-bottom-color: rgba(0,0,0,0.3); }
+    .sec--deep    { background: var(--navy-deep); border-bottom-color: rgba(0,0,0,0.4); }
+
+    /* Marquee — lead story (In the field). Warm sand + scaled headline; no dark grey block after TOC. */
+    .sec--marquee {
+      background: var(--sand);
+    }
+
+    .sec--marquee .art-title {
+      font-size: clamp(30px, 5vw, 42px);
+      max-width: 24ch;
+      color: var(--navy);
+    }
+
+    .sec--marquee .kicker__rule { background: var(--mint-dark); }
+    .sec--marquee .kicker__label { color: var(--mint-dark); }
+
+    .sec--marquee .field-property {
+      border-bottom-color: var(--rule-light);
+    }
+
+    .sec--marquee .field-property__name,
+    .sec--marquee .field-property__location {
+      color: var(--mint-dark);
+    }
+
+    .sec--marquee .field-story__block {
+      border-bottom-color: var(--rule-light);
+    }
+
+    .sec--marquee .field-story__heading {
+      color: var(--mint-dark);
+    }
+
+    .sec--marquee .field-story__block p,
+    .sec--marquee .field-story-list li,
+    .sec--marquee .field-plan-list li {
+      color: #354F5C;
+    }
+
+    .sec--marquee .field-plan-list strong {
+      color: var(--navy);
+    }
+
+    .sec--marquee .field-results li {
+      border-bottom-color: var(--rule-light);
+      color: #354F5C;
+    }
+
+    .sec--marquee .field-results li::before {
+      color: var(--mint-dark);
+    }
+
+    .sec--marquee .field-story-list li::before {
+      background: var(--mint-dark);
+    }
+
+    .sec--marquee .field-story__cta {
+      border-top-color: var(--rule-light);
+    }
+
+    .sec--marquee .field-story__cta p {
+      color: #49616E;
+    }
+
+    .sec--marquee .pullquote {
+      color: var(--navy);
+    }
+
+    .sec--marquee .quote-attrib__title,
+    .sec--marquee .quote-attrib__location {
+      color: var(--mint-dark);
+    }
+
+    /* Department kicker — centered section label */
+    .kicker {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      margin-bottom: 24px;
+    }
+
+    .kicker__rule {
+      width: 28px;
+      height: 2px;
+      background: var(--mint);
+      flex-shrink: 0;
+    }
+
+    .kicker__label {
+      font-family: var(--display);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--mint);
+    }
+
+    .sec--white .kicker__rule,
+    .sec--light .kicker__rule {
+      background: var(--mint-dark);
+    }
+
+    .sec--white .kicker__label,
+    .sec--light .kicker__label {
+      color: var(--mint-dark);
+    }
+
+    /* Article headline */
+    .art-title {
+      font-family: var(--body);
+      font-weight: 700;
+      font-size: clamp(26px, 4.5vw, 38px);
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      max-width: 22ch;
+      margin-bottom: 20px;
+    }
+
+    .sec--white .art-title,
+    .sec--light .art-title  { color: var(--navy); }
+    .sec--mid .art-title    { color: var(--off-white); }
+    .sec--dark .art-title   { color: var(--off-white); }
+    .sec--deep .art-title   { color: var(--off-white); }
+
+    /* Body copy */
+    .art-body p {
+      font-size: 17px;
+      line-height: 1.72;
+      margin-bottom: 16px;
+      max-width: var(--read);
+    }
+
+    .art-body p:last-child { margin-bottom: 0; }
+
+    .art-signoff {
+      margin-top: 32px;
+      max-width: var(--read);
+    }
+    .art-signoff__line {
+      font-size: 17px;
+      line-height: 1.72;
+      color: #354F5C;
+      margin-bottom: 18px;
+    }
+    .art-signoff__name {
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--navy);
+    }
+    .art-signoff__role {
+      margin-top: 4px;
+      font-family: var(--display);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--mint-dark);
+    }
+
+    .sec--white .art-body p,
+    .sec--light .art-body p { color: #354F5C; }
+
+    .sec--mid .art-body p { color: rgba(235, 245, 248, 0.88); }
+    .sec--dark .art-body p { color: rgba(235, 245, 248, 0.92); }
+    .sec--deep .art-body p { color: rgba(235, 245, 248, 0.88); }
+
+    .art-body ul, .art-body ol {
+      margin: 0 0 16px 20px;
+      max-width: var(--read);
+    }
+
+    .art-body li {
+      font-size: 17px;
+      line-height: 1.65;
+      margin-bottom: 10px;
+    }
+
+    .sec--white .art-body li,
+    .sec--light .art-body li { color: #354F5C; }
+    .sec--mid .art-body li,
+    .sec--dark .art-body li,
+    .sec--deep .art-body li  { color: rgba(235, 245, 248, 0.88); }
+
+    .art-body li::marker { color: var(--mint); }
+    .sec--white .art-body li::marker { color: var(--mint-dark); }
+
+    .art-body strong { color: inherit; font-weight: 700; }
+
+    .sec--dark .art-body strong,
+    .sec--mid .art-body strong,
+    .sec--deep .art-body strong { color: var(--off-white); }
+
+    /* Links */
+    .art-body a { color: var(--mint-dark); font-weight: 600; }
+    .sec--dark .art-body a,
+    .sec--mid .art-body a,
+    .sec--deep .art-body a { color: var(--mint); }
+
+    /* ── CALLOUT (contained aside — Quick Tip, Support) ── */
+    .callout {
+      background: var(--navy);
+      border-left: 4px solid var(--mint);
+      padding: clamp(24px, 4vw, 32px);
+      max-width: var(--read);
+    }
+
+    .callout__kicker {
+      font-family: var(--display);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--mint);
+      margin-bottom: 14px;
+    }
+
+    .callout p {
+      font-size: 18px;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+
+    .callout strong { color: var(--off-white); font-weight: 700; }
+
+    .callout a { color: var(--mint); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+
+    .callout p { color: rgba(235, 245, 248, 0.95); }
+
+    /* ── PULL QUOTE ───────────────────────────────────── */
+    .pullquote {
+      margin: 32px 0 8px;
+      font-size: clamp(19px, 2.8vw, 24px);
+      font-style: italic;
+      line-height: 1.45;
+      color: var(--off-white);
+      border-left: 4px solid var(--mint);
+      padding: 16px 0 16px 24px;
+      max-width: 32ch;
+    }
+
+    /* ── IN THE FIELD: property header ───────────────── */
+    .field-property {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(var(--mint-rgb), 0.15);
+    }
+
+    .field-property__logo {
+      flex-shrink: 0;
+      background: var(--white);
+      padding: 10px 14px;
+      line-height: 0;
+    }
+
+    .field-property__logo img {
+      height: 32px;
+      width: auto;
+      display: block;
+    }
+
+    .field-property__name {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mint);
+      line-height: 1.5;
+    }
+
+    .field-property__location {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--mint);
+      margin-top: 4px;
+      text-transform: none;
+    }
+
+    @media (max-width: 480px) {
+      .field-property { flex-direction: column; align-items: flex-start; }
+    }
+
+    /* ── IN THE FIELD: story stack ───────────────────── */
+    .field-story {
+      display: flex;
+      flex-direction: column;
+      margin-top: 8px;
+    }
+
+    .field-story__block {
+      padding: 26px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .field-story__block:first-child { padding-top: 0; }
+    .field-story__block:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .field-story__block--accent {
+      background: transparent;
+    }
+
+    .field-story__heading {
+      font-family: var(--display);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--mint);
+      margin-bottom: 16px;
+    }
+
+    .field-story__block p {
+      font-size: 16px;
+      line-height: 1.68;
+      color: rgba(235, 245, 248, 0.88);
+      margin-bottom: 14px;
+      max-width: none;
+    }
+
+    .field-story__block p:last-child { margin-bottom: 0; }
+
+    /* Inline bullet list inside The Story */
+    .field-story-list {
+      list-style: none;
+      margin: 0 0 16px 0;
+      padding: 0;
+    }
+
+    .field-story-list li {
+      position: relative;
+      padding-left: 22px;
+      font-size: 16px;
+      line-height: 1.55;
+      color: rgba(235, 245, 248, 0.88);
+      margin-bottom: 10px;
+    }
+
+    .field-story-list li:last-child { margin-bottom: 14px; }
+
+    .field-story-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 11px;
+      width: 10px;
+      height: 2px;
+      background: var(--mint);
+    }
+
+    /* The Plan: two forward-looking outcomes */
+    .field-plan-list {
+      list-style: none;
+      margin: 18px 0 0 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .field-plan-list li {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 14px;
+      font-size: 16px;
+      line-height: 1.65;
+      color: rgba(235, 245, 248, 0.88);
+    }
+
+    .field-plan-list li::before {
+      content: '\2713';
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--mint);
+      line-height: 1.3;
+    }
+
+    .field-plan-list strong {
+      color: var(--off-white);
+      font-weight: 700;
+      margin-right: 4px;
+    }
+
+    /* Results: airy two-column rows, hairline-separated */
+    .field-results {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 32px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      counter-reset: result;
+    }
+
+    @media (max-width: 480px) {
+      .field-results { grid-template-columns: 1fr; }
+    }
+
+    .field-results li {
+      display: flex;
+      gap: 12px;
+      align-items: baseline;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 15px;
+      line-height: 1.45;
+      color: rgba(235, 245, 248, 0.92);
+      margin: 0;
+    }
+
+    .field-results li::before {
+      content: counter(result, decimal-leading-zero);
+      counter-increment: result;
+      font-family: var(--display);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--mint);
+      min-width: 22px;
+    }
+
+    .field-story__cta {
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(var(--mint-rgb), 0.15);
+    }
+
+    .field-story__cta p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: rgba(235, 245, 248, 0.75);
+      margin-bottom: 16px;
+      max-width: none;
+    }
+
+    .field-story__cta a.field-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--body);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      color: var(--navy);
+      background: var(--mint);
+      padding: 16px 26px;
+      transition: background 0.15s;
+    }
+
+    .field-story__cta a.field-cta-btn:hover {
+      background: #7aedc8;
+      color: var(--navy);
+    }
+
+    .field-cta-btn__arrow {
+      font-family: var(--body);
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .quote-attrib {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding-left: 28px;
+      line-height: 1.6;
+    }
+
+    .quote-attrib__title,
+    .quote-attrib__location {
+      display: block;
+      color: var(--mint);
+    }
+
+    .quote-attrib__location {
+      margin-top: 2px;
+    }
+
+    /* ── AUTHOR CARD (de-boxed) ───────────────────────── */
+    .author-card {
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid var(--rule-light);
+      max-width: var(--read);
+    }
+
+    .author-card__header {
+      display: inline-block;
+      margin-bottom: 18px;
+      color: var(--mint-dark);
+      font-family: var(--body);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+    }
+
+    .author-card__header:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .author-card__content {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 0;
+    }
+
+    @media (max-width: 500px) {
+      .author-card__content { flex-direction: column; align-items: center; }
+    }
+
+    .author-card__img {
+      flex-shrink: 0;
+      width: 80px;
+      height: 80px;
+      overflow: hidden;
+      background: var(--sand);
+    }
+
+    .author-card__img img {
+      display: block;
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      object-position: center 10%;
+      filter: saturate(0.85) brightness(1.05) contrast(0.95);
+    }
+
+    .author-card__body { flex: 1; min-width: 0; }
+
+    .author-card__name {
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .author-card__title {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--mint-dark);
+      margin-bottom: 10px;
+    }
+
+    .author-card__contact {
+      font-size: 14px;
+      color: #49616E;
+    }
+
+    .author-card__contact a { color: var(--mint-dark); font-weight: 600; }
+
+    /* ── SERVICES (de-boxed definition list) ──────────── */
+    .svc-list {
+      margin: 28px 0;
+    }
+
+    .svc-list > div {
+      padding: 22px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .svc-list > div:first-child { padding-top: 0; }
+    .svc-list > div:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .svc-list dt {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      color: var(--mint);
+      margin-bottom: 7px;
+    }
+
+    .svc-list dd {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.62;
+      color: rgba(235, 245, 248, 0.86);
+    }
+
+    /* Services list on light/white sections (Beyond the platform) */
+    .sec--white .svc-list > div,
+    .sec--light .svc-list > div {
+      border-bottom-color: var(--rule-light);
+    }
+
+    .sec--white .svc-list dt,
+    .sec--light .svc-list dt {
+      color: var(--mint-dark);
+    }
+
+    .sec--white .svc-list dd,
+    .sec--light .svc-list dd {
+      color: #354F5C;
+    }
+
+    /* ── PLAYBOOK (mint-accent white section) ─────────── */
+    .playbook-accent {
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px;
+      bottom: 0;
+      background: linear-gradient(to bottom, var(--mint) 0%, transparent 100%);
+    }
+
+    .steps {
+      list-style: none;
+      margin: 20px 0;
+      counter-reset: step;
+      max-width: var(--read);
+    }
+
+    .steps li {
+      counter-increment: step;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .steps li::before {
+      content: counter(step, decimal-leading-zero);
+      font-family: var(--display);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--mint-dark);
+      flex-shrink: 0;
+      padding-top: 3px;
+      min-width: 28px;
+    }
+
+    .steps li p { margin: 0; font-size: 17px; color: #354F5C; }
+
+    /* ── DRAFT NOTE ───────────────────────────────────── */
+    .draft {
+      background: rgba(255, 251, 230, 0.08);
+      border: 1px dashed rgba(196, 165, 116, 0.5);
+      padding: 14px 18px;
+      margin: 16px 0;
+      max-width: var(--read);
+      font-size: 15px;
+      line-height: 1.6;
+      color: rgba(235, 245, 248, 0.6);
+    }
+
+    .draft strong {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(196, 165, 116, 0.7);
+      margin-bottom: 6px;
+    }
+
+    /* ── CLOSING ──────────────────────────────────────── */
+    .closing {
+      background: var(--navy-deep);
+      padding: var(--pad);
+      border-top: 4px solid var(--mint);
+    }
+
+    .closing__text {
+      font-size: 17px;
+      line-height: 1.65;
+      color: rgba(165, 179, 188, 0.8);
+      max-width: var(--read);
+    }
+
+    .closing__sig {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--off-white);
+      line-height: 1.5;
+    }
+
+    /* ── FOOTER ───────────────────────────────────────── */
+    .footer {
+      background: var(--navy);
+      padding: var(--pad);
+      border-top: 1px solid rgba(var(--mint-rgb), 0.12);
+    }
+
+    .footer__top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer__tag {
+      font-family: var(--display);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(var(--mint-rgb), 0.6);
+      margin-top: 8px;
+    }
+
+    .footer__links { text-align: right; }
+    .footer__links a {
+      display: block;
+      font-size: 13px;
+      color: rgba(var(--mint-rgb), 0.85);
+      text-decoration: none;
+      margin-bottom: 5px;
+    }
+
+    .footer__links a:hover { color: var(--mint); }
+
+    .footer__legal {
+      font-size: 12px;
+      line-height: 1.7;
+      color: rgba(74, 95, 106, 0.8);
+    }
+
+    .footer__legal-link { color: rgba(var(--mint-rgb), 0.45); text-decoration: none; }
+    .footer__legal-link:hover { color: var(--mint); }
+
+    /* ── EDITOR NOTES ─────────────────────────────────── */
+    .editor-notes {
+      background: #111;
+      padding: 14px var(--pad);
+      font-size: 12px;
+      color: #888;
+      line-height: 1.6;
+    }
+
+    .editor-notes strong { color: #d4a017; }
+</style>
+<article class="issue">
+
+  <!-- MASTHEAD -->
+  <header class="masthead">
+    <div class="masthead__row">
+      <a href="https://lucisystems.com" class="masthead__logo">
+        <img src="https://content.app-us1.com/YzzLp9/2026/05/18/fa1f40ee-c6ac-4c7f-bd96-6a34971de1fa.png" alt="LUCI Systems" height="28">
+      </a>
+      <span class="masthead__vol">Issue 01 · June 2026</span>
+    </div>
+    <h1 class="masthead__title">The<em>Signal.</em></h1>
+    <div class="masthead__issue">
+      <span class="masthead__issue-label">This Issue</span>
+      <span class="masthead__issue-title">Clearing the Deck for Deliberate Action</span>
+    </div>
+    <span class="masthead__numeral" aria-hidden="true">01</span>
+  </header>
+
+  <!-- 01 WELCOME — white -->
+  <section class="sec sec--white" id="welcome">
+    <div class="kicker">
+      <span class="kicker__rule"></span>
+      <span class="kicker__label">Welcome</span>
+      <span class="kicker__rule"></span>
+    </div>
+    <h2 class="art-title">Welcome to The Signal</h2>
+    <div class="art-body">
+      <p>Every property runs on decisions made years ago, but those decisions can set a ceiling on your growth capabilities. Being deliberate in today's decisions gives you the runway to grow into something new &mdash; and that's what this newsletter is here for.</p>
+      <p>We want to build more consistent, proactive communication with you, our customers, so you're in the loop on everything we're doing, how LUCI is evolving, and what's coming next for your properties. The Signal is your hub for fully engaging in our growing partnership.</p>
+      <p>This first issue is about clearing the deck for deliberate action. You'll find a LUCI retrofit at Ameristar Council Bluffs that modernizes a decade-old system and sets the property up for the buildout ahead, a morning reset that trades daily scramble for scheduled automation, an early look at the August LUCI software release and its agentic capabilities, and a new face on the team.</p>
+      <p>The Signal will arrive once a month to keep you ahead of what's next at LUCI. We look forward to sharing in the successes we all achieve together by unifying complex A/V systems into a single interface.</p>
+    </div>
+    <div class="art-signoff">
+      <p class="art-signoff__line">Glad to have you with us for the first one. Let's get into it.</p>
+      <p class="art-signoff__name">Mike Epstein</p>
+      <p class="art-signoff__role">CEO, LUCI Systems</p>
+    </div>
+  </section>
+
+  <!-- TABLE OF CONTENTS -->
+  <nav class="toc" aria-label="In this issue">
+    <p class="toc__label">In this issue</p>
+    <ol class="toc__list">
+      <li><a href="#council-bluffs"><span class="toc__num">01</span><span class="toc__text">In the field</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
+      <li><a href="#coming-summer"><span class="toc__num">02</span><span class="toc__text">What's coming</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
+      <li><a href="#meet-jane"><span class="toc__num">03</span><span class="toc__text">Meet Jane</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
+      <li><a href="#playbook"><span class="toc__num">04</span><span class="toc__text">From the playbook</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
+      <li><a href="#services"><span class="toc__num">05</span><span class="toc__text">Beyond the platform</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
+    </ol>
+  </nav>
+
+  <!-- IN THE FIELD — article 01 -->
+  <section class="sec sec--marquee" id="council-bluffs">
+    <div class="kicker">
+      <span class="kicker__rule"></span>
+      <span class="kicker__label">In the field</span>
+      <span class="kicker__rule"></span>
+    </div>
+    <h2 class="art-title">Three days to a future-ready platform</h2>
+    <div class="art-body">
+      <div class="field-property">
+        <div class="field-property__logo">
+          <img src="https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a1e1c7089803edcc10a8491_ameristar-logo-cropped.png" alt="Ameristar" height="32">
+        </div>
+        <p class="field-property__name">
+          Ameristar Council Bluffs Casino
+          <span class="field-property__location">Council Bluffs, Iowa · Penn Entertainment</span>
+        </p>
+      </div>
+
+      <div class="field-story">
+        <div class="field-story__block">
+          <p class="field-story__heading">The challenge</p>
+          <p>Ameristar Council Bluffs spans a land-based casino and a riverboat. A major land-side buildout and a planned transition off the riverboat were approaching, and with aging equipment from years of incremental upgrades, the property needed a unified, future-ready platform for its next phase of growth.</p>
+        </div>
+
+        <div class="field-story__block field-story__block--accent">
+          <p class="field-story__heading">What LUCI did</p>
+          <p>LUCI completed a full retrofit in under three days, highlighted by the relocation of all AV processing from the riverboat into the property's IT data center on land &mdash; eliminating dedicated AV rooms from the new buildout and reducing future construction costs. The team replaced the head-end systems, amplifiers, and control infrastructure, modernized the system documentation, and completed the work without disrupting daily operations.</p>
+        </div>
+
+        <div class="field-story__block">
+          <p class="field-story__heading">The results</p>
+          <p>LUCI now enables Ameristar to manage all of its complex A/V systems from a single interface &mdash; giving every member of the team one place to control the property from anywhere. That foundation supports unlimited operational users on any browser-based device, built-in automation for daily resets and scheduled adjustments, and ongoing enhancements without additional upgrade licensing costs. In practice, that means:</p>
+          <ul class="field-results">
+            <li>One unified view of every endpoint</li>
+            <li>Broader delegation by zone</li>
+            <li>Faster response to daily needs</li>
+            <li>Automated resets and scheduling</li>
+            <li>Simpler maintenance and expansion</li>
+            <li>Lower long-term infrastructure costs</li>
+          </ul>
+          <p>With the system centralized on land, the property is also set up for what comes next: a clean break from the riverboat when the time comes, and a new buildout that plugs into the platform already powering the property &mdash; no second install, no parallel system to stand up.</p>
+        </div>
+      </div>
+
+      <div class="field-story__cta">
+        <a class="field-cta-btn" href="https://lucisystems.com/case-studies/ameristar-council-bluffs">Read the full case study<span class="field-cta-btn__arrow">→</span></a>
+      </div>
+    </div>
+    <blockquote class="pullquote">"Well done, LUCI team! This was the best installation &mdash; so seamless."</blockquote>
+    <p class="quote-attrib">
+      <span class="quote-attrib__title">Facilities Manager</span>
+      <span class="quote-attrib__location">Ameristar Council Bluffs</span>
+    </p>
+  </section>
+
+  <!-- WHAT'S COMING — article 02 -->
+  <section class="sec sec--light" id="coming-summer">
+    <div class="kicker">
+      <span class="kicker__rule"></span>
+      <span class="kicker__label">Platform</span>
+      <span class="kicker__rule"></span>
+    </div>
+    <h2 class="art-title">What's coming this summer</h2>
+    <div class="art-body">
+      <p>The next version of LUCI is coming in August, a full rollout to all properties.</p>
+      <p>We'll detail the full feature set when we're closer to launch. For now, here's what we'll say: the distance between this version and the next one isn't incremental. The platform you're running today was built to work; <strong>what's coming is built to think.</strong></p>
+      <p><strong>What that means in practice:</strong></p>
+      <ul>
+        <li>A system that monitors itself and responds when something needs attention, before your staff encounters it</li>
+        <li>Capabilities that reduce the intervention your team has to provide to keep things running at their best</li>
+        <li>Updates that arrive as a notification rather than a project</li>
+      </ul>
+      <p>More to come in the next issue, including a preview of what to expect and what your transition will look like.</p>
+    </div>
+  </section>
+
+  <!-- QUICK TIP — callout -->
+  <section class="sec sec--white" id="quick-tip">
+    <div class="callout">
+      <p class="callout__kicker">LUCI Quick Tip</p>
+      <p><strong>Did you know you can control your entire property from your phone?</strong></p>
+      <p>LUCI runs in any browser on any authorized device: pull up the property map, adjust a zone, fire a preset, or change a channel from wherever you are. No separate app, no workstation required. If your team isn't using mobile control yet, it's worth a five-minute test.</p>
+    </div>
+  </section>
+
+  <!-- MEET JANE — article 03 -->
+  <section class="sec sec--light" id="meet-jane">
+    <div class="kicker">
+      <span class="kicker__rule"></span>
+      <span class="kicker__label">Team</span>
+      <span class="kicker__rule"></span>
+    </div>
+    <h2 class="art-title">Meet Jane Haynie</h2>
+    <div class="art-body">
+      <p>We're excited to welcome Jane Haynie to the LUCI team this May. Jane joins us as Digital Marketing Director, bringing twelve years of B2B tech marketing experience to the role.</p>
+      <p>Jane's focus is keeping you informed on what we're building, where we're going, and how to take full advantage of the platform your property runs on. She's the link between LUCI's growth and innovation and your day-to-day operations. If there's a story worth telling or a collaboration worth exploring, she's your first call.</p>
+    </div>
+    <div class="author-card">
+      <a class="author-card__header" href="mailto:jhaynie@lucisystems.com?subject=Welcome%20to%20The%20Signal">Please drop Jane a welcome note or connection request!</a>
+      <div class="author-card__content">
+        <div class="author-card__img">
+          <img src="https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a1e1b1c59b507bb43a6bd65_Jane.jpeg" alt="Jane Haynie, Digital Marketing Director" width="80" height="80">
+        </div>
+        <div class="author-card__body">
+          <p class="author-card__name">Jane Haynie</p>
+          <p class="author-card__title">Digital Marketing Director</p>
+          <p class="author-card__contact">
+            <a href="mailto:jhaynie@lucisystems.com">jhaynie@lucisystems.com</a> ·
+            <a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FROM THE PLAYBOOK — article 04 -->
+  <section class="sec sec--white" id="playbook">
+    <div class="kicker">
+      <span class="kicker__rule"></span>
+      <span class="kicker__label">From the playbook</span>
+      <span class="kicker__rule"></span>
+    </div>
+    <h2 class="art-title">Set a morning reset</h2>
+    <div class="art-body">
+      <p>One of the most useful things on the platform takes about ten minutes to set up, then runs every day without you.</p>
+      <p>Here's the idea: build a preset that puts your entire property into a known, intentional state, then schedule it to fire before the floor opens.</p>
+      <p><strong>What it sets:</strong></p>
+      <ul>
+        <li>Right channels on the right screens</li>
+        <li>Volumes calibrated for the time of day</li>
+        <li>Each venue configured the way you designed it</li>
+      </ul>
+      <p><strong>What you get:</strong> a property that starts each day the way you planned — not the way it ended up after the last shift. No pit boss finding Judge Judy on the sportsbook screens. No morning walk-through to fix volumes that got knocked around overnight.</p>
+      <p><strong>To set one up:</strong></p>
+    </div>
+    <ol class="steps">
+      <li><p>Go to Presets and create a new preset with the state you want</p></li>
+      <li><p>Drop it onto the Calendar</p></li>
+      <li><p>Set it to repeat daily at your preferred time</p></li>
+    </ol>
+    <div class="art-body">
+      <p>If you'd like help building it out, reach out to your FDE. It's a short conversation and one of the highest-ROI calls you'll make.</p>
+      <p>LUCI's engineers are the same people who deployed your system, refine the platform, and answer when something goes wrong, in year five the same as day one. If there's a project on your radar, a question you've been sitting on, or something you just want to think through, we're available. That's part of what you signed up for.</p>
+    </div>
+  </section>
+
+  <!-- SUPPORT PORTAL — callout -->
+  <section class="sec sec--white" id="support-portal">
+    <div class="callout">
+      <p class="callout__kicker">Need a hand?</p>
+      <p><strong>Guides, troubleshooting, and ticket submission live in the <a href="https://lucisystems.atlassian.net/servicedesk/customer/portals">Customer Support Portal</a>.</strong></p>
+      <p>Same team, same engineers. Just another way in.</p>
+    </div>
+  </section>
+
+  <!-- BEYOND THE PLATFORM — article 05 -->
+  <section class="sec sec--light" id="services">
+    <div class="kicker">
+      <span class="kicker__rule"></span>
+      <span class="kicker__label">Beyond the platform</span>
+      <span class="kicker__rule"></span>
+    </div>
+    <h2 class="art-title">What you may not know about LUCI</h2>
+    <div class="art-body">
+      <p>Most clients come to LUCI for the platform. What many don't know is how much sits alongside it.</p>
+      <p>LUCI's founders spent fifty years in this industry, as integrators, operators, and owners. That experience is what makes these services different from what you'd get anywhere else. Here's what's available:</p>
+    </div>
+    <dl class="svc-list">
+      <div>
+        <dt>Technology consulting</dt>
+        <dd>Evaluating a new system or planning an expansion? We've sat on your side of the table. Bring us in before the decision is finalized; we know the questions that don't get asked early enough.</dd>
+      </div>
+      <div>
+        <dt>System design &amp; scope</dt>
+        <dd>LUCI can work directly with your architects and D&amp;C team as technical owner's rep, writing scope docs, designing systems, and coordinating contractors. What gets installed gets engineered for your actual operation.</dd>
+      </div>
+      <div>
+        <dt>Budget planning</dt>
+        <dd>AV budgets built without operational context tend to surprise people. We can help you build a capital plan that reflects where you are, where you're going, and where you can spend less by spending smarter.</dd>
+      </div>
+      <div>
+        <dt>Sister properties</dt>
+        <dd>If you have properties that haven't yet come onto LUCI, the path is shorter than most people expect. Let's talk.</dd>
+      </div>
+    </dl>
+    <div class="art-body">
+      <p>We're hot on the heels of budget season, so if any of these conversations are worth having, now is the time.</p>
+      <p><strong>How can we elevate your guest experience for next year?</strong> Reach out to Mark at <a href="mailto:mfiller@LUCIsystems.com">mfiller@LUCIsystems.com</a> to get started.</p>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <footer class="closing">
+    <p class="closing__text">Thank you for reading. Next issue drops July 15.</p>
+    <p class="closing__sig">Until next month,<br>The LUCI Team</p>
+  </footer>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div>
+        <img src="https://content.app-us1.com/YzzLp9/2026/05/18/1bc8b968-9454-4813-a1b1-6477aaa143f2.png" alt="LUCI" height="22" style="display:block;">
+        <p class="footer__tag">The Smarter Platform for Enterprise Multimedia</p>
+      </div>
+      <div class="footer__links">
+        <a href="https://lucisystems.com">lucisystems.com</a>
+        <a href="https://lucisystems.atlassian.net/servicedesk/customer/portals">Support portal</a>
+        <a href="mailto:support@lucisystems.com">support@lucisystems.com</a>
+      </div>
+    </div>
+    <p class="footer__legal">
+      You're receiving The Signal as a LUCI customer. &nbsp;·&nbsp;
+      <a href="#" class="footer__legal-link">Manage preferences</a> &nbsp;·&nbsp;
+      <a href="#" class="footer__legal-link">Unsubscribe</a><br>
+      © 2026 LUCI Systems · The Smarter Platform for Enterprise Multimedia
+    </p>
+  </footer>
+
+</article>
