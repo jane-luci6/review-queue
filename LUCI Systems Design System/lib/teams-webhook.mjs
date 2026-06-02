@@ -49,20 +49,69 @@ export function buildMessageCard({
   return card;
 }
 
-export async function postTeamsWebhook(webhookUrl, card) {
+export async function postTeamsWebhook(webhookUrl, body) {
   const url = (webhookUrl || '').trim();
   if (!url) return { ok: false, skipped: true };
   try {
     const res = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(card),
+      body: JSON.stringify(body),
     });
-    const body = await res.text().catch(() => '');
-    return { ok: res.ok, status: res.status, body };
+    const text = await res.text().catch(() => '');
+    return { ok: res.ok, status: res.status, body: text };
   } catch (err) {
     return { ok: false, error: String(err.message || err) };
   }
+}
+
+/** Power Automate / Logic Apps HTTP trigger — not a Teams channel. */
+export function isPowerAutomateWebhook(url) {
+  return /logic\.azure\.com|powerautomate|powerplatform|flow\.microsoft|azure-apihub/i.test(url || '');
+}
+
+/**
+ * auto = MessageCard for channel webhooks, plain JSON for Power Automate (DM you only).
+ * Set REVIEW_TEAMS_OWNER_FORMAT=powerautomate to force when auto-detection fails.
+ */
+export function ownerWebhookFormat(url) {
+  const mode = (process.env.REVIEW_TEAMS_OWNER_FORMAT || 'auto').trim().toLowerCase();
+  if (mode === 'powerautomate' || mode === 'flow') return 'powerautomate';
+  if (mode === 'messagecard' || mode === 'channel') return 'messagecard';
+  return isPowerAutomateWebhook(url) ? 'powerautomate' : 'messagecard';
+}
+
+/** Flat JSON for Power Automate → Post message in a chat (recipient = you only). */
+export function buildOwnerAlertPayload({
+  alertType,
+  summary,
+  assetTitle,
+  assetId,
+  author = '',
+  reviewer = '',
+  text = '',
+  link = '',
+}) {
+  const lines = [summary];
+  if (text) lines.push('', text);
+  if (link) lines.push('', `Open: ${link}`);
+  return {
+    alertType,
+    summary,
+    message: lines.join('\n'),
+    assetTitle,
+    assetId,
+    author,
+    reviewer,
+    text,
+    link,
+  };
+}
+
+export async function postOwnerWebhook(url, { messageCard, ownerPayload }) {
+  const format = ownerWebhookFormat(url);
+  const body = format === 'powerautomate' ? ownerPayload : messageCard;
+  return postTeamsWebhook(url, body);
 }
 
 export function loadDotEnv(envPath) {

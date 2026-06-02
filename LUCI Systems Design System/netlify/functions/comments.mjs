@@ -2,8 +2,9 @@ import { getStore } from '@netlify/blobs';
 import {
   assetReviewLink,
   buildMessageCard,
+  buildOwnerAlertPayload,
   ownerWebhookUrl,
-  postTeamsWebhook,
+  postOwnerWebhook,
 } from '../../lib/teams-webhook.mjs';
 
 const HEADERS = {
@@ -35,10 +36,10 @@ function normalizeReviewer(name) {
   return REVIEWERS.includes(n) ? n : '';
 }
 
-async function notifyOwner(card) {
+async function notifyOwner({ messageCard, ownerPayload }) {
   const url = ownerWebhookUrl();
   if (!url) return;
-  const result = await postTeamsWebhook(url, card);
+  const result = await postOwnerWebhook(url, { messageCard, ownerPayload });
   if (!result.ok && !result.skipped) {
     console.error('Teams (owner) failed:', result.status || result.error || result.body);
   }
@@ -49,9 +50,10 @@ async function notifyOwnerComment(entry, body) {
   const title = assetTitle || entry.assetId || 'Review asset';
   const excerpt = entry.text.length > 500 ? `${entry.text.slice(0, 497)}…` : entry.text;
   const link = assetReviewLink(entry.assetId, body.reviewUrl);
-  await notifyOwner(
-    buildMessageCard({
-      summary: `${entry.author} commented on ${title}`,
+  const summary = `${entry.author} commented on ${title}`;
+  await notifyOwner({
+    messageCard: buildMessageCard({
+      summary,
       activityTitle: 'New review comment',
       activitySubtitle: title,
       facts: [
@@ -60,16 +62,26 @@ async function notifyOwnerComment(entry, body) {
       ],
       text: excerpt,
       link,
-    })
-  );
+    }),
+    ownerPayload: buildOwnerAlertPayload({
+      alertType: 'comment',
+      summary,
+      assetTitle: title,
+      assetId: entry.assetId,
+      author: entry.author,
+      text: excerpt,
+      link,
+    }),
+  });
 }
 
 async function notifyOwnerApproval({ assetId, reviewer, assetTitle, reviewUrl }) {
   const title = (assetTitle || '').trim() || assetId;
   const link = assetReviewLink(assetId, reviewUrl);
-  await notifyOwner(
-    buildMessageCard({
-      summary: `${reviewer} approved ${title}`,
+  const summary = `${reviewer} approved ${title}`;
+  await notifyOwner({
+    messageCard: buildMessageCard({
+      summary,
       activityTitle: 'Stakeholder approval',
       activitySubtitle: title,
       facts: [
@@ -78,8 +90,16 @@ async function notifyOwnerApproval({ assetId, reviewer, assetTitle, reviewUrl })
       ],
       link,
       themeColor: '2b9e80',
-    })
-  );
+    }),
+    ownerPayload: buildOwnerAlertPayload({
+      alertType: 'approval',
+      summary,
+      assetTitle: title,
+      assetId,
+      reviewer,
+      link,
+    }),
+  });
 }
 
 export default async (req) => {

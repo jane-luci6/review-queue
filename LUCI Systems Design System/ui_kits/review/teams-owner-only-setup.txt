@@ -1,0 +1,95 @@
+# Jane-only Teams alerts (Mike/Nick will NOT see comment/approve pings)
+
+Channel webhooks post to everyone in the channel. For YOUR alerts only, use a
+Teams Workflow that posts to a CHAT with you — not the channel webhook URL.
+
+================================================================================
+OPTION A — Start in Teams (easiest if Power Automate lists look empty)
+================================================================================
+
+1. Open Microsoft Teams (desktop or web).
+
+2. Go to any team/channel (your LUCI review channel is fine).
+
+3. Next to the channel name, click  •••  →  Workflows
+   (Some tenants: click channel name → Manage channel → Workflows tab.)
+
+4. In the template search box, type:
+   Post to a chat when a webhook request is received
+
+5. Select that template → Next / Continue.
+
+6. When it asks who should receive the chat:
+   Choose YOURSELF (not the channel).
+
+7. Finish the wizard. Open the workflow for editing if needed.
+
+8. Click the first step (webhook trigger). Copy the HTTP POST URL.
+   That URL = REVIEW_TEAMS_WEBHOOK_OWNER in Netlify.
+
+9. Netlify → Environment variables (Production):
+   REVIEW_SITE_URL=https://startling-fudge-f9965f.netlify.app
+   REVIEW_TEAMS_WEBHOOK_OWNER=<URL from step 8>
+   REVIEW_TEAMS_OWNER_FORMAT=powerautomate
+
+10. Trigger deploy on main. Test a comment on the live review site.
+
+================================================================================
+OPTION B — Start in Power Automate (make.powerautomate.com)
+================================================================================
+
+The old trigger was renamed. Search for one of these (not "HTTP" alone):
+
+  • When a Teams webhook request is received     ← most common now
+  • When a Teams webhook request is received V2
+
+Steps:
+
+1. Create → Automated cloud flow (or Instant cloud flow).
+
+2. Skip templates OR pick "Build your own".
+
+3. Choose your flow's trigger → search:  Teams webhook
+
+4. Select  When a Teams webhook request is received  (Microsoft Teams connector).
+
+5. Save once → open the trigger → copy HTTP POST URL.
+
+6. + New step → Post message in a chat or channel
+   Post as: Flow bot
+   Post in: Chat
+   Chat with: [you]
+   Message: Dynamic content → message  (or Body from trigger)
+
+7. Save, turn On. Use the URL in Netlify as REVIEW_TEAMS_WEBHOOK_OWNER.
+
+================================================================================
+OPTION C — You only see "Post to a channel when a webhook request is received"
+================================================================================
+
+That template posts to the CHANNEL (Mike/Nick see it). Do NOT use that URL for
+REVIEW_TEAMS_WEBHOOK_OWNER.
+
+Keep looking for the CHAT variant (Option A search string), or Option B.
+
+================================================================================
+What goes in Netlify (Jane only)
+================================================================================
+
+  REVIEW_TEAMS_WEBHOOK_OWNER     → Workflow / Power Automate URL (chat to you)
+  REVIEW_TEAMS_WEBHOOK_STAKEHOLDERS → Later: channel webhook for Mike/Nick
+
+Never put the channel Incoming Webhook URL in REVIEW_TEAMS_WEBHOOK_OWNER.
+
+================================================================================
+Troubleshooting
+================================================================================
+
+• No Workflows menu on channel
+  → Your org may restrict it; ask IT or use make.powerautomate.com (Option B).
+
+• Flow runs but empty message
+  → In the post step use field: message  (or Expression: triggerBody()?['message'])
+
+• Still posts to channel
+  → Wrong template or wrong URL; you used the channel workflow, not chat.

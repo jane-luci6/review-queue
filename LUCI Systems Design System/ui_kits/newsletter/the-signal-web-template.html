@@ -874,7 +874,7 @@
       color: #354F5C;
     }
 
-    /* ── PLAYBOOK (mint-accent white section) ─────────── */
+    /* ── INSIDE LUCI (mint-accent white section) ─── */
     .playbook-accent {
       position: absolute;
       top: 0; left: 0;
@@ -937,6 +937,14 @@
       background: var(--navy-deep);
       padding: var(--pad);
       border-top: 4px solid var(--mint);
+    }
+
+    .closing__lead {
+      font-size: 17px;
+      line-height: 1.65;
+      color: rgba(235, 245, 248, 0.92);
+      max-width: var(--read);
+      margin-bottom: 14px;
     }
 
     .closing__text {
@@ -1026,7 +1034,7 @@
       • ARTICLES  — substantive stories. Numbered 01,02,… in the TOC ("In this
                     issue"), in reading order. Recurring departments:
                     In the field · What's coming · Meet [name] · From the
-                    playbook · Beyond the platform.
+                    Inside LUCI · Beyond the platform.
       • CALLOUTS  — short asides (Quick tip, Support portal, …). NOT numbered,
                     NOT in the TOC. Render as a contained navy <div class="callout">
                     on a white section — never a full-bleed section flush against
@@ -1099,7 +1107,7 @@
       <li><a href="#field"><span class="toc__num">01</span><span class="toc__text">In the field</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
       <li><a href="#coming"><span class="toc__num">02</span><span class="toc__text">What's coming</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
       <li><a href="#meet"><span class="toc__num">03</span><span class="toc__text">Meet [name]</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
-      <li><a href="#playbook"><span class="toc__num">04</span><span class="toc__text">From the playbook</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
+      <li><a href="#playbook"><span class="toc__num">04</span><span class="toc__text">Inside LUCI</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
       <li><a href="#services"><span class="toc__num">05</span><span class="toc__text">Beyond the platform</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
     </ol>
   </nav>
@@ -1227,11 +1235,11 @@
     </div>
   </section>
 
-  <!-- ════ ARTICLE 04 · FROM THE PLAYBOOK (how-to story) — white ════ -->
+  <!-- ════ ARTICLE 04 · INSIDE LUCI (how-to in LUCI) — white ════ -->
   <section class="sec sec--white" id="playbook">
     <div class="kicker">
       <span class="kicker__rule"></span>
-      <span class="kicker__label">From the playbook</span>
+      <span class="kicker__label">Inside LUCI</span>
       <span class="kicker__rule"></span>
     </div>
     <!-- EDIT: action-oriented headline -->
@@ -1269,21 +1277,25 @@
     </div>
     <h2 class="art-title">What you may not know about LUCI</h2>
     <div class="art-body">
-      <p>A short lead-in framing the services that sit alongside the platform.</p>
+      <p>Most clients come to LUCI for the platform. What many don't know is that the same FDEs who deployed your system stay with you, working as an extension of your team.</p>
+      <p>Our founders spent fifty years as integrators, operators, and owners. Here's what that looks like in practice:</p>
     </div>
     <dl class="svc-list">
-      <!-- EDIT: one <div> per service; add/remove as needed -->
       <div>
-        <dt>Service name</dt>
-        <dd>One or two sentences on what it is and when to bring LUCI in.</dd>
+        <dt>Technology consulting</dt>
+        <dd>Weighing a new system or an expansion? Email your FDE, and we'll get on the calendar. We've sat on your side of the table and catch the questions that usually get skipped before budget is signed.</dd>
       </div>
       <div>
-        <dt>Service name</dt>
-        <dd>One or two sentences on what it is and when to bring LUCI in.</dd>
+        <dt>Design &amp; owner's rep</dt>
+        <dd>Building or changing a space? Send us the plans. We join your architect, scope AV and multimedia for how you operate, and hold the standard. You can bid install elsewhere if you prefer; we'll align the result either way.</dd>
       </div>
       <div>
-        <dt>Service name</dt>
-        <dd>One or two sentences on what it is and when to bring LUCI in.</dd>
+        <dt>Budget planning</dt>
+        <dd>When we design a space, we build the budget from your plans as part of the package, so you have real numbers before bid and a clear view of where to trim without hurting operations.</dd>
+      </div>
+      <div>
+        <dt>Sister properties</dt>
+        <dd>Another site not on LUCI yet? Onboarding is shorter than most expect, with the same team and the same standards. Let's talk when you're ready.</dd>
       </div>
     </dl>
     <div class="art-body">
@@ -1293,9 +1305,11 @@
 
   <!-- CLOSING -->
   <footer class="closing">
-    <!-- EDIT: next issue date -->
-    <p class="closing__text">Thank you for reading. Next issue drops [date].</p>
-    <p class="closing__sig">Until next month,<br>The LUCI Team</p>
+    <!-- EDIT: issue-specific sign-off line -->
+    <p class="closing__lead">That's it for this issue.</p>
+    <!-- EDIT: next issue date in second sentence of closing__text -->
+    <p class="closing__text">Your partnership with LUCI is built for the long term, and The Signal keeps you ahead of what we're building for your properties. The next issue arrives [date].</p>
+    <p class="closing__sig">Talk soon,<br>The LUCI Team</p>
   </footer>
 
   <!-- FOOTER -->

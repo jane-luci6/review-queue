@@ -451,22 +451,42 @@
     }
 
     .cta__body {
-      font-size: 17px;
-      line-height: 1.65;
-      color: rgba(235, 245, 248, 0.8);
-      max-width: 56ch;
-      margin-bottom: 28px;
+      font-family: var(--body);
+      font-weight: 700;
+      font-size: clamp(22px, 3vw, 30px);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: var(--off-white);
+      max-width: 24ch;
+      margin-bottom: 24px;
+    }
+
+    /* Boilerplate — demoted supporting "About LUCI" identity text */
+    .cta__about {
+      margin-top: 40px;
+      padding-top: 26px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      max-width: 62ch;
+    }
+
+    .cta__about-label {
+      font-family: var(--display);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(var(--mint-rgb), 0.7);
+      margin-bottom: 10px;
     }
 
     .cta__statement {
       font-family: var(--body);
-      font-weight: 600;
-      font-size: clamp(20px, 2.6vw, 25px);
-      line-height: 1.4;
-      letter-spacing: -0.015em;
-      color: var(--off-white);
-      max-width: 44ch;
-      margin-bottom: 22px;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.65;
+      color: rgba(165, 179, 188, 0.88);
+      max-width: 62ch;
+      margin-bottom: 0;
     }
 
     .cta-btn {
@@ -646,9 +666,12 @@
 
   <!-- CTA -->
   <section class="cta">
-    <p class="cta__statement">LUCI is the operating system for complex properties &mdash; one platform that unifies every A/V, signage, building, and operational system into a single interface your team controls from anywhere so you can strategically activate the guest experience.</p>
     <p class="cta__body">Curious what this looks like for your property? Let's talk.</p>
     <a class="cta-btn" href="https://lucisystems.com/contact">Talk to LUCI<span class="cta-btn__arrow">&rarr;</span></a>
+    <div class="cta__about">
+      <p class="cta__about-label">About LUCI</p>
+      <p class="cta__statement">LUCI is the operating system for complex properties &mdash; one platform that unifies every A/V, signage, building, and operational system into a single interface your team controls from anywhere so you can strategically activate the guest experience.</p>
+    </div>
   </section>
 
   <!-- FOOTER -->
