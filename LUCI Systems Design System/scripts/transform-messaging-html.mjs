@@ -127,6 +127,8 @@ function transformParagraphs(html) {
   );
   out = out.replace(/<p class="doc-prose">\s*<br\s*\/?>\s*<\/p>/gi, '');
   out = out.replace(/<ul class="doc-rows"><\/ul>/gi, '');
+  out = out.replace(/<ul class="ul\d*">/gi, '<ul class="doc-list">');
+  out = out.replace(/<ol class="ol\d*">/gi, '<ol class="doc-list doc-list--ordered">');
   return out;
 }
 
