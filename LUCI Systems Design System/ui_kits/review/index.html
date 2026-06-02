@@ -112,6 +112,52 @@
     .due.is-overdue { background: rgba(196, 92, 38, 0.12); color: var(--warn); }
     .due.is-soon { background: rgba(var(--mint-rgb), 0.25); }
     .badge-comments { font-size: 13px; font-weight: 500; color: var(--navy-muted); }
+    .badge-approval { font-size: 13px; font-weight: 500; color: var(--navy-muted); }
+    .badge-approval.is-done { color: var(--mint-dark); font-weight: 600; }
+    .badge-version {
+      font-family: var(--display); font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--navy-muted);
+    }
+
+    .version-block {
+      margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--rule-light); max-width: 68ch;
+    }
+    .version-block__kicker {
+      font-family: var(--display); font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--mint-dark); margin-bottom: 8px;
+    }
+    .version-block__current { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+    .version-block__note {
+      font-size: 15px; line-height: 1.6; color: var(--body-ink); padding: 14px 16px;
+      background: var(--off-white); border-left: 4px solid var(--mint); margin-bottom: 12px;
+    }
+    .version-block__note strong { font-weight: 600; color: var(--navy); }
+    .version-block__history-title {
+      font-family: var(--display); font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--navy-muted); margin: 16px 0 10px;
+    }
+    .version-history { list-style: none; padding: 0; margin: 0; }
+    .version-history__row {
+      padding: 12px 0; border-bottom: 1px solid var(--rule-light);
+      display: grid; grid-template-columns: 3rem 1fr; gap: 8px 12px; align-items: baseline;
+    }
+    .version-history__row:last-child { border-bottom: none; }
+    .version-history__ver {
+      font-family: var(--display); font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--navy);
+    }
+    .version-history__meta { font-size: 14px; color: var(--navy-muted); }
+    .version-history__note { grid-column: 1 / -1; font-size: 14px; color: var(--body-ink); margin: 0; }
+
+    .approval-panel { padding-top: 24px; border-top: 1px solid var(--rule-light); margin-top: 28px; }
+    .approval-panel__title { font-family: var(--display); font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mint-dark); margin-bottom: 14px; }
+    .approval-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; padding: 12px 0; border-bottom: 1px solid var(--rule-light); }
+    .approval-row:last-child { border-bottom: none; }
+    .approval-row__name { font-size: 15px; font-weight: 600; color: var(--body-ink); min-width: 3.5rem; }
+    .approval-row__status { font-size: 14px; color: var(--navy-muted); flex: 1; min-width: 10rem; }
+    .approval-row__status.is-approved { color: var(--mint-dark); font-weight: 600; }
+    .btn--approve.is-approved { background: transparent; color: var(--navy-muted); border-color: var(--rule-light); }
+    .approval-panel__hint { font-size: 13px; color: var(--navy-muted); margin-top: 10px; }
     .queue-item__action {
       font-family: var(--display);
       font-size: 10px;
@@ -143,6 +189,8 @@
     /* ── Detail view ── */
     .detail { padding: var(--pad); max-width: 100%; }
     .detail__head { margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--rule-light); }
+    .detail__head .badge-version,
+    .detail__head .due { display: inline-block; margin-right: 12px; margin-top: 8px; }
     .detail__title { font-size: clamp(22px, 4vw, 28px); font-weight: 700; color: var(--navy); letter-spacing: -0.02em; margin-bottom: 10px; }
     .review-brief {
       margin-bottom: 24px;
@@ -281,7 +329,7 @@
 const REVIEW_DATA = {
   "queue": {
     "updated": "2026-06-02",
-    "publishNote": "Build: node scripts/build-stakeholder-review.mjs. Host on Netlify (netlify.toml) so comments save in-portal. Email Mike/Nick yourself when you add or update an asset — not on each comment.",
+    "publishNote": "Build + ./publish.sh. Bump reviewVersion + versionNote for new uploads (Teams + version history on site). Set due for first-time review. See teams-notifications-guide.txt.",
     "commentsApiUrl": "",
     "commentsApiNote": "Optional full URL if review page is on Webflow but API is on Netlify. Leave empty when the whole site is on Netlify.",
     "previewBaseUrl": "",
@@ -308,6 +356,8 @@ const REVIEW_DATA = {
         "id": "signal-hub",
         "title": "The Signal · Newsletter Hub",
         "summary": "Newsletter hub — layout, featured issue, archive.",
+        "reviewVersion": 1,
+        "versionNote": "",
         "due": "2026-06-04",
         "liveUrl": "https://www.lucisystems.com/the-signal/home",
         "previewUrl": "",
@@ -315,12 +365,21 @@ const REVIEW_DATA = {
         "reviewBrief": {
           "description": "The Signal hub is the customer-facing home for our newsletter—one stable place to find every issue as we publish.",
           "reviewAsk": "overall look and feel, and any design suggestions before we promote it."
-        }
+        },
+        "versionHistory": [
+          {
+            "version": 1,
+            "published": "2026-06-02",
+            "note": ""
+          }
+        ]
       },
       {
         "id": "signal-issue-01",
         "title": "The Signal · Issue 01 (June 2026)",
         "summary": "Issue 01 — tone, Ameristar story, platform, team, playbook.",
+        "reviewVersion": 1,
+        "versionNote": "",
         "due": "2026-06-05",
         "liveUrl": "https://www.lucisystems.com/the-signal/issue-01",
         "previewUrl": "",
@@ -328,12 +387,21 @@ const REVIEW_DATA = {
         "reviewBrief": {
           "description": "Issue 01 is the first full web edition of The Signal—welcome, field story, platform preview, team, playbook, and services.",
           "reviewAsk": "the sections with instructions, steps, or services—confirm we've explained them correctly."
-        }
+        },
+        "versionHistory": [
+          {
+            "version": 1,
+            "published": "2026-06-02",
+            "note": ""
+          }
+        ]
       },
       {
         "id": "case-study-ameristar",
         "title": "Case Study · Ameristar Council Bluffs",
         "summary": "Ameristar case study — narrative, results, CTA.",
+        "reviewVersion": 1,
+        "versionNote": "",
         "due": "2026-06-06",
         "liveUrl": "",
         "previewUrl": "case-studies/ameristar-council-bluffs.html",
@@ -341,7 +409,14 @@ const REVIEW_DATA = {
         "reviewBrief": {
           "description": "The Ameristar case study is the long-form Council Bluffs relocation and LUCI rollout story for the website, sales, and export.",
           "reviewAsk": "accuracy and story—whether we represented everything correctly."
-        }
+        },
+        "versionHistory": [
+          {
+            "version": 1,
+            "published": "2026-06-02",
+            "note": ""
+          }
+        ]
       }
     ],
     "upcoming": [
@@ -381,7 +456,9 @@ const REVIEW_DATA = {
     "messagingDocsUpdated": "2026-06-02"
   },
   "comments": [],
-  "commentsUpdated": "2026-06-01"
+  "commentsUpdated": "2026-06-01",
+  "approvals": {},
+  "approvalsUpdated": "2026-06-02"
 };
 
 (function () {
@@ -393,7 +470,10 @@ const REVIEW_DATA = {
     return;
   }
   const q = REVIEW_DATA.queue;
+  const REVIEWERS = ['Mike', 'Nick'];
+  const LS_APPROVALS = 'luci-review-approvals';
   let allComments = (REVIEW_DATA.comments || []).slice();
+  let approvalsByAsset = Object.assign({}, REVIEW_DATA.approvals || {});
   let commentsApiEnabled = false;
 
   function showToast(msg) {
@@ -411,9 +491,29 @@ const REVIEW_DATA = {
     return '';
   }
 
-  async function loadCommentsFromApi() {
+  function loadApprovalsFromLocalStorage() {
+    try {
+      const raw = localStorage.getItem(LS_APPROVALS);
+      if (!raw) return;
+      const parsed = JSON.parse(raw);
+      if (parsed && typeof parsed === 'object') {
+        approvalsByAsset = Object.assign({}, approvalsByAsset, parsed);
+      }
+    } catch (e) { /* ignore */ }
+  }
+
+  function saveApprovalsToLocalStorage() {
+    try {
+      localStorage.setItem(LS_APPROVALS, JSON.stringify(approvalsByAsset));
+    } catch (e) { /* ignore */ }
+  }
+
+  async function loadReviewStateFromApi() {
     const url = commentsApiUrl();
-    if (!url) return;
+    if (!url) {
+      loadApprovalsFromLocalStorage();
+      return;
+    }
     try {
       const controller = new AbortController();
       const timer = setTimeout(() => controller.abort(), 4000);
@@ -422,9 +522,63 @@ const REVIEW_DATA = {
       if (res.ok) {
         const data = await res.json();
         allComments = data.comments || [];
+        if (data.approvals && typeof data.approvals === 'object') {
+          approvalsByAsset = data.approvals;
+        }
         commentsApiEnabled = true;
+      } else {
+        loadApprovalsFromLocalStorage();
       }
-    } catch (e) { /* local preview or API unavailable */ }
+    } catch (e) {
+      loadApprovalsFromLocalStorage();
+    }
+  }
+
+  function approvalAt(assetId, reviewer) {
+    const row = approvalsByAsset[assetId];
+    return row && row[reviewer] ? row[reviewer] : '';
+  }
+
+  function formatApprovalWhen(iso) {
+    if (!iso) return '';
+    const d = new Date(iso);
+    if (Number.isNaN(d.getTime())) return '';
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  }
+
+  function approvalSummaryText(assetId) {
+    return REVIEWERS.map((name) => {
+      const at = approvalAt(assetId, name);
+      return name + (at ? ' ✓' : ' —');
+    }).join(' · ');
+  }
+
+  async function toggleApproval(item, reviewer) {
+    const assetId = item.id;
+    if (commentsApiEnabled) {
+      const res = await fetch(commentsApiUrl(), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'approval',
+          assetId,
+          reviewer,
+          assetTitle: item.title,
+          reviewUrl: new URL('#/review/' + encodeURIComponent(assetId), window.location.href).href,
+        }),
+      });
+      if (!res.ok) throw new Error('fail');
+      const data = await res.json();
+      if (data.approvals) approvalsByAsset = data.approvals;
+      return !!approvalAt(assetId, reviewer);
+    }
+    const row = Object.assign({}, approvalsByAsset[assetId] || {});
+    if (row[reviewer]) delete row[reviewer];
+    else row[reviewer] = new Date().toISOString();
+    if (Object.keys(row).length) approvalsByAsset[assetId] = row;
+    else delete approvalsByAsset[assetId];
+    saveApprovalsToLocalStorage();
+    return !!approvalAt(assetId, reviewer);
   }
 
   function formatDue(iso) {
@@ -573,6 +727,81 @@ const REVIEW_DATA = {
   function summaryLine(item) {
     const t = (item.summary || item.context || '').trim();
     return t.length > 120 ? t.slice(0, 117) + '…' : t;
+  }
+
+  function reviewVersionNum(item) {
+    const n = Number(item.reviewVersion);
+    return Number.isFinite(n) && n >= 1 ? Math.floor(n) : 1;
+  }
+
+  function versionHistoryList(item) {
+    const h = item.versionHistory;
+    if (!Array.isArray(h)) return [];
+    return h.slice().sort((a, b) => (b.version || 0) - (a.version || 0));
+  }
+
+  function renderVersionBlock(item) {
+    const v = reviewVersionNum(item);
+    const hist = versionHistoryList(item);
+    const current = hist.find((e) => e.version === v) || hist[0];
+    const note = (item.versionNote || (current && current.note) || '').trim();
+
+    const block = document.createElement('div');
+    block.className = 'version-block';
+
+    const kicker = document.createElement('p');
+    kicker.className = 'version-block__kicker';
+    kicker.textContent = 'Review version';
+    block.appendChild(kicker);
+
+    const currentRow = document.createElement('p');
+    currentRow.className = 'version-block__current';
+    let line = 'Version ' + v;
+    if (current && current.published) {
+      line += ' · Published ' + formatDue(String(current.published).slice(0, 10));
+    }
+    currentRow.textContent = line;
+    block.appendChild(currentRow);
+
+    if (note) {
+      const callout = document.createElement('p');
+      callout.className = 'version-block__note';
+      callout.innerHTML = '<strong>What changed</strong> ' + note;
+      block.appendChild(callout);
+    }
+
+    if (hist.length > 1) {
+      const h2 = document.createElement('h3');
+      h2.className = 'version-block__history-title';
+      h2.textContent = 'Version history';
+      block.appendChild(h2);
+      const ul = document.createElement('ul');
+      ul.className = 'version-history';
+      hist.forEach((entry) => {
+        const li = document.createElement('li');
+        li.className = 'version-history__row';
+        const label = document.createElement('span');
+        label.className = 'version-history__ver';
+        label.textContent = 'v' + entry.version;
+        const meta = document.createElement('span');
+        meta.className = 'version-history__meta';
+        meta.textContent = entry.published
+          ? formatDue(String(entry.published).slice(0, 10))
+          : '—';
+        li.appendChild(label);
+        li.appendChild(meta);
+        if (entry.note) {
+          const n = document.createElement('p');
+          n.className = 'version-history__note';
+          n.textContent = entry.note;
+          li.appendChild(n);
+        }
+        ul.appendChild(li);
+      });
+      block.appendChild(ul);
+    }
+
+    return block;
   }
 
   function getRoute() {
@@ -731,6 +960,10 @@ const REVIEW_DATA = {
 
     const meta = document.createElement('div');
     meta.className = 'queue-item__meta';
+    const verBadge = document.createElement('span');
+    verBadge.className = 'badge-version';
+    verBadge.textContent = 'v' + reviewVersionNum(item);
+    meta.appendChild(verBadge);
     if (item.due) {
       const due = document.createElement('span');
       due.className = 'due ' + dueClass(item.due);
@@ -744,6 +977,12 @@ const REVIEW_DATA = {
       b.textContent = cc + ' comment' + (cc === 1 ? '' : 's');
       meta.appendChild(b);
     }
+    const appr = document.createElement('span');
+    const done = REVIEWERS.filter((n) => approvalAt(item.id, n)).length;
+    appr.className = 'badge-approval' + (done ? ' is-done' : '');
+    appr.textContent = approvalSummaryText(item.id);
+    appr.title = 'Stakeholder sign-off';
+    meta.appendChild(appr);
 
     const action = document.createElement('span');
     action.className = 'queue-item__action';
@@ -844,6 +1083,69 @@ const REVIEW_DATA = {
     });
   }
 
+  function appendApprovalPanel(item, parent) {
+    const panel = document.createElement('section');
+    panel.className = 'approval-panel';
+    panel.innerHTML = '<h2 class="approval-panel__title">Stakeholder sign-off</h2>';
+
+    REVIEWERS.forEach((name) => {
+      const row = document.createElement('div');
+      row.className = 'approval-row';
+
+      const label = document.createElement('span');
+      label.className = 'approval-row__name';
+      label.textContent = name;
+
+      const status = document.createElement('span');
+      status.className = 'approval-row__status';
+
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'btn btn--approve';
+
+      function paint() {
+        const at = approvalAt(item.id, name);
+        const approved = !!at;
+        status.textContent = approved ? 'Approved ' + formatApprovalWhen(at) : 'Not approved yet';
+        status.classList.toggle('is-approved', approved);
+        btn.textContent = approved ? 'Undo approval' : 'Approve';
+        btn.classList.toggle('is-approved', approved);
+        btn.setAttribute('aria-pressed', approved ? 'true' : 'false');
+      }
+
+      btn.addEventListener('click', async () => {
+        btn.disabled = true;
+        try {
+          const nowApproved = await toggleApproval(item, name);
+          paint();
+          showToast(nowApproved ? name + ' approved this asset.' : 'Approval removed.');
+        } catch (e) {
+          showToast('Could not save — try again.');
+        } finally {
+          btn.disabled = false;
+        }
+      });
+
+      paint();
+      row.appendChild(label);
+      row.appendChild(status);
+      row.appendChild(btn);
+      panel.appendChild(row);
+    });
+
+    if (!commentsApiEnabled) {
+      const hint = document.createElement('p');
+      hint.className = 'approval-panel__hint';
+      hint.textContent = commentsApiUrl()
+        ? 'Sign-off syncs when the review API is available.'
+        : 'On the published review site, sign-off is shared for Mike and Nick. Locally, it is saved in this browser only.';
+      panel.appendChild(hint);
+    }
+
+    parent.appendChild(panel);
+    return panel;
+  }
+
   function renderCommentForm(item, threadEl) {
     const form = document.createElement('div');
     form.className = 'comment-form';
@@ -873,7 +1175,13 @@ const REVIEW_DATA = {
         const res = await fetch(commentsApiUrl(), {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ assetId: item.id, author: who, text }),
+          body: JSON.stringify({
+            assetId: item.id,
+            assetTitle: item.title,
+            author: who,
+            text,
+            reviewUrl: new URL('#/review/' + encodeURIComponent(item.id), window.location.href).href,
+          }),
         });
         if (!res.ok) throw new Error('fail');
         const data = await res.json();
@@ -934,6 +1242,10 @@ const REVIEW_DATA = {
     h1.className = 'detail__title';
     h1.textContent = item.title;
     head.appendChild(h1);
+    const ver = document.createElement('span');
+    ver.className = 'badge-version';
+    ver.textContent = 'v' + reviewVersionNum(item);
+    head.appendChild(ver);
     if (item.due) {
       const due = document.createElement('span');
       due.className = 'due ' + dueClass(item.due);
@@ -942,8 +1254,12 @@ const REVIEW_DATA = {
     }
     detail.appendChild(head);
 
+    detail.appendChild(renderVersionBlock(item));
+
     const brief = renderReviewBrief(item);
     if (brief) detail.appendChild(brief);
+
+    appendApprovalPanel(item, detail);
 
     const prev = previewPath(item);
     const collapsed = useCollapsiblePreview(item);
@@ -981,7 +1297,7 @@ const REVIEW_DATA = {
     if (!location.hash) location.hash = '#/';
     render();
     window.addEventListener('hashchange', render);
-    loadCommentsFromApi().then(() => render());
+    loadReviewStateFromApi().then(() => render());
   }
 
   init();

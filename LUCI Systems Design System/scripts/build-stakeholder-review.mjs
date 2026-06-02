@@ -8,9 +8,13 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { syncMessagingDocs, applyMessagingDocsToQueue } from './sync-messaging-docs.mjs';
+import { loadDotEnv } from '../lib/teams-webhook.mjs';
+import { notifyReviewQueueChanges } from './notify-review-queue-teams.mjs';
+import { syncReviewVersions } from './sync-review-versions.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(path.join(__dirname, '..'));
+loadDotEnv(path.join(root, '.env'));
 const reviewDir = path.join(root, 'ui_kits', 'review');
 const templatePath = path.join(reviewDir, 'stakeholder-review.template.html');
 
@@ -129,8 +133,13 @@ function syncPreviewAssets(queue) {
   return count;
 }
 
-const queue = JSON.parse(fs.readFileSync(path.join(reviewDir, 'review-queue.json'), 'utf8'));
+const queuePath = path.join(reviewDir, 'review-queue.json');
+const queue = JSON.parse(fs.readFileSync(queuePath, 'utf8'));
 const commentsFile = JSON.parse(fs.readFileSync(path.join(reviewDir, 'review-comments.json'), 'utf8'));
+const approvalsPath = path.join(reviewDir, 'review-approvals.json');
+const approvalsFile = fs.existsSync(approvalsPath)
+  ? JSON.parse(fs.readFileSync(approvalsPath, 'utf8'))
+  : { byAsset: {} };
 
 try {
   syncMessagingDocs({ quiet: true });
@@ -141,10 +150,16 @@ applyMessagingDocsToQueue(queue);
 
 const previewCount = syncPreviewAssets(queue);
 
+if (syncReviewVersions(queue, queuePath)) {
+  console.log('Updated review-queue.json (version history).');
+}
+
 const data = {
   queue,
   comments: commentsFile.comments || [],
   commentsUpdated: commentsFile.updated || '',
+  approvals: approvalsFile.byAsset || {},
+  approvalsUpdated: approvalsFile.updated || '',
 };
 
 let template = fs.readFileSync(templatePath, 'utf8');
@@ -166,3 +181,8 @@ console.log('Wrote', outMain);
 console.log('Wrote', outEmbed);
 console.log('Wrote', outIndex);
 console.log('Synced', previewCount, 'preview bundle(s) into ui_kits/review/');
+
+const notifyResult = await notifyReviewQueueChanges(queue);
+if (notifyResult.sent) {
+  console.log('Teams (Mike/Nick):', notifyResult.sent, 'notification(s) sent.');
+}

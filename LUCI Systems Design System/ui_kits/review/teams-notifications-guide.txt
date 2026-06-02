@@ -1,0 +1,169 @@
+# LUCI Review Queue — Teams notifications (step-by-step)
+
+You will create TWO Teams webhooks:
+  • Stakeholders (Mike & Nick) — when you add or change a review due date
+  • Owner (you) — when Mike or Nick posts a comment or clicks Approve
+
+================================================================================
+PART 1 — Create a Teams channel for review alerts
+================================================================================
+
+1. Open Microsoft Teams.
+2. Create or pick a channel (examples):
+   • A team channel named "LUCI Review" that Mike and Nick can see
+   • A private channel only you use for comment/approval pings
+   You can use ONE channel with two webhooks, or TWO channels (cleaner).
+
+================================================================================
+PART 2 — Incoming Webhook #1 (Mike & Nick — due date alerts)
+================================================================================
+
+3. In the channel where Mike and Nick should see "ready for review" posts:
+   • Click the channel name → Manage channel
+   • Edit (or ⋯ menu) → look for Connectors, Workflows, or "Incoming Webhook"
+   (UI varies by tenant; search Microsoft's help for "Incoming Webhook" if needed.)
+
+4. Add an Incoming Webhook:
+   • Name: LUCI Review — Due dates
+   • Upload an icon if you want
+   • Create → COPY the full HTTPS URL (starts with https://outlook.office.com/webhook/…)
+   • Save this as STAKEHOLDERS WEBHOOK
+
+Note: Microsoft is retiring classic Incoming Webhooks in some tenants. If you only see
+"Workflows", create a flow: trigger "When a HTTP request is received" → action
+"Post card in a chat or channel". Use the HTTP POST URL as the webhook; the review
+build still sends a MessageCard JSON body.
+
+================================================================================
+PART 3 — Incoming Webhook #2 (Jane — comments & approvals)
+================================================================================
+
+5. In a channel you monitor (can be the same channel or a private one):
+   • Repeat step 3–4
+   • Name: LUCI Review — Jane alerts
+   • COPY the URL → OWNER WEBHOOK
+
+================================================================================
+PART 4 — Netlify (live site: comments + Approve button)
+================================================================================
+
+6. Go to https://app.netlify.com → your review site
+   → Site configuration → Environment variables → Add variables (Production):
+
+   REVIEW_SITE_URL
+     https://startling-fudge-f9965f.netlify.app
+
+   REVIEW_TEAMS_WEBHOOK_OWNER
+     (paste OWNER WEBHOOK from Part 3)
+
+   REVIEW_TEAMS_WEBHOOK_STAKEHOLDERS
+     (optional here — see Part 5; due-date alerts run at publish time)
+
+7. Deploy → Trigger deploy → Deploy project (main)
+   (Or run ./publish.sh from your Mac after Part 5.)
+
+================================================================================
+PART 5 — Local .env (due date alerts when you publish)
+================================================================================
+
+Due-date alerts fire when YOU add or change a "due" field in review-queue.json and
+run ./publish.sh. That build runs on your Mac first, so the stakeholders webhook
+must be available locally.
+
+8. On your Mac, in folder:
+   LUCI Systems Design System/
+
+   Copy .env.example → .env
+
+9. Edit .env (do not commit this file):
+
+   REVIEW_SITE_URL=https://startling-fudge-f9965f.netlify.app
+   REVIEW_TEAMS_WEBHOOK_STAKEHOLDERS=<paste STAKEHOLDERS WEBHOOK>
+   REVIEW_TEAMS_WEBHOOK_OWNER=<paste OWNER WEBHOOK>
+
+   You can use the same OWNER URL in Netlify (Part 4) and in .env.
+
+10. From repo root, publish as usual:
+    ./publish.sh
+
+    When you add a new asset under "dueForReview" with a "due" date (or change the
+    due date), the build posts to Mike/Nick's webhook and updates
+    review-queue-notify-state.json so you don't get duplicate alerts.
+
+================================================================================
+PART 6 — Your workflow when adding an asset for review
+================================================================================
+
+11. Edit: LUCI Systems Design System/ui_kits/review/review-queue.json
+
+    Add an object to "dueForReview", for example:
+
+    {
+      "id": "my-new-asset",
+      "title": "My asset title",
+      "summary": "One line for Mike/Nick.",
+      "reviewVersion": 1,
+      "versionNote": "",
+      "due": "2026-06-12",
+      "previewUrl": "…",
+      "reviewBrief": { … }
+    }
+
+    • First time in the queue: set "due" → Teams "New asset ready for review"
+    • New upload of an existing asset: bump "reviewVersion" and add "versionNote"
+
+--- When you upload a NEW VERSION (Mike/Nick alert) ---
+
+11b. In the same asset in review-queue.json:
+
+    • Increase reviewVersion (e.g. 1 → 2)
+    • Set versionNote to what changed (shows on site + Teams), e.g.:
+      "Updated hero image and Ameristar quote."
+
+12. Run: ./publish.sh
+
+    Build adds a row to versionHistory and posts Teams "New version ready for review"
+    if reviewVersion is higher than the last notified version.
+
+13. On the review site, Mike/Nick see Version 2, publish date, what changed,
+    and version history on the asset page.
+
+================================================================================
+PART 7 — What Mike & Nick do (comments / Approve)
+================================================================================
+
+14. They open the review site, open an asset, post a comment or click Approve.
+
+15. You get a Teams card on OWNER WEBHOOK (only on the live Netlify site, not
+    when previewing the HTML file locally).
+
+================================================================================
+PART 8 — Test checklist
+================================================================================
+
+[ ] Stakeholders: add a test asset with due date → ./publish.sh → card in Teams
+[ ] Owner: on live site, post a test comment as Mike → card to you
+[ ] Owner: click Approve on live site → card to you (Undo does NOT notify)
+[ ] Change an existing due date → ./publish.sh → "Review due date updated" card
+[ ] Bump reviewVersion + versionNote → ./publish.sh → "New version ready for review" card
+
+================================================================================
+Troubleshooting
+================================================================================
+
+• No due-date alert after publish
+  → Check .env has REVIEW_TEAMS_WEBHOOK_STAKEHOLDERS
+  → Terminal should say "Teams (Mike/Nick): notified — …" or a warning
+
+• No comment/approval alert
+  → Check Netlify env REVIEW_TEAMS_WEBHOOK_OWNER and redeploy
+  → Test on https://startling-fudge-f9965f.netlify.app/ not a local file
+
+• Duplicate due-date alerts
+  → review-queue-notify-state.json should update after a successful send;
+    commit it with your publish
+
+• Webhook returns 400
+  → Wrong URL or tenant requires Power Automate flow instead of classic webhook
+
+Questions: jhaynie@lucisystems.com

@@ -1,16 +1,34 @@
 {
   "updated": "2026-06-02",
-  "publishNote": "Build: node scripts/build-stakeholder-review.mjs. Host on Netlify (netlify.toml) so comments save in-portal. Email Mike/Nick yourself when you add or update an asset — not on each comment.",
+  "publishNote": "Build + ./publish.sh. Bump reviewVersion + versionNote for new uploads (Teams + version history on site). Set due for first-time review. See teams-notifications-guide.txt.",
   "commentsApiUrl": "",
   "commentsApiNote": "Optional full URL if review page is on Webflow but API is on Netlify. Leave empty when the whole site is on Netlify.",
   "previewBaseUrl": "",
   "messagingDocsNote": "Populated at build from messaging-sources.json + OneDrive .docx (see scripts/sync-messaging-docs.mjs)",
-  "messagingDocs": [],
+  "messagingDocs": [
+    {
+      "title": "LUCI philosophy",
+      "url": "messaging/philosophy.html",
+      "note": "Updated May 7, 2026"
+    },
+    {
+      "title": "Messaging guide",
+      "url": "messaging/messaging-guide.html",
+      "note": "Updated Jun 2, 2026"
+    },
+    {
+      "title": "Personas",
+      "url": "messaging/personas.html",
+      "note": "Updated May 6, 2026"
+    }
+  ],
   "dueForReview": [
     {
       "id": "signal-hub",
       "title": "The Signal · Newsletter Hub",
       "summary": "Newsletter hub — layout, featured issue, archive.",
+      "reviewVersion": 1,
+      "versionNote": "",
       "due": "2026-06-04",
       "liveUrl": "https://www.lucisystems.com/the-signal/home",
       "previewUrl": "",
@@ -18,12 +36,21 @@
       "reviewBrief": {
         "description": "The Signal hub is the customer-facing home for our newsletter—one stable place to find every issue as we publish.",
         "reviewAsk": "overall look and feel, and any design suggestions before we promote it."
-      }
+      },
+      "versionHistory": [
+        {
+          "version": 1,
+          "published": "2026-06-02",
+          "note": ""
+        }
+      ]
     },
     {
       "id": "signal-issue-01",
       "title": "The Signal · Issue 01 (June 2026)",
       "summary": "Issue 01 — tone, Ameristar story, platform, team, playbook.",
+      "reviewVersion": 1,
+      "versionNote": "",
       "due": "2026-06-05",
       "liveUrl": "https://www.lucisystems.com/the-signal/issue-01",
       "previewUrl": "",
@@ -31,12 +58,21 @@
       "reviewBrief": {
         "description": "Issue 01 is the first full web edition of The Signal—welcome, field story, platform preview, team, playbook, and services.",
         "reviewAsk": "the sections with instructions, steps, or services—confirm we've explained them correctly."
-      }
+      },
+      "versionHistory": [
+        {
+          "version": 1,
+          "published": "2026-06-02",
+          "note": ""
+        }
+      ]
     },
     {
       "id": "case-study-ameristar",
       "title": "Case Study · Ameristar Council Bluffs",
       "summary": "Ameristar case study — narrative, results, CTA.",
+      "reviewVersion": 1,
+      "versionNote": "",
       "due": "2026-06-06",
       "liveUrl": "",
       "previewUrl": "case-studies/ameristar-council-bluffs.html",
@@ -44,7 +80,14 @@
       "reviewBrief": {
         "description": "The Ameristar case study is the long-form Council Bluffs relocation and LUCI rollout story for the website, sales, and export.",
         "reviewAsk": "accuracy and story—whether we represented everything correctly."
-      }
+      },
+      "versionHistory": [
+        {
+          "version": 1,
+          "published": "2026-06-02",
+          "note": ""
+        }
+      ]
     }
   ],
   "upcoming": [
@@ -80,5 +123,6 @@
       "note": "Onboarding series",
       "approved": "2026-06-02"
     }
-  ]
+  ],
+  "messagingDocsUpdated": "2026-06-02"
 }
