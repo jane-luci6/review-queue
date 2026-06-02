@@ -376,7 +376,8 @@ const REVIEW_DATA = {
         "approved": "2026-06-02"
       }
     ],
-    "messagingDocsUpdated": "2026-06-02"
+    "messagingDocsUpdated": "2026-06-02",
+    "messagingLibraryUrl": "/messaging/"
   },
   "comments": [],
   "commentsUpdated": "2026-06-01"
@@ -591,11 +592,11 @@ const REVIEW_DATA = {
     h.className = 'masthead';
     const deckText =
       deck ||
-      'Click an asset to review it and leave comments. Messaging docs and published work are in the sidebar.';
+      'Review queue for assets in progress. Canonical messaging and published work live in the sidebar.';
     h.innerHTML =
       '<div class="masthead__row">' +
       '<a href="https://lucisystems.com" class="masthead__logo"><img src="https://content.app-us1.com/YzzLp9/2026/05/18/fa1f40ee-c6ac-4c7f-bd96-6a34971de1fa.png" alt="LUCI"></a>' +
-      '<span class="masthead__badge">Stakeholder review</span></div>' +
+      '<span class="masthead__badge">Resources &amp; review</span></div>' +
       '<h1 class="masthead__title">Review Queue</h1>' +
       '<p class="masthead__deck"></p>';
     h.querySelector('.masthead__deck').textContent = deckText;
@@ -633,6 +634,16 @@ const REVIEW_DATA = {
     docs.innerHTML = '<p class="sidebar__kicker">Messaging &amp; philosophy</p>';
     const docUl = document.createElement('ul');
     docUl.className = 'sidebar__list';
+    if (q.messagingLibraryUrl) {
+      const libLi = document.createElement('li');
+      const libA = document.createElement('a');
+      libA.href = new URL(q.messagingLibraryUrl, window.location.origin).href;
+      libA.target = '_blank';
+      libA.rel = 'noopener noreferrer';
+      libA.textContent = 'All messaging docs';
+      libLi.appendChild(libA);
+      docUl.appendChild(libLi);
+    }
     (q.messagingDocs || []).forEach((doc) => {
       const li = document.createElement('li');
       if (doc.url) {

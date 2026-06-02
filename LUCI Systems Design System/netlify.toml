@@ -18,3 +18,8 @@
   from = "/"
   to = "/stakeholder-review.html"
   status = 200
+
+[[redirects]]
+  from = "/messaging/*"
+  to = "/messaging/:splat"
+  status = 200
