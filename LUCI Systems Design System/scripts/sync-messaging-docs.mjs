@@ -13,7 +13,6 @@ import os from 'os';
 import {
   transformMessagingBody,
   buildResourcePage,
-  buildMessagingIndex,
   extractStoredBody,
 } from './transform-messaging-html.mjs';
 
@@ -39,7 +38,7 @@ function libraryFromConfig(config, manifest = { docs: [] }) {
     return {
       id: d.id,
       title: d.title,
-      url: `/messaging/${d.id}.html`,
+      url: `messaging/${d.id}.html`,
       note: m?.sourceModified
         ? 'Updated ' +
           new Date(m.sourceModified).toLocaleDateString('en-US', {
@@ -162,7 +161,6 @@ export function syncMessagingDocs(options = {}) {
   }
 
   const libraryDocs = libraryFromConfig(config, manifest);
-  fs.writeFileSync(path.join(messagingDir, 'index.html'), buildMessagingIndex(libraryDocs));
   fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + '\n');
 
   return { synced, skipped, reprocessed, manifest };
@@ -173,13 +171,12 @@ export function applyMessagingDocsToQueue(queue) {
   const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
   queue.messagingDocs = (manifest.docs || []).map((d) => ({
     title: d.title,
-    url: d.url,
+    url: (d.url || '').replace(/^\//, ''),
     note: d.sourceModified
       ? 'Updated ' + new Date(d.sourceModified).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
       : '',
   }));
   queue.messagingDocsUpdated = manifest.updated;
-  queue.messagingLibraryUrl = '/messaging/';
   return queue;
 }
 

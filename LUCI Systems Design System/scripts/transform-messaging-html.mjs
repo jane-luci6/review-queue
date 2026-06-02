@@ -5,7 +5,8 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-const LOGO = '/assets/logos/luci-full-white.png';
+const LOGO = '../assets/logos/luci-full-white.png';
+const MESSAGING_CSS = 'messaging-docs.css';
 
 export function stripTags(html) {
   return html.replace(/<[^>]+>/g, '');
@@ -272,9 +273,10 @@ export function buildLibraryNav(docs, currentId) {
   if (!docs?.length) return '';
   let html = '<ul class="resource__library">';
   for (const d of docs) {
-    const href = d.url || `/messaging/${d.id}.html`;
+    const href = d.url || `${d.id}.html`;
+    const linkHref = href.replace(/^\//, '').replace(/^messaging\//, '');
     const cls = d.id === currentId ? ' class="is-current"' : '';
-    html += `<li><a href="${href}"${cls}>${d.title}</a>`;
+    html += `<li><a href="${linkHref}"${cls}>${d.title}</a>`;
     if (d.note) html += `<span>${d.note}</span>`;
     html += '</li>';
   }
@@ -311,7 +313,7 @@ export function buildResourcePage({
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/messaging/messaging-docs.css">
+  <link rel="stylesheet" href="${MESSAGING_CSS}">
 </head>
 <body>
   <div class="resource">
@@ -324,9 +326,7 @@ export function buildResourcePage({
       ${deck ? `<p class="resource__hero-deck">${deck}</p>` : ''}
       <p class="resource__meta">Synced ${updatedLabel}</p>
       <nav class="resource__crumbs" aria-label="Breadcrumb">
-        <a href="/">Review queue</a>
-        <span>/</span>
-        <a href="/messaging/">Messaging &amp; philosophy</a>
+        <a href="../index.html">Review queue</a>
         <span>/</span>
         <span aria-current="page">${title}</span>
       </nav>

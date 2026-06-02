@@ -66,7 +66,9 @@
     .sidebar__list a { font-size: 14px; font-weight: 600; color: var(--navy); text-decoration: none; line-height: 1.35; display: block; }
     .sidebar__list a:hover { color: var(--mint-dark); }
     .sidebar__list .is-muted { font-weight: 500; color: var(--navy-muted); pointer-events: none; }
-    .sidebar__list .is-sub { font-size: 12px; font-weight: 400; color: var(--navy-muted); margin-top: 2px; }
+    .sidebar__list .sidebar__item-title { display: block; font-size: 14px; font-weight: 600; color: var(--navy); line-height: 1.35; }
+    .sidebar__list .sidebar__item-title.is-muted { font-weight: 500; color: var(--navy-muted); }
+    .sidebar__list .is-sub { display: block; font-size: 12px; font-weight: 400; color: var(--navy-muted); margin-top: 4px; line-height: 1.35; }
 
     .queue-list { list-style: none; margin: 0; }
     .queue-item { border-bottom: 1px solid var(--rule-light); }
@@ -286,18 +288,18 @@ const REVIEW_DATA = {
     "messagingDocsNote": "Populated at build from messaging-sources.json + OneDrive .docx (see scripts/sync-messaging-docs.mjs)",
     "messagingDocs": [
       {
-        "title": "Brand philosophy",
-        "url": "/messaging/philosophy.html",
+        "title": "LUCI philosophy",
+        "url": "messaging/philosophy.html",
         "note": "Updated May 7, 2026"
       },
       {
         "title": "Messaging guide",
-        "url": "/messaging/messaging-guide.html",
+        "url": "messaging/messaging-guide.html",
         "note": "Updated Jun 2, 2026"
       },
       {
         "title": "Personas",
-        "url": "/messaging/personas.html",
+        "url": "messaging/personas.html",
         "note": "Updated May 6, 2026"
       }
     ],
@@ -371,13 +373,12 @@ const REVIEW_DATA = {
     "finalized": [
       {
         "id": "customer-emails",
-        "title": "Customer emails · Onboarding series",
-        "note": "Welcome through 90-day check-in — series complete.",
+        "title": "Customer emails",
+        "note": "Onboarding series",
         "approved": "2026-06-02"
       }
     ],
-    "messagingDocsUpdated": "2026-06-02",
-    "messagingLibraryUrl": "/messaging/"
+    "messagingDocsUpdated": "2026-06-02"
   },
   "comments": [],
   "commentsUpdated": "2026-06-01"
@@ -634,24 +635,15 @@ const REVIEW_DATA = {
     docs.innerHTML = '<p class="sidebar__kicker">Messaging &amp; philosophy</p>';
     const docUl = document.createElement('ul');
     docUl.className = 'sidebar__list';
-    if (q.messagingLibraryUrl) {
-      const libLi = document.createElement('li');
-      const libA = document.createElement('a');
-      libA.href = new URL(q.messagingLibraryUrl, window.location.origin).href;
-      libA.target = '_blank';
-      libA.rel = 'noopener noreferrer';
-      libA.textContent = 'All messaging docs';
-      libLi.appendChild(libA);
-      docUl.appendChild(libLi);
-    }
     (q.messagingDocs || []).forEach((doc) => {
       const li = document.createElement('li');
       if (doc.url) {
         const a = document.createElement('a');
-        const href = doc.url.startsWith('http') ? doc.url : new URL(doc.url, window.location.origin).href;
+        const href = doc.url.startsWith('http')
+          ? doc.url
+          : new URL(doc.url.replace(/^\//, ''), window.location.href).href;
         a.href = href;
-        a.target = '_blank';
-        a.rel = 'noopener noreferrer';
+        a.target = '_top';
         a.textContent = doc.title;
         li.appendChild(a);
         if (doc.note) {
@@ -673,6 +665,7 @@ const REVIEW_DATA = {
 
     const fin = document.createElement('div');
     fin.className = 'sidebar__block';
+    fin.id = 'published';
     fin.innerHTML = '<p class="sidebar__kicker">Published</p>';
     const finUl = document.createElement('ul');
     finUl.className = 'sidebar__list';
@@ -691,8 +684,16 @@ const REVIEW_DATA = {
           a.textContent = f.title;
           li.appendChild(a);
         } else {
-          li.innerHTML = '<span class="is-muted"></span>';
-          li.querySelector('span').textContent = f.title;
+          const titleEl = document.createElement('span');
+          titleEl.className = 'sidebar__item-title is-muted';
+          titleEl.textContent = f.title;
+          li.appendChild(titleEl);
+        }
+        if (f.note) {
+          const noteEl = document.createElement('span');
+          noteEl.className = 'is-sub';
+          noteEl.textContent = f.note;
+          li.appendChild(noteEl);
         }
         if (f.approved) {
           const sub = document.createElement('span');
