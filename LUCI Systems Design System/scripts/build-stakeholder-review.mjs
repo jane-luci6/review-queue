@@ -9,7 +9,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const root = path.join(__dirname, '..');
+const root = path.resolve(path.join(__dirname, '..'));
 const reviewDir = path.join(root, 'ui_kits', 'review');
 const templatePath = path.join(reviewDir, 'stakeholder-review.template.html');
 
@@ -49,6 +49,14 @@ function copyFile(src, dest, copied) {
   ensureDir(dest);
   fs.copyFileSync(src, dest);
   copied.add(src);
+}
+
+/** Published HTML uses root-absolute /assets/ so logos load inside the iframe on Netlify. */
+function rewritePreviewHtmlPaths(destHtmlPath) {
+  let html = fs.readFileSync(destHtmlPath, 'utf8');
+  html = html.replace(/\.\.\/\.\.\/assets\//g, '/assets/');
+  html = html.replace(/\.\.\/assets\//g, '/assets/');
+  fs.writeFileSync(destHtmlPath, html);
 }
 
 function copyLinkedAssets(htmlFile, destHtmlFile, copied) {
@@ -94,9 +102,19 @@ function syncPreviewAssets(queue) {
     const destHtml = path.join(reviewDir, publishPath);
     copyFile(srcHtml, destHtml, copied);
     copyLinkedAssets(srcHtml, destHtml, copied);
+    rewritePreviewHtmlPaths(destHtml);
     item.previewUrl = publishPath;
     count += 1;
     console.log('Preview asset:', publishPath);
+  }
+
+  if (count === 0) {
+    const needsPreview = queueItems(queue).filter(
+      (item) => !(item.liveUrl || '').trim() || item.embedPreview === true
+    );
+    if (needsPreview.length) {
+      console.warn('Warning: no preview bundles copied — check hubPreviewPath and source files.');
+    }
   }
 
   return count;

@@ -438,16 +438,33 @@ const REVIEW_DATA = {
     return '';
   }
 
-  function previewSrc(item) {
+  function previewPath(item) {
     const url = (item.previewUrl || '').trim();
-    if (url) return url.replace(/^\.\.\//, '');
-    const base = (q.previewBaseUrl || '').replace(/\/$/, '');
-    if (base && item.hubPreviewPath) {
-      return base + '/' + item.hubPreviewPath.replace(/^\//, '');
-    }
+    if (url) return url.replace(/^\.\.\//, '').replace(/^\//, '');
     const hub = (item.hubPreviewPath || '').trim();
-    if (hub) return hub.replace(/^ui_kits\//, '');
+    if (hub) return hub.replace(/^ui_kits\//, '').replace(/^\//, '');
     return '';
+  }
+
+  function previewSrc(item) {
+    const rel = previewPath(item);
+    if (!rel) return '';
+    const base = (q.previewBaseUrl || '').replace(/\/$/, '');
+    if (base) return base + '/' + rel;
+    return rel;
+  }
+
+  /** Root-absolute URL so iframe loads on Netlify (hash routes, rewrites). */
+  function previewIframeUrl(item) {
+    const src = previewSrc(item);
+    if (!src) return '';
+    if (/^https?:\/\//i.test(src)) return src;
+    const path = src.startsWith('/') ? src : '/' + src;
+    try {
+      return new URL(path, window.location.origin).href;
+    } catch (e) {
+      return path;
+    }
   }
 
   function isPublished(item) {
@@ -472,7 +489,10 @@ const REVIEW_DATA = {
     return panel;
   }
 
-  function appendAssetPreview(src, item, parent) {
+  function appendAssetPreview(item, parent) {
+    const iframeUrl = previewIframeUrl(item);
+    if (!iframeUrl) return;
+
     const wrap = document.createElement('div');
     wrap.className = 'asset-preview is-collapsed';
 
@@ -480,7 +500,7 @@ const REVIEW_DATA = {
     viewport.className = 'asset-preview__viewport';
     const iframe = document.createElement('iframe');
     iframe.title = 'Preview: ' + item.title;
-    iframe.src = src;
+    iframe.src = iframeUrl;
     iframe.loading = 'lazy';
     const fade = document.createElement('div');
     fade.className = 'asset-preview__fade';
@@ -904,11 +924,11 @@ const REVIEW_DATA = {
     const brief = renderReviewBrief(item);
     if (brief) detail.appendChild(brief);
 
-    const prev = previewSrc(item);
+    const prev = previewPath(item);
     const collapsed = useCollapsiblePreview(item);
 
     if (collapsed && prev) {
-      appendAssetPreview(prev, item, detail);
+      appendAssetPreview(item, detail);
       appendCommentsPanel(item, detail, 'panel--below-preview');
     } else {
       if (isPublished(item)) appendLiveLinkBlock(item, detail);
