@@ -1,5 +1,6 @@
-# Repo root → stakeholder review lives in LUCI Systems Design System/
-# (Avoids mis-set base directory canceling or 404ing the publish folder.)
+# Canonical Netlify config — keep ONLY this file at repo root.
+# Do not add netlify.toml under LUCI Systems Design System/ (duplicate file = duplicate builds).
+# If deploys cancel each other: GitHub → review-queue → Settings → Webhooks → keep ONE Netlify hook.
 
 [build]
   base = "LUCI Systems Design System"

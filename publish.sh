@@ -27,5 +27,11 @@ echo "→ Pushing to GitHub (origin main)…"
 git push origin main
 
 echo ""
-echo "Done. Netlify builds from main automatically."
+echo "Done. One push should trigger ONE Netlify production deploy."
 echo "Site: https://startling-fudge-f9965f.netlify.app/"
+echo ""
+echo "If deploys show as Canceled:"
+echo "  • Wait for the latest deploy to finish — do not push again right away."
+echo "  • GitHub → jane-luci6/review-queue → Settings → Webhooks → only ONE hook to api.netlify.com"
+echo "  • Netlify → Site → check you do not have two sites linked to this same repo."
+echo "  • Use Deploys → Trigger deploy → Deploy project (main) on the newest commit."
