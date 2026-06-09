@@ -125,6 +125,7 @@
     .queue-item__meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; grid-column: 1; margin-top: 8px; }
     .due { font-family: var(--display); font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 8px; background: rgba(var(--mint-rgb), 0.15); color: var(--mint-dark); }
     .due.is-overdue { background: rgba(196, 92, 38, 0.12); color: var(--warn); }
+    .due.is-done { background: rgba(104, 227, 190, 0.14); color: var(--mint-dark); }
     .due.is-soon { background: rgba(var(--mint-rgb), 0.25); }
     .badge-comments { font-size: 13px; font-weight: 500; color: var(--navy-muted); }
     .badge-approval { font-size: 13px; font-weight: 500; color: var(--navy-muted); }
@@ -595,7 +596,10 @@
   }
 
   function assetById(id) {
-    return (q.dueForReview || []).find((a) => a.id === id);
+    return (
+      (q.dueForReview || []).find((a) => a.id === id) ||
+      (q.approvedAssets || []).find((a) => a.id === id)
+    );
   }
 
   function commentsFor(assetId) {
@@ -777,17 +781,23 @@
     const fin = document.createElement('div');
     fin.className = 'sidebar__block';
     fin.id = 'published';
-    fin.innerHTML = '<p class="sidebar__kicker">Published</p>';
+    fin.innerHTML = '<p class="sidebar__kicker">Approved</p>';
     const finUl = document.createElement('ul');
     finUl.className = 'sidebar__list';
-    if (!(q.finalized || []).length) {
+    const approvedList = q.approvedAssets || q.finalized || [];
+    if (!approvedList.length) {
       const li = document.createElement('li');
       li.innerHTML = '<span class="is-muted">None yet</span>';
       finUl.appendChild(li);
     } else {
-      (q.finalized || []).forEach((f) => {
+      approvedList.forEach((f) => {
         const li = document.createElement('li');
-        if (f.liveUrl) {
+        if (f.id) {
+          const a = document.createElement('a');
+          a.href = '#/review/' + encodeURIComponent(f.id);
+          a.textContent = f.title;
+          li.appendChild(a);
+        } else if (f.liveUrl) {
           const a = document.createElement('a');
           a.href = f.liveUrl;
           a.target = '_blank';
@@ -920,6 +930,55 @@
       zoneDue.appendChild(ul);
     }
     main.appendChild(zoneDue);
+
+    const approvedList = (q.approvedAssets || []).slice().sort((a, b) =>
+      (b.approved || '').localeCompare(a.approved || '')
+    );
+    const zoneApproved = document.createElement('section');
+    zoneApproved.className = 'main__zone';
+    const hApproved = document.createElement('h2');
+    hApproved.className = 'section-heading';
+    hApproved.textContent = 'Approved Assets';
+    zoneApproved.appendChild(hApproved);
+    if (!approvedList.length) {
+      const p = document.createElement('p');
+      p.className = 'empty';
+      p.textContent = 'No approved assets yet.';
+      zoneApproved.appendChild(p);
+    } else {
+      const ul = document.createElement('ul');
+      ul.className = 'queue-list';
+      approvedList.forEach((item) => {
+        const li = document.createElement('li');
+        li.className = 'queue-item';
+        const a = document.createElement('a');
+        a.className = 'queue-item__link';
+        a.href = '#/review/' + encodeURIComponent(item.id);
+        const title = document.createElement('span');
+        title.className = 'queue-item__title';
+        title.textContent = item.title;
+        const sum = document.createElement('span');
+        sum.className = 'queue-item__summary';
+        sum.textContent = summaryLine(item);
+        const meta = document.createElement('span');
+        meta.className = 'queue-item__meta';
+        const badge = document.createElement('span');
+        badge.className = 'due is-done';
+        badge.textContent = 'Approved ' + formatDue(item.approved);
+        meta.appendChild(badge);
+        const action = document.createElement('span');
+        action.className = 'queue-item__action';
+        action.textContent = 'View →';
+        a.appendChild(title);
+        a.appendChild(sum);
+        a.appendChild(meta);
+        a.appendChild(action);
+        li.appendChild(a);
+        ul.appendChild(li);
+      });
+      zoneApproved.appendChild(ul);
+    }
+    main.appendChild(zoneApproved);
 
     const zoneUp = document.createElement('section');
     zoneUp.className = 'main__zone';

@@ -71,7 +71,7 @@ function publishDoc({ docId, rawBody, libraryDocs, updatedIso, fallbackTitle }) 
   });
 }
 
-const MANIFEST_DOC_ORDER = ['philosophy', 'messaging-guide', 'luci-system-diagram', 'personas'];
+const MANIFEST_DOC_ORDER = ['messaging-guide', 'philosophy', 'luci-system-diagram', 'personas'];
 
 function finalizeManifest(manifest, priorManifest) {
   const byId = Object.fromEntries(manifest.docs.map((d) => [d.id, d]));

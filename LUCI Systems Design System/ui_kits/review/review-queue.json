@@ -7,13 +7,13 @@
   "messagingDocsNote": "Populated at build from messaging-sources.json + OneDrive .docx (see scripts/sync-messaging-docs.mjs)",
   "messagingDocs": [
     {
-      "title": "LUCI philosophy",
-      "url": "messaging/philosophy.html",
+      "title": "Messaging guide",
+      "url": "messaging/messaging-guide.html",
       "note": "Updated Jun 9, 2026"
     },
     {
-      "title": "Messaging guide",
-      "url": "messaging/messaging-guide.html",
+      "title": "LUCI philosophy",
+      "url": "messaging/philosophy.html",
       "note": "Updated Jun 9, 2026"
     },
     {
@@ -75,28 +75,6 @@
       "group": "The Signal · Issue 01"
     },
     {
-      "id": "case-study-ameristar",
-      "title": "Case Study · Ameristar Council Bluffs",
-      "summary": "Ameristar case study — narrative, results, CTA.",
-      "reviewVersion": 1,
-      "versionNote": "",
-      "due": "2026-06-06",
-      "liveUrl": "",
-      "previewUrl": "case-studies/ameristar-council-bluffs.html",
-      "hubPreviewPath": "ui_kits/case-studies/ameristar-council-bluffs.html",
-      "reviewBrief": {
-        "description": "The Ameristar case study is the long-form Council Bluffs relocation and LUCI rollout story for the website, sales, and export.",
-        "reviewAsk": "accuracy and story—whether we represented everything correctly."
-      },
-      "versionHistory": [
-        {
-          "version": 1,
-          "published": "2026-06-02",
-          "note": ""
-        }
-      ]
-    },
-    {
       "id": "newsletter-email-teaser",
       "title": "Newsletter email · The Signal Issue 01 teaser",
       "summary": "Inbox teaser — Issue 01 highlights, deep links, read-issue CTA. Footer tagline synced to Messaging Guide.",
@@ -125,6 +103,34 @@
       "group": "The Signal · Issue 01"
     }
   ],
+  "approvedAssets": [
+    {
+      "id": "case-study-ameristar",
+      "title": "Case Study · Ameristar Council Bluffs",
+      "summary": "Ameristar case study — narrative, results, CTA.",
+      "approved": "2026-06-10",
+      "previewUrl": "case-studies/ameristar-council-bluffs.html",
+      "hubPreviewPath": "ui_kits/case-studies/ameristar-council-bluffs.html",
+      "reviewBrief": {
+        "description": "The Ameristar case study is the long-form Council Bluffs relocation and LUCI rollout story for the website, sales, and export.",
+        "reviewAsk": "accuracy and story—whether we represented everything correctly."
+      },
+      "versionHistory": [
+        {
+          "version": 1,
+          "published": "2026-06-02",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "customer-emails",
+      "title": "Customer emails",
+      "summary": "Onboarding email series",
+      "approved": "2026-06-02",
+      "note": "Onboarding series — approved as a set"
+    }
+  ],
   "upcoming": [
     {
       "id": "website-strategy-brief",
@@ -141,6 +147,18 @@
       "hubPreviewPath": "ui_kits/website/website-strategy.html"
     },
     {
+      "id": "capabilities-doc",
+      "title": "Capabilities doc",
+      "note": "Sales capabilities overview — platform + Systems services.",
+      "target": "2026-07-01"
+    },
+    {
+      "id": "budgetary-estimate-template",
+      "title": "Budgetary estimate template",
+      "note": "Standard budgetary estimate format for proposals.",
+      "target": "2026-07-01"
+    },
+    {
       "id": "brochure",
       "title": "Sales brochure",
       "note": "Print/PDF leave-behind.",
@@ -153,13 +171,6 @@
       "target": "2026-07-01"
     }
   ],
-  "finalized": [
-    {
-      "id": "customer-emails",
-      "title": "Customer emails",
-      "note": "Onboarding series",
-      "approved": "2026-06-02"
-    }
-  ],
+  "finalized": [],
   "messagingDocsUpdated": "2026-06-09"
 }

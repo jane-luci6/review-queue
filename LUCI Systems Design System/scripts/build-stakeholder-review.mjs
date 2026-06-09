@@ -116,7 +116,11 @@ function syncPreviewAssets(queue) {
   const copied = new Set();
   let count = 0;
 
-  for (const item of queue.dueForReview || []) {
+  const previewQueueItems = [
+    ...(queue.dueForReview || []),
+    ...(queue.approvedAssets || []).filter((item) => item.hubPreviewPath || item.previewUrl),
+  ];
+  for (const item of previewQueueItems) {
     if ((item.liveUrl || '').trim() && item.embedPreview !== true) continue;
     const srcHtml = sourceHtmlPath(item);
     const publishPath = publishPreviewPath(item);

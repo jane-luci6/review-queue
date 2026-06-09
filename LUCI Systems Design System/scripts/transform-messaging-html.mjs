@@ -65,10 +65,65 @@ const MESSAGING_GUIDE_DIAGRAM_FIGURE = `<figure class="doc-figure doc-figure--di
 <figcaption class="doc-figure__caption"><strong>The LUCI System.</strong> LUCI + Systems — the orchestration layer above the accumulated Standard A/V environment your team already runs. <a href="luci-system-diagram.html">Full diagram page</a> (flat working canvas + source files).</figcaption>
 </figure>`;
 
-/** Diagram embed + TOC sub-link — re-applied after each Word sync of messaging-guide. */
+const MESSAGING_GUIDE_MIDDLE = `<section class="doc-section"><h2 class="doc-chapter" id="message-pillars">MESSAGE PILLARS</h2>
+<p class="doc-prose doc-prose--kicker"><i>Four pillars that anchor every communication. Each stands alone and serves any buyer.</i></p>
+<ul class="doc-stack">
+<li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">01</span><b>Complete visibility and control across your property</b></p><p class="doc-stack__body">One interface surfaces every endpoint, zone, and system across your property. Every team sees the same picture and acts from the same place.</p></li>
+<li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">02</span><b>Align your teams by default</b></p><p class="doc-stack__body">LUCI connects every team to the same system, so your organization can stop negotiating internally and start executing towards a shared vision.</p></li>
+<li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">03</span><b>Fully activate the guest experience</b></p><p class="doc-stack__body">Turn passive screens into purposeful moments by planning, programming, and responding to guest signals in real time — turning your A/V infrastructure into a strategic tool for revenue, retention, and brand.</p></li>
+<li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">04</span><b>Invest in the only A/V that gets more valuable over time</b></p><p class="doc-stack__body">Traditional A/V depreciates and expires. LUCI doesn't. We refine our software, integrations, and operational capability on a predictable annual line item so Year Five is more capable than Year One.</p></li>
+</ul>
+</section><section class="doc-section"><h2 class="doc-chapter" id="the-systems">THE SYSTEMS</h2>
+<p class="doc-prose doc-prose--kicker"><i>Six named services. Together, they are the embedded organization that makes the platform work — and keep working — in the real world.</i></p>
+<ul class="doc-stack">
+<li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">01</span><b>LUCI FDE — Forward-Deployed Engineering</b></p><p class="doc-stack__body">Full-stack engineers who embed inside the client's environment — from scoping through continuous refinement. A LUCI FDE is not a consultant, a solutions architect, or a support representative. They work inside the client's environment, build production systems that hold up under real operational conditions, and remain accountable for those systems long after deployment.</p><p class="doc-stack__note">Delivers: one accountable team across the full lifecycle. The engineer who walks the property on day one is the engineer who supports it in year five. LUCI Systems does not hand off engagements.</p></li>
+<li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">02</span><b>Design &amp; Deployment</b></p><p class="doc-stack__body">In-person scoping, architecture, and standing-up of the platform — by the team that will stay. The FDE team maps the existing environment across IT, AV, operations, marketing, and finance; designs the target architecture against the LUCI standard; consolidates the infrastructure; and stands up the platform, phased so value lands before the full build is finished.</p><p class="doc-stack__note">Delivers: a deployment scoped to the property's reality, executed by the people who will own it — not subcontracted, not handed off.</p></li>
+<li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">03</span><b>Owner's-Rep Partnership</b></p><p class="doc-stack__body">A standing extension of the client's enterprise — strategic, embedded, accountable. LUCI Systems functions as the client's in-house technology leadership for the guest-facing environment: planning multi-year roadmaps, owning vendor relationships, advising on capital strategy, and representing the property's interests in every technical decision.</p><p class="doc-stack__note">Delivers: senior technology leadership the property doesn't have to build, staff, or replace — present continuously, accountable to the property's goals.</p></li>
+<li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">04</span><b>Training &amp; Enablement</b></p><p class="doc-stack__body">A standardized curriculum that makes the client's team fluent in LUCI. Training is not an afterthought or a PDF — it is a structured program: role-based instruction, hands-on enablement, and documentation that lives inside the platform. New staff onboard against the same standard; institutional knowledge survives turnover.</p><p class="doc-stack__note">Delivers: a team that runs the platform with confidence, and a property that doesn't lose capability when a key person leaves.</p></li>
+<li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">05</span><b>Support &amp; Operations</b></p><p class="doc-stack__body">The backbone — the process starts and ends with support. The same FDE team that designed and deployed the platform is the team that answers when something needs attention. No tiered queue. No establishing which vendor owns the incident. One team owns the diagnosis and the resolution, on the property's schedule — including the off-hours when it matters most.</p><p class="doc-stack__note">Delivers: one accountable owner, faster resolution because context is never rebuilt, coverage that matches a property that never closes, and incentives aligned with uptime rather than ticket volume.</p></li>
+<li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">06</span><b>Continuous Refinement</b></p><p class="doc-stack__body">The discipline that makes the platform appreciate, year over year. Every incident and operational pattern the Systems encounter becomes an input to the next platform release. Problems aren't just fixed at one property — they are engineered out of the platform so no property meets them again. Annually, the embedded team revisits the roadmap: integrations extend, automation sharpens, the standard gets tighter.</p><p class="doc-stack__note">Delivers: a platform that is more capable in year five than the day it was deployed, on the same line item — and a property that inherits every improvement without a migration.</p></li>
+</ul>
+</section><section class="doc-section"><h2 class="doc-chapter" id="our-four-commitments">OUR FOUR COMMITMENTS</h2>
+<ul class="doc-stack">
+<li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">01</span><b>Support begins before deployment.</b></p><p class="doc-stack__body">Every LUCI engagement starts with the FDE team embedded in the property. Support begins on day one.</p></li>
+<li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">02</span><b>The team that builds your system is the team that supports it.</b></p><p class="doc-stack__body">The engineer who walks the property on day one is the engineer who answers the call in year five.</p></li>
+<li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">03</span><b>One team owns every incident, end to end.</b></p><p class="doc-stack__body">There is no ticket queue, no escalation path, no third party. LUCI owns diagnosis and resolution.</p></li>
+<li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">04</span><b>The platform gets more capable every day.</b></p><p class="doc-stack__body">Continuous refinement means every release, every engagement, every year adds capability.</p></li>
+</ul>
+</section>`;
+
+const MESSAGING_GUIDE_WHO_HEARS = `<section class="doc-section"><h2 class="doc-chapter" id="who-hears-what">WHO HEARS WHAT</h2>
+<p class="doc-prose doc-prose--kicker"><i>Lead with the pillar most relevant to the person in the room.</i></p>
+<ul class="doc-rows">
+<li><span class="doc-rows__label">CEO / GM</span><span class="doc-rows__value"><p class="doc-prose"><b>Pillars 01 + 03</b></p><p class="doc-prose">Full property visibility, guest experience as a strategic output.</p></span></li>
+<li><span class="doc-rows__label">CIO / IT Director</span><span class="doc-rows__value"><p class="doc-prose"><b>Pillars 01 + 04</b></p><p class="doc-prose">Standard infrastructure, open APIs, no proprietary hardware to manage or refresh.</p></span></li>
+<li><span class="doc-rows__label">CFO</span><span class="doc-rows__value"><p class="doc-prose"><b>Pillar 04</b></p><p class="doc-prose">Predictable annual line item, no refresh cycles, investment that compounds over time.</p></span></li>
+<li><span class="doc-rows__label">CMO / Marketing Director</span><span class="doc-rows__value"><p class="doc-prose"><b>Pillar 03</b></p><p class="doc-prose">Real-time programmability across every zone, screen, and guest moment.</p></span></li>
+</ul>
+</section>`;
+
+const MESSAGING_GUIDE_TOC =
+  '<nav aria-label="On this page"><ul class="resource__toc">' +
+  '<li><a href="#how-to-use-this-document">HOW TO USE THIS DOCUMENT</a></li>' +
+  '<li><a href="#tagline">TAGLINE</a></li>' +
+  '<li><a href="#the-luci-worldview">THE LUCI WORLDVIEW</a></li>' +
+  '<li><a href="#the-offering">THE OFFERING</a></li>' +
+  '<li><a class="is-sub" href="#the-luci-system">THE LUCI SYSTEM</a></li>' +
+  '<li><a href="#message-pillars">MESSAGE PILLARS</a></li>' +
+  '<li><a href="#the-systems">THE SYSTEMS</a></li>' +
+  '<li><a href="#our-four-commitments">OUR FOUR COMMITMENTS</a></li>' +
+  '<li><a href="#who-hears-what">WHO HEARS WHAT</a></li>' +
+  '<li><a href="#key-features">KEY FEATURES</a></li>' +
+  '<li><a href="#what-luci-is-and-isnt">WHAT LUCI IS AND ISN’T</a></li>' +
+  '</ul></nav>';
+
+/** Canonical structure — re-applied after each Word sync of messaging-guide. */
 export function applyMessagingGuideEnhancements(bodyHtml, tocHtml) {
   let body = bodyHtml;
-  let toc = tocHtml;
+
+  body = body.replace(/<p class="doc-prose"><i><\/i><br><\/p>/g, '');
+  body = body.replace(/<p class="doc-prose"><b><\/b><br><\/p>/g, '');
+
   if (!body.includes('id="the-luci-system"')) {
     const offeringIntro =
       /<p class="doc-prose">LUCI Systems is two forces in one:[\s\S]*?<\/p>(\s*)(?=<ul class="doc-rows">)/;
@@ -76,13 +131,24 @@ export function applyMessagingGuideEnhancements(bodyHtml, tocHtml) {
       body = body.replace(offeringIntro, (m) => `${m}\n\n${MESSAGING_GUIDE_DIAGRAM_FIGURE}\n\n`);
     }
   }
-  if (toc && !toc.includes('#the-luci-system')) {
-    toc = toc.replace(
-      /(<li><a href="#the-offering">THE OFFERING<\/a><\/li>)/,
-      '$1<li><a class="is-sub" href="#the-luci-system">THE LUCI SYSTEM</a></li>'
-    );
+
+  body = body.replace(
+    /<\/ul>[\s\S]*?<\/section><section class="doc-section"><h2 class="doc-chapter" id="the-offering">THE OFFERING<\/h2>[\s\S]*?<ul class="doc-rows">[\s\S]*?<\/ul>[\s\S]*?(?=<\/section><section class="doc-section"><h2 class="doc-chapter" id="message-pillars">)/,
+    (m) => m.replace(/<p class="doc-prose"><b>Our four commitments<\/b><\/p>[\s\S]*?(?=<\/section><section class="doc-section"><h2 class="doc-chapter" id="message-pillars">)/, '')
+  );
+
+  const offeringCommitments =
+    /(<ul class="doc-rows">[\s\S]*?<\/ul>)(\s*)(<p class="doc-prose"><b>Our four commitments<\/b><\/p>[\s\S]*?)(<\/section><section class="doc-section"><h2 class="doc-chapter" id="message-pillars">)/;
+  if (offeringCommitments.test(body)) {
+    body = body.replace(offeringCommitments, '$1$2$4');
   }
-  return { bodyHtml: body, tocHtml: toc };
+
+  body = body.replace(
+    /<section class="doc-section"><h2 class="doc-chapter" id="message-pillars">[\s\S]*?<\/section><section class="doc-section"><h2 class="doc-chapter" id="who-hears-what">[\s\S]*?<\/section>/,
+    MESSAGING_GUIDE_MIDDLE + MESSAGING_GUIDE_WHO_HEARS
+  );
+
+  return { bodyHtml: body, tocHtml: MESSAGING_GUIDE_TOC };
 }
 
 export function stripTags(html) {
