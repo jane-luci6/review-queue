@@ -73,6 +73,21 @@
     .queue-list { list-style: none; margin: 0; }
     .queue-item { border-bottom: 1px solid var(--rule-light); }
     .queue-item:last-child { border-bottom: none; }
+    .queue-group-header {
+      padding: 20px 0 6px;
+      font-family: var(--display);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--mint-dark);
+      border-bottom: none;
+    }
+    .queue-group-header:first-child { padding-top: 0; }
+    .queue-item--grouped {
+      padding-left: 14px;
+      border-left: 2px solid rgba(var(--mint-rgb), 0.35);
+    }
     .queue-item__link {
       display: grid;
       grid-template-columns: 1fr auto;
@@ -328,7 +343,7 @@
 <script>
 const REVIEW_DATA = {
   "queue": {
-    "updated": "2026-06-03",
+    "updated": "2026-06-09",
     "publishNote": "Build + ./publish.sh. Bump reviewVersion + versionNote for new uploads (Teams + version history on site). Set due for first-time review. See teams-notifications-guide.txt.",
     "commentsApiUrl": "",
     "commentsApiNote": "Optional full URL if review page is on Webflow but API is on Netlify. Leave empty when the whole site is on Netlify.",
@@ -338,17 +353,22 @@ const REVIEW_DATA = {
       {
         "title": "LUCI philosophy",
         "url": "messaging/philosophy.html",
-        "note": "Updated May 7, 2026"
+        "note": "Updated Jun 9, 2026"
       },
       {
         "title": "Messaging guide",
         "url": "messaging/messaging-guide.html",
-        "note": "Updated Jun 2, 2026"
+        "note": "Updated Jun 9, 2026"
+      },
+      {
+        "title": "LUCI system diagram",
+        "url": "messaging/luci-system-diagram.html",
+        "note": "Updated Jun 9, 2026"
       },
       {
         "title": "Personas",
         "url": "messaging/personas.html",
-        "note": "Updated May 6, 2026"
+        "note": "Updated Jun 9, 2026"
       }
     ],
     "dueForReview": [
@@ -358,7 +378,7 @@ const REVIEW_DATA = {
         "summary": "Newsletter hub — layout, featured issue, archive.",
         "reviewVersion": 1,
         "versionNote": "",
-        "due": "2026-06-04",
+        "due": "2026-06-11",
         "liveUrl": "https://www.lucisystems.com/the-signal/home",
         "previewUrl": "",
         "hubPreviewPath": "ui_kits/newsletter/the-signal-hub.html",
@@ -372,7 +392,8 @@ const REVIEW_DATA = {
             "published": "2026-06-02",
             "note": ""
           }
-        ]
+        ],
+        "group": "The Signal · Issue 01"
       },
       {
         "id": "signal-issue-01",
@@ -380,7 +401,7 @@ const REVIEW_DATA = {
         "summary": "Issue 01 — tone, Ameristar story, platform, team, Inside LUCI how-to.",
         "reviewVersion": 1,
         "versionNote": "",
-        "due": "2026-06-05",
+        "due": "2026-06-11",
         "liveUrl": "https://www.lucisystems.com/the-signal/issue-01",
         "previewUrl": "",
         "hubPreviewPath": "ui_kits/newsletter/the-signal-issue-01-june-2026.html",
@@ -394,7 +415,8 @@ const REVIEW_DATA = {
             "published": "2026-06-02",
             "note": ""
           }
-        ]
+        ],
+        "group": "The Signal · Issue 01"
       },
       {
         "id": "case-study-ameristar",
@@ -421,10 +443,10 @@ const REVIEW_DATA = {
       {
         "id": "newsletter-email-teaser",
         "title": "Newsletter email · The Signal Issue 01 teaser",
-        "summary": "Inbox teaser — Issue 01 highlights, deep links, read-issue CTA.",
-        "reviewVersion": 1,
-        "versionNote": "",
-        "due": "2026-06-07",
+        "summary": "Inbox teaser — Issue 01 highlights, deep links, read-issue CTA. Footer tagline synced to Messaging Guide.",
+        "reviewVersion": 2,
+        "versionNote": "Footer tagline updated to “The Orchestration Engine for Enterprise Multimedia” (Messaging Guide, Jun 9).",
+        "due": "2026-06-11",
         "liveUrl": "",
         "previewUrl": "email/email-signal-issue-01-teaser.html",
         "hubPreviewPath": "ui_kits/email/email-signal-issue-01-teaser.html",
@@ -437,16 +459,30 @@ const REVIEW_DATA = {
             "version": 1,
             "published": "2026-06-03",
             "note": ""
+          },
+          {
+            "version": 2,
+            "published": "2026-06-09",
+            "note": "Footer tagline synced to Messaging Guide."
           }
-        ]
+        ],
+        "group": "The Signal · Issue 01"
       }
     ],
     "upcoming": [
       {
+        "id": "website-strategy-brief",
+        "title": "Website strategy brief",
+        "note": "Leadership review — purpose, positioning, success measures, Navless experience layer. Companion: website-strategy-brief-talk-track.md. Phase 2: IA wireframe.",
+        "target": "2026-06-10",
+        "hubPreviewPath": "ui_kits/website/website-strategy-brief.html"
+      },
+      {
         "id": "website-strategy",
-        "title": "Website update strategy",
-        "note": "Messaging and page plan for lucisystems.com refresh.",
-        "target": "2026-06-15"
+        "title": "Website update strategy (outline)",
+        "note": "Phase 2 — simplified IA, Platform page, 6 industries, Signal customer-only; see website-strategy.html + IA wireframe.",
+        "target": "2026-06-15",
+        "hubPreviewPath": "ui_kits/website/website-strategy.html"
       },
       {
         "id": "brochure",
@@ -469,7 +505,7 @@ const REVIEW_DATA = {
         "approved": "2026-06-02"
       }
     ],
-    "messagingDocsUpdated": "2026-06-03"
+    "messagingDocsUpdated": "2026-06-09"
   },
   "comments": [],
   "commentsUpdated": "2026-06-01",
@@ -1037,7 +1073,20 @@ const REVIEW_DATA = {
     } else {
       const ul = document.createElement('ul');
       ul.className = 'queue-list';
-      dueList.forEach((item) => ul.appendChild(renderQueueRow(item)));
+      const seenGroups = new Set();
+      dueList.forEach((item) => {
+        const g = (item.group || '').trim();
+        if (g && !seenGroups.has(g)) {
+          seenGroups.add(g);
+          const hdr = document.createElement('li');
+          hdr.className = 'queue-group-header';
+          hdr.textContent = g;
+          ul.appendChild(hdr);
+        }
+        const row = renderQueueRow(item);
+        if (g) row.classList.add('queue-item--grouped');
+        ul.appendChild(row);
+      });
       zoneDue.appendChild(ul);
     }
     main.appendChild(zoneDue);

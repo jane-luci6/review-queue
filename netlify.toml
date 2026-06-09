@@ -1,6 +1,7 @@
 # Canonical Netlify config — keep ONLY this file at repo root.
 # Do not add netlify.toml under LUCI Systems Design System/ (duplicate file = duplicate builds).
-# If deploys cancel each other: GitHub → review-queue → Settings → Webhooks → keep ONE Netlify hook.
+# Deploys use the Netlify GitHub App (webhooks are app-managed, not under repo Settings → Webhooks).
+# If deploys cancel: https://github.com/settings/installations → Netlify → one repo link, one Netlify site.
 
 [build]
   base = "LUCI Systems Design System"
@@ -10,6 +11,7 @@
 
 [build.environment]
   NODE_VERSION = "20"
+# Teams: REVIEW_TEAMS_WEBHOOK_OWNER (comments/approvals on live site). Due dates: .env on publish — see ui_kits/review/teams-notifications-guide.txt
 
 [[redirects]]
   from = "/api/comments"

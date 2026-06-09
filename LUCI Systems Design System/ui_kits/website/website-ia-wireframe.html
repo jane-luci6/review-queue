@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>lucisystems.com — IA wireframe + draft copy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy-deep: #0A161C;
+      --navy: #10232D;
+      --navy-mid: #314955;
+      --mint: #68E3BE;
+      --sand: #E5E3DF;
+      --off-white: #F5F8FA;
+      --white: #fff;
+      --rule: #D4D9DC;
+      --ink: #354F5C;
+      --display: 'Syncopate', sans-serif;
+      --body: 'Space Grotesk', sans-serif;
+      --sidebar: 300px;
+      --nav-h: 72px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--body);
+      background: var(--sand);
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wf-app {
+      display: grid;
+      grid-template-columns: var(--sidebar) 1fr;
+      min-height: 100vh;
+    }
+
+    /* —— Left: page picker —— */
+    .wf-picker {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      background: var(--navy);
+      color: rgba(245, 248, 250, 0.92);
+      border-right: 4px solid var(--mint);
+      padding: 20px 0 32px;
+    }
+    .wf-picker__head {
+      padding: 0 20px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 12px;
+    }
+    .wf-picker__kicker {
+      font-family: var(--display);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mint);
+      margin-bottom: 6px;
+    }
+    .wf-picker__title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.3;
+    }
+    .wf-picker__note {
+      font-size: 12px;
+      color: rgba(245, 248, 250, 0.75);
+      margin-top: 8px;
+    }
+    .wf-picker__note a { color: var(--mint); }
+    .wf-picker__group {
+      padding: 14px 20px 4px;
+      font-family: var(--display);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(245, 248, 250, 0.5);
+    }
+    .wf-picker__btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 10px 20px;
+      border: none;
+      background: transparent;
+      color: rgba(245, 248, 250, 0.88);
+      font-family: var(--body);
+      font-size: 14px;
+      cursor: pointer;
+      border-left: 3px solid transparent;
+    }
+    .wf-picker__btn:hover { background: rgba(255,255,255,0.06); }
+    .wf-picker__btn.is-active {
+      background: rgba(104, 227, 190, 0.12);
+      border-left-color: var(--mint);
+      color: var(--white);
+      font-weight: 600;
+    }
+    .wf-picker__btn small {
+      display: block;
+      font-size: 11px;
+      font-weight: 400;
+      color: rgba(245, 248, 250, 0.55);
+      margin-top: 2px;
+    }
+
+    /* —— Main column —— */
+    .wf-main { min-width: 0; }
+
+    .wf-banner {
+      background: var(--navy-deep);
+      color: rgba(245, 248, 250, 0.9);
+      padding: 10px 24px;
+      font-size: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .wf-banner strong { color: var(--mint); font-weight: 600; }
+    .wf-banner a { color: var(--mint); }
+
+    /* —— Global nav (structure only) —— */
+    .wf-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      height: var(--nav-h);
+      background: var(--sand);
+      border-bottom: 3px solid var(--mint);
+      display: flex;
+      align-items: center;
+      padding: 0 clamp(16px, 3vw, 40px);
+      gap: 20px;
+    }
+    .wf-nav__logo {
+      font-family: var(--display);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: var(--navy);
+      flex-shrink: 0;
+    }
+    .wf-nav__items {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 4px 20px;
+      flex: 1;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--navy);
+    }
+    .wf-nav__item { position: relative; }
+    .wf-nav__trigger {
+      background: none;
+      border: none;
+      font: inherit;
+      color: inherit;
+      cursor: default;
+      padding: 8px 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .wf-nav__trigger::after {
+      content: '▾';
+      font-size: 9px;
+      opacity: 0.6;
+    }
+    .wf-nav__item:not([data-has-menu]) .wf-nav__trigger::after { display: none; }
+    .wf-nav__menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 220px;
+      background: var(--white);
+      border: 1px solid var(--rule);
+      padding: 8px 0;
+      font-size: 13px;
+      font-weight: 400;
+      box-shadow: 0 8px 24px rgba(10, 22, 28, 0.08);
+    }
+    .wf-nav__item:hover .wf-nav__menu,
+    .wf-nav__item:focus-within .wf-nav__menu { display: block; }
+    .wf-nav__menu a,
+    .wf-nav__menu span {
+      display: block;
+      padding: 8px 16px;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .wf-nav__menu .is-muted { color: var(--navy-mid); font-size: 12px; }
+    .wf-nav__menu .is-tbd { font-style: italic; opacity: 0.75; }
+    .wf-nav__cta {
+      font-family: var(--display);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      background: var(--navy);
+      color: var(--off-white);
+      padding: 12px 16px;
+      border: none;
+      flex-shrink: 0;
+    }
+
+    .wf-page-head {
+      padding: 28px clamp(20px, 4vw, 48px) 20px;
+      background: var(--white);
+      border-bottom: 1px solid var(--rule);
+    }
+    .wf-page-head__path {
+      font-family: var(--display);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--navy-mid);
+      margin-bottom: 8px;
+    }
+    .wf-page-head h1 {
+      font-size: clamp(22px, 3vw, 28px);
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+    }
+    .wf-page-head p {
+      margin-top: 10px;
+      max-width: 60ch;
+      font-size: 15px;
+      color: var(--ink);
+    }
+
+    /* —— Sections —— */
+    .wf-sections { padding-bottom: 48px; }
+    .wf-sec {
+      padding: clamp(28px, 5vw, 56px) clamp(20px, 4vw, 48px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .wf-sec--white { background: var(--white); }
+    .wf-sec--light { background: var(--off-white); }
+    .wf-sec--sand { background: var(--sand); }
+    .wf-sec--deep {
+      background: var(--navy);
+      color: rgba(245, 248, 250, 0.9);
+      border-bottom-color: rgba(255,255,255,0.1);
+    }
+    .wf-sec--deep .wf-sec__num,
+    .wf-sec--deep .wf-sec__job { color: rgba(245, 248, 250, 0.65); }
+    .wf-sec--deep .wf-sec__title { color: var(--white); }
+
+    .wf-sec__meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 20px;
+      align-items: baseline;
+      margin-bottom: 16px;
+    }
+    .wf-sec__num {
+      font-family: var(--display);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--navy-mid);
+    }
+    .wf-sec__job {
+      font-size: 12px;
+      color: var(--navy-mid);
+    }
+    .wf-sec__source {
+      font-size: 11px;
+      color: var(--mint-dark, #2b9e80);
+      margin-left: auto;
+    }
+    .wf-sec--deep .wf-sec__source { color: var(--mint); }
+
+    .wf-sec__title {
+      font-family: var(--display);
+      font-size: clamp(14px, 2vw, 18px);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 20px;
+      max-width: 48ch;
+    }
+
+    .wf-block {
+      border: 1px dashed var(--navy-mid);
+      background: rgba(16, 35, 45, 0.03);
+      padding: 20px 22px;
+      margin-bottom: 12px;
+      max-width: 900px;
+    }
+    .wf-sec--deep .wf-block {
+      border-color: rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.04);
+      color: rgba(245, 248, 250, 0.85);
+    }
+    .wf-block:last-child { margin-bottom: 0; }
+    .wf-block__label {
+      font-family: var(--display);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--navy-mid);
+      margin-bottom: 8px;
+    }
+    .wf-sec--deep .wf-block__label { color: rgba(245, 248, 250, 0.55); }
+    .wf-block__hint { font-size: 14px; line-height: 1.55; white-space: pre-wrap; }
+    .wf-block__hint--lead { font-size: 17px; font-weight: 600; color: var(--navy); }
+    .wf-sec--deep .wf-block__hint--lead { color: var(--white); }
+    .wf-block__items {
+      list-style: none;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--rule);
+    }
+    .wf-sec--deep .wf-block__items { border-top-color: rgba(255,255,255,0.12); }
+    .wf-block__items li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--rule);
+      font-size: 13px;
+    }
+    .wf-sec--deep .wf-block__items li { border-bottom-color: rgba(255,255,255,0.1); }
+    .wf-block__items li:last-child { border-bottom: none; }
+
+    .wf-grid {
+      display: grid;
+      gap: 0;
+      max-width: 900px;
+      border-top: 1px solid var(--rule);
+    }
+    .wf-grid--2 { grid-template-columns: 1fr 1fr; }
+    .wf-grid--3 { grid-template-columns: repeat(3, 1fr); }
+    .wf-grid--4 { grid-template-columns: repeat(2, 1fr); }
+    @media (min-width: 720px) {
+      .wf-grid--4 { grid-template-columns: repeat(4, 1fr); }
+    }
+    .wf-grid__cell {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--rule);
+      border-right: 1px solid var(--rule);
+      min-height: 72px;
+      font-size: 12px;
+      color: var(--navy-mid);
+    }
+    .wf-grid__cell:nth-child(2n) { background: rgba(245, 248, 250, 0.5); }
+    .wf-grid--2 .wf-grid__cell:nth-child(2n) { background: transparent; }
+
+    .wf-visual {
+      min-height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 13px;
+      color: var(--navy-mid);
+      border: 1px dashed var(--navy-mid);
+      background: var(--off-white);
+      max-width: 900px;
+    }
+    .wf-sec--deep .wf-visual {
+      background: rgba(0,0,0,0.2);
+      border-color: rgba(255,255,255,0.2);
+      color: rgba(245, 248, 250, 0.7);
+    }
+
+    .wf-sitemap {
+      max-width: 720px;
+    }
+    .wf-sitemap ul { list-style: none; }
+    .wf-sitemap > ul > li {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .wf-sitemap__parent {
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .wf-sitemap__children {
+      padding-left: 16px;
+      font-size: 14px;
+      color: var(--ink);
+    }
+    .wf-sitemap__children li { padding: 4px 0; }
+
+    .wf-footer {
+      background: var(--navy-deep);
+      color: rgba(245, 248, 250, 0.75);
+      padding: 24px clamp(20px, 4vw, 48px);
+      font-size: 12px;
+    }
+    .wf-footer__row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 12px;
+    }
+
+    @media (max-width: 900px) {
+      .wf-app { grid-template-columns: 1fr; }
+      .wf-picker {
+        position: relative;
+        height: auto;
+        max-height: 40vh;
+      }
+      .wf-nav__items { display: none; }
+      .wf-nav::after {
+        content: 'Nav structure in desktop view — see Site map page';
+        font-size: 11px;
+        color: var(--navy-mid);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wf-app">
+    <aside class="wf-picker" aria-label="Choose page wireframe">
+      <div class="wf-picker__head">
+        <p class="wf-picker__kicker">lucisystems.com</p>
+        <p class="wf-picker__title">IA wireframe</p>
+        <p class="wf-picker__note">Draft copy where we have it — placement map. Based on <a href="website-strategy.html">website strategy</a>.</p>
+      </div>
+      <p class="wf-picker__group">Overview</p>
+      <button type="button" class="wf-picker__btn is-active" data-page="sitemap">Site map &amp; nav</button>
+      <p class="wf-picker__group">Primary pages</p>
+      <button type="button" class="wf-picker__btn" data-page="home">Home<small>12 sections · teasers to Platform</small></button>
+      <button type="button" class="wf-picker__btn" data-page="platform">Platform<small>7 sections · product + partnership</small></button>
+      <button type="button" class="wf-picker__btn" data-page="who-we-serve">Who we serve</button>
+      <p class="wf-picker__group">Industries</p>
+      <button type="button" class="wf-picker__btn" data-page="industry-template">Industry page<small>Template × 6 verticals</small></button>
+      <p class="wf-picker__group">Resources</p>
+      <button type="button" class="wf-picker__btn" data-page="resources">Resources hub<small>incl. case studies entry</small></button>
+      <button type="button" class="wf-picker__btn" data-page="case-studies">Case studies<small>under Resources nav</small></button>
+      <button type="button" class="wf-picker__btn" data-page="blog">Blog<small>Template</small></button>
+      <p class="wf-picker__group">Company</p>
+      <button type="button" class="wf-picker__btn" data-page="about">About</button>
+      <button type="button" class="wf-picker__btn" data-page="contact">Contact</button>
+    </aside>
+
+    <div class="wf-main">
+      <div class="wf-banner">
+        <span><strong>IA + draft copy</strong> — shows what goes in each band, in scroll order (canonical copy where available).</span>
+        <span>Hover top nav items to see dropdown IA · <a href="../../index.html">Design hub</a></span>
+      </div>
+
+      <header class="wf-nav" aria-label="Primary navigation structure">
+        <span class="wf-nav__logo">LOGO → Home</span>
+        <div class="wf-nav__items">
+          <div class="wf-nav__item">
+            <span class="wf-nav__trigger">Platform</span>
+          </div>
+          <div class="wf-nav__item" data-has-menu>
+            <span class="wf-nav__trigger">Industries</span>
+            <div class="wf-nav__menu">
+              <span>Casinos &amp; gaming</span>
+              <span>Hotels &amp; resorts</span>
+              <span>Sports &amp; venues</span>
+              <span>Airports &amp; transportation</span>
+              <span>Conference &amp; convention centers</span>
+              <span>Corporate &amp; campus properties</span>
+            </div>
+          </div>
+          <div class="wf-nav__item">
+            <span class="wf-nav__trigger">Who we serve</span>
+          </div>
+          <div class="wf-nav__item" data-has-menu>
+            <span class="wf-nav__trigger">Resources</span>
+            <div class="wf-nav__menu">
+              <span>Hub</span>
+              <span>Blog</span>
+              <span>Case studies</span>
+              <span>Support portal</span>
+            </div>
+          </div>
+          <div class="wf-nav__item" data-has-menu>
+            <span class="wf-nav__trigger">Company</span>
+            <div class="wf-nav__menu">
+              <span>About</span>
+              <span>Contact</span>
+              <span class="is-muted is-tbd">Careers (TBD)</span>
+            </div>
+          </div>
+        </div>
+        <span class="wf-nav__cta">Request a conversation</span>
+      </header>
+
+      <div id="wf-page-root"></div>
+
+      <footer class="wf-footer">
+        <span>Utility footer (all pages): Customer login · Privacy · Terms · Accessibility · Sitemap</span>
+        <div class="wf-footer__row">
+          <span>Draft copy — not final flow or polish</span>
+          <span>Strategy: website-strategy.html</span>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    const NAV = [
+      { label: 'Platform', children: null },
+      { label: 'Industries ▾', children: ['Casinos & gaming', 'Hotels & resorts', 'Sports & venues', 'Airports & transportation', 'Conference & convention centers', 'Corporate & campus properties'] },
+      { label: 'Who we serve', children: null },
+      { label: 'Resources ▾', children: ['Hub', 'Blog', 'Case studies', 'Support portal'] },
+      { label: 'Company ▾', children: ['About', 'Contact', 'Careers (TBD)'] },
+    ];
+
+    function sec(num, title, job, tone, blocks, source) {
+      return { num, title, job, tone: tone || 'white', blocks: blocks || [], source: source || '' };
+    }
+
+    function block(label, hint, items, opts) {
+      const b = { label, hint: hint || '', items: items || [] };
+      if (opts) Object.assign(b, opts);
+      return b;
+    }
+
+    const COPY = {
+      tagline: 'The Orchestration Engine for Enterprise Multimedia',
+      subTagline: 'One interface to control, automate, and execute the entire guest experience.',
+      valueProp: 'LUCI Systems orchestrates every layer of technology running your property — AV, signage, building, and operational infrastructure — from a single interface your team controls from anywhere. Rather than adding layers to your stack, LUCI reduces the variables, hardware, and interfaces your team has to manage. When onsite experience and operational continuity are non-negotiable, LUCI delivers coordinated, real-time execution, end to end.',
+      cta: 'Request a conversation',
+      ctaAlt: 'See LUCI in action',
+      oneOffering: 'One platform, one embedded team, one outcome.',
+      platformSoftware: 'The multimedia orchestration engine your team runs day to day.',
+      platformPartnership: 'The team that designs, deploys, supports, refines, and partners with your property — built in, not bolted on.',
+      varReductionHeadline: 'Complexity isn’t solved by a better interface. It’s solved by a shorter list of things to manage.',
+      accumulation: 'Complex environments don’t fail because of what they lack. They fail because of what they accumulate.\n\nEvery property runs on a stack of vendors, processors, interfaces, and workarounds that each made sense at the time, but create downstream challenges.',
+      subtraction: 'LUCI doesn’t address this with an additional tool; it addresses this with the principle of subtraction. By removing variables. Its success is evidenced by the number of things our clients no longer have to think about.',
+      portfolioLine: 'LUCI runs at some of the largest, most operationally complex properties in gaming and hospitality — where guest experience and operational uptime are not optional.',
+      pillars: [
+        '01 — Complete visibility and control across your property. One interface surfaces every endpoint, zone, and system across your property. Every team sees the same picture and acts from the same place.',
+        '02 — Align your teams by default. LUCI connects every team to the same system, so your organization can stop negotiating internally and start executing towards a shared vision.',
+        '03 — Fully activate the guest experience. Turn passive screens into purposeful moments by planning, programming, and responding to guest signals in real time.',
+        '04 — Invest in the only A/V that gets more valuable over time. Traditional A/V depreciates and expires. LUCI doesn’t. Year Five is more capable than Year One on the same line item.',
+      ],
+      features: [
+        'Map-based dashboard — Live visual map of every display, audio zone, and system endpoint across the property',
+        'Open API integration — Connects to any A/V, signage, building, or content system',
+        'PIN-delegated control — Every user controls only their designated zones',
+        'Predictive monitoring & alerts — Surfaces and resolves common issues automatically, before the guest notices',
+        'Mobile control from any device — Full property control from any authorized device, on or off property',
+        'Scalable by architecture — Add venues, floors, or sister properties without replacing the core',
+      ],
+      servicesIntro: 'Six capabilities — available anytime, built into every deployment.',
+      services: [
+        '01 · LUCI FDE — Engineers embedded from scoping through year five — same team, no handoff',
+        '02 · Design & Deployment — In-person scoping, architecture, stand-up — phased so value lands early',
+        '03 · Owner\'s-Rep Partnership — Standing extension of your enterprise — roadmap, vendors, capital, technical decisions',
+        '04 · Training & Enablement — Role-based curriculum; knowledge survives turnover',
+        '05 · Support & Operations — One accountable team, not tiered vendor queue — including off-hours',
+        '06 · Continuous Refinement — Platform appreciates on the same line item; field learning feeds releases',
+      ],
+      luciIs: [
+        'An operating system that connects infrastructure',
+        'Software, hardware, operating model, and embedded engineering — delivered as one system',
+        'A platform that appreciates over time',
+        'A team of seasoned engineers accountable from design through ongoing refinement',
+      ],
+      luciIsNot: [
+        'A control panel (runs one system at a time)',
+        'A dashboard (reports on a property, doesn’t operate one)',
+        'A point solution that creates an integration problem',
+        'A vendor that hands off after deployment',
+      ],
+      whoOpening: 'Multimedia orchestration — one platform, every function connected.',
+      personas: [
+        'Leadership (CEO / GM) — “Your floor is already influencing guest behavior. LUCI makes that influence more targeted and activating.”',
+        'Operations (COO / Gaming Director) — “Run a tighter operation. Automate the routine. Respond instantly to the unexpected. One team accountable for the whole outcome.”',
+        'Technology (CIO / IT Director) — “One interface for every system on the property — on standard network infrastructure, without proprietary hardware or specialist programming.”',
+        'Finance (CFO) — “Infrastructure that appreciates. One subscription replaces compounding capital costs — and year five is more capable than year one on the same line item.”',
+        'Marketing / Guest experience (CMO) — “Deliver the right experience, in the right zone, at exactly the right moment — every time, across the whole property.”',
+        'Technical / Facilities (AV Manager) — “See everything. Control anything. From any device. Without leaving the floor.”',
+      ],
+      industries: [
+        'Casinos & gaming — Gaming floors, guest experience, uptime',
+        'Hotels & resorts — Property-wide AV, signage, ops continuity',
+        'Sports & venues — Arenas, event spaces, game-day orchestration',
+        'Airports & transportation — Airports, rail/intermodal stations, transit hubs',
+        'Conference & convention centers — Meeting spaces, digital signage, event turnover',
+        'Corporate & campus properties — HQ and multi-building campuses; AV, signage, and building tech as one layer',
+      ],
+      ameristarTitle: 'Three days to a future-ready platform',
+      ameristarDek: 'LUCI completed a full retrofit of Ameristar Council Bluffs\' AV infrastructure in under three days, modernizing a system that had run since 2012 and centralizing control on land to prepare the property for its next phase of growth.',
+      offering: 'LUCI is a fully managed A/V operating platform — software, hardware, operating model, and an embedded engineering team — deployed as a complete system your team takes over from day one.',
+    };
+
+    const PAGES = {
+      sitemap: {
+        path: '/ (structure)',
+        title: 'Site map & primary navigation',
+        intro: 'Top-level headers, dropdown children, and which wireframe to open for each page template.',
+        sections: [
+          sec(null, 'Primary navigation', 'Sticky header on every page', 'sand', []),
+          sec(null, 'Page inventory', 'Use left sidebar to preview section order per page', 'white', [
+            block('Core', '', ['Home', 'Platform', 'Who we serve']),
+            block('Industries', '', COPY.industries),
+            block('Resources', '', ['Hub', 'Blog', 'Case studies', 'Support portal']),
+            block('Company', '', ['About', 'Contact']),
+          ]),
+        ],
+      },
+      home: {
+        path: '/',
+        title: 'Home',
+        intro: 'Why care + who it’s for + proof — depth on Platform.',
+        sections: [
+          sec('01', 'Hero', 'Tagline + sub-tagline + CTA', 'deep', [
+            block('Tagline', COPY.tagline, [], { lead: true }),
+            block('Sub-tagline', COPY.subTagline),
+            block('CTA', COPY.cta + ' · ' + COPY.ctaAlt),
+          ], 'Approved lockup'),
+          sec('02', 'Value band', 'Boilerplate', 'white', [
+            block('Body', COPY.valueProp),
+          ], 'Approved value prop'),
+          sec('03', 'One offering', 'Diagram + summary line', 'light', [
+            block('Summary', COPY.oneOffering),
+            block('Platform', COPY.platformSoftware),
+            block('Partnership', COPY.platformPartnership),
+            block('Diagram', 'luci-two-pillars.png', [], { visual: 'diagram' }),
+            block('Link', 'Explore the platform → /platform'),
+          ], 'Strategy + diagram'),
+          sec('04', 'Variable reduction', 'Teaser', 'white', [
+            block('Headline', COPY.varReductionHeadline),
+            block('Body', COPY.subtraction),
+          ], 'Messaging Guide + V6'),
+          sec('05', 'Four message pillars', 'Outcomes', 'light', [
+            block('Pillars', '', COPY.pillars),
+          ], 'Messaging Guide'),
+          sec('06', 'Platform teaser', 'Key features', 'white', [
+            block('Features', '', COPY.features.slice(0, 3)),
+            block('Link', 'See all capabilities → /platform#capabilities'),
+          ], 'Messaging Guide'),
+          sec('07', 'Partnership teaser', 'Services', 'sand', [
+            block('Intro', COPY.servicesIntro),
+            block('Services', '', COPY.services),
+            block('Link', 'How we work with you → /platform#partnership'),
+          ], 'Strategy § services'),
+          sec('08', 'Industries', 'Vertical entry points', 'white', [
+            block('Cards', '', COPY.industries),
+          ]),
+          sec('09', 'Who we serve', 'By function', 'light', [
+            block('Opening', COPY.whoOpening),
+            block('Teaser', '', COPY.personas.slice(0, 3)),
+            block('Link', 'Who we serve → /who-we-serve'),
+          ], 'Persona Guide'),
+          sec('10', 'Proof', 'Logo wall + case study', 'white', [
+            block('Portfolio line', COPY.portfolioLine),
+            block('Logo wall', 'Client logo grid', [], { visual: 'logos' }),
+            block('Case study', COPY.ameristarTitle + '\n' + COPY.ameristarDek),
+          ], 'Proof rules'),
+          sec('11', 'Resources', 'Hub teaser', 'light', [
+            block('Cards', 'Blog · Case studies · Support portal'),
+          ]),
+          sec('12', 'Closing CTA', 'Convert', 'deep', [
+            block('CTA', COPY.cta + ' · ' + COPY.ctaAlt),
+          ]),
+        ],
+      },
+      platform: {
+        path: '/platform',
+        title: 'Platform',
+        intro: 'Software + capabilities + why it’s different + how we work with you — one scroll.',
+        sections: [
+          sec('01', 'Hero', 'Lockup', 'deep', [
+            block('Tagline', COPY.tagline, [], { lead: true }),
+            block('Sub-tagline', COPY.subTagline),
+          ], 'Approved lockup'),
+          sec('02', 'The problem', 'Layers of property tech', 'white', [
+            block('Body', COPY.accumulation),
+          ], 'Messaging Guide worldview'),
+          sec('03', 'How it works', 'Product visual', 'light', [
+            block('Screenshot', 'Map-based control UI', [], { visual: 'product' }),
+          ]),
+          sec('04', 'Capabilities', 'Key features', 'white', [
+            block('Features', '', COPY.features),
+          ], 'Messaging Guide'),
+          sec('05', 'Why it’s structurally different', 'Variable reduction + alternatives', 'light', [
+            block('Headline', COPY.varReductionHeadline),
+            block('Body', COPY.subtraction),
+            block('LUCI is', '', COPY.luciIs),
+            block('LUCI is not', '', COPY.luciIsNot),
+          ], 'Messaging Guide + V6'),
+          sec('06', 'How we work with you', 'Six services', 'white', [
+            block('Intro', COPY.servicesIntro),
+            block('Offering', COPY.offering),
+            block('Services', '', COPY.services),
+          ], 'Strategy § services'),
+          sec('07', 'CTA', 'Convert', 'deep', [
+            block('CTA', COPY.cta + ' · ' + COPY.ctaAlt),
+          ]),
+        ],
+      },
+      'who-we-serve': {
+        path: '/who-we-serve',
+        title: 'Who we serve',
+        intro: 'Orchestration by function — one page.',
+        sections: [
+          sec('01', 'Opening', 'Story', 'deep', [block('Body', COPY.whoOpening)]),
+          sec('02', 'By function', 'Persona rows', 'white', [
+            block('Audiences', '', COPY.personas),
+            block('LUCI capabilities by role', 'What each team can do in LUCI — [workshop pending]'),
+          ], 'Persona Guide'),
+          sec('03', 'CTA', 'Next steps', 'light', [
+            block('Links', 'Platform → /platform · Contact → /contact'),
+          ]),
+        ],
+      },
+      'industry-template': {
+        path: '/industries/{vertical}',
+        title: 'Industry page (template)',
+        intro: 'Same structure for all six verticals in the Industries dropdown.',
+        sections: [
+          sec('01', 'Hero', 'Vertical headline', 'deep', [
+            block('Example', 'Casinos & gaming — [vertical-specific headline TBD]'),
+          ]),
+          sec('02', 'Vertical challenges', 'Context', 'white', [
+            block('Example', 'Gaming floors, guest experience, uptime — [vertical pain TBD]'),
+          ]),
+          sec('03', 'How LUCI fits', 'Orchestration story', 'light', [
+            block('Pillar 03', COPY.pillars[2]),
+          ], 'Messaging Guide'),
+          sec('04', 'Proof', 'Case study or logos', 'white', [
+            block('Case study', COPY.ameristarTitle),
+            block('Logo wall', 'Vertical logo subset', [], { visual: 'logos' }),
+          ]),
+          sec('05', 'CTA', 'Convert', 'deep', [
+            block('CTA', COPY.cta),
+          ]),
+        ],
+      },
+      'case-studies': {
+        path: '/resources/case-studies',
+        title: 'Case studies',
+        intro: 'Named proof — under Resources.',
+        sections: [
+          sec('01', 'Index hero', 'Proof library', 'deep', [
+            block('Body', COPY.portfolioLine),
+          ]),
+          sec('02', 'Study list', 'Featured + future', 'white', [
+            block('Featured', COPY.ameristarTitle + '\n' + COPY.ameristarDek),
+            block('More', 'Additional case studies as approved'),
+          ]),
+          sec('03', 'Detail template', 'Long-form', 'light', [
+            block('Sections', 'Challenge · approach · outcomes · quotes · CTA'),
+            block('Reference', 'See ameristar-council-bluffs.html in design system'),
+          ]),
+        ],
+      },
+      resources: {
+        path: '/resources',
+        title: 'Resources hub',
+        intro: 'Blog · Case studies · Support.',
+        sections: [
+          sec('01', 'Hero', 'Resources', 'deep', [
+            block('Headline', 'Resources'),
+            block('Body', 'Case studies, articles, and support for enterprise property teams.'),
+          ]),
+          sec('02', 'Featured', 'Lead card', 'sand', [
+            block('Featured case study', COPY.ameristarTitle + '\n' + COPY.ameristarDek),
+          ]),
+          sec('03', 'Browse', 'Content types', 'white', [
+            block('Cards', '', ['Case studies', 'Blog', 'Support portal', 'Hub']),
+          ]),
+        ],
+      },
+      blog: {
+        path: '/blog',
+        title: 'Blog (template)',
+        intro: 'Long-form: variable reduction table, engagement cycle, appendix content.',
+        sections: [
+          sec('01', 'Index', 'Post list', 'white', [
+            block('Planned topics', '', [
+              'Variable reduction — full table (V6)',
+              'Capability ↔ principle deep dive',
+              'Engagement cycle: Plan → Deploy → Operate → Refine',
+            ]),
+          ]),
+          sec('02', 'Article', 'Post template', 'light', [
+            block('Structure', 'Title · deck · body · related posts · CTA'),
+          ], 'V6 → blog matrix'),
+        ],
+      },
+      about: {
+        path: '/about',
+        title: 'About',
+        intro: 'Light touch worldview.',
+        sections: [
+          sec('01', 'Hero', 'Who we are', 'deep', [
+            block('Body', COPY.offering),
+          ]),
+          sec('02', 'Worldview', 'Short LUCI view', 'white', [
+            block('Body', COPY.accumulation + '\n\n' + COPY.subtraction),
+          ], 'Messaging Guide'),
+          sec('03', 'One offering', 'Platform + partnership', 'light', [
+            block('Summary', COPY.oneOffering),
+            block('Diagram', 'luci-two-pillars.png', [], { visual: 'diagram' }),
+          ]),
+          sec('04', 'CTA', 'Contact', 'deep', [
+            block('CTA', COPY.cta),
+          ]),
+        ],
+      },
+      contact: {
+        path: '/contact',
+        title: 'Contact',
+        intro: 'Request a conversation.',
+        sections: [
+          sec('01', 'Hero', 'Headline', 'deep', [
+            block('Headline', 'Start a conversation'),
+          ]),
+          sec('02', 'Form', 'Fields', 'white', [
+            block('Fields', 'Name · Organization · Role · Message · Submit'),
+          ]),
+          sec('03', 'Supporting', 'Next steps', 'light', [
+            block('Body', 'What happens after you reach out — [TBD]'),
+          ]),
+        ],
+      },
+    };
+
+    const root = document.getElementById('wf-page-root');
+
+    function renderBlocks(blocks) {
+      return blocks.map(b => {
+        let items = '';
+        if (b.items && b.items.length) {
+          items = '<ul class="wf-block__items">' + b.items.map(i => '<li>' + escapeHtml(i) + '</li>').join('') + '</ul>';
+        }
+        const hintClass = b.lead ? ' wf-block__hint--lead' : '';
+        const hint = b.hint
+          ? `<p class="wf-block__hint${hintClass}">${escapeHtml(b.hint)}</p>`
+          : '';
+        let visual = '';
+        if (b.visual === 'diagram') {
+          visual = '<div class="wf-visual">Diagram · luci-two-pillars.png</div>';
+        } else if (b.visual === 'product') {
+          visual = '<div class="wf-visual">Product screenshot · map-based control UI</div>';
+        } else if (b.visual === 'logos') {
+          visual = '<div class="wf-visual">Logo wall</div>';
+        }
+        return `<div class="wf-block">
+          <p class="wf-block__label">${escapeHtml(b.label)}</p>${hint}${items}${visual}
+        </div>`;
+      }).join('');
+    }
+
+    function escapeHtml(s) {
+      const d = document.createElement('div');
+      d.textContent = s;
+      return d.innerHTML;
+    }
+
+    function renderSitemap() {
+      let html = '<div class="wf-sitemap">';
+      html += '<ul>';
+      NAV.forEach(item => {
+        html += '<li><p class="wf-sitemap__parent">' + escapeHtml(item.label) + '</p>';
+        if (item.children) {
+          html += '<ul class="wf-sitemap__children">';
+          item.children.forEach(c => { html += '<li>' + escapeHtml(c) + '</li>'; });
+          html += '</ul>';
+        }
+        html += '</li>';
+      });
+      html += '<li><p class="wf-sitemap__parent">Primary CTA</p><ul class="wf-sitemap__children"><li>' + escapeHtml(COPY.cta + ' · ' + COPY.ctaAlt) + '</li></ul></li>';
+      html += '</ul></div>';
+      return html;
+    }
+
+    function renderPage(id) {
+      const page = PAGES[id];
+      if (!page) return;
+
+      let sectionsHtml = page.sections.map(s => {
+        const tone = 'wf-sec--' + (s.tone || 'white');
+        const meta = s.num
+          ? `<span class="wf-sec__num">§ ${s.num}</span><span class="wf-sec__job">${escapeHtml(s.job)}</span>${s.source ? '<span class="wf-sec__source">' + escapeHtml(s.source) + '</span>' : ''}`
+          : `<span class="wf-sec__job">${escapeHtml(s.job)}</span>`;
+        let body = renderBlocks(s.blocks);
+        if (id === 'sitemap' && s.title === 'Primary navigation') {
+          body = renderSitemap() + body;
+        }
+        return `<section class="wf-sec ${tone}">
+          <div class="wf-sec__meta">${meta}</div>
+          <h2 class="wf-sec__title">${escapeHtml(s.title)}</h2>
+          ${body}
+        </section>`;
+      }).join('');
+
+      root.innerHTML = `
+        <header class="wf-page-head">
+          <p class="wf-page-head__path">${escapeHtml(page.path)}</p>
+          <h1>${escapeHtml(page.title)}</h1>
+          <p>${escapeHtml(page.intro)}</p>
+        </header>
+        <div class="wf-sections">${sectionsHtml}</div>
+      `;
+    }
+
+    document.querySelectorAll('.wf-picker__btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.wf-picker__btn').forEach(b => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+        renderPage(btn.dataset.page);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+
+    renderPage('sitemap');
+  </script>
+</body>
+</html>

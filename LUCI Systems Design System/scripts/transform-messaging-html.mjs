@@ -8,6 +8,83 @@ import { fileURLToPath } from 'url';
 const LOGO = '../assets/logos/luci-full-white.png';
 const MESSAGING_CSS = 'messaging-docs.css';
 
+/** Approved lockup — applied after Word sync so HTML stays canonical when .docx lags. */
+export const CANONICAL_TAGLINE = 'The Orchestration Engine for Enterprise Multimedia';
+
+const TAGLINE_REPLACEMENTS = [
+  [/The Multimedia Orchestration Engine for Enterprise Properties/gi, CANONICAL_TAGLINE],
+  [/The Smarter Platform for Enterprise Multimedia/gi, CANONICAL_TAGLINE],
+];
+
+export function applyCanonicalMessagingCopy(html) {
+  let out = html;
+  for (const [pattern, replacement] of TAGLINE_REPLACEMENTS) {
+    out = out.replace(pattern, replacement);
+  }
+  return out;
+}
+
+/** Hand-maintained messaging pages (no OneDrive .docx) — included in library nav + manifest. */
+export const SUPPLEMENTAL_LIBRARY_DOCS = [
+  {
+    id: 'luci-system-diagram',
+    title: 'LUCI system diagram',
+    url: '/messaging/luci-system-diagram.html',
+  },
+];
+
+function formatDocNote(iso) {
+  if (!iso) return '';
+  return (
+    'Updated ' +
+    new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+  );
+}
+
+/** Insert diagram page into library list after messaging guide. */
+export function mergeLibraryDocs(docs, manifest = { docs: [] }) {
+  const supplemental = SUPPLEMENTAL_LIBRARY_DOCS.map((d) => {
+    const m = (manifest.docs || []).find((x) => x.id === d.id);
+    return {
+      id: d.id,
+      title: d.title,
+      url: d.url,
+      note: formatDocNote(m?.htmlModified || m?.sourceModified),
+    };
+  });
+  const out = [];
+  for (const d of docs) {
+    out.push(d);
+    if (d.id === 'messaging-guide') out.push(...supplemental);
+  }
+  return out;
+}
+
+const MESSAGING_GUIDE_DIAGRAM_FIGURE = `<figure class="doc-figure doc-figure--diagram" id="the-luci-system">
+<img src="diagrams/luci-system-diagram-v2.svg?v=20260611d" alt="LUCI System — LUCI + Systems orchestration layer above Standard A/V client environment" width="680" height="391">
+<figcaption class="doc-figure__caption"><strong>The LUCI System.</strong> LUCI + Systems — the orchestration layer above the accumulated Standard A/V environment your team already runs. <a href="luci-system-diagram.html">Full diagram page</a> (flat working canvas + source files).</figcaption>
+</figure>`;
+
+/** Diagram embed + TOC sub-link — re-applied after each Word sync of messaging-guide. */
+export function applyMessagingGuideEnhancements(bodyHtml, tocHtml) {
+  let body = bodyHtml;
+  let toc = tocHtml;
+  if (!body.includes('id="the-luci-system"')) {
+    const offeringIntro =
+      /<p class="doc-prose">LUCI Systems is two forces in one:[\s\S]*?<\/p>(\s*)(?=<ul class="doc-rows">)/;
+    if (offeringIntro.test(body)) {
+      body = body.replace(offeringIntro, (m) => `${m}\n\n${MESSAGING_GUIDE_DIAGRAM_FIGURE}\n\n`);
+    }
+  }
+  if (toc && !toc.includes('#the-luci-system')) {
+    toc = toc.replace(
+      /(<li><a href="#the-offering">THE OFFERING<\/a><\/li>)/,
+      '$1<li><a class="is-sub" href="#the-luci-system">THE LUCI SYSTEM</a></li>'
+    );
+  }
+  return { bodyHtml: body, tocHtml: toc };
+}
+
 export function stripTags(html) {
   return html.replace(/<[^>]+>/g, '');
 }
@@ -344,7 +421,7 @@ export function transformMessagingBody(rawBody) {
 
   const tocHtml = buildTocFromArticle(html, allSections);
 
-  return { title, deck, bodyHtml: html, tocHtml, sections };
+  return { title, deck, bodyHtml: applyCanonicalMessagingCopy(html), tocHtml, sections };
 }
 
 export function buildLibraryNav(docs, currentId) {
@@ -371,6 +448,7 @@ export function buildResourcePage({
   libraryDocs,
   updatedIso,
 }) {
+  bodyHtml = applyCanonicalMessagingCopy(bodyHtml);
   const updatedLabel = new Date(updatedIso).toLocaleString('en-US', {
     month: 'short',
     day: 'numeric',

@@ -73,6 +73,21 @@
     .queue-list { list-style: none; margin: 0; }
     .queue-item { border-bottom: 1px solid var(--rule-light); }
     .queue-item:last-child { border-bottom: none; }
+    .queue-group-header {
+      padding: 20px 0 6px;
+      font-family: var(--display);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--mint-dark);
+      border-bottom: none;
+    }
+    .queue-group-header:first-child { padding-top: 0; }
+    .queue-item--grouped {
+      padding-left: 14px;
+      border-left: 2px solid rgba(var(--mint-rgb), 0.35);
+    }
     .queue-item__link {
       display: grid;
       grid-template-columns: 1fr auto;
@@ -888,7 +903,20 @@
     } else {
       const ul = document.createElement('ul');
       ul.className = 'queue-list';
-      dueList.forEach((item) => ul.appendChild(renderQueueRow(item)));
+      const seenGroups = new Set();
+      dueList.forEach((item) => {
+        const g = (item.group || '').trim();
+        if (g && !seenGroups.has(g)) {
+          seenGroups.add(g);
+          const hdr = document.createElement('li');
+          hdr.className = 'queue-group-header';
+          hdr.textContent = g;
+          ul.appendChild(hdr);
+        }
+        const row = renderQueueRow(item);
+        if (g) row.classList.add('queue-item--grouped');
+        ul.appendChild(row);
+      });
       zoneDue.appendChild(ul);
     }
     main.appendChild(zoneDue);

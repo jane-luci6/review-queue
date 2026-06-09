@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>LUCI System Diagram</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="messaging-docs.css">
+</head>
+<body>
+  <div class="resource">
+    <header class="resource__masthead">
+      <div class="resource__masthead-row">
+        <a href="https://lucisystems.com" class="resource__logo"><img src="../assets/logos/luci-full-white.png" alt="LUCI Systems" width="120" height="24"></a>
+        <span class="resource__badge">Brand resources</span>
+      </div>
+      <h1 class="resource__hero-title">LUCI System Diagram</h1>
+      <p class="resource__hero-deck">Standard AV — flat top-down first, then perspective</p>
+      <p class="resource__meta">Updated Jun 10, 2026</p>
+      <nav class="resource__crumbs" aria-label="Breadcrumb">
+        <a href="../index.html">Review queue</a>
+        <span>/</span>
+        <a href="messaging-guide.html">Messaging guide</a>
+        <span>/</span>
+        <span aria-current="page">System diagram</span>
+      </nav>
+    </header>
+    <div class="resource__layout">
+      <aside class="resource__sidebar">
+        <p class="resource__nav-kicker">Library</p>
+        <ul class="resource__library"><li><a href="philosophy.html">LUCI philosophy</a><span>Updated May 7, 2026</span></li><li><a href="messaging-guide.html">Messaging guide</a><span>Updated Jun 10, 2026</span></li><li><a href="luci-system-diagram.html" class="is-current">LUCI system diagram</a><span>Updated Jun 10, 2026</span></li><li><a href="personas.html">Personas</a><span>Updated May 6, 2026</span></li></ul>
+      </aside>
+      <main class="resource__article">
+      <p class="doc-prose">The <strong>flat canvas</strong> is the source of truth for icon placement. The <strong>perspective diagram</strong> maps that artwork onto the lower disk under LUCI + Systems. Edit flat layout in <code>diagrams/luci-standard-av-flat.svg</code>, then sync into <code>luci-system-diagram-v2.svg</code>.</p>
+
+      <figure class="doc-figure doc-figure--diagram">
+        <img src="diagrams/luci-system-diagram-v2.svg?v=20260611d" alt="LUCI System — LUCI + Systems disk above Standard AV client environment" width="680" height="391">
+        <figcaption class="doc-figure__caption"><strong>System diagram.</strong> Lighter top disk = ideal LUCI orchestration (mint accent). Darker bottom disk = accumulated Standard AV environment LUCI manages.</figcaption>
+      </figure>
+
+      <figure class="doc-figure doc-figure--diagram" style="margin-top: 32px; opacity: 0.72;">
+        <img src="diagrams/luci-standard-av-flat.svg?v=20260609h" alt="Standard AV disk — flat top-down working canvas" width="560" height="560">
+        <figcaption class="doc-figure__caption"><strong>Working canvas (flat).</strong> Top-down reference for icon slots, cables, and vendor tags. Hard-refresh if stale (<kbd>Cmd+Shift+R</kbd>).</figcaption>
+      </figure>
+
+      <section class="doc-section" style="padding-top: 48px;">
+        <h2 class="doc-chapter">FLOORMAP ICON OPTIONS</h2>
+        <p class="doc-prose">Two AutoCAD-style variants per element. <a href="floormap-icon-preview.html"><strong>Open the icon preview page</strong></a> for large renders on disk-colored viewports — then reply with letter picks (e.g. Audio <strong>A</strong>, Screen <strong>B</strong>, Rack <strong>A</strong>…).</p>
+        <ul class="doc-stack">
+          <li class="doc-stack__item">
+            <p class="doc-stack__head"><span class="doc-stack__num">A</span><b>Audio Zone</b></p>
+            <p class="doc-stack__body"><strong>A</strong> — dashed ellipse, speaker node, wave arcs. <strong>B</strong> — dashed rect, diagonal hatch, corner speakers.</p>
+          </li>
+          <li class="doc-stack__item">
+            <p class="doc-stack__head"><span class="doc-stack__num">B</span><b>Screen endpoint</b></p>
+            <p class="doc-stack__body"><strong>A</strong> — monitor + X overlay + stand tick. <strong>B</strong> — crosshair circle + mount block (plan view).</p>
+          </li>
+          <li class="doc-stack__item">
+            <p class="doc-stack__head"><span class="doc-stack__num">C</span><b>Rack / Head end</b></p>
+            <p class="doc-stack__body"><strong>A</strong> — EIA rack elevation, shelf lines, status lamps. <strong>B</strong> — cabinet outline, U-slot blocks.</p>
+          </li>
+          <li class="doc-stack__item">
+            <p class="doc-stack__head"><span class="doc-stack__num">D</span><b>Vendor</b></p>
+            <p class="doc-stack__body"><strong>A</strong> — diamond block ref, leader line, label box. <strong>B</strong> — equipment flag tag with pin.</p>
+          </li>
+          <li class="doc-stack__item">
+            <p class="doc-stack__head"><span class="doc-stack__num">E</span><b>Computer</b></p>
+            <p class="doc-stack__body"><strong>A</strong> — monitor plan, keyboard line, desk tick. <strong>B</strong> — tower + monitor pair.</p>
+          </li>
+          <li class="doc-stack__item">
+            <p class="doc-stack__head"><span class="doc-stack__num">F</span><b>Video Wall</b></p>
+            <p class="doc-stack__body"><strong>A</strong> — tile grid, mullion lines. <strong>B</strong> — wide plane, diagonal brace, vertical seams.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="doc-section" style="padding-top: 48px;">
+        <h2 class="doc-chapter">REFINEMENT NOTES</h2>
+        <ul class="doc-stack">
+          <li class="doc-stack__item">
+            <p class="doc-stack__head"><span class="doc-stack__num">01</span><b>Two separate assets</b></p>
+            <p class="doc-stack__body">This disk diagram pairs with a separate Application Guide slide — not combined in one visual.</p>
+          </li>
+          <li class="doc-stack__item">
+            <p class="doc-stack__head"><span class="doc-stack__num">02</span><b>Top disk stays clean</b></p>
+            <p class="doc-stack__body">LUCI layer light and orderly; teal/mint only on top. Bottom disk carries the messy accumulated environment.</p>
+          </li>
+          <li class="doc-stack__item">
+            <p class="doc-stack__head"><span class="doc-stack__num">03</span><b>Bottom label</b></p>
+            <p class="doc-stack__body"><strong>STANDARD AV</strong> on the front rim — dense connection mesh + endpoints (screens, audio, racks, vendors, computers, video walls), not a spatial floorplan.</p>
+          </li>
+        </ul>
+      </section>
+    </main>
+    </div>
+  </div>
+</body>
+</html>

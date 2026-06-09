@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>LUCI Brand Messaging Framework V6.0</title>
+<style>
+  :root {
+    --ink: #0A0A0A;
+    --mid: #404040;
+    --mute: #737373;
+    --line: #D9D9D9;
+    --soft: #F5F5F5;
+    --panel: #FAFAFA;
+    --dark-bg: #1A1A1A;
+    --accent-bg: #EEF3EC;
+    --accent-ink: #1F4A2E;
+    --cool-bg: #EDF2F7;
+    --cool-ink: #1E3A5F;
+    --serif: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0; background: #fff; color: var(--ink);
+    font-family: var(--serif); font-size: 16px; line-height: 1.55;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+  }
+  .doc { max-width: 820px; margin: 0 auto; padding: 80px 56px 120px; }
+
+  .cover { border-bottom: 4px solid var(--ink); padding-bottom: 24px; margin-bottom: 64px; }
+  .cover .kicker { font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mute); margin-bottom: 12px; }
+  .cover h1 { font-size: 44px; font-weight: 800; color: var(--ink); margin: 0 0 20px; line-height: 1.1; letter-spacing: -0.02em; }
+  .cover .meta { font-size: 15px; color: var(--mid); font-style: italic; }
+
+  .panel { background: var(--soft); padding: 28px 32px; margin: 32px 0; border-radius: 2px; }
+  .panel .label { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mute); margin-bottom: 10px; }
+  .panel p { margin: 0 0 12px; font-size: 15px; line-height: 1.6; }
+  .panel p:last-child { margin-bottom: 0; }
+
+  .toc h2 { font-size: 28px; font-weight: 800; margin: 0 0 28px; letter-spacing: -0.01em; }
+  .toc ol { list-style: none; padding: 0; margin: 0; }
+  .toc li { display: grid; grid-template-columns: 48px 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .toc li:last-child { border-bottom: none; }
+  .toc .num { font-weight: 700; color: var(--mute); font-size: 18px; }
+  .toc .title { font-weight: 700; color: var(--ink); font-size: 17px; }
+  .toc .sub { color: var(--mid); font-size: 14px; margin-top: 2px; }
+
+  .section { page-break-before: always; break-before: page; padding-top: 56px; }
+  .section:first-of-type { page-break-before: auto; break-before: auto; }
+  .section .marker { font-size: 12px; font-weight: 700; letter-spacing: 0.20em; text-transform: uppercase; color: var(--mute); margin-bottom: 10px; }
+  .section > h1 { font-size: 38px; font-weight: 800; color: var(--ink); margin: 0 0 40px; line-height: 1.1; letter-spacing: -0.02em; }
+  .section h2 { font-size: 22px; font-weight: 700; color: var(--ink); margin: 40px 0 14px; letter-spacing: -0.01em; }
+  .section h3 { font-size: 17px; font-weight: 700; color: #262626; margin: 28px 0 10px; }
+  .section p { margin: 0 0 14px; font-size: 15.5px; line-height: 1.65; color: var(--ink); }
+  .section .lede { font-size: 18px; line-height: 1.55; color: var(--ink); margin-bottom: 24px; }
+
+  .dark-panel { background: var(--dark-bg); color: #fff; padding: 48px 48px; margin: 32px 0; border-radius: 2px; }
+  .dark-panel .label { font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #9CA3AF; margin-bottom: 28px; }
+  .dark-panel .lead { font-size: 26px; font-weight: 700; line-height: 1.3; color: #fff; margin: 0 0 28px; letter-spacing: -0.01em; }
+  .dark-panel .body { font-size: 17px; line-height: 1.55; color: #E5E7EB; margin: 0 0 12px; }
+  .dark-panel .coda { margin-top: 36px; font-size: 17px; font-weight: 700; color: #fff; line-height: 1.55; }
+
+  .tagline-panel { background: var(--soft); padding: 36px 40px; margin: 20px 0 28px; border-radius: 2px; }
+  .tagline-panel .label { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mute); margin-bottom: 14px; }
+  .tagline-panel .head { font-size: 30px; font-weight: 800; color: var(--ink); line-height: 1.2; margin: 0 0 18px; letter-spacing: -0.02em; }
+  .tagline-panel .sub-label { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mute); margin: 0 0 8px; }
+  .tagline-panel .sub { font-size: 18px; color: var(--mid); line-height: 1.5; margin: 0; }
+  .commentary { font-style: italic; color: var(--mid); font-size: 14px; margin-top: 16px; }
+
+  .accent-panel { padding: 32px 36px; margin: 24px 0; border-radius: 2px; }
+  .accent-panel.green { background: var(--accent-bg); }
+  .accent-panel.green .label { color: var(--accent-ink); }
+  .accent-panel.cool { background: var(--cool-bg); }
+  .accent-panel.cool .label { color: var(--cool-ink); }
+  .accent-panel .label { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 14px; }
+  .accent-panel .head { font-size: 22px; font-weight: 700; color: var(--ink); line-height: 1.3; margin: 0 0 14px; letter-spacing: -0.01em; }
+  .accent-panel p { font-size: 15.5px; line-height: 1.6; color: var(--ink); margin: 0 0 12px; }
+  .accent-panel p:last-child { margin-bottom: 0; }
+  .accent-panel .quiet { color: var(--mid); font-style: italic; }
+
+  table { width: 100%; border-collapse: collapse; margin: 20px 0 28px; font-size: 14.5px; }
+  th { background: var(--ink); color: #fff; padding: 14px 16px; text-align: left; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; }
+  td { padding: 16px; border: 1px solid var(--line); vertical-align: top; line-height: 1.55; }
+  td.cap { font-weight: 700; color: var(--ink); }
+  td.principle { background: var(--panel); }
+  td.principle .ptag { font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mute); display: block; margin-bottom: 6px; }
+  td.principle p { margin: 0; font-style: italic; color: var(--mid); font-size: 13px; line-height: 1.5; }
+  .row-variable td:first-child { font-weight: 700; color: var(--ink); width: 32%; }
+  .row-variable td:last-child { color: var(--mid); }
+
+  .bullets { list-style: none; padding: 0; margin: 0 0 24px; }
+  .bullets li { position: relative; padding-left: 22px; margin-bottom: 10px; font-size: 15.5px; line-height: 1.6; }
+  .bullets li::before { content: "•"; position: absolute; left: 4px; color: var(--ink); font-weight: 700; }
+  .bullets li strong { color: var(--ink); }
+
+  .comp-card { display: grid; grid-template-columns: 240px 1fr; gap: 0; margin: 18px 0; border: 1px solid var(--line); }
+  .comp-card .label-cell { background: var(--panel); padding: 22px 24px; }
+  .comp-card .label-cell .label { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mute); margin-bottom: 6px; }
+  .comp-card .label-cell .title { font-size: 18px; font-weight: 700; color: var(--ink); line-height: 1.3; }
+  .comp-card .body { padding: 22px 24px; font-size: 15px; line-height: 1.6; }
+
+  /* Service cards — for the Systems pillar */
+  .service-card { border: 1px solid var(--line); margin: 18px 0; border-radius: 2px; overflow: hidden; }
+  .service-card .head-bar { background: var(--accent-bg); padding: 20px 28px; }
+  .service-card .head-bar .label { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-ink); margin-bottom: 6px; }
+  .service-card .head-bar .title { font-size: 21px; font-weight: 700; color: var(--ink); line-height: 1.25; letter-spacing: -0.01em; }
+  .service-card .body { padding: 22px 28px; }
+  .service-card .body .definition { font-size: 16px; font-weight: 600; color: var(--ink); margin: 0 0 14px; line-height: 1.5; }
+  .service-card .body p { font-size: 15px; line-height: 1.6; margin: 0 0 12px; }
+  .service-card .body p:last-child { margin-bottom: 0; }
+  .service-card .body .delivers { font-style: italic; color: var(--mid); font-size: 14.5px; }
+
+  .option-row { display: grid; grid-template-columns: 60px 1fr; gap: 0; border: 1px solid var(--line); margin-bottom: 14px; }
+  .option-row .num-cell { background: #F0F0F0; padding: 24px; font-size: 22px; font-weight: 700; color: var(--mute); }
+  .option-row .body-cell { padding: 20px 24px; }
+  .option-row .label { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mute); margin-bottom: 8px; }
+  .option-row .head { font-size: 19px; font-weight: 700; color: var(--ink); line-height: 1.3; margin: 0 0 8px; }
+  .option-row p { margin: 0 0 6px; font-size: 14.5px; line-height: 1.55; color: var(--ink); }
+
+  .persona-card { background: var(--panel); padding: 26px 30px; margin-bottom: 16px; border-radius: 2px; }
+  .persona-card .role-label { font-size: 13px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink); margin-bottom: 10px; }
+  .persona-card .field-label { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mute); margin: 14px 0 4px; }
+  .persona-card .field { font-size: 14.5px; line-height: 1.55; margin: 0; }
+  .persona-card .message-label { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-ink); margin: 18px 0 6px; }
+  .persona-card .message { font-size: 16px; font-weight: 700; font-style: italic; color: var(--ink); margin: 0; line-height: 1.5; }
+
+  .signature { background: var(--soft); padding: 26px 32px; margin: 28px 0; border-radius: 2px; font-size: 19px; font-weight: 700; color: var(--ink); line-height: 1.4; letter-spacing: -0.01em; }
+
+  .naming-table { margin: 18px 0 28px; }
+  .naming-table td:first-child { background: var(--panel); font-weight: 700; font-size: 17px; color: var(--ink); width: 28%; }
+
+  .phase-row { display: grid; grid-template-columns: 60px 200px 1fr; gap: 0; border: 1px solid var(--line); margin-bottom: 10px; }
+  .phase-row .num { background: #F0F0F0; padding: 22px; font-size: 22px; font-weight: 700; color: var(--mute); }
+  .phase-row .name { padding: 22px 24px; font-size: 19px; font-weight: 700; color: var(--ink); }
+  .phase-row .desc { padding: 22px 24px; font-size: 14.5px; line-height: 1.6; }
+
+  hr.divider { border: none; border-top: 2px solid var(--ink); margin: 48px 0; }
+  .small-note { font-size: 13px; font-style: italic; color: var(--mid); margin-top: 10px; }
+  em { font-style: italic; }
+  strong { font-weight: 700; }
+
+  .doc-footer { margin-top: 80px; padding-top: 28px; border-top: 2px solid var(--ink); font-size: 13px; color: var(--mid); font-style: italic; }
+
+  @page { size: letter; margin: 0.85in 0.7in 0.9in 0.7in; }
+  @media print {
+    html, body { background: #fff; }
+    .doc { max-width: none; padding: 0; margin: 0; }
+    .section { padding-top: 0; }
+    .section:first-of-type { page-break-before: avoid; }
+    .dark-panel, .accent-panel, .tagline-panel, .persona-card, .comp-card,
+    .option-row, .phase-row, .signature, .service-card { page-break-inside: avoid; break-inside: avoid; }
+    h1, h2, h3 { page-break-after: avoid; break-after: avoid; }
+    table { page-break-inside: auto; } tr { page-break-inside: avoid; }
+    a { color: inherit; text-decoration: none; }
+    body { font-size: 11pt; }
+    .section > h1 { font-size: 22pt; }
+    .section h2 { font-size: 14pt; }
+    .section h3 { font-size: 11.5pt; }
+    .cover h1 { font-size: 28pt; }
+    .dark-panel .lead { font-size: 16pt; }
+    .dark-panel .coda { font-size: 12pt; }
+    .tagline-panel .head { font-size: 19pt; }
+    .signature { font-size: 13pt; }
+    .service-card .head-bar .title { font-size: 15pt; }
+  }
+</style>
+</head>
+<body>
+<div class="doc">
+
+  <!-- ===================== COVER ===================== -->
+  <div class="cover">
+    <div class="kicker">LUCI Systems</div>
+    <h1>Brand Messaging Framework</h1>
+    <div class="meta">Gaming, Hospitality &amp; Experiential Venues · Version 6.0 · Confidential</div>
+  </div>
+
+  <div class="panel">
+    <div class="label">How to use this document</div>
+    <p>The single source of truth for LUCI's positioning and voice. Every external communication — website, decks, outreach, proposals, trade-show collateral, and internal guides — should be built from the foundation below. When in doubt about what to say or how to say it, start here. V6.0 supersedes all prior framework versions.</p>
+    <p><strong>What changed in V6.</strong> The framework is now built on two pillars of equal standing: <strong>LUCI</strong>, the software, and <strong>the Systems</strong>, the embedded organization that designs, deploys, supports, and refines it. Forward-deployed engineering, support, training, and the owner's-rep partnership are no longer separate sections — they are named services within the Systems pillar. Throughout, the client's existing technology is referred to as <strong>infrastructure</strong> or <strong>endpoints</strong>, never "systems," so that "the Systems" always and only refers to LUCI Systems' embedded organization.</p>
+  </div>
+
+  <!-- ===================== TOC ===================== -->
+  <div class="toc section">
+    <h2>Contents</h2>
+    <ol>
+      <li><span class="num">01</span><span><span class="title">Philosophy</span><div class="sub">The conviction underneath the product</div></span></li>
+      <li><span class="num">02</span><span><span class="title">Positioning</span><div class="sub">Tagline, narrative, and the two-pillar naming convention</div></span></li>
+      <li><span class="num">03</span><span><span class="title">LUCI — the platform</span><div class="sub">The software pillar: how LUCI makes the principles tangible</div></span></li>
+      <li><span class="num">04</span><span><span class="title">The Systems — the embedded organization</span><div class="sub">The services pillar: FDE, deployment, support, training, partnership</div></span></li>
+      <li><span class="num">05</span><span><span class="title">The engagement cycle</span><div class="sub">How the two pillars unfold over time</div></span></li>
+      <li><span class="num">06</span><span><span class="title">Message pillars</span><div class="sub">Primary and supporting claims</div></span></li>
+      <li><span class="num">07</span><span><span class="title">Persona entry points</span><div class="sub">How each leader hears the story</div></span></li>
+      <li><span class="num">08</span><span><span class="title">Proof &amp; institutional trust</span><div class="sub">Logos, case studies, and brand copy as distinct content types</div></span></li>
+      <li><span class="num">09</span><span><span class="title">Voice rules</span><div class="sub">How every LUCI sentence should sound</div></span></li>
+    </ol>
+  </div>
+
+  <!-- ===================== 01 — PHILOSOPHY ===================== -->
+  <section class="section">
+    <div class="marker">Section 01</div>
+    <h1>Philosophy</h1>
+    <p class="lede">Every enterprise software company buyers take seriously has a worldview. LUCI's is stated below. Every claim in the rest of this framework is a downstream consequence of it.</p>
+
+    <div class="dark-panel">
+      <div class="label">The LUCI View</div>
+      <p class="lead">Complexity is the accumulation of what is not required to achieve the goal.</p>
+      <p class="body">LUCI is the layer above. Above the operations, the decisions, the standards.</p>
+      <p class="body">The layer that orchestrates every environment it runs.</p>
+      <p class="coda">LUCI is the simplicity. The Systems define the goals. LUCI Systems holds the standard.</p>
+    </div>
+
+    <h2>The principles that follow</h2>
+    <ul class="bullets">
+      <li><strong>Subtraction is a design discipline.</strong> Most software companies add features. LUCI's job is to remove variables. A platform's maturity isn't measured by how many things it can do — it's measured by how many things the people running it no longer have to think about.</li>
+      <li><strong>Standardization is a form of respect.</strong> Every property that reinvents its own infrastructure pays for that decision in staffing, vendor management, and operational risk. LUCI builds to a standard so the property doesn't have to be an R&amp;D organization for its own infrastructure.</li>
+      <li><strong>Software and operations are the same problem.</strong> The industry has historically treated them as separate — one team writes code, another team runs the room. LUCI rejects that division. The two pillars — the platform and the embedded organization — answer to the same outcome.</li>
+      <li><strong>Discretion is institutional.</strong> Brand-level copy holds up without leaning on named clients as rhetorical proof. Logos signal partnerships. Case studies tell specific stories. The brand voice doesn't need either to make its case.</li>
+    </ul>
+
+    <h2>The variable-reduction principle</h2>
+    <p>"Simple" is what consumer software claims. It describes how a product feels. LUCI's claim is structurally different: every variable removed from a property's environment eliminates the downstream questions that variable was generating. Complexity is not solved by a better interface. It is solved by a shorter list of things to manage.</p>
+
+    <table>
+      <thead><tr><th>Variable removed</th><th>Downstream questions eliminated</th></tr></thead>
+      <tbody>
+        <tr class="row-variable"><td>Proprietary processing hardware</td><td>End-of-life timing. Support ownership. Migration cost. Firmware schedule. Replacement integration. Data continuity during transitions.</td></tr>
+        <tr class="row-variable"><td>Multiple vendor interfaces</td><td>Who trains on which tool. Who owns which outcome. Which vendor answers when something breaks. How contracts align. Which renewal comes first.</td></tr>
+        <tr class="row-variable"><td>Programmed-per-venue configurations</td><td>Who wrote the logic. Where the documentation lives. What happens when that person leaves. How changes get tested. What the regression risk looks like.</td></tr>
+        <tr class="row-variable"><td>Separate AV and IT infrastructure</td><td>Which team owns the network port. Whose budget pays for the switch. Who escalates on packet loss. How security policy applies. Which ticket queue receives the incident.</td></tr>
+      </tbody>
+    </table>
+    <p>Each removed variable collapses a tree of questions that would otherwise compound over years of operation. This is why the LUCI subscription gets more valuable over time — the environment generates fewer questions every year, not more.</p>
+
+    <div class="signature">Complexity isn't solved by a better interface. It's solved by a shorter list of things to manage.</div>
+  </section>
+
+  <!-- ===================== 02 — POSITIONING ===================== -->
+  <section class="section">
+    <div class="marker">Section 02</div>
+    <h1>Positioning</h1>
+    <p class="lede">The tagline, narrative, and value proposition are the first things every audience sees. The more consistently they appear together, the sharper the brand becomes.</p>
+
+    <h2>Tagline</h2>
+    <div class="tagline-panel">
+      <div class="label">Primary — Lead every communication with these two lines</div>
+      <div class="head">LUCI is the layer above every system that runs your property.</div>
+      <div class="sub-label">Sub</div>
+      <div class="sub">One platform that unifies the infrastructure running your venue — and gives your team a single interface to control, automate, and activate the guest experience from anywhere.</div>
+    </div>
+    <p class="commentary">The headline names a position, not a category. "The layer above" places LUCI in the architecture of the stack — above the infrastructure already running the property. The subhead does the comprehension work: what LUCI does (unifies), who uses it (your team), and what it enables (control, automate, activate the guest experience). Specifics belong on persona pages, where each audience can hear the version of this story that lands for them. Note: in the headline, "every system that runs your property" is acceptable plain-English usage; everywhere in body copy, the client's technology is "infrastructure" or "endpoints" — see the naming convention below.</p>
+
+    <h2>The two pillars, and the naming convention</h2>
+    <p>LUCI Systems delivers two things of equal standing: a software platform, and an embedded organization that designs, deploys, supports, and refines it. The company name encodes both. Each pillar — and each thing that could be confused with it — has its own term.</p>
+
+    <table class="naming-table">
+      <thead><tr><th>Term</th><th>What it refers to</th></tr></thead>
+      <tbody>
+        <tr><td>LUCI</td><td><strong>Pillar one — the software.</strong> The platform itself: the interface, the integrations, the control and intelligence layer running in production. "We deploy LUCI" means the software.</td></tr>
+        <tr><td>The Systems</td><td><strong>Pillar two — the embedded organization.</strong> The people and the practice: forward-deployed engineering, deployment, support, training, and the owner's-rep partnership, held together by a standard. Not a back-office methodology — a co-equal half of what LUCI Systems delivers, physically present inside the client's enterprise.</td></tr>
+        <tr><td>LUCI Systems</td><td><strong>The company.</strong> The organization whose two pillars — LUCI and the Systems — are named in the company name itself.</td></tr>
+        <tr><td>LUCI FDE</td><td>The forward-deployed engineers within the Systems. One named service among several, described in Section 04.</td></tr>
+        <tr><td>infrastructure / endpoints</td><td><strong>The client's existing technology.</strong> AV, signage, building, lighting, content. Always called "infrastructure" or "endpoints" — never "systems" — so that "the Systems" is unambiguous everywhere it appears.</td></tr>
+      </tbody>
+    </table>
+    <p class="commentary">The one discipline that protects the whole vocabulary: the client's technology is never called "systems" in LUCI copy. That single rule means "the Systems" always and only refers to LUCI Systems' embedded organization. No capitalization tricks required — the words simply never collide.</p>
+
+    <h2>Company narrative</h2>
+
+    <h3>Value proposition</h3>
+    <p>LUCI is the layer above every system that runs a property. One platform integrates the AV, signage, building, and operational infrastructure across a venue, and gives the property's team a single interface to run it. And LUCI never arrives as software alone: the Systems — LUCI Systems' embedded organization — design it, deploy it, support it, and refine it, as a standing extension of the client's enterprise.</p>
+
+    <h3>The problem LUCI solves</h3>
+    <p>Complex properties accumulate infrastructure over years. Each piece — AV, signage, building automation, audio, lighting, operational tooling — lives in its own interface, managed by its own vendor, on its own refresh cycle. No one has a unified view. Every change requires specialist effort. Every renewal resets the clock. The people responsible for the guest experience spend their time negotiating between tools instead of running the property.</p>
+    <p>This is not a technology problem. It is an accumulation problem. LUCI solves it by removing variables, not by adding capabilities to an environment that is already overloaded.</p>
+
+    <h3>Differentiation</h3>
+    <p>LUCI runs on standard network infrastructure and integrates with any AV, signage, building, or content endpoint through open APIs. There is no proprietary hardware to replace on a refresh cycle and no specialist programming required for the client's team to operate it. And the platform never stands alone: the Systems put a forward-deployed organization inside the client's enterprise — to design, deploy, support, and continuously refine the platform against an institutional standard built over years of deployment. The two pillars are delivered as one: that is what LUCI Systems means.</p>
+  </section>
+
+  <!-- ===================== 03 — LUCI, THE PLATFORM ===================== -->
+  <section class="section">
+    <div class="marker">Section 03 · Pillar One</div>
+    <h1>LUCI — the platform</h1>
+    <p class="lede">The first pillar. The software application — the layer above, the place where the philosophy lives in production.</p>
+    <p>Every capability below is a consequence of the philosophy. Read this section with Section 01 in mind: LUCI is not a list of features. It is a deliberate expression of the variable-reduction principle in working software.</p>
+
+    <h2>What LUCI is</h2>
+    <div class="accent-panel cool">
+      <div class="label">The layer above</div>
+      <div class="head">A single interface that runs every connected endpoint on the property.</div>
+      <p>LUCI is hardware-agnostic software that installs on standard network infrastructure and integrates with any AV, signage, building, or content endpoint through open APIs. Displays, audio, signage, lighting, and building infrastructure are controlled from one interface, from any device, anywhere on or off the property.</p>
+      <p class="quiet">One platform replaces the stack of proprietary processors, decoder boxes, vendor-specific interfaces, and point-solution control panels that fragmented environments accumulate. That replacement is where variable reduction begins.</p>
+    </div>
+
+    <h2>How LUCI wraps the principles</h2>
+    <p>Each capability below is paired with the principle it makes tangible.</p>
+
+    <table>
+      <thead><tr><th>Capability</th><th>What it does</th><th>Principle made tangible</th></tr></thead>
+      <tbody>
+        <tr><td class="cap">Unified control</td><td>Map-based interface shows every endpoint on a visual property map. Every endpoint on the property is managed from one screen, on any device, from anywhere.</td><td class="principle"><span class="ptag">Principle</span><p>One variable (one interface) replaces many. The questions that came with every previous interface no longer exist.</p></td></tr>
+        <tr><td class="cap">Hardware-agnostic architecture</td><td>Runs on standard network infrastructure and off-the-shelf equipment. Virtualized: a single NUC or VM on an existing server replaces racks of proprietary processing.</td><td class="principle"><span class="ptag">Principle</span><p>Standardization over customization. The hardware decision is made once, at the institutional level, so the property never has to defend it again.</p></td></tr>
+        <tr><td class="cap">Open integration</td><td>Integrates with any AV, building, signage, or content endpoint through open APIs, regardless of protocol, make, or model. Layers over existing infrastructure — no rip-and-replace.</td><td class="principle"><span class="ptag">Principle</span><p>Subtraction, not replacement. LUCI removes the interfaces that divide infrastructure, not the infrastructure itself.</p></td></tr>
+        <tr><td class="cap">Automation &amp; triggers</td><td>Schedule scenes to fire automatically. Listen for external triggers — jackpot alerts, player card data, weather, emergency systems — and fire coordinated responses in real time.</td><td class="principle"><span class="ptag">Principle</span><p>The environment responds to events without human intervention. One of the largest classes of downstream questions — "who will remember to do this?" — disappears.</p></td></tr>
+        <tr><td class="cap">Role-based access</td><td>Admins assign PIN-coded access so each user controls only their designated zones. The bartender controls the bar. The marketing team controls the floor. The platform enforces the model.</td><td class="principle"><span class="ptag">Principle</span><p>Accountability is architectural, not procedural. Who-can-do-what is defined by the platform, not by memory.</p></td></tr>
+        <tr><td class="cap">Predictive monitoring</td><td>Visual status indicators surface issues in real time. The platform logs, diagnoses, and resolves common faults automatically overnight. Incidents have a clear cause and a clear owner.</td><td class="principle"><span class="ptag">Principle</span><p>The platform observes itself. The property doesn't need to discover problems — LUCI surfaces them before the guest does.</p></td></tr>
+        <tr><td class="cap">Scalable by architecture</td><td>Manage hundreds or thousands of endpoints on a single deployment. Expand without replacing the core. Add venues, floors, or sister properties against the same standard.</td><td class="principle"><span class="ptag">Principle</span><p>Growth doesn't reset the clock. The standard extends; it does not have to be rebuilt.</p></td></tr>
+        <tr><td class="cap">Software-first evolution</td><td>LUCI ships continuously. Every release extends the platform — new integrations, sharper automation, better monitoring. Upgrades happen in software, not in capital projects.</td><td class="principle"><span class="ptag">Principle</span><p>The platform appreciates. Year five is more capable than year one on the same infrastructure.</p></td></tr>
+      </tbody>
+    </table>
+
+    <h2>What LUCI is not</h2>
+    <ul class="bullets">
+      <li><strong>Not a control panel.</strong> Control panels run one endpoint at a time. LUCI runs the environment.</li>
+      <li><strong>Not a dashboard.</strong> A dashboard reports on a property. LUCI operates one.</li>
+      <li><strong>Not a point solution.</strong> Point solutions solve one problem and create the integration problem. LUCI solves the integration problem by making integration native.</li>
+      <li><strong>Not the whole company.</strong> LUCI is the platform — one of two pillars. The Systems are the other. The software is what the property's team operates; the Systems are who stands behind it. See Section 04.</li>
+    </ul>
+
+    <div class="signature">LUCI is where the philosophy becomes operational. One interface. Standard infrastructure. Open integration. Continuous refinement. Every decision in the software is a decision against accumulation.</div>
+  </section>
+
+  <!-- ===================== 04 — THE SYSTEMS ===================== -->
+  <section class="section">
+    <div class="marker">Section 04 · Pillar Two</div>
+    <h1>The Systems — the embedded organization</h1>
+    <p class="lede">The second pillar, and equal to the first. LUCI never arrives as software alone. The Systems are the organization that designs, deploys, supports, and refines it — a standing extension of the client's enterprise, physically present, accountable for the outcome.</p>
+
+    <div class="accent-panel cool">
+      <div class="label">What the Systems are</div>
+      <div class="head">Not a service line. A second pillar.</div>
+      <p>Most software companies treat services as wraparound — a cost the customer tolerates to get the software working, buried under a "professional services" tab. LUCI Systems is built the opposite way. The embedded organization is co-equal to the platform. It is named in the company. It is the half of LUCI Systems that walks the property, sits with the team, and owns the result.</p>
+      <p class="quiet">The Systems are delivered as a set of named services, each with a clear scope and a clear deliverable. Together, they make the platform work in the real world — and keep it working, and make it better, for as long as the property runs on LUCI.</p>
+    </div>
+
+    <h2>The services</h2>
+    <p>Each service below is a distinct, named capability — not a phase, not a favor. Together they are the Systems.</p>
+
+    <div class="service-card">
+      <div class="head-bar"><div class="label">Service 01</div><div class="title">LUCI FDE — Forward-Deployed Engineering</div></div>
+      <div class="body">
+        <p class="definition">Full-stack engineers who embed inside the client's environment — from scoping through continuous refinement.</p>
+        <p>A LUCI FDE is not a consultant, a solutions architect, or a support representative. They work inside the client's environment, build production systems that hold up under real operational conditions, and remain accountable for those systems long after deployment. The client's team operates LUCI day to day; LUCI FDEs design it, deploy it, support it, and refine it.</p>
+        <p class="delivers">Delivers: one accountable team across the full lifecycle. The engineer who walks the property on day one is the engineer who supports it in year five. LUCI Systems does not hand off engagements.</p>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="head-bar"><div class="label">Service 02</div><div class="title">Design &amp; Deployment</div></div>
+      <div class="body">
+        <p class="definition">In-person scoping, architecture, and standing-up of the platform — by the team that will stay.</p>
+        <p>The Systems begin before the software does. The FDE team maps the existing environment across IT, AV, operations, marketing, and finance; designs the target architecture against the LUCI standard; consolidates the infrastructure; and stands up the platform, phased so value lands before the full build is finished.</p>
+        <p class="delivers">Delivers: a deployment scoped to the property's reality, executed by the people who will own it — not subcontracted, not handed off.</p>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="head-bar"><div class="label">Service 03</div><div class="title">Owner's-Rep Partnership</div></div>
+      <div class="body">
+        <p class="definition">A standing extension of the client's enterprise — strategic, embedded, accountable.</p>
+        <p>LUCI Systems doesn't just deliver a platform and leave. The embedded organization functions as the client's in-house technology leadership for the guest-facing environment — planning multi-year roadmaps, owning vendor relationships, advising on capital strategy, and representing the property's interests in every technical decision. The expertise the property would otherwise have to hire, retain, and refresh internally.</p>
+        <p class="delivers">Delivers: senior technology leadership the property doesn't have to build, staff, or replace — present continuously, accountable to the property's goals.</p>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="head-bar"><div class="label">Service 04</div><div class="title">Training &amp; Enablement</div></div>
+      <div class="body">
+        <p class="definition">A standardized curriculum that makes the client's team fluent in LUCI.</p>
+        <p>LUCI is operated by the property's own staff — so the Systems make sure they can. Training is not an afterthought or a PDF. It is a structured program: role-based instruction, hands-on enablement, and documentation that lives inside the platform. New staff onboard against the same standard; institutional knowledge survives turnover.</p>
+        <p class="delivers">Delivers: a team that runs the platform with confidence, and a property that doesn't lose capability when a key person leaves.</p>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="head-bar"><div class="label">Service 05</div><div class="title">Support &amp; Operations</div></div>
+      <div class="body">
+        <p class="definition">The backbone. The process starts and ends with support.</p>
+        <p>The commercial AV industry has been broken for decades, and the root cause is bad support — properties stranded at 2 a.m. with no one accountable, incidents passed between three vendors, escalation paths that lead to voicemail. LUCI Systems is built on the opposite premise. The same FDE team that designed and deployed the platform is the team that answers when something needs attention. No tiered queue. No establishing which vendor owns the incident. One team owns the diagnosis and the resolution, on the property's schedule — including the off-hours when it matters most.</p>
+        <p class="delivers">Delivers: one accountable owner, faster resolution because context is never rebuilt, coverage that matches a property that never closes, and incentives aligned with uptime rather than ticket volume.</p>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="head-bar"><div class="label">Service 06</div><div class="title">Continuous Refinement</div></div>
+      <div class="body">
+        <p class="definition">The discipline that makes the platform appreciate, year over year.</p>
+        <p>Every incident and operational pattern the Systems encounter becomes an input to the next platform release. Problems aren't just fixed at one property — they are engineered out of the platform so no property meets them again. Annually, the embedded team revisits the roadmap: integrations extend, automation sharpens, the standard gets tighter. The methodology evolves; client data and patterns stay private.</p>
+        <p class="delivers">Delivers: a platform that is more capable in year five than the day it was deployed, on the same line item — and a property that inherits every improvement without a migration.</p>
+      </div>
+    </div>
+
+    <h2>Why the two-pillar model is defensible</h2>
+    <ul class="bullets">
+      <li><strong>Against software-only competitors.</strong> A platform without an embedded organization strands the customer the moment the contract is signed — the exact failure the industry is built on. LUCI Systems shows up, embeds, and owns the outcome.</li>
+      <li><strong>Against integrators and consultants.</strong> A services firm without a platform ends at a handoff and bills for every hour after. LUCI Systems owns the platform, so the services compound into it instead of ending.</li>
+      <li><strong>Services that refine the product.</strong> Because the same people deploy, support, and refine, every field learning becomes a roadmap input. The team that solves a problem this quarter builds it into the platform next quarter. Services are not a revenue stream — they are how LUCI gets better.</li>
+      <li><strong>A standard delivered by people.</strong> The platform is rigorous because the organization implementing it knows it cold. Standards survive because the team that built them is the team enforcing them — continuously, in person.</li>
+    </ul>
+
+    <div class="signature">In the industry LUCI was built to change, support and services are the last thing that gets added. At LUCI Systems, the embedded organization is half of what we are.</div>
+  </section>
+
+  <!-- ===================== 05 — ENGAGEMENT CYCLE ===================== -->
+  <section class="section">
+    <div class="marker">Section 05</div>
+    <h1>The engagement cycle</h1>
+    <p class="lede">The two pillars unfold together over time. The engagement cycle is the operational view — how LUCI and the Systems arrive, take hold, and get sharper year over year. Each phase is owned by the same embedded team from beginning to end.</p>
+
+    <div class="phase-row"><div class="num">01</div><div class="name">Plan</div><div class="desc">The embedded team works with IT, AV, operations, marketing, and finance to map the current environment and shape a multi-year plan. The LUCI standard provides the reference architecture; the property provides the constraints. Budgets and priorities are set jointly.</div></div>
+    <div class="phase-row"><div class="num">02</div><div class="name">Deploy</div><div class="desc">The same team stands up LUCI, consolidates the infrastructure, and trains the staff who will run it. Phased where appropriate — value lands before the full build is finished.</div></div>
+    <div class="phase-row"><div class="num">03</div><div class="name">Operate</div><div class="desc">The property's team runs LUCI day to day; the Systems stay embedded. Incidents are owned. Changes are managed against the standard. Operational patterns are documented inside the platform, not in tribal knowledge.</div></div>
+    <div class="phase-row"><div class="num">04</div><div class="name">Refine</div><div class="desc">Annually, LUCI ships new capability. Integrations extend. Hardware improves where the industry has moved. The institutional standard gets sharper. The platform evolves — and the property inherits the evolution.</div></div>
+
+    <p class="commentary">The cycle returns to Plan the following year. It does not end.</p>
+
+    <h2>What this model produces</h2>
+    <ul class="bullets">
+      <li><strong>Capital expense that appreciates.</strong> Traditional AV assets depreciate and then reset on a refresh cycle. LUCI doesn't work that way. The subscription funds continuous refinement. Year five is more capable than year one, on a predictable line item.</li>
+      <li><strong>Enterprise alignment by default.</strong> When IT, AV, marketing, operations, and finance all plan from the same platform on the same budget line, the organization stops negotiating internally and starts executing externally.</li>
+      <li><strong>Insulation from hardware decisions.</strong> Because LUCI is hardware-agnostic, clients inherit industry hardware improvements without platform migrations. LUCI Systems makes those decisions on a cycle the industry actually follows.</li>
+      <li><strong>Continuity that outlasts turnover.</strong> Staff changes, vendor changes, property expansions — the standard survives all of them. The institutional knowledge lives in the platform and the embedded team.</li>
+    </ul>
+  </section>
+
+  <!-- ===================== 06 — MESSAGE PILLARS ===================== -->
+  <section class="section">
+    <div class="marker">Section 06</div>
+    <h1>Message pillars</h1>
+    <p class="lede">Five pillars, ordered by audience priority. Every external communication should ladder to at least one. Headlines are declarative, not promotional. No percentage claims, no emotional verbs.</p>
+
+    <div class="option-row"><div class="num-cell">01</div><div class="body-cell"><div class="label">Priority — All personas</div><div class="head">The layer above every system that runs your property.</div><p>A single operating layer for the AV, signage, building, and operational infrastructure that runs a complex property. Every connected endpoint runs through one interface, on standard network equipment, extensible to any API on the network.</p></div></div>
+
+    <div class="option-row"><div class="num-cell">02</div><div class="body-cell"><div class="label">Priority — CIO / IT Director</div><div class="head">One interface for every endpoint on the property.</div><p>LUCI operates on standard network infrastructure and integrates with any AV, signage, building, or content endpoint through open APIs. There is no proprietary hardware to refresh and no specialist programming required to operate the platform.</p></div></div>
+
+    <div class="option-row"><div class="num-cell">03</div><div class="body-cell"><div class="label">Priority — COO / Operations Director</div><div class="head">One control layer across every vendor.</div><p>LUCI consolidates AV, signage, audio, and building infrastructure into a single operational view. Teams run the property instead of running the tools. Incidents have one accountable owner. Change management works against a documented standard.</p></div></div>
+
+    <div class="option-row"><div class="num-cell">04</div><div class="body-cell"><div class="label">Priority — CFO / CEO</div><div class="head">Infrastructure that appreciates.</div><p>Traditional AV assets depreciate and reset every five to seven years. LUCI doesn't. The subscription funds continuous platform refinement — software, integrations, operational capability — on a predictable annual line item that doesn't reset the clock.</p></div></div>
+
+    <div class="option-row"><div class="num-cell">05</div><div class="body-cell"><div class="label">Priority — All personas</div><div class="head">One platform. One embedded team. One accountable outcome.</div><p>LUCI is the software; the Systems are the organization that stands behind it. IT gets reliability, AV gets control, marketing gets programmability, operations gets visibility, finance gets predictability — and all of them get one team accountable for the result, in person, for as long as the property runs on LUCI.</p></div></div>
+
+    <h2>Supporting messages</h2>
+    <ul class="bullets">
+      <li><strong>A.</strong> Execute from any device. Role-based access so the right people control the right things — without a trip to the server room.</li>
+      <li><strong>B.</strong> Software-first, continuously refined. The platform every new client inherits on day one is sharper than the one any prior client deployed.</li>
+      <li><strong>C.</strong> Hardware-agnostic by design. Runs on standard network infrastructure and off-the-shelf equipment. No proprietary processing, no vendor lock-in, no refresh cycle.</li>
+      <li><strong>D.</strong> Start with one venue. Scale across the property, the portfolio, or the brand. LUCI layers over existing infrastructure — no rip-and-replace required.</li>
+    </ul>
+  </section>
+
+  <!-- ===================== 07 — PERSONAS ===================== -->
+  <section class="section">
+    <div class="marker">Section 07</div>
+    <h1>Persona entry points</h1>
+    <p class="lede">LUCI Systems speaks to every leader on the enterprise team. Each persona below hears a different first sentence — but the two pillars, the engagement model, and the long-term thesis are the same. These cards are for tailoring subject lines, first pages of decks, and opening conversations. Specifics about which infrastructure, which integrations, which outcomes belong here — not in the brand-level tagline.</p>
+
+    <div class="persona-card">
+      <div class="role-label">01 · CIO / IT Director</div>
+      <div class="field-label">Responsibilities</div><p class="field">System uptime, vendor management, technology strategy, integration oversight.</p>
+      <div class="field-label">Pain points</div><p class="field">No unified view across the environment. Adding or moving endpoints requires specialist knowledge. Hardware sprawl taxes the network and IT team. Every renewal negotiation happens in isolation.</p>
+      <div class="field-label">Decision drivers</div><p class="field">Reliability. Uptime. Reduced specialist dependency. A smaller surface area to defend.</p>
+      <div class="message-label">The message that lands</div><p class="message">"One interface for every endpoint on the property — on standard network infrastructure, without proprietary hardware or specialist programming."</p>
+    </div>
+
+    <div class="persona-card">
+      <div class="role-label">02 · CFO</div>
+      <div class="field-label">Responsibilities</div><p class="field">Capital allocation, operational cost discipline, long-horizon spend strategy.</p>
+      <div class="field-label">Pain points</div><p class="field">Racks of proprietary hardware consuming budget and real estate. Overlapping vendor contracts. Recurring end-of-life refresh costs that reset the clock every five to seven years.</p>
+      <div class="field-label">Decision drivers</div><p class="field">Predictable spend. Defensible long-term strategy. Assets that appreciate instead of depreciating.</p>
+      <div class="message-label">The message that lands</div><p class="message">"Infrastructure that appreciates. One subscription replaces compounding capital costs — and year five is more capable than year one on the same line item."</p>
+    </div>
+
+    <div class="persona-card">
+      <div class="role-label">03 · CMO / Guest Experience Leader</div>
+      <div class="field-label">Responsibilities</div><p class="field">Guest engagement, in-property spend, brand consistency, experience design.</p>
+      <div class="field-label">Pain points</div><p class="field">Fragmented infrastructure makes consistent experiences impossible. Mistimed or misfired content costs revenue. AV failures disrupt the experience at moments that matter most.</p>
+      <div class="field-label">Decision drivers</div><p class="field">Immersion. Real-time programmability. Brand consistency across every screen and zone. Confidence that the infrastructure won't fail at the wrong moment.</p>
+      <div class="message-label">The message that lands</div><p class="message">"Deliver the right experience, in the right zone, at exactly the right moment — every time, across the whole property."</p>
+    </div>
+
+    <div class="persona-card">
+      <div class="role-label">04 · COO / Operations Director</div>
+      <div class="field-label">Responsibilities</div><p class="field">Operational efficiency, staff productivity, property-wide performance, accountability.</p>
+      <div class="field-label">Pain points</div><p class="field">Fragmented infrastructure creates operational risk. Staff spend time negotiating between tools instead of running the property. When something breaks across the environment, no one owns the problem.</p>
+      <div class="field-label">Decision drivers</div><p class="field">Efficiency. Reliability. Fewer moving parts. One accountable team across the full operational stack.</p>
+      <div class="message-label">The message that lands</div><p class="message">"Run a tighter operation. Automate the routine. Respond instantly to the unexpected. One team accountable for the whole outcome."</p>
+    </div>
+
+    <div class="persona-card">
+      <div class="role-label">05 · AV / Facilities Manager</div>
+      <div class="field-label">Responsibilities</div><p class="field">Day-to-day AV operation, maintenance, staff training, incident response.</p>
+      <div class="field-label">Pain points</div><p class="field">Constant trips to server rooms. Slow diagnosis across disconnected infrastructure. After-hours calls with no clear way to pinpoint the cause. Pressure from above to fix issues fast.</p>
+      <div class="field-label">Decision drivers</div><p class="field">Remote access. Clear visibility. Reliable escalation path. Fewer emergencies.</p>
+      <div class="message-label">The message that lands</div><p class="message">"See everything. Control anything. From any device. Without leaving the floor."</p>
+    </div>
+  </section>
+
+  <!-- ===================== 08 — PROOF ===================== -->
+  <section class="section">
+    <div class="marker">Section 08</div>
+    <h1>Proof &amp; institutional trust</h1>
+    <p class="lede">Proof at LUCI Systems is structural. It lives in the scale of the portfolio, the complexity of the environments LUCI runs in, and the tenure of the engagements. Client logos, trusted-partner walls, and named case studies all have a place — the distinction is where they appear and what work they do. Brand-level copy describes the scale. Case studies name the clients. Logos signal the partnerships. The three should not be confused.</p>
+
+    <h2>Where named clients do appear</h2>
+    <ul class="bullets">
+      <li><strong>Trusted partnership logos.</strong> Client logos are welcome on the website, in decks, and in proposal covers — displayed as a trusted-partner wall without accompanying rhetorical weight. They signal the portfolio. They do not have to argue for it.</li>
+      <li><strong>Named case studies.</strong> Case studies that name the client are the right place to tell a specific story — with the client's permission, and with the detail that permission unlocks. Case studies are a distinct content type, not a mode the brand copy shifts into.</li>
+      <li><strong>One-to-one conversations.</strong> Named references shared directly with serious buyers — verbally or in tailored materials — are fine and expected.</li>
+    </ul>
+
+    <h2>Where named clients do not appear</h2>
+    <ul class="bullets">
+      <li><strong>Homepage body copy.</strong> The homepage names the platform and the model, not the clients. The logo wall carries the trust signal without the copy having to claim it.</li>
+      <li><strong>Brand-level pillar and narrative copy.</strong> Value propositions, message pillars, and company narrative do not lean on named clients as rhetorical proof. The copy should hold up without them.</li>
+      <li><strong>Stat-and-logo combinations.</strong> No "X replaced Y vendors and saved Z%" as a headline claim. If that story is worth telling, it belongs in a case study with full context, not in a brand-level boast.</li>
+      <li><strong>Sales-deck opening slides.</strong> The first few slides of any deck describe LUCI. The logo wall can appear later as context, not as the opening argument.</li>
+    </ul>
+
+    <h2>How to describe the portfolio in brand copy</h2>
+    <div class="panel">
+      <div class="label">Standard language</div>
+      <p>"LUCI runs at some of the largest, most operationally complex properties in gaming and hospitality. The platform is deployed at scale where guest experience and operational uptime are not optional."</p>
+      <p class="small-note">Paired with a logo wall elsewhere on the page, this sentence carries the weight it needs without doing the work the logos already do.</p>
+    </div>
+
+    <h2>What brand copy can describe</h2>
+    <ul class="bullets">
+      <li><strong>Scale.</strong> LUCI runs at properties with thousands of endpoints across displays, audio zones, signage, and lighting — in single deployments that rank among the largest of their kind.</li>
+      <li><strong>Complexity.</strong> LUCI operates in environments where guest experience, revenue, and regulatory uptime requirements converge. These are not greenfield deployments. They are institutions running on decades of accumulated infrastructure.</li>
+      <li><strong>Continuity.</strong> The embedded team that stands up a property on day one is the team supporting it today. Engagements span years, not project cycles.</li>
+      <li><strong>Institutional scope.</strong> The portfolio spans tribal gaming, commercial gaming, integrated resort operators, and hospitality brands. The two-pillar model works at every scale within those categories.</li>
+    </ul>
+
+    <h2>What does not belong in any public material</h2>
+    <ul class="bullets">
+      <li><strong>Percentage claims.</strong> No "X% reduction," "Y% gains," or similar metric-based proof in brand-level copy. These invite the wrong scrutiny and age poorly. Specific numbers belong inside a case study's full context, never as a headline claim.</li>
+      <li><strong>Cross-client learning language.</strong> "We take learnings from one client to another" is not a phrase LUCI Systems uses. The standard refines. Client data and patterns remain private. Every new client inherits a sharper platform than the prior one deployed — but the methodology is what evolves, not the accounts.</li>
+    </ul>
+
+    <h2>Case-study format</h2>
+    <p>For the content type where names, numbers, and specifics are appropriate — always with client permission.</p>
+    <div class="panel">
+      <div class="label">Pattern</div>
+      <p><em>[Client] runs [scale descriptor] on LUCI. The deployment consolidated [prior environment] into a single operating layer, and the embedded team has been with the property since [year].</em></p>
+      <p class="small-note">Scale and tenure lead. Specific outcomes follow in context. Case studies are the right place for the granular proof the brand copy deliberately leaves out.</p>
+    </div>
+  </section>
+
+  <!-- ===================== 09 — VOICE RULES ===================== -->
+  <section class="section">
+    <div class="marker">Section 09</div>
+    <h1>Voice rules</h1>
+    <p class="lede">The mechanical rules that make every LUCI sentence sound like LUCI. Any new copy — website, decks, outreach, proposals, social — should pass all of them.</p>
+
+    <ul class="bullets">
+      <li><strong>Institutions, not adjectives.</strong> Describe what the platform does for the enterprise. Never describe how the software feels to use. "The layer above every system that runs your property" passes. "Absurdly simple" does not.</li>
+      <li><strong>Subtraction over addition.</strong> Lead with what LUCI removes from the environment — variables, vendors, interfaces, refresh cycles — not with the capabilities it adds.</li>
+      <li><strong>Declarative over promotional.</strong> State facts. Avoid emotional verbs ("revolutionize," "transform," "empower"). If a claim needs an adverb to land, it isn't landing.</li>
+      <li><strong>Two pillars, always both.</strong> LUCI is the software; the Systems are the embedded organization. Never let the brand read as software-only — the services are half of what LUCI Systems is, and the copy should reflect that everywhere it can.</li>
+      <li><strong>Client technology is "infrastructure," never "systems."</strong> The client's AV, signage, building, and lighting are infrastructure or endpoints. "The Systems" always and only refers to LUCI Systems' embedded organization. This single discipline protects the whole vocabulary.</li>
+      <li><strong>Use the naming convention.</strong> LUCI (software), the Systems (embedded organization), LUCI Systems (company), LUCI FDE (the engineers within the Systems). When the distinction matters in a sentence, the right term is available — use it.</li>
+      <li><strong>Specifics belong on persona pages, not in the tagline.</strong> The brand-level line names a position, not an industry or an infrastructure list. The detail lives where it earns its place — on persona pages, in decks, in conversations with the buyers who need it.</li>
+      <li><strong>Standardization is the advantage.</strong> Never apologize for a standard approach. The standard is a standard because the client wants an institutional deliverable, not a custom experiment.</li>
+      <li><strong>The company, not the founders.</strong> LUCI Systems as subject. Origin stories live on the About page, not in brand-level copy.</li>
+      <li><strong>Short sentences. Short paragraphs.</strong> If a claim needs a modifier to land, it isn't landing. Cut.</li>
+      <li><strong>State the philosophy when appropriate.</strong> The worldview belongs on the About page, at the top of decks, and in the first serious conversation with any real buyer. It doesn't need to be in every paragraph — but it should never be absent from the framework.</li>
+    </ul>
+
+    <h2>Words and phrases to retire</h2>
+    <ul class="bullets">
+      <li>"Absurdly simple" / "easy to use" / "intuitive" — consumer register</li>
+      <li>"Revolutionize" / "transform" / "empower" — empty emotional verbs</li>
+      <li>Any percentage reduction or increase claim in brand-level copy</li>
+      <li>"Owner's rep" used loosely — it is a named service within the Systems (Service 03), not a casual descriptor</li>
+      <li>"Director of Guest-Facing Technology" — internal sales shorthand; use the Owner's-Rep Partnership framing instead</li>
+      <li>"Conversation-stoppers" / "best-in-class" / "game-changing" — pitch-deck language</li>
+      <li>Calling the client's technology "systems" — it is "infrastructure" or "endpoints," always</li>
+      <li>System enumeration in the brand tagline — list the infrastructure on persona pages, not in the lockup</li>
+    </ul>
+
+    <h2>Words and phrases to use</h2>
+    <ul class="bullets">
+      <li>The layer above, operating layer, platform, infrastructure, endpoints</li>
+      <li>LUCI (the software), the Systems (the embedded organization), LUCI Systems (the company), LUCI FDE (the engineers)</li>
+      <li>Embedded, in person, standing extension, accountable, continuous</li>
+      <li>Runs, operates, integrates, consolidates, refines, unifies, orchestrates</li>
+      <li>Removes variables, shorter list, fewer moving parts</li>
+    </ul>
+  </section>
+
+  <!-- ===================== APPENDIX ===================== -->
+  <section class="section">
+    <div class="marker">Appendix A</div>
+    <h1>Homepage &amp; key copy</h1>
+    <p class="lede">Drop-in language applying the framework. These are reference drafts — they should be refined in final layout, but the structure and register are set.</p>
+
+    <h2>Homepage</h2>
+    <div class="panel">
+      <div class="label">Hero</div>
+      <p style="font-size: 26px; font-weight: 800; color: var(--ink); margin: 0 0 14px; letter-spacing: -0.01em; line-height: 1.2;">LUCI is the layer above every system that runs your property.</p>
+      <p style="font-size: 17px; color: var(--mid); margin: 0;">One platform that unifies the infrastructure running your venue — and gives your team a single interface to control, automate, and activate the guest experience from anywhere.</p>
+
+      <div class="label" style="margin-top: 28px;">LUCI — the platform</div>
+      <p>LUCI runs on standard network infrastructure and integrates with any endpoint already running your property through open APIs. There is no proprietary hardware to refresh and no specialist programming required for your team to operate it.</p>
+
+      <div class="label" style="margin-top: 22px;">The Systems — the embedded organization</div>
+      <p>LUCI never arrives as software alone. The Systems are the team that designs, deploys, supports, and refines it — forward-deployed engineers, training, 24/7 support, and a standing owner's-rep partnership that functions as an extension of your enterprise. Half of what we deliver isn't software. It's the people standing behind it.</p>
+
+      <div class="label" style="margin-top: 22px;">Why it holds</div>
+      <p>The same team that designs your platform is the team that supports it in year five. Field work refines the platform: every property makes the next release sharper. The engagement doesn't end at deployment — it compounds.</p>
+
+      <div class="label" style="margin-top: 22px;">At scale</div>
+      <p style="color: var(--mid);">LUCI runs at some of the largest, most operationally complex properties in gaming and hospitality — at the scale where guest experience and operational uptime are not optional.</p>
+    </div>
+
+    <h2>About page opener</h2>
+    <div class="dark-panel">
+      <p class="lead">Complexity is the accumulation of what is not required to achieve the goal.</p>
+      <p class="body">LUCI is the layer above. Above the operations, the decisions, the standards.</p>
+      <p class="body">The layer that orchestrates every environment it runs.</p>
+      <p class="coda">LUCI is the simplicity. The Systems define the goals. LUCI Systems holds the standard.</p>
+    </div>
+  </section>
+
+  <div class="doc-footer">
+    Brand Messaging Framework V6.0 · Supersedes prior versions · A living document, to be updated as messaging is validated in the field.
+  </div>
+
+</div>
+</body>
+</html>

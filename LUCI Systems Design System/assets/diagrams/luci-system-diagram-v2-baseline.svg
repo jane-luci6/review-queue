@@ -1,0 +1,239 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="391" viewBox="0 118 680 391" role="img">
+  <title>The LUCI System</title>
+  <desc>Two stacked perspective disks. Upper: LUCI + Systems — the ideal orchestration layer. Lower: Standard AV — accumulated client environment LUCI corrects and manages.</desc>
+
+  <defs>
+    <clipPath id="bottom-surface">
+      <ellipse cx="340" cy="375" rx="275" ry="90"/>
+    </clipPath>
+    <path id="standard-av-rim" d="M 98,413 A 242,38 0 0,0 582,413" fill="none"/>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;display=swap');
+      .cad {
+        fill: none;
+        stroke: #8eb4cc;
+        stroke-width: 1.35;
+        stroke-linecap: square;
+        stroke-linejoin: miter;
+        vector-effect: non-scaling-stroke;
+      }
+      .cable {
+        fill: none;
+        stroke: #5a8498;
+        stroke-width: 1.15;
+        stroke-linecap: square;
+        stroke-linejoin: miter;
+        opacity: 0.58;
+        vector-effect: non-scaling-stroke;
+      }
+      .vendor-tag {
+        font-family: 'Space Grotesk', 'Trebuchet MS', sans-serif;
+        font-size: 8.5px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        fill: #d4e8f4;
+      }
+    </style>
+  </defs>
+
+  <!-- ═══ STANDARD AV — legacy / managed layer (darker, muted) ═══ -->
+  <ellipse cx="340" cy="397" rx="275" ry="90" fill="#1c2836"/>
+  <path d="M65,375 A275,90 0 0,1 615,375 L615,397 A275,90 0 0,0 65,397 Z" fill="#243040"/>
+  <ellipse cx="340" cy="375" rx="275" ry="90" fill="#2a3848"/>
+
+  <g clip-path="url(#bottom-surface)">
+    <!-- Flat canvas → tilted disk: preserves icon placement from luci-standard-av-flat.svg -->
+    <g transform="translate(340, 375) scale(1.126050420168067, 0.361344537815126) translate(-280, -280)">
+
+      <g class="cable">
+        <path d="M 280,114 L 280,126 L 250,126 L 250,224 L 288,224 L 288,240"/>
+        <path d="M 288,336 L 288,358 L 232,358 L 232,368 L 234,368"/>
+        <path d="M 161,286 L 72,293 L 72,318 L 81,318"/>
+        <path d="M 185,312 L 185,328 L 148,328 L 148,338"/>
+        <path d="M 385,300 L 385,318 L 358,318 L 358,348 L 320,348"/>
+        <path d="M 408,272 L 450,272 L 450,299 L 456,299"/>
+        <path d="M 253,428 L 280,428 L 286,407 L 352,407"/>
+        <path d="M 416,407 L 416,436 L 448,436 L 448,462"/>
+        <path d="M 104,299 L 118,299 L 118,420 L 130,420"/>
+        <path d="M 456,299 L 440,299 L 440,446 L 472,446"/>
+        <path d="M 178,152 L 120,152 L 120,200"/>
+        <path d="M 154,168 L 154,178 L 212,178 L 212,188"/>
+        <path d="M 382,152 L 412,152 L 412,200"/>
+        <path d="M 406,168 L 406,178 L 306,178 L 306,188"/>
+        <path d="M 154,404 L 140,404 L 140,338 L 166,338"/>
+      </g>
+
+      <g class="cad">
+        <g transform="translate(264, 240)">
+          <rect x="0" y="0" width="48" height="96"/>
+          <line x1="0" y1="18" x2="48" y2="18"/>
+          <line x1="0" y1="36" x2="48" y2="36"/>
+          <line x1="0" y1="54" x2="48" y2="54"/>
+          <line x1="0" y1="72" x2="48" y2="72"/>
+          <circle cx="7" cy="11" r="2.5" fill="#8eb4cc" stroke="none"/>
+          <circle cx="7" cy="29" r="2.5" fill="#8eb4cc" stroke="none"/>
+          <circle cx="7" cy="47" r="2.5" fill="#8eb4cc" stroke="none"/>
+        </g>
+        <g transform="translate(161, 270)">
+          <rect x="0" y="0" width="48" height="32"/>
+          <line x1="0" y1="0" x2="48" y2="32"/>
+          <line x1="48" y1="0" x2="0" y2="32"/>
+          <line x1="24" y1="32" x2="24" y2="42"/>
+        </g>
+        <g transform="translate(362, 272)">
+          <rect x="0" y="0" width="46" height="28"/>
+          <rect x="5" y="4" width="36" height="20"/>
+          <circle cx="39" cy="8" r="2" fill="#b8926a" stroke="none"/>
+        </g>
+        <g transform="translate(352, 396)">
+          <rect x="0" y="0" width="64" height="22"/>
+          <rect x="5" y="6" width="6" height="10" fill="#4a7088" stroke="none"/>
+          <rect x="16" y="6" width="6" height="10" fill="#4a7088" stroke="none"/>
+          <rect x="27" y="6" width="6" height="10" fill="#4a7088" stroke="none"/>
+          <rect x="38" y="6" width="6" height="10" fill="#4a7088" stroke="none"/>
+          <rect x="49" y="6" width="6" height="10" fill="#4a7088" stroke="none"/>
+        </g>
+        <g transform="translate(214, 78)">
+          <rect x="0" y="0" width="132" height="36"/>
+          <line x1="33" y1="0" x2="33" y2="36"/>
+          <line x1="66" y1="0" x2="66" y2="36"/>
+          <line x1="99" y1="0" x2="99" y2="36"/>
+          <line x1="0" y1="12" x2="132" y2="12"/>
+          <line x1="0" y1="24" x2="132" y2="24"/>
+        </g>
+        <g transform="translate(58, 280)">
+          <rect x="0" y="0" width="46" height="38"/>
+          <line x1="12" y1="0" x2="12" y2="38"/>
+          <line x1="24" y1="0" x2="24" y2="38"/>
+          <line x1="36" y1="0" x2="36" y2="38"/>
+          <line x1="0" y1="13" x2="46" y2="13"/>
+          <line x1="0" y1="26" x2="46" y2="26"/>
+        </g>
+        <g transform="translate(456, 280)">
+          <rect x="0" y="0" width="46" height="38"/>
+          <line x1="12" y1="0" x2="12" y2="38"/>
+          <line x1="24" y1="0" x2="24" y2="38"/>
+          <line x1="36" y1="0" x2="36" y2="38"/>
+          <line x1="0" y1="13" x2="46" y2="13"/>
+          <line x1="0" y1="26" x2="46" y2="26"/>
+        </g>
+        <g transform="translate(215, 368)">
+          <rect x="0" y="0" width="38" height="72"/>
+          <line x1="0" y1="16" x2="38" y2="16"/>
+          <line x1="0" y1="32" x2="38" y2="32"/>
+          <line x1="0" y1="48" x2="38" y2="48"/>
+          <circle cx="6" cy="9" r="2" fill="#8eb4cc" stroke="none"/>
+        </g>
+        <g transform="translate(130, 136)">
+          <rect x="0" y="0" width="48" height="32"/>
+          <line x1="0" y1="0" x2="48" y2="32"/>
+          <line x1="48" y1="0" x2="0" y2="32"/>
+          <line x1="24" y1="32" x2="24" y2="42"/>
+          <line x1="12" y1="42" x2="36" y2="42"/>
+        </g>
+        <g transform="translate(382, 136)">
+          <rect x="0" y="0" width="48" height="32"/>
+          <line x1="0" y1="0" x2="48" y2="32"/>
+          <line x1="48" y1="0" x2="0" y2="32"/>
+          <line x1="24" y1="32" x2="24" y2="42"/>
+        </g>
+        <g transform="translate(130, 404)">
+          <rect x="0" y="0" width="48" height="32"/>
+          <line x1="0" y1="0" x2="48" y2="32"/>
+          <line x1="48" y1="0" x2="0" y2="32"/>
+          <line x1="24" y1="32" x2="24" y2="42"/>
+        </g>
+        <g transform="translate(424, 430)">
+          <rect x="0" y="0" width="48" height="32"/>
+          <line x1="0" y1="0" x2="48" y2="32"/>
+          <line x1="48" y1="0" x2="0" y2="32"/>
+          <line x1="24" y1="32" x2="24" y2="42"/>
+        </g>
+        <g transform="translate(196, 188)">
+          <rect x="0" y="5" width="8" height="16"/>
+          <path d="M8,1 L8,25 L20,29 L20,0 Z"/>
+          <path d="M24,7 Q30,15 24,23"/>
+          <path d="M28,3 Q38,15 28,27"/>
+        </g>
+        <g transform="translate(292, 188)">
+          <rect x="0" y="5" width="8" height="16"/>
+          <path d="M8,1 L8,25 L20,29 L20,0 Z"/>
+          <path d="M24,7 Q30,15 24,23"/>
+          <path d="M28,3 Q38,15 28,27"/>
+        </g>
+        <g transform="translate(148, 338)">
+          <rect x="0" y="5" width="8" height="16"/>
+          <path d="M8,1 L8,25 L20,29 L20,0 Z"/>
+          <path d="M24,7 Q30,15 24,23"/>
+          <path d="M28,3 Q38,15 28,27"/>
+        </g>
+        <g transform="translate(320, 348)">
+          <rect x="0" y="5" width="8" height="16"/>
+          <path d="M8,1 L8,25 L20,29 L20,0 Z"/>
+          <path d="M24,7 Q30,15 24,23"/>
+          <path d="M28,3 Q38,15 28,27"/>
+        </g>
+        <g transform="translate(68, 186)">
+          <rect x="0" y="8" width="12" height="38"/>
+          <line x1="3" y1="15" x2="9" y2="15"/>
+          <rect x="16" y="0" width="36" height="28"/>
+          <line x1="16" y1="16" x2="52" y2="16"/>
+          <rect x="26" y="28" width="12" height="4"/>
+        </g>
+        <g transform="translate(412, 186)">
+          <rect x="0" y="8" width="12" height="38"/>
+          <line x1="3" y1="15" x2="9" y2="15"/>
+          <rect x="16" y="0" width="36" height="28"/>
+          <line x1="16" y1="16" x2="52" y2="16"/>
+          <rect x="26" y="28" width="12" height="4"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- Vendor tags — screen-space (readable after foreshortening) -->
+    <g fill="none" stroke="#5a7a94" stroke-width="1">
+      <g transform="translate(166.6, 294.8)">
+        <rect x="-22" y="-8" width="44" height="16" fill="#1e2e3c" stroke="#4a6278"/>
+        <text class="vendor-tag" x="0" y="4" text-anchor="middle">QSC</text>
+      </g>
+      <g transform="translate(513.4, 294.8)">
+        <rect x="-24" y="-8" width="48" height="16" fill="#1e2e3c" stroke="#4a6278"/>
+        <text class="vendor-tag" x="0" y="4" text-anchor="middle">SHURE</text>
+      </g>
+      <g transform="translate(117.1, 396.7)">
+        <rect x="-30" y="-8" width="60" height="16" fill="#1e2e3c" stroke="#4a6278"/>
+        <text class="vendor-tag" x="0" y="4" text-anchor="middle">SAMSUNG</text>
+      </g>
+      <g transform="translate(493.1, 395.9)">
+        <rect x="-18" y="-8" width="36" height="16" fill="#1e2e3c" stroke="#4a6278"/>
+        <text class="vendor-tag" x="0" y="4" text-anchor="middle">DTV</text>
+      </g>
+      <g transform="translate(195.8, 411.8)">
+        <rect x="-24" y="-8" width="48" height="16" fill="#1e2e3c" stroke="#4a6278"/>
+        <text class="vendor-tag" x="0" y="4" text-anchor="middle">Q-SYS</text>
+      </g>
+    </g>
+  </g>
+
+  <ellipse cx="340" cy="375" rx="275" ry="90" fill="none" stroke="#6a8498" stroke-width="1.5"/>
+
+  <text font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="700" letter-spacing="3" fill="#9eb0c0">
+    <textPath href="#standard-av-rim" startOffset="50%" text-anchor="middle">STANDARD AV</textPath>
+  </text>
+
+  <!-- ═══ LUCI — ideal orchestration layer (translucent, lowered over Standard AV) ═══ -->
+  <ellipse cx="340" cy="304" rx="275" ry="90" fill="#243040" opacity="0.88"/>
+  <path d="M65,282 A275,90 0 0,1 615,282 L615,304 A275,90 0 0,0 65,304 Z" fill="#2e3f52" opacity="0.9"/>
+  <ellipse cx="340" cy="282" rx="275" ry="90" fill="#5a7088" fill-opacity="0.8"/>
+  <ellipse cx="340" cy="282" rx="275" ry="90" fill="none" stroke="#68E3BE" stroke-width="1.2" opacity="0.78"/>
+
+  <rect x="328" y="259" width="24" height="5" rx="2.5" fill="#68E3BE"/>
+  <rect x="337.5" y="249.5" width="5" height="24" rx="2.5" fill="#68E3BE"/>
+
+  <text x="205" y="272" text-anchor="middle" fill="#f5f8fa" font-size="29" font-family="Helvetica, Arial, sans-serif" font-weight="500" letter-spacing="1">LUCI</text>
+  <text x="205" y="297" text-anchor="middle" fill="#c8d4dc" font-size="14" font-family="Helvetica, Arial, sans-serif" font-style="italic">The Orchestration Platform</text>
+
+  <text x="475" y="272" text-anchor="middle" fill="#68E3BE" font-size="29" font-family="Helvetica, Arial, sans-serif" font-weight="500" letter-spacing="1">Systems</text>
+  <text x="475" y="297" text-anchor="middle" fill="#5ab89a" font-size="14" font-family="Helvetica, Arial, sans-serif" font-style="italic">The Embedded Operation</text>
+
+</svg>

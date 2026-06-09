@@ -500,6 +500,17 @@
   <script>
     /** Add monthly newsletter issues here (newest first). */
     const NAV_CONFIG = {
+      messaging: {
+        label: 'Messaging & philosophy',
+        defaultOpen: true,
+        items: [
+          { label: 'Messaging guide', src: 'ui_kits/review/messaging/messaging-guide.html', desc: 'Canonical copy — includes LUCI System diagram in The Offering' },
+          { label: 'LUCI system diagram', src: 'ui_kits/review/messaging/luci-system-diagram.html', desc: 'Two-disk perspective diagram + flat working canvas' },
+          { label: 'Floormap icon preview', src: 'ui_kits/review/messaging/floormap-icon-preview.html', desc: 'AutoCAD-style icon options A/B for Standard AV disk' },
+          { label: 'LUCI philosophy', src: 'ui_kits/review/messaging/philosophy.html', desc: 'Brand voice & worldview' },
+          { label: 'Personas', src: 'ui_kits/review/messaging/personas.html', desc: 'Buyer functions — gaming & hospitality' },
+        ],
+      },
       review: {
         label: 'Stakeholder review',
         defaultOpen: true,
@@ -549,6 +560,11 @@
         label: 'Website',
         defaultOpen: false,
         items: [
+          { label: 'Website strategy brief', src: 'ui_kits/website/website-strategy-brief.html', desc: 'Leadership review — purpose, positioning, Navless experience layer' },
+          { label: 'Website strategy (outline)', src: 'ui_kits/website/website-strategy.html', desc: 'Phase 2 · IA, two pillars, Services, variable reduction, proof rules' },
+          { label: 'Website IA wireframe', src: 'ui_kits/website/website-ia-wireframe.html', desc: 'Phase 2 · Simplified nav + draft copy mapped to each section' },
+          { label: 'Messaging Framework V6 (reference)', src: 'ui_kits/website/LUCI_Messaging_Framework_V6-reference.html', desc: 'Nick brain dump — not canonical' },
+          { label: 'Two-pillar diagram', src: 'assets/diagrams/luci-two-pillars.png', desc: 'LUCI + Systems visual' },
           { label: 'Newsletter Hub · /newsletter', src: 'ui_kits/newsletter/the-signal-hub.html', desc: 'The Signal landing page' },
           { label: 'Microsite', src: 'ui_kits/website/index.html', desc: 'Full prototype' },
         ],
@@ -667,7 +683,7 @@
       overviewBtn.addEventListener('click', () => activateLink(overviewBtn));
       navMount.appendChild(overviewBtn);
 
-      ['review', 'newsletter', 'emails', 'website', 'caseStudies', 'designSystem', 'source'].forEach((key) => {
+      ['messaging', 'review', 'newsletter', 'emails', 'website', 'caseStudies', 'designSystem', 'source'].forEach((key) => {
         navMount.appendChild(createAccordion(key, NAV_CONFIG[key]));
       });
 
@@ -676,6 +692,7 @@
 
     function buildOverview() {
       const workGroups = [
+        { key: 'messaging', heading: 'Messaging & philosophy' },
         { key: 'review', heading: 'Stakeholder review' },
         { key: 'newsletter', heading: 'The Signal (newsletter)' },
         { key: 'emails', heading: 'Customer email journey' },
@@ -775,7 +792,7 @@
         showPreviewFallback(
           absolute,
           label,
-          'Preview Hub cannot embed files when opened directly from Finder. Start a local server, then open http://localhost:8080/index.html — or use the link below.'
+          'Preview Hub cannot embed files when opened directly from Finder. Start a local server, then open http://localhost:8765/index.html — or use the link below.'
         );
         return;
       }

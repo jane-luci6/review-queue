@@ -10,7 +10,13 @@ DS="$ROOT/LUCI Systems Design System"
 MSG="${1:-Update review site and messaging docs}"
 
 cd "$DS"
-echo "→ Building review site (sync + inline queue)…"
+if [[ -f .env ]]; then
+  set -a
+  # shellcheck disable=SC1091
+  source .env
+  set +a
+fi
+echo "→ Building review site (sync + inline queue + Teams due-date notify)…"
 node scripts/build-stakeholder-review.mjs
 
 cd "$ROOT"
@@ -32,6 +38,8 @@ echo "Site: https://startling-fudge-f9965f.netlify.app/"
 echo ""
 echo "If deploys show as Canceled:"
 echo "  • Wait for the latest deploy to finish — do not push again right away."
-echo "  • GitHub → jane-luci6/review-queue → Settings → Webhooks → only ONE hook to api.netlify.com"
-echo "  • Netlify → Site → check you do not have two sites linked to this same repo."
-echo "  • Use Deploys → Trigger deploy → Deploy project (main) on the newest commit."
+echo "  • Netlify uses the GitHub App (not repo Webhooks tab): https://github.com/settings/installations"
+echo "    → Netlify → Configure → review-queue listed once; no duplicate Netlify apps."
+echo "  • Netlify → Site → Build & deploy → only ONE site linked to review-queue."
+echo "  • Optional: turn off Deploy Previews if you only need production (main)."
+echo "  • Manual fix: Deploys → Trigger deploy → Deploy project (main)."

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>LUCI Website Strategy (Outline)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../review/messaging/messaging-docs.css">
+  <style>
+    .doc-snippet {
+      margin: 16px 0 24px;
+      padding: 18px 20px;
+      max-width: var(--read);
+      font-family: var(--body);
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--navy);
+      background: var(--off-white);
+      border-left: 4px solid var(--mint);
+      white-space: pre-wrap;
+      overflow-x: auto;
+    }
+    .doc-list { list-style: none; margin: 0 0 20px; padding: 0; max-width: var(--read); }
+    .doc-list li { padding: 10px 0; border-bottom: 1px solid var(--rule-light); }
+    .doc-list li:last-child { border-bottom: none; }
+    .doc-prose code { font-size: 0.92em; color: var(--navy-mid); }
+  </style>
+</head>
+<body>
+  <div class="resource">
+    <header class="resource__masthead">
+      <div class="resource__masthead-row">
+        <a href="https://lucisystems.com" class="resource__logo"><img src="../review/assets/logos/luci-full-white.png" alt="LUCI Systems" width="120" height="24"></a>
+        <span class="resource__badge">Website planning</span>
+      </div>
+      <h1 class="resource__hero-title">LUCI Website Strategy (Outline)</h1>
+      <p class="resource__hero-deck">IA, homepage map, two pillars, proof rules — lucisystems.com refresh</p>
+      <p class="resource__meta">Draft for planning — copy details TBD   · Source: <code>website-strategy.md</code></p>
+      <nav class="resource__crumbs" aria-label="Breadcrumb">
+        <a href="../../index.html">Design hub</a>
+        <span>/</span>
+        <span aria-current="page">Website strategy</span>
+      </nav>
+    </header>
+    <div class="resource__layout">
+      <aside class="resource__sidebar">
+        <p class="resource__nav-kicker">Related</p>
+        <ul class="resource__library"><li><a href="website-strategy-brief.html">Website strategy brief</a><span>Leadership · Phase 1</span></li><li><a href="../review/messaging/messaging-guide.html">Messaging guide</a><span>Canonical copy</span></li><li><a href="LUCI_Messaging_Framework_V6-reference.html">Messaging Framework V6</a><span>Reference</span></li><li><a href="website-strategy.html" class="is-current">Website strategy (outline)</a><span>Phase 2 · Jun 2026</span></li><li><a href="website-ia-wireframe.html">IA wireframe</a><span>Phase 2 · section map</span></li></ul>
+        <p class="resource__nav-kicker">On this page</p>
+        <nav aria-label="On this page"><ul class="resource__toc"><li><a href="#approved-messaging-website-trumps-v6-drafts">Approved messaging (website — trumps V6 drafts)</a></li><li><a href="#strategic-frame-one-product-platform-partnership">Strategic frame: one product (platform + partnership)</a></li><li><a href="#language-rules-website-jane-decisions">Language rules (website — Jane decisions)</a></li><li><a href="#variable-reduction-important-how-to-use-on-the-site">Variable reduction (important — how to use on the site)</a></li><li><a href="#philosophy-principles-light-touch-only">Philosophy &amp; principles (light touch only)</a></li><li><a href="#how-we-work-with-you-six-services-on-platform">How we work with you (six services — on Platform)</a></li><li><a href="#message-pillars-on-the-website">Message pillars on the website</a></li><li><a href="#proof-logos-and-client-names-from-v6-08">Proof, logos, and client names (from V6 §08)</a></li><li><a href="#primary-navigation-simplified-one-product">Primary navigation (simplified — one product)</a></li><li><a href="#customer-access-the-signal">Customer access: The Signal</a></li><li><a href="#industries-launch-six-pages">Industries (launch — six pages)</a></li><li><a href="#homepage-messaging-map-revised">Homepage messaging map (revised)</a></li><li><a href="#platform-page-scroll-order">Platform page (scroll order)</a></li><li><a href="#who-we-serve-single-page">Who we serve (single page)</a></li><li><a href="#page-inventory-summary">Page inventory (summary)</a></li><li><a href="#content-channel-matrix-v6-ideas-routed-correctly">Content → channel matrix (V6 ideas routed correctly)</a></li><li><a href="#standard-site-requirements">Standard site requirements</a></li><li><a href="#open-questions">Open questions</a></li><li><a href="#suggested-build-phases">Suggested build phases</a></li><li><a href="#next-steps">Next steps</a></li></ul></nav>
+      </aside>
+      <main class="resource__article">
+<section class="doc-section"><aside class="doc-callout doc-callout--key"><p class="doc-prose"><b>Design hub preview:</b> Open <code>website-strategy.html</code> (styled review doc). <b>Visual IA walkthrough:</b> <code>website-ia-wireframe.html</code> (nav + section order + draft copy where available). Regenerate strategy HTML after edits: <code>python3 md-to-strategy-html.py</code> in this folder.</p></aside><p class="doc-prose"><b>Status:</b> Draft for planning — copy details TBD  </p><p class="doc-prose"><b>Last updated:</b> June 2026  </p><p class="doc-prose"><b>Audience:</b> Internal (marketing, leadership, Webflow build)</p><p class="doc-prose">This document defines information architecture, page topics, and homepage messaging for <b>lucisystems.com</b>.</p><h3 class="doc-subsection__title">Source documents (how they relate)</h3><ul class="doc-rows">
+<li><span class="doc-rows__label">Document</span><span class="doc-rows__value"><p class="doc-prose">Role on the website</p></span></li>
+<li><span class="doc-rows__label"><b>Messaging Guide</b> (canonical)</span><span class="doc-rows__value"><p class="doc-prose">Tagline, four message pillars, key features, voice, “who hears what” — <b>primary copy source for the site</b></p></span></li>
+<li><span class="doc-rows__label"><b>Persona Guide</b> (internal + public page)</span><span class="doc-rows__value"><p class="doc-prose">Sales depth; informs <b>Who we serve</b> combined with orchestration story</p></span></li>
+<li><span class="doc-rows__label"><b>Nick · Messaging Framework V6</b> (<code>LUCI_Messaging_Framework_V6-reference.html</code>)</span><span class="doc-rows__value"><p class="doc-prose">Brain dump — two pillars, services model, variable reduction, proof rules. <b>Incorporate selectively; does not override Jane’s approved lockup</b></p></span></li>
+<li><span class="doc-rows__label"><b>Two-pillar diagram</b> (<code>assets/diagrams/luci-two-pillars.png</code>)</span><span class="doc-rows__value"><p class="doc-prose"><b>Homepage visual only</b> — one offering (platform + embedded partnership); not split into top-level nav</p></span></li>
+</ul></section>
+<section class="doc-section"><h2 class="doc-chapter" id="approved-messaging-website-trumps-v6-drafts">Approved messaging (website — trumps V6 drafts)</h2><p class="doc-prose">Use on the site. V6 appendix/homepage drafts are <b>reference only</b> until leadership aligns the Messaging Guide.</p><ul class="doc-rows">
+<li><span class="doc-rows__label">Element</span><span class="doc-rows__value"><p class="doc-prose">Copy</p></span></li>
+<li><span class="doc-rows__label"><b>Tagline</b></span><span class="doc-rows__value"><p class="doc-prose">The Orchestration Engine for Enterprise Multimedia</p></span></li>
+<li><span class="doc-rows__label"><b>Sub-tagline</b></span><span class="doc-rows__value"><p class="doc-prose">One interface to control, automate, and execute the entire guest experience.</p></span></li>
+<li><span class="doc-rows__label"><b>Value prop / boilerplate</b></span><span class="doc-rows__value"><p class="doc-prose">LUCI Systems orchestrates every layer of technology running your property — AV, signage, building, and operational infrastructure — from a single interface your team controls from anywhere. Rather than adding layers to your stack, LUCI reduces the variables, hardware, and interfaces your team has to manage. When onsite experience and operational continuity are non-negotiable, LUCI delivers coordinated, real-time execution, end to end.</p></span></li>
+</ul><p class="doc-prose"><b>Synced with Messaging Guide — Jun 9, 2026.</b></p></section>
+<section class="doc-section"><h2 class="doc-chapter" id="strategic-frame-one-product-platform-partnership">Strategic frame: one product (platform + partnership)</h2><p class="doc-prose">LUCI Systems is <b>one product</b>: orchestration software <b>with</b> embedded partnership built in. Nick’s V6 “two pillars” (software + embedded org) remain <b>true in the story</b> but must <b>not</b> drive top-level navigation — that reads as two products (“LUCI” vs “The Systems”).</p><ul class="doc-rows">
+<li><span class="doc-rows__label">Part of the offering</span><span class="doc-rows__value"><p class="doc-prose"><b>What it is</b></p><p class="doc-prose">How the site treats it</p></span></li>
+<li><span class="doc-rows__label"><b>Platform</b></span><span class="doc-rows__value"><p class="doc-prose"><b>Orchestration software — one interface across property layers</b></p><p class="doc-prose"><b>Platform</b> page + homepage teaser</p></span></li>
+<li><span class="doc-rows__label"><b>Partnership</b></span><span class="doc-rows__value"><p class="doc-prose"><b>Embedded team — design, deploy, support, refine; built in, not bolted on</b></p><p class="doc-prose"><b>Same Platform page</b> (section: “How we work with you”) — not a separate nav pillar</p></span></li>
+</ul><p class="doc-prose"><b>Website must make clear:</b> Software never arrives alone; partnership is part of the offering — discussed <b>in tandem</b> on Platform, not as a second nav destination.</p><p class="doc-prose"><b>Diagram:</b> Use two-pillar visual on <b>homepage</b> (and optionally on Platform) framed as <b>“one offering”</b> — platform + partnership unified — not two site sections to choose between.</p></section>
+<section class="doc-section"><h2 class="doc-chapter" id="language-rules-website-jane-decisions">Language rules (website — Jane decisions)</h2><p class="doc-prose">These override conflicting lines in V6 where noted.</p><ul class="doc-rows">
+<li><span class="doc-rows__label">Topic</span><span class="doc-rows__value"><p class="doc-prose"><b>Use on public site</b></p><p class="doc-prose">Avoid</p></span></li>
+<li><span class="doc-rows__label"><b>Fragmented property tech</b></span><span class="doc-rows__value"><p class="doc-prose"><b><b>Layers</b> of technology/endpoints (slightly negative connotation is intentional — “digging through layers”)</b></p><p class="doc-prose">Calling the client environment “systems”</p></span></li>
+<li><span class="doc-rows__label"><b>LUCI’s role</b></span><span class="doc-rows__value"><p class="doc-prose"><b><b>Orchestrates</b> those layers through <b>one interface</b></b></p><p class="doc-prose">Nick’s “LUCI is the layer above…” positioning</p></span></li>
+<li><span class="doc-rows__label"><b>“Systems” (capital S)</b></span><span class="doc-rows__value"><p class="doc-prose"><b>Body copy on <b>Platform</b> when explaining embedded org — <b>not</b> a top-level nav label</b></p><p class="doc-prose">Nav items “LUCI” / “The Systems”; client AV/IT as “systems”</p></span></li>
+<li><span class="doc-rows__label"><b>Two-pillar framing</b></span><span class="doc-rows__value"><p class="doc-prose"><b>Homepage <b>visual + copy</b> only</b></p><p class="doc-prose">Splitting site IA into two product pillars</p></span></li>
+<li><span class="doc-rows__label"><b>Client endpoints</b></span><span class="doc-rows__value"><p class="doc-prose"><b>AV, signage, building, operational tech, endpoints, infrastructure, property environment</b></p><p class="doc-prose">Client tech as “systems”</p></span></li>
+<li><span class="doc-rows__label"><b>Internal terms</b></span><span class="doc-rows__value"><p class="doc-prose"><b>Plain language on site</b></p><p class="doc-prose">Leading with FDE, infrastructure jargon tables, naming-convention appendices</p></span></li>
+<li><span class="doc-rows__label"><b>Philosophy principles</b></span><span class="doc-rows__value"><p class="doc-prose"><b>Light touch only (see below)</b></p><p class="doc-prose">Dedicated “principles” section mirroring V6 philosophy chapter</p></span></li>
+<li><span class="doc-rows__label"><b>V6 capability↔principle table</b></span><span class="doc-rows__value"><p class="doc-prose"><b><b>Blog / long-form content</b>, not core web UX</b></p><p class="doc-prose">Full table on Platform page</p></span></li>
+</ul><p class="doc-prose"><b>Voice:</b> Still follow Messaging Guide — institutions not adjectives, subtraction framing where it helps, declarative tone.</p></section>
+<section class="doc-section"><h2 class="doc-chapter" id="variable-reduction-important-how-to-use-on-the-site">Variable reduction (important — how to use on the site)</h2><p class="doc-prose"><b>Idea (from V6):</b> LUCI’s value is not “simple UI.” Each variable removed from the environment eliminates a tree of downstream questions. Complexity shrinks because there is <b>less to manage</b>.</p><p class="doc-prose"><b>Where it belongs on the website:</b></p><ul class="doc-rows">
+<li><span class="doc-rows__label">Placement</span><span class="doc-rows__value"><p class="doc-prose">Treatment</p></span></li>
+<li><span class="doc-rows__label"><b>Homepage</b></span><span class="doc-rows__value"><p class="doc-prose">One band: headline + 2–3 sentences + optional 3–4 bullets (not the full V6 table)</p></span></li>
+<li><span class="doc-rows__label"><b>Platform</b></span><span class="doc-rows__value"><p class="doc-prose">Core narrative: accumulation → variable reduction → vs alternatives; tie to key features as <i>examples</i> of variables removed</p></span></li>
+<li><span class="doc-rows__label"><b>Why LUCI (standalone page)</b></span><span class="doc-rows__value"><p class="doc-prose"><b>Not in nav at launch</b> — optional later for SEO/long-form</p></span></li>
+<li><span class="doc-rows__label"><b>Blog</b></span><span class="doc-rows__value"><p class="doc-prose">Full “variable reduction” article with V6-style table for CIO/COO readers</p></span></li>
+</ul><p class="doc-prose"><b>Signature line (usable):</b> <i>Complexity isn’t solved by a better interface. It’s solved by a shorter list of things to manage.</i></p><p class="doc-prose"><b>Do not</b> bury this only in About/philosophy — it is a primary <b>why buy</b> story for technical and operational buyers.</p></section>
+<section class="doc-section"><h2 class="doc-chapter" id="philosophy-principles-light-touch-only">Philosophy &amp; principles (light touch only)</h2><p class="doc-prose">V6 principles (subtraction as design discipline, standardization, software+ops unity, discretion) stay <b>mostly internal</b>.</p><ul class="doc-rows">
+<li><span class="doc-rows__label">Principle</span><span class="doc-rows__value"><p class="doc-prose">Website treatment</p></span></li>
+<li><span class="doc-rows__label">Subtraction / variable reduction</span><span class="doc-rows__value"><p class="doc-prose"><b>Yes</b> — via variable-reduction band (above), not labeled “philosophy”</p></span></li>
+<li><span class="doc-rows__label">Standardization</span><span class="doc-rows__value"><p class="doc-prose"><b>Yes</b> — woven into Platform copy</p></span></li>
+<li><span class="doc-rows__label">Software + operations unity</span><span class="doc-rows__value"><p class="doc-prose"><b>Yes</b> — homepage “one offering” band + Platform (tandem)</p></span></li>
+<li><span class="doc-rows__label">Discretion / no client names in hero</span><span class="doc-rows__value"><p class="doc-prose"><b>Yes</b> — proof rules below</p></span></li>
+<li><span class="doc-rows__label">Full “LUCI View” dark-panel poetry</span><span class="doc-rows__value"><p class="doc-prose"><b>About page only</b> (optional shortened), not homepage</p></span></li>
+</ul></section>
+<section class="doc-section"><h2 class="doc-chapter" id="how-we-work-with-you-six-services-on-platform">How we work with you (six services — on Platform)</h2><p class="doc-prose">Six <b>named services</b> (any customer, any time — not a one-time project menu). V6 list; public names may simplify on site.</p><ul class="doc-rows">
+<li><span class="doc-rows__label">#</span><span class="doc-rows__value"><p class="doc-prose"><b>Service (V6 name)</b></p><p class="doc-prose">Public site one-liner</p></span></li>
+<li><span class="doc-rows__label">01</span><span class="doc-rows__value"><p class="doc-prose"><b>LUCI FDE</b></p><p class="doc-prose">Engineers embedded from scoping through year five — same team, no handoff <i>(describe role; “FDE” optional in subcopy)</i></p></span></li>
+<li><span class="doc-rows__label">02</span><span class="doc-rows__value"><p class="doc-prose"><b>Design &amp; Deployment</b></p><p class="doc-prose">In-person scoping, architecture, stand-up — phased so value lands early</p></span></li>
+<li><span class="doc-rows__label">03</span><span class="doc-rows__value"><p class="doc-prose"><b>Owner&#x27;s-Rep Partnership</b></p><p class="doc-prose">Standing extension of your enterprise — roadmap, vendors, capital, technical decisions</p></span></li>
+<li><span class="doc-rows__label">04</span><span class="doc-rows__value"><p class="doc-prose"><b>Training &amp; Enablement</b></p><p class="doc-prose">Role-based curriculum; knowledge survives turnover</p></span></li>
+<li><span class="doc-rows__label">05</span><span class="doc-rows__value"><p class="doc-prose"><b>Support &amp; Operations</b></p><p class="doc-prose">One accountable team, not tiered vendor queue — including off-hours</p></span></li>
+<li><span class="doc-rows__label">06</span><span class="doc-rows__value"><p class="doc-prose"><b>Continuous Refinement</b></p><p class="doc-prose">Platform appreciates on the same line item; field learning feeds releases</p></span></li>
+</ul><p class="doc-prose"><b>Placement (decided):</b> <b>Platform page</b> §6 — “How we work with you” (six services + “available anytime”). Homepage <b>teaser</b> + link to Platform anchor. <b>No</b> <code>/the-systems</code> or separate Services nav item.</p><p class="doc-prose"><b>Copy rule:</b> Never “professional services” or “support package.” Prefer <b>“How we work with you”</b> / <b>“built into every deployment”</b> — avoid <b>“The Systems”</b> as a nav label.</p><p class="doc-prose"><b>Engagement cycle</b> (Plan → Deploy → Operate → Refine): <b>sales deck + blog</b>, not primary site IA.</p></section>
+<section class="doc-section"><h2 class="doc-chapter" id="message-pillars-on-the-website">Message pillars on the website</h2><p class="doc-prose"><b>Use Messaging Guide four pillars</b> for site structure (not V6’s five alternate pillars) until Jane completes a deliberate merge with Nick.</p><ul class="doc-rows">
+<li><span class="doc-rows__label">MG pillar</span><span class="doc-rows__value"><p class="doc-prose">Typical site placement</p></span></li>
+<li><span class="doc-rows__label">01 Complete visibility &amp; control</span><span class="doc-rows__value"><p class="doc-prose">Platform (capabilities)</p></span></li>
+<li><span class="doc-rows__label">02 Align teams by default</span><span class="doc-rows__value"><p class="doc-prose">Who we serve + Platform</p></span></li>
+<li><span class="doc-rows__label">03 Activate guest experience</span><span class="doc-rows__value"><p class="doc-prose">Industries + CMO angle on Who we serve</p></span></li>
+<li><span class="doc-rows__label">04 Invest / appreciates over time</span><span class="doc-rows__value"><p class="doc-prose">CFO angle + Platform (partnership / refinement)</p></span></li>
+</ul><p class="doc-prose">V6 pillar 05 (“one platform, one embedded team, one outcome”) is a strong <b>one-offering summary line</b> for homepage diagram band — compatible with MG, not a replacement.</p></section>
+<section class="doc-section"><h2 class="doc-chapter" id="proof-logos-and-client-names-from-v6-08">Proof, logos, and client names (from V6 §08)</h2><ul class="doc-rows">
+<li><span class="doc-rows__label">Context</span><span class="doc-rows__value"><p class="doc-prose">Named clients?</p></span></li>
+<li><span class="doc-rows__label">Homepage body / hero / pillar copy</span><span class="doc-rows__value"><p class="doc-prose"><b>No</b> — portfolio scale language only</p></span></li>
+<li><span class="doc-rows__label">Logo wall</span><span class="doc-rows__value"><p class="doc-prose"><b>Yes</b> — trusted partners, no rhetorical “X saved Y%”</p></span></li>
+<li><span class="doc-rows__label">Case studies</span><span class="doc-rows__value"><p class="doc-prose"><b>Yes</b> — with permission; full story</p></span></li>
+<li><span class="doc-rows__label">Message pillars / value prop</span><span class="doc-rows__value"><p class="doc-prose"><b>No</b></p></span></li>
+<li><span class="doc-rows__label">Sales deck opening</span><span class="doc-rows__value"><p class="doc-prose"><b>No</b> (logo wall later)</p></span></li>
+</ul><p class="doc-prose"><b>Brand-level portfolio line (OK on site):</b>  </p><p class="doc-prose"><i>LUCI runs at some of the largest, most operationally complex properties in gaming and hospitality — where guest experience and operational uptime are not optional.</i></p><p class="doc-prose"><b>Never in brand copy:</b> % reduction headlines, “learnings from Client A to Client B,” stat+logo combo claims.</p></section>
+<section class="doc-section"><h2 class="doc-chapter" id="primary-navigation-simplified-one-product">Primary navigation (simplified — one product)</h2><p class="doc-prose"><b>Removed from nav:</b> <code>LUCI</code> ▾, <code>The Systems</code> ▾, <code>Solutions</code> ▾. Case studies live <b>only</b> under Resources.</p><pre class="doc-snippet" aria-label="code">Logo → Home
+
+Platform            →  Single page: software + capabilities + how we work with you (tandem)
+                       [Optional later: anchor links #capabilities #partnership]
+
+Industries ▾        →  Casinos &amp; gaming · Hotels &amp; resorts · Sports &amp; venues
+                       · Airports &amp; transportation · Conference &amp; convention centers
+                       · Corporate &amp; campus properties
+
+Who we serve        →  One page: orchestration by function + what each team can do in LUCI
+                       (merge Persona Guide + V6 entry points; internal workshop on “can do”)
+
+Resources ▾         →  Hub · Blog · Case studies · Support portal
+                       (no The Signal — customer-only; see below)
+
+Company ▾           →  About · Contact · Careers [TBD]
+
+[Primary CTA]       →  Request a conversation / See LUCI in action</pre><p class="doc-prose"><b>Nav label note:</b> Use <b>Platform</b> (not “LUCI” next to logo “LUCI Systems”). “Product” is acceptable alternate; avoid redundant naming.</p><p class="doc-prose"><b>Utility footer:</b> Customer login · Privacy · Terms · Accessibility · Sitemap</p></section>
+<section class="doc-section"><h2 class="doc-chapter" id="customer-access-the-signal">Customer access: The Signal</h2><p class="doc-prose"><b>The Signal</b> (newsletter hub) is for <b>existing customers</b>, not public marketing navigation.</p><ul class="doc-rows">
+<li><span class="doc-rows__label">Rule</span><span class="doc-rows__value"><p class="doc-prose">Treatment</p></span></li>
+<li><span class="doc-rows__label">Primary nav / Resources ▾</span><span class="doc-rows__value"><p class="doc-prose"><b>Do not list</b> The Signal</p></span></li>
+<li><span class="doc-rows__label">Homepage</span><span class="doc-rows__value"><p class="doc-prose"><b>No</b> Signal promo card — use Resources teaser (hub, blog, case studies)</p></span></li>
+<li><span class="doc-rows__label">Access</span><span class="doc-rows__value"><p class="doc-prose"><b>Customer login</b> (footer utility) and/or authenticated experience; onboarding email (e.g. Signal welcome) links customers in</p></span></li>
+<li><span class="doc-rows__label">Public copy</span><span class="doc-rows__value"><p class="doc-prose">May mention “monthly updates for customers” without a nav path to <code>/newsletter</code></p></span></li>
+<li><span class="doc-rows__label">Production</span><span class="doc-rows__value"><p class="doc-prose"><code>/newsletter</code> route should be <b>customer-gated</b> on live site</p></span></li>
+</ul><p class="doc-prose">Design system hub keeps Signal assets under <b>Newsletter</b> for internal/Webflow build — separate from public IA.</p></section>
+<section class="doc-section"><h2 class="doc-chapter" id="industries-launch-six-pages">Industries (launch — six pages)</h2><ul class="doc-rows">
+<li><span class="doc-rows__label">Vertical</span><span class="doc-rows__value"><p class="doc-prose">Page focus</p></span></li>
+<li><span class="doc-rows__label"><b>Casinos &amp; gaming</b></span><span class="doc-rows__value"><p class="doc-prose">Gaming floors, guest experience, uptime</p></span></li>
+<li><span class="doc-rows__label"><b>Hotels &amp; resorts</b></span><span class="doc-rows__value"><p class="doc-prose">Property-wide AV, signage, ops continuity</p></span></li>
+<li><span class="doc-rows__label"><b>Sports &amp; venues</b></span><span class="doc-rows__value"><p class="doc-prose">Arenas, event spaces, game-day orchestration</p></span></li>
+<li><span class="doc-rows__label"><b>Airports &amp; transportation</b></span><span class="doc-rows__value"><p class="doc-prose">Airports, rail/intermodal stations, transit hubs — one story (fragmented endpoints, high-stakes uptime)</p></span></li>
+<li><span class="doc-rows__label"><b>Conference &amp; convention centers</b></span><span class="doc-rows__value"><p class="doc-prose">Meeting spaces, digital signage, event turnover</p></span></li>
+<li><span class="doc-rows__label"><b>Corporate &amp; campus properties</b></span><span class="doc-rows__value"><p class="doc-prose">Headquarters, multi-building campuses, enterprise facilities — AV, signage, and building tech as one coordinated layer</p></span></li>
+</ul><p class="doc-prose"><b>Removed:</b> Integrated resorts (overlaps casinos + hotels + sports; ambiguous label).</p><h3 class="doc-subsection__title">Phase 2 industry candidates (not in launch nav)</h3><ul class="doc-rows">
+<li><span class="doc-rows__label">Vertical</span><span class="doc-rows__value"><p class="doc-prose">Fit with LUCI</p></span></li>
+<li><span class="doc-rows__label">Museums &amp; cultural venues</span><span class="doc-rows__value"><p class="doc-prose">AV-heavy visitor journeys, multi-zone control</p></span></li>
+<li><span class="doc-rows__label">Higher education campuses</span><span class="doc-rows__value"><p class="doc-prose">Stadiums, unions, lecture halls, distributed endpoints</p></span></li>
+<li><span class="doc-rows__label">Entertainment districts / mixed-use</span><span class="doc-rows__value"><p class="doc-prose">Retail + hospitality + signage at scale</p></span></li>
+<li><span class="doc-rows__label">Healthcare campuses</span><span class="doc-rows__value"><p class="doc-prose">Wayfinding, operational AV (often longer sales cycle)</p></span></li>
+<li><span class="doc-rows__label">Cruise &amp; maritime</span><span class="doc-rows__value"><p class="doc-prose">Hospitality-like complexity; niche proof path</p></span></li>
+</ul></section>
+<section class="doc-section"><h2 class="doc-chapter" id="homepage-messaging-map-revised">Homepage messaging map (revised)</h2><p class="doc-prose"><b>Division of labor:</b> Home = <b>why care + who it’s for + proof</b>; <a href="#platform-page-scroll-order">Platform page</a> = <b>how it works + what you get + how we show up</b>.</p><ul class="doc-rows">
+<li><span class="doc-rows__label">#</span><span class="doc-rows__value"><p class="doc-prose"><b>Section</b></p><p class="doc-prose">Job</p><p class="doc-prose">Source</p></span></li>
+<li><span class="doc-rows__label">1</span><span class="doc-rows__value"><p class="doc-prose"><b><b>Hero</b></b></p><p class="doc-prose">Tagline + sub-tagline + CTA</p><p class="doc-prose">Approved lockup</p></span></li>
+<li><span class="doc-rows__label">2</span><span class="doc-rows__value"><p class="doc-prose"><b><b>Value band</b></b></p><p class="doc-prose">Boilerplate</p><p class="doc-prose">Approved value prop</p></span></li>
+<li><span class="doc-rows__label">3</span><span class="doc-rows__value"><p class="doc-prose"><b><b>One offering</b></b></p><p class="doc-prose">Diagram: platform + partnership unified — <b>not</b> two nav destinations</p><p class="doc-prose">V6 diagram + one-product framing</p></span></li>
+<li><span class="doc-rows__label">4</span><span class="doc-rows__value"><p class="doc-prose"><b><b>Variable reduction</b></b></p><p class="doc-prose">Teaser — structurally different</p><p class="doc-prose">V6 principle (simplified)</p></span></li>
+<li><span class="doc-rows__label">5</span><span class="doc-rows__value"><p class="doc-prose"><b><b>Four pillars</b></b></p><p class="doc-prose">Outcomes</p><p class="doc-prose">Messaging Guide 01–04</p></span></li>
+<li><span class="doc-rows__label">6</span><span class="doc-rows__value"><p class="doc-prose"><b><b>Platform teaser</b></b></p><p class="doc-prose">Key features headline + link to Platform</p><p class="doc-prose">Messaging Guide (not full feature list)</p></span></li>
+<li><span class="doc-rows__label">7</span><span class="doc-rows__value"><p class="doc-prose"><b><b>Partnership teaser</b></b></p><p class="doc-prose">Six services headline + link to Platform §6</p><p class="doc-prose">V6 §04 — anchor on Platform</p></span></li>
+<li><span class="doc-rows__label">8</span><span class="doc-rows__value"><p class="doc-prose"><b><b>Industries</b></b></p><p class="doc-prose">Vertical relevance</p><p class="doc-prose">Industry pages</p></span></li>
+<li><span class="doc-rows__label">9</span><span class="doc-rows__value"><p class="doc-prose"><b><b>Who we serve</b></b></p><p class="doc-prose">By function, one orchestration story</p><p class="doc-prose">Persona Guide + V6 §07</p></span></li>
+<li><span class="doc-rows__label">10</span><span class="doc-rows__value"><p class="doc-prose"><b><b>Proof</b></b></p><p class="doc-prose">Logo wall + Ameristar case study</p><p class="doc-prose">Proof rules §08</p></span></li>
+<li><span class="doc-rows__label">11</span><span class="doc-rows__value"><p class="doc-prose"><b><b>Resources</b></b></p><p class="doc-prose">Blog, case studies, hub — no Signal (customer-only)</p><p class="doc-prose">Resources hub</p></span></li>
+<li><span class="doc-rows__label">12</span><span class="doc-rows__value"><p class="doc-prose"><b><b>Closing CTA</b></b></p><p class="doc-prose">Convert</p><p class="doc-prose">—</p></span></li>
+</ul><p class="doc-prose"><b>Removed from homepage:</b> Full engagement cycle, philosophy principles list, V6 alternate tagline, duplicate “why buy” page content.</p></section>
+<section class="doc-section"><h2 class="doc-chapter" id="platform-page-scroll-order">Platform page (scroll order)</h2><p class="doc-prose">Single deep dive at <code>/platform</code> (label TBD: <b>Platform</b> vs <b>The Platform</b>). Software and partnership on <b>one scroll</b> — not split pages.</p><ul class="doc-rows">
+<li><span class="doc-rows__label">#</span><span class="doc-rows__value"><p class="doc-prose"><b>Section</b></p><p class="doc-prose">Job</p><p class="doc-prose">Source</p></span></li>
+<li><span class="doc-rows__label">1</span><span class="doc-rows__value"><p class="doc-prose"><b><b>Hero</b></b></p><p class="doc-prose">Orchestration engine + one interface</p><p class="doc-prose">Approved lockup territory</p></span></li>
+<li><span class="doc-rows__label">2</span><span class="doc-rows__value"><p class="doc-prose"><b><b>The problem</b></b></p><p class="doc-prose">Layers of property tech</p><p class="doc-prose">Language rules</p></span></li>
+<li><span class="doc-rows__label">3</span><span class="doc-rows__value"><p class="doc-prose"><b><b>How it works</b></b></p><p class="doc-prose">Product UI / map control visual</p><p class="doc-prose">Product marketing</p></span></li>
+<li><span class="doc-rows__label">4</span><span class="doc-rows__value"><p class="doc-prose"><b><b>Capabilities</b></b></p><p class="doc-prose">Messaging Guide key features (de-boxed)</p><p class="doc-prose">Messaging Guide</p></span></li>
+<li><span class="doc-rows__label">5</span><span class="doc-rows__value"><p class="doc-prose"><b><b>Why it’s structurally different</b></b></p><p class="doc-prose">Variable reduction + vs control panel / dashboard / point solution</p><p class="doc-prose">V6 (absorbs old “Why LUCI” nav page)</p></span></li>
+<li><span class="doc-rows__label">6</span><span class="doc-rows__value"><p class="doc-prose"><b><b>How we work with you</b></b></p><p class="doc-prose">Six services + “available anytime”; embedded team</p><p class="doc-prose">V6 §04</p></span></li>
+<li><span class="doc-rows__label">7</span><span class="doc-rows__value"><p class="doc-prose"><b><b>CTA</b></b></p><p class="doc-prose">Request conversation / See LUCI in action</p><p class="doc-prose">—</p></span></li>
+</ul><p class="doc-prose"><b>Retired as separate IA destinations:</b> <code>/the-systems</code>, <code>/capabilities</code>, <code>/why-luci</code> — content lives here unless spun out as blog posts later.</p></section>
+<section class="doc-section"><h2 class="doc-chapter" id="who-we-serve-single-page">Who we serve (single page)</h2><p class="doc-prose"><b>Not</b> six persona microsites.</p><p class="doc-prose"><b>Structure:</b></p><ol class="doc-list"><li><p class="doc-prose">Opening: multimedia orchestration — one platform, every function connected  </p></li><li><p class="doc-prose"><b>By function</b> (cards or rows): Leadership · Operations · Technology · Finance · Marketing/Guest experience · Technical/Facilities  </p></li><li><p class="doc-prose">For each: V6 “message that lands” + Persona Guide pain/outcome + <b>TBD: what this team can do in LUCI</b> (internal workshop)  </p></li><li><p class="doc-prose">CTA: Platform + Contact  </p></li></ol><p class="doc-prose"><b>Later:</b> Blog/resources filter by function tag.</p></section>
+<section class="doc-section"><h2 class="doc-chapter" id="page-inventory-summary">Page inventory (summary)</h2><ul class="doc-rows">
+<li><span class="doc-rows__label">Page</span><span class="doc-rows__value"><p class="doc-prose">Topics</p></span></li>
+<li><span class="doc-rows__label"><b>Home</b></span><span class="doc-rows__value"><p class="doc-prose"><a href="#homepage-messaging-map-revised">Homepage map</a> — teasers to Platform</p></span></li>
+<li><span class="doc-rows__label"><b>Platform</b></span><span class="doc-rows__value"><p class="doc-prose"><a href="#platform-page-scroll-order">Platform scroll order</a> — unified product + partnership</p></span></li>
+<li><span class="doc-rows__label"><b>Industries</b></span><span class="doc-rows__value"><p class="doc-prose">Template per vertical (×6) — see <a href="#industries-launch-six-pages">Industries (launch — six pages)</a></p></span></li>
+<li><span class="doc-rows__label"><b>Who we serve</b></span><span class="doc-rows__value"><p class="doc-prose">Combined persona/orchestration page</p></span></li>
+<li><span class="doc-rows__label"><b>Resources</b></span><span class="doc-rows__value"><p class="doc-prose">Hub · Blog · <b>Case studies</b> · Support — no public Signal</p></span></li>
+<li><span class="doc-rows__label"><b>The Signal</b></span><span class="doc-rows__value"><p class="doc-prose">Customer-only via login — not in page inventory nav</p></span></li>
+<li><span class="doc-rows__label"><b>Case study detail</b></span><span class="doc-rows__value"><p class="doc-prose">Named proof; Ameristar first (linked from Resources)</p></span></li>
+<li><span class="doc-rows__label"><b>About</b></span><span class="doc-rows__value"><p class="doc-prose">Optional short worldview; founders/integrator DNA — not V6 full philosophy page</p></span></li>
+<li><span class="doc-rows__label"><b>Contact</b></span><span class="doc-rows__value"><p class="doc-prose">Conversion form</p></span></li>
+</ul></section>
+<section class="doc-section"><h2 class="doc-chapter" id="content-channel-matrix-v6-ideas-routed-correctly">Content → channel matrix (V6 ideas routed correctly)</h2><ul class="doc-rows">
+<li><span class="doc-rows__label">V6 content</span><span class="doc-rows__value"><p class="doc-prose"><b>Website</b></p><p class="doc-prose">Sales deck</p><p class="doc-prose">Blog / resources</p></span></li>
+<li><span class="doc-rows__label">Two pillars + diagram</span><span class="doc-rows__value"><p class="doc-prose"><b><b>Home</b> (one offering); optional on Platform</b></p><p class="doc-prose">Yes</p><p class="doc-prose">—</p></span></li>
+<li><span class="doc-rows__label">Six services</span><span class="doc-rows__value"><p class="doc-prose"><b><b>Platform</b> §6</b></p><p class="doc-prose">Yes</p><p class="doc-prose">Service deep-dives optional</p></span></li>
+<li><span class="doc-rows__label">Variable reduction table</span><span class="doc-rows__value"><p class="doc-prose"><b>Home teaser + <b>Platform</b> §5</b></p><p class="doc-prose">Optional slide</p><p class="doc-prose"><b>Full article</b></p></span></li>
+<li><span class="doc-rows__label">Capability ↔ principle table</span><span class="doc-rows__value"><p class="doc-prose"><b>—</b></p><p class="doc-prose">Appendix</p><p class="doc-prose"><b>Yes</b></p></span></li>
+<li><span class="doc-rows__label">Engagement cycle</span><span class="doc-rows__value"><p class="doc-prose"><b>—</b></p><p class="doc-prose"><b>Yes</b></p><p class="doc-prose">Optional series</p></span></li>
+<li><span class="doc-rows__label">“What this model produces”</span><span class="doc-rows__value"><p class="doc-prose"><b>Fold into MG pillars</b></p><p class="doc-prose">Yes</p><p class="doc-prose">—</p></span></li>
+<li><span class="doc-rows__label">Persona cards</span><span class="doc-rows__value"><p class="doc-prose"><b>Who we serve</b></p><p class="doc-prose">Tailored opens</p><p class="doc-prose">—</p></span></li>
+<li><span class="doc-rows__label">Proof / client rules</span><span class="doc-rows__value"><p class="doc-prose"><b><b>All public pages</b></b></p><p class="doc-prose">Decks</p><p class="doc-prose">Case studies</p></span></li>
+<li><span class="doc-rows__label">V6 tagline “layer above”</span><span class="doc-rows__value"><p class="doc-prose"><b><b>Do not use</b></b></p><p class="doc-prose">—</p><p class="doc-prose">—</p></span></li>
+</ul></section>
+<section class="doc-section"><h2 class="doc-chapter" id="standard-site-requirements">Standard site requirements</h2><p class="doc-prose">Unchanged from prior draft: conversion paths, legal, support portal link, SEO, accessibility, analytics, security summary [TBD], press/partners optional.</p></section>
+<section class="doc-section"><h2 class="doc-chapter" id="open-questions">Open questions</h2><ol class="doc-list"><li><p class="doc-prose">~~Dedicated Systems/Services page at launch?~~ <b>Resolved:</b> folded into <b>Platform</b>; no separate nav.  </p></li><li><p class="doc-prose">~~Sub-tagline final wording.~~ <b>Resolved:</b> One interface to control, automate, and execute the entire guest experience.  </p></li><li><p class="doc-prose">Primary CTA label.  </p></li><li><p class="doc-prose">Launch industries vs proof-gated.  </p></li><li><p class="doc-prose"><b>Internal workshop:</b> What can each function <i>do in LUCI</i> on Who we serve?  </p></li><li><p class="doc-prose">When to reconcile Messaging Guide pillars with V6 pillar set (Jane-owned).  </p></li><li><p class="doc-prose">Nav/page label: <b>Platform</b> vs <b>The Platform</b> vs <b>Product</b>.  </p></li><li><p class="doc-prose">Platform §6 headline: <b>“How we work with you”</b> vs <b>“Partnership”</b> vs <b>“Delivery”</b>.  </p></li><li><p class="doc-prose">Simplify public service names (e.g. “Support &amp; operations” vs internal FDE naming).</p></li></ol></section>
+<section class="doc-section"><h2 class="doc-chapter" id="suggested-build-phases">Suggested build phases</h2><ul class="doc-rows">
+<li><span class="doc-rows__label">Phase</span><span class="doc-rows__value"><p class="doc-prose">Scope</p></span></li>
+<li><span class="doc-rows__label"><b>1 — Foundation</b></span><span class="doc-rows__value"><p class="doc-prose">Home (one offering + variable reduction + approved lockup), <b>Platform</b> page, Contact, legal</p></span></li>
+<li><span class="doc-rows__label"><b>2 — Audience &amp; proof</b></span><span class="doc-rows__value"><p class="doc-prose">Who we serve, industries (3 launch verticals), case studies under Resources, logo wall rules</p></span></li>
+<li><span class="doc-rows__label"><b>3 — Resources</b></span><span class="doc-rows__value"><p class="doc-prose">Hub, blog template (public); customer-gated Signal route</p></span></li>
+<li><span class="doc-rows__label"><b>4 — Depth</b></span><span class="doc-rows__value"><p class="doc-prose">Remaining industry pages (6 total), variable-reduction long read (blog), engagement-cycle content</p></span></li>
+</ul></section>
+<section class="doc-section"><h2 class="doc-chapter" id="next-steps">Next steps</h2><ol class="doc-list"><li><p class="doc-prose">Jane + Nick align: one-product public language (“layers” vs V6 “layer above”; partnership in tandem).  </p></li><li><p class="doc-prose">Wireframe <b>Platform</b> page + simplified nav in <code>website-ia-wireframe.html</code>.  </p></li><li><p class="doc-prose">Schedule “what each team can do in LUCI” workshop for Who we serve.  </p></li><li><p class="doc-prose">Label pass: Platform nav + §6 partnership headline.  </p></li><li><p class="doc-prose">Update Messaging Guide when pillar/tagline merge is ready — <b>website follows MG, not V6 lockup</b>.</p></li></ol></section>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

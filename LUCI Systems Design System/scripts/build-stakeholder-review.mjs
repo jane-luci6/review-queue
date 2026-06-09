@@ -8,13 +8,10 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { syncMessagingDocs, applyMessagingDocsToQueue } from './sync-messaging-docs.mjs';
-import { loadDotEnv } from '../lib/teams-webhook.mjs';
-import { notifyReviewQueueChanges } from './notify-review-queue-teams.mjs';
 import { syncReviewVersions } from './sync-review-versions.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(path.join(__dirname, '..'));
-loadDotEnv(path.join(root, '.env'));
 const reviewDir = path.join(root, 'ui_kits', 'review');
 const templatePath = path.join(reviewDir, 'stakeholder-review.template.html');
 
@@ -93,12 +90,33 @@ function cleanGeneratedPreviews() {
   }
 }
 
+/** System diagram lives under messaging/ (not wiped by cleanGeneratedPreviews). */
+function syncMessagingDiagram() {
+  const canonical = path.join(root, 'assets', 'diagrams', 'luci-system-diagram-v2.svg');
+  const destDir = path.join(reviewDir, 'messaging', 'diagrams');
+  const dest = path.join(destDir, 'luci-system-diagram-v2.svg');
+  fs.mkdirSync(destDir, { recursive: true });
+  if (!fs.existsSync(canonical) && !fs.existsSync(dest)) return;
+  if (!fs.existsSync(canonical)) return;
+  if (!fs.existsSync(dest)) {
+    fs.copyFileSync(canonical, dest);
+    console.log('Messaging diagram:', path.relative(reviewDir, dest));
+    return;
+  }
+  const canonMtime = fs.statSync(canonical).mtimeMs;
+  const destMtime = fs.statSync(dest).mtimeMs;
+  if (canonMtime >= destMtime) {
+    fs.copyFileSync(canonical, dest);
+    console.log('Messaging diagram:', path.relative(reviewDir, dest));
+  }
+}
+
 function syncPreviewAssets(queue) {
   cleanGeneratedPreviews();
   const copied = new Set();
   let count = 0;
 
-  for (const item of queueItems(queue)) {
+  for (const item of queue.dueForReview || []) {
     if ((item.liveUrl || '').trim() && item.embedPreview !== true) continue;
     const srcHtml = sourceHtmlPath(item);
     const publishPath = publishPreviewPath(item);
@@ -113,7 +131,7 @@ function syncPreviewAssets(queue) {
     console.log('Preview asset:', publishPath);
   }
 
-  const needsPreview = queueItems(queue).filter(
+  const needsPreview = (queue.dueForReview || []).filter(
     (item) => !(item.liveUrl || '').trim() || item.embedPreview === true
   );
   if (needsPreview.length && count === 0) {
@@ -148,6 +166,7 @@ try {
 }
 applyMessagingDocsToQueue(queue);
 
+syncMessagingDiagram();
 const previewCount = syncPreviewAssets(queue);
 
 if (syncReviewVersions(queue, queuePath)) {
@@ -181,8 +200,3 @@ console.log('Wrote', outMain);
 console.log('Wrote', outEmbed);
 console.log('Wrote', outIndex);
 console.log('Synced', previewCount, 'preview bundle(s) into ui_kits/review/');
-
-const notifyResult = await notifyReviewQueueChanges(queue);
-if (notifyResult.sent) {
-  console.log('Teams (Mike/Nick):', notifyResult.sent, 'notification(s) sent.');
-}

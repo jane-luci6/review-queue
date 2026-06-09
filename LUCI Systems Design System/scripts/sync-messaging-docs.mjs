@@ -14,6 +14,9 @@ import {
   transformMessagingBody,
   buildResourcePage,
   extractStoredBody,
+  mergeLibraryDocs,
+  applyMessagingGuideEnhancements,
+  SUPPLEMENTAL_LIBRARY_DOCS,
 } from './transform-messaging-html.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -33,7 +36,7 @@ function extractBody(html) {
 }
 
 function libraryFromConfig(config, manifest = { docs: [] }) {
-  return (config.docs || []).map((d) => {
+  const base = (config.docs || []).map((d) => {
     const m = (manifest.docs || []).find((x) => x.id === d.id);
     return {
       id: d.id,
@@ -49,10 +52,14 @@ function libraryFromConfig(config, manifest = { docs: [] }) {
         : '',
     };
   });
+  return mergeLibraryDocs(base, manifest);
 }
 
 function publishDoc({ docId, rawBody, libraryDocs, updatedIso, fallbackTitle }) {
-  const { title, deck, bodyHtml, tocHtml } = transformMessagingBody(rawBody);
+  let { title, deck, bodyHtml, tocHtml } = transformMessagingBody(rawBody);
+  if (docId === 'messaging-guide') {
+    ({ bodyHtml, tocHtml } = applyMessagingGuideEnhancements(bodyHtml, tocHtml));
+  }
   return buildResourcePage({
     docId,
     title: title || fallbackTitle,
@@ -62,6 +69,28 @@ function publishDoc({ docId, rawBody, libraryDocs, updatedIso, fallbackTitle }) 
     libraryDocs,
     updatedIso,
   });
+}
+
+const MANIFEST_DOC_ORDER = ['philosophy', 'messaging-guide', 'luci-system-diagram', 'personas'];
+
+function finalizeManifest(manifest, priorManifest) {
+  const byId = Object.fromEntries(manifest.docs.map((d) => [d.id, d]));
+  manifest.docs = MANIFEST_DOC_ORDER.map((id) => {
+    if (byId[id]) return byId[id];
+    const sup = SUPPLEMENTAL_LIBRARY_DOCS.find((d) => d.id === id);
+    if (!sup) return null;
+    const prior = priorManifest.docs?.find((x) => x.id === id);
+    const htmlPath = path.join(messagingDir, `${id}.html`);
+    return {
+      id: sup.id,
+      title: sup.title,
+      url: sup.url,
+      sourceModified: prior?.sourceModified || null,
+      htmlModified:
+        prior?.htmlModified ||
+        (fs.existsSync(htmlPath) ? fs.statSync(htmlPath).mtime.toISOString() : null),
+    };
+  }).filter(Boolean);
 }
 
 function convertDocx(docxPath, tmpHtml) {
@@ -160,7 +189,7 @@ export function syncMessagingDocs(options = {}) {
     });
   }
 
-  const libraryDocs = libraryFromConfig(config, manifest);
+  finalizeManifest(manifest, priorManifest);
   fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + '\n');
 
   return { synced, skipped, reprocessed, manifest };
@@ -172,8 +201,13 @@ export function applyMessagingDocsToQueue(queue) {
   queue.messagingDocs = (manifest.docs || []).map((d) => ({
     title: d.title,
     url: (d.url || '').replace(/^\//, ''),
-    note: d.sourceModified
-      ? 'Updated ' + new Date(d.sourceModified).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+    note: d.htmlModified || d.sourceModified
+      ? 'Updated ' +
+        new Date(d.htmlModified || d.sourceModified).toLocaleDateString('en-US', {
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric',
+        })
       : '',
   }));
   queue.messagingDocsUpdated = manifest.updated;
