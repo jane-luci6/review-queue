@@ -56,9 +56,41 @@ function copyFile(src, dest, copied) {
 /** Published HTML uses root-absolute /assets/ so logos load inside the iframe on Netlify. */
 function rewritePreviewHtmlPaths(destHtmlPath) {
   let html = fs.readFileSync(destHtmlPath, 'utf8');
+  html = html.replace(/\.\.\/review\/assets\//g, '/assets/');
   html = html.replace(/\.\.\/\.\.\/assets\//g, '/assets/');
   html = html.replace(/\.\.\/assets\//g, '/assets/');
+  html = html.replace(/<p class="(?:cap|doc)-hub-link">[\s\S]*?<\/p>\s*/gi, '');
   fs.writeFileSync(destHtmlPath, html);
+}
+
+function copyDirRecursive(srcDir, destDir, copied) {
+  if (!fs.existsSync(srcDir)) return;
+  for (const entry of fs.readdirSync(srcDir, { withFileTypes: true })) {
+    if (entry.name.startsWith('.')) continue;
+    const src = path.join(srcDir, entry.name);
+    const dest = path.join(destDir, entry.name);
+    if (entry.isDirectory()) {
+      fs.mkdirSync(dest, { recursive: true });
+      copyDirRecursive(src, dest, copied);
+    } else {
+      copyFile(src, dest, copied);
+    }
+  }
+}
+
+function copySalesBundle(publishPath, copied) {
+  if (!publishPath.startsWith('sales/')) return;
+  const salesAssetsSrc = path.join(root, 'ui_kits', 'sales', 'assets');
+  const salesAssetsDest = path.join(reviewDir, 'sales', 'assets');
+  copyDirRecursive(salesAssetsSrc, salesAssetsDest, copied);
+}
+
+function syncSharedAssets(copied) {
+  for (const rel of ['assets/logos', 'assets/diagrams']) {
+    const srcDir = path.join(root, rel);
+    const destDir = path.join(reviewDir, rel);
+    copyDirRecursive(srcDir, destDir, copied);
+  }
 }
 
 function copyLinkedAssets(htmlFile, destHtmlFile, copied) {
@@ -74,7 +106,14 @@ function copyLinkedAssets(htmlFile, destHtmlFile, copied) {
     if (!fs.existsSync(sourceAsset) || !sourceAsset.startsWith(root)) continue;
     const relFromRoot = path.relative(root, sourceAsset);
     if (relFromRoot.startsWith('..')) continue;
-    const destAsset = path.join(reviewDir, relFromRoot);
+    if (relFromRoot === 'index.html' || relFromRoot.startsWith('preview/')) continue;
+
+    const relFromSource = path.relative(sourceDir, sourceAsset);
+    const destAsset =
+      relFromSource && !relFromSource.startsWith('..') && !path.isAbsolute(relFromSource)
+        ? path.join(destDir, relFromSource)
+        : path.join(reviewDir, relFromRoot);
+
     copyFile(sourceAsset, destAsset, copied);
     if (fs.statSync(sourceAsset).isDirectory()) continue;
     if (/\.html?$/i.test(sourceAsset)) {
@@ -84,7 +123,7 @@ function copyLinkedAssets(htmlFile, destHtmlFile, copied) {
 }
 
 function cleanGeneratedPreviews() {
-  for (const name of ['case-studies', 'assets', 'newsletter', 'emails', 'website']) {
+  for (const name of ['case-studies', 'assets', 'newsletter', 'emails', 'website', 'sales']) {
     const dir = path.join(reviewDir, name);
     if (fs.existsSync(dir)) fs.rmSync(dir, { recursive: true, force: true });
   }
@@ -92,9 +131,9 @@ function cleanGeneratedPreviews() {
 
 /** System diagram lives under messaging/ (not wiped by cleanGeneratedPreviews). */
 function syncMessagingDiagram() {
-  const canonical = path.join(root, 'assets', 'diagrams', 'luci-system-diagram-v2.svg');
+  const canonical = path.join(root, 'assets', 'diagrams', 'luci-system-diagram-v3.svg');
   const destDir = path.join(reviewDir, 'messaging', 'diagrams');
-  const dest = path.join(destDir, 'luci-system-diagram-v2.svg');
+  const dest = path.join(destDir, 'luci-system-diagram-v3.svg');
   fs.mkdirSync(destDir, { recursive: true });
   if (!fs.existsSync(canonical) && !fs.existsSync(dest)) return;
   if (!fs.existsSync(canonical)) return;
@@ -116,8 +155,11 @@ function syncPreviewAssets(queue) {
   const copied = new Set();
   let count = 0;
 
+  syncSharedAssets(copied);
+
   const previewQueueItems = [
     ...(queue.dueForReview || []),
+    ...(queue.inProgress || []),
     ...(queue.approvedAssets || []).filter((item) => item.hubPreviewPath || item.previewUrl),
   ];
   for (const item of previewQueueItems) {
@@ -129,13 +171,14 @@ function syncPreviewAssets(queue) {
     const destHtml = path.join(reviewDir, publishPath);
     copyFile(srcHtml, destHtml, copied);
     copyLinkedAssets(srcHtml, destHtml, copied);
+    copySalesBundle(publishPath, copied);
     rewritePreviewHtmlPaths(destHtml);
     item.previewUrl = publishPath;
     count += 1;
     console.log('Preview asset:', publishPath);
   }
 
-  const needsPreview = (queue.dueForReview || []).filter(
+  const needsPreview = [...(queue.dueForReview || []), ...(queue.inProgress || [])].filter(
     (item) => !(item.liveUrl || '').trim() || item.embedPreview === true
   );
   if (needsPreview.length && count === 0) {

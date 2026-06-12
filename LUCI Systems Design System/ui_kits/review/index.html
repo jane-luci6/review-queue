@@ -31,6 +31,20 @@
     .masthead__badge { font-family: var(--display); font-size: 9px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mint); border: 1px solid rgba(var(--mint-rgb), 0.35); padding: 4px 8px; }
     .masthead__title { font-family: var(--display); font-size: clamp(22px, 4vw, 32px); font-weight: 700; color: var(--off-white); line-height: 1.1; }
     .masthead__deck { margin-top: 12px; font-size: 15px; line-height: 1.55; color: rgba(235, 245, 248, 0.88); max-width: 52ch; }
+    .api-status {
+      margin-top: 16px;
+      padding: 12px 16px;
+      font-size: 13px;
+      line-height: 1.45;
+      border-left: 4px solid var(--warn);
+      background: rgba(184, 92, 42, 0.12);
+      color: rgba(235, 245, 248, 0.92);
+      max-width: 60ch;
+    }
+    .api-status--live {
+      border-left-color: var(--mint);
+      background: rgba(var(--mint-rgb), 0.12);
+    }
     .back-link { display: inline-flex; align-items: center; gap: 6px; font-family: var(--display); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mint); text-decoration: none; margin-bottom: 12px; }
     .back-link:hover { text-decoration: underline; }
 
@@ -134,6 +148,10 @@
       font-family: var(--display); font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
       text-transform: uppercase; color: var(--navy-muted);
     }
+    .badge-status {
+      font-family: var(--display); font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 4px 8px; background: rgba(73, 97, 110, 0.12); color: var(--navy-muted);
+    }
 
     .version-block {
       margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--rule-light); max-width: 68ch;
@@ -206,7 +224,8 @@
     .detail { padding: var(--pad); max-width: 100%; }
     .detail__head { margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--rule-light); }
     .detail__head .badge-version,
-    .detail__head .due { display: inline-block; margin-right: 12px; margin-top: 8px; }
+    .detail__head .due,
+    .detail__head .badge-status { display: inline-block; margin-right: 12px; margin-top: 8px; }
     .detail__title { font-size: clamp(22px, 4vw, 28px); font-weight: 700; color: var(--navy); letter-spacing: -0.02em; margin-bottom: 10px; }
     .review-brief {
       margin-bottom: 24px;
@@ -344,7 +363,7 @@
 <script>
 const REVIEW_DATA = {
   "queue": {
-    "updated": "2026-06-09",
+    "updated": "2026-06-12",
     "publishNote": "Build + ./publish.sh. Bump reviewVersion + versionNote for new uploads (Teams + version history on site). Set due for first-time review. See teams-notifications-guide.txt.",
     "commentsApiUrl": "",
     "commentsApiNote": "Optional full URL if review page is on Webflow but API is on Netlify. Leave empty when the whole site is on Netlify.",
@@ -354,12 +373,12 @@ const REVIEW_DATA = {
       {
         "title": "Messaging guide",
         "url": "messaging/messaging-guide.html",
-        "note": "Updated Jun 9, 2026"
+        "note": "Updated Jun 12, 2026"
       },
       {
         "title": "LUCI philosophy",
         "url": "messaging/philosophy.html",
-        "note": "Updated Jun 9, 2026"
+        "note": "Updated Jun 12, 2026"
       },
       {
         "title": "LUCI system diagram",
@@ -369,19 +388,43 @@ const REVIEW_DATA = {
       {
         "title": "Personas",
         "url": "messaging/personas.html",
-        "note": "Updated Jun 9, 2026"
+        "note": "Updated Jun 12, 2026"
       }
     ],
-    "dueForReview": [
+    "inProgress": [
+      {
+        "id": "capabilities-doc",
+        "title": "Capabilities document",
+        "summary": "Post-demo PDF leave-behind — platform + Systems breakouts, proof, close. Draft badges still on pages.",
+        "reviewStatus": "In final stages",
+        "signOff": false,
+        "reviewVersion": 1,
+        "versionNote": "First portal preview — polishing copy, client logos, and contact block before send.",
+        "hubPreviewPath": "ui_kits/sales/capabilities-document.html",
+        "reviewBrief": {
+          "description": "LUCI's flagship sales capability overview — six US Letter pages for prospect meetings and post-demo follow-up.",
+          "reviewAsk": "structure, messaging, and visual direction. Not asking for final sign-off yet — still in final stages."
+        },
+        "versionHistory": [
+          {
+            "version": 1,
+            "published": "2026-06-12",
+            "note": "Portal preview — in final stages."
+          }
+        ],
+        "previewUrl": "sales/capabilities-document.html"
+      }
+    ],
+    "dueForReview": [],
+    "approvedAssets": [
       {
         "id": "signal-hub",
         "title": "The Signal · Newsletter Hub",
         "summary": "Newsletter hub — layout, featured issue, archive.",
+        "approved": "2026-06-12",
+        "note": "The Signal · Issue 01 — Mike approved Jun 12, 2026",
         "reviewVersion": 1,
-        "versionNote": "",
-        "due": "2026-06-11",
         "liveUrl": "https://www.lucisystems.com/the-signal/home",
-        "previewUrl": "",
         "hubPreviewPath": "ui_kits/newsletter/the-signal-hub.html",
         "reviewBrief": {
           "description": "The Signal hub is the customer-facing home for our newsletter—one stable place to find every issue as we publish.",
@@ -393,18 +436,15 @@ const REVIEW_DATA = {
             "published": "2026-06-02",
             "note": ""
           }
-        ],
-        "group": "The Signal · Issue 01"
+        ]
       },
       {
         "id": "signal-issue-01",
         "title": "The Signal · Issue 01 (June 2026)",
         "summary": "Issue 01 — tone, Ameristar story, platform, team, Inside LUCI how-to.",
+        "approved": "2026-06-12",
         "reviewVersion": 1,
-        "versionNote": "",
-        "due": "2026-06-11",
         "liveUrl": "https://www.lucisystems.com/the-signal/issue-01",
-        "previewUrl": "",
         "hubPreviewPath": "ui_kits/newsletter/the-signal-issue-01-june-2026.html",
         "reviewBrief": {
           "description": "Issue 01 is the first full web edition of The Signal—welcome, field story, platform preview, team, Inside LUCI how-to, and services.",
@@ -416,17 +456,15 @@ const REVIEW_DATA = {
             "published": "2026-06-02",
             "note": ""
           }
-        ],
-        "group": "The Signal · Issue 01"
+        ]
       },
       {
         "id": "newsletter-email-teaser",
         "title": "Newsletter email · The Signal Issue 01 teaser",
         "summary": "Inbox teaser — Issue 01 highlights, deep links, read-issue CTA. Footer tagline synced to Messaging Guide.",
+        "approved": "2026-06-12",
         "reviewVersion": 2,
         "versionNote": "Footer tagline updated to “The Orchestration Engine for Enterprise Multimedia” (Messaging Guide, Jun 9).",
-        "due": "2026-06-11",
-        "liveUrl": "",
         "previewUrl": "email/email-signal-issue-01-teaser.html",
         "hubPreviewPath": "ui_kits/email/email-signal-issue-01-teaser.html",
         "reviewBrief": {
@@ -444,16 +482,14 @@ const REVIEW_DATA = {
             "published": "2026-06-09",
             "note": "Footer tagline synced to Messaging Guide."
           }
-        ],
-        "group": "The Signal · Issue 01"
-      }
-    ],
-    "approvedAssets": [
+        ]
+      },
       {
         "id": "case-study-ameristar",
         "title": "Case Study · Ameristar Council Bluffs",
         "summary": "Ameristar case study — narrative, results, CTA.",
-        "approved": "2026-06-10",
+        "approved": "2026-06-12",
+        "note": "Mike approved Jun 12, 2026",
         "previewUrl": "case-studies/ameristar-council-bluffs.html",
         "hubPreviewPath": "ui_kits/case-studies/ameristar-council-bluffs.html",
         "reviewBrief": {
@@ -492,12 +528,6 @@ const REVIEW_DATA = {
         "hubPreviewPath": "ui_kits/website/website-strategy.html"
       },
       {
-        "id": "capabilities-doc",
-        "title": "Capabilities doc",
-        "note": "Sales capabilities overview — platform + Systems services.",
-        "target": "2026-07-01"
-      },
-      {
         "id": "budgetary-estimate-template",
         "title": "Budgetary estimate template",
         "note": "Standard budgetary estimate format for proposals.",
@@ -517,12 +547,25 @@ const REVIEW_DATA = {
       }
     ],
     "finalized": [],
-    "messagingDocsUpdated": "2026-06-09"
+    "messagingDocsUpdated": "2026-06-12"
   },
   "comments": [],
   "commentsUpdated": "2026-06-01",
-  "approvals": {},
-  "approvalsUpdated": "2026-06-02"
+  "approvals": {
+    "signal-hub": {
+      "Mike": "2026-06-12T17:00:00.000Z"
+    },
+    "signal-issue-01": {
+      "Mike": "2026-06-12T17:00:00.000Z"
+    },
+    "newsletter-email-teaser": {
+      "Mike": "2026-06-12T17:00:00.000Z"
+    },
+    "case-study-ameristar": {
+      "Mike": "2026-06-12T17:00:00.000Z"
+    }
+  },
+  "approvalsUpdated": "2026-06-12"
 };
 
 (function () {
@@ -539,6 +582,9 @@ const REVIEW_DATA = {
   let allComments = (REVIEW_DATA.comments || []).slice();
   let approvalsByAsset = Object.assign({}, REVIEW_DATA.approvals || {});
   let commentsApiEnabled = false;
+  let commentsApiFailed = false;
+  const POLL_MS = 12000;
+  let pollTimer = null;
 
   function showToast(msg) {
     toast.textContent = msg;
@@ -572,11 +618,21 @@ const REVIEW_DATA = {
     } catch (e) { /* ignore */ }
   }
 
+  function isLocalPreview() {
+    return location.protocol === 'file:';
+  }
+
+  function reviewStateSignature() {
+    return JSON.stringify({ comments: allComments, approvals: approvalsByAsset });
+  }
+
   async function loadReviewStateFromApi() {
     const url = commentsApiUrl();
     if (!url) {
+      commentsApiEnabled = false;
+      commentsApiFailed = false;
       loadApprovalsFromLocalStorage();
-      return;
+      return false;
     }
     try {
       const controller = new AbortController();
@@ -585,16 +641,24 @@ const REVIEW_DATA = {
       clearTimeout(timer);
       if (res.ok) {
         const data = await res.json();
+        const prev = reviewStateSignature();
         allComments = data.comments || [];
         if (data.approvals && typeof data.approvals === 'object') {
           approvalsByAsset = data.approvals;
         }
         commentsApiEnabled = true;
-      } else {
-        loadApprovalsFromLocalStorage();
+        commentsApiFailed = false;
+        return prev !== reviewStateSignature();
       }
+      commentsApiEnabled = false;
+      commentsApiFailed = true;
+      if (isLocalPreview()) loadApprovalsFromLocalStorage();
+      return false;
     } catch (e) {
-      loadApprovalsFromLocalStorage();
+      commentsApiEnabled = false;
+      commentsApiFailed = true;
+      if (isLocalPreview()) loadApprovalsFromLocalStorage();
+      return false;
     }
   }
 
@@ -619,6 +683,9 @@ const REVIEW_DATA = {
 
   async function toggleApproval(item, reviewer) {
     const assetId = item.id;
+    if (commentsApiUrl() && !commentsApiEnabled) {
+      throw new Error('api-unavailable');
+    }
     if (commentsApiEnabled) {
       const res = await fetch(commentsApiUrl(), {
         method: 'POST',
@@ -779,8 +846,13 @@ const REVIEW_DATA = {
   function assetById(id) {
     return (
       (q.dueForReview || []).find((a) => a.id === id) ||
+      (q.inProgress || []).find((a) => a.id === id) ||
       (q.approvedAssets || []).find((a) => a.id === id)
     );
+  }
+
+  function signOffEnabled(item) {
+    return item && item.signOff !== false;
   }
 
   function commentsFor(assetId) {
@@ -884,6 +956,22 @@ const REVIEW_DATA = {
     location.hash = '#/review/' + encodeURIComponent(id);
   }
 
+  function renderApiStatus() {
+    if (!commentsApiUrl()) return null;
+    const el = document.createElement('p');
+    el.className = 'api-status' + (commentsApiEnabled ? ' api-status--live' : '');
+    if (commentsApiFailed) {
+      el.textContent =
+        'Sign-off and comments are not saving — the review API is unavailable. Refresh after deploy, or contact Jane.';
+      return el;
+    }
+    if (commentsApiEnabled) {
+      el.textContent = 'Approvals and comments sync live — this page refreshes every few seconds.';
+      return el;
+    }
+    return null;
+  }
+
   function renderMasthead(deck) {
     const h = document.createElement('header');
     h.className = 'masthead';
@@ -897,6 +985,8 @@ const REVIEW_DATA = {
       '<h1 class="masthead__title">Review Queue</h1>' +
       '<p class="masthead__deck"></p>';
     h.querySelector('.masthead__deck').textContent = deckText;
+    const status = renderApiStatus();
+    if (status) h.appendChild(status);
     return h;
   }
 
@@ -1037,7 +1127,12 @@ const REVIEW_DATA = {
     verBadge.className = 'badge-version';
     verBadge.textContent = 'v' + reviewVersionNum(item);
     meta.appendChild(verBadge);
-    if (item.due) {
+    if ((item.reviewStatus || '').trim()) {
+      const status = document.createElement('span');
+      status.className = 'badge-status';
+      status.textContent = item.reviewStatus;
+      meta.appendChild(status);
+    } else if (item.due) {
       const due = document.createElement('span');
       due.className = 'due ' + dueClass(item.due);
       due.textContent = 'Due ' + formatDue(item.due);
@@ -1111,6 +1206,21 @@ const REVIEW_DATA = {
       zoneDue.appendChild(ul);
     }
     main.appendChild(zoneDue);
+
+    const progressList = (q.inProgress || []).slice();
+    if (progressList.length) {
+      const zoneProgress = document.createElement('section');
+      zoneProgress.className = 'main__zone';
+      const hProgress = document.createElement('h2');
+      hProgress.className = 'section-heading';
+      hProgress.textContent = 'In Progress';
+      zoneProgress.appendChild(hProgress);
+      const ulProgress = document.createElement('ul');
+      ulProgress.className = 'queue-list';
+      progressList.forEach((item) => ulProgress.appendChild(renderQueueRow(item)));
+      zoneProgress.appendChild(ulProgress);
+      main.appendChild(zoneProgress);
+    }
 
     const approvedList = (q.approvedAssets || []).slice().sort((a, b) =>
       (b.approved || '').localeCompare(a.approved || '')
@@ -1223,6 +1333,17 @@ const REVIEW_DATA = {
     panel.className = 'approval-panel';
     panel.innerHTML = '<h2 class="approval-panel__title">Stakeholder sign-off</h2>';
 
+    if (!signOffEnabled(item)) {
+      const note = document.createElement('p');
+      note.className = 'approval-panel__hint';
+      note.textContent =
+        (item.reviewStatus || 'In progress') +
+        ' — preview for awareness. Formal sign-off opens when this moves to Due for Review.';
+      panel.appendChild(note);
+      parent.appendChild(panel);
+      return panel;
+    }
+
     REVIEWERS.forEach((name) => {
       const row = document.createElement('div');
       row.className = 'approval-row';
@@ -1255,7 +1376,7 @@ const REVIEW_DATA = {
           paint();
           showToast(nowApproved ? name + ' approved this asset.' : 'Approval removed.');
         } catch (e) {
-          showToast('Could not save — try again.');
+          showToast(commentsApiFailed ? 'Sign-off is not saving — API unavailable.' : 'Could not save — try again.');
         } finally {
           btn.disabled = false;
         }
@@ -1271,9 +1392,13 @@ const REVIEW_DATA = {
     if (!commentsApiEnabled) {
       const hint = document.createElement('p');
       hint.className = 'approval-panel__hint';
-      hint.textContent = commentsApiUrl()
-        ? 'Sign-off syncs when the review API is available.'
-        : 'On the published review site, sign-off is shared for Mike and Nick. Locally, it is saved in this browser only.';
+      if (commentsApiFailed) {
+        hint.textContent = 'Sign-off cannot be saved until the review API is back online.';
+      } else if (commentsApiUrl()) {
+        hint.textContent = 'Loading sign-off status…';
+      } else {
+        hint.textContent = 'Local preview only — sign-off is saved in this browser.';
+      }
       panel.appendChild(hint);
     }
 
@@ -1334,7 +1459,9 @@ const REVIEW_DATA = {
       submit.disabled = true;
       const hint = document.createElement('p');
       hint.className = 'comment-form__hint';
-      hint.textContent = 'Posting works on the published review host (Netlify).';
+      hint.textContent = commentsApiFailed
+        ? 'Comments cannot be posted until the review API is back online.'
+        : (commentsApiUrl() ? 'Loading comment form…' : 'Comments save on the published review host (Netlify).');
       form.appendChild(hint);
     }
     form.appendChild(nameLabel);
@@ -1381,7 +1508,12 @@ const REVIEW_DATA = {
     ver.className = 'badge-version';
     ver.textContent = 'v' + reviewVersionNum(item);
     head.appendChild(ver);
-    if (item.due) {
+    if ((item.reviewStatus || '').trim()) {
+      const status = document.createElement('span');
+      status.className = 'badge-status';
+      status.textContent = item.reviewStatus;
+      head.appendChild(status);
+    } else if (item.due) {
       const due = document.createElement('span');
       due.className = 'due ' + dueClass(item.due);
       due.textContent = 'Due ' + formatDue(item.due);
@@ -1428,11 +1560,41 @@ const REVIEW_DATA = {
     }
   }
 
+  function startPolling() {
+    if (pollTimer || !commentsApiEnabled) return;
+    pollTimer = setInterval(async () => {
+      const changed = await loadReviewStateFromApi();
+      if (changed) {
+        render();
+        showToast('Review activity updated.');
+      }
+    }, POLL_MS);
+  }
+
+  function stopPolling() {
+    if (!pollTimer) return;
+    clearInterval(pollTimer);
+    pollTimer = null;
+  }
+
+  async function refreshReviewState() {
+    const changed = await loadReviewStateFromApi();
+    render();
+    if (commentsApiEnabled) startPolling();
+    else stopPolling();
+    return changed;
+  }
+
   function init() {
     if (!location.hash) location.hash = '#/';
     render();
     window.addEventListener('hashchange', render);
-    loadReviewStateFromApi().then(() => render());
+    refreshReviewState();
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible' && commentsApiUrl()) {
+        refreshReviewState();
+      }
+    });
   }
 
   init();

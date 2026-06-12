@@ -1,0 +1,53 @@
+<!-- =====================================================================
+     LUCI · EMAIL SIGNATURE MODULE  (sender sign-off)
+     Drop-in for ActiveCampaign: paste into a Custom HTML / Code block and
+     save as a reusable block. Stack it ABOVE the Footer module, below the
+     email body. Place on a LIGHT background.
+
+     SWAP SENDER — duplicate this block per sender and edit only these 4 lines:
+       • Name &ndash; Title
+       • Phone line (C / O)
+       • Email address (mailto: + visible text)
+       • (Website + the eco/privacy lines below are constant — leave as-is)
+
+     Default sender: Michael Epstein (CEO).
+     ===================================================================== -->
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin:0; padding:0; border-collapse:collapse;">
+  <tr>
+    <td align="center" style="padding:0;">
+
+      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="width:100%; max-width:600px; border-collapse:collapse;">
+        <tr>
+          <td style="padding:28px 36px 36px; font-family:'Space Grotesk','Segoe UI',system-ui,Arial,sans-serif;">
+
+            <!-- EDIT: Name &ndash; Title -->
+            <p style="font-family:'Space Grotesk','Segoe UI',system-ui,Arial,sans-serif; font-weight:700; font-size:16px; line-height:22px; color:#10232D; margin:0 0 8px 0;">
+              Michael Epstein &ndash; CEO
+            </p>
+
+            <!-- EDIT: Phone -->
+            <p style="font-family:'Space Grotesk','Segoe UI',system-ui,Arial,sans-serif; font-weight:400; font-size:13px; line-height:20px; color:#535559; margin:0 0 8px 0;">
+              C 702.326.5700 &nbsp;|&nbsp; O 833.333.5868
+            </p>
+
+            <!-- EDIT: Email (mailto + visible text). Website stays constant. -->
+            <p style="font-family:'Space Grotesk','Segoe UI',system-ui,Arial,sans-serif; font-weight:400; font-size:13px; line-height:20px; color:#535559; margin:0;">
+              <a href="mailto:mepstein@lucisystems.com" style="color:#2b9e80; text-decoration:underline;">mepstein@lucisystems.com</a> &nbsp;|&nbsp; <a href="https://lucisystems.com" style="color:#2b9e80; text-decoration:underline;">LUCIsystems.com</a>
+            </p>
+
+            <!-- Constant for every sender: environmental + privacy -->
+            <p style="font-family:'Space Grotesk','Segoe UI',system-ui,Arial,sans-serif; font-weight:400; font-size:11px; line-height:17px; color:#A6B0B6; margin:20px 0 0 0;">
+              <span style="color:#68E3BE;">&#9851;</span> &nbsp;Please consider the environment before printing this e-mail. &nbsp;Reduce &nbsp;|&nbsp; Reuse &nbsp;|&nbsp; Recycle
+            </p>
+            <p style="font-family:'Space Grotesk','Segoe UI',system-ui,Arial,sans-serif; font-weight:400; font-size:11px; line-height:17px; margin:6px 0 0 0;">
+              <a href="http://lucisystems.com/privacy-policy/" style="color:#A6B0B6; text-decoration:underline;">Email Privacy Policy</a>
+            </p>
+
+          </td>
+        </tr>
+      </table>
+
+    </td>
+  </tr>
+</table>
+<!-- =================== /LUCI EMAIL SIGNATURE MODULE =================== -->

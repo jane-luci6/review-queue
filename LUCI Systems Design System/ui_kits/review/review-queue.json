@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-09",
+  "updated": "2026-06-12",
   "publishNote": "Build + ./publish.sh. Bump reviewVersion + versionNote for new uploads (Teams + version history on site). Set due for first-time review. See teams-notifications-guide.txt.",
   "commentsApiUrl": "",
   "commentsApiNote": "Optional full URL if review page is on Webflow but API is on Netlify. Leave empty when the whole site is on Netlify.",
@@ -9,12 +9,12 @@
     {
       "title": "Messaging guide",
       "url": "messaging/messaging-guide.html",
-      "note": "Updated Jun 9, 2026"
+      "note": "Updated Jun 12, 2026"
     },
     {
       "title": "LUCI philosophy",
       "url": "messaging/philosophy.html",
-      "note": "Updated Jun 9, 2026"
+      "note": "Updated Jun 12, 2026"
     },
     {
       "title": "LUCI system diagram",
@@ -24,19 +24,43 @@
     {
       "title": "Personas",
       "url": "messaging/personas.html",
-      "note": "Updated Jun 9, 2026"
+      "note": "Updated Jun 12, 2026"
     }
   ],
-  "dueForReview": [
+  "inProgress": [
+    {
+      "id": "capabilities-doc",
+      "title": "Capabilities document",
+      "summary": "Post-demo PDF leave-behind — platform + Systems breakouts, proof, close. Draft badges still on pages.",
+      "reviewStatus": "In final stages",
+      "signOff": false,
+      "reviewVersion": 1,
+      "versionNote": "First portal preview — polishing copy, client logos, and contact block before send.",
+      "hubPreviewPath": "ui_kits/sales/capabilities-document.html",
+      "reviewBrief": {
+        "description": "LUCI's flagship sales capability overview — six US Letter pages for prospect meetings and post-demo follow-up.",
+        "reviewAsk": "structure, messaging, and visual direction. Not asking for final sign-off yet — still in final stages."
+      },
+      "versionHistory": [
+        {
+          "version": 1,
+          "published": "2026-06-12",
+          "note": "Portal preview — in final stages."
+        }
+      ],
+      "previewUrl": "sales/capabilities-document.html"
+    }
+  ],
+  "dueForReview": [],
+  "approvedAssets": [
     {
       "id": "signal-hub",
       "title": "The Signal · Newsletter Hub",
       "summary": "Newsletter hub — layout, featured issue, archive.",
+      "approved": "2026-06-12",
+      "note": "The Signal · Issue 01 — Mike approved Jun 12, 2026",
       "reviewVersion": 1,
-      "versionNote": "",
-      "due": "2026-06-11",
       "liveUrl": "https://www.lucisystems.com/the-signal/home",
-      "previewUrl": "",
       "hubPreviewPath": "ui_kits/newsletter/the-signal-hub.html",
       "reviewBrief": {
         "description": "The Signal hub is the customer-facing home for our newsletter—one stable place to find every issue as we publish.",
@@ -48,18 +72,15 @@
           "published": "2026-06-02",
           "note": ""
         }
-      ],
-      "group": "The Signal · Issue 01"
+      ]
     },
     {
       "id": "signal-issue-01",
       "title": "The Signal · Issue 01 (June 2026)",
       "summary": "Issue 01 — tone, Ameristar story, platform, team, Inside LUCI how-to.",
+      "approved": "2026-06-12",
       "reviewVersion": 1,
-      "versionNote": "",
-      "due": "2026-06-11",
       "liveUrl": "https://www.lucisystems.com/the-signal/issue-01",
-      "previewUrl": "",
       "hubPreviewPath": "ui_kits/newsletter/the-signal-issue-01-june-2026.html",
       "reviewBrief": {
         "description": "Issue 01 is the first full web edition of The Signal—welcome, field story, platform preview, team, Inside LUCI how-to, and services.",
@@ -71,17 +92,15 @@
           "published": "2026-06-02",
           "note": ""
         }
-      ],
-      "group": "The Signal · Issue 01"
+      ]
     },
     {
       "id": "newsletter-email-teaser",
       "title": "Newsletter email · The Signal Issue 01 teaser",
       "summary": "Inbox teaser — Issue 01 highlights, deep links, read-issue CTA. Footer tagline synced to Messaging Guide.",
+      "approved": "2026-06-12",
       "reviewVersion": 2,
       "versionNote": "Footer tagline updated to “The Orchestration Engine for Enterprise Multimedia” (Messaging Guide, Jun 9).",
-      "due": "2026-06-11",
-      "liveUrl": "",
       "previewUrl": "email/email-signal-issue-01-teaser.html",
       "hubPreviewPath": "ui_kits/email/email-signal-issue-01-teaser.html",
       "reviewBrief": {
@@ -99,16 +118,14 @@
           "published": "2026-06-09",
           "note": "Footer tagline synced to Messaging Guide."
         }
-      ],
-      "group": "The Signal · Issue 01"
-    }
-  ],
-  "approvedAssets": [
+      ]
+    },
     {
       "id": "case-study-ameristar",
       "title": "Case Study · Ameristar Council Bluffs",
       "summary": "Ameristar case study — narrative, results, CTA.",
-      "approved": "2026-06-10",
+      "approved": "2026-06-12",
+      "note": "Mike approved Jun 12, 2026",
       "previewUrl": "case-studies/ameristar-council-bluffs.html",
       "hubPreviewPath": "ui_kits/case-studies/ameristar-council-bluffs.html",
       "reviewBrief": {
@@ -147,12 +164,6 @@
       "hubPreviewPath": "ui_kits/website/website-strategy.html"
     },
     {
-      "id": "capabilities-doc",
-      "title": "Capabilities doc",
-      "note": "Sales capabilities overview — platform + Systems services.",
-      "target": "2026-07-01"
-    },
-    {
       "id": "budgetary-estimate-template",
       "title": "Budgetary estimate template",
       "note": "Standard budgetary estimate format for proposals.",
@@ -172,5 +183,5 @@
     }
   ],
   "finalized": [],
-  "messagingDocsUpdated": "2026-06-09"
+  "messagingDocsUpdated": "2026-06-12"
 }

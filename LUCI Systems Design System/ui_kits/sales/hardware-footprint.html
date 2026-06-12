@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>LUCI — The Hardware Footprint</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="capabilities-document.css">
+  <style>
+    /* ── Before/After hardware module (candidate cap-page for the capabilities doc) ──
+       Scoped here for review; promote to capabilities-document.css once approved. */
+    .cap-ba {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin-top: 22px;
+    }
+
+    .cap-ba__item { display: flex; flex-direction: column; }
+
+    .cap-ba__frame {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--navy-deep);
+      aspect-ratio: 3 / 2;
+    }
+
+    .cap-ba__frame img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Overlay label pill, top-left of each shot — legible on any image via dark scrim */
+    .cap-ba__tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      background: rgba(10, 22, 28, 0.78);
+      color: rgba(235, 245, 248, 0.92);
+      backdrop-filter: blur(2px);
+    }
+
+    /* "After" tag carries the mint accent — bright mint on a dark pill only */
+    .cap-ba__tag--after { color: var(--mint); }
+
+    .cap-ba__tag::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(235, 245, 248, 0.55);
+      flex: none;
+    }
+
+    .cap-ba__tag--after::before { background: var(--mint); }
+
+    .cap-ba__cap {
+      margin-top: 12px;
+      font-size: 12.5px;
+      line-height: 1.5;
+      color: var(--ink);
+    }
+
+    .cap-ba__cap strong { color: var(--ink-strong); font-weight: 700; }
+
+    @media print {
+      .cap-ba__frame, .cap-ba__tag { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body class="cap-doc-body">
+  <p class="cap-hub-link"><a href="../../index.html">&larr; Design Hub</a> &middot; Candidate page for the Capabilities Document &middot; Print or Save as PDF (US Letter)</p>
+
+  <article class="cap-doc">
+
+    <!-- Candidate page · The hardware footprint -->
+    <section class="cap-page">
+      <span class="cap-draft-badge">Draft</span>
+
+      <div class="cap-page__head">
+        <p class="cap-kicker">The hardware</p>
+        <p class="cap-statement"><strong>This is everything LUCI puts in your rack.</strong> One standardized, orchestrated footprint replaces the closet of disconnected boxes that grows&mdash;and tangles&mdash;every time a new system is added.</p>
+      </div>
+
+      <div class="cap-ba">
+        <figure class="cap-ba__item">
+          <div class="cap-ba__frame">
+            <span class="cap-ba__tag">Typical A/V rack</span>
+            <img src="assets/hardware-before-ratsnest.png" alt="A typical audio/video rack: mismatched boxes and a tangle of cables" width="819" height="546">
+          </div>
+          <figcaption class="cap-ba__cap">Mismatched gear and a <strong>tangle of cabling</strong> &mdash; a rat's nest that grows with every system bolted on. Hard to read, harder to service.</figcaption>
+        </figure>
+
+        <figure class="cap-ba__item">
+          <div class="cap-ba__frame">
+            <span class="cap-ba__tag cap-ba__tag--after">With LUCI</span>
+            <img src="assets/hardware-after-lucirack.png" alt="The LUCI rack: a compact, clean, orchestrated hardware footprint" width="1024" height="683">
+          </div>
+          <figcaption class="cap-ba__cap">A <strong>compact, standardized footprint</strong> &mdash; clean cabling, room to spare, and a rack your team can actually read at a glance.</figcaption>
+        </figure>
+      </div>
+
+      <div class="cap-takeaway">
+        <strong>Less hardware, less heat, less to fail.</strong> LUCI consolidates the systems running your property into a single orchestrated rack&mdash;tangible proof that the platform isn't just software, it's a cleaner install your facilities team will thank you for.
+      </div>
+
+      <p class="cap-note">Concept renders &mdash; swap for real LUCI product/install photography when available. Labels and framing are brand-styled and will carry over to the final shots.</p>
+
+      <div class="cap-foot">
+        <span>LUCI Systems &middot; Capabilities</span>
+        <span class="cap-foot__page">The hardware footprint</span>
+      </div>
+    </section>
+
+  </article>
+</body>
+</html>

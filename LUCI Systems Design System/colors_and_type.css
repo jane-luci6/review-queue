@@ -115,13 +115,12 @@
 
 /* ─── TYPOGRAPHY TOKENS ─────────────────────────────────────────── */
 :root {
-  --font-display:   'Syncopate', 'Arial Black', sans-serif;
+  --font-display:   'Syncopate', 'Arial Black', sans-serif; /* accent only — CTAs, hero billboards; see luci-visual-design.mdc */
   --font-body:      'Space Grotesk', 'Trebuchet MS', sans-serif;
+  --font-heading:   'Space Grotesk', 'Trebuchet MS', sans-serif; /* default for headers in docs, web, sales */
   --font-secondary: 'Montserrat', sans-serif;
 
-  /* Display / Header scale — Syncopate Bold, always uppercase.
-     Each role exposes individual size + line-height tokens.
-     Apply via the .luci-* helper classes below, or compose manually. */
+  /* Legacy display scale — Syncopate (.luci-h*, .luci-hero). New work: Space Grotesk via --font-heading. */
   --text-hero-size:     55px;  --text-hero-lh:     1.0;
   --text-h1-size:       64px;  --text-h1-lh:       1.0;
   --text-h2-size:       36px;  --text-h2-lh:       44px;

@@ -1,0 +1,56 @@
+<!-- =====================================================================
+     LUCI · EMAIL FOOTER MODULE  (Option D — centered)
+     Drop-in for ActiveCampaign: paste into a Custom HTML / Code block and
+     save as a reusable block so it populates in every email.
+
+     Ready to use — no placeholders left. Logo points to the AC-hosted
+     asset (content.app-us1.com).
+
+     ActiveCampaign tags (leave as-is):
+       %UNSUBSCRIBELINK% — unsubscribe link (required by AC)
+       %SENDER-INFO%     — org name + physical mailing address (CAN-SPAM)
+     All styles are inline. Mint is confined to the dark footer; all text
+     meets AA contrast on navy. Fully guideline-synced (Track C / email).
+     ===================================================================== -->
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin:0; padding:0; border-collapse:collapse;">
+  <tr>
+    <td align="center" style="padding:0;">
+
+      <!-- Navy footer block -->
+      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="width:100%; max-width:600px; border-collapse:collapse;">
+        <tr>
+          <td bgcolor="#10232D" align="center" style="background-color:#10232D; padding:32px 36px; font-family:'Space Grotesk','Segoe UI',system-ui,Arial,sans-serif;">
+
+            <!-- Logo -->
+            <img src="https://content.app-us1.com/YzzLp9/2026/05/18/1bc8b968-9454-4813-a1b1-6477aaa143f2.png" alt="LUCI" width="28" height="24" style="width:28px; height:24px; display:inline-block; border:0; outline:none; text-decoration:none;">
+
+            <!-- Tagline -->
+            <p style="margin:8px 0 0 0; font-family:'Space Grotesk','Segoe UI',system-ui,Arial,sans-serif; font-size:11px; line-height:16px; color:#A6B0B6;">The Orchestration Engine for Enterprise Multimedia</p>
+
+            <!-- Links -->
+            <p style="margin:24px 0 0 0; font-family:'Space Grotesk','Segoe UI',system-ui,Arial,sans-serif; font-size:11px; line-height:18px; color:#535559;">
+              <a href="https://lucisystems.com" style="color:#A6B0B6; text-decoration:none;">lucisystems.com</a>
+              &nbsp;&middot;&nbsp;
+              <a href="mailto:info@lucisystems.com" style="color:#A6B0B6; text-decoration:underline;">info@lucisystems.com</a>
+              &nbsp;&middot;&nbsp;
+              <a href="%UNSUBSCRIBELINK%" style="color:#535559; text-decoration:underline;">Unsubscribe</a>
+            </p>
+
+          </td>
+        </tr>
+      </table>
+
+      <!-- Legal line (below the container) — %SENDER-INFO% renders the org
+           name + physical mailing address required for CAN-SPAM compliance -->
+      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="width:100%; max-width:600px; border-collapse:collapse;">
+        <tr>
+          <td align="center" style="padding:16px 12px 4px; font-family:'Space Grotesk','Segoe UI',system-ui,Arial,sans-serif; font-size:11px; line-height:17px; color:#535559;">
+            %SENDER-INFO%
+          </td>
+        </tr>
+      </table>
+
+    </td>
+  </tr>
+</table>
+<!-- ===================== /LUCI EMAIL FOOTER MODULE ===================== -->

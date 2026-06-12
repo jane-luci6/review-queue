@@ -154,13 +154,12 @@
       text-align: left;
       border: none;
       background: transparent;
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 11px;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 13px;
+      letter-spacing: 0;
       color: var(--color-loan-shark);
-      padding: 10px var(--space-4);
+      padding: 9px var(--space-4);
       cursor: pointer;
       border-left: 3px solid transparent;
       transition: color 0.15s, background 0.15s, border-color 0.15s;
@@ -198,11 +197,10 @@
     .hub-accordion__trigger:hover { background: rgba(104, 227, 190, 0.04); }
 
     .hub-accordion__label {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0;
       color: var(--color-loan-shark);
     }
 
@@ -244,10 +242,161 @@
     .hub-accordion.is-open .hub-accordion__panel { display: block; }
 
     .hub-accordion__panel .hub-nav__link {
-      font-size: 10px;
-      padding: 8px var(--space-4) 8px calc(var(--space-4) + 6px);
-      letter-spacing: 0.03em;
+      font-size: 13px;
+      padding: 7px var(--space-4) 7px calc(var(--space-4) + 6px);
+      letter-spacing: 0;
     }
+
+    .hub-accordion__subheading {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-immersive-slate);
+      padding: 12px var(--space-4) 3px calc(var(--space-4) + 6px);
+      user-select: none;
+    }
+
+    /* Nested sub-accordion (second level) */
+    .hub-sub-accordion { }
+
+    .hub-sub-accordion__trigger {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      padding: 8px var(--space-4) 8px calc(var(--space-4) + 6px);
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      text-align: left;
+      gap: 6px;
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-loan-shark);
+      transition: color 0.15s, background 0.15s;
+    }
+
+    .hub-sub-accordion__trigger:hover {
+      color: var(--fg-on-dark);
+      background: rgba(104, 227, 190, 0.04);
+    }
+
+    .hub-sub-accordion.is-open .hub-sub-accordion__trigger {
+      color: var(--fg-on-dark);
+    }
+
+    .hub-sub-accordion__chevron {
+      flex-shrink: 0;
+      width: 6px;
+      height: 6px;
+      border-right: 1.5px solid currentColor;
+      border-bottom: 1.5px solid currentColor;
+      transform: rotate(-45deg);
+      transition: transform 0.2s;
+      margin-top: -1px;
+    }
+
+    .hub-sub-accordion.is-open .hub-sub-accordion__chevron {
+      transform: rotate(45deg);
+      margin-top: 1px;
+    }
+
+    .hub-sub-accordion__panel {
+      display: none;
+      padding-bottom: var(--space-1);
+    }
+
+    .hub-sub-accordion.is-open .hub-sub-accordion__panel {
+      display: block;
+    }
+
+    .hub-sub-accordion__panel .hub-nav__link {
+      padding-left: calc(var(--space-4) + 20px);
+      font-size: 12px;
+    }
+
+    /* Session notes widget */
+    .hub-session {
+      border-left: 3px solid var(--color-high-limit-mint);
+      padding: var(--space-4) var(--space-5);
+      margin-bottom: var(--space-6);
+    }
+
+    .hub-session__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--space-2);
+    }
+
+    .hub-session__label {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-high-limit-mint);
+    }
+
+    .hub-session__date {
+      font-size: 12px;
+      color: var(--fg-subdued);
+    }
+
+    .hub-session__text {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--fg-on-light);
+      white-space: pre-wrap;
+      min-height: 1.6em;
+    }
+
+    .hub-session__text:empty::before {
+      content: 'Nothing recorded yet — click Edit to add a note.';
+      color: var(--fg-subdued);
+      font-style: italic;
+    }
+
+    .hub-session__textarea {
+      display: none;
+      width: 100%;
+      min-height: 80px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--fg-on-light);
+      background: rgba(255,255,255,0.6);
+      border: 1px solid var(--color-integrayted);
+      padding: var(--space-3);
+      resize: vertical;
+      outline: none;
+    }
+
+    .hub-session__textarea:focus {
+      border-color: var(--color-high-limit-mint);
+    }
+
+    .hub-session__actions {
+      display: flex;
+      gap: var(--space-3);
+      margin-top: var(--space-3);
+    }
+
+    .hub-session__btn {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 600;
+      border: none;
+      background: none;
+      cursor: pointer;
+      padding: 4px 0;
+      color: var(--accent-primary-dark);
+      text-decoration: underline;
+    }
+
+    .hub-session__btn:hover { color: var(--fg-on-light); }
 
     .hub-nav__footer {
       padding: var(--space-4);
@@ -270,7 +419,7 @@
       height: 100vh;
       display: flex;
       flex-direction: column;
-      background: var(--bg-light);
+      background: #F5F7F9;
       min-width: 0;
     }
 
@@ -286,12 +435,11 @@
     }
 
     .hub-toolbar__title {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 12px;
-      text-transform: uppercase;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 13px;
       color: var(--fg-on-light);
-      letter-spacing: 0.06em;
+      letter-spacing: 0;
     }
 
     .hub-toolbar__path {
@@ -301,11 +449,9 @@
     }
 
     .hub-toolbar__open {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 12px;
       color: var(--accent-primary-dark);
       text-decoration: none;
       white-space: nowrap;
@@ -332,87 +478,194 @@
       position: absolute;
       inset: 0;
       overflow-y: auto;
-      padding: var(--space-7) var(--space-8) var(--space-8);
+      padding: var(--space-7) var(--space-7) var(--space-8);
       display: none;
     }
 
     .hub-overview.is-visible { display: block; }
 
+    .hub-overview__inner {
+      max-width: 780px;
+    }
+
     .hub-overview .luci-h2 {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 22px;
       color: var(--fg-on-light);
-      margin-bottom: var(--space-3);
+      margin-bottom: var(--space-2);
+      letter-spacing: -0.01em;
     }
 
     .hub-overview__lede {
-      font-size: var(--text-body-md-size);
-      line-height: var(--text-body-md-lh);
+      font-size: 14px;
+      line-height: 1.6;
       color: var(--fg-subdued);
-      max-width: 40rem;
-      margin-bottom: var(--space-7);
+      max-width: 52ch;
+      margin-bottom: var(--space-6);
     }
 
     .hub-overview__section {
-      margin-bottom: var(--space-7);
+      margin-bottom: var(--space-6);
     }
 
     .hub-overview__heading {
-      font-family: var(--font-display);
-      font-weight: 700;
+      font-family: var(--font-body);
+      font-weight: 600;
       font-size: 11px;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--fg-on-light);
-      margin-bottom: var(--space-4);
-      padding-bottom: var(--space-3);
-      border-bottom: 1px solid var(--color-integrayted);
+      color: var(--fg-subdued);
+      margin-bottom: 0;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(16, 35, 45, 0.1);
     }
 
     .hub-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: var(--space-4);
+      display: flex;
+      flex-direction: column;
     }
 
     .hub-card {
-      background: rgba(245, 248, 250, 0.9);
-      border: 1px solid var(--color-integrayted);
-      padding: var(--space-4);
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-5);
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(16, 35, 45, 0.06);
+      border-left: 3px solid transparent;
       cursor: pointer;
-      transition: border-color 0.15s, box-shadow 0.15s;
       text-align: left;
+      background: transparent;
+      border-top: none;
+      border-right: none;
+      transition: border-left-color 0.15s, background 0.15s;
+      width: 100%;
     }
 
     .hub-card:hover {
-      border-color: var(--color-high-limit-mint);
-      box-shadow: 0 4px 16px rgba(16, 35, 45, 0.08);
+      border-left-color: var(--color-high-limit-mint);
+      background: rgba(104, 227, 190, 0.04);
     }
 
     .hub-card__label {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 11px;
-      text-transform: uppercase;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 14px;
       color: var(--fg-on-light);
-      margin-bottom: var(--space-2);
+      flex-shrink: 0;
+      min-width: 220px;
+      max-width: 280px;
     }
 
     .hub-card__desc {
       font-size: 13px;
       color: var(--fg-subdued);
-      line-height: 1.45;
+      line-height: 1.5;
     }
 
-    .hub-overview__footnote {
+    /* Recent work items */
+    .hub-recent { margin-bottom: var(--space-6); }
+
+    .hub-recent__item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-4);
+      padding: 14px 12px 14px 15px;
+      border-left: 3px solid var(--color-high-limit-mint);
+      border-bottom: 1px solid rgba(16, 35, 45, 0.06);
+      cursor: pointer;
+      background: transparent;
+      text-align: left;
+      width: 100%;
+      border-top: none;
+      border-right: none;
+      transition: background 0.15s;
+    }
+
+    .hub-recent__item:hover { background: rgba(104, 227, 190, 0.05); }
+    .hub-recent__item--static { cursor: default; }
+    .hub-recent__item--static:hover { background: transparent; }
+
+    .hub-recent__meta { flex: 1; min-width: 0; }
+
+    .hub-recent__title {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--fg-on-light);
+      margin-bottom: 4px;
+    }
+
+    .hub-recent__note {
       font-size: 13px;
       color: var(--fg-subdued);
-      margin-top: var(--space-6);
-      padding-top: var(--space-5);
-      border-top: 1px solid var(--color-integrayted);
+      line-height: 1.55;
     }
 
-    .hub-overview__footnote strong {
+    .hub-recent__status {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      background: rgba(104, 227, 190, 0.12);
+      color: var(--accent-primary-dark);
+      flex-shrink: 0;
+      margin-top: 2px;
+      white-space: nowrap;
+    }
+
+    .hub-recent__status--wip {
+      background: rgba(255, 193, 7, 0.12);
+      color: #8a6800;
+    }
+
+    /* Open questions */
+    .hub-questions { margin-bottom: var(--space-6); }
+
+    .hub-ov__section-heading {
+      font-family: var(--font-body);
       font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--fg-subdued);
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(16, 35, 45, 0.1);
+      margin-bottom: 0;
+    }
+
+    /* Tab bar */
+    .hub-tabs {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--color-integrayted);
+      background: var(--bg-surface);
+      flex-shrink: 0;
+      padding: 0 var(--space-5);
+    }
+
+    .hub-tab {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--fg-subdued);
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      padding: 10px 16px;
+      cursor: pointer;
+      margin-bottom: -1px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .hub-tab:hover { color: var(--fg-on-light); }
+
+    .hub-tab.is-active {
       color: var(--fg-on-light);
+      font-weight: 600;
+      border-bottom-color: var(--color-high-limit-mint);
     }
 
     .hub-preview-fallback {
@@ -473,20 +726,26 @@
       <span class="hub-toolbar__path" id="hub-path">—</span>
       <a class="hub-toolbar__open" id="hub-open" href="#" target="_blank" rel="noopener" hidden>Open in tab</a>
     </header>
+    <nav class="hub-tabs" id="hub-tabs" aria-label="Main tabs">
+      <button type="button" class="hub-tab is-active" data-tab="overview">Work in progress</button>
+      <button type="button" class="hub-tab" data-tab="review">Review queue</button>
+    </nav>
     <div class="hub-stage">
+      <!-- Overview tab -->
       <section class="hub-overview is-visible" id="hub-overview" aria-label="Overview">
-        <h2 class="luci-h2">Work in progress</h2>
-        <p class="hub-overview__lede">
-          Click any card to preview on the right. Stakeholders use the
-          <strong>Stakeholder review</strong> accordion — queue for Mike/Nick; edit <code>review-queue.json</code> in Cursor, then rebuild.
-          Use the sidebar for asset previews (emails, newsletter, design system).
-        </p>
-        <div id="hub-work-mount"></div>
-        <p class="hub-overview__footnote">
-          <strong>Design system</strong> specimens (colors, type, CTAs) live in the
-          <strong>Design system</strong> accordion in the sidebar.
-        </p>
+        <div class="hub-overview__inner">
+          <h2 class="luci-h2">Work in progress</h2>
+          <p class="hub-overview__lede">Current work, open questions, and where we left off.</p>
+          <div id="hub-session-notes"></div>
+          <div id="hub-recent-work"></div>
+          <div id="hub-open-questions"></div>
+        </div>
       </section>
+      <!-- Review queue tab -->
+      <section class="hub-overview" id="hub-review-panel" aria-label="Review queue" style="padding:0;">
+        <iframe src="ui_kits/review/stakeholder-review.html" title="Review queue" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allow="popups; popups-to-escape-sandbox"></iframe>
+      </section>
+      <!-- Asset preview -->
       <iframe id="hub-frame" title="Asset preview" hidden allow="popups; popups-to-escape-sandbox"></iframe>
       <div class="hub-preview-fallback" id="hub-preview-fallback" hidden>
         <div>
@@ -498,75 +757,110 @@
   </main>
 
   <script>
-    /** Add monthly newsletter issues here (newest first). */
     const NAV_CONFIG = {
-      messaging: {
-        label: 'Messaging & philosophy',
+      sales: {
+        label: 'Sales',
         defaultOpen: true,
         items: [
-          { label: 'Messaging guide', src: 'ui_kits/review/messaging/messaging-guide.html', desc: 'Canonical copy — includes LUCI System diagram in The Offering' },
-          { label: 'LUCI system diagram', src: 'ui_kits/review/messaging/luci-system-diagram.html', desc: 'Two-disk perspective diagram + flat working canvas' },
-          { label: 'Floormap icon preview', src: 'ui_kits/review/messaging/floormap-icon-preview.html', desc: 'AutoCAD-style icon options A/B for Standard AV disk' },
-          { label: 'LUCI philosophy', src: 'ui_kits/review/messaging/philosophy.html', desc: 'Brand voice & worldview' },
-          { label: 'Personas', src: 'ui_kits/review/messaging/personas.html', desc: 'Buyer functions — gaming & hospitality' },
+          { label: 'Capabilities document', src: 'ui_kits/sales/capabilities-document.html', desc: 'WIP · PDF-first (9 pages) · post-demo leave-behind' },
         ],
       },
-      review: {
-        label: 'Stakeholder review',
+      emails: {
+        label: 'Customer emails',
         defaultOpen: true,
         items: [
-          { label: 'Homepage prototype (→ review queue)', src: 'ui_kits/review/resources-hub-home-prototype.html', desc: 'Netlify / would redirect to single review page' },
-          { label: 'Stakeholder Review (Mike & Nick)', src: 'ui_kits/review/stakeholder-review.html', desc: 'Queue, previews, comments — publish to Netlify' },
-          { label: 'Review · Webflow embed', src: 'ui_kits/review/stakeholder-review-webflow-embed.html', desc: 'Paste into lucisystems.com/review' },
-          { label: 'Review queue (JSON)', src: 'ui_kits/review/review-queue.json', desc: 'Edit in Cursor — due / upcoming / finalized' },
-          { label: 'Review comments (JSON)', src: 'ui_kits/review/review-comments.json', desc: 'Comments shown on site after rebuild' },
+          {
+            subheading: 'Templates & references',
+            subitems: [
+              { label: 'Master template', src: 'ui_kits/email/master-template.html', desc: 'Shared layout' },
+              { label: 'Subject lines & preheaders', src: 'ui_kits/email/email-subjects-preheaders.html', desc: 'Reference for all 10 emails — enter in ActiveCampaign per send' },
+              { label: 'Footer module (AC)', src: 'ui_kits/email/footer-module-activecampaign.html', desc: 'Reusable footer · %UNSUBSCRIBELINK% + %SENDER-INFO%' },
+            ],
+          },
+          {
+            subheading: 'Journey emails',
+            subitems: [
+              { label: '1 · Welcome', src: 'ui_kits/email/email-1a-welcome.html', desc: 'Champion & tech implementor' },
+              { label: '2 · Pre-kickoff', src: 'ui_kits/email/email-2-pre-kickoff.html', desc: 'Kickoff reminder' },
+              { label: '3 · Install confirmed', src: 'ui_kits/email/email-3-install-confirmed.html', desc: 'Onsite confirmed' },
+              { label: '4 · Pre-install', src: 'ui_kits/email/email-4-pre-install.html', desc: 'One week out' },
+              { label: '5 · Go live', src: 'ui_kits/email/email-5-go-live.html', desc: 'LUCI is live' },
+              { label: '6 · Survey', src: 'ui_kits/email/email-6-survey.html', desc: 'Customer survey' },
+              { label: '7 · Signal welcome', src: 'ui_kits/email/email-7-signal-welcome.html', desc: 'Newsletter opt-in' },
+              { label: '8 · 30-day check-in', src: 'ui_kits/email/email-8-30day-checkin.html', desc: '30 days live' },
+              { label: '9 · 60-day check-in', src: 'ui_kits/email/email-9-60day-checkin.html', desc: 'Field activation' },
+              { label: '10 · 90-day check-in', src: 'ui_kits/email/email-10-90day-checkin.html', desc: '90 days live' },
+            ],
+          },
+        ],
+      },
+      messaging: {
+        label: 'Messaging & brand',
+        defaultOpen: false,
+        items: [
+          {
+            subheading: 'Messaging & strategy',
+            subitems: [
+              { label: 'Messaging guide', src: 'ui_kits/review/messaging/messaging-guide.html', desc: 'Canonical copy — includes LUCI System diagram' },
+              { label: 'LUCI philosophy', src: 'ui_kits/review/messaging/philosophy.html', desc: 'Brand voice & worldview' },
+              { label: 'Personas', src: 'ui_kits/review/messaging/personas.html', desc: 'Buyer functions — gaming & hospitality' },
+            ],
+          },
+          {
+            subheading: 'Images & diagrams',
+            subitems: [
+              { label: 'LUCI system diagram (V3)', src: 'ui_kits/review/messaging/luci-system-diagram.html', desc: 'Two-disk perspective diagram V3' },
+              { label: 'Embedded Operation orbit', src: 'ui_kits/review/messaging/embedded-operation-orbit.html', desc: 'Reusable diagram — one team, six services · SVG + PNG' },
+            ],
+          },
         ],
       },
       newsletter: {
         label: 'The Signal',
         defaultOpen: false,
         items: [
-          { label: 'Newsletter Hub · /newsletter', src: 'ui_kits/newsletter/the-signal-hub.html', desc: 'Landing page — issue index' },
-          { label: 'Hub · Webflow embed (recommended)', src: 'ui_kits/newsletter/the-signal-hub-webflow-embed.html', desc: 'Single Embed block — shows in Designer' },
-          { label: 'Hub · Webflow head code', src: 'ui_kits/newsletter/the-signal-hub-webflow-head.html', desc: 'Paste into Webflow <head>' },
-          { label: 'Hub · Webflow body code', src: 'ui_kits/newsletter/the-signal-hub-webflow-body.html', desc: 'Paste before </body>' },
-          { label: 'Jun 2026 · Issue 01 (web)', src: 'ui_kits/newsletter/the-signal-issue-01-june-2026.html', desc: 'Current draft — full copy' },
-          { label: 'Issue 01 · Webflow head code', src: 'ui_kits/newsletter/the-signal-issue-01-webflow-head.html', desc: 'Paste into Webflow <head>' },
-          { label: 'Issue 01 · Webflow body code', src: 'ui_kits/newsletter/the-signal-issue-01-webflow-body.html', desc: 'Paste before </body>' },
-          { label: 'Issue 01 · Webflow embed', src: 'ui_kits/newsletter/the-signal-issue-01-webflow-embed.html', desc: 'Single Embed block — shows in Designer' },
-          { label: '⚖︎ Design comparison (boxy vs sharp vs soft)', src: 'ui_kits/newsletter/the-signal-design-comparison.html', desc: 'Side-by-side treatments for review' },
-          { label: 'Web · Blank template', src: 'ui_kits/newsletter/the-signal-web-template.html', desc: 'Issue 01 structure — articles, callouts, TOC, color rhythm' },
-          { label: 'Email · Issue 01 teaser', src: 'ui_kits/email/email-signal-issue-01-teaser.html', desc: 'Inbox teaser — highlights + CTA to full issue' },
+          {
+            subheading: 'Jun 2026 · Issue 01',
+            subitems: [
+              { label: 'Issue 01 (web)', src: 'ui_kits/newsletter/the-signal-issue-01-june-2026.html', desc: 'Full web issue — current draft' },
+              { label: 'Issue 01 · Email teaser', src: 'ui_kits/email/email-signal-issue-01-teaser.html', desc: 'Inbox teaser — highlights + CTA' },
+              { label: 'Issue 01 · Webflow embed', src: 'ui_kits/newsletter/the-signal-issue-01-webflow-embed.html', desc: 'Single Embed block' },
+              { label: 'Issue 01 · Head code', src: 'ui_kits/newsletter/the-signal-issue-01-webflow-head.html', desc: 'Paste into Webflow <head>' },
+              { label: 'Issue 01 · Body code', src: 'ui_kits/newsletter/the-signal-issue-01-webflow-body.html', desc: 'Paste before </body>' },
+            ],
+          },
+          {
+            subheading: 'Hub',
+            subitems: [
+              { label: 'Newsletter hub · /newsletter', src: 'ui_kits/newsletter/the-signal-hub.html', desc: 'Landing page — issue index' },
+              { label: 'Hub · Webflow embed', src: 'ui_kits/newsletter/the-signal-hub-webflow-embed.html', desc: 'Single Embed block' },
+            ],
+          },
+          {
+            subheading: 'Reference',
+            subitems: [
+              { label: 'Web blank template', src: 'ui_kits/newsletter/the-signal-web-template.html', desc: 'Issue structure template for new issues' },
+            ],
+          },
         ],
       },
-      emails: {
-        label: 'Customer emails',
+      review: {
+        label: 'Stakeholder review',
         defaultOpen: false,
         items: [
-          { label: 'Master template', src: 'ui_kits/email/master-template.html', desc: 'Shared layout' },
-          { label: '1 · Welcome', src: 'ui_kits/email/email-1a-welcome.html', desc: 'Champion & tech implementor' },
-          { label: '2 · Pre-kickoff', src: 'ui_kits/email/email-2-pre-kickoff.html', desc: 'Kickoff reminder' },
-          { label: '3 · Install confirmed', src: 'ui_kits/email/email-3-install-confirmed.html', desc: 'Onsite confirmed' },
-          { label: '4 · Pre-install', src: 'ui_kits/email/email-4-pre-install.html', desc: 'One week out' },
-          { label: '5 · Go live', src: 'ui_kits/email/email-5-go-live.html', desc: 'LUCI is live' },
-          { label: '6 · Survey', src: 'ui_kits/email/email-6-survey.html', desc: 'Customer survey' },
-          { label: '7 · Signal welcome', src: 'ui_kits/email/email-7-signal-welcome.html', desc: 'Newsletter opt-in' },
-          { label: '8 · 30-day check-in', src: 'ui_kits/email/email-8-30day-checkin.html', desc: '30 days live' },
-          { label: '9 · 60-day check-in', src: 'ui_kits/email/email-9-60day-checkin.html', desc: 'Field activation' },
-          { label: '10 · 90-day check-in', src: 'ui_kits/email/email-10-90day-checkin.html', desc: '90 days live' },
+          { label: 'Stakeholder review (Mike & Nick)', src: 'ui_kits/review/stakeholder-review.html', desc: 'Queue, previews, comments — publish to Netlify' },
+          { label: 'Review · Webflow embed', src: 'ui_kits/review/stakeholder-review-webflow-embed.html', desc: 'Paste into lucisystems.com/review' },
+          { label: 'Review queue (JSON)', src: 'ui_kits/review/review-queue.json', desc: 'Edit in Cursor — due / upcoming / finalized' },
+          { label: 'Review comments (JSON)', src: 'ui_kits/review/review-comments.json', desc: 'Comments shown on site after rebuild' },
         ],
       },
       website: {
         label: 'Website',
         defaultOpen: false,
         items: [
-          { label: 'Website strategy brief', src: 'ui_kits/website/website-strategy-brief.html', desc: 'Leadership review — purpose, positioning, Navless experience layer' },
-          { label: 'Website strategy (outline)', src: 'ui_kits/website/website-strategy.html', desc: 'Phase 2 · IA, two pillars, Services, variable reduction, proof rules' },
-          { label: 'Website IA wireframe', src: 'ui_kits/website/website-ia-wireframe.html', desc: 'Phase 2 · Simplified nav + draft copy mapped to each section' },
+          { label: 'Strategy brief', src: 'ui_kits/website/website-strategy-brief.html', desc: 'Leadership review — purpose, positioning' },
+          { label: 'IA wireframe', src: 'ui_kits/website/website-ia-wireframe.html', desc: 'Simplified nav + draft copy per section' },
           { label: 'Messaging Framework V6 (reference)', src: 'ui_kits/website/LUCI_Messaging_Framework_V6-reference.html', desc: 'Nick brain dump — not canonical' },
-          { label: 'Two-pillar diagram', src: 'assets/diagrams/luci-two-pillars.png', desc: 'LUCI + Systems visual' },
-          { label: 'Newsletter Hub · /newsletter', src: 'ui_kits/newsletter/the-signal-hub.html', desc: 'The Signal landing page' },
-          { label: 'Microsite', src: 'ui_kits/website/index.html', desc: 'Full prototype' },
         ],
       },
       caseStudies: {
@@ -580,16 +874,31 @@
         label: 'Design system',
         defaultOpen: false,
         items: [
-          { label: 'Colors — neutrals', src: 'preview/colors-neutrals.html', desc: '' },
-          { label: 'Colors — brand', src: 'preview/colors-brand.html', desc: '' },
-          { label: 'Colors — semantic', src: 'preview/colors-semantic.html', desc: '' },
-          { label: 'Type — headers', src: 'preview/type-headers.html', desc: '' },
-          { label: 'Type — body', src: 'preview/type-body.html', desc: '' },
-          { label: 'Spacing & layout', src: 'preview/spacing.html', desc: '' },
-          { label: 'CTAs', src: 'preview/ctas.html', desc: '' },
-          { label: 'Cards', src: 'preview/cards.html', desc: '' },
-          { label: 'Logos', src: 'preview/brand-logos.html', desc: '' },
-          { label: 'Patterns', src: 'preview/brand-patterns.html', desc: '' },
+          {
+            subheading: 'Colors',
+            subitems: [
+              { label: 'Neutrals', src: 'preview/colors-neutrals.html', desc: '' },
+              { label: 'Brand', src: 'preview/colors-brand.html', desc: '' },
+              { label: 'Semantic', src: 'preview/colors-semantic.html', desc: '' },
+            ],
+          },
+          {
+            subheading: 'Typography',
+            subitems: [
+              { label: 'Headers', src: 'preview/type-headers.html', desc: '' },
+              { label: 'Body', src: 'preview/type-body.html', desc: '' },
+            ],
+          },
+          {
+            subheading: 'Components',
+            subitems: [
+              { label: 'Spacing & layout', src: 'preview/spacing.html', desc: '' },
+              { label: 'CTAs', src: 'preview/ctas.html', desc: '' },
+              { label: 'Cards', src: 'preview/cards.html', desc: '' },
+              { label: 'Logos', src: 'preview/brand-logos.html', desc: '' },
+              { label: 'Patterns', src: 'preview/brand-patterns.html', desc: '' },
+            ],
+          },
         ],
       },
       source: {
@@ -600,6 +909,51 @@
         ],
       },
     };
+
+    /** Update these 2-3 items each session to reflect current work. */
+    const RECENT_WORK = [
+      {
+        label: 'Field Activation Guide',
+        src: null,
+        status: 'Copy done',
+        note: 'Copy is finished. Next: design the guide, then route for review. Needed before sending the 30/60/90-day emails to Ameristar Council Bluffs.',
+      },
+      {
+        label: 'Capabilities document',
+        src: 'ui_kits/sales/capabilities-document.html',
+        status: 'WIP',
+        note: '9-page PDF-first rebuild. Argument-led structure and copy complete. Page 4 orbit fixed — even 60° node spacing pushes the corner icons toward the sides so labels clear the ring. Design system canonized into the sales-document template + rule. TODO (Mike): work up a usable version of the application-guide image — may go in this doc under "The Orchestration Platform". If added, the current page 3 shifts down — but leave page 3 itself unchanged.',
+      },
+      {
+        label: 'Customer journey emails (1–10)',
+        src: 'ui_kits/email/email-3-install-confirmed.html',
+        status: 'Updated',
+        note: 'Signatures restored inline. Mint accent bar added top and bottom. Footer gap fixed (outer wrapper padding removed). Environmental line removed from all emails.',
+      },
+      {
+        label: 'Design hub',
+        src: null,
+        status: 'Updated',
+        note: 'Two-level nested nav, all-caps removed, "Where we left off" widget added, overview page redesigned, Review Queue tab added.',
+      },
+    ];
+
+    const OPEN_QUESTIONS_KEY = 'luci-hub-open-questions';
+    const OPEN_QUESTIONS_DEFAULT = `• Application guide image — work up a usable version TODAY (Mike); may go in the capabilities doc under "The Orchestration Platform"
+• Field Activation Guide — copy done; now needs design + review (needed before sending 30/60/90 day emails to Ameristar Council Bluffs)
+• FAQ document — pair with Field Activation Guide
+• Capabilities document — design polish and page-break tuning still needed
+• Budget estimate generator — template design + form + PDF export`;
+
+    const SESSION_NOTE_KEY = 'luci-hub-session-note';
+    const SESSION_NOTE_DEFAULT = `Updated Jun 12.
+
+Capabilities doc — Page 4 orbit FIXED: spacing the six nodes evenly (60° apart) pushed the corner icons toward the sides so the labels clear the ring. Pages 2 & 3 already balanced. Doc is in good shape.
+
+Sales design system CANONIZED: sales-document.css (doc- prefix) + _template-sales-document.html + the luci-sales-document-system rule now capture the spine, components, and design decisions so new sales assets don't start from scratch.
+
+Field Activation Guide — copy finished; being designed in a second tab from the new template. Still needs review before the 30/60/90-day emails go to Ameristar Council Bluffs.`;
+    const SESSION_NOTE_DEFAULT_DATE = 'Jun 12, 2026';
 
     const frame = document.getElementById('hub-frame');
     const previewFallback = document.getElementById('hub-preview-fallback');
@@ -643,18 +997,52 @@
       return btn;
     }
 
+    function allLeafItems(group) {
+      const leaves = [];
+      group.items.forEach((item) => {
+        if (item.subitems) leaves.push(...item.subitems);
+        else if (!item.subheading) leaves.push(item);
+      });
+      return leaves;
+    }
+
+    function createSubAccordion(item, parentLabel) {
+      const el = document.createElement('div');
+      el.className = 'hub-sub-accordion';
+
+      const trigger = document.createElement('button');
+      trigger.type = 'button';
+      trigger.className = 'hub-sub-accordion__trigger';
+      trigger.innerHTML = `
+        <span class="hub-sub-accordion__chevron" aria-hidden="true"></span>
+        <span>${item.subheading}</span>
+      `;
+      trigger.addEventListener('click', () => el.classList.toggle('is-open'));
+
+      const panel = document.createElement('div');
+      panel.className = 'hub-sub-accordion__panel';
+      item.subitems.forEach((subitem) => {
+        panel.appendChild(createNavLink(subitem, `${parentLabel} · ${item.subheading} · ${subitem.label}`));
+      });
+
+      el.appendChild(trigger);
+      el.appendChild(panel);
+      return el;
+    }
+
     function createAccordion(id, group) {
       const el = document.createElement('div');
       el.className = 'hub-accordion' + (group.defaultOpen ? ' is-open' : '');
       el.dataset.accordion = id;
 
+      const leafCount = allLeafItems(group).length;
       const trigger = document.createElement('button');
       trigger.type = 'button';
       trigger.className = 'hub-accordion__trigger';
       trigger.setAttribute('aria-expanded', group.defaultOpen ? 'true' : 'false');
       trigger.innerHTML = `
         <span class="hub-accordion__label">${group.label}</span>
-        <span class="hub-accordion__count">${group.items.length}</span>
+        <span class="hub-accordion__count">${leafCount}</span>
         <span class="hub-accordion__chevron" aria-hidden="true"></span>
       `;
       trigger.addEventListener('click', () => {
@@ -665,8 +1053,16 @@
       const panel = document.createElement('div');
       panel.className = 'hub-accordion__panel';
       group.items.forEach((item) => {
-        const link = createNavLink(item, `${group.label} · ${item.label}`);
-        panel.appendChild(link);
+        if (item.subitems) {
+          panel.appendChild(createSubAccordion(item, group.label));
+        } else if (item.subheading) {
+          const sh = document.createElement('div');
+          sh.className = 'hub-accordion__subheading';
+          sh.textContent = item.subheading;
+          panel.appendChild(sh);
+        } else {
+          panel.appendChild(createNavLink(item, `${group.label} · ${item.label}`));
+        }
       });
 
       el.appendChild(trigger);
@@ -683,7 +1079,7 @@
       overviewBtn.addEventListener('click', () => activateLink(overviewBtn));
       navMount.appendChild(overviewBtn);
 
-      ['messaging', 'review', 'newsletter', 'emails', 'website', 'caseStudies', 'designSystem', 'source'].forEach((key) => {
+      ['sales', 'emails', 'messaging', 'newsletter', 'review', 'website', 'caseStudies', 'designSystem', 'source'].forEach((key) => {
         navMount.appendChild(createAccordion(key, NAV_CONFIG[key]));
       });
 
@@ -691,47 +1087,174 @@
     }
 
     function buildOverview() {
-      const workGroups = [
-        { key: 'messaging', heading: 'Messaging & philosophy' },
-        { key: 'review', heading: 'Stakeholder review' },
-        { key: 'newsletter', heading: 'The Signal (newsletter)' },
-        { key: 'emails', heading: 'Customer email journey' },
-        { key: 'caseStudies', heading: 'Case studies' },
-        { key: 'website', heading: 'Website' },
-      ];
+      const mount = document.getElementById('hub-recent-work');
 
-      workGroups.forEach(({ key, heading }) => {
-        const group = NAV_CONFIG[key];
-        const section = document.createElement('div');
-        section.className = 'hub-overview__section';
+      const heading = document.createElement('h3');
+      heading.className = 'hub-ov__section-heading';
+      heading.textContent = 'Recent work';
+      mount.appendChild(heading);
 
-        const h = document.createElement('h3');
-        h.className = 'hub-overview__heading';
-        h.textContent = heading;
-        section.appendChild(h);
+      const list = document.createElement('div');
+      list.className = 'hub-recent';
+      mount.appendChild(list);
 
-        const grid = document.createElement('div');
-        grid.className = 'hub-cards';
-
-        group.items.forEach((item) => {
-          const card = document.createElement('button');
-          card.type = 'button';
-          card.className = 'hub-card';
-          card.innerHTML = `
-            <div class="hub-card__label">${item.label}</div>
-            <div class="hub-card__desc">${item.desc || 'Preview'}</div>
+      RECENT_WORK.forEach((item) => {
+        if (item.src) {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'hub-recent__item';
+          btn.innerHTML = `
+            <div class="hub-recent__meta">
+              <div class="hub-recent__title">${item.label}</div>
+              <div class="hub-recent__note">${item.note}</div>
+            </div>
+            <span class="hub-recent__status${item.status === 'WIP' ? ' hub-recent__status--wip' : ''}">${item.status}</span>
           `;
-          card.addEventListener('click', () => {
-            const navLabel = `${group.label} · ${item.label}`;
-            loadPreview(item.src, navLabel);
+          btn.addEventListener('click', () => {
+            loadPreview(item.src, item.label);
             const match = navLinks.find((l) => l.dataset.src === item.src);
             if (match) activateLink(match, false);
           });
-          grid.appendChild(card);
-        });
+          list.appendChild(btn);
+        } else {
+          const div = document.createElement('div');
+          div.className = 'hub-recent__item hub-recent__item--static';
+          div.innerHTML = `
+            <div class="hub-recent__meta">
+              <div class="hub-recent__title">${item.label}</div>
+              <div class="hub-recent__note">${item.note}</div>
+            </div>
+            <span class="hub-recent__status${item.status === 'WIP' ? ' hub-recent__status--wip' : ''}">${item.status}</span>
+          `;
+          list.appendChild(div);
+        }
+      });
+    }
 
-        section.appendChild(grid);
-        workMount.appendChild(section);
+    function buildOpenQuestions() {
+      const mount = document.getElementById('hub-open-questions');
+      const saved = localStorage.getItem(OPEN_QUESTIONS_KEY) ?? OPEN_QUESTIONS_DEFAULT;
+
+      const heading = document.createElement('h3');
+      heading.className = 'hub-ov__section-heading';
+      heading.style.marginTop = 'var(--space-6)';
+      heading.textContent = 'Upcoming / To Do';
+      mount.appendChild(heading);
+
+      const widget = document.createElement('div');
+      widget.className = 'hub-questions';
+
+      widget.innerHTML = `
+        <div class="hub-session__text" id="questions-text" style="margin-top:12px;">${saved}</div>
+        <textarea class="hub-session__textarea" id="questions-textarea" placeholder="Add upcoming tasks or to-dos...">${saved}</textarea>
+        <div class="hub-session__actions">
+          <button class="hub-session__btn" id="questions-edit-btn">Edit</button>
+          <button class="hub-session__btn" id="questions-save-btn" style="display:none;">Save</button>
+          <button class="hub-session__btn" id="questions-cancel-btn" style="display:none; color:var(--fg-subdued); text-decoration:none;">Cancel</button>
+        </div>
+      `;
+      mount.appendChild(widget);
+
+      const textEl = document.getElementById('questions-text');
+      const textarea = document.getElementById('questions-textarea');
+      const editBtn = document.getElementById('questions-edit-btn');
+      const saveBtn = document.getElementById('questions-save-btn');
+      const cancelBtn = document.getElementById('questions-cancel-btn');
+
+      editBtn.addEventListener('click', () => {
+        textEl.style.display = 'none';
+        textarea.style.display = 'block';
+        textarea.focus();
+        editBtn.style.display = 'none';
+        saveBtn.style.display = '';
+        cancelBtn.style.display = '';
+      });
+
+      cancelBtn.addEventListener('click', () => {
+        textarea.value = localStorage.getItem(OPEN_QUESTIONS_KEY) || '';
+        textarea.style.display = 'none';
+        textEl.style.display = '';
+        editBtn.style.display = '';
+        saveBtn.style.display = 'none';
+        cancelBtn.style.display = 'none';
+      });
+
+      saveBtn.addEventListener('click', () => {
+        const val = textarea.value;
+        localStorage.setItem(OPEN_QUESTIONS_KEY, val);
+        textEl.textContent = val;
+        textarea.style.display = 'none';
+        textEl.style.display = '';
+        editBtn.style.display = '';
+        saveBtn.style.display = 'none';
+        cancelBtn.style.display = 'none';
+      });
+    }
+
+    function buildSessionNotes() {
+      const mount = document.getElementById('hub-session-notes');
+      const STORAGE_KEY = 'luci-hub-session-note';
+      const STORAGE_DATE_KEY = 'luci-hub-session-note-date';
+
+      const saved = localStorage.getItem(STORAGE_KEY) ?? SESSION_NOTE_DEFAULT;
+      const savedDate = localStorage.getItem(STORAGE_DATE_KEY) || (localStorage.getItem(STORAGE_KEY) === null ? SESSION_NOTE_DEFAULT_DATE : '');
+
+      const widget = document.createElement('div');
+      widget.className = 'hub-session';
+
+      widget.innerHTML = `
+        <div class="hub-session__header">
+          <span class="hub-session__label">Where we left off</span>
+          <span class="hub-session__date" id="session-date">${savedDate ? 'Last updated ' + savedDate : ''}</span>
+        </div>
+        <div class="hub-session__text" id="session-text">${saved}</div>
+        <textarea class="hub-session__textarea" id="session-textarea" placeholder="Add a note about where you left off today...">${saved}</textarea>
+        <div class="hub-session__actions">
+          <button class="hub-session__btn" id="session-edit-btn">Edit</button>
+          <button class="hub-session__btn" id="session-save-btn" style="display:none;">Save</button>
+          <button class="hub-session__btn" id="session-cancel-btn" style="display:none; color:var(--fg-subdued); text-decoration:none;">Cancel</button>
+        </div>
+      `;
+
+      mount.appendChild(widget);
+
+      const textEl = document.getElementById('session-text');
+      const textarea = document.getElementById('session-textarea');
+      const dateEl = document.getElementById('session-date');
+      const editBtn = document.getElementById('session-edit-btn');
+      const saveBtn = document.getElementById('session-save-btn');
+      const cancelBtn = document.getElementById('session-cancel-btn');
+
+      editBtn.addEventListener('click', () => {
+        textEl.style.display = 'none';
+        textarea.style.display = 'block';
+        textarea.focus();
+        editBtn.style.display = 'none';
+        saveBtn.style.display = '';
+        cancelBtn.style.display = '';
+      });
+
+      cancelBtn.addEventListener('click', () => {
+        textarea.value = localStorage.getItem(STORAGE_KEY) || '';
+        textarea.style.display = 'none';
+        textEl.style.display = '';
+        editBtn.style.display = '';
+        saveBtn.style.display = 'none';
+        cancelBtn.style.display = 'none';
+      });
+
+      saveBtn.addEventListener('click', () => {
+        const val = textarea.value;
+        const now = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' });
+        localStorage.setItem(STORAGE_KEY, val);
+        localStorage.setItem(STORAGE_DATE_KEY, now);
+        textEl.textContent = val;
+        dateEl.textContent = val ? 'Last updated ' + now : '';
+        textarea.style.display = 'none';
+        textEl.style.display = '';
+        editBtn.style.display = '';
+        saveBtn.style.display = 'none';
+        cancelBtn.style.display = 'none';
       });
     }
 
@@ -740,6 +1263,10 @@
     }
 
     function openAccordionForLink(link) {
+      // Open parent sub-accordion if nested
+      const subAccordion = link.closest('.hub-sub-accordion');
+      if (subAccordion) subAccordion.classList.add('is-open');
+      // Open parent top-level accordion
       const accordion = link.closest('.hub-accordion');
       if (accordion && !accordion.classList.contains('is-open')) {
         accordion.classList.add('is-open');
@@ -776,6 +1303,10 @@
       pathEl.textContent = '—';
       openEl.hidden = true;
       setNavCollapsed(false);
+      if (reviewPanel) reviewPanel.classList.remove('is-visible');
+      document.querySelectorAll('.hub-tab').forEach((t) => {
+        t.classList.toggle('is-active', t.dataset.tab === 'overview');
+      });
     }
 
     function loadPreview(src, label) {
@@ -825,8 +1356,32 @@
       window.open(data.url, '_blank', 'noopener,noreferrer');
     });
 
+    // Tab switching
+    const reviewPanel = document.getElementById('hub-review-panel');
+    document.getElementById('hub-tabs').addEventListener('click', (e) => {
+      const tab = e.target.closest('.hub-tab');
+      if (!tab) return;
+      document.querySelectorAll('.hub-tab').forEach((t) => t.classList.toggle('is-active', t === tab));
+      const which = tab.dataset.tab;
+      if (which === 'overview') {
+        showOverview();
+      } else if (which === 'review') {
+        overview.classList.remove('is-visible');
+        reviewPanel.classList.add('is-visible');
+        frame.hidden = true;
+        frame.removeAttribute('src');
+        hidePreviewFallback();
+        titleEl.textContent = 'Review queue';
+        pathEl.textContent = 'ui_kits/review/stakeholder-review.html';
+        openEl.href = absolutePreviewUrl('ui_kits/review/stakeholder-review.html');
+        openEl.hidden = false;
+      }
+    });
+
     buildSidebar();
+    buildSessionNotes();
     buildOverview();
+    buildOpenQuestions();
   </script>
 </body>
 </html>

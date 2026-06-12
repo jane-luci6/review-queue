@@ -31,6 +31,20 @@
     .masthead__badge { font-family: var(--display); font-size: 9px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mint); border: 1px solid rgba(var(--mint-rgb), 0.35); padding: 4px 8px; }
     .masthead__title { font-family: var(--display); font-size: clamp(22px, 4vw, 32px); font-weight: 700; color: var(--off-white); line-height: 1.1; }
     .masthead__deck { margin-top: 12px; font-size: 15px; line-height: 1.55; color: rgba(235, 245, 248, 0.88); max-width: 52ch; }
+    .api-status {
+      margin-top: 16px;
+      padding: 12px 16px;
+      font-size: 13px;
+      line-height: 1.45;
+      border-left: 4px solid var(--warn);
+      background: rgba(184, 92, 42, 0.12);
+      color: rgba(235, 245, 248, 0.92);
+      max-width: 60ch;
+    }
+    .api-status--live {
+      border-left-color: var(--mint);
+      background: rgba(var(--mint-rgb), 0.12);
+    }
     .back-link { display: inline-flex; align-items: center; gap: 6px; font-family: var(--display); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mint); text-decoration: none; margin-bottom: 12px; }
     .back-link:hover { text-decoration: underline; }
 
@@ -134,6 +148,10 @@
       font-family: var(--display); font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
       text-transform: uppercase; color: var(--navy-muted);
     }
+    .badge-status {
+      font-family: var(--display); font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 4px 8px; background: rgba(73, 97, 110, 0.12); color: var(--navy-muted);
+    }
 
     .version-block {
       margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--rule-light); max-width: 68ch;
@@ -206,7 +224,8 @@
     .detail { padding: var(--pad); max-width: 100%; }
     .detail__head { margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--rule-light); }
     .detail__head .badge-version,
-    .detail__head .due { display: inline-block; margin-right: 12px; margin-top: 8px; }
+    .detail__head .due,
+    .detail__head .badge-status { display: inline-block; margin-right: 12px; margin-top: 8px; }
     .detail__title { font-size: clamp(22px, 4vw, 28px); font-weight: 700; color: var(--navy); letter-spacing: -0.02em; margin-bottom: 10px; }
     .review-brief {
       margin-bottom: 24px;
@@ -358,6 +377,9 @@
   let allComments = (REVIEW_DATA.comments || []).slice();
   let approvalsByAsset = Object.assign({}, REVIEW_DATA.approvals || {});
   let commentsApiEnabled = false;
+  let commentsApiFailed = false;
+  const POLL_MS = 12000;
+  let pollTimer = null;
 
   function showToast(msg) {
     toast.textContent = msg;
@@ -391,11 +413,21 @@
     } catch (e) { /* ignore */ }
   }
 
+  function isLocalPreview() {
+    return location.protocol === 'file:';
+  }
+
+  function reviewStateSignature() {
+    return JSON.stringify({ comments: allComments, approvals: approvalsByAsset });
+  }
+
   async function loadReviewStateFromApi() {
     const url = commentsApiUrl();
     if (!url) {
+      commentsApiEnabled = false;
+      commentsApiFailed = false;
       loadApprovalsFromLocalStorage();
-      return;
+      return false;
     }
     try {
       const controller = new AbortController();
@@ -404,16 +436,24 @@
       clearTimeout(timer);
       if (res.ok) {
         const data = await res.json();
+        const prev = reviewStateSignature();
         allComments = data.comments || [];
         if (data.approvals && typeof data.approvals === 'object') {
           approvalsByAsset = data.approvals;
         }
         commentsApiEnabled = true;
-      } else {
-        loadApprovalsFromLocalStorage();
+        commentsApiFailed = false;
+        return prev !== reviewStateSignature();
       }
+      commentsApiEnabled = false;
+      commentsApiFailed = true;
+      if (isLocalPreview()) loadApprovalsFromLocalStorage();
+      return false;
     } catch (e) {
-      loadApprovalsFromLocalStorage();
+      commentsApiEnabled = false;
+      commentsApiFailed = true;
+      if (isLocalPreview()) loadApprovalsFromLocalStorage();
+      return false;
     }
   }
 
@@ -438,6 +478,9 @@
 
   async function toggleApproval(item, reviewer) {
     const assetId = item.id;
+    if (commentsApiUrl() && !commentsApiEnabled) {
+      throw new Error('api-unavailable');
+    }
     if (commentsApiEnabled) {
       const res = await fetch(commentsApiUrl(), {
         method: 'POST',
@@ -598,8 +641,13 @@
   function assetById(id) {
     return (
       (q.dueForReview || []).find((a) => a.id === id) ||
+      (q.inProgress || []).find((a) => a.id === id) ||
       (q.approvedAssets || []).find((a) => a.id === id)
     );
+  }
+
+  function signOffEnabled(item) {
+    return item && item.signOff !== false;
   }
 
   function commentsFor(assetId) {
@@ -703,6 +751,22 @@
     location.hash = '#/review/' + encodeURIComponent(id);
   }
 
+  function renderApiStatus() {
+    if (!commentsApiUrl()) return null;
+    const el = document.createElement('p');
+    el.className = 'api-status' + (commentsApiEnabled ? ' api-status--live' : '');
+    if (commentsApiFailed) {
+      el.textContent =
+        'Sign-off and comments are not saving — the review API is unavailable. Refresh after deploy, or contact Jane.';
+      return el;
+    }
+    if (commentsApiEnabled) {
+      el.textContent = 'Approvals and comments sync live — this page refreshes every few seconds.';
+      return el;
+    }
+    return null;
+  }
+
   function renderMasthead(deck) {
     const h = document.createElement('header');
     h.className = 'masthead';
@@ -716,6 +780,8 @@
       '<h1 class="masthead__title">Review Queue</h1>' +
       '<p class="masthead__deck"></p>';
     h.querySelector('.masthead__deck').textContent = deckText;
+    const status = renderApiStatus();
+    if (status) h.appendChild(status);
     return h;
   }
 
@@ -856,7 +922,12 @@
     verBadge.className = 'badge-version';
     verBadge.textContent = 'v' + reviewVersionNum(item);
     meta.appendChild(verBadge);
-    if (item.due) {
+    if ((item.reviewStatus || '').trim()) {
+      const status = document.createElement('span');
+      status.className = 'badge-status';
+      status.textContent = item.reviewStatus;
+      meta.appendChild(status);
+    } else if (item.due) {
       const due = document.createElement('span');
       due.className = 'due ' + dueClass(item.due);
       due.textContent = 'Due ' + formatDue(item.due);
@@ -930,6 +1001,21 @@
       zoneDue.appendChild(ul);
     }
     main.appendChild(zoneDue);
+
+    const progressList = (q.inProgress || []).slice();
+    if (progressList.length) {
+      const zoneProgress = document.createElement('section');
+      zoneProgress.className = 'main__zone';
+      const hProgress = document.createElement('h2');
+      hProgress.className = 'section-heading';
+      hProgress.textContent = 'In Progress';
+      zoneProgress.appendChild(hProgress);
+      const ulProgress = document.createElement('ul');
+      ulProgress.className = 'queue-list';
+      progressList.forEach((item) => ulProgress.appendChild(renderQueueRow(item)));
+      zoneProgress.appendChild(ulProgress);
+      main.appendChild(zoneProgress);
+    }
 
     const approvedList = (q.approvedAssets || []).slice().sort((a, b) =>
       (b.approved || '').localeCompare(a.approved || '')
@@ -1042,6 +1128,17 @@
     panel.className = 'approval-panel';
     panel.innerHTML = '<h2 class="approval-panel__title">Stakeholder sign-off</h2>';
 
+    if (!signOffEnabled(item)) {
+      const note = document.createElement('p');
+      note.className = 'approval-panel__hint';
+      note.textContent =
+        (item.reviewStatus || 'In progress') +
+        ' — preview for awareness. Formal sign-off opens when this moves to Due for Review.';
+      panel.appendChild(note);
+      parent.appendChild(panel);
+      return panel;
+    }
+
     REVIEWERS.forEach((name) => {
       const row = document.createElement('div');
       row.className = 'approval-row';
@@ -1074,7 +1171,7 @@
           paint();
           showToast(nowApproved ? name + ' approved this asset.' : 'Approval removed.');
         } catch (e) {
-          showToast('Could not save — try again.');
+          showToast(commentsApiFailed ? 'Sign-off is not saving — API unavailable.' : 'Could not save — try again.');
         } finally {
           btn.disabled = false;
         }
@@ -1090,9 +1187,13 @@
     if (!commentsApiEnabled) {
       const hint = document.createElement('p');
       hint.className = 'approval-panel__hint';
-      hint.textContent = commentsApiUrl()
-        ? 'Sign-off syncs when the review API is available.'
-        : 'On the published review site, sign-off is shared for Mike and Nick. Locally, it is saved in this browser only.';
+      if (commentsApiFailed) {
+        hint.textContent = 'Sign-off cannot be saved until the review API is back online.';
+      } else if (commentsApiUrl()) {
+        hint.textContent = 'Loading sign-off status…';
+      } else {
+        hint.textContent = 'Local preview only — sign-off is saved in this browser.';
+      }
       panel.appendChild(hint);
     }
 
@@ -1153,7 +1254,9 @@
       submit.disabled = true;
       const hint = document.createElement('p');
       hint.className = 'comment-form__hint';
-      hint.textContent = 'Posting works on the published review host (Netlify).';
+      hint.textContent = commentsApiFailed
+        ? 'Comments cannot be posted until the review API is back online.'
+        : (commentsApiUrl() ? 'Loading comment form…' : 'Comments save on the published review host (Netlify).');
       form.appendChild(hint);
     }
     form.appendChild(nameLabel);
@@ -1200,7 +1303,12 @@
     ver.className = 'badge-version';
     ver.textContent = 'v' + reviewVersionNum(item);
     head.appendChild(ver);
-    if (item.due) {
+    if ((item.reviewStatus || '').trim()) {
+      const status = document.createElement('span');
+      status.className = 'badge-status';
+      status.textContent = item.reviewStatus;
+      head.appendChild(status);
+    } else if (item.due) {
       const due = document.createElement('span');
       due.className = 'due ' + dueClass(item.due);
       due.textContent = 'Due ' + formatDue(item.due);
@@ -1247,11 +1355,41 @@
     }
   }
 
+  function startPolling() {
+    if (pollTimer || !commentsApiEnabled) return;
+    pollTimer = setInterval(async () => {
+      const changed = await loadReviewStateFromApi();
+      if (changed) {
+        render();
+        showToast('Review activity updated.');
+      }
+    }, POLL_MS);
+  }
+
+  function stopPolling() {
+    if (!pollTimer) return;
+    clearInterval(pollTimer);
+    pollTimer = null;
+  }
+
+  async function refreshReviewState() {
+    const changed = await loadReviewStateFromApi();
+    render();
+    if (commentsApiEnabled) startPolling();
+    else stopPolling();
+    return changed;
+  }
+
   function init() {
     if (!location.hash) location.hash = '#/';
     render();
     window.addEventListener('hashchange', render);
-    loadReviewStateFromApi().then(() => render());
+    refreshReviewState();
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible' && commentsApiUrl()) {
+        refreshReviewState();
+      }
+    });
   }
 
   init();

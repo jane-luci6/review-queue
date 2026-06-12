@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>The Embedded Operation — Orbit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="messaging-docs.css">
+</head>
+<body>
+  <div class="resource">
+    <header class="resource__masthead">
+      <div class="resource__masthead-row">
+        <a href="https://lucisystems.com" class="resource__logo"><img src="../assets/logos/luci-full-white.png" alt="LUCI Systems" width="120" height="24"></a>
+        <span class="resource__badge">Brand resources</span>
+      </div>
+      <h1 class="resource__hero-title">The Embedded Operation — Orbit</h1>
+      <p class="resource__hero-deck">Reusable diagram — one accountable team, six services on a ring</p>
+      <p class="resource__meta">Updated Jun 12, 2026</p>
+      <nav class="resource__crumbs" aria-label="Breadcrumb">
+        <a href="../index.html">Review queue</a>
+        <span>/</span>
+        <a href="messaging-guide.html">Messaging guide</a>
+        <span>/</span>
+        <span aria-current="page">Embedded Operation orbit</span>
+      </nav>
+    </header>
+    <div class="resource__layout">
+      <aside class="resource__sidebar">
+        <p class="resource__nav-kicker">Library</p>
+        <ul class="resource__library"><li><a href="philosophy.html">LUCI philosophy</a><span>Updated May 7, 2026</span></li><li><a href="messaging-guide.html">Messaging guide</a><span>Updated Jun 10, 2026</span></li><li><a href="luci-system-diagram.html">LUCI system diagram</a><span>Updated Jun 10, 2026</span></li><li><a href="embedded-operation-orbit.html" class="is-current">Embedded Operation orbit</a><span>Updated Jun 12, 2026</span></li><li><a href="personas.html">Personas</a><span>Updated May 6, 2026</span></li></ul>
+      </aside>
+      <main class="resource__article">
+      <p class="doc-prose">The <strong>Embedded Operation orbit</strong> is the canonical diagram for LUCI as one accountable team wrapping six services around the client. Originally built for page 4 of the <a href="../../sales/capabilities-document.html">capabilities document</a>, it now lives here as a standalone, reusable asset — drop it into any deck, doc, email, or web page without rebuilding.</p>
+
+      <figure class="doc-figure doc-figure--diagram">
+        <img src="../../../assets/diagrams/embedded-operation-orbit.svg?v=2" alt="The Embedded Operation — one accountable team surrounded by six services: LUCI FDE, Design & Deployment, Support & Operations, Continuous Refinement, Training & Enablement, Owner's-Rep Partnership" width="680" height="363">
+        <figcaption class="doc-figure__caption"><strong>The Embedded Operation.</strong> Mint-on-navy hub = one accountable team; six service nodes on a broken ring. Vector SVG, transparent background — sits on any light canvas.</figcaption>
+      </figure>
+
+      <section class="doc-section" style="padding-top: 48px;">
+        <h2 class="doc-chapter">FILES</h2>
+        <ul class="doc-stack">
+          <li class="doc-stack__item">
+            <p class="doc-stack__head"><span class="doc-stack__num">SVG</span><b>Vector master (editable, scalable)</b></p>
+            <p class="doc-stack__body"><code>assets/diagrams/embedded-operation-orbit.svg</code> — transparent background, live text in Space Grotesk. Preferred for web, slides, and print. Edit copy or geometry directly in the file.</p>
+          </li>
+          <li class="doc-stack__item">
+            <p class="doc-stack__head"><span class="doc-stack__num">PNG</span><b>Raster export (3× / 2700×1440)</b></p>
+            <p class="doc-stack__body"><code>assets/diagrams/embedded-operation-orbit.png</code> — transparent background. Use where SVG isn't supported (some email clients, raster pipelines).</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="doc-section" style="padding-top: 40px;">
+        <h2 class="doc-chapter">HOW TO PULL IT IN</h2>
+        <p class="doc-prose">Reference the SVG by relative path — no rebuild needed. From a sales asset in <code>ui_kits/sales/</code>:</p>
+        <pre style="background:#10232D;color:#F5F8FA;font-family:'Space Grotesk',monospace;font-size:13px;line-height:1.6;padding:16px 20px;overflow-x:auto;margin:16px 0;"><code>&lt;img src="../../assets/diagrams/embedded-operation-orbit.svg"
+     alt="The Embedded Operation"
+     width="680"&gt;</code></pre>
+        <p class="doc-prose">The aspect ratio is <strong>900 × 480</strong> (15:8). Set <code>width</code> and let height scale; the SVG is resolution-independent. On dark backgrounds, use the navy/light variant instead (the labels here are near-black for light canvases per Track C).</p>
+      </section>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

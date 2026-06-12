@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>LUCI · Stakeholder Review</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy-deep: #0A161C; --navy: #10232D; --navy-muted: #49616E;
+      --mint: #68E3BE; --mint-rgb: 104, 227, 190; --mint-dark: #2b9e80;
+      --sand: #E5E3DF; --off-white: #F5F8FA; --white: #FFFFFF;
+      --rule-light: #D4D9DC; --body-ink: #354F5C; --warn: #b85c2a;
+      --display: 'Syncopate', 'Arial Black', sans-serif;
+      --body: 'Space Grotesk', 'Trebuchet MS', sans-serif;
+      --sidebar: 260px;
+      --pad: clamp(20px, 4vw, 40px);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--body); background: var(--off-white); color: var(--body-ink); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    .app { max-width: 1200px; margin: 0 auto; min-height: 100vh; background: var(--white); border-left: 1px solid var(--rule-light); border-right: 1px solid var(--rule-light); }
+
+    .masthead { background: var(--navy); padding: var(--pad); position: relative; }
+    .masthead::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: var(--mint); }
+    .masthead__row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+    .masthead__logo img { height: 22px; display: block; }
+    .masthead__badge { font-family: var(--display); font-size: 9px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mint); border: 1px solid rgba(var(--mint-rgb), 0.35); padding: 4px 8px; }
+    .masthead__title { font-family: var(--display); font-size: clamp(22px, 4vw, 32px); font-weight: 700; color: var(--off-white); line-height: 1.1; }
+    .masthead__deck { margin-top: 12px; font-size: 15px; line-height: 1.55; color: rgba(235, 245, 248, 0.88); max-width: 52ch; }
+    .api-status {
+      margin-top: 16px;
+      padding: 12px 16px;
+      font-size: 13px;
+      line-height: 1.45;
+      border-left: 4px solid var(--warn);
+      background: rgba(184, 92, 42, 0.12);
+      color: rgba(235, 245, 248, 0.92);
+      max-width: 60ch;
+    }
+    .api-status--live {
+      border-left-color: var(--mint);
+      background: rgba(var(--mint-rgb), 0.12);
+    }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; font-family: var(--display); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mint); text-decoration: none; margin-bottom: 12px; }
+    .back-link:hover { text-decoration: underline; }
+
+    .main { padding: var(--pad); min-width: 0; }
+    .main__zone { margin-bottom: 48px; }
+    .main__zone:last-child { margin-bottom: 0; }
+
+    .section-heading {
+      font-family: var(--body);
+      font-size: clamp(22px, 3.2vw, 28px);
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin: 0 0 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--rule-light);
+    }
+
+    .layout { display: grid; grid-template-columns: 1fr; gap: 0; }
+    @media (min-width: 800px) {
+      .layout { grid-template-columns: var(--sidebar) 1fr; min-height: 60vh; }
+    }
+
+    .sidebar { background: var(--sand); border-bottom: 1px solid var(--rule-light); padding: var(--pad); }
+    @media (min-width: 800px) {
+      .sidebar { border-bottom: none; border-right: 1px solid var(--rule-light); position: sticky; top: 0; align-self: start; max-height: 100vh; overflow-y: auto; }
+    }
+    .sidebar__block + .sidebar__block { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--rule-light); }
+    .sidebar__kicker { font-family: var(--display); font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mint-dark); margin-bottom: 12px; }
+    .sidebar__list { list-style: none; }
+    .sidebar__list li { margin-bottom: 10px; }
+    .sidebar__list a { font-size: 14px; font-weight: 600; color: var(--navy); text-decoration: none; line-height: 1.35; display: block; }
+    .sidebar__list a:hover { color: var(--mint-dark); }
+    .sidebar__list .is-muted { font-weight: 500; color: var(--navy-muted); pointer-events: none; }
+    .sidebar__list .sidebar__item-title { display: block; font-size: 14px; font-weight: 600; color: var(--navy); line-height: 1.35; }
+    .sidebar__list .sidebar__item-title.is-muted { font-weight: 500; color: var(--navy-muted); }
+    .sidebar__list .is-sub { display: block; font-size: 12px; font-weight: 400; color: var(--navy-muted); margin-top: 4px; line-height: 1.35; }
+
+    .queue-list { list-style: none; margin: 0; }
+    .queue-item { border-bottom: 1px solid var(--rule-light); }
+    .queue-item:last-child { border-bottom: none; }
+    .queue-group-header {
+      padding: 20px 0 6px;
+      font-family: var(--display);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--mint-dark);
+      border-bottom: none;
+    }
+    .queue-group-header:first-child { padding-top: 0; }
+    .queue-item--grouped {
+      padding-left: 14px;
+      border-left: 2px solid rgba(var(--mint-rgb), 0.35);
+    }
+    .queue-item__link {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px 20px;
+      align-items: center;
+      padding: 18px 0;
+      text-decoration: none;
+      color: inherit;
+      transition: color 0.12s;
+    }
+    .queue-item__link:hover .queue-item__title { color: var(--mint-dark); }
+    .queue-item__link:hover .queue-item__action { color: var(--mint-dark); }
+    .queue-item__title {
+      font-family: var(--body);
+      font-weight: 600;
+      font-size: clamp(16px, 2vw, 18px);
+      color: var(--navy);
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      grid-column: 1;
+    }
+    .queue-item__summary {
+      font-family: var(--body);
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--navy-muted);
+      margin-top: 6px;
+      grid-column: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      line-height: 1.5;
+    }
+    .queue-item__meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; grid-column: 1; margin-top: 8px; }
+    .due { font-family: var(--display); font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 8px; background: rgba(var(--mint-rgb), 0.15); color: var(--mint-dark); }
+    .due.is-overdue { background: rgba(196, 92, 38, 0.12); color: var(--warn); }
+    .due.is-done { background: rgba(104, 227, 190, 0.14); color: var(--mint-dark); }
+    .due.is-soon { background: rgba(var(--mint-rgb), 0.25); }
+    .badge-comments { font-size: 13px; font-weight: 500; color: var(--navy-muted); }
+    .badge-approval { font-size: 13px; font-weight: 500; color: var(--navy-muted); }
+    .badge-approval.is-done { color: var(--mint-dark); font-weight: 600; }
+    .badge-version {
+      font-family: var(--display); font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--navy-muted);
+    }
+
+    .version-block {
+      margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--rule-light); max-width: 68ch;
+    }
+    .version-block__kicker {
+      font-family: var(--display); font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--mint-dark); margin-bottom: 8px;
+    }
+    .version-block__current { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+    .version-block__note {
+      font-size: 15px; line-height: 1.6; color: var(--body-ink); padding: 14px 16px;
+      background: var(--off-white); border-left: 4px solid var(--mint); margin-bottom: 12px;
+    }
+    .version-block__note strong { font-weight: 600; color: var(--navy); }
+    .version-block__history-title {
+      font-family: var(--display); font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--navy-muted); margin: 16px 0 10px;
+    }
+    .version-history { list-style: none; padding: 0; margin: 0; }
+    .version-history__row {
+      padding: 12px 0; border-bottom: 1px solid var(--rule-light);
+      display: grid; grid-template-columns: 3rem 1fr; gap: 8px 12px; align-items: baseline;
+    }
+    .version-history__row:last-child { border-bottom: none; }
+    .version-history__ver {
+      font-family: var(--display); font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--navy);
+    }
+    .version-history__meta { font-size: 14px; color: var(--navy-muted); }
+    .version-history__note { grid-column: 1 / -1; font-size: 14px; color: var(--body-ink); margin: 0; }
+
+    .approval-panel { padding-top: 24px; border-top: 1px solid var(--rule-light); margin-top: 28px; }
+    .approval-panel__title { font-family: var(--display); font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mint-dark); margin-bottom: 14px; }
+    .approval-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; padding: 12px 0; border-bottom: 1px solid var(--rule-light); }
+    .approval-row:last-child { border-bottom: none; }
+    .approval-row__name { font-size: 15px; font-weight: 600; color: var(--body-ink); min-width: 3.5rem; }
+    .approval-row__status { font-size: 14px; color: var(--navy-muted); flex: 1; min-width: 10rem; }
+    .approval-row__status.is-approved { color: var(--mint-dark); font-weight: 600; }
+    .btn--approve.is-approved { background: transparent; color: var(--navy-muted); border-color: var(--rule-light); }
+    .approval-panel__hint { font-size: 13px; color: var(--navy-muted); margin-top: 10px; }
+    .queue-item__action {
+      font-family: var(--display);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--navy-muted);
+      grid-column: 2;
+      grid-row: 1 / span 3;
+      align-self: center;
+      white-space: nowrap;
+    }
+
+    .pipeline-list { list-style: none; }
+    .pipeline-list li { padding: 12px 0; border-bottom: 1px solid var(--rule-light); font-size: 14px; }
+    .pipeline-list li:last-child { border-bottom: none; }
+    .pipeline-list strong {
+      display: block;
+      font-family: var(--body);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 2px;
+    }
+    .pipeline-list span { color: var(--navy-muted); font-size: 13px; }
+
+    .empty { font-size: 15px; color: var(--navy-muted); font-style: italic; padding: 8px 0; }
+
+    /* ── Detail view ── */
+    .detail { padding: var(--pad); max-width: 100%; }
+    .detail__head { margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--rule-light); }
+    .detail__head .badge-version,
+    .detail__head .due { display: inline-block; margin-right: 12px; margin-top: 8px; }
+    .detail__title { font-size: clamp(22px, 4vw, 28px); font-weight: 700; color: var(--navy); letter-spacing: -0.02em; margin-bottom: 10px; }
+    .review-brief {
+      margin-bottom: 24px;
+      max-width: 68ch;
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--body-ink);
+    }
+    .review-brief p + p { margin-top: 14px; }
+    .review-brief strong { font-weight: 600; color: var(--navy); }
+    .detail__actions { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+    .live-link {
+      margin-bottom: 28px;
+      padding: 20px 22px;
+      background: var(--off-white);
+      border-left: 4px solid var(--mint);
+    }
+    .live-link .btn { display: inline-flex; align-items: center; justify-content: center; }
+    .btn {
+      font-family: var(--display); font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; text-decoration: none; padding: 11px 16px; border: none; cursor: pointer;
+      background: var(--mint); color: var(--navy);
+    }
+    .btn--ghost { background: transparent; color: var(--mint-dark); box-shadow: inset 0 0 0 1px var(--mint-dark); }
+    /* Unpublished assets: header peek + expand bar, comments below */
+    .asset-preview { margin-bottom: 8px; }
+    .asset-preview__viewport {
+      position: relative;
+      overflow: hidden;
+      background: var(--off-white);
+      transition: height 0.25s ease;
+    }
+    .asset-preview.is-collapsed .asset-preview__viewport {
+      height: 240px;
+    }
+    .asset-preview.is-expanded .asset-preview__viewport {
+      height: min(75vh, 720px);
+    }
+    .asset-preview__viewport iframe {
+      width: 100%;
+      height: min(75vh, 720px);
+      min-height: 720px;
+      border: none;
+      display: block;
+      pointer-events: none;
+    }
+    .asset-preview.is-expanded .asset-preview__viewport iframe {
+      pointer-events: auto;
+    }
+    .asset-preview__fade {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 48px;
+      background: linear-gradient(to bottom, rgba(245, 248, 250, 0) 0%, rgba(245, 248, 250, 0.95) 70%, var(--white) 100%);
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    .asset-preview.is-expanded .asset-preview__fade {
+      opacity: 0;
+    }
+    .asset-preview__expand-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 14px var(--pad);
+      border: none;
+      border-top: 1px solid var(--rule-light);
+      border-bottom: 1px solid var(--rule-light);
+      background: var(--sand);
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .asset-preview__expand-bar:hover {
+      background: rgba(var(--mint-rgb), 0.12);
+    }
+    .asset-preview__expand-bar:focus-visible {
+      outline: 2px solid var(--mint-dark);
+      outline-offset: 2px;
+    }
+    .asset-preview__chevron {
+      display: block;
+      width: 20px;
+      height: 20px;
+      color: var(--navy);
+      transition: transform 0.25s ease;
+    }
+    .asset-preview.is-expanded .asset-preview__chevron {
+      transform: rotate(180deg);
+    }
+    .asset-preview__expand-label {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .panel--below-preview { margin-top: 28px; }
+    .panel { padding-top: 24px; border-top: 1px solid var(--rule-light); }
+    .panel__title { font-family: var(--display); font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mint-dark); margin-bottom: 14px; }
+    .comment { padding: 14px 0; border-bottom: 1px solid var(--rule-light); }
+    .comment__meta { font-size: 12px; font-weight: 600; color: var(--navy-muted); margin-bottom: 4px; }
+    .comment__body { font-size: 15px; color: var(--body-ink); }
+    .comments-empty { font-size: 14px; color: var(--navy-muted); font-style: italic; }
+    .comment-form label { display: block; font-family: var(--display); font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy-muted); margin: 12px 0 6px; }
+    .comment-form select, .comment-form textarea {
+      width: 100%; max-width: 560px; font-family: var(--body); font-size: 15px; padding: 10px 12px;
+      border: 1px solid var(--rule-light); background: var(--white); color: var(--body-ink); border-radius: 0;
+    }
+    .comment-form textarea { min-height: 88px; resize: vertical; }
+    .comment-form .btn { margin-top: 12px; }
+    .comment-form__hint { font-size: 13px; color: var(--navy-muted); margin-top: 8px; }
+
+    .not-found { padding: var(--pad); text-align: center; }
+    .footer { padding: 20px var(--pad); background: var(--navy-deep); font-size: 12px; color: rgba(165, 179, 188, 0.8); }
+    .footer a { color: var(--mint); }
+    .toast {
+      position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(60px);
+      background: var(--navy); color: var(--off-white); font-size: 14px; padding: 12px 20px;
+      border-left: 4px solid var(--mint); opacity: 0; transition: 0.25s; z-index: 50; pointer-events: none;
+    }
+    .toast.is-visible { transform: translateX(-50%) translateY(0); opacity: 1; }
+  </style>
+</head>
+<body>
+<div class="app" id="app"></div>
+<div class="toast" id="toast" role="status"></div>
+<script>
+const REVIEW_DATA = {
+  "queue": {
+    "updated": "2026-06-12",
+    "publishNote": "Build + ./publish.sh. Bump reviewVersion + versionNote for new uploads (Teams + version history on site). Set due for first-time review. See teams-notifications-guide.txt.",
+    "commentsApiUrl": "",
+    "commentsApiNote": "Optional full URL if review page is on Webflow but API is on Netlify. Leave empty when the whole site is on Netlify.",
+    "previewBaseUrl": "",
+    "messagingDocsNote": "Populated at build from messaging-sources.json + OneDrive .docx (see scripts/sync-messaging-docs.mjs)",
+    "messagingDocs": [
+      {
+        "title": "Messaging guide",
+        "url": "messaging/messaging-guide.html",
+        "note": "Updated Jun 12, 2026"
+      },
+      {
+        "title": "LUCI philosophy",
+        "url": "messaging/philosophy.html",
+        "note": "Updated Jun 12, 2026"
+      },
+      {
+        "title": "LUCI system diagram",
+        "url": "messaging/luci-system-diagram.html",
+        "note": "Updated Jun 9, 2026"
+      },
+      {
+        "title": "Personas",
+        "url": "messaging/personas.html",
+        "note": "Updated Jun 12, 2026"
+      }
+    ],
+    "dueForReview": [
+      {
+        "id": "signal-hub",
+        "title": "The Signal · Newsletter Hub",
+        "summary": "Newsletter hub — layout, featured issue, archive.",
+        "reviewVersion": 1,
+        "versionNote": "",
+        "due": "2026-06-11",
+        "liveUrl": "https://www.lucisystems.com/the-signal/home",
+        "previewUrl": "",
+        "hubPreviewPath": "ui_kits/newsletter/the-signal-hub.html",
+        "reviewBrief": {
+          "description": "The Signal hub is the customer-facing home for our newsletter—one stable place to find every issue as we publish.",
+          "reviewAsk": "overall look and feel, and any design suggestions before we promote it."
+        },
+        "versionHistory": [
+          {
+            "version": 1,
+            "published": "2026-06-02",
+            "note": ""
+          }
+        ],
+        "group": "The Signal · Issue 01"
+      },
+      {
+        "id": "signal-issue-01",
+        "title": "The Signal · Issue 01 (June 2026)",
+        "summary": "Issue 01 — tone, Ameristar story, platform, team, Inside LUCI how-to.",
+        "reviewVersion": 1,
+        "versionNote": "",
+        "due": "2026-06-11",
+        "liveUrl": "https://www.lucisystems.com/the-signal/issue-01",
+        "previewUrl": "",
+        "hubPreviewPath": "ui_kits/newsletter/the-signal-issue-01-june-2026.html",
+        "reviewBrief": {
+          "description": "Issue 01 is the first full web edition of The Signal—welcome, field story, platform preview, team, Inside LUCI how-to, and services.",
+          "reviewAsk": "the sections with instructions, steps, or services—confirm we've explained them correctly."
+        },
+        "versionHistory": [
+          {
+            "version": 1,
+            "published": "2026-06-02",
+            "note": ""
+          }
+        ],
+        "group": "The Signal · Issue 01"
+      },
+      {
+        "id": "newsletter-email-teaser",
+        "title": "Newsletter email · The Signal Issue 01 teaser",
+        "summary": "Inbox teaser — Issue 01 highlights, deep links, read-issue CTA. Footer tagline synced to Messaging Guide.",
+        "reviewVersion": 2,
+        "versionNote": "Footer tagline updated to “The Orchestration Engine for Enterprise Multimedia” (Messaging Guide, Jun 9).",
+        "due": "2026-06-11",
+        "liveUrl": "",
+        "previewUrl": "email/email-signal-issue-01-teaser.html",
+        "hubPreviewPath": "ui_kits/email/email-signal-issue-01-teaser.html",
+        "reviewBrief": {
+          "description": "Email that announces Issue 01 and drives readers to the web edition—welcome, story highlights with section links, and Mike's signature.",
+          "reviewAsk": "copy, layout, and whether the teaser gives enough reason to open the full issue on the web."
+        },
+        "versionHistory": [
+          {
+            "version": 1,
+            "published": "2026-06-03",
+            "note": ""
+          },
+          {
+            "version": 2,
+            "published": "2026-06-09",
+            "note": "Footer tagline synced to Messaging Guide."
+          }
+        ],
+        "group": "The Signal · Issue 01"
+      }
+    ],
+    "approvedAssets": [
+      {
+        "id": "case-study-ameristar",
+        "title": "Case Study · Ameristar Council Bluffs",
+        "summary": "Ameristar case study — narrative, results, CTA.",
+        "approved": "2026-06-10",
+        "previewUrl": "case-studies/ameristar-council-bluffs.html",
+        "hubPreviewPath": "ui_kits/case-studies/ameristar-council-bluffs.html",
+        "reviewBrief": {
+          "description": "The Ameristar case study is the long-form Council Bluffs relocation and LUCI rollout story for the website, sales, and export.",
+          "reviewAsk": "accuracy and story—whether we represented everything correctly."
+        },
+        "versionHistory": [
+          {
+            "version": 1,
+            "published": "2026-06-02",
+            "note": ""
+          }
+        ]
+      },
+      {
+        "id": "customer-emails",
+        "title": "Customer emails",
+        "summary": "Onboarding email series",
+        "approved": "2026-06-02",
+        "note": "Onboarding series — approved as a set"
+      }
+    ],
+    "upcoming": [
+      {
+        "id": "website-strategy-brief",
+        "title": "Website strategy brief",
+        "note": "Leadership review — purpose, positioning, success measures, Navless experience layer. Companion: website-strategy-brief-talk-track.md. Phase 2: IA wireframe.",
+        "target": "2026-06-10",
+        "hubPreviewPath": "ui_kits/website/website-strategy-brief.html"
+      },
+      {
+        "id": "website-strategy",
+        "title": "Website update strategy (outline)",
+        "note": "Phase 2 — simplified IA, Platform page, 6 industries, Signal customer-only; see website-strategy.html + IA wireframe.",
+        "target": "2026-06-15",
+        "hubPreviewPath": "ui_kits/website/website-strategy.html"
+      },
+      {
+        "id": "capabilities-doc",
+        "title": "Capabilities document",
+        "note": "In progress in Design Hub (Sales) — post-demo read doc.",
+        "target": "2026-06-15"
+      },
+      {
+        "id": "budgetary-estimate-template",
+        "title": "Budgetary estimate template",
+        "note": "Standard budgetary estimate format for proposals.",
+        "target": "2026-07-01"
+      },
+      {
+        "id": "brochure",
+        "title": "Sales brochure",
+        "note": "Print/PDF leave-behind.",
+        "target": "2026-07-01"
+      },
+      {
+        "id": "sales-deck",
+        "title": "Sales deck",
+        "note": "Presentation for prospect meetings.",
+        "target": "2026-07-01"
+      }
+    ],
+    "finalized": [],
+    "messagingDocsUpdated": "2026-06-12"
+  },
+  "comments": [],
+  "commentsUpdated": "2026-06-01",
+  "approvals": {},
+  "approvalsUpdated": "2026-06-02"
+};
+
+(function () {
+  const app = document.getElementById('app');
+  const toast = document.getElementById('toast');
+  if (typeof REVIEW_DATA === 'undefined') {
+    app.innerHTML =
+      '<div class="not-found"><p>Review data not loaded. Run <code>node scripts/build-stakeholder-review.mjs</code> and open <code>stakeholder-review.html</code> (not the .template file).</p></div>';
+    return;
+  }
+  const q = REVIEW_DATA.queue;
+  const REVIEWERS = ['Mike', 'Nick'];
+  const LS_APPROVALS = 'luci-review-approvals';
+  let allComments = (REVIEW_DATA.comments || []).slice();
+  let approvalsByAsset = Object.assign({}, REVIEW_DATA.approvals || {});
+  let commentsApiEnabled = false;
+  let commentsApiFailed = false;
+  const POLL_MS = 12000;
+  let pollTimer = null;
+
+  function showToast(msg) {
+    toast.textContent = msg;
+    toast.classList.add('is-visible');
+    setTimeout(() => toast.classList.remove('is-visible'), 4000);
+  }
+
+  function commentsApiUrl() {
+    const configured = (q.commentsApiUrl || '').trim();
+    if (configured) return configured.replace(/\/$/, '');
+    if (location.protocol === 'http:' || location.protocol === 'https:') {
+      return location.origin + '/api/comments';
+    }
+    return '';
+  }
+
+  function loadApprovalsFromLocalStorage() {
+    try {
+      const raw = localStorage.getItem(LS_APPROVALS);
+      if (!raw) return;
+      const parsed = JSON.parse(raw);
+      if (parsed && typeof parsed === 'object') {
+        approvalsByAsset = Object.assign({}, approvalsByAsset, parsed);
+      }
+    } catch (e) { /* ignore */ }
+  }
+
+  function saveApprovalsToLocalStorage() {
+    try {
+      localStorage.setItem(LS_APPROVALS, JSON.stringify(approvalsByAsset));
+    } catch (e) { /* ignore */ }
+  }
+
+  function isLocalPreview() {
+    return location.protocol === 'file:';
+  }
+
+  function reviewStateSignature() {
+    return JSON.stringify({ comments: allComments, approvals: approvalsByAsset });
+  }
+
+  async function loadReviewStateFromApi() {
+    const url = commentsApiUrl();
+    if (!url) {
+      commentsApiEnabled = false;
+      commentsApiFailed = false;
+      loadApprovalsFromLocalStorage();
+      return false;
+    }
+    try {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 4000);
+      const res = await fetch(url, { signal: controller.signal });
+      clearTimeout(timer);
+      if (res.ok) {
+        const data = await res.json();
+        const prev = reviewStateSignature();
+        allComments = data.comments || [];
+        if (data.approvals && typeof data.approvals === 'object') {
+          approvalsByAsset = data.approvals;
+        }
+        commentsApiEnabled = true;
+        commentsApiFailed = false;
+        return prev !== reviewStateSignature();
+      }
+      commentsApiEnabled = false;
+      commentsApiFailed = true;
+      if (isLocalPreview()) loadApprovalsFromLocalStorage();
+      return false;
+    } catch (e) {
+      commentsApiEnabled = false;
+      commentsApiFailed = true;
+      if (isLocalPreview()) loadApprovalsFromLocalStorage();
+      return false;
+    }
+  }
+
+  function approvalAt(assetId, reviewer) {
+    const row = approvalsByAsset[assetId];
+    return row && row[reviewer] ? row[reviewer] : '';
+  }
+
+  function formatApprovalWhen(iso) {
+    if (!iso) return '';
+    const d = new Date(iso);
+    if (Number.isNaN(d.getTime())) return '';
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  }
+
+  function approvalSummaryText(assetId) {
+    return REVIEWERS.map((name) => {
+      const at = approvalAt(assetId, name);
+      return name + (at ? ' ✓' : ' —');
+    }).join(' · ');
+  }
+
+  async function toggleApproval(item, reviewer) {
+    const assetId = item.id;
+    if (commentsApiUrl() && !commentsApiEnabled) {
+      throw new Error('api-unavailable');
+    }
+    if (commentsApiEnabled) {
+      const res = await fetch(commentsApiUrl(), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'approval',
+          assetId,
+          reviewer,
+          assetTitle: item.title,
+          reviewUrl: new URL('#/review/' + encodeURIComponent(assetId), window.location.href).href,
+        }),
+      });
+      if (!res.ok) throw new Error('fail');
+      const data = await res.json();
+      if (data.approvals) approvalsByAsset = data.approvals;
+      return !!approvalAt(assetId, reviewer);
+    }
+    const row = Object.assign({}, approvalsByAsset[assetId] || {});
+    if (row[reviewer]) delete row[reviewer];
+    else row[reviewer] = new Date().toISOString();
+    if (Object.keys(row).length) approvalsByAsset[assetId] = row;
+    else delete approvalsByAsset[assetId];
+    saveApprovalsToLocalStorage();
+    return !!approvalAt(assetId, reviewer);
+  }
+
+  function formatDue(iso) {
+    if (!iso) return '';
+    return new Date(iso + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+  }
+
+  function dueClass(iso) {
+    if (!iso) return '';
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const diff = (new Date(iso + 'T12:00:00') - today) / 86400000;
+    if (diff < 0) return 'is-overdue';
+    if (diff <= 2) return 'is-soon';
+    return '';
+  }
+
+  function previewPath(item) {
+    const url = (item.previewUrl || '').trim();
+    if (url) return url.replace(/^\.\.\//, '').replace(/^\//, '');
+    const hub = (item.hubPreviewPath || '').trim();
+    if (hub) return hub.replace(/^ui_kits\//, '').replace(/^\//, '');
+    return '';
+  }
+
+  function previewSrc(item) {
+    const rel = previewPath(item);
+    if (!rel) return '';
+    const base = (q.previewBaseUrl || '').replace(/\/$/, '');
+    if (base) return base + '/' + rel;
+    return rel;
+  }
+
+  /** Root-absolute URL so iframe loads on Netlify (hash routes, rewrites). */
+  function previewIframeUrl(item) {
+    const src = previewSrc(item);
+    if (!src) return '';
+    if (/^https?:\/\//i.test(src)) return src;
+    const path = src.startsWith('/') ? src : '/' + src;
+    try {
+      return new URL(path, window.location.origin).href;
+    } catch (e) {
+      return path;
+    }
+  }
+
+  function isPublished(item) {
+    return !!(item.liveUrl || '').trim();
+  }
+
+  function useCollapsiblePreview(item) {
+    if (item.embedPreview === false) return false;
+    return !isPublished(item) && !!previewSrc(item);
+  }
+
+  function appendCommentsPanel(item, parent, extraClass) {
+    const panel = document.createElement('section');
+    panel.className = 'panel' + (extraClass ? ' ' + extraClass : '');
+    panel.innerHTML = '<h2 class="panel__title">Comments</h2>';
+    const threadEl = document.createElement('div');
+    threadEl.className = 'comments__thread';
+    paintCommentThread(threadEl, item);
+    panel.appendChild(threadEl);
+    panel.appendChild(renderCommentForm(item, threadEl));
+    parent.appendChild(panel);
+    return panel;
+  }
+
+  function appendAssetPreview(item, parent) {
+    const iframeUrl = previewIframeUrl(item);
+    if (!iframeUrl) return;
+
+    const wrap = document.createElement('div');
+    wrap.className = 'asset-preview is-collapsed';
+
+    const viewport = document.createElement('div');
+    viewport.className = 'asset-preview__viewport';
+    const iframe = document.createElement('iframe');
+    iframe.title = 'Preview: ' + item.title;
+    iframe.src = iframeUrl;
+    iframe.loading = 'lazy';
+    const fade = document.createElement('div');
+    fade.className = 'asset-preview__fade';
+    fade.setAttribute('aria-hidden', 'true');
+    viewport.appendChild(iframe);
+    viewport.appendChild(fade);
+
+    const bar = document.createElement('button');
+    bar.type = 'button';
+    bar.className = 'asset-preview__expand-bar';
+    bar.setAttribute('aria-expanded', 'false');
+    const label = document.createElement('span');
+    label.className = 'asset-preview__expand-label';
+    label.textContent = 'Expand full preview';
+    const chevron = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    chevron.setAttribute('class', 'asset-preview__chevron');
+    chevron.setAttribute('viewBox', '0 0 24 24');
+    chevron.setAttribute('aria-hidden', 'true');
+    chevron.innerHTML =
+      '<path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="square"/>';
+    bar.appendChild(label);
+    bar.appendChild(chevron);
+
+    function setExpanded(open) {
+      wrap.classList.toggle('is-expanded', open);
+      wrap.classList.toggle('is-collapsed', !open);
+      bar.setAttribute('aria-expanded', open ? 'true' : 'false');
+      label.textContent = open ? 'Collapse preview' : 'Expand full preview';
+    }
+    bar.addEventListener('click', () => setExpanded(!wrap.classList.contains('is-expanded')));
+
+    wrap.appendChild(viewport);
+    wrap.appendChild(bar);
+    parent.appendChild(wrap);
+  }
+
+  function appendLiveLinkBlock(item, parent) {
+    const url = (item.liveUrl || '').trim();
+    if (!url) return;
+
+    const live = document.createElement('div');
+    live.className = 'live-link';
+
+    const goLive = document.createElement('a');
+    goLive.className = 'btn';
+    goLive.href = url;
+    goLive.target = '_blank';
+    goLive.rel = 'noopener noreferrer';
+    goLive.textContent = 'Go to live site';
+    live.appendChild(goLive);
+    parent.appendChild(live);
+  }
+
+  function assetById(id) {
+    return (
+      (q.dueForReview || []).find((a) => a.id === id) ||
+      (q.approvedAssets || []).find((a) => a.id === id)
+    );
+  }
+
+  function commentsFor(assetId) {
+    return allComments.filter((c) => c.assetId === assetId).sort((a, b) => (b.at || '').localeCompare(a.at || ''));
+  }
+
+  function commentCount(assetId) {
+    return commentsFor(assetId).length;
+  }
+
+  function summaryLine(item) {
+    const t = (item.summary || item.context || '').trim();
+    return t.length > 120 ? t.slice(0, 117) + '…' : t;
+  }
+
+  function reviewVersionNum(item) {
+    const n = Number(item.reviewVersion);
+    return Number.isFinite(n) && n >= 1 ? Math.floor(n) : 1;
+  }
+
+  function versionHistoryList(item) {
+    const h = item.versionHistory;
+    if (!Array.isArray(h)) return [];
+    return h.slice().sort((a, b) => (b.version || 0) - (a.version || 0));
+  }
+
+  function renderVersionBlock(item) {
+    const v = reviewVersionNum(item);
+    const hist = versionHistoryList(item);
+    const current = hist.find((e) => e.version === v) || hist[0];
+    const note = (item.versionNote || (current && current.note) || '').trim();
+
+    const block = document.createElement('div');
+    block.className = 'version-block';
+
+    const kicker = document.createElement('p');
+    kicker.className = 'version-block__kicker';
+    kicker.textContent = 'Review version';
+    block.appendChild(kicker);
+
+    const currentRow = document.createElement('p');
+    currentRow.className = 'version-block__current';
+    let line = 'Version ' + v;
+    if (current && current.published) {
+      line += ' · Published ' + formatDue(String(current.published).slice(0, 10));
+    }
+    currentRow.textContent = line;
+    block.appendChild(currentRow);
+
+    if (note) {
+      const callout = document.createElement('p');
+      callout.className = 'version-block__note';
+      callout.innerHTML = '<strong>What changed</strong> ' + note;
+      block.appendChild(callout);
+    }
+
+    if (hist.length > 1) {
+      const h2 = document.createElement('h3');
+      h2.className = 'version-block__history-title';
+      h2.textContent = 'Version history';
+      block.appendChild(h2);
+      const ul = document.createElement('ul');
+      ul.className = 'version-history';
+      hist.forEach((entry) => {
+        const li = document.createElement('li');
+        li.className = 'version-history__row';
+        const label = document.createElement('span');
+        label.className = 'version-history__ver';
+        label.textContent = 'v' + entry.version;
+        const meta = document.createElement('span');
+        meta.className = 'version-history__meta';
+        meta.textContent = entry.published
+          ? formatDue(String(entry.published).slice(0, 10))
+          : '—';
+        li.appendChild(label);
+        li.appendChild(meta);
+        if (entry.note) {
+          const n = document.createElement('p');
+          n.className = 'version-history__note';
+          n.textContent = entry.note;
+          li.appendChild(n);
+        }
+        ul.appendChild(li);
+      });
+      block.appendChild(ul);
+    }
+
+    return block;
+  }
+
+  function getRoute() {
+    const m = (location.hash || '#/').match(/^#\/review\/([^/?#]+)/);
+    return m ? { view: 'detail', id: decodeURIComponent(m[1]) } : { view: 'queue' };
+  }
+
+  function navToQueue() {
+    location.hash = '#/';
+  }
+
+  function navToAsset(id) {
+    location.hash = '#/review/' + encodeURIComponent(id);
+  }
+
+  function renderApiStatus() {
+    if (!commentsApiUrl()) return null;
+    const el = document.createElement('p');
+    el.className = 'api-status' + (commentsApiEnabled ? ' api-status--live' : '');
+    if (commentsApiFailed) {
+      el.textContent =
+        'Sign-off and comments are not saving — the review API is unavailable. Refresh after deploy, or contact Jane.';
+      return el;
+    }
+    if (commentsApiEnabled) {
+      el.textContent = 'Approvals and comments sync live — this page refreshes every few seconds.';
+      return el;
+    }
+    return null;
+  }
+
+  function renderMasthead(deck) {
+    const h = document.createElement('header');
+    h.className = 'masthead';
+    const deckText =
+      deck ||
+      'Review queue for assets in progress. Canonical messaging and published work live in the sidebar.';
+    h.innerHTML =
+      '<div class="masthead__row">' +
+      '<a href="https://lucisystems.com" class="masthead__logo"><img src="https://content.app-us1.com/YzzLp9/2026/05/18/fa1f40ee-c6ac-4c7f-bd96-6a34971de1fa.png" alt="LUCI"></a>' +
+      '<span class="masthead__badge">Resources &amp; review</span></div>' +
+      '<h1 class="masthead__title">Review Queue</h1>' +
+      '<p class="masthead__deck"></p>';
+    h.querySelector('.masthead__deck').textContent = deckText;
+    const status = renderApiStatus();
+    if (status) h.appendChild(status);
+    return h;
+  }
+
+  function renderReviewBrief(item) {
+    const b = item.reviewBrief || {};
+    const desc = (b.description || b.whatItIs || item.summary || '').trim();
+    const ask = (b.reviewAsk || b.whatToReview || item.context || '').trim();
+    if (!desc && !ask) return null;
+
+    const box = document.createElement('div');
+    box.className = 'review-brief';
+    if (desc) {
+      const p1 = document.createElement('p');
+      p1.textContent = desc;
+      box.appendChild(p1);
+    }
+    if (ask) {
+      const p2 = document.createElement('p');
+      p2.innerHTML = '<strong>Please review for</strong> ' + ask.replace(/^Please review for\s*/i, '');
+      box.appendChild(p2);
+    }
+    return box;
+  }
+
+  function renderSidebar() {
+    const aside = document.createElement('aside');
+    aside.className = 'sidebar';
+    aside.setAttribute('aria-label', 'Reference');
+
+    const docs = document.createElement('div');
+    docs.className = 'sidebar__block';
+    docs.innerHTML = '<p class="sidebar__kicker">Messaging &amp; philosophy</p>';
+    const docUl = document.createElement('ul');
+    docUl.className = 'sidebar__list';
+    (q.messagingDocs || []).forEach((doc) => {
+      const li = document.createElement('li');
+      if (doc.url) {
+        const a = document.createElement('a');
+        const href = doc.url.startsWith('http')
+          ? doc.url
+          : new URL(doc.url.replace(/^\//, ''), window.location.href).href;
+        a.href = href;
+        a.target = '_top';
+        a.textContent = doc.title;
+        li.appendChild(a);
+        if (doc.note) {
+          const sub = document.createElement('span');
+          sub.className = 'is-sub';
+          sub.textContent = doc.note;
+          li.appendChild(sub);
+        }
+      } else {
+        const span = document.createElement('span');
+        span.className = 'is-muted';
+        span.textContent = doc.title;
+        li.appendChild(span);
+      }
+      docUl.appendChild(li);
+    });
+    docs.appendChild(docUl);
+    aside.appendChild(docs);
+
+    const fin = document.createElement('div');
+    fin.className = 'sidebar__block';
+    fin.id = 'published';
+    fin.innerHTML = '<p class="sidebar__kicker">Approved</p>';
+    const finUl = document.createElement('ul');
+    finUl.className = 'sidebar__list';
+    const approvedList = q.approvedAssets || q.finalized || [];
+    if (!approvedList.length) {
+      const li = document.createElement('li');
+      li.innerHTML = '<span class="is-muted">None yet</span>';
+      finUl.appendChild(li);
+    } else {
+      approvedList.forEach((f) => {
+        const li = document.createElement('li');
+        if (f.id) {
+          const a = document.createElement('a');
+          a.href = '#/review/' + encodeURIComponent(f.id);
+          a.textContent = f.title;
+          li.appendChild(a);
+        } else if (f.liveUrl) {
+          const a = document.createElement('a');
+          a.href = f.liveUrl;
+          a.target = '_blank';
+          a.rel = 'noopener';
+          a.textContent = f.title;
+          li.appendChild(a);
+        } else {
+          const titleEl = document.createElement('span');
+          titleEl.className = 'sidebar__item-title is-muted';
+          titleEl.textContent = f.title;
+          li.appendChild(titleEl);
+        }
+        if (f.note) {
+          const noteEl = document.createElement('span');
+          noteEl.className = 'is-sub';
+          noteEl.textContent = f.note;
+          li.appendChild(noteEl);
+        }
+        if (f.approved) {
+          const sub = document.createElement('span');
+          sub.className = 'is-sub';
+          sub.textContent = 'Approved ' + formatDue(f.approved);
+          li.appendChild(sub);
+        }
+        finUl.appendChild(li);
+      });
+    }
+    fin.appendChild(finUl);
+    aside.appendChild(fin);
+
+    return aside;
+  }
+
+  function renderQueueRow(item) {
+    const li = document.createElement('li');
+    li.className = 'queue-item';
+    const a = document.createElement('a');
+    a.className = 'queue-item__link';
+    a.href = '#/review/' + encodeURIComponent(item.id);
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      navToAsset(item.id);
+    });
+
+    const title = document.createElement('span');
+    title.className = 'queue-item__title';
+    title.textContent = item.title;
+
+    const sum = document.createElement('span');
+    sum.className = 'queue-item__summary';
+    sum.textContent = summaryLine(item);
+
+    const meta = document.createElement('div');
+    meta.className = 'queue-item__meta';
+    const verBadge = document.createElement('span');
+    verBadge.className = 'badge-version';
+    verBadge.textContent = 'v' + reviewVersionNum(item);
+    meta.appendChild(verBadge);
+    if (item.due) {
+      const due = document.createElement('span');
+      due.className = 'due ' + dueClass(item.due);
+      due.textContent = 'Due ' + formatDue(item.due);
+      meta.appendChild(due);
+    }
+    const cc = commentCount(item.id);
+    if (cc) {
+      const b = document.createElement('span');
+      b.className = 'badge-comments';
+      b.textContent = cc + ' comment' + (cc === 1 ? '' : 's');
+      meta.appendChild(b);
+    }
+    const appr = document.createElement('span');
+    const done = REVIEWERS.filter((n) => approvalAt(item.id, n)).length;
+    appr.className = 'badge-approval' + (done ? ' is-done' : '');
+    appr.textContent = approvalSummaryText(item.id);
+    appr.title = 'Stakeholder sign-off';
+    meta.appendChild(appr);
+
+    const action = document.createElement('span');
+    action.className = 'queue-item__action';
+    action.textContent = 'Review →';
+
+    a.appendChild(title);
+    a.appendChild(sum);
+    a.appendChild(meta);
+    a.appendChild(action);
+    li.appendChild(a);
+    return li;
+  }
+
+  function renderQueueView() {
+    const dueList = (q.dueForReview || []).slice().sort((a, b) => (a.due || '').localeCompare(b.due || ''));
+    const frag = document.createDocumentFragment();
+    frag.appendChild(renderMasthead());
+
+    const layout = document.createElement('div');
+    layout.className = 'layout';
+
+    const main = document.createElement('main');
+    main.className = 'main';
+
+    const zoneDue = document.createElement('section');
+    zoneDue.className = 'main__zone main__zone--for-review';
+    const hDue = document.createElement('h2');
+    hDue.className = 'section-heading';
+    hDue.textContent = 'Due for Review';
+    zoneDue.appendChild(hDue);
+    if (!dueList.length) {
+      const p = document.createElement('p');
+      p.className = 'empty';
+      p.textContent = 'Nothing waiting for review.';
+      zoneDue.appendChild(p);
+    } else {
+      const ul = document.createElement('ul');
+      ul.className = 'queue-list';
+      const seenGroups = new Set();
+      dueList.forEach((item) => {
+        const g = (item.group || '').trim();
+        if (g && !seenGroups.has(g)) {
+          seenGroups.add(g);
+          const hdr = document.createElement('li');
+          hdr.className = 'queue-group-header';
+          hdr.textContent = g;
+          ul.appendChild(hdr);
+        }
+        const row = renderQueueRow(item);
+        if (g) row.classList.add('queue-item--grouped');
+        ul.appendChild(row);
+      });
+      zoneDue.appendChild(ul);
+    }
+    main.appendChild(zoneDue);
+
+    const approvedList = (q.approvedAssets || []).slice().sort((a, b) =>
+      (b.approved || '').localeCompare(a.approved || '')
+    );
+    const zoneApproved = document.createElement('section');
+    zoneApproved.className = 'main__zone';
+    const hApproved = document.createElement('h2');
+    hApproved.className = 'section-heading';
+    hApproved.textContent = 'Approved Assets';
+    zoneApproved.appendChild(hApproved);
+    if (!approvedList.length) {
+      const p = document.createElement('p');
+      p.className = 'empty';
+      p.textContent = 'No approved assets yet.';
+      zoneApproved.appendChild(p);
+    } else {
+      const ul = document.createElement('ul');
+      ul.className = 'queue-list';
+      approvedList.forEach((item) => {
+        const li = document.createElement('li');
+        li.className = 'queue-item';
+        const a = document.createElement('a');
+        a.className = 'queue-item__link';
+        a.href = '#/review/' + encodeURIComponent(item.id);
+        const title = document.createElement('span');
+        title.className = 'queue-item__title';
+        title.textContent = item.title;
+        const sum = document.createElement('span');
+        sum.className = 'queue-item__summary';
+        sum.textContent = summaryLine(item);
+        const meta = document.createElement('span');
+        meta.className = 'queue-item__meta';
+        const badge = document.createElement('span');
+        badge.className = 'due is-done';
+        badge.textContent = 'Approved ' + formatDue(item.approved);
+        meta.appendChild(badge);
+        const action = document.createElement('span');
+        action.className = 'queue-item__action';
+        action.textContent = 'View →';
+        a.appendChild(title);
+        a.appendChild(sum);
+        a.appendChild(meta);
+        a.appendChild(action);
+        li.appendChild(a);
+        ul.appendChild(li);
+      });
+      zoneApproved.appendChild(ul);
+    }
+    main.appendChild(zoneApproved);
+
+    const zoneUp = document.createElement('section');
+    zoneUp.className = 'main__zone';
+    const hUp = document.createElement('h2');
+    hUp.className = 'section-heading';
+    hUp.textContent = 'Upcoming Assets';
+    zoneUp.appendChild(hUp);
+    if (!(q.upcoming || []).length) {
+      const p = document.createElement('p');
+      p.className = 'empty';
+      p.textContent = 'Nothing scheduled.';
+      zoneUp.appendChild(p);
+    } else {
+      const ul = document.createElement('ul');
+      ul.className = 'pipeline-list';
+      (q.upcoming || []).forEach((u) => {
+        const li = document.createElement('li');
+        li.innerHTML = '<strong></strong><span></span>';
+        li.querySelector('strong').textContent = u.title;
+        li.querySelector('span').textContent = (u.note || '') + (u.target ? ' · Target ' + formatDue(u.target) : '');
+        ul.appendChild(li);
+      });
+      zoneUp.appendChild(ul);
+    }
+    main.appendChild(zoneUp);
+
+    layout.appendChild(renderSidebar());
+    layout.appendChild(main);
+    frag.appendChild(layout);
+
+    const foot = document.createElement('footer');
+    foot.className = 'footer';
+    foot.innerHTML = 'Questions? <a href="mailto:jhaynie@lucisystems.com">Jane</a> · Updated ' + (q.updated || '—');
+    frag.appendChild(foot);
+    return frag;
+  }
+
+  function paintCommentThread(threadEl, item) {
+    threadEl.innerHTML = '';
+    const thread = commentsFor(item.id);
+    if (!thread.length) {
+      const empty = document.createElement('p');
+      empty.className = 'comments-empty';
+      empty.textContent = 'No comments yet.';
+      threadEl.appendChild(empty);
+      return;
+    }
+    thread.forEach((c) => {
+      const cEl = document.createElement('div');
+      cEl.className = 'comment';
+      cEl.innerHTML = '<p class="comment__meta"></p><p class="comment__body"></p>';
+      cEl.querySelector('.comment__meta').textContent =
+        (c.author || 'Reviewer') + (c.at ? ' · ' + formatDue(c.at.slice(0, 10)) : '');
+      cEl.querySelector('.comment__body').textContent = c.text;
+      threadEl.appendChild(cEl);
+    });
+  }
+
+  function appendApprovalPanel(item, parent) {
+    const panel = document.createElement('section');
+    panel.className = 'approval-panel';
+    panel.innerHTML = '<h2 class="approval-panel__title">Stakeholder sign-off</h2>';
+
+    REVIEWERS.forEach((name) => {
+      const row = document.createElement('div');
+      row.className = 'approval-row';
+
+      const label = document.createElement('span');
+      label.className = 'approval-row__name';
+      label.textContent = name;
+
+      const status = document.createElement('span');
+      status.className = 'approval-row__status';
+
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'btn btn--approve';
+
+      function paint() {
+        const at = approvalAt(item.id, name);
+        const approved = !!at;
+        status.textContent = approved ? 'Approved ' + formatApprovalWhen(at) : 'Not approved yet';
+        status.classList.toggle('is-approved', approved);
+        btn.textContent = approved ? 'Undo approval' : 'Approve';
+        btn.classList.toggle('is-approved', approved);
+        btn.setAttribute('aria-pressed', approved ? 'true' : 'false');
+      }
+
+      btn.addEventListener('click', async () => {
+        btn.disabled = true;
+        try {
+          const nowApproved = await toggleApproval(item, name);
+          paint();
+          showToast(nowApproved ? name + ' approved this asset.' : 'Approval removed.');
+        } catch (e) {
+          showToast(commentsApiFailed ? 'Sign-off is not saving — API unavailable.' : 'Could not save — try again.');
+        } finally {
+          btn.disabled = false;
+        }
+      });
+
+      paint();
+      row.appendChild(label);
+      row.appendChild(status);
+      row.appendChild(btn);
+      panel.appendChild(row);
+    });
+
+    if (!commentsApiEnabled) {
+      const hint = document.createElement('p');
+      hint.className = 'approval-panel__hint';
+      if (commentsApiFailed) {
+        hint.textContent = 'Sign-off cannot be saved until the review API is back online.';
+      } else if (commentsApiUrl()) {
+        hint.textContent = 'Loading sign-off status…';
+      } else {
+        hint.textContent = 'Local preview only — sign-off is saved in this browser.';
+      }
+      panel.appendChild(hint);
+    }
+
+    parent.appendChild(panel);
+    return panel;
+  }
+
+  function renderCommentForm(item, threadEl) {
+    const form = document.createElement('div');
+    form.className = 'comment-form';
+    const nameLabel = document.createElement('label');
+    nameLabel.textContent = 'Your name';
+    const nameSel = document.createElement('select');
+    nameSel.innerHTML = '<option value="">Select…</option><option value="Mike">Mike</option><option value="Nick">Nick</option>';
+    const textLabel = document.createElement('label');
+    textLabel.textContent = 'Your feedback';
+    const textarea = document.createElement('textarea');
+    textarea.placeholder = 'General notes on this asset…';
+    const submit = document.createElement('button');
+    submit.className = 'btn';
+    submit.type = 'button';
+    submit.textContent = 'Post comment';
+    submit.addEventListener('click', async () => {
+      if (!commentsApiEnabled) {
+        showToast('Comments save on the live review site.');
+        return;
+      }
+      const who = nameSel.value;
+      const text = textarea.value.trim();
+      if (!who) { showToast('Select your name.'); return; }
+      if (!text) { showToast('Add feedback first.'); return; }
+      submit.disabled = true;
+      try {
+        const res = await fetch(commentsApiUrl(), {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            assetId: item.id,
+            assetTitle: item.title,
+            author: who,
+            text,
+            reviewUrl: new URL('#/review/' + encodeURIComponent(item.id), window.location.href).href,
+          }),
+        });
+        if (!res.ok) throw new Error('fail');
+        const data = await res.json();
+        if (data.comment) allComments.push(data.comment);
+        textarea.value = '';
+        paintCommentThread(threadEl, item);
+        showToast('Comment posted.');
+      } catch (e) {
+        showToast('Could not save — try again.');
+      } finally {
+        submit.disabled = false;
+      }
+    });
+    if (!commentsApiEnabled) {
+      submit.disabled = true;
+      const hint = document.createElement('p');
+      hint.className = 'comment-form__hint';
+      hint.textContent = commentsApiFailed
+        ? 'Comments cannot be posted until the review API is back online.'
+        : (commentsApiUrl() ? 'Loading comment form…' : 'Comments save on the published review host (Netlify).');
+      form.appendChild(hint);
+    }
+    form.appendChild(nameLabel);
+    form.appendChild(nameSel);
+    form.appendChild(textLabel);
+    form.appendChild(textarea);
+    form.appendChild(submit);
+    return form;
+  }
+
+  function renderDetailView(id) {
+    const item = assetById(id);
+    const frag = document.createDocumentFragment();
+
+    if (!item) {
+      frag.appendChild(renderMasthead());
+      const nf = document.createElement('div');
+      nf.className = 'not-found';
+      nf.innerHTML = '<p><a href="#/" class="back-link">← Back to queue</a></p>';
+      frag.appendChild(nf);
+      return frag;
+    }
+
+    document.title = 'Review · ' + item.title + ' · LUCI';
+    frag.appendChild(renderMasthead());
+
+    const detail = document.createElement('div');
+    detail.className = 'detail';
+
+    const back = document.createElement('a');
+    back.href = '#/';
+    back.className = 'back-link';
+    back.textContent = '← Back to queue';
+    back.addEventListener('click', (e) => { e.preventDefault(); navToQueue(); });
+    detail.appendChild(back);
+
+    const head = document.createElement('div');
+    head.className = 'detail__head';
+    const h1 = document.createElement('h1');
+    h1.className = 'detail__title';
+    h1.textContent = item.title;
+    head.appendChild(h1);
+    const ver = document.createElement('span');
+    ver.className = 'badge-version';
+    ver.textContent = 'v' + reviewVersionNum(item);
+    head.appendChild(ver);
+    if (item.due) {
+      const due = document.createElement('span');
+      due.className = 'due ' + dueClass(item.due);
+      due.textContent = 'Due ' + formatDue(item.due);
+      head.appendChild(due);
+    }
+    detail.appendChild(head);
+
+    detail.appendChild(renderVersionBlock(item));
+
+    const brief = renderReviewBrief(item);
+    if (brief) detail.appendChild(brief);
+
+    appendApprovalPanel(item, detail);
+
+    const prev = previewPath(item);
+    const collapsed = useCollapsiblePreview(item);
+
+    if (collapsed && prev) {
+      appendAssetPreview(item, detail);
+      appendCommentsPanel(item, detail, 'panel--below-preview');
+    } else {
+      if (isPublished(item)) appendLiveLinkBlock(item, detail);
+      appendCommentsPanel(item, detail);
+    }
+
+    frag.appendChild(detail);
+
+    const foot = document.createElement('footer');
+    foot.className = 'footer';
+    foot.innerHTML = '<a href="#/" class="back-link">← Back to queue</a> · <a href="mailto:jhaynie@lucisystems.com">Jane</a>';
+    foot.querySelector('.back-link').addEventListener('click', (e) => { e.preventDefault(); navToQueue(); });
+    frag.appendChild(foot);
+    return frag;
+  }
+
+  function render() {
+    const route = getRoute();
+    app.innerHTML = '';
+    document.title = route.view === 'detail' ? 'LUCI · Stakeholder Review' : 'LUCI · Review Queue';
+    if (route.view === 'detail') {
+      app.appendChild(renderDetailView(route.id));
+    } else {
+      app.appendChild(renderQueueView());
+    }
+  }
+
+  function startPolling() {
+    if (pollTimer || !commentsApiEnabled) return;
+    pollTimer = setInterval(async () => {
+      const changed = await loadReviewStateFromApi();
+      if (changed) {
+        render();
+        showToast('Review activity updated.');
+      }
+    }, POLL_MS);
+  }
+
+  function stopPolling() {
+    if (!pollTimer) return;
+    clearInterval(pollTimer);
+    pollTimer = null;
+  }
+
+  async function refreshReviewState() {
+    const changed = await loadReviewStateFromApi();
+    render();
+    if (commentsApiEnabled) startPolling();
+    else stopPolling();
+    return changed;
+  }
+
+  function init() {
+    if (!location.hash) location.hash = '#/';
+    render();
+    window.addEventListener('hashchange', render);
+    refreshReviewState();
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible' && commentsApiUrl()) {
+        refreshReviewState();
+      }
+    });
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>

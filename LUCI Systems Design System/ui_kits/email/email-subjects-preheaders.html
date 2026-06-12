@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Email subject lines &amp; preheader text</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif;
+      background: #F5F8FA;
+      color: #354F5C;
+      font-size: 15px;
+      line-height: 1.6;
+      padding: 48px 24px 80px;
+    }
+    .wrap { max-width: 760px; margin: 0 auto; }
+
+    .page-head { margin-bottom: 40px; padding-bottom: 24px; border-bottom: 1px solid #D4D9DC; }
+    .page-head__eyebrow {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+      color: #176B54; margin-bottom: 10px;
+    }
+    .page-head__title { font-size: 26px; font-weight: 700; letter-spacing: -0.025em; line-height: 1.1; color: #1C2B33; margin-bottom: 12px; }
+    .page-head__note { font-size: 13px; line-height: 1.6; color: #49616E; max-width: 60ch; }
+    .page-head__note code {
+      font-family: 'SF Mono', 'Fira Mono', monospace;
+      font-size: 12px; background: #E5EDF1; padding: 1px 5px; border-radius: 3px; color: #1C2B33;
+    }
+
+    .email-list { list-style: none; }
+    .email-item { padding: 24px 0; border-bottom: 1px solid #D4D9DC; }
+    .email-item:last-child { border-bottom: none; }
+
+    .email-item__num {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+      color: #176B54; margin-bottom: 6px;
+    }
+    .email-item__title { font-size: 16px; font-weight: 700; color: #1C2B33; margin-bottom: 14px; }
+
+    .field { display: grid; grid-template-columns: 130px 1fr; gap: 8px 16px; margin-bottom: 10px; align-items: baseline; }
+    .field:last-child { margin-bottom: 0; }
+    .field__label {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      color: #8A969D; padding-top: 3px;
+    }
+    .field__value { font-size: 14px; line-height: 1.55; color: #354F5C; }
+    .field__value--subject { font-size: 15px; font-weight: 500; color: #1C2B33; }
+
+    .tag {
+      display: inline-block; font-size: 11px; font-weight: 600;
+      background: #E5EDF1; color: #49616E; padding: 2px 7px; border-radius: 3px;
+      font-family: 'SF Mono', 'Fira Mono', monospace; letter-spacing: 0;
+    }
+
+    .hub-back { display: inline-block; font-size: 12px; font-weight: 600; color: #176B54; text-decoration: none; margin-bottom: 32px; }
+    .hub-back:hover { text-decoration: underline; }
+
+    .field { display: grid; grid-template-columns: 130px 1fr auto; gap: 8px 12px; margin-bottom: 10px; align-items: center; }
+
+    .copy-btn {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-family: 'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.04em;
+      color: #176B54; background: none; border: 1px solid #C2CECC;
+      padding: 4px 10px; border-radius: 4px; cursor: pointer;
+      white-space: nowrap; transition: background 0.12s, color 0.12s;
+      user-select: none;
+    }
+    .copy-btn:hover { background: #E8F5F1; border-color: #176B54; }
+    .copy-btn.copied { color: #fff; background: #176B54; border-color: #176B54; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a href="../../index.html" class="hub-back">&larr; Design Hub</a>
+
+    <div class="page-head">
+      <p class="page-head__eyebrow">Customer email journey</p>
+      <h1 class="page-head__title">Subject lines &amp; preheader text</h1>
+      <p class="page-head__note">Enter the subject line and preheader text manually each time you create a new campaign in ActiveCampaign. Personalization tags: <code>%FIRSTNAME%</code> and <code>%PROPERTY%</code>. Email 6 uses <code>#PropertyName#</code> in the subject line — confirm the correct AC tag before sending.</p>
+    </div>
+
+    <ul class="email-list">
+
+      <li class="email-item">
+        <p class="email-item__num">Email 1 · Welcome</p>
+        <div class="field">
+          <span class="field__label">Subject</span>
+          <span class="field__value field__value--subject">This is your official welcome to the LUCI family!</span>
+          <button class="copy-btn" data-copy="This is your official welcome to the LUCI family!">Copy</button>
+        </div>
+        <div class="field">
+          <span class="field__label">Preheader</span>
+          <span class="field__value">Here's what happens next, and what we need from you before your kick-off call.</span>
+          <button class="copy-btn" data-copy="Here's what happens next, and what we need from you before your kick-off call.">Copy</button>
+        </div>
+      </li>
+
+      <li class="email-item">
+        <p class="email-item__num">Email 2 · Pre-kickoff</p>
+        <div class="field">
+          <span class="field__label">Subject</span>
+          <span class="field__value field__value--subject">A few reminders before your LUCI kickoff call</span>
+          <button class="copy-btn" data-copy="A few reminders before your LUCI kickoff call">Copy</button>
+        </div>
+        <div class="field">
+          <span class="field__label">Preheader</span>
+          <span class="field__value">LUCI is in motion, and here's what we need from you.</span>
+          <button class="copy-btn" data-copy="LUCI is in motion, and here's what we need from you.">Copy</button>
+        </div>
+      </li>
+
+      <li class="email-item">
+        <p class="email-item__num">Email 3 · Install confirmed</p>
+        <div class="field">
+          <span class="field__label">Subject</span>
+          <span class="field__value field__value--subject">Your LUCI install date is confirmed — here's what to prepare</span>
+          <button class="copy-btn" data-copy="Your LUCI install date is confirmed — here's what to prepare">Copy</button>
+        </div>
+        <div class="field">
+          <span class="field__label">Preheader</span>
+          <span class="field__value">A few things to have ready before the team arrives on <code class="tag">%INSTALLATION_DATE%</code>.</span>
+          <button class="copy-btn" data-copy="A few things to have ready before the team arrives on %INSTALLATION_DATE%.">Copy</button>
+        </div>
+      </li>
+
+      <li class="email-item">
+        <p class="email-item__num">Email 4 · Pre-install</p>
+        <div class="field">
+          <span class="field__label">Subject</span>
+          <span class="field__value field__value--subject">We are one week from your LUCI install — let's confirm a few details</span>
+          <button class="copy-btn" data-copy="We are one week from your LUCI install — let's confirm a few details">Copy</button>
+        </div>
+        <div class="field">
+          <span class="field__label">Preheader</span>
+          <span class="field__value">Three quick items to have in place before <code class="tag">%INSTALLATION_DATE%</code>.</span>
+          <button class="copy-btn" data-copy="Three quick items to have in place before %INSTALLATION_DATE%.">Copy</button>
+        </div>
+      </li>
+
+      <li class="email-item">
+        <p class="email-item__num">Email 5 · Go live</p>
+        <div class="field">
+          <span class="field__label">Subject</span>
+          <span class="field__value field__value--subject">LUCI is live! Check out these resources and support access</span>
+          <button class="copy-btn" data-copy="LUCI is live! Check out these resources and support access">Copy</button>
+        </div>
+        <div class="field">
+          <span class="field__label">Preheader</span>
+          <span class="field__value">Everything you need to get the most out of your system, in one place.</span>
+          <button class="copy-btn" data-copy="Everything you need to get the most out of your system, in one place.">Copy</button>
+        </div>
+      </li>
+
+      <li class="email-item">
+        <p class="email-item__num">Email 6 · Survey</p>
+        <div class="field">
+          <span class="field__label">Subject</span>
+          <span class="field__value field__value--subject">How did we do at <code class="tag">#PropertyName#</code>?</span>
+          <button class="copy-btn" data-copy="How did we do at #PropertyName#?">Copy</button>
+        </div>
+        <div class="field">
+          <span class="field__label">Preheader</span>
+          <span class="field__value">Takes two minutes to share your experience — we're listening.</span>
+          <button class="copy-btn" data-copy="Takes two minutes to share your experience — we're listening.">Copy</button>
+        </div>
+      </li>
+
+      <li class="email-item">
+        <p class="email-item__num">Email 7 · Signal welcome</p>
+        <div class="field">
+          <span class="field__label">Subject</span>
+          <span class="field__value field__value--subject">Welcome to The Signal, LUCI's customer newsletter</span>
+          <button class="copy-btn" data-copy="Welcome to The Signal, LUCI's customer newsletter">Copy</button>
+        </div>
+        <div class="field">
+          <span class="field__label">Preheader</span>
+          <span class="field__value">A monthly look at what's new in LUCI, straight from the engineers who build it.</span>
+          <button class="copy-btn" data-copy="A monthly look at what's new in LUCI, straight from the engineers who build it.">Copy</button>
+        </div>
+      </li>
+
+      <li class="email-item">
+        <p class="email-item__num">Email 8 · 30-day check-in</p>
+        <div class="field">
+          <span class="field__label">Subject</span>
+          <span class="field__value field__value--subject">You're one month in with LUCI — how is everything running?</span>
+          <button class="copy-btn" data-copy="You're one month in with LUCI — how is everything running?">Copy</button>
+        </div>
+        <div class="field">
+          <span class="field__label">Preheader</span>
+          <span class="field__value">Your FAQ, feature request process, and support portal.</span>
+          <button class="copy-btn" data-copy="Your FAQ, feature request process, and support portal.">Copy</button>
+        </div>
+      </li>
+
+      <li class="email-item">
+        <p class="email-item__num">Email 9 · 60-day check-in</p>
+        <div class="field">
+          <span class="field__label">Subject</span>
+          <span class="field__value field__value--subject">Your LUCI Field Activation Guide is ready</span>
+          <button class="copy-btn" data-copy="Your LUCI Field Activation Guide is ready">Copy</button>
+        </div>
+        <div class="field">
+          <span class="field__label">Preheader</span>
+          <span class="field__value">A practical look at what each team can do with the platform.</span>
+          <button class="copy-btn" data-copy="A practical look at what each team can do with the platform.">Copy</button>
+        </div>
+      </li>
+
+      <li class="email-item">
+        <p class="email-item__num">Email 10 · 90-day check-in</p>
+        <div class="field">
+          <span class="field__label">Subject</span>
+          <span class="field__value field__value--subject">How are we going to elevate your guest experience next year?</span>
+          <button class="copy-btn" data-copy="How are we going to elevate your guest experience next year?">Copy</button>
+        </div>
+        <div class="field">
+          <span class="field__label">Preheader</span>
+          <span class="field__value">A few things worth putting on your radar as you head into budget season.</span>
+          <button class="copy-btn" data-copy="A few things worth putting on your radar as you head into budget season.">Copy</button>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+
+  <script>
+    document.querySelectorAll('.copy-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var text = btn.getAttribute('data-copy');
+        navigator.clipboard.writeText(text).then(function() {
+          btn.textContent = 'Copied!';
+          btn.classList.add('copied');
+          setTimeout(function() {
+            btn.textContent = 'Copy';
+            btn.classList.remove('copied');
+          }, 1800);
+        }).catch(function() {
+          // Fallback for restricted iframe contexts
+          var ta = document.createElement('textarea');
+          ta.value = text;
+          ta.style.position = 'fixed';
+          ta.style.opacity = '0';
+          document.body.appendChild(ta);
+          ta.focus();
+          ta.select();
+          try { document.execCommand('copy'); } catch(e) {}
+          document.body.removeChild(ta);
+          btn.textContent = 'Copied!';
+          btn.classList.add('copied');
+          setTimeout(function() {
+            btn.textContent = 'Copy';
+            btn.classList.remove('copied');
+          }, 1800);
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

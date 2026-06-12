@@ -184,57 +184,14 @@
             </td>
           </tr>
 
-          <!-- ============ SIGNATURE ============ -->
-          <tr>
-            <td class="px-side" style="padding: 28px 36px 36px;">
-              <p style="font-family:'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif; font-weight:400; font-size:15px; line-height:22px; color:#10232D; margin:0 0 12px 0;">
-                {{signoff_line}}
-              </p>
-              <p style="font-family:'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif; font-weight:600; font-size:15px; line-height:20px; color:#10232D; margin:0;">
-                {{sender_name}}
-              </p>
-              <p style="font-family:'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif; font-weight:400; font-size:13px; line-height:18px; color:#535559; margin:2px 0 0 0;">
-                {{sender_title}} · LUCI Systems
-              </p>
-            </td>
-          </tr>
-
-          <!-- ============ FOOTER ============ -->
-          <tr>
-            <td style="background-color:#10232D; padding: 24px 36px;">
-              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
-                <tr>
-                  <td valign="middle">
-                    <img src="../../assets/logos/luci-mark-mint.png" alt="LUCI" height="24" style="height:24px; display:block;">
-                  </td>
-                  <td valign="middle" align="right" style="font-family:'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif; font-size:11px; line-height:18px; color:#A6B0B6;">
-                    <a href="https://lucisystems.com" style="color:#A6B0B6; text-decoration:none;">lucisystems.com</a>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="2" style="padding-top:14px; font-family:'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif; font-size:11px; line-height:18px; color:#535559;">
-                    <a href="mailto:hello@lucisystems.com" style="color:#A6B0B6; text-decoration:underline;">hello@lucisystems.com</a>
-                    &nbsp;·&nbsp;
-                    <a href="{{help_url}}" style="color:#A6B0B6; text-decoration:underline;">Help center</a>
-                    &nbsp;·&nbsp;
-                    <a href="{{unsubscribe_url}}" style="color:#535559; text-decoration:underline;">Unsubscribe</a>
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
+          <!-- Body ends here. In ActiveCampaign the Signature module and Footer
+               module are stacked below the body as separate reusable blocks:
+                 1. signature-module-activecampaign.html  (sender sign-off, swappable)
+                 2. footer-module-activecampaign.html      (logo, tagline, links, %SENDER-INFO%) -->
+          <tr><td style="height:36px; line-height:36px; font-size:0;">&nbsp;</td></tr>
 
         </table>
         <!-- ==================== /EMAIL CONTAINER ==================== -->
-
-        <!-- Tiny legal line below container -->
-        <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" class="container" style="width:600px; max-width:600px;">
-          <tr>
-            <td align="center" style="padding: 14px 12px 4px; font-family:'Space Grotesk', 'Segoe UI', system-ui, Arial, sans-serif; font-size:11px; line-height:17px; color:#535559;">
-              © {{year}} LUCI Systems · The Orchestration Engine for Enterprise Multimedia
-            </td>
-          </tr>
-        </table>
 
       </td>
     </tr>

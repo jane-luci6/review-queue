@@ -1,0 +1,825 @@
+/* ============================================================================
+   LUCI Sales Document System — reusable stylesheet
+   Track C (Static Document) · PDF-first (US Letter) · Space Grotesk only.
+
+   Canonical foundation + components shared by all LUCI sales collateral
+   (capability docs, field activation guides, FAQs, leave-behinds).
+   Derived from the capabilities document. Pair with `_template-sales-document.html`
+   and the `luci-sales-document-system` rule.
+
+   USAGE
+   - Each `.doc-page` is one printed sheet. Light reading pages; dark bookends
+     (cover/close); contained dark panels for proof/quote.
+   - Prefix is `doc-`. Don't restyle these base classes per-asset; add a
+     page-scoped override class (e.g. `.doc-page--intro .doc-figure { ... }`)
+     when one page needs to differ.
+   - 8px spacing scale. Whitespace + hairlines for separation, not boxes.
+   ========================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy-deep: #0A161C;
+  --navy: #10232D;
+  --navy-mid: #314955;
+  --navy-muted: #49616E;
+  --mint: #68E3BE;                 /* bright accent — DARK surfaces only */
+  --mint-rgb: 104, 227, 190;
+  --accent-light: #176B54;         /* deep accent — small labels/links on LIGHT (AA) */
+  --off-white: #F5F8FA;            /* reading canvas (never pure #fff) */
+  --sand: #E5E3DF;                 /* warm light panel tone */
+  --tint: #EEF2F4;                 /* callout fill on light */
+  --rule-light: #DBE1E4;           /* hairline on light — used sparingly */
+  --ink: #354F5C;                  /* near-black body (never pure #000) */
+  --ink-strong: #1C2B33;
+  --font: 'Space Grotesk', 'Trebuchet MS', sans-serif;
+
+  --page-w: 8.5in;
+  --page-h: 11in;
+  --page-pad: 0.55in;
+  --measure: 64ch;                 /* reading measure cap */
+}
+
+html { -webkit-font-smoothing: antialiased; }
+
+body {
+  font-family: var(--font);
+  background: #c8cdd0;             /* desk surround (screen only) */
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Screen-only return strip back to the hub */
+.doc-hub-link {
+  max-width: var(--page-w);
+  margin: 0 auto;
+  padding: 16px 16px 8px;
+  font-size: 12px;
+  text-align: center;
+  color: var(--navy-muted);
+}
+.doc-hub-link a { color: var(--navy-mid); font-weight: 600; text-decoration: none; }
+.doc-hub-link a:hover { text-decoration: underline; }
+
+.doc { max-width: var(--page-w); margin: 0 auto; }
+
+/* ── Page sheet ───────────────────────────────────────────────────────────── */
+.doc-page {
+  position: relative;
+  width: var(--page-w);
+  min-height: var(--page-h);
+  padding: var(--page-pad);
+  background: var(--off-white);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+@media screen {
+  .doc-page { margin: 24px auto; box-shadow: 0 6px 28px rgba(10, 22, 28, 0.16); }
+}
+
+@page { size: letter; margin: 0; }
+
+@media print {
+  body { background: #fff; }
+  .doc-hub-link { display: none; }
+  .doc-page {
+    margin: 0;
+    box-shadow: none;
+    page-break-after: always;
+    break-after: page;
+  }
+  .doc-page:last-child { page-break-after: auto; break-after: auto; }
+  /* Force background fills/images to print (navy panels, mint bars, halos, masks) */
+  .doc-page--dark, .doc-page--framing, .doc-panel, .doc-shot__bar, .doc-feature, .doc-takeaway,
+  .doc-stage::before, .doc-pill-icon, .doc-orbit__hub, .doc-orbit__ring {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+/* ── Dark bookend pages (cover, close) ─────────────────────────────────────── */
+.doc-page--dark { background: var(--navy); color: rgba(235, 245, 248, 0.86); }
+
+.doc-page--dark::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--mint);
+}
+
+/* ── Shared type ───────────────────────────────────────────────────────────── */
+.doc-page__head { margin-bottom: 22px; }
+
+/* Kicker: tracked uppercase label above a section. Deep accent on light. */
+.doc-kicker {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+  margin-bottom: 14px;
+}
+
+/* Section designation — oversized ghosted number behind a labelled kicker, so a
+   page reads as an obvious numbered chapter (newsletter Issue 01 device). */
+.doc-page__head--mark { position: relative; padding-top: 0.46in; }
+.doc-page__head--mark > * { position: relative; z-index: 1; }
+
+.doc-secnum {
+  position: absolute;
+  top: -0.16in;
+  left: -0.03in;
+  z-index: 0;
+  font-size: 150px;
+  line-height: 0.8;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  color: rgba(23, 107, 84, 0.09);   /* ghosted deep-accent */
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Kicker variant paired with the section number (adds a short accent rule). */
+.doc-kicker--force {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  color: var(--accent-light);
+}
+.doc-kicker--force::before {
+  content: '';
+  width: 26px;
+  height: 3px;
+  background: var(--accent-light);
+  flex: none;
+}
+
+/* Eyebrow: smaller label, muted (used on dark cover/close; --mint on dark). */
+.doc-eyebrow {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--navy-muted);
+  margin-bottom: 12px;
+}
+.doc-eyebrow--mint { color: var(--mint); }
+
+/* Statement: run-in lead — bold opening phrase flows into lighter body copy.
+   This is the primary page-opening headline pattern (NOT display font). */
+.doc-statement {
+  max-width: 60ch;
+  font-size: 18px;
+  line-height: 1.6;
+  font-weight: 400;
+  color: var(--ink);
+}
+.doc-statement strong {
+  font-weight: 700;
+  font-size: 23px;
+  line-height: 1.3;
+  letter-spacing: -0.018em;
+  color: var(--ink-strong);
+}
+
+/* Standalone headline + lead (alternative to the run-in statement). */
+.doc-h {
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1.16;
+  letter-spacing: -0.022em;
+  color: var(--ink-strong);
+  max-width: 26ch;
+}
+.doc-lead {
+  margin-top: 16px;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink);
+  max-width: var(--measure);
+}
+
+/* Editor note — visible on screen, hidden in print. Use for "swap per send" etc. */
+.doc-note { font-size: 10px; color: var(--navy-muted); margin-top: 8px; }
+@media print { .doc-note { display: none; } }
+
+/* ── Running footer ────────────────────────────────────────────────────────── */
+.doc-foot {
+  margin-top: auto;               /* pins footer to base of the sheet */
+  padding-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--navy-muted);
+  border-top: 1px solid var(--rule-light);
+}
+.doc-foot__page { font-weight: 600; }
+
+/* ── Cover ─────────────────────────────────────────────────────────────────── */
+.doc-page--cover { padding-top: 0.7in; }
+.doc-cover__logo { height: 30px; width: auto; display: block; }
+.doc-cover__hero { margin-top: auto; padding: 64px 0; }
+
+.doc-cover__tagline {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.13;
+  letter-spacing: -0.025em;
+  color: var(--off-white);
+  max-width: 18ch;
+}
+.doc-cover__sub {
+  margin-top: 20px;
+  font-size: 17px;
+  line-height: 1.5;
+  color: rgba(235, 245, 248, 0.9);
+  max-width: 36ch;
+}
+.doc-cover__prepared {
+  margin-top: auto;
+  padding-top: 32px;
+  border-top: 1px solid rgba(var(--mint-rgb), 0.22);
+}
+.doc-cover__client {
+  display: block;
+  max-height: 44px;
+  max-width: 220px;
+  filter: brightness(0) invert(1);   /* normalize a client logo to white on navy */
+  opacity: 0.92;
+}
+
+/* ── Hero figure (system diagram / illustration) ───────────────────────────── */
+.doc-figure { margin: 0; text-align: center; }
+.doc-figure img {
+  display: block;
+  width: 100%;
+  max-width: 660px;
+  max-height: 3.6in;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+/* ── Takeaway — contained callout (deep-green bar + tint fill) ──────────────── */
+.doc-takeaway {
+  max-width: 64ch;
+  margin: 34px auto 0;
+  padding: 18px 26px;
+  background: var(--tint);
+  border-left: 4px solid var(--accent-light);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.doc-takeaway strong { color: var(--ink-strong); font-weight: 700; }
+
+/* ── Highlighted lead-in (light pull-quote, deep-green bar) ─────────────────── */
+/* Use instead of a full-bleed dark band to emphasize a single line. */
+.doc-leadin {
+  margin: 18px 0 6px;
+  border-left: 4px solid var(--accent-light);
+  padding: 4px 0 4px 22px;
+}
+.doc-leadin__text {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--ink-strong);
+}
+.doc-leadin__accent { color: var(--accent-light); }
+
+/* ── Numbered force blocks — establish "01 / 02" identities on an overview ──── */
+/* Mirrors the section-designation watermark so 01/02 track across the document. */
+.doc-forces-intro {
+  margin-top: 28px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--ink);
+}
+.doc-forces-intro strong { color: var(--ink-strong); font-weight: 700; }
+
+.doc-forces2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 48px;
+  max-width: 600px;
+  margin: 20px auto 0;
+}
+
+.doc-force {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 30px;
+}
+.doc-force > :not(.doc-force__num) { position: relative; z-index: 1; }
+
+.doc-force__num {
+  position: absolute;
+  top: -0.18in;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 0;
+  font-size: 108px;
+  line-height: 0.8;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  color: rgba(23, 107, 84, 0.09);
+  pointer-events: none;
+  user-select: none;
+}
+.doc-force .doc-pill-icon { margin-bottom: 12px; }
+
+.doc-force__name {
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--ink-strong);
+  margin-bottom: 5px;
+}
+.doc-force__role {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+  margin-bottom: 9px;
+}
+.doc-force__text {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ink);
+  max-width: 32ch;
+}
+
+/* ── Pillars (value props: icon tile + headline + short body) ───────────────── */
+.doc-pillars { list-style: none; margin-top: 16px; }
+.doc-pillars li { padding: 16px 0; }
+.doc-pillars li + li { border-top: 1px solid var(--rule-light); }   /* hairline, no boxes */
+
+/* Mint icon on a small navy tile — bright accent only shows on a dark surface. */
+.doc-pillars--icon li { display: grid; grid-template-columns: 36px 1fr; gap: 16px; align-items: start; }
+
+.doc-pill-icon {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--navy);
+  border-radius: 8px;
+  color: var(--mint);
+  flex: none;
+}
+.doc-pill-icon svg { width: 18px; height: 18px; display: block; }
+
+.doc-pillars__head {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--ink-strong);
+  margin-bottom: 6px;
+}
+.doc-pillars__body { font-size: 13.5px; line-height: 1.55; color: var(--ink); max-width: 72ch; }
+
+/* ── Feature chips — name-only capabilities, de-boxed with checkmarks ───────── */
+.doc-features { margin-top: 30px; }
+.doc-features__kicker {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+  margin-bottom: 14px;
+}
+.doc-features__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px 28px;
+}
+.doc-feature {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 6px 0;
+}
+.doc-feature::before {
+  content: '';
+  width: 14px;
+  height: 14px;
+  flex: none;
+  background-color: var(--accent-light);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") no-repeat center / contain;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+.doc-feature__name { font-size: 13px; font-weight: 600; line-height: 1.3; color: var(--ink-strong); }
+
+/* ── Functions / single-line rows (label + supporting line) ────────────────── */
+.doc-functions { list-style: none; margin-top: 14px; }
+.doc-fn { padding: 22px 0; }
+.doc-fn + .doc-fn { border-top: 1px solid var(--rule-light); }
+.doc-fn__label {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--ink-strong);
+  margin-bottom: 6px;
+}
+.doc-fn__text { font-size: 14.5px; line-height: 1.5; color: var(--ink); max-width: 80ch; }
+
+/* ── Teams / compact two-column list (label + short text) ──────────────────── */
+.doc-teams {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 44px;
+  margin-top: 8px;
+}
+.doc-teams li { padding: 13px 0; border-top: 1px solid var(--rule-light); }
+.doc-teams__label {
+  font-size: 14.5px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink-strong);
+  margin-bottom: 3px;
+}
+.doc-teams__text { font-size: 12px; line-height: 1.45; color: var(--ink); }
+
+/* ── Two-column services (label + desc, accent left bar) ───────────────────── */
+.doc-services {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 40px;
+  margin-top: 10px;
+}
+.doc-service { padding-left: 14px; border-left: 2px solid var(--accent-light); }
+.doc-service__name {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--ink-strong);
+  margin-bottom: 4px;
+}
+.doc-service__desc { font-size: 12px; line-height: 1.45; color: var(--ink); }
+
+/* ── Pull-quote (prominent light testimonial) ──────────────────────────────── */
+.doc-quote {
+  margin-top: 24px;
+  margin-bottom: 18px;          /* keep clear of a following footer rule */
+  border-left: 4px solid var(--accent-light);
+  padding-left: 26px;
+  max-width: 74ch;
+}
+.doc-quote__text {
+  font-size: 24px;
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.38;
+  letter-spacing: -0.01em;
+  color: var(--ink-strong);
+}
+.doc-quote__attrib {
+  margin-top: 16px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--navy-muted);
+}
+.doc-quote__attrib span { color: var(--accent-light); }
+
+/* ── Contained dark panel (the exception that SHOULD be boxed) ──────────────── */
+.doc-panel {
+  position: relative;
+  background: var(--navy);
+  color: rgba(235, 245, 248, 0.86);
+  padding: 36px;
+  border-top: 4px solid var(--mint);
+}
+
+/* ── Proof: client logos ───────────────────────────────────────────────────── */
+.doc-proofbar__kicker {
+  margin-top: 30px;
+  margin-bottom: 14px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+}
+.doc-proof__logos { display: flex; flex-direction: column; gap: 14px; padding: 28px 40px; }
+.doc-proof__logos img { display: block; width: 100%; height: auto; }
+
+/* ── Image stage — body content over a right-anchored screenshot that fades ─── */
+/* Set the image per asset:  style="--stage-image:url('assets/your-shot.png')"  */
+.doc-stage {
+  position: relative;
+  margin-top: 16px;
+  min-height: 3.5in;
+  overflow: hidden;
+}
+.doc-stage::before {
+  content: '';
+  position: absolute;
+  top: 0; right: -3%; bottom: 0;
+  width: 66%;
+  background-image: var(--stage-image, none);
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: cover;
+  border-radius: 10px;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.35) 46%, #000 78%);
+          mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.35) 46%, #000 78%);
+  pointer-events: none;
+  z-index: 0;
+}
+.doc-stage .doc-pillars { position: relative; z-index: 1; max-width: 50%; margin-top: 0; }
+.doc-stage .doc-pillars__body { max-width: 38ch; }
+
+/* Italic helper caption, lower-right over the dark side of the screenshot. */
+.doc-stage-cap {
+  position: absolute;
+  right: 18px; bottom: 14px;
+  z-index: 2;
+  max-width: 32ch;
+  text-align: right;
+  font-size: 11px;
+  font-style: italic;
+  line-height: 1.4;
+  color: rgba(245, 248, 250, 0.92);
+  text-shadow: 0 1px 4px rgba(8, 18, 24, 0.55);
+}
+
+/* ── App-window frame (housing a UI screenshot as a product window) ─────────── */
+.doc-shot { margin-top: 8px; text-align: center; }
+.doc-shot__frame {
+  max-width: 2.9in;
+  margin: 0 auto;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--rule-light);
+  box-shadow: 0 12px 30px rgba(16, 35, 45, 0.12);
+}
+.doc-shot__bar { display: flex; align-items: center; gap: 10px; padding: 8px 14px; background: var(--navy); }
+.doc-shot__dots { display: flex; gap: 5px; }
+.doc-shot__dots span { width: 7px; height: 7px; border-radius: 50%; background: rgba(235, 245, 248, 0.28); }
+.doc-shot__title { font-size: 9px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mint); }
+.doc-shot__frame img { display: block; width: 100%; height: auto; }
+.doc-shot figcaption { margin: 10px auto 0; font-size: 12px; line-height: 1.5; color: var(--navy-muted); max-width: 52ch; }
+.doc-shot figcaption strong { color: var(--ink-strong); font-weight: 600; }
+
+/* ── Radial diagram (hub + capabilities on a ring) ─────────────────────────── */
+/* Node positions are set inline. RULE: labels must clear the ring arc — either
+   keep all label text fully outside the ring, or push nodes radially outward.
+   Off-white ring "breaks" around icons alone are NOT sufficient when label text
+   crosses the arc away from the icon. */
+.doc-orbit { position: relative; height: 5.85in; margin-top: 8px; }
+.doc-orbit__ring {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 4.1in; height: 4.1in;
+  transform: translate(-50%, -50%);
+  border: 1.5px solid rgba(var(--mint-rgb), 0.85);
+  border-radius: 50%;
+  z-index: 1;
+}
+.doc-orbit__hub {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 2.0in; height: 2.0in;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--off-white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 16px;
+  z-index: 2;
+}
+.doc-orbit__hub-title { font-size: 15px; font-weight: 700; line-height: 1.18; }
+.doc-orbit__hub-sub { font-size: 11px; color: var(--mint); margin-top: 7px; letter-spacing: 0.03em; }
+.doc-orbit__node { position: absolute; display: flex; align-items: center; gap: 11px; width: 2.1in; z-index: 3; }
+.doc-orbit__node--side { width: 1.5in; }
+.doc-orbit__node .doc-pill-icon { width: 38px; height: 38px; box-shadow: 0 0 0 7px var(--off-white); }
+.doc-orbit__node .doc-pill-icon svg { width: 20px; height: 20px; }
+.doc-orbit__name { font-size: 14px; font-weight: 700; line-height: 1.18; letter-spacing: -0.01em; color: var(--ink-strong); margin-bottom: 3px; }
+.doc-orbit__desc { font-size: 12.5px; line-height: 1.4; color: var(--ink); }
+.doc-orbit__node--r { transform: translate(-16px, -50%); }
+.doc-orbit__node--l { flex-direction: row-reverse; text-align: right; transform: translate(calc(-100% + 16px), -50%); }
+
+/* ── Close page ────────────────────────────────────────────────────────────── */
+.doc-page--close { justify-content: space-between; padding-top: 0.7in; }
+.doc-close__lead { margin: 0; }
+.doc-close__head {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.16;
+  letter-spacing: -0.025em;
+  color: var(--off-white);
+  max-width: 20ch;
+}
+.doc-close__body {
+  margin-top: 18px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgba(235, 245, 248, 0.82);
+  max-width: 46ch;
+}
+.doc-close__contacts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(var(--mint-rgb), 0.22);
+}
+.doc-close__name { font-weight: 600; color: var(--off-white); font-size: 15px; margin-bottom: 6px; }
+.doc-close__rep p, .doc-close__company p { font-size: 13px; line-height: 1.6; color: rgba(235, 245, 248, 0.78); }
+.doc-page--close a { color: var(--mint); text-decoration: none; }
+.doc-page--close a:hover { text-decoration: underline; }
+.doc-close__logo { height: 28px; width: auto; display: block; }
+
+/* ── Draft badge (screen only) ─────────────────────────────────────────────── */
+.doc-draft-badge {
+  position: absolute;
+  top: 0.34in;
+  right: var(--page-pad);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--navy-muted);
+  border: 1px solid var(--rule-light);
+  padding: 4px 8px;
+  z-index: 2;
+}
+.doc-page--dark .doc-draft-badge { color: rgba(235, 245, 248, 0.5); border-color: rgba(255, 255, 255, 0.18); }
+@media print { .doc-draft-badge { display: none; } }
+
+/* ── Cover framing paragraph (activation guides: replaces the prepared block) ── */
+/* The "what this document is for" moment on the dark cover. */
+.doc-cover__framing {
+  margin-top: auto;
+  padding-top: 28px;
+  border-top: 1px solid rgba(var(--mint-rgb), 0.22);
+  font-size: 14px;
+  line-height: 1.62;
+  color: rgba(235, 245, 248, 0.86);
+  max-width: 62ch;
+}
+.doc-cover__framing strong { color: var(--off-white); font-weight: 700; }
+
+/* ── Strategic framing page — sand canvas, set apart from the persona sections ─ */
+/* A principle page (not a numbered section): distinct light tone, centered block,
+   no running footer — a divider between the index and the breakouts. */
+.doc-page--framing { background: var(--sand); justify-content: center; }
+.doc-framing { max-width: 60ch; margin: 0 auto; }
+.doc-framing__head {
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--ink-strong);
+  max-width: 16ch;
+  margin-bottom: 24px;
+}
+.doc-framing__body p { font-size: 14.5px; line-height: 1.62; color: var(--ink); }
+.doc-framing__body p + p { margin-top: 14px; }
+.doc-framing__body strong { color: var(--ink-strong); font-weight: 700; }
+.doc-framing__pull {
+  margin-top: 28px;
+  padding-left: 22px;
+  border-left: 4px solid var(--accent-light);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: var(--ink-strong);
+}
+
+/* ── Navigation — persona index (name + one-line + page reference) ──────────── */
+.doc-nav { list-style: none; margin-top: 20px; }
+.doc-nav__item {
+  display: grid;
+  grid-template-columns: 30px 1fr auto;
+  column-gap: 16px;
+  align-items: baseline;
+  padding: 17px 0;
+}
+.doc-nav__item + .doc-nav__item { border-top: 1px solid var(--rule-light); }
+.doc-nav__num { font-size: 13px; font-weight: 700; letter-spacing: 0.02em; color: var(--accent-light); }
+.doc-nav__name {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--ink-strong);
+}
+.doc-nav__page {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+  white-space: nowrap;
+}
+.doc-nav__desc {
+  grid-column: 2 / -1;
+  margin-top: 5px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink);
+  max-width: 66ch;
+}
+
+/* ── Use-case rows — skimmable: headline + setup + specifics + try/do prompt ─── */
+/* The core repeated component in an activation guide. Hairline-separated rows,
+   bold headline as the scan anchor, specifics that ADD to (never restate) the
+   one-line setup, and an accent action prompt. */
+.doc-uc-list { list-style: none; margin-top: 16px; }
+.doc-uc { padding: 15px 0; }
+.doc-uc + .doc-uc { border-top: 1px solid var(--rule-light); }
+.doc-uc__head {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--ink-strong);
+  margin-bottom: 6px;
+}
+.doc-uc__desc { font-size: 13px; line-height: 1.5; color: var(--ink); max-width: 80ch; }
+.doc-uc__points {
+  list-style: none;
+  margin-top: 9px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px 26px;
+}
+.doc-uc__points li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 12px;
+  line-height: 1.42;
+  color: var(--ink);
+}
+.doc-uc__points li::before {
+  content: '';
+  position: absolute;
+  left: 1px;
+  top: 0.52em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent-light);
+}
+.doc-uc__try { margin-top: 11px; font-size: 12.5px; line-height: 1.45; color: var(--ink-strong); }
+.doc-uc__try-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+  margin-right: 9px;
+}
+
+/* Continuation header — a section that runs onto a second sheet keeps its label
+   without repeating the giant ghosted number. */
+.doc-page__head--cont { margin-bottom: 12px; }
+
+/* GM closing line — emphasized single line at the end of the capstone section. */
+.doc-uc-close {
+  margin-top: 22px;
+  padding-left: 22px;
+  border-left: 4px solid var(--accent-light);
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: var(--ink-strong);
+  max-width: 44ch;
+}
+
+/* ── Responsive (screen only) ──────────────────────────────────────────────── */
+@media screen and (max-width: 640px) {
+  .doc-forces2, .doc-teams, .doc-services, .doc-close__contacts { grid-template-columns: 1fr; }
+  .doc-features__grid { grid-template-columns: 1fr 1fr; }
+  .doc-uc__points { grid-template-columns: 1fr; }
+}

@@ -61,9 +61,18 @@ export function mergeLibraryDocs(docs, manifest = { docs: [] }) {
 }
 
 const MESSAGING_GUIDE_DIAGRAM_FIGURE = `<figure class="doc-figure doc-figure--diagram" id="the-luci-system">
-<img src="diagrams/luci-system-diagram-v2.svg?v=20260611d" alt="LUCI System — LUCI + Systems orchestration layer above Standard A/V client environment" width="680" height="391">
-<figcaption class="doc-figure__caption"><strong>The LUCI System.</strong> LUCI + Systems — the orchestration layer above the accumulated Standard A/V environment your team already runs. <a href="luci-system-diagram.html">Full diagram page</a> (flat working canvas + source files).</figcaption>
+<img src="diagrams/luci-system-diagram-v3.svg?v=6" alt="LUCI System — LUCI and Systems orchestrate the Standard A/V environment" width="680" height="391">
+<figcaption class="doc-figure__caption"><strong>The LUCI System.</strong> LUCI + Systems orchestrate the accumulated Standard A/V environment your team already runs. <a href="luci-system-diagram.html">Full diagram page</a> (flat working canvas + source files).</figcaption>
 </figure>`;
+
+const MESSAGING_GUIDE_VOICE_ENGINE_RULE =
+  '<p class="doc-prose"><b>Engine and verbs — not layers.</b></p>' +
+  '<p class="doc-prose">Never use <i>layer</i> as a noun for LUCI (orchestration layer, application layer, middleware layer). Describing accumulation in the <i>client’s</i> stack is fine; naming LUCI itself a layer is not.</p>' +
+  '<p class="doc-prose"><b>Leading choices:</b> <b>orchestration engine</b> (positioning, tagline) and <b>LUCI orchestrates…</b> (headlines, capability copy). Other approved verbs and nouns are fine — <i>runs, operates, integrates, consolidates, refines, platform, infrastructure</i> — when they fit the sentence better.</p>' +
+  '<p class="doc-prose"><b>Watch repetition.</b> If <i>engine</i> or <i>orchestrates</i> appears more than once in a short passage (deck section, page, email), rotate to a precise alternative. Same word three times reads like a crutch, not a voice.</p>';
+
+const MESSAGING_GUIDE_BOILERPLATE_CALLOUT =
+  '<aside class="doc-callout doc-callout--key"><p class="doc-prose">LUCI Systems orchestrates every layer of technology running your property — AV, signage, building, and operational infrastructure — from a single interface your team controls from anywhere. Rather than adding layers to your stack, LUCI reduces the variables, hardware, and interfaces your team has to manage. When onsite experience and operational continuity are non-negotiable, LUCI delivers coordinated, real-time execution, end to end.</p></aside>';
 
 const MESSAGING_GUIDE_MIDDLE = `<section class="doc-section"><h2 class="doc-chapter" id="message-pillars">MESSAGE PILLARS</h2>
 <p class="doc-prose doc-prose--kicker"><i>Four pillars that anchor every communication. Each stands alone and serves any buyer.</i></p>
@@ -148,7 +157,53 @@ export function applyMessagingGuideEnhancements(bodyHtml, tocHtml) {
     MESSAGING_GUIDE_MIDDLE + MESSAGING_GUIDE_WHO_HEARS
   );
 
+  body = applyMessagingGuideVoicePatches(body);
+
   return { bodyHtml: body, tocHtml: MESSAGING_GUIDE_TOC };
+}
+
+/** Voice + approved-language patches — re-applied after Word sync. */
+function applyMessagingGuideVoicePatches(body) {
+  let out = body;
+
+  if (out.includes('id="the-luci-system"')) {
+    out = out.replace(
+      /<figure class="doc-figure doc-figure--diagram" id="the-luci-system">[\s\S]*?<\/figure>/,
+      MESSAGING_GUIDE_DIAGRAM_FIGURE
+    );
+  }
+
+  out = out.replace(
+    /<aside class="doc-callout doc-callout--key"><p class="doc-prose">LUCI Systems orchestrates[\s\S]*?<\/aside>/,
+    MESSAGING_GUIDE_BOILERPLATE_CALLOUT
+  );
+
+  if (!out.includes('Watch repetition')) {
+    out = out.replace(
+      /<p class="doc-prose"><b>Engine and verbs — not layers\.<\/b><\/p>[\s\S]*?(?=<p class="doc-prose"><b>Declarative over promotional\.<\/b><\/p>)/,
+      `${MESSAGING_GUIDE_VOICE_ENGINE_RULE}\n`
+    );
+    if (!out.includes('Watch repetition')) {
+      out = out.replace(
+        /<p class="doc-prose"><b>Institutions, not adjectives\.<\/b><\/p>/,
+        `${MESSAGING_GUIDE_VOICE_ENGINE_RULE}\n<p class="doc-prose"><b>Institutions, not adjectives.</b></p>`
+      );
+    }
+  }
+
+  out = out.replace(
+    /<li class="li32">Infrastructure, platform, operating system, operating layer<\/li>/,
+    '<li class="li32">Orchestration engine, platform, infrastructure</li>\n          <li class="li32">LUCI orchestrates, runs, operates, integrates, consolidates, refines</li>'
+  );
+
+  if (!out.includes('Layer — when naming LUCI')) {
+    out = out.replace(
+      /<li class="li34">Named clients in public materials<\/li>/,
+      '<li class="li34">Layer — when naming LUCI (orchestration layer, application layer, “one layer for…”). Use engine or “LUCI orchestrates…” instead</li>\n          <li class="li34">Named clients in public materials</li>'
+    );
+  }
+
+  return out;
 }
 
 export function stripTags(html) {
