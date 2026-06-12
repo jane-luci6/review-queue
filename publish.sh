@@ -16,11 +16,11 @@ if [[ -f .env ]]; then
   source .env
   set +a
 fi
-echo "→ Building review site (sync + inline queue + Teams due-date notify)…"
+echo "→ Building review site (sync + inline queue)…"
 node scripts/build-stakeholder-review.mjs
 
 cd "$ROOT"
-git add "LUCI Systems Design System/"
+git add "LUCI Systems Design System/" netlify.toml
 
 if git diff --staged --quiet; then
   echo "→ No file changes to commit."

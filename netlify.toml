@@ -5,12 +5,16 @@
 
 [build]
   base = "LUCI Systems Design System"
-  command = "node scripts/build-stakeholder-review.mjs"
+  command = "npm ci && npm ci --prefix netlify/functions && npm run build:review"
   publish = "ui_kits/review"
   functions = "netlify/functions"
 
 [build.environment]
   NODE_VERSION = "20"
+
+[functions]
+  node_bundler = "esbuild"
+  external_node_modules = ["@netlify/blobs"]
 # Teams: REVIEW_TEAMS_WEBHOOK_OWNER (comments/approvals on live site). Due dates: .env on publish — see ui_kits/review/teams-notifications-guide.txt
 
 [[redirects]]
