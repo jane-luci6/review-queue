@@ -1095,29 +1095,40 @@
     const PRIORITY_QUEUE = [
       {
         priority: 'P1',
-        label: 'Ship Signal Issue 01',
-        status: 'Monday',
-        src: 'ui_kits/newsletter/the-signal-issue-01-june-2026.html',
-        detail: `• Publish web issue on Webflow (/the-signal/issue-01) — head + body embeds in nav
-• Send email teaser via ActiveCampaign (email-signal-issue-01-teaser.html)
-• Flesh out copy in What's coming + services if still thin
-• Link audit before send (see Pick up Monday)
-• Signal hub already live at /the-signal/home — confirm issue page publishes cleanly`,
-      },
-      {
-        priority: 'P2',
         label: 'Homepage CB callout',
-        status: 'Webflow',
-        detail: `• Confirm #case-study-ent (Enterprise) links to /case-studies/ameristar-council-bluffs
+        status: 'Today · Webflow',
+        detail: `• Build the case study callout on the homepage (not done yet — likely today)
+• Confirm #case-study-ent (Enterprise) links to /case-studies/ameristar-council-bluffs
 • Hide or remove #case-study-cli (Yaamava) if still visible`,
       },
       {
-        priority: 'P2',
-        label: 'Social media posts',
-        status: 'After ship',
-        detail: `• Original publish plan included social links to the case study
-• Use canonical URL: lucisystems.com/case-studies/ameristar-council-bluffs
-• Coordinate with Issue 01 send — link to web issue + case study story`,
+        priority: 'P1',
+        label: 'LUCI images',
+        status: 'In progress',
+        src: 'ui_kits/review/messaging/embedded-operation-orbit.html',
+        detail: `• Canonical diagram assets in assets/diagrams/ (Messaging & brand → Images & diagrams)
+• Embedded Operation orbit done (SVG + PNG); capabilities doc references it
+• Next: application-guide image (Mike) — work up a usable version
+• Follow the canonical-assets standard — one source file, documents reference it`,
+      },
+      {
+        priority: 'P1',
+        label: 'Capabilities document',
+        status: 'In progress',
+        src: 'ui_kits/sales/capabilities-document.html',
+        detail: `• Page 4 orbit done (canonical SVG, pulled in via <img>)
+• Application-guide image (Mike) — may go under "The Orchestration Platform"; page 3 shifts down if added (leave page 3 itself unchanged)
+• Design polish + render to PDF to confirm no page overflow`,
+      },
+      {
+        priority: 'P1',
+        label: 'Field Activation Guide',
+        status: 'Your review',
+        src: 'ui_kits/sales/field-activation-guide.html',
+        detail: `• Full draft built + rendering clean (PDF-first, 17 pp): cover → nav → framing → 6 persona spreads → proof → close
+• 24 use cases (4/team), numbered 01–04 per section; each = header → detail → benefit checks → one thing to try
+• Open: your copy/design review + optional tweaks; FDE contact + proof logos still placeholder
+• Blocks 60/90-day check-in emails to Ameristar Council Bluffs; FAQ doc pairs with this · render: .render/fag/`,
       },
       {
         priority: 'P2',
@@ -1142,26 +1153,6 @@
       },
       {
         priority: 'Later',
-        label: 'Capabilities document',
-        status: 'Paused',
-        src: 'ui_kits/sales/capabilities-document.html',
-        detail: `• Page 4 orbit done (canonical SVG — Messaging & brand → Embedded Operation orbit)
-• Application-guide image (Mike) — may go under "The Orchestration Platform"; page 3 shifts down if added
-• Design polish + PDF page-break check before send`,
-      },
-      {
-        priority: 'Later',
-        label: 'Field Activation Guide',
-        status: 'Draft — your review',
-        src: 'ui_kits/sales/field-activation-guide.html',
-        detail: `• Full draft built + rendering clean (PDF-first, 17 pp): cover → nav → framing → 6 persona spreads → proof → close
-• 24 use cases (4/team), numbered 01–04 per section; each = header → detail → benefit checks → one thing to try
-• 2-page spread per function; oversized ghosted section title behind statement (p1) + use case 03 (p2); "Bigger picture" spotlight on p2
-• Open: your copy/design review + optional tweaks (spotlight lines, "Manager" ghost, 01–04 vs 01–24); FDE contact + proof logos still placeholder
-• Blocks 60/90-day check-in emails to Ameristar Council Bluffs; FAQ doc pairs with this · render: .render/fag/`,
-      },
-      {
-        priority: 'Later',
         label: 'Resources hub featured card',
         status: 'Optional',
         src: 'ui_kits/newsletter/the-signal-hub.html',
@@ -1172,12 +1163,21 @@
     /** Backlog pipeline — from review queue + standing todos. Target dates in Review queue tab. */
     const BACKLOG_PIPELINE = [
       {
-        priority: 'Jul',
+        priority: 'Soon',
+        label: 'Signal Issue 02',
+        status: 'Start ~1–2 wks',
+        src: 'ui_kits/newsletter/the-signal-web-template.html',
+        detail: `• Issue 01 shipped Jun 15 — begin Issue 02 in about a week or two
+• Start from the web blank template (the-signal-web-template.html)
+• Reuse Issue 01 structure + Webflow head/body embed workflow`,
+      },
+      {
+        priority: 'Next',
         label: 'Budget estimate generator',
-        status: 'Backlog',
-        detail: `• Interactive template + form + PDF export for proposals
-• Review queue: budgetary-estimate-template (target Jul 2026)
-• Standard budgetary estimate format for sales`,
+        status: 'After current work',
+        detail: `• Next major build once the active items wrap
+• Interactive template + form + PDF export for proposals
+• Review queue: budgetary-estimate-template (target Jul 2026)`,
       },
       {
         priority: 'Jul',
@@ -1214,8 +1214,8 @@
       {
         label: 'Signal Issue 01',
         src: 'ui_kits/newsletter/the-signal-issue-01-june-2026.html',
-        status: 'WIP',
-        note: 'Full web issue + email teaser. Publish Monday. Webflow head/body embeds ready in nav.',
+        status: 'Shipped',
+        note: 'Shipped Jun 15 — web issue live on Webflow (/the-signal/issue-01) + email teaser sent via ActiveCampaign. Next: Issue 02 in ~1–2 weeks.',
       },
       {
         label: 'Ameristar Council Bluffs',
@@ -1239,60 +1239,16 @@
     const SESSION_NOTE_KEY = 'luci-hub-session-note';
     const SESSION_NOTE_DATE_KEY = 'luci-hub-session-note-date';
     const SESSION_NOTE_VERSION_KEY = 'luci-hub-session-note-version';
-    const SESSION_NOTE_VERSION = '2026-06-12-monday-v4';
-    const SESSION_NOTE_DEFAULT = `Goal Monday: ship full Issue 01 (web + email teaser).
+    const SESSION_NOTE_VERSION = '2026-06-16-v6';
+    const SESSION_NOTE_DEFAULT = `Active now:
+• Homepage CB callout — building on Webflow, likely today
+• LUCI images — canonical diagram assets (orbit done; application-guide image for Mike next)
+• Capabilities document — design polish + where the application-guide image lands
+• Field Activation Guide — your copy/design review (full draft rendering clean)
 
-DONE (Jun 12):
-• CB case study live — lucisystems.com/case-studies/ameristar-council-bluffs (custom-code embed; keep for now)
-• Mike approved: case study, Issue 01, email teaser (review queue Jun 12)
-• Webflow footer/CTA cleaned up; PDF link in hero only (CDN asset uploaded)
-• build-case-study-webflow.mjs — rebuild embed from source when CB HTML changes
-• Homepage Enterprise callout → CB (verify in Designer if not done)
-• Newsletter Issue 01 already links to case study in "In the field" section
-
-MONDAY — newsletter:
-• Flesh out / tighten copy in Issue 01 (esp. What's coming, services)
-• Email teaser — align section anchors with web issue; verify deep links
-• Paste Webflow head + body embeds; publish /the-signal/issue-01
-• ActiveCampaign: teaser send + footer tokens (%UNSUBSCRIBELINK%, etc.)
-
-Link audit checklist:
-• Jane LinkedIn → real profile URL (currently generic linkedin.com)
-• Issue 01 URL live on Webflow (/the-signal/issue-01)
-• Case study CTA → /case-studies/ameristar-council-bluffs
-• Support portal + mailto links spot-check
-• Footer Manage preferences / Unsubscribe → AC merge tags at send (# OK in draft)
-
-After Issue 01 ships:
-• Social posts — case study URL + web issue link
-• review-queue.json — add liveUrl for case-study-ameristar
-• Optional: Resources hub featured card for CB
-
-────────────────────────────────
-FIELD ACTIVATION GUIDE — paused Jun 12, pick up after newsletter
-File: ui_kits/sales/field-activation-guide.html (PDF-first, 17 pp) · render: ui_kits/sales/.render/fag/
-State: full draft built and rendering clean (headless Chrome, no page overflow). Not deployed.
-
-Structure:
-• Spine: cover → nav → strategic-framing → 6 persona spreads (Marketing, Gaming, A/V, IT, Finance, GM) → proof → close
-• Each function = full 2-page spread. 24 use cases total, 4 per team, numbered 01–04 within each section.
-• Use-case tiers (increasing specificity): header = the action · description = how/detail · benefit checks = why it matters · "Try it/Do this" = one thing to do.
-• Section openers: oversized GHOSTED section title behind the statement; page 2 repeats the ghost behind use case 03 + a "THE BIGGER PICTURE" spotlight one-liner.
-• Finance copy locked (CapEx/OpEx + revenue attribution). GM has morning-reset + guest-experience-strategy-meeting use cases + closing line.
-
-Decisions made (so you don't relitigate):
-• Sections NOT numbered; the 4 use cases are. "24 use cases" is called out on the cover.
-• Use-case numbers reset 01–04 per section (not continuous 01–24).
-• GM ghost word = "Manager" (full "General Manager" too long at that scale).
-• Removed the small kicker label per section — ghosted title carries identity.
-• CSS: print .doc-page uses exact sheet height to kill blank trailing pages (sales-document.css).
-
-Open when you return:
-• Your review of copy + design across all 6 sections.
-• Optional tweaks offered: spotlight one-liners, the "The bigger picture" label, "Manager" vs "GM", 01–04 vs continuous 01–24.
-• Placeholders to fill before send: FDE contact block on close page ([FDE name/email/line]); proof-page logo rows (logo-row-1/2/3) — confirm.
-• Unblocks the 60/90-day check-in emails to Ameristar Council Bluffs; FAQ doc pairs with this.`;
-    const SESSION_NOTE_DEFAULT_DATE = 'Jun 12, 2026';
+Next up:
+• Budget estimate generator — kick off after the active items wrap`;
+    const SESSION_NOTE_DEFAULT_DATE = 'Jun 16, 2026';
 
     const frame = document.getElementById('hub-frame');
     const previewFallback = document.getElementById('hub-preview-fallback');
@@ -1668,7 +1624,7 @@ Open when you return:
 
       widget.innerHTML = `
         <div class="hub-session__header">
-          <span class="hub-session__label">Pick up Monday</span>
+          <span class="hub-session__label">Now / next</span>
           <span class="hub-session__date" id="session-date">${savedDate ? 'Last updated ' + savedDate : ''}</span>
         </div>
         <div class="hub-session__text" id="session-text"></div>
