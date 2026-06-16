@@ -324,6 +324,114 @@
       margin-bottom: var(--space-6);
     }
 
+    .hub-session--pickup {
+      background: rgba(104, 227, 190, 0.06);
+      border-left-width: 4px;
+    }
+
+    .hub-priority,
+    .hub-paused,
+    .hub-backlog {
+      margin-bottom: var(--space-6);
+    }
+
+    .hub-queue__item {
+      border-bottom: 1px solid rgba(16, 35, 45, 0.06);
+    }
+
+    .hub-queue__item summary {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: 12px 12px 12px 8px;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .hub-queue__item summary::-webkit-details-marker { display: none; }
+
+    .hub-queue__item summary::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-right: 2px solid var(--fg-subdued);
+      border-bottom: 2px solid var(--fg-subdued);
+      transform: rotate(-45deg);
+      flex-shrink: 0;
+      margin-left: 4px;
+      transition: transform 0.15s;
+    }
+
+    .hub-queue__item[open] summary::before {
+      transform: rotate(45deg);
+    }
+
+    .hub-queue__badge {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3px 7px;
+      flex-shrink: 0;
+      background: rgba(16, 35, 45, 0.06);
+      color: var(--fg-subdued);
+    }
+
+    .hub-queue__badge--p1 {
+      background: rgba(255, 193, 7, 0.15);
+      color: #8a6800;
+    }
+
+    .hub-queue__badge--p2 {
+      background: rgba(104, 227, 190, 0.12);
+      color: var(--accent-primary-dark);
+    }
+
+    .hub-queue__badge--later {
+      background: rgba(16, 35, 45, 0.05);
+      color: var(--fg-subdued);
+    }
+
+    .hub-queue__title {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--fg-on-light);
+      flex: 1;
+      min-width: 0;
+    }
+
+    .hub-queue__status {
+      font-size: 11px;
+      color: var(--fg-subdued);
+      flex-shrink: 0;
+    }
+
+    .hub-queue__detail {
+      padding: 0 12px 14px 36px;
+      font-size: 13px;
+      color: var(--fg-subdued);
+      line-height: 1.55;
+      white-space: pre-wrap;
+    }
+
+    .hub-queue__open {
+      display: inline-block;
+      margin-top: 8px;
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent-primary-dark);
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .hub-queue__open:hover { color: var(--fg-on-light); }
+
     .hub-session__header {
       display: flex;
       align-items: center;
@@ -351,6 +459,54 @@
       color: var(--fg-on-light);
       white-space: pre-wrap;
       min-height: 1.6em;
+    }
+
+    .hub-pickup__goal {
+      font-weight: 600;
+      font-size: 15px;
+      line-height: 1.45;
+      color: var(--fg-on-light);
+      margin: 0 0 var(--space-4);
+    }
+
+    .hub-pickup__heading {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--fg-subdued);
+      margin: var(--space-4) 0 var(--space-2);
+    }
+
+    .hub-pickup__heading:first-child {
+      margin-top: 0;
+    }
+
+    .hub-pickup__list {
+      margin: 0 0 var(--space-2);
+      padding-left: 20px;
+      list-style: none;
+    }
+
+    .hub-pickup__list li {
+      position: relative;
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--fg-on-light);
+      padding-left: 4px;
+      margin-bottom: 8px;
+    }
+
+    .hub-pickup__list li::before {
+      content: '';
+      position: absolute;
+      left: -16px;
+      top: 0.55em;
+      width: 5px;
+      height: 5px;
+      background: var(--color-high-limit-mint);
+      border-radius: 50%;
     }
 
     .hub-session__text:empty::before {
@@ -485,7 +641,7 @@
     .hub-overview.is-visible { display: block; }
 
     .hub-overview__inner {
-      max-width: 780px;
+      max-width: 880px;
     }
 
     .hub-overview .luci-h2 {
@@ -567,24 +723,51 @@
     .hub-recent { margin-bottom: var(--space-6); }
 
     .hub-recent__item {
+      border-left: 3px solid var(--color-high-limit-mint);
+      border-bottom: 1px solid rgba(16, 35, 45, 0.06);
+      background: transparent;
+      width: 100%;
+    }
+
+    .hub-recent__item details { width: 100%; }
+
+    .hub-recent__item summary {
       display: flex;
       align-items: flex-start;
       gap: var(--space-4);
-      padding: 14px 12px 14px 15px;
-      border-left: 3px solid var(--color-high-limit-mint);
-      border-bottom: 1px solid rgba(16, 35, 45, 0.06);
+      padding: 14px 12px 14px 12px;
       cursor: pointer;
-      background: transparent;
-      text-align: left;
-      width: 100%;
-      border-top: none;
-      border-right: none;
+      list-style: none;
       transition: background 0.15s;
     }
 
-    .hub-recent__item:hover { background: rgba(104, 227, 190, 0.05); }
-    .hub-recent__item--static { cursor: default; }
-    .hub-recent__item--static:hover { background: transparent; }
+    .hub-recent__item summary::-webkit-details-marker { display: none; }
+
+    .hub-recent__item summary:hover { background: rgba(104, 227, 190, 0.05); }
+
+    .hub-recent__summary-note {
+      font-size: 13px;
+      color: var(--fg-subdued);
+      line-height: 1.55;
+      padding: 0 12px 14px 12px;
+      white-space: pre-wrap;
+    }
+
+    .hub-recent__open {
+      display: inline-block;
+      margin: 0 12px 14px;
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent-primary-dark);
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .hub-recent__open:hover { color: var(--fg-on-light); }
 
     .hub-recent__meta { flex: 1; min-width: 0; }
 
@@ -735,8 +918,11 @@
       <section class="hub-overview is-visible" id="hub-overview" aria-label="Overview">
         <div class="hub-overview__inner">
           <h2 class="luci-h2">Work in progress</h2>
-          <p class="hub-overview__lede">Current work, open questions, and where we left off.</p>
+          <p class="hub-overview__lede">Priority-first — expand any row for detail.</p>
           <div id="hub-session-notes"></div>
+          <div id="hub-priority-queue"></div>
+          <div id="hub-paused-work"></div>
+          <div id="hub-backlog-pipeline"></div>
           <div id="hub-recent-work"></div>
           <div id="hub-open-questions"></div>
         </div>
@@ -809,37 +995,48 @@
           {
             subheading: 'Images & diagrams',
             subitems: [
+              { label: 'What LUCI is', src: 'assets/diagrams/luci-what-luci-is.svg', desc: 'Identity diagram — orchestration platform + embedded operation · SVG' },
+              { label: 'System architecture', src: 'assets/diagrams/luci-system-architecture.svg', desc: 'Capabilities deck — sources → LUCI → property · SVG + PNG' },
               { label: 'LUCI system diagram (V3)', src: 'ui_kits/review/messaging/luci-system-diagram.html', desc: 'Two-disk perspective diagram V3' },
               { label: 'Embedded Operation orbit', src: 'ui_kits/review/messaging/embedded-operation-orbit.html', desc: 'Reusable diagram — one team, six services · SVG + PNG' },
             ],
           },
         ],
       },
-      newsletter: {
-        label: 'The Signal',
+      marketing: {
+        label: 'Marketing Content',
         defaultOpen: false,
         items: [
+          { label: 'Field Activation Guide', src: 'ui_kits/sales/field-activation-guide.html', desc: 'PDF-first activation guide — in design' },
           {
-            subheading: 'Jun 2026 · Issue 01',
+            subheading: 'The Signal',
             subitems: [
               { label: 'Issue 01 (web)', src: 'ui_kits/newsletter/the-signal-issue-01-june-2026.html', desc: 'Full web issue — current draft' },
               { label: 'Issue 01 · Email teaser', src: 'ui_kits/email/email-signal-issue-01-teaser.html', desc: 'Inbox teaser — highlights + CTA' },
               { label: 'Issue 01 · Webflow embed', src: 'ui_kits/newsletter/the-signal-issue-01-webflow-embed.html', desc: 'Single Embed block' },
               { label: 'Issue 01 · Head code', src: 'ui_kits/newsletter/the-signal-issue-01-webflow-head.html', desc: 'Paste into Webflow <head>' },
               { label: 'Issue 01 · Body code', src: 'ui_kits/newsletter/the-signal-issue-01-webflow-body.html', desc: 'Paste before </body>' },
-            ],
-          },
-          {
-            subheading: 'Hub',
-            subitems: [
               { label: 'Newsletter hub · /newsletter', src: 'ui_kits/newsletter/the-signal-hub.html', desc: 'Landing page — issue index' },
               { label: 'Hub · Webflow embed', src: 'ui_kits/newsletter/the-signal-hub-webflow-embed.html', desc: 'Single Embed block' },
+              { label: 'Web blank template', src: 'ui_kits/newsletter/the-signal-web-template.html', desc: 'Issue structure template for new issues' },
             ],
           },
           {
-            subheading: 'Reference',
+            subheading: 'Case studies',
             subitems: [
-              { label: 'Web blank template', src: 'ui_kits/newsletter/the-signal-web-template.html', desc: 'Issue structure template for new issues' },
+              { label: 'Ameristar Council Bluffs', src: 'ui_kits/case-studies/ameristar-council-bluffs.html', desc: 'Standalone — full case study' },
+              { label: 'Ameristar · Webflow embed', src: 'ui_kits/case-studies/ameristar-council-bluffs-webflow-embed.html', desc: 'Single Embed — recommended (styles + markup)' },
+              { label: 'Ameristar · Head code', src: 'ui_kits/case-studies/ameristar-council-bluffs-webflow-head.html', desc: 'Fonts only — do not paste styles here' },
+              { label: 'Ameristar · Body code', src: 'ui_kits/case-studies/ameristar-council-bluffs-webflow-body.html', desc: 'Styles + markup — paste into Embed' },
+              { label: 'Ameristar · PDF', src: 'ui_kits/case-studies/assets/luci-case-study-ameristar-council-bluffs.pdf', desc: 'Upload to Webflow Assets for Download PDF links' },
+            ],
+          },
+          {
+            subheading: 'Website',
+            subitems: [
+              { label: 'Strategy brief', src: 'ui_kits/website/website-strategy-brief.html', desc: 'Leadership review — purpose, positioning' },
+              { label: 'IA wireframe', src: 'ui_kits/website/website-ia-wireframe.html', desc: 'Simplified nav + draft copy per section' },
+              { label: 'Messaging Framework V6 (reference)', src: 'ui_kits/website/LUCI_Messaging_Framework_V6-reference.html', desc: 'Nick brain dump — not canonical' },
             ],
           },
         ],
@@ -852,22 +1049,6 @@
           { label: 'Review · Webflow embed', src: 'ui_kits/review/stakeholder-review-webflow-embed.html', desc: 'Paste into lucisystems.com/review' },
           { label: 'Review queue (JSON)', src: 'ui_kits/review/review-queue.json', desc: 'Edit in Cursor — due / upcoming / finalized' },
           { label: 'Review comments (JSON)', src: 'ui_kits/review/review-comments.json', desc: 'Comments shown on site after rebuild' },
-        ],
-      },
-      website: {
-        label: 'Website',
-        defaultOpen: false,
-        items: [
-          { label: 'Strategy brief', src: 'ui_kits/website/website-strategy-brief.html', desc: 'Leadership review — purpose, positioning' },
-          { label: 'IA wireframe', src: 'ui_kits/website/website-ia-wireframe.html', desc: 'Simplified nav + draft copy per section' },
-          { label: 'Messaging Framework V6 (reference)', src: 'ui_kits/website/LUCI_Messaging_Framework_V6-reference.html', desc: 'Nick brain dump — not canonical' },
-        ],
-      },
-      caseStudies: {
-        label: 'Case studies',
-        defaultOpen: false,
-        items: [
-          { label: 'Ameristar Council Bluffs', src: 'ui_kits/case-studies/ameristar-council-bluffs.html', desc: 'Standalone — full case study' },
         ],
       },
       designSystem: {
@@ -910,49 +1091,207 @@
       },
     };
 
-    /** Update these 2-3 items each session to reflect current work. */
+    /** Priority queue — update each session. Expand rows for checklists. */
+    const PRIORITY_QUEUE = [
+      {
+        priority: 'P1',
+        label: 'Ship Signal Issue 01',
+        status: 'Monday',
+        src: 'ui_kits/newsletter/the-signal-issue-01-june-2026.html',
+        detail: `• Publish web issue on Webflow (/the-signal/issue-01) — head + body embeds in nav
+• Send email teaser via ActiveCampaign (email-signal-issue-01-teaser.html)
+• Flesh out copy in What's coming + services if still thin
+• Link audit before send (see Pick up Monday)
+• Signal hub already live at /the-signal/home — confirm issue page publishes cleanly`,
+      },
+      {
+        priority: 'P2',
+        label: 'Homepage CB callout',
+        status: 'Webflow',
+        detail: `• Confirm #case-study-ent (Enterprise) links to /case-studies/ameristar-council-bluffs
+• Hide or remove #case-study-cli (Yaamava) if still visible`,
+      },
+      {
+        priority: 'P2',
+        label: 'Social media posts',
+        status: 'After ship',
+        detail: `• Original publish plan included social links to the case study
+• Use canonical URL: lucisystems.com/case-studies/ameristar-council-bluffs
+• Coordinate with Issue 01 send — link to web issue + case study story`,
+      },
+      {
+        priority: 'P2',
+        label: 'Review queue liveUrl',
+        status: 'Repo',
+        src: 'ui_kits/review/review-queue.json',
+        detail: `• Add liveUrl for Ameristar case study (approved Jun 12, page is live)
+• case-study-ameristar entry — mirror signal-issue-01 pattern`,
+      },
+    ];
+
+    /** Paused — intentional deferrals, not forgotten. */
+    const PAUSED_WORK = [
+      {
+        priority: 'Later',
+        label: 'CB → native webpage',
+        status: 'Backlog',
+        src: 'ui_kits/case-studies/ameristar-council-bluffs.html',
+        detail: `• Rebuild on Webflow using current CB design (sections, typography, flow) — not Yaamava template
+• Integrate site nav + footer; retire custom-code embed when ready
+• Keep PDF leave-behind unchanged`,
+      },
+      {
+        priority: 'Later',
+        label: 'Capabilities document',
+        status: 'Paused',
+        src: 'ui_kits/sales/capabilities-document.html',
+        detail: `• Page 4 orbit done (canonical SVG — Messaging & brand → Embedded Operation orbit)
+• Application-guide image (Mike) — may go under "The Orchestration Platform"; page 3 shifts down if added
+• Design polish + PDF page-break check before send`,
+      },
+      {
+        priority: 'Later',
+        label: 'Field Activation Guide',
+        status: 'Draft — your review',
+        src: 'ui_kits/sales/field-activation-guide.html',
+        detail: `• Full draft built + rendering clean (PDF-first, 17 pp): cover → nav → framing → 6 persona spreads → proof → close
+• 24 use cases (4/team), numbered 01–04 per section; each = header → detail → benefit checks → one thing to try
+• 2-page spread per function; oversized ghosted section title behind statement (p1) + use case 03 (p2); "Bigger picture" spotlight on p2
+• Open: your copy/design review + optional tweaks (spotlight lines, "Manager" ghost, 01–04 vs 01–24); FDE contact + proof logos still placeholder
+• Blocks 60/90-day check-in emails to Ameristar Council Bluffs; FAQ doc pairs with this · render: .render/fag/`,
+      },
+      {
+        priority: 'Later',
+        label: 'Resources hub featured card',
+        status: 'Optional',
+        src: 'ui_kits/newsletter/the-signal-hub.html',
+        detail: '• Optional: promote CB case study on Resources / newsletter hub after homepage callout is live',
+      },
+    ];
+
+    /** Backlog pipeline — from review queue + standing todos. Target dates in Review queue tab. */
+    const BACKLOG_PIPELINE = [
+      {
+        priority: 'Jul',
+        label: 'Budget estimate generator',
+        status: 'Backlog',
+        detail: `• Interactive template + form + PDF export for proposals
+• Review queue: budgetary-estimate-template (target Jul 2026)
+• Standard budgetary estimate format for sales`,
+      },
+      {
+        priority: 'Jul',
+        label: 'Sales brochure',
+        status: 'Backlog',
+        detail: '• Print/PDF leave-behind — review queue upcoming (target Jul 2026)',
+      },
+      {
+        priority: 'Jul',
+        label: 'Sales deck',
+        status: 'Backlog',
+        detail: '• Presentation for prospect meetings — review queue upcoming (target Jul 2026)',
+      },
+      {
+        priority: 'Soon',
+        label: 'Website strategy brief',
+        status: 'Leadership',
+        src: 'ui_kits/website/website-strategy-brief.html',
+        detail: `• Leadership review — purpose, positioning, Navless experience layer
+• Companion talk track: website-strategy-brief-talk-track.md
+• Phase 2: IA wireframe (website-ia-wireframe.html)`,
+      },
+      {
+        priority: 'Soon',
+        label: 'Website update strategy',
+        status: 'Phase 2',
+        detail: `• Simplified IA, Platform page, industries, Signal customer-only
+• See website-strategy.html + IA wireframe in nav`,
+      },
+    ];
+
+    /** Quick-reference assets — expand for context. */
     const RECENT_WORK = [
       {
-        label: 'Field Activation Guide',
-        src: null,
-        status: 'Copy done',
-        note: 'Copy is finished. Next: design the guide, then route for review. Needed before sending the 30/60/90-day emails to Ameristar Council Bluffs.',
-      },
-      {
-        label: 'Capabilities document',
-        src: 'ui_kits/sales/capabilities-document.html',
+        label: 'Signal Issue 01',
+        src: 'ui_kits/newsletter/the-signal-issue-01-june-2026.html',
         status: 'WIP',
-        note: '9-page PDF-first rebuild. Argument-led structure and copy complete. Page 4 orbit fixed — even 60° node spacing pushes the corner icons toward the sides so labels clear the ring. Design system canonized into the sales-document template + rule. TODO (Mike): work up a usable version of the application-guide image — may go in this doc under "The Orchestration Platform". If added, the current page 3 shifts down — but leave page 3 itself unchanged.',
+        note: 'Full web issue + email teaser. Publish Monday. Webflow head/body embeds ready in nav.',
       },
       {
-        label: 'Customer journey emails (1–10)',
-        src: 'ui_kits/email/email-3-install-confirmed.html',
-        status: 'Updated',
-        note: 'Signatures restored inline. Mint accent bar added top and bottom. Footer gap fixed (outer wrapper padding removed). Environmental line removed from all emails.',
+        label: 'Ameristar Council Bluffs',
+        src: 'ui_kits/case-studies/ameristar-council-bluffs.html',
+        status: 'Live',
+        note: 'Live on lucisystems.com via custom-code embed. PDF on CDN. Native webpage rebuild deferred.',
       },
       {
-        label: 'Design hub',
+        label: 'Preview hub Overview',
         src: null,
         status: 'Updated',
-        note: 'Two-level nested nav, all-caps removed, "Where we left off" widget added, overview page redesigned, Review Queue tab added.',
+        note: 'Priority-first layout with expandable detail rows.',
       },
     ];
 
     const OPEN_QUESTIONS_KEY = 'luci-hub-open-questions';
-    const OPEN_QUESTIONS_DEFAULT = `• Application guide image — work up a usable version TODAY (Mike); may go in the capabilities doc under "The Orchestration Platform"
-• Field Activation Guide — copy done; now needs design + review (needed before sending 30/60/90 day emails to Ameristar Council Bluffs)
-• FAQ document — pair with Field Activation Guide
-• Capabilities document — design polish and page-break tuning still needed
-• Budget estimate generator — template design + form + PDF export`;
+    const OPEN_QUESTIONS_VERSION_KEY = 'luci-hub-open-questions-version';
+    const OPEN_QUESTIONS_VERSION = '2026-06-12-v2';
+    const OPEN_QUESTIONS_DEFAULT = '';
 
     const SESSION_NOTE_KEY = 'luci-hub-session-note';
-    const SESSION_NOTE_DEFAULT = `Updated Jun 12.
+    const SESSION_NOTE_DATE_KEY = 'luci-hub-session-note-date';
+    const SESSION_NOTE_VERSION_KEY = 'luci-hub-session-note-version';
+    const SESSION_NOTE_VERSION = '2026-06-12-monday-v4';
+    const SESSION_NOTE_DEFAULT = `Goal Monday: ship full Issue 01 (web + email teaser).
 
-Capabilities doc — Page 4 orbit FIXED: spacing the six nodes evenly (60° apart) pushed the corner icons toward the sides so the labels clear the ring. Pages 2 & 3 already balanced. Doc is in good shape.
+DONE (Jun 12):
+• CB case study live — lucisystems.com/case-studies/ameristar-council-bluffs (custom-code embed; keep for now)
+• Mike approved: case study, Issue 01, email teaser (review queue Jun 12)
+• Webflow footer/CTA cleaned up; PDF link in hero only (CDN asset uploaded)
+• build-case-study-webflow.mjs — rebuild embed from source when CB HTML changes
+• Homepage Enterprise callout → CB (verify in Designer if not done)
+• Newsletter Issue 01 already links to case study in "In the field" section
 
-Sales design system CANONIZED: sales-document.css (doc- prefix) + _template-sales-document.html + the luci-sales-document-system rule now capture the spine, components, and design decisions so new sales assets don't start from scratch.
+MONDAY — newsletter:
+• Flesh out / tighten copy in Issue 01 (esp. What's coming, services)
+• Email teaser — align section anchors with web issue; verify deep links
+• Paste Webflow head + body embeds; publish /the-signal/issue-01
+• ActiveCampaign: teaser send + footer tokens (%UNSUBSCRIBELINK%, etc.)
 
-Field Activation Guide — copy finished; being designed in a second tab from the new template. Still needs review before the 30/60/90-day emails go to Ameristar Council Bluffs.`;
+Link audit checklist:
+• Jane LinkedIn → real profile URL (currently generic linkedin.com)
+• Issue 01 URL live on Webflow (/the-signal/issue-01)
+• Case study CTA → /case-studies/ameristar-council-bluffs
+• Support portal + mailto links spot-check
+• Footer Manage preferences / Unsubscribe → AC merge tags at send (# OK in draft)
+
+After Issue 01 ships:
+• Social posts — case study URL + web issue link
+• review-queue.json — add liveUrl for case-study-ameristar
+• Optional: Resources hub featured card for CB
+
+────────────────────────────────
+FIELD ACTIVATION GUIDE — paused Jun 12, pick up after newsletter
+File: ui_kits/sales/field-activation-guide.html (PDF-first, 17 pp) · render: ui_kits/sales/.render/fag/
+State: full draft built and rendering clean (headless Chrome, no page overflow). Not deployed.
+
+Structure:
+• Spine: cover → nav → strategic-framing → 6 persona spreads (Marketing, Gaming, A/V, IT, Finance, GM) → proof → close
+• Each function = full 2-page spread. 24 use cases total, 4 per team, numbered 01–04 within each section.
+• Use-case tiers (increasing specificity): header = the action · description = how/detail · benefit checks = why it matters · "Try it/Do this" = one thing to do.
+• Section openers: oversized GHOSTED section title behind the statement; page 2 repeats the ghost behind use case 03 + a "THE BIGGER PICTURE" spotlight one-liner.
+• Finance copy locked (CapEx/OpEx + revenue attribution). GM has morning-reset + guest-experience-strategy-meeting use cases + closing line.
+
+Decisions made (so you don't relitigate):
+• Sections NOT numbered; the 4 use cases are. "24 use cases" is called out on the cover.
+• Use-case numbers reset 01–04 per section (not continuous 01–24).
+• GM ghost word = "Manager" (full "General Manager" too long at that scale).
+• Removed the small kicker label per section — ghosted title carries identity.
+• CSS: print .doc-page uses exact sheet height to kill blank trailing pages (sales-document.css).
+
+Open when you return:
+• Your review of copy + design across all 6 sections.
+• Optional tweaks offered: spotlight one-liners, the "The bigger picture" label, "Manager" vs "GM", 01–04 vs continuous 01–24.
+• Placeholders to fill before send: FDE contact block on close page ([FDE name/email/line]); proof-page logo rows (logo-row-1/2/3) — confirm.
+• Unblocks the 60/90-day check-in emails to Ameristar Council Bluffs; FAQ doc pairs with this.`;
     const SESSION_NOTE_DEFAULT_DATE = 'Jun 12, 2026';
 
     const frame = document.getElementById('hub-frame');
@@ -1079,11 +1418,72 @@ Field Activation Guide — copy finished; being designed in a second tab from th
       overviewBtn.addEventListener('click', () => activateLink(overviewBtn));
       navMount.appendChild(overviewBtn);
 
-      ['sales', 'emails', 'messaging', 'newsletter', 'review', 'website', 'caseStudies', 'designSystem', 'source'].forEach((key) => {
+      ['sales', 'emails', 'messaging', 'marketing', 'review', 'designSystem', 'source'].forEach((key) => {
         navMount.appendChild(createAccordion(key, NAV_CONFIG[key]));
       });
 
       navLinks = [...navMount.querySelectorAll('.hub-nav__link[data-src], .hub-nav__link[data-view]')];
+    }
+
+    function buildQueueSection(mountId, headingText, items, listClass) {
+      const mount = document.getElementById(mountId);
+      const heading = document.createElement('h3');
+      heading.className = 'hub-ov__section-heading';
+      if (mountId === 'hub-priority-queue') {
+        heading.style.marginTop = '0';
+      } else {
+        heading.style.marginTop = 'var(--space-6)';
+      }
+      heading.textContent = headingText;
+      mount.appendChild(heading);
+
+      const list = document.createElement('div');
+      list.className = listClass;
+      mount.appendChild(list);
+
+      items.forEach((item) => {
+        const row = document.createElement('details');
+        row.className = 'hub-queue__item';
+        const badgeClass = item.priority === 'P1'
+          ? 'hub-queue__badge--p1'
+          : item.priority === 'P2'
+            ? 'hub-queue__badge--p2'
+            : 'hub-queue__badge--later';
+        row.innerHTML = `
+          <summary>
+            <span class="hub-queue__badge ${badgeClass}">${item.priority}</span>
+            <span class="hub-queue__title">${item.label}</span>
+            <span class="hub-queue__status">${item.status}</span>
+          </summary>
+          <div class="hub-queue__detail">${item.detail}</div>
+        `;
+        if (item.src) {
+          const openBtn = document.createElement('button');
+          openBtn.type = 'button';
+          openBtn.className = 'hub-queue__open';
+          openBtn.textContent = 'Open in preview →';
+          openBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            loadPreview(item.src, item.label);
+            const match = navLinks.find((l) => l.dataset.src === item.src);
+            if (match) activateLink(match, false);
+          });
+          row.querySelector('.hub-queue__detail').appendChild(openBtn);
+        }
+        list.appendChild(row);
+      });
+    }
+
+    function buildPriorityQueue() {
+      buildQueueSection('hub-priority-queue', 'Priority now', PRIORITY_QUEUE, 'hub-priority');
+    }
+
+    function buildPausedWork() {
+      buildQueueSection('hub-paused-work', 'Paused / later', PAUSED_WORK, 'hub-paused');
+    }
+
+    function buildBacklogPipeline() {
+      buildQueueSection('hub-backlog-pipeline', 'Backlog pipeline', BACKLOG_PIPELINE, 'hub-backlog');
     }
 
     function buildOverview() {
@@ -1091,6 +1491,7 @@ Field Activation Guide — copy finished; being designed in a second tab from th
 
       const heading = document.createElement('h3');
       heading.className = 'hub-ov__section-heading';
+      heading.style.marginTop = 'var(--space-6)';
       heading.textContent = 'Recent work';
       mount.appendChild(heading);
 
@@ -1099,54 +1500,59 @@ Field Activation Guide — copy finished; being designed in a second tab from th
       mount.appendChild(list);
 
       RECENT_WORK.forEach((item) => {
-        if (item.src) {
-          const btn = document.createElement('button');
-          btn.type = 'button';
-          btn.className = 'hub-recent__item';
-          btn.innerHTML = `
+        const wrap = document.createElement('div');
+        wrap.className = 'hub-recent__item';
+
+        const details = document.createElement('details');
+        const statusClass = item.status === 'WIP' ? ' hub-recent__status--wip' : '';
+        details.innerHTML = `
+          <summary>
             <div class="hub-recent__meta">
               <div class="hub-recent__title">${item.label}</div>
-              <div class="hub-recent__note">${item.note}</div>
             </div>
-            <span class="hub-recent__status${item.status === 'WIP' ? ' hub-recent__status--wip' : ''}">${item.status}</span>
-          `;
-          btn.addEventListener('click', () => {
+            <span class="hub-recent__status${statusClass}">${item.status}</span>
+          </summary>
+          <div class="hub-recent__summary-note">${item.note}</div>
+        `;
+
+        if (item.src) {
+          const openBtn = document.createElement('button');
+          openBtn.type = 'button';
+          openBtn.className = 'hub-recent__open';
+          openBtn.textContent = 'Open in preview →';
+          openBtn.addEventListener('click', () => {
             loadPreview(item.src, item.label);
             const match = navLinks.find((l) => l.dataset.src === item.src);
             if (match) activateLink(match, false);
           });
-          list.appendChild(btn);
-        } else {
-          const div = document.createElement('div');
-          div.className = 'hub-recent__item hub-recent__item--static';
-          div.innerHTML = `
-            <div class="hub-recent__meta">
-              <div class="hub-recent__title">${item.label}</div>
-              <div class="hub-recent__note">${item.note}</div>
-            </div>
-            <span class="hub-recent__status${item.status === 'WIP' ? ' hub-recent__status--wip' : ''}">${item.status}</span>
-          `;
-          list.appendChild(div);
+          details.appendChild(openBtn);
         }
+
+        wrap.appendChild(details);
+        list.appendChild(wrap);
       });
     }
 
     function buildOpenQuestions() {
       const mount = document.getElementById('hub-open-questions');
+      if (localStorage.getItem(OPEN_QUESTIONS_VERSION_KEY) !== OPEN_QUESTIONS_VERSION) {
+        localStorage.setItem(OPEN_QUESTIONS_KEY, OPEN_QUESTIONS_DEFAULT);
+        localStorage.setItem(OPEN_QUESTIONS_VERSION_KEY, OPEN_QUESTIONS_VERSION);
+      }
       const saved = localStorage.getItem(OPEN_QUESTIONS_KEY) ?? OPEN_QUESTIONS_DEFAULT;
 
       const heading = document.createElement('h3');
       heading.className = 'hub-ov__section-heading';
       heading.style.marginTop = 'var(--space-6)';
-      heading.textContent = 'Upcoming / To Do';
+      heading.textContent = 'Scratch notes';
       mount.appendChild(heading);
 
       const widget = document.createElement('div');
       widget.className = 'hub-questions';
 
       widget.innerHTML = `
-        <div class="hub-session__text" id="questions-text" style="margin-top:12px;">${saved}</div>
-        <textarea class="hub-session__textarea" id="questions-textarea" placeholder="Add upcoming tasks or to-dos...">${saved}</textarea>
+        <div class="hub-session__text" id="questions-text" style="margin-top:12px;${saved ? '' : ' font-style:italic; color:var(--fg-subdued);'}">${saved || 'Freeform — anything not in the sections above.'}</div>
+        <textarea class="hub-session__textarea" id="questions-textarea" placeholder="Freeform notes...">${saved}</textarea>
         <div class="hub-session__actions">
           <button class="hub-session__btn" id="questions-edit-btn">Edit</button>
           <button class="hub-session__btn" id="questions-save-btn" style="display:none;">Save</button>
@@ -1182,7 +1588,9 @@ Field Activation Guide — copy finished; being designed in a second tab from th
       saveBtn.addEventListener('click', () => {
         const val = textarea.value;
         localStorage.setItem(OPEN_QUESTIONS_KEY, val);
-        textEl.textContent = val;
+        textEl.textContent = val || 'Freeform — anything not in the sections above.';
+        textEl.style.fontStyle = val ? '' : 'italic';
+        textEl.style.color = val ? '' : 'var(--fg-subdued)';
         textarea.style.display = 'none';
         textEl.style.display = '';
         editBtn.style.display = '';
@@ -1191,23 +1599,79 @@ Field Activation Guide — copy finished; being designed in a second tab from th
       });
     }
 
+    function escapeHtml(str) {
+      return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function renderPickupNote(text) {
+      const lines = text.split('\n');
+      let html = '';
+      let inList = false;
+
+      const closeList = () => {
+        if (inList) {
+          html += '</ul>';
+          inList = false;
+        }
+      };
+
+      for (const line of lines) {
+        const trimmed = line.trim();
+        if (!trimmed) {
+          closeList();
+          continue;
+        }
+        if (trimmed.startsWith('Goal ')) {
+          closeList();
+          html += `<p class="hub-pickup__goal">${escapeHtml(trimmed)}</p>`;
+        } else if (trimmed.endsWith(':') && !trimmed.startsWith('•')) {
+          closeList();
+          html += `<h4 class="hub-pickup__heading">${escapeHtml(trimmed.slice(0, -1))}</h4>`;
+        } else if (trimmed.startsWith('•')) {
+          if (!inList) {
+            html += '<ul class="hub-pickup__list">';
+            inList = true;
+          }
+          html += `<li>${escapeHtml(trimmed.slice(1).trim())}</li>`;
+        } else {
+          closeList();
+          html += `<p class="hub-pickup__p">${escapeHtml(trimmed)}</p>`;
+        }
+      }
+      closeList();
+      return html;
+    }
+
+    function setPickupDisplay(textEl, text) {
+      textEl.innerHTML = renderPickupNote(text);
+      textEl.style.whiteSpace = 'normal';
+    }
+
     function buildSessionNotes() {
       const mount = document.getElementById('hub-session-notes');
-      const STORAGE_KEY = 'luci-hub-session-note';
-      const STORAGE_DATE_KEY = 'luci-hub-session-note-date';
 
-      const saved = localStorage.getItem(STORAGE_KEY) ?? SESSION_NOTE_DEFAULT;
-      const savedDate = localStorage.getItem(STORAGE_DATE_KEY) || (localStorage.getItem(STORAGE_KEY) === null ? SESSION_NOTE_DEFAULT_DATE : '');
+      if (localStorage.getItem(SESSION_NOTE_VERSION_KEY) !== SESSION_NOTE_VERSION) {
+        localStorage.setItem(SESSION_NOTE_KEY, SESSION_NOTE_DEFAULT);
+        localStorage.setItem(SESSION_NOTE_DATE_KEY, SESSION_NOTE_DEFAULT_DATE);
+        localStorage.setItem(SESSION_NOTE_VERSION_KEY, SESSION_NOTE_VERSION);
+      }
+
+      const saved = localStorage.getItem(SESSION_NOTE_KEY) ?? SESSION_NOTE_DEFAULT;
+      const savedDate = localStorage.getItem(SESSION_NOTE_DATE_KEY) || (localStorage.getItem(SESSION_NOTE_KEY) === null ? SESSION_NOTE_DEFAULT_DATE : '');
 
       const widget = document.createElement('div');
-      widget.className = 'hub-session';
+      widget.className = 'hub-session hub-session--pickup';
 
       widget.innerHTML = `
         <div class="hub-session__header">
-          <span class="hub-session__label">Where we left off</span>
+          <span class="hub-session__label">Pick up Monday</span>
           <span class="hub-session__date" id="session-date">${savedDate ? 'Last updated ' + savedDate : ''}</span>
         </div>
-        <div class="hub-session__text" id="session-text">${saved}</div>
+        <div class="hub-session__text" id="session-text"></div>
         <textarea class="hub-session__textarea" id="session-textarea" placeholder="Add a note about where you left off today...">${saved}</textarea>
         <div class="hub-session__actions">
           <button class="hub-session__btn" id="session-edit-btn">Edit</button>
@@ -1219,6 +1683,7 @@ Field Activation Guide — copy finished; being designed in a second tab from th
       mount.appendChild(widget);
 
       const textEl = document.getElementById('session-text');
+      setPickupDisplay(textEl, saved);
       const textarea = document.getElementById('session-textarea');
       const dateEl = document.getElementById('session-date');
       const editBtn = document.getElementById('session-edit-btn');
@@ -1235,7 +1700,7 @@ Field Activation Guide — copy finished; being designed in a second tab from th
       });
 
       cancelBtn.addEventListener('click', () => {
-        textarea.value = localStorage.getItem(STORAGE_KEY) || '';
+        textarea.value = localStorage.getItem(SESSION_NOTE_KEY) || '';
         textarea.style.display = 'none';
         textEl.style.display = '';
         editBtn.style.display = '';
@@ -1246,9 +1711,9 @@ Field Activation Guide — copy finished; being designed in a second tab from th
       saveBtn.addEventListener('click', () => {
         const val = textarea.value;
         const now = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' });
-        localStorage.setItem(STORAGE_KEY, val);
-        localStorage.setItem(STORAGE_DATE_KEY, now);
-        textEl.textContent = val;
+        localStorage.setItem(SESSION_NOTE_KEY, val);
+        localStorage.setItem(SESSION_NOTE_DATE_KEY, now);
+        setPickupDisplay(textEl, val);
         dateEl.textContent = val ? 'Last updated ' + now : '';
         textarea.style.display = 'none';
         textEl.style.display = '';
@@ -1380,6 +1845,9 @@ Field Activation Guide — copy finished; being designed in a second tab from th
 
     buildSidebar();
     buildSessionNotes();
+    buildPriorityQueue();
+    buildPausedWork();
+    buildBacklogPipeline();
     buildOverview();
     buildOpenQuestions();
   </script>

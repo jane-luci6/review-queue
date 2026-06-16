@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>LUCI — System Architecture</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#10232D; --muted:#56707C; --line:#D4D9DC; --bg:#F5F8FA; --accent:#176B54; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: var(--bg); color: var(--ink);
+      font-family: 'Space Grotesk', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: clamp(28px, 6vw, 64px) clamp(20px, 5vw, 56px); }
+    .kicker {
+      font-size: 11px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--accent); margin: 0 0 12px;
+    }
+    h1 { font-size: clamp(24px, 4vw, 32px); font-weight: 700; letter-spacing: -.02em; margin: 0 0 8px; }
+    .deck { font-size: 16px; line-height: 1.55; color: var(--muted); max-width: 60ch; margin: 0 0 32px; }
+    .frame {
+      background: #fff; border: 1px solid var(--line); padding: clamp(12px, 2.5vw, 28px);
+    }
+    .frame img { display: block; width: 100%; height: auto; }
+    .meta { font-size: 13px; color: var(--muted); margin: 16px 0 0; }
+    .meta strong { color: var(--ink); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="kicker">Capabilities &#183; Technical view</p>
+    <h1>System architecture</h1>
+    <p class="deck">How LUCI connects to your property: content sources feed into LUCI &mdash; one standardized rack and the orchestration platform &mdash; which controls the new and existing A/V across the floor, over your existing network.</p>
+    <div class="frame">
+      <img src="../../assets/diagrams/luci-system-architecture.png" alt="LUCI system architecture: content sources (satellite, cable TV, internet, live A/V, music) feed into LUCI — one rack plus the orchestration platform — which controls displays, video walls, lighting, and background music & paging over your existing network.">
+    </div>
+    <p class="meta"><strong>Draft for review</strong> &#183; intended for the capabilities document</p>
+  </div>
+</body>
+</html>

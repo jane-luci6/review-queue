@@ -363,7 +363,7 @@
 <script>
 const REVIEW_DATA = {
   "queue": {
-    "updated": "2026-06-12",
+    "updated": "2026-06-16",
     "publishNote": "Build + ./publish.sh. Bump reviewVersion + versionNote for new uploads (Teams + version history on site). Set due for first-time review. See teams-notifications-guide.txt.",
     "commentsApiUrl": "",
     "commentsApiNote": "Optional full URL if review page is on Webflow but API is on Netlify. Leave empty when the whole site is on Netlify.",
@@ -373,12 +373,12 @@ const REVIEW_DATA = {
       {
         "title": "Messaging guide",
         "url": "messaging/messaging-guide.html",
-        "note": "Updated Jun 12, 2026"
+        "note": "Updated Jun 15, 2026"
       },
       {
         "title": "LUCI philosophy",
         "url": "messaging/philosophy.html",
-        "note": "Updated Jun 12, 2026"
+        "note": "Updated Jun 15, 2026"
       },
       {
         "title": "LUCI system diagram",
@@ -388,7 +388,7 @@ const REVIEW_DATA = {
       {
         "title": "Personas",
         "url": "messaging/personas.html",
-        "note": "Updated Jun 12, 2026"
+        "note": "Updated Jun 15, 2026"
       }
     ],
     "inProgress": [
@@ -415,7 +415,77 @@ const REVIEW_DATA = {
         "previewUrl": "sales/capabilities-document.html"
       }
     ],
-    "dueForReview": [],
+    "dueForReview": [
+      {
+        "id": "field-activation-guide",
+        "title": "Field Activation Guide",
+        "summary": "Post-go-live PDF — how each team puts LUCI to work on the floor. Organized by team, four use cases each + one task to try this week. Draft badges still on pages.",
+        "reviewStatus": "New — your review",
+        "signOff": false,
+        "reviewVersion": 1,
+        "versionNote": "First portal preview — six team sections (Marketing, Gaming & Operations, A/V & Facilities, IT, Finance, General Management), shared-strategy principle page, proof, and close.",
+        "due": "2026-06-19",
+        "hubPreviewPath": "ui_kits/sales/field-activation-guide.html",
+        "reviewBrief": {
+          "description": "The LUCI Field Activation Guide — a US Letter PDF for handing to a property after go-live. It shows each team how to put LUCI to work on the floor: six team sections, each with four use cases and one task to try this week, framed by a shared floor-strategy principle and closing proof.",
+          "reviewAsk": "messaging and whether each team's use cases ring true and actionable — anything overstated, missing, or mis-prioritized for that audience."
+        },
+        "versionHistory": [
+          {
+            "version": 1,
+            "published": "2026-06-15",
+            "note": "First portal preview."
+          }
+        ],
+        "previewUrl": "sales/field-activation-guide.html"
+      },
+      {
+        "id": "system-architecture-diagram",
+        "title": "System architecture diagram",
+        "summary": "Technical view for the capabilities deck — content sources in, one rack + platform as the control point, A/V endpoints out.",
+        "reviewStatus": "New — your review",
+        "signOff": false,
+        "reviewVersion": 1,
+        "versionNote": "First portal preview — labeled rack, grey control-point highlight, five sources, four controlled outputs.",
+        "due": "2026-06-18",
+        "hubPreviewPath": "ui_kits/sales/system-architecture.html",
+        "reviewBrief": {
+          "description": "A technical architecture view for the capabilities document — content sources feed into LUCI (one standardized rack + the orchestration platform), which controls displays, video walls, lighting, and background music & paging over the existing network.",
+          "reviewAsk": "technical accuracy of the rack components and the source/endpoint lists — anything mislabeled, missing, or out of place (esp. Mike's input on the rack)."
+        },
+        "versionHistory": [
+          {
+            "version": 1,
+            "published": "2026-06-15",
+            "note": "First portal preview."
+          }
+        ],
+        "previewUrl": "sales/system-architecture.html"
+      },
+      {
+        "id": "what-luci-is-diagram",
+        "title": "What LUCI is (identity diagram)",
+        "summary": "Plain-language identity graphic for the capabilities doc — LUCI (one rack + the platform software) + Systems (the embedded team).",
+        "reviewStatus": "New — your review",
+        "signOff": false,
+        "reviewVersion": 1,
+        "versionNote": "First portal preview — the orchestration platform (rack + laptop running the LUCI app) plus the embedded operation (team + gear).",
+        "due": "2026-06-19",
+        "hubPreviewPath": "ui_kits/sales/what-luci-is.html",
+        "reviewBrief": {
+          "description": "A plain-language identity graphic for the capabilities document: LUCI = the orchestration platform (one standardized rack plus the control software) + Systems = the embedded operation (the team that runs it day to day).",
+          "reviewAsk": "whether this clearly and accurately conveys what LUCI is at a glance — the platform-plus-team split and the 'one rack' simplicity."
+        },
+        "versionHistory": [
+          {
+            "version": 1,
+            "published": "2026-06-15",
+            "note": "First portal preview."
+          }
+        ],
+        "previewUrl": "sales/what-luci-is.html"
+      }
+    ],
     "approvedAssets": [
       {
         "id": "signal-hub",
@@ -547,7 +617,7 @@ const REVIEW_DATA = {
       }
     ],
     "finalized": [],
-    "messagingDocsUpdated": "2026-06-12"
+    "messagingDocsUpdated": "2026-06-16"
   },
   "comments": [],
   "commentsUpdated": "2026-06-01",
@@ -578,6 +648,7 @@ const REVIEW_DATA = {
   }
   const q = REVIEW_DATA.queue;
   const REVIEWERS = ['Mike', 'Nick'];
+  const COMMENTATORS = ['Mike', 'Nick', 'Jane', 'Mark'];
   const LS_APPROVALS = 'luci-review-approvals';
   let allComments = (REVIEW_DATA.comments || []).slice();
   let approvalsByAsset = Object.assign({}, REVIEW_DATA.approvals || {});
@@ -1412,7 +1483,9 @@ const REVIEW_DATA = {
     const nameLabel = document.createElement('label');
     nameLabel.textContent = 'Your name';
     const nameSel = document.createElement('select');
-    nameSel.innerHTML = '<option value="">Select…</option><option value="Mike">Mike</option><option value="Nick">Nick</option>';
+    nameSel.innerHTML =
+      '<option value="">Select…</option>' +
+      COMMENTATORS.map((name) => '<option value="' + name + '">' + name + '</option>').join('');
     const textLabel = document.createElement('label');
     textLabel.textContent = 'Your feedback';
     const textarea = document.createElement('textarea');

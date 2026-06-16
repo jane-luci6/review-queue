@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="16 0 560 264" font-family="'Space Grotesk', sans-serif" role="img" aria-label="What LUCI is: LUCI, the orchestration platform (a server rack plus the control platform on a laptop), plus Systems, the embedded operation (the team that runs the operating system, shown as people around a gear).">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap');
+      .nm { font-weight:700; font-size:20px; letter-spacing:-.01em; fill:#10232D; text-anchor:middle; }
+      .rl { font-weight:700; font-size:9.5px; letter-spacing:.15em; fill:#176B54; text-anchor:middle; }
+    </style>
+    <clipPath id="screenClip"><rect x="165" y="46" width="138" height="96" rx="2"/></clipPath>
+  </defs>
+
+  <!-- ===================== LUCI : The Orchestration Platform ===================== -->
+
+  <!-- ===== server rack (open frame, sharp corners, no feet) ===== -->
+  <!-- top cap + base plinth -->
+  <rect x="42" y="22" width="80" height="10" fill="#16303C"/>
+  <rect x="42" y="176" width="80" height="12" fill="#16303C"/>
+  <!-- vertical posts / rails -->
+  <rect x="44" y="32" width="9" height="144" fill="#2A4754"/>
+  <rect x="111" y="32" width="9" height="144" fill="#2A4754"/>
+  <!-- mounting holes down the rails -->
+  <g fill="#6B8390">
+    <rect x="48.5" y="36" width="2" height="3"/><rect x="48.5" y="44" width="2" height="3"/><rect x="48.5" y="52" width="2" height="3"/><rect x="48.5" y="60" width="2" height="3"/><rect x="48.5" y="68" width="2" height="3"/><rect x="48.5" y="76" width="2" height="3"/><rect x="48.5" y="84" width="2" height="3"/><rect x="48.5" y="92" width="2" height="3"/><rect x="48.5" y="100" width="2" height="3"/><rect x="48.5" y="108" width="2" height="3"/><rect x="48.5" y="116" width="2" height="3"/><rect x="48.5" y="124" width="2" height="3"/><rect x="48.5" y="132" width="2" height="3"/><rect x="48.5" y="140" width="2" height="3"/><rect x="48.5" y="148" width="2" height="3"/><rect x="48.5" y="156" width="2" height="3"/><rect x="48.5" y="164" width="2" height="3"/><rect x="48.5" y="172" width="2" height="3"/>
+    <rect x="113.5" y="36" width="2" height="3"/><rect x="113.5" y="44" width="2" height="3"/><rect x="113.5" y="52" width="2" height="3"/><rect x="113.5" y="60" width="2" height="3"/><rect x="113.5" y="68" width="2" height="3"/><rect x="113.5" y="76" width="2" height="3"/><rect x="113.5" y="84" width="2" height="3"/><rect x="113.5" y="92" width="2" height="3"/><rect x="113.5" y="100" width="2" height="3"/><rect x="113.5" y="108" width="2" height="3"/><rect x="113.5" y="116" width="2" height="3"/><rect x="113.5" y="124" width="2" height="3"/><rect x="113.5" y="132" width="2" height="3"/><rect x="113.5" y="140" width="2" height="3"/><rect x="113.5" y="148" width="2" height="3"/><rect x="113.5" y="156" width="2" height="3"/><rect x="113.5" y="164" width="2" height="3"/><rect x="113.5" y="172" width="2" height="3"/>
+  </g>
+
+  <!-- mounted units (between rails) -->
+  <!-- fan unit -->
+  <rect x="53" y="35" width="58" height="13" fill="#10232D"/>
+  <circle cx="72" cy="41.5" r="4.4" fill="none" stroke="#68E3BE" stroke-width="1.4"/><circle cx="72" cy="41.5" r="1.4" fill="#68E3BE"/>
+  <circle cx="92" cy="41.5" r="4.4" fill="none" stroke="#68E3BE" stroke-width="1.4"/><circle cx="92" cy="41.5" r="1.4" fill="#68E3BE"/>
+  <!-- display device -->
+  <rect x="53" y="50" width="58" height="18" fill="#FFFFFF" stroke="#10232D" stroke-width="1.3"/>
+  <rect x="57" y="54" width="24" height="10" fill="#10232D"/>
+  <line x1="60" y1="58" x2="75" y2="58" stroke="#68E3BE" stroke-width="1.1"/><line x1="60" y1="61" x2="71" y2="61" stroke="#3C5A66" stroke-width="1.1"/>
+  <circle cx="98" cy="56.5" r="1.7" fill="#68E3BE"/><circle cx="104" cy="56.5" r="1.7" fill="#9AA7AD"/>
+  <line x1="88" y1="62" x2="108" y2="62" stroke="#C4CDD2" stroke-width="1.1"/>
+  <!-- vented -->
+  <rect x="53" y="70" width="58" height="12" fill="#F4F7F8" stroke="#10232D" stroke-width="1.3"/>
+  <line x1="59" y1="74" x2="105" y2="74" stroke="#C4CDD2" stroke-width="1.1"/><line x1="59" y1="78" x2="105" y2="78" stroke="#C4CDD2" stroke-width="1.1"/>
+  <!-- ports -->
+  <rect x="53" y="84" width="58" height="15" fill="#FFFFFF" stroke="#10232D" stroke-width="1.3"/>
+  <g fill="#10232D"><rect x="58" y="89" width="7" height="6"/><rect x="68" y="89" width="7" height="6"/><rect x="78" y="89" width="7" height="6"/><rect x="88" y="89" width="7" height="6"/></g>
+  <circle cx="105" cy="92" r="1.7" fill="#68E3BE"/>
+  <!-- LED bank -->
+  <rect x="53" y="101" width="58" height="16" fill="#EEF2F4" stroke="#10232D" stroke-width="1.3"/>
+  <circle cx="60" cy="109" r="1.8" fill="#68E3BE"/><circle cx="68" cy="109" r="1.8" fill="#68E3BE"/><circle cx="76" cy="109" r="1.8" fill="#9AA7AD"/><circle cx="84" cy="109" r="1.8" fill="#68E3BE"/>
+  <rect x="94" y="105" width="14" height="8" fill="#10232D"/>
+  <!-- vented -->
+  <rect x="53" y="119" width="58" height="12" fill="#F4F7F8" stroke="#10232D" stroke-width="1.3"/>
+  <line x1="59" y1="123" x2="105" y2="123" stroke="#C4CDD2" stroke-width="1.1"/><line x1="59" y1="127" x2="105" y2="127" stroke="#C4CDD2" stroke-width="1.1"/>
+  <!-- PDU -->
+  <rect x="53" y="133" width="58" height="13" fill="#10232D"/>
+  <g fill="#68E3BE"><circle cx="60" cy="139.5" r="1.5"/><circle cx="68" cy="139.5" r="1.5"/><circle cx="76" cy="139.5" r="1.5"/><circle cx="84" cy="139.5" r="1.5"/><circle cx="92" cy="139.5" r="1.5"/></g>
+  <rect x="101" y="136" width="8" height="7" fill="#2b9e80"/>
+  <!-- bottom device (amp / matrix) -->
+  <rect x="53" y="148" width="58" height="26" fill="#FFFFFF" stroke="#10232D" stroke-width="1.3"/>
+  <rect x="57" y="153" width="20" height="16" fill="#10232D"/>
+  <line x1="60" y1="158" x2="74" y2="158" stroke="#68E3BE" stroke-width="1.1"/><line x1="60" y1="162" x2="70" y2="162" stroke="#3C5A66" stroke-width="1.1"/>
+  <circle cx="87" cy="156" r="2.6" fill="none" stroke="#10232D" stroke-width="1.2"/><circle cx="87" cy="156" r="0.9" fill="#10232D"/>
+  <circle cx="97" cy="156" r="2.6" fill="none" stroke="#10232D" stroke-width="1.2"/><circle cx="97" cy="156" r="0.9" fill="#10232D"/>
+  <circle cx="106" cy="156" r="1.7" fill="#68E3BE"/>
+  <line x1="84" y1="166" x2="108" y2="166" stroke="#C4CDD2" stroke-width="1.1"/>
+
+  <!-- ===== control platform on a laptop ===== -->
+  <g transform="translate(234,188) scale(0.85) translate(-234,-188)">
+  <rect x="158" y="38" width="152" height="110" rx="6" fill="#10232D"/>
+  <image xlink:href="platform-ui.png" href="platform-ui.png" x="165" y="46" width="138" height="96" preserveAspectRatio="xMidYMid slice" clip-path="url(#screenClip)"/>
+  <!-- LUCI app header - brands the screen as LUCI's software -->
+  <rect x="165" y="46" width="138" height="15" fill="#0A1A22" clip-path="url(#screenClip)"/>
+  <circle cx="172.5" cy="53.5" r="2.6" fill="#68E3BE"/>
+  <text x="178" y="57" font-size="9.5" font-weight="700" letter-spacing="0.08em" fill="#F5F8FA">LUCI</text>
+  <rect x="158" y="145" width="152" height="3" fill="#0A1A22"/>
+  <!-- keyboard deck (foreshortened) -->
+  <path d="M156,148 L312,148 L330,188 L138,188 Z" fill="#16303C"/>
+  <!-- keyboard plate -->
+  <path d="M168,153 L300,153 L312,180 L156,180 Z" fill="#20404F"/>
+  <!-- key rows + columns (perspective grid) -->
+  <g stroke="#0C1E27" stroke-width="1.1">
+    <line x1="165.8" y1="158" x2="302.2" y2="158"/>
+    <line x1="163.6" y1="163" x2="304.4" y2="163"/>
+    <line x1="161.3" y1="168" x2="306.7" y2="168"/>
+    <line x1="159.1" y1="173" x2="308.9" y2="173"/>
+    <line x1="167" y1="155" x2="157" y2="178"/>
+    <line x1="180.4" y1="155" x2="172.3" y2="178"/>
+    <line x1="193.8" y1="155" x2="187.6" y2="178"/>
+    <line x1="207.2" y1="155" x2="202.9" y2="178"/>
+    <line x1="220.6" y1="155" x2="218.2" y2="178"/>
+    <line x1="234" y1="155" x2="233.5" y2="178"/>
+    <line x1="247.4" y1="155" x2="248.8" y2="178"/>
+    <line x1="260.8" y1="155" x2="264.1" y2="178"/>
+    <line x1="274.2" y1="155" x2="279.4" y2="178"/>
+    <line x1="287.6" y1="155" x2="294.7" y2="178"/>
+  </g>
+  <!-- trackpad -->
+  <path d="M212,181 L258,181 L262,187 L208,187 Z" fill="#2A4754"/>
+  </g>
+
+  <!-- group brace: rack + laptop = LUCI -->
+  <path d="M42,194 V199 H316 V194" fill="none" stroke="#B8C2C8" stroke-width="1.2"/>
+  <text class="nm" x="179" y="220">LUCI</text>
+  <text class="rl" x="179" y="238">THE ORCHESTRATION PLATFORM</text>
+
+  <!-- ===================== + ===================== -->
+  <text x="367" y="136" font-size="48" font-weight="400" fill="#2b9e80" text-anchor="middle">+</text>
+
+  <!-- ===================== Systems : The Embedded Operation ===================== -->
+  <!-- people + gear emblem, dropped to shared baseline -->
+  <g transform="translate(0,18)">
+    <!-- center (back) figure - lighter navy = recedes -->
+    <path d="M444,122 Q444,80 462,80 Q480,80 480,122 Z" fill="#2A4754"/>
+    <circle cx="462" cy="62" r="14" fill="#2A4754"/>
+    <!-- left figure -->
+    <path d="M418,121 Q418,93 438,93 Q458,93 458,121 Z" fill="#10232D"/>
+    <circle cx="436" cy="78" r="12.5" fill="#10232D"/>
+    <!-- right figure -->
+    <path d="M466,121 Q466,93 486,93 Q506,93 506,121 Z" fill="#10232D"/>
+    <circle cx="488" cy="78" r="12.5" fill="#10232D"/>
+    <!-- gear (full, in front) - the operating system the team runs -->
+    <g fill="#10232D">
+      <rect x="458" y="118" width="8" height="12" rx="1.6"/>
+      <rect x="458" y="118" width="8" height="12" rx="1.6" transform="rotate(45 462 146)"/>
+      <rect x="458" y="118" width="8" height="12" rx="1.6" transform="rotate(90 462 146)"/>
+      <rect x="458" y="118" width="8" height="12" rx="1.6" transform="rotate(135 462 146)"/>
+      <rect x="458" y="118" width="8" height="12" rx="1.6" transform="rotate(180 462 146)"/>
+      <rect x="458" y="118" width="8" height="12" rx="1.6" transform="rotate(225 462 146)"/>
+      <rect x="458" y="118" width="8" height="12" rx="1.6" transform="rotate(270 462 146)"/>
+      <rect x="458" y="118" width="8" height="12" rx="1.6" transform="rotate(315 462 146)"/>
+    </g>
+    <circle cx="462" cy="146" r="22" fill="#10232D"/>
+    <circle cx="462" cy="146" r="9" fill="#68E3BE"/>
+  </g>
+
+  <text class="nm" x="462" y="220">Systems</text>
+  <text class="rl" x="462" y="238">THE EMBEDDED OPERATION</text>
+</svg>

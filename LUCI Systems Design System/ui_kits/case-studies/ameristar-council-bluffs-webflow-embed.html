@@ -1,18 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Case Study — Ameristar Council Bluffs · LUCI Systems</title>
-  <meta name="description" content="How LUCI retrofitted Ameristar Council Bluffs Casino's AV infrastructure in under three days, centralizing control on land and preparing the property for its next phase of growth.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    /* Webflow embed: break out of page container + beat site styles */
+    .luci-cs {
+      width: 100vw;
+      max-width: 100vw;
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+      position: relative;
+      font-family: var(--body);
+      background: var(--navy-deep);
+      color: var(--body-ink);
+      -webkit-font-smoothing: antialiased;
+      font-size: 18px;
+      line-height: 1.72;
+    }
 
-    :root {
+    .luci-cs *,
+    .luci-cs *::before,
+    .luci-cs *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    .w-embed .luci-cs,
+    .w-embed .luci-cs * {
+      box-sizing: border-box;
+    }
+
+    .luci-cs img {
+      max-width: none;
+    }
+
+    .luci-cs a {
+      text-decoration: none;
+    }
+
+    .luci-cs blockquote {
+      border: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .luci-cs ul,
+    .luci-cs ol {
+      list-style: none;
+    }
+
+    /* About LUCI — editorial block inside CTA, not a second footer */
+    .luci-cs .cta__about {
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      max-width: 62ch;
+    }
+
+    .luci-cs .cta__about-label {
+      color: var(--mint);
+      margin-bottom: 12px;
+    }
+
+    .luci-cs .cta__statement {
+      color: rgba(235, 245, 248, 0.82);
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    /* Footer bar only — no copyright row on Webflow */
+    .luci-cs .footer__top {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+:root {
       --navy-deep:   #0A161C;
       --navy:        #10232D;
       --navy-mid:    #314955;
@@ -34,23 +97,13 @@
       --read: 64ch;
     }
 
-    body {
-      font-family: var(--body);
-      background: var(--navy-deep);
-      color: var(--body-ink);
-      -webkit-font-smoothing: antialiased;
-      font-size: 18px;
-      line-height: 1.72;
-    }
-
-    .page {
+.luci-cs .page {
       max-width: var(--max);
       margin: 0 auto;
       background: var(--white);
     }
 
-    /* ── TOP BAR ──────────────────────────────────────── */
-    .topbar {
+.luci-cs .topbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -60,9 +113,9 @@
       border-bottom: 1px solid rgba(var(--mint-rgb), 0.15);
     }
 
-    .topbar__logo img { height: 24px; display: block; }
+.luci-cs .topbar__logo img { height: 24px; display: block; }
 
-    .topbar__tag {
+.luci-cs .topbar__tag {
       font-family: var(--display);
       font-size: 10px;
       font-weight: 700;
@@ -71,8 +124,7 @@
       color: rgba(var(--mint-rgb), 0.7);
     }
 
-    /* ── HERO ─────────────────────────────────────────── */
-    .hero {
+.luci-cs .hero {
       background: var(--navy-deep);
       padding: clamp(40px, 8vw, 84px) var(--pad) clamp(40px, 7vw, 72px);
       position: relative;
@@ -80,14 +132,14 @@
       border-bottom: 4px solid var(--mint);
     }
 
-    .hero__kicker {
+.luci-cs .hero__kicker {
       display: flex;
       align-items: center;
       gap: 12px;
       margin-bottom: 22px;
     }
 
-    .hero__kicker span {
+.luci-cs .hero__kicker span {
       font-family: var(--display);
       font-size: 10px;
       font-weight: 700;
@@ -96,14 +148,14 @@
       color: var(--mint);
     }
 
-    .hero__kicker::before {
+.luci-cs .hero__kicker::before {
       content: '';
       width: 28px;
       height: 2px;
       background: var(--mint);
     }
 
-    .hero__title {
+.luci-cs .hero__title {
       font-family: var(--body);
       font-weight: 700;
       font-size: clamp(34px, 6.5vw, 60px);
@@ -114,9 +166,9 @@
       margin-bottom: 26px;
     }
 
-    .hero__title em { font-style: normal; color: var(--mint); }
+.luci-cs .hero__title em { font-style: normal; color: var(--mint); }
 
-    .hero__dek {
+.luci-cs .hero__dek {
       font-size: clamp(17px, 2.2vw, 20px);
       line-height: 1.6;
       color: rgba(235, 245, 248, 0.82);
@@ -124,7 +176,7 @@
       margin-bottom: 30px;
     }
 
-    .hero__property {
+.luci-cs .hero__property {
       display: flex;
       align-items: center;
       gap: 14px;
@@ -137,16 +189,16 @@
       border-top: 1px solid rgba(var(--mint-rgb), 0.15);
     }
 
-    .hero__property span { color: rgba(165, 179, 188, 0.7); font-weight: 500; }
+.luci-cs .hero__property span { color: rgba(165, 179, 188, 0.7); font-weight: 500; }
 
-    .hero__actions {
+.luci-cs .hero__actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
       margin-bottom: 30px;
     }
 
-    .download-btn {
+.luci-cs .download-btn {
       display: inline-flex;
       align-items: center;
       gap: 10px;
@@ -161,18 +213,17 @@
       transition: background 0.15s, border-color 0.15s;
     }
 
-    .download-btn:hover {
+.luci-cs .download-btn:hover {
       background: rgba(var(--mint-rgb), 0.08);
       border-color: var(--mint);
     }
 
-    .download-btn__icon {
+.luci-cs .download-btn__icon {
       font-size: 16px;
       line-height: 1;
     }
 
-    /* faint year watermark */
-    .hero__watermark {
+.luci-cs .hero__watermark {
       position: absolute;
       right: calc(var(--pad) - 10px);
       bottom: -22px;
@@ -186,35 +237,32 @@
       z-index: 0;
     }
 
-    .hero > * { position: relative; z-index: 1; }
+.luci-cs .hero > * { position: relative; z-index: 1; }
 
-    /* ── AT A GLANCE (light) ──────────────────────────── */
-    .glance {
+.luci-cs .glance {
       background: var(--off-white);
       padding: clamp(32px, 5vw, 48px) var(--pad);
       border-bottom: 1px solid var(--rule-light);
     }
 
-    .glance__logo {
+.luci-cs .glance__logo {
       margin-bottom: 28px;
       padding-bottom: 24px;
       border-bottom: 1px solid var(--rule-light);
     }
 
-    .glance__logo img { height: 44px; display: block; }
+.luci-cs .glance__logo img { height: 44px; display: block; }
 
-    .facts {
+.luci-cs .facts {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
       margin-bottom: 36px;
     }
 
-    @media (max-width: 620px) {
-      .facts { grid-template-columns: repeat(2, 1fr); gap: 20px 24px; }
-    }
+@media (max-width: 620px) {.luci-cs .facts { grid-template-columns: repeat(2, 1fr); gap: 20px 24px; }}
 
-    .facts__label {
+.luci-cs .facts__label {
       font-family: var(--display);
       font-size: 9px;
       font-weight: 700;
@@ -224,14 +272,14 @@
       margin-bottom: 8px;
     }
 
-    .facts__value {
+.luci-cs .facts__value {
       font-size: 17px;
       font-weight: 600;
       line-height: 1.3;
       color: var(--navy);
     }
 
-    .summary {
+.luci-cs .summary {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1px;
@@ -239,16 +287,14 @@
       border: 1px solid var(--rule-light);
     }
 
-    @media (max-width: 620px) {
-      .summary { grid-template-columns: 1fr; }
-    }
+@media (max-width: 620px) {.luci-cs .summary { grid-template-columns: 1fr; }}
 
-    .summary__cell {
+.luci-cs .summary__cell {
       background: var(--white);
       padding: 22px 22px;
     }
 
-    .summary__label {
+.luci-cs .summary__label {
       font-family: var(--display);
       font-size: 9px;
       font-weight: 700;
@@ -258,35 +304,38 @@
       margin-bottom: 10px;
     }
 
-    .summary__text {
+.luci-cs .summary__text {
       font-size: 15px;
       line-height: 1.55;
       color: var(--body-ink);
     }
 
-    /* ── SECTIONS ─────────────────────────────────────── */
-    .sec {
+.luci-cs .sec {
       padding: clamp(44px, 6vw, 72px) var(--pad);
       border-bottom: 1px solid var(--rule-light);
       position: relative;
     }
 
-    .sec--white { background: var(--white); }
-    .sec--light { background: var(--off-white); }
-    .sec--mid   { background: var(--navy-mid); border-bottom-color: rgba(0,0,0,0.2); }
-    .sec--dark  { background: var(--navy); border-bottom-color: rgba(0,0,0,0.3); }
-    .sec--deep  { background: var(--navy-deep); border-bottom-color: rgba(0,0,0,0.4); }
+.luci-cs .sec--white { background: var(--white); }
 
-    .kicker {
+.luci-cs .sec--light { background: var(--off-white); }
+
+.luci-cs .sec--mid { background: var(--navy-mid); border-bottom-color: rgba(0,0,0,0.2); }
+
+.luci-cs .sec--dark { background: var(--navy); border-bottom-color: rgba(0,0,0,0.3); }
+
+.luci-cs .sec--deep { background: var(--navy-deep); border-bottom-color: rgba(0,0,0,0.4); }
+
+.luci-cs .kicker {
       display: flex;
       align-items: center;
       gap: 12px;
       margin-bottom: 18px;
     }
 
-    .kicker__rule { width: 28px; height: 2px; background: var(--mint); flex-shrink: 0; }
+.luci-cs .kicker__rule { width: 28px; height: 2px; background: var(--mint); flex-shrink: 0; }
 
-    .kicker__label {
+.luci-cs .kicker__label {
       font-family: var(--display);
       font-size: 10px;
       font-weight: 700;
@@ -295,10 +344,11 @@
       color: var(--mint);
     }
 
-    .sec--white .kicker__rule, .sec--light .kicker__rule { background: var(--mint-dark); }
-    .sec--white .kicker__label, .sec--light .kicker__label { color: var(--mint-dark); }
+.luci-cs .sec--white .kicker__rule, .luci-cs .sec--light .kicker__rule { background: var(--mint-dark); }
 
-    .sec__title {
+.luci-cs .sec--white .kicker__label, .luci-cs .sec--light .kicker__label { color: var(--mint-dark); }
+
+.luci-cs .sec__title {
       font-family: var(--body);
       font-weight: 700;
       font-size: clamp(24px, 4vw, 34px);
@@ -308,36 +358,41 @@
       margin-bottom: 22px;
     }
 
-    .sec--white .sec__title, .sec--light .sec__title { color: var(--navy); }
-    .sec--mid .sec__title, .sec--dark .sec__title, .sec--deep .sec__title { color: var(--off-white); }
+.luci-cs .sec--white .sec__title, .luci-cs .sec--light .sec__title { color: var(--navy); }
 
-    .cs-copy p {
+.luci-cs .sec--mid .sec__title, .luci-cs .sec--dark .sec__title, .luci-cs .sec--deep .sec__title { color: var(--off-white); }
+
+.luci-cs .cs-copy p {
       font-size: 17px;
       line-height: 1.72;
       margin-bottom: 18px;
       max-width: var(--read);
     }
 
-    .cs-copy p:last-child { margin-bottom: 0; }
+.luci-cs .cs-copy p:last-child { margin-bottom: 0; }
 
-    .sec--white .cs-copy p, .sec--light .cs-copy p { color: var(--body-ink); }
-    .sec--mid .cs-copy p  { color: rgba(235, 245, 248, 0.88); }
-    .sec--dark .cs-copy p { color: rgba(235, 245, 248, 0.92); }
-    .sec--deep .cs-copy p { color: rgba(235, 245, 248, 0.88); }
+.luci-cs .sec--white .cs-copy p, .luci-cs .sec--light .cs-copy p { color: var(--body-ink); }
 
-    .cs-copy strong { font-weight: 700; }
-    .sec--white .cs-copy strong, .sec--light .cs-copy strong { color: var(--navy); }
-    .sec--mid .cs-copy strong, .sec--dark .cs-copy strong, .sec--deep .cs-copy strong { color: var(--off-white); }
+.luci-cs .sec--mid .cs-copy p { color: rgba(235, 245, 248, 0.88); }
 
-    /* scope list */
-    .scope-list {
+.luci-cs .sec--dark .cs-copy p { color: rgba(235, 245, 248, 0.92); }
+
+.luci-cs .sec--deep .cs-copy p { color: rgba(235, 245, 248, 0.88); }
+
+.luci-cs .cs-copy strong { font-weight: 700; }
+
+.luci-cs .sec--white .cs-copy strong, .luci-cs .sec--light .cs-copy strong { color: var(--navy); }
+
+.luci-cs .sec--mid .cs-copy strong, .luci-cs .sec--dark .cs-copy strong, .luci-cs .sec--deep .cs-copy strong { color: var(--off-white); }
+
+.luci-cs .scope-list {
       list-style: none;
       margin: 4px 0 22px 0;
       padding: 0;
       max-width: var(--read);
     }
 
-    .scope-list li {
+.luci-cs .scope-list li {
       position: relative;
       padding-left: 24px;
       font-size: 17px;
@@ -345,10 +400,11 @@
       margin-bottom: 12px;
     }
 
-    .sec--white .scope-list li, .sec--light .scope-list li { color: var(--body-ink); }
-    .sec--mid .scope-list li, .sec--dark .scope-list li { color: rgba(235, 245, 248, 0.9); }
+.luci-cs .sec--white .scope-list li, .luci-cs .sec--light .scope-list li { color: var(--body-ink); }
 
-    .scope-list li::before {
+.luci-cs .sec--mid .scope-list li, .luci-cs .sec--dark .scope-list li { color: rgba(235, 245, 248, 0.9); }
+
+.luci-cs .scope-list li::before {
       content: '';
       position: absolute;
       left: 0;
@@ -357,10 +413,10 @@
       height: 2px;
       background: var(--mint);
     }
-    .sec--white .scope-list li::before, .sec--light .scope-list li::before { background: var(--mint-dark); }
 
-    /* ── RESULTS GRID ─────────────────────────────────── */
-    .results {
+.luci-cs .sec--white .scope-list li::before, .luci-cs .sec--light .scope-list li::before { background: var(--mint-dark); }
+
+.luci-cs .results {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
       gap: 1px;
@@ -371,7 +427,7 @@
       counter-reset: result;
     }
 
-    .results li {
+.luci-cs .results li {
       background: var(--navy);
       padding: 22px 20px;
       font-size: 15px;
@@ -381,7 +437,7 @@
       margin: 0;
     }
 
-    .results li::before {
+.luci-cs .results li::before {
       content: counter(result, decimal-leading-zero);
       counter-increment: result;
       display: block;
@@ -393,8 +449,7 @@
       margin-bottom: 10px;
     }
 
-    /* ── WHAT'S NEXT (checkmarks) ─────────────────────── */
-    .plan-list {
+.luci-cs .plan-list {
       list-style: none;
       margin: 22px 0 26px 0;
       padding: 0;
@@ -404,7 +459,7 @@
       max-width: var(--read);
     }
 
-    .plan-list li {
+.luci-cs .plan-list li {
       display: grid;
       grid-template-columns: 28px 1fr;
       gap: 14px;
@@ -412,23 +467,27 @@
       line-height: 1.65;
     }
 
-    .sec--white .plan-list li, .sec--light .plan-list li { color: var(--body-ink); }
-    .sec--mid .plan-list li, .sec--dark .plan-list li { color: rgba(235, 245, 248, 0.9); }
+.luci-cs .sec--white .plan-list li, .luci-cs .sec--light .plan-list li { color: var(--body-ink); }
 
-    .plan-list li::before {
+.luci-cs .sec--mid .plan-list li, .luci-cs .sec--dark .plan-list li { color: rgba(235, 245, 248, 0.9); }
+
+.luci-cs .plan-list li::before {
       content: '\2713';
       font-size: 20px;
       font-weight: 700;
       color: var(--mint);
       line-height: 1.3;
     }
-    .sec--white .plan-list li::before, .sec--light .plan-list li::before { color: var(--mint-dark); }
 
-    .plan-list strong { font-weight: 700; }
-    .sec--white .plan-list strong, .sec--light .plan-list strong { color: var(--navy); }
-    .sec--mid .plan-list strong, .sec--dark .plan-list strong { color: var(--off-white); }
+.luci-cs .sec--white .plan-list li::before, .luci-cs .sec--light .plan-list li::before { color: var(--mint-dark); }
 
-    .bottom-line {
+.luci-cs .plan-list strong { font-weight: 700; }
+
+.luci-cs .sec--white .plan-list strong, .luci-cs .sec--light .plan-list strong { color: var(--navy); }
+
+.luci-cs .sec--mid .plan-list strong, .luci-cs .sec--dark .plan-list strong { color: var(--off-white); }
+
+.luci-cs .bottom-line {
       margin-top: 4px;
       padding-top: 26px;
       border-top: 1px solid var(--rule-light);
@@ -437,12 +496,12 @@
       max-width: var(--read);
       color: var(--navy);
     }
-    .sec--light .bottom-line { border-top-color: var(--rule-light); }
 
-    /* ── QUOTE ────────────────────────────────────────── */
-    .quote-sec { background: var(--navy-deep); padding: clamp(44px, 7vw, 76px) var(--pad); border-bottom: 1px solid rgba(var(--mint-rgb), 0.12); }
+.luci-cs .sec--light .bottom-line { border-top-color: var(--rule-light); }
 
-    .pullquote {
+.luci-cs .quote-sec { background: var(--navy-deep); padding: clamp(44px, 7vw, 76px) var(--pad); border-bottom: 1px solid rgba(var(--mint-rgb), 0.12); }
+
+.luci-cs .pullquote {
       font-size: clamp(22px, 3.4vw, 30px);
       font-style: italic;
       line-height: 1.4;
@@ -453,7 +512,7 @@
       margin-bottom: 20px;
     }
 
-    .quote-attrib {
+.luci-cs .quote-attrib {
       font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.08em;
@@ -462,16 +521,15 @@
       line-height: 1.6;
     }
 
-    .quote-attrib span { display: block; color: var(--mint); }
+.luci-cs .quote-attrib span { display: block; color: var(--mint); }
 
-    /* ── CTA ──────────────────────────────────────────── */
-    .cta {
+.luci-cs .cta {
       background: var(--navy-deep);
       padding: clamp(44px, 7vw, 76px) var(--pad);
       border-top: 4px solid var(--mint);
     }
 
-    .cta__title {
+.luci-cs .cta__title {
       font-family: var(--body);
       font-weight: 700;
       font-size: clamp(24px, 4vw, 32px);
@@ -482,7 +540,7 @@
       margin-bottom: 16px;
     }
 
-    .cta__body {
+.luci-cs .cta__body {
       font-family: var(--body);
       font-weight: 700;
       font-size: clamp(22px, 3vw, 30px);
@@ -493,15 +551,14 @@
       margin-bottom: 24px;
     }
 
-    /* Boilerplate — demoted supporting "About LUCI" identity text */
-    .cta__about {
+.luci-cs .cta__about {
       margin-top: 40px;
       padding-top: 26px;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
       max-width: 62ch;
     }
 
-    .cta__about-label {
+.luci-cs .cta__about-label {
       font-family: var(--display);
       font-size: 10px;
       font-weight: 700;
@@ -511,7 +568,7 @@
       margin-bottom: 10px;
     }
 
-    .cta__statement {
+.luci-cs .cta__statement {
       font-family: var(--body);
       font-weight: 400;
       font-size: 16px;
@@ -521,7 +578,7 @@
       margin-bottom: 0;
     }
 
-    .cta-btn {
+.luci-cs .cta-btn {
       display: inline-flex;
       align-items: center;
       gap: 12px;
@@ -536,30 +593,30 @@
       transition: background 0.15s;
     }
 
-    .cta-btn:hover { background: #7aedc8; }
-    .cta-btn__arrow { font-size: 18px; font-weight: 700; line-height: 1; }
+.luci-cs .cta-btn:hover { background: #7aedc8; }
 
-    .cta__actions {
+.luci-cs .cta-btn__arrow { font-size: 18px; font-weight: 700; line-height: 1; }
+
+.luci-cs .cta__actions {
       display: flex;
       flex-wrap: wrap;
       gap: 16px;
       align-items: center;
     }
 
-    .cta-btn--secondary {
+.luci-cs .cta-btn--secondary {
       background: transparent;
       color: var(--mint);
       border: 1px solid rgba(var(--mint-rgb), 0.45);
     }
 
-    .cta-btn--secondary:hover {
+.luci-cs .cta-btn--secondary:hover {
       background: rgba(var(--mint-rgb), 0.08);
     }
 
-    /* ── FOOTER ───────────────────────────────────────── */
-    .footer { background: var(--navy); padding: var(--pad); border-top: 1px solid rgba(var(--mint-rgb), 0.12); }
+.luci-cs .footer { background: var(--navy); padding: var(--pad); border-top: 1px solid rgba(var(--mint-rgb), 0.12); }
 
-    .footer__top {
+.luci-cs .footer__top {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
@@ -570,9 +627,9 @@
       border-bottom: 1px solid rgba(255,255,255,0.06);
     }
 
-    .footer__logo img { height: 22px; display: block; }
+.luci-cs .footer__logo img { height: 22px; display: block; }
 
-    .footer__tag {
+.luci-cs .footer__tag {
       font-family: var(--display);
       font-size: 9px;
       letter-spacing: 0.16em;
@@ -581,21 +638,21 @@
       margin-top: 8px;
     }
 
-    .footer__links { text-align: right; }
-    .footer__links a { display: block; font-size: 13px; color: rgba(var(--mint-rgb), 0.7); text-decoration: none; margin-bottom: 5px; }
-    .footer__links a:hover { color: var(--mint); }
+.luci-cs .footer__links { text-align: right; }
 
-    .footer__legal { font-size: 12px; line-height: 1.7; color: rgba(74, 95, 106, 0.9); }
-  </style>
-</head>
-<body>
+.luci-cs .footer__links a { display: block; font-size: 13px; color: rgba(var(--mint-rgb), 0.7); text-decoration: none; margin-bottom: 5px; }
+
+.luci-cs .footer__links a:hover { color: var(--mint); }
+
+.luci-cs .footer__legal { font-size: 12px; line-height: 1.7; color: rgba(74, 95, 106, 0.9); }
+</style>
 <div class="luci-cs">
 <article class="page">
 
   <!-- TOP BAR -->
   <div class="topbar">
     <a class="topbar__logo" href="https://lucisystems.com">
-      <img src="/assets/logos/luci-full-white.png" alt="LUCI Systems">
+      <img src="https://content.app-us1.com/YzzLp9/2026/05/18/fa1f40ee-c6ac-4c7f-bd96-6a34971de1fa.png" alt="LUCI Systems">
     </a>
     <span class="topbar__tag">lucisystems.com</span>
   </div>
@@ -617,7 +674,7 @@
   <!-- AT A GLANCE -->
   <section class="glance" aria-label="At a glance">
     <div class="glance__logo">
-      <img src="/assets/logos/ameristar-council-bluffs.svg" alt="Ameristar Council Bluffs" height="44">
+      <img src="https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a1e1c7089803edcc10a8491_ameristar-logo-cropped.png" alt="Ameristar Council Bluffs" height="44">
     </div>
 
     <div class="facts">
@@ -722,7 +779,6 @@
     <p class="cta__body">Curious what this looks like for your property? Let's talk.</p>
     <div class="cta__actions">
       <a class="cta-btn" href="https://www.lucisystems.com/#request-a-demo" target="_blank" rel="noopener noreferrer">Talk to LUCI<span class="cta-btn__arrow">&rarr;</span></a>
-      <a class="cta-btn cta-btn--secondary" href="https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a2c4a48af310cd38d35d17a_CS-Ameristar-Council-Bluffs-Final.pdf" target="_blank" rel="noopener noreferrer"><span class="download-btn__icon" aria-hidden="true">&#8595;</span>Download PDF</a>
     </div>
     <div class="cta__about">
       <p class="cta__about-label">About LUCI</p>
@@ -735,7 +791,7 @@
     <div class="footer__top">
       <div>
         <a class="footer__logo" href="https://lucisystems.com">
-          <img src="/assets/logos/luci-full-white.png" alt="LUCI Systems">
+          <img src="https://content.app-us1.com/YzzLp9/2026/05/18/1bc8b968-9454-4813-a1b1-6477aaa143f2.png" alt="LUCI Systems">
         </a>
         <p class="footer__tag">The Orchestration Engine for Enterprise Multimedia</p>
       </div>
@@ -745,10 +801,8 @@
         <a href="mailto:info@LUCIsystems.com">info@LUCIsystems.com</a>
       </div>
     </div>
-    <p class="footer__legal">© 2026 LUCI Systems · The Orchestration Engine for Enterprise Multimedia</p>
   </footer>
 
 </article>
 </div>
-</body>
-</html>
+

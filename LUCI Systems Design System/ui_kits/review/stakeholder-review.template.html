@@ -373,6 +373,7 @@
   }
   const q = REVIEW_DATA.queue;
   const REVIEWERS = ['Mike', 'Nick'];
+  const COMMENTATORS = ['Mike', 'Nick', 'Jane', 'Mark'];
   const LS_APPROVALS = 'luci-review-approvals';
   let allComments = (REVIEW_DATA.comments || []).slice();
   let approvalsByAsset = Object.assign({}, REVIEW_DATA.approvals || {});
@@ -1207,7 +1208,9 @@
     const nameLabel = document.createElement('label');
     nameLabel.textContent = 'Your name';
     const nameSel = document.createElement('select');
-    nameSel.innerHTML = '<option value="">Select…</option><option value="Mike">Mike</option><option value="Nick">Nick</option>';
+    nameSel.innerHTML =
+      '<option value="">Select…</option>' +
+      COMMENTATORS.map((name) => '<option value="' + name + '">' + name + '</option>').join('');
     const textLabel = document.createElement('label');
     textLabel.textContent = 'Your feedback';
     const textarea = document.createElement('textarea');
