@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" role="img" aria-label="A phone keypad granting PIN access to one zone while others stay locked">
+  <defs>
+    <linearGradient id="phone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1A4150"/>
+      <stop offset="1" stop-color="#0B1D26"/>
+    </linearGradient>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#0B1D26" flood-opacity="0.20"/>
+    </filter>
+  </defs>
+  <rect width="320" height="180" fill="#EFF3F5"/>
+  <!-- zone cards tucked behind the phone -->
+  <g filter="url(#soft)">
+    <rect x="18" y="34" width="150" height="34" rx="8" fill="#FFFFFF"/>
+    <rect x="18" y="34" width="4" height="34" rx="2" fill="#68E3BE"/>
+    <circle cx="42" cy="51" r="9" fill="#68E3BE" opacity="0.18"/>
+    <path d="M37 51l3.5 3.5 6-7" fill="none" stroke="#176B54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="60" y="45" width="56" height="4.5" rx="2" fill="#10232D"/><rect x="60" y="54" width="38" height="3.5" rx="1.8" fill="#10232D" opacity="0.45"/>
+  </g>
+  <g filter="url(#soft)">
+    <rect x="18" y="76" width="150" height="34" rx="8" fill="#FFFFFF"/>
+    <rect x="18" y="76" width="4" height="34" rx="2" fill="#C2CBD0"/>
+    <rect x="35" y="88" width="9" height="9" rx="1.5" fill="none" stroke="#9AA6AC" stroke-width="1.6"/>
+    <path d="M37 88v-2a3 3 0 0 1 6 0v2" fill="none" stroke="#9AA6AC" stroke-width="1.6"/>
+    <rect x="60" y="87" width="56" height="4.5" rx="2" fill="#10232D" opacity="0.35"/><rect x="60" y="96" width="38" height="3.5" rx="1.8" fill="#10232D" opacity="0.22"/>
+  </g>
+  <g filter="url(#soft)">
+    <rect x="18" y="118" width="150" height="34" rx="8" fill="#FFFFFF"/>
+    <rect x="18" y="118" width="4" height="34" rx="2" fill="#C2CBD0"/>
+    <rect x="35" y="130" width="9" height="9" rx="1.5" fill="none" stroke="#9AA6AC" stroke-width="1.6"/>
+    <path d="M37 130v-2a3 3 0 0 1 6 0v2" fill="none" stroke="#9AA6AC" stroke-width="1.6"/>
+    <rect x="60" y="129" width="56" height="4.5" rx="2" fill="#10232D" opacity="0.35"/><rect x="60" y="138" width="38" height="3.5" rx="1.8" fill="#10232D" opacity="0.22"/>
+  </g>
+  <!-- phone -->
+  <rect x="158" y="14" width="92" height="152" rx="16" fill="url(#phone)" filter="url(#soft)"/>
+  <rect x="190" y="20" width="28" height="5" rx="2.5" fill="#FFFFFF" opacity="0.15"/>
+  <!-- open padlock -->
+  <rect x="196" y="40" width="16" height="12" rx="2" fill="#68E3BE"/>
+  <path d="M199 40v-3a5 5 0 0 1 9.6-2" fill="none" stroke="#68E3BE" stroke-width="2" stroke-linecap="round"/>
+  <rect x="203" y="44" width="2" height="4" rx="1" fill="#0B1D26"/>
+  <!-- pin dots -->
+  <g>
+    <circle cx="187" cy="66" r="3.4" fill="#68E3BE"/><circle cx="199" cy="66" r="3.4" fill="#68E3BE"/>
+    <circle cx="211" cy="66" r="3.4" fill="none" stroke="#68E3BE" stroke-width="1.5" opacity="0.6"/>
+    <circle cx="223" cy="66" r="3.4" fill="none" stroke="#68E3BE" stroke-width="1.5" opacity="0.6"/>
+  </g>
+  <!-- keypad -->
+  <g fill="#FFFFFF" fill-opacity="0.10" stroke="#68E3BE" stroke-opacity="0.30" stroke-width="1.2">
+    <circle cx="184" cy="92" r="8.5"/><circle cx="204" cy="92" r="8.5"/><circle cx="224" cy="92" r="8.5"/>
+    <circle cx="184" cy="116" r="8.5"/><circle cx="224" cy="116" r="8.5"/>
+    <circle cx="184" cy="140" r="8.5"/><circle cx="204" cy="140" r="8.5"/><circle cx="224" cy="140" r="8.5"/>
+  </g>
+  <circle cx="204" cy="116" r="8.5" fill="#68E3BE"/>
+</svg>

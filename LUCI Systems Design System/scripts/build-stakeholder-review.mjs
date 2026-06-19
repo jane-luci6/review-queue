@@ -8,6 +8,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { syncMessagingDocs, applyMessagingDocsToQueue } from './sync-messaging-docs.mjs';
+import { buildLibrary } from './build-library-manifest.mjs';
 import { syncReviewVersions } from './sync-review-versions.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -47,10 +48,11 @@ function ensureDir(filePath) {
 }
 
 function copyFile(src, dest, copied) {
-  if (!src || !fs.existsSync(src) || copied.has(src)) return;
+  if (!src || !fs.existsSync(src) || copied.has(src)) return false;
   ensureDir(dest);
   fs.copyFileSync(src, dest);
   copied.add(src);
+  return true;
 }
 
 /** Published HTML uses root-absolute /assets/ so logos load inside the iframe on Netlify. */
@@ -114,11 +116,33 @@ function copyLinkedAssets(htmlFile, destHtmlFile, copied) {
         ? path.join(destDir, relFromSource)
         : path.join(reviewDir, relFromRoot);
 
-    copyFile(sourceAsset, destAsset, copied);
+    const newlyCopied = copyFile(sourceAsset, destAsset, copied);
+    if (!newlyCopied) continue;
     if (fs.statSync(sourceAsset).isDirectory()) continue;
     if (/\.html?$/i.test(sourceAsset)) {
       copyLinkedAssets(sourceAsset, destAsset, copied);
     }
+  }
+}
+
+function syncEmailLibrary(copied) {
+  const emailSrc = path.join(root, 'ui_kits', 'email');
+  const emailDest = path.join(reviewDir, 'email');
+  const files = [
+    'customer-journey-tracker.html',
+    'customer-journey-data.js',
+    'email-subjects-preheaders.html',
+  ];
+  for (const name of files) {
+    const src = path.join(emailSrc, name);
+    const dest = path.join(emailDest, name);
+    if (!fs.existsSync(src)) continue;
+    copyFile(src, dest, copied);
+    if (/\.html?$/i.test(name)) {
+      copyLinkedAssets(src, dest, copied);
+      rewritePreviewHtmlPaths(dest);
+    }
+    console.log('Email library:', path.relative(reviewDir, dest));
   }
 }
 
@@ -156,6 +180,7 @@ function syncPreviewAssets(queue) {
   let count = 0;
 
   syncSharedAssets(copied);
+  syncEmailLibrary(copied);
 
   const previewQueueItems = [
     ...(queue.dueForReview || []),
@@ -220,8 +245,12 @@ if (syncReviewVersions(queue, queuePath)) {
   console.log('Updated review-queue.json (version history).');
 }
 
+const manifestPath = path.join(reviewDir, 'library-manifest.json');
+const library = buildLibrary(manifestPath, queue);
+
 const data = {
   queue,
+  library,
   comments: commentsFile.comments || [],
   commentsUpdated: commentsFile.updated || '',
   approvals: approvalsFile.byAsset || {},

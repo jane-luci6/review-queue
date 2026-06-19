@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" role="img" aria-label="Many kinds of devices connecting into one central LUCI hub">
+  <defs>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#10232D" flood-opacity="0.16"/>
+    </filter>
+    <radialGradient id="core" cx="0.5" cy="0.4" r="0.7">
+      <stop offset="0" stop-color="#1C4555"/>
+      <stop offset="1" stop-color="#0E222C"/>
+    </radialGradient>
+  </defs>
+  <rect width="320" height="180" fill="#EFF3F5"/>
+  <g stroke="#68E3BE" stroke-opacity="0.45" stroke-width="1.4">
+    <line x1="160" y1="90" x2="76" y2="44"/><line x1="160" y1="90" x2="244" y2="44"/>
+    <line x1="160" y1="90" x2="46" y2="90"/><line x1="160" y1="90" x2="274" y2="90"/>
+    <line x1="160" y1="90" x2="76" y2="136"/><line x1="160" y1="90" x2="244" y2="136"/>
+  </g>
+  <g fill="#68E3BE">
+    <circle cx="118" cy="67" r="2.4"/><circle cx="202" cy="67" r="2.4"/>
+    <circle cx="103" cy="90" r="2.4"/><circle cx="217" cy="90" r="2.4"/>
+    <circle cx="118" cy="113" r="2.4"/><circle cx="202" cy="113" r="2.4"/>
+  </g>
+  <!-- device tiles -->
+  <g>
+    <rect x="54" y="27" width="44" height="34" rx="6" fill="#FFFFFF" filter="url(#soft)"/>
+    <rect x="65" y="36" width="22" height="13" rx="1.5" fill="#10232D"/><rect x="67" y="38" width="18" height="3" fill="#68E3BE"/>
+    <rect x="73" y="49" width="6" height="3" fill="#10232D"/><rect x="69" y="52" width="14" height="2" rx="1" fill="#10232D"/>
+  </g>
+  <g>
+    <rect x="222" y="27" width="44" height="34" rx="6" fill="#FFFFFF" filter="url(#soft)"/>
+    <rect x="236" y="33" width="16" height="22" rx="2.5" fill="#10232D"/>
+    <circle cx="244" cy="40" r="2.3" fill="#68E3BE"/><circle cx="244" cy="48" r="3.4" fill="none" stroke="#68E3BE" stroke-width="1.4"/>
+  </g>
+  <g>
+    <rect x="24" y="73" width="44" height="34" rx="6" fill="#FFFFFF" filter="url(#soft)"/>
+    <rect x="39" y="79" width="14" height="20" rx="1.5" fill="#10232D"/>
+    <rect x="41" y="82" width="10" height="2.4" fill="#68E3BE"/><rect x="41" y="86" width="10" height="1.6" fill="#FFFFFF" opacity="0.6"/><rect x="41" y="89" width="7" height="1.6" fill="#FFFFFF" opacity="0.6"/>
+    <rect x="45" y="99" width="2" height="4" fill="#10232D"/>
+  </g>
+  <g>
+    <rect x="252" y="73" width="44" height="34" rx="6" fill="#FFFFFF" filter="url(#soft)"/>
+    <rect x="264" y="82" width="20" height="15" rx="2" fill="#10232D"/>
+    <circle cx="274" cy="89" r="4.2" fill="none" stroke="#68E3BE" stroke-width="1.5"/><circle cx="274" cy="89" r="1.4" fill="#68E3BE"/>
+    <rect x="280" y="84" width="3" height="2.4" fill="#68E3BE"/>
+  </g>
+  <g>
+    <rect x="54" y="119" width="44" height="34" rx="6" fill="#FFFFFF" filter="url(#soft)"/>
+    <rect x="66" y="126" width="20" height="20" rx="5" fill="#10232D"/>
+    <polygon points="73,132 73,142 82,137" fill="#68E3BE"/>
+  </g>
+  <g>
+    <rect x="222" y="119" width="44" height="34" rx="6" fill="#FFFFFF" filter="url(#soft)"/>
+    <path d="M232 140a6 6 0 0 1 1.5-11.6 8 8 0 0 1 15.2 2.2 5.5 5.5 0 0 1-1.7 10.8z" fill="#10232D"/>
+    <path d="M240 130v8M236.5 134.5l3.5-3.5 3.5 3.5" fill="none" stroke="#68E3BE" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <!-- central hub -->
+  <circle cx="160" cy="90" r="30" fill="#68E3BE" opacity="0.08"/>
+  <rect x="138" y="68" width="44" height="44" rx="11" fill="url(#core)" filter="url(#soft)"/>
+  <circle cx="160" cy="90" r="13" fill="none" stroke="#68E3BE" stroke-width="2"/>
+  <circle cx="160" cy="90" r="7" fill="none" stroke="#68E3BE" stroke-width="1.5" opacity="0.7"/>
+  <circle cx="160" cy="90" r="3" fill="#68E3BE"/>
+</svg>

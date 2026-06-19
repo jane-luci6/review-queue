@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """One-off generator: website-strategy.md → website-strategy.html (LUCI review doc)."""
+import base64
 import re
 import html
 from pathlib import Path
@@ -7,6 +8,8 @@ from pathlib import Path
 HERE = Path(__file__).parent
 MD = HERE / "website-strategy.md"
 OUT = HERE / "website-strategy.html"
+LOGO_PNG = HERE.parent.parent / "assets" / "logos" / "luci-full-white.png"
+LOGO_SRC = "data:image/png;base64," + base64.b64encode(LOGO_PNG.read_bytes()).decode()
 
 def slug(text: str) -> str:
     t = re.sub(r"[^\w\s-]", "", text.lower())
@@ -220,7 +223,7 @@ def main():
   <div class="resource">
     <header class="resource__masthead">
       <div class="resource__masthead-row">
-        <a href="https://lucisystems.com" class="resource__logo"><img src="../review/assets/logos/luci-full-white.png" alt="LUCI Systems" width="120" height="24"></a>
+        <a href="https://lucisystems.com" class="resource__logo"><img src="{LOGO_SRC}" alt="LUCI Systems" width="120" height="24"></a>
         <span class="resource__badge">Website planning</span>
       </div>
       <h1 class="resource__hero-title">{html.escape(title)}</h1>

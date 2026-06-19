@@ -159,7 +159,6 @@ function scopeCss(raw) {
 
 function replaceAssets(html) {
   return html
-    .replace(/\.\.\/\.\.\/assets\/logos\/luci-full-white\.png/g, 'https://content.app-us1.com/YzzLp9/2026/05/18/fa1f40ee-c6ac-4c7f-bd96-6a34971de1fa.png')
     .replace(/assets\/luci-case-study-ameristar-council-bluffs\.pdf/g, PDF_URL)
     .replace(/https:\/\/lucisystems\.com\/documents\/luci-case-study-ameristar-council-bluffs\.pdf/g, PDF_URL)
     .replace(/https:\/\/lucisystems\.com\/contact/g, DEMO_URL)
@@ -195,10 +194,8 @@ function stripFooterCss(css) {
 }
 
 function fixFooterLogo(html) {
-  return html.replace(
-    /<a class="footer__logo"[\s\S]*?<img src="[^"]+" alt="LUCI Systems">/,
-    '<a class="footer__logo" href="https://lucisystems.com">\n          <img src="https://content.app-us1.com/YzzLp9/2026/05/18/1bc8b968-9454-4813-a1b1-6477aaa143f2.png" alt="LUCI Systems">'
-  );
+  // Preserve embedded logo src from source — do not swap to remote CDN URLs.
+  return html;
 }
 
 /** Webflow: match live page bottom — no copyright row, single CTA button. PDF stays in hero. */

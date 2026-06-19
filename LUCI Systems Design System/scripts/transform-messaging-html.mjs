@@ -5,7 +5,9 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-const LOGO = '../assets/logos/luci-full-white.png';
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const LOGO_PNG = path.resolve(__dirname, '..', 'assets', 'logos', 'luci-full-white.png');
+const LOGO = `data:image/png;base64,${fs.readFileSync(LOGO_PNG).toString('base64')}`;
 const MESSAGING_CSS = 'messaging-docs.css';
 
 /** Approved lockup — applied after Word sync so HTML stays canonical when .docx lags. */

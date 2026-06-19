@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-16",
+  "updated": "2026-06-19",
   "publishNote": "Build + ./publish.sh. Bump reviewVersion + versionNote for new uploads (Teams + version history on site). Set due for first-time review. See teams-notifications-guide.txt.",
   "commentsApiUrl": "",
   "commentsApiNote": "Optional full URL if review page is on Webflow but API is on Netlify. Leave empty when the whole site is on Netlify.",
@@ -9,12 +9,12 @@
     {
       "title": "Messaging guide",
       "url": "messaging/messaging-guide.html",
-      "note": "Updated Jun 16, 2026"
+      "note": "Updated Jun 19, 2026"
     },
     {
       "title": "LUCI philosophy",
       "url": "messaging/philosophy.html",
-      "note": "Updated Jun 16, 2026"
+      "note": "Updated Jun 19, 2026"
     },
     {
       "title": "LUCI system diagram",
@@ -24,34 +24,44 @@
     {
       "title": "Personas",
       "url": "messaging/personas.html",
-      "note": "Updated Jun 16, 2026"
+      "note": "Updated Jun 19, 2026"
     }
   ],
-  "inProgress": [
+  "inProgress": [],
+  "dueForReview": [
     {
-      "id": "capabilities-doc",
-      "title": "Capabilities document",
-      "summary": "Post-demo PDF leave-behind — platform + Systems breakouts, proof, close. Draft badges still on pages.",
-      "reviewStatus": "In final stages",
+      "id": "sales-brochure",
+      "title": "Sales brochure",
+      "summary": "Five-page post-demo leave-behind — navy opener on page 1, platform, embedded operation, proof, close. Draft badges still on pages.",
+      "reviewStatus": "Ready for review",
       "signOff": false,
-      "reviewVersion": 1,
-      "versionNote": "First portal preview — polishing copy, client logos, and contact block before send.",
-      "hubPreviewPath": "ui_kits/sales/capabilities-document.html",
+      "reviewVersion": 3,
+      "versionNote": "Design pass — navy opener masthead on page 1; layout rhythm refined. Stakeholder review site now has persistent Library sidebar (messaging, diagrams, approved collateral).",
+      "due": "2026-06-20",
+      "hubPreviewPath": "ui_kits/sales/brochure.html",
       "reviewBrief": {
-        "description": "LUCI's flagship sales capability overview — six US Letter pages for prospect meetings and post-demo follow-up.",
-        "reviewAsk": "structure, messaging, and visual direction. Not asking for final sign-off yet — still in final stages."
+        "description": "LUCI's sales brochure — five US Letter pages for prospect meetings and post-demo follow-up. Messaging-first overview: identity opener, one point of control, embedded team, stakeholder proof, and close.",
+        "reviewAsk": "messaging accuracy, partnership framing, and whether this works as the leave-behind after a demo — not final sign-off yet."
       },
       "versionHistory": [
         {
           "version": 1,
           "published": "2026-06-12",
-          "note": "Portal preview — in final stages."
+          "note": "Portal preview — in final stages (was capabilities document)."
+        },
+        {
+          "version": 2,
+          "published": "2026-06-16",
+          "note": "Ready for stakeholder review — full copy and layout pass complete."
+        },
+        {
+          "version": 3,
+          "published": "2026-06-17",
+          "note": "Design pass — navy opener masthead; review site Library sidebar live."
         }
       ],
-      "previewUrl": "sales/capabilities-document.html"
-    }
-  ],
-  "dueForReview": [
+      "previewUrl": "sales/brochure.html"
+    },
     {
       "id": "field-activation-guide",
       "title": "Field Activation Guide",
@@ -74,17 +84,39 @@
         }
       ],
       "previewUrl": "sales/field-activation-guide.html"
+    }
+  ],
+  "approvedAssets": [
+    {
+      "id": "what-luci-is-diagram",
+      "title": "What LUCI is (identity diagram)",
+      "summary": "Plain-language identity graphic — LUCI (one rack + the platform software) + Systems (the embedded team).",
+      "approved": "2026-06-16",
+      "note": "Mike approved Jun 16, 2026",
+      "reviewVersion": 1,
+      "hubPreviewPath": "ui_kits/sales/what-luci-is.html",
+      "previewUrl": "sales/what-luci-is.html",
+      "reviewBrief": {
+        "description": "A plain-language identity graphic for the capabilities document: LUCI = the orchestration platform (one A/V equipment rack plus the control software) + Systems = the embedded operation (the team that runs it day to day).",
+        "reviewAsk": "whether this clearly and accurately conveys what LUCI is at a glance — the platform-plus-team split and the 'one rack' simplicity."
+      },
+      "versionHistory": [
+        {
+          "version": 1,
+          "published": "2026-06-15",
+          "note": "First portal preview."
+        }
+      ]
     },
     {
       "id": "system-architecture-diagram",
       "title": "System architecture diagram",
       "summary": "Technical view for the capabilities deck — content sources in, one rack + platform as the control point, A/V endpoints out.",
-      "reviewStatus": "New — your review",
-      "signOff": false,
+      "approved": "2026-06-16",
+      "note": "Mike approved Jun 16, 2026",
       "reviewVersion": 1,
-      "versionNote": "First portal preview — labeled rack, grey control-point highlight, five sources, four controlled outputs.",
-      "due": "2026-06-18",
       "hubPreviewPath": "ui_kits/sales/system-architecture.html",
+      "previewUrl": "sales/system-architecture.html",
       "reviewBrief": {
         "description": "A technical architecture view for the capabilities document — content sources feed into LUCI (one standardized rack + the orchestration platform), which controls displays, video walls, lighting, and background music & paging over the existing network.",
         "reviewAsk": "technical accuracy of the rack components and the source/endpoint lists — anything mislabeled, missing, or out of place (esp. Mike's input on the rack)."
@@ -95,34 +127,8 @@
           "published": "2026-06-15",
           "note": "First portal preview."
         }
-      ],
-      "previewUrl": "sales/system-architecture.html"
+      ]
     },
-    {
-      "id": "what-luci-is-diagram",
-      "title": "What LUCI is (identity diagram)",
-      "summary": "Plain-language identity graphic for the capabilities doc — LUCI (one rack + the platform software) + Systems (the embedded team).",
-      "reviewStatus": "New — your review",
-      "signOff": false,
-      "reviewVersion": 1,
-      "versionNote": "First portal preview — the orchestration platform (rack + laptop running the LUCI app) plus the embedded operation (team + gear).",
-      "due": "2026-06-19",
-      "hubPreviewPath": "ui_kits/sales/what-luci-is.html",
-      "reviewBrief": {
-        "description": "A plain-language identity graphic for the capabilities document: LUCI = the orchestration platform (one standardized rack plus the control software) + Systems = the embedded operation (the team that runs it day to day).",
-        "reviewAsk": "whether this clearly and accurately conveys what LUCI is at a glance — the platform-plus-team split and the 'one rack' simplicity."
-      },
-      "versionHistory": [
-        {
-          "version": 1,
-          "published": "2026-06-15",
-          "note": "First portal preview."
-        }
-      ],
-      "previewUrl": "sales/what-luci-is.html"
-    }
-  ],
-  "approvedAssets": [
     {
       "id": "signal-hub",
       "title": "The Signal · Newsletter Hub",
@@ -240,9 +246,9 @@
       "target": "2026-07-01"
     },
     {
-      "id": "brochure",
-      "title": "Sales brochure",
-      "note": "Print/PDF leave-behind.",
+      "id": "capabilities-document",
+      "title": "Capabilities document",
+      "note": "Full technical/detail doc — platform capabilities, architecture, integration. Separate from sales brochure.",
       "target": "2026-07-01"
     },
     {
@@ -253,5 +259,5 @@
     }
   ],
   "finalized": [],
-  "messagingDocsUpdated": "2026-06-16"
+  "messagingDocsUpdated": "2026-06-19"
 }

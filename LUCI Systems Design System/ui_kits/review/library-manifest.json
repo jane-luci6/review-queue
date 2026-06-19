@@ -1,0 +1,123 @@
+{
+  "updated": "2026-06-16",
+  "groups": [
+    {
+      "id": "messaging",
+      "label": "Messaging & brand",
+      "defaultOpen": true,
+      "items": [
+        { "id": "messaging-guide", "label": "Messaging guide", "path": "messaging/messaging-guide.html" },
+        { "id": "philosophy", "label": "LUCI philosophy", "path": "messaging/philosophy.html" },
+        { "id": "personas", "label": "Personas", "path": "messaging/personas.html" }
+      ]
+    },
+    {
+      "id": "diagrams",
+      "label": "Images & diagrams",
+      "defaultOpen": true,
+      "items": [
+        {
+          "id": "what-luci-is-diagram",
+          "label": "What LUCI is",
+          "queueId": "what-luci-is-diagram",
+          "downloads": [
+            { "label": "SVG", "path": "assets/diagrams/luci-what-luci-is.svg" }
+          ]
+        },
+        {
+          "id": "system-architecture-diagram",
+          "label": "System architecture",
+          "queueId": "system-architecture-diagram",
+          "downloads": [
+            { "label": "SVG", "path": "assets/diagrams/luci-system-architecture.svg" }
+          ]
+        },
+        {
+          "id": "embedded-operation-orbit",
+          "label": "Embedded Operation orbit",
+          "path": "messaging/embedded-operation-orbit.html",
+          "downloads": [
+            { "label": "SVG", "path": "assets/diagrams/embedded-operation-orbit.svg" }
+          ]
+        },
+        {
+          "id": "luci-system-diagram",
+          "label": "LUCI system diagram (V3)",
+          "path": "messaging/luci-system-diagram.html",
+          "downloads": [
+            { "label": "SVG", "path": "messaging/diagrams/luci-system-diagram-v3.svg" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "customer-emails",
+      "label": "Customer emails",
+      "defaultOpen": true,
+      "items": [
+        {
+          "id": "customer-journey-tracker",
+          "label": "Journey tracker",
+          "path": "email/customer-journey-tracker.html",
+          "note": "Send calendar — who's due, sent log, recipients"
+        },
+        {
+          "id": "email-subjects-preheaders",
+          "label": "Subject lines & preheaders",
+          "path": "email/email-subjects-preheaders.html",
+          "note": "All 10 emails — copy into ActiveCampaign"
+        }
+      ]
+    },
+    {
+      "id": "sales",
+      "label": "Sales",
+      "defaultOpen": false,
+      "items": [
+        {
+          "id": "sales-brochure",
+          "label": "Sales brochure",
+          "queueId": "sales-brochure",
+          "whenApproved": true
+        },
+        {
+          "id": "field-activation-guide",
+          "label": "Field Activation Guide",
+          "queueId": "field-activation-guide",
+          "whenApproved": true
+        }
+      ]
+    },
+    {
+      "id": "marketing",
+      "label": "Marketing",
+      "defaultOpen": false,
+      "items": [
+        {
+          "id": "case-study-ameristar",
+          "label": "Ameristar Council Bluffs",
+          "queueId": "case-study-ameristar"
+        },
+        {
+          "id": "signal-issue-01",
+          "label": "The Signal · Issue 01",
+          "queueId": "signal-issue-01"
+        },
+        {
+          "id": "newsletter-email-teaser",
+          "label": "Issue 01 · Email teaser",
+          "queueId": "newsletter-email-teaser"
+        }
+      ]
+    },
+    {
+      "id": "templates",
+      "label": "Templates",
+      "defaultOpen": false,
+      "items": [
+        { "id": "budget-estimate", "label": "Budget estimate", "comingSoon": true },
+        { "id": "proposal-builder", "label": "Proposal builder", "comingSoon": true, "note": "AI-assisted proposals — coming soon" }
+      ]
+    }
+  ]
+}

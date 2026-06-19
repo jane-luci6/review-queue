@@ -25,14 +25,31 @@
   --navy-muted: #49616E;
   --mint: #68E3BE;                 /* bright accent — DARK surfaces only */
   --mint-rgb: 104, 227, 190;
+  --gold: #EDD086;                 /* bright gold — dark surfaces (headline accents, icon strokes on navy tiles) */
+  --gold-deep: #CEB06E;            /* gold on light — stroke-only icons, structural marks */
+  --gold-rgb: 237, 208, 134;
   --accent-light: #176B54;         /* deep accent — small labels/links on LIGHT (AA) */
+  --mint-dark: #2b9e80;            /* figure kickers + callout bars on light (large/bold only) */
   --off-white: #F5F8FA;            /* reading canvas (never pure #fff) */
   --sand: #E5E3DF;                 /* warm light panel tone */
   --tint: #EEF2F4;                 /* callout fill on light */
   --rule-light: #DBE1E4;           /* hairline on light — used sparingly */
   --ink: #354F5C;                  /* near-black body (never pure #000) */
   --ink-strong: #1C2B33;
+  --atmosphere-harbor: #4A7285;
+  --atmosphere-harbor-rgb: 74, 114, 133;
+  --atmosphere-clay: #B8926A;
+  --atmosphere-clay-rgb: 184, 146, 106;
+  --atmosphere-dusk: #8A7FA6;
+  --atmosphere-dusk-rgb: 138, 127, 166;
+  --atmosphere-harbor-tint: rgba(74, 114, 133, 0.22);
+  --atmosphere-clay-tint: rgba(184, 146, 106, 0.24);
+  --atmosphere-dusk-tint: rgba(138, 127, 166, 0.22);
+  --atmosphere-harbor-glow: rgba(74, 114, 133, 0.28);
+  --atmosphere-clay-glow: rgba(184, 146, 106, 0.3);
+  --atmosphere-dusk-glow: rgba(138, 127, 166, 0.28);
   --font: 'Space Grotesk', 'Trebuchet MS', sans-serif;
+  --display: 'Syncopate', 'Arial Black', sans-serif;
 
   --page-w: 8.5in;
   --page-h: 11in;
@@ -95,8 +112,9 @@ body {
   .doc-page:last-child { page-break-after: auto; break-after: auto; }
   /* Force background fills/images to print (navy panels, mint bars, halos, masks) */
   .doc-page--dark, .doc-page--framing, .doc-panel, .doc-shot__bar, .doc-feature,
-  .doc-uc__benefits li::before, .doc-takeaway,
-  .doc-stage::before, .doc-pill-icon, .doc-orbit__hub, .doc-orbit__ring {
+  .doc-uc__benefits li::before, .doc-takeaway, .doc-reduce__icon,
+  .doc-stage::before, .doc-pill-icon, .doc-orbit__hub, .doc-orbit__ring,
+  .doc-page-band, .doc-team-icon, .doc-opener-hero {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -259,6 +277,338 @@ body {
   opacity: 0.92;
 }
 
+/* Cover display moment — Syncopate (one per bookend; see luci-dual-accent-system) */
+.doc-cover__kicker {
+  margin: 0 0 12px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mint);
+}
+
+.doc-cover__display {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(245, 248, 250, 0.96);
+  max-width: 22ch;
+}
+
+.doc-cover__display em {
+  font-style: normal;
+  color: var(--mint);
+}
+
+/* Client summary — personalized post-demo paragraph on the cover */
+.doc-cover__summary {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(var(--mint-rgb), 0.22);
+  max-width: 62ch;
+}
+
+.doc-cover__summary-label {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mint);
+  margin-bottom: 12px;
+}
+
+.doc-cover__summary-text {
+  font-size: 14px;
+  line-height: 1.62;
+  color: rgba(235, 245, 248, 0.86);
+}
+
+.doc-cover__summary-text + .doc-cover__summary-text { margin-top: 12px; }
+
+/* ── Inner-page navy band (brochure / newsletter pattern) ─────────────────── */
+/* Full-bleed band at the top of a sheet: mint kicker, Space Grotesk headline,
+   optional gold accent span. Body content sits on off-white below. */
+.doc-page-band {
+  position: relative;
+  margin: calc(-1 * var(--page-pad)) calc(-1 * var(--page-pad)) 24px;
+  padding: 0.26in var(--page-pad) 0.3in;
+  background: var(--navy);
+}
+
+.doc-page-band::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--mint);
+}
+
+.doc-page-band__top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.doc-page-band__kicker {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mint);
+}
+
+.doc-page-band__meta {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(245, 248, 250, 0.45);
+}
+
+.doc-page-band__title {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: rgba(245, 248, 250, 0.96);
+  max-width: 28ch;
+}
+
+.doc-page-band__accent { color: var(--mint); }
+
+.doc-page-band__accent--gold { color: var(--gold); }
+
+.doc-page-band__deck {
+  margin: 12px 0 0;
+  font-size: 16px;
+  line-height: 1.55;
+  color: rgba(245, 248, 250, 0.72);
+  max-width: 52ch;
+}
+
+.doc-page--band .doc-draft-badge {
+  color: rgba(235, 245, 248, 0.55);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Shared section header on light canvas — kicker + optional title/body (intro pages) */
+.doc-section-head { margin-bottom: 4px; }
+
+.doc-section-head__kicker,
+.doc-figure-kicker {
+  margin: 0 0 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mint-dark);
+}
+
+.doc-section-head__title,
+.doc-figure-title {
+  margin: 0 0 16px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--ink-strong);
+}
+
+.doc-section-head__text {
+  margin: 0 0 24px;
+  font-size: 14.5px;
+  line-height: 1.58;
+  color: var(--ink);
+  max-width: 68ch;
+}
+
+.doc-figure-head { margin-bottom: 4px; text-align: center; }
+.doc-section-head--center { text-align: center; }
+.doc-section-head--center .doc-section-head__text { margin-left: auto; margin-right: auto; }
+
+/* Proof rows — gold-deep stroke icons, no navy tiles (brochure page 4 pattern) */
+.doc-teams--icons li {
+  display: grid;
+  grid-template-columns: 16px 1fr;
+  gap: 8px 12px;
+  align-items: start;
+}
+
+.doc-team-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  margin-top: 3px;
+  color: var(--gold-deep);
+  flex-shrink: 0;
+}
+
+.doc-team-icon svg { display: block; width: 16px; height: 16px; }
+
+.doc-teams--icons .doc-teams__label { color: var(--accent-light); }
+
+/* Gold icon strokes on navy pillar tiles */
+.doc-pillars--gold .doc-pill-icon { color: var(--gold); }
+
+/* Expanded navy opener (brochure / newsletter page-1 pattern) on a light sheet */
+.doc-opener-hero {
+  position: relative;
+  margin: calc(-1 * var(--page-pad)) calc(-1 * var(--page-pad)) 24px;
+  padding: 0.38in var(--page-pad) 0.4in;
+  background: var(--navy);
+}
+
+.doc-opener-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--mint);
+}
+
+.doc-opener-hero__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(var(--mint-rgb), 0.15);
+}
+
+.doc-opener-hero__logo { display: block; height: 28px; width: auto; }
+
+.doc-opener-hero__meta {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(245, 248, 250, 0.45);
+}
+
+.doc-opener-hero__kicker {
+  margin: 0 0 12px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mint);
+}
+
+.doc-opener-hero__headline {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: rgba(245, 248, 250, 0.96);
+  max-width: 28ch;
+}
+
+/* Syncopate variant — cover / brochure opener only; capabilities intro uses __headline */
+.doc-opener-hero__title {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(245, 248, 250, 0.96);
+  max-width: 100%;
+}
+
+.doc-opener-hero__title em {
+  font-style: normal;
+  color: var(--mint);
+}
+
+.doc-opener-hero__deck {
+  margin: 16px 0 0;
+  font-size: 16px;
+  line-height: 1.55;
+  color: rgba(245, 248, 250, 0.72);
+  max-width: 52ch;
+}
+
+.doc-page--intro .doc-draft-badge {
+  color: rgba(235, 245, 248, 0.55);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Intro body — vertically centers the identity figure between opener and footer */
+.doc-intro-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.doc-figure--identity { margin: 0; text-align: center; }
+
+.doc-identity {
+  display: block;
+  width: 100%;
+  max-width: 740px;
+  height: auto;
+  max-height: 3.65in;
+  margin: 0 auto;
+}
+
+.doc-id-nm { font-weight: 700; font-size: 20px; letter-spacing: -0.01em; fill: #10232D; text-anchor: middle; }
+.doc-id-rl { font-weight: 700; font-size: 9.5px; letter-spacing: 0.15em; fill: var(--navy-muted); text-anchor: middle; }
+.doc-id-sub { font-weight: 400; font-size: 9px; letter-spacing: 0.01em; fill: var(--ink); text-anchor: middle; }
+.doc-hinge-plus { fill: var(--navy-mid); }
+
+.doc-opener-hero--compact {
+  padding-bottom: 0.3in;
+}
+
+.doc-opener-hero--compact .doc-opener-hero__row {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+}
+
+.doc-page--intro .doc-intro-body {
+  gap: 8px;
+  justify-content: flex-start;
+}
+
+.doc-page--intro .doc-section-head--who {
+  padding-top: 4px;
+  flex-shrink: 0;
+}
+
+.doc-page--intro .doc-figure--identity {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.doc-page--intro .doc-section-head--center .doc-section-head__title {
+  margin-bottom: 12px;
+}
+
+.doc-page--intro .doc-foot { margin-top: 0; flex-shrink: 0; }
+
 /* ── Hero figure (system diagram / illustration) ───────────────────────────── */
 .doc-figure { margin: 0; text-align: center; }
 .doc-figure img {
@@ -283,6 +633,74 @@ body {
   color: var(--ink);
 }
 .doc-takeaway strong { color: var(--ink-strong); font-weight: 700; }
+
+/* Compact reduction strip — intro + four icon labels (brochure page 1 pattern) */
+.doc-takeaway--reduce {
+  max-width: 100%;
+  margin: 0;
+  padding: 22px 28px 24px;
+  background: var(--tint);
+  border-left: none;
+  border-top: 4px solid var(--mint);
+}
+
+.doc-reduce-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 24px;
+}
+
+.doc-reduce__intro {
+  margin: 0;
+  flex: 0 0 auto;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 36px;
+  color: var(--ink-strong);
+  white-space: nowrap;
+}
+
+.doc-reduce {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 0 1 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.doc-reduce li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 0 8px;
+}
+
+.doc-reduce li + li { border-left: 1px solid var(--rule-light); }
+
+.doc-reduce__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: var(--navy);
+  color: var(--mint);
+}
+
+.doc-reduce__icon svg { width: 18px; height: 18px; display: block; }
+
+.doc-reduce__label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--navy-muted);
+  line-height: 1.2;
+}
 
 /* ── Highlighted lead-in (light pull-quote, deep-green bar) ─────────────────── */
 /* Use instead of a full-bleed dark band to emphasize a single line. */
@@ -669,14 +1087,23 @@ body {
 
 /* ── Close page ────────────────────────────────────────────────────────────── */
 .doc-page--close { justify-content: space-between; padding-top: 0.7in; }
-.doc-close__lead { margin: 0; }
+.doc-close__lead { margin: 0; flex: 1 1 auto; display: flex; flex-direction: column; justify-content: center; min-height: 0; }
+
 .doc-close__head {
-  font-size: 30px;
+  font-family: var(--display);
+  font-size: 26px;
   font-weight: 700;
-  line-height: 1.16;
-  letter-spacing: -0.025em;
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   color: var(--off-white);
-  max-width: 20ch;
+  max-width: 28ch;
+  margin: 0;
+}
+
+.doc-close__head em {
+  font-style: normal;
+  color: var(--mint);
 }
 .doc-close__body {
   margin-top: 18px;
