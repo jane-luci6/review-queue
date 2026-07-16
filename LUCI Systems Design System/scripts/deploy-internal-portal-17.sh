@@ -61,6 +61,19 @@ case "$MODE" in
     echo "Deploy complete (rsync)."
     echo "  Portal:  http://${HOST_IP}:${PORT}/"
     echo "  Direct:  http://${HOST_IP}:${PORT}/internal-portal/index.html"
+
+    echo ""
+    echo "Verifying portal is live…"
+    PORTAL_URL="http://${HOST_IP}:${PORT}/internal-portal/index.html"
+    sleep 1
+    HTTP_CODE="$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "$PORTAL_URL" || true)"
+    if [[ "$HTTP_CODE" == "200" ]]; then
+      echo "[LIVE + VERIFIED] HTTP 200 at $PORTAL_URL"
+      echo "  Hard-refresh in your browser: Cmd+Shift+R"
+    else
+      echo "[WARNING] Deploy finished but portal URL returned HTTP ${HTTP_CODE:-(no response)}."
+      echo "  Re-run this script and hard-refresh (Cmd+Shift+R) before debugging."
+    fi
     ;;
 
   --docker)
