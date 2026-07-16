@@ -1,11 +1,18 @@
 {
   "name": "luci-systems-design-system",
   "private": true,
-  "description": "LUCI design system and stakeholder review site",
+  "description": "LUCI design system and internal marketing materials portal",
   "scripts": {
-    "build:review": "node scripts/build-stakeholder-review.mjs"
-  },
-  "dependencies": {
-    "@netlify/blobs": "^10.7.9"
+    "serve": "python3 scripts/serve.py",
+    "prepare:pdf": "python3 scripts/prepare-sales-pdf-assets.py",
+    "pdf": "bash scripts/render-pdf.sh",
+    "build:review": "node scripts/build-stakeholder-review.mjs",
+    "deploy:portal": "bash scripts/deploy-internal-portal-17.sh",
+    "deploy:portal:17": "bash scripts/deploy-internal-portal-17.sh",
+    "deploy:portal:17:docker": "bash scripts/deploy-internal-portal-17.sh --docker",
+    "audit:assets": "node scripts/audit-hub-assets.mjs",
+    "pdf:brochure": "npm run prepare:pdf && npm run pdf -- ui_kits/sales/brochure.html assets/sales/LUCI-Brochure.pdf",
+    "pdf:capabilities": "npm run prepare:pdf && npm run pdf -- ui_kits/sales/capabilities-document.html assets/sales/LUCI-Capabilities.pdf",
+    "pdf:budgetary": "npm run prepare:pdf && npm run pdf -- ui_kits/sales/budgetary-estimate.html assets/sales/LUCI-Budgetary-Estimate.pdf"
   }
 }

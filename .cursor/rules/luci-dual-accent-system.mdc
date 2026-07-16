@@ -1,0 +1,90 @@
+---
+description: LUCI dual-accent system — mint vs gold roles, light vs dark surface rules, and icon treatments. Proven on the sales brochure; apply to sales collateral, slides, and new marketing assets.
+globs: LUCI Systems Design System/ui_kits/sales/**,LUCI Systems Design System/ui_kits/review/**
+alwaysApply: false
+---
+
+# LUCI Dual-Accent System (Mint + Gold)
+
+Two accent colors, each with a **bright** variant (dark surfaces only) and a **deep** variant (light surfaces). Mint is **structural** — bands, rules, hubs, bookends. Gold is **expressive** — middle-chapter headline accents and icon strokes. Never swap their jobs.
+
+**Canonized light accent:** the deep-mint **`#2b9e80`** is the **single** light-surface accent — used **every time** on white / off-white / light (kickers, labels, links, headline spans, callout bars, icon strokes, accent rules). The darker **`#176B54` is retired — do not use it** (AI must not substitute it for `#2b9e80`).
+
+Inherits contrast foundations from `luci-modern-design-guidelines.mdc` §4. Sales-specific application lives here; sales documents also follow `luci-sales-document-system.mdc`.
+
+## Tokens (CSS)
+
+| Token | Hex | Surface | Role |
+|---|---|---|---|
+| `--mint` | `#68E3BE` | **Dark only** | Structural accent on navy: 4px rules, band headline spans, diagram hub, logo-panel top bar, quote bars, dark pill labels |
+| `--accent-light` / `--mint-dark` | `#2b9e80` | Light | **The** canonized light-surface accent — used every time on white/off-white/light: kickers, labels, links, persona headers, headline spans, callout bars, icon strokes, accent rules. Both tokens resolve to `#2b9e80`. `#176B54` is retired — do not use. |
+| `--gold` | `#EDD086` | **Dark only** | **The only gold for text** — headline accent spans on navy bands (middle pages), gold pill labels, gold numerals on dark. Fails contrast on light, so gold text never appears on light surfaces |
+| `--gold-deep` | `#CEB06E` | Light (non-text only) | **Never text.** Stroke-only icons without background boxes; structural marks, underlines, borders, small highlight fills, gradient stops on light |
+| `--gold-rgb` | `237, 208, 134` | — | `rgba()` tints of bright gold (highlight backgrounds, soft fills) |
+
+**This is the canonical LUCI gold scale — exactly two shades, one family, across every asset.** `--gold` (`#EDD086`) is the only gold ever used for **text** (dark surfaces only — it fails contrast on light). `--gold-deep` (`#CEB06E`) is for **non-text** only: icons, backgrounds, small highlights, gradients, borders. **No dark gold / gold-ink** — removed; if gold can't read on a light surface as `#EDD086`, use a non-gold readable color (ink / mint-dark / accent-light) and let gold live as the background/highlight tint instead. The website (`luci-website/src/styles/tokens.css`) mirrors these exact values; do not reintroduce the old darker website gold (`#c9a24e` / `#9a7548`) or any dark gold (`#6F5521` / `#9a7a2e`). Brochure reference: `ui_kits/sales/brochure.css`.
+
+## Mint — structural, consistent everywhere
+
+Use mint for **document rhythm and LUCI identity**, not decoration:
+
+- **Dark bookends** (cover, close): mint headline accent, mint bottom rule, mint on dark kickers.
+- **Proof / contained dark panels**: mint top bar on logo panel; mint band accent on headline spans.
+- **Diagrams**: mint hub / orchestration center; mint connector emphasis on dark backgrounds.
+- **Callouts on light**: 4px **deep mint** (`#2b9e80`) left bar on `.doc-takeaway` / `.doc-leadin` — not bright mint.
+
+**Never:** bright mint `#68E3BE` on light canvas, sand, or white (fails contrast — see modern guidelines §4.2).
+
+## Gold — middle-chapter emphasis + icons
+
+Gold marks **Platform** and **Systems** story beats inside the document — not the opener:
+
+- **Headline accent spans** on navy `.doc-page-band` / `.cap-page-band` — pages 2–3 of the brochure pattern ("one point of control", "fuels the platform"). **Page 1 opener uses mint only — no gold headline accent.**
+- **Icon strokes on navy tiles**: takeaway tiles (p1), pillar icons (p2), orbit service icons (p3). Tile fill stays navy; stroke is `--gold`.
+- **Stroke-only icons on light** (no boxes): persona / proof rows use `--gold-deep` at ~16px stroke — de-boxed, not navy tiles.
+
+**Never:** gold for structural bands, 4px rules, panel top bars, or quote bars (those stay mint). Never bright gold on light body text. **No dark gold / gold-ink** — there is no readable gold for text on light; if gold can't read as `#EDD086` (i.e. on a light surface), use ink / `#2b9e80` for the text and let gold live as the background/highlight tint (`--gold-deep` or `rgba(--gold-rgb)`). `--gold-deep` is non-text only.
+
+## Light vs dark page model
+
+| Page type | Canvas | Headline accent | Icons | Labels |
+|---|---|---|---|---|
+| Cover / close (bookend) | Navy | Mint | Mint hub on diagrams | Mint on dark |
+| Middle band + light body | Navy band → off-white body | Gold span on band only | Gold on navy tiles OR gold-deep strokes on light | `#2b9e80` on light body |
+| Full light reading | Off-white | None (bold ink run-in) | Gold-deep strokes if needed | `#2b9e80` kickers |
+| Proof (mixed) | Light + contained dark panel | Mint on band | Gold-deep stroke icons on light rows | `#2b9e80` |
+
+**No full-bleed dark band mid-document** for emphasis — use `.doc-leadin` on light instead. Dark is for bookends + contained proof panel only.
+
+## Icon treatment decision tree
+
+1. **On navy background (tile)?** → Navy fill + **gold** stroke (`--gold`). Used for grouped capability/pillar/takeaway icons.
+2. **On light background, scannable row?** → **No box.** Gold-deep stroke only (`--gold-deep`). Used for persona rows, de-boxed feature lists.
+3. **Diagram hub / orchestration center?** → **Mint** fill or ring — always, regardless of page.
+4. **Orbit / radial diagrams on dark stage?** → Mint hub; gold icon strokes; mint ring if accent needed. Labels must clear all connector lines.
+
+## Syncopate (display font) placement
+
+- **Cover + close bookends** — Syncopate for the display headline (`.doc-cover__display`, `.doc-close__head` with mint `<em>` accent). Brochure uses the same pattern on opener and close.
+- All chapter headlines = **Space Grotesk bold** via `.doc-page-band__title` or run-in `.doc-statement`.
+- Do not use Syncopate for section numbers, kickers, band kickers, or multi-line headers in reading sections.
+
+## Diagram asset variants
+
+Shared diagrams follow `luci-canonical-assets.mdc`. When a diagram needs accent variants:
+
+- **Default / canonical:** mint hub, navy strokes — e.g. `embedded-operation-orbit.svg`
+- **Brochure / gold-icon variant:** same geometry, gold icon strokes — e.g. `embedded-operation-orbit-gold-icons.svg`. Separate file; never inline-duplicate SVG markup in documents.
+
+**Planned asset — orchestration stack:** LUCI + Systems identity on top, scattered client-technology chaos beneath, connector label (e.g. "Orchestrates & simplifies"). Distinct from the hardware footprint before/after. Target use: capabilities doc page 3. Promote identity diagram to canonical SVG first (`luci-identity.svg` or similar), then build chaos layer as companion asset.
+
+## Pre-ship checklist (accent)
+
+1. Bright mint only on dark; bright gold only on dark.
+2. Light-surface accents = `#2b9e80` (kickers, labels, links, bars, icons); never bright mint or bright gold on light. `#176B54` is retired — do not use.
+3. Structural rules/bands/panel bars = mint, not gold.
+4. Gold headline accents only on middle navy bands — not cover (p1) or proof band.
+5. Light-surface icons = gold-deep strokes, no navy tiles (unless intentionally matching a dark inset).
+6. **No dark gold / gold-ink.** Gold text = `#EDD086` only (dark surfaces). On light, gold is non-text (icons/bg/highlights via `--gold-deep`/`rgba(--gold-rgb)`); text uses ink / `#2b9e80`.
+7. One Syncopate moment (cover or close, not both scattered).
+8. Diagram labels clear all lines; canonical assets referenced via `<img>`, not pasted SVG.

@@ -12,10 +12,11 @@
   --navy-muted: #49616E;
   --mint: #68E3BE;                 /* bright accent — dark surfaces only */
   --mint-rgb: 104, 227, 190;
+  --mint-dark: #2b9e80;            /* deep mint — duotone icon strokes + bold kickers on light */
   --gold: #EDD086;                 /* bright gold — dark surfaces (mirrors mint on navy) */
   --gold-deep: #CEB06E;            /* gold on light — structural marks only */
   --gold-rgb: 237, 208, 134;
-  --accent-light: #176B54;         /* deep accent — small labels/links on light (AA) */
+  --accent-light: #2b9e80;         /* CANONIZED light-surface accent — every light accent */
   --off-white: #F5F8FA;            /* reading canvas (never pure #fff) */
   --sand: #E5E3DF;                 /* warm light panel tone */
   --tint: #EEF2F4;
@@ -34,13 +35,38 @@
   --atmosphere-harbor-glow: rgba(74, 114, 133, 0.28);
   --atmosphere-clay-glow: rgba(184, 146, 106, 0.3);
   --atmosphere-dusk-glow: rgba(138, 127, 166, 0.28);
-  --font: 'Space Grotesk', 'Trebuchet MS', sans-serif;
+  --font: 'Space Grotesk', 'Trebuchet MS', sans-serif;            /* structure: headings, labels, names */
+  --font-body: 'Inter', 'Space Grotesk', 'Trebuchet MS', sans-serif; /* recede: sustained reading copy */
   --display: 'Syncopate', 'Arial Black', sans-serif;
 
   --page-w: 8.5in;
   --page-h: 11in;
   --page-pad: 0.55in;
   --measure: 64ch;
+}
+
+/* ── Modern soft-icon tile + soft card (ported from Cap Doc §5.1) ──
+   Duotone line icons: primary strokes #2b9e80 (--mint-dark), one gold accent
+   #CEB06E (--gold-deep), optional 18-22% mint fill. Sits on light canvas. */
+.cap-softicon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  background: linear-gradient(155deg, #E6F5EF 0%, #F3FAF8 100%);
+  box-shadow: inset 0 0 0 1px rgba(43, 158, 128, 0.14);
+  flex: none;
+}
+.cap-softicon svg { width: 28px; height: 28px; display: block; }
+.cap-softicon--sm { width: 44px; height: 44px; border-radius: 12px; }
+.cap-softicon--sm svg { width: 23px; height: 23px; }
+
+.cap-softcard {
+  border-radius: 16px;
+  background: linear-gradient(160deg, #E6F1EB 0%, #EEF5F0 100%);
+  box-shadow: inset 0 0 0 1px rgba(43, 158, 128, 0.18);
 }
 
 html { -webkit-font-smoothing: antialiased; }
@@ -51,6 +77,33 @@ body {
   color: var(--ink);
   font-size: 15px;
   line-height: 1.6;
+}
+
+/* Hybrid type — Inter carries sustained reading copy (decks, leads, body, captions);
+   Space Grotesk stays on headings, labels, kickers, and names. */
+.cap-cover__sub,
+.cap-lead,
+.cap-hero-deck,
+.cap-statement,
+.cap-forces-intro,
+.cap-force__text,
+.cap-pillars__body,
+.cap-shot figcaption,
+.cap-fn__text,
+.cap-teams__text,
+.cap-service__desc,
+.cap-orbit__desc,
+.cap-quote__text,
+.cap-close__body,
+.cap-close__rep p,
+.cap-close__company p,
+.cap-cae__body,
+.cap-feature-card__body,
+.cap-opener-hero__deck,
+.cap-page-band__deck,
+.cap-pillar-card__body,
+.cap-note {
+  font-family: var(--font-body);
 }
 
 /* Screen-only hub return strip */
@@ -96,7 +149,7 @@ body {
     break-after: page;
   }
   .cap-page:last-child { page-break-after: auto; break-after: auto; }
-  .cap-page--dark, .cap-panel, .cap-shot__bar, .cap-feature, .cap-takeaway, .cap-features--band, .cap-why-stage::before, .cap-pill-icon, .cap-team-icon, .cap-orbit__hub, .cap-orbit__ring, .cap-opener-hero, .cap-page-band {
+  .cap-page--dark, .cap-panel, .cap-shot__bar, .cap-feature, .cap-takeaway, .cap-features--band, .cap-what-upper::before, .cap-cae__copy::before, .cap-why-stage::before, .cap-pill-icon, .cap-team-icon, .cap-orbit__hub, .cap-orbit__ring, .cap-opener-hero, .cap-page-band, .cap-softicon, .cap-pillar-card, .cap-pillar-card::before, .cap-feature-card, .cap-feature-card__visual {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -141,7 +194,7 @@ body {
   line-height: 0.8;
   font-weight: 700;
   letter-spacing: -0.05em;
-  color: rgba(23, 107, 84, 0.09);
+  color: rgba(43, 158, 128, 0.09);
   pointer-events: none;
   user-select: none;
 }
@@ -251,8 +304,8 @@ body {
 /* Page 1 — expanded navy opener (newsletter + website pattern), identity diagram, mint takeaway. */
 .cap-opener-hero {
   position: relative;
-  margin: calc(-1 * var(--page-pad)) calc(-1 * var(--page-pad)) 28px;
-  padding: 0.38in var(--page-pad) 0.46in;
+  margin: calc(-1 * var(--page-pad)) calc(-1 * var(--page-pad)) 20px;
+  padding: 0.3in var(--page-pad) 0.34in;
   background: var(--navy);
 }
 
@@ -271,8 +324,8 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding-bottom: 20px;
-  margin-bottom: 20px;
+  padding-bottom: 14px;
+  margin-bottom: 14px;
   border-bottom: 1px solid rgba(var(--mint-rgb), 0.15);
 }
 
@@ -321,24 +374,50 @@ body {
 }
 
 /* Inner pages — compact navy band (page 1 opener, scaled down). Headlines = Space Grotesk. */
+/* Inner-page header — dark, but illustrated rather than a flat block:
+   layered gradient + soft mint glow for depth, a faint dot-grid motif that
+   ties to the diagrams, and a mint accent bar with a light gold lead-in. */
 .cap-page-band {
   position: relative;
-  margin: calc(-1 * var(--page-pad)) calc(-1 * var(--page-pad)) 24px;
-  padding: 0.26in var(--page-pad) 0.3in;
-  background: var(--navy);
+  overflow: hidden;
+  margin: calc(-1 * var(--page-pad)) calc(-1 * var(--page-pad)) 22px;
+  padding: 0.3in var(--page-pad) 0.32in;
+  background:
+    radial-gradient(135% 120% at 90% -28%, rgba(var(--mint-rgb), 0.16), transparent 56%),
+    linear-gradient(162deg, var(--navy-deep) 0%, var(--navy) 58%, #0C1F28 100%);
 }
 
+/* approved circuit texture (mint + gold woven), fading in from the right */
+.cap-page-band::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 4px;
+  left: 0;
+  background-image: url('../../assets/textures/texture-circuit-header-mintgold.png');
+  background-repeat: repeat;
+  background-position: right top;
+  background-size: 600px auto;
+  -webkit-mask-image: linear-gradient(90deg, transparent 30%, rgba(0, 0, 0, 0.55) 62%, #000 100%);
+  mask-image: linear-gradient(90deg, transparent 30%, rgba(0, 0, 0, 0.55) 62%, #000 100%);
+  opacity: 0.62;
+  pointer-events: none;
+}
+
+/* accent bar */
 .cap-page-band::after {
   content: '';
   position: absolute;
-  bottom: 0;
   left: 0;
   right: 0;
+  bottom: 0;
   height: 4px;
   background: var(--mint);
 }
 
 .cap-page-band__top {
+  position: relative;
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -364,6 +443,7 @@ body {
 }
 
 .cap-page-band__title {
+  position: relative;
   margin: 0;
   font-size: 28px;
   font-weight: 700;
@@ -378,10 +458,11 @@ body {
 .cap-page-band__accent--gold { color: var(--gold); }
 
 .cap-page-band__deck {
+  position: relative;
   margin: 12px 0 0;
   font-size: 16px;
   line-height: 1.55;
-  color: rgba(245, 248, 250, 0.72);
+  color: rgba(245, 248, 250, 0.74);
   max-width: 52ch;
 }
 
@@ -412,7 +493,7 @@ body {
   flex: 0 0 auto;
 }
 
-.cap-page--what .cap-identity { max-height: 3.65in; }
+.cap-page--what .cap-identity { max-height: 2.7in; }
 
 .cap-page--what .cap-what-body {
   flex: 1 1 auto;
@@ -421,7 +502,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
-  gap: 32px;
+  gap: 16px;
 }
 
 .cap-page--what .cap-takeaway {
@@ -431,14 +512,113 @@ body {
 }
 
 .cap-page--what .cap-foot {
-  margin-top: 0;
-  padding-top: 16px;
+  margin-top: auto;
+  padding-top: 12px;
   flex-shrink: 0;
 }
 
 .cap-page--what .cap-reduce__label { color: var(--navy-muted); }
 
-.cap-page--what .cap-reduce__icon { color: var(--gold); }
+.cap-page--what .cap-reduce__icon { color: var(--accent-light); }
+
+/* Page 1 — 01/02/03 steps lead the top half over a deep, receding interface
+   fade (upper zone only); four duotone soft-icon pillar cards anchor below.
+   (Identity diagram moved to page 2.) */
+.cap-page--what .cap-what-body {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 12px;
+  padding-bottom: 28px;
+  isolation: isolate;
+}
+
+.cap-pillars-section { margin-top: 0; }
+.cap-page--what .cap-pillars-section {
+  flex: 0 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.cap-pillars__kicker {
+  margin: 0 0 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #2b9e80;
+}
+.cap-page--what .cap-pillars__kicker { margin-bottom: 8px; }
+.cap-pillars-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.cap-page--what .cap-pillars-grid { gap: 14px; }
+.cap-pillar-card {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 14px;
+  align-items: start;
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: linear-gradient(160deg, #E6F1EB 0%, #EEF5F0 100%);
+  box-shadow: inset 0 0 0 1px rgba(43, 158, 128, 0.18);
+}
+.cap-pillar-card__head {
+  margin: 0 0 4px;
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 14.5px;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--ink-strong);
+}
+.cap-pillar-card__body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--navy-muted);
+}
+/* Page 1 pillars — brand-mint tiles + accent bar on a near-neutral card; sized to
+   hold their own under the hero above. Compact enough to clear the footer. */
+.cap-page--what .cap-pillar-card {
+  position: relative;
+  grid-template-columns: 46px 1fr;
+  gap: 14px;
+  padding: 15px 16px 15px 18px;
+  background: linear-gradient(160deg, #E6F5EF 0%, #F1F9F6 100%);
+  box-shadow: inset 0 0 0 1px rgba(43, 158, 128, 0.16);
+}
+.cap-page--what .cap-pillar-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 12px;
+  bottom: 12px;
+  width: 3px;
+  background: var(--mint);
+}
+.cap-page--what .cap-pillar-card .cap-softicon--sm {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: var(--mint);
+  box-shadow: inset 0 0 0 1px rgba(16, 35, 45, 0.06);
+}
+.cap-page--what .cap-pillar-card__head {
+  font-size: 15px;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+.cap-page--what .cap-pillar-card__body {
+  font-size: 12.5px;
+  line-height: 1.45;
+}
 
 /* Inner pages — one headline + deck (same rhythm as page 1 opener). */
 .cap-page__head--hero { margin-bottom: 20px; }
@@ -546,11 +726,78 @@ body {
 .cap-hinge-plus { fill: var(--navy-mid); }
 
 /* Takeaway — contained callout (mint bar + tint): one-line intro + reduction icons */
+/* Control · Automate · Execute — framed interface screenshot + 01/02/03 list.
+   Compact, light-canvas cousin of the deck's .cae block: shot on the left,
+   numbered list on the right with hairline dividers. Numbers in the deep
+   accent (AA on light); verbs in Space Grotesk bold; bodies in Inter. */
+.cap-cae {
+  display: grid;
+  grid-template-columns: minmax(0, 2.85in) minmax(0, 1fr);
+  gap: 28px;
+  align-items: center;
+}
+
+.cap-cae .cap-shot { margin: 0; text-align: left; }
+.cap-cae .cap-shot__frame { max-width: none; margin: 0; }
+
+.cap-cae__steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.cap-cae__step {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 12px 0;
+  border-top: 1px solid var(--rule-light);
+}
+
+.cap-cae__step:first-child {
+  border-top: 0;
+  padding-top: 2px;
+}
+
+.cap-cae__num {
+  flex: none;
+  width: 34px;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: 0.06em;
+  color: var(--accent-light);
+  line-height: 1;
+  padding-top: 3px;
+}
+
+.cap-cae__copy { min-width: 0; }
+
+.cap-cae__verb {
+  margin: 0;
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  color: var(--ink-strong);
+}
+
+.cap-cae__body {
+  margin: 4px 0 0;
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
 .cap-takeaway {
   max-width: 100%;
-  margin: 34px auto 0;
-  padding: 22px 28px 24px;
-  background: var(--tint);
+  margin: 22px auto 0;
+  padding: 16px 0 0;
+  background: transparent;
   border-top: 4px solid var(--mint);
   color: var(--ink);
 }
@@ -596,13 +843,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
-  background: var(--navy);
-  color: var(--mint);
+  width: 32px;
+  height: 32px;
+  color: var(--accent-light);
 }
 
-.cap-reduce__icon svg { width: 18px; height: 18px; display: block; }
+.cap-reduce__icon svg { width: 24px; height: 24px; display: block; stroke-width: 1.75; }
 
 .cap-reduce__label {
   font-size: 11px;
@@ -658,7 +904,7 @@ body {
   line-height: 0.8;
   font-weight: 700;
   letter-spacing: -0.05em;
-  color: rgba(23, 107, 84, 0.09);
+  color: rgba(43, 158, 128, 0.09);
   pointer-events: none;
   user-select: none;
 }
@@ -707,39 +953,164 @@ body {
 
 /* Page 2 — pillars + screenshot stage; key features band anchors the lower sheet. */
 .cap-page--why .cap-pillars--icon li {
-  padding: 18px 8px 18px 0;
+  padding: 7px 8px 7px 0;
   grid-template-columns: 36px 1fr;
   gap: 20px;
   align-items: start;
 }
-.cap-page--why .cap-pillars__head { margin: 0 0 8px; }
+.cap-page--why .cap-pillars__head { margin: 0 0 5px; }
 .cap-page--why .cap-pillars__body { font-size: 13px; line-height: 1.5; max-width: 36ch; margin: 0; }
-.cap-page--why .cap-why-stage { flex: 1 1 auto; min-height: 3.2in; margin-top: 0; }
-.cap-page--why .cap-features--band {
-  flex: 0 0 auto;
-  margin-top: auto;
-  margin-bottom: 0;
-  padding: 22px 28px 24px;
-  background: var(--tint);
-  border-top: 4px solid var(--mint);
+.cap-page--why .cap-why-stage { flex: 1.9 1 auto; min-height: 2.2in; margin-top: 0; }
+.cap-page--why .cap-foot { margin-top: 0; padding-top: 14px; flex-shrink: 0; }
+
+/* Page 2 — "What LUCI is": navy band header carries the title; the identity
+   diagram is the hero (full-width, larger labels), with six dialed-down
+   illustrated feature cards beneath. No large empty bands. */
+.cap-page--why .cap-why-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 24px;
+  padding-bottom: 20px;          /* guaranteed footer clearance so cards never collide */
 }
-.cap-page--why .cap-features--band .cap-features__kicker {
-  margin-bottom: 16px;
+.cap-page--why .cap-figure--identity {
+  flex: 0 0 auto;                /* size to the image — no empty band around the hero */
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cap-page--why .cap-identity { width: 700px; max-width: 100%; height: auto; max-height: none; aspect-ratio: 585 / 307; object-fit: contain; }
+
+/* Six icon-led feature cards (3×2) filling the lower half to balance the diagram.
+   Duotone soft-icons (matching the page-1 pillar cards) on soft cards — readable
+   at a glance without competing with the identity hero. The figure above absorbs
+   any leftover slack so the diagram stays full-size and nothing overflows. */
+.cap-page--why .cap-features--cards { flex: 0 0 auto; margin-top: 0; }
+.cap-features--cards .cap-features__kicker { margin: 0 0 4px; font-size: 11px; }
+.cap-feature-cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px 16px;
+}
+.cap-feature-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  min-width: 0;
+  padding: 12px 16px;
+  border-radius: 16px;
+  background: linear-gradient(160deg, #EAE7E2 0%, #E0DDD7 100%);
+  box-shadow: inset 0 0 0 1px rgba(26, 26, 26, 0.07);
+}
+.cap-feature-card .cap-softicon { width: 48px; height: 48px; border-radius: 16px; flex: none; }
+.cap-feature-card .cap-softicon svg { width: 28px; height: 28px; }
+.cap-feature-card__name {
+  margin: 0;
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 15.5px;
+  line-height: 1.22;
+  letter-spacing: -0.015em;
+  color: var(--ink-strong);
+}
+.cap-feature-card__body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  line-height: 1.4;
   color: var(--navy-muted);
 }
-.cap-page--why .cap-features--band .cap-features__grid {
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px 48px;
+
+/* Simple key-feature list (page 2) — lightweight icon + label so it recedes
+   beneath the floor-plan hero (the rich illustrations live in the capabilities doc). */
+.cap-features__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1 1 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-content: space-evenly;
+  gap: 24px 44px;
 }
-.cap-page--why .cap-features--band .cap-feature { padding: 0; }
-.cap-page--why .cap-features--band .cap-feature__name { font-size: 14px; }
-.cap-page--why .cap-foot { margin-top: 40px; padding-top: 16px; flex-shrink: 0; }
+
+.cap-features__list li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.cap-feat-ic {
+  flex: 0 0 auto;
+  width: 26px;
+  height: 26px;
+}
+
+.cap-feat-ic svg { display: block; width: 100%; height: 100%; }
+
+.cap-feat-nm {
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  color: var(--ink-strong);
+}
+
+/* (legacy) illustrated key-feature cards */
+.cap-features__cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px 22px;
+}
+
+.cap-fcard { margin: 0; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+
+.cap-fcard__visual {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2 / 1;
+  object-fit: cover;
+  background: var(--tint);
+}
+
+.cap-fcard__name {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--ink-strong);
+  padding-left: 11px;
+  position: relative;
+}
+
+.cap-fcard__name::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.18em;
+  width: 3px;
+  height: 0.92em;
+  border-radius: 1px;
+  background: var(--accent-light);
+}
 
 .cap-leadin__accent { color: var(--accent-light); }
 
 /* ── Page 3 — pillars over a right-anchored LUCI interface that fades left ── */
 .cap-why-stage {
   position: relative;
+  display: flex;
+  align-items: stretch;
   margin-top: 16px;
   min-height: 3.5in;
   overflow: hidden;
@@ -752,7 +1123,7 @@ body {
   right: -3%;
   bottom: 0;
   width: 66%;
-  background: url('assets/interface-floor-view.png?v=3') no-repeat right center;
+  background: url('assets/interface-floor-view.png?v=4') no-repeat right center;
   background-size: cover;
   border-radius: 10px;
   opacity: 1;
@@ -762,7 +1133,10 @@ body {
   z-index: 0;
 }
 
-.cap-why-stage .cap-pillars { position: relative; z-index: 1; max-width: 50%; margin-top: 0; }
+.cap-why-stage .cap-pillars { position: relative; z-index: 1; max-width: 50%; margin-top: 0; display: flex; flex-direction: column; }
+
+/* four equal-height bands so the key messages fill the column beside the floor plan */
+.cap-page--why .cap-why-stage .cap-pillars li { flex: 1 1 0; align-content: center; }
 
 .cap-why-stage .cap-pillars__body { max-width: 38ch; }
 
@@ -788,22 +1162,20 @@ body {
 
 .cap-pillars li + li { border-top: 1px solid var(--rule-light); }
 
-/* Mint icon on a small navy tile — bright accent only shows on a dark surface */
-.cap-pillars--icon li { display: grid; grid-template-columns: 36px 1fr; gap: 16px; align-items: start; }
+/* De-boxed icon — deep-green glyph sits directly on the light page (no navy tile) */
+.cap-pillars--icon li { display: grid; grid-template-columns: 32px 1fr; gap: 16px; align-items: start; }
 
 .cap-pill-icon {
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--navy);
-  border-radius: 8px;
-  color: var(--mint);
+  color: var(--accent-light);
   flex: none;
 }
 
-.cap-pill-icon svg { width: 18px; height: 18px; display: block; }
+.cap-pill-icon svg { width: 24px; height: 24px; display: block; stroke-width: 1.75; }
 
 .cap-pillars__head {
   font-size: 18px;
@@ -1011,25 +1383,13 @@ body {
 }
 
 .cap-page--systems .cap-orbit-block {
-  flex: 0 1 auto;
+  flex: 1 1 auto;
   max-height: 100%;
   min-height: 0;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: stretch;
-}
-
-.cap-page--systems .cap-orbit-stage .cap-figure-head {
-  flex-shrink: 0;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.cap-page--systems .cap-orbit-stage .cap-figure-title {
-  margin: 0 auto 16px;
-  max-width: 42ch;
-  font-size: 18px;
-  line-height: 1.25;
 }
 
 .cap-page--systems .cap-orbit {
@@ -1050,18 +1410,59 @@ body {
   display: block;
   width: 100%;
   height: auto;
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 880px;
+  max-height: none;
   margin: 0 auto;
   object-fit: contain;
   object-position: center;
+  shape-rendering: geometricPrecision;
 }
 
+/* Testimonial = supporting proof in a full-bleed dark band: separates it cleanly
+   from the orbit hero, lets the bright mint sing on navy, and echoes the header. */
 .cap-page--systems .cap-quote {
+  position: relative;
   flex-shrink: 0;
-  margin-top: 0;
-  margin-bottom: 0;
+  max-width: none;
+  margin: 0 calc(-1 * var(--page-pad));
+  width: calc(100% + 2 * var(--page-pad));
+  padding: 26px var(--page-pad) 28px calc(var(--page-pad) + 24px);
+  border-left: 0;
+  background:
+    radial-gradient(120% 160% at 6% 50%, rgba(var(--mint-rgb), 0.14), transparent 52%),
+    linear-gradient(162deg, var(--navy-deep) 0%, var(--navy) 70%, #0C1F28 100%);
 }
+
+.cap-page--systems .cap-quote::before {
+  content: '';
+  position: absolute;
+  left: var(--page-pad);
+  top: 26px;
+  bottom: 28px;
+  width: 4px;
+  background: var(--mint);
+}
+
+.cap-page--systems .cap-quote__kicker {
+  margin: 0 0 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mint);
+}
+
+.cap-page--systems .cap-quote__text {
+  font-size: 19px;
+  line-height: 1.5;
+  color: rgba(235, 245, 248, 0.94);
+}
+
+.cap-page--systems .cap-quote__attrib {
+  color: rgba(235, 245, 248, 0.62);
+}
+
+.cap-page--systems .cap-quote__attrib span { color: rgba(235, 245, 248, 0.96); }
 
 .cap-page--systems .cap-foot {
   margin-top: 40px;
@@ -1069,8 +1470,8 @@ body {
   flex-shrink: 0;
 }
 
-/* Page 2 — gold headline accent + pillar icon strokes */
-.cap-page--why .cap-pill-icon { color: var(--gold); }
+/* Page 2 — deep-green pillar icon glyphs (gold reserved for the dark band headline accent) */
+.cap-page--why .cap-pill-icon { color: var(--accent-light); }
 
 /* Page 3 — gold headline accent (orbit icons via brochure SVG variant) */
 
@@ -1099,7 +1500,7 @@ body {
   height: 16px;
 }
 
-.cap-page--proof .cap-teams__label { color: var(--accent-light); }
+.cap-page--proof .cap-teams__label { color: var(--ink-strong); }
 
 .cap-page--proof .cap-teams { margin-top: 0; }
 
@@ -1325,4 +1726,276 @@ body {
 /* ── Responsive (screen only) ── */
 @media screen and (max-width: 640px) {
   .cap-forces, .cap-close__contacts { grid-template-columns: 1fr; }
+}
+
+/* ════════════════════════════════════════════════════════════════════════
+   OPTION B — "Unified dark hero" (page 1 only). Merges the masthead and the
+   01/02/03 work-zone into one continuous navy hero; the interface screenshot
+   bleeds in from the right and feathers into the navy (never into white), so
+   the spine always sits on clean navy and the old "line to white" artifact
+   cannot occur. Pillars stay on the light canvas. These overrides come last
+   and match existing specificity, so they win.
+   ════════════════════════════════════════════════════════════════════════ */
+
+/* 1 — Drop the masthead's mint bar and bottom gap so it flows into the band. */
+.cap-opener-hero { margin-bottom: 0; }
+.cap-opener-hero::after { content: none; }
+
+/* 2 — The upper zone becomes a full-bleed navy band, flush under the masthead.
+   max-height is the lever for the band→pillars gap (grows the 01/02/03 zone
+   down to close the white space between the dark hero and the light strip). */
+.cap-page--what .cap-what-upper {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 3.5in;
+  max-height: 4.7in;
+  display: block;
+  margin: 0 calc(-1 * var(--page-pad));
+  width: calc(100% + 2 * var(--page-pad));
+  padding: 24px var(--page-pad);
+  background: var(--navy);
+  isolation: isolate;
+  overflow: hidden;
+}
+/* single mint hairline at the band's bottom edge = transition to light pillars */
+.cap-page--what .cap-what-upper::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 4px;
+  background: var(--mint);
+  z-index: 4;
+  pointer-events: none;
+}
+
+/* 3 — Spine: light text on solid navy, left half. */
+.cap-page--what .cap-what-upper .cap-cae__steps--stage {
+  position: relative;
+  z-index: 2;
+  width: 50%;
+  max-width: none;
+  margin: 0;
+  padding: 10px 24px 18px 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 0;
+}
+.cap-page--what .cap-cae__num {
+  flex: none;
+  width: 64px;
+  font-family: var(--font);
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  padding-top: 2px;
+  color: var(--gold);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+.cap-page--what .cap-cae__verb {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  color: var(--off-white);
+}
+.cap-page--what .cap-cae__body {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.5;
+  margin-top: 6px;
+  color: rgba(235, 245, 248, 0.86);
+  max-width: 34ch;
+}
+.cap-page--what .cap-cae__copy::before { content: none; }
+
+.cap-page--what .cap-cae__step {
+  position: relative;
+  z-index: 1;
+  padding: 0;
+  border-top: 0;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.cap-page--what .cap-cae__step:first-child { padding-top: 0; }
+.cap-page--what .cap-cae__copy {
+  position: relative;
+  isolation: isolate;
+  min-width: 0;
+  flex: 1;
+}
+
+/* 4 — Screenshot absolutely positioned over the right half; left edge overlaps
+   the spine zone to kill the 1px grid seam Chrome PDF draws between columns. */
+.cap-page--what .cap-shot {
+  position: absolute;
+  top: -24px;
+  bottom: -24px;
+  left: 46%;
+  right: calc(-1 * var(--page-pad));
+  z-index: 1;
+  margin: 0;
+  border-radius: 0;
+  overflow: hidden;
+  background: var(--navy);
+  box-shadow: none;
+}
+.cap-page--what .cap-shot__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center;
+  image-rendering: -webkit-optimize-contrast;
+}
+.cap-shot__eyebrow {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 3;
+  font-family: var(--font);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mint);
+  background: rgba(16, 35, 45, 0.72);
+  padding: 4px 8px;
+  border-radius: 9999px;
+}
+/* left-edge feather: navy -> transparent, so the map melts into the band
+   (never into white). Real element — Chrome PDF often drops ::after gradients. */
+.cap-page--what .cap-shot__feather {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(to right,
+    var(--navy) 0%,
+    rgba(16, 35, 45, 0.85) 8%,
+    rgba(16, 35, 45, 0.30) 22%,
+    rgba(16, 35, 45, 0) 38%);
+  pointer-events: none;
+}
+.cap-page--what .cap-shot__eyebrow { left: auto; right: 12px; }
+
+/* 5 — Pillars stay on the light canvas (unchanged). */
+.cap-page--what .cap-pillars-section { position: relative; z-index: 1; }
+
+/* Print fidelity for the new navy band, hairline, and feather. */
+@media print {
+  .cap-page--what .cap-what-upper,
+  .cap-page--what .cap-what-upper::after,
+  .cap-page--what .cap-shot,
+  .cap-page--what .cap-shot__feather {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .cap-page--what .cap-shot {
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    outline: none !important;
+  }
+  .cap-page--what .cap-shot__feather {
+    display: block !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Print-tier rasters — prepared by scripts/prepare-sales-pdf-assets.py */
+@media print {
+  .cap-page-band::before {
+    background-image: url('assets/textures/texture-circuit-header-mintgold.jpg');
+    mix-blend-mode: screen;
+  }
+  .cap-why-stage::before {
+    background-image: url('assets/interface-floor-view.png?v=2');
+  }
+}
+
+@media print {
+  /* Circuit header texture repeats on every band page — Chrome paints a large bitmap per page in PDF. */
+  .cap-page-band::before {
+    display: none !important;
+  }
+}
+
+/* Acrobat paint cost: Chrome turns CSS gradients into PDF Pattern/Shading objects
+   that repaint lazily (blinks on open). Datavail/Illustrator PDFs use flat fills.
+   Flatten multi-stop backgrounds for print; keep screen gradients unchanged. */
+@media print {
+  .cap-page-band,
+  .cap-opener-hero,
+  .cap-page--what .cap-what-upper,
+  .cap-page--dark,
+  .cap-quote,
+  .cap-panel {
+    background: var(--navy) !important;
+    background-image: none !important;
+  }
+  .cap-pillar-card,
+  .cap-pillar-card::before {
+    background: #EEF5F0 !important;
+    background-image: none !important;
+    box-shadow: inset 0 0 0 1px rgba(43, 158, 128, 0.18) !important;
+  }
+  .cap-feature-card {
+    background: #EAE7E2 !important;
+    background-image: none !important;
+  }
+  .cap-softicon,
+  .cap-softicon--sm {
+    background: #E6F5EF !important;
+    background-image: none !important;
+    width: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+  .cap-softicon svg,
+  .cap-team-icon svg {
+    display: block !important;
+  }
+  .cap-team-icon {
+    display: flex !important;
+    width: 16px !important;
+    height: 16px !important;
+    overflow: visible !important;
+  }
+  .cap-why-stage::before {
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+  .cap-page--what .cap-pillar-card .cap-softicon--sm {
+    width: 44px !important;
+    height: 44px !important;
+    flex: none !important;
+  }
+  .cap-feature-card .cap-softicon {
+    width: 48px !important;
+    height: 48px !important;
+    flex: none !important;
+  }
+  /* Feather is baked into interface-floor-view-brochure.jpg — hide CSS overlay in PDF. */
+  .cap-page--what .cap-shot__feather {
+    display: none !important;
+  }
+  /* Pin band height in print so the absolute shot has a stable containing block. */
+  .cap-page--what .cap-what-upper {
+    flex: 0 0 4.7in !important;
+    height: 4.7in !important;
+    min-height: 4.7in !important;
+    max-height: 4.7in !important;
+  }
+  .cap-page--what .cap-shot {
+    top: -24px !important;
+    bottom: -24px !important;
+  }
+  .cap-page--what .cap-shot__img {
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: right top !important;
+  }
 }

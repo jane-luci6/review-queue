@@ -24,7 +24,7 @@
       --ink: #354F5C;
       --ink-strong: #1C2B33;
       --muted: #49616E;
-      --label: #176B54;
+      --label: #2b9e80;
       --rule: #D4D9DC;
       --mint: #68E3BE;
       --overdue-bg: #FEF3F0;
@@ -226,6 +226,13 @@
     .cal-event.is-milestone .cal-event__num {
       color: var(--muted);
     }
+
+    .cal-event.is-task {
+      border-left-color: var(--mint);
+      background: #F2FBF8;
+    }
+    .cal-event.is-task:hover { background: #E8F5F1; }
+    .cal-event.is-task .cal-event__num { color: var(--label); }
 
     .clients-strip {
       margin-top: 48px;
@@ -577,7 +584,7 @@
           });
         }
 
-        if (client.installDate) {
+        if (client.installDate && !client.installBegun) {
           const installDay = parseDate(client.installDate);
           const now = startOfDay(new Date());
           if (installDay && installDay >= addDays(now, -14)) {
@@ -593,6 +600,22 @@
             });
           }
         }
+      }
+
+      for (const task of (window.JOURNEY_DATA.tasks || [])) {
+        if (task.status === 'done') continue;
+        const due = parseDate(task.due);
+        if (!due) continue;
+        events.push({
+          clientId: null,
+          property: '',
+          num: null,
+          name: task.title,
+          file: null,
+          due,
+          dueISO: formatDateISO(due),
+          kind: 'task',
+        });
       }
 
       events.sort((a, b) => a.due - b.due || a.property.localeCompare(b.property));
@@ -671,17 +694,23 @@
           btn.type = 'button';
           btn.className = 'cal-event' +
             (ev.kind === 'milestone' ? ' is-milestone' : '') +
+            (ev.kind === 'task' ? ' is-task' : '') +
             (overdue ? ' is-overdue' : '') +
             (isToday ? ' is-today-item' : '');
+          const eventLabel = ev.kind === 'milestone' ? 'Milestone' : ev.kind === 'task' ? 'To-do' : 'Email ' + ev.num;
           btn.innerHTML = `
-            <span class="cal-event__num">${ev.kind === 'milestone' ? 'Milestone' : 'Email ' + ev.num}</span>
+            <span class="cal-event__num">${eventLabel}</span>
             <span>
               <span class="cal-event__name">${ev.name}</span>
-              <span class="cal-event__property">${ev.property}</span>
+              ${ev.property ? `<span class="cal-event__property">${ev.property}</span>` : ''}
             </span>
             ${overdue ? '<span class="cal-event__badge">Overdue</span>' : ''}
           `;
-          btn.addEventListener('click', () => openClient(ev.clientId, ev.num));
+          if (ev.clientId) {
+            btn.addEventListener('click', () => openClient(ev.clientId, ev.num));
+          } else {
+            btn.style.cursor = 'default';
+          }
           dayEl.appendChild(btn);
         }
 

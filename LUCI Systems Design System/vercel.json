@@ -1,0 +1,14 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "npm run build:review",
+  "outputDirectory": "ui_kits/review",
+  "rewrites": [
+    { "source": "/", "destination": "/internal-portal/index.html" },
+    { "source": "/stakeholder-review.html", "destination": "/internal-portal/index.html" },
+    { "source": "/stakeholder-review-webflow-embed.html", "destination": "/internal-portal/index.html" },
+    { "source": "/review-board.html", "destination": "/internal-portal/index.html" },
+    { "source": "/review-portal.html", "destination": "/internal-portal/index.html" },
+    { "source": "/resources-hub-home-prototype.html", "destination": "/internal-portal/index.html" }
+  ]
+}

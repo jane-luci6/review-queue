@@ -1,0 +1,62 @@
+<link rel='preconnect' href='https://fonts.googleapis.com'>
+<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+<link href='https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap' rel='stylesheet'>
+<style>
+  .signal-callout{
+    position:relative;
+    width:100vw;
+    margin-left:calc(50% - 50vw);
+    background-color:#0B0E14;
+    background-image:
+      linear-gradient(90deg, #0B0E14 0%, rgba(11,14,20,0.82) 38%, rgba(11,14,20,0.30) 70%, rgba(11,14,20,0.05) 100%),
+      url("https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a5544ff1649157642a694f7_texture-circuit-navy-steel-alt.png");
+    background-repeat: no-repeat, repeat;
+    background-size: 100% 100%, 420px;
+    color:#F5F8FA;
+    font-family:'Space Grotesk',sans-serif;
+    overflow:hidden;
+  }
+  .signal-callout__inner{
+    max-width:640px;margin:0 auto;
+    padding:50px clamp(24px,5vw,48px);
+    text-align:center;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+  }
+  .signal-callout__kicker{
+    font-size:clamp(11px,0.9vw,14px);font-weight:700;
+    letter-spacing:0.18em;text-transform:uppercase;color:#68E3BE;
+    margin-bottom:18px;
+  }
+  .signal-callout__title{
+    margin:0 0 14px;
+    font-size:clamp(26px,2vw,40px);font-weight:700;line-height:1.05;
+    letter-spacing:-0.02em;color:#FFFFFF;text-transform:uppercase;
+  }
+  .signal-callout__title em{font-style:normal;color:#68E3BE;}
+  .signal-callout__deck{
+    margin:0 0 32px;max-width:52ch;
+    font-size:clamp(13px,1vw,17px);font-weight:400;line-height:1.5;
+    color:rgba(235,245,248,0.82);
+  }
+  .signal-callout__btn{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:clamp(12px,1.25vw,20px);font-weight:700;
+    letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;
+    color:#FFFFFF;background:transparent;
+    border:2px solid #68E3BE;padding:clamp(13px,1.39vw,22px) clamp(20px,1.8vw,30px);white-space:nowrap;
+    transition:background 0.15s ease-out,color 0.15s ease-out;
+  }
+  .signal-callout__btn:hover{background:#68E3BE;color:#0B0E14;}
+  .signal-callout__btn span{font-size:1.1em;line-height:1;}
+  @media (max-width:760px){
+    .signal-callout__inner{padding:40px 20px;}
+  }
+</style>
+<section class='signal-callout' aria-labelledby='signal-callout-title'>
+  <div class='signal-callout__inner'>
+    <div class='signal-callout__kicker'>Check out the new LUCI newsletter</div>
+    <h2 id='signal-callout-title' class='signal-callout__title'>The <em>Signal.</em></h2>
+    <p class='signal-callout__deck'>Packed full of field stories, A/V insights, and sneak peeks into the future of LUCI.</p>
+    <a class='signal-callout__btn' href='/the-signal'>Explore The Signal<span aria-hidden='true'>&rarr;</span></a>
+  </div>
+</section>

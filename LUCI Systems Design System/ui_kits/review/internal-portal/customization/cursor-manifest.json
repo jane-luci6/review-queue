@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "portalOrigin": "http://10.10.1.17:8081",
+  "instructions": "Paste any template preview URL into Cursor chat. The agent fetches skills from this manifest — no specific folder or workspace required.",
+  "sharedSkills": {
+    "router": "/internal-portal/customization/CURSOR.md",
+    "brand": "/internal-portal/customization/_brand/SKILL.md",
+    "agents": "/internal-portal/customization/AGENTS.md"
+  },
+  "templates": {
+    "sales-deck": {
+      "title": "Sales deck",
+      "previewPath": "/internal-portal/customization/sales-deck/sales-deck.html",
+      "skill": "/internal-portal/customization/sales-deck/SKILL.md",
+      "agents": "/internal-portal/customization/sales-deck/AGENTS.md",
+      "master": "LUCI Systems Design System/ui_kits/sales/sales-deck.html",
+      "clientFile": "LUCI Systems Design System/ui_kits/sales/{client}-sales-deck.html",
+      "status": "ready"
+    },
+    "capabilities-document": {
+      "title": "Capabilities document",
+      "previewPath": "/internal-portal/customization/capabilities-document/capabilities-document.html",
+      "skill": "/internal-portal/customization/capabilities-document/SKILL.md",
+      "agents": "/internal-portal/customization/capabilities-document/AGENTS.md",
+      "master": "LUCI Systems Design System/ui_kits/sales/capabilities-document.html",
+      "clientFile": "LUCI Systems Design System/ui_kits/sales/{client}-capabilities.html",
+      "status": "ready"
+    },
+    "scope-of-work": {
+      "title": "Scope of work",
+      "previewPath": "/internal-portal/customization/scope-of-work/scope-of-work.html",
+      "skill": "/internal-portal/customization/scope-of-work/SKILL.md",
+      "agents": "/internal-portal/customization/scope-of-work/AGENTS.md",
+      "master": "LUCI Systems Design System/ui_kits/sales/scope-of-work.html",
+      "clientFile": "LUCI Systems Design System/ui_kits/sales/{client}-scope-of-work.html",
+      "status": "ready"
+    },
+    "budgetary-estimate": {
+      "title": "Budgetary estimate",
+      "previewPath": "/internal-portal/customization/budgetary-estimate/budgetary-estimate.html",
+      "skill": "/internal-portal/customization/budgetary-estimate/SKILL.md",
+      "agents": "/internal-portal/customization/budgetary-estimate/AGENTS.md",
+      "master": "LUCI Systems Design System/ui_kits/sales/budgetary-estimate.html",
+      "clientFile": "LUCI Systems Design System/ui_kits/sales/{client}-budgetary-estimate.html",
+      "status": "ready"
+    }
+  }
+}

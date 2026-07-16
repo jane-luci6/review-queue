@@ -1,0 +1,33 @@
+---
+description: LUCI messaging voice — engine/verbs, no "layer" for LUCI; watch repetition of leading terms
+globs:
+  - LUCI Systems Design System/ui_kits/review/messaging/**
+  - LUCI Systems Design System/ui_kits/sales/**
+  - LUCI Systems Design System/ui_kits/website/**
+alwaysApply: false
+---
+
+# LUCI messaging voice
+
+Canonical source: **Messaging guide** → Voice & tone → *Engine and verbs — not layers.*
+
+## Don’t
+
+Never use **layer** as a noun for LUCI (orchestration layer, application layer, “one layer for…”). Describing layers in the **client’s** accumulated stack is fine.
+
+## Leading choices (not the only choices)
+
+- **Orchestration engine** — positioning, tagline
+- **LUCI orchestrates…** — headlines, capability copy
+
+Also fine when they fit better: **runs, operates, integrates, consolidates, refines, platform, infrastructure**.
+
+## Watch repetition
+
+If **engine** or **orchestrates** appears more than once in a short passage (deck section, PDF page, email), rotate to a precise alternative. Same word three times reads like a crutch.
+
+## Spelling & terms
+
+- **Always write “A/V”** — never “AV” or “A-V” — in body copy, headlines, labels, captions, alt text, and diagrams.
+
+Voice patches re-apply after Word sync via `transform-messaging-html.mjs`.

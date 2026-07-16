@@ -1,0 +1,88 @@
+---
+description: LUCI case studies - canonical hero header/title treatment, structure, and web+print variants. Web-first (Webflow) with a print/PDF variant. Always loaded so any agent starting a case study (any folder, before it lands in /case-studies/) can find it.
+globs: LUCI Systems Design System/ui_kits/case-studies/**
+alwaysApply: true
+---
+
+# LUCI Case Studies
+
+**When to use this:** whenever you're creating or editing a **LUCI case study** (customer success story) — wherever the work starts, even before the file lands in `ui_kits/case-studies/`. If the piece is a case study, this rule applies; the header/title treatment below is the go-to.
+
+**Scope — case studies only.** Do **not** apply this header/title treatment, the split-title pattern, or any rule here to newsletters, sales documents, the website, the hub, emails, or any other asset. Those assets have their own rules (`luci-visual-design.mdc`, `luci-modern-design-guidelines.mdc`, `luci-sales-document-system.mdc`, `luci-website-review-deploy.mdc`, etc.). This rule governs **case study pages only**; everything here is case-study-scoped.
+
+Canonical pattern for **case study pages** - web-first (published on lucisystems.com via Webflow) with a print/PDF variant. Inherits Track A (web) / Track C (print) foundations from `luci-modern-design-guidelines.mdc` and brand/voice from `luci-visual-design.mdc`. This rule canonizes the **hero header / title treatment** so every case study opens the same way.
+
+**Reference implementation:** `ui_kits/case-studies/ameristar-council-bluffs.html` (canonical local draft) + `-webflow-embed.html` / `-webflow-body.html` (Webflow deploy) + `-print.html` (PDF). Wrapper: `.luci-cs`.
+
+## The hero header - split title (CANONICAL)
+
+Every case study hero uses a **two-part title**: a small uppercase **lead-in** (Space Grotesk) stacked above a large **display phrase** (Syncopate, mint). The lead-in sets context; the Syncopate phrase is the single display moment. This is the go-to for all case study titles/headers - do not re-derive it.
+
+### Structure
+
+```html
+<header class="hero">
+  <div class="hero__kicker"><span>Case Study</span></div>
+  <h1 class="hero__title">
+    <span class="hero__leadin">Three days to a</span>
+    <em>future-ready property</em>
+  </h1>
+  <p class="hero__dek">One-sentence summary of what LUCI did and why it mattered.</p>
+  <div class="hero__actions"> ... download PDF button ... </div>
+  <p class="hero__property"> Property Name <span>City, State · Operator</span></p>
+</header>
+```
+
+- `.hero__kicker` - mint 28x2px rule + "Case Study" label.
+- `.hero__title` - the split title (lead-in span + `<em>` phrase).
+- `.hero__dek` - one-sentence deck, max ~58ch.
+- `.hero__property` - property name (mint) + location/operator (muted), hairline top border.
+
+## Title authoring rules (non-negotiable)
+
+- **Syncopate is for the short display phrase only** - the `<em>`. Hard limit per `luci-modern-design-guidelines.mdc` 3.1: max ~3 words, max ~25 chars, single line. "future-ready property" (3 words, 24 chars) is the ceiling. If the phrase would wrap or exceed 3 words, shorten it - never drop to two Syncopate lines.
+- **The lead-in carries the context** - Space Grotesk, uppercase, smaller. A few words ("Three days to a", "A full floor on one tap"). Keep it max ~5 words so it reads as a lead-in, not a second headline.
+- **One display moment per case study** - the hero `<em>`. Section sub-heads (H2) stay bold Space Grotesk; never Syncopate mid-page.
+- **Mint on dark only** - the hero is `--navy-deep`, so mint Syncopate + mint kicker pass contrast. Do not replicate this split on a light canvas.
+
+## Exact spec
+
+**Tokens**
+- `--navy-deep: #0A161C` (hero bg)
+- `--mint: #68E3BE` (kicker, Syncopate phrase, property name, 4px bottom border)
+- `--mint-rgb: 104, 227, 190`
+- `--off-white: #F5F8FA`
+- `--display: 'Syncopate', 'Arial Black', sans-serif`
+- `--body: 'Space Grotesk', 'Trebuchet MS', sans-serif`
+- `--pad: clamp(28px, 6vw, 64px)` | `--max: 880px`
+
+**Hero container**
+- `.hero` - bg `--navy-deep`; padding `clamp(40px, 8vw, 84px) var(--pad) clamp(40px, 7vw, 72px)`; `border-bottom: 4px solid var(--mint)`; `overflow: hidden`.
+
+**Kicker**
+- `.hero__kicker` - flex, gap 12px, mb 22px.
+- `.hero__kicker span` - Syncopate, 10px, 700, tracking 0.22em, uppercase, `--mint`.
+- `.hero__kicker::before` - 28x2px `--mint` rule.
+
+**Title (the split)**
+- `.hero__title` - Space Grotesk, 700, `clamp(34px, 6.5vw, 60px)`, line-height 1.04, tracking -0.03em, `--off-white`, `max-width: 16ch`, mb 26px. (Base style applies to the `<em>` display phrase.)
+- `.hero__leadin` - `display:block`; Space Grotesk, `clamp(17px, 2.2vw, 24px)`, 600, tracking 0.12em, uppercase, `rgba(235, 245, 248, 0.82)`, mb 14px.
+- `.hero__title em` - Syncopate, `font-style: normal`, `--mint`, `text-transform: uppercase`.
+
+**Dek / property**
+- `.hero__dek` - `clamp(17px, 2.2vw, 20px)`, line-height 1.6, `rgba(235, 245, 248, 0.82)`, `max-width: 58ch`, mb 30px.
+- `.hero__property` - flex, gap 14px, 13px, 600, tracking 0.04em, `--mint`, pt 24px, `border-top: 1px solid rgba(var(--mint-rgb), 0.15)`. `.hero__property span` - `rgba(165, 179, 188, 0.7)`, 500.
+
+## Variants
+
+- **Web (Webflow):** split into `-webflow-head.html` (tokens + CSS, scoped under `.luci-cs`) and `-webflow-body.html` (markup). Paste into Webflow custom-code fields; hard-refresh to see changes. Webflow's default `h1 { text-transform: uppercase }` is fine here - the `<em>` is uppercase by design.
+- **Print/PDF:** `-print.html` variant on US Letter; keep the same split title. Embed fonts (no Google Fonts `<link>` - use `assets/fonts/luci-brand-fonts.css`); `print-color-adjust: exact` on the hero so the navy bg + mint render.
+- **Canonical local draft:** `<name>.html` (no prefix) is the source of truth; the webflow/print files are derived. Edit content here, then propagate.
+
+## Pre-ship
+
+1. Split title present (lead-in + Syncopate `<em>`); Syncopate phrase max 3 words / single line.
+2. Hero is `--navy-deep` with 4px mint bottom border; kicker + dek + property row present.
+3. Fonts embedded (print) / Google Fonts loaded (web); Syncopate renders (verify, do not assume).
+4. One display moment only; section H2s are Space Grotesk.
+5. Webflow: head/body split pasted; hard-refresh after deploy.

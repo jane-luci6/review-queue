@@ -1,6 +1,6 @@
 /** Customer journey tracker — edit this file to update clients & sends. */
 window.JOURNEY_DATA = {
-  updated: '2026-06-18',
+  updated: '2026-07-15',
 
   /**
    * How each email is scheduled. offsetDays is added to the anchor date.
@@ -34,7 +34,7 @@ window.JOURNEY_DATA = {
       installDate: null,
       goLiveDate: '2026-05-14',
       implementationNotes:
-        'Email 6 (survey) sent May 21. Email 7 (Signal welcome) sent Jun 16 via newsletter. Email 8 (30-day check-in) scheduled Mon Jun 23 — delayed one week so they are not back-to-back with the newsletter.',
+        'Email 6 (survey) sent May 21. Email 7 (Signal welcome) sent Jun 16 via newsletter. Email 8 (30-day check-in) sent Jun 24. Next: Email 9 (60-day check-in) due Jul 13. ACTION for Email 9: implementation feedback form link didn\'t work — consider adding/re-sending that form in this email. NOTE: Email 9 already includes its own survey, so reconcile the two CTAs (avoid sending two competing surveys / duplicate asks).',
       contacts: [
         { name: 'Andi Etherton', email: '', role: 'Recipient' },
         { name: 'Chris Hamblin', email: '', role: 'Recipient' },
@@ -46,8 +46,9 @@ window.JOURNEY_DATA = {
       sent: [
         { num: 6, date: '2026-05-21', notes: 'Survey' },
         { num: 7, date: '2026-06-16', notes: 'The Signal welcome — sent to full list Mon Jun 16' },
+        { num: 8, date: '2026-06-24', notes: '30-day check-in' },
       ],
-      manualDates: { '8': '2026-06-23' },
+      manualDates: {},
     },
     {
       id: 'clearwater',
@@ -78,9 +79,10 @@ window.JOURNEY_DATA = {
       kickoffDate: null,
       installConfirmedDate: '2026-06-11',
       installDate: '2026-06-23',
-      goLiveDate: null,
+      installBegun: true,
+      goLiveDate: '2026-06-27',
       implementationNotes:
-        'Emails 3–4 sent. Install starts Mon Jun 23. Email 5 (Go live) projected Fri Jun 27 — confirm or override goLiveDate once LUCI is live. Survey + check-ins follow from that anchor.',
+        'LUCI is live (go-live Jun 27). Email 5 (Go live), Email 6 (Survey), and Email 7 (Signal welcome / newsletter invitation, sent Jul 1) all sent. Non-opens / non-clicks for the newsletter reviewed. Check-ins follow from go-live anchor — Email 8 (30-day) due ~Jul 27.',
       contacts: [
         { name: 'Catherine Montoya', email: '', role: 'Recipient' },
         { name: 'David Clark', email: '', role: 'Recipient' },
@@ -92,6 +94,9 @@ window.JOURNEY_DATA = {
       sent: [
         { num: 3, date: '2026-06-11', notes: 'Install confirmed' },
         { num: 4, date: '2026-06-17', notes: 'One week until install' },
+        { num: 5, date: '2026-06-27', notes: 'Go live — LUCI is live' },
+        { num: 6, date: '2026-06-29', notes: 'Survey' },
+        { num: 7, date: '2026-07-01', notes: 'The Signal welcome — newsletter invitation sent' },
       ],
       manualDates: {},
     },
@@ -168,6 +173,34 @@ window.JOURNEY_DATA = {
       contacts: [],
       sent: [],
       manualDates: {},
+    },
+  ],
+
+  /** Personal to-do / calendar items — not tied to a client's email cadence. status: 'open' | 'done'. */
+  tasks: [
+    {
+      id: 'newsletter-spam-wall-review',
+      title: 'Review newsletter non-opens / non-clicks — check which contacts & companies may need outreach to get past their spam wall',
+      due: '2026-06-30',
+      status: 'done',
+    },
+    {
+      id: 'gold-shade-standardize',
+      title: 'Lock in gold shade across LUCI assets — website gold runs darker than capabilities/brochure; standardize on the lighter shade',
+      due: '2026-07-01',
+      status: 'done',
+    },
+    {
+      id: 'council-bluffs-field-activation-email',
+      title: 'Council Bluffs email — send next Wed (Jul 22); field activation guide in progress',
+      due: '2026-07-22',
+      status: 'open',
+    },
+    {
+      id: 'newsletter-august-start',
+      title: 'Start August newsletter issue — draft content',
+      due: '2026-08-01',
+      status: 'open',
     },
   ],
 };

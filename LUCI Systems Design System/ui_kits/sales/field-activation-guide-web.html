@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>LUCI — Field Activation Guide</title>
+<link rel="stylesheet" href="../../assets/fonts/luci-brand-fonts.css">
+<style id="fag-web-css">
+  :root {
+    --navy-deep: #0A161C; --navy: #10232D; --navy-mid: #1B2F3A; --navy-muted: #5A7480;
+    --mint: #68E3BE; --mint-rgb: 104, 227, 190; --accent-light: #2b9e80;
+    --gold: #EDD086; --gold-rgb: 237, 208, 134; --gold-deep: #CEB06E;
+    --off-white: #F5F8FA; --rule-dark: rgba(235,245,248,0.10);
+    --font-display: 'Syncopate', sans-serif;
+    --font-head: 'Space Grotesk', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--navy-deep); color: rgba(235,245,248,0.92); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
+  .fag { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Hub hero ── */
+  .fag-hero { position: relative; padding: 72px 0 40px; overflow: hidden; }
+  .fag-hero::after { content: ""; position: absolute; inset: 0 -24px 0 0; z-index: 0; pointer-events: none; opacity: 0.10;
+    background-image: radial-gradient(circle at 92% 18%, var(--mint) 0, transparent 38%), radial-gradient(circle at 96% 70%, var(--gold) 0, transparent 30%); }
+  .fag-hero > * { position: relative; z-index: 1; }
+  .fag-hero__wordmark { font-family: var(--font-display); font-weight: 700; font-size: 13px; letter-spacing: 0.22em; color: var(--mint); text-transform: uppercase; margin-bottom: 28px; }
+  .fag-hero__title { font-family: var(--font-display); font-weight: 700; font-size: clamp(40px, 7vw, 68px); line-height: 0.92; letter-spacing: -0.03em; color: var(--off-white); margin: 0 0 18px; }
+  .fag-hero__title em { font-style: normal; color: var(--mint); }
+  .fag-hero__sub { font-family: var(--font-body); font-size: clamp(17px, 2vw, 20px); line-height: 1.6; color: rgba(235,245,248,0.78); max-width: 58ch; margin: 0 0 8px; }
+  .fag-hero__kicker { font-family: var(--font-head); font-weight: 700; font-size: 11px; letter-spacing: 0.20em; text-transform: uppercase; color: var(--mint); margin-bottom: 14px; }
+
+  /* ── Persona hub grid ── */
+  .fag-hub { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 8px 0 64px; }
+  @media (min-width: 720px) { .fag-hub { grid-template-columns: repeat(3, 1fr); } }
+  .fag-hub__card { display: block; padding: 22px 20px; background: var(--navy); border: 1px solid var(--rule-dark); border-radius: 14px; text-decoration: none; color: inherit; transition: border-color 0.2s, transform 0.2s; }
+  .fag-hub__card:hover { border-color: rgba(var(--mint-rgb), 0.5); transform: translateY(-2px); }
+  .fag-hub__num { font-family: var(--font-head); font-weight: 700; font-size: 11px; letter-spacing: 0.18em; color: var(--mint); }
+  .fag-hub__name { font-family: var(--font-head); font-weight: 700; font-size: 18px; letter-spacing: -0.015em; color: var(--off-white); margin: 8px 0 6px; }
+  .fag-hub__role { font-family: var(--font-body); font-size: 13.5px; line-height: 1.5; color: rgba(235,245,248,0.66); }
+
+  /* ── Section ── */
+  .fag-sec { padding: 56px 0 8px; border-top: 1px solid var(--rule-dark); scroll-margin-top: 24px; }
+  .fag-sec__kicker { font-family: var(--font-head); font-weight: 700; font-size: 11px; letter-spacing: 0.20em; text-transform: uppercase; color: var(--mint); margin-bottom: 10px; }
+  .fag-sec__name { font-family: var(--font-head); font-weight: 700; font-size: clamp(28px, 4vw, 40px); line-height: 1.05; letter-spacing: -0.025em; color: var(--off-white); margin: 0 0 8px; }
+  .fag-sec__rule { width: 40px; height: 3px; background: var(--mint); margin: 0 0 18px; border: 0; }
+  .fag-sec__role { font-family: var(--font-body); font-size: 16px; line-height: 1.6; color: rgba(235,245,248,0.78); max-width: 64ch; margin: 0 0 28px; }
+  .fag-sec__intro { font-family: var(--font-body); font-size: 15px; line-height: 1.65; color: rgba(235,245,248,0.72); max-width: 66ch; margin: 0 0 32px; }
+
+  /* ── Use case card ── */
+  .fag-uc { padding: 26px 0; border-top: 1px solid var(--rule-dark); }
+  .fag-uc:first-of-type { border-top: 0; }
+  .fag-uc__head { display: flex; gap: 16px; align-items: baseline; margin-bottom: 10px; }
+  .fag-uc__num { flex: 0 0 auto; font-family: var(--font-head); font-weight: 700; font-size: 15px; letter-spacing: 0.04em; color: var(--mint); min-width: 30px; }
+  .fag-uc__title { font-family: var(--font-head); font-weight: 700; font-size: 20px; line-height: 1.25; letter-spacing: -0.015em; color: var(--off-white); margin: 0; }
+  .fag-uc__desc { font-family: var(--font-body); font-size: 15px; line-height: 1.6; color: rgba(235,245,248,0.82); max-width: 64ch; margin: 0 0 14px; }
+  .fag-uc__benefits { list-style: none; padding: 0; margin: 0 0 16px; display: grid; gap: 6px; }
+  .fag-uc__benefits li { position: relative; padding-left: 22px; font-family: var(--font-body); font-size: 14px; line-height: 1.5; color: rgba(235,245,248,0.88); max-width: 60ch; }
+  .fag-uc__benefits li::before { content: ""; position: absolute; left: 0; top: 0.30em; width: 13px; height: 13px; flex: none; background: var(--mint); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") no-repeat center / contain; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") no-repeat center / contain; }
+
+  /* ── Accordion (net-new) ── */
+  .fag-acc { border: 1px solid var(--rule-dark); border-radius: 12px; background: rgba(var(--mint-rgb), 0.04); overflow: hidden; }
+  .fag-acc__btn { width: 100%; display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: transparent; border: 0; cursor: pointer; text-align: left; font-family: var(--font-head); font-weight: 700; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mint); }
+  .fag-acc__btn::-moz-focus-inner { border: 0; }
+  .fag-acc__btn:focus-visible { outline: 2px solid var(--mint); outline-offset: -2px; }
+  .fag-acc__btn .fag-acc__chev { margin-left: auto; width: 14px; height: 14px; transition: transform 0.2s ease; }
+  .fag-acc__btn[aria-expanded="true"] .fag-acc__chev { transform: rotate(90deg); }
+  .fag-acc__panel { padding: 0 18px; max-height: 0; overflow: hidden; transition: max-height 0.28s ease, padding 0.28s ease; }
+  .fag-acc__panel--open { padding: 4px 18px 18px; max-height: 1200px; }
+  .fag-acc__sub { font-family: var(--font-head); font-weight: 700; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-light); margin: 4px 0 6px; }
+  .fag-acc__setup { margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dashed rgba(var(--mint-rgb), 0.28); }
+  .fag-acc__steps { list-style: none; counter-reset: step; margin: 0; padding: 0; display: grid; gap: 8px; }
+  .fag-acc__steps--setup { gap: 5px; }
+  .fag-acc__steps li { counter-increment: step; position: relative; padding-left: 28px; font-family: var(--font-body); font-size: 14px; line-height: 1.55; color: rgba(235,245,248,0.92); max-width: 62ch; }
+  .fag-acc__steps--setup li { padding-left: 20px; font-size: 13px; color: rgba(235,245,248,0.72); }
+  .fag-acc__steps li::before { content: counter(step); position: absolute; left: 0; top: 0.05em; font-family: var(--font-head); font-weight: 700; font-size: 13px; line-height: 1.55; color: var(--mint); letter-spacing: -0.02em; }
+  .fag-acc__steps--setup li::before { content: "\2192"; font-size: 14px; }
+  .fag-acc__nudge { margin-top: 12px; padding-top: 10px; border-top: 1px solid rgba(var(--mint-rgb), 0.18); font-family: var(--font-body); font-size: 13.5px; line-height: 1.5; color: rgba(235,245,248,0.82); }
+  .fag-acc__nudge strong { font-family: var(--font-head); font-weight: 700; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-right: 8px; }
+
+  /* ── Spotlight + close ── */
+  .fag-spot { margin: 28px 0 8px; padding: 20px 22px; border-left: 3px solid var(--mint); background: rgba(var(--mint-rgb), 0.06); border-radius: 10px; }
+  .fag-spot__label { font-family: var(--font-head); font-weight: 700; font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 6px; }
+  .fag-spot__text { font-family: var(--font-head); font-weight: 700; font-size: 18px; line-height: 1.35; letter-spacing: -0.015em; color: var(--off-white); }
+  .fag-spot__text em { font-style: normal; color: var(--mint); }
+  .fag-close { margin: 64px 0 32px; padding: 40px 0 0; border-top: 1px solid var(--rule-dark); text-align: center; }
+  .fag-close__line { font-family: var(--font-head); font-weight: 700; font-size: clamp(22px, 3vw, 30px); line-height: 1.2; letter-spacing: -0.02em; color: var(--off-white); max-width: 30ch; margin: 0 auto 18px; }
+  .fag-close__cta { display: inline-block; padding: 12px 26px; background: var(--mint); color: var(--navy-deep); border-radius: 9999px; font-family: var(--font-head); font-weight: 700; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; }
+  .fag-close__pdf { display: block; margin-top: 18px; font-family: var(--font-body); font-size: 13px; color: rgba(235,245,248,0.6); text-decoration: none; }
+  .fag-close__pdf:hover { color: var(--mint); }
+  @media (prefers-reduced-motion: reduce) { .fag-acc__panel, .fag-acc__chev { transition: none; } html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<article class="fag" id="fag-root">
+
+  <!-- ===================== HUB HERO ===================== -->
+  <header class="fag-hero">
+    <p class="fag-hero__wordmark">LUCI Systems</p>
+    <p class="fag-hero__kicker">Field Activation Guide</p>
+    <h1 class="fag-hero__title">Every screen, every zone, every channel on your property &mdash; <em>activated through LUCI.</em></h1>
+    <p class="fag-hero__sub">Your floor is live on LUCI. Find your team below, then turn to your section for four ways to put LUCI to work &mdash; and one task to try this week.</p>
+  </header>
+
+  <!-- ===================== PERSONA HUB ===================== -->
+  <nav class="fag-hub" aria-label="Sections">
+    <a class="fag-hub__card" href="#marketing">
+      <span class="fag-hub__num">01</span>
+      <span class="fag-hub__name">Marketing &amp; Guest Experience</span>
+      <span class="fag-hub__role">Make the floor work for your campaigns &mdash; on your timeline, from your own interface.</span>
+    </a>
+    <a class="fag-hub__card" href="#gaming">
+      <span class="fag-hub__num">02</span>
+      <span class="fag-hub__name">Gaming &amp; Operations</span>
+      <span class="fag-hub__role">Your floor environment should be doing work. Here&rsquo;s how to set it up that way.</span>
+    </a>
+    <a class="fag-hub__card" href="#av">
+      <span class="fag-hub__num">03</span>
+      <span class="fag-hub__name">A/V &amp; Facilities</span>
+      <span class="fag-hub__role">Manage the whole property from wherever you are.</span>
+    </a>
+    <a class="fag-hub__card" href="#it">
+      <span class="fag-hub__num">04</span>
+      <span class="fag-hub__name">IT &amp; Technology</span>
+      <span class="fag-hub__role">One view. Standard infrastructure. No more black boxes.</span>
+    </a>
+    <a class="fag-hub__card" href="#finance">
+      <span class="fag-hub__num">05</span>
+      <span class="fag-hub__name">Finance</span>
+      <span class="fag-hub__role">What your teams can now do, and what it means for how you manage the investment.</span>
+    </a>
+    <a class="fag-hub__card" href="#gm">
+      <span class="fag-hub__num">06</span>
+      <span class="fag-hub__name">General Management</span>
+      <span class="fag-hub__role">Run your property with more intention. What&rsquo;s possible across every team.</span>
+    </a>
+  </nav>
+
+  <!-- ============== MARKETING & GUEST EXPERIENCE ============== -->
+  <section class="fag-sec" id="marketing">
+    <p class="fag-sec__kicker">Section 01</p>
+    <h2 class="fag-sec__name">Marketing &amp; Guest Experience</h2>
+    <hr class="fag-sec__rule">
+    <p class="fag-sec__role">For the team driving trip frequency, time on device, on-property spend, and the promotions that move them.</p>
+    <p class="fag-sec__intro">Every screen on the property is now yours to program &mdash; by zone, by daypart, in real time. The reach that used to live on a handful of dedicated signs now covers the whole floor.</p>
+
+    <!-- UC01 -->
+    <div class="fag-uc">
+      <div class="fag-uc__head"><span class="fag-uc__num">01</span><h3 class="fag-uc__title">Push a message to every screen in under two minutes.</h3></div>
+      <p class="fag-uc__desc">With LUCI, you make the edit on your own device, send it to the whole floor or a single set of zones, and it&rsquo;s live in moments &mdash; then drop back to the scheduled plan when you&rsquo;re done.</p>
+      <ul class="fag-uc__benefits">
+        <li>React while the moment still matters, instead of after it passes</li>
+        <li>No ticket, no call, no waiting on another team&rsquo;s queue</li>
+        <li>Every screen stays current &mdash; none stranded on yesterday&rsquo;s message</li>
+      </ul>
+      <div class="fag-acc">
+        <button class="fag-acc__btn" aria-expanded="false" aria-controls="m1-panel">
+          <span>How to do it &rarr;</span>
+          <svg class="fag-acc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+        <div class="fag-acc__panel" id="m1-panel">
+          <div class="fag-acc__setup">
+            <p class="fag-acc__sub">One-time setup &mdash; get the message into LUCI as a channel</p>
+            <ol class="fag-acc__steps fag-acc__steps--setup">
+              <li>In Telemetry TV, open Media and drag your message asset in (or pull it from a linked OneDrive/Canva). Set a validity end-date if it&rsquo;s temporary so it auto-removes.</li>
+              <li>Create a Playlist, add the message to it, and assign the playlist to a Telemetry player. That player&rsquo;s output feeds a LUCI IP encoder, so the message now appears as a channel in LUCI&rsquo;s source list.</li>
+            </ol>
+          </div>
+          <ol class="fag-acc__steps">
+            <li>Open LUCI in your browser from any device and log in.</li>
+            <li>On the property map, zoom out until every display on the floor is in view.</li>
+            <li>Use the lasso tool to select every TV on the property &mdash; or select just the zones you want to reach.</li>
+            <li>In the source list, pick the channel carrying your message. Every selected display flips to it immediately, live, with no ticket or call.</li>
+            <li>To drop back: set a revert time (e.g., 60 seconds) and the floor returns to its scheduled content on its own &mdash; or apply your &ldquo;normal&rdquo; preset when you&rsquo;re done.</li>
+          </ol>
+          <p class="fag-acc__nudge"><strong>This week &rarr;</strong>Find one piece of content that needed outside help to change last time. Push it yourself today.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- UC02 -->
+    <div class="fag-uc">
+      <div class="fag-uc__head"><span class="fag-uc__num">02</span><h3 class="fag-uc__title">Daypart your restaurant promotions to catch guests at the decision point.</h3></div>
+      <p class="fag-uc__desc">Schedule a dining spot to run across the floor in the hour before lunch and again before dinner &mdash; the windows when guests are deciding whether to stay on property or head out &mdash; then reset the regular rotation automatically. Set the timing once and it repeats every day.</p>
+      <ul class="fag-uc__benefits">
+        <li>Capture covers that would otherwise walk out the door</li>
+        <li>Reach guests anywhere on the floor, not just the screens by the restaurants</li>
+        <li>Lift on-property spend in the same move</li>
+      </ul>
+      <div class="fag-acc">
+        <button class="fag-acc__btn" aria-expanded="false" aria-controls="m2-panel">
+          <span>How to do it &rarr;</span>
+          <svg class="fag-acc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+        <div class="fag-acc__panel" id="m2-panel">
+          <div class="fag-acc__setup">
+            <p class="fag-acc__sub">One-time setup &mdash; same as use case 01</p>
+            <ol class="fag-acc__steps fag-acc__steps--setup">
+              <li>Load the dining spot in Telemetry TV, put it on a playlist, and assign to a player so it appears as a channel in LUCI.</li>
+            </ol>
+          </div>
+          <ol class="fag-acc__steps">
+            <li>In LUCI, open Presets and create a new preset (e.g., &ldquo;Pre-lunch dining spot&rdquo;).</li>
+            <li>Add the displays you want to reach &mdash; the floor-wide set, not just the screens near the restaurants. Select them on the map or from the venue list.</li>
+            <li>For each display in the preset, set its target to the dining spot channel.</li>
+            <li>Save the preset.</li>
+            <li>Open the Event Scheduler. Add the preset to the calendar at 11:00am (and a second entry at 5:00pm for dinner). Set it to repeat daily, or pick specific days.</li>
+            <li>Set a revert time on each entry (e.g., 60 minutes) so the floor drops back to regular rotation automatically &mdash; or schedule a &ldquo;normal&rdquo; preset to follow it.</li>
+          </ol>
+          <p class="fag-acc__nudge"><strong>This week &rarr;</strong>Build a pre-lunch dining spot. Then stand on the floor at 11am and watch it run.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- UC03 -->
+    <div class="fag-uc">
+      <div class="fag-uc__head"><span class="fag-uc__num">03</span><h3 class="fag-uc__title">Run customized content by zone &mdash; indoor and outdoor &mdash; from one control panel.</h3></div>
+      <p class="fag-uc__desc">The sports book, the main floor, the bar, and the marquee can each run their own schedule at the same time, every display managed from the same place &mdash; including external signage connected through LUCI. Program each space for what it needs in the moment instead of broadcasting one message everywhere.</p>
+      <ul class="fag-uc__benefits">
+        <li>Speak to each audience in the zone where they actually are</li>
+        <li>Bring the marquee and outdoor signs into the same plan as the floor</li>
+        <li>Promote in one zone without disturbing play in another</li>
+      </ul>
+      <div class="fag-acc">
+        <button class="fag-acc__btn" aria-expanded="false" aria-controls="m3-panel">
+          <span>How to do it &rarr;</span>
+          <svg class="fag-acc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+        <div class="fag-acc__panel" id="m3-panel">
+          <div class="fag-acc__setup">
+            <p class="fag-acc__sub">One-time setup &mdash; one channel per zone&rsquo;s content</p>
+            <ol class="fag-acc__steps fag-acc__steps--setup">
+              <li>In Telemetry TV, load each zone&rsquo;s content as a separate playlist on a separate player (one player per simultaneously-running piece of content). Each player feeds a LUCI encoder and becomes its own channel in LUCI.</li>
+              <li>For outdoor signage: confirm with your A/V team which external displays (marquee, outdoor signs) are wired into LUCI encoders. If they are, they show up as displays on the map and are managed exactly like indoor screens.</li>
+            </ol>
+          </div>
+          <ol class="fag-acc__steps">
+            <li>In LUCI, open the property map and pick the first zone (e.g., sports book). Select it from the venue list or tap its tag.</li>
+            <li>Select the displays in that zone, then in the source list pick that zone&rsquo;s content channel. They flip immediately.</li>
+            <li>Repeat for each zone &mdash; main floor, bar, lobby, marquee &mdash; each running its own content at the same time.</li>
+            <li>To make it repeat: build one preset per zone (that zone&rsquo;s displays + that zone&rsquo;s channel) and schedule each on its own calendar. Zone schedules are independent, so the sports book can run on one cadence while the bar runs on another.</li>
+            <li>Walk the floor to confirm each zone is playing what you intended, and adjust the channel or schedule from the same panel.</li>
+          </ol>
+          <p class="fag-acc__nudge"><strong>This week &rarr;</strong>Pick a day, choose two or three zones, and run zone-specific content. Walk the floor to see how they play out.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- UC04 -->
+    <div class="fag-uc">
+      <div class="fag-uc__head"><span class="fag-uc__num">04</span><h3 class="fag-uc__title">Build an event campaign that escalates automatically.</h3></div>
+      <p class="fag-uc__desc">Schedule a rotation that grows an event&rsquo;s presence &mdash; more zones, more frequency &mdash; as the date approaches, and fills your slow dayparts with loyalty and dining offers in between. Build it once; it ramps and resets on its own.</p>
+      <ul class="fag-uc__benefits">
+        <li>Build momentum toward an event without touching it daily</li>
+        <li>Put historically slow windows to work instead of waiting them out</li>
+        <li>Return the floor to normal automatically, with no stale content left running</li>
+      </ul>
+      <div class="fag-acc">
+        <button class="fag-acc__btn" aria-expanded="false" aria-controls="m4-panel">
+          <span>How to do it &rarr;</span>
+          <svg class="fag-acc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+        <div class="fag-acc__panel" id="m4-panel">
+          <div class="fag-acc__setup">
+            <p class="fag-acc__sub">One-time setup &mdash; content + frequency</p>
+            <ol class="fag-acc__steps fag-acc__steps--setup">
+              <li>In Telemetry TV, load the event promo asset(s). For higher frequency closer to the event, build a playlist that rotates the promo more often &mdash; frequency is controlled on the CMS side, zone coverage on the LUCI side.</li>
+            </ol>
+          </div>
+          <ol class="fag-acc__steps">
+            <li>In LUCI, build a series of presets, each wider than the last: Preset A = one zone (e.g., lobby) on the event channel; Preset B = lobby + concourse; Preset C = full floor on the event channel.</li>
+            <li>Open the Event Scheduler and place Preset A on the calendar for two weeks out, Preset B for one week out, and Preset C for the week of the event. Each can repeat daily during its window.</li>
+            <li>To fill slow dayparts between campaign windows, schedule a separate preset that pushes loyalty and dining offers during historically slow windows.</li>
+            <li>Schedule a &ldquo;return to baseline&rdquo; preset for the day after the event (or set revert times on Preset C) so no stale event content keeps running.</li>
+            <li>Build it once &mdash; the calendar ramps and resets on its own from there.</li>
+          </ol>
+          <p class="fag-acc__nudge"><strong>This week &rarr;</strong>Map your next major event and build a countdown schedule that ramps on its own.</p>
+        </div>
+      </div>
+    </div>
+
+    <aside class="fag-spot">
+      <p class="fag-spot__label">The bigger picture</p>
+      <p class="fag-spot__text">The floor is now your largest marketing channel.       <em>Run it like one.</em></p>
+    </aside>
+
+  </section>
+
+  <!-- ============== GAMING & OPERATIONS ============== -->
+  <section class="fag-sec" id="gaming">
+    <p class="fag-sec__kicker">Section 02</p>
+    <h2 class="fag-sec__name">Gaming &amp; Operations</h2>
+    <hr class="fag-sec__rule">
+    <p class="fag-sec__role">For the team responsible for floor performance, guest experience, and the energy that keeps players on device.</p>
+    <p class="fag-sec__intro">The floor environment &mdash; sound, visuals, lighting, energy &mdash; now runs on purpose: matched to the daypart, the crowd, and the moment.</p>
+
+    <!-- UC01 -->
+    <div class="fag-uc">
+      <div class="fag-uc__head"><span class="fag-uc__num">01</span><h3 class="fag-uc__title">Set your floor&rsquo;s audio to match the room&rsquo;s energy, all day.</h3></div>
+      <p class="fag-uc__desc">Build an audio schedule that moves the way your floor does &mdash; lighter in the morning, building through the afternoon, peaking in the evening, and easing back after the late-night crowd thins. Each zone follows its own curve, and the transitions happen on their own.</p>
+      <ul class="fag-uc__benefits">
+        <li>Keep the room feeling alive without a manager riding the faders</li>
+        <li>Match energy to the crowd you actually have at each hour</li>
+        <li>Give every shift the same intended sound</li>
+      </ul>
+      <div class="fag-acc">
+        <button class="fag-acc__btn" aria-expanded="false" aria-controls="g1-panel">
+          <span>How to do it &rarr;</span>
+          <svg class="fag-acc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+        <div class="fag-acc__panel" id="g1-panel">
+          <p class="fag-acc__nudge"><strong>Steps coming &rarr;</strong>Tailored steps for this use case are in review with Mike. Check back soon, or ask your FDE to walk you through it.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- UC02 -->
+    <div class="fag-uc">
+      <div class="fag-uc__head"><span class="fag-uc__num">02</span><h3 class="fag-uc__title">Make every jackpot a floor event, automatically.</h3></div>
+      <p class="fag-uc__desc">When a jackpot hits, a coordinated preset fires in that zone &mdash; accent lights pulse, audio swells for a beat, nearby screens flash a celebration &mdash; then everything resets on its own. The response is calibrated per area so it fits the space.</p>
+      <ul class="fag-uc__benefits">
+        <li>Turn one guest&rsquo;s win into energy the whole floor feels</li>
+        <li>Create a sense of action that keeps nearby players engaged</li>
+        <li>Deliver it every time, without any manual effort</li>
+      </ul>
+      <div class="fag-acc">
+        <button class="fag-acc__btn" aria-expanded="false" aria-controls="g2-panel">
+          <span>How to do it &rarr;</span>
+          <svg class="fag-acc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+        <div class="fag-acc__panel" id="g2-panel">
+          <p class="fag-acc__nudge"><strong>Steps coming &rarr;</strong>Tailored steps for this use case are in review with Mike. Check back soon, or ask your FDE to walk you through it.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- UC03 -->
+    <div class="fag-uc">
+      <div class="fag-uc__head"><span class="fag-uc__num">03</span><h3 class="fag-uc__title">Reconfigure the entire property in seconds.</h3></div>
+      <p class="fag-uc__desc">Each mode your property runs &mdash; normal weekday, Saturday peak, fight night, holiday, a private event in the ballroom &mdash; becomes a complete configuration of audio, screens, and lighting. Some run on a tap; others, like the high-limit room, hold a standing identity that never needs a manual touch.</p>
+      <ul class="fag-uc__benefits">
+        <li>Reconfigure the entire property in seconds, not a shift of setup</li>
+        <li>Run premium spaces consistently no matter who&rsquo;s working</li>
+        <li>Let predictable zones open and close themselves on schedule</li>
+      </ul>
+      <div class="fag-acc">
+        <button class="fag-acc__btn" aria-expanded="false" aria-controls="g3-panel">
+          <span>How to do it &rarr;</span>
+          <svg class="fag-acc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+        <div class="fag-acc__panel" id="g3-panel">
+          <p class="fag-acc__nudge"><strong>Steps coming &rarr;</strong>Tailored steps for this use case are in review with Mike. Check back soon, or ask your FDE to walk you through it.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- UC04 -->
+    <div class="fag-uc">
+      <div class="fag-uc__head"><span class="fag-uc__num">04</span><h3 class="fag-uc__title">Direct guest attention to a new game area from the moment it opens.</h3></div>
+      <p class="fag-uc__desc">When a new slot bank or table section launches, set the surrounding zones to point toward it &mdash; ambient content on nearby screens, audio tuned to give the area its own energy &mdash; for the first few weeks, then revert automatically once it&rsquo;s established.</p>
+      <ul class="fag-uc__benefits">
+        <li>Drive traffic to new product while it most needs the lift</li>
+        <li>Make the floor itself part of the launch, not just signage</li>
+        <li>Hand the spotlight back automatically when the window closes</li>
+      </ul>
+      <div class="fag-acc">
+        <button class="fag-acc__btn" aria-expanded="false" aria-controls="g4-panel">
+          <span>How to do it &rarr;</span>
+          <svg class="fag-acc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+        <div class="fag-acc__panel" id="g4-panel">
+          <p class="fag-acc__nudge"><strong>Steps coming &rarr;</strong>Tailored steps for this use case are in review with Mike. Check back soon, or ask your FDE to walk you through it.</p>
+        </div>
+      </div>
+    </div>
+
+    <aside class="fag-spot">
+      <p class="fag-spot__label">The bigger picture</p>
+      <p class="fag-spot__text">The energy on your floor is no longer luck.       <em>It&rsquo;s a setting.</em></p>
+    </aside>
+
+  </section>
+
+  <!-- ============== A/V & FACILITIES ============== -->
+  <section class="fag-sec" id="av">
+    <p class="fag-sec__kicker">Section 03</p>
+    <h2 class="fag-sec__name">A/V &amp; Facilities</h2>
+    <hr class="fag-sec__rule">
+    <p class="fag-sec__role">For the team responsible for keeping the property running.</p>
+    <p class="fag-sec__intro">The whole property&rsquo;s audio and visual environment runs from one interface &mdash; every display, source, and zone, on or off site. Build it once, then manage by exception; the floor holds its baseline on its own, and your day shifts from execution to oversight.</p>
+
+    <!-- UC01 -->
+    <div class="fag-uc">
+      <div class="fag-uc__head"><span class="fag-uc__num">01</span><h3 class="fag-uc__title">Build the whole property&rsquo;s schedule in one session, then let it run.</h3></div>
+      <p class="fag-uc__desc">Spend a few hours configuring audio, displays, and zone behavior for every daypart, weekday and weekend, from one place. Once it&rsquo;s built it runs itself, with a locked baseline underneath so the floor stays consistent no matter who opened &mdash; and you update any piece in real time without taking the rest offline.</p>
+      <ul class="fag-uc__benefits">
+        <li>Trade daily execution for oversight and the occasional adjustment</li>
+        <li>Eliminate the drift that creeps in shift to shift</li>
+        <li>Change one thing without disturbing anything else</li>
+      </ul>
+      <div class="fag-acc">
+        <button class="fag-acc__btn" aria-expanded="false" aria-controls="a1-panel">
+          <span>How to do it &rarr;</span>
+          <svg class="fag-acc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+        <div class="fag-acc__panel" id="a1-panel">
+          <p class="fag-acc__nudge"><strong>Steps coming &rarr;</strong>Tailored steps for this use case are in review with Mike. Check back soon, or ask your FDE to walk you through it.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- UC02 -->
+    <div class="fag-uc">
+      <div class="fag-uc__head"><span class="fag-uc__num">02</span><h3 class="fag-uc__title">Resolve service requests from wherever you are &mdash; including after hours.</h3></div>
+      <p class="fag-uc__desc">A manager flags that the bar audio is off; you open that zone from your phone, adjust the level, and confirm it&rsquo;s right &mdash; on property or off. Physical presence is reserved for genuinely physical problems, and every change logs itself.</p>
+      <ul class="fag-uc__benefits">
+        <li>Close out most issues in minutes, without a walk or a drive</li>
+        <li>Know whether a call really needs an on-site trip before anyone makes it</li>
+        <li>Keep an automatic record without a separate documentation step</li>
+      </ul>
+      <div class="fag-acc">
+        <button class="fag-acc__btn" aria-expanded="false" aria-controls="a2-panel">
+          <span>How to do it &rarr;</span>
+          <svg class="fag-acc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+        <div class="fag-acc__panel" id="a2-panel">
+          <p class="fag-acc__nudge"><strong>Steps coming &rarr;</strong>Tailored steps for this use case are in review with Mike. Check back soon, or ask your FDE to walk you through it.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- UC03 -->
+    <div class="fag-uc">
+      <div class="fag-uc__head"><span class="fag-uc__num">03</span><h3 class="fag-uc__title">Find problems before guests do.</h3></div>
+      <p class="fag-uc__desc">Every connected display, speaker zone, and device reports its health to the dashboard, so a screen cycling oddly or a component drifting out of range surfaces as an alert before someone at the bar notices and calls it in.</p>
+      <ul class="fag-uc__benefits">
+        <li>Catch failures while they&rsquo;re still invisible to guests</li>
+        <li>Schedule the fix for a quiet window instead of scrambling at peak</li>
+        <li>Walk in already knowing what needs attention</li>
+      </ul>
+      <div class="fag-acc">
+        <button class="fag-acc__btn" aria-expanded="false" aria-controls="a3-panel">
+          <span>How to do it &rarr;</span>
+          <svg class="fag-acc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+        <div class="fag-acc__panel" id="a3-panel">
+          <p class="fag-acc__nudge"><strong>Steps coming &rarr;</strong>Tailored steps for this use case are in review with Mike. Check back soon, or ask your FDE to walk you through it.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- UC04 -->
+    <div class="fag-uc">
+      <div class="fag-uc__head"><span class="fag-uc__num">04</span><h3 class="fag-uc__title">Configure a private event once, then activate it and let it revert on its own.</h3></div>
+      <p class="fag-uc__desc">Build the full A/V setup for a banquet, concert, or private event as a named preset &mdash; custom audio mix, branded screen content, zone-specific settings &mdash; and enter the number of minutes until it should revert. The preset runs for the event and returns the property to its baseline on its own, with no tap to switch it off.</p>
+      <ul class="fag-uc__benefits">
+        <li>Deliver a polished event without rebuilding it each time</li>
+        <li>Hand activation to anyone &mdash; it&rsquo;s one tap, not a checklist</li>
+        <li>Guarantee the floor returns to normal the moment it&rsquo;s over</li>
+      </ul>
+      <div class="fag-acc">
+        <button class="fag-acc__btn" aria-expanded="false" aria-controls="a4-panel">
+          <span>How to do it &rarr;</span>
+          <svg class="fag-acc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+        <div class="fag-acc__panel" id="a4-panel">
+          <p class="fag-acc__nudge"><strong>Steps coming &rarr;</strong>Tailored steps for this use case are in review with Mike. Check back soon, or ask your FDE to walk you through it.</p>
+        </div>
+      </div>
+    </div>
+
+    <aside class="fag-spot">
+      <p class="fag-spot__label">The bigger picture</p>
+      <p class="fag-spot__text">The best service call is       <em>the one you can close quickly because you can manage it from anywhere.</em></p>
+    </aside>
+
+  </section>
+
+  <!-- ============== IT & TECHNOLOGY ============== -->
+  <section class="fag-sec" id="it">
+    <p class="fag-sec__kicker">Section 04</p>
+    <h2 class="fag-sec__name">IT &amp; Technology</h2>
+    <hr class="fag-sec__rule">
+    <p class="fag-sec__role">For the team responsible for system integrity, uptime, and infrastructure.</p>
+    <p class="fag-sec__intro">A/V is now standard infrastructure on the network you already run &mdash; visible, governed, and logged like everything else. No proprietary black boxes, no specialist truck roll to find out what&rsquo;s happening.</p>
+
+    <!-- UC01 -->
+    <div class="fag-uc">
+      <div class="fag-uc__head"><span class="fag-uc__num">01</span><h3 class="fag-uc__title">See every A/V endpoint on the property from a single dashboard.</h3></div>
+      <p class="fag-uc__desc">Every connected display, audio component, and device appears in one interface with its current status and health, down to device-level detail &mdash; no trip to the server room and no call to a specialist to find out what&rsquo;s going on.</p>
+      <ul class="fag-uc__benefits">
+        <li>Catch issues before they reach a help-desk ticket</li>
+        <li>Investigate with real data instead of guesswork</li>
+        <li>Treat A/V like any other managed part of the network</li>
+      </ul>
+      <div class="fag-acc">
+        <button class="fag-acc__btn" aria-expanded="false" aria-controls="i1-panel">
+          <span>How to do it &rarr;</span>
+          <svg class="fag-acc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+        <div class="fag-acc__panel" id="i1-panel">
+          <p class="fag-acc__nudge"><strong>Steps coming &rarr;</strong>Tailored steps for this use case are in review with Mike. Check back soon, or ask your FDE to walk you through it.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- UC02 -->
+    <div class="fag-uc">
+      <div class="fag-uc__head"><span class="fag-uc__num">02</span><h3 class="fag-uc__title">Know exactly what changed, and when.</h3></div>
+      <p class="fag-uc__desc">Every configuration change is logged with who made it, what changed, and when &mdash; a complete audit trail you can filter by date, user, or zone to isolate exactly what happened before a problem appeared.</p>
+      <ul class="fag-uc__benefits">
+        <li>Trace any issue back to the change that caused it</li>
+        <li>Hold access accountable across every team</li>
+        <li>Confirm scheduled changes actually executed</li>
+      </ul>
+      <div class="fag-acc">
+        <button class="fag-acc__btn" aria-expanded="false" aria-controls="i2-panel">
+          <span>How to do it &rarr;</span>
+          <svg class="fag-acc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+        <div class="fag-acc__panel" id="i2-panel">
+          <p class="fag-acc__nudge"><strong>Steps coming &rarr;</strong>Tailored steps for this use case are in review with Mike. Check back soon, or ask your FDE to walk you through it.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- UC03 -->
+    <div class="fag-uc">
+      <div class="fag-uc__head"><span class="fag-uc__num">03</span><h3 class="fag-uc__title">Define who can change what &mdash; by role, by zone, by team.</h3></div>
+      <p class="fag-uc__desc">Set role-based permissions centrally so Marketing controls content, A/V controls schedules and levels, and no one reaches outside their lane &mdash; enforced by the platform and managed from a single administrative view.</p>
+      <ul class="fag-uc__benefits">
+        <li>Give each team exactly the access it needs, nothing more</li>
+        <li>Reduce the risk of an accidental change to the wrong zone</li>
+        <li>Adjust permissions in one place as roles change</li>
+      </ul>
+      <div class="fag-acc">
+        <button class="fag-acc__btn" aria-expanded="false" aria-controls="i3-panel">
+          <span>How to do it &rarr;</span>
+          <svg class="fag-acc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+        <div class="fag-acc__panel" id="i3-panel">
+          <p class="fag-acc__nudge"><strong>Steps coming &rarr;</strong>Tailored steps for this use case are in review with Mike. Check back soon, or ask your FDE to walk you through it.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- UC04 -->
+    <div class="fag-uc">
+      <div class="fag-uc__head"><span class="fag-uc__num">04</span><h3 class="fag-uc__title">Schedule system maintenance to run automatically.</h3></div>
+      <p class="fag-uc__desc">Queue software updates, reboots, and maintenance tasks for overnight or low-traffic windows and let the platform maintain itself on your schedule, with dashboard confirmation that each task executed as intended.</p>
+      <ul class="fag-uc__benefits">
+        <li>Keep the system current without manual coordination</li>
+        <li>Do disruptive work when no guest is watching</li>
+        <li>Replace one-off tasks with a repeatable process</li>
+      </ul>
+      <div class="fag-acc">
+        <button class="fag-acc__btn" aria-expanded="false" aria-controls="i4-panel">
+          <span>How to do it &rarr;</span>
+          <svg class="fag-acc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+        <div class="fag-acc__panel" id="i4-panel">
+          <p class="fag-acc__nudge"><strong>Steps coming &rarr;</strong>Tailored steps for this use case are in review with Mike. Check back soon, or ask your FDE to walk you through it.</p>
+        </div>
+      </div>
+    </div>
+
+    <aside class="fag-spot">
+      <p class="fag-spot__label">The bigger picture</p>
+      <p class="fag-spot__text">A/V stops being a vendor&rsquo;s black box and becomes endpoints on your network &mdash;       <em>monitored, permissioned, and logged like every other system you run.</em></p>
+    </aside>
+
+  </section>
+
+  <!-- ============== FINANCE (overview only — no steps) ============== -->
+  <section class="fag-sec" id="finance">
+    <p class="fag-sec__kicker">Section 05</p>
+    <h2 class="fag-sec__name">Finance</h2>
+    <hr class="fag-sec__rule">
+    <p class="fag-sec__role">For everyone responsible for how A/V investment appears on the balance sheet.</p>
+    <p class="fag-sec__intro">A/V moves from a capital line to a predictable platform investment &mdash; and, for the first time, becomes something you can measure. The cost structure your old A/V budget was built around no longer applies.</p>
+
+    <!-- UC01 -->
+    <div class="fag-uc">
+      <div class="fag-uc__head"><span class="fag-uc__num">01</span><h3 class="fag-uc__title">Replan the capital you&rsquo;d reserved for the next A/V refresh.</h3></div>
+      <p class="fag-uc__desc">The proprietary hardware that needed a full refresh every five to seven years is replaced by a software platform on a predictable annual line. Capability now arrives through updates rather than capital purchases, which changes the refresh request that used to drive your A/V budget.</p>
+      <ul class="fag-uc__benefits">
+        <li>Free the capital you&rsquo;d set aside for the next hardware cycle</li>
+        <li>Trade a lumpy refresh expense for a predictable annual line</li>
+        <li>Forecast A/V spend instead of bracing for the next big ask</li>
+      </ul>
+    </div>
+
+    <!-- UC02 -->
+    <div class="fag-uc">
+      <div class="fag-uc__head"><span class="fag-uc__num">02</span><h3 class="fag-uc__title">Cut or renegotiate the vendor and integration contracts LUCI replaces.</h3></div>
+      <p class="fag-uc__desc">A large share of A/V&rsquo;s old operating cost lived outside the property, in vendor and integration contracts that existed because the expertise didn&rsquo;t. That control is internal now, so the contracts written around the old limitations are yours to consolidate or end.</p>
+      <ul class="fag-uc__benefits">
+        <li>Recover spend on scopes your team now handles directly</li>
+        <li>Consolidate overlapping vendors into one managed relationship</li>
+        <li>Retire contracts built around limitations that no longer exist</li>
+      </ul>
+    </div>
+
+    <!-- UC03 -->
+    <div class="fag-uc">
+      <div class="fag-uc__head"><span class="fag-uc__num">03</span><h3 class="fag-uc__title">Start measuring A/V as a revenue contributor, not just a cost.</h3></div>
+      <p class="fag-uc__desc">When marketing runs dining dayparts, loyalty pushes, and event countdowns through LUCI, that activity becomes part of a traceable campaign. Pair it with your performance data and you can compare campaign windows against baseline periods instead of treating A/V as a flat facility cost.</p>
+      <ul class="fag-uc__benefits">
+        <li>Build a defensible link between A/V activity and results</li>
+        <li>Evaluate A/V spend alongside marketing, not just facilities</li>
+        <li>Give ownership a revenue story, not just an expense line</li>
+      </ul>
+    </div>
+
+    <!-- UC04 -->
+    <div class="fag-uc">
+      <div class="fag-uc__head"><span class="fag-uc__num">04</span><h3 class="fag-uc__title">Document and defend your A/V spend with platform data.</h3></div>
+      <p class="fag-uc__desc">For the first time there&rsquo;s an auditable record beneath the A/V investment &mdash; what&rsquo;s running, what it costs, and how it&rsquo;s used across teams. When ownership asks for justification, the utilization and performance data is already there.</p>
+      <ul class="fag-uc__benefits">
+        <li>Answer &ldquo;what are we getting for this?&rdquo; with real numbers</li>
+        <li>Tie spend to specific capabilities and outcomes, not overhead</li>
+        <li>Walk into budget conversations with evidence in hand</li>
+      </ul>
+    </div>
+
+    <aside class="fag-spot">
+      <p class="fag-spot__label">The bigger picture</p>
+      <p class="fag-spot__text">For the first time, A/V is a number       <em>you can manage and defend.</em></p>
+    </aside>
+
+  </section>
+
+  <!-- ============== GENERAL MANAGEMENT ============== -->
+  <section class="fag-sec" id="gm">
+    <p class="fag-sec__kicker">Section 06</p>
+    <h2 class="fag-sec__name">General Management</h2>
+    <hr class="fag-sec__rule">
+    <p class="fag-sec__role">For the leader responsible for total property performance: revenue, guest experience, and operational consistency.</p>
+    <p class="fag-sec__intro">The whole guest experience is now something you can see and direct. The value compounds when every function turns it on &mdash; your role is to set the floor strategy, keep it consistent, and make sure no team leaves capability on the table.</p>
+
+    <!-- UC01 -->
+    <div class="fag-uc">
+      <div class="fag-uc__head"><span class="fag-uc__num">01</span><h3 class="fag-uc__title">Walk the floor with an iPad and take the controls yourself.</h3></div>
+      <p class="fag-uc__desc">LUCI runs from any device. On your next walkthrough, open the dashboard and make a live change &mdash; flip a screen, adjust a zone&rsquo;s audio, switch a preset &mdash; from wherever you&rsquo;re standing, and confirm that what the platform reports matches what you see in person.</p>
+      <ul class="fag-uc__benefits">
+        <li>See and shape the guest experience without leaving the floor</li>
+        <li>Verify the floor is running the way it&rsquo;s supposed to, live</li>
+        <li>Build your own fluency instead of relying on one operator</li>
+      </ul>
+      <div class="fag-acc">
+        <button class="fag-acc__btn" aria-expanded="false" aria-controls="gm1-panel">
+          <span>How to do it &rarr;</span>
+          <svg class="fag-acc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+        <div class="fag-acc__panel" id="gm1-panel">
+          <p class="fag-acc__nudge"><strong>Steps coming &rarr;</strong>Tailored steps for this use case are in review with Mike. Check back soon, or ask your FDE to walk you through it.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- UC02 -->
+    <div class="fag-uc">
+      <div class="fag-uc__head"><span class="fag-uc__num">02</span><h3 class="fag-uc__title">Schedule a morning reset so the floor always wakes up looking right.</h3></div>
+      <p class="fag-uc__desc">A TV gets flipped to local news, a screen gets left on the wrong input &mdash; it happens. A scheduled reset returns every display to its assigned content before the floor opens each day, with no one checking and nothing left to chance.</p>
+      <ul class="fag-uc__benefits">
+        <li>Open every day to a floor that&rsquo;s already correct</li>
+        <li>Erase last night&rsquo;s stray changes automatically</li>
+        <li>Free your team from a manual open-of-day checklist</li>
+      </ul>
+      <div class="fag-acc">
+        <button class="fag-acc__btn" aria-expanded="false" aria-controls="gm2-panel">
+          <span>How to do it &rarr;</span>
+          <svg class="fag-acc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+        <div class="fag-acc__panel" id="gm2-panel">
+          <p class="fag-acc__nudge"><strong>Steps coming &rarr;</strong>Tailored steps for this use case are in review with Mike. Check back soon, or ask your FDE to walk you through it.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- UC03 -->
+    <div class="fag-uc">
+      <div class="fag-uc__head"><span class="fag-uc__num">03</span><h3 class="fag-uc__title">Schedule a recurring guest-experience strategy meeting with the whole team.</h3></div>
+      <p class="fag-uc__desc">The floor performs best when teams plan it together. Put a standing session on the calendar where Marketing, Operations, A/V, and IT decide how the floor builds energy, which messages run where, and how it responds to events &mdash; then each team executes against the shared plan.</p>
+      <ul class="fag-uc__benefits">
+        <li>Turn a shared floor into a single, intentional strategy</li>
+        <li>Empower each team to move fast because everyone knows the plan</li>
+        <li>Catch conflicts before they play out in front of guests</li>
+      </ul>
+      <div class="fag-acc">
+        <button class="fag-acc__btn" aria-expanded="false" aria-controls="gm3-panel">
+          <span>How to do it &rarr;</span>
+          <svg class="fag-acc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+        <div class="fag-acc__panel" id="gm3-panel">
+          <p class="fag-acc__nudge"><strong>Steps coming &rarr;</strong>Tailored steps for this use case are in review with Mike. Check back soon, or ask your FDE to walk you through it.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- UC04 -->
+    <div class="fag-uc">
+      <div class="fag-uc__head"><span class="fag-uc__num">04</span><h3 class="fag-uc__title">Make sure every team is actually using what they can.</h3></div>
+      <p class="fag-uc__desc">The capability only pays off when each function turns it on. A quick check across teams surfaces where LUCI is sitting idle &mdash; whether marketing is still routing content through a vendor, IT hasn&rsquo;t been onboarded, or finance hasn&rsquo;t revisited the numbers since go-live.</p>
+      <ul class="fag-uc__benefits">
+        <li>Convert the investment into activity, not shelfware</li>
+        <li>Spot the team that&rsquo;s stalled and unblock them</li>
+        <li>Make sure value is compounding across every function</li>
+      </ul>
+      <div class="fag-acc">
+        <button class="fag-acc__btn" aria-expanded="false" aria-controls="gm4-panel">
+          <span>How to do it &rarr;</span>
+          <svg class="fag-acc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+        <div class="fag-acc__panel" id="gm4-panel">
+          <p class="fag-acc__nudge"><strong>Steps coming &rarr;</strong>Tailored steps for this use case are in review with Mike. Check back soon, or ask your FDE to walk you through it.</p>
+        </div>
+      </div>
+    </div>
+
+    <aside class="fag-spot">
+      <p class="fag-spot__label">The bigger picture</p>
+      <p class="fag-spot__text">The whole property is now one strategy you direct. <em>Run it on purpose.</em></p>
+    </aside>
+
+  </section>
+
+  <!-- ============== CLOSE ============== -->
+  <footer class="fag-close">
+    <p class="fag-close__line">Everything here is <em>already yours.</em></p>
+    <a class="fag-close__cta" href="mailto:hello@lucisystems.com">Talk to your FDE</a>
+    <a class="fag-close__pdf" href="assets/sales/LUCI-Field-Activation-Guide.pdf">Download the scaled-down PDF</a>
+  </footer>
+
+</article>
+
+<script>
+  (function () {
+    var buttons = document.querySelectorAll('.fag-acc__btn');
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var panel = document.getElementById(btn.getAttribute('aria-controls'));
+        if (!panel) return;
+        var open = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+        panel.classList.toggle('fag-acc__panel--open', !open);
+      });
+    });
+  })();
+</script>
+</body>
+</html>

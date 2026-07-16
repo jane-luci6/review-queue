@@ -5,6 +5,10 @@ alwaysApply: true
 
 # LUCI Design — Minimalist & De-boxed
 
+**Existing assets:** this rule still governs shipped newsletter, messaging docs, emails, and hub resources unless a redesign is requested.
+
+**New assets:** follow `luci-modern-design-guidelines.mdc` (full system: tracks, spacing, type application, contrast, §8 checklist). Pick track by copy density. Brand colors, fonts, and voice stay here and in `luci-messaging-voice.mdc`. Flagship: Issue 01 newsletter.
+
 LUCI is a modern, edgy 2026 tech brand. Let **whitespace, typography, and hairlines** carry structure — not stacked containers. Boxes are the exception, never the default.
 
 ## Do
@@ -14,14 +18,18 @@ LUCI is a modern, edgy 2026 tech brand. Let **whitespace, typography, and hairli
 - **Tabular data → de-boxed lists.** Render comparisons as a definition list / stacked rows with hairline separators, not an HTML `<table>` with cell borders (also avoids mobile horizontal scroll).
 - **Callouts are the exception that *should* be contained.** Tips/asides = a contained block (4px mint left bar, sharp corners, padding) bracketed by whitespace — never a full-bleed section flush against another colored section, or they bleed together.
 - **Newsletter section rhythm:** alternate `sec--white` / `sec--light` for articles; `sec--marquee` (sand + larger headline) for the lead field story; callouts on `sec--white`; reserve `sec--deep` for Closing/Footer — never a mid-issue article.
-- **Minimum label size 10–11px.** Syncopate micro-labels must be ≥10px.
+- **Minimum label size 10–11px.** Micro-labels use Space Grotesk semibold at ≥10px.
 - **Contrast:** secondary text ≥ ~0.8 opacity on dark; never ship near-invisible text (e.g. 0.35).
+- **Typography: heads in Space Grotesk, body copy in Inter.** Headlines, section titles, kickers, labels, and metric numerals use **Space Grotesk** (600–700 for headings) — the structure tier (Tier 2). **All running body copy / paragraph text / descriptions / decks / notes / attributions / table & list copy use Inter — always, in every asset** (documents, sales collateral, emails, web, hub). This is non-negotiable: copy text (non-head) is never Space Grotesk. See `luci-modern-design-guidelines.mdc` §3.1.
+- **Syncopate — accent only, sparingly (Tier 1, display).** Reserve for high-attention moments where uppercase display type earns its legibility cost: primary CTA buttons, hero billboard words (e.g. single-word marquee), newsletter lead marquee. **Not** for document headers, capability decks, messaging guides, section chapters, or any paragraph-length headline.
+- **Inter — the body/copy font, always.** Inter is the typeface for all non-head copy: running body, descriptions, decks, notes, attributions, table/list copy, and the diagram recede layer (node/data labels, captions, legends, annotations). Heads/labels/metric numerals stay Space Grotesk; display moments stay Syncopate. All three families are embedded (subset base64) in `assets/fonts/luci-brand-fonts.css` and in each canonical diagram SVG.
 
 ## Don't
 - ❌ Don't wrap content in an outer `border: 1px` box and then add internal dividers too — pick one.
 - ❌ Don't build 1px-gap grids that read like a spreadsheet (e.g. results/stat blocks).
 - ❌ No drop shadows on flat content tiles; no gradients.
-- ❌ Don't switch the body font to Arial/Helvetica — keep **Space Grotesk** (body) + **Syncopate** (display).
+- ❌ Don't set body/copy text in Space Grotesk — **copy is always Inter**. Heads/labels/metric numerals stay Space Grotesk; display moments stay Syncopate. (Don't switch to Arial/Helvetica.)
+- ❌ Don't use Syncopate for section headers or multi-line titles in documents, sales collateral, or hub resources — use Space Grotesk bold/semibold instead.
 
 ## Example
 ```css

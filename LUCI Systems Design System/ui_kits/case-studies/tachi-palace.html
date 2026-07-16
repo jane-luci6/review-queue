@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LUCI Case Study · Tachi Palace Casino Resort</title>
+  <link rel="stylesheet" href="../../assets/fonts/luci-brand-fonts.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy-deep: #0a161c;
+      --navy: #10232d;
+      --navy-mid: #314955;
+      --navy-muted: #49616e;
+      --mint: #68e3be;
+      --mint-rgb: 104, 227, 190;
+      --accent-light: #2b9e80;
+      --gold: #edd086;
+      --gold-rgb: 237, 208, 134;
+      --gold-deep: #ceb06e;
+      --sand: #e5e3df;
+      --off-white: #f5f8fa;
+      --rule-light: #dbe1e4;
+      --ink: #354f5c;
+      --ink-strong: #1c2b33;
+      --font-display: 'Syncopate', sans-serif;
+      --font-body: 'Space Grotesk', system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--navy-deep);
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+
+    .cs-page { background: var(--navy-deep); padding-bottom: clamp(48px, 8vw, 96px); }
+    .cs-page__sheet { max-width: 880px; margin: 0 auto; background: #fff; }
+
+    /* Hero */
+    .cs-hero {
+      background-color: var(--navy-deep);
+      background-image: url('assets/textures/texture-circuit-navy-steel-print-dark.jpg');
+      background-size: cover; background-position: center; background-repeat: no-repeat;
+      padding: clamp(40px, 8vw, 84px) clamp(28px, 6vw, 64px) clamp(40px, 7vw, 72px);
+      overflow: hidden; position: relative;
+    }
+    .cs-hero::after {
+      content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 4px;
+      background: linear-gradient(to right, var(--mint) 0 62%, var(--gold) 62% 100%);
+    }
+    .cs-hero__kicker { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+    .cs-hero__kicker::before { content: ''; width: 28px; height: 2px; background: var(--mint); }
+    .cs-hero__kicker span {
+      font-family: var(--font-display); font-size: 10px; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--mint);
+    }
+    .cs-hero__title {
+      margin: 0 0 26px; font-family: var(--font-body); font-weight: 700;
+      font-size: clamp(34px, 6.5vw, 60px); line-height: 1.04; letter-spacing: -0.03em;
+      color: var(--off-white); max-width: 16ch;
+    }
+    .cs-hero__title em {
+      font-family: var(--font-display); font-style: normal;
+      color: var(--mint); text-transform: uppercase;
+    }
+    .cs-hero__leadin {
+      display: block; font-family: var(--font-body);
+      font-size: clamp(17px, 2.2vw, 24px); font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(235, 245, 248, 0.82); margin-bottom: 14px;
+    }
+    .cs-hero__dek {
+      margin: 0 0 30px; font-size: clamp(17px, 2.2vw, 20px); line-height: 1.6;
+      color: rgba(235, 245, 248, 0.82); max-width: 58ch;
+    }
+    .cs-hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 30px; }
+    .cs-download {
+      display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600;
+      letter-spacing: 0.04em; text-decoration: none; color: var(--mint);
+      border: 1px solid rgba(104, 227, 190, 0.45); padding: 12px 20px;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .cs-download:hover { background: rgba(104, 227, 190, 0.08); border-color: var(--mint); }
+    .cs-download__icon { font-size: 16px; line-height: 1; }
+    .cs-hero__property {
+      display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin: 0;
+      padding-top: 24px; border-top: 1px solid rgba(104, 227, 190, 0.15);
+      font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: var(--gold);
+    }
+    .cs-hero__property span { color: rgba(165, 179, 188, 0.7); font-weight: 500; }
+
+    /* Glance */
+    .cs-glance {
+      background: var(--off-white);
+      padding: clamp(32px, 5vw, 48px) clamp(28px, 6vw, 64px);
+      border-bottom: 1px solid var(--rule-light);
+    }
+    .cs-glance__logo { margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid var(--rule-light); }
+    .cs-glance__logo img { height: 88px; width: auto; display: block; }
+    .cs-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 36px; }
+    @media (max-width: 620px) { .cs-facts { grid-template-columns: repeat(2, 1fr); gap: 20px 24px; } }
+    .cs-facts__label {
+      margin: 0 0 8px; font-family: var(--font-display); font-size: 9px; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-light);
+    }
+    .cs-facts__value { margin: 0; font-size: 17px; font-weight: 600; line-height: 1.3; color: var(--navy); }
+    .cs-summary {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+      background: var(--rule-light); border: 1px solid var(--rule-light);
+    }
+    @media (max-width: 620px) { .cs-summary { grid-template-columns: 1fr; } }
+    .cs-summary__cell { background: #fff; padding: 22px; }
+    .cs-summary__label {
+      margin: 0 0 10px; font-family: var(--font-display); font-size: 9px; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-light);
+    }
+    .cs-summary__text { margin: 0; font-size: 15px; line-height: 1.55; color: var(--ink); }
+
+    /* Sections */
+    .cs-sec { padding: clamp(44px, 6vw, 72px) clamp(28px, 6vw, 64px); border-bottom: 1px solid var(--rule-light); }
+    .cs-sec--white { background: #fff; }
+    .cs-sec--light { background: var(--off-white); }
+    .cs-sec--mid {
+      background-color: var(--navy-mid);
+      background-image: url('assets/textures/texture-circuit-navy-steel-print-mid.jpg');
+      background-size: cover; background-position: center; background-repeat: no-repeat;
+      border-bottom-color: rgba(0, 0, 0, 0.2);
+    }
+    .cs-sec--dark { background: var(--navy); border-bottom-color: rgba(0, 0, 0, 0.3); }
+    .cs-sec__title {
+      margin: 0 0 22px; font-family: var(--font-body); font-weight: 700;
+      font-size: clamp(24px, 4vw, 34px); line-height: 1.12; letter-spacing: -0.025em; max-width: 24ch;
+    }
+    .cs-sec--white .cs-sec__title, .cs-sec--light .cs-sec__title { color: var(--navy); }
+    .cs-sec--mid .cs-sec__title, .cs-sec--dark .cs-sec__title { color: var(--off-white); }
+    .cs-sec__title-accent { color: var(--gold); }
+    .cs-sec--white .cs-sec__title-accent, .cs-sec--light .cs-sec__title-accent { color: var(--accent-light); }
+    .cs-copy p { margin: 0 0 18px; font-size: 17px; line-height: 1.72; max-width: 64ch; }
+    .cs-copy p:last-child { margin-bottom: 0; }
+    .cs-sec--white .cs-copy p, .cs-sec--light .cs-copy p { color: var(--ink); }
+    .cs-sec--mid .cs-copy p { color: rgba(235, 245, 248, 0.88); }
+    .cs-sec--dark .cs-copy p { color: rgba(235, 245, 248, 0.92); }
+
+    .cs-scope {
+      list-style: none; margin: 6px 0 22px; padding: 0; max-width: 64ch;
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+    }
+    .cs-scope li {
+      display: flex; flex-direction: row; align-items: flex-start; gap: 14px;
+      padding: 16px 18px; font-size: 15px; line-height: 1.5; margin: 0;
+      color: rgba(235, 245, 248, 0.9); background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(104, 227, 190, 0.4); border-radius: 14px;
+    }
+    .cs-scope li svg { display: block; width: 28px; height: 28px; flex-shrink: 0; }
+    @media (max-width: 620px) { .cs-scope { grid-template-columns: 1fr; } }
+    /* Crew photo strip — quiet imagery, no card chrome */
+    .cs-crew {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+      margin: 24px 0 28px; max-width: 64ch; overflow: hidden; border-radius: 14px;
+    }
+    .cs-crew figure { margin: 0; }
+    .cs-crew img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
+    @media (max-width: 900px) { .cs-crew { grid-template-columns: 1fr 1fr; } }
+
+    /* Before/after slider */
+    .cs-ba {
+      background: var(--navy-deep);
+      padding: clamp(36px, 6vw, 60px) clamp(28px, 6vw, 64px);
+      border-bottom: 1px solid rgba(104, 227, 190, 0.12);
+    }
+    .cs-ba__slider {
+      position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden;
+      user-select: none; touch-action: none; border-radius: 14px;
+      border: 1px solid rgba(104, 227, 190, 0.18); --pos: 50%;
+    }
+    .cs-ba__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+    .cs-ba__before { position: absolute; inset: 0; clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
+    .cs-ba__divider {
+      position: absolute; top: 0; bottom: 0; left: var(--pos); width: 2px;
+      background: var(--mint); transform: translateX(-1px); pointer-events: none;
+    }
+    .cs-ba__handle {
+      position: absolute; top: 50%; left: 50%; width: 44px; height: 44px;
+      transform: translate(-50%, -50%); border-radius: 9999px; background: var(--mint);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.45); display: grid; place-items: center;
+    }
+    .cs-ba__handle::before { content: "\2039\2003\203A"; color: var(--navy); font-weight: 700; font-size: 16px; }
+    .cs-ba__tag {
+      position: absolute; top: 16px; font-family: var(--font-display); font-size: 10px;
+      font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--off-white); background: rgba(10, 22, 28, 0.6); padding: 4px 10px;
+    }
+    .cs-ba__tag--before { left: 16px; }
+    .cs-ba__tag--after { right: 16px; }
+    .cs-ba__range { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
+    .cs-ba__slider:focus-within .cs-ba__handle { outline: 3px solid var(--off-white); outline-offset: 2px; }
+    .cs-ba__caption { margin: 14px 0 0; font-size: 13px; letter-spacing: 0.04em; color: rgba(235, 245, 248, 0.7); text-align: center; }
+
+    .cs-results {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
+      background: rgba(104, 227, 190, 0.18); list-style: none; margin: 0 0 32px; padding: 0; counter-reset: cs-result;
+    }
+    @media (max-width: 620px) { .cs-results { grid-template-columns: 1fr; } }
+    .cs-results li { background: var(--navy); padding: 22px 20px; font-size: 15px; font-weight: 600; line-height: 1.4; color: var(--off-white); }
+    .cs-results li::before {
+      content: counter(cs-result, decimal-leading-zero); counter-increment: cs-result; display: block;
+      font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+      color: var(--gold); margin-bottom: 10px;
+    }
+
+    .cs-plan { list-style: none; margin: 22px 0 26px; padding: 0; display: flex; flex-direction: column; gap: 22px; max-width: 64ch; }
+    .cs-plan li { display: grid; grid-template-columns: 28px 1fr; gap: 14px; font-size: 17px; line-height: 1.65; color: var(--ink); }
+    .cs-plan li::before { content: '✓'; font-size: 20px; font-weight: 700; color: var(--gold-deep); line-height: 1.3; }
+    .cs-plan strong { font-weight: 700; color: var(--navy); }
+    .cs-bottom-line { margin-top: 4px; padding-top: 26px; border-top: 1px solid var(--rule-light); font-size: 18px; line-height: 1.6; color: var(--navy); }
+
+    /* Quote */
+    .cs-quote {
+      background: var(--navy-deep);
+      padding: clamp(44px, 7vw, 76px) clamp(28px, 6vw, 64px);
+      border-bottom: 1px solid rgba(104, 227, 190, 0.12);
+    }
+    .cs-quote__text {
+      margin: 0 0 20px; font-size: clamp(20px, 2.8vw, 26px); font-style: italic; line-height: 1.42;
+      color: var(--off-white); border-left: 4px solid var(--mint); padding: 8px 0 8px 26px;
+    }
+    .cs-quote__attrib { margin: 0; padding-left: 30px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.6; }
+    .cs-quote__attrib span { display: block; color: var(--mint); }
+
+    /* CTA */
+    .cs-cta {
+      background-color: var(--navy-deep);
+      background-image: url('assets/textures/texture-circuit-navy-steel-print-dark.jpg');
+      background-size: cover; background-position: center; background-repeat: no-repeat;
+      padding: clamp(44px, 7vw, 76px) clamp(28px, 6vw, 64px);
+      border-top: 4px solid var(--mint);
+    }
+    .cs-cta__body { margin: 0 0 24px; font-weight: 700; font-size: clamp(22px, 3vw, 30px); line-height: 1.2; letter-spacing: -0.02em; color: var(--off-white); max-width: 24ch; }
+    .cs-cta__actions { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+    .cs-cta-btn { display: inline-flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 700; letter-spacing: 0.04em; text-decoration: none; color: var(--navy); background: var(--mint); padding: 16px 28px; transition: background 0.15s; }
+    .cs-cta-btn:hover { background: #7aedc8; }
+    .cs-cta-btn__arrow { font-size: 18px; font-weight: 700; line-height: 1; }
+    .cs-cta-btn--secondary { background: transparent; color: var(--mint); border: 1px solid rgba(104, 227, 190, 0.45); }
+    .cs-cta-btn--secondary:hover { background: rgba(104, 227, 190, 0.08); }
+    .cs-cta__about { margin-top: 40px; padding-top: 26px; border-top: 1px solid rgba(255, 255, 255, 0.1); max-width: 62ch; }
+    .cs-cta__about-label { margin: 0 0 10px; font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(104, 227, 190, 0.7); }
+    .cs-cta__statement { margin: 0; font-size: 16px; line-height: 1.65; color: rgba(165, 179, 188, 0.88); }
+  </style>
+</head>
+<body>
+<article class="cs-page">
+  <div class="cs-page__sheet">
+    <header class="cs-hero">
+      <div class="cs-hero__kicker"><span>Case Study</span></div>
+      <h1 class="cs-hero__title">
+        <span class="cs-hero__leadin">One week to a</span>
+        <em>foundation for growth</em>
+      </h1>
+      <p class="cs-hero__dek">LUCI brought Tachi Palace&rsquo;s bingo hall alive in one week &mdash; eight new LED video walls, audio under one interface, and an immersive room that sets the stage for the rest of the resort.</p>
+      <div class="cs-hero__actions">
+        <a class="cs-download" href="../../assets/sales/LUCI-Case-Study-Tachi-Palace.pdf" download="LUCI-Case-Study-Tachi-Palace.pdf"><span class="cs-download__icon" aria-hidden="true">&darr;</span>Download PDF</a>
+      </div>
+      <p class="cs-hero__property">
+        Tachi Palace Casino Resort
+        <span>Lemoore, California &middot; Tachi Yokut Tribe</span>
+      </p>
+    </header>
+
+    <section class="cs-glance" aria-label="At a glance">
+      <div class="cs-glance__logo">
+        <img src="../../assets/logos/tachi-palace.png" alt="Tachi Palace Casino Resort" width="402" height="482" />
+      </div>
+      <div class="cs-facts">
+        <div><p class="cs-facts__label">Property</p><p class="cs-facts__value">Tachi Palace Casino Resort</p></div>
+        <div><p class="cs-facts__label">Location</p><p class="cs-facts__value">Lemoore, California</p></div>
+        <div><p class="cs-facts__label">Completed</p><p class="cs-facts__value">One week, install to handoff</p></div>
+      </div>
+      <div class="cs-summary">
+        <div class="cs-summary__cell"><p class="cs-summary__label">The challenge</p><p class="cs-summary__text">A massive bingo hall &mdash; a huge draw for locals &mdash; ready for an update, with eight wall bays that had never held LED and an immersive bingo room to bring to life.</p></div>
+        <div class="cs-summary__cell"><p class="cs-summary__label">The approach</p><p class="cs-summary__text">Consolidation, done by hand in one week &mdash; eight LED walls hung and tuned, racks of legacy gear pulled and replaced with LUCI, and every audio zone wired for full control.</p></div>
+        <div class="cs-summary__cell"><p class="cs-summary__label">The result</p><p class="cs-summary__text">The room came alive &mdash; eight LED walls live, immersive winner moments, and the whole room running from one LUCI interface.</p></div>
+      </div>
+    </section>
+    <section class="cs-sec cs-sec--white">
+      <h2 class="cs-sec__title">Bring the <span class="cs-sec__title-accent">bingo hall alive</span></h2>
+      <div class="cs-copy">
+        <p>Tachi Palace Casino Resort in Lemoore, California, has a massive bingo hall &mdash; a huge draw for locals. The property was ready for an update: eight wall bays that had never held LED, and an immersive bingo room.</p>
+        <p>That meant bringing all eight LED walls and bingo and casino audio onto one easy-to-use LUCI interface, setting the stage for the rest of the resort to come onto the platform.</p>
+      </div>
+    </section>
+
+    <section class="cs-sec cs-sec--mid">
+      <h2 class="cs-sec__title">A week of <span class="cs-sec__title-accent">hands-on work</span></h2>
+      <div class="cs-copy">
+        <p>LUCI&rsquo;s approach was consolidation &mdash; done by hand, on site, in one week.</p>
+        <p>The team hung and aligned all eight LED walls, tiled and pixel-mapped each one, and fine-tuned them until every panel displayed picture-perfect. Then they wired the room through LUCI: pulling out racks of legacy gear, installing LUCI in its place, encoding and programming each box, and testing and tuning every audio zone for full control through LUCI.</p>
+        <p>Before they left, they sat down with Tachi&rsquo;s team and trained them to run the room from the LUCI interface &mdash; and LUCI stays on for ongoing support as the rest of the resort comes onto the platform.</p>
+      </div>
+      <div class="cs-crew">
+        <figure><img src="assets/tachi/03-install-genie-lift-web.jpg" alt="LUCI technicians on a lift mounting LED panels" loading="lazy" /></figure>
+        <figure><img src="assets/tachi/03c-config-web.jpg" alt="LUCI team configuring the system on site" loading="lazy" /></figure>
+        <figure><img src="assets/tachi/03b-install-detail-web.jpg" alt="Technician wiring the back of an LED wall" loading="lazy" /></figure>
+        <figure><img src="assets/tachi/03d-config-backroom-web.jpg" alt="LUCI engineer configuring the system on site" loading="lazy" /></figure>
+      </div>
+      <ul class="cs-scope">
+        <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="3" y="3" width="8" height="6" rx="1" fill="#68E3BE" fill-opacity="0.16" stroke="#68E3BE" stroke-width="1.8"/>
+          <rect x="13" y="3" width="8" height="6" rx="1" fill="#68E3BE" fill-opacity="0.16" stroke="#68E3BE" stroke-width="1.8"/>
+          <rect x="3" y="12" width="8" height="6" rx="1" fill="#68E3BE" fill-opacity="0.16" stroke="#68E3BE" stroke-width="1.8"/>
+          <rect x="13" y="12" width="8" height="6" rx="1" stroke="#68E3BE" stroke-width="1.8"/>
+          <circle cx="17" cy="15" r="1" fill="#EDD086"/>
+        </svg><span>Hung, tiled, and fine-tuned eight LED walls</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="4" y="3" width="16" height="5" rx="1.5" fill="#68E3BE" fill-opacity="0.16" stroke="#68E3BE" stroke-width="1.8"/>
+          <rect x="4" y="10" width="16" height="5" rx="1.5" fill="#68E3BE" fill-opacity="0.16" stroke="#68E3BE" stroke-width="1.8"/>
+          <rect x="4" y="17" width="16" height="4" rx="1.5" stroke="#68E3BE" stroke-width="1.8"/>
+          <circle cx="7.5" cy="5.5" r="1" fill="#EDD086"/>
+          <circle cx="7.5" cy="12.5" r="1" fill="#EDD086"/>
+        </svg><span>Pulled legacy racks and installed LUCI</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="3" y="4" width="18" height="16" rx="1.5" fill="#68E3BE" fill-opacity="0.14" stroke="#68E3BE" stroke-width="1.8"/>
+          <path d="M7 10l3 2.2L7 14.4" fill="none" stroke="#EDD086" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="12" y1="14.5" x2="16.5" y2="14.5" stroke="#68E3BE" stroke-width="1.8" stroke-linecap="round"/>
+        </svg><span>Encoded and programmed every box on the LUCI network</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 9v6h3l5 4V5L7 9H4z" fill="#68E3BE" fill-opacity="0.16" stroke="#68E3BE" stroke-width="1.8" stroke-linejoin="round"/>
+          <path d="M15.5 8.5a5 5 0 0 1 0 7" fill="none" stroke="#EDD086" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M18 6a8 8 0 0 1 0 12" fill="none" stroke="#68E3BE" stroke-width="1.8" stroke-linecap="round"/>
+        </svg><span>Tuned every audio zone for full control through LUCI</span></li>
+      </ul>
+    </section>
+    <section class="cs-ba" aria-label="Before and after">
+      <div class="cs-ba__slider" data-cs-slider>
+        <img class="cs-ba__img cs-ba__img--after" src="assets/tachi/slider-after-web.jpg" alt="Tachi Palace bingo hall after the refresh: both LED walls lit with the BINGO graphic, mint cove glow, and the room brought to life" width="1600" height="900" />
+        <div class="cs-ba__before">
+          <img class="cs-ba__img" src="assets/tachi/slider-before-web.jpg" alt="Tachi Palace bingo hall before the refresh: LED walls not yet installed, flat dull lighting" width="1600" height="900" />
+        </div>
+        <div class="cs-ba__divider" aria-hidden="true"><span class="cs-ba__handle"></span></div>
+        <span class="cs-ba__tag cs-ba__tag--before">Before</span>
+        <span class="cs-ba__tag cs-ba__tag--after">After</span>
+        <input class="cs-ba__range" type="range" min="0" max="100" value="50" aria-label="Drag to reveal the finished bingo hall" />
+      </div>
+      <p class="cs-ba__caption">Drag to see the room come alive.</p>
+    </section>
+
+    <section class="cs-quote">
+      <blockquote class="cs-quote__text">&ldquo;Working with LUCI was smooth and easy, the team worked well together and with us completing the 8 LED Video Walls and all of the Casino Audio all in one week. Great Job Team!&rdquo;</blockquote>
+      <p class="cs-quote__attrib">
+        <span>AV Telecom Manager</span>
+        <span>Tachi Palace Casino Resort</span>
+      </p>
+    </section>
+
+    <section class="cs-sec cs-sec--dark">
+      <h2 class="cs-sec__title">What Tachi Palace <span class="cs-sec__title-accent">runs now</span></h2>
+      <ul class="cs-results">
+        <li>Eight LED video walls, live and controlled from one interface</li>
+        <li>Bingo winner presets that fire an immersive experience when someone wins</li>
+        <li>Screens that can switch to different channels outside of bingo</li>
+        <li>Every audio zone mapped in one place &mdash; no more guessing which player controls which zone</li>
+      </ul>
+    </section>
+    <section class="cs-sec cs-sec--light">
+      <h2 class="cs-sec__title">Built for <span class="cs-sec__title-accent">the moves ahead</span></h2>
+      <div class="cs-copy">
+        <p>The bingo hall is just the start.</p>
+        <ul class="cs-plan">
+          <li><span><strong>Run it from anywhere.</strong> Bingo, audio, and every screen live in one LUCI interface the team can reach from any authorized device &mdash; an iPad on the floor, a laptop, a phone from home.</span></li>
+          <li><span><strong>Racks of gear, gone.</strong> LUCI consolidated the room&rsquo;s hardware down to a simplified stack &mdash; less equipment to power, cool, and maintain.</span></li>
+          <li><span><strong>Ready for the rest of the resort.</strong> As other spaces come onto LUCI, they join the platform already running the bingo hall &mdash; no second install, no parallel system to stand up.</span></li>
+        </ul>
+        <p class="cs-bottom-line">By bringing the bingo hall onto LUCI, Tachi Palace turned one room into a foundation the whole resort can grow onto.</p>
+      </div>
+    </section>
+
+    <section class="cs-cta">
+      <p class="cs-cta__body">Curious what this looks like for your property? <span class="cs-sec__title-accent">Let&rsquo;s talk.</span></p>
+      <div class="cs-cta__actions">
+        <a class="cs-cta-btn" href="https://www.lucisystems.com/contact" target="_blank" rel="noopener noreferrer">Talk to LUCI<span class="cs-cta-btn__arrow" aria-hidden="true">&rarr;</span></a>
+        <a class="cs-cta-btn cs-cta-btn--secondary" href="../../assets/sales/LUCI-Case-Study-Tachi-Palace.pdf" download="LUCI-Case-Study-Tachi-Palace.pdf"><span class="cs-download__icon" aria-hidden="true">&darr;</span>Download PDF</a>
+      </div>
+      <div class="cs-cta__about">
+        <p class="cs-cta__about-label">About LUCI</p>
+        <p class="cs-cta__statement">LUCI Systems orchestrates every layer of technology running your property &mdash; A/V, signage, building, and operational infrastructure &mdash; from a single interface your team controls from anywhere. Rather than adding layers to your stack, LUCI reduces the variables, hardware, and interfaces your team has to manage. When onsite experience and operational continuity are non-negotiable, LUCI delivers coordinated, real-time execution, end to end.</p>
+      </div>
+    </section>
+  </div>
+</article>
+<script>
+  document.querySelectorAll('[data-cs-slider]').forEach(function (el) {
+    var range = el.querySelector('.cs-ba__range');
+    if (!range) return;
+    function set(v) {
+      el.style.setProperty('--pos', v + '%');
+      var tBefore = el.querySelector('.cs-ba__tag--before');
+      var tAfter = el.querySelector('.cs-ba__tag--after');
+      if (tBefore) tBefore.style.opacity = v > 6 ? 1 : 0;
+      if (tAfter) tAfter.style.opacity = v < 94 ? 1 : 0;
+    }
+    set(range.value);
+    range.addEventListener('input', function () { set(range.value); });
+    function pointTo(clientX) {
+      var r = el.getBoundingClientRect();
+      var pct = Math.min(100, Math.max(0, ((clientX - r.left) / r.width) * 100));
+      range.value = pct; set(pct);
+    }
+    el.addEventListener('pointerdown', function (e) { pointTo(e.clientX); try { el.setPointerCapture(e.pointerId); } catch (err) {} });
+    el.addEventListener('pointermove', function (e) { if (e.buttons === 1) pointTo(e.clientX); });
+  });
+</script>
+</body>
+</html>

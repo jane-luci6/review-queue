@@ -278,8 +278,6 @@
     }
 
     /* Nested sub-accordion (second level) */
-    .hub-sub-accordion { }
-
     .hub-sub-accordion__trigger {
       display: flex;
       align-items: center;
@@ -916,7 +914,7 @@
       </div>
       <div class="hub-nav__scroll" id="hub-nav-mount"></div>
       <div class="hub-nav__footer">
-        <a href="README.md" target="_blank" rel="noopener">README</a> · tokens in <code>colors_and_type.css</code>
+        <a href="ui_kits/internal-portal/index.html" target="_blank" rel="noopener">Internal portal</a> · <a href="ui_kits/review/review-queue.json" target="_blank" rel="noopener">Review queue (JSON)</a> · <a href="README.md" target="_blank" rel="noopener">README</a> · tokens in <code>colors_and_type.css</code>
       </div>
     </div>
     <div class="hub-nav__rail" aria-hidden="true">Navigation</div>
@@ -930,7 +928,7 @@
     </header>
     <nav class="hub-tabs" id="hub-tabs" aria-label="Main tabs">
       <button type="button" class="hub-tab is-active" data-tab="overview">Work in progress</button>
-      <button type="button" class="hub-tab" data-tab="review">Review queue</button>
+      <button type="button" class="hub-tab" data-tab="review">Internal portal</button>
     </nav>
     <div class="hub-stage">
       <!-- Overview tab -->
@@ -946,9 +944,9 @@
           <div id="hub-open-questions"></div>
         </div>
       </section>
-      <!-- Review queue tab -->
-      <section class="hub-overview" id="hub-review-panel" aria-label="Review queue" style="padding:0;">
-        <iframe src="ui_kits/review/stakeholder-review.html" title="Review queue" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allow="popups; popups-to-escape-sandbox"></iframe>
+      <!-- Internal portal tab -->
+      <section class="hub-overview" id="hub-review-panel" aria-label="Internal portal" style="padding:0;">
+        <iframe src="ui_kits/internal-portal/index.html" title="LUCI Internal Portal" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allow="popups; popups-to-escape-sandbox"></iframe>
       </section>
       <!-- Asset preview -->
       <iframe id="hub-frame" title="Asset preview" hidden allow="popups; popups-to-escape-sandbox"></iframe>
@@ -965,49 +963,17 @@
     const NAV_CONFIG = {
       sales: {
         label: 'Sales',
-        defaultOpen: true,
+        defaultOpen: false,
         items: [
+          { label: 'Scope of work', src: 'ui_kits/sales/scope-of-work.html', desc: 'Post-demo scoping doc · 10 pages · Studio-customizable · Ameristar Black Hawk sample' },
           { label: 'Capabilities document', src: 'ui_kits/sales/capabilities-document.html', desc: 'Personalized deep-dive · 9 pages · scaffold in progress' },
-          { label: 'Budget estimate', desc: 'Not started — interactive template + PDF export' },
-          { label: 'Sales deck', desc: 'Not started — presentation for prospect meetings' },
+          { label: 'Budget estimate', src: 'ui_kits/sales/budgetary-estimate.html', desc: 'PDF-first scoped estimate · 11 pages · Studio-customizable · in refinement' },
+          { label: 'Sales deck', src: 'ui_kits/sales/sales-deck.html', desc: 'Demo primer · 15 slides · 16:9 · draft' },
+          { label: 'Sales brochure', src: 'ui_kits/sales/brochure.html', desc: 'PDF-first leave-behind · 5 pages · page 1 mint opener (newsletter/website standard)' },
         ],
       },
-      emails: {
-        label: 'Customer emails',
-        defaultOpen: true,
-        items: [
-          {
-            label: 'Journey tracker',
-            src: 'ui_kits/email/customer-journey-tracker.html',
-            desc: 'Send calendar — who’s due, what’s sent, recipients & context',
-          },
-          {
-            subheading: 'Templates & references',
-            subitems: [
-              { label: 'Master template', src: 'ui_kits/email/master-template.html', desc: 'Shared layout' },
-              { label: 'Subject lines & preheaders', src: 'ui_kits/email/email-subjects-preheaders.html', desc: 'Reference for all 10 emails — enter in ActiveCampaign per send' },
-              { label: 'Footer module (AC)', src: 'ui_kits/email/footer-module-activecampaign.html', desc: 'Reusable footer · %UNSUBSCRIBELINK% + %SENDER-INFO%' },
-            ],
-          },
-          {
-            subheading: 'Journey emails',
-            subitems: [
-              { label: '1 · Welcome', src: 'ui_kits/email/email-1a-welcome.html', desc: 'Champion & tech implementor' },
-              { label: '2 · Pre-kickoff', src: 'ui_kits/email/email-2-pre-kickoff.html', desc: 'Kickoff reminder' },
-              { label: '3 · Install confirmed', src: 'ui_kits/email/email-3-install-confirmed.html', desc: 'Onsite confirmed' },
-              { label: '4 · Pre-install', src: 'ui_kits/email/email-4-pre-install.html', desc: 'One week out' },
-              { label: '5 · Go live', src: 'ui_kits/email/email-5-go-live.html', desc: 'LUCI is live' },
-              { label: '6 · Survey', src: 'ui_kits/email/email-6-survey.html', desc: 'Customer survey' },
-              { label: '7 · Signal welcome', src: 'ui_kits/email/email-7-signal-welcome.html', desc: 'Newsletter opt-in' },
-              { label: '8 · 30-day check-in', src: 'ui_kits/email/email-8-30day-checkin.html', desc: '30 days live' },
-              { label: '9 · 60-day check-in', src: 'ui_kits/email/email-9-60day-checkin.html', desc: 'Field activation' },
-              { label: '10 · 90-day check-in', src: 'ui_kits/email/email-10-90day-checkin.html', desc: '90 days live' },
-            ],
-          },
-        ],
-      },
-      messaging: {
-        label: 'Messaging & brand',
+      brandStrategy: {
+        label: 'Brand & strategy',
         defaultOpen: false,
         items: [
           {
@@ -1021,11 +987,18 @@
           {
             subheading: 'Images & diagrams',
             subitems: [
-              { label: 'What LUCI is', src: 'assets/diagrams/luci-what-luci-is.svg', desc: 'Identity diagram — orchestration platform + embedded operation · SVG' },
-              { label: 'Home control from one screen', src: 'ui_kits/review/messaging/home-control-from-one-screen.html', desc: 'Website section 2 — property systems list + laptop UI + endpoints · SVG' },
-              { label: 'System architecture', src: 'assets/diagrams/luci-system-architecture.svg?v=3', desc: 'Capabilities deck — sources → LUCI → property · SVG + PNG · Updated Jun 19, 2026' },
-              { label: 'LUCI system diagram (V3)', src: 'ui_kits/review/messaging/luci-system-diagram.html', desc: 'Two-disk perspective diagram V3' },
+              { label: 'What LUCI is', src: 'ui_kits/review/messaging/what-luci-is.html', desc: 'Identity diagram — orchestration platform + embedded operation · SVG + PNG · Updated Jul 6, 2026' },
+              { label: 'Consolidation ledger', src: 'ui_kits/review/messaging/consolidation-ledger.html', desc: 'Single dark card — software + hardware funnel → 1 interface / equipment rack, then network/service/code rows · SVG + PNG · Updated Jul 8, 2026' },
+              { label: 'System architecture', src: 'ui_kits/review/messaging/system-architecture.html', desc: 'Capabilities deck — sources → LUCI → property · SVG + PNG · Updated Jun 23, 2026' },
               { label: 'Embedded Operation orbit', src: 'ui_kits/review/messaging/embedded-operation-orbit.html', desc: 'Reusable diagram — one team, six services · SVG + PNG' },
+            ],
+          },
+          {
+            subheading: 'Website',
+            subitems: [
+              { label: 'Strategy brief', src: 'ui_kits/website/website-strategy-brief.html', desc: 'Leadership review — purpose, positioning' },
+              { label: 'IA wireframe', src: 'ui_kits/website/website-ia-wireframe.html', desc: 'Simplified nav + draft copy per section' },
+              { label: 'Messaging Framework V6 (reference)', src: 'ui_kits/website/LUCI_Messaging_Framework_V6-reference.html', desc: 'Nick brain dump — not canonical' },
             ],
           },
         ],
@@ -1034,19 +1007,25 @@
         label: 'Marketing Content',
         defaultOpen: false,
         items: [
-          { label: 'Sales brochure', src: 'ui_kits/sales/brochure.html', desc: 'PDF-first leave-behind · 5 pages · page 1 mint opener (newsletter/website standard)' },
-          { label: 'Field Activation Guide', src: 'ui_kits/sales/field-activation-guide.html', desc: 'PDF-first activation guide — in design' },
+          { label: 'Field Activation Guide · Client', src: 'ui_kits/sales/field-activation-guide.html', desc: 'For existing customers — support-portal how-to links (planned)' },
+          { label: 'Field Activation Guide · Prospect', src: 'ui_kits/sales/field-activation-guide-prospect.html', desc: 'For prospects — “What it replaces” callouts + Mark Filler demo CTA' },
           {
-            subheading: 'The Signal',
+            subheading: 'Customer emails',
             subitems: [
-              { label: 'Issue 01 (web)', src: 'ui_kits/newsletter/the-signal-issue-01-june-2026.html', desc: 'Full web issue — current draft' },
-              { label: 'Issue 01 · Email teaser', src: 'ui_kits/email/email-signal-issue-01-teaser.html', desc: 'Inbox teaser — highlights + CTA' },
-              { label: 'Issue 01 · Webflow embed', src: 'ui_kits/newsletter/the-signal-issue-01-webflow-embed.html', desc: 'Single Embed block' },
-              { label: 'Issue 01 · Head code', src: 'ui_kits/newsletter/the-signal-issue-01-webflow-head.html', desc: 'Paste into Webflow <head>' },
-              { label: 'Issue 01 · Body code', src: 'ui_kits/newsletter/the-signal-issue-01-webflow-body.html', desc: 'Paste before </body>' },
-              { label: 'Newsletter hub · /newsletter', src: 'ui_kits/newsletter/the-signal-hub.html', desc: 'Landing page — issue index' },
-              { label: 'Hub · Webflow embed', src: 'ui_kits/newsletter/the-signal-hub-webflow-embed.html', desc: 'Single Embed block' },
-              { label: 'Web blank template', src: 'ui_kits/newsletter/the-signal-web-template.html', desc: 'Issue structure template for new issues' },
+              { label: 'Journey tracker', src: 'ui_kits/email/customer-journey-tracker.html', desc: 'Send calendar — who’s due, what’s sent, recipients & context' },
+              { label: 'Master template', src: 'ui_kits/email/master-template.html', desc: 'Shared layout' },
+              { label: 'Subject lines & preheaders', src: 'ui_kits/email/email-subjects-preheaders.html', desc: 'Reference for all 10 emails — enter in ActiveCampaign per send' },
+              { label: 'Footer module (AC)', src: 'ui_kits/email/footer-module-activecampaign.html', desc: 'Reusable footer · %UNSUBSCRIBELINK% + %SENDER-INFO%' },
+              { label: '1 · Welcome', src: 'ui_kits/email/email-1a-welcome.html', desc: 'Champion & tech implementor' },
+              { label: '2 · Pre-kickoff', src: 'ui_kits/email/email-2-pre-kickoff.html', desc: 'Kickoff reminder' },
+              { label: '3 · Install confirmed', src: 'ui_kits/email/email-3-install-confirmed.html', desc: 'Onsite confirmed' },
+              { label: '4 · Pre-install', src: 'ui_kits/email/email-4-pre-install.html', desc: 'One week out' },
+              { label: '5 · Go live', src: 'ui_kits/email/email-5-go-live.html', desc: 'LUCI is live' },
+              { label: '6 · Survey', src: 'ui_kits/email/email-6-survey.html', desc: 'Customer survey' },
+              { label: '7 · Signal welcome', src: 'ui_kits/email/email-7-signal-welcome.html', desc: 'Newsletter opt-in' },
+              { label: '8 · 30-day check-in', src: 'ui_kits/email/email-8-30day-checkin.html', desc: '30 days live' },
+              { label: '9 · 60-day check-in', src: 'ui_kits/email/email-9-60day-checkin.html', desc: 'Field activation' },
+              { label: '10 · 90-day check-in', src: 'ui_kits/email/email-10-90day-checkin.html', desc: '90 days live' },
             ],
           },
           {
@@ -1060,25 +1039,39 @@
             ],
           },
           {
-            subheading: 'Website',
+            subheading: 'The Signal',
             subitems: [
-              { label: 'Strategy brief', src: 'ui_kits/website/website-strategy-brief.html', desc: 'Leadership review — purpose, positioning' },
-              { label: 'IA wireframe', src: 'ui_kits/website/website-ia-wireframe.html', desc: 'Simplified nav + draft copy per section' },
-              { label: 'Home intro visual options', src: 'ui_kits/website/home-intro-visual-options.html', desc: 'Section 2 — laptop + map UI radiating to endpoints (not LUCI+Systems lockup)' },
-              { label: 'Floorplan overlay studies', src: 'ui_kits/website/home-floorplan-overlay.html', desc: 'Section 2 — LUCI control points layered on the real CAD floorplan' },
-              { label: 'Messaging Framework V6 (reference)', src: 'ui_kits/website/LUCI_Messaging_Framework_V6-reference.html', desc: 'Nick brain dump — not canonical' },
+              { label: 'Issue 01 · Web issue', src: 'ui_kits/newsletter/the-signal-issue-01-june-2026.html', desc: 'Full web edition — shipped Jun 15 · live on Webflow' },
+              { label: 'Issue 01 · Email teaser', src: 'ui_kits/email/email-signal-issue-01-teaser.html', desc: 'Inbox teaser — highlights + CTA' },
+              { label: 'Issue 01 · Webflow embed', src: 'ui_kits/newsletter/the-signal-issue-01-webflow-embed.html', desc: 'Single Embed block' },
+              { label: 'Issue 01 · Head code', src: 'ui_kits/newsletter/the-signal-issue-01-webflow-head.html', desc: 'Paste into Webflow <head>' },
+              { label: 'Issue 01 · Body code', src: 'ui_kits/newsletter/the-signal-issue-01-webflow-body.html', desc: 'Paste before </body>' },
+              { label: 'Issue 02 · Web issue (live)', src: 'ui_kits/newsletter/the-signal-issue-02-july-2026.html', desc: 'Shipped Jul 15 · live at /the-signal/issue-02' },
+              { label: 'Issue 02 · Email teaser', src: 'ui_kits/email/email-signal-issue-02-teaser.html', desc: 'Inbox teaser — highlights + CTA · links to /the-signal/issue-02' },
+              { label: 'Issue 02 · Webflow head code', src: 'ui_kits/newsletter/webflow-head.html', desc: 'Paste into Webflow <head>' },
+              { label: 'Issue 02 · Webflow body code', src: 'ui_kits/newsletter/webflow-body.html', desc: 'Paste before </body>' },
+              { label: 'Issue 02 · Webflow preview', src: 'ui_kits/newsletter/webflow-preview.html', desc: 'Local preview — head + body combined' },
+              { label: 'Issue 02 · Issue plan & checklist', src: 'ui_kits/newsletter/the-signal-issue-02-welcome-draft.md', desc: 'Theme, article status, publish workflow, ideas backlog' },
+              { label: 'Hub · Newsletter hub (/the-signal)', src: 'ui_kits/newsletter/the-signal-hub.html', desc: 'Landing page — issue index' },
+              { label: 'Hub · Webflow embed', src: 'ui_kits/newsletter/the-signal-hub-webflow-embed.html', desc: 'Single Embed block' },
+              { label: 'Hub · Web blank template', src: 'ui_kits/newsletter/the-signal-web-template.html', desc: 'Issue structure template for new issues' },
             ],
           },
         ],
       },
-      review: {
-        label: 'Stakeholder review',
+      contentLab: {
+        label: 'Content strategy & ideas',
         defaultOpen: false,
         items: [
-          { label: 'Stakeholder review (Mike & Nick)', src: 'ui_kits/review/stakeholder-review.html', desc: 'Queue, previews, comments — publish to Netlify' },
-          { label: 'Review · Webflow embed', src: 'ui_kits/review/stakeholder-review-webflow-embed.html', desc: 'Paste into lucisystems.com/review' },
-          { label: 'Review queue (JSON)', src: 'ui_kits/review/review-queue.json', desc: 'Edit in Cursor — due / upcoming / finalized' },
-          { label: 'Review comments (JSON)', src: 'ui_kits/review/review-comments.json', desc: 'Comments shown on site after rebuild' },
+          { label: 'Space overview & ideas backlog', src: 'ui_kits/content-marketing/index.html', desc: 'Working vault — source log, mined ideas by channel, voice flags · 2 sources filed · 18 ideas surfaced' },
+          { label: 'How this space works (README)', src: 'ui_kits/content-marketing/README.md', desc: 'Operating instructions — the review loop, naming, voice corrections' },
+          {
+            subheading: 'Source materials',
+            subitems: [
+              { label: '07-14 · Cabana/Room/Event control summary', src: 'ui_kits/content-marketing/sources/07-14-cabana-room-event-control-summary.png', desc: 'Mind map — synopsis, positioning, scenario mapping, risk, action items · SRC-02' },
+              { label: '07-13 · Cabana/Room/Event GTM strategy', src: 'ui_kits/content-marketing/sources/07-13-cabana-room-event-gtm-strategy.png', desc: '“Preservation of Control” GTM — continuity positioning, 3 scenarios, enablement, risk directive · SRC-01' },
+            ],
+          },
         ],
       },
       designSystem: {
@@ -1110,12 +1103,6 @@
               { label: 'Patterns', src: 'preview/brand-patterns.html', desc: '' },
             ],
           },
-        ],
-      },
-      source: {
-        label: 'Source',
-        defaultOpen: false,
-        items: [
           { label: 'Tokens (CSS)', src: 'colors_and_type.css', desc: '' },
         ],
       },
@@ -1213,21 +1200,22 @@
     /** Backlog pipeline — from review queue + standing todos. Target dates in Review queue tab. */
     const BACKLOG_PIPELINE = [
       {
-        priority: 'Soon',
-        label: 'Signal Issue 02',
-        status: 'Start ~1–2 wks',
-        src: 'ui_kits/newsletter/the-signal-web-template.html',
-        detail: `• Issue 01 shipped Jun 15 — begin Issue 02 in about a week or two
-• Start from the web blank template (the-signal-web-template.html)
-• Reuse Issue 01 structure + Webflow head/body embed workflow`,
+        priority: 'Next',
+        label: 'Scope of work',
+        status: 'New template',
+        src: 'ui_kits/sales/scope-of-work.html',
+        detail: `• 8-page Track C scoping document — cover, intent/phasing, system scope, IDF scope, deliverables/terms, close
+• Ameristar Black Hawk sample content from Mike's draft v0.1
+• Customization Studio: form-driven cover + directly editable scope sections`,
       },
       {
         priority: 'Next',
-        label: 'Budget estimate generator',
-        status: 'After current work',
-        detail: `• Next major build once the active items wrap
-• Interactive template + form + PDF export for proposals
-• Review queue: budgetary-estimate-template (target Jul 2026)`,
+        label: 'Budget estimate',
+        status: 'In refinement',
+        src: 'ui_kits/sales/budgetary-estimate.html',
+        detail: `• 11-page PDF-first estimate built — cover, scope, LUCI story, proof, proposal, pricing, tiers, install, close
+• Hybrid Studio customization: form-driven cover + directly editable scope/pricing
+• Refining in the design hub before enabling on the Internal Marketing Portal`,
       },
       {
         priority: 'Jul',
@@ -1241,8 +1229,11 @@
       {
         priority: 'Jul',
         label: 'Sales deck',
-        status: 'Backlog',
-        detail: '• Presentation for prospect meetings — review queue upcoming (target Jul 2026)',
+        status: 'In progress',
+        src: 'ui_kits/sales/sales-deck.html',
+        detail: `• 15-slide demo primer — 16:9, dark-led with light reading zones
+• Flow: cover → What is LUCI (square map) → 4 pillars → shorter list → LUCI + Systems diagram → six capabilities → system architecture → one control layer → embedded op → after go-live → Council Bluffs → pre-contract + install journeys → proof → close
+• Scalability folded into pillar 4; shorter-list design pending; draft for review`,
       },
       {
         priority: 'Soon',
@@ -1265,10 +1256,16 @@
     /** Quick-reference assets — expand for context. */
     const RECENT_WORK = [
       {
+        label: 'Signal Issue 02',
+        src: 'ui_kits/newsletter/the-signal-issue-02-july-2026.html',
+        status: 'Shipped',
+        note: 'Shipped Jul 15 — web issue live on Webflow (/the-signal/issue-02) + email teaser sent via ActiveCampaign.',
+      },
+      {
         label: 'Signal Issue 01',
         src: 'ui_kits/newsletter/the-signal-issue-01-june-2026.html',
         status: 'Shipped',
-        note: 'Shipped Jun 15 — web issue live on Webflow (/the-signal/issue-01) + email teaser sent via ActiveCampaign. Next: Issue 02 in ~1–2 weeks.',
+        note: 'Shipped Jun 15 — web issue live on Webflow (/the-signal/issue-01) + email teaser sent via ActiveCampaign.',
       },
       {
         label: 'Ameristar Council Bluffs',
@@ -1434,7 +1431,7 @@ Next up:
       overviewBtn.addEventListener('click', () => activateLink(overviewBtn));
       navMount.appendChild(overviewBtn);
 
-      ['sales', 'emails', 'messaging', 'marketing', 'review', 'designSystem', 'source'].forEach((key) => {
+      ['sales', 'marketing', 'brandStrategy', 'contentLab', 'designSystem'].forEach((key) => {
         const group = NAV_CONFIG[key];
         if (group) navMount.appendChild(createAccordion(key, group));
       });
@@ -1853,9 +1850,9 @@ Next up:
         frame.hidden = true;
         frame.removeAttribute('src');
         hidePreviewFallback();
-        titleEl.textContent = 'Review queue';
-        pathEl.textContent = 'ui_kits/review/stakeholder-review.html';
-        openEl.href = absolutePreviewUrl('ui_kits/review/stakeholder-review.html');
+        titleEl.textContent = 'LUCI Internal Portal';
+        pathEl.textContent = 'ui_kits/internal-portal/index.html';
+        openEl.href = absolutePreviewUrl('ui_kits/internal-portal/index.html');
         openEl.hidden = false;
       }
     });

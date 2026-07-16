@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUCI — Soft-icon duotone comparison</title>
+<link rel="stylesheet" href="../../assets/fonts/luci-brand-fonts.css">
+<style>
+  *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink-strong: #1C2B33; --navy-muted: #49616E; --rule-light: #DBE1E4;
+    --mint: #68E3BE; --mint-dark: #2b9e80;
+    --gold: #EDD086; --gold-deep: #CEB06E;
+    --font: 'Space Grotesk','Trebuchet MS',sans-serif;
+    --font-body: 'Inter','Space Grotesk',sans-serif;
+  }
+  body { font-family: var(--font-body); background: #F5F8FA; color: var(--ink-strong); padding: 56px 32px 80px; }
+  .wrap { max-width: 1120px; margin: 0 auto; }
+  h1 { font-family: var(--font); font-weight: 700; font-size: 30px; letter-spacing: -0.02em; line-height: 1.15; }
+  .lede { margin-top: 14px; font-size: 16px; line-height: 1.55; color: var(--navy-muted); max-width: 70ch; }
+  .cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 40px; }
+  .col { }
+  .col__tag { font-family: var(--font); font-weight: 700; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; }
+  .col--now .col__tag { color: var(--mint-dark); }
+  .col--a .col__tag { color: var(--ink-strong); }
+  .col--b .col__tag { color: var(--gold-deep); }
+  .col__h { font-family: var(--font); font-weight: 700; font-size: 19px; letter-spacing: -0.015em; margin-top: 8px; line-height: 1.2; }
+  .col__d { font-family: var(--font-body); font-size: 13.5px; line-height: 1.5; color: var(--navy-muted); margin-top: 10px; min-height: 84px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 18px; }
+  .tile { aspect-ratio: 1 / 1; border-radius: 16px; display: grid; place-items: center; }
+  .tile svg { width: 46%; height: 46%; display: block; }
+  /* Current — mint-dark primary + gold accent on pale-mint tile */
+  .tile--now { background: linear-gradient(155deg,#E6F5EF 0%,#F3FAF8 100%); box-shadow: inset 0 0 0 1px rgba(43,158,128,0.14); }
+  /* Option A — ink primary + gold accent on pale-gold tile */
+  .tile--a { background: linear-gradient(155deg,#FBF3DD 0%,#FCF8EE 100%); box-shadow: inset 0 0 0 1px rgba(237,208,134,0.40); }
+  /* Option B — gold primary + gold-deep accent on pale-gold tile (shows the contrast failure) */
+  .tile--b { background: linear-gradient(155deg,#FBF3DD 0%,#FCF8EE 100%); box-shadow: inset 0 0 0 1px rgba(237,208,134,0.40); }
+  .note { margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--rule-light); font-size: 13.5px; line-height: 1.55; color: var(--navy-muted); max-width: 80ch; }
+  .note b { color: var(--ink-strong); font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Soft-icon duotone — current vs. alternatives</h1>
+  <p class="lede">The canonized §5.1 house style uses mint-dark as the primary icon stroke on a pale tile with a gold accent. Retiring mint-dark on light surfaces means picking a replacement primary stroke. Same six icons, three treatments, same 64px tiles.</p>
+
+  <div class="cols">
+    <!-- CURRENT -->
+    <div class="col col--now">
+      <p class="col__tag">Now</p>
+      <p class="col__h">Mint-dark + gold</p>
+      <p class="col__d">Primary stroke mint-dark #2b9e80, gold #CEB06E accent, pale-mint tile. Today's house style across the cap doc, brochure &amp; website.</p>
+      <div class="grid">
+        <div class="tile tile--now"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="13" rx="2" fill="#68E3BE" fill-opacity="0.20" stroke="#2b9e80" stroke-width="1.8"/><path d="M9 21h6M12 17v4" stroke="#2b9e80" stroke-width="1.8" stroke-linecap="round"/><circle cx="17.5" cy="8" r="1.5" fill="#CEB06E"/></svg></div>
+        <div class="tile tile--now"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5C6 5 2 12 2 12s4 7 10 7 10-7 10-7-4-7-10-7z" stroke="#2b9e80" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="12" r="3.2" fill="#68E3BE" fill-opacity="0.22" stroke="#2b9e80" stroke-width="1.8"/><circle cx="13.2" cy="10.8" r="1" fill="#CEB06E"/></svg></div>
+        <div class="tile tile--now"><svg viewBox="0 0 24 24" fill="none"><g stroke="#2b9e80" stroke-width="1.7"><line x1="7.6" y1="12" x2="16.4" y2="6"/><line x1="7.6" y1="12" x2="16.4" y2="18"/></g><circle cx="18" cy="5" r="2.6" stroke="#2b9e80" stroke-width="1.8" fill="#68E3BE" fill-opacity="0.18"/><circle cx="18" cy="19" r="2.6" stroke="#2b9e80" stroke-width="1.8" fill="#68E3BE" fill-opacity="0.18"/><circle cx="6" cy="12" r="3" fill="#2b9e80"/><circle cx="6" cy="12" r="1.3" fill="#CEB06E"/></svg></div>
+        <div class="tile tile--now"><svg viewBox="0 0 24 24" fill="none"><path d="M13 2 L4 14 h6 l-1 8 9 -12 h-6 l1 -8 z" fill="#68E3BE" fill-opacity="0.20" stroke="#2b9e80" stroke-width="1.8" stroke-linejoin="round"/><circle cx="17.6" cy="6.2" r="1.6" fill="#CEB06E"/></svg></div>
+        <div class="tile tile--now"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3a6 6 0 0 0-3.8 10.6c.8.6 1.3 1.5 1.3 2.4h5c0-.9.5-1.8 1.3-2.4A6 6 0 0 0 12 3Z" fill="#68E3BE" fill-opacity="0.20" stroke="#2b9e80" stroke-width="1.8" stroke-linejoin="round"/><path d="M10 12.5l2-2.5 2 2.5" stroke="#CEB06E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="tile tile--now"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3.5" fill="#68E3BE" fill-opacity="0.20" stroke="#2b9e80" stroke-width="1.8"/><path d="M12 3v2.5M12 18.5V21M3 12h2.5M18.5 12H21M5.5 5.5l1.8 1.8M16.7 16.7l1.8 1.8M18.5 5.5l-1.8 1.8M7.3 16.7l-1.8 1.8" stroke="#2b9e80" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="1.3" fill="#CEB06E"/></svg></div>
+      </div>
+    </div>
+
+    <!-- OPTION A -->
+    <div class="col col--a">
+      <p class="col__tag">Option A</p>
+      <p class="col__h">Ink + gold</p>
+      <p class="col__d">Primary stroke ink #1C2B33, gold #EDD086 accent, pale-gold tile. No mint on light; duotone preserved; icons stay high-contrast &amp; legible.</p>
+      <div class="grid">
+        <div class="tile tile--a"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="13" rx="2" fill="#1C2B33" fill-opacity="0.05" stroke="#1C2B33" stroke-width="1.8"/><path d="M9 21h6M12 17v4" stroke="#1C2B33" stroke-width="1.8" stroke-linecap="round"/><circle cx="17.5" cy="8" r="1.5" fill="#EDD086"/></svg></div>
+        <div class="tile tile--a"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5C6 5 2 12 2 12s4 7 10 7 10-7 10-7-4-7-10-7z" stroke="#1C2B33" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="12" r="3.2" fill="#1C2B33" fill-opacity="0.05" stroke="#1C2B33" stroke-width="1.8"/><circle cx="13.2" cy="10.8" r="1" fill="#EDD086"/></svg></div>
+        <div class="tile tile--a"><svg viewBox="0 0 24 24" fill="none"><g stroke="#1C2B33" stroke-width="1.7"><line x1="7.6" y1="12" x2="16.4" y2="6"/><line x1="7.6" y1="12" x2="16.4" y2="18"/></g><circle cx="18" cy="5" r="2.6" stroke="#1C2B33" stroke-width="1.8" fill="#1C2B33" fill-opacity="0.05"/><circle cx="18" cy="19" r="2.6" stroke="#1C2B33" stroke-width="1.8" fill="#1C2B33" fill-opacity="0.05"/><circle cx="6" cy="12" r="3" fill="#1C2B33"/><circle cx="6" cy="12" r="1.3" fill="#EDD086"/></svg></div>
+        <div class="tile tile--a"><svg viewBox="0 0 24 24" fill="none"><path d="M13 2 L4 14 h6 l-1 8 9 -12 h-6 l1 -8 z" fill="#1C2B33" fill-opacity="0.06" stroke="#1C2B33" stroke-width="1.8" stroke-linejoin="round"/><circle cx="17.6" cy="6.2" r="1.6" fill="#EDD086"/></svg></div>
+        <div class="tile tile--a"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3a6 6 0 0 0-3.8 10.6c.8.6 1.3 1.5 1.3 2.4h5c0-.9.5-1.8 1.3-2.4A6 6 0 0 0 12 3Z" fill="#1C2B33" fill-opacity="0.05" stroke="#1C2B33" stroke-width="1.8" stroke-linejoin="round"/><path d="M10 12.5l2-2.5 2 2.5" stroke="#EDD086" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="tile tile--a"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3.5" fill="#1C2B33" fill-opacity="0.05" stroke="#1C2B33" stroke-width="1.8"/><path d="M12 3v2.5M12 18.5V21M3 12h2.5M18.5 12H21M5.5 5.5l1.8 1.8M16.7 16.7l1.8 1.8M18.5 5.5l-1.8 1.8M7.3 16.7l-1.8 1.8" stroke="#1C2B33" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="1.3" fill="#EDD086"/></svg></div>
+      </div>
+    </div>
+
+    <!-- OPTION B (gold primary — demonstrates the failure) -->
+    <div class="col col--b">
+      <p class="col__tag">Option B</p>
+      <p class="col__h">Gold-primary (fails)</p>
+      <p class="col__d">Primary stroke gold #EDD086, gold-deep #CEB06E accent, pale-gold tile. This is what "use gold for the stroke" literally produces — the icon nearly disappears (~1.3:1).</p>
+      <div class="grid">
+        <div class="tile tile--b"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="13" rx="2" fill="#EDD086" fill-opacity="0.20" stroke="#EDD086" stroke-width="1.8"/><path d="M9 21h6M12 17v4" stroke="#EDD086" stroke-width="1.8" stroke-linecap="round"/><circle cx="17.5" cy="8" r="1.5" fill="#CEB06E"/></svg></div>
+        <div class="tile tile--b"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5C6 5 2 12 2 12s4 7 10 7 10-7 10-7-4-7-10-7z" stroke="#EDD086" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="12" r="3.2" fill="#EDD086" fill-opacity="0.22" stroke="#EDD086" stroke-width="1.8"/><circle cx="13.2" cy="10.8" r="1" fill="#CEB06E"/></svg></div>
+        <div class="tile tile--b"><svg viewBox="0 0 24 24" fill="none"><g stroke="#EDD086" stroke-width="1.7"><line x1="7.6" y1="12" x2="16.4" y2="6"/><line x1="7.6" y1="12" x2="16.4" y2="18"/></g><circle cx="18" cy="5" r="2.6" stroke="#EDD086" stroke-width="1.8" fill="#EDD086" fill-opacity="0.18"/><circle cx="18" cy="19" r="2.6" stroke="#EDD086" stroke-width="1.8" fill="#EDD086" fill-opacity="0.18"/><circle cx="6" cy="12" r="3" fill="#EDD086"/><circle cx="6" cy="12" r="1.3" fill="#CEB06E"/></svg></div>
+        <div class="tile tile--b"><svg viewBox="0 0 24 24" fill="none"><path d="M13 2 L4 14 h6 l-1 8 9 -12 h-6 l1 -8 z" fill="#EDD086" fill-opacity="0.20" stroke="#EDD086" stroke-width="1.8" stroke-linejoin="round"/><circle cx="17.6" cy="6.2" r="1.6" fill="#CEB06E"/></svg></div>
+        <div class="tile tile--b"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3a6 6 0 0 0-3.8 10.6c.8.6 1.3 1.5 1.3 2.4h5c0-.9.5-1.8 1.3-2.4A6 6 0 0 0 12 3Z" fill="#EDD086" fill-opacity="0.20" stroke="#EDD086" stroke-width="1.8" stroke-linejoin="round"/><path d="M10 12.5l2-2.5 2 2.5" stroke="#CEB06E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="tile tile--b"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3.5" fill="#EDD086" fill-opacity="0.20" stroke="#EDD086" stroke-width="1.8"/><path d="M12 3v2.5M12 18.5V21M3 12h2.5M18.5 12H21M5.5 5.5l1.8 1.8M16.7 16.7l1.8 1.8M18.5 5.5l-1.8 1.8M7.3 16.7l-1.8 1.8" stroke="#EDD086" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="1.3" fill="#CEB06E"/></svg></div>
+      </div>
+    </div>
+  </div>
+
+  <p class="note"><b>Read this as:</b> "Now" is today's mint-dark duotone (the style you canonized in §5.1). "Option A" keeps a strong duotone with no mint on light — ink carries the icon, gold is the accent. "Option B" is the literal "gold stroke" reading and shows why a gold primary stroke doesn't work on a light tile. Note: "keep mint-dark for icon strokes only" (the other path) looks identical to "Now" — so the real choice is between <b>Now/keep</b> and <b>Option A</b>.</p>
+</div>
+</body>
+</html>

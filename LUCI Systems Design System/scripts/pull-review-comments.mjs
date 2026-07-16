@@ -1,7 +1,13 @@
 #!/usr/bin/env node
 /**
- * Pull live comments from the review API into review-comments.json (for Cursor archive).
- * Usage: COMMENTS_API_URL=https://your-site.netlify.app/api/comments node scripts/pull-review-comments.mjs
+ * Pull live comments/approvals from the review API into review-comments.json
+ * (local Cursor archive) so feedback is captured outside the portal.
+ *
+ * Usage:
+ *   node scripts/pull-review-comments.mjs
+ *   COMMENTS_API_URL=http://10.10.1.17:8081/api/comments node scripts/pull-review-comments.mjs
+ *
+ * If COMMENTS_API_URL is not set, falls back to `commentsApiUrl` in review-queue.json.
  */
 import fs from 'fs';
 import path from 'path';
@@ -28,6 +34,7 @@ const out = {
   updated: new Date().toISOString().slice(0, 10),
   note: 'Synced from live review API',
   comments: data.comments || [],
+  approvals: data.approvals || {},
 };
 fs.writeFileSync(path.join(reviewDir, 'review-comments.json'), JSON.stringify(out, null, 2) + '\n');
-console.log('Saved', out.comments.length, 'comments to review-comments.json');
+console.log('Saved', out.comments.length, 'comments +', Object.keys(out.approvals).length, 'approvals to review-comments.json');

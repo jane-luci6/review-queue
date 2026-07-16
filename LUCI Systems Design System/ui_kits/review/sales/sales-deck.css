@@ -1,0 +1,580 @@
+/* LUCI Sales Deck — Track B (Static Visual) · 16:9 demo primer
+   Fixed 1280×720 slides, dark-led with light reading zones. Mint primary,
+   gold secondary. Space Grotesk structure · Inter recede · Syncopate display (cover only).
+   8px spacing scale. Whitespace + hairlines, no boxy containers. */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy-deep: #0A161C;
+  --navy: #10232D;
+  --navy-mid: #314955;
+  --navy-muted: #49616E;
+  --mint: #68E3BE;
+  --mint-rgb: 104, 227, 190;
+  --mint-dark: #2b9e80;
+  --gold: #EDD086;
+  --gold-deep: #CEB06E;
+  --gold-rgb: 237, 208, 134;
+  --off-white: #F5F8FA;
+  --sand: #E5E3DF;
+  --tint: #EEF2F4;
+  --rule-light: #DBE1E4;
+  --ink: #354F5C;
+  --ink-strong: #1C2B33;
+
+  --font: 'Space Grotesk', 'Trebuchet MS', sans-serif;
+  --font-body: 'Inter', 'Space Grotesk', sans-serif;
+  --display: 'Syncopate', 'Arial Black', sans-serif;
+
+  --slide-w: 1280px;
+  --slide-h: 720px;
+  --pad: 80px;
+}
+
+html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+
+body {
+  font-family: var(--font-body);
+  background: #06090C;
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 40px 0 80px;
+}
+
+/* ── Slide shell ─────────────────────────────── */
+.slide {
+  position: relative;
+  width: var(--slide-w);
+  height: var(--slide-h);
+  flex: none;
+  overflow: hidden;
+  padding: 64px var(--pad);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+}
+
+.slide--dark {
+  background:
+    radial-gradient(130% 120% at 12% 0%, rgba(var(--mint-rgb), 0.10), transparent 46%),
+    radial-gradient(120% 130% at 100% 100%, rgba(var(--gold-rgb), 0.07), transparent 50%),
+    linear-gradient(158deg, var(--navy) 0%, var(--navy-deep) 78%, #06121A 100%);
+  color: var(--off-white);
+}
+
+.slide--light {
+  background:
+    radial-gradient(120% 120% at 100% 0%, rgba(var(--mint-rgb), 0.10), transparent 44%),
+    var(--off-white);
+  color: var(--ink);
+}
+
+/* Grey variant — neutral dark slate for background rhythm variety (pairs with slide--dark for text) */
+.slide--grey {
+  background:
+    radial-gradient(130% 120% at 12% 0%, rgba(var(--mint-rgb), 0.08), transparent 46%),
+    radial-gradient(120% 130% at 100% 100%, rgba(var(--gold-rgb), 0.06), transparent 50%),
+    linear-gradient(158deg, #1B2026 0%, #12171C 78%, #0D1216 100%);
+}
+
+/* Sand variant — light warm-neutral canvas for image-led slides */
+.slide--sand {
+  background:
+    radial-gradient(120% 120% at 100% 0%, rgba(var(--mint-rgb), 0.08), transparent 44%),
+    var(--sand);
+  color: var(--ink);
+}
+
+/* ── Shared type ─────────────────────────────── */
+.kicker {
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+}
+.slide--dark .kicker { color: var(--mint); }
+.slide--grey .kicker { color: var(--mint); }
+/* Light-surface kickers sit on a navy chip so mint reads (mint-on-light fails contrast) */
+.slide--light .kicker {
+  color: var(--mint);
+  background: var(--navy-deep);
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+/* Bare kicker: mint text, no chip (explicit override — low contrast accepted) */
+.kicker--bare {
+  background: none !important;
+  padding: 0 !important;
+  display: inline !important;
+  border-radius: 0 !important;
+}
+
+.s-title {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+.slide--dark .s-title { color: #FFFFFF; }
+.slide--light .s-title { color: var(--ink-strong); }
+
+.s-title--lg { font-size: 52px; }
+
+.accent { color: var(--mint); }
+.slide--light .accent { color: var(--ink-strong); }
+.accent-gold { color: var(--gold); }
+/* Bright gold (#EDD086) fails contrast on light — per the dual-accent system,
+   light-surface accents use the canonized deep mint (#2b9e80) every time.
+   Gold stays the dark-slide flourish (bright gold, dark only). */
+.slide--light .accent-gold { color: var(--mint-dark); }
+
+.s-lead {
+  font-family: var(--font-body);
+  font-size: 21px;
+  line-height: 1.55;
+  max-width: 62ch;
+}
+.slide--dark .s-lead { color: rgba(235, 245, 248, 0.82); }
+.slide--light .s-lead { color: var(--navy-muted); }
+
+/* Thin accent rule under titles */
+.rule {
+  width: 56px;
+  height: 4px;
+  background: var(--mint);
+  border: 0;
+  margin: 24px 0;
+}
+.slide--light .rule { background: var(--gold); }
+
+/* ── Footer furniture ────────────────────────── */
+.s-foot {
+  position: absolute;
+  left: var(--pad);
+  right: var(--pad);
+  bottom: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.slide--dark .s-foot { color: rgba(235, 245, 248, 0.4); }
+.slide--light .s-foot { color: var(--navy-muted); }
+.s-foot__num { font-variant-numeric: tabular-nums; }
+.s-wordmark { font-family: var(--display); font-weight: 700; letter-spacing: 0.18em; }
+.slide--dark .s-wordmark { color: rgba(var(--mint-rgb), 0.7); }
+.slide--light .s-wordmark { color: var(--navy-muted); }
+
+.s-head { flex: none; }
+.s-body { flex: 1 1 auto; display: flex; min-height: 0; position: relative; }
+
+/* ── 01 Cover ────────────────────────────────── */
+.cover {
+  justify-content: space-between;
+  padding-bottom: 56px;
+}
+.cover__frame {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  justify-content: center;
+  min-height: 0;
+}
+.cover__logo { height: 60px; width: auto; align-self: flex-start; margin-bottom: 56px; }
+.cover__title {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 66px;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  color: #FFFFFF;
+  max-width: 18ch;
+}
+.cover__rule { display: block; width: 56px; height: 4px; background: var(--gold); margin: 26px 0 0; }
+.cover__footer {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(235, 245, 248, 0.1);
+}
+.cover__kicker {
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mint);
+  margin: 0;
+}
+.cover__client-slot {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 56px;
+  min-width: 160px;
+  max-width: 280px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: inset 0 0 0 1px rgba(var(--mint-rgb), 0.18);
+}
+.cover__client {
+  display: block;
+  max-width: 100%;
+  max-height: 44px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  object-position: left center;
+  filter: brightness(0) invert(1); /* dark/colored logos → white on navy cover */
+  opacity: 0.92;
+}
+
+/* ── 02 Your environment (photo mosaic) ─────── */
+.slide--env .s-head { margin-bottom: 8px; }
+.env-mosaic {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 20px;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  align-items: stretch;
+}
+.env-mosaic__stack {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 20px;
+  min-height: 0;
+}
+.env-slot {
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  background: rgba(6, 18, 26, 0.55);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.35);
+  outline: 1px solid rgba(var(--mint-rgb), 0.16);
+  min-height: 0;
+}
+.env-slot--hero { min-height: 360px; }
+.env-slot--sub { min-height: 0; }
+.env-slot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.env-slot--hero img { min-height: 360px; }
+.env-slot img[src*="deck-photo-placeholder"] {
+  object-fit: cover;
+  opacity: 0.85;
+}
+
+/* ── 02 Product hero (C/A/E) ─────────────────── */
+.hero-split { display: flex; flex-direction: column; height: 100%; }
+.hero-split__top { flex: none; }
+.hero-split__shot {
+  flex: 1 1 auto;
+  margin: 28px 0 0;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.5);
+  outline: 1px solid rgba(var(--mint-rgb), 0.18);
+}
+.hero-split__shot img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+
+/* ── Two-up generic (title left, visual right) ── */
+.two-up { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; width: 100%; }
+.two-up--wideR { grid-template-columns: 0.85fr 1.15fr; }
+.two-up__visual { display: flex; align-items: center; justify-content: center; }
+.two-up__visual img { max-width: 100%; max-height: 480px; height: auto; }
+
+/* ── Pillars (4 up, icon style — brochure canonical) ── */
+.pillars { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px 72px; width: 100%; align-content: center; }
+.pillar { display: flex; gap: 20px; align-items: flex-start; }
+.pillar__icon { flex: none; width: 40px; height: 40px; }
+.pillar__icon svg { width: 100%; height: 100%; display: block; }
+.pillar__h { font-family: var(--font); font-weight: 700; font-size: 21px; line-height: 1.2; letter-spacing: -0.02em; color: var(--ink-strong); margin-bottom: 8px; }
+.pillar__d { font-family: var(--font-body); font-size: 16px; line-height: 1.5; color: var(--navy-muted); }
+
+/* Visual variant — larger soft gold tiles, ink + gold duotone icons, more air */
+.pillars--visual { gap: 56px 88px; }
+.pillars--visual .pillar { gap: 24px; align-items: center; }
+.pillar__tile { flex: none; width: 64px; height: 64px; border-radius: 16px; display: grid; place-items: center; background: linear-gradient(155deg, #E6F5EF 0%, #F3FAF8 100%); box-shadow: inset 0 0 0 1px rgba(43,158,128,0.14); }
+.pillar__tile svg { width: 38px; height: 38px; display: block; }
+.pillars--visual .pillar__h { font-size: 22px; margin-bottom: 6px; }
+.pillars--visual .pillar__d { font-size: 16px; line-height: 1.55; }
+
+/* ── What LUCI reduces (Today → With LUCI) ──── */
+.slide--reduce .s-head { margin-bottom: 16px; }
+.slide--reduce .s-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+}
+.reduce-ledger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.reduce-ledger__fig {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 0;
+}
+
+/* ── Problem grid ────────────────────────────── */
+.prob { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; width: 100%; align-content: center; }
+.prob__item { border-top: 2px solid rgba(var(--gold-rgb), 0.5); padding-top: 18px; }
+.prob__big { font-family: var(--font); font-weight: 700; font-size: 40px; letter-spacing: -0.02em; color: var(--gold); line-height: 1; }
+.prob__lbl { font-family: var(--font); font-weight: 600; font-size: 17px; color: #FFFFFF; margin: 12px 0 6px; }
+.prob__sub { font-family: var(--font-body); font-size: 14px; line-height: 1.45; color: rgba(235, 245, 248, 0.62); }
+
+/* ── Control layer (inputs → LUCI → out) ─────── */
+.control-cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; width: 100%; align-content: center; }
+.cc { }
+.cc__lbl { font-family: var(--font); font-weight: 700; font-size: 16px; color: var(--mint); letter-spacing: 0.01em; margin-bottom: 12px; }
+.cc__items { font-family: var(--font-body); font-size: 15px; line-height: 1.65; color: rgba(235, 245, 248, 0.8); }
+
+/* ── Outcomes (after go-live) ────────────────── */
+.outcomes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px 64px; width: 100%; align-content: center; }
+.outcome { display: flex; gap: 18px; align-items: flex-start; }
+.outcome__mk { flex: none; width: 30px; height: 30px; border-radius: 50%; background: rgba(var(--mint-rgb), 0.16); display: grid; place-items: center; }
+.outcome__mk svg { width: 16px; height: 16px; }
+.outcome__h { font-family: var(--font); font-weight: 700; font-size: 19px; color: var(--ink-strong); margin-bottom: 4px; }
+.outcome__d { font-family: var(--font-body); font-size: 15px; line-height: 1.5; color: var(--navy-muted); }
+.slide--grey .outcome__h { color: #FFFFFF; }
+.slide--grey .outcome__d { color: rgba(235, 245, 248, 0.72); }
+
+/* ── Case study ──────────────────────────────── */
+.cs { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; width: 100%; align-items: center; }
+.cs__metarow { display: flex; gap: 40px; margin-bottom: 28px; }
+.cs__metric .n { font-family: var(--font); font-weight: 700; font-size: 44px; color: var(--ink-strong); line-height: 1; letter-spacing: -0.02em; }
+.cs__metric .l { font-family: var(--font); font-weight: 600; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--navy-muted); margin-top: 8px; }
+.cs__gains { list-style: none; }
+.cs__gains li { font-family: var(--font-body); font-size: 16px; line-height: 1.4; color: var(--ink); padding: 10px 0 10px 26px; border-bottom: 1px solid var(--rule-light); position: relative; }
+.cs__gains li:last-child { border-bottom: 0; }
+.cs__gains li::before { content: ''; position: absolute; left: 0; top: 17px; width: 9px; height: 9px; border-radius: 50%; background: var(--navy-mid); }
+.cs__quote {
+  position: relative;
+  padding: 28px 28px 28px 32px;
+  border-radius: 16px;
+  background: linear-gradient(162deg, var(--navy) 0%, var(--navy-deep) 100%);
+  color: var(--off-white);
+}
+.cs__quote::before { content: ''; position: absolute; left: 0; top: 28px; bottom: 28px; width: 4px; background: var(--gold); border-radius: 4px; }
+.cs__quote .k { font-family: var(--font); font-weight: 600; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mint); margin-bottom: 14px; }
+.cs__quote .t { font-family: var(--font); font-weight: 700; font-size: 26px; line-height: 1.32; letter-spacing: -0.015em; }
+.cs__quote .a { font-family: var(--font-body); font-size: 14px; color: rgba(235, 245, 248, 0.62); margin-top: 18px; }
+.cs__quote .a b { color: rgba(235, 245, 248, 0.95); font-weight: 600; }
+
+/* ── Timeline (journeys) ─────────────────────── */
+.tl-wrap { width: 100%; align-self: center; }
+.tl {
+  display: grid;
+  grid-template-columns: repeat(var(--steps, 5), 1fr);
+  position: relative;
+  margin-top: 8px;
+}
+.tl::before {
+  content: '';
+  position: absolute;
+  top: 13px;
+  left: 8%;
+  right: 8%;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(var(--mint-rgb), 0.35), rgba(var(--mint-rgb), 0.7));
+}
+.tl-step { text-align: center; padding: 0 14px; position: relative; }
+.tl-node {
+  width: 26px; height: 26px; border-radius: 50%;
+  border: 2px solid var(--mint);
+  background: var(--navy-deep);
+  display: grid; place-items: center;
+  margin: 0 auto 18px;
+  position: relative; z-index: 1;
+}
+.tl-node::after { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--mint); }
+.tl-step--final .tl-node { background: var(--mint); }
+.tl-step--final .tl-node::after { background: var(--navy-deep); }
+.tl-h { font-family: var(--font); font-weight: 700; font-size: 18px; color: #FFFFFF; margin-bottom: 12px; letter-spacing: -0.01em; }
+.tl-step--final .tl-h { color: var(--mint); }
+.tl-list { list-style: none; }
+.tl-list li { font-family: var(--font-body); font-size: 14px; line-height: 1.4; color: rgba(235, 245, 248, 0.66); margin-bottom: 8px; }
+
+.tl-caption { font-family: var(--font-body); font-size: 15px; color: rgba(235, 245, 248, 0.62); margin-top: 8px; max-width: 70ch; }
+
+/* ── Logo wall ───────────────────────────────── */
+.logos { display: grid; grid-template-columns: 1fr; gap: 18px; width: 100%; align-content: center; }
+.logos img { width: 100%; height: auto; opacity: 0.95; }
+
+/* ── Close ───────────────────────────────────── */
+.close { justify-content: center; }
+.close__logo { height: 48px; width: auto; align-self: flex-start; margin-bottom: 44px; }
+.close__title { font-family: var(--font); font-weight: 700; font-size: 48px; line-height: 1.08; letter-spacing: -0.03em; color: #FFFFFF; max-width: 22ch; }
+.close__contact { position: absolute; left: var(--pad); bottom: 64px; font-family: var(--font); font-size: 19px; letter-spacing: 0.04em; color: rgba(235, 245, 248, 0.82); }
+.close__contact a { color: var(--mint); text-decoration: none; }
+
+/* ── What is LUCI? (rectangular map) ────────── */
+.what-map { display: grid; grid-template-columns: 0.8fr 1fr; gap: 64px; align-items: center; width: 100%; }
+.what-map__text { max-width: 40ch; }
+.map-rect {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 26px 56px rgba(15, 30, 38, 0.28);
+  outline: 1px solid var(--rule-light);
+}
+.map-rect img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+.slide--what .s-head { margin-bottom: 12px; }
+.s-deck { margin-top: 18px; font-family: var(--font-body); font-size: 18px; line-height: 1.5; color: var(--navy-muted); max-width: 54ch; }
+.slide--dark .s-deck, .slide--grey .s-deck { color: rgba(235, 245, 248, 0.72); }
+.slide--dark .map-rect, .slide--grey .map-rect { outline: 1px solid rgba(235, 245, 248, 0.14); box-shadow: 0 26px 60px rgba(0, 0, 0, 0.5); }
+
+/* ── Six capabilities (3x2) ─────────────────── */
+.caps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px 36px; width: 100%; align-content: center; }
+.cap-card { display: flex; flex-direction: column; align-items: center; }
+/* Fixed visual height keeps the 2×2 grid inside the slide body so it can never
+   overflow upward and bury the title. SVGs letterbox via contain. */
+.cap-card__visual { width: 100%; height: 160px; object-fit: contain; margin-bottom: 18px; }
+.cap-card__name { font-family: var(--font); font-weight: 700; font-size: 24px; letter-spacing: -0.01em; color: var(--ink-strong); margin-bottom: 0; text-align: center; }
+.cap-card__body { font-family: var(--font-body); font-size: 24px; line-height: 1.35; color: var(--navy-muted); text-align: center; }
+.slide--grey .cap-card__name { color: #FFFFFF; }
+.slide--grey .cap-card__body { color: rgba(235, 245, 248, 0.70); }
+
+/* ── System architecture ────────────────────── */
+.arch { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; min-height: 0; }
+/* Capped so the diagram + one-line caption fit inside the slide body —
+   prevents the centered card from overflowing upward over the title. */
+.arch__img { max-width: 100%; max-height: 400px; width: auto; height: auto; display: block; }
+.arch__cap { font-family: var(--font-body); font-size: 15px; line-height: 1.5; color: var(--navy-muted); max-width: 80ch; text-align: center; }
+.slide--arch.slide--dark .arch__img { border-radius: 16px; box-shadow: 0 26px 60px rgba(0, 0, 0, 0.5); }
+.slide--arch.slide--dark .arch__cap { color: rgba(235, 245, 248, 0.72); }
+.slide--arch .s-head { flex: none; margin-bottom: 4px; }
+
+/* ── Embedded operation (orbit, image-led) ──── */
+.orbit-stage { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+.orbit-stage__img { height: auto; width: auto; max-width: 100%; max-height: 85%; display: block; }
+.orbit-stage__cap { font-family: var(--font-body); font-size: 18px; line-height: 1.5; color: var(--navy-muted); text-align: center; max-width: 80ch; }
+.slide--light .orbit-stage__cap { color: var(--navy-muted); }
+
+/* ── 02 One interface — Control · Automate · Execute ── */
+.cae { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: center; width: 100%; height: 100%; }
+.cae__shot { width: 100%; max-height: 420px; border-radius: 16px; overflow: hidden; box-shadow: 0 26px 60px rgba(0, 0, 0, 0.5); outline: 1px solid rgba(235, 245, 248, 0.14); }
+.cae__shot img { width: 100%; height: auto; display: block; }
+.cae__steps { list-style: none; display: flex; flex-direction: column; }
+.cae__step { display: flex; gap: 22px; align-items: flex-start; padding: 20px 0; border-top: 1px solid rgba(235, 245, 248, 0.12); }
+.cae__step:first-child { border-top: 0; padding-top: 2px; }
+.cae__step:last-child { padding-bottom: 0; }
+.cae__num { flex: none; width: 60px; font-family: var(--display); font-weight: 700; font-size: 30px; letter-spacing: 0.06em; color: var(--mint); line-height: 1; padding-top: 4px; }
+.cae__verb { font-family: var(--font); font-weight: 700; font-size: 32px; letter-spacing: -0.025em; color: #FFFFFF; line-height: 1.05; }
+.cae__body { font-family: var(--font-body); font-size: 24px; line-height: 1.4; color: rgba(235, 245, 248, 0.78); margin-top: 8px; }
+
+/* ── 03 What LUCI is (LUCI + Systems) + four pillars ── */
+.combo { display: grid; grid-template-columns: 2.3fr 1fr; grid-template-rows: 1fr; gap: 48px; width: 100%; height: 100%; }
+.combo__diagram { width: 100%; align-self: center; }
+.combo__diagram img { width: 100%; height: auto; display: block; }
+.combo__pillars { list-style: none; display: flex; flex-direction: column; justify-content: space-between; gap: 0; height: 100%; padding: 56px 0; }
+.combo__pillar { display: flex; gap: 18px; align-items: flex-start; }
+.combo__pillar .pillar__tile { width: 60px; height: 60px; border-radius: 16px; }
+.combo__pillar .pillar__tile svg { width: 36px; height: 36px; }
+.combo__ph { font-family: var(--font); font-weight: 700; font-size: 24px; line-height: 1.2; letter-spacing: -0.015em; color: var(--ink-strong); }
+
+/* ── 06 System architecture (sand, image-led, flow only) ───────── */
+.archflow { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+.archflow__img { width: 100%; display: flex; align-items: center; justify-content: center; }
+.archflow__img img { max-width: 100%; max-height: 500px; width: auto; height: auto; display: block; }
+
+/* ── 08 Case study (website-aligned) ─────────────────── */
+.cs2__dek { margin-top: 16px; font-family: var(--font-body); font-size: 15.5px; line-height: 1.5; color: var(--navy-muted); max-width: 62ch; }
+.cs2 { display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; width: 100%; height: 100%; align-items: center; }
+.cs2__stat .n { font-family: var(--font); font-weight: 700; font-size: 54px; line-height: 1; letter-spacing: -0.03em; color: var(--ink-strong); }
+.cs2__stat .n::after { content: ''; display: block; width: 48px; height: 4px; background: var(--gold-deep); margin-top: 12px; }
+.cs2__stat .l { font-family: var(--font); font-weight: 600; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--navy-muted); margin-top: 12px; }
+.cs2__outcomes { list-style: none; margin-top: 22px; display: flex; flex-direction: column; gap: 14px; }
+.cs2__outcomes li { padding: 0 0 0 16px; border-left: 3px solid var(--gold-deep); }
+.cs2__oh { font-family: var(--font); font-weight: 700; font-size: 17px; color: var(--ink-strong); margin-bottom: 3px; letter-spacing: -0.01em; }
+.cs2__od { font-family: var(--font-body); font-size: 13px; line-height: 1.45; color: var(--navy-muted); }
+.cs2__side { display: flex; flex-direction: column; gap: 22px; }
+.cs2__relo { width: 100%; height: auto; max-height: 190px; object-fit: contain; display: block; }
+.cs2__quote { position: relative; padding: 20px 22px; background: rgba(104, 227, 190, 0.10); border-left: 5px solid var(--mint); border-radius: 0 12px 12px 0; }
+.cs2__quote blockquote { margin: 0; font-family: var(--font); font-weight: 700; font-size: 18px; line-height: 1.3; letter-spacing: -0.015em; color: var(--ink-strong); }
+.cs2__quote figcaption { font-family: var(--font-body); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy-muted); margin-top: 12px; padding-top: 10px; border-top: 1px solid rgba(10, 22, 28, 0.12); }
+
+/* Case study on dark — recolor text/borders only, layout unchanged */
+.slide--dark .cs2__dek { color: rgba(235, 245, 248, 0.82); }
+.slide--dark .cs2__stat .n { color: #FFFFFF; }
+.slide--dark .cs2__stat .l { color: rgba(235, 245, 248, 0.66); }
+.slide--dark .cs2__oh { color: #FFFFFF; }
+.slide--dark .cs2__od { color: rgba(235, 245, 248, 0.70); }
+.slide--dark .cs2__quote { background: rgba(104, 227, 190, 0.10); border-left-color: var(--mint); }
+.slide--dark .cs2__quote blockquote { color: #FFFFFF; }
+.slide--dark .cs2__quote figcaption { color: rgba(235, 245, 248, 0.66); border-top-color: rgba(235, 245, 248, 0.14); }
+
+/* ── 09 The journey — Phase 1 (gold) + Phase 2 (mint), capabilities-doc visual ── */
+.journey { width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; }
+.journey__phase { width: 100%; }
+.journey__tag { display: flex; align-items: baseline; gap: 14px; margin-bottom: 44px; font-family: var(--font); }
+.journey__tag span:first-child { font-weight: 700; font-size: 19px; letter-spacing: 0.14em; text-transform: uppercase; padding: 6px 13px; border-radius: 999px; color: var(--ink-strong); }
+.journey__tag span:last-child { font-weight: 600; font-size: 24px; color: var(--navy-muted); }
+.journey__phase--pre .journey__tag span:first-child { background: rgba(237, 208, 134, 0.22); }
+.journey__phase--deploy .journey__tag span:first-child { background: rgba(46, 138, 112, 0.18); }
+.journey__rail { list-style: none; display: grid; grid-template-columns: repeat(5, 1fr); position: relative; }
+.journey__rail::before { content: ''; position: absolute; top: 28px; left: 10%; right: 10%; height: 2px; }
+.journey__phase--pre .journey__rail::before { background: linear-gradient(90deg, rgba(var(--gold-rgb), 0.3), rgba(var(--gold-rgb), 0.6)); }
+.journey__phase--deploy .journey__rail::before { background: linear-gradient(90deg, rgba(var(--mint-rgb), 0.3), rgba(var(--mint-rgb), 0.65)); }
+.journey__step { text-align: center; padding: 0 4px; position: relative; }
+.journey__node { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; margin: 0 auto 32px; position: relative; z-index: 1; color: var(--navy-deep); box-shadow: 0 0 0 6px var(--off-white); }
+.journey__node svg { width: 28px; height: 28px; display: block; }
+.journey__phase--pre .journey__node { background: var(--gold); }
+.journey__phase--deploy .journey__node { background: var(--mint); }
+.journey__h { font-family: var(--font); font-weight: 700; font-size: 30px; line-height: 1.1; color: var(--ink-strong); margin-bottom: 10px; letter-spacing: -0.01em; }
+.journey__d { font-family: var(--font-body); font-size: 20px; line-height: 1.35; color: var(--navy-muted); }
+.journey__turn { width: 100%; height: 72px; display: flex; justify-content: center; align-items: center; margin: 2px 0; }
+.journey__turn svg { height: 72px; width: auto; display: block; }
+.journey__cap { margin-top: 48px; padding-top: 0; text-align: center; font-family: var(--font); font-weight: 700; font-size: 26px; line-height: 1.35; letter-spacing: -0.01em; color: var(--ink-strong); max-width: 78ch; margin-left: auto; margin-right: auto; }
+.journey__cap em { font-style: normal; color: var(--mint-dark); }
+/* Slide 10 deployment journey on dark — recolor text + node rings for the dark canvas */
+.slide--dark.slide--journey .journey__tag span:first-child { color: #FFFFFF; }
+.slide--dark.slide--journey .journey__tag span:last-child { color: rgba(235, 245, 248, 0.72); }
+.slide--dark.slide--journey .journey__h { color: #FFFFFF; }
+.slide--dark.slide--journey .journey__d { color: rgba(235, 245, 248, 0.72); }
+.slide--dark.slide--journey .journey__node { box-shadow: 0 0 0 6px var(--navy-deep); }
+.slide--dark.slide--journey .journey__cap { color: #FFFFFF; }
+.slide--dark.slide--journey .journey__cap em { color: var(--mint); }
+
+/* ── Print / export ──────────────────────────── */
+@media print {
+  @page { size: 1280px 720px; margin: 0; }
+  body { background: #fff; padding: 0; gap: 0; display: block; }
+  .slide { box-shadow: none; page-break-after: always; break-after: page; }
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+}

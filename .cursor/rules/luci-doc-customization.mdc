@@ -1,0 +1,79 @@
+---
+description: >-
+  When the user pastes an Internal Marketing Portal document URL (10.10.1.17:8081)
+  or asks to customize a LUCI sales doc from the portal — regardless of which
+  folder or file is open. Fetch portal skills, customize, then automatically open
+  the rendered client HTML in Cursor's in-editor browser for direct click-to-edit.
+alwaysApply: true
+---
+
+# LUCI portal document URL → Cursor (folder-agnostic)
+
+Mike pastes a portal preview URL into Cursor chat. **No specific folder needs to be open.**
+
+## On every portal customization URL
+
+1. **Fetch** the pasted page or read local skills (see URL patterns below).
+2. Read template `SKILL.md` + `_brand/SKILL.md` + `CURSOR.md`.
+3. Copy master → `ui_kits/sales/<client>-<doc>.html` and apply client customizations.
+4. **Automatically open the rendered client HTML in Cursor's in-editor browser** (not the HTML source) — see "Open the rendered preview in the editor" below. Mike clicks editable text and types in that preview. **No extra canvas or prompt needed** for word-level tweaks.
+
+## URL patterns → template id
+
+| Path contains | template-id |
+|---------------|-------------|
+| `sales-deck` | `sales-deck` |
+| `capabilities-document` | `capabilities-document` |
+| `scope-of-work` | `scope-of-work` |
+| `budgetary-estimate` | `budgetary-estimate` |
+
+Portal base: `http://10.10.1.17:8081/internal-portal/customization/`
+
+## Click-to-edit in preview
+
+Client HTML keeps `contenteditable="true"` on editable regions (`.doc-edit`, `.deck-edit`, `[data-studio]`). When Cursor previews the file, Mike can click cover lines, prepared-for text, close page copy, etc. and type. Image swaps (client logo, environment photos) are done in HTML or via the Customization Studio form.
+
+- **Preserve** `contenteditable`, `data-studio`, `doc-edit`, and `deck-edit` markers when customizing — do not strip them.
+- **Do not** edit locked pages (per template `SKILL.md`).
+- Save the HTML file when Mike is done editing in preview (or when he asks).
+
+## Locked pages are locked — no exceptions without confirmation
+
+"Locked" means **no changes of any kind** — not text, images, diagrams, stats, structure, **and not color, styling, spacing, layout, or CSS either.** That covers edits to the HTML, inline `style` attributes, scoped `<style>` blocks in the client file, **and the shared stylesheet files** (`sales-document.css`, `capabilities-document.css`, `brochure.css`, `scope-of-work.css`, `budgetary-estimate.css`). A color-only or "small" styling change to a locked page is still a change to a locked page.
+
+### Pre-edit gate — run before every edit to a client sales doc
+
+Before making any edit, check the target element/selector against the template `SKILL.md` editable-regions list:
+
+- **Target listed as editable** → proceed.
+- **Target NOT listed as editable, or IS in a locked list** → **do NOT edit.** Stop and tell the user:
+
+  > "Page X is locked per the `<template>` SKILL.md (protected brand/technical content). Do you want to override that? And if so, should it be **local to this client doc only** or **canonical** (master + shared CSS, propagates to all docs)?"
+
+  Wait for the answer before editing.
+
+A user request to change a locked page is **not** an override by itself — it is the trigger for this pause-and-confirm. Never edit a locked page first and mention it after.
+
+## Open the rendered preview in the editor (automatic — every time)
+
+After customizing the client HTML, **automatically open the rendered doc in Cursor's in-editor (Glass) browser — not the HTML source.** Do this as the final step of every customization, without being asked.
+
+1. From the client file's folder (`LUCI Systems Design System/ui_kits/sales/`), start a local static server in the background: `python3 -m http.server 8771 --bind 127.0.0.1` (if 8771 is busy, increment until free; reuse it if it's already serving the right file).
+2. Verify it serves the file: `curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:<port>/<client-file>.html` → `200`.
+3. Open the rendered URL in Cursor's in-editor (Glass) browser via the `cursor-app-control` MCP `open_resource` tool, URI `http://127.0.0.1:<port>/<client-file>.html`. This renders the doc with all CSS, fonts, diagrams, and the client logo inside Cursor; the `contenteditable` regions are click-to-edit there.
+4. Tell the user it's live in the editor and click-to-edit. Leave the server running while they review; stop it when they're done or before PDF export.
+
+**Do not** open the client HTML with a `file://` URI — `open_resource` opens that as a text file (HTML source), not a rendered preview. The `http://127.0.0.1:<port>/…` URL is what renders in Cursor.
+
+**User fallback** if the in-editor pane doesn't appear: `Cmd+Shift+P` → "Simple Browser: Show" → paste the localhost URL.
+
+## Where to save client work
+
+- `LUCI Systems Design System/ui_kits/sales/<client>-<doc>.html`
+- Never save client work to the VM deploy folder
+
+## Agent behavior
+
+- Follow editable vs locked regions in template `SKILL.md` exactly — run the pre-edit gate ("Locked pages are locked" above) before any edit; never edit a locked page without confirming first.
+- After customization, automatically open the rendered client HTML in Cursor's in-editor browser (procedure above) for click-to-edit fine-tuning.
+- PDF: `scripts/render-pdf.sh` when requested.

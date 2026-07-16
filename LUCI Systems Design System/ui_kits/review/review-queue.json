@@ -1,47 +1,146 @@
 {
-  "updated": "2026-06-19",
-  "publishNote": "Build + ./publish.sh. Bump reviewVersion + versionNote for new uploads (Teams + version history on site). Set due for first-time review. See teams-notifications-guide.txt.",
-  "commentsApiUrl": "",
-  "commentsApiNote": "Optional full URL if review page is on Webflow but API is on Netlify. Leave empty when the whole site is on Netlify.",
+  "updated": "2026-07-16",
+  "publishNote": "Build (npm run build:review) outputs to ui_kits/review. Bump reviewVersion + versionNote for new uploads (version history shown in portal). Set dueForReview for first-time review. Comments/approvals sync server-side via the comments_api container (proxied at /api/comments); Jane sees Mike/Mark's feedback on refresh. Archive with scripts/pull-review-comments.mjs.",
   "previewBaseUrl": "",
+  "commentsApiUrl": "http://10.10.1.17:8081/api/comments",
   "messagingDocsNote": "Populated at build from messaging-sources.json + OneDrive .docx (see scripts/sync-messaging-docs.mjs)",
   "messagingDocs": [
     {
       "title": "Messaging guide",
       "url": "messaging/messaging-guide.html",
-      "note": "Updated Jun 19, 2026"
+      "note": "Updated Jul 16, 2026"
     },
     {
       "title": "LUCI philosophy",
       "url": "messaging/philosophy.html",
-      "note": "Updated Jun 19, 2026"
-    },
-    {
-      "title": "LUCI system diagram",
-      "url": "messaging/luci-system-diagram.html",
-      "note": "Updated Jun 9, 2026"
+      "note": "Updated Jul 16, 2026"
     },
     {
       "title": "Personas",
       "url": "messaging/personas.html",
-      "note": "Updated Jun 19, 2026"
+      "note": "Updated Jul 16, 2026"
     }
   ],
   "inProgress": [],
   "dueForReview": [
     {
+      "id": "case-study-tachi",
+      "title": "Case Study · Tachi Palace Casino Resort",
+      "summary": "Tachi Palace case study — one week to a foundation for growth: the bingo hall brought alive with eight LED walls, crew photo strip, before/after slider, results, and what's next.",
+      "reviewStatus": "New — your review",
+      "signOff": false,
+      "reviewVersion": 1,
+      "versionNote": "First portal preview — full Tachi Palace case study (web edition) with crew photo strip, before/after slider, and PDF download. Mirrors the live web page; the live version also includes a highlight reel video.",
+      "due": "2026-07-16",
+      "liveUrl": "http://10.10.1.37/resources/case-studies/tachi-palace/",
+      "hubPreviewPath": "ui_kits/case-studies/tachi-palace.html",
+      "reviewBrief": {
+        "description": "The Tachi Palace case study is the long-form Lemoore bingo-hall refresh story for the website, sales, and export — eight LED walls and all casino audio onto one LUCI interface in one week. The embedded preview and 'Open full preview' open the live web page; 'Download PDF' pulls the print edition.",
+        "reviewAsk": "accuracy and story — whether the week of hands-on work, the crew photos, and the before/after read true; and whether the design sits on-brand alongside the Ameristar case study."
+      },
+      "versionHistory": [
+        {
+          "version": 1,
+          "published": "2026-07-16",
+          "note": "First portal preview — live web edition (open in new tab) + PDF download."
+        }
+      ],
+      "previewUrl": "case-studies/tachi-palace.html",
+      "downloads": [
+        {
+          "label": "PDF",
+          "path": "assets/sales/LUCI-Case-Study-Tachi-Palace.pdf"
+        }
+      ]
+    },
+    {
+      "id": "budgetary-estimate",
+      "title": "Budgetary estimate",
+      "summary": "Six-page post-capabilities pre-quote — cover, What LUCI is intro, scoped endpoint review, line-item proposal, investment + outcomes, and endpoint pricing tiers with a highlighted offered tier.",
+      "reviewStatus": "New — your review",
+      "signOff": false,
+      "reviewVersion": 2,
+      "versionNote": "Redesigned 6-page estimate — brochure-aligned page 2 (What LUCI is), customer-facing scope bridge, line-item proposal, investment + delivers, and endpoint pricing tiers with a highlightable offered tier + editable discounts. Line items can be ingested from an Excel spreadsheet. Updated Jul 16, 2026 — line-item labels and numerals switched to Space Grotesk (structure tier), body copy set to Inter (strict brand three-tier font discipline).",
+      "due": "2026-07-16",
+      "hubPreviewPath": "ui_kits/sales/budgetary-estimate.html",
+      "reviewBrief": {
+        "description": "Scoped, line-itemed pre-quote estimate sent after the Capabilities document. Six pages: cover, What LUCI is intro, review of scope, proposal line items, investment summary + what it delivers, and endpoint pricing tiers + close.",
+        "reviewAsk": "whether the redesign reads modern and on-brand — the page-2 What-LUCI-is intro, the customer-facing scope bridge line, the highlighted offered tier on page 6, and the overall pacing."
+      },
+      "versionHistory": [
+        {
+          "version": 1,
+          "published": "2026-07-09",
+          "note": "First portal preview — 6-page redesign."
+        },
+        {
+          "version": 2,
+          "published": "2026-07-16",
+          "note": "Line-item labels and numerals switched to Space Grotesk (structure tier); body copy set to Inter — strict brand three-tier font discipline across the sales library."
+        }
+      ],
+      "previewUrl": "sales/budgetary-estimate.html"
+    },
+    {
+      "id": "field-activation-guide",
+      "title": "Field Activation Guide",
+      "summary": "Post-go-live PDF — shows each team how to put LUCI to work on the floor. Six team sections, each with use cases and one task to try this week.",
+      "reviewStatus": "New — your review",
+      "signOff": false,
+      "reviewVersion": 1,
+      "versionNote": "First portal preview — six team sections (Marketing, Gaming & Operations, A/V & Facilities, IT, Finance, General Management), shared-strategy principle page, proof, and close.",
+      "due": "2026-06-19",
+      "hubPreviewPath": "ui_kits/sales/field-activation-guide.html",
+      "reviewBrief": {
+        "description": "A PDF handed to a property after go-live. Six team sections, each with use cases and one task to try this week, framed by a shared floor-strategy principle and proof.",
+        "reviewAsk": "whether each team’s use cases ring true and actionable — anything to add or cut for that audience."
+      },
+      "versionHistory": [
+        {
+          "version": 1,
+          "published": "2026-06-15",
+          "note": "First portal preview."
+        }
+      ],
+      "previewUrl": "sales/field-activation-guide.html"
+    },
+    {
+      "id": "website-strategy-brief",
+      "title": "Website strategy brief",
+      "summary": "Purpose, positioning, success measures, and the Navless experience layer for lucisystems.com. Companion: website-strategy-brief-talk-track.md.",
+      "reviewStatus": "For Mike — read when useful",
+      "signOff": false,
+      "reviewVersion": 1,
+      "versionNote": "Posted for Mike to review Jane's approach to the website update. No formal sign-off required.",
+      "hubPreviewPath": "ui_kits/website/website-strategy-brief.html",
+      "reviewBrief": {
+        "description": "Jane's strategy brief for the website update — purpose, positioning, success measures, and the Navless experience layer. Phase 2 companion is an IA wireframe.",
+        "reviewAsk": "no formal sign-off needed — read when useful to understand the approach; comments welcome."
+      },
+      "versionHistory": [
+        {
+          "version": 1,
+          "published": "2026-06-30",
+          "note": "Moved here from Coming Soon for Mike's reference."
+        }
+      ],
+      "previewUrl": "website/website-strategy-brief.html"
+    }
+  ],
+  "approvedAssets": [
+    {
       "id": "sales-brochure",
       "title": "Sales brochure",
-      "summary": "Five-page post-demo leave-behind — navy opener on page 1, platform, embedded operation, proof, close. Draft badges still on pages.",
-      "reviewStatus": "Ready for review",
-      "signOff": false,
-      "reviewVersion": 3,
-      "versionNote": "Design pass — navy opener masthead on page 1; layout rhythm refined. Stakeholder review site now has persistent Library sidebar (messaging, diagrams, approved collateral).",
-      "due": "2026-06-20",
+      "summary": "Five-page post-demo leave-behind — navy opener, one point of control, the embedded operation, proof on the floor, and close. Finalized; download the print-ready PDF.",
+      "approved": "2026-07-16",
+      "note": "Updated Jul 16, 2026 — Inter body-copy font fix applied across the sales library (brand three-tier discipline); print-ready PDF re-rendered with embedded Type0 fonts (smooth scroll, no Preview blinking).",
+      "reviewVersion": 5,
+      "versionNote": "Updated — Inter body-copy font fix (body copy set to Inter, heads/labels/numerals stay Space Grotesk/Syncopate); brochure PDF re-rendered with embedded Type0 fonts.",
       "hubPreviewPath": "ui_kits/sales/brochure.html",
+      "previewUrl": "sales/brochure.html",
       "reviewBrief": {
         "description": "LUCI's sales brochure — five US Letter pages for prospect meetings and post-demo follow-up. Messaging-first overview: identity opener, one point of control, embedded team, stakeholder proof, and close.",
-        "reviewAsk": "messaging accuracy, partnership framing, and whether this works as the leave-behind after a demo — not final sign-off yet."
+        "reviewAsk": "finalized — available to open, print, or download."
       },
       "versionHistory": [
         {
@@ -58,35 +157,56 @@
           "version": 3,
           "published": "2026-06-17",
           "note": "Design pass — navy opener masthead; review site Library sidebar live."
+        },
+        {
+          "version": 4,
+          "published": "2026-06-25",
+          "note": "Finalized — page-3 redesign (orbit hero + dark testimonial band), page-4 accent harmonization, page-1 breadth callout; flattened render-stable PDF added for download."
+        },
+        {
+          "version": 5,
+          "published": "2026-07-16",
+          "note": "Inter body-copy font fix across the sales library (body copy → Inter, heads/labels/numerals stay Space Grotesk/Syncopate); brochure PDF re-rendered with embedded Type0 fonts — smooth scroll, no Preview blinking."
         }
-      ],
-      "previewUrl": "sales/brochure.html"
+      ]
     },
     {
-      "id": "field-activation-guide",
-      "title": "Field Activation Guide",
-      "summary": "Post-go-live PDF — how each team puts LUCI to work on the floor. Organized by team, four use cases each + one task to try this week. Draft badges still on pages.",
-      "reviewStatus": "New — your review",
-      "signOff": false,
-      "reviewVersion": 1,
-      "versionNote": "First portal preview — six team sections (Marketing, Gaming & Operations, A/V & Facilities, IT, Finance, General Management), shared-strategy principle page, proof, and close.",
-      "due": "2026-06-19",
-      "hubPreviewPath": "ui_kits/sales/field-activation-guide.html",
+      "id": "capabilities-document",
+      "title": "Capabilities document",
+      "summary": "Nine-page post-demo leave-behind — brochure-aligned opener (C/A/E + floor plan), identity + key features, reduces, architecture, embedded operation, and Ameristar proof. Download the print-ready PDF.",
+      "approved": "2026-07-16",
+      "note": "Updated Jul 16, 2026 — Inter body-copy font fix applied across the sales library (brand three-tier discipline); print-ready PDF re-rendered with embedded Type0 fonts (smooth scroll, no Preview blinking).",
+      "reviewVersion": 4,
+      "versionNote": "Updated — Inter body-copy font fix (body copy set to Inter, heads/labels/numerals stay Space Grotesk/Syncopate); capabilities PDF re-rendered with embedded Type0 fonts.",
+      "hubPreviewPath": "ui_kits/sales/capabilities-document.html",
+      "previewUrl": "sales/capabilities-document.html",
       "reviewBrief": {
-        "description": "The LUCI Field Activation Guide — a US Letter PDF for handing to a property after go-live. It shows each team how to put LUCI to work on the floor: six team sections, each with four use cases and one task to try this week, framed by a shared floor-strategy principle and closing proof.",
-        "reviewAsk": "messaging and whether each team's use cases ring true and actionable — anything overstated, missing, or mis-prioritized for that audience."
+        "description": "Sent after a demo. Platform depth, architecture, embedded operation, and proof — comprehensive enough to share with colleagues who weren't in the room.",
+        "reviewAsk": "open, print, or download the PDF; customize cover and close for each client in the Customization Studio."
       },
       "versionHistory": [
         {
           "version": 1,
-          "published": "2026-06-15",
+          "published": "2026-07-01",
           "note": "First portal preview."
+        },
+        {
+          "version": 2,
+          "published": "2026-07-09",
+          "note": "Flattened render-stable PDF added for download (brochure pipeline parity)."
+        },
+        {
+          "version": 3,
+          "published": "2026-07-09",
+          "note": "Approved — brochure opener pages 2–3, key feature callouts on page 3, removed redundant illustrated capabilities page (now 9 pages)."
+        },
+        {
+          "version": 4,
+          "published": "2026-07-16",
+          "note": "Inter body-copy font fix across the sales library (body copy → Inter, heads/labels/numerals stay Space Grotesk/Syncopate); capabilities PDF re-rendered with embedded Type0 fonts — smooth scroll, no Preview blinking."
         }
-      ],
-      "previewUrl": "sales/field-activation-guide.html"
-    }
-  ],
-  "approvedAssets": [
+      ]
+    },
     {
       "id": "what-luci-is-diagram",
       "title": "What LUCI is (identity diagram)",
@@ -112,9 +232,9 @@
       "id": "system-architecture-diagram",
       "title": "System architecture diagram",
       "summary": "Technical view for the capabilities deck — content sources in, one rack + platform as the control point, A/V endpoints out.",
-      "approved": "2026-06-16",
-      "note": "Mike approved Jun 16, 2026",
-      "reviewVersion": 1,
+      "approved": "2026-06-23",
+      "note": "Numbered markers unified to gold across both the rack and the legend — solid gold discs with navy numerals, no outline; warm accent that pops on the navy rack and reads cleanly on the grey key card (v22).",
+      "reviewVersion": 14,
       "hubPreviewPath": "ui_kits/sales/system-architecture.html",
       "previewUrl": "sales/system-architecture.html",
       "reviewBrief": {
@@ -126,6 +246,46 @@
           "version": 1,
           "published": "2026-06-15",
           "note": "First portal preview."
+        },
+        {
+          "version": 2,
+          "published": "2026-06-23",
+          "note": "Typography hierarchy — icon labels 18px, zone captions 16px bold, rack labels 16px; PNG re-exported at 3×."
+        },
+        {
+          "version": 3,
+          "published": "2026-06-25",
+          "note": "Rack swapped to rounded LUCI+Systems art, numbered legend; side icons re-tiered to a lighter white/outlined style (mint accent only) to differentiate inputs/outputs from the hero devices; arrows cleaned up."
+        },
+        {
+          "version": 4,
+          "published": "2026-06-25",
+          "note": "Rack Components legend rebuilt as a contained key (tinted panel, mint header bar, numbered badges matched to the rack callouts) and type sized up for PDF readability."
+        },
+        {
+          "version": 5,
+          "published": "2026-06-25",
+          "note": "Legend reworked de-boxed — dropped the tinted panel for a hairline + mint accent bar + kicker on the open canvas, keeping the numbered badges that echo the rack callouts so it matches the airy diagram."
+        },
+        {
+          "version": 6,
+          "published": "2026-06-25",
+          "note": "Legend set in a contained navy key card (bright-mint kicker, numbered mint badges echoing the rack callouts, right-aligned descriptor) so it reads as part of the system; the three architecture principles below the diagram rebuilt with mint accent bars and vertically centered to fill the remainder of the page."
+        },
+        {
+          "version": 7,
+          "published": "2026-06-25",
+          "note": "Legend card softened from navy to LUCI sand (warm light panel tone) with a lighter shadow, more padding, and wider row spacing so it breathes and recedes; mint badges still echo the rack callouts. Canvas extended to give the card room."
+        },
+        {
+          "version": 8,
+          "published": "2026-06-25",
+          "note": "Legend card recolored from sand to LUCI's cool callout grey (tint) for consistency with the rest of the brochure; numbered badges changed from bright-mint-with-navy-outline to calm solid deep-mint discs with white numerals to remove the aggressive edge."
+        },
+        {
+          "version": 9,
+          "published": "2026-06-25",
+          "note": "Numbered markers unified to gold on both the rack and the legend — solid gold discs with navy numerals and no outline."
         }
       ]
     },
@@ -171,6 +331,26 @@
       ]
     },
     {
+      "id": "signal-issue-02",
+      "title": "The Signal · Issue 02 (July 2026)",
+      "summary": "Issue 02 — Tachi Palace field story, August Command Trail preview, lighting how-to, Inside LUCI.",
+      "approved": "2026-07-15",
+      "reviewVersion": 1,
+      "liveUrl": "https://www.lucisystems.com/the-signal/issue-02",
+      "hubPreviewPath": "ui_kits/newsletter/the-signal-issue-02-july-2026.html",
+      "reviewBrief": {
+        "description": "Issue 02 is the July web edition of The Signal — Tachi Palace field story, August Command Trail preview, the set-a-revert-preset lighting how-to, and Inside LUCI.",
+        "reviewAsk": "the copy reads true to how LUCI should be represented."
+      },
+      "versionHistory": [
+        {
+          "version": 1,
+          "published": "2026-07-15",
+          "note": ""
+        }
+      ]
+    },
+    {
       "id": "newsletter-email-teaser",
       "title": "Newsletter email · The Signal Issue 01 teaser",
       "summary": "Inbox teaser — Issue 01 highlights, deep links, read-issue CTA. Footer tagline synced to Messaging Guide.",
@@ -200,8 +380,8 @@
       "id": "case-study-ameristar",
       "title": "Case Study · Ameristar Council Bluffs",
       "summary": "Ameristar case study — narrative, results, CTA.",
-      "approved": "2026-06-12",
-      "note": "Mike approved Jun 12, 2026",
+      "approved": "2026-07-15",
+      "note": "Updated Jul 15, 2026",
       "previewUrl": "case-studies/ameristar-council-bluffs.html",
       "hubPreviewPath": "ui_kits/case-studies/ameristar-council-bluffs.html",
       "reviewBrief": {
@@ -213,6 +393,11 @@
           "version": 1,
           "published": "2026-06-02",
           "note": ""
+        },
+        {
+          "version": 2,
+          "published": "2026-07-15",
+          "note": ""
         }
       ]
     },
@@ -222,42 +407,36 @@
       "summary": "Onboarding email series",
       "approved": "2026-06-02",
       "note": "Onboarding series — approved as a set"
+    },
+    {
+      "id": "field-activation-guide-prospect",
+      "title": "Field Activation Guide · Prospect",
+      "summary": "Prospect-facing activation guide — six team sections (Marketing, Gaming & Operations, A/V & Facilities, IT, Finance, General Management), each with four use cases and a 'What it replaces' contrast. Print-ready PDF for Mark to share in the sales process.",
+      "approved": "2026-07-16",
+      "note": "Posted Jul 16, 2026 — prospect version of the Field Activation Guide. 'What it replaces' callouts (Today / On LUCI) reframed for prospects evaluating LUCI; closes with a Mark Filler demo CTA. Inter body copy, brand three-tier font discipline; PDF embeds Type0 fonts (smooth scroll, no Preview blinking).",
+      "reviewVersion": 1,
+      "versionNote": "First prospect release — 'What it replaces' callouts, demo CTA close, Inter body copy.",
+      "reviewBrief": {
+        "description": "Prospect-facing Field Activation Guide — six team sections, four use cases each with a 'What it replaces' contrast, framed for properties evaluating LUCI.",
+        "reviewAsk": "finalized — available to download."
+      },
+      "versionHistory": [
+        {
+          "version": 1,
+          "published": "2026-07-16",
+          "note": "First prospect release."
+        }
+      ]
     }
   ],
   "upcoming": [
     {
-      "id": "website-strategy-brief",
-      "title": "Website strategy brief",
-      "note": "Leadership review — purpose, positioning, success measures, Navless experience layer. Companion: website-strategy-brief-talk-track.md. Phase 2: IA wireframe.",
-      "target": "2026-06-10",
-      "hubPreviewPath": "ui_kits/website/website-strategy-brief.html"
-    },
-    {
-      "id": "website-strategy",
-      "title": "Website update strategy (outline)",
-      "note": "Phase 2 — simplified IA, Platform page, 6 industries, Signal customer-only; see website-strategy.html + IA wireframe.",
-      "target": "2026-06-15",
-      "hubPreviewPath": "ui_kits/website/website-strategy.html"
-    },
-    {
-      "id": "budgetary-estimate-template",
-      "title": "Budgetary estimate template",
-      "note": "Standard budgetary estimate format for proposals.",
-      "target": "2026-07-01"
-    },
-    {
-      "id": "capabilities-document",
-      "title": "Capabilities document",
-      "note": "Full technical/detail doc — platform capabilities, architecture, integration. Separate from sales brochure.",
-      "target": "2026-07-01"
-    },
-    {
-      "id": "sales-deck",
-      "title": "Sales deck",
-      "note": "Presentation for prospect meetings.",
-      "target": "2026-07-01"
+      "id": "website-v1",
+      "title": "Website V1",
+      "note": "First version of the new lucisystems.com website.",
+      "target": "2026-07-13"
     }
   ],
   "finalized": [],
-  "messagingDocsUpdated": "2026-06-19"
+  "messagingDocsUpdated": "2026-07-16"
 }

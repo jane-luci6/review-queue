@@ -1,0 +1,468 @@
+/* ============================================================================
+   LUCI Scope of Work — Track C overrides
+   Navy brochure bands, one per section (01–08), one-line numbered titles.
+   ========================================================================== */
+
+/* ── Body copy — Inter (Track C) ──────────────────────────────────────────── */
+.doc-section-head__text {
+  font-family: var(--font-recede);
+  margin-bottom: 0;
+}
+
+/* Reading pages: off-white canvas */
+.doc-page--overview,
+.doc-page--phasing,
+.doc-page--system-scope,
+.doc-page--idf-scope,
+.doc-page--terms,
+.doc-page--open-items {
+  background: var(--off-white);
+}
+
+.doc-page--overview .doc-foot,
+.doc-page--phasing .doc-foot,
+.doc-page--system-scope .doc-foot,
+.doc-page--idf-scope .doc-foot,
+.doc-page--terms .doc-foot,
+.doc-page--open-items .doc-foot {
+  margin-top: auto;
+  padding-top: 14px;
+}
+
+/* ── Section header — light inline (navy band retired) ────────────────────── */
+/* The heavy navy band is gone. Each section header is a ghost numeral + bold
+   navy title sitting directly on the off-white sheet, so sections flow into one
+   another and pick up where the last left off. The circuit motif moves to a
+   faint right-side page overlay (see .doc-page--*::before below). These rules
+   override the shared .doc-page-band (sales-document.css) for this asset only. */
+.doc-page-band {
+  background: transparent;
+  margin: 0 0 14px;
+  padding: 0;
+  position: relative;
+  min-height: 58px;
+}
+.doc-page-band::before,
+.doc-page-band::after { content: none; }   /* drop band texture + mint bar */
+.doc-page-band__top { display: none; }       /* kicker retired, no reserved space */
+
+.doc-page-band__title {
+  margin: 0;
+  padding: 26px 0 0 30px;   /* seat title over the numeral's right, leaving its left digits visible */
+  max-width: none;
+  font-size: 22px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--ink-strong);
+  white-space: nowrap;
+  position: relative;
+  z-index: 1;
+}
+
+/* Inline (mid-page) section header: a second section sharing a sheet. Same
+   proportions as a top-of-page header; only the top margin differs so it reads
+   as a new section picking up where the last left off. */
+.doc-page-band--inline {
+  margin-top: 30px;
+}
+
+/* Content begins right after the band's bottom margin */
+.doc-page-band + * {
+  margin-top: 0;
+}
+
+/* ── Ghost section numeral — navy watermark on the light sheet ────────────── */
+/* Same role as the old mint ghost on navy, retuned for the off-white canvas:
+   a faint navy Syncopate numeral behind the title (z-index 0 vs title z-index
+   1). Smaller than the 84px band numeral — with no band fill to anchor it, the
+   watermark only needs to mark the section, not dominate it. */
+.doc-page-band > .sow-band-bignum {
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  z-index: 0;
+  font-family: 'Syncopate', sans-serif;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+  color: #DCE0E3;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── Right-side circuit overlay — faint, behind content ───────────────────── */
+/* The band's circuit motif, retuned as a light navy watermark on the right of
+   every reading sheet so the design carries without the heavy navy band.
+   isolation:isolate makes the page a stacking context; the overlay sits at
+   z-index -1, behind in-flow text and above the off-white canvas. Cards with
+   their own background paint over it, so the texture reads in the whitespace
+   and right margin rather than fighting the copy. */
+.doc-page--overview, .doc-page--phasing, .doc-page--system-scope,
+.doc-page--idf-scope, .doc-page--terms, .doc-page--open-items {
+  isolation: isolate;
+}
+.doc-page--overview::before, .doc-page--phasing::before, .doc-page--system-scope::before,
+.doc-page--idf-scope::before, .doc-page--terms::before, .doc-page--open-items::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('../../assets/textures/sow-page-bg-baked.jpg');
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: 100% 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ── Acceptance & sign-off (Open Items page) ───────────────────────────────── */
+.sow-signoff {
+  margin-top: 28px;
+  max-width: var(--measure);
+}
+
+.sow-signoff__intro {
+  font-size: 14px;
+  margin: 0 0 22px;
+}
+
+.sow-signoff__cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 48px;
+}
+
+.sow-signoff__col-label {
+  margin: 0 0 14px;
+  padding-bottom: 6px;
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink-strong);
+  border-bottom: 1px solid var(--rule-light);
+}
+
+.sow-signoff__field {
+  margin-bottom: 18px;
+}
+
+.sow-signoff__field:last-child {
+  margin-bottom: 0;
+}
+
+.sow-signoff__cap {
+  display: block;
+  margin-bottom: 4px;
+  font-family: var(--font-recede);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--navy-muted);
+}
+
+.sow-signoff__line {
+  display: block;
+  height: 22px;
+  border-bottom: 1px solid var(--ink-strong);
+}
+
+/* ── Document control (Open Items page) ───────────────────────────────────── */
+.sow-docctrl {
+  margin-top: 26px;
+  max-width: var(--measure);
+}
+
+.sow-docctrl__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 48px;
+  margin: 0;
+}
+
+.sow-docctrl__grid dt {
+  margin: 0;
+  font-family: var(--font-recede);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--navy-muted);
+}
+
+.sow-docctrl__grid dd {
+  margin: 0 0 8px;
+  padding-bottom: 6px;
+  font-family: var(--font-recede);
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--ink);
+  border-bottom: 1px solid var(--rule-light);
+}
+
+/* ── Cover meta ───────────────────────────────────────────────────────────── */
+.sow-meta {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(var(--mint-rgb), 0.22);
+  max-width: 52ch;
+}
+
+.sow-meta__row {
+  display: grid;
+  grid-template-columns: 112px 1fr;
+  gap: 16px;
+  align-items: baseline;
+  padding: 6px 0;
+}
+
+.sow-meta__row + .sow-meta__row {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sow-meta__row .doc-eyebrow {
+  margin: 0;
+  font-size: 10px;
+}
+
+.sow-meta__value {
+  font-family: var(--font-recede);
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(235, 245, 248, 0.9);
+}
+
+/* ── Subsection titles (1.x–3.x) ──────────────────────────────────────────── */
+.sow-subsection-title {
+  margin: 18px 0 8px;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.28;
+  letter-spacing: -0.012em;
+  color: var(--ink-strong);
+}
+
+/* First subsection after a band, or the first child of a scope block, sits flush */
+.doc-page-band + .sow-subsection-title,
+.sow-scope-block > .sow-subsection-title {
+  margin-top: 0;
+}
+
+/* Section 4 — scoped blocks for scanability */
+.sow-scope-block {
+  margin-bottom: 18px;
+  padding: 16px 20px 14px;
+  background: linear-gradient(155deg, rgba(230, 245, 239, 0.35) 0%, rgba(245, 248, 250, 0.9) 100%);
+  border-left: 3px solid var(--mint-dark);
+}
+
+.sow-scope-block .sow-subsection-title {
+  font-size: 15px;
+}
+
+.sow-scope-block .doc-section-head__text {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.sow-scope-block .sow-list-label {
+  margin-top: 12px;
+}
+
+.sow-scope-block .sow-scope-list {
+  margin-bottom: 0;
+}
+
+/* ── Inline list labels ───────────────────────────────────────────────────── */
+.sow-list-label {
+  margin: 14px 0 6px;
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--ink-strong);
+}
+
+.sow-scope-block .sow-list-label:first-child {
+  margin-top: 0;
+}
+
+/* ── Scope lists ──────────────────────────────────────────────────────────── */
+.sow-scope-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: var(--measure);
+}
+
+.sow-scope-list li {
+  font-family: var(--font-recede);
+  font-size: 14px;
+  line-height: 1.52;
+  color: var(--ink);
+}
+
+.sow-scope-list li strong {
+  font-weight: 600;
+  color: var(--ink-strong);
+}
+
+/* Key outcomes — small checkmarks + hairline rows */
+.sow-scope-list--checks li {
+  position: relative;
+  padding: 9px 0 9px 26px;
+  border-top: 1px solid var(--rule-light);
+}
+
+.sow-scope-list--checks li:first-child {
+  border-top: 1px solid var(--rule-light);
+}
+
+.sow-scope-list--checks li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 11px;
+  width: 14px;
+  height: 14px;
+  background: var(--mint-dark);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") no-repeat center / contain;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+
+/* Deliverables ledger */
+.sow-scope-list--ledger li {
+  padding: 9px 0;
+  border-top: 1px solid var(--rule-light);
+}
+
+.sow-scope-list--ledger li:first-child {
+  border-top: 1px solid var(--rule-light);
+}
+
+/* Scope bullets */
+.sow-scope-list--bullets li {
+  position: relative;
+  padding: 5px 0 5px 18px;
+}
+
+.sow-scope-list--bullets li + li {
+  margin-top: 4px;
+}
+
+.sow-scope-list--bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--mint-dark);
+}
+
+.sow-note {
+  font-family: var(--font-recede);
+  font-size: 13px;
+  line-height: 1.55;
+  font-style: italic;
+  color: var(--navy-muted);
+  max-width: var(--measure);
+  margin: 8px 0 0;
+}
+
+/* Phasing — tighter intro-to-list gap */
+.doc-page--phasing .doc-section-head__text {
+  margin-bottom: 10px;
+}
+
+.doc-page--phasing .doc-functions {
+  margin-top: 6px;
+}
+
+.doc-page--phasing .doc-fn {
+  padding: 14px 0;
+}
+
+.doc-page--phasing .doc-fn__label {
+  font-size: 16px;
+}
+
+/* Deliverables page — keep §06 + §07 to one sheet */
+.doc-page--terms .sow-scope-list--ledger {
+  max-width: none;
+}
+
+.doc-page--terms .sow-scope-list--ledger li {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.doc-page--terms .sow-scope-list--bullets li {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.doc-page--terms .doc-section-head__text {
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+.doc-page--terms .sow-list-label {
+  margin-top: 8px;
+  margin-bottom: 4px;
+}
+
+.doc-page--terms .sow-scope-list {
+  margin-bottom: 8px;
+}
+
+.doc-page--terms .doc-page-band--inline {
+  margin-top: 14px;
+}
+
+/* Open items callout */
+.sow-open-items {
+  margin-top: 8px;
+}
+
+.sow-open-items .sow-list-label {
+  margin-top: 0;
+  font-size: 14px;
+}
+
+.sow-open-items .sow-scope-list {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+/* ── Editable cells ───────────────────────────────────────────────────────── */
+.doc-edit {
+  border-radius: 2px;
+  caret-color: var(--mint-dark);
+  outline: none;
+}
+
+@media screen {
+  .doc-edit { transition: background 0.15s ease, box-shadow 0.15s ease; }
+  .doc-edit:hover { background: rgba(104, 227, 190, 0.08); }
+  .doc-edit:focus {
+    background: rgba(104, 227, 190, 0.14);
+    box-shadow: 0 0 0 2px rgba(43, 158, 128, 0.40);
+  }
+}
+
+@media print {
+  .doc-page--overview::before, .doc-page--phasing::before, .doc-page--system-scope::before,
+  .doc-page--idf-scope::before, .doc-page--terms::before, .doc-page--open-items::before {
+    background-image: url('assets/textures/sow-page-bg-baked-print.jpg');
+  }
+  .doc-edit { background: transparent !important; box-shadow: none !important; caret-color: auto; }
+  .sow-scope-block,
+  .sow-scope-list--checks li::before {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

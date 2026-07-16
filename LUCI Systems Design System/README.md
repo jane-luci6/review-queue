@@ -141,7 +141,6 @@ LUCI is a modern, edgy 2026 tech brand. **Whitespace, typography, and hairlines 
 - **No spreadsheet grids** — avoid 1px-gap grids of filled cells for stats/results; use airy rows with mint numerals instead.
 - **Reserve the 4px mint accent bar** for true callouts, pull quotes, and the masthead signature only — not every element.
 - **No drop shadows on flat content tiles; no gradients.**
-- Reference: `ui_kits/newsletter/the-signal-design-comparison.html` (Current vs Sharp de-boxed).
 
 **Callouts (asides) — the sanctioned exception.** Tips, support prompts, and other asides *should* be contained, because an aside needs to read as separate from the article flow:
 - A callout is a **contained block** with a 4px mint left bar, sharp corners, and real padding (`clamp(24px,4vw,32px)`) — typically a navy block sitting on a light section.

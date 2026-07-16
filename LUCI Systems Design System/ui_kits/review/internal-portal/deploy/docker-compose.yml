@@ -1,0 +1,14 @@
+# Standalone compose file for Will to merge into the .17 stack.
+# From LUCI Systems Design System root:
+#   npm run build:review
+#   docker compose -f ui_kits/internal-portal/deploy/docker-compose.yml up -d --build
+
+services:
+  internal_marketing_portal:
+    build:
+      context: ../../..
+      dockerfile: ui_kits/internal-portal/deploy/Dockerfile
+    container_name: internal_marketing_portal
+    ports:
+      - "8081:8081"
+    restart: unless-stopped

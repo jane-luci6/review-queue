@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUCI — LG Device Setup Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../sales/sales-document.css">
+  <style>
+    /* ── Page-scoped components for a step-by-step technical procedure ────────
+       Reuses the sales-document.css foundation (tokens, page sheet, bands,
+       footers, takeaways). Adds only what a setup guide needs: numbered step
+       rows, a de-boxed values reference card, and inline code chips. */
+    :root { --mono: 'SFMono-Regular', ui-monospace, 'Roboto Mono', 'Menlo', monospace; }
+
+    /* Inline LUCI mark */
+    .guide-mark { display: block; height: 34px; }
+    .guide-mark svg { height: 100%; width: auto; display: block; }
+
+    /* ── Page-1 masthead (replaces the dark cover; identifies the document) ── */
+    .guide-masthead { margin-bottom: 16px; }
+    /* Band follows the masthead mid-page, so cancel its negative top pull. */
+    .guide-masthead + .doc-page-band { margin-top: 4px; }
+    .guide-masthead__row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 12px;
+      margin-bottom: 14px;
+      border-bottom: 1px solid var(--rule-light);
+    }
+    .guide-masthead .guide-mark { height: 28px; color: var(--navy); }
+    .guide-masthead__meta {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--navy-muted);
+    }
+    .guide-masthead__title {
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      color: var(--ink-strong);
+    }
+    .guide-masthead__title .guide-gold { color: var(--gold-deep); }
+    .guide-masthead__intro {
+      margin-top: 10px;
+      font-size: 14.5px;
+      line-height: 1.5;
+      color: var(--ink);
+      max-width: 70ch;
+    }
+    .guide-masthead__intro strong { color: var(--ink-strong); font-weight: 700; }
+
+    /* Gold-marked prerequisite line on the light opener */
+    .guide-prereq {
+      margin-top: 12px;
+      padding: 9px 0 9px 18px;
+      border-left: 4px solid var(--gold-deep);
+      font-size: 13.5px;
+      line-height: 1.45;
+      color: var(--ink-strong);
+      max-width: 72ch;
+    }
+    .guide-prereq__label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin-right: 8px;
+    }
+
+    /* Short lead line beneath a procedure band */
+    .guide-lead {
+      max-width: 60ch;
+      margin: 0 0 8px;
+      font-size: 16px;
+      line-height: 1.55;
+      color: var(--ink);
+    }
+    .guide-lead strong { color: var(--ink-strong); font-weight: 700; }
+
+    /* Numbered step list — compact, de-boxed, hairline separators */
+    .guide-steps { list-style: none; counter-reset: step; margin-top: 10px; }
+    .guide-step {
+      counter-increment: step;
+      display: grid;
+      grid-template-columns: 0.5in 1fr;
+      column-gap: 20px;
+      padding: 12px 0;
+      align-items: start;
+    }
+    .guide-step + .guide-step { border-top: 1px solid var(--rule-light); }
+    .guide-step::before {
+      content: counter(step, decimal-leading-zero);
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--accent-light);
+    }
+    .guide-step__text {
+      grid-column: 2;
+      font-size: 15px;
+      line-height: 1.5;
+      font-weight: 500;
+      color: var(--ink-strong);
+      max-width: 64ch;
+    }
+    .guide-step__text strong { font-weight: 700; }
+    .guide-step__note {
+      grid-column: 2;
+      margin-top: 7px;
+      font-size: 12.5px;
+      line-height: 1.45;
+      color: var(--ink);
+      max-width: 60ch;
+    }
+    .guide-step__note-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin-right: 8px;
+    }
+
+    /* Inline code chip for IPs, ports, menu codes */
+    .guide-code {
+      font-family: var(--mono);
+      font-size: 0.9em;
+      font-weight: 600;
+      color: var(--accent-light);
+      background: var(--tint);
+      padding: 1px 7px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    /* Values reference — contained card, de-boxed rows inside */
+    .guide-card {
+      margin-top: 20px;
+      padding: 16px 24px 18px;
+      background: var(--tint);
+      border-top: 4px solid var(--gold-deep);
+      max-width: 52ch;
+    }
+    .guide-card__label {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin-bottom: 4px;
+    }
+    .guide-specs { list-style: none; margin: 0; }
+    .guide-spec {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: baseline;
+      padding: 9px 0;
+      border-top: 1px solid var(--rule-light);
+    }
+    .guide-card .guide-specs .guide-spec:first-child { border-top: 0; }
+    .guide-spec__label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--navy-muted);
+    }
+    .guide-spec__val {
+      font-family: var(--mono);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--ink-strong);
+    }
+    .guide-card__foot {
+      margin-top: 12px;
+      font-size: 11.5px;
+      line-height: 1.45;
+      color: var(--ink);
+    }
+    .guide-card__foot .guide-code { background: rgba(43, 158, 128, 0.1); }
+
+    /* Closing help line on the final page */
+    .guide-help {
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule-light);
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--ink);
+      max-width: 70ch;
+    }
+    .guide-help strong { color: var(--ink-strong); font-weight: 700; }
+
+    @media print {
+      .guide-card, .guide-code, .guide-prereq { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <div class="doc">
+
+    <!-- 1 · Network Configuration (opens with the document masthead) ────────── -->
+    <section class="doc-page">
+      <header class="guide-masthead">
+        <div class="guide-masthead__row">
+          <span class="guide-mark">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 161.501 137" fill="none" aria-label="LUCI">
+              <path d="M 78.779 120.749 L 65.111 127.473 L 4.308 97.587 C -1.336 94.813 -1.326 86.913 4.308 84.149 L 4.328 84.149 L 4.888 84.413 L 78.789 120.749 L 78.779 120.749 Z" fill="currentColor"></path>
+              <path d="M 139.462 69.171 L 134.197 71.739 L 125.775 75.876 L 87.151 56.88 L 70.556 65.045 L 56.869 58.321 L 82.435 45.765 C 85.402 44.304 88.899 44.304 91.866 45.765 L 139.472 69.171 L 139.462 69.171 Z" fill="currentColor"></path>
+              <path d="M 161.321 80.13 L 147.864 86.726 L 91.167 114.603 C 88.639 115.848 85.652 115.848 83.125 114.603 L 28.806 87.893 L 26.398 86.717 L 12.731 79.993 L 10.323 78.816 L 4.189 75.807 C -1.396 73.053 -1.396 65.231 4.189 62.487 L 4.328 62.418 L 26.408 73.269 L 40.095 79.993 L 87.151 103.125 L 134.197 79.993 L 147.654 73.396 L 152.17 75.611 L 161.331 80.12 L 161.321 80.13 Z" fill="currentColor"></path>
+              <path d="M 100.818 28.445 L 87.141 35.179 L 48.457 54.175 L 36.588 48.352 L 34.78 47.47 L 87.141 21.721 L 100.818 28.445 Z" fill="currentColor"></path>
+              <path d="M 64.572 70.328 L 62.164 69.152 L 48.497 62.428 L 46.089 61.252 L 40.095 58.301 L 26.408 51.577 L 24.02 50.421 L 18.026 47.47 L 18.006 47.451 L 34.47 39.344 L 42.922 35.208 L 56.42 28.562 L 87.161 13.468 L 87.181 13.487 L 100.868 6.763 L 87.141 0 L 20.793 32.601 L 4.288 40.727 C -1.336 43.491 -1.336 51.371 4.288 54.135 L 4.328 54.155 L 10.323 57.105 L 12.731 58.282 L 26.398 65.006 L 28.805 66.182 L 32.412 67.956 L 34.82 69.132 L 48.487 75.856 L 50.895 77.032 L 87.131 94.852 L 100.798 88.128 L 64.562 70.308 L 64.572 70.328 Z" fill="currentColor"></path>
+              <path d="M 154.038 98.077 L 161.501 101.743 L 92.216 135.824 C 89.029 137.392 85.283 137.392 82.096 135.824 L 73.484 131.589 L 147.874 95.048 L 151.66 96.901 L 154.048 98.077 L 154.038 98.077 Z" fill="currentColor"></path>
+            </svg>
+          </span>
+          <span class="guide-masthead__meta">Field Setup Guide · <span data-studio="property">[Property name]</span></span>
+        </div>
+        <h1 class="guide-masthead__title">LG Device <span class="guide-gold">Setup</span></h1>
+        <p class="guide-masthead__intro"><strong>Run these three procedures on every LG TV and STB</strong> — static IP, LUCI server pairing, profile download and reboot, plus a factory default when you need to reprovision a device.</p>
+        <p class="guide-prereq"><span class="guide-prereq__label">Before you start</span>Have the <strong>Project Document</strong> open — it lists the approved static IP mapped to each TV and STB number.</p>
+      </header>
+
+      <div class="doc-page-band">
+        <div class="doc-page-band__top">
+          <p class="doc-page-band__kicker">Network Configuration</p>
+        </div>
+        <h2 class="doc-page-band__title">Set a <span class="doc-page-band__accent--gold">static IP</span> on the device.</h2>
+      </div>
+
+      <ol class="guide-steps">
+        <li class="guide-step">
+          <p class="guide-step__text">Open <strong>Network Configuration</strong>, then <strong>Network Setting</strong>.</p>
+        </li>
+        <li class="guide-step">
+          <p class="guide-step__text">Select <strong>Wired Connection</strong>, then <strong>Edit</strong>.</p>
+        </li>
+        <li class="guide-step">
+          <p class="guide-step__text">Deselect <strong>Set Automatically</strong> to switch the connection to <strong>Static</strong>.</p>
+        </li>
+        <li class="guide-step">
+          <p class="guide-step__text">Enter this device's approved static <strong>IP address</strong> — the address mapped to its TV or STB number in the Project Document.</p>
+        </li>
+        <li class="guide-step">
+          <p class="guide-step__text">Enter the <strong>Subnet</strong> and <strong>Gateway</strong> values listed below.</p>
+        </li>
+        <li class="guide-step">
+          <p class="guide-step__text">Select <strong>Connect</strong>.</p>
+          <p class="guide-step__note"><span class="guide-step__note-label">If</span>no DNS is present, an error message appears — select <strong>Back</strong> and the static IP will remain set.</p>
+        </li>
+      </ol>
+
+      <div class="guide-card guide-card--values">
+        <p class="guide-card__label">Network values · this property</p>
+        <ul class="guide-specs">
+          <li class="guide-spec"><span class="guide-spec__label">IP address</span><span class="guide-spec__val" data-studio="ip-scheme">[IP scheme]</span></li>
+          <li class="guide-spec"><span class="guide-spec__label">Subnet mask</span><span class="guide-spec__val" data-studio="subnet">[Subnet mask]</span></li>
+          <li class="guide-spec"><span class="guide-spec__label">Gateway</span><span class="guide-spec__val" data-studio="gateway">[Gateway]</span></li>
+        </ul>
+      </div>
+
+      <div class="doc-foot">
+        <span>LUCI · <span data-studio="property">[Property name]</span> — LG Device Setup</span>
+        <span class="doc-foot__page">01 / 03</span>
+      </div>
+    </section>
+
+    <!-- 2 · Pro:Centric LUCI Server Setup ──────────────────────────────────── -->
+    <section class="doc-page">
+      <div class="doc-page-band">
+        <div class="doc-page-band__top">
+          <p class="doc-page-band__kicker">Pro:Centric LUCI Server</p>
+        </div>
+        <h2 class="doc-page-band__title">Point the device at the <span class="doc-page-band__accent--gold">LUCI server</span>.</h2>
+        <p class="doc-page-band__deck">Configure Pro:Centric manually, enter the server address and port, then download the profile.</p>
+      </div>
+
+      <ol class="guide-steps">
+        <li class="guide-step">
+          <p class="guide-step__text">Select <strong>Next</strong>, then <strong>Next</strong> again.</p>
+        </li>
+        <li class="guide-step">
+          <p class="guide-step__text">Choose <strong>Pro:Centric Manual</strong>.</p>
+        </li>
+        <li class="guide-step">
+          <p class="guide-step__text">Set the delivery type to <strong>HTML</strong>.</p>
+        </li>
+        <li class="guide-step">
+          <p class="guide-step__text">Select <strong>IP</strong> and enter the LUCI server address <span class="guide-code" data-studio="server-ip">[Server IP]</span>.</p>
+        </li>
+        <li class="guide-step">
+          <p class="guide-step__text">Select <strong>Port</strong> and enter the server port <span class="guide-code" data-studio="server-port">[Port]</span>.</p>
+        </li>
+        <li class="guide-step">
+          <p class="guide-step__text">Select <strong>Search</strong>. You should see <strong>Server Found</strong>.</p>
+        </li>
+        <li class="guide-step">
+          <p class="guide-step__text">Select <strong>Next</strong> to start the download.</p>
+        </li>
+        <li class="guide-step">
+          <p class="guide-step__text"><strong>Reboot</strong> the device once the download completes.</p>
+        </li>
+      </ol>
+
+      <div class="guide-card guide-card--values">
+        <p class="guide-card__label">Server values · this property</p>
+        <ul class="guide-specs">
+          <li class="guide-spec"><span class="guide-spec__label">LUCI server IP</span><span class="guide-spec__val" data-studio="server-ip">[Server IP]</span></li>
+          <li class="guide-spec"><span class="guide-spec__label">Server port</span><span class="guide-spec__val" data-studio="server-port">[Port]</span></li>
+        </ul>
+      </div>
+
+      <div class="doc-foot">
+        <span>LUCI · <span data-studio="property">[Property name]</span> — LG Device Setup</span>
+        <span class="doc-foot__page">02 / 03</span>
+      </div>
+    </section>
+
+    <!-- 3 · InStop — Factory Default ───────────────────────────────────────── -->
+    <section class="doc-page">
+      <div class="doc-page-band">
+        <div class="doc-page-band__top">
+          <p class="doc-page-band__kicker">InStop · Factory Default</p>
+        </div>
+        <h2 class="doc-page-band__title">Reset a device to <span class="doc-page-band__accent--gold">factory default</span>.</h2>
+        <p class="doc-page-band__deck">If a device won't pair or the download fails, confirm its static IP against the Project Document and that it can reach the LUCI server — then factory default and start the setup again.</p>
+      </div>
+
+      <div class="doc-takeaway">
+        <strong>Caution:</strong> Factory default erases the device's current configuration. Only run it when you intend to reprovision the TV or STB from the start.
+      </div>
+
+      <ol class="guide-steps">
+        <li class="guide-step">
+          <p class="guide-step__text">Open the <strong>Installer Menu</strong>: press <strong>Menu</strong> ten times, then enter <span class="guide-code">9 8 7 6</span>.</p>
+          <p class="guide-step__note"><span class="guide-step__note-label">Confirm</span>press <strong>Enter</strong> on a TV, or <strong>Exit</strong> on an STB.</p>
+        </li>
+        <li class="guide-step">
+          <p class="guide-step__text">Enter <span class="guide-code">117</span>, then select <strong>Menu</strong>.</p>
+        </li>
+        <li class="guide-step">
+          <p class="guide-step__text">Enter <span class="guide-code">413</span>, then select <strong>OK</strong>.</p>
+        </li>
+        <li class="guide-step">
+          <p class="guide-step__text">Enter the password <span class="guide-code">0413</span>.</p>
+        </li>
+      </ol>
+
+      <div class="guide-card guide-card--codes">
+        <p class="guide-card__label">Installer codes · reference</p>
+        <ul class="guide-specs">
+          <li class="guide-spec"><span class="guide-spec__label">Installer menu</span><span class="guide-spec__val">Menu ×10 → 9 8 7 6</span></li>
+          <li class="guide-spec"><span class="guide-spec__label">Menu code</span><span class="guide-spec__val">117</span></li>
+          <li class="guide-spec"><span class="guide-spec__label">OK code</span><span class="guide-spec__val">413</span></li>
+          <li class="guide-spec"><span class="guide-spec__label">Password</span><span class="guide-spec__val">0413</span></li>
+        </ul>
+      </div>
+
+      <p class="guide-help"><strong>Repeat all three procedures on every TV and STB on the floor.</strong> Stuck on a device? Reach your LUCI deployment lead or post in the install channel with the device's TV/STB number.</p>
+
+      <div class="doc-foot">
+        <span>LUCI · <span data-studio="property">[Property name]</span> — LG Device Setup</span>
+        <span class="doc-foot__page">03 / 03</span>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>

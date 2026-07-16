@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Content Lab · LUCI ideas &amp; strategy vault</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../review/messaging/messaging-docs.css">
+  <style>
+    /* Inter as the body/copy face — Space Grotesk stays for heads/labels (see luci-visual-design.mdc) */
+    body, .doc-prose, .doc-list, .doc-rows, .lab-idea__body, .lab-source__summary { font-family: 'Inter', system-ui, sans-serif; }
+    .resource__hero-title, .doc-chapter, .doc-subsection__title, .resource__nav-kicker,
+    .lab-source__title, .lab-idea__title, .lab-channel, .lab-status, .resource__badge, .resource__logo { font-family: 'Space Grotesk', sans-serif; }
+
+    .resource__logo { display: inline-flex; align-items: baseline; gap: 6px; font-weight: 700; font-size: 15px; letter-spacing: 0.04em; color: var(--off-white); text-decoration: none; }
+    .resource__logo .mark { color: var(--mint); }
+
+    .doc-prose { font-size: 17px; line-height: 1.65; }
+    .doc-chapter { letter-spacing: -0.015em; }
+
+    /* Operating loop callout */
+    .lab-loop { display: grid; gap: 10px; margin-top: 14px; }
+    .lab-loop__step { display: flex; gap: 14px; align-items: baseline; }
+    .lab-loop__n { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 12px; color: var(--mint-dark); min-width: 22px; }
+
+    /* Source log cards */
+    .lab-sources { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-top: 18px; }
+    .lab-source { background: var(--off-white); border: 1px solid var(--rule-light); padding: 18px; display: flex; flex-direction: column; gap: 12px; }
+    .lab-source__thumb { display: block; border: 1px solid var(--rule-light); background: var(--white); overflow: hidden; }
+    .lab-source__thumb img { display: block; width: 100%; height: 200px; object-fit: cover; object-position: top; }
+    .lab-source__head { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+    .lab-source__id { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mint-dark); }
+    .lab-source__date { font-size: 12px; color: var(--navy-muted); }
+    .lab-source__title { font-size: 17px; font-weight: 700; color: var(--navy); letter-spacing: -0.01em; line-height: 1.25; }
+    .lab-source__summary { font-size: 14.5px; line-height: 1.55; color: var(--body-ink); }
+    .lab-source__flags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
+    .lab-flag { font-size: 10.5px; font-weight: 500; color: var(--navy-muted); border: 1px solid var(--rule-light); padding: 2px 7px; }
+    .lab-source__open { font-size: 13px; color: var(--mint-dark); text-decoration: none; font-weight: 600; }
+    .lab-source__open:hover { text-decoration: underline; }
+
+    /* Ideas backlog — de-boxed rows, hairline separators, sharp corners */
+    .lab-channel { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mint-dark); margin: 28px 0 4px; }
+    .lab-channel:first-child { margin-top: 14px; }
+    .lab-idea { display: grid; grid-template-columns: 30px 1fr auto; gap: 16px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--rule-light); }
+    .lab-idea__id { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 12px; color: var(--navy-muted); }
+    .lab-idea__title { font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: var(--navy); letter-spacing: -0.01em; line-height: 1.3; }
+    .lab-idea__body { font-size: 14.5px; line-height: 1.55; color: var(--body-ink); margin-top: 3px; }
+    .lab-idea__meta { text-align: right; font-size: 12px; color: var(--navy-muted); display: flex; flex-direction: column; gap: 4px; align-items: flex-end; }
+    .lab-idea__src { font-size: 11px; }
+
+    .lab-status { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 7px; border: 1px solid var(--rule-light); color: var(--navy-muted); white-space: nowrap; }
+    .lab-status--ready { color: var(--mint-dark); border-color: rgba(43,158,128,0.4); background: rgba(43,158,128,0.08); }
+    .lab-status--need { color: var(--navy-muted); border-style: dashed; }
+
+    /* Voice flags table — de-boxed rows */
+    .lab-voice { margin-top: 14px; }
+    .lab-voice__row { display: grid; grid-template-columns: 1fr 1fr 2fr; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--rule-light); align-items: baseline; }
+    .lab-voice__row:first-child { border-top: 1px solid var(--rule-light); }
+    .lab-voice__from { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; color: var(--navy); }
+    .lab-voice__to { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; color: var(--mint-dark); }
+    .lab-voice__why { font-size: 14px; line-height: 1.55; color: var(--body-ink); }
+    .lab-voice__head { font-size: 10.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy-muted); padding-bottom: 6px; }
+
+    .lab-themes { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 10px; }
+    .lab-themes li { padding-left: 18px; position: relative; font-size: 15.5px; line-height: 1.55; color: var(--body-ink); }
+    .lab-themes li::before { content: ''; position: absolute; left: 0; top: 11px; width: 8px; height: 2px; background: var(--mint-dark); }
+    .lab-themes b { font-family: 'Space Grotesk', sans-serif; color: var(--navy); font-weight: 700; }
+
+    .lab-next { margin-top: 10px; }
+    .doc-callout--key { border-left: 4px solid var(--mint-dark); }
+    @media (max-width: 720px) {
+      .lab-idea { grid-template-columns: 24px 1fr; }
+      .lab-idea__meta { grid-column: 2; flex-direction: row; align-items: center; justify-content: flex-start; gap: 12px; text-align: left; }
+      .lab-voice__row { grid-template-columns: 1fr; gap: 4px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="resource">
+    <header class="resource__masthead">
+      <div class="resource__masthead-row">
+        <a class="resource__logo" href="../../index.html"><span class="mark">LUCI</span> Design Hub</a>
+        <span class="resource__badge">Content Lab</span>
+      </div>
+      <h1 class="resource__hero-title">Content Strategy &amp; Ideas</h1>
+      <p class="resource__hero-deck">A working vault for raw content-marketing inputs &mdash; transcripts, strategy notes, images &mdash; mined into ideas for the website, social, blog, and The Signal.</p>
+      <p class="resource__meta">Opened Jul 14, 2026 &middot; Owner: Jane &middot; 2 source documents filed &middot; 18 ideas surfaced</p>
+    </header>
+
+    <div class="resource__layout">
+      <aside class="resource__sidebar">
+        <p class="resource__nav-kicker">On this page</p>
+        <ul class="resource__toc">
+          <li><a href="#how-it-works">How this space works</a></li>
+          <li><a href="#themes">Strategic themes surfaced</a></li>
+          <li><a href="#source-log">Source log</a></li>
+          <li><a href="#backlog">Ideas backlog</a></li>
+          <li><a href="#voice-flags">Voice &amp; terminology flags</a></li>
+          <li><a href="#next">Open questions &amp; next</a></li>
+        </ul>
+      </aside>
+
+      <main class="resource__article">
+
+        <section class="doc-section" id="how-it-works">
+          <h2 class="doc-chapter">How this space works</h2>
+          <p class="doc-prose">This is not a deliverables library &mdash; finished assets still live in <b>Marketing Content</b>, <b>Messaging &amp; brand</b>, and the <b>website</b> repo. This is the input side: a place to drop raw material and let it accumulate until there&rsquo;s enough to mine. Drop transcripts, written strategies, screenshots, deck exports, or notes into <code>sources/</code> and ask for a review. The output is a growing backlog of concrete content ideas, tagged by channel and traced back to the source they came from.</p>
+          <aside class="doc-callout doc-callout--key">
+            <p class="doc-prose"><b>The loop:</b></p>
+            <div class="lab-loop">
+              <div class="lab-loop__step"><span class="lab-loop__n">1</span><span class="doc-prose">You drop a source into <code>sources/</code> (image, transcript, doc, link) and say &ldquo;review this.&rdquo;</span></div>
+              <div class="lab-loop__step"><span class="lab-loop__n">2</span><span class="doc-prose">I read it, log it in the <a href="#source-log">source log</a>, and surface <a href="#themes">strategic themes</a> + <a href="#backlog">channel ideas</a>.</span></div>
+              <div class="lab-loop__step"><span class="lab-loop__n">3</span><span class="doc-prose">I flag any <a href="#voice-flags">terminology drift</a> against LUCI&rsquo;s canonical voice before anything gets drafted.</span></div>
+              <div class="lab-loop__step"><span class="lab-loop__n">4</span><span class="doc-prose">When an idea is ready, it graduates to the right deliverable space (website, newsletter, sales) and the status here moves to <i>Live</i>.</span></div>
+            </div>
+          </aside>
+        </section>
+
+        <section class="doc-section" id="themes">
+          <h2 class="doc-chapter">Strategic themes surfaced</h2>
+          <p class="doc-prose">Mined from the two filed Q-SYS integration strategy documents. These are the repeatable angles &mdash; every idea in the backlog ladders up to one of them.</p>
+          <ul class="lab-themes">
+            <li><b>Continuity of Control.</b> LUCI&rsquo;s value is preserving the A/V workflows buyers already rely on &mdash; not reinventing them. Same capabilities, fewer steps, cleaner interface.</li>
+            <li><b>Orchestration engine, not layer.</b> Q-SYS handles native zone logic and routing; LUCI is the consistent control surface on top. (Source says &ldquo;orchestration layer&rdquo; &mdash; LUCI voice forbids &ldquo;layer&rdquo;; reframe as <i>engine / LUCI orchestrates</i>. See <a href="#voice-flags">voice flags</a>.)</li>
+            <li><b>Three target environments.</b> Conference rooms (localized switching), hospitality / cabanas (guest-controlled zones), and divisible event spaces (combine / split as walls move).</li>
+            <li><b>The Honesty Protocol.</b> Explicitly credit Q-SYS for backend routing. It defuses the &ldquo;capability loss&rdquo; objection from technical A/V teams and builds trust.</li>
+            <li><b>No capability loss.</b> The buyer-fear counter-position: LUCI orchestrates an existing Q-SYS investment, it does not rip and replace it.</li>
+          </ul>
+        </section>
+
+        <section class="doc-section" id="source-log">
+          <h2 class="doc-chapter">Source log</h2>
+          <p class="doc-prose">Every document filed in <code>sources/</code>, newest first. Click a card to open the original.</p>
+
+          <div class="lab-sources">
+            <article class="lab-source">
+              <a class="lab-source__thumb" href="sources/07-14-cabana-room-event-control-summary.png" target="_blank" rel="noopener"><img src="sources/07-14-cabana-room-event-control-summary.png" alt="07-14 Cabana/Room/Event control summary mind map" loading="lazy"></a>
+              <div class="lab-source__head">
+                <span class="lab-source__id">SRC-02 &middot; Mind map</span>
+                <span class="lab-source__date">Filed Jul 14, 2026</span>
+              </div>
+              <h3 class="lab-source__title">Cabana / Room / Event &mdash; Control Summary</h3>
+              <p class="lab-source__summary">Five-branch strategy map: core synopsis, GTM positioning (preserve control, reduce friction), feature-to-scenario mapping, risk reality (credit Q-SYS), and next moves with owner assignments. Names Q-SYS as native zone logic and LUCI as the UX surface.</p>
+              <div class="lab-source__flags">
+                <span class="lab-flag">Names &ldquo;Lucy&rdquo;</span>
+                <span class="lab-flag">Says &ldquo;orchestration layer&rdquo;</span>
+                <span class="lab-flag">Says &ldquo;AV&rdquo;</span>
+              </div>
+              <a class="lab-source__open" href="sources/07-14-cabana-room-event-control-summary.png" target="_blank" rel="noopener">Open original &rarr;</a>
+            </article>
+
+            <article class="lab-source">
+              <a class="lab-source__thumb" href="sources/07-13-cabana-room-event-gtm-strategy.png" target="_blank" rel="noopener"><img src="sources/07-13-cabana-room-event-gtm-strategy.png" alt="07-13 Cabana/Room/Event GTM strategy document" loading="lazy"></a>
+              <div class="lab-source__head">
+                <span class="lab-source__id">SRC-01 &middot; GTM strategy</span>
+                <span class="lab-source__date">Filed Jul 14, 2026</span>
+              </div>
+              <h3 class="lab-source__title">Lucy x Q-SYS &mdash; Preservation of Control</h3>
+              <p class="lab-source__summary">Go-to-market strategy doc: continuity of control positioning, a sidebar pairing Q-SYS (native zone logic) with Lucy (consistent UX surface), three iPad-control scenarios, marketing &amp; sales enablement action items, and a risk directive to credit Q-SYS for backend routing.</p>
+              <div class="lab-source__flags">
+                <span class="lab-flag">Names &ldquo;Lucy&rdquo;</span>
+                <span class="lab-flag">Says &ldquo;orchestration layer&rdquo;</span>
+                <span class="lab-flag">Says &ldquo;AV&rdquo;</span>
+              </div>
+              <a class="lab-source__open" href="sources/07-13-cabana-room-event-gtm-strategy.png" target="_blank" rel="noopener">Open original &rarr;</a>
+            </article>
+          </div>
+        </section>
+
+        <section class="doc-section" id="backlog">
+          <h2 class="doc-chapter">Ideas backlog</h2>
+          <p class="doc-prose">Content ideas mined from the source log, grouped by channel. Each carries a format, the source it came from, and a status. <i>Idea</i> = surfaced, not yet outlined. <i>Ready to draft</i> = enough to write. <i>Needs source</i> = waiting on raw material.</p>
+
+          <p class="lab-channel">Website</p>
+          <div class="lab-idea">
+            <span class="lab-idea__id">W1</span>
+            <div><div class="lab-idea__title">&ldquo;Continuity of Control&rdquo; integration page</div><div class="lab-idea__body">A Platform sub-page for the Q-SYS integration: credit Q-SYS for routing, position LUCI as the control surface. Honest-scope framing throughout.</div></div>
+            <div class="lab-idea__meta"><span class="lab-status">Idea</span><span class="lab-idea__src">SRC-01, SRC-02</span></div>
+          </div>
+          <div class="lab-idea">
+            <span class="lab-idea__id">W2</span>
+            <div><div class="lab-idea__title">Divisible event-space scenario on the Conference &amp; Convention page</div><div class="lab-idea__body">Dynamic zone combining / splitting as movable walls change &mdash; one-tap, no reprogramming.</div></div>
+            <div class="lab-idea__meta"><span class="lab-status">Idea</span><span class="lab-idea__src">SRC-01, SRC-02</span></div>
+          </div>
+          <div class="lab-idea">
+            <span class="lab-idea__id">W3</span>
+            <div><div class="lab-idea__title">Cabana guest self-service block on Hotels &amp; Resorts</div><div class="lab-idea__body">Per-cabana channel selection from an iPad &mdash; offloads hospitality staff, elevates the guest stay.</div></div>
+            <div class="lab-idea__meta"><span class="lab-status">Idea</span><span class="lab-idea__src">SRC-01, SRC-02</span></div>
+          </div>
+          <div class="lab-idea">
+            <span class="lab-idea__id">W4</span>
+            <div><div class="lab-idea__title">&ldquo;No capability loss&rdquo; reassurance module</div><div class="lab-idea__body">Reusable block / FAQ entry: LUCI orchestrates the Q-SYS investment you already have &mdash; nothing is lost, nothing is ripped out.</div></div>
+            <div class="lab-idea__meta"><span class="lab-status">Idea</span><span class="lab-idea__src">SRC-02</span></div>
+          </div>
+
+          <p class="lab-channel">Social</p>
+          <div class="lab-idea">
+            <span class="lab-idea__id">S1</span>
+            <div><div class="lab-idea__title">&ldquo;Q-SYS is the engine, LUCI is the wheel&rdquo;</div><div class="lab-idea__body">Educational carousel crediting the backend; builds trust with technical A/V audiences instead of overclaiming.</div></div>
+            <div class="lab-idea__meta"><span class="lab-status">Ready to draft</span><span class="lab-idea__src">SRC-01, SRC-02</span></div>
+          </div>
+          <div class="lab-idea">
+            <span class="lab-idea__id">S2</span>
+            <div><div class="lab-idea__title">Cabana self-service spotlight</div><div class="lab-idea__body">Guest picks their own channel, no staff call &mdash; short, tactile, hospitality-warm.</div></div>
+            <div class="lab-idea__meta"><span class="lab-status">Idea</span><span class="lab-idea__src">SRC-01, SRC-02</span></div>
+          </div>
+          <div class="lab-idea">
+            <span class="lab-idea__id">S3</span>
+            <div><div class="lab-idea__title">Divisible ballroom one-tap combine / split</div><div class="lab-idea__body">Reel: walls move, zones follow. Visually obvious win for event-space operators.</div></div>
+            <div class="lab-idea__meta"><span class="lab-status">Idea</span><span class="lab-idea__src">SRC-01</span></div>
+          </div>
+          <div class="lab-idea">
+            <span class="lab-idea__id">S4</span>
+            <div><div class="lab-idea__title">Field evidence clips &mdash; the three use cases on site</div><div class="lab-idea__body">Short on-site video of conference room, cabana, and event-space control. Directly from the SRC-02 action items (Will, Solutions Architect).</div></div>
+            <div class="lab-idea__meta"><span class="lab-status lab-status--need">Needs source</span><span class="lab-idea__src">SRC-02 &middot; capture</span></div>
+          </div>
+
+          <p class="lab-channel">Blog &amp; long-form</p>
+          <div class="lab-idea">
+            <span class="lab-idea__id">B1</span>
+            <div><div class="lab-idea__title">The Honesty Protocol: why crediting your A/V backend wins technical trust</div><div class="lab-idea__body">Thought-leadership post on honest scoping as a sales and brand strategy &mdash; the strongest original angle in the source material.</div></div>
+            <div class="lab-idea__meta"><span class="lab-status lab-status--ready">Ready to draft</span><span class="lab-idea__src">SRC-01, SRC-02</span></div>
+          </div>
+          <div class="lab-idea">
+            <span class="lab-idea__id">B2</span>
+            <div><div class="lab-idea__title">Operationalizing the A/V patterns you already have</div><div class="lab-idea__body">Pillar post from the core synopsis &mdash; LUCI operationalizes existing patterns instead of inventing new ones.</div></div>
+            <div class="lab-idea__meta"><span class="lab-status">Idea</span><span class="lab-idea__src">SRC-02</span></div>
+          </div>
+          <div class="lab-idea">
+            <span class="lab-idea__id">B3</span>
+            <div><div class="lab-idea__title">Three environments where orchestration beats rip-and-replace</div><div class="lab-idea__body">Conference rooms, cabanas, divisible event spaces &mdash; one post, three concrete scenarios.</div></div>
+            <div class="lab-idea__meta"><span class="lab-status">Idea</span><span class="lab-idea__src">SRC-01, SRC-02</span></div>
+          </div>
+          <div class="lab-idea">
+            <span class="lab-idea__id">B4</span>
+            <div><div class="lab-idea__title">What buyers fear when they switch control platforms</div><div class="lab-idea__body">Buyer-psychology post: the fear of losing familiar workflows, and how preserving them wins the deal.</div></div>
+            <div class="lab-idea__meta"><span class="lab-status">Idea</span><span class="lab-idea__src">SRC-01</span></div>
+          </div>
+
+          <p class="lab-channel">Newsletter &mdash; The Signal</p>
+          <div class="lab-idea">
+            <span class="lab-idea__id">N1</span>
+            <div><div class="lab-idea__title">Issue theme candidate: &ldquo;Continuity of Control&rdquo;</div><div class="lab-idea__body">Feature the orchestration-engine thesis plus a field story from one of the three environments. Candidate for Issue 02 or 03.</div></div>
+            <div class="lab-idea__meta"><span class="lab-status">Idea</span><span class="lab-idea__src">SRC-01, SRC-02</span></div>
+          </div>
+          <div class="lab-idea">
+            <span class="lab-idea__id">N2</span>
+            <div><div class="lab-idea__title">&ldquo;Honesty on scope&rdquo; as a recurring brand-voice column</div><div class="lab-idea__body">A standing slot that credits partners and backends &mdash; reinforces the Honesty Protocol issue over issue.</div></div>
+            <div class="lab-idea__meta"><span class="lab-status">Idea</span><span class="lab-idea__src">SRC-02</span></div>
+          </div>
+
+          <p class="lab-channel">Sales enablement &mdash; cross-link to Marketing Content</p>
+          <div class="lab-idea">
+            <span class="lab-idea__id">SE1</span>
+            <div><div class="lab-idea__title">&ldquo;Continuity of Control&rdquo; one-pager (three scenarios)</div><div class="lab-idea__body">PDF one-pager for post-demo leave-behind. Feeds the Sales space; action item assigned to Head of Product Marketing in SRC-02.</div></div>
+            <div class="lab-idea__meta"><span class="lab-status">Idea</span><span class="lab-idea__src">SRC-01, SRC-02</span></div>
+          </div>
+          <div class="lab-idea">
+            <span class="lab-idea__id">SE2</span>
+            <div><div class="lab-idea__title">Demo script &mdash; iPad control, Q-SYS vs LUCI roles</div><div class="lab-idea__body">Script that shows the iPad UX while clearly distinguishing what Q-SYS does vs what LUCI does.</div></div>
+            <div class="lab-idea__meta"><span class="lab-status">Idea</span><span class="lab-idea__src">SRC-02</span></div>
+          </div>
+          <div class="lab-idea">
+            <span class="lab-idea__id">SE3</span>
+            <div><div class="lab-idea__title">&ldquo;No capability loss&rdquo; talk-track deck</div><div class="lab-idea__body">Slide deck with control-path diagrams for the &ldquo;no capability loss&rdquo; conversation. Action item assigned to Sales Enablement Lead in SRC-02.</div></div>
+            <div class="lab-idea__meta"><span class="lab-status">Idea</span><span class="lab-idea__src">SRC-02</span></div>
+          </div>
+
+          <p class="lab-channel">Risk &amp; messaging guardrail</p>
+          <div class="lab-idea">
+            <span class="lab-idea__id">R1</span>
+            <div><div class="lab-idea__title">Capture &ldquo;credit Q-SYS for backend routing&rdquo; as a canonical messaging guardrail</div><div class="lab-idea__body">Propose a patch to the Messaging guide so the Honesty Protocol is enforced everywhere, not just in sales talk tracks.</div></div>
+            <div class="lab-idea__meta"><span class="lab-status">Idea</span><span class="lab-idea__src">SRC-02</span></div>
+          </div>
+        </section>
+
+        <section class="doc-section" id="voice-flags">
+          <h2 class="doc-chapter">Voice &amp; terminology flags</h2>
+          <p class="doc-prose">The source notes drift from LUCI&rsquo;s canonical voice. Apply these corrections whenever an idea from the backlog gets drafted. Source phrasing on the left, what LUCI actually says on the right.</p>
+          <div class="lab-voice">
+            <div class="lab-voice__row">
+              <span class="lab-voice__head">Source says</span>
+              <span class="lab-voice__head">LUCI says</span>
+              <span class="lab-voice__head">Why</span>
+            </div>
+            <div class="lab-voice__row">
+              <span class="lab-voice__from">&ldquo;Lucy&rdquo;</span>
+              <span class="lab-voice__to">&ldquo;LUCI&rdquo;</span>
+              <span class="lab-voice__why">Brand is LUCI. Confirm with Jane whether &ldquo;Lucy&rdquo; in the source is an alias, a codename, or a transcription artifact before publishing anything derived from these notes.</span>
+            </div>
+            <div class="lab-voice__row">
+              <span class="lab-voice__from">&ldquo;orchestration layer&rdquo;</span>
+              <span class="lab-voice__to">&ldquo;orchestration engine&rdquo; / &ldquo;LUCI orchestrates&hellip;&rdquo;</span>
+              <span class="lab-voice__why">LUCI voice forbids <i>layer</i> as a noun for LUCI. Use <i>engine</i> for positioning and &ldquo;LUCI orchestrates&rdquo; for headlines and capability copy.</span>
+            </div>
+            <div class="lab-voice__row">
+              <span class="lab-voice__from">&ldquo;AV&rdquo;</span>
+              <span class="lab-voice__to">&ldquo;A/V&rdquo;</span>
+              <span class="lab-voice__why">Always write A/V &mdash; in body, heads, captions, alt text, and diagrams. Never &ldquo;AV&rdquo; or &ldquo;A-V.&rdquo;</span>
+            </div>
+            <div class="lab-voice__row">
+              <span class="lab-voice__from">&ldquo;native function&rdquo; / implied ownership of zone logic</span>
+              <span class="lab-voice__to">Credit Q-SYS for backend routing</span>
+              <span class="lab-voice__why">Q-SYS is a named third-party product (QSC). Never imply LUCI owns native zone logic or routing &mdash; the Honesty Protocol is a hard guardrail.</span>
+            </div>
+            <div class="lab-voice__row">
+              <span class="lab-voice__from">&ldquo;capability loss&rdquo; as a fear</span>
+              <span class="lab-voice__to">&ldquo;No capability loss&rdquo; as reassurance</span>
+              <span class="lab-voice__why">Keep the phrase buyer-facing only as a reassurance, and always pair it with crediting Q-SYS so it reads as honest, not defensive.</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="doc-section" id="next">
+          <h2 class="doc-chapter">Open questions &amp; next</h2>
+          <ul class="doc-list lab-next">
+            <li><p class="doc-prose"><b>&ldquo;Lucy&rdquo; &mdash; alias or artifact?</b> Confirm whether the source&rsquo;s &ldquo;Lucy&rdquo; is LUCI, a sub-brand, or an integration codename. Blocks W1 / S1 / B1 from shipping until resolved.</p></li>
+            <li><p class="doc-prose"><b>Is the Q-SYS integration public yet?</b> If it is still pre-announcement, the website and social ideas wait; the internal sales-enablement ideas (SE1&ndash;SE3) can proceed now.</p></li>
+            <li><p class="doc-prose"><b>Field-evidence video owner.</b> SRC-02 assigns the on-site use-case videos to Will (Solutions Architect). Confirm so S4 can move from <i>Needs source</i> to <i>Capturing</i>.</p></li>
+            <li><p class="doc-prose"><b>First draft pick.</b> B1 (The Honesty Protocol) and S1 (engine / wheel) are the strongest, lowest-risk starts. Say the word and either goes to draft.</p></li>
+          </ul>
+        </section>
+
+      </main>
+    </div>
+  </div>
+</body>
+</html>

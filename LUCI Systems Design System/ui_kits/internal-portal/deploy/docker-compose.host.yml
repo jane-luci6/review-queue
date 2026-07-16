@@ -1,0 +1,35 @@
+# Host-side compose for .17 — mounts rsync'd static files, no image build.
+# Lives in ~/internal-marketing-portal-service/ (not wiped by portal rsync --delete).
+#
+# Services:
+#   internal_marketing_portal — nginx:1.27-alpine serving the built review bundle on :8081
+#   comments_api              — python:3.12-alpine, JSON-file-backed comment/approval sync API
+#                                proxied same-origin at /api/comments by nginx (no CORS needed)
+#                                state persisted to /data/comments.json (host volume, survives deploys)
+
+services:
+  internal_marketing_portal:
+    image: nginx:1.27-alpine
+    container_name: internal_marketing_portal
+    ports:
+      - "8081:8081"
+    volumes:
+      - ${PORTAL_CONTENT_DIR:-/home/user-007/internal-marketing-portal}:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    restart: unless-stopped
+    depends_on:
+      - comments_api
+
+  comments_api:
+    image: python:3.12-alpine
+    container_name: internal_marketing_portal_comments
+    command: ["python3", "/app/comments-api.py"]
+    environment:
+      PORT: "8090"
+      DATA_FILE: "/data/comments.json"
+    volumes:
+      - ./comments-api.py:/app/comments-api.py:ro
+      - ${PORTAL_COMMENTS_DIR:-/home/user-007/internal-marketing-portal-comments}:/data
+    restart: unless-stopped
+    expose:
+      - "8090"

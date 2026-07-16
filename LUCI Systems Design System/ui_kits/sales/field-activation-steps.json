@@ -1,0 +1,169 @@
+{
+  "document": "LUCI Field Activation Guide — client version",
+  "purpose": "Tailored step-by-step instructions to replace the generic 'Try it' callouts in the client FAG. Inline in the doc, no portal links.",
+  "methodology": "Drafted from Mike's demo/training transcripts (Ameristar 2026-06-16, Angel of the Wind 2026-04-23) plus the functional activation guide copy doc. Every step is a DRAFT pending review by Mike Epstein or a LUCI FDE against the live product before it ships.",
+  "sources": {
+    "ameristar": "/tmp/luci-transcripts/ameristar-demo.txt  (06-16 Ameristar Demo)",
+    "angel":     "/tmp/luci-transcripts/angel-of-the-wind.txt  (Angel of the Wind Demo, 2026-04-23)",
+    "fagCopy":   "/tmp/luci-transcripts/functional-activation-guide.txt  (FAG copy doc, 3rd draft)",
+    "kbPermissions": "https://lucisystems.atlassian.net/servicedesk/customer/portal/1/article/139427856  (JSM KB: User Permissions — admin guide to per-user source View/Edit permissions)"
+  },
+  "drafted": "2026-07-16",
+  "reviewRequired": "Mike Epstein or a LUCI FDE must verify each workflow against the live product before it is published in the client FAG.",
+  "pipelineNote": "Content (custom messages, promos, event graphics) lives in the CMS (Telemetry TV) and reaches LUCI as a channel: Telemetry player HDMI out → LUCI IP encoder → source in LUCI's list. That CMS→encoder→LUCI path is the same one-time setup behind most Marketing use cases, so it's written once here and referenced.",
+  "useCases": [
+    {
+      "slug": "marketing-push-message",
+      "section": "Marketing & Guest Experience",
+      "n": 1,
+      "title": "Push a message to every screen in under two minutes.",
+      "prerequisites": "Your message exists as an image or short video, and a Telemetry player is already wired into a LUCI encoder so its content shows up as a channel in LUCI. If not, do the one-time Setup first.",
+      "setup": [
+        "In Telemetry TV, open Media and drag your message asset in (or pull it from a linked OneDrive/Canva). Set a validity end-date if the message is temporary so it auto-removes.",
+        "Create a Playlist, add the message to it, and assign the playlist to a Telemetry player. That player's output feeds a LUCI IP encoder, so the message now appears as a channel in LUCI's source list."
+      ],
+      "steps": [
+        "Open LUCI in your browser from any device and log in.",
+        "On the property map, zoom out until every display on the floor is in view.",
+        "Use the lasso tool to select every TV on the property — or select just the zones you want to reach.",
+        "In the source list, pick the channel carrying your message. Every selected display flips to it immediately, live, with no ticket or call.",
+        "To drop back: set a revert time (e.g., 60 seconds) and the floor returns to its scheduled content on its own — or apply your 'normal' preset when you're done."
+      ],
+      "revert": "Set a revert time in seconds on the push, or apply a return-to-normal preset. The floor drops back to scheduled content automatically.",
+      "assumptions": [
+        "Lasso-then-select-source is the fastest path for a whole-property push (vs. building a preset). Confirm with Mike.",
+        "Revert time can be set on an ad-hoc push, not only on a scheduled preset. Confirm.",
+        "If the message must land on EVERY screen including the marquee/outdoor, those displays must be on the map (connected via encoder). Confirm scope."
+      ],
+      "sources": ["ameristar", "angel"],
+      "reviewStatus": "draft"
+    },
+    {
+      "slug": "marketing-daypart-promotions",
+      "section": "Marketing & Guest Experience",
+      "n": 2,
+      "title": "Daypart your restaurant promotions to catch guests at the decision point.",
+      "prerequisites": "Your dining spot asset exists and a Telemetry player → LUCI encoder channel is set up for it (see UC1 Setup).",
+      "setup": [
+        "Same one-time CMS setup as UC1: load the dining spot in Telemetry TV, put it on a playlist, assign to a player so it appears as a channel in LUCI."
+      ],
+      "steps": [
+        "In LUCI, open Presets and create a new preset (e.g., 'Pre-lunch dining spot').",
+        "Add the displays you want to reach — the floor-wide set, not just the screens near the restaurants. Select them on the map or from the venue list.",
+        "For each display in the preset, set its target to the dining spot channel.",
+        "Save the preset.",
+        "Open the Event Scheduler. Add the preset to the calendar at 11:00am (and a second entry at 5:00pm for dinner). Set it to repeat daily, or pick specific days.",
+        "Set a revert time on each entry (e.g., 60 minutes) so the floor drops back to regular rotation automatically — or schedule a 'normal' preset to follow it."
+      ],
+      "revert": "Revert time on the preset, or a following 'normal' preset on the calendar.",
+      "assumptions": [
+        "A single preset can target a floor-wide display set (vs. needing one per venue). Confirm.",
+        "Revert time is set per scheduled event. Confirm where the revert field lives — on the preset or on the scheduled event."
+      ],
+      "sources": ["ameristar", "fagCopy"],
+      "reviewStatus": "draft"
+    },
+    {
+      "slug": "marketing-zone-content",
+      "section": "Marketing & Guest Experience",
+      "n": 3,
+      "title": "Run customized content by zone — indoor and outdoor — from one control panel.",
+      "prerequisites": "Each zone's content is loaded in Telemetry TV and each is on its own player → LUCI encoder channel (one source per zone's content). Confirm with your A/V team which external displays (marquee, outdoor signs) are currently connected through LUCI — they only appear on the map if they're on an encoder.",
+      "setup": [
+        "In Telemetry TV, load each zone's content as a separate playlist on a separate player (one player per simultaneously-running piece of content). Each player → LUCI encoder → its own channel in LUCI's source list.",
+        "For outdoor signage: confirm the marquee/outdoor displays are wired into LUCI encoders. If they are, they show up as displays on the map and are managed exactly like indoor screens."
+      ],
+      "steps": [
+        "In LUCI, open the property map and pick the first zone (e.g., sports book). Select it from the venue list or tap its tag.",
+        "Select the displays in that zone, then in the source list pick that zone's content channel. They flip immediately.",
+        "Repeat for each zone — main floor, bar, lobby, marquee — each running its own content at the same time.",
+        "To make it repeat: build one preset per zone (displays + that zone's channel) and schedule each on its own calendar. Zone schedules are independent, so the sports book can run on one cadence while the bar runs on another.",
+        "Walk the floor to confirm each zone is playing what you intended, and adjust the channel or schedule from the same panel."
+      ],
+      "revert": "Each zone can be returned to its standing content by applying that zone's 'normal' preset, or by scheduling it.",
+      "assumptions": [
+        "Each simultaneously-running content stream needs its own player/encoder channel. Confirm the player count recommendation with Mike.",
+        "External signage is IP-controllable through a LUCI encoder. Confirm the marquee specifically — it may need a separate integration.",
+        "A preset can be scoped to a single venue/zone. Confirm."
+      ],
+      "sources": ["ameristar", "angel", "fagCopy"],
+      "reviewStatus": "draft"
+    },
+    {
+      "slug": "marketing-event-campaign",
+      "section": "Marketing & Guest Experience",
+      "n": 4,
+      "title": "Build an event campaign that escalates automatically.",
+      "prerequisites": "Your event promo asset(s) are loaded in Telemetry TV and on a player → LUCI encoder channel (see UC1 Setup). Confirm whether 'escalation' is a single feature or a preset sequence (see assumptions).",
+      "setup": [
+        "In Telemetry TV, load the event promo asset(s). For higher frequency closer to the event, build a playlist that rotates the promo more often (or a shorter spot list) — frequency is controlled on the CMS side, zone coverage on the LUCI side."
+      ],
+      "steps": [
+        "In LUCI, build a series of presets, each wider than the last: Preset A = one zone (e.g., lobby) on the event channel; Preset B = lobby + concourse; Preset C = full floor on the event channel.",
+        "Open the Event Scheduler and place Preset A on the calendar for two weeks out, Preset B for one week out, and Preset C for the week of the event. Each can repeat daily during its window.",
+        "To fill slow dayparts between campaign windows, schedule a separate preset that pushes loyalty and dining offers during historically slow windows.",
+        "Schedule a 'return to baseline' preset for the day after the event (or set revert times on Preset C) so no stale event content keeps running.",
+        "Build it once — the calendar ramps and resets on its own from there."
+      ],
+      "revert": "A scheduled 'return to baseline' preset the day after the event, plus revert times on the campaign presets, returns the whole floor to normal automatically.",
+      "assumptions": [
+        "Escalation is built as a SEQUENCE of presets on the calendar, not a single 'escalating' feature. Confirm with Mike — LUCI may have a newer campaign/escalation tool not covered in the transcripts.",
+        "Frequency (how often the spot plays) is controlled in the CMS playlist, not in LUCI. Confirm.",
+        "Zone coverage is controlled in the LUCI preset. Confirm."
+      ],
+      "sources": ["ameristar", "fagCopy"],
+      "reviewStatus": "draft"
+    },
+
+    { "slug": "gaming-floor-audio",        "section": "Gaming & Operations", "n": 1, "title": "Set your floor's audio to match the room's energy, all day.", "steps": [], "reviewStatus": "not started" },
+    { "slug": "gaming-jackpot-event",      "section": "Gaming & Operations", "n": 2, "title": "Make every jackpot a floor event, automatically.", "steps": [], "reviewStatus": "not started" },
+    { "slug": "gaming-reconfigure-property","section": "Gaming & Operations", "n": 3, "title": "Reconfigure the entire property in seconds.", "steps": [], "reviewStatus": "not started" },
+    { "slug": "gaming-new-game-launch",    "section": "Gaming & Operations", "n": 4, "title": "Direct guest attention to a new game area from the moment it opens.", "steps": [], "reviewStatus": "not started" },
+
+    { "slug": "av-property-schedule",      "section": "A/V & Facilities", "n": 1, "title": "Build the whole property's schedule in one session, then let it run.", "steps": [], "reviewStatus": "not started" },
+    { "slug": "av-service-requests",       "section": "A/V & Facilities", "n": 2, "title": "Resolve service requests from wherever you are — including after hours.", "steps": [], "reviewStatus": "not started" },
+    { "slug": "av-find-problems",           "section": "A/V & Facilities", "n": 3, "title": "Find problems before guests do.", "steps": [], "reviewStatus": "coming-soon — health monitoring/alerts ship in the upcoming LUCI release; not live yet. Badge as Coming Soon." },
+    { "slug": "av-private-event",           "section": "A/V & Facilities", "n": 4, "title": "Configure a private event once, then activate it and let it revert on its own.", "steps": [], "reviewStatus": "not started" },
+
+    { "slug": "it-av-dashboard",            "section": "IT & Technology", "n": 1, "title": "See every A/V endpoint on the property from a single dashboard.", "steps": [], "reviewStatus": "coming-soon — health/status dashboard ships in the upcoming LUCI release; not live yet. Badge as Coming Soon." },
+    { "slug": "it-change-log",             "section": "IT & Technology", "n": 2, "title": "Know exactly what changed, and when.", "steps": [], "reviewStatus": "coming-soon — audit/change log ships in the upcoming LUCI release; not live yet. Badge as Coming Soon." },
+    {
+      "slug": "it-permissions",
+      "section": "IT & Technology",
+      "n": 3,
+      "title": "Define who can change what — by role, by zone, by team.",
+      "prerequisites": "You have an admin PIN. The KB article covers per-user source permissions (View/Edit). Confirm with Mike whether zone-level and feature-level access (schedules, health checks) live in this same screen or elsewhere.",
+      "setup": [],
+      "steps": [
+        "Log in to LUCI with your admin PIN.",
+        "Navigate to User Management → Access.",
+        "Select the user whose access you're setting. Do this before touching any controls — permissions are edited per selected user.",
+        "Open the Source tab. You'll see every source in the system and this user's current permission for each.",
+        "For each source, set the View permission: Enabled (user can tune a display to it), Disabled (visible in the user's list but can't tune to it), or Hidden (not shown to this user at all).",
+        "Set the Edit permission per source: On (user can edit that source's details — edits apply to all users) or Off (read-only for this user).",
+        "To set the same permission across every source at once, use the batch controls at the top right: the Options dropdown sets View for all sources, and the Edit All toggle sets Edit for all.",
+        "For source-by-source control, use the dropdown and toggle next to each source individually.",
+        "Repeat for each user. Permissions take effect immediately."
+      ],
+      "revert": "n/a — permissions persist until changed.",
+      "assumptions": [
+        "KB covers source-level View/Edit per user. The FAG frames access as 'by role, by zone, by team' — confirm with Mike whether role/zone abstractions exist on top of per-user-per-source, or whether that framing is aspirational.",
+        "'Edit On applies for all users of the system' per the KB — confirm source-detail edits are global, not per-user.",
+        "Confirm whether non-source permissions (who can edit schedules, run health checks, manage presets) are controlled here or in a separate admin area."
+      ],
+      "sources": ["kbPermissions"],
+      "reviewStatus": "draft — from JSM KB article 139427856; needs Mike to confirm role/zone scope"
+    },
+    { "slug": "it-scheduled-maintenance",  "section": "IT & Technology", "n": 4, "title": "Schedule system maintenance to run automatically.", "steps": [], "reviewStatus": "coming-soon — needs source; Jane to talk to Mike/FDE about scheduled reboots/updates. Badge as Coming Soon (or replace with a live use case)." },
+
+    { "slug": "finance-replan-capital",     "section": "Finance", "n": 1, "title": "Replan the capital you'd reserved for the next A/V refresh.", "steps": [], "reviewStatus": "not started — business process, no software steps" },
+    { "slug": "finance-cut-vendor-contracts","section": "Finance", "n": 2, "title": "Cut or renegotiate the vendor and integration contracts LUCI replaces.", "steps": [], "reviewStatus": "not started — business process, no software steps" },
+    { "slug": "finance-measure-av-revenue","section": "Finance", "n": 3, "title": "Start measuring A/V as a revenue contributor, not just a cost.", "steps": [], "reviewStatus": "not started — business process, no software steps" },
+    { "slug": "finance-document-av-spend", "section": "Finance", "n": 4, "title": "Document and defend your A/V spend with platform data.", "steps": [], "reviewStatus": "not started — business process, no software steps" },
+
+    { "slug": "gm-walk-floor-ipad",         "section": "General Management", "n": 1, "title": "Walk the floor with an iPad and take the controls yourself.", "steps": [], "reviewStatus": "not started" },
+    { "slug": "gm-morning-reset",           "section": "General Management", "n": 2, "title": "Schedule a morning reset so the floor always wakes up looking right.", "steps": [], "reviewStatus": "not started" },
+    { "slug": "gm-strategy-meeting",        "section": "General Management", "n": 3, "title": "Schedule a recurring guest-experience strategy meeting with the whole team.", "steps": [], "reviewStatus": "not started — organizational practice, no software steps" },
+    { "slug": "gm-team-adoption",           "section": "General Management", "n": 4, "title": "Make sure every team is actually using what they can.", "steps": [], "reviewStatus": "not started" }
+  ]
+}

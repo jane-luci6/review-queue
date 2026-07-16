@@ -556,22 +556,22 @@
     <p class="featured__label" id="featured-label">Latest issue</p>
 
     <article class="featured__card">
-      <span class="featured__card-num" aria-hidden="true">01</span>
+      <span class="featured__card-num" aria-hidden="true">02</span>
       <div class="featured__card-main">
         <div class="featured__card-head">
-          <span class="featured__card-kicker">Issue 01</span>
+          <span class="featured__card-kicker">Issue 02</span>
           <span class="featured__card-head-sep" aria-hidden="true">&middot;</span>
-          <span class="featured__card-date">June 2026</span>
+          <span class="featured__card-date">July 2026</span>
         </div>
-        <h2 class="featured__card-title">Clearing the Deck for Deliberate Action</h2>
+        <h2 class="featured__card-title">The Version of Tomorrow We Haven't Yet Met</h2>
         <ul class="featured__card-bullets">
-          <li><strong>In the field</strong> &mdash; Ameristar Council Bluffs clears a decade of aging tech in three days</li>
-          <li><strong>Inside LUCI</strong> &mdash; A step-by-step guide to your own morning reset with presets and the calendar</li>
-          <li><strong>Platform</strong> &mdash; A preview of the August LUCI release and its agentic capabilities</li>
+          <li><strong>In the field</strong> &mdash; Tachi Palace's bingo hall gets eight new LED video walls in a one-week refresh</li>
+          <li><strong>Inside LUCI</strong> &mdash; Set a revert preset that flashes the property to a moment, then snaps back to what was on</li>
+          <li><strong>What's coming</strong> &mdash; The August release introduces the Command Trail &mdash; every meaningful change, logged in one place</li>
         </ul>
       </div>
       <div class="featured__card-action">
-        <a class="hub-btn" href="/the-signal/issue-01">Read issue<span class="hub-btn__arrow">&rarr;</span></a>
+        <a class="hub-btn" href="/the-signal/issue-02">Read issue<span class="hub-btn__arrow">&rarr;</span></a>
       </div>
     </article>
   </section>
@@ -580,23 +580,34 @@
   <section class="archive" aria-labelledby="archive-title">
     <div class="archive__header">
       <h2 class="archive__title" id="archive-title">Archive</h2>
-      <p class="archive__note">Issue 01 is live. More on the way.</p>
+      <p class="archive__note">Issues 01 and 02 are live. More on the way.</p>
     </div>
 
     <!--
-      ARCHIVE ORDER: newest issue first, then numbered backwards (02, 01, …).
+      ARCHIVE ORDER: newest issue first, then numbered backwards (03, 02, 01, …).
       When a new issue ships:
         1. Update the Featured section above with the latest issue.
         2. Add the new issue as the first .issue-card in this grid.
-        3. Move the previous "Latest" badge off older cards.
-      Issue 01 only for now — featured + archive both point here; split when 02 launches.
-      Duplicate .issue-card blocks to add issues. Update: href, num, title, date, description.
+        3. Move the "Latest" badge off older cards onto the newest one.
+      Duplicate the Issue 03 placeholder to add the next issue. Update: href, num, title, date, description.
     -->
     <div class="archive__grid">
+      <a class="issue-card" href="/the-signal/issue-02">
+        <div class="issue-card__thumb">
+          <span class="issue-card__num">02</span>
+          <span class="issue-card__status">Latest</span>
+        </div>
+        <div class="issue-card__body">
+          <p class="issue-card__meta">July 2026</p>
+          <p class="issue-card__title">The Version of Tomorrow We Haven't Yet Met</p>
+          <p class="issue-card__desc">A one-week refresh at Tachi Palace, the August Command Trail, and a lighting playbook from Mike Epstein.</p>
+          <span class="issue-card__link">Read issue &rarr;</span>
+        </div>
+      </a>
+
       <a class="issue-card" href="/the-signal/issue-01">
         <div class="issue-card__thumb">
           <span class="issue-card__num">01</span>
-          <span class="issue-card__status">Latest</span>
         </div>
         <div class="issue-card__body">
           <p class="issue-card__meta">June 2026</p>
@@ -605,18 +616,6 @@
           <span class="issue-card__link">Read issue &rarr;</span>
         </div>
       </a>
-
-      <article class="issue-card issue-card--placeholder">
-        <div class="issue-card__thumb">
-          <span class="issue-card__num">02</span>
-          <span class="issue-card__status">Coming soon</span>
-        </div>
-        <div class="issue-card__body">
-          <p class="issue-card__meta">July 2026</p>
-          <p class="issue-card__title">Issue 02</p>
-          <p class="issue-card__desc">The next issue drops mid-month. Check back soon.</p>
-        </div>
-      </article>
 
       <article class="issue-card issue-card--placeholder">
         <div class="issue-card__thumb">

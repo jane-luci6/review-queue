@@ -1,0 +1,258 @@
+---
+description: Modern design system — spacing, type application, tracks A/B/C, contrast, validation. NEW assets only unless user requests redesign.
+alwaysApply: true
+---
+
+# Modern Design Guidelines
+
+System rules for generating marketing assets: web pages, HTML emails, slides, documents, PDFs, social graphics. Layout architecture, spacing, type, color application, separation, motion.
+
+**Brand palette, fonts, voice** → `luci-visual-design.mdc`, `luci-messaging-voice.mdc`, messaging guide. This doc governs **how** they are applied.
+
+Rules are explicit and testable. Follow numbers and triggers literally. On conflict → **§9 Conflict resolution order**.
+
+## Scope — do not apply retroactively
+
+- **Use for new assets** and explicit redesign requests only.
+- **Do not refactor** existing newsletter, emails, messaging docs, capability doc, review site, website prototypes, etc. unless the user asks.
+- **Flagship reference:** `LUCI Systems Design System/ui_kits/newsletter/the-signal-issue-01-june-2026.html` — study rule *combination*, not pixels to copy. Fix known contrast issues per §4.2 when deriving new work.
+- **Sales collateral (PDF-first docs):** follow `luci-sales-document-system.mdc` and start from `ui_kits/sales/_template-sales-document.html` + `sales-document.css` (prefix `doc-`). That rule canonizes the document spine, components, and prior design decisions so sales assets stay consistent.
+
+---
+
+## 0. How to use
+
+**Step 1 — Pick track** by copy density, not file type:
+
+> Count words a reader reads start-to-finish in the largest single section.
+> - **> ~50 words sustained reading →** light canvas, near-black text. Track C dominates.
+> - **≤ ~50 words, image-led/glanceable →** dark glassy OK. Track A or B.
+
+Mixed assets: **zone canvas by section purpose** (dark masthead/index/callouts/closing; light reading sections — see §7).
+
+**Step 2 — Apply in order:**
+1. Foundation (§1–§5)
+2. Track (§A / §B / §C)
+3. Channel constraints (e.g. §C.5 email)
+
+**Step 3 — Validate** against §8 checklist before output.
+
+| Track | Use for | Canvas | Section |
+|---|---|---|---|
+| **A — Interactive** | Web, apps, hover/click/scroll | Dark OK | §A |
+| **B — Static Visual** | Slides, social, heroes | Dark preferred | §B |
+| **C — Static Document** | Reports, PDFs, long email | Light required | §C |
+
+---
+
+## 1. Spacing system
+
+- Base unit **8px**. Margins, padding, gaps: `8, 16, 24, 32, 40, 48, 64, 96, 128`.
+- **4px** only legal half-step — tight type spacing (label-to-number, icon-to-text).
+- **Never off-scale** (no 13px, 37px, 22px). Round to nearest 8 (or 4 for exception).
+- Fluid: `clamp(min, vw, max)` where min/max are on-scale, e.g. `clamp(40px, 6vw, 64px)`.
+
+## 2. Layout container
+
+- **Reading measure hard constraint:** body copy **60–70 characters** → `max-width: 60ch` (or `650–680px`) on text blocks.
+- Column may be wider (e.g. 820px) if running text inside stays ~60ch. **Decouple column width from text width** — separate variables.
+- Side padding fluid: `clamp(28px, 6vw, 60px)`.
+
+## 3. Typography
+
+### 3.1 Three-tier font system (critical)
+
+Three roles, three typefaces. Pick by **prominence**, not by element type.
+
+**Tier 1 — Display (Syncopate). Short, high-impact only.**
+- Masthead/wordmark, 1–3 word title, large numerals, small tracked uppercase labels (kickers, eyebrows, counters, role labels).
+- **Hard limit: ≤3 words AND ≤~25 characters AND single line.**
+- **Heuristic:** if text would wrap to line 2, or exceeds ~3 words → **not** display font. Use bold structure font.
+- Never display font for article headlines, multi-line headers, sentences, sub-heads, running text.
+
+**Tier 2 — Structure (Space Grotesk). Heads, labels, and metric numerals.**
+- All real headlines, section titles, subheads, brand/proper names, prominent labels, kickers/eyebrows, and metric numerals (giant stats, totals, counts).
+- Headlines/subheads: **700**, tracking `-0.025em` to `-0.015em`, line-height `1.1`.
+- **Not** for running body copy — body copy is Inter (Tier 3).
+
+**Tier 3 — Body + recede (Inter). All non-head copy, always.**
+- **All running body copy / paragraph text / descriptions / decks / notes / attributions / table & list copy use Inter — in every asset** (documents, sales collateral, emails, web, hub). This is non-negotiable: copy text (non-head) is never Space Grotesk. Body: 400, line-height `1.5–1.72`.
+- **Also the diagram/figure recede layer:** inside diagrams, illustrations, and figure-heavy art, set the small supporting text — data/node labels, captions, sub-labels, subtitles, axis/legend/annotation copy, vendor tags — in Inter so it recedes behind Space Grotesk names/titles.
+- **Keep the prominent names/titles inside a diagram in Space Grotesk** (Tier 2); reserve Syncopate (Tier 1) for any true display word. A single diagram commonly uses all three tiers.
+- All three families are embedded (subset, base64) in `assets/fonts/luci-brand-fonts.css` and directly in each canonical diagram SVG so they render offline, in PDF export, and when copied.
+
+### 3.2 One display moment per asset
+Exactly **one** display-scale element (typically masthead). Don't scatter multiple giant display headers.
+
+### 3.3 Hierarchy through scale, not decoration
+Size/weight contrast — not recoloring or font-switching mid-hierarchy. Tracked uppercase **kicker** above section titles.
+
+### 3.4 Type scale (keep relationships; adapt sizes to brand fonts)
+
+| Role | Font / weight | Size (web) | Size (doc/PDF) | LH | Tracking |
+|---|---|---|---|---|---|
+| Display / masthead | Display 700 | clamp(52px,12vw,96px) | — | 0.9 | -0.03em |
+| Oversized numeral | Display 700 | clamp(100px,22vw,200px) | — | 0.85 | — |
+| Headline H1 | Head 700 | clamp(26px,4.5vw,38px) | 24–28pt | 1.1 | -0.025em |
+| Marquee headline | Head 700 | clamp(30px,5vw,42px) | — | 1.1 | -0.025em |
+| Subhead H2 | Head 700 | 20–24px | 16–18pt | 1.2 | -0.015em |
+| Body | Body 400 | 17px (16–18) | 11–12pt | 1.5–1.72 | — |
+| Pull quote | Body italic | clamp(19px,2.8vw,24px) | — | 1.45 | — |
+| Kicker / label | Display 700 | 10–11px | 8–9pt | — | 0.20–0.22em UPPERCASE |
+| Metric | Head 700 | 64px+ | — | 1.0–1.1 | label 11–12px under |
+| Diagram label / caption (recede) | Recede 400–600 | 11–15px | — | 1.2–1.4 | 0 to 0.04em |
+
+- "Display" = Tier 1 Syncopate · "Head" = Tier 2 Space Grotesk (headlines, labels, metric numerals) · "Body/Recede" = Tier 3 Inter (**all non-head copy** + diagram recede, per §3.1).
+- Metric: giant number + small tracked uppercase label beneath.
+- Heading line-heights (0.9–1.2) are **not** 8px-snapped. Body 1.5–1.72 is.
+
+### 3.5 Section headers — the stacked lockup (site-wide standard)
+
+Every titled section across the site **except the homepage** uses the `SectionBlock` **lockup variant**: `lockupName` (big, Space Grotesk 700, ~`clamp(34px,5vw,52px)`, left-aligned) → a 40px × 3px mint accent rule → `lockupRole` (small, 12px tracked uppercase; mint on dark, `--accent-light` on light). This is the diagram's own left-aligned stack order (name big, role small, name first), so a section that names a diagram component matches the image's emphasis exactly. Reveals on scroll — name rises, rule draws from the left, role settles in — with `prefers-reduced-motion` and `<noscript>` fallbacks.
+
+Mapping existing two-string headers: the **shorter / label string → `lockupName`**, the **longer / descriptor string → `lockupRole`** (e.g. Platform §1: `lockupName="What LUCI is" lockupRole="Two forces working as one"`). For a section that only had a single `title`, keep it as `lockupName` and author a concise `lockupRole` subhead. No period on the name; the component uppercases the role, so enter it in normal case. **Avoid the inline `name | divider | role` arrangement** — it reads as an unbalanced single line next to short names.
+
+## 4. Color application
+
+Hex from brand palette. These are application rules (LUCI flagship tokens as examples).
+
+### 4.1 Accent discipline
+- Accent for **small elements only**: kickers, links, markers, one primary button, thin accent bars. **Never** body text or large accent fills.
+- **Two accent values:**
+  - **Bright** (e.g. mint `#68E3BE`) → **dark backgrounds only**
+  - **Light-surface** (`#2b9e80`) → light backgrounds — the **canonized** light accent, used every time on white/off-white/light. (`#176B54` is retired; do not substitute it.)
+- **Forbidden:** bright accent on light canvas (mint on sand = **1.23:1**).
+
+### 4.2 Contrast (non-negotiable)
+
+Targets: **AA 4.5:1** normal text; **3:1** large (≥24px or ≥18.66px bold).
+
+| Pairing | Ratio | Verdict | Action |
+|---|---|---|---|
+| Body `#354F5C` on off-white/white/sand | 8.1 / 8.7 / 6.8 | ✅ | Keep |
+| Off-white on navy | 15.1 | ✅ | Keep |
+| Body-on-dark 88% white on navy | 11.6 | ✅ | Keep |
+| Bright mint on navy / navy-deep | 10.2 / 11.6 | ✅ | Dark only |
+| Light accent `#2b9e80` on off-white/white | ~3.1 | ✅ | Canonized light-surface accent (brand decision) |
+| Light accent `#2b9e80` on sand | ~2.6 | ⚠️ | Canonized light accent; reads soft on sand — brand-accepted |
+| Bright mint on sand/light | 1.23 | ❌ | **Forbidden** |
+
+- **Small labels/links on light:** use **`#2b9e80`** — the canonized light-surface accent, every time. (`#176B54` is retired; do not substitute it.)
+- Never color-only state — add text, icon, weight, or shape.
+
+## 5. Separation & elevation
+
+- Prefer **whitespace and background shifts** over lines. No heavy borders between blocks.
+- **Soft shadows** when lifting: e.g. `0 24px 48px rgba(0,0,0,0.4)` on dark.
+- **Radii:** cards/modules/images **12–24px**, consistent per asset. Pills/buttons **9999px**. Images match card radius.
+- **Hairlines OK** on light: `~#D4D9DC` / 8% black; on dark `rgba(accent,0.15)`. Thin accent bars **2–4px** for major boundaries. De-boxed: hairline or tint, not container border.
+- **Icons:** one library, uniform stroke; no mixed families per asset.
+
+### 5.1 Soft-icon tiles + duotone icons (CANONICAL for icon-led points on light)
+
+This is the **house style** for grouped points, cards, commitments, capability/architecture lists, and outcome rows on light canvases. Use it by default; do **not** revert to dark/heavy navy icon tiles or to a deep-green bar+label divider.
+
+- **Tile:** ~**54px**, radius **16px**, soft gradient `linear-gradient(155deg,#E6F5EF 0%,#F3FAF8 100%)`, inset **1px** mint hairline `inset 0 0 0 1px rgba(43,158,128,0.14)`. No drop shadow, no dark fill.
+- **Icon (duotone):** line icon, **primary strokes `#2b9e80`** (`--mint-dark`), with **one accent element in gold** `#CEB06E`/`--gold-deep`; optional 18–22% mint fill on the main shape. ~**28px**, stroke ~1.8. Each icon visually **distinct** (avoid four near-identical glyphs).
+- **Copy:** Space Grotesk **bold** head (`--ink-strong`) + **Inter** body (`--navy-muted`). Optionally wrap each item in a **soft card**: same light gradient bg, 16px radius, inset mint hairline, ~26px padding.
+- **Retire:** the deep-green **bar + uppercase-green label** section-divider treatment, and dark navy icon tiles on light pages. (`#176B54` is retired entirely; `#2b9e80` is the light accent but is never used as a bar+label section divider — use the §5.1 soft-icon tile pattern instead.)
+- **Flow / phase connectors:** thick, **low-opacity gradient** (gold→mint), routed in the **margins** with **visible arrowheads** pointing inward to each row; never hidden behind nodes. Give the turn its **own vertical band** so it never competes with step labels.
+- **Reference implementation:** `ui_kits/sales/capabilities-document.{html,css}` — `.doc-softicon`, case-study outcomes (p6), architecture points (p7), commitments + journey connector (p9).
+
+---
+
+## A. Track A — Interactive
+
+- Cards: **2–3%** bg shift off canvas (`#0B0E14` → `#121620`). Soft shadows. No line dividers.
+- Sections: whitespace only, no `<hr>`. Padding **96–128px** desktop.
+- Stagger/offset grids; single column mobile.
+- Atmospheric gradients at transitions — not hard cuts.
+- Marketing/hero: **35–40%** blank canvas. Dashboards/tables: scannable density.
+- Motion: **150–250ms** ease-out hover; **300–400ms** larger. One easing curve. `prefers-reduced-motion` fallback.
+- States: hover, focus, active, disabled.
+- **Focus rings mandatory** — exception to no hard borders. **44×44px** touch targets. No essential hover-only content.
+- Breakpoints: `<640` / `640–1024` / `>1024`. Section padding **96–128 → 48–64** mobile. Fluid containers preserve 60ch.
+
+## B. Track B — Static Visual
+
+- Fixed canvas (slides **1920×1080**). Separate per social format.
+- Safe zone **5–8%** inner margin.
+- **One concept** per slide/graphic.
+- Dark, glows, 2–3% elevation OK. Whitespace + focal point.
+- Text on imagery needs scrim. Screen-share: size up, target AAA.
+- Wall of text (>~50 words) → switch to Track C.
+
+## C. Track C — Static Document
+
+### C.1 Canvas & text
+- Off-white canvas (e.g. `#F5F8FA`), not `#FFF`. Near-black text (`#354F5C` / `#1A1A1A`), not `#000`.
+- 60–70ch measure; single column for long docs.
+
+### C.2 Separation
+- Hairline **~1px ~8% black** or subtle tint — not glow. Section gap **40–60px**. Thin rule under heading OK.
+
+### C.3 Furniture
+- Running headers/footers, page numbers on long docs. Fixed H1/H2/H3 spacing. Tables: 8px-multiple padding, light gridlines/zebra.
+
+### C.4 Print / PDF
+- Light bg; no full-bleed dark. Safe margin **≈0.5in / 12mm**. Embed fonts. Grayscale-legible. Reasonable file size.
+
+### C.5 Email
+- Table layout, **max 600px**. Cell padding separation. **Inline styles only** — no flex/grid/external sheets. Light bg for copy. Web-safe stacks.
+
+---
+
+## 6. Anti-patterns (never)
+
+- Display font on wrapping headlines or running text.
+- More than one display-scale element.
+- Bright accent on light background.
+- Accent for body text or large fills.
+- Off-scale spacing.
+- Pure `#000` on pure `#FFF` in reading docs.
+- Heavy borders between blocks.
+- Removing focus outlines.
+- Essential content hover-only on touch.
+- Full-bleed dark on printable assets.
+- `<hr>` on web; flex/grid in email.
+- Shipped scaffolding (draft notes, editor comments).
+- Deep-green **bar + label** as a section divider, or dark/heavy navy icon tiles on light pages — use the §5.1 soft-icon tile pattern instead.
+- Writing "AV" — always **A/V** (see voice rule).
+
+## 7. Flagship — The Signal Issue 01
+
+`the-signal-issue-01-june-2026.html` demonstrates:
+- **Zoned canvas:** dark masthead → white welcome → dark index → sand lead → alternating light sections → dark callouts/closing.
+- **Three-font discipline:** Syncopate only for two-word masthead "THE SIGNAL." + numerals + tiny labels; article headlines = bold Space Grotesk; **article body = Inter**.
+- **One display moment:** masthead to 96px + 5% opacity numeral; articles cap 38–42px.
+- **Dual accent:** bright mint on dark; `#2b9e80` on light (canonized light accent — `#176B54` retired).
+- **De-boxed:** hairlines, 2–4px accent bars.
+- **820px column, 60ch measure.**
+- Motion: 0.15s; arrow nudge on hover.
+
+**Fix before literal copy:** use `#2b9e80` consistently on light (never `#176B54`). Strip `.editor-notes`/`.draft` from production.
+
+## 8. Pre-output checklist
+
+1. Track by copy density; canvas zoned if mixed.
+2. Spacing = multiples of 8 (4 tight-type only).
+3. Body text ≤60–70ch.
+4. Three-tier fonts (§3.1): Display (Syncopate) only ≤3 words / ≤25 chars / single line; headlines, labels, metric numerals = Space Grotesk (Head); **all non-head copy = Inter (Body/Recede), always** — copy text is never Space Grotesk.
+5. One display-scale element.
+6. Accent small only; bright on dark only; deep accent on light passes contrast.
+7. Body ≥4.5:1; light accents `#2b9e80` (`#176B54` retired); no bright accent on light.
+8. Separation: whitespace/tint/hairline; consistent radii.
+9. **Track A:** focus rings; 44px targets; reduced-motion; one easing; no essential hover-only.
+10. **Track C:** off-white + near-black; print margins; embedded fonts; grayscale; email §C.5.
+11. No §6 anti-patterns; no scaffolding.
+
+## 9. Conflict resolution (higher wins)
+
+1. **Text legibility / WCAG contrast**
+2. **Accessibility** (focus, touch, reduced motion, non-color cues)
+3. **Channel hard constraints** (email, print)
+4. **Track rules** (A/B/C)
+5. **Foundation aesthetic** (separation, spacing, motion)
+6. **Stylistic preference**
+
+Never trade legibility or accessibility for aesthetics.

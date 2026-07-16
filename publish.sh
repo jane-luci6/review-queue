@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Push LUCI review site → GitHub → Netlify auto-deploys.
+# Push LUCI review site → GitHub → Vercel auto-deploys.
 # Usage:
 #   ./publish.sh
 #   ./publish.sh "Your commit message"
@@ -20,7 +20,8 @@ echo "→ Building review site (sync + inline queue)…"
 node scripts/build-stakeholder-review.mjs
 
 cd "$ROOT"
-git add "LUCI Systems Design System/" netlify.toml
+# vercel.json + built site both live under the design-system dir; this covers them.
+git add "LUCI Systems Design System/"
 
 if git diff --staged --quiet; then
   echo "→ No file changes to commit."
@@ -33,13 +34,18 @@ echo "→ Pushing to GitHub (origin main)…"
 git push origin main
 
 echo ""
-echo "Done. One push should trigger ONE Netlify production deploy."
-echo "Site: https://startling-fudge-f9965f.netlify.app/"
+echo "Done. One push to main triggers ONE Vercel production deploy."
+echo "Site: ${REVIEW_SITE_URL:-https://<your-project>.vercel.app/}"
 echo ""
-echo "If deploys show as Canceled:"
-echo "  • Wait for the latest deploy to finish — do not push again right away."
-echo "  • Netlify uses the GitHub App (not repo Webhooks tab): https://github.com/settings/installations"
-echo "    → Netlify → Configure → review-queue listed once; no duplicate Netlify apps."
-echo "  • Netlify → Site → Build & deploy → only ONE site linked to review-queue."
-echo "  • Optional: turn off Deploy Previews if you only need production (main)."
-echo "  • Manual fix: Deploys → Trigger deploy → Deploy project (main)."
+echo "Vercel project must be configured (one-time, in the dashboard):"
+echo "  • Root Directory   = LUCI Systems Design System"
+echo "  • Build Command    = npm run build:review   (or leave blank — vercel.json sets it)"
+echo "  • Output Directory = ui_kits/review         (vercel.json sets it)"
+echo "  • Storage          = Upstash Redis (Marketplace) connected → injects KV/UPSTASH env vars"
+echo "  • Env var          = REVIEW_TEAMS_WEBHOOK_OWNER (Teams notifications)"
+echo "  • Env var          = REVIEW_SITE_URL (your live Vercel URL, used in Teams links)"
+echo ""
+echo "If a deploy fails or is skipped:"
+echo "  • Vercel → Project → Deployments → check the build log."
+echo "  • Ensure only ONE Vercel project is linked to the review-queue repo."
+echo "  • Comments/approvals need the Redis store connected to this project (Storage tab)."

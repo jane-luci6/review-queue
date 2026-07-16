@@ -1,0 +1,21 @@
+---
+description: Where the user reviews LUCI website work and how to deploy changes there
+alwaysApply: true
+---
+
+# LUCI website review + deployment
+
+The user reviews all LUCI website work on the **internal review VM at `http://10.10.1.37`** — not `localhost:4321`.
+
+`localhost:4321` (the Astro dev server) is fine for a quick local check, but it is **not** the deliverable. The user looks at `10.10.1.37`. Pointing them at localhost wastes their time.
+
+## After every meaningful change to `luci-website`
+
+1. Run `./deploy.sh` from the `luci-website` repo root. It builds (`npm run build` → `dist/`) and rsyncs to `luci@10.10.1.37:/var/www/luci` (nginx, port 80).
+   - `deploy.sh` needs SSH to a LAN IP — request `all`/`full_network` permissions if the sandbox blocks it.
+2. Tell the user the change is live at `http://10.10.1.37` and remind them to **hard-refresh** (Cmd+Shift+R) — nginx/browser caching can still serve stale HTML even with the `Cache-Control: no-cache, must-revalidate` header in `deploy/nginx-luci.conf`.
+3. If they report "I don't see the change," it's almost always caching or a deploy that didn't finish — re-run `deploy.sh` and have them hard-refresh before debugging the code.
+
+## Canonical-asset propagation also ends here
+
+When a canonical diagram in `luci-design` is updated and copied into `luci-website/public/images/diagrams/`, the propagation isn't done until `deploy.sh` ships it to `10.10.1.37`. Bump `?v=N` cache-busters on changed `<img>` refs too.

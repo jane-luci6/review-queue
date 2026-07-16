@@ -1,0 +1,49 @@
+---
+description: Internal Marketing Portal — production deploy on .17 and how agents should ship portal changes
+alwaysApply: true
+---
+
+# Internal Marketing Portal — deployment pipeline
+
+The **production** Internal Marketing Portal is at **`http://10.10.1.17:8081`** — not `localhost` as the deliverable.
+
+Direct URL: `http://10.10.1.17:8081/internal-portal/index.html`
+
+There is **no staging server** for the portal. The user tests locally, then deploys to `.17`.
+
+## Local preview (before deploy)
+
+```bash
+npm run build:review
+cd ui_kits/review && python3 -m http.server 8766
+# → http://localhost:8766/internal-portal/index.html
+```
+
+## After every meaningful change to the Internal Marketing Portal
+
+From `LUCI Systems Design System/`:
+
+1. Run **`npm run deploy:portal`**. It:
+   - builds `ui_kits/review/` via `npm run build:review`
+   - rsyncs to `user-007@10.10.1.17:/home/user-007/internal-marketing-portal/`
+   - ensures the nginx Docker container on **:8081** is running (`internal_marketing_portal`)
+2. Tell the user the change is live at **`http://10.10.1.17:8081`** and remind them to **hard-refresh** (Cmd+Shift+R).
+3. Deploy needs SSH as `user-007@10.10.1.17` with `~/.ssh/id_ed25519` (passphrase). **Run from the user's Mac Terminal**, not Cursor's sandbox, unless `ssh-add --apple-use-keychain ~/.ssh/id_ed25519` has unlocked the key.
+4. Request `all`/`full_network` permissions if the sandbox blocks SSH/rsync.
+5. If they report "I don't see the change," re-run deploy and have them hard-refresh before debugging code.
+
+## Pipeline reference
+
+| Step | Command / artifact |
+|------|-------------------|
+| Local test | `npm run build:review` + `python3 -m http.server` in `ui_kits/review/` |
+| Deploy | `npm run deploy:portal` → `scripts/deploy-internal-portal-17.sh` |
+| Remote content | `/home/user-007/internal-marketing-portal/` |
+| Service | Docker `internal_marketing_portal` (nginx) on `:8081` |
+| Full docs | `ui_kits/internal-portal/docs/deploy-17.md` |
+
+## Portal changes are not done until .17 deploys
+
+Editing `ui_kits/internal-portal/` or assets consumed by `build-stakeholder-review.mjs` is not shipped until `npm run deploy:portal` completes successfully.
+
+**Note:** `10.10.1.37` is still used for **luci-website** review — that is a separate project, not this portal.

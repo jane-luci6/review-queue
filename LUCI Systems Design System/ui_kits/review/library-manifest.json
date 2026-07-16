@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-16",
+  "updated": "2026-07-16",
   "groups": [
     {
       "id": "messaging",
@@ -19,17 +19,23 @@
         {
           "id": "what-luci-is-diagram",
           "label": "What LUCI is",
+          "path": "messaging/what-luci-is.html",
           "queueId": "what-luci-is-diagram",
           "downloads": [
-            { "label": "SVG", "path": "assets/diagrams/luci-what-luci-is.svg" }
+            { "label": "SVG", "path": "assets/diagrams/luci-what-luci-is.svg" },
+            { "label": "PNG", "path": "assets/diagrams/luci-what-luci-is.png" }
           ]
         },
         {
           "id": "system-architecture-diagram",
           "label": "System architecture",
+          "path": "messaging/system-architecture.html",
           "queueId": "system-architecture-diagram",
           "downloads": [
-            { "label": "SVG", "path": "assets/diagrams/luci-system-architecture.svg" }
+            { "label": "Light SVG", "path": "assets/diagrams/luci-system-architecture.svg" },
+            { "label": "Light PNG", "path": "assets/diagrams/luci-system-architecture.png" },
+            { "label": "Dark SVG", "path": "assets/diagrams/luci-system-architecture.dark.svg" },
+            { "label": "Dark PNG", "path": "assets/diagrams/luci-system-architecture.dark.png" }
           ]
         },
         {
@@ -37,15 +43,8 @@
           "label": "Embedded Operation orbit",
           "path": "messaging/embedded-operation-orbit.html",
           "downloads": [
-            { "label": "SVG", "path": "assets/diagrams/embedded-operation-orbit.svg" }
-          ]
-        },
-        {
-          "id": "luci-system-diagram",
-          "label": "LUCI system diagram (V3)",
-          "path": "messaging/luci-system-diagram.html",
-          "downloads": [
-            { "label": "SVG", "path": "messaging/diagrams/luci-system-diagram-v3.svg" }
+            { "label": "SVG", "path": "assets/diagrams/embedded-operation-orbit.svg" },
+            { "label": "PNG", "path": "assets/diagrams/embedded-operation-orbit.png" }
           ]
         }
       ]
@@ -78,13 +77,32 @@
           "id": "sales-brochure",
           "label": "Sales brochure",
           "queueId": "sales-brochure",
-          "whenApproved": true
+          "downloads": [
+            { "label": "PDF", "path": "assets/sales/LUCI-Brochure.pdf" }
+          ]
+        },
+        {
+          "id": "capabilities-document",
+          "label": "Capabilities document",
+          "queueId": "capabilities-document",
+          "path": "sales/capabilities-document.html",
+          "downloads": [
+            { "label": "PDF", "path": "assets/sales/LUCI-Capabilities.pdf" }
+          ]
         },
         {
           "id": "field-activation-guide",
           "label": "Field Activation Guide",
           "queueId": "field-activation-guide",
           "whenApproved": true
+        },
+        {
+          "id": "field-activation-guide-prospect",
+          "label": "Field Activation Guide · Prospect",
+          "queueId": "field-activation-guide-prospect",
+          "downloads": [
+            { "label": "PDF", "path": "assets/sales/LUCI-Field-Activation-Guide-Prospect.pdf" }
+          ]
         }
       ]
     },
@@ -96,12 +114,20 @@
         {
           "id": "case-study-ameristar",
           "label": "Ameristar Council Bluffs",
-          "queueId": "case-study-ameristar"
+          "queueId": "case-study-ameristar",
+          "downloads": [
+            { "label": "PDF", "path": "assets/sales/LUCI-Case-Study-Ameristar-Council-Bluffs.pdf" }
+          ]
         },
         {
           "id": "signal-issue-01",
           "label": "The Signal · Issue 01",
           "queueId": "signal-issue-01"
+        },
+        {
+          "id": "signal-issue-02",
+          "label": "The Signal · Issue 02",
+          "queueId": "signal-issue-02"
         },
         {
           "id": "newsletter-email-teaser",
@@ -115,7 +141,7 @@
       "label": "Templates",
       "defaultOpen": false,
       "items": [
-        { "id": "budget-estimate", "label": "Budget estimate", "comingSoon": true },
+        { "id": "budget-estimate", "label": "Budget estimate", "note": "Customizable in the Customization Studio" },
         { "id": "proposal-builder", "label": "Proposal builder", "comingSoon": true, "note": "AI-assisted proposals — coming soon" }
       ]
     }

@@ -1,0 +1,65 @@
+<link rel='preconnect' href='https://fonts.googleapis.com'>
+<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+<link href='https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@400;500;600;700&display=swap' rel='stylesheet'>
+<style>
+  .signal-callout{
+    position:relative;
+    background:#F5F8FA;
+    color:#10232D;
+    font-family:'Space Grotesk',sans-serif;
+    overflow:hidden;
+    border-bottom:1px solid rgba(16,35,45,0.08);
+  }
+  .signal-callout__bar{height:4px;background:#68E3BE;width:100%;}
+  .signal-callout__inner{
+    max-width:1100px;margin:0 auto;
+    padding:clamp(36px,5vw,64px) clamp(24px,5vw,48px);
+    display:grid;grid-template-columns:1fr auto;gap:28px 40px;align-items:center;
+  }
+  .signal-callout__main{min-width:0;}
+  .signal-callout__tags{display:flex;align-items:center;gap:12px;margin-bottom:18px;flex-wrap:wrap;}
+  .signal-callout__kicker{
+    font-family:'Syncopate',sans-serif;font-size:10px;font-weight:700;
+    letter-spacing:0.22em;text-transform:uppercase;color:#2b9e80;
+  }
+  .signal-callout__title{
+    margin:0 0 16px;font-family:'Syncopate',sans-serif;
+    font-size:clamp(34px,4.4vw,46px);font-weight:700;line-height:0.95;
+    letter-spacing:-0.03em;color:#10232D;text-transform:uppercase;
+  }
+  .signal-callout__title em{font-style:normal;color:#2b9e80;}
+  .signal-callout__deck{
+    margin:0 0 18px;max-width:56ch;
+    font-size:clamp(16px,1.7vw,19px);font-weight:500;line-height:1.55;
+    color:#354F5C;
+  }
+  .signal-callout__action{flex-shrink:0;}
+  .signal-callout__btn{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'Syncopate',sans-serif;font-size:11px;font-weight:700;
+    letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;
+    color:#10232D;background:#68E3BE;padding:15px 22px;white-space:nowrap;
+    transition:background 0.15s ease-out,color 0.15s ease-out;
+  }
+  .signal-callout__btn:hover{background:#10232D;color:#F5F8FA;}
+  .signal-callout__btn span{font-family:'Space Grotesk',sans-serif;font-size:15px;line-height:1;}
+  @media (max-width:760px){
+    .signal-callout__inner{grid-template-columns:1fr;gap:24px;}
+    .signal-callout__action{justify-self:start;}
+  }
+</style>
+<section class='signal-callout' aria-labelledby='signal-callout-title'>
+  <div class='signal-callout__bar' aria-hidden='true'></div>
+  <div class='signal-callout__inner'>
+    <div class='signal-callout__main'>
+      <div class='signal-callout__tags'>
+        <span class='signal-callout__kicker'>Check out the new LUCI newsletter</span>
+      </div>
+      <h2 id='signal-callout-title' class='signal-callout__title'>The <em>Signal.</em></h2>
+      <p class='signal-callout__deck'>The Signal is LUCI&rsquo;s monthly customer newsletter &mdash; field stories from real properties, what&rsquo;s coming in each release, and expert insight from the people building the platform.</p>
+    </div>
+    <div class='signal-callout__action'>
+      <a class='signal-callout__btn' href='/the-signal'>Explore The Signal<span aria-hidden='true'>&rarr;</span></a>
+    </div>
+  </div>
+</section>

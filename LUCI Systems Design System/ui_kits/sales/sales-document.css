@@ -1,6 +1,6 @@
 /* ============================================================================
    LUCI Sales Document System — reusable stylesheet
-   Track C (Static Document) · PDF-first (US Letter) · Space Grotesk only.
+   Track C (Static Document) · PDF-first (US Letter) · three-tier LUCI type.
 
    Canonical foundation + components shared by all LUCI sales collateral
    (capability docs, field activation guides, FAQs, leave-behinds).
@@ -28,8 +28,8 @@
   --gold: #EDD086;                 /* bright gold — dark surfaces (headline accents, icon strokes on navy tiles) */
   --gold-deep: #CEB06E;            /* gold on light — stroke-only icons, structural marks */
   --gold-rgb: 237, 208, 134;
-  --accent-light: #176B54;         /* deep accent — small labels/links on LIGHT (AA) */
-  --mint-dark: #2b9e80;            /* figure kickers + callout bars on light (large/bold only) */
+  --accent-light: #2b9e80;         /* CANONIZED light-surface accent — every light accent (kickers, labels, links, bars, icons) */
+  --mint-dark: #2b9e80;            /* alias of --accent-light (canonized light accent) */
   --off-white: #F5F8FA;            /* reading canvas (never pure #fff) */
   --sand: #E5E3DF;                 /* warm light panel tone */
   --tint: #EEF2F4;                 /* callout fill on light */
@@ -49,6 +49,7 @@
   --atmosphere-clay-glow: rgba(184, 146, 106, 0.3);
   --atmosphere-dusk-glow: rgba(138, 127, 166, 0.28);
   --font: 'Space Grotesk', 'Trebuchet MS', sans-serif;
+  --font-recede: 'Inter', 'Space Grotesk', 'Trebuchet MS', sans-serif;
   --display: 'Syncopate', 'Arial Black', sans-serif;
 
   --page-w: 8.5in;
@@ -114,7 +115,9 @@ body {
   .doc-page--dark, .doc-page--framing, .doc-panel, .doc-shot__bar, .doc-feature,
   .doc-uc__benefits li::before, .doc-takeaway, .doc-reduce__icon,
   .doc-stage::before, .doc-pill-icon, .doc-orbit__hub, .doc-orbit__ring,
-  .doc-page-band, .doc-team-icon, .doc-opener-hero {
+  .doc-page-band, .doc-page-band::before, .doc-page--cover::before,
+  .doc-page--cover::after, .doc-cover__hero, .doc-cover__hero::before, .doc-cover__hero::after,
+  .doc-page--close::before, .doc-team-icon, .doc-opener-hero, .doc-proofpanel, .doc-proofpanel__facts {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -130,6 +133,27 @@ body {
   height: 4px;
   background: var(--mint);
 }
+
+/* Circuit texture on the dark bookends — fades in from the right, behind text. */
+.doc-page--cover::before,
+.doc-page--close::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 4px;
+  left: 0;
+  background-image: url('../../assets/textures/texture-circuit-header-mintgold.png');
+  background-repeat: repeat;
+  background-position: right center;
+  background-size: 640px auto;
+  -webkit-mask-image: linear-gradient(90deg, transparent 40%, rgba(0, 0, 0, 0.45) 68%, #000 100%);
+          mask-image: linear-gradient(90deg, transparent 40%, rgba(0, 0, 0, 0.45) 68%, #000 100%);
+  opacity: 0.55;
+  pointer-events: none;
+  z-index: 0;
+}
+.doc-page--cover > *, .doc-page--close > * { position: relative; z-index: 1; }
 
 /* ── Shared type ───────────────────────────────────────────────────────────── */
 .doc-page__head { margin-bottom: 22px; }
@@ -158,7 +182,7 @@ body {
   line-height: 0.8;
   font-weight: 700;
   letter-spacing: -0.05em;
-  color: rgba(23, 107, 84, 0.09);   /* ghosted deep-accent */
+  color: rgba(43, 158, 128, 0.09);   /* ghosted deep-accent */
   pointer-events: none;
   user-select: none;
 }
@@ -243,6 +267,12 @@ body {
   border-top: 1px solid var(--rule-light);
 }
 .doc-foot__page { font-weight: 600; }
+
+/* Running page numbers live in .doc-foot__page only (bottom right). */
+.doc-opener-hero__meta,
+.doc-page-band__meta {
+  display: none;
+}
 
 /* ── Cover ─────────────────────────────────────────────────────────────────── */
 .doc-page--cover { padding-top: 0.7in; }
@@ -339,6 +369,25 @@ body {
   background: var(--navy);
 }
 
+/* LUCI circuit texture (mint + gold woven) fading in from the right — the
+   canonical band treatment, shared with the brochure. Sits above the mint bar. */
+.doc-page-band::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 4px;
+  left: 0;
+  background-image: url('../../assets/textures/texture-circuit-header-mintgold.png');
+  background-repeat: repeat;
+  background-position: right top;
+  background-size: 560px auto;
+  -webkit-mask-image: linear-gradient(90deg, transparent 32%, rgba(0, 0, 0, 0.5) 60%, #000 100%);
+          mask-image: linear-gradient(90deg, transparent 32%, rgba(0, 0, 0, 0.5) 60%, #000 100%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
 .doc-page-band::after {
   content: '';
   position: absolute;
@@ -348,6 +397,8 @@ body {
   height: 4px;
   background: var(--mint);
 }
+
+.doc-page-band > * { position: relative; z-index: 1; }
 
 .doc-page-band__top {
   display: flex;
@@ -621,6 +672,93 @@ body {
   margin: 0 auto;
 }
 
+/* ── Technical architecture — enlarged diagram + supporting strip ──────────── */
+.doc-page--architecture .doc-page-band {
+  margin-bottom: 16px;
+  padding-bottom: 0.22in;
+}
+
+.doc-page--architecture .doc-figure--arch {
+  margin: 0 -0.24in;
+  flex: 0 0 auto;
+  display: block;
+  overflow: visible;
+}
+
+.doc-page--architecture .doc-figure--arch img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+}
+
+/* archpoints fill the page remainder beneath the diagram, vertically centered */
+.doc-page--architecture .doc-archpoints {
+  flex: 1 1 auto;
+  margin: 0;
+  padding: 0;
+  border-top: 0;
+  align-content: center;
+}
+
+.doc-page--architecture .doc-archpoints li {
+  position: relative;
+  padding: 24px 38px 0;
+  border-left: 0;
+}
+.doc-page--architecture .doc-archpoints li:first-child { padding-left: 0; }
+.doc-page--architecture .doc-archpoints li:last-child { padding-right: 0; }
+
+.doc-page--architecture .doc-archpoints li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 38px;
+  width: 32px;
+  height: 3px;
+  background: var(--accent-light);
+}
+.doc-page--architecture .doc-archpoints li:first-child::before { left: 0; }
+
+.doc-page--architecture .doc-archpoints__head {
+  margin: 0 0 10px;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+}
+
+.doc-page--architecture .doc-archpoints__body {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.doc-archpoints {
+  list-style: none;
+  margin: 0 0 8px;
+  padding: 26px 0 0;
+  border-top: 1px solid var(--rule-light);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.doc-archpoints li { padding: 0 30px; }
+.doc-archpoints li:first-child { padding-left: 0; }
+.doc-archpoints li:last-child { padding-right: 0; }
+.doc-archpoints li + li { border-left: 1px solid var(--rule-light); }
+.doc-archpoints__head {
+  margin: 0 0 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+}
+.doc-archpoints__body {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
 /* ── Takeaway — contained callout (deep-green bar + tint fill) ──────────────── */
 .doc-takeaway {
   max-width: 64ch;
@@ -778,7 +916,7 @@ body {
   line-height: 0.8;
   font-weight: 700;
   letter-spacing: -0.05em;
-  color: rgba(23, 107, 84, 0.09);
+  color: rgba(43, 158, 128, 0.09);
   pointer-events: none;
   user-select: none;
 }
@@ -981,8 +1119,132 @@ body {
   text-transform: uppercase;
   color: var(--accent-light);
 }
+/* One-paragraph conclusion on the proof page — wraps the guide and bridges
+   into the client roster. Body-styled (Inter), full width, sits between the
+   page head and the roster kicker. */
+.doc-proof__lead {
+  margin: 6px 0 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink);
+  max-width: none;
+}
+/* Lead-in sentence that bridges the conclusion into the client roster. */
+.doc-proof__intro {
+  margin: 28px 0 14px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--ink-strong);
+}
 .doc-proof__logos { display: flex; flex-direction: column; gap: 14px; padding: 28px 40px; }
 .doc-proof__logos img { display: block; width: 100%; height: auto; }
+
+/* ── Proof of impact — editorial outcome stats (hairline-structured) ────────── */
+.doc-impact {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 40px;
+  border-top: 1px solid var(--rule-light);
+}
+.doc-impact__stat { padding: 30px 44px 0 0; }
+.doc-impact__stat:last-child {
+  padding: 30px 0 0 44px;
+  border-left: 1px solid var(--rule-light);
+}
+.doc-impact__num {
+  font-size: clamp(76px, 13vw, 114px);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+  color: var(--ink-strong);
+}
+.doc-impact__num span {
+  font-size: 0.4em;
+  font-weight: 700;
+  color: var(--accent-light);
+  letter-spacing: -0.02em;
+  margin-left: 4px;
+}
+.doc-impact__label {
+  margin-top: 18px;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--ink-strong);
+}
+.doc-impact__note {
+  margin-top: 6px;
+  max-width: 30ch;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.doc-impact__source {
+  margin-top: 16px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--navy-muted);
+}
+
+/* ── Dark proof panel — field testimonial anchor (the intentional box) ──────── */
+.doc-proofpanel {
+  margin-top: 34px;
+  padding: 32px 36px 30px;
+  background: var(--navy);
+  border-top: 4px solid var(--mint);
+}
+.doc-proofpanel__kicker {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mint);
+  margin-bottom: 20px;
+}
+.doc-proofpanel__quote {
+  margin: 0;
+  font-size: 23px;
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.38;
+  letter-spacing: -0.015em;
+  color: rgba(238, 246, 249, 0.96);
+  max-width: 34ch;
+}
+.doc-proofpanel__attrib {
+  margin-top: 16px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(235, 245, 248, 0.58);
+}
+.doc-proofpanel__attrib span { color: var(--mint); }
+.doc-proofpanel__facts {
+  list-style: none;
+  margin: 28px 0 0;
+  padding: 24px 0 0;
+  border-top: 1px solid rgba(104, 227, 190, 0.2);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.doc-proofpanel__facts li { display: flex; flex-direction: column; gap: 5px; }
+.doc-proofpanel__fig {
+  font-size: 27px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--gold);
+}
+.doc-proofpanel__cap {
+  font-family: var(--font-recede);
+  font-size: 12px;
+  line-height: 1.4;
+  color: rgba(235, 245, 248, 0.72);
+}
 
 /* ── Image stage — body content over a right-anchored screenshot that fades ─── */
 /* Set the image per asset:  style="--stage-image:url('assets/your-shot.png')"  */
@@ -1017,6 +1279,7 @@ body {
   z-index: 2;
   max-width: 32ch;
   text-align: right;
+  font-family: var(--font-recede);
   font-size: 11px;
   font-style: italic;
   line-height: 1.4;
@@ -1038,9 +1301,9 @@ body {
 .doc-shot__bar { display: flex; align-items: center; gap: 10px; padding: 8px 14px; background: var(--navy); }
 .doc-shot__dots { display: flex; gap: 5px; }
 .doc-shot__dots span { width: 7px; height: 7px; border-radius: 50%; background: rgba(235, 245, 248, 0.28); }
-.doc-shot__title { font-size: 9px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mint); }
+.doc-shot__title { font-family: var(--font-recede); font-size: 9px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mint); }
 .doc-shot__frame img { display: block; width: 100%; height: auto; }
-.doc-shot figcaption { margin: 10px auto 0; font-size: 12px; line-height: 1.5; color: var(--navy-muted); max-width: 52ch; }
+.doc-shot figcaption { margin: 10px auto 0; font-family: var(--font-recede); font-size: 12px; line-height: 1.5; color: var(--navy-muted); max-width: 52ch; }
 .doc-shot figcaption strong { color: var(--ink-strong); font-weight: 600; }
 
 /* ── Radial diagram (hub + capabilities on a ring) ─────────────────────────── */
@@ -1156,8 +1419,7 @@ body {
 .doc-cover__framing strong { color: var(--off-white); font-weight: 700; }
 
 /* ── Strategic framing page — sand canvas, set apart from the persona sections ─ */
-/* A principle page (not a numbered section): distinct light tone, centered block,
-   no running footer — a divider between the index and the breakouts. */
+/* A principle page (not a numbered section): distinct light tone, centered block. */
 .doc-page--framing { background: var(--sand); justify-content: center; }
 .doc-framing { max-width: 60ch; margin: 0 auto; }
 .doc-framing__head {
@@ -1295,13 +1557,396 @@ body {
   line-height: 0.8;
   font-weight: 700;
   letter-spacing: -0.03em;
-  color: rgba(23, 107, 84, 0.08);   /* ghosted deep-accent */
+  color: rgba(43, 158, 128, 0.08);   /* ghosted deep-accent */
   white-space: nowrap;
   pointer-events: none;
   user-select: none;
 }
 /* On a continuation sheet the ghost word sits behind the first (03) use case. */
 .doc-secword--cont { top: 0.46in; left: 0.51in; }
+
+/* ── Field Activation Guide — brochure band header + right-edge vertical ghost
+   Scope: <article class="doc doc--activation">. Each section opener gets a
+   full-bleed navy band (mint title + gold accent word, circuit texture, 4px
+   mint bar) — no kicker, no green rule — matching the brochure/capabilities
+   `doc-page-band`. The faded section name runs down the RIGHT edge of every
+   page in the section (opener + continuation) as a vertical ghost, replacing
+   the right-edge texture there, so the design carries across the page turn.
+   Gold is the secondary accent (band title accent word), per design guidelines.
+   Non-section light sheets (nav, proof) keep the circuit texture. */
+
+/* Opener navy band — mimics .doc-page-band / brochure cap-page-band. */
+.doc--activation .flag-band {
+  position: relative;
+  overflow: hidden;
+  margin: calc(-1 * var(--page-pad)) calc(-1 * var(--page-pad)) 28px;
+  padding: 0.36in var(--page-pad) 0.38in;
+  background:
+    radial-gradient(135% 120% at 90% -28%, rgba(var(--mint-rgb), 0.16), transparent 56%),
+    linear-gradient(162deg, var(--navy-deep) 0%, var(--navy) 58%, #0C1F28 100%);
+}
+.doc--activation .flag-band::before {
+  content: ''; position: absolute; top: 0; right: 0; bottom: 4px; left: 0;
+  background-image: url('../../assets/textures/texture-circuit-header-mintgold.png');
+  background-repeat: repeat; background-position: right top; background-size: 560px auto;
+  -webkit-mask-image: linear-gradient(90deg, transparent 32%, rgba(0,0,0,0.5) 60%, #000 100%);
+          mask-image: linear-gradient(90deg, transparent 32%, rgba(0,0,0,0.5) 60%, #000 100%);
+  opacity: 0.6; pointer-events: none;
+}
+.doc--activation .flag-band::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 4px;
+  background: var(--mint);
+}
+.doc--activation .flag-band > * { position: relative; z-index: 1; }
+.doc--activation .flag-band__title {
+  margin: 0;
+  font-size: 30px; font-weight: 700; line-height: 1.1; letter-spacing: -0.025em;
+  color: var(--mint);
+  max-width: 30ch;
+}
+
+/* Right-edge vertical ghost — section name runs down the right side of every
+   page in the section. Replaces the right-edge texture on those pages. */
+.doc--activation .flag-ghost::before { content: none; }
+.doc--activation .doc-page.flag-ghost:not(.doc-page--dark):not(.doc-page--framing)::after { content: none; }
+
+/* Full-width body copy. */
+.doc--activation .doc-statement,
+.doc--activation .doc-uc__desc,
+.doc--activation .doc-uc__benefits li,
+.doc--activation .doc-nav__desc { max-width: none; }
+.doc--activation .doc-takeaway { max-width: none; margin-left: 0; margin-right: 0; }
+
+/* Proof sheet: no circuit texture. A discrete band in the empty space below
+   About LUCI always reads as a pasted-on patch; the dark logo panel already
+   carries the visual weight on this page. */
+.doc--activation .doc-page:not(.doc-page--dark):not(.doc-page--framing):not(.doc-page--cover):not(.doc-page--nav):not(.flag-ghost)::after {
+  content: none;
+}
+.doc--activation .doc-page:not(.doc-page--dark):not(.doc-page--framing) > * {
+  position: relative;
+  z-index: 1;
+}
+@media print {
+  .doc--activation .flag-band, .doc--activation .flag-band::before, .doc--activation .flag-band::after,
+  .doc--activation .flag-ghost::before,
+  .doc--activation .doc-page:not(.doc-page--dark):not(.doc-page--framing):not(.flag-ghost)::after,
+  .doc--activation .doc-spotlight, .doc--activation .doc-spotlight::after,
+  .doc--activation .doc-uc__num, .doc--activation .doc-uc__digit,
+  .doc--activation .doc-nav__icon,
+  .doc--activation .doc-page--cover {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+/* ── Field Activation Guide — end-of-section callout (spotlight).
+   Scope: <article class="doc doc--activation">. The "bigger picture" callout
+   sits on sand (not dark navy) so it reads as a callout, not a second section
+   header band. Deep-green left bar + tracked label, ink text, gold accent on
+   the lead-in phrase (gold is OK as a secondary accent on sand; never bright
+   mint on sand). */
+.doc--activation .doc-spotlight {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: calc(-1 * var(--page-pad));
+  margin-right: calc(-1 * var(--page-pad));
+  padding: 24px var(--page-pad) 26px;
+  border-left: 4px solid var(--accent-light);
+  background: var(--sand);
+  position: relative;
+}
+.doc--activation .doc-spotlight::after { content: none; }
+.doc--activation .doc-spotlight__label { color: var(--accent-light); }
+.doc--activation .doc-spotlight__text { color: var(--ink-strong); max-width: none; }
+.doc--activation .doc-spotlight__text .doc-leadin__accent { color: var(--ink-strong); }
+
+/* Use-case numerals — softicon-style tiles (brochure .cap-softicon pattern):
+   a soft mint tile with an inset hairline for odd rows, a warm sand/gold tile
+   for even rows, so the four numbers read as a mix of mint/gold variations
+   with a box around them — matching the custom duotone icons. */
+.doc--activation .doc-uc__num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background:
+    radial-gradient(120% 140% at 30% 18%, rgba(var(--mint-rgb), 0.16), transparent 60%),
+    linear-gradient(162deg, var(--navy-deep) 0%, var(--navy) 70%, #0C1F28 100%);
+  box-shadow: inset 0 0 0 1px rgba(var(--mint-rgb), 0.32);
+  flex: none;
+}
+/* Numeral: bright mint on the dark navy tile — prominent mint on the body
+   without a heavy box, mirroring the brochure's dark-panel accent. */
+.doc--activation .doc-uc__digit {
+  background: none;
+  color: var(--mint);
+  -webkit-text-fill-color: var(--mint);
+  -webkit-text-stroke: 0;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.doc--activation .doc-uc {
+  grid-template-columns: 56px 1fr;
+  column-gap: 18px;
+  align-items: start;
+  padding: 28px 0;
+}
+
+/* Spread the four use cases to fill the sheet so there's no latent white void
+   at the bottom of opener/continuation pages. The list grows to fill available
+   height and spaces its rows evenly. */
+.doc--activation .doc-uc-list {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 12px;
+  margin-bottom: 8px;
+}
+.doc--activation .doc-statement { margin-bottom: 20px; }
+.doc--activation .doc-proof__lead { margin: 0 0 24px; }
+.doc--activation .doc-proof__intro { margin-top: 0; }
+.doc--activation .doc-takeaway { margin-top: 22px; margin-bottom: 8px; }
+/* On section pages the sheet distributes even gaps via justify-content:
+   space-between, so zero the per-block margins there to keep spacing
+   equivalent throughout (band → statement → takeaway → UCs → foot). */
+.doc--activation .flag-ghost .flag-band { margin-bottom: 0; }
+.doc--activation .flag-ghost .doc-statement { margin-bottom: 0; }
+.doc--activation .flag-ghost .doc-takeaway { margin-top: 0; margin-bottom: 0; }
+/* Callout: a centered pull-quote — narrower than the full-width statement
+   above it and horizontally centered inside the lead. */
+.doc--activation .doc-lead .doc-takeaway {
+  align-self: center;
+  max-width: 64ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Lead group: the section statement + its callout read as one connected
+   intro unit. A tight internal gap keeps the callout from floating off;
+   the page's space-between distribution then breathes around the whole
+   lead instead of between the statement and the callout. */
+.doc--activation .doc-lead {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: auto;
+  margin-bottom: 24px;
+  max-width: none;
+}
+
+/* "What it replaces" — two-row Today / On LUCI contrast. The old way recedes
+   in muted ink; the new way carries the mint key plus a small gold dot marker
+   (gold as a non-text accent on light, per the dual-accent system). Body copy
+   in Inter; the key labels stay Space Grotesk. */
+.doc--activation .doc-uc__try {
+  position: relative;
+  margin-top: 16px;
+  padding: 8px 14px;
+  background: rgba(43, 158, 128, 0.06);
+  border-left: 3px solid var(--accent-light);
+  font-family: var(--font-recede);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-strong);
+}
+.doc--activation .doc-uc__try:has(.doc-uc__try-row) {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.doc--activation .doc-uc__try::before { content: none; }
+.doc--activation .doc-uc__try-label {
+  font-family: var(--font);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+  margin-bottom: 3px;
+}
+.doc--activation .doc-uc__try-row {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  padding: 2px 0;
+}
+.doc--activation .doc-uc__try-row--old { color: var(--ink-strong); }
+.doc--activation .doc-uc__try-row--new { color: var(--ink-strong); }
+.doc--activation .doc-uc__try-key {
+  flex: 0 0 auto;
+  font-family: var(--font);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+.doc--activation .doc-uc__try-row--old .doc-uc__try-key {
+  position: relative;
+  padding-left: 13px;
+  color: var(--accent-light);
+}
+.doc--activation .doc-uc__try-row--new .doc-uc__try-key {
+  position: relative;
+  padding-left: 13px;
+  color: var(--accent-light);
+}
+.doc--activation .doc-uc__try-row--new .doc-uc__try-key::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--gold-deep);
+}
+.doc--activation .doc-uc__try-val { flex: 1 1 auto; }
+
+/* Body copy in Inter across the sales library (brand three-tier rule: all
+   non-head copy is Inter). Heads, labels, and numerals keep Space Grotesk /
+   Syncopate via their own rules. Shared safety net — per-doc stylesheets may
+   also set Inter explicitly; where a per-doc rule sets a body class to
+   var(--font) it will override this (flagged for follow-up). */
+.doc-statement,
+.doc-framing__body p,
+.doc-framing__pull,
+.doc-uc__desc,
+.doc-uc__benefits li,
+.doc-spotlight__text,
+.doc-proof__lead,
+.doc-proof__intro,
+.doc-cover__sub,
+.doc-cover__summary-body,
+.doc-close__body,
+.doc-nav__desc,
+.doc-page-band__deck,
+.doc-archpoints__body,
+.doc-commitments__body,
+.doc-takeaway,
+.doc-fn__text,
+.doc-service__desc,
+.doc-cs-outcome__body,
+.doc-cs-situation__text,
+.doc-cs-quote__attrib,
+.doc-process__text,
+.doc-reduce-stat__note {
+  font-family: var(--font-recede);
+}
+
+/* ── Field Activation Guide — page 2 navigation. A short navy band header
+   (lighter than a section opener) + icon-led rows with softicon tiles, so the
+   index page shares DNA with the section openers without reading as a chapter.
+   Texture returns to a soft right-edge fade (not the bottom band) here. */
+.doc--activation .flag-band--nav {
+  margin: calc(-1 * var(--page-pad)) calc(-1 * var(--page-pad)) 24px;
+  padding: 0.26in var(--page-pad) 0.28in;
+}
+.doc--activation .flag-band--nav .flag-band__title { font-size: 24px; }
+
+.doc--activation .doc-page--nav::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0;
+  width: 38%;
+  background-image: url('../../assets/textures/texture-circuit-light-navy.png');
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: 420px auto;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.4) 55%, #000 100%);
+          mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.4) 55%, #000 100%);
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.doc--activation .doc-nav--icon {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 8px;
+  margin-bottom: 12px;
+}
+.doc--activation .doc-page--nav .doc-foot { margin-top: 0; }
+.doc--activation .doc-page--nav { height: var(--page-h); }
+
+/* Section pages (flag-ghost) — content starts at the top of the sheet, the
+   footer pins to the base, and the leftover space distributes as EVEN gaps
+   between every block (justify-content: space-between). No top void, no
+   bottom void, equivalent spacing throughout. The use-case list keeps its
+   two UCs grouped (not spread) so they read as an even pair. */
+.doc--activation .flag-ghost { justify-content: space-between; }
+.doc--activation .flag-ghost .doc-foot { margin-top: 0; }
+.doc--activation .doc-uc-list {
+  flex: none;
+  margin: 0;
+  justify-content: flex-start;
+}
+.doc--activation .doc-uc-list:not(:has(+ .doc-spotlight)) {
+  margin-bottom: 0;
+}
+/* Opener pages (with a doc-lead): center the statement + callout + use-cases
+   as a group on the sheet. The lead's margin-top:auto and the UC list's
+   margin-bottom:auto split the leftover space equally, so the group sits
+   centered. The callout lands 24px from the statement (lead gap) and 24px
+   from the first use case (lead margin-bottom) — equidistant, centered
+   between the line above and the line below. */
+.doc--activation .flag-ghost:has(.doc-lead) { justify-content: flex-start; }
+.doc--activation .flag-ghost:has(.doc-lead) .doc-uc-list { margin-bottom: auto; }
+.doc--activation .doc-nav--icon .doc-nav__item {
+  grid-template-columns: 48px 1fr auto;
+  column-gap: 16px;
+  align-items: center;
+  padding: 18px 0;
+}
+.doc--activation .doc-nav__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background:
+    radial-gradient(120% 140% at 30% 18%, rgba(var(--mint-rgb), 0.16), transparent 60%),
+    linear-gradient(162deg, var(--navy-deep) 0%, var(--navy) 70%, #0C1F28 100%);
+  box-shadow: inset 0 0 0 1px rgba(var(--mint-rgb), 0.32);
+  flex: none;
+}
+.doc--activation .doc-nav__icon svg { width: 24px; height: 24px; display: block; }
+.doc--activation .doc-nav--icon .doc-nav__desc { grid-column: 2 / -1; margin-top: 4px; }
+
+/* ── Field Activation Guide — cover. Full-bleed navy sheet with the mintgold
+   circuit texture and 4px mint bar (shared dark-bookend rules), carrying a
+   Syncopate title "LUCI Field Activation Guide" + sub. Matches the portfolio's
+   dark cover bookends. */
+.doc--activation .doc-page--cover .doc-cover__logo { filter: none; }
+.doc--activation .doc-page--cover .doc-cover__hero { margin: auto 0; padding: 64px 0; }
+.doc--activation .doc-page--cover .doc-cover__display {
+  max-width: 26ch;
+  font-size: 30px;
+  color: var(--off-white);
+}
+.doc--activation .doc-page--cover .doc-cover__display em { color: var(--mint); }
+.doc--activation .doc-page--cover .doc-cover__sub { color: rgba(235, 245, 248, 0.9); }
+
+/* Framing page (p3): content block vertically centered, footer pinned at base. */
+.doc--activation .doc-page--framing {
+  justify-content: flex-start;
+}
+.doc--activation .doc-page--framing .doc-framing {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.doc--activation .doc-page--framing .doc-foot {
+  margin-top: 0;
+}
 
 /* GM closing line — emphasized single line at the end of the capstone section. */
 .doc-uc-close {

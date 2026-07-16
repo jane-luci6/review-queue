@@ -1,0 +1,53 @@
+---
+description: LUCI canonical asset standard — one master per shared image/diagram (sizing never touched); each asset gets its OWN resized copy in its own assets folder. Re-copy on request. Regenerate the master PNG per block of changes.
+alwaysApply: true
+---
+
+# LUCI Canonical Assets — master + per-asset resized copies
+
+Every shared image/diagram has **one canonical master** (the source of truth). Each asset (brochure, capabilities doc, budgetary estimate, website, sales deck, hub viewer, etc.) gets its **own copy**, placed in **that asset's own assets folder**, **resized/cropped as that asset needs**. Different assets use different sizes — there is no one-size-fits-all, and the master is **never** resized to match a consumer.
+
+## The master is never resized
+
+- **Vector master:** `LUCI Systems Design System/assets/diagrams/<name>.svg` — transparent background, live (editable) text. This is the source of truth.
+- **Never touch the master's sizing.** Its `viewBox`, `width`, `height`, and internal scale are the master artboard only. Do not crop, resize, or re-proportion the master to fit a consumer. Edit the master only for **content** (text, illustration, color, layout of the art); leave its canvas/framing alone.
+- **Raster export:** `LUCI Systems Design System/assets/diagrams/<name>.png` — generated **from** the master SVG. Never hand-edited.
+
+## Each asset carries its own resized copy
+
+- When an asset uses a canonical image, **copy the master into that asset's own assets folder** and **resize/crop the copy** for that asset.
+  - e.g. canonical brochure → `ui_kits/sales/assets/diagrams/<name>.svg`; review-mirror brochure → `ui_kits/review/sales/assets/diagrams/<name>.svg`.
+- Reference the copy with a **relative** path from the asset's HTML (e.g. `src="assets/diagrams/<name>.svg?v=N"`), not a path back to the central master.
+- **Resize the copy, not the master** — adjust the copy's `viewBox`/`width`/`height` (and the asset's CSS) so the content fills the asset's box at the size that asset needs. Two assets that need different proportions get **different copies** (different crops), never one shared file forced to one size.
+- **Never** paste a diagram's inline `<svg>`/markup into a document. Use an `<img>` to the asset's own copy.
+- Bump `?v=N` on the asset's `<img>` whenever its copy is re-derived.
+
+## When the master changes — re-copy on request
+
+- Editing the master (content) does **not** update any asset's copy automatically. Asset copies are derived; they update only when Jane asks ("propagate", "lock it in", "ship this", "update everywhere", etc.).
+- On propagation: **re-copy** the master into each asset's assets folder, **re-apply** that asset's resize/crop, bump that asset's `?v=N`, and spot-check each consumer renders correctly.
+- Before propagating, scan consumers and **surface anything that may break** (layout overflow, text collision, aspect-ratio shift, dark/light variant mismatch, print crop). A master content change may require an asset's crop to be re-adjusted.
+
+## Canonical vs local — always ask
+
+When Jane asks to change a diagram **while working inside a specific asset** (brochure page, capabilities doc, website component, etc.), **ask first**:
+
+> "Should this change go to the **canonical master** (`assets/diagrams/<name>.svg`) or stay **local to this asset's copy only**?"
+
+- **Canonical** — edit the master's **content** (never its sizing); changes stay staged until Jane requests propagation, then re-copy + re-resize into each asset.
+- **Local** — adjust only that asset's copy (re-crop/resize) and/or its CSS. Do not touch the master.
+
+Default to asking; do not silently edit the canonical master from a consumer context, and **never resize the master to fit a consumer**.
+
+## Regeneration cadence — per block, not per change
+
+Do **not** re-export the PNG on every tweak. Regenerate derived files when a coherent **block of edits is done**:
+1. **On approval** — when Jane signals an image is done/locked, re-export the master PNG and re-copy/resize into each asset.
+2. **At publish (safety net)** — before any `publish.sh`/deploy, rebuild the master PNG if the `.svg` is newer than its `.png`, re-derive any stale asset copies, bump cache-busters, and verify nothing stale deploys.
+
+## Naming & logging
+
+- kebab-case filenames; master SVG + PNG share the base name.
+- Asset copies keep the same base name, filed in the asset's own `assets/diagrams/` folder.
+- Variant suffixes for channel-specific versions: `.deck.svg`, `.dark.svg`, `.web.svg`, `.identity-only.svg` — separate files in the master folder; an asset copies the appropriate variant + resizes.
+- Add/keep the viewer page in **Messaging & brand → Images & diagrams**; update its "Updated <date>".

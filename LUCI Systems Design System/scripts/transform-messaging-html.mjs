@@ -63,7 +63,7 @@ export function mergeLibraryDocs(docs, manifest = { docs: [] }) {
 }
 
 const MESSAGING_GUIDE_DIAGRAM_FIGURE = `<figure class="doc-figure doc-figure--diagram" id="the-luci-system">
-<img src="diagrams/luci-system-diagram-v3.svg?v=6" alt="LUCI System — LUCI and Systems orchestrate the Standard A/V environment" width="680" height="391">
+<img src="diagrams/luci-system-diagram-v3.svg?v=7" alt="LUCI System — LUCI and Systems orchestrate the Standard A/V environment" width="680" height="391">
 <figcaption class="doc-figure__caption"><strong>The LUCI System.</strong> LUCI + Systems orchestrate the accumulated Standard A/V environment your team already runs. <a href="luci-system-diagram.html">Full diagram page</a> (flat working canvas + source files).</figcaption>
 </figure>`;
 
@@ -82,7 +82,7 @@ const MESSAGING_GUIDE_MIDDLE = `<section class="doc-section"><h2 class="doc-chap
 <li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">01</span><b>Complete visibility and control across your property</b></p><p class="doc-stack__body">One interface surfaces every endpoint, zone, and system across your property. Every team sees the same picture and acts from the same place.</p></li>
 <li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">02</span><b>Align your teams by default</b></p><p class="doc-stack__body">LUCI connects every team to the same system, so your organization can stop negotiating internally and start executing towards a shared vision.</p></li>
 <li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">03</span><b>Fully activate the guest experience</b></p><p class="doc-stack__body">Turn passive screens into purposeful moments by planning, programming, and responding to guest signals in real time — turning your A/V infrastructure into a strategic tool for revenue, retention, and brand.</p></li>
-<li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">04</span><b>Invest in the only A/V that gets more valuable over time</b></p><p class="doc-stack__body">Traditional A/V depreciates and expires. LUCI doesn't. We refine our software, integrations, and operational capability on a predictable annual line item so Year Five is more capable than Year One.</p></li>
+<li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">04</span><b>Invest in the only A/V that scales and improves</b></p><p class="doc-stack__body">Traditional A/V depreciates and expires. LUCI doesn't. We refine the platform on a predictable annual line item, so when you expand into sister properties, each one benefits from what came before — and Year Five is more capable than Year One.</p></li>
 </ul>
 </section><section class="doc-section"><h2 class="doc-chapter" id="the-systems">THE SYSTEMS</h2>
 <p class="doc-prose doc-prose--kicker"><i>Six named services. Together, they are the embedded organization that makes the platform work — and keep working — in the real world.</i></p>

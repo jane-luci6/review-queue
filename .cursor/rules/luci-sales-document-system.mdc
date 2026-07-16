@@ -1,0 +1,139 @@
+---
+description: LUCI sales document system — canonical structure, components, and design decisions for capability docs, field activation guides, FAQs, and leave-behinds. PDF-first, Track C.
+globs: LUCI Systems Design System/ui_kits/sales/**
+alwaysApply: false
+---
+
+# LUCI Sales Document System
+
+Canonical, reusable pattern for **PDF-first sales collateral** (US Letter), proven on the capabilities document. Inherits Track C and all foundations from `luci-modern-design-guidelines.mdc` and brand/voice from `luci-visual-design.mdc` — this rule adds the **sales-specific structure, components, and the decisions behind them** so we don't re-derive them each time.
+
+**Start from the template, not scratch:** copy `ui_kits/sales/_template-sales-document.html` and link `ui_kits/sales/sales-document.css` (class prefix `doc-`). Reference implementations:
+- **Brochure** (5-page overview): `ui_kits/sales/brochure.html` + `brochure.css` (prefix `cap-`).
+- **Capabilities document** (personalized deep-dive): `ui_kits/sales/capabilities-document.html` + `sales-document.css` (prefix `doc-`).
+
+**Accent system:** mint vs gold, light vs dark surfaces, icon treatments → `luci-dual-accent-system.mdc`. Do not re-derive per asset.
+
+**Typography (non-negotiable):** **All body/copy text is Inter — always.** Heads (page-band titles, opener/statements, pillar heads, step names, stat numerals, kickers/labels) are Space Grotesk; display moments (cover/close) are Syncopate. Copy text (descriptions, decks, notes, attributions, table & list copy, journey step text) is never Space Grotesk. See `luci-visual-design.mdc` + `luci-modern-design-guidelines.mdc` §3.1.
+
+## Format scope — what uses this
+
+- **PDF-first documents** (capability docs, field activation guides, FAQs, leave-behinds, one-pagers) → use this template + `sales-document.css` directly. The full spine + page model applies.
+- **Slide decks** → Track B, **not** the letter-page model. Do NOT force the `.doc-page` sheet onto slides. Instead reuse the **shared DNA**: brand tokens/palette from `sales-document.css`, the same type roles (run-in headline, `--secnum` watermark for section dividers, `.doc-kicker`/eyebrow labels), accent discipline (mint on dark only; `#2b9e80` for all light-surface accents — `#176B54` retired), de-boxed separation, icon-tile language, and the dark proof/quote treatments. Fixed 1920×1080 canvas, one concept per slide, 5–8% safe margin (see Track B in `luci-modern-design-guidelines.mdc`).
+- **Web tools with print output** (e.g. budget estimate generator) → the interactive UI is Track A; its **PDF/printed export** should follow this document system.
+
+## Document architecture — spine + labeled breakouts
+
+### Brochure (5-page overview)
+
+Fixed narrative spine, one idea per sheet:
+
+1. **Cover** — dark bookend: identity promise.
+2. **What LUCI is** — light + figure: identity diagram + four-tile takeaway (variables/hardware/interfaces/vendors).
+3. **Platform** — navy band + light body: four pillars (headers only in brochure; full copy in capabilities doc).
+4. **Systems** — navy band + orbit diagram + quote.
+5. **Proof + close** — personas, logos, dark close bookend.
+
+See `brochure.html` for the reference layout.
+
+### Capabilities document (personalized deep-dive)
+
+Post-demo leave-behind. Same letter page model; **more pages, full copy**. LUCI story (software differentiator) and Systems story (embedded operation) get equal *presence* — four LUCI chapters vs two Systems chapters is intentional (depth, not page-count parity).
+
+| # | Page | Canvas | Content |
+|---|---|---|---|
+| 1 | **Cover** | Dark | Client name, logo, demo-context intro (personalized). |
+| 2 | **What LUCI is** | Light | **Tagline + sub-tagline** opener (brochure-aligned, Syncopate + deck). Centered **LUCI + Systems identity diagram** + compact **“LUCI gives you fewer”** reduction strip (labels only). |
+| 3 | **Message pillars** | Light | Brochure page 2 layout: band + **`.doc-stage`** map + four pillars (full copy). No key-features band. |
+| 4 | **Platform capabilities** | Light | Band kicker “Platform capabilities”, headline “Six capabilities define **the platform**.” **2×3 grid** (`.doc-feature-grid` / `.doc-feature-card`) — illustrative SVG per feature + name + body. Six features: map dashboard, open integration, PIN-delegated control, predictive monitoring, presets & scheduling, automation & triggers. Assets: `assets/features/feature-*.svg`. |
+| 5 | **Proof of impact** | Light + dark panel | After capabilities, before architecture. **Two** outcome stats only (`.doc-impact`): giant numerals split by a vertical hairline + a `.doc-leadin` payoff line. Human proof anchored in the **dark proof panel** (`.doc-proofpanel`): mint kicker, off-white quote, three mint fact figures. Kicker: “Proof of impact”, mint accent (not gold). |
+| 6 | **Technical architecture** | Light | How LUCI connects — canonical `luci-system-architecture.svg`. |
+| 7 | **Systems delivery** | Light | Six embedded-operation services expanded. Kicker: “The Embedded Operation”. |
+| 8 | **Deployment & support** | Light | Year-one vs year-five, four commitments. Kicker: “Deployment & support”. The “85% fewer support calls” stat lands here (contextual to one-team ownership), not on the proof page. |
+| Last | **Close** | Dark | Next step + contact. |
+
+Band kickers name the section (e.g. “Platform capabilities”, “The Embedded Operation”) — **no chapter numbering**. Intro pages (cover, what LUCI is) and the pillars overview (page 3) sit outside numbered sequences.
+
+One `.doc-page` = one printed sheet. Footer (`.doc-foot` + page number) pins to the base via `margin-top:auto`.
+
+## Components (in `sales-document.css`)
+
+| Need | Use |
+|---|---|
+| Page-opening headline | `.doc-statement` (run-in: bold phrase → lighter body). Default. |
+| Numbered chapter marker | `.doc-page__head--mark` + `.doc-secnum` + `.doc-kicker--force` |
+| Establish 01/02 identities | `.doc-forces2` / `.doc-force` (ghosted number + icon tile) |
+| Emphasize one line | `.doc-leadin` (light pull-quote, deep-green bar) |
+| Contained aside / payoff | `.doc-takeaway` (tint fill + deep-green bar) |
+| Pillars / value props | `.doc-pillars--icon.doc-pillars--gold` (gold stroke on navy `.doc-pill-icon` tiles) |
+| Chapter page header | `.doc-page-band` — mint kicker + Space Grotesk headline + optional `--gold` accent span; mint 4px rule below |
+| Proof persona rows | `.doc-teams--icons` + `.doc-team-icon` (gold-deep strokes, no boxes) |
+| Illustrated feature grid | `.doc-feature-grid` + `.doc-feature-card` (2×3 on platform page; SVG visual + name + body) |
+| Outcome stats | `.doc-impact` + `.doc-impact__stat` (giant Space Grotesk numeral + accent unit; two columns split by a vertical hairline, top hairline rule) |
+| Dark proof panel | `.doc-proofpanel` (navy `.doc-panel`-family box; mint kicker + off-white quote + three mint fact figures over a hairline) |
+| Name-only capabilities | `.doc-features` (de-boxed checkmark grid) |
+| Compact two-col list | `.doc-teams` / one-line rows `.doc-fn` |
+| Testimonial | `.doc-quote` |
+| Boxed proof / logos | `.doc-panel` (the one intentional box) |
+| UI over screenshot | `.doc-stage` (set `--stage-image`) or `.doc-shot` (app window) |
+| Compact reduction strip | `.doc-takeaway--reduce` + `.doc-reduce` (four icon labels; brochure page 1 pattern) |
+| Radial diagram | `.doc-orbit` |
+
+## Decisions / learnings (don't relitigate)
+
+- **No full-bleed dark band mid-document** to emphasize a line — it's too heavy and breaks rhythm. Use `.doc-leadin` instead. (Dark is reserved for cover/close bookends + the contained proof `.doc-panel`.)
+- **Put capability/feature lists on the page that *explains* the thing, not the page that *defines* it.** A feature grid on the bare "what it is" overview lands too early; it belongs under the relevant numbered section.
+- **Proof beat comes right after capabilities, and proves *impact*, not personas.** Post-demo readers don't need "marketing/ops/IT use it" icon rows (that duplicates brochure p4) — they need conviction. Surface **two** outcome stats max (more reads as a spec sheet), pair with one real quote + a mini named-property callout. Stats need a credible source/attribution line. Park IT-only metrics (e.g. network demand) and route consequence stats (e.g. fewer support calls) to the page that earns them (deployment/support).
+- **Numbered sections need an obvious marker.** Labels alone aren't enough — use the ghosted `.doc-secnum` watermark + `--force` kicker so the eye tracks 01/02 across pages.
+- **De-box everything by default.** Comparisons/stats/teams = hairline rows or accent-bar items, never gridlines or stacked containers. Only contained things: callouts (`.doc-takeaway`), the dark proof `.doc-panel`, and app-window screenshots.
+- **Cluttered page fix, in order:** (1) cut to one idea per sheet, (2) convert any list to de-boxed hairline rows, (3) collapse stacked headers into a single run-in `.doc-statement`, (4) move a block to a more logical page rather than cramming.
+- **Diagram labels must clear connectors/rings.** Text crossing a line reads as a bug. Keep label text fully outside any ring. An off-white "break" around an icon alone does NOT fix labels that cross the arc elsewhere. **Proven fix (capabilities Page 4 orbit):** space nodes *evenly* around the ring (e.g. 6 nodes at 60°) so corner icons sit further toward the sides where the arc is near-vertical and horizontal labels extend into open space — don't bunch nodes near the top/bottom.
+- **One display moment per asset, max.** Syncopate on **cover + close bookends only** (`.doc-cover__display`, `.doc-close__head`); every chapter headline is bold Space Grotesk via `.doc-page-band__title` or `.doc-statement`.
+- **Chapter pages use the navy band**, not ghosted secnums on light — band kicker + headline + deck (brochure pattern). LUCI/Systems chapters get gold accent spans; proof band uses mint accent only.
+- **Shared diagrams are canonical assets — reference, don't re-embed.** A reusable diagram (e.g. the Embedded Operation orbit) lives once as an SVG in `assets/diagrams/` and is pulled in via `<img>`; never paste its inline markup into the document. See `luci-canonical-assets.mdc`.
+- **Reserve footer clearance — content blocks must not collide with the pinned footer.** This recurs: a hero figure + a multi-card grid (e.g. the 2×3 key-features) fills the page exactly and the last row butts against `.doc-foot`/`.cap-foot` with 0px gap. Fix it structurally, not by nudging: (1) size a hero `<figure>` to its image (`flex: 0 0 auto`, drop the `min-height` that creates empty slack *around* the image), (2) give the page body a `padding-bottom` floor (e.g. 20px) as a guaranteed clearance, and (3) let leftover space become the clearance (`justify-content: flex-start` — `space-between` dumps all slack into one gap and can overflow). Verify with a probe, never the eye: last card bottom must clear the footer top by **≥ ~24px**, and the `.doc-page`/`.cap-page` height stays at one sheet (≤ 1056px).
+
+## Contrast & color (hard constraints)
+
+Full mint/gold/light-dark rules → **`luci-dual-accent-system.mdc`**. Summary:
+
+- Body `#354F5C` on `--off-white` (never pure `#000`/`#fff`).
+- Bright **mint** `#68E3BE` on **dark only** — structural (bands, rules, hubs, bookends).
+- Bright **gold** `#EDD086` on **dark only** — middle-chapter headline accents + icon strokes on navy tiles.
+- On light: accents `#2b9e80` (kickers, labels, links, callout bars); non-text icon strokes `#CEB06E` (gold-deep). Never bright mint or bright gold on light. (`#176B54` retired.)
+
+## Print / PDF
+
+- `@page { size: letter; margin: 0; }`; each `.doc-page` `break-after: page`.
+- Background fills/images/masks need `print-color-adjust: exact` — the print block in `sales-document.css` already lists the standard surfaces; add new dark/filled selectors to it.
+- Strip scaffolding before final: `.doc-draft-badge` and `.doc-note` auto-hide in print but remove from production HTML anyway. No editor comments shipped.
+
+### PDF export standard (smooth Preview scroll)
+
+Choppy scroll / blinking images in macOS Preview are almost always **file weight + font embedding**, not layout.
+
+**Before every PDF export:**
+
+1. Run `npm run prepare:pdf` (or let `scripts/render-pdf.sh` run `prepare-sales-pdf-assets.py` automatically).
+2. Export with `bash scripts/render-pdf.sh <input.html> <output.pdf>` — Chrome print only (**no Ghostscript**; GS `/ebook` corrupts soft masks and breaks Acrobat).
+
+**HTML rules (enforced by `patch-sales-pdf-html.py`):**
+
+- **No Google Fonts `<link>`** in sales HTML. Variable Inter renders as **Type 3** in print and scrolls choppy. Use `../../assets/fonts/luci-brand-fonts.css` only (static Inter + Space Grotesk + Syncopate).
+- **No duplicate inline `<style data-luci-fonts>`** when the brand CSS link is present.
+- **LUCI logos:** file-reference `luci-full-mintmark-blacktext.png` / `luci-full-mintmark-white.png` — never inline base64 in production HTML.
+- **Raster discipline:** each sales doc uses **its own resized copy** in `ui_kits/sales/assets/` (per `luci-canonical-assets.mdc`). Max ~1200px wide for full-width letter diagrams (JPEG OK); client logo bands ~1400px wide; stage backgrounds ~900px; cover textures ~480px. Canonical `@3x` masters (e.g. 4500px architecture PNG) must **not** be referenced directly from sales HTML.
+- **Automate:** `npm run prepare:pdf` runs `prepare-sales-pdf-assets.py` + `patch-sales-pdf-html.py`. `scripts/render-pdf.sh` runs asset prep automatically before Chrome export.
+
+**Target:** finished 10-page capabilities PDF **≤ ~1.2 MB**, valid in Acrobat/Preview (qpdf check passes). Re-run `pdfimages -list` / `pdffonts` if Preview still stutters.
+
+## Pre-ship checklist
+
+1. Spine present (cover → overview → numbered breakouts → proof → close); one idea per sheet.
+2. Each breakout has a `.doc-secnum` + `--force` kicker.
+3. Reading copy ≤ 60–70ch; run-in statements over stacked headers.
+4. No dark band mid-doc; emphasis via `.doc-leadin`; only intentional boxes are callouts + proof panel.
+5. Dual-accent discipline per `luci-dual-accent-system.mdc`; body ≥ 4.5:1.
+6. Diagram labels clear all lines.
+7. Each `.doc-page` fits one sheet (render to PDF and verify no overflow) — and the last content block clears the pinned footer by ≥ ~24px (probe the gap; don't eyeball).
+8. Draft badges / notes / comments removed.

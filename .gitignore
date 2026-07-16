@@ -2,10 +2,15 @@
 .DS_Store
 
 # Local environments & tooling
+node_modules/
 .pdfvenv/
 .vscode/
 LUCI Systems Design System/.env
+LUCI Systems Design System/ui_kits/internal-portal/.env
 
 # Exports & workspace (local only)
 exports/
 *.code-workspace
+
+# Scratch / debug probes (texture checks, one-off crops, reel builds, contact sheets)
+.texcheck/

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>LUCI — Field Activation Guide · Marketing steps preview</title>
+<link rel="stylesheet" href="../../assets/fonts/luci-brand-fonts.css">
+<link rel="stylesheet" href="sales-document.css?v=38">
+<style>
+  body { background: #E9ECEF; }
+  .doc--activation { margin: 24px auto; box-shadow: 0 24px 60px rgba(0,0,0,0.18); }
+  .preview-note {
+    max-width: 8.5in; margin: 24px auto 0; padding: 14px 20px;
+    background: #fff; border-left: 3px solid var(--accent-light, #2b9e80);
+    font-family: var(--font-recede, Inter, sans-serif); font-size: 13px; line-height: 1.55; color: var(--ink, #354F5C);
+  }
+  .preview-note strong { font-family: var(--font, "Space Grotesk", sans-serif); color: var(--ink-strong, #1A2A33); }
+
+  /* ── Tailored steps treatment (scoped to the activation doc) ──
+     Reuses the .doc-uc__try callout box (mint tint + 3px left bar).
+     Adds an ordered-steps list + a one-time setup sub-block + a nudge line. */
+  .doc--activation .doc-uc__try--how { padding: 12px 16px 14px; }
+  .doc--activation .doc-uc__setup { margin-top: 4px; }
+  .doc--activation .doc-uc__setup + .doc-uc__steps { margin-top: 10px; padding-top: 10px; border-top: 1px dashed rgba(43,158,128,0.28); }
+  .doc--activation .doc-uc__sublabel {
+    font-family: var(--font, "Space Grotesk", sans-serif);
+    font-size: 9.5px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent-light, #2b9e80); margin-bottom: 5px;
+  }
+  .doc--activation .doc-uc__steps { list-style: none; counter-reset: step; display: grid; gap: 7px; margin: 0; }
+  .doc--activation .doc-uc__steps--setup { gap: 4px; }
+  .doc--activation .doc-uc__steps li {
+    counter-increment: step; position: relative; padding-left: 26px;
+    font-family: var(--font-recede, Inter, sans-serif);
+    font-size: 12.5px; line-height: 1.5; color: var(--ink-strong, #1A2A33); max-width: 60ch;
+  }
+  .doc--activation .doc-uc__steps--setup li { font-size: 11.5px; color: var(--ink, #354F5C); padding-left: 18px; }
+  .doc--activation .doc-uc__steps li::before {
+    content: counter(step); position: absolute; left: 0; top: 0.05em;
+    font-family: var(--font, "Space Grotesk", sans-serif); font-weight: 700; font-size: 12px;
+    line-height: 1.5; color: var(--accent-light, #2b9e80); letter-spacing: -0.02em;
+  }
+  .doc--activation .doc-uc__steps--setup li::before { content: "\2192"; font-size: 13px; }
+  .doc--activation .doc-uc__nudge {
+    margin-top: 10px; padding-top: 8px; border-top: 1px solid rgba(43,158,128,0.18);
+    font-family: var(--font-recede, Inter, sans-serif); font-size: 12px; line-height: 1.45; color: var(--ink, #354F5C);
+  }
+  .doc--activation .doc-uc__nudge strong {
+    font-family: var(--font, "Space Grotesk", sans-serif); font-weight: 700; font-size: 10.5px;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-light, #2b9e80); margin-right: 8px;
+  }
+</style>
+</head>
+<body>
+<p class="preview-note"><strong>Preview — Marketing steps pilot.</strong> Renders the 4 Marketing use cases with the drafted tailored steps in the doc&rsquo;s own callout treatment. Format only — pending Jane + Mike review before it goes into the client FAG. Steps drawn from Mike&rsquo;s demo transcripts.</p>
+<article class="doc doc--activation" id="preview-root">
+
+    <!-- ============== MARKETING OPENER + UC01 + UC02 ============== -->
+    <section class="doc-page flag-ghost" data-secword="Marketing">
+      <header class="flag-band">
+        <h2 class="flag-band__title">Marketing &amp; Guest Experience</h2>
+      </header>
+      <div class="doc-lead">
+        <p class="doc-statement"><strong>Every screen on the property is now yours to program</strong> by zone, by daypart, in real time.</p>
+        <p class="doc-takeaway">The reach that used to live on a handful of dedicated signs now covers the whole floor.</p>
+      </div>
+
+      <ul class="doc-uc-list">
+        <li class="doc-uc">
+          <span class="doc-uc__num" aria-hidden="true"><span class="doc-uc__digit">01</span></span>
+          <div class="doc-uc__body">
+            <p class="doc-uc__head">Push a message to every screen in under two minutes.</p>
+            <p class="doc-uc__desc">With LUCI, you make the edit on your own device, send it to the whole floor or a single set of zones, and it&rsquo;s live in moments &mdash; then drop back to the scheduled plan when you&rsquo;re done.</p>
+            <ul class="doc-uc__benefits">
+              <li>React while the moment still matters, instead of after it passes</li>
+              <li>No ticket, no call, no waiting on another team&rsquo;s queue</li>
+              <li>Every screen stays current &mdash; none stranded on yesterday&rsquo;s message</li>
+            </ul>
+            <div class="doc-uc__try doc-uc__try--how">
+              <p class="doc-uc__try-label">How to do it &rarr;</p>
+              <div class="doc-uc__setup">
+                <p class="doc-uc__sublabel">One-time setup &mdash; get the message into LUCI as a channel</p>
+                <ol class="doc-uc__steps doc-uc__steps--setup">
+                  <li>In Telemetry TV, open Media and drag your message asset in (or pull it from a linked OneDrive/Canva). Set a validity end-date if it&rsquo;s temporary so it auto-removes.</li>
+                  <li>Create a Playlist, add the message to it, and assign the playlist to a Telemetry player. That player&rsquo;s output feeds a LUCI IP encoder, so the message now appears as a channel in LUCI&rsquo;s source list.</li>
+                </ol>
+              </div>
+              <ol class="doc-uc__steps">
+                <li>Open LUCI in your browser from any device and log in.</li>
+                <li>On the property map, zoom out until every display on the floor is in view.</li>
+                <li>Use the lasso tool to select every TV on the property &mdash; or select just the zones you want to reach.</li>
+                <li>In the source list, pick the channel carrying your message. Every selected display flips to it immediately, live, with no ticket or call.</li>
+                <li>To drop back: set a revert time (e.g., 60 seconds) and the floor returns to its scheduled content on its own &mdash; or apply your &ldquo;normal&rdquo; preset when you&rsquo;re done.</li>
+              </ol>
+              <p class="doc-uc__nudge"><strong>This week &rarr;</strong>Find one piece of content that needed outside help to change last time. Push it yourself today.</p>
+            </div>
+          </div>
+        </li>
+        <li class="doc-uc">
+          <span class="doc-uc__num" aria-hidden="true"><span class="doc-uc__digit">02</span></span>
+          <div class="doc-uc__body">
+            <p class="doc-uc__head">Daypart your restaurant promotions to catch guests at the decision point.</p>
+            <p class="doc-uc__desc">Schedule a dining spot to run across the floor in the hour before lunch and again before dinner &mdash; the windows when guests are deciding whether to stay on property or head out &mdash; then reset the regular rotation automatically. Set the timing once and it repeats every day.</p>
+            <ul class="doc-uc__benefits">
+              <li>Capture covers that would otherwise walk out the door</li>
+              <li>Reach guests anywhere on the floor, not just the screens by the restaurants</li>
+              <li>Lift on-property spend in the same move</li>
+            </ul>
+            <div class="doc-uc__try doc-uc__try--how">
+              <p class="doc-uc__try-label">How to do it &rarr;</p>
+              <div class="doc-uc__setup">
+                <p class="doc-uc__sublabel">One-time setup &mdash; same as use case 01</p>
+                <ol class="doc-uc__steps doc-uc__steps--setup">
+                  <li>Load the dining spot in Telemetry TV, put it on a playlist, and assign to a player so it appears as a channel in LUCI.</li>
+                </ol>
+              </div>
+              <ol class="doc-uc__steps">
+                <li>In LUCI, open Presets and create a new preset (e.g., &ldquo;Pre-lunch dining spot&rdquo;).</li>
+                <li>Add the displays you want to reach &mdash; the floor-wide set, not just the screens near the restaurants. Select them on the map or from the venue list.</li>
+                <li>For each display in the preset, set its target to the dining spot channel.</li>
+                <li>Save the preset.</li>
+                <li>Open the Event Scheduler. Add the preset to the calendar at 11:00am (and a second entry at 5:00pm for dinner). Set it to repeat daily, or pick specific days.</li>
+                <li>Set a revert time on each entry (e.g., 60 minutes) so the floor drops back to regular rotation automatically &mdash; or schedule a &ldquo;normal&rdquo; preset to follow it.</li>
+              </ol>
+              <p class="doc-uc__nudge"><strong>This week &rarr;</strong>Build a pre-lunch dining spot. Then stand on the floor at 11am and watch it run.</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <div class="doc-foot">
+        <span>LUCI Systems &middot; Field Activation Guide</span>
+        <span class="doc-foot__page">04</span>
+      </div>
+    </section>
+
+    <!-- ============== PAGE 05 · UC03 + UC04 ============== -->
+    <section class="doc-page flag-ghost" data-secword="Marketing">
+      <ul class="doc-uc-list">
+        <li class="doc-uc">
+          <span class="doc-uc__num" aria-hidden="true"><span class="doc-uc__digit">03</span></span>
+          <div class="doc-uc__body">
+            <p class="doc-uc__head">Run customized content by zone &mdash; indoor and outdoor &mdash; from one control panel.</p>
+            <p class="doc-uc__desc">The sports book, the main floor, the bar, and the marquee can each run their own schedule at the same time, every display managed from the same place &mdash; including external signage connected through LUCI. Program each space for what it needs in the moment instead of broadcasting one message everywhere.</p>
+            <ul class="doc-uc__benefits">
+              <li>Speak to each audience in the zone where they actually are</li>
+              <li>Bring the marquee and outdoor signs into the same plan as the floor</li>
+              <li>Promote in one zone without disturbing play in another</li>
+            </ul>
+            <div class="doc-uc__try doc-uc__try--how">
+              <p class="doc-uc__try-label">How to do it &rarr;</p>
+              <div class="doc-uc__setup">
+                <p class="doc-uc__sublabel">One-time setup &mdash; one channel per zone&rsquo;s content</p>
+                <ol class="doc-uc__steps doc-uc__steps--setup">
+                  <li>In Telemetry TV, load each zone&rsquo;s content as a separate playlist on a separate player (one player per simultaneously-running piece of content). Each player feeds a LUCI encoder and becomes its own channel in LUCI.</li>
+                  <li>For outdoor signage: confirm with your A/V team which external displays (marquee, outdoor signs) are wired into LUCI encoders. If they are, they show up as displays on the map and are managed exactly like indoor screens.</li>
+                </ol>
+              </div>
+              <ol class="doc-uc__steps">
+                <li>In LUCI, open the property map and pick the first zone (e.g., sports book). Select it from the venue list or tap its tag.</li>
+                <li>Select the displays in that zone, then in the source list pick that zone&rsquo;s content channel. They flip immediately.</li>
+                <li>Repeat for each zone &mdash; main floor, bar, lobby, marquee &mdash; each running its own content at the same time.</li>
+                <li>To make it repeat: build one preset per zone (that zone&rsquo;s displays + that zone&rsquo;s channel) and schedule each on its own calendar. Zone schedules are independent, so the sports book can run on one cadence while the bar runs on another.</li>
+                <li>Walk the floor to confirm each zone is playing what you intended, and adjust the channel or schedule from the same panel.</li>
+              </ol>
+              <p class="doc-uc__nudge"><strong>This week &rarr;</strong>Pick a day, choose two or three zones, and run zone-specific content. Walk the floor to see how they play out.</p>
+            </div>
+          </div>
+        </li>
+        <li class="doc-uc">
+          <span class="doc-uc__num" aria-hidden="true"><span class="doc-uc__digit">04</span></span>
+          <div class="doc-uc__body">
+            <p class="doc-uc__head">Build an event campaign that escalates automatically.</p>
+            <p class="doc-uc__desc">Schedule a rotation that grows an event&rsquo;s presence &mdash; more zones, more frequency &mdash; as the date approaches, and fills your slow dayparts with loyalty and dining offers in between. Build it once; it ramps and resets on its own.</p>
+            <ul class="doc-uc__benefits">
+              <li>Build momentum toward an event without touching it daily</li>
+              <li>Put historically slow windows to work instead of waiting them out</li>
+              <li>Return the floor to normal automatically, with no stale content left running</li>
+            </ul>
+            <div class="doc-uc__try doc-uc__try--how">
+              <p class="doc-uc__try-label">How to do it &rarr;</p>
+              <div class="doc-uc__setup">
+                <p class="doc-uc__sublabel">One-time setup &mdash; content + frequency</p>
+                <ol class="doc-uc__steps doc-uc__steps--setup">
+                  <li>In Telemetry TV, load the event promo asset(s). For higher frequency closer to the event, build a playlist that rotates the promo more often &mdash; frequency is controlled on the CMS side, zone coverage on the LUCI side.</li>
+                </ol>
+              </div>
+              <ol class="doc-uc__steps">
+                <li>In LUCI, build a series of presets, each wider than the last: Preset A = one zone (e.g., lobby) on the event channel; Preset B = lobby + concourse; Preset C = full floor on the event channel.</li>
+                <li>Open the Event Scheduler and place Preset A on the calendar for two weeks out, Preset B for one week out, and Preset C for the week of the event. Each can repeat daily during its window.</li>
+                <li>To fill slow dayparts between campaign windows, schedule a separate preset that pushes loyalty and dining offers during historically slow windows.</li>
+                <li>Schedule a &ldquo;return to baseline&rdquo; preset for the day after the event (or set revert times on Preset C) so no stale event content keeps running.</li>
+                <li>Build it once &mdash; the calendar ramps and resets on its own from there.</li>
+              </ol>
+              <p class="doc-uc__nudge"><strong>This week &rarr;</strong>Map your next major event and build a countdown schedule that ramps on its own.</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <aside class="doc-spotlight">
+        <p class="doc-spotlight__label">The bigger picture</p>
+        <p class="doc-spotlight__text">The floor is now your largest marketing channel. <span class="doc-leadin__accent">Run it like one.</span></p>
+      </aside>
+
+      <div class="doc-foot">
+        <span>LUCI Systems &middot; Field Activation Guide</span>
+        <span class="doc-foot__page">05</span>
+      </div>
+    </section>
+
+</article>
+</body>
+</html>

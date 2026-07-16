@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- luci-cursor-doc: sales-deck -->
+  <script type="application/json" id="luci-cursor-context">{"version":1,"docId":"sales-deck","title":"Sales deck","portalOrigin":"http://10.10.1.17:8081","previewUrl":"http://10.10.1.17:8081/internal-portal/customization/sales-deck/sales-deck.html","skills":{"router":"http://10.10.1.17:8081/internal-portal/customization/CURSOR.md","brand":"http://10.10.1.17:8081/internal-portal/customization/_brand/SKILL.md","template":"http://10.10.1.17:8081/internal-portal/customization/sales-deck/SKILL.md","agents":"http://10.10.1.17:8081/internal-portal/customization/sales-deck/AGENTS.md","manifest":"http://10.10.1.17:8081/internal-portal/customization/cursor-manifest.json"},"source":{"master":"LUCI Systems Design System/ui_kits/sales/sales-deck.html","clientFile":"LUCI Systems Design System/ui_kits/sales/{client}-sales-deck.html"},"editMode":{"enabled":true,"hint":"Click highlighted text on slides 1–2 to edit copy. Swap client logo and property photos in the baked-in slots. Slides 3–12 are locked.","lockedPages":"#s3, #s4, #s5, #s6, #s7, #s8, #s9, #s10, #s11, #s12, #s2 .s-foot","lockedElements":".cover__logo, .cover__rule, .close__logo"},"workflow":"Paste this page URL into Cursor chat. Agent fetches the skill URLs above before editing. No specific folder required. Open the same URL in a browser to click-edit highlighted text."}</script>
+  <link rel="stylesheet" href="http://10.10.1.17:8081/internal-portal/customization/luci-doc-edit.css">
+  <script src="http://10.10.1.17:8081/internal-portal/customization/luci-doc-edit.js" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUCI Sales Deck</title>
+<link rel="stylesheet" href="/assets/fonts/luci-brand-fonts.css">
+<link rel="stylesheet" href="/sales/sales-deck.css">
+</head>
+<body>
+
+<!-- ══ 01 · COVER ════════════════════════════════════════ -->
+<section class="slide slide--dark cover" id="s1">
+  <div class="cover__frame">
+    <img class="cover__logo" src="/assets/diagrams/luci-full-mint.png?v=1" alt="LUCI Systems">
+    <h1 class="cover__title deck-edit" contenteditable="true" data-studio="cover-title">The orchestration engine for enterprise multimedia.</h1>
+    <span class="cover__rule" aria-hidden="true"></span>
+  </div>
+  <footer class="cover__footer">
+    <p class="cover__kicker deck-edit" contenteditable="true" data-studio="cover-kicker">Prepared for</p>
+    <div class="cover__client-slot">
+      <img class="cover__client" src="/sales/assets/logos/ameristar-council-bluffs.svg?v=2" alt="Ameristar Casino Hotel Council Bluffs" width="144" height="44" data-studio="client-logo">
+    </div>
+  </footer>
+</section>
+
+<!-- ══ 02 · YOUR ENVIRONMENT (branded photo slots) ═══════ -->
+<section class="slide slide--dark slide--env" id="s2">
+  <div class="s-head">
+    <p class="kicker deck-edit" contenteditable="true" data-studio="env-kicker">Your environment</p>
+    <h2 class="s-title deck-edit" contenteditable="true" data-studio="env-title">The floor <span class="accent-gold">we&rsquo;ll orchestrate.</span></h2>
+  </div>
+  <div class="s-body">
+    <div class="env-mosaic">
+      <figure class="env-slot env-slot--hero">
+        <img src="/sales/assets/deck-photo-placeholder.svg?v=1" alt="" data-studio="env-photo-primary">
+      </figure>
+      <div class="env-mosaic__stack">
+        <figure class="env-slot env-slot--sub">
+          <img src="/sales/assets/deck-photo-placeholder.svg?v=1" alt="" data-studio="env-photo-secondary-1">
+        </figure>
+        <figure class="env-slot env-slot--sub">
+          <img src="/sales/assets/deck-photo-placeholder.svg?v=1" alt="" data-studio="env-photo-secondary-2">
+        </figure>
+      </div>
+    </div>
+  </div>
+  <div class="s-foot"><span class="s-foot__num">02</span><span class="s-wordmark">LUCI</span></div>
+</section>
+
+<!-- ══ 03 · ONE INTERFACE — CONTROL · AUTOMATE · EXECUTE ═ -->
+<section class="slide slide--dark slide--cae" id="s3">
+  <div class="s-head">
+    <h2 class="s-title">One interface to <span class="accent-gold">control, automate, and execute</span> the entire guest experience.</h2>
+  </div>
+  <div class="s-body">
+    <div class="cae">
+      <div class="cae__shot">
+        <img src="/sales/assets/interface-floor-view.png?v=3" alt="LUCI interface — map-based floor view of every endpoint, controlled from any browser">
+      </div>
+      <ol class="cae__steps">
+        <li class="cae__step">
+          <span class="cae__num">01</span>
+          <div class="cae__copy">
+            <p class="cae__verb">Control</p>
+            <p class="cae__body">Adjust lights, sound, screens, signage — any zone, by hand or auto.</p>
+          </div>
+        </li>
+        <li class="cae__step">
+          <span class="cae__num">02</span>
+          <div class="cae__copy">
+            <p class="cae__verb">Automate</p>
+            <p class="cae__body">Build scenes once — game time, happy hour, morning reset.</p>
+          </div>
+        </li>
+        <li class="cae__step">
+          <span class="cae__num">03</span>
+          <div class="cae__copy">
+            <p class="cae__verb">Execute</p>
+            <p class="cae__body">The whole room delivers the moment, in sync — no staff scrambling.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+  <div class="s-foot"><span class="s-foot__num">03</span><span class="s-wordmark">LUCI</span></div>
+</section>
+
+<!-- ══ 04 · WHAT LUCI IS (LUCI + Systems) + four pillars ═ -->
+<section class="slide slide--light slide--combo" id="s4">
+  <div class="s-head">
+    <h2 class="s-title">Two forces <span class="accent-gold">working as one.</span></h2>
+  </div>
+  <div class="s-body">
+    <div class="combo">
+      <div class="combo__diagram">
+        <img src="/assets/diagrams/luci-what-luci-is.deck.svg?v=8" alt="What LUCI is: LUCI, the orchestration platform — one A/V equipment rack plus the control platform on any device — plus Systems, the embedded operation that runs it.">
+      </div>
+      <ul class="combo__pillars">
+        <li class="combo__pillar">
+          <span class="pillar__tile" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5C6 5 2 12 2 12s4 7 10 7 10-7 10-7-4-7-10-7z" fill="#68E3BE" fill-opacity="0.20" stroke="#2b9e80" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="12" r="3.2" fill="#68E3BE" fill-opacity="0.22" stroke="#2b9e80" stroke-width="1.8"/><circle cx="13.2" cy="10.8" r="1" fill="#CEB06E"/></svg></span>
+          <div>
+            <p class="combo__ph">Complete visibility across your property</p>
+          </div>
+        </li>
+        <li class="combo__pillar">
+          <span class="pillar__tile" aria-hidden="true"><svg viewBox="0 0 24 24"><g stroke="#2b9e80" stroke-width="1.7"><line x1="7.6" y1="12" x2="16.4" y2="6"/><line x1="7.6" y1="12" x2="16.4" y2="18"/></g><circle cx="18" cy="5" r="2.6" stroke="#2b9e80" stroke-width="1.8" fill="#68E3BE" fill-opacity="0.18"/><circle cx="18" cy="19" r="2.6" stroke="#2b9e80" stroke-width="1.8" fill="#68E3BE" fill-opacity="0.18"/><circle cx="6" cy="12" r="3" fill="#2b9e80"/><circle cx="6" cy="12" r="1.3" fill="#CEB06E"/></svg></span>
+          <div>
+            <p class="combo__ph">Align your teams by default</p>
+          </div>
+        </li>
+        <li class="combo__pillar">
+          <span class="pillar__tile" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2 L4 14 h6 l-1 8 9 -12 h-6 l1 -8 z" fill="#68E3BE" fill-opacity="0.20" stroke="#2b9e80" stroke-width="1.8" stroke-linejoin="round"/><circle cx="17.6" cy="6.2" r="1.6" fill="#CEB06E"/></svg></span>
+          <div>
+            <p class="combo__ph">Fully activate the guest experience</p>
+          </div>
+        </li>
+        <li class="combo__pillar">
+          <span class="pillar__tile" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="3 17 9 11 13 14 21 6" fill="none" stroke="#2b9e80" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="3" cy="17" r="2.6" fill="#2b9e80"/><circle cx="3" cy="17" r="1.3" fill="#CEB06E"/><circle cx="13" cy="14" r="1.8" fill="#2b9e80"/><circle cx="21" cy="6" r="2" fill="#CEB06E"/></svg></span>
+          <div>
+            <p class="combo__ph">An A/V platform that scales and improves</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="s-foot"><span class="s-foot__num">04</span><span class="s-wordmark">LUCI</span></div>
+</section>
+
+<!-- ══ 05 · WHAT LUCI REDUCES (Today → With LUCI) ══════ -->
+<section class="slide slide--dark slide--reduce" id="s5">
+  <div class="s-head">
+    <h2 class="s-title">Less hardware. Fewer vendors. <span class="accent-gold">Your team in control.</span></h2>
+  </div>
+  <div class="s-body">
+    <div class="reduce-ledger">
+      <img class="reduce-ledger__fig" src="/sales/assets/diagrams/luci-consolidation-ledger.deck.svg?v=2" alt="Consolidation ledger: today four or more multimedia systems, five or more equipment racks, fifteen or more receivers, and one hundred plus hardware devices, forty gig AV-over-IP links, thousands per change, and locked code. With LUCI: one interface, one equipment rack, one gig consolidated network, changes included in service, and code that is yours." width="720" height="680">
+    </div>
+  </div>
+  <div class="s-foot"><span class="s-foot__num">05</span><span class="s-wordmark">LUCI</span></div>
+</section>
+
+<!-- ══ 06 · SIX CAPABILITIES ═════════════════════════════ -->
+<section class="slide slide--light" id="s6">
+  <div class="s-head">
+    <h2 class="s-title">Six capabilities define <span class="accent-gold">the platform</span>.</h2>
+  </div>
+  <div class="s-body">
+    <div class="caps">
+      <article class="cap-card">
+        <img class="cap-card__visual" src="/sales/assets/features/feature-map-dashboard.svg?v=1" alt="">
+        <p class="cap-card__name">Map-based dashboard</p>
+      </article>
+      <article class="cap-card">
+        <img class="cap-card__visual" src="/sales/assets/features/feature-open-integration.svg?v=1" alt="">
+        <p class="cap-card__name">Open integration</p>
+      </article>
+      <article class="cap-card">
+        <img class="cap-card__visual" src="/sales/assets/features/feature-pin-control.svg?v=2" alt="">
+        <p class="cap-card__name">PIN-delegated control</p>
+      </article>
+      <article class="cap-card">
+        <img class="cap-card__visual" src="/sales/assets/features/feature-monitoring.svg?v=1" alt="">
+        <p class="cap-card__name">Predictive monitoring &amp; alerts</p>
+      </article>
+      <article class="cap-card">
+        <img class="cap-card__visual" src="/sales/assets/features/feature-presets.svg?v=2" alt="">
+        <p class="cap-card__name">Presets &amp; scheduling</p>
+      </article>
+      <article class="cap-card">
+        <img class="cap-card__visual" src="/sales/assets/features/feature-automation.svg?v=2" alt="">
+        <p class="cap-card__name">Automation &amp; triggers</p>
+      </article>
+    </div>
+  </div>
+  <div class="s-foot"><span class="s-foot__num">06</span><span class="s-wordmark">LUCI</span></div>
+</section>
+
+<!-- ══ 07 · SYSTEM ARCHITECTURE ═════════════════════════ -->
+<section class="slide slide--dark slide--arch" id="s7">
+  <div class="s-head">
+    <h2 class="s-title">How LUCI <span class="accent-gold">connects</span>.</h2>
+  </div>
+  <div class="s-body">
+    <div class="archflow">
+      <div class="archflow__img">
+        <img src="/sales/assets/luci-system-architecture-flow.dark.png?v=10" alt="LUCI system architecture: content sources feed into LUCI — the control point on one A/V equipment rack — and out to displays, signage, video walls, lighting, and audio across your network.">
+      </div>
+    </div>
+  </div>
+  <div class="s-foot"><span class="s-foot__num">07</span><span class="s-wordmark">LUCI</span></div>
+</section>
+
+<!-- ══ 08 · EMBEDDED OPERATION ═══════════════════════════ -->
+<section class="slide slide--light" id="s8">
+  <div class="s-head">
+      <h2 class="s-title">The team that builds it <span class="accent-gold">runs it.</span></h2>
+  </div>
+  <div class="s-body">
+    <div class="orbit-stage">
+      <img class="orbit-stage__img" src="/assets/diagrams/embedded-operation-orbit.deck.svg?v=10" alt="Embedded operation orbit: one accountable team from design and deployment through year five and beyond.">
+    </div>
+  </div>
+  <div class="s-foot"><span class="s-foot__num">08</span><span class="s-wordmark">LUCI</span></div>
+</section>
+
+<!-- ══ 09 · PROOF / CLIENTS ══════════════════════════════ -->
+<section class="slide slide--dark" id="s9">
+  <div class="s-head">
+    <h2 class="s-title">Running where <span class="accent-gold">downtime isn't an option</span>.</h2>
+  </div>
+  <div class="s-body">
+    <div class="logos">
+      <img src="/sales/assets/client-logo-01t.png?v=3" alt="Client logos">
+      <img src="/sales/assets/client-logo-02t.png?v=3" alt="Client logos">
+      <img src="/sales/assets/client-logo-03t.png?v=3" alt="Client logos">
+      <img src="/sales/assets/client-logo-04t.png?v=3" alt="Client logos">
+    </div>
+  </div>
+  <div class="s-foot"><span class="s-foot__num">09</span><span class="s-wordmark">LUCI</span></div>
+</section>
+
+<!-- ══ 10 · THE JOURNEY — PRE-CONTRACT + DEPLOYMENT ══════ -->
+<section class="slide slide--light slide--journey" id="s10">
+  <div class="s-head">
+    <h2 class="s-title">A clear <span class="accent-gold">path.</span></h2>
+  </div>
+  <div class="s-body">
+    <div class="journey">
+      <div class="journey__phase journey__phase--pre">
+        <p class="journey__tag"><span>Phase 1</span><span>The path to the right scope</span></p>
+        <ol class="journey__rail">
+          <li class="journey__step"><span class="journey__node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg></span><p class="journey__h">Demo</p><p class="journey__d">See LUCI live on a property.</p></li>
+          <li class="journey__step"><span class="journey__node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span><p class="journey__h">Discovery</p><p class="journey__d">Create the budget.</p></li>
+          <li class="journey__step"><span class="journey__node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="1" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="23"/><line x1="1" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="23" y2="12"/></svg></span><p class="journey__h">Scope</p><p class="journey__d">Onsite visit — walk the floor.</p></li>
+          <li class="journey__step"><span class="journey__node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg></span><p class="journey__h">Proposal</p><p class="journey__d">Refine the plan, timeline, and price.</p></li>
+          <li class="journey__step"><span class="journey__node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span><p class="journey__h">Decision</p><p class="journey__d">You approve; we mobilize.</p></li>
+        </ol>
+      </div>
+      <p class="journey__cap">You see the full scope <em>before any commitment</em>.</p>
+    </div>
+  </div>
+  <div class="s-foot"><span class="s-foot__num">10</span><span class="s-wordmark">LUCI</span></div>
+</section>
+
+<!-- ══ 11 · DEPLOYMENT (Phase 2) ══════════════════════ -->
+<section class="slide slide--dark slide--journey" id="s11">
+  <div class="s-head">
+    <h2 class="s-title">Then a structured <span class="accent-gold">deployment.</span></h2>
+  </div>
+  <div class="s-body">
+    <div class="journey">
+      <div class="journey__phase journey__phase--deploy">
+        <p class="journey__tag"><span>Phase 2</span><span>Deployment</span></p>
+        <ol class="journey__rail">
+          <li class="journey__step"><span class="journey__node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></span><p class="journey__h">Kickoff</p><p class="journey__d">Team, schedule, plan locked.</p></li>
+          <li class="journey__step"><span class="journey__node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><polyline points="9 14 11 16 15 12"/></svg></span><p class="journey__h">Design review</p><p class="journey__d">Final design confirmed.</p></li>
+          <li class="journey__step"><span class="journey__node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></span><p class="journey__h">Onsite prep</p><p class="journey__d">Staged and pre-configured.</p></li>
+          <li class="journey__step"><span class="journey__node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.7 2.7-2.4-.6-.6-2.4z"/></svg></span><p class="journey__h">Onsite</p><p class="journey__d">Install and integrate.</p></li>
+          <li class="journey__step"><span class="journey__node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span><p class="journey__h">Go live</p><p class="journey__d">Live; support continues.</p></li>
+        </ol>
+      </div>
+      <p class="journey__cap"><em>No surprises</em> — every step is collaborative.</p>
+    </div>
+  </div>
+  <div class="s-foot"><span class="s-foot__num">11</span><span class="s-wordmark">LUCI</span></div>
+</section>
+
+<!-- ══ 12 · CLOSE / DEMO TRANSITION ══════════════════════ -->
+<section class="slide slide--dark close" id="s12">
+  <img class="close__logo" src="/assets/diagrams/luci-full-mint.png?v=1" alt="LUCI Systems">
+  <h2 class="close__title">Now let's show you LUCI <span class="accent">in action</span>.</h2>
+  <p class="close__contact">lucisystems.com · <a href="mailto:info@lucisystems.com">info@lucisystems.com</a></p>
+</section>
+
+</body>
+</html>
