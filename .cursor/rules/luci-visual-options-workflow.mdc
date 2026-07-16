@@ -1,0 +1,38 @@
+---
+description: For visual/layout/design decisions, proactively offer 2-3 labeled variants on separate branches before deep implementation. Always loaded so the agent offers this without the user having to ask. Ties into the commit-often safety net.
+alwaysApply: true
+---
+
+# LUCI visual options workflow — 3 variants on 3 branches
+
+**When to use this:** whenever a task involves a **visual / layout / design decision** where the direction isn't already locked — e.g. a new section, hero, page layout, brochure/cover page, header treatment, diagram composition, industry page, case-study hero, email masthead, or any "let's try a new direction" request.
+
+**When NOT to use this (just do the thing):** tiny tweaks, copy edits, color/spacing refinements, bug fixes, deploys, content swaps, or any change where the user has already specified the exact direction. Don't spawn variants for a one-line fix.
+
+## The default offer
+
+Before deep implementation of an open-ended visual decision, **proactively offer** (don't silently do it, don't silently skip it):
+
+> "This is a visual direction call — want me to build 2–3 variants on separate branches so you can compare live, then we merge the winner?"
+
+If the user says yes (or "go ahead"), run the variant workflow below. If they say "just do one" or specify the direction, do that instead.
+
+## The variant workflow
+
+1. **Start from a clean `main`** (commit current work first — see `luci-commit-cadence.mdc` if present; otherwise commit a quick checkpoint so branches branch from a known-good state).
+2. **Create 2–3 branches**, one per direction, named `<task>-variant-a`, `<task>-variant-b`, `<task>-variant-c` (e.g. `brochure-p1-variant-a`). Make each direction genuinely different in the *right* axis (layout density, hierarchy, accent placement, tone) — not three near-identical polish passes.
+3. **Build each variant** on its own branch. For parallel speed, use the `best-of-n-runner` subagent (one per branch) when the variants are independent.
+4. **Deploy/preview each** to its review surface (website → `./deploy.sh` → `http://10.10.1.37`; portal → `npm run deploy:portal` → `http://10.10.1.17:8081`; design preview → `localhost:8765`). If a single review surface can't show three branches at once, screenshot each and post the three images side by side with labels A/B/C and the branch name on each.
+5. **Present them clearly:** "A = <direction>, B = <direction>, C = <direction>. Which way?" Let the user pick.
+6. **Merge the winner** into `main` (fast-forward or a clean merge), then **delete the losing branches** (`git branch -D`). Don't leave dead variant branches lying around.
+7. **Commit the merge** with a message that names the chosen direction.
+
+## Why branches (not one file edited three times)
+
+Branches mean `main` stays clean and every variant is independently reviewable and recoverable. If a direction is wrong, `git checkout main` and it's gone — no manual undo, no "you changed the actual design, revert" friction. This only works because work is committed often; if `main` has weeks of uncommitted changes, branching is meaningless. Commit first, branch second.
+
+## Respect the user's time
+
+- Two variants is fine when the axis is binary (e.g. "dense vs. airy"). Three when there's room to explore.
+- Don't spend hours on throwaway variants — these are direction probes, not final polish. Keep each one buildable in minutes, not a full production pass.
+- If the user has already pasted a reference image or said "like X," that's a direction — build one variant in that direction, not three random ones.
