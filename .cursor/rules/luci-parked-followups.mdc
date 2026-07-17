@@ -1,0 +1,24 @@
+---
+description: Carries parked (blocked) follow-ups so they survive across sessions — the agent always knows what's waiting and can act the moment the blocker clears. Always loaded. Remove items as they're completed.
+alwaysApply: true
+---
+
+# LUCI parked follow-ups
+
+Items blocked on something (VPN, user action, etc.) that we'll revisit when the blocker clears. When an item is done, delete it from this list and commit the removal.
+
+## PARKED — Disable old portal on .37:8080  (blocked on VPN)
+
+The old Internal Marketing Portal is still live at `http://10.10.1.37:8080` (`/var/www/luci-hub`, built Jul 7), superseded by the current portal at `http://10.10.1.17:8081`. It's harmless but stale — disabling it is cleanup, not urgency.
+
+**Blocker:** needs LAN/VPN access to `10.10.1.37` + an interactive sudo password (the agent's shell can provide neither).
+
+**To do when back on VPN** — in Mac Terminal (or Cursor's integrated terminal), after pressing `Ctrl+C` to clear any stuck prompt, run:
+
+```
+bash ~/cleanup-luci-hub-37.sh
+```
+
+The script disables the `luci-hub` nginx site, reloads nginx, and archives `/var/www/luci-hub` → `/var/www/_archive/luci-hub-2026-07-16`. It verifies `:8080` goes 404/refused and `:80` (live site) stays 200. Reversible; undo commands are in the script header.
+
+**After it's done:** run `curl -s -o /dev/null -w "%{http_code}\n" http://10.10.1.37:8080/` (expect 404/refused) and `curl -s -o /dev/null -w "%{http_code}\n" http://10.10.1.37/` (expect 200), then delete this section and commit.
