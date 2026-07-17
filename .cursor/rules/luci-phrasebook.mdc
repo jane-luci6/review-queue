@@ -1,0 +1,31 @@
+---
+description: Plain-English phrases Jane uses to trigger LUCI workflows — so she never types commands. Always loaded so the agent maps everyday language to the right action (propagate, deploy, variants, audit, park, cleanup). Jane is not a developer; the agent runs all commands and interprets plain intent.
+alwaysApply: true
+---
+
+# LUCI phrasebook — what to say (you never type commands)
+
+Jane is not a developer. She talks in plain English; the agent runs every command. This rule maps the phrases she's likely to use to the action the agent takes. When in doubt, interpret plain intent — Jane never needs to remember command syntax, script names, or rule names.
+
+## Automatic — you don't say anything, the agent just does it
+
+- **Commits work in small chunks** as it goes (per `luci-commit-cadence.mdc`). Don't ask; just commit.
+- **Offers 2–3 visual variants on branches** for any open-ended design decision (per `luci-visual-options-workflow.mdc`). Jane picks A/B/C; the agent merges the winner.
+- **Verifies "is it live?"** after every deploy and posts the URL + hard-refresh note (per the deploy rules).
+
+## Things you can say
+
+| You say | The agent does |
+|---|---|
+| "propagate [diagram]" / "ship [diagram] everywhere" / "update [diagram] everywhere" / "lock in [diagram]" | Runs `scripts/propagate-diagram.mjs [diagram]` — re-derives every copy from the master, bumps cache-busters, flags raster re-exports, tells you what to deploy. |
+| "where does [diagram] live?" / "what's out of sync?" / "audit the diagrams" | Runs `propagate-diagram.mjs --audit` and shows the full inventory + drift. |
+| "let's try a few directions" / "give me options" / "try 3 versions" | Builds 2–3 variants on separate branches, shows them live, you pick, merges the winner. |
+| "ship it" / "deploy" / "put it live" / "make it live" | Runs the right deploy (`./deploy.sh` for website → .37, `npm run deploy:portal` for portal → .17), verifies HTTP 200, posts the URL. |
+| "is it live?" / "I don't see the change" | Curls the review URL, confirms 200, tells Jane to hard-refresh (Cmd+Shift+R) before debugging. |
+| "park that" / "let's come back to that when I'm on the VPN" | Adds it to `luci-parked-followups.mdc` so it survives across sessions. |
+| "clean up [thing]" | Archives/disables old versions — always confirm with Jane before deleting anything. |
+| "make a rule" / "remember this" | Turns a repeated correction into a `.cursor/rules/` rule so she never re-explains it. |
+
+## When you're not sure
+
+Just describe the outcome in plain English — "I want the brochure cover to feel calmer" — and figure out the steps. Jane never needs to know the command, the script name, or the rule name. The phrases above are shortcuts, not requirements.
