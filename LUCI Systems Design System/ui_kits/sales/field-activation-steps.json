@@ -6,7 +6,11 @@
     "ameristar": "/tmp/luci-transcripts/ameristar-demo.txt  (06-16 Ameristar Demo)",
     "angel":     "/tmp/luci-transcripts/angel-of-the-wind.txt  (Angel of the Wind Demo, 2026-04-23)",
     "fagCopy":   "/tmp/luci-transcripts/functional-activation-guide.txt  (FAG copy doc, 3rd draft)",
-    "kbPermissions": "https://lucisystems.atlassian.net/servicedesk/customer/portal/1/article/139427856  (JSM KB: User Permissions — admin guide to per-user source View/Edit permissions)"
+    "kbPermissions": "https://lucisystems.atlassian.net/servicedesk/customer/portal/1/article/139427856  (JSM KB: User Permissions — admin guide to per-user source View/Edit permissions)",
+    "kbVideo": "https://lucisystems.atlassian.net/servicedesk/customer/portal/1/article/73302046  (JSM KB: Video Endpoint — Add, Edit & Remove Devices)",
+    "kbAudio": "https://lucisystems.atlassian.net/servicedesk/customer/portal/1/article/73367580  (JSM KB: Audio Endpoint — Add, Edit & Remove Devices)",
+    "kbLighting": "https://lucisystems.atlassian.net/servicedesk/customer/portal/1/article/73170957  (JSM KB: Lighting Endpoint — Add, Edit & Remove Devices)",
+    "cabana": "/tmp/luci-transcripts/cabana-room-event-control.txt  (07-14 Cabana/Room/Event Control — Jane + Will walkthrough: kiosk touchscreens, divisible rooms via Q-SYS)"
   },
   "drafted": "2026-07-16",
   "reviewRequired": "Mike Epstein or a LUCI FDE must verify each workflow against the live product before it is published in the client FAG.",
@@ -122,11 +126,85 @@
 
     { "slug": "av-property-schedule",      "section": "A/V & Facilities", "n": 1, "title": "Build the whole property's schedule in one session, then let it run.", "steps": [], "reviewStatus": "not started" },
     { "slug": "av-service-requests",       "section": "A/V & Facilities", "n": 2, "title": "Resolve service requests from wherever you are — including after hours.", "steps": [], "reviewStatus": "not started" },
-    { "slug": "av-find-problems",           "section": "A/V & Facilities", "n": 3, "title": "Find problems before guests do.", "steps": [], "reviewStatus": "coming-soon — health monitoring/alerts ship in the upcoming LUCI release; not live yet. Badge as Coming Soon." },
+    {
+      "slug": "av-find-problems",
+      "section": "A/V & Facilities",
+      "n": 3,
+      "title": "Find problems before guests do.",
+      "prerequisites": "LUCI open on the property map. (Live today: per-display online/offline status. The fuller health dashboard and alerting ship in the upcoming release.)",
+      "setup": [],
+      "steps": [
+        "Open LUCI and go to the property map.",
+        "Each display shows its status in real time — green means it's on and communicating, red means it's off or not responding.",
+        "Scan the map (or a single venue) for any red/offline displays — LUCI knows the moment a TV drops off the network.",
+        "Tap an offline display to see its name and start narrowing the cause: a power issue, a network issue, or both.",
+        "To get it fixed without a phone call: route the offline status to your ticketing system so the right person is dispatched — or note it and schedule the fix for a quiet window.",
+        "Walk in already knowing what needs attention, instead of hearing about it from a guest at the bar."
+      ],
+      "revert": "n/a — status is read-only.",
+      "assumptions": [
+        "The red/green online/offline indicator is live in the current build (Mike demoed it). Confirm.",
+        "Auto-routing offline status to a ticketing system is an integration — Mike phrased it as a capability ('we could take this information and send it to your system to generate a ticket'). Confirm whether it's wired today or part of the upcoming release.",
+        "Confirm whether audio-zone and lighting endpoints show the same online/offline indicator, or only video displays."
+      ],
+      "sources": ["ameristar"],
+      "reviewStatus": "draft — reframed around live offline detection (Ameristar); confirm ticketing-integration status"
+    },
     { "slug": "av-private-event",           "section": "A/V & Facilities", "n": 4, "title": "Configure a private event once, then activate it and let it revert on its own.", "steps": [], "reviewStatus": "not started" },
 
-    { "slug": "it-av-dashboard",            "section": "IT & Technology", "n": 1, "title": "See every A/V endpoint on the property from a single dashboard.", "steps": [], "reviewStatus": "coming-soon — health/status dashboard ships in the upcoming LUCI release; not live yet. Badge as Coming Soon." },
-    { "slug": "it-change-log",             "section": "IT & Technology", "n": 2, "title": "Know exactly what changed, and when.", "steps": [], "reviewStatus": "coming-soon — audit/change log ships in the upcoming LUCI release; not live yet. Badge as Coming Soon." },
+    {
+      "slug": "it-add-endpoint",
+      "section": "IT & Technology",
+      "n": 1,
+      "title": "Add an endpoint to LUCI — video, audio, or lighting.",
+      "prerequisites": "You have an admin PIN and the device's IP address (it must match the field device — the set-top box/TV, the DSP, or the lighting system).",
+      "setup": [],
+      "steps": [
+        "Log in to LUCI with your admin PIN.",
+        "Left menu → Administration → Map Modes → Device Setup [Administration].",
+        "Select the device type: Video, Audio, or Lighting [Devices]. (On LUCI v2.34.0+, use the Endpoint Manager instead.)",
+        "Navigate the map to where the endpoint lives.",
+        "Right-click (or long-press) the map → Add Endpoint (for lighting, Add Device).",
+        "Video only: pick the Brand from the dropdown. (Audio and lighting skip this.)",
+        "Name the endpoint — this is the label shown on the UI.",
+        "Notes: add asset tagging or other info you want to track.",
+        "Device Address: enter the IP that matches the field device (video: the set-top box/TV; audio: the DSP; lighting: the lighting system).",
+        "Assign the endpoint to a Venue so every user on that venue can reach it (unless you restrict it per user — see IT UC03).",
+        "Video only: toggle Auto Power to let a watchdog keep the device powered on.",
+        "Set any other relevant options, then click Save.",
+        "To edit later: right-click the device on the map (or in the Assigned list) → Edit Endpoint."
+      ],
+      "revert": "n/a — endpoints persist until removed.",
+      "assumptions": [
+        "Click-path is the same across video/audio/lighting; only the device-type tab and the IP target differ. Confirm.",
+        "v2.34.0+ uses Endpoint Manager — confirm which version the client is on so steps point at the right screen.",
+        "Assigning to a Venue gives all venue users access by default; restricting per user is done in User Management → Access (IT UC03). Confirm the linkage."
+      ],
+      "sources": ["kbVideo", "kbAudio", "kbLighting"],
+      "reviewStatus": "draft — from 3 JSM KB articles (video/audio/lighting endpoint add/edit/remove)"
+    },
+    {
+      "slug": "it-config-docs",
+      "section": "IT & Technology",
+      "n": 2,
+      "title": "Keep every config, backup, and guide for your system in one place.",
+      "prerequisites": "Access to the LUCI Smartsheet and support site — ask your FDE if you don't have credentials yet.",
+      "setup": [],
+      "steps": [
+        "For config and backup files: open the LUCI Smartsheet your FDE shared with you — every config file and backup for your system lives there, fully documented.",
+        "For user guides, admin guides, and walkthrough videos: open the LUCI support site.",
+        "Before you open a ticket: walk the basic troubleshooting guides on the support site — a lot of issues you can clear yourself.",
+        "To report an issue or request a change: file it through the support site's ticketing — no phone tag, no waiting on a vendor.",
+        "Reference these any time you need to do something yourself without calling your integrator."
+      ],
+      "revert": "n/a — documentation is reference material.",
+      "assumptions": [
+        "Mike says 'we share everything through Smartsheet' — confirm every client is provisioned Smartsheet access by default, or whether it's on request.",
+        "Confirm the support site URL and how clients get credentials (ask FDE)."
+      ],
+      "sources": ["ameristar"],
+      "reviewStatus": "draft — from Ameristar transcript (Smartsheet + support site); confirm provisioning with FDE"
+    },
     {
       "slug": "it-permissions",
       "section": "IT & Technology",
@@ -154,7 +232,31 @@
       "sources": ["kbPermissions"],
       "reviewStatus": "draft — from JSM KB article 139427856; needs Mike to confirm role/zone scope"
     },
-    { "slug": "it-scheduled-maintenance",  "section": "IT & Technology", "n": 4, "title": "Schedule system maintenance to run automatically.", "steps": [], "reviewStatus": "coming-soon — needs source; Jane to talk to Mike/FDE about scheduled reboots/updates. Badge as Coming Soon (or replace with a live use case)." },
+    {
+      "slug": "it-kiosk-mode",
+      "section": "IT & Technology",
+      "n": 4,
+      "title": "Set up kiosk mode so any staffer can control their area from a phone or mounted touchscreen.",
+      "prerequisites": "A small mounted touchscreen (LUCI's ~large-smartphone-sized panel) or any phone with a browser. The venue/zone and the sources you want that kiosk to reach are already on the map.",
+      "setup": [],
+      "steps": [
+        "In LUCI, create a kiosk user (User Management → Access) and assign it a PIN.",
+        "Filter that user's access to the venue or zone the kiosk controls, and to just the sources they should pick from (see IT UC03 for access filtering).",
+        "Set the user to kiosk mode — list-based control with no map. They get a simple list of displays and channels, not the property map.",
+        "Mount the small touchscreen in the space (conference room, cabana, etc.), or have the staffer open the LUCI URL on their phone.",
+        "The user logs in with their PIN and lands on a simple list of their displays and channels — tap a display, pick a channel, done.",
+        "For a cabana: the guest uses the mounted touchscreen to choose the channel for that cabana's screen — self-serve, no staff involved.",
+        "For a conference room: the touchscreen makes it easy to switch between a projector and a flat screen and change the channel."
+      ],
+      "revert": "n/a — kiosk users persist until changed.",
+      "assumptions": [
+        "Kiosk mode = list-based control without the map (Mike's three user levels: admin, user, kiosk). Confirm the exact toggle/setting name in the current build.",
+        "The small touchscreens are LUCI-provided hardware (~large-smartphone-sized) — confirm whether they're included or a separate purchase.",
+        "Per-cabana guest self-serve implies a kiosk user per cabana or a shared 'cabana guest' kiosk — confirm the recommended setup with Will/Mike."
+      ],
+      "sources": ["cabana", "ameristar"],
+      "reviewStatus": "draft — from 07-14 Cabana/Room/Event Control transcript; confirm kiosk-mode specifics with Will/Mike"
+    },
 
     { "slug": "finance-replan-capital",     "section": "Finance", "n": 1, "title": "Replan the capital you'd reserved for the next A/V refresh.", "steps": [], "reviewStatus": "not started — business process, no software steps" },
     { "slug": "finance-cut-vendor-contracts","section": "Finance", "n": 2, "title": "Cut or renegotiate the vendor and integration contracts LUCI replaces.", "steps": [], "reviewStatus": "not started — business process, no software steps" },

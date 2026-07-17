@@ -90,10 +90,98 @@
   .fag-close__cta { display: inline-block; padding: 12px 26px; background: var(--mint); color: var(--navy-deep); border-radius: 9999px; font-family: var(--font-head); font-weight: 700; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; }
   .fag-close__pdf { display: block; margin-top: 18px; font-family: var(--font-body); font-size: 13px; color: rgba(235,245,248,0.6); text-decoration: none; }
   .fag-close__pdf:hover { color: var(--mint); }
+
+  /* ── Light-section tokens ── */
+  :root {
+    --sand: #e9ece9; --rule-light: #dbe1e4;
+    --ink: #354f5c; --ink-strong: #1c2b33; --ink-muted: #5a7480;
+  }
+
+  /* ── Sticky persona nav + back-to-hub ── */
+  .fag-nav { position: sticky; top: 0; z-index: 50; background: rgba(10,22,28,0.86); backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%); border-bottom: 1px solid rgba(235,245,248,0.10); }
+  .fag-nav__inner { max-width: 1080px; margin: 0 auto; padding: 11px 24px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .fag-nav__back { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-head); font-weight: 700; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mint); text-decoration: none; white-space: nowrap; }
+  .fag-nav__back svg { width: 14px; height: 14px; }
+  .fag-nav__back:hover { color: var(--off-white); }
+  .fag-nav__divider { width: 1px; height: 22px; background: rgba(235,245,248,0.14); }
+  .fag-nav__menu { display: flex; flex-wrap: wrap; gap: 4px; margin-left: auto; }
+  .fag-nav__link { display: inline-block; padding: 7px 12px; border-radius: 9999px; font-family: var(--font-head); font-weight: 700; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(235,245,248,0.66); text-decoration: none; transition: color 0.18s, background 0.18s; }
+  .fag-nav__link:hover, .fag-nav__link.is-active { color: var(--navy-deep); background: var(--mint); }
+  @media (max-width: 760px) { .fag-nav__divider { display: none; } .fag-nav__menu { margin-left: 0; width: 100%; } }
+
+  /* ── Full-bleed section bands + inner measure ── */
+  .fag { max-width: none; padding: 0; }
+  .fag-sec { position: relative; padding: 80px 0 40px; scroll-margin-top: 64px; border-top: 0; }
+  .fag-sec > * { max-width: 1080px; margin-left: auto; margin-right: auto; padding-left: 24px; padding-right: 24px; }
+  .fag-sec--dark { background: var(--navy); color: rgba(235,245,248,0.92); }
+  .fag-sec--light { background: var(--off-white); color: var(--ink); }
+  .fag-sec::before { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; background-repeat: no-repeat; background-position: right top; background-size: 540px auto; }
+  .fag-sec--dark::before { background-image: url("assets/textures/texture-circuit-navy-mint.png"); opacity: 0.10; }
+  .fag-sec--light::before { background-image: url("assets/textures/texture-circuit-light-navy.png"); opacity: 0.05; }
+  .fag-sec > * { position: relative; z-index: 1; }
+
+  /* dark-section type (default) */
+  .fag-sec--dark .fag-sec__kicker { color: var(--mint); }
+  .fag-sec--dark .fag-sec__name { color: var(--off-white); }
+  .fag-sec--dark .fag-sec__role, .fag-sec--dark .fag-sec__intro { color: rgba(235,245,248,0.78); }
+  .fag-sec--dark .fag-uc { border-top-color: rgba(235,245,248,0.10); }
+  .fag-sec--dark .fag-uc__num { color: var(--mint); }
+
+  /* light-section type */
+  .fag-sec--light .fag-sec__kicker { color: var(--accent-light); }
+  .fag-sec--light .fag-sec__name { color: var(--ink-strong); }
+  .fag-sec--light .fag-sec__role, .fag-sec--light .fag-sec__intro { color: var(--ink-muted); }
+  .fag-sec--light .fag-uc { border-top-color: var(--rule-light); }
+  .fag-sec--light .fag-uc__title { color: var(--ink-strong); }
+  .fag-sec--light .fag-uc__desc { color: var(--ink); }
+  .fag-sec--light .fag-uc__num { color: var(--accent-light); }
+  .fag-sec--light .fag-uc__benefits li { color: var(--ink); }
+  .fag-sec--light .fag-uc__benefits li::before { background: var(--accent-light); }
+
+  /* light-section accordion */
+  .fag-sec--light .fag-acc { background: #ffffff; border-color: var(--rule-light); }
+  .fag-sec--light .fag-acc__btn { color: var(--accent-light); }
+  .fag-sec--light .fag-acc__sub { color: var(--accent-light); }
+  .fag-sec--light .fag-acc__setup { border-bottom-color: rgba(43,158,128,0.22); }
+  .fag-sec--light .fag-acc__steps li { color: var(--ink); }
+  .fag-sec--light .fag-acc__steps li::before { color: var(--accent-light); }
+  .fag-sec--light .fag-acc__steps--setup li { color: var(--ink-muted); }
+  .fag-sec--light .fag-acc__nudge { color: var(--ink); border-top-color: rgba(43,158,128,0.18); }
+  .fag-sec--light .fag-acc__nudge strong { color: var(--gold-deep); }
+
+  /* light-section spotlight */
+  .fag-sec--light .fag-spot { background: rgba(43,158,128,0.06); border-left-color: var(--accent-light); }
+  .fag-sec--light .fag-spot__label { color: var(--accent-light); }
+  .fag-sec--light .fag-spot__text { color: var(--ink-strong); }
+  .fag-sec--light .fag-spot__text em { color: var(--accent-light); }
+
+  /* hero + footer framing */
+  .fag-hero { padding: 96px 0 64px; }
+  .fag-hero > * { max-width: 1080px; margin-left: auto; margin-right: auto; padding-left: 24px; padding-right: 24px; }
+  .fag-close { background: var(--navy-deep); border-top: 1px solid rgba(235,245,248,0.10); margin: 0; padding: 64px 24px 40px; }
+  .fag-close > * { max-width: 1080px; margin-left: auto; margin-right: auto; }
+
   @media (prefers-reduced-motion: reduce) { .fag-acc__panel, .fag-acc__chev { transition: none; } html { scroll-behavior: auto; } }
 </style>
 </head>
 <body>
+<nav class="fag-nav" aria-label="Section navigation">
+  <div class="fag-nav__inner">
+    <a class="fag-nav__back" href="field-activation-guide-hub.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      <span>Field Activation Guide</span>
+    </a>
+    <span class="fag-nav__divider" aria-hidden="true"></span>
+    <div class="fag-nav__menu">
+      <a class="fag-nav__link" href="#marketing">Marketing</a>
+      <a class="fag-nav__link" href="#gaming">Gaming</a>
+      <a class="fag-nav__link" href="#av">A/V</a>
+      <a class="fag-nav__link" href="#it">IT</a>
+      <a class="fag-nav__link" href="#finance">Finance</a>
+      <a class="fag-nav__link" href="#gm">GM</a>
+    </div>
+  </div>
+</nav>
 <article class="fag" id="fag-root">
 
   <!-- ===================== HUB HERO ===================== -->
@@ -101,45 +189,11 @@
     <p class="fag-hero__wordmark">LUCI Systems</p>
     <p class="fag-hero__kicker">Field Activation Guide</p>
     <h1 class="fag-hero__title">Every screen, every zone, every channel on your property &mdash; <em>activated through LUCI.</em></h1>
-    <p class="fag-hero__sub">Your floor is live on LUCI. Find your team below, then turn to your section for four ways to put LUCI to work &mdash; and one task to try this week.</p>
+    <p class="fag-hero__sub">Your floor is live on LUCI. Jump to your team from the menu above &mdash; four ways to put LUCI to work, and one task to try this week. Or head back to the <a href="field-activation-guide-hub.html" style="color:var(--mint);text-decoration:none;">team picker</a>.</p>
   </header>
 
-  <!-- ===================== PERSONA HUB ===================== -->
-  <nav class="fag-hub" aria-label="Sections">
-    <a class="fag-hub__card" href="#marketing">
-      <span class="fag-hub__num">01</span>
-      <span class="fag-hub__name">Marketing &amp; Guest Experience</span>
-      <span class="fag-hub__role">Make the floor work for your campaigns &mdash; on your timeline, from your own interface.</span>
-    </a>
-    <a class="fag-hub__card" href="#gaming">
-      <span class="fag-hub__num">02</span>
-      <span class="fag-hub__name">Gaming &amp; Operations</span>
-      <span class="fag-hub__role">Your floor environment should be doing work. Here&rsquo;s how to set it up that way.</span>
-    </a>
-    <a class="fag-hub__card" href="#av">
-      <span class="fag-hub__num">03</span>
-      <span class="fag-hub__name">A/V &amp; Facilities</span>
-      <span class="fag-hub__role">Manage the whole property from wherever you are.</span>
-    </a>
-    <a class="fag-hub__card" href="#it">
-      <span class="fag-hub__num">04</span>
-      <span class="fag-hub__name">IT &amp; Technology</span>
-      <span class="fag-hub__role">One view. Standard infrastructure. No more black boxes.</span>
-    </a>
-    <a class="fag-hub__card" href="#finance">
-      <span class="fag-hub__num">05</span>
-      <span class="fag-hub__name">Finance</span>
-      <span class="fag-hub__role">What your teams can now do, and what it means for how you manage the investment.</span>
-    </a>
-    <a class="fag-hub__card" href="#gm">
-      <span class="fag-hub__num">06</span>
-      <span class="fag-hub__name">General Management</span>
-      <span class="fag-hub__role">Run your property with more intention. What&rsquo;s possible across every team.</span>
-    </a>
-  </nav>
-
   <!-- ============== MARKETING & GUEST EXPERIENCE ============== -->
-  <section class="fag-sec" id="marketing">
+  <section class="fag-sec fag-sec--light" id="marketing">
     <p class="fag-sec__kicker">Section 01</p>
     <h2 class="fag-sec__name">Marketing &amp; Guest Experience</h2>
     <hr class="fag-sec__rule">
@@ -289,7 +343,7 @@
   </section>
 
   <!-- ============== GAMING & OPERATIONS ============== -->
-  <section class="fag-sec" id="gaming">
+  <section class="fag-sec fag-sec--dark" id="gaming">
     <p class="fag-sec__kicker">Section 02</p>
     <h2 class="fag-sec__name">Gaming &amp; Operations</h2>
     <hr class="fag-sec__rule">
@@ -384,7 +438,7 @@
   </section>
 
   <!-- ============== A/V & FACILITIES ============== -->
-  <section class="fag-sec" id="av">
+  <section class="fag-sec fag-sec--light" id="av">
     <p class="fag-sec__kicker">Section 03</p>
     <h2 class="fag-sec__name">A/V &amp; Facilities</h2>
     <hr class="fag-sec__rule">
@@ -479,7 +533,7 @@
   </section>
 
   <!-- ============== IT & TECHNOLOGY ============== -->
-  <section class="fag-sec" id="it">
+  <section class="fag-sec fag-sec--dark" id="it">
     <p class="fag-sec__kicker">Section 04</p>
     <h2 class="fag-sec__name">IT &amp; Technology</h2>
     <hr class="fag-sec__rule">
@@ -574,7 +628,7 @@
   </section>
 
   <!-- ============== FINANCE (overview only — no steps) ============== -->
-  <section class="fag-sec" id="finance">
+  <section class="fag-sec fag-sec--light" id="finance">
     <p class="fag-sec__kicker">Section 05</p>
     <h2 class="fag-sec__name">Finance</h2>
     <hr class="fag-sec__rule">
@@ -633,7 +687,7 @@
   </section>
 
   <!-- ============== GENERAL MANAGEMENT ============== -->
-  <section class="fag-sec" id="gm">
+  <section class="fag-sec fag-sec--dark" id="gm">
     <p class="fag-sec__kicker">Section 06</p>
     <h2 class="fag-sec__name">General Management</h2>
     <hr class="fag-sec__rule">
@@ -748,6 +802,21 @@
         panel.classList.toggle('fag-acc__panel--open', !open);
       });
     });
+
+    // Scroll-spy: highlight the active persona link in the sticky nav
+    var links = Array.prototype.slice.call(document.querySelectorAll('.fag-nav__link'));
+    var sections = links.map(function (l) { return document.querySelector(l.getAttribute('href')); }).filter(Boolean);
+    if ('IntersectionObserver' in window && sections.length) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            var id = e.target.id;
+            links.forEach(function (l) { l.classList.toggle('is-active', l.getAttribute('href') === '#' + id); });
+          }
+        });
+      }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+      sections.forEach(function (s) { io.observe(s); });
+    }
   })();
 </script>
 </body>

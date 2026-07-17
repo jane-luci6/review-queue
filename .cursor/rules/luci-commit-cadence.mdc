@@ -1,0 +1,45 @@
+---
+description: Keep LUCI work committed in small logical chunks so the repo is always a recoverable safety net — never let uncommitted changes pile up for days. Always loaded so the agent commits proactively instead of accumulating risk. Pairs with luci-visual-options-workflow.mdc (branches) and the deploy rules.
+alwaysApply: true
+---
+
+# LUCI commit cadence — keep the safety net intact
+
+**Why this exists:** a month of uncommitted work once made every agent edit a gamble — no `git revert` possible, painful manual undos. A checkpoint fixed it once; this rule keeps it fixed. A clean `main` is what makes branches, deploys, and "try 3 variants" actually safe.
+
+## Commit in small logical chunks — proactively
+
+Don't wait to be asked. When a coherent block of work is done, commit it:
+- A section / page / component built and verified
+- A rule or doc added/updated
+- A set of user-approved edits applied
+- A deploy completed (commit the source that produced it)
+- A bug fixed
+
+One commit per logical unit, not one giant dump at the end of a session. If a change spans two unrelated things, it's two commits.
+
+## Commit messages
+
+Descriptive, present-tense, say *why* not just *what*. Match the repo's existing style (e.g. "System architecture diagram: standardize on black rack, consistent rack labels…"). For routine work, just commit. For large / ambiguous / structural changes, draft the message and surface it to the user first.
+
+## Before risky or experimental work — commit first
+
+Before branching, before a redesign attempt, before a "let me try a different direction," before a bulk find/replace — commit current work so `main` is a known-good baseline you can return to. This is what makes `luci-visual-options-workflow.mdc`'s 3-variants-on-branches safe: branches branch from a clean, committed `main`.
+
+## Before ending a session
+
+If there's uncommitted work, commit it. If it's genuinely incomplete/scratch, commit with a `wip:` prefix and a note so it's at least recoverable. Don't hand back a dirty working tree.
+
+## Never commit
+
+- Secrets (`.env`, credentials, keys) — they're gitignored; still double-check before `git add -A`.
+- Scratch / debug output (`.texcheck/` is gitignored; keep it out).
+- Half-broken states that would leave `main` unusable — finish the work, or `wip:`-prefix with a note.
+
+## Branches for experiments, `main` for truth
+
+`main` should always be deployable. Anything exploratory or "might be worse" goes on a branch (see `luci-visual-options-workflow.mdc`), merged only after the user picks the winner. Don't push broken experiments into `main`.
+
+## When in doubt
+
+Commit. The cost of an extra commit is near zero; the cost of losing uncommitted work to a bad agent edit is high. Bias toward committing.

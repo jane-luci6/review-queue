@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>LUCI — Field Activation Guide</title>
+<link rel="stylesheet" href="../../assets/fonts/luci-brand-fonts.css">
+<style id="fag-hub-css">
+  :root {
+    --navy-deep: #0a161c; --navy: #10232d; --navy-mid: #314955; --navy-muted: #49616e;
+    --mint: #68e3be; --mint-rgb: 104, 227, 190; --accent-light: #2b9e80;
+    --gold: #edd086; --gold-rgb: 237, 208, 134; --gold-deep: #ceb06e;
+    --sand: #e5e3df; --off-white: #f5f8fa; --rule-light: #dbe1e4;
+    --ink: #354f5c; --ink-strong: #1c2b33;
+    --font-display: 'Syncopate', sans-serif;
+    --font-head: 'Space Grotesk', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+    --page-pad: clamp(28px, 6vw, 60px);
+    --content-wide: 1120px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--navy-deep); color: var(--off-white); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
+  .fag-hub { display: block; }
+
+  /* ── Hero ── */
+  .fag-hero { position: relative; background: var(--navy-deep); overflow: hidden; isolation: isolate; }
+  .fag-hero__glow { position: absolute; inset: -15% -10% auto; height: 70%; z-index: 0; pointer-events: none;
+    background: radial-gradient(ellipse 60% 50% at 28% 0%, rgba(var(--mint-rgb),0.10) 0%, rgba(var(--mint-rgb),0.03) 50%, transparent 72%); }
+  .fag-hero__inner { position: relative; z-index: 1; max-width: var(--content-wide); margin: 0 auto; padding: clamp(72px, 11vw, 128px) var(--page-pad) clamp(40px, 6vw, 64px); }
+  .fag-hero__wordmark { font-family: var(--font-display); font-weight: 700; font-size: 12px; letter-spacing: 0.22em; color: var(--mint); text-transform: uppercase; margin: 0 0 22px; }
+  .fag-hero__kicker { font-family: var(--font-display); font-weight: 700; font-size: 11px; letter-spacing: 0.20em; color: var(--mint); text-transform: uppercase; margin: 0 0 18px; }
+  .fag-hero__title { font-family: var(--font-display); font-weight: 700; font-size: clamp(40px, 8.5vw, 84px); line-height: 0.96; letter-spacing: 0.01em; text-transform: uppercase; color: var(--off-white); margin: 0 0 26px; }
+  .fag-hero__title em { font-style: normal; color: var(--mint); }
+  .fag-hero__dek { font-family: var(--font-head); font-weight: 700; font-size: clamp(22px, 3vw, 30px); line-height: 1.18; letter-spacing: -0.02em; color: rgba(245,248,250,0.92); max-width: 22ch; margin: 0 0 18px; }
+  .fag-hero__dek em { font-style: normal; color: var(--mint); }
+  .fag-hero__sub { font-family: var(--font-body); font-size: clamp(17px, 2vw, 21px); line-height: 1.55; color: rgba(245,248,250,0.80); max-width: 52ch; margin: 0 0 22px; }
+  .fag-hero__monday { font-family: var(--font-head); font-weight: 700; font-size: 13px; letter-spacing: 0.04em; color: var(--gold); margin: 0 0 28px; }
+  .fag-hero__cta { display: inline-flex; align-items: center; gap: 10px; padding: 13px 26px; background: var(--mint); color: var(--navy-deep); border-radius: 9999px; font-family: var(--font-head); font-weight: 700; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; transition: transform 0.18s ease-out, box-shadow 0.18s ease-out; }
+  .fag-hero__cta:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(var(--mint-rgb),0.30); }
+  .fag-hero__cta svg { width: 16px; height: 16px; }
+
+  /* ── Intro / framing band (page 3, visually-driven) ── */
+  .fag-intro { position: relative; background: var(--navy); color: var(--off-white); overflow: hidden; isolation: isolate; }
+  .fag-intro::before { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0.08; background-image: url("assets/textures/texture-circuit-navy-mint.png"); background-repeat: no-repeat; background-position: left top; background-size: 560px auto; }
+  .fag-intro__inner { position: relative; z-index: 1; max-width: var(--content-wide); margin: 0 auto; padding: clamp(56px, 8vw, 96px) var(--page-pad) clamp(48px, 6vw, 72px); }
+  .fag-intro__statement { margin: 0 0 clamp(32px, 4vw, 48px); font-family: var(--font-head); font-weight: 700; font-size: clamp(28px, 4vw, 44px); line-height: 1.08; letter-spacing: -0.025em; color: var(--off-white); max-width: 22ch; }
+  .fag-intro__statement em { font-style: normal; color: var(--mint); }
+  .fag-intro__ba { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,0.10); border-radius: 14px; overflow: hidden; margin: 0 0 clamp(28px, 4vw, 40px); }
+  .fag-intro__col { background: var(--navy); padding: clamp(22px, 2.6vw, 32px); }
+  .fag-intro__label { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 14px; font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: 0.20em; text-transform: uppercase; }
+  .fag-intro__label::before { content: ""; width: 22px; height: 2px; }
+  .fag-intro__col--before .fag-intro__label { color: rgba(245,248,250,0.56); }
+  .fag-intro__col--before .fag-intro__label::before { background: rgba(245,248,250,0.30); }
+  .fag-intro__col--after .fag-intro__label { color: var(--mint); }
+  .fag-intro__col--after .fag-intro__label::before { background: var(--mint); }
+  .fag-intro__copy { margin: 0; font-family: var(--font-body); font-size: clamp(14px, 1.2vw, 16px); line-height: 1.6; color: rgba(245,248,250,0.82); max-width: 42ch; }
+  .fag-intro__col--before .fag-intro__copy { color: rgba(245,248,250,0.62); }
+  .fag-intro__col--after .fag-intro__copy { color: rgba(245,248,250,0.92); }
+  .fag-intro__col--after .fag-intro__copy strong { color: var(--mint); font-weight: 600; }
+  .fag-intro__opp { margin: 0 0 clamp(28px, 4vw, 40px); font-family: var(--font-body); font-size: clamp(16px, 1.5vw, 19px); line-height: 1.6; color: rgba(245,248,250,0.80); max-width: 64ch; }
+  .fag-intro__pull { margin: 0 0 clamp(32px, 4vw, 48px); padding-left: 18px; border-left: 3px solid var(--mint); font-family: var(--font-head); font-weight: 700; font-size: clamp(20px, 2.6vw, 26px); line-height: 1.25; letter-spacing: -0.02em; color: var(--off-white); max-width: 30ch; }
+  .fag-intro__stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.10); border-radius: 14px; overflow: hidden; }
+  .fag-intro__stat { background: var(--navy); padding: clamp(20px, 2.4vw, 28px) clamp(18px, 2vw, 26px); }
+  .fag-intro__statnum { font-family: var(--font-head); font-weight: 700; font-size: clamp(34px, 4vw, 48px); line-height: 1; letter-spacing: -0.03em; color: var(--mint); }
+  .fag-intro__statlabel { margin-top: 8px; font-family: var(--font-body); font-size: clamp(13px, 1.1vw, 15px); line-height: 1.4; color: rgba(245,248,250,0.72); }
+  @media (max-width: 760px) { .fag-intro__ba { grid-template-columns: 1fr; } .fag-intro__stats { grid-template-columns: 1fr; } }
+
+  /* ── Persona picker (mirrors site HomePersonas) ── */
+  .fag-pick { position: relative; background: var(--navy-deep); color: var(--off-white); overflow: hidden; }
+  .fag-pick__inner { position: relative; z-index: 1; max-width: var(--content-wide); margin: 0 auto; padding: clamp(8px, 3vw, 24px) var(--page-pad) clamp(64px, 9vw, 104px); }
+  .fag-pick__head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: clamp(20px, 3vw, 40px); margin: 0 0 clamp(32px, 4vw, 48px); }
+  .fag-pick__head-text { max-width: 64ch; }
+  .fag-pick__heading { margin: 0; max-width: 26ch; font-family: var(--font-head); font-size: clamp(28px, 3.4vw, 42px); font-weight: 700; line-height: 1.08; letter-spacing: -0.025em; color: var(--off-white); }
+  .fag-pick__heading em { font-style: normal; color: var(--gold); }
+  .fag-pick__lede { margin: 16px 0 0; max-width: 56ch; font-family: var(--font-body); font-size: clamp(15px, 1.2vw, 17px); line-height: 1.6; color: rgba(245,248,250,0.72); }
+  .fag-pick__card { background: var(--navy); border-radius: 14px; box-shadow: 0 24px 48px rgba(0,0,0,0.35); overflow: hidden; padding: clamp(8px, 1vw, 12px); }
+  .fag-pick__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1px; background: rgba(255,255,255,0.08); }
+  .fag-pick__cell { position: relative; background: var(--navy); transition: background 0.18s ease-out; }
+  .fag-pick__cell::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--mint); transform: scaleY(0); transform-origin: top center; transition: transform 0.2s ease-out; }
+  .fag-pick__cell:hover, .fag-pick__cell:focus-within { background: rgba(104,227,190,0.06); }
+  .fag-pick__cell:hover::before, .fag-pick__cell:focus-within::before { transform: scaleY(1); }
+  .fag-pick__link { display: block; height: 100%; padding: clamp(22px, 2.6vw, 32px) clamp(20px, 2.4vw, 28px); text-decoration: none; color: inherit; }
+  .fag-pick__link:focus-visible { outline: 2px solid var(--mint); outline-offset: -2px; }
+  .fag-pick__role { margin: 0 0 8px; font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: 0.20em; text-transform: uppercase; color: var(--mint); }
+  .fag-pick__label { margin: 0 0 10px; font-family: var(--font-head); font-size: clamp(18px, 1.7vw, 22px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; color: var(--off-white); }
+  .fag-pick__line { margin: 0; font-family: var(--font-body); font-size: clamp(13px, 1.2vw, 15px); line-height: 1.5; color: rgba(245,248,250,0.70); }
+  .fag-pick__action { display: inline-flex; align-items: center; justify-content: center; margin-top: clamp(16px, 2vw, 22px); width: 40px; height: 40px; border-radius: 9999px; border: 1px solid rgba(104,227,190,0.28); background: rgba(104,227,190,0.06); color: var(--mint); transition: transform 0.18s ease-out, background 0.18s ease-out, border-color 0.18s ease-out; }
+  .fag-pick__action svg { width: 19px; height: 19px; display: block; }
+  .fag-pick__cell:hover .fag-pick__action, .fag-pick__cell:focus-within .fag-pick__action { transform: translate(2px, -2px); background: rgba(104,227,190,0.16); border-color: rgba(104,227,190,0.5); }
+
+  /* ── Closing ── */
+  .fag-close { background: var(--navy-deep); border-top: 1px solid rgba(255,255,255,0.08); }
+  .fag-close__inner { max-width: var(--content-wide); margin: 0 auto; padding: clamp(48px, 7vw, 80px) var(--page-pad); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
+  .fag-close__line { margin: 0; max-width: 40ch; font-family: var(--font-head); font-size: clamp(20px, 2.4vw, 28px); font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; color: var(--off-white); }
+  .fag-close__line em { font-style: normal; color: var(--mint); }
+  .fag-close__cta { display: inline-flex; align-items: center; gap: 10px; padding: 13px 26px; background: var(--mint); color: var(--navy-deep); border-radius: 9999px; font-family: var(--font-head); font-weight: 700; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; }
+  .fag-close__pdf { display: block; margin-top: 14px; font-family: var(--font-body); font-size: 13px; color: rgba(245,248,250,0.6); text-decoration: none; }
+  .fag-close__pdf:hover { color: var(--mint); }
+
+  @media (max-width: 980px) { .fag-pick__grid { grid-template-columns: repeat(2, minmax(0,1fr)); } .fag-pick__head { align-items: flex-start; } }
+  @media (max-width: 640px) { .fag-pick__grid { grid-template-columns: 1fr; } .fag-pick__head { flex-direction: column; align-items: flex-start; } }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .fag-pick__cell, .fag-pick__action { transition: none; } }
+</style>
+</head>
+<body>
+<main class="fag-hub" id="fag-hub-root">
+
+  <!-- ===================== HERO ===================== -->
+  <header class="fag-hero">
+    <div class="fag-hero__glow" aria-hidden="true"></div>
+    <div class="fag-hero__inner">
+      <p class="fag-hero__wordmark">LUCI Systems</p>
+      <h1 class="fag-hero__title">Field Activation Guide</h1>
+      <p class="fag-hero__dek">Every screen, every zone, every channel on your property &mdash; <em>activated through LUCI.</em></p>
+      <p class="fag-hero__sub">Your floor is live on LUCI. Here&rsquo;s how each team can put it to work &mdash; four use cases per team, and one task to try this week.</p>
+      <p class="fag-hero__monday">Start using LUCI differently by Monday.</p>
+      <a class="fag-hero__cta" href="#fag-pick">
+        <span>Jump to your team</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+      </a>
+    </div>
+  </header>
+
+          <!-- ===================== PERSONA PICKER ===================== -->
+          <section class="fag-pick" aria-labelledby="fag-pick-heading">
+            <div class="fag-pick__inner">
+              <div class="fag-pick__head">
+                <div class="fag-pick__head-text">
+                  <h2 class="fag-pick__heading" id="fag-pick-heading">Pick your <em>team</em>. Jump to your four moves.</h2>
+                  <p class="fag-pick__lede">Six teams, four use cases each. Choose the one you sit on &mdash; we&rsquo;ll take you straight to your section.</p>
+                </div>
+              </div>
+              <div class="fag-pick__card">
+                <ul class="fag-pick__grid">
+                  <li class="fag-pick__cell">
+                    <a class="fag-pick__link" href="field-activation-guide-web.html#marketing">
+                      <p class="fag-pick__role">Marketing</p>
+                      <h3 class="fag-pick__label">Promote to every screen, on schedule.</h3>
+                      <p class="fag-pick__line">Push promos, game-day content, and event branding across the floor from one place.</p>
+                      <span class="fag-pick__action" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M9 7h8v8"/></svg></span>
+                    </a>
+                  </li>
+                  <li class="fag-pick__cell">
+                    <a class="fag-pick__link" href="field-activation-guide-web.html#gaming">
+                      <p class="fag-pick__role">Gaming</p>
+                      <h3 class="fag-pick__label">Run the floor from one tap.</h3>
+                      <p class="fag-pick__line">Sportsbook modes, table-game audio, and floor-wide shifts without the scramble.</p>
+                      <span class="fag-pick__action" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M9 7h8v8"/></svg></span>
+                    </a>
+                  </li>
+                  <li class="fag-pick__cell">
+                    <a class="fag-pick__link" href="field-activation-guide-web.html#av">
+                      <p class="fag-pick__role">A/V &amp; Facilities</p>
+                      <h3 class="fag-pick__label">Catch problems before guests do.</h3>
+                      <p class="fag-pick__line">See every endpoint&rsquo;s status, route issues, and keep the property running.</p>
+                      <span class="fag-pick__action" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M9 7h8v8"/></svg></span>
+                    </a>
+                  </li>
+                  <li class="fag-pick__cell">
+                    <a class="fag-pick__link" href="field-activation-guide-web.html#it">
+                      <p class="fag-pick__role">IT &amp; Technology</p>
+                      <h3 class="fag-pick__label">Own the system, not the vendor.</h3>
+                      <p class="fag-pick__line">Add endpoints, set permissions, keep configs and backups in one place.</p>
+                      <span class="fag-pick__action" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M9 7h8v8"/></svg></span>
+                    </a>
+                  </li>
+                  <li class="fag-pick__cell">
+                    <a class="fag-pick__link" href="field-activation-guide-web.html#finance">
+                      <p class="fag-pick__role">Finance</p>
+                      <h3 class="fag-pick__label">Prove the spend. Track the savings.</h3>
+                      <p class="fag-pick__line">One platform, one owner, fewer vendors and truck rolls.</p>
+                      <span class="fag-pick__action" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M9 7h8v8"/></svg></span>
+                    </a>
+                  </li>
+                  <li class="fag-pick__cell">
+                    <a class="fag-pick__link" href="field-activation-guide-web.html#gm">
+                      <p class="fag-pick__role">General Manager</p>
+                      <h3 class="fag-pick__label">One property, one view.</h3>
+                      <p class="fag-pick__line">Hand any team their piece of LUCI and know it&rsquo;s all working together.</p>
+                      <span class="fag-pick__action" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M9 7h8v8"/></svg></span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- ===================== CLOSING ===================== -->
+          <section class="fag-close">
+            <div class="fag-close__inner">
+              <p class="fag-close__line">One floor. One platform. <em>One strategy.</em></p>
+              <div>
+                <a class="fag-close__cta" href="field-activation-guide-web.html">Open the full guide</a>
+                <a class="fag-close__pdf" href="field-activation-guide.pdf" download>Download the PDF (scaled-down)</a>
+              </div>
+            </div>
+          </section>
+        </main>
+</body>
+</html>
