@@ -1,0 +1,48 @@
+---
+description: How to propagate a canonical diagram to every consumer when Jane says "propagate X" / "ship X" / "lock in X" / "update X everywhere". Runs scripts/propagate-diagram.mjs. Always loaded so the verb is recognized without re-teaching the canonical-asset doctrine each session. Pairs with luci-canonical-assets.mdc (the doctrine) and luci-website-review-deploy.mdc / luci-internal-portal-deploy.mdc (deploy).
+alwaysApply: true
+---
+
+# LUCI propagation workflow — "propagate" as a verb
+
+**The verb:** when Jane says **"propagate <diagram-name>"** (or "ship", "lock in", "update everywhere", "sync to all assets"), run:
+
+```
+cd "LUCI Systems Design System"
+node scripts/propagate-diagram.mjs <diagram-basename> --dry-run     # show the plan first
+node scripts/propagate-diagram.mjs <diagram-basename>             # apply (writes)
+```
+
+`<diagram-basename>` is the canonical name without variant suffix or extension — e.g. `luci-what-luci-is`, `luci-system-architecture`, `embedded-operation-orbit`, `luci-consolidation-ledger`.
+
+**Audit (no writes):** `node scripts/propagate-diagram.mjs --audit` prints the full master→consumer inventory + orphan copies. Run this when Jane asks "where does X live" or "what's out of sync".
+
+## What the script does (so you don't re-teach it)
+
+1. **Re-derives every SVG consumer copy** from the appropriate master (base or variant: `.deck`, `.dark`, `.web`, `.identity-only`), applying **that consumer's stored crop** (viewBox/width/height read from the existing copy). **The master is never resized** — only the copy is cropped. So a slide deck's larger copy stays larger; a website's narrow copy stays narrow; only the *details* (content) refresh.
+2. **Regenerates derived variant masters** where a builder exists — `luci-what-luci-is.deck.svg` is re-derived from the base master via `ui_kits/sales/_build_deck_variants.py` (the script runs it automatically).
+3. **Bumps `?v=N`** on every `<img>` ref to the master or a re-derived copy, deduped, across both repos (site-aware: review `/assets/...` vs website `/images/...`).
+4. **Flags raster consumers** (`.png`/`.jpg`) that need re-export — it does NOT auto-rasterize; it lists them + the command (`npm run prepare:pdf` for sales; export SVG→PNG for website/hub). Surface these to Jane as a follow-up.
+5. **Flags aspect-ratio changes** — if the master's proportions changed vs. a consumer's crop, it surfaces that consumer for a re-crop review rather than silently shipping a broken crop.
+6. **Reports** every consumer touched + reminds: deploy to `.37` (website) / `.17` (portal), and `npm run build:review` if sales copies changed (regenerates the `ui_kits/review/sales/` mirror).
+
+## Doctrine (from luci-canonical-assets.mdc — don't relitigate)
+
+- One master per diagram (`assets/diagrams/<name>.svg` + variant masters). Each consumer gets its **own resized copy** in its own `assets/diagrams/` folder, referenced with a relative path + `?v=N`.
+- **Never resize the master** to fit a consumer. Edit the master only for content; resize the copy.
+- **Never paste a diagram's inline `<svg>` markup** into a document — use an `<img>` to the consumer's own copy.
+- A master *content* change may require a consumer's **crop** to be re-adjusted — that's the aspect-ratio flag in step 5; it's a taste call, so surface it, don't auto-fix it.
+
+## When Jane asks to change a diagram while working inside a consumer
+
+**Ask first** (per luci-canonical-assets.mdc): "Should this go to the **canonical master**, or stay **local to this asset's copy only**?" Then:
+- **Canonical** → edit the master's content (never its sizing); **then** run `propagate <name>` to re-derive every consumer. Don't propagate until Jane signals the master is ready ("propagate", "ship", "lock in").
+- **Local** → adjust only that consumer's copy (re-crop/resize) and/or its CSS. Don't touch the master, don't propagate.
+
+## Propagation is not done until it's deployed
+
+Per `luci-website-review-deploy.mdc` / `luci-internal-portal-deploy.mdc`: after the script writes, run `./deploy.sh` (website → `.37`) and/or `npm run deploy:portal` (portal → `.17`), and `npm run build:review` if sales copies changed. Bump `?v=N` (the script does this) so nginx/browser caching serves the new copies. Tell Jane to hard-refresh (Cmd+Shift+R).
+
+## Raster is a flagged follow-up, not auto-magic
+
+The script re-derives **SVG** copies. Raster (`.png`/`.jpg`) needs a renderer (Chrome via `prepare-sales-pdf-assets.py` for sales; an SVG→PNG export for website/hub). The script lists every raster consumer that needs re-export — surface that list to Jane and run the appropriate export, don't silently skip it.
