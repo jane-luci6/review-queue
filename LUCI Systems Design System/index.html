@@ -1447,7 +1447,7 @@ Next up:
       overviewBtn.addEventListener('click', () => activateLink(overviewBtn));
       navMount.appendChild(overviewBtn);
 
-      ['sales', 'marketing', 'brandStrategy', 'contentLab', 'designSystem'].forEach((key) => {
+      ['sales', 'marketing', 'brandStrategy', 'contentLab', 'socialMedia', 'designSystem'].forEach((key) => {
         const group = NAV_CONFIG[key];
         if (group) navMount.appendChild(createAccordion(key, group));
       });
