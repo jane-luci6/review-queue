@@ -21,26 +21,6 @@
   body { margin: 0; background: var(--navy-deep); color: rgba(235,245,248,0.92); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
   .fag { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 
-  /* ── Hub hero ── */
-  .fag-hero { position: relative; padding: 72px 0 40px; overflow: hidden; }
-  .fag-hero::after { content: ""; position: absolute; inset: 0 -24px 0 0; z-index: 0; pointer-events: none; opacity: 0.10;
-    background-image: radial-gradient(circle at 92% 18%, var(--mint) 0, transparent 38%), radial-gradient(circle at 96% 70%, var(--gold) 0, transparent 30%); }
-  .fag-hero > * { position: relative; z-index: 1; }
-  .fag-hero__wordmark { font-family: var(--font-display); font-weight: 700; font-size: 13px; letter-spacing: 0.22em; color: var(--mint); text-transform: uppercase; margin-bottom: 28px; }
-  .fag-hero__title { font-family: var(--font-display); font-weight: 700; font-size: clamp(40px, 7vw, 68px); line-height: 0.92; letter-spacing: -0.03em; color: var(--off-white); margin: 0 0 18px; }
-  .fag-hero__title em { font-style: normal; color: var(--mint); }
-  .fag-hero__sub { font-family: var(--font-body); font-size: clamp(17px, 2vw, 20px); line-height: 1.6; color: rgba(235,245,248,0.78); max-width: 58ch; margin: 0 0 8px; }
-  .fag-hero__kicker { font-family: var(--font-head); font-weight: 700; font-size: 11px; letter-spacing: 0.20em; text-transform: uppercase; color: var(--mint); margin-bottom: 14px; }
-
-  /* ── Persona hub grid ── */
-  .fag-hub { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 8px 0 64px; }
-  @media (min-width: 720px) { .fag-hub { grid-template-columns: repeat(3, 1fr); } }
-  .fag-hub__card { display: block; padding: 22px 20px; background: var(--navy); border: 1px solid var(--rule-dark); border-radius: 14px; text-decoration: none; color: inherit; transition: border-color 0.2s, transform 0.2s; }
-  .fag-hub__card:hover { border-color: rgba(var(--mint-rgb), 0.5); transform: translateY(-2px); }
-  .fag-hub__num { font-family: var(--font-head); font-weight: 700; font-size: 11px; letter-spacing: 0.18em; color: var(--mint); }
-  .fag-hub__name { font-family: var(--font-head); font-weight: 700; font-size: 18px; letter-spacing: -0.015em; color: var(--off-white); margin: 8px 0 6px; }
-  .fag-hub__role { font-family: var(--font-body); font-size: 13.5px; line-height: 1.5; color: rgba(235,245,248,0.66); }
-
   /* ── Section ── */
   .fag-sec { padding: 56px 0 8px; border-top: 1px solid var(--rule-dark); scroll-margin-top: 24px; }
   .fag-sec__kicker { font-family: var(--font-head); font-weight: 700; font-size: 11px; letter-spacing: 0.20em; text-transform: uppercase; color: var(--mint); margin-bottom: 10px; }
@@ -155,9 +135,7 @@
   .fag-sec--light .fag-spot__text { color: var(--ink-strong); }
   .fag-sec--light .fag-spot__text em { color: var(--accent-light); }
 
-  /* hero + footer framing */
-  .fag-hero { padding: 96px 0 64px; }
-  .fag-hero > * { max-width: 1080px; margin-left: auto; margin-right: auto; padding-left: 24px; padding-right: 24px; }
+  /* footer framing */
   .fag-close { background: var(--navy-deep); border-top: 1px solid rgba(235,245,248,0.10); margin: 0; padding: 64px 24px 40px; }
   .fag-close > * { max-width: 1080px; margin-left: auto; margin-right: auto; }
 
@@ -183,14 +161,6 @@
   </div>
 </nav>
 <article class="fag" id="fag-root">
-
-  <!-- ===================== HUB HERO ===================== -->
-  <header class="fag-hero">
-    <p class="fag-hero__wordmark">LUCI Systems</p>
-    <p class="fag-hero__kicker">Field Activation Guide</p>
-    <h1 class="fag-hero__title">Every screen, every zone, every channel on your property &mdash; <em>activated through LUCI.</em></h1>
-    <p class="fag-hero__sub">Your floor is live on LUCI. Jump to your team from the menu above &mdash; four ways to put LUCI to work, and one task to try this week. Or head back to the <a href="field-activation-guide-hub.html" style="color:var(--mint);text-decoration:none;">team picker</a>.</p>
-  </header>
 
   <!-- ============== MARKETING & GUEST EXPERIENCE ============== -->
   <section class="fag-sec fag-sec--light" id="marketing">
