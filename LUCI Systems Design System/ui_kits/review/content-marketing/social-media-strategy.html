@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Social Media Strategy · LUCI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../review/messaging/messaging-docs.css">
+  <style>
+    body, .doc-prose, .doc-list, .doc-rows { font-family: 'Inter', system-ui, sans-serif; }
+    .resource__hero-title, .doc-chapter, .doc-subsection__title, .resource__nav-kicker,
+    .doc-rows__label, .doc-stack__num, .doc-persona__label { font-family: 'Space Grotesk', sans-serif; }
+    .resource__logo { display: inline-flex; align-items: baseline; gap: 6px; font-weight: 700; font-size: 15px; letter-spacing: 0.04em; color: var(--off-white); text-decoration: none; }
+    .resource__logo .mark { color: var(--mint); }
+    .doc-prose { font-size: 17px; line-height: 1.65; }
+    .doc-chapter { letter-spacing: -0.015em; }
+
+    /* Post-type card grid */
+    .sms-types { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; margin-top: 18px; }
+    .sms-type { background: var(--off-white); border: 1px solid var(--rule-light); padding: 20px; display: flex; flex-direction: column; gap: 10px; }
+    .sms-type__head { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; border-bottom: 1px solid var(--rule-light); padding-bottom: 8px; }
+    .sms-type__name { font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: var(--navy); letter-spacing: -0.01em; }
+    .sms-type__mix { font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mint-dark); white-space: nowrap; }
+    .sms-type__pillar { font-size: 12px; color: var(--navy-muted); font-style: italic; }
+    .sms-type__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+    .sms-type__list li { font-size: 14px; line-height: 1.5; color: var(--body-ink); padding-left: 16px; position: relative; }
+    .sms-type__list li::before { content: ''; position: absolute; left: 0; top: 9px; width: 8px; height: 2px; background: var(--mint-dark); }
+    .sms-type__list li.is-no::before { background: var(--navy-muted); }
+    .sms-type__list li.is-no { color: var(--navy-muted); }
+    .sms-type__risk { margin-top: auto; font-size: 12.5px; line-height: 1.5; color: var(--navy); background: var(--white); border-left: 3px solid var(--mint-dark); padding: 8px 10px; }
+
+    /* Cadence week strip */
+    .sms-week { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-top: 16px; }
+    .sms-day { border: 1px solid var(--rule-light); padding: 10px; min-height: 64px; background: var(--white); }
+    .sms-day__n { font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy-muted); }
+    .sms-day__post { font-size: 12.5px; line-height: 1.35; color: var(--navy); margin-top: 4px; font-weight: 600; }
+    .sms-day--off { background: var(--off-white); }
+    .sms-day--off .sms-day__post { color: var(--navy-muted); font-weight: 400; font-style: italic; }
+    @media (max-width: 720px) { .sms-week { grid-template-columns: repeat(2, 1fr); } }
+
+    /* Sign-off flow */
+    .sms-flow { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 0; }
+    .sms-flow li { display: grid; grid-template-columns: 28px 1fr; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--rule-light); align-items: baseline; }
+    .sms-flow li:last-child { border-bottom: none; }
+    .sms-flow__n { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 12px; color: var(--mint-dark); }
+    .sms-flow__who { font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--navy); }
+
+    .doc-callout--key { border-left: 4px solid var(--mint-dark); }
+  </style>
+</head>
+<body>
+  <div class="resource">
+    <header class="resource__masthead">
+      <div class="resource__masthead-row">
+        <a class="resource__logo" href="../../index.html"><span class="mark">LUCI</span> Design Hub</a>
+        <span class="resource__badge">Social Media Strategy</span>
+      </div>
+      <h1 class="resource__hero-title">LinkedIn, on LUCI&rsquo;s terms</h1>
+      <p class="resource__hero-deck">A standing strategy for posting 2&ndash;3 times a week to the LUCI company page &mdash; cadence, post types, messaging discipline, and a weekly batch sign-off so Mike reviews once, not constantly.</p>
+      <p class="resource__meta">Opened Jul 20, 2026 &middot; Owner: Jane &middot; Channel: LinkedIn (company page) &middot; Companion rule: .cursor/rules/luci-social-media.mdc</p>
+    </header>
+
+    <div class="resource__layout">
+      <aside class="resource__sidebar">
+        <p class="resource__nav-kicker">On this page</p>
+        <ul class="resource__toc">
+          <li><a href="#purpose">Why we&rsquo;re posting</a></li>
+          <li><a href="#audience">Who we&rsquo;re talking to</a></li>
+          <li><a href="#messaging">The messaging discipline</a></li>
+          <li><a href="#cadence">Cadence &amp; weekly rhythm</a></li>
+          <li><a href="#types">The five post types</a></li>
+          <li><a href="#series">The weekly series</a></li>
+          <li><a href="#signoff">Sign-off workflow</a></li>
+          <li><a href="#news">Industry &amp; partner news guardrails</a></li>
+          <li><a href="#voice">Voice &amp; terminology</a></li>
+          <li><a href="#studio">Where the work happens</a></li>
+        </ul>
+      </aside>
+
+      <main class="resource__article">
+
+        <section class="doc-section" id="purpose">
+          <h2 class="doc-chapter">Why we&rsquo;re posting</h2>
+          <p class="doc-prose">LUCI&rsquo;s most visible artifact &mdash; the LED wall, the rack &mdash; is also its least important message. The thing that actually matters is abstract: <b>one interface to control, automate, and execute the entire guest experience.</b> Social is where we practice showing the visible thing without letting it become the headline. Done well, each post is a small, repeatable demonstration that the gear is evidence of a shorter list of things to manage &mdash; not the product.</p>
+          <p class="doc-prose">The business goal is narrow and honest: stay present in the feed of the small group of people who would call LUCI &mdash; IT and operations leadership at gaming and hospitality properties &mdash; so that when a project lands on their desk, LUCI is already familiar. We are not chasing reach. We are chasing recognizability with about forty people.</p>
+          <aside class="doc-callout doc-callout--key">
+            <p class="doc-prose"><b>What this strategy is not.</b> It is not a growth-hacking plan, not a follower-count play, and not a place to announce un-named clients or un-launched integrations. It is a discipline for posting consistently, on-brand, behind a sign-off gate, until Mike trusts the cadence enough to loosen it.</p>
+          </aside>
+        </section>
+
+        <section class="doc-section" id="audience">
+          <h2 class="doc-chapter">Who we&rsquo;re talking to</h2>
+          <p class="doc-prose">LinkedIn for this category is not an A/V or facilities audience. The people who scroll past our posts &mdash; and the people we want to &mdash; sit one or two levels above the gear. They are <b>IT leadership and operations leadership</b>, with the rest of the buyer committee (CEO/GM, CFO, CMO) in supporting orbit. The A/V and facilities manager is an early assessor in a deal, rarely the person we&rsquo;re trying to make call us from a post.</p>
+          <p class="doc-prose">That changes the copy. We write for the person <i>running the property</i>, not the person racking the gear. A post that lands for a CIO sounds like this:</p>
+          <aside class="doc-callout">
+            <p class="doc-prose"><b>&ldquo;One interface for every system on the property &mdash; on standard network infrastructure, without proprietary hardware or specialist programming.&rdquo;</b></p>
+            <p class="doc-prose" style="font-size:13px;color:var(--navy-muted);margin-top:8px;">&mdash; CIO / IT Director line, Messaging Guide</p>
+          </aside>
+          <p class="doc-prose">And for the operations leader who feels floor friction directly:</p>
+          <aside class="doc-callout">
+            <p class="doc-prose"><b>&ldquo;See everything. Control anything. From any device. Without leaving the floor.&rdquo;</b></p>
+            <p class="doc-prose" style="font-size:13px;color:var(--navy-muted);margin-top:8px;">&mdash; A/V &amp; Facilities Manager line, Messaging Guide (still useful as a hook, even though this person isn&rsquo;t our primary scroller)</p>
+          </aside>
+          <p class="doc-prose">The practical rule: every caption should answer <i>&ldquo;what does this mean for the person responsible for the property?&rdquo;</i> &mdash; not <i>&ldquo;what gear is in the frame?&rdquo;</i> If a caption only makes sense to an A/V technician, it&rsquo;s written for the wrong reader.</p>
+        </section>
+
+        <section class="doc-section" id="messaging">
+          <h2 class="doc-chapter">The messaging discipline</h2>
+          <p class="doc-prose">This is the single most important rule on this page, because it&rsquo;s the one the visuals will fight. The LED walls, the racks, the before/after photos, the process video &mdash; all of it is <b>proof</b>, never the <b>headline</b>. We worked this out once for the consolidation ledger: a graphic that made the rack reduction look like the headline was wrong, because the brand leads with <i>one interface</i> everywhere and treats hardware reduction as the evidence underneath it. The same discipline applies to every post.</p>
+          <p class="doc-prose"><b>The hook-and-close pattern.</b> The visual is the hook (the wall, the rack, the crew, the before/after). The caption is the close, and the close always lands on the abstraction &mdash; one interface, one team, one accountable system. A post that shows a rack being cleaned out and stops at &ldquo;look how tidy&rdquo; has failed; the same post that closes with &ldquo;one rack, one interface, one team accountable for all of it&rdquo; has done its job.</p>
+          <p class="doc-prose"><b>Diagrams and visuals as the anchor.</b> Because the primary message is abstract, diagrams and structured visuals are not decoration &mdash; they are how we keep the audience on the primary message even when the secondary benefit (the visible hardware) is what the camera can actually show. Prefer a diagram-led post over a gear photo whenever the goal is the abstraction. The canonical diagrams (What LUCI is, Consolidation ledger, System architecture, Embedded Operation orbit) are all available and on-brand.</p>
+          <aside class="doc-callout doc-callout--key">
+            <p class="doc-prose"><b>Four pillars &mdash; every post routes to one.</b> From the Messaging Guide: <b>01</b> Complete visibility and control (one interface). <b>02</b> Align your teams by default. <b>03</b> Fully activate the guest experience. <b>04</b> Invest in the only A/V that scales and improves. If a draft doesn&rsquo;t clearly serve one of these, it isn&rsquo;t a LUCI post &mdash; cut it or reframe it.</p>
+          </aside>
+        </section>
+
+        <section class="doc-section" id="cadence">
+          <h2 class="doc-chapter">Cadence &amp; weekly rhythm</h2>
+          <p class="doc-prose"><b>2&ndash;3 posts per week</b>, LinkedIn company page only. Consistency beats volume: a steady two posts a week for six months is worth more than a burst of ten and then silence. The cadence is the brand signal &mdash; it says &ldquo;this company is awake and shipping,&rdquo; quietly, every week.</p>
+          <p class="doc-prose">A representative week &mdash; not a hard rule, a default we adjust to what&rsquo;s in the field:</p>
+          <div class="sms-week">
+            <div class="sms-day"><div class="sms-day__n">Mon</div><div class="sms-day__post">Weekly series</div></div>
+            <div class="sms-day sms-day--off"><div class="sms-day__n">Tue</div><div class="sms-day__post">off</div></div>
+            <div class="sms-day"><div class="sms-day__n">Wed</div><div class="sms-day__post">Field or case study</div></div>
+            <div class="sms-day sms-day--off"><div class="sms-day__n">Thu</div><div class="sms-day__post">off</div></div>
+            <div class="sms-day"><div class="sms-day__n">Fri</div><div class="sms-day__post">Thought leadership or news</div></div>
+            <div class="sms-day sms-day--off"><div class="sms-day__n">Sat</div><div class="sms-day__post">off</div></div>
+            <div class="sms-day sms-day--off"><div class="sms-day__n">Sun</div><div class="sms-day__post">off</div></div>
+          </div>
+          <p class="doc-prose" style="margin-top:14px;">The third post in a week is conditional &mdash; we run it when there&rsquo;s something genuine to say (a field moment, a case study snippet, a Mike quote worth pulling). If the bench is empty, we post twice and don&rsquo;t apologize for it. Never manufacture a third post to hit a quota.</p>
+        </section>
+
+        <section class="doc-section" id="types">
+          <h2 class="doc-chapter">The five post types</h2>
+          <p class="doc-prose">Every post is one of these five. Each has its own rules, its own pillar, and its own sign-off sensitivity. The mix ratio is a guideline, not a contract &mdash; let what&rsquo;s happening in the field drive the actual split.</p>
+
+          <div class="sms-types">
+            <article class="sms-type">
+              <div class="sms-type__head"><span class="sms-type__name">1 &middot; Client in-the-field</span><span class="sms-type__mix">~1 / wk</span></div>
+              <span class="sms-type__pillar">Pillar 01 or 02 &mdash; visibility, teams aligned</span>
+              <ul class="sms-type__list">
+                <li>Nice photography only &mdash; no phone-grab stills, no cluttered backgrounds.</li>
+                <li>No client names. No property-identifiable signage, uniforms, or landmarks.</li>
+                <li>State clearly it is a work in progress, not a finished project.</li>
+                <li>Promise the finalized view and keep a placeholder for the reveal post.</li>
+                <li>Close the caption on one interface / one team &mdash; not on the gear.</li>
+                <li class="is-no">No timelines, no scope, no pricing, no &ldquo;go-live&rdquo; claims.</li>
+              </ul>
+              <div class="sms-type__risk"><b>Mike sensitivity: highest.</b> Always in the weekly batch; never posted without his sign-off.</div>
+            </article>
+
+            <article class="sms-type">
+              <div class="sms-type__head"><span class="sms-type__name">2 &middot; Case study &amp; snippet</span><span class="sms-type__mix">~1 / wk</span></div>
+              <span class="sms-type__pillar">Pillar 03 or 04 &mdash; guest experience, scales &amp; improves</span>
+              <ul class="sms-type__list">
+                <li>Full case study post when one ships (Ameristar, Tachi) &mdash; named, with link.</li>
+                <li>Snippets the rest of the time: a single result, quote, or before/after.</li>
+                <li>Video of client sites is encouraged &mdash; rack cleanup, before/after, process.</li>
+                <li>Unnamed video is fine; named video only with the client&rsquo;s OK on file.</li>
+                <li>Heavy-hitting messaging on top of the visual; close on the abstraction.</li>
+                <li class="is-no">No % boasts or unverified metrics in brand copy (proof rules).</li>
+              </ul>
+              <div class="sms-type__risk"><b>Mike sensitivity: high</b> when named or video-led. Snippets of already-approved case studies ride the batch.</div>
+            </article>
+
+            <article class="sms-type">
+              <div class="sms-type__head"><span class="sms-type__name">3 &middot; Thought leadership (Mike)</span><span class="sms-type__mix">~1 / 2 wks</span></div>
+              <span class="sms-type__pillar">Any pillar &mdash; routed by the topic</span>
+              <ul class="sms-type__list">
+                <li>Pull Mike&rsquo;s real voice: &ldquo;A Minute with Mike&rdquo; column, transcripts, quotes.</li>
+                <li>Do not invent a Mike opinion. If we don&rsquo;t have it on record, we don&rsquo;t post it.</li>
+                <li>No headshot, no caricature &mdash; use a topic diagram (the Recall Model pattern).</li>
+                <li>Phase 1: posted from the company page. Phase 2 (later): Mike&rsquo;s personal page.</li>
+                <li>Goal: make Mike forward-facing for LUCI over time, not overnight.</li>
+                <li class="is-no">No ghostwritten first-person that Mike hasn&rsquo;t read and approved.</li>
+              </ul>
+              <div class="sms-type__risk"><b>Mike sensitivity: absolute.</b> First-person Mike copy is never posted without his direct sign-off.</div>
+            </article>
+
+            <article class="sms-type">
+              <div class="sms-type__head"><span class="sms-type__name">4 &middot; Industry / partner news</span><span class="sms-type__mix">low priority</span></div>
+              <span class="sms-type__pillar">Pillar 01 &mdash; visibility &amp; control, reframed</span>
+              <ul class="sms-type__list">
+                <li>Commentary framing, not pure re-share. Add a LUCI point of view.</li>
+                <li>Never promote a competitor. When in doubt, don&rsquo;t post.</li>
+                <li>Partner news OK if the partner is a real LUCI integration (and is public).</li>
+                <li>Keep it rare &mdash; this is the lowest-priority type and the easiest to skip.</li>
+                <li class="is-no">No &ldquo;AV&rdquo; &mdash; always A/V. No naming LUCI a &ldquo;layer.&rdquo;</li>
+              </ul>
+              <div class="sms-type__risk"><b>Mike sensitivity: medium.</b> Competitor-risk is the real gate; Jane screens before the batch.</div>
+            </article>
+
+            <article class="sms-type">
+              <div class="sms-type__head"><span class="sms-type__name">5 &middot; Weekly series</span><span class="sms-type__mix">1 / wk (Mon)</span></div>
+              <span class="sms-type__pillar">Pillar 01 or 02 &mdash; by series (see below)</span>
+              <ul class="sms-type__list">
+                <li>Recognizable, repeatable format &mdash; the cadence is the brand signal.</li>
+                <li>Genuinely useful to casino leadership, not a thinly-veiled product pitch.</li>
+                <li>Same visual template each week so it&rsquo;s scannable in-feed.</li>
+                <li>Format locked after the transcript-mining pass (see &ldquo;The weekly series&rdquo;).</li>
+                <li class="is-no">No rotating formats week to week &mdash; that defeats the recognizability.</li>
+              </ul>
+              <div class="sms-type__risk"><b>Mike sensitivity: low once format is approved.</b> The format approval is the gate; individual weeks ride the batch.</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="doc-section" id="series">
+          <h2 class="doc-chapter">The weekly series</h2>
+          <p class="doc-prose">The weekly series is the one post we ship every Monday, same format, so a casino leadership reader starts to recognize it in their feed. Two candidate directions are on the table; we pick one after the transcript-mining pass surfaces what Mike actually has to say. The format stays fixed for at least a quarter once chosen &mdash; recognizability only works if we resist re-inventing it.</p>
+
+          <h3 class="doc-subsection__title">Candidate A &mdash; Property Playbook</h3>
+          <p class="doc-prose">A weekly practical tip or short checklist for casino operations leadership &mdash; lighter on brand tie-in, heavier on standalone usefulness. The bet: a Dir/VP saves it, sends it to their floor team, and LUCI becomes the brand that handed them a useful thing on a Monday. Pillar 01 (visibility &amp; control) by way of operational clarity. Risk: can drift toward generic ops content if we&rsquo;re not careful to keep it A/V- and floor-adjacent.</p>
+
+          <h3 class="doc-subsection__title">Candidate B &mdash; The Shorter List</h3>
+          <p class="doc-prose">A weekly post built on LUCI&rsquo;s variable-reduction principle &mdash; one short, sharp illustration of a property reducing the number of things to manage (racks, interfaces, vendors, handoffs, screens-with-no-plan). Each week a different variable, each week a small visual (a before/after list, a consolidation diagram, a one-line reframe). The bet: it trains the audience on the abstraction that is actually LUCI&rsquo;s product, week after week, without ever sounding like a pitch. Pillar 01 and 02 directly. Risk: needs a steady supply of real examples, which is exactly what the transcript miner is for.</p>
+
+          <aside class="doc-callout">
+            <p class="doc-prose"><b>Decision pending.</b> Run <code>node scripts/mine-transcripts.mjs</code> against the transcript history, review what Mike actually has on record, and pick A, B, or a hybrid (e.g. Property Playbook framed around one reduced variable per week). The weekly-series template in the Social Studio is built to accept either format once locked.</p>
+          </aside>
+        </section>
+
+        <section class="doc-section" id="signoff">
+          <h2 class="doc-chapter">Sign-off workflow (weekly batch)</h2>
+          <p class="doc-prose">The point of the batch is that Mike does <b>not</b> monitor the feed. He reviews one page, once a week, and the rest of the time he doesn&rsquo;t think about social. Nothing goes out without his OK; he never has to catch a post he dislikes after the fact. This is the trade that earns the cadence.</p>
+          <ol class="sms-flow">
+            <li><span class="sms-flow__n">01</span><div><span class="sms-flow__who">Jane &amp; Cursor &middot; Mon&ndash;Tue</span><p class="doc-prose" style="margin-top:4px;">Draft the week&rsquo;s 2&ndash;3 posts in the Social Studio using the per-type templates. Pull from the Content Lab backlog and mined transcripts. Each post gets the hook-and-close check and a pillar tag.</p></div></li>
+            <li><span class="sms-flow__n">02</span><div><span class="sms-flow__who">Jane &middot; Tue</span><p class="doc-prose" style="margin-top:4px;">Self-review pass: anonymization check on field posts, competitor screen on news posts, voice-flag check (A/V not AV, no &ldquo;layer&rdquo; for LUCI). Fix or cut before Mike sees it.</p></div></li>
+            <li><span class="sms-flow__n">03</span><div><span class="sms-flow__who">Jane &middot; Tue</span><p class="doc-prose" style="margin-top:4px;">Finalize the week&rsquo;s posts into <code>social-this-week.html</code> and rebuild the review portal. The page is already linked from the existing Review Queue &mdash; no new queue section, just a link.</p></div></li>
+            <li><span class="sms-flow__n">04</span><div><span class="sms-flow__who">Mike &middot; Wed</span><p class="doc-prose" style="margin-top:4px;">Opens the one page in the Internal Marketing Portal, sees the week&rsquo;s 2&ndash;3 drafts with copy and visuals, comments or approves the batch. One sitting, not all week.</p></div></li>
+            <li><span class="sms-flow__n">05</span><div><span class="sms-flow__who">Jane &middot; Wed&ndash;Thu</span><p class="doc-prose" style="margin-top:4px;">Apply Mike&rsquo;s comments. If he kills a post, it&rsquo;s killed &mdash; no revival. If he edits, his edit wins. Re-deploy the page if copy changed materially.</p></div></li>
+            <li><span class="sms-flow__n">06</span><div><span class="sms-flow__who">Jane &middot; Thu&ndash;Fri</span><p class="doc-prose" style="margin-top:4px;">Post the approved batch to LinkedIn manually (no API connected today). Mark each post Live in the Content Lab backlog. Archive the week&rsquo;s page.</p></div></li>
+          </ol>
+          <aside class="doc-callout doc-callout--key">
+            <p class="doc-prose"><b>Loosening the gate later.</b> Once Mike has approved ~8&ndash;10 clean batches, we revisit. The likely first loosening: the weekly series and already-approved-format snippets stop needing per-post sign-off and ride a lighter &ldquo;heads-up&rdquo; batch. Client-in-field and first-person Mike copy stay gated indefinitely. Mike decides when, not us.</p>
+          </aside>
+        </section>
+
+        <section class="doc-section" id="news">
+          <h2 class="doc-chapter">Industry &amp; partner news guardrails</h2>
+          <p class="doc-prose">This is the lowest-priority post type and the one with the most ways to go wrong. The risk isn&rsquo;t that we post too little news &mdash; it&rsquo;s that we accidentally amplify a competitor or signal an integration that isn&rsquo;t public. A few hard lines:</p>
+          <ul class="doc-list">
+            <li><p class="doc-prose"><b>Commentary, not re-share.</b> A bare re-share of someone else&rsquo;s announcement is low-value and makes our feed a mirror. If we post it, we add a LUCI point of view on top &mdash; one or two sentences on what it means for a property running the floor.</p></li>
+            <li><p class="doc-prose"><b>No competitor promotion.</b> If a post would put a competitor&rsquo;s product or name in front of our audience in a positive light, it doesn&rsquo;t ship. When in doubt, don&rsquo;t post &mdash; the downside is asymmetric.</p></li>
+            <li><p class="doc-prose"><b>Partner news only when public.</b> A real LUCI integration (e.g. Q-SYS) is fair game for commentary <i>only if</i> the integration is already public. If it&rsquo;s pre-announcement, the post waits &mdash; no exceptions, even indirectly.</p></li>
+            <li><p class="doc-prose"><b>Honesty Protocol applies.</b> If we credit a partner or backend, we credit them by name. We never imply LUCI owns native zone logic or routing that belongs to a third party. This is a hard brand guardrail, not a social preference.</p></li>
+          </ul>
+        </section>
+
+        <section class="doc-section" id="voice">
+          <h2 class="doc-chapter">Voice &amp; terminology</h2>
+          <p class="doc-prose">The canonical voice lives in the <a href="../review/messaging/messaging-guide.html">Messaging Guide</a> and the <a href="../review/messaging/personas.html">Personas</a>, and the standing rule is in <code>.cursor/rules/luci-messaging-voice.mdc</code>. The short version for social drafting:</p>
+          <ul class="doc-list">
+            <li><p class="doc-prose"><b>Always A/V</b> &mdash; never &ldquo;AV&rdquo; or &ldquo;A-V&rdquo; &mdash; in body, captions, alt text, hashtags, and on the visuals themselves.</p></li>
+            <li><p class="doc-prose"><b>Never &ldquo;layer&rdquo; as a noun for LUCI.</b> Use <i>orchestration engine</i> for positioning and <i>LUCI orchestrates&hellip;</i> for headlines and capability copy.</p></li>
+            <li><p class="doc-prose"><b>Describe what the platform does, not how it feels.</b> &ldquo;Operate every endpoint from one interface&rdquo; passes; &ldquo;absurdly simple&rdquo; does not.</p></li>
+            <li><p class="doc-prose"><b>Watch repetition.</b> If <i>engine</i> or <i>orchestrates</i> appears more than once in a short caption, rotate to a precise alternative (<i>runs, operates, integrates, consolidates, refines, platform, infrastructure</i>).</p></li>
+            <li><p class="doc-prose"><b>Institutions, not adjectives.</b> Declarative tone, standardization without apology, subtraction framing.</p></li>
+          </ul>
+          <p class="doc-prose">Anything that drifts from these gets caught in Jane&rsquo;s self-review pass (step 02 of the sign-off flow) before it reaches Mike.</p>
+        </section>
+
+        <section class="doc-section" id="studio">
+          <h2 class="doc-chapter">Where the work happens</h2>
+          <p class="doc-prose">Three places, each with a job:</p>
+          <ul class="doc-list">
+            <li><p class="doc-prose"><b>Content Lab</b> (<code>ui_kits/content-marketing/index.html</code>) &mdash; the input side. Raw sources, mined ideas, voice flags. The transcript miner drops candidate insights here.</p></li>
+            <li><p class="doc-prose"><b>Social Studio</b> (<code>ui_kits/content-marketing/social-studio.html</code>) &mdash; the drafting workspace. One reusable template per post type, so every post is written the same way every week. This is where Jane and Cursor draft the batch.</p></li>
+            <li><p class="doc-prose"><b>This week&rsquo;s posts</b> (<code>ui_kits/content-marketing/social-this-week.html</code>) &mdash; the clean, Mike-facing review page. Linked from the existing Review Queue in the Internal Marketing Portal; no separate queue section. Rebuilt each week with that week&rsquo;s finalized drafts.</p></li>
+          </ul>
+          <p class="doc-prose">All three are wired into the Design Hub as a single &ldquo;Social media&rdquo; nav space. The standing rule (<code>.cursor/rules/luci-social-media.mdc</code>) makes the agent apply this strategy automatically in future sessions without re-explaining it.</p>
+        </section>
+
+      </main>
+    </div>
+  </div>
+</body>
+</html>
