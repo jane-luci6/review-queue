@@ -1,37 +1,50 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" role="img" aria-label="A casino floor split into zones and flipped to a game-day mode with one tap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" role="img" aria-label="A casino floor with a roulette wheel and a sportsbook odds board flipped to game-day mode">
   <defs>
-    <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#1A4150"/><stop offset="1" stop-color="#0B1D26"/>
-    </linearGradient>
-    <radialGradient id="halo" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#68E3BE" stop-opacity="0.55"/><stop offset="1" stop-color="#68E3BE" stop-opacity="0"/>
-    </radialGradient>
-    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#0B1D26" flood-opacity="0.22"/>
-    </filter>
+    <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1A4150"/><stop offset="1" stop-color="#0B1D26"/></linearGradient>
+    <linearGradient id="promo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8FEBD0"/><stop offset="1" stop-color="#4FB59A"/></linearGradient>
+    <radialGradient id="halo" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#68E3BE" stop-opacity="0.55"/><stop offset="1" stop-color="#68E3BE" stop-opacity="0"/></radialGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#0B1D26" flood-opacity="0.22"/></filter>
   </defs>
   <rect width="320" height="180" fill="#EFF3F5"/>
   <circle cx="278" cy="24" r="82" fill="#E4EBEE" opacity="0.7"/>
-  <rect x="28" y="26" width="200" height="128" rx="12" fill="url(#screen)" filter="url(#soft)"/>
-  <g stroke="#68E3BE" stroke-opacity="0.30" stroke-width="1.4" fill="none">
-    <rect x="44" y="42" width="80" height="48" rx="6"/>
-    <rect x="132" y="42" width="80" height="48" rx="6"/>
-    <rect x="44" y="98" width="80" height="44" rx="6"/>
-    <rect x="132" y="98" width="80" height="44" rx="6"/>
+  <g filter="url(#soft)">
+    <rect x="168" y="38" width="128" height="104" rx="12" fill="url(#screen)"/>
+    <path d="M168 56 L168 50 A12 12 0 0 1 180 38 L284 38 A12 12 0 0 1 296 50 L296 56 Z" fill="#68E3BE" opacity="0.30"/>
+    <circle cx="180" cy="47" r="3" fill="#EDD086"/>
+    <rect x="192" y="44" width="64" height="6" rx="3" fill="#FFFFFF" opacity="0.55"/>
+    <g fill="#68E3BE" opacity="0.85">
+      <rect x="180" y="68" width="40" height="6" rx="3"/>
+      <rect x="180" y="92" width="30" height="6" rx="3"/>
+      <rect x="180" y="116" width="44" height="6" rx="3"/>
+    </g>
+    <g fill="#EDD086">
+      <rect x="248" y="66" width="34" height="10" rx="3"/>
+      <rect x="248" y="90" width="34" height="10" rx="3"/>
+      <rect x="248" y="114" width="34" height="10" rx="3"/>
+    </g>
+    <g stroke="#FFFFFF" stroke-opacity="0.18" stroke-width="1.2" fill="none">
+      <path d="M180 84h104M180 108h104"/>
+    </g>
   </g>
-  <g fill="#68E3BE" opacity="0.10">
-    <rect x="44" y="42" width="80" height="48" rx="6"/>
-    <rect x="132" y="98" width="80" height="44" rx="6"/>
+  <g filter="url(#soft)">
+    <circle cx="86" cy="92" r="46" fill="url(#screen)"/>
+    <circle cx="86" cy="92" r="46" fill="none" stroke="#68E3BE" stroke-width="1.6" stroke-opacity="0.5"/>
+    <g stroke="#68E3BE" stroke-opacity="0.45" stroke-width="1.4">
+      <path d="M86 92V46M86 92V138M40 92h46M86 92h46M54 60l32 32M118 60l-32 32M54 124l32-32M118 124l-32-32"/>
+    </g>
+    <circle cx="86" cy="92" r="30" fill="#0B1D26"/>
+    <g fill="#EDD086">
+      <circle cx="86" cy="62" r="2.4"/><circle cx="116" cy="92" r="2.4"/><circle cx="86" cy="122" r="2.4"/><circle cx="56" cy="92" r="2.4"/>
+    </g>
+    <circle cx="86" cy="92" r="9" fill="url(#promo)"/>
+    <circle cx="86" cy="92" r="3" fill="#0B1D26"/>
+    <circle cx="86" cy="46" r="4" fill="#EDD086"/>
+    <path d="M86 38l5 8h-10z" fill="#1A4150"/>
   </g>
-  <circle cx="84" cy="66" r="5" fill="#68E3BE"/><circle cx="84" cy="66" r="2" fill="#0B1D26"/>
-  <circle cx="172" cy="120" r="5" fill="#68E3BE"/><circle cx="172" cy="120" r="2" fill="#0B1D26"/>
-  <rect x="60" y="116" width="48" height="6" rx="3" fill="#FFFFFF" opacity="0.18"/>
-  <rect x="148" y="124" width="48" height="6" rx="3" fill="#FFFFFF" opacity="0.18"/>
-  <!-- one-tap mode pill -->
-  <rect x="244" y="44" width="52" height="64" rx="12" fill="#FFFFFF" filter="url(#soft)"/>
-  <circle cx="270" cy="70" r="14" fill="url(#halo)"/>
-  <circle cx="270" cy="70" r="13" fill="none" stroke="#68E3BE" stroke-width="1.6"/>
-  <path d="M265 70l4 4 7-8" stroke="#1A4150" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <rect x="252" y="92" width="36" height="6" rx="3" fill="#1A4150" opacity="0.22"/>
-  <circle cx="282" cy="56" r="3.4" fill="#EDD086"/>
+  <g filter="url(#soft)">
+    <rect x="118" y="138" width="84" height="26" rx="13" fill="#FFFFFF"/>
+    <circle cx="132" cy="151" r="8" fill="url(#promo)"/>
+    <path d="M128 151l3 3 6-7" stroke="#0B1D26" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <rect x="148" y="147" width="46" height="8" rx="4" fill="#1A4150" opacity="0.4"/>
+  </g>
 </svg>

@@ -26,8 +26,8 @@
 
   /* ── Hero ── */
   .fag-hero { position: relative; background: var(--navy-deep); overflow: hidden; isolation: isolate; }
-  .fag-hero__glow { position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0.16;
-    background-image: url("assets/textures/texture-circuit-header-mintgold.png"); background-repeat: no-repeat; background-position: right center; background-size: cover;
+  .fag-hero__glow { position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0.20;
+    background-image: url("assets/textures/texture-circuit-header-mintgold.png"); background-repeat: repeat; background-position: right center; background-size: 400px auto;
     -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.5) 30%, #000 60%); mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.5) 30%, #000 60%); }
   .fag-hero__inner { position: relative; z-index: 1; max-width: var(--content-wide); margin: 0 auto; padding: clamp(72px, 11vw, 128px) var(--page-pad) clamp(40px, 6vw, 64px); }
   .fag-hero__wordmark { font-family: var(--font-display); font-weight: 700; font-size: 12px; letter-spacing: 0.22em; color: var(--mint); text-transform: uppercase; margin: 0 0 22px; }
@@ -41,7 +41,6 @@
 
   /* ── Intro / framing band (page 3, visually-driven) ── */
   .fag-intro { position: relative; background: var(--navy); color: var(--off-white); overflow: hidden; isolation: isolate; }
-  .fag-intro::before { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0.14; background-image: url("assets/textures/texture-circuit-header-mintgold.png"); background-repeat: no-repeat; background-position: left center; background-size: cover; -webkit-mask-image: linear-gradient(90deg, #000 0%, rgba(0,0,0,0.5) 40%, transparent 75%); mask-image: linear-gradient(90deg, #000 0%, rgba(0,0,0,0.5) 40%, transparent 75%); }
   .fag-intro__inner { position: relative; z-index: 1; max-width: var(--content-wide); margin: 0 auto; padding: clamp(56px, 8vw, 96px) var(--page-pad) clamp(48px, 6vw, 72px); }
   .fag-intro__statement { margin: 0 0 clamp(32px, 4vw, 48px); font-family: var(--font-head); font-weight: 700; font-size: clamp(28px, 4vw, 44px); line-height: 1.08; letter-spacing: -0.025em; color: var(--off-white); max-width: 24ch; }
   .fag-intro__statement em { font-style: normal; color: var(--gold); }
@@ -59,6 +58,7 @@
   .fag-pick__head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: clamp(20px, 3vw, 40px); margin: 0 0 clamp(32px, 4vw, 48px); }
   .fag-pick__head-text { max-width: 64ch; }
   .fag-pick__heading { margin: 0; max-width: 20ch; font-family: var(--font-head); font-size: clamp(28px, 3.4vw, 42px); font-weight: 700; line-height: 1.08; letter-spacing: -0.025em; color: var(--ink-strong); }
+  .fag-pick__heading em { font-style: normal; color: var(--gold); }
   .fag-pick__subhead { margin: 12px 0 0; max-width: 30ch; font-family: var(--font-body); font-size: clamp(16px, 1.3vw, 18px); line-height: 1.5; color: var(--accent-light); }
   .fag-pick__card { }
   .fag-pick__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: clamp(14px, 1.6vw, 20px); }
@@ -81,7 +81,7 @@
 
   /* ── Closing ── */
   .fag-close { position: relative; background: var(--navy-deep); color: var(--off-white); overflow: hidden; isolation: isolate; }
-  .fag-close::before { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0.14; background-image: url("assets/textures/texture-circuit-header-mintgold.png"); background-repeat: no-repeat; background-position: right center; background-size: cover; -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.5) 45%, #000 100%); mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.5) 45%, #000 100%); }
+  .fag-close::before { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0.18; background-image: url("assets/textures/texture-circuit-header-mintgold.png"); background-repeat: repeat; background-position: right center; background-size: 360px auto; -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.5) 45%, #000 100%); mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.5) 45%, #000 100%); }
   .fag-close__inner { position: relative; z-index: 1; max-width: var(--content-wide); margin: 0 auto; padding: clamp(48px, 7vw, 80px) var(--page-pad); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
   .fag-close__line { margin: 0; max-width: 40ch; font-family: var(--font-head); font-size: clamp(20px, 2.4vw, 28px); font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; color: var(--off-white); }
   .fag-close__line em { font-style: normal; color: var(--gold); }
@@ -117,7 +117,7 @@
       <p class="fag-intro__body">Before LUCI, most casino and resort teams worked the floor separately. Marketing ran the signage, Operations shaped the gaming environment, A/V kept the screens and sound running &mdash; each in its own lane, on its own equipment, with few ways to coordinate.</p>
       <div class="fag-intro__band">
         <p class="fag-intro__bandtext">Now every screen, zone, and audio channel moves on a single platform. Marketing, Gaming and Operations, A/V and Facilities, and IT aren&rsquo;t working separate equipment that happens to share a building.</p>
-        <p class="fag-intro__bandhl">They&rsquo;re working the same floor, through the same platform, toward the same guest.</p>
+        <p class="fag-intro__bandhl">Your entire team is working the same floor, through the same platform, toward the same guest.</p>
       </div>
       <p class="fag-intro__body">That&rsquo;s the real opportunity. When your teams decide together how the floor should work &mdash; which messages run where, how energy builds through the day, what happens when a jackpot hits or an event lets out &mdash; they&rsquo;re building one intentional guest-experience strategy. Set the plan together, and each team can move fast in its own lane, because everyone knows how the pieces fit. Real-time changes still happen; they just happen against a shared plan.</p>
       <p class="fag-intro__body">That&rsquo;s how this guide is built. The pages ahead are organized by team &mdash; <strong>Marketing, Gaming &amp; Operations, A/V &amp; Facilities, IT, Finance, and General Management.</strong> Each section gathers the ways that team can put LUCI to work on the floor: four use cases, each with one task to try this week. Turn to your team&rsquo;s section, or read straight through to see how the whole floor fits together.</p>
@@ -130,7 +130,7 @@
             <div class="fag-pick__inner">
               <div class="fag-pick__head">
                 <div class="fag-pick__head-text">
-                  <h2 class="fag-pick__heading" id="fag-pick-heading">Start using LUCI differently by Monday.</h2>
+                  <h2 class="fag-pick__heading" id="fag-pick-heading">Start using LUCI <em>differently by Monday.</em></h2>
                   <p class="fag-pick__subhead">Pick your team.</p>
                 </div>
               </div>
@@ -139,7 +139,7 @@
                   <li class="fag-pick__cell">
                     <a class="fag-pick__link" href="field-activation-guide-web.html#marketing">
                       <div class="fag-pick__media">
-                        <img class="fag-pick__art" src="assets/personas/persona-marketing.svg?v=1" alt="">
+                        <img class="fag-pick__art" src="assets/personas/persona-marketing.svg?v=6" alt="">
                       </div>
                       <div class="fag-pick__copy">
                         <h3 class="fag-pick__name"><span>Marketing</span></h3>
@@ -151,7 +151,7 @@
                   <li class="fag-pick__cell">
                     <a class="fag-pick__link" href="field-activation-guide-web.html#gaming">
                       <div class="fag-pick__media">
-                        <img class="fag-pick__art" src="assets/personas/persona-gaming.svg?v=1" alt="">
+                        <img class="fag-pick__art" src="assets/personas/persona-gaming.svg?v=6" alt="">
                       </div>
                       <div class="fag-pick__copy">
                         <h3 class="fag-pick__name"><span>Gaming</span></h3>
@@ -163,7 +163,7 @@
                   <li class="fag-pick__cell">
                     <a class="fag-pick__link" href="field-activation-guide-web.html#av">
                       <div class="fag-pick__media">
-                        <img class="fag-pick__art" src="assets/personas/persona-av.svg?v=1" alt="">
+                        <img class="fag-pick__art" src="assets/personas/persona-av.svg?v=6" alt="">
                       </div>
                       <div class="fag-pick__copy">
                         <h3 class="fag-pick__name"><span>A/V &amp; Facilities</span></h3>
@@ -175,7 +175,7 @@
                   <li class="fag-pick__cell">
                     <a class="fag-pick__link" href="field-activation-guide-web.html#it">
                       <div class="fag-pick__media">
-                        <img class="fag-pick__art" src="assets/personas/persona-it.svg?v=1" alt="">
+                        <img class="fag-pick__art" src="assets/personas/persona-it.svg?v=6" alt="">
                       </div>
                       <div class="fag-pick__copy">
                         <h3 class="fag-pick__name"><span>IT &amp; Technology</span></h3>
@@ -187,7 +187,7 @@
                   <li class="fag-pick__cell">
                     <a class="fag-pick__link" href="field-activation-guide-web.html#finance">
                       <div class="fag-pick__media">
-                        <img class="fag-pick__art" src="assets/personas/persona-finance.svg?v=1" alt="">
+                        <img class="fag-pick__art" src="assets/personas/persona-finance.svg?v=6" alt="">
                       </div>
                       <div class="fag-pick__copy">
                         <h3 class="fag-pick__name"><span>Finance</span></h3>
@@ -199,7 +199,7 @@
                   <li class="fag-pick__cell">
                     <a class="fag-pick__link" href="field-activation-guide-web.html#gm">
                       <div class="fag-pick__media">
-                        <img class="fag-pick__art" src="assets/personas/persona-gm.svg?v=1" alt="">
+                        <img class="fag-pick__art" src="assets/personas/persona-gm.svg?v=6" alt="">
                       </div>
                       <div class="fag-pick__copy">
                         <h3 class="fag-pick__name"><span>General Manager</span></h3>
