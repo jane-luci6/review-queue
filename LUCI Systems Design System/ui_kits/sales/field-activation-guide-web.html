@@ -78,20 +78,21 @@
   }
 
   /* ── Sticky persona nav + back-to-hub ── */
-  .fag-nav { position: sticky; top: 0; z-index: 50; background: rgba(10,22,28,0.86); backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%); border-bottom: 1px solid rgba(235,245,248,0.10); }
-  .fag-nav__inner { max-width: 1080px; margin: 0 auto; padding: 11px 24px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-  .fag-nav__back { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-head); font-weight: 700; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mint); text-decoration: none; white-space: nowrap; }
-  .fag-nav__back svg { width: 14px; height: 14px; }
-  .fag-nav__back:hover { color: var(--off-white); }
-  .fag-nav__divider { width: 1px; height: 22px; background: rgba(235,245,248,0.14); }
-  .fag-nav__menu { display: flex; flex-wrap: wrap; gap: 4px; margin-left: auto; }
-  .fag-nav__link { display: inline-block; padding: 7px 12px; border-radius: 9999px; font-family: var(--font-head); font-weight: 700; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(235,245,248,0.66); text-decoration: none; transition: color 0.18s, background 0.18s; }
-  .fag-nav__link:hover, .fag-nav__link.is-active { color: var(--navy-deep); background: var(--mint); }
-  @media (max-width: 760px) { .fag-nav__divider { display: none; } .fag-nav__menu { margin-left: 0; width: 100%; } }
+  .fag-nav { position: sticky; top: 0; z-index: 50; background: rgba(10,22,28,0.94); backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%); border-bottom: 1px solid rgba(235,245,248,0.10); box-shadow: 0 12px 30px rgba(0,0,0,0.28); }
+  .fag-nav__inner { max-width: 1080px; margin: 0 auto; padding: 32px 24px; display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+  .fag-nav__back { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 14px 18px; border-radius: 4px; border: 1px solid rgba(235,245,248,0.16); background: rgba(235,245,248,0.05); font-family: var(--font-head); font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mint); text-decoration: none; white-space: nowrap; transition: color 0.18s, background 0.18s, border-color 0.18s; }
+  .fag-nav__back svg { width: 16px; height: 16px; }
+  .fag-nav__back:hover { color: var(--navy-deep); background: var(--mint); border-color: var(--mint); }
+  .fag-nav__divider { width: 1px; align-self: stretch; background: rgba(235,245,248,0.14); }
+  .fag-nav__menu { display: flex; flex-wrap: wrap; gap: 8px; margin-left: auto; }
+  .fag-nav__link { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; min-width: 56px; padding: 14px 18px; border-radius: 4px; border: 1px solid rgba(235,245,248,0.12); background: rgba(235,245,248,0.05); font-family: var(--font-head); font-weight: 700; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(235,245,248,0.80); text-decoration: none; transition: color 0.18s, background 0.18s, border-color 0.18s, transform 0.18s; }
+  .fag-nav__link:hover { color: var(--off-white); background: rgba(235,245,248,0.11); border-color: rgba(235,245,248,0.24); transform: translateY(-1px); }
+  .fag-nav__link.is-active { color: var(--navy-deep); background: var(--mint); border-color: var(--mint); }
+  @media (max-width: 760px) { .fag-nav__divider { display: none; } .fag-nav__menu { margin-left: 0; width: 100%; } .fag-nav__link { flex: 1 1 auto; } }
 
   /* ── Full-bleed section bands + inner measure ── */
   .fag { max-width: none; padding: 0; }
-  .fag-sec { position: relative; padding: 80px 0 40px; scroll-margin-top: 64px; border-top: 0; }
+  .fag-sec { position: relative; padding: 80px 0 40px; scroll-margin-top: 128px; border-top: 0; }
   .fag-sec > * { max-width: 1080px; margin-left: auto; margin-right: auto; padding-left: 24px; padding-right: 24px; }
   .fag-sec--dark { background: var(--navy); color: rgba(235,245,248,0.92); }
   .fag-sec--light { background: var(--off-white); color: var(--ink); }
