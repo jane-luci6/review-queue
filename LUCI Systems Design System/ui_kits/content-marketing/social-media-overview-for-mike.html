@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LinkedIn plan · LUCI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../review/messaging/messaging-docs.css">
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--off-white); }
+    .smo-sheet { max-width: 680px; margin: 0 auto; padding: 40px 32px 48px; background: #fff; border: 1px solid var(--rule-light); }
+    .smo-sheet__badge { font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mint-dark); margin: 0 0 8px; }
+    .smo-sheet__title { font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 700; letter-spacing: -0.025em; color: var(--navy); margin: 0 0 6px; line-height: 1.1; }
+    .smo-sheet__sub { font-size: clamp(16px, 1.3vw, 18px); line-height: 1.5; color: var(--mint-dark); margin: 0 0 24px; }
+    .smo-sheet__meta { font-size: 13px; color: var(--navy-muted); margin: 0 0 28px; padding-bottom: 20px; border-bottom: 1px solid var(--rule-light); }
+    .smo-block { margin-bottom: 22px; }
+    .smo-block__h { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; color: var(--navy); margin: 0 0 6px; }
+    .smo-block__p { font-size: 15px; line-height: 1.55; color: var(--body-ink); margin: 0; max-width: 58ch; }
+    .smo-block__p + .smo-block__p { margin-top: 6px; }
+    .smo-cadence { font-size: 15px; line-height: 1.5; color: var(--body-ink); margin: 6px 0 0; }
+    .smo-cadence b { color: var(--navy); }
+    .smo-rules { margin: 6px 0 0; padding: 0 0 0 18px; font-size: 15px; line-height: 1.5; color: var(--body-ink); }
+    .smo-rules li { margin-bottom: 4px; }
+    .smo-types { margin: 8px 0 0; padding: 0; list-style: none; font-size: 14px; line-height: 1.45; color: var(--body-ink); columns: 2; column-gap: 24px; }
+    .smo-types li { break-inside: avoid; padding: 3px 0 3px 14px; position: relative; }
+    .smo-types li::before { content: ''; position: absolute; left: 0; top: 11px; width: 6px; height: 2px; background: var(--mint-dark); }
+    .smo-types a { color: var(--mint-dark); font-weight: 500; }
+    .smo-foot { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--rule-light); font-size: 14px; line-height: 1.5; color: var(--navy-muted); }
+    .smo-foot a { color: var(--mint-dark); }
+    @media (max-width: 560px) { .smo-types { columns: 1; } .smo-sheet { padding: 28px 20px; } }
+    @media print { body { background: #fff; } .smo-sheet { border: none; max-width: 100%; padding: 0; } }
+  </style>
+</head>
+<body>
+  <div class="smo-sheet">
+    <p class="smo-sheet__badge">For Mike</p>
+    <h1 class="smo-sheet__title">LinkedIn plan</h1>
+    <p class="smo-sheet__sub">Cadence, rules, and post types &mdash; with mockups so you can see each format.</p>
+    <p class="smo-sheet__meta">LUCI company page &middot; 2&ndash;3 posts/week &middot; Nothing posts without your OK &middot; Jul 2026</p>
+
+    <div class="smo-block">
+      <h2 class="smo-block__h">Platform</h2>
+      <p class="smo-block__p"><b>LinkedIn only</b> &mdash; the LUCI company page (not your personal page, for now).</p>
+    </div>
+
+    <div class="smo-block">
+      <h2 class="smo-block__h">Cadence</h2>
+      <p class="smo-block__p"><b>2&ndash;3 posts per week</b> &mdash; typically <b>Tue / Wed / Thu</b>. Jane sends you one page with the week&rsquo;s drafts; you approve once before anything goes live.</p>
+    </div>
+
+    <div class="smo-block">
+      <h2 class="smo-block__h">Rules Jane follows</h2>
+      <ol class="smo-rules">
+        <li><b>No client names</b> on in-progress photos or video.</li>
+        <li><b>Completed-project posts follow the same rule</b> &mdash; no client name unless you&rsquo;ve approved naming that property.</li>
+        <li><b>No client name mentions anywhere</b> without your approval first.</li>
+      </ol>
+    </div>
+
+    <div class="smo-block">
+      <h2 class="smo-block__h">Post types</h2>
+      <p class="smo-block__p">Examples for each format: <a href="social-post-mockups.html">Post type mockups</a> (we&rsquo;re building these one at a time).</p>
+      <ul class="smo-types">
+        <li>Control the Whole Property <a href="social-post-mockups.html#t01">mockup</a></li>
+        <li>In-progress field photo/video</li>
+        <li>Completed project reveal</li>
+        <li>Before / after (anonymized)</li>
+        <li>Case study snippet</li>
+        <li>Diagram-led (one interface)</li>
+        <li>Thought leadership</li>
+        <li>Quote / testimonial card</li>
+        <li>Industry commentary</li>
+        <li>Partner spotlight</li>
+        <li>Event / trade show</li>
+        <li>Newsletter / The Signal</li>
+      </ul>
+    </div>
+
+    <p class="smo-foot"><a href="social-post-mockups.html">Open mockups gallery</a> &middot; <a href="../../index.html">Design Hub</a></p>
+  </div>
+</body>
+</html>

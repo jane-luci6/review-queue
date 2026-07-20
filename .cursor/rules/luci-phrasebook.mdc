@@ -17,7 +17,7 @@ Jane is not a developer. She talks in plain English; the agent runs every comman
 
 | You say | The agent does |
 |---|---|
-| "propagate [diagram]" / "ship [diagram] everywhere" / "update [diagram] everywhere" / "lock in [diagram]" | Runs `scripts/propagate-diagram.mjs [diagram]` — re-derives every copy from the master, bumps cache-busters, flags raster re-exports, tells you what to deploy. |
+| "Friday social prep" / "prep next week's posts" / "prep social for next week" | Runs the Friday prep workflow in `luci-social-media.mdc` — inventory media (or search existing content), propose cuts, edit exports, draft the 3-slot batch. |
 | "where does [diagram] live?" / "what's out of sync?" / "audit the diagrams" | Runs `propagate-diagram.mjs --audit` and shows the full inventory + drift. |
 | "let's try a few directions" / "give me options" / "try 3 versions" | Builds 2–3 variants on separate branches, shows them live, you pick, merges the winner. |
 | "ship it" / "deploy" / "put it live" / "make it live" | Runs the right deploy (`./deploy.sh` for website → .37, `npm run deploy:portal` for portal → .17), verifies HTTP 200, posts the URL. |

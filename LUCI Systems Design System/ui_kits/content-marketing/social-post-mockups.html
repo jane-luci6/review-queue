@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Post type examples · LUCI Social</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../review/messaging/messaging-docs.css">
+  <style>
+    body, .doc-prose, .ex-caption, .ex-media, .ex-notes { font-family: 'Inter', system-ui, sans-serif; }
+    .resource__hero-title, .doc-chapter, .ex-index__name, .ex-type__name, .ex-field__label { font-family: 'Space Grotesk', sans-serif; }
+    .resource__logo { display: inline-flex; align-items: baseline; gap: 6px; font-weight: 700; font-size: 15px; letter-spacing: 0.04em; color: var(--off-white); text-decoration: none; }
+    .resource__logo .mark { color: var(--mint); }
+    .doc-prose { font-size: 16px; line-height: 1.6; max-width: 62ch; }
+    .ex-lead { font-size: clamp(16px, 1.3vw, 18px); line-height: 1.5; color: var(--mint-dark); margin: -8px 0 20px; }
+
+    /* Index */
+    .ex-index { display: grid; gap: 8px; margin: 20px 0 40px; }
+    .ex-index__row { display: grid; grid-template-columns: 28px 1fr auto; gap: 12px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--rule-light); font-size: 14px; }
+    .ex-index__n { font-weight: 700; color: var(--mint-dark); }
+    .ex-index__name { font-weight: 600; color: var(--navy); }
+    .ex-index__status { font-size: 12px; color: var(--navy-muted); white-space: nowrap; }
+    .ex-index__status.is-done { color: var(--mint-dark); font-weight: 600; }
+
+    /* Example card */
+    .ex-type { margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--rule-light); }
+    .ex-type__name { font-size: 20px; font-weight: 700; color: var(--navy); letter-spacing: -0.015em; margin: 0; }
+    .ex-type__when { font-size: 13px; color: var(--mint-dark); margin: 4px 0 18px; }
+    .ex-field { display: grid; grid-template-columns: 88px 1fr; gap: 10px 18px; padding: 10px 0; border-top: 1px solid var(--rule-light); }
+    .ex-field__label { font-size: 10.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy-muted); padding-top: 3px; }
+    .ex-caption { font-size: 15px; line-height: 1.6; color: var(--body-ink); white-space: pre-line; max-width: 60ch; }
+    .ex-media { font-size: 14px; line-height: 1.55; color: var(--navy-muted); font-style: italic; }
+    .ex-media b { font-style: normal; color: var(--navy); font-weight: 600; }
+    .ex-notes { font-size: 14px; line-height: 1.55; color: var(--body-ink); max-width: 60ch; }
+    .ex-notes ul { margin: 4px 0 0; padding-left: 18px; }
+    .ex-placeholder { padding: 40px 24px; text-align: center; background: var(--off-white); border: 1px dashed var(--rule-light); color: var(--navy-muted); font-size: 14px; margin-top: 18px; }
+  </style>
+</head>
+<body>
+  <div class="resource">
+    <header class="resource__masthead">
+      <div class="resource__masthead-row">
+        <a class="resource__logo" href="../../index.html"><span class="mark">LUCI</span> Design Hub</a>
+        <span class="resource__badge">Social examples</span>
+      </div>
+      <h1 class="resource__hero-title">Post type examples</h1>
+      <p class="ex-lead">Copy + the media that goes with it &mdash; one example per post type. Not final layouts; just what Jane would hand off.</p>
+      <p class="resource__meta"><a href="social-media-overview-for-mike.html" style="color:var(--mint)">Mike&rsquo;s overview</a> &middot; Jul 2026</p>
+    </header>
+
+    <div class="resource__layout" style="grid-template-columns:1fr;">
+      <main class="resource__article" style="max-width:720px;">
+
+        <nav class="ex-index" aria-label="Post types">
+          <div class="ex-index__row"><span class="ex-index__n">01</span><span class="ex-index__name">Control the Whole Property</span><span class="ex-index__status is-done">example ready</span></div>
+          <div class="ex-index__row"><span class="ex-index__n">02</span><span class="ex-index__name">In-progress field photo/video</span><span class="ex-index__status is-done">example ready</span></div>
+          <div class="ex-index__row"><span class="ex-index__n">03</span><span class="ex-index__name">Completed project reveal</span><span class="ex-index__status">next</span></div>
+          <div class="ex-index__row"><span class="ex-index__n">04</span><span class="ex-index__name">Before / after (anonymized)</span><span class="ex-index__status">queued</span></div>
+          <div class="ex-index__row"><span class="ex-index__n">05</span><span class="ex-index__name">Case study snippet</span><span class="ex-index__status">queued</span></div>
+          <div class="ex-index__row"><span class="ex-index__n">06</span><span class="ex-index__name">Diagram-led (one interface)</span><span class="ex-index__status">queued</span></div>
+          <div class="ex-index__row"><span class="ex-index__n">07</span><span class="ex-index__name">Thought leadership</span><span class="ex-index__status">queued</span></div>
+          <div class="ex-index__row"><span class="ex-index__n">08</span><span class="ex-index__name">Quote / testimonial card</span><span class="ex-index__status">queued</span></div>
+          <div class="ex-index__row"><span class="ex-index__n">09</span><span class="ex-index__name">Industry commentary</span><span class="ex-index__status">queued</span></div>
+          <div class="ex-index__row"><span class="ex-index__n">10</span><span class="ex-index__name">Partner spotlight</span><span class="ex-index__status">queued</span></div>
+          <div class="ex-index__row"><span class="ex-index__n">11</span><span class="ex-index__name">Event / trade show</span><span class="ex-index__status">queued</span></div>
+          <div class="ex-index__row"><span class="ex-index__n">12</span><span class="ex-index__name">Newsletter / The Signal</span><span class="ex-index__status">queued</span></div>
+        </nav>
+
+        <section class="ex-type" id="t01">
+          <h2 class="ex-type__name">01 &middot; Control the Whole Property</h2>
+          <p class="ex-type__when">Tuesdays &middot; weekly series &middot; 8&ndash;10 week season &middot; <b>Ep01 = series intro</b>, then one zone per week</p>
+
+          <div class="ex-field">
+            <span class="ex-field__label">Caption</span>
+            <p class="ex-caption">Your property isn’t one room. It’s a casino floor, a sportsbook, a pool deck, a bingo hall, a ballroom, the restaurants, the lobby, the conference wing, and the marquee out front — each on its own remote, its own vendor, its own phone tree.
+
+Every Tuesday, we’re walking the property one area at a time — showing what it looks like when every area runs through one interface.
+
+Control the whole property. Not just the casino floor.</p>
+          </div>
+          <div class="ex-field">
+            <span class="ex-field__label">Media</span>
+            <p class="ex-media"><b>30s video &mdash; series intro (Ep01).</b> Property map opens, then nine zones highlight in sequence (casino floor &rarr; sportsbook &rarr; pool deck &rarr; bingo &rarr; events &rarr; restaurants &rarr; lobby &rarr; conference &rarr; signage), pull back to full map, end on &ldquo;Control the whole property.&rdquo; Full generation prompt: <code>social-intake/control-the-whole-property/ep01-series-intro-claude-prompt.md</code></p>
+          </div>
+          <div class="ex-field">
+            <span class="ex-field__label">Notes</span>
+            <div class="ex-notes">
+              <ul>
+                <li><b>Ep01 introduces the series</b> &mdash; shows the whole property, not one zone. Zone episodes start Ep02 (Casino floor).</li>
+                <li>Same map visual every Tuesday after; only the highlighted zone changes.</li>
+                <li>Caption closes on one interface, not on the gear.</li>
+                <li>Hashtags: #CasinoOperations #Hospitality #AV</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="ex-type" id="t02">
+          <h2 class="ex-type__name">02 &middot; In-progress field photo/video</h2>
+          <p class="ex-type__when">Wednesdays (when we have material) &middot; <b>live example: week of 2026-07-20</b></p>
+
+          <div class="ex-field">
+            <span class="ex-field__label">Caption</span>
+            <p class="ex-caption">On site at a casino in Vegas — one of the biggest LED walls we’ve ever installed.
+
+Hundreds of panels going up, one curve at a time. When it’s done, this wall becomes just another endpoint on the property’s LUCI platform — alongside hundreds of others, all on one map.
+
+The detail that matters: this single screen can be spliced into 28 separately controllable zones. Twenty-eight areas of one wall, each running its own content, all from one interface.
+
+Finished view coming once it’s live.</p>
+          </div>
+          <div class="ex-field">
+            <span class="ex-field__label">Media</span>
+            <p class="ex-media"><b>Field photo</b> &mdash; curved LED wall under construction, scissor lifts + crew in frame, back-of-wall LUCI control station visible in the background. File: <code>social-intake/2026-07-20/raw/vegas-led-wall-install.png</code>. Use as-is, or slight crop to tighten on the curve; blur/tighten if any dashboard text reads on export.</p>
+          </div>
+          <div class="ex-field">
+            <span class="ex-field__label">Notes</span>
+            <div class="ex-notes">
+              <ul>
+                <li><b>No client name.</b> Property is Aliante (North Las Vegas) &mdash; public framing is &ldquo;a casino in Vegas.&rdquo; Crop/blur signage, uniforms, landmarks, dashboard text.</li>
+                <li>The <b>28-zone splice</b> is the load-bearing detail &mdash; keep it; it&rsquo;s the differentiator that lands &ldquo;one interface.&rdquo;</li>
+                <li>Work-in-progress framing required &mdash; sets up the completed reveal (type 03) once the wall is lit and Mike approves.</li>
+                <li>Hashtags: #BehindTheScenes #LED #AV #Integration</li>
+                <li>Intake notes: <code>social-intake/2026-07-20/NOTES.md</code></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+</body>
+</html>

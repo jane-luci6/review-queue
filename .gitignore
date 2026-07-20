@@ -14,3 +14,8 @@ exports/
 
 # Scratch / debug probes (texture checks, one-off crops, reel builds, contact sheets)
 .texcheck/
+
+# Social media Friday intake — keep large field media local (README + NOTES.md stay tracked)
+LUCI Systems Design System/ui_kits/content-marketing/social-intake/**/raw/
+LUCI Systems Design System/ui_kits/content-marketing/social-intake/**/*.{mov,mp4,MOV,MP4,avi,AVI,mkv,MKV,heic,HEIC}
+LUCI Systems Design System/ui_kits/content-marketing/social-intake/**/*.{png,PNG,jpg,JPG,jpeg,JPEG,webp,WEBP}

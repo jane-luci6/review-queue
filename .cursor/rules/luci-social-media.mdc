@@ -7,13 +7,42 @@ alwaysApply: false
 
 # LUCI social media
 
-Canonical strategy: **`LUCI Systems Design System/ui_kits/content-marketing/social-media-strategy.html`**. Read it before drafting any social post. This rule distills the always-follow parts so they apply automatically.
+Canonical strategy (Jane): **`LUCI Systems Design System/ui_kits/content-marketing/social-media-strategy.html`**. Mike-facing one-pager: **`social-media-overview-for-mike.html`** (cadence, platform, rules, post types only).
 
 ## Channel & cadence
 
 - **LinkedIn, company page only** (Phase 1). Mike's personal page is a later phase, not now.
 - **2–3 posts per week.** Consistency beats volume. If the bench is empty, post twice — never manufacture a third to hit a quota.
-- Default weekly rhythm: **Mon** = weekly series · **Wed** = field or case study · **Fri** = thought leadership or news (conditional third post).
+- Default weekly rhythm: **Tue** = weekly series · **Wed** = field or case study · **Thu** = thought leadership or news (conditional third post).
+
+## Friday prep (the standing weekly process)
+
+**Trigger phrases:** "prep next week's posts" · "Friday social prep" · "prep social for next week" · "build the week's batch".
+
+Every Friday, Jane + Cursor prep the **following** week's 2–3 posts so they are draft-ready before Monday. Nothing posts without Mike's later sign-off.
+
+### What Jane does Friday
+
+1. Opens chat and says the trigger phrase (optionally names the posting week, e.g. "week of Jul 27").
+2. **If she has field media:** drops progress photos / videos into `ui_kits/content-marketing/social-intake/<YYYY-MM-DD>/` (date = Friday of prep, or the Monday of the posting week — use the folder Jane creates or the agent creates) **or** attaches them in chat. Notes any client/anonymization sensitivities.
+3. **If she has no media:** says so — the agent searches existing LUCI content and proposes a bench of options.
+
+### What the agent does Friday (always, in this order)
+
+1. **Inventory media** (if any): list every file, note duration/orientation/identifiable content risks, propose 2–3 engagement treatments per strong asset (crop, cut points, before/after pair, silent reel, still-from-video, diagram overlay, etc.).
+2. **Edit media when asked / when the treatment is clear:** use `ffmpeg` for cuts, crops, mute, still extraction, simple assemblies; HyperFrames only when a branded motion lockup is needed. Write outputs into the same week's `social-intake/<week>/exports/`. Never invent client names or leave identifiable signage in exports.
+3. **Propose the week's 3-slot batch:**
+   - **Slot A — Weekly series (Tue):** one post in the locked series format. If format is still pending, propose options and ask Jane to lock before drafting copy. Series runs a fixed 8–10 week season (not indefinite) — see series timetable in the strategy.
+   - **Slot B — Field / case (Wed):** prefer Jane's uploaded progress media → client in-the-field post. If no media, pull from case-study snippets, diagram-led posts, or existing approved photography.
+   - **Slot C — Third post (Thu):** thought leadership (Mike / mined insights), case-study snippet, or industry/partner news (lowest priority; apply news guardrails). Prefer Mike-forward when the bench allows.
+4. **No-media fallback:** search strategically across Content Lab (`index.html`, `sources/`), mined insights, case studies, canonical diagrams (`assets/diagrams/`), sales/capabilities visuals, and prior approved field photos. Surface 3–5 options with rationale; Jane picks; then draft.
+5. **Draft into Social Studio templates**, then assemble into **`social-this-week.html`** for Jane's review in the Preview Hub. Do **not** re-add to `review-queue.json` / deploy to IMP until Jane says the batch is ready for Mike.
+
+### After Friday
+
+- Jane self-reviews (anonymization, competitor screen, voice flags).
+- When she says the batch is ready for Mike: re-add `social-this-week` to `review-queue.json`, `npm run deploy:portal`, tell her the IMP URL + hard-refresh.
+- Mike reviews the batch once; Jane posts Tue / Wed / Thu of the posting week.
 
 ## The five post types
 
@@ -36,12 +65,12 @@ Every post is one of: (1) client in-the-field, (2) case study / snippet, (3) tho
 
 ## Sign-off workflow (weekly batch) — nothing posts without Mike's OK
 
-1. Jane + Cursor draft the week's 2–3 posts in the **Social Studio** (`social-studio.html`) using per-type templates.
+1. **Friday before:** Jane + Cursor run Friday prep — media inventory/edits, 3-slot batch drafted in Social Studio templates, assembled into **`social-this-week.html`** (Preview Hub only).
 2. Jane self-reviews: anonymization, competitor screen, voice flags. Fix or cut before Mike sees it.
-3. Finalize into **`social-this-week.html`**, rebuild the review portal. The page is linked from the existing Review Queue — no new queue section. **Parked for now:** the `social-this-week` queue item is intentionally removed until Jane has a real batch ready for Mike; do not re-add it to `review-queue.json` until she says the week's drafts are ready to ship for sign-off.
-4. Mike reviews the one page, one sitting, comments or approves the batch.
+3. When Jane says the batch is ready for Mike: re-add `social-this-week` to `review-queue.json`, rebuild, `npm run deploy:portal`. Do **not** re-add until she says so.
+4. Mike reviews the one page, one sitting, comments or approves the batch (ideally before the Tuesday post).
 5. Jane applies comments. If Mike kills a post, it's killed — no revival. His edit wins.
-6. Jane posts the approved batch to LinkedIn manually; marks each Live in the Content Lab.
+6. Jane posts the approved batch to LinkedIn manually (Tue / Wed / Thu); marks each Live in the Content Lab; parks the queue item again until the next batch.
 
 **Loosening the gate:** after ~8–10 clean batches, revisit. The weekly series and approved-format snippets may move to a lighter heads-up batch. **Client-in-field and first-person Mike copy stay gated indefinitely.** Mike decides when, not us.
 
@@ -63,10 +92,18 @@ Every post is one of: (1) client in-the-field, (2) case study / snippet, (3) tho
 ## Where the work happens
 
 - **Content Lab** (`index.html`) — input side: sources, mined ideas, voice flags.
-- **Social Studio** (`social-studio.html`) — drafting workspace, one template per post type.
-- **This week's posts** (`social-this-week.html`) — clean Mike-facing review page, linked from the Review Queue.
-- **Transcript miner** (`scripts/mine-transcripts.mjs`) — surfaces candidate insights from past Cursor transcripts into the Content Lab.
+- **Social Studio** (`social-studio.html`) — drafting workspace, one template per post type; Friday prep starts here.
+- **This week's posts** (`social-this-week.html`) — clean Mike-facing review page; parked from IMP until Jane says a batch is ready.
+- **Social intake** (`social-intake/<week>/`) — Friday drop folder for raw progress photos/videos + `exports/` cuts.
+- **Transcript miner** (`scripts/mine-transcripts.mjs`) — surfaces candidate insights from past Cursor transcripts and OneDrive call recordings.
 
-## Weekly series format — pending
+## Weekly series — locked (Season 1)
 
-Two candidates on the table: **Property Playbook** (practical ops tip for casino leadership) and **The Shorter List** (variable-reduction principle, one reduced variable per week). Format gets locked after running the transcript miner and reviewing what Mike actually has on record. Once locked, the format stays fixed for at least a quarter.
+**Format:** **Control the Whole Property** (evolved from “What LUCI Controls”).
+**Slot:** Tuesday weekly series post.
+**Length:** 8–10 week season, then two-week pause.
+**Medium:** **30-second video** per week. **All visuals AI-generated** (map, zone footage, detail shots) — no stock, no required client B-roll. Per-episode Claude prompts in `social-intake/control-the-whole-property/` include per-shot AI generation prompts + assembly spec.
+
+Season 1 order (default): **series intro (Ep01)** → casino floor → sportsbook → pool deck & cabanas → bingo hall → event & banquet → F&B → hotel lobby → conference rooms → marketing signage vs guest TVs → full-property map finale.
+
+Caption closes on one interface / one map — zone is the hook, not the headline.

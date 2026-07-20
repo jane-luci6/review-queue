@@ -70,6 +70,7 @@
           <li><a href="#audience">Who we&rsquo;re talking to</a></li>
           <li><a href="#messaging">The messaging discipline</a></li>
           <li><a href="#cadence">Cadence &amp; weekly rhythm</a></li>
+          <li><a href="#friday">Friday prep</a></li>
           <li><a href="#types">The five post types</a></li>
           <li><a href="#series">The weekly series</a></li>
           <li><a href="#signoff">Sign-off workflow</a></li>
@@ -121,15 +122,29 @@
           <p class="doc-prose"><b>2&ndash;3 posts per week</b>, LinkedIn company page only. Consistency beats volume: a steady two posts a week for six months is worth more than a burst of ten and then silence. The cadence is the brand signal &mdash; it says &ldquo;this company is awake and shipping,&rdquo; quietly, every week.</p>
           <p class="doc-prose">A representative week &mdash; not a hard rule, a default we adjust to what&rsquo;s in the field:</p>
           <div class="sms-week">
-            <div class="sms-day"><div class="sms-day__n">Mon</div><div class="sms-day__post">Weekly series</div></div>
-            <div class="sms-day sms-day--off"><div class="sms-day__n">Tue</div><div class="sms-day__post">off</div></div>
+            <div class="sms-day sms-day--off"><div class="sms-day__n">Mon</div><div class="sms-day__post">off</div></div>
+            <div class="sms-day"><div class="sms-day__n">Tue</div><div class="sms-day__post">Weekly series</div></div>
             <div class="sms-day"><div class="sms-day__n">Wed</div><div class="sms-day__post">Field or case study</div></div>
-            <div class="sms-day sms-day--off"><div class="sms-day__n">Thu</div><div class="sms-day__post">off</div></div>
-            <div class="sms-day"><div class="sms-day__n">Fri</div><div class="sms-day__post">Thought leadership or news</div></div>
+            <div class="sms-day"><div class="sms-day__n">Thu</div><div class="sms-day__post">Thought leadership or news</div></div>
+            <div class="sms-day sms-day--off"><div class="sms-day__n">Fri</div><div class="sms-day__post">off</div></div>
             <div class="sms-day sms-day--off"><div class="sms-day__n">Sat</div><div class="sms-day__post">off</div></div>
             <div class="sms-day sms-day--off"><div class="sms-day__n">Sun</div><div class="sms-day__post">off</div></div>
           </div>
           <p class="doc-prose" style="margin-top:14px;">The third post in a week is conditional &mdash; we run it when there&rsquo;s something genuine to say (a field moment, a case study snippet, a Mike quote worth pulling). If the bench is empty, we post twice and don&rsquo;t apologize for it. Never manufacture a third post to hit a quota.</p>
+        </section>
+
+        <section class="doc-section" id="friday">
+          <h2 class="doc-chapter">Friday prep</h2>
+          <p class="doc-prose">The week&rsquo;s 2&ndash;3 posts are drafted the <b>Friday before</b> they go live. That gives Jane time to self-review over the weekend / Monday, Mike time to sign off the batch, and LinkedIn a clean Tue / Wed / Thu schedule. Say <i>Friday social prep</i> or <i>prep next week&rsquo;s posts</i> to start the loop.</p>
+          <ol class="sms-flow">
+            <li><span class="sms-flow__n">01</span><div><span class="sms-flow__who">Jane &middot; Friday</span><p class="doc-prose" style="margin-top:4px;">Drops progress photos/videos into <code>social-intake/&lt;posting-week-Monday&gt;/raw/</code> (or attaches them in chat). If there is no new field media, she says so &mdash; Cursor searches existing LUCI content instead.</p></div></li>
+            <li><span class="sms-flow__n">02</span><div><span class="sms-flow__who">Cursor &middot; Friday</span><p class="doc-prose" style="margin-top:4px;">Inventories the media, proposes engagement treatments (cuts, crops, before/after, silent reel, still-from-video, diagram overlay), and does the actual edits into <code>exports/</code> with ffmpeg (HyperFrames only when a branded motion lockup is needed).</p></div></li>
+            <li><span class="sms-flow__n">03</span><div><span class="sms-flow__who">Cursor &middot; Friday</span><p class="doc-prose" style="margin-top:4px;">Proposes the 3-slot batch: <b>Tue</b> = weekly series &middot; <b>Wed</b> = field / case (prefer uploaded media) &middot; <b>Thu</b> = thought leadership, snippet, or news. Drafts into the Social Studio templates and assembles <code>social-this-week.html</code> for Jane&rsquo;s Preview Hub review.</p></div></li>
+            <li><span class="sms-flow__n">04</span><div><span class="sms-flow__who">Jane &middot; Fri&ndash;Mon</span><p class="doc-prose" style="margin-top:4px;">Self-review (anonymization, competitor screen, voice flags). When the batch is ready for Mike, she says so &mdash; Cursor re-links it in the Review Queue and deploys to the IMP (ideally before Tuesday&rsquo;s series post).</p></div></li>
+          </ol>
+          <aside class="doc-callout">
+            <p class="doc-prose"><b>No-media fallback.</b> Cursor searches the Content Lab, mined insights, case studies, canonical diagrams, and prior approved photography, then surfaces 3&ndash;5 strategic options with rationale. Jane picks; then draft. Never invent a third post just to hit a quota.</p>
+          </aside>
         </section>
 
         <section class="doc-section" id="types">
@@ -193,13 +208,13 @@
             </article>
 
             <article class="sms-type">
-              <div class="sms-type__head"><span class="sms-type__name">5 &middot; Weekly series</span><span class="sms-type__mix">1 / wk (Mon)</span></div>
+              <div class="sms-type__head"><span class="sms-type__name">5 &middot; Weekly series</span><span class="sms-type__mix">1 / wk (Tue)</span></div>
               <span class="sms-type__pillar">Pillar 01 or 02 &mdash; by series (see below)</span>
               <ul class="sms-type__list">
                 <li>Recognizable, repeatable format &mdash; the cadence is the brand signal.</li>
                 <li>Genuinely useful to casino leadership, not a thinly-veiled product pitch.</li>
                 <li>Same visual template each week so it&rsquo;s scannable in-feed.</li>
-                <li>Format locked after the transcript-mining pass (see &ldquo;The weekly series&rdquo;).</li>
+                <li>Format locked as a Season 1 calendar (8&ndash;10 weeks) before the first Tuesday ships.</li>
                 <li class="is-no">No rotating formats week to week &mdash; that defeats the recognizability.</li>
               </ul>
               <div class="sms-type__risk"><b>Mike sensitivity: low once format is approved.</b> The format approval is the gate; individual weeks ride the batch.</div>
@@ -209,16 +224,17 @@
 
         <section class="doc-section" id="series">
           <h2 class="doc-chapter">The weekly series</h2>
-          <p class="doc-prose">The weekly series is the one post we ship every Monday, same format, so a casino leadership reader starts to recognize it in their feed. Two candidate directions are on the table; we pick one after the transcript-mining pass surfaces what Mike actually has to say. The format stays fixed for at least a quarter once chosen &mdash; recognizability only works if we resist re-inventing it.</p>
-
-          <h3 class="doc-subsection__title">Candidate A &mdash; Property Playbook</h3>
-          <p class="doc-prose">A weekly practical tip or short checklist for casino operations leadership &mdash; lighter on brand tie-in, heavier on standalone usefulness. The bet: a Dir/VP saves it, sends it to their floor team, and LUCI becomes the brand that handed them a useful thing on a Monday. Pillar 01 (visibility &amp; control) by way of operational clarity. Risk: can drift toward generic ops content if we&rsquo;re not careful to keep it A/V- and floor-adjacent.</p>
-
-          <h3 class="doc-subsection__title">Candidate B &mdash; The Shorter List</h3>
-          <p class="doc-prose">A weekly post built on LUCI&rsquo;s variable-reduction principle &mdash; one short, sharp illustration of a property reducing the number of things to manage (racks, interfaces, vendors, handoffs, screens-with-no-plan). Each week a different variable, each week a small visual (a before/after list, a consolidation diagram, a one-line reframe). The bet: it trains the audience on the abstraction that is actually LUCI&rsquo;s product, week after week, without ever sounding like a pitch. Pillar 01 and 02 directly. Risk: needs a steady supply of real examples, which is exactly what the transcript miner is for.</p>
-
+          <p class="doc-prose">The weekly series is the one post we ship every Tuesday, same format, so a casino leadership reader starts to recognize it in their feed. It runs as a <b>fixed season</b> (8&ndash;10 weeks), not indefinitely &mdash; then we pause, measure, and decide whether to renew or replace it. We lock one format with a published week-by-week topic list before Season 1 starts.</p>
+          <p class="doc-prose">Five Season 1 formats &mdash; each with a full 8&ndash;10 week topic bench mined from the call recordings &mdash; live in <a href="weekly-series-proposals.html">Weekly series &mdash; Season 1 proposals</a>:</p>
+          <ul class="doc-list">
+            <li><p class="doc-prose"><b>A · The Shorter List</b> &mdash; variable reduction, diagram-led.</p></li>
+            <li><p class="doc-prose"><b>B · Property Playbook</b> &mdash; practical ops tips from Mike&rsquo;s floor language.</p></li>
+            <li><p class="doc-prose"><b>C · One Room, Three Teams</b> &mdash; marketing / A/V / IT alignment.</p></li>
+            <li><p class="doc-prose"><b>D · Control · Automate · Execute</b> &mdash; house triad + floor scenarios.</p></li>
+            <li><p class="doc-prose"><b>E · The Question Before You Buy</b> &mdash; subtraction decision questions.</p></li>
+          </ul>
           <aside class="doc-callout">
-            <p class="doc-prose"><b>Decision pending.</b> Run <code>node scripts/mine-transcripts.mjs</code> against the transcript history, review what Mike actually has on record, and pick A, B, or a hybrid (e.g. Property Playbook framed around one reduced variable per week). The weekly-series template in the Social Studio is built to accept either format once locked.</p>
+            <p class="doc-prose"><b>Decision pending.</b> Lock a letter + season length (8 or 10 weeks). After the last Tuesday: two-week pause, then renew, evolve, or replace. The Social Studio series template stays fixed for that season once chosen.</p>
           </aside>
         </section>
 
@@ -226,12 +242,12 @@
           <h2 class="doc-chapter">Sign-off workflow (weekly batch)</h2>
           <p class="doc-prose">The point of the batch is that Mike does <b>not</b> monitor the feed. He reviews one page, once a week, and the rest of the time he doesn&rsquo;t think about social. Nothing goes out without his OK; he never has to catch a post he dislikes after the fact. This is the trade that earns the cadence.</p>
           <ol class="sms-flow">
-            <li><span class="sms-flow__n">01</span><div><span class="sms-flow__who">Jane &amp; Cursor &middot; Mon&ndash;Tue</span><p class="doc-prose" style="margin-top:4px;">Draft the week&rsquo;s 2&ndash;3 posts in the Social Studio using the per-type templates. Pull from the Content Lab backlog and mined transcripts. Each post gets the hook-and-close check and a pillar tag.</p></div></li>
-            <li><span class="sms-flow__n">02</span><div><span class="sms-flow__who">Jane &middot; Tue</span><p class="doc-prose" style="margin-top:4px;">Self-review pass: anonymization check on field posts, competitor screen on news posts, voice-flag check (A/V not AV, no &ldquo;layer&rdquo; for LUCI). Fix or cut before Mike sees it.</p></div></li>
-            <li><span class="sms-flow__n">03</span><div><span class="sms-flow__who">Jane &middot; Tue</span><p class="doc-prose" style="margin-top:4px;">Finalize the week&rsquo;s posts into <code>social-this-week.html</code> and rebuild the review portal. The page is already linked from the existing Review Queue &mdash; no new queue section, just a link.</p></div></li>
-            <li><span class="sms-flow__n">04</span><div><span class="sms-flow__who">Mike &middot; Wed</span><p class="doc-prose" style="margin-top:4px;">Opens the one page in the Internal Marketing Portal, sees the week&rsquo;s 2&ndash;3 drafts with copy and visuals, comments or approves the batch. One sitting, not all week.</p></div></li>
-            <li><span class="sms-flow__n">05</span><div><span class="sms-flow__who">Jane &middot; Wed&ndash;Thu</span><p class="doc-prose" style="margin-top:4px;">Apply Mike&rsquo;s comments. If he kills a post, it&rsquo;s killed &mdash; no revival. If he edits, his edit wins. Re-deploy the page if copy changed materially.</p></div></li>
-            <li><span class="sms-flow__n">06</span><div><span class="sms-flow__who">Jane &middot; Thu&ndash;Fri</span><p class="doc-prose" style="margin-top:4px;">Post the approved batch to LinkedIn manually (no API connected today). Mark each post Live in the Content Lab backlog. Archive the week&rsquo;s page.</p></div></li>
+            <li><span class="sms-flow__n">01</span><div><span class="sms-flow__who">Jane &amp; Cursor &middot; Friday before</span><p class="doc-prose" style="margin-top:4px;">Friday prep (see above): inventory media, cut/edit, draft the 3-slot batch into Social Studio and <code>social-this-week.html</code>. Each post gets the hook-and-close check and a pillar tag. Stays in the Preview Hub until Jane is ready.</p></div></li>
+            <li><span class="sms-flow__n">02</span><div><span class="sms-flow__who">Jane &middot; Fri&ndash;Mon</span><p class="doc-prose" style="margin-top:4px;">Self-review pass: anonymization check on field posts, competitor screen on news posts, voice-flag check (A/V not AV, no &ldquo;layer&rdquo; for LUCI). Fix or cut before Mike sees it.</p></div></li>
+            <li><span class="sms-flow__n">03</span><div><span class="sms-flow__who">Jane &middot; when ready</span><p class="doc-prose" style="margin-top:4px;">Says the batch is ready for Mike. Cursor re-links <code>social-this-week</code> in the Review Queue and deploys to the IMP &mdash; no new queue section, just the one due-for-review link.</p></div></li>
+            <li><span class="sms-flow__n">04</span><div><span class="sms-flow__who">Mike &middot; before Tue post</span><p class="doc-prose" style="margin-top:4px;">Opens the one page in the Internal Marketing Portal, sees the week&rsquo;s 2&ndash;3 drafts with copy and visuals, comments or approves the batch. One sitting, not all week.</p></div></li>
+            <li><span class="sms-flow__n">05</span><div><span class="sms-flow__who">Jane &middot; after Mike</span><p class="doc-prose" style="margin-top:4px;">Apply Mike&rsquo;s comments. If he kills a post, it&rsquo;s killed &mdash; no revival. If he edits, his edit wins. Re-deploy the page if copy changed materially.</p></div></li>
+            <li><span class="sms-flow__n">06</span><div><span class="sms-flow__who">Jane &middot; Tue / Wed / Thu</span><p class="doc-prose" style="margin-top:4px;">Post the approved batch to LinkedIn manually (no API connected today). Mark each post Live in the Content Lab backlog. Park the week&rsquo;s page out of the IMP queue again until the next batch.</p></div></li>
           </ol>
           <aside class="doc-callout doc-callout--key">
             <p class="doc-prose"><b>Loosening the gate later.</b> Once Mike has approved ~8&ndash;10 clean batches, we revisit. The likely first loosening: the weekly series and already-approved-format snippets stop needing per-post sign-off and ride a lighter &ldquo;heads-up&rdquo; batch. Client-in-field and first-person Mike copy stay gated indefinitely. Mike decides when, not us.</p>
@@ -267,8 +283,9 @@
           <p class="doc-prose">Three places, each with a job:</p>
           <ul class="doc-list">
             <li><p class="doc-prose"><b>Content Lab</b> (<code>ui_kits/content-marketing/index.html</code>) &mdash; the input side. Raw sources, mined ideas, voice flags. The transcript miner drops candidate insights here.</p></li>
+            <li><p class="doc-prose"><b>Social intake</b> (<code>ui_kits/content-marketing/social-intake/</code>) &mdash; Friday drop folder for progress photos/videos. Raw in <code>raw/</code>; Cursor cuts land in <code>exports/</code>.</p></li>
             <li><p class="doc-prose"><b>Social Studio</b> (<code>ui_kits/content-marketing/social-studio.html</code>) &mdash; the drafting workspace. One reusable template per post type, so every post is written the same way every week. This is where Jane and Cursor draft the batch.</p></li>
-            <li><p class="doc-prose"><b>This week&rsquo;s posts</b> (<code>ui_kits/content-marketing/social-this-week.html</code>) &mdash; the clean, Mike-facing review page. Linked from the existing Review Queue in the Internal Marketing Portal; no separate queue section. Rebuilt each week with that week&rsquo;s finalized drafts.</p></li>
+            <li><p class="doc-prose"><b>This week&rsquo;s posts</b> (<code>ui_kits/content-marketing/social-this-week.html</code>) &mdash; the clean, Mike-facing review page. Linked from the existing Review Queue in the Internal Marketing Portal when a batch is ready; parked from the IMP until then. Rebuilt each week with that week&rsquo;s finalized drafts.</p></li>
           </ul>
           <p class="doc-prose">All three are wired into the Design Hub as a single &ldquo;Social media&rdquo; nav space. The standing rule (<code>.cursor/rules/luci-social-media.mdc</code>) makes the agent apply this strategy automatically in future sessions without re-explaining it.</p>
         </section>
