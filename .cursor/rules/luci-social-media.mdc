@@ -1,0 +1,72 @@
+---
+description: LUCI social media — LinkedIn cadence, post types, messaging discipline, weekly batch sign-off, news guardrails
+globs:
+  - LUCI Systems Design System/ui_kits/content-marketing/**
+alwaysApply: false
+---
+
+# LUCI social media
+
+Canonical strategy: **`LUCI Systems Design System/ui_kits/content-marketing/social-media-strategy.html`**. Read it before drafting any social post. This rule distills the always-follow parts so they apply automatically.
+
+## Channel & cadence
+
+- **LinkedIn, company page only** (Phase 1). Mike's personal page is a later phase, not now.
+- **2–3 posts per week.** Consistency beats volume. If the bench is empty, post twice — never manufacture a third to hit a quota.
+- Default weekly rhythm: **Mon** = weekly series · **Wed** = field or case study · **Fri** = thought leadership or news (conditional third post).
+
+## The five post types
+
+Every post is one of: (1) client in-the-field, (2) case study / snippet, (3) thought leadership (Mike), (4) industry / partner news, (5) the weekly series. If a draft doesn't clearly fit one, cut it or reframe it.
+
+## Messaging discipline (the one rule the visuals fight)
+
+- **LED walls, racks, before/after, process video = the hook, never the headline.** The caption always closes on the abstraction: one interface, one team, one accountable system.
+- **Every post routes to one of the four pillars** (01 visibility/control, 02 align teams, 03 activate guest experience, 04 A/V that scales & improves). No pillar, no post.
+- **Prefer diagram-led posts** when the goal is the abstraction. Canonical diagrams (What LUCI is, Consolidation ledger, System architecture, Embedded Operation orbit) are available and on-brand.
+- **Write for the person running the property, not the person racking the gear.** Audience is IT and operations leadership (Dir/VP/C-suite), not A/V technicians.
+
+## Anonymization & client rules (hard)
+
+- **No client names on in-the-field posts.** No property-identifiable signage, uniforms, or landmarks.
+- **State it's a work in progress, not a finished project.** Promise the finalized view; keep a placeholder for the reveal post.
+- **Named case study or named video only with the client's OK on file.** Unnamed video is fine.
+- **No timelines, scope, pricing, or go-live claims** in field posts.
+- **No % boasts or unverified metrics** in brand copy (proof rules from Messaging Guide).
+
+## Sign-off workflow (weekly batch) — nothing posts without Mike's OK
+
+1. Jane + Cursor draft the week's 2–3 posts in the **Social Studio** (`social-studio.html`) using per-type templates.
+2. Jane self-reviews: anonymization, competitor screen, voice flags. Fix or cut before Mike sees it.
+3. Finalize into **`social-this-week.html`**, rebuild the review portal. The page is linked from the existing Review Queue — no new queue section.
+4. Mike reviews the one page, one sitting, comments or approves the batch.
+5. Jane applies comments. If Mike kills a post, it's killed — no revival. His edit wins.
+6. Jane posts the approved batch to LinkedIn manually; marks each Live in the Content Lab.
+
+**Loosening the gate:** after ~8–10 clean batches, revisit. The weekly series and approved-format snippets may move to a lighter heads-up batch. **Client-in-field and first-person Mike copy stay gated indefinitely.** Mike decides when, not us.
+
+## News guardrails
+
+- **Commentary, not re-share.** Add a LUCI point of view on top, or don't post.
+- **No competitor promotion.** When in doubt, don't post — downside is asymmetric.
+- **Partner news only when the integration is already public.** Pre-announcement = wait, no exceptions, even indirectly.
+- **Honesty Protocol.** Credit partners/backends by name. Never imply LUCI owns native zone logic or routing that belongs to a third party (e.g. Q-SYS).
+
+## Voice (short — full canon in `luci-messaging-voice.mdc` + Messaging Guide)
+
+- **Always A/V** — never "AV" or "A-V" — in body, captions, alt text, hashtags, and on visuals.
+- **Never "layer" as a noun for LUCI.** Use *orchestration engine* / *LUCI orchestrates…*.
+- **Describe what the platform does, not how it feels.** "Operate every endpoint from one interface" passes; "absurdly simple" does not.
+- **Watch repetition** of *engine* / *orchestrates* in a short caption — rotate to a precise alternative.
+- **Institutions, not adjectives.** Declarative, subtraction framing.
+
+## Where the work happens
+
+- **Content Lab** (`index.html`) — input side: sources, mined ideas, voice flags.
+- **Social Studio** (`social-studio.html`) — drafting workspace, one template per post type.
+- **This week's posts** (`social-this-week.html`) — clean Mike-facing review page, linked from the Review Queue.
+- **Transcript miner** (`scripts/mine-transcripts.mjs`) — surfaces candidate insights from past Cursor transcripts into the Content Lab.
+
+## Weekly series format — pending
+
+Two candidates on the table: **Property Playbook** (practical ops tip for casino leadership) and **The Shorter List** (variable-reduction principle, one reduced variable per week). Format gets locked after running the transcript miner and reviewing what Mike actually has on record. Once locked, the format stays fixed for at least a quarter.
