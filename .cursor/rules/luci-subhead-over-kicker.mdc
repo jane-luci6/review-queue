@@ -1,0 +1,33 @@
+---
+description: Jane prefers a colored subhead (the "Pick your team" treatment) over small uppercase tracked kickers. Save the treatment so it's reused, not re-derived. Always loaded.
+alwaysApply: true
+---
+
+# LUCI subhead over kicker
+
+Jane has said twice (Jul 2026) she wants to **get away from small uppercase tracked kickers** except in very specific situations, and she prefers the **"Pick your team." subhead treatment** instead. Save this as the default; don't re-derive it or re-propose kickers.
+
+## The "Pick your team" treatment (the reference)
+
+A section subhead rendered as a **colored subhead**, not a kicker:
+
+- `font-family: var(--font-body)` (Inter) — not Syncopate, not uppercase
+- `font-size: clamp(16px, 1.3vw, 18px)` — medium, readable
+- `line-height: 1.5`
+- `color: var(--accent-light)` (`#2b9e80`) on light canvases, `var(--mint)` on dark
+- sits directly under the section heading, no kicker above it
+
+Reference implementation: the FAG hub picker header —
+`<h2 class="fag-pick__heading">Start using LUCI differently by Monday.</h2>` +
+`<p class="fag-pick__subhead">Pick your team.</p>` (in `ui_kits/sales/field-activation-guide-hub.html`).
+
+## When to use which
+
+- **Default to the colored subhead** for section subheads/leads. This is the house pattern now.
+- **Kicker (small uppercase tracked label) only in specific situations** — e.g. a true eyebrow over a display masthead, a numbered "Section 01" tag, or where a tracked label is load-bearing for wayfinding. Don't reach for a kicker just to label a section.
+- Never stack kicker + heading + lede where the lede repeats the heading — that tires the reader. Pick heading + one supporting line.
+
+## Don't
+
+- Don't re-introduce small uppercase mint kickers above section headings as the default.
+- Don't propose kickers for subheads Jane hasn't asked to be kickers.
