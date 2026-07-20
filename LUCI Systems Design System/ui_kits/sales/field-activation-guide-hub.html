@@ -71,11 +71,10 @@
   .fag-pick__media { position: relative; margin: 0; overflow: hidden; }
   .fag-pick__art { display: block; width: 100%; height: auto; transition: transform 0.3s ease-out; }
   .fag-pick__cell:hover .fag-pick__art, .fag-pick__cell:focus-within .fag-pick__art { transform: scale(1.02); }
-  .fag-pick__index { position: absolute; top: 12px; right: 12px; display: inline-flex; align-items: center; justify-content: center; min-width: 30px; height: 22px; padding: 0 8px; border-radius: 9999px; background: var(--navy-deep); color: var(--gold); font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: 0.12em; box-shadow: 0 4px 10px rgba(10,22,28,0.28); }
   .fag-pick__copy { display: flex; flex-direction: column; flex: 1; padding: clamp(20px, 2.4vw, 26px) clamp(22px, 2.6vw, 30px) clamp(20px, 2.4vw, 26px); }
-  .fag-pick__role { margin: 0 0 8px; font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: 0.20em; text-transform: uppercase; color: var(--accent-light); }
-  .fag-pick__label { margin: 0 0 10px; font-family: var(--font-head); font-size: clamp(18px, 1.7vw, 22px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; color: var(--ink-strong); }
-  .fag-pick__line { margin: 0; font-family: var(--font-body); font-size: clamp(13px, 1.2vw, 15px); line-height: 1.5; color: var(--ink-muted); }
+  .fag-pick__name { margin: 0 0 12px; font-family: var(--font-head); font-size: clamp(22px, 2.4vw, 28px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.12; color: var(--ink-strong); }
+  .fag-pick__name span { background: linear-gradient(transparent 58%, rgba(43,158,128,0.30) 58%); box-decoration-break: clone; -webkit-box-decoration-break: clone; padding: 0 0.06em; }
+  .fag-pick__line { margin: 0; font-family: var(--font-body); font-size: clamp(14px, 1.3vw, 16px); line-height: 1.55; color: var(--ink-muted); }
   .fag-pick__jump { margin-top: auto; padding-top: 18px; display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-head); font-size: 12px; font-weight: 700; letter-spacing: 0.04em; color: var(--accent-light); opacity: 0.62; transform: none; transition: opacity 0.2s ease, transform 0.2s ease; }
   .fag-pick__jump svg { width: 14px; height: 14px; transition: transform 0.18s ease-out; }
   .fag-pick__cell:hover .fag-pick__jump, .fag-pick__cell:focus-within .fag-pick__jump { opacity: 1; }
@@ -142,11 +141,9 @@
                     <a class="fag-pick__link" href="field-activation-guide-web.html#marketing">
                       <div class="fag-pick__media">
                         <img class="fag-pick__art" src="assets/personas/persona-marketing.svg?v=1" alt="">
-                        <span class="fag-pick__index">01</span>
                       </div>
                       <div class="fag-pick__copy">
-                        <p class="fag-pick__role">Marketing</p>
-                        <h3 class="fag-pick__label">Promote to every screen, on schedule.</h3>
+                        <h3 class="fag-pick__name"><span>Marketing</span></h3>
                         <p class="fag-pick__line">Push promos, game-day content, and event branding across the floor from one place.</p>
                         <span class="fag-pick__jump">Jump to your section <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
                       </div>
@@ -156,11 +153,9 @@
                     <a class="fag-pick__link" href="field-activation-guide-web.html#gaming">
                       <div class="fag-pick__media">
                         <img class="fag-pick__art" src="assets/personas/persona-gaming.svg?v=1" alt="">
-                        <span class="fag-pick__index">02</span>
                       </div>
                       <div class="fag-pick__copy">
-                        <p class="fag-pick__role">Gaming</p>
-                        <h3 class="fag-pick__label">Run the floor from one tap.</h3>
+                        <h3 class="fag-pick__name"><span>Gaming</span></h3>
                         <p class="fag-pick__line">Sportsbook modes, table-game audio, and floor-wide shifts without the scramble.</p>
                         <span class="fag-pick__jump">Jump to your section <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
                       </div>
@@ -170,11 +165,9 @@
                     <a class="fag-pick__link" href="field-activation-guide-web.html#av">
                       <div class="fag-pick__media">
                         <img class="fag-pick__art" src="assets/personas/persona-av.svg?v=1" alt="">
-                        <span class="fag-pick__index">03</span>
                       </div>
                       <div class="fag-pick__copy">
-                        <p class="fag-pick__role">A/V &amp; Facilities</p>
-                        <h3 class="fag-pick__label">Catch problems before guests do.</h3>
+                        <h3 class="fag-pick__name"><span>A/V &amp; Facilities</span></h3>
                         <p class="fag-pick__line">See every endpoint&rsquo;s status, route issues, and keep the property running.</p>
                         <span class="fag-pick__jump">Jump to your section <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
                       </div>
@@ -184,11 +177,9 @@
                     <a class="fag-pick__link" href="field-activation-guide-web.html#it">
                       <div class="fag-pick__media">
                         <img class="fag-pick__art" src="assets/personas/persona-it.svg?v=1" alt="">
-                        <span class="fag-pick__index">04</span>
                       </div>
                       <div class="fag-pick__copy">
-                        <p class="fag-pick__role">IT &amp; Technology</p>
-                        <h3 class="fag-pick__label">Own the system, not the vendor.</h3>
+                        <h3 class="fag-pick__name"><span>IT &amp; Technology</span></h3>
                         <p class="fag-pick__line">Add endpoints, set permissions, keep configs and backups in one place.</p>
                         <span class="fag-pick__jump">Jump to your section <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
                       </div>
@@ -198,11 +189,9 @@
                     <a class="fag-pick__link" href="field-activation-guide-web.html#finance">
                       <div class="fag-pick__media">
                         <img class="fag-pick__art" src="assets/personas/persona-finance.svg?v=1" alt="">
-                        <span class="fag-pick__index">05</span>
                       </div>
                       <div class="fag-pick__copy">
-                        <p class="fag-pick__role">Finance</p>
-                        <h3 class="fag-pick__label">Prove the spend. Track the savings.</h3>
+                        <h3 class="fag-pick__name"><span>Finance</span></h3>
                         <p class="fag-pick__line">One platform, one owner, fewer vendors and truck rolls.</p>
                         <span class="fag-pick__jump">Jump to your section <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
                       </div>
@@ -212,11 +201,9 @@
                     <a class="fag-pick__link" href="field-activation-guide-web.html#gm">
                       <div class="fag-pick__media">
                         <img class="fag-pick__art" src="assets/personas/persona-gm.svg?v=1" alt="">
-                        <span class="fag-pick__index">06</span>
                       </div>
                       <div class="fag-pick__copy">
-                        <p class="fag-pick__role">General Manager</p>
-                        <h3 class="fag-pick__label">One property, one view.</h3>
+                        <h3 class="fag-pick__name"><span>General Manager</span></h3>
                         <p class="fag-pick__line">Hand any team their piece of LUCI and know it&rsquo;s all working together.</p>
                         <span class="fag-pick__jump">Jump to your section <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
                       </div>
