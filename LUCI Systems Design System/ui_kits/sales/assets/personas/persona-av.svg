@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" role="img" aria-label="A monitoring map showing every endpoint's status, with one issue routed to a fix">
+  <defs>
+    <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1A4150"/><stop offset="1" stop-color="#0B1D26"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#68E3BE" stop-opacity="0.55"/><stop offset="1" stop-color="#68E3BE" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="alert" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#EDD086" stop-opacity="0.6"/><stop offset="1" stop-color="#EDD086" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#0B1D26" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+  <rect width="320" height="180" fill="#EFF3F5"/>
+  <circle cx="278" cy="24" r="82" fill="#E4EBEE" opacity="0.7"/>
+  <rect x="28" y="26" width="208" height="128" rx="12" fill="url(#screen)" filter="url(#soft)"/>
+  <g stroke="#68E3BE" stroke-opacity="0.26" stroke-width="1.3" fill="none">
+    <path d="M44 44h176M44 70h176M44 96h176M44 122h176M44 44v78M84 44v78M124 44v78M164 44v78M204 44v78"/>
+  </g>
+  <circle cx="68" cy="58" r="5" fill="#68E3BE"/><circle cx="68" cy="58" r="2" fill="#0B1D26"/>
+  <circle cx="144" cy="84" r="5" fill="#68E3BE"/><circle cx="144" cy="84" r="2" fill="#0B1D26"/>
+  <circle cx="104" cy="116" r="5" fill="#68E3BE"/><circle cx="104" cy="116" r="2" fill="#0B1D26"/>
+  <circle cx="190" cy="62" r="5" fill="#68E3BE"/><circle cx="190" cy="62" r="2" fill="#0B1D26"/>
+  <circle cx="200" cy="116" r="9" fill="url(#alert)"/>
+  <circle cx="200" cy="116" r="5" fill="#EDD086"/><circle cx="200" cy="116" r="2" fill="#0B1D26"/>
+  <path d="M200 116 L232 150" stroke="#EDD086" stroke-width="1.6" stroke-dasharray="3 3" fill="none"/>
+  <rect x="244" y="44" width="52" height="64" rx="12" fill="#FFFFFF" filter="url(#soft)"/>
+  <path d="M270 60a10 10 0 0 1 10 10v8h-20v-8a10 10 0 0 1 10-10z" fill="#1A4150" opacity="0.18"/>
+  <rect x="262" y="78" width="16" height="14" rx="3" fill="#68E3BE"/>
+  <path d="M270 64a6 6 0 0 0-6 6v4h12v-4a6 6 0 0 0-6-6z" fill="none" stroke="#1A4150" stroke-width="1.6"/>
+  <rect x="252" y="96" width="36" height="6" rx="3" fill="#1A4150" opacity="0.22"/>
+</svg>

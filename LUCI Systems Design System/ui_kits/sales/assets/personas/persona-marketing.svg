@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" role="img" aria-label="A wall of screens running scheduled promotions across zones">
+  <defs>
+    <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1A4150"/><stop offset="1" stop-color="#0B1D26"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#68E3BE" stop-opacity="0.55"/><stop offset="1" stop-color="#68E3BE" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#0B1D26" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+  <rect width="320" height="180" fill="#EFF3F5"/>
+  <circle cx="278" cy="24" r="82" fill="#E4EBEE" opacity="0.7"/>
+  <g filter="url(#soft)">
+    <rect x="28" y="30" width="78" height="56" rx="8" fill="url(#screen)"/>
+    <rect x="121" y="22" width="78" height="64" rx="8" fill="url(#screen)"/>
+    <rect x="214" y="30" width="78" height="56" rx="8" fill="url(#screen)"/>
+  </g>
+  <circle cx="67" cy="58" r="11" fill="url(#halo)"/>
+  <path d="M63 53l9 5-9 5z" fill="#68E3BE"/>
+  <rect x="133" y="30" width="54" height="8" rx="4" fill="#FFFFFF" opacity="0.22"/>
+  <rect x="133" y="44" width="38" height="8" rx="4" fill="#68E3BE" opacity="0.55"/>
+  <rect x="133" y="58" width="54" height="20" rx="4" fill="#68E3BE" opacity="0.16"/>
+  <circle cx="253" cy="46" r="6" fill="#EDD086"/>
+  <rect x="226" y="40" width="54" height="9" rx="3" fill="#FFFFFF" opacity="0.20"/>
+  <rect x="226" y="54" width="38" height="9" rx="3" fill="#68E3BE" opacity="0.45"/>
+  <rect x="28" y="110" width="264" height="40" rx="9" fill="#FFFFFF" filter="url(#soft)"/>
+  <g stroke="#68E3BE" stroke-opacity="0.35" stroke-width="1.4" fill="none">
+    <path d="M42 132h236M42 132v8M108 132v8M174 132v8M240 132v8"/>
+  </g>
+  <circle cx="108" cy="132" r="7" fill="url(#halo)"/><circle cx="108" cy="132" r="3.2" fill="#68E3BE"/>
+  <rect x="42" y="142" width="44" height="5" rx="2.5" fill="#1A4150" opacity="0.22"/>
+  <rect x="124" y="142" width="44" height="5" rx="2.5" fill="#1A4150" opacity="0.22"/>
+  <rect x="206" y="142" width="44" height="5" rx="2.5" fill="#1A4150" opacity="0.22"/>
+</svg>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" role="img" aria-label="A server rack with permissioned endpoints and a stack of configs and backups in one place">
+  <defs>
+    <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1A4150"/><stop offset="1" stop-color="#0B1D26"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#68E3BE" stop-opacity="0.55"/><stop offset="1" stop-color="#68E3BE" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#0B1D26" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+  <rect width="320" height="180" fill="#EFF3F5"/>
+  <circle cx="278" cy="24" r="82" fill="#E4EBEE" opacity="0.7"/>
+  <g filter="url(#soft)">
+    <rect x="28" y="26" width="92" height="128" rx="10" fill="url(#screen)"/>
+    <rect x="132" y="26" width="160" height="128" rx="10" fill="url(#screen)"/>
+  </g>
+  <g fill="#68E3BE">
+    <circle cx="40" cy="42" r="2.4"/><circle cx="40" cy="62" r="2.4"/><circle cx="40" cy="82" r="2.4"/><circle cx="40" cy="102" r="2.4"/><circle cx="40" cy="122" r="2.4"/>
+  </g>
+  <g fill="#FFFFFF" opacity="0.16">
+    <rect x="50" y="38" width="58" height="8" rx="3"/><rect x="50" y="58" width="58" height="8" rx="3"/><rect x="50" y="78" width="58" height="8" rx="3"/><rect x="50" y="98" width="58" height="8" rx="3"/><rect x="50" y="118" width="58" height="8" rx="3"/>
+  </g>
+  <circle cx="100" cy="42" r="3" fill="#EDD086"/>
+  <g stroke="#68E3BE" stroke-opacity="0.45" stroke-width="1.4" fill="none">
+    <path d="M150 56h124M150 84h124M150 112h124"/>
+  </g>
+  <g fill="#68E3BE" opacity="0.14">
+    <rect x="150" y="44" width="124" height="24" rx="5"/>
+    <rect x="150" y="100" width="124" height="24" rx="5"/>
+  </g>
+  <circle cx="166" cy="56" r="4" fill="#68E3BE"/><circle cx="166" cy="56" r="1.6" fill="#0B1D26"/>
+  <circle cx="258" cy="56" r="4" fill="#68E3BE"/><circle cx="258" cy="56" r="1.6" fill="#0B1D26"/>
+  <circle cx="166" cy="112" r="4" fill="#68E3BE"/><circle cx="166" cy="112" r="1.6" fill="#0B1D26"/>
+  <circle cx="258" cy="112" r="4" fill="#68E3BE"/><circle cx="258" cy="112" r="1.6" fill="#0B1D26"/>
+  <rect x="206" y="74" width="14" height="20" rx="3" fill="#EDD086"/>
+  <path d="M213 70a5 5 0 0 0-5 5v3h10v-3a5 5 0 0 0-5-5z" fill="none" stroke="#EDD086" stroke-width="1.6"/>
+</svg>

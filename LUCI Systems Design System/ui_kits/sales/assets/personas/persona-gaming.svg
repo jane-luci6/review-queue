@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" role="img" aria-label="A casino floor split into zones and flipped to a game-day mode with one tap">
+  <defs>
+    <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1A4150"/><stop offset="1" stop-color="#0B1D26"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#68E3BE" stop-opacity="0.55"/><stop offset="1" stop-color="#68E3BE" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#0B1D26" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+  <rect width="320" height="180" fill="#EFF3F5"/>
+  <circle cx="278" cy="24" r="82" fill="#E4EBEE" opacity="0.7"/>
+  <rect x="28" y="26" width="200" height="128" rx="12" fill="url(#screen)" filter="url(#soft)"/>
+  <g stroke="#68E3BE" stroke-opacity="0.30" stroke-width="1.4" fill="none">
+    <rect x="44" y="42" width="80" height="48" rx="6"/>
+    <rect x="132" y="42" width="80" height="48" rx="6"/>
+    <rect x="44" y="98" width="80" height="44" rx="6"/>
+    <rect x="132" y="98" width="80" height="44" rx="6"/>
+  </g>
+  <g fill="#68E3BE" opacity="0.10">
+    <rect x="44" y="42" width="80" height="48" rx="6"/>
+    <rect x="132" y="98" width="80" height="44" rx="6"/>
+  </g>
+  <circle cx="84" cy="66" r="5" fill="#68E3BE"/><circle cx="84" cy="66" r="2" fill="#0B1D26"/>
+  <circle cx="172" cy="120" r="5" fill="#68E3BE"/><circle cx="172" cy="120" r="2" fill="#0B1D26"/>
+  <rect x="60" y="116" width="48" height="6" rx="3" fill="#FFFFFF" opacity="0.18"/>
+  <rect x="148" y="124" width="48" height="6" rx="3" fill="#FFFFFF" opacity="0.18"/>
+  <!-- one-tap mode pill -->
+  <rect x="244" y="44" width="52" height="64" rx="12" fill="#FFFFFF" filter="url(#soft)"/>
+  <circle cx="270" cy="70" r="14" fill="url(#halo)"/>
+  <circle cx="270" cy="70" r="13" fill="none" stroke="#68E3BE" stroke-width="1.6"/>
+  <path d="M265 70l4 4 7-8" stroke="#1A4150" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <rect x="252" y="92" width="36" height="6" rx="3" fill="#1A4150" opacity="0.22"/>
+  <circle cx="282" cy="56" r="3.4" fill="#EDD086"/>
+</svg>
