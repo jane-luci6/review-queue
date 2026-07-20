@@ -529,12 +529,12 @@
 
     <!-- UC01 -->
     <div class="fag-uc">
-      <div class="fag-uc__head"><span class="fag-uc__num">01</span><h3 class="fag-uc__title">See every A/V endpoint on the property from a single dashboard.</h3></div>
-      <p class="fag-uc__desc">Every connected display, audio component, and device appears in one interface with its current status and health, down to device-level detail &mdash; no trip to the server room and no call to a specialist to find out what&rsquo;s going on.</p>
+      <div class="fag-uc__head"><span class="fag-uc__num">01</span><h3 class="fag-uc__title">Add an endpoint to LUCI &mdash; video, audio, or lighting.</h3></div>
+      <p class="fag-uc__desc">When a new display, speaker zone, or lighting system lands on your network, bring it onto LUCI yourself &mdash; no integrator truck roll. Enter the device&rsquo;s IP, name it, assign it to a venue, and it&rsquo;s on the map for every authorized user on that venue to reach.</p>
       <ul class="fag-uc__benefits">
-        <li>Catch issues before they reach a help-desk ticket</li>
-        <li>Investigate with real data instead of guesswork</li>
-        <li>Treat A/V like any other managed part of the network</li>
+        <li>Stand up new hardware yourself, on your schedule</li>
+        <li>One click-path covers video, audio, and lighting</li>
+        <li>Every endpoint you add is visible, tagged, and managed like the rest of the network</li>
       </ul>
       <div class="fag-acc">
         <button class="fag-acc__btn" aria-expanded="false" aria-controls="i1-panel">
@@ -542,19 +542,40 @@
           <svg class="fag-acc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
         </button>
         <div class="fag-acc__panel" id="i1-panel">
-          <p class="fag-acc__nudge"><strong>Steps coming &rarr;</strong>Tailored steps for this use case are in review with Mike. Check back soon, or ask your FDE to walk you through it.</p>
+          <div class="fag-acc__setup">
+            <p class="fag-acc__sub">Before you start</p>
+            <ol class="fag-acc__steps fag-acc__steps--setup">
+              <li>You have an admin PIN and the device&rsquo;s IP address &mdash; it must match the field device (the set-top box/TV, the DSP, or the lighting system).</li>
+            </ol>
+          </div>
+          <ol class="fag-acc__steps">
+            <li>Log in to LUCI with your admin PIN.</li>
+            <li>Left menu &rarr; Administration &rarr; Map Modes &rarr; Device Setup [Administration].</li>
+            <li>Select the device type: Video, Audio, or Lighting [Devices]. (On LUCI v2.34.0+, use the Endpoint Manager instead.)</li>
+            <li>Navigate the map to where the endpoint lives.</li>
+            <li>Right-click (or long-press) the map &rarr; Add Endpoint (for lighting, Add Device).</li>
+            <li>Video only: pick the Brand from the dropdown. (Audio and lighting skip this.)</li>
+            <li>Name the endpoint &mdash; this is the label shown on the UI.</li>
+            <li>Notes: add asset tagging or other info you want to track.</li>
+            <li>Device Address: enter the IP that matches the field device (video: the set-top box/TV; audio: the DSP; lighting: the lighting system).</li>
+            <li>Assign the endpoint to a Venue so every user on that venue can reach it (unless you restrict it per user &mdash; see IT UC03).</li>
+            <li>Video only: toggle Auto Power to let a watchdog keep the device powered on.</li>
+            <li>Set any other relevant options, then click Save.</li>
+            <li>To edit later: right-click the device on the map (or in the Assigned list) &rarr; Edit Endpoint.</li>
+          </ol>
+          <p class="fag-acc__nudge"><strong>This week &rarr;</strong>Add one new display (or audio or lighting endpoint) yourself, end to end, so the path is in your hands the next time a device lands.</p>
         </div>
       </div>
     </div>
 
     <!-- UC02 -->
     <div class="fag-uc">
-      <div class="fag-uc__head"><span class="fag-uc__num">02</span><h3 class="fag-uc__title">Know exactly what changed, and when.</h3></div>
-      <p class="fag-uc__desc">Every configuration change is logged with who made it, what changed, and when &mdash; a complete audit trail you can filter by date, user, or zone to isolate exactly what happened before a problem appeared.</p>
+      <div class="fag-uc__head"><span class="fag-uc__num">02</span><h3 class="fag-uc__title">Keep every config, backup, and guide for your system in one place.</h3></div>
+      <p class="fag-uc__desc">Your system&rsquo;s config files, backups, user guides, and walkthrough videos already live in one spot your team can reach any time &mdash; so a lot of issues you can clear yourself, without a phone call to your integrator or a ticket into a vendor queue.</p>
       <ul class="fag-uc__benefits">
-        <li>Trace any issue back to the change that caused it</li>
-        <li>Hold access accountable across every team</li>
-        <li>Confirm scheduled changes actually executed</li>
+        <li>Self-serve the common issues instead of waiting on a vendor</li>
+        <li>Every config and backup is documented and reachable</li>
+        <li>File issues through the support site when you do need help</li>
       </ul>
       <div class="fag-acc">
         <button class="fag-acc__btn" aria-expanded="false" aria-controls="i2-panel">
@@ -562,7 +583,20 @@
           <svg class="fag-acc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
         </button>
         <div class="fag-acc__panel" id="i2-panel">
-          <p class="fag-acc__nudge"><strong>Steps coming &rarr;</strong>Tailored steps for this use case are in review with Mike. Check back soon, or ask your FDE to walk you through it.</p>
+          <div class="fag-acc__setup">
+            <p class="fag-acc__sub">Before you start</p>
+            <ol class="fag-acc__steps fag-acc__steps--setup">
+              <li>Get access to the LUCI Smartsheet and support site &mdash; ask your FDE if you don&rsquo;t have credentials yet.</li>
+            </ol>
+          </div>
+          <ol class="fag-acc__steps">
+            <li>For config and backup files: open the LUCI Smartsheet your FDE shared with you &mdash; every config file and backup for your system lives there, fully documented.</li>
+            <li>For user guides, admin guides, and walkthrough videos: open the LUCI support site.</li>
+            <li>Before you open a ticket: walk the basic troubleshooting guides on the support site &mdash; a lot of issues you can clear yourself.</li>
+            <li>To report an issue or request a change: file it through the support site&rsquo;s ticketing &mdash; no phone tag, no waiting on a vendor.</li>
+            <li>Reference these any time you need to do something yourself without calling your integrator.</li>
+          </ol>
+          <p class="fag-acc__nudge"><strong>This week &rarr;</strong>Bookmark the Smartsheet and the support site, and clear one recurring issue yourself using the troubleshooting guides.</p>
         </div>
       </div>
     </div>
@@ -582,19 +616,36 @@
           <svg class="fag-acc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
         </button>
         <div class="fag-acc__panel" id="i3-panel">
-          <p class="fag-acc__nudge"><strong>Steps coming &rarr;</strong>Tailored steps for this use case are in review with Mike. Check back soon, or ask your FDE to walk you through it.</p>
+          <div class="fag-acc__setup">
+            <p class="fag-acc__sub">Before you start</p>
+            <ol class="fag-acc__steps fag-acc__steps--setup">
+              <li>You have an admin PIN. (The KB covers per-user source permissions; confirm with Mike whether zone-level and feature-level access &mdash; schedules, health checks &mdash; live in this same screen or elsewhere.)</li>
+            </ol>
+          </div>
+          <ol class="fag-acc__steps">
+            <li>Log in to LUCI with your admin PIN.</li>
+            <li>Navigate to User Management &rarr; Access.</li>
+            <li>Select the user whose access you&rsquo;re setting. Do this before touching any controls &mdash; permissions are edited per selected user.</li>
+            <li>Open the Source tab. You&rsquo;ll see every source in the system and this user&rsquo;s current permission for each.</li>
+            <li>For each source, set the View permission: Enabled (user can tune a display to it), Disabled (visible in the user&rsquo;s list but can&rsquo;t tune to it), or Hidden (not shown to this user at all).</li>
+            <li>Set the Edit permission per source: On (user can edit that source&rsquo;s details &mdash; edits apply to all users) or Off (read-only for this user).</li>
+            <li>To set the same permission across every source at once, use the batch controls at the top right: the Options dropdown sets View for all sources, and the Edit All toggle sets Edit for all.</li>
+            <li>For source-by-source control, use the dropdown and toggle next to each source individually.</li>
+            <li>Repeat for each user. Permissions take effect immediately.</li>
+          </ol>
+          <p class="fag-acc__nudge"><strong>This week &rarr;</strong>Sit with one teammate and confirm their source access matches exactly what their role needs &mdash; tighten anything that&rsquo;s too broad.</p>
         </div>
       </div>
     </div>
 
     <!-- UC04 -->
     <div class="fag-uc">
-      <div class="fag-uc__head"><span class="fag-uc__num">04</span><h3 class="fag-uc__title">Schedule system maintenance to run automatically.</h3></div>
-      <p class="fag-uc__desc">Queue software updates, reboots, and maintenance tasks for overnight or low-traffic windows and let the platform maintain itself on your schedule, with dashboard confirmation that each task executed as intended.</p>
+      <div class="fag-uc__head"><span class="fag-uc__num">04</span><h3 class="fag-uc__title">Set up kiosk mode so any staffer can control their area from a phone or mounted touchscreen.</h3></div>
+      <p class="fag-uc__desc">Put a small mounted touchscreen &mdash; or any staffer&rsquo;s phone &mdash; in charge of a single space. A kiosk user sees a simple list of their displays and channels, not the property map, so a cabana guest or a conference-room host can pick a channel with one tap and no help from your team.</p>
       <ul class="fag-uc__benefits">
-        <li>Keep the system current without manual coordination</li>
-        <li>Do disruptive work when no guest is watching</li>
-        <li>Replace one-off tasks with a repeatable process</li>
+        <li>Let guests and staffers self-serve the spaces they&rsquo;re in</li>
+        <li>Lock each kiosk to one venue, zone, and source list</li>
+        <li>No map, no admin surface &mdash; just a tap list</li>
       </ul>
       <div class="fag-acc">
         <button class="fag-acc__btn" aria-expanded="false" aria-controls="i4-panel">
@@ -602,7 +653,22 @@
           <svg class="fag-acc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
         </button>
         <div class="fag-acc__panel" id="i4-panel">
-          <p class="fag-acc__nudge"><strong>Steps coming &rarr;</strong>Tailored steps for this use case are in review with Mike. Check back soon, or ask your FDE to walk you through it.</p>
+          <div class="fag-acc__setup">
+            <p class="fag-acc__sub">Before you start</p>
+            <ol class="fag-acc__steps fag-acc__steps--setup">
+              <li>You have a small mounted touchscreen (LUCI&rsquo;s large-smartphone-sized panel) or any phone with a browser, and the venue or zone plus the sources you want that kiosk to reach are already on the map.</li>
+            </ol>
+          </div>
+          <ol class="fag-acc__steps">
+            <li>In LUCI, create a kiosk user (User Management &rarr; Access) and assign it a PIN.</li>
+            <li>Filter that user&rsquo;s access to the venue or zone the kiosk controls, and to just the sources they should pick from (see IT UC03 for access filtering).</li>
+            <li>Set the user to kiosk mode &mdash; list-based control with no map. They get a simple list of displays and channels, not the property map.</li>
+            <li>Mount the small touchscreen in the space (conference room, cabana, etc.), or have the staffer open the LUCI URL on their phone.</li>
+            <li>The user logs in with their PIN and lands on a simple list of their displays and channels &mdash; tap a display, pick a channel, done.</li>
+            <li>For a cabana: the guest uses the mounted touchscreen to choose the channel for that cabana&rsquo;s screen &mdash; self-serve, no staff involved.</li>
+            <li>For a conference room: the touchscreen makes it easy to switch between a projector and a flat screen and change the channel.</li>
+          </ol>
+          <p class="fag-acc__nudge"><strong>This week &rarr;</strong>Set up one kiosk user for a single cabana or conference room, mount the touchscreen, and let a guest pick their own channel.</p>
         </div>
       </div>
     </div>
