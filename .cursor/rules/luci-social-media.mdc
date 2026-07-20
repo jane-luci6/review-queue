@@ -38,7 +38,7 @@ Every post is one of: (1) client in-the-field, (2) case study / snippet, (3) tho
 
 1. Jane + Cursor draft the week's 2–3 posts in the **Social Studio** (`social-studio.html`) using per-type templates.
 2. Jane self-reviews: anonymization, competitor screen, voice flags. Fix or cut before Mike sees it.
-3. Finalize into **`social-this-week.html`**, rebuild the review portal. The page is linked from the existing Review Queue — no new queue section.
+3. Finalize into **`social-this-week.html`**, rebuild the review portal. The page is linked from the existing Review Queue — no new queue section. **Parked for now:** the `social-this-week` queue item is intentionally removed until Jane has a real batch ready for Mike; do not re-add it to `review-queue.json` until she says the week's drafts are ready to ship for sign-off.
 4. Mike reviews the one page, one sitting, comments or approves the batch.
 5. Jane applies comments. If Mike kills a post, it's killed — no revival. His edit wins.
 6. Jane posts the approved batch to LinkedIn manually; marks each Live in the Content Lab.
