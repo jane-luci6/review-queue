@@ -20,6 +20,7 @@
 import fs from 'fs';
 import path from 'path';
 import os from 'os';
+import { execFileSync } from 'child_process';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -29,6 +30,10 @@ const DEFAULT_TRANSCRIPTS = path.join(
   os.homedir(),
   '.cursor/projects/Users-janehaynie-Documents-Cursor-Projects-luci-design/agent-transcripts'
 );
+const DEFAULT_CALL_RECORDINGS = path.join(
+  os.homedir(),
+  'Library/CloudStorage/OneDrive-LUCISystems/Marketing - Documents/Call Recordings'
+);
 const DEFAULT_OUT_DIR = path.join(root, 'ui_kits', 'content-marketing');
 
 function arg(name, fallback) {
@@ -37,6 +42,8 @@ function arg(name, fallback) {
 }
 
 const transcriptsDir = arg('transcripts', DEFAULT_TRANSCRIPTS);
+const callRecordingsDir = arg('call-recordings', DEFAULT_CALL_RECORDINGS);
+const skipCallRecordings = process.argv.includes('--no-call-recordings');
 const outDir = arg('out-dir', DEFAULT_OUT_DIR);
 const auditOnly = process.argv.includes('--audit');
 
@@ -121,6 +128,43 @@ function findTranscriptFiles(dir) {
   return out;
 }
 
+// --- Call recording (.docx) extraction -----------------------------------
+// Meeting transcripts Jane keeps in OneDrive. Each .docx is a zip; we pull
+// word/document.xml and split it into <w:p> paragraphs, collecting <w:t> runs.
+function extractDocxParagraphs(file) {
+  let xml;
+  try {
+    xml = execFileSync('unzip', ['-p', file, 'word/document.xml'], { encoding: 'utf8' });
+  } catch {
+    return [];
+  }
+  const paragraphs = [];
+  // Split on </w:p> boundaries; within each, grab all <w:t>…</w:t> text.
+  const chunks = xml.split('</w:p>');
+  for (const chunk of chunks) {
+    const texts = [];
+    const re = /<w:t[^>]*>([\s\S]*?)<\/w:t>/g;
+    let m;
+    while ((m = re.exec(chunk)) !== null) {
+      texts.push(m[1].replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&apos;/g, "'"));
+    }
+    if (texts.length) {
+      const para = texts.join('').replace(/\s+/g, ' ').trim();
+      if (para) paragraphs.push(para);
+    }
+  }
+  return paragraphs;
+}
+
+function findCallRecordings(dir) {
+  if (!fs.existsSync(dir)) return [];
+  const out = [];
+  for (const name of fs.readdirSync(dir)) {
+    if (name.toLowerCase().endsWith('.docx')) out.push(path.join(dir, name));
+  }
+  return out;
+}
+
 // --- Scoring / bucketing -------------------------------------------------
 function snippetBuckets(text) {
   const hits = [];
@@ -161,15 +205,19 @@ function dedupe(snippets) {
 
 // --- Main ----------------------------------------------------------------
 const files = findTranscriptFiles(transcriptsDir);
-if (!files.length) {
-  console.error(`No transcripts found at ${transcriptsDir}`);
+const recordingsPresent = !skipCallRecordings && callRecordingsDir && fs.existsSync(callRecordingsDir) && findCallRecordings(callRecordingsDir).length > 0;
+if (!files.length && !recordingsPresent) {
+  console.error(`No transcripts found at ${transcriptsDir} and no call recordings at ${callRecordingsDir || '(none)'}`);
   process.exit(1);
 }
+if (!files.length) console.warn(`No agent transcripts at ${transcriptsDir} — mining call recordings only.`);
 
 const allTurns = [];
 const themeTally = {};
 const buckets = { mike: [], variableReduction: [], field: [], caseStudy: [], audience: [], partner: [] };
 let transcriptCount = 0;
+let callRecordingCount = 0;
+const callRecordingFiles = [];
 
 for (const f of files) {
   transcriptCount += 1;
@@ -179,19 +227,50 @@ for (const f of files) {
     countTerms(t.text, themeTally);
     const hits = snippetBuckets(t.text);
     for (const h of hits) {
-      buckets[h].push({ from: path.basename(path.dirname(f)), role: t.role, text: truncate(t.text, 600) });
+      buckets[h].push({ from: path.basename(path.dirname(f)), sourceType: 'agent', role: t.role, text: truncate(t.text, 600) });
     }
   }
 }
 
-for (const k of Object.keys(buckets)) buckets[k] = dedupe(buckets[k]).slice(0, 40);
+// --- Call recordings (.docx meeting transcripts from OneDrive) -----------
+if (!skipCallRecordings && callRecordingsDir) {
+  const recordings = findCallRecordings(callRecordingsDir);
+  for (const f of recordings) {
+    callRecordingCount += 1;
+    const base = path.basename(f);
+    callRecordingFiles.push(base);
+    const paragraphs = extractDocxParagraphs(f);
+    for (const para of paragraphs) {
+      const text = cleanSnippet(para);
+      if (!text) continue;
+      allTurns.push({ role: 'call', text });
+      countTerms(text, themeTally);
+      const hits = snippetBuckets(text);
+      for (const h of hits) {
+        buckets[h].push({ from: base, sourceType: 'call', role: 'call', text: truncate(text, 600) });
+      }
+    }
+  }
+}
+
+for (const k of Object.keys(buckets)) {
+  let arr = dedupe(buckets[k]);
+  // Call-recording snippets first (richer raw material — real meeting audio),
+  // then agent-transcript snippets. Stable sort keeps within-group order.
+  arr.sort((a, b) =>
+    a.sourceType === 'call' && b.sourceType !== 'call' ? -1
+    : b.sourceType === 'call' && a.sourceType !== 'call' ? 1 : 0
+  );
+  buckets[k] = arr.slice(0, 40);
+}
 
 const sortedThemes = Object.entries(themeTally)
   .sort((a, b) => b[1] - a[1])
   .filter(([, c]) => c >= 2);
 
 if (auditOnly) {
-  console.log(`Transcripts scanned: ${transcriptCount}`);
+  console.log(`Agent transcripts scanned: ${transcriptCount}`);
+  console.log(`Call recordings scanned: ${callRecordingCount}`);
   console.log(`Text turns extracted: ${allTurns.length}`);
   console.log(`Top themes (>=2 hits):`);
   for (const [t, c] of sortedThemes.slice(0, 25)) console.log(`  ${c}\t${t}`);
@@ -201,6 +280,9 @@ if (auditOnly) {
 }
 
 // --- Candidate ideas (channel-tagged, Content Lab format) ----------------
+// buckets.mike is already ordered call-first (real Mike quotes from meetings
+// before agent-transcript mentions), so the first N are the strongest
+// thought-leadership raw material.
 const candidateIdeas = [];
 let sIdx = 5; // S1–S4 already exist in Content Lab; start at S5
 for (const s of buckets.variableReduction.slice(0, 6)) {
@@ -209,7 +291,7 @@ for (const s of buckets.variableReduction.slice(0, 6)) {
     channel: 'Social',
     title: 'The Shorter List — variable-reduction moment',
     body: truncate(s.text, 200),
-    source: `transcript:${s.from}`,
+    source: `${s.sourceType}:${s.from}`,
     status: 'Idea',
   });
 }
@@ -219,7 +301,7 @@ for (const s of buckets.caseStudy.slice(0, 4)) {
     channel: 'Social',
     title: 'Case-study snippet candidate',
     body: truncate(s.text, 200),
-    source: `transcript:${s.from}`,
+    source: `${s.sourceType}:${s.from}`,
     status: 'Idea',
   });
 }
@@ -229,19 +311,29 @@ for (const s of buckets.mike.slice(0, 6)) {
     channel: 'Social',
     title: 'Thought leadership — Mike on record',
     body: truncate(s.text, 200),
-    source: `transcript:${s.from}`,
+    source: `${s.sourceType}:${s.from}`,
     status: 'Needs Mike sign-off',
   });
 }
 
 // --- Markdown report -----------------------------------------------------
 const md = [];
-md.push(`# Mined insights — agent transcripts`);
+md.push(`# Mined insights — transcripts & call recordings`);
 md.push('');
-md.push(`Scanned **${transcriptCount}** transcripts from \`${path.relative(os.homedir(), transcriptsDir)}\`, extracted **${allTurns.length}** text turns. This is a raw input for the Content Lab — review with Jane, then curate the keepers into the source log (\`SRC-NN\`) and ideas backlog (\`S/B/N\` ids).`);
+md.push(`Scanned **${transcriptCount}** agent transcripts from \`${path.relative(os.homedir(), transcriptsDir)}\` and **${callRecordingCount}** call recordings from \`${path.relative(os.homedir(), callRecordingsDir)}\`, extracted **${allTurns.length}** text turns. This is a raw input for the Content Lab — review with Jane, then curate the keepers into the source log (\`SRC-NN\`) and ideas backlog (\`S/B/N\` ids).`);
 md.push('');
-md.push(`Generated by \`scripts/mine-transcripts.mjs\`. Re-run any time; overwrite-safe.`);
+md.push(`Snippets are tagged by source: **[agent]** = Cursor agent transcript, **[call]** = OneDrive meeting recording. Call-recording snippets are the richer raw material (real meeting audio), especially for Mike thought leadership.`);
 md.push('');
+md.push(`Generated by \`scripts/mine-transcripts.mjs\`. Re-run any time; overwrite-safe. Add \`--no-call-recordings\` to skip OneDrive.`);
+md.push('');
+if (callRecordingFiles.length) {
+  md.push(`## Call recording sources (${callRecordingCount})`);
+  md.push('');
+  md.push(`Meeting transcripts read from OneDrive — \`Marketing - Documents/Call Recordings\`.`);
+  md.push('');
+  for (const name of callRecordingFiles) md.push(`- ${name}`);
+  md.push('');
+}
 md.push(`## Recurring themes (mention count)`);
 md.push('');
 md.push('| Term | Hits |');
@@ -253,7 +345,7 @@ md.push('');
 md.push(`Snippets that mention Mike or quote him. These are the only safe raw material for first-person thought-leadership posts — and every one still needs Mike's direct sign-off before it ships.`);
 md.push('');
 for (const s of buckets.mike) {
-  md.push(`- **[${s.from}]** ${s.text}`);
+  md.push(`- **[${s.sourceType}]** *${s.from}* — ${s.text}`);
 }
 md.push('');
 md.push(`## Variable-reduction moments`);
@@ -261,7 +353,7 @@ md.push('');
 md.push(`The strongest raw material for the weekly series candidate B ("The Shorter List"). Each is a place where the variable-reduction principle already showed up in conversation.`);
 md.push('');
 for (const s of buckets.variableReduction) {
-  md.push(`- **[${s.from}]** ${s.text}`);
+  md.push(`- **[${s.sourceType}]** *${s.from}* — ${s.text}`);
 }
 md.push('');
 md.push(`## Field & case-study moments`);
@@ -271,13 +363,13 @@ md.push('');
 md.push(`### Field / on-site`);
 md.push('');
 for (const s of buckets.field.slice(0, 15)) {
-  md.push(`- **[${s.from}]** ${s.text}`);
+  md.push(`- **[${s.sourceType}]** *${s.from}* — ${s.text}`);
 }
 md.push('');
 md.push(`### Case-study named (Ameristar / Tachi / etc.)`);
 md.push('');
 for (const s of buckets.caseStudy) {
-  md.push(`- **[${s.from}]** ${s.text}`);
+  md.push(`- **[${s.sourceType}]** *${s.from}* — ${s.text}`);
 }
 md.push('');
 md.push(`## Audience & partner mentions`);
@@ -287,13 +379,13 @@ md.push('');
 md.push(`### Audience (casino / IT / Dir / VP / C-suite)`);
 md.push('');
 for (const s of buckets.audience.slice(0, 10)) {
-  md.push(`- **[${s.from}]** ${s.text}`);
+  md.push(`- **[${s.sourceType}]** *${s.from}* — ${s.text}`);
 }
 md.push('');
 md.push(`### Partner / integration (Q-SYS / QSC / backend)`);
 md.push('');
 for (const s of buckets.partner.slice(0, 10)) {
-  md.push(`- **[${s.from}]** ${s.text}`);
+  md.push(`- **[${s.sourceType}]** *${s.from}* — ${s.text}`);
 }
 md.push('');
 md.push(`## Candidate ideas (drop into Content Lab backlog)`);
@@ -316,9 +408,9 @@ fs.mkdirSync(outDir, { recursive: true });
 fs.writeFileSync(path.join(outDir, 'mined-insights.md'), md.join('\n') + '\n');
 fs.writeFileSync(
   path.join(outDir, 'mined-insights.json'),
-  JSON.stringify({ generatedAt: new Date().toISOString(), transcriptCount, turnCount: allTurns.length, themes: sortedThemes, candidateIdeas }, null, 2) + '\n'
+  JSON.stringify({ generatedAt: new Date().toISOString(), transcriptCount, callRecordingCount, callRecordingFiles, turnCount: allTurns.length, themes: sortedThemes, candidateIdeas }, null, 2) + '\n'
 );
 
-console.log(`Mined ${transcriptCount} transcripts, ${allTurns.length} turns.`);
+console.log(`Mined ${transcriptCount} agent transcripts + ${callRecordingCount} call recordings, ${allTurns.length} turns.`);
 console.log(`Report: ${path.relative(root, path.join(outDir, 'mined-insights.md'))}`);
 console.log(`JSON:  ${path.relative(root, path.join(outDir, 'mined-insights.json'))}`);
