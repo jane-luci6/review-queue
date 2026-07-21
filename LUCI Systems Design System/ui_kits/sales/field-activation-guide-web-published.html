@@ -7,17 +7,32 @@
 <title>LUCI — Field Activation Guide</title>
 <link rel="stylesheet" href="../../assets/fonts/luci-brand-fonts.css">
 <style id="fag-web-css">
-    /* published-variant: learn-more pill (matches hub "Jump to your team" CTA) + section help line */
-    .fag-learn{margin-top:20px;padding-top:16px;border-top:1px solid rgba(104,227,190,.18);}
-    .fag-learn a{display:inline-flex;align-items:center;gap:10px;padding:13px 26px;background:linear-gradient(100deg,var(--gold-deep) 0%,var(--mint) 78%);color:var(--navy-deep);border-radius:9999px;font-family:var(--font-head);font-weight:700;font-size:13px;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;transition:transform .18s ease-out,box-shadow .18s ease-out;}
-    .fag-learn a:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(206,176,110,.32);}
-    .fag-learn a svg{width:16px;height:16px;}
-    .fag-learn__article{display:block;margin-top:10px;font-family:'Inter',sans-serif;font-size:13px;color:var(--ink-mute,#7d8e97);line-height:1.5;}
-    .fag-sec__help{margin:28px 0 0;padding:14px 0 0;border-top:1px solid rgba(104,227,190,.14);font-family:'Inter',sans-serif;font-size:14px;color:var(--ink-mute,#7d8e97);line-height:1.6;}
-    .fag-sec__help strong{color:var(--ink-strong,#0A161C);font-weight:600;}
-    .fag-sec__help a{color:var(--mint,#68E3BE);font-weight:600;text-decoration:none;}
-    .fag-sec__help a:hover{text-decoration:underline;}
-    .fag-sec--light .fag-sec__help strong{color:var(--ink-strong,#1A1A1A);}
+    /* published-variant: per-section LUCI features highlight */
+    .fag-feats{margin-top:32px;padding:20px 0 0;border-top:1px solid rgba(104,227,190,.18);}
+    .fag-feats__label{font-family:var(--font-head);font-weight:700;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--mint);margin:0 0 8px;}
+    .fag-feats__intro,.fag-feats__note{font-family:var(--font-body);font-size:14px;line-height:1.6;color:rgba(235,245,248,0.72);margin:0 0 16px;max-width:62ch;}
+    .fag-feats__list{list-style:none;margin:0;padding:0;}
+    .fag-feat{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;padding:12px 0;border-bottom:1px solid rgba(104,227,190,.10);}
+    .fag-feat:last-child{border-bottom:0;}
+    .fag-feat__name{font-family:var(--font-head);font-weight:700;font-size:15px;color:var(--off-white);letter-spacing:-.01em;flex:0 0 auto;}
+    .fag-feat__link{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-head);font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--mint);text-decoration:none;margin-left:auto;white-space:nowrap;}
+    .fag-feat__link:hover{text-decoration:underline;}
+    .fag-feat__link svg{width:13px;height:13px;}
+    .fag-feat__article{flex:0 0 100%;font-family:var(--font-body);font-size:13px;color:rgba(235,245,248,0.60);line-height:1.5;}
+    .fag-feats__help{margin:18px 0 0;font-family:var(--font-body);font-size:14px;color:rgba(235,245,248,0.72);line-height:1.6;}
+    .fag-feats__help strong{color:var(--off-white);font-weight:600;}
+    .fag-feats__help a{color:var(--mint);font-weight:600;text-decoration:none;}
+    .fag-feats__help a:hover{text-decoration:underline;}
+    .fag-sec--light .fag-feats{border-top-color:var(--rule-light);}
+    .fag-sec--light .fag-feats__label{color:var(--accent-light);}
+    .fag-sec--light .fag-feats__intro,.fag-sec--light .fag-feats__note{color:var(--ink-muted);}
+    .fag-sec--light .fag-feat{border-bottom-color:var(--rule-light);}
+    .fag-sec--light .fag-feat__name{color:var(--ink-strong);}
+    .fag-sec--light .fag-feat__link{color:var(--accent-light);}
+    .fag-sec--light .fag-feat__article{color:var(--ink-muted);}
+    .fag-sec--light .fag-feats__help{color:var(--ink-muted);}
+    .fag-sec--light .fag-feats__help strong{color:var(--ink-strong);}
+    .fag-sec--light .fag-feats__help a{color:var(--accent-light);}
 
   :root {
     --navy-deep: #0A161C; --navy: #10232D; --navy-mid: #1B2F3A; --navy-muted: #5A7480;
@@ -211,8 +226,7 @@
         <li>No ticket, no call, no waiting on another team&rsquo;s queue</li>
         <li>Every screen stays current &mdash; none stranded on yesterday&rsquo;s message</li>
       </ul>
-            <div class="fag-learn"><a href="https://lucisystems.atlassian.net/plugins/servlet/servicedesk/customer/confluence/shim/spaces/KB/pages/58949650/Video+Control" target="_blank" rel="noopener"><span>Learn more</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></a><span class="fag-learn__article">Video Control (User Guide) — Pick & Poke: assign a source to multiple/all displays</span></div>
-
+      
     </div>
 
     <!-- UC02 -->
@@ -224,8 +238,7 @@
         <li>Reach guests anywhere on the floor, not just the screens by the restaurants</li>
         <li>Lift on-property spend in the same move</li>
       </ul>
-            <div class="fag-learn"><a href="https://lucisystems.atlassian.net/plugins/servicedesk/customer/confluence/shim/spaces/KB/pages/73269267/Event+Scheduler+-+Create+Edit+Delete" target="_blank" rel="noopener"><span>Learn more</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></a><span class="fag-learn__article">Event Scheduler - Create, Edit & Delete (Admin Guide)</span></div>
-
+      
     </div>
 
     <!-- UC03 -->
@@ -237,8 +250,7 @@
         <li>Daypart each zone on its own schedule &mdash; the right ad at the right moment in each space</li>
         <li>Set the tone per zone, lighting included, so the room matches the message</li>
       </ul>
-            <div class="fag-learn"><a href="https://lucisystems.atlassian.net/plugins/servicedesk/customer/confluence/shim/spaces/KB/pages/182550547/Create+a+Saved+Map+State" target="_blank" rel="noopener"><span>Learn more</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></a><span class="fag-learn__article">Create a Saved Map State (User Guide)</span></div>
-
+      
     </div>
 
     <!-- UC04 -->
@@ -250,8 +262,7 @@
         <li>Put historically slow windows to work instead of waiting them out</li>
         <li>Return the floor to normal automatically, with no stale content left running</li>
       </ul>
-            <div class="fag-learn"><a href="https://lucisystems.atlassian.net/plugins/servicedesk/customer/confluence/shim/spaces/KB/pages/73564168/Preset+Events+-+Create+Edit+Delete" target="_blank" rel="noopener"><span>Learn more</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></a><span class="fag-learn__article">Preset Events - Create, Edit & Delete (Admin Guide)</span></div>
-
+      
     </div>
 
     <aside class="fag-spot">
@@ -259,9 +270,17 @@
       <p class="fag-spot__text">The floor is now your largest marketing channel.       <em>Run it like one.</em></p>
     </aside>
 
-      <p class="fag-sec__help"><strong>Need a hand?</strong> Your FDE can walk you through any of this &mdash; or <a href="https://lucisystems.atlassian.net/servicedesk/customer/portals" target="_blank" rel="noopener">browse the support portal</a> for the step-by-step guides.</p>
-
-  </section>
+      <div class="fag-feats">
+      <p class="fag-feats__label">LUCI features in this section</p>
+      <p class="fag-feats__intro">These use cases rely on a few capabilities &mdash; here&rsquo;s where to learn each one.</p>
+      <ul class="fag-feats__list">
+        <li class="fag-feat"><span class="fag-feat__name">Video Control</span><a class="fag-feat__link" href="https://lucisystems.atlassian.net/plugins/servlet/servicedesk/customer/confluence/shim/spaces/KB/pages/58949650/Video+Control" target="_blank" rel="noopener">How-to guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></a><span class="fag-feat__article">Video Control (User Guide) — Pick &amp; Poke: assign a source to multiple/all displays</span></li>
+        <li class="fag-feat"><span class="fag-feat__name">Event Scheduler</span><a class="fag-feat__link" href="https://lucisystems.atlassian.net/plugins/servicedesk/customer/confluence/shim/spaces/KB/pages/73269267/Event+Scheduler+-+Create+Edit+Delete" target="_blank" rel="noopener">How-to guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></a><span class="fag-feat__article">Event Scheduler - Create, Edit &amp; Delete (Admin Guide)</span></li>
+        <li class="fag-feat"><span class="fag-feat__name">Preset Events</span><a class="fag-feat__link" href="https://lucisystems.atlassian.net/plugins/servicedesk/customer/confluence/shim/spaces/KB/pages/73564168/Preset+Events+-+Create+Edit+Delete" target="_blank" rel="noopener">How-to guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></a><span class="fag-feat__article">Preset Events - Create, Edit &amp; Delete (Admin Guide)</span></li>
+      </ul>
+      <p class="fag-feats__help"><strong>Need a hand?</strong> Your FDE can walk you through any of this &mdash; or <a href="https://lucisystems.atlassian.net/servicedesk/customer/portals" target="_blank" rel="noopener">browse the support portal</a> for the step-by-step guides.</p>
+    </div>
+</section>
 
   <!-- ============== GAMING & OPERATIONS ============== -->
   <section class="fag-sec fag-sec--dark" id="gaming">
@@ -280,8 +299,7 @@
         <li>Match energy to the crowd you actually have at each hour</li>
         <li>Give every shift the same intended sound</li>
       </ul>
-            <div class="fag-learn"><a href="https://lucisystems.atlassian.net/plugins/servicedesk/customer/confluence/shim/spaces/KB/pages/72974345/Audio+Control" target="_blank" rel="noopener"><span>Learn more</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></a><span class="fag-learn__article">Audio Control (User Guide)</span></div>
-
+      
     </div>
 
     <!-- UC02 -->
@@ -293,8 +311,7 @@
         <li>Create a sense of action that keeps nearby players engaged</li>
         <li>Deliver it every time, without any manual effort</li>
       </ul>
-            <div class="fag-learn"><a href="https://lucisystems.atlassian.net/plugins/servicedesk/customer/confluence/shim/spaces/KB/pages/73039875/How+to+Use+Presets" target="_blank" rel="noopener"><span>Learn more</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></a><span class="fag-learn__article">How to Use Presets (User Guide)</span></div>
-
+      
     </div>
 
     <!-- UC03 -->
@@ -306,8 +323,7 @@
         <li>Run premium spaces consistently no matter who&rsquo;s working</li>
         <li>Let predictable zones open and close themselves on schedule</li>
       </ul>
-            <div class="fag-learn"><a href="https://lucisystems.atlassian.net/plugins/servicedesk/customer/confluence/shim/spaces/KB/pages/182386756/Create+a+Saved+Map+State+Administrator" target="_blank" rel="noopener"><span>Learn more</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></a><span class="fag-learn__article">Create a Saved Map State: Administrator (Admin Guide)</span></div>
-
+      
     </div>
 
     <!-- UC04 -->
@@ -319,8 +335,7 @@
         <li>Make the floor itself part of the launch, not just signage</li>
         <li>Hand the spotlight back automatically when the window closes</li>
       </ul>
-            <div class="fag-learn"><a href="https://lucisystems.atlassian.net/plugins/servicedesk/customer/confluence/shim/spaces/KB/pages/58949650/Video+Control" target="_blank" rel="noopener"><span>Learn more</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></a><span class="fag-learn__article">Video Control (User Guide)</span></div>
-
+      
     </div>
 
     <aside class="fag-spot">
@@ -328,9 +343,18 @@
       <p class="fag-spot__text">The energy on your floor is no longer luck.       <em>It&rsquo;s a setting.</em></p>
     </aside>
 
-      <p class="fag-sec__help"><strong>Need a hand?</strong> Your FDE can walk you through any of this &mdash; or <a href="https://lucisystems.atlassian.net/servicedesk/customer/portals" target="_blank" rel="noopener">browse the support portal</a> for the step-by-step guides.</p>
-
-  </section>
+      <div class="fag-feats">
+      <p class="fag-feats__label">LUCI features in this section</p>
+      <p class="fag-feats__intro">These use cases rely on a few capabilities &mdash; here&rsquo;s where to learn each one.</p>
+      <ul class="fag-feats__list">
+        <li class="fag-feat"><span class="fag-feat__name">Audio Control</span><a class="fag-feat__link" href="https://lucisystems.atlassian.net/plugins/servicedesk/customer/confluence/shim/spaces/KB/pages/72974345/Audio+Control" target="_blank" rel="noopener">How-to guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></a><span class="fag-feat__article">Audio Control (User Guide)</span></li>
+        <li class="fag-feat"><span class="fag-feat__name">Presets</span><a class="fag-feat__link" href="https://lucisystems.atlassian.net/plugins/servicedesk/customer/confluence/shim/spaces/KB/pages/73039875/How+to+Use+Presets" target="_blank" rel="noopener">How-to guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></a><span class="fag-feat__article">How to Use Presets (User Guide)</span></li>
+        <li class="fag-feat"><span class="fag-feat__name">Saved Map States</span><a class="fag-feat__link" href="https://lucisystems.atlassian.net/plugins/servicedesk/customer/confluence/shim/spaces/KB/pages/182386756/Create+a+Saved+Map+State+Administrator" target="_blank" rel="noopener">How-to guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></a><span class="fag-feat__article">Create a Saved Map State: Administrator (Admin Guide)</span></li>
+        <li class="fag-feat"><span class="fag-feat__name">Video Control</span><a class="fag-feat__link" href="https://lucisystems.atlassian.net/plugins/servicedesk/customer/confluence/shim/spaces/KB/pages/58949650/Video+Control" target="_blank" rel="noopener">How-to guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></a><span class="fag-feat__article">Video Control (User Guide)</span></li>
+      </ul>
+      <p class="fag-feats__help"><strong>Need a hand?</strong> Your FDE can walk you through any of this &mdash; or <a href="https://lucisystems.atlassian.net/servicedesk/customer/portals" target="_blank" rel="noopener">browse the support portal</a> for the step-by-step guides.</p>
+    </div>
+</section>
 
   <!-- ============== A/V & FACILITIES ============== -->
   <section class="fag-sec fag-sec--light" id="av">
@@ -349,8 +373,7 @@
         <li>Eliminate the drift that creeps in shift to shift</li>
         <li>Change one thing without disturbing anything else</li>
       </ul>
-            <div class="fag-learn"><a href="https://lucisystems.atlassian.net/plugins/servicedesk/customer/confluence/shim/spaces/KB/pages/73269267/Event+Scheduler+-+Create+Edit+Delete" target="_blank" rel="noopener"><span>Learn more</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></a><span class="fag-learn__article">Event Scheduler - Create, Edit & Delete (Admin Guide)</span></div>
-
+      
     </div>
 
     <!-- UC02 -->
@@ -362,8 +385,7 @@
         <li>Know whether a call really needs an on-site trip before anyone makes it</li>
         <li>Keep an automatic record without a separate documentation step</li>
       </ul>
-            <div class="fag-learn"><a href="https://lucisystems.atlassian.net/plugins/servicedesk/customer/confluence/shim/spaces/KB/pages/58720271/Login+Navigation" target="_blank" rel="noopener"><span>Learn more</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></a><span class="fag-learn__article">Login & Navigation (User Guide) — remote access; no dedicated remote-troubleshooting article exists</span></div>
-
+      
     </div>
 
     <!-- UC03 -->
@@ -375,8 +397,7 @@
         <li>Schedule the fix for a quiet window instead of scrambling at peak</li>
         <li>Walk in already knowing what needs attention</li>
       </ul>
-            <div class="fag-learn"><a href="https://lucisystems.atlassian.net/servicedesk/customer/portals" target="_blank" rel="noopener"><span>Browse the support portal</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></a></div>
-
+      
     </div>
 
     <!-- UC04 -->
@@ -388,8 +409,7 @@
         <li>Hand activation to anyone &mdash; it&rsquo;s one tap, not a checklist</li>
         <li>Guarantee the floor returns to normal the moment it&rsquo;s over</li>
       </ul>
-            <div class="fag-learn"><a href="https://lucisystems.atlassian.net/plugins/servicedesk/customer/confluence/shim/spaces/KB/pages/73039875/How+to+Presets" target="_blank" rel="noopener"><span>Learn more</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></a><span class="fag-learn__article">How to Use Presets (User Guide) — preset with revert timer</span></div>
-
+      
     </div>
 
     <aside class="fag-spot">
@@ -397,9 +417,17 @@
       <p class="fag-spot__text">The best service call is       <em>the one you can close quickly because you can manage it from anywhere.</em></p>
     </aside>
 
-      <p class="fag-sec__help"><strong>Need a hand?</strong> Your FDE can walk you through any of this &mdash; or <a href="https://lucisystems.atlassian.net/servicedesk/customer/portals" target="_blank" rel="noopener">browse the support portal</a> for the step-by-step guides.</p>
-
-  </section>
+      <div class="fag-feats">
+      <p class="fag-feats__label">LUCI features in this section</p>
+      <p class="fag-feats__intro">These use cases rely on a few capabilities &mdash; here&rsquo;s where to learn each one.</p>
+      <ul class="fag-feats__list">
+        <li class="fag-feat"><span class="fag-feat__name">Event Scheduler</span><a class="fag-feat__link" href="https://lucisystems.atlassian.net/plugins/servicedesk/customer/confluence/shim/spaces/KB/pages/73269267/Event+Scheduler+-+Create+Edit+Delete" target="_blank" rel="noopener">How-to guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></a><span class="fag-feat__article">Event Scheduler - Create, Edit &amp; Delete (Admin Guide)</span></li>
+        <li class="fag-feat"><span class="fag-feat__name">Login & Navigation</span><a class="fag-feat__link" href="https://lucisystems.atlassian.net/plugins/servicedesk/customer/confluence/shim/spaces/KB/pages/58720271/Login+Navigation" target="_blank" rel="noopener">How-to guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></a><span class="fag-feat__article">Login &amp; Navigation (User Guide) — remote access; no dedicated remote-troubleshooting article exists</span></li>
+        <li class="fag-feat"><span class="fag-feat__name">Presets</span><a class="fag-feat__link" href="https://lucisystems.atlassian.net/plugins/servicedesk/customer/confluence/shim/spaces/KB/pages/73039875/How+to+Presets" target="_blank" rel="noopener">How-to guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></a><span class="fag-feat__article">How to Use Presets (User Guide) — preset with revert timer</span></li>
+      </ul>
+      <p class="fag-feats__help"><strong>Need a hand?</strong> Your FDE can walk you through any of this &mdash; or <a href="https://lucisystems.atlassian.net/servicedesk/customer/portals" target="_blank" rel="noopener">browse the support portal</a> for the step-by-step guides.</p>
+    </div>
+</section>
 
   <!-- ============== IT & TECHNOLOGY ============== -->
   <section class="fag-sec fag-sec--dark" id="it">
@@ -418,8 +446,7 @@
         <li>One click-path covers video, audio, and lighting</li>
         <li>Every endpoint you add is visible, tagged, and managed like the rest of the network</li>
       </ul>
-            <div class="fag-learn"><a href="https://lucisystems.atlassian.net/plugins/servicedesk/customer/confluence/shim/spaces/KB/pages/691077121/Endpoint+Manager+for+Adding+Endpoints+to+the+Map" target="_blank" rel="noopener"><span>Learn more</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></a><span class="fag-learn__article">Endpoint Manager for Adding Endpoints to the Map (Admin Guide)</span></div>
-
+      
     </div>
 
     <!-- UC02 -->
@@ -431,8 +458,7 @@
         <li>Every config and backup is documented and reachable</li>
         <li>File issues through the support site when you do need help</li>
       </ul>
-            <div class="fag-learn"><a href="https://lucisystems.atlassian.net/servicedesk/customer/portals" target="_blank" rel="noopener"><span>Browse the support portal</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></a></div>
-
+      
     </div>
 
     <!-- UC03 -->
@@ -444,8 +470,7 @@
         <li>Reduce the risk of an accidental change to the wrong zone</li>
         <li>Adjust permissions in one place as roles change</li>
       </ul>
-            <div class="fag-learn"><a href="https://lucisystems.atlassian.net/plugins/servicedesk/customer/confluence/shim/spaces/KB/pages/139427856/User+Permissions" target="_blank" rel="noopener"><span>Learn more</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></a><span class="fag-learn__article">User Permissions (Admin Guide)</span></div>
-
+      
     </div>
 
     <!-- UC04 -->
@@ -457,8 +482,7 @@
         <li>Lock each kiosk to one venue, zone, and source list</li>
         <li>No map, no admin surface &mdash; just a tap list</li>
       </ul>
-            <div class="fag-learn"><a href="https://lucisystems.atlassian.net/servicedesk/customer/portals" target="_blank" rel="noopener"><span>Browse the support portal</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></a></div>
-
+      
     </div>
 
     <aside class="fag-spot">
@@ -466,9 +490,16 @@
       <p class="fag-spot__text">A/V stops being a vendor&rsquo;s black box and becomes endpoints on your network &mdash;       <em>monitored, permissioned, and logged like every other system you run.</em></p>
     </aside>
 
-      <p class="fag-sec__help"><strong>Need a hand?</strong> Your FDE can walk you through any of this &mdash; or <a href="https://lucisystems.atlassian.net/servicedesk/customer/portals" target="_blank" rel="noopener">browse the support portal</a> for the step-by-step guides.</p>
-
-  </section>
+      <div class="fag-feats">
+      <p class="fag-feats__label">LUCI features in this section</p>
+      <p class="fag-feats__intro">These use cases rely on a few capabilities &mdash; here&rsquo;s where to learn each one.</p>
+      <ul class="fag-feats__list">
+        <li class="fag-feat"><span class="fag-feat__name">Endpoint Manager</span><a class="fag-feat__link" href="https://lucisystems.atlassian.net/plugins/servicedesk/customer/confluence/shim/spaces/KB/pages/691077121/Endpoint+Manager+for+Adding+Endpoints+to+the+Map" target="_blank" rel="noopener">How-to guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></a><span class="fag-feat__article">Endpoint Manager for Adding Endpoints to the Map (Admin Guide)</span></li>
+        <li class="fag-feat"><span class="fag-feat__name">User Permissions</span><a class="fag-feat__link" href="https://lucisystems.atlassian.net/plugins/servicedesk/customer/confluence/shim/spaces/KB/pages/139427856/User+Permissions" target="_blank" rel="noopener">How-to guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></a><span class="fag-feat__article">User Permissions (Admin Guide)</span></li>
+      </ul>
+      <p class="fag-feats__help"><strong>Need a hand?</strong> Your FDE can walk you through any of this &mdash; or <a href="https://lucisystems.atlassian.net/servicedesk/customer/portals" target="_blank" rel="noopener">browse the support portal</a> for the step-by-step guides.</p>
+    </div>
+</section>
 
   <!-- ============== FINANCE (overview only — no steps) ============== -->
   <section class="fag-sec fag-sec--light" id="finance">
@@ -527,9 +558,11 @@
       <p class="fag-spot__text">For the first time, A/V is a number       <em>you can manage and defend.</em></p>
     </aside>
 
-      <p class="fag-sec__help"><strong>Need a hand?</strong> Your FDE can walk you through any of this &mdash; or <a href="https://lucisystems.atlassian.net/servicedesk/customer/portals" target="_blank" rel="noopener">browse the support portal</a> for the step-by-step guides.</p>
-
-  </section>
+      <div class="fag-feats">
+      <p class="fag-feats__note">These are business-process moves, not software steps. Your FDE can help you build each case &mdash; or <a href="https://lucisystems.atlassian.net/servicedesk/customer/portals" target="_blank" rel="noopener">browse the support portal</a> for the platform guides.</p>
+      <p class="fag-feats__help"><strong>Need a hand?</strong> Your FDE can walk you through any of this &mdash; or <a href="https://lucisystems.atlassian.net/servicedesk/customer/portals" target="_blank" rel="noopener">browse the support portal</a> for the step-by-step guides.</p>
+    </div>
+</section>
 
   <!-- ============== GENERAL MANAGEMENT ============== -->
   <section class="fag-sec fag-sec--dark" id="gm">
@@ -548,8 +581,7 @@
         <li>Verify the floor is running the way it&rsquo;s supposed to, live</li>
         <li>Build your own fluency instead of relying on one operator</li>
       </ul>
-            <div class="fag-learn"><a href="https://lucisystems.atlassian.net/plugins/servicedesk/customer/confluence/shim/spaces/KB/pages/58720271/Login+Navigation" target="_blank" rel="noopener"><span>Learn more</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></a><span class="fag-learn__article">Login & Navigation (User Guide) — accessing LUCI from any device</span></div>
-
+      
     </div>
 
     <!-- UC02 -->
@@ -561,8 +593,7 @@
         <li>Erase last night&rsquo;s stray changes automatically</li>
         <li>Free your team from a manual open-of-day checklist</li>
       </ul>
-            <div class="fag-learn"><a href="https://lucisystems.atlassian.net/plugins/servicedesk/customer/confluence/shim/spaces/KB/pages/73564168/Preset+Events+-+Create+Edit+Delete" target="_blank" rel="noopener"><span>Learn more</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></a><span class="fag-learn__article">Preset Events - Create, Edit & Delete (Admin Guide) — scheduled reset preset</span></div>
-
+      
     </div>
 
     <!-- UC03 -->
@@ -585,8 +616,7 @@
         <li>Spot the team that&rsquo;s stalled and unblock them</li>
         <li>Make sure value is compounding across every function</li>
       </ul>
-            <div class="fag-learn"><a href="https://lucisystems.atlassian.net/plugins/servicedesk/customer/confluence/shim/spaces/KB/pages/58720271/Login+Navigation" target="_blank" rel="noopener"><span>Learn more</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></a><span class="fag-learn__article">Login & Navigation (User Guide) — onboarding teams to the interface; weak match</span></div>
-
+      
     </div>
 
     <aside class="fag-spot">
@@ -594,9 +624,16 @@
       <p class="fag-spot__text">The whole property is now one strategy you direct. <em>Run it on purpose.</em></p>
     </aside>
 
-      <p class="fag-sec__help"><strong>Need a hand?</strong> Your FDE can walk you through any of this &mdash; or <a href="https://lucisystems.atlassian.net/servicedesk/customer/portals" target="_blank" rel="noopener">browse the support portal</a> for the step-by-step guides.</p>
-
-  </section>
+      <div class="fag-feats">
+      <p class="fag-feats__label">LUCI features in this section</p>
+      <p class="fag-feats__intro">These use cases rely on a few capabilities &mdash; here&rsquo;s where to learn each one.</p>
+      <ul class="fag-feats__list">
+        <li class="fag-feat"><span class="fag-feat__name">Login & Navigation</span><a class="fag-feat__link" href="https://lucisystems.atlassian.net/plugins/servicedesk/customer/confluence/shim/spaces/KB/pages/58720271/Login+Navigation" target="_blank" rel="noopener">How-to guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></a><span class="fag-feat__article">Login &amp; Navigation (User Guide) — accessing LUCI from any device</span></li>
+        <li class="fag-feat"><span class="fag-feat__name">Preset Events</span><a class="fag-feat__link" href="https://lucisystems.atlassian.net/plugins/servicedesk/customer/confluence/shim/spaces/KB/pages/73564168/Preset+Events+-+Create+Edit+Delete" target="_blank" rel="noopener">How-to guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></a><span class="fag-feat__article">Preset Events - Create, Edit &amp; Delete (Admin Guide) — scheduled reset preset</span></li>
+      </ul>
+      <p class="fag-feats__help"><strong>Need a hand?</strong> Your FDE can walk you through any of this &mdash; or <a href="https://lucisystems.atlassian.net/servicedesk/customer/portals" target="_blank" rel="noopener">browse the support portal</a> for the step-by-step guides.</p>
+    </div>
+</section>
 
   <!-- ============== CONCLUSION ============== -->
   <section class="fag-sec fag-sec--dark fag-conclude" id="conclusion">

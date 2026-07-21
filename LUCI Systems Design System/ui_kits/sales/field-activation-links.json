@@ -36,5 +36,32 @@
     { "slug": "gm-morning-reset",                 "section": "General Management", "n": 2, "title": "Schedule a morning reset so the floor always wakes up looking right.", "url": "https://lucisystems.atlassian.net/plugins/servicedesk/customer/confluence/shim/spaces/KB/pages/73564168/Preset+Events+-+Create+Edit+Delete", "article": "Preset Events - Create, Edit & Delete (Admin Guide) — scheduled reset preset", "confidence": "medium" },
     { "slug": "gm-strategy-meeting",               "section": "General Management", "n": 3, "title": "Schedule a recurring guest-experience strategy meeting with the whole team.", "url": "", "article": "No matching article — organizational practice, not a software how-to", "confidence": "none" },
     { "slug": "gm-team-adoption",                  "section": "General Management", "n": 4, "title": "Make sure every team is actually using what they can.", "url": "https://lucisystems.atlassian.net/plugins/servicedesk/customer/confluence/shim/spaces/KB/pages/58720271/Login+Navigation", "article": "Login & Navigation (User Guide) — onboarding teams to the interface; weak match", "confidence": "low" }
+  ],
+  "sectionFeatures": [
+    { "section": "marketing", "features": [
+      { "feature": "Video Control",    "fromSlug": "marketing-push-message" },
+      { "feature": "Event Scheduler",  "fromSlug": "marketing-daypart-promotions" },
+      { "feature": "Preset Events",   "fromSlug": "marketing-event-campaign" }
+    ]},
+    { "section": "gaming", "features": [
+      { "feature": "Audio Control",      "fromSlug": "gaming-floor-audio" },
+      { "feature": "Presets",            "fromSlug": "gaming-jackpot-event" },
+      { "feature": "Saved Map States",  "fromSlug": "gaming-reconfigure-property" },
+      { "feature": "Video Control",     "fromSlug": "gaming-new-game-launch" }
+    ]},
+    { "section": "av", "features": [
+      { "feature": "Event Scheduler",       "fromSlug": "av-property-schedule" },
+      { "feature": "Login & Navigation",   "fromSlug": "av-service-requests" },
+      { "feature": "Presets",              "fromSlug": "av-private-event" }
+    ]},
+    { "section": "it", "features": [
+      { "feature": "Endpoint Manager",    "fromSlug": "it-add-endpoint" },
+      { "feature": "User Permissions",    "fromSlug": "it-permissions" }
+    ]},
+    { "section": "finance", "features": [] },
+    { "section": "gm", "features": [
+      { "feature": "Login & Navigation",  "fromSlug": "gm-walk-floor-ipad" },
+      { "feature": "Preset Events",       "fromSlug": "gm-morning-reset" }
+    ]}
   ]
 }
