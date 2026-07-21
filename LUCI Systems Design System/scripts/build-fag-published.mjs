@@ -44,10 +44,11 @@ function blockEnd(h, startIdx) {
 
 function learnBlock(link) {
   const ind = '      ';
+  const chev = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>';
   if (link && link.url) {
-    return `${ind}<div class="fag-learn"><a href="${link.url}" target="_blank" rel="noopener">Learn more in the support portal &rarr;</a><span class="fag-learn__article">${link.article}</span></div>\n`;
+    return `${ind}<div class="fag-learn"><a href="${link.url}" target="_blank" rel="noopener"><span>Learn more</span>${chev}</a><span class="fag-learn__article">${link.article}</span></div>\n`;
   }
-  return `${ind}<div class="fag-learn"><a href="${portal}" target="_blank" rel="noopener">Browse the support portal &rarr;</a></div>\n`;
+  return `${ind}<div class="fag-learn"><a href="${portal}" target="_blank" rel="noopener"><span>Browse the support portal</span>${chev}</a></div>\n`;
 }
 
 // 1) Replace each fag-acc accordion with a learn-more link.
@@ -106,11 +107,12 @@ out = out.replace(/\r\n/g, '\n');
 
 // 3) Inject CSS for the new classes (after the first <style> open).
 const css = `
-    /* published-variant: learn-more links + section help line */
-    .fag-learn{margin-top:18px;padding-top:14px;border-top:1px solid rgba(104,227,190,.18);}
-    .fag-learn a{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;color:var(--mint,#68E3BE);text-decoration:none;letter-spacing:.01em;}
-    .fag-learn a:hover{text-decoration:underline;}
-    .fag-learn__article{display:block;margin-top:6px;font-family:'Inter',sans-serif;font-size:13px;color:var(--ink-mute,#7d8e97);line-height:1.5;}
+    /* published-variant: learn-more pill (matches hub "Jump to your team" CTA) + section help line */
+    .fag-learn{margin-top:20px;padding-top:16px;border-top:1px solid rgba(104,227,190,.18);}
+    .fag-learn a{display:inline-flex;align-items:center;gap:10px;padding:13px 26px;background:linear-gradient(100deg,var(--gold-deep) 0%,var(--mint) 78%);color:var(--navy-deep);border-radius:9999px;font-family:var(--font-head);font-weight:700;font-size:13px;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;transition:transform .18s ease-out,box-shadow .18s ease-out;}
+    .fag-learn a:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(206,176,110,.32);}
+    .fag-learn a svg{width:16px;height:16px;}
+    .fag-learn__article{display:block;margin-top:10px;font-family:'Inter',sans-serif;font-size:13px;color:var(--ink-mute,#7d8e97);line-height:1.5;}
     .fag-sec__help{margin:28px 0 0;padding:14px 0 0;border-top:1px solid rgba(104,227,190,.14);font-family:'Inter',sans-serif;font-size:14px;color:var(--ink-mute,#7d8e97);line-height:1.6;}
     .fag-sec__help strong{color:var(--ink-strong,#0A161C);font-weight:600;}
     .fag-sec__help a{color:var(--mint,#68E3BE);font-weight:600;text-decoration:none;}
