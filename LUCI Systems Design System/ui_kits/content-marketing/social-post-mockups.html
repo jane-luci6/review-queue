@@ -33,6 +33,10 @@
     .ex-caption { font-size: 15px; line-height: 1.6; color: var(--body-ink); white-space: pre-line; max-width: 60ch; }
     .ex-media { font-size: 14px; line-height: 1.55; color: var(--navy-muted); font-style: italic; }
     .ex-media b { font-style: normal; color: var(--navy); font-weight: 600; }
+    .ex-media-fig { margin: 0; }
+    .ex-media-fig img { display: block; width: 100%; max-width: 560px; border-radius: 12px; border: 1px solid var(--rule-light); margin-bottom: 10px; }
+    .ex-media-fig figcaption { font-size: 13px; line-height: 1.5; color: var(--navy-muted); font-style: italic; max-width: 60ch; }
+    .ex-media-fig figcaption code { font-style: normal; font-size: 12px; }
     .ex-notes { font-size: 14px; line-height: 1.55; color: var(--body-ink); max-width: 60ch; }
     .ex-notes ul { margin: 4px 0 0; padding-left: 18px; }
     .ex-placeholder { padding: 40px 24px; text-align: center; background: var(--off-white); border: 1px dashed var(--rule-light); color: var(--navy-muted); font-size: 14px; margin-top: 18px; }
@@ -55,9 +59,9 @@
 
         <nav class="ex-index" aria-label="Post types">
           <div class="ex-index__row"><span class="ex-index__n">01</span><span class="ex-index__name">Control the Whole Property</span><span class="ex-index__status is-done">example ready</span></div>
-          <div class="ex-index__row"><span class="ex-index__n">02</span><span class="ex-index__name">In-progress field photo/video</span><span class="ex-index__status is-done">example ready</span></div>
-          <div class="ex-index__row"><span class="ex-index__n">03</span><span class="ex-index__name">Completed project reveal</span><span class="ex-index__status">next</span></div>
-          <div class="ex-index__row"><span class="ex-index__n">04</span><span class="ex-index__name">Before / after (anonymized)</span><span class="ex-index__status">queued</span></div>
+          <div class="ex-index__row"><span class="ex-index__n">02</span><span class="ex-index__name">Case study snippet</span><span class="ex-index__status is-done">example ready</span></div>
+          <div class="ex-index__row"><span class="ex-index__n">03</span><span class="ex-index__name">Completed project reveal</span><span class="ex-index__status is-done">example ready</span></div>
+          <div class="ex-index__row"><span class="ex-index__n">04</span><span class="ex-index__name">Before / after (anonymized)</span><span class="ex-index__status">next</span></div>
           <div class="ex-index__row"><span class="ex-index__n">05</span><span class="ex-index__name">Case study snippet</span><span class="ex-index__status">queued</span></div>
           <div class="ex-index__row"><span class="ex-index__n">06</span><span class="ex-index__name">Diagram-led (one interface)</span><span class="ex-index__status">queued</span></div>
           <div class="ex-index__row"><span class="ex-index__n">07</span><span class="ex-index__name">Thought leadership</span><span class="ex-index__status">queued</span></div>
@@ -98,32 +102,62 @@ Control the whole property. Not just the casino floor.</p>
         </section>
 
         <section class="ex-type" id="t02">
-          <h2 class="ex-type__name">02 &middot; In-progress field photo/video</h2>
-          <p class="ex-type__when">Wednesdays (when we have material) &middot; <b>live example: week of 2026-07-20</b></p>
+          <h2 class="ex-type__name">02 &middot; Case study snippet</h2>
+          <p class="ex-type__when">Wednesdays &middot; example: Ameristar Council Bluffs</p>
 
           <div class="ex-field">
             <span class="ex-field__label">Caption</span>
-            <p class="ex-caption">On site at a casino in Vegas — one of the biggest LED walls we’ve ever installed.
+            <p class="ex-caption">Three days to a future-ready property.
 
-Hundreds of panels going up, one curve at a time. When it’s done, this wall becomes just another endpoint on the property’s LUCI platform — alongside hundreds of others, all on one map.
+That’s the headline from our Ameristar Council Bluffs case study — and the story behind it is how a property modernizes A/V control without the rip-and-replace everyone fears.
 
-The detail that matters: this single screen can be spliced into 28 separately controllable zones. Twenty-eight areas of one wall, each running its own content, all from one interface.
+Every endpoint on one map. One team. One accountable system.
 
-Finished view coming once it’s live.</p>
+Full case study in the link.</p>
           </div>
           <div class="ex-field">
             <span class="ex-field__label">Media</span>
-            <p class="ex-media"><b>Field photo</b> &mdash; curved LED wall under construction, scissor lifts + crew in frame, back-of-wall LUCI control station visible in the background. File: <code>social-intake/2026-07-20/raw/vegas-led-wall-install.png</code>. Use as-is, or slight crop to tighten on the curve; blur/tighten if any dashboard text reads on export.</p>
+            <p class="ex-media"><b>Case study hero image or a canonical diagram</b> &mdash; pull from <code>ui_kits/case-studies/ameristar-council-bluffs.html</code> (print/hero asset) or a relevant diagram from <code>assets/diagrams/</code>. No field photos.</p>
           </div>
           <div class="ex-field">
             <span class="ex-field__label">Notes</span>
             <div class="ex-notes">
               <ul>
-                <li><b>No client name.</b> Property is Aliante (North Las Vegas) &mdash; public framing is &ldquo;a casino in Vegas.&rdquo; Crop/blur signage, uniforms, landmarks, dashboard text.</li>
-                <li>The <b>28-zone splice</b> is the load-bearing detail &mdash; keep it; it&rsquo;s the differentiator that lands &ldquo;one interface.&rdquo;</li>
-                <li>Work-in-progress framing required &mdash; sets up the completed reveal (type 03) once the wall is lit and Mike approves.</li>
-                <li>Hashtags: #BehindTheScenes #LED #AV #Integration</li>
-                <li>Intake notes: <code>social-intake/2026-07-20/NOTES.md</code></li>
+                <li><b>Named case study</b> (Ameristar Council Bluffs) &mdash; already published, so naming is fine. For unpublished work, keep it unnamed (the default).</li>
+                <li><b>Snippet format:</b> one hook line + the abstraction close + link to the full story. Don&rsquo;t dump the whole case study.</li>
+                <li>Closes on one interface / one map / one team.</li>
+                <li>Hashtags: #CaseStudy #AV #Integration #Hospitality</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="ex-type" id="t03">
+          <h2 class="ex-type__name">03 &middot; Completed project reveal</h2>
+          <p class="ex-type__when">Thursdays (or whenever a project goes live) &middot; <b>example: Aliante LED wall reveal &mdash; pending the wall going live</b></p>
+
+          <div class="ex-field">
+            <span class="ex-field__label">Caption</span>
+            <p class="ex-caption">The wall is live.
+
+A few weeks ago we showed you the panels going up at Aliante in Las Vegas. Here’s the finished view — the same curved LED wall, running content across 28 separately controllable zones, all on one interface.
+
+For the team at Aliante, this screen is now just another endpoint alongside hundreds of others on their LUCI platform — one map, one place to change what every zone is doing.
+
+From bare panels to a live wall, on one map.</p>
+          </div>
+          <div class="ex-field">
+            <span class="ex-field__label">Media</span>
+            <p class="ex-media"><b>Field photo of the finished, lit wall</b> &mdash; content live across the 28 zones, ideally a shot that shows the split (different content per zone). Capture once the wall is live; file under <code>social-intake/&lt;that-week&gt;/raw/</code>. Pairs with the in-progress post (#02).</p>
+          </div>
+          <div class="ex-field">
+            <span class="ex-field__label">Notes</span>
+            <div class="ex-notes">
+              <ul>
+                <li><b>Post-go-live case study</b> &mdash; only after the client&rsquo;s grand reveal is public and they&rsquo;ve OK&rsquo;d the naming. This is the safe version of a &ldquo;field&rdquo; post (progress/on-site pics are retired).</li>
+                <li>Same first-person voice (we/our); same 28-zone detail, now shown running content.</li>
+                <li>Closes on one interface / one map.</li>
+                <li>Hashtags: #LED #AV #Integration #LasVegas</li>
               </ul>
             </div>
           </div>

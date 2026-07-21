@@ -1,42 +1,34 @@
-# Social intake — Friday drop folder
+# Social intake — episode prompts
 
-Raw progress photos and videos for the **next** week's LinkedIn batch land here. Jane drops files (or pastes them into chat); Cursor inventories them, proposes cuts/treatments, edits exports, and drafts the week's posts.
+Home of the **Control the Whole Property** weekly-series Claude video prompts (`control-the-whole-property/epNN-*.md`). Jane pastes a prompt into Claude to generate each Tuesday's 30-second AI video.
 
-This is **not** a finished-asset library. Approved posts still live in `social-this-week.html` (and eventually LinkedIn). Edited exports for a given week stay under that week's folder until the week ships.
+> **Progress / on-site field photos are retired (Jul 2026).** Grand-reveal leakage + OSHA risk made them not worth it. This folder is **no longer a field-photo drop** — do not stage in-progress installation media here. See `.cursor/rules/luci-social-media.mdc` ("No progress photos").
 
 ## Folder layout
 
 ```
 social-intake/
   README.md
-  YYYY-MM-DD/           ← Monday of the posting week (preferred), or Friday of prep
-    raw/                ← Jane's originals (photos, .mov/.mp4, screen grabs)
-    exports/            ← Cursor cuts / crops / stills / simple reels (ready for the post)
-    NOTES.md            ← optional: client sensitivities, "don't show X", reveal-post plan
+  control-the-whole-property/
+    ep01-series-intro-claude-prompt.md
+    ep02-casino-floor-claude-prompt.md
+    …
 ```
 
-Example: posts going live the week of **2026-07-27** → `social-intake/2026-07-27/`.
+## Where the work happens now
 
-## How to start a Friday
-
-1. Create (or ask Cursor to create) `social-intake/<posting-week-Monday>/raw/`.
-2. Drop photos/videos into `raw/`, or attach them in chat and say **"Friday social prep"** / **"prep next week's posts"**.
-3. Cursor proposes treatments → edits into `exports/` → drafts the 3-slot batch into Social Studio / `social-this-week.html`.
-
-## If there are no new photos
-
-Say so in chat. Cursor searches Content Lab sources, mined insights, case studies, canonical diagrams, and prior approved visuals, then proposes a strategic bench for Jane to pick from.
+The production workspace is **`../social-production.html`** (idea bench → 3-week calendar → per-post production). Friday prep farms ideas from the transcript miner, recent case studies, and the newsletter — not from field photos.
 
 ## Media rules (hard)
 
-- No client names on in-the-field posts; crop/blur identifiable signage, uniforms, landmarks.
-- State work-in-progress; keep a placeholder for the reveal post.
-- Large binaries (`.mov`, `.mp4`, raw dumps) are gitignored — keep them local; only commit small exports Jane wants versioned, or leave media out of git entirely.
+- **No progress / on-site field photos.** Retired — do not stage them here.
+- **Named case study only with the client's OK**; unnamed is the default.
+- **Always A/V** — never "AV" or "A-V."
+- Large binaries (`.mov`, `.mp4`, images) are gitignored — keep them local.
 
 ## Phrasebook
 
 | You say | Agent does |
 |---|---|
-| "Friday social prep" / "prep next week's posts" | Run the Friday workflow in `.cursor/rules/luci-social-media.mdc` |
-| "cut this for LinkedIn" / "make a 15s reel" | ffmpeg (or HyperFrames if branded motion is needed) → `exports/` |
-| "no new photos this week" | Search existing content; propose Slot A/B/C options |
+| "Friday social prep" / "prep next week's posts" | Run the Friday workflow in `.cursor/rules/luci-social-media.mdc` — farm ideas, fill the calendar |
+| "generate the Ep0N video" | Hand Jane the per-episode Claude prompt from `control-the-whole-property/` |

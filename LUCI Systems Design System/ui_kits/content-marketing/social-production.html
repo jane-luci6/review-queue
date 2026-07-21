@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Social production · LUCI Social</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../review/messaging/messaging-docs.css">
+  <style>
+    body, .sp-idea__angle, .sp-idea__meta, .sp-cal__slot, .sp-prod p, .sp-rules li { font-family: 'Inter', system-ui, sans-serif; }
+    .resource__hero-title, .sp-step__n, .sp-idea__source, .sp-cal__day, .sp-cal__week-h .wk, .sp-prod h3, .sp-rules h3, .sp-h2 { font-family: 'Space Grotesk', sans-serif; }
+    .resource__logo { display: inline-flex; align-items: baseline; gap: 6px; font-weight: 700; font-size: 15px; letter-spacing: 0.04em; color: var(--off-white); text-decoration: none; }
+    .resource__logo .mark { color: var(--mint); }
+    .sp-lead { font-size: clamp(16px, 1.3vw, 18px); line-height: 1.5; color: var(--mint-dark); margin: -8px 0 24px; max-width: 62ch; }
+    .sp-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin: 8px 0 40px; }
+    .sp-step { padding: 14px 14px 16px; background: var(--off-white); border: 1px solid var(--rule-light); border-radius: 12px; }
+    .sp-step__n { font-size: 11px; font-weight: 700; color: var(--mint-dark); letter-spacing: 0.08em; }
+    .sp-step__t { font-size: 14px; font-weight: 600; color: var(--navy); margin-top: 4px; }
+    .sp-step__d { font-size: 12.5px; line-height: 1.45; color: var(--navy-muted); margin-top: 4px; }
+    @media (max-width: 900px) { .sp-steps { grid-template-columns: 1fr 1fr; } }
+    .sp-h2 { font-size: 20px; font-weight: 700; color: var(--navy); letter-spacing: -0.015em; margin: 40px 0 4px; }
+    .sp-h2-sub { font-size: 13px; color: var(--navy-muted); margin: 0 0 18px; }
+    .sp-ideas { display: grid; gap: 12px; }
+    .sp-idea { display: grid; grid-template-columns: 96px 1fr auto; gap: 10px 16px; align-items: start; padding: 14px 16px; background: #fff; border: 1px solid var(--rule-light); border-radius: 12px; cursor: pointer; transition: border-color .15s, box-shadow .15s; }
+    .sp-idea:hover { border-color: var(--mint-dark); }
+    .sp-idea.is-picked { border-color: var(--mint-dark); box-shadow: 0 0 0 2px rgba(43,158,128,.18); background: linear-gradient(155deg,#E6F5EF 0%,#F3FAF8 100%); }
+    .sp-idea__source { font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mint-dark); padding-top: 2px; }
+    .sp-idea__angle { font-size: 15px; font-weight: 600; color: var(--navy); line-height: 1.4; }
+    .sp-idea__meta { font-size: 12.5px; color: var(--navy-muted); margin-top: 4px; }
+    .sp-idea__status { font-size: 11px; font-weight: 600; color: var(--navy-muted); white-space: nowrap; padding: 4px 10px; border: 1px solid var(--rule-light); border-radius: 9999px; }
+    .sp-idea.is-picked .sp-idea__status { color: var(--mint-dark); border-color: var(--mint-dark); }
+    .sp-cal { display: grid; gap: 18px; }
+    .sp-cal__week { border: 1px solid var(--rule-light); border-radius: 12px; overflow: hidden; }
+    .sp-cal__week-h { display: flex; justify-content: space-between; align-items: baseline; padding: 12px 16px; background: var(--off-white); border-bottom: 1px solid var(--rule-light); }
+    .sp-cal__week-h .wk { font-size: 14px; font-weight: 700; color: var(--navy); }
+    .sp-cal__week-h .tag { font-size: 11px; color: var(--mint-dark); font-weight: 600; }
+    .sp-cal__grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .sp-cal__slot { padding: 14px 16px; border-right: 1px solid var(--rule-light); min-height: 120px; }
+    .sp-cal__slot:last-child { border-right: 0; }
+    .sp-cal__day { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--mint-dark); }
+    .sp-cal__date { font-size: 12px; color: var(--navy-muted); margin-bottom: 8px; }
+    .sp-cal__post { font-size: 13px; line-height: 1.45; color: var(--navy); }
+    .sp-cal__post .pt { font-weight: 600; }
+    .sp-cal__post .ps { font-size: 11px; color: var(--mint-dark); font-weight: 600; margin-top: 6px; display: inline-block; }
+    .sp-cal__open { font-size: 12.5px; color: var(--navy-muted); font-style: italic; }
+    @media (max-width: 760px) { .sp-cal__grid { grid-template-columns: 1fr; } .sp-cal__slot { border-right: 0; border-bottom: 1px solid var(--rule-light); } }
+    .sp-prod { border: 1px solid var(--rule-light); border-radius: 12px; padding: 20px 22px; background: #fff; }
+    .sp-prod h3 { font-size: 15px; font-weight: 700; color: var(--navy); margin: 0 0 14px; }
+    .sp-prod .row { display: grid; grid-template-columns: 92px 1fr; gap: 10px 18px; padding: 10px 0; border-top: 1px solid var(--rule-light); }
+    .sp-prod .lbl { font-size: 10.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy-muted); padding-top: 3px; }
+    .sp-prod .val { font-size: 14px; line-height: 1.55; color: var(--body-ink); }
+    .sp-prod .val em { font-style: italic; color: var(--navy-muted); }
+    .sp-rules { border-left: 3px solid var(--mint-dark); padding: 4px 0 4px 18px; margin-top: 36px; }
+    .sp-rules h3 { font-size: 13px; font-weight: 700; color: var(--navy); margin: 0 0 8px; }
+    .sp-rules ul { margin: 0; padding-left: 18px; }
+    .sp-rules li { font-size: 13px; line-height: 1.5; color: var(--body-ink); margin-bottom: 5px; }
+  </style>
+</head>
+<body>
+  <div class="resource">
+    <header class="resource__masthead">
+      <div class="resource__masthead-row">
+        <a class="resource__logo" href="../../index.html"><span class="mark">LUCI</span> Design Hub</a>
+        <span class="resource__badge">Social production</span>
+      </div>
+      <h1 class="resource__hero-title">Social production</h1>
+      <p class="sp-lead">The working board. Farm ideas from transcripts, case studies, and the newsletter — pick the ones to mock up, generate the image, write the caption in the LUCI voice, and load the calendar 2–3 weeks out. Jane posts directly; no approval gate.</p>
+      <p class="resource__meta">Tue / Wed / Thu cadence &middot; LinkedIn only &middot; Jul 2026</p>
+    </header>
+
+    <div class="resource__layout" style="grid-template-columns:1fr;">
+      <main class="resource__article" style="max-width:880px;">
+
+        <div class="sp-steps">
+          <div class="sp-step"><div class="sp-step__n">01</div><div class="sp-step__t">Farm ideas</div><div class="sp-step__d">Transcripts, case studies, newsletter → the bench below.</div></div>
+          <div class="sp-step"><div class="sp-step__n">02</div><div class="sp-step__t">Pick</div><div class="sp-step__d">Click a card to mark it picked for the week.</div></div>
+          <div class="sp-step"><div class="sp-step__n">03</div><div class="sp-step__t">Mock up</div><div class="sp-step__d">Drop it into a Tue/Wed/Thu slot in the calendar.</div></div>
+          <div class="sp-step"><div class="sp-step__n">04</div><div class="sp-step__t">Generate</div><div class="sp-step__d">Agent makes the image; Jane makes the video in Claude.</div></div>
+          <div class="sp-step"><div class="sp-step__n">05</div><div class="sp-step__t">Write &amp; schedule</div><div class="sp-step__d">Caption in LUCI voice; advance status; post Tue/Wed/Thu.</div></div>
+        </div>
+
+        <h2 class="sp-h2">Idea bench</h2>
+        <p class="sp-h2-sub">Click a card to mark it picked. Status: idea → picked → mocked → media ready → scheduled → posted. Say &ldquo;prep next week&rsquo;s posts&rdquo; to refresh the bench.</p>
+        <div class="sp-ideas" id="ideaBench">
+          <div class="sp-idea" data-id="i1"><div class="sp-idea__source">Transcript</div><div><div class="sp-idea__angle">The variable reduction principle — fewer things to operate.</div><div class="sp-idea__meta">Mike&rsquo;s framing &middot; thought leadership &middot; pillar 01</div></div><div class="sp-idea__status">idea</div></div>
+          <div class="sp-idea" data-id="i2"><div class="sp-idea__source">Transcript</div><div><div class="sp-idea__angle">&ldquo;One interface&rdquo; — operate every endpoint from one map.</div><div class="sp-idea__meta">Mike quote &middot; diagram-led &middot; pillar 01</div></div><div class="sp-idea__status">idea</div></div>
+          <div class="sp-idea" data-id="i3"><div class="sp-idea__source">Case study</div><div><div class="sp-idea__angle">Ameristar Council Bluffs — three days to a future-ready property.</div><div class="sp-idea__meta">Published &middot; case study snippet &middot; pillar 02</div></div><div class="sp-idea__status">idea</div></div>
+          <div class="sp-idea" data-id="i4"><div class="sp-idea__source">Newsletter</div><div><div class="sp-idea__angle">The Signal Issue 01 — pull-quote from the lead field story.</div><div class="sp-idea__meta">Reuse &middot; newsletter-derived &middot; pillar 03</div></div><div class="sp-idea__status">idea</div></div>
+          <div class="sp-idea" data-id="i5"><div class="sp-idea__source">Diagram</div><div><div class="sp-idea__angle">Consolidation ledger — how many vendors does it take to run your property?</div><div class="sp-idea__meta">Canonical diagram &middot; diagram-led &middot; pillar 01</div></div><div class="sp-idea__status">idea</div></div>
+          <div class="sp-idea" data-id="i6"><div class="sp-idea__source">Diagram</div><div><div class="sp-idea__angle">System architecture — one map, every endpoint.</div><div class="sp-idea__meta">Canonical diagram &middot; diagram-led &middot; pillar 01</div></div><div class="sp-idea__status">idea</div></div>
+          <div class="sp-idea" data-id="i7"><div class="sp-idea__source">Transcript</div><div><div class="sp-idea__angle">Orchestration, not rip-and-replace — modernize without the fear.</div><div class="sp-idea__meta">Mike framing &middot; thought leadership &middot; pillar 04</div></div><div class="sp-idea__status">idea</div></div>
+          <div class="sp-idea" data-id="i8"><div class="sp-idea__source">Newsletter</div><div><div class="sp-idea__angle">The Signal — the &ldquo;align teams&rdquo; pillar as a standalone post.</div><div class="sp-idea__meta">Reuse &middot; newsletter-derived &middot; pillar 02</div></div><div class="sp-idea__status">idea</div></div>
+        </div>
+
+        <h2 class="sp-h2">Calendar — next 3 weeks</h2>
+        <p class="sp-h2-sub">Tue / Wed / Thu. Tuesdays are the Control the Whole Property series; Wed/Thu are open for case study, diagram, newsletter, or thought leadership. Say &ldquo;prep next week&rsquo;s posts&rdquo; to fill open slots from the bench.</p>
+        <div class="sp-cal">
+
+          <div class="sp-cal__week">
+            <div class="sp-cal__week-h"><span class="wk">Week of Jul 20</span><span class="tag">this week</span></div>
+            <div class="sp-cal__grid">
+              <div class="sp-cal__slot"><div class="sp-cal__day">Tue</div><div class="sp-cal__date">Jul 21</div><div class="sp-cal__post"><span class="pt">Control the Whole Property — Ep01: Series intro</span><br><span class="ps">media: AI video (Jane, Claude)</span></div></div>
+              <div class="sp-cal__slot"><div class="sp-cal__day">Wed</div><div class="sp-cal__date">Jul 22</div><div class="sp-cal__open">open — case study / diagram</div></div>
+              <div class="sp-cal__slot"><div class="sp-cal__day">Thu</div><div class="sp-cal__date">Jul 23</div><div class="sp-cal__open">open — thought leadership</div></div>
+            </div>
+          </div>
+
+          <div class="sp-cal__week">
+            <div class="sp-cal__week-h"><span class="wk">Week of Jul 27</span><span class="tag">next week</span></div>
+            <div class="sp-cal__grid">
+              <div class="sp-cal__slot"><div class="sp-cal__day">Tue</div><div class="sp-cal__date">Jul 28</div><div class="sp-cal__post"><span class="pt">Control the Whole Property — Ep02: Casino floor</span><br><span class="ps">media: AI video (Jane, Claude)</span></div></div>
+              <div class="sp-cal__slot"><div class="sp-cal__day">Wed</div><div class="sp-cal__date">Jul 29</div><div class="sp-cal__open">open — case study / diagram</div></div>
+              <div class="sp-cal__slot"><div class="sp-cal__day">Thu</div><div class="sp-cal__date">Jul 30</div><div class="sp-cal__open">open — thought leadership / news</div></div>
+            </div>
+          </div>
+
+          <div class="sp-cal__week">
+            <div class="sp-cal__week-h"><span class="wk">Week of Aug 3</span><span class="tag">+2 weeks</span></div>
+            <div class="sp-cal__grid">
+              <div class="sp-cal__slot"><div class="sp-cal__day">Tue</div><div class="sp-cal__date">Aug 4</div><div class="sp-cal__post"><span class="pt">Control the Whole Property — Ep03: Sportsbook</span><br><span class="ps">media: AI video (Jane, Claude)</span></div></div>
+              <div class="sp-cal__slot"><div class="sp-cal__day">Wed</div><div class="sp-cal__date">Aug 5</div><div class="sp-cal__open">open — case study / diagram</div></div>
+              <div class="sp-cal__slot"><div class="sp-cal__day">Thu</div><div class="sp-cal__date">Aug 6</div><div class="sp-cal__open">open — thought leadership / news</div></div>
+            </div>
+          </div>
+
+        </div>
+
+        <h2 class="sp-h2">Per-post production</h2>
+        <p class="sp-h2-sub">The fields for one post. The agent fills this when producing a picked idea; Jane reviews and posts.</p>
+        <div class="sp-prod">
+          <h3>Template — one post</h3>
+          <div class="row"><div class="lbl">Slot</div><div class="val">Tue / Wed / Thu &middot; <em>date</em></div></div>
+          <div class="row"><div class="lbl">Type</div><div class="val"><em>weekly series / case study / diagram-led / newsletter-derived / thought leadership / news</em></div></div>
+          <div class="row"><div class="lbl">Caption</div><div class="val"><em>Written in the LUCI voice. Closes on the abstraction — one interface, one map, one team. First person (we/our) for case study &amp; thought leadership.</em></div></div>
+          <div class="row"><div class="lbl">Media</div><div class="val"><em>Image: agent generates, or pull a canonical diagram. Video: Jane generates in Claude (per-episode prompt). No field photos.</em></div></div>
+          <div class="row"><div class="lbl">Hashtags</div><div class="val"><em>#AV #Integration #Hospitality …</em></div></div>
+          <div class="row"><div class="lbl">Status</div><div class="val">idea → picked → mocked → media ready → scheduled → posted</div></div>
+        </div>
+
+        <div class="sp-rules">
+          <h3>Hard rules (always)</h3>
+          <ul>
+            <li><b>No progress / on-site field photos</b> — grand-reveal leakage + OSHA risk. Retired entirely.</li>
+            <li><b>Named case study only with client&rsquo;s OK.</b> Unnamed is the default.</li>
+            <li><b>Always A/V</b> — never &ldquo;AV&rdquo; or &ldquo;A-V.&rdquo; Never &ldquo;layer&rdquo; as a noun for LUCI.</li>
+            <li><b>Caption closes on the abstraction</b> — one interface, one map, one team. The gear is the hook, not the headline.</li>
+            <li><b>No competitor promotion; no pre-announcement partner news.</b> When in doubt, don&rsquo;t post.</li>
+          </ul>
+        </div>
+
+        <!--CAL-->
+      </main>
+    </div>
+  </div>
+  <script>
+    (function(){
+      var KEY='sp-picked-v1';
+      var picked={};
+      try{picked=JSON.parse(localStorage.getItem(KEY)||'{}');}catch(e){picked={};}
+      var bench=document.getElementById('ideaBench');
+      if(!bench)return;
+      var cards=bench.querySelectorAll('.sp-idea');
+      function render(){
+        cards.forEach(function(c){
+          var id=c.getAttribute('data-id');
+          var s=c.querySelector('.sp-idea__status');
+          if(picked[id]){c.classList.add('is-picked');s.textContent='picked';}
+          else{c.classList.remove('is-picked');s.textContent='idea';}
+        });
+      }
+      cards.forEach(function(c){
+        c.addEventListener('click',function(){
+          var id=c.getAttribute('data-id');
+          if(picked[id]){delete picked[id];}else{picked[id]=1;}
+          localStorage.setItem(KEY,JSON.stringify(picked));
+          render();
+        });
+      });
+      render();
+    })();
+  </script>
+</body>
+</html>
