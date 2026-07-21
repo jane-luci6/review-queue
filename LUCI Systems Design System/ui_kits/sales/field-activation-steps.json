@@ -119,10 +119,100 @@
       "reviewStatus": "draft"
     },
 
-    { "slug": "gaming-floor-audio",        "section": "Gaming & Operations", "n": 1, "title": "Set your floor's audio to match the room's energy, all day.", "steps": [], "reviewStatus": "not started" },
-    { "slug": "gaming-jackpot-event",      "section": "Gaming & Operations", "n": 2, "title": "Make every jackpot a floor event, automatically.", "steps": [], "reviewStatus": "not started" },
-    { "slug": "gaming-reconfigure-property","section": "Gaming & Operations", "n": 3, "title": "Reconfigure the entire property in seconds.", "steps": [], "reviewStatus": "not started" },
-    { "slug": "gaming-new-game-launch",    "section": "Gaming & Operations", "n": 4, "title": "Direct guest attention to a new game area from the moment it opens.", "steps": [], "reviewStatus": "not started" },
+    {
+      "slug": "gaming-floor-audio",
+      "section": "Gaming & Operations",
+      "n": 1,
+      "title": "Set your floor's audio to match the room's energy, all day.",
+      "prerequisites": "LUCI open on the property map with your audio zones already on it. Q-SYS is the processor LUCI drives; if you're on Biamp today, LUCI swaps in a Q-SYS processor and reuses your existing amps and sources — confirm the swap with your FDE.",
+      "setup": [],
+      "steps": [
+        "Open LUCI and go to the property map; navigate to the audio zone you want to adjust.",
+        "Select the zone's source — which channel or feed plays in that zone — from the source list.",
+        "Set the zone's volume. LUCI controls volume per venue, not inside the DSP.",
+        "To keep announcements clean, assign mics to priority layers: LUCI's three-layer ducking lets you set security high, page/valley-mic low, and so on — when the high-priority source comes on, it ducks the low.",
+        "Adjust the independent volume of each priority per zone (e.g., the restaurant gets security only).",
+        "Save the zone's settings; changes apply in real time.",
+        "To shift energy by daypart, build a preset that recalls this zone's source and volume (upbeat at night, calm in the morning) and schedule it — see Gaming UC03."
+      ],
+      "assumptions": [
+        "Audio control is per-venue source selection + volume + three-layer priority ducking, driven from LUCI (Mike demoed it). Confirm the exact UI path in the current build.",
+        "Q-SYS is the primary audio processor LUCI drives. Biamp isn't supported directly — LUCI swaps in a Q-SYS processor and reuses existing amps/sources. Confirm for properties on Biamp."
+      ],
+      "sources": ["angel"],
+      "reviewStatus": "draft — from 04-23 Angel of the Wind demo; confirm audio UI path + Biamp/Q-SYS swap with Mike/Will"
+    },
+    {
+      "slug": "gaming-jackpot-event",
+      "section": "Gaming & Operations",
+      "n": 2,
+      "title": "Make every jackpot a floor event, automatically.",
+      "prerequisites": "LUCI's scripting engine connected to your gaming system so it can listen for progressives and jackpots, and the celebration content (video + audio + lighting scene) loaded as a channel/preset. Confirm the gaming-system integration is wired for your property.",
+      "setup": [],
+      "steps": [
+        "Load the jackpot celebration video as a channel and the celebration sound as an audio WAV in the zone — see Marketing UC01 for getting content into LUCI as a channel.",
+        "Create the lighting scene for the celebration on your lighting processor (ETC Mosaic or Lutron); LUCI recalls it by pulling the scenes for that zone.",
+        "In LUCI, build a preset that grabs the TVs in the jackpot zone, flips them to the celebration channel, triggers the audio WAV, and recalls the lighting scene — all in one preset.",
+        "Connect LUCI's scripting engine to your gaming system so it listens for the jackpot signal.",
+        "Set the script to fire the preset the moment a jackpot hits — every TV in the zone flips to the celebration, the sound plays, the lights fire, automatically.",
+        "Choose the scope: as mild as one TV, or as wild as every TV, audio zone, and lighting scene in the property.",
+        "Optional: set a revert so the floor returns to its baseline after a set time."
+      ],
+      "assumptions": [
+        "The scripting engine listens for gaming-system jackpot signals and fires a preset (Mike described it). Confirm the integration is wired today for each property and which gaming systems are supported.",
+        "Lighting recall is via ETC Mosaic / Lutron scene recall (Mike named ETC and Lutron). Confirm the processor and scene setup.",
+        "Audio WAV trigger from LUCI (Mike described flipping to an audio WAV). Confirm where the WAV is loaded (processor vs. player)."
+      ],
+      "sources": ["angel"],
+      "reviewStatus": "draft — from 04-23 Angel of the Wind demo; confirm gaming-system integration + lighting/audio trigger with Mike/Will"
+    },
+    {
+      "slug": "gaming-reconfigure-property",
+      "section": "Gaming & Operations",
+      "n": 3,
+      "title": "Reconfigure the entire property in seconds.",
+      "prerequisites": "LUCI open on the property map with the displays, audio zones, and (if used) lighting zones already on it.",
+      "setup": [],
+      "steps": [
+        "Open LUCI and go to the Presets side; click Add and name the preset (e.g., Friday night, Tournament, Morning reset).",
+        "Grab the displays you want — a single TV, one venue, or every TV in the property. Use the lasso tool to select many at once on a touchscreen.",
+        "For each, set what it should do: change the channel, turn a TV off, set an audio zone's source and volume, recall a lighting scene, even change a video wall's layout.",
+        "Add audio and lighting to the same preset if you want — one preset can carry video + audio + lighting + video-wall changes together.",
+        "Click Save — the preset populates in the preset list.",
+        "Apply it manually any time, or open the Scheduling app and schedule it: set the time, choose daily/weekly/monthly/custom, and save. Everything in the preset recalls at that time.",
+        "Optional: set a revert so the property returns to its baseline after a set window — useful for events that should only last an hour.",
+        "For the morning reset: build one preset that levels the entire casino (every TV to its baseline channel, every audio zone to baseline volume, lighting to baseline) and schedule it for every morning — no rogue content when the GM walks through."
+      ],
+      "assumptions": [
+        "Presets can carry video + audio + lighting + video-wall changes together, and aren't limited in count (Mike demoed it). Confirm the current UI path for adding audio/lighting to a preset.",
+        "The lasso tool selects many displays at once on a touchscreen (Mike demoed it). Confirm.",
+        "Morning casino reset is a common client preset (Mike described it). Confirm the recommended baseline settings."
+      ],
+      "sources": ["angel"],
+      "reviewStatus": "draft — from 04-23 Angel of the Wind demo; confirm preset/schedule UI + morning reset baseline with Mike/Will"
+    },
+    {
+      "slug": "gaming-new-game-launch",
+      "section": "Gaming & Operations",
+      "n": 4,
+      "title": "Direct guest attention to a new game area from the moment it opens.",
+      "prerequisites": "The new game area's TVs are already on LUCI's map, and you have promo content for the new game loaded as a channel (see Marketing UC01).",
+      "setup": [],
+      "steps": [
+        "Load the new game's promo content as a channel in LUCI (see Marketing UC01 for getting content in as a channel).",
+        "Build a preset that grabs the TVs in and around the new game area and flips them to the promo channel — add the zone's audio and a lighting scene if you want the launch to feel like an event.",
+        "Open the Scheduling app and schedule the preset to run from the moment the game opens: set the start time, the repeat window, and a revert so the floor returns to baseline after the launch period.",
+        "On opening day, the TVs in that area flip to the promo automatically — guests are directed to the new game the moment it goes live, no tap required.",
+        "To dial it up for the first weekend, expand the preset to grab more TVs (or the whole property) so the launch gets broader attention, then scale it back once the game is established.",
+        "After the launch window, let the preset expire (or delete it) so the floor returns to its normal programming."
+      ],
+      "assumptions": [
+        "Directing attention to a new game area uses the same preset + schedule + revert mechanics Mike demoed (drawings/keno to specific TVs at certain hours). Confirm the recommended scope and timing for a launch with Mike/Will.",
+        "This use case is composed from the preset/schedule/revert capabilities demoed at Angel of the Wind; it isn't a named feature in the transcript — confirm the framing with Mike."
+      ],
+      "sources": ["angel"],
+      "reviewStatus": "draft — composed from 04-23 Angel of the Wind demo preset/schedule mechanics; confirm launch framing with Mike"
+    },
 
     { "slug": "av-property-schedule",      "section": "A/V & Facilities", "n": 1, "title": "Build the whole property's schedule in one session, then let it run.", "steps": [], "reviewStatus": "not started" },
     { "slug": "av-service-requests",       "section": "A/V & Facilities", "n": 2, "title": "Resolve service requests from wherever you are — including after hours.", "steps": [], "reviewStatus": "not started" },

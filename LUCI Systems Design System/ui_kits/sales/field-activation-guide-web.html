@@ -358,7 +358,22 @@
           <svg class="fag-acc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
         </button>
         <div class="fag-acc__panel" id="g1-panel">
-          <p class="fag-acc__nudge"><strong>Steps coming &rarr;</strong>Tailored steps for this use case are in review with Mike. Check back soon, or ask your FDE to walk you through it.</p>
+          <div class="fag-acc__setup">
+            <p class="fag-acc__sub">Before you start</p>
+            <ol class="fag-acc__steps fag-acc__steps--setup">
+              <li>Q-SYS is the processor LUCI drives. If you&rsquo;re on Biamp today, LUCI swaps in a Q-SYS processor and reuses your existing amps and sources &mdash; confirm the swap with your FDE.</li>
+            </ol>
+          </div>
+          <ol class="fag-acc__steps">
+            <li>Open LUCI and go to the property map; navigate to the audio zone you want to adjust.</li>
+            <li>Select the zone&rsquo;s source &mdash; which channel or feed plays in that zone &mdash; from the source list.</li>
+            <li>Set the zone&rsquo;s volume. LUCI controls volume per venue, not inside the DSP.</li>
+            <li>To keep announcements clean, assign mics to priority layers: LUCI&rsquo;s three-layer ducking lets you set security high, page/valley-mic low, and so on &mdash; when the high-priority source comes on, it ducks the low.</li>
+            <li>Adjust the independent volume of each priority per zone (e.g., the restaurant gets security only).</li>
+            <li>Save the zone&rsquo;s settings; changes apply in real time.</li>
+            <li>To shift energy by daypart, build a preset that recalls this zone&rsquo;s source and volume (upbeat at night, calm in the morning) and schedule it &mdash; see Gaming UC03.</li>
+          </ol>
+          <p class="fag-acc__nudge"><strong>This week &rarr;</strong>Pick one zone, set its daypart curve (calm morning, peak evening), and let the schedule carry it for a week &mdash; no one rides the faders.</p>
         </div>
       </div>
     </div>
@@ -378,7 +393,22 @@
           <svg class="fag-acc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
         </button>
         <div class="fag-acc__panel" id="g2-panel">
-          <p class="fag-acc__nudge"><strong>Steps coming &rarr;</strong>Tailored steps for this use case are in review with Mike. Check back soon, or ask your FDE to walk you through it.</p>
+          <div class="fag-acc__setup">
+            <p class="fag-acc__sub">Before you start</p>
+            <ol class="fag-acc__steps fag-acc__steps--setup">
+              <li>LUCI&rsquo;s scripting engine is connected to your gaming system so it can listen for progressives and jackpots, and the celebration content (video + audio + lighting scene) is loaded as a channel/preset. Confirm the gaming-system integration is wired for your property.</li>
+            </ol>
+          </div>
+          <ol class="fag-acc__steps">
+            <li>Load the jackpot celebration video as a channel and the celebration sound as an audio WAV in the zone &mdash; see Marketing UC01 for getting content into LUCI as a channel.</li>
+            <li>Create the lighting scene for the celebration on your lighting processor (ETC Mosaic or Lutron); LUCI recalls it by pulling the scenes for that zone.</li>
+            <li>In LUCI, build a preset that grabs the TVs in the jackpot zone, flips them to the celebration channel, triggers the audio WAV, and recalls the lighting scene &mdash; all in one preset.</li>
+            <li>Connect LUCI&rsquo;s scripting engine to your gaming system so it listens for the jackpot signal.</li>
+            <li>Set the script to fire the preset the moment a jackpot hits &mdash; every TV in the zone flips to the celebration, the sound plays, the lights fire, automatically.</li>
+            <li>Choose the scope: as mild as one TV, or as wild as every TV, audio zone, and lighting scene in the property.</li>
+            <li>Optional: set a revert so the floor returns to its baseline after a set time.</li>
+          </ol>
+          <p class="fag-acc__nudge"><strong>This week &rarr;</strong>Build one celebration preset for your main pit, wire it to a test jackpot signal, and watch the zone fire on its own &mdash; sound, screens, and lights together.</p>
         </div>
       </div>
     </div>
@@ -398,7 +428,23 @@
           <svg class="fag-acc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
         </button>
         <div class="fag-acc__panel" id="g3-panel">
-          <p class="fag-acc__nudge"><strong>Steps coming &rarr;</strong>Tailored steps for this use case are in review with Mike. Check back soon, or ask your FDE to walk you through it.</p>
+          <div class="fag-acc__setup">
+            <p class="fag-acc__sub">Before you start</p>
+            <ol class="fag-acc__steps fag-acc__steps--setup">
+              <li>LUCI open on the property map with the displays, audio zones, and (if used) lighting zones already on it.</li>
+            </ol>
+          </div>
+          <ol class="fag-acc__steps">
+            <li>Open LUCI and go to the Presets side; click Add and name the preset (e.g., Friday night, Tournament, Morning reset).</li>
+            <li>Grab the displays you want &mdash; a single TV, one venue, or every TV in the property. Use the lasso tool to select many at once on a touchscreen.</li>
+            <li>For each, set what it should do: change the channel, turn a TV off, set an audio zone&rsquo;s source and volume, recall a lighting scene, even change a video wall&rsquo;s layout.</li>
+            <li>Add audio and lighting to the same preset if you want &mdash; one preset can carry video + audio + lighting + video-wall changes together.</li>
+            <li>Click Save &mdash; the preset populates in the preset list.</li>
+            <li>Apply it manually any time, or open the Scheduling app and schedule it: set the time, choose daily/weekly/monthly/custom, and save. Everything in the preset recalls at that time.</li>
+            <li>Optional: set a revert so the property returns to its baseline after a set window &mdash; useful for events that should only last an hour.</li>
+            <li>For the morning reset: build one preset that levels the entire casino (every TV to its baseline channel, every audio zone to baseline volume, lighting to baseline) and schedule it for every morning &mdash; no rogue content when the GM walks through.</li>
+          </ol>
+          <p class="fag-acc__nudge"><strong>This week &rarr;</strong>Build one morning-reset preset that levels the whole casino and schedule it for every day this week &mdash; then notice what you stop having to chase.</p>
         </div>
       </div>
     </div>
@@ -418,7 +464,21 @@
           <svg class="fag-acc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
         </button>
         <div class="fag-acc__panel" id="g4-panel">
-          <p class="fag-acc__nudge"><strong>Steps coming &rarr;</strong>Tailored steps for this use case are in review with Mike. Check back soon, or ask your FDE to walk you through it.</p>
+          <div class="fag-acc__setup">
+            <p class="fag-acc__sub">Before you start</p>
+            <ol class="fag-acc__steps fag-acc__steps--setup">
+              <li>The new game area&rsquo;s TVs are already on LUCI&rsquo;s map, and you have promo content for the new game loaded as a channel (see Marketing UC01).</li>
+            </ol>
+          </div>
+          <ol class="fag-acc__steps">
+            <li>Load the new game&rsquo;s promo content as a channel in LUCI (see Marketing UC01 for getting content in as a channel).</li>
+            <li>Build a preset that grabs the TVs in and around the new game area and flips them to the promo channel &mdash; add the zone&rsquo;s audio and a lighting scene if you want the launch to feel like an event.</li>
+            <li>Open the Scheduling app and schedule the preset to run from the moment the game opens: set the start time, the repeat window, and a revert so the floor returns to baseline after the launch period.</li>
+            <li>On opening day, the TVs in that area flip to the promo automatically &mdash; guests are directed to the new game the moment it goes live, no tap required.</li>
+            <li>To dial it up for the first weekend, expand the preset to grab more TVs (or the whole property) so the launch gets broader attention, then scale it back once the game is established.</li>
+            <li>After the launch window, let the preset expire (or delete it) so the floor returns to its normal programming.</li>
+          </ol>
+          <p class="fag-acc__nudge"><strong>This week &rarr;</strong>For your next game launch, build the launch preset now and schedule it to the opening date &mdash; the floor points itself at the new game the moment it goes live.</p>
         </div>
       </div>
     </div>
