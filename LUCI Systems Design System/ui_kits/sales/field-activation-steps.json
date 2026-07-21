@@ -14,17 +14,17 @@
   },
   "drafted": "2026-07-16",
   "reviewRequired": "Mike Epstein or a LUCI FDE must verify each workflow against the live product before it is published in the client FAG.",
-  "pipelineNote": "Content (custom messages, promos, event graphics) lives in the CMS (Telemetry TV) and reaches LUCI as a channel: Telemetry player HDMI out → LUCI IP encoder → source in LUCI's list. That CMS→encoder→LUCI path is the same one-time setup behind most Marketing use cases, so it's written once here and referenced.",
+  "pipelineNote": "Content (custom messages, promos, event graphics) lives in your digital signage CMS and reaches LUCI as a channel: signage player HDMI out → LUCI IP encoder → source in LUCI's list. That CMS→encoder→LUCI path is the same one-time setup behind most Marketing use cases, so it's written once here and referenced.",
   "useCases": [
     {
       "slug": "marketing-push-message",
       "section": "Marketing & Guest Experience",
       "n": 1,
       "title": "Push a message to every screen in under two minutes.",
-      "prerequisites": "Your message exists as an image or short video, and a Telemetry player is already wired into a LUCI encoder so its content shows up as a channel in LUCI. If not, do the one-time Setup first.",
+      "prerequisites": "Your message exists as an image or short video, and a signage player is already wired into a LUCI encoder so its content shows up as a channel in LUCI. If not, do the one-time Setup first.",
       "setup": [
-        "In Telemetry TV, open Media and drag your message asset in (or pull it from a linked OneDrive/Canva). Set a validity end-date if the message is temporary so it auto-removes.",
-        "Create a Playlist, add the message to it, and assign the playlist to a Telemetry player. That player's output feeds a LUCI IP encoder, so the message now appears as a channel in LUCI's source list."
+        "In your digital signage CMS, open your media library and drag your message asset in (or pull it from a linked OneDrive/Canva). Set a validity end-date if the message is temporary so it auto-removes.",
+        "Create a playlist, add the message to it, and assign the playlist to a signage player. That player's output feeds a LUCI IP encoder, so the message now appears as a channel in LUCI's source list."
       ],
       "steps": [
         "Open LUCI in your browser from any device and log in.",
@@ -47,9 +47,9 @@
       "section": "Marketing & Guest Experience",
       "n": 2,
       "title": "Daypart your restaurant promotions to catch guests at the decision point.",
-      "prerequisites": "Your dining spot asset exists and a Telemetry player → LUCI encoder channel is set up for it (see UC1 Setup).",
+      "prerequisites": "Your dining spot asset exists and a signage player → LUCI encoder channel is set up for it (see UC1 Setup).",
       "setup": [
-        "Same one-time CMS setup as UC1: load the dining spot in Telemetry TV, put it on a playlist, assign to a player so it appears as a channel in LUCI."
+        "Same one-time CMS setup as UC1: load the dining spot in your digital signage CMS, put it on a playlist, assign to a signage player so it appears as a channel in LUCI."
       ],
       "steps": [
         "In LUCI, open Presets and create a new preset (e.g., 'Pre-lunch dining spot').",
@@ -72,9 +72,9 @@
       "section": "Marketing & Guest Experience",
       "n": 3,
       "title": "Run customized content by zone — indoor and outdoor — from one control panel.",
-      "prerequisites": "Each zone's content is loaded in Telemetry TV and each is on its own player → LUCI encoder channel (one source per zone's content). Confirm with your A/V team which external displays (marquee, outdoor signs) are currently connected through LUCI — they only appear on the map if they're on an encoder.",
+      "prerequisites": "Each zone's content is loaded in your digital signage CMS and each is on its own signage player → LUCI encoder channel (one source per zone's content). Confirm with your A/V team which external displays (marquee, outdoor signs) are currently connected through LUCI — they only appear on the map if they're on an encoder.",
       "setup": [
-        "In Telemetry TV, load each zone's content as a separate playlist on a separate player (one player per simultaneously-running piece of content). Each player → LUCI encoder → its own channel in LUCI's source list.",
+        "In your digital signage CMS, load each zone's content as a separate playlist on a separate signage player (one player per simultaneously-running piece of content). Each player → LUCI encoder → its own channel in LUCI's source list.",
         "For outdoor signage: confirm the marquee/outdoor displays are wired into LUCI encoders. If they are, they show up as displays on the map and are managed exactly like indoor screens."
       ],
       "steps": [
@@ -98,9 +98,9 @@
       "section": "Marketing & Guest Experience",
       "n": 4,
       "title": "Build an event campaign that escalates automatically.",
-      "prerequisites": "Your event promo asset(s) are loaded in Telemetry TV and on a player → LUCI encoder channel (see UC1 Setup). Confirm whether 'escalation' is a single feature or a preset sequence (see assumptions).",
+      "prerequisites": "Your event promo asset(s) are loaded in your digital signage CMS and on a signage player → LUCI encoder channel (see UC1 Setup). Confirm whether 'escalation' is a single feature or a preset sequence (see assumptions).",
       "setup": [
-        "In Telemetry TV, load the event promo asset(s). For higher frequency closer to the event, build a playlist that rotates the promo more often (or a shorter spot list) — frequency is controlled on the CMS side, zone coverage on the LUCI side."
+        "In your digital signage CMS, load the event promo asset(s). For higher frequency closer to the event, build a playlist that rotates the promo more often (or a shorter spot list) — frequency is controlled on the CMS side, zone coverage on the LUCI side."
       ],
       "steps": [
         "In LUCI, build a series of presets, each wider than the last: Preset A = one zone (e.g., lobby) on the event channel; Preset B = lobby + concourse; Preset C = full floor on the event channel.",
