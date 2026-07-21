@@ -214,8 +214,53 @@
       "reviewStatus": "draft — composed from 04-23 Angel of the Wind demo preset/schedule mechanics; confirm launch framing with Mike"
     },
 
-    { "slug": "av-property-schedule",      "section": "A/V & Facilities", "n": 1, "title": "Build the whole property's schedule in one session, then let it run.", "steps": [], "reviewStatus": "not started" },
-    { "slug": "av-service-requests",       "section": "A/V & Facilities", "n": 2, "title": "Resolve service requests from wherever you are — including after hours.", "steps": [], "reviewStatus": "not started" },
+    {
+      "slug": "av-property-schedule",
+      "section": "A/V & Facilities",
+      "n": 1,
+      "title": "Build the whole property's schedule in one session, then let it run.",
+      "prerequisites": "LUCI open on the property map with the displays, audio zones, and (if used) lighting zones already on it.",
+      "setup": [],
+      "steps": [
+        "Open LUCI and go to the Presets side. You'll build one preset per mode the property runs — normal weekday, Saturday peak, fight night, holiday, a private event in the ballroom.",
+        "For each mode, click Add and name it, then grab the displays and audio zones it covers (use the lasso tool to select many at once on a touchscreen).",
+        "Set what each should do at that mode: channel for each TV, source and volume for each audio zone, lighting scene if used, video-wall layout if used.",
+        "Save each preset — they populate in the preset list as your library of modes.",
+        "Open the Scheduling app and schedule each preset to its daypart: set the time, choose daily/weekly/monthly/custom, and save. Everything in the preset recalls at that time.",
+        "Set a locked baseline preset underneath (e.g., the morning reset) so the floor always returns to a known state — the schedule holds the baseline on its own.",
+        "To update one piece without disturbing the rest, edit that preset or zone in real time — the change applies live and the rest of the schedule keeps running.",
+        "Step back: the whole property now runs itself day to day, and your day shifts from execution to oversight and the occasional adjustment."
+      ],
+      "assumptions": [
+        "Building the whole schedule uses the preset + scheduling mechanics Mike demoed (one preset per mode, schedule each to its daypart). Confirm the recommended mode set and baseline with Mike/Will.",
+        "Editing one piece in real time without taking the rest offline is how Mike described LUCI's live control. Confirm the exact edit path in the current build."
+      ],
+      "sources": ["angel"],
+      "reviewStatus": "draft — from 04-23 Angel of the Wind demo preset/schedule mechanics; confirm mode set + baseline + live-edit path with Mike/Will"
+    },
+    {
+      "slug": "av-service-requests",
+      "section": "A/V & Facilities",
+      "n": 2,
+      "title": "Resolve service requests from wherever you are — including after hours.",
+      "prerequisites": "LUCI is browser-based and runs on any device — Safari on iPad, a Surface, even a phone. You can reach it on or off property. Confirm you have remote access to LUCI from your phone.",
+      "setup": [],
+      "steps": [
+        "Get the request — a manager flags that the bar audio is off, or a zone needs a level change.",
+        "Open LUCI in the browser on your phone (or tablet) from wherever you are, on or off property.",
+        "Go to the property map and navigate to the zone the request is about.",
+        "Adjust it: change the source, set the volume, or recall the zone's baseline — the change applies in real time.",
+        "Confirm it's right — you can see the zone's live state from the same screen.",
+        "Decide whether it really needs an on-site trip. Most level and source issues close from the phone; reserve the walk for genuinely physical problems (a cable, a dead display).",
+        "Every change logs itself — you have an automatic record without a separate documentation step."
+      ],
+      "assumptions": [
+        "LUCI is browser-based and reactive — works on Safari/iPad, Surface, and phones, reachable on or off property (Mike demoed it). Confirm remote access is enabled for each property's network.",
+        "Every change logs itself (Mike referenced logs/monitoring). Confirm what the log captures and where it's reviewed."
+      ],
+      "sources": ["angel"],
+      "reviewStatus": "draft — from 04-23 Angel of the Wind demo (browser-based, any device, remote control, logging); confirm remote access + log scope with Mike/Will"
+    },
     {
       "slug": "av-find-problems",
       "section": "A/V & Facilities",
@@ -240,7 +285,29 @@
       "sources": ["ameristar"],
       "reviewStatus": "draft — reframed around live offline detection (Ameristar); confirm ticketing-integration status"
     },
-    { "slug": "av-private-event",           "section": "A/V & Facilities", "n": 4, "title": "Configure a private event once, then activate it and let it revert on its own.", "steps": [], "reviewStatus": "not started" },
+    {
+      "slug": "av-private-event",
+      "section": "A/V & Facilities",
+      "n": 4,
+      "title": "Configure a private event once, then activate it and let it revert on its own.",
+      "prerequisites": "LUCI open on the property map with the displays, audio zones, and (if used) lighting zones for the event space already on it.",
+      "setup": [],
+      "steps": [
+        "Open LUCI and go to the Presets side; click Add and name the preset after the event (e.g., Saturday banquet, Corporate concert).",
+        "Grab the displays and audio zones the event uses — the ballroom TVs, the event audio zone, any lighting zones.",
+        "Set the full A/V setup in the preset: the custom audio mix (source and volume per zone), the branded screen content (flip the event TVs to the right channel), any zone-specific settings and lighting scene.",
+        "Set the revert: enter the number of minutes the event should run before the property returns to its baseline.",
+        "Save the preset — it sits in the preset list, ready to reuse for the next instance of the same event.",
+        "At event time, activate it with one tap (or schedule it to the event's start time). The preset runs for the event.",
+        "When the timer ends, the property returns to its baseline on its own — no tap to switch it off, no risk the floor is left in the event state overnight."
+      ],
+      "assumptions": [
+        "The revert function returns everything to its prior state after a set number of minutes (Mike demoed it — 'at the end of that timing, it's going to put everything back exactly the way it was'). Confirm the exact field name for the revert timer in the current build.",
+        "Activating a preset is one tap (or a schedule) (Mike demoed it). Confirm the activation path."
+      ],
+      "sources": ["angel"],
+      "reviewStatus": "draft — from 04-23 Angel of the Wind demo (preset + revert function); confirm revert-timer field name + activation path with Mike/Will"
+    },
 
     {
       "slug": "it-add-endpoint",
