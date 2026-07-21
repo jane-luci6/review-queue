@@ -420,9 +420,76 @@
     { "slug": "finance-measure-av-revenue","section": "Finance", "n": 3, "title": "Start measuring A/V as a revenue contributor, not just a cost.", "steps": [], "reviewStatus": "not started — business process, no software steps" },
     { "slug": "finance-document-av-spend", "section": "Finance", "n": 4, "title": "Document and defend your A/V spend with platform data.", "steps": [], "reviewStatus": "not started — business process, no software steps" },
 
-    { "slug": "gm-walk-floor-ipad",         "section": "General Management", "n": 1, "title": "Walk the floor with an iPad and take the controls yourself.", "steps": [], "reviewStatus": "not started" },
-    { "slug": "gm-morning-reset",           "section": "General Management", "n": 2, "title": "Schedule a morning reset so the floor always wakes up looking right.", "steps": [], "reviewStatus": "not started" },
+    {
+      "slug": "gm-walk-floor-ipad",
+      "section": "General Management",
+      "n": 1,
+      "title": "Walk the floor with an iPad and take the controls yourself.",
+      "prerequisites": "LUCI is browser-based and runs on any device — Safari on iPad works especially well. Confirm you have a login with control of the zones you'll touch.",
+      "setup": [],
+      "steps": [
+        "On your next walkthrough, open LUCI in Safari on the iPad and log in.",
+        "Go to the property map and zoom into the area you're standing in — it unnests the individual endpoints so you can see each display and zone around you.",
+        "Pick something to change live: flip a screen to a different channel, adjust a zone's audio level, or switch a preset.",
+        "Make the change from the iPad — it applies in real time.",
+        "Look up from the screen and confirm what LUCI reports matches what you actually see on the floor.",
+        "Use the lasso tool to select several displays at once if you want to change a whole section in one gesture.",
+        "Repeat through the walk: each live change builds your own fluency so you're not relying on a single operator to read the floor."
+      ],
+      "assumptions": [
+        "LUCI is browser-based and reactive on Safari/iPad, with zoom-to-unnest and a lasso tool for multi-select (Mike demoed it). Confirm the GM login has control scope over the zones they'll touch.",
+        "This is a fluency/verification use case — the value is the GM seeing and shaping the floor directly. Confirm the recommended walkthrough cadence with Mike."
+      ],
+      "sources": ["angel"],
+      "reviewStatus": "draft — from 04-23 Angel of the Wind demo (browser-based, iPad, zoom/lasso, live control); confirm GM login scope + walkthrough cadence with Mike/Will"
+    },
+    {
+      "slug": "gm-morning-reset",
+      "section": "General Management",
+      "n": 2,
+      "title": "Schedule a morning reset so the floor always wakes up looking right.",
+      "prerequisites": "LUCI open on the property map with the displays, audio zones, and (if used) lighting zones already on it.",
+      "setup": [],
+      "steps": [
+        "Open LUCI and go to the Presets side; click Add and name it Morning reset.",
+        "Grab every display in the property (use the lasso tool, or select-all) and set each to its assigned baseline channel.",
+        "Grab every audio zone and set each to its baseline source and volume.",
+        "If you use lighting, add the lighting zones and recall the open-of-day scene.",
+        "Save the preset — it's now your single source of 'what right looks like' at open.",
+        "Open the Scheduling app and schedule the Morning reset to run every day before open (set the time, choose daily, save).",
+        "Each morning the floor returns to its baseline on its own — last night's stray changes (a TV on local news, a screen on the wrong input) are erased before anyone checks.",
+        "Walk the floor at open and confirm it's correct — then stop running a manual open-of-day checklist."
+      ],
+      "assumptions": [
+        "The morning casino reset is a common client preset Mike described — one preset that levels the whole property, scheduled for every morning. Confirm the recommended baseline settings (channels, volumes, lighting scene) with Mike/Will.",
+        "Scheduling a preset to run daily before open uses the Scheduling app (Mike demoed it). Confirm the schedule UI in the current build."
+      ],
+      "sources": ["angel"],
+      "reviewStatus": "draft — from 04-23 Angel of the Wind demo (morning casino reset preset + scheduling); confirm baseline settings + schedule UI with Mike/Will"
+    },
     { "slug": "gm-strategy-meeting",        "section": "General Management", "n": 3, "title": "Schedule a recurring guest-experience strategy meeting with the whole team.", "steps": [], "reviewStatus": "not started — organizational practice, no software steps" },
-    { "slug": "gm-team-adoption",           "section": "General Management", "n": 4, "title": "Make sure every team is actually using what they can.", "steps": [], "reviewStatus": "not started" }
+    {
+      "slug": "gm-team-adoption",
+      "section": "General Management",
+      "n": 4,
+      "title": "Make sure every team is actually using what they can.",
+      "prerequisites": "A list of the teams who should be using LUCI (Marketing, Operations, A/V, IT, Finance) and their go-live date. Optional: access to LUCI's logs/usage to see which zones and users are active.",
+      "setup": [],
+      "steps": [
+        "List each function that should be using LUCI and what they're meant to do on it (Marketing: content to every screen; Operations: floor energy and jackpot events; A/V: the property schedule and service requests; IT: endpoints, config, permissions; Finance: the A/V numbers).",
+        "For each team, check whether they're actually doing it. Where you can, look at LUCI's logs/usage to see which zones and users have been active since go-live.",
+        "Surface where LUCI is sitting idle: is Marketing still routing content through a vendor? Has IT been onboarded to endpoints and permissions? Has Finance revisited the A/V numbers since go-live?",
+        "For each stalled team, find the blocker — a missing login, a training gap, a workflow that hasn't been handed over — and unblock it.",
+        "Set a date to re-check adoption (e.g., 30 days out) so the investment keeps compounding instead of going to shelfware.",
+        "Make it someone's job to close the loop, so 'every team is using what they can' is a standing check, not a one-time push."
+      ],
+      "assumptions": [
+        "This is a management/oversight use case — a lightweight adoption audit across teams — not a single LUCI software workflow. It's drafted as a checklist a GM can run.",
+        "LUCI has logs/monitoring Mike referenced ('provide logs for all of these players... the basic monitoring'). Confirm whether per-zone/per-user usage is available to support the audit, and what the log shows.",
+        "The team-by-team responsibilities map to the other sections' use cases (Marketing, Gaming & Operations, A/V, IT, Finance). Confirm the mapping with Mike."
+      ],
+      "sources": ["angel"],
+      "reviewStatus": "draft — management/oversight use case composed from 04-23 Angel of the Wind demo (logging/monitoring referenced); confirm LUCI usage-data availability + team mapping with Mike/Will"
+    }
   ]
 }
