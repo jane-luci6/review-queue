@@ -71,24 +71,26 @@
       "slug": "marketing-zone-content",
       "section": "Marketing & Guest Experience",
       "n": 3,
-      "title": "Run customized content by zone — indoor and outdoor — from one control panel.",
-      "prerequisites": "Each zone's content is loaded in your digital signage CMS and each is on its own signage player → LUCI encoder channel (one source per zone's content). Confirm with your A/V team which external displays (marquee, outdoor signs) are currently connected through LUCI — they only appear on the map if they're on an encoder.",
+      "title": "Give each zone its own bank of ads, its own schedule, and its own tone.",
+      "prerequisites": "Each zone's bank of ads is loaded in your digital signage CMS and each is on its own signage player → LUCI encoder channel (one source per zone's content). Confirm with your A/V team which external displays (marquee, outdoor signs) are currently connected through LUCI — they only appear on the map if they're on an encoder. If you want the tone to include lighting, confirm which zones have lighting controllable through LUCI (ETC Mosaic or Lutron).",
       "setup": [
-        "In your digital signage CMS, load each zone's content as a separate playlist on a separate signage player (one player per simultaneously-running piece of content). Each player → LUCI encoder → its own channel in LUCI's source list.",
-        "For outdoor signage: confirm the marquee/outdoor displays are wired into LUCI encoders. If they are, they show up as displays on the map and are managed exactly like indoor screens."
+        "In your digital signage CMS, build each zone its own playlist — its bank of ads — on its own signage player (one player per zone that runs at the same time as another). Each player → LUCI encoder → its own channel in LUCI's source list, so the zone can be programmed independently.",
+        "For outdoor signage: confirm the marquee/outdoor displays are wired into LUCI encoders. If they are, they show up as displays on the map and are managed exactly like indoor screens — the marquee becomes just another zone.",
+        "If you want the tone to include lighting, confirm which zones have lighting controllable through LUCI (ETC Mosaic or Lutron). Lighting scenes recall per zone just like content channels, so a zone can dim or shift with its content."
       ],
       "steps": [
         "In LUCI, open the property map and pick the first zone (e.g., sports book). Select it from the venue list or tap its tag.",
-        "Select the displays in that zone, then in the source list pick that zone's content channel. They flip immediately.",
-        "Repeat for each zone — main floor, bar, lobby, marquee — each running its own content at the same time.",
-        "To make it repeat: build one preset per zone (displays + that zone's channel) and schedule each on its own calendar. Zone schedules are independent, so the sports book can run on one cadence while the bar runs on another.",
-        "Walk the floor to confirm each zone is playing what you intended, and adjust the channel or schedule from the same panel."
+        "Select the displays in that zone, then in the source list pick that zone's content channel — its bank of ads. They flip immediately.",
+        "Build a preset for the zone that carries its displays, its content channel, and — if you want the tone to match — its lighting scene (dim the lights for a zone-wide event spot, or brighten the sports book for game time).",
+        "Schedule the preset on its own calendar and daypart it: the bar runs happy-hour ads in the late afternoon, the sports book runs game-time ads at tip-off. Each zone's schedule is independent, so one zone's cadence doesn't disturb another.",
+        "Repeat for each zone — main floor, bar, lobby, marquee — each running its own bank of ads on its own schedule, with its own tone, at the same time.",
+        "Walk the floor to confirm each zone is playing what you intended, and adjust the channel, schedule, or lighting from the same panel."
       ],
       "revert": "Each zone can be returned to its standing content by applying that zone's 'normal' preset, or by scheduling it.",
       "assumptions": [
         "Each simultaneously-running content stream needs its own player/encoder channel. Confirm the player count recommendation with Mike.",
         "External signage is IP-controllable through a LUCI encoder. Confirm the marquee specifically — it may need a separate integration.",
-        "A preset can be scoped to a single venue/zone. Confirm."
+        "A preset can be scoped to a single venue/zone and can carry a lighting scene alongside content. Confirm the preset UI path for adding lighting, and the lighting processors supported (Mike named ETC Mosaic / Lutron)."
       ],
       "sources": ["ameristar", "angel", "fagCopy"],
       "reviewStatus": "draft"
