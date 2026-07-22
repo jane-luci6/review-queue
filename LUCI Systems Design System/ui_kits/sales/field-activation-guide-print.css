@@ -1,0 +1,93 @@
+/* LUCI Field Activation Guide — print/PDF overrides
+   Loads after sales-document.css. Scopes a Budgetary-Estimate-style
+   light-sheet cover over the doc--activation dark bookend, and adds
+   per-UC support-portal pills + FDE note. */
+
+/* ---- Cover: light sheet + navy hero band (budgetary treatment) ---- */
+.doc--activation .doc-page--cover {
+  background:
+    radial-gradient(54% 44% at 86% 14%, rgba(104,227,190,0.10), transparent 72%),
+    var(--off-white) !important;
+  color: var(--navy) !important;
+  padding-bottom: calc(var(--page-pad) + 24px) !important;
+}
+.doc--activation .doc-page--cover::before {
+  display: none !important; content: none !important; background: none !important;
+}
+.doc--activation .doc-page--cover .doc-cover__logo { filter: none !important; }
+.doc--activation .doc-page--cover .doc-cover__hero {
+  position: relative;
+  margin: 28px calc(-1 * var(--page-pad)) 28px !important;
+  padding: 44px var(--page-pad) 48px !important;
+  overflow: hidden;
+  background:
+    linear-gradient(162deg, rgba(16,35,45,0.92) 0%, rgba(12,31,40,0.98) 100%),
+    url('assets/textures/texture-3.png') center / cover no-repeat;
+}
+.doc--activation .doc-page--cover .doc-cover__hero::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: url('assets/textures/texture-circuit-header-mintgold.png');
+  background-repeat: repeat; background-position: right center; background-size: 520px auto;
+  -webkit-mask-image: linear-gradient(90deg, transparent 46%, rgba(0,0,0,0.45) 68%, #000 100%);
+  mask-image: linear-gradient(90deg, transparent 46%, rgba(0,0,0,0.45) 68%, #000 100%);
+  opacity: 0.72; pointer-events: none;
+}
+.doc--activation .doc-page--cover .doc-cover__hero::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 4px; background: var(--gold);
+}
+.doc--activation .doc-page--cover .doc-cover__hero > * { position: relative; z-index: 1; }
+.doc--activation .doc-page--cover .doc-cover__display {
+  color: var(--off-white) !important; max-width: 14ch !important; font-size: 34px !important;
+}
+.doc--activation .doc-page--cover .doc-cover__display em { color: var(--mint) !important; }
+.doc--activation .doc-page--cover .doc-cover__sub { color: rgba(235,245,248,0.86) !important; }
+.doc--activation .doc-page--cover::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 40px;
+  background:
+    linear-gradient(180deg, rgba(12,31,40,0.92) 0%, rgba(12,31,40,0.98) 100%),
+    url('assets/textures/texture-circuit-navy-mint.png') right center / 360px auto repeat;
+  border-top: 3px solid var(--gold);
+}
+
+/* ---- Per-UC support-portal pills (replace "Try it" tasks) ---- */
+.doc-uc__pills { margin-top: 14px; }
+.doc-uc__pills-label {
+  font-family: var(--font-head); font-size: 10px; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase; color: #2b9e80;
+  margin: 0 0 8px;
+}
+.doc-uc__pills-list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 7px; }
+.doc-uc__pills-list a {
+  display: inline-flex; align-items: center; padding: 5px 11px;
+  border: 1px solid rgba(43,158,128,0.30); border-radius: 9999px;
+  font-family: var(--font-body); font-size: 11.5px; font-weight: 600;
+  color: #2b9e80; text-decoration: none; line-height: 1.2;
+}
+.doc-uc__pills-list a::after { content: ' \2192'; }
+
+/* ---- FDE note (IT UC02, no portal pills) ---- */
+.doc-uc__fde {
+  margin-top: 14px; font-family: var(--font-body); font-size: 12px;
+  color: var(--navy-muted); line-height: 1.45;
+}
+.doc-uc__fde-label {
+  font-family: var(--font-head); font-weight: 700; color: #2b9e80;
+  letter-spacing: 0.04em; margin-right: 6px;
+}
+
+@media print {
+  .doc--activation .doc-page--cover .doc-cover__hero {
+    background:
+      linear-gradient(162deg, rgba(16,35,45,0.92) 0%, rgba(12,31,40,0.98) 100%),
+      url('assets/textures/texture-3.jpg') center / cover no-repeat;
+  }
+  .doc--activation .doc-page--cover .doc-cover__hero::before {
+    background-image: url('assets/textures/texture-circuit-header-mintgold.jpg');
+    mix-blend-mode: screen;
+  }
+  .doc--activation .doc-page--cover::after {
+    background:
+      linear-gradient(180deg, rgba(12,31,40,0.92) 0%, rgba(12,31,40,0.98) 100%),
+      url('assets/textures/texture-circuit-navy-mint.jpg') right center / 360px auto repeat;
+  }
+}
