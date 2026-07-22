@@ -79,6 +79,14 @@
   .fag-conclude__help a:hover { color: var(--off-white); border-bottom-color: var(--mint); }
   .fag-conclude__pdf { display: inline-block; margin-top: 22px; font-family: var(--font-body); font-size: 13px; color: rgba(235,245,248,0.6); text-decoration: none; }
   .fag-conclude__pdf:hover { color: var(--mint); }
+  /* Section 07 conclusion on light: recap/help/pdf were authored for dark, reskin here */
+  .fag-sec--light.fag-conclude .fag-conclude__recap { color: var(--accent-light); }
+  .fag-sec--light.fag-conclude .fag-sec__role em { font-style: normal; color: var(--accent-light); }
+  .fag-sec--light.fag-conclude .fag-conclude__help { color: var(--ink-muted); }
+  .fag-sec--light.fag-conclude .fag-conclude__help a { color: var(--accent-light); border-bottom-color: rgba(43,158,128,0.40); }
+  .fag-sec--light.fag-conclude .fag-conclude__help a:hover { color: var(--ink-strong); border-bottom-color: var(--accent-light); }
+  .fag-sec--light.fag-conclude .fag-conclude__pdf { color: var(--ink-muted); }
+  .fag-sec--light.fag-conclude .fag-conclude__pdf:hover { color: var(--accent-light); }
 
   /* ── Light-section tokens ── */
   :root {
@@ -498,7 +506,7 @@
     <!-- UC01 -->
     <div class="fag-uc">
       <div class="fag-uc__head"><span class="fag-uc__num">01</span><h3 class="fag-uc__title">Build the whole property&rsquo;s schedule in one session, then let it run.</h3></div>
-      <p class="fag-uc__desc">Spend a few hours configuring audio, displays, and zone behavior for every daypart, weekday and weekend, from one place. Once it&rsquo;s built it runs itself, with a locked baseline underneath so the floor stays consistent no matter who opened &mdash; and you update any piece in real time without taking the rest offline.</p>
+      <p class="fag-uc__desc">Spend some time configuring audio, displays, and zone behavior for every daypart, weekday and weekend, from one place. Once it&rsquo;s built it runs itself, with a locked baseline underneath so the floor stays consistent no matter who opened &mdash; and you update any piece in real time without taking the rest offline.</p>
       <ul class="fag-uc__benefits">
         <li>Trade daily execution for oversight and the occasional adjustment</li>
         <li>Eliminate the drift that creeps in shift to shift</li>
@@ -873,7 +881,7 @@
     <!-- UC01 -->
     <div class="fag-uc">
       <div class="fag-uc__head"><span class="fag-uc__num">01</span><h3 class="fag-uc__title">Walk the floor with an iPad and take the controls yourself.</h3></div>
-      <p class="fag-uc__desc">LUCI runs from any device. On your next walkthrough, open the dashboard and make a live change &mdash; flip a screen, adjust a zone&rsquo;s audio, switch a preset &mdash; from wherever you&rsquo;re standing, and confirm that what the platform reports matches what you see in person.</p>
+      <p class="fag-uc__desc">LUCI runs from any device. On your next walkthrough, open the dashboard on your device of choice and make a live change &mdash; flip a screen, adjust a zone&rsquo;s audio, switch a preset &mdash; from wherever you&rsquo;re standing, and confirm that what the platform reports matches what you see in person.</p>
       <ul class="fag-uc__benefits">
         <li>See and shape the guest experience without leaving the floor</li>
         <li>Verify the floor is running the way it&rsquo;s supposed to, live</li>
@@ -908,11 +916,11 @@
     <!-- UC02 -->
     <div class="fag-uc">
       <div class="fag-uc__head"><span class="fag-uc__num">02</span><h3 class="fag-uc__title">Schedule a morning reset so the floor always wakes up looking right.</h3></div>
-      <p class="fag-uc__desc">A TV gets flipped to local news, a screen gets left on the wrong input &mdash; it happens. A scheduled reset returns every display to its assigned content before the floor opens each day, with no one checking and nothing left to chance.</p>
+      <p class="fag-uc__desc">A TV gets flipped to local news, a screen gets left on the wrong input &mdash; it happens. A scheduled reset returns every display to its assigned content during the quiet 5&ndash;7am window, before morning traffic picks up &mdash; with no one checking and nothing left to chance.</p>
       <ul class="fag-uc__benefits">
-        <li>Open every day to a floor that&rsquo;s already correct</li>
+        <li>Start every day with a floor that&rsquo;s already correct</li>
         <li>Erase last night&rsquo;s stray changes automatically</li>
-        <li>Free your team from a manual open-of-day checklist</li>
+        <li>Free your team from a manual morning checklist</li>
       </ul>
       <div class="fag-acc">
         <button class="fag-acc__btn" aria-expanded="false" aria-controls="gm2-panel">
@@ -930,11 +938,11 @@
             <li>Open LUCI and go to the Presets side; click Add and name it Morning reset.</li>
             <li>Grab every display in the property (use the lasso tool, or select-all) and set each to its assigned baseline channel.</li>
             <li>Grab every audio zone and set each to its baseline source and volume.</li>
-            <li>If you use lighting, add the lighting zones and recall the open-of-day scene.</li>
-            <li>Save the preset &mdash; it&rsquo;s now your single source of &lsquo;what right looks like&rsquo; at open.</li>
-            <li>Open the Scheduling app and schedule the Morning reset to run every day before open (set the time, choose daily, save).</li>
+            <li>If you use lighting, add the lighting zones and recall the morning scene.</li>
+            <li>Save the preset &mdash; it&rsquo;s now your single source of &lsquo;what right looks like&rsquo; each morning.</li>
+            <li>Open the Scheduling app and schedule the Morning reset to run every day in the 5&ndash;7am window (set the time, choose daily, save).</li>
             <li>Each morning the floor returns to its baseline on its own &mdash; last night&rsquo;s stray changes (a TV on local news, a screen on the wrong input) are erased before anyone checks.</li>
-            <li>Walk the floor at open and confirm it&rsquo;s correct &mdash; then stop running a manual open-of-day checklist.</li>
+            <li>Walk the floor once morning traffic picks up and confirm it&rsquo;s correct &mdash; then stop running a manual morning checklist.</li>
           </ol>
           <p class="fag-acc__nudge"><strong>This week &rarr;</strong>Build the Morning reset preset, schedule it for every day, and on Monday walk in to a floor that&rsquo;s already correct &mdash; no checklist, no chasing stray screens.</p>
         </div>
@@ -994,11 +1002,12 @@
   </section>
 
   <!-- ============== CONCLUSION ============== -->
-  <section class="fag-sec fag-sec--dark fag-conclude" id="conclusion">
-    <p class="fag-sec__kicker">Next step</p>
-    <h2 class="fag-sec__name">Everything here is <em>already yours.</em></h2>
+  <section class="fag-sec fag-sec--light fag-conclude" id="conclusion">
+    <p class="fag-sec__kicker">Section 07</p>
+    <h2 class="fag-sec__name">Next Step</h2>
     <hr class="fag-sec__rule">
-    <p class="fag-sec__role">You now have what you need to put LUCI to work across your property. Start where you already have a reason to act, test the features in a low-risk environment, and watch the capability compound from there.</p>
+    <p class="fag-sec__role">Everything here is <em>already yours.</em></p>
+    <p class="fag-sec__intro">You now have what you need to put LUCI to work across your property. Start where you already have a reason to act, test the features in a low-risk environment, and watch the capability compound from there.</p>
     <p class="fag-conclude__recap">Marketing &middot; Gaming &amp; Operations &middot; A/V &amp; Facilities &middot; IT &middot; Finance &middot; General Management</p>
     <p class="fag-conclude__help">Your Field Delivery Engineer can walk any team through setup &mdash; <a href="mailto:hello@lucisystems.com">just ask</a>.</p>
     <a class="fag-conclude__pdf" href="assets/sales/LUCI-Field-Activation-Guide.pdf">Download the scaled-down PDF</a>

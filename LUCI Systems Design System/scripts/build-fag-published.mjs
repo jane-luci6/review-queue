@@ -52,6 +52,7 @@ function esc(s){return String(s).replace(/&/g,'&amp;');}
 function cleanTitle(s){return String(s).split(' — ')[0].split(' (')[0].trim();}
 function pill(url,label){return `      <a class="fag-learn" href="${url}" target="_blank" rel="noopener"><span>${label}</span>${chev}</a>\n`;}
 const learnHeader = `      <p class="fag-learn__label">Relevant support portal articles</p>\n`;
+function fdeNoteBlock(note){return `      <p class="fag-learn__fde"><span class="fag-learn__fde-label">Your FDE</span> ${esc(note)}</p>\n`;}
 function learnBlock(panelId) {
   const multi = panelId && links.ucArticles && links.ucArticles[panelId];
   if (multi && multi.length) {
@@ -59,6 +60,9 @@ function learnBlock(panelId) {
   }
   const slug = panelId ? panelToSlug[panelId] : null;
   const link = slug ? bySlug[slug] : null;
+  if (link && link.fdeNote) {
+    return fdeNoteBlock(link.fdeNote);
+  }
   const hasArticle = link && link.url;
   if (hasArticle) {
     return learnHeader + pill(link.url, cleanTitle(link.article));
@@ -134,6 +138,11 @@ const css = `
     .fag-sec--light .fag-learn:hover{background:linear-gradient(155deg,#DCEFE7 0%,#EAF7F4 100%);box-shadow:inset 0 0 0 1px rgba(43,158,128,0.35);}
     .fag-sec--light .fag-learn__label{color:var(--ink-muted);}
     .fag-learn__label + .fag-learn{margin-top:8px;}
+    /* per-use-case "Your FDE" nudge (UCs with no KB article — e.g. config docs) */
+    .fag-learn__fde{margin:14px 0 0;padding:12px 16px;max-width:100%;border-left:2px solid rgba(104,227,190,.45);font-family:var(--font-body);font-size:14px;line-height:1.55;color:rgba(235,245,248,0.72);}
+    .fag-learn__fde-label{display:inline-block;margin-right:10px;font-family:var(--font-head);font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mint);}
+    .fag-sec--light .fag-learn__fde{border-left-color:var(--accent-light);color:var(--ink-muted);}
+    .fag-sec--light .fag-learn__fde-label{color:var(--accent-light);}
     /* per-section "Need a hand?" help line */
     .fag-help{margin:28px 0 0;padding-top:18px;border-top:1px solid rgba(104,227,190,.18);font-family:var(--font-body);font-size:14px;color:rgba(235,245,248,0.72);line-height:1.6;max-width:62ch;}
     .fag-help strong{color:var(--off-white);font-weight:600;}
