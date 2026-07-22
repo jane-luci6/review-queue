@@ -389,7 +389,7 @@
     <!-- UC02 -->
     <div class="fag-uc">
       <div class="fag-uc__head"><span class="fag-uc__num">02</span><h3 class="fag-uc__title">Make every jackpot a floor event, automatically.</h3></div>
-      <p class="fag-uc__desc">When a jackpot hits, a coordinated preset fires in that zone &mdash; accent lights pulse, audio swells for a beat, nearby screens flash a celebration &mdash; then everything resets on its own. The response is calibrated per area so it fits the space.</p>
+      <p class="fag-uc__desc">When a jackpot hits, a coordinated preset fires in that zone &mdash; accent lights pulse, audio swells for a beat, nearby screens flash a celebration &mdash; then everything resets on its own. The response is calibrated per area so it fits the space. If the jackpot preset doesn&rsquo;t already exist, the guide below walks you through building one from scratch.</p>
       <ul class="fag-uc__benefits">
         <li>Turn one guest&rsquo;s win into energy the whole floor feels</li>
         <li>Create a sense of action that keeps nearby players engaged</li>
@@ -611,7 +611,7 @@
     <!-- UC04 -->
     <div class="fag-uc">
       <div class="fag-uc__head"><span class="fag-uc__num">04</span><h3 class="fag-uc__title">Configure a private event once, then activate it and let it revert on its own.</h3></div>
-      <p class="fag-uc__desc">Build the full A/V setup for a banquet, concert, or private event as a named preset &mdash; custom audio mix, branded screen content, zone-specific settings &mdash; and enter the number of minutes until it should revert. The preset runs for the event and returns the property to its baseline on its own, with no tap to switch it off.</p>
+      <p class="fag-uc__desc">Build the full A/V setup for a banquet, concert, or private event as a named preset &mdash; custom audio mix, branded screen content, zone-specific settings &mdash; and enter the number of minutes until it should revert. The preset runs for the event and returns the property to its baseline on its own, with no tap to switch it off. If you don&rsquo;t already have a preset built, the guide below starts from scratch.</p>
       <ul class="fag-uc__benefits">
         <li>Deliver a polished event without rebuilding it each time</li>
         <li>Hand activation to anyone &mdash; it&rsquo;s one tap, not a checklist</li>
@@ -962,12 +962,12 @@
 
     <!-- UC04 -->
     <div class="fag-uc">
-      <div class="fag-uc__head"><span class="fag-uc__num">04</span><h3 class="fag-uc__title">Make sure every team is actually using what they can.</h3></div>
-      <p class="fag-uc__desc">The capability only pays off when each function turns it on. A quick check across teams surfaces where LUCI is sitting idle &mdash; whether marketing is still routing content through a vendor, IT hasn&rsquo;t been onboarded, or finance hasn&rsquo;t revisited the numbers since go-live.</p>
+      <div class="fag-uc__head"><span class="fag-uc__num">04</span><h3 class="fag-uc__title">Set LUCI to open to the zone you walk first.</h3></div>
+      <p class="fag-uc__desc">You walk the same part of the floor first every day. Save that view as your starting map state and LUCI opens right to it on every login &mdash; no panning or zooming to get your bearings. Each manager can save their own, so every walkthrough starts where it should.</p>
       <ul class="fag-uc__benefits">
-        <li>Convert the investment into activity, not shelfware</li>
-        <li>Spot the team that&rsquo;s stalled and unblock them</li>
-        <li>Make sure value is compounding across every function</li>
+        <li>Open LUCI already oriented to the zone you care about</li>
+        <li>Give each manager their own starting view</li>
+        <li>Stop pinching and panning before every walkthrough</li>
       </ul>
       <div class="fag-acc">
         <button class="fag-acc__btn" aria-expanded="false" aria-controls="gm4-panel">
@@ -978,18 +978,19 @@
           <div class="fag-acc__setup">
             <p class="fag-acc__sub">Before you start</p>
             <ol class="fag-acc__steps fag-acc__steps--setup">
-              <li>A list of the teams who should be using LUCI (Marketing, Operations, A/V, IT, Finance) and their go-live date. Optional: access to LUCI&rsquo;s logs/usage to see which zones and users are active.</li>
+              <li>A LUCI login with access to the property map. Any user can save their own starting state &mdash; it lives in the browser, so each manager sets theirs on the device they walkthrough with.</li>
             </ol>
           </div>
           <ol class="fag-acc__steps">
-            <li>List each function that should be using LUCI and what they&rsquo;re meant to do on it (Marketing: content to every screen; Operations: floor energy and jackpot events; A/V: the property schedule and service requests; IT: endpoints, config, permissions; Finance: the A/V numbers).</li>
-            <li>For each team, check whether they&rsquo;re actually doing it. Where you can, look at LUCI&rsquo;s logs/usage to see which zones and users have been active since go-live.</li>
-            <li>Surface where LUCI is sitting idle: is Marketing still routing content through a vendor? Has IT been onboarded to endpoints and permissions? Has Finance revisited the A/V numbers since go-live?</li>
-            <li>For each stalled team, find the blocker &mdash; a missing login, a training gap, a workflow that hasn&rsquo;t been handed over &mdash; and unblock it.</li>
-            <li>Set a date to re-check adoption (e.g., 30 days out) so the investment keeps compounding instead of going to shelfware.</li>
-            <li>Make it someone&rsquo;s job to close the loop, so &lsquo;every team is using what they can&rsquo; is a standing check, not a one-time push.</li>
+            <li>Open LUCI and navigate to the zone you walk first &mdash; pan and zoom until that area fills the view the way you want to see it each morning.</li>
+            <li>Set the side bar, device type, and map mode the way you want them to open, so your starting state is fully shaped &mdash; not just the location.</li>
+            <li>Open the main menu and choose Preferences.</li>
+            <li>Under Saved State, select &lsquo;Let me choose where to start,&rsquo; then click Save &mdash; LUCI now opens to this exact location, zoom, and layout on every login.</li>
+            <li>Log out and back in to confirm LUCI opens right to your saved zone.</li>
+            <li>After wandering elsewhere on the map, open Preferences and click Restore to snap back to your starting spot.</li>
+            <li>Have each manager repeat this on their own login so every walkthrough begins oriented to the zone that manager owns.</li>
           </ol>
-          <p class="fag-acc__nudge"><strong>This week &rarr;</strong>Run the adoption check across all five functions, find one team that&rsquo;s stalled, and unblock them &mdash; then put a 30-day re-check on the calendar.</p>
+          <p class="fag-acc__nudge"><strong>This week &rarr;</strong>Save your starting map state to the zone you walk first, then log out and back in &mdash; LUCI should open right to it. No more pinching and panning to start the day.</p>
         </div>
       </div>
     </div>
