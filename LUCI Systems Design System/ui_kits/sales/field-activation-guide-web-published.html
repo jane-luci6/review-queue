@@ -52,7 +52,7 @@
   .fag-sec__kicker { font-family: var(--font-head); font-weight: 700; font-size: 11px; letter-spacing: 0.20em; text-transform: uppercase; color: var(--mint); margin-bottom: 10px; }
   .fag-sec__name { font-family: var(--font-head); font-weight: 700; font-size: clamp(28px, 4vw, 40px); line-height: 1.05; letter-spacing: -0.025em; color: var(--off-white); margin: 0 0 8px; }
   .fag-sec__rule { width: 40px; height: 3px; background: var(--mint); margin: 0 0 18px; border: 0; }
-  .fag-sec__role { font-family: var(--font-body); font-size: 16px; line-height: 1.6; color: rgba(235,245,248,0.78); max-width: 64ch; margin: 0 0 28px; }
+  .fag-sec__role { font-family: var(--font-body); font-weight: 600; font-size: 20px; line-height: 1.45; color: rgba(235,245,248,0.92); max-width: 60ch; margin: 0 0 24px; }
   .fag-sec__intro { font-family: var(--font-body); font-size: 15px; line-height: 1.65; color: rgba(235,245,248,0.72); max-width: 66ch; margin: 0 0 32px; }
 
   /* ── Use case card ── */
@@ -154,14 +154,15 @@
   /* dark-section type (default) */
   .fag-sec--dark .fag-sec__kicker { color: var(--mint); }
   .fag-sec--dark .fag-sec__name { color: var(--off-white); }
-  .fag-sec--dark .fag-sec__role, .fag-sec--dark .fag-sec__intro { color: rgba(235,245,248,0.78); }
+  .fag-sec--dark .fag-sec__intro { color: rgba(235,245,248,0.78); }
   .fag-sec--dark .fag-uc { border-top-color: rgba(235,245,248,0.10); }
   .fag-sec--dark .fag-uc__num { color: var(--mint); }
 
   /* light-section type */
   .fag-sec--light .fag-sec__kicker { color: var(--accent-light); }
   .fag-sec--light .fag-sec__name { color: var(--ink-strong); }
-  .fag-sec--light .fag-sec__role, .fag-sec--light .fag-sec__intro { color: var(--ink-muted); }
+  .fag-sec--light .fag-sec__role { color: var(--ink-strong); }
+  .fag-sec--light .fag-sec__intro { color: var(--ink-muted); }
   .fag-sec--light .fag-uc { border-top-color: var(--rule-light); }
   .fag-sec--light .fag-uc__title { color: var(--ink-strong); }
   .fag-sec--light .fag-uc__desc { color: var(--ink); }
