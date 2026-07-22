@@ -1,0 +1,43 @@
+# LUCI website — circuit pattern standard
+
+Always-applied. Governs the **mint/gold circuit background pattern on lucisystems.com webpages only**. Codified Jul 22 2026 after Jane approved the muted treatment and asked to make it the site-wide standard.
+
+## The standard
+
+- **One file, everywhere:** `/images/textures/texture-circuit-header-mintgold.png` — the original mint/gold circuit motif. Do **not** generate a seamless/tiled variant and do **not** substitute another texture. (The two `*-seamless*.png` tiles are retired; do not reference them.)
+- **Never tile it.** The source tile is not seamlessly tileable; repeating it produces a visible seam down the middle. Always render a **single tile** with `background-size: cover; background-repeat: no-repeat; background-position: center;` — i.e. **enlarge + crop** to fit the space, never stretch (don't distort aspect ratio) and never duplicate.
+- **Treatment (the "0.22 + veil" house look):** `mix-blend-mode: lighten; opacity: 0.22;` plus the horizontal navy veil (`::after` linear gradient `transparent → rgba(10,22,28,0.86) → transparent`) that fades the pattern out behind the centered content column so it reads only at the far left/right margins. This is the treatment Jane approved on the casino/industry pages.
+- **Blend means dark-only.** `lighten` keeps only the light circuit lines and drops the tile's dark navy field, so the pattern is **visible only on dark (`tone="deep"`) sections**. On light/sand sections it is invisible — do not add it there.
+- **Placement: the first dark content band.** The first dark (`tone="deep"` / navy) content section after the hero carries the pattern — one per page. Not the hero itself. (Homepage is the one exception: the pattern **starts** on the first section `HomeDifferentiator` — "With LUCI, you can run them all" — and **repeats** on the four messaging flipcards `HomeWhyItMatters`. `HomeIntro` and `HomeIndustries` do not carry it.)
+
+## How to apply it
+
+- **Use `SectionBlock`'s `pattern` prop** — it already implements the canonical treatment (`.section--pattern` → mintgold, cover, no-repeat, lighten, 0.22, + veil). Do not hand-roll a `::before` in a page or component when a `SectionBlock` can carry it.
+- Add `pattern` to the first dark (`tone="deep"`) content `SectionBlock` on each webpage that doesn't already have it. If the first content band is light/sand, skip the pattern there (it won't read) — do not force it onto a later dark section just to get a pattern on the page.
+- Keep `opacity` at `0.22` with the veil. If a section feels too busy, the fix is the veil / lowering opacity — **never** tiling.
+
+## Scope — webpages only
+
+**Applies to:** the public webpages of lucisystems.com — homepage, industry hub + industry detail pages, who-we-serve hub + persona pages, platform, about, contact, contact/thanks.
+
+**Does NOT apply to** (leave their existing textures alone):
+- Newsletter (`the-signal-issue-*.html`)
+- FAG / Field Activation Guide assets
+- Case studies (`/resources/case-studies/*`) — these use the steel print textures
+- The resources center (`/resources/*`)
+- The blog (`/blog/*`) — excluded per Jane; treated as content, not a webpage
+- Dev option/prototype pages (`*-options.astro`)
+
+## Canonical reference
+
+- `src/components/SectionBlock.astro` → `.section--pattern` / `.section--pattern-mintgold` + `.section--pattern::after` veil. This is the source of truth for the treatment.
+- Homepage: pattern **starts** on `src/components/HomeDifferentiator.astro` ("With LUCI, you can run them all" — the first section) and **repeats** on `src/components/HomeWhyItMatters.astro` (the four messaging flipcards). Both use the standard `::before` (mintgold, cover, lighten, 0.22) + `::after` veil. `HomeIntro` and `HomeIndustries` carry no pattern.
+- Persona/industry hero: `src/components/PersonaHeroStage.astro` (carries the pattern in the hero stage — predates the "first content band only" standard; do not add the pattern to other heroes by copying it).
+
+## Don't
+
+- Don't tile/repeat the texture (seam). Enlarge + crop via `cover`.
+- Don't use a different circuit texture on webpages (steel prints are for case studies / resources only).
+- Don't add the pattern to light/sand sections (invisible under `lighten`).
+- Don't put the pattern on more than one section per page.
+- Don't apply this standard to the excluded assets above.
