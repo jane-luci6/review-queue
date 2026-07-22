@@ -771,12 +771,12 @@
 
     <!-- UC04 -->
     <div class="fag-uc">
-      <div class="fag-uc__head"><span class="fag-uc__num">04</span><h3 class="fag-uc__title">Set up kiosk mode so any staffer can control their area from a phone or mounted touchscreen.</h3></div>
-      <p class="fag-uc__desc">Put a small mounted touchscreen &mdash; or any staffer&rsquo;s phone &mdash; in charge of a single space. A kiosk user sees a simple list of their displays and channels, not the property map, so a cabana guest or a conference-room host can pick a channel with one tap and no help from your team.</p>
+      <div class="fag-uc__head"><span class="fag-uc__num">04</span><h3 class="fag-uc__title">See device health across the property at a glance.</h3></div>
+      <p class="fag-uc__desc">Zoom out on the property map and LUCI clusters every endpoint into a single colored circle &mdash; green means the cluster is all online, yellow means at least one device is offline, red means at least one is powered off. Click a cluster to break it apart and see exactly which device needs attention, so a dead screen gets caught before a guest ever notices it. There are no push alerts &mdash; this is a watch-the-map practice, so make a quick scan part of someone&rsquo;s morning check.</p>
       <ul class="fag-uc__benefits">
-        <li>Let guests and staffers self-serve the spaces they&rsquo;re in</li>
-        <li>Lock each kiosk to one venue, zone, and source list</li>
-        <li>No map, no admin surface &mdash; just a tap list</li>
+        <li>Spot offline and powered-off devices before a guest does</li>
+        <li>Read the whole property&rsquo;s health in one glance, not zone by zone</li>
+        <li>No polling or walk-arounds &mdash; the map tells you where to look</li>
       </ul>
       <div class="fag-acc">
         <button class="fag-acc__btn" aria-expanded="false" aria-controls="i4-panel">
@@ -787,19 +787,19 @@
           <div class="fag-acc__setup">
             <p class="fag-acc__sub">Before you start</p>
             <ol class="fag-acc__steps fag-acc__steps--setup">
-              <li>You have a small mounted touchscreen (LUCI&rsquo;s large-smartphone-sized panel) or any phone with a browser, and the venue or zone plus the sources you want that kiosk to reach are already on the map.</li>
+              <li>LUCI v2.17.0 or later &mdash; clustering is on by default. (If you need it disabled, contact LUCI support.) A login with access to the property map.</li>
             </ol>
           </div>
           <ol class="fag-acc__steps">
-            <li>In LUCI, create a kiosk user (User Management &rarr; Access) and assign it a PIN.</li>
-            <li>Filter that user&rsquo;s access to the venue or zone the kiosk controls, and to just the sources they should pick from (see IT UC03 for access filtering).</li>
-            <li>Set the user to kiosk mode &mdash; list-based control with no map. They get a simple list of displays and channels, not the property map.</li>
-            <li>Mount the small touchscreen in the space (conference room, cabana, etc.), or have the staffer open the LUCI URL on their phone.</li>
-            <li>The user logs in with their PIN and lands on a simple list of their displays and channels &mdash; tap a display, pick a channel, done.</li>
-            <li>For a cabana: the guest uses the mounted touchscreen to choose the channel for that cabana&rsquo;s screen &mdash; self-serve, no staff involved.</li>
-            <li>For a conference room: the touchscreen makes it easy to switch between a projector and a flat screen and change the channel.</li>
+            <li>Open LUCI and go to the property map; zoom out until endpoints group into cluster circles, each with a count of the devices inside.</li>
+            <li>Scan the property: green clusters are all online and powered on &mdash; no action needed.</li>
+            <li>A yellow cluster means at least one device in that area is offline; a red cluster means at least one is powered off. If a cluster has both, it shows yellow &mdash; offline is treated as the more urgent.</li>
+            <li>Click the yellow or red cluster (or scroll into it) to break it apart into its individual endpoints.</li>
+            <li>Hover an endpoint &mdash; or long-press on a touchscreen &mdash; to see which venue it belongs to, so you know whose area is affected.</li>
+            <li>Send someone to that device: power it back on or restore its connection before a guest hits a dead screen.</li>
+            <li>Make a quick map scan part of the morning reset check or the A/V walkthrough, so problems get caught by attention, not by guest complaints.</li>
           </ol>
-          <p class="fag-acc__nudge"><strong>This week &rarr;</strong>Set up one kiosk user for a single cabana or conference room, mount the touchscreen, and let a guest pick their own channel.</p>
+          <p class="fag-acc__nudge"><strong>This week &rarr;</strong>Zoom out on the map, find any yellow or red cluster, and send someone to fix the device behind it &mdash; before a guest ever notices. Then make that scan part of someone&rsquo;s morning check.</p>
         </div>
       </div>
     </div>

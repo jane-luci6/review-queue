@@ -24,7 +24,7 @@ const panelToSlug = {
   m1: 'marketing-push-message', m2: 'marketing-daypart-promotions', m3: 'marketing-video-wall', m4: 'marketing-event-campaign',
   g1: 'gaming-floor-audio', g2: 'gaming-jackpot-event', g3: 'gaming-announcement-paging', g4: 'gaming-video-wall',
   a1: 'av-property-schedule', a2: 'av-service-requests', a3: 'av-edit-source', a4: 'av-private-event',
-  i1: 'it-add-endpoint', i2: 'it-config-docs', i3: 'it-permissions', i4: 'it-kiosk',
+  i1: 'it-add-endpoint', i2: 'it-config-docs', i3: 'it-permissions', i4: 'it-device-health',
   gm1: 'gm-walk-floor-ipad', gm2: 'gm-morning-reset', gm4: 'gm-default-map-state',
 };
 
