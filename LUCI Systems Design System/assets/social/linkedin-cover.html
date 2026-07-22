@@ -39,15 +39,18 @@
     overflow: hidden;
   }
 
-  /* circuit texture — navy-mint, tiled faint (matches sales-doc treatment: 360px auto, ~13%) */
+  /* circuit texture — navy-mint, visible at the edges, fading toward the middle */
   .cover__pattern {
     position: absolute;
     inset: 0;
     background-image: url("../textures/texture-circuit-navy-mint.png");
     background-repeat: repeat;
     background-size: 360px auto;
-    opacity: 0.15;
+    opacity: 0.6;
+    mix-blend-mode: screen;
     pointer-events: none;
+    -webkit-mask-image: radial-gradient(ellipse 62% 78% at 50% 50%, transparent 0%, transparent 52%, #000 100%);
+            mask-image: radial-gradient(ellipse 62% 78% at 50% 50%, transparent 0%, transparent 52%, #000 100%);
   }
 
   /* soft mint glow behind the logo for depth (matches prior cover) */
