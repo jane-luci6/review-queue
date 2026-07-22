@@ -4,10 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>LUCI — Field Activation Guide</title>
-<link rel="stylesheet" href="../../assets/fonts/luci-brand-fonts.css">
-<style id="fag-web-css">
-    /* published-variant: per-use-case support-portal pill — quiet outline chip so the
+<title>LUCI — Field Activation Guide (Webflow embed preview)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;600;700&family=Syncopate:wght@400;700&display=swap">
+<style>
+/* published-variant: per-use-case support-portal pill — quiet outline chip so the
        use-case content stays primary and the article links read as secondary. */
     .fag-learn{display:inline-flex;align-items:center;gap:9px;margin-top:10px;padding:9px 18px;max-width:100%;background:transparent;border:1px solid rgba(104,227,190,0.38);color:var(--mint);border-radius:9999px;font-family:var(--font-body);font-weight:600;font-size:12px;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;transition:background .18s ease-out,border-color .18s ease-out;}
     .fag-learn:hover{background:rgba(104,227,190,0.10);border-color:var(--mint);}
@@ -33,7 +35,7 @@
     .fag-sec--light .fag-help strong{color:var(--ink-strong);}
     .fag-sec--light .fag-help a{color:var(--accent-light);}
 
-  :root {
+  .luci-fag {
     --navy-deep: #0A161C; --navy: #10232D; --navy-mid: #1B2F3A; --navy-muted: #5A7480;
     --mint: #68E3BE; --mint-rgb: 104, 227, 190; --accent-light: #2b9e80;
     --gold: #EDD086; --gold-rgb: 237, 208, 134; --gold-deep: #CEB06E;
@@ -42,9 +44,8 @@
     --font-head: 'Space Grotesk', system-ui, sans-serif;
     --font-body: 'Inter', system-ui, sans-serif;
   }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { margin: 0; background: var(--navy-deep); color: rgba(235,245,248,0.92); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
+  .luci-fag * { box-sizing: border-box; }
+  .luci-fag { margin: 0; background: var(--navy-deep); color: rgba(235,245,248,0.92); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
   .fag { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 
   /* ── Section ── */
@@ -114,7 +115,7 @@
   .fag-sec--light.fag-conclude .fag-conclude__pdf:hover { color: var(--accent-light); }
 
   /* ── Light-section tokens ── */
-  :root {
+  .luci-fag {
     --sand: #e9ece9; --rule-light: #dbe1e4;
     --ink: #354f5c; --ink-strong: #1c2b33; --ink-muted: #5a7480;
   }
@@ -198,10 +199,11 @@
 
   /* conclusion band sits on .fag-sec full-bleed; no separate footer framing needed */
 
-  @media (prefers-reduced-motion: reduce) { .fag-acc__panel, .fag-acc__chev { transition: none; } html { scroll-behavior: auto; } }
+  @media (prefers-reduced-motion: reduce) { .fag-acc__panel, .fag-acc__chev { transition: none; } }
 </style>
 </head>
 <body>
+<div class="luci-fag">
 <nav class="fag-nav" aria-label="Section navigation">
   <div class="fag-nav__inner">
     <a class="fag-nav__back" href="field-activation-guide-hub.html">
@@ -659,7 +661,7 @@
   </section>
 
 </article>
-
+</div>
 <script>
   (function () {
     // Scroll-spy: highlight the active persona link in the sticky nav
