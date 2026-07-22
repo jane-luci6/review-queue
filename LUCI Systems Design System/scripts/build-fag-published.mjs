@@ -130,8 +130,8 @@ const css = `
     .fag-learn span{min-width:0;}
     .fag-learn + .fag-learn{margin-top:8px;}
     .fag-learn__label{margin:22px 0 0;font-family:var(--font-head);font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(235,245,248,0.5);}
-    .fag-sec--light .fag-learn{border-color:rgba(43,158,128,0.5);color:var(--ink-strong);}
-    .fag-sec--light .fag-learn:hover{background:rgba(43,158,128,0.08);border-color:var(--accent-light);}
+    .fag-sec--light .fag-learn{background:linear-gradient(155deg,#E6F5EF 0%,#F3FAF8 100%);border-color:transparent;box-shadow:inset 0 0 0 1px rgba(43,158,128,0.18);color:var(--ink-strong);}
+    .fag-sec--light .fag-learn:hover{background:linear-gradient(155deg,#DCEFE7 0%,#EAF7F4 100%);box-shadow:inset 0 0 0 1px rgba(43,158,128,0.35);}
     .fag-sec--light .fag-learn__label{color:var(--ink-muted);}
     .fag-learn__label + .fag-learn{margin-top:8px;}
     /* per-section "Need a hand?" help line */
