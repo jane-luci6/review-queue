@@ -199,12 +199,34 @@
   @media (prefers-reduced-motion: reduce) { .fag-acc__panel, .fag-acc__chev { transition: none; } }
 
   /* ===== PDF / print ===== */
+  .fag-print-cover, .fag-print-toc { display: none; }
   @media print {
     @page { margin: 12mm; }
+    @page :first { margin: 0; }
     *, *::before, *::after { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
     html, body { background: var(--navy-deep) !important; }
     .fag-nav { display: none !important; }
+    .fag-sec { break-before: page; }
     .fag-sec__head, .fag-sec__name, .fag-sec__role { break-after: avoid; }
     .fag-uc, .fag-uc__benefits li, .fag-conclude { break-inside: avoid; }
+
+    .fag-print-cover, .fag-print-toc { display: block; }
+    .fag-print-cover { min-height: 100vh; display: flex; break-after: page; }
+    .fag-print-cover__inner { margin: auto; padding: 28mm 24mm; max-width: 60ch; }
+    .fag-print-cover__logo { height: 116px; width: auto; margin: 0 0 44px; }
+    .fag-print-cover__kicker { font-family: var(--font-display); font-weight: 700; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--mint); margin: 0 0 22px; }
+    .fag-print-cover__title { font-family: var(--font-display); font-weight: 700; font-size: 46px; line-height: 1.04; letter-spacing: -0.02em; text-transform: uppercase; color: var(--off-white); margin: 0 0 22px; }
+    .fag-print-cover__title em { font-style: normal; color: var(--mint); }
+    .fag-print-cover__sub { font-family: var(--font-body); font-size: 17px; line-height: 1.55; color: rgba(235,245,248,0.80); max-width: 46ch; margin: 0; }
+
+    .fag-print-toc { break-after: page; }
+    .fag-print-toc__inner { max-width: 60ch; margin: 0 auto; }
+    .fag-print-toc__kicker { font-family: var(--font-display); font-weight: 700; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--mint); margin: 0 0 12px; }
+    .fag-print-toc__heading { font-family: var(--font-head); font-weight: 700; font-size: 34px; letter-spacing: -0.02em; color: var(--off-white); margin: 0 0 32px; }
+    .fag-print-toc__list { list-style: none; padding: 0; margin: 0; }
+    .fag-print-toc__list li { border-top: 1px solid rgba(235,245,248,0.14); }
+    .fag-print-toc__list li:last-child { border-bottom: 1px solid rgba(235,245,248,0.14); }
+    .fag-print-toc__list a { display: flex; align-items: baseline; gap: 22px; padding: 15px 0; text-decoration: none; color: var(--off-white); font-family: var(--font-head); font-weight: 600; font-size: 19px; letter-spacing: -0.01em; }
+    .fag-print-toc__num { color: var(--mint); font-family: var(--font-display); font-weight: 700; font-size: 12px; letter-spacing: 0.12em; min-width: 2em; }
   }
 </style>
