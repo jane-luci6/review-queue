@@ -4,10 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>LUCI — Field Activation Guide</title>
-<link rel="stylesheet" href="../../assets/fonts/luci-brand-fonts.css">
-<style id="fag-hub-css">
-  :root {
+<title>LUCI — Field Activation Guide (field-activation-guide-hub preview)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;600;700&family=Syncopate:wght@400;700&display=swap">
+<style>
+.luci-fag {
     --navy-deep: #0a161c; --navy: #10232d; --navy-mid: #314955; --navy-muted: #49616e;
     --mint: #68e3be; --mint-rgb: 104, 227, 190; --accent-light: #2b9e80;
     --gold: #edd086; --gold-rgb: 237, 208, 134; --gold-deep: #ceb06e;
@@ -19,9 +21,8 @@
     --page-pad: clamp(28px, 6vw, 60px);
     --content-wide: 1120px;
   }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { margin: 0; background: var(--navy-deep); color: var(--off-white); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
+  .luci-fag * { box-sizing: border-box; }
+  .luci-fag { margin: 0; background: var(--navy-deep); color: var(--off-white); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
   .fag-hub { display: block; }
 
   /* ── Hero ── */
@@ -91,10 +92,11 @@
 
   @media (max-width: 980px) { .fag-pick__grid { grid-template-columns: repeat(2, minmax(0,1fr)); } .fag-pick__head { align-items: flex-start; } }
   @media (max-width: 640px) { .fag-pick__grid { grid-template-columns: 1fr; } .fag-pick__head { flex-direction: column; align-items: flex-start; } }
-  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .fag-pick__cell, .fag-pick__action { transition: none; } }
+  @media (prefers-reduced-motion: reduce) { .fag-pick__cell, .fag-pick__action { transition: none; } }
 </style>
 </head>
 <body>
+<div class="luci-fag">
 <main class="fag-hub" id="fag-hub-root">
 
   <!-- ===================== HERO ===================== -->
@@ -224,5 +226,6 @@
             </div>
           </section>
         </main>
+</div>
 </body>
 </html>
