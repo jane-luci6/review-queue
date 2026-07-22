@@ -9,7 +9,7 @@
 <style id="fag-web-css">
     /* published-variant: per-use-case support-portal pill — quiet outline chip so the
        use-case content stays primary and the article links read as secondary. */
-    .fag-learn{display:inline-flex;align-items:center;gap:9px;margin-top:10px;padding:9px 18px;max-width:100%;background:transparent;border:1px solid rgba(104,227,190,0.38);color:var(--mint);border-radius:9999px;font-family:var(--font-head);font-weight:600;font-size:12px;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;transition:background .18s ease-out,border-color .18s ease-out;}
+    .fag-learn{display:inline-flex;align-items:center;gap:9px;margin-top:10px;padding:9px 18px;max-width:100%;background:transparent;border:1px solid rgba(104,227,190,0.38);color:var(--mint);border-radius:9999px;font-family:var(--font-body);font-weight:600;font-size:12px;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;transition:background .18s ease-out,border-color .18s ease-out;}
     .fag-learn:hover{background:rgba(104,227,190,0.10);border-color:var(--mint);}
     .fag-learn svg{width:13px;height:13px;flex:0 0 auto;}
     .fag-learn span{min-width:0;}
@@ -51,7 +51,7 @@
   .fag-sec { padding: 56px 0 8px; border-top: 1px solid var(--rule-dark); scroll-margin-top: 24px; }
   .fag-sec__kicker { font-family: var(--font-head); font-weight: 700; font-size: 11px; letter-spacing: 0.20em; text-transform: uppercase; color: var(--mint); margin-bottom: 10px; }
   .fag-sec__name { font-family: var(--font-head); font-weight: 700; font-size: clamp(28px, 4vw, 40px); line-height: 1.05; letter-spacing: -0.025em; color: var(--off-white); margin: 0 0 8px; }
-  .fag-sec__rule { width: 40px; height: 3px; background: var(--mint); margin: 0 0 18px; border: 0; }
+  .fag-sec__rule { width: auto; height: 3px; background: linear-gradient(to right, var(--mint) 0%, var(--mint) 40px, transparent 40px); margin: 0 0 18px; border: 0; }
   .fag-sec__role { font-family: var(--font-body); font-weight: 600; font-size: 20px; line-height: 1.45; color: rgba(235,245,248,0.92); max-width: 60ch; margin: 0 0 24px; }
   .fag-sec__intro { font-family: var(--font-body); font-size: 15px; line-height: 1.65; color: rgba(235,245,248,0.72); max-width: 66ch; margin: 0 0 32px; }
 
@@ -59,7 +59,7 @@
   .fag-uc { padding: 26px 0; border-top: 1px solid var(--rule-dark); }
   .fag-uc:first-of-type { border-top: 0; }
   .fag-uc__head { display: flex; gap: 16px; align-items: baseline; margin-bottom: 10px; }
-  .fag-uc__num { flex: 0 0 auto; font-family: var(--font-head); font-weight: 700; font-size: 17px; letter-spacing: 0.04em; color: var(--mint); min-width: 30px; }
+  .fag-uc__num { flex: 0 0 auto; font-family: var(--font-head); font-weight: 700; font-size: 18px; letter-spacing: 0.04em; color: var(--mint); min-width: 30px; }
   .fag-uc__title { font-family: var(--font-head); font-weight: 700; font-size: 20px; line-height: 1.25; letter-spacing: -0.015em; color: var(--off-white); margin: 0; }
   .fag-uc__desc { font-family: var(--font-body); font-size: 15px; line-height: 1.6; color: rgba(235,245,248,0.82); max-width: 64ch; margin: 0 0 14px; }
   .fag-uc__benefits { list-style: none; padding: 0; margin: 0 0 16px; display: grid; gap: 6px; }
@@ -147,7 +147,7 @@
   .fag-sec--dark { background: var(--navy); color: rgba(235,245,248,0.92); }
   .fag-sec--light { background: var(--off-white); color: var(--ink); }
   .fag-sec::before { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; background-repeat: no-repeat; background-position: right top; background-size: 540px auto; }
-  .fag-sec--dark::before { background-image: url("assets/textures/texture-circuit-navy-mint.png"); opacity: 0.10; }
+  .fag-sec--dark::before { background-image: url("assets/textures/texture-circuit-mintgold-seamless.png"); background-repeat: repeat; background-size: 620px auto; background-position: right top; opacity: 0.16; -webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 22%, #000 72%); mask-image: linear-gradient(to right, transparent 0%, transparent 22%, #000 72%); }
   .fag-sec--light::before { background-image: url("assets/textures/texture-circuit-light-navy.png"); opacity: 0.05; }
   .fag-sec > * { position: relative; z-index: 1; }
 
@@ -156,15 +156,17 @@
   .fag-sec--dark .fag-sec__name { color: var(--off-white); }
   .fag-sec--dark .fag-sec__intro { color: rgba(235,245,248,0.78); }
   .fag-sec--dark .fag-uc { border-top-color: rgba(235,245,248,0.10); }
-  .fag-sec--dark .fag-uc__num { color: var(--mint); }
+  .fag-sec--dark .fag-uc__num { background: linear-gradient(to right, var(--gold) 0%, var(--mint) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
 
   /* light-section type */
   .fag-sec--light .fag-sec__kicker { color: var(--accent-light); }
+  .fag-sec--light .fag-sec__rule { background: linear-gradient(to right, var(--accent-light) 0%, var(--accent-light) 40px, transparent 40px); }
   .fag-sec--light .fag-sec__name { color: var(--ink-strong); }
   .fag-sec--light .fag-sec__role { color: var(--ink-strong); }
   .fag-sec--light .fag-sec__intro { color: var(--ink-muted); }
   .fag-sec--light .fag-uc { border-top-color: var(--rule-light); }
   .fag-sec--light .fag-uc__title { color: var(--ink-strong); }
+  .fag-sec--light .fag-uc__num { color: var(--accent-light); }
   .fag-sec--light .fag-uc__desc { color: var(--ink); }
   .fag-sec--light .fag-uc__num { color: var(--accent-light); }
   .fag-sec--light .fag-uc__benefits li { color: var(--ink); }

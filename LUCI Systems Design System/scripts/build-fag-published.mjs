@@ -128,7 +128,7 @@ out = out.replace(/\r\n/g, '\n');
 const css = `
     /* published-variant: per-use-case support-portal pill — quiet outline chip so the
        use-case content stays primary and the article links read as secondary. */
-    .fag-learn{display:inline-flex;align-items:center;gap:9px;margin-top:10px;padding:9px 18px;max-width:100%;background:transparent;border:1px solid rgba(104,227,190,0.38);color:var(--mint);border-radius:9999px;font-family:var(--font-head);font-weight:600;font-size:12px;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;transition:background .18s ease-out,border-color .18s ease-out;}
+    .fag-learn{display:inline-flex;align-items:center;gap:9px;margin-top:10px;padding:9px 18px;max-width:100%;background:transparent;border:1px solid rgba(104,227,190,0.38);color:var(--mint);border-radius:9999px;font-family:var(--font-body);font-weight:600;font-size:12px;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;transition:background .18s ease-out,border-color .18s ease-out;}
     .fag-learn:hover{background:rgba(104,227,190,0.10);border-color:var(--mint);}
     .fag-learn svg{width:13px;height:13px;flex:0 0 auto;}
     .fag-learn span{min-width:0;}
