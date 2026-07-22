@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>LUCI — LinkedIn company cover</title>
+<!--
+  LinkedIn company page cover banner.
+  Source: render to linkedin-cover.png (1584x396 @1x) and linkedin-cover@2x.png (3168x792 @2x)
+  via headless Chrome (see scripts/render-linkedin-cover.sh).
+
+  Composition: full LUCI logo (mint mark + white wordmark) left, thin hairline, then the
+  canonical tagline — Space Grotesk 600, off-white at 82%, with "Orchestration Engine"
+  accented in gold #edd086 — matching the live website (src/data/site.ts · HomeHero).
+-->
+<link rel="stylesheet" href="../fonts/luci-brand-fonts.css">
+<style>
+  :root {
+    --navy-deep: #0a161c;
+    --mint: #68e3be;
+    --mint-rgb: 104, 227, 190;
+    --gold: #edd086;
+    --off-white: #f5f8fa;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    width: 1584px;
+    height: 396px;
+    overflow: hidden;
+    background: var(--navy-deep);
+  }
+
+  .cover {
+    position: relative;
+    width: 1584px;
+    height: 396px;
+    background: var(--navy-deep);
+    overflow: hidden;
+  }
+
+  /* circuit texture — navy-mint, tiled faint (matches sales-doc treatment: 360px auto, ~13%) */
+  .cover__pattern {
+    position: absolute;
+    inset: 0;
+    background-image: url("../textures/texture-circuit-navy-mint.png");
+    background-repeat: repeat;
+    background-size: 360px auto;
+    opacity: 0.15;
+    pointer-events: none;
+  }
+
+  /* soft mint glow behind the logo for depth (matches prior cover) */
+  .cover__glow {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(900px 360px at 26% 50%, rgba(var(--mint-rgb), 0.10), transparent 70%),
+      linear-gradient(180deg, rgba(255,255,255,0.018), transparent 40%);
+    pointer-events: none;
+  }
+
+  /* gentle edge vignette to seat the lockup */
+  .cover__vignette {
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 0 220px 40px rgba(0,0,0,0.45);
+    pointer-events: none;
+  }
+
+  .cover__lockup {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding-left: 120px;
+    padding-right: 96px;
+  }
+
+  .cover__logo {
+    height: 138px;
+    width: auto;
+    flex: 0 0 auto;
+    display: block;
+  }
+
+  .cover__rule {
+    flex: 0 0 auto;
+    width: 1px;
+    height: 132px;
+    margin: 0 60px;
+    background: rgba(245, 248, 250, 0.16);
+  }
+
+  .cover__tagline {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+    color: rgba(245, 248, 250, 0.82);
+    max-width: 600px;
+  }
+
+  .cover__tagline em {
+    font-style: normal;
+    font-weight: 700;
+    color: var(--gold);
+  }
+</style>
+</head>
+<body>
+  <div class="cover">
+    <div class="cover__pattern"></div>
+    <div class="cover__glow"></div>
+    <div class="cover__lockup">
+      <img class="cover__logo" src="../logos/luci-full-mintmark-white.png" alt="LUCI">
+      <div class="cover__rule" aria-hidden="true"></div>
+      <p class="cover__tagline">The <em>Orchestration Engine</em><br>for Enterprise Multimedia</p>
+    </div>
+    <div class="cover__vignette"></div>
+  </div>
+</body>
+</html>
