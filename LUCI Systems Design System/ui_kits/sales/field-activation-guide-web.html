@@ -263,12 +263,12 @@
 
     <!-- UC03 -->
     <div class="fag-uc">
-      <div class="fag-uc__head"><span class="fag-uc__num">03</span><h3 class="fag-uc__title">Give each zone its own bank of ads, its own schedule, and its own tone.</h3></div>
-      <p class="fag-uc__desc">Each space on your property has its own audience and its own moments &mdash; the sports book at tip-off, the bar at happy hour, and the poolside cafe at lunchtime. With LUCI, you can run each zone with its own bank of ads on its own schedule &mdash; and set the tone of audio and lighting to match. Program each space for what it needs at the right moment.</p>
+      <div class="fag-uc__head"><span class="fag-uc__num">03</span><h3 class="fag-uc__title">Put your video wall to work for marketing: run it full or split it into zones.</h3></div>
+      <p class="fag-uc__desc">A video wall is the focal point of a space &mdash; the sportsbook, the bar, the entrance. With LUCI, set it up as a set of layouts (presets): one runs the full wall as one big display; another carves out side panels for promo ads, odds, or branding. Switch between them with a tap, or schedule the switch for the moment it matters.</p>
       <ul class="fag-uc__benefits">
-        <li>Speak to each audience in the zone where they actually are</li>
-        <li>Daypart each zone on its own schedule &mdash; the right ad at the right moment in each space</li>
-        <li>Set the tone per zone, lighting included, so the room matches the message</li>
+        <li>One wall, multiple layouts &mdash; switch with a tap or on a schedule</li>
+        <li>Carve out zones for marketing without giving up the main feed</li>
+        <li>Reconfigure the layout yourself &mdash; no integrator visit</li>
       </ul>
       <div class="fag-acc">
         <button class="fag-acc__btn" aria-expanded="false" aria-controls="m3-panel">
@@ -277,21 +277,20 @@
         </button>
         <div class="fag-acc__panel" id="m3-panel">
           <div class="fag-acc__setup">
-            <p class="fag-acc__sub">One-time setup &mdash; one channel per zone&rsquo;s bank of ads</p>
+            <p class="fag-acc__sub">Before you start</p>
             <ol class="fag-acc__steps fag-acc__steps--setup">
-              <li>In your digital signage CMS, build each zone its own playlist &mdash; its bank of ads &mdash; on its own signage player (one player per zone that runs at the same time as another). Each player feeds a LUCI encoder and becomes its own channel in LUCI, so the zone can be programmed independently.</li>
-              <li>If you want the tone to include lighting, confirm with your A/V team which zones have lighting controllable through LUCI (ETC Mosaic or Lutron). Lighting scenes recall per zone just like content channels, so a zone can dim or shift with its content.</li>
+              <li>The video wall&rsquo;s displays are already on LUCI&rsquo;s map, and you have a processor (e.g., NovaStar, CORIOMaster) or a custom layout in mind.</li>
             </ol>
           </div>
           <ol class="fag-acc__steps">
-            <li>In LUCI, open the property map and pick the first zone (e.g., sports book). Select it from the venue list or tap its tag.</li>
-            <li>Select the displays in that zone, then in the source list pick that zone&rsquo;s content channel &mdash; its bank of ads. They flip immediately.</li>
-            <li>Build a preset for the zone that carries its displays, its content channel, and &mdash; if you want the tone to match &mdash; its lighting scene (dim the lights for a zone-wide event spot, or brighten the sports book for game time).</li>
-            <li>Schedule the preset on its own calendar and daypart it: the bar runs happy-hour ads in the late afternoon, the sports book runs game-time ads at tip-off. Each zone&rsquo;s schedule is independent, so one zone&rsquo;s cadence doesn&rsquo;t disturb another.</li>
-            <li>Repeat for each zone &mdash; main floor, bar, lobby &mdash; each running its own bank of ads on its own schedule, with its own tone, at the same time.</li>
-            <li>Walk the floor to confirm each zone is playing what you intended, and adjust the channel, schedule, or lighting from the same panel.</li>
+            <li>In LUCI, go to the property map, right-click the wall&rsquo;s location, and choose Add Video Wall (Administration &rarr; Device Setup, Video).</li>
+            <li>Step 1: pick the processor, name the wall, and assign it to a venue. For a custom wall with no processor, choose the rows and columns that match your layout.</li>
+            <li>Choose the presets (layouts) you want for this wall &mdash; e.g., one preset for the full wall, another that carves out side panels &mdash; and rename them so each layout is clear.</li>
+            <li>Step 2: for each preset, tie its screen-zones to the wall&rsquo;s physical displays &mdash; select a screen on the preset, then the endpoint (display) it should drive. Repeat for every preset, then Save.</li>
+            <li>Switch between layouts from the map with a tap, or schedule the switches (see Preset Events) for the moment it matters.</li>
+            <li>To adjust later, right-click the wall and choose Edit Video Wall &mdash; re-tie zones, add a preset, or change the layout &mdash; no integrator visit.</li>
           </ol>
-          <p class="fag-acc__nudge"><strong>This week &rarr;</strong>Pick two zones that serve different crowds (say, the bar and the sports book). Give each its own bank of ads and its own schedule, and walk between them to feel the difference.</p>
+          <p class="fag-acc__nudge"><strong>This week &rarr;</strong>Pick one video wall and set up two presets: full-wall for the main event, and a zoned layout that carves out a panel for promo ads or branding. Switch between them once to feel it.</p>
         </div>
       </div>
     </div>
@@ -416,12 +415,12 @@
 
     <!-- UC03 -->
     <div class="fag-uc">
-      <div class="fag-uc__head"><span class="fag-uc__num">03</span><h3 class="fag-uc__title">Reconfigure the entire property in seconds.</h3></div>
-      <p class="fag-uc__desc">Each mode your property runs &mdash; normal weekday, Saturday peak, fight night, holiday, a private event in the ballroom &mdash; becomes a complete configuration of audio, screens, and lighting. Some run on a tap; others, like the high-limit room, hold a standing identity that never needs a manual touch.</p>
+      <div class="fag-uc__head"><span class="fag-uc__num">03</span><h3 class="fag-uc__title">Page the property without cutting the music.</h3></div>
+      <p class="fag-uc__desc">LUCI&rsquo;s announcement system uses priority ducking &mdash; a page overrides a zone&rsquo;s audio for a moment, then the regular audio returns on its own. Page a guest, call a team member, or run a promo over the floor audio from any device, without a walk to the booth and without killing the music.</p>
       <ul class="fag-uc__benefits">
-        <li>Reconfigure the entire property in seconds, not a shift of setup</li>
-        <li>Run premium spaces consistently no matter who&rsquo;s working</li>
-        <li>Let predictable zones open and close themselves on schedule</li>
+        <li>Page from anywhere &mdash; no walk to the booth, no dedicated mic</li>
+        <li>The music dips for the page, then comes back on its own</li>
+        <li>One system for guest pages, team pages, and promo spots</li>
       </ul>
       <div class="fag-acc">
         <button class="fag-acc__btn" aria-expanded="false" aria-controls="g3-panel">
@@ -432,32 +431,29 @@
           <div class="fag-acc__setup">
             <p class="fag-acc__sub">Before you start</p>
             <ol class="fag-acc__steps fag-acc__steps--setup">
-              <li>LUCI open on the property map with the displays, audio zones, and (if used) lighting zones already on it.</li>
+              <li>LUCI open on the property map, with the audio zones you want to page over already on it.</li>
             </ol>
           </div>
           <ol class="fag-acc__steps">
-            <li>Open LUCI and go to the Presets side; click Add and name the preset (e.g., Friday night, Tournament, Morning reset).</li>
-            <li>Grab the displays you want &mdash; a single TV, one venue, or every TV in the property. Use the lasso tool to select many at once on a touchscreen.</li>
-            <li>For each, set what it should do: change the channel, turn a TV off, set an audio zone&rsquo;s source and volume, recall a lighting scene, even change a video wall&rsquo;s layout.</li>
-            <li>Add audio and lighting to the same preset if you want &mdash; one preset can carry video + audio + lighting + video-wall changes together.</li>
-            <li>Click Save &mdash; the preset populates in the preset list.</li>
-            <li>Apply it manually any time, or open the Scheduling app and schedule it: set the time, choose daily/weekly/monthly/custom, and save. Everything in the preset recalls at that time.</li>
-            <li>Optional: set a revert so the property returns to its baseline after a set window &mdash; useful for events that should only last an hour.</li>
-            <li>For the morning reset: build one preset that levels the entire casino (every TV to its baseline channel, every audio zone to baseline volume, lighting to baseline) and schedule it for every morning &mdash; no rogue content when the GM walks through.</li>
+            <li>Open LUCI and go to the property map.</li>
+            <li>Pick the zone you want to page over &mdash; a single venue, a floor, or the whole property.</li>
+            <li>Trigger the announcement from your phone or a mounted touchscreen. LUCI ducks the zone&rsquo;s audio for the page, then brings the regular audio back on its own.</li>
+            <li>Use it for a guest page (&ldquo;your party is seated&rdquo;), a team call, or a promo spot &mdash; no walk to the booth, no dedicated mic, no killing the music.</li>
+            <li>Every page logs itself, so you have a record without a separate step.</li>
           </ol>
-          <p class="fag-acc__nudge"><strong>This week &rarr;</strong>Build one morning-reset preset that levels the whole casino and schedule it for every day this week &mdash; then notice what you stop having to chase.</p>
+          <p class="fag-acc__nudge"><strong>This week &rarr;</strong>Next time a guest needs paging or a promo spot needs to run, do it from your phone over the floor audio &mdash; and notice you never had to leave the floor or cut the music.</p>
         </div>
       </div>
     </div>
 
     <!-- UC04 -->
     <div class="fag-uc">
-      <div class="fag-uc__head"><span class="fag-uc__num">04</span><h3 class="fag-uc__title">Direct guest attention to a new game area from the moment it opens.</h3></div>
-      <p class="fag-uc__desc">When a new slot bank or table section launches, set the surrounding zones to point toward it &mdash; ambient content on nearby screens, audio tuned to give the area its own energy &mdash; for the first few weeks, then revert automatically once it&rsquo;s established.</p>
+      <div class="fag-uc__head"><span class="fag-uc__num">04</span><h3 class="fag-uc__title">Reconfigure the floor&rsquo;s video wall for a tournament or event.</h3></div>
+      <p class="fag-uc__desc">The big video wall on the floor isn&rsquo;t stuck in one layout. Set it up as a set of presets &mdash; full wall for the tournament finale, zoned for leaderboards and branding &mdash; and switch between them with a tap, or schedule the switch for tip-off. When it&rsquo;s over, one tap returns it to the everyday layout.</p>
       <ul class="fag-uc__benefits">
-        <li>Drive traffic to new product while it most needs the lift</li>
-        <li>Make the floor itself part of the launch, not just signage</li>
-        <li>Hand the spotlight back automatically when the window closes</li>
+        <li>One wall, multiple layouts &mdash; switch with a tap or on a schedule</li>
+        <li>Full wall for the moment that matters, zoned for the rest</li>
+        <li>Reconfigure it yourself &mdash; no integrator visit</li>
       </ul>
       <div class="fag-acc">
         <button class="fag-acc__btn" aria-expanded="false" aria-controls="g4-panel">
@@ -468,18 +464,18 @@
           <div class="fag-acc__setup">
             <p class="fag-acc__sub">Before you start</p>
             <ol class="fag-acc__steps fag-acc__steps--setup">
-              <li>The new game area&rsquo;s TVs are already on LUCI&rsquo;s map, and you have promo content for the new game loaded as a channel (see Marketing UC01).</li>
+              <li>The video wall&rsquo;s displays are already on LUCI&rsquo;s map, and you have a processor (e.g., NovaStar, CORIOMaster) or a custom layout in mind.</li>
             </ol>
           </div>
           <ol class="fag-acc__steps">
-            <li>Load the new game&rsquo;s promo content as a channel in LUCI (see Marketing UC01 for getting content in as a channel).</li>
-            <li>Build a preset that grabs the TVs in and around the new game area and flips them to the promo channel &mdash; add the zone&rsquo;s audio and a lighting scene if you want the launch to feel like an event.</li>
-            <li>Open the Scheduling app and schedule the preset to run from the moment the game opens: set the start time, the repeat window, and a revert so the floor returns to baseline after the launch period.</li>
-            <li>On opening day, the TVs in that area flip to the promo automatically &mdash; guests are directed to the new game the moment it goes live, no tap required.</li>
-            <li>To dial it up for the first weekend, expand the preset to grab more TVs (or the whole property) so the launch gets broader attention, then scale it back once the game is established.</li>
-            <li>After the launch window, let the preset expire (or delete it) so the floor returns to its normal programming.</li>
+            <li>In LUCI, go to the property map, right-click the wall&rsquo;s location, and choose Add Video Wall (Administration &rarr; Device Setup, Video).</li>
+            <li>Step 1: pick the processor, name the wall, and assign it to a venue. For a custom wall with no processor, choose the rows and columns that match your layout.</li>
+            <li>Choose the presets (layouts) you want &mdash; e.g., one preset for the full wall (tournament finale), another zoned for leaderboards and branding &mdash; and rename them clearly.</li>
+            <li>Step 2: for each preset, tie its screen-zones to the wall&rsquo;s displays. Repeat for every preset, then Save.</li>
+            <li>On tournament day, switch to the full-wall preset for the finale and the zoned preset for the bracket rounds &mdash; or schedule the switches for tip-off (see Preset Events) so the wall runs itself.</li>
+            <li>When it&rsquo;s over, one tap returns the wall to the everyday layout &mdash; or schedule the revert so it happens on its own.</li>
           </ol>
-          <p class="fag-acc__nudge"><strong>This week &rarr;</strong>For your next game launch, build the launch preset now and schedule it to the opening date &mdash; the floor points itself at the new game the moment it goes live.</p>
+          <p class="fag-acc__nudge"><strong>This week &rarr;</strong>For your next tournament, set up two wall presets now &mdash; full-wall for the finale and zoned for the brackets &mdash; and schedule the switch to tip-off so the wall runs itself.</p>
         </div>
       </div>
     </div>
@@ -572,12 +568,12 @@
 
     <!-- UC03 -->
     <div class="fag-uc">
-      <div class="fag-uc__head"><span class="fag-uc__num">03</span><h3 class="fag-uc__title">Find problems before guests do.</h3></div>
-      <p class="fag-uc__desc">Every connected display, speaker zone, and device reports its health to the dashboard, so a screen cycling oddly or a component drifting out of range surfaces as an alert before someone at the bar notices and calls it in.</p>
+      <div class="fag-uc__head"><span class="fag-uc__num">03</span><h3 class="fag-uc__title">Swap any source without a truck roll.</h3></div>
+      <p class="fag-uc__desc">When a channel changes, a feed needs updating, or you want to repurpose a screen, edit the source on the map yourself. Update it once and every display drawing from that source picks up the change &mdash; no integrator visit, no truck roll, no waiting on a vendor.</p>
       <ul class="fag-uc__benefits">
-        <li>Catch failures while they&rsquo;re still invisible to guests</li>
-        <li>Schedule the fix for a quiet window instead of scrambling at peak</li>
-        <li>Walk in already knowing what needs attention</li>
+        <li>Change a channel or feed yourself, the same day you decide to</li>
+        <li>One edit propagates to every display using that source</li>
+        <li>Skip the integrator visit and the vendor wait</li>
       </ul>
       <div class="fag-acc">
         <button class="fag-acc__btn" aria-expanded="false" aria-controls="a3-panel">
@@ -588,18 +584,18 @@
           <div class="fag-acc__setup">
             <p class="fag-acc__sub">Before you start</p>
             <ol class="fag-acc__steps fag-acc__steps--setup">
-              <li>LUCI open on the property map. (Live today: per-display online/offline status. The fuller health dashboard and alerting ship in the upcoming release.)</li>
+              <li>LUCI open on the property map, with the source you want to change already on the map.</li>
             </ol>
           </div>
           <ol class="fag-acc__steps">
             <li>Open LUCI and go to the property map.</li>
-            <li>Each display shows its status in real time &mdash; green means it&rsquo;s on and communicating, red means it&rsquo;s off or not responding.</li>
-            <li>Scan the map (or a single venue) for any red/offline displays &mdash; LUCI knows the moment a TV drops off the network.</li>
-            <li>Tap an offline display to see its name and start narrowing the cause: a power issue, a network issue, or both.</li>
-            <li>To get it fixed without a phone call: route the offline status to your ticketing system so the right person is dispatched &mdash; or note it and schedule the fix for a quiet window.</li>
-            <li>Walk in already knowing what needs attention, instead of hearing about it from a guest at the bar.</li>
+            <li>Find the source you want to update &mdash; the channel, feed, or signage input feeding the displays in question.</li>
+            <li>Edit the source: change the channel, swap the feed, or update the input. (The exact fields depend on the source type.)</li>
+            <li>Save the change.</li>
+            <li>Every display drawing from that source picks up the new content automatically &mdash; you don&rsquo;t touch each screen.</li>
+            <li>Confirm by glancing at the affected displays on the map, or walking one, to see the new content live.</li>
           </ol>
-          <p class="fag-acc__nudge"><strong>This week &rarr;</strong>Walk the map before your next peak, find one offline display, and get it routed to a fix &mdash; before a guest notices.</p>
+          <p class="fag-acc__nudge"><strong>This week &rarr;</strong>Next time a channel changes or a feed needs updating, edit the source yourself instead of calling the integrator &mdash; and watch it propagate to every screen using it.</p>
         </div>
       </div>
     </div>
