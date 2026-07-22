@@ -215,13 +215,15 @@
     .fag-uc, .fag-uc__benefits li, .fag-conclude { break-inside: avoid; }
 
     .fag-print-cover, .fag-print-toc { display: block; }
-    .fag-print-cover { min-height: 100vh; display: flex; break-after: page; }
-    .fag-print-cover__inner { margin: auto; padding: 28mm 24mm; max-width: 60ch; }
-    .fag-print-cover__logo { height: 116px; width: auto; margin: 0 0 44px; }
-    .fag-print-cover__kicker { font-family: var(--font-display); font-weight: 700; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--mint); margin: 0 0 22px; }
-    .fag-print-cover__title { font-family: var(--font-display); font-weight: 700; font-size: 46px; line-height: 1.04; letter-spacing: -0.02em; text-transform: uppercase; color: var(--off-white); margin: 0 0 22px; }
+    .fag-print-cover { display: flex; flex-direction: column; min-height: 100vh; break-after: page; background: #F5F8FA; }
+    .fag-print-cover__top { padding: 28mm 24mm 0; }
+    .fag-print-cover__logo { height: 30px; width: auto; display: block; }
+    .fag-print-cover__hero { position: relative; margin: auto 0 0; padding: 64px 24mm; background: var(--navy-deep); border-bottom: 4px solid var(--mint); overflow: hidden; }
+    .fag-print-cover__hero::before { content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; background-image: url('assets/textures/texture-circuit-header-mintgold.png'); background-repeat: repeat; background-position: right center; background-size: 640px auto; -webkit-mask-image: linear-gradient(90deg, transparent 40%, rgba(0,0,0,0.45) 68%, #000 100%); mask-image: linear-gradient(90deg, transparent 40%, rgba(0,0,0,0.45) 68%, #000 100%); opacity: 0.55; pointer-events: none; }
+    .fag-print-cover__hero > * { position: relative; z-index: 1; }
+    .fag-print-cover__title { margin: 0 0 20px; font-family: var(--font-display); font-weight: 700; font-size: 28px; line-height: 1.1; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(245,248,250,0.96); max-width: 24ch; }
     .fag-print-cover__title em { font-style: normal; color: var(--mint); }
-    .fag-print-cover__sub { font-family: var(--font-body); font-size: 17px; line-height: 1.55; color: rgba(235,245,248,0.80); max-width: 46ch; margin: 0; }
+    .fag-print-cover__sub { margin: 0; font-family: var(--font-body); font-size: 17px; line-height: 1.5; color: rgba(235,245,248,0.9); max-width: 46ch; }
 
     .fag-print-toc { break-after: page; }
     .fag-print-toc__inner { max-width: 60ch; margin: 0 auto; }
@@ -238,11 +240,12 @@
 <body>
 <div class="luci-fag">
 <section class="fag-print-cover" aria-hidden="true">
-  <div class="fag-print-cover__inner">
-    <img class="fag-print-cover__logo" src="https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a569df17c388a8f5ec49728_LUCI%20logo%20white%20%26%20mint.png" alt="LUCI" width="2446" height="571" decoding="async">
-    <p class="fag-print-cover__kicker">Field Activation Guide</p>
-    <h1 class="fag-print-cover__title">Put every screen, zone, and channel <em>to work.</em></h1>
-    <p class="fag-print-cover__sub">Every screen, every zone, every channel on your property can now be activated through LUCI. Here&rsquo;s how each team can put it to work &mdash; one task at a time.</p>
+  <div class="fag-print-cover__top">
+    <img class="fag-print-cover__logo" src="assets/logos/luci-wordmark-black-320.png" alt="LUCI" width="160" height="32" decoding="async">
+  </div>
+  <div class="fag-print-cover__hero">
+    <h1 class="fag-print-cover__title">Field Activation <em>Guide</em></h1>
+    <p class="fag-print-cover__sub">Every screen, every zone, every channel on your property can now be activated through LUCI. Here&rsquo;s how each team can put it to work.</p>
   </div>
 </section>
 <section class="fag-print-toc" aria-hidden="true">
