@@ -44,23 +44,26 @@ function blockEnd(h, startIdx) {
 
 const chev = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>';
 
-// Per-use-case "Learn more" pill(s): gold→mint gradient matching the hub CTA.
-// If links.ucArticles[panelId] is present, render one pill per article in order
-// (each with a small label). Otherwise render a single pill from the UC's url,
-// or a portal fallback where no KB article exists.
+// Per-use-case support-portal pill(s): gold→mint gradient matching the hub CTA.
+// Each pill is titled with its KB article name (parentheticals/notes stripped).
+// A small "Relevant support portal articles" header sits above the pill(s);
+// UCs with no matching article get a plain "Browse the support portal" pill.
 function esc(s){return String(s).replace(/&/g,'&amp;');}
+function cleanTitle(s){return String(s).split(' — ')[0].split(' (')[0].trim();}
 function pill(url,label){return `      <a class="fag-learn" href="${url}" target="_blank" rel="noopener"><span>${label}</span>${chev}</a>\n`;}
+const learnHeader = `      <p class="fag-learn__label">Relevant support portal articles</p>\n`;
 function learnBlock(panelId) {
   const multi = panelId && links.ucArticles && links.ucArticles[panelId];
   if (multi && multi.length) {
-    return multi.map(a => pill(a.url, a.label || 'Learn more')).join('');
+    return learnHeader + multi.map(a => pill(a.url, cleanTitle(a.article))).join('');
   }
   const slug = panelId ? panelToSlug[panelId] : null;
   const link = slug ? bySlug[slug] : null;
   const hasArticle = link && link.url;
-  const url = hasArticle ? link.url : portal;
-  const label = hasArticle ? 'Learn more' : 'Browse the support portal';
-  return pill(url, label);
+  if (hasArticle) {
+    return learnHeader + pill(link.url, cleanTitle(link.article));
+  }
+  return pill(portal, 'Browse the support portal');
 }
 
 // 1) Replace each "How to do it" accordion with a per-use-case "Learn more" pill
@@ -120,10 +123,14 @@ out = out.replace(/\r\n/g, '\n');
 // 3) Inject CSS for the pill + help line (after the first <style> open).
 const css = `
     /* published-variant: per-use-case "Learn more" pill (gold→mint, matches hub CTA) */
-    .fag-learn{display:inline-flex;align-items:center;gap:10px;margin-top:24px;padding:13px 26px;background:linear-gradient(100deg,var(--gold-deep) 0%,var(--mint) 78%);color:var(--navy-deep);border-radius:9999px;font-family:var(--font-head);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:transform .18s ease-out,box-shadow .18s ease-out;}
+    .fag-learn{display:inline-flex;align-items:center;gap:10px;margin-top:24px;padding:13px 26px;max-width:100%;background:linear-gradient(100deg,var(--gold-deep) 0%,var(--mint) 78%);color:var(--navy-deep);border-radius:9999px;font-family:var(--font-head);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:transform .18s ease-out,box-shadow .18s ease-out;}
     .fag-learn:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(206,176,110,0.32);}
-    .fag-learn svg{width:16px;height:16px;}
+    .fag-learn svg{width:16px;height:16px;flex:0 0 auto;}
+    .fag-learn span{min-width:0;}
     .fag-learn + .fag-learn{margin-top:10px;}
+    .fag-learn__label{margin:26px 0 0;font-family:var(--font-head);font-weight:700;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--mint);}
+    .fag-sec--light .fag-learn__label{color:var(--accent-light);}
+    .fag-learn__label + .fag-learn{margin-top:8px;}
     /* per-section "Need a hand?" help line */
     .fag-help{margin:28px 0 0;padding-top:18px;border-top:1px solid rgba(104,227,190,.18);font-family:var(--font-body);font-size:14px;color:rgba(235,245,248,0.72);line-height:1.6;max-width:62ch;}
     .fag-help strong{color:var(--off-white);font-weight:600;}
