@@ -63,6 +63,29 @@
   color: #2b9e80;
 }
 
+/* Logo placement chip group (appended to the edit bar when a cover logo exists) */
+.luci-edit-bar__group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding-right: 12px;
+  border-right: 1px solid #d4d9dc;
+}
+.luci-edit-bar__chip {
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 11px;
+  border: 1px solid #cdd4d8;
+  background: #fff;
+  color: #1a1a1a;
+  cursor: pointer;
+  border-radius: 9999px;
+}
+.luci-edit-bar__chip:hover { border-color: #2b9e80; color: #2b9e80; }
+.luci-edit-bar__chip.is-active { background: #2b9e80; color: #fff; border-color: #2b9e80; }
+
 body.luci-edit-active {
   padding-top: 52px;
 }
@@ -97,6 +120,11 @@ body.luci-edit-active {
     outline: 2px dashed rgba(43, 158, 128, 0.35);
     outline-offset: 2px;
   }
+
+  /* Client logo: click to swap, drag-and-drop to replace. */
+  body.luci-edit-active .doc-cover__client { cursor: pointer; transition: box-shadow 0.15s ease; }
+  body.luci-edit-active .doc-cover__client:hover { box-shadow: 0 0 0 2px rgba(43, 158, 128, 0.55); }
+  body.luci-edit-active .doc-cover__client.is-drop-target { box-shadow: 0 0 0 3px #68e3be; }
 
   body.luci-edit-active .luci-edit-locked {
     user-select: none;

@@ -12,6 +12,20 @@ Post-demo personalized leave-behind. **9 pages (US Letter).** Source master: `ca
 
 Also read: `../_brand/SKILL.md`
 
+## Voice
+
+Match LUCI's voice on every line you write or rewrite. Full contract: `../_brand/SKILL.md` → **Voice & tone**. Canonical source: LUCI Messaging Guide (`ui_kits/review/messaging/messaging-guide.html`). Cover-page goal rewrites: `ui_kits/internal-portal/skills/cover-page-customization.md` (audience, framing, length, no invented facts) — same cover flow as the budgetary estimate.
+
+- **Engine and verbs — not layers.** Never use *layer* as a noun for LUCI. Lead with **orchestration engine** / **LUCI orchestrates…**; rotate to *runs, operates, integrates, consolidates, refines*.
+- **Always write A/V** — never "AV" or "A-V" (body, headlines, labels, captions, alt text, diagrams).
+- **Declarative, not promotional.** State facts; no "revolutionize / transform / empower / absurdly simple." Short sentences, one idea each, em-dash payoff.
+- **Subtraction over addition.** Lead with what LUCI removes (variables, vendors, interfaces, refresh cycles), not what it adds.
+- **Institutions, not adjectives.** Describe what the platform does for the enterprise, not how it feels.
+- **Discretion over display.** No client names or percentage claims in public materials.
+- **Retired terms:** absurdly simple / easy to use / intuitive · revolutionize / transform / empower · best-in-class / game-changing · owner's rep (use LUCI FDE / embedded team) · *layer* for LUCI.
+- **Verbatim lines:** tagline, sub-tagline, and value-prop boilerplate — use as written, do not paraphrase.
+- **Tone & voice (lucisystems.com):** lead with the customer problem, then stage LUCI as the solution (don't open with LUCI — establish why it matters first); frame the problem as accumulation, silos, and complexity; stakes are operational. Vary sentence structure for flow (no mandatory short-declarative or contrast-pair tics). 2nd person OK in marketing/sales copy; 3rd person in SOW/MSA/proposal. Key phrases + verbatim tagline/boilerplate: `../_brand/SKILL.md` → Tone & voice.
+
 ## Portal URL workflow (primary)
 
 **Preview URL:** `http://10.10.1.17:8081/internal-portal/customization/capabilities-document/capabilities-document.html`

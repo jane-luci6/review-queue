@@ -12,6 +12,20 @@ Scoped, line-itemed pre-quote estimate. **6 pages (US Letter)** — professional
 
 Also read: `../_brand/SKILL.md`
 
+## Voice
+
+Match LUCI's voice on every line you write or rewrite. Full contract: `../_brand/SKILL.md` → **Voice & tone**. Canonical source: LUCI Messaging Guide (`ui_kits/review/messaging/messaging-guide.html`). Cover-page goal rewrites: `ui_kits/internal-portal/skills/cover-page-customization.md` (audience, framing, length, no invented facts).
+
+- **Engine and verbs — not layers.** Never use *layer* as a noun for LUCI. Lead with **orchestration engine** / **LUCI orchestrates…**; rotate to *runs, operates, integrates, consolidates, refines*.
+- **Always write A/V** — never "AV" or "A-V" (body, headlines, labels, captions, alt text, diagrams).
+- **Declarative, not promotional.** State facts; no "revolutionize / transform / empower / absurdly simple." Short sentences, one idea each, em-dash payoff.
+- **Subtraction over addition.** Lead with what LUCI removes (variables, vendors, interfaces, refresh cycles), not what it adds.
+- **Institutions, not adjectives.** Describe what the platform does for the enterprise, not how it feels.
+- **Discretion over display.** No client names or percentage claims in public materials.
+- **Retired terms:** absurdly simple / easy to use / intuitive · revolutionize / transform / empower · best-in-class / game-changing · owner's rep (use LUCI FDE / embedded team) · *layer* for LUCI.
+- **Verbatim lines:** tagline, sub-tagline, and value-prop boilerplate — use as written, do not paraphrase.
+- **Tone & voice (lucisystems.com):** lead with the customer problem, then stage LUCI as the solution (don't open with LUCI — establish why it matters first); frame the problem as accumulation, silos, and complexity; stakes are operational. Vary sentence structure for flow (no mandatory short-declarative or contrast-pair tics). 2nd person OK in marketing/sales copy; 3rd person in SOW/MSA/proposal. Key phrases + verbatim tagline/boilerplate: `../_brand/SKILL.md` → Tone & voice.
+
 ## Portal URL workflow (primary)
 
 **Preview URL:** `http://10.10.1.17:8081/internal-portal/customization/budgetary-estimate/budgetary-estimate.html`
@@ -106,7 +120,8 @@ If the spreadsheet’s column names don’t map (the script errors with `missing
 |---------|----------------|
 | `.doc-cover__kicker`, `.doc-cover__display`, `.doc-cover__sub` | Headline stack |
 | `.doc-cover__summary-text` | Property name + phase framing |
-| `.doc-cover__client` | Client logo (`src`, `alt`) — use transparent PNG |
+| `.doc-cover__client` | Client logo (`src`, `alt`) — use a transparent **vector (SVG) or high-res PNG**; for a band spot, prefer the brand's white/reversed logo so it renders crisp on navy (see *Logo cleanup for dark backgrounds* in `skills/cover-page-customization.md`). Click the logo in preview to swap it, or drag an image file onto it. |
+| `.doc-page--cover` (`logo-pos--X`) | **Logo placement** — add one of `logo-pos--bottom-left` (default), `logo-pos--band`, `logo-pos--band-right`, `logo-pos--bottom-right`. Mike can also tap a "Logo spot" chip in the edit bar to change it live. See `skills/cover-page-customization.md` → *Logo placement* for the spot table + default-picking + white-logo handling + logo cleanup for dark backgrounds. |
 
 Do **not** change `.doc-cover__logo` (LUCI).
 
@@ -117,6 +132,13 @@ placement areas and the rewrite contract (goals → business-audience overview i
 LUCI voice). That skill also lists the gaps in the current Studio form (the goals
 field has no inject target; there's no rewrite step; the name only hits the
 summary bold, not the headline or page-2 intro).
+
+**Logo placement handoff (tell Mike):** after placing the client logo, always tell
+Mike where it sits and that he can move it — e.g., *"Client logo placed bottom-left
+on the cover. Tap a **Logo spot** chip in the top edit bar (Band / Band-right /
+Bottom-right) if you'd rather it elsewhere."* Pick the default per
+`skills/cover-page-customization.md` → *Logo placement*. Don't ask him to choose
+upfront — place a sensible default and let him adjust in one tap.
 
 ### Introduction + What LUCI is (page 2) — `.doc-page--overview`
 

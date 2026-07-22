@@ -314,7 +314,7 @@ function rewriteCustomizationHtml(html, templateId, fileName) {
   out = out.replace(/href="capabilities-document\.css[^"]*"/gi, 'href="/sales/capabilities-document.css"');
   out = out.replace(/href="brochure\.css[^"]*"/gi, 'href="/sales/brochure.css?v=3"');
   out = out.replace(/href="scope-of-work\.css[^"]*"/gi, 'href="/sales/scope-of-work.css?v=20"');
-  out = out.replace(/href="budgetary-estimate\.css[^"]*"/gi, 'href="/sales/budgetary-estimate.css?v=18"');
+  out = out.replace(/href="budgetary-estimate\.css[^"]*"/gi, 'href="/sales/budgetary-estimate.css?v=19"');
   out = out.replace(/href="sales-deck\.css[^"]*"/gi, 'href="/sales/sales-deck.css"');
   out = out.replace(/src="assets\//g, 'src="/sales/assets/');
   // Inline base64 logos bloat the file (~180KB) and slow Cursor remote indexing/chat.

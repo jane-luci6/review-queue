@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>LUCI — How-to panel redesign options</title>
+<link rel="stylesheet" href="../../assets/fonts/luci-brand-fonts.css">
+<style>
+  :root {
+    --navy-deep: #0A161C; --navy: #10232D; --navy-mid: #1B2F3A; --navy-muted: #5A7480;
+    --mint: #68E3BE; --mint-rgb: 104, 227, 190; --accent-light: #2b9e80;
+    --gold: #EDD086; --gold-rgb: 237, 208, 134; --gold-deep: #CEB06E;
+    --off-white: #F5F8FA; --rule-dark: rgba(235,245,248,0.10);
+    --font-display: 'Syncopate', sans-serif;
+    --font-head: 'Space Grotesk', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--navy-deep); color: rgba(235,245,248,0.92); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
+  .ht-page { max-width: 860px; margin: 0 auto; padding: 56px 24px 80px; }
+  .ht-title { font-family: var(--font-head); font-weight: 700; font-size: clamp(26px,4vw,36px); letter-spacing: -0.02em; color: var(--off-white); margin: 0 0 10px; }
+  .ht-title em { font-style: normal; color: var(--mint); }
+  .ht-sub { font-family: var(--font-body); font-size: 15px; line-height: 1.6; color: rgba(235,245,248,0.74); max-width: 62ch; margin: 0 0 10px; }
+  .ht-note { font-family: var(--font-body); font-size: 13px; line-height: 1.55; color: rgba(235,245,248,0.62); max-width: 62ch; margin: 0 0 44px; padding: 12px 16px; border-left: 2px solid rgba(104,227,190,0.4); background: rgba(104,227,190,0.05); border-radius: 2px; }
+  .ht-variant { margin: 0 0 64px; padding-top: 30px; border-top: 1px solid var(--rule-dark); }
+  .ht-variant:first-of-type { border-top: 0; padding-top: 0; }
+  .ht-vlabel { font-family: var(--font-head); font-weight: 700; font-size: 11px; letter-spacing: 0.20em; text-transform: uppercase; color: var(--mint); margin-bottom: 8px; }
+  .ht-vname { font-family: var(--font-head); font-weight: 700; font-size: 22px; letter-spacing: -0.015em; color: var(--off-white); margin: 0 0 6px; }
+  .ht-vintent { font-family: var(--font-body); font-size: 14px; line-height: 1.55; color: rgba(235,245,248,0.70); max-width: 60ch; margin: 0 0 22px; }
+
+  .ht-acc { border: 1px solid var(--rule-dark); border-radius: 12px; background: rgba(104,227,190,0.04); overflow: hidden; }
+  .ht-acc__btn { width: 100%; display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: transparent; border: 0; cursor: pointer; text-align: left; font-family: var(--font-head); font-weight: 700; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mint); }
+  .ht-acc__btn .ht-acc__chev { margin-left: auto; width: 14px; height: 14px; }
+  .ht-panel { padding: 22px 22px 20px; }
+
+  /* Option A — Big numerals & zoned headers */
+  .ht-a .ht-zone { margin-bottom: 20px; }
+  .ht-a .ht-zone__label { display: flex; align-items: center; gap: 12px; font-family: var(--font-head); font-weight: 700; font-size: 11px; letter-spacing: 0.20em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 12px; }
+  .ht-a .ht-zone__label::after { content: ""; flex: 1; height: 1px; background: var(--rule-dark); }
+  .ht-a .ht-setup__text { font-family: var(--font-body); font-size: 14px; line-height: 1.55; color: rgba(235,245,248,0.72); font-style: italic; padding-left: 14px; border-left: 2px solid rgba(104,227,190,0.28); max-width: 60ch; }
+  .ht-a .ht-steps { list-style: none; padding: 0; margin: 0; counter-reset: step; display: grid; gap: 14px; }
+  .ht-a .ht-steps li { counter-increment: step; display: grid; grid-template-columns: 46px 1fr; gap: 16px; align-items: start; }
+  .ht-a .ht-steps li::before { content: counter(step, decimal-leading-zero); font-family: var(--font-head); font-weight: 700; font-size: 26px; line-height: 1; color: var(--mint); letter-spacing: -0.02em; }
+  .ht-a .ht-step__text { font-family: var(--font-body); font-size: 14.5px; line-height: 1.55; color: rgba(235,245,248,0.92); max-width: 60ch; }
+  .ht-a .ht-nudge { margin-top: 20px; padding: 16px 18px; border: 1px solid rgba(237,208,134,0.30); border-left: 3px solid var(--gold); border-radius: 8px; background: rgba(237,208,134,0.06); }
+  .ht-a .ht-nudge__label { font-family: var(--font-head); font-weight: 700; font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+  .ht-a .ht-nudge__text { font-family: var(--font-body); font-size: 14px; line-height: 1.5; color: rgba(235,245,248,0.88); }
+  /* Option B — Stepped cards */
+  .ht-b .ht-panel { padding: 18px; }
+  .ht-b .ht-setup { padding: 12px 14px; border: 1px dashed rgba(104,227,190,0.30); border-radius: 8px; background: rgba(104,227,190,0.04); margin-bottom: 10px; }
+  .ht-b .ht-setup__label { font-family: var(--font-head); font-weight: 700; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 6px; }
+  .ht-b .ht-setup__text { font-family: var(--font-body); font-size: 13.5px; line-height: 1.5; color: rgba(235,245,248,0.72); }
+  .ht-b .ht-steps { list-style: none; padding: 0; margin: 0; counter-reset: step; display: grid; gap: 6px; }
+  .ht-b .ht-steps li { counter-increment: step; display: grid; grid-template-columns: 26px 1fr; gap: 14px; align-items: start; padding: 11px 14px; border: 1px solid var(--rule-dark); border-radius: 8px; background: rgba(255,255,255,0.02); }
+  .ht-b .ht-steps li::before { content: counter(step); width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; background: var(--mint); color: var(--navy-deep); font-family: var(--font-head); font-weight: 700; font-size: 12px; border-radius: 3px; }
+  .ht-b .ht-step__text { font-family: var(--font-body); font-size: 14px; line-height: 1.5; color: rgba(235,245,248,0.92); max-width: 60ch; }
+  .ht-b .ht-nudge { margin-top: 6px; padding: 14px 16px; border-radius: 8px; background: rgba(104,227,190,0.10); border: 1px solid rgba(104,227,190,0.28); display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: center; }
+  .ht-b .ht-nudge__label { font-family: var(--font-head); font-weight: 700; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mint); }
+  .ht-b .ht-nudge__text { font-family: var(--font-body); font-size: 14px; line-height: 1.5; color: rgba(235,245,248,0.90); }
+
+  /* Option C — Vertical timeline */
+  .ht-c .ht-track { position: relative; padding-left: 36px; }
+  .ht-c .ht-track::before { content: ""; position: absolute; left: 11px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(rgba(104,227,190,0.55), rgba(104,227,190,0.12)); }
+  .ht-c .ht-setup { position: relative; margin-bottom: 18px; }
+  .ht-c .ht-setup::before { content: ""; position: absolute; left: -36px; top: 3px; width: 24px; height: 24px; border-radius: 9999px; border: 2px dashed rgba(104,227,190,0.55); background: var(--navy-deep); }
+  .ht-c .ht-setup__label { font-family: var(--font-head); font-weight: 700; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 6px; }
+  .ht-c .ht-setup__text { font-family: var(--font-body); font-size: 13.5px; line-height: 1.5; color: rgba(235,245,248,0.72); max-width: 60ch; }
+  .ht-c .ht-steps { list-style: none; padding: 0; margin: 0; counter-reset: step; display: grid; gap: 16px; }
+  .ht-c .ht-steps li { counter-increment: step; position: relative; }
+  .ht-c .ht-steps li::before { content: counter(step); position: absolute; left: -36px; top: 0; width: 24px; height: 24px; border-radius: 9999px; background: var(--navy-deep); border: 2px solid var(--mint); color: var(--mint); font-family: var(--font-head); font-weight: 700; font-size: 11px; display: flex; align-items: center; justify-content: center; }
+  .ht-c .ht-step__text { font-family: var(--font-body); font-size: 14.5px; line-height: 1.55; color: rgba(235,245,248,0.92); max-width: 60ch; }
+  .ht-c .ht-nudge { position: relative; margin-top: 20px; padding-top: 4px; }
+  .ht-c .ht-nudge::before { content: ""; position: absolute; left: -36px; top: 0; width: 24px; height: 24px; border-radius: 9999px; background: var(--gold); box-shadow: 0 0 0 4px rgba(237,208,134,0.15); }
+  .ht-c .ht-nudge__label { font-family: var(--font-head); font-weight: 700; font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+  .ht-c .ht-nudge__text { font-family: var(--font-body); font-size: 14px; line-height: 1.5; color: rgba(235,245,248,0.90); max-width: 60ch; }
+
+  /* Option D — Editorial / minimal */
+  .ht-d .ht-acc { border: 0; border-top: 1px solid var(--rule-dark); border-radius: 0; background: transparent; }
+  .ht-d .ht-acc__btn { padding: 16px 2px; }
+  .ht-d .ht-panel { padding: 24px 2px 6px; background: transparent; }
+  .ht-d .ht-setup { font-family: var(--font-body); font-size: 14px; line-height: 1.6; color: rgba(235,245,248,0.66); font-style: italic; max-width: 60ch; margin-bottom: 22px; padding-bottom: 18px; border-bottom: 1px solid var(--rule-dark); }
+  .ht-d .ht-setup::before { content: "PREREQUISITE \2014 "; font-family: var(--font-head); font-style: normal; font-weight: 700; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-light); }
+  .ht-d .ht-steps { list-style: none; padding: 0; margin: 0; counter-reset: step; }
+  .ht-d .ht-steps li { counter-increment: step; display: grid; grid-template-columns: 34px 1fr; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--rule-dark); align-items: baseline; }
+  .ht-d .ht-steps li:last-child { border-bottom: 0; }
+  .ht-d .ht-steps li::before { content: counter(step, decimal-leading-zero); font-family: var(--font-head); font-weight: 700; font-size: 15px; color: var(--mint); letter-spacing: 0.02em; }
+  .ht-d .ht-step__text { font-family: var(--font-body); font-size: 15px; line-height: 1.6; color: rgba(235,245,248,0.92); max-width: 60ch; }
+  .ht-d .ht-nudge { margin: 24px 0 6px; padding: 14px 18px; border-left: 3px solid var(--mint); background: rgba(104,227,190,0.05); border-radius: 2px; }
+  .ht-d .ht-nudge__label { display: inline; font-family: var(--font-head); font-weight: 700; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-right: 8px; }
+  .ht-d .ht-nudge__text { display: inline; font-family: var(--font-body); font-size: 14px; line-height: 1.55; color: rgba(235,245,248,0.88); }
+</style>
+</head>
+<body>
+<main class="ht-page">
+  <h1 class="ht-title">How-to panel &mdash; <em>redesign options</em></h1>
+  <p class="ht-sub">Four directions for the &ldquo;How to do it&rdquo; accordion panel, to fix the cluttered read and give it a clear text hierarchy.</p>
+  <p class="ht-note">All four use the same content (IT use case 01 &mdash; Add an endpoint) so you can compare the hierarchy directly. Panels are shown open. Pick A, B, C, or D and I&rsquo;ll merge the winner into the guide.</p>
+  <section class="ht-variant ht-a">
+    <p class="ht-vlabel">Option A</p>
+    <h2 class="ht-vname">Big numerals &amp; zoned headers</h2>
+    <p class="ht-vintent">Three labeled zones &mdash; Before you start / Step by step / This week &mdash; with oversized mint step numbers in a left gutter. Hierarchy comes from the big numerals and the zone labels with trailing rules.</p>
+    <div class="ht-acc">
+      <button class="ht-acc__btn" aria-expanded="true">
+        <span>How to do it &rarr;</span>
+        <svg class="ht-acc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+      </button>
+      <div class="ht-panel">
+        <div class="ht-zone">
+          <p class="ht-zone__label">Before you start</p>
+          <p class="ht-setup__text">You have an admin PIN and the device&rsquo;s IP address &mdash; it must match the field device (the set-top box/TV, the DSP, or the lighting system).</p>
+        </div>
+        <div class="ht-zone">
+          <p class="ht-zone__label">Step by step</p>
+          <ol class="ht-steps">
+            <li><span class="ht-step__text">Log in to LUCI with your admin PIN.</span></li>
+            <li><span class="ht-step__text">Left menu &rarr; Administration &rarr; Map Modes &rarr; Device Setup [Administration].</span></li>
+            <li><span class="ht-step__text">Select the device type: Video, Audio, or Lighting [Devices]. (On LUCI v2.34.0+, use the Endpoint Manager instead.)</span></li>
+            <li><span class="ht-step__text">Navigate the map to where the endpoint lives.</span></li>
+            <li><span class="ht-step__text">Right-click (or long-press) the map &rarr; Add Endpoint (for lighting, Add Device).</span></li>
+            <li><span class="ht-step__text">Video only: pick the Brand from the dropdown. (Audio and lighting skip this.)</span></li>
+            <li><span class="ht-step__text">Name the endpoint &mdash; this is the label shown on the UI.</span></li>
+            <li><span class="ht-step__text">Notes: add asset tagging or other info you want to track.</span></li>
+            <li><span class="ht-step__text">Device Address: enter the IP that matches the field device (video: the set-top box/TV; audio: the DSP; lighting: the lighting system).</span></li>
+            <li><span class="ht-step__text">Assign the endpoint to a Venue so every user on that venue can reach it (unless you restrict it per user &mdash; see IT UC03).</span></li>
+            <li><span class="ht-step__text">Video only: toggle Auto Power to let a watchdog keep the device powered on.</span></li>
+            <li><span class="ht-step__text">Set any other relevant options, then click Save.</span></li>
+            <li><span class="ht-step__text">To edit later: right-click the device on the map (or in the Assigned list) &rarr; Edit Endpoint.</span></li>
+          </ol>
+        </div>
+        <div class="ht-nudge">
+          <p class="ht-nudge__label">This week &rarr;</p>
+          <p class="ht-nudge__text">Add one new display (or audio or lighting endpoint) yourself, end to end, so the path is in your hands the next time a device lands.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="ht-variant ht-b">
+    <p class="ht-vlabel">Option B</p>
+    <h2 class="ht-vname">Stepped cards</h2>
+    <p class="ht-vintent">Each step is its own subtle row with a mint number chip on the left. The prerequisite sits in a dashed card up top; the &ldquo;This week&rdquo; nudge is a mint band at the bottom. Hierarchy comes from the card structure itself.</p>
+    <div class="ht-acc">
+      <button class="ht-acc__btn" aria-expanded="true">
+        <span>How to do it &rarr;</span>
+        <svg class="ht-acc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+      </button>
+      <div class="ht-panel">
+        <div class="ht-setup">
+          <p class="ht-setup__label">Before you start</p>
+          <p class="ht-setup__text">You have an admin PIN and the device&rsquo;s IP address &mdash; it must match the field device (the set-top box/TV, the DSP, or the lighting system).</p>
+        </div>
+        <ol class="ht-steps">
+          <li><span class="ht-step__text">Log in to LUCI with your admin PIN.</span></li>
+          <li><span class="ht-step__text">Left menu &rarr; Administration &rarr; Map Modes &rarr; Device Setup [Administration].</span></li>
+          <li><span class="ht-step__text">Select the device type: Video, Audio, or Lighting [Devices]. (On LUCI v2.34.0+, use the Endpoint Manager instead.)</span></li>
+          <li><span class="ht-step__text">Navigate the map to where the endpoint lives.</span></li>
+          <li><span class="ht-step__text">Right-click (or long-press) the map &rarr; Add Endpoint (for lighting, Add Device).</span></li>
+          <li><span class="ht-step__text">Video only: pick the Brand from the dropdown. (Audio and lighting skip this.)</span></li>
+          <li><span class="ht-step__text">Name the endpoint &mdash; this is the label shown on the UI.</span></li>
+          <li><span class="ht-step__text">Notes: add asset tagging or other info you want to track.</span></li>
+          <li><span class="ht-step__text">Device Address: enter the IP that matches the field device (video: the set-top box/TV; audio: the DSP; lighting: the lighting system).</span></li>
+          <li><span class="ht-step__text">Assign the endpoint to a Venue so every user on that venue can reach it (unless you restrict it per user &mdash; see IT UC03).</span></li>
+          <li><span class="ht-step__text">Video only: toggle Auto Power to let a watchdog keep the device powered on.</span></li>
+          <li><span class="ht-step__text">Set any other relevant options, then click Save.</span></li>
+          <li><span class="ht-step__text">To edit later: right-click the device on the map (or in the Assigned list) &rarr; Edit Endpoint.</span></li>
+        </ol>
+        <div class="ht-nudge">
+          <span class="ht-nudge__label">This week &rarr;</span>
+          <span class="ht-nudge__text">Add one new display (or audio or lighting endpoint) yourself, end to end, so the path is in your hands the next time a device lands.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="ht-variant ht-c">
+    <p class="ht-vlabel">Option C</p>
+    <h2 class="ht-vname">Vertical timeline</h2>
+    <p class="ht-vintent">A mint spine runs down the left with a numbered node at each step &mdash; a journey metaphor. The prerequisite is a hollow dashed node; the &ldquo;This week&rdquo; nudge lands on a gold node. Hierarchy comes from the timeline structure.</p>
+    <div class="ht-acc">
+      <button class="ht-acc__btn" aria-expanded="true">
+        <span>How to do it &rarr;</span>
+        <svg class="ht-acc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+      </button>
+      <div class="ht-panel">
+        <div class="ht-track">
+          <div class="ht-setup">
+            <p class="ht-setup__label">Before you start</p>
+            <p class="ht-setup__text">You have an admin PIN and the device&rsquo;s IP address &mdash; it must match the field device (the set-top box/TV, the DSP, or the lighting system).</p>
+          </div>
+          <ol class="ht-steps">
+            <li><span class="ht-step__text">Log in to LUCI with your admin PIN.</span></li>
+            <li><span class="ht-step__text">Left menu &rarr; Administration &rarr; Map Modes &rarr; Device Setup [Administration].</span></li>
+            <li><span class="ht-step__text">Select the device type: Video, Audio, or Lighting [Devices]. (On LUCI v2.34.0+, use the Endpoint Manager instead.)</span></li>
+            <li><span class="ht-step__text">Navigate the map to where the endpoint lives.</span></li>
+            <li><span class="ht-step__text">Right-click (or long-press) the map &rarr; Add Endpoint (for lighting, Add Device).</span></li>
+            <li><span class="ht-step__text">Video only: pick the Brand from the dropdown. (Audio and lighting skip this.)</span></li>
+            <li><span class="ht-step__text">Name the endpoint &mdash; this is the label shown on the UI.</span></li>
+            <li><span class="ht-step__text">Notes: add asset tagging or other info you want to track.</span></li>
+            <li><span class="ht-step__text">Device Address: enter the IP that matches the field device (video: the set-top box/TV; audio: the DSP; lighting: the lighting system).</span></li>
+            <li><span class="ht-step__text">Assign the endpoint to a Venue so every user on that venue can reach it (unless you restrict it per user &mdash; see IT UC03).</span></li>
+            <li><span class="ht-step__text">Video only: toggle Auto Power to let a watchdog keep the device powered on.</span></li>
+            <li><span class="ht-step__text">Set any other relevant options, then click Save.</span></li>
+            <li><span class="ht-step__text">To edit later: right-click the device on the map (or in the Assigned list) &rarr; Edit Endpoint.</span></li>
+          </ol>
+          <div class="ht-nudge">
+            <p class="ht-nudge__label">This week &rarr;</p>
+            <p class="ht-nudge__text">Add one new display (or audio or lighting endpoint) yourself, end to end, so the path is in your hands the next time a device lands.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="ht-variant ht-d">
+    <p class="ht-vlabel">Option D</p>
+    <h2 class="ht-vname">Editorial &amp; minimal</h2>
+    <p class="ht-vintent">No boxes, no chips &mdash; just whitespace, hairlines, and type. A small &ldquo;Prerequisite&rdquo; note up top, steps separated by hairlines with quiet leading-zero numbers, and the &ldquo;This week&rdquo; nudge as a mint left-bar callout. The most de-boxed; hierarchy through scale and space.</p>
+    <div class="ht-acc">
+      <button class="ht-acc__btn" aria-expanded="true">
+        <span>How to do it &rarr;</span>
+        <svg class="ht-acc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+      </button>
+      <div class="ht-panel">
+        <p class="ht-setup">You have an admin PIN and the device&rsquo;s IP address &mdash; it must match the field device (the set-top box/TV, the DSP, or the lighting system).</p>
+        <ol class="ht-steps">
+          <li><span class="ht-step__text">Log in to LUCI with your admin PIN.</span></li>
+          <li><span class="ht-step__text">Left menu &rarr; Administration &rarr; Map Modes &rarr; Device Setup [Administration].</span></li>
+          <li><span class="ht-step__text">Select the device type: Video, Audio, or Lighting [Devices]. (On LUCI v2.34.0+, use the Endpoint Manager instead.)</span></li>
+          <li><span class="ht-step__text">Navigate the map to where the endpoint lives.</span></li>
+          <li><span class="ht-step__text">Right-click (or long-press) the map &rarr; Add Endpoint (for lighting, Add Device).</span></li>
+          <li><span class="ht-step__text">Video only: pick the Brand from the dropdown. (Audio and lighting skip this.)</span></li>
+          <li><span class="ht-step__text">Name the endpoint &mdash; this is the label shown on the UI.</span></li>
+          <li><span class="ht-step__text">Notes: add asset tagging or other info you want to track.</span></li>
+          <li><span class="ht-step__text">Device Address: enter the IP that matches the field device (video: the set-top box/TV; audio: the DSP; lighting: the lighting system).</span></li>
+          <li><span class="ht-step__text">Assign the endpoint to a Venue so every user on that venue can reach it (unless you restrict it per user &mdash; see IT UC03).</span></li>
+          <li><span class="ht-step__text">Video only: toggle Auto Power to let a watchdog keep the device powered on.</span></li>
+          <li><span class="ht-step__text">Set any other relevant options, then click Save.</span></li>
+          <li><span class="ht-step__text">To edit later: right-click the device on the map (or in the Assigned list) &rarr; Edit Endpoint.</span></li>
+        </ol>
+        <div class="ht-nudge">
+          <span class="ht-nudge__label">This week &rarr;</span>
+          <span class="ht-nudge__text">Add one new display (or audio or lighting endpoint) yourself, end to end, so the path is in your hands the next time a device lands.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

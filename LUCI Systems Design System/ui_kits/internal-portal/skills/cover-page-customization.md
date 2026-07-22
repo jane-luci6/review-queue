@@ -35,6 +35,81 @@ Outputs (placed in the cover):
 
 Locked: `.doc-cover__logo` (the LUCI wordmark — never the client's).
 
+### Logo placement (4 sanctioned spots)
+
+The cover carries a client-logo slot with **four sanctioned placements** — no free
+positioning. Set the spot by adding a `logo-pos--X` class to `.doc-page--cover`
+(`bottom-left` is the default and needs no class). The in-preview edit bar exposes
+these as a "Logo spot" chip group Mike can tap; the agent sets the initial spot
+when building the client file.
+
+| Class | Spot | Treatment |
+|-------|------|-----------|
+| `logo-pos--bottom-left` | bottom-left of the light sheet (default) | natural colors, ≤44px tall |
+| `logo-pos--band` | centered under the headline, in the navy band | inverted to white |
+| `logo-pos--band-right` | vertically centered on the right of the navy band, over the pattern | inverted to white, larger (≤72px) |
+| `logo-pos--bottom-right` | bottom-right of the light sheet | natural colors, ≤44px tall |
+
+The band spots (`band`, `band-right`) move `.doc-cover__prepared` into `.doc-cover__hero`
+via JS and apply `filter: brightness(0) invert(1)` so a dark/colored logo reads white
+on navy. The light-sheet spots keep natural colors.
+
+**Default-picking guidance (agent):** pick a spot that fits the logo.
+- Wide/wordmark logos (most hotel & casino marks) → `bottom-left` (default) or `bottom-right`.
+- A compact, dark mark that benefits from the band moment → `band` or `band-right`.
+- When in doubt, leave `bottom-left`.
+Mike can change it in one tap from the edit bar, so the default is reversible.
+
+**White-logo handling:** if the provided logo is already light/white on transparent,
+the invert filter would turn it black. On drop, the edit script samples luminance and
+marks `data-logo-light="1"` on the img; the CSS skips the invert for light logos on
+band spots. If the agent places a known-white logo by hand, set
+`data-logo-light="1"` on `.doc-cover__client` and prefer a light-sheet spot
+(`bottom-left`/`bottom-right`) — or, if the band is still desired, the attribute keeps
+it from inverting to black.
+
+**Logo cleanup for dark backgrounds (band spots):** the band spots invert a
+dark/colored logo to white via a CSS filter. On a low-res or anti-aliased raster
+logo that filter softens the edges, and any upscale reads pixelated — exactly
+what makes a logo look fuzzy on the navy band. Before placing a logo on a band
+spot (`logo-pos--band` / `logo-pos--band-right`), prepare it so it's crisp on dark:
+
+1. **Prefer the brand's white / reversed (knockout) logo.** Most brands publish
+   one (look for a `-white` / `-reversed` / `-knockout` asset). Drop it in and set
+   `data-logo-light="1"` on `.doc-cover__client` — the CSS skips the invert
+   filter, so a native white logo renders clean with no halo. This is the best
+   outcome; look for it first.
+2. **Else prefer a vector (SVG) over a raster (PNG/JPG).** A vector inverts and
+   scales crisply at any band size; a raster inverts with softened edges and
+   pixelates when upscaled. If only a raster exists, source one at **≥2× the
+   display size** (band-right caps at ~320px wide → source ≥640px; band caps at
+   ~280px → ≥560px). Ensure the SVG has its text converted to outlines / fonts
+   embedded, so the secondary type doesn't fall back in browser or PDF export.
+3. **Else fall back to a light-sheet spot.** If the only asset is a small, dark,
+   raster logo, place it `bottom-left` / `bottom-right` (≤44px, natural colors,
+   no invert, no upscale) rather than forcing a pixelated band placement. Tell
+   Mike it's on the light sheet because the source logo wasn't crisp enough for
+   the band, and offer to swap in a white / vector version if he has one.
+
+Transparent background is required either way (no white box). If you have image
+tools, you may re-export the provided logo knocked out to white on transparent
+at higher resolution — but sourcing the brand's official white/reversed or
+vector asset is preferred over re-processing.
+
+**If the provided logo still won't be crisp on the band** (small raster, no
+white/vector variant available, and a band spot is still desired): **go online
+and source a clearer one.** Look for the brand's official press/brand kit, an
+SVG from a logo library (e.g. Wikipedia/WMF, official site assets), or a
+high-resolution PNG (≥2× the display size). Prefer a vector or a white/
+reversed version per the steps above. Confirm the sourced logo is the correct
+brand (file name, visual match) before placing — same mismatch-confirm rule as
+an uploaded logo. If you can't find a clearer one, fall back to a light-sheet
+spot and tell Mike. Don't ship a pixelated band placement.
+
+**Tell Mike:** after placing the logo, the agent should say which spot it's in and
+that it's changeable in one tap via the edit-bar "Logo spot" chips — don't ask him
+to pick upfront, just place a sensible default and point him at the chips.
+
 Logo handling — confirm on mismatch: if the uploaded logo filename doesn't
 match the company name (or otherwise looks wrong), **confirm with the user
 before placing or skipping** — do not autonomously decide. The user may be

@@ -430,13 +430,65 @@
   }
 }
 
-/* ── Cover ──────────────────────────────────────────────────────────────────── */
-/* Cover uses the shared capabilities-document.css `.doc-page--cover` system
-   (light sheet + full-bleed navy hero band + light client summary + navy
-   footer strip). No budget-specific cover overrides needed — it inherits the
-   canonical cover so the estimate reads as a matched pair to the Capabilities
-   overview. The client logo sits on the light sheet (filter: none) so the
-   colored Ameristar mark shows cleanly — no white-box artifact. */
+/* ── Cover · client-logo placement variants ────────────────────────────────── */
+/* 4 sanctioned spots, all print-safe (no logo crosses a page edge). Driven by a
+   .logo-pos--X class on .doc-page--cover; the in-preview chip picker (luci-doc-edit.js)
+   toggles it and reparents .doc-cover__prepared into the hero for the band spots.
+   Default (bottom-left) needs no override — it inherits the shared cover layout.
+   Band spots invert a dark/colored logo to white; an already-light logo
+   ([data-logo-light="1"], set on drop by luminance sampling) skips the invert. */
+.doc-page--cover { position: relative; }
+
+/* V3 · band — centered under the headline, inverted to white */
+.logo-pos--band .doc-cover__hero .doc-cover__prepared {
+  position: relative;
+  margin: 18px 0 0;
+  text-align: center;
+  z-index: 1;
+}
+.logo-pos--band .doc-cover__hero .doc-cover__prepared .doc-cover__client {
+  filter: brightness(0) invert(1);
+  opacity: 1;
+  margin: 0 auto;
+}
+.logo-pos--band .doc-cover__hero .doc-cover__prepared .doc-cover__client[data-logo-light="1"] {
+  filter: none;
+}
+
+/* V4 · bottom-right — mirror of default, right-aligned (flex so the block <img> moves) */
+.logo-pos--bottom-right .doc-cover__prepared {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+/* V5 · band-right — vertically centered on the right of the navy band, over the pattern */
+.logo-pos--band-right .doc-cover__hero .doc-cover__prepared {
+  position: absolute;
+  top: 50%;
+  right: var(--page-pad, 48px);
+  transform: translateY(-50%);
+  margin: 0;
+  text-align: right;
+  z-index: 1;
+}
+.logo-pos--band-right .doc-cover__hero .doc-cover__prepared .doc-cover__client {
+  filter: brightness(0) invert(1);
+  opacity: 1;
+  max-height: 72px;
+  max-width: 320px;
+}
+.logo-pos--band-right .doc-cover__hero .doc-cover__prepared .doc-cover__client[data-logo-light="1"] {
+  filter: none;
+}
+
+@media print {
+  .logo-pos--band .doc-cover__hero .doc-cover__prepared .doc-cover__client,
+  .logo-pos--band-right .doc-cover__hero .doc-cover__prepared .doc-cover__client {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
 
 /* Small section label used inside page-5 columns */
 .be-block-label {

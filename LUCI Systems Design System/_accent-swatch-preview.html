@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>LUCI accent swatch — confirm #2b9e80</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Inter, system-ui, sans-serif; background: #E5E3DF; padding: 40px; color: #354F5C; }
+    h1 { font-family: 'Space Grotesk', sans-serif; font-size: 22px; margin-bottom: 8px; }
+    p { margin-bottom: 32px; max-width: 60ch; line-height: 1.5; font-size: 15px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+    .card { border-radius: 16px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+    .swatch { height: 120px; }
+    .meta { padding: 16px; background: #fff; }
+    .meta strong { display: block; font-size: 15px; margin-bottom: 4px; }
+    .meta code { font-size: 13px; color: #49616E; }
+    .meta .use { margin-top: 10px; font-size: 13px; line-height: 1.45; }
+    .on-light { background: #F5F8FA; padding: 24px; border-radius: 12px; margin-top: 32px; }
+    .on-light h2 { font-size: 14px; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 16px; color: #49616E; }
+    .sample { font-size: 18px; line-height: 1.5; margin-bottom: 12px; }
+    .sample a { text-decoration: underline; }
+    .retired { opacity: 0.55; }
+  </style>
+</head>
+<body>
+  <h1>Confirm light-surface accent</h1>
+  <p>You're deciding whether <strong>#2b9e80</strong> stays as the canonized green on light backgrounds. Compare it to bright mint (dark-only) and the retired deep green.</p>
+
+  <div class="grid">
+    <div class="card">
+      <div class="swatch" style="background:#2b9e80"></div>
+      <div class="meta">
+        <strong>#2b9e80 — accent-light (proposed canon)</strong>
+        <code>--accent-light / --mint-dark</code>
+        <p class="use">Light-surface accent: links, kickers, colored subheads, icon strokes, callout bars. Used on FAG "Pick your team." and website nav links on light sections.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="swatch" style="background:#68E3BE"></div>
+      <div class="meta">
+        <strong>#68E3BE — bright mint</strong>
+        <code>--mint</code>
+        <p class="use">Dark surfaces only. Hero accents, kickers on navy, bookend headline accents. Forbidden on light (1.23:1 on sand).</p>
+      </div>
+    </div>
+    <div class="card retired">
+      <div class="swatch" style="background:#176B54"></div>
+      <div class="meta">
+        <strong>#176B54 — retired</strong>
+        <code>do not use</code>
+        <p class="use">Former "deep green." Replaced by #2b9e80 everywhere on light.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="swatch" style="background:#EDD086"></div>
+      <div class="meta">
+        <strong>#EDD086 — bright gold</strong>
+        <code>--gold</code>
+        <p class="use">Headline accent words on dark, icon strokes on navy tiles. Primary gold — not gold-deep.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="on-light">
+    <h2>On off-white #F5F8FA (like capabilities doc)</h2>
+    <p class="sample" style="color:#2b9e80">Pick your team. — colored subhead (#2b9e80)</p>
+    <p class="sample" style="color:#68E3BE">Bright mint on light — forbidden, washes out</p>
+    <p class="sample" style="color:#176B54">Retired deep green — do not use</p>
+    <p class="sample">Body copy in ink with an <a href="#" style="color:#2b9e80">accent link</a>.</p>
+  </div>
+
+  <div class="on-light" style="background:#0A161C; margin-top: 24px;">
+    <h2 style="color:rgba(245,248,250,0.6)">On navy #0A161C (bookend header)</h2>
+    <p class="sample" style="color:#fff">The orchestration engine for <span style="color:#68E3BE">enterprise multimedia</span>. — mint accent</p>
+    <p class="sample" style="color:#fff">Bring all A/V under <span style="color:#EDD086">one point of control</span>. — gold accent</p>
+  </div>
+</body>
+</html>

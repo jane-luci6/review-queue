@@ -1,33 +1,49 @@
 ---
-description: LUCI messaging voice — engine/verbs, no "layer" for LUCI; watch repetition of leading terms
+description: LUCI messaging voice — engine/verbs not layers, A/V, declarative not promotional, subtraction over addition, institutions not adjectives, discretion over display, short sentences, retired terms. Always on.
 globs:
   - LUCI Systems Design System/ui_kits/review/messaging/**
   - LUCI Systems Design System/ui_kits/sales/**
   - LUCI Systems Design System/ui_kits/website/**
-alwaysApply: false
+alwaysApply: true
 ---
 
 # LUCI messaging voice
 
-Canonical source: **Messaging guide** → Voice & tone → *Engine and verbs — not layers.*
+Always-applied. Canonical source: **LUCI Messaging Guide** (`LUCI Systems Design System/ui_kits/review/messaging/messaging-guide.html` → Voice & tone). The portal-shipped copy lives in `ui_kits/internal-portal/customization/_brand/SKILL.md` → **Voice & tone** — keep the two in sync.
 
-## Don’t
+## Voice rules
 
-Never use **layer** as a noun for LUCI (orchestration layer, application layer, “one layer for…”). Describing layers in the **client’s** accumulated stack is fine.
+- **Engine and verbs — not layers.** Never use **layer** as a noun for LUCI ("orchestration layer," "application layer," "one layer for…"). Describing layers in the **client's** accumulated stack is fine; naming LUCI a layer is not.
+- **Leading choices:** **orchestration engine** (positioning, tagline) and **LUCI orchestrates…** (headlines, capability copy). Also fine when they fit: **runs, operates, integrates, consolidates, refines, platform, infrastructure**.
+- **Watch repetition.** If **engine** or **orchestrates** appears more than once in a short passage (deck section, PDF page, email), rotate to a precise alternative. Same word three times reads like a crutch.
+- **Always write "A/V"** — never "AV" or "A-V" — in body copy, headlines, labels, captions, alt text, and diagrams.
+- **Institutions, not adjectives.** Describe what the platform does for the enterprise, never how the software feels. "Operate every endpoint from one interface" passes; "absurdly simple" does not.
+- **Subtraction over addition.** Lead with what LUCI removes — variables, vendors, interfaces, refresh cycles — not with the capabilities it adds.
+- **Declarative over promotional.** State facts. Avoid emotional verbs ("revolutionize," "transform," "empower"). If a claim needs an adverb to land, cut the modifier, then the sentence.
+- **Discretion over display.** No client names in public materials. No percentage claims. Scale and complexity in general terms.
+- **Standardization is the advantage.** Never apologize for a standard approach. Customization is what broke every A/V environment they've had before.
+- **Lean, not padded.** Cut modifiers a claim leans on. Favor lean copy, but vary sentence length and structure for flow — don't force every sentence short. Narrative is welcome where it carries more weight.
 
-## Leading choices (not the only choices)
+## Approved vs retired
 
-- **Orchestration engine** — positioning, tagline
-- **LUCI orchestrates…** — headlines, capability copy
+- **Use:** orchestration engine, platform, infrastructure · LUCI orchestrates / runs / operates / integrates / consolidates / refines · institutional, operational, embedded, accountable, continuous · LUCI FDE, the embedded team, the standard · "removes variables," "shorter list," "fewer moving parts."
+- **Retire:** absurdly simple / easy to use / intuitive · revolutionize / transform / empower · best-in-class / game-changing · owner's rep (use LUCI FDE or embedded team) · **layer** when naming LUCI · percentage claims in brand copy · named clients in public materials.
 
-Also fine when they fit better: **runs, operates, integrates, consolidates, refines, platform, infrastructure**.
+## Tone & voice (live website — the way we talk about LUCI)
 
-## Watch repetition
+Match the tone and stance, not the homepage's sentence structures. Do not canonize short-declarative or em-dash patterns as rules.
 
-If **engine** or **orchestrates** appears more than once in a short passage (deck section, PDF page, email), rotate to a precise alternative. Same word three times reads like a crutch.
+- **Lead with the customer's problem; stage LUCI as the solution.** Don't open with LUCI — establish the problem and stakes first so the reader knows why LUCI matters before it appears. LUCI is the means, not the subject. (Primary in marketing/sales copy; use in SOW/proposal where it aids persuasion.)
+- **Frame the problem as accumulation, silos, and complexity.** "They fail because of what they accumulate." · "Today, separate A/V technology lives in separate silos." · "Complexity isn't solved by a better interface."
+- **Stakes are operational, not aspirational.** "not optional," "non-negotiable," "cannot afford failure."
+- **The team is permanent and accountable.** "with a team that stays," "built in, not bolted on."
+- **Vary sentence structure for flow.** Lean is favored, but narrative is welcome where it carries more weight; don't force every sentence short or default to contrast pairs.
+- **Register by document:** marketing/sales/web copy may use 2nd person; SOW/MSA/proposal are 3rd person, factual, no marketing register.
+- **Verbatim:** tagline "The Orchestration Engine for Enterprise Multimedia"; sub-tagline "One interface to control, automate, and execute the entire guest experience."; value-prop boilerplate (Messaging Guide) — do not paraphrase.
+- **Key phrases (reference, not required templates):** "Complexity isn't solved by a better interface. It's solved by a shorter list of things to manage." · "built in, not bolted on" · "with a team that stays."
 
-## Spelling & terms
+## Scope notes
 
-- **Always write “A/V”** — never “AV” or “A-V” — in body copy, headlines, labels, captions, alt text, and diagrams.
-
-Voice patches re-apply after Word sync via `transform-messaging-html.mjs`.
+- Applies to everything LUCI publishes — website, decks, proposals, sales documents, outreach, social, video, diagrams.
+- For portal document customization, each per-template `SKILL.md` carries the same compact contract and points here.
+- Voice patches re-apply after Word sync via `transform-messaging-html.mjs`.

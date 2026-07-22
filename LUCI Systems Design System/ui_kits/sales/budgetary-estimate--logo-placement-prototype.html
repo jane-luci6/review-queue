@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>LUCI — Budgetary Estimate · Logo Placement Prototype</title>
+  <link rel="stylesheet" href="../../assets/fonts/luci-brand-fonts.css">
+  <link rel="stylesheet" href="sales-document.css?v=3">
+  <link rel="stylesheet" href="capabilities-document.css">
+  <link rel="stylesheet" href="brochure.css?v=3">
+  <link rel="stylesheet" href="budgetary-estimate.css?v=18">
+  <style>
+    /* ---- PROTOTYPE ONLY — logo placement variants + image-swap affordance (local, pending Jane's sign-off) ---- */
+    /* Not for canonical. 4 sanctioned spots, all on the light sheet, print-safe. */
+
+    .doc-page--cover { position: relative; }
+
+    /* V1 · bottom-left (default, current) — no overrides */
+
+    /* V3 · band — JS reparents .doc-cover__prepared into .doc-cover__hero, centered under the headline */
+    .logo-pos--band .doc-cover__hero .doc-cover__prepared {
+      position: relative;
+      margin: 18px 0 0;
+      text-align: center;
+      z-index: 1;
+    }
+    .logo-pos--band .doc-cover__hero .doc-cover__prepared .doc-eyebrow {
+      color: rgba(235, 245, 248, 0.72);
+      margin: 0 0 6px;
+    }
+    .logo-pos--band .doc-cover__hero .doc-cover__prepared .doc-cover__client {
+      filter: brightness(0) invert(1);
+      opacity: 1;
+      margin: 0 auto;
+    }
+
+    /* V4 · bottom-right — mirror of default, right-aligned (flex-end so the block <img> moves too) */
+    .logo-pos--bottom-right .doc-cover__prepared {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    /* V5 · band-right — vertically centered on the right side of the navy band, over the pattern */
+    .logo-pos--band-right .doc-cover__hero .doc-cover__prepared {
+      position: absolute;
+      top: 50%;
+      right: var(--page-pad, 48px);
+      transform: translateY(-50%);
+      margin: 0;
+      text-align: right;
+      z-index: 1;
+    }
+    .logo-pos--band-right .doc-cover__hero .doc-cover__prepared .doc-eyebrow {
+      color: rgba(235, 245, 248, 0.72);
+      margin: 0 0 6px;
+    }
+    .logo-pos--band-right .doc-cover__hero .doc-cover__prepared .doc-cover__client {
+      filter: brightness(0) invert(1);
+      opacity: 1;
+      max-height: 72px;
+      max-width: 320px;
+    }
+
+    /* Image-swap affordance: the logo slot invites a click or a dropped file. */
+    .doc-cover__client { cursor: pointer; transition: box-shadow .15s ease; }
+    .doc-cover__client:hover { box-shadow: 0 0 0 2px var(--mint-dark, #2b9e80); }
+    .doc-cover__client.is-drop-target { box-shadow: 0 0 0 3px var(--mint, #68e3be); }
+
+    /* Prototype switcher bar — NOT for production; Mike would pick via the edit bar / Studio. */
+    .logo-proto-bar {
+      position: sticky; top: 0; z-index: 50;
+      display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
+      padding: 10px 16px;
+      background: var(--navy, #0C1F2A); color: var(--off-white, #F5F8FA);
+      font-family: var(--font, "Space Grotesk", sans-serif);
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+    .logo-proto-bar__label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--mint, #68e3be); margin-right: 6px;
+    }
+    .logo-proto-bar__btn {
+      font: inherit; font-size: 12px; font-weight: 600; color: var(--off-white, #F5F8FA);
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.16);
+      padding: 6px 12px; border-radius: 9999px; cursor: pointer; transition: background .15s ease;
+    }
+    .logo-proto-bar__btn:hover { background: rgba(255,255,255,0.12); }
+    .logo-proto-bar__btn.is-active { background: var(--mint, #68e3be); color: var(--navy, #0C1F2A); border-color: transparent; }
+    .logo-proto-bar__hint { margin-left: auto; font-size: 11px; color: rgba(235,245,248,0.66); font-weight: 400; }
+  </style>
+</head>
+<body>
+  <!-- PROTOTYPE switcher — pick a sanctioned logo spot. Not part of the real document. -->
+  <div class="logo-proto-bar" role="toolbar" aria-label="Logo placement prototype">
+    <span class="logo-proto-bar__label">Logo spot (prototype)</span>
+    <button type="button" class="logo-proto-bar__btn is-active" data-pos="bottom-left">Bottom-left</button>
+    <button type="button" class="logo-proto-bar__btn" data-pos="band">Band</button>
+    <button type="button" class="logo-proto-bar__btn" data-pos="band-right">Band-right</button>
+    <button type="button" class="logo-proto-bar__btn" data-pos="bottom-right">Bottom-right</button>
+    <span class="logo-proto-bar__hint">Click the client logo to swap it, or drag an image file onto it.</span>
+  </div>
+
+  <article class="doc">
+    <!-- PAGE 1 · COVER (identical to master; placement driven by .logo-pos--X on the section) -->
+    <section class="doc-page doc-page--cover logo-pos--bottom-left">
+      <div>
+        <img class="doc-cover__logo" src="assets/logos/luci-wordmark-black-320.png?v=6" alt="LUCI Systems" width="160" height="32">
+      </div>
+      <div class="doc-cover__hero">
+        <p class="doc-cover__kicker">Budgetary estimate</p>
+        <h1 class="doc-cover__display">Prepared for<br><em>your property</em></h1>
+        <p class="doc-cover__sub">A scoped, line-itemed estimate following your LUCI Capabilities overview &mdash; built from demo and discovery, confirmed on site before a final quote.</p>
+      </div>
+      <div class="doc-cover__summary">
+        <p class="doc-cover__summary-label">Client summary</p>
+        <p class="doc-cover__summary-text"><strong>[Property Name]</strong> is overhauling its multimedia system in a phased rollout. This estimate scopes Phase 1 &mdash; video and audio endpoints across the property &mdash; with a tier pricing sheet so leadership can see the investment for the full buildout.</p>
+      </div>
+      <div class="doc-cover__prepared">
+        <img class="doc-cover__client" data-studio-image="client-logo" src="assets/logos/ameristar-council-bluffs.png?v=3" alt="Client logo" width="200" height="36">
+      </div>
+    </section>
+  </article>
+
+  <input type="file" id="logo-file-input" accept="image/*" hidden>
+
+  <script>
+  (function () {
+    'use strict';
+    var cover = document.querySelector('.doc-page--cover');
+    var logo = cover.querySelector('.doc-cover__client');
+    var prepared = cover.querySelector('.doc-cover__prepared');
+    var hero = cover.querySelector('.doc-cover__hero');
+    var fileInput = document.getElementById('logo-file-input');
+    var originalParent = prepared.parentNode;      /* .doc-page--cover */
+    var originalNext = prepared.nextSibling;       /* null (last child) */
+
+    /* ---- Image swap: click → file picker; drag-and-drop → base64 data URL ---- */
+    function setLogoFromFile(file) {
+      if (!file || !file.type || !/^image\//.test(file.type)) return;
+      var reader = new FileReader();
+      reader.onload = function () {
+        logo.src = reader.result;                  /* base64 data URL — survives Download HTML */
+        logo.alt = (file.name || 'Client logo').replace(/\.[^.]+$/, '');
+        logo.removeAttribute('width');
+        logo.removeAttribute('height');
+        logo.dataset.swapped = '1';
+      };
+      reader.readAsDataURL(file);
+    }
+
+    logo.addEventListener('click', function () { fileInput.click(); });
+    fileInput.addEventListener('change', function () {
+      if (fileInput.files && fileInput.files[0]) setLogoFromFile(fileInput.files[0]);
+      fileInput.value = '';
+    });
+
+    ['dragenter', 'dragover'].forEach(function (ev) {
+      logo.addEventListener(ev, function (e) {
+        e.preventDefault(); e.stopPropagation();
+        logo.classList.add('is-drop-target');
+      });
+    });
+    ['dragleave', 'drop'].forEach(function (ev) {
+      logo.addEventListener(ev, function (e) {
+        e.preventDefault(); e.stopPropagation();
+        logo.classList.remove('is-drop-target');
+      });
+    });
+    logo.addEventListener('drop', function (e) {
+      var dt = e.dataTransfer;
+      if (dt && dt.files && dt.files[0]) setLogoFromFile(dt.files[0]);
+    });
+
+    /* ---- Variant switcher: toggle .logo-pos--X; reparent prepared block for the band spot ---- */
+    var bandHost = hero; /* where the prepared block moves to when 'band' is active */
+    function applyPos(pos) {
+      cover.classList.remove('logo-pos--bottom-left', 'logo-pos--band', 'logo-pos--band-right', 'logo-pos--bottom-right');
+      cover.classList.add('logo-pos--' + pos);
+
+      /* Reparent the prepared block so the band variants sit inside the hero; others sit in the cover.
+         Compare direct parentNode (not .contains) — hero is a descendant of cover, so .contains
+         would always be true and the move-back to cover would never fire. */
+      if (pos === 'band' || pos === 'band-right') {
+        if (prepared.parentNode !== hero) hero.appendChild(prepared);
+      } else {
+        if (prepared.parentNode !== originalParent) originalParent.appendChild(prepared);
+      }
+
+      document.querySelectorAll('.logo-proto-bar__btn').forEach(function (b) {
+        b.classList.toggle('is-active', b.dataset.pos === pos);
+      });
+    }
+    document.querySelectorAll('.logo-proto-bar__btn').forEach(function (btn) {
+      btn.addEventListener('click', function () { applyPos(btn.dataset.pos); });
+    });
+  })();
+  </script>
+</body>
+</html>
