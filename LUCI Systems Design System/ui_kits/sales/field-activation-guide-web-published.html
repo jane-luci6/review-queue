@@ -200,6 +200,16 @@
   /* conclusion band sits on .fag-sec full-bleed; no separate footer framing needed */
 
   @media (prefers-reduced-motion: reduce) { .fag-acc__panel, .fag-acc__chev { transition: none; } html { scroll-behavior: auto; } }
+
+  /* ===== PDF / print ===== */
+  @media print {
+    @page { margin: 12mm; }
+    *, *::before, *::after { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
+    html, body { background: var(--navy-deep) !important; }
+    .fag-nav { display: none !important; }
+    .fag-sec__head, .fag-sec__name, .fag-sec__role { break-after: avoid; }
+    .fag-uc, .fag-uc__benefits li, .fag-conclude { break-inside: avoid; }
+  }
 </style>
 </head>
 <body>
