@@ -7,14 +7,17 @@
 <title>LUCI — Field Activation Guide</title>
 <link rel="stylesheet" href="../../assets/fonts/luci-brand-fonts.css">
 <style id="fag-web-css">
-    /* published-variant: per-use-case "Learn more" pill (gold→mint, matches hub CTA) */
-    .fag-learn{display:inline-flex;align-items:center;gap:10px;margin-top:24px;padding:13px 26px;max-width:100%;background:linear-gradient(100deg,var(--gold-deep) 0%,var(--mint) 78%);color:var(--navy-deep);border-radius:9999px;font-family:var(--font-head);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:transform .18s ease-out,box-shadow .18s ease-out;}
-    .fag-learn:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(206,176,110,0.32);}
-    .fag-learn svg{width:16px;height:16px;flex:0 0 auto;}
+    /* published-variant: per-use-case support-portal pill — quiet outline chip so the
+       use-case content stays primary and the article links read as secondary. */
+    .fag-learn{display:inline-flex;align-items:center;gap:9px;margin-top:10px;padding:9px 18px;max-width:100%;background:transparent;border:1px solid rgba(104,227,190,0.38);color:var(--mint);border-radius:9999px;font-family:var(--font-head);font-weight:600;font-size:12px;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;transition:background .18s ease-out,border-color .18s ease-out;}
+    .fag-learn:hover{background:rgba(104,227,190,0.10);border-color:var(--mint);}
+    .fag-learn svg{width:13px;height:13px;flex:0 0 auto;}
     .fag-learn span{min-width:0;}
-    .fag-learn + .fag-learn{margin-top:10px;}
-    .fag-learn__label{margin:26px 0 0;font-family:var(--font-head);font-weight:700;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--mint);}
-    .fag-sec--light .fag-learn__label{color:var(--accent-light);}
+    .fag-learn + .fag-learn{margin-top:8px;}
+    .fag-learn__label{margin:22px 0 0;font-family:var(--font-head);font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(235,245,248,0.5);}
+    .fag-sec--light .fag-learn{border-color:rgba(43,158,128,0.5);color:var(--ink-strong);}
+    .fag-sec--light .fag-learn:hover{background:rgba(43,158,128,0.08);border-color:var(--accent-light);}
+    .fag-sec--light .fag-learn__label{color:var(--ink-muted);}
     .fag-learn__label + .fag-learn{margin-top:8px;}
     /* per-section "Need a hand?" help line */
     .fag-help{margin:28px 0 0;padding-top:18px;border-top:1px solid rgba(104,227,190,.18);font-family:var(--font-body);font-size:14px;color:rgba(235,245,248,0.72);line-height:1.6;max-width:62ch;}
