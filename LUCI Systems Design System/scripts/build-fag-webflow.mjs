@@ -26,6 +26,23 @@ const fontsLink = `<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;600;700&family=Syncopate:wght@400;700&display=swap">`;
 
+// Conservative HTML minify for the body markup only (keeps the <script> block
+// readable). Collapses inter-tag whitespace + runs of whitespace to a single
+// space — identical rendering, just small enough to fit Webflow's 50k-char
+// custom-code field. No <pre>/<textarea>/<code> exist in the FAG body, so
+// whitespace is never semantically significant here.
+function minifyHtml(s) {
+  const stash = [];
+  s = s.replace(/<(pre|textarea|script|style)\b[\s\S]*?<\/\1>/gi, (m) => {
+    stash.push(m); return `\u0000${stash.length - 1}\u0000`;
+  });
+  s = s.replace(/>\s+</g, '><');
+  s = s.replace(/\s{2,}/g, ' ');
+  s = s.trim();
+  s = s.replace(/\u0000(\d+)\u0000/g, (_, i) => stash[i]);
+  return s;
+}
+
 for (const file of pages) {
   const src = join(sales, file);
   const base = file.replace(/\.html$/, '');
@@ -56,7 +73,7 @@ for (const file of pages) {
     bodyInner = bodyInner.replace(scriptMatch[2], '').replace(/\s+$/, '');
   }
 
-  const wrappedBody = `<div class="luci-fag">\n${bodyInner.trim()}\n</div>`;
+  const wrappedBody = `<div class="luci-fag">${minifyHtml(bodyInner.trim())}</div>`;
 
   // 4. write head + body embeds
   const headEmbed = `<!-- LUCI Field Activation Guide (${base}) — Webflow "Before </head>" embed.
