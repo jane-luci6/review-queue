@@ -46,6 +46,20 @@ function minifyHtml(s) {
   return s;
 }
 
+// Minify CSS for the head embed so the <style> block stays small enough for
+// Webflow's "Inside <head>" field (a too-large <style> gets truncated and the
+// </style> closing tag can be dropped, which eats the rest of the page as CSS
+// -> blank page). Drops comments + collapses whitespace; no value semantics
+// changed.
+function minifyCss(c) {
+  return c
+    .replace(/\/\*[\s\S]*?\*\//g, '')
+    .replace(/\s+/g, ' ')
+    .replace(/\s*([{};,:>])\s*/g, '$1')
+    .replace(/;}/g, '}')
+    .trim();
+}
+
 for (const file of pages) {
   const src = join(sales, file);
   const base = file.replace(/\.html$/, '');
@@ -96,7 +110,7 @@ for (const file of pages) {
      Self-contained: scoped CSS + Google Fonts. No global body/html styles leak. -->
 ${fontsLink}
 <style>
-${css.trim()}
+${minifyCss(css)}
 </style>`;
 
   const bodyEmbed = `<!-- LUCI Field Activation Guide (${base}) — Webflow "Before </body>" embed.
@@ -118,7 +132,7 @@ ${wrappedBody}${script ? '\n' + script : ''}
 <title>LUCI — Field Activation Guide (${base} preview)</title>
 ${fontsLink}
 <style>
-${css.trim()}
+${minifyCss(css)}
 </style>
 </head>
 <body>
