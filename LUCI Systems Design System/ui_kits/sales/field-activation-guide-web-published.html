@@ -43,7 +43,9 @@
     --font-body: 'Inter', system-ui, sans-serif;
   }
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  /* scroll-behavior removed: it caused a secondary smooth-scroll to the anchor's raw
+     position (no nav offset) after our JS lands the kicker correctly, hiding the section
+     number. The JS handler does all anchor scrolling instant now. */
   body { margin: 0; background: var(--navy-deep); color: rgba(235,245,248,0.92); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
   .fag { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 
@@ -216,7 +218,7 @@
 
   /* conclusion band sits on .fag-sec full-bleed; no separate footer framing needed */
 
-  @media (prefers-reduced-motion: reduce) { .fag-acc__panel, .fag-acc__chev { transition: none; } html { scroll-behavior: auto; } }
+  @media (prefers-reduced-motion: reduce) { .fag-acc__panel, .fag-acc__chev { transition: none; } }
 </style>
 </head>
 <body>
