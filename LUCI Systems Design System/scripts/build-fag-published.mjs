@@ -129,7 +129,9 @@ const cleanScript = `<script>
       btn.addEventListener('click', function (e) { e.stopPropagation(); menu.hidden ? openShare() : closeShare(); });
       document.addEventListener('click', function (e) { if (!widget.contains(e.target)) closeShare(); });
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeShare(); });
-      var u = encodeURIComponent(location.href);
+      var anchor = widget.getAttribute('data-fag-share-anchor');
+      var shareUrl = anchor ? (location.origin + location.pathname + '#' + anchor) : location.href;
+      var u = encodeURIComponent(shareUrl);
       var t = encodeURIComponent('LUCI Field Activation Guide');
       var mail = widget.querySelector('[data-fag-share-mail]');
       if (mail) mail.href = 'mailto:?subject=' + t + '&body=' + u;
@@ -142,8 +144,8 @@ const cleanScript = `<script>
         var label = copy.textContent;
         var done = function () { copy.textContent = 'Copied!'; setTimeout(function () { copy.textContent = label; }, 1800); };
         if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(location.href).then(done).catch(function () { window.prompt('Copy this link:', location.href); });
-        } else { window.prompt('Copy this link:', location.href); }
+          navigator.clipboard.writeText(shareUrl).then(done).catch(function () { window.prompt('Copy this link:', shareUrl); });
+        } else { window.prompt('Copy this link:', shareUrl); }
       });
     });
   })();
