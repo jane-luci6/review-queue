@@ -1186,8 +1186,12 @@
           if (!document.getElementById(id)) return;
           e.preventDefault(); jumpTo(id, false);
           if (history.pushState) history.pushState(null, '', '#' + id);
-          // re-adjust after a tick: mobile URL-bar shift leaves the title clipped; re-land once settled.
-          setTimeout(function () { jumpTo(id, false); }, 300);
+          // re-adjust ONLY if the kicker ended up under the nav (mobile URL-bar shift); if it
+          // landed correctly, skip — avoids a layout-shift re-scroll past the header on desktop.
+          setTimeout(function () {
+            var el = targetFor(id); if (!el) return;
+            if (el.getBoundingClientRect().top < navH() + 8) jumpTo(id, false);
+          }, 300);
         });
       });
       function adjustToHash() { if (location.hash) { var id = location.hash.slice(1); if (document.getElementById(id)) jumpTo(id, false); } }
