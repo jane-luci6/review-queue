@@ -37,7 +37,7 @@
 }
 .doc--activation .doc-page--cover .doc-cover__hero > * { position: relative; z-index: 1; }
 .doc--activation .doc-page--cover .doc-cover__display {
-  color: var(--off-white) !important; max-width: 14ch !important; font-size: 34px !important;
+  color: var(--off-white) !important; max-width: 20ch !important; font-size: 34px !important;
 }
 .doc--activation .doc-page--cover .doc-cover__display em { color: var(--mint) !important; }
 .doc--activation .doc-page--cover .doc-cover__sub { color: rgba(235,245,248,0.86) !important; }
@@ -76,18 +76,44 @@
 }
 
 @media print {
+  /* Cover sheet: solid off-white. */
+  .doc--activation .doc-page--cover {
+    background: var(--off-white) !important;
+    background-image: none !important;
+  }
+  /* Cover hero band: baked circuit image (single image, no mask, no repeat)
+     so Preview paints it immediately instead of a lazy PDF Pattern/Shading
+     object. The fade + navy are baked into the JPG. */
   .doc--activation .doc-page--cover .doc-cover__hero {
-    background:
-      linear-gradient(162deg, rgba(16,35,45,0.92) 0%, rgba(12,31,40,0.98) 100%),
-      url('assets/textures/texture-3.jpg') center / cover no-repeat;
+    background: url('assets/textures/band-circuit-baked.jpg') center center / 100% 100% no-repeat !important;
   }
   .doc--activation .doc-page--cover .doc-cover__hero::before {
-    background-image: url('assets/textures/texture-circuit-header-mintgold.jpg');
-    mix-blend-mode: screen;
+    display: none !important;
   }
+  /* Cover footer strip: solid navy (no gradient). */
   .doc--activation .doc-page--cover::after {
-    background:
-      linear-gradient(180deg, rgba(12,31,40,0.92) 0%, rgba(12,31,40,0.98) 100%),
-      url('assets/textures/texture-circuit-navy-mint.jpg') right center / 360px auto repeat;
+    background: var(--navy) !important;
+    background-image: none !important;
   }
+  /* Section header bands: same baked circuit image. Disable the masked
+     repeating ::before (lazy PDF Pattern object); keep the 4px mint ::after. */
+  .doc--activation .flag-band {
+    background: url('assets/textures/band-circuit-baked.jpg') center center / 100% 100% no-repeat !important;
+  }
+  .doc--activation .flag-band::before {
+    display: none !important;
+  }
+}
+
+/* ---- Print-only circuit pattern <img> ----
+   Chrome --print-to-pdf does not render url() CSS background images, so the
+   band circuit pattern is an <img> (content prints reliably). Hidden on
+   screen, where the ::before masked pattern still shows. Stretched to fill
+   the band; the fade + navy are baked into the JPG. */
+.band-circuit-print {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: fill; z-index: 0; pointer-events: none;
+}
+@media screen {
+  .band-circuit-print { display: none; }
 }
