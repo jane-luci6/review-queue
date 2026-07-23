@@ -18,6 +18,10 @@
     --font-body: 'Inter', system-ui, sans-serif;
     --page-pad: clamp(28px, 6vw, 60px);
     --content-wide: 1120px;
+    /* Circuit texture scale (standardized — matches the print FAG): hero/cover 640px,
+       recurring dark-section backgrounds 560px. */
+    --circuit-pattern-size--hero: 640px;
+    --circuit-pattern-size: 560px;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -27,7 +31,7 @@
   /* ── Hero ── */
   .fag-hero { position: relative; background: var(--navy-deep); overflow: hidden; isolation: isolate; }
   .fag-hero__glow { position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0.20;
-    background-image: url("https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a62441aa35b44e4c9f2f321_texture-circuit-header-mintgold.png"); background-repeat: repeat; background-position: right center; background-size: 400px auto;
+    background-image: url("https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a62441aa35b44e4c9f2f321_texture-circuit-header-mintgold.png"); background-repeat: repeat; background-position: right center; background-size: var(--circuit-pattern-size--hero) auto;
     -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.5) 30%, #000 60%); mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.5) 30%, #000 60%); }
   .fag-hero__inner { position: relative; z-index: 1; max-width: var(--content-wide); margin: 0 auto; padding: clamp(72px, 11vw, 128px) var(--page-pad) clamp(40px, 6vw, 64px); }
   .fag-hero__logo { display: block; height: 56px; width: auto; margin: 0 0 24px; }
@@ -82,7 +86,7 @@
 
   /* ── Closing ── */
   .fag-close { position: relative; background: var(--navy-deep); color: var(--off-white); overflow: hidden; isolation: isolate; }
-  .fag-close::before { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0.18; background-image: url("https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a62441aa35b44e4c9f2f321_texture-circuit-header-mintgold.png"); background-repeat: repeat; background-position: right center; background-size: 360px auto; -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.5) 45%, #000 100%); mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.5) 45%, #000 100%); }
+  .fag-close::before { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0.18; background-image: url("https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a62441aa35b44e4c9f2f321_texture-circuit-header-mintgold.png"); background-repeat: repeat; background-position: right center; background-size: var(--circuit-pattern-size) auto; -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.5) 45%, #000 100%); mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.5) 45%, #000 100%); }
   .fag-close__inner { position: relative; z-index: 1; max-width: var(--content-wide); margin: 0 auto; padding: clamp(48px, 7vw, 80px) var(--page-pad); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
   .fag-close__line { margin: 0; max-width: 40ch; font-family: var(--font-head); font-size: clamp(20px, 2.4vw, 28px); font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; color: var(--off-white); }
   .fag-close__line em { font-style: normal; color: var(--gold); }
