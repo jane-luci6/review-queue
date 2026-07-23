@@ -156,6 +156,7 @@
       btn.addEventListener('click', function (e) { e.stopPropagation(); menu.hidden ? open() : close(); });
       document.addEventListener('click', function (e) { if (!widget.contains(e.target)) close(); });
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+      menu.addEventListener('click', function (e) { if (e.target === menu) { close(); } });
       var u = encodeURIComponent(location.href);
       var t = encodeURIComponent('LUCI Field Activation Guide');
       var mail = widget.querySelector('[data-fag-share-mail]');

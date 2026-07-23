@@ -129,6 +129,7 @@ const cleanScript = `<script>
       btn.addEventListener('click', function (e) { e.stopPropagation(); menu.hidden ? openShare() : closeShare(); });
       document.addEventListener('click', function (e) { if (!widget.contains(e.target)) closeShare(); });
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeShare(); });
+      menu.addEventListener('click', function (e) { if (e.target === menu) { closeShare(); } });
       var anchor = widget.getAttribute('data-fag-share-anchor');
       var shareUrl = anchor ? (location.origin + location.pathname + '#' + anchor) : location.href;
       var u = encodeURIComponent(shareUrl);
