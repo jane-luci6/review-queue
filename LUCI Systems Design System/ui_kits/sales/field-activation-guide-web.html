@@ -1165,6 +1165,38 @@
       sections.forEach(function (s) { io.observe(s); });
     }
 
+    // Sticky-nav-aware anchor scrolling: land the section kicker ~16px below the sticky nav.
+    // Measures the ACTUAL nav height at click/load time so desktop + mobile both offset
+    // correctly (mobile nav height varies when the menu wraps). Handles in-page nav clicks
+    // (smooth) and cross-page hash landings from the hub (instant re-adjust), bypassing the
+    // smooth-scroll/scroll-margin-top quirk that left in-page clicks clipped.
+    (function () {
+      var nav = document.querySelector('.fag-nav');
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      function navH() { return nav ? nav.offsetHeight : 0; }
+      function targetFor(id) { var s = document.getElementById(id); return s ? (s.querySelector('.fag-sec__kicker') || s) : null; }
+      function jumpTo(id, smooth) {
+        var el = targetFor(id); if (!el) return;
+        var y = el.getBoundingClientRect().top + window.pageYOffset - navH() - 16;
+        window.scrollTo({ top: y, behavior: (smooth && !reduce) ? 'smooth' : 'auto' });
+      }
+      Array.prototype.forEach.call(document.querySelectorAll('.fag-nav__link[href^="#"]'), function (a) {
+        a.addEventListener('click', function (e) {
+          var id = a.getAttribute('href').slice(1);
+          if (!document.getElementById(id)) return;
+          e.preventDefault();
+          jumpTo(id, true);
+          if (history.pushState) history.pushState(null, '', '#' + id);
+        });
+      });
+      if (location.hash) {
+        var id = location.hash.slice(1);
+        if (document.getElementById(id)) {
+          requestAnimationFrame(function () { requestAnimationFrame(function () { jumpTo(id, false); }); });
+        }
+      }
+    })();
+
     // Floating CTA: hide it once the conclusion band is in view so it doesn't double up
     var fab = document.querySelector('.fag-fab');
     var conclude = document.querySelector('.fag-conclude');

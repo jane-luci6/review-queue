@@ -792,6 +792,36 @@
       sections.forEach(function (s) { io.observe(s); });
     }
 
+    // Sticky-nav-aware anchor scrolling: land the section kicker ~16px below the sticky nav.
+    // Measures the ACTUAL nav height so desktop + mobile both offset correctly (mobile nav
+    // height varies when the menu wraps). Handles in-page nav clicks (smooth) and cross-page
+    // hash landings from the hub (instant), bypassing the smooth-scroll/scroll-margin-top quirk
+    // that left in-page clicks clipped.
+    var navEl = document.querySelector('.fag-nav');
+    var reduceMo = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function navHeight() { return navEl ? navEl.offsetHeight : 0; }
+    function anchorTarget(id) { var s = document.getElementById(id); return s ? (s.querySelector('.fag-sec__kicker') || s) : null; }
+    function jumpTo(id, smooth) {
+      var el = anchorTarget(id); if (!el) return;
+      var y = el.getBoundingClientRect().top + window.pageYOffset - navHeight() - 16;
+      window.scrollTo({ top: y, behavior: (smooth && !reduceMo) ? 'smooth' : 'auto' });
+    }
+    Array.prototype.forEach.call(document.querySelectorAll('.fag-nav__link[href^="#"]'), function (a) {
+      a.addEventListener('click', function (e) {
+        var id = a.getAttribute('href').slice(1);
+        if (!document.getElementById(id)) return;
+        e.preventDefault();
+        jumpTo(id, true);
+        if (history.pushState) history.pushState(null, '', '#' + id);
+      });
+    });
+    if (location.hash) {
+      var hid = location.hash.slice(1);
+      if (document.getElementById(hid)) {
+        requestAnimationFrame(function () { requestAnimationFrame(function () { jumpTo(hid, false); }); });
+      }
+    }
+
     // Share widget — copy link, email, LinkedIn, X
     var shareWidgets = document.querySelectorAll('[data-fag-share]');
     Array.prototype.forEach.call(shareWidgets, function (widget) {
