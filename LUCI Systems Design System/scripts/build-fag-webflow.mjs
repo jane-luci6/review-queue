@@ -73,6 +73,18 @@ for (const file of pages) {
     bodyInner = bodyInner.replace(scriptMatch[2], '').replace(/\s+$/, '');
   }
 
+  // inline persona SVGs as base64 data URIs so they render on Webflow with no
+  // uploads (the source keeps clean relative paths that work locally).
+  bodyInner = bodyInner.replace(/src="assets\/personas\/([^"]+\.svg)(\?v=\d+)?"/g, (m, file) => {
+    try {
+      const svg = readFileSync(join(sales, 'assets', 'personas', file));
+      return `src="data:image/svg+xml;base64,${svg.toString('base64')}"`;
+    } catch (e) {
+      console.warn(`persona svg not found, leaving relative: ${file}`);
+      return m;
+    }
+  });
+
   const wrappedBody = `<div class="luci-fag">${minifyHtml(bodyInner.trim())}</div>`;
 
   // 4. write head + body embeds

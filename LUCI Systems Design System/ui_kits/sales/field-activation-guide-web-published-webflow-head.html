@@ -144,7 +144,7 @@
   .fag-nav__link { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; min-width: 56px; padding: 14px 18px; border-radius: 4px; border: 1px solid rgba(235,245,248,0.12); background: rgba(235,245,248,0.05); font-family: var(--font-head); font-weight: 700; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(235,245,248,0.80); text-decoration: none; transition: color 0.18s, background 0.18s, border-color 0.18s, transform 0.18s; }
   .fag-nav__link:hover { color: var(--off-white); background: rgba(235,245,248,0.11); border-color: rgba(235,245,248,0.24); transform: translateY(-1px); }
   .fag-nav__link.is-active { color: var(--navy-deep); background: var(--mint); border-color: var(--mint); }
-  @media (max-width: 760px) { .fag-nav__divider { display: none; } .fag-nav__menu { margin-left: 0; width: 100%; } .fag-nav__link { flex: 1 1 auto; } }
+  @media (max-width: 760px) { .fag-nav__inner { padding: 14px 20px; gap: 12px; } .fag-nav__divider { display: none; } .fag-nav__menu { margin-left: 0; width: 100%; } .fag-nav__back { min-height: 40px; padding: 10px 14px; font-size: 12px; } .fag-nav__link { flex: 1 1 auto; min-height: 40px; min-width: 48px; padding: 10px 12px; font-size: 12px; } }
 
   /* ── Floating CTA (always reachable) ── */
   .fag-fab { position: fixed; right: 22px; bottom: 22px; z-index: 60; display: inline-flex; align-items: center; gap: 9px; padding: 11px 16px; border-radius: 9999px; background: rgba(16,35,45,0.92); color: var(--mint); border: 1px solid rgba(104,227,190,0.40); font-family: var(--font-head); font-weight: 700; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none; box-shadow: 0 10px 26px rgba(0,0,0,0.22); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s, color 0.18s, border-color 0.18s, opacity 0.25s ease; }
@@ -157,6 +157,7 @@
   /* ── Full-bleed section bands + inner measure ── */
   .fag { max-width: none; padding: 0; }
   .fag-sec { position: relative; padding: 80px 0 40px; scroll-margin-top: 128px; border-top: 0; }
+  @media (max-width: 760px) { .fag-sec { scroll-margin-top: 150px; } }
   .fag-sec > * { max-width: 1080px; margin-left: auto; margin-right: auto; padding-left: 24px; padding-right: 24px; }
   .fag-sec--dark { background: var(--navy); color: rgba(235,245,248,0.92); }
   .fag-sec--light { background: var(--off-white); color: var(--ink); }
