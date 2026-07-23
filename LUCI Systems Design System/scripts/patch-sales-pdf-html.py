@@ -24,7 +24,6 @@ DEFAULT_FILES = [
 ]
 
 LOGO_SLOTS = [
-    ("doc-cover__logo", LOGO_BLACK),
     ("doc-opener-hero__logo", LOGO_WHITE),
     ("doc-close__logo", LOGO_WHITE),
     ("cap-opener-hero__logo", LOGO_WHITE),
@@ -71,6 +70,11 @@ def patch(html: str, *, paragon: bool = False, budgetary: bool = False) -> str:
     )
     for class_name, file_src in LOGO_SLOTS:
         out = replace_logo_src(out, class_name, file_src)
+    # Cover logo: white on dark covers, black on light covers (brochure/budgetary/FAG-print
+    # covers are light; scope-of-work and FAG-prospect covers are dark).
+    cover_match = re.search(r'class="([^"]*\bdoc-page--cover\b[^"]*)"', out)
+    cover_is_dark = bool(cover_match and 'doc-page--dark' in cover_match.group(1))
+    out = replace_logo_src(out, 'doc-cover__logo', LOGO_WHITE if cover_is_dark else LOGO_BLACK)
     for svg, jpg in SVG_TO_JPG:
         out = out.replace(f'src="{svg}', f'src="{jpg}')
     out = out.replace(
