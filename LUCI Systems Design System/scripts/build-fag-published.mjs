@@ -117,6 +117,35 @@ const cleanScript = `<script>
       }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
       sections.forEach(function (s) { io.observe(s); });
     }
+
+    // Share widget — copy link, email, LinkedIn, X
+    var shareWidgets = document.querySelectorAll('[data-fag-share]');
+    Array.prototype.forEach.call(shareWidgets, function (widget) {
+      var btn = widget.querySelector('.fag-share__btn');
+      var menu = widget.querySelector('.fag-share__menu');
+      if (!btn || !menu) return;
+      function closeShare() { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); }
+      function openShare() { menu.hidden = false; btn.setAttribute('aria-expanded', 'true'); }
+      btn.addEventListener('click', function (e) { e.stopPropagation(); menu.hidden ? openShare() : closeShare(); });
+      document.addEventListener('click', function (e) { if (!widget.contains(e.target)) closeShare(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeShare(); });
+      var u = encodeURIComponent(location.href);
+      var t = encodeURIComponent('LUCI Field Activation Guide');
+      var mail = widget.querySelector('[data-fag-share-mail]');
+      if (mail) mail.href = 'mailto:?subject=' + t + '&body=' + u;
+      var li = widget.querySelector('[data-fag-share-li]');
+      if (li) li.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + u;
+      var x = widget.querySelector('[data-fag-share-x]');
+      if (x) x.href = 'https://twitter.com/intent/tweet?url=' + u + '&text=' + t;
+      var copy = widget.querySelector('[data-fag-share-copy]');
+      if (copy) copy.addEventListener('click', function () {
+        var label = copy.textContent;
+        var done = function () { copy.textContent = 'Copied!'; setTimeout(function () { copy.textContent = label; }, 1800); };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(location.href).then(done).catch(function () { window.prompt('Copy this link:', location.href); });
+        } else { window.prompt('Copy this link:', location.href); }
+      });
+    });
   })();
 </script>`;
 out = out.replace(/<script>[\s\S]*?<\/script>/, cleanScript);

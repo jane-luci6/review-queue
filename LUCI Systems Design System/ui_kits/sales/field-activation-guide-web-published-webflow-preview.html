@@ -103,16 +103,27 @@
   .fag-conclude__help { margin: 0 0 14px; font-family: var(--font-body); font-size: 15px; line-height: 1.6; color: rgba(235,245,248,0.78); }
   .fag-conclude__help a { color: var(--mint); text-decoration: none; border-bottom: 1px solid rgba(104,227,190,0.40); }
   .fag-conclude__help a:hover { color: var(--off-white); border-bottom-color: var(--mint); }
-  .fag-conclude__pdf { display: inline-block; margin-top: 22px; font-family: var(--font-body); font-size: 13px; color: rgba(235,245,248,0.6); text-decoration: none; }
-  .fag-conclude__pdf:hover { color: var(--mint); }
+  /* Share widget (replaces the PDF download) */
+  .fag-share { position: relative; display: inline-block; margin-top: 22px; }
+  .fag-share__btn { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 9999px; border: 1px solid rgba(104,227,190,0.45); background: transparent; font-family: var(--font-body); font-size: 13px; font-weight: 600; color: var(--mint); cursor: pointer; transition: background .15s ease, color .15s ease, border-color .15s ease; }
+  .fag-share__btn:hover { background: rgba(104,227,190,0.10); border-color: var(--mint); }
+  .fag-share__icon { width: 16px; height: 16px; flex: none; }
+  .fag-share__menu { position: absolute; left: 0; bottom: calc(100% + 8px); top: auto; z-index: 30; list-style: none; margin: 0; padding: 8px; min-width: 172px; background: var(--navy-deep); border: 1px solid rgba(104,227,190,0.22); border-radius: 12px; box-shadow: 0 24px 48px rgba(0,0,0,0.45); }
+  .fag-share__menu[hidden] { display: none; }
+  .fag-share__item { display: flex; width: 100%; align-items: center; padding: 10px 14px; border: none; background: transparent; font-family: var(--font-body); font-size: 14px; font-weight: 500; color: rgba(235,245,248,0.88); cursor: pointer; text-decoration: none; border-radius: 8px; }
+  .fag-share__item:hover { background: rgba(104,227,190,0.12); color: var(--mint); }
+  /* Light-section variant (conclusion is fag-sec--light) */
+  .fag-sec--light .fag-share__btn { color: var(--accent-light); border-color: rgba(43,158,128,0.45); }
+  .fag-sec--light .fag-share__btn:hover { background: rgba(43,158,128,0.10); border-color: var(--accent-light); }
+  .fag-sec--light .fag-share__menu { background: #fff; border-color: rgba(43,158,128,0.22); box-shadow: 0 24px 48px rgba(0,0,0,0.14); }
+  .fag-sec--light .fag-share__item { color: var(--ink-strong); }
+  .fag-sec--light .fag-share__item:hover { background: rgba(43,158,128,0.10); color: var(--accent-light); }
   /* Section 07 conclusion on light: recap/help/pdf were authored for dark, reskin here */
   .fag-sec--light.fag-conclude .fag-conclude__recap { color: var(--accent-light); }
   .fag-sec--light.fag-conclude .fag-sec__role em { font-style: normal; color: var(--accent-light); }
   .fag-sec--light.fag-conclude .fag-conclude__help { color: var(--ink-muted); }
   .fag-sec--light.fag-conclude .fag-conclude__help a { color: var(--accent-light); border-bottom-color: rgba(43,158,128,0.40); }
   .fag-sec--light.fag-conclude .fag-conclude__help a:hover { color: var(--ink-strong); border-bottom-color: var(--accent-light); }
-  .fag-sec--light.fag-conclude .fag-conclude__pdf { color: var(--ink-muted); }
-  .fag-sec--light.fag-conclude .fag-conclude__pdf:hover { color: var(--accent-light); }
 
   /* ── Light-section tokens ── */
   .luci-fag {
@@ -127,7 +138,6 @@
   .fag-nav__back svg { width: 16px; height: 16px; }
   .fag-nav__back:hover { color: var(--navy-deep); background: var(--mint); border-color: var(--mint); }
   .fag-nav__divider { width: 1px; align-self: stretch; background: rgba(235,245,248,0.14); }
-  .fag-nav__logo { display: block; height: 30px; width: auto; flex: 0 0 auto; }
   .fag-nav__menu { display: flex; flex-wrap: wrap; gap: 8px; margin-left: auto; }
   .fag-nav__link { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; min-width: 56px; padding: 14px 18px; border-radius: 4px; border: 1px solid rgba(235,245,248,0.12); background: rgba(235,245,248,0.05); font-family: var(--font-head); font-weight: 700; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(235,245,248,0.80); text-decoration: none; transition: color 0.18s, background 0.18s, border-color 0.18s, transform 0.18s; }
   .fag-nav__link:hover { color: var(--off-white); background: rgba(235,245,248,0.11); border-color: rgba(235,245,248,0.24); transform: translateY(-1px); }
@@ -201,73 +211,13 @@
   /* conclusion band sits on .fag-sec full-bleed; no separate footer framing needed */
 
   @media (prefers-reduced-motion: reduce) { .fag-acc__panel, .fag-acc__chev { transition: none; } }
-
-  /* ===== PDF / print ===== */
-  .fag-print-cover, .fag-print-toc { display: none; }
-  @media print {
-    @page { margin: 12mm; }
-    @page :first { margin: 0; }
-    *, *::before, *::after { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
-    html, body { background: var(--navy-deep) !important; }
-    .fag-nav { display: none !important; }
-    .fag-sec { break-before: page; }
-    .fag-sec__head, .fag-sec__name, .fag-sec__role { break-after: avoid; }
-    .fag-uc, .fag-uc__benefits li, .fag-conclude { break-inside: avoid; }
-
-    .fag-print-cover, .fag-print-toc { display: block; }
-    .fag-print-cover { display: flex; flex-direction: column; min-height: 100vh; break-after: page; background: #F5F8FA; }
-    .fag-print-cover__top { padding: 28mm 24mm 0; }
-    .fag-print-cover__logo { height: 30px; width: auto; display: block; }
-    .fag-print-cover__hero { position: relative; margin: auto 0 0; padding: 64px 24mm; background: var(--navy-deep); border-bottom: 4px solid var(--mint); overflow: hidden; }
-    .fag-print-cover__hero::before { content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; background-image: url('assets/textures/texture-circuit-header-mintgold.png'); background-repeat: repeat; background-position: right center; background-size: 640px auto; -webkit-mask-image: linear-gradient(90deg, transparent 40%, rgba(0,0,0,0.45) 68%, #000 100%); mask-image: linear-gradient(90deg, transparent 40%, rgba(0,0,0,0.45) 68%, #000 100%); opacity: 0.55; pointer-events: none; }
-    .fag-print-cover__hero > * { position: relative; z-index: 1; }
-    .fag-print-cover__title { margin: 0 0 20px; font-family: var(--font-display); font-weight: 700; font-size: 28px; line-height: 1.1; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(245,248,250,0.96); max-width: 24ch; }
-    .fag-print-cover__title em { font-style: normal; color: var(--mint); }
-    .fag-print-cover__sub { margin: 0; font-family: var(--font-body); font-size: 17px; line-height: 1.5; color: rgba(235,245,248,0.9); max-width: 46ch; }
-
-    .fag-print-toc { break-after: page; }
-    .fag-print-toc__inner { max-width: 60ch; margin: 0 auto; }
-    .fag-print-toc__kicker { font-family: var(--font-display); font-weight: 700; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--mint); margin: 0 0 12px; }
-    .fag-print-toc__heading { font-family: var(--font-head); font-weight: 700; font-size: 34px; letter-spacing: -0.02em; color: var(--off-white); margin: 0 0 32px; }
-    .fag-print-toc__list { list-style: none; padding: 0; margin: 0; }
-    .fag-print-toc__list li { border-top: 1px solid rgba(235,245,248,0.14); }
-    .fag-print-toc__list li:last-child { border-bottom: 1px solid rgba(235,245,248,0.14); }
-    .fag-print-toc__list a { display: flex; align-items: baseline; gap: 22px; padding: 15px 0; text-decoration: none; color: var(--off-white); font-family: var(--font-head); font-weight: 600; font-size: 19px; letter-spacing: -0.01em; }
-    .fag-print-toc__num { color: var(--mint); font-family: var(--font-display); font-weight: 700; font-size: 12px; letter-spacing: 0.12em; min-width: 2em; }
-  }
 </style>
 </head>
 <body>
 <div class="luci-fag">
-<section class="fag-print-cover" aria-hidden="true">
-  <div class="fag-print-cover__top">
-    <img class="fag-print-cover__logo" src="assets/logos/luci-wordmark-black-320.png" alt="LUCI" width="160" height="32" decoding="async">
-  </div>
-  <div class="fag-print-cover__hero">
-    <h1 class="fag-print-cover__title">Field Activation <em>Guide</em></h1>
-    <p class="fag-print-cover__sub">Every screen, every zone, every channel on your property can now be activated through LUCI. Here&rsquo;s how each team can put it to work.</p>
-  </div>
-</section>
-<section class="fag-print-toc" aria-hidden="true">
-  <div class="fag-print-toc__inner">
-    <p class="fag-print-toc__kicker">Contents</p>
-    <h2 class="fag-print-toc__heading">What&rsquo;s inside</h2>
-    <ol class="fag-print-toc__list">
-      <li><a href="#marketing"><span class="fag-print-toc__num">01</span><span>Marketing &amp; Guest Experience</span></a></li>
-      <li><a href="#gaming"><span class="fag-print-toc__num">02</span><span>Gaming &amp; Operations</span></a></li>
-      <li><a href="#av"><span class="fag-print-toc__num">03</span><span>A/V &amp; Facilities</span></a></li>
-      <li><a href="#it"><span class="fag-print-toc__num">04</span><span>IT &amp; Technology</span></a></li>
-      <li><a href="#finance"><span class="fag-print-toc__num">05</span><span>Finance</span></a></li>
-      <li><a href="#gm"><span class="fag-print-toc__num">06</span><span>General Management</span></a></li>
-      <li><a href="#conclusion"><span class="fag-print-toc__num">07</span><span>Next Step</span></a></li>
-    </ol>
-  </div>
-</section>
 <nav class="fag-nav" aria-label="Section navigation">
   <div class="fag-nav__inner">
-    <img class="fag-nav__logo" src="https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a569df17c388a8f5ec49728_LUCI%20logo%20white%20%26%20mint.png" alt="LUCI" width="2446" height="571" decoding="async">
-    <span class="fag-nav__divider" aria-hidden="true"></span>
-    <a class="fag-nav__back" href="https://www.lucisystems.com/guides/customer-field-activation-guide">
+    <a class="fag-nav__back" href="field-activation-guide-hub.html">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
       <span>Field Activation Guide</span>
     </a>
@@ -718,7 +668,18 @@
     <p class="fag-sec__intro">You now have what you need to put LUCI to work across your property. Start where you already have a reason to act, test the features in a low-risk environment, and watch the capability compound from there.</p>
     <p class="fag-conclude__recap">Marketing &middot; Gaming &amp; Operations &middot; A/V &amp; Facilities &middot; IT &middot; Finance &middot; General Management</p>
     <p class="fag-conclude__help">Your Field Delivery Engineer can walk any team through setup &mdash; <a href="mailto:hello@lucisystems.com">just ask</a>.</p>
-    <a class="fag-conclude__pdf" href="assets/sales/LUCI-Field-Activation-Guide.pdf">Download the PDF</a>
+    <div class="fag-share" data-fag-share>
+      <button class="fag-share__btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Share this guide">
+        <svg class="fag-share__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.3l6.8 4.4M15.4 6.3 8.2 10.7"/></svg>
+        <span>Share</span>
+      </button>
+      <ul class="fag-share__menu" role="menu" hidden>
+        <li role="none"><button class="fag-share__item" type="button" role="menuitem" data-fag-share-copy>Copy link</button></li>
+        <li role="none"><a class="fag-share__item" role="menuitem" href="#" data-fag-share-mail>Email</a></li>
+        <li role="none"><a class="fag-share__item" role="menuitem" href="#" target="_blank" rel="noopener" data-fag-share-li>LinkedIn</a></li>
+        <li role="none"><a class="fag-share__item" role="menuitem" href="#" target="_blank" rel="noopener" data-fag-share-x>X</a></li>
+      </ul>
+    </div>
   </section>
 
 </article>
@@ -739,6 +700,35 @@
       }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
       sections.forEach(function (s) { io.observe(s); });
     }
+
+    // Share widget — copy link, email, LinkedIn, X
+    var shareWidgets = document.querySelectorAll('[data-fag-share]');
+    Array.prototype.forEach.call(shareWidgets, function (widget) {
+      var btn = widget.querySelector('.fag-share__btn');
+      var menu = widget.querySelector('.fag-share__menu');
+      if (!btn || !menu) return;
+      function closeShare() { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); }
+      function openShare() { menu.hidden = false; btn.setAttribute('aria-expanded', 'true'); }
+      btn.addEventListener('click', function (e) { e.stopPropagation(); menu.hidden ? openShare() : closeShare(); });
+      document.addEventListener('click', function (e) { if (!widget.contains(e.target)) closeShare(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeShare(); });
+      var u = encodeURIComponent(location.href);
+      var t = encodeURIComponent('LUCI Field Activation Guide');
+      var mail = widget.querySelector('[data-fag-share-mail]');
+      if (mail) mail.href = 'mailto:?subject=' + t + '&body=' + u;
+      var li = widget.querySelector('[data-fag-share-li]');
+      if (li) li.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + u;
+      var x = widget.querySelector('[data-fag-share-x]');
+      if (x) x.href = 'https://twitter.com/intent/tweet?url=' + u + '&text=' + t;
+      var copy = widget.querySelector('[data-fag-share-copy]');
+      if (copy) copy.addEventListener('click', function () {
+        var label = copy.textContent;
+        var done = function () { copy.textContent = 'Copied!'; setTimeout(function () { copy.textContent = label; }, 1800); };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(location.href).then(done).catch(function () { window.prompt('Copy this link:', location.href); });
+        } else { window.prompt('Copy this link:', location.href); }
+      });
+    });
   })();
 </script>
 </body>

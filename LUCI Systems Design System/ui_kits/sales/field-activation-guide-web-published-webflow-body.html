@@ -2,35 +2,9 @@
      Paste into: Webflow Page Settings > Custom Code > "Before </body>" tag (or an Embed widget).
      Everything is wrapped in .luci-fag so the scoped CSS above applies only here. -->
 <div class="luci-fag">
-<section class="fag-print-cover" aria-hidden="true">
-  <div class="fag-print-cover__top">
-    <img class="fag-print-cover__logo" src="assets/logos/luci-wordmark-black-320.png" alt="LUCI" width="160" height="32" decoding="async">
-  </div>
-  <div class="fag-print-cover__hero">
-    <h1 class="fag-print-cover__title">Field Activation <em>Guide</em></h1>
-    <p class="fag-print-cover__sub">Every screen, every zone, every channel on your property can now be activated through LUCI. Here&rsquo;s how each team can put it to work.</p>
-  </div>
-</section>
-<section class="fag-print-toc" aria-hidden="true">
-  <div class="fag-print-toc__inner">
-    <p class="fag-print-toc__kicker">Contents</p>
-    <h2 class="fag-print-toc__heading">What&rsquo;s inside</h2>
-    <ol class="fag-print-toc__list">
-      <li><a href="#marketing"><span class="fag-print-toc__num">01</span><span>Marketing &amp; Guest Experience</span></a></li>
-      <li><a href="#gaming"><span class="fag-print-toc__num">02</span><span>Gaming &amp; Operations</span></a></li>
-      <li><a href="#av"><span class="fag-print-toc__num">03</span><span>A/V &amp; Facilities</span></a></li>
-      <li><a href="#it"><span class="fag-print-toc__num">04</span><span>IT &amp; Technology</span></a></li>
-      <li><a href="#finance"><span class="fag-print-toc__num">05</span><span>Finance</span></a></li>
-      <li><a href="#gm"><span class="fag-print-toc__num">06</span><span>General Management</span></a></li>
-      <li><a href="#conclusion"><span class="fag-print-toc__num">07</span><span>Next Step</span></a></li>
-    </ol>
-  </div>
-</section>
 <nav class="fag-nav" aria-label="Section navigation">
   <div class="fag-nav__inner">
-    <img class="fag-nav__logo" src="https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a569df17c388a8f5ec49728_LUCI%20logo%20white%20%26%20mint.png" alt="LUCI" width="2446" height="571" decoding="async">
-    <span class="fag-nav__divider" aria-hidden="true"></span>
-    <a class="fag-nav__back" href="https://www.lucisystems.com/guides/customer-field-activation-guide">
+    <a class="fag-nav__back" href="field-activation-guide-hub.html">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
       <span>Field Activation Guide</span>
     </a>
@@ -481,7 +455,18 @@
     <p class="fag-sec__intro">You now have what you need to put LUCI to work across your property. Start where you already have a reason to act, test the features in a low-risk environment, and watch the capability compound from there.</p>
     <p class="fag-conclude__recap">Marketing &middot; Gaming &amp; Operations &middot; A/V &amp; Facilities &middot; IT &middot; Finance &middot; General Management</p>
     <p class="fag-conclude__help">Your Field Delivery Engineer can walk any team through setup &mdash; <a href="mailto:hello@lucisystems.com">just ask</a>.</p>
-    <a class="fag-conclude__pdf" href="assets/sales/LUCI-Field-Activation-Guide.pdf">Download the PDF</a>
+    <div class="fag-share" data-fag-share>
+      <button class="fag-share__btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Share this guide">
+        <svg class="fag-share__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.3l6.8 4.4M15.4 6.3 8.2 10.7"/></svg>
+        <span>Share</span>
+      </button>
+      <ul class="fag-share__menu" role="menu" hidden>
+        <li role="none"><button class="fag-share__item" type="button" role="menuitem" data-fag-share-copy>Copy link</button></li>
+        <li role="none"><a class="fag-share__item" role="menuitem" href="#" data-fag-share-mail>Email</a></li>
+        <li role="none"><a class="fag-share__item" role="menuitem" href="#" target="_blank" rel="noopener" data-fag-share-li>LinkedIn</a></li>
+        <li role="none"><a class="fag-share__item" role="menuitem" href="#" target="_blank" rel="noopener" data-fag-share-x>X</a></li>
+      </ul>
+    </div>
   </section>
 
 </article>
@@ -502,5 +487,34 @@
       }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
       sections.forEach(function (s) { io.observe(s); });
     }
+
+    // Share widget — copy link, email, LinkedIn, X
+    var shareWidgets = document.querySelectorAll('[data-fag-share]');
+    Array.prototype.forEach.call(shareWidgets, function (widget) {
+      var btn = widget.querySelector('.fag-share__btn');
+      var menu = widget.querySelector('.fag-share__menu');
+      if (!btn || !menu) return;
+      function closeShare() { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); }
+      function openShare() { menu.hidden = false; btn.setAttribute('aria-expanded', 'true'); }
+      btn.addEventListener('click', function (e) { e.stopPropagation(); menu.hidden ? openShare() : closeShare(); });
+      document.addEventListener('click', function (e) { if (!widget.contains(e.target)) closeShare(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeShare(); });
+      var u = encodeURIComponent(location.href);
+      var t = encodeURIComponent('LUCI Field Activation Guide');
+      var mail = widget.querySelector('[data-fag-share-mail]');
+      if (mail) mail.href = 'mailto:?subject=' + t + '&body=' + u;
+      var li = widget.querySelector('[data-fag-share-li]');
+      if (li) li.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + u;
+      var x = widget.querySelector('[data-fag-share-x]');
+      if (x) x.href = 'https://twitter.com/intent/tweet?url=' + u + '&text=' + t;
+      var copy = widget.querySelector('[data-fag-share-copy]');
+      if (copy) copy.addEventListener('click', function () {
+        var label = copy.textContent;
+        var done = function () { copy.textContent = 'Copied!'; setTimeout(function () { copy.textContent = label; }, 1800); };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(location.href).then(done).catch(function () { window.prompt('Copy this link:', location.href); });
+        } else { window.prompt('Copy this link:', location.href); }
+      });
+    });
   })();
 </script>
