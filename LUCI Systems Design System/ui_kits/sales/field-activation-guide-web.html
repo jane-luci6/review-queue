@@ -1167,36 +1167,32 @@
       sections.forEach(function (s) { io.observe(s); });
     }
 
-    // Sticky-nav-aware anchor scrolling: land the section kicker ~16px below the sticky nav.
-    // Measures the ACTUAL nav height at click/load time so desktop + mobile both offset
-    // correctly (mobile nav height varies when the menu wraps). Handles in-page nav clicks
-    // (smooth) and cross-page hash landings from the hub (instant re-adjust), bypassing the
-    // smooth-scroll/scroll-margin-top quirk that left in-page clicks clipped.
+    // Sticky-nav-aware anchor scrolling: land the section kicker below the sticky nav.
+    // Measures actual nav height (floor 112 if not rendered yet) so desktop + mobile offset
+    // correctly even when the menu wraps. In-page clicks scroll instant (matching cross-page
+    // landings) to avoid smooth-scroll overshoot; cross-page re-adjusts on load + 300ms.
     (function () {
       var nav = document.querySelector('.fag-nav');
       var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      function navH() { return nav ? nav.offsetHeight : 0; }
+      function navH() { var h = nav ? nav.offsetHeight : 0; return h < 80 ? 112 : h; }
       function targetFor(id) { var s = document.getElementById(id); return s ? (s.querySelector('.fag-sec__kicker') || s) : null; }
       function jumpTo(id, smooth) {
         var el = targetFor(id); if (!el) return;
-        var y = el.getBoundingClientRect().top + window.pageYOffset - navH() - 16;
-        window.scrollTo({ top: y, behavior: (smooth && !reduce) ? 'smooth' : 'auto' });
+        window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - navH() - 24, behavior: (smooth && !reduce) ? 'smooth' : 'auto' });
       }
       Array.prototype.forEach.call(document.querySelectorAll('.fag-nav__link[href^="#"]'), function (a) {
         a.addEventListener('click', function (e) {
           var id = a.getAttribute('href').slice(1);
           if (!document.getElementById(id)) return;
-          e.preventDefault();
-          jumpTo(id, true);
+          e.preventDefault(); jumpTo(id, false);
           if (history.pushState) history.pushState(null, '', '#' + id);
+          // re-adjust after a tick: mobile URL-bar shift leaves the title clipped; re-land once settled.
+          setTimeout(function () { jumpTo(id, false); }, 300);
         });
       });
-      if (location.hash) {
-        var id = location.hash.slice(1);
-        if (document.getElementById(id)) {
-          requestAnimationFrame(function () { requestAnimationFrame(function () { jumpTo(id, false); }); });
-        }
-      }
+      function adjustToHash() { if (location.hash) { var id = location.hash.slice(1); if (document.getElementById(id)) jumpTo(id, false); } }
+      if (document.readyState === 'complete') adjustToHash(); else window.addEventListener('load', adjustToHash);
+      setTimeout(adjustToHash, 300);
     })();
 
     // Floating CTA: hide it once the conclusion band is in view so it doesn't double up
