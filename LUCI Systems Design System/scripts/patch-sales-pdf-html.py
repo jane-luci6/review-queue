@@ -57,7 +57,7 @@ def replace_logo_src(html: str, class_name: str, file_src: str) -> str:
     return html
 
 
-def patch(html: str, *, paragon: bool = False, budgetary: bool = False) -> str:
+def patch(html: str, *, paragon: bool = False, budgetary: bool = False, fag_prospect: bool = False) -> str:
     out = html
     out = re.sub(r"<style data-luci-fonts>[\s\S]*?</style>\s*", "", out, count=1)
     out = re.sub(
@@ -129,6 +129,39 @@ def patch(html: str, *, paragon: bool = False, budgetary: bool = False) -> str:
             'src="assets/logos/paragon-casino-resort-print.png"',
             f'src="{PARAGON_LOGO}"',
         )
+    if fag_prospect:
+        # Replace CSS gradients + mask-images (which Chrome turns into PDF
+        # Shading/Pattern XObjects that make macOS Preview blink on open) with
+        # pre-baked raster backgrounds. Scoped to the FAG prospect only.
+        out = out.replace(
+            "</head>",
+            "<style>\n"
+            ".doc-page--cover, .doc-page--close { background: #0A161C !important; }\n"
+            ".doc-page--cover::before, .doc-page--close::before {\n"
+            "  background: url('assets/textures/fag-cover-bg-print.jpg') no-repeat center top / cover !important;\n"
+            "  -webkit-mask-image: none !important; mask-image: none !important; opacity: 1 !important;\n"
+            "}\n"
+            ".doc--activation .flag-band {\n"
+            "  background: url('assets/textures/fag-flagband-bg-print.jpg') no-repeat right center / cover !important;\n"
+            "}\n"
+            ".doc--activation .flag-band::before { content: none !important; }\n"
+            ".doc--activation .doc-page--nav::after {\n"
+            "  background-image: url('assets/textures/fag-nav-bg-print.png') !important;\n"
+            "  background-repeat: no-repeat !important; background-position: right center !important;\n"
+            "  background-size: 420px auto !important;\n"
+            "  -webkit-mask-image: none !important; mask-image: none !important; opacity: 0.35 !important;\n"
+            "}\n"
+            ".doc--activation .doc-uc__num {\n"
+            "  background: url('assets/textures/fag-uc-tile-print.png') no-repeat center / cover !important;\n"
+            "}\n"
+            ".doc-uc__benefits li::before, .doc-feature::before {\n"
+            "  background-color: transparent !important;\n"
+            "  background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232b9e80' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E\") !important;\n"
+            "  background-repeat: no-repeat !important; background-position: center !important; background-size: contain !important;\n"
+            "  -webkit-mask: none !important; mask: none !important;\n"
+            "}\n"
+            "</style>\n</head>",
+        )
     return out
 
 
@@ -153,7 +186,7 @@ def main() -> int:
 
     if args.input:
         raw = args.input.read_text(encoding="utf-8")
-        patched = patch(raw, paragon=args.input.name.startswith("paragon-"), budgetary="budgetary-estimate" in args.input.name)
+        patched = patch(raw, paragon=args.input.name.startswith("paragon-"), budgetary="budgetary-estimate" in args.input.name, fag_prospect="field-activation-guide-prospect" in args.input.name)
         if args.output:
             args.output.parent.mkdir(parents=True, exist_ok=True)
             args.output.write_text(patched, encoding="utf-8")
@@ -171,7 +204,7 @@ def main() -> int:
         if not path.exists():
             continue
         raw = path.read_text(encoding="utf-8")
-        patched = patch(raw, paragon=path.name.startswith("paragon-"), budgetary="budgetary-estimate" in path.name)
+        patched = patch(raw, paragon=path.name.startswith("paragon-"), budgetary="budgetary-estimate" in path.name, fag_prospect="field-activation-guide-prospect" in path.name)
         if patched != raw:
             path.write_text(patched, encoding="utf-8")
             print(f"patched {path.relative_to(ROOT)}  ({len(raw)//1024} KB → {len(patched)//1024} KB)")
