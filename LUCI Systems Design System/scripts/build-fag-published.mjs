@@ -118,35 +118,29 @@ const cleanScript = `<script>
       sections.forEach(function (s) { io.observe(s); });
     }
 
-    // Sticky-nav-aware anchor scrolling: land the section kicker ~16px below the sticky nav.
-    // Measures the ACTUAL nav height so desktop + mobile both offset correctly (mobile nav
-    // height varies when the menu wraps). Handles in-page nav clicks (smooth) and cross-page
-    // hash landings from the hub (instant), bypassing the smooth-scroll/scroll-margin-top quirk
-    // that left in-page clicks clipped.
+    // Sticky-nav-aware anchor scroll: land the kicker below the nav. Measures actual nav
+    // height (floor 112 if not rendered yet) so desktop + mobile offset correctly even when
+    // the menu wraps. In-page clicks scroll instant (matching cross-page landings) to avoid
+    // smooth-scroll overshoot; cross-page re-adjusts on load + 300ms (font reflow).
     var navEl = document.querySelector('.fag-nav');
     var reduceMo = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    function navHeight() { return navEl ? navEl.offsetHeight : 0; }
+    function navH() { var h = navEl ? navEl.offsetHeight : 0; return h < 80 ? 112 : h; }
     function anchorTarget(id) { var s = document.getElementById(id); return s ? (s.querySelector('.fag-sec__kicker') || s) : null; }
     function jumpTo(id, smooth) {
       var el = anchorTarget(id); if (!el) return;
-      var y = el.getBoundingClientRect().top + window.pageYOffset - navHeight() - 16;
-      window.scrollTo({ top: y, behavior: (smooth && !reduceMo) ? 'smooth' : 'auto' });
+      window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - navH() - 24, behavior: (smooth && !reduceMo) ? 'smooth' : 'auto' });
     }
     Array.prototype.forEach.call(document.querySelectorAll('.fag-nav__link[href^="#"]'), function (a) {
       a.addEventListener('click', function (e) {
         var id = a.getAttribute('href').slice(1);
         if (!document.getElementById(id)) return;
-        e.preventDefault();
-        jumpTo(id, true);
+        e.preventDefault(); jumpTo(id, false);
         if (history.pushState) history.pushState(null, '', '#' + id);
       });
     });
-    if (location.hash) {
-      var hid = location.hash.slice(1);
-      if (document.getElementById(hid)) {
-        requestAnimationFrame(function () { requestAnimationFrame(function () { jumpTo(hid, false); }); });
-      }
-    }
+    function adjustToHash() { if (location.hash) { var id = location.hash.slice(1); if (document.getElementById(id)) jumpTo(id, false); } }
+    if (document.readyState === 'complete') adjustToHash(); else window.addEventListener('load', adjustToHash);
+    setTimeout(adjustToHash, 300);
 
     // Share widget — copy link, email, LinkedIn, X
     var shareWidgets = document.querySelectorAll('[data-fag-share]');
