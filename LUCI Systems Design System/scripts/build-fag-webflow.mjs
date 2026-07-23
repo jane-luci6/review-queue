@@ -39,6 +39,9 @@ function minifyHtml(s) {
   s = s.replace(/>\s+</g, '><');
   s = s.replace(/\s{2,}/g, ' ');
   s = s.trim();
+  // Break at top-level <section> boundaries so the embed isn't one giant
+  // line (Webflow's custom-code editor can choke/truncate a 40k+ char line).
+  s = s.replace(/<section /g, '\n<section ');
   s = s.replace(/\u0000(\d+)\u0000/g, (_, i) => stash[i]);
   return s;
 }
