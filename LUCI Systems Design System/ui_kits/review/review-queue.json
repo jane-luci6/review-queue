@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-22",
+  "updated": "2026-07-23",
   "publishNote": "Build (npm run build:review) outputs to ui_kits/review. Bump reviewVersion + versionNote for new uploads (version history shown in portal). Set dueForReview for first-time review. Comments/approvals sync server-side via the comments_api container (proxied at /api/comments); Jane sees Mike/Mark's feedback on refresh. Archive with scripts/pull-review-comments.mjs.",
   "previewBaseUrl": "",
   "commentsApiUrl": "http://10.10.1.17:8081/api/comments",
@@ -8,17 +8,17 @@
     {
       "title": "Messaging guide",
       "url": "messaging/messaging-guide.html",
-      "note": "Updated Jul 22, 2026"
+      "note": "Updated Jul 23, 2026"
     },
     {
       "title": "LUCI philosophy",
       "url": "messaging/philosophy.html",
-      "note": "Updated Jul 22, 2026"
+      "note": "Updated Jul 23, 2026"
     },
     {
       "title": "Personas",
       "url": "messaging/personas.html",
-      "note": "Updated Jul 22, 2026"
+      "note": "Updated Jul 23, 2026"
     }
   ],
   "inProgress": [],
@@ -80,29 +80,6 @@
         }
       ],
       "previewUrl": "sales/budgetary-estimate.html"
-    },
-    {
-      "id": "field-activation-guide",
-      "title": "Field Activation Guide",
-      "summary": "Post-go-live PDF — shows each team how to put LUCI to work on the floor. Six team sections, each with use cases and one task to try this week.",
-      "reviewStatus": "New — your review",
-      "signOff": false,
-      "reviewVersion": 1,
-      "versionNote": "First portal preview — six team sections (Marketing, Gaming & Operations, A/V & Facilities, IT, Finance, General Management), shared-strategy principle page, proof, and close.",
-      "due": "2026-06-19",
-      "hubPreviewPath": "ui_kits/sales/field-activation-guide.html",
-      "reviewBrief": {
-        "description": "A PDF handed to a property after go-live. Six team sections, each with use cases and one task to try this week, framed by a shared floor-strategy principle and proof.",
-        "reviewAsk": "whether each team’s use cases ring true and actionable — anything to add or cut for that audience."
-      },
-      "versionHistory": [
-        {
-          "version": 1,
-          "published": "2026-06-15",
-          "note": "First portal preview."
-        }
-      ],
-      "previewUrl": "sales/field-activation-guide.html"
     },
     {
       "id": "website-strategy-brief",
@@ -427,6 +404,32 @@
           "note": "First prospect release."
         }
       ]
+    },
+    {
+      "id": "field-activation-guide",
+      "title": "Field Activation Guide",
+      "summary": "Post-go-live web guide — walks each team through putting LUCI to work on the floor. Six team sections (Marketing, Gaming & Operations, A/V & Facilities, IT, Finance, General Management), each with use cases and a task to try this week. Live on lucisystems.com.",
+      "approved": "2026-07-23",
+      "note": "Updated Jul 23, 2026 — published to lucisystems.com as a web guide; added to the portal as a link (Open the live page, no download).",
+      "reviewVersion": 2,
+      "versionNote": "Published as a web guide on lucisystems.com — portal entry is a link to the live page (Open, no download).",
+      "liveUrl": "https://www.lucisystems.com/guides/customer-field-activation-guide",
+      "reviewBrief": {
+        "description": "A PDF handed to a property after go-live. Six team sections, each with use cases and one task to try this week, framed by a shared floor-strategy principle and proof.",
+        "reviewAsk": "whether each team’s use cases ring true and actionable — anything to add or cut for that audience."
+      },
+      "versionHistory": [
+        {
+          "version": 1,
+          "published": "2026-06-15",
+          "note": "First portal preview."
+        },
+        {
+          "version": 2,
+          "published": "2026-07-23",
+          "note": "Published as a web guide on lucisystems.com; portal entry links to the live page (Open, no download)."
+        }
+      ]
     }
   ],
   "upcoming": [
@@ -438,5 +441,5 @@
     }
   ],
   "finalized": [],
-  "messagingDocsUpdated": "2026-07-22"
+  "messagingDocsUpdated": "2026-07-23"
 }

@@ -1356,7 +1356,7 @@
     // When reachable, comments/approvals are stored server-side so Jane sees Mike/Mark's feedback.
     // Falls back to localStorage (SEED + local) when the API is unavailable (e.g. local file preview).
     const COMMENTS_API_URL = '/api/comments';
-    const PUBLIC_MATERIALS = ['sales-brochure', 'capabilities-document', 'signal-issue-01', 'signal-issue-02', 'case-study-ameristar'];
+    const PUBLIC_MATERIALS = ['sales-brochure', 'capabilities-document', 'signal-issue-01', 'signal-issue-02', 'case-study-ameristar', 'field-activation-guide'];
 
     // Baseline history so the queue shows prior feedback even in local preview.
     const SEED_COMMENTS = [
@@ -2277,7 +2277,7 @@
           <div class="actions">
             ${openUrl ? `<a class="btn btn--ghost" href="${openUrl}" target="_blank" rel="noopener">Open</a>` : ''}
             ${downloads.map((dl) => `<a class="btn btn--mint" href="${pathFromReview(dl.path)}" download="${dl.path.split('/').pop()}">Download ${dl.label || 'file'}</a>`).join('')}
-            ${item.liveUrl ? `<a class="btn btn--ghost" href="${item.liveUrl}" target="_blank" rel="noopener">Live</a>` : ''}
+            ${item.liveUrl && item.liveUrl !== openUrl ? `<a class="btn btn--ghost" href="${item.liveUrl}" target="_blank" rel="noopener">Live</a>` : ''}
           </div>
         `;
         list.appendChild(row);
