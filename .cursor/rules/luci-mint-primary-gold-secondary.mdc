@@ -1,0 +1,25 @@
+---
+description: Mint is the primary accent; gold is always secondary
+alwaysApply: true
+---
+
+# LUCI accent hierarchy — mint primary, gold secondary
+
+Jane corrected this (Jul 2026) on the Operations persona page and wants it held as the house rule: **mint is always the primary accent; gold is secondary.**
+
+## Hierarchy
+
+1. **Mint (`--mint` on dark, `--accent-light` / `#2b9e80` on light)** — primary accent. Use for section lockup rules, lockup roles / eyebrows, primary CTAs, primary structure markers, and anything that reads as the brand’s main accent.
+2. **Gold (`--gold` on dark, `--gold-deep` on light)** — secondary accent. Use for supporting highlights: watermark numbers, secondary labels, duotone icon details, soft card edges, highlight phrases inside a sentence, sand-section callout bars.
+
+## Do
+
+- Keep **eyebrows / lockup roles / lockup accent rules mint** (or `--accent-light` on light canvases). Never paint those gold.
+- Keep gold as the *second* note in a mint+gold pairing — numbers, “How it works” links, icon gold fills, sand-section emphasis bars are fine.
+- On light surfaces, use `--gold-deep` for gold marks (never bright `--gold` as text on light — contrast fails).
+
+## Don’t
+
+- Don’t make the primary lockup treatment (name rule + role/eyebrow) gold.
+- Don’t lead a section with gold if mint isn’t already carrying the structure.
+- Don’t replace mint kickers/eyebrows with gold just to “add more gold.”
