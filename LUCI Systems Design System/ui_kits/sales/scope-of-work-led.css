@@ -709,8 +709,8 @@
 .doc-page--led-advantage .led-advantage-grid {
   margin-top: 10px;
   gap: 24px 32px;
-  flex: 1;
-  align-content: center;
+  flex: 0 0 auto;
+  align-content: start;
 }
 .doc-page--led-advantage .led-advantage {
   grid-template-columns: 52px 1fr;
@@ -731,14 +731,22 @@
   font-size: 13px;
   line-height: 1.5;
 }
+/* Flex slot that absorbs leftover vertical space and centers the NovaStar
+   paragraph between the advantage grid above and the stat strip below. */
+.doc-page--led-advantage .led-arch-slot {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  min-height: 0;
+}
 .doc-page--led-advantage .led-arch-text {
-  margin-top: auto;
-  padding-top: 18px;
+  margin: 0;
   font-size: 14px;
 }
 .doc-page--led-advantage .led-stat-strip--dark {
-  margin-top: 18px;
+  margin-top: 0;
   padding-top: 20px;
+  flex: 0 0 auto;
 }
 .doc-page--led-advantage .led-stat-strip--dark .led-stat__num { font-size: 28px; }
 .doc-page--led-advantage .led-subhead {
