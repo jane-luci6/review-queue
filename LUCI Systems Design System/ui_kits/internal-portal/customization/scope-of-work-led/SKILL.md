@@ -69,23 +69,24 @@ After a site survey or discovery for an LED wall project (casino sportsbook, cen
 | Page | Section | Canvas | Status |
 |------|---------|--------|--------|
 | **1** | Cover | Dark | **EDITABLE** (see exceptions below) |
-| **2** | §1 Project overview + COB technology | Light | **EDITABLE** (intent narrative, panel/processor pairing, 4 stat values); **LOCKED** COB explainer paragraphs |
-| **3** | §2 COB advantage + system architecture | Dark | **LOCKED** (advantage tiles, NovaStar overview, 4 stat tiles) — boilerplate |
-| **4** | §3 Project gallery | Dark | **EDITABLE** photos + captions (Mike swaps images); **LOCKED** layout |
-| **5** | §4 Scope of work | Light | **EDITABLE** (included / not-included lists); **LOCKED** process paragraph |
-| **6** | §5 Coordination & training | Light | **EDITABLE** (client obligations, punch-list line); **LOCKED** PM/training boilerplate |
-| **7** | §6 Design specifications — pitch 1 | Light | **EDITABLE** (all spec values + pitch in title); **LOCKED** spec row labels |
-| **8** | §7 Design specifications — pitch 2 | Light | **EDITABLE** (all spec values + pitch in title); **LOCKED** spec row labels |
-| **9** | §8 Fee schedule & payment terms | Light | **EDITABLE** (milestone %, labels, due-when, tariff note); **LOCKED** structure + USD/30-day boilerplate |
-| **10** | Estimate 01 (one per install) | Light | **EDITABLE** (all line items, qty, rate, amount, total, estimate #, date, name) |
-| **11** | Estimate 02 (clone per install) | Light | **EDITABLE** — clone this page for each additional LED installation |
-| **12** | §9 Terms & warranty | Light | **EDITABLE** (warranty duration); **LOCKED** 4-column warranty boilerplate |
-| **13** | §10 Close / signature | Dark | **EDITABLE** (client org name); **LOCKED** structure + LUCI contact info |
+| **2** | Contents | Light | **EDITABLE** (section titles + page numbers) |
+| **3** | §1 Project overview | Dark | **EDITABLE** (deck, intent narrative, 4 stat values, pairing callout); **LOCKED** COB explainer paragraph |
+| **4** | §2 The COB advantage (part 1 of 2) | Dark | **LOCKED** (advantage tiles, NovaStar architecture, 4 stat tiles) — boilerplate |
+| **5** | §2 The COB advantage — Project gallery (part 2 of 2) | Dark | **EDITABLE** photos + captions (Mike swaps images); **LOCKED** layout |
+| **6** | §3 Scope of work | Light | **EDITABLE** (included / not-included lists); **LOCKED** process paragraph |
+| **7** | §4 Coordination & training | Light | **EDITABLE** (client obligations, punch-list line); **LOCKED** PM/training boilerplate |
+| **8** | §5 Design specifications — pitch 1 | Light | **EDITABLE** (all spec values + pitch in title); **LOCKED** spec row labels |
+| **9** | §6 Design specifications — pitch 2 | Light | **EDITABLE** (all spec values + pitch in title); **LOCKED** spec row labels |
+| **10** | §7 Fee schedule & payment terms | Light | **EDITABLE** (milestone %, labels, due-when, tariff note); **LOCKED** structure + USD/30-day boilerplate |
+| **11** | Estimate 01 (one per install) | Light | **EDITABLE** (all line items, qty, rate, amount, total, estimate #, date, name) |
+| **12** | Estimate 02 (clone per install) | Light | **EDITABLE** — clone this page for each additional LED installation |
+| **13** | §8 Terms & warranty | Light | **EDITABLE** (warranty duration); **LOCKED** 4-column warranty boilerplate |
+| **14** | §9 Agreement / signature | Dark | **EDITABLE** (client org name); **LOCKED** structure + LUCI contact info |
 
 ### Variable page counts
 
-- **Spec pages (7–8):** one page per pixel pitch in the project. Add or remove `.doc-page--led-specs` sections to match the number of pitches.
-- **Estimate pages (10–11):** one page per LED installation. Clone the estimate section for each installation; renumber trailing page footers (`doc-foot__page`) and the band big-numeral (`sow-band-bignum`) sequentially.
+- **Spec pages (8–9):** one page per pixel pitch in the project. Add or remove `.doc-page--led-specs` sections to match the number of pitches.
+- **Estimate pages (11–12):** one page per LED installation. Clone the estimate section for each installation; renumber trailing page footers (`doc-foot__page`) and the band big-numeral (`sow-band-bignum`) sequentially. Update the Contents page (p2) page numbers to match.
 
 ### Cover exceptions (page 1 — do not change)
 
@@ -110,18 +111,22 @@ Everything else on the cover with `doc-edit` / `contenteditable="true"` is edita
 | Basis | `[data-studio="basis"]` | Survey notes, meetings, source documents |
 | Client logo | `.doc-cover__client` (`[data-studio="client-logo"]`) | Replace `src` and `alt` |
 
-### Overview + COB technology (page 2) — `.doc-page--led-overview`
+### Contents (page 2) — `.doc-page--led-toc`
 
-- Project intent narrative (`.doc-section-head__text`) — editable
-- Panel-model + processor pairing line (the "DesignLED COB + NovaStar H-Series" sentence) — editable
+- Section titles (`.led-toc__title`) and page numbers (`.led-toc__pg`) — editable. Update page numbers when pages are added/removed.
+
+### Project overview (page 3, dark) — `.doc-page--led-overview`
+
+- Deck (`.led-band-deck`), intent narrative (`.doc-section-head__text`) — editable
+- Panel-model + processor pairing callout (`.led-pairing`) — editable
 - 4 stat values in `.led-stat-strip` (`.led-stat__num`) — editable
-- **Locked:** the "Why COB changes everything" + "COB represents the next generation" explainer paragraphs (boilerplate)
+- **Locked:** the "Why COB changes everything" explainer paragraph (boilerplate)
 
-### COB advantage + architecture (page 3) — `.doc-page--led-advantage` — LOCKED
+### The COB advantage (page 4, part 1 of 2, dark) — `.doc-page--led-advantage` — LOCKED
 
 The 6 advantage tiles, NovaStar architecture paragraph, and 4 stat tiles are standard COB/NovaStar facts. If a future project uses a different processor brand or non-COB panels, flag for a Jane-approved override rather than a Mike edit.
 
-### Project gallery (page 4) — `.doc-page--led-gallery`
+### Project gallery (page 5, part 2 of 2, dark) — `.doc-page--led-gallery`
 
 | Element | Selector | What to change |
 |---------|----------|----------------|
@@ -130,43 +135,43 @@ The 6 advantage tiles, NovaStar architecture paragraph, and 4 stat tiles are sta
 
 Layout (2×2 grid) stays locked.
 
-### Scope of work (page 5) — `.doc-page--led-scope`
+### Scope of work (page 6) — `.doc-page--led-scope`
 
 - Included list, not-included list — editable
 - **Locked:** the "certified technicians / design vetting / kickoff" process paragraph
 
-### Coordination & training (page 6) — `.doc-page--led-coordination`
+### Coordination & training (page 7) — `.doc-page--led-coordination`
 
 - Client obligations list — editable
 - Punch-list & acceptance line — editable
 - **Locked:** PM + training boilerplate (the two `.doc-teams` rows)
 
-### Design specifications (pages 7–8) — `.doc-page--led-specs`
+### Design specifications (pages 8–9) — `.doc-page--led-specs`
 
 - Pitch in the section title (`[data-studio="spec-pitch-N"]`) — editable
 - All `.led-spec-row__value` cells — editable
 - **Locked:** the `.led-spec-row__label` schema (Pixel Pitch, Panel Size, Resolution, Brightness, etc.)
 
-### Fee schedule (page 9) — `.doc-page--led-fee`
+### Fee schedule (page 10) — `.doc-page--led-fee`
 
 - Milestone percentages (`.led-fee-mile__pct`), labels, and due-when lines — editable
 - Tariff note text — editable
 - **Locked:** structure + the "All prices in USD / valid 30 days" boilerplate
 
-### Estimates (pages 10–11) — `.doc-page--led-estimate`
+### Estimates (pages 11–12) — `.doc-page--led-estimate`
 
 - Estimate name (`[data-studio="estimate-N-name"]`), number, date — editable
 - All line items: mfg, item, description, qty, rate, amount — editable (`.doc-edit`)
 - Estimate total (`[data-studio="estimate-N-total"]`) — editable
 - **No auto-math** — recompute subtotals/totals by hand if you edit a qty or rate.
-- Clone the section for each additional LED installation; renumber footers.
+- Clone the section for each additional LED installation; renumber footers + update Contents page numbers.
 
-### Terms & warranty (page 12) — `.doc-page--led-terms`
+### Terms & warranty (page 13) — `.doc-page--led-terms`
 
 - Warranty duration line (`.led-warranty-duration` span) — editable
 - **Locked:** the 4-column warranty grid (covered / void-if / service / not-covered) + extended-warranty paragraph
 
-### Close / signature (page 13) — `.doc-page--cover` (dark)
+### Agreement / signature (page 14) — `.doc-page--cover` (dark)
 
 - Client org name (`[data-studio="signoff-client-name"]`) — editable
 - **Locked:** signature structure + LUCI contact line

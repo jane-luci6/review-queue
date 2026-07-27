@@ -20,7 +20,7 @@ Copy the master to a client file, then customize cover, scope, specs, fee, estim
 ## What's editable vs locked (summary)
 
 - **Editable:** cover (except LUCI logo + "Prepared by LUCI Systems, LLC"), project intent narrative, COB stat values, gallery photos + captions, scope lists, client obligations, spec values + pitch in title, fee milestones + tariff note, all estimate line items + totals, warranty duration, client org name on signature.
-- **Locked:** COB advantage + NovaStar architecture boilerplate (page 3), spec schema labels, warranty 4-column grid, gallery layout, document CSS/structure, page footers, band big numerals, LUCI contact line.
+- **Locked:** COB advantage + NovaStar architecture boilerplate (page 4), spec schema labels, warranty 4-column grid, gallery layout, document CSS/structure, page footers, band big numerals, LUCI contact line.
 
 ## Default workflow
 

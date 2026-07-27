@@ -11,6 +11,7 @@
 /* Extend the SOW light-page rule to the LED data pages so they share the
    ghost-numeral + right-side circuit texture with the scoping SOW. */
 .doc-page--led-overview,
+.doc-page--led-toc,
 .doc-page--led-scope,
 .doc-page--led-coordination,
 .doc-page--led-specs,
@@ -21,6 +22,7 @@
   isolation: isolate;
 }
 .doc-page--led-overview::before,
+.doc-page--led-toc::before,
 .doc-page--led-scope::before,
 .doc-page--led-coordination::before,
 .doc-page--led-specs::before,
@@ -38,6 +40,7 @@
   z-index: -1;
 }
 .doc-page--led-overview .doc-foot,
+.doc-page--led-toc .doc-foot,
 .doc-page--led-scope .doc-foot,
 .doc-page--led-coordination .doc-foot,
 .doc-page--led-specs .doc-foot,
@@ -558,3 +561,185 @@
   }
   .doc-edit { background: transparent !important; box-shadow: none !important; caret-color: auto; }
 }
+
+/* ============================================================================
+   v2 additions — TOC, dark-band header, dark overview, full-bleed dark pages
+   Added when TOC became p2, overview went dark, and COB advantage + gallery
+   merged into one numbered section spanning two full-bleed dark sheets.
+   ========================================================================== */
+
+/* ── Overview page is now DARK (was light) — override the light-page rules ──── */
+.doc-page--led-overview {
+  background: var(--navy);
+  color: rgba(235, 245, 248, 0.86);
+}
+.doc-page--led-overview::before {
+  background-image: url('../../assets/textures/texture-circuit-header-mintgold.png');
+  background-repeat: repeat;
+  background-position: right center;
+  background-size: 640px auto;
+  -webkit-mask-image: linear-gradient(90deg, transparent 40%, rgba(0,0,0,0.45) 68%, #000 100%);
+          mask-image: linear-gradient(90deg, transparent 40%, rgba(0,0,0,0.45) 68%, #000 100%);
+  opacity: 0.5;
+  inset: 0 0 4px 0;
+  z-index: 0;
+}
+.doc-page--led-overview::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--mint);
+  z-index: 1;
+}
+.doc-page--led-overview > * { position: relative; z-index: 2; }
+.doc-page--led-overview .doc-foot {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid rgba(var(--mint-rgb), 0.18);
+  color: rgba(235, 245, 248, 0.6);
+}
+.doc-page--led-overview .doc-foot__page { color: var(--mint); }
+/* Overview body copy + labels recolored for dark */
+.doc-page--led-overview .doc-section-head__text {
+  color: rgba(235, 245, 248, 0.82);
+  max-width: 60ch;
+}
+.doc-page--led-overview .sow-list-label {
+  color: var(--mint);
+  border-left: 0;
+  padding-left: 0;
+}
+
+/* ── Dark-band header — same lockup as light pages, recolored for navy ─────── */
+/* Mirrors .doc-page-band (ghost numeral + title) but on dark: faint-white
+   numeral, off-white title, mint deck/subhead. No kicker (retired house-wide). */
+.doc-page-band--dark .doc-page-band__title {
+  color: rgba(245, 248, 250, 0.96);
+}
+.doc-page-band--dark > .sow-band-bignum {
+  color: rgba(255, 255, 255, 0.07);
+}
+.led-band-deck {
+  margin: 10px 0 0;
+  padding-left: 30px;
+  font-family: var(--font-recede);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--mint);
+  max-width: 52ch;
+}
+/* Section-continuation header on the second page of a multi-page section */
+.led-cont-head {
+  margin: 0 0 22px;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+.led-cont-head__num {
+  font-family: 'Syncopate', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--mint);
+  flex: none;
+}
+.led-cont-head__title {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: rgba(245, 248, 250, 0.96);
+}
+.led-cont-head__sub {
+  margin: 0 0 0 36px;
+  font-family: var(--font-recede);
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(235, 245, 248, 0.6);
+}
+
+/* ── Overview highlighted pairing callout — brings the key message forward ── */
+.led-pairing {
+  margin-top: 18px;
+  padding: 14px 18px;
+  border-left: 3px solid var(--mint);
+  background: rgba(var(--mint-rgb), 0.06);
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  color: rgba(245, 248, 250, 0.96);
+  max-width: 60ch;
+}
+.led-pairing strong { color: var(--mint); font-weight: 700; }
+
+/* ── Dark stat strip on the overview page (mint numerals on navy) ──────────── */
+.doc-page--led-overview .led-stat-strip {
+  border-top: 1px solid rgba(var(--mint-rgb), 0.2);
+  border-bottom: 1px solid rgba(var(--mint-rgb), 0.2);
+}
+.doc-page--led-overview .led-stat {
+  border-left: 1px solid rgba(var(--mint-rgb), 0.18);
+}
+.doc-page--led-overview .led-stat:first-child { border-left: 0; }
+.doc-page--led-overview .led-stat__num { color: var(--mint); }
+.doc-page--led-overview .led-stat__label { color: rgba(235, 245, 248, 0.6); }
+
+/* ── Full-bleed dark pages — advantage + gallery span the full sheet ──────── */
+.doc-page--led-advantage,
+.doc-page--led-gallery {
+  display: flex;
+  flex-direction: column;
+}
+.led-advantage-grid { margin-top: 6px; }
+.led-gallery-grid { margin-top: 14px; gap: 18px; }
+.led-gallery-cell__img { height: 2.55in; }
+
+/* ── TOC — contents page (light) ──────────────────────────────────────────── */
+.led-toc { margin-top: 10px; }
+.led-toc__row {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--rule-light);
+}
+.led-toc__row:first-child { border-top: 1px solid var(--rule-light); }
+.led-toc__num {
+  flex: none;
+  width: 34px;
+  font-family: var(--font);
+  font-variant-numeric: tabular-nums;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--accent-light);
+}
+.led-toc__title {
+  flex: none;
+  font-family: var(--font);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink-strong);
+}
+.led-toc__leader {
+  flex: 1;
+  border-bottom: 1px dotted var(--rule-light);
+  transform: translateY(-4px);
+  min-width: 24px;
+}
+.led-toc__pg {
+  flex: none;
+  font-family: var(--font);
+  font-variant-numeric: tabular-nums;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink-strong);
+}
+
