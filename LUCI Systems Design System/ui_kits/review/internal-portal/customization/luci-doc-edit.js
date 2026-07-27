@@ -1,9 +1,12 @@
 /**
  * LUCI portal document edit mode.
- * Loaded on customization preview HTML only — click highlighted text to edit.
+ * Loaded on customization preview HTML only — click text to edit.
+ * Fonts/colors/layout stay on CSS classes; only text nodes change.
  */
 (function () {
   'use strict';
+
+  var fileHandle = null;
 
   function readContext() {
     var el = document.getElementById('luci-cursor-context');
@@ -32,6 +35,11 @@
     return '<!DOCTYPE html>\n' + clone.outerHTML;
   }
 
+  function suggestedFileName(ctx) {
+    var title = (ctx.title || 'luci-document').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    return title + '.html';
+  }
+
   function enforceLocked(ctx) {
     var lockedPages = (ctx.editMode && ctx.editMode.lockedPages) || '';
     if (lockedPages) {
@@ -47,18 +55,121 @@
       document.querySelectorAll(lockedElements).forEach(function (node) {
         node.classList.add('luci-edit-locked');
         node.removeAttribute('contenteditable');
+        node.querySelectorAll('[contenteditable="true"]').forEach(function (child) {
+          child.removeAttribute('contenteditable');
+        });
       });
     }
   }
 
-  function ensureEditableMarked() {
-    document.querySelectorAll('.doc-edit, .deck-edit, [data-studio]').forEach(function (node) {
+  /** Mark every text-bearing leaf inside .doc so Mike can click anywhere. */
+  function ensureAllTextEditable() {
+    var root = document.querySelector('.doc') || document.body;
+    var EDIT_TAGS = {
+      P: 1, LI: 1, H1: 1, H2: 1, H3: 1, H4: 1, H5: 1, H6: 1,
+      DT: 1, DD: 1, SPAN: 1, FIGCAPTION: 1, BLOCKQUOTE: 1, TD: 1, TH: 1
+    };
+    var SKIP_CLASS = /doc-hub-link|doc-cover__logo|led-signoff-band__logo|luci-edit/;
+
+    root.querySelectorAll('*').forEach(function (node) {
+      if (!EDIT_TAGS[node.tagName]) return;
       if (node.closest('.luci-edit-locked')) return;
       if (node.tagName === 'IMG') return;
-      if (!node.hasAttribute('contenteditable')) {
-        node.setAttribute('contenteditable', 'true');
+      if (SKIP_CLASS.test(node.className || '')) return;
+      if (node.closest('[contenteditable="true"]') && node.getAttribute('contenteditable') !== 'true') {
+        /* Nested inside an already-editable ancestor — leave alone. */
+        return;
       }
+      if (node.getAttribute('contenteditable') === 'true') {
+        if (!/\bdoc-edit\b/.test(node.className || '')) node.classList.add('doc-edit');
+        return;
+      }
+      /* Only mark if this node (or a direct text child) has visible text. */
+      var text = (node.textContent || '').replace(/\s+/g, ' ').trim();
+      if (!text) return;
+      node.classList.add('doc-edit');
+      node.setAttribute('contenteditable', 'true');
     });
+  }
+
+  function flashButton(btn, label) {
+    var prev = btn.textContent;
+    btn.textContent = label;
+    btn.classList.add('is-copied');
+    setTimeout(function () {
+      btn.textContent = prev;
+      btn.classList.remove('is-copied');
+    }, 2000);
+  }
+
+  function downloadBlob(filename, blob) {
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = filename;
+    a.click();
+    URL.revokeObjectURL(a.href);
+  }
+
+  async function saveHtml(ctx, btn) {
+    var html = serializeHtml();
+    var name = suggestedFileName(ctx);
+    var blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+
+    /* Prefer File System Access API so Mike can overwrite the SAME working file. */
+    if (window.showSaveFilePicker) {
+      try {
+        if (!fileHandle) {
+          fileHandle = await window.showSaveFilePicker({
+            suggestedName: name,
+            types: [{ description: 'HTML', accept: { 'text/html': ['.html'] } }]
+          });
+        }
+        var writable = await fileHandle.createWritable();
+        await writable.write(blob);
+        await writable.close();
+        flashButton(btn, 'Saved');
+        return;
+      } catch (err) {
+        if (err && err.name === 'AbortError') return;
+        /* Fall through to download if picker fails (Cursor browser, permissions). */
+        fileHandle = null;
+      }
+    }
+
+    downloadBlob(name, blob);
+    flashButton(btn, 'Downloaded');
+  }
+
+  function copyHtml(btn) {
+    var html = serializeHtml();
+    function legacyCopy(text) {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.cssText = 'position:fixed;left:-9999px;top:0;opacity:0';
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      var ok = false;
+      try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+      document.body.removeChild(ta);
+      return ok;
+    }
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(html).then(function () {
+        flashButton(btn, 'Copied');
+      }, function () {
+        if (legacyCopy(html)) flashButton(btn, 'Copied');
+        else window.prompt('Copy this HTML (Cmd+C), then paste over your working .html file:', html);
+      });
+      return;
+    }
+    if (legacyCopy(html)) flashButton(btn, 'Copied');
+    else window.prompt('Copy this HTML (Cmd+C), then paste over your working .html file:', html);
+  }
+
+  function downloadPdf() {
+    window.print();
   }
 
   function mountToolbar(ctx) {
@@ -71,63 +182,28 @@
 
     var hint =
       (ctx.editMode && ctx.editMode.hint) ||
-      'Click highlighted text to edit. Locked pages stay read-only.';
+      'Click any text to edit. Fonts and colors stay locked to the design. Save HTML when finished.';
 
     bar.innerHTML =
       '<span class="luci-edit-bar__label">Edit mode</span>' +
       '<p class="luci-edit-bar__hint">' + hint + '</p>' +
       '<div class="luci-edit-bar__actions">' +
-      '<button type="button" class="luci-edit-bar__btn" data-action="copy-html">Copy updated HTML</button>' +
-      '<button type="button" class="luci-edit-bar__btn" data-action="download-html">Download HTML</button>' +
+      '<button type="button" class="luci-edit-bar__btn luci-edit-bar__btn--primary" data-action="save-html">Save HTML</button>' +
+      '<button type="button" class="luci-edit-bar__btn" data-action="copy-html">Copy HTML</button>' +
+      '<button type="button" class="luci-edit-bar__btn" data-action="download-pdf">Download PDF</button>' +
       '</div>';
 
     document.body.prepend(bar);
     document.body.classList.add('luci-edit-active');
 
-    bar.querySelector('[data-action="copy-html"]').addEventListener('click', function (btn) {
-      var html = serializeHtml();
-      function flashCopied() {
-        var prev = btn.textContent;
-        btn.textContent = 'Copied';
-        btn.classList.add('is-copied');
-        setTimeout(function () {
-          btn.textContent = prev;
-          btn.classList.remove('is-copied');
-        }, 2000);
-      }
-      function legacyCopy(text) {
-        var ta = document.createElement('textarea');
-        ta.value = text;
-        ta.setAttribute('readonly', '');
-        ta.style.cssText = 'position:fixed;left:-9999px;top:0;opacity:0';
-        document.body.appendChild(ta);
-        ta.focus();
-        ta.select();
-        var ok = false;
-        try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
-        document.body.removeChild(ta);
-        return ok;
-      }
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(html).then(flashCopied, function () {
-          if (legacyCopy(html)) flashCopied();
-          else window.prompt('Copy this HTML (Cmd+C):', html);
-        });
-        return;
-      }
-      if (legacyCopy(html)) flashCopied();
-      else window.prompt('Copy this HTML (Cmd+C):', html);
+    bar.querySelector('[data-action="save-html"]').addEventListener('click', function (e) {
+      saveHtml(ctx, e.currentTarget);
     });
-
-    bar.querySelector('[data-action="download-html"]').addEventListener('click', function () {
-      var html = serializeHtml();
-      var title = (ctx.title || 'luci-document').toLowerCase().replace(/\s+/g, '-');
-      var blob = new Blob([html], { type: 'text/html;charset=utf-8' });
-      var a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = title + '-edited.html';
-      a.click();
-      URL.revokeObjectURL(a.href);
+    bar.querySelector('[data-action="copy-html"]').addEventListener('click', function (e) {
+      copyHtml(e.currentTarget);
+    });
+    bar.querySelector('[data-action="download-pdf"]').addEventListener('click', function () {
+      downloadPdf();
     });
   }
 
@@ -253,7 +329,7 @@
     var ctx = readContext();
     if (ctx.editMode && ctx.editMode.enabled === false) return;
     enforceLocked(ctx);
-    ensureEditableMarked();
+    ensureAllTextEditable();
     mountToolbar(ctx);
     mountLogoTools();
   }

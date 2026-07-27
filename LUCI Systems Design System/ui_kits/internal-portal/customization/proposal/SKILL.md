@@ -16,6 +16,16 @@ Post-survey proposal for LED wall installations. **14 pages (US Letter)** — co
 
 Also read: `../_brand/SKILL.md` — especially **Efficient customization (read this first)**. This is a populate-in-place job; never rebuild.
 
+## Click-to-edit (Mike) vs agent edits
+
+**Mike can click and type any text in the document.** Edit mode unlocks every text leaf (including former “boilerplate” pages). Fonts, colors, and layout stay on CSS classes — change words only; never strip `doc-edit` / `data-studio` / structural wrappers.
+
+**What stays non-editable (images only):** LUCI wordmark on the cover (`.doc-cover__logo`) and the close-page LUCI logo (`.led-signoff-band__logo`). Client logo is still click-to-swap.
+
+**Agent rules (unchanged discipline):** prefer `[data-studio]` selector edits; do not rebuild sections; do not invent fine-print; after Mike types in the preview, **Save HTML** (or write the live DOM back to the same working file) before the next agent pass. Brand/voice still applies to any copy the agent authors.
+
+**Save / PDF toolbar:** **Save HTML** overwrites the working file when the browser supports the file picker (otherwise downloads `<title>.html` — Mike should save over the same path, not a new `-edited` copy). **Copy HTML** puts the full document on the clipboard. **Download PDF** opens the print dialog (Save as PDF, US Letter).
+
 ## Voice
 
 Match LUCI's voice on every line you write or rewrite. Full contract: `../_brand/SKILL.md` → **Voice & tone**. Canonical source: LUCI Messaging Guide (`ui_kits/review/messaging/messaging-guide.html`). Cover-page goal rewrites: `ui_kits/internal-portal/skills/cover-page-customization.md`.
@@ -135,9 +145,9 @@ Everything else on the cover with `doc-edit` / `contenteditable="true"` is edita
 | Pairing / note | `overview-pairing` / `overview-note` |
 | Stats | `overview-stat-1` … `overview-stat-4` |
 
-### §2 Technology Overview — COB Advantage (page 4) — **LOCKED**
+### §2 Technology Overview — COB Advantage (page 4)
 
-Hooks exist (`tech-title`, `tech-cob-subhead`, `tech-cob-deck`, `tech-stat-1`…`4`) for completeness. Do **not** edit unless Jane overrides. Advantage tiles + NovaStar architecture stay locked.
+Mike may click-edit any text here. Hooks: `tech-title`, `tech-cob-subhead`, `tech-cob-deck`, `tech-stat-1`…`4`, plus auto-* on advantage tiles / arch paragraph. **Agent:** treat as brand boilerplate — only change when Mike asks; do not invent alternate tech claims.
 
 ### §2 Project Gallery (page 5)
 

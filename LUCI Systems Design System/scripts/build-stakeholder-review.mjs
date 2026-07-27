@@ -259,12 +259,13 @@ const CURSOR_DOC_META = {
   },
   'proposal': {
     title: 'Proposal - LED',
+    master: 'LUCI Systems Design System/ui_kits/sales/proposal.html',
     clientFile: 'LUCI Systems Design System/ui_kits/sales/{client}-proposal.html',
     editMode: {
       enabled: true,
-      hint: 'Click highlighted text to edit cover, scope, specs, fee, estimates, terms, and the close page. COB advantage + architecture boilerplate (page 3), spec schema labels, warranty grid, and gallery layout stay locked.',
-      lockedPages: '.doc-page--led-advantage',
-      lockedElements: '.doc-cover__logo, .led-advantage-grid, .led-arch-text, .led-terms-grid, .led-spec-row__label',
+      hint: 'Click any text to edit — fonts, colors, and layout stay locked to the design. Use Save HTML when finished so your typing is kept; Download PDF for a print-ready file.',
+      lockedPages: '',
+      lockedElements: '.doc-cover__logo, .led-signoff-band__logo',
     },
   },
   'budgetary-estimate': {

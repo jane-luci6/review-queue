@@ -83,7 +83,7 @@ Anything with `over > 0` is clipped. **Trim copy or split to a new `.doc-page`**
 
 ### 5. Pricing must be verified, not eyeballed
 
-After any pricing / qty / rate edit, reconcile totals. Known trap: a grand total can be a live formula while milestone cells stay hardcoded and drift. Reconcile milestones against the verified total. Prefer a small verify script when one ships with the template; otherwise compute and state the check in your summary.
+After any pricing / qty / rate edit, reconcile totals. Known trap: a grand total can be a live formula while milestone cells stay hardcoded and drift. Reconcile milestones against the verified total. Prefer a small verify script when one ships with the template; otherwise compute and state the check in your summary. **Never silently change numbers that Mike already confirmed.**
 
 ### 6. Logo + pattern (do not re-break these)
 
@@ -193,6 +193,8 @@ The website (lucisystems.com) is the reference for *how LUCI sounds* — the ton
 - When swapping a client logo: use **PNG or SVG with a transparent background** (never an opaque JPEG or a PNG with a white background — it renders as a white box on dark covers and bands). Update `src` and `alt` on `.doc-cover__client` only. For dark covers (`.doc-page--dark.doc-page--cover`), prefer a **white** logo file; the cover CSS normalizes a dark logo to white via filter, but an opaque background still boxes.
 - **Do not add "Addressed to" (or similar) labels** to the cover header box, the prepared-for area, or anywhere else on the first page. The cover's existing labels (`Budgetary estimate` / `Proposal` / `Scope of work` kicker, `Prepared for` eyebrow, `Client summary`) are the only labels that belong there. If the client org needs to appear, it goes in the `Prepared for` value or the `Client summary` text — not as a new labeled row. Adding "Addressed to" was an erroneous AI insertion; do not reproduce it.
 
-## Saving
+### Saving (typed edits)
 
-- **Never save over the master** on the VM. Copy the file locally first; masters are redeployed from `luci-design` and will overwrite in-place edits.
+- **Save HTML** in the edit bar is the primary path. Prefer the file picker so Mike overwrites the **same** working `.html` in the project folder. A download named `*-edited.html` is **not** the source of truth — if the browser only downloads, save/replace the working file path explicitly.
+- Before any further agent pass after Mike types in preview: write the live DOM (or Saved HTML) back into that same working file.
+- **Download PDF** = browser print → Save as PDF (US Letter). Do not invent a second export pipeline unless asked.
