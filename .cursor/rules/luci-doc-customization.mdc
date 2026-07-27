@@ -40,7 +40,7 @@ House-wide for **every** Customization Studio document (all Proposal types, Budg
 - **Populate-in-place.** Never rebuild the document. Never re-emit whole `<section>`s to change a value.
 - **One project folder** per client job; mirror `ui_kits/sales/` + `assets/` so relative paths work. Serve from the **project root** (the folder that contains both), never from `ui_kits/sales/`.
 - Edit by `[data-studio]` / skill selectors only. Do not invent fine-print or “Addressed to.”
-- **Same working file forever.** Typed preview edits must be written back to that file before the next agent pass. `*-edited.html` downloads are artifacts, not the source of truth. Prefer **Save HTML** in the edit bar.
+- **Same working file forever.** The LUCI dev server's `POST /__save` writes Mike's typed edits back to the working `.html` file on disk when he clicks Save HTML — so the next agent pass reads the latest version. `*-edited.html` downloads are a last-resort fallback artifact, not the source of truth.
 - No accessibility snapshots. Mandatory overflow fit-check after content edits (see `_brand/SKILL.md`).
 - Do not link CSS the master does not already link (strips header bands / circuit texture).
 - **Download PDF** = browser print → Save as PDF (US Letter).
@@ -53,7 +53,7 @@ Client HTML keeps `contenteditable="true"` on editable regions (`.doc-edit`, `.d
 
 - **Preserve** `contenteditable`, `data-studio`, `doc-edit`, and `deck-edit` markers when customizing — do not strip them.
 - **Do not** edit locked pages (per template `SKILL.md`).
-- When Mike types in the preview, **write those edits into the same working HTML file** before any further agent change. Do not rely on Copy/Download HTML as the save mechanism.
+- When Mike types in the preview, **Save HTML** writes those edits back to the working file on disk automatically (via the dev server's `POST /__save`) — no manual copy/paste, no prompting Cursor. Only if the dev server isn't running does Mike need to ask Cursor to reopen the project.
 
 ## Locked pages are locked — no exceptions without confirmation
 
@@ -76,12 +76,14 @@ A user request to change a locked page is **not** an override by itself — it i
 
 After customizing the client HTML, **automatically open the rendered doc in Cursor's in-editor (Glass) browser — not the HTML source.** Do this as the final step of every customization, without being asked.
 
-1. Start a local static server rooted at the **project root that contains both `ui_kits/` and `assets/`** (`LUCI Systems Design System/` in luci-design; Mike’s per-job folder on his machine). Example: `python3 -m http.server 8771 --bind 127.0.0.1`. **Never** root at `ui_kits/sales/` — logos and circuit textures 404.
+1. **Start the LUCI dev server** from the **project root that contains both `ui_kits/` and `assets/`** (`LUCI Systems Design System/` in luci-design; Mike's per-job folder on his machine): `python3 luci-dev-server.py` (run it as a background process — it serves the project root on `http://127.0.0.1:8771` **and** accepts `POST /__save` so the edit bar's "Save HTML" button writes typed edits straight back to the working `.html` file). Copy `luci-dev-server.py` from `ui_kits/internal-portal/customization/` into the project folder if it isn't there yet. **Never** root at `ui_kits/sales/` — logos and circuit textures 404.
 2. Verify the HTML and a texture both return 200.
-3. Open `http://127.0.0.1:<port>/ui_kits/sales/<client-file>.html` via `cursor-app-control` `open_resource`. Do **not** use a `file://` URI.
-4. Tell the user it's live and click-to-edit. Leave the server running while they review; stop it when they're done or before PDF export.
+3. Open `http://127.0.0.1:8771/ui_kits/sales/<client-file>.html` via `cursor-app-control` `open_resource`. Do **not** use a `file://` URI.
+4. Tell the user it's live and click-to-edit — and that **Save HTML** writes their typing back to the working file automatically (no prompting Cursor). Leave the server running while they review; stop it when they're done or before PDF export.
 
 **Do not** open the client HTML with a `file://` URI — `open_resource` opens that as a text file (HTML source), not a rendered preview.
+
+**If the dev server is already running** (e.g. Mike reopened a project), don't start a second one — reuse the existing `127.0.0.1:8771`. If the port is busy, the script will error; pick a free port and note it.
 
 **User fallback** if the in-editor pane doesn't appear: `Cmd+Shift+P` → "Simple Browser: Show" → paste the localhost URL.
 

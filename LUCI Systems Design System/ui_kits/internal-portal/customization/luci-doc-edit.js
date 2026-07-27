@@ -110,12 +110,49 @@
     URL.revokeObjectURL(a.href);
   }
 
+  /** True when the page is served from the LUCI dev server on localhost. */
+  function onDevServer() {
+    try {
+      var loc = window.location;
+      return loc.protocol === 'http:' && loc.hostname === '127.0.0.1' && loc.port === '8771';
+    } catch (e) { return false; }
+  }
+
+  async function saveViaDevServer(html, btn) {
+    var res = await fetch('/__save', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ path: window.location.pathname, html: html })
+    });
+    if (!res.ok) {
+      var detail = '';
+      try { detail = (await res.json()).error || ''; } catch (e) {}
+      throw new Error('Save failed (' + res.status + (detail ? ': ' + detail : '') + ')');
+    }
+    flashButton(btn, 'Saved');
+  }
+
   async function saveHtml(ctx, btn) {
     var html = serializeHtml();
     var name = suggestedFileName(ctx);
     var blob = new Blob([html], { type: 'text/html;charset=utf-8' });
 
-    /* Prefer File System Access API so Mike can overwrite the SAME working file. */
+    /* 1. LUCI dev server (most reliable — no picker, no Downloads artifact).
+       The agent starts this server as part of the customization setup, so
+       Mike just clicks Save and the working file on disk is overwritten. */
+    if (onDevServer()) {
+      try {
+        await saveViaDevServer(html, btn);
+        return;
+      } catch (err) {
+        /* Server died or not running — fall through to the picker / download. */
+        console.warn('Dev server save failed:', err && err.message);
+      }
+    }
+
+    /* 2. File System Access API — overwrite the same working file via a
+       user-granted handle. Needs browser support (often missing in Cursor's
+       in-editor browser) and Mike must pick the file the first time. */
     if (window.showSaveFilePicker) {
       try {
         if (!fileHandle) {
@@ -131,13 +168,16 @@
         return;
       } catch (err) {
         if (err && err.name === 'AbortError') return;
-        /* Fall through to download if picker fails (Cursor browser, permissions). */
         fileHandle = null;
       }
     }
 
+    /* 3. Last resort — download a *-edited.html and tell Mike to paste it
+       over the working file. This is the path that loses typed edits, so
+       the hint nudges Mike to ask Cursor to restart the dev server. */
     downloadBlob(name, blob);
     flashButton(btn, 'Downloaded');
+    window.alert('Could not save directly to the working file (the LUCI dev server is not running and the browser file API is unavailable).\n\nAsk Cursor to reopen the project so it starts the dev server, then click Save HTML again.');
   }
 
   function copyHtml(btn) {

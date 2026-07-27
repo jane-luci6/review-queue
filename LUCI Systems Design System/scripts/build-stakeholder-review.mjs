@@ -307,8 +307,8 @@ function injectCursorContext(html, templateId, fileName) {
       'Paste this page URL into Cursor chat. Agent fetches the skill URLs above before editing. No specific folder required. Open the same URL in a browser to click-edit highlighted text.',
   };
   const editAssets = [
-    `<link rel="stylesheet" href="${base}/luci-doc-edit.css?v=2">`,
-    `<script src="${base}/luci-doc-edit.js?v=2" defer></script>`,
+    `<link rel="stylesheet" href="${base}/luci-doc-edit.css?v=3">`,
+    `<script src="${base}/luci-doc-edit.js?v=3" defer></script>`,
   ].join('\n  ');
   const block = [
     `<!-- luci-cursor-doc: ${templateId} -->`,

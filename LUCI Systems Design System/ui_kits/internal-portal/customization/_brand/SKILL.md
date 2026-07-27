@@ -35,6 +35,7 @@ Each client document lives in **one** dedicated folder for the life of that job.
   ui_kits/internal-portal/customization/
     luci-doc-edit.css
     luci-doc-edit.js
+    luci-dev-server.py             ← serves files + accepts POST /__save
     <template>/SKILL.md             ← copy from portal/master skill
     _brand/SKILL.md
   assets/fonts/                     luci-brand-fonts.css
@@ -43,7 +44,7 @@ Each client document lives in **one** dedicated folder for the life of that job.
   inputs/                           spreadsheet, SOW, logo uploads (optional)
 ```
 
-Mirror the portal’s relative paths (`../../assets/…`, sibling CSS). **Serve with `<project>/` as the server root** — never root the server at `ui_kits/sales/` or textures/logos 404 and the circuit pattern “doesn’t load.”
+Mirror the portal’s relative paths (`../../assets/…`, sibling CSS). **Serve with the LUCI dev server** — run `python3 luci-dev-server.py` from `<project>/` (the agent starts it as a background process). It serves the project root on `http://127.0.0.1:8771` **and** accepts `POST /__save` so the edit bar’s “Save HTML” button writes typed edits straight back to the working `.html` file on disk — no prompting Cursor, no Downloads artifact. Never root the server at `ui_kits/sales/` or textures/logos 404 and the circuit pattern “doesn’t load.”
 
 If this tree does not exist yet: create it and fetch the exact master HTML + linked CSS + referenced assets from the portal (or luci-design) in **one batch**. Do not discover assets by trial and error. Do **not** pull extra stylesheets the master does not already link (e.g. do not add `scope-of-work.css` into a budgetary/proposal client — it overrides `.doc-page-band` and strips navy headers + circuit texture).
 
@@ -197,6 +198,6 @@ The website (lucisystems.com) is the reference for *how LUCI sounds* — the ton
 
 ### Saving (typed edits)
 
-- **Save HTML** in the edit bar is the primary path. Prefer the file picker so Mike overwrites the **same** working `.html` in the project folder. A download named `*-edited.html` is **not** the source of truth — if the browser only downloads, save/replace the working file path explicitly.
-- Before any further agent pass after Mike types in preview: write the live DOM (or Saved HTML) back into that same working file.
+- **Save HTML** in the edit bar is the primary path. When the LUCI dev server is running (the agent starts it automatically), Save POSTs the live DOM to `POST /__save` and overwrites the **same** working `.html` file on disk — Mike clicks once, no file picker, no Downloads artifact. If the dev server is not running, the button falls back to the File System Access API (Mike picks the file once) and finally to a download as a last resort (with an alert telling Mike to ask Cursor to reopen the project).
+- Before any further agent pass after Mike types in preview: the working file is already updated (via the dev server save), so Cursor reads the latest version. If Mike used the download fallback instead, write the live DOM back into the working file before editing.
 - **Download PDF** = browser print → Save as PDF (US Letter). Do not invent a second export pipeline unless asked.
