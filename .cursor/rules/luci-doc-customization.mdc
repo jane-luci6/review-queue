@@ -34,12 +34,18 @@ Portal base: `http://10.10.1.17:8081/internal-portal/customization/`
 
 ## Efficient customization (mandatory — read `_brand/SKILL.md` first)
 
+House-wide for **every** Customization Studio document (all Proposal types, Budgetary estimate, Scope of work, Capabilities, Sales deck):
+
+- **Mike can click-edit any text.** Fonts/colors/layout stay on CSS. Only LUCI logo images stay non-editable.
 - **Populate-in-place.** Never rebuild the document. Never re-emit whole `<section>`s to change a value.
 - **One project folder** per client job; mirror `ui_kits/sales/` + `assets/` so relative paths work. Serve from the **project root** (the folder that contains both), never from `ui_kits/sales/`.
 - Edit by `[data-studio]` / skill selectors only. Do not invent fine-print or “Addressed to.”
-- **Same working file forever.** Typed preview edits must be written back to that file before the next agent pass. `*-edited.html` downloads are artifacts, not the source of truth.
+- **Same working file forever.** Typed preview edits must be written back to that file before the next agent pass. `*-edited.html` downloads are artifacts, not the source of truth. Prefer **Save HTML** in the edit bar.
 - No accessibility snapshots. Mandatory overflow fit-check after content edits (see `_brand/SKILL.md`).
 - Do not link CSS the master does not already link (strips header bands / circuit texture).
+- **Download PDF** = browser print → Save as PDF (US Letter).
+
+When a change is Proposal-structure/copy-specific (page order, estimate format, etc.), **ask Jane** whether it should also apply to Budgetary estimate / Scope of work / other studio docs before propagating.
 
 ## Click-to-edit in preview
 

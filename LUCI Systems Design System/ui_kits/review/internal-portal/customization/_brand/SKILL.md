@@ -16,6 +16,8 @@ Shared rules for all LUCI sales document customization. Read the template-specif
 
 This is a **populate-in-place** job, not a rebuild. Never regenerate the document from scratch. Locked regions must come through **byte-identical**. The master template already has the layout, CSS, textures, fonts, and locked copy — your job is to stamp client values into the existing file.
 
+**House-wide (every Customization Studio document):** Mike can click and type **any text**. Fonts, colors, and layout stay on CSS classes — change words only. Only LUCI logo images stay non-editable. Efficiency rules below apply to **every** template (Proposal - LED, Budgetary estimate, Scope of work, Capabilities, Sales deck, and future Proposal - LUCI Retrofit / Proposal - Upgrade).
+
 Burning millions of tokens on discovery, rebuilds, accessibility snapshots, or rewriting whole `<section>`s is a failure mode. Parse the request → touch only what changed → verify.
 
 ### 1. One project folder — never spawn copies

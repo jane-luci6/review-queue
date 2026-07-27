@@ -47,14 +47,17 @@ Masters: `ui_kits/sales/<master>.html` (under `LUCI Systems Design System/`).
 
 ## Efficient customization (mandatory)
 
-Read `_brand/SKILL.md` → **Efficient customization** before any edit. Summary:
+Read `_brand/SKILL.md` → **Efficient customization** before any edit. Applies to **every** Customization Studio document.
 
 1. **Populate-in-place** — never rebuild the doc; never invent fine-print.
-2. **One project folder** with `ui_kits/sales/` + `assets/` mirrored so relative paths resolve; serve from the **project root**, not `ui_kits/sales/`.
-3. Edit by `[data-studio]` / listed selectors only — do not rewrite whole sections.
-4. Same working HTML forever — do not treat `*-edited.html` downloads as the source of truth; write typed preview edits back into that same file.
-5. No accessibility snapshots; mandatory page-overflow fit check after content edits.
-6. Do not link extra CSS the master does not already use (causes missing circuit texture / stripped header bands).
+2. **Mike can click-edit any text** — fonts/colors/layout stay on CSS; only LUCI logos stay non-editable. **Save HTML** / **Download PDF** in the edit bar.
+3. **One project folder** with `ui_kits/sales/` + `assets/` mirrored so relative paths resolve; serve from the **project root**, not `ui_kits/sales/`.
+4. Edit by `[data-studio]` / listed selectors only — do not rewrite whole sections.
+5. Same working HTML forever — do not treat `*-edited.html` downloads as the source of truth; write typed preview edits back into that same file.
+6. No accessibility snapshots; mandatory page-overflow fit check after content edits.
+7. Do not link extra CSS the master does not already use (causes missing circuit texture / stripped header bands).
+
+**Scope gate:** when a change is about document structure/copy (not efficiency/editability), ask Jane whether it should also apply to other studio templates before propagating.
 
 Also read: `.cursor/rules/luci-doc-customization.mdc`
 

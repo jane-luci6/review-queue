@@ -10,7 +10,7 @@ description: >-
 
 Pre-demo / in-meeting primer. **12 slides (16:9).** Source master: `sales-deck.html` in this folder (build copy from `ui_kits/sales/`).
 
-Also read: `../_brand/SKILL.md`
+Also read: `../_brand/SKILL.md` — especially **Efficient customization**. Mike can click-edit any text (fonts/colors stay on CSS). Populate-in-place; never rebuild.
 
 ## Voice
 

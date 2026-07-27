@@ -11,7 +11,7 @@ description: >-
 
 Post-demo scoping document for prospects moving forward. **9 pages (US Letter).** Source master: `scope-of-work.html` in this folder.
 
-Also read: `../_brand/SKILL.md`
+Also read: `../_brand/SKILL.md` — especially **Efficient customization**. Mike can click-edit any text (fonts/colors stay on CSS). Populate-in-place; never rebuild.
 
 ## Voice
 

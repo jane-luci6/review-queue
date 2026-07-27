@@ -222,6 +222,9 @@ const CUSTOMIZATION_TEMPLATES = [
 /** Portal origin for Cursor context injection (Mike pastes preview URL in chat). */
 const PORTAL_ORIGIN = 'http://10.10.1.17:8081';
 
+const SHARED_EDIT_HINT =
+  'Click any text to edit — fonts, colors, and layout stay locked to the design. Use Save HTML when finished so your typing is kept; Download PDF for a print-ready file.';
+
 const CURSOR_DOC_META = {
   'capabilities-document': {
     title: 'Capabilities document',
@@ -229,10 +232,9 @@ const CURSOR_DOC_META = {
     clientFile: 'LUCI Systems Design System/ui_kits/sales/{client}-capabilities.html',
     editMode: {
       enabled: true,
-      hint: 'Click mint-highlighted text on the cover and close page to edit. Pages 2–8 are locked.',
-      lockedPages:
-        '.cap-page--what, .cap-page--why, .doc-page--reduces, .doc-page--architecture, .doc-page--systems, .doc-page--deployment, .doc-page--proof',
-      lockedElements: '.doc-cover__logo, .doc-close__logo, .doc-close__company',
+      hint: SHARED_EDIT_HINT,
+      lockedPages: '',
+      lockedElements: '.doc-cover__logo, .doc-close__logo',
     },
   },
   'sales-deck': {
@@ -241,9 +243,9 @@ const CURSOR_DOC_META = {
     clientFile: 'LUCI Systems Design System/ui_kits/sales/{client}-sales-deck.html',
     editMode: {
       enabled: true,
-      hint: 'Click highlighted text on slides 1–2 to edit copy. Swap client logo and property photos in the baked-in slots. Slides 3–12 are locked.',
-      lockedPages: '#s3, #s4, #s5, #s6, #s7, #s8, #s9, #s10, #s11, #s12, #s2 .s-foot',
-      lockedElements: '.cover__logo, .cover__rule, .close__logo',
+      hint: SHARED_EDIT_HINT,
+      lockedPages: '',
+      lockedElements: '.cover__logo, .close__logo',
     },
   },
   'scope-of-work': {
@@ -252,7 +254,7 @@ const CURSOR_DOC_META = {
     clientFile: 'LUCI Systems Design System/ui_kits/sales/{client}-scope-of-work.html',
     editMode: {
       enabled: true,
-      hint: 'Click highlighted text to edit scope sections. LUCI cover logo stays locked.',
+      hint: SHARED_EDIT_HINT,
       lockedPages: '',
       lockedElements: '.doc-cover__logo',
     },
@@ -263,7 +265,7 @@ const CURSOR_DOC_META = {
     clientFile: 'LUCI Systems Design System/ui_kits/sales/{client}-proposal.html',
     editMode: {
       enabled: true,
-      hint: 'Click any text to edit — fonts, colors, and layout stay locked to the design. Use Save HTML when finished so your typing is kept; Download PDF for a print-ready file.',
+      hint: SHARED_EDIT_HINT,
       lockedPages: '',
       lockedElements: '.doc-cover__logo, .led-signoff-band__logo',
     },
@@ -274,9 +276,9 @@ const CURSOR_DOC_META = {
     clientFile: 'LUCI Systems Design System/ui_kits/sales/{client}-budgetary-estimate.html',
     editMode: {
       enabled: true,
-      hint: 'Edit cover hero/summary, the page-2 intro statement, scope items, proposal figures, investment totals, tiers, and close contact. The What-LUCI-is identity + feature cards, delivers grid, and close panel stay locked.',
-      lockedPages: '.be-delivers',
-      lockedElements: '.doc-cover__logo, .be-why, .be-close',
+      hint: SHARED_EDIT_HINT,
+      lockedPages: '',
+      lockedElements: '.doc-cover__logo',
     },
   },
 };

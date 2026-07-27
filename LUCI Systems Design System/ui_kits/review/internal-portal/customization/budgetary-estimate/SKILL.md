@@ -10,7 +10,7 @@ description: >-
 
 Scoped, line-itemed pre-quote estimate. **6 pages (US Letter)** — professional follow-on to the Capabilities doc. Source master: `budgetary-estimate.html` in this folder (build copy from `ui_kits/sales/`).
 
-Also read: `../_brand/SKILL.md`
+Also read: `../_brand/SKILL.md` — especially **Efficient customization**. Mike can click-edit any text (fonts/colors stay on CSS). Populate-in-place; never rebuild.
 
 ## Voice
 
