@@ -21,14 +21,9 @@
   background: var(--off-white);
   isolation: isolate;
 }
-.doc-page--led-overview::before,
-.doc-page--led-toc::before,
-.doc-page--led-scope::before,
-.doc-page--led-coordination::before,
-.doc-page--led-specs::before,
-.doc-page--led-fee::before,
-.doc-page--led-estimate::before,
-.doc-page--led-terms::before {
+/* Circuit overlay kept ONLY on the TOC (p2). All other light data pages go
+   plain off-white per Jane — pattern was overkill on the content pages. */
+.doc-page--led-toc::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -60,20 +55,11 @@
   color: rgba(235, 245, 248, 0.86);
   isolation: isolate;
 }
+/* Pattern removed from interior dark pages per Jane — plain navy, no circuit
+   texture. The mint bottom accent bar (::after) stays. */
 .doc-page--led-advantage::before,
 .doc-page--led-gallery::before {
-  content: '';
-  position: absolute;
-  top: 0; right: 0; bottom: 4px; left: 0;
-  background-image: url('../../assets/textures/texture-circuit-header-mintgold.png');
-  background-repeat: repeat;
-  background-position: right center;
-  background-size: 640px auto;
-  -webkit-mask-image: linear-gradient(90deg, transparent 40%, rgba(0,0,0,0.45) 68%, #000 100%);
-          mask-image: linear-gradient(90deg, transparent 40%, rgba(0,0,0,0.45) 68%, #000 100%);
-  opacity: 0.5;
-  pointer-events: none;
-  z-index: 0;
+  content: none;
 }
 .doc-page--led-advantage::after,
 .doc-page--led-gallery::after {
@@ -573,16 +559,9 @@
   background: var(--navy);
   color: rgba(235, 245, 248, 0.86);
 }
+/* Pattern removed from the overview page per Jane — plain navy, no texture. */
 .doc-page--led-overview::before {
-  background-image: url('../../assets/textures/texture-circuit-header-mintgold.png');
-  background-repeat: repeat;
-  background-position: right center;
-  background-size: 640px auto;
-  -webkit-mask-image: linear-gradient(90deg, transparent 40%, rgba(0,0,0,0.45) 68%, #000 100%);
-          mask-image: linear-gradient(90deg, transparent 40%, rgba(0,0,0,0.45) 68%, #000 100%);
-  opacity: 0.5;
-  inset: 0 0 4px 0;
-  z-index: 0;
+  content: none;
 }
 .doc-page--led-overview::after {
   content: '';
@@ -628,6 +607,57 @@
   line-height: 1.55;
   color: var(--mint);
   max-width: 52ch;
+}
+/* Sub-section label — names a sub-part within a numbered section ("The COB
+   Advantage", "Project Gallery", "Coordination & Training"). On the first
+   page of a section it sits under the band title; on continuation pages it
+   anchors the page alone (no repeated section number). Mint rule + mint
+   label, normal case — not a tracked kicker. */
+.led-subhead {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 20px;
+  font-family: var(--font);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--accent-light);
+  max-width: 40ch;
+}
+.led-subhead::before {
+  content: '';
+  width: 28px;
+  height: 2px;
+  background: var(--accent-light);
+  flex: none;
+}
+/* On dark pages the subhead reads mint */
+.doc-page--led-overview .led-subhead,
+.doc-page--led-advantage .led-subhead,
+.doc-page--led-gallery .led-subhead {
+  color: var(--mint);
+}
+.doc-page--led-overview .led-subhead::before,
+.doc-page--led-advantage .led-subhead::before,
+.doc-page--led-gallery .led-subhead::before {
+  background: var(--mint);
+}
+/* When the subhead is the sole anchor on a continuation page, give it the
+   same top spacing the band header would have. */
+.doc-page--led-gallery .led-subhead,
+.doc-page--led-coordination .led-subhead,
+.doc-page--led-specs .led-subhead,
+.doc-page--led-estimate .led-subhead {
+  margin-top: 4px;
+}
+/* On the section-2 pages the subhead carries the mint, so the deck drops to
+   off-white body copy (avoids two stacked mint text blocks). The overview
+   deck stays mint — it has no subhead, so the deck is the accent there. */
+.doc-page--led-advantage .led-band-deck,
+.doc-page--led-gallery .led-band-deck {
+  color: rgba(235, 245, 248, 0.78);
 }
 /* Section-continuation header on the second page of a multi-page section */
 .led-cont-head {
@@ -742,4 +772,61 @@
   font-weight: 700;
   color: var(--ink-strong);
 }
+
+/* ============================================================================
+   v5 additions — section restructure: §1 overview, §2 Built on COB (p4-5),
+   §3 Scope of Work (p6-9), §4 Fee Schedule (p10-12), §5 Terms & Warranty (p13).
+   Pattern removed from all interior pages; only cover/TOC/signature keep it.
+   ========================================================================== */
+
+/* ── Overview two-column layout — fills the dark page ─────────────────────── */
+.led-overview-cols {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 0 44px;
+  margin-top: 24px;
+}
+.led-overview-col { min-width: 0; }
+.led-overview-col .sow-list-label { margin: 0; }
+.led-overview-col .sow-list-label + .doc-section-head__text { margin: 8px 0 0; }
+.led-overview-col .sow-list-label:not(:first-child) { margin-top: 22px; }
+.led-overview-scope {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+}
+.led-overview-scope li {
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(var(--mint-rgb), 0.16);
+  font-family: var(--font-recede);
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(235, 245, 248, 0.82);
+}
+.led-overview-scope li:last-child { border-bottom: none; }
+.led-overview-scope li strong {
+  font-family: var(--font);
+  font-weight: 700;
+  color: rgba(245, 248, 250, 0.96);
+}
+.led-overview-scope__q {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--font-recede);
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: rgba(235, 245, 248, 0.55);
+}
+.led-overview-note {
+  margin: 16px 0 0;
+  font-family: var(--font-recede);
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: rgba(235, 245, 248, 0.62);
+  max-width: 48ch;
+}
+/* Push the stat strip to the bottom of the overview page so content fills the
+   sheet; the foot sits right beneath it. Overrides the earlier foot auto-margin. */
+.doc-page--led-overview .led-stat-strip { margin-top: auto; }
+.doc-page--led-overview .doc-foot { margin-top: 16px; }
 
