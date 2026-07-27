@@ -5,7 +5,7 @@ to write edited HTML back to the working file on disk.
 Run from the project root:  python3 luci-dev-server.py
 Listens on 127.0.0.1:8771 (localhost only — never exposed to the network).
 
-The edit bar's "Save HTML" button POSTs the serialized DOM here; this script
+The edit bar's "Save" button POSTs the serialized DOM here; this script
 writes it to the file on disk so Cursor (the agent) reads the latest version
 on the next pass — no prompting required.
 """

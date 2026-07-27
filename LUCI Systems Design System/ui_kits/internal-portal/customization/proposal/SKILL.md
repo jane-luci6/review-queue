@@ -22,9 +22,9 @@ Also read: `../_brand/SKILL.md` — especially **Efficient customization (read t
 
 **What stays non-editable (images only):** LUCI wordmark on the cover (`.doc-cover__logo`) and the close-page LUCI logo (`.led-signoff-band__logo`). Client logo is still click-to-swap.
 
-**Agent rules (unchanged discipline):** prefer `[data-studio]` selector edits; do not rebuild sections; do not invent fine-print; after Mike types in the preview, **Save HTML** (or write the live DOM back to the same working file) before the next agent pass. Brand/voice still applies to any copy the agent authors.
+**Agent rules (unchanged discipline):** prefer `[data-studio]` selector edits; do not rebuild sections; do not invent fine-print; after Mike types in the preview, **Save** (or write the live DOM back to the same working file) before the next agent pass. Brand/voice still applies to any copy the agent authors.
 
-**Save / PDF toolbar:** **Save HTML** overwrites the working file when the browser supports the file picker (otherwise downloads `<title>.html` — Mike should save over the same path, not a new `-edited` copy). **Copy HTML** puts the full document on the clipboard. **Download PDF** opens the print dialog (Save as PDF, US Letter).
+**Save / PDF toolbar:** **Save** overwrites the working file when the browser supports the file picker (otherwise downloads `<title>.html` — Mike should save over the same path, not a new `-edited` copy). **Copy HTML** puts the full document on the clipboard. **Download PDF** opens the print dialog (Save as PDF, US Letter).
 
 ## Voice
 

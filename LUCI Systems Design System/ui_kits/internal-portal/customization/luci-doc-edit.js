@@ -177,7 +177,7 @@
        the hint nudges Mike to ask Cursor to restart the dev server. */
     downloadBlob(name, blob);
     flashButton(btn, 'Downloaded');
-    window.alert('Could not save directly to the working file (the LUCI dev server is not running and the browser file API is unavailable).\n\nAsk Cursor to reopen the project so it starts the dev server, then click Save HTML again.');
+    window.alert('Could not save directly to the working file (the LUCI dev server is not running and the browser file API is unavailable).\n\nAsk Cursor to reopen the project so it starts the dev server, then click Save again.');
   }
 
   function copyHtml(btn) {
@@ -222,13 +222,13 @@
 
     var hint =
       (ctx.editMode && ctx.editMode.hint) ||
-      'Click any text to edit. Fonts and colors stay locked to the design. Save HTML when finished.';
+      'Click any text to edit. Fonts and colors stay locked to the design. Click Save when finished.';
 
     bar.innerHTML =
       '<span class="luci-edit-bar__label">Edit mode</span>' +
       '<p class="luci-edit-bar__hint">' + hint + '</p>' +
       '<div class="luci-edit-bar__actions">' +
-      '<button type="button" class="luci-edit-bar__btn luci-edit-bar__btn--primary" data-action="save-html">Save HTML</button>' +
+      '<button type="button" class="luci-edit-bar__btn luci-edit-bar__btn--primary" data-action="save-html">Save</button>' +
       '<button type="button" class="luci-edit-bar__btn" data-action="copy-html">Copy HTML</button>' +
       '<button type="button" class="luci-edit-bar__btn" data-action="download-pdf">Download PDF</button>' +
       '</div>';

@@ -223,7 +223,7 @@ const CUSTOMIZATION_TEMPLATES = [
 const PORTAL_ORIGIN = 'http://10.10.1.17:8081';
 
 const SHARED_EDIT_HINT =
-  'Click any text to edit — fonts, colors, and layout stay locked to the design. Use Save HTML when finished so your typing is kept; Download PDF for a print-ready file.';
+  'Click any text to edit — fonts, colors, and layout stay locked to the design. Click Save when finished so your typing is kept; Download PDF for a print-ready file.';
 
 const CURSOR_DOC_META = {
   'capabilities-document': {
