@@ -163,6 +163,8 @@ Mike may click-edit any text here. Hooks: `tech-title`, `tech-cob-subhead`, `tec
 
 Layout (2×2) stays locked.
 
+**Section title follows the photos Mike uploads:** if Mike provides design renderings of the proposed install, title the section “Design Renderings” (subhead + deck). If Mike provides photos of past installations, title it “Project Gallery.” Match the subhead and deck copy to whichever Mike provides.
+
 ### §3 Scope of work (page 6)
 
 | Element | Selector |
@@ -197,11 +199,13 @@ Layout (2×2) stays locked.
 
 | Element | Selector |
 |---------|----------|
-| Title | `fee-title` |
+| Subhead | `payment-terms-subhead` |
 | Milestone N | `fee-mile-N-pct` · `fee-mile-N-label` · `fee-mile-N-due` (N = 1–3) |
 | Fine print | `fee-note-usd` · `fee-note-tariff` |
 
 **Everything on this page is editable**, including fine print. Structure (stack of milestones) stays.
+
+**Populate from Mike’s input — not a fixed template.** Most proposals show dollar amounts per milestone ($77,145.11 / $65,145.11 / …); some show percentages (50% / 50% / Remaining). Use whichever Mike provides. If Mike gives dollar amounts, include a one-line description of what’s in each milestone (equipment vs. professional services vs. balance). Reconcile the milestones to the estimate total in the fine print.
 
 ### §4 Fee schedule — Estimates (pages 10–11, section opener)
 
@@ -212,6 +216,10 @@ Layout (2×2) stays locked.
 | Footnote | `estimate-N-footnote` |
 
 **No auto-math** — recompute amount/total by hand when qty or rate changes. Clone the estimate section for more installs; keep the `estimate-N-…` numbering consecutive.
+
+**One estimate = one continuous table = one total.** Never split an estimate into sub-sections (e.g. “hardware” / “cabling” / “services”) with separate sub-totals. The spreadsheet Mike uploads has everything summed together — the proposal mirrors that: one table, one “Project total” at the end. If the line items exceed one page, the estimate spills onto the next page (add a “continues on the following page” note at the bottom of the first page); the continuation page reuses the same estimate # and date with a descriptive subhead (e.g. “Source, Rack & Services”) but does **not** add a second total.
+
+**Only include rows that are in Mike’s spreadsheet.** If the spreadsheet has a Sales Tax row, add it as a line item. If it doesn’t, don’t invent one. Same for freight, travel, or any other row — the estimate mirrors the spreadsheet exactly, no added and no removed rows.
 
 ### §5 Terms & warranty (page 13)
 
@@ -292,6 +300,7 @@ If preview shows wrong fonts after an edit, the HTML structure was likely broken
 - **Locked pages/regions** (page 3 COB advantage + architecture; page 12 warranty grid; spec schema labels; cover LUCI logo; document CSS/structure; page footers; band big numerals; LUCI contact line) are **locked — no changes of any kind, including color, styling, or CSS.** If asked to change one, do NOT edit first — flag it and ask whether to override (local-only vs canonical) before making any change.
 - Change LUCI cover logo or document CSS/structure.
 - Remove page footers (`.doc-foot`) or band big numbers (`.sow-band-bignum`).
+- Manually edit the footer text span (`.doc-foot > span:first-child`) — it is auto-synced to the cover’s project title (`project-title`) by an inline script. To change the footer, change the project title on the cover; the footers update automatically. Page numbers (`.doc-foot__page`) are still manual.
 - Add inline font styles or unclassed elements that bypass the typography table above.
 - Add marketing language to technical scope — stay factual and scoping-focused.
 - Invent hardware specs or pricing not supported by client notes.

@@ -706,6 +706,28 @@
       }
     })();
   </script>
+  <script>
+    (function () {
+      var displayEl = document.querySelector('[data-studio="cover-display"]');
+      var footers = document.querySelectorAll('.doc-foot > span:first-child');
+      function projectName() {
+        if (!displayEl) return 'Project';
+        var em = displayEl.querySelector('em');
+        return (em ? em.textContent : displayEl.textContent).trim() || 'Project';
+      }
+      function syncFooters() {
+        if (!footers.length) return;
+        var name = projectName();
+        footers.forEach(function (f) {
+          if (!f.classList.contains('doc-foot__page')) {
+            f.textContent = 'LUCI Systems \u00b7 Proposal \u2014 ' + name;
+          }
+        });
+      }
+      syncFooters();
+      if (displayEl) displayEl.addEventListener('input', syncFooters);
+    })();
+  </script>
 </body>
 </html>
 
