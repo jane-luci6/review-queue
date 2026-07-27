@@ -610,18 +610,19 @@
   color: var(--mint);
   max-width: 52ch;
 }
-/* Continuation / in-section subhead — canonized "Pick your team" treatment
-   (luci-subhead-over-kicker). Inter, colored, no tracked kicker, no bar. */
+/* In-section H3 / continuation label — trial: website Syncopate kicker
+   (.display-label). LED SOW only until Jane locks a house pattern. */
 .led-subhead {
   margin: 0 0 18px;
   padding: 0;
-  font-family: var(--font-recede);
-  font-size: clamp(16px, 1.3vw, 18px);
-  font-weight: 400;
-  line-height: 1.5;
-  letter-spacing: 0;
+  font-family: var(--display);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
   color: var(--accent-light);
-  max-width: 40ch;
+  max-width: none;
 }
 .doc-page--led-advantage .led-subhead,
 .doc-page--led-gallery .led-subhead {
@@ -636,8 +637,6 @@
   margin-top: 8px;
   margin-bottom: 22px;
 }
-/* On §2 pages the subhead is mint; the supporting deck stays mint too so
-   both match the page-3 deck treatment under the section title. */
 /* Section-continuation header on the second page of a multi-page section */
 .led-cont-head {
   margin: 0 0 22px;
