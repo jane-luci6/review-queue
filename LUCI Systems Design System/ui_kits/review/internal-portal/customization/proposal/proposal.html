@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <!-- luci-cursor-doc: proposal -->
-  <script type="application/json" id="luci-cursor-context">{"version":1,"docId":"proposal","title":"Proposal","portalOrigin":"http://10.10.1.17:8081","previewUrl":"http://10.10.1.17:8081/internal-portal/customization/proposal/proposal.html","skills":{"router":"http://10.10.1.17:8081/internal-portal/customization/CURSOR.md","brand":"http://10.10.1.17:8081/internal-portal/customization/_brand/SKILL.md","template":"http://10.10.1.17:8081/internal-portal/customization/proposal/SKILL.md","agents":"http://10.10.1.17:8081/internal-portal/customization/proposal/AGENTS.md","manifest":"http://10.10.1.17:8081/internal-portal/customization/cursor-manifest.json"},"source":{"master":"LUCI Systems Design System/ui_kits/sales/proposal.html","clientFile":"LUCI Systems Design System/ui_kits/sales/{client}-proposal.html"},"editMode":{"enabled":true,"hint":"Click highlighted text to edit cover, scope, specs, fee, estimates, terms, and signature. COB advantage + architecture boilerplate (page 3), spec schema labels, warranty grid, and gallery layout stay locked.","lockedPages":".doc-page--led-advantage","lockedElements":".doc-cover__logo, .led-advantage-grid, .led-arch-text, .led-terms-grid, .led-spec-row__label"},"workflow":"Paste this page URL into Cursor chat. Agent fetches the skill URLs above before editing. No specific folder required. Open the same URL in a browser to click-edit highlighted text."}</script>
+  <script type="application/json" id="luci-cursor-context">{"version":1,"docId":"proposal","title":"Proposal","portalOrigin":"http://10.10.1.17:8081","previewUrl":"http://10.10.1.17:8081/internal-portal/customization/proposal/proposal.html","skills":{"router":"http://10.10.1.17:8081/internal-portal/customization/CURSOR.md","brand":"http://10.10.1.17:8081/internal-portal/customization/_brand/SKILL.md","template":"http://10.10.1.17:8081/internal-portal/customization/proposal/SKILL.md","agents":"http://10.10.1.17:8081/internal-portal/customization/proposal/AGENTS.md","manifest":"http://10.10.1.17:8081/internal-portal/customization/cursor-manifest.json"},"source":{"master":"LUCI Systems Design System/ui_kits/sales/proposal.html","clientFile":"LUCI Systems Design System/ui_kits/sales/{client}-proposal.html"},"editMode":{"enabled":true,"hint":"Click highlighted text to edit cover, scope, specs, fee, estimates, terms, and the close page. COB advantage + architecture boilerplate (page 3), spec schema labels, warranty grid, and gallery layout stay locked.","lockedPages":".doc-page--led-advantage","lockedElements":".doc-cover__logo, .led-advantage-grid, .led-arch-text, .led-terms-grid, .led-spec-row__label"},"workflow":"Paste this page URL into Cursor chat. Agent fetches the skill URLs above before editing. No specific folder required. Open the same URL in a browser to click-edit highlighted text."}</script>
   <link rel="stylesheet" href="http://10.10.1.17:8081/internal-portal/customization/luci-doc-edit.css">
   <script src="http://10.10.1.17:8081/internal-portal/customization/luci-doc-edit.js" defer></script>
   <meta charset="UTF-8">
@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="/assets/fonts/luci-brand-fonts.css">
   <link rel="stylesheet" href="/sales/sales-document.css?v=4">
   <link rel="stylesheet" href="/sales/scope-of-work.css?v=20">
-  <link rel="stylesheet" href="/sales/proposal.css?v=1">
+  <link rel="stylesheet" href="/sales/proposal.css?v=3">
 </head>
 <body>
   <article class="doc">
@@ -664,54 +664,31 @@
     <section class="doc-page doc-page--led-signoff">
       <div class="led-signoff-band">
         <img class="led-signoff-band__logo" src="/assets/logos/luci-full-white.png" alt="LUCI Systems" width="180" height="28">
-        <h1 class="led-signoff-band__title doc-edit" contenteditable="true">Let&rsquo;s Build Something <em>Extraordinary</em></h1>
-        <p class="led-signoff-band__deck doc-edit" contenteditable="true">By signing below, both parties agree to the terms, scope, and pricing outlined in this proposal. This agreement is effective as of the date of the last signature below.</p>
-      </div>
-
-      <div class="sow-signoff">
-        <div class="sow-signoff__cols">
-          <div>
-            <p class="sow-signoff__col-label doc-edit" contenteditable="true" data-studio="signoff-client-name">[Client Organization]</p>
-            <div class="sow-signoff__field">
-              <span class="sow-signoff__cap">Authorized Signature</span>
-              <span class="sow-signoff__line"></span>
-            </div>
-            <div class="sow-signoff__field">
-              <span class="sow-signoff__cap">Printed Name</span>
-              <span class="sow-signoff__line"></span>
-            </div>
-            <div class="sow-signoff__field">
-              <span class="sow-signoff__cap">Title</span>
-              <span class="sow-signoff__line"></span>
-            </div>
-            <div class="sow-signoff__field">
-              <span class="sow-signoff__cap">Date</span>
-              <span class="sow-signoff__line"></span>
-            </div>
+        <div class="led-close">
+          <div class="led-close__lead">
+            <p class="led-close__kicker">Next step</p>
+            <h2 class="led-close__head doc-edit" contenteditable="true">A property that <em>gets simpler as it grows.</em></h2>
+            <p class="led-close__body doc-edit" contenteditable="true">Review this proposal with leadership. When we&rsquo;re aligned, we&rsquo;ll schedule an onsite walk to confirm scope and issue the final quote.</p>
           </div>
-          <div>
-            <p class="sow-signoff__col-label">LUCI Systems, LLC</p>
-            <div class="sow-signoff__field">
-              <span class="sow-signoff__cap">Authorized Signature</span>
-              <span class="sow-signoff__line"></span>
+          <div class="led-close__contacts">
+            <div>
+              <p class="led-close__kicker">Your contact</p>
+              <p class="led-close__name doc-edit" contenteditable="true">Michael Epstein</p>
+              <p class="led-close__link doc-edit" contenteditable="true"><a href="mailto:mepstein@lucisystems.com">mepstein@lucisystems.com</a></p>
             </div>
-            <div class="sow-signoff__field">
-              <span class="sow-signoff__cap">Printed Name</span>
-              <span class="sow-signoff__line"></span>
-            </div>
-            <div class="sow-signoff__field">
-              <span class="sow-signoff__cap">Title</span>
-              <span class="sow-signoff__line"></span>
-            </div>
-            <div class="sow-signoff__field">
-              <span class="sow-signoff__cap">Date</span>
-              <span class="sow-signoff__line"></span>
+            <div>
+              <p class="led-close__name">LUCI Systems, LLC</p>
+              <p class="led-close__addr">6280 S. Valley View Blvd., Bldg. B / Ste. 208<br>Las Vegas, NV 89118</p>
+              <p class="led-close__link"><a href="tel:+18333335868">(833) 333-5868</a> &middot; <a href="https://lucisystems.com">LUCIsystems.com</a></p>
             </div>
           </div>
         </div>
       </div>
 
-      <p class="led-signoff-contact">&#9742; (833) 333-5868 &nbsp;&middot;&nbsp; &#9993; support@lucisystems.com &nbsp;&middot;&nbsp; lucisystems.com</p>
+      <div class="doc-foot">
+        <span>LUCI Systems &middot; Proposal</span>
+        <span class="doc-foot__page">14</span>
+      </div>
     </section>
 
   </article>

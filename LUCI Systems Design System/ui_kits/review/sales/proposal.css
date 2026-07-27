@@ -428,8 +428,7 @@
   padding: 14px 0;
   border-top: 2px solid var(--ink-strong);
   border-bottom: 2px solid var(--ink-strong);
-  max-width: 48ch;
-  margin-left: auto;
+  max-width: none;
 }
 .led-price-total__label {
   font-family: var(--font);
@@ -1108,53 +1107,78 @@
   width: auto;
   margin-bottom: 22px;
 }
-.led-signoff-band__title {
-  margin: 0;
-  font-family: var(--font);
-  font-size: clamp(22px, 2.4vw, 28px);
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.025em;
-  color: rgba(245, 248, 250, 0.96);
-  max-width: 28ch;
+.led-close {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+  align-items: start;
+  border-left: 4px solid var(--mint);
+  padding: 6px 0 6px 28px;
 }
-.led-signoff-band__title em {
-  font-style: normal;
+.led-close__lead { min-width: 0; }
+.led-close__kicker {
+  margin: 0 0 12px;
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
   color: var(--mint);
 }
-.led-signoff-band__deck {
-  margin: 12px 0 0;
+.led-close__head {
+  margin: 0;
+  font-family: var(--font);
+  font-size: clamp(24px, 2.6vw, 30px);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.14;
+  color: rgba(245, 248, 250, 0.96);
+  max-width: 22ch;
+}
+.led-close__head em { font-style: normal; color: var(--mint); }
+.led-close__body {
+  margin: 14px 0 0;
+  max-width: 46ch;
   font-family: var(--font-recede);
   font-size: 14px;
-  line-height: 1.55;
-  color: rgba(235, 245, 248, 0.78);
-  max-width: 54ch;
+  line-height: 1.6;
+  color: rgba(235, 245, 248, 0.82);
 }
-.doc-page--led-signoff .sow-signoff {
-  margin: 36px var(--page-pad) 0;
-  flex: 1;
-  max-width: none;
-}
-.doc-page--led-signoff .sow-signoff__col-label {
-  color: var(--ink-strong);
-}
-.doc-page--led-signoff .sow-signoff__cap {
-  color: var(--navy-muted);
-}
-.doc-page--led-signoff .sow-signoff__line {
-  border-bottom-color: var(--rule-light);
-}
-.led-signoff-contact {
-  margin: auto var(--page-pad) 28px;
-  padding-top: 18px;
-  border-top: 1px solid var(--rule-light);
+.led-close__contacts {
+  display: grid;
+  gap: 18px;
   font-family: var(--font-recede);
-  font-size: 12.5px;
-  line-height: 1.5;
-  color: var(--navy-muted);
+  font-size: 13px;
+  line-height: 1.55;
+  color: rgba(235, 245, 248, 0.82);
+}
+.led-close__name {
+  margin: 4px 0 0;
+  font-family: var(--font);
+  font-size: 15px;
+  font-weight: 700;
+  color: rgba(245, 248, 250, 0.96);
+}
+.led-close__addr { margin: 3px 0; color: rgba(235, 245, 248, 0.78); }
+.led-close__link { margin: 3px 0 0; }
+.led-close a { color: var(--mint); font-weight: 600; text-decoration: none; }
+.led-close a:hover { text-decoration: underline; }
+
+/* Full-bleed navy close page — bookends the cover; center the close content vertically. */
+.doc-page--led-signoff {
+  background: var(--navy);
+  display: flex;
+  flex-direction: column;
+}
+.doc-page--led-signoff .led-signoff-band {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 @media print {
   .led-signoff-band, .led-signoff-band::before, .led-signoff-band::after,
+  .led-close,
   .led-feature-card, .led-feature-card__icon, .led-callout,
   .led-check-panel, .led-check-list li::before {
     -webkit-print-color-adjust: exact;

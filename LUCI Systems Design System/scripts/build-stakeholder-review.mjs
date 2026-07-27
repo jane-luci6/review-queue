@@ -263,7 +263,7 @@ const CURSOR_DOC_META = {
     clientFile: 'LUCI Systems Design System/ui_kits/sales/{client}-proposal.html',
     editMode: {
       enabled: true,
-      hint: 'Click highlighted text to edit cover, scope, specs, fee, estimates, terms, and signature. COB advantage + architecture boilerplate (page 3), spec schema labels, warranty grid, and gallery layout stay locked.',
+      hint: 'Click highlighted text to edit cover, scope, specs, fee, estimates, terms, and the close page. COB advantage + architecture boilerplate (page 3), spec schema labels, warranty grid, and gallery layout stay locked.',
       lockedPages: '.doc-page--led-advantage',
       lockedElements: '.doc-cover__logo, .led-advantage-grid, .led-arch-text, .led-terms-grid, .led-spec-row__label',
     },
@@ -326,7 +326,7 @@ function rewriteCustomizationHtml(html, templateId, fileName) {
   out = out.replace(/href="capabilities-document\.css[^"]*"/gi, 'href="/sales/capabilities-document.css"');
   out = out.replace(/href="brochure\.css[^"]*"/gi, 'href="/sales/brochure.css?v=3"');
   out = out.replace(/href="scope-of-work\.css[^"]*"/gi, 'href="/sales/scope-of-work.css?v=20"');
-  out = out.replace(/href="proposal\.css[^"]*"/gi, 'href="/sales/proposal.css?v=1"');
+  out = out.replace(/href="proposal\.css[^"]*"/gi, 'href="/sales/proposal.css?v=3"');
   out = out.replace(/href="budgetary-estimate\.css[^"]*"/gi, 'href="/sales/budgetary-estimate.css?v=20"');
   out = out.replace(/href="sales-deck\.css[^"]*"/gi, 'href="/sales/sales-deck.css"');
   out = out.replace(/src="assets\//g, 'src="/sales/assets/');

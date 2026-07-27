@@ -4,13 +4,13 @@ description: >-
   Customize the LUCI Proposal for a specific client LED wall project.
   Use when scoping a COB LED display installation: cover, COB technology overview,
   scope, coordination, per-pitch design specs, fee schedule, per-installation
-  estimates, terms, and signature are editable; LUCI branding, COB advantage
+  estimates, terms, and the close page are editable; LUCI branding, COB advantage
   boilerplate, gallery layout, and spec schema stay locked.
 ---
 
 # Proposal · customization
 
-Post-survey proposal for LED wall installations. **14 pages (US Letter)** — cover, contents, then five numbered sections: §1 Project overview (dark), §2 Built on COB (dark, spans the COB advantage + project gallery), §3 Scope of work (spans scope + coordination + per-pitch design specs), §4 Fee schedule (spans the milestones + one estimate page per LED installation), §5 Terms & warranty, then the agreement/signature page. Source master: `proposal.html` in this folder (build copy from `ui_kits/sales/`).
+Post-survey proposal for LED wall installations. **14 pages (US Letter)** — cover, contents, then five numbered sections: §1 Project overview (dark), §2 Built on COB (dark, spans the COB advantage + project gallery), §3 Scope of work (spans scope + coordination + per-pitch design specs), §4 Fee schedule (spans the milestones + one estimate page per LED installation), §5 Terms & warranty, then a close page (Next step + contacts — no signature block). Source master: `proposal.html` in this folder (build copy from `ui_kits/sales/`).
 
 **Section numbering rule:** a section number appears only on the first page of that section (the band big-numeral + title). Continuation pages within the same section carry a `.led-subhead` instead — no repeated number. So §3's number lives on page 6 only; pages 7–9 use subheads ("Coordination & Training", "Design Specifications — <pitch>"). Same for §4 (number on p10; estimates on p11–12 are subheads).
 
@@ -38,7 +38,7 @@ When Mike pastes this URL into Cursor chat:
 
 1. Read this `SKILL.md` and `../_brand/SKILL.md` before any edits.
 2. Copy master from `LUCI Systems Design System/ui_kits/sales/proposal.html` to `ui_kits/sales/<client>-proposal.html`.
-3. Customize cover, scope, specs, fee, estimates, terms, and signature per this skill — preserve CSS classes.
+3. Customize cover, scope, specs, fee, estimates, terms, and close per this skill — preserve CSS classes.
 4. Do **not** edit the HTML file on the VM deploy folder (overwritten on deploy).
 
 See also: `../CURSOR.md`, `AGENTS.md` in this folder.
@@ -83,7 +83,7 @@ After a site survey or discovery for an LED wall project (casino sportsbook, cen
 | **11** | §4 Fee schedule — Estimate 01 (cont.) | Light | **EDITABLE** (all line items, qty, rate, amount, total, estimate #, date, name) |
 | **12** | §4 Fee schedule — Estimate 02 (cont., clone per install) | Light | **EDITABLE** — clone this page for each additional LED installation |
 | **13** | §5 Terms & warranty | Light | **EDITABLE** (warranty duration); **LOCKED** 4-column warranty boilerplate |
-| **14** | Agreement / signature | Dark | **EDITABLE** (client org name); **LOCKED** structure + LUCI contact info |
+| **14** | Close (Next step + contacts) | Dark | **EDITABLE** (next-step body, contact name/email); **LOCKED** structure + LUCI company info |
 
 ### Variable page counts
 
@@ -116,7 +116,7 @@ Everything else on the cover with `doc-edit` / `contenteditable="true"` is edita
 ### Contents (page 2) — `.doc-page--led-toc`
 
 - Section titles (`.led-toc__title`) and page numbers (`.led-toc__pg`) — editable. Update page numbers when pages are added/removed.
-- **No Agreement row** — the signature page (p14) sits outside the numbered TOC. Do not add it back.
+- **No Agreement row** — the close page (p14) sits outside the numbered TOC. Do not add an Agreement/signature row back.
 - Plain off-white page — no circuit/pattern overlay (keeps dotted leaders clean).
 
 ### Project overview (page 3, dark) — `.doc-page--led-overview`
@@ -176,10 +176,12 @@ Layout (2×2 grid) stays locked.
 - Warranty duration line (`.led-warranty-duration` span) — editable
 - **Locked:** the 4-column warranty grid (covered / void-if / service / not-covered) + extended-warranty paragraph
 
-### Agreement / signature (page 14) — `.doc-page--cover` (dark)
+### Close (page 14) — `.doc-page--led-signoff` (dark, navy + circuit texture)
 
-- Client org name (`[data-studio="signoff-client-name"]`) — editable
-- **Locked:** signature structure + LUCI contact line
+- Next-step body (`.led-close__body`) — editable
+- Contact name + email (`.led-close__name` / `.led-close__link` in the "Your contact" column) — editable
+- **Locked:** close-page structure, LUCI company info (name/address/phone/web), and the navy circuit-texture band
+- **No signature block** — this is a close page, not an agreement/signature page. Do not re-add signature fields.
 
 All editable content uses `class="doc-edit" contenteditable="true"`. When editing HTML directly, preserve those classes.
 
@@ -259,7 +261,7 @@ If preview shows wrong fonts after an edit, the HTML structure was likely broken
 5. §4 Fee schedule (p10): set fee milestones per contract.
 6. §4 Fee schedule — Estimates (p11+): one estimate page per LED installation — populate line items, qty, rate, amount, total (subheads, no repeated §4 number).
 7. §5 Terms & warranty (p13): set warranty duration per contract.
-8. Agreement (p14): set client org name on the signature block.
+8. Close (p14): set the next-step body + the contact name/email (no signature block).
 
 **Update `<title>`** in `<head>` to reflect client/project name.
 
