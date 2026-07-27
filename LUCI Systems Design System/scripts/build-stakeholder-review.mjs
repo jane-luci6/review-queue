@@ -305,16 +305,24 @@ function injectCursorContext(html, templateId, fileName) {
       'Paste this page URL into Cursor chat. Agent fetches the skill URLs above before editing. No specific folder required. Open the same URL in a browser to click-edit highlighted text.',
   };
   const editAssets = [
-    `<link rel="stylesheet" href="${base}/luci-doc-edit.css">`,
-    `<script src="${base}/luci-doc-edit.js" defer></script>`,
+    `<link rel="stylesheet" href="${base}/luci-doc-edit.css?v=2">`,
+    `<script src="${base}/luci-doc-edit.js?v=2" defer></script>`,
   ].join('\n  ');
   const block = [
     `<!-- luci-cursor-doc: ${templateId} -->`,
     `<script type="application/json" id="luci-cursor-context">${JSON.stringify(context)}</script>`,
     editAssets,
   ].join('\n  ');
-  if (html.includes('id="luci-cursor-context"')) return html;
-  return html.replace(/<head>/i, `<head>\n  ${block}`);
+  /* Strip any prior cursor/edit injection so hint, locks, and cache-busters stay current. */
+  let out = html.replace(
+    /\s*<!-- luci-cursor-doc:[\s\S]*?<script src="[^"]*luci-doc-edit\.js[^"]*"[^>]*><\/script>/i,
+    ''
+  );
+  out = out.replace(
+    /\s*<script type="application\/json" id="luci-cursor-context">[\s\S]*?<\/script>\s*<link rel="stylesheet" href="[^"]*luci-doc-edit\.css[^"]*">\s*<script src="[^"]*luci-doc-edit\.js[^"]*"[^>]*><\/script>/i,
+    ''
+  );
+  return out.replace(/<head>/i, `<head>\n  ${block}`);
 }
 
 function rewriteCustomizationHtml(html, templateId, fileName) {
