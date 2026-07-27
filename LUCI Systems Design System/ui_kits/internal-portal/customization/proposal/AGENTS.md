@@ -1,8 +1,8 @@
-# Scope of work — LED · Cursor agent entry
+# Proposal · Cursor agent entry
 
-**Portal preview:** `http://10.10.1.17:8081/internal-portal/customization/scope-of-work-led/scope-of-work-led.html`
+**Portal preview:** `http://10.10.1.17:8081/internal-portal/customization/proposal/proposal.html`
 
-When this URL (or a request to customize the LED scope of work) appears in chat:
+When this URL (or a request to customize the LED proposal) appears in chat:
 
 1. Read **`SKILL.md`** (this folder) — page map, editable vs locked regions, typography table.
 2. Read **`../_brand/SKILL.md`** — typography, accent, voice, file hygiene.
@@ -12,8 +12,8 @@ When this URL (or a request to customize the LED scope of work) appears in chat:
 
 | Role | Path |
 |------|------|
-| Master | `LUCI Systems Design System/ui_kits/sales/scope-of-work-led.html` |
-| Client deliverable | `LUCI Systems Design System/ui_kits/sales/<client>-scope-of-work-led.html` |
+| Master | `LUCI Systems Design System/ui_kits/sales/proposal.html` |
+| Client deliverable | `LUCI Systems Design System/ui_kits/sales/<client>-proposal.html` |
 
 Copy the master to a client file, then customize cover, scope, specs, fee, estimates, terms, and signature per `SKILL.md`. Preserve CSS classes — never inline `font-family`.
 

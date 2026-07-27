@@ -104,7 +104,8 @@ The website (lucisystems.com) is the reference for *how LUCI sounds* — the ton
 - Edit **only** elements marked editable in the template skill (`.doc-edit`, `[data-studio]`, or `contenteditable="true"` regions) — this covers styling/CSS/color too, not just text. A color tweak to a locked region is still an edit to a locked region; run the pre-edit gate in `.cursor/rules/luci-doc-customization.mdc` first.
 - Do not remove HTML comments that label pages (`<!-- PAGE N · … -->`).
 - Preserve `&mdash;` and existing entity encoding in static copy.
-- When swapping a client logo: use PNG or SVG, transparent background, update `src` and `alt` on `.doc-cover__client` only.
+- When swapping a client logo: use **PNG or SVG with a transparent background** (never an opaque JPEG or a PNG with a white background — it renders as a white box on dark covers and bands). Update `src` and `alt` on `.doc-cover__client` only. For dark covers (`.doc-page--dark.doc-page--cover`), prefer a **white** logo file; the cover CSS normalizes a dark logo to white via filter, but an opaque background still boxes.
+- **Do not add "Addressed to" (or similar) labels** to the cover header box, the prepared-for area, or anywhere else on the first page. The cover's existing labels (`Budgetary estimate` / `Proposal` / `Scope of work` kicker, `Prepared for` eyebrow, `Client summary`) are the only labels that belong there. If the client org needs to appear, it goes in the `Prepared for` value or the `Client summary` text — not as a new labeled row. Adding "Addressed to" was an erroneous AI insertion; do not reproduce it.
 
 ## Saving
 

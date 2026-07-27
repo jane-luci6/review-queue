@@ -215,7 +215,7 @@ const CUSTOMIZATION_TEMPLATES = [
   { id: 'capabilities-document', src: 'sales/capabilities-document.html' },
   { id: 'sales-deck', src: 'sales/sales-deck.html' },
   { id: 'scope-of-work', src: 'sales/scope-of-work.html' },
-  { id: 'scope-of-work-led', src: 'sales/scope-of-work-led.html' },
+  { id: 'proposal', src: 'sales/proposal.html' },
   { id: 'budgetary-estimate', src: 'sales/budgetary-estimate.html' },
 ];
 
@@ -257,10 +257,10 @@ const CURSOR_DOC_META = {
       lockedElements: '.doc-cover__logo',
     },
   },
-  'scope-of-work-led': {
-    title: 'Scope of work — LED',
-    master: 'LUCI Systems Design System/ui_kits/sales/scope-of-work-led.html',
-    clientFile: 'LUCI Systems Design System/ui_kits/sales/{client}-scope-of-work-led.html',
+  'proposal': {
+    title: 'Proposal',
+    master: 'LUCI Systems Design System/ui_kits/sales/proposal.html',
+    clientFile: 'LUCI Systems Design System/ui_kits/sales/{client}-proposal.html',
     editMode: {
       enabled: true,
       hint: 'Click highlighted text to edit cover, scope, specs, fee, estimates, terms, and signature. COB advantage + architecture boilerplate (page 3), spec schema labels, warranty grid, and gallery layout stay locked.',
@@ -326,8 +326,8 @@ function rewriteCustomizationHtml(html, templateId, fileName) {
   out = out.replace(/href="capabilities-document\.css[^"]*"/gi, 'href="/sales/capabilities-document.css"');
   out = out.replace(/href="brochure\.css[^"]*"/gi, 'href="/sales/brochure.css?v=3"');
   out = out.replace(/href="scope-of-work\.css[^"]*"/gi, 'href="/sales/scope-of-work.css?v=20"');
-  out = out.replace(/href="scope-of-work-led\.css[^"]*"/gi, 'href="/sales/scope-of-work-led.css?v=10"');
-  out = out.replace(/href="budgetary-estimate\.css[^"]*"/gi, 'href="/sales/budgetary-estimate.css?v=19"');
+  out = out.replace(/href="proposal\.css[^"]*"/gi, 'href="/sales/proposal.css?v=1"');
+  out = out.replace(/href="budgetary-estimate\.css[^"]*"/gi, 'href="/sales/budgetary-estimate.css?v=20"');
   out = out.replace(/href="sales-deck\.css[^"]*"/gi, 'href="/sales/sales-deck.css"');
   out = out.replace(/src="assets\//g, 'src="/sales/assets/');
   // Inline base64 logos bloat the file (~180KB) and slow Cursor remote indexing/chat.
@@ -360,13 +360,13 @@ function syncCustomizationBundles(copied) {
  *  Also writes studio-manifest.json mapping each template id -> source file's last-modified date,
  *  so the Customization Studio can show an accurate "Last updated" without manual bumps. */
 function syncStudioPreviews(copied) {
-  const studioPreviews = ['sales/capabilities-document.html', 'sales/sales-deck.html', 'sales/budgetary-estimate.html', 'sales/scope-of-work.html', 'sales/scope-of-work-led.html', 'guides/lg-device-setup-guide.html'];
+  const studioPreviews = ['sales/capabilities-document.html', 'sales/sales-deck.html', 'sales/budgetary-estimate.html', 'sales/scope-of-work.html', 'sales/proposal.html', 'guides/lg-device-setup-guide.html'];
   const STUDIO_ID = {
     'sales/capabilities-document.html': 'capabilities',
     'sales/sales-deck.html': 'sales-deck',
     'sales/budgetary-estimate.html': 'budget-estimate',
     'sales/scope-of-work.html': 'scope-of-work',
-    'sales/scope-of-work-led.html': 'scope-of-work-led',
+    'sales/proposal.html': 'proposal',
     'guides/lg-device-setup-guide.html': 'lg-setup',
   };
   const updated = {};

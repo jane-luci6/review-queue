@@ -14,7 +14,7 @@ When adding a new customization template **or** changing an existing template's 
 | 4 | `ui_kits/internal-portal/index.html` | `CURSOR_TEMPLATES` JS array — the cards on the **main portal landing** (`/internal-portal/`). This is the page Jane checks. **Do not skip it.** |
 | 5 | `ui_kits/internal-portal/customization/<template>/SKILL.md` | Per-template editable-vs-locked contract (page map, typography table, voice) |
 | 6 | `ui_kits/internal-portal/customization/<template>/AGENTS.md` | Per-template Cursor agent entry point |
-| 7 | `scripts/build-stakeholder-review.mjs` | Build pipeline — only if the template needs a CSS cache-buster rewrite or special path handling (check the existing `scope-of-work-led.css` rewrite as the pattern) |
+| 7 | `scripts/build-stakeholder-review.mjs` | Build pipeline — only if the template needs a CSS cache-buster rewrite or special path handling (check the existing `proposal.css` rewrite as the pattern) |
 
 **Registries 3 and 4 are separate files with separate arrays.** Updating only one means the card appears on one page and not the other. Always do both.
 

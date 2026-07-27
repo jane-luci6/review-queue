@@ -1,16 +1,16 @@
 ---
-name: luci-scope-of-work-led
+name: luci-proposal
 description: >-
-  Customize the LUCI Scope of Work — LED for a specific client LED wall project.
+  Customize the LUCI Proposal for a specific client LED wall project.
   Use when scoping a COB LED display installation: cover, COB technology overview,
   scope, coordination, per-pitch design specs, fee schedule, per-installation
   estimates, terms, and signature are editable; LUCI branding, COB advantage
   boilerplate, gallery layout, and spec schema stay locked.
 ---
 
-# Scope of work — LED · customization
+# Proposal · customization
 
-Post-survey scoping document for LED wall installations. **14 pages (US Letter)** — cover, contents, then five numbered sections: §1 Project overview (dark), §2 Built on COB (dark, spans the COB advantage + project gallery), §3 Scope of work (spans scope + coordination + per-pitch design specs), §4 Fee schedule (spans the milestones + one estimate page per LED installation), §5 Terms & warranty, then the agreement/signature page. Source master: `scope-of-work-led.html` in this folder (build copy from `ui_kits/sales/`).
+Post-survey proposal for LED wall installations. **14 pages (US Letter)** — cover, contents, then five numbered sections: §1 Project overview (dark), §2 Built on COB (dark, spans the COB advantage + project gallery), §3 Scope of work (spans scope + coordination + per-pitch design specs), §4 Fee schedule (spans the milestones + one estimate page per LED installation), §5 Terms & warranty, then the agreement/signature page. Source master: `proposal.html` in this folder (build copy from `ui_kits/sales/`).
 
 **Section numbering rule:** a section number appears only on the first page of that section (the band big-numeral + title). Continuation pages within the same section carry a `.led-subhead` instead — no repeated number. So §3's number lives on page 6 only; pages 7–9 use subheads ("Coordination & Training", "Design Specifications — <pitch>"). Same for §4 (number on p10; estimates on p11–12 are subheads).
 
@@ -32,12 +32,12 @@ Match LUCI's voice on every line you write or rewrite. Full contract: `../_brand
 
 ## Portal URL workflow (primary)
 
-**Preview URL:** `http://10.10.1.17:8081/internal-portal/customization/scope-of-work-led/scope-of-work-led.html`
+**Preview URL:** `http://10.10.1.17:8081/internal-portal/customization/proposal/proposal.html`
 
 When Mike pastes this URL into Cursor chat:
 
 1. Read this `SKILL.md` and `../_brand/SKILL.md` before any edits.
-2. Copy master from `LUCI Systems Design System/ui_kits/sales/scope-of-work-led.html` to `ui_kits/sales/<client>-scope-of-work-led.html`.
+2. Copy master from `LUCI Systems Design System/ui_kits/sales/proposal.html` to `ui_kits/sales/<client>-proposal.html`.
 3. Customize cover, scope, specs, fee, estimates, terms, and signature per this skill — preserve CSS classes.
 4. Do **not** edit the HTML file on the VM deploy folder (overwritten on deploy).
 
@@ -48,8 +48,8 @@ See also: `../CURSOR.md`, `AGENTS.md` in this folder.
 After customizing, **automatically open the rendered client HTML in Cursor's in-editor (Glass) browser — not the HTML source** — without being asked:
 
 1. Start a local server rooted at **`LUCI Systems Design System/`** (not `ui_kits/sales/`) so `../../assets/` relative paths resolve to the canonical assets folder: `python3 -m http.server 8771 --bind 127.0.0.1` from that root.
-2. Verify: `curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8771/ui_kits/sales/<client>-scope-of-work-led.html` → `200`.
-3. Open `http://127.0.0.1:8771/ui_kits/sales/<client>-scope-of-work-led.html` in Cursor's in-editor browser via the `cursor-app-control` MCP `open_resource` tool (URI = that URL). Do **not** use a `file://` URI — that opens the HTML source, not the rendered doc. Do **not** root the server in `ui_kits/sales/` — the cover logo and `../../assets/` paths will 404.
+2. Verify: `curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8771/ui_kits/sales/<client>-proposal.html` → `200`.
+3. Open `http://127.0.0.1:8771/ui_kits/sales/<client>-proposal.html` in Cursor's in-editor browser via the `cursor-app-control` MCP `open_resource` tool (URI = that URL). Do **not** use a `file://` URI — that opens the HTML source, not the rendered doc. Do **not** root the server in `ui_kits/sales/` — the cover logo and `../../assets/` paths will 404.
 
 Click highlighted editable text and type; save the file when done. User fallback if the pane doesn't appear: `Cmd+Shift+P` → "Simple Browser: Show" → paste the localhost URL.
 
@@ -61,7 +61,7 @@ After a site survey or discovery for an LED wall project (casino sportsbook, cen
 
 1. Open the **portal preview** (URL above) or copy that URL into Cursor chat.
 2. Provide: project title, client org, basis (survey/meeting notes), pixel pitch(s) featured, and one line-items set per LED installation.
-3. Save the **client version** in luci-design under `ui_kits/sales/<client>-scope-of-work-led.html` — not over the master.
+3. Save the **client version** in luci-design under `ui_kits/sales/<client>-proposal.html` — not over the master.
 4. Preview → Print/Save as PDF (US Letter).
 
 ---
@@ -107,7 +107,7 @@ Everything else on the cover with `doc-edit` / `contenteditable="true"` is edita
 
 | Element | Selector | What to change |
 |---------|----------|----------------|
-| Display headline | `.doc-cover__display` | "Scope of Work" + client short name in `<em>` |
+| Display headline | `.doc-cover__display` | "Proposal" + client short name in `<em>` |
 | Project title | `[data-studio="project-title"]` | Full project name line |
 | Prepared for | `[data-studio="prepared-for"]` | Client organization |
 | Basis | `[data-studio="basis"]` | Survey notes, meetings, source documents |

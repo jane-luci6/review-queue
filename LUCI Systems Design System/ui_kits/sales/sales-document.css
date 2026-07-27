@@ -303,8 +303,24 @@ body {
   display: block;
   max-height: 44px;
   max-width: 220px;
-  filter: brightness(0) invert(1);   /* normalize a client logo to white on navy */
+  /* No default logo filter. Light covers (the majority) place the logo on the
+     off-white sheet — a dark logo renders as-is, and a PNG's white background
+     blends into the page instead of reading as a box. Dark covers
+     (.doc-page--dark.doc-page--cover) use a white logo file directly (see
+     scope-of-work.html / proposal.html) and may set inline
+     filter:none. The brightness(0)invert(1) filter that lived here turned
+     opaque PNGs into a solid white box — removed per Jane. For a logo placed
+     on the navy hero band, use .logo-pos--band / --band-right (see the logo
+     placement prototype) which scopes the filter to that spot only. */
   opacity: 0.92;
+}
+
+/* Dark covers: keep the logo readable on navy. Prefer a white logo file; the
+   filter below normalizes a dark logo to white ONLY on dark covers, where the
+   background guarantees a light-on-dark result. Opaque-background PNGs still
+   show a box here — the SKILL requires transparent/white logos for dark covers. */
+.doc-page--dark.doc-page--cover .doc-cover__client {
+  filter: brightness(0) invert(1);
 }
 
 /* Cover display moment — Syncopate (one per bookend; see luci-dual-accent-system) */

@@ -36,7 +36,7 @@ If the workspace is **luci-design**, the same content lives locally under `ui_ki
 | `sales-deck` | Sales deck | `ui_kits/sales/<client>-sales-deck.html` |
 | `capabilities-document` | Capabilities | `ui_kits/sales/<client>-capabilities.html` |
 | `scope-of-work` | Scope of work | `ui_kits/sales/<client>-scope-of-work.html` |
-| `scope-of-work-led` | Scope of work — LED | `ui_kits/sales/<client>-scope-of-work-led.html` |
+| `proposal` | Proposal | `ui_kits/sales/<client>-proposal.html` |
 | `budgetary-estimate` | Budgetary estimate | `ui_kits/sales/<client>-budgetary-estimate.html` |
 
 Masters: `ui_kits/sales/<master>.html` (under `LUCI Systems Design System/`).
@@ -76,7 +76,7 @@ After customizing the client HTML, **automatically open the rendered doc in Curs
 | Sales deck | `http://10.10.1.17:8081/internal-portal/customization/sales-deck/sales-deck.html` |
 | Capabilities | `http://10.10.1.17:8081/internal-portal/customization/capabilities-document/capabilities-document.html` |
 | Scope of work | `http://10.10.1.17:8081/internal-portal/customization/scope-of-work/scope-of-work.html` |
-| Scope of work — LED | `http://10.10.1.17:8081/internal-portal/customization/scope-of-work-led/scope-of-work-led.html` |
+| Proposal | `http://10.10.1.17:8081/internal-portal/customization/proposal/proposal.html` |
 | Budgetary estimate | `http://10.10.1.17:8081/internal-portal/customization/budgetary-estimate/budgetary-estimate.html` |
 
 ---
