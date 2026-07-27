@@ -1,0 +1,560 @@
+/* ============================================================================
+   LUCI Scope of Work — LED · Track C overrides + LED-specific components
+   Sits on sales-document.css (spine) + scope-of-work.css (sow- components +
+   ghost-numeral light-page pattern). Prefix led- for LED-only pieces.
+   Light data pages inherit the SOW ghost-numeral pattern; cover/close + two
+   interior accent pages (COB advantage, gallery) are full-dark for visual
+   interest. Typography is CSS-class-driven — words change, sizes/colors don't.
+   ========================================================================== */
+
+/* ── Light canvas + circuit overlay for LED page classes ──────────────────── */
+/* Extend the SOW light-page rule to the LED data pages so they share the
+   ghost-numeral + right-side circuit texture with the scoping SOW. */
+.doc-page--led-overview,
+.doc-page--led-scope,
+.doc-page--led-coordination,
+.doc-page--led-specs,
+.doc-page--led-fee,
+.doc-page--led-estimate,
+.doc-page--led-terms {
+  background: var(--off-white);
+  isolation: isolate;
+}
+.doc-page--led-overview::before,
+.doc-page--led-scope::before,
+.doc-page--led-coordination::before,
+.doc-page--led-specs::before,
+.doc-page--led-fee::before,
+.doc-page--led-estimate::before,
+.doc-page--led-terms::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('../../assets/textures/sow-page-bg-baked.jpg');
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: 100% 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+.doc-page--led-overview .doc-foot,
+.doc-page--led-scope .doc-foot,
+.doc-page--led-coordination .doc-foot,
+.doc-page--led-specs .doc-foot,
+.doc-page--led-fee .doc-foot,
+.doc-page--led-estimate .doc-foot,
+.doc-page--led-terms .doc-foot {
+  margin-top: auto;
+  padding-top: 14px;
+}
+
+/* ── Dark interior accent pages (COB advantage, gallery) ─────────────────── */
+/* Full-dark sheets for glanceable marketing content — capture visual interest
+   between the light data pages. Mint kicker + gold accent on navy. */
+.doc-page--led-advantage,
+.doc-page--led-gallery {
+  background: var(--navy);
+  color: rgba(235, 245, 248, 0.86);
+  isolation: isolate;
+}
+.doc-page--led-advantage::before,
+.doc-page--led-gallery::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 4px; left: 0;
+  background-image: url('../../assets/textures/texture-circuit-header-mintgold.png');
+  background-repeat: repeat;
+  background-position: right center;
+  background-size: 640px auto;
+  -webkit-mask-image: linear-gradient(90deg, transparent 40%, rgba(0,0,0,0.45) 68%, #000 100%);
+          mask-image: linear-gradient(90deg, transparent 40%, rgba(0,0,0,0.45) 68%, #000 100%);
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+}
+.doc-page--led-advantage::after,
+.doc-page--led-gallery::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--mint);
+  z-index: 1;
+}
+.doc-page--led-advantage > *,
+.doc-page--led-gallery > * { position: relative; z-index: 2; }
+.doc-page--led-advantage .doc-foot,
+.doc-page--led-gallery .doc-foot {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid rgba(var(--mint-rgb), 0.18);
+  color: rgba(235, 245, 248, 0.6);
+}
+.doc-page--led-advantage .doc-foot__page,
+.doc-page--led-gallery .doc-foot__page { color: var(--mint); }
+
+/* ── Dark-page section header (mint kicker + off-white title, no ghost numeral) */
+.led-dark-head { margin: 0 0 22px; }
+.led-dark-head__kicker {
+  margin: 0 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mint);
+}
+.led-dark-head__kicker::before {
+  content: '';
+  width: 28px;
+  height: 2px;
+  background: var(--mint);
+  flex: none;
+}
+.led-dark-head__title {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: rgba(245, 248, 250, 0.96);
+  max-width: 28ch;
+}
+.led-dark-head__deck {
+  margin: 12px 0 0;
+  font-family: var(--font-recede);
+  font-size: 15px;
+  line-height: 1.55;
+  color: rgba(245, 248, 250, 0.72);
+  max-width: 52ch;
+}
+
+/* ── 1 · COB stat strip — 4-up metric row (pitch / angle / lifespan / IP) ──── */
+/* Light page. De-boxed: hairline-separated columns, no boxes. Big Space Grotesk
+   numeral (editable value) + small tracked label (locked schema). */
+.led-stat-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 22px;
+  border-top: 1px solid var(--rule-light);
+  border-bottom: 1px solid var(--rule-light);
+}
+.led-stat {
+  padding: 20px 22px 18px;
+  border-left: 1px solid var(--rule-light);
+}
+.led-stat:first-child { border-left: 0; }
+.led-stat__num {
+  font-family: var(--font);
+  font-variant-numeric: tabular-nums;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  color: var(--mint-dark);
+}
+.led-stat__label {
+  margin-top: 10px;
+  font-family: var(--font);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--navy-muted);
+  line-height: 1.3;
+}
+
+/* ── 2 · Advantage tile grid — 6 duotone soft-icons on dark navy tiles ─────── */
+/* Dark page. Gold-stroke icons on navy tiles (dual-accent: gold icon strokes on
+   navy, per luci-dual-accent-system). 3×2 grid. Locked boilerplate. */
+.led-advantage-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px 18px;
+}
+.led-advantage {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 14px;
+  align-items: start;
+  padding: 16px 16px 16px 0;
+}
+.led-advantage__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(var(--mint-rgb), 0.08);
+  box-shadow: inset 0 0 0 1px rgba(var(--mint-rgb), 0.22);
+  color: var(--gold);
+  flex: none;
+}
+.led-advantage__icon svg { width: 22px; height: 22px; display: block; }
+.led-advantage__name {
+  margin: 0 0 4px;
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: rgba(245, 248, 250, 0.96);
+  line-height: 1.2;
+}
+.led-advantage__body {
+  margin: 0;
+  font-family: var(--font-recede);
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: rgba(235, 245, 248, 0.7);
+}
+
+/* Dark-page stat row (NovaStar 4K / 60Hz / 16-bit / 99.99%) — mint numerals */
+.led-stat-strip--dark {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(var(--mint-rgb), 0.2);
+}
+.led-stat-strip--dark .led-stat {
+  border-left: 1px solid rgba(var(--mint-rgb), 0.18);
+  padding: 0 18px;
+}
+.led-stat-strip--dark .led-stat:first-child { border-left: 0; padding-left: 0; }
+.led-stat-strip--dark .led-stat__num { color: var(--mint); font-size: 26px; }
+.led-stat-strip--dark .led-stat__label { color: rgba(235, 245, 248, 0.6); }
+.led-arch-text {
+  margin: 18px 0 0;
+  font-family: var(--font-recede);
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(235, 245, 248, 0.78);
+  max-width: 64ch;
+}
+.led-arch-text strong { color: rgba(245, 248, 250, 0.96); font-weight: 700; }
+
+/* ── 3 · Project gallery — editable photo grid on dark ─────────────────────── */
+/* Dark page. Mike can swap each photo (data-studio on the img) and edit captions.
+   2×2 grid, hairline-separated, photos fill cells. Locked layout. */
+.led-gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 8px;
+}
+.led-gallery-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.led-gallery-cell__img {
+  display: block;
+  width: 100%;
+  height: 2.05in;
+  object-fit: cover;
+  border-radius: 2px;
+  filter: brightness(0.96);
+}
+.led-gallery-cell__cap {
+  margin: 0;
+  font-family: var(--font-recede);
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: rgba(235, 245, 248, 0.72);
+}
+.led-gallery-cell__cap strong {
+  font-family: var(--font);
+  font-weight: 700;
+  color: rgba(245, 248, 250, 0.96);
+}
+.led-gallery-note {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(var(--mint-rgb), 0.18);
+  font-family: var(--font-recede);
+  font-size: 12px;
+  line-height: 1.55;
+  font-style: italic;
+  color: rgba(235, 245, 248, 0.6);
+  max-width: 64ch;
+}
+
+/* ── 4 · Design spec table — de-boxed label/value hairline rows ────────────── */
+/* Light page. NOT a bordered <table> — definition-list rows with hairline
+   separators (per luci-visual-design: de-boxed lists, not gridlines). Labels
+   are the locked schema; values are editable per panel model. Two-column flow
+   so 14 specs fit one sheet without scrolling. */
+.led-spec-table {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 40px;
+  margin-top: 8px;
+}
+.led-spec-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 16px;
+  align-items: baseline;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--rule-light);
+}
+.led-spec-row__label {
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--navy-muted);
+}
+.led-spec-row__value {
+  font-family: var(--font);
+  font-variant-numeric: tabular-nums;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-strong);
+}
+.led-spec-note {
+  margin-top: 16px;
+  font-family: var(--font-recede);
+  font-size: 12.5px;
+  line-height: 1.55;
+  font-style: italic;
+  color: var(--navy-muted);
+  max-width: 64ch;
+}
+
+/* ── 5 · Fee schedule — 3 payment milestone columns ────────────────────────── */
+/* Light page. Three hairline-separated milestone columns. Percent + label +
+   due-when. Editable percentages/labels; locked structure + boilerplate. */
+.led-fee-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 18px;
+  border-top: 1px solid var(--rule-light);
+  border-bottom: 1px solid var(--rule-light);
+}
+.led-fee-mile {
+  padding: 22px 22px 20px;
+  border-left: 1px solid var(--rule-light);
+}
+.led-fee-mile:first-child { border-left: 0; }
+.led-fee-mile__pct {
+  font-family: var(--font);
+  font-variant-numeric: tabular-nums;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--mint-dark);
+}
+.led-fee-mile__label {
+  margin-top: 10px;
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink-strong);
+  line-height: 1.25;
+}
+.led-fee-mile__due {
+  margin-top: 6px;
+  font-family: var(--font-recede);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.led-fee-notes {
+  margin-top: 18px;
+  font-family: var(--font-recede);
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--ink);
+  max-width: 66ch;
+}
+.led-fee-notes p + p { margin-top: 10px; }
+.led-fee-notes strong { color: var(--ink-strong); font-weight: 700; }
+
+/* ── 6 · Estimate line-item table — one page per LED installation ──────────── */
+/* Light page. Reuses the budgetary-estimate row pattern (be-price) retuned with
+   led- prefix so the LED SOW stays self-contained. Same column grid, same
+   hairline rows, same tabular numerals — consistent with the budgetary estimate
+   so Mike sees one estimate language across documents. */
+.led-estimate-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 28px;
+  margin: 0 0 14px;
+  font-family: var(--font);
+  font-size: 12px;
+  color: var(--navy-muted);
+}
+.led-estimate-meta strong { color: var(--ink-strong); font-weight: 700; }
+.led-price { margin-top: 8px; }
+.led-price__head {
+  display: grid;
+  grid-template-columns: 0.7fr 1.2fr 2.3fr 0.45fr 0.9fr 1fr;
+  gap: 14px;
+  padding: 0 0 10px;
+  border-bottom: 1px solid var(--rule-light);
+}
+.led-price__head span {
+  font-family: var(--display);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--navy-muted);
+}
+.led-price__head span:nth-child(4),
+.led-price__head span:nth-child(5),
+.led-price__head span:nth-child(6) { text-align: right; }
+.led-price-row {
+  display: grid;
+  grid-template-columns: 0.7fr 1.2fr 2.3fr 0.45fr 0.9fr 1fr;
+  gap: 14px;
+  align-items: baseline;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule-light);
+}
+.led-price-row:last-child { border-bottom: none; }
+.led-price__mfg { font-family: var(--font); font-size: 12px; font-weight: 600; color: var(--ink-strong); }
+.led-price__item { font-family: var(--font); font-size: 13px; font-weight: 600; color: var(--ink-strong); }
+.led-price__desc { font-family: var(--font-recede); font-size: 12.5px; line-height: 1.5; color: var(--ink); }
+.led-price__num {
+  text-align: right;
+  font-family: var(--font);
+  font-variant-numeric: tabular-nums;
+  font-size: 12.5px;
+  color: var(--ink-strong);
+}
+.led-price__subtotal { font-weight: 700; }
+.led-price-total {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: baseline;
+  margin-top: 16px;
+  padding: 14px 0;
+  border-top: 2px solid var(--ink-strong);
+  border-bottom: 2px solid var(--ink-strong);
+  max-width: 48ch;
+  margin-left: auto;
+}
+.led-price-total__label {
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink-strong);
+}
+.led-price-total__value {
+  text-align: right;
+  font-family: var(--font);
+  font-variant-numeric: tabular-nums;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--mint-dark);
+  letter-spacing: -0.02em;
+}
+.led-price-footnote {
+  margin-top: 14px;
+  font-family: var(--font-recede);
+  font-size: 11.5px;
+  line-height: 1.55;
+  font-style: italic;
+  color: var(--navy-muted);
+  max-width: 64ch;
+}
+
+/* ── 7 · Terms & warranty — 4-column grid on light ────────────────────────── */
+/* Light page. Four hairline-separated columns: covered / void-if / service /
+   not-covered. Locked boilerplate lists; warranty duration editable. */
+.led-warranty-duration {
+  margin-top: 14px;
+  padding: 12px 18px;
+  background: linear-gradient(155deg, rgba(230,245,239,0.45) 0%, rgba(245,248,250,0.9) 100%);
+  border-left: 3px solid var(--mint-dark);
+  font-family: var(--font-recede);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ink);
+  max-width: 64ch;
+}
+.led-warranty-duration strong { color: var(--ink-strong); font-weight: 700; }
+.led-terms-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0 24px;
+  margin-top: 22px;
+}
+.led-terms-col { min-width: 0; }
+.led-terms-col__head {
+  margin: 0 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--rule-light);
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+}
+.led-terms-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.led-terms-col li {
+  position: relative;
+  padding: 6px 0 6px 16px;
+  font-family: var(--font-recede);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.led-terms-col li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--mint-dark);
+}
+.led-terms-extended {
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 1px solid var(--rule-light);
+  font-family: var(--font-recede);
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--ink);
+  max-width: 66ch;
+}
+.led-terms-extended strong { color: var(--ink-strong); font-weight: 700; }
+
+/* ── Print color-adjust for dark/filled LED surfaces ────────────────────────── */
+@media print {
+  .doc-page--led-advantage, .doc-page--led-gallery,
+  .doc-page--led-advantage::before, .doc-page--led-gallery::before,
+  .doc-page--led-advantage::after, .doc-page--led-gallery::after,
+  .led-advantage__icon, .led-stat-strip--dark,
+  .led-warranty-duration, .led-price-total,
+  .doc-page--led-overview::before, .doc-page--led-scope::before,
+  .doc-page--led-coordination::before, .doc-page--led-specs::before,
+  .doc-page--led-fee::before, .doc-page--led-estimate::before,
+  .doc-page--led-terms::before {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .doc-edit { background: transparent !important; box-shadow: none !important; caret-color: auto; }
+}
