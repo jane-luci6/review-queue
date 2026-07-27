@@ -1,0 +1,36 @@
+# Internal Portal — template registry sync
+
+The Internal Marketing Portal lists customization templates in **multiple registries that must stay in sync**. Missing one is how a template ships its skills/manifest/build but never appears as a card on the portal (happened with the LED SOW — manifest + SKILL + build were wired, but the landing-page card array wasn't, so Jane saw nothing new).
+
+## The sync set — update ALL of these when adding or changing a template
+
+When adding a new customization template **or** changing an existing template's `title` / `description` / `path` / `status` / `folder` / `clientSuffix` / `masterFile`, update every entry below in the same change:
+
+| # | File | What lives here |
+|---|------|-----------------|
+| 1 | `ui_kits/internal-portal/customization/cursor-manifest.json` | Machine manifest — one block per template (`previewPath`, `skill`, `agents`, `master`, `clientFile`, `status`) |
+| 2 | `ui_kits/internal-portal/customization/CURSOR.md` | URL routing table + the portal-URL list Mike pastes into Cursor |
+| 3 | `ui_kits/internal-portal/customization/index.html` | `TEMPLATES` JS array — the cards on the **customization sub-page** (`/internal-portal/customization/`) |
+| 4 | `ui_kits/internal-portal/index.html` | `CURSOR_TEMPLATES` JS array — the cards on the **main portal landing** (`/internal-portal/`). This is the page Jane checks. **Do not skip it.** |
+| 5 | `ui_kits/internal-portal/customization/<template>/SKILL.md` | Per-template editable-vs-locked contract (page map, typography table, voice) |
+| 6 | `ui_kits/internal-portal/customization/<template>/AGENTS.md` | Per-template Cursor agent entry point |
+| 7 | `scripts/build-stakeholder-review.mjs` | Build pipeline — only if the template needs a CSS cache-buster rewrite or special path handling (check the existing `scope-of-work-led.css` rewrite as the pattern) |
+
+**Registries 3 and 4 are separate files with separate arrays.** Updating only one means the card appears on one page and not the other. Always do both.
+
+## Optional / separate build
+
+- `ui_kits/internal-portal/index.html` also has a `customDocs` array — the **guided customization wizard** with per-section form fields, iframe selectors, and inject mappings. This is a larger per-template build and is **not required** for the template to work via the standard "copy URL → paste into Cursor" flow. Skip it unless Jane asks for the guided wizard. The LED SOW does not have it; the other four do.
+
+## After any registry change
+
+1. `npm run build:review` (rebuilds the `ui_kits/review/` mirror, including the customization sub-page + landing).
+2. `npm run deploy:portal` (rsyncs to `user-007@10.10.1.17` → `:8081`). See `luci-internal-portal-deploy.mdc`.
+3. **Verify the card is live** before telling Jane it's done:
+   - `curl -s "http://10.10.1.17:8081/internal-portal/index.html" | rg -c "<template-id-or-title>"` → expect `≥1`.
+   - `curl -s -o /dev/null -w "%{http_code}" "http://10.10.1.17:8081/internal-portal/customization/<template>/<template>.html"` → expect `200`.
+4. Tell Jane to **hard-refresh** (`Cmd+Shift+R`) — nginx/browser caching will serve the old landing page otherwise.
+
+## When in doubt
+
+If Jane says "I don't see it on the portal," the cause is almost always a missing entry in registry #4 (`index.html` → `CURSOR_TEMPLATES`). Check that first, then #3. The manifest and skills being correct is not sufficient — the landing cards are hardcoded JS arrays, not derived from the manifest.
