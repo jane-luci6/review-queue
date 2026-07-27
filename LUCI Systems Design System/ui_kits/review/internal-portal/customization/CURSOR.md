@@ -36,21 +36,39 @@ If the workspace is **luci-design**, the same content lives locally under `ui_ki
 | `sales-deck` | Sales deck | `ui_kits/sales/<client>-sales-deck.html` |
 | `capabilities-document` | Capabilities | `ui_kits/sales/<client>-capabilities.html` |
 | `scope-of-work` | Scope of work | `ui_kits/sales/<client>-scope-of-work.html` |
-| `proposal` | Proposal | `ui_kits/sales/<client>-proposal.html` |
+| `proposal` | **Proposal - LED** | `ui_kits/sales/<client>-proposal-led.html` (legacy: `<client>-proposal.html`) |
 | `budgetary-estimate` | Budgetary estimate | `ui_kits/sales/<client>-budgetary-estimate.html` |
 
 Masters: `ui_kits/sales/<master>.html` (under `LUCI Systems Design System/`).
+
+**Coming (Phase 3–4):** `proposal-luci-retrofit` → **Proposal - LUCI Retrofit**; `proposal-upgrade` → **Proposal - Upgrade**. Until those portal cards exist, do **not** convert a Budgetary Estimate into a Proposal by rewriting it from scratch — wait for the dedicated template or ask Jane.
+
+---
+
+## Efficient customization (mandatory)
+
+Read `_brand/SKILL.md` → **Efficient customization** before any edit. Summary:
+
+1. **Populate-in-place** — never rebuild the doc; never invent fine-print.
+2. **One project folder** with `ui_kits/sales/` + `assets/` mirrored so relative paths resolve; serve from the **project root**, not `ui_kits/sales/`.
+3. Edit by `[data-studio]` / listed selectors only — do not rewrite whole sections.
+4. Same working HTML forever — do not treat `*-edited.html` downloads as the source of truth; write typed preview edits back into that same file.
+5. No accessibility snapshots; mandatory page-overflow fit check after content edits.
+6. Do not link extra CSS the master does not already use (causes missing circuit texture / stripped header bands).
+
+Also read: `.cursor/rules/luci-doc-customization.mdc`
 
 ---
 
 ## Agent checklist
 
 1. Identify template from pasted URL (or `#luci-cursor-context` on the page).
-2. Fetch/read template `SKILL.md` + `_brand/SKILL.md`.
+2. Fetch/read template `SKILL.md` + `_brand/SKILL.md` + this file’s **Efficient customization** section.
 3. Never edit the portal deploy copy on the VM — it refreshes on deploy.
-4. Copy master → client-named file; customize per skill. **Keep `contenteditable` on editable regions. Never edit locked pages/regions — including color or CSS — without confirming first** (pre-edit gate in `.cursor/rules/luci-doc-customization.mdc`).
-5. **Automatically open the rendered client HTML in Cursor's in-editor browser** (not the HTML source) — see "Open the rendered preview in the editor" below. Mike clicks editable text and types in that preview.
-6. Export PDF on request.
+4. Copy master → the **one** client working file; customize per skill. Keep `contenteditable` / `data-studio`. Never edit locked pages/regions — including color or CSS — without confirming first.
+5. **Automatically open the rendered client HTML** in Cursor’s in-editor browser (not the HTML source).
+6. Before any further agent pass after Mike types in preview: write those edits back into the **same** working file.
+7. Export PDF on request.
 
 ---
 
@@ -58,14 +76,14 @@ Masters: `ui_kits/sales/<master>.html` (under `LUCI Systems Design System/`).
 
 After customizing the client HTML, **automatically open the rendered doc in Cursor's in-editor (Glass) browser — not the HTML source.** Do this as the final step of every customization, without being asked.
 
-1. From the client file's folder (`LUCI Systems Design System/ui_kits/sales/`), start a local static server in the background: `python3 -m http.server 8771 --bind 127.0.0.1` (if 8771 is busy, increment until free; reuse it if it's already serving the right file).
-2. Verify it serves the file: `curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:<port>/<client-file>.html` → `200`.
-3. Open the rendered URL in Cursor's in-editor (Glass) browser via the `cursor-app-control` MCP `open_resource` tool, URI `http://127.0.0.1:<port>/<client-file>.html`. This renders the doc with all CSS, fonts, diagrams, and the client logo inside Cursor; the `contenteditable` regions are click-to-edit there.
-4. Tell the user it's live in the editor and click-to-edit. Leave the server running while they review; stop it when they're done or before PDF export.
+1. Start a local static server rooted at the **project root that contains both `ui_kits/` and `assets/`** (in luci-design: `LUCI Systems Design System/`; on Mike’s machine: the per-job folder). Example: `python3 -m http.server 8771 --bind 127.0.0.1`. **Never** root at `ui_kits/sales/` — logos and circuit textures 404.
+2. Verify: `curl …/ui_kits/sales/<client-file>.html` → `200`, and `…/assets/textures/texture-circuit-header-mintgold.png` → `200`.
+3. Open `http://127.0.0.1:<port>/ui_kits/sales/<client-file>.html` via `cursor-app-control` `open_resource`. Do **not** use a `file://` URI.
+4. Tell the user it's live and click-to-edit. Leave the server running while they review.
 
-**Do not** open the client HTML with a `file://` URI — `open_resource` opens that as a text file (HTML source), not a rendered preview. The `http://127.0.0.1:<port>/…` URL is what renders in Cursor.
+**Typed edits:** write preview edits back into the same working HTML before any further agent change. Do not treat “Copy / Download HTML” (`*-edited.html`) as the source of truth.
 
-**User fallback** if the in-editor pane doesn't appear: `Cmd+Shift+P` → "Simple Browser: Show" → paste the localhost URL.
+**User fallback:** `Cmd+Shift+P` → "Simple Browser: Show" → paste the localhost URL.
 
 ---
 
@@ -76,7 +94,7 @@ After customizing the client HTML, **automatically open the rendered doc in Curs
 | Sales deck | `http://10.10.1.17:8081/internal-portal/customization/sales-deck/sales-deck.html` |
 | Capabilities | `http://10.10.1.17:8081/internal-portal/customization/capabilities-document/capabilities-document.html` |
 | Scope of work | `http://10.10.1.17:8081/internal-portal/customization/scope-of-work/scope-of-work.html` |
-| Proposal | `http://10.10.1.17:8081/internal-portal/customization/proposal/proposal.html` |
+| Proposal - LED | `http://10.10.1.17:8081/internal-portal/customization/proposal/proposal.html` |
 | Budgetary estimate | `http://10.10.1.17:8081/internal-portal/customization/budgetary-estimate/budgetary-estimate.html` |
 
 ---

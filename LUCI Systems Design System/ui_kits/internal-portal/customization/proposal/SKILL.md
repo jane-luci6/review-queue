@@ -14,7 +14,7 @@ Post-survey proposal for LED wall installations. **14 pages (US Letter)** — co
 
 **Section numbering rule:** a section number appears only on the first page of that section (the band big-numeral + title). Continuation pages within the same section carry a `.led-subhead` instead — no repeated number. So §3's number lives on page 6 only; pages 7–9 use subheads ("Coordination & Training", "Design Specifications — <pitch>"). Same for §4 (number on p10; estimates on p11–12 are subheads).
 
-Also read: `../_brand/SKILL.md`
+Also read: `../_brand/SKILL.md` — especially **Efficient customization (read this first)**. This is a populate-in-place job; never rebuild.
 
 ## Voice
 

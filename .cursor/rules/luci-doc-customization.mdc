@@ -25,9 +25,21 @@ Mike pastes a portal preview URL into Cursor chat. **No specific folder needs to
 | `sales-deck` | `sales-deck` |
 | `capabilities-document` | `capabilities-document` |
 | `scope-of-work` | `scope-of-work` |
+| `proposal` | `proposal` (portal card: **Proposal - LED**) |
 | `budgetary-estimate` | `budgetary-estimate` |
 
 Portal base: `http://10.10.1.17:8081/internal-portal/customization/`
+
+**Coming:** Proposal - LUCI Retrofit · Proposal - Upgrade — dedicated templates. Do not invent them by rewriting a Budgetary Estimate from scratch.
+
+## Efficient customization (mandatory — read `_brand/SKILL.md` first)
+
+- **Populate-in-place.** Never rebuild the document. Never re-emit whole `<section>`s to change a value.
+- **One project folder** per client job; mirror `ui_kits/sales/` + `assets/` so relative paths work. Serve from the **project root** (the folder that contains both), never from `ui_kits/sales/`.
+- Edit by `[data-studio]` / skill selectors only. Do not invent fine-print or “Addressed to.”
+- **Same working file forever.** Typed preview edits must be written back to that file before the next agent pass. `*-edited.html` downloads are artifacts, not the source of truth.
+- No accessibility snapshots. Mandatory overflow fit-check after content edits (see `_brand/SKILL.md`).
+- Do not link CSS the master does not already link (strips header bands / circuit texture).
 
 ## Click-to-edit in preview
 
@@ -35,7 +47,7 @@ Client HTML keeps `contenteditable="true"` on editable regions (`.doc-edit`, `.d
 
 - **Preserve** `contenteditable`, `data-studio`, `doc-edit`, and `deck-edit` markers when customizing — do not strip them.
 - **Do not** edit locked pages (per template `SKILL.md`).
-- Save the HTML file when Mike is done editing in preview (or when he asks).
+- When Mike types in the preview, **write those edits into the same working HTML file** before any further agent change. Do not rely on Copy/Download HTML as the save mechanism.
 
 ## Locked pages are locked — no exceptions without confirmation
 
@@ -58,22 +70,24 @@ A user request to change a locked page is **not** an override by itself — it i
 
 After customizing the client HTML, **automatically open the rendered doc in Cursor's in-editor (Glass) browser — not the HTML source.** Do this as the final step of every customization, without being asked.
 
-1. From the client file's folder (`LUCI Systems Design System/ui_kits/sales/`), start a local static server in the background: `python3 -m http.server 8771 --bind 127.0.0.1` (if 8771 is busy, increment until free; reuse it if it's already serving the right file).
-2. Verify it serves the file: `curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:<port>/<client-file>.html` → `200`.
-3. Open the rendered URL in Cursor's in-editor (Glass) browser via the `cursor-app-control` MCP `open_resource` tool, URI `http://127.0.0.1:<port>/<client-file>.html`. This renders the doc with all CSS, fonts, diagrams, and the client logo inside Cursor; the `contenteditable` regions are click-to-edit there.
-4. Tell the user it's live in the editor and click-to-edit. Leave the server running while they review; stop it when they're done or before PDF export.
+1. Start a local static server rooted at the **project root that contains both `ui_kits/` and `assets/`** (`LUCI Systems Design System/` in luci-design; Mike’s per-job folder on his machine). Example: `python3 -m http.server 8771 --bind 127.0.0.1`. **Never** root at `ui_kits/sales/` — logos and circuit textures 404.
+2. Verify the HTML and a texture both return 200.
+3. Open `http://127.0.0.1:<port>/ui_kits/sales/<client-file>.html` via `cursor-app-control` `open_resource`. Do **not** use a `file://` URI.
+4. Tell the user it's live and click-to-edit. Leave the server running while they review; stop it when they're done or before PDF export.
 
-**Do not** open the client HTML with a `file://` URI — `open_resource` opens that as a text file (HTML source), not a rendered preview. The `http://127.0.0.1:<port>/…` URL is what renders in Cursor.
+**Do not** open the client HTML with a `file://` URI — `open_resource` opens that as a text file (HTML source), not a rendered preview.
 
 **User fallback** if the in-editor pane doesn't appear: `Cmd+Shift+P` → "Simple Browser: Show" → paste the localhost URL.
 
 ## Where to save client work
 
-- `LUCI Systems Design System/ui_kits/sales/<client>-<doc>.html`
+- **Inside luci-design:** `LUCI Systems Design System/ui_kits/sales/<client>-<doc>.html`
+- **On Mike’s machine:** one dedicated project folder per job (see `_brand/SKILL.md` → Efficient customization). Never spawn a second folder or treat Downloads/`*-edited.html` as the working file.
 - Never save client work to the VM deploy folder
 
 ## Agent behavior
 
 - Follow editable vs locked regions in template `SKILL.md` exactly — run the pre-edit gate ("Locked pages are locked" above) before any edit; never edit a locked page without confirming first.
+- Follow **Efficient customization** in `_brand/SKILL.md` — populate-in-place, one folder, selector edits, fit-check.
 - After customization, automatically open the rendered client HTML in Cursor's in-editor browser (procedure above) for click-to-edit fine-tuning.
 - PDF: `scripts/render-pdf.sh` when requested.

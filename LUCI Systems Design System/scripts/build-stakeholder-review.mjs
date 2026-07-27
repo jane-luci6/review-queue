@@ -258,8 +258,7 @@ const CURSOR_DOC_META = {
     },
   },
   'proposal': {
-    title: 'Proposal',
-    master: 'LUCI Systems Design System/ui_kits/sales/proposal.html',
+    title: 'Proposal - LED',
     clientFile: 'LUCI Systems Design System/ui_kits/sales/{client}-proposal.html',
     editMode: {
       enabled: true,

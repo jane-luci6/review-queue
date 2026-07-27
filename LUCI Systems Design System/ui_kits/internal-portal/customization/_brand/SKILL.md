@@ -10,6 +10,92 @@ description: >-
 
 Shared rules for all LUCI sales document customization. Read the template-specific `SKILL.md` first for editable vs locked pages; this file governs **how** edits look and read.
 
+---
+
+## Efficient customization (read this first)
+
+This is a **populate-in-place** job, not a rebuild. Never regenerate the document from scratch. Locked regions must come through **byte-identical**. The master template already has the layout, CSS, textures, fonts, and locked copy — your job is to stamp client values into the existing file.
+
+Burning millions of tokens on discovery, rebuilds, accessibility snapshots, or rewriting whole `<section>`s is a failure mode. Parse the request → touch only what changed → verify.
+
+### 1. One project folder — never spawn copies
+
+Each client document lives in **one** dedicated folder for the life of that job. All skills, CSS, fonts, logos, textures, and the HTML stay there. Do **not** create a second folder, a `-edited.html` sibling that becomes the new source of truth, or a parallel “build output” path.
+
+**When Mike names a folder** (e.g. `IP Biloxi Proposal`):
+
+```
+<project>/                          ← e.g. Desktop/LUCI Docs/IP Biloxi Proposal/
+  ui_kits/sales/
+    <client>-<doc>.html             ← THE working file (only one)
+    sales-document.css
+    <template>.css                  ← only the CSS the master already links
+  ui_kits/internal-portal/customization/
+    luci-doc-edit.css
+    luci-doc-edit.js
+    <template>/SKILL.md             ← copy from portal/master skill
+    _brand/SKILL.md
+  assets/fonts/                     luci-brand-fonts.css
+  assets/logos/                     luci-full-white.png (+ client logo)
+  assets/textures/                  ONLY files the master CSS/HTML references
+  inputs/                           spreadsheet, SOW, logo uploads (optional)
+```
+
+Mirror the portal’s relative paths (`../../assets/…`, sibling CSS). **Serve with `<project>/` as the server root** — never root the server at `ui_kits/sales/` or textures/logos 404 and the circuit pattern “doesn’t load.”
+
+If this tree does not exist yet: create it and fetch the exact master HTML + linked CSS + referenced assets from the portal (or luci-design) in **one batch**. Do not discover assets by trial and error. Do **not** pull extra stylesheets the master does not already link (e.g. do not add `scope-of-work.css` into a budgetary/proposal client — it overrides `.doc-page-band` and strips navy headers + circuit texture).
+
+### 2. Edit by selector — never by rewrite
+
+- Locate variable fields by `[data-studio="…"]` (or the template skill’s listed selectors) and replace the **text node / attribute only**.
+- Do **not** re-emit a whole `<section>` to change values inside it.
+- Do **not** invent fine-print, freight/travel disclaimers, “Addressed to” labels, or extra legal language that is not in the master or Mike’s source files.
+- Do **not** edit shared stylesheets. Client-only layout overrides go in a commented `<style>` block in the client HTML `<head>`, scoped to a page class — and only after confirming a locked-region override with the user.
+
+### 3. Same file forever — typed edits + agent edits
+
+- The working file is `<client>-<doc>.html` in that project folder. Every agent pass edits **that same path**.
+- Browser “Copy updated HTML” / “Download HTML” produce a **download artifact** (`*-edited.html`). That is **not** the source of truth. If Mike typed in the preview, the agent must **write the live DOM (or the copied HTML) back into the same working file** before any further prompt — otherwise typed edits are lost and Cursor works from a stale disk copy.
+- Never treat a Downloads/`*-edited.html` file as the new master.
+
+### 4. Preview and verify — no accessibility snapshots
+
+Browser accessibility snapshots return the entire document tree and waste tokens. Use only:
+
+- `browser_take_screenshot` for visual checks
+- CDP `Runtime.evaluate` for measurement / fit checks
+
+Pages are fixed US Letter (~11in) with `overflow: hidden` — overflow **clips silently** in print. A fit check is **mandatory** after any content edit:
+
+```js
+(() => [...document.querySelectorAll('.doc-page')].map((p,i) => {
+  const s = {h:p.style.height, m:p.style.minHeight,
+             o:p.style.overflow, j:p.style.justifyContent};
+  Object.assign(p.style, {height:'auto', minHeight:'0',
+                          overflow:'visible', justifyContent:'flex-start'});
+  const nat = p.getBoundingClientRect().height;
+  Object.assign(p.style, s);
+  return {page: i+1, over: Math.round(nat - 1056)};
+}).filter(r => r.over > 0))()
+```
+
+Anything with `over > 0` is clipped. **Trim copy or split to a new `.doc-page`** — do not change page height. Do not let Mike’s extra rows of typed text push a page past letter size unnoticed.
+
+### 5. Pricing must be verified, not eyeballed
+
+After any pricing / qty / rate edit, reconcile totals. Known trap: a grand total can be a live formula while milestone cells stay hardcoded and drift. Reconcile milestones against the verified total. Prefer a small verify script when one ships with the template; otherwise compute and state the check in your summary.
+
+### 6. Logo + pattern (do not re-break these)
+
+- Client logo: PNG/SVG with **transparent** background. Never opaque white-backed PNGs on dark bands (renders as a white box). If no logo is provided, **ask Mike** or fetch a clean official logo — do not leave a placeholder that invents a white box.
+- Circuit / header textures must live under this project’s `assets/textures/` at the paths the CSS already uses. Missing file or wrong server root = “pattern didn’t load.”
+
+### 7. Footer matches title
+
+When the document title / cover kicker changes (e.g. Budgetary → Proposal, or a client project title), update **every** `.doc-foot` / running footer to match. Footers are not optional leftovers.
+
+---
+
 ## Typography (non-negotiable)
 
 | Tier | Font | Use for |
