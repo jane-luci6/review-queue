@@ -1,0 +1,31 @@
+---
+description: >-
+  FAG hub only — "Pick your team." is a lead-in sentence under the picker
+  heading, not a reusable section subhead. Do not apply to other assets.
+globs: "**/field-activation-guide*.html"
+alwaysApply: false
+---
+
+# FAG hub — "Pick your team." lead-in (asset-specific)
+
+**Scope: Field Activation Guide hub only.** This is not a house-wide section-subheader pattern.
+
+## What it is
+
+On the FAG hub picker, under the heading "Start using LUCI differently by Monday.", the line **"Pick your team."** is a **lead-in sentence** that invites the reader to choose a team card. It is not an H3 / section subhead.
+
+Reference: `ui_kits/sales/field-activation-guide-hub.html` — `.fag-pick__subhead`
+
+Treatment (local to this asset):
+- `font-family: var(--font-body)` (Inter)
+- `font-size: clamp(16px, 1.3vw, 18px)`
+- `line-height: 1.5`
+- `color: var(--accent-light)` on light
+
+## What it is not
+
+- Not a default for section subheads / H3s on sales documents, the website, decks, or any other asset
+- Not a replacement for kickers site-wide
+- Not a pattern to copy when Jane asks for "standard" subheaders elsewhere
+
+If another asset needs a similar lead-in sentence, ask Jane first — do not pull this treatment across by default.

@@ -1,0 +1,32 @@
+---
+description: >-
+  Before marking a rule alwaysApply or claiming a pattern is house-wide,
+  check with Jane which assets it applies to. Asset-specific treatments
+  stay scoped (globs), never promoted silently.
+alwaysApply: true
+---
+
+# LUCI rule scope — check with Jane before cross-asset
+
+A treatment that works on one asset is not automatically a house rule. Agents have over-generalized before (e.g. promoting the FAG "Pick your team." lead-in to a global subhead pattern). That stops here.
+
+## Before creating or editing a `.cursor/rules/` file
+
+1. **Ask Jane** whether the guidance is:
+   - **Asset-specific** — one document / page / family (use `globs`, `alwaysApply: false`)
+   - **Cross-asset / house-wide** — every (or most) LUCI surfaces (only then `alwaysApply: true`)
+2. If she says asset-specific, name the assets in the rule and set `globs` to match. Do not leave it always-on "just in case."
+3. If she says cross-asset, confirm the list of surfaces it covers (website, sales docs, portal, social, email, etc.) and write that list into the rule.
+4. Never silently flip `alwaysApply: false` → `true`, or broaden globs, without asking.
+
+## When capturing a preference mid-conversation
+
+- A one-off design choice on a single page ("make this line mint Inter") is **not** a rule until Jane says to save it.
+- If she says "make a rule" / "remember this," still ask: **which assets?** before writing `alwaysApply: true`.
+- Prefer a narrow, glob-scoped rule over a broad always-on rule when unsure — then ask.
+
+## Don't
+
+- Don't infer house-wide scope from a single reference implementation.
+- Don't copy an asset-local class treatment into other assets because a rule file said "default."
+- Don't keep a wrong always-on rule "for now" — fix the scope as soon as Jane clarifies.
