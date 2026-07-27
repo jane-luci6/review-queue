@@ -45,9 +45,9 @@ See also: `../CURSOR.md`, `AGENTS.md` in this folder.
 
 After customizing, **automatically open the rendered client HTML in Cursor's in-editor (Glass) browser — not the HTML source** — without being asked:
 
-1. From `LUCI Systems Design System/ui_kits/sales/`, start a local server in the background: `python3 -m http.server 8771 --bind 127.0.0.1` (increment the port if busy).
-2. Verify: `curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8771/<client>-scope-of-work-led.html` → `200`.
-3. Open `http://127.0.0.1:8771/<client>-scope-of-work-led.html` in Cursor's in-editor browser via the `cursor-app-control` MCP `open_resource` tool (URI = that URL). Do **not** use a `file://` URI — that opens the HTML source, not the rendered doc.
+1. Start a local server rooted at **`LUCI Systems Design System/`** (not `ui_kits/sales/`) so `../../assets/` relative paths resolve to the canonical assets folder: `python3 -m http.server 8771 --bind 127.0.0.1` from that root.
+2. Verify: `curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8771/ui_kits/sales/<client>-scope-of-work-led.html` → `200`.
+3. Open `http://127.0.0.1:8771/ui_kits/sales/<client>-scope-of-work-led.html` in Cursor's in-editor browser via the `cursor-app-control` MCP `open_resource` tool (URI = that URL). Do **not** use a `file://` URI — that opens the HTML source, not the rendered doc. Do **not** root the server in `ui_kits/sales/` — the cover logo and `../../assets/` paths will 404.
 
 Click highlighted editable text and type; save the file when done. User fallback if the pane doesn't appear: `Cmd+Shift+P` → "Simple Browser: Show" → paste the localhost URL.
 
