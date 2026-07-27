@@ -79,7 +79,7 @@ After a site survey or discovery for an LED wall project (casino sportsbook, cen
 | **7** | §3 Scope of work — Coordination & training (cont.) | Light | **EDITABLE** (client obligations, punch-list line); **LOCKED** PM/training boilerplate |
 | **8** | §3 Scope of work — Design specifications, pitch 1 (cont.) | Light | **EDITABLE** (all spec values + pitch in subhead); **LOCKED** spec row labels |
 | **9** | §3 Scope of work — Design specifications, pitch 2 (cont.) | Light | **EDITABLE** (all spec values + pitch in subhead); **LOCKED** spec row labels |
-| **10** | §4 Fee schedule & payment terms | Light | **EDITABLE** (milestone %, labels, due-when, tariff note); **LOCKED** structure + USD/30-day boilerplate |
+| **10** | §4 Fee schedule & payment terms | Light | **EDITABLE** (milestones + all fine print: USD note + tariff) |
 | **11** | §4 Fee schedule — Estimate 01 (cont.) | Light | **EDITABLE** (all line items, qty, rate, amount, total, estimate #, date, name) |
 | **12** | §4 Fee schedule — Estimate 02 (cont., clone per install) | Light | **EDITABLE** — clone this page for each additional LED installation |
 | **13** | §5 Terms & warranty | Light | **EDITABLE** (warranty duration); **LOCKED** 4-column warranty boilerplate |
@@ -103,87 +103,121 @@ Everything else on the cover with `doc-edit` / `contenteditable="true"` is edita
 
 ## Editable regions by section
 
+**Every variable field carries a `data-studio` attribute.** Locate by `[data-studio="…"]` and replace the text node (or `src`/`alt`/`href`) only. Do not rewrite a whole `<section>` to change a value. Preserve `class="doc-edit" contenteditable="true"` on every hooked field.
+
 ### Cover (page 1) — `.doc-page--cover`
 
-| Element | Selector | What to change |
-|---------|----------|----------------|
-| Display headline | `.doc-cover__display` | "Proposal" + client short name in `<em>` |
-| Project title | `[data-studio="project-title"]` | Full project name line |
-| Prepared for | `[data-studio="prepared-for"]` | Client organization |
-| Basis | `[data-studio="basis"]` | Survey notes, meetings, source documents |
-| Client logo | `.doc-cover__client` (`[data-studio="client-logo"]`) | Replace `src` and `alt` |
+| Element | Selector |
+|---------|----------|
+| Display headline | `[data-studio="cover-display"]` |
+| Project title | `[data-studio="project-title"]` |
+| Label / Prepared for | `[data-studio="label-prepared-for"]` / `[data-studio="prepared-for"]` |
+| Label / Prepared by | `[data-studio="label-prepared-by"]` / `[data-studio="prepared-by"]` |
+| Label / Basis | `[data-studio="label-basis"]` / `[data-studio="basis"]` |
+| Client logo | `[data-studio="client-logo"]` (`src` + `alt`) |
 
 ### Contents (page 2) — `.doc-page--led-toc`
 
-- Section titles (`.led-toc__title`) and page numbers (`.led-toc__pg`) — editable. Update page numbers when pages are added/removed.
-- **No Agreement row** — the close page (p14) sits outside the numbered TOC. Do not add an Agreement/signature row back.
-- Plain off-white page — no circuit/pattern overlay (keeps dotted leaders clean).
+| Element | Selector |
+|---------|----------|
+| Heading | `[data-studio="toc-heading"]` |
+| Row N num / title / page | `[data-studio="toc-N-num"]` / `toc-N-title` / `toc-N-pg` (N = 1–5) |
 
-### Project overview (page 3, dark) — `.doc-page--led-overview`
+**No Agreement row** — the close page sits outside the numbered TOC. Plain off-white page — no circuit overlay.
 
-- Deck (`.led-band-deck`) — editable; white, left-justified
-- Two-column layout (`.led-overview-cols`): left = "The intent" / "The approach" / "The outcome" / "The standard" narrative blocks (`.doc-section-head__text`); right = "Scope at a glance" list (`.led-overview-scope`) + pairing callout (`.led-pairing`) + section-pointer note (`.led-overview-note`) — all editable
-- 4 stat values in `.led-stat-strip` (`.led-stat__num`) — editable (gold numerals)
+### Project overview (page 3) — `.doc-page--led-overview`
 
-### §2 Technology Overview — The COB Advantage (page 4, part 1 of 2, dark) — `.doc-page--led-advantage` — LOCKED
+| Element | Selector |
+|---------|----------|
+| Title / deck | `overview-title` / `overview-deck` |
+| Narratives | `overview-intent` · `overview-approach` · `overview-outcome` · `overview-standard` |
+| Scope list | `overview-scope-1` … `overview-scope-6` |
+| Pairing / note | `overview-pairing` / `overview-note` |
+| Stats | `overview-stat-1` … `overview-stat-4` |
 
-The section title "Technology Overview" (`.doc-page-band__title`) names §2; "The COB Advantage" is the Syncopate `.led-subhead` directly beneath it, then the deck. The 6 advantage tiles, NovaStar architecture paragraph, and 4 stat tiles are standard COB/NovaStar facts. If a future project uses a different processor brand or non-COB panels, flag for a Jane-approved override rather than a Mike edit.
+### §2 Technology Overview — COB Advantage (page 4) — **LOCKED**
 
-### §2 Technology Overview — Project Gallery (page 5, part 2 of 2, dark) — `.doc-page--led-gallery`
+Hooks exist (`tech-title`, `tech-cob-subhead`, `tech-cob-deck`, `tech-stat-1`…`4`) for completeness. Do **not** edit unless Jane overrides. Advantage tiles + NovaStar architecture stay locked.
 
-No repeated §2 header on this page — "Project Gallery" is the `.led-subhead` anchoring the continuation. Deck is white, left-justified.
+### §2 Project Gallery (page 5)
 
-| Element | Selector | What to change |
-|---------|----------|----------------|
-| Gallery photos | `[data-studio="gallery-img-1"]` … `[data-studio="gallery-img-4"]` | Replace `src` and `alt` on each `<img>` |
-| Captions | `.led-gallery-cell__cap` | Edit caption text (bold lead-in + descriptor) |
+| Element | Selector |
+|---------|----------|
+| Subhead / deck | `gallery-subhead` / `gallery-deck` |
+| Photos | `gallery-img-1` … `gallery-img-4` (`src` + `alt`) |
+| Captions | `gallery-cap-1` … `gallery-cap-4` |
 
-Layout (2×2 grid) stays locked.
+Layout (2×2) stays locked.
 
-### §3 Scope of work (page 6) — `.doc-page--led-scope`
+### §3 Scope of work (page 6)
 
-- Included / not-included lists inside soft check panels (`.led-check-panel`) — editable
-- **Locked:** the "certified technicians / design vetting / kickoff" process callout
+| Element | Selector |
+|---------|----------|
+| Title | `scope-title` |
+| Included head / items | `scope-included-head` · `scope-included-1` … `scope-included-8` |
+| Excluded head / items | `scope-excluded-head` · `scope-excluded-1` … `scope-excluded-5` |
 
-### §3 Scope of work — Coordination & training (page 7, cont.) — `.doc-page--led-coordination`
+**Locked:** certified-technicians / kickoff process callout.
 
-- Client obligations list inside soft check panel — editable
-- Punch-list & acceptance line — editable
-- **Locked:** PM + training boilerplate (the two `.doc-teams` rows)
+### §3 Coordination & training (page 7)
 
-### §3 Scope of work — Design specifications (pages 8–9, cont.) — `.doc-page--led-specs`
+| Element | Selector |
+|---------|----------|
+| Subhead | `coord-subhead` |
+| Obligations | `obligations-head` · `obligation-1` … `obligation-5` |
+| Punch list | `punch-list` |
 
-- Pitch in the subhead (`[data-studio="spec-pitch-N"]`) — editable
-- All `.led-spec-row__value` cells — editable
-- **Locked:** the `.led-spec-row__label` schema (Pixel Pitch, Panel Size, Resolution, Brightness, etc.)
+**Locked:** PM + training boilerplate rows.
 
-### §4 Fee schedule & payment terms (page 10) — `.doc-page--led-fee`
+### §3 Design specifications (pages 8–9)
 
-- Milestone percentages (`.led-fee-mile__pct`), labels, and due-when lines — editable
-- Tariff note text — editable
-- **Locked:** structure + the "All prices in USD / valid 30 days" boilerplate
+| Element | Selector |
+|---------|----------|
+| Subhead / pitch | `spec-N-subhead` / `spec-pitch-N` |
+| Values | `spec-N-display-model`, `spec-N-pixel-pitch`, `spec-N-panel-size`, `spec-N-resolution-panel`, `spec-N-brightness`, `spec-N-contrast-ratio`, `spec-N-refresh-rate`, `spec-N-color-depth`, `spec-N-viewing-angle`, `spec-N-power-consumption`, `spec-N-lifespan`, `spec-N-ip-rating`, `spec-N-operating-temp`, `spec-N-video-processor` |
+| Note | `spec-N-note` |
 
-### §4 Fee schedule — Estimates (pages 11–12, cont.) — `.doc-page--led-estimate`
+**Locked:** `.led-spec-row__label` schema. N = pitch page (1, 2, …).
 
-- Estimate name (`[data-studio="estimate-N-name"]`), number, date — editable
-- All line items: mfg, item, description, qty, rate, amount — editable (`.doc-edit`)
-- Estimate total (`[data-studio="estimate-N-total"]`) — editable
-- **No auto-math** — recompute subtotals/totals by hand if you edit a qty or rate.
-- Clone the section for each additional LED installation; renumber footers + update Contents page numbers.
+### §4 Fee schedule & payment terms (page 10)
 
-### §5 Terms & warranty (page 13) — `.doc-page--led-terms`
+| Element | Selector |
+|---------|----------|
+| Title | `fee-title` |
+| Milestone N | `fee-mile-N-pct` · `fee-mile-N-label` · `fee-mile-N-due` (N = 1–3) |
+| Fine print | `fee-note-usd` · `fee-note-tariff` |
 
-- Warranty duration line (`.led-warranty-duration` span) — editable
-- **Locked:** the 4-column warranty grid (covered / void-if / service / not-covered) + extended-warranty paragraph
+**Everything on this page is editable**, including fine print. Structure (stack of milestones) stays.
 
-### Close (page 14) — `.doc-page--led-signoff` (dark, navy + circuit texture)
+### §4 Estimates (pages 11–12)
 
-- Next-step body (`.led-close__body`) — editable
-- Contact name + email (`.led-close__name` / `.led-close__link` in the "Your contact" column) — editable
-- **Locked:** close-page structure, LUCI company info (name/address/phone/web), and the navy circuit-texture band
-- **No signature block** — this is a close page, not an agreement/signature page. Do not re-add signature fields.
+| Element | Selector |
+|---------|----------|
+| Subhead / name / # / date / total | `estimate-N-subhead` · `estimate-N-name` · `estimate-N-num` · `estimate-N-date` · `estimate-N-total` |
+| Line row R | `estimate-N-row-R-mfg` · `-item` · `-desc` · `-qty` · `-rate` · `-amount` |
+| Footnote | `estimate-N-footnote` |
 
-All editable content uses `class="doc-edit" contenteditable="true"`. When editing HTML directly, preserve those classes.
+**No auto-math** — recompute amount/total by hand when qty or rate changes. Clone the estimate section for more installs; keep the `estimate-N-…` numbering consecutive.
+
+### §5 Terms & warranty (page 13)
+
+| Element | Selector |
+|---------|----------|
+| Title | `terms-title` |
+| Duration | `warranty-duration` |
+
+**Locked:** 4-column warranty grid + extended-warranty paragraph.
+
+### Close (page 14)
+
+| Element | Selector |
+|---------|----------|
+| Head / body | `close-head` / `close-body` |
+| Contact | `close-contact-name` / `close-contact-email` |
+
+**Locked:** structure, LUCI company block, navy circuit band. **No signature block.**
+
+When editing HTML directly, preserve `doc-edit` / `contenteditable` / `data-studio` on every field.
 
 ---
 
