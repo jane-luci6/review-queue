@@ -37,6 +37,10 @@
           <dt class="doc-eyebrow doc-edit" contenteditable="true" data-studio="label-basis">Basis</dt>
           <dd class="sow-meta__value doc-edit" contenteditable="true" data-studio="basis">Site survey notes + project discovery meetings</dd>
         </div>
+        <div class="sow-meta__row">
+          <dt class="doc-eyebrow doc-edit" contenteditable="true" data-studio="label-date">Date</dt>
+          <dd class="sow-meta__value doc-edit" contenteditable="true" data-studio="proposal-date">Today</dd>
+        </div>
       </dl>
       <div class="doc-cover__prepared">
         <img class="doc-cover__client" data-studio="client-logo" src="../../assets/logos/luci-full-white.png" alt="Client logo" width="160" height="32">
@@ -690,6 +694,16 @@
     </section>
 
   </article>
+  <script>
+    (function () {
+      var el = document.querySelector('[data-studio="proposal-date"]');
+      if (el && el.textContent.trim() === 'Today') {
+        var d = new Date();
+        var m = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        el.textContent = m[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+      }
+    })();
+  </script>
 </body>
 </html>
 

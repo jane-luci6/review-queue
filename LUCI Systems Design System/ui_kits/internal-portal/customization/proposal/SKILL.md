@@ -57,7 +57,7 @@ See also: `../CURSOR.md`, `AGENTS.md` in this folder.
 
 After customizing, **automatically open the rendered client HTML in Cursor's in-editor (Glass) browser — not the HTML source** — without being asked:
 
-1. Start a local server rooted at **`LUCI Systems Design System/`** (not `ui_kits/sales/`) so `../../assets/` relative paths resolve to the canonical assets folder: `python3 -m http.server 8771 --bind 127.0.0.1` from that root.
+1. **Start the LUCI dev server** rooted at **`LUCI Systems Design System/`** (not `ui_kits/sales/`) so `../../assets/` relative paths resolve to the canonical assets folder: `python3 ui_kits/internal-portal/customization/luci-dev-server.py` from that root (run as a background process). It serves the project on `http://127.0.0.1:8771` and accepts `POST /__save` so the edit bar's Save button writes typed edits back to the working file.
 2. Verify: `curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8771/ui_kits/sales/<client>-proposal.html` → `200`.
 3. Open `http://127.0.0.1:8771/ui_kits/sales/<client>-proposal.html` in Cursor's in-editor browser via the `cursor-app-control` MCP `open_resource` tool (URI = that URL). Do **not** use a `file://` URI — that opens the HTML source, not the rendered doc. Do **not** root the server in `ui_kits/sales/` — the cover logo and `../../assets/` paths will 404.
 
@@ -124,7 +124,11 @@ Everything else on the cover with `doc-edit` / `contenteditable="true"` is edita
 | Label / Prepared for | `[data-studio="label-prepared-for"]` / `[data-studio="prepared-for"]` |
 | Label / Prepared by | `[data-studio="label-prepared-by"]` / `[data-studio="prepared-by"]` |
 | Label / Basis | `[data-studio="label-basis"]` / `[data-studio="basis"]` |
+| Label / Date | `[data-studio="label-date"]` / `[data-studio="proposal-date"]` |
 | Client logo | `[data-studio="client-logo"]` (`src` + `alt`) |
+
+**Proposal date:** the master shows "Today" as a placeholder; a small inline script stamps the current date on load (only while the placeholder is still "Today"). When generating a client proposal, **replace "Today" with the issue date** (e.g. "July 27, 2026") as a static value — a real date persists and the script leaves it alone.
+
 
 ### Contents (page 2) — `.doc-page--led-toc`
 
@@ -298,7 +302,7 @@ If preview shows wrong fonts after an edit, the HTML structure was likely broken
 ## Common tasks
 
 **New LED project from site notes**
-1. Cover (p1): project title, prepared-for, basis, logo, display `<em>` name.
+1. Cover (p1): project title, prepared-for, basis, logo, display `<em>` name, and **stamp the proposal date** (replace the "Today" placeholder with the issue date).
 2. Contents (p2): confirm section titles + page numbers match the final page count.
 3. §1 Project overview (p3): rewrite the intent/approach/outcome/standard narrative; set the 4 stat values to the proposed panel's pitch / angle / lifespan / IP.
 4. §3 Scope of work — Design specifications (p8–9): set spec values per pixel pitch; add/remove spec pages to match the number of pitches (subheads, no repeated §3 number).
