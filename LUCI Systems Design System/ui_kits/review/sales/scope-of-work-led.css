@@ -708,14 +708,14 @@
 /* Advantage page: enlarge tiles/icons so the 3×2 grid fills the sheet */
 .doc-page--led-advantage .led-advantage-grid {
   margin-top: 10px;
-  gap: 20px 28px;
+  gap: 24px 32px;
   flex: 1;
   align-content: center;
 }
 .doc-page--led-advantage .led-advantage {
   grid-template-columns: 52px 1fr;
   gap: 16px;
-  padding: 18px 16px 18px 0;
+  padding: 20px 16px 20px 0;
 }
 .doc-page--led-advantage .led-advantage__icon {
   width: 52px;
@@ -732,11 +732,12 @@
   line-height: 1.5;
 }
 .doc-page--led-advantage .led-arch-text {
-  margin-top: 22px;
+  margin-top: auto;
+  padding-top: 18px;
   font-size: 14px;
 }
 .doc-page--led-advantage .led-stat-strip--dark {
-  margin-top: 22px;
+  margin-top: 18px;
   padding-top: 20px;
 }
 .doc-page--led-advantage .led-stat-strip--dark .led-stat__num { font-size: 28px; }
@@ -745,6 +746,7 @@
   margin-bottom: 8px;
   padding-left: 30px;
 }
+.doc-page--led-advantage .doc-foot { margin-top: 16px; }
 .led-gallery-grid { margin-top: 14px; gap: 18px; }
 .led-gallery-cell__img { height: 2.55in; }
 
