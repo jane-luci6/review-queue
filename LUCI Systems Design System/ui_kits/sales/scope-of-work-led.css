@@ -21,19 +21,13 @@
   background: var(--off-white);
   isolation: isolate;
 }
-/* Circuit overlay kept ONLY on the TOC (p2). All other light data pages go
-   plain off-white per Jane — pattern was overkill on the content pages. */
-.doc-page--led-toc::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url('../../assets/textures/sow-page-bg-baked.jpg');
-  background-repeat: no-repeat;
-  background-position: top right;
-  background-size: 100% 100%;
-  pointer-events: none;
-  z-index: -1;
+/* Circuit overlay kept ONLY on the cover + signature band. TOC is plain
+   off-white so dotted leaders stay clean. */
+.doc-page--led-toc {
+  background: var(--off-white);
+  isolation: isolate;
 }
+.doc-page--led-toc::before { content: none; }
 .doc-page--led-overview .doc-foot,
 .doc-page--led-toc .doc-foot,
 .doc-page--led-scope .doc-foot,
@@ -599,16 +593,34 @@
 .doc-page-band--dark > .sow-band-bignum {
   color: rgba(255, 255, 255, 0.11);
 }
-/* Deck under a section title — same visual as the house "Pick your team"
-   colored subhead (Inter / mint on dark, accent-light on light). */
+/* Deck under a section title — Inter lede. Default mint on dark; overview +
+   gallery override to white / left-justified per Jane. */
 .led-band-deck {
   margin: 0;
-  padding: 14px 0 0 30px;
+  padding: 14px 0 0 0;
   font-family: var(--font-recede);
   font-size: clamp(16px, 1.3vw, 18px);
   line-height: 1.5;
   color: var(--mint);
-  max-width: 52ch;
+  max-width: none;
+  text-align: left;
+}
+/* Page 3 + page 5 — white lede, full-measure, left-justified */
+.doc-page--led-overview .led-band-deck,
+.doc-page--led-gallery .led-band-deck {
+  color: rgba(245, 248, 250, 0.92);
+  padding-left: 0;
+}
+/* Page 4 — deck sits under the Syncopate kicker (not between title and kicker) */
+.doc-page--led-advantage .led-band-deck {
+  color: rgba(235, 245, 248, 0.78);
+  padding: 10px 0 0;
+  margin-bottom: 6px;
+}
+.doc-page--led-advantage .led-subhead {
+  margin-top: 12px;
+  margin-bottom: 0;
+  padding-left: 0;
 }
 /* In-section H3 / continuation label — trial: website Syncopate kicker
    (.display-label). LED SOW only until Jane locks a house pattern. */
@@ -695,7 +707,7 @@
   border-left: 1px solid rgba(var(--mint-rgb), 0.18);
 }
 .doc-page--led-overview .led-stat:first-child { border-left: 0; }
-.doc-page--led-overview .led-stat__num { color: var(--mint); }
+.doc-page--led-overview .led-stat__num { color: var(--gold); }
 .doc-page--led-overview .led-stat__label { color: rgba(235, 245, 248, 0.6); }
 
 /* ── Full-bleed dark pages — advantage + gallery span the full sheet ──────── */
@@ -748,11 +760,6 @@
   flex: 0 0 auto;
 }
 .doc-page--led-advantage .led-stat-strip--dark .led-stat__num { font-size: 28px; }
-.doc-page--led-advantage .led-subhead {
-  margin-top: 18px;
-  margin-bottom: 8px;
-  padding-left: 30px;
-}
 .doc-page--led-advantage .doc-foot { margin-top: 16px; }
 .led-gallery-grid { margin-top: 14px; gap: 18px; }
 .led-gallery-cell__img { height: 2.55in; }
@@ -861,26 +868,129 @@
    v7 — brand subheads, full-bleed p4, p6–10 redesign, white signature page
    ========================================================================== */
 
-/* ── Page 6 · Scope of Work — two-col included/excluded + process note ────── */
-.led-scope-cols {
+/* ── Page 6–7 · Soft check panels (match feature-card language) ───────────── */
+.led-check-panels {
   display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  gap: 0 40px;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
   margin-top: 18px;
 }
-.led-scope-col .sow-list-label { margin-top: 0; }
-.led-scope-col .sow-scope-list { max-width: none; }
-.led-scope-col .sow-scope-list li {
-  padding: 10px 0 10px 22px;
+.led-check-panel {
+  padding: 22px 22px 20px;
+  background: linear-gradient(155deg, #E6F5EF 0%, #F3FAF8 100%);
+  box-shadow: inset 0 0 0 1px rgba(43, 158, 128, 0.14);
+  border-radius: 16px;
+  min-width: 0;
+}
+.led-check-panel--full {
+  margin-top: 8px;
+  grid-column: 1 / -1;
+}
+.led-check-panel__head {
+  margin: 0 0 14px;
+  font-family: var(--font);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--ink-strong);
+  line-height: 1.2;
+}
+.led-check-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.led-check-list li {
+  position: relative;
+  padding: 9px 0 9px 28px;
+  font-family: var(--font-recede);
   font-size: 13.5px;
   line-height: 1.5;
+  color: var(--ink);
+  border-bottom: 1px solid rgba(43, 158, 128, 0.12);
 }
-.led-scope-process {
-  margin-top: 28px;
-  padding-top: 18px;
+.led-check-list li:last-child { border-bottom: none; }
+.led-check-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.85em;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: var(--accent-light);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'><path d='M3.2 7.2l2.4 2.4 5.2-5.2' fill='none' stroke='%23ffffff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-size: 14px 14px;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: inset 0 0 0 1px rgba(43, 158, 128, 0.2);
+}
+.led-check-list--exclude li::before {
+  background-color: transparent;
+  box-shadow: inset 0 0 0 1.5px var(--accent-light);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'><path d='M4 4l6 6M10 4l-6 6' fill='none' stroke='%232b9e80' stroke-width='1.6' stroke-linecap='round'/></svg>");
+}
+.led-callout--wide {
+  margin-top: 22px;
+  max-width: none;
+}
+.doc-page--led-coordination .led-check-panel--full { margin-top: 4px; }
+.doc-page--led-coordination .led-callout--wide { margin-top: 18px; }
+
+/* ── Pages 8–9 · Single-column design specs — full page width ─────────────── */
+.led-spec-table--single {
+  grid-template-columns: 1fr;
+  gap: 0;
+  margin-top: 12px;
+  max-width: none;
+  width: 100%;
+}
+.led-spec-table--single .led-spec-row {
+  grid-template-columns: 200px 1fr;
+  gap: 32px;
+  padding: 13px 0;
+}
+.led-spec-table--single .led-spec-row__label { font-size: 12px; }
+.led-spec-table--single .led-spec-row__value { font-size: 14px; }
+.led-spec-table--single + .led-spec-note {
+  margin-top: 22px;
+  font-size: 13px;
+  max-width: none;
+}
+
+/* ── Page 10 · Fee schedule stacked — full width, no wrap on labels ───────── */
+.led-fee-stack {
+  margin-top: 18px;
   border-top: 1px solid var(--rule-light);
-  max-width: 66ch;
-  font-size: 13.5px;
+  width: 100%;
+}
+.led-fee-stack .led-fee-mile {
+  display: grid;
+  grid-template-columns: minmax(11ch, max-content) 1fr;
+  gap: 40px;
+  align-items: baseline;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--rule-light);
+  border-left: 0;
+  width: 100%;
+}
+.led-fee-stack .led-fee-mile__pct {
+  font-size: 36px;
+  line-height: 1;
+  white-space: nowrap;
+}
+.led-fee-stack .led-fee-mile__label {
+  margin-top: 0;
+  font-size: 15px;
+}
+.led-fee-stack .led-fee-mile__due {
+  margin-top: 4px;
+  font-size: 13px;
+}
+.led-fee-notes {
+  margin-top: 24px;
+  max-width: none;
+  width: 100%;
 }
 
 /* ── Page 7 · Feature cards (soft-icon tiles) + punch-list callout ────────── */
@@ -953,56 +1063,6 @@
   line-height: 1.55;
   color: var(--ink);
 }
-.doc-page--led-coordination .sow-list-label { margin-top: 4px; }
-.doc-page--led-coordination .sow-scope-list li {
-  padding: 9px 0 9px 22px;
-  font-size: 13.5px;
-}
-
-/* ── Pages 8–9 · Single-column design specs ──────────────────────────────── */
-.led-spec-table--single {
-  grid-template-columns: 1fr;
-  gap: 0;
-  margin-top: 12px;
-  max-width: 52ch;
-}
-.led-spec-table--single .led-spec-row {
-  grid-template-columns: 180px 1fr;
-  gap: 24px;
-  padding: 12px 0;
-}
-.led-spec-table--single .led-spec-row__label { font-size: 12px; }
-.led-spec-table--single .led-spec-row__value { font-size: 14px; }
-.led-spec-table--single + .led-spec-note { margin-top: 22px; font-size: 13px; }
-
-/* ── Page 10 · Fee schedule stacked (single column) ──────────────────────── */
-.led-fee-stack {
-  margin-top: 18px;
-  border-top: 1px solid var(--rule-light);
-}
-.led-fee-stack .led-fee-mile {
-  display: grid;
-  grid-template-columns: 140px 1fr;
-  gap: 24px;
-  align-items: baseline;
-  padding: 22px 0;
-  border-bottom: 1px solid var(--rule-light);
-  border-left: 0;
-}
-.led-fee-stack .led-fee-mile__pct {
-  font-size: 36px;
-  line-height: 1;
-}
-.led-fee-stack .led-fee-mile__label {
-  margin-top: 0;
-  font-size: 15px;
-}
-.led-fee-stack .led-fee-mile__due {
-  margin-top: 4px;
-  font-size: 13px;
-}
-.led-fee-notes { margin-top: 24px; }
-
 /* ── Page 14 · Signature — white body, dark header band with pattern ─────── */
 .doc-page--led-signoff {
   background: var(--off-white);
@@ -1095,7 +1155,8 @@
 }
 @media print {
   .led-signoff-band, .led-signoff-band::before, .led-signoff-band::after,
-  .led-feature-card, .led-feature-card__icon, .led-callout {
+  .led-feature-card, .led-feature-card__icon, .led-callout,
+  .led-check-panel, .led-check-list li::before {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }

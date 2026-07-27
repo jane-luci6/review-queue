@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../../assets/fonts/luci-brand-fonts.css">
   <link rel="stylesheet" href="sales-document.css?v=3">
   <link rel="stylesheet" href="scope-of-work.css?v=20">
-  <link rel="stylesheet" href="scope-of-work-led.css?v=9">
+  <link rel="stylesheet" href="scope-of-work-led.css?v=10">
 </head>
 <body>
   <p class="doc-hub-link"><a href="../../index.html">&larr; Design Hub</a> &middot; Print or Save as PDF (US Letter)</p>
@@ -79,12 +79,6 @@
           <span class="led-toc__title doc-edit" contenteditable="true">Terms &amp; Warranty</span>
           <span class="led-toc__leader" aria-hidden="true"></span>
           <span class="led-toc__pg doc-edit" contenteditable="true">13</span>
-        </li>
-        <li class="led-toc__row">
-          <span class="led-toc__num doc-edit" contenteditable="true">&mdash;</span>
-          <span class="led-toc__title doc-edit" contenteditable="true">Agreement</span>
-          <span class="led-toc__leader" aria-hidden="true"></span>
-          <span class="led-toc__pg doc-edit" contenteditable="true">14</span>
         </li>
       </ol>
 
@@ -159,8 +153,8 @@
         <span class="sow-band-bignum">02</span>
         <h2 class="doc-page-band__title doc-edit" contenteditable="true">Technology Overview</h2>
       </header>
-      <p class="led-band-deck doc-edit" contenteditable="true">COB embeds the LED chips into the substrate &mdash; eliminating SMD vulnerabilities. Paired with NovaStar for broadcast-quality visuals.</p>
       <p class="led-subhead doc-edit" contenteditable="true">The COB Advantage</p>
+      <p class="led-band-deck doc-edit" contenteditable="true">COB embeds the LED chips into the substrate &mdash; eliminating SMD vulnerabilities. Paired with NovaStar for broadcast-quality visuals.</p>
 
       <ul class="led-advantage-grid">
         <li class="led-advantage">
@@ -275,10 +269,10 @@
         <h2 class="doc-page-band__title doc-edit" contenteditable="true">Scope of Work</h2>
       </header>
 
-      <div class="led-scope-cols">
-        <div class="led-scope-col">
-          <p class="sow-list-label doc-edit" contenteditable="true">Included in this proposal</p>
-          <ul class="sow-scope-list sow-scope-list--checks">
+      <div class="led-check-panels">
+        <div class="led-check-panel">
+          <p class="led-check-panel__head doc-edit" contenteditable="true">Included in this proposal</p>
+          <ul class="led-check-list">
             <li class="doc-edit" contenteditable="true">LED display panels (DesignLED COB &mdash; pixel pitch per design specifications)</li>
             <li class="doc-edit" contenteditable="true">NovaStar H-Series video processors and I/O cards</li>
             <li class="doc-edit" contenteditable="true">Mounting structure and hardware</li>
@@ -289,9 +283,9 @@
             <li class="doc-edit" contenteditable="true">2-year comprehensive warranty</li>
           </ul>
         </div>
-        <div class="led-scope-col">
-          <p class="sow-list-label doc-edit" contenteditable="true">Not included</p>
-          <ul class="sow-scope-list sow-scope-list--bullets">
+        <div class="led-check-panel">
+          <p class="led-check-panel__head doc-edit" contenteditable="true">Not included</p>
+          <ul class="led-check-list led-check-list--exclude">
             <li class="doc-edit" contenteditable="true">Structural engineering or building permits</li>
             <li class="doc-edit" contenteditable="true">Electrical service upgrades</li>
             <li class="doc-edit" contenteditable="true">Content creation or media licensing</li>
@@ -301,7 +295,9 @@
         </div>
       </div>
 
-      <p class="led-scope-process doc-section-head__text">All work is performed by LUCI Systems certified technicians. Installation timeline and milestones are established during the project kickoff meeting. Designs are vetted and approved by LUCI and ownership representatives; LUCI works closely with the property team to ensure accurate placement of all elements. LUCI provides, installs, and programs custom-designed, network-accessible, high-performance video controllers dedicated to the proposed LED technology. Final LED design and content variations help dictate final hardware specs.</p>
+      <div class="led-callout led-callout--wide">
+        <p class="led-callout__body">All work is performed by LUCI Systems certified technicians. Installation timeline and milestones are established during the project kickoff meeting. Designs are vetted and approved by LUCI and ownership representatives; LUCI works closely with the property team to ensure accurate placement of all elements. LUCI provides, installs, and programs custom-designed, network-accessible, high-performance video controllers dedicated to the proposed LED technology.</p>
+      </div>
 
       <div class="doc-foot">
         <span>LUCI Systems &middot; Scope of work &mdash; LED</span>
@@ -330,16 +326,18 @@
         </li>
       </ul>
 
-      <p class="sow-list-label doc-edit" contenteditable="true">Client obligations</p>
-      <ul class="sow-scope-list sow-scope-list--bullets">
-        <li class="doc-edit" contenteditable="true">Provide site access during installation windows</li>
-        <li class="doc-edit" contenteditable="true">Ensure adequate electrical service at each installation location</li>
-        <li class="doc-edit" contenteditable="true">Designate a primary point of contact</li>
-        <li class="doc-edit" contenteditable="true">Provide network connectivity for remote management</li>
-        <li class="doc-edit" contenteditable="true">Complete punch list walkthrough within 5 business days of install completion</li>
-      </ul>
+      <div class="led-check-panel led-check-panel--full">
+        <p class="led-check-panel__head doc-edit" contenteditable="true">Client obligations</p>
+        <ul class="led-check-list">
+          <li class="doc-edit" contenteditable="true">Provide site access during installation windows</li>
+          <li class="doc-edit" contenteditable="true">Ensure adequate electrical service at each installation location</li>
+          <li class="doc-edit" contenteditable="true">Designate a primary point of contact</li>
+          <li class="doc-edit" contenteditable="true">Provide network connectivity for remote management</li>
+          <li class="doc-edit" contenteditable="true">Complete punch list walkthrough within 5 business days of install completion</li>
+        </ul>
+      </div>
 
-      <div class="led-callout">
+      <div class="led-callout led-callout--wide">
         <p class="led-callout__label">Punch list &amp; acceptance</p>
         <p class="led-callout__body doc-edit" contenteditable="true">Upon installation completion, LUCI Systems conducts a formal walkthrough with the client. Any deficiencies are documented and resolved within the agreed timeline. Final acceptance triggers the warranty start date.</p>
       </div>

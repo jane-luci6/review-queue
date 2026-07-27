@@ -116,20 +116,22 @@ Everything else on the cover with `doc-edit` / `contenteditable="true"` is edita
 ### Contents (page 2) — `.doc-page--led-toc`
 
 - Section titles (`.led-toc__title`) and page numbers (`.led-toc__pg`) — editable. Update page numbers when pages are added/removed.
+- **No Agreement row** — the signature page (p14) sits outside the numbered TOC. Do not add it back.
+- Plain off-white page — no circuit/pattern overlay (keeps dotted leaders clean).
 
 ### Project overview (page 3, dark) — `.doc-page--led-overview`
 
-- Deck (`.led-band-deck`) — editable
+- Deck (`.led-band-deck`) — editable; white, left-justified
 - Two-column layout (`.led-overview-cols`): left = "The intent" / "The approach" / "The outcome" / "The standard" narrative blocks (`.doc-section-head__text`); right = "Scope at a glance" list (`.led-overview-scope`) + pairing callout (`.led-pairing`) + section-pointer note (`.led-overview-note`) — all editable
-- 4 stat values in `.led-stat-strip` (`.led-stat__num`) — editable
+- 4 stat values in `.led-stat-strip` (`.led-stat__num`) — editable (gold numerals)
 
-### §2 Built on COB — The COB Advantage (page 4, part 1 of 2, dark) — `.doc-page--led-advantage` — LOCKED
+### §2 Technology Overview — The COB Advantage (page 4, part 1 of 2, dark) — `.doc-page--led-advantage` — LOCKED
 
-The section title "Built on COB" (`.doc-page-band__title`) names §2; "The COB Advantage" is the `.led-subhead` beneath it. The 6 advantage tiles, NovaStar architecture paragraph, and 4 stat tiles are standard COB/NovaStar facts. If a future project uses a different processor brand or non-COB panels, flag for a Jane-approved override rather than a Mike edit.
+The section title "Technology Overview" (`.doc-page-band__title`) names §2; "The COB Advantage" is the Syncopate `.led-subhead` directly beneath it, then the deck. The 6 advantage tiles, NovaStar architecture paragraph, and 4 stat tiles are standard COB/NovaStar facts. If a future project uses a different processor brand or non-COB panels, flag for a Jane-approved override rather than a Mike edit.
 
-### §2 Built on COB — Project Gallery (page 5, part 2 of 2, dark) — `.doc-page--led-gallery`
+### §2 Technology Overview — Project Gallery (page 5, part 2 of 2, dark) — `.doc-page--led-gallery`
 
-No repeated §2 header on this page — "Project Gallery" is the `.led-subhead` anchoring the continuation.
+No repeated §2 header on this page — "Project Gallery" is the `.led-subhead` anchoring the continuation. Deck is white, left-justified.
 
 | Element | Selector | What to change |
 |---------|----------|----------------|
@@ -140,12 +142,12 @@ Layout (2×2 grid) stays locked.
 
 ### §3 Scope of work (page 6) — `.doc-page--led-scope`
 
-- Included list, not-included list — editable
-- **Locked:** the "certified technicians / design vetting / kickoff" process paragraph
+- Included / not-included lists inside soft check panels (`.led-check-panel`) — editable
+- **Locked:** the "certified technicians / design vetting / kickoff" process callout
 
 ### §3 Scope of work — Coordination & training (page 7, cont.) — `.doc-page--led-coordination`
 
-- Client obligations list — editable
+- Client obligations list inside soft check panel — editable
 - Punch-list & acceptance line — editable
 - **Locked:** PM + training boilerplate (the two `.doc-teams` rows)
 

@@ -28,5 +28,5 @@ Ask for property context, pixel pitch(s), per-installation line items, fee terms
 
 ## Variable page counts
 
-- **Spec pages:** one per pixel pitch — add/remove `.doc-page--led-specs` sections.
-- **Estimate pages:** one per LED installation — clone `.doc-page--led-estimate` sections and renumber trailing page footers + band numerals.
+- **Spec pages:** one per pixel pitch — add/remove `.doc-page--led-specs` sections (all under §3, subheads — no repeated section number).
+- **Estimate pages:** one per LED installation — clone `.doc-page--led-estimate` sections (all under §4, subheads — no repeated section number). Renumber trailing page footers only; do **not** add a `sow-band-bignum` to continuation pages (the section number lives on the section opener only). Update the Contents page (p2) page numbers.
