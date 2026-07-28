@@ -550,30 +550,37 @@
   background: var(--mint-dark);
 }
 
-/* Identity diagram — scaled down from the brochure hero */
+/* Identity diagram — hero scale. Widened from 440px to 600px so it fills
+   more of the 816px content column and reads as the page-2 anchor, not a
+   small centered afterthought. Max-height raised so the 680×364 master
+   renders near its natural aspect (≈600×321) instead of being capped. */
 .be-why-identity { margin: 4px 0 18px; }
 .be-why-identity .cap-identity {
-  width: 440px;
+  width: 600px;
   max-width: 100%;
-  max-height: 2.05in;
+  max-height: 3.3in;
   margin: 0 auto;
 }
 
-/* Six feature cards — compact (scaled-down brochure grid) */
+/* Six feature cards — compact chips (icon + name only). The descriptive body
+   is cut so the row recedes beneath the larger identity hero; the names still
+   carry the capability story. Smaller softicon + tighter padding keep the
+   3×2 grid to two short rows. */
 .be-why-features .cap-features__kicker { margin: 0 0 8px; }
 .be-why-features .cap-feature-cards {
   grid-template-columns: repeat(3, 1fr);
   gap: 8px 12px;
 }
 .be-why-features .cap-feature-card {
-  padding: 10px 12px;
-  gap: 6px;
-  border-radius: 13px;
+  padding: 8px 10px;
+  gap: 4px;
+  align-items: center;
+  border-radius: 12px;
 }
-.be-why-features .cap-feature-card .cap-softicon { width: 38px; height: 38px; border-radius: 12px; }
-.be-why-features .cap-feature-card .cap-softicon svg { width: 22px; height: 22px; }
-.be-why-features .cap-feature-card__name { font-size: 13px; line-height: 1.2; }
-.be-why-features .cap-feature-card__body { font-size: 11px; line-height: 1.4; }
+.be-why-features .cap-feature-card .cap-softicon { width: 30px; height: 30px; border-radius: 10px; }
+.be-why-features .cap-feature-card .cap-softicon svg { width: 18px; height: 18px; }
+.be-why-features .cap-feature-card__name { font-size: 12px; line-height: 1.15; }
+.be-why-features .cap-feature-card__body { display: none; }
 
 .doc-page--overview { padding-bottom: 0.55in; }
 
