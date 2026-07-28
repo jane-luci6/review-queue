@@ -8,7 +8,92 @@
   <title>LUCI — Services Order Form</title>
   <link rel="stylesheet" href="../../assets/fonts/luci-brand-fonts.css">
   <link rel="stylesheet" href="sales-document.css?v=3">
+  <link rel="stylesheet" href="capabilities-document.css">
+  <link rel="stylesheet" href="brochure.css?v=3">
   <link rel="stylesheet" href="budgetary-estimate.css?v=33">
+  <style>
+    /* Light-surface invoice meta */
+    .upg-meta {
+      margin: 0;
+      max-width: 56ch;
+    }
+    .upg-meta__row {
+      display: grid;
+      grid-template-columns: 148px 1fr;
+      gap: 16px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--rule-light, #D4D9DC);
+    }
+    .upg-meta__row:first-child {
+      border-top: 1px solid var(--rule-light, #D4D9DC);
+    }
+    .upg-meta__label {
+      margin: 0;
+      font-family: var(--font);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-light, #2b9e80);
+    }
+    .upg-meta__value {
+      margin: 0;
+      font-family: var(--font-recede, Inter, sans-serif);
+      font-size: 15px;
+      line-height: 1.45;
+      color: var(--ink-strong, #1A1A1A);
+    }
+    .upg-block {
+      margin-top: 28px;
+    }
+    .upg-block__label {
+      margin: 0 0 12px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-light, #2b9e80);
+    }
+    .upg-block__text {
+      margin: 0;
+      max-width: 62ch;
+      font-family: var(--font-recede, Inter, sans-serif);
+      font-size: 15px;
+      line-height: 1.62;
+      color: var(--ink, #354F5C);
+    }
+    /* Compact scope blocks — local styles only (avoid scope-of-work.css band overrides) */
+    .upg-scope {
+      margin-bottom: 16px;
+      padding: 14px 18px 12px;
+      background: linear-gradient(155deg, rgba(230, 245, 239, 0.35) 0%, rgba(245, 248, 250, 0.9) 100%);
+      border-left: 3px solid var(--mint-dark, #2b9e80);
+    }
+    .upg-scope__title {
+      margin: 0 0 6px;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.28;
+      letter-spacing: -0.012em;
+      color: var(--ink-strong, #1A1A1A);
+    }
+    .upg-scope__text {
+      margin: 0;
+      font-family: var(--font-recede, Inter, sans-serif);
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--ink, #354F5C);
+    }
+    .upg-scope__label {
+      margin: 0 0 6px;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      color: var(--ink-strong, #1A1A1A);
+    }
+  </style>
 </head>
 <body>
   <p class="doc-hub-link"><a href="../../index.html">&larr; Design Hub</a> &middot; Print or Save as PDF (US Letter)</p>
@@ -27,30 +112,70 @@
       </div>
       <div class="doc-cover__summary">
         <p class="doc-cover__summary-label">Order summary</p>
-        <p class="doc-cover__summary-text doc-edit" contenteditable="true"><strong>Boyd &mdash; Valley Forge &mdash; Registration Desk</strong> &middot; <span data-studio="proposal-date">2026-07-21</span>. This services order is made pursuant to the Master Purchase &amp; Services Agreement effective as of 2023-03-08, by and between Boyd Gaming (&ldquo;Customer&rdquo;) and LUCI Systems, LLC (&ldquo;LUCI&rdquo;). The terms of the Agreement are incorporated herein by this reference.</p>
+        <p class="doc-cover__summary-text doc-edit" contenteditable="true"><strong>Boyd &mdash; Valley Forge &mdash; Registration Desk</strong> &middot; <span data-studio="proposal-date">2026-07-21</span>. This services order is made pursuant to the Master Purchase &amp; Services Agreement effective as of <span data-studio="msa-date">2023-03-08</span>, by and between Boyd Gaming (&ldquo;Customer&rdquo;) and LUCI Systems, LLC (&ldquo;LUCI&rdquo;). The terms of the Agreement are incorporated herein by this reference.</p>
       </div>
       <div class="doc-cover__prepared">
         <img class="doc-cover__client" data-studio="client-logo" src="assets/logos/ameristar-council-bluffs.svg?v=4" alt="Client logo" width="200" height="36">
       </div>
     </section>
-      <div class="doc-cover__summary" style="margin-top: 24px;">
-        <p class="doc-cover__summary-label">Customer invoice information</p>
-        <dl class="sow-meta" style="margin-top: 12px;">
-          <div class="sow-meta__row"><dt class="doc-eyebrow doc-edit" contenteditable="true">Customer</dt><dd class="sow-meta__value doc-edit" contenteditable="true" data-studio="invoice-customer">Boyd Gaming</dd></div>
-          <div class="sow-meta__row"><dt class="doc-eyebrow doc-edit" contenteditable="true">Customer site</dt><dd class="sow-meta__value doc-edit" contenteditable="true" data-studio="invoice-site">Valley Forge Casino</dd></div>
-          <div class="sow-meta__row"><dt class="doc-eyebrow doc-edit" contenteditable="true">Street address</dt><dd class="sow-meta__value doc-edit" contenteditable="true" data-studio="invoice-address">1160 1st Ave</dd></div>
-          <div class="sow-meta__row"><dt class="doc-eyebrow doc-edit" contenteditable="true">City, State, Zip</dt><dd class="sow-meta__value doc-edit" contenteditable="true" data-studio="invoice-cszip">King of Prussia, PA 19406</dd></div>
-          <div class="sow-meta__row"><dt class="doc-eyebrow doc-edit" contenteditable="true">Contact</dt><dd class="sow-meta__value doc-edit" contenteditable="true" data-studio="invoice-contact">Todd West</dd></div>
-          <div class="sow-meta__row"><dt class="doc-eyebrow doc-edit" contenteditable="true">Contact phone &amp; email</dt><dd class="sow-meta__value doc-edit" contenteditable="true" data-studio="invoice-phone">702-217-8392 | toddwest@boydgaming.com</dd></div>
+
+    <!-- PAGE 2 · CUSTOMER INVOICE + INVOICING -->
+    <section class="doc-page doc-page--band">
+      <header class="doc-page-band">
+        <div class="doc-page-band__top">
+          <p class="doc-page-band__kicker">Order details</p>
+        </div>
+        <h2 class="doc-page-band__title">Customer <span class="doc-page-band__accent doc-page-band__accent--gold">invoice.</span></h2>
+        <p class="doc-page-band__deck">Billing contact and invoicing terms for this services order under the existing Master Purchase &amp; Services Agreement.</p>
+      </header>
+
+      <div class="upg-block" style="margin-top: 0;">
+        <p class="upg-block__label">Customer invoice information</p>
+        <dl class="upg-meta">
+          <div class="upg-meta__row">
+            <dt class="upg-meta__label doc-edit" contenteditable="true">Customer</dt>
+            <dd class="upg-meta__value doc-edit" contenteditable="true" data-studio="invoice-customer">Boyd Gaming</dd>
+          </div>
+          <div class="upg-meta__row">
+            <dt class="upg-meta__label doc-edit" contenteditable="true">Customer site</dt>
+            <dd class="upg-meta__value doc-edit" contenteditable="true" data-studio="invoice-site">Valley Forge Casino</dd>
+          </div>
+          <div class="upg-meta__row">
+            <dt class="upg-meta__label doc-edit" contenteditable="true">Street address</dt>
+            <dd class="upg-meta__value doc-edit" contenteditable="true" data-studio="invoice-address">1160 1st Ave</dd>
+          </div>
+          <div class="upg-meta__row">
+            <dt class="upg-meta__label doc-edit" contenteditable="true">City, State, Zip</dt>
+            <dd class="upg-meta__value doc-edit" contenteditable="true" data-studio="invoice-cszip">King of Prussia, PA 19406</dd>
+          </div>
+          <div class="upg-meta__row">
+            <dt class="upg-meta__label doc-edit" contenteditable="true">Contact</dt>
+            <dd class="upg-meta__value doc-edit" contenteditable="true" data-studio="invoice-contact">Todd West</dd>
+          </div>
+          <div class="upg-meta__row">
+            <dt class="upg-meta__label doc-edit" contenteditable="true">Phone &amp; email</dt>
+            <dd class="upg-meta__value doc-edit" contenteditable="true" data-studio="invoice-phone">702-217-8392 | toddwest@boydgaming.com</dd>
+          </div>
         </dl>
       </div>
-      <div class="doc-cover__summary" style="margin-top: 24px;">
-        <p class="doc-cover__summary-label">Invoicing</p>
-        <p class="doc-cover__summary-text doc-edit" contenteditable="true">LUCI will invoice Customer for the &lsquo;Total Purchase Price&rsquo; for the additional Customer End Point licenses and LUCI Service provided in accordance with the terms and conditions set forth in this service order. In relation to a partial year, the fees will be prorated to align with the 3-year term of prior purchased End Points. LUCI invoices for payment will be directed to the Customer for payment.</p>
+
+      <div class="upg-block">
+        <p class="upg-block__label">Invoicing</p>
+        <p class="upg-block__text doc-edit" contenteditable="true">LUCI will invoice Customer for the &lsquo;Total Purchase Price&rsquo; for the additional Customer End Point licenses and LUCI Service provided in accordance with the terms and conditions set forth in this service order. In relation to a partial year, the fees will be prorated to align with the 3-year term of prior purchased End Points. LUCI invoices for payment will be directed to the Customer for payment.</p>
+      </div>
+
+      <div class="upg-block">
+        <p class="upg-block__label">Licensing, services &amp; fees</p>
+        <p class="upg-block__text doc-edit" contenteditable="true">Customer wishes to add additional End Point licenses for an existing Customer and LUCI desires to provide LUCI Service to these additional End Points pursuant to this service order. Subject to Customer&rsquo;s consent and agreement to the terms of the LUCI EULA, LUCI hereby grants to Customer the limited, non-exclusive, terminable and non-transferable license, during the license term specified below, to use the Software and associated Intellectual Property Rights required for the use of the End Points and receipt of the LUCI Service to the number of End Points, quantity, type and price set forth in the line items that follow.</p>
+      </div>
+
+      <div class="doc-foot">
+        <span>LUCI Systems &middot; Services Order Form</span>
+        <span class="doc-foot__page">02</span>
       </div>
     </section>
 
-    <!-- PAGE 2 · LINE ITEMS -->
+    <!-- PAGE 3 · LINE ITEMS -->
     <section class="doc-page doc-page--band doc-page--proposal">
       <header class="doc-page-band">
         <div class="doc-page-band__top">
@@ -134,24 +259,29 @@
         </div>
       </div>
 
-      <div class="be-summary">
-        <div class="be-summary__row"><span class="be-summary__label doc-edit" contenteditable="true">Software (Annual)</span><span class="be-summary__value doc-edit" contenteditable="true">$1,680.00</span></div>
-        <div class="be-summary__row"><span class="be-summary__label doc-edit" contenteditable="true">Hardware</span><span class="be-summary__value doc-edit" contenteditable="true">$11,921.63</span></div>
-        <div class="be-summary__row"><span class="be-summary__label doc-edit" contenteditable="true">Professional Service</span><span class="be-summary__value doc-edit" contenteditable="true">$4,375.00</span></div>
-        <div class="be-summary__row"><span class="be-summary__label doc-edit" contenteditable="true">Estimated Shipping</span><span class="be-summary__value doc-edit" contenteditable="true">$650.00</span></div>
-        <div class="be-summary__row"><span class="be-summary__label doc-edit" contenteditable="true">Estimated Travel</span><span class="be-summary__value doc-edit" contenteditable="true">$0.00</span></div>
-        <div class="be-summary__row"><span class="be-summary__label doc-edit" contenteditable="true">King of Prussia Sales Tax 6%</span><span class="be-summary__value doc-edit" contenteditable="true">$715.30</span></div>
-        <div class="be-summary__row be-summary__row--total"><span class="be-summary__label">Total</span><span class="be-summary__total-value doc-edit" contenteditable="true">$19,341.92</span></div>
+      <div class="be-p5-numbers" style="margin-top: 24px; max-width: 48ch;">
+        <ul class="be-summary">
+          <li><span class="be-summary__label doc-edit" contenteditable="true">Software (Annual)</span><span class="be-summary__value doc-edit" contenteditable="true">$1,680.00</span></li>
+          <li><span class="be-summary__label doc-edit" contenteditable="true">Hardware</span><span class="be-summary__value doc-edit" contenteditable="true">$11,921.63</span></li>
+          <li><span class="be-summary__label doc-edit" contenteditable="true">Professional Service</span><span class="be-summary__value doc-edit" contenteditable="true">$4,375.00</span></li>
+          <li><span class="be-summary__label doc-edit" contenteditable="true">Estimated Shipping</span><span class="be-summary__value doc-edit" contenteditable="true">$650.00</span></li>
+          <li><span class="be-summary__label doc-edit" contenteditable="true">Estimated Travel</span><span class="be-summary__value doc-edit" contenteditable="true">$0.00</span></li>
+          <li><span class="be-summary__label doc-edit" contenteditable="true">King of Prussia Sales Tax 6%</span><span class="be-summary__value doc-edit" contenteditable="true">$715.30</span></li>
+        </ul>
+        <div class="be-summary__total">
+          <span class="be-summary__total-label">Total</span>
+          <span class="be-summary__total-value doc-edit" contenteditable="true">$19,341.92</span>
+        </div>
       </div>
 
       <div class="doc-foot">
         <span>LUCI Systems &middot; Services Order Form</span>
-        <span class="doc-foot__page">02</span>
+        <span class="doc-foot__page">03</span>
       </div>
     </section>
 
-    <!-- PAGE 3 · SCOPE OF WORK -->
-    <section class="doc-page doc-page--band doc-page--terms">
+    <!-- PAGE 4 · SCOPE OF WORK -->
+    <section class="doc-page doc-page--band">
       <header class="doc-page-band">
         <div class="doc-page-band__top">
           <p class="doc-page-band__kicker">Services</p>
@@ -160,44 +290,44 @@
         <p class="doc-page-band__deck">LUCI Platform Licensing, IPTV Integration &amp; Audio Integration Professional Services.</p>
       </header>
 
-      <div class="sow-scope-block">
-        <h3 class="sow-subsection-title doc-edit" contenteditable="true">1. LUCI Licensing Update</h3>
-        <p class="doc-section-head__text doc-edit" contenteditable="true">Provide remote services to update and expand the existing LUCI platform licensing to include the additional system licenses as shown above. This upgrade will be performed in a manner that does not interrupt or impact ongoing system operation. All licensing updates will be validated upon completion to ensure full system functionality and availability.</p>
+      <div class="upg-scope">
+        <h3 class="upg-scope__title doc-edit" contenteditable="true">1. LUCI Licensing Update</h3>
+        <p class="upg-scope__text doc-edit" contenteditable="true">Provide remote services to update and expand the existing LUCI platform licensing to include the additional system licenses as shown above. This upgrade will be performed in a manner that does not interrupt or impact ongoing system operation. All licensing updates will be validated upon completion to ensure full system functionality and availability.</p>
       </div>
 
-      <div class="sow-scope-block">
-        <h3 class="sow-subsection-title doc-edit" contenteditable="true">2. Audio Deployment Coordination</h3>
-        <p class="doc-section-head__text doc-edit" contenteditable="true">Coordinate with the local contractor partner to plan and execute the deployment of new sound system hardware, including speakers and speaker cabling infrastructure. Services include configuration, programming, and commissioning of these devices, as well as full integration into the LUCI platform for centralized control, monitoring, and content distribution.</p>
+      <div class="upg-scope">
+        <h3 class="upg-scope__title doc-edit" contenteditable="true">2. Audio Deployment Coordination</h3>
+        <p class="upg-scope__text doc-edit" contenteditable="true">Coordinate with the local contractor partner to plan and execute the deployment of new sound system hardware, including speakers and speaker cabling infrastructure. Services include configuration, programming, and commissioning of these devices, as well as full integration into the LUCI platform for centralized control, monitoring, and content distribution.</p>
       </div>
 
-      <div class="sow-scope-block">
-        <h3 class="sow-subsection-title doc-edit" contenteditable="true">3. Video Integration</h3>
-        <p class="doc-section-head__text doc-edit" contenteditable="true">Coordinate with Boyd and associated project stakeholders to integrate new LG STB-6500 into the LUCI platform. STB-6500 will be installed and connected to owner provided and installed displays.</p>
+      <div class="upg-scope">
+        <h3 class="upg-scope__title doc-edit" contenteditable="true">3. Video Integration</h3>
+        <p class="upg-scope__text doc-edit" contenteditable="true">Coordinate with Boyd and associated project stakeholders to integrate new LG STB-6500 into the LUCI platform. STB-6500 will be installed and connected to owner provided and installed displays.</p>
       </div>
 
-      <div class="sow-scope-block">
-        <h3 class="sow-subsection-title doc-edit" contenteditable="true">4. Control System Configuration &amp; User Roles</h3>
-        <p class="doc-section-head__text doc-edit" contenteditable="true">Configure LUCI control workflows to support operations, including the creation of user roles, permissions, and operational presets. This includes defining control access levels, source selection behavior, and pre-configured system states tailored to use cases to enhance operational efficiency and ease of use.</p>
+      <div class="upg-scope">
+        <h3 class="upg-scope__title doc-edit" contenteditable="true">4. Control System Configuration &amp; User Roles</h3>
+        <p class="upg-scope__text doc-edit" contenteditable="true">Configure LUCI control workflows to support operations, including the creation of user roles, permissions, and operational presets. This includes defining control access levels, source selection behavior, and pre-configured system states tailored to use cases to enhance operational efficiency and ease of use.</p>
       </div>
 
-      <div class="sow-scope-block">
-        <h3 class="sow-subsection-title doc-edit" contenteditable="true">5. Testing &amp; Commissioning</h3>
-        <p class="doc-section-head__text doc-edit" contenteditable="true">Perform remote and/or coordinated commissioning to validate proper operation of all newly integrated components, including licensing updates, IPTV distribution, encoder functionality, and video wall control within LUCI. Testing will confirm system stability, responsiveness, and alignment with operational requirements.</p>
+      <div class="upg-scope">
+        <h3 class="upg-scope__title doc-edit" contenteditable="true">5. Testing &amp; Commissioning</h3>
+        <p class="upg-scope__text doc-edit" contenteditable="true">Perform remote and/or coordinated commissioning to validate proper operation of all newly integrated components, including licensing updates, IPTV distribution, encoder functionality, and video wall control within LUCI. Testing will confirm system stability, responsiveness, and alignment with operational requirements.</p>
       </div>
 
-      <div class="sow-scope-block">
-        <h3 class="sow-subsection-title doc-edit" contenteditable="true">6. Documentation &amp; Support Coordination</h3>
-        <p class="doc-section-head__text doc-edit" contenteditable="true">Provide updated system documentation reflecting licensing changes, IPTV channel configurations, and control system updates. Coordinate with on-site teams and client stakeholders to support deployment efforts and ensure a smooth transition to the updated system configuration.</p>
+      <div class="upg-scope">
+        <h3 class="upg-scope__title doc-edit" contenteditable="true">6. Documentation &amp; Support Coordination</h3>
+        <p class="upg-scope__text doc-edit" contenteditable="true">Provide updated system documentation reflecting licensing changes, IPTV channel configurations, and control system updates. Coordinate with on-site teams and client stakeholders to support deployment efforts and ensure a smooth transition to the updated system configuration.</p>
       </div>
 
-      <div class="sow-scope-block" style="margin-top: 24px; border-top: 1px solid rgba(0,0,0,0.08); padding-top: 20px;">
-        <p class="sow-list-label doc-edit" contenteditable="true">Assumptions</p>
-        <p class="doc-section-head__text doc-edit" contenteditable="true">This scope assumes all third-party hardware, including fiber optic network infrastructure required connectivity for IPTV and Audio distribution are provided and properly configured by others. Any on-site installation labor, hardware mounting, or third-party programming not explicitly stated is excluded from this scope.</p>
+      <div class="upg-scope" style="margin-top: 8px;">
+        <p class="upg-scope__label doc-edit" contenteditable="true">Assumptions</p>
+        <p class="upg-scope__text doc-edit" contenteditable="true">This scope assumes all third-party hardware, including fiber optic network infrastructure required connectivity for IPTV and Audio distribution are provided and properly configured by others. Any on-site installation labor, hardware mounting, or third-party programming not explicitly stated is excluded from this scope.</p>
       </div>
 
       <div class="doc-foot">
         <span>LUCI Systems &middot; Services Order Form</span>
-        <span class="doc-foot__page">03</span>
+        <span class="doc-foot__page">04</span>
       </div>
     </section>
 
