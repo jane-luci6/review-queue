@@ -10,9 +10,9 @@ description: >-
 
 # Proposal · customization
 
-Post-survey proposal for LED wall installations. **14 pages (US Letter)** — cover, contents, then five numbered sections: §1 Project overview (dark), §2 Built on COB (dark, spans the COB advantage + project gallery), §3 Scope of work (spans scope + coordination + per-pitch design specs), §4 Fee schedule & payment terms (estimates first — one estimate page per LED installation, flowing across pages — then payment milestones + fine print), §5 Terms & warranty, then a close page (Next step + contacts — no signature block). Source master: `proposal.html` in this folder (build copy from `ui_kits/sales/`).
+Post-survey proposal for LED wall installations. **~13 pages (US Letter, variable)** — cover, then five numbered sections: §1 Project overview (dark), §2 Built on COB (dark, spans the COB advantage + project gallery), §3 Scope of work (spans scope + coordination + per-pitch design specs), §4 Fee schedule & payment terms (estimates first — one estimate page per LED installation, flowing across pages — then payment milestones + fine print), §5 Terms & warranty, then a close page (Next step + contacts — no signature block). **Page count is not fixed** — spec pages and estimate pages are added or removed to match the project; all trailing page numbers and footers shift accordingly. Source master: `proposal.html` in this folder (build copy from `ui_kits/sales/`).
 
-**Section numbering rule:** a section number appears only on the first page of that section (the band big-numeral + title). Continuation pages within the same section carry a `.led-subhead` instead — no repeated number. So §3's number lives on page 5 only; pages 6–8 use subheads ("Coordination & Training", "Design Specifications — <pitch>"). §4's number lives on page 9 (Estimate 01 opener). Estimate 02 on p10 and Payment Terms on p11 are subheads — no repeated §4 number. §5's number lives on page 12 (Terms).
+**Section numbering rule:** a section number appears only on the first page of that section (the band big-numeral + title). Continuation pages within the same section carry a `.led-subhead` instead — no repeated number. In the default 13-page layout, §3's number lives on page 5; pages 6–8 use subheads ("Coordination & Training", "Design Specifications — <pitch>"). §4's number lives on page 9 (Estimate 01 opener). Estimate 02 on p10 and Payment Terms on p11 are subheads — no repeated §4 number. §5's number lives on page 12 (Terms). **These page numbers shift when spec or estimate pages are added/removed** — always reference by section, not by absolute page number.
 
 Also read: `../_brand/SKILL.md` — especially **Efficient customization (read this first)**. This is a populate-in-place job; never rebuild.
 
@@ -20,7 +20,7 @@ Also read: `../_brand/SKILL.md` — especially **Efficient customization (read t
 
 **Mike can click and type any text in the document.** Edit mode unlocks every text leaf (including former “boilerplate” pages). Fonts, colors, and layout stay on CSS classes — change words only; never strip `doc-edit` / `data-studio` / structural wrappers.
 
-**What stays non-editable (images only):** LUCI wordmark on the cover (`.doc-cover__logo`) and the close-page LUCI logo (`.led-signoff-band__logo`). Client logo is still click-to-swap.
+**What stays non-editable (images only):** LUCI wordmark on the cover (`.doc-cover__logo`) and the close-page LUCI logo (`.doc-close__logo`). Client logo is still click-to-swap.
 
 **Agent rules (unchanged discipline):** prefer `[data-studio]` selector edits; do not rebuild sections; do not invent fine-print; after Mike types in the preview, **Save** (or write the live DOM back to the same working file) before the next agent pass. Brand/voice still applies to any copy the agent authors.
 
@@ -77,6 +77,8 @@ After a site survey or discovery for an LED wall project (casino sportsbook, cen
 ---
 
 ## Page map — editable vs locked
+
+*Page numbers below reflect the default 13-page layout. They shift when spec or estimate pages are added or removed — always reference by section name, not absolute page number.*
 
 | Page | Section | Canvas | Status |
 |------|---------|--------|--------|
