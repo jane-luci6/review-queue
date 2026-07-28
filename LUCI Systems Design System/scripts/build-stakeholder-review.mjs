@@ -279,7 +279,7 @@ const CURSOR_DOC_META = {
       enabled: true,
       hint: SHARED_EDIT_HINT,
       lockedPages: '',
-      lockedElements: '.doc-cover__logo',
+      lockedElements: '.doc-cover__logo, .doc-close__logo',
     },
   },
   'budgetary-estimate': {

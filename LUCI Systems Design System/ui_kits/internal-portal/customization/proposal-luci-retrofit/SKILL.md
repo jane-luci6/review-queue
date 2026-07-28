@@ -79,7 +79,7 @@ After a capabilities review and demo where the client needs a written proposal w
 | **5** | §3 Scope of work — Coordination & training (cont.) | Light | **EDITABLE** (obligations list, punch-list body); **LOCKED** PM/training feature cards |
 | **6** | Proposal — Line items | Dark band | **EDITABLE** (all line items, qty, cost, subtotals, group labels, deck text) |
 | **7** | Investment summary | Dark band | **EDITABLE** (all summary values, total, CapEx/OpEx split); **LOCKED** `.be-delivers` marketing grid |
-| **8** | Close — Next step | Dark band | **EDITABLE** (next-step body, contact name/email); **LOCKED** structure + LUCI company info |
+| **8** | Close — Next step | Dark (capabilities-doc style) | **EDITABLE** (kicker, headline, next-step body, contact name/email); **LOCKED** LUCI logo + company info |
 
 ### Variable page counts
 
@@ -160,19 +160,23 @@ Populate from the uploaded spreadsheet via `scripts/ingest-budgetary-lineitems.p
 | Summary values | `.be-summary__value`, `.be-summary__total-value`, `.be-split__value` |
 | Delivers grid | `.be-delivers` — **locked** (marketing outcomes) |
 
-### Close (page 8) — `.doc-page--investment-close`
+### Close (page 8) — `.doc-page--close`
+
+Capabilities-doc-style close page (dark, circuit texture, LUCI wordmark logo, Syncopate headline).
 
 | Element | Selector / class |
 |---------|-----------------|
-| Band title | `.doc-page-band__title` (default: "A property that gets simpler as it grows.") |
-| Next-step body | `.be-close__body` |
-| Contact name | `.be-close__name` (first instance) |
-| Contact email | `.be-close__link` (first instance) |
-| LUCI company info | `.be-close__name` / `.be-close__addr` / `.be-close__link` (second instance) — **locked** |
+| LUCI logo | `.doc-close__logo` — **locked** (brand) |
+| Kicker | `.doc-eyebrow--mint` (default: "Next step") |
+| Headline | `.doc-close__head` (keep `<em>` for the display phrase) |
+| Next-step body | `.doc-close__body` |
+| Contact name | `.doc-close__name` (first instance, in `.doc-close__rep`) |
+| Contact email | `.doc-close__rep` `<a>` (first instance) |
+| LUCI company info | `.doc-close__company` (name, address, phone, URL) — **locked** |
 
 **No endpoint pricing tiers on this page.** The BE's tier chips (`.be-tier-chip`) are removed from this template. Per-endpoint pricing stays in the Budgetary Estimate only.
 
-**No signature block.** The close page uses the BE's contact block (next step + rep + LUCI company info) — no signature lines, no date lines, no "accepted by" fields.
+**No signature block.** The close page uses the capabilities-doc-style contact block (LUCI wordmark + Syncopate headline + two-column contacts) — no signature lines, no date lines, no "accepted by" fields.
 
 ---
 
