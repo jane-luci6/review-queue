@@ -216,6 +216,7 @@ const CUSTOMIZATION_TEMPLATES = [
   { id: 'sales-deck', src: 'sales/sales-deck.html' },
   { id: 'scope-of-work', src: 'sales/scope-of-work.html' },
   { id: 'proposal', src: 'sales/proposal.html' },
+  { id: 'proposal-luci-retrofit', src: 'sales/proposal-luci-retrofit.html' },
   { id: 'budgetary-estimate', src: 'sales/budgetary-estimate.html' },
 ];
 
@@ -267,7 +268,18 @@ const CURSOR_DOC_META = {
       enabled: true,
       hint: SHARED_EDIT_HINT,
       lockedPages: '',
-      lockedElements: '.doc-cover__logo, .led-signoff-band__logo',
+      lockedElements: '.doc-cover__logo, .doc-close__logo',
+    },
+  },
+  'proposal-luci-retrofit': {
+    title: 'Proposal - LUCI Retrofit',
+    master: 'LUCI Systems Design System/ui_kits/sales/proposal-luci-retrofit.html',
+    clientFile: 'LUCI Systems Design System/ui_kits/sales/{client}-proposal-luci-retrofit.html',
+    editMode: {
+      enabled: true,
+      hint: SHARED_EDIT_HINT,
+      lockedPages: '',
+      lockedElements: '.doc-cover__logo',
     },
   },
   'budgetary-estimate': {
@@ -370,13 +382,14 @@ function syncCustomizationBundles(copied) {
  *  Also writes studio-manifest.json mapping each template id -> source file's last-modified date,
  *  so the Customization Studio can show an accurate "Last updated" without manual bumps. */
 function syncStudioPreviews(copied) {
-  const studioPreviews = ['sales/capabilities-document.html', 'sales/sales-deck.html', 'sales/budgetary-estimate.html', 'sales/scope-of-work.html', 'sales/proposal.html', 'guides/lg-device-setup-guide.html'];
+  const studioPreviews = ['sales/capabilities-document.html', 'sales/sales-deck.html', 'sales/budgetary-estimate.html', 'sales/scope-of-work.html', 'sales/proposal.html', 'sales/proposal-luci-retrofit.html', 'guides/lg-device-setup-guide.html'];
   const STUDIO_ID = {
     'sales/capabilities-document.html': 'capabilities',
     'sales/sales-deck.html': 'sales-deck',
     'sales/budgetary-estimate.html': 'budget-estimate',
     'sales/scope-of-work.html': 'scope-of-work',
     'sales/proposal.html': 'proposal',
+    'sales/proposal-luci-retrofit.html': 'proposal-luci-retrofit',
     'guides/lg-device-setup-guide.html': 'lg-setup',
   };
   const updated = {};
