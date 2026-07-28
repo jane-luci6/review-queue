@@ -161,6 +161,8 @@ The navy band (`doc-page-band`) carries the page title and a short deck. Below i
 
 Populate from the uploaded spreadsheet via `scripts/ingest-budgetary-lineitems.py` (see “Page 4 line items — Excel ingestion” above). The emitted `be-price-group` / `be-price-row` markup drops straight into the `.be-price` container, after the `.be-price__head` column-label row. Each cell is `contenteditable` (mfg/item/desc + qty/cost/subtotal) for word-level tweaks in preview. **No auto-math in the page** — subtotals come from the spreadsheet (or are computed by the script when the Subtotal column is missing); if you hand-edit a qty or unit price in preview, recompute that row’s subtotal yourself.
 
+**Combine endpoint pricing into one line item.** LUCI OS endpoint licenses must appear as a **single line item** referencing the **total number of endpoints** — never split out by video, audio, or other sub-categories. If Mike’s spreadsheet has them combined, mirror that. If a previous AI run split them into separate video/audio/etc. rows, combine them back into one row with the total endpoint count. The label should match Mike’s spreadsheet (e.g. “LUCI OS & Endpoint Licenses” or “LUCI OS — Annual Partnership”) — do not invent a different label.
+
 ### Investment summary (page 5) — `.doc-page--investment`
 
 | Element | What to change |

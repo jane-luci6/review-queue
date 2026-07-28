@@ -213,6 +213,8 @@ Layout (2×2) stays locked.
 
 **Only include rows that are in Mike’s spreadsheet.** If the spreadsheet has a Sales Tax row, add it as a line item. If it doesn’t, don’t invent one. Same for freight, travel, or any other row — the estimate mirrors the spreadsheet exactly, no added and no removed rows.
 
+**Combine endpoint pricing into one line item.** LUCI OS endpoint licenses must appear as a **single line item** referencing the **total number of endpoints** — never split out by video, audio, or other sub-categories. If Mike’s spreadsheet has them combined, mirror that. If a previous AI run split them into separate video/audio/etc. rows, combine them back into one row with the total endpoint count. The label should match Mike’s spreadsheet (e.g. “LUCI OS & Endpoint Licenses” or “LUCI OS — Annual Partnership”) — do not invent a different label.
+
 ### §5 Terms & warranty (page 12)
 
 | Element | Selector |
