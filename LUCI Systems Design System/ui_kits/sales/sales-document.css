@@ -1658,24 +1658,23 @@ body {
 
 /* ── Field Activation Guide — end-of-section callout (spotlight).
    Scope: <article class="doc doc--activation">. The "bigger picture" callout
-   sits on sand (not dark navy) so it reads as a callout, not a second section
-   header band. Deep-green left bar + tracked label, ink text, gold accent on
-   the lead-in phrase (gold is OK as a secondary accent on sand; never bright
-   mint on sand). */
+   sits on navy-mid (dark blue/grey slate) so the gold lead-in phrase reads as
+   a true two-tone emphasis: off-white body + bright-gold accent, mint left bar
+   + tracked mint label. Dark surface → bright mint + bright gold (per palette). */
 .doc--activation .doc-spotlight {
   margin-top: 0;
   margin-bottom: 0;
   margin-left: calc(-1 * var(--page-pad));
   margin-right: calc(-1 * var(--page-pad));
   padding: 24px var(--page-pad) 26px;
-  border-left: 4px solid var(--accent-light);
-  background: var(--sand);
+  border-left: 4px solid var(--mint);
+  background: var(--navy-mid);
   position: relative;
 }
 .doc--activation .doc-spotlight::after { content: none; }
-.doc--activation .doc-spotlight__label { color: var(--accent-light); }
-.doc--activation .doc-spotlight__text { color: var(--ink-strong); max-width: none; }
-.doc--activation .doc-spotlight__text .doc-leadin__accent { color: var(--ink-strong); }
+.doc--activation .doc-spotlight__label { color: var(--mint); }
+.doc--activation .doc-spotlight__text { color: var(--off-white); max-width: none; }
+.doc--activation .doc-spotlight__text .doc-leadin__accent { color: var(--gold); }
 
 /* Use-case numerals — softicon-style tiles (brochure .cap-softicon pattern):
    a soft mint tile with an inset hairline for odd rows, a warm sand/gold tile
