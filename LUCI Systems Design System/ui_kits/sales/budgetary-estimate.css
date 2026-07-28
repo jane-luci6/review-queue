@@ -520,8 +520,8 @@
 .be-intro__text strong { color: var(--ink-strong); font-weight: 700; }
 
 .be-why {
-  margin-top: 26px;
-  padding-top: 22px;
+  margin-top: 20px;
+  padding-top: 18px;
   border-top: 1px solid var(--rule-light);
 }
 .be-why-head { margin: 0 0 14px; }
@@ -554,7 +554,7 @@
    more of the 816px content column and reads as the page-2 anchor, not a
    small centered afterthought. Max-height raised so the 680×364 master
    renders near its natural aspect (≈600×321) instead of being capped. */
-.be-why-identity { margin: 4px 0 18px; }
+.be-why-identity { margin: 4px 0 14px; }
 .be-why-identity .cap-identity {
   width: 600px;
   max-width: 100%;
@@ -562,27 +562,27 @@
   margin: 0 auto;
 }
 
-/* C — Icon ribbon: six circular icon chips in a single row, name centered
-   under each. No card fill — the icon chips carry the visual weight and the
-   names recede beneath. Symmetric, scannable, reads as a feature strip
-   rather than a grid of containers. */
-.be-why-features .cap-features__kicker { margin: 0 0 10px; }
+/* C2 — Icon ribbon, two rows of three with enlarged icons. Same de-boxed
+   chip treatment as C, but spread across two rows so each icon chip can grow
+   (40 -> 46px) and breathe. Icons enlarged +25% over the single-row C;
+   surrounding margins trimmed a few px so page 2 still fits one sheet. */
+.be-why-features .cap-features__kicker { margin: 0 0 8px; }
 .be-why-features .cap-feature-cards {
-  grid-template-columns: repeat(6, 1fr);
-  gap: 6px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
 }
 .be-why-features .cap-feature-card {
   flex-direction: column;
   align-items: center;
   gap: 7px;
   padding: 6px 4px 8px;
-  border-radius: 12px;
+  border-radius: 14px;
   background: none;
   box-shadow: none;
 }
-.be-why-features .cap-feature-card .cap-softicon { width: 40px; height: 40px; border-radius: 9999px; }
-.be-why-features .cap-feature-card .cap-softicon svg { width: 22px; height: 22px; }
-.be-why-features .cap-feature-card__name { font-size: 11px; line-height: 1.15; text-align: center; }
+.be-why-features .cap-feature-card .cap-softicon { width: 46px; height: 46px; border-radius: 9999px; }
+.be-why-features .cap-feature-card .cap-softicon svg { width: 26px; height: 26px; }
+.be-why-features .cap-feature-card__name { font-size: 11.5px; line-height: 1.15; text-align: center; }
 .be-why-features .cap-feature-card__body { display: none; }
 
 .doc-page--overview { padding-bottom: 0.55in; }
