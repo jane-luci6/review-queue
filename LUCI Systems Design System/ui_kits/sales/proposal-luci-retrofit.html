@@ -59,6 +59,15 @@
   max-width: 28ch;
   white-space: normal;
 }
+/* Remove SOW page background pattern — conflicts with hairlines */
+.doc-page--overview::before,
+.doc-page--phasing::before,
+.doc-page--system-scope::before,
+.doc-page--idf-scope::before,
+.doc-page--terms::before,
+.doc-page--open-items::before {
+  content: none;
+}
 </style>
 </head>
 <body>
