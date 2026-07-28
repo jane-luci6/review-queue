@@ -13,6 +13,53 @@
   <link rel="stylesheet" href="budgetary-estimate.css?v=20">
   <link rel="stylesheet" href="proposal.css?v=7">
   <link rel="stylesheet" href="scope-of-work.css?v=20">
+<style>
+/* Restore BE band header backgrounds — scope-of-work.css strips them globally */
+.be-band > .doc-page-band {
+  background: var(--navy);
+  margin: calc(-1 * var(--page-pad)) calc(-1 * var(--page-pad)) 24px;
+  padding: 0.26in var(--page-pad) 0.3in;
+  min-height: 0;
+}
+.be-band > .doc-page-band::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 4px; left: 0;
+  background-image: url('/assets/textures/texture-circuit-header-mintgold.png');
+  background-repeat: repeat;
+  background-position: right top;
+  background-size: 560px auto;
+  -webkit-mask-image: linear-gradient(90deg, transparent 32%, rgba(0,0,0,0.5) 60%, #000 100%);
+  mask-image: linear-gradient(90deg, transparent 32%, rgba(0,0,0,0.5) 60%, #000 100%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+.be-band > .doc-page-band::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--mint);
+}
+.be-band > .doc-page-band__top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+.be-band > .doc-page-band__title {
+  margin: 0;
+  padding: 0;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: rgba(245, 248, 250, 0.96);
+  max-width: 28ch;
+  white-space: normal;
+}
+</style>
 </head>
 <body>
   <article class="doc">
@@ -37,7 +84,7 @@
     </section>
 
     <!-- PAGE 2 · INTRODUCTION + WHAT LUCI IS -->
-    <section class="doc-page doc-page--band doc-page--overview">
+    <section class="doc-page doc-page--band doc-page--overview be-band">
       <header class="doc-page-band">
         <div class="doc-page-band__top">
           <p class="doc-page-band__kicker">Overview</p>
@@ -105,7 +152,7 @@
     </section>
 
     <!-- PAGE 3 · REVIEW OF SCOPE -->
-    <section class="doc-page doc-page--band doc-page--scope">
+    <section class="doc-page doc-page--band doc-page--scope be-band">
       <header class="doc-page-band">
         <div class="doc-page-band__top">
           <p class="doc-page-band__kicker">Review of scope</p>
@@ -243,7 +290,7 @@
         <h2 class="doc-page-band__title doc-edit" contenteditable="true">Project Phasing</h2>
       </header>
 
-      <p class="doc-section-head__text doc-edit" contenteditable="true">This phasing is a planning structure for scope responsibilities and sequencing; it will be refined after additional tracing/validation of infrastructure terminations and stakeholder expectations.</p>
+      <p class="doc-section-head__text doc-edit" contenteditable="true">This phasing is a planning structure for scope responsibilities and sequencing; it was refined after additional tracing/validation of infrastructure terminations and stakeholder expectations during the onsite walk.</p>
       <ul class="doc-functions">
         <li class="doc-fn">
           <p class="doc-fn__label doc-edit" contenteditable="true">Phase 1 &mdash; Core platform + headends + IPTV foundation</p>
@@ -255,7 +302,7 @@
         </li>
         <li class="doc-fn">
           <p class="doc-fn__label doc-edit" contenteditable="true">Phase 3 &mdash; Optional consolidation / specialty expansions</p>
-          <p class="doc-fn__text doc-edit" contenteditable="true">Sportsbook consolidation (if deferred), additional venue enhancements, incremental content ingestion expansions, and any identified system additions discovered during refinement.</p>
+          <p class="doc-fn__text doc-edit" contenteditable="true">Sportsbook consolidation (if deferred), additional venue enhancements, incremental content ingestion expansions, and any identified system additions identified during scope review.</p>
         </li>
       </ul>
 
@@ -290,7 +337,7 @@
         <h3 class="sow-subsection-title doc-edit" contenteditable="true">4.2 IPTV upgrade (COM3000 + DirecTV)</h3>
         <p class="doc-section-head__text doc-edit" contenteditable="true">LUCI will upgrade the IPTV distribution system to the COM3000 platform including:</p>
         <ul class="sow-scope-list sow-scope-list--bullets">
-          <li class="doc-edit" contenteditable="true">92-channel DirecTV lineup (exact channel map to be confirmed with Ameristar stakeholders)</li>
+          <li class="doc-edit" contenteditable="true">92-channel DirecTV lineup (exact channel map confirmed with Ameristar stakeholders)</li>
           <li class="doc-edit" contenteditable="true">Network distribution to all designated TVs on property, including back-of-house displays</li>
           <li class="doc-edit" contenteditable="true">Integration with LUCI for unified routing/operational control (as applicable)</li>
         </ul>
@@ -303,7 +350,7 @@
           <li class="doc-edit" contenteditable="true">Digital signage marketing content/messages</li>
           <li class="doc-edit" contenteditable="true">Gaming feeds</li>
           <li class="doc-edit" contenteditable="true">Music video channels</li>
-          <li class="doc-edit" contenteditable="true">Other approved local sources (to be finalized during refinement)</li>
+          <li class="doc-edit" contenteditable="true">Other approved local sources (finalized during scope review)</li>
         </ul>
         <p class="sow-list-label doc-edit" contenteditable="true">Deliverables include</p>
         <ul class="sow-scope-list sow-scope-list--bullets">
@@ -342,13 +389,13 @@
 
       <div class="sow-scope-block">
         <h3 class="sow-subsection-title doc-edit" contenteditable="true">4.6 Secure remote access architecture (LUCI-provided firewall)</h3>
-        <p class="doc-section-head__text doc-edit" contenteditable="true">Provide a LUCI-supplied firewall enabling secure remote access for authorized users and support. Conceptual intent (to be refined):</p>
+        <p class="doc-section-head__text doc-edit" contenteditable="true">Provide a LUCI-supplied firewall enabling secure remote access for authorized users and support. Architecture intent (refined during scope review):</p>
         <ul class="sow-scope-list sow-scope-list--bullets">
           <li class="doc-edit" contenteditable="true">A user on Ameristar Black Hawk Guest Wi&#8209;Fi uses an approved control surface device.</li>
           <li class="doc-edit" contenteditable="true">The device routes out to the internet and back in through a segregated ISP path terminating at the LUCI-provided firewall.</li>
           <li class="doc-edit" contenteditable="true">The firewall provides authenticated, policy-controlled access to the segmented AV environment without bridging Guest Wi&#8209;Fi directly into the AV network.</li>
         </ul>
-        <p class="sow-list-label doc-edit" contenteditable="true">Refinement deliverable</p>
+        <p class="sow-list-label doc-edit" contenteditable="true">Architecture deliverable</p>
         <ul class="sow-scope-list sow-scope-list--bullets">
           <li class="doc-edit" contenteditable="true">A short architecture diagram + written explanation identifying the VLANs/ISPs, authentication method, and permitted flows for control and support.</li>
         </ul>
@@ -382,7 +429,7 @@
       <h3 class="sow-subsection-title doc-edit" contenteditable="true">5.2 IDF-A &mdash; ISP ingest / network switching (as required)</h3>
       <ul class="sow-scope-list sow-scope-list--bullets">
         <li class="doc-edit" contenteditable="true">Evaluate requirement for a network switch and/or associated components to ingest a separate ISP feed used for remote access architecture.</li>
-        <li class="doc-edit" contenteditable="true">Implement required switching/configuration to support the segregated ISP termination approach (final design pending refinement).</li>
+        <li class="doc-edit" contenteditable="true">Implement required switching/configuration to support the segregated ISP termination approach (final design confirmed during scope review).</li>
       </ul>
 
       <h3 class="sow-subsection-title doc-edit" contenteditable="true">5.3 Hotel Level 8 IDF &mdash; DirecTV dish feed location / IPTV headend</h3>
@@ -415,7 +462,7 @@
         <li class="doc-edit" contenteditable="true">Integrate spa audio control into LUCI workflows as appropriate</li>
       </ul>
 
-      <h3 class="sow-subsection-title doc-edit" contenteditable="true">5.6 Mezz Level 7 IDF &mdash; meeting/hospitality conferencing backbone (pending further investigation)</h3>
+      <h3 class="sow-subsection-title doc-edit" contenteditable="true">5.6 Mezz Level 7 IDF &mdash; meeting/hospitality conferencing backbone (confirmed during the onsite walk)</h3>
       <p class="sow-list-label doc-edit" contenteditable="true">Target rooms/spaces (current understanding)</p>
       <ul class="sow-scope-list sow-scope-list--bullets">
         <li class="doc-edit" contenteditable="true">Level 5: Summit Room (projector/screen replacement required)</li>
@@ -432,7 +479,7 @@
         <li class="doc-edit" contenteditable="true">Centralize AV components into the appropriate IDF (potentially Mezz Level 7), subject to confirmation of cabling terminations and pathways</li>
         <li class="doc-edit" contenteditable="true">Integrate all rooms into LUCI for shared control, setup, oversight, maintenance, and support</li>
       </ul>
-      <p class="sow-list-label doc-edit" contenteditable="true">Infrastructure expectations (to be validated)</p>
+      <p class="sow-list-label doc-edit" contenteditable="true">Infrastructure expectations (validated during the onsite walk)</p>
       <ul class="sow-scope-list sow-scope-list--bullets">
         <li class="doc-edit" contenteditable="true">CAT6 cabling to projector(s) and input wall plates (Summit Room)</li>
         <li class="doc-edit" contenteditable="true">Confirmation of existing terminations for video/audio/control to the selected IDF</li>
@@ -454,7 +501,7 @@
         <h2 class="doc-page-band__title doc-edit" contenteditable="true">Deliverables</h2>
       </header>
 
-      <p class="doc-section-head__text doc-edit" contenteditable="true">Upon budget and Scope of Work approval, LUCI will provide deliverables refined with stakeholder feedback, including at minimum:</p>
+      <p class="doc-section-head__text doc-edit" contenteditable="true">LUCI will provide deliverables refined with stakeholder feedback, including at minimum:</p>
       <ul class="sow-scope-list sow-scope-list--ledger">
         <li class="doc-edit" contenteditable="true">Final Scope of Work with phase boundaries and responsibilities</li>
         <li class="doc-edit" contenteditable="true">Site-validated existing infrastructure reuse plan (what stays vs. what must change)</li>
@@ -477,19 +524,19 @@
 
       <p class="sow-list-label doc-edit" contenteditable="true">Assumptions</p>
       <ul class="sow-scope-list sow-scope-list--bullets">
-        <li class="doc-edit" contenteditable="true">Property access and escort/support will be provided for validation walks and cutover windows.</li>
-        <li class="doc-edit" contenteditable="true">Existing speakers/cabling/racks/power are reused where viable, subject to verification.</li>
-        <li class="doc-edit" contenteditable="true">Meeting room termination locations may require further tracing and validation.</li>
+        <li class="doc-edit" contenteditable="true">Property access and escort/support were provided for the onsite walk and will be provided for cutover windows.</li>
+        <li class="doc-edit" contenteditable="true">Existing speakers/cabling/racks/power are reused where viable, verified during the onsite walk.</li>
+        <li class="doc-edit" contenteditable="true">Meeting room termination locations were traced and validated during the onsite walk.</li>
       </ul>
       <p class="sow-list-label doc-edit" contenteditable="true">Constraints</p>
       <ul class="sow-scope-list sow-scope-list--bullets">
         <li class="doc-edit" contenteditable="true">Systems must support a 24/7 operational environment with minimal disruption.</li>
       </ul>
-      <p class="sow-list-label doc-edit" contenteditable="true">Exclusions (unless added during refinement)</p>
+      <p class="sow-list-label doc-edit" contenteditable="true">Exclusions (unless added by written amendment)</p>
       <ul class="sow-scope-list sow-scope-list--bullets">
         <li class="doc-edit" contenteditable="true">High-voltage electrical work</li>
         <li class="doc-edit" contenteditable="true">Structural/architectural modifications beyond minor mounting/cabling as explicitly identified</li>
-        <li class="doc-edit" contenteditable="true">Any spaces not listed above, unless later added by written scope refinement</li>
+        <li class="doc-edit" contenteditable="true">Any spaces not listed above, unless added by written scope amendment</li>
       </ul>
 
       <div class="doc-foot">
@@ -505,15 +552,15 @@
         <div class="doc-page-band__top">
           <p class="doc-page-band__kicker doc-edit" contenteditable="true">Deliverables &amp; terms</p>
         </div>
-        <h2 class="doc-page-band__title doc-edit" contenteditable="true">Open Items to Confirm</h2>
+        <h2 class="doc-page-band__title doc-edit" contenteditable="true">Confirmed Scope Items</h2>
       </header>
 
       <div class="doc-takeaway sow-open-items">
-        <p class="sow-list-label doc-edit" contenteditable="true">Next refinement pass</p>
+        <p class="sow-list-label doc-edit" contenteditable="true">Confirmed during the onsite walk</p>
         <ul class="sow-scope-list sow-scope-list--bullets">
-          <li class="doc-edit" contenteditable="true">Confirm the full list of IPTV endpoints / TV counts (all property TVs + BOH displays) and any special routing requirements.</li>
-          <li class="doc-edit" contenteditable="true">Trace and confirm meeting room infrastructure terminations to determine the best IDF for centralized components (Mezz Level 7 vs. alternative).</li>
-          <li class="doc-edit" contenteditable="true">Confirm expectation level for meeting spaces (camera/mics, BYOD, DSP, room combine UX, touch panels/tablets, etc.).</li>
+          <li class="doc-edit" contenteditable="true">The full list of IPTV endpoints / TV counts (all property TVs + BOH displays) and any special routing requirements are confirmed.</li>
+          <li class="doc-edit" contenteditable="true">Meeting room infrastructure terminations were traced and confirmed to determine the best IDF for centralized components (Mezz Level 7 vs. alternative).</li>
+          <li class="doc-edit" contenteditable="true">Expectation level for meeting spaces (camera/mics, BYOD, DSP, room combine UX, touch panels/tablets, etc.) is confirmed.</li>
         </ul>
       </div>
 
@@ -524,7 +571,7 @@
     </section>
 
     <!-- PAGE 12 · PROPOSAL -->
-    <section class="doc-page doc-page--band doc-page--proposal">
+    <section class="doc-page doc-page--band doc-page--proposal be-band">
       <header class="doc-page-band">
         <div class="doc-page-band__top">
           <p class="doc-page-band__kicker">Proposal</p>
@@ -630,7 +677,7 @@
     </section>
 
     <!-- PAGE 13 · INVESTMENT SUMMARY + WHAT IT DELIVERS -->
-    <section class="doc-page doc-page--band doc-page--investment">
+    <section class="doc-page doc-page--band doc-page--investment be-band">
       <header class="doc-page-band">
         <div class="doc-page-band__top">
           <p class="doc-page-band__kicker">Pricing</p>
