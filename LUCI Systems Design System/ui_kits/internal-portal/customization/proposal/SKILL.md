@@ -12,7 +12,7 @@ description: >-
 
 Post-survey proposal for LED wall installations. **14 pages (US Letter)** — cover, contents, then five numbered sections: §1 Project overview (dark), §2 Built on COB (dark, spans the COB advantage + project gallery), §3 Scope of work (spans scope + coordination + per-pitch design specs), §4 Fee schedule & payment terms (estimates first — one estimate page per LED installation, flowing across pages — then payment milestones + fine print), §5 Terms & warranty, then a close page (Next step + contacts — no signature block). Source master: `proposal.html` in this folder (build copy from `ui_kits/sales/`).
 
-**Section numbering rule:** a section number appears only on the first page of that section (the band big-numeral + title). Continuation pages within the same section carry a `.led-subhead` instead — no repeated number. So §3's number lives on page 6 only; pages 7–9 use subheads ("Coordination & Training", "Design Specifications — <pitch>"). §4's number lives on page 10 (Estimate 01 opener). Estimate 02 on p11 and Payment Terms on p12 are subheads — no repeated §4 number. §5's number lives on page 13 (Terms).
+**Section numbering rule:** a section number appears only on the first page of that section (the band big-numeral + title). Continuation pages within the same section carry a `.led-subhead` instead — no repeated number. So §3's number lives on page 5 only; pages 6–8 use subheads ("Coordination & Training", "Design Specifications — <pitch>"). §4's number lives on page 9 (Estimate 01 opener). Estimate 02 on p10 and Payment Terms on p11 are subheads — no repeated §4 number. §5's number lives on page 12 (Terms).
 
 Also read: `../_brand/SKILL.md` — especially **Efficient customization (read this first)**. This is a populate-in-place job; never rebuild.
 
@@ -81,24 +81,23 @@ After a site survey or discovery for an LED wall project (casino sportsbook, cen
 | Page | Section | Canvas | Status |
 |------|---------|--------|--------|
 | **1** | Cover | Dark | **EDITABLE** (see exceptions below) |
-| **2** | Contents | Light | **EDITABLE** (section titles + page numbers) |
-| **3** | §1 Project overview | Dark | **EDITABLE** (deck, intent/approach/outcome/standard narrative, scope list, 4 stat values, pairing callout) |
-| **4** | §2 Built on COB — The COB Advantage (part 1 of 2) | Dark | **LOCKED** (advantage tiles, NovaStar architecture, 4 stat tiles) — boilerplate |
-| **5** | §2 Built on COB — Project Gallery (part 2 of 2, no repeated §2 header) | Dark | **EDITABLE** photos + captions (Mike swaps images); **LOCKED** layout |
-| **6** | §3 Scope of work | Light | **EDITABLE** (included / not-included lists); **LOCKED** process paragraph |
-| **7** | §3 Scope of work — Coordination & training (cont.) | Light | **EDITABLE** (client obligations, punch-list line); **LOCKED** PM/training boilerplate |
-| **8** | §3 Scope of work — Design specifications, pitch 1 (cont.) | Light | **EDITABLE** (all spec values + pitch in subhead); **LOCKED** spec row labels |
-| **9** | §3 Scope of work — Design specifications, pitch 2 (cont.) | Light | **EDITABLE** (all spec values + pitch in subhead); **LOCKED** spec row labels |
-| **10** | §4 Fee schedule & payment terms — Estimate 01 (section opener) | Light | **EDITABLE** (all line items, qty, rate, amount, total, estimate #, date, name) |
-| **11** | §4 Fee schedule — Estimate 02 (cont., clone per install) | Light | **EDITABLE** — clone this page for each additional LED installation |
-| **12** | §4 Fee schedule — Payment Terms (cont.) | Light | **EDITABLE** (milestones + all fine print: USD note + tariff) |
-| **13** | §5 Terms & warranty | Light | **EDITABLE** (warranty duration); **LOCKED** 4-column warranty boilerplate |
-| **14** | Close (Next step + contacts) | Dark | **EDITABLE** (next-step body, contact name/email); **LOCKED** structure + LUCI company info |
+| **2** | §1 Project overview | Dark | **EDITABLE** (deck, intent/approach/outcome/standard narrative, scope list, 4 stat values, pairing callout) |
+| **3** | §2 Built on COB — The COB Advantage (part 1 of 2) | Dark | **LOCKED** (advantage tiles, NovaStar architecture, 4 stat tiles) — boilerplate |
+| **4** | §2 Built on COB — Project Gallery (part 2 of 2, no repeated §2 header) | Dark | **EDITABLE** photos + captions (Mike swaps images); **LOCKED** layout |
+| **5** | §3 Scope of work | Light | **EDITABLE** (included / not-included lists); **LOCKED** process paragraph |
+| **6** | §3 Scope of work — Coordination & training (cont.) | Light | **EDITABLE** (client obligations, punch-list line); **LOCKED** PM/training boilerplate |
+| **7** | §3 Scope of work — Design specifications, pitch 1 (cont.) | Light | **EDITABLE** (all spec values + pitch in subhead); **LOCKED** spec row labels |
+| **8** | §3 Scope of work — Design specifications, pitch 2 (cont.) | Light | **EDITABLE** (all spec values + pitch in subhead); **LOCKED** spec row labels |
+| **9** | §4 Fee schedule & payment terms — Estimate 01 (section opener) | Light | **EDITABLE** (all line items, qty, rate, amount, total, estimate #, date, name) |
+| **10** | §4 Fee schedule — Estimate 02 (cont., clone per install) | Light | **EDITABLE** — clone this page for each additional LED installation |
+| **11** | §4 Fee schedule — Payment Terms (cont.) | Light | **EDITABLE** (milestones + all fine print: USD note + tariff) |
+| **12** | §5 Terms & warranty | Light | **EDITABLE** (warranty duration); **LOCKED** 4-column warranty boilerplate |
+| **13** | Close (Next step + contacts) | Dark | **EDITABLE** (next-step body, contact name/email); **LOCKED** structure + LUCI company info |
 
 ### Variable page counts
 
-- **Spec pages (8–9):** one page per pixel pitch in the project, all under §3 (subheads, no repeated section number). Add or remove `.doc-page--led-specs` sections to match the number of pitches.
-- **Estimate pages (10+):** one estimate per LED installation, all under §4 (subheads, no repeated section number). Each estimate flows continuously across as many pages as its line items need — add a “continues on the following page” note when an estimate spans pages. Clone the estimate section for each installation; renumber trailing page footers (`doc-foot__page`) only — do **not** add a `sow-band-bignum` to continuation pages. Payment Terms (p12) is also a §4 continuation page (subhead, no number). Update the Contents page (p2) page numbers to match.
+- **Spec pages (7–8):** one page per pixel pitch in the project, all under §3 (subheads, no repeated section number). Add or remove `.doc-page--led-specs` sections to match the number of pitches.
+- **Estimate pages (9+):** one estimate per LED installation, all under §4 (subheads, no repeated section number). Each estimate flows continuously across as many pages as its line items need — add a "continues on the following page" note when an estimate spans pages. Clone the estimate section for each installation; renumber trailing page footers (`doc-foot__page`) only — do **not** add a `sow-band-bignum` to continuation pages. Payment Terms (p11) is also a §4 continuation page (subhead, no number).
 
 ### Cover exceptions (page 1 — do not change)
 
@@ -130,16 +129,7 @@ Everything else on the cover with `doc-edit` / `contenteditable="true"` is edita
 **Proposal date:** the master shows "Today" as a placeholder; a small inline script stamps the current date on load (only while the placeholder is still "Today"). When generating a client proposal, **replace "Today" with the issue date** (e.g. "July 27, 2026") as a static value — a real date persists and the script leaves it alone.
 
 
-### Contents (page 2) — `.doc-page--led-toc`
-
-| Element | Selector |
-|---------|----------|
-| Heading | `[data-studio="toc-heading"]` |
-| Row N num / title / page | `[data-studio="toc-N-num"]` / `toc-N-title` / `toc-N-pg` (N = 1–5) |
-
-**No Agreement row** — the close page sits outside the numbered TOC. Plain off-white page — no circuit overlay.
-
-### Project overview (page 3) — `.doc-page--led-overview`
+### Project overview (page 2) — `.doc-page--led-overview`
 
 | Element | Selector |
 |---------|----------|
@@ -149,11 +139,11 @@ Everything else on the cover with `doc-edit` / `contenteditable="true"` is edita
 | Pairing / note | `overview-pairing` / `overview-note` |
 | Stats | `overview-stat-1` … `overview-stat-4` |
 
-### §2 Technology Overview — COB Advantage (page 4)
+### §2 Technology Overview — COB Advantage (page 3)
 
 Mike may click-edit any text here. Hooks: `tech-title`, `tech-cob-subhead`, `tech-cob-deck`, `tech-stat-1`…`4`, plus auto-* on advantage tiles / arch paragraph. **Agent:** treat as brand boilerplate — only change when Mike asks; do not invent alternate tech claims.
 
-### §2 Project Gallery (page 5)
+### §2 Project Gallery (page 4)
 
 | Element | Selector |
 |---------|----------|
@@ -165,7 +155,7 @@ Layout (2×2) stays locked.
 
 **Section title follows the photos Mike uploads:** if Mike provides design renderings of the proposed install, title the section “Design Renderings” (subhead + deck). If Mike provides photos of past installations, title it “Project Gallery.” Match the subhead and deck copy to whichever Mike provides.
 
-### §3 Scope of work (page 6)
+### §3 Scope of work (page 5)
 
 | Element | Selector |
 |---------|----------|
@@ -175,7 +165,7 @@ Layout (2×2) stays locked.
 
 **Locked:** certified-technicians / kickoff process callout.
 
-### §3 Coordination & training (page 7)
+### §3 Coordination & training (page 6)
 
 | Element | Selector |
 |---------|----------|
@@ -185,7 +175,7 @@ Layout (2×2) stays locked.
 
 **Locked:** PM + training boilerplate rows.
 
-### §3 Design specifications (pages 8–9)
+### §3 Design specifications (pages 7–8)
 
 | Element | Selector |
 |---------|----------|
@@ -195,7 +185,7 @@ Layout (2×2) stays locked.
 
 **Locked:** `.led-spec-row__label` schema. N = pitch page (1, 2, …).
 
-### §4 Fee schedule — Payment Terms (page 12, continuation)
+### §4 Fee schedule — Payment Terms (page 11, continuation)
 
 | Element | Selector |
 |---------|----------|
@@ -207,7 +197,7 @@ Layout (2×2) stays locked.
 
 **Populate from Mike’s input — not a fixed template.** Most proposals show dollar amounts per milestone ($77,145.11 / $65,145.11 / …); some show percentages (50% / 50% / Remaining). Use whichever Mike provides. If Mike gives dollar amounts, include a one-line description of what’s in each milestone (equipment vs. professional services vs. balance). Reconcile the milestones to the estimate total in the fine print.
 
-### §4 Fee schedule — Estimates (pages 10–11, section opener)
+### §4 Fee schedule — Estimates (pages 9–10, section opener)
 
 | Element | Selector |
 |---------|----------|
@@ -221,7 +211,7 @@ Layout (2×2) stays locked.
 
 **Only include rows that are in Mike’s spreadsheet.** If the spreadsheet has a Sales Tax row, add it as a line item. If it doesn’t, don’t invent one. Same for freight, travel, or any other row — the estimate mirrors the spreadsheet exactly, no added and no removed rows.
 
-### §5 Terms & warranty (page 13)
+### §5 Terms & warranty (page 12)
 
 | Element | Selector |
 |---------|----------|
@@ -230,7 +220,7 @@ Layout (2×2) stays locked.
 
 **Locked:** 4-column warranty grid + extended-warranty paragraph.
 
-### Close (page 14)
+### Close (page 13)
 
 | Element | Selector |
 |---------|----------|
@@ -312,13 +302,12 @@ If preview shows wrong fonts after an edit, the HTML structure was likely broken
 
 **New LED project from site notes**
 1. Cover (p1): project title, prepared-for, basis, logo, display `<em>` name, and **stamp the proposal date** (replace the "Today" placeholder with the issue date).
-2. Contents (p2): confirm section titles + page numbers match the final page count.
-3. §1 Project overview (p3): rewrite the intent/approach/outcome/standard narrative; set the 4 stat values to the proposed panel's pitch / angle / lifespan / IP.
-4. §3 Scope of work — Design specifications (p8–9): set spec values per pixel pitch; add/remove spec pages to match the number of pitches (subheads, no repeated §3 number).
-5. §4 Fee schedule — Payment Terms (p12): set fee milestones per contract.
-6. §4 Fee schedule — Estimates (p10+): one estimate per LED installation — populate line items, qty, rate, amount, total (subheads, no repeated §4 number). Let each estimate flow across pages if line items exceed one page.
-7. §5 Terms & warranty (p13): set warranty duration per contract.
-8. Close (p14): set the next-step body + the contact name/email (no signature block).
+2. §1 Project overview (p2): rewrite the intent/approach/outcome/standard narrative; set the 4 stat values to the proposed panel's pitch / angle / lifespan / IP.
+3. §3 Scope of work — Design specifications (p7–8): set spec values per pixel pitch; add/remove spec pages to match the number of pitches (subheads, no repeated §3 number).
+4. §4 Fee schedule — Payment Terms (p11): set fee milestones per contract.
+5. §4 Fee schedule — Estimates (p9+): one estimate per LED installation — populate line items, qty, rate, amount, total (subheads, no repeated §4 number). Let each estimate flow across pages if line items exceed one page.
+6. §5 Terms & warranty (p12): set warranty duration per contract.
+7. Close (p13): set the next-step body + the contact name/email (no signature block).
 
 **Update `<title>`** in `<head>` to reflect client/project name.
 
