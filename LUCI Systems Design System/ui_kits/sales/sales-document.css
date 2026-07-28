@@ -1404,6 +1404,48 @@ body {
 .doc-page--close a:hover { text-decoration: underline; }
 .doc-close__logo { height: 28px; width: auto; display: block; }
 
+/* ── CTA button (proof + close pages) — mint pill, navy text. */
+.doc-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 28px;
+  background: var(--mint);
+  color: var(--navy-deep);
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 12.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 9999px;
+}
+.doc-cta::after { content: '\2192'; font-weight: 400; letter-spacing: 0; }
+.doc-page--close .doc-cta { background: var(--mint); color: var(--navy-deep); }
+.doc-page--close .doc-cta:hover { text-decoration: none; }
+
+/* ── Proof-page CTA band (pins just above the footer to fill the empty bottom). */
+.doc--activation .doc-proof__cta {
+  margin-top: auto;
+  padding-top: 28px;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  flex-wrap: wrap;
+}
+.doc--activation .doc-proof__cta-text {
+  margin: 0;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: var(--ink-strong);
+  max-width: 40ch;
+}
+/* Close-page CTA: sit just below the body text (lead stays vertically centered). */
+.doc--activation .doc-close__lead .doc-cta { margin-top: 26px; }
+
 /* ── Draft badge (screen only) ─────────────────────────────────────────────── */
 .doc-draft-badge {
   position: absolute;
@@ -1724,7 +1766,7 @@ body {
   margin-bottom: 8px;
 }
 .doc--activation .doc-statement { margin-bottom: 20px; }
-.doc--activation .doc-proof__lead { margin: 0 0 24px; }
+.doc--activation .doc-proof__lead { margin: 0 0 24px; font-size: 14px; line-height: 1.6; color: var(--navy-muted); }
 .doc--activation .doc-proof__intro { margin-top: 0; }
 .doc--activation .doc-takeaway { margin-top: 22px; margin-bottom: 8px; }
 /* On section pages the sheet distributes even gaps via justify-content:
