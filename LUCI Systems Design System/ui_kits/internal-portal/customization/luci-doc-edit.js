@@ -208,7 +208,27 @@
     else window.prompt('Copy this HTML (Cmd+C), then paste over your working .html file:', html);
   }
 
-  function downloadPdf() {
+  function isInEditorViewer() {
+    // Cursor's in-editor (Glass) browser is an Electron webview. Its print path
+    // can't open a native dialog — calling window.print() here crashes the pane
+    // (and can take the whole window with it). Detect that context so the button
+    // degrades to a hint instead of crashing.
+    try {
+      var ua = (navigator.userAgent || '').toLowerCase();
+      if (ua.indexOf('electron') !== -1 || ua.indexOf('cursor') !== -1) return true;
+      if (window.process && window.process.versions && window.process.versions.electron) return true;
+    } catch (e) {}
+    return false;
+  }
+
+  function downloadPdf(btn) {
+    if (isInEditorViewer()) {
+      // Don't call window.print() — it crashes the in-editor pane. Ask the agent
+      // to render the PDF (it runs the headless-Chrome pipeline), or open this
+      // page in a real browser and use Cmd+P → Save as PDF.
+      if (btn) flashButton(btn, 'Ask for PDF');
+      return;
+    }
     window.print();
   }
 
@@ -242,8 +262,8 @@
     bar.querySelector('[data-action="copy-html"]').addEventListener('click', function (e) {
       copyHtml(e.currentTarget);
     });
-    bar.querySelector('[data-action="download-pdf"]').addEventListener('click', function () {
-      downloadPdf();
+    bar.querySelector('[data-action="download-pdf"]').addEventListener('click', function (e) {
+      downloadPdf(e.currentTarget);
     });
   }
 
