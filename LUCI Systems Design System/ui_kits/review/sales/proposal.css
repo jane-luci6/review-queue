@@ -1068,6 +1068,8 @@
   color: rgba(235, 245, 248, 0.6);
 }
 .doc-page--close .doc-foot__page { color: var(--mint); }
+/* Center the company block vertically between the top divider and the footer hairline */
+.doc-page--close .doc-close__contacts { align-items: center; padding-top: 16px; padding-bottom: 16px; }
 @media print {
   .led-feature-card, .led-feature-card__icon, .led-callout,
   .led-check-panel, .led-check-list li::before {
