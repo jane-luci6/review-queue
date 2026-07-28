@@ -208,20 +208,66 @@
     else window.prompt('Copy this HTML (Cmd+C), then paste over your working .html file:', html);
   }
 
-  function downloadPdf(btn) {
-    // NEVER call window.print() from the default edit-bar path.
-    // Cursor's in-editor browser advertises as Chrome, so UA sniffing fails —
-    // and window.print() crashes the pane (sometimes the whole Cursor window).
-    // Brand-correct PDFs come from scripts/render-pdf.sh via the agent
-    // ("make a PDF"). Escape hatch for a real browser only: ?allow-print=1
-    if (!/\ballow-print=1\b/.test(location.search || '')) {
-      if (btn) flashButton(btn, 'Ask chat: make a PDF');
+  async function downloadPdf(btn) {
+    // Never call window.print() — it crashes Cursor's in-editor browser.
+    // On the LUCI dev server, render via POST /__pdf (headless Chrome pipeline).
+    if (!onDevServer()) {
+      if (btn) flashButton(btn, 'Need local preview');
+      window.alert('Download PDF needs the LUCI local preview server (http://127.0.0.1:8771).\n\nAsk Cursor to restart the server and open the preview, then click Download PDF again.');
       return;
     }
+
+    var prev = btn ? btn.textContent : 'Download PDF';
+    if (btn) {
+      btn.textContent = 'Rendering…';
+      btn.disabled = true;
+    }
+
     try {
-      window.print();
-    } catch (e) {
-      if (btn) flashButton(btn, 'Ask chat: make a PDF');
+      // Persist click-to-edit changes first so the PDF matches what you see.
+      try {
+        await fetch('/__save', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ path: window.location.pathname, html: serializeHtml() })
+        });
+      } catch (saveErr) {
+        console.warn('Pre-PDF save skipped:', saveErr && saveErr.message);
+      }
+
+      var res = await fetch('/__pdf', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ path: window.location.pathname })
+      });
+
+      if (!res.ok) {
+        var detail = '';
+        var ct = res.headers.get('Content-Type') || '';
+        if (ct.indexOf('application/json') !== -1) {
+          try { detail = (await res.json()).error || ''; } catch (e) {}
+        } else {
+          try { detail = await res.text(); } catch (e) {}
+        }
+        throw new Error(detail || ('PDF failed (' + res.status + ')'));
+      }
+
+      var blob = await res.blob();
+      var base = (window.location.pathname.split('/').pop() || 'document.html').replace(/\.html$/i, '');
+      downloadBlob(base + '.pdf', blob);
+      if (btn) {
+        btn.textContent = prev;
+        flashButton(btn, 'Downloaded');
+      }
+    } catch (err) {
+      console.error('PDF render failed:', err);
+      if (btn) {
+        btn.textContent = prev;
+        flashButton(btn, 'Failed');
+      }
+      window.alert('Could not generate the PDF.\n\n' + ((err && err.message) || err) + '\n\nYou can also ask Cursor: make a PDF.');
+    } finally {
+      if (btn) btn.disabled = false;
     }
   }
 
