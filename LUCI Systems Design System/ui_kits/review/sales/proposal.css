@@ -1078,8 +1078,21 @@
   isolation: isolate;
   overflow: hidden;
 }
-/* Pattern removed per Jane — plain navy, no circuit texture. Clean close page. */
-.led-signoff-band::before { content: none; }
+/* Circuit texture — mint/gold pattern on the right, masked to fade left. */
+.led-signoff-band::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('../../assets/textures/texture-circuit-header-mintgold.png');
+  background-repeat: repeat;
+  background-position: right center;
+  background-size: 640px auto;
+  -webkit-mask-image: linear-gradient(90deg, transparent 35%, rgba(0,0,0,0.45) 68%, #000 100%);
+          mask-image: linear-gradient(90deg, transparent 35%, rgba(0,0,0,0.45) 68%, #000 100%);
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+}
 .led-signoff-band::after {
   content: '';
   position: absolute;
@@ -1152,7 +1165,7 @@
 .led-close a { color: var(--mint); font-weight: 600; text-decoration: none; }
 .led-close a:hover { text-decoration: underline; }
 
-/* Full-bleed navy close page — bookends the cover; center the close content vertically. */
+/* Full-bleed navy close page — bookends the cover; close content pinned to the bottom (matches BE close panel). */
 .doc-page--led-signoff {
   background: var(--navy);
   display: flex;
@@ -1162,7 +1175,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
 }
 /* Footer recolored for dark background (default is dark text for light pages) */
 .doc-page--led-signoff .doc-foot {
