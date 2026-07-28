@@ -34,6 +34,12 @@ class LUCIDevHandler(http.server.SimpleHTTPRequestHandler):
         self.send_header('Access-Control-Allow-Origin', '*')
         self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
         self.send_header('Access-Control-Allow-Headers', 'Content-Type')
+        # Edit-bar JS/CSS must never stick in Glass cache — stale copies still
+        # called window.print() and crashed Cursor.
+        path = unquote(getattr(self, 'path', '').split('?', 1)[0])
+        if path.endswith(('luci-doc-edit.js', 'luci-doc-edit.css')):
+            self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate')
+            self.send_header('Pragma', 'no-cache')
         super().end_headers()
 
     def do_OPTIONS(self):
@@ -84,8 +90,10 @@ class LUCIDevHandler(http.server.SimpleHTTPRequestHandler):
         # already has them — don't double-inject).
         if 'luci-doc-edit.css' in html and 'luci-doc-edit.js' in html:
             return html
-        css_tag = '<link rel="stylesheet" href="%s">' % self.EDIT_BAR_CSS
-        js_tag = '<script src="%s"></script>' % self.EDIT_BAR_JS
+        # Cache-bust so Glass/Simple Browser always picks up edit-bar fixes
+        # (e.g. Download PDF no longer calling window.print()).
+        css_tag = '<link rel="stylesheet" href="%s?v=3">' % self.EDIT_BAR_CSS
+        js_tag = '<script src="%s?v=3"></script>' % self.EDIT_BAR_JS
         head_close = html.rfind('</head>')
         if head_close != -1:
             return html[:head_close] + css_tag + js_tag + html[head_close:]

@@ -208,8 +208,21 @@
     else window.prompt('Copy this HTML (Cmd+C), then paste over your working .html file:', html);
   }
 
-  function downloadPdf() {
-    window.print();
+  function downloadPdf(btn) {
+    // NEVER call window.print() from the default edit-bar path.
+    // Cursor's in-editor browser advertises as Chrome, so UA sniffing fails —
+    // and window.print() crashes the pane (sometimes the whole Cursor window).
+    // Brand-correct PDFs come from scripts/render-pdf.sh via the agent
+    // ("make a PDF"). Escape hatch for a real browser only: ?allow-print=1
+    if (!/\ballow-print=1\b/.test(location.search || '')) {
+      if (btn) flashButton(btn, 'Ask chat: make a PDF');
+      return;
+    }
+    try {
+      window.print();
+    } catch (e) {
+      if (btn) flashButton(btn, 'Ask chat: make a PDF');
+    }
   }
 
   function mountToolbar(ctx) {
@@ -242,8 +255,8 @@
     bar.querySelector('[data-action="copy-html"]').addEventListener('click', function (e) {
       copyHtml(e.currentTarget);
     });
-    bar.querySelector('[data-action="download-pdf"]').addEventListener('click', function () {
-      downloadPdf();
+    bar.querySelector('[data-action="download-pdf"]').addEventListener('click', function (e) {
+      downloadPdf(e.currentTarget);
     });
   }
 

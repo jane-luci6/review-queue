@@ -208,28 +208,21 @@
     else window.prompt('Copy this HTML (Cmd+C), then paste over your working .html file:', html);
   }
 
-  function isInEditorViewer() {
-    // Cursor's in-editor (Glass) browser is an Electron webview. Its print path
-    // can't open a native dialog — calling window.print() here crashes the pane
-    // (and can take the whole window with it). Detect that context so the button
-    // degrades to a hint instead of crashing.
-    try {
-      var ua = (navigator.userAgent || '').toLowerCase();
-      if (ua.indexOf('electron') !== -1 || ua.indexOf('cursor') !== -1) return true;
-      if (window.process && window.process.versions && window.process.versions.electron) return true;
-    } catch (e) {}
-    return false;
-  }
-
   function downloadPdf(btn) {
-    if (isInEditorViewer()) {
-      // Don't call window.print() — it crashes the in-editor pane. Ask the agent
-      // to render the PDF (it runs the headless-Chrome pipeline), or open this
-      // page in a real browser and use Cmd+P → Save as PDF.
-      if (btn) flashButton(btn, 'Ask for PDF');
+    // NEVER call window.print() from the default edit-bar path.
+    // Cursor's in-editor browser advertises as Chrome, so UA sniffing fails —
+    // and window.print() crashes the pane (sometimes the whole Cursor window).
+    // Brand-correct PDFs come from scripts/render-pdf.sh via the agent
+    // ("make a PDF"). Escape hatch for a real browser only: ?allow-print=1
+    if (!/\ballow-print=1\b/.test(location.search || '')) {
+      if (btn) flashButton(btn, 'Ask chat: make a PDF');
       return;
     }
-    window.print();
+    try {
+      window.print();
+    } catch (e) {
+      if (btn) flashButton(btn, 'Ask chat: make a PDF');
+    }
   }
 
   function mountToolbar(ctx) {
