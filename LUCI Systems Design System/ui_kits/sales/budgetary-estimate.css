@@ -430,9 +430,13 @@
     width: 150px !important;
     height: 48px !important;
   }
-  .be-why-features .cap-feature-cards {
+  .be-why-features {
     background: linear-gradient(155deg, #E6F5EF 0%, #F3FAF8 100%) !important;
     box-shadow: inset 0 0 0 1px rgba(43, 158, 128, 0.14) !important;
+  }
+  .be-why-features .cap-feature-cards {
+    background: none !important;
+    box-shadow: none !important;
   }
 }
 
@@ -530,7 +534,7 @@
   padding-top: 16px;
   border-top: 1px solid var(--rule-light);
 }
-.be-why-head { margin: 0 0 14px; }
+.be-why-head { margin: 0 0 12px; }
 .be-why-head__kicker {
   margin: 0 0 6px;
   font-family: var(--font);
@@ -560,7 +564,7 @@
    more of the 816px content column and reads as the page-2 anchor, not a
    small centered afterthought. Max-height raised so the 680×364 master
    renders near its natural aspect (≈600×321) instead of being capped. */
-.be-why-identity { margin: 4px 0 0; }
+.be-why-identity { margin: 2px 0 0; }
 .be-why-identity .cap-identity {
   width: 600px;
   max-width: 100%;
@@ -568,39 +572,38 @@
   margin: 0 auto;
 }
 
-/* C4 + cohesion pass — HUD mini-infographics stay; the features block is
-   pulled into the "What LUCI is" section so the kicker and icon ribbon no
-   longer float. Hairline under the identity diagram, mint kicker matching
-   the section head, short mint rule under the kicker, and a soft shared
-   wash behind the six icons so they read as one unit. */
+/* Hierarchy pass — page 2 was stacking competing lines (hairline before
+   features, mint kicker + mint rule under Key features, soft-wash inset,
+   plus the What-LUCI-is lockup above). Decisions:
+   1. Dark band = page header container
+   2. Intro left-bar = callout container
+   3. One hairline + one mint lockup = "What LUCI is" section
+   4. Soft wash = features' only nested container (no second hairline, no
+      second mint rule). "Key features" demoted to a quiet in-band label. */
 .be-why-features {
-  margin-top: 6px;
-  padding-top: 10px;
-  border-top: 1px solid var(--rule-light);
+  margin-top: 10px;
+  padding: 12px 10px 10px;
+  border-top: none;
+  background: linear-gradient(155deg, #E6F5EF 0%, #F3FAF8 100%);
+  box-shadow: inset 0 0 0 1px rgba(43, 158, 128, 0.14);
 }
 .be-why-features .cap-features__kicker {
-  margin: 0 0 8px;
+  margin: 0 0 10px;
+  padding: 0;
   font-family: var(--font);
   font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.20em;
+  font-weight: 600;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--mint-dark);
+  color: var(--navy-muted);
 }
-.be-why-features .cap-features__kicker::after {
-  content: "";
-  display: block;
-  width: 28px;
-  height: 2px;
-  margin-top: 5px;
-  background: var(--mint-dark);
-}
+.be-why-features .cap-features__kicker::after { display: none; content: none; }
 .be-why-features .cap-feature-cards {
   grid-template-columns: repeat(3, 1fr);
   gap: 6px 10px;
-  padding: 10px 8px 8px;
-  background: linear-gradient(155deg, #E6F5EF 0%, #F3FAF8 100%);
-  box-shadow: inset 0 0 0 1px rgba(43, 158, 128, 0.14);
+  padding: 0;
+  background: none;
+  box-shadow: none;
 }
 .be-why-features .cap-feature-card {
   flex-direction: column;
