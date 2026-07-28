@@ -10,7 +10,7 @@ description: >-
 
 Scoped, line-itemed pre-quote estimate. **6 pages (US Letter)** — professional follow-on to the Capabilities doc. Source master: `budgetary-estimate.html` in this folder (build copy from `ui_kits/sales/`).
 
-Also read: `../_brand/SKILL.md` — especially **Efficient customization**. Mike can click-edit any text (fonts/colors stay on CSS). Populate-in-place; never rebuild.
+Also read: `../_brand/SKILL.md` — especially **Efficient customization**, **Continuous page packing**, **Source fidelity**, **Totals span the full page width**, and **Logo + pattern**. Mike can click-edit any text (fonts/colors stay on CSS). Populate-in-place; never rebuild.
 
 ## Voice
 
@@ -162,6 +162,12 @@ The navy band (`doc-page-band`) carries the page title and a short deck. Below i
 Populate from the uploaded spreadsheet via `scripts/ingest-budgetary-lineitems.py` (see “Page 4 line items — Excel ingestion” above). The emitted `be-price-group` / `be-price-row` markup drops straight into the `.be-price` container, after the `.be-price__head` column-label row. Each cell is `contenteditable` (mfg/item/desc + qty/cost/subtotal) for word-level tweaks in preview. **No auto-math in the page** — subtotals come from the spreadsheet (or are computed by the script when the Subtotal column is missing); if you hand-edit a qty or unit price in preview, recompute that row’s subtotal yourself.
 
 **Combine endpoint pricing into one line item.** LUCI OS endpoint licenses must appear as a **single line item** referencing the **total number of endpoints** — never split out by video, audio, or other sub-categories. If Mike’s spreadsheet has them combined, mirror that. If a previous AI run split them into separate video/audio/etc. rows, combine them back into one row with the total endpoint count. The label should match Mike’s spreadsheet (e.g. “LUCI OS & Endpoint Licenses” or “LUCI OS — Annual Partnership”) — do not invent a different label.
+
+**Pack greedily; totals break unless they fit.** Keep groups/rows on the same page when they fit. Put a page break **before** the investment summary/totals unless the **full** totals block fits on the last line-item page (or the template already separates investment onto its own page). See `../_brand/SKILL.md` → Continuous page packing.
+
+**Source fidelity + branded dress.** Mirror the spreadsheet’s labels, order, and structure; apply `.be-price*` branded formatting. See `../_brand/SKILL.md` → Source fidelity.
+
+**Totals span full page width.** `.be-summary` / `.be-summary__total` / `.be-summary-split` (and `.be-p5-numbers`) must be full content width — never `max-width: 48ch`. See `../_brand/SKILL.md` → Totals span the full page width.
 
 ### Investment summary (page 5) — `.doc-page--investment`
 

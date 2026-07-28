@@ -14,7 +14,7 @@ Full LUCI platform proposal. **~14 pages (US Letter, variable)** — cover, over
 
 **This is the Budgetary Estimate + the full standalone Scope of Work, minus the endpoint pricing tiers.** The BE's line items, investment summary, and close are preserved; the BE's endpoint pricing tier chips are removed. The full 8-page SOW (pages 4–11) is inserted between the review of scope and the line items, using the standalone SOW template's content and CSS classes (`scope-of-work.css`).
 
-Also read: `../_brand/SKILL.md` — especially **Efficient customization** and **Combine endpoint pricing into one line item**. Mike can click-edit any text (fonts/colors stay on CSS). Populate-in-place; never rebuild.
+Also read: `../_brand/SKILL.md` — especially **Efficient customization**, **Continuous page packing**, **Source fidelity**, **Totals span the full page width**, **Logo + pattern**, and **Combine endpoint pricing into one line item**. Mike can click-edit any text (fonts/colors stay on CSS). Populate-in-place; never rebuild.
 
 ## Click-to-edit (Mike) vs agent edits
 
@@ -131,6 +131,8 @@ After a capabilities review and demo where the client needs a written proposal w
 
 The SOW pages use the standalone Scope of Work template's CSS classes (`scope-of-work.css`). All text is editable; section numbers (`.sow-band-bignum`) and band kickers are locked structure.
 
+When Mike provides a source SOW, **mirror its verbiage and structure** (headers, narrative vs bullets, section order) and dress it in the SOW branded classes. Pack continuously across pages — sections may break mid-way with “(continued)”. See `../_brand/SKILL.md` → Continuous page packing and Source fidelity.
+
 | Element | Selector / class |
 |---------|-----------------|
 | Section band number | `.sow-band-bignum` — **locked** (01–08) |
@@ -160,6 +162,12 @@ The SOW pages use the standalone Scope of Work template's CSS classes (`scope-of
 Populate from the uploaded spreadsheet via `scripts/ingest-budgetary-lineitems.py` (same as the BE). The emitted `be-price-group` / `be-price-row` markup drops straight into the `.be-price` container. Each cell is `contenteditable` for word-level tweaks in preview. **No auto-math** — subtotals come from the spreadsheet; if you hand-edit a qty or unit price, recompute that row's subtotal yourself.
 
 **One continuous table, one total.** Never split line items into sub-sections with separate sub-totals. If rows exceed one page, spill onto a continuation page.
+
+**Pack greedily; totals break unless they fit.** Keep groups/rows on the same page when they fit. Put a page break **before** the summary/totals unless the **full** totals block fits on the last line-item page. See `../_brand/SKILL.md` → Continuous page packing.
+
+**Source fidelity + branded dress.** Mirror the spreadsheet’s labels, order, and structure; apply `.be-price*` branded formatting. See `../_brand/SKILL.md` → Source fidelity.
+
+**Totals span full page width.** `.be-summary` / `.be-summary__total` (and `.be-p5-numbers`) must be full content width — never `max-width: 48ch`. See `../_brand/SKILL.md` → Totals span the full page width.
 
 **Only include rows that are in Mike's spreadsheet.** If the spreadsheet has a Sales Tax row, add it. If it doesn't, don't invent one. Same for freight, travel, or any other row.
 

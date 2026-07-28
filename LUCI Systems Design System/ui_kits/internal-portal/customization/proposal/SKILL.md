@@ -14,7 +14,7 @@ Post-survey proposal for LED wall installations. **~13 pages (US Letter, variabl
 
 **Section numbering rule:** a section number appears only on the first page of that section (the band big-numeral + title). Continuation pages within the same section carry a `.led-subhead` instead — no repeated number. In the default 13-page layout, §3's number lives on page 5; pages 6–8 use subheads ("Coordination & Training", "Design Specifications — <pitch>"). §4's number lives on page 9 (Estimate 01 opener). Estimate 02 on p10 and Payment Terms on p11 are subheads — no repeated §4 number. §5's number lives on page 12 (Terms). **These page numbers shift when spec or estimate pages are added/removed** — always reference by section, not by absolute page number.
 
-Also read: `../_brand/SKILL.md` — especially **Efficient customization (read this first)**. This is a populate-in-place job; never rebuild.
+Also read: `../_brand/SKILL.md` — especially **Efficient customization (read this first)**, **Continuous page packing**, **Source fidelity**, **Totals span the full page width**, and **Logo + pattern**. This is a populate-in-place job; never rebuild.
 
 ## Click-to-edit (Mike) vs agent edits
 
@@ -210,6 +210,12 @@ Layout (2×2) stays locked.
 **No auto-math** — recompute amount/total by hand when qty or rate changes. Clone the estimate section for more installs; keep the `estimate-N-…` numbering consecutive.
 
 **One estimate = one continuous table = one total.** Never split an estimate into sub-sections (e.g. “hardware” / “cabling” / “services”) with separate sub-totals. The spreadsheet Mike uploads has everything summed together — the proposal mirrors that: one table, one “Project total” at the end. If the line items exceed one page, the estimate spills onto the next page (add a “continues on the following page” note at the bottom of the first page); the continuation page reuses the same estimate # and date with a descriptive subhead (e.g. “Source, Rack & Services”) but does **not** add a second total.
+
+**Pack greedily; totals break unless they fit.** Keep the next block of rows on the same page when it fits. Put a page break **before** the project total unless the **full** total block fits on the last estimate page. See `../_brand/SKILL.md` → Continuous page packing.
+
+**Source fidelity + branded dress.** Mirror the spreadsheet’s labels, order, and structure; apply the estimate’s branded formatting. See `../_brand/SKILL.md` → Source fidelity.
+
+**Totals span full page width.** Estimate / project total rows must span the full content width of the page — never constrain the total block to a narrow `max-width` (e.g. 48ch). See `../_brand/SKILL.md` → Totals span the full page width.
 
 **Only include rows that are in Mike’s spreadsheet.** If the spreadsheet has a Sales Tax row, add it as a line item. If it doesn’t, don’t invent one. Same for freight, travel, or any other row — the estimate mirrors the spreadsheet exactly, no added and no removed rows.
 
