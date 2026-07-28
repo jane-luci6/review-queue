@@ -562,24 +562,29 @@
   margin: 0 auto;
 }
 
-/* Six feature cards — compact chips (icon + name only). The descriptive body
-   is cut so the row recedes beneath the larger identity hero; the names still
-   carry the capability story. Smaller softicon + tighter padding keep the
-   3×2 grid to two short rows. */
-.be-why-features .cap-features__kicker { margin: 0 0 8px; }
+/* A — Pill strip: six inline icon+name pills in a single wrapped row.
+   Recedes maximally beneath the identity hero; reads as a tag strip, not a
+   card grid. Soft beige fill + hairline keep it on-brand (softicon tile
+   family), pill radius signals "label," not "container." */
+.be-why-features .cap-features__kicker { margin: 0 0 10px; }
 .be-why-features .cap-feature-cards {
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
 }
 .be-why-features .cap-feature-card {
-  padding: 8px 10px;
-  gap: 4px;
+  flex: 0 0 auto;
+  flex-direction: row;
   align-items: center;
-  border-radius: 12px;
+  gap: 7px;
+  padding: 6px 13px 6px 7px;
+  border-radius: 9999px;
+  background: linear-gradient(160deg, #EAE7E2 0%, #E0DDD7 100%);
+  box-shadow: inset 0 0 0 1px rgba(26, 26, 26, 0.07);
 }
-.be-why-features .cap-feature-card .cap-softicon { width: 30px; height: 30px; border-radius: 10px; }
-.be-why-features .cap-feature-card .cap-softicon svg { width: 18px; height: 18px; }
-.be-why-features .cap-feature-card__name { font-size: 12px; line-height: 1.15; }
+.be-why-features .cap-feature-card .cap-softicon { width: 24px; height: 24px; border-radius: 9999px; flex: none; }
+.be-why-features .cap-feature-card .cap-softicon svg { width: 15px; height: 15px; }
+.be-why-features .cap-feature-card__name { font-size: 12px; line-height: 1.1; }
 .be-why-features .cap-feature-card__body { display: none; }
 
 .doc-page--overview { padding-bottom: 0.55in; }
