@@ -88,6 +88,8 @@ Anything with `over > 0` is clipped. **Trim copy or split to a new `.doc-page`**
 
 After any pricing / qty / rate edit, reconcile totals. Known trap: a grand total can be a live formula while milestone cells stay hardcoded and drift. Reconcile milestones against the verified total. Prefer a small verify script when one ships with the template; otherwise compute and state the check in your summary. **Never silently change numbers that Mike already confirmed.**
 
+**The spreadsheet is the source of truth for line-item content.** When Mike uploads a spreadsheet for line items, mirror its categories, order, and breakout exactly — do not combine rows, split rows, or invent categories that are not in the spreadsheet. If the spreadsheet has a "Shipping" row, include it; if it doesn't, don't add one. If it has a "Sales Tax" row, include it; if it doesn't, don't invent one. Follow the spreadsheet's group labels and row order; do not reorganize. The only exception is the LUCI OS endpoint combining rule below.
+
 **Combine endpoint pricing into one line item.** LUCI OS endpoint licenses must appear as a **single line item** referencing the **total number of endpoints** — never split out by video, audio, or other sub-categories. If Mike's spreadsheet has them combined, mirror that. If a previous AI run split them into separate video/audio/etc. rows, combine them back into one row with the total endpoint count. The label should match Mike's spreadsheet (e.g. "LUCI OS & Endpoint Licenses" or "LUCI OS — Annual Partnership") — do not invent a different label.
 
 ### 6. Logo + pattern (do not re-break these)

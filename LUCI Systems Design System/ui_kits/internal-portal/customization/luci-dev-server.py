@@ -25,6 +25,10 @@ class LUCIDevHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=str(ROOT), **kwargs)
 
+    # Edit-bar assets, served from the customization folder in the project.
+    EDIT_BAR_CSS = '/ui_kits/internal-portal/customization/luci-doc-edit.css'
+    EDIT_BAR_JS = '/ui_kits/internal-portal/customization/luci-doc-edit.js'
+
     def end_headers(self):
         # Allow the edit bar (same origin) to POST; harmless on localhost.
         self.send_header('Access-Control-Allow-Origin', '*')
@@ -35,6 +39,61 @@ class LUCIDevHandler(http.server.SimpleHTTPRequestHandler):
     def do_OPTIONS(self):
         self.send_response(204)
         self.end_headers()
+
+    def do_GET(self):
+        # Intercept HTML responses so the edit bar (Save / Copy HTML / Download
+        # PDF) is always present in the preview, regardless of whether the
+        # working file on disk currently links luci-doc-edit.{css,js}. The
+        # edit bar's serializeHtml() strips these tags before saving, so the
+        # working file stays clean — but every serve re-injects them. This is
+        # what keeps the buttons from disappearing after Cursor re-renders.
+        path = unquote(self.path.split('?', 1)[0].split('#', 1)[0])
+        if path.endswith('/'):
+            path = path + 'index.html'
+        fs_path = (ROOT / path.lstrip('/')).resolve()
+        try:
+            fs_path.relative_to(ROOT)
+        except ValueError:
+            self.send_error(403, 'Path outside project root')
+            return
+
+        if fs_path.is_file() and fs_path.suffix.lower() == '.html':
+            try:
+                html = fs_path.read_text(encoding='utf-8')
+            except Exception as e:
+                self.send_error(500, str(e))
+                return
+            body = self._inject_edit_bar(html).encode('utf-8')
+            self.send_response(200)
+            self.send_header('Content-Type', 'text/html; charset=utf-8')
+            self.send_header('Content-Length', str(len(body)))
+            self.send_header('Cache-Control', 'no-cache, must-revalidate')
+            self.end_headers()
+            self.wfile.write(body)
+            return
+
+        # Fall back to default static serving for non-HTML assets.
+        super().do_GET()
+
+    def _inject_edit_bar(self, html):
+        # Only inject into actual LUCI sales docs (contain a doc page section).
+        # Skip portal index pages, skill files rendered as HTML, etc.
+        if 'doc-page' not in html and 'doc-cover' not in html:
+            return html
+        # Skip if the file already links the edit bar (e.g. a master that
+        # already has them — don't double-inject).
+        if 'luci-doc-edit.css' in html and 'luci-doc-edit.js' in html:
+            return html
+        css_tag = '<link rel="stylesheet" href="%s">' % self.EDIT_BAR_CSS
+        js_tag = '<script src="%s"></script>' % self.EDIT_BAR_JS
+        head_close = html.rfind('</head>')
+        if head_close != -1:
+            return html[:head_close] + css_tag + js_tag + html[head_close:]
+        # No </head> — inject before </body> as a fallback.
+        body_close = html.rfind('</body>')
+        if body_close != -1:
+            return html[:body_close] + js_tag + html[body_close:]
+        return html + js_tag
 
     def do_POST(self):
         if self.path != '/__save':
