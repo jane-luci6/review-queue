@@ -15,6 +15,18 @@ Full LUCI platform proposal. **~8 pages (US Letter, variable)** — cover, overv
 
 Also read: `../_brand/SKILL.md` — especially **Efficient customization** and **Combine endpoint pricing into one line item**. Mike can click-edit any text (fonts/colors stay on CSS). Populate-in-place; never rebuild.
 
+## Click-to-edit (Mike) vs agent edits
+
+**Mike can click and type any text in the document.** Edit mode unlocks every text leaf. Fonts, colors, and layout stay on CSS classes — change words only; never strip `doc-edit` / `contenteditable` / structural wrappers.
+
+**What stays non-editable (images only):** LUCI wordmark on the cover (`.doc-cover__logo`). Client logo is click-to-swap.
+
+**Agent rules:** prefer `[data-studio]` selector edits (where present) or class-based edits; do not rebuild sections; do not invent fine-print; after Mike types in the preview, **Save** (or write the live DOM back to the same working file) before the next agent pass. Brand/voice still applies to any copy the agent authors.
+
+**Save / PDF toolbar:** **Save** overwrites the working file when the browser supports the file picker (otherwise downloads `<title>.html` — Mike should save over the same path, not a new `-edited` copy). **Copy HTML** puts the full document on the clipboard. **Download PDF** opens the print dialog (Save as PDF, US Letter).
+
+**Fit check (mandatory after content edits):** pages are fixed US Letter with `overflow: hidden` — overflow clips silently in print. After any content edit, verify no page overflows (see `../_brand/SKILL.md` → fit check).
+
 ## Voice
 
 Match LUCI's voice on every line you write or rewrite. Full contract: `../_brand/SKILL.md` → **Voice & tone**. Canonical source: LUCI Messaging Guide (`ui_kits/review/messaging/messaging-guide.html`).
@@ -160,12 +172,15 @@ Populate from the uploaded spreadsheet via `scripts/ingest-budgetary-lineitems.p
 
 **No endpoint pricing tiers on this page.** The BE's tier chips (`.be-tier-chip`) are removed from this template. Per-endpoint pricing stays in the Budgetary Estimate only.
 
+**No signature block.** The close page uses the BE's contact block (next step + rep + LUCI company info) — no signature lines, no date lines, no "accepted by" fields.
+
 ---
 
 ## Do not
 
 - **Locked regions** (identity diagram + feature cards on page 2; `.be-delivers` marketing grid on page 7; PM/training feature cards on page 5; LUCI logo on cover; LUCI company info on close) — **no changes of any kind**, including color, styling, or CSS. Run the pre-edit gate in `.cursor/rules/luci-doc-customization.mdc` first.
 - Add endpoint pricing tiers — this is the Proposal, not the Budgetary Estimate. Endpoint pricing stays in the BE.
+- Add a signature block, signature lines, or "accepted by" fields — the close page is a contact block, not a sign-off.
 - Split endpoint pricing into separate video/audio line items — combine into one row with the total endpoint count.
 - Add "Addressed to" or similar labels to the cover.
 - Use opaque JPEG client logos on the cover (white box artifact) — use transparent PNG/SVG.
