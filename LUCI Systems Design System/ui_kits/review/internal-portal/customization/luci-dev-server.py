@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
-"""LUCI dev server — serves the project folder and accepts POST /__save
-to write edited HTML back to the working file on disk.
+"""LUCI dev server — serves the project folder and accepts:
+  POST /__save  — write edited HTML back to the working file on disk
+  POST /__pdf   — render that HTML to PDF via scripts/render-pdf.sh (headless
+                  Chrome). Never uses window.print() — that crashes Cursor's
+                  in-editor browser.
 
 Run from the project root:  python3 luci-dev-server.py
 Listens on 127.0.0.1:8771 (localhost only — never exposed to the network).
@@ -12,13 +15,20 @@ on the next pass — no prompting required.
 
 import http.server
 import json
+import os
 import socketserver
+import subprocess
 import sys
+import tempfile
 from pathlib import Path
 from urllib.parse import unquote
 
 PORT = 8771
 ROOT = Path.cwd().resolve()
+SCRIPT_DIR = Path(__file__).resolve().parent
+# Bump when endpoints/behavior change — edit bar checks GET /__health.
+SERVER_VERSION = 2
+SERVER_FEATURES = ('save', 'pdf')
 
 
 class LUCIDevHandler(http.server.SimpleHTTPRequestHandler):
@@ -34,6 +44,12 @@ class LUCIDevHandler(http.server.SimpleHTTPRequestHandler):
         self.send_header('Access-Control-Allow-Origin', '*')
         self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
         self.send_header('Access-Control-Allow-Headers', 'Content-Type')
+        # Edit-bar JS/CSS must never stick in Glass cache — stale copies still
+        # called window.print() and crashed Cursor.
+        path = unquote(getattr(self, 'path', '').split('?', 1)[0])
+        if path.endswith(('luci-doc-edit.js', 'luci-doc-edit.css')):
+            self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate')
+            self.send_header('Pragma', 'no-cache')
         super().end_headers()
 
     def do_OPTIONS(self):
@@ -41,13 +57,23 @@ class LUCIDevHandler(http.server.SimpleHTTPRequestHandler):
         self.end_headers()
 
     def do_GET(self):
+        path = unquote(self.path.split('?', 1)[0].split('#', 1)[0])
+        if path == '/__health':
+            self._json(200, {
+                'ok': True,
+                'version': SERVER_VERSION,
+                'features': list(SERVER_FEATURES),
+                'pdf': True,
+                'save': True,
+            })
+            return
+
         # Intercept HTML responses so the edit bar (Save / Copy HTML / Download
         # PDF) is always present in the preview, regardless of whether the
         # working file on disk currently links luci-doc-edit.{css,js}. The
         # edit bar's serializeHtml() strips these tags before saving, so the
         # working file stays clean — but every serve re-injects them. This is
         # what keeps the buttons from disappearing after Cursor re-renders.
-        path = unquote(self.path.split('?', 1)[0].split('#', 1)[0])
         if path.endswith('/'):
             path = path + 'index.html'
         fs_path = (ROOT / path.lstrip('/')).resolve()
@@ -84,8 +110,9 @@ class LUCIDevHandler(http.server.SimpleHTTPRequestHandler):
         # already has them — don't double-inject).
         if 'luci-doc-edit.css' in html and 'luci-doc-edit.js' in html:
             return html
-        css_tag = '<link rel="stylesheet" href="%s">' % self.EDIT_BAR_CSS
-        js_tag = '<script src="%s"></script>' % self.EDIT_BAR_JS
+        # Cache-bust so Glass/Simple Browser always picks up edit-bar fixes.
+        js_tag = '<script src="%s?v=5"></script>' % self.EDIT_BAR_JS
+        css_tag = '<link rel="stylesheet" href="%s?v=5">' % self.EDIT_BAR_CSS
         head_close = html.rfind('</head>')
         if head_close != -1:
             return html[:head_close] + css_tag + js_tag + html[head_close:]
@@ -96,10 +123,16 @@ class LUCIDevHandler(http.server.SimpleHTTPRequestHandler):
         return html + js_tag
 
     def do_POST(self):
-        if self.path != '/__save':
-            self.send_error(404, 'Not found')
+        path = unquote(self.path.split('?', 1)[0])
+        if path == '/__save':
+            self._handle_save()
             return
+        if path == '/__pdf':
+            self._handle_pdf()
+            return
+        self.send_error(404, 'Not found')
 
+    def _handle_save(self):
         length = int(self.headers.get('Content-Length', 0))
         raw = self.rfile.read(length) if length else b''
         try:
@@ -131,6 +164,99 @@ class LUCIDevHandler(http.server.SimpleHTTPRequestHandler):
 
         self._json(200, {'ok': True, 'path': str(target)})
 
+    def _find_render_script(self):
+        # Prefer scripts next to the design-system root that owns this server
+        # file, then fall back to cwd (Mike's per-job folder may mirror it).
+        candidates = [
+            SCRIPT_DIR.parents[2] / 'scripts' / 'render-pdf.sh',  # …/LUCI Systems Design System
+            ROOT / 'scripts' / 'render-pdf.sh',
+            ROOT / 'LUCI Systems Design System' / 'scripts' / 'render-pdf.sh',
+        ]
+        for c in candidates:
+            if c.is_file():
+                return c
+        return None
+
+    def _handle_pdf(self):
+        """Render the on-disk HTML to PDF via headless Chrome — never print()."""
+        length = int(self.headers.get('Content-Length', 0))
+        raw = self.rfile.read(length) if length else b''
+        try:
+            data = json.loads(raw) if raw else {}
+            rel_path = data.get('path', '') or ''
+        except (json.JSONDecodeError, AttributeError):
+            self._json(400, {'error': 'Invalid JSON body'})
+            return
+
+        if not rel_path:
+            self._json(400, {'error': 'Missing "path"'})
+            return
+
+        rel = unquote(rel_path).lstrip('/')
+        html_path = (ROOT / rel).resolve()
+        try:
+            html_path.relative_to(ROOT)
+        except ValueError:
+            self._json(403, {'error': 'Path outside project root'})
+            return
+
+        if not html_path.is_file() or html_path.suffix.lower() != '.html':
+            self._json(404, {'error': 'HTML file not found: %s' % rel})
+            return
+
+        render = self._find_render_script()
+        if not render:
+            self._json(500, {
+                'error': 'scripts/render-pdf.sh not found. Run the LUCI dev server from the design-system project root.'
+            })
+            return
+
+        # Write PDF beside a temp dir so we never leave export debris in sales/.
+        out_name = html_path.stem + '.pdf'
+        tmp_dir = Path(tempfile.mkdtemp(prefix='luci-pdf-'))
+        out_pdf = tmp_dir / out_name
+
+        try:
+            # render-pdf.sh expects to run with its design-system root context
+            # (prepare-sales-pdf-assets.py lives next to it). cwd = script's parent.parent
+            ds_root = render.parent.parent
+            env = os.environ.copy()
+            proc = subprocess.run(
+                ['bash', str(render), str(html_path), str(out_pdf)],
+                cwd=str(ds_root),
+                env=env,
+                capture_output=True,
+                text=True,
+                timeout=180,
+            )
+            if proc.returncode != 0 or not out_pdf.is_file():
+                err = (proc.stderr or proc.stdout or 'render-pdf.sh failed').strip()
+                self._json(500, {'error': err[-800:]})
+                return
+
+            pdf_bytes = out_pdf.read_bytes()
+        except subprocess.TimeoutExpired:
+            self._json(500, {'error': 'PDF render timed out (180s). Try again or ask Cursor to render it.'})
+            return
+        except Exception as e:
+            self._json(500, {'error': str(e)})
+            return
+        finally:
+            try:
+                for p in tmp_dir.iterdir():
+                    p.unlink(missing_ok=True)
+                tmp_dir.rmdir()
+            except Exception:
+                pass
+
+        self.send_response(200)
+        self.send_header('Content-Type', 'application/pdf')
+        self.send_header('Content-Disposition', 'attachment; filename="%s"' % out_name)
+        self.send_header('Content-Length', str(len(pdf_bytes)))
+        self.send_header('Cache-Control', 'no-store')
+        self.end_headers()
+        self.wfile.write(pdf_bytes)
+
     def _json(self, code, payload):
         body = json.dumps(payload).encode('utf-8')
         self.send_response(code)
@@ -157,7 +283,10 @@ def main():
     server = ThreadingServer(('127.0.0.1', PORT), LUCIDevHandler)
     print('LUCI dev server -> http://127.0.0.1:%d' % PORT)
     print('  Serving: %s' % ROOT)
+    print('  Version: %s' % SERVER_VERSION)
+    print('  Health:        GET  /__health')
     print('  Save endpoint: POST /__save')
+    print('  PDF endpoint:  POST /__pdf  (headless Chrome — safe in Cursor)')
     print('  Ctrl+C to stop.')
     try:
         server.serve_forever()

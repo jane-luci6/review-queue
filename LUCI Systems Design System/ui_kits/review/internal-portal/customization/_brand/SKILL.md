@@ -35,7 +35,7 @@ Each client document lives in **one** dedicated folder for the life of that job.
   ui_kits/internal-portal/customization/
     luci-doc-edit.css
     luci-doc-edit.js
-    luci-dev-server.py             ← serves files + accepts POST /__save
+    luci-dev-server.py             ← ALWAYS overwrite from originals; Save + PDF
     <template>/SKILL.md             ← copy from portal/master skill
     _brand/SKILL.md
   assets/fonts/                     luci-brand-fonts.css
@@ -44,7 +44,15 @@ Each client document lives in **one** dedicated folder for the life of that job.
   inputs/                           spreadsheet, SOW, logo uploads (optional)
 ```
 
-Mirror the portal’s relative paths (`../../assets/…`, sibling CSS). **Serve with the LUCI dev server** — run `python3 luci-dev-server.py` from `<project>/` (the agent starts it as a background process). It serves the project root on `http://127.0.0.1:8771` **and** accepts `POST /__save` so the edit bar’s “Save” button writes typed edits straight back to the working `.html` file on disk — no prompting Cursor, no Downloads artifact. Never root the server at `ui_kits/sales/` or textures/logos 404 and the circuit pattern “doesn’t load.”
+Mirror the portal’s relative paths (`../../assets/…`, sibling CSS). **Serve with the LUCI dev server** — run `python3 ui_kits/internal-portal/customization/luci-dev-server.py` from `<project>/` (the agent starts it as a background process). It serves the project root on `http://127.0.0.1:8771` and accepts `POST /__save` + `POST /__pdf`. Never root the server at `ui_kits/sales/` or textures/logos 404 and the circuit pattern “doesn’t load.”
+
+**Always refresh the preview tooling before every server start (mandatory for Mike):** overwrite — do not skip if present —
+
+- `ui_kits/internal-portal/customization/luci-dev-server.py`
+- `ui_kits/internal-portal/customization/luci-doc-edit.js`
+- `ui_kits/internal-portal/customization/luci-doc-edit.css`
+
+— from the current portal/luci-design `customization/` originals. Stale copies lack `POST /__pdf` and break Download PDF. Then restart the server from that refreshed path.
 
 If this tree does not exist yet: create it and fetch the exact master HTML + linked CSS + referenced assets from the portal (or luci-design) in **one batch**. Do not discover assets by trial and error. Do **not** pull extra stylesheets the master does not already link (e.g. do not add `scope-of-work.css` into a budgetary/proposal client — it overrides `.doc-page-band` and strips navy headers + circuit texture).
 
@@ -84,17 +92,45 @@ Pages are fixed US Letter (~11in) with `overflow: hidden` — overflow **clips s
 
 Anything with `over > 0` is clipped. **Trim copy or split to a new `.doc-page`** — do not change page height. Do not let Mike’s extra rows of typed text push a page past letter size unnoticed.
 
+### Continuous page packing — SOW + line items (mandatory)
+
+Fill each content page as far as it will go before opening a new one. **Do not invent page breaks.** This applies to **Scope of Work** sections and **line-item** tables alike.
+
+- Pack **greedily** while natural height stays ≤ 1056px. If there is room for another partial section / group / rows, use it.
+- **Sections and groups may break across a page boundary.** Start the next page with a “(continued)” title/label and keep going. Do **not** force a whole section onto the next page just because only 2–3 sections fit on the current one, and do **not** leave large empty space when more content would fit.
+- After packing, renumber `.doc-foot__page` and page comments sequentially. Drop empty continuation pages.
+
+**Line items — totals exception:** follow the same greedy packing for all line-item **rows and groups**. Then:
+
+- Put a **page break before the investment summary / totals** unless the **full** totals block fits on the last line-item page with the final rows (fit check ≤ 1056px).
+- If the full totals do not fit, move **only the totals** to the next page (full content width). Do **not** strand a leftover group alone on a page just to keep it with the totals — keep that group with the prior line items when it fits.
+
+### Totals span the full page width (mandatory)
+
+`.be-summary`, `.be-summary__total`, `.be-summary-split`, and their wrapper (e.g. `.be-p5-numbers`) must span the **full content width** of the page. **Never** set `max-width: 48ch` (or any narrow measure) on those elements — not in CSS, not as an inline style. Labels left, amounts right, row edge-to-edge with the line-item table above.
+
+### Source fidelity — SOW + line items (mandatory)
+
+When Mike provides a source SOW (Word/PDF) or a line-item spreadsheet, the destination document must **mirror the source’s content and structure**, then dress it in the destination’s brand:
+
+- **Carry through:** exact verbiage (modulo LUCI house voice fixes like “A/V”), section/sub-section headers, narrative vs bullet structure, list nesting, group labels, row order, and categories. Two Ballroom sections in the source → two Ballroom sections in the doc. Bullets in the source → bullets in the doc.
+- **Do not:** rewrite, condense, reorganize, invent sections, drop bullets into paragraphs (or the reverse), or make scoping/pricing assumptions the source does not support.
+- **Do apply:** the destination document’s branded formatting — fonts, colors, hairlines, mint markers, `.upg-scope*` / `.be-price*` classes, etc. Source structure + destination design.
+- **Scope:** this contract is required for **SOW** and **line items**. Other sections may have template-specific exceptions (locked marketing pages, etc.) — follow the per-template `SKILL.md`.
+
 ### 5. Pricing must be verified, not eyeballed
 
 After any pricing / qty / rate edit, reconcile totals. Known trap: a grand total can be a live formula while milestone cells stay hardcoded and drift. Reconcile milestones against the verified total. Prefer a small verify script when one ships with the template; otherwise compute and state the check in your summary. **Never silently change numbers that Mike already confirmed.**
 
-**The spreadsheet is the source of truth for line-item content.** When Mike uploads a spreadsheet for line items, mirror its categories, order, and breakout exactly — do not combine rows, split rows, or invent categories that are not in the spreadsheet. If the spreadsheet has a "Shipping" row, include it; if it doesn't, don't add one. If it has a "Sales Tax" row, include it; if it doesn't, don't invent one. Follow the spreadsheet's group labels and row order; do not reorganize. The only exception is the LUCI OS endpoint combining rule below.
+**The spreadsheet is the source of truth for line-item content** (same fidelity rule as above). Mirror its categories, order, and breakout exactly — do not combine rows, split rows, or invent categories that are not in the spreadsheet. If the spreadsheet has a "Shipping" row, include it; if it doesn't, don't add one. If it has a "Sales Tax" row, include it; if it doesn't, don't invent one. Follow the spreadsheet's group labels and row order; do not reorganize. The only exception is the LUCI OS endpoint combining rule below.
 
 **Combine endpoint pricing into one line item.** LUCI OS endpoint licenses must appear as a **single line item** referencing the **total number of endpoints** — never split out by video, audio, or other sub-categories. If Mike's spreadsheet has them combined, mirror that. If a previous AI run split them into separate video/audio/etc. rows, combine them back into one row with the total endpoint count. The label should match Mike's spreadsheet (e.g. "LUCI OS & Endpoint Licenses" or "LUCI OS — Annual Partnership") — do not invent a different label.
 
 ### 6. Logo + pattern (do not re-break these)
 
-- Client logo: PNG/SVG with **transparent** background. Never opaque white-backed PNGs on dark bands (renders as a white box). If no logo is provided, **ask Mike** or fetch a clean official logo — do not leave a placeholder that invents a white box.
+- **If no client logo is provided, find one online** — prefer the property/brand’s official site or CDN (SVG first, then transparent PNG). Do **not** leave a placeholder or invent a white box. Confirm the mark matches the client/property named in the doc.
+- **Transparent on any surface.** Strip colored or white backgrounds so the logo sits cleanly on light sheets **and** dark/navy bands. Prefer true SVG/PNG with alpha; never opaque JPEG or a PNG with a baked-in white/colored rectangle.
+- **Match the page design.** Size and placement per the cover’s `logo-pos--*` rules (see `skills/cover-page-customization.md`). On navy/band spots, prefer a white/reversed logo (or set `data-logo-light="1"` when the asset is already light); on light-sheet spots, use the natural/color logo.
 - Circuit / header textures must live under this project’s `assets/textures/` at the paths the CSS already uses. Missing file or wrong server root = “pattern didn’t load.”
 
 ### 7. Footer matches title
@@ -204,4 +240,4 @@ The website (lucisystems.com) is the reference for *how LUCI sounds* — the ton
 
 - **Save** in the edit bar is the primary path. When the LUCI dev server is running (the agent starts it automatically), Save POSTs the live DOM to `POST /__save` and overwrites the **same** working `.html` file on disk — Mike clicks once, no file picker, no Downloads artifact. If the dev server is not running, the button falls back to the File System Access API (Mike picks the file once) and finally to a download as a last resort (with an alert telling Mike to ask Cursor to reopen the project).
 - Before any further agent pass after Mike types in preview: the working file is already updated (via the dev server save), so Cursor reads the latest version. If Mike used the download fallback instead, write the live DOM back into the working file before editing.
-- **Download PDF** = browser print → Save as PDF (US Letter). Do not invent a second export pipeline unless asked.
+- **Download PDF** = `POST /__pdf` on the LUCI dev server → `scripts/render-pdf.sh` (headless Chrome). Never `window.print()` — that crashes Cursor's in-editor browser. The button shows “Rendering…” then downloads the PDF. If the local preview server is not running, the button asks you to restart it.

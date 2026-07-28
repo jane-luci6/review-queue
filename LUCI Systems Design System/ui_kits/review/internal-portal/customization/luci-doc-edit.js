@@ -249,6 +249,9 @@
         } else {
           try { detail = await res.text(); } catch (e) {}
         }
+        if (res.status === 404) {
+          throw new Error('Preview server is outdated (no PDF endpoint). Ask Cursor to refresh luci-dev-server.py and restart the preview.');
+        }
         throw new Error(detail || ('PDF failed (' + res.status + ')'));
       }
 
@@ -304,6 +307,32 @@
     bar.querySelector('[data-action="download-pdf"]').addEventListener('click', function (e) {
       downloadPdf(e.currentTarget);
     });
+
+    // Detect an outdated luci-dev-server.py (pre-PDF). Agent must always
+    // overwrite that file before starting the server — this is the safety net.
+    ensurePdfCapableServer(bar);
+  }
+
+  function ensurePdfCapableServer(bar) {
+    if (!onDevServer()) return;
+    var pdfBtn = bar.querySelector('[data-action="download-pdf"]');
+    fetch('/__health')
+      .then(function (res) {
+        if (!res.ok) throw new Error('no health');
+        return res.json();
+      })
+      .then(function (info) {
+        if (info && info.pdf && Number(info.version) >= 2) return;
+        markPdfServerStale(pdfBtn);
+      })
+      .catch(function () {
+        markPdfServerStale(pdfBtn);
+      });
+  }
+
+  function markPdfServerStale(pdfBtn) {
+    if (!pdfBtn) return;
+    pdfBtn.title = 'Preview server is outdated. Ask Cursor to refresh luci-dev-server.py and restart the preview.';
   }
 
   /* Client-logo placement picker + drag-and-drop image swap. Only mounts when a

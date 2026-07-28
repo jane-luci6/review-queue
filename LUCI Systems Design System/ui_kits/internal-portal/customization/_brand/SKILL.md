@@ -35,7 +35,7 @@ Each client document lives in **one** dedicated folder for the life of that job.
   ui_kits/internal-portal/customization/
     luci-doc-edit.css
     luci-doc-edit.js
-    luci-dev-server.py             ← serves files + accepts POST /__save
+    luci-dev-server.py             ← ALWAYS overwrite from originals; Save + PDF
     <template>/SKILL.md             ← copy from portal/master skill
     _brand/SKILL.md
   assets/fonts/                     luci-brand-fonts.css
@@ -44,7 +44,15 @@ Each client document lives in **one** dedicated folder for the life of that job.
   inputs/                           spreadsheet, SOW, logo uploads (optional)
 ```
 
-Mirror the portal’s relative paths (`../../assets/…`, sibling CSS). **Serve with the LUCI dev server** — run `python3 luci-dev-server.py` from `<project>/` (the agent starts it as a background process). It serves the project root on `http://127.0.0.1:8771` **and** accepts `POST /__save` so the edit bar’s “Save” button writes typed edits straight back to the working `.html` file on disk — no prompting Cursor, no Downloads artifact. Never root the server at `ui_kits/sales/` or textures/logos 404 and the circuit pattern “doesn’t load.”
+Mirror the portal’s relative paths (`../../assets/…`, sibling CSS). **Serve with the LUCI dev server** — run `python3 ui_kits/internal-portal/customization/luci-dev-server.py` from `<project>/` (the agent starts it as a background process). It serves the project root on `http://127.0.0.1:8771` and accepts `POST /__save` + `POST /__pdf`. Never root the server at `ui_kits/sales/` or textures/logos 404 and the circuit pattern “doesn’t load.”
+
+**Always refresh the preview tooling before every server start (mandatory for Mike):** overwrite — do not skip if present —
+
+- `ui_kits/internal-portal/customization/luci-dev-server.py`
+- `ui_kits/internal-portal/customization/luci-doc-edit.js`
+- `ui_kits/internal-portal/customization/luci-doc-edit.css`
+
+— from the current portal/luci-design `customization/` originals. Stale copies lack `POST /__pdf` and break Download PDF. Then restart the server from that refreshed path.
 
 If this tree does not exist yet: create it and fetch the exact master HTML + linked CSS + referenced assets from the portal (or luci-design) in **one batch**. Do not discover assets by trial and error. Do **not** pull extra stylesheets the master does not already link (e.g. do not add `scope-of-work.css` into a budgetary/proposal client — it overrides `.doc-page-band` and strips navy headers + circuit texture).
 

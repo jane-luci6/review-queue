@@ -26,6 +26,9 @@ from urllib.parse import unquote
 PORT = 8771
 ROOT = Path.cwd().resolve()
 SCRIPT_DIR = Path(__file__).resolve().parent
+# Bump when endpoints/behavior change — edit bar checks GET /__health.
+SERVER_VERSION = 2
+SERVER_FEATURES = ('save', 'pdf')
 
 
 class LUCIDevHandler(http.server.SimpleHTTPRequestHandler):
@@ -54,13 +57,23 @@ class LUCIDevHandler(http.server.SimpleHTTPRequestHandler):
         self.end_headers()
 
     def do_GET(self):
+        path = unquote(self.path.split('?', 1)[0].split('#', 1)[0])
+        if path == '/__health':
+            self._json(200, {
+                'ok': True,
+                'version': SERVER_VERSION,
+                'features': list(SERVER_FEATURES),
+                'pdf': True,
+                'save': True,
+            })
+            return
+
         # Intercept HTML responses so the edit bar (Save / Copy HTML / Download
         # PDF) is always present in the preview, regardless of whether the
         # working file on disk currently links luci-doc-edit.{css,js}. The
         # edit bar's serializeHtml() strips these tags before saving, so the
         # working file stays clean — but every serve re-injects them. This is
         # what keeps the buttons from disappearing after Cursor re-renders.
-        path = unquote(self.path.split('?', 1)[0].split('#', 1)[0])
         if path.endswith('/'):
             path = path + 'index.html'
         fs_path = (ROOT / path.lstrip('/')).resolve()
@@ -98,8 +111,8 @@ class LUCIDevHandler(http.server.SimpleHTTPRequestHandler):
         if 'luci-doc-edit.css' in html and 'luci-doc-edit.js' in html:
             return html
         # Cache-bust so Glass/Simple Browser always picks up edit-bar fixes.
-        css_tag = '<link rel="stylesheet" href="%s?v=4">' % self.EDIT_BAR_CSS
-        js_tag = '<script src="%s?v=4"></script>' % self.EDIT_BAR_JS
+        js_tag = '<script src="%s?v=5"></script>' % self.EDIT_BAR_JS
+        css_tag = '<link rel="stylesheet" href="%s?v=5">' % self.EDIT_BAR_CSS
         head_close = html.rfind('</head>')
         if head_close != -1:
             return html[:head_close] + css_tag + js_tag + html[head_close:]
@@ -270,6 +283,8 @@ def main():
     server = ThreadingServer(('127.0.0.1', PORT), LUCIDevHandler)
     print('LUCI dev server -> http://127.0.0.1:%d' % PORT)
     print('  Serving: %s' % ROOT)
+    print('  Version: %s' % SERVER_VERSION)
+    print('  Health:        GET  /__health')
     print('  Save endpoint: POST /__save')
     print('  PDF endpoint:  POST /__pdf  (headless Chrome — safe in Cursor)')
     print('  Ctrl+C to stop.')
