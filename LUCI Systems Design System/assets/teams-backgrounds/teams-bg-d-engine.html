@@ -28,7 +28,6 @@
 </head>
 <body>
   <div class="bg">
-    <div class="lc-circuit" aria-hidden="true"></div>
 
     <svg class="lc-landscape" viewBox="0 0 1920 1080" aria-hidden="true">
       <defs>
@@ -44,29 +43,17 @@
         <circle class="ring-stroke" r="78" stroke-width="2" opacity="0.32"/>
         <circle class="ring-stroke" r="200" stroke-width="1.2" opacity="0.18"/>
 
-        <!-- quieter rays (subject sits here) -->
-        <g class="stroke" stroke-width="1" opacity="0.08">
-          <line x1="78" y1="0" x2="960" y2="0" transform="rotate(20)"/>
-          <line x1="78" y1="0" x2="960" y2="0" transform="rotate(40)"/>
-          <line x1="78" y1="0" x2="960" y2="0" transform="rotate(70)"/>
-          <line x1="78" y1="0" x2="960" y2="0" transform="rotate(110)"/>
-          <line x1="78" y1="0" x2="960" y2="0" transform="rotate(140)"/>
-          <line x1="78" y1="0" x2="960" y2="0" transform="rotate(160)"/>
-          <line x1="78" y1="0" x2="960" y2="0" transform="rotate(200)"/>
-          <line x1="78" y1="0" x2="960" y2="0" transform="rotate(220)"/>
-          <line x1="78" y1="0" x2="960" y2="0" transform="rotate(250)"/>
-          <line x1="78" y1="0" x2="960" y2="0" transform="rotate(290)"/>
-          <line x1="78" y1="0" x2="960" y2="0" transform="rotate(320)"/>
-          <line x1="78" y1="0" x2="960" y2="0" transform="rotate(340)"/>
-        </g>
+        <!-- no long diagonal rays — left/right spokes only -->
 
         <g class="stroke" stroke-width="1.7" opacity="0.32">
           <line x1="78" y1="0" x2="200" y2="0"/>
-          <line x1="78" y1="0" x2="200" y2="0" transform="rotate(60)"/>
-          <line x1="78" y1="0" x2="200" y2="0" transform="rotate(120)"/>
-          <line x1="78" y1="0" x2="200" y2="0" transform="rotate(180)"/>
-          <line x1="78" y1="0" x2="200" y2="0" transform="rotate(240)"/>
-          <line x1="78" y1="0" x2="200" y2="0" transform="rotate(300)"/>
+          <line x1="-78" y1="0" x2="-200" y2="0"/>
+        </g>
+        <g class="stroke" stroke-width="1.3" opacity="0.28">
+          <line x1="90" y1="156" x2="100" y2="173"/>
+          <line x1="-90" y1="156" x2="-100" y2="173"/>
+          <line x1="-90" y1="-156" x2="-100" y2="-173"/>
+          <line x1="90" y1="-156" x2="100" y2="-173"/>
         </g>
 
         <g opacity="0.55">
@@ -99,45 +86,39 @@
         </g>
 
         <!-- mid tissue off edges -->
-        <g class="stroke" stroke-width="1.3" opacity="0.22">
+        <g class="stroke" stroke-width="1.3" opacity="0.26">
           <path d="M 214 0 H 960"/>
-          <path d="M 300 0 V -60 H 560 V -100 H 960"/>
-          <path d="M 300 0 V 80 H 580 V 140 H 960"/>
+          <path d="M 300 0 V -60 H 620 V -100 H 960"/>
+          <path d="M 300 0 V 80 H 640 V 140 H 960"/>
           <path d="M -214 0 H -960"/>
-          <path d="M -300 0 V 60 H -560 V 120 H -960"/>
-          <path d="M -300 0 V -90 H -580 V -150 H -960"/>
+          <path d="M -300 0 V 60 H -620 V 120 H -960"/>
+          <path d="M -300 0 V -90 H -640 V -150 H -960"/>
         </g>
 
-        <!-- stronger trunks off edges -->
-        <g class="stroke" stroke-width="1.8" opacity="0.34">
+        <!-- stronger trunks off left/right -->
+        <g class="stroke" stroke-width="1.9" opacity="0.42">
           <path d="M 214 0 H 960"/>
           <path d="M 340 0 V -48 H 960"/>
           <path d="M 340 0 V 60 H 960"/>
           <path d="M -214 0 H -960"/>
           <path d="M -340 0 V 42 H -960"/>
           <path d="M -340 0 V -70 H -960"/>
-          <path d="M 115 185 L 220 270 H 480 V 360 H 960"/>
-          <path d="M -115 -185 L -220 -270 H -500 V -360 H -960"/>
         </g>
 
-        <!-- fine edge forks -->
-        <g class="stroke" stroke-width="1" opacity="0.14">
-          <path d="M 560 -48 V -12 H 960"/>
-          <path d="M 580 60 V 100 H 960"/>
-          <path d="M -560 42 V 12 H -960"/>
-          <path d="M -580 -70 V -110 H -960"/>
-          <path d="M 320 270 H 560 V 310 H 960"/>
-          <path d="M -320 -270 H -560 V -310 H -960"/>
+        <!-- fine edge forks left/right -->
+        <g class="stroke" stroke-width="1" opacity="0.16">
+          <path d="M 620 -48 V -12 H 960"/>
+          <path d="M 640 60 V 100 H 960"/>
+          <path d="M -620 42 V 12 H -960"/>
+          <path d="M -640 -70 V -110 H -960"/>
         </g>
 
         <circle class="node" cx="340" cy="0" r="3" opacity="0.40"/>
-        <circle class="node" cx="560" cy="-48" r="2.5" opacity="0.30"/>
-        <circle class="node" cx="580" cy="60" r="2.5" opacity="0.30"/>
+        <circle class="node" cx="620" cy="-48" r="2.5" opacity="0.32"/>
+        <circle class="node" cx="640" cy="60" r="2.5" opacity="0.32"/>
         <circle class="node" cx="-340" cy="0" r="3" opacity="0.40"/>
-        <circle class="node-gold" cx="-580" cy="-70" r="3.5" opacity="0.45"/>
-        <circle class="node" cx="-560" cy="42" r="2.5" opacity="0.30"/>
-        <circle class="node" cx="220" cy="270" r="2.5" opacity="0.28"/>
-        <circle class="node" cx="-220" cy="-270" r="2.5" opacity="0.28"/>
+        <circle class="node-gold" cx="-640" cy="-70" r="3.5" opacity="0.45"/>
+        <circle class="node" cx="-620" cy="42" r="2.5" opacity="0.32"/>
       </g>
     </svg>
 
