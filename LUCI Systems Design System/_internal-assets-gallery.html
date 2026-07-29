@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>LUCI internal team assets — standard set</title>
+<link rel="stylesheet" href="assets/fonts/luci-brand-fonts.css">
+<style>
+  :root {
+    --navy-deep: #0A161C;
+    --navy: #10232D;
+    --mint: #68E3BE;
+    --gold: #EDD086;
+    --off-white: #F5F8FA;
+    --rule: rgba(245,248,250,0.14);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--navy-deep);
+    color: var(--off-white);
+    font-family: 'Inter', system-ui, sans-serif;
+    padding: 48px 32px 120px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1040px; margin: 0 auto; }
+  h1 {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  .lede { color: rgba(245,248,250,0.62); font-size: 15px; line-height: 1.6; max-width: 62ch; margin-bottom: 40px; }
+  .lede em { font-style: normal; color: var(--mint); }
+  section { margin-bottom: 56px; }
+  h2 {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mint);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .card { margin-bottom: 28px; }
+  .card__label {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    margin-bottom: 4px;
+  }
+  .card__label .tag {
+    display: inline-block;
+    width: 22px; height: 22px;
+    line-height: 22px;
+    text-align: center;
+    background: var(--mint);
+    color: var(--navy-deep);
+    font-family: 'Syncopate', sans-serif;
+    font-size: 11px;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+  .card__desc { color: rgba(245,248,250,0.6); font-size: 14px; line-height: 1.55; margin: 0 0 12px 32px; max-width: 62ch; }
+  img {
+    display: block;
+    width: 100%;
+    max-width: 960px;
+    height: auto;
+    border: 1px solid var(--rule);
+    margin-left: 32px;
+  }
+  .banner img { max-width: 1000px; }
+  .foot { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--rule); color: rgba(245,248,250,0.5); font-size: 13px; line-height: 1.6; }
+  .foot em { font-style: normal; color: var(--gold); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>LUCI internal team assets</h1>
+  <p class="lede">The standard set. Every asset carries the <em>orchestration landscape</em> motif — the LUCI hub as the power source, connective tissue under its control, mint-gold wave gradient throughout. The logo stays primary in every image.</p>
+
+  <section>
+    <h2>Desktop wallpaper · 1920×1080 (2560×1440 also rendered)</h2>
+    <div class="card">
+      <div class="card__label"><span class="tag">D</span>Orchestration landscape</div>
+      <p class="card__desc">Hub right-of-center behind the tagline; tissue runs off both edges. Logo + tagline anchored left, full logo bottom-left. The house motif as a calm, controlled field.</p>
+      <img src="assets/wallpapers/wallpaper-d-engine-1920x1080.png" alt="Wallpaper D — Orchestration landscape">
+    </div>
+  </section>
+
+  <section>
+    <h2>Teams / Zoom background · 1920×1080 (center kept clear for the person on camera)</h2>
+    <div class="card">
+      <div class="card__label"><span class="tag">D</span>Orchestration landscape</div>
+      <p class="card__desc">Hub centered behind the subject (the person appears inside the orchestrated system); tissue runs off both edges. Logo + tagline bottom-right.</p>
+      <img src="assets/teams-backgrounds/teams-bg-d-engine.png" alt="Teams background D — Orchestration landscape">
+    </div>
+  </section>
+
+  <section class="banner">
+    <h2>LinkedIn personal-profile team banner · 1584×396 (@1x + @2x)</h2>
+    <div class="card">
+      <div class="card__label">Team banner</div>
+      <p class="card__desc">Hub anchors the right third; tissue flows left across the banner behind the lockup. Logo + taglines seated upper-left so they clear the profile photo/name (bottom-left). "Orchestration Engine" in gold, matching the live site + company cover.</p>
+      <img src="assets/social/linkedin-team-banner.png" alt="LinkedIn team banner">
+    </div>
+  </section>
+
+  <section>
+    <h2>High-res motif master · 4000×4000 (download for materials)</h2>
+    <div class="card">
+      <div class="card__label">Orchestration landscape — master</div>
+      <p class="card__desc">The motif on its own, no lockup. Use as a background texture in decks, one-pagers, or any material that needs the orchestration story. Vector master (.svg) scales freely; 4000px PNG for raster contexts.</p>
+      <img src="assets/wallpapers/orchestration-landscape-4000.png" alt="Orchestration landscape master">
+    </div>
+  </section>
+
+  <p class="foot">A/B/C wallpaper + Teams variants are superseded by the D set. Say the word and I'll archive them.</p>
+</div>
+</body>
+</html>
