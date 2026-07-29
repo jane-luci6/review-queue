@@ -54,9 +54,26 @@
   font-weight: 700;
   line-height: 1.15;
   letter-spacing: -0.025em;
-  color: rgba(245, 248, 250, 0.96);
+  color: #F5F8FA;
   max-width: 28ch;
   white-space: normal;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.be-band .doc-page-band__kicker,
+.be-band .doc-page-band__deck {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+@media print {
+  .be-band > .doc-page-band,
+  .be-band .doc-page-band__title,
+  .be-band .doc-page-band__kicker,
+  .be-band .doc-page-band__deck,
+  .be-band > .doc-page-band::after {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
 }
 /* Remove SOW page background pattern — conflicts with hairlines */
 .doc-page--overview::before,
@@ -168,10 +185,10 @@
           <p class="doc-page-band__kicker doc-edit" contenteditable="true">Review of scope</p>
         </div>
         <h2 class="doc-page-band__title doc-edit" contenteditable="true">What this proposal <span class="doc-page-band__accent doc-page-band__accent--gold">covers.</span></h2>
-        <p class="doc-page-band__deck doc-edit" contenteditable="true">Phase 1 — 210 endpoints across IPTV and audio. Meeting/conferencing and sportsbook consolidation in later phases.</p>
+        <p class="doc-page-band__deck doc-edit" contenteditable="true">Phase 1 — 210 endpoints across IPTV and audio.</p>
       </header>
 
-      <p class="be-scope-bridge doc-edit" contenteditable="true">Itemized by system — <strong>video</strong> (IPTV) and <strong>audio</strong> are in scope for Phase 1. <strong>Signage</strong>, <strong>lighting</strong>, and <strong>meeting/conferencing</strong> are listed for context; Phase 2 or later.</p>
+      <p class="be-scope-bridge doc-edit" contenteditable="true">Itemized by system — <strong>video</strong> (IPTV) and <strong>audio</strong> are in scope for Phase 1. <strong>Signage</strong> and <strong>lighting</strong> are listed for context.</p>
 
       <ul class="be-scope-list">
         <li class="be-scope-row doc-edit" contenteditable="true">
@@ -212,16 +229,6 @@
               <span class="be-scope__tag doc-edit" contenteditable="true">Not included</span>
             </div>
             <p class="be-scope__desc doc-edit" contenteditable="true">Ability to control the lighting system through the LUCI interface.</p>
-          </div>
-        </li>
-        <li class="be-scope-row doc-edit" contenteditable="true">
-          <span class="doc-softicon be-scope__icon be-scope__icon--out" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="8" height="7" rx="1" stroke="#7C8E97" stroke-width="1.7"></rect><rect x="13" y="4" width="8" height="7" rx="1" stroke="#7C8E97" stroke-width="1.7"></rect><rect x="3" y="13" width="8" height="7" rx="1" stroke="#7C8E97" stroke-width="1.7"></rect><rect x="13" y="13" width="8" height="7" rx="1" stroke="#7C8E97" stroke-width="1.7"></rect></svg></span>
-          <div class="be-scope__main">
-            <div class="be-scope__top">
-              <span class="be-scope__cat doc-edit" contenteditable="true">Meeting / Conferencing</span>
-              <span class="be-scope__tag doc-edit" contenteditable="true">Phase 2</span>
-            </div>
-            <p class="be-scope__desc doc-edit" contenteditable="true">Summit Room, hospitality spaces, Peaks, Cliff Side, and boardrooms — refined and priced upon award of Phase 1.</p>
           </div>
         </li>
       </ul>
@@ -283,8 +290,6 @@
         <li class="doc-edit" contenteditable="true"><strong>Serviceability:</strong> remote monitoring, remote support access, simplified troubleshooting, and reduction of single points of failure.</li>
         <li class="doc-edit" contenteditable="true"><strong>Phased execution:</strong> deliver functional value early; defer optional/secondary scopes where appropriate.</li>
       </ul>
-
-      <p class="doc-section-head__text doc-edit" contenteditable="true"><strong>Phase 2</strong> (meeting/conferencing unification) and <strong>Phase 3</strong> (optional consolidation / specialty expansions) follow Phase 1 — to be refined and priced upon award of Phase 1.</p>
 
       <div class="doc-foot">
         <span class="doc-edit" contenteditable="true">LUCI Systems · Proposal</span>
@@ -458,39 +463,14 @@
         <li class="doc-edit" contenteditable="true">Integrate spa audio control into LUCI workflows as appropriate</li>
       </ul>
 
-      <h3 class="sow-subsection-title doc-edit" contenteditable="true">5.6 Mezz Level 7 IDF — meeting/hospitality conferencing backbone (pending further investigation during Phase 2)</h3>
-      <p class="sow-list-label doc-edit" contenteditable="true">Target rooms/spaces (current understanding)</p>
-      <ul class="sow-scope-list sow-scope-list--bullets">
-        <li class="doc-edit" contenteditable="true">Level 5: Summit Room (projector/screen replacement required)</li>
-        <li class="doc-edit" contenteditable="true">Level 9: Hospitality meeting spaces</li>
-        <li class="doc-edit" contenteditable="true">Level 3: Peaks A &amp; B (room combine)</li>
-        <li class="doc-edit" contenteditable="true">Level 3: Cliff Side A &amp; B (room combine)</li>
-        <li class="doc-edit" contenteditable="true">Level 3: Individual Boardrooms (currently operated on carts)</li>
-      </ul>
-
       <div class="doc-foot">
         <span class="doc-edit" contenteditable="true">LUCI Systems · Proposal</span>
         <span class="doc-foot__page doc-edit" contenteditable="true">08</span>
       </div>
     </section>
 
-    <!-- PAGE 09 · SECTION 5 (CONTINUED · 5.6) + SECTION 6 ====================== -->
+    <!-- PAGE 09 · SECTION 6 ====================== -->
     <section class="doc-page doc-page--band doc-page--idf-scope">
-      <p class="sow-list-label doc-edit" contenteditable="true">Scope intent</p>
-      <ul class="sow-scope-list sow-scope-list--bullets">
-        <li class="doc-edit" contenteditable="true">Unify conferencing capabilities across these rooms</li>
-        <li class="doc-edit" contenteditable="true">Remove bulky on-wall speakers and local control where feasible</li>
-        <li class="doc-edit" contenteditable="true">Retain TVs on the walls, migrate audio to ceiling speakers (where available/viable)</li>
-        <li class="doc-edit" contenteditable="true">Centralize AV components into the appropriate IDF (potentially Mezz Level 7), subject to confirmation of cabling terminations and pathways</li>
-        <li class="doc-edit" contenteditable="true">Integrate all rooms into LUCI for shared control, setup, oversight, maintenance, and support</li>
-      </ul>
-      <p class="sow-list-label doc-edit" contenteditable="true">Infrastructure expectations (to be validated)</p>
-      <ul class="sow-scope-list sow-scope-list--bullets">
-        <li class="doc-edit" contenteditable="true">CAT6 cabling to projector(s) and input wall plates (Summit Room)</li>
-        <li class="doc-edit" contenteditable="true">Speaker cabling from speaker to Mezz Level 7 (further investigation required)</li>
-        <li class="doc-edit" contenteditable="true">Confirmation of existing terminations for video/audio/control to the selected IDF</li>
-      </ul>
-
       <header class="doc-page-band doc-page-band--inline">
         <span class="sow-band-bignum doc-edit" contenteditable="true">06</span>
         <div class="doc-page-band__top">
