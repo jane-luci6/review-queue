@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>LUCI Teams background — Orchestration landscape</title>
+<title>LUCI Teams background — Orchestration seal</title>
 <!--
-  Teams/Zoom virtual background — orchestration landscape C (refined).
-  Hub centered behind the subject; horizontals run off left/right edges; layered tissue
-  for complexity. Center kept readable for camera. Logo + tagline bottom-right.
+  Teams/Zoom virtual background — integrated seal as a brand crown in the upper center.
+  The hub IS the logo: ring frames the mark, wordmark + tagline hang below on the same axis,
+  tissue flows symmetrically outward and dims downward so the person on camera reads against
+  clean navy. One composition, one center of gravity — not a sticker next to a motif.
 -->
 <link rel="stylesheet" href="../fonts/luci-brand-fonts.css">
 <link rel="stylesheet" href="_teams-base.css">
@@ -16,18 +17,56 @@
   .ring-stroke { fill: none; stroke: url(#mintGoldWave); }
   .sat-ring { fill: none; stroke: url(#mintGoldWave); stroke-width: 1.3; }
   .lc-landscape { position: absolute; inset: 0; width: 1920px; height: 1080px; pointer-events: none; }
-  .lc-lockup { right: 96px; bottom: 88px; text-align: right; }
-  .lc-lockup .lc-rule { margin-left: auto; }
-  /* center vignette keeps the camera zone clear; bottom-right scrim gives the
-     lockup a clean pocket so logo+tagline are the figure, motif the ground. */
-  .lc-vignette {
+
+  /* The seal — centered on x=960, sitting in the upper third as a brand crown above the subject */
+  .lc-seal {
+    position: absolute;
+    left: 50%; top: 232px;
+    transform: translateX(-50%);
+    z-index: 2;
+    text-align: center;
+    width: 560px;
+  }
+  .lc-wordmark {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 50px;
+    letter-spacing: 0.14em;
+    line-height: 1;
+    color: var(--off-white);
+    margin-top: 34px;
+    padding-left: 0.14em;
+  }
+  .lc-seal .lc-rule {
+    width: 40px; height: 3px;
+    background: var(--mint);
+    margin: 22px auto 18px;
+  }
+  .lc-seal .lc-tagline {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 1.3;
+    letter-spacing: 0.02em;
+    color: rgba(245, 248, 250, 0.86);
+    max-width: none;
+    text-align: center;
+  }
+  .lc-seal .lc-tagline em {
+    font-style: normal;
+    font-weight: 700;
+    color: var(--mint);
+  }
+
+  /* downward fade so the subject's zone stays clean navy */
+  .lc-fade {
     position: absolute; inset: 0;
-    box-shadow: inset 0 0 240px 50px rgba(0,0,0,0.42);
+    background: linear-gradient(180deg, rgba(10,22,28,0) 38%, rgba(10,22,28,0.55) 62%, rgba(10,22,28,0.92) 100%);
     pointer-events: none;
   }
-  .lc-scrim {
+  .lc-halo {
     position: absolute; inset: 0;
-    background: radial-gradient(520px 360px at 88% 92%, rgba(10,22,28,0.72) 0%, rgba(10,22,28,0.40) 40%, rgba(10,22,28,0) 75%);
+    background: radial-gradient(360px 240px at 50% 22%, rgba(10,22,28,0.45) 0%, rgba(10,22,28,0.12) 55%, rgba(10,22,28,0) 80%);
     pointer-events: none;
   }
 </style>
@@ -37,97 +76,106 @@
 
     <svg class="lc-landscape" viewBox="0 0 1920 1080" aria-hidden="true">
       <defs>
-        <radialGradient id="pwr" cx="960" cy="500" r="220" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stop-color="#68E3BE" stop-opacity="0.12"/>
-          <stop offset="50%" stop-color="#68E3BE" stop-opacity="0.03"/>
+        <radialGradient id="pwr" cx="960" cy="232" r="160" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#68E3BE" stop-opacity="0.14"/>
+          <stop offset="45%" stop-color="#68E3BE" stop-opacity="0.03"/>
           <stop offset="100%" stop-color="#68E3BE" stop-opacity="0"/>
         </radialGradient>
         <linearGradient id="mintGoldWave" gradientUnits="userSpaceOnUse"
-          x1="-960" y1="-50" x2="960" y2="50">
+          x1="-960" y1="-30" x2="960" y2="30">
           <stop offset="0%" stop-color="#EDD086"/>
-          <stop offset="16%" stop-color="#D4D494"/>
-          <stop offset="34%" stop-color="#68E3BE"/>
-          <stop offset="66%" stop-color="#68E3BE"/>
-          <stop offset="84%" stop-color="#D4D494"/>
+          <stop offset="18%" stop-color="#D4D494"/>
+          <stop offset="42%" stop-color="#68E3BE"/>
+          <stop offset="58%" stop-color="#68E3BE"/>
+          <stop offset="82%" stop-color="#D4D494"/>
           <stop offset="100%" stop-color="#EDD086"/>
         </linearGradient>
       </defs>
-      <circle cx="960" cy="500" r="220" fill="url(#pwr)"/>
+      <circle cx="960" cy="232" r="160" fill="url(#pwr)"/>
 
-      <g transform="translate(960 500)" fill="none" stroke="url(#mintGoldWave)" stroke-linecap="round" stroke-linejoin="round">
-        <circle class="ring-stroke" r="78" stroke-width="2" opacity="0.22"/>
-        <circle class="ring-stroke" r="200" stroke-width="1.2" opacity="0.12"/>
+      <g transform="translate(960 232)" fill="none" stroke="url(#mintGoldWave)" stroke-linecap="round" stroke-linejoin="round">
+        <!-- inner hub ring — frames the mark -->
+        <circle class="ring-stroke" r="100" stroke-width="2" opacity="0.42"/>
+        <circle class="ring-stroke" r="112" stroke-width="1" opacity="0.16"/>
 
-        <!-- no long diagonal rays — left/right spokes only -->
-
-        <g class="stroke" stroke-width="1.7" opacity="0.22">
-          <line x1="78" y1="0" x2="200" y2="0"/>
-          <line x1="-78" y1="0" x2="-200" y2="0"/>
+        <!-- orchestration ring + spines -->
+        <circle class="ring-stroke" r="168" stroke-width="1.3" opacity="0.20"/>
+        <g class="stroke" stroke-width="1.7" opacity="0.38">
+          <line x1="112" y1="0" x2="168" y2="0"/>
+          <line x1="-112" y1="0" x2="-168" y2="0"/>
         </g>
 
-        <g opacity="0.38">
-          <circle class="sat-ring" cx="200" cy="0" r="14" opacity="0.34"/>
-          <circle class="node" cx="200" cy="0" r="3"/>
-          <circle class="sat-ring" cx="100" cy="173" r="14" opacity="0.34"/>
-          <circle class="node" cx="100" cy="173" r="3"/>
-          <circle class="sat-ring" cx="-100" cy="173" r="14" opacity="0.34"/>
-          <circle class="node" cx="-100" cy="173" r="3"/>
-          <circle class="sat-ring" cx="-200" cy="0" r="14" opacity="0.34"/>
-          <circle class="node" cx="-200" cy="0" r="4"/>
-          <circle class="sat-ring" cx="-100" cy="-173" r="14" opacity="0.34"/>
-          <circle class="node" cx="-100" cy="-173" r="3"/>
-          <circle class="sat-ring" cx="100" cy="-173" r="14" opacity="0.34"/>
-          <circle class="node" cx="100" cy="-173" r="3"/>
+        <!-- satellites -->
+        <g opacity="0.52">
+          <circle class="sat-ring" cx="168" cy="0" r="13" opacity="0.40"/>
+          <circle class="node" cx="168" cy="0" r="3"/>
+          <circle class="sat-ring" cx="84" cy="145" r="13" opacity="0.40"/>
+          <circle class="node" cx="84" cy="145" r="3"/>
+          <circle class="sat-ring" cx="-84" cy="145" r="13" opacity="0.40"/>
+          <circle class="node" cx="-84" cy="145" r="3"/>
+          <circle class="sat-ring" cx="-168" cy="0" r="13" opacity="0.40"/>
+          <circle class="node" cx="-168" cy="0" r="4"/>
+          <circle class="sat-ring" cx="-84" cy="-145" r="13" opacity="0.40"/>
+          <circle class="node" cx="-84" cy="-145" r="3"/>
+          <circle class="sat-ring" cx="84" cy="-145" r="13" opacity="0.40"/>
+          <circle class="node" cx="84" cy="-145" r="3"/>
         </g>
 
-        <!-- Corner sats → L/R gateway → hub -->
-        <g class="stroke" stroke-width="1.25" opacity="0.20">
-          <path d="M 100 173 H 200 V 14"/>
-          <path d="M -100 173 H -200 V 14"/>
-          <path d="M -100 -173 H -200 V -14"/>
-          <path d="M 100 -173 H 200 V -14"/>
+        <!-- corner sats → gateway → hub -->
+        <g class="stroke" stroke-width="1.25" opacity="0.26">
+          <path d="M 84 145 H 168 V 14"/>
+          <path d="M -84 145 H -168 V 14"/>
+          <path d="M -84 -145 H -168 V -14"/>
+          <path d="M 84 -145 H 168 V -14"/>
         </g>
 
-        <!-- Tissue rooted at L/R gateways — every branch reconnects -->
-        <g class="stroke" stroke-width="1.9" opacity="0.24">
-          <path d="M 214 0 H 960"/>
-          <path d="M 340 0 V -48 H 960"/>
-          <path d="M 340 0 V 60 H 960"/>
-          <path d="M -214 0 H -960"/>
-          <path d="M -340 0 V 42 H -960"/>
-          <path d="M -340 0 V -70 H -960"/>
-        </g>
-        <g class="stroke" stroke-width="1.3" opacity="0.14">
-          <path d="M 300 0 V -60 H 620 V -100 H 960"/>
-          <path d="M 300 0 V 80 H 640 V 140 H 960"/>
-          <path d="M 480 -60 H 700 V -48"/>
-          <path d="M 500 80 H 720 V 60"/>
-          <path d="M -300 0 V 60 H -620 V 120 H -960"/>
-          <path d="M -300 0 V -90 H -640 V -150 H -960"/>
-          <path d="M -480 60 H -700 V 42"/>
-          <path d="M -500 -90 H -720 V -70"/>
-        </g>
-        <g class="stroke" stroke-width="1" opacity="0.06">
-          <path d="M 620 -48 V -12 H 960"/>
-          <path d="M 640 60 V 100 H 960"/>
-          <path d="M -620 42 V 12 H -960"/>
-          <path d="M -640 -70 V -110 H -960"/>
+        <!-- LUCI mark as core -->
+        <g transform="translate(-49 -41) scale(0.6)" opacity="1">
+          <path fill="#68E3BE" d="M 78.779 120.749 L 65.111 127.473 L 4.308 97.587 C -1.336 94.813 -1.326 86.913 4.308 84.149 L 4.328 84.149 L 4.888 84.413 L 78.789 120.749 Z"/>
+          <path fill="#68E3BE" d="M 139.462 69.171 L 134.197 71.739 L 125.775 75.876 L 87.151 56.88 L 70.556 65.045 L 56.869 58.321 L 82.435 45.765 C 85.402 44.304 88.899 44.304 91.866 45.765 L 139.472 69.171 Z"/>
+          <path fill="#68E3BE" d="M 161.321 80.13 L 147.864 86.726 L 91.167 114.603 C 88.639 115.848 85.652 115.848 83.125 114.603 L 28.806 87.893 L 26.398 86.717 L 12.731 79.993 L 10.323 78.816 L 4.189 75.807 C -1.396 73.053 -1.396 65.231 4.189 62.487 L 4.328 62.418 L 26.408 73.269 L 40.095 79.993 L 87.151 103.125 L 134.197 79.993 L 147.654 73.396 L 152.17 75.611 L 161.331 80.12 Z"/>
+          <path fill="#68E3BE" d="M 100.818 28.445 L 87.141 35.179 L 48.457 54.175 L 36.588 48.352 L 34.78 47.47 L 87.141 21.721 L 100.818 28.445 Z"/>
+          <path fill="#68E3BE" d="M 64.572 70.328 L 62.164 69.152 L 48.497 62.428 L 46.089 61.252 L 40.095 58.301 L 26.408 51.577 L 24.02 50.421 L 18.026 47.47 L 18.006 47.451 L 34.47 39.344 L 42.922 35.208 L 56.42 28.562 L 87.161 13.468 L 87.181 13.487 L 100.868 6.763 L 87.141 0 L 20.793 32.601 L 4.288 40.727 C -1.336 43.491 -1.336 51.371 4.288 54.135 L 4.328 54.155 L 10.323 57.105 L 12.731 58.282 L 26.398 65.006 L 28.805 66.182 L 32.412 67.956 L 34.82 69.132 L 48.487 75.856 L 50.895 77.032 L 87.131 94.852 L 100.798 88.128 L 64.562 70.308 Z"/>
+          <path fill="#68E3BE" d="M 154.038 98.077 L 161.501 101.743 L 92.216 135.824 C 89.029 137.392 85.283 137.392 82.096 135.824 L 73.484 131.589 L 147.874 95.048 L 151.66 96.901 L 154.048 98.077 Z"/>
         </g>
 
-        <circle class="node" cx="340" cy="0" r="3" opacity="0.26"/>
-        <circle class="node" cx="620" cy="-48" r="2.5" opacity="0.24"/>
-        <circle class="node" cx="640" cy="60" r="2.5" opacity="0.22"/>
-        <circle class="node" cx="-340" cy="0" r="3" opacity="0.26"/>
-        <circle class="node" cx="-640" cy="-70" r="3" opacity="0.28"/>
-        <circle class="node" cx="-620" cy="42" r="2.5" opacity="0.22"/>
+        <!-- Tissue — symmetric, dimming; contained to upper 60% so the subject zone stays clean -->
+        <g class="stroke" stroke-width="1.9" opacity="0.28">
+          <path d="M 181 0 H 860"/>
+          <path d="M 300 0 V -44 H 860"/>
+          <path d="M 300 0 V 54 H 860"/>
+          <path d="M -181 0 H -860"/>
+          <path d="M -300 0 V -44 H -860"/>
+          <path d="M -300 0 V 54 H -860"/>
+        </g>
+        <g class="stroke" stroke-width="1.3" opacity="0.16">
+          <path d="M 260 0 V -56 H 560 V -92 H 860"/>
+          <path d="M 260 0 V 72 H 580 V 126 H 860"/>
+          <path d="M -260 0 V -56 H -560 V -92 H -860"/>
+          <path d="M -260 0 V 72 H -580 V 126 H -860"/>
+        </g>
+        <g class="stroke" stroke-width="1" opacity="0.07">
+          <path d="M 560 -44 V -14 H 860"/>
+          <path d="M 580 54 V 88 H 860"/>
+          <path d="M -560 -44 V -14 H -860"/>
+          <path d="M -580 54 V 88 H -860"/>
+        </g>
+
+        <!-- tissue nodes — symmetric -->
+        <circle class="node" cx="300" cy="0" r="3" opacity="0.30"/>
+        <circle class="node" cx="500" cy="-44" r="2.5" opacity="0.26"/>
+        <circle class="node" cx="580" cy="54" r="2.5" opacity="0.26"/>
+        <circle class="node" cx="-300" cy="0" r="3" opacity="0.30"/>
+        <circle class="node" cx="-500" cy="-44" r="2.5" opacity="0.26"/>
+        <circle class="node" cx="-580" cy="54" r="2.5" opacity="0.26"/>
       </g>
     </svg>
 
-    <div class="lc-vignette" aria-hidden="true"></div>
-    <div class="lc-scrim" aria-hidden="true"></div>
+    <div class="lc-halo" aria-hidden="true"></div>
+    <div class="lc-fade" aria-hidden="true"></div>
 
-    <div class="lc-lockup">
-      <img class="lc-logo" src="../logos/luci-full-mintmark-white.png" alt="LUCI">
+    <div class="lc-seal">
+      <div class="lc-wordmark">LUCI</div>
       <div class="lc-rule" aria-hidden="true"></div>
       <p class="lc-tagline">The <em>Orchestration Engine</em><br>for Enterprise Multimedia</p>
     </div>
