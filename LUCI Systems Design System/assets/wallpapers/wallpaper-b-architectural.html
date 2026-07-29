@@ -4,9 +4,10 @@
 <meta charset="utf-8">
 <title>LUCI wallpaper — B · Architectural</title>
 <!--
-  Variant B — "Architectural": the isometric mint mark motif scaled large and bleeding
-  off the right edge (mint at low opacity, one plane picked out in gold), with the tagline
-  stack anchored in the left third. More designed, more energy.
+  Variant B — "Architectural": the isometric mint mark motif scaled large and bleeding off
+  the right edge (mint, one plane gold), a faint mint/gold circuit texture, and a subtle
+  isometric perspective grid (the "blueprint future" floor). Tagline anchored left.
+  Logo + tagline only (no sub-tagline).
   Render to PNG at 1920x1080 and 2560x1440 (see scripts/render-internal-team-assets.sh).
 -->
 <link rel="stylesheet" href="../fonts/luci-brand-fonts.css">
@@ -14,6 +15,21 @@
 <style>
   html, body { width: 1920px; height: 1080px; }
   .wallpaper { width: 1920px; height: 1080px; }
+
+  /* circuit texture — concentrated on the right behind the motif */
+  .lc-circuit {
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, transparent 30%, #000 60%, #000 100%);
+            mask-image: linear-gradient(90deg, transparent 0%, transparent 30%, #000 60%, #000 100%);
+    opacity: 0.42;
+  }
+
+  /* faint isometric perspective grid — converging floor lines, lower-right */
+  .lc-grid {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.22;
+  }
 
   .lc-motif {
     position: absolute;
@@ -36,8 +52,7 @@
     z-index: 2;
     max-width: 620px;
   }
-  .lc-lockup .lc-tagline { font-size: 44px; max-width: 560px; }
-  .lc-lockup .lc-sub { font-size: 17px; max-width: 460px; }
+  .lc-lockup .lc-tagline { font-size: 48px; max-width: 600px; }
 
   .lc-foot {
     position: absolute;
@@ -57,6 +72,27 @@
 </head>
 <body>
   <div class="wallpaper">
+    <div class="lc-circuit" aria-hidden="true"></div>
+
+    <!-- isometric perspective grid: converging lines toward a vanishing point on the right -->
+    <svg class="lc-grid" viewBox="0 0 1920 1080" preserveAspectRatio="none" aria-hidden="true">
+      <g stroke="#68E3BE" stroke-width="1" fill="none" opacity="0.5">
+        <!-- horizontal floor lines, perspective-spaced -->
+        <line x1="0"    y1="900" x2="1920" y2="900"/>
+        <line x1="-40"  y1="820" x2="1920" y2="860"/>
+        <line x1="-80"  y1="740" x2="1920" y2="820"/>
+        <line x1="-120" y1="660" x2="1920" y2="780"/>
+        <line x1="-160" y1="580" x2="1920" y2="740"/>
+        <!-- converging verticals toward a vanishing point at (1500, 560) -->
+        <line x1="200"  y1="1080" x2="1500" y2="560"/>
+        <line x1="520"  y1="1080" x2="1500" y2="560"/>
+        <line x1="840"  y1="1080" x2="1500" y2="560"/>
+        <line x1="1160" y1="1080" x2="1500" y2="560"/>
+        <line x1="1480" y1="1080" x2="1500" y2="560"/>
+        <line x1="1800" y1="1080" x2="1500" y2="560"/>
+      </g>
+    </svg>
+
     <!-- isometric LUCI mark, large, bleeding off the right edge -->
     <svg class="lc-motif" viewBox="0 0 161.501 137" fill="none" aria-hidden="true">
       <path class="plane-mint" d="M 78.779 120.749 L 65.111 127.473 L 4.308 97.587 C -1.336 94.813 -1.326 86.913 4.308 84.149 L 4.328 84.149 L 4.888 84.413 L 78.789 120.749 L 78.779 120.749 Z"/>
@@ -72,7 +108,6 @@
     <div class="lc-lockup">
       <div class="lc-rule" aria-hidden="true"></div>
       <p class="lc-tagline">The <em>Orchestration Engine</em><br>for Enterprise Multimedia</p>
-      <p class="lc-sub">One interface to control, automate, and execute the entire guest experience.</p>
     </div>
 
     <div class="lc-foot">

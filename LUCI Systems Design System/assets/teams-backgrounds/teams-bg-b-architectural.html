@@ -6,11 +6,17 @@
 <!--
   Teams/Zoom virtual background — Variant B "Architectural".
   The isometric mint mark motif bleeds off the far-right edge (kept right of the subject);
-  full-logo + tagline lockup bottom-left. Center stays clean navy. Render to PNG at 1920x1080.
+  mint/gold circuit texture concentrated on the right; full-logo + tagline lockup bottom-left.
+  Center stays clean navy. Logo + tagline only (no sub-tagline). Render to PNG at 1920x1080.
 -->
 <link rel="stylesheet" href="../fonts/luci-brand-fonts.css">
 <link rel="stylesheet" href="_teams-base.css">
 <style>
+  .lc-circuit {
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, transparent 45%, #000 70%, #000 100%);
+            mask-image: linear-gradient(90deg, transparent 0%, transparent 45%, #000 70%, #000 100%);
+    opacity: 0.42;
+  }
   .lc-motif {
     position: absolute;
     top: 50%;
@@ -24,10 +30,7 @@
   .lc-motif .plane-gold { fill: var(--gold); opacity: 0.85; }
   .lc-motif .plane-mint { fill: var(--mint); }
 
-  .lc-lockup {
-    left: 96px;
-    bottom: 88px;
-  }
+  .lc-lockup { left: 96px; bottom: 88px; }
   .lc-vignette {
     position: absolute;
     inset: 0;
@@ -38,6 +41,7 @@
 </head>
 <body>
   <div class="bg">
+    <div class="lc-circuit" aria-hidden="true"></div>
     <svg class="lc-motif" viewBox="0 0 161.501 137" fill="none" aria-hidden="true">
       <path class="plane-mint" d="M 78.779 120.749 L 65.111 127.473 L 4.308 97.587 C -1.336 94.813 -1.326 86.913 4.308 84.149 L 4.328 84.149 L 4.888 84.413 L 78.789 120.749 L 78.779 120.749 Z"/>
       <path class="plane-gold" d="M 139.462 69.171 L 134.197 71.739 L 125.775 75.876 L 87.151 56.88 L 70.556 65.045 L 56.869 58.321 L 82.435 45.765 C 85.402 44.304 88.899 44.304 91.866 45.765 L 139.472 69.171 L 139.462 69.171 Z"/>

@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <title>LUCI wallpaper — C · System orbit</title>
 <!--
-  Variant C — "System orbit": a custom abstract orbit motif (concentric mint rings + node
-  dots + a soft central glow) on the right half — evokes "the orchestrated system" without
-  legible text or a busy diagram. Tagline stack anchored left. No canonical-diagram
-  reference, so no retired-language bleed and no propagation coupling.
+  Variant C — "System orbit": abstract concentric orbit rings + nodes (one gold) with a
+  soft central glow, plus a faint mint/gold circuit texture at the edges and thin radial
+  scan lines emanating from the core. Tagline left, logo bottom-right.
+  Logo + tagline only (no sub-tagline). Futuristic "system/radar" feel.
   Render to PNG at 1920x1080 and 2560x1440 (see scripts/render-internal-team-assets.sh).
 -->
 <link rel="stylesheet" href="../fonts/luci-brand-fonts.css">
@@ -15,6 +15,12 @@
 <style>
   html, body { width: 1920px; height: 1080px; }
   .wallpaper { width: 1920px; height: 1080px; }
+
+  /* circuit texture — visible at the edges, fading toward the orbit center */
+  .lc-circuit {
+    -webkit-mask-image: radial-gradient(ellipse 50% 80% at 72% 50%, transparent 0%, transparent 44%, #000 92%);
+            mask-image: radial-gradient(ellipse 50% 80% at 72% 50%, transparent 0%, transparent 44%, #000 92%);
+  }
 
   .lc-orbit {
     position: absolute;
@@ -25,17 +31,22 @@
     transform: translateY(-50%);
     pointer-events: none;
   }
-  .lc-orbit .ring {
-    fill: none;
-    stroke: var(--mint);
-    stroke-width: 1.4;
-  }
-  .lc-orbit .node {
-    fill: var(--mint);
-  }
+  .lc-orbit .ring { fill: none; stroke: var(--mint); stroke-width: 1.4; }
+  .lc-orbit .node { fill: var(--mint); }
   .lc-orbit .node-gold { fill: var(--gold); }
 
-  /* soft central glow */
+  /* thin radial scan lines from the core — a quiet "radar" signal */
+  .lc-scan {
+    position: absolute;
+    top: 50%;
+    right: 60px;
+    width: 920px;
+    height: 920px;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  .lc-scan line { stroke: var(--mint); stroke-width: 1; }
+
   .lc-glow {
     position: absolute;
     top: 50%;
@@ -43,7 +54,7 @@
     width: 920px;
     height: 920px;
     transform: translateY(-50%);
-    background: radial-gradient(circle at 50% 50%, rgba(104,227,190,0.14), rgba(104,227,190,0) 62%);
+    background: radial-gradient(circle at 50% 50%, rgba(104,227,190,0.16), rgba(104,227,190,0) 62%);
     pointer-events: none;
   }
 
@@ -55,8 +66,7 @@
     z-index: 2;
     max-width: 600px;
   }
-  .lc-lockup .lc-tagline { font-size: 38px; max-width: 540px; }
-  .lc-lockup .lc-sub { font-size: 17px; max-width: 460px; }
+  .lc-lockup .lc-tagline { font-size: 40px; max-width: 560px; }
 
   .lc-foot {
     position: absolute;
@@ -76,25 +86,38 @@
 </head>
 <body>
   <div class="wallpaper">
+    <div class="lc-circuit" aria-hidden="true"></div>
     <div class="lc-glow" aria-hidden="true"></div>
-    <!-- abstract orbit: three concentric rings + nodes (one gold), no text -->
+
+    <!-- radial scan lines from the core -->
+    <svg class="lc-scan" viewBox="0 0 920 920" aria-hidden="true">
+      <g opacity="0.18">
+        <line x1="460" y1="460" x2="460" y2="0"/>
+        <line x1="460" y1="460" x2="912" y2="460"/>
+        <line x1="460" y1="460" x2="460" y2="912"/>
+        <line x1="460" y1="460" x2="8"   y2="460"/>
+        <line x1="460" y1="460" x2="820" y2="100"/>
+        <line x1="460" y1="460" x2="820" y2="820"/>
+        <line x1="460" y1="460" x2="100" y2="820"/>
+        <line x1="460" y1="460" x2="100" y2="100"/>
+      </g>
+    </svg>
+
+    <!-- abstract orbit: concentric rings + nodes (one gold), no text -->
     <svg class="lc-orbit" viewBox="0 0 920 920" aria-hidden="true">
       <circle class="ring" cx="460" cy="460" r="452" opacity="0.10"/>
       <circle class="ring" cx="460" cy="460" r="360" opacity="0.16"/>
       <circle class="ring" cx="460" cy="460" r="248" opacity="0.22"/>
       <circle class="ring" cx="460" cy="460" r="132" opacity="0.30"/>
-      <!-- nodes on the outer ring -->
-      <circle class="node" cx="460" cy="8"    r="6" opacity="0.55"/>
-      <circle class="node" cx="912" cy="460" r="6" opacity="0.55"/>
+      <circle class="node"      cx="460" cy="8"    r="6" opacity="0.55"/>
+      <circle class="node"      cx="912" cy="460" r="6" opacity="0.55"/>
       <circle class="node-gold" cx="460" cy="912" r="7" opacity="0.7"/>
-      <circle class="node" cx="8"    cy="460" r="6" opacity="0.55"/>
-      <!-- nodes on the mid ring -->
-      <circle class="node" cx="460" cy="100"  r="5" opacity="0.5"/>
-      <circle class="node" cx="820" cy="460"  r="5" opacity="0.5"/>
-      <circle class="node" cx="460" cy="820"  r="5" opacity="0.5"/>
-      <circle class="node" cx="100" cy="460"  r="5" opacity="0.5"/>
-      <!-- inner core dot -->
-      <circle class="node" cx="460" cy="460" r="10" opacity="0.85"/>
+      <circle class="node"      cx="8"    cy="460" r="6" opacity="0.55"/>
+      <circle class="node"      cx="460" cy="100"  r="5" opacity="0.5"/>
+      <circle class="node"      cx="820" cy="460"  r="5" opacity="0.5"/>
+      <circle class="node"      cx="460" cy="820"  r="5" opacity="0.5"/>
+      <circle class="node"      cx="100" cy="460"  r="5" opacity="0.5"/>
+      <circle class="node"      cx="460" cy="460"  r="10" opacity="0.85"/>
     </svg>
 
     <div class="lc-vignette" aria-hidden="true"></div>
@@ -102,7 +125,6 @@
     <div class="lc-lockup">
       <div class="lc-rule" aria-hidden="true"></div>
       <p class="lc-tagline">The <em>Orchestration Engine</em><br>for Enterprise Multimedia</p>
-      <p class="lc-sub">One interface to control, automate, and execute the entire guest experience.</p>
     </div>
 
     <div class="lc-foot">
