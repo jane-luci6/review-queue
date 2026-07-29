@@ -2,49 +2,47 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>LUCI wallpaper — D · Orchestration core</title>
+<title>LUCI wallpaper — Orchestration landscape</title>
 <!--
-  Variant D — "Orchestration core": merges B's left-tagline signature with a CENTRAL
-  engine-core footprint that represents "the orchestration engine" — the LUCI mark
-  seated at the center of concentric orbit rings + nodes, on a soft lighter circular
-  footprint (a subtle lightening of the navy, not a bright glow). Reusable brand motif.
-  Logo + tagline only (no sub-tagline). Render to 1920x1080 and 2560x1440.
+  Locked wallpaper: orchestration landscape C (refined).
+  Center hub = power source; satellite ring; connective tissue with layered line weights;
+  horizontals run OFF the left and right edges of the 1920 canvas. Logo + tagline only.
 -->
 <link rel="stylesheet" href="../fonts/luci-brand-fonts.css">
 <link rel="stylesheet" href="_wallpaper-base.css">
 <style>
   html, body { width: 1920px; height: 1080px; }
   .wallpaper { width: 1920px; height: 1080px; }
+
   .lc-circuit {
-    -webkit-mask-image: radial-gradient(ellipse 40% 72% at 62% 50%, transparent 0%, transparent 42%, #000 94%);
-            mask-image: radial-gradient(ellipse 40% 72% at 62% 50%, transparent 0%, transparent 42%, #000 94%);
+    -webkit-mask-image: radial-gradient(ellipse 50% 70% at 55% 50%, transparent 0%, transparent 35%, #000 85%);
+            mask-image: radial-gradient(ellipse 50% 70% at 55% 50%, transparent 0%, transparent 35%, #000 85%);
+    opacity: 0.22;
   }
-  /* the "light footprint" — subtle lighter circular region behind the orbit */
-  .lc-footprint, .lc-footprint-ring, .lc-orbit, .lc-scan, .lc-core {
-    position: absolute; top: 50%; left: 62%;
-    transform: translate(-50%, -50%);
+
+  .lc-landscape {
+    position: absolute; inset: 0;
+    width: 1920px; height: 1080px;
     pointer-events: none;
   }
-  .lc-footprint { width: 820px; height: 820px;
-    background: radial-gradient(circle at 50% 50%, rgba(245,248,250,0.055), rgba(245,248,250,0) 66%); }
-  .lc-footprint-ring { width: 820px; height: 820px;
-    border: 1px solid rgba(104,227,190,0.10); border-radius: 50%; }
-  .lc-orbit, .lc-scan { width: 760px; height: 760px; }
-  .lc-orbit .ring { fill: none; stroke: var(--mint); stroke-width: 1.4; }
-  .lc-orbit .node { fill: var(--mint); }
-  .lc-orbit .node-gold { fill: var(--gold); }
-  .lc-scan line { stroke: var(--mint); stroke-width: 1; }
-  .lc-core { width: 150px; height: auto; opacity: 0.92; }
+  .stroke { fill: none; stroke: #68E3BE; stroke-linecap: round; stroke-linejoin: round; }
+  .node { fill: #68E3BE; }
+  .node-gold { fill: #EDD086; }
+  .ring-stroke { fill: none; stroke: #68E3BE; }
+  .sat-ring { fill: none; stroke: #68E3BE; stroke-width: 1.4; }
+
   .lc-lockup {
-    position: absolute; left: 120px; top: 50%; transform: translateY(-50%);
+    position: absolute; left: 120px; top: 50%;
+    transform: translateY(-50%);
     z-index: 2; max-width: 540px;
   }
-  .lc-lockup .lc-tagline { font-size: 44px; max-width: 520px; }
+  .lc-lockup .lc-tagline { font-size: 42px; max-width: 520px; }
   .lc-foot { position: absolute; left: 120px; bottom: 96px; z-index: 2; }
   .lc-foot .lc-logo { height: 56px; opacity: 0.92; }
+
   .lc-vignette {
     position: absolute; inset: 0;
-    background: linear-gradient(90deg, rgba(10,22,28,0.82) 0%, rgba(10,22,28,0.30) 26%, rgba(10,22,28,0) 40%);
+    background: linear-gradient(90deg, rgba(10,22,28,0.78) 0%, rgba(10,22,28,0.35) 22%, rgba(10,22,28,0) 40%);
     pointer-events: none;
   }
 </style>
@@ -52,39 +50,163 @@
 <body>
   <div class="wallpaper">
     <div class="lc-circuit" aria-hidden="true"></div>
-    <div class="lc-footprint" aria-hidden="true"></div>
-    <div class="lc-footprint-ring" aria-hidden="true"></div>
 
-    <svg class="lc-scan" viewBox="0 0 760 760" aria-hidden="true">
-      <g opacity="0.16">
-        <line x1="380" y1="380" x2="380" y2="0"/>
-        <line x1="380" y1="380" x2="752" y2="380"/>
-        <line x1="380" y1="380" x2="380" y2="752"/>
-        <line x1="380" y1="380" x2="8" y2="380"/>
-        <line x1="380" y1="380" x2="676" y2="84"/>
-        <line x1="380" y1="380" x2="676" y2="676"/>
-        <line x1="380" y1="380" x2="84" y2="676"/>
-        <line x1="380" y1="380" x2="84" y2="84"/>
+    <!-- hub centered at (1080, 540) — right of tagline; tissue runs to x=0 and x=1920 -->
+    <svg class="lc-landscape" viewBox="0 0 1920 1080" aria-hidden="true">
+      <defs>
+        <radialGradient id="pwr" cx="1080" cy="540" r="200" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#68E3BE" stop-opacity="0.18"/>
+          <stop offset="45%" stop-color="#68E3BE" stop-opacity="0.04"/>
+          <stop offset="100%" stop-color="#68E3BE" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <circle cx="1080" cy="540" r="200" fill="url(#pwr)"/>
+
+      <g transform="translate(1080 540)">
+        <!-- hub rings -->
+        <circle class="ring-stroke" r="72" stroke-width="2.2" opacity="0.48"/>
+        <circle class="ring-stroke" r="84" stroke-width="1" opacity="0.16"/>
+
+        <!-- faint radial rays -->
+        <g class="stroke" stroke-width="1" opacity="0.10">
+          <line x1="84" y1="0" x2="900" y2="0" transform="rotate(15)"/>
+          <line x1="84" y1="0" x2="900" y2="0" transform="rotate(30)"/>
+          <line x1="84" y1="0" x2="500" y2="0" transform="rotate(45)"/>
+          <line x1="84" y1="0" x2="900" y2="0" transform="rotate(60)"/>
+          <line x1="84" y1="0" x2="500" y2="0" transform="rotate(75)"/>
+          <line x1="84" y1="0" x2="900" y2="0" transform="rotate(105)"/>
+          <line x1="84" y1="0" x2="500" y2="0" transform="rotate(120)"/>
+          <line x1="84" y1="0" x2="900" y2="0" transform="rotate(135)"/>
+          <line x1="84" y1="0" x2="500" y2="0" transform="rotate(150)"/>
+          <line x1="84" y1="0" x2="900" y2="0" transform="rotate(165)"/>
+          <line x1="84" y1="0" x2="900" y2="0" transform="rotate(195)"/>
+          <line x1="84" y1="0" x2="500" y2="0" transform="rotate(210)"/>
+          <line x1="84" y1="0" x2="900" y2="0" transform="rotate(225)"/>
+          <line x1="84" y1="0" x2="500" y2="0" transform="rotate(240)"/>
+          <line x1="84" y1="0" x2="900" y2="0" transform="rotate(255)"/>
+          <line x1="84" y1="0" x2="900" y2="0" transform="rotate(285)"/>
+          <line x1="84" y1="0" x2="500" y2="0" transform="rotate(300)"/>
+          <line x1="84" y1="0" x2="900" y2="0" transform="rotate(315)"/>
+          <line x1="84" y1="0" x2="500" y2="0" transform="rotate(330)"/>
+          <line x1="84" y1="0" x2="900" y2="0" transform="rotate(345)"/>
+        </g>
+
+        <!-- orchestration ring + spokes -->
+        <circle class="ring-stroke" r="180" stroke-width="1.3" opacity="0.26"/>
+        <g class="stroke" stroke-width="1.9" opacity="0.48">
+          <line x1="72" y1="0" x2="180" y2="0"/>
+          <line x1="72" y1="0" x2="180" y2="0" transform="rotate(60)"/>
+          <line x1="72" y1="0" x2="180" y2="0" transform="rotate(120)"/>
+          <line x1="72" y1="0" x2="180" y2="0" transform="rotate(180)"/>
+          <line x1="72" y1="0" x2="180" y2="0" transform="rotate(240)"/>
+          <line x1="72" y1="0" x2="180" y2="0" transform="rotate(300)"/>
+        </g>
+
+        <!-- satellites -->
+        <g opacity="0.72">
+          <circle class="sat-ring" cx="180" cy="0" r="15" opacity="0.55"/>
+          <circle class="node" cx="180" cy="0" r="3.5"/>
+          <circle class="sat-ring" cx="90" cy="156" r="15" opacity="0.55"/>
+          <circle class="node" cx="90" cy="156" r="3.5"/>
+          <circle class="sat-ring" cx="-90" cy="156" r="15" opacity="0.55"/>
+          <circle class="node" cx="-90" cy="156" r="3.5"/>
+          <circle class="sat-ring" cx="-180" cy="0" r="15" opacity="0.55" style="stroke:#EDD086"/>
+          <circle class="node-gold" cx="-180" cy="0" r="4.5"/>
+          <circle class="sat-ring" cx="-90" cy="-156" r="15" opacity="0.55"/>
+          <circle class="node" cx="-90" cy="-156" r="3.5"/>
+          <circle class="sat-ring" cx="90" cy="-156" r="15" opacity="0.55"/>
+          <circle class="node" cx="90" cy="-156" r="3.5"/>
+        </g>
+
+        <!-- LUCI mark as core (inline so it scales with the landscape) -->
+        <g transform="translate(-36 -30) scale(0.45)" opacity="0.95">
+          <path fill="#68E3BE" d="M 78.779 120.749 L 65.111 127.473 L 4.308 97.587 C -1.336 94.813 -1.326 86.913 4.308 84.149 L 4.328 84.149 L 4.888 84.413 L 78.789 120.749 Z"/>
+          <path fill="#68E3BE" d="M 139.462 69.171 L 134.197 71.739 L 125.775 75.876 L 87.151 56.88 L 70.556 65.045 L 56.869 58.321 L 82.435 45.765 C 85.402 44.304 88.899 44.304 91.866 45.765 L 139.472 69.171 Z"/>
+          <path fill="#68E3BE" d="M 161.321 80.13 L 147.864 86.726 L 91.167 114.603 C 88.639 115.848 85.652 115.848 83.125 114.603 L 28.806 87.893 L 26.398 86.717 L 12.731 79.993 L 10.323 78.816 L 4.189 75.807 C -1.396 73.053 -1.396 65.231 4.189 62.487 L 4.328 62.418 L 26.408 73.269 L 40.095 79.993 L 87.151 103.125 L 134.197 79.993 L 147.654 73.396 L 152.17 75.611 L 161.331 80.12 Z"/>
+          <path fill="#68E3BE" d="M 100.818 28.445 L 87.141 35.179 L 48.457 54.175 L 36.588 48.352 L 34.78 47.47 L 87.141 21.721 L 100.818 28.445 Z"/>
+          <path fill="#68E3BE" d="M 64.572 70.328 L 62.164 69.152 L 48.497 62.428 L 46.089 61.252 L 40.095 58.301 L 26.408 51.577 L 24.02 50.421 L 18.026 47.47 L 18.006 47.451 L 34.47 39.344 L 42.922 35.208 L 56.42 28.562 L 87.161 13.468 L 87.181 13.487 L 100.868 6.763 L 87.141 0 L 20.793 32.601 L 4.288 40.727 C -1.336 43.491 -1.336 51.371 4.288 54.135 L 4.328 54.155 L 10.323 57.105 L 12.731 58.282 L 26.398 65.006 L 28.805 66.182 L 32.412 67.956 L 34.82 69.132 L 48.487 75.856 L 50.895 77.032 L 87.131 94.852 L 100.798 88.128 L 64.562 70.308 Z"/>
+          <path fill="#68E3BE" d="M 154.038 98.077 L 161.501 101.743 L 92.216 135.824 C 89.029 137.392 85.283 137.392 82.096 135.824 L 73.484 131.589 L 147.874 95.048 L 151.66 96.901 L 154.048 98.077 Z"/>
+        </g>
+
+        <!-- LAYER 1 — faint under-web, off left (to -1080) and right (to +840) -->
+        <g class="stroke" stroke-width="1" opacity="0.09">
+          <path d="M 195 0 H 840"/>
+          <path d="M 195 24 H 840"/>
+          <path d="M 195 -24 H 840"/>
+          <path d="M 195 -48 H 520 V -100 H 840"/>
+          <path d="M 195 48 H 500 V 120 H 840"/>
+          <path d="M -195 0 H -1080"/>
+          <path d="M -195 24 H -1080"/>
+          <path d="M -195 -24 H -1080"/>
+          <path d="M -195 -48 H -500 V -130 H -1080"/>
+          <path d="M -195 48 H -480 V 140 H -1080"/>
+          <path d="M 400 -24 V 24"/>
+          <path d="M 560 -48 V 48"/>
+          <path d="M -400 -24 V 24"/>
+          <path d="M -560 -48 V 48"/>
+        </g>
+
+        <!-- LAYER 2 — mid tissue -->
+        <g class="stroke" stroke-width="1.35" opacity="0.26">
+          <path d="M 195 0 H 840"/>
+          <path d="M 280 0 V -65 H 560 V -110 H 840"/>
+          <path d="M 280 0 V 85 H 580 V 150 H 840"/>
+          <path d="M 400 -65 H 640 V -30"/>
+          <path d="M 420 85 H 700 V 40"/>
+          <path d="M -195 0 H -1080"/>
+          <path d="M -280 0 V 65 H -560 V 130 H -1080"/>
+          <path d="M -280 0 V -95 H -580 V -160 H -1080"/>
+          <path d="M -400 65 H -700 V 95"/>
+          <path d="M -420 -95 H -720 V -55"/>
+          <path d="M 0 -195 V -500"/>
+          <path d="M 0 195 V 500"/>
+          <path d="M 50 -280 H 160 V -420"/>
+          <path d="M -60 280 H -180 V 450"/>
+        </g>
+
+        <!-- LAYER 3 — stronger trunks off-page -->
+        <g class="stroke" stroke-width="1.9" opacity="0.40">
+          <path d="M 195 0 H 840"/>
+          <path d="M 320 0 V -50 H 840"/>
+          <path d="M 320 0 V 65 H 840"/>
+          <path d="M -195 0 H -1080"/>
+          <path d="M -320 0 V 45 H -1080"/>
+          <path d="M -320 0 V -75 H -1080"/>
+          <path d="M 105 168 L 200 250 H 420 V 340 H 840"/>
+          <path d="M -105 -168 L -210 -260 H -480 V -340 H -1080"/>
+        </g>
+
+        <!-- LAYER 4 — fine edge forks -->
+        <g class="stroke" stroke-width="1" opacity="0.16">
+          <path d="M 560 -50 V -15 H 840"/>
+          <path d="M 580 65 V 105 H 840"/>
+          <path d="M 640 -110 H 840"/>
+          <path d="M 700 150 H 840"/>
+          <path d="M -560 45 V 15 H -1080"/>
+          <path d="M -580 -75 V -115 H -1080"/>
+          <path d="M -640 130 H -1080"/>
+          <path d="M -720 -160 H -1080"/>
+          <path d="M 300 250 H 500 V 290 H 840"/>
+          <path d="M -300 -260 H -520 V -300 H -1080"/>
+        </g>
+
+        <!-- tissue nodes -->
+        <circle class="node" cx="320" cy="0" r="3.5" opacity="0.50"/>
+        <circle class="node" cx="560" cy="-50" r="3" opacity="0.38"/>
+        <circle class="node" cx="580" cy="65" r="3" opacity="0.38"/>
+        <circle class="node" cx="720" cy="-110" r="2.5" opacity="0.28"/>
+        <circle class="node" cx="760" cy="150" r="2.5" opacity="0.26"/>
+        <circle class="node" cx="-320" cy="0" r="3.5" opacity="0.50"/>
+        <circle class="node-gold" cx="-580" cy="-75" r="4" opacity="0.55"/>
+        <circle class="node" cx="-560" cy="45" r="3" opacity="0.38"/>
+        <circle class="node" cx="-720" cy="130" r="2.5" opacity="0.26"/>
+        <circle class="node" cx="-760" cy="-160" r="2.5" opacity="0.26"/>
+        <circle class="node" cx="200" cy="250" r="3" opacity="0.35"/>
+        <circle class="node" cx="500" cy="340" r="2.5" opacity="0.26"/>
+        <circle class="node" cx="-210" cy="-260" r="3" opacity="0.35"/>
+        <circle class="node" cx="-520" cy="-340" r="2.5" opacity="0.26"/>
       </g>
     </svg>
-
-    <svg class="lc-orbit" viewBox="0 0 760 760" aria-hidden="true">
-      <circle class="ring" cx="380" cy="380" r="374" opacity="0.10"/>
-      <circle class="ring" cx="380" cy="380" r="298" opacity="0.16"/>
-      <circle class="ring" cx="380" cy="380" r="204" opacity="0.22"/>
-      <circle class="ring" cx="380" cy="380" r="108" opacity="0.30"/>
-      <circle class="node"      cx="380" cy="6"    r="6" opacity="0.55"/>
-      <circle class="node"      cx="752" cy="380" r="6" opacity="0.55"/>
-      <circle class="node-gold" cx="380" cy="754" r="7" opacity="0.7"/>
-      <circle class="node"      cx="8"   cy="380" r="6" opacity="0.55"/>
-      <circle class="node"      cx="380" cy="82"  r="5" opacity="0.5"/>
-      <circle class="node"      cx="678" cy="380" r="5" opacity="0.5"/>
-      <circle class="node"      cx="380" cy="678" r="5" opacity="0.5"/>
-      <circle class="node"      cx="82"  cy="380" r="5" opacity="0.5"/>
-    </svg>
-
-    <!-- the LUCI mark at the very center — the "core" of the engine -->
-    <img class="lc-core" src="../logos/luci-mark-mint.png" alt="" aria-hidden="true">
 
     <div class="lc-vignette" aria-hidden="true"></div>
 
