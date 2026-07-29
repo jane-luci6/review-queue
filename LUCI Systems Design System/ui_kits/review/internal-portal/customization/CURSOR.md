@@ -71,7 +71,7 @@ Also read: `.cursor/rules/luci-doc-customization.mdc`
 4. Copy master → the **one** client working file; customize per skill. Keep `contenteditable` / `data-studio`. Never edit locked pages/regions — including color or CSS — without confirming first.
 5. **Refresh preview tooling, then start the LUCI dev server** — **always overwrite** `luci-dev-server.py`, `luci-doc-edit.js`, and `luci-doc-edit.css` from the current `customization/` originals into the project (never reuse a stale copy). Then run `python3 ui_kits/internal-portal/customization/luci-dev-server.py` from the project root (background process) and **automatically open the rendered client HTML** in Cursor's in-editor browser (not the HTML source) at `http://127.0.0.1:8771/ui_kits/sales/<client-file>.html`.
 6. When Mike clicks **Save** in the preview, the dev server writes his typed edits to the working file on disk — so the next agent pass reads the latest version with no manual copy/paste. If Save falls back to a download, restart the refreshed dev server before continuing.
-7. **Download PDF** uses `POST /__pdf` (headless Chrome) — never `window.print()`. Export also works when Mike asks in chat.
+7. **Download PDF** uses `POST /__pdf` (headless Chrome) — never `window.print()`. Export also works when Mike asks in chat. `patch-sales-pdf-html.py` flattens CSS gradients + mask-images automatically during export so the PDF doesn't blink in macOS Preview — see `_brand/SKILL.md` → **PDF export — gradient + mask flattening** for the maintenance rule when adding new gradients.
 
 ---
 

@@ -43,7 +43,7 @@ House-wide for **every** Customization Studio document (all Proposal types, Budg
 - **Same working file forever.** The LUCI dev server's `POST /__save` writes Mike's typed edits back to the working `.html` file on disk when he clicks Save — so the next agent pass reads the latest version. `*-edited.html` downloads are a last-resort fallback artifact, not the source of truth.
 - No accessibility snapshots. Mandatory overflow fit-check after content edits (see `_brand/SKILL.md`).
 - Do not link CSS the master does not already link (strips header bands / circuit texture).
-- **Download PDF** = browser print → Save as PDF (US Letter).
+- **Download PDF** = `POST /__pdf` on the LUCI dev server (headless Chrome — never `window.print()`, which crashes Cursor's in-editor browser). `patch-sales-pdf-html.py` flattens CSS gradients + mask-images automatically so the PDF doesn't blink in macOS Preview — see `_brand/SKILL.md` → **PDF export — gradient + mask flattening** for the maintenance rule when adding new gradients.
 
 When a change is Proposal-structure/copy-specific (page order, estimate format, etc.), **ask Jane** whether it should also apply to Budgetary estimate / Scope of work / other studio docs before propagating.
 
@@ -98,4 +98,4 @@ After customizing the client HTML, **automatically open the rendered doc in Curs
 - Follow editable vs locked regions in template `SKILL.md` exactly — run the pre-edit gate ("Locked pages are locked" above) before any edit; never edit a locked page without confirming first.
 - Follow **Efficient customization** in `_brand/SKILL.md` — populate-in-place, one folder, selector edits, fit-check.
 - After customization, automatically open the rendered client HTML in Cursor's in-editor browser (procedure above) for click-to-edit fine-tuning.
-- PDF: `scripts/render-pdf.sh` when requested.
+- PDF: `POST /__pdf` on the dev server (or `scripts/render-pdf.sh` directly). Gradients/masks are flattened automatically by `patch-sales-pdf-html.py` — no blink in macOS Preview.

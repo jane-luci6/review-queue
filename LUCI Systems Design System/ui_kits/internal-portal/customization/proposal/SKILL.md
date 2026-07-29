@@ -14,7 +14,7 @@ Post-survey proposal for LED wall installations. **~13 pages (US Letter, variabl
 
 **Section numbering rule:** a section number appears only on the first page of that section (the band big-numeral + title). Continuation pages within the same section carry a `.led-subhead` instead — no repeated number. In the default 13-page layout, §3's number lives on page 5; pages 6–8 use subheads ("Coordination & Training", "Design Specifications — <pitch>"). §4's number lives on page 9 (Estimate 01 opener). Estimate 02 on p10 and Payment Terms on p11 are subheads — no repeated §4 number. §5's number lives on page 12 (Terms). **These page numbers shift when spec or estimate pages are added/removed** — always reference by section, not by absolute page number.
 
-Also read: `../_brand/SKILL.md` — especially **Efficient customization (read this first)**, **Continuous page packing**, **Source fidelity**, **Totals span the full page width**, and **Logo + pattern**. This is a populate-in-place job; never rebuild.
+Also read: `../_brand/SKILL.md` — especially **Efficient customization (read this first)**, **Continuous page packing**, **Source fidelity**, **Totals span the full page width**, **Logo + pattern**, and **PDF export — gradient + mask flattening**. This is a populate-in-place job; never rebuild.
 
 ## Click-to-edit (Mike) vs agent edits
 
@@ -24,7 +24,7 @@ Also read: `../_brand/SKILL.md` — especially **Efficient customization (read t
 
 **Agent rules (unchanged discipline):** prefer `[data-studio]` selector edits; do not rebuild sections; do not invent fine-print; after Mike types in the preview, **Save** (or write the live DOM back to the same working file) before the next agent pass. Brand/voice still applies to any copy the agent authors.
 
-**Save / PDF toolbar:** **Save** overwrites the working file when the browser supports the file picker (otherwise downloads `<title>.html` — Mike should save over the same path, not a new `-edited` copy). **Copy HTML** puts the full document on the clipboard. **Download PDF** opens the print dialog (Save as PDF, US Letter).
+**Save / PDF toolbar:** **Save** overwrites the working file via the LUCI dev server's `POST /__save` (no file picker, no Downloads artifact). **Copy HTML** puts the full document on the clipboard. **Download PDF** renders via `POST /__pdf` (headless Chrome — never `window.print()`, which crashes Cursor's in-editor browser) and downloads the PDF. See `../_brand/SKILL.md` → **PDF export — gradient + mask flattening** for why gradients/masks are flattened automatically.
 
 ## Voice
 

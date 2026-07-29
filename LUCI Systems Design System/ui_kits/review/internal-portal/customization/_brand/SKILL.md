@@ -240,4 +240,16 @@ The website (lucisystems.com) is the reference for *how LUCI sounds* — the ton
 
 - **Save** in the edit bar is the primary path. When the LUCI dev server is running (the agent starts it automatically), Save POSTs the live DOM to `POST /__save` and overwrites the **same** working `.html` file on disk — Mike clicks once, no file picker, no Downloads artifact. If the dev server is not running, the button falls back to the File System Access API (Mike picks the file once) and finally to a download as a last resort (with an alert telling Mike to ask Cursor to reopen the project).
 - Before any further agent pass after Mike types in preview: the working file is already updated (via the dev server save), so Cursor reads the latest version. If Mike used the download fallback instead, write the live DOM back into the working file before editing.
-- **Download PDF** = `POST /__pdf` on the LUCI dev server → `scripts/render-pdf.sh` (headless Chrome). Never `window.print()` — that crashes Cursor's in-editor browser. The button shows “Rendering…” then downloads the PDF. If the local preview server is not running, the button asks you to restart it.
+- **Download PDF** = `POST /__pdf` on the LUCI dev server → `scripts/render-pdf.sh` (headless Chrome). Never `window.print()` — that crashes Cursor's in-editor browser. The button shows "Rendering…" then downloads the PDF. If the local preview server is not running, the button asks you to restart it.
+
+### PDF export — gradient + mask flattening (mandatory)
+
+CSS gradients and mask-images cause macOS Preview to "blink in and out" on open/scroll — Chrome turns them into PDF Shading / Pattern / SoftMask XObjects that Preview renders lazily. The fix is automatic: `scripts/patch-sales-pdf-html.py` injects a `@media print` style block before `</head>` during PDF export that:
+
+1. **Flattens all CSS gradient backgrounds** to flat fills (`#E6F5EF` for mint-tinted cards/tiles, `#F5F8FA` for light callouts/scope blocks).
+2. **Replaces SVG mask icons** (checkmarks) with direct SVG `background-image` — draws the shape directly instead of using a mask cutout, eliminating the SoftMask Xobject.
+3. **Removes all gradient mask-images** on circuit texture fades (`::before` pseudo-elements).
+
+**When you add a NEW CSS gradient or mask-image** to a sales document stylesheet (or to a client file's inline `<style>`), you MUST also add it to the flattening rules in `scripts/patch-sales-pdf-html.py`. Otherwise the PDF will blink in macOS Preview. The existing rules cover: `.doc-softicon`, `.be-delivers__grid li`, `.be-summary__total`, `.be-tier-chip--selected`, `.be-why-features`, `.led-check-panel`, `.led-feature-card`, `.led-warranty-duration`, `.led-callout`, `.sow-scope-block`, `.upg-scope`, `.doc-feature::before`, `.doc-uc__benefits li::before`, `.sow-scope-list--checks li::before`, and the circuit texture `::before` pseudo-elements.
+
+**Verify after PDF export:** the PDF should have zero `/ShadingType` and zero `/Pattern` Xobjects. The only `/SMask` entries should be on raster image alpha channels (logos), not on vector content. File size should be under 1.2 MB.

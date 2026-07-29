@@ -10,7 +10,7 @@ description: >-
 
 Post-demo personalized leave-behind. **9 pages (US Letter).** Source master: `capabilities-document.html` in this folder (build copy from `ui_kits/sales/`).
 
-Also read: `../_brand/SKILL.md` — especially **Efficient customization**. Mike can click-edit any text (fonts/colors stay on CSS). Populate-in-place; never rebuild.
+Also read: `../_brand/SKILL.md` — especially **Efficient customization**, **Continuous page packing**, **Source fidelity**, **Totals span the full page width**, **Logo + pattern**, and **PDF export — gradient + mask flattening** (house rules for every Customization Studio doc). Mike can click-edit any text (fonts/colors stay on CSS). Populate-in-place; never rebuild.
 
 ## Voice
 

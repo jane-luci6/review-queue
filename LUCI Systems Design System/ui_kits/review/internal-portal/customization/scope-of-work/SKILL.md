@@ -11,7 +11,7 @@ description: >-
 
 Post-demo scoping document for prospects moving forward. **9 pages (US Letter).** Source master: `scope-of-work.html` in this folder.
 
-Also read: `../_brand/SKILL.md` — especially **Efficient customization**. Mike can click-edit any text (fonts/colors stay on CSS). Populate-in-place; never rebuild.
+Also read: `../_brand/SKILL.md` — especially **Efficient customization**, **Continuous page packing**, **Source fidelity**, **Totals span the full page width**, **Logo + pattern**, and **PDF export — gradient + mask flattening** (house rules for every Customization Studio doc). Mike can click-edit any text (fonts/colors stay on CSS). Populate-in-place; never rebuild.
 
 ## Voice
 
@@ -103,6 +103,8 @@ Everything else on the cover with `doc-edit` / `contenteditable="true"` is edita
 | Client logo | `.doc-cover__client` | Replace `src` and `alt` |
 
 ### Overview (page 2) — `.doc-page--overview`
+
+When Mike provides a source SOW, **mirror its verbiage and structure** (headers, narrative vs bullets) and dress it in this template’s branded classes. Pack continuously across pages — sections may break mid-way with “(continued)”. See `../_brand/SKILL.md` → Continuous page packing and Source fidelity.
 
 - §1 Project intent: narrative + key outcomes list
 - §2 Guiding principles: all bullet items
