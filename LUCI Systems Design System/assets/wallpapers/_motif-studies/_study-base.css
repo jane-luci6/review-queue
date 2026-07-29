@@ -1,0 +1,53 @@
+/* Shared base for LUCI "engine core" motif studies — just the central element on navy.
+   Each study is a 1000x1000 square so the motif can be compared in isolation. */
+:root {
+  --navy-deep: #0A161C;
+  --mint: #68E3BE;
+  --mint-rgb: 104, 227, 190;
+  --gold: #EDD086;
+  --off-white: #F5F8FA;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  width: 1000px; height: 1000px; overflow: hidden;
+  background: var(--navy-deep);
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+}
+.stage {
+  position: relative; width: 1000px; height: 1000px;
+  background: var(--navy-deep); overflow: hidden;
+}
+/* the soft lighter circular footprint — a gentle lightening of the navy, not a glow */
+.footprint {
+  position: absolute; top: 50%; left: 50%;
+  width: 880px; height: 880px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle at 50% 50%, rgba(245,248,250,0.06), rgba(245,248,250,0) 64%);
+  pointer-events: none;
+}
+.footprint-ring {
+  position: absolute; top: 50%; left: 50%;
+  width: 880px; height: 880px;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(104,227,190,0.10);
+  border-radius: 50%;
+  pointer-events: none;
+}
+/* the LUCI mark at the very center — the hub/core */
+.core {
+  position: absolute; top: 50%; left: 50%;
+  width: 150px; height: auto;
+  transform: translate(-50%, -50%);
+  opacity: 0.95;
+  pointer-events: none;
+}
+.core path { fill: var(--mint); }
+.motif, .scan {
+  position: absolute; top: 50%; left: 50%;
+  width: 820px; height: 820px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.ring { fill: none; stroke: var(--mint); }
+.node { fill: var(--mint); }
+.node-gold { fill: var(--gold); }
