@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+  <title>Ameristar Black Hawk — LUCI Retrofit Proposal</title>
+  <link rel="stylesheet" href="../../assets/fonts/luci-brand-fonts.css">
+  <link rel="stylesheet" href="sales-document.css?v=3">
+  <link rel="stylesheet" href="capabilities-document.css">
+  <link rel="stylesheet" href="brochure.css?v=3">
+  <link rel="stylesheet" href="budgetary-estimate.css?v=21">
+  <link rel="stylesheet" href="proposal.css?v=7">
+  <link rel="stylesheet" href="scope-of-work.css?v=20">
+<style>
+/* Restore BE band header backgrounds — scope-of-work.css strips them globally */
+.be-band > .doc-page-band {
+  background: var(--navy);
+  margin: calc(-1 * var(--page-pad)) calc(-1 * var(--page-pad)) 24px;
+  padding: 0.26in var(--page-pad) 0.3in;
+  min-height: 0;
+}
+.be-band > .doc-page-band::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 4px; left: 0;
+  background-image: url('../../assets/textures/texture-circuit-header-mintgold.png');
+  background-repeat: repeat;
+  background-position: right top;
+  background-size: 560px auto;
+  -webkit-mask-image: linear-gradient(90deg, transparent 32%, rgba(0,0,0,0.5) 60%, #000 100%);
+  mask-image: linear-gradient(90deg, transparent 32%, rgba(0,0,0,0.5) 60%, #000 100%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+.be-band > .doc-page-band::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--mint);
+}
+.be-band .doc-page-band__top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+.be-band .doc-page-band__title {
+  margin: 0;
+  padding: 0;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: rgba(245, 248, 250, 0.96);
+  max-width: 28ch;
+  white-space: normal;
+}
+/* Remove SOW page background pattern — conflicts with hairlines */
+.doc-page--overview::before,
+.doc-page--phasing::before,
+.doc-page--system-scope::before,
+.doc-page--idf-scope::before,
+.doc-page--terms::before,
+.doc-page--open-items::before {
+  content: none;
+}
+</style>
+</head>
+<body class="">
+  <p class="doc-hub-link"><a href="../../index.html">← Design Hub</a> · Print or Save as PDF (US Letter)</p>
+
+  <article class="doc">
+
+    <!-- PAGE 1 · COVER (light sheet + navy hero band — matches capabilities cover) -->
+    <section class="doc-page doc-page--cover logo-pos--bottom-left">
+      <div>
+        <img class="doc-cover__logo" src="assets/logos/luci-wordmark-black-320.png?v=6" alt="LUCI Systems" width="160" height="32">
+      </div>
+      <div class="doc-cover__hero">
+        <p class="doc-cover__kicker doc-edit" contenteditable="true">Proposal</p>
+        <h1 class="doc-cover__display doc-edit" contenteditable="true">Prepared for<br><em>Ameristar Black Hawk</em></h1>
+        <p class="doc-cover__sub doc-edit" contenteditable="true">A scoped proposal to re-unify multimedia operations at Ameristar Casino Resort Spa Black Hawk — endpoint licensing, integration hardware, professional services, and the scope of work for Phase 1.</p>
+      </div>
+      <div class="doc-cover__summary">
+        <p class="doc-cover__summary-label doc-edit" contenteditable="true">Client summary</p>
+        <p class="doc-cover__summary-text doc-edit" contenteditable="true"><strong>Ameristar Casino Resort Spa Black Hawk</strong> (Penn Entertainment) is replacing its aging Crestron control environment, BSS audio processing, and AV Ethernet network with a LUCI-managed platform. This proposal scopes Phase 1 — 210 endpoints across IPTV and audio, COM3000 headend, Q-SYS audio modernization, and network backbone — with the scope of work, line items, and investment summary to go live.</p>
+      </div>
+      
+    <div class="doc-cover__prepared">
+        <img class="doc-cover__client" data-studio="client-logo" src="assets/logos/ameristar-blackhawk.png?v=1" alt="Ameristar Black Hawk" width="200" height="36">
+      </div></section>
+
+    <!-- PAGE 2 · INTRODUCTION + WHAT LUCI IS -->
+    <section class="doc-page doc-page--band doc-page--overview be-band">
+      <header class="doc-page-band">
+        <div class="doc-page-band__top">
+          <p class="doc-page-band__kicker doc-edit" contenteditable="true">Overview</p>
+        </div>
+        <h2 class="doc-page-band__title doc-edit" contenteditable="true">A proposal for <span class="doc-page-band__accent doc-page-band__accent--gold">Black Hawk.</span></h2>
+        <p class="doc-page-band__deck doc-edit" contenteditable="true">Prepared for Penn Entertainment following our capabilities review, demo, and executive management expectation meeting — the scope of work, line items, and investment for Phase 1.</p>
+      </header>
+
+      <div class="be-intro">
+        <p class="be-intro__text doc-edit" contenteditable="true">Prepared for <strong>Ameristar Casino Resort Spa Black Hawk</strong> (Penn Entertainment) following our capabilities review, demo, and executive management expectation meeting in July 2026. This proposal scopes endpoint licensing, integration hardware, and professional services for <strong>Phase 1</strong> — core platform, IPTV COM3000, Q-SYS audio, and AV network backbone.</p>
+      </div>
+
+      <div class="be-why">
+        <div class="be-why-head">
+          <p class="be-why-head__kicker doc-edit" contenteditable="true">What LUCI is</p>
+          <h3 class="be-why-head__title doc-edit" contenteditable="true">Two forces working <span class="be-why-head__accent">as one.</span></h3>
+          <div class="be-why-head__rule" aria-hidden="true"></div>
+        </div>
+
+        <figure class="cap-figure cap-figure--identity be-why-identity">
+          <img class="cap-identity" src="assets/diagrams/luci-what-luci-is.jpg?v=2" alt="What LUCI is: LUCI, the orchestration platform — one A/V equipment rack plus the control platform on any device — plus Systems, the embedded operation that runs it." width="680" height="364">
+        </figure>
+
+        <div class="cap-features cap-features--cards be-why-features">
+          <p class="cap-features__kicker doc-edit" contenteditable="true">Key features</p>
+          <ul class="cap-feature-cards">
+            <li class="cap-feature-card doc-edit" contenteditable="true">
+              <span class="cap-softicon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="#2b9e80" stroke-width="1.8"></rect><path d="M3 14h18M9 4v16M15 4v16" stroke="#2b9e80" stroke-width="1.1" stroke-opacity="0.3"></path><path d="M12 9c-1.66 0-3 1.34-3 3 0 2.25 3 5 3 5s3-2.75 3-5c0-1.66-1.34-3-3-3z" fill="#CEB06E"></path></svg></span>
+              <p class="cap-feature-card__name">Map-based dashboard</p>
+              <p class="cap-feature-card__body">Every display, audio zone, and endpoint on one live floor plan.</p>
+            </li>
+            <li class="cap-feature-card doc-edit" contenteditable="true">
+              <span class="cap-softicon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M9 2v5M15 2v5M6 7h12v3a6 6 0 0 1-6 6 6 6 0 0 1-6-6V7z" fill="#68E3BE" fill-opacity="0.18" stroke="#2b9e80" stroke-width="1.8" stroke-linejoin="round"></path><path d="M12 16v6" stroke="#CEB06E" stroke-width="1.8" stroke-linecap="round"></path></svg></span>
+              <p class="cap-feature-card__name">Open integration</p>
+              <p class="cap-feature-card__body">Connects any A/V, signage, or building system via open APIs.</p>
+            </li>
+            <li class="cap-feature-card doc-edit" contenteditable="true">
+              <span class="cap-softicon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="8" cy="8" r="4.2" fill="#68E3BE" fill-opacity="0.18" stroke="#2b9e80" stroke-width="1.8"></circle><path d="M11 11l9 9M16 16l2.5-2.5M18.5 18.5L21 16" stroke="#CEB06E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+              <p class="cap-feature-card__name">PIN-delegated control</p>
+              <p class="cap-feature-card__body">Each user controls only their zones — permissions follow roles.</p>
+            </li>
+            <li class="cap-feature-card doc-edit" contenteditable="true">
+              <span class="cap-softicon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3a5 5 0 0 0-5 5v3.5c0 .9-.36 1.76-1 2.4L5 15h14l-1-1.1c-.64-.64-1-1.5-1-2.4V8a5 5 0 0 0-5-5z" fill="#68E3BE" fill-opacity="0.18" stroke="#2b9e80" stroke-width="1.8" stroke-linejoin="round"></path><path d="M10 18a2 2 0 0 0 4 0" stroke="#2b9e80" stroke-width="1.8" stroke-linecap="round"></path><circle cx="18" cy="6" r="2" fill="#CEB06E"></circle></svg></span>
+              <p class="cap-feature-card__name">Predictive monitoring &amp; alerts</p>
+              <p class="cap-feature-card__body">Surfaces and resolves common issues before the guest notices.</p>
+            </li>
+            <li class="cap-feature-card doc-edit" contenteditable="true">
+              <span class="cap-softicon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" fill="#68E3BE" fill-opacity="0.18" stroke="#2b9e80" stroke-width="1.8"></circle><path d="M12 7v5l3.5 2" stroke="#2b9e80" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="12" cy="12" r="1" fill="#CEB06E"></circle></svg></span>
+              <p class="cap-feature-card__name">Presets &amp; scheduling</p>
+              <p class="cap-feature-card__body">Save and schedule scenes so daily transitions run themselves.</p>
+            </li>
+            <li class="cap-feature-card doc-edit" contenteditable="true">
+              <span class="cap-softicon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="5" cy="12" r="2.4" fill="#68E3BE" fill-opacity="0.22" stroke="#2b9e80" stroke-width="1.8"></circle><circle cx="19" cy="12" r="2.4" fill="#68E3BE" fill-opacity="0.22" stroke="#2b9e80" stroke-width="1.8"></circle><path d="M7.4 12h9.2" stroke="#2b9e80" stroke-width="1.8" stroke-linecap="round"></path><path d="M13 8.5 10.5 12h2.6L11 15.5" stroke="#CEB06E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+              <p class="cap-feature-card__name">Automation &amp; triggers</p>
+              <p class="cap-feature-card__body">Fire coordinated responses to jackpots, weather, and emergencies.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="doc-foot">
+        <span class="doc-edit" contenteditable="true">LUCI Systems · Proposal</span>
+        <span class="doc-foot__page doc-edit" contenteditable="true">02</span>
+      </div>
+    </section>
+
+    <!-- PAGE 3 · REVIEW OF SCOPE -->
+    <section class="doc-page doc-page--band doc-page--scope be-band">
+      <header class="doc-page-band">
+        <div class="doc-page-band__top">
+          <p class="doc-page-band__kicker doc-edit" contenteditable="true">Review of scope</p>
+        </div>
+        <h2 class="doc-page-band__title doc-edit" contenteditable="true">What this proposal <span class="doc-page-band__accent doc-page-band__accent--gold">covers.</span></h2>
+        <p class="doc-page-band__deck doc-edit" contenteditable="true">Phase 1 — 210 endpoints across IPTV and audio. Meeting/conferencing and sportsbook consolidation in later phases.</p>
+      </header>
+
+      <p class="be-scope-bridge doc-edit" contenteditable="true">Itemized by system — <strong>video</strong> (IPTV) and <strong>audio</strong> are in scope for Phase 1. <strong>Signage</strong>, <strong>lighting</strong>, and <strong>meeting/conferencing</strong> are listed for context; Phase 2 or later.</p>
+
+      <ul class="be-scope-list">
+        <li class="be-scope-row doc-edit" contenteditable="true">
+          <span class="doc-softicon be-scope__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="13" rx="2" fill="#68E3BE" fill-opacity="0.18" stroke="#2b9e80" stroke-width="1.8"></rect><path d="M8 20h8M12 17v3" stroke="#CEB06E" stroke-width="1.8" stroke-linecap="round"></path></svg></span>
+          <div class="be-scope__main">
+            <div class="be-scope__top">
+              <span class="be-scope__cat doc-edit" contenteditable="true">Video</span>
+              <span class="be-scope__count"><span class="doc-edit" contenteditable="true">160</span><span class="be-scope__unit">endpoints</span></span>
+            </div>
+            <p class="be-scope__desc doc-edit" contenteditable="true">IPTV distribution and controls — COM3000 headend, LUCI encoders, LG STB-6500 receivers.</p>
+          </div>
+        </li>
+        <li class="be-scope-row doc-edit" contenteditable="true">
+          <span class="doc-softicon be-scope__icon be-scope__icon--out" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="12" rx="2" stroke="#7C8E97" stroke-width="1.8"></rect><path d="M8 21h8M12 17v4" stroke="#7C8E97" stroke-width="1.8" stroke-linecap="round"></path></svg></span>
+          <div class="be-scope__main">
+            <div class="be-scope__top">
+              <span class="be-scope__cat doc-edit" contenteditable="true">Digital Signage</span>
+              <span class="be-scope__tag doc-edit" contenteditable="true">Not included</span>
+            </div>
+            <p class="be-scope__desc doc-edit" contenteditable="true">Content management system for media players — not in scope for Phase 1.</p>
+          </div>
+        </li>
+        <li class="be-scope-row doc-edit" contenteditable="true">
+          <span class="doc-softicon be-scope__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M9 8v8M6 10v4M12 6v12M15 10v4M18 8v8" stroke="#2b9e80" stroke-width="1.8" stroke-linecap="round"></path><circle cx="12" cy="4.5" r="1.4" fill="#CEB06E"></circle></svg></span>
+          <div class="be-scope__main">
+            <div class="be-scope__top">
+              <span class="be-scope__cat doc-edit" contenteditable="true">Audio</span>
+              <span class="be-scope__count"><span class="doc-edit" contenteditable="true">50</span><span class="be-scope__unit">endpoints</span></span>
+            </div>
+            <p class="be-scope__desc doc-edit" contenteditable="true">Audio zone programming — Q-SYS processing, amplification, and LUCI workflows.</p>
+          </div>
+        </li>
+        <li class="be-scope-row doc-edit" contenteditable="true">
+          <span class="doc-softicon be-scope__icon be-scope__icon--out" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="10" r="5" stroke="#7C8E97" stroke-width="1.8"></circle><path d="M12 15v3M9.5 21h5" stroke="#7C8E97" stroke-width="1.8" stroke-linecap="round"></path></svg></span>
+          <div class="be-scope__main">
+            <div class="be-scope__top">
+              <span class="be-scope__cat doc-edit" contenteditable="true">Lighting</span>
+              <span class="be-scope__tag doc-edit" contenteditable="true">Not included</span>
+            </div>
+            <p class="be-scope__desc doc-edit" contenteditable="true">Ability to control the lighting system through the LUCI interface.</p>
+          </div>
+        </li>
+        <li class="be-scope-row doc-edit" contenteditable="true">
+          <span class="doc-softicon be-scope__icon be-scope__icon--out" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="8" height="7" rx="1" stroke="#7C8E97" stroke-width="1.7"></rect><rect x="13" y="4" width="8" height="7" rx="1" stroke="#7C8E97" stroke-width="1.7"></rect><rect x="3" y="13" width="8" height="7" rx="1" stroke="#7C8E97" stroke-width="1.7"></rect><rect x="13" y="13" width="8" height="7" rx="1" stroke="#7C8E97" stroke-width="1.7"></rect></svg></span>
+          <div class="be-scope__main">
+            <div class="be-scope__top">
+              <span class="be-scope__cat doc-edit" contenteditable="true">Meeting / Conferencing</span>
+              <span class="be-scope__tag doc-edit" contenteditable="true">Phase 2</span>
+            </div>
+            <p class="be-scope__desc doc-edit" contenteditable="true">Summit Room, hospitality spaces, Peaks, Cliff Side, and boardrooms — refined and priced upon award of Phase 1.</p>
+          </div>
+        </li>
+      </ul>
+
+      <p class="be-scope-footnote doc-edit" contenteditable="true">Endpoint counts reflect the July 2026 calculator; channel map and TV counts to be confirmed with Ameristar stakeholders.</p>
+
+      <div class="be-scope-tally">
+        <div class="be-scope-tally__item">
+          <span class="be-scope-tally__num doc-edit" contenteditable="true">160</span>
+          <span class="be-scope-tally__lab doc-edit" contenteditable="true">Video endpoints</span>
+        </div>
+        <div class="be-scope-tally__item">
+          <span class="be-scope-tally__num doc-edit" contenteditable="true">50</span>
+          <span class="be-scope-tally__lab doc-edit" contenteditable="true">Audio endpoints</span>
+        </div>
+        <div class="be-scope-tally__item">
+          <span class="be-scope-tally__num doc-edit" contenteditable="true">210</span>
+          <span class="be-scope-tally__lab doc-edit" contenteditable="true">Total — Phase 1</span>
+        </div>
+      </div>
+
+      <div class="doc-foot">
+        <span class="doc-edit" contenteditable="true">LUCI Systems · Proposal</span>
+        <span class="doc-foot__page doc-edit" contenteditable="true">03</span>
+      </div>
+    </section>
+
+    <!-- PAGE 04 · SECTIONS 1–2 ====================== -->
+    <section class="doc-page doc-page--band doc-page--overview">
+      <header class="doc-page-band">
+        <span class="sow-band-bignum doc-edit" contenteditable="true">01</span>
+        <div class="doc-page-band__top">
+          <p class="doc-page-band__kicker doc-edit" contenteditable="true">Project overview</p>
+        </div>
+        <h2 class="doc-page-band__title doc-edit" contenteditable="true">Project Intent</h2>
+      </header>
+
+      <p class="doc-section-head__text doc-edit" contenteditable="true">LUCI will upgrade and re-unify the Ameristar Black Hawk A/V system by consolidating multimedia distribution, routing, control, and support into a single LUCI-managed platform. This work replaces the aging Crestron control environment, BSS audio processing, and the existing AV Ethernet network architecture with a modernized design focused on reliability, serviceability, and reuse of existing infrastructure wherever feasible.</p>
+      <p class="sow-list-label doc-edit" contenteditable="true">Key outcomes</p>
+      <ul class="sow-scope-list sow-scope-list--checks">
+        <li class="doc-edit" contenteditable="true">Unified multimedia operations (property-wide oversight, maintenance, support, and control)</li>
+        <li class="doc-edit" contenteditable="true">Modernized IPTV distribution using a COM3000 platform with 92 DirecTV channels</li>
+        <li class="doc-edit" contenteditable="true">Expanded local content ingestion via LUCI encoders (digital signage/marketing, gaming feeds, music videos, and other local sources)</li>
+        <li class="doc-edit" contenteditable="true">Network overhaul with a data-center hub, 10Gb backbone to IDFs, and secure remote access architecture</li>
+        <li class="doc-edit" contenteditable="true">Maximized reuse of existing speakers, cabling, racks, power, and endpoint devices wherever viable</li>
+      </ul>
+
+      <header class="doc-page-band doc-page-band--inline">
+        <span class="sow-band-bignum doc-edit" contenteditable="true">02</span>
+        <div class="doc-page-band__top">
+          <p class="doc-page-band__kicker doc-edit" contenteditable="true">Project overview</p>
+        </div>
+        <h2 class="doc-page-band__title doc-edit" contenteditable="true">Guiding Principles</h2>
+      </header>
+
+      <ul class="sow-scope-list sow-scope-list--bullets">
+        <li class="doc-edit" contenteditable="true"><strong>Reuse-first:</strong> preserve and validate existing infrastructure (speakers, cabling, racks, power, mounts, displays) unless it directly prevents a reliable solution.</li>
+        <li class="doc-edit" contenteditable="true"><strong>Operational consistency:</strong> unified workflows and standardized control experiences across venues/spaces.</li>
+        <li class="doc-edit" contenteditable="true"><strong>Serviceability:</strong> remote monitoring, remote support access, simplified troubleshooting, and reduction of single points of failure.</li>
+        <li class="doc-edit" contenteditable="true"><strong>Phased execution:</strong> deliver functional value early; defer optional/secondary scopes where appropriate.</li>
+      </ul>
+
+      <p class="doc-section-head__text doc-edit" contenteditable="true"><strong>Phase 2</strong> (meeting/conferencing unification) and <strong>Phase 3</strong> (optional consolidation / specialty expansions) follow Phase 1 — to be refined and priced upon award of Phase 1.</p>
+
+      <div class="doc-foot">
+        <span class="doc-edit" contenteditable="true">LUCI Systems · Proposal</span>
+        <span class="doc-foot__page doc-edit" contenteditable="true">04</span>
+      </div>
+    </section>
+
+    <!-- PAGE 05 · SECTIONS 3–4 ====================== -->
+    <section class="doc-page doc-page--band doc-page--phasing">
+      <header class="doc-page-band">
+        <span class="sow-band-bignum doc-edit" contenteditable="true">03</span>
+        <div class="doc-page-band__top">
+          <p class="doc-page-band__kicker doc-edit" contenteditable="true">Project overview</p>
+        </div>
+        <h2 class="doc-page-band__title doc-edit" contenteditable="true">Project Phasing</h2>
+      </header>
+
+      <p class="doc-section-head__text doc-edit" contenteditable="true">This phasing is a planning structure for scope responsibilities and sequencing; it will be refined after additional tracing/validation of infrastructure terminations and stakeholder expectations.</p>
+      <ul class="doc-functions">
+        <li class="doc-fn doc-edit" contenteditable="true">
+          <p class="doc-fn__label doc-edit" contenteditable="true">Phase 1 — Core platform + headends + IPTV foundation</p>
+          <p class="doc-fn__text doc-edit" contenteditable="true">Deliver the core LUCI platform, core network backbone, IPTV COM3000 upgrade, and primary headend upgrades that establish the unified property foundation including Sportsbook consolidation.</p>
+        </li>
+      </ul>
+
+      <header class="doc-page-band doc-page-band--inline">
+        <span class="sow-band-bignum doc-edit" contenteditable="true">04</span>
+        <div class="doc-page-band__top">
+          <p class="doc-page-band__kicker doc-edit" contenteditable="true">Technical scope</p>
+        </div>
+        <h2 class="doc-page-band__title doc-edit" contenteditable="true">System Scope</h2>
+      </header>
+
+      <div class="sow-scope-block">
+        <h3 class="sow-subsection-title doc-edit" contenteditable="true">4.1 LUCI platform (multimedia unification)</h3>
+        <p class="doc-section-head__text doc-edit" contenteditable="true">LUCI will provide an integrated platform to manage:</p>
+        <ul class="sow-scope-list sow-scope-list--bullets">
+          <li class="doc-edit" contenteditable="true">IPTV channel distribution and selected local source routing</li>
+          <li class="doc-edit" contenteditable="true">Control surfaces/workflows for authorized users (role-based access where applicable)</li>
+          <li class="doc-edit" contenteditable="true">Scheduling/automation for common operational states (as defined in stakeholder workshops)</li>
+          <li class="doc-edit" contenteditable="true">Monitoring/support pathways for remote diagnostics and operations</li>
+        </ul>
+      </div>
+
+      <div class="sow-scope-block">
+        <h3 class="sow-subsection-title doc-edit" contenteditable="true">4.2 IPTV upgrade (COM3000 + DirecTV)</h3>
+        <p class="doc-section-head__text doc-edit" contenteditable="true">LUCI will upgrade the IPTV distribution system to the COM3000 platform including:</p>
+        <ul class="sow-scope-list sow-scope-list--bullets">
+          <li class="doc-edit" contenteditable="true">92-channel DirecTV lineup (exact channel map to be confirmed with Ameristar stakeholders)</li>
+          <li class="doc-edit" contenteditable="true">Network distribution to all designated TVs on property, including back-of-house displays</li>
+          <li class="doc-edit" contenteditable="true">Integration with LUCI for unified routing/operational control (as applicable)</li>
+        </ul>
+      </div>
+
+      <div class="doc-foot">
+        <span class="doc-edit" contenteditable="true">LUCI Systems · Proposal</span>
+        <span class="doc-foot__page doc-edit" contenteditable="true">05</span>
+      </div>
+    </section>
+
+    <!-- PAGE 06 · SECTION 4 (CONTINUED · 4.3–4.5) ====================== -->
+    <section class="doc-page doc-page--band doc-page--system-scope">
+      <div class="sow-scope-block">
+        <h3 class="sow-subsection-title doc-edit" contenteditable="true">4.3 Local content ingestion (LUCI encoders)</h3>
+        <p class="doc-section-head__text doc-edit" contenteditable="true">Expand and/or upgrade LUCI encoders to ingest and distribute local content sources such as:</p>
+        <ul class="sow-scope-list sow-scope-list--bullets">
+          <li class="doc-edit" contenteditable="true">Digital signage marketing content/messages</li>
+          <li class="doc-edit" contenteditable="true">Gaming feeds</li>
+          <li class="doc-edit" contenteditable="true">Music video channels</li>
+          <li class="doc-edit" contenteditable="true">Other approved local sources (to be finalized during refinement)</li>
+        </ul>
+        <p class="sow-list-label doc-edit" contenteditable="true">Deliverables include</p>
+        <ul class="sow-scope-list sow-scope-list--bullets">
+          <li class="doc-edit" contenteditable="true">Source list + ingest method per source (HDMI/SDI/IP/etc. as applicable)</li>
+          <li class="doc-edit" contenteditable="true">Routing rules and operational presets in LUCI for each venue/zone as required</li>
+        </ul>
+      </div>
+
+      <div class="sow-scope-block">
+        <h3 class="sow-subsection-title doc-edit" contenteditable="true">4.4 Audio system modernization (Q-SYS)</h3>
+        <p class="doc-section-head__text doc-edit" contenteditable="true">Replace the legacy BSS audio processing with Q-SYS, including:</p>
+        <ul class="sow-scope-list sow-scope-list--bullets">
+          <li class="doc-edit" contenteditable="true">Redundant DSP architecture where required for the main casino head-end</li>
+          <li class="doc-edit" contenteditable="true">Modern amplification aligned to zone layout and existing loudspeaker infrastructure</li>
+          <li class="doc-edit" contenteditable="true">Centralized audio routing and zone control via LUCI workflows</li>
+        </ul>
+      </div>
+
+      <div class="sow-scope-block">
+        <h3 class="sow-subsection-title doc-edit" contenteditable="true">4.5 Network overhaul (A/V network + backbone)</h3>
+        <p class="doc-section-head__text doc-edit" contenteditable="true">Implement a modernized A/V network design with the Data Center as the hub, including:</p>
+        <ul class="sow-scope-list sow-scope-list--bullets">
+          <li class="doc-edit" contenteditable="true">10Gb backbone uplinks from the data center to supporting IDFs serving A/V systems</li>
+          <li class="doc-edit" contenteditable="true">Replacement/upgrade of network switches required to support IPTV, encoders, DSP, control, and management traffic</li>
+          <li class="doc-edit" contenteditable="true">Segmentation and routing rules to protect guest traffic and maintain A/V reliability</li>
+        </ul>
+      </div>
+
+      <div class="doc-foot">
+        <span class="doc-edit" contenteditable="true">LUCI Systems · Proposal</span>
+        <span class="doc-foot__page doc-edit" contenteditable="true">06</span>
+      </div>
+    </section>
+
+    <!-- PAGE 07 · SECTION 4 (CONTINUED · 4.6) + SECTION 5 ====================== -->
+    <section class="doc-page doc-page--band doc-page--system-scope">
+      <div class="sow-scope-block">
+        <h3 class="sow-subsection-title doc-edit" contenteditable="true">4.6 Secure remote access architecture (LUCI-provided firewall)</h3>
+        <p class="doc-section-head__text doc-edit" contenteditable="true">Provide a LUCI-supplied firewall enabling secure remote access for authorized users and support. Conceptual intent (to be refined):</p>
+        <ul class="sow-scope-list sow-scope-list--bullets">
+          <li class="doc-edit" contenteditable="true">A user on Ameristar Black Hawk Guest Wi‑Fi uses an approved control surface device.</li>
+          <li class="doc-edit" contenteditable="true">The device routes out to the internet and back in through a segregated ISP path terminating at the LUCI-provided firewall.</li>
+          <li class="doc-edit" contenteditable="true">The firewall provides authenticated, policy-controlled access to the segmented AV environment without bridging Guest Wi‑Fi directly into the AV network.</li>
+        </ul>
+        <p class="sow-list-label doc-edit" contenteditable="true">Refinement deliverable</p>
+        <ul class="sow-scope-list sow-scope-list--bullets">
+          <li class="doc-edit" contenteditable="true">A short architecture diagram + written explanation identifying the VLANs/ISPs, authentication method, and permitted flows for control and support.</li>
+        </ul>
+      </div>
+
+      <header class="doc-page-band doc-page-band--inline">
+        <span class="sow-band-bignum doc-edit" contenteditable="true">05</span>
+        <div class="doc-page-band__top">
+          <p class="doc-page-band__kicker doc-edit" contenteditable="true">Technical scope</p>
+        </div>
+        <h2 class="doc-page-band__title doc-edit" contenteditable="true">IDF / Rack Scope</h2>
+      </header>
+
+      <h3 class="sow-subsection-title doc-edit" contenteditable="true">5.1 IDF-B — Main casino audio head-end + casino TV network distribution</h3>
+      <ul class="sow-scope-list sow-scope-list--bullets">
+        <li class="doc-edit" contenteditable="true">Replace BSS processing with Q-SYS redundant DSP architecture</li>
+        <li class="doc-edit" contenteditable="true">Upgrade amplification as required to support existing speaker zones reliably</li>
+        <li class="doc-edit" contenteditable="true">Upgrade/replace network switching to support IPTV + A/V distribution and management</li>
+        <li class="doc-edit" contenteditable="true">Provide/expand video encoding capacity for local content distribution</li>
+        <li class="doc-edit" contenteditable="true">Integrate into LUCI for unified routing, presets, and support workflows</li>
+      </ul>
+
+      <h3 class="sow-subsection-title doc-edit" contenteditable="true">5.2 IDF-A — ISP ingest / network switching (as required)</h3>
+      <ul class="sow-scope-list sow-scope-list--bullets">
+        <li class="doc-edit" contenteditable="true">Evaluate requirement for a network switch and/or associated components to ingest a separate ISP feed used for remote access architecture.</li>
+        <li class="doc-edit" contenteditable="true">Implement required switching/configuration to support the segregated ISP termination approach (final design pending refinement).</li>
+      </ul>
+
+      <div class="doc-foot">
+        <span class="doc-edit" contenteditable="true">LUCI Systems · Proposal</span>
+        <span class="doc-foot__page doc-edit" contenteditable="true">07</span>
+      </div>
+    </section>
+
+    <!-- PAGE 08 · SECTION 5 (CONTINUED · 5.3–5.4) ====================== -->
+    <section class="doc-page doc-page--band doc-page--idf-scope">
+      <h3 class="sow-subsection-title doc-edit" contenteditable="true">5.3 Hotel Level 8 IDF — DirecTV dish feed location / IPTV headend</h3>
+      <ul class="sow-scope-list sow-scope-list--bullets">
+        <li class="doc-edit" contenteditable="true">Upgrade to COM3000 DirecTV system with 92 channels</li>
+        <li class="doc-edit" contenteditable="true">Distribute IPTV over the network to all TVs on property (including BOH displays)</li>
+        <li class="doc-edit" contenteditable="true">Document channel lineup and distribution topology</li>
+        <li class="doc-edit" contenteditable="true">Integrate monitoring/management approach for support</li>
+      </ul>
+
+      <h3 class="sow-subsection-title doc-edit" contenteditable="true">5.4 Sportsbook rack — consolidation candidate (optional / secondary phase)</h3>
+      <p class="sow-list-label doc-edit" contenteditable="true">Current condition</p>
+      <p class="doc-section-head__text doc-edit" contenteditable="true">Sportsbook is currently a standalone system but has infrastructure that supports consolidation.</p>
+      <p class="sow-list-label doc-edit" contenteditable="true">Scope intent</p>
+      <p class="doc-section-head__text doc-edit" contenteditable="true">Consolidate with the property-wide system to eliminate the majority of standalone equipment, increasing reliability and enabling unified remote support/control.</p>
+      <p class="sow-note doc-edit" contenteditable="true">Note: Optional / secondary phase — consolidation candidate pending stakeholder priorities and operational constraints.</p>
+
+      <h3 class="sow-subsection-title doc-edit" contenteditable="true">5.5 IDF-9 — Spa IDF</h3>
+      <ul class="sow-scope-list sow-scope-list--bullets">
+        <li class="doc-edit" contenteditable="true">Upgrade audio system components within the spa venue</li>
+        <li class="doc-edit" contenteditable="true">Provide local control components appropriate for the space</li>
+        <li class="doc-edit" contenteditable="true">Integrate spa audio control into LUCI workflows as appropriate</li>
+      </ul>
+
+      <h3 class="sow-subsection-title doc-edit" contenteditable="true">5.6 Mezz Level 7 IDF — meeting/hospitality conferencing backbone (pending further investigation during Phase 2)</h3>
+      <p class="sow-list-label doc-edit" contenteditable="true">Target rooms/spaces (current understanding)</p>
+      <ul class="sow-scope-list sow-scope-list--bullets">
+        <li class="doc-edit" contenteditable="true">Level 5: Summit Room (projector/screen replacement required)</li>
+        <li class="doc-edit" contenteditable="true">Level 9: Hospitality meeting spaces</li>
+        <li class="doc-edit" contenteditable="true">Level 3: Peaks A &amp; B (room combine)</li>
+        <li class="doc-edit" contenteditable="true">Level 3: Cliff Side A &amp; B (room combine)</li>
+        <li class="doc-edit" contenteditable="true">Level 3: Individual Boardrooms (currently operated on carts)</li>
+      </ul>
+
+      <div class="doc-foot">
+        <span class="doc-edit" contenteditable="true">LUCI Systems · Proposal</span>
+        <span class="doc-foot__page doc-edit" contenteditable="true">08</span>
+      </div>
+    </section>
+
+    <!-- PAGE 09 · SECTION 5 (CONTINUED · 5.6) + SECTION 6 ====================== -->
+    <section class="doc-page doc-page--band doc-page--idf-scope">
+      <p class="sow-list-label doc-edit" contenteditable="true">Scope intent</p>
+      <ul class="sow-scope-list sow-scope-list--bullets">
+        <li class="doc-edit" contenteditable="true">Unify conferencing capabilities across these rooms</li>
+        <li class="doc-edit" contenteditable="true">Remove bulky on-wall speakers and local control where feasible</li>
+        <li class="doc-edit" contenteditable="true">Retain TVs on the walls, migrate audio to ceiling speakers (where available/viable)</li>
+        <li class="doc-edit" contenteditable="true">Centralize AV components into the appropriate IDF (potentially Mezz Level 7), subject to confirmation of cabling terminations and pathways</li>
+        <li class="doc-edit" contenteditable="true">Integrate all rooms into LUCI for shared control, setup, oversight, maintenance, and support</li>
+      </ul>
+      <p class="sow-list-label doc-edit" contenteditable="true">Infrastructure expectations (to be validated)</p>
+      <ul class="sow-scope-list sow-scope-list--bullets">
+        <li class="doc-edit" contenteditable="true">CAT6 cabling to projector(s) and input wall plates (Summit Room)</li>
+        <li class="doc-edit" contenteditable="true">Speaker cabling from speaker to Mezz Level 7 (further investigation required)</li>
+        <li class="doc-edit" contenteditable="true">Confirmation of existing terminations for video/audio/control to the selected IDF</li>
+      </ul>
+
+      <header class="doc-page-band doc-page-band--inline">
+        <span class="sow-band-bignum doc-edit" contenteditable="true">06</span>
+        <div class="doc-page-band__top">
+          <p class="doc-page-band__kicker doc-edit" contenteditable="true">Deliverables &amp; terms</p>
+        </div>
+        <h2 class="doc-page-band__title doc-edit" contenteditable="true">Deliverables</h2>
+      </header>
+
+      <p class="doc-section-head__text doc-edit" contenteditable="true">Upon proposal and Scope of Work approval, LUCI will provide deliverables refined with stakeholder feedback, including at minimum:</p>
+      <ul class="sow-scope-list sow-scope-list--ledger">
+        <li class="doc-edit" contenteditable="true">Final Scope of Work with phase boundaries and responsibilities</li>
+        <li class="doc-edit" contenteditable="true">Site-validated existing infrastructure reuse plan (what stays vs. what must change)</li>
+        <li class="doc-edit" contenteditable="true">Network design summary (data center hub + 10Gb backbone + IDF switching)</li>
+        <li class="doc-edit" contenteditable="true">IPTV headend plan (COM3000, channel lineup, distribution topology)</li>
+        <li class="doc-edit" contenteditable="true">Encoder/source ingest plan (source list + routing behaviors)</li>
+        <li class="doc-edit" contenteditable="true">Audio modernization plan (Q-SYS architecture, zone strategy, redundancy where required)</li>
+        <li class="doc-edit" contenteditable="true">Operational workflows/presets list for stakeholder review and approval</li>
+        <li class="doc-edit" contenteditable="true">Commissioning, testing, and cutover plan (minimizing downtime)</li>
+        <li class="doc-edit" contenteditable="true">Training outline for operations/technical stakeholders</li>
+      </ul>
+
+      <div class="doc-foot">
+        <span class="doc-edit" contenteditable="true">LUCI Systems · Proposal</span>
+        <span class="doc-foot__page doc-edit" contenteditable="true">09</span>
+      </div>
+    </section>
+
+    <!-- PAGE 10 · SECTIONS 7–8 ====================== -->
+    <section class="doc-page doc-page--band doc-page--terms">
+      <header class="doc-page-band">
+        <span class="sow-band-bignum doc-edit" contenteditable="true">07</span>
+        <div class="doc-page-band__top">
+          <p class="doc-page-band__kicker doc-edit" contenteditable="true">Deliverables &amp; terms</p>
+        </div>
+        <h2 class="doc-page-band__title doc-edit" contenteditable="true">Assumptions, Constraints &amp; Exclusions</h2>
+      </header>
+
+      <p class="sow-list-label doc-edit" contenteditable="true">Assumptions</p>
+      <ul class="sow-scope-list sow-scope-list--bullets">
+        <li class="doc-edit" contenteditable="true">Property access and escort/support will be provided for validation walks and cutover windows.</li>
+        <li class="doc-edit" contenteditable="true">Existing speakers/cabling/racks/power are reused where viable, subject to verification.</li>
+        <li class="doc-edit" contenteditable="true">Meeting room termination locations may require further tracing and validation.</li>
+      </ul>
+      <p class="sow-list-label doc-edit" contenteditable="true">Constraints</p>
+      <ul class="sow-scope-list sow-scope-list--bullets">
+        <li class="doc-edit" contenteditable="true">Systems must support a 24/7 operational environment with minimal disruption.</li>
+      </ul>
+      <p class="sow-list-label doc-edit" contenteditable="true">Exclusions (unless added during refinement)</p>
+      <ul class="sow-scope-list sow-scope-list--bullets">
+        <li class="doc-edit" contenteditable="true">High-voltage electrical work</li>
+        <li class="doc-edit" contenteditable="true">Structural/architectural modifications beyond minor mounting/cabling as explicitly identified</li>
+        <li class="doc-edit" contenteditable="true">Any spaces not listed above, unless later added by written scope refinement</li>
+      </ul>
+
+      <header class="doc-page-band doc-page-band--inline">
+        <span class="sow-band-bignum doc-edit" contenteditable="true">08</span>
+        <div class="doc-page-band__top">
+          <p class="doc-page-band__kicker doc-edit" contenteditable="true">Deliverables &amp; terms</p>
+        </div>
+        <h2 class="doc-page-band__title doc-edit" contenteditable="true">Open Items to Confirm</h2>
+      </header>
+
+      <div class="doc-takeaway sow-open-items">
+        <p class="sow-list-label doc-edit" contenteditable="true">Next refinement pass</p>
+        <ul class="sow-scope-list sow-scope-list--bullets">
+          <li class="doc-edit" contenteditable="true">Confirm the full list of IPTV endpoints / TV counts (all property TVs + BOH displays) and any special routing requirements.</li>
+          <li class="doc-edit" contenteditable="true">Trace and confirm meeting room infrastructure terminations to determine the best IDF for centralized components (Mezz Level 7 vs. alternative).</li>
+          <li class="doc-edit" contenteditable="true">Confirm expectation level for meeting spaces (camera/mics, BYOD, DSP, room combine UX, touch panels/tablets, etc.).</li>
+        </ul>
+      </div>
+
+      <div class="doc-foot">
+        <span class="doc-edit" contenteditable="true">LUCI Systems · Proposal</span>
+        <span class="doc-foot__page doc-edit" contenteditable="true">10</span>
+      </div>
+    </section>
+
+    <!-- PAGE 11 · PROPOSAL -->
+    <section class="doc-page doc-page--band doc-page--proposal be-band">
+      <header class="doc-page-band">
+        <div class="doc-page-band__top">
+          <p class="doc-page-band__kicker doc-edit" contenteditable="true">Proposal</p>
+        </div>
+        <h2 class="doc-page-band__title doc-edit" contenteditable="true">Line <span class="doc-page-band__accent doc-page-band__accent--gold">items.</span></h2>
+        <p class="doc-page-band__deck doc-edit" contenteditable="true">Pricing by manufacturer and item — LUCI software, video and control hardware, and professional services. One continuous table, one total.</p>
+      </header>
+
+      <div class="be-price">
+        <div class="be-price__head">
+          <span class="doc-edit" contenteditable="true">MFG</span><span class="doc-edit" contenteditable="true">Item</span><span class="doc-edit" contenteditable="true">Description</span><span class="be-col--num doc-edit" contenteditable="true">Qty</span><span class="be-col--num doc-edit" contenteditable="true">Cost ea</span><span class="be-col--num doc-edit" contenteditable="true">Subtotal</span>
+        </div>
+
+
+        <div class="be-price-group">
+          <p class="be-price-group__label doc-edit" contenteditable="true">LUCI Software (Annual)</p>
+          <div class="be-price-row">
+            <span class="be-price__mfg doc-edit" contenteditable="true">LUCI</span>
+            <span class="be-price__item doc-edit" contenteditable="true">LUCI OS</span>
+            <span class="be-price__desc doc-edit" contenteditable="true">Operating System Software, Consulting Services &amp; SLA Warranty — Annual Partnership Subscription (210 endpoint licenses: 160 video IPTV + 50 audio zones)</span>
+            <span class="be-price__num doc-edit" contenteditable="true">1</span>
+            <span class="be-price__num doc-edit" contenteditable="true">$44,100.00</span>
+            <span class="be-price__num be-price__subtotal doc-edit" contenteditable="true">$44,100.00</span>
+          </div>
+        </div>
+
+        <div class="be-price-group">
+          <p class="be-price-group__label doc-edit" contenteditable="true">Phase 1 LUCI Multimedia System</p>
+          <div class="be-price-row">
+            <span class="be-price__mfg doc-edit" contenteditable="true">Amazon</span>
+            <span class="be-price__item doc-edit" contenteditable="true">NUC</span>
+            <span class="be-price__desc doc-edit" contenteditable="true">LUCI Core &amp; Support PC — Server PC 32GB RAM, 500GB SSD, i5</span>
+            <span class="be-price__num doc-edit" contenteditable="true">2</span>
+            <span class="be-price__num doc-edit" contenteditable="true">$768.90</span>
+            <span class="be-price__num be-price__subtotal doc-edit" contenteditable="true">$1,537.80</span>
+          </div>
+          <div class="be-price-row">
+            <span class="be-price__mfg doc-edit" contenteditable="true">Netgate</span>
+            <span class="be-price__item doc-edit" contenteditable="true">NG-2100</span>
+            <span class="be-price__desc doc-edit" contenteditable="true">PF Sense Tailscale Firewall &amp; Gateway</span>
+            <span class="be-price__num doc-edit" contenteditable="true">1</span>
+            <span class="be-price__num doc-edit" contenteditable="true">$383.90</span>
+            <span class="be-price__num be-price__subtotal doc-edit" contenteditable="true">$383.90</span>
+          </div>
+          <div class="be-price-row">
+            <span class="be-price__mfg doc-edit" contenteditable="true">Cisco</span>
+            <span class="be-price__item doc-edit" contenteditable="true">C1300-24XS</span>
+            <span class="be-price__desc doc-edit" contenteditable="true">24 x 10GBase-X + 4 x combo 10 Gigabit SFP+/RJ-45</span>
+            <span class="be-price__num doc-edit" contenteditable="true">1</span>
+            <span class="be-price__num doc-edit" contenteditable="true">$2,309.99</span>
+            <span class="be-price__num be-price__subtotal doc-edit" contenteditable="true">$2,309.99</span>
+          </div>
+          <div class="be-price-row">
+            <span class="be-price__mfg doc-edit" contenteditable="true">Cisco</span>
+            <span class="be-price__item doc-edit" contenteditable="true">C1300-48MGP-4X</span>
+            <span class="be-price__desc doc-edit" contenteditable="true">32 x 10/100/1000 (PoE+) + 16 x 2.5G (PoE+) + 4 x 10 Gigabit SFP+ PoE+ (370 W)</span>
+            <span class="be-price__num doc-edit" contenteditable="true">7</span>
+            <span class="be-price__num doc-edit" contenteditable="true">$2,448.59</span>
+            <span class="be-price__num be-price__subtotal doc-edit" contenteditable="true">$17,140.13</span>
+          </div>
+          <div class="be-price-row">
+            <span class="be-price__mfg doc-edit" contenteditable="true">Cisco</span>
+            <span class="be-price__item doc-edit" contenteditable="true">C1300-8MGP-4X</span>
+            <span class="be-price__desc doc-edit" contenteditable="true">4 x 10/100/1000 (PoE+) + 4 x 2.5G (PoE+) + 4 x 10 Gigabit SFP+ PoE+ (120 W)</span>
+            <span class="be-price__num doc-edit" contenteditable="true">2</span>
+            <span class="be-price__num doc-edit" contenteditable="true">$768.89</span>
+            <span class="be-price__num be-price__subtotal doc-edit" contenteditable="true">$1,537.78</span>
+          </div>
+          <div class="be-price-row">
+            <span class="be-price__mfg doc-edit" contenteditable="true">Technicolor</span>
+            <span class="be-price__item doc-edit" contenteditable="true">COM3000</span>
+            <span class="be-price__desc doc-edit" contenteditable="true">COM3000 PKG — 92 Channel Encrypted DirecTV System (includes RF signal distribution)</span>
+            <span class="be-price__num doc-edit" contenteditable="true">1</span>
+            <span class="be-price__num doc-edit" contenteditable="true">$10,680.00</span>
+            <span class="be-price__num be-price__subtotal doc-edit" contenteditable="true">$10,680.00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-foot">
+        <span class="doc-edit" contenteditable="true">LUCI Systems · Proposal</span>
+        <span class="doc-foot__page doc-edit" contenteditable="true">11</span>
+      </div>
+    </section>
+
+    <!-- PAGE 13 · PROPOSAL (CONTINUED) -->
+    <section class="doc-page doc-page--band doc-page--proposal be-band">
+      <header class="doc-page-band">
+        <div class="doc-page-band__top">
+          <p class="doc-page-band__kicker doc-edit" contenteditable="true">Proposal</p>
+        </div>
+        <h2 class="doc-page-band__title doc-edit" contenteditable="true">Line items, <span class="doc-page-band__accent doc-page-band__accent--gold">continued.</span></h2>
+        <p class="doc-page-band__deck doc-edit" contenteditable="true">Continued from page 11 — remaining Phase 1 hardware and professional services.</p>
+      </header>
+
+      <div class="be-price">
+        <div class="be-price__head">
+          <span class="doc-edit" contenteditable="true">MFG</span><span class="doc-edit" contenteditable="true">Item</span><span class="doc-edit" contenteditable="true">Description</span><span class="be-col--num doc-edit" contenteditable="true">Qty</span><span class="be-col--num doc-edit" contenteditable="true">Cost ea</span><span class="be-col--num doc-edit" contenteditable="true">Subtotal</span>
+        </div>
+
+        <div class="be-price-group">
+          <p class="be-price-group__label doc-edit" contenteditable="true">Phase 1 LUCI Multimedia System (continued)</p>
+          <div class="be-price-row">
+            <span class="be-price__mfg doc-edit" contenteditable="true">LUCI</span>
+            <span class="be-price__item doc-edit" contenteditable="true">NX5</span>
+            <span class="be-price__desc doc-edit" contenteditable="true">Q-SYS Redundant X-Class Server Core — 256×256 audio channels, 8×8 Dante license</span>
+            <span class="be-price__num doc-edit" contenteditable="true">3</span>
+            <span class="be-price__num doc-edit" contenteditable="true">$3,600.00</span>
+            <span class="be-price__num be-price__subtotal doc-edit" contenteditable="true">$10,800.00</span>
+          </div>
+          <div class="be-price-row">
+            <span class="be-price__mfg doc-edit" contenteditable="true">LG</span>
+            <span class="be-price__item doc-edit" contenteditable="true">STB-6500</span>
+            <span class="be-price__desc doc-edit" contenteditable="true">IPTV Set Top Box Receiver with HDMI Cable</span>
+            <span class="be-price__num doc-edit" contenteditable="true">170</span>
+            <span class="be-price__num doc-edit" contenteditable="true">$174.90</span>
+            <span class="be-price__num be-price__subtotal doc-edit" contenteditable="true">$29,733.00</span>
+          </div>
+          <div class="be-price-row">
+            <span class="be-price__mfg doc-edit" contenteditable="true">QSC</span>
+            <span class="be-price__item doc-edit" contenteditable="true">SERVER CORE X10</span>
+            <span class="be-price__desc doc-edit" contenteditable="true">Q-SYS X-Class Server Core — 256×256 audio channels, 8×8 Dante license</span>
+            <span class="be-price__num doc-edit" contenteditable="true">2</span>
+            <span class="be-price__num doc-edit" contenteditable="true">$6,560.40</span>
+            <span class="be-price__num be-price__subtotal doc-edit" contenteditable="true">$13,120.80</span>
+          </div>
+          <div class="be-price-row">
+            <span class="be-price__mfg doc-edit" contenteditable="true">QSC</span>
+            <span class="be-price__item doc-edit" contenteditable="true">QIO-ML24i</span>
+            <span class="be-price__desc doc-edit" contenteditable="true">Q-SYS peripheral — 24 mic/line inputs, 8×8 GPIO</span>
+            <span class="be-price__num doc-edit" contenteditable="true">1</span>
+            <span class="be-price__num doc-edit" contenteditable="true">$2,547.60</span>
+            <span class="be-price__num be-price__subtotal doc-edit" contenteditable="true">$2,547.60</span>
+          </div>
+          <div class="be-price-row">
+            <span class="be-price__mfg doc-edit" contenteditable="true">QSC</span>
+            <span class="be-price__item doc-edit" contenteditable="true">CX-Q 8K8</span>
+            <span class="be-price__desc doc-edit" contenteditable="true">Q-SYS Amplifier — 8 CH, 1000 W with 8 routable inputs</span>
+            <span class="be-price__num doc-edit" contenteditable="true">10</span>
+            <span class="be-price__num doc-edit" contenteditable="true">$5,223.90</span>
+            <span class="be-price__num be-price__subtotal doc-edit" contenteditable="true">$52,239.00</span>
+          </div>
+          <div class="be-price-row">
+            <span class="be-price__mfg doc-edit" contenteditable="true">Audinate</span>
+            <span class="be-price__item doc-edit" contenteditable="true">AVIO</span>
+            <span class="be-price__desc doc-edit" contenteditable="true">XLR Analog to Dante Output Adapter, 1-Channel — speaker rigs</span>
+            <span class="be-price__num doc-edit" contenteditable="true">2</span>
+            <span class="be-price__num doc-edit" contenteditable="true">$174.90</span>
+            <span class="be-price__num be-price__subtotal doc-edit" contenteditable="true">$349.80</span>
+          </div>
+          <div class="be-price-row">
+            <span class="be-price__mfg doc-edit" contenteditable="true">Monoprice</span>
+            <span class="be-price__item doc-edit" contenteditable="true">Misc</span>
+            <span class="be-price__desc doc-edit" contenteditable="true">10-gig SFPs, fiber and copper patch cables, rack shelves, screws, ties, etc.</span>
+            <span class="be-price__num doc-edit" contenteditable="true">1</span>
+            <span class="be-price__num doc-edit" contenteditable="true">$1,320.00</span>
+            <span class="be-price__num be-price__subtotal doc-edit" contenteditable="true">$1,320.00</span>
+          </div>
+        </div>
+
+        <div class="be-price-group">
+          <p class="be-price-group__label doc-edit" contenteditable="true">Professional Services</p>
+          <div class="be-price-row">
+            <span class="be-price__mfg doc-edit" contenteditable="true">LUCI</span>
+            <span class="be-price__item doc-edit" contenteditable="true">LUCI IDS</span>
+            <span class="be-price__desc doc-edit" contenteditable="true">Integration Design Services — onboarding, drawings, PM, systems integration, video and audio programming</span>
+            <span class="be-price__num doc-edit" contenteditable="true">1</span>
+            <span class="be-price__num doc-edit" contenteditable="true">$37,500.00</span>
+            <span class="be-price__num be-price__subtotal doc-edit" contenteditable="true">$37,500.00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-foot">
+        <span class="doc-edit" contenteditable="true">LUCI Systems · Proposal</span>
+        <span class="doc-foot__page doc-edit" contenteditable="true">12</span>
+      </div>
+    </section>
+
+    <!-- PAGE 14 · INVESTMENT SUMMARY + WHAT IT DELIVERS -->
+    <section class="doc-page doc-page--band doc-page--investment be-band">
+      <header class="doc-page-band">
+        <div class="doc-page-band__top">
+          <p class="doc-page-band__kicker doc-edit" contenteditable="true">Pricing</p>
+        </div>
+        <h2 class="doc-page-band__title doc-edit" contenteditable="true">Estimated <span class="doc-page-band__accent doc-page-band__accent--gold">investment.</span></h2>
+        <p class="doc-page-band__deck doc-edit" contenteditable="true">Year-one total with the platform software, hardware, professional services, shipping, travel, and tax.</p>
+      </header>
+
+      <div class="be-p5-grid">
+        <div class="be-p5-numbers">
+          <p class="be-block-label doc-edit" contenteditable="true">Investment summary</p>
+          <ul class="be-summary">
+            <li class="doc-edit" contenteditable="true"><span class="be-summary__label">LUCI OS (Year 1)</span><span class="be-summary__value doc-edit" contenteditable="true">$44,100.00</span></li>
+            <li class="doc-edit" contenteditable="true"><span class="be-summary__label">Hardware</span><span class="be-summary__value doc-edit" contenteditable="true">$143,699.79</span></li>
+            <li class="doc-edit" contenteditable="true"><span class="be-summary__label">Professional Service</span><span class="be-summary__value doc-edit" contenteditable="true">$37,500.00</span></li>
+            <li class="doc-edit" contenteditable="true"><span class="be-summary__label">Estimated Shipping</span><span class="be-summary__value doc-edit" contenteditable="true">$625.00</span></li>
+            <li class="doc-edit" contenteditable="true"><span class="be-summary__label">Estimated Travel</span><span class="be-summary__value doc-edit" contenteditable="true">$4,410.00</span></li>
+            <li class="doc-edit" contenteditable="true"><span class="be-summary__label">Tax</span><span class="be-summary__value doc-edit" contenteditable="true">$12,789.28</span></li>
+          </ul>
+
+          <div class="be-summary__total">
+            <span class="be-summary__total-label doc-edit" contenteditable="true">Total</span>
+            <span class="be-summary__total-value doc-edit" contenteditable="true">$243,124.08</span>
+          </div>
+
+          <p class="be-block-label doc-edit" contenteditable="true" style="margin-top: 24px;">Deposit schedule</p>
+          <ul class="be-summary">
+            <li class="doc-edit" contenteditable="true"><span class="be-summary__label">Milestone 1 — 50% Equipment + 50% Professional Services</span><span class="be-summary__value doc-edit" contenteditable="true">$90,599.90</span></li>
+            <li class="doc-edit" contenteditable="true"><span class="be-summary__label">Milestone 1-2 — Equipment balance</span><span class="be-summary__value doc-edit" contenteditable="true">$71,849.90</span></li>
+            <li class="doc-edit" contenteditable="true"><span class="be-summary__label">Milestone 2 — Professional Services balance + Software + Shipping + Travel + Tax</span><span class="be-summary__value doc-edit" contenteditable="true">$80,674.28</span></li>
+          </ul>
+        </div>
+
+        <div class="be-p5-delivers">
+          <p class="be-block-label doc-edit" contenteditable="true">What this investment delivers</p>
+          <ul class="be-delivers__grid">
+            <li class="doc-edit" contenteditable="true">
+              <span class="doc-softicon doc-softicon--sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="14" rx="2" fill="#68E3BE" fill-opacity="0.18" stroke="#2b9e80" stroke-width="1.8"></rect><circle cx="8" cy="10" r="1.5" fill="#CEB06E"></circle><path d="M3 14h18" stroke="#2b9e80" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.5"></path></svg></span>
+              <div class="be-delivers__text">
+                <p class="be-delivers__head">Run the floor from one screen</p>
+                <p class="be-delivers__body">Every display and zone on one live map.</p>
+              </div>
+            </li>
+            <li class="doc-edit" contenteditable="true">
+              <span class="doc-softicon doc-softicon--sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="14" rx="2" fill="#68E3BE" fill-opacity="0.18" stroke="#2b9e80" stroke-width="1.8"></rect><path d="M8 12h8" stroke="#CEB06E" stroke-width="2" stroke-linecap="round"></path><circle cx="12" cy="12" r="3" stroke="#2b9e80" stroke-width="1.8"></circle></svg></span>
+              <div class="be-delivers__text">
+                <p class="be-delivers__head">Change the property in one tap</p>
+                <p class="be-delivers__body">Scenes shift the whole floor together.</p>
+              </div>
+            </li>
+            <li class="doc-edit" contenteditable="true">
+              <span class="doc-softicon doc-softicon--sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" fill="#68E3BE" fill-opacity="0.18" stroke="#2b9e80" stroke-width="1.8"></circle><path d="M12 8v4l3 2" stroke="#CEB06E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+              <div class="be-delivers__text">
+                <p class="be-delivers__head">Put the floor on a schedule</p>
+                <p class="be-delivers__body">Signage, audio, and presets run without resets.</p>
+              </div>
+            </li>
+            <li class="doc-edit" contenteditable="true">
+              <span class="doc-softicon doc-softicon--sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 16l5-5 4 4 7-7" stroke="#2b9e80" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path><path d="M15 8h5v5" stroke="#CEB06E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+              <div class="be-delivers__text">
+                <p class="be-delivers__head">Catch problems before guests do</p>
+                <p class="be-delivers__body">Monitoring flags issues early.</p>
+              </div>
+            </li>
+            <li class="doc-edit" contenteditable="true">
+              <span class="doc-softicon doc-softicon--sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="8.5" cy="8" r="3" fill="#68E3BE" fill-opacity="0.22" stroke="#2b9e80" stroke-width="1.8"></circle><path d="M3.5 19a5 5 0 0 1 10 0" stroke="#2b9e80" stroke-width="1.8" stroke-linecap="round"></path><circle cx="17" cy="9.5" r="2.4" stroke="#CEB06E" stroke-width="1.8"></circle></svg></span>
+              <div class="be-delivers__text">
+                <p class="be-delivers__head">Give each team its lane</p>
+                <p class="be-delivers__body">Role and PIN control keeps teams safe.</p>
+              </div>
+            </li>
+            <li class="doc-edit" contenteditable="true">
+              <span class="doc-softicon doc-softicon--sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v4M8 7h8" stroke="#CEB06E" stroke-width="1.8" stroke-linecap="round"></path><rect x="5" y="9" width="14" height="11" rx="2" fill="#68E3BE" fill-opacity="0.18" stroke="#2b9e80" stroke-width="1.8"></rect><path d="M9 14h6" stroke="#2b9e80" stroke-width="1.8" stroke-linecap="round"></path></svg></span>
+              <div class="be-delivers__text">
+                <p class="be-delivers__head">Build on what you already own</p>
+                <p class="be-delivers__body">Open integration works with your gear.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="doc-foot">
+        <span class="doc-edit" contenteditable="true">LUCI Systems · Proposal</span>
+        <span class="doc-foot__page doc-edit" contenteditable="true">13</span>
+      </div>
+    </section>
+
+    <!-- PAGE 15 · CLOSE (NEXT STEP + CONTACTS — capabilities-doc style) -->
+    <section class="doc-page doc-page--dark doc-page--close">
+      <div>
+        <img class="doc-close__logo" src="assets/logos/luci-wordmark-white-320.png" alt="LUCI Systems" width="150" height="30">
+      </div>
+      <div class="doc-close__lead">
+        <p class="doc-eyebrow doc-eyebrow--mint doc-edit" contenteditable="true">Next step</p>
+        <h2 class="doc-close__head doc-edit" contenteditable="true">A property that<br><em>gets simpler as it grows.</em></h2>
+        <p class="doc-close__body doc-edit" contenteditable="true">Review this proposal with Penn Entertainment leadership. When you’re ready to move forward, we’ll schedule the project kickoff and begin Phase 1 at Ameristar Black Hawk.</p>
+      </div>
+      <div class="doc-close__contacts">
+        <div class="doc-close__rep">
+          <p class="doc-eyebrow doc-eyebrow--mint doc-edit" contenteditable="true">Your contact</p>
+          <p class="doc-close__name doc-edit" contenteditable="true">Michael Epstein</p>
+          <p class="doc-edit" contenteditable="true"><a href="mailto:mepstein@lucisystems.com">mepstein@lucisystems.com</a></p>
+        </div>
+        <div class="doc-close__company">
+          <p class="doc-close__name doc-edit" contenteditable="true">LUCI Systems, LLC</p>
+          <p class="doc-edit" contenteditable="true">6280 S. Valley View Blvd., Bldg. B / Ste. 208<br>Las Vegas, NV 89118</p>
+          <p class="doc-edit" contenteditable="true"><a href="tel:+18333335868">(833) 333-5868</a><br><a href="https://lucisystems.com">LUCIsystems.com</a></p>
+        </div>
+      </div>
+
+      <div class="doc-foot">
+        <span class="doc-edit" contenteditable="true">LUCI Systems · Proposal</span>
+        <span class="doc-foot__page doc-edit" contenteditable="true">14</span>
+      </div>
+    </section>
+
+  </article>
+
+
+</body></html>
