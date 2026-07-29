@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>LUCI engine motif — Blueprint · Schematic assembly</title>
+<!--
+  Blueprint pass C — "Schematic assembly": exploded concentric stages with callout
+  leaders + numbered balloons (parts-diagram convention). Thin stroke, dashed
+  construction, mint/gold. Reads as a blueprint of an orchestration engine's stages.
+-->
+<link rel="stylesheet" href="../../fonts/luci-brand-fonts.css">
+<link rel="stylesheet" href="_study-base.css">
+<style>
+  .stroke { fill: none; stroke: var(--mint); stroke-linecap: round; stroke-linejoin: round; }
+  .stroke-gold { stroke: var(--gold); }
+  .fill-mint { fill: var(--mint); }
+  .fill-gold { fill: var(--gold); }
+  .hidden { stroke-dasharray: 6 5; }
+  .centerline { stroke-dasharray: 18 6 3 6; }
+  .fine { stroke-width: 1.2; }
+  .med { stroke-width: 1.8; }
+  .heavy { stroke-width: 2.6; }
+  .label {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-weight: 600; font-size: 14px;
+    fill: var(--mint);
+  }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="footprint" aria-hidden="true"></div>
+
+  <svg class="motif" viewBox="0 0 820 820" aria-hidden="true">
+    <g transform="translate(410 410)" class="stroke">
+      <!-- centerlines -->
+      <line class="centerline fine" x1="-390" y1="0" x2="390" y2="0" opacity="0.30"/>
+      <line class="centerline fine" x1="0" y1="-390" x2="0" y2="390" opacity="0.30"/>
+
+      <!-- Stage 1 — outer casing (heavy) -->
+      <circle class="heavy" r="340" opacity="0.55"/>
+      <!-- Stage 2 — stator ring (segmented dashes = discrete vanes) -->
+      <circle class="med hidden" r="280" opacity="0.50"/>
+      <!-- Stage 3 — rotor path -->
+      <circle class="med" r="210" opacity="0.40"/>
+      <!-- Stage 4 — hub -->
+      <circle class="heavy" r="110" opacity="0.55"/>
+      <circle class="fine" r="95" opacity="0.28"/>
+
+      <!-- 6 hard blade outlines on the rotor path -->
+      <g class="med" opacity="0.70">
+        <path d="M 115 -14 L 200 -28 L 205 -6 L 115 14 Z"/>
+        <path d="M 115 -14 L 200 -28 L 205 -6 L 115 14 Z" transform="rotate(60)"/>
+        <path d="M 115 -14 L 200 -28 L 205 -6 L 115 14 Z" transform="rotate(120)"/>
+        <path d="M 115 -14 L 200 -28 L 205 -6 L 115 14 Z" transform="rotate(180)"/>
+        <path d="M 115 -14 L 200 -28 L 205 -6 L 115 14 Z" transform="rotate(240)"/>
+        <path class="stroke-gold" d="M 115 -14 L 200 -28 L 205 -6 L 115 14 Z" transform="rotate(300)" opacity="0.9"/>
+      </g>
+
+      <!-- stator vane ticks on outer stage -->
+      <g class="fine" opacity="0.45">
+        <line x1="280" y1="-10" x2="310" y2="-10" transform="rotate(0)"/>
+        <line x1="280" y1="-10" x2="310" y2="-10" transform="rotate(30)"/>
+        <line x1="280" y1="-10" x2="310" y2="-10" transform="rotate(60)"/>
+        <line x1="280" y1="-10" x2="310" y2="-10" transform="rotate(90)"/>
+        <line x1="280" y1="-10" x2="310" y2="-10" transform="rotate(120)"/>
+        <line x1="280" y1="-10" x2="310" y2="-10" transform="rotate(150)"/>
+        <line x1="280" y1="-10" x2="310" y2="-10" transform="rotate(180)"/>
+        <line x1="280" y1="-10" x2="310" y2="-10" transform="rotate(210)"/>
+        <line x1="280" y1="-10" x2="310" y2="-10" transform="rotate(240)"/>
+        <line x1="280" y1="-10" x2="310" y2="-10" transform="rotate(270)"/>
+        <line x1="280" y1="-10" x2="310" y2="-10" transform="rotate(300)"/>
+        <line x1="280" y1="-10" x2="310" y2="-10" transform="rotate(330)"/>
+      </g>
+
+      <!-- callout balloons (parts-diagram convention) -->
+      <!-- 01 casing -->
+      <line class="fine" x1="240" y1="-240" x2="320" y2="-320" opacity="0.55"/>
+      <circle class="med fill-mint" r="16" cx="336" cy="-336" opacity="0.95" style="fill:var(--mint);stroke:none"/>
+      <text class="label" x="336" y="-331" text-anchor="middle" style="fill:#0A161C">01</text>
+
+      <!-- 02 rotor -->
+      <line class="fine" x1="150" y1="150" x2="250" y2="250" opacity="0.55"/>
+      <circle r="16" cx="266" cy="266" style="fill:var(--mint);stroke:none" opacity="0.95"/>
+      <text class="label" x="266" y="271" text-anchor="middle" style="fill:#0A161C">02</text>
+
+      <!-- 03 core — gold -->
+      <line class="fine stroke-gold" x1="-80" y1="-80" x2="-200" y2="-200" opacity="0.70"/>
+      <circle r="16" cx="-216" cy="-216" style="fill:var(--gold);stroke:none" opacity="0.95"/>
+      <text class="label" x="-216" y="-211" text-anchor="middle" style="fill:#0A161C">03</text>
+    </g>
+  </svg>
+
+  <img class="core" src="../../logos/luci-mark-mint.png" alt="" aria-hidden="true">
+</div>
+</body>
+</html>
