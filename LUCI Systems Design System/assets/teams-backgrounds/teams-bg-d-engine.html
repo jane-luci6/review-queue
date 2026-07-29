@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>LUCI Teams background — D · Orchestration core</title>
+<!--
+  Teams/Zoom virtual background — Variant D "Orchestration core".
+  The central engine-core footprint sits behind the subject: a soft lighter circular
+  footprint + concentric orbit rings + nodes (one gold) + radial scan lines. The center
+  is kept clean (no bright mark core behind the head) so the subject reads clearly inside
+  the orbit. Mint/gold circuit texture at the edges. Logo + tagline lockup bottom-right.
+  Logo + tagline only (no sub-tagline). Render to PNG at 1920x1080.
+-->
+<link rel="stylesheet" href="../fonts/luci-brand-fonts.css">
+<link rel="stylesheet" href="_teams-base.css">
+<style>
+  .lc-footprint, .lc-footprint-ring, .lc-orbit, .lc-scan {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  .lc-footprint { width: 1080px; height: 1080px;
+    background: radial-gradient(circle at 50% 50%, rgba(245,248,250,0.05), rgba(245,248,250,0) 60%); }
+  .lc-footprint-ring { width: 1080px; height: 1080px;
+    border: 1px solid rgba(104,227,190,0.08); border-radius: 50%; }
+  .lc-orbit, .lc-scan { width: 980px; height: 980px; }
+  .lc-orbit .ring { fill: none; stroke: var(--mint); stroke-width: 1.4; }
+  .lc-orbit .node { fill: var(--mint); }
+  .lc-orbit .node-gold { fill: var(--gold); }
+  .lc-scan line { stroke: var(--mint); stroke-width: 1; }
+  .lc-glow {
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(104,227,190,0.06), rgba(104,227,190,0) 56%);
+    pointer-events: none;
+  }
+  .lc-lockup { right: 96px; bottom: 88px; text-align: right; }
+  .lc-lockup .lc-rule { margin-left: auto; }
+  .lc-vignette {
+    position: absolute; inset: 0;
+    box-shadow: inset 0 0 240px 50px rgba(0,0,0,0.5);
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+  <div class="bg">
+    <div class="lc-circuit" aria-hidden="true"></div>
+    <div class="lc-glow" aria-hidden="true"></div>
+    <div class="lc-footprint" aria-hidden="true"></div>
+    <div class="lc-footprint-ring" aria-hidden="true"></div>
+
+    <svg class="lc-scan" viewBox="0 0 980 980" aria-hidden="true">
+      <g opacity="0.12">
+        <line x1="490" y1="490" x2="490" y2="0"/>
+        <line x1="490" y1="490" x2="972" y2="490"/>
+        <line x1="490" y1="490" x2="490" y2="972"/>
+        <line x1="490" y1="490" x2="8" y2="490"/>
+        <line x1="490" y1="490" x2="872" y2="108"/>
+        <line x1="490" y1="490" x2="872" y2="872"/>
+        <line x1="490" y1="490" x2="108" y2="872"/>
+        <line x1="490" y1="490" x2="108" y2="108"/>
+      </g>
+    </svg>
+
+    <svg class="lc-orbit" viewBox="0 0 980 980" aria-hidden="true">
+      <circle class="ring" cx="490" cy="490" r="484" opacity="0.08"/>
+      <circle class="ring" cx="490" cy="490" r="382" opacity="0.13"/>
+      <circle class="ring" cx="490" cy="490" r="268" opacity="0.18"/>
+      <circle class="ring" cx="490" cy="490" r="142" opacity="0.22"/>
+      <circle class="node"       cx="490" cy="6"    r="6" opacity="0.45"/>
+      <circle class="node"       cx="972" cy="490" r="6" opacity="0.45"/>
+      <circle class="node-gold" cx="490" cy="974" r="7" opacity="0.6"/>
+      <circle class="node"       cx="8"   cy="490" r="6" opacity="0.45"/>
+      <circle class="node"       cx="490" cy="108" r="5" opacity="0.4"/>
+      <circle class="node"       cx="872" cy="490" r="5" opacity="0.4"/>
+      <circle class="node"       cx="490" cy="872" r="5" opacity="0.4"/>
+      <circle class="node"       cx="108" cy="490" r="5" opacity="0.4"/>
+    </svg>
+
+    <div class="lc-vignette" aria-hidden="true"></div>
+
+    <div class="lc-lockup">
+      <img class="lc-logo" src="../logos/luci-full-mintmark-white.png" alt="LUCI">
+      <div class="lc-rule" aria-hidden="true"></div>
+      <p class="lc-tagline">The <em>Orchestration Engine</em><br>for Enterprise Multimedia</p>
+    </div>
+  </div>
+</body>
+</html>

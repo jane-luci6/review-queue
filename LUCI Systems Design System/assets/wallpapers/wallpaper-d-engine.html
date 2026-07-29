@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>LUCI wallpaper — D · Orchestration core</title>
+<!--
+  Variant D — "Orchestration core": merges B's left-tagline signature with a CENTRAL
+  engine-core footprint that represents "the orchestration engine" — the LUCI mark
+  seated at the center of concentric orbit rings + nodes, on a soft lighter circular
+  footprint (a subtle lightening of the navy, not a bright glow). Reusable brand motif.
+  Logo + tagline only (no sub-tagline). Render to 1920x1080 and 2560x1440.
+-->
+<link rel="stylesheet" href="../fonts/luci-brand-fonts.css">
+<link rel="stylesheet" href="_wallpaper-base.css">
+<style>
+  html, body { width: 1920px; height: 1080px; }
+  .wallpaper { width: 1920px; height: 1080px; }
+  .lc-circuit {
+    -webkit-mask-image: radial-gradient(ellipse 40% 72% at 62% 50%, transparent 0%, transparent 42%, #000 94%);
+            mask-image: radial-gradient(ellipse 40% 72% at 62% 50%, transparent 0%, transparent 42%, #000 94%);
+  }
+  /* the "light footprint" — subtle lighter circular region behind the orbit */
+  .lc-footprint, .lc-footprint-ring, .lc-orbit, .lc-scan, .lc-core {
+    position: absolute; top: 50%; left: 62%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  .lc-footprint { width: 820px; height: 820px;
+    background: radial-gradient(circle at 50% 50%, rgba(245,248,250,0.055), rgba(245,248,250,0) 66%); }
+  .lc-footprint-ring { width: 820px; height: 820px;
+    border: 1px solid rgba(104,227,190,0.10); border-radius: 50%; }
+  .lc-orbit, .lc-scan { width: 760px; height: 760px; }
+  .lc-orbit .ring { fill: none; stroke: var(--mint); stroke-width: 1.4; }
+  .lc-orbit .node { fill: var(--mint); }
+  .lc-orbit .node-gold { fill: var(--gold); }
+  .lc-scan line { stroke: var(--mint); stroke-width: 1; }
+  .lc-core { width: 150px; height: auto; opacity: 0.92; }
+  .lc-lockup {
+    position: absolute; left: 120px; top: 50%; transform: translateY(-50%);
+    z-index: 2; max-width: 540px;
+  }
+  .lc-lockup .lc-tagline { font-size: 44px; max-width: 520px; }
+  .lc-foot { position: absolute; left: 120px; bottom: 96px; z-index: 2; }
+  .lc-foot .lc-logo { height: 56px; opacity: 0.92; }
+  .lc-vignette {
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg, rgba(10,22,28,0.82) 0%, rgba(10,22,28,0.30) 26%, rgba(10,22,28,0) 40%);
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+  <div class="wallpaper">
+    <div class="lc-circuit" aria-hidden="true"></div>
+    <div class="lc-footprint" aria-hidden="true"></div>
+    <div class="lc-footprint-ring" aria-hidden="true"></div>
+
+    <svg class="lc-scan" viewBox="0 0 760 760" aria-hidden="true">
+      <g opacity="0.16">
+        <line x1="380" y1="380" x2="380" y2="0"/>
+        <line x1="380" y1="380" x2="752" y2="380"/>
+        <line x1="380" y1="380" x2="380" y2="752"/>
+        <line x1="380" y1="380" x2="8" y2="380"/>
+        <line x1="380" y1="380" x2="676" y2="84"/>
+        <line x1="380" y1="380" x2="676" y2="676"/>
+        <line x1="380" y1="380" x2="84" y2="676"/>
+        <line x1="380" y1="380" x2="84" y2="84"/>
+      </g>
+    </svg>
+
+    <svg class="lc-orbit" viewBox="0 0 760 760" aria-hidden="true">
+      <circle class="ring" cx="380" cy="380" r="374" opacity="0.10"/>
+      <circle class="ring" cx="380" cy="380" r="298" opacity="0.16"/>
+      <circle class="ring" cx="380" cy="380" r="204" opacity="0.22"/>
+      <circle class="ring" cx="380" cy="380" r="108" opacity="0.30"/>
+      <circle class="node"      cx="380" cy="6"    r="6" opacity="0.55"/>
+      <circle class="node"      cx="752" cy="380" r="6" opacity="0.55"/>
+      <circle class="node-gold" cx="380" cy="754" r="7" opacity="0.7"/>
+      <circle class="node"      cx="8"   cy="380" r="6" opacity="0.55"/>
+      <circle class="node"      cx="380" cy="82"  r="5" opacity="0.5"/>
+      <circle class="node"      cx="678" cy="380" r="5" opacity="0.5"/>
+      <circle class="node"      cx="380" cy="678" r="5" opacity="0.5"/>
+      <circle class="node"      cx="82"  cy="380" r="5" opacity="0.5"/>
+    </svg>
+
+    <!-- the LUCI mark at the very center — the "core" of the engine -->
+    <img class="lc-core" src="../logos/luci-mark-mint.png" alt="" aria-hidden="true">
+
+    <div class="lc-vignette" aria-hidden="true"></div>
+
+    <div class="lc-lockup">
+      <div class="lc-rule" aria-hidden="true"></div>
+      <p class="lc-tagline">The <em>Orchestration Engine</em><br>for Enterprise Multimedia</p>
+    </div>
+
+    <div class="lc-foot">
+      <img class="lc-logo" src="../logos/luci-full-mintmark-white.png" alt="LUCI">
+    </div>
+  </div>
+</body>
+</html>
