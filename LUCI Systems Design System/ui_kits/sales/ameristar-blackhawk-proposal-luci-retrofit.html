@@ -74,6 +74,47 @@
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
+  /* SOW pages (no .be-band) — strip navy band to transparent in PDF.
+     scope-of-work.css does this on screen, but sales-document.css's
+     print-color-adjust:exact on .doc-page-band can bleed the navy
+     through in headless-Chrome PDF. Force it here. */
+  .doc-page--phasing > .doc-page-band,
+  .doc-page--system-scope > .doc-page-band,
+  .doc-page--idf-scope > .doc-page-band,
+  .doc-page--terms > .doc-page-band,
+  .doc-page--overview:not(.be-band) > .doc-page-band {
+    background: transparent !important;
+  }
+  .doc-page--phasing > .doc-page-band::before,
+  .doc-page--system-scope > .doc-page-band::before,
+  .doc-page--idf-scope > .doc-page-band::before,
+  .doc-page--terms > .doc-page-band::before,
+  .doc-page--overview:not(.be-band) > .doc-page-band::before,
+  .doc-page--phasing > .doc-page-band::after,
+  .doc-page--system-scope > .doc-page-band::after,
+  .doc-page--idf-scope > .doc-page-band::after,
+  .doc-page--terms > .doc-page-band::after,
+  .doc-page--overview:not(.be-band) > .doc-page-band::after {
+    content: none !important;
+  }
+  .doc-page--phasing .doc-page-band__title,
+  .doc-page--system-scope .doc-page-band__title,
+  .doc-page--idf-scope .doc-page-band__title,
+  .doc-page--terms .doc-page-band__title,
+  .doc-page--overview:not(.be-band) .doc-page-band__title {
+    color: var(--ink-strong) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .doc-page--phasing .sow-band-bignum,
+  .doc-page--system-scope .sow-band-bignum,
+  .doc-page--idf-scope .sow-band-bignum,
+  .doc-page--terms .sow-band-bignum,
+  .doc-page--overview:not(.be-band) .sow-band-bignum {
+    color: #DCE0E3 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
 }
 /* Remove SOW page background pattern — conflicts with hairlines */
 .doc-page--overview::before,
