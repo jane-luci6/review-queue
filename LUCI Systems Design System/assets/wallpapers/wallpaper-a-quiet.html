@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>LUCI wallpaper — A · Quiet executive</title>
+<!--
+  Variant A — "Quiet executive": deep navy, vast negative space, a small full-logo +
+  tagline lockup bottom-left, and a very faint oversized mint mark watermark upper-right.
+  Render to PNG at 1920x1080 and 2560x1440 (see scripts/render-internal-team-assets.sh).
+-->
+<link rel="stylesheet" href="../fonts/luci-brand-fonts.css">
+<link rel="stylesheet" href="_wallpaper-base.css">
+<style>
+  html, body { width: 1920px; height: 1080px; }
+  .wallpaper { width: 1920px; height: 1080px; }
+
+  .lc-mark-wm {
+    top: 96px;
+    right: 96px;
+    width: 560px;
+    height: auto;
+  }
+
+  .lc-lockup {
+    position: absolute;
+    left: 120px;
+    bottom: 132px;
+    z-index: 2;
+  }
+
+  /* gentle edge vignette to seat the lockup */
+  .lc-vignette {
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 0 320px 60px rgba(0,0,0,0.55);
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+  <div class="wallpaper">
+    <img class="lc-mark-wm" src="../logos/luci-mark-mint.png" alt="" aria-hidden="true">
+    <div class="lc-vignette" aria-hidden="true"></div>
+    <div class="lc-lockup">
+      <img class="lc-logo" src="../logos/luci-full-mintmark-white.png" alt="LUCI">
+      <div class="lc-rule" aria-hidden="true"></div>
+      <p class="lc-tagline">The <em>Orchestration Engine</em><br>for Enterprise Multimedia</p>
+      <p class="lc-sub">One interface to control, automate, and execute the entire guest experience.</p>
+    </div>
+  </div>
+</body>
+</html>

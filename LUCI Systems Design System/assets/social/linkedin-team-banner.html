@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>LUCI — LinkedIn team banner (personal profile)</title>
+<!--
+  LinkedIn personal-profile banner for the LUCI team. 1584x396 (@1x) / 3168x792 (@2x).
+  Distinct from the company-page cover (assets/social/linkedin-cover.html): on a personal
+  profile the user's photo + name sit at the BOTTOM-LEFT, so branding is pushed to the
+  RIGHT and upper area to stay visible. Logo + tagline ("Orchestration Engine" accented in
+  gold, matching the live site + company cover) + sub-tagline. Faint circuit texture at the
+  edges for family consistency. Render via scripts/render-internal-team-assets.sh.
+-->
+<link rel="stylesheet" href="../fonts/luci-brand-fonts.css">
+<style>
+  :root {
+    --navy-deep: #0A161C;
+    --mint: #68E3BE;
+    --mint-rgb: 104, 227, 190;
+    --gold: #EDD086;
+    --off-white: #F5F8FA;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    width: 1584px;
+    height: 396px;
+    overflow: hidden;
+    background: var(--navy-deep);
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .cover {
+    position: relative;
+    width: 1584px;
+    height: 396px;
+    background: var(--navy-deep);
+    overflow: hidden;
+  }
+
+  /* circuit texture — visible at the edges, fading toward the middle-right */
+  .cover__pattern {
+    position: absolute;
+    inset: 0;
+    background-image: url("../textures/texture-circuit-navy-mint.png");
+    background-repeat: repeat;
+    background-size: 540px auto;
+    opacity: 0.5;
+    mix-blend-mode: screen;
+    pointer-events: none;
+    -webkit-mask-image: radial-gradient(ellipse 50% 78% at 78% 50%, transparent 0%, transparent 42%, #000 92%);
+            mask-image: radial-gradient(ellipse 50% 78% at 78% 50%, transparent 0%, transparent 42%, #000 92%);
+  }
+
+  .cover__glow {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(820px 340px at 74% 50%, rgba(var(--mint-rgb), 0.10), transparent 70%),
+      linear-gradient(180deg, rgba(255,255,255,0.018), transparent 40%);
+    pointer-events: none;
+  }
+
+  .cover__vignette {
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 0 220px 40px rgba(0,0,0,0.45);
+    pointer-events: none;
+  }
+
+  /* lockup on the RIGHT — personal profile photo/name cover the bottom-left */
+  .cover__lockup {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+    padding-left: 96px;
+    padding-right: 110px;
+  }
+
+  .cover__tagline {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+    color: rgba(245, 248, 250, 0.86);
+    max-width: 540px;
+    text-align: right;
+  }
+  .cover__tagline em {
+    font-style: normal;
+    font-weight: 700;
+    color: var(--gold);
+  }
+  .cover__sub {
+    margin-top: 12px;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(245, 248, 250, 0.56);
+    max-width: 540px;
+    text-align: right;
+  }
+
+  .cover__rule {
+    flex: 0 0 auto;
+    width: 1px;
+    height: 132px;
+    margin: 0 56px;
+    background: rgba(245, 248, 250, 0.16);
+  }
+
+  .cover__logo {
+    height: 124px;
+    width: auto;
+    flex: 0 0 auto;
+    display: block;
+  }
+</style>
+</head>
+<body>
+  <div class="cover">
+    <div class="cover__pattern"></div>
+    <div class="cover__glow"></div>
+    <div class="cover__lockup">
+      <div>
+        <p class="cover__tagline">The <em>Orchestration Engine</em><br>for Enterprise Multimedia</p>
+        <p class="cover__sub">One interface to control, automate, and execute the entire guest experience.</p>
+      </div>
+      <div class="cover__rule" aria-hidden="true"></div>
+      <img class="cover__logo" src="../logos/luci-full-mintmark-white.png" alt="LUCI">
+    </div>
+    <div class="cover__vignette"></div>
+  </div>
+</body>
+</html>

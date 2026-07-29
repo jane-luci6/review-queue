@@ -1,0 +1,71 @@
+/* Shared base for LUCI internal-team Teams/Zoom virtual backgrounds.
+   1920x1080. The center is kept clear so the person on camera reads against clean navy;
+   branding lives in the corners/edges. Teams crops around the subject, so avoid placing
+   anything critical where it could be masked behind the person. */
+:root {
+  --navy-deep: #0A161C;
+  --navy: #10232D;
+  --navy-mid: #314955;
+  --mint: #68E3BE;
+  --mint-rgb: 104, 227, 190;
+  --gold: #EDD086;
+  --gold-deep: #CEB06E;
+  --off-white: #F5F8FA;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+  background: var(--navy-deep);
+  color: var(--off-white);
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.bg {
+  position: relative;
+  width: 1920px;
+  height: 1080px;
+  background: var(--navy-deep);
+  overflow: hidden;
+}
+
+/* corner lockup — small, sits where Teams won't crop the subject */
+.lc-lockup {
+  position: absolute;
+  z-index: 2;
+}
+.lc-logo {
+  display: block;
+  height: 64px;
+  width: auto;
+}
+.lc-rule {
+  width: 36px;
+  height: 3px;
+  background: var(--mint);
+  margin: 18px 0 14px;
+}
+.lc-tagline {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: rgba(245, 248, 250, 0.86);
+  max-width: 420px;
+}
+.lc-tagline em {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--mint);
+}
+
+.lc-mark-wm {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.07;
+}

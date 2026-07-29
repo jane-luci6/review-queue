@@ -1,0 +1,79 @@
+/* Shared base for LUCI internal-team desktop wallpapers.
+   Each wallpaper HTML links this + ../fonts/luci-brand-fonts.css.
+   Canvas is fixed at the render size (1920x1080 or 2560x1440) — set on <html> per file. */
+:root {
+  --navy-deep: #0A161C;
+  --navy: #10232D;
+  --navy-mid: #314955;
+  --mint: #68E3BE;
+  --mint-rgb: 104, 227, 190;
+  --gold: #EDD086;
+  --gold-deep: #CEB06E;
+  --off-white: #F5F8FA;
+  --rule: rgba(245, 248, 250, 0.14);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--navy-deep);
+  color: var(--off-white);
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wallpaper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--navy-deep);
+  overflow: hidden;
+}
+
+/* ---- shared lockup pieces ---- */
+.lc-logo {
+  display: block;
+  height: 92px;
+  width: auto;
+}
+.lc-rule {
+  width: 44px;
+  height: 3px;
+  background: var(--mint);
+  margin: 26px 0 22px;
+}
+.lc-tagline {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 1.18;
+  letter-spacing: -0.012em;
+  color: rgba(245, 248, 250, 0.86);
+  max-width: 540px;
+}
+.lc-tagline em {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--mint);
+}
+.lc-sub {
+  margin-top: 14px;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.55;
+  letter-spacing: 0.005em;
+  color: rgba(245, 248, 250, 0.58);
+  max-width: 480px;
+}
+
+/* faint oversized mint mark watermark (uses ../logos/luci-mark-mint.png) */
+.lc-mark-wm {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.08;
+  filter: saturate(1.05);
+}
