@@ -18,9 +18,16 @@
   .lc-landscape { position: absolute; inset: 0; width: 1920px; height: 1080px; pointer-events: none; }
   .lc-lockup { right: 96px; bottom: 88px; text-align: right; }
   .lc-lockup .lc-rule { margin-left: auto; }
+  /* center vignette keeps the camera zone clear; bottom-right scrim gives the
+     lockup a clean pocket so logo+tagline are the figure, motif the ground. */
   .lc-vignette {
     position: absolute; inset: 0;
-    box-shadow: inset 0 0 240px 50px rgba(0,0,0,0.45);
+    box-shadow: inset 0 0 240px 50px rgba(0,0,0,0.42);
+    pointer-events: none;
+  }
+  .lc-scrim {
+    position: absolute; inset: 0;
+    background: radial-gradient(520px 360px at 88% 92%, rgba(10,22,28,0.72) 0%, rgba(10,22,28,0.40) 40%, rgba(10,22,28,0) 75%);
     pointer-events: none;
   }
 </style>
@@ -48,33 +55,33 @@
       <circle cx="960" cy="500" r="220" fill="url(#pwr)"/>
 
       <g transform="translate(960 500)" fill="none" stroke="url(#mintGoldWave)" stroke-linecap="round" stroke-linejoin="round">
-        <circle class="ring-stroke" r="78" stroke-width="2" opacity="0.32"/>
-        <circle class="ring-stroke" r="200" stroke-width="1.2" opacity="0.18"/>
+        <circle class="ring-stroke" r="78" stroke-width="2" opacity="0.22"/>
+        <circle class="ring-stroke" r="200" stroke-width="1.2" opacity="0.12"/>
 
         <!-- no long diagonal rays — left/right spokes only -->
 
-        <g class="stroke" stroke-width="1.7" opacity="0.32">
+        <g class="stroke" stroke-width="1.7" opacity="0.22">
           <line x1="78" y1="0" x2="200" y2="0"/>
           <line x1="-78" y1="0" x2="-200" y2="0"/>
         </g>
 
-        <g opacity="0.55">
-          <circle class="sat-ring" cx="200" cy="0" r="14" opacity="0.50"/>
+        <g opacity="0.38">
+          <circle class="sat-ring" cx="200" cy="0" r="14" opacity="0.34"/>
           <circle class="node" cx="200" cy="0" r="3"/>
-          <circle class="sat-ring" cx="100" cy="173" r="14" opacity="0.50"/>
+          <circle class="sat-ring" cx="100" cy="173" r="14" opacity="0.34"/>
           <circle class="node" cx="100" cy="173" r="3"/>
-          <circle class="sat-ring" cx="-100" cy="173" r="14" opacity="0.50"/>
+          <circle class="sat-ring" cx="-100" cy="173" r="14" opacity="0.34"/>
           <circle class="node" cx="-100" cy="173" r="3"/>
-          <circle class="sat-ring" cx="-200" cy="0" r="14" opacity="0.50"/>
+          <circle class="sat-ring" cx="-200" cy="0" r="14" opacity="0.34"/>
           <circle class="node" cx="-200" cy="0" r="4"/>
-          <circle class="sat-ring" cx="-100" cy="-173" r="14" opacity="0.50"/>
+          <circle class="sat-ring" cx="-100" cy="-173" r="14" opacity="0.34"/>
           <circle class="node" cx="-100" cy="-173" r="3"/>
-          <circle class="sat-ring" cx="100" cy="-173" r="14" opacity="0.50"/>
+          <circle class="sat-ring" cx="100" cy="-173" r="14" opacity="0.34"/>
           <circle class="node" cx="100" cy="-173" r="3"/>
         </g>
 
         <!-- Corner sats → L/R gateway → hub -->
-        <g class="stroke" stroke-width="1.25" opacity="0.30">
+        <g class="stroke" stroke-width="1.25" opacity="0.20">
           <path d="M 100 173 H 200 V 14"/>
           <path d="M -100 173 H -200 V 14"/>
           <path d="M -100 -173 H -200 V -14"/>
@@ -82,7 +89,7 @@
         </g>
 
         <!-- Tissue rooted at L/R gateways — every branch reconnects -->
-        <g class="stroke" stroke-width="1.9" opacity="0.42">
+        <g class="stroke" stroke-width="1.9" opacity="0.24">
           <path d="M 214 0 H 960"/>
           <path d="M 340 0 V -48 H 960"/>
           <path d="M 340 0 V 60 H 960"/>
@@ -90,7 +97,7 @@
           <path d="M -340 0 V 42 H -960"/>
           <path d="M -340 0 V -70 H -960"/>
         </g>
-        <g class="stroke" stroke-width="1.3" opacity="0.28">
+        <g class="stroke" stroke-width="1.3" opacity="0.14">
           <path d="M 300 0 V -60 H 620 V -100 H 960"/>
           <path d="M 300 0 V 80 H 640 V 140 H 960"/>
           <path d="M 480 -60 H 700 V -48"/>
@@ -100,35 +107,24 @@
           <path d="M -480 60 H -700 V 42"/>
           <path d="M -500 -90 H -720 V -70"/>
         </g>
-        <g class="stroke" stroke-width="1" opacity="0.14">
-          <path d="M 214 0 V 22 H 960"/>
-          <path d="M 214 0 V -22 H 960"/>
-          <path d="M 214 0 V -44 H 340"/>
-          <path d="M 214 0 V 44 H 340"/>
+        <g class="stroke" stroke-width="1" opacity="0.06">
           <path d="M 620 -48 V -12 H 960"/>
           <path d="M 640 60 V 100 H 960"/>
-          <path d="M 620 -100 H 960"/>
-          <path d="M 640 140 H 960"/>
-          <path d="M -214 0 V 22 H -960"/>
-          <path d="M -214 0 V -22 H -960"/>
-          <path d="M -214 0 V -44 H -340"/>
-          <path d="M -214 0 V 44 H -340"/>
           <path d="M -620 42 V 12 H -960"/>
           <path d="M -640 -70 V -110 H -960"/>
-          <path d="M -620 120 H -960"/>
-          <path d="M -640 -150 H -960"/>
         </g>
 
-        <circle class="node" cx="340" cy="0" r="3" opacity="0.42"/>
-        <circle class="node" cx="620" cy="-48" r="2.5" opacity="0.42"/>
-        <circle class="node" cx="640" cy="60" r="2.5" opacity="0.36"/>
-        <circle class="node" cx="-340" cy="0" r="3" opacity="0.42"/>
-        <circle class="node" cx="-640" cy="-70" r="3.5" opacity="0.48"/>
-        <circle class="node" cx="-620" cy="42" r="2.5" opacity="0.36"/>
+        <circle class="node" cx="340" cy="0" r="3" opacity="0.26"/>
+        <circle class="node" cx="620" cy="-48" r="2.5" opacity="0.24"/>
+        <circle class="node" cx="640" cy="60" r="2.5" opacity="0.22"/>
+        <circle class="node" cx="-340" cy="0" r="3" opacity="0.26"/>
+        <circle class="node" cx="-640" cy="-70" r="3" opacity="0.28"/>
+        <circle class="node" cx="-620" cy="42" r="2.5" opacity="0.22"/>
       </g>
     </svg>
 
     <div class="lc-vignette" aria-hidden="true"></div>
+    <div class="lc-scrim" aria-hidden="true"></div>
 
     <div class="lc-lockup">
       <img class="lc-logo" src="../logos/luci-full-mintmark-white.png" alt="LUCI">
