@@ -162,6 +162,65 @@ def patch(html: str, *, paragon: bool = False, budgetary: bool = False, fag_pros
             "}\n"
             "</style>\n</head>",
         )
+
+    # ── Flatten CSS gradients + mask-images for all sales documents ──
+    # Chrome turns CSS gradients into PDF Shading/Pattern XObjects and CSS
+    # mask-images into SoftMask XObjects. macOS Preview renders those lazily,
+    # so the PDF "blinks in and out" on open/scroll. budgetary-estimate.css
+    # re-applies gradients with !important in its own @media print block
+    # (overriding the capabilities-document.css flattening), so we inject a
+    # later-cascade style block that flattens everything to flat fills and
+    # replaces SVG mask icons with direct SVG background images.
+    if "</head>" in out:
+        out = out.replace(
+            "</head>",
+            "<style>\n"
+            "@media print {\n"
+            "  /* --- Flatten gradient backgrounds to flat fills --- */\n"
+            "  .doc-softicon,\n"
+            "  .be-delivers__grid li,\n"
+            "  .be-summary__total,\n"
+            "  .be-tier-chip--selected,\n"
+            "  .be-why-features,\n"
+            "  .led-check-panel,\n"
+            "  .led-feature-card {\n"
+            "    background: #E6F5EF !important;\n"
+            "    background-image: none !important;\n"
+            "  }\n"
+            "  .led-warranty-duration,\n"
+            "  .led-callout,\n"
+            "  .sow-scope-block,\n"
+            "  .upg-scope {\n"
+            "    background: #F5F8FA !important;\n"
+            "    background-image: none !important;\n"
+            "  }\n"
+            "  /* --- Replace SVG mask icons with direct SVG background --- */\n"
+            "  /* CSS mask → PDF SoftMask Xobject (blink). background-image SVG */\n"
+            "  /* draws the checkmark directly — no mask, no SoftMask. */\n"
+            "  .doc-feature::before,\n"
+            "  .doc-uc__benefits li::before,\n"
+            "  .sow-scope-list--checks li::before {\n"
+            "    background-color: transparent !important;\n"
+            "    background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232b9e80' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E\") !important;\n"
+            "    background-repeat: no-repeat !important;\n"
+            "    background-position: center !important;\n"
+            "    background-size: contain !important;\n"
+            "    -webkit-mask: none !important;\n"
+            "    mask: none !important;\n"
+            "  }\n"
+            "  /* --- Remove gradient mask-images (circuit texture fades) --- */\n"
+            "  .doc-page-band::before,\n"
+            "  .doc-page--cover::before,\n"
+            "  .doc-page--close::before,\n"
+            "  .doc-stage::before {\n"
+            "    -webkit-mask-image: none !important;\n"
+            "    mask-image: none !important;\n"
+            "  }\n"
+            "}\n"
+            "</style>\n"
+            "</head>",
+            1,
+        )
     return out
 
 
