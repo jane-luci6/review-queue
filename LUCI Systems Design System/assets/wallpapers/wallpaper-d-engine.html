@@ -21,11 +21,10 @@
     width: 1920px; height: 1080px;
     pointer-events: none;
   }
-  .stroke { fill: none; stroke: #68E3BE; stroke-linecap: round; stroke-linejoin: round; }
-  .node { fill: #68E3BE; }
-  .node-gold { fill: #EDD086; }
-  .ring-stroke { fill: none; stroke: #68E3BE; }
-  .sat-ring { fill: none; stroke: #68E3BE; stroke-width: 1.4; }
+  .stroke { fill: none; stroke: url(#mintGoldWave); stroke-linecap: round; stroke-linejoin: round; }
+  .node { fill: url(#mintGoldWave); }
+  .ring-stroke { fill: none; stroke: url(#mintGoldWave); }
+  .sat-ring { fill: none; stroke: url(#mintGoldWave); stroke-width: 1.4; }
 
   .lc-lockup {
     position: absolute; left: 120px; top: 50%;
@@ -55,25 +54,29 @@
           <stop offset="45%" stop-color="#68E3BE" stop-opacity="0.04"/>
           <stop offset="100%" stop-color="#68E3BE" stop-opacity="0"/>
         </radialGradient>
+        <!-- Mint→gold wave (circuit mintgold language); mint peaks at the hub -->
+        <linearGradient id="mintGoldWave" gradientUnits="userSpaceOnUse"
+          x1="-1080" y1="-60" x2="840" y2="60">
+          <stop offset="0%" stop-color="#EDD086"/>
+          <stop offset="18%" stop-color="#D4D494"/>
+          <stop offset="42%" stop-color="#68E3BE"/>
+          <stop offset="62%" stop-color="#68E3BE"/>
+          <stop offset="84%" stop-color="#D4D494"/>
+          <stop offset="100%" stop-color="#EDD086"/>
+        </linearGradient>
       </defs>
       <circle cx="1080" cy="540" r="200" fill="url(#pwr)"/>
 
-      <g transform="translate(1080 540)">
+      <g transform="translate(1080 540)" fill="none" stroke="url(#mintGoldWave)" stroke-linecap="round" stroke-linejoin="round">
         <!-- hub rings -->
         <circle class="ring-stroke" r="72" stroke-width="2.2" opacity="0.48"/>
         <circle class="ring-stroke" r="84" stroke-width="1" opacity="0.16"/>
 
-        <!-- orchestration ring + left/right spokes only (no diagonal through-lines) -->
+        <!-- orchestration ring + left/right spines only (no diagonal through-lines) -->
         <circle class="ring-stroke" r="180" stroke-width="1.3" opacity="0.26"/>
         <g class="stroke" stroke-width="1.9" opacity="0.48">
           <line x1="72" y1="0" x2="180" y2="0"/>
           <line x1="-72" y1="0" x2="-180" y2="0"/>
-        </g>
-        <g class="stroke" stroke-width="1.4" opacity="0.38">
-          <line x1="82" y1="141" x2="90" y2="156"/>
-          <line x1="-82" y1="141" x2="-90" y2="156"/>
-          <line x1="-82" y1="-141" x2="-90" y2="-156"/>
-          <line x1="82" y1="-141" x2="90" y2="-156"/>
         </g>
 
         <!-- satellites -->
@@ -84,12 +87,20 @@
           <circle class="node" cx="90" cy="156" r="3.5"/>
           <circle class="sat-ring" cx="-90" cy="156" r="15" opacity="0.55"/>
           <circle class="node" cx="-90" cy="156" r="3.5"/>
-          <circle class="sat-ring" cx="-180" cy="0" r="15" opacity="0.55" style="stroke:#EDD086"/>
-          <circle class="node-gold" cx="-180" cy="0" r="4.5"/>
+          <circle class="sat-ring" cx="-180" cy="0" r="15" opacity="0.55"/>
+          <circle class="node" cx="-180" cy="0" r="4.5"/>
           <circle class="sat-ring" cx="-90" cy="-156" r="15" opacity="0.55"/>
           <circle class="node" cx="-90" cy="-156" r="3.5"/>
           <circle class="sat-ring" cx="90" cy="-156" r="15" opacity="0.55"/>
           <circle class="node" cx="90" cy="-156" r="3.5"/>
+        </g>
+
+        <!-- Corner sats → L/R gateway → hub (every sat under hub control) -->
+        <g class="stroke" stroke-width="1.35" opacity="0.40">
+          <path d="M 90 156 H 180 V 15"/>
+          <path d="M -90 156 H -180 V 15"/>
+          <path d="M -90 -156 H -180 V -15"/>
+          <path d="M 90 -156 H 180 V -15"/>
         </g>
 
         <!-- LUCI mark as core (inline so it scales with the landscape) -->
@@ -102,39 +113,7 @@
           <path fill="#68E3BE" d="M 154.038 98.077 L 161.501 101.743 L 92.216 135.824 C 89.029 137.392 85.283 137.392 82.096 135.824 L 73.484 131.589 L 147.874 95.048 L 151.66 96.901 L 154.048 98.077 Z"/>
         </g>
 
-        <!-- LAYER 1 — faint under-web, full left/right -->
-        <g class="stroke" stroke-width="1" opacity="0.12">
-          <path d="M 195 0 H 840"/>
-          <path d="M 195 24 H 840"/>
-          <path d="M 195 -24 H 840"/>
-          <path d="M 195 -48 H 520 V -100 H 840"/>
-          <path d="M 195 48 H 500 V 120 H 840"/>
-          <path d="M -195 0 H -1080"/>
-          <path d="M -195 24 H -1080"/>
-          <path d="M -195 -24 H -1080"/>
-          <path d="M -195 -48 H -500 V -130 H -1080"/>
-          <path d="M -195 48 H -480 V 140 H -1080"/>
-          <path d="M 400 -24 V 24"/>
-          <path d="M 560 -48 V 48"/>
-          <path d="M -400 -24 V 24"/>
-          <path d="M -560 -48 V 48"/>
-        </g>
-
-        <!-- LAYER 2 — mid tissue, branches pushed toward the edges -->
-        <g class="stroke" stroke-width="1.35" opacity="0.30">
-          <path d="M 195 0 H 840"/>
-          <path d="M 280 0 V -65 H 620 V -110 H 840"/>
-          <path d="M 280 0 V 85 H 640 V 150 H 840"/>
-          <path d="M 480 -65 H 720 V -30"/>
-          <path d="M 500 85 H 760 V 40"/>
-          <path d="M -195 0 H -1080"/>
-          <path d="M -280 0 V 65 H -700 V 130 H -1080"/>
-          <path d="M -280 0 V -95 H -720 V -160 H -1080"/>
-          <path d="M -520 65 H -860 V 95"/>
-          <path d="M -540 -95 H -900 V -55"/>
-        </g>
-
-        <!-- LAYER 3 — stronger trunks all the way off-page -->
+        <!-- Tissue rooted at L/R gateways — every branch reconnects to a trunk -->
         <g class="stroke" stroke-width="2" opacity="0.50">
           <path d="M 195 0 H 840"/>
           <path d="M 320 0 V -50 H 840"/>
@@ -143,30 +122,50 @@
           <path d="M -320 0 V 45 H -1080"/>
           <path d="M -320 0 V -75 H -1080"/>
         </g>
-
-        <!-- LAYER 4 — fine forks at the far edges -->
-        <g class="stroke" stroke-width="1" opacity="0.20">
+        <g class="stroke" stroke-width="1.35" opacity="0.32">
+          <path d="M 280 0 V -65 H 620 V -110 H 840"/>
+          <path d="M 280 0 V 85 H 640 V 150 H 840"/>
+          <path d="M 480 -65 H 720 V -50"/>
+          <path d="M 500 85 H 760 V 65"/>
+          <path d="M -280 0 V 65 H -700 V 130 H -1080"/>
+          <path d="M -280 0 V -95 H -720 V -160 H -1080"/>
+          <path d="M -520 65 H -860 V 45"/>
+          <path d="M -540 -95 H -900 V -75"/>
+        </g>
+        <g class="stroke" stroke-width="1" opacity="0.16">
+          <path d="M 195 0 V 24 H 840"/>
+          <path d="M 195 0 V -24 H 840"/>
+          <path d="M 195 0 V -48 H 320"/>
+          <path d="M 195 0 V 48 H 320"/>
+          <path d="M 400 -24 V 24"/>
+          <path d="M 560 -50 V 65"/>
           <path d="M 620 -50 V -15 H 840"/>
           <path d="M 640 65 V 105 H 840"/>
-          <path d="M 720 -110 H 840"/>
-          <path d="M 760 150 H 840"/>
+          <path d="M 620 -110 H 840"/>
+          <path d="M 640 150 H 840"/>
+          <path d="M -195 0 V 24 H -1080"/>
+          <path d="M -195 0 V -24 H -1080"/>
+          <path d="M -195 0 V -48 H -320"/>
+          <path d="M -195 0 V 48 H -320"/>
+          <path d="M -400 -24 V 24"/>
+          <path d="M -560 -75 V 45"/>
           <path d="M -700 45 V 15 H -1080"/>
           <path d="M -720 -75 V -115 H -1080"/>
-          <path d="M -860 130 H -1080"/>
-          <path d="M -900 -160 H -1080"/>
+          <path d="M -700 130 H -1080"/>
+          <path d="M -720 -160 H -1080"/>
         </g>
 
         <!-- tissue nodes — including near the edges -->
         <circle class="node" cx="320" cy="0" r="3.5" opacity="0.50"/>
-        <circle class="node" cx="560" cy="-50" r="3" opacity="0.40"/>
-        <circle class="node" cx="640" cy="65" r="3" opacity="0.40"/>
-        <circle class="node" cx="780" cy="-110" r="2.5" opacity="0.35"/>
-        <circle class="node" cx="800" cy="150" r="2.5" opacity="0.32"/>
+        <circle class="node" cx="560" cy="-50" r="3.5" opacity="0.50"/>
+        <circle class="node" cx="640" cy="65" r="3" opacity="0.42"/>
+        <circle class="node" cx="780" cy="-110" r="2.5" opacity="0.40"/>
+        <circle class="node" cx="800" cy="150" r="2.5" opacity="0.36"/>
         <circle class="node" cx="-320" cy="0" r="3.5" opacity="0.50"/>
-        <circle class="node-gold" cx="-720" cy="-75" r="4" opacity="0.55"/>
-        <circle class="node" cx="-700" cy="45" r="3" opacity="0.40"/>
-        <circle class="node" cx="-900" cy="130" r="2.5" opacity="0.32"/>
-        <circle class="node" cx="-950" cy="-160" r="2.5" opacity="0.30"/>
+        <circle class="node" cx="-720" cy="-75" r="4" opacity="0.55"/>
+        <circle class="node" cx="-700" cy="45" r="3" opacity="0.42"/>
+        <circle class="node" cx="-900" cy="130" r="2.5" opacity="0.36"/>
+        <circle class="node" cx="-950" cy="-160" r="2.5" opacity="0.40"/>
       </g>
     </svg>
 
