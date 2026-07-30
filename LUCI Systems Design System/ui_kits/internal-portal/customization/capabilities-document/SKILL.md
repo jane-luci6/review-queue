@@ -116,6 +116,7 @@ Elements with `contenteditable="true"` and class `doc-edit` on the close page ma
 ### Cover copy guidance
 
 - **Client summary** should be specific: property type, fragmented systems, operational pain, what they want from LUCI.
+- **Date** (`.doc-cover__date`) — set the document date (format: "Month DD, YYYY"). Never ship with the placeholder.
 - Keep **Prepared for** display line short — property name in the `<em>` tag.
 - Leave `.doc-note` helper lines unless Jane asks to remove them for final send.
 - Do **not** change the LUCI logo (`.doc-cover__logo`).

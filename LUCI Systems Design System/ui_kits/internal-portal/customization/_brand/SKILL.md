@@ -76,7 +76,7 @@ Browser accessibility snapshots return the entire document tree and waste tokens
 - `browser_take_screenshot` for visual checks
 - CDP `Runtime.evaluate` for measurement / fit checks
 
-Pages are fixed US Letter (~11in) with `overflow: hidden` — overflow **clips silently** in print. A fit check is **mandatory** after any content edit:
+Pages are locked to fixed US Letter (8.5×11in, 1056px height) with `height: var(--page-h)` and `overflow: hidden` — **on screen and in print**. Pages cannot stretch or shrink beyond the printable area. Overflow **clips silently** (and visibly, on screen) so you catch it during editing, not in the PDF. A fit check is **mandatory** after any content edit:
 
 ```js
 (() => [...document.querySelectorAll('.doc-page')].map((p,i) => {
@@ -97,7 +97,8 @@ Anything with `over > 0` is clipped. **Trim copy or split to a new `.doc-page`**
 Fill each content page as far as it will go before opening a new one. **Do not invent page breaks.** This applies to **Scope of Work** sections and **line-item** tables alike.
 
 - Pack **greedily** while natural height stays ≤ 1056px. If there is room for another partial section / group / rows, use it.
-- **Sections and groups may break across a page boundary.** Start the next page with a “(continued)” title/label and keep going. Do **not** force a whole section onto the next page just because only 2–3 sections fit on the current one, and do **not** leave large empty space when more content would fit.
+- **Sections and groups may break across a page boundary.** Start the next page with a "(continued)" title/label and keep going. Do **not** force a whole section onto the next page just because only 2–3 sections fit on the current one, and do **not** leave large empty space when more content would fit.
+- **SOW continuous flow (locked):** the Scope of Work flows continuously across pages with no forced section-start page breaks. Page breaks may occur **anywhere** — between sections, mid-section (a subsection's body can start on one page and continue on the next), between line items, between bullet points, or mid-subsection. Subsections can cross a page boundary. The only rule: pack greedily, renumber footers, and keep going. Do not strand a section header alone at the bottom of a page with its content on the next — if the header + at least one line of body don't fit, move the header to the next page.
 - After packing, renumber `.doc-foot__page` and page comments sequentially. Drop empty continuation pages.
 
 **Line items — totals exception:** follow the same greedy packing for all line-item **rows and groups**. Then:
@@ -137,6 +138,16 @@ After any pricing / qty / rate edit, reconcile totals. Known trap: a grand total
 
 When the document title / cover kicker changes (e.g. Budgetary → Proposal, or a client project title), update **every** `.doc-foot` / running footer to match. Footers are not optional leftovers.
 
+### 8. Date on every document (mandatory)
+
+Every sales document cover **must** show a proposal/estimate date. The master templates already include a date field — populate it on every customization:
+
+- **Templates with `.doc-cover__summary`** (Proposal - LUCI Retrofit, Budgetary Estimate, Capabilities Document): the date lives in `.doc-cover__date` below the client summary text. Format: "Month DD, YYYY" (e.g. "July 29, 2026").
+- **Templates with `sow-meta` rows** (Proposal - LED, Scope of Work): the date lives in a `sow-meta__row` with label "Date" and `data-studio="proposal-date"` (or `data-studio="sow-date"`).
+- **Proposal - Upgrade**: the date is inline in the summary text via `data-studio="proposal-date"`.
+
+Never ship a document with a placeholder date ("[Month DD, YYYY]" or "Today"). Set the real date before generating the PDF.
+
 ---
 
 ## Typography (non-negotiable)
@@ -169,6 +180,7 @@ When the document title / cover kicker changes (e.g. Budgetary → Proposal, or 
 - **Sharp corners** — `border-radius: 0` on document furniture (brand trait).
 - **Do not** add drop shadows to flat content.
 - Keep existing `.doc-page` structure — one section = one printed sheet.
+- **Page sizing is locked** — `.doc-page` uses `height: var(--page-h)` (US Letter, 1056px) with `overflow: hidden` on screen **and** in print. Pages cannot stretch or shrink beyond the printable area. If content overflows, it clips visibly on screen — trim copy or split to a new `.doc-page`; never change the page height.
 
 ## Voice & tone
 

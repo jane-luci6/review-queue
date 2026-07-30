@@ -100,6 +100,7 @@ Everything else on the cover with `doc-edit` / `contenteditable="true"` is edita
 | Project title | `[data-studio="project-title"]` | Full project name line |
 | Prepared for | `[data-studio="prepared-for"]` | Client organization |
 | Basis | `[data-studio="basis"]` | Survey notes, meetings, source documents |
+| Date | `[data-studio="sow-date"]` | Document date (format: "Month DD, YYYY") |
 | Client logo | `.doc-cover__client` | Replace `src` and `alt` |
 
 ### Overview (page 2) — `.doc-page--overview`

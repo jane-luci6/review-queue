@@ -86,7 +86,7 @@ body {
 .doc-page {
   position: relative;
   width: var(--page-w);
-  min-height: var(--page-h);
+  height: var(--page-h);          /* locked to US Letter — never stretch or shrink; overflow clips so it's visible during editing */
   padding: var(--page-pad);
   background: var(--off-white);
   display: flex;
@@ -374,6 +374,14 @@ body {
 }
 
 .doc-cover__summary-text + .doc-cover__summary-text { margin-top: 12px; }
+
+.doc-cover__date {
+  margin-top: 14px;
+  font-family: var(--font-recede, 'Inter', sans-serif);
+  font-size: 13px;
+  color: rgba(235, 245, 248, 0.6);
+  letter-spacing: 0.04em;
+}
 
 /* ── Inner-page navy band (brochure / newsletter pattern) ─────────────────── */
 /* Full-bleed band at the top of a sheet: mint kicker, Space Grotesk headline,

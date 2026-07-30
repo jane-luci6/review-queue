@@ -120,6 +120,7 @@ If the spreadsheet’s column names don’t map (the script errors with `missing
 |---------|----------------|
 | `.doc-cover__kicker`, `.doc-cover__display`, `.doc-cover__sub` | Headline stack |
 | `.doc-cover__summary-text` | Property name + phase framing |
+| `.doc-cover__date` | Proposal/estimate date (format: "Month DD, YYYY") |
 | `.doc-cover__client` | Client logo (`src`, `alt`) — use a transparent **vector (SVG) or high-res PNG**; for a band spot, prefer the brand's white/reversed logo so it renders crisp on navy (see *Logo cleanup for dark backgrounds* in `skills/cover-page-customization.md`). Click the logo in preview to swap it, or drag an image file onto it. |
 | `.doc-page--cover` (`logo-pos--X`) | **Logo placement** — add one of `logo-pos--bottom-left` (default), `logo-pos--band`, `logo-pos--band-right`, `logo-pos--bottom-right`. Mike can also tap a "Logo spot" chip in the edit bar to change it live. See `skills/cover-page-customization.md` → *Logo placement* for the spot table + default-picking + white-logo handling + logo cleanup for dark backgrounds. |
 

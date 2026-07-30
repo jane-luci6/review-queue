@@ -5,12 +5,12 @@ description: >-
   proposing a full LUCI platform installation — endpoint licensing, integration
   hardware, professional services, and the full 8-page scope of work. Built from
   the Budgetary Estimate with endpoint pricing removed and the full standalone
-  SOW template inserted before line items. ~14 pages (variable).
+  SOW template inserted before line items. ~15 pages (variable).
 ---
 
 # Proposal — LUCI Retrofit · customization
 
-Full LUCI platform proposal. **~14 pages (US Letter, variable)** — cover, overview (What LUCI is), review of scope, **full 8-page scope of work** (from the standalone SOW template), line items, investment summary, and close (next step — no endpoint pricing tiers). Source master: `proposal-luci-retrofit.html` in this folder (build copy from `ui_kits/sales/`).
+Full LUCI platform proposal. **~15 pages (US Letter, variable)** — cover (with date), overview (What LUCI is), review of scope, **full 8-page scope of work** (from the standalone SOW template), line items, investment summary, **payment terms**, and close (next step — no endpoint pricing tiers). Source master: `proposal-luci-retrofit.html` in this folder (build copy from `ui_kits/sales/`).
 
 **This is the Budgetary Estimate + the full standalone Scope of Work, minus the endpoint pricing tiers.** The BE's line items, investment summary, and close are preserved; the BE's endpoint pricing tier chips are removed. The full 8-page SOW (pages 4–11) is inserted between the review of scope and the line items, using the standalone SOW template's content and CSS classes (`scope-of-work.css`).
 
@@ -69,11 +69,11 @@ After a capabilities review and demo where the client needs a written proposal w
 
 ## Page map — editable vs locked
 
-*Page numbers below reflect the default 14-page layout. They shift if SOW content or line items overflow to additional pages — always reference by section name, not absolute page number.*
+*Page numbers below reflect the default 15-page layout. They shift if SOW content or line items overflow to additional pages — always reference by section name, not absolute page number.*
 
 | Page | Section | Canvas | Status |
 |------|---------|--------|--------|
-| **1** | Cover | Light + navy hero band | **EDITABLE** (kicker, display, sub, client summary, prepared-for, client logo) |
+| **1** | Cover | Light + navy hero band | **EDITABLE** (kicker, display, sub, client summary, **date**, prepared-for, client logo) |
 | **2** | Overview — What LUCI is | Dark band | **EDITABLE** (intro text); **LOCKED** identity diagram + feature cards (boilerplate) |
 | **3** | Review of scope | Dark band | **EDITABLE** (scope categories, endpoint counts, descriptions, bridge text, footnote) |
 | **4** | §1 Project Intent + §2 Guiding Principles | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
@@ -86,11 +86,12 @@ After a capabilities review and demo where the client needs a written proposal w
 | **11** | §8 Open Items to Confirm | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
 | **12** | Proposal — Line items | Dark band | **EDITABLE** (all line items, qty, cost, subtotals, group labels, deck text) |
 | **13** | Investment summary | Dark band | **EDITABLE** (all summary values, total, CapEx/OpEx split); **LOCKED** `.be-delivers` marketing grid |
-| **14** | Close — Next step | Dark (capabilities-doc style) | **EDITABLE** (kicker, headline, next-step body, contact name/email); **LOCKED** LUCI logo + company info |
+| **14** | Payment terms | Light (LED-fee style) | **EDITABLE** (all milestone percentages, labels, due descriptions, notes) |
+| **15** | Close — Next step | Dark (capabilities-doc style) | **EDITABLE** (kicker, headline, next-step body, contact name/email); **LOCKED** LUCI logo + company info |
 
 ### Variable page counts
 
-- **SOW pages (4–11):** the 8 SOW pages mirror the standalone Scope of Work template. Add or remove SOW continuation pages if the scope requires more or less detail (e.g., fewer IDF pages, additional phasing). Use subheads (`.sow-subsection-title`), not repeated section numbers. The SOW uses `scope-of-work.css` classes — do not mix in `led-*` classes from the LED proposal.
+- **SOW pages (4–11):** the 8 SOW pages mirror the standalone Scope of Work template. Add or remove SOW continuation pages if the scope requires more or less detail (e.g., fewer IDF pages, additional phasing). Use subheads (`.sow-subsection-title`), not repeated section numbers. The SOW uses `scope-of-work.css` classes — do not mix in `led-*` classes from the LED proposal. **SOW content flows continuously** — sections, subsections, line items, and bullets may break across page boundaries; do not force section-start page breaks or leave large gaps (see `../_brand/SKILL.md` → Continuous page packing).
 - **Line items (page 12):** if the spreadsheet has more rows than fit on one page, the estimate spills onto a continuation page. Add a "continues on the following page" note; the continuation page reuses the same section header but does **not** add a second total.
 
 ---
@@ -105,6 +106,7 @@ After a capabilities review and demo where the client needs a written proposal w
 | Display headline | `.doc-cover__display` (keep `<em>` for client short name) |
 | Sub copy | `.doc-cover__sub` |
 | Client summary | `.doc-cover__summary-text` |
+| Date | `.doc-cover__date` (format: "Month DD, YYYY") |
 | Client logo | `.doc-cover__client` (`src` + `alt`) |
 | LUCI logo | `.doc-cover__logo` — **locked** (brand) |
 
@@ -147,7 +149,7 @@ When Mike provides a source SOW, **mirror its verbiage and structure** (headers,
 | Takeaway / open items | `.doc-takeaway`, `.sow-open-items` |
 | Note | `.sow-note` |
 
-**SOW page breakdown:**
+**SOW page breakdown (default — shifts with content):**
 - **Page 4 (§1–2):** Project Intent + Guiding Principles
 - **Page 5 (§3–4.1):** Project Phasing + System Scope intro
 - **Page 6 (§4.2–4.4):** IPTV upgrade, local content ingestion, audio modernization
@@ -156,6 +158,8 @@ When Mike provides a source SOW, **mirror its verbiage and structure** (headers,
 - **Page 9 (§5.5–5.6):** IDF/Rack scope cont. (spa, meeting/conferencing)
 - **Page 10 (§6–7):** Deliverables + Assumptions/Constraints/Exclusions
 - **Page 11 (§8):** Open Items to Confirm
+
+**These page boundaries are defaults, not fixed.** SOW content flows continuously — sections, subsections, line items, and bullets may break across page boundaries. If content shifts (more or less scope detail), repack greedily and renumber footers. Do not force a section to start on a new page when it would fit at the bottom of the current one.
 
 ### Line items (page 12) — `.doc-page--proposal`
 
@@ -180,7 +184,19 @@ Populate from the uploaded spreadsheet via `scripts/ingest-budgetary-lineitems.p
 | Summary values | `.be-summary__value`, `.be-summary__total-value`, `.be-split__value` |
 | Delivers grid | `.be-delivers` — **locked** (marketing outcomes) |
 
-### Close (page 14) — `.doc-page--close`
+### Payment terms (page 14) — `.doc-page--led-fee`
+
+Standard payment terms page (light canvas, LED-fee style milestones). Defaults to multimedia equipment terms: 50% deposit upon award, 50% pre-shipment (second 50% due on final piece shipping date with tracking info provided), balance upon final acceptance. Quote valid for 30 days.
+
+| Element | Selector / class |
+|---------|-----------------|
+| Subhead | `.led-subhead` (default: "Payment Terms") |
+| Milestone percentage | `.led-fee-mile__pct` (e.g. "50%", "Remaining") |
+| Milestone label | `.led-fee-mile__label` |
+| Milestone due description | `.led-fee-mile__due` |
+| Notes / validity | `.led-fee-notes` `<p>` (30-day validity, USD, sales tax note) |
+
+### Close (page 15) — `.doc-page--close`
 
 Capabilities-doc-style close page (dark, circuit texture, LUCI wordmark logo, Syncopate headline).
 
@@ -196,7 +212,7 @@ Capabilities-doc-style close page (dark, circuit texture, LUCI wordmark logo, Sy
 
 **No endpoint pricing tiers on this page.** The BE's tier chips (`.be-tier-chip`) are removed from this template. Per-endpoint pricing stays in the Budgetary Estimate only.
 
-**No signature block.** The close page uses the capabilities-doc-style contact block (LUCI wordmark + Syncopate headline + two-column contacts) — no signature lines, no date lines, no "accepted by" fields.
+**No signature block.** The close page uses the capabilities-doc-style contact block (LUCI wordmark + Syncopate headline + two-column contacts) — no signature lines, no "accepted by" fields. The proposal date lives on the cover (`.doc-cover__date`); payment terms live on page 14 (`.doc-page--led-fee`).
 
 ---
 
@@ -216,12 +232,13 @@ Capabilities-doc-style close page (dark, circuit texture, LUCI wordmark logo, Sy
 ## Common tasks
 
 **New LUCI platform proposal from site notes**
-1. Cover (p1): client org, display `<em>` short name, prepared-for, client summary, client logo.
+1. Cover (p1): client org, display `<em>` short name, prepared-for, client summary, **date** (`.doc-cover__date` — format "Month DD, YYYY"), client logo.
 2. Overview (p2): update intro text to reference the specific property and phase.
 3. Review of scope (p3): set scope categories, endpoint counts, and descriptions per the site survey.
-4. SOW pages (p4–11): rewrite the 8 SOW pages to match the project scope — project intent, guiding principles, phasing, system scope (platform, IPTV, encoders, audio, network, remote access), IDF/rack scope, deliverables, assumptions/constraints/exclusions, and open items. Adapt from the standalone SOW template content.
+4. SOW pages (p4–11): rewrite the 8 SOW pages to match the project scope — project intent, guiding principles, phasing, system scope (platform, IPTV, encoders, audio, network, remote access), IDF/rack scope, deliverables, assumptions/constraints/exclusions, and open items. Adapt from the standalone SOW template content. **Pack continuously** — sections, subsections, line items, and bullets may break across page boundaries (see `../_brand/SKILL.md` → Continuous page packing).
 5. Line items (p12): populate from Mike's spreadsheet via `ingest-budgetary-lineitems.py`; split to a continuation page if it overflows.
 6. Investment summary (p13): reconcile totals against the line items.
-7. Close (p14): set the next-step body and contact name/email.
+7. Payment terms (p14): verify milestone percentages, labels, and due descriptions match the deal terms; update the 30-day validity date reference if needed.
+8. Close (p15): set the next-step body and contact name/email.
 
 **Update `<title>`** in `<head>` to reflect client/project name.
