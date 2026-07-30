@@ -115,6 +115,12 @@
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
+  /* Payment Terms page — preserve mint percentages and subhead color in PDF */
+  .doc-page--led-fee .led-fee-mile__pct,
+  .doc-page--led-fee .led-subhead {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
 }
 /* Remove SOW page background pattern — conflicts with hairlines */
 .doc-page--overview::before,
@@ -145,6 +151,7 @@
       <div class="doc-cover__summary">
         <p class="doc-cover__summary-label doc-edit" contenteditable="true">Client summary</p>
         <p class="doc-cover__summary-text doc-edit" contenteditable="true"><strong>Ameristar Casino Resort Spa Black Hawk</strong> (Penn Entertainment) is replacing its aging Crestron control environment, BSS audio processing, and AV Ethernet network with a LUCI-managed platform. This proposal scopes Phase 1 — 210 endpoints across IPTV and audio, COM3000 headend, Q-SYS audio modernization, and network backbone — with the scope of work, line items, and investment summary to go live.</p>
+        <p class="doc-cover__date doc-edit" contenteditable="true" style="margin-top: 14px; font-family: var(--font-recede); font-size: 13px; color: var(--navy-muted); letter-spacing: 0.04em;">July 29, 2026</p>
       </div>
       
     <div class="doc-cover__prepared">
@@ -861,6 +868,44 @@
       </div>
     </section>
 
+    <!-- PAGE 14 · PAYMENT TERMS ====================== -->
+    <section class="doc-page doc-page--led-fee">
+      <p class="led-subhead doc-edit" contenteditable="true">Payment Terms</p>
+
+      <div class="led-fee-stack">
+        <div class="led-fee-mile">
+          <span class="led-fee-mile__pct doc-edit" contenteditable="true">50%</span>
+          <div>
+            <p class="led-fee-mile__label doc-edit" contenteditable="true">Multimedia Equipment Deposit — Upon Award</p>
+            <p class="led-fee-mile__due doc-edit" contenteditable="true">Due at contract signing</p>
+          </div>
+        </div>
+        <div class="led-fee-mile">
+          <span class="led-fee-mile__pct doc-edit" contenteditable="true">50%</span>
+          <div>
+            <p class="led-fee-mile__label doc-edit" contenteditable="true">Multimedia Equipment — Pre-Shipment</p>
+            <p class="led-fee-mile__due doc-edit" contenteditable="true">Second 50% due on final piece shipping date with tracking info provided</p>
+          </div>
+        </div>
+        <div class="led-fee-mile">
+          <span class="led-fee-mile__pct doc-edit" contenteditable="true">Remaining</span>
+          <div>
+            <p class="led-fee-mile__label doc-edit" contenteditable="true">Balance — Final Acceptance</p>
+            <p class="led-fee-mile__due doc-edit" contenteditable="true">Due upon project completion</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="led-fee-notes">
+        <p class="doc-edit" contenteditable="true">All prices in USD. Sales tax not included, if applicable. Quote valid for 30 days from proposal date. Pricing subject to change based on final site survey and design specifications.</p>
+      </div>
+
+      <div class="doc-foot">
+        <span class="doc-edit" contenteditable="true">LUCI Systems · Proposal</span>
+        <span class="doc-foot__page doc-edit" contenteditable="true">14</span>
+      </div>
+    </section>
+
     <!-- PAGE 15 · CLOSE (NEXT STEP + CONTACTS — capabilities-doc style) -->
     <section class="doc-page doc-page--dark doc-page--close">
       <div>
@@ -886,7 +931,7 @@
 
       <div class="doc-foot">
         <span class="doc-edit" contenteditable="true">LUCI Systems · Proposal</span>
-        <span class="doc-foot__page doc-edit" contenteditable="true">14</span>
+        <span class="doc-foot__page doc-edit" contenteditable="true">15</span>
       </div>
     </section>
 
