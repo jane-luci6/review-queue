@@ -16,7 +16,7 @@ Mike pastes a portal preview URL into Cursor chat, or just names the document ty
 1. **Read ONLY these 2 SKILL files** from the OneDrive "Cursor Branding Files" folder (for **instructions**):
    - `ui_kits/internal-portal/customization/_brand/SKILL.md` — the workflow, voice, fit check, PDF, and all house rules
    - `ui_kits/internal-portal/customization/<template>/SKILL.md` — the page map, editable vs locked regions for this template
-   - **Do not** read the master template, other templates, or any other HTML files — the working HTML file is created by step 2 below.
+   - The working HTML file (created by step 2 below) is a copy of the master template — you read and edit that, not the master.
    - **Do not** read other **instruction** files (CURSOR.md, AGENTS.md, README.md). The 2 SKILL files tell you everything you need.
 
 2. **Create a client workspace:** `scripts/create-client-workspace.sh "<Client Name>" <template-name> <doc-type>` — creates `~/Desktop/LUCI Docs/<client-name>/` with symlinks to OneDrive and copies the master template to `clients/<client-name>-<doc>.html`. This working HTML file is the **only** HTML file you read and edit.
