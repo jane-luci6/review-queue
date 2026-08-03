@@ -1495,22 +1495,23 @@
 
     function starterPromptForTemplate(t) {
       var templateName = t.masterFile.replace(/\.html$/, '');
+      var od = 'OneDrive "Cursor Branding Files" folder';
       return [
         'Customize the LUCI ' + t.title + ' for [CLIENT NAME].',
         '',
-        'Source: OneDrive "Cursor Branding Files" folder \u2014 read master templates,',
-        'CSS, assets, and skills from there. No portal fetch needed.',
+        'Master template: ' + od + '/ui_kits/sales/' + t.masterFile,
         '',
-        'Read these before any edits and follow their rules:',
-        '- ui_kits/internal-portal/customization/' + t.folder + '/SKILL.md',
-        '- ui_kits/internal-portal/customization/_brand/SKILL.md',
-        '- ui_kits/internal-portal/customization/CURSOR.md',
+        'Read these before any edits and follow their rules',
+        '(all in the ' + od + '):',
+        '- ' + od + '/ui_kits/internal-portal/customization/' + t.folder + '/SKILL.md',
+        '- ' + od + '/ui_kits/internal-portal/customization/_brand/SKILL.md',
+        '- ' + od + '/ui_kits/internal-portal/customization/CURSOR.md',
         '',
         'Steps (in this order):',
         '1. Create a client workspace:',
         '   scripts/create-client-workspace.sh "[CLIENT NAME]" ' + templateName + ' ' + t.clientSuffix,
         '   This creates ~/Desktop/LUCI Docs/[client-name]/ with symlinks to',
-        '   the OneDrive folder for CSS/assets/scripts, and copies the master',
+        '   the ' + od + ' for CSS/assets/scripts, and copies the master',
         '   template to clients/[client-name]-' + t.clientSuffix + '.html with',
         '   paths adjusted. All edits happen here \u2014 never in the OneDrive folder.',
         '2. Start the LUCI dev server from the working folder',
