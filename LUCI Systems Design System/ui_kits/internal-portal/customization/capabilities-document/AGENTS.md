@@ -13,7 +13,7 @@ When this URL (or a request to customize the capabilities doc) appears in chat:
 | Role | Path |
 |------|------|
 | Master (copy from, do not use as client deliverable) | `LUCI Systems Design System/ui_kits/sales/capabilities-document.html` |
-| Client deliverable | `LUCI Systems Design System/ui_kits/sales/<client>-capabilities.html` |
+| Client deliverable | `LUCI Systems Design System/clients/<client>-capabilities.html` |
 
 Copy the master to a client file, then customize **cover (page 1)** and **close (page 9)** only.
 

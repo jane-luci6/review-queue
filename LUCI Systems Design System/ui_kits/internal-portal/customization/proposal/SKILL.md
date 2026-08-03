@@ -47,7 +47,7 @@ Match LUCI's voice on every line you write or rewrite. Full contract: `../_brand
 When Mike pastes this URL into Cursor chat:
 
 1. Read this `SKILL.md` and `../_brand/SKILL.md` before any edits.
-2. Copy master from `LUCI Systems Design System/ui_kits/sales/proposal.html` to `ui_kits/sales/<client>-proposal.html`.
+2. Copy master to `clients/<client>-proposal.html` using `scripts/prepare-client-doc.sh ui_kits/sales/proposal.html clients/<client>-proposal.html` (adjusts all relative paths automatically). Client files live in the top-level `clients/` folder.
 3. Customize cover, scope, specs, fee, estimates, terms, and close per this skill — preserve CSS classes.
 4. Do **not** edit the HTML file on the VM deploy folder (overwritten on deploy).
 
@@ -58,8 +58,8 @@ See also: `../CURSOR.md`, `AGENTS.md` in this folder.
 After customizing, **automatically open the rendered client HTML in Cursor's in-editor (Glass) browser — not the HTML source** — without being asked:
 
 1. **Start the LUCI dev server** rooted at **`LUCI Systems Design System/`** (not `ui_kits/sales/`) so `../../assets/` relative paths resolve to the canonical assets folder: `python3 ui_kits/internal-portal/customization/luci-dev-server.py` from that root (run as a background process). It serves the project on `http://127.0.0.1:8771` and accepts `POST /__save` so the edit bar's Save button writes typed edits back to the working file.
-2. Verify: `curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8771/ui_kits/sales/<client>-proposal.html` → `200`.
-3. Open `http://127.0.0.1:8771/ui_kits/sales/<client>-proposal.html` in Cursor's in-editor browser via the `cursor-app-control` MCP `open_resource` tool (URI = that URL). Do **not** use a `file://` URI — that opens the HTML source, not the rendered doc. Do **not** root the server in `ui_kits/sales/` — the cover logo and `../../assets/` paths will 404.
+2. Verify: `curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8771/clients/<client>-proposal.html` → `200`.
+3. Open `http://127.0.0.1:8771/clients/<client>-proposal.html` in Cursor's in-editor browser via the `cursor-app-control` MCP `open_resource` tool (URI = that URL). Do **not** use a `file://` URI — that opens the HTML source, not the rendered doc. Do **not** root the server in `ui_kits/sales/` — the cover logo and `../../assets/` paths will 404.
 
 Click highlighted editable text and type; save the file when done. User fallback if the pane doesn't appear: `Cmd+Shift+P` → "Simple Browser: Show" → paste the localhost URL.
 
@@ -71,7 +71,7 @@ After a site survey or discovery for an LED wall project (casino sportsbook, cen
 
 1. Open the **portal preview** (URL above) or copy that URL into Cursor chat.
 2. Provide: project title, client org, basis (survey/meeting notes), pixel pitch(s) featured, and one line-items set per LED installation.
-3. Save the **client version** in luci-design under `ui_kits/sales/<client>-proposal.html` — not over the master.
+3. Save the **client version** in luci-design under `clients/<client>-proposal.html` — not over the master.
 4. Preview → Print/Save as PDF (US Letter).
 
 ---

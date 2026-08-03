@@ -15,7 +15,7 @@ Mike pastes a portal preview URL into Cursor chat. **No specific folder needs to
 
 1. **Fetch** the pasted page or read local skills (see URL patterns below).
 2. Read template `SKILL.md` + `_brand/SKILL.md` + `CURSOR.md`.
-3. Copy master → `ui_kits/sales/<client>-<doc>.html` and apply client customizations.
+3. Copy master → `clients/<client>-<doc>.html` using `scripts/prepare-client-doc.sh` (adjusts paths automatically) and apply client customizations.
 4. **Automatically open the rendered client HTML in Cursor's in-editor browser** (not the HTML source) — see "Open the rendered preview in the editor" below. Mike clicks editable text and types in that preview. **No extra canvas or prompt needed** for word-level tweaks.
 
 ## URL patterns → template id
@@ -38,7 +38,7 @@ House-wide for **every** Customization Studio document (all Proposal types, Budg
 
 - **Mike can click-edit any text.** Fonts/colors/layout stay on CSS. Only LUCI logo images stay non-editable.
 - **Populate-in-place.** Never rebuild the document. Never re-emit whole `<section>`s to change a value.
-- **One project folder** per client job; mirror `ui_kits/sales/` + `assets/` so relative paths work. Serve from the **project root** (the folder that contains both), never from `ui_kits/sales/`.
+- **One project folder** per client job; client HTML lives in a top-level `clients/` subfolder. Mirror `ui_kits/sales/` (master templates + CSS) + `assets/` so relative paths work. Serve from the **project root** (the folder that contains both), never from `clients/` or `ui_kits/sales/`.
 - Edit by `[data-studio]` / skill selectors only. Do not invent fine-print or “Addressed to.”
 - **Same working file forever.** The LUCI dev server's `POST /__save` writes Mike's typed edits back to the working `.html` file on disk when he clicks Save — so the next agent pass reads the latest version. `*-edited.html` downloads are a last-resort fallback artifact, not the source of truth.
 - No accessibility snapshots. Mandatory overflow fit-check after content edits (see `_brand/SKILL.md`).
@@ -78,7 +78,7 @@ After customizing the client HTML, **automatically open the rendered doc in Curs
 
 1. **Refresh preview tooling, then start the LUCI dev server** from the **project root that contains both `ui_kits/` and `assets/`** (`LUCI Systems Design System/` in luci-design; Mike's per-job folder on his machine). **Always overwrite** `ui_kits/internal-portal/customization/luci-dev-server.py`, `luci-doc-edit.js`, and `luci-doc-edit.css` from the current customization originals — never skip because they already exist (stale copies break Download PDF). Then run `python3 ui_kits/internal-portal/customization/luci-dev-server.py` as a background process — it serves `http://127.0.0.1:8771` with `POST /__save` and `POST /__pdf`. **Never** root at `ui_kits/sales/` — logos and circuit textures 404.
 2. Verify the HTML and a texture both return 200.
-3. Open `http://127.0.0.1:8771/ui_kits/sales/<client-file>.html` via `cursor-app-control` `open_resource`. Do **not** use a `file://` URI.
+3. Open `http://127.0.0.1:8771/clients/<client-file>.html` via `cursor-app-control` `open_resource`. Do **not** use a `file://` URI.
 4. Tell the user it's live and click-to-edit — and that **Save** writes their typing back to the working file automatically (no prompting Cursor). Leave the server running while they review; stop it when they're done or before PDF export.
 
 **Do not** open the client HTML with a `file://` URI — `open_resource` opens that as a text file (HTML source), not a rendered preview.
@@ -89,9 +89,10 @@ After customizing the client HTML, **automatically open the rendered doc in Curs
 
 ## Where to save client work
 
-- **Inside luci-design:** `LUCI Systems Design System/ui_kits/sales/<client>-<doc>.html`
+- **Inside luci-design:** `LUCI Systems Design System/clients/<client>-<doc>.html` — top-level `clients/` folder, easy to find. Use `scripts/prepare-client-doc.sh` to copy a master template and adjust paths automatically.
 - **On Mike’s machine:** one dedicated project folder per job (see `_brand/SKILL.md` → Efficient customization). Never spawn a second folder or treat Downloads/`*-edited.html` as the working file.
 - Never save client work to the VM deploy folder
+- Never save client work in `ui_kits/sales/` — that's for master templates and CSS only
 
 ## Agent behavior
 

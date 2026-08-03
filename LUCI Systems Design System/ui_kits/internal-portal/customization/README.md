@@ -22,7 +22,7 @@ Template masters on the Internal Marketing Portal. **Mike's workflow: copy URL â
 
 3. Cursor fetches `SKILL.md`, `_brand/SKILL.md`, and `CURSOR.md` from the portal (or reads them locally if in luci-design).
 
-4. Save client copy under `ui_kits/sales/<client>-<doc>.html` in luci-design.
+4. Save client copy under `clients/<client>-<doc>.html` in luci-design.
 
 5. **Fine-tune in Cursor's HTML preview** â€” click editable text (Client Summary, cover, close page) and type directly. No extra prompt needed.
 

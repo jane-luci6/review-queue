@@ -15,7 +15,7 @@ When this URL (or a request to customize the budgetary estimate) appears in chat
 | Role | Path |
 |------|------|
 | Master | `LUCI Systems Design System/ui_kits/sales/budgetary-estimate.html` |
-| Client deliverable | `LUCI Systems Design System/ui_kits/sales/<client>-budgetary-estimate.html` |
+| Client deliverable | `LUCI Systems Design System/clients/<client>-budgetary-estimate.html` |
 
 Copy the master to a client file. Editable: cover, context + scope (p2), proposal (p3), investment/tiers/close contact (p4). Marketing delivers grid on p4 stays locked per `SKILL.md`.
 

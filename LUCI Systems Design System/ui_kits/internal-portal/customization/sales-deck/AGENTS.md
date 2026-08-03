@@ -13,7 +13,7 @@ When this URL (or a request to customize the sales deck) appears in chat:
 | Role | Path |
 |------|------|
 | Master (copy from, do not use as client deliverable) | `LUCI Systems Design System/ui_kits/sales/sales-deck.html` |
-| Client deliverable | `LUCI Systems Design System/ui_kits/sales/<client>-sales-deck.html` |
+| Client deliverable | `LUCI Systems Design System/clients/<client>-sales-deck.html` |
 
 Copy the master to a client file, then customize **slides 1–2** (copy, logo, photos).
 

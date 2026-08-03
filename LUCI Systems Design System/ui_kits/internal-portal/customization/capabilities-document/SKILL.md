@@ -33,7 +33,7 @@ Match LUCI's voice on every line you write or rewrite. Full contract: `../_brand
 When Mike pastes this URL into Cursor chat:
 
 1. Read this `SKILL.md` and `../_brand/SKILL.md` before any edits.
-2. Copy master from `LUCI Systems Design System/ui_kits/sales/capabilities-document.html` to `ui_kits/sales/<client>-capabilities.html`.
+2. Copy master to `clients/<client>-capabilities.html` using `scripts/prepare-client-doc.sh ui_kits/sales/capabilities-document.html clients/<client>-capabilities.html` (adjusts all relative paths automatically). Client files live in the top-level `clients/` folder.
 3. Customize **cover (page 1)** and **close (page 9)** only — see editable regions below.
 4. Do **not** edit the HTML file on the VM deploy folder (overwritten on deploy).
 
@@ -57,7 +57,7 @@ After a demo, when the prospect needs a capabilities overview scoped to their pr
 
 1. Open the **portal preview** (URL above) or copy that URL into Cursor chat.
 2. Describe what to change in plain language (property name, client summary, logo swap).
-3. Save the **client version** in luci-design under `ui_kits/sales/<client>-capabilities.html` — not over the master.
+3. Save the **client version** in luci-design under `clients/<client>-capabilities.html` — not over the master.
 4. Preview → Print/Save as PDF (US Letter).
 
 ---

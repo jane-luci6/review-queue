@@ -33,7 +33,7 @@ Match LUCI's voice on every line you write or rewrite. Full contract: `../_brand
 When Mike pastes this URL into Cursor chat:
 
 1. Read this `SKILL.md` and `../_brand/SKILL.md` before any edits.
-2. Copy master from `LUCI Systems Design System/ui_kits/sales/budgetary-estimate.html` to `ui_kits/sales/<client>-budgetary-estimate.html`.
+2. Copy master to `clients/<client>-budgetary-estimate.html` using `scripts/prepare-client-doc.sh ui_kits/sales/budgetary-estimate.html clients/<client>-budgetary-estimate.html` (adjusts all relative paths automatically). Client files live in the top-level `clients/` folder.
 3. Customize **cover, overview, scope, proposal, investment, tiers, and close contact** per regions below.
 4. Do **not** edit the HTML file on the VM deploy folder (overwritten on deploy).
 
@@ -59,7 +59,7 @@ After the client has received the **Capabilities document** and leadership needs
 2. **Pages 1–2 from Mike/Mark context** — cover property name, phase framing, and the page-2 “Prepared for…” intro come from what Mike/Mark tell you (or the portal form). Edit those regions directly; do not rebuild the locked “What LUCI is” block on page 2.
 3. **Page 4 line items from the uploaded spreadsheet** — Mike/Mark attach an `.xlsx` of the proposal line items. Run the ingestion script (below) to convert it to the page-4 markup, paste it in, and split to a second proposal page if the script says it overflows.
 4. **Page 6 tiers** — move `be-tier-chip--selected` to the tier you’re pricing this job at, and edit the discount % / price inline for any customer-specific discount.
-5. Save the **client version** in luci-design under `ui_kits/sales/<client>-budgetary-estimate.html` — not over the master.
+5. Save the **client version** in luci-design under `clients/<client>-budgetary-estimate.html` — not over the master.
 6. Preview → Print/Save as PDF (US Letter), or run `npm run pdf:budgetary` from the design system root.
 
 ---

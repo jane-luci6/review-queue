@@ -33,7 +33,7 @@ Match LUCI's voice on every line you write or rewrite. Full contract: `../_brand
 When Mike pastes this URL into Cursor chat:
 
 1. Read this `SKILL.md` and `../_brand/SKILL.md` before any edits.
-2. Copy master from `LUCI Systems Design System/ui_kits/sales/sales-deck.html` to `ui_kits/sales/<client>-sales-deck.html`.
+2. Copy master to `clients/<client>-sales-deck.html` using `scripts/prepare-client-doc.sh ui_kits/sales/sales-deck.html clients/<client>-sales-deck.html` (adjusts all relative paths automatically). Client files live in the top-level `clients/` folder.
 3. Customize **slides 1–2** only — copy, logo, and photos (see editable regions below).
 4. Do **not** edit the HTML file on the VM deploy folder (overwritten on deploy).
 

@@ -33,11 +33,11 @@ If the workspace is **luci-design**, the same content lives locally under `ui_ki
 
 | URL path segment | Document | Client copy pattern |
 |------------------|----------|---------------------|
-| `sales-deck` | Sales deck | `ui_kits/sales/<client>-sales-deck.html` |
-| `capabilities-document` | Capabilities | `ui_kits/sales/<client>-capabilities.html` |
-| `scope-of-work` | Scope of work | `ui_kits/sales/<client>-scope-of-work.html` |
-| `proposal` | **Proposal - LED** | `ui_kits/sales/<client>-proposal-led.html` (legacy: `<client>-proposal.html`) |
-| `budgetary-estimate` | Budgetary estimate | `ui_kits/sales/<client>-budgetary-estimate.html` |
+| `sales-deck` | Sales deck | `clients/<client>-sales-deck.html` |
+| `capabilities-document` | Capabilities | `clients/<client>-capabilities.html` |
+| `scope-of-work` | Scope of work | `clients/<client>-scope-of-work.html` |
+| `proposal` | **Proposal - LED** | `clients/<client>-proposal-led.html` (legacy: `<client>-proposal.html`) |
+| `budgetary-estimate` | Budgetary estimate | `clients/<client>-budgetary-estimate.html` |
 
 Masters: `ui_kits/sales/<master>.html` (under `LUCI Systems Design System/`).
 
@@ -69,7 +69,7 @@ Also read: `.cursor/rules/luci-doc-customization.mdc`
 2. Fetch/read template `SKILL.md` + `_brand/SKILL.md` + this file’s **Efficient customization** section.
 3. Never edit the portal deploy copy on the VM — it refreshes on deploy.
 4. Copy master → the **one** client working file; customize per skill. Keep `contenteditable` / `data-studio`. Never edit locked pages/regions — including color or CSS — without confirming first.
-5. **Refresh preview tooling, then start the LUCI dev server** — **always overwrite** `luci-dev-server.py`, `luci-doc-edit.js`, and `luci-doc-edit.css` from the current `customization/` originals into the project (never reuse a stale copy). Then run `python3 ui_kits/internal-portal/customization/luci-dev-server.py` from the project root (background process) and **automatically open the rendered client HTML** in Cursor's in-editor browser (not the HTML source) at `http://127.0.0.1:8771/ui_kits/sales/<client-file>.html`.
+5. **Refresh preview tooling, then start the LUCI dev server** — **always overwrite** `luci-dev-server.py`, `luci-doc-edit.js`, and `luci-doc-edit.css` from the current `customization/` originals into the project (never reuse a stale copy). Then run `python3 ui_kits/internal-portal/customization/luci-dev-server.py` from the project root (background process) and **automatically open the rendered client HTML** in Cursor's in-editor browser (not the HTML source) at `http://127.0.0.1:8771/clients/<client-file>.html`.
 6. When Mike clicks **Save** in the preview, the dev server writes his typed edits to the working file on disk — so the next agent pass reads the latest version with no manual copy/paste. If Save falls back to a download, restart the refreshed dev server before continuing.
 7. **Download PDF** uses `POST /__pdf` (headless Chrome) — never `window.print()`. Export also works when Mike asks in chat. `patch-sales-pdf-html.py` flattens CSS gradients + mask-images automatically during export so the PDF doesn't blink in macOS Preview — see `_brand/SKILL.md` → **PDF export — gradient + mask flattening** for the maintenance rule when adding new gradients.
 
@@ -80,8 +80,8 @@ Also read: `.cursor/rules/luci-doc-customization.mdc`
 After customizing the client HTML, **automatically open the rendered doc in Cursor's in-editor (Glass) browser — not the HTML source.** Do this as the final step of every customization, without being asked.
 
 1. **Refresh preview tooling, then start the LUCI dev server** from the **project root that contains both `ui_kits/` and `assets/`** (in luci-design: `LUCI Systems Design System/`; on Mike's machine: the per-job folder). **Always overwrite** `ui_kits/internal-portal/customization/luci-dev-server.py`, `luci-doc-edit.js`, and `luci-doc-edit.css` from the current portal/luci-design originals — never skip because the files already exist (stale copies lack Download PDF). Then run `python3 ui_kits/internal-portal/customization/luci-dev-server.py` as a background process. It serves `http://127.0.0.1:8771` with `POST /__save` and `POST /__pdf`. **Never** root at `ui_kits/sales/` — logos and circuit textures 404.
-2. Verify: `curl …/ui_kits/sales/<client-file>.html` → `200`, `…/assets/textures/texture-circuit-header-mintgold.png` → `200`, and `…/__health` → JSON with `"pdf": true` and `"version": 2` (or higher).
-3. Open `http://127.0.0.1:8771/ui_kits/sales/<client-file>.html` via `cursor-app-control` `open_resource`. Do **not** use a `file://` URI.
+2. Verify: `curl …/clients/<client-file>.html` → `200`, `…/assets/textures/texture-circuit-header-mintgold.png` → `200`, and `…/__health` → JSON with `"pdf": true` and `"version": 2` (or higher).
+3. Open `http://127.0.0.1:8771/clients/<client-file>.html` via `cursor-app-control` `open_resource`. Do **not** use a `file://` URI.
 4. Tell the user it's live and click-to-edit — **Save** writes typing back to the working file; **Download PDF** renders via headless Chrome (no print dialog). Leave the server running while they review.
 
 **Typed edits:** when the dev server is running, Save writes the live DOM to the working file on disk via `POST /__save` — the next agent pass reads the latest version with no manual copy/paste. If the dev server isn't running (Save falls back to a download), ask Cursor to reopen the project so it restarts the server.

@@ -43,7 +43,7 @@ Match LUCI's voice on every line you write or rewrite. Full contract: `../_brand
 When Mike pastes this URL into Cursor chat:
 
 1. Read this `SKILL.md` and `../_brand/SKILL.md` before any edits.
-2. Copy master from `LUCI Systems Design System/ui_kits/sales/proposal-upgrade.html` to `ui_kits/sales/<client>-proposal-upgrade.html`.
+2. Copy master to `clients/<client>-proposal-upgrade.html` using `scripts/prepare-client-doc.sh ui_kits/sales/proposal-upgrade.html clients/<client>-proposal-upgrade.html` (adjusts all relative paths automatically). Client files live in the top-level `clients/` folder.
 3. Customize cover, line items, and scope of work per regions below.
 4. Do **not** edit the HTML file on the VM deploy folder (overwritten on deploy).
 

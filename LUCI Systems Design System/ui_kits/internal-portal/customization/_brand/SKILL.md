@@ -28,10 +28,11 @@ Each client document lives in **one** dedicated folder for the life of that job.
 
 ```
 <project>/                          ← e.g. Desktop/LUCI Docs/IP Biloxi Proposal/
-  ui_kits/sales/
+  clients/                           ← TOP-LEVEL: client HTML + PDF output (easy to find)
     <client>-<doc>.html             ← THE working file (only one)
+  ui_kits/sales/                     ← master templates + CSS (reference only — don't save client work here)
     sales-document.css
-    <template>.css                  ← only the CSS the master already links
+    <template>.css
   ui_kits/internal-portal/customization/
     luci-doc-edit.css
     luci-doc-edit.js
@@ -44,7 +45,17 @@ Each client document lives in **one** dedicated folder for the life of that job.
   inputs/                           spreadsheet, SOW, logo uploads (optional)
 ```
 
-Mirror the portal’s relative paths (`../../assets/…`, sibling CSS). **Serve with the LUCI dev server** — run `python3 ui_kits/internal-portal/customization/luci-dev-server.py` from `<project>/` (the agent starts it as a background process). It serves the project root on `http://127.0.0.1:8771` and accepts `POST /__save` + `POST /__pdf`. Never root the server at `ui_kits/sales/` or textures/logos 404 and the circuit pattern “doesn’t load.”
+**Client HTML lives in a top-level `clients/` folder** — not buried in `ui_kits/sales/`. This makes the working file and generated PDF easy to find.
+
+**Creating a client file from a master template:** use `scripts/prepare-client-doc.sh` — it copies the template to `clients/` and adjusts all relative paths (CSS, fonts, textures, logos, diagrams) so they resolve correctly from the new location:
+
+```bash
+scripts/prepare-client-doc.sh ui_kits/sales/<template>.html clients/<client>-<doc>.html
+```
+
+Do **not** manually copy a template to `clients/` without adjusting paths — the relative paths in `ui_kits/sales/` templates (`../../assets/…`, `href="sales-document.css"`, `src="assets/logos/…"`) will not resolve from `clients/` and the document will render unstyled or missing images.
+
+Mirror the portal’s relative paths. **Serve with the LUCI dev server** — run `python3 ui_kits/internal-portal/customization/luci-dev-server.py` from `<project>/` (the agent starts it as a background process). It serves the project root on `http://127.0.0.1:8771` and accepts `POST /__save` + `POST /__pdf`. Never root the server at `ui_kits/sales/` or textures/logos 404 and the circuit pattern "doesn't load."
 
 **Always refresh the preview tooling before every server start (mandatory for Mike):** overwrite — do not skip if present —
 
@@ -65,7 +76,7 @@ If this tree does not exist yet: create it and fetch the exact master HTML + lin
 
 ### 3. Same file forever — typed edits + agent edits
 
-- The working file is `<client>-<doc>.html` in that project folder. Every agent pass edits **that same path**.
+- The working file is `clients/<client>-<doc>.html` in that project folder. Every agent pass edits **that same path**.
 - Browser “Copy updated HTML” / “Download HTML” produce a **download artifact** (`*-edited.html`). That is **not** the source of truth. If Mike typed in the preview, the agent must **write the live DOM (or the copied HTML) back into the same working file** before any further prompt — otherwise typed edits are lost and Cursor works from a stale disk copy.
 - Never treat a Downloads/`*-edited.html` file as the new master.
 
@@ -86,11 +97,14 @@ Pages are locked to fixed US Letter (8.5×11in, 1056px height) with `height: var
                           overflow:'visible', justifyContent:'flex-start'});
   const nat = p.getBoundingClientRect().height;
   Object.assign(p.style, s);
-  return {page: i+1, over: Math.round(nat - 1056)};
-}).filter(r => r.over > 0))()
+  return {page: i+1, over: Math.round(nat - 1056), under: Math.round(1056 - nat)};
+}))()
 ```
 
-Anything with `over > 0` is clipped. **Trim copy or split to a new `.doc-page`** — do not change page height. Do not let Mike’s extra rows of typed text push a page past letter size unnoticed.
+- **`over > 0`** — content is clipped. **Trim copy or split to a new `.doc-page`** — do not change page height.
+- **`under > 200`** (more than ~200px of empty space at the bottom) — the page is underfilled. **Pull content up from the next page** or pack more content onto this page. Every page must be full 8.5×11 — do not leave large gaps at the bottom of a page when more content would fit.
+
+**Every page is a full 8.5×11 sheet.** Never shorten a page, never leave a page with large empty space at the bottom, and never start a new page when the current one has room for more content. The only page that may be partially empty is the **last page** of a section (e.g., the last SOW page, the last line-item page) — and even then, pull content up from the next section if it fits.
 
 ### Continuous page packing — SOW + line items (mandatory)
 
@@ -134,9 +148,18 @@ After any pricing / qty / rate edit, reconcile totals. Known trap: a grand total
 - **Match the page design.** Size and placement per the cover’s `logo-pos--*` rules (see `skills/cover-page-customization.md`). On navy/band spots, prefer a white/reversed logo (or set `data-logo-light="1"` when the asset is already light); on light-sheet spots, use the natural/color logo.
 - Circuit / header textures must live under this project’s `assets/textures/` at the paths the CSS already uses. Missing file or wrong server root = “pattern didn’t load.”
 
-### 7. Footer matches title
+### 7. Footer consistency (mandatory)
 
-When the document title / cover kicker changes (e.g. Budgetary → Proposal, or a client project title), update **every** `.doc-foot` / running footer to match. Footers are not optional leftovers.
+Every page **except the cover** must have a `.doc-foot` with:
+1. **The same document title text** on every page — e.g. "LUCI Systems · Proposal" or "LUCI Systems · Budgetary Estimate". Never mix footer labels across pages (some saying "Proposal", others saying "Budgetary Estimate"). Pick one label and use it on every page.
+2. **A sequential page number** in `.doc-foot__page` — numbered from page 2 (the cover is page 1 and has no footer). Renumber all footers after any page add/remove/reorder.
+
+**After any structural change** (adding pages, removing pages, moving content between pages), verify footer consistency:
+- Every `.doc-foot > span:first-child` has the same text (the document title).
+- Every `.doc-foot__page` is sequential with no gaps or duplicates.
+- No page is missing a footer (except the cover).
+
+When the document title / cover kicker changes (e.g. Budgetary → Proposal, or a client project title), update **every** `.doc-foot` to match — all at once, never one at a time.
 
 ### 8. Date on every document (mandatory)
 
@@ -253,6 +276,11 @@ The website (lucisystems.com) is the reference for *how LUCI sounds* — the ton
 - **Save** in the edit bar is the primary path. When the LUCI dev server is running (the agent starts it automatically), Save POSTs the live DOM to `POST /__save` and overwrites the **same** working `.html` file on disk — Mike clicks once, no file picker, no Downloads artifact. If the dev server is not running, the button falls back to the File System Access API (Mike picks the file once) and finally to a download as a last resort (with an alert telling Mike to ask Cursor to reopen the project).
 - Before any further agent pass after Mike types in preview: the working file is already updated (via the dev server save), so Cursor reads the latest version. If Mike used the download fallback instead, write the live DOM back into the working file before editing.
 - **Download PDF** = `POST /__pdf` on the LUCI dev server → `scripts/render-pdf.sh` (headless Chrome). Never `window.print()` — that crashes Cursor's in-editor browser. The button shows "Rendering…" then downloads the PDF. If the local preview server is not running, the button asks you to restart it.
+
+**PDF button shows "Failed"?** The render pipeline takes ~30–60 seconds (it re-rasterizes SVG diagrams via headless Chrome). Cursor's in-editor browser may time out before the server finishes. Fallback:
+1. **The agent runs `render-pdf.sh` directly** — `bash scripts/render-pdf.sh clients/<client>-<doc>.html ~/Downloads/<client>-<doc>.pdf` (from the `LUCI Systems Design System/` root). This bypasses the browser timeout and produces the same PDF.
+2. **Verify the PDF** — open it in Preview to confirm it renders correctly (headers, colors, fonts, no clipping).
+3. **Always test PDF generation before handing off to Mike.** Generate a test PDF after any structural change (page add/remove, content move) to catch rendering issues early.
 
 ### PDF export — gradient + mask flattening (mandatory)
 

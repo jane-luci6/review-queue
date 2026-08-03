@@ -34,7 +34,7 @@ Match LUCI's voice on every line you write or rewrite. Full contract: `../_brand
 When Mike pastes this URL into Cursor chat:
 
 1. Read this `SKILL.md` and `../_brand/SKILL.md` before any edits.
-2. Copy master from `LUCI Systems Design System/ui_kits/sales/scope-of-work.html` to `ui_kits/sales/<client>-scope-of-work.html`.
+2. Copy master to `clients/<client>-scope-of-work.html` using `scripts/prepare-client-doc.sh ui_kits/sales/scope-of-work.html clients/<client>-scope-of-work.html` (adjusts all relative paths automatically). Client files live in the top-level `clients/` folder.
 3. Customize cover and scope sections per this skill — preserve CSS classes.
 4. Do **not** edit the HTML file on the VM deploy folder (overwritten on deploy).
 
@@ -58,7 +58,7 @@ After discovery meetings, site surveys, or when the client needs a written scope
 
 1. Open the **portal preview** (URL above) or copy that URL into Cursor chat.
 2. Provide: project title, client org, basis (survey/meeting notes), and scope context. Optionally attach site notes or meeting minutes.
-3. Save the **client version** in luci-design under `ui_kits/sales/<client>-scope-of-work.html` — not over the master.
+3. Save the **client version** in luci-design under `clients/<client>-scope-of-work.html` — not over the master.
 4. Preview → Print/Save as PDF (US Letter).
 
 ---

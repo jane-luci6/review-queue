@@ -13,7 +13,7 @@ When this URL (or a request to customize the scope of work) appears in chat:
 | Role | Path |
 |------|------|
 | Master | `LUCI Systems Design System/ui_kits/sales/scope-of-work.html` |
-| Client deliverable | `LUCI Systems Design System/ui_kits/sales/<client>-scope-of-work.html` |
+| Client deliverable | `LUCI Systems Design System/clients/<client>-scope-of-work.html` |
 
 Copy the master to a client file, then customize cover and scope sections per `SKILL.md`. Preserve CSS classes — never inline `font-family`.
 

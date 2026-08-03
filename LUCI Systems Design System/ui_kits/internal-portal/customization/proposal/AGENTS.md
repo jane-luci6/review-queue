@@ -13,7 +13,7 @@ When this URL (or a request to customize the LED proposal) appears in chat:
 | Role | Path |
 |------|------|
 | Master | `LUCI Systems Design System/ui_kits/sales/proposal.html` |
-| Client deliverable | `LUCI Systems Design System/ui_kits/sales/<client>-proposal.html` |
+| Client deliverable | `LUCI Systems Design System/clients/<client>-proposal.html` |
 
 Copy the master to a client file, then customize cover, scope, specs, fee, estimates, terms, and signature per `SKILL.md`. Preserve CSS classes — never inline `font-family`.
 
