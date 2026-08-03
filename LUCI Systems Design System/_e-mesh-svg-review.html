@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>LUCI E-mesh — SVG master review</title>
+<title>LUCI E-mesh — canonical background masters</title>
 <link rel="stylesheet" href="assets/fonts/luci-brand-fonts.css">
 <style>
   :root {
-    --navy-deep: #0A161C;
-    --navy: #10232D;
+    --navy-deep: #070F14;
+    --navy: #10232C;
     --mint: #68E3BE;
-    --gold: #EDD086;
+    --gold: #E8D8A4;
     --off-white: #F5F8FA;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -47,7 +47,7 @@
   .lede { max-width: 68ch; color: rgba(245,248,250,0.8); margin-bottom: 40px; }
   section { margin-bottom: 56px; max-width: 1400px; }
   .note { max-width: 70ch; font-size: 14px; color: rgba(245,248,250,0.62); margin-bottom: 18px; }
-  .frame { width: 100%; aspect-ratio: 16 / 9; display: block; border: 1px solid rgba(104,227,190,0.16); }
+  .frame { width: 100%; display: block; border: 1px solid rgba(104,227,190,0.16); }
   .stack { display: grid; gap: 20px; }
   @media (min-width: 1100px) { .stack--two { grid-template-columns: 1fr 1fr; } }
   .label {
@@ -61,34 +61,19 @@
   }
   .label em { font-style: normal; color: var(--gold); }
   .label b { color: var(--mint); }
+  code { color: var(--mint); font-size: 13px; }
+  .facts { max-width: 74ch; font-size: 14px; color: rgba(245,248,250,0.72); }
+  .facts li { margin: 0 0 8px 18px; }
 
-  /* Zoom test — same region of each source, blown up 3x. Vector stays sharp. */
-  .zoom { width: 100%; aspect-ratio: 16 / 7; border: 1px solid rgba(104,227,190,0.16); background-repeat: no-repeat; }
-  .zoom--orig { background-image: url('assets/wallpapers/luci-e-mesh-1920x1080.png'); background-size: 320% auto; background-position: 74% 8%; }
-  .zoom--svg  { background-image: url('assets/diagrams/luci-e-mesh.solid.svg');    background-size: 320% auto; background-position: 74% 8%; }
-
-  /* Web use: the transparent master composited over a section tone, the way the
-     site will actually consume it. */
-  .onnavy { background: var(--navy-deep); }
-  .onnavy--mid { background: var(--navy); }
-  .onnavy .frame,
-  .onnavy--mid .frame { border: 0; }
+  /* Web use demo — the way the site will consume these */
   .web-demo {
     position: relative;
     width: 100%;
     aspect-ratio: 16 / 9;
-    background: var(--navy-deep);
+    background: var(--navy-deep) url('assets/diagrams/luci-bg-hero-1920x1080.svg') center / cover no-repeat;
     border: 1px solid rgba(104,227,190,0.16);
     overflow: hidden;
     isolation: isolate;
-  }
-  .web-demo__mesh {
-    position: absolute;
-    inset: 0;
-    background-image: url('assets/diagrams/luci-e-mesh.svg');
-    background-size: cover;
-    background-position: right top;
-    background-repeat: no-repeat;
   }
   .web-demo__copy {
     position: relative;
@@ -108,88 +93,100 @@
     font-family: 'Space Grotesk', system-ui, sans-serif;
     font-weight: 700; font-size: clamp(24px, 3.2vw, 42px);
     letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 12px;
+    color: var(--off-white);
   }
   .web-demo__d { max-width: 46ch; color: rgba(245,248,250,0.78); font-size: 15px; }
-  .facts { max-width: 74ch; font-size: 14px; color: rgba(245,248,250,0.72); }
-  .facts li { margin: 0 0 8px 18px; }
+
+  /* Wide band demo */
+  .band-demo {
+    width: 100%;
+    aspect-ratio: 16 / 5;
+    background: var(--navy-deep) url('assets/diagrams/luci-bg-wide-2560x800.svg') center / cover no-repeat;
+    border: 1px solid rgba(104,227,190,0.16);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .band-demo p {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(20px, 2.4vw, 32px);
+    letter-spacing: -0.02em;
+    color: var(--off-white);
+  }
 </style>
 </head>
 <body>
 
-<p class="kicker">Phase 1 · canonical master</p>
-<h1>E-mesh rebuilt as an SVG master</h1>
+<p class="kicker">Phase 1 · canonical masters adopted</p>
+<h1>E-mesh background masters — adopted from the web kit</h1>
 <p class="lede">
-  The motif is now vector. Composition, node positions, the four gold nodes, and the hollow
-  rings were measured off the original raster and reproduced. The ghosted floorplan is the
-  real architectural drawing — cleaned of UI chrome (dropdown, sidebar, label bubbles,
-  coloured highlights) and embedded as a muted-teal raster underlay behind the vector grid,
-  so it keeps the fuzzy, hand-drawn character that made the original read as architecture.
-  Two deliberate changes: the master is logo-free, and the grid lines run continuous.
+  The canonical SVG masters are adopted from the LUCI web kit. Dark, technical background
+  art: a connected node/line mesh over a faded venue floorplan. The floorplan is traced from a
+  real venue plan (labels and zone highlights removed, footprint authentic), embedded as
+  base64 WebP inside each SVG. Backgrounds contain no logo and no text — place those
+  yourself. Every SVG has <code>preserveAspectRatio="xMidYMid slice"</code> so it crops
+  to fill like <code>background-size: cover</code>.
 </p>
 
 <section>
-  <h2>1 · Original vs rebuild</h2>
-  <p class="note">Same size, same canvas. The original carries the baked-in wordmark; the rebuild does not.</p>
+  <h2>1 · Original vs the adopted hero master</h2>
+  <p class="note">Same 16:9 frame. The original carries the baked-in wordmark; the master does not. The master is a full-bleed background — the floorplan fills the frame, the mesh overlays it at four opacity tiers for depth.</p>
   <div class="stack stack--two">
     <div>
       <p class="label"><em>Original</em> — 1024x576 JPEG, logo baked in</p>
-      <img class="frame" src="assets/wallpapers/luci-e-mesh-1920x1080.png" alt="Original E-mesh raster">
+      <img class="frame" src="assets/wallpapers/luci-e-mesh-1920x1080.png" alt="Original E-mesh raster" style="aspect-ratio:16/9;object-fit:cover">
     </div>
     <div>
-      <p class="label"><b>Rebuild</b> — luci-e-mesh.solid.svg, vector</p>
-      <img class="frame" src="assets/diagrams/luci-e-mesh.solid.svg" alt="Rebuilt E-mesh SVG, solid canvas">
+      <p class="label"><b>luci-bg-hero-1920x1080.svg</b> — 80 KB, vector + embedded WebP</p>
+      <img class="frame" src="assets/diagrams/luci-bg-hero-1920x1080.svg" alt="Adopted hero master" style="aspect-ratio:16/9;object-fit:cover">
     </div>
   </div>
 </section>
 
 <section>
-  <h2>2 · Zoom test — why this mattered</h2>
+  <h2>2 · How the website will use it</h2>
   <p class="note">
-    The same upper-right region of each, enlarged to about 3x. This is the problem the rebuild
-    solves: the raster softens and shows JPEG blocking in the dark, the vector stays sharp at
-    any size.
-  </p>
-  <div class="stack stack--two">
-    <div>
-      <p class="label"><em>Original</em> at 3x</p>
-      <div class="zoom zoom--orig"></div>
-    </div>
-    <div>
-      <p class="label"><b>Rebuild</b> at 3x</p>
-      <div class="zoom zoom--svg"></div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <h2>3 · How the website will actually use it</h2>
-  <p class="note">
-    The transparent master composited over <code>--navy-deep</code>, cropped to the right and
-    top, with a left-aligned lockup sitting in the clear lower-left. No blend mode needed:
-    the master has no canvas of its own, so the section tone shows through.
+    The hero master as a CSS <code>background-image</code> with <code>background-size: cover</code>.
+    Copy sits in the lower-left where the composition leaves room. No blend mode needed —
+    the SVG paints its own wash.
   </p>
   <div class="web-demo">
-    <span class="web-demo__mesh" aria-hidden="true"></span>
     <div class="web-demo__copy">
       <p class="web-demo__k">Next step</p>
       <p class="web-demo__t">See LUCI on your floor.</p>
-      <p class="web-demo__d">Sample CTA band — copy sits in the motif's empty lower-left, exactly where the composition leaves room.</p>
+      <p class="web-demo__d">Sample CTA band — copy sits over the motif's empty lower-left, exactly where the composition leaves room.</p>
     </div>
   </div>
 </section>
 
 <section>
-  <h2>4 · The two masters</h2>
+  <h2>3 · The wide band master — for CTA strips and footer</h2>
+  <p class="note"><code>luci-bg-wide-2560x800.svg</code> (59 KB) — shallow 3.2:1 aspect for section bands, CTA strips, and the footer. Same mesh + floorplan, cropped wide.</p>
+  <div class="band-demo">
+    <p>Wide band — CTA strip or footer</p>
+  </div>
+</section>
+
+<section>
+  <h2>4 · The full master set</h2>
   <div class="stack stack--two">
     <div>
-      <p class="label"><b>luci-e-mesh.svg</b> — transparent, for web</p>
-      <div class="onnavy--mid"><img class="frame" src="assets/diagrams/luci-e-mesh.svg" alt="Transparent master over mid navy"></div>
-      <p class="note" style="margin-top:8px">Shown over <code>--navy</code> to prove it carries no canvas of its own.</p>
+      <p class="label"><b>luci-bg-hero-1920x1080.svg</b> — 80 KB · 16:9 hero</p>
+      <img class="frame" src="assets/diagrams/luci-bg-hero-1920x1080.svg" alt="Hero master" style="aspect-ratio:16/9;object-fit:cover">
     </div>
     <div>
-      <p class="label"><b>luci-e-mesh.solid.svg</b> — navy + vignette, for Teams/wallpaper/LinkedIn</p>
-      <img class="frame" src="assets/diagrams/luci-e-mesh.solid.svg" alt="Solid master">
-      <p class="note" style="margin-top:8px">Replaces the raster in the internal-team renders.</p>
+      <p class="label"><b>luci-bg-wide-2560x800.svg</b> — 59 KB · wide band</p>
+      <img class="frame" src="assets/diagrams/luci-bg-wide-2560x800.svg" alt="Wide master" style="aspect-ratio:16/5;object-fit:cover">
+    </div>
+    <div>
+      <p class="label"><b>luci-bg-portrait-1080x1920.svg</b> — 140 KB · mobile</p>
+      <img class="frame" src="assets/diagrams/luci-bg-portrait-1080x1920.svg" alt="Portrait master" style="aspect-ratio:9/16;object-fit:cover;max-height:600px">
+    </div>
+    <div>
+      <p class="label"><b>luci-bg-hero-mesh-only-1920x1080.svg</b> — 10 KB · no floorplan</p>
+      <img class="frame" src="assets/diagrams/luci-bg-hero-mesh-only-1920x1080.svg" alt="Mesh-only master" style="aspect-ratio:16/9;object-fit:cover">
+      <p class="note" style="margin-top:8px">Recolourable, 10 KB. Layer over <code>luci-plan-texture-1920x1080.png</code> for the same look at half the weight, or use alone for a lighter touch.</p>
     </div>
   </div>
 </section>
@@ -197,12 +194,13 @@
 <section>
   <h2>Notes</h2>
   <ul class="facts">
-    <li><b>Source of truth:</b> <code>scripts/gen-e-mesh.mjs</code> emits both masters. Geometry tables are in the original's 1024x576 space and scale to the 1920x1080 artboard, so they stay readable against the measurements.</li>
-    <li><b>Floorplan underlay:</b> the real CAD drawing, cleaned of UI chrome and embedded as base64 PNG inside the SVG (muted teal, posterized alpha). It sits behind the vector grid at 35% opacity, faded by a radial mask toward the lower-left.</li>
-    <li><b>Colors</b> are the brand hexes (<code>#68E3BE</code>, <code>#EDD086</code>), written literally rather than as CSS variables — custom properties do not inherit into an SVG referenced by <code>&lt;img&gt;</code> or <code>background-image</code>.</li>
-    <li><b>Gold stays secondary:</b> four gold nodes in a single cluster, everything else mint.</li>
-    <li><b>Sharp corners only</b> — butt caps, miter joins, no arcs outside the node rings.</li>
-    <li><b>~28 KB</b> per SVG (grid + embedded floorplan), self-contained — no external image fetch.</li>
+    <li><b>Source of truth:</b> the SVGs in <code>assets/diagrams/luci-bg-*.svg</code> are the canonical masters. Full documentation in <code>luci-bg-AGENTS.md</code> (copied from the web kit).</li>
+    <li><b>Palette:</b> <code>--luci-bg-deep #070F14</code>, <code>--luci-mint #68E3BE</code>, <code>--luci-gold #E8D8A4</code>. Always set <code>background-color: #070F14</code> alongside the image.</li>
+    <li><b>Floorplan:</b> traced from a real venue plan, labels and zone highlights removed, embedded as base64 WebP. Opacity adjustable (<code>#plan { opacity: … }</code> when inlined) but not hue.</li>
+    <li><b>Recolouring:</b> every group carries a class (<code>.luci-mesh</code>, <code>.luci-node</code>, <code>.luci-port</code>, <code>.luci-accent</code>, <code>.luci-plan</code>). Inline the SVG to restyle via CSS.</li>
+    <li><b>Gold stays secondary:</b> four gold accent nodes, everything else mint.</li>
+    <li><b>Performance:</b> hero 80 KB, wide 59 KB, portrait 140 KB, mesh-only 10 KB. Serve gzipped/brotli'd.</li>
+    <li><b>Do not:</b> stretch/skew, tile/repeat, place logo on the busy top third without a scrim, or re-encode through a lossy optimiser without visually checking.</li>
   </ul>
 </section>
 
