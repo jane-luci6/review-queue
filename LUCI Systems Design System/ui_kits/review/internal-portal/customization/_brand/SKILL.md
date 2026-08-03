@@ -53,6 +53,10 @@ The client name Mike enters becomes the folder name and the filename (kebab-case
 
 **Serve with the LUCI dev server** — run `python3 ui_kits/internal-portal/customization/luci-dev-server.py` from the working folder (the agent starts it as a background process). It serves the working folder on `http://127.0.0.1:8771` and accepts `POST /__save` + `POST /__pdf`. The dev server supports symlinked directories.
 
+**Open the rendered preview** — after customizing, automatically open `http://127.0.0.1:8771/clients/<client-name>-<doc>.html` in Cursor's in-editor (Glass) browser via `cursor-app-control` `open_resource`. Do **not** use a `file://` URI (opens as source, not rendered). Tell Mike it's live and click-to-edit — **Save** writes his typing to the working file automatically. Leave the server running while he reviews.
+
+**Do not explore the folder.** Read **only** the 2 SKILL.md files named in the prompt (`_brand/SKILL.md` + the one template-specific `SKILL.md`). Do **not** read other templates, other SKILL.md files, AGENTS.md, CURSOR.md, README.md, or browse the OneDrive folder structure. Do **not** read scripts unless you need to run one. The prompt tells you everything you need — if it doesn't mention a file, you don't need to read it.
+
 **Do not overwrite the tooling files** in the working folder — they are symlinks to the OneDrive folder, which is kept in sync via `scripts/sync-to-onedrive.sh` (runs automatically as a git post-commit hook when Jane updates master templates, CSS, or assets).
 
 Do **not** pull extra stylesheets the master does not already link (e.g. do not add `scope-of-work.css` into a budgetary/proposal client — it overrides `.doc-page-band` and strips navy headers + circuit texture).
@@ -87,22 +91,27 @@ Pages are locked to fixed US Letter (8.5×11in, 1056px height) with `height: var
                           overflow:'visible', justifyContent:'flex-start'});
   const nat = p.getBoundingClientRect().height;
   Object.assign(p.style, s);
-  return {page: i+1, over: Math.round(nat - 1056), under: Math.round(1056 - nat)};
+  const isDesignPage = p.classList.contains('doc-page--cover') || p.classList.contains('doc-page--close');
+  return {page: i+1, over: Math.round(nat - 1056), under: Math.round(1056 - nat), design: isDesignPage};
 }))()
 ```
 
 - **`over > 0`** — content is clipped. **Trim copy or split to a new `.doc-page`** — do not change page height.
-- **`under > 200`** (more than ~200px of empty space at the bottom) — the page is underfilled. **Pull content up from the next page** or pack more content onto this page. Every page must be full 8.5×11 — do not leave large gaps at the bottom of a page when more content would fit.
+- **`under > 200`** (more than ~200px of empty space at the bottom) — there is empty space. Whether to act depends on what follows:
+  - **Same content stream continues on the next page** (more SOW sections, more line-item rows) → the page is underfilled. **Pull content up from the next page** so this page is full.
+  - **This is the last page of a content stream** (totals/investment-summary page after all line items, last SOW page, last capabilities page) → empty space is **expected and correct**. Do not try to fill it.
+- **`design: true`** — this is a cover or close page. These pages are **intentionally spacious** — large whitespace is part of their design. **Do not** try to fill them, shorten them, or pull content onto them. Their `under` value is expected and correct.
 
-**Every page is a full 8.5×11 sheet.** Never shorten a page, never leave a page with large empty space at the bottom, and never start a new page when the current one has room for more content. The only page that may be partially empty is the **last page** of a section (e.g., the last SOW page, the last line-item page) — and even then, pull content up from the next section if it fits.
+**Every page is a full 8.5×11 sheet** — the CSS locks the page size; pages cannot stretch or shrink. But "full sheet" means the **page** is the right size, not that every page must be stuffed with content. **Pack greedily only when the same content stream continues onto the next page** (SOW → more SOW, line items → more line items). **Pages that end a content stream naturally have empty space** — the totals page after all line items, the last SOW page, the cover, and the close page. That empty space is correct, not underfilling. Do not invent content to fill it, and do not shorten the page.
 
 ### Continuous page packing — SOW + line items (mandatory)
 
-Fill each content page as far as it will go before opening a new one. **Do not invent page breaks.** This applies to **Scope of Work** sections and **line-item** tables alike.
+Fill each content page as far as it will go **when the same content stream continues onto the next page**. **Do not invent page breaks between continuing content.** This applies to **Scope of Work** sections and **line-item** tables alike.
 
-- Pack **greedily** while natural height stays ≤ 1056px. If there is room for another partial section / group / rows, use it.
-- **Sections and groups may break across a page boundary.** Start the next page with a "(continued)" title/label and keep going. Do **not** force a whole section onto the next page just because only 2–3 sections fit on the current one, and do **not** leave large empty space when more content would fit.
+- Pack **greedily** while natural height stays ≤ 1056px. If there is room for another partial section / group / rows from the same content stream, use it.
+- **Sections and groups may break across a page boundary.** Start the next page with a "(continued)" title/label and keep going. Do **not** force a whole section onto the next page just because only 2–3 sections fit on the current one.
 - **SOW continuous flow (locked):** the Scope of Work flows continuously across pages with no forced section-start page breaks. Page breaks may occur **anywhere** — between sections, mid-section (a subsection's body can start on one page and continue on the next), between line items, between bullet points, or mid-subsection. Subsections can cross a page boundary. The only rule: pack greedily, renumber footers, and keep going. Do not strand a section header alone at the bottom of a page with its content on the next — if the header + at least one line of body don't fit, move the header to the next page.
+- **End-of-stream pages are exempt:** the totals/investment-summary page (after all line items), the last SOW page (after the last section), and any page that ends a content stream may have empty space at the bottom. That is correct — there is nothing more to pull up. Do not invent content to fill it.
 - After packing, renumber `.doc-foot__page` and page comments sequentially. Drop empty continuation pages.
 
 **Line items — totals exception:** follow the same greedy packing for all line-item **rows and groups**. Then:
@@ -193,7 +202,7 @@ Never ship a document with a placeholder date ("[Month DD, YYYY]" or "Today"). S
 - **Sharp corners** — `border-radius: 0` on document furniture (brand trait).
 - **Do not** add drop shadows to flat content.
 - Keep existing `.doc-page` structure — one section = one printed sheet.
-- **Page sizing is locked** — `.doc-page` uses `height: var(--page-h)` (US Letter, 1056px) with `overflow: hidden` on screen **and** in print. Pages cannot stretch or shrink beyond the printable area. If content overflows, it clips visibly on screen — trim copy or split to a new `.doc-page`; never change the page height.
+- **Page sizing is locked** — `.doc-page` uses `height: var(--page-h)` (US Letter, 1056px) with `overflow: hidden` on screen **and** in print. Pages cannot stretch or shrink beyond the printable area. If content overflows, it clips visibly on screen — trim copy or split to a new `.doc-page`; never change the page height. **Empty space at the bottom of an end-of-stream page is correct** — the totals page, the last SOW page, the cover, and the close page are all expected to have whitespace. Do not fill them, do not shorten them.
 
 ## Voice & tone
 
@@ -267,10 +276,19 @@ The website (lucisystems.com) is the reference for *how LUCI sounds* — the ton
 - Before any further agent pass after Mike types in preview: the working file is already updated (via the dev server save), so Cursor reads the latest version. If Mike used the download fallback instead, write the live DOM back into the working file before editing.
 - **Download PDF** = `POST /__pdf` on the LUCI dev server → `scripts/render-pdf.sh` (headless Chrome). Never `window.print()` — that crashes Cursor's in-editor browser. The button shows "Rendering…" then downloads the PDF. If the local preview server is not running, the button asks you to restart it.
 
-**PDF button shows "Failed"?** The render pipeline takes ~30–60 seconds (it re-rasterizes SVG diagrams via headless Chrome). Cursor's in-editor browser may time out before the server finishes. Fallback:
-1. **The agent runs `render-pdf.sh` directly** — `bash scripts/render-pdf.sh clients/<client>-<doc>.html ~/Downloads/<client>-<doc>.pdf` (from the `LUCI Systems Design System/` root). This bypasses the browser timeout and produces the same PDF.
-2. **Verify the PDF** — open it in Preview to confirm it renders correctly (headers, colors, fonts, no clipping).
-3. **Always test PDF generation before handing off to Mike.** Generate a test PDF after any structural change (page add/remove, content move) to catch rendering issues early.
+**PDF button shows "Failed"?** The most common cause is a **missing dependency on Mike's machine**, not a timeout. The pipeline needs:
+1. **Google Chrome** (or Chromium/Edge/Brave) in `/Applications`. Without it, the render fails immediately.
+2. **Pillow + numpy** (Python packages) for raster optimization. Without them, the PDF still renders — just without optimized rasters.
+
+**Diagnose:** `GET /__health` returns `pdfDeps: {chrome: true/false, pil: true/false, chrome_path: "..."}`. If `chrome` is false, Chrome is missing. If `pil` is false, raster optimization is skipped (non-fatal).
+
+**Fix on Mike's machine:**
+- Install Google Chrome from google.com/chrome (or ensure Chromium/Edge/Brave is in `/Applications`).
+- Run `pip3 install -r requirements.txt` (from the `LUCI Systems Design System/` root) to install Pillow + numpy.
+
+**Fallback (always works):** The agent runs `render-pdf.sh` directly — `bash scripts/render-pdf.sh clients/<client>-<doc>.html ~/Downloads/<client>-<doc>.pdf` (from the `LUCI Systems Design System/` root). This bypasses the browser and produces the same PDF.
+
+**Always test PDF generation before handing off to Mike.** Generate a test PDF after any structural change (page add/remove, content move) to catch rendering issues early.
 
 ### PDF export — gradient + mask flattening (mandatory)
 

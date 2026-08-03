@@ -2,21 +2,27 @@
 description: >-
   When the user pastes an Internal Marketing Portal document URL (10.10.1.17:8081)
   or asks to customize a LUCI sales doc from the portal — regardless of which
-  folder or file is open. Fetch portal skills, customize, then automatically open
-  the rendered client HTML in Cursor's in-editor browser for direct click-to-edit.
+  folder or file is open. Read skills from OneDrive, customize, then automatically
+  open the rendered client HTML in Cursor's in-editor browser for click-to-edit.
 alwaysApply: true
 ---
 
 # LUCI portal document URL → Cursor (folder-agnostic)
 
-Mike pastes a portal preview URL into Cursor chat, or just names the document type and client. **No specific folder needs to be open.** The agent always reads master templates, CSS, assets, and SKILL.md files from the shared OneDrive "Cursor Branding Files" folder, then creates a working copy at `~/Desktop/LUCI Docs/<client-name>/` for edits.
+Mike pastes a portal preview URL into Cursor chat, or just names the document type and client. **No specific folder needs to be open.**
 
-## On every portal customization URL
+## On every portal customization request
 
-1. **Read local skills from OneDrive.** The shared OneDrive "Cursor Branding Files" folder contains all master templates, CSS, assets, and SKILL.md files. Read them from there — do not fetch from the portal.
-2. Read template `SKILL.md` + `_brand/SKILL.md` + `CURSOR.md` from the OneDrive folder.
-3. **Create a client workspace** using `scripts/create-client-workspace.sh "<Client Name>" <template-name> <doc-type>` — this creates `~/Desktop/LUCI Docs/<client-name>/` with symlinks to OneDrive and copies the master template to `clients/<client-name>-<doc>.html` with paths adjusted. Apply client customizations to this working file.
-4. **Automatically open the rendered client HTML in Cursor's in-editor browser** (not the HTML source) — see "Open the rendered preview in the editor" below. Mike clicks editable text and types in that preview. **No extra canvas or prompt needed** for word-level tweaks.
+1. **Read ONLY these 2 files** from the OneDrive "Cursor Branding Files" folder:
+   - `ui_kits/internal-portal/customization/_brand/SKILL.md` — the workflow, voice, fit check, PDF, and all house rules
+   - `ui_kits/internal-portal/customization/<template>/SKILL.md` — the page map, editable vs locked regions for this template
+   - **Do not** read other files (CURSOR.md, AGENTS.md, README.md, other templates, other SKILL.md files). The prompt tells you what to read — if it's not listed, you don't need it.
+
+2. **Create a client workspace:** `scripts/create-client-workspace.sh "<Client Name>" <template-name> <doc-type>` — creates `~/Desktop/LUCI Docs/<client-name>/` with symlinks to OneDrive and copies the master template to `clients/<client-name>-<doc>.html`.
+
+3. **Customize** per the 2 SKILL.md files. Populate-in-place; never rebuild. Edit by selector; never rewrite sections. Run the mandatory fit check after content edits (see `_brand/SKILL.md`).
+
+4. **Open the rendered preview** in Cursor's in-editor browser at `http://127.0.0.1:8771/clients/<client-name>-<doc>.html` (see `_brand/SKILL.md` → "Open the rendered preview"). Do not use a `file://` URI.
 
 ## URL patterns → template id
 
@@ -26,78 +32,29 @@ Mike pastes a portal preview URL into Cursor chat, or just names the document ty
 | `capabilities-document` | `capabilities-document` |
 | `scope-of-work` | `scope-of-work` |
 | `proposal` | `proposal` (portal card: **Proposal - LED**) |
+| `proposal-luci-retrofit` | `proposal-luci-retrofit` |
+| `proposal-upgrade` | `proposal-upgrade` |
 | `budgetary-estimate` | `budgetary-estimate` |
 
 Portal base: `http://10.10.1.17:8081/internal-portal/customization/`
 
-**Coming:** Proposal - LUCI Retrofit · Proposal - Upgrade — dedicated templates. Do not invent them by rewriting a Budgetary Estimate from scratch.
-
-## Efficient customization (mandatory — read `_brand/SKILL.md` first)
-
-House-wide for **every** Customization Studio document (all Proposal types, Budgetary estimate, Scope of work, Capabilities, Sales deck):
-
-- **Mike can click-edit any text.** Fonts/colors/layout stay on CSS. Only LUCI logo images stay non-editable.
-- **Populate-in-place.** Never rebuild the document. Never re-emit whole `<section>`s to change a value.
-- **Two-folder architecture.** OneDrive "Cursor Branding Files" = source (read-only). `~/Desktop/LUCI Docs/<client-name>/` = working folder (created by `scripts/create-client-workspace.sh`, with symlinks to OneDrive for CSS/assets/scripts). Client HTML lives in `clients/<client-name>-<doc>.html`. Serve from the **working folder root** (the folder that contains `clients/`, `ui_kits/`, `assets/`), never from `clients/` or `ui_kits/sales/`.
-- Edit by `[data-studio]` / skill selectors only. Do not invent fine-print or “Addressed to.”
-- **Same working file forever.** The LUCI dev server's `POST /__save` writes Mike's typed edits back to the working `.html` file on disk when he clicks Save — so the next agent pass reads the latest version. `*-edited.html` downloads are a last-resort fallback artifact, not the source of truth.
-- No accessibility snapshots. Mandatory overflow fit-check after content edits (see `_brand/SKILL.md`).
-- Do not link CSS the master does not already link (strips header bands / circuit texture).
-- **Download PDF** = `POST /__pdf` on the LUCI dev server (headless Chrome — never `window.print()`, which crashes Cursor's in-editor browser). `patch-sales-pdf-html.py` flattens CSS gradients + mask-images automatically so the PDF doesn't blink in macOS Preview — see `_brand/SKILL.md` → **PDF export — gradient + mask flattening** for the maintenance rule when adding new gradients. **If the PDF button fails**, check `GET /__health` → `pdfDeps` — the most common cause is missing Chrome or Pillow/numpy on Mike's machine. See `_brand/SKILL.md` → **PDF button shows "Failed"?** for diagnosis + fix. Fallback: run `scripts/render-pdf.sh` directly from the terminal.
-
-When a change is Proposal-structure/copy-specific (page order, estimate format, etc.), **ask Jane** whether it should also apply to Budgetary estimate / Scope of work / other studio docs before propagating.
-
-## Click-to-edit in preview
-
-Client HTML keeps `contenteditable="true"` on editable regions (`.doc-edit`, `.deck-edit`, `[data-studio]`). When Cursor previews the file, Mike can click cover lines, prepared-for text, close page copy, etc. and type. Image swaps (client logo, environment photos) are done in HTML or via the Customization Studio form.
-
-- **Preserve** `contenteditable`, `data-studio`, `doc-edit`, and `deck-edit` markers when customizing — do not strip them.
-- **Do not** edit locked pages (per template `SKILL.md`).
-- When Mike types in the preview, **Save** writes those edits back to the working file on disk automatically (via the dev server's `POST /__save`) — no manual copy/paste, no prompting Cursor. Only if the dev server isn't running does Mike need to ask Cursor to reopen the project.
-
 ## Locked pages are locked — no exceptions without confirmation
 
-"Locked" means **no changes of any kind** — not text, images, diagrams, stats, structure, **and not color, styling, spacing, layout, or CSS either.** That covers edits to the HTML, inline `style` attributes, scoped `<style>` blocks in the client file, **and the shared stylesheet files** (`sales-document.css`, `capabilities-document.css`, `brochure.css`, `scope-of-work.css`, `budgetary-estimate.css`). A color-only or "small" styling change to a locked page is still a change to a locked page.
+"Locked" means **no changes of any kind** — not text, images, diagrams, stats, structure, **and not color, styling, spacing, layout, or CSS either.** That covers edits to the HTML, inline `style` attributes, scoped `<style>` blocks, **and the shared stylesheet files** (`sales-document.css`, `capabilities-document.css`, `brochure.css`, `scope-of-work.css`, `budgetary-estimate.css`).
 
-### Pre-edit gate — run before every edit to a client sales doc
+### Pre-edit gate — run before every edit
 
 Before making any edit, check the target element/selector against the template `SKILL.md` editable-regions list:
 
 - **Target listed as editable** → proceed.
 - **Target NOT listed as editable, or IS in a locked list** → **do NOT edit.** Stop and tell the user:
 
-  > "Page X is locked per the `<template>` SKILL.md (protected brand/technical content). Do you want to override that? And if so, should it be **local to this client doc only** or **canonical** (master + shared CSS, propagates to all docs)?"
+  > "Page X is locked per the `<template>` SKILL.md. Do you want to override that? And if so, should it be **local to this client doc only** or **canonical** (master + shared CSS, propagates to all docs)?"
 
   Wait for the answer before editing.
 
 A user request to change a locked page is **not** an override by itself — it is the trigger for this pause-and-confirm. Never edit a locked page first and mention it after.
 
-## Open the rendered preview in the editor (automatic — every time)
+## All details live in _brand/SKILL.md
 
-After customizing the client HTML, **automatically open the rendered doc in Cursor's in-editor (Glass) browser — not the HTML source.** Do this as the final step of every customization, without being asked.
-
-1. **Start the LUCI dev server** from the **working folder** (`~/Desktop/LUCI Docs/<client-name>/`). The working folder has symlinks to the OneDrive folder for `ui_kits/`, `assets/`, and `scripts/` — CSS, fonts, textures, and logos resolve through the symlinks. The dev server supports symlinked directories. Run `python3 ui_kits/internal-portal/customization/luci-dev-server.py` as a background process — it serves `http://127.0.0.1:8771` with `POST /__save` and `POST /__pdf`. **Never** root at `ui_kits/sales/` — logos and circuit textures 404.
-2. Verify the HTML and a texture both return 200.
-3. Open `http://127.0.0.1:8771/clients/<client-file>.html` via `cursor-app-control` `open_resource`. Do **not** use a `file://` URI.
-4. Tell the user it's live and click-to-edit — and that **Save** writes their typing back to the working file automatically (no prompting Cursor). Leave the server running while they review; stop it when they're done or before PDF export.
-
-**Do not** open the client HTML with a `file://` URI — `open_resource` opens that as a text file (HTML source), not a rendered preview.
-
-**If the dev server is already running** (e.g. Mike reopened a project), don't start a second one — reuse the existing `127.0.0.1:8771`. If the port is busy, the script will error; pick a free port and note it.
-
-**User fallback** if the in-editor pane doesn't appear: `Cmd+Shift+P` → "Simple Browser: Show" → paste the localhost URL.
-
-## Where to save client work
-
-- **On Mike's machine:** `~/Desktop/LUCI Docs/<client-name>/clients/<client-name>-<doc>.html` — created by `scripts/create-client-workspace.sh`. The working folder has symlinks to OneDrive for CSS/assets/scripts; only `clients/` is a real directory. All edits happen here — never in the OneDrive folder.
-- **Inside luci-design:** `LUCI Systems Design System/clients/<client>-<doc>.html` — top-level `clients/` folder, easy to find. Use `scripts/prepare-client-doc.sh` to copy a master template and adjust paths automatically.
-- Never save client work to the VM deploy folder
-- Never save client work in `ui_kits/sales/` — that's for master templates and CSS only
-- Never save client work in the OneDrive "Cursor Branding Files" folder — that's the shared source (read-only)
-
-## Agent behavior
-
-- Follow editable vs locked regions in template `SKILL.md` exactly — run the pre-edit gate ("Locked pages are locked" above) before any edit; never edit a locked page without confirming first.
-- Follow **Efficient customization** in `_brand/SKILL.md` — populate-in-place, one folder, selector edits, fit-check.
-- After customization, automatically open the rendered client HTML in Cursor's in-editor browser (procedure above) for click-to-edit fine-tuning.
-- PDF: `POST /__pdf` on the dev server (or `scripts/render-pdf.sh` directly). Gradients/masks are flattened automatically by `patch-sales-pdf-html.py` — no blink in macOS Preview.
+The full workflow, efficient customization rules, fit check, page packing, voice, PDF export, and open-preview instructions are all in `_brand/SKILL.md`. Read it once and follow it. Do not re-read it every turn — it doesn't change mid-conversation.

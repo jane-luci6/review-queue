@@ -14,54 +14,11 @@ Full LUCI platform proposal. **~15 pages (US Letter, variable)** — cover (with
 
 **This is the Budgetary Estimate + the full standalone Scope of Work, minus the endpoint pricing tiers.** The BE's line items, investment summary, and close are preserved; the BE's endpoint pricing tier chips are removed. The full 8-page SOW (pages 4–11) is inserted between the review of scope and the line items, using the standalone SOW template's content and CSS classes (`scope-of-work.css`).
 
-Also read: `../_brand/SKILL.md` — especially **Efficient customization**, **Continuous page packing**, **Source fidelity**, **Totals span the full page width**, **Logo + pattern**, **Combine endpoint pricing into one line item**, and **PDF export — gradient + mask flattening**. Mike can click-edit any text (fonts/colors stay on CSS). Populate-in-place; never rebuild.
+**Workflow:** see `../_brand/SKILL.md` — two-folder architecture, create workspace, dev server, fit check, page packing, voice, PDF export. This file covers only the template-specific page map and editable regions.
 
-## Click-to-edit (Mike) vs agent edits
+Voice: see `../_brand/SKILL.md` → Voice & tone.
 
-**Mike can click and type any text in the document.** Edit mode unlocks every text leaf. Fonts, colors, and layout stay on CSS classes — change words only; never strip `doc-edit` / `contenteditable` / structural wrappers.
-
-**What stays non-editable (images only):** LUCI wordmark on the cover (`.doc-cover__logo`). Client logo is click-to-swap.
-
-**Agent rules:** prefer `[data-studio]` selector edits (where present) or class-based edits; do not rebuild sections; do not invent fine-print; after Mike types in the preview, **Save** (or write the live DOM back to the same working file) before the next agent pass. Brand/voice still applies to any copy the agent authors.
-
-**Save / PDF toolbar:** **Save** overwrites the working file via the LUCI dev server's `POST /__save` (no file picker, no Downloads artifact). **Copy HTML** puts the full document on the clipboard. **Download PDF** renders via `POST /__pdf` (headless Chrome — never `window.print()`, which crashes Cursor's in-editor browser) and downloads the PDF. See `../_brand/SKILL.md` → **PDF export — gradient + mask flattening** for why gradients/masks are flattened automatically.
-
-**Fit check (mandatory after content edits):** pages are fixed US Letter with `overflow: hidden` — overflow clips silently in print. After any content edit, verify no page overflows (see `../_brand/SKILL.md` → fit check).
-
-## Voice
-
-Match LUCI's voice on every line you write or rewrite. Full contract: `../_brand/SKILL.md` → **Voice & tone**. Canonical source: LUCI Messaging Guide (`ui_kits/review/messaging/messaging-guide.html`).
-
-- **Engine and verbs — not layers.** Never use *layer* as a noun for LUCI. Lead with **orchestration engine** / **LUCI orchestrates…**; rotate to *runs, operates, integrates, consolidates, refines*.
-- **Always write A/V** — never "AV" or "A-V" (body, headlines, labels, captions, alt text, diagrams).
-- **Declarative, not promotional.** State facts; no "revolutionize / transform / empower / absurdly simple."
-- **Subtraction over addition.** Lead with what LUCI removes, not what it adds.
-- **Institutions, not adjectives.** Describe what the platform does for the enterprise, not how it feels.
-- **Discretion over display.** No client names or percentage claims in public materials.
-- **Register:** SOW/proposal = 3rd person, factual, narrative where it aids clarity. No marketing register in technical scope.
-
-## Portal URL workflow (primary)
-
-**Preview URL:** `http://10.10.1.17:8081/internal-portal/customization/proposal-luci-retrofit/proposal-luci-retrofit.html`
-
-When Mike pastes this URL into Cursor chat:
-
-1. Read this `SKILL.md` and `../_brand/SKILL.md` before any edits.
-2. **Create a client workspace:** `scripts/create-client-workspace.sh "<Client Name>" proposal-luci-retrofit proposal-luci-retrofit` — creates `~/Desktop/LUCI Docs/<client-name>/` with symlinks to OneDrive and copies the master template to `clients/<client-name>-proposal-luci-retrofit.html` with paths adjusted. (Inside luci-design, use `scripts/prepare-client-doc.sh` instead.)
-3. Customize cover, overview, scope, SOW, line items, investment, and close per regions below.
-4. Do **not** edit the HTML file on the VM deploy folder (overwritten on deploy).
-
-See also: `../CURSOR.md`, `AGENTS.md` in this folder.
-
-### Open the rendered preview in the editor (automatic)
-
-After customizing, **automatically open the rendered client HTML in Cursor's in-editor (Glass) browser — not the HTML source** — without being asked:
-
-1. **Start the LUCI dev server** from the **working folder** (`~/Desktop/LUCI Docs/<client-name>/`). The working folder has symlinks to OneDrive for `ui_kits/`, `assets/`, and `scripts/` — CSS, fonts, textures, and logos resolve through the symlinks. Run `python3 ui_kits/internal-portal/customization/luci-dev-server.py` as a background process. It serves `http://127.0.0.1:8771` with `POST /__save` and `POST /__pdf`.
-2. Verify: `curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8771/clients/<client>-proposal-luci-retrofit.html` → `200`.
-3. Open `http://127.0.0.1:8771/clients/<client>-proposal-luci-retrofit.html` in Cursor's in-editor browser via the `cursor-app-control` MCP `open_resource` tool (URI = that URL). Do **not** use a `file://` URI.
-
-Click highlighted editable text and type; save the file when done.
+**Non-editable images (template-specific):** LUCI wordmark on the cover (`.doc-cover__logo`). Client logo is click-to-swap.
 
 ## When to use
 

@@ -10,44 +10,9 @@ description: >-
 
 Pre-demo / in-meeting primer. **12 slides (16:9).** Source master: `sales-deck.html` in this folder (build copy from `ui_kits/sales/`).
 
-Also read: `../_brand/SKILL.md` — especially **Efficient customization**, **Continuous page packing**, **Source fidelity**, **Totals span the full page width**, **Logo + pattern**, and **PDF export — gradient + mask flattening** (house rules for every Customization Studio doc). Mike can click-edit any text (fonts/colors stay on CSS). Populate-in-place; never rebuild.
+**Workflow:** see `../_brand/SKILL.md` — two-folder architecture, create workspace, dev server, fit check, page packing, voice, PDF export. This file covers only the template-specific page map and editable regions.
 
-## Voice
-
-Match LUCI's voice on every line you write or rewrite. Full contract: `../_brand/SKILL.md` → **Voice & tone**. Canonical source: LUCI Messaging Guide (`ui_kits/review/messaging/messaging-guide.html`). Cover-page goal rewrites: `ui_kits/internal-portal/skills/cover-page-customization.md` (audience, framing, length, no invented facts) — applies to the slide-1 cover headline/kicker too.
-
-- **Engine and verbs — not layers.** Never use *layer* as a noun for LUCI. Lead with **orchestration engine** / **LUCI orchestrates…**; rotate to *runs, operates, integrates, consolidates, refines*.
-- **Always write A/V** — never "AV" or "A-V" (body, headlines, labels, captions, alt text, diagrams).
-- **Declarative, not promotional.** State facts; no "revolutionize / transform / empower / absurdly simple." Short sentences, one idea each, em-dash payoff.
-- **Subtraction over addition.** Lead with what LUCI removes (variables, vendors, interfaces, refresh cycles), not what it adds.
-- **Institutions, not adjectives.** Describe what the platform does for the enterprise, not how it feels.
-- **Discretion over display.** No client names or percentage claims in public materials.
-- **Retired terms:** absurdly simple / easy to use / intuitive · revolutionize / transform / empower · best-in-class / game-changing · owner's rep (use LUCI FDE / embedded team) · *layer* for LUCI.
-- **Verbatim lines:** tagline, sub-tagline, and value-prop boilerplate — use as written, do not paraphrase.
-- **Tone & voice (lucisystems.com):** lead with the customer problem, then stage LUCI as the solution (don't open with LUCI — establish why it matters first); frame the problem as accumulation, silos, and complexity; stakes are operational. Vary sentence structure for flow (no mandatory short-declarative or contrast-pair tics). 2nd person OK in marketing/sales copy; 3rd person in SOW/MSA/proposal. Key phrases + verbatim tagline/boilerplate: `../_brand/SKILL.md` → Tone & voice.
-
-## Portal URL workflow (primary)
-
-**Preview URL:** `http://10.10.1.17:8081/internal-portal/customization/sales-deck/sales-deck.html`
-
-When Mike pastes this URL into Cursor chat:
-
-1. Read this `SKILL.md` and `../_brand/SKILL.md` before any edits.
-2. **Create a client workspace:** `scripts/create-client-workspace.sh "<Client Name>" sales-deck sales-deck` — creates `~/Desktop/LUCI Docs/<client-name>/` with symlinks to OneDrive and copies the master template to `clients/<client-name>-sales-deck.html` with paths adjusted. (Inside luci-design, use `scripts/prepare-client-doc.sh` instead.)
-3. Customize **slides 1–2** only — copy, logo, and photos (see editable regions below).
-4. Do **not** edit the HTML file on the VM deploy folder (overwritten on deploy).
-
-See also: `../CURSOR.md`, `AGENTS.md` in this folder.
-
-## Open the rendered preview in the editor (automatic)
-
-After customizing, **automatically open the rendered client HTML in Cursor's in-editor (Glass) browser — not the HTML source** — without being asked:
-
-1. **Start the LUCI dev server** from the **working folder** (`~/Desktop/LUCI Docs/<client-name>/`). The working folder has symlinks to OneDrive for `ui_kits/`, `assets/`, and `scripts/` — CSS, fonts, textures, and logos resolve through the symlinks. Run `python3 ui_kits/internal-portal/customization/luci-dev-server.py` as a background process. It serves `http://127.0.0.1:8771` with `POST /__save` and `POST /__pdf`.
-2. Verify: `curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8771/<client>-sales-deck.html` → `200`.
-3. Open `http://127.0.0.1:8771/<client>-sales-deck.html` in Cursor's in-editor browser via the `cursor-app-control` MCP `open_resource` tool (URI = that URL). Do **not** use a `file://` URI — that opens the HTML source, not the rendered deck.
-
-Editable regions use `class="deck-edit"`, `contenteditable="true"`, and `[data-studio]` markers — **click highlighted text to type**. Use **Download HTML** in the edit bar to save. Preserve all `deck-edit`, `contenteditable`, and `data-studio` attributes when editing in Cursor. User fallback if the pane doesn't appear: `Cmd+Shift+P` → "Simple Browser: Show" → paste the localhost URL.
+Voice: see `../_brand/SKILL.md` → Voice & tone.
 
 ---
 
@@ -67,7 +32,7 @@ Editable regions use `class="deck-edit"`, `contenteditable="true"`, and `[data-s
 - **2 photos** — hero + one secondary; leave the third placeholder.
 - **No photos yet** — leave all three placeholders; slide still reads on-brand.
 - **Update `alt`** on each swapped image with a short scene description.
-- **Do not** replace slide 3’s LUCI interface screenshot with a property photo.
+- **Do not** replace slide 3's LUCI interface screenshot with a property photo.
 
 ---
 
@@ -86,7 +51,7 @@ Editable regions use `class="deck-edit"`, `contenteditable="true"`, and `[data-s
 | Element | Selector | What to change |
 |---------|----------|----------------|
 | Cover headline | `[data-studio="cover-title"]` | Click to edit wording |
-| “Prepared for” kicker | `[data-studio="cover-kicker"]` | Click to edit (usually stays “Prepared for”) |
+| "Prepared for" kicker | `[data-studio="cover-kicker"]` | Click to edit (usually stays "Prepared for") |
 | Client logo | `[data-studio="client-logo"]` | Replace `src` and `alt`. SVG or high-res PNG. Dark logos render white via CSS filter; white logos need `style="filter: none; opacity: 1;"` |
 
 **Locked on cover:** LUCI logo (`.cover__logo`), gold rule (`.cover__rule`).
@@ -97,7 +62,7 @@ Editable regions use `class="deck-edit"`, `contenteditable="true"`, and `[data-s
 
 | Element | Selector | What to change |
 |---------|----------|----------------|
-| Kicker | `[data-studio="env-kicker"]` | Click to edit (default: “Your environment”) |
+| Kicker | `[data-studio="env-kicker"]` | Click to edit (default: "Your environment") |
 | Headline | `[data-studio="env-title"]` | Click to edit — may include `<span class="accent-gold">` for gold emphasis |
 | Hero photo | `[data-studio="env-photo-primary"]` | Property `src` + `alt` |
 | Supporting 1 | `[data-studio="env-photo-secondary-1"]` | Optional |

@@ -230,7 +230,8 @@
 
 /* ── Pricing summary ────────────────────────────────────────────────────────── */
 /* Key outcomes: hairline ledger — keep ruled rows for totals clarity. */
-.be-summary { list-style: none; margin: 26px 0 0; padding: 0; max-width: 48ch; }
+/* Totals span the full content width of the page — never constrain to ~48ch. */
+.be-summary { list-style: none; margin: 26px 0 0; padding: 0; max-width: none; width: 100%; }
 .be-summary li {
   display: grid;
   grid-template-columns: 1fr auto;
@@ -257,7 +258,8 @@
   padding: 16px 0;
   border-top: 2px solid var(--ink-strong);
   border-bottom: 2px solid var(--ink-strong);
-  max-width: 48ch;
+  max-width: none;
+  width: 100%;
 }
 .be-summary__total-label {
   font-size: 15px;
@@ -281,7 +283,8 @@
   margin-top: 22px;
   padding-top: 18px;
   border-top: 1px solid var(--rule-light);
-  max-width: 48ch;
+  max-width: none;
+  width: 100%;
   text-align: center;
 }
 .be-split__label {
@@ -765,7 +768,7 @@
   gap: 28px;
   margin: auto 0;
 }
-.be-p5-numbers { min-width: 0; }
+.be-p5-numbers { min-width: 0; width: 100%; }
 .be-p5-delivers { min-width: 0; }
 
 /* Investment summary ledger */

@@ -1,0 +1,280 @@
+<!-- ============================================================
+     LUCI social landing page  ·  BODY MARKUP
+     Paste into: a single Webflow HTML Embed element.
+     Requires webflow-HEAD.html to be in the page head first,
+     otherwise this will render unstyled.
+     Relink the 4 images in /images to Webflow assets.
+     ============================================================ -->
+
+<!-- ============================= NAV ============================= -->
+<nav class="nav" id="section-nav">
+  <div class="nav__inner">
+    <img class="nav__logo" src="images/luci-logo-white-mint.png" alt="LUCI Systems">
+    <a class="btn btn--primary btn--sm" href="#demo">Request a demo</a>
+  </div>
+</nav>
+
+<!-- ============================= HERO ============================= -->
+<header class="hero" id="section-hero">
+  <div class="hero__texture" aria-hidden="true"></div>
+  <div class="container hero__inner">
+    <div>
+      <h1 class="h1">Control your<br>whole property.</h1>
+      <p class="hero__sub">with <b>The Orchestration Engine for Enterprise Multimedia</b></p>
+    </div>
+    <div>
+      <div class="hero__visual">
+        <img src="images/floor-map.jpg" alt="LUCI live floor map of a casino property, with every audio and video endpoint labelled by zone and showing its current source and volume.">
+      </div>
+      <p class="hero__cap">The whole property. Every screen, speaker and light.</p>
+    </div>
+  </div>
+</header>
+
+<!-- ============================= SILOS ============================= -->
+<section class="silos" id="section-silos">
+  <div class="container">
+    <p class="silos__label">Today, separate A/V technology lives in separate silos</p>
+
+    <!-- PORT NOTE: one chip per system. Add or remove freely — the row wraps. -->
+    <div class="chips">
+      <span class="chip">Displays &amp; TVs</span>
+      <span class="chip">LED walls</span>
+      <span class="chip">Lighting</span>
+      <span class="chip">LED ribbon</span>
+      <span class="chip">Digital signage</span>
+      <span class="chip">Sound</span>
+      <span class="chip">Video</span>
+      <span class="chip">IPTV</span>
+      <span class="chip">Audio DSP</span>
+      <span class="chip">Scoreboards</span>
+    </div>
+
+    <p class="silos__arrow" aria-hidden="true">&#8595;</p>
+    <p class="silos__punch">With LUCI, you can <span class="underline-mint mint-word">run them all</span>.</p>
+    <p class="silos__fine">One interface. Every system on it.</p>
+  </div>
+</section>
+
+<!-- ==================== ONE INTERFACE / TRIAD ==================== -->
+<section class="interface" id="section-interface">
+  <div class="container center">
+    <h2 class="h2">One interface to control, automate, and<br>execute the <span class="mint-word">entire guest experience</span>.</h2>
+
+    <div class="triad" style="text-align:left;">
+      <article class="tri">
+        <p class="tri__num">01</p>
+        <h3 class="tri__title">Control</h3>
+        <p class="tri__body">Adjust lights, sound, screens and signage — any zone, by hand or automatically.</p>
+      </article>
+      <article class="tri">
+        <p class="tri__num">02</p>
+        <h3 class="tri__title">Automate</h3>
+        <p class="tri__body">Build scenes once — game time, happy hour, morning reset — and fire them on schedule or trigger.</p>
+      </article>
+      <article class="tri">
+        <p class="tri__num">03</p>
+        <h3 class="tri__title">Execute</h3>
+        <p class="tri__body">The whole room delivers the moment, in sync — no staff scrambling.</p>
+      </article>
+    </div>
+
+    <div class="interface__actions">
+      <a class="btn btn--primary" href="#demo">Request a demo →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CONSOLIDATION ==================== -->
+<section class="consol" id="section-consolidation">
+  <div class="container consol__inner">
+    <div>
+      <p class="eyebrow">Consolidation is the point</p>
+      <h2 class="h2">Less hardware. Fewer vendors. <span class="gold-word">Your team in control.</span></h2>
+      <p class="lede">
+        LUCI replaces four or more separate systems, their control layers, and the
+        rats' nest behind them with one interface — and hands the keys to your team
+        instead of your integrator.
+      </p>
+    </div>
+
+    <!--
+      PORT NOTE / [TODO]: the row labels and two of the value pairs could not be
+      read reliably off the homepage screenshot. Replace every [TODO] below with
+      the real copy from the homepage build, or delete rows you don't want here.
+      Structure is intentionally real HTML rather than an exported image so the
+      numbers stay editable in Webflow.
+    -->
+    <div class="compare">
+      <div class="compare__head">
+        <span>Today</span><span></span><span>With LUCI</span>
+      </div>
+
+      <div class="compare__row">
+        <span class="compare__was">4+</span>
+        <span class="compare__arrow" aria-hidden="true">→</span>
+        <span class="compare__now">1</span>
+        <span class="compare__label">separate systems → one interface</span>
+      </div>
+
+      <div class="compare__row">
+        <span class="compare__was">40 Gb</span>
+        <span class="compare__arrow" aria-hidden="true">→</span>
+        <span class="compare__now">1 Gb</span>
+        <span class="compare__label"><span class="todo">[TODO]</span> confirm the network/bandwidth label</span>
+      </div>
+
+      <div class="compare__row">
+        <span class="compare__was">$1,000s</span>
+        <span class="compare__arrow" aria-hidden="true">→</span>
+        <span class="compare__now">Included</span>
+        <span class="compare__label"><span class="todo">[TODO]</span> confirm what this covers (licensing? support?)</span>
+      </div>
+
+      <div class="compare__row">
+        <span class="compare__was">Locked</span>
+        <span class="compare__arrow" aria-hidden="true">→</span>
+        <span class="compare__now">Yours</span>
+        <span class="compare__label"><span class="todo">[TODO]</span> confirm the label (system access? your data?)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CAPABILITY CARDS ==================== -->
+<section class="caps" id="section-capabilities">
+  <div class="caps__texture" aria-hidden="true"></div>
+  <div class="container caps__inner">
+    <p class="eyebrow">Why properties move to LUCI</p>
+    <h2 class="h2">Built for the way properties <span class="gold-word">actually operate</span>.</h2>
+
+    <div class="caps__grid">
+      <article class="cap">
+        <h3 class="cap__title">Complete visibility and control across your property</h3>
+        <div class="cap__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#68E3BE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/>
+          </svg>
+        </div>
+        <span class="cap__num" aria-hidden="true">01</span>
+      </article>
+
+      <article class="cap">
+        <h3 class="cap__title">Align your teams by default</h3>
+        <div class="cap__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#68E3BE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+            <path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/>
+          </svg>
+        </div>
+        <span class="cap__num" aria-hidden="true">02</span>
+      </article>
+
+      <article class="cap">
+        <h3 class="cap__title">Fully activate the guest experience</h3>
+        <div class="cap__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#68E3BE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M13 2L4.1 13.4a.6.6 0 00.5 1H11l-1 7.6 8.9-11.4a.6.6 0 00-.5-1H12l1-7.6z"/>
+          </svg>
+        </div>
+        <span class="cap__num" aria-hidden="true">03</span>
+      </article>
+
+      <article class="cap">
+        <h3 class="cap__title">Invest in the only A/V that scales and improves</h3>
+        <div class="cap__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#68E3BE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/>
+          </svg>
+        </div>
+        <span class="cap__num" aria-hidden="true">04</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PROOF STRIP ====================
+     [TODO] Swap these placeholder slots for the real property logos used on the
+     homepage (Chinook Winds, Snoqualmie, and the third). Logo files aren't in
+     the project yet — export them from the Webflow build or the brand assets.
+     ===================================================== -->
+<section class="proof" id="section-proof">
+  <div class="container">
+    <p class="proof__label">Trusted on live casino &amp; hospitality floors</p>
+    <div class="proof__logos">
+      <div class="proof__slot">[TODO] Logo 1</div>
+      <div class="proof__slot">[TODO] Logo 2</div>
+      <div class="proof__slot">[TODO] Logo 3</div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== DEMO REQUEST ==================== -->
+<section class="demo" id="demo">
+  <div class="demo__texture" aria-hidden="true"></div>
+  <div class="container demo__inner">
+
+    <div>
+      <p class="eyebrow">Next step</p>
+      <h2 class="h2">Ready to see LUCI <span class="mint-word">on your property?</span></h2>
+      <p class="lede">
+        Book a scoping session and we'll map your property's multimedia environment
+        and define a deployment path — no obligation, no rip-and-replace assumption.
+      </p>
+      <ul class="demo__list">
+        <li>A walkthrough of LUCI on a property like yours</li>
+        <li>An honest read on what your existing hardware can keep doing</li>
+        <li>A deployment path with phases, not a single big bang</li>
+      </ul>
+    </div>
+
+    <!-- PORT NOTE: replace this entire <form> with your ActiveCampaign embed.
+         Set the thank-you behaviour inside AC: Website > your form > Edit Design
+         > Options > On Submit > "Show Thank You" or "Open URL". -->
+    <div class="form">
+
+      <!-- ============================================================
+           ACTIVECAMPAIGN FORM GOES HERE
+           Paste your AC embed code between these comments.
+
+           The .form wrapper above gives it the navy card, border and
+           padding, so the AC form will sit correctly inside the layout
+           without you restyling the container.
+
+           AC's own embed ships its own field styling. To make it match
+           this page, either (a) use AC's form designer to set dark
+           backgrounds + mint accents, or (b) add overrides to the HEAD
+           code targeting AC's classes (._form-content, ._field-wrapper
+           input, ._submit) using the same CSS variables already defined
+           there — var(--navy), var(--mint), var(--rule-dark).
+
+           Set the thank-you behaviour inside AC itself:
+           Website > your form > Edit Design > Options > On Submit >
+           either "Show Thank You" with a message, or "Open URL" to
+           redirect. See README-webflow-handoff.md.
+           ============================================================ -->
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer" id="section-footer">
+  <div class="container">
+    <p class="footer__tag">The Orchestration Engine for Enterprise Multimedia</p>
+    <div class="footer__inner">
+      <div>
+        <p class="footer__label">LUCI Systems, Inc.</p>
+        <p>6280 S. Valley View Blvd., Bldg. B / Ste. 208</p>
+        <p>Las Vegas, NV 89118</p>
+        <p><a href="tel:+18333335868">(833) 333-5868</a></p>
+      </div>
+      <div>
+        <p class="footer__label">One interface</p>
+        <p>Control, automate and execute every screen, speaker and light on your property.</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bar" aria-hidden="true"></div>
+</footer>

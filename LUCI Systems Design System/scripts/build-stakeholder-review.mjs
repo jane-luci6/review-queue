@@ -319,10 +319,8 @@ function injectCursorContext(html, templateId, fileName) {
     portalOrigin: PORTAL_ORIGIN,
     previewUrl: previewPath,
     skills: {
-      router: `${base}/CURSOR.md`,
       brand: `${base}/_brand/SKILL.md`,
       template: `${base}/${templateId}/SKILL.md`,
-      agents: `${base}/${templateId}/AGENTS.md`,
       manifest: `${base}/cursor-manifest.json`,
     },
     source: { master: meta.master, clientFile: meta.clientFile },

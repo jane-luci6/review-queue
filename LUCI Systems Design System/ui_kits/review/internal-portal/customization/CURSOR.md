@@ -1,94 +1,27 @@
 # LUCI document customization — Cursor entry
 
-**Paste a portal preview URL into Cursor chat, or just name the document type and client.** That's the whole workflow. No specific folder needs to be open. The agent reads master templates, CSS, assets, and skills from the shared OneDrive "Cursor Branding Files" folder, then creates a working copy at `~/Desktop/LUCI Docs/<client-name>/`.
+**Paste a portal preview URL into Cursor chat, or just name the document type and client.** The agent reads skills from the shared OneDrive "Cursor Branding Files" folder, then creates a working copy at `~/Desktop/LUCI Docs/<client-name>/`.
 
-Each preview page embeds a `#luci-cursor-context` JSON block (and this manifest) so the agent knows which skills to load.
+## URL → template routing
 
-**Portal base:** `http://10.10.1.17:8081/internal-portal/customization/`  
-**Manifest:** `http://10.10.1.17:8081/internal-portal/customization/cursor-manifest.json`
+| URL path segment | Document | Template folder |
+|------------------|----------|-----------------|
+| `sales-deck` | Sales deck | `sales-deck` |
+| `capabilities-document` | Capabilities | `capabilities-document` |
+| `scope-of-work` | Scope of work | `scope-of-work` |
+| `proposal` | **Proposal - LED** | `proposal` |
+| `proposal-luci-retrofit` | Proposal - LUCI Retrofit | `proposal-luci-retrofit` |
+| `proposal-upgrade` | Proposal - Upgrade | `proposal-upgrade` |
+| `budgetary-estimate` | Budgetary estimate | `budgetary-estimate` |
 
----
+Portal base: `http://10.10.1.17:8081/internal-portal/customization/`
 
-## What the agent fetches (from the pasted URL)
+## What to read (only these 2 files)
 
-| Resource | URL pattern |
-|----------|-------------|
-| This router | `…/customization/CURSOR.md` |
-| Brand rules | `…/customization/_brand/SKILL.md` |
-| Template skill | `…/customization/<template-id>/SKILL.md` |
-| Template agents | `…/customization/<template-id>/AGENTS.md` |
-| Manifest | `…/customization/cursor-manifest.json` |
+1. `ui_kits/internal-portal/customization/_brand/SKILL.md` — workflow, voice, fit check, PDF, all house rules
+2. `ui_kits/internal-portal/customization/<template>/SKILL.md` — page map, editable vs locked regions for this template
 
-Example — capabilities doc pasted:
-
-`http://10.10.1.17:8081/internal-portal/customization/capabilities-document/capabilities-document.html`
-
-→ fetch `…/capabilities-document/SKILL.md` + `…/_brand/SKILL.md` + this file.
-
-If the workspace is **luci-design**, the same content lives locally under `ui_kits/internal-portal/customization/`.
-
----
-
-## URL → document routing
-
-| URL path segment | Document | Client copy pattern |
-|------------------|----------|---------------------|
-| `sales-deck` | Sales deck | `clients/<client>-sales-deck.html` |
-| `capabilities-document` | Capabilities | `clients/<client>-capabilities.html` |
-| `scope-of-work` | Scope of work | `clients/<client>-scope-of-work.html` |
-| `proposal` | **Proposal - LED** | `clients/<client>-proposal-led.html` (legacy: `<client>-proposal.html`) |
-| `budgetary-estimate` | Budgetary estimate | `clients/<client>-budgetary-estimate.html` |
-
-Masters: `ui_kits/sales/<master>.html` (under `LUCI Systems Design System/`).
-
-**Coming (Phase 3–4):** `proposal-luci-retrofit` → **Proposal - LUCI Retrofit**; `proposal-upgrade` → **Proposal - Upgrade**. Until those portal cards exist, do **not** convert a Budgetary Estimate into a Proposal by rewriting it from scratch — wait for the dedicated template or ask Jane.
-
----
-
-## Efficient customization (mandatory)
-
-Read `_brand/SKILL.md` → **Efficient customization** before any edit. Applies to **every** Customization Studio document.
-
-1. **Populate-in-place** — never rebuild the doc; never invent fine-print.
-2. **Mike can click-edit any text** — fonts/colors/layout stay on CSS; only LUCI logos stay non-editable. **Save** / **Download PDF** in the edit bar.
-3. **Two-folder architecture** — OneDrive "Cursor Branding Files" = source (read-only); `~/Desktop/LUCI Docs/<client-name>/` = working folder with symlinks to OneDrive. Serve from the **working folder**, not `ui_kits/sales/`.
-4. Edit by `[data-studio]` / listed selectors only — do not rewrite whole sections.
-5. Same working HTML forever — the LUCI dev server's `POST /__save` writes Mike's typed edits to the working file when he clicks Save; do not treat `*-edited.html` downloads as the source of truth.
-6. No accessibility snapshots; mandatory page-overflow fit check after content edits.
-7. Do not link extra CSS the master does not already use (causes missing circuit texture / stripped header bands).
-
-**Scope gate:** when a change is about document structure/copy (not efficiency/editability), ask Jane whether it should also apply to other studio templates before propagating.
-
-Also read: `.cursor/rules/luci-doc-customization.mdc`
-
----
-
-## Agent checklist
-
-1. Identify template from pasted URL (or `#luci-cursor-context` on the page).
-2. Fetch/read template `SKILL.md` + `_brand/SKILL.md` + this file’s **Efficient customization** section.
-3. Never edit the portal deploy copy on the VM — it refreshes on deploy.
-4. **Create a client workspace** using `scripts/create-client-workspace.sh "<Client Name>" <template-name> <doc-type>` — creates `~/Desktop/LUCI Docs/<client-name>/` with symlinks to OneDrive. Customize per skill. Keep `contenteditable` / `data-studio`. Never edit locked pages/regions — including color or CSS — without confirming first.
-5. **Start the LUCI dev server** from the **working folder** (`~/Desktop/LUCI Docs/<client-name>/`). The tooling files (`luci-dev-server.py`, `luci-doc-edit.js`, `luci-doc-edit.css`) are symlinks to OneDrive — kept in sync via `scripts/sync-to-onedrive.sh`. Run `python3 ui_kits/internal-portal/customization/luci-dev-server.py` as a background process and **automatically open the rendered client HTML** in Cursor's in-editor browser (not the HTML source) at `http://127.0.0.1:8771/clients/<client-name>-<doc>.html`.
-6. When Mike clicks **Save** in the preview, the dev server writes his typed edits to the working file on disk — so the next agent pass reads the latest version with no manual copy/paste. If Save falls back to a download, restart the refreshed dev server before continuing.
-7. **Download PDF** uses `POST /__pdf` (headless Chrome) — never `window.print()`. Export also works when Mike asks in chat. `patch-sales-pdf-html.py` flattens CSS gradients + mask-images automatically during export so the PDF doesn't blink in macOS Preview — see `_brand/SKILL.md` → **PDF export — gradient + mask flattening** for the maintenance rule when adding new gradients.
-
----
-
-## Open the rendered preview in the editor (automatic — every time)
-
-After customizing the client HTML, **automatically open the rendered doc in Cursor's in-editor (Glass) browser — not the HTML source.** Do this as the final step of every customization, without being asked.
-
-1. **Start the LUCI dev server** from the **working folder** (`~/Desktop/LUCI Docs/<client-name>/`). The working folder has symlinks to OneDrive for `ui_kits/`, `assets/`, and `scripts/` — CSS, fonts, textures, and logos resolve through the symlinks. The dev server supports symlinked directories. Run `python3 ui_kits/internal-portal/customization/luci-dev-server.py` as a background process. It serves `http://127.0.0.1:8771` with `POST /__save` and `POST /__pdf`. **Never** root at `ui_kits/sales/` — logos and circuit textures 404.
-2. Verify: `curl …/clients/<client-file>.html` → `200`, `…/assets/textures/texture-circuit-header-mintgold.png` → `200`, and `…/__health` → JSON with `"pdf": true` and `"version": 2` (or higher).
-3. Open `http://127.0.0.1:8771/clients/<client-file>.html` via `cursor-app-control` `open_resource`. Do **not** use a `file://` URI.
-4. Tell the user it's live and click-to-edit — **Save** writes typing back to the working file; **Download PDF** renders via headless Chrome (no print dialog). Leave the server running while they review.
-
-**Typed edits:** when the dev server is running, Save writes the live DOM to the working file on disk via `POST /__save` — the next agent pass reads the latest version with no manual copy/paste. If the dev server isn't running (Save falls back to a download), ask Cursor to reopen the project so it restarts the server.
-
-**User fallback:** `Cmd+Shift+P` → "Simple Browser: Show" → paste the localhost URL.
-
----
+**Do not read other files** (AGENTS.md, README.md, other templates, other SKILL.md files). Everything you need is in those 2 files.
 
 ## Full preview URLs
 
@@ -98,10 +31,6 @@ After customizing the client HTML, **automatically open the rendered doc in Curs
 | Capabilities | `http://10.10.1.17:8081/internal-portal/customization/capabilities-document/capabilities-document.html` |
 | Scope of work | `http://10.10.1.17:8081/internal-portal/customization/scope-of-work/scope-of-work.html` |
 | Proposal - LED | `http://10.10.1.17:8081/internal-portal/customization/proposal/proposal.html` |
+| Proposal - LUCI Retrofit | `http://10.10.1.17:8081/internal-portal/customization/proposal-luci-retrofit/proposal-luci-retrofit.html` |
+| Proposal - Upgrade | `http://10.10.1.17:8081/internal-portal/customization/proposal-upgrade/proposal-upgrade.html` |
 | Budgetary estimate | `http://10.10.1.17:8081/internal-portal/customization/budgetary-estimate/budgetary-estimate.html` |
-
----
-
-## Project rule (luci-design)
-
-`.cursor/rules/luci-doc-customization.mdc` — always on; triggers when a portal URL appears in chat, regardless of which file is open.

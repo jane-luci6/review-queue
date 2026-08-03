@@ -23,14 +23,26 @@
     .sp-h2 { font-size: 20px; font-weight: 700; color: var(--navy); letter-spacing: -0.015em; margin: 40px 0 4px; }
     .sp-h2-sub { font-size: 13px; color: var(--navy-muted); margin: 0 0 18px; }
     .sp-ideas { display: grid; gap: 12px; }
-    .sp-idea { display: grid; grid-template-columns: 96px 1fr auto; gap: 10px 16px; align-items: start; padding: 14px 16px; background: #fff; border: 1px solid var(--rule-light); border-radius: 12px; cursor: pointer; transition: border-color .15s, box-shadow .15s; }
+    .sp-idea { padding: 18px 20px 16px; background: #fff; border: 1px solid var(--rule-light); border-radius: 12px; transition: border-color .15s, box-shadow .15s; }
     .sp-idea:hover { border-color: var(--mint-dark); }
-    .sp-idea.is-picked { border-color: var(--mint-dark); box-shadow: 0 0 0 2px rgba(43,158,128,.18); background: linear-gradient(155deg,#E6F5EF 0%,#F3FAF8 100%); }
-    .sp-idea__source { font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mint-dark); padding-top: 2px; }
-    .sp-idea__angle { font-size: 15px; font-weight: 600; color: var(--navy); line-height: 1.4; }
-    .sp-idea__meta { font-size: 12.5px; color: var(--navy-muted); margin-top: 4px; }
-    .sp-idea__status { font-size: 11px; font-weight: 600; color: var(--navy-muted); white-space: nowrap; padding: 4px 10px; border: 1px solid var(--rule-light); border-radius: 9999px; }
-    .sp-idea.is-picked .sp-idea__status { color: var(--mint-dark); border-color: var(--mint-dark); }
+    .sp-idea.is-approved { border-color: var(--mint-dark); box-shadow: 0 0 0 2px rgba(43,158,128,.18); background: linear-gradient(155deg,#E6F5EF 0%,#F3FAF8 100%); }
+    .sp-idea.is-passed { opacity: .5; }
+    .sp-idea__top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 6px; }
+    .sp-idea__source { font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mint-dark); }
+    .sp-idea__status { font-size: 11px; font-weight: 600; color: var(--navy-muted); white-space: nowrap; padding: 3px 10px; border: 1px solid var(--rule-light); border-radius: 9999px; }
+    .sp-idea.is-approved .sp-idea__status { color: var(--mint-dark); border-color: var(--mint-dark); }
+    .sp-idea__name { font-size: 17px; font-weight: 700; color: var(--navy); letter-spacing: -0.01em; font-family: 'Space Grotesk', sans-serif; }
+    .sp-idea__meta { font-size: 12.5px; color: var(--mint-dark); font-weight: 600; margin: 2px 0 12px; }
+    .sp-idea__field { display: grid; grid-template-columns: 64px 1fr; gap: 6px 14px; padding: 6px 0; border-top: 1px solid var(--rule-light); font-size: 13.5px; line-height: 1.5; }
+    .sp-idea__field .lbl { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy-muted); padding-top: 3px; }
+    .sp-idea__field .val { color: var(--body-ink); }
+    .sp-idea__field .val em { font-style: italic; color: var(--navy-muted); }
+    .sp-idea__caption { font-size: 14px; line-height: 1.55; color: var(--body-ink); white-space: pre-line; padding: 10px 14px; background: var(--off-white); border-left: 3px solid var(--mint-dark); border-radius: 0 8px 8px 0; margin-top: 4px; }
+    .sp-idea__btns { display: flex; gap: 10px; margin-top: 14px; }
+    .sp-idea__btn { font: inherit; font-size: 13px; font-weight: 600; padding: 8px 18px; border-radius: 9999px; border: 1px solid var(--rule-light); background: #fff; color: var(--navy); cursor: pointer; }
+    .sp-idea__btn--approve { background: var(--mint-dark); color: #fff; border-color: var(--mint-dark); }
+    .sp-idea__btn--pass { color: var(--navy-muted); }
+    .sp-idea.is-approved .sp-idea__btn--approve { background: #fff; color: var(--mint-dark); }
     .sp-cal { display: grid; gap: 18px; }
     .sp-cal__week { border: 1px solid var(--rule-light); border-radius: 12px; overflow: hidden; }
     .sp-cal__week-h { display: flex; justify-content: space-between; align-items: baseline; padding: 12px 16px; background: var(--off-white); border-bottom: 1px solid var(--rule-light); }
@@ -81,17 +93,94 @@
           <div class="sp-step"><div class="sp-step__n">05</div><div class="sp-step__t">Write &amp; schedule</div><div class="sp-step__d">Caption in LUCI voice; advance status; post Tue/Wed/Thu.</div></div>
         </div>
 
-        <h2 class="sp-h2">Idea bench</h2>
-        <p class="sp-h2-sub">Click a card to mark it picked. Status: idea → picked → mocked → media ready → scheduled → posted. Say &ldquo;prep next week&rsquo;s posts&rdquo; to refresh the bench.</p>
+        <h2 class="sp-h2">Post proposals</h2>
+        <p class="sp-h2-sub">Six expanded concepts from the mine — each with type, slot, the visual I&rsquo;d make, the angle, and a draft caption. Approve the ones to produce; pass the rest. Approved proposals get an image generated and a calendar slot.</p>
         <div class="sp-ideas" id="ideaBench">
-          <div class="sp-idea" data-id="i1"><div class="sp-idea__source">Transcript</div><div><div class="sp-idea__angle">The variable reduction principle — fewer things to operate.</div><div class="sp-idea__meta">Mike&rsquo;s framing &middot; thought leadership &middot; pillar 01</div></div><div class="sp-idea__status">idea</div></div>
-          <div class="sp-idea" data-id="i2"><div class="sp-idea__source">Transcript</div><div><div class="sp-idea__angle">&ldquo;One interface&rdquo; — operate every endpoint from one map.</div><div class="sp-idea__meta">Mike quote &middot; diagram-led &middot; pillar 01</div></div><div class="sp-idea__status">idea</div></div>
-          <div class="sp-idea" data-id="i3"><div class="sp-idea__source">Case study</div><div><div class="sp-idea__angle">Ameristar Council Bluffs — three days to a future-ready property.</div><div class="sp-idea__meta">Published &middot; case study snippet &middot; pillar 02</div></div><div class="sp-idea__status">idea</div></div>
-          <div class="sp-idea" data-id="i4"><div class="sp-idea__source">Newsletter</div><div><div class="sp-idea__angle">The Signal Issue 01 — pull-quote from the lead field story.</div><div class="sp-idea__meta">Reuse &middot; newsletter-derived &middot; pillar 03</div></div><div class="sp-idea__status">idea</div></div>
-          <div class="sp-idea" data-id="i5"><div class="sp-idea__source">Diagram</div><div><div class="sp-idea__angle">Consolidation ledger — how many vendors does it take to run your property?</div><div class="sp-idea__meta">Canonical diagram &middot; diagram-led &middot; pillar 01</div></div><div class="sp-idea__status">idea</div></div>
-          <div class="sp-idea" data-id="i6"><div class="sp-idea__source">Diagram</div><div><div class="sp-idea__angle">System architecture — one map, every endpoint.</div><div class="sp-idea__meta">Canonical diagram &middot; diagram-led &middot; pillar 01</div></div><div class="sp-idea__status">idea</div></div>
-          <div class="sp-idea" data-id="i7"><div class="sp-idea__source">Transcript</div><div><div class="sp-idea__angle">Orchestration, not rip-and-replace — modernize without the fear.</div><div class="sp-idea__meta">Mike framing &middot; thought leadership &middot; pillar 04</div></div><div class="sp-idea__status">idea</div></div>
-          <div class="sp-idea" data-id="i8"><div class="sp-idea__source">Newsletter</div><div><div class="sp-idea__angle">The Signal — the &ldquo;align teams&rdquo; pillar as a standalone post.</div><div class="sp-idea__meta">Reuse &middot; newsletter-derived &middot; pillar 02</div></div><div class="sp-idea__status">idea</div></div>
+
+          <div class="sp-idea" data-id="p1">
+            <div class="sp-idea__top"><span class="sp-idea__source">Transcript &middot; 07-21 IPTV consultation</span><span class="sp-idea__status">proposed</span></div>
+            <div class="sp-idea__name">The hundred-player problem</div>
+            <div class="sp-idea__meta">Thought leadership &middot; Thu &middot; single image (generated diagram)</div>
+            <div class="sp-idea__field"><span class="lbl">Visual</span><span class="val">Infographic &mdash; 100 small &ldquo;player&rdquo; boxes behind 100 TVs on the left, collapsing into one mint LUCI node on the right. No field photo. <em>Agent generates.</em></span></div>
+            <div class="sp-idea__field"><span class="lbl">Angle</span><span class="val">You&rsquo;re not running 100 ads &mdash; you&rsquo;re paying for 100 players to run 10. LUCI turns any video source into a channel on one IPTV system.</span></div>
+            <div class="sp-idea__field"><span class="lbl">Caption</span><span class="val"><div class="sp-idea__caption">You&rsquo;re not running 100 ads. You&rsquo;re paying for 100 players.
+
+Most properties put a dedicated signage player behind every TV &mdash; a hundred boxes, a hundred licenses, to run ten ads. LUCI turns any video source into a channel on one IPTV system. You stop paying for the 99 players you don&rsquo;t need.
+
+One interface. One map. A lot fewer boxes to manage.</div></span></div>
+            <div class="sp-idea__btns"><button class="sp-idea__btn sp-idea__btn--approve" type="button">Approve</button><button class="sp-idea__btn sp-idea__btn--pass" type="button">Pass</button></div>
+          </div>
+
+          <div class="sp-idea" data-id="p2">
+            <div class="sp-idea__top"><span class="sp-idea__source">Transcript &middot; Mike, recurring</span><span class="sp-idea__status">proposed</span></div>
+            <div class="sp-idea__name">The variable reduction principle</div>
+            <div class="sp-idea__meta">Thought leadership (Mike) &middot; Thu &middot; statement card or 3-slide carousel</div>
+            <div class="sp-idea__field"><span class="lbl">Visual</span><span class="val">A bold type card &mdash; &ldquo;100 interfaces &rarr; 1&rdquo; in Space Grotesk, mint accent, on navy. Or a carousel subtracting interfaces one panel at a time. <em>Agent generates.</em></span></div>
+            <div class="sp-idea__field"><span class="lbl">Angle</span><span class="val">LUCI&rsquo;s whole thesis in one line: subtract, don&rsquo;t add. Every other platform asks your team to operate more; LUCI removes variables.</span></div>
+            <div class="sp-idea__field"><span class="lbl">Caption</span><span class="val"><div class="sp-idea__caption">LUCI doesn&rsquo;t add a layer to your stack. It removes the variables.
+
+More interfaces, more vendors, more remotes is the old model. LUCI&rsquo;s job is the opposite &mdash; reduce the number of things your team has to manage. Hardware, interfaces, phone trees. Subtract.
+
+One interface runs what a hundred used to.</div></span></div>
+            <div class="sp-idea__btns"><button class="sp-idea__btn sp-idea__btn--approve" type="button">Approve</button><button class="sp-idea__btn sp-idea__btn--pass" type="button">Pass</button></div>
+          </div>
+
+          <div class="sp-idea" data-id="p3">
+            <div class="sp-idea__top"><span class="sp-idea__source">Case study &middot; Ameristar Council Bluffs</span><span class="sp-idea__status">proposed</span></div>
+            <div class="sp-idea__name">Three days to a future-ready property</div>
+            <div class="sp-idea__meta">Case study snippet &middot; Wed &middot; single image (existing asset)</div>
+            <div class="sp-idea__field"><span class="lbl">Visual</span><span class="val">The Ameristar case study hero asset, or a &ldquo;Day 1 / Day 2 / Day 3&rdquo; timeline graphic. Named &mdash; published case study. <em>Use existing asset.</em></span></div>
+            <div class="sp-idea__field"><span class="lbl">Angle</span><span class="val">Modernize A/V control without the rip-and-replace everyone fears &mdash; done in three days.</span></div>
+            <div class="sp-idea__field"><span class="lbl">Caption</span><span class="val"><div class="sp-idea__caption">Three days to a future-ready property.
+
+That&rsquo;s the headline from our Ameristar Council Bluffs case study &mdash; a property that modernized A/V control without the rip-and-replace everyone fears.
+
+Every endpoint on one map. One team. One accountable system.
+
+Full case study in the link.</div></span></div>
+            <div class="sp-idea__btns"><button class="sp-idea__btn sp-idea__btn--approve" type="button">Approve</button><button class="sp-idea__btn sp-idea__btn--pass" type="button">Pass</button></div>
+          </div>
+
+          <div class="sp-idea" data-id="p4">
+            <div class="sp-idea__top"><span class="sp-idea__source">Diagram &middot; System architecture</span><span class="sp-idea__status">proposed</span></div>
+            <div class="sp-idea__name">One map, every endpoint</div>
+            <div class="sp-idea__meta">Diagram-led &middot; Wed &middot; single image (canonical diagram)</div>
+            <div class="sp-idea__field"><span class="lbl">Visual</span><span class="val">The canonical System Architecture diagram &mdash; one map, every endpoint. <em>Copy + resize the existing asset; no generation.</em></span></div>
+            <div class="sp-idea__field"><span class="lbl">Angle</span><span class="val">Show the abstraction directly. The property isn&rsquo;t a collection of systems; it&rsquo;s one map.</span></div>
+            <div class="sp-idea__field"><span class="lbl">Caption</span><span class="val"><div class="sp-idea__caption">Your property isn&rsquo;t a collection of systems. It&rsquo;s one map.
+
+Signage, guest TVs, the sportsbook, the pool, the ballroom &mdash; every A/V endpoint, on one interface, in one place.
+
+That&rsquo;s the whole product.</div></span></div>
+            <div class="sp-idea__btns"><button class="sp-idea__btn sp-idea__btn--approve" type="button">Approve</button><button class="sp-idea__btn sp-idea__btn--pass" type="button">Pass</button></div>
+          </div>
+
+          <div class="sp-idea" data-id="p5">
+            <div class="sp-idea__top"><span class="sp-idea__source">Transcript &middot; Mike, recurring</span><span class="sp-idea__status">proposed</span></div>
+            <div class="sp-idea__name">Orchestration, not rip-and-replace</div>
+            <div class="sp-idea__meta">Thought leadership &middot; Thu &middot; generated contrast graphic</div>
+            <div class="sp-idea__field"><span class="lbl">Visual</span><span class="val">Illustrated contrast &mdash; a tangled vendor web (many nodes, many lines) collapsing into one clean LUCI node. Designed graphic, not a photo. <em>Agent generates.</em></span></div>
+            <div class="sp-idea__field"><span class="lbl">Angle</span><span class="val">The fear that stops modernization is the rip-and-replace. LUCI orchestrates what&rsquo;s there &mdash; no downtime, no starting over.</span></div>
+            <div class="sp-idea__field"><span class="lbl">Caption</span><span class="val"><div class="sp-idea__caption">The fear that stops modernization is the rip-and-replace.
+
+LUCI doesn&rsquo;t rip out what&rsquo;s there. It orchestrates it &mdash; every endpoint you already have, on one interface, without the downtime nobody can afford.
+
+Modernize without starting over.</div></span></div>
+            <div class="sp-idea__btns"><button class="sp-idea__btn sp-idea__btn--approve" type="button">Approve</button><button class="sp-idea__btn sp-idea__btn--pass" type="button">Pass</button></div>
+          </div>
+
+          <div class="sp-idea" data-id="p6">
+            <div class="sp-idea__top"><span class="sp-idea__source">Newsletter &middot; The Signal, Issue 01</span><span class="sp-idea__status">proposed</span></div>
+            <div class="sp-idea__name">From The Signal</div>
+            <div class="sp-idea__meta">Newsletter-derived &middot; Wed/Thu &middot; pull-quote card</div>
+            <div class="sp-idea__field"><span class="lbl">Visual</span><span class="val">A designed pull-quote card &mdash; the quote in Space Grotesk on navy with a mint accent rule, plus a link to Issue 01. <em>Agent builds (HTML/CSS) once the quote is pulled.</em></span></div>
+            <div class="sp-idea__field"><span class="lbl">Angle</span><span class="val">Resurface The Signal&rsquo;s lead line as a standalone post &mdash; reuse, don&rsquo;t re-create.</span></div>
+            <div class="sp-idea__field"><span class="lbl">Caption</span><span class="val"><div class="sp-idea__caption">[pull-quote from The Signal, Issue 01]
+
+From The Signal, Issue 01 &mdash; the full field story in the link.</div></span></div>
+            <div class="sp-idea__btns"><button class="sp-idea__btn sp-idea__btn--approve" type="button">Approve</button><button class="sp-idea__btn sp-idea__btn--pass" type="button">Pass</button></div>
+          </div>
+          <!--PROPS-->
         </div>
 
         <h2 class="sp-h2">Calendar — next 3 weeks</h2>
@@ -156,9 +245,9 @@
   </div>
   <script>
     (function(){
-      var KEY='sp-picked-v1';
-      var picked={};
-      try{picked=JSON.parse(localStorage.getItem(KEY)||'{}');}catch(e){picked={};}
+      var KEY='sp-proposals-v1';
+      var state={};
+      try{state=JSON.parse(localStorage.getItem(KEY)||'{}');}catch(e){state={};}
       var bench=document.getElementById('ideaBench');
       if(!bench)return;
       var cards=bench.querySelectorAll('.sp-idea');
@@ -166,17 +255,19 @@
         cards.forEach(function(c){
           var id=c.getAttribute('data-id');
           var s=c.querySelector('.sp-idea__status');
-          if(picked[id]){c.classList.add('is-picked');s.textContent='picked';}
-          else{c.classList.remove('is-picked');s.textContent='idea';}
+          var v=state[id]||'proposed';
+          c.classList.remove('is-approved','is-passed');
+          if(v==='approved'){c.classList.add('is-approved');s.textContent='approved';}
+          else if(v==='passed'){c.classList.add('is-passed');s.textContent='passed';}
+          else{s.textContent='proposed';}
         });
       }
       cards.forEach(function(c){
-        c.addEventListener('click',function(){
-          var id=c.getAttribute('data-id');
-          if(picked[id]){delete picked[id];}else{picked[id]=1;}
-          localStorage.setItem(KEY,JSON.stringify(picked));
-          render();
-        });
+        var id=c.getAttribute('data-id');
+        var app=c.querySelector('.sp-idea__btn--approve');
+        var pas=c.querySelector('.sp-idea__btn--pass');
+        if(app)app.addEventListener('click',function(e){e.stopPropagation();state[id]='approved';localStorage.setItem(KEY,JSON.stringify(state));render();});
+        if(pas)pas.addEventListener('click',function(e){e.stopPropagation();state[id]='passed';localStorage.setItem(KEY,JSON.stringify(state));render();});
       });
       render();
     })();

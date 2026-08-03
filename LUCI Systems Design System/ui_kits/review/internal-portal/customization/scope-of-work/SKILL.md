@@ -11,55 +11,13 @@ description: >-
 
 Post-demo scoping document for prospects moving forward. **9 pages (US Letter).** Source master: `scope-of-work.html` in this folder.
 
-Also read: `../_brand/SKILL.md` — especially **Efficient customization**, **Continuous page packing**, **Source fidelity**, **Totals span the full page width**, **Logo + pattern**, and **PDF export — gradient + mask flattening** (house rules for every Customization Studio doc). Mike can click-edit any text (fonts/colors stay on CSS). Populate-in-place; never rebuild.
+**Workflow:** see `../_brand/SKILL.md` — two-folder architecture, create workspace, dev server, fit check, page packing, voice, PDF export. This file covers only the template-specific page map and editable regions.
 
-## Voice
-
-Match LUCI's voice on every line you write or rewrite. Full contract: `../_brand/SKILL.md` → **Voice & tone**. Canonical source: LUCI Messaging Guide (`ui_kits/review/messaging/messaging-guide.html`). Cover-page goal rewrites: `ui_kits/internal-portal/skills/cover-page-customization.md` (audience, framing, length, no invented facts) — applies to the cover project-title / prepared-for / basis lines.
-
-- **Engine and verbs — not layers.** Never use *layer* as a noun for LUCI. Lead with **orchestration engine** / **LUCI orchestrates…**; rotate to *runs, operates, integrates, consolidates, refines*.
-- **Always write A/V** — never "AV" or "A-V" (body, headlines, labels, captions, alt text, diagrams).
-- **Declarative, not promotional.** State facts; no "revolutionize / transform / empower / absurdly simple." Short sentences, one idea each, em-dash payoff. Stay factual and scoping-focused — no marketing language in technical scope.
-- **Subtraction over addition.** Lead with what LUCI removes (variables, vendors, interfaces, refresh cycles), not what it adds.
-- **Institutions, not adjectives.** Describe what the platform does for the enterprise, not how it feels.
-- **Discretion over display.** No client names or percentage claims in public materials.
-- **Retired terms:** absurdly simple / easy to use / intuitive · revolutionize / transform / empower · best-in-class / game-changing · owner's rep (use LUCI FDE / embedded team) · *layer* for LUCI.
-- **Verbatim lines:** tagline, sub-tagline, and value-prop boilerplate — use as written, do not paraphrase.
-- **Tone & voice (lucisystems.com):** lead with the customer problem, then stage LUCI as the solution (don't open with LUCI — establish why it matters first); frame the problem as accumulation, silos, and complexity; stakes are operational. Vary sentence structure for flow (no mandatory short-declarative or contrast-pair tics). 2nd person OK in marketing/sales copy; 3rd person in SOW/MSA/proposal. Key phrases + verbatim tagline/boilerplate: `../_brand/SKILL.md` → Tone & voice.
-
-## Portal URL workflow (primary)
-
-**Preview URL:** `http://10.10.1.17:8081/internal-portal/customization/scope-of-work/scope-of-work.html`
-
-When Mike pastes this URL into Cursor chat:
-
-1. Read this `SKILL.md` and `../_brand/SKILL.md` before any edits.
-2. **Create a client workspace:** `scripts/create-client-workspace.sh "<Client Name>" scope-of-work scope-of-work` — creates `~/Desktop/LUCI Docs/<client-name>/` with symlinks to OneDrive and copies the master template to `clients/<client-name>-scope-of-work.html` with paths adjusted. (Inside luci-design, use `scripts/prepare-client-doc.sh` instead.)
-3. Customize cover and scope sections per this skill — preserve CSS classes.
-4. Do **not** edit the HTML file on the VM deploy folder (overwritten on deploy).
-
-See also: `../CURSOR.md`, `AGENTS.md` in this folder.
-
-### Open the rendered preview in the editor (automatic)
-
-After customizing, **automatically open the rendered client HTML in Cursor's in-editor (Glass) browser — not the HTML source** — without being asked:
-
-1. **Start the LUCI dev server** from the **working folder** (`~/Desktop/LUCI Docs/<client-name>/`). The working folder has symlinks to OneDrive for `ui_kits/`, `assets/`, and `scripts/` — CSS, fonts, textures, and logos resolve through the symlinks. Run `python3 ui_kits/internal-portal/customization/luci-dev-server.py` as a background process. It serves `http://127.0.0.1:8771` with `POST /__save` and `POST /__pdf`.
-2. Verify: `curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8771/<client>-scope-of-work.html` → `200`.
-3. Open `http://127.0.0.1:8771/<client>-scope-of-work.html` in Cursor's in-editor browser via the `cursor-app-control` MCP `open_resource` tool (URI = that URL). Do **not** use a `file://` URI — that opens the HTML source, not the rendered doc.
-
-Click highlighted editable text and type; save the file when done. User fallback if the pane doesn't appear: `Cmd+Shift+P` → "Simple Browser: Show" → paste the localhost URL.
+Voice: see `../_brand/SKILL.md` → Voice & tone.
 
 ## When to use
 
 After discovery meetings, site surveys, or when the client needs a written scope for LUCI multimedia re-unification or similar engagement.
-
-## Workflow
-
-1. Name the document type and client, or paste the portal preview URL into Cursor chat.
-2. Provide: project title, client org, basis (survey/meeting notes), and scope context. Optionally attach site notes or meeting minutes.
-3. The working file is already at `~/Desktop/LUCI Docs/<client-name>/clients/<client-name>-scope-of-work.html` — created by `scripts/create-client-workspace.sh`. All edits happen there.
-4. Download PDF via the dev server's `POST /__pdf` (headless Chrome), or run `scripts/render-pdf.sh` from the working folder.
 
 ---
 
@@ -84,7 +42,7 @@ There is **no separate close page** in this template — the document ends at op
 | Element | Why locked |
 |---------|------------|
 | `.doc-cover__logo` (LUCI logo image) | Brand |
-| “Prepared by” value should remain **LUCI Systems, LLC** unless Jane directs otherwise | Standard attribution |
+| "Prepared by" value should remain **LUCI Systems, LLC** unless Jane directs otherwise | Standard attribution |
 
 Everything else on the cover with `doc-edit` / `contenteditable="true"` is editable.
 
@@ -96,7 +54,7 @@ Everything else on the cover with `doc-edit` / `contenteditable="true"` is edita
 
 | Element | Selector | What to change |
 |---------|----------|----------------|
-| Display headline | `.doc-cover__display` | “Scope of Work” + client short name in `<em>` |
+| Display headline | `.doc-cover__display` | "Scope of Work" + client short name in `<em>` |
 | Project title | `[data-studio="project-title"]` | Full project name line |
 | Prepared for | `[data-studio="prepared-for"]` | Client organization |
 | Basis | `[data-studio="basis"]` | Survey notes, meetings, source documents |
@@ -105,7 +63,7 @@ Everything else on the cover with `doc-edit` / `contenteditable="true"` is edita
 
 ### Overview (page 2) — `.doc-page--overview`
 
-When Mike provides a source SOW, **mirror its verbiage and structure** (headers, narrative vs bullets) and dress it in this template’s branded classes. Pack continuously across pages — sections may break mid-way with “(continued)”. See `../_brand/SKILL.md` → Continuous page packing and Source fidelity.
+When Mike provides a source SOW, **mirror its verbiage and structure** (headers, narrative vs bullets) and dress it in this template's branded classes. Pack continuously across pages — sections may break mid-way with "(continued)". See `../_brand/SKILL.md` → Continuous page packing and Source fidelity.
 
 - §1 Project intent: narrative + key outcomes list
 - §2 Guiding principles: all bullet items

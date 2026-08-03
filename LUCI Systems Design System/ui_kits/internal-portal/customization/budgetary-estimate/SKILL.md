@@ -10,57 +10,19 @@ description: >-
 
 Scoped, line-itemed pre-quote estimate. **6 pages (US Letter)** — professional follow-on to the Capabilities doc. Source master: `budgetary-estimate.html` in this folder (build copy from `ui_kits/sales/`).
 
-Also read: `../_brand/SKILL.md` — especially **Efficient customization**, **Continuous page packing**, **Source fidelity**, **Totals span the full page width**, **Logo + pattern**, and **PDF export — gradient + mask flattening**. Mike can click-edit any text (fonts/colors stay on CSS). Populate-in-place; never rebuild.
+**Workflow:** see `../_brand/SKILL.md` — two-folder architecture, create workspace, dev server, fit check, page packing, voice, PDF export. This file covers only the template-specific page map and editable regions.
 
-## Voice
-
-Match LUCI's voice on every line you write or rewrite. Full contract: `../_brand/SKILL.md` → **Voice & tone**. Canonical source: LUCI Messaging Guide (`ui_kits/review/messaging/messaging-guide.html`). Cover-page goal rewrites: `ui_kits/internal-portal/skills/cover-page-customization.md` (audience, framing, length, no invented facts).
-
-- **Engine and verbs — not layers.** Never use *layer* as a noun for LUCI. Lead with **orchestration engine** / **LUCI orchestrates…**; rotate to *runs, operates, integrates, consolidates, refines*.
-- **Always write A/V** — never "AV" or "A-V" (body, headlines, labels, captions, alt text, diagrams).
-- **Declarative, not promotional.** State facts; no "revolutionize / transform / empower / absurdly simple." Short sentences, one idea each, em-dash payoff.
-- **Subtraction over addition.** Lead with what LUCI removes (variables, vendors, interfaces, refresh cycles), not what it adds.
-- **Institutions, not adjectives.** Describe what the platform does for the enterprise, not how it feels.
-- **Discretion over display.** No client names or percentage claims in public materials.
-- **Retired terms:** absurdly simple / easy to use / intuitive · revolutionize / transform / empower · best-in-class / game-changing · owner's rep (use LUCI FDE / embedded team) · *layer* for LUCI.
-- **Verbatim lines:** tagline, sub-tagline, and value-prop boilerplate — use as written, do not paraphrase.
-- **Tone & voice (lucisystems.com):** lead with the customer problem, then stage LUCI as the solution (don't open with LUCI — establish why it matters first); frame the problem as accumulation, silos, and complexity; stakes are operational. Vary sentence structure for flow (no mandatory short-declarative or contrast-pair tics). 2nd person OK in marketing/sales copy; 3rd person in SOW/MSA/proposal. Key phrases + verbatim tagline/boilerplate: `../_brand/SKILL.md` → Tone & voice.
-
-## Portal URL workflow (primary)
-
-**Preview URL:** `http://10.10.1.17:8081/internal-portal/customization/budgetary-estimate/budgetary-estimate.html`
-
-When Mike pastes this URL into Cursor chat:
-
-1. Read this `SKILL.md` and `../_brand/SKILL.md` before any edits.
-2. **Create a client workspace:** `scripts/create-client-workspace.sh "<Client Name>" budgetary-estimate budgetary-estimate` — creates `~/Desktop/LUCI Docs/<client-name>/` with symlinks to OneDrive and copies the master template to `clients/<client-name>-budgetary-estimate.html` with paths adjusted. (Inside luci-design, use `scripts/prepare-client-doc.sh` instead.)
-3. Customize **cover, overview, scope, proposal, investment, tiers, and close contact** per regions below.
-4. Do **not** edit the HTML file on the VM deploy folder (overwritten on deploy).
-
-See also: `../CURSOR.md`, `AGENTS.md` in this folder.
-
-### Open the rendered preview in the editor (automatic)
-
-After customizing, **automatically open the rendered client HTML in Cursor's in-editor (Glass) browser — not the HTML source** — without being asked:
-
-1. **Start the LUCI dev server** from the **working folder** (`~/Desktop/LUCI Docs/<client-name>/`). The working folder has symlinks to OneDrive for `ui_kits/`, `assets/`, and `scripts/` — CSS, fonts, textures, and logos resolve through the symlinks. Run `python3 ui_kits/internal-portal/customization/luci-dev-server.py` as a background process. It serves `http://127.0.0.1:8771` with `POST /__save` and `POST /__pdf`.
-2. Verify: `curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8771/<client>-budgetary-estimate.html` → `200`.
-3. Open `http://127.0.0.1:8771/<client>-budgetary-estimate.html` in Cursor's in-editor browser via the `cursor-app-control` MCP `open_resource` tool (URI = that URL). Do **not** use a `file://` URI — that opens the HTML source, not the rendered doc.
-
-Click editable regions and type; locked marketing copy (`be-delivers`) stays read-only. User fallback if the pane doesn't appear: `Cmd+Shift+P` → "Simple Browser: Show" → paste the localhost URL.
+Voice: see `../_brand/SKILL.md` → Voice & tone.
 
 ## When to use
 
 After the client has received the **Capabilities document** and leadership needs endpoint counts, line-item pricing, and tier sheet before onsite final quote.
 
-## Workflow
+### Workflow notes (template-specific)
 
-1. Name the document type and client, or paste the portal preview URL into Cursor chat.
-2. **Pages 1–2 from Mike/Mark context** — cover property name, phase framing, and the page-2 “Prepared for…” intro come from what Mike/Mark tell you (or the portal form). Edit those regions directly; do not rebuild the locked “What LUCI is” block on page 2.
-3. **Page 4 line items from the uploaded spreadsheet** — Mike/Mark attach an `.xlsx` of the proposal line items. Run the ingestion script (below) to convert it to the page-4 markup, paste it in, and split to a second proposal page if the script says it overflows.
-4. **Page 6 tiers** — move `be-tier-chip--selected` to the tier you’re pricing this job at, and edit the discount % / price inline for any customer-specific discount.
-5. The working file is already at `~/Desktop/LUCI Docs/<client-name>/clients/<client-name>-budgetary-estimate.html` — created by `scripts/create-client-workspace.sh`. All edits happen there.
-6. Download PDF via the dev server's `POST /__pdf` (headless Chrome), or run `scripts/render-pdf.sh` from the working folder.
+- **Pages 1–2 from Mike/Mark context** — cover property name, phase framing, and the page-2 "Prepared for…" intro come from what Mike/Mark tell you (or the portal form). Edit those regions directly; do not rebuild the locked "What LUCI is" block on page 2.
+- **Page 4 line items from the uploaded spreadsheet** — Mike/Mark attach an `.xlsx` of the proposal line items. Run the ingestion script (below) to convert it to the page-4 markup, paste it in, and split to a second proposal page if the script says it overflows.
+- **Page 6 tiers** — move `be-tier-chip--selected` to the tier you're pricing this job at, and edit the discount % / price inline for any customer-specific discount.
 
 ---
 

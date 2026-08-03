@@ -14,65 +14,15 @@ Post-survey proposal for LED wall installations. **~13 pages (US Letter, variabl
 
 **Section numbering rule:** a section number appears only on the first page of that section (the band big-numeral + title). Continuation pages within the same section carry a `.led-subhead` instead — no repeated number. In the default 13-page layout, §3's number lives on page 5; pages 6–8 use subheads ("Coordination & Training", "Design Specifications — <pitch>"). §4's number lives on page 9 (Estimate 01 opener). Estimate 02 on p10 and Payment Terms on p11 are subheads — no repeated §4 number. §5's number lives on page 12 (Terms). **These page numbers shift when spec or estimate pages are added/removed** — always reference by section, not by absolute page number.
 
-Also read: `../_brand/SKILL.md` — especially **Efficient customization (read this first)**, **Continuous page packing**, **Source fidelity**, **Totals span the full page width**, **Logo + pattern**, and **PDF export — gradient + mask flattening**. This is a populate-in-place job; never rebuild.
+**Workflow:** see `../_brand/SKILL.md` — two-folder architecture, create workspace, dev server, fit check, page packing, voice, PDF export. This file covers only the template-specific page map and editable regions.
 
-## Click-to-edit (Mike) vs agent edits
+Voice: see `../_brand/SKILL.md` → Voice & tone.
 
-**Mike can click and type any text in the document.** Edit mode unlocks every text leaf (including former “boilerplate” pages). Fonts, colors, and layout stay on CSS classes — change words only; never strip `doc-edit` / `data-studio` / structural wrappers.
-
-**What stays non-editable (images only):** LUCI wordmark on the cover (`.doc-cover__logo`) and the close-page LUCI logo (`.doc-close__logo`). Client logo is still click-to-swap.
-
-**Agent rules (unchanged discipline):** prefer `[data-studio]` selector edits; do not rebuild sections; do not invent fine-print; after Mike types in the preview, **Save** (or write the live DOM back to the same working file) before the next agent pass. Brand/voice still applies to any copy the agent authors.
-
-**Save / PDF toolbar:** **Save** overwrites the working file via the LUCI dev server's `POST /__save` (no file picker, no Downloads artifact). **Copy HTML** puts the full document on the clipboard. **Download PDF** renders via `POST /__pdf` (headless Chrome — never `window.print()`, which crashes Cursor's in-editor browser) and downloads the PDF. See `../_brand/SKILL.md` → **PDF export — gradient + mask flattening** for why gradients/masks are flattened automatically.
-
-## Voice
-
-Match LUCI's voice on every line you write or rewrite. Full contract: `../_brand/SKILL.md` → **Voice & tone**. Canonical source: LUCI Messaging Guide (`ui_kits/review/messaging/messaging-guide.html`). Cover-page goal rewrites: `ui_kits/internal-portal/skills/cover-page-customization.md`.
-
-- **Engine and verbs — not layers.** Never use *layer* as a noun for LUCI. Lead with **orchestration engine** / **LUCI orchestrates…**; rotate to *runs, operates, integrates, consolidates, refines*.
-- **Always write A/V** — never "AV" or "A-V" (body, headlines, labels, captions, alt text, diagrams).
-- **Declarative, not promotional.** State facts; no "revolutionize / transform / empower / absurdly simple." Stay factual and scoping-focused — no marketing language in technical scope.
-- **Subtraction over addition.** Lead with what LUCI removes (variables, vendors, interfaces, refresh cycles), not what it adds.
-- **Institutions, not adjectives.** Describe what the platform does for the enterprise, not how it feels.
-- **Discretion over display.** No client names or percentage claims in public materials.
-- **Retired terms:** absurdly simple / easy to use / intuitive · revolutionize / transform / empower · best-in-class / game-changing · owner's rep (use LUCI FDE / embedded team) · *layer* for LUCI.
-- **Verbatim lines:** tagline, sub-tagline, and value-prop boilerplate — use as written, do not paraphrase.
-- **Register:** SOW/proposal = 3rd person, factual, narrative where it aids clarity. No marketing register in technical scope.
-
-## Portal URL workflow (primary)
-
-**Preview URL:** `http://10.10.1.17:8081/internal-portal/customization/proposal/proposal.html`
-
-When Mike pastes this URL into Cursor chat:
-
-1. Read this `SKILL.md` and `../_brand/SKILL.md` before any edits.
-2. **Create a client workspace:** `scripts/create-client-workspace.sh "<Client Name>" proposal proposal` — creates `~/Desktop/LUCI Docs/<client-name>/` with symlinks to OneDrive and copies the master template to `clients/<client-name>-proposal.html` with paths adjusted. (Inside luci-design, use `scripts/prepare-client-doc.sh` instead.)
-3. Customize cover, scope, specs, fee, estimates, terms, and close per this skill — preserve CSS classes.
-4. Do **not** edit the HTML file on the VM deploy folder (overwritten on deploy).
-
-See also: `../CURSOR.md`, `AGENTS.md` in this folder.
-
-### Open the rendered preview in the editor (automatic)
-
-After customizing, **automatically open the rendered client HTML in Cursor's in-editor (Glass) browser — not the HTML source** — without being asked:
-
-1. **Start the LUCI dev server** from the **working folder** (`~/Desktop/LUCI Docs/<client-name>/`). The working folder has symlinks to OneDrive for `ui_kits/`, `assets/`, and `scripts/` — CSS, fonts, textures, and logos resolve through the symlinks. Run `python3 ui_kits/internal-portal/customization/luci-dev-server.py` as a background process. It serves `http://127.0.0.1:8771` with `POST /__save` and `POST /__pdf`.
-2. Verify: `curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8771/clients/<client>-proposal.html` → `200`.
-3. Open `http://127.0.0.1:8771/clients/<client>-proposal.html` in Cursor's in-editor browser via the `cursor-app-control` MCP `open_resource` tool (URI = that URL). Do **not** use a `file://` URI — that opens the HTML source, not the rendered doc.
-
-Click highlighted editable text and type; save the file when done. User fallback if the pane doesn't appear: `Cmd+Shift+P` → "Simple Browser: Show" → paste the localhost URL.
+**Non-editable images (template-specific):** LUCI wordmark on the cover (`.doc-cover__logo`) and the close-page LUCI logo (`.doc-close__logo`). Client logo is still click-to-swap.
 
 ## When to use
 
 After a site survey or discovery for an LED wall project (casino sportsbook, center-bar tower, casino-floor ribbon, facade, etc.) where the client needs a written scope with COB technology context, per-pitch specs, pricing milestones, and per-installation estimates.
-
-## Workflow
-
-1. Name the document type and client, or paste the portal preview URL into Cursor chat.
-2. Provide: project title, client org, basis (survey/meeting notes), pixel pitch(s) featured, and one line-items set per LED installation.
-3. The working file is already at `~/Desktop/LUCI Docs/<client-name>/clients/<client-name>-proposal.html` — created by `scripts/create-client-workspace.sh`. All edits happen there.
-4. Download PDF via the dev server's `POST /__pdf` (headless Chrome), or run `scripts/render-pdf.sh` from the working folder.
 
 ---
 
