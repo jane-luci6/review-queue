@@ -52,7 +52,7 @@ Prompts for the 11 image slots on the `/industries/casinos-gaming` page: one her
 
 ## Solution 2 — one partner owns diagnosis to resolution (replaces `casino/solution-one-owner.jpg`)
 
-> A back-of-house casino corridor: a LUCI engineer in a LUCI-logo t-shirt shaking hands with a casino operations manager in business-casual — both mid-handshake, natural, brief, not posed-for-camera. Exposed conduit, an "Operations" door, a rack room glimpsed behind. Warm recessed corridor light, cool spill from the rack room. Candid, documentary, eye-contact between the two. Shot on a Sony A7III, 35mm f/2.8, shallow DoF on the handshake, eye-level. Real, specific, non-model people; natural expressions. Avoid: polished, sterile, cinematic, HDR, illustration, 3D render, posed models, smiling at camera, generic stock photo, watermark. Aspect ratio: 3:2.
+> The moment of ownership at peak — not a handshake. A LUCI field engineer on the casino floor during a live event, mid-diagnosis, walking purposefully toward a flagged-down overhead display, tablet in hand showing the LUCI platform with the flagged endpoint highlighted. Slot banks and overhead signage softly behind, de-focused; ambient game lighting, warm recessed spill, cool glow off the signage. Candid documentary, the engineer's attention on the tablet and the target, not the camera. One person, one dashboard, owns it. Shot on a Sony A7III, 35mm f/2.8, shallow DoF on the engineer, eye-level. Real, specific, non-model person; focused expression. Avoid: handshake, corridor meet-and-greet, posed, smiling at camera, polished, cinematic, HDR, illustration, 3D render, generic stock photo, watermark. Aspect ratio: 3:2.
 
 ---
 
