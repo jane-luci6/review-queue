@@ -80,6 +80,11 @@ cp "$SRC/requirements.txt" "$DEST/" 2>/dev/null && echo "  requirements.txt"
 # NOTE: Client files (clients/) are NOT synced — they are working files
 # managed separately in each environment.
 
+# Clean up stale files that were deleted from the source repo but would
+# otherwise linger in OneDrive from a previous sync.
+rm -f "$DEST/ui_kits/internal-portal/customization/AGENTS.md"
+find "$DEST/ui_kits/internal-portal/customization" -name "AGENTS.md" -delete 2>/dev/null
+
 echo ""
 echo "Sync complete."
 echo "  OneDrive will sync to Mike's machine automatically."
