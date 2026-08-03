@@ -26,7 +26,7 @@
 //   luci-e-mesh.solid.svg  navy canvas + vignette — for Teams/wallpaper/LinkedIn renders
 //
 // Usage: node scripts/gen-e-mesh.mjs
-import { writeFileSync } from 'node:fs';
+import { writeFileSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
@@ -150,124 +150,26 @@ const RINGS = [
 ];
 
 // ---------------------------------------------------------------------------
-// Ghosted floorplan. Rooms come from recursive subdivision, but only the LEAVES
-// are drawn (emitting every recursion level would nest boxes inside boxes and
-// read as a chart rather than a plan). A minority of rooms carry a fixture bank
-// — a seating or machine run occupying part of the floor, never the whole room.
-// One block is rotated 45 degrees to echo the original's angled wing.
+// Ghosted floorplan. the original E-mesh carried a real architectural drawing behind
+// its grid — that fuzzy floorplan is what makes the motif read as architecture
+// rather than a circuit. The drawing is sourced from a real CAD export
+// (assets/diagrams/luci-e-mesh-floorplan.png), cleaned of the UI chrome
+// (label bubbles, coloured highlights, dropdown, sidebar icons) so only the
+// fine-line architectural drawing carries through. It sits as a raster underlay
+// at low opacity, behind the vector grid — a hybrid: sharp vector grid + nodes
+// + rings over a fuzzy raster plan, mirroring the original's structure.
 // ---------------------------------------------------------------------------
-const emptyBlock = () => ({ major: [], minor: [], fixtures: [], marks: [] });
+const FLOORPLAN = 'luci-e-mesh-floorplan.png';
+const FLOORPLAN_DATA = `data:image/png;base64,${readFileSync(path.join(OUT, FLOORPLAN), 'base64')}`;
+// The floorplan PNG is 987x805 (source space). Placed in the upper-right
+// quadrant of the master, scaled to cover that region, with preserveAspectRatio
+// 'slice' so it fills and crops rather than letterboxing. The em-plan-fade
+// mask fades it out toward the lower-left where the grid layer takes over.
+const FP_X = s(460);
+const FP_Y = 0;
+const FP_W = W - FP_X;
+const FP_H = s(360);
 
-// A hall: one room outline, usually carrying a bank of parallel fixture runs
-// (seating rows, machine banks) across part of its floor.
-function hall(rng, out, x, y, w, h, opts = {}) {
-  const { pitch = 4, fixtures = true, inset = 0.18 } = opts;
-  out.minor.push(['r', x, y, w, h]);
-  if (!fixtures || w < 8 || h < 8) return;
-  const alongX = w >= h;
-  const extent = alongX ? w : h;
-  const span = extent * (0.55 + rng() * 0.4);
-  const off = (extent - span) * rng();
-  const count = Math.max(2, Math.round(span / pitch));
-  for (let i = 0; i <= count; i++) {
-    const t = off + (i * span) / count;
-    if (alongX) out.fixtures.push([x + t, y + h * inset, x + t, y + h * (1 - inset)]);
-    else out.fixtures.push([x + w * inset, y + t, x + w * (1 - inset), y + t]);
-  }
-}
-
-// A corridor with rooms banded along one or both sides. Long parallel runs plus
-// regular perpendicular dividers is what makes a drawing read as architecture —
-// and it costs far fewer strokes than subdividing a rectangle.
-function spine(rng, out, x, y, len, horiz, opts = {}) {
-  const { cw = 5, depthA = 22, depthB = 22, room = 13, hallRate = 0.22, pitch = 3.8 } = opts;
-  if (horiz) {
-    out.major.push(['l', x, y, x + len, y]);
-    out.major.push(['l', x, y + cw, x + len, y + cw]);
-    for (const [d, edge, dir] of [[depthA, y, -1], [depthB, y + cw, 1]]) {
-      if (!d) continue;
-      const far = edge + dir * d;
-      out.major.push(['l', x, far, x + len, far]);
-      let cx = x;
-      while (cx < x + len - room * 0.6) {
-        const rw = room * (0.7 + rng() * 0.9);
-        const next = Math.min(cx + rw, x + len);
-        out.minor.push(['l', next, edge, next, far]);
-        if (rng() < hallRate) hall(rng, out, cx + 1, Math.min(edge, far) + 1, next - cx - 2, d - 2, { pitch });
-        cx = next;
-      }
-    }
-  } else {
-    out.major.push(['l', x, y, x, y + len]);
-    out.major.push(['l', x + cw, y, x + cw, y + len]);
-    for (const [d, edge, dir] of [[depthA, x, -1], [depthB, x + cw, 1]]) {
-      if (!d) continue;
-      const far = edge + dir * d;
-      out.major.push(['l', far, y, far, y + len]);
-      let cy = y;
-      while (cy < y + len - room * 0.6) {
-        const rh = room * (0.7 + rng() * 0.9);
-        const next = Math.min(cy + rh, y + len);
-        out.minor.push(['l', edge, next, far, next]);
-        if (rng() < hallRate) hall(rng, out, Math.min(edge, far) + 1, cy + 1, d - 2, next - cy - 2, { pitch });
-        cy = next;
-      }
-    }
-  }
-}
-
-function scatter(rng, out, x, y, w, h, count, size) {
-  for (let i = 0; i < count; i++) {
-    const rw = size * (0.6 + rng() * 1.1);
-    const rh = size * (0.6 + rng() * 1.1);
-    const rx = x + rng() * (w - rw);
-    const ry = y + rng() * (h - rh);
-    if (rng() < 0.34) out.marks.push([rx, ry, 2, 2]);
-    else out.minor.push(['r', rx, ry, rw, rh]);
-  }
-}
-
-function buildPlan() {
-  const rng = mulberry32(20260803);
-
-  // Dense orthogonal core — density peaks where the original's does, in a bright
-  // cluster around x 460-660 and a second mass beneath the angled wing.
-  const dense = emptyBlock();
-  spine(rng, dense, 462, 92, 244, true, { depthA: 26, depthB: 28, room: 12, hallRate: 0.3 });
-  spine(rng, dense, 476, 176, 232, true, { cw: 4, depthA: 14, depthB: 20, room: 15, hallRate: 0.24 });
-  spine(rng, dense, 468, 22, 156, true, { cw: 4, depthA: 12, depthB: 22, room: 14, hallRate: 0.2 });
-  spine(rng, dense, 528, 8, 78, false, { cw: 4, depthA: 20, depthB: 22, room: 12, hallRate: 0.28 });
-  spine(rng, dense, 632, 12, 96, false, { cw: 4, depthA: 22, depthB: 26, room: 13, hallRate: 0.26 });
-  spine(rng, dense, 706, 96, 116, false, { cw: 4, depthA: 24, depthB: 22, room: 12, hallRate: 0.3 });
-  spine(rng, dense, 892, 112, 100, false, { cw: 4, depthA: 28, depthB: 18, room: 14, hallRate: 0.26 });
-  spine(rng, dense, 812, 34, 84, false, { cw: 4, depthA: 20, depthB: 24, room: 13, hallRate: 0.24 });
-  hall(rng, dense, 848, 168, 76, 48, { pitch: 3.6 });
-  hall(rng, dense, 596, 158, 62, 42, { pitch: 4.2 });
-  hall(rng, dense, 476, 126, 50, 38, { pitch: 3.4 });
-  scatter(rng, dense, 434, 30, 96, 170, 13, 7);
-  scatter(rng, dense, 776, 56, 196, 160, 15, 7);
-
-  // Angled wing — a dense band of rooms running off the top-right corner.
-  const wing = emptyBlock();
-  spine(rng, wing, 6, 26, 244, true, { cw: 5, depthA: 22, depthB: 26, room: 11, hallRate: 0.4, pitch: 3.4 });
-  spine(rng, wing, 24, 104, 196, true, { cw: 4, depthA: 16, depthB: 22, room: 12, hallRate: 0.32, pitch: 3.6 });
-  scatter(rng, wing, 10, 0, 230, 150, 12, 6);
-
-  // Faint traces across the upper left — fragmentary rather than continuous, so the
-  // left reads as a ghost of the drawing instead of a second banded structure.
-  const faint = emptyBlock();
-  spine(rng, faint, 18, 58, 104, true, { cw: 5, depthA: 24, depthB: 0, room: 20, hallRate: 0.14 });
-  spine(rng, faint, 250, 40, 92, true, { cw: 4, depthA: 0, depthB: 26, room: 22, hallRate: 0.12 });
-  spine(rng, faint, 62, 152, 116, true, { cw: 4, depthA: 16, depthB: 0, room: 24, hallRate: 0.1 });
-  spine(rng, faint, 336, 130, 70, false, { cw: 4, depthA: 20, depthB: 0, room: 22, hallRate: 0.1 });
-  scatter(rng, faint, 20, 16, 388, 214, 22, 9);
-
-  return { dense, wing, faint };
-}
-
-// ---------------------------------------------------------------------------
-// Emit
-// ---------------------------------------------------------------------------
 function line(a, b, c, d) {
   return `<line x1="${s(a)}" y1="${s(b)}" x2="${s(c)}" y2="${s(d)}"/>`;
 }
@@ -275,26 +177,8 @@ function rect(x, y, w, h) {
   return `<rect x="${s(x)}" y="${s(y)}" width="${s(w)}" height="${s(h)}"/>`;
 }
 
-const shape = ([kind, ...v]) => (kind === 'r' ? rect(...v) : line(...v));
-
-function planGroup(block) {
-  const parts = [];
-  if (block.major.length) parts.push(`<g class="pl-major">${block.major.map(shape).join('')}</g>`);
-  if (block.minor.length) parts.push(`<g class="pl-minor">${block.minor.map(shape).join('')}</g>`);
-  if (block.fixtures.length) parts.push(`<g class="pl-fix">${block.fixtures.map((f) => line(...f)).join('')}</g>`);
-  if (block.marks.length) parts.push(`<g class="pl-mark">${block.marks.map((m) => rect(...m)).join('')}</g>`);
-  return parts.join('');
-}
-
 function build({ solid }) {
-  const { dense, wing, faint } = buildPlan();
-
   const css = `
-    .em-plan rect, .em-plan line { fill: none; stroke: ${MINT}; }
-    .em-plan .pl-major line, .em-plan .pl-major rect { stroke-width: 1.3; }
-    .em-plan .pl-minor line, .em-plan .pl-minor rect { stroke-width: 0.8; }
-    .em-plan .pl-fix line { stroke-width: 0.7; }
-    .em-plan .pl-mark rect { fill: ${MINT}; stroke: none; }
     .em-grid line { stroke: ${MINT}; stroke-width: 1.7; }
     .em-grid-sub line { stroke: ${MINT}; stroke-width: 1.2; }
     .em-node { fill: ${MINT}; }
@@ -320,16 +204,8 @@ function build({ solid }) {
       <stop offset="78%" stop-color="#fff" stop-opacity="0.12"/>
       <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
     </radialGradient>
-    <linearGradient id="em-plan-cut" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#fff" stop-opacity="1"/>
-      <stop offset="34%" stop-color="#fff" stop-opacity="1"/>
-      <stop offset="46%" stop-color="#fff" stop-opacity="0"/>
-    </linearGradient>
     <mask id="em-plan-mask">
       <rect width="${W}" height="${H}" fill="url(#em-plan-fade)"/>
-    </mask>
-    <mask id="em-plan-cut-mask">
-      <rect width="${W}" height="${H}" fill="url(#em-plan-cut)"/>
     </mask>
     <linearGradient id="em-grid-fade" x1="0" y1="0" x2="0.28" y2="1">
       <stop offset="0%" stop-color="#fff" stop-opacity="1"/>
@@ -341,12 +217,8 @@ function build({ solid }) {
     </mask>
   </defs>
 ${solid ? `  <rect width="${W}" height="${H}" fill="url(#em-vig)"/>\n` : ''}
-  <g mask="url(#em-plan-cut-mask)">
-    <g class="em-plan" mask="url(#em-plan-mask)">
-      <g opacity="0.4">${planGroup(dense)}</g>
-      <g opacity="0.38" transform="translate(${s(742)} ${s(168)}) rotate(-45)">${planGroup(wing)}</g>
-      <g opacity="0.11">${planGroup(faint)}</g>
-    </g>
+  <g mask="url(#em-plan-mask)">
+    <image href="${FLOORPLAN_DATA}" x="${FP_X}" y="${FP_Y}" width="${FP_W}" height="${FP_H}" preserveAspectRatio="xMidYMid slice" opacity="0.35"/>
   </g>
 
   <g class="em-grid-layer" mask="url(#em-grid-mask)">

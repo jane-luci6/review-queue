@@ -120,10 +120,11 @@
 <h1>E-mesh rebuilt as an SVG master</h1>
 <p class="lede">
   The motif is now vector. Composition, node positions, the four gold nodes, and the hollow
-  rings were measured off the original raster and reproduced; the ghosted floorplan is
-  generated from a fixed seed rather than traced. Two deliberate changes: the master is
-  logo-free, and the grid lines run continuous (the original knocked them out behind the
-  wordmark, which would read as broken lines with no logo there).
+  rings were measured off the original raster and reproduced. The ghosted floorplan is the
+  real architectural drawing — cleaned of UI chrome (dropdown, sidebar, label bubbles,
+  coloured highlights) and embedded as a muted-teal raster underlay behind the vector grid,
+  so it keeps the fuzzy, hand-drawn character that made the original read as architecture.
+  Two deliberate changes: the master is logo-free, and the grid lines run continuous.
 </p>
 
 <section>
@@ -197,10 +198,11 @@
   <h2>Notes</h2>
   <ul class="facts">
     <li><b>Source of truth:</b> <code>scripts/gen-e-mesh.mjs</code> emits both masters. Geometry tables are in the original's 1024x576 space and scale to the 1920x1080 artboard, so they stay readable against the measurements.</li>
+    <li><b>Floorplan underlay:</b> the real CAD drawing, cleaned of UI chrome and embedded as base64 PNG inside the SVG (muted teal, posterized alpha). It sits behind the vector grid at 35% opacity, faded by a radial mask toward the lower-left.</li>
     <li><b>Colors</b> are the brand hexes (<code>#68E3BE</code>, <code>#EDD086</code>), written literally rather than as CSS variables — custom properties do not inherit into an SVG referenced by <code>&lt;img&gt;</code> or <code>background-image</code>.</li>
     <li><b>Gold stays secondary:</b> four gold nodes in a single cluster, everything else mint.</li>
     <li><b>Sharp corners only</b> — butt caps, miter joins, no arcs outside the node rings.</li>
-    <li><b>48 KB</b> of SVG, versus a raster that was both larger and too small to use.</li>
+    <li><b>~28 KB</b> per SVG (grid + embedded floorplan), self-contained — no external image fetch.</li>
   </ul>
 </section>
 
