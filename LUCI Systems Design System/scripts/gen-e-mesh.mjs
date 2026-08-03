@@ -161,14 +161,15 @@ const RINGS = [
 // ---------------------------------------------------------------------------
 const FLOORPLAN = 'luci-e-mesh-floorplan.png';
 const FLOORPLAN_DATA = `data:image/png;base64,${readFileSync(path.join(OUT, FLOORPLAN), 'base64')}`;
-// The floorplan PNG is 987x805 (source space). Placed in the upper-right
-// quadrant of the master, scaled to cover that region, with preserveAspectRatio
-// 'slice' so it fills and crops rather than letterboxing. The em-plan-fade
-// mask fades it out toward the lower-left where the grid layer takes over.
-const FP_X = s(460);
+// The floorplan PNG is 924x805 (source space). Anchored top-right, covering ~55%
+// of the canvas width and ~70% of the height — matching the original where the
+// floorplan sits in the upper-right and the lower-left stays clear. The em-plan-fade
+// mask fades it out toward the lower-left. preserveAspectRatio 'slice' crops
+// rather than letterboxing.
+const FP_X = s(400);
 const FP_Y = 0;
 const FP_W = W - FP_X;
-const FP_H = s(360);
+const FP_H = s(420);
 
 function line(a, b, c, d) {
   return `<line x1="${s(a)}" y1="${s(b)}" x2="${s(c)}" y2="${s(d)}"/>`;
@@ -218,7 +219,7 @@ function build({ solid }) {
   </defs>
 ${solid ? `  <rect width="${W}" height="${H}" fill="url(#em-vig)"/>\n` : ''}
   <g mask="url(#em-plan-mask)">
-    <image href="${FLOORPLAN_DATA}" x="${FP_X}" y="${FP_Y}" width="${FP_W}" height="${FP_H}" preserveAspectRatio="xMidYMid slice" opacity="0.35"/>
+    <image href="${FLOORPLAN_DATA}" x="${FP_X}" y="${FP_Y}" width="${FP_W}" height="${FP_H}" preserveAspectRatio="xMidYMid slice" opacity="0.55"/>
   </g>
 
   <g class="em-grid-layer" mask="url(#em-grid-mask)">
