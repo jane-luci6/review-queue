@@ -47,7 +47,7 @@ Match LUCI's voice on every line you write or rewrite. Full contract: `../_brand
 When Mike pastes this URL into Cursor chat:
 
 1. Read this `SKILL.md` and `../_brand/SKILL.md` before any edits.
-2. Copy master to `clients/<client>-proposal-luci-retrofit.html` using `scripts/prepare-client-doc.sh ui_kits/sales/proposal-luci-retrofit.html clients/<client>-proposal-luci-retrofit.html` (adjusts all relative paths automatically). Do **not** manually copy to `ui_kits/sales/` — client files live in the top-level `clients/` folder.
+2. **Create a client workspace:** `scripts/create-client-workspace.sh "<Client Name>" proposal-luci-retrofit proposal-luci-retrofit` — creates `~/Desktop/LUCI Docs/<client-name>/` with symlinks to OneDrive and copies the master template to `clients/<client-name>-proposal-luci-retrofit.html` with paths adjusted. (Inside luci-design, use `scripts/prepare-client-doc.sh` instead.)
 3. Customize cover, overview, scope, SOW, line items, investment, and close per regions below.
 4. Do **not** edit the HTML file on the VM deploy folder (overwritten on deploy).
 
@@ -57,7 +57,7 @@ See also: `../CURSOR.md`, `AGENTS.md` in this folder.
 
 After customizing, **automatically open the rendered client HTML in Cursor's in-editor (Glass) browser — not the HTML source** — without being asked:
 
-1. **Start the LUCI dev server** rooted at **`LUCI Systems Design System/`**: `python3 ui_kits/internal-portal/customization/luci-dev-server.py` from that root (run as a background process). It serves the project on `http://127.0.0.1:8771` and accepts `POST /__save` so the edit bar's Save button writes typed edits back to the working file.
+1. **Start the LUCI dev server** from the **working folder** (`~/Desktop/LUCI Docs/<client-name>/`). The working folder has symlinks to OneDrive for `ui_kits/`, `assets/`, and `scripts/` — CSS, fonts, textures, and logos resolve through the symlinks. Run `python3 ui_kits/internal-portal/customization/luci-dev-server.py` as a background process. It serves `http://127.0.0.1:8771` with `POST /__save` and `POST /__pdf`.
 2. Verify: `curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8771/clients/<client>-proposal-luci-retrofit.html` → `200`.
 3. Open `http://127.0.0.1:8771/clients/<client>-proposal-luci-retrofit.html` in Cursor's in-editor browser via the `cursor-app-control` MCP `open_resource` tool (URI = that URL). Do **not** use a `file://` URI.
 

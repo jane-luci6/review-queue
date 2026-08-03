@@ -33,7 +33,7 @@ Match LUCI's voice on every line you write or rewrite. Full contract: `../_brand
 When Mike pastes this URL into Cursor chat:
 
 1. Read this `SKILL.md` and `../_brand/SKILL.md` before any edits.
-2. Copy master to `clients/<client>-sales-deck.html` using `scripts/prepare-client-doc.sh ui_kits/sales/sales-deck.html clients/<client>-sales-deck.html` (adjusts all relative paths automatically). Client files live in the top-level `clients/` folder.
+2. **Create a client workspace:** `scripts/create-client-workspace.sh "<Client Name>" sales-deck sales-deck` — creates `~/Desktop/LUCI Docs/<client-name>/` with symlinks to OneDrive and copies the master template to `clients/<client-name>-sales-deck.html` with paths adjusted. (Inside luci-design, use `scripts/prepare-client-doc.sh` instead.)
 3. Customize **slides 1–2** only — copy, logo, and photos (see editable regions below).
 4. Do **not** edit the HTML file on the VM deploy folder (overwritten on deploy).
 
@@ -43,7 +43,7 @@ See also: `../CURSOR.md`, `AGENTS.md` in this folder.
 
 After customizing, **automatically open the rendered client HTML in Cursor's in-editor (Glass) browser — not the HTML source** — without being asked:
 
-1. From `LUCI Systems Design System/ui_kits/sales/`, start a local server in the background: `python3 -m http.server 8771 --bind 127.0.0.1` (increment the port if busy).
+1. **Start the LUCI dev server** from the **working folder** (`~/Desktop/LUCI Docs/<client-name>/`). The working folder has symlinks to OneDrive for `ui_kits/`, `assets/`, and `scripts/` — CSS, fonts, textures, and logos resolve through the symlinks. Run `python3 ui_kits/internal-portal/customization/luci-dev-server.py` as a background process. It serves `http://127.0.0.1:8771` with `POST /__save` and `POST /__pdf`.
 2. Verify: `curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8771/<client>-sales-deck.html` → `200`.
 3. Open `http://127.0.0.1:8771/<client>-sales-deck.html` in Cursor's in-editor browser via the `cursor-app-control` MCP `open_resource` tool (URI = that URL). Do **not** use a `file://` URI — that opens the HTML source, not the rendered deck.
 

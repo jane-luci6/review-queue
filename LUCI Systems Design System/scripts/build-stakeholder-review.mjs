@@ -230,8 +230,8 @@ const SHARED_EDIT_HINT =
 const CURSOR_DOC_META = {
   'capabilities-document': {
     title: 'Capabilities document',
-    master: 'LUCI Systems Design System/ui_kits/sales/capabilities-document.html',
-    clientFile: 'LUCI Systems Design System/ui_kits/sales/{client}-capabilities.html',
+    master: 'ui_kits/sales/capabilities-document.html',
+    clientFile: '~/Desktop/LUCI Docs/{client}/clients/{client}-capabilities.html',
     editMode: {
       enabled: true,
       hint: SHARED_EDIT_HINT,
@@ -241,8 +241,8 @@ const CURSOR_DOC_META = {
   },
   'sales-deck': {
     title: 'Sales deck',
-    master: 'LUCI Systems Design System/ui_kits/sales/sales-deck.html',
-    clientFile: 'LUCI Systems Design System/ui_kits/sales/{client}-sales-deck.html',
+    master: 'ui_kits/sales/sales-deck.html',
+    clientFile: '~/Desktop/LUCI Docs/{client}/clients/{client}-sales-deck.html',
     editMode: {
       enabled: true,
       hint: SHARED_EDIT_HINT,
@@ -252,8 +252,8 @@ const CURSOR_DOC_META = {
   },
   'scope-of-work': {
     title: 'Scope of work',
-    master: 'LUCI Systems Design System/ui_kits/sales/scope-of-work.html',
-    clientFile: 'LUCI Systems Design System/ui_kits/sales/{client}-scope-of-work.html',
+    master: 'ui_kits/sales/scope-of-work.html',
+    clientFile: '~/Desktop/LUCI Docs/{client}/clients/{client}-scope-of-work.html',
     editMode: {
       enabled: true,
       hint: SHARED_EDIT_HINT,
@@ -263,8 +263,8 @@ const CURSOR_DOC_META = {
   },
   'proposal': {
     title: 'Proposal - LED',
-    master: 'LUCI Systems Design System/ui_kits/sales/proposal.html',
-    clientFile: 'LUCI Systems Design System/ui_kits/sales/{client}-proposal.html',
+    master: 'ui_kits/sales/proposal.html',
+    clientFile: '~/Desktop/LUCI Docs/{client}/clients/{client}-proposal.html',
     editMode: {
       enabled: true,
       hint: SHARED_EDIT_HINT,
@@ -274,8 +274,8 @@ const CURSOR_DOC_META = {
   },
   'proposal-luci-retrofit': {
     title: 'Proposal - LUCI Retrofit',
-    master: 'LUCI Systems Design System/ui_kits/sales/proposal-luci-retrofit.html',
-    clientFile: 'LUCI Systems Design System/ui_kits/sales/{client}-proposal-luci-retrofit.html',
+    master: 'ui_kits/sales/proposal-luci-retrofit.html',
+    clientFile: '~/Desktop/LUCI Docs/{client}/clients/{client}-proposal-luci-retrofit.html',
     editMode: {
       enabled: true,
       hint: SHARED_EDIT_HINT,
@@ -285,8 +285,8 @@ const CURSOR_DOC_META = {
   },
   'proposal-upgrade': {
     title: 'Proposal - Upgrade',
-    master: 'LUCI Systems Design System/ui_kits/sales/proposal-upgrade.html',
-    clientFile: 'LUCI Systems Design System/ui_kits/sales/{client}-proposal-upgrade.html',
+    master: 'ui_kits/sales/proposal-upgrade.html',
+    clientFile: '~/Desktop/LUCI Docs/{client}/clients/{client}-proposal-upgrade.html',
     editMode: {
       enabled: true,
       hint: SHARED_EDIT_HINT,
@@ -296,8 +296,8 @@ const CURSOR_DOC_META = {
   },
   'budgetary-estimate': {
     title: 'Budgetary estimate',
-    master: 'LUCI Systems Design System/ui_kits/sales/budgetary-estimate.html',
-    clientFile: 'LUCI Systems Design System/ui_kits/sales/{client}-budgetary-estimate.html',
+    master: 'ui_kits/sales/budgetary-estimate.html',
+    clientFile: '~/Desktop/LUCI Docs/{client}/clients/{client}-budgetary-estimate.html',
     editMode: {
       enabled: true,
       hint: SHARED_EDIT_HINT,
@@ -327,8 +327,8 @@ function injectCursorContext(html, templateId, fileName) {
     },
     source: { master: meta.master, clientFile: meta.clientFile },
     editMode: meta.editMode,
-    workflow:
-      'Paste this page URL into Cursor chat. Agent fetches the skill URLs above before editing. No specific folder required. Open the same URL in a browser to click-edit highlighted text.',
+      workflow:
+        'Paste this page URL into Cursor chat, or just name the document type and client. Agent reads skills from the OneDrive "Cursor Branding Files" folder, then creates a working copy at ~/Desktop/LUCI Docs/<client-name>/ using scripts/create-client-workspace.sh. No portal fetch needed.',
   };
   const editAssets = [
     `<link rel="stylesheet" href="${base}/luci-doc-edit.css?v=3">`,

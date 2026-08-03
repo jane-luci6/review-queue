@@ -20,58 +20,46 @@ This is a **populate-in-place** job, not a rebuild. Never regenerate the documen
 
 Burning millions of tokens on discovery, rebuilds, accessibility snapshots, or rewriting whole `<section>`s is a failure mode. Parse the request → touch only what changed → verify.
 
-### 1. One project folder — never spawn copies
+### 1. Two-folder architecture — OneDrive source + Desktop workspace
 
-Each client document lives in **one** dedicated folder for the life of that job. All skills, CSS, fonts, logos, textures, and the HTML stay there. Do **not** create a second folder, a `-edited.html` sibling that becomes the new source of truth, or a parallel “build output” path.
+The customization studio uses a **two-folder architecture**:
 
-**When Mike names a folder** (e.g. `IP Biloxi Proposal`):
+1. **OneDrive "Cursor Branding Files"** = the shared source (read-only). Master templates, CSS, fonts, logos, textures, diagrams, SKILL.md files, dev server, edit bar, and scripts all live here. Both Jane and Mike have access via OneDrive sync. The agent **always reads from here** — never fetches from the portal. **Never edit files in the OneDrive folder** — it is the source, not the workspace.
 
-```
-<project>/                          ← e.g. Desktop/LUCI Docs/IP Biloxi Proposal/
-  clients/                           ← TOP-LEVEL: client HTML + PDF output (easy to find)
-    <client>-<doc>.html             ← THE working file (only one)
-  ui_kits/sales/                     ← master templates + CSS (reference only — don't save client work here)
-    sales-document.css
-    <template>.css
-  ui_kits/internal-portal/customization/
-    luci-doc-edit.css
-    luci-doc-edit.js
-    luci-dev-server.py             ← ALWAYS overwrite from originals; Save + PDF
-    <template>/SKILL.md             ← copy from portal/master skill
-    _brand/SKILL.md
-  assets/fonts/                     luci-brand-fonts.css
-  assets/logos/                     luci-full-white.png (+ client logo)
-  assets/textures/                  ONLY files the master CSS/HTML references
-  inputs/                           spreadsheet, SOW, logo uploads (optional)
-```
+2. **Desktop/LUCI Docs/<client-name>/** = the working folder (per client). The agent creates this folder, symlinks CSS/assets/scripts to the OneDrive folder, and puts the client HTML in `clients/`. All edits happen here. The OneDrive folder is never modified.
 
-**Client HTML lives in a top-level `clients/` folder** — not buried in `ui_kits/sales/`. This makes the working file and generated PDF easy to find.
-
-**Creating a client file from a master template:** use `scripts/prepare-client-doc.sh` — it copies the template to `clients/` and adjusts all relative paths (CSS, fonts, textures, logos, diagrams) so they resolve correctly from the new location:
+**Creating a client workspace:** use `scripts/create-client-workspace.sh` — it creates the working folder, symlinks, copies the master template, and adjusts paths automatically:
 
 ```bash
-scripts/prepare-client-doc.sh ui_kits/sales/<template>.html clients/<client>-<doc>.html
+scripts/create-client-workspace.sh "<Client Name>" <template-name> <doc-type>
 ```
 
-Do **not** manually copy a template to `clients/` without adjusting paths — the relative paths in `ui_kits/sales/` templates (`../../assets/…`, `href="sales-document.css"`, `src="assets/logos/…"`) will not resolve from `clients/` and the document will render unstyled or missing images.
+Example:
+```bash
+scripts/create-client-workspace.sh "Ameristar Black Hawk" proposal-luci-retrofit proposal-luci-retrofit
+```
 
-Mirror the portal’s relative paths. **Serve with the LUCI dev server** — run `python3 ui_kits/internal-portal/customization/luci-dev-server.py` from `<project>/` (the agent starts it as a background process). It serves the project root on `http://127.0.0.1:8771` and accepts `POST /__save` + `POST /__pdf`. Never root the server at `ui_kits/sales/` or textures/logos 404 and the circuit pattern "doesn't load."
+This creates:
+```
+~/Desktop/LUCI Docs/ameristar-black-hawk/
+  clients/
+    ameristar-black-hawk-proposal-luci-retrofit.html  ← THE working file (edits happen here)
+  ui_kits/   → symlink to OneDrive/ui_kits/          ← CSS, templates, SKILL.md (read-only)
+  assets/    → symlink to OneDrive/assets/           ← fonts, logos, textures, diagrams (read-only)
+  scripts/   → symlink to OneDrive/scripts/          ← render-pdf, etc. (read-only)
+```
 
-**Always refresh the preview tooling before every server start (mandatory for Mike):** overwrite — do not skip if present —
+The client name Mike enters becomes the folder name and the filename (kebab-case). The dev server runs from the working folder and serves everything correctly — CSS and assets resolve through the symlinks to OneDrive.
 
-- `ui_kits/internal-portal/customization/luci-dev-server.py`
-- `ui_kits/internal-portal/customization/luci-doc-edit.js`
-- `ui_kits/internal-portal/customization/luci-doc-edit.css`
+**Serve with the LUCI dev server** — run `python3 ui_kits/internal-portal/customization/luci-dev-server.py` from the working folder (the agent starts it as a background process). It serves the working folder on `http://127.0.0.1:8771` and accepts `POST /__save` + `POST /__pdf`. The dev server supports symlinked directories.
 
-— from the current portal/luci-design `customization/` originals. Stale copies lack `POST /__pdf` and break Download PDF. Then restart the server from that refreshed path.
+**Do not overwrite the tooling files** in the working folder — they are symlinks to the OneDrive folder, which is kept in sync via `scripts/sync-to-onedrive.sh` (runs automatically as a git post-commit hook when Jane updates master templates, CSS, or assets).
 
-**Exception — shared OneDrive folder:** if the project folder is the shared OneDrive "Cursor Branding Files" folder, the dev server, edit bar, SKILL.md files, master templates, CSS, and assets are already present and kept in sync via `scripts/sync-to-onedrive.sh`. In that case, **read from disk** — do not fetch from the portal, and do not overwrite the tooling files (they are already current). Just start the dev server and open the preview.
-
-**If the project folder is empty or missing files:** fetch the exact master HTML + linked CSS + referenced assets from the portal (or luci-design) in **one batch**, or run `scripts/sync-to-onedrive.sh` from the luci-design repo to populate it. Do not discover assets by trial and error. Do **not** pull extra stylesheets the master does not already link (e.g. do not add `scope-of-work.css` into a budgetary/proposal client — it overrides `.doc-page-band` and strips navy headers + circuit texture).
+Do **not** pull extra stylesheets the master does not already link (e.g. do not add `scope-of-work.css` into a budgetary/proposal client — it overrides `.doc-page-band` and strips navy headers + circuit texture).
 
 ### 2. Edit by selector — never by rewrite
 
-- Locate variable fields by `[data-studio="…"]` (or the template skill’s listed selectors) and replace the **text node / attribute only**.
+- Locate variable fields by `[data-studio="…"]` (or the template skill's listed selectors) and replace the **text node / attribute only**.
 - Do **not** re-emit a whole `<section>` to change values inside it.
 - Do **not** invent fine-print, freight/travel disclaimers, “Addressed to” labels, or extra legal language that is not in the master or Mike’s source files.
 - Do **not** edit shared stylesheets. Client-only layout overrides go in a commented `<style>` block in the client HTML `<head>`, scoped to a page class — and only after confirming a locked-region override with the user.

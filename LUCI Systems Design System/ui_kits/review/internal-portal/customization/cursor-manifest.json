@@ -1,7 +1,8 @@
 {
   "version": 1,
   "portalOrigin": "http://10.10.1.17:8081",
-  "instructions": "Paste any template preview URL into Cursor chat, or just name the document type and client. If the project folder is the shared OneDrive 'Cursor Branding Files' folder, all master templates, CSS, assets, and skills are already local — read from disk, no portal fetch needed.",
+  "instructions": "Paste any template preview URL into Cursor chat, or just name the document type and client. The agent always reads master templates, CSS, assets, and SKILL.md files from the shared OneDrive 'Cursor Branding Files' folder, then creates a working copy at ~/Desktop/LUCI Docs/<client-name>/ using scripts/create-client-workspace.sh. All edits happen in the Desktop working folder — never in OneDrive.",
+  "workspaceScript": "scripts/create-client-workspace.sh",
   "sharedSkills": {
     "router": "/internal-portal/customization/CURSOR.md",
     "brand": "/internal-portal/customization/_brand/SKILL.md",
@@ -14,7 +15,7 @@
       "skill": "/internal-portal/customization/sales-deck/SKILL.md",
       "agents": "/internal-portal/customization/sales-deck/AGENTS.md",
       "master": "LUCI Systems Design System/ui_kits/sales/sales-deck.html",
-      "clientFile": "LUCI Systems Design System/clients/{client}-sales-deck.html",
+      "clientFile": "~/Desktop/LUCI Docs/{client}/clients/{client}-sales-deck.html",
       "status": "ready"
     },
     "capabilities-document": {
@@ -23,7 +24,7 @@
       "skill": "/internal-portal/customization/capabilities-document/SKILL.md",
       "agents": "/internal-portal/customization/capabilities-document/AGENTS.md",
       "master": "LUCI Systems Design System/ui_kits/sales/capabilities-document.html",
-      "clientFile": "LUCI Systems Design System/clients/{client}-capabilities.html",
+      "clientFile": "~/Desktop/LUCI Docs/{client}/clients/{client}-capabilities.html",
       "status": "ready"
     },
     "scope-of-work": {
@@ -32,7 +33,7 @@
       "skill": "/internal-portal/customization/scope-of-work/SKILL.md",
       "agents": "/internal-portal/customization/scope-of-work/AGENTS.md",
       "master": "LUCI Systems Design System/ui_kits/sales/scope-of-work.html",
-      "clientFile": "LUCI Systems Design System/clients/{client}-scope-of-work.html",
+      "clientFile": "~/Desktop/LUCI Docs/{client}/clients/{client}-scope-of-work.html",
       "status": "ready"
     },
     "proposal": {
@@ -41,7 +42,7 @@
       "skill": "/internal-portal/customization/proposal/SKILL.md",
       "agents": "/internal-portal/customization/proposal/AGENTS.md",
       "master": "LUCI Systems Design System/ui_kits/sales/proposal.html",
-      "clientFile": "LUCI Systems Design System/clients/{client}-proposal.html",
+      "clientFile": "~/Desktop/LUCI Docs/{client}/clients/{client}-proposal.html",
       "status": "ready"
     },
     "proposal-luci-retrofit": {
@@ -50,7 +51,7 @@
       "skill": "/internal-portal/customization/proposal-luci-retrofit/SKILL.md",
       "agents": "/internal-portal/customization/proposal-luci-retrofit/AGENTS.md",
       "master": "LUCI Systems Design System/ui_kits/sales/proposal-luci-retrofit.html",
-      "clientFile": "LUCI Systems Design System/clients/{client}-proposal-luci-retrofit.html",
+      "clientFile": "~/Desktop/LUCI Docs/{client}/clients/{client}-proposal-luci-retrofit.html",
       "status": "ready"
     },
     "proposal-upgrade": {
@@ -59,7 +60,7 @@
       "skill": "/internal-portal/customization/proposal-upgrade/SKILL.md",
       "agents": "/internal-portal/customization/proposal-upgrade/AGENTS.md",
       "master": "LUCI Systems Design System/ui_kits/sales/proposal-upgrade.html",
-      "clientFile": "LUCI Systems Design System/clients/{client}-proposal-upgrade.html",
+      "clientFile": "~/Desktop/LUCI Docs/{client}/clients/{client}-proposal-upgrade.html",
       "status": "ready"
     },
     "budgetary-estimate": {
@@ -68,7 +69,7 @@
       "skill": "/internal-portal/customization/budgetary-estimate/SKILL.md",
       "agents": "/internal-portal/customization/budgetary-estimate/AGENTS.md",
       "master": "LUCI Systems Design System/ui_kits/sales/budgetary-estimate.html",
-      "clientFile": "LUCI Systems Design System/clients/{client}-budgetary-estimate.html",
+      "clientFile": "~/Desktop/LUCI Docs/{client}/clients/{client}-budgetary-estimate.html",
       "status": "ready"
     }
   }

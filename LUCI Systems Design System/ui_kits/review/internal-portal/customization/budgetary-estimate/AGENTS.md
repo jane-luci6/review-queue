@@ -2,6 +2,8 @@
 
 **Portal preview:** `http://10.10.1.17:8081/internal-portal/customization/budgetary-estimate/budgetary-estimate.html`
 
+**Source:** OneDrive "Cursor Branding Files" folder — read master templates, CSS, and skills from here.
+
 **Status:** Ready — 4-page trim (post-capabilities follow-on).
 
 When this URL (or a request to customize the budgetary estimate) appears in chat:
@@ -10,14 +12,14 @@ When this URL (or a request to customize the budgetary estimate) appears in chat
 2. Read **`../_brand/SKILL.md`** — typography, accent, voice, file hygiene.
 3. Read **`../CURSOR.md`** if the URL alone was pasted — confirms source paths.
 
-## Edit in luci-design (not on the VM)
+## Source + working folder
 
 | Role | Path |
 |------|------|
-| Master | `LUCI Systems Design System/ui_kits/sales/budgetary-estimate.html` |
-| Client deliverable | `LUCI Systems Design System/clients/<client>-budgetary-estimate.html` |
+| Master (OneDrive) | `ui_kits/sales/budgetary-estimate.html` (in the "Cursor Branding Files" folder) |
+| Client working file | `~/Desktop/LUCI Docs/<client-name>/clients/<client-name>-budgetary-estimate.html` |
 
-Copy the master to a client file. Editable: cover, context + scope (p2), proposal (p3), investment/tiers/close contact (p4). Marketing delivers grid on p4 stays locked per `SKILL.md`.
+Create a client workspace with `scripts/create-client-workspace.sh "<Client Name>" budgetary-estimate budgetary-estimate`, then customize. Editable: cover, context + scope (p2), proposal (p3), investment/tiers/close contact (p4). Marketing delivers grid on p4 stays locked per `SKILL.md`.
 
 ## Default workflow
 

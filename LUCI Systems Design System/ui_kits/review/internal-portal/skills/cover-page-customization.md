@@ -15,7 +15,10 @@ Inputs (from the Customization Studio cover form):
 - **Company name** — the property/company (e.g., "Tachi Palace").
 - **Goals, plain-language** — notes: goals, pain points, current system, meeting
   context. The form field is "What should the introduction speak to?"
-- **Client logo** — PNG or SVG, transparent background.
+- **Client logo** — PNG or SVG, transparent background. If none is uploaded,
+  find an official logo online (SVG preferred), strip any white/colored
+  background so it sits on light or dark surfaces, and match placement to the
+  cover design (see Logo placement below). Do not leave a placeholder.
 
 Outputs (placed in the cover):
 - Company name → the designated areas (see table).

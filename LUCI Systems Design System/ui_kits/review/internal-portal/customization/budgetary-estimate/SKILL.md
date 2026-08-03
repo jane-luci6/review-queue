@@ -33,7 +33,7 @@ Match LUCI's voice on every line you write or rewrite. Full contract: `../_brand
 When Mike pastes this URL into Cursor chat:
 
 1. Read this `SKILL.md` and `../_brand/SKILL.md` before any edits.
-2. Copy master to `clients/<client>-budgetary-estimate.html` using `scripts/prepare-client-doc.sh ui_kits/sales/budgetary-estimate.html clients/<client>-budgetary-estimate.html` (adjusts all relative paths automatically). Client files live in the top-level `clients/` folder.
+2. **Create a client workspace:** `scripts/create-client-workspace.sh "<Client Name>" budgetary-estimate budgetary-estimate` — creates `~/Desktop/LUCI Docs/<client-name>/` with symlinks to OneDrive and copies the master template to `clients/<client-name>-budgetary-estimate.html` with paths adjusted. (Inside luci-design, use `scripts/prepare-client-doc.sh` instead.)
 3. Customize **cover, overview, scope, proposal, investment, tiers, and close contact** per regions below.
 4. Do **not** edit the HTML file on the VM deploy folder (overwritten on deploy).
 
@@ -43,7 +43,7 @@ See also: `../CURSOR.md`, `AGENTS.md` in this folder.
 
 After customizing, **automatically open the rendered client HTML in Cursor's in-editor (Glass) browser — not the HTML source** — without being asked:
 
-1. From `LUCI Systems Design System/ui_kits/sales/`, start a local server in the background: `python3 -m http.server 8771 --bind 127.0.0.1` (increment the port if busy).
+1. **Start the LUCI dev server** from the **working folder** (`~/Desktop/LUCI Docs/<client-name>/`). The working folder has symlinks to OneDrive for `ui_kits/`, `assets/`, and `scripts/` — CSS, fonts, textures, and logos resolve through the symlinks. Run `python3 ui_kits/internal-portal/customization/luci-dev-server.py` as a background process. It serves `http://127.0.0.1:8771` with `POST /__save` and `POST /__pdf`.
 2. Verify: `curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8771/<client>-budgetary-estimate.html` → `200`.
 3. Open `http://127.0.0.1:8771/<client>-budgetary-estimate.html` in Cursor's in-editor browser via the `cursor-app-control` MCP `open_resource` tool (URI = that URL). Do **not** use a `file://` URI — that opens the HTML source, not the rendered doc.
 
@@ -55,12 +55,12 @@ After the client has received the **Capabilities document** and leadership needs
 
 ## Workflow
 
-1. Open the **portal preview** (URL above) or copy that URL into Cursor chat.
+1. Name the document type and client, or paste the portal preview URL into Cursor chat.
 2. **Pages 1–2 from Mike/Mark context** — cover property name, phase framing, and the page-2 “Prepared for…” intro come from what Mike/Mark tell you (or the portal form). Edit those regions directly; do not rebuild the locked “What LUCI is” block on page 2.
 3. **Page 4 line items from the uploaded spreadsheet** — Mike/Mark attach an `.xlsx` of the proposal line items. Run the ingestion script (below) to convert it to the page-4 markup, paste it in, and split to a second proposal page if the script says it overflows.
 4. **Page 6 tiers** — move `be-tier-chip--selected` to the tier you’re pricing this job at, and edit the discount % / price inline for any customer-specific discount.
-5. Save the **client version** in luci-design under `clients/<client>-budgetary-estimate.html` — not over the master.
-6. Preview → Print/Save as PDF (US Letter), or run `npm run pdf:budgetary` from the design system root.
+5. The working file is already at `~/Desktop/LUCI Docs/<client-name>/clients/<client-name>-budgetary-estimate.html` — created by `scripts/create-client-workspace.sh`. All edits happen there.
+6. Download PDF via the dev server's `POST /__pdf` (headless Chrome), or run `scripts/render-pdf.sh` from the working folder.
 
 ---
 
@@ -69,7 +69,7 @@ After the client has received the **Capabilities document** and leadership needs
 Mike/Mark upload an `.xlsx` of the proposal line items. Convert it to the page-4 markup with `scripts/ingest-budgetary-lineitems.py`:
 
 ```bash
-# from the design-system root
+# from the working folder (~/Desktop/LUCI Docs/<client-name>/)
 python3 scripts/ingest-budgetary-lineitems.py path/to/line-items.xlsx
 # write the groups HTML to a file to paste from:
 python3 scripts/ingest-budgetary-lineitems.py path/to/line-items.xlsx --out /tmp/be-rows.html
@@ -93,7 +93,7 @@ python3 scripts/ingest-budgetary-lineitems.py path/to/line-items.xlsx --split --
 
 - The script partitions groups across `doc-page--proposal` sections — page 04 (`Line items.`) + a “continued” page 05 (`Line items, continued.`) — with the band header, column-label row, and footers already wired.
 - Paste the emitted sections **in place of the existing page-4 section**, then **renumber every trailing page footer** (`doc-foot__page`) and the page map below by the number of extra pages added (e.g. one extra line-items page → old 05/06 become 06/07).
-- Verify the split by rendering the PDF (`npm run pdf:budgetary`) and checking no group is cut off mid-table. If a single group is too tall to fit a page, subdivide it into two `be-price-group` blocks with split labels (e.g. “LUCI Video & Control Hardware (1/2)”).
+- Verify the split by rendering the PDF (via the dev server's `POST /__pdf` or `scripts/render-pdf.sh`) and checking no group is cut off mid-table. If a single group is too tall to fit a page, subdivide it into two `be-price-group` blocks with split labels (e.g. “LUCI Video & Control Hardware (1/2)”).
 
 If the spreadsheet’s column names don’t map (the script errors with `missing required column(s)`), either rename the headers in the .xlsx or pass an adapted copy — the script’s `COL_SYNONYMS` table lists the accepted names.
 

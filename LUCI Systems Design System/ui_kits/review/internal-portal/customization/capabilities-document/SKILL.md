@@ -33,7 +33,7 @@ Match LUCI's voice on every line you write or rewrite. Full contract: `../_brand
 When Mike pastes this URL into Cursor chat:
 
 1. Read this `SKILL.md` and `../_brand/SKILL.md` before any edits.
-2. Copy master to `clients/<client>-capabilities.html` using `scripts/prepare-client-doc.sh ui_kits/sales/capabilities-document.html clients/<client>-capabilities.html` (adjusts all relative paths automatically). Client files live in the top-level `clients/` folder.
+2. **Create a client workspace:** `scripts/create-client-workspace.sh "<Client Name>" capabilities-document capabilities` — creates `~/Desktop/LUCI Docs/<client-name>/` with symlinks to OneDrive and copies the master template to `clients/<client-name>-capabilities.html` with paths adjusted. (Inside luci-design, use `scripts/prepare-client-doc.sh` instead.)
 3. Customize **cover (page 1)** and **close (page 9)** only — see editable regions below.
 4. Do **not** edit the HTML file on the VM deploy folder (overwritten on deploy).
 
@@ -43,7 +43,7 @@ See also: `../CURSOR.md`, `AGENTS.md` in this folder.
 
 After customizing the doc, **automatically open the rendered client HTML in Cursor's in-editor (Glass) browser — not the HTML source** — without being asked:
 
-1. From `LUCI Systems Design System/ui_kits/sales/`, start a local server in the background: `python3 -m http.server 8771 --bind 127.0.0.1` (increment the port if busy).
+1. **Start the LUCI dev server** from the **working folder** (`~/Desktop/LUCI Docs/<client-name>/`). The working folder has symlinks to OneDrive for `ui_kits/`, `assets/`, and `scripts/` — CSS, fonts, textures, and logos resolve through the symlinks. Run `python3 ui_kits/internal-portal/customization/luci-dev-server.py` as a background process. It serves `http://127.0.0.1:8771` with `POST /__save` and `POST /__pdf`.
 2. Verify: `curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8771/<client>-capabilities.html` → `200`.
 3. Open `http://127.0.0.1:8771/<client>-capabilities.html` in Cursor's in-editor browser via the `cursor-app-control` MCP `open_resource` tool (URI = that URL). Do **not** use a `file://` URI — that opens the HTML source, not the rendered doc.
 
@@ -55,10 +55,10 @@ After a demo, when the prospect needs a capabilities overview scoped to their pr
 
 ## Workflow
 
-1. Open the **portal preview** (URL above) or copy that URL into Cursor chat.
+1. Name the document type and client, or paste the portal preview URL into Cursor chat.
 2. Describe what to change in plain language (property name, client summary, logo swap).
-3. Save the **client version** in luci-design under `clients/<client>-capabilities.html` — not over the master.
-4. Preview → Print/Save as PDF (US Letter).
+3. The working file is already at `~/Desktop/LUCI Docs/<client-name>/clients/<client-name>-capabilities.html` — created by `scripts/create-client-workspace.sh`. All edits happen there.
+4. Download PDF via the dev server's `POST /__pdf` (headless Chrome), or run `scripts/render-pdf.sh` from the working folder.
 
 ---
 

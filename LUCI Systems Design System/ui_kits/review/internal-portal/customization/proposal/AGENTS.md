@@ -2,20 +2,22 @@
 
 **Portal preview:** `http://10.10.1.17:8081/internal-portal/customization/proposal/proposal.html`
 
+**Source:** OneDrive "Cursor Branding Files" folder — read master templates, CSS, and skills from here.
+
 When this URL (or a request to customize the LED proposal) appears in chat:
 
 1. Read **`SKILL.md`** (this folder) — page map, editable vs locked regions, typography table.
 2. Read **`../_brand/SKILL.md`** — typography, accent, voice, file hygiene.
 3. Read **`../CURSOR.md`** if the URL alone was pasted — confirms source paths.
 
-## Edit in luci-design (not on the VM)
+## Source + working folder
 
 | Role | Path |
 |------|------|
-| Master | `LUCI Systems Design System/ui_kits/sales/proposal.html` |
-| Client deliverable | `LUCI Systems Design System/clients/<client>-proposal.html` |
+| Master (OneDrive) | `ui_kits/sales/proposal.html` (in the "Cursor Branding Files" folder) |
+| Client working file | `~/Desktop/LUCI Docs/<client-name>/clients/<client-name>-proposal.html` |
 
-Copy the master to a client file, then customize cover, scope, specs, fee, estimates, terms, and signature per `SKILL.md`. Preserve CSS classes — never inline `font-family`.
+Create a client workspace with `scripts/create-client-workspace.sh "<Client Name>" proposal proposal`, then customize cover, scope, specs, fee, estimates, terms, and signature per `SKILL.md`. Preserve CSS classes — never inline `font-family`.
 
 ## What's editable vs locked (summary)
 

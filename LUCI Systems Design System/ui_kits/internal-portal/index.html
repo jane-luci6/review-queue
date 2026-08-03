@@ -1413,7 +1413,7 @@
         html: 'customization/sales-deck/sales-deck.html',
         masterFile: 'sales-deck.html',
         clientSuffix: 'sales-deck',
-        skillPath: 'LUCI Systems Design System/ui_kits/internal-portal/customization/sales-deck/SKILL.md',
+        skillPath: 'ui_kits/internal-portal/customization/sales-deck/SKILL.md',
       },
       {
         id: 'capabilities-document',
@@ -1425,7 +1425,7 @@
         html: 'customization/capabilities-document/capabilities-document.html',
         masterFile: 'capabilities-document.html',
         clientSuffix: 'capabilities',
-        skillPath: 'LUCI Systems Design System/ui_kits/internal-portal/customization/capabilities-document/SKILL.md',
+        skillPath: 'ui_kits/internal-portal/customization/capabilities-document/SKILL.md',
       },
       {
         id: 'scope-of-work',
@@ -1437,7 +1437,7 @@
         html: 'customization/scope-of-work/scope-of-work.html',
         masterFile: 'scope-of-work.html',
         clientSuffix: 'scope-of-work',
-        skillPath: 'LUCI Systems Design System/ui_kits/internal-portal/customization/scope-of-work/SKILL.md',
+        skillPath: 'ui_kits/internal-portal/customization/scope-of-work/SKILL.md',
       },
       {
         id: 'budgetary-estimate',
@@ -1449,7 +1449,7 @@
         html: 'customization/budgetary-estimate/budgetary-estimate.html',
         masterFile: 'budgetary-estimate.html',
         clientSuffix: 'budgetary-estimate',
-        skillPath: 'LUCI Systems Design System/ui_kits/internal-portal/customization/budgetary-estimate/SKILL.md',
+        skillPath: 'ui_kits/internal-portal/customization/budgetary-estimate/SKILL.md',
       },
       {
         id: 'proposal',
@@ -1461,7 +1461,7 @@
         html: 'customization/proposal/proposal.html',
         masterFile: 'proposal.html',
         clientSuffix: 'proposal',
-        skillPath: 'LUCI Systems Design System/ui_kits/internal-portal/customization/proposal/SKILL.md',
+        skillPath: 'ui_kits/internal-portal/customization/proposal/SKILL.md',
       },
       {
         id: 'proposal-luci-retrofit',
@@ -1473,7 +1473,7 @@
         html: 'customization/proposal-luci-retrofit/proposal-luci-retrofit.html',
         masterFile: 'proposal-luci-retrofit.html',
         clientSuffix: 'proposal-luci-retrofit',
-        skillPath: 'LUCI Systems Design System/ui_kits/internal-portal/customization/proposal-luci-retrofit/SKILL.md',
+        skillPath: 'ui_kits/internal-portal/customization/proposal-luci-retrofit/SKILL.md',
       },
       {
         id: 'proposal-upgrade',
@@ -1485,7 +1485,7 @@
         html: 'customization/proposal-upgrade/proposal-upgrade.html',
         masterFile: 'proposal-upgrade.html',
         clientSuffix: 'proposal-upgrade',
-        skillPath: 'LUCI Systems Design System/ui_kits/internal-portal/customization/proposal-upgrade/SKILL.md',
+        skillPath: 'ui_kits/internal-portal/customization/proposal-upgrade/SKILL.md',
       },
     ];
 
@@ -1494,42 +1494,43 @@
     }
 
     function starterPromptForTemplate(t) {
+      var templateName = t.masterFile.replace(/\.html$/, '');
       return [
         'Customize the LUCI ' + t.title + ' for [CLIENT NAME].',
         '',
-        'Portal master: ' + portalDocUrl(t),
+        'Source: OneDrive "Cursor Branding Files" folder \u2014 read master templates,',
+        'CSS, assets, and skills from there. No portal fetch needed.',
         '',
         'Read these before any edits and follow their rules:',
-        '- ' + t.skillPath,
-        '- LUCI Systems Design System/ui_kits/internal-portal/customization/_brand/SKILL.md',
-        '- LUCI Systems Design System/ui_kits/internal-portal/customization/CURSOR.md',
+        '- ui_kits/internal-portal/customization/' + t.folder + '/SKILL.md',
+        '- ui_kits/internal-portal/customization/_brand/SKILL.md',
+        '- ui_kits/internal-portal/customization/CURSOR.md',
         '',
         'Steps (in this order):',
-        '1. Set up one project folder mirroring the portal\'s relative paths',
-        '   (ui_kits/sales/, assets/fonts, assets/logos, assets/textures). Copy the',
-        '   master to ui_kits/sales/[client]-' + t.clientSuffix + '.html (from',
-        '   ui_kits/sales/' + t.masterFile + '). ALWAYS overwrite (never skip)',
-        '   luci-doc-edit.css, luci-doc-edit.js, and luci-dev-server.py into',
-        '   ui_kits/internal-portal/customization/ from the portal/luci-design',
-        '   customization originals — stale copies break Download PDF.',
-        '2. Start the refreshed server from the project root (the folder containing',
-        '   both ui_kits/ and assets/):',
+        '1. Create a client workspace:',
+        '   scripts/create-client-workspace.sh "[CLIENT NAME]" ' + templateName + ' ' + t.clientSuffix,
+        '   This creates ~/Desktop/LUCI Docs/[client-name]/ with symlinks to',
+        '   the OneDrive folder for CSS/assets/scripts, and copies the master',
+        '   template to clients/[client-name]-' + t.clientSuffix + '.html with',
+        '   paths adjusted. All edits happen here \u2014 never in the OneDrive folder.',
+        '2. Start the LUCI dev server from the working folder',
+        '   (~/Desktop/LUCI Docs/[client-name]/):',
         '   python3 ui_kits/internal-portal/customization/luci-dev-server.py',
         '   (background process). Serves http://127.0.0.1:8771 with POST /__save',
         '   and POST /__pdf. Confirm GET /__health shows "pdf": true.',
-        '3. Customize the working file per the skills — populate-in-place, edit by',
-        '   selector, never rebuild sections.',
+        '3. Customize the working file per the skills \u2014 populate-in-place,',
+        '   edit by selector, never rebuild sections.',
         '4. Open the rendered preview in Cursor\'s in-editor browser at',
-        '   http://127.0.0.1:8771/ui_kits/sales/[client]-' + t.clientSuffix + '.html',
-        '   (never a file:// URI). If the edit bar (Save / Copy HTML / Download PDF)',
-        '   is missing, the dev server isn\'t running — refresh the three tooling',
-        '   files, restart the server, and reload.',
+        '   http://127.0.0.1:8771/clients/[client-name]-' + t.clientSuffix + '.html',
+        '   (never a file:// URI). If the edit bar (Save / Copy HTML / Download',
+        '   PDF) is missing, the dev server isn\'t running \u2014 start it from the',
+        '   working folder and reload.',
         '5. After editing, verify per _brand/SKILL.md: run the fit check, confirm',
         '   footers match the title, and confirm line items match the spreadsheet',
         '   (when a spreadsheet was provided).',
         '',
         'Client notes:',
-        '[property type, pain points, demo context, logo path if any — if none, find a clean official logo online]',
+        '[property type, pain points, demo context, logo path if any \u2014 if none, find a clean official logo online]'
       ].join('\n');
     }
 
