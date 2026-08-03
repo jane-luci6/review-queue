@@ -16,12 +16,12 @@ Mike pastes a portal preview URL into Cursor chat, or just names the document ty
 1. **Read ONLY these 2 SKILL files** from the OneDrive "Cursor Branding Files" folder (for **instructions**):
    - `ui_kits/internal-portal/customization/_brand/SKILL.md` — the workflow, voice, fit check, PDF, and all house rules
    - `ui_kits/internal-portal/customization/<template>/SKILL.md` — the page map, editable vs locked regions for this template
-   - The working HTML file (created by step 2 below) is the file you **read and edit** — that's the document being customized.
-   - **Do not** read other **instruction** files (CURSOR.md, AGENTS.md, README.md) or other **templates**. The 2 SKILL files tell you everything you need.
+   - **Do not** read the master template, other templates, or any other HTML files — the working HTML file is created by step 2 below.
+   - **Do not** read other **instruction** files (CURSOR.md, AGENTS.md, README.md). The 2 SKILL files tell you everything you need.
 
-2. **Create a client workspace:** `scripts/create-client-workspace.sh "<Client Name>" <template-name> <doc-type>` — creates `~/Desktop/LUCI Docs/<client-name>/` with symlinks to OneDrive and copies the master template to `clients/<client-name>-<doc>.html`.
+2. **Create a client workspace:** `scripts/create-client-workspace.sh "<Client Name>" <template-name> <doc-type>` — creates `~/Desktop/LUCI Docs/<client-name>/` with symlinks to OneDrive and copies the master template to `clients/<client-name>-<doc>.html`. This working HTML file is the **only** HTML file you read and edit.
 
-3. **Customize** per the 2 SKILL.md files. Populate-in-place; never rebuild. Edit by selector; never rewrite sections. Run the mandatory fit check after content edits (see `_brand/SKILL.md`).
+3. **Customize** the working HTML file per the 2 SKILL.md files. Populate-in-place; never rebuild. Edit by selector; never rewrite sections. Run the mandatory fit check after content edits (see `_brand/SKILL.md`).
 
 4. **Open the rendered preview** in Cursor's in-editor browser at `http://127.0.0.1:8771/clients/<client-name>-<doc>.html` (see `_brand/SKILL.md` → "Open the rendered preview"). Do not use a `file://` URI.
 
