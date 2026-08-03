@@ -47,7 +47,7 @@ Match LUCI's voice on every line you write or rewrite. Full contract: `../_brand
 When Mike pastes this URL into Cursor chat:
 
 1. Read this `SKILL.md` and `../_brand/SKILL.md` before any edits.
-2. Copy master to `clients/<client>-proposal.html` using `scripts/prepare-client-doc.sh ui_kits/sales/proposal.html clients/<client>-proposal.html` (adjusts all relative paths automatically). Client files live in the top-level `clients/` folder.
+2. **Create a client workspace:** `scripts/create-client-workspace.sh "<Client Name>" proposal proposal` — creates `~/Desktop/LUCI Docs/<client-name>/` with symlinks to OneDrive and copies the master template to `clients/<client-name>-proposal.html` with paths adjusted. (Inside luci-design, use `scripts/prepare-client-doc.sh` instead.)
 3. Customize cover, scope, specs, fee, estimates, terms, and close per this skill — preserve CSS classes.
 4. Do **not** edit the HTML file on the VM deploy folder (overwritten on deploy).
 

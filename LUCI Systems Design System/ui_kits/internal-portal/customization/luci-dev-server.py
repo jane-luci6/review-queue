@@ -76,12 +76,20 @@ class LUCIDevHandler(http.server.SimpleHTTPRequestHandler):
         # what keeps the buttons from disappearing after Cursor re-renders.
         if path.endswith('/'):
             path = path + 'index.html'
-        fs_path = (ROOT / path.lstrip('/')).resolve()
+        # Normalize the path (resolve .. but do NOT follow symlinks yet) so
+        # the security check sees the literal path within ROOT. Symlinks
+        # (e.g. ui_kits/ → OneDrive/ui_kits/) are followed by the OS when
+        # the file is actually read — the check just needs to confirm the
+        # requested URL path is within the project root.
+        import os as _os
+        raw_path = ROOT / path.lstrip('/')
+        norm_path = Path(_os.path.normpath(str(raw_path)))
         try:
-            fs_path.relative_to(ROOT)
+            norm_path.relative_to(ROOT)
         except ValueError:
             self.send_error(403, 'Path outside project root')
             return
+        fs_path = norm_path
 
         if fs_path.is_file() and fs_path.suffix.lower() == '.html':
             try:
@@ -147,9 +155,9 @@ class LUCIDevHandler(http.server.SimpleHTTPRequestHandler):
             self._json(400, {'error': 'Missing "path" or "html"'})
             return
 
-        # Strip leading slash, resolve, and confirm it stays inside ROOT.
+        # Strip leading slash, normalize (no symlink follow), confirm inside ROOT.
         rel = unquote(rel_path).lstrip('/')
-        target = (ROOT / rel).resolve()
+        target = Path(os.path.normpath(str(ROOT / rel)))
         try:
             target.relative_to(ROOT)
         except ValueError:
@@ -193,7 +201,7 @@ class LUCIDevHandler(http.server.SimpleHTTPRequestHandler):
             return
 
         rel = unquote(rel_path).lstrip('/')
-        html_path = (ROOT / rel).resolve()
+        html_path = Path(os.path.normpath(str(ROOT / rel)))
         try:
             html_path.relative_to(ROOT)
         except ValueError:

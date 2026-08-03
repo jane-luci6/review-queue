@@ -33,7 +33,7 @@ Match LUCI's voice on every line you write or rewrite. Full contract: `../_brand
 When Mike pastes this URL into Cursor chat:
 
 1. Read this `SKILL.md` and `../_brand/SKILL.md` before any edits.
-2. Copy master to `clients/<client>-sales-deck.html` using `scripts/prepare-client-doc.sh ui_kits/sales/sales-deck.html clients/<client>-sales-deck.html` (adjusts all relative paths automatically). Client files live in the top-level `clients/` folder.
+2. **Create a client workspace:** `scripts/create-client-workspace.sh "<Client Name>" sales-deck sales-deck` — creates `~/Desktop/LUCI Docs/<client-name>/` with symlinks to OneDrive and copies the master template to `clients/<client-name>-sales-deck.html` with paths adjusted. (Inside luci-design, use `scripts/prepare-client-doc.sh` instead.)
 3. Customize **slides 1–2** only — copy, logo, and photos (see editable regions below).
 4. Do **not** edit the HTML file on the VM deploy folder (overwritten on deploy).
 

@@ -1,7 +1,8 @@
 {
   "version": 1,
   "portalOrigin": "http://10.10.1.17:8081",
-  "instructions": "Paste any template preview URL into Cursor chat, or just name the document type and client. If the project folder is the shared OneDrive 'Cursor Branding Files' folder, all master templates, CSS, assets, and skills are already local — read from disk, no portal fetch needed.",
+  "instructions": "Paste any template preview URL into Cursor chat, or just name the document type and client. The agent always reads master templates, CSS, assets, and SKILL.md files from the shared OneDrive 'Cursor Branding Files' folder, then creates a working copy at ~/Desktop/LUCI Docs/<client-name>/ using scripts/create-client-workspace.sh. All edits happen in the Desktop working folder — never in OneDrive.",
+  "workspaceScript": "scripts/create-client-workspace.sh",
   "sharedSkills": {
     "router": "/internal-portal/customization/CURSOR.md",
     "brand": "/internal-portal/customization/_brand/SKILL.md",

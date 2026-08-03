@@ -9,13 +9,13 @@ alwaysApply: true
 
 # LUCI portal document URL → Cursor (folder-agnostic)
 
-Mike pastes a portal preview URL into Cursor chat, or just names the document type and client. **No specific folder needs to be open** — but if the shared OneDrive "Cursor Branding Files" folder is open, all master templates, CSS, assets, and skills are already local (no portal fetch needed).
+Mike pastes a portal preview URL into Cursor chat, or just names the document type and client. **No specific folder needs to be open.** The agent always reads master templates, CSS, assets, and SKILL.md files from the shared OneDrive "Cursor Branding Files" folder, then creates a working copy at `~/Desktop/LUCI Docs/<client-name>/` for edits.
 
 ## On every portal customization URL
 
-1. **Read local skills first.** If the project folder contains `ui_kits/internal-portal/customization/` with SKILL.md files, read them from disk — do not fetch from the portal. Only fetch from the portal if the files are missing.
-2. Read template `SKILL.md` + `_brand/SKILL.md` + `CURSOR.md`.
-3. Copy master → `clients/<client>-<doc>.html` using `scripts/prepare-client-doc.sh` (adjusts paths automatically) and apply client customizations.
+1. **Read local skills from OneDrive.** The shared OneDrive "Cursor Branding Files" folder contains all master templates, CSS, assets, and SKILL.md files. Read them from there — do not fetch from the portal.
+2. Read template `SKILL.md` + `_brand/SKILL.md` + `CURSOR.md` from the OneDrive folder.
+3. **Create a client workspace** using `scripts/create-client-workspace.sh "<Client Name>" <template-name> <doc-type>` — this creates `~/Desktop/LUCI Docs/<client-name>/` with symlinks to OneDrive and copies the master template to `clients/<client-name>-<doc>.html` with paths adjusted. Apply client customizations to this working file.
 4. **Automatically open the rendered client HTML in Cursor's in-editor browser** (not the HTML source) — see "Open the rendered preview in the editor" below. Mike clicks editable text and types in that preview. **No extra canvas or prompt needed** for word-level tweaks.
 
 ## URL patterns → template id
@@ -38,7 +38,7 @@ House-wide for **every** Customization Studio document (all Proposal types, Budg
 
 - **Mike can click-edit any text.** Fonts/colors/layout stay on CSS. Only LUCI logo images stay non-editable.
 - **Populate-in-place.** Never rebuild the document. Never re-emit whole `<section>`s to change a value.
-- **One project folder** per client job; client HTML lives in a top-level `clients/` subfolder. Mirror `ui_kits/sales/` (master templates + CSS) + `assets/` so relative paths work. Serve from the **project root** (the folder that contains both), never from `clients/` or `ui_kits/sales/`.
+- **Two-folder architecture.** OneDrive "Cursor Branding Files" = source (read-only). `~/Desktop/LUCI Docs/<client-name>/` = working folder (created by `scripts/create-client-workspace.sh`, with symlinks to OneDrive for CSS/assets/scripts). Client HTML lives in `clients/<client-name>-<doc>.html`. Serve from the **working folder root** (the folder that contains `clients/`, `ui_kits/`, `assets/`), never from `clients/` or `ui_kits/sales/`.
 - Edit by `[data-studio]` / skill selectors only. Do not invent fine-print or “Addressed to.”
 - **Same working file forever.** The LUCI dev server's `POST /__save` writes Mike's typed edits back to the working `.html` file on disk when he clicks Save — so the next agent pass reads the latest version. `*-edited.html` downloads are a last-resort fallback artifact, not the source of truth.
 - No accessibility snapshots. Mandatory overflow fit-check after content edits (see `_brand/SKILL.md`).
@@ -76,7 +76,7 @@ A user request to change a locked page is **not** an override by itself — it i
 
 After customizing the client HTML, **automatically open the rendered doc in Cursor's in-editor (Glass) browser — not the HTML source.** Do this as the final step of every customization, without being asked.
 
-1. **Refresh preview tooling, then start the LUCI dev server** from the **project root that contains both `ui_kits/` and `assets/`** (`LUCI Systems Design System/` in luci-design; the shared OneDrive "Cursor Branding Files" folder; or Mike's per-job folder on his machine). **Always overwrite** `ui_kits/internal-portal/customization/luci-dev-server.py`, `luci-doc-edit.js`, and `luci-doc-edit.css` from the current customization originals — never skip because they already exist (stale copies break Download PDF). **Exception:** if the project folder is the shared OneDrive "Cursor Branding Files" folder, the tooling files are already current (synced via `scripts/sync-to-onedrive.sh`) — skip the overwrite and just start the server. Then run `python3 ui_kits/internal-portal/customization/luci-dev-server.py` as a background process — it serves `http://127.0.0.1:8771` with `POST /__save` and `POST /__pdf`. **Never** root at `ui_kits/sales/` — logos and circuit textures 404.
+1. **Start the LUCI dev server** from the **working folder** (`~/Desktop/LUCI Docs/<client-name>/`). The working folder has symlinks to the OneDrive folder for `ui_kits/`, `assets/`, and `scripts/` — CSS, fonts, textures, and logos resolve through the symlinks. The dev server supports symlinked directories. Run `python3 ui_kits/internal-portal/customization/luci-dev-server.py` as a background process — it serves `http://127.0.0.1:8771` with `POST /__save` and `POST /__pdf`. **Never** root at `ui_kits/sales/` — logos and circuit textures 404.
 2. Verify the HTML and a texture both return 200.
 3. Open `http://127.0.0.1:8771/clients/<client-file>.html` via `cursor-app-control` `open_resource`. Do **not** use a `file://` URI.
 4. Tell the user it's live and click-to-edit — and that **Save** writes their typing back to the working file automatically (no prompting Cursor). Leave the server running while they review; stop it when they're done or before PDF export.
@@ -89,10 +89,11 @@ After customizing the client HTML, **automatically open the rendered doc in Curs
 
 ## Where to save client work
 
+- **On Mike's machine:** `~/Desktop/LUCI Docs/<client-name>/clients/<client-name>-<doc>.html` — created by `scripts/create-client-workspace.sh`. The working folder has symlinks to OneDrive for CSS/assets/scripts; only `clients/` is a real directory. All edits happen here — never in the OneDrive folder.
 - **Inside luci-design:** `LUCI Systems Design System/clients/<client>-<doc>.html` — top-level `clients/` folder, easy to find. Use `scripts/prepare-client-doc.sh` to copy a master template and adjust paths automatically.
-- **On Mike’s machine:** one dedicated project folder per job (see `_brand/SKILL.md` → Efficient customization). Never spawn a second folder or treat Downloads/`*-edited.html` as the working file.
 - Never save client work to the VM deploy folder
 - Never save client work in `ui_kits/sales/` — that's for master templates and CSS only
+- Never save client work in the OneDrive "Cursor Branding Files" folder — that's the shared source (read-only)
 
 ## Agent behavior
 
