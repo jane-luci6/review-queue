@@ -51,6 +51,12 @@ cp -R "$SRC/ui_kits/internal-portal/customization/"* "$DEST/ui_kits/internal-por
 rm -f "$DEST/ui_kits/internal-portal/customization/luci-dev-server.py.bak"
 echo "  customization/"
 
+# 3a. Portal index page (ui_kits/internal-portal/index.html)
+echo ""
+echo "Copying portal index page..."
+mkdir -p "$DEST/ui_kits/internal-portal"
+cp "$SRC/ui_kits/internal-portal/index.html" "$DEST/ui_kits/internal-portal/" 2>/dev/null && echo "  index.html"
+
 # 4. Root assets (fonts, textures, logos, diagrams)
 echo ""
 echo "Copying root assets..."
