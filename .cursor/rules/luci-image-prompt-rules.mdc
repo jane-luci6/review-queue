@@ -1,0 +1,81 @@
+---
+description: How to write image-generation prompts that look like custom LUCI photography, not AI stock
+alwaysApply: true
+---
+
+# LUCI image-prompt rules — custom photography, not AI stock
+
+**When to use:** whenever writing or revising an image-generation prompt (ChatGPT, Midjourney, or any generator) for a LUCI marketing asset — website industry/persona pages, sales decks, social, proposals, portal, case studies, anywhere a photo or illustration is needed. The goal: every generated image must look like LUCI commissioned and shot the photo ourselves.
+
+**Reference library.** Real client photography lives at `/Users/janehaynie/Library/CloudStorage/OneDrive-LUCISystems/Marketing - Documents/Content/Project Media` (Rio Rack Room, Sams Town LED, Tachi LEDs, Osage LED Wall, Aliante LED, plus `OLD/` → Ameristar, San Manuel, Stanly Ranch, UTE, Northern Quest). Consult it before writing any casino prompt; replicate the *environments*, never use the files themselves. The website images under `luci-website/public/images/industries/...` are AI-generated, NOT reference — do not treat them as ground truth.
+
+## 0. Prime directive
+
+Every image must look like LUCI commissioned and shot the photo ourselves — custom project photography, not AI-generated stock. If a viewer can tell it's AI, the prompt failed. Bias every choice toward "a real photographer stood here with a real camera," not "an AI rendered this."
+
+## 1. Kill the AI tells
+
+No over-polished perfection, no impossible even lighting, no "epic cinematic" glow, no oversaturated HDR, no plastic skin, no generic futuristic blue/purple haze, no centered hero object on an empty background, no perfect symmetry, no random extra fingers. Avoid the "Midjourney look" entirely. When in doubt, add imperfection.
+
+## 2. Authenticity markers (from the real LUCI photos)
+
+Include real-world imperfection: dust, cable tangles, in-progress elements (plastic sheeting, scissor lifts, stacked chairs, monitors showing a real OS desktop), motion-blurred screens, ceiling vents/HVAC, scuffed floors. Real materials and textures — dark wood paneling, swirling casino carpet, polished wood counters, leather upholstery, metal racks, conduit, acoustic felt, subway tile. Practical, motivated, in-situ lighting — recessed spotlights, warm incandescent pools, screen/LED glow as a light source — never studio or "rim-lit hero" lighting. Mix warm and cool.
+
+## 3. People — at work and in the space
+
+Two kinds of people appear in LUCI photography, both candid and never posed:
+
+- **LUCI techs doing real work** (the bulk of the work): a technician in a LUCI-logo t-shirt deep in a rack, a worker on a scissor lift, someone focused on a tablet. Focused/strained expressions, not smiling-at-camera. Branding stays subtle — a small logo on a shirt or a rack label, never the subject of the photo.
+- **Real customers/guests inside a space** (also needed, do not rule these out): patrons at a sportsbook, guests in a hotel lobby, fans in an arena concourse, travelers in a terminal, attendees in a convention hall. Mid-activity — watching a screen, walking, seated, in conversation — never smiling-at-camera or posing.
+
+For both: prefer over-the-shoulder, hands, back-of-head, or candid-at-a-distance to dodge face-generation issues. When faces show, specify natural, specific, non-model people with real expressions. No fashion models, no "diverse group smiling at the lens" stock cliché.
+
+## 4. Camera & lens discipline
+
+Wide-angle 14–24mm for spaces (scale + leading lines), deep depth of field, architectural/site-documentation perspective, eye-level or low. Tight high-angle for rack work. Always name a focal length, a DoF, and "shot on a real body/lens" (e.g., Sony A7III, 16-35mm f/4) to anchor realism and natural wide-angle distortion + mild vignetting.
+
+## 5. Lighting discipline
+
+Practical and motivated, never theatrical. Warm pools against deep shadow (high contrast), screen/LED glow as the key light source in AV spaces, mixed warm/cool. No flat even studio light, no purple-orange gradient, no rim-lit subject glow. Let the room's real fixtures and screens do the lighting.
+
+## 6. Composition
+
+Leading lines, real depth (foreground / midground / background), real architectural detail. No centered-subject-on-empty-bg. Use negative space the way a real photographer does — to show scale, not to "feature" a product.
+
+## 7. Palette & materials
+
+Grounded in real materials (dark woods, carpet, metal, tile, leather) with saturated pops **only** from screens/LEDs (greens, blues, oranges) — never from ambient color grading. LUCI mint/gold may appear as screen content or subtle branding, never as ambient room color.
+
+## 8. Branding & discretion
+
+LUCI logo subtle (shirt, rack label, screen), never a giant centered logo. No fake client names, no percentage claims. Per the voice rule — institutions, not adjectives; show what the platform does, never how the software "feels."
+
+## 9. Specificity beats generality
+
+Name real, specific details — the football-field placemat and floral centerpiece, the swirling red/black carpet pattern, the chevron wood floor, the forest-green subway tile, the scissor lift, the Windows desktop on the counter. Specificity is what kills the "generic AI" read. Generic = failed. If a detail could belong to any property, it's wrong; make it belong to *this* property.
+
+## 10. Industry grounding
+
+- **Casino** = replicate real LUCI casino environments (rack rooms, sportsbooks, LED video walls, odds boards, betting counters, signage tickers, floor infrastructure) from the reference library.
+- **Hotels / sports / airports / conference** = no real client photos exist, so imagine equivalent real spaces in the **same** authentic style — a real hotel ballroom mid-turnover, a real arena control room, a real terminal concourse, a real convention hall divisible wall — with real materials, signage, lighting, and in-progress detail. Do not invent a generic "futuristic hotel"; invent a *specific* real one.
+
+## 11. Casino anti-clichés
+
+LUCI's casino is the **operations** side, not the gambling glamour. No roulette close-ups, no fanned chips, no Vegas-skyline bokeh, no card-dealer hands. Shoot the infrastructure: rack rooms, sportsbook video walls, odds boards, betting counters, signage tickers, floor management, before/after transformations. That's the LUCI casino.
+
+## 12. Output format & genre
+
+Photographic, photojournalistic / architectural-documentation / site-photography genre. 35mm or medium-format, real lens characteristics. No illustration, no 3D render, no "digital art," no painting. State an aspect ratio per use (hero poster vs. card thumbnail).
+
+## 13. Negative-prompt discipline
+
+Every prompt ships with a negative prompt: `generic stock photo, polished, sterile, perfect symmetry, cinematic, epic, futuristic, blue haze, purple haze, HDR, oversaturated, illustration, 3D render, posed model, stock-photo cliché, smiling at camera, watermark, text overlay` (unless branding is intentional).
+
+## 14. Workflow
+
+1. Check the reference library for the relevant industry (casino has real photos; others don't).
+2. Decide the shot: which environment, which moment of work or use, which lens and light.
+3. Write the prompt with §1–§13 applied — specific details, real lens, practical light, authenticity markers.
+4. Append the §13 negative prompt.
+5. Note the aspect ratio for the use.
+6. If the result still reads AI, diagnose which tell survived and re-prompt against that specific tell.
