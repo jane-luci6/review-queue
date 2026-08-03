@@ -49,6 +49,16 @@ When Mike pastes this URL into Cursor chat:
 
 See also: `../CURSOR.md`, `AGENTS.md` in this folder.
 
+### Open the rendered preview in the editor (automatic)
+
+After customizing, **automatically open the rendered client HTML in Cursor's in-editor (Glass) browser — not the HTML source** — without being asked:
+
+1. **Start the LUCI dev server** from the **working folder** (`~/Desktop/LUCI Docs/<client-name>/`). The working folder has symlinks to OneDrive for `ui_kits/`, `assets/`, and `scripts/` — CSS, fonts, textures, and logos resolve through the symlinks. Run `python3 ui_kits/internal-portal/customization/luci-dev-server.py` as a background process. It serves `http://127.0.0.1:8771` with `POST /__save` and `POST /__pdf`.
+2. Verify: `curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8771/clients/<client-name>-proposal-upgrade.html` → `200`.
+3. Open `http://127.0.0.1:8771/clients/<client-name>-proposal-upgrade.html` in Cursor's in-editor browser via the `cursor-app-control` MCP `open_resource` tool (URI = that URL). Do **not** use a `file://` URI.
+
+Click highlighted editable text and type; save the file when done.
+
 ## When to use
 
 When an existing LUCI client wants to add endpoint licenses, hardware, or professional services to their existing platform. The client already has an MSA — this is an order form under that agreement, not a new proposal. **Not for new clients** — use Proposal - LED or Proposal - LUCI Retrofit for those.

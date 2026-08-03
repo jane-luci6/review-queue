@@ -43,7 +43,7 @@ See also: `../CURSOR.md`, `AGENTS.md` in this folder.
 
 After customizing, **automatically open the rendered client HTML in Cursor's in-editor (Glass) browser — not the HTML source** — without being asked:
 
-1. From `LUCI Systems Design System/ui_kits/sales/`, start a local server in the background: `python3 -m http.server 8771 --bind 127.0.0.1` (increment the port if busy).
+1. **Start the LUCI dev server** from the **working folder** (`~/Desktop/LUCI Docs/<client-name>/`). The working folder has symlinks to OneDrive for `ui_kits/`, `assets/`, and `scripts/` — CSS, fonts, textures, and logos resolve through the symlinks. Run `python3 ui_kits/internal-portal/customization/luci-dev-server.py` as a background process. It serves `http://127.0.0.1:8771` with `POST /__save` and `POST /__pdf`.
 2. Verify: `curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8771/<client>-sales-deck.html` → `200`.
 3. Open `http://127.0.0.1:8771/<client>-sales-deck.html` in Cursor's in-editor browser via the `cursor-app-control` MCP `open_resource` tool (URI = that URL). Do **not** use a `file://` URI — that opens the HTML source, not the rendered deck.
 

@@ -1,6 +1,6 @@
 # LUCI document customization — Cursor entry
 
-**Paste a portal preview URL into Cursor chat.** That's the whole workflow. No specific folder needs to be open.
+**Paste a portal preview URL into Cursor chat, or just name the document type and client.** That's the whole workflow. No specific folder needs to be open. The agent reads master templates, CSS, assets, and skills from the shared OneDrive "Cursor Branding Files" folder, then creates a working copy at `~/Desktop/LUCI Docs/<client-name>/`.
 
 Each preview page embeds a `#luci-cursor-context` JSON block (and this manifest) so the agent knows which skills to load.
 
@@ -51,7 +51,7 @@ Read `_brand/SKILL.md` → **Efficient customization** before any edit. Applies 
 
 1. **Populate-in-place** — never rebuild the doc; never invent fine-print.
 2. **Mike can click-edit any text** — fonts/colors/layout stay on CSS; only LUCI logos stay non-editable. **Save** / **Download PDF** in the edit bar.
-3. **One project folder** with `ui_kits/sales/` + `assets/` mirrored so relative paths resolve; serve from the **project root**, not `ui_kits/sales/`.
+3. **Two-folder architecture** — OneDrive "Cursor Branding Files" = source (read-only); `~/Desktop/LUCI Docs/<client-name>/` = working folder with symlinks to OneDrive. Serve from the **working folder**, not `ui_kits/sales/`.
 4. Edit by `[data-studio]` / listed selectors only — do not rewrite whole sections.
 5. Same working HTML forever — the LUCI dev server's `POST /__save` writes Mike's typed edits to the working file when he clicks Save; do not treat `*-edited.html` downloads as the source of truth.
 6. No accessibility snapshots; mandatory page-overflow fit check after content edits.

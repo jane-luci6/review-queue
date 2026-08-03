@@ -20,13 +20,13 @@ Template masters on the Internal Marketing Portal. **Mike's workflow: copy URL �
 
 2. Paste the URL into Cursor chat with client name and demo notes.
 
-3. Cursor fetches `SKILL.md`, `_brand/SKILL.md`, and `CURSOR.md` from the portal (or reads them locally if in luci-design).
+3. Cursor reads `SKILL.md`, `_brand/SKILL.md`, and `CURSOR.md` from the OneDrive "Cursor Branding Files" folder.
 
-4. Save client copy under `clients/<client>-<doc>.html` in luci-design.
+4. Create a client workspace at `~/Desktop/LUCI Docs/<client-name>/` using `scripts/create-client-workspace.sh` — symlinks to OneDrive for CSS/assets, client HTML in `clients/`.
 
 5. **Fine-tune in Cursor's HTML preview** — click editable text (Client Summary, cover, close page) and type directly. No extra prompt needed.
 
-6. Export PDF when ready.
+6. Export PDF when ready (via the dev server's `POST /__pdf` or `scripts/render-pdf.sh`).
 
 
 

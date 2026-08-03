@@ -57,9 +57,9 @@ See also: `../CURSOR.md`, `AGENTS.md` in this folder.
 
 After customizing, **automatically open the rendered client HTML in Cursor's in-editor (Glass) browser — not the HTML source** — without being asked:
 
-1. **Start the LUCI dev server** rooted at **`LUCI Systems Design System/`** (not `ui_kits/sales/`) so `../../assets/` relative paths resolve to the canonical assets folder: `python3 ui_kits/internal-portal/customization/luci-dev-server.py` from that root (run as a background process). It serves the project on `http://127.0.0.1:8771` and accepts `POST /__save` so the edit bar's Save button writes typed edits back to the working file.
+1. **Start the LUCI dev server** from the **working folder** (`~/Desktop/LUCI Docs/<client-name>/`). The working folder has symlinks to OneDrive for `ui_kits/`, `assets/`, and `scripts/` — CSS, fonts, textures, and logos resolve through the symlinks. Run `python3 ui_kits/internal-portal/customization/luci-dev-server.py` as a background process. It serves `http://127.0.0.1:8771` with `POST /__save` and `POST /__pdf`.
 2. Verify: `curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8771/clients/<client>-proposal.html` → `200`.
-3. Open `http://127.0.0.1:8771/clients/<client>-proposal.html` in Cursor's in-editor browser via the `cursor-app-control` MCP `open_resource` tool (URI = that URL). Do **not** use a `file://` URI — that opens the HTML source, not the rendered doc. Do **not** root the server in `ui_kits/sales/` — the cover logo and `../../assets/` paths will 404.
+3. Open `http://127.0.0.1:8771/clients/<client>-proposal.html` in Cursor's in-editor browser via the `cursor-app-control` MCP `open_resource` tool (URI = that URL). Do **not** use a `file://` URI — that opens the HTML source, not the rendered doc.
 
 Click highlighted editable text and type; save the file when done. User fallback if the pane doesn't appear: `Cmd+Shift+P` → "Simple Browser: Show" → paste the localhost URL.
 
@@ -69,10 +69,10 @@ After a site survey or discovery for an LED wall project (casino sportsbook, cen
 
 ## Workflow
 
-1. Open the **portal preview** (URL above) or copy that URL into Cursor chat.
+1. Name the document type and client, or paste the portal preview URL into Cursor chat.
 2. Provide: project title, client org, basis (survey/meeting notes), pixel pitch(s) featured, and one line-items set per LED installation.
-3. Save the **client version** in luci-design under `clients/<client>-proposal.html` — not over the master.
-4. Preview → Print/Save as PDF (US Letter).
+3. The working file is already at `~/Desktop/LUCI Docs/<client-name>/clients/<client-name>-proposal.html` — created by `scripts/create-client-workspace.sh`. All edits happen there.
+4. Download PDF via the dev server's `POST /__pdf` (headless Chrome), or run `scripts/render-pdf.sh` from the working folder.
 
 ---
 

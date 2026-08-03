@@ -51,7 +51,7 @@ This creates:
 
 The client name Mike enters becomes the folder name and the filename (kebab-case). The dev server runs from the working folder and serves everything correctly — CSS and assets resolve through the symlinks to OneDrive.
 
-**Serve with the LUCI dev server** — run `python3 ui_kits/internal-portal/customization/luci-dev-server.py` from the working folder (the agent starts it as a background process). It serves the project root on `http://127.0.0.1:8771` and accepts `POST /__save` + `POST /__pdf`. The dev server supports symlinked directories.
+**Serve with the LUCI dev server** — run `python3 ui_kits/internal-portal/customization/luci-dev-server.py` from the working folder (the agent starts it as a background process). It serves the working folder on `http://127.0.0.1:8771` and accepts `POST /__save` + `POST /__pdf`. The dev server supports symlinked directories.
 
 **Do not overwrite the tooling files** in the working folder — they are symlinks to the OneDrive folder, which is kept in sync via `scripts/sync-to-onedrive.sh` (runs automatically as a git post-commit hook when Jane updates master templates, CSS, or assets).
 

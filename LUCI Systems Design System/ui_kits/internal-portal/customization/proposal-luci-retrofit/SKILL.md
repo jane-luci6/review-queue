@@ -57,7 +57,7 @@ See also: `../CURSOR.md`, `AGENTS.md` in this folder.
 
 After customizing, **automatically open the rendered client HTML in Cursor's in-editor (Glass) browser — not the HTML source** — without being asked:
 
-1. **Start the LUCI dev server** rooted at **`LUCI Systems Design System/`**: `python3 ui_kits/internal-portal/customization/luci-dev-server.py` from that root (run as a background process). It serves the project on `http://127.0.0.1:8771` and accepts `POST /__save` so the edit bar's Save button writes typed edits back to the working file.
+1. **Start the LUCI dev server** from the **working folder** (`~/Desktop/LUCI Docs/<client-name>/`). The working folder has symlinks to OneDrive for `ui_kits/`, `assets/`, and `scripts/` — CSS, fonts, textures, and logos resolve through the symlinks. Run `python3 ui_kits/internal-portal/customization/luci-dev-server.py` as a background process. It serves `http://127.0.0.1:8771` with `POST /__save` and `POST /__pdf`.
 2. Verify: `curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8771/clients/<client>-proposal-luci-retrofit.html` → `200`.
 3. Open `http://127.0.0.1:8771/clients/<client>-proposal-luci-retrofit.html` in Cursor's in-editor browser via the `cursor-app-control` MCP `open_resource` tool (URI = that URL). Do **not** use a `file://` URI.
 
