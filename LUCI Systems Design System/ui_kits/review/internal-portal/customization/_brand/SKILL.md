@@ -65,7 +65,9 @@ Mirror the portal’s relative paths. **Serve with the LUCI dev server** — run
 
 — from the current portal/luci-design `customization/` originals. Stale copies lack `POST /__pdf` and break Download PDF. Then restart the server from that refreshed path.
 
-If this tree does not exist yet: create it and fetch the exact master HTML + linked CSS + referenced assets from the portal (or luci-design) in **one batch**. Do not discover assets by trial and error. Do **not** pull extra stylesheets the master does not already link (e.g. do not add `scope-of-work.css` into a budgetary/proposal client — it overrides `.doc-page-band` and strips navy headers + circuit texture).
+**Exception — shared OneDrive folder:** if the project folder is the shared OneDrive "Cursor Branding Files" folder, the dev server, edit bar, SKILL.md files, master templates, CSS, and assets are already present and kept in sync via `scripts/sync-to-onedrive.sh`. In that case, **read from disk** — do not fetch from the portal, and do not overwrite the tooling files (they are already current). Just start the dev server and open the preview.
+
+**If the project folder is empty or missing files:** fetch the exact master HTML + linked CSS + referenced assets from the portal (or luci-design) in **one batch**, or run `scripts/sync-to-onedrive.sh` from the luci-design repo to populate it. Do not discover assets by trial and error. Do **not** pull extra stylesheets the master does not already link (e.g. do not add `scope-of-work.css` into a budgetary/proposal client — it overrides `.doc-page-band` and strips navy headers + circuit texture).
 
 ### 2. Edit by selector — never by rewrite
 
