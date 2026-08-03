@@ -87,14 +87,16 @@ Pages are locked to fixed US Letter (8.5×11in, 1056px height) with `height: var
                           overflow:'visible', justifyContent:'flex-start'});
   const nat = p.getBoundingClientRect().height;
   Object.assign(p.style, s);
-  return {page: i+1, over: Math.round(nat - 1056), under: Math.round(1056 - nat)};
+  const isDesignPage = p.classList.contains('doc-page--cover') || p.classList.contains('doc-page--close');
+  return {page: i+1, over: Math.round(nat - 1056), under: Math.round(1056 - nat), design: isDesignPage};
 }))()
 ```
 
 - **`over > 0`** — content is clipped. **Trim copy or split to a new `.doc-page`** — do not change page height.
-- **`under > 200`** (more than ~200px of empty space at the bottom) — the page is underfilled. **Pull content up from the next page** or pack more content onto this page. Every page must be full 8.5×11 — do not leave large gaps at the bottom of a page when more content would fit.
+- **`under > 200`** (more than ~200px of empty space at the bottom) — the page is underfilled. **Pull content up from the next page** or pack more content onto this page. Applies to **content pages only** (SOW, line items, capabilities, etc.) — **not** to cover or close pages.
+- **`design: true`** — this is a cover or close page. These pages are **intentionally spacious** — large whitespace is part of their design. **Do not** try to fill them, shorten them, or pull content onto them. Their `under` value is expected and correct.
 
-**Every page is a full 8.5×11 sheet.** Never shorten a page, never leave a page with large empty space at the bottom, and never start a new page when the current one has room for more content. The only page that may be partially empty is the **last page** of a section (e.g., the last SOW page, the last line-item page) — and even then, pull content up from the next section if it fits.
+**Every page is a full 8.5×11 sheet.** Never shorten a page, never start a new content page when the current one has room for more content. **Cover and close pages are exempt from the "no empty space" rule** — they are designed with generous whitespace as part of their aesthetic (see the Ameristar proposal or any generated example). The only content page that may be partially empty is the **last page** of a section (e.g., the last SOW page, the last line-item page) — and even then, pull content up from the next section if it fits.
 
 ### Continuous page packing — SOW + line items (mandatory)
 
@@ -193,7 +195,7 @@ Never ship a document with a placeholder date ("[Month DD, YYYY]" or "Today"). S
 - **Sharp corners** — `border-radius: 0` on document furniture (brand trait).
 - **Do not** add drop shadows to flat content.
 - Keep existing `.doc-page` structure — one section = one printed sheet.
-- **Page sizing is locked** — `.doc-page` uses `height: var(--page-h)` (US Letter, 1056px) with `overflow: hidden` on screen **and** in print. Pages cannot stretch or shrink beyond the printable area. If content overflows, it clips visibly on screen — trim copy or split to a new `.doc-page`; never change the page height.
+- **Page sizing is locked** — `.doc-page` uses `height: var(--page-h)` (US Letter, 1056px) with `overflow: hidden` on screen **and** in print. Pages cannot stretch or shrink beyond the printable area. If content overflows, it clips visibly on screen — trim copy or split to a new `.doc-page`; never change the page height. **Cover and close pages are intentionally spacious** — their large whitespace is by design, not underfilling. Do not add content to fill them or shorten them.
 
 ## Voice & tone
 
