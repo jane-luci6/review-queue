@@ -93,18 +93,21 @@ Pages are locked to fixed US Letter (8.5×11in, 1056px height) with `height: var
 ```
 
 - **`over > 0`** — content is clipped. **Trim copy or split to a new `.doc-page`** — do not change page height.
-- **`under > 200`** (more than ~200px of empty space at the bottom) — the page is underfilled. **Pull content up from the next page** or pack more content onto this page. Applies to **content pages only** (SOW, line items, capabilities, etc.) — **not** to cover or close pages.
+- **`under > 200`** (more than ~200px of empty space at the bottom) — there is empty space. Whether to act depends on what follows:
+  - **Same content stream continues on the next page** (more SOW sections, more line-item rows) → the page is underfilled. **Pull content up from the next page** so this page is full.
+  - **This is the last page of a content stream** (totals/investment-summary page after all line items, last SOW page, last capabilities page) → empty space is **expected and correct**. Do not try to fill it.
 - **`design: true`** — this is a cover or close page. These pages are **intentionally spacious** — large whitespace is part of their design. **Do not** try to fill them, shorten them, or pull content onto them. Their `under` value is expected and correct.
 
-**Every page is a full 8.5×11 sheet.** Never shorten a page, never start a new content page when the current one has room for more content. **Cover and close pages are exempt from the "no empty space" rule** — they are designed with generous whitespace as part of their aesthetic (see the Ameristar proposal or any generated example). The only content page that may be partially empty is the **last page** of a section (e.g., the last SOW page, the last line-item page) — and even then, pull content up from the next section if it fits.
+**Every page is a full 8.5×11 sheet** — the CSS locks the page size; pages cannot stretch or shrink. But "full sheet" means the **page** is the right size, not that every page must be stuffed with content. **Pack greedily only when the same content stream continues onto the next page** (SOW → more SOW, line items → more line items). **Pages that end a content stream naturally have empty space** — the totals page after all line items, the last SOW page, the cover, and the close page. That empty space is correct, not underfilling. Do not invent content to fill it, and do not shorten the page.
 
 ### Continuous page packing — SOW + line items (mandatory)
 
-Fill each content page as far as it will go before opening a new one. **Do not invent page breaks.** This applies to **Scope of Work** sections and **line-item** tables alike.
+Fill each content page as far as it will go **when the same content stream continues onto the next page**. **Do not invent page breaks between continuing content.** This applies to **Scope of Work** sections and **line-item** tables alike.
 
-- Pack **greedily** while natural height stays ≤ 1056px. If there is room for another partial section / group / rows, use it.
-- **Sections and groups may break across a page boundary.** Start the next page with a "(continued)" title/label and keep going. Do **not** force a whole section onto the next page just because only 2–3 sections fit on the current one, and do **not** leave large empty space when more content would fit.
+- Pack **greedily** while natural height stays ≤ 1056px. If there is room for another partial section / group / rows from the same content stream, use it.
+- **Sections and groups may break across a page boundary.** Start the next page with a "(continued)" title/label and keep going. Do **not** force a whole section onto the next page just because only 2–3 sections fit on the current one.
 - **SOW continuous flow (locked):** the Scope of Work flows continuously across pages with no forced section-start page breaks. Page breaks may occur **anywhere** — between sections, mid-section (a subsection's body can start on one page and continue on the next), between line items, between bullet points, or mid-subsection. Subsections can cross a page boundary. The only rule: pack greedily, renumber footers, and keep going. Do not strand a section header alone at the bottom of a page with its content on the next — if the header + at least one line of body don't fit, move the header to the next page.
+- **End-of-stream pages are exempt:** the totals/investment-summary page (after all line items), the last SOW page (after the last section), and any page that ends a content stream may have empty space at the bottom. That is correct — there is nothing more to pull up. Do not invent content to fill it.
 - After packing, renumber `.doc-foot__page` and page comments sequentially. Drop empty continuation pages.
 
 **Line items — totals exception:** follow the same greedy packing for all line-item **rows and groups**. Then:
@@ -195,7 +198,7 @@ Never ship a document with a placeholder date ("[Month DD, YYYY]" or "Today"). S
 - **Sharp corners** — `border-radius: 0` on document furniture (brand trait).
 - **Do not** add drop shadows to flat content.
 - Keep existing `.doc-page` structure — one section = one printed sheet.
-- **Page sizing is locked** — `.doc-page` uses `height: var(--page-h)` (US Letter, 1056px) with `overflow: hidden` on screen **and** in print. Pages cannot stretch or shrink beyond the printable area. If content overflows, it clips visibly on screen — trim copy or split to a new `.doc-page`; never change the page height. **Cover and close pages are intentionally spacious** — their large whitespace is by design, not underfilling. Do not add content to fill them or shorten them.
+- **Page sizing is locked** — `.doc-page` uses `height: var(--page-h)` (US Letter, 1056px) with `overflow: hidden` on screen **and** in print. Pages cannot stretch or shrink beyond the printable area. If content overflows, it clips visibly on screen — trim copy or split to a new `.doc-page`; never change the page height. **Empty space at the bottom of an end-of-stream page is correct** — the totals page, the last SOW page, the cover, and the close page are all expected to have whitespace. Do not fill them, do not shorten them.
 
 ## Voice & tone
 
