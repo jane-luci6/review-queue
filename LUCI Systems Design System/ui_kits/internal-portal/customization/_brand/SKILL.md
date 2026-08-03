@@ -267,10 +267,19 @@ The website (lucisystems.com) is the reference for *how LUCI sounds* — the ton
 - Before any further agent pass after Mike types in preview: the working file is already updated (via the dev server save), so Cursor reads the latest version. If Mike used the download fallback instead, write the live DOM back into the working file before editing.
 - **Download PDF** = `POST /__pdf` on the LUCI dev server → `scripts/render-pdf.sh` (headless Chrome). Never `window.print()` — that crashes Cursor's in-editor browser. The button shows "Rendering…" then downloads the PDF. If the local preview server is not running, the button asks you to restart it.
 
-**PDF button shows "Failed"?** The render pipeline takes ~30–60 seconds (it re-rasterizes SVG diagrams via headless Chrome). Cursor's in-editor browser may time out before the server finishes. Fallback:
-1. **The agent runs `render-pdf.sh` directly** — `bash scripts/render-pdf.sh clients/<client>-<doc>.html ~/Downloads/<client>-<doc>.pdf` (from the `LUCI Systems Design System/` root). This bypasses the browser timeout and produces the same PDF.
-2. **Verify the PDF** — open it in Preview to confirm it renders correctly (headers, colors, fonts, no clipping).
-3. **Always test PDF generation before handing off to Mike.** Generate a test PDF after any structural change (page add/remove, content move) to catch rendering issues early.
+**PDF button shows "Failed"?** The most common cause is a **missing dependency on Mike's machine**, not a timeout. The pipeline needs:
+1. **Google Chrome** (or Chromium/Edge/Brave) in `/Applications`. Without it, the render fails immediately.
+2. **Pillow + numpy** (Python packages) for raster optimization. Without them, the PDF still renders — just without optimized rasters.
+
+**Diagnose:** `GET /__health` returns `pdfDeps: {chrome: true/false, pil: true/false, chrome_path: "..."}`. If `chrome` is false, Chrome is missing. If `pil` is false, raster optimization is skipped (non-fatal).
+
+**Fix on Mike's machine:**
+- Install Google Chrome from google.com/chrome (or ensure Chromium/Edge/Brave is in `/Applications`).
+- Run `pip3 install -r requirements.txt` (from the `LUCI Systems Design System/` root) to install Pillow + numpy.
+
+**Fallback (always works):** The agent runs `render-pdf.sh` directly — `bash scripts/render-pdf.sh clients/<client>-<doc>.html ~/Downloads/<client>-<doc>.pdf` (from the `LUCI Systems Design System/` root). This bypasses the browser and produces the same PDF.
+
+**Always test PDF generation before handing off to Mike.** Generate a test PDF after any structural change (page add/remove, content move) to catch rendering issues early.
 
 ### PDF export — gradient + mask flattening (mandatory)
 

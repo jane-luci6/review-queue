@@ -47,9 +47,20 @@ trap 'rm -f "$patched"' EXIT
 python3 "$ROOT/scripts/patch-sales-pdf-html.py" --input "$abspath" --output "$patched" >/dev/null
 print_src="file://$patched"
 
-CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-if [ ! -x "$CHROME" ]; then
-  echo "Google Chrome not found at: $CHROME" >&2
+CHROME=""
+for candidate in \
+  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+  "/Applications/Chromium.app/Contents/MacOS/Chromium" \
+  "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge" \
+  "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser"; do
+  if [ -x "$candidate" ]; then
+    CHROME="$candidate"
+    break
+  fi
+done
+if [ -z "$CHROME" ]; then
+  echo "No Chrome/Chromium/Edge/Brave found in /Applications." >&2
+  echo "Install Google Chrome, or set CHROME=/path/to/browser before running." >&2
   exit 1
 fi
 

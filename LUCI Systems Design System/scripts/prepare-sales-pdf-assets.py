@@ -11,8 +11,12 @@ import threading
 import time
 from pathlib import Path
 
-from PIL import Image
-import numpy as np
+try:
+    from PIL import Image
+    import numpy as np
+    _HAS_PIL = True
+except ImportError:
+    _HAS_PIL = False
 
 ROOT = Path(__file__).resolve().parent.parent
 SALES_ASSETS = ROOT / "ui_kits" / "sales" / "assets"
@@ -349,6 +353,12 @@ def audit_sales_rasters() -> list[str]:
 
 
 def main() -> int:
+    if not _HAS_PIL:
+        print("Warning: Pillow/numpy not installed — skipping raster optimization.", file=sys.stderr)
+        print("  The PDF will still render with existing assets.", file=sys.stderr)
+        print("  To enable optimization: pip3 install Pillow numpy", file=sys.stderr)
+        return 0
+
     if not Path(CHROME).exists():
         print(f"Chrome not found at {CHROME}", file=sys.stderr)
         return 1

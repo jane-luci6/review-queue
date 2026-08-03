@@ -322,8 +322,21 @@
         return res.json();
       })
       .then(function (info) {
-        if (info && info.pdf && Number(info.version) >= 2) return;
-        markPdfServerStale(pdfBtn);
+        if (!info || !info.pdf || Number(info.version) < 2) {
+          markPdfServerStale(pdfBtn);
+          return;
+        }
+        // Check PDF dependencies (Chrome, Pillow) — warn if missing.
+        var deps = info.pdfDeps;
+        if (deps && !deps.chrome) {
+          pdfBtn.title = 'No Chrome/Chromium/Edge found in /Applications. Install Google Chrome to generate PDFs.';
+          pdfBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            window.alert('Cannot generate PDF: Google Chrome (or Chromium/Edge/Brave) was not found in /Applications.\n\nInstall Google Chrome and try again.');
+          }, { once: true });
+        } else if (deps && !deps.pil) {
+          pdfBtn.title = 'Pillow/numpy not installed — PDF will render without optimized rasters. Run: pip3 install Pillow numpy';
+        }
       })
       .catch(function () {
         markPdfServerStale(pdfBtn);

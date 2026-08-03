@@ -1,0 +1,8 @@
+# Python dependencies for the LUCI sales document PDF pipeline.
+# Install:  pip3 install -r requirements.txt
+#
+# These are optional — if missing, the PDF still renders with existing
+# raster assets (just without optimization). Install them for best quality.
+
+Pillow>=10.0.0
+numpy>=1.24.0

@@ -74,6 +74,9 @@ for f in render-pdf.sh prepare-client-doc.sh patch-sales-pdf-html.py prepare-sal
   cp "$SRC/scripts/$f" "$DEST/scripts/" 2>/dev/null && echo "  $f"
 done
 
+# 5a. Python dependencies (requirements.txt)
+cp "$SRC/requirements.txt" "$DEST/" 2>/dev/null && echo "  requirements.txt"
+
 # NOTE: Client files (clients/) are NOT synced — they are working files
 # managed separately in each environment.
 

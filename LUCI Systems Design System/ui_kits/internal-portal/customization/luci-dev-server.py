@@ -27,8 +27,31 @@ PORT = 8771
 ROOT = Path.cwd().resolve()
 SCRIPT_DIR = Path(__file__).resolve().parent
 # Bump when endpoints/behavior change — edit bar checks GET /__health.
-SERVER_VERSION = 2
+SERVER_VERSION = 3
 SERVER_FEATURES = ('save', 'pdf')
+
+
+def _check_pdf_deps():
+    """Check whether the PDF render pipeline has its dependencies.
+    Returns a dict with 'chrome' (bool), 'pil' (bool), and 'chrome_path' (str|None)."""
+    chrome_paths = [
+        '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+        '/Applications/Chromium.app/Contents/MacOS/Chromium',
+        '/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge',
+        '/Applications/Brave Browser.app/Contents/MacOS/Brave Browser',
+    ]
+    chrome_path = None
+    for p in chrome_paths:
+        if Path(p).exists():
+            chrome_path = p
+            break
+    try:
+        from PIL import Image  # noqa: F401
+        import numpy  # noqa: F401
+        has_pil = True
+    except ImportError:
+        has_pil = False
+    return {'chrome': bool(chrome_path), 'pil': has_pil, 'chrome_path': chrome_path}
 
 
 class LUCIDevHandler(http.server.SimpleHTTPRequestHandler):
@@ -59,12 +82,14 @@ class LUCIDevHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
         path = unquote(self.path.split('?', 1)[0].split('#', 1)[0])
         if path == '/__health':
+            deps = _check_pdf_deps()
             self._json(200, {
                 'ok': True,
                 'version': SERVER_VERSION,
                 'features': list(SERVER_FEATURES),
                 'pdf': True,
                 'save': True,
+                'pdfDeps': deps,
             })
             return
 
@@ -216,6 +241,15 @@ class LUCIDevHandler(http.server.SimpleHTTPRequestHandler):
         if not render:
             self._json(500, {
                 'error': 'scripts/render-pdf.sh not found. Run the LUCI dev server from the design-system project root.'
+            })
+            return
+
+        # Pre-flight: check Chrome before running the pipeline.
+        deps = _check_pdf_deps()
+        if not deps['chrome']:
+            self._json(500, {
+                'error': 'Google Chrome (or Chromium/Edge/Brave) not found in /Applications. '
+                         'Install Google Chrome to generate PDFs.'
             })
             return
 
