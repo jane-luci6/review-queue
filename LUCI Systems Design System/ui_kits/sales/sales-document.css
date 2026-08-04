@@ -143,12 +143,16 @@ body {
   right: 0;
   bottom: 4px;
   left: 0;
-  background-image: url('../../assets/textures/texture-circuit-header-mintgold.png');
-  background-repeat: repeat;
+  /* Fade baked into the asset (texture-circuit-header-mintgold-faded.png): the
+     page-wide left→right fade is part of the image alpha, not a runtime CSS
+     mask. Headless Chrome's --print-to-pdf (software raster, --disable-gpu)
+     shears a vertical strip when a *repeating* background is masked at runtime;
+     a single no-repeat image with the fade baked in has no mask and no seam.
+     Reused by cover + close; one image, deduped in the PDF. */
+  background-image: url('../../assets/textures/texture-circuit-header-mintgold-faded.png');
+  background-repeat: no-repeat;
   background-position: right center;
-  background-size: 640px auto;
-  -webkit-mask-image: linear-gradient(90deg, transparent 40%, rgba(0, 0, 0, 0.45) 68%, #000 100%);
-          mask-image: linear-gradient(90deg, transparent 40%, rgba(0, 0, 0, 0.45) 68%, #000 100%);
+  background-size: 100% 100%;
   opacity: 0.55;
   pointer-events: none;
   z-index: 0;
