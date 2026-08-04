@@ -57,6 +57,8 @@ The client name Mike enters becomes the folder name and the filename (kebab-case
 
 **Do not explore the folder.** Read **only** the 2 SKILL.md files named in the prompt (`_brand/SKILL.md` + the one template-specific `SKILL.md`) for **instructions**, and **only** the one working HTML file (`clients/<client-name>-<doc>.html` created by `create-client-workspace.sh`) for **editing**. That working file is a copy of the master template — it has the same content, structure, and locked regions. You don't need to read the master template separately. Do **not** read other **instruction** files (AGENTS.md, CURSOR.md, README.md) or browse the OneDrive folder structure. The prompt tells you everything you need — if it doesn't mention a file, you don't need to read it.
 
+**Do not download every template or all design files.** The `create-client-workspace.sh` script already copies the one master template you need and symlinks all CSS, fonts, textures, and assets the working file requires. You do **not** need to download, copy, or read other master templates, shared stylesheets, or design assets — everything is already in the template. Downloading or exploring files the prompt doesn't name wastes tokens and time.
+
 **Do not overwrite the tooling files** in the working folder — they are symlinks to the OneDrive folder, which is kept in sync via `scripts/sync-to-onedrive.sh` (runs automatically as a git post-commit hook when Jane updates master templates, CSS, or assets).
 
 Do **not** pull extra stylesheets the master does not already link (e.g. do not add `scope-of-work.css` into a budgetary/proposal client — it overrides `.doc-page-band` and strips navy headers + circuit texture).

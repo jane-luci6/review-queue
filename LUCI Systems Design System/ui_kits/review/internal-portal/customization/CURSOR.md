@@ -21,7 +21,7 @@ Portal base: `http://10.10.1.17:8081/internal-portal/customization/`
 1. `ui_kits/internal-portal/customization/_brand/SKILL.md` — workflow, voice, fit check, PDF, all house rules
 2. `ui_kits/internal-portal/customization/<template>/SKILL.md` — page map, editable vs locked regions for this template
 
-**Do not read other files** (AGENTS.md, README.md, other templates, other SKILL.md files). Everything you need is in those 2 files.
+**Do not read other files** (AGENTS.md, README.md, other templates, other SKILL.md files). Everything you need is in those 2 files. **Do not download every template or all design files** — `create-client-workspace.sh` copies the one template you need and symlinks all CSS/fonts/textures/assets. Everything is already in the template.
 
 ## Full preview URLs
 
