@@ -12,7 +12,23 @@ SALES = ROOT / "ui_kits" / "sales"
 
 LOGO_BLACK = "assets/logos/luci-wordmark-black-320.png"
 LOGO_WHITE = "assets/logos/luci-wordmark-white-320.png"
+LOGO_WHITE_FILE = "luci-wordmark-white-320.png"
+LOGO_BLACK_FILE = "luci-wordmark-black-320.png"
 PARAGON_LOGO = "assets/logos/paragon-casino-resort-print.png"
+
+
+def cover_logo_src(filename: str, out_dir: Path | None) -> str:
+    """Relative path to the print logo from the patched HTML's directory.
+
+    The print wordmark (luci-wordmark-*-320.png) lives in
+    ui_kits/sales/assets/logos/. Master docs sit in ui_kits/sales/, so a bare
+    'assets/logos/<file>' resolves. Client docs sit in <workspace>/clients/,
+    so the logo is reached via '../ui_kits/sales/assets/logos/<file>'.
+    """
+    base = f"assets/logos/{filename}"
+    if out_dir is not None and "clients" in out_dir.parts:
+        return f"../ui_kits/sales/{base}"
+    return base
 
 DEFAULT_FILES = [
     SALES / "capabilities-document.html",
@@ -57,7 +73,7 @@ def replace_logo_src(html: str, class_name: str, file_src: str) -> str:
     return html
 
 
-def patch(html: str, *, paragon: bool = False, budgetary: bool = False, fag_prospect: bool = False) -> str:
+def patch(html: str, *, paragon: bool = False, budgetary: bool = False, fag_prospect: bool = False, out_dir: Path | None = None) -> str:
     out = html
     out = re.sub(r"<style data-luci-fonts>[\s\S]*?</style>\s*", "", out, count=1)
     out = re.sub(
@@ -74,7 +90,7 @@ def patch(html: str, *, paragon: bool = False, budgetary: bool = False, fag_pros
     # covers are light; scope-of-work and FAG-prospect covers are dark).
     cover_match = re.search(r'class="([^"]*\bdoc-page--cover\b[^"]*)"', out)
     cover_is_dark = bool(cover_match and 'doc-page--dark' in cover_match.group(1))
-    out = replace_logo_src(out, 'doc-cover__logo', LOGO_WHITE if cover_is_dark else LOGO_BLACK)
+    out = replace_logo_src(out, 'doc-cover__logo', cover_logo_src(LOGO_WHITE_FILE, out_dir) if cover_is_dark else cover_logo_src(LOGO_BLACK_FILE, out_dir))
     for svg, jpg in SVG_TO_JPG:
         out = out.replace(f'src="{svg}', f'src="{jpg}')
     out = out.replace(
@@ -245,7 +261,8 @@ def main() -> int:
 
     if args.input:
         raw = args.input.read_text(encoding="utf-8")
-        patched = patch(raw, paragon=args.input.name.startswith("paragon-"), budgetary="budgetary-estimate" in args.input.name, fag_prospect="field-activation-guide-prospect" in args.input.name)
+        out_dir = args.input.parent
+        patched = patch(raw, paragon=args.input.name.startswith("paragon-"), budgetary="budgetary-estimate" in args.input.name, fag_prospect="field-activation-guide-prospect" in args.input.name, out_dir=out_dir)
         if args.output:
             args.output.parent.mkdir(parents=True, exist_ok=True)
             args.output.write_text(patched, encoding="utf-8")
@@ -263,7 +280,7 @@ def main() -> int:
         if not path.exists():
             continue
         raw = path.read_text(encoding="utf-8")
-        patched = patch(raw, paragon=path.name.startswith("paragon-"), budgetary="budgetary-estimate" in path.name, fag_prospect="field-activation-guide-prospect" in path.name)
+        patched = patch(raw, paragon=path.name.startswith("paragon-"), budgetary="budgetary-estimate" in path.name, fag_prospect="field-activation-guide-prospect" in path.name, out_dir=path.parent)
         if patched != raw:
             path.write_text(patched, encoding="utf-8")
             print(f"patched {path.relative_to(ROOT)}  ({len(raw)//1024} KB → {len(patched)//1024} KB)")
