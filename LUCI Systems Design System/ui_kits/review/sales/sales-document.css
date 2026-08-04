@@ -1454,6 +1454,76 @@ body {
 /* Close-page CTA: sit just below the body text (lead stays vertically centered). */
 .doc--activation .doc-close__lead .doc-cta { margin-top: 26px; }
 
+/* ── Proof page (p16) refresh — clear hierarchy + LUCI branding.
+   Light header zone (mint kicker → bold headline → mint rule → dek) sits on the
+   white canvas; the dark logo panel anchors the middle as the brand focal point;
+   a dark navy CTA band closes the page mirroring the section spotlight callouts
+   (mint accent bar, off-white text, mint pill) so the eye lands on the action. */
+.doc--activation .doc-page--proof { justify-content: flex-start; }
+.doc--activation .doc-page--proof .doc-proof__lead,
+.doc--activation .doc-page--proof .doc-statement,
+.doc--activation .doc-page--proof .doc-proof__intro { display: none; }
+
+.doc--activation .doc-proof__head {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 26px;
+}
+.doc--activation .doc-proof__head .doc-eyebrow--mint { margin: 0; }
+.doc--activation .doc-proof__title {
+  margin: 0;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--ink-strong);
+  max-width: 24ch;
+}
+.doc--activation .doc-proof__dek {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--navy-muted);
+  max-width: 60ch;
+}
+.doc--activation .doc-proof__rule {
+  width: 40px;
+  height: 3px;
+  background: var(--accent-light);
+  margin-top: 4px;
+}
+
+/* Customer-showcase kicker above the dark logo panel — mint, tracked. */
+.doc--activation .doc-page--proof .doc-proofbar__kicker {
+  margin-top: 0;
+  margin-bottom: 14px;
+  color: var(--accent-light);
+}
+/* A touch more breathing room under the About-LUCI label on the proof page. */
+.doc--activation .doc-page--proof .doc-boiler__label { margin-bottom: 14px; }
+
+/* Dark CTA band — mirrors the section spotlight: navy-deep, mint accent bar,
+   off-white text, mint pill. Pins to the bottom of the page above the footer. */
+.doc--activation .doc-proof__cta--dark {
+  margin: auto calc(-1 * var(--page-pad)) 0;
+  padding: 22px var(--page-pad) 24px;
+  background: var(--navy-deep);
+  border-left: 4px solid var(--mint);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.doc--activation .doc-proof__cta--dark .doc-proof__cta-text {
+  color: var(--off-white);
+  flex: 1 1 auto;
+  max-width: 42ch;
+}
+.doc--activation .doc-proof__cta--dark .doc-cta { flex: 0 0 auto; }
+
 /* ── Draft badge (screen only) ─────────────────────────────────────────────── */
 .doc-draft-badge {
   position: absolute;
