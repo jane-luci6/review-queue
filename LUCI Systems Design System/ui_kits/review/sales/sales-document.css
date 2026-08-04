@@ -1645,8 +1645,11 @@ body {
 .doc--activation .flag-band {
   position: relative;
   overflow: hidden;
+  flex: none;
   margin: calc(-1 * var(--page-pad)) calc(-1 * var(--page-pad)) 28px;
-  padding: 0.36in var(--page-pad) 0.38in;
+  padding: 0.42in var(--page-pad) 0.42in;
+  display: flex;
+  align-items: center;
   background:
     radial-gradient(135% 120% at 90% -28%, rgba(var(--mint-rgb), 0.16), transparent 56%),
     linear-gradient(162deg, var(--navy-deep) 0%, var(--navy) 58%, #0C1F28 100%);
