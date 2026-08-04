@@ -49,7 +49,7 @@ After a site survey or discovery for an LED wall project (casino sportsbook, cen
 ### Variable page counts
 
 - **Spec pages (7–8):** one page per pixel pitch in the project, all under §3 (subheads, no repeated section number). Add or remove `.doc-page--led-specs` sections to match the number of pitches.
-- **Estimate pages (9+):** one estimate per LED installation, all under §4 (subheads, no repeated section number). Each estimate flows continuously across as many pages as its line items need — add a "continues on the following page" note when an estimate spans pages. Clone the estimate section for each installation; renumber trailing page footers (`doc-foot__page`) only — do **not** add a `sow-band-bignum` to continuation pages. Payment Terms (p11) is also a §4 continuation page (subhead, no number).
+- **Estimate pages (9+):** one estimate per LED installation, all under §4 (subheads, no repeated section number). Each estimate flows continuously across as many pages as its line items need — run `scripts/pack-content.py --mode lineitems` to repack if an estimate overflows (see `../_brand/SKILL.md` -> Continuous page packing). Clone the estimate section for each installation; renumber trailing page footers (`doc-foot__page`) only — do **not** add a `sow-band-bignum` to continuation pages. Payment Terms (p11) is also a §4 continuation page (subhead, no number).
 
 ### Cover exceptions (page 1 — do not change)
 
@@ -159,7 +159,7 @@ Layout (2×2) stays locked.
 
 **No auto-math** — recompute amount/total by hand when qty or rate changes. Clone the estimate section for more installs; keep the `estimate-N-…` numbering consecutive.
 
-**One estimate = one continuous table = one total.** Never split an estimate into sub-sections (e.g. “hardware” / “cabling” / “services”) with separate sub-totals. The spreadsheet Mike uploads has everything summed together — the proposal mirrors that: one table, one “Project total” at the end. If the line items exceed one page, the estimate spills onto the next page (add a “continues on the following page” note at the bottom of the first page); the continuation page reuses the same estimate # and date with a descriptive subhead (e.g. “Source, Rack & Services”) but does **not** add a second total.
+**One estimate = one continuous table = one total.** Never split an estimate into sub-sections (e.g. "hardware" / "cabling" / "services") with separate sub-totals. The spreadsheet Mike uploads has everything summed together -- the proposal mirrors that: one table, one "Project total" at the end. If the line items exceed one page, run `scripts/pack-content.py --mode lineitems` to repack across pages; the continuation page reuses the same estimate # and date with a descriptive subhead (e.g. "Source, Rack & Services") but does **not** add a second total.
 
 **Pack greedily; totals break unless they fit.** Keep the next block of rows on the same page when it fits. Put a page break **before** the project total unless the **full** total block fits on the last estimate page. See `../_brand/SKILL.md` → Continuous page packing.
 

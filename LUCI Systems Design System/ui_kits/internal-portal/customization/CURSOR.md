@@ -23,6 +23,18 @@ Portal base: `http://10.10.1.17:8081/internal-portal/customization/`
 
 **Do not read other files** (AGENTS.md, README.md, other templates, other SKILL.md files). Everything you need is in those 2 files. **Do not download every template or all design files** — `create-client-workspace.sh` copies the one template you need and symlinks all CSS/fonts/textures/assets. Everything is already in the template.
 
+## Stable tooling (call these — do not re-derive)
+
+| Task | Script | When |
+|------|-------|------|
+| Fit check | `python3 scripts/fit-check.py <html> --url <dev-url>` | After any content edit (mandatory) |
+| Pack SOW | `python3 scripts/pack-content.py <html> --mode sow --start-page N --end-page M --url <dev-url> --write` | When SOW sections overflow or are underfilled |
+| Pack line items | `python3 scripts/pack-content.py <html> --mode lineitems --start-page N --end-page M --url <dev-url> --write` | When line-item groups overflow or are underfilled |
+| Ingest spreadsheet | `python3 scripts/ingest-budgetary-lineitems.py <xlsx>` | To convert a line-item spreadsheet to HTML rows |
+| Render PDF | `POST /__pdf` on the dev server, or `bash scripts/render-pdf.sh <html> <out.pdf>` | To generate the final PDF |
+
+**Do not write your own fit-check, packing, or measurement scripts.** These are committed and handle the edge cases (scrollHeight-returns-fixed-height, iframe same-origin, Chrome headless polling, greedy packing with totals exception, footer renumbering). Just call them.
+
 ## Full preview URLs
 
 | Document | URL |

@@ -1529,6 +1529,13 @@
         '  server, open preview, run fit check, export PDF.',
         '  See _brand/SKILL.md for the full workflow.',
         '',
+        'Stable tooling (call these — do NOT re-derive or write your own):',
+        '  Fit check:    python3 scripts/fit-check.py <html> --url <dev-url>',
+        '  Pack SOW:     python3 scripts/pack-content.py <html> --mode sow --start-page N --end-page M --url <dev-url> --write',
+        '  Pack items:   python3 scripts/pack-content.py <html> --mode lineitems --start-page N --end-page M --url <dev-url> --write',
+        '  Ingest xlsx:  python3 scripts/ingest-budgetary-lineitems.py <xlsx>',
+        '  Render PDF:   POST /__pdf on the dev server, or bash scripts/render-pdf.sh <html> <out.pdf>',
+        '',
         'Client notes:',
         '[property type, pain points, demo context, logo path if any \u2014 if none, find a clean official logo online]'
       ].join('\n');

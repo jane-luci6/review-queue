@@ -49,7 +49,7 @@ After a capabilities review and demo where the client needs a written proposal w
 ### Variable page counts
 
 - **SOW pages (4–11):** the 8 SOW pages mirror the standalone Scope of Work template. Add or remove SOW continuation pages if the scope requires more or less detail (e.g., fewer IDF pages, additional phasing). Use subheads (`.sow-subsection-title`), not repeated section numbers. The SOW uses `scope-of-work.css` classes — do not mix in `led-*` classes from the LED proposal. **SOW content flows continuously** — sections, subsections, line items, and bullets may break across page boundaries; do not force section-start page breaks or leave large gaps (see `../_brand/SKILL.md` → Continuous page packing).
-- **Line items (page 12):** if the spreadsheet has more rows than fit on one page, the estimate spills onto a continuation page. Add a "continues on the following page" note; the continuation page reuses the same section header but does **not** add a second total.
+- **Line items (page 12):** if the spreadsheet has more rows than fit on one page, run `scripts/pack-content.py --mode lineitems` to repack across pages with continuous flow (see `../_brand/SKILL.md` -> Continuous page packing). The script handles greedy packing, the totals exception, and footer renumbering automatically.
 
 ---
 
@@ -193,7 +193,7 @@ Capabilities-doc-style close page (dark, circuit texture, LUCI wordmark logo, Sy
 2. Overview (p2): update intro text to reference the specific property and phase.
 3. Review of scope (p3): set scope categories, endpoint counts, and descriptions per the site survey.
 4. SOW pages (p4–11): rewrite the 8 SOW pages to match the project scope — project intent, guiding principles, phasing, system scope (platform, IPTV, encoders, audio, network, remote access), IDF/rack scope, deliverables, assumptions/constraints/exclusions, and open items. Adapt from the standalone SOW template content. **Pack continuously** — sections, subsections, line items, and bullets may break across page boundaries (see `../_brand/SKILL.md` → Continuous page packing).
-5. Line items (p12): populate from Mike's spreadsheet via `ingest-budgetary-lineitems.py`; split to a continuation page if it overflows.
+5. Line items (p12): populate from Mike's spreadsheet via `ingest-budgetary-lineitems.py`; if it overflows, run `scripts/pack-content.py --mode lineitems` to repack across pages.
 6. Investment summary (p13): reconcile totals against the line items.
 7. Payment terms (p14): verify milestone percentages, labels, and due descriptions match the deal terms; update the 30-day validity date reference if needed.
 8. Close (p15): set the next-step body and contact name/email.

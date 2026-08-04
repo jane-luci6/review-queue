@@ -21,7 +21,7 @@ After the client has received the **Capabilities document** and leadership needs
 ### Workflow notes (template-specific)
 
 - **Pages 1–2 from Mike/Mark context** — cover property name, phase framing, and the page-2 "Prepared for…" intro come from what Mike/Mark tell you (or the portal form). Edit those regions directly; do not rebuild the locked "What LUCI is" block on page 2.
-- **Page 4 line items from the uploaded spreadsheet** — Mike/Mark attach an `.xlsx` of the proposal line items. Run the ingestion script (below) to convert it to the page-4 markup, paste it in, and split to a second proposal page if the script says it overflows.
+- **Page 4 line items from the uploaded spreadsheet** — Mike/Mark attach an `.xlsx` of the proposal line items. Run `scripts/ingest-budgetary-lineitems.py` to convert it to the page-4 markup, paste it in. If it overflows, run `scripts/pack-content.py --mode lineitems` to repack across pages (see `../_brand/SKILL.md` → Continuous page packing).
 - **Page 6 tiers** — move `be-tier-chip--selected` to the tier you're pricing this job at, and edit the discount % / price inline for any customer-specific discount.
 
 ---
@@ -51,11 +51,11 @@ python3 scripts/ingest-budgetary-lineitems.py path/to/line-items.xlsx --split --
 - A row with **Qty 0** renders a `—` subtotal (matches the placeholder endpoint rows).
 - The script prints a **row count, group count, grand total, and an estimated line-item stack height** against an 8.5in per-page budget, and tells you whether the rows fit one page or need a second.
 
-**When it overflows one page** (`--split`):
+**When it overflows one page:**
 
-- The script partitions groups across `doc-page--proposal` sections — page 04 (`Line items.`) + a “continued” page 05 (`Line items, continued.`) — with the band header, column-label row, and footers already wired.
-- Paste the emitted sections **in place of the existing page-4 section**, then **renumber every trailing page footer** (`doc-foot__page`) and the page map below by the number of extra pages added (e.g. one extra line-items page → old 05/06 become 06/07).
-- Verify the split by rendering the PDF (via the dev server's `POST /__pdf` or `scripts/render-pdf.sh`) and checking no group is cut off mid-table. If a single group is too tall to fit a page, subdivide it into two `be-price-group` blocks with split labels (e.g. “LUCI Video & Control Hardware (1/2)”).
+- Use `scripts/pack-content.py --mode lineitems` to repack the line-item groups across pages with continuous flow (greedy packing, totals exception, footer renumbering). See `../_brand/SKILL.md` -> Continuous page packing for the command.
+- The old `--split` flag on `ingest-budgetary-lineitems.py` still works for a simple two-page split, but `pack-content.py` is the preferred tool -- it handles arbitrary page counts, the totals exception, and renumbers footers automatically.
+- Verify the split by running `scripts/fit-check.py`, then rendering the PDF (via the dev server's `POST /__pdf` or `scripts/render-pdf.sh`). If a single group is too tall to fit a page, subdivide it into two `be-price-group` blocks with split labels (e.g. "LUCI Video & Control Hardware (1/2)").
 
 If the spreadsheet’s column names don’t map (the script errors with `missing required column(s)`), either rename the headers in the .xlsx or pass an adapted copy — the script’s `COL_SYNONYMS` table lists the accepted names.
 
