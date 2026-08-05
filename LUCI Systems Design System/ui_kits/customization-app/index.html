@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LUCI Document Studio — mock-up variants</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-deep:#0A161C; --mint:#68E3BE; --mint-dark:#2b9e80; --gold:#EDD086;
+    --off-white:#F5F8FA; --tint:#EEF2F4; --white:#FFF; --rule:#DBE1E4;
+    --ink:#354F5C; --ink-strong:#1C2B33; --muted:#6D7B84;
+    --display:"Syncopate","Arial Black",sans-serif;
+    --font:"Space Grotesk","Trebuchet MS",sans-serif;
+    --body:"Inter","Space Grotesk",sans-serif;
+  }
+  *{box-sizing:border-box} body{margin:0;font-family:var(--body);color:var(--ink);background:var(--off-white);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:920px;margin:0 auto;padding:56px 28px 80px}
+  .kicker{font-family:var(--font);font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--mint-dark);margin-bottom:14px}
+  .kicker::before{content:"";display:inline-block;width:28px;height:2px;background:var(--mint-dark);margin-right:10px;vertical-align:middle}
+  h1{font-family:var(--font);font-weight:700;font-size:clamp(30px,5vw,42px);line-height:1.08;letter-spacing:-.025em;color:var(--ink-strong);margin:0 0 14px}
+  .deck{font-size:17px;line-height:1.6;color:var(--ink);max-width:62ch;margin:0 0 36px}
+  .deck strong{color:var(--ink-strong)}
+  .grid{display:grid;grid-template-columns:1fr;gap:18px}
+  @media(min-width:760px){.grid{grid-template-columns:1fr 1fr 1fr}}
+  .card{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--rule);border-bottom:3px solid var(--mint-dark);padding:24px;text-decoration:none;color:inherit;transition:box-shadow .15s,transform .15s}
+  .card:hover{box-shadow:0 18px 44px rgba(10,22,28,.12);transform:translateY(-2px)}
+  .card__tag{font-family:var(--font);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--mint-dark);margin-bottom:10px}
+  .card__title{font-family:var(--font);font-weight:700;font-size:19px;color:var(--ink-strong);margin:0 0 8px}
+  .card__desc{font-size:14px;line-height:1.55;color:var(--ink);margin:0 0 16px}
+  .card__cta{font-family:var(--font);font-weight:600;font-size:13px;color:var(--mint-dark)} .card__cta::after{content:" →"}
+  .card--c{border-bottom-color:var(--gold)}
+  .card--c .card__tag{color:var(--gold-deep)}
+  .note{margin-top:40px;padding:22px 24px;background:var(--tint);border-left:4px solid var(--mint-dark)}
+  .note h2{font-family:var(--font);font-weight:700;font-size:16px;color:var(--ink-strong);margin:0 0 8px}
+  .note p{font-size:14px;line-height:1.6;color:var(--ink);margin:6px 0 0}
+  .note ul{margin:10px 0 0;padding-left:18px;font-size:14px;line-height:1.7;color:var(--ink)}
+  .foot{margin-top:40px;font-size:13px;color:var(--muted);line-height:1.6}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="kicker">AI Customization App · mock-up</p>
+  <h1>Document Studio — three two-pane directions</h1>
+  <p class="deck">A mock-up for your developer to see how the AI document-customization app should work. All three are <strong>two-pane</strong> (selector + chat on the left, live preview on the right) and <strong>clickable but static</strong> — you can click through the flows, but there is no live AI. They differ in <strong>what the left pane leads with</strong>.</p>
+
+  <div class="grid">
+    <a class="card" href="variant-a-chat-first.html">
+      <span class="card__tag">Variant A</span>
+      <h2 class="card__title">Chat-first</h2>
+      <p class="card__desc">Compact template picker on top, the conversation is the control surface, slim iteration strip above the composer. Minimal chrome — feels like Cursor / v0.</p>
+      <span class="card__cta">Open A</span>
+    </a>
+    <a class="card" href="variant-b-library-first.html">
+      <span class="card__tag">Variant B</span>
+      <h2 class="card__title">Library-first</h2>
+      <p class="card__desc">“My documents” + saved docs up top with a New button, then chat below. Save, reopen, and start-new are front and center — the document library is a first-class citizen.</p>
+      <span class="card__cta">Open B</span>
+    </a>
+    <a class="card card--c" href="variant-c-guided-flow.html">
+      <span class="card__tag">Variant C</span>
+      <h2 class="card__title">Guided-flow</h2>
+      <p class="card__desc">A step wizard — 1 Pick template → 2 Name client &amp; project → 3 Customize with AI — with a visible iteration/version trail. Best for onboarding and “start a new template.”</p>
+      <span class="card__cta">Open C</span>
+    </a>
+  </div>
+
+  <div class="note">
+    <h2>What every variant has</h2>
+    <p>These are the features you asked for, plus the UX pieces a non-UX build usually misses — all present in each direction so you’re comparing layout, not capability.</p>
+    <ul>
+      <li>Template selector (all 7: Sales deck, Capabilities, SOW, Budgetary estimate, Proposal — LED / Retrofit / Upgrade)</li>
+      <li>Chat box for customization details + iterative “modify / improve” turns</li>
+      <li>Live preview on the right that updates per iteration</li>
+      <li><strong>Save</strong> (writes to this browser so you can reopen), <strong>Download PDF</strong>, <strong>New</strong> / start-over</li>
+      <li><strong>Iteration trail</strong> — see what changed each turn, step back to an earlier version</li>
+      <li>“What changed” highlight + locked-region respect (the AI only touches editable pages, same rule Mike follows today)</li>
+      <li>Client / project naming, empty states, processing feedback</li>
+    </ul>
+  </div>
+
+  <p class="foot">Tip: open two or three in separate tabs and click through each. When you pick a winner, tell me which one (A / B / C) and I’ll merge it into <code>main</code>, delete the other branches, and we can start refining the chosen direction into something closer to production.</p>
+</div>
+</body>
+</html>

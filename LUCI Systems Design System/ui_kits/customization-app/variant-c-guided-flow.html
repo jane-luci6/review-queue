@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LUCI Document Studio — Variant C (Guided-flow)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-deep:#0A161C; --navy:#10232D; --navy-muted:#49616E;
+    --mint:#68E3BE; --mint-dark:#2b9e80;
+    --gold:#EDD086; --gold-deep:#CEB06E;
+    --off-white:#F5F8FA; --tint:#EEF2F4; --white:#FFF;
+    --rule:#DBE1E4; --ink:#354F5C; --ink-strong:#1C2B33; --muted:#6D7B84;
+    --display:"Syncopate","Arial Black",sans-serif;
+    --font:"Space Grotesk","Trebuchet MS",sans-serif;
+    --body:"Inter","Space Grotesk",sans-serif;
+  }
+  *{box-sizing:border-box} html,body{height:100%}
+  body{margin:0;font-family:var(--body);color:var(--ink);background:var(--off-white);-webkit-font-smoothing:antialiased}
+  button,input,textarea{font:inherit} button{cursor:pointer}
+  .topbar{display:flex;align-items:center;gap:14px;height:60px;padding:0 20px;border-bottom:1px solid var(--rule);background:var(--white);position:sticky;top:0;z-index:20}
+  .brand__mark{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.18em;color:var(--navy-deep)}
+  .brand__name{font-family:var(--font);font-weight:600;font-size:14px;color:var(--ink-strong)}
+  .brand__divider{width:1px;height:18px;background:var(--rule)}
+  .crumb{font-size:13px;color:var(--muted)} .crumb strong{color:var(--ink-strong);font-weight:600}
+  .topbar__spacer{flex:1}
+  .topbtn{display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 14px;font-family:var(--font);font-weight:600;font-size:13px;color:var(--ink-strong);background:var(--white);border:1px solid var(--rule);border-radius:0;transition:background .15s,border-color .15s}
+  .topbtn:hover{border-color:var(--mint-dark);background:rgba(43,158,128,.06)}
+  .topbtn--mint{background:var(--mint-dark);color:#fff;border-color:var(--mint-dark)} .topbtn--mint:hover{background:#258a70}
+  .shell{display:grid;grid-template-columns:minmax(380px,440px) minmax(0,1fr);height:calc(100vh - 60px)}
+  .pane{min-width:0;display:flex;flex-direction:column}
+  .pane--left{border-right:1px solid var(--rule);background:var(--white)}
+  .pane--right{background:var(--tint)}
+  /* steps */
+  .steps{padding:18px 18px 6px}
+  .step{display:grid;grid-template-columns:30px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--rule)}
+  .step:last-child{border-bottom:0}
+  .step__num{width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-family:var(--font);font-weight:700;font-size:13px;color:var(--muted);background:var(--off-white);border:1px solid var(--rule);border-radius:0}
+  .step.is-active .step__num{color:#fff;background:var(--navy-deep);border-color:var(--navy-deep)}
+  .step.is-done .step__num{color:#fff;background:var(--mint-dark);border-color:var(--mint-dark)}
+  .step__body{min-width:0}
+  .step__title{font-family:var(--font);font-weight:600;font-size:14px;color:var(--ink-strong);margin:0 0 3px}
+  .step.is-locked .step__title{color:var(--muted)}
+  .step__desc{font-size:12px;color:var(--muted);line-height:1.5;margin:0 0 10px}
+  .step__content{display:none}
+  .step.is-open .step__content{display:block}
+  .field{display:flex;flex-direction:column;gap:5px;margin-bottom:10px}
+  .field label{font-family:var(--font);font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .field input,.field select{height:38px;padding:0 11px;font-family:var(--font);font-size:14px;color:var(--ink-strong);background:var(--off-white);border:1px solid var(--rule);border-radius:0}
+  .field input:focus,.field select:focus{outline:none;border-color:var(--mint-dark);box-shadow:0 0 0 3px rgba(43,158,128,.12)}
+  .tgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .topt{display:flex;flex-direction:column;gap:4px;padding:10px;text-align:left;background:var(--off-white);border:1px solid var(--rule);border-radius:0;cursor:pointer}
+  .topt:hover{border-color:var(--mint-dark)} .topt.is-active{background:rgba(43,158,128,.08);border-color:var(--mint-dark)}
+  .topt__t{font-family:var(--font);font-weight:600;font-size:13px;color:var(--ink-strong)}
+  .topt__m{font-size:11px;color:var(--muted)}
+  .nextbtn{height:36px;padding:0 16px;font-family:var(--font);font-weight:600;font-size:13px;color:#fff;background:var(--navy-deep);border:0;border-radius:0} .nextbtn:hover{background:var(--navy)} .nextbtn:disabled{background:var(--rule);color:var(--muted);cursor:not-allowed}
+  /* iteration trail */
+  .trail{padding:12px 18px;border-top:1px solid var(--rule);background:var(--off-white)}
+  .trail__title{font-family:var(--font);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .trail__list{display:flex;flex-direction:column;gap:6px;max-height:120px;overflow:auto}
+  .verrow{display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:center;padding:7px 9px;background:var(--white);border:1px solid var(--rule);cursor:pointer}
+  .verrow:hover{border-color:var(--mint-dark)} .verrow.is-active{border-color:var(--mint-dark);background:rgba(43,158,128,.06)}
+  .verrow__tag{font-family:var(--font);font-size:11px;font-weight:700;color:var(--mint-dark)}
+  .verrow__note{font-size:12px;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .verrow__time{font-size:10px;color:var(--muted)}
+  /* chat */
+  .chathead{display:flex;align-items:center;justify-content:space-between;padding:10px 18px;border-bottom:1px solid var(--rule)}
+  .chathead__title{font-family:var(--font);font-weight:600;font-size:13px;color:var(--ink-strong);display:flex;align-items:center;gap:8px}
+  .chathead__title::before{content:"";width:18px;height:2px;background:var(--mint-dark)}
+  .thread{flex:1;overflow:auto;padding:16px 18px;display:flex;flex-direction:column;gap:14px}
+  .msg{max-width:92%;display:flex;flex-direction:column;gap:5px}
+  .msg__role{font-family:var(--font);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .msg__bubble{font-size:14px;line-height:1.55;padding:11px 14px;border-radius:0}
+  .msg--user{align-self:flex-end;align-items:flex-end}
+  .msg--user .msg__bubble{background:#DFF3EC;color:var(--ink-strong);border-left:3px solid var(--mint-dark)}
+  .msg--ai .msg__bubble{background:var(--off-white);color:var(--ink);border:1px solid var(--rule)}
+  .msg--ai .msg__bubble strong{color:var(--ink-strong);font-weight:600}
+  .msg--ai .msg__bubble ul{margin:6px 0 0;padding-left:18px} .msg--ai .msg__bubble li{margin:3px 0}
+  .msg--mock .msg__bubble{background:repeating-linear-gradient(45deg,#fff,#fff 8px,#f7faf9 8px,#f7faf9 16px);border:1px dashed var(--mint-dark);color:var(--muted);font-size:13px}
+  .changedchip{display:inline-flex;align-items:center;gap:5px;margin-top:6px;font-family:var(--font);font-size:11px;font-weight:600;color:var(--mint-dark);background:rgba(43,158,128,.08);padding:3px 8px}
+  .changedchip::before{content:"";width:6px;height:6px;background:var(--mint-dark)}
+  .composer{padding:12px 18px 16px;border-top:1px solid var(--rule);background:var(--white)}
+  .composer__ta{width:100%;min-height:58px;resize:none;padding:10px 12px;font-family:var(--body);font-size:14px;color:var(--ink-strong);background:var(--off-white);border:1px solid var(--rule);border-radius:0}
+  .composer__ta:focus{outline:none;border-color:var(--mint-dark);box-shadow:0 0 0 3px rgba(43,158,128,.12)}
+  .composer__row{display:flex;align-items:center;gap:10px;margin-top:8px}
+  .composer__hint{font-size:11px;color:var(--muted)} .composer__spacer{flex:1}
+  .sendbtn{height:36px;padding:0 16px;font-family:var(--font);font-weight:600;font-size:13px;color:#fff;background:var(--mint-dark);border:0;border-radius:0} .sendbtn:hover{background:#258a70} .sendbtn:disabled{background:var(--rule);color:var(--muted);cursor:not-allowed}
+  /* preview */
+  .previewbar{display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid var(--rule);background:var(--white)}
+  .previewbar__title{font-family:var(--font);font-weight:600;font-size:13px;color:var(--ink-strong)}
+  .previewbar__spacer{flex:1}
+  .pvbtn{height:30px;padding:0 10px;font-family:var(--font);font-size:12px;font-weight:600;color:var(--ink-strong);background:var(--off-white);border:1px solid var(--rule);border-radius:0} .pvbtn:hover{border-color:var(--mint-dark)} .pvbtn.is-on{color:var(--mint-dark);border-color:var(--mint-dark);background:rgba(43,158,128,.07)}
+  .canvas{flex:1;overflow:auto;display:flex;gap:24px;padding:24px;align-items:flex-start;justify-content:center}
+  .docpage{width:min(560px,100%);background:var(--navy-deep);border-bottom:4px solid var(--mint);box-shadow:0 24px 64px rgba(10,22,28,.22);padding:48px 44px 40px;color:#fff;flex:none}
+  .docpage__kicker{font-family:var(--font);font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--mint);margin-bottom:22px}
+  .docpage__title{font-family:var(--display);font-weight:700;font-size:34px;line-height:1.04;letter-spacing:-.02em;margin:0 0 14px}
+  .docpage__client{font-family:var(--font);font-weight:600;font-size:18px;color:#fff;margin-bottom:8px}
+  .docpage__meta{font-size:13px;color:rgba(235,245,248,.7);line-height:1.6}
+  .docpage__rule{height:1px;background:rgba(255,255,255,.12);margin:26px 0}
+  .docpage__pages{display:flex;flex-direction:column;gap:8px}
+  .docpage__pagelabel{font-family:var(--font);font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--mint)}
+  .docpage__pagelist{display:flex;flex-wrap:wrap;gap:6px}
+  .docpage__page{width:30px;height:40px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14)} .docpage__page.is-current{background:rgba(104,227,190,.18);border-color:var(--mint)}
+  .thumbstrip{flex:none;width:120px;display:flex;flex-direction:column;gap:10px;position:sticky;top:24px}
+  .thumb{height:78px;background:var(--navy-deep);border-bottom:3px solid var(--mint);box-shadow:0 8px 20px rgba(10,22,28,.18);display:flex;align-items:flex-end;padding:8px;font-family:var(--font);font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(235,245,248,.6)} .thumb.is-current{border-bottom-color:var(--gold);color:var(--mint)}
+  .empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:40px}
+  .empty__mark{font-family:var(--display);font-weight:700;font-size:16px;letter-spacing:.18em;color:var(--navy-deep)}
+  .empty__title{font-family:var(--font);font-weight:600;font-size:20px;color:var(--ink-strong);margin:0}
+  .empty__text{font-size:14px;color:var(--muted);max-width:38ch;line-height:1.6;margin:0}
+  .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:50;background:var(--navy-deep);color:#fff;font-family:var(--font);font-size:13px;font-weight:500;padding:11px 18px;box-shadow:0 12px 36px rgba(10,22,28,.3);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s}
+  .toast.is-on{opacity:1;transform:translateX(-50%) translateY(-4px)} .toast__dot{display:inline-block;width:7px;height:7px;background:var(--mint);margin-right:9px;vertical-align:middle}
+  .mocknote{position:fixed;bottom:14px;right:16px;z-index:40;font-family:var(--font);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mint-dark);background:rgba(43,158,128,.08);border:1px solid rgba(43,158,128,.25);padding:5px 9px}
+  @media(max-width:880px){.shell{grid-template-columns:1fr;height:auto}.pane--left{border-right:0;border-bottom:1px solid var(--rule)}.thumbstrip{display:none}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <span class="brand__mark">LUCI</span>
+  <span class="brand__divider"></span>
+  <span class="brand__name">Document Studio</span>
+  <span class="brand__divider"></span>
+  <span class="crumb">Working on <strong id="crumb-doc">— no document started —</strong></span>
+  <span class="topbar__spacer"></span>
+  <button class="topbtn" id="btn-new">Start over</button>
+  <button class="topbtn" id="btn-save">Save</button>
+  <button class="topbtn topbtn--mint" id="btn-pdf">Download PDF</button>
+</header>
+
+<div class="shell">
+  <!-- LEFT: guided-flow -->
+  <aside class="pane pane--left">
+    <div class="steps" id="steps">
+      <div class="step is-active is-open" data-step="1">
+        <div class="step__num">1</div>
+        <div class="step__body">
+          <p class="step__title">Pick a template</p>
+          <p class="step__desc">Choose the document you want to customize.</p>
+          <div class="step__content">
+            <div class="tgrid" id="tgrid"></div>
+            <div style="margin-top:12px"><button class="nextbtn" id="next-1" disabled>Continue →</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="step is-locked" data-step="2">
+        <div class="step__num">2</div>
+        <div class="step__body">
+          <p class="step__title">Name the client &amp; project</p>
+          <p class="step__desc">A few details so the AI knows who this is for.</p>
+          <div class="step__content">
+            <div class="field"><label>Client name</label><input id="client-input" placeholder="e.g. Tachi Palace"></div>
+            <div class="field"><label>Project / deal context</label><input id="project-input" placeholder="e.g. 40-ft LED sportsbook + floor signage"></div>
+            <div style="display:flex;gap:10px"><button class="nextbtn" id="back-2" style="background:var(--white);color:var(--ink-strong);border:1px solid var(--rule)">← Back</button><button class="nextbtn" id="next-2" disabled>Continue →</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="step is-locked" data-step="3">
+        <div class="step__num">3</div>
+        <div class="step__body">
+          <p class="step__title">Customize with AI</p>
+          <p class="step__desc">Describe what you want and refine with each turn.</p>
+          <div class="step__content">
+            <div class="chathead"><span class="chathead__title">Customization chat</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="trail" id="trail" hidden>
+      <div class="trail__title">Iteration trail</div>
+      <div class="trail__list" id="trail-list"></div>
+    </div>
+
+    <div class="thread" id="thread">
+      <div class="empty" id="empty-chat" style="padding:24px 0">
+        <span class="empty__mark">LUCI</span>
+        <p class="empty__title">Follow the steps</p>
+        <p class="empty__text">Pick a template, name the client, then chat with the AI. Each turn is saved to the iteration trail below.</p>
+      </div>
+    </div>
+
+    <div class="composer" id="composer-wrap" style="display:none">
+      <textarea class="composer__ta" id="composer" placeholder="e.g. Make the cover say 'Tachi Palace' and tighten the scope to signage + sportsbook A/V."></textarea>
+      <div class="composer__row">
+        <span class="composer__hint">Enter to send · Shift+Enter for a new line</span>
+        <span class="composer__spacer"></span>
+        <button class="sendbtn" id="send-btn" disabled>Send</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- RIGHT: preview -->
+  <main class="pane pane--right">
+    <div class="previewbar">
+      <span class="previewbar__title">Live preview</span>
+      <span class="previewbar__spacer"></span>
+      <button class="pvbtn" id="pv-prev">‹</button>
+      <span style="font-family:var(--font);font-size:12px;font-weight:600;color:var(--ink-strong)" id="pv-pageno">—</span>
+      <button class="pvbtn" id="pv-next">›</button>
+      <button class="pvbtn" id="pv-changed">What changed</button>
+    </div>
+    <div class="canvas" id="canvas">
+      <div class="empty" id="empty-preview">
+        <span class="empty__mark">LUCI</span>
+        <p class="empty__title">Your document appears here</p>
+        <p class="empty__text">As you move through the steps on the left, the live document fills in here and updates with every AI turn.</p>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="toast" id="toast"><span class="toast__dot"></span><span id="toast-text">Saved</span></div>
+<div class="mocknote">Mock-up · clickable, no live AI</div>
+
+<script>
+const TEMPLATES=[
+  {id:'sales-deck',title:'Sales deck',pages:12,blurb:'Slides 1–2 editable'},
+  {id:'capabilities-document',title:'Capabilities document',pages:9,blurb:'Cover + close editable'},
+  {id:'scope-of-work',title:'Scope of work',pages:8,blurb:'Scope sections editable'},
+  {id:'budgetary-estimate',title:'Budgetary estimate',pages:5,blurb:'Pricing doc'},
+  {id:'proposal',title:'Proposal — LED',pages:14,blurb:'LED wall proposal'},
+  {id:'proposal-luci-retrofit',title:'Proposal — LUCI Retrofit',pages:14,blurb:'Full platform + 8-page SOW'},
+  {id:'proposal-upgrade',title:'Proposal — Upgrade',pages:5,blurb:'Order form, existing clients'}
+];
+const SEED=[
+  {role:'user',text:'Customize this proposal for the client. Use the project context I gave you.'},
+  {role:'ai',text:'<strong>Done — first pass (v1):</strong><ul><li>Cover client set</li><li>Scope aligned to the project context</li><li>Investment re-quantified</li></ul>Locked pages were not touched.',changed:'Cover · Scope · Investment'}
+];
+const state={step:1,tpl:null,client:'',project:'',page:1,ver:0,versions:[]};
+const $=s=>document.querySelector(s);
+const tgrid=$('#tgrid'),clientInput=$('#client-input'),projectInput=$('#project-input');
+const thread=$('#thread'),emptyChat=$('#empty-chat'),composer=$('#composer'),sendBtn=$('#send-btn'),composerWrap=$('#composer-wrap');
+const trail=$('#trail'),trailList=$('#trail-list'),canvas=$('#canvas'),emptyPreview=$('#empty-preview');
+const crumbDoc=$('#crumb-doc'),pvPageno=$('#pv-pageno'),pvChanged=$('#pv-changed');
+
+tgrid.innerHTML=TEMPLATES.map(t=>`<button class="topt" data-id="${t.id}"><span class="topt__t">${t.title}</span><span class="topt__m">${t.pages}p · ${t.blurb}</span></button>`).join('');
+tgrid.querySelectorAll('.topt').forEach(b=>b.addEventListener('click',()=>{
+  tgrid.querySelectorAll('.topt').forEach(x=>x.classList.remove('is-active'));b.classList.add('is-active');
+  state.tpl=TEMPLATES.find(t=>t.id===b.dataset.id);$('#next-1').disabled=false;renderPreview();
+}));
+$('#next-1').addEventListener('click',()=>go(2));
+$('#back-2').addEventListener('click',()=>go(1));
+clientInput.addEventListener('input',()=>{$('#next-2').disabled=!clientInput.value.trim();});
+projectInput.addEventListener('input',()=>{$('#next-2').disabled=!clientInput.value.trim();});
+$('#next-2').addEventListener('click',()=>{state.client=clientInput.value.trim();state.project=projectInput.value.trim();crumbDoc.textContent=state.tpl.title+' — '+state.client;go(3);startChat();});
+
+function go(n){
+  state.step=n;
+  document.querySelectorAll('.step').forEach(s=>{
+    const sn=+s.dataset.step;
+    s.classList.toggle('is-open',sn===n);
+    s.classList.toggle('is-active',sn===n);
+    s.classList.toggle('is-locked',sn>n);
+    s.classList.toggle('is-done',sn<n);
+  });
+  if(n===1){crumbDoc.textContent='— no document started —';}
+}
+function startChat(){
+  emptyChat.style.display='none';composerWrap.style.display='';sendBtn.disabled=false;trail.hidden=false;
+  thread.innerHTML='';SEED.forEach(m=>addMessage(m.role,m.text,m.changed));
+  state.ver=1;state.versions=[{v:1,note:'First pass',time:nowTime()}];renderTrail();renderPreview();
+}
+
+function addMessage(role,text,changed){
+  const w=document.createElement('div');w.className='msg msg--'+(role==='user'?'user':'ai');
+  w.innerHTML=`<span class="msg__role">${role==='user'?'You':'LUCI AI'}</span><div class="msg__bubble">${text}</div>${changed?`<span class="changedchip">${changed}</span>`:''}`;
+  thread.appendChild(w);thread.scrollTop=thread.scrollHeight;
+}
+function addMockReply(){
+  const w=document.createElement('div');w.className='msg msg--ai msg--mock';
+  w.innerHTML=`<span class="msg__role">LUCI AI</span><div class="msg__bubble">[Mock-up — connect a model to generate a real response. In production the AI reads the template SKILL.md, applies your request to editable regions only, and updates the preview →]</div>`;
+  thread.appendChild(w);thread.scrollTop=thread.scrollHeight;
+}
+composer.addEventListener('input',()=>{sendBtn.disabled=!composer.value.trim();});
+composer.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}});
+sendBtn.addEventListener('click',send);
+function send(){const v=composer.value.trim();if(!v)return;addMessage('user',escapeHtml(v));composer.value='';sendBtn.disabled=true;
+  setTimeout(()=>{addMockReply();state.ver++;state.versions.unshift({v:state.ver,note:firstLine(v),time:nowTime()});renderTrail();flashChanged();renderPreview();},450);}
+function firstLine(s){return s.length>42?s.slice(0,42)+'…':s;}
+function nowTime(){return new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});}
+
+function renderTrail(){
+  trailList.innerHTML=state.versions.map((v,i)=>`<div class="verrow${i===0?' is-active':''}" data-v="${v.v}">
+    <span class="verrow__tag">v${v.v}</span><span class="verrow__note">${escapeHtml(v.note)}</span><span class="verrow__time">${v.time}</span></div>`).join('');
+  trailList.querySelectorAll('.verrow').forEach(r=>r.addEventListener('click',()=>{state.ver=+r.dataset.v;renderTrail();renderPreview();toast('Viewing v'+state.ver);}));
+}
+function flashChanged(){pvChanged.classList.add('is-on');setTimeout(()=>pvChanged.classList.remove('is-on'),1600);}
+
+function renderPreview(){
+  if(!state.tpl){canvas.innerHTML='';canvas.appendChild(emptyPreview);emptyPreview.style.display='';pvPageno.textContent='—';return;}
+  const t=state.tpl,c=state.client||'CLIENT NAME';
+  const pages=Array.from({length:t.pages},(_,i)=>`<div class="docpage__page${i+1===state.page?' is-current':''}"></div>`).join('');
+  canvas.innerHTML=`<div class="docpage">
+    <div class="docpage__kicker">${t.title}${state.ver?' · v'+state.ver:''}</div>
+    <h1 class="docpage__title">${c}</h1>
+    <p class="docpage__client">${t.title}</p>
+    <p class="docpage__meta">${state.project?'Project: '+escapeHtml(state.project)+'<br>':''}Prepared by LUCI Systems · ${new Date().toLocaleDateString('en-US',{month:'long',year:'numeric'})}</p>
+    <div class="docpage__rule"></div>
+    <div class="docpage__pages"><span class="docpage__pagelabel">Pages · ${t.pages}</span><div class="docpage__pagelist">${pages}</div></div>
+  </div>
+  <div class="thumbstrip">${Array.from({length:Math.min(t.pages,6)},(_,i)=>`<div class="thumb${i===0?' is-current':''}">p${i+1}</div>`).join('')}</div>`;
+  pvPageno.textContent=state.page+' / '+t.pages;
+  canvas.querySelectorAll('.docpage__page').forEach((p,i)=>p.addEventListener('click',()=>{state.page=i+1;renderPreview();}));
+}
+$('#pv-prev').addEventListener('click',()=>{if(state.tpl&&state.page>1){state.page--;renderPreview();}});
+$('#pv-next').addEventListener('click',()=>{if(state.tpl&&state.page<state.tpl.pages){state.page++;renderPreview();}});
+pvChanged.addEventListener('click',()=>{if(state.tpl&&state.ver)toast('v'+state.ver+' — Cover, Scope, and Investment updated. Locked pages untouched.');});
+
+$('#btn-save').addEventListener('click',()=>{
+  if(!state.tpl){toast('Finish step 1 first');return;}
+  if(!state.client){toast('Name the client in step 2 first');return;}
+  const a=JSON.parse(localStorage.getItem('luci-doc-studio')||'[]');
+  a.unshift({id:'d'+Date.now(),tpl:state.tpl.id,title:state.tpl.title,client:state.client,ver:state.ver||1,at:new Date().toISOString()});
+  localStorage.setItem('luci-doc-studio',JSON.stringify(a.slice(0,50)));
+  toast('Saved · '+state.client+' · '+state.tpl.title+' · v'+(state.ver||1));
+});
+$('#btn-pdf').addEventListener('click',()=>{if(!state.tpl){toast('Finish the steps first');return;}toast('PDF export — wired in production (print pipeline).');});
+$('#btn-new').addEventListener('click',()=>{
+  state.step=1;state.tpl=null;state.client='';state.project='';state.page=1;state.ver=0;state.versions=[];
+  clientInput.value='';projectInput.value='';composer.value='';
+  tgrid.querySelectorAll('.topt').forEach(x=>x.classList.remove('is-active'));
+  $('#next-1').disabled=true;$('#next-2').disabled=true;
+  crumbDoc.textContent='— no document started —';
+  composerWrap.style.display='none';trail.hidden=true;sendBtn.disabled=true;
+  thread.innerHTML='';thread.appendChild(emptyChat);emptyChat.style.display='';
+  go(1);renderPreview();toast('Started over');
+});
+
+function toast(msg){const t=$('#toast');$('#toast-text').textContent=msg;t.classList.add('is-on');clearTimeout(window.__tt);window.__tt=setTimeout(()=>t.classList.remove('is-on'),2400);}
+function escapeHtml(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+
+renderPreview();
+</script>
+</body>
+</html>
