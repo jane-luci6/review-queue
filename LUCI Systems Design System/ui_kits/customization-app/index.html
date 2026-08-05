@@ -93,19 +93,11 @@
   .previewbar__title{font-family:var(--font);font-weight:600;font-size:13px;color:var(--ink-strong)}
   .previewbar__spacer{flex:1}
   .pvbtn{height:30px;padding:0 10px;font-family:var(--font);font-size:12px;font-weight:600;color:var(--ink-strong);background:var(--off-white);border:1px solid var(--rule);border-radius:0} .pvbtn:hover{border-color:var(--mint-dark)} .pvbtn.is-on{color:var(--mint-dark);border-color:var(--mint-dark);background:rgba(43,158,128,.07)}
-  .canvas{flex:1;overflow:auto;display:flex;gap:24px;padding:24px;align-items:flex-start;justify-content:center}
-  .docpage{width:min(560px,100%);background:var(--navy-deep);border-bottom:4px solid var(--mint);box-shadow:0 24px 64px rgba(10,22,28,.22);padding:48px 44px 40px;color:#fff;flex:none}
-  .docpage__kicker{font-family:var(--font);font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--mint);margin-bottom:22px}
-  .docpage__title{font-family:var(--display);font-weight:700;font-size:34px;line-height:1.04;letter-spacing:-.02em;margin:0 0 14px}
-  .docpage__client{font-family:var(--font);font-weight:600;font-size:18px;color:#fff;margin-bottom:8px}
-  .docpage__meta{font-size:13px;color:rgba(235,245,248,.7);line-height:1.6}
-  .docpage__rule{height:1px;background:rgba(255,255,255,.12);margin:26px 0}
-  .docpage__pages{display:flex;flex-direction:column;gap:8px}
-  .docpage__pagelabel{font-family:var(--font);font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--mint)}
-  .docpage__pagelist{display:flex;flex-wrap:wrap;gap:6px}
-  .docpage__page{width:30px;height:40px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14)} .docpage__page.is-current{background:rgba(104,227,190,.18);border-color:var(--mint)}
-  .thumbstrip{flex:none;width:120px;display:flex;flex-direction:column;gap:10px;position:sticky;top:24px}
-  .thumb{height:78px;background:var(--navy-deep);border-bottom:3px solid var(--mint);box-shadow:0 8px 20px rgba(10,22,28,.18);display:flex;align-items:flex-end;padding:8px;font-family:var(--font);font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(235,245,248,.6)} .thumb.is-current{border-bottom-color:var(--gold);color:var(--mint)}
+  .canvas{flex:1;overflow:hidden;display:flex;gap:14px;padding:20px;align-items:stretch;background:#e9eef1;position:relative}
+  .doc-frame{flex:1;border:0;background:#fff;min-width:0;display:block}
+  .pageindex{flex:none;width:108px;display:flex;flex-direction:column;gap:6px;overflow:auto;position:sticky;top:20px;align-self:flex-start}
+  .pidx{height:30px;display:flex;align-items:center;justify-content:center;font-family:var(--font);font-size:11px;font-weight:600;color:var(--muted);background:var(--white);border:1px solid var(--rule);cursor:pointer} .pidx:hover{border-color:var(--mint-dark);color:var(--ink-strong)}
+  .pidx.is-current{background:var(--mint-dark);color:#fff;border-color:var(--mint-dark)}
   .empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:40px}
   .empty__mark{font-family:var(--display);font-weight:700;font-size:16px;letter-spacing:.18em;color:var(--navy-deep)}
   .empty__title{font-family:var(--font);font-weight:600;font-size:20px;color:var(--ink-strong);margin:0}
@@ -146,7 +138,7 @@
   @keyframes pulse{0%,100%{opacity:.3;transform:scale(.8)}50%{opacity:1;transform:scale(1.15)}}
   .inputsused{font-size:12px;color:var(--muted);line-height:1.6;margin:8px 0 0;padding-top:8px;border-top:1px solid var(--rule)}
   .inputsused strong{color:var(--ink-strong);font-weight:600}
-  @media(max-width:880px){.shell{grid-template-columns:1fr;height:auto}.pane--left{border-right:0;border-bottom:1px solid var(--rule)}.thumbstrip{display:none}}
+  @media(max-width:880px){.shell{grid-template-columns:1fr;height:auto}.pane--left{border-right:0;border-bottom:1px solid var(--rule)}.pageindex{display:none}}
 </style>
 </head>
 <body>
@@ -260,6 +252,8 @@
         <p class="empty__title">Your document appears here</p>
         <p class="empty__text">As you move through the steps on the left, the live document fills in here and updates with every AI turn.</p>
       </div>
+      <iframe class="doc-frame" id="doc-frame" style="display:none" title="Document preview"></iframe>
+      <div class="pageindex" id="pageindex" style="display:none"></div>
     </div>
   </main>
 </div>
@@ -302,6 +296,9 @@ const docUpload=$('#doc-upload'),filelist=$('#filelist'),linklist=$('#linklist')
 const thread=$('#thread'),emptyChat=$('#empty-chat'),composer=$('#composer'),sendBtn=$('#send-btn'),composerWrap=$('#composer-wrap');
 const trail=$('#trail'),trailList=$('#trail-list'),canvas=$('#canvas'),emptyPreview=$('#empty-preview');
 const crumbDoc=$('#crumb-doc'),pvPageno=$('#pv-pageno'),pvChanged=$('#pv-changed');
+const docFrame=$('#doc-frame'),pageIndex=$('#pageindex');
+const TPL_FILE={ 'sales-deck':'sales-deck.html','capabilities-document':'capabilities-document.html','scope-of-work':'scope-of-work.html','budgetary-estimate':'budgetary-estimate.html','proposal':'proposal.html','proposal-luci-retrofit':'proposal-luci-retrofit.html','proposal-upgrade':'proposal-upgrade.html' };
+let docPages=[],docTotal=0,docReady=false;
 
 tgrid.innerHTML=TEMPLATES.map(t=>`<button class="topt" data-id="${t.id}"><span class="topt__t">${t.title}</span><span class="topt__m">${t.pages}p · ${t.blurb}</span></button>`).join('');
 tgrid.querySelectorAll('.topt').forEach(b=>b.addEventListener('click',()=>{
@@ -423,23 +420,64 @@ function renderTrail(){
 function flashChanged(){pvChanged.classList.add('is-on');setTimeout(()=>pvChanged.classList.remove('is-on'),1600);}
 
 function renderPreview(){
-  if(!state.tpl){canvas.innerHTML='';canvas.appendChild(emptyPreview);emptyPreview.style.display='';pvPageno.textContent='—';return;}
-  const t=state.tpl,c=state.client||'CLIENT NAME';
-  const pages=Array.from({length:t.pages},(_,i)=>`<div class="docpage__page${i+1===state.page?' is-current':''}"></div>`).join('');
-  canvas.innerHTML=`<div class="docpage">
-    <div class="docpage__kicker">${t.title}${state.ver?' · v'+state.ver:''}</div>
-    <h1 class="docpage__title">${c}</h1>
-    <p class="docpage__client">${t.title}</p>
-    <p class="docpage__meta">${state.project?'Project: '+escapeHtml(state.project)+'<br>':''}Prepared by LUCI Systems · ${new Date().toLocaleDateString('en-US',{month:'long',year:'numeric'})}</p>
-    <div class="docpage__rule"></div>
-    <div class="docpage__pages"><span class="docpage__pagelabel">Pages · ${t.pages}</span><div class="docpage__pagelist">${pages}</div></div>
-  </div>
-  <div class="thumbstrip">${Array.from({length:Math.min(t.pages,6)},(_,i)=>`<div class="thumb${i===0?' is-current':''}">p${i+1}</div>`).join('')}</div>`;
-  pvPageno.textContent=state.page+' / '+t.pages;
-  canvas.querySelectorAll('.docpage__page').forEach((p,i)=>p.addEventListener('click',()=>{state.page=i+1;renderPreview();}));
+  if(!state.tpl){emptyPreview.style.display='';docFrame.style.display='none';pageIndex.style.display='none';pvPageno.textContent='—';return;}
+  emptyPreview.style.display='none';docFrame.style.display='';pageIndex.style.display='';
+  const src='../sales/'+TPL_FILE[state.tpl.id];
+  docReady=false;
+  if(docFrame.dataset.src!==src){docFrame.dataset.src=src;docFrame.src=src;}
+  else{onDocReady();}
 }
-$('#pv-prev').addEventListener('click',()=>{if(state.tpl&&state.page>1){state.page--;renderPreview();}});
-$('#pv-next').addEventListener('click',()=>{if(state.tpl&&state.page<state.tpl.pages){state.page++;renderPreview();}});
+function onDocReady(){
+  const doc=docFrame.contentDocument;if(!doc)return;
+  docReady=true;
+  injectPreviewCSS(doc);
+  populateDoc(doc,state.client,state.project);
+  docPages=[...doc.querySelectorAll('.doc-page, .slide')];
+  docTotal=docPages.length||state.tpl.pages;
+  if(state.page>docTotal)state.page=1;
+  buildPageIndex();pvPageno.textContent=state.page+' / '+docTotal;
+  jumpToPage(state.page);fitDeck(doc);
+}
+function injectPreviewCSS(doc){
+  if(doc.getElementById('luci-preview-injected'))return;
+  const s=doc.createElement('style');s.id='luci-preview-injected';
+  s.textContent='html,body{margin:0}body{background:transparent}.doc-hub-link{display:none!important}.doc-page{margin:0 auto 14px!important;box-shadow:0 10px 28px rgba(10,22,28,.16);background:#fff;max-width:900px}.slide{margin:0 auto 14px!important;box-shadow:0 10px 28px rgba(10,22,28,.16)}';
+  doc.head.appendChild(s);
+}
+function populateDoc(doc,client,project){
+  const set=(sel,val)=>{const el=doc.querySelector(sel);if(el&&val)el.textContent=val;};
+  let textHook=null;
+  if(doc.querySelector('[data-studio="prepared-for"]'))textHook='[data-studio="prepared-for"]';
+  else if(doc.querySelector('[data-studio="client-name"]'))textHook='[data-studio="client-name"]';
+  if(textHook)set(textHook,client);
+  set('[data-studio="project-title"]',project);
+  const logo=doc.querySelector('[data-studio="client-logo"]');
+  if(logo&&client){
+    if(!textHook){const span=doc.createElement('span');span.textContent=client;span.style.cssText='font-family:"Space Grotesk","Trebuchet MS",sans-serif;font-weight:700;font-size:24px;letter-spacing:.02em;color:#fff;display:inline-block;line-height:1.1';logo.replaceWith(span);}
+    else{logo.alt=client+' logo';}
+  }
+}
+function buildPageIndex(){
+  pageIndex.innerHTML='';
+  const max=Math.min(docTotal,40);
+  for(let i=1;i<=max;i++){
+    const b=document.createElement('div');b.className='pidx'+(i===state.page?' is-current':'');b.textContent=i;
+    b.addEventListener('click',()=>{state.page=i;jumpToPage(i);pvPageno.textContent=i+' / '+docTotal;highlightPage();});
+    pageIndex.appendChild(b);
+  }
+}
+function highlightPage(){pageIndex.querySelectorAll('.pidx').forEach((b,i)=>b.classList.toggle('is-current',i+1===state.page));}
+function jumpToPage(n){const el=docPages[n-1];if(el&&docFrame.contentWindow){try{el.scrollIntoView({behavior:'smooth',block:'start'});}catch(e){}}}
+function fitDeck(doc){
+  if(!doc.querySelector('.slide'))return;
+  const scale=Math.min(docFrame.clientWidth/1280,1);
+  let st=doc.getElementById('luci-deck-fit');if(!st){st=doc.createElement('style');st.id='luci-deck-fit';doc.head.appendChild(st);}
+  st.textContent='.slide{zoom:'+scale+'}';
+}
+docFrame.addEventListener('load',onDocReady);
+window.addEventListener('resize',()=>{if(docReady&&docFrame.contentDocument&&docFrame.contentDocument.querySelector('.slide'))fitDeck(docFrame.contentDocument);});
+$('#pv-prev').addEventListener('click',()=>{if(state.tpl&&state.page>1){state.page--;jumpToPage(state.page);pvPageno.textContent=state.page+' / '+docTotal;highlightPage();}});
+$('#pv-next').addEventListener('click',()=>{if(state.tpl&&state.page<docTotal){state.page++;jumpToPage(state.page);pvPageno.textContent=state.page+' / '+docTotal;highlightPage();}});
 pvChanged.addEventListener('click',()=>{if(state.tpl&&state.ver)toast('v'+state.ver+' — Cover, Scope, and Investment updated. Locked pages untouched.');});
 
 $('#btn-save').addEventListener('click',()=>{
