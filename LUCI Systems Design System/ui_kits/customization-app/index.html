@@ -124,6 +124,28 @@
   .swbtn--apply{background:var(--mint-dark);color:#fff;border:0} .swbtn--apply:hover{background:#258a70}
   .swbtn--fresh{background:var(--white);color:var(--ink-strong);border:1px solid var(--rule)} .swbtn--fresh:hover{border-color:var(--mint-dark)}
   .swbtn--cancel{background:transparent;color:var(--muted);border:0;margin-left:auto} .swbtn--cancel:hover{color:var(--ink-strong)}
+  .field--upload{display:flex;flex-direction:column;gap:8px;margin-bottom:10px}
+  .uploadzone{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:18px;border:1px dashed var(--mint-dark);background:rgba(43,158,128,.05);cursor:pointer;text-align:center;transition:background .15s}
+  .uploadzone:hover{background:rgba(43,158,128,.09)}
+  .uploadzone__hint{font-family:var(--font);font-size:12px;font-weight:600;color:var(--mint-dark)}
+  .uploadzone__sub{font-size:11px;color:var(--muted)}
+  .filelist{display:flex;flex-direction:column;gap:5px}
+  .filechip{display:flex;align-items:center;gap:8px;padding:7px 10px;background:var(--off-white);border:1px solid var(--rule);font-size:12px;color:var(--ink-strong)}
+  .filechip__name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .filechip__del{background:none;border:0;color:var(--muted);font-size:14px;cursor:pointer} .filechip__del:hover{color:var(--ink-strong)}
+  .linklist{display:flex;flex-direction:column;gap:6px;margin-top:6px}
+  .linkrow{display:flex;align-items:center;gap:8px}
+  .linkrow input{flex:1;height:36px;padding:0 10px;font-family:var(--font);font-size:13px;color:var(--ink-strong);background:var(--off-white);border:1px solid var(--rule);border-radius:0}
+  .linkrow input:focus{outline:none;border-color:var(--mint-dark)}
+  .linkrow__del{width:36px;height:36px;background:var(--off-white);border:1px solid var(--rule);cursor:pointer;color:var(--muted)} .linkrow__del:hover{border-color:var(--mint-dark);color:var(--ink-strong)}
+  .addlink{align-self:flex-start;height:32px;padding:0 12px;font-family:var(--font);font-weight:600;font-size:12px;color:var(--mint-dark);background:rgba(43,158,128,.07);border:1px solid rgba(43,158,128,.3);cursor:pointer} .addlink:hover{background:rgba(43,158,128,.12)}
+  .notes{width:100%;min-height:64px;resize:vertical;padding:10px 12px;font-family:var(--body);font-size:14px;color:var(--ink-strong);background:var(--off-white);border:1px solid var(--rule);border-radius:0}
+  .notes:focus{outline:none;border-color:var(--mint-dark);box-shadow:0 0 0 3px rgba(43,158,128,.12)}
+  .msg--processing .msg__bubble{display:flex;align-items:center;gap:10px;background:var(--off-white);border:1px solid var(--rule);color:var(--ink)}
+  .pulse{width:9px;height:9px;background:var(--mint-dark);border-radius:50%;animation:pulse 1s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:.3;transform:scale(.8)}50%{opacity:1;transform:scale(1.15)}}
+  .inputsused{font-size:12px;color:var(--muted);line-height:1.6;margin:8px 0 0;padding-top:8px;border-top:1px solid var(--rule)}
+  .inputsused strong{color:var(--ink-strong);font-weight:600}
   @media(max-width:880px){.shell{grid-template-columns:1fr;height:auto}.pane--left{border-right:0;border-bottom:1px solid var(--rule)}.thumbstrip{display:none}}
 </style>
 </head>
@@ -158,12 +180,32 @@
       <div class="step is-locked" data-step="2">
         <div class="step__num">2</div>
         <div class="step__body">
-          <p class="step__title">Name the client &amp; project</p>
-          <p class="step__desc">A few details so the AI knows who this is for.</p>
+          <p class="step__title">Name the client &amp; brief the AI</p>
+          <p class="step__desc">The AI builds the first draft from these inputs. Add as much or as little as you have.</p>
           <div class="step__content">
             <div class="field"><label>Client name</label><input id="client-input" placeholder="e.g. Tachi Palace"></div>
             <div class="field"><label>Project / deal context</label><input id="project-input" placeholder="e.g. 40-ft LED sportsbook + floor signage"></div>
-            <div style="display:flex;gap:10px"><button class="nextbtn" id="back-2" style="background:var(--white);color:var(--ink-strong);border:1px solid var(--rule)">← Back</button><button class="nextbtn" id="next-2" disabled>Continue →</button></div>
+            <div class="field field--upload">
+              <label>Supporting documents</label>
+              <label class="uploadzone" for="doc-upload">
+                <span class="uploadzone__hint">Drop files or click to upload</span>
+                <span class="uploadzone__sub">PDF, DOCX, XLSX, TXT, images — anything the AI should read</span>
+              </label>
+              <input type="file" id="doc-upload" multiple hidden>
+              <div class="filelist" id="filelist"></div>
+            </div>
+            <div class="field">
+              <label>Reference links</label>
+              <div class="linklist" id="linklist">
+                <div class="linkrow"><input type="url" class="link-input" placeholder="https://…"><button type="button" class="linkrow__del" aria-label="Remove link">×</button></div>
+              </div>
+              <button type="button" class="addlink" id="add-link">+ Add another link</button>
+            </div>
+            <div class="field">
+              <label>Additional notes</label>
+              <textarea class="notes" id="notes-input" placeholder="Anything else the AI should know — must-haves, things to avoid, tone, who the audience is…"></textarea>
+            </div>
+            <div style="display:flex;gap:10px"><button class="nextbtn" id="back-2" style="background:var(--white);color:var(--ink-strong);border:1px solid var(--rule)">← Back</button><button class="nextbtn" id="next-2" disabled>Generate first draft →</button></div>
           </div>
         </div>
       </div>
@@ -253,9 +295,10 @@ function seedChat(){
     {role:'ai',text:`<strong>Done — first pass (v1):</strong><ul><li>Cover client set to <strong>${c}</strong></li><li>Scope aligned to the project context</li><li>Investment re-quantified</li></ul>Locked pages were not touched.`,changed:'Cover · Scope · Investment'}
   ];
 }
-const state={step:1,tpl:null,client:'',project:'',page:1,ver:0,versions:[],dirty:false};
+const state={step:1,tpl:null,client:'',project:'',page:1,ver:0,versions:[],dirty:false,files:[],links:[],notes:''};
 const $=s=>document.querySelector(s);
 const tgrid=$('#tgrid'),clientInput=$('#client-input'),projectInput=$('#project-input');
+const docUpload=$('#doc-upload'),filelist=$('#filelist'),linklist=$('#linklist'),addLink=$('#add-link'),notesInput=$('#notes-input');
 const thread=$('#thread'),emptyChat=$('#empty-chat'),composer=$('#composer'),sendBtn=$('#send-btn'),composerWrap=$('#composer-wrap');
 const trail=$('#trail'),trailList=$('#trail-list'),canvas=$('#canvas'),emptyPreview=$('#empty-preview');
 const crumbDoc=$('#crumb-doc'),pvPageno=$('#pv-pageno'),pvChanged=$('#pv-changed');
@@ -287,7 +330,38 @@ $('#next-1').addEventListener('click',()=>go(2));
 $('#back-2').addEventListener('click',()=>go(1));
 clientInput.addEventListener('input',()=>{$('#next-2').disabled=!clientInput.value.trim();});
 projectInput.addEventListener('input',()=>{$('#next-2').disabled=!clientInput.value.trim();});
-$('#next-2').addEventListener('click',()=>{state.client=clientInput.value.trim();state.project=projectInput.value.trim();crumbDoc.textContent=state.tpl.title+' — '+state.client;go(3);startChat();});
+
+docUpload.addEventListener('change',()=>{
+  const files=[...docUpload.files];
+  files.forEach(f=>{
+    const id='f'+Date.now()+Math.random().toString(36).slice(2,6);
+    state.files.push({id,name:f.name,size:f.size});
+    const chip=document.createElement('div');chip.className='filechip';
+    chip.innerHTML=`<span class="filechip__name">${escapeHtml(f.name)}</span><button type="button" class="filechip__del" data-id="${id}" aria-label="Remove file">×</button>`;
+    filelist.appendChild(chip);
+    chip.querySelector('.filechip__del').addEventListener('click',()=>{
+      state.files=state.files.filter(x=>x.id!==id);chip.remove();
+    });
+  });
+  docUpload.value='';
+});
+addLink.addEventListener('click',()=>{
+  const row=document.createElement('div');row.className='linkrow';
+  row.innerHTML='<input type="url" class="link-input" placeholder="https://…"><button type="button" class="linkrow__del" aria-label="Remove link">×</button>';
+  linklist.appendChild(row);
+  row.querySelector('.linkrow__del').addEventListener('click',()=>row.remove());
+  row.querySelector('.link-input').focus();
+});
+linklist.querySelector('.linkrow__del').addEventListener('click',e=>{const row=e.target.closest('.linkrow');if(linklist.querySelectorAll('.linkrow').length>1)row.remove();});
+
+$('#next-2').addEventListener('click',()=>{
+  state.client=clientInput.value.trim();
+  state.project=projectInput.value.trim();
+  state.notes=notesInput.value.trim();
+  state.links=[...linklist.querySelectorAll('.link-input')].map(i=>i.value.trim()).filter(Boolean);
+  crumbDoc.textContent=state.tpl.title+' — '+state.client;
+  go(3);autoRun();
+});
 
 function go(n){
   state.step=n;
@@ -300,10 +374,27 @@ function go(n){
   });
   if(n===1){crumbDoc.textContent='— no document started —';}
 }
-function startChat(){
-  emptyChat.style.display='none';composerWrap.style.display='';sendBtn.disabled=false;trail.hidden=false;
-  thread.innerHTML='';seedChat().forEach(m=>addMessage(m.role,m.text,m.changed));
-  state.ver=1;state.versions=[{v:1,note:'First pass',time:nowTime()}];state.dirty=false;renderTrail();renderPreview();
+function autoRun(){
+  emptyChat.style.display='none';composerWrap.style.display='';sendBtn.disabled=true;trail.hidden=false;
+  thread.innerHTML='';
+  const p=document.createElement('div');p.className='msg msg--ai msg--processing';
+  p.innerHTML=`<span class="msg__role">LUCI AI</span><div class="msg__bubble"><span class="pulse"></span>Building your first draft from your inputs…</div>`;
+  thread.appendChild(p);thread.scrollTop=thread.scrollHeight;
+  renderPreview();
+  setTimeout(()=>{
+    p.remove();
+    addMessage('ai',`<strong>Done — first draft (v1):</strong><ul><li>Cover client set to <strong>${escapeHtml(state.client||'the client')}</strong></li><li>Scope aligned to your project context</li><li>Investment re-quantified to match</li></ul>Locked pages were not touched.${inputsUsedHtml()}`,'Cover · Scope · Investment');
+    state.ver=1;state.versions=[{v:1,note:'First draft',time:nowTime()}];state.dirty=false;sendBtn.disabled=false;
+    renderTrail();renderPreview();flashChanged();
+  },1600);
+}
+function inputsUsedHtml(){
+  const parts=[];
+  if(state.project)parts.push(`project: <strong>${escapeHtml(state.project)}</strong>`);
+  if(state.files.length)parts.push(`${state.files.length} document${state.files.length>1?'s':''} (${state.files.map(f=>escapeHtml(f.name)).join(', ')})`);
+  if(state.links.length)parts.push(`${state.links.length} link${state.links.length>1?'s':''}`);
+  if(state.notes)parts.push('your notes');
+  return parts.length?`<div class="inputsused">Built from: ${parts.join(' · ')}</div>`:'';
 }
 
 function addMessage(role,text,changed){
@@ -361,8 +452,11 @@ $('#btn-save').addEventListener('click',()=>{
 });
 $('#btn-pdf').addEventListener('click',()=>{if(!state.tpl){toast('Finish the steps first');return;}toast('PDF export — wired in production (print pipeline).');});
 $('#btn-new').addEventListener('click',()=>{
-  state.step=1;state.tpl=null;state.client='';state.project='';state.page=1;state.ver=0;state.versions=[];state.dirty=false;
-  clientInput.value='';projectInput.value='';composer.value='';
+  state.step=1;state.tpl=null;state.client='';state.project='';state.page=1;state.ver=0;state.versions=[];state.dirty=false;state.files=[];state.links=[];state.notes='';
+  clientInput.value='';projectInput.value='';composer.value='';notesInput.value='';
+  filelist.innerHTML='';
+  linklist.innerHTML='<div class="linkrow"><input type="url" class="link-input" placeholder="https://…"><button type="button" class="linkrow__del" aria-label="Remove link">×</button></div>';
+  linklist.querySelector('.linkrow__del').addEventListener('click',e=>{const row=e.target.closest('.linkrow');if(linklist.querySelectorAll('.linkrow').length>1)row.remove();});
   tgrid.querySelectorAll('.topt').forEach(x=>x.classList.remove('is-active'));
   $('#next-1').disabled=true;$('#next-2').disabled=true;
   crumbDoc.textContent='— no document started —';
