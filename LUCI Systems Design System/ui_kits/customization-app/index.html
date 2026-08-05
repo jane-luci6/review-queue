@@ -244,7 +244,6 @@
       <button class="pvbtn" id="pv-prev">‹</button>
       <span style="font-family:var(--font);font-size:12px;font-weight:600;color:var(--ink-strong)" id="pv-pageno">—</span>
       <button class="pvbtn" id="pv-next">›</button>
-      <button class="pvbtn" id="pv-changed">What changed</button>
     </div>
     <div class="canvas" id="canvas">
       <div class="empty" id="empty-preview">
@@ -295,7 +294,7 @@ const tgrid=$('#tgrid'),clientInput=$('#client-input'),projectInput=$('#project-
 const docUpload=$('#doc-upload'),filelist=$('#filelist'),linklist=$('#linklist'),addLink=$('#add-link'),notesInput=$('#notes-input');
 const thread=$('#thread'),emptyChat=$('#empty-chat'),composer=$('#composer'),sendBtn=$('#send-btn'),composerWrap=$('#composer-wrap');
 const trail=$('#trail'),trailList=$('#trail-list'),canvas=$('#canvas'),emptyPreview=$('#empty-preview');
-const crumbDoc=$('#crumb-doc'),pvPageno=$('#pv-pageno'),pvChanged=$('#pv-changed');
+const crumbDoc=$('#crumb-doc'),pvPageno=$('#pv-pageno');
 const docFrame=$('#doc-frame'),pageIndex=$('#pageindex');
 const TPL_FILE={ 'sales-deck':'sales-deck.html','capabilities-document':'capabilities-document.html','scope-of-work':'scope-of-work.html','budgetary-estimate':'budgetary-estimate.html','proposal':'proposal.html','proposal-luci-retrofit':'proposal-luci-retrofit.html','proposal-upgrade':'proposal-upgrade.html' };
 let docPages=[],docTotal=0,docReady=false;
@@ -382,7 +381,7 @@ function autoRun(){
     p.remove();
     addMessage('ai',`<strong>Done — first draft (v1):</strong><ul><li>Cover client set to <strong>${escapeHtml(state.client||'the client')}</strong></li><li>Scope aligned to your project context</li><li>Investment re-quantified to match</li></ul>Locked pages were not touched.${inputsUsedHtml()}`,'Cover · Scope · Investment');
     state.ver=1;state.versions=[{v:1,note:'First draft',time:nowTime()}];state.dirty=false;sendBtn.disabled=false;
-    renderTrail();renderPreview();flashChanged();
+    renderTrail();renderPreview();
   },1600);
 }
 function inputsUsedHtml(){
@@ -408,7 +407,7 @@ composer.addEventListener('input',()=>{sendBtn.disabled=!composer.value.trim();}
 composer.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}});
 sendBtn.addEventListener('click',send);
 function send(){const v=composer.value.trim();if(!v)return;state.dirty=true;addMessage('user',escapeHtml(v));composer.value='';sendBtn.disabled=true;
-  setTimeout(()=>{addMockReply();state.ver++;state.versions.unshift({v:state.ver,note:firstLine(v),time:nowTime()});renderTrail();flashChanged();renderPreview();},450);}
+  setTimeout(()=>{addMockReply();state.ver++;state.versions.unshift({v:state.ver,note:firstLine(v),time:nowTime()});renderTrail();renderPreview();},450);}
 function firstLine(s){return s.length>42?s.slice(0,42)+'…':s;}
 function nowTime(){return new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});}
 
@@ -417,7 +416,6 @@ function renderTrail(){
     <span class="verrow__tag">v${v.v}</span><span class="verrow__note">${escapeHtml(v.note)}</span><span class="verrow__time">${v.time}</span></div>`).join('');
   trailList.querySelectorAll('.verrow').forEach(r=>r.addEventListener('click',()=>{state.ver=+r.dataset.v;renderTrail();renderPreview();toast('Viewing v'+state.ver);}));
 }
-function flashChanged(){pvChanged.classList.add('is-on');setTimeout(()=>pvChanged.classList.remove('is-on'),1600);}
 
 function renderPreview(){
   if(!state.tpl){emptyPreview.style.display='';docFrame.style.display='none';pageIndex.style.display='none';pvPageno.textContent='—';return;}
@@ -478,7 +476,6 @@ docFrame.addEventListener('load',onDocReady);
 window.addEventListener('resize',()=>{if(docReady&&docFrame.contentDocument&&docFrame.contentDocument.querySelector('.slide'))fitDeck(docFrame.contentDocument);});
 $('#pv-prev').addEventListener('click',()=>{if(state.tpl&&state.page>1){state.page--;jumpToPage(state.page);pvPageno.textContent=state.page+' / '+docTotal;highlightPage();}});
 $('#pv-next').addEventListener('click',()=>{if(state.tpl&&state.page<docTotal){state.page++;jumpToPage(state.page);pvPageno.textContent=state.page+' / '+docTotal;highlightPage();}});
-pvChanged.addEventListener('click',()=>{if(state.tpl&&state.ver)toast('v'+state.ver+' — Cover, Scope, and Investment updated. Locked pages untouched.');});
 
 $('#btn-save').addEventListener('click',()=>{
   if(!state.tpl){toast('Finish step 1 first');return;}
