@@ -22,3 +22,20 @@ bash ~/cleanup-luci-hub-37.sh
 The script disables the `luci-hub` nginx site, reloads nginx, and archives `/var/www/luci-hub` → `/var/www/_archive/luci-hub-2026-07-16`. It verifies `:8080` goes 404/refused and `:80` (live site) stays 200. Reversible; undo commands are in the script header.
 
 **After it's done:** run `curl -s -o /dev/null -w "%{http_code}\n" http://10.10.1.37:8080/` (expect 404/refused) and `curl -s -o /dev/null -w "%{http_code}\n" http://10.10.1.37/` (expect 200), then delete this section and commit.
+
+## PARKED — Genericize the venue ticker team names (design deferred, not blocked)
+
+The `HomeIntro` (variant D) hero photo `public/images/venue-guest-experience-casual.jpg` shows a real LED odds-board ticker with six NFL team names (CHIEFS, BILLS, RAVENS, BENGALS, 49ERS, COWBOYS). Jane wants them genericized. Three approaches were tried and rejected (Aug 2026):
+
+1. **Generic-content overlay on the source photo** (programmatic PIL edit) — read as "misplaced" / misaligned; abandoned.
+2. **Move the 01 Control card over the ticker** to cover the names — only covered the leftmost names (CHIEFS/BILLS); one standard card can't span the full-width ticker; abandoned.
+3. **Gaussian blur the ticker band** (trapezoidal mask, radius 20) — smeared the names but read as a "smudge"; Jane rejected it: "The smudge doesn't work either. We'll have to come back to this."
+
+**Current state:** photo reverted to the **original** (team names visible); `photoSrc` cache-buster at `?v=4`; 01 Control card back in its scattered position (`left: var(--bleed-inset)`, `top: 10%`). Commit `a843a16` on branch `persona-hero-subhead-gold` in `luci-website`.
+
+**When we come back to this**, candidate directions (not yet tried):
+- Swap in a **different source photo** with no recognizable team names / branding.
+- A clean **vector/HTML overlay** rendered on top of the `<img>` in the browser (not baked into the JPG) — a flat generic ticker strip composited via CSS over the ticker band, easier to align and edit than a PIL paste.
+- Re-shoot / commission a generic ticker board (per `luci-image-prompt-rules.mdc`).
+
+**Do not** re-try the blur or the card-over approaches — both were explicitly rejected.
