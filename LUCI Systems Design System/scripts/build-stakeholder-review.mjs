@@ -388,6 +388,18 @@ function syncCustomizationBundles(copied) {
   }
 }
 
+/** Copy the Document Studio mock-up (AI customization prototype) into the review site so
+ *  it's reachable at /customization-app/index.html. Its preview iframe loads the clean
+ *  sales-template copies from /sales/ (synced by syncStudioPreviews). */
+function syncCustomizationApp(copied) {
+  const srcDir = path.join(root, 'ui_kits', 'customization-app');
+  const destDir = path.join(reviewDir, 'customization-app');
+  if (!fs.existsSync(srcDir)) return;
+  fs.mkdirSync(destDir, { recursive: true });
+  copyDirRecursive(srcDir, destDir, copied);
+  console.log('Customization app:', path.relative(reviewDir, destDir));
+}
+
 /** Copy HTML used as Customization Studio previews (not in the queue) so they resolve when hosted.
  *  Also writes studio-manifest.json mapping each template id -> source file's last-modified date,
  *  so the Customization Studio can show an accurate "Last updated" without manual bumps. */
@@ -495,7 +507,7 @@ function syncInternalPortal(copied) {
 }
 
 function cleanGeneratedPreviews() {
-  for (const name of ['case-studies', 'assets', 'newsletter', 'emails', 'website', 'sales']) {
+  for (const name of ['case-studies', 'assets', 'newsletter', 'emails', 'website', 'sales', 'customization-app']) {
     const dir = path.join(reviewDir, name);
     if (fs.existsSync(dir)) fs.rmSync(dir, { recursive: true, force: true });
   }
@@ -535,6 +547,7 @@ function syncPreviewAssets(queue) {
   syncInternalPortal(copied);
   syncStudioPreviews(copied);
   syncCustomizationBundles(copied);
+  syncCustomizationApp(copied);
 
   const previewQueueItems = [
     ...(queue.dueForReview || []),
