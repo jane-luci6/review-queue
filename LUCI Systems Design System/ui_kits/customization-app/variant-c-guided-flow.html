@@ -113,6 +113,17 @@
   .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:50;background:var(--navy-deep);color:#fff;font-family:var(--font);font-size:13px;font-weight:500;padding:11px 18px;box-shadow:0 12px 36px rgba(10,22,28,.3);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s}
   .toast.is-on{opacity:1;transform:translateX(-50%) translateY(-4px)} .toast__dot{display:inline-block;width:7px;height:7px;background:var(--mint);margin-right:9px;vertical-align:middle}
   .mocknote{position:fixed;bottom:14px;right:16px;z-index:40;font-family:var(--font);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mint-dark);background:rgba(43,158,128,.08);border:1px solid rgba(43,158,128,.25);padding:5px 9px}
+  .switchmodal{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;background:rgba(10,22,28,.5);opacity:0;pointer-events:none;transition:opacity .15s}
+  .switchmodal.is-on{opacity:1;pointer-events:auto}
+  .switchmodal__card{width:min(420px,92vw);background:var(--white);border:1px solid var(--rule);border-bottom:3px solid var(--mint-dark);padding:24px;box-shadow:0 24px 64px rgba(10,22,28,.3);transform:translateY(6px);transition:transform .15s}
+  .switchmodal.is-on .switchmodal__card{transform:none}
+  .switchmodal__title{font-family:var(--font);font-weight:700;font-size:17px;color:var(--ink-strong);margin:0 0 8px}
+  .switchmodal__text{font-size:14px;line-height:1.55;color:var(--ink);margin:0 0 18px} .switchmodal__text strong{color:var(--ink-strong)}
+  .switchmodal__actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .swbtn{height:38px;padding:0 16px;font-family:var(--font);font-weight:600;font-size:13px;border-radius:0;cursor:pointer}
+  .swbtn--apply{background:var(--mint-dark);color:#fff;border:0} .swbtn--apply:hover{background:#258a70}
+  .swbtn--fresh{background:var(--white);color:var(--ink-strong);border:1px solid var(--rule)} .swbtn--fresh:hover{border-color:var(--mint-dark)}
+  .swbtn--cancel{background:transparent;color:var(--muted);border:0;margin-left:auto} .swbtn--cancel:hover{color:var(--ink-strong)}
   @media(max-width:880px){.shell{grid-template-columns:1fr;height:auto}.pane--left{border-right:0;border-bottom:1px solid var(--rule)}.thumbstrip{display:none}}
 </style>
 </head>
@@ -211,6 +222,17 @@
   </main>
 </div>
 
+<div class="switchmodal" id="switchmodal" aria-hidden="true">
+  <div class="switchmodal__card">
+    <h3 class="switchmodal__title" id="sw-title">Switch template?</h3>
+    <p class="switchmodal__text" id="sw-text"></p>
+    <div class="switchmodal__actions">
+      <button class="swbtn swbtn--apply" data-sw="apply">Apply to current client</button>
+      <button class="swbtn swbtn--fresh" data-sw="fresh">Start fresh</button>
+      <button class="swbtn swbtn--cancel" data-sw="cancel">Cancel</button>
+    </div>
+  </div>
+</div>
 <div class="toast" id="toast"><span class="toast__dot"></span><span id="toast-text">Saved</span></div>
 <div class="mocknote">Mock-up · clickable, no live AI</div>
 
@@ -224,11 +246,14 @@ const TEMPLATES=[
   {id:'proposal-luci-retrofit',title:'Proposal — LUCI Retrofit',pages:14,blurb:'Full platform + 8-page SOW'},
   {id:'proposal-upgrade',title:'Proposal — Upgrade',pages:5,blurb:'Order form, existing clients'}
 ];
-const SEED=[
-  {role:'user',text:'Customize this proposal for the client. Use the project context I gave you.'},
-  {role:'ai',text:'<strong>Done — first pass (v1):</strong><ul><li>Cover client set</li><li>Scope aligned to the project context</li><li>Investment re-quantified</li></ul>Locked pages were not touched.',changed:'Cover · Scope · Investment'}
-];
-const state={step:1,tpl:null,client:'',project:'',page:1,ver:0,versions:[]};
+function seedChat(){
+  const t=state.tpl||{title:'the template'}, c=state.client||'the client';
+  return [
+    {role:'user',text:`Customize the ${t.title} for ${c}. Use the project context I gave you.`},
+    {role:'ai',text:`<strong>Done — first pass (v1):</strong><ul><li>Cover client set to <strong>${c}</strong></li><li>Scope aligned to the project context</li><li>Investment re-quantified</li></ul>Locked pages were not touched.`,changed:'Cover · Scope · Investment'}
+  ];
+}
+const state={step:1,tpl:null,client:'',project:'',page:1,ver:0,versions:[],dirty:false};
 const $=s=>document.querySelector(s);
 const tgrid=$('#tgrid'),clientInput=$('#client-input'),projectInput=$('#project-input');
 const thread=$('#thread'),emptyChat=$('#empty-chat'),composer=$('#composer'),sendBtn=$('#send-btn'),composerWrap=$('#composer-wrap');
@@ -237,9 +262,27 @@ const crumbDoc=$('#crumb-doc'),pvPageno=$('#pv-pageno'),pvChanged=$('#pv-changed
 
 tgrid.innerHTML=TEMPLATES.map(t=>`<button class="topt" data-id="${t.id}"><span class="topt__t">${t.title}</span><span class="topt__m">${t.pages}p · ${t.blurb}</span></button>`).join('');
 tgrid.querySelectorAll('.topt').forEach(b=>b.addEventListener('click',()=>{
+  const t=TEMPLATES.find(x=>x.id===b.dataset.id);
   tgrid.querySelectorAll('.topt').forEach(x=>x.classList.remove('is-active'));b.classList.add('is-active');
-  state.tpl=TEMPLATES.find(t=>t.id===b.dataset.id);$('#next-1').disabled=false;renderPreview();
+  if(state.tpl&&state.tpl.id!==t.id&&state.dirty&&state.client){
+    askSwitch(t,
+      ()=>{state.tpl=t;state.page=1;state.dirty=false;renderPreview();go(2);},
+      ()=>{state.tpl=t;state.client='';state.project='';clientInput.value='';projectInput.value='';state.page=1;state.dirty=false;renderPreview();}
+    );
+  }else{
+    state.tpl=t;$('#next-1').disabled=false;renderPreview();
+  }
 }));
+function askSwitch(newTpl,onApply,onFresh){
+  const m=$('#switchmodal');
+  $('#sw-title').textContent='Switch to '+newTpl.title+'?';
+  $('#sw-text').innerHTML='You\'re working on <strong>'+state.tpl.title+'</strong> for <strong>'+state.client+'</strong>. Apply '+newTpl.title+' to this client, or start fresh?';
+  m.classList.add('is-on');
+  const close=()=>m.classList.remove('is-on');
+  m.querySelector('[data-sw="apply"]').onclick=()=>{close();onApply();};
+  m.querySelector('[data-sw="fresh"]').onclick=()=>{close();onFresh();};
+  m.querySelector('[data-sw="cancel"]').onclick=close;
+}
 $('#next-1').addEventListener('click',()=>go(2));
 $('#back-2').addEventListener('click',()=>go(1));
 clientInput.addEventListener('input',()=>{$('#next-2').disabled=!clientInput.value.trim();});
@@ -259,8 +302,8 @@ function go(n){
 }
 function startChat(){
   emptyChat.style.display='none';composerWrap.style.display='';sendBtn.disabled=false;trail.hidden=false;
-  thread.innerHTML='';SEED.forEach(m=>addMessage(m.role,m.text,m.changed));
-  state.ver=1;state.versions=[{v:1,note:'First pass',time:nowTime()}];renderTrail();renderPreview();
+  thread.innerHTML='';seedChat().forEach(m=>addMessage(m.role,m.text,m.changed));
+  state.ver=1;state.versions=[{v:1,note:'First pass',time:nowTime()}];state.dirty=false;renderTrail();renderPreview();
 }
 
 function addMessage(role,text,changed){
@@ -276,7 +319,7 @@ function addMockReply(){
 composer.addEventListener('input',()=>{sendBtn.disabled=!composer.value.trim();});
 composer.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}});
 sendBtn.addEventListener('click',send);
-function send(){const v=composer.value.trim();if(!v)return;addMessage('user',escapeHtml(v));composer.value='';sendBtn.disabled=true;
+function send(){const v=composer.value.trim();if(!v)return;state.dirty=true;addMessage('user',escapeHtml(v));composer.value='';sendBtn.disabled=true;
   setTimeout(()=>{addMockReply();state.ver++;state.versions.unshift({v:state.ver,note:firstLine(v),time:nowTime()});renderTrail();flashChanged();renderPreview();},450);}
 function firstLine(s){return s.length>42?s.slice(0,42)+'…':s;}
 function nowTime(){return new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});}
@@ -318,7 +361,7 @@ $('#btn-save').addEventListener('click',()=>{
 });
 $('#btn-pdf').addEventListener('click',()=>{if(!state.tpl){toast('Finish the steps first');return;}toast('PDF export — wired in production (print pipeline).');});
 $('#btn-new').addEventListener('click',()=>{
-  state.step=1;state.tpl=null;state.client='';state.project='';state.page=1;state.ver=0;state.versions=[];
+  state.step=1;state.tpl=null;state.client='';state.project='';state.page=1;state.ver=0;state.versions=[];state.dirty=false;
   clientInput.value='';projectInput.value='';composer.value='';
   tgrid.querySelectorAll('.topt').forEach(x=>x.classList.remove('is-active'));
   $('#next-1').disabled=true;$('#next-2').disabled=true;

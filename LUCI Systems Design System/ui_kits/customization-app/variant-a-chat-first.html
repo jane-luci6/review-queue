@@ -105,6 +105,17 @@
   .toast.is-on{opacity:1;transform:translateX(-50%) translateY(-4px)}
   .toast__dot{display:inline-block;width:7px;height:7px;background:var(--mint);margin-right:9px;vertical-align:middle}
   .mocknote{position:fixed;bottom:14px;right:16px;z-index:40;font-family:var(--font);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mint-dark);background:rgba(43,158,128,.08);border:1px solid rgba(43,158,128,.25);padding:5px 9px}
+  .switchmodal{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;background:rgba(10,22,28,.5);opacity:0;pointer-events:none;transition:opacity .15s}
+  .switchmodal.is-on{opacity:1;pointer-events:auto}
+  .switchmodal__card{width:min(420px,92vw);background:var(--white);border:1px solid var(--rule);border-bottom:3px solid var(--mint-dark);padding:24px;box-shadow:0 24px 64px rgba(10,22,28,.3);transform:translateY(6px);transition:transform .15s}
+  .switchmodal.is-on .switchmodal__card{transform:none}
+  .switchmodal__title{font-family:var(--font);font-weight:700;font-size:17px;color:var(--ink-strong);margin:0 0 8px}
+  .switchmodal__text{font-size:14px;line-height:1.55;color:var(--ink);margin:0 0 18px} .switchmodal__text strong{color:var(--ink-strong)}
+  .switchmodal__actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .swbtn{height:38px;padding:0 16px;font-family:var(--font);font-weight:600;font-size:13px;border-radius:0;cursor:pointer}
+  .swbtn--apply{background:var(--mint-dark);color:#fff;border:0} .swbtn--apply:hover{background:#258a70}
+  .swbtn--fresh{background:var(--white);color:var(--ink-strong);border:1px solid var(--rule)} .swbtn--fresh:hover{border-color:var(--mint-dark)}
+  .swbtn--cancel{background:transparent;color:var(--muted);border:0;margin-left:auto} .swbtn--cancel:hover{color:var(--ink-strong)}
   @media(max-width:880px){.shell{grid-template-columns:1fr;height:auto}.pane--left{border-right:0;border-bottom:1px solid var(--rule)}.thumbstrip{display:none}}
 </style>
 </head>
@@ -193,6 +204,17 @@
   </main>
 </div>
 
+<div class="switchmodal" id="switchmodal" aria-hidden="true">
+  <div class="switchmodal__card">
+    <h3 class="switchmodal__title" id="sw-title">Switch template?</h3>
+    <p class="switchmodal__text" id="sw-text"></p>
+    <div class="switchmodal__actions">
+      <button class="swbtn swbtn--apply" data-sw="apply">Apply to current client</button>
+      <button class="swbtn swbtn--fresh" data-sw="fresh">Start fresh</button>
+      <button class="swbtn swbtn--cancel" data-sw="cancel">Cancel</button>
+    </div>
+  </div>
+</div>
 <div class="toast" id="toast"><span class="toast__dot"></span><span id="toast-text">Saved</span></div>
 <div class="mocknote">Mock-up · clickable, no live AI</div>
 
@@ -206,11 +228,14 @@ const TEMPLATES=[
   {id:'proposal-luci-retrofit',title:'Proposal — LUCI Retrofit',pages:14,blurb:'Full LUCI platform proposal with 8-page SOW.'},
   {id:'proposal-upgrade',title:'Proposal — Upgrade',pages:5,blurb:'Services order form for existing clients adding licenses.'}
 ];
-const SEED_CHAT=[
-  {role:'user',text:'Customize the Proposal — LED for Tachi Palace. Tribal casino, central CA, 40-foot LED wall in the sportsbook, plus signage tickers on the floor.'},
-  {role:'ai',text:'<strong>Done — here is what I changed (v2):</strong><ul><li>Cover client set to <strong>Tachi Palace</strong></li><li>Scope narrowed to <strong>sportsbook A/V + floor signage</strong></li><li>LED wall spec updated to 40 ft, 2.5mm pitch</li><li>Investment summary re-quantified to match scope</li></ul>Locked pages (LUCI story, platform architecture) were not touched.',changed:'Cover · Scope · LED spec · Investment'}
-];
-const state={tpl:null,client:'',page:1,ver:3,started:false};
+function seedChat(){
+  const t=state.tpl||{title:'the template'}, c=state.client||'the client';
+  return [
+    {role:'user',text:`Customize the ${t.title} for ${c}. [Add deal context — property type, scope, demo notes.]`},
+    {role:'ai',text:`<strong>Done — here is what I changed (v2):</strong><ul><li>Cover client set to <strong>${c}</strong></li><li>Scope aligned to your context</li><li>Investment re-quantified to match</li></ul>Locked pages were not touched.`,changed:'Cover · Scope · Investment'}
+  ];
+}
+const state={tpl:null,client:'',page:1,ver:3,started:false,dirty:false};
 
 const $=s=>document.querySelector(s);
 const pickerBtn=$('#picker-btn'),pickerPanel=$('#picker-panel'),pickerCurrent=$('#picker-current');
@@ -226,9 +251,24 @@ function renderPicker(){
       <span class="picker__opt-meta">${t.pages} pages · ${t.blurb}</span>
     </button>`).join('');
   pickerPanel.querySelectorAll('[data-id]').forEach(b=>b.addEventListener('click',()=>{
-    selectTemplate(TEMPLATES.find(t=>t.id===b.dataset.id));
-    closePicker();
+    const t=TEMPLATES.find(x=>x.id===b.dataset.id);
+    if(state.tpl&&state.tpl.id!==t.id&&state.dirty){
+      closePicker();
+      askSwitch(t,()=>selectTemplate(t),()=>{clientInput.value='';state.client='';selectTemplate(t);});
+    }else{
+      selectTemplate(t);closePicker();
+    }
   }));
+}
+function askSwitch(newTpl,onApply,onFresh){
+  const m=$('#switchmodal');
+  $('#sw-title').textContent='Switch to '+newTpl.title+'?';
+  $('#sw-text').innerHTML='You\'re working on <strong>'+state.tpl.title+'</strong> for <strong>'+(state.client||'an unnamed client')+'</strong>. Apply '+newTpl.title+' to this client, or start fresh?';
+  m.classList.add('is-on');
+  const close=()=>m.classList.remove('is-on');
+  m.querySelector('[data-sw="apply"]').onclick=()=>{close();onApply();};
+  m.querySelector('[data-sw="fresh"]').onclick=()=>{close();onFresh();};
+  m.querySelector('[data-sw="cancel"]').onclick=close;
 }
 function openPicker(){pickerPanel.hidden=false;pickerBtn.setAttribute('aria-expanded','true');renderPicker();
   setTimeout(()=>document.addEventListener('click',closePicker,{once:true}),0);}
@@ -237,7 +277,7 @@ pickerBtn.addEventListener('click',e=>{e.stopPropagation();pickerPanel.hidden?op
 pickerPanel.addEventListener('click',e=>e.stopPropagation());
 
 function selectTemplate(t){
-  state.tpl=t;state.page=1;state.ver=3;state.started=true;
+  state.tpl=t;state.page=1;state.ver=3;state.started=true;state.dirty=false;
   pickerCurrent.textContent=t.title;
   crumbDoc.textContent=t.title+' — '+(state.client||'unnamed client');
   emptyChat.style.display='none';
@@ -248,7 +288,7 @@ function selectTemplate(t){
 }
 function renderSeedChat(){
   thread.innerHTML='';
-  SEED_CHAT.forEach(m=>addMessage(m.role,m.text,m.changed));
+  seedChat().forEach(m=>addMessage(m.role,m.text,m.changed));
 }
 function addMessage(role,text,changed){
   const wrap=document.createElement('div');
@@ -272,6 +312,7 @@ composer.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preve
 sendBtn.addEventListener('click',send);
 function send(){
   const v=composer.value.trim();if(!v||!state.tpl)return;
+  state.dirty=true;
   addMessage('user',escapeHtml(v));
   composer.value='';sendBtn.disabled=true;
   setTimeout(()=>{addMockReply(v);bumpVersion();},450);
@@ -291,7 +332,7 @@ function flashChanged(){pvChanged.classList.add('is-on');setTimeout(()=>pvChange
 iterstrip.querySelectorAll('.iterchip').forEach(c=>c.addEventListener('click',()=>jumpVer(+c.dataset.ver)));
 function jumpVer(v){state.ver=v;iterstrip.querySelectorAll('.iterchip').forEach(c=>c.classList.toggle('is-active',+c.dataset.ver===v));renderPreview();}
 
-clientInput.addEventListener('input',()=>{state.client=clientInput.value.trim();crumbDoc.textContent=(state.tpl?state.tpl.title:'— no template selected —')+' — '+(state.client||'unnamed client');if(state.tpl)renderPreview();});
+clientInput.addEventListener('input',()=>{state.client=clientInput.value.trim();if(state.tpl)state.dirty=true;crumbDoc.textContent=(state.tpl?state.tpl.title:'— no template selected —')+' — '+(state.client||'unnamed client');if(state.tpl)renderPreview();});
 
 function renderPreview(){
   if(!state.tpl){canvas.innerHTML='';canvas.appendChild(emptyPreview);emptyPreview.style.display='';pvPageno.textContent='—';return;}
@@ -329,7 +370,7 @@ function saveDoc(){
 $('#btn-save').addEventListener('click',saveDoc);
 $('#btn-pdf').addEventListener('click',()=>{if(!state.tpl){toast('Pick a template first');return;}toast('PDF export — wired in production (print pipeline).');});
 $('#btn-new').addEventListener('click',()=>{
-  state.tpl=null;state.client='';state.page=1;state.ver=3;state.started=false;
+  state.tpl=null;state.client='';state.page=1;state.ver=3;state.started=false;state.dirty=false;
   pickerCurrent.textContent='Select a template…';clientInput.value='';
   crumbDoc.textContent='— no template selected —';
   iterstrip.hidden=true;sendBtn.disabled=true;
