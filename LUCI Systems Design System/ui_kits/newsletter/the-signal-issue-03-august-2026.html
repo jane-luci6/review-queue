@@ -66,6 +66,22 @@
       overflow: hidden;
     }
 
+    /* Mesh + floorplan overlay — the new-LUCI visual identity (Issue 03 launch).
+       Same treatment as the new website: mint mesh + architectural plan,
+       screen-blended at low opacity over navy. Leads the issue; circuit
+       texture stays secondary in the dark play-card / payoff panels. */
+    .masthead::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: url("assets/mesh/luci-bg-hero-1920x1080.svg") right center / cover no-repeat;
+      mix-blend-mode: screen;
+      opacity: 0.42;
+    }
+    .masthead > * { position: relative; z-index: 1; }
+
     /* Mint accent bar at bottom */
     .masthead::after {
       content: '';
@@ -1650,6 +1666,58 @@
       border-top: 4px solid var(--mint);
     }
 
+    /* ── WEBSITE ANNOUNCEMENT BAND ────────────────────── */
+    /* Mesh + floorplan backdrop, screen-blended — previews the new website's
+       own visual identity. Same mesh as the masthead; the band teases the
+       new lucisystems.com landing this fall. */
+    .cs-web-next {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(56px, 8vw, 88px) var(--pad);
+      border-bottom: 1px solid rgba(var(--mint-rgb), 0.15);
+    }
+    .cs-web-next::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: url("assets/mesh/luci-bg-wide-2560x800.svg") center / cover no-repeat;
+      mix-blend-mode: screen;
+      opacity: 0.38;
+    }
+    .cs-web-next__inner {
+      position: relative;
+      z-index: 1;
+      max-width: var(--read);
+    }
+    .cs-web-next__kicker {
+      font-family: var(--display), 'Arial Black', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--mint);
+      margin-bottom: 14px;
+    }
+    .cs-web-next__title {
+      font-family: var(--head), 'Space Grotesk', sans-serif;
+      font-size: clamp(26px, 4.5vw, 38px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      color: var(--off-white);
+      margin-bottom: 16px;
+      max-width: 20ch;
+    }
+    .cs-web-next__body {
+      font-family: var(--body), 'Inter', sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+      color: rgba(235, 245, 248, 0.88);
+      max-width: 58ch;
+    }
+
     .closing__lead {
       font-size: 17px;
       line-height: 1.65;
@@ -2017,6 +2085,15 @@
           <p class="author-card__title">CEO, LUCI Systems</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- WEBSITE ANNOUNCEMENT — mesh-backed band teasing the new lucisystems.com -->
+  <section class="sec sec--deep cs-web-next" id="web-next" aria-labelledby="cs-web-next-title">
+    <div class="cs-web-next__inner">
+      <p class="cs-web-next__kicker">What's next</p>
+      <h2 id="cs-web-next-title" class="cs-web-next__title">A new lucisystems.com is coming this fall</h2>
+      <p class="cs-web-next__body">The new LUCI is arriving at beta sites this month &mdash; and the place to see it is getting a new home. The next lucisystems.com wears the same network you're looking at now: one mesh, one platform, one story. We'll point you there the moment it's live.</p>
     </div>
   </section>
 
