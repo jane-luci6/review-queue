@@ -23,16 +23,20 @@ June cleared the ground. July looked ahead. August is where the version of tomor
 
 ## Issue map
 
+The issue is built around the new platform — not July's departments. Five articles + Mike's recurring column.
+
 | # | Section | Job under the theme | Status |
 |---|---------|---------------------|--------|
-| — | Welcome | Mike opens: stagnation is moving backward; the new platform is how you move forward. Previews features, Sam's Town, column. | ⬜ TBD (Mike quotes from meeting) |
+| — | Welcome | Mike opens: stagnation is moving backward; the new platform is how you move forward. Previews the 3 features, Sam's Town, the new website, and his column. | ⬜ TBD (Mike quotes from meeting) |
 | 01 | In the field — Sam's Town | A property in constant motion — LUCI kept a live, operating casino advancing without missing a beat. Proof the platform handles motion and keeps you forward. | ⬜ TBD (case study content) |
-| 02 | LUCI Quick Tip | A capability that helps an operator stay ahead of motion (scripting, scheduling, real-time monitoring). | ⬜ TBD |
-| 03 | What's coming — The new platform | Broad description of the new LUCI + 3–4 features. Each feature = a way the new platform turns constant motion into *forward* motion. Command Trail is the headline (July previewed; August ships). **Beta sites launching this month** (write toward this; may adjust to "looking for beta testers"). | ⬜ TBD (features from tech meeting) |
-| 04 | Inside LUCI | The playbook for staying ahead — the scripting engine responding to external events (lightning-strike safety idea) is literally the platform moving forward on its own. | ⬜ TBD |
+| 02 | New platform · Feature 01 | TBD from tech meeting. Command Trail is confirmed as one of the three; order TBD. Each feature = a way the new platform turns constant motion into *forward* motion. | ⬜ TBD |
+| 03 | New platform · Feature 02 | TBD from tech meeting. | ⬜ TBD |
+| 04 | New platform · Feature 03 | TBD from tech meeting. | ⬜ TBD |
+| 05 | The new lucisystems.com | **Its own section.** 2×2 card grid: new industries, LUCI in action, persona-specific content, video throughout. Mesh-backed (`sec--deep`). Forward-look tying the issue's mesh to the new site. | ✅ scaffolded (copy = EDIT placeholders) |
 | — | Support portal | Evergreen — keep as-is. | ✅ |
-| 05 | The new lucisystems.com | **Its own section now** (was a callout band). 2×2 card grid: new industries, LUCI in action, persona-specific content, video throughout. Mesh-backed (`sec--deep`). Forward-look tying the issue's mesh to the new site. | ✅ scaffolded (copy = EDIT placeholders) |
 | 06 | A Minute with Mike | The stagnation philosophy: why LUCI is always moving forward, why the new platform is the next step. **Several pull-out quotes for skimmers** — sourced from the tech meeting recording. Closes the issue. | ⬜ TBD (Mike quotes from meeting) |
+
+**Dropped from July's structure:** Quick Tip, What's Coming (single bundled section), Inside LUCI. The lightning-strike safety idea (logged below) is a candidate to fold into a feature section or Mike's column if it fits — confirm at the tech meeting.
 
 ---
 
@@ -104,4 +108,4 @@ Source: `luci-website/public/images/mesh/`. For Webflow publish, these will need
 
 ## Structure reference (same spine as Issues 01–02)
 
-Masthead → Welcome → TOC → In the field (marquee) → Quick tip (dark) → What's coming (Platform + features) → Inside LUCI → Support portal → **The new lucisystems.com (deep)** → A Minute with Mike → Closing → Footer
+Masthead → Welcome → TOC → In the field (marquee) → New platform · 01 → New platform · 02 → New platform · 03 → Support portal → **The new lucisystems.com (deep)** → A Minute with Mike → Closing → Footer
