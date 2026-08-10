@@ -31,7 +31,8 @@ June cleared the ground. July looked ahead. August is where the version of tomor
 | 03 | What's coming — The new platform | Broad description of the new LUCI + 3–4 features. Each feature = a way the new platform turns constant motion into *forward* motion. Command Trail is the headline (July previewed; August ships). **Beta sites launching this month** (write toward this; may adjust to "looking for beta testers"). | ⬜ TBD (features from tech meeting) |
 | 04 | Inside LUCI | The playbook for staying ahead — the scripting engine responding to external events (lightning-strike safety idea) is literally the platform moving forward on its own. | ⬜ TBD |
 | — | Support portal | Evergreen — keep as-is. | ✅ |
-| 05 | A Minute with Mike | The stagnation philosophy: why LUCI is always moving forward, why the new platform is the next step. **Several pull-out quotes for skimmers** — sourced from the tech meeting recording. | ⬜ TBD (Mike quotes from meeting) |
+| 05 | The new lucisystems.com | **Its own section now** (was a callout band). 2×2 card grid: new industries, LUCI in action, persona-specific content, video throughout. Mesh-backed (`sec--deep`). Forward-look tying the issue's mesh to the new site. | ✅ scaffolded (copy = EDIT placeholders) |
+| 06 | A Minute with Mike | The stagnation philosophy: why LUCI is always moving forward, why the new platform is the next step. **Several pull-out quotes for skimmers** — sourced from the tech meeting recording. Closes the issue. | ⬜ TBD (Mike quotes from meeting) |
 
 ---
 
@@ -61,12 +62,22 @@ June cleared the ground. July looked ahead. August is where the version of tomor
 | Location | Treatment | Asset |
 |---|---|---|
 | Masthead | `::before` screen-blended, opacity 0.42, right/cover | `assets/mesh/luci-bg-hero-1920x1080.svg` |
-| Website announcement band (`#web-next`) | `::before` screen-blended, opacity 0.38, center/cover | `assets/mesh/luci-bg-wide-2560x800.svg` |
+| **All dark surfaces** (`sec--dark`, `sec--deep`, `.closing`, `.footer`) | global `::before` screen-blended, opacity 0.26, center/cover | `assets/mesh/luci-bg-hero-1920x1080.svg` |
 | Platform / launch section | TBD — could go dark+mesh for more drama if Jane wants; currently stays light per "no redesign" | — |
 
-### Website announcement band (added)
+**Mesh coverage = every dark background in the issue.** Quick tip (`sec--dark`), Inside LUCI (`sec--dark`), the website section (`sec--deep`), the closing, and the footer all wear the mesh. The masthead keeps a denser separate instance (0.42). Circuit texture stays secondary inside the dark play-card / payoff panels (their own element backgrounds, sitting above the section mesh).
 
-A mesh-backed band after A Minute with Mike, before the closing. Not in the TOC (it's a forward-look, not an article). Copy: "A new lucisystems.com is coming this fall" + a line tying the mesh visual to the new website. Fits the theme: the brand moving forward to match the platform.
+### Website section — article 05 (promoted from a band)
+
+The website launch is now its own section (`#web-next`, `sec--deep`), not a callout band. It sits between the support portal and A Minute with Mike, so Mike closes the issue. It's in the TOC as 05; Mike is 06.
+
+2×2 card grid (hairline-separated, semi-transparent navy cards over the mesh):
+1. **New industries** — LUCI expanding beyond gaming (hotels, sports, airports, conference); first-class destinations on the new site.
+2. **LUCI in action** — short video pieces of LUCI running on real properties; motion, not static screenshots.
+3. **Persona-specific content** — pages for operators, IT, facilities, ownership; each lands where their problems live.
+4. **Video throughout** — video as a structural element (heroes, features, field), not a supporting asset.
+
+Copy is scaffolded with `EDIT` placeholders; tighten after the tech meeting.
 
 ### Assets copied (self-contained, per canonical-assets rule)
 
@@ -93,4 +104,4 @@ Source: `luci-website/public/images/mesh/`. For Webflow publish, these will need
 
 ## Structure reference (same spine as Issues 01–02)
 
-Masthead → Welcome → TOC → In the field (marquee) → Quick tip (dark) → What's coming (Platform + features) → Inside LUCI → Support portal → A Minute with Mike → Closing → Footer
+Masthead → Welcome → TOC → In the field (marquee) → Quick tip (dark) → What's coming (Platform + features) → Inside LUCI → Support portal → **The new lucisystems.com (deep)** → A Minute with Mike → Closing → Footer
