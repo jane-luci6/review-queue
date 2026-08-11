@@ -1048,10 +1048,10 @@
     .field-opener__dek {
       font-family: 'Inter', system-ui, sans-serif;
       font-size: clamp(15px, 1.9vw, 18px);
-      line-height: 1.55;
+      line-height: 1.6;
       color: rgba(235, 245, 248, 0.82);
       max-width: 56ch;
-      margin: 16px auto 0;
+      margin: 26px auto 0;
     }
     @media (max-width: 640px) {
       .field-opener__logo { height: 104px; }
@@ -1070,10 +1070,23 @@
       background: var(--navy);
       padding: clamp(32px, 4.5vw, 52px) var(--pad);
       margin-block: 0;
+      border-top: 1px solid rgba(var(--mint-rgb), 0.18);
+    }
+    .field-stats__header {
+      text-align: center;
+      padding-bottom: 22px;
+      margin-bottom: 30px;
+      border-bottom: 1px solid rgba(var(--mint-rgb), 0.18);
+      font-family: var(--body);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: rgba(235, 245, 248, 0.62);
+    }
+    .field-stats__row {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: clamp(28px, 4vw, 52px);
-      border-top: 1px solid rgba(var(--mint-rgb), 0.18);
     }
     .field-stats__item { display: flex; flex-direction: column; gap: 14px; }
     .field-stats__num {
@@ -1093,7 +1106,7 @@
       color: rgba(235,245,248,0.82);
     }
     @media (max-width: 640px) {
-      .field-stats { grid-template-columns: 1fr; gap: 28px; }
+      .field-stats__row { grid-template-columns: 1fr; gap: 28px; }
     }
 
     .field-act {
@@ -1908,13 +1921,15 @@
       -->
       <h2 class="field-opener__title" id="field-story-title">An LED wall this big <span class="field-opener__title-mint">usually isn't this simple.</span></h2>
       <p class="field-opener__dek">LUCI built the 480-square-foot wall where mismatched TVs used to be &mdash; nearly forty feet of unbroken video. Because LUCI already ran the property's A/V, the wall hooked right in: no second system, nothing for staff to relearn.</p>
-      <p class="field-opener__where">Sam's Town Hotel &amp; Gambling Hall &middot; Las Vegas, Nevada</p>
     </div>
 
     <div class="field-stats field-bleed">
-      <div class="field-stats__item"><span class="field-stats__num">480 sq ft</span><span class="field-stats__label">LED wall built by LUCI &mdash; 39' &times; 12', 1.87mm pitch</span></div>
-      <div class="field-stats__item"><span class="field-stats__num">1 yr+</span><span class="field-stats__label">whole-property A/V already on LUCI</span></div>
-      <div class="field-stats__item"><span class="field-stats__num">0</span><span class="field-stats__label">new control systems added</span></div>
+      <p class="field-stats__header">Sam's Town Hotel &amp; Gambling Hall &middot; Las Vegas, Nevada</p>
+      <div class="field-stats__row">
+        <div class="field-stats__item"><span class="field-stats__num">480 sq ft</span><span class="field-stats__label">LED wall built by LUCI &mdash; 39' &times; 12', 1.87mm pitch</span></div>
+        <div class="field-stats__item"><span class="field-stats__num">1 yr+</span><span class="field-stats__label">whole-property A/V already on LUCI</span></div>
+        <div class="field-stats__item"><span class="field-stats__num">0</span><span class="field-stats__label">new control systems added</span></div>
+      </div>
     </div>
   </section>
 
