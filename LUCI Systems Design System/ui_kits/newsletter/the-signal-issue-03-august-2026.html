@@ -333,42 +333,42 @@
       color: var(--mint-dark);
     }
 
-    .sec--marquee .field-story__block {
+    .sec--light .field-story__block {
       border-bottom-color: var(--rule-light);
     }
 
-    .sec--marquee .field-story__heading {
+    .sec--light .field-story__heading {
       color: var(--mint-dark);
     }
 
-    .sec--marquee .field-story__block p,
-    .sec--marquee .field-story-list li,
-    .sec--marquee .field-plan-list li {
+    .sec--light .field-story__block p,
+    .sec--light .field-story-list li,
+    .sec--light .field-plan-list li {
       color: #354F5C;
     }
 
-    .sec--marquee .field-plan-list strong {
+    .sec--light .field-plan-list strong {
       color: var(--navy);
     }
 
-    .sec--marquee .field-results li {
+    .sec--light .field-results li {
       border-bottom-color: var(--rule-light);
       color: #354F5C;
     }
 
-    .sec--marquee .field-results li::before {
+    .sec--light .field-results li::before {
       color: var(--mint-dark);
     }
 
-    .sec--marquee .field-story-list li::before {
+    .sec--light .field-story-list li::before {
       background: var(--mint-dark);
     }
 
-    .sec--marquee .field-story__cta {
+    .sec--light .field-story__cta {
       border-top-color: var(--rule-light);
     }
 
-    .sec--marquee .field-story__cta p {
+    .sec--light .field-story__cta p {
       color: #49616E;
     }
 
@@ -1011,8 +1011,8 @@
 
     .field-opener {
       text-align: center;
-      padding: clamp(32px, 5vw, 56px) 0 6px;
-      margin: 6px 0 18px;
+      padding: 16px 0 8px;
+      margin: 0 0 8px;
     }
     .field-opener__logo {
       height: 132px;
@@ -1025,29 +1025,33 @@
       font-size: 13px;
       font-weight: 600;
       letter-spacing: 0.04em;
-      color: var(--navy-muted);
-      margin: 28px auto 0;
+      color: rgba(235, 245, 248, 0.6);
+      margin: 32px auto 0;
       padding-top: 18px;
-      max-width: 46ch;
-      border-top: 1px solid var(--rule-light);
+      max-width: 48ch;
+      border-top: 1px solid rgba(var(--mint-rgb), 0.18);
     }
     .field-opener__title {
       font-family: var(--body);
       font-weight: 700;
-      font-size: clamp(34px, 6.2vw, 52px);
-      line-height: 1.04;
+      font-size: clamp(28px, 5vw, 40px);
+      line-height: 1.1;
       letter-spacing: -0.025em;
-      color: var(--navy);
-      max-width: 16ch;
+      color: var(--off-white);
+      max-width: 22ch;
       margin: 0 auto;
+    }
+    .field-opener__title-mint {
+      color: var(--mint);
+      display: block;
     }
     .field-opener__dek {
       font-family: 'Inter', system-ui, sans-serif;
-      font-size: clamp(17px, 2.1vw, 20px);
-      line-height: 1.5;
-      color: var(--navy-muted);
-      max-width: 46ch;
-      margin: 14px auto 0;
+      font-size: clamp(16px, 2vw, 19px);
+      line-height: 1.55;
+      color: rgba(235, 245, 248, 0.82);
+      max-width: 48ch;
+      margin: 16px auto 0;
     }
     @media (max-width: 640px) {
       .field-opener__logo { height: 104px; }
@@ -1064,31 +1068,32 @@
 
     .field-stats {
       background: var(--navy);
-      padding: clamp(22px, 3.5vw, 32px) var(--pad);
-      margin-block: 22px;
+      padding: clamp(32px, 4.5vw, 52px) var(--pad);
+      margin-block: 0;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      gap: clamp(28px, 4vw, 52px);
+      border-top: 1px solid rgba(var(--mint-rgb), 0.18);
     }
-    .field-stats__item { display: flex; flex-direction: column; gap: 8px; }
+    .field-stats__item { display: flex; flex-direction: column; gap: 14px; }
     .field-stats__num {
       font-family: var(--body);
       font-weight: 700;
-      font-size: clamp(40px, 6vw, 64px);
+      font-size: clamp(32px, 5vw, 48px);
       line-height: 1;
       letter-spacing: -0.03em;
       color: var(--mint);
       white-space: nowrap;
     }
     .field-stats__label {
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 600;
-      line-height: 1.4;
+      line-height: 1.45;
       letter-spacing: 0.02em;
       color: rgba(235,245,248,0.82);
     }
     @media (max-width: 640px) {
-      .field-stats { grid-template-columns: 1fr; gap: 20px; }
+      .field-stats { grid-template-columns: 1fr; gap: 28px; }
     }
 
     .field-act {
@@ -1890,7 +1895,7 @@
   </nav>
 
   <!-- IN THE FIELD — article 01: Sam's Town (concise — straightforward story) -->
-  <section class="sec sec--marquee" id="field-story">
+  <section class="sec sec--deep" id="field-story" style="border-bottom: 4px solid var(--mint);">
     <div class="kicker">
       <span class="kicker__rule"></span>
       <span class="kicker__label">In the field</span>
@@ -1901,16 +1906,20 @@
       <!-- EDIT: drop Sam's Town logo at assets/sams-town/sams-town-logo.png — logo file not yet provided
       <img class="field-opener__logo" src="assets/sams-town/sams-town-logo.png" alt="Sam's Town Hotel &amp; Gambling Hall" height="160" loading="eager">
       -->
-      <h2 class="field-opener__title">An LED wall this big usually isn't this simple.</h2>
+      <h2 class="field-opener__title" id="field-story-title">An LED wall this big <span class="field-opener__title-mint">usually isn't this simple.</span></h2>
       <p class="field-opener__dek">LUCI built the 480-square-foot wall at the center of Sam's Town's remodeled sportsbook in Las Vegas &mdash; nearly forty feet of unbroken video where mismatched TVs used to be. Because LUCI had already run the property's audio and video for more than a year, the wall hooked right into LUCI. No second system, nothing for staff to relearn.</p>
       <p class="field-opener__where">Sam's Town Hotel &amp; Gambling Hall &middot; Las Vegas, Nevada</p>
     </div>
 
     <div class="field-stats field-bleed">
-      <div class="field-stats__item"><span class="field-stats__num">480 sq ft</span><span class="field-stats__label">LED wall built by LUCI &mdash; 39' &times; 12', 1.87mm pitch</span></div>
+      <div class="field-stats__item"><span class="field-stats__num">480 sq ft</span><span class="field-stats__label">LED wall built by LUCI</span></div>
       <div class="field-stats__item"><span class="field-stats__num">1 yr+</span><span class="field-stats__label">whole-property A/V already on LUCI</span></div>
       <div class="field-stats__item"><span class="field-stats__num">0</span><span class="field-stats__label">new control systems added</span></div>
     </div>
+  </section>
+
+  <!-- IN THE FIELD — body: before / build / results on light canvas -->
+  <section class="sec sec--light" aria-labelledby="field-story-title" style="padding-top: clamp(40px, 6vw, 64px);">
 
     <!-- EDIT: optional highlight reel — Jane may shoot a walk-through once the furniture is done.
     <figure class="field-reel field-bleed">
