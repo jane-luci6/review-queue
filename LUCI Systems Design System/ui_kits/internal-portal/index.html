@@ -2262,7 +2262,7 @@
           </div>
         </div>
         ${src ? `<div class="detail__preview"><iframe title="${item.title} preview" src="${src}" loading="lazy"></iframe></div>` : ''}
-        ${src || downloads.length ? `<div class="actions" style="margin-top:14px;">${src ? `<a class="btn" href="${src}" target="_blank" rel="noopener">Open full preview</a>` : ''}${downloads.map((dl) => `<a class="btn btn--mint" href="${pathFromReview(dl.path)}" download="${dl.path.split('/').pop()}">Download ${dl.label || 'file'}</a>`).join('')}</div>` : ''}
+        ${src || downloads.length ? `<div class="actions" style="margin-top:14px;">${src ? `<a class="btn" href="${src}">Open full preview</a>` : ''}${downloads.map((dl) => `<a class="btn btn--mint" href="${pathFromReview(dl.path)}" download="${dl.path.split('/').pop()}">Download ${dl.label || 'file'}</a>`).join('')}</div>` : ''}
 
         <div class="detail__section">
           <h3>Sign-off</h3>
@@ -2340,9 +2340,9 @@
             </div>
           </div>
           <div class="actions">
-            ${openUrl ? `<a class="btn btn--ghost" href="${openUrl}" target="_blank" rel="noopener">Open</a>` : ''}
+            ${openUrl ? `<a class="btn btn--ghost" href="${openUrl}">Open</a>` : ''}
             ${downloads.map((dl) => `<a class="btn btn--mint" href="${pathFromReview(dl.path)}" download="${dl.path.split('/').pop()}">Download ${dl.label || 'file'}</a>`).join('')}
-            ${item.liveUrl && item.liveUrl !== openUrl ? `<a class="btn btn--ghost" href="${item.liveUrl}" target="_blank" rel="noopener">Live</a>` : ''}
+            ${item.liveUrl && item.liveUrl !== openUrl ? `<a class="btn btn--ghost" href="${item.liveUrl}">Live</a>` : ''}
           </div>
         `;
         list.appendChild(row);
