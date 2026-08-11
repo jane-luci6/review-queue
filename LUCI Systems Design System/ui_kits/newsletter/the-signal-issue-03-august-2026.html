@@ -1130,6 +1130,23 @@
     }
     .field-figure.field-bleed .field-figure__caption { padding-inline: var(--pad); }
     .field-figure__caption--dark { color: rgba(235,245,248,0.72); }
+    /* Photo placeholder — staged for a not-yet-shot image (light marquee canvas) */
+    .field-photo-ph {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: rgba(53,79,92,0.04);
+      border: 1px dashed rgba(43,158,128,0.4);
+      color: rgba(53,79,92,0.5);
+      font-family: var(--body);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
     .field-tag {
       font-family: var(--display);
       font-size: 9px;
@@ -1911,7 +1928,7 @@
       <p>LUCI had run Sam's Town's A/V end to end for more than a year: audio through the casino first, then video across the property, sportsbook included. But that room's screens had been assembled over time rather than designed &mdash; as TVs failed, each was replaced with whatever was on hand. The sizes stopped matching. Everything worked; it just stopped reading as one picture.</p>
     </div>
     <figure class="field-figure field-bleed">
-      <img class="field-cinematic field-cinematic--wide" src="assets/sams-town/02-before-sportsbook-web.jpg?v=1" alt="The Sam's Town sportsbook before the remodel — a wall of mismatched TVs replaced one at a time" width="1024" height="576" loading="lazy">
+      <img class="field-cinematic field-cinematic--wide" src="assets/sams-town/02-before-sportsbook-web.jpg?v=2" alt="The Sam's Town sportsbook before the remodel — a wall of mismatched TVs replaced one at a time" width="1024" height="576" loading="lazy">
       <figcaption class="field-figure__caption"><span class="field-tag">Before</span>Mismatched TVs, replaced one at a time as they failed &mdash; the sizes stopped matching.</figcaption>
     </figure>
 
@@ -1941,8 +1958,9 @@
       </ul>
     </div>
 
+    <!-- EDIT: after photo — Jane is getting a better shot of the completed LED wall. Swap in 04-after-sportsbook-web.jpg when it lands. -->
     <figure class="field-figure field-bleed">
-      <img class="field-cinematic field-cinematic--wide" src="assets/sams-town/04-after-sportsbook-web.jpg?v=1" alt="The Sam's Town sportsbook after the remodel — the new LED wall running many sources as one surface" width="1024" height="767" loading="lazy">
+      <div class="field-photo-ph" aria-label="After photo coming soon">After photo &mdash; coming soon</div>
       <figcaption class="field-figure__caption"><span class="field-tag">After</span>One surface, many sources &mdash; the wall running six presets across eight video inputs.</figcaption>
     </figure>
   </section>
