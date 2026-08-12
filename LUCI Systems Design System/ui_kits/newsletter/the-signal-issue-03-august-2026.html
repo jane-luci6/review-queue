@@ -1020,16 +1020,32 @@
       margin: 0 auto 16px;
       display: block;
     }
-    .field-opener__where {
+    .field-property {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: baseline;
+      gap: 10px;
+      margin: 18px 0 0;
       font-family: var(--body);
       font-size: 13px;
       font-weight: 600;
       letter-spacing: 0.04em;
-      color: rgba(235, 245, 248, 0.6);
-      margin: 32px auto 0;
-      padding-top: 18px;
-      max-width: 48ch;
-      border-top: 1px solid rgba(var(--mint-rgb), 0.18);
+      text-align: center;
+    }
+    .field-property__name {
+      color: var(--off-white);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .field-property__dot { color: var(--mint); }
+    .field-property__location { color: var(--mint); }
+    .field-divider {
+      width: 100%;
+      max-width: 720px;
+      margin: 18px auto 0;
+      height: 1px;
+      background: rgba(235, 245, 248, 0.14);
     }
     .field-opener__title {
       font-family: var(--body);
@@ -1066,28 +1082,57 @@
       max-width: var(--read);
     }
 
+    .field-scale {
+      background: var(--navy);
+      padding: clamp(36px, 5vw, 56px) var(--pad);
+      margin-block: 0;
+    }
+    .field-scale__band {
+      max-width: 920px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .field-scale__art {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .field-scale__caption {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 13px;
+      line-height: 1.5;
+      color: rgba(235, 245, 248, 0.62);
+      margin: 18px auto 0;
+      max-width: 52ch;
+    }
+
     .field-stats {
       background: var(--navy);
-      padding: clamp(32px, 4.5vw, 52px) var(--pad);
+      padding: clamp(28px, 4vw, 44px) var(--pad);
       margin-block: 0;
-      border-top: 1px solid rgba(var(--mint-rgb), 0.18);
-    }
-    .field-stats__header {
-      text-align: center;
-      padding-bottom: 22px;
-      margin-bottom: 30px;
-      border-bottom: 1px solid rgba(var(--mint-rgb), 0.18);
-      font-family: var(--body);
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      color: rgba(235, 245, 248, 0.62);
+      border-top: 1px solid rgba(var(--mint-rgb), 0.35);
+      border-bottom: 1px solid rgba(var(--mint-rgb), 0.35);
     }
     .field-stats__row {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: clamp(28px, 4vw, 52px);
     }
+    .field-stats__row--4 {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    .field-stats__row--4 .field-stats__item {
+      padding: 0 clamp(14px, 2.2vw, 28px);
+      border-left: 1px solid rgba(var(--mint-rgb), 0.22);
+      align-items: center;
+      text-align: center;
+    }
+    .field-stats__row--4 .field-stats__item:first-child {
+      border-left: none;
+      padding-left: 0;
+    }
+    .field-stats__row--4 .field-stats__item:last-child { padding-right: 0; }
     .field-stats__item { display: flex; flex-direction: column; gap: 14px; }
     .field-stats__num {
       font-family: var(--body);
@@ -1099,44 +1144,143 @@
       white-space: nowrap;
     }
     .field-stats__label {
-      font-size: 13px;
-      font-weight: 600;
-      line-height: 1.45;
-      letter-spacing: 0.02em;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
       color: rgba(235,245,248,0.82);
+    }
+    @media (max-width: 720px) {
+      .field-stats__row--4 { grid-template-columns: 1fr 1fr; gap: 28px; }
+      .field-stats__row--4 .field-stats__item { border-left: none; padding: 0; }
+    }
+    @media (max-width: 480px) {
+      .field-stats__row--4 { grid-template-columns: 1fr; }
     }
     @media (max-width: 640px) {
       .field-stats__row { grid-template-columns: 1fr; gap: 28px; }
     }
 
-    .field-act {
+    .field-ba {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(24px, 3vw, 40px);
+      max-width: 880px;
+      margin: 0 0 clamp(40px, 6vw, 64px);
+    }
+    .field-ba__col { display: flex; flex-direction: column; }
+    .field-ba__head {
       display: flex;
       align-items: center;
-      gap: 16px;
-      margin: 34px 0 18px;
+      gap: 12px;
+      margin-bottom: 16px;
     }
-    .field-act__num {
-      font-family: var(--display);
+    .field-ba__badge {
+      display: inline-block;
+      background: var(--mint);
+      color: #0A161C;
+      font-family: var(--body);
+      font-size: 10px;
       font-weight: 700;
-      font-size: 28px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+    }
+    .field-ba__heading {
+      font-family: var(--body);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: #1A2B36;
+    }
+    .field-ba__media { margin: 0; }
+    .field-ba__media .field-cinematic,
+    .field-ba__media .field-photo-ph { width: 100%; }
+    .field-ba__caption {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 12.5px;
+      line-height: 1.5;
+      color: rgba(53,79,92,0.72);
+      margin-top: 10px;
+    }
+    @media (max-width: 640px) {
+      .field-ba { grid-template-columns: 1fr; gap: 28px; }
+    }
+
+    .field-num { margin: 0 0 clamp(36px, 5vw, 52px); }
+    .field-num__head {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .field-num__num {
+      font-family: var(--body);
+      font-size: 22px;
+      font-weight: 700;
       line-height: 1;
       letter-spacing: -0.02em;
-      color: rgba(43,158,128,0.35);
-    }
-    .field-act__label {
-      font-family: var(--display);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
       color: var(--mint-dark);
     }
-    .field-act__rule {
-      flex: 1;
-      height: 3px;
-      max-width: 120px;
+    .field-num__title {
+      font-family: var(--body);
+      font-size: clamp(20px, 2.6vw, 26px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: #1A2B36;
+    }
+    .field-num__rule {
+      width: 100%;
+      height: 2px;
       background: var(--mint-dark);
-      opacity: 0.25;
+      opacity: 0.55;
+      margin: 0 0 18px;
+    }
+    .field-num__body {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      color: #354F5C;
+      max-width: var(--read);
+    }
+    .field-num__body p { max-width: 60ch; }
+
+    .field-runs { max-width: 760px; margin-top: clamp(8px, 2vw, 16px); }
+    .field-runs__title {
+      font-family: var(--body);
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: #1A2B36;
+      margin-bottom: 14px;
+    }
+    .field-runs__rule {
+      width: 100%;
+      height: 2px;
+      background: var(--mint-dark);
+      margin: 0 0 4px;
+    }
+    .field-runs__list { list-style: none; margin: 0; padding: 0; }
+    .field-runs__item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--rule-light);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 15.5px;
+      line-height: 1.5;
+      color: #354F5C;
+    }
+    .field-runs__item::before {
+      content: "";
+      flex: 0 0 16px;
+      height: 2px;
+      margin-top: 0.75em;
+      background: var(--mint-dark);
     }
 
     .field-figure { margin: 16px 0; }
@@ -1915,25 +2059,64 @@
       <span class="kicker__rule"></span>
     </div>
 
+    <p class="field-property">
+      <span class="field-property__name">Sam's Town Hotel &amp; Gambling Hall</span>
+      <span class="field-property__dot" aria-hidden="true">&middot;</span>
+      <span class="field-property__location">Las Vegas, Nevada</span>
+    </p>
+    <div class="field-divider" aria-hidden="true"></div>
+
     <div class="field-opener">
-      <!-- EDIT: drop Sam's Town logo at assets/sams-town/sams-town-logo.png — logo file not yet provided
-      <img class="field-opener__logo" src="assets/sams-town/sams-town-logo.png" alt="Sam's Town Hotel &amp; Gambling Hall" height="160" loading="eager">
-      -->
       <h2 class="field-opener__title" id="field-story-title">An LED wall this big <span class="field-opener__title-mint">usually isn't this simple.</span></h2>
       <p class="field-opener__dek">LUCI built the 480-square-foot wall where mismatched TVs used to be &mdash; nearly forty feet of unbroken video. Because LUCI already ran the property's A/V, the wall hooked right in: no second system, nothing for staff to relearn.</p>
     </div>
 
+    <div class="field-scale field-bleed">
+      <div class="field-scale__band">
+        <svg class="field-scale__art" viewBox="0 0 960 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="field-scale-title">
+          <title id="field-scale-title">The LED wall at scale &mdash; 39 feet wide, 12 feet tall, with a 6-foot person for comparison</title>
+          <defs>
+            <pattern id="wall-grid" width="51" height="51" patternUnits="userSpaceOnUse">
+              <path d="M 51 0 L 0 0 0 51" fill="none" stroke="rgba(104,227,190,0.14)" stroke-width="1"/>
+            </pattern>
+            <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="rgba(104,227,190,0.55)"/>
+            </marker>
+          </defs>
+          <!-- LED wall -->
+          <rect x="110" y="60" width="663" height="204" fill="rgba(104,227,190,0.04)" stroke="#68E3BE" stroke-width="2"/>
+          <rect x="110" y="60" width="663" height="204" fill="url(#wall-grid)"/>
+          <text x="441.5" y="158" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="46" font-weight="700" letter-spacing="-0.02em" fill="#68E3BE">480 SQ FT</text>
+          <text x="441.5" y="188" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="15" font-weight="600" letter-spacing="0.06em" fill="rgba(104,227,190,0.82)">6400 &times; 1980 &middot; 1.87 MM PITCH</text>
+          <!-- 12 FT vertical dimension (left) -->
+          <line x1="70" y1="60" x2="70" y2="264" stroke="rgba(104,227,190,0.55)" stroke-width="1" marker-start="url(#arr)" marker-end="url(#arr)"/>
+          <text x="50" y="162" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="13" font-weight="700" letter-spacing="0.12em" fill="rgba(104,227,190,0.82)" transform="rotate(-90 50 162)">12 FT</text>
+          <!-- 39 FT Horizontal dimension (below) -->
+          <line x1="110" y1="300" x2="773" y2="300" stroke="rgba(104,227,190,0.55)" stroke-width="1" marker-start="url(#arr)" marker-end="url(#arr)"/>
+          <text x="441.5" y="324" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="13" font-weight="700" letter-spacing="0.12em" fill="rgba(104,227,190,0.82)">39 FT</text>
+          <!-- Person silhouette for scale (6 ft) -->
+          <g fill="rgba(235,245,248,0.34)">
+            <circle cx="850" cy="174" r="11"/>
+            <path d="M 836 192 L 864 192 L 860 226 L 858 264 L 854 264 L 852 232 L 850 232 L 848 264 L 844 264 L 842 226 Z"/>
+          </g>
+          <line x1="830" y1="300" x2="870" y2="300" stroke="rgba(104,227,190,0.45)" stroke-width="1" marker-start="url(#arr)" marker-end="url(#arr)"/>
+          <text x="850" y="324" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="13" font-weight="700" letter-spacing="0.12em" fill="rgba(104,227,190,0.82)">6 FT</text>
+        </svg>
+        <p class="field-scale__caption">Nearly forty feet of unbroken video, fine enough to hold up from the front row.</p>
+      </div>
+    </div>
+
     <div class="field-stats field-bleed">
-      <p class="field-stats__header">Sam's Town Hotel &amp; Gambling Hall &middot; Las Vegas, Nevada</p>
-      <div class="field-stats__row">
-        <div class="field-stats__item"><span class="field-stats__num">1</span><span class="field-stats__label">sportsbook LED wall, looped into LUCI</span></div>
-        <div class="field-stats__item"><span class="field-stats__num">10</span><span class="field-stats__label">horse-racing channels, kept on existing coax</span></div>
-        <div class="field-stats__item"><span class="field-stats__num">3&ndash;4</span><span class="field-stats__label">audio zones across the sportsbook</span></div>
+      <div class="field-stats__row field-stats__row--4">
+        <div class="field-stats__item"><span class="field-stats__num">1</span><span class="field-stats__label">LED wall, looped into LUCI</span></div>
+        <div class="field-stats__item"><span class="field-stats__num">10</span><span class="field-stats__label">race channels on existing coax</span></div>
+        <div class="field-stats__item"><span class="field-stats__num">6</span><span class="field-stats__label">presets across 8 video inputs</span></div>
+        <div class="field-stats__item"><span class="field-stats__num">3</span><span class="field-stats__label">audio zones in the sportsbook</span></div>
       </div>
     </div>
   </section>
 
-  <!-- IN THE FIELD — body: before / build / results on light canvas -->
+  <!-- IN THE FIELD — body: before/after + numbered narrative + results on light canvas -->
   <section class="sec sec--light" aria-labelledby="field-story-title" style="padding-top: clamp(40px, 6vw, 64px);">
 
     <!-- EDIT: optional highlight reel — Jane may shoot a walk-through once the furniture is done.
@@ -1945,45 +2128,62 @@
     </figure>
     -->
 
-    <div class="field-act">
-      <span class="field-act__label">Before</span>
-      <span class="field-act__rule"></span>
+    <div class="field-ba">
+      <div class="field-ba__col">
+        <div class="field-ba__head">
+          <span class="field-ba__badge">Before</span>
+          <p class="field-ba__heading">A wall of mismatched TVs</p>
+        </div>
+        <figure class="field-ba__media">
+          <img class="field-cinematic field-cinematic--wide" src="assets/sams-town/02-before-sportsbook-web.jpg?v=2" alt="The Sam's Town sportsbook before the remodel — a wall of mismatched TVs replaced one at a time" width="1024" height="576" loading="lazy">
+          <figcaption class="field-ba__caption">Mismatched TVs, replaced one at a time as they failed &mdash; the sizes stopped matching.</figcaption>
+        </figure>
+      </div>
+      <div class="field-ba__col">
+        <div class="field-ba__head">
+          <span class="field-ba__badge">After</span>
+          <p class="field-ba__heading">One continuous surface</p>
+        </div>
+        <figure class="field-ba__media">
+          <!-- EDIT: after photo — Jane is getting a better shot of the completed LED wall. Swap in 04-after-sportsbook-web.jpg when it lands. -->
+          <div class="field-photo-ph" aria-label="After photo coming soon">After photo &mdash; coming soon</div>
+          <figcaption class="field-ba__caption">One surface, many sources &mdash; the wall running six presets across eight video inputs.</figcaption>
+        </figure>
+      </div>
     </div>
-    <div class="art-body">
-      <p class="field-story__heading">The starting point</p>
-      <p>LUCI had run Sam's Town's A/V end to end for more than a year: audio through the casino first, then video across the property, sportsbook included. But that room's screens had been assembled over time rather than designed &mdash; as TVs failed, each was replaced with whatever was on hand. The sizes stopped matching. Everything worked; it just stopped reading as one picture.</p>
-    </div>
-    <figure class="field-figure field-bleed">
-      <img class="field-cinematic field-cinematic--wide" src="assets/sams-town/02-before-sportsbook-web.jpg?v=2" alt="The Sam's Town sportsbook before the remodel — a wall of mismatched TVs replaced one at a time" width="1024" height="576" loading="lazy">
-      <figcaption class="field-figure__caption"><span class="field-tag">Before</span>Mismatched TVs, replaced one at a time as they failed &mdash; the sizes stopped matching.</figcaption>
-    </figure>
 
-    <div class="field-act">
-      <span class="field-act__label">The build</span>
-      <span class="field-act__rule"></span>
-    </div>
-    <div class="art-body">
-      <p class="field-story__heading">What LUCI did</p>
-      <p>LUCI built and installed the wall: 39 feet wide, 12 feet tall, 6400 &times; 1980 at a 1.87mm pitch &mdash; one continuous surface, fine enough to hold up from the front row. The sportsbook's IDF was rebuilt to carry it.</p>
-      <p>The wall, the room's new TVs, and its three audio zones then came onto the LUCI platform already running the building, where the wall now drives six presets across eight video inputs. The race book took the same approach: rather than trench new cable out to every betting carousel, LUCI sent ten channels of its own encoded video back out over the coax already buried under the property.</p>
+    <div class="field-num">
+      <div class="field-num__head">
+        <span class="field-num__num">01</span>
+        <h3 class="field-num__title">The room they had</h3>
+      </div>
+      <div class="field-num__rule" aria-hidden="true"></div>
+      <div class="field-num__body">
+        <p>LUCI had run Sam's Town's A/V end to end for more than a year: audio through the casino first, then video across the property, sportsbook included. But that room's screens had been assembled over time rather than designed &mdash; as TVs failed, each was replaced with whatever was on hand. The sizes stopped matching. Everything worked; it just stopped reading as one picture.</p>
+      </div>
     </div>
 
-    <div class="art-body">
-      <p class="field-story__heading">The results</p>
-      <p>A major upgrade for guests, running on the platform the property already had. Here's what Sam's Town runs now:</p>
-      <ul class="field-results">
-        <li>A 480-square-foot LED wall, built and installed by LUCI: one multi-screen display where there used to be many</li>
-        <li>Six presets across eight video inputs, switched from LUCI</li>
-        <li>Three audio zones &mdash; the floor split in two, plus the bar &mdash; on the existing system</li>
-        <li>Ten channels of race video over existing coax: no trenching, no new cable, no complications</li>
+    <div class="field-num">
+      <div class="field-num__head">
+        <span class="field-num__num">02</span>
+        <h3 class="field-num__title">The wall they wanted</h3>
+      </div>
+      <div class="field-num__rule" aria-hidden="true"></div>
+      <div class="field-num__body">
+        <p>LUCI built and installed the wall: 39 feet wide, 12 feet tall, 6400 &times; 1980 at a 1.87mm pitch &mdash; one continuous surface, fine enough to hold up from the front row. The sportsbook's IDF was rebuilt to carry it. The wall, the room's new TVs, and its three audio zones then came onto the LUCI platform already running the building, where the wall now drives six presets across eight video inputs. The race book took the same approach: rather than trench new cable out to every betting carousel, LUCI sent ten channels of its own encoded video back out over the coax already buried under the property.</p>
+      </div>
+    </div>
+
+    <div class="field-runs">
+      <h3 class="field-runs__title">What Sam's Town runs now</h3>
+      <div class="field-runs__rule" aria-hidden="true"></div>
+      <ul class="field-runs__list">
+        <li class="field-runs__item">A 480-square-foot LED wall, built and installed by LUCI: one multi-screen display where there used to be many</li>
+        <li class="field-runs__item">Six presets across eight video inputs, switched from LUCI</li>
+        <li class="field-runs__item">Three audio zones &mdash; the floor split in two, plus the bar &mdash; on the existing system</li>
+        <li class="field-runs__item">Ten channels of race video over existing coax: no trenching, no new cable, no complications</li>
       </ul>
     </div>
-
-    <!-- EDIT: after photo — Jane is getting a better shot of the completed LED wall. Swap in 04-after-sportsbook-web.jpg when it lands. -->
-    <figure class="field-figure field-bleed">
-      <div class="field-photo-ph" aria-label="After photo coming soon">After photo &mdash; coming soon</div>
-      <figcaption class="field-figure__caption"><span class="field-tag">After</span>One surface, many sources &mdash; the wall running six presets across eight video inputs.</figcaption>
-    </figure>
   </section>
 
   <!-- FEATURE 01 — article 02 (new platform feature, TBD from tech meeting) -->
