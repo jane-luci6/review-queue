@@ -1265,22 +1265,21 @@
     }
     .field-runs__list { list-style: none; margin: 0; padding: 0; }
     .field-runs__item {
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-      padding: 16px 0;
+      padding: 18px 0;
       border-bottom: 1px solid var(--rule-light);
       font-family: 'Inter', system-ui, sans-serif;
       font-size: 15.5px;
       line-height: 1.5;
       color: #354F5C;
     }
-    .field-runs__item::before {
-      content: "";
-      flex: 0 0 16px;
-      height: 2px;
-      margin-top: 0.75em;
-      background: var(--mint-dark);
+    /* Dark results highlight (mesh bg via sec--deep) */
+    .field-runs--dark { max-width: 820px; }
+    .field-runs--dark .field-runs__title { color: var(--off-white); font-size: clamp(26px, 3.5vw, 34px); }
+    .field-runs--dark .field-runs__rule { background: var(--mint); }
+    .field-runs--dark .field-runs__item {
+      color: rgba(235, 245, 248, 0.9);
+      border-bottom-color: rgba(var(--mint-rgb), 0.18);
+      font-size: 16px;
     }
 
     .field-figure { margin: 16px 0; }
@@ -2171,9 +2170,12 @@
         <p>Sam's Town hired LUCI to replace the mismatched screens with one proper LED wall &mdash; a single surface that would read as one picture from every seat. LUCI built and installed the wall: 39 feet wide, 12 feet tall, 6400 &times; 1980 at a 1.87mm pitch &mdash; one continuous surface, fine enough to hold up from the front row. The wall, the room's new TVs, and its three audio zones then came onto the LUCI platform already running the building, where the wall now drives six presets across eight video inputs.</p>
       </div>
     </div>
+  </section>
 
-    <div class="field-runs">
-      <h3 class="field-runs__title">What Sam's Town runs now</h3>
+  <!-- IN THE FIELD — results highlight on dark canvas (mesh bg) -->
+  <section class="sec sec--deep" aria-labelledby="field-runs-title">
+    <div class="field-runs field-runs--dark">
+      <h3 class="field-runs__title" id="field-runs-title">What Sam's Town runs now</h3>
       <div class="field-runs__rule" aria-hidden="true"></div>
       <ul class="field-runs__list">
         <li class="field-runs__item">A 480-square-foot LED wall, built and installed by LUCI: one multi-screen display where there used to be many</li>
