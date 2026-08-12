@@ -1626,6 +1626,10 @@
 
     .steps li p { margin: 0; font-size: 17px; color: #354F5C; }
 
+    /* Steps on a dark canvas (Quick Tip) */
+    .steps--dark li::before { color: var(--mint); }
+    .steps--dark li p { color: rgba(235, 245, 248, 0.88); font-size: 16px; }
+
     /* ── COMMAND TRAIL (August release feature) ──── */
     .feature-lockup {
       max-width: 760px;
@@ -2049,11 +2053,12 @@
     <p class="toc__label">In this issue</p>
     <ol class="toc__list">
       <li><a href="#field-story"><span class="toc__num">01</span><span class="toc__text">In the field</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
-      <li><a href="#feature-01"><span class="toc__num">02</span><span class="toc__text">New platform · 01</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
-      <li><a href="#feature-02"><span class="toc__num">03</span><span class="toc__text">New platform · 02</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
-      <li><a href="#feature-03"><span class="toc__num">04</span><span class="toc__text">New platform · 03</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
-      <li><a href="#web-next"><span class="toc__num">05</span><span class="toc__text">The new lucisystems.com</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
-      <li><a href="#mike-column"><span class="toc__num">06</span><span class="toc__text">A Minute with Mike</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
+      <li><a href="#quick-tip"><span class="toc__num">02</span><span class="toc__text">LUCI Quick Tip</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
+      <li><a href="#feature-01"><span class="toc__num">03</span><span class="toc__text">New platform · 01</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
+      <li><a href="#feature-02"><span class="toc__num">04</span><span class="toc__text">New platform · 02</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
+      <li><a href="#feature-03"><span class="toc__num">05</span><span class="toc__text">New platform · 03</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
+      <li><a href="#web-next"><span class="toc__num">06</span><span class="toc__text">The new lucisystems.com</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
+      <li><a href="#mike-column"><span class="toc__num">07</span><span class="toc__text">A Minute with Mike</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
     </ol>
   </nav>
 
@@ -2187,6 +2192,34 @@
           <li class="field-runs__item">Ten channels of race video over existing coax: no trenching, no new cable, no complications</li>
         </ul>
       </div>
+    </div>
+  </section>
+
+  <!-- QUICK TIP — dark section (mesh bg) -->
+  <section class="sec sec--dark" id="quick-tip">
+    <div class="kicker">
+      <span class="kicker__rule"></span>
+      <span class="kicker__label">LUCI Quick Tip</span>
+      <span class="kicker__rule"></span>
+    </div>
+    <h2 class="art-title">Not every announcement should be the same volume</h2>
+    <div class="art-body">
+      <p>Announcements in LUCI carry a priority &mdash; low, medium, or high &mdash; and each priority has its own volume, per zone. They&rsquo;re three separate settings, not one.</p>
+      <p>That&rsquo;s the part worth knowing. A shift-change page and an emergency page don&rsquo;t have to share a level, and the level that works in the casino doesn&rsquo;t have to be the level in a steakhouse. Most properties set announcement volume once and live with the compromise. You don&rsquo;t have to.</p>
+    </div>
+    <p class="callout__kicker">Setting it</p>
+    <ol class="steps steps--dark">
+      <li><p>Log in and switch the map to Control Mode, using the mode selector in the middle of the map.</p></li>
+      <li><p>In the endpoint type selector at the top left of the map, choose the Announcement icon.</p></li>
+      <li><p>Open Control Panel &rarr; Sources in the right menu bar. It&rsquo;ll say No Audio Zone Selected.</p></li>
+      <li><p>Click a zone on the map. You&rsquo;ll see its announcements with their Low / Medium / High / Disabled setting, and the current volume for each priority.</p></li>
+      <li><p>Use the Low, Medium, and High controls at the bottom of the Control Panel. Each one sets the volume for announcements at that priority, in that zone only.</p></li>
+      <li><p>Select more zones to change several at once. Watch the values update on each zone&rsquo;s tooltip on the map and in the Sources sidebar.</p></li>
+      <li><p>Click a zone again to deselect it, or use the red X in the navigation bar to clear everything.</p></li>
+    </ol>
+    <div class="art-body">
+      <p><strong>One thing that&rsquo;ll save you a support ticket.</strong> When you have several zones selected, a change only reaches the zones that actually have announcements at that priority &mdash; so if a zone doesn&rsquo;t seem to respond, check whether it has anything assigned at that level.</p>
+      <p>Full walkthrough: <a href="https://lucisystems.atlassian.net/servicedesk/customer/portal/1/article/642285569">Announcement Control</a> in the Support Portal.</p>
     </div>
   </section>
 
