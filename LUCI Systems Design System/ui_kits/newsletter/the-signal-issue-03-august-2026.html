@@ -1272,11 +1272,18 @@
       line-height: 1.5;
       color: #354F5C;
     }
-    /* Dark results highlight (mesh bg via sec--deep) */
-    .field-runs--dark { max-width: 820px; }
-    .field-runs--dark .field-runs__title { color: var(--off-white); font-size: clamp(26px, 3.5vw, 34px); }
-    .field-runs--dark .field-runs__rule { background: var(--mint); }
-    .field-runs--dark .field-runs__item {
+    /* Results callout — contained highlight within the light story */
+    .field-callout {
+      max-width: 760px;
+      margin: clamp(32px, 5vw, 48px) 0 0;
+      background: var(--navy-deep);
+      border-left: 4px solid var(--mint);
+      padding: clamp(28px, 4vw, 40px) clamp(28px, 4vw, 40px);
+    }
+    .field-runs--callout { max-width: none; }
+    .field-runs--callout .field-runs__title { color: var(--off-white); font-size: clamp(24px, 3vw, 30px); }
+    .field-runs--callout .field-runs__rule { background: var(--mint); }
+    .field-runs--callout .field-runs__item {
       color: rgba(235, 245, 248, 0.9);
       border-bottom-color: rgba(var(--mint-rgb), 0.18);
       font-size: 16px;
@@ -2151,7 +2158,6 @@
 
     <div class="field-num">
       <div class="field-num__head">
-        <span class="field-num__num">01</span>
         <h3 class="field-num__title">The room they had</h3>
       </div>
       <div class="field-num__rule" aria-hidden="true"></div>
@@ -2162,7 +2168,6 @@
 
     <div class="field-num">
       <div class="field-num__head">
-        <span class="field-num__num">02</span>
         <h3 class="field-num__title">The wall they wanted</h3>
       </div>
       <div class="field-num__rule" aria-hidden="true"></div>
@@ -2170,19 +2175,18 @@
         <p>Sam's Town hired LUCI to replace the mismatched screens with one proper LED wall &mdash; a single surface that would read as one picture from every seat. LUCI built and installed the wall: 39 feet wide, 12 feet tall, 6400 &times; 1980 at a 1.87mm pitch &mdash; one continuous surface, fine enough to hold up from the front row. The wall, the room's new TVs, and its three audio zones then came onto the LUCI platform already running the building, where the wall now drives six presets across eight video inputs.</p>
       </div>
     </div>
-  </section>
 
-  <!-- IN THE FIELD — results highlight on dark canvas (mesh bg) -->
-  <section class="sec sec--deep" aria-labelledby="field-runs-title">
-    <div class="field-runs field-runs--dark">
-      <h3 class="field-runs__title" id="field-runs-title">What Sam's Town runs now</h3>
-      <div class="field-runs__rule" aria-hidden="true"></div>
-      <ul class="field-runs__list">
-        <li class="field-runs__item">A 480-square-foot LED wall, built and installed by LUCI: one multi-screen display where there used to be many</li>
-        <li class="field-runs__item">Six presets across eight video inputs, switched from the LUCI platform</li>
-        <li class="field-runs__item">Three audio zones &mdash; the floor split in two, plus the bar &mdash; on the existing system</li>
-        <li class="field-runs__item">Ten channels of race video over existing coax: no trenching, no new cable, no complications</li>
-      </ul>
+    <div class="field-callout">
+      <div class="field-runs field-runs--callout">
+        <h3 class="field-runs__title">What Sam's Town runs now</h3>
+        <div class="field-runs__rule" aria-hidden="true"></div>
+        <ul class="field-runs__list">
+          <li class="field-runs__item">A 480-square-foot LED wall, built and installed by LUCI: one multi-screen display where there used to be many</li>
+          <li class="field-runs__item">Six presets across eight video inputs, switched from the LUCI platform</li>
+          <li class="field-runs__item">Three audio zones &mdash; the floor split in two, plus the bar &mdash; on the existing system</li>
+          <li class="field-runs__item">Ten channels of race video over existing coax: no trenching, no new cable, no complications</li>
+        </ul>
+      </div>
     </div>
   </section>
 
