@@ -29,9 +29,9 @@ CONTENT_BUDGET = PAGE_HEIGHT - PAGE_OVERHEAD
 
 # Footer page-number patterns (kept in sync with scripts/check-footers.py).
 _PAGE_PATTERN = re.compile(
-    r'<!-- PAGE[^>]*-->\s*\n\s*<section class="doc-page[^>]*>.*?</section>', re.S)
+    r'(?:<!-- PAGE[^>]*-->\s*\n\s*)?<section class="doc-page[^>]*>.*?</section>', re.S)
 _FOOTER_PATTERN = re.compile(
-    r'<span class="doc-foot__page(?:\s+doc-edit)?"\s*(?:contenteditable="true"\s*)?>(\d+)</span>')
+    r'<span class="doc-foot__page[^"]*"[^>]*>(\d+)</span>')
 _MANGLE_TELLS = ('<span cla<span', 'div&gt;', '<span=""', 'class=doc-foot')
 
 
@@ -42,28 +42,35 @@ def verify_footers(html):
     in the PDF. Mirrors scripts/check-footers.py — kept inline here because
     Python can't import a hyphenated module name.
     """
-    issues = []
     pages = list(_PAGE_PATTERN.finditer(html))
     if not pages:
-        return ["no .doc-page sections found"]
-    expected = 2  # page 1 is the cover (no footer); numbering starts at 02
-    for idx, m in enumerate(pages, 1):
+        return []  # non-paged document — footer check doesn't apply
+    nums = []
+    blocks = []
+    for m in pages:
         block = m.group(0)
-        comment = block.split('-->', 1)[0] + '-->'
+        blocks.append(block)
+        fm = _FOOTER_PATTERN.search(block)
+        nums.append(int(fm.group(1)) if fm else None)
+    first_idx = next((i for i, n in enumerate(nums) if n is not None), None)
+    if first_idx is None:
+        return []  # paged but no numbered footers — nothing to verify
+    last_idx = max(i for i, n in enumerate(nums) if n is not None)
+    issues = []
+    expected = nums[first_idx]
+    for i, block in enumerate(blocks):
+        idx = i + 1
+        comment = block.split('-->', 1)[0] + '-->' if block.startswith('<!--') else '<!-- (no PAGE comment) -->'
         if any(tell in block for tell in _MANGLE_TELLS):
             issues.append(f"page {idx}: mangled footer markup ({comment.strip()})")
-        fm = _FOOTER_PATTERN.search(block)
-        if fm is None:
-            if idx == 1:
-                continue  # cover has no footer by design
+        if i < first_idx or i > last_idx:
+            continue
+        n = nums[i]
+        if n is None:
             issues.append(f"page {idx}: missing .doc-foot__page number ({comment.strip()})")
-        else:
-            n = int(fm.group(1))
-            if n != expected:
-                issues.append(
-                    f"page {idx}: footer says '{n:02d}' but expected '{expected:02d}' "
-                    f"({comment.strip()})")
-            expected += 1
+        elif n != expected:
+            issues.append(f"page {idx}: footer says '{n:02d}' but expected '{expected:02d}' ({comment.strip()})")
+        expected += 1
     return issues
 
 def find_chrome():

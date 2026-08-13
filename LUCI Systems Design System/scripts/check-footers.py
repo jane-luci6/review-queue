@@ -20,14 +20,17 @@ import re
 import sys
 from pathlib import Path
 
-# A page section: the `<!-- PAGE ... -->` comment + the <section class="doc-page...">…</section>.
+# A page section: an optional `<!-- PAGE ... -->` comment + the
+# <section class="doc-page...">…</section>. The comment is optional because some
+# templates (proposal.html, scope-of-work.html) omit it and use the section alone.
 PAGE_PATTERN = re.compile(
-    r'<!-- PAGE[^>]*-->\s*\n\s*<section class="doc-page[^>]*>.*?</section>',
+    r'(?:<!-- PAGE[^>]*-->\s*\n\s*)?<section class="doc-page[^>]*>.*?</section>',
     re.S,
 )
-# A clean footer page-number span, with or without the edit-bar's doc-edit attrs.
+# A clean footer page-number span. Allow arbitrary extra attributes (contenteditable,
+# data-studio="auto-doc-foot-page-NN", etc.) between the class and the >.
 FOOTER_PATTERN = re.compile(
-    r'<span class="doc-foot__page(?:\s+doc-edit)?"\s*(?:contenteditable="true"\s*)?>(\d+)</span>'
+    r'<span class="doc-foot__page[^"]*"[^>]*>(\d+)</span>'
 )
 # Mangle tells — any of these near a footer means the markup is broken.
 MANGLE_TELLS = ('<span cla<span', 'div&gt;', '<span=""', 'class=doc-foot')
@@ -38,7 +41,10 @@ def _extract_pages(html):
     pages = []
     for i, m in enumerate(PAGE_PATTERN.finditer(html), 1):
         block = m.group(0)
-        comment = block.split('-->', 1)[0] + '-->'
+        if block.startswith('<!--'):
+            comment = block.split('-->', 1)[0] + '-->'
+        else:
+            comment = '<!-- (no PAGE comment) -->'
         fm = FOOTER_PATTERN.search(block)
         footer_num = int(fm.group(1)) if fm else None
         mangled = any(tell in block for tell in MANGLE_TELLS)
@@ -50,24 +56,38 @@ def check(html_text, quiet=False):
     pages = _extract_pages(html_text)
     errors = []
     if not pages:
-        return ["No .doc-page sections found."]
+        # Non-paged document (e.g. sales deck, standalone HTML) — the footer
+        # check doesn't apply. Not an error.
+        if not quiet:
+            print("no .doc-page sections — non-paged document, footer check skipped.")
+        return []
 
-    expected = 2  # page 1 is the cover (no footer); numbering starts at 02
-    for idx, comment, block, footer_num, mangled in pages:
+    nums = [p[3] for p in pages]
+    first_idx = next((i for i, n in enumerate(nums) if n is not None), None)
+    if first_idx is None:
+        # Paged doc with no footer numbers anywhere — unusual; skip rather than
+        # block (the footer check has nothing to verify).
+        if not quiet:
+            print(f"pages: {len(pages)}  | footers found: 0  | (no numbered pages — skipped)")
+        return []
+
+    last_idx = max(i for i, n in enumerate(nums) if n is not None)
+    expected = nums[first_idx]
+    for i, (idx, comment, block, footer_num, mangled) in enumerate(pages):
         if mangled:
             errors.append(f"page {idx}: mangled footer markup ({comment.strip()})")
+        # Pages before the first numbered page (cover / front matter) and after
+        # the last numbered page (close) legitimately have no footer.
+        if i < first_idx or i > last_idx:
+            continue
         if footer_num is None:
-            # Cover (page 1) legitimately has no footer; any later page without one is an error.
-            if idx == 1:
-                continue
             errors.append(f"page {idx}: missing .doc-foot__page number ({comment.strip()})")
-        else:
-            if footer_num != expected:
-                errors.append(
-                    f"page {idx}: footer says '{footer_num:02d}' but expected '{expected:02d}' "
-                    f"({comment.strip()})"
-                )
-            expected += 1
+        elif footer_num != expected:
+            errors.append(
+                f"page {idx}: footer says '{footer_num:02d}' but expected '{expected:02d}' "
+                f"({comment.strip()})"
+            )
+        expected += 1
 
     if not quiet:
         max_num = max((p[3] for p in pages if p[3] is not None), default=0)
@@ -98,22 +118,20 @@ def fix(html_text):
         r'<span class="doc-foot__page doc-edit" contenteditable="true">\1</span>\n\2</div>\n    </section>',
         html_text,
     )
-    # Now renumber every footer span (clean or edit-bar-saved) sequentially from 02.
-    counter = {'n': 1}
+    # Now renumber every footer span (clean or edit-bar-saved) sequentially,
+    # starting from the first footer number already in the doc — this preserves
+    # each template's numbering convention (e.g. capabilities starts at 04).
+    # We only swap the digits, leaving every attribute (class, contenteditable,
+    # data-studio="auto-doc-foot-page-NN", …) untouched.
+    renum_pattern = re.compile(r'(<span class="doc-foot__page[^"]*"[^>]*>)(\d+)(</span>)')
+    first_match = renum_pattern.search(html_text)
+    counter = {'n': (int(first_match.group(2)) - 1) if first_match else 1}
 
     def renum(m):
         counter['n'] += 1
-        n = counter['n']
-        # preserve whether the span carries the edit-bar attrs
-        if 'doc-edit' in m.group(0):
-            cls = 'doc-foot__page doc-edit'
-            extra = ' contenteditable="true"'
-        else:
-            cls = 'doc-foot__page'
-            extra = ''
-        return f'<span class="{cls}"{extra}>{n:02d}</span>'
+        return f"{m.group(1)}{counter['n']:02d}{m.group(3)}"
 
-    html_text = FOOTER_PATTERN.sub(renum, html_text)
+    html_text = renum_pattern.sub(renum, html_text)
     return html_text
 
 
