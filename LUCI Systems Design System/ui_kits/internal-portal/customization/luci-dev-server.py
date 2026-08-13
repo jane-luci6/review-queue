@@ -56,6 +56,23 @@ def _check_pdf_deps():
     return {'chrome': bool(chrome_path), 'pil': has_pil, 'chrome_path': chrome_path}
 
 
+def _load_footer_checker():
+    """Load scripts/check-footers.py via importlib (hyphenated name can't be
+    imported normally). Returns the module or None if unavailable."""
+    import importlib.util
+    for cand in (ROOT / 'scripts' / 'check-footers.py',
+                 SCRIPT_DIR.parent.parent.parent / 'scripts' / 'check-footers.py'):
+        if cand.is_file():
+            try:
+                spec = importlib.util.spec_from_file_location('luci_check_footers', str(cand))
+                mod = importlib.util.module_from_spec(spec)
+                spec.loader.exec_module(mod)
+                return mod
+            except Exception:
+                return None
+    return None
+
+
 # PDF filename convention: "<ClientName>-<DocType> <M+D+YY>.pdf"
 # e.g. "Elwha River Casino-Proposal-LUCI-Retrofit 81326" (Aug 13 '26).
 # Longest doc-type slug first so "proposal-luci-retrofit" wins over "proposal".
@@ -314,6 +331,24 @@ class LUCIDevHandler(http.server.SimpleHTTPRequestHandler):
                          'Install Google Chrome to generate PDFs.'
             })
             return
+
+        # PDF gate: refuse to render a deliverable with missing/mangled page
+        # numbers. The edit-bar "Download PDF" button surfaces this error to the
+        # agent; fix with `python3 scripts/check-footers.py <path> --fix`, retry.
+        checker = _load_footer_checker()
+        if checker is not None:
+            try:
+                issues = checker.check(html_path.read_text(encoding='utf-8', errors='replace'), quiet=True)
+            except Exception:
+                issues = []
+            if issues:
+                self._json(422, {
+                    'error': 'Footer integrity check failed — page numbers missing or mangled. '
+                             'Fix before exporting the PDF.',
+                    'footerIssues': issues,
+                    'hint': 'Run: python3 scripts/check-footers.py <path> --fix, then re-export.'
+                })
+                return
 
         # Write PDF beside a temp dir so we never leave export debris in sales/.
         out_name = _pdf_display_name(html_path)

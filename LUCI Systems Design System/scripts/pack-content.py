@@ -27,6 +27,45 @@ PAGE_HEIGHT = 1056
 PAGE_OVERHEAD = 240
 CONTENT_BUDGET = PAGE_HEIGHT - PAGE_OVERHEAD
 
+# Footer page-number patterns (kept in sync with scripts/check-footers.py).
+_PAGE_PATTERN = re.compile(
+    r'<!-- PAGE[^>]*-->\s*\n\s*<section class="doc-page[^>]*>.*?</section>', re.S)
+_FOOTER_PATTERN = re.compile(
+    r'<span class="doc-foot__page(?:\s+doc-edit)?"\s*(?:contenteditable="true"\s*)?>(\d+)</span>')
+_MANGLE_TELLS = ('<span cla<span', 'div&gt;', '<span=""', 'class=doc-foot')
+
+
+def verify_footers(html):
+    """Return a list of footer-integrity issues in the packed HTML.
+
+    Run after every --write so a broken renumber is caught immediately, not
+    in the PDF. Mirrors scripts/check-footers.py — kept inline here because
+    Python can't import a hyphenated module name.
+    """
+    issues = []
+    pages = list(_PAGE_PATTERN.finditer(html))
+    if not pages:
+        return ["no .doc-page sections found"]
+    expected = 2  # page 1 is the cover (no footer); numbering starts at 02
+    for idx, m in enumerate(pages, 1):
+        block = m.group(0)
+        comment = block.split('-->', 1)[0] + '-->'
+        if any(tell in block for tell in _MANGLE_TELLS):
+            issues.append(f"page {idx}: mangled footer markup ({comment.strip()})")
+        fm = _FOOTER_PATTERN.search(block)
+        if fm is None:
+            if idx == 1:
+                continue  # cover has no footer by design
+            issues.append(f"page {idx}: missing .doc-foot__page number ({comment.strip()})")
+        else:
+            n = int(fm.group(1))
+            if n != expected:
+                issues.append(
+                    f"page {idx}: footer says '{n:02d}' but expected '{expected:02d}' "
+                    f"({comment.strip()})")
+            expected += 1
+    return issues
+
 def find_chrome():
     for c in ["/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
              "/Applications/Chromium.app/Contents/MacOS/Chromium",
@@ -357,6 +396,16 @@ def main():
         print(f"\nWrote repacked HTML to {html_path}")
         print(f"  Pages {args.start_page}-{args.end_page} replaced with {len(pages)} packed pages.")
         print(f"  Footers + comments renumbered.")
+        # Auto footer-integrity check — catches a broken renumber before it
+        # reaches the PDF. Run check-footers.py --fix if this flags anything.
+        issues = verify_footers(result)
+        if issues:
+            print(f"\n⚠ FOOTER INTEGRITY CHECK FAILED ({len(issues)} issue(s)):")
+            for i in issues:
+                print(f"  - {i}")
+            print("  Run: python3 scripts/check-footers.py <html> --fix")
+        else:
+            print("  ✓ footer integrity check passed.")
         print(f"  Run fit-check.py to verify, then hard-refresh the preview.")
     else:
         print(f"\nPreview (first 500 chars of new page HTML):")

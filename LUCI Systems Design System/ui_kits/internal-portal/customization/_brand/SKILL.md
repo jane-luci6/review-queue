@@ -133,7 +133,11 @@ python3 scripts/pack-content.py clients/<client>-<doc>.html --mode sow \
 
 The script measures each element's rendered height via headless Chrome, greedily packs into 1056px pages, handles "(continued)" titles, applies the totals exception, and renumbers all footers + page comments. **Do not write your own packing algorithm** — the script handles the height measurement, the budget calibration, the group-label merging, and the splicing. Just call it, then run `fit-check.py` to verify.
 
-**After packing (and after any edit-bar Save), run the footer-integrity check** — `python3 scripts/check-footers.py clients/<client>-<doc>.html`. It catches the "little details" that string-transform passes can silently drop or mangle: a page missing its `.doc-foot__page` number, a duplicated/out-of-sequence number, or mangled footer markup. It exits non-zero if anything is off; add `--fix` to renumber + repair in place. This is what keeps page numbers from disappearing on a re-pack.
+**Footer integrity is now automated — you don't run the check by hand unless something flags it.** Two gates catch missing/mangled page numbers without anyone remembering:
+- **`pack-content.py --write`** runs a footer-integrity check on the repacked HTML immediately after writing. It prints `✓ footer integrity check passed` or `⚠ FOOTER INTEGRITY CHECK FAILED` with the exact page list. If it flags, run `python3 scripts/check-footers.py <html> --fix` to repair + resequence, then re-export.
+- **The dev server `/__pdf` endpoint refuses to render a PDF with broken footers** — it returns HTTP 422 with the `footerIssues` list and the same `--fix` hint instead of shipping a deliverable with missing page numbers. So a broken-footers PDF can't leave the studio.
+
+`check-footers.py` is now the **repair tool** (run `--fix` when either gate flags), not a step you run after every pack. It still works as a manual auditor (`python3 scripts/check-footers.py <html>`) if you want a standalone check.
 
 **Packing rules (enforced by the script):**
 
