@@ -1,15 +1,19 @@
 ---
 description: >-
   When the user pastes an Internal Marketing Portal document URL (10.10.1.17:8081)
-  or asks to customize a LUCI sales doc from the portal — regardless of which
+  or asks to customize a LUCI doc from the portal — regardless of which
   folder or file is open. Read skills from OneDrive, customize, then automatically
-  open the rendered client HTML in Cursor's in-editor browser for click-to-edit.
+  open the rendered client doc in Cursor's in-editor browser. Most templates
+  are HTML (click-to-edit → PDF); the MPSA is Word (.docx) (fill blanks →
+  read-only preview → .docx export) — see the per-template SKILL.md for which.
 alwaysApply: true
 ---
 
 # LUCI portal document URL → Cursor (folder-agnostic)
 
 Mike pastes a portal preview URL into Cursor chat, or just names the document type and client. **No specific folder needs to be open.**
+
+**Two pipelines — HTML and Word.** Most studio templates are **HTML** (click-to-edit preview → PDF export); the steps below are written for those. The **MPSA** (and future legal docs) are **Word (`.docx`)**: the agent fills blanks with `scripts/fill-mpsa.py`, the dev server renders a **read-only** preview, and the deliverable is the native `.docx` (Download .docx) — no click-to-edit, no `fit-check.py`, no `pack-content.py`, no `render-pdf.sh`. The per-template `SKILL.md` (step 1) names which pipeline and the blank map; follow it. Don't run the HTML tools on a `.docx`.
 
 ## On every portal customization request
 
@@ -19,11 +23,11 @@ Mike pastes a portal preview URL into Cursor chat, or just names the document ty
    - The working HTML file (created by step 2 below) is a copy of the master template — you read and edit that, not the master.
    - **Do not** read other **instruction** files (CURSOR.md, AGENTS.md, README.md). The 2 SKILL files tell you everything you need.
 
-2. **Create a client workspace:** `scripts/create-client-workspace.sh "<Client Name>" <template-name> <doc-type>` — creates `~/Desktop/LUCI Docs/<client-name>/` with symlinks to OneDrive and copies the master template to `clients/<client-name>-<doc>.html`. This working HTML file is the **only** HTML file you read and edit.
+2. **Create a client workspace:** `scripts/create-client-workspace.sh "<Client Name>" <template-name> <doc-type>` — creates `~/Desktop/LUCI Docs/<client-name>/` with symlinks to OneDrive and copies the master template to `clients/<client-name>-<doc>.html`. This working HTML file is the **only** HTML file you read and edit. *(For a `.docx` template, the working file is `clients/<client-name>-<doc>.docx` — the script detects the `.docx` master and copies it verbatim.)*
 
-3. **Customize** the working HTML file per the 2 SKILL.md files. Populate-in-place; never rebuild. Edit by selector; never rewrite sections. Run the mandatory fit check after content edits (see `_brand/SKILL.md`).
+3. **Customize** the working HTML file per the 2 SKILL.md files. Populate-in-place; never rebuild. Edit by selector; never rewrite sections. Run the mandatory fit check after content edits (see `_brand/SKILL.md`). *(For a `.docx` template, "customize" = fill the blanks with `scripts/fill-mpsa.py` from Mike's proposal — not edit-by-selector. No fit check, no page packing, no PDF render — those are HTML/PDF-only.)*
 
-4. **Open the rendered preview** in Cursor's in-editor browser at `http://127.0.0.1:8771/clients/<client-name>-<doc>.html` (see `_brand/SKILL.md` → "Open the rendered preview"). Do not use a `file://` URI.
+4. **Open the rendered preview** in Cursor's in-editor browser at `http://127.0.0.1:8771/clients/<client-name>-<doc>.html` (see `_brand/SKILL.md` → "Open the rendered preview"). Do not use a `file://` URI. *(For a `.docx` template, the preview is `…/<client-name>-<doc>.docx` — rendered as read-only HTML by the dev server; use the Download .docx button for the raw Word file.)*
 
 ## URL patterns → template id
 
@@ -36,6 +40,7 @@ Mike pastes a portal preview URL into Cursor chat, or just names the document ty
 | `proposal-luci-retrofit` | `proposal-luci-retrofit` |
 | `proposal-upgrade` | `proposal-upgrade` |
 | `budgetary-estimate` | `budgetary-estimate` |
+| `mpsa` | `mpsa-vendor-protective` (portal card: **MPSA - Vendor Protective**) |
 
 Portal base: `http://10.10.1.17:8081/internal-portal/customization/`
 

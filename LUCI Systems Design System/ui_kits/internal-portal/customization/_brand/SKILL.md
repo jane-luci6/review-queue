@@ -1,9 +1,9 @@
 ---
 name: luci-brand
 description: >-
-  LUCI brand guardrails for customizing sales documents. Apply whenever editing
-  capabilities documents, scope of work, budgetary estimates, or other LUCI
-  marketing HTML templates.
+  LUCI brand guardrails for customizing sales and legal documents. Apply
+  whenever editing capabilities documents, scope of work, budgetary estimates,
+  the MPSA, or other LUCI templates (HTML and Word).
 ---
 
 # LUCI brand — document customization
@@ -16,7 +16,9 @@ Shared rules for all LUCI sales document customization. Read the template-specif
 
 This is a **populate-in-place** job, not a rebuild. Never regenerate the document from scratch. Locked regions must come through **byte-identical**. The master template already has the layout, CSS, textures, fonts, and locked copy — your job is to stamp client values into the existing file.
 
-**House-wide (every Customization Studio document):** Mike can click and type **any text**. Fonts, colors, and layout stay on CSS classes — change words only. Only LUCI logo images stay non-editable. Efficiency rules below apply to **every** template (Proposal - LED, Budgetary estimate, Scope of work, Capabilities, Sales deck, and future Proposal - LUCI Retrofit / Proposal - Upgrade).
+**House-wide (every Customization studio document):** Mike can click and type **any text**. Fonts, colors, and layout stay on CSS classes — change words only. Only LUCI logo images stay non-editable. Efficiency rules below apply to **every** template (Proposal - LED, Budgetary estimate, Scope of work, Capabilities, Sales deck, and future Proposal - LUCI Retrofit / Proposal - Upgrade).
+
+**Two pipelines — HTML and Word.** Most studio templates are **HTML** (click-to-edit preview → PDF export). The MPSA (and future legal docs) are **Word (`.docx`)**: the agent fills blanks from Mike's proposal with `scripts/fill-mpsa.py`, the dev server renders a **read-only** HTML preview (mammoth), and the deliverable is the native `.docx` (Download .docx). The HTML-specific steps below — click-to-edit, `fit-check.py`, `pack-content.py`, `render-pdf.sh`, footer renumbering — apply **only to HTML templates**. For a `.docx` template, follow the per-template `SKILL.md` (it names the pipeline and the blank map); do not run the HTML tools on a `.docx`.
 
 Burning millions of tokens on discovery, rebuilds, accessibility snapshots, or rewriting whole `<section>`s is a failure mode. Parse the request → touch only what changed → verify.
 
