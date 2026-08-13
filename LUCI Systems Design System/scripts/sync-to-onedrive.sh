@@ -32,6 +32,7 @@ echo "Copying master templates + CSS..."
 for f in proposal.html proposal-luci-retrofit.html proposal-upgrade.html \
          budgetary-estimate.html capabilities-document.html scope-of-work.html \
          sales-deck.html _template-sales-document.html \
+         mpsa-vendor-protective.docx \
          sales-document.css capabilities-document.css brochure.css \
          budgetary-estimate.css proposal.css scope-of-work.css \
          sales-deck.css field-activation-guide-print.css; do
@@ -71,7 +72,8 @@ echo ""
 echo "Copying scripts..."
 for f in render-pdf.sh prepare-client-doc.sh patch-sales-pdf-html.py prepare-sales-pdf-assets.py \
          create-client-workspace.sh post-commit-sync-onedrive.sh sync-to-onedrive.sh \
-         fit-check.py pack-content.py ingest-budgetary-lineitems.py check-footers.py; do
+         fit-check.py pack-content.py ingest-budgetary-lineitems.py check-footers.py \
+         build-mpsa-master.py fill-mpsa.py; do
   cp "$SRC/scripts/$f" "$DEST/scripts/" 2>/dev/null && echo "  $f"
 done
 

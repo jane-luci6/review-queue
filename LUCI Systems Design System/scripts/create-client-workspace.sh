@@ -56,12 +56,25 @@ if [ -z "$ONEDRIVE" ]; then
   exit 1
 fi
 
-# Template source in OneDrive
-TEMPLATE="$ONEDRIVE/ui_kits/sales/${TEMPLATE_NAME}.html"
-if [ ! -f "$TEMPLATE" ]; then
-  echo "Error: Template not found: $TEMPLATE" >&2
+# Template source in OneDrive. Word (.docx) masters take precedence over .html
+# masters of the same name — the MPSA and other legal docs are .docx, while the
+# sales/proposal/SOW templates are .html.
+TEMPLATE_DIR="$ONEDRIVE/ui_kits/sales"
+TEMPLATE=""
+TEMPLATE_EXT=""
+for ext in docx html; do
+  cand="$TEMPLATE_DIR/${TEMPLATE_NAME}.${ext}"
+  if [ -f "$cand" ]; then
+    TEMPLATE="$cand"
+    TEMPLATE_EXT="$ext"
+    break
+  fi
+done
+if [ -z "$TEMPLATE" ]; then
+  echo "Error: Template not found: $TEMPLATE_DIR/${TEMPLATE_NAME}.<docx|html>" >&2
   echo "Available templates:" >&2
-  ls "$ONEDRIVE/ui_kits/sales/"*.html 2>/dev/null | sed 's|.*/||;s|\.html||' | sed 's/^/  /' >&2
+  ls "$TEMPLATE_DIR"/*.html "$TEMPLATE_DIR"/*.docx 2>/dev/null \
+    | sed 's|.*/||;s|\.\(html\|docx\)$||' | sort -u | sed 's/^/  /' >&2
   exit 1
 fi
 
@@ -77,32 +90,48 @@ ln -sfn "$ONEDRIVE/scripts" "$WORKSPACE/scripts"
 # Copy the master template to the working folder and adjust paths.
 # Do this inline (not via prepare-client-doc.sh) because prepare-client-doc.sh
 # resolves paths relative to its own location (OneDrive), not the workspace.
-CLIENT_FILE="${CLIENT_SLUG}-${DOC_TYPE}.html"
+# .docx masters are copied verbatim — their asset refs live inside the zip,
+# so the HTML path-rewriting sed below does not apply.
+CLIENT_FILE="${CLIENT_SLUG}-${DOC_TYPE}.${TEMPLATE_EXT}"
 WORKING_FILE="$WORKSPACE/clients/$CLIENT_FILE"
 
 cp "$TEMPLATE" "$WORKING_FILE"
-sed -i '' \
-  -e 's|href="sales-document\.css|href="../ui_kits/sales/sales-document.css|g' \
-  -e 's|href="capabilities-document\.css|href="../ui_kits/sales/capabilities-document.css|g' \
-  -e 's|href="brochure\.css|href="../ui_kits/sales/brochure.css|g' \
-  -e 's|href="budgetary-estimate\.css|href="../ui_kits/sales/budgetary-estimate.css|g' \
-  -e 's|href="proposal\.css|href="../ui_kits/sales/proposal.css|g' \
-  -e 's|href="scope-of-work\.css|href="../ui_kits/sales/scope-of-work.css|g' \
-  -e 's|href="sales-deck\.css|href="../ui_kits/sales/sales-deck.css|g' \
-  -e 's|href="led-upgrade\.css|href="../ui_kits/sales/led-upgrade.css|g' \
-  -e 's|href="field-activation-guide-print\.css|href="../ui_kits/sales/field-activation-guide-print.css|g' \
-  -e 's|src="assets/|src="../ui_kits/sales/assets/|g' \
-  -e "s|url('../../assets/|url('../assets/|g" \
-  -e 's|../../assets/|../assets/|g' \
-  -e 's|../../index\.html|../index.html|g' \
-  "$WORKING_FILE"
+
+if [ "$TEMPLATE_EXT" = "html" ]; then
+  sed -i '' \
+    -e 's|href="sales-document\.css|href="../ui_kits/sales/sales-document.css|g' \
+    -e 's|href="capabilities-document\.css|href="../ui_kits/sales/capabilities-document.css|g' \
+    -e 's|href="brochure\.css|href="../ui_kits/sales/brochure.css|g' \
+    -e 's|href="budgetary-estimate\.css|href="../ui_kits/sales/budgetary-estimate.css|g' \
+    -e 's|href="proposal\.css|href="../ui_kits/sales/proposal.css|g' \
+    -e 's|href="scope-of-work\.css|href="../ui_kits/sales/scope-of-work.css|g' \
+    -e 's|href="sales-deck\.css|href="../ui_kits/sales/sales-deck.css|g' \
+    -e 's|href="led-upgrade\.css|href="../ui_kits/sales/led-upgrade.css|g' \
+    -e 's|href="field-activation-guide-print\.css|href="../ui_kits/sales/field-activation-guide-print.css|g' \
+    -e 's|src="assets/|src="../ui_kits/sales/assets/|g' \
+    -e "s|url('../../assets/|url('../assets/|g" \
+    -e 's|../../assets/|../assets/|g' \
+    -e 's|../../index\.html|../index.html|g' \
+    "$WORKING_FILE"
+fi
 
 echo "Created workspace: $WORKSPACE"
 echo "  Client file:  clients/$CLIENT_FILE"
 echo "  Full path:    $WORKING_FILE"
 echo ""
+if [ "$TEMPLATE_EXT" = "docx" ]; then
+  echo "To fill the blanks from Mike's proposal:"
+  echo "  python3 scripts/fill-mpsa.py --out \"$WORKING_FILE\" --client \"...\" --effective-date \"...\" \\"
+  echo "    --client-entity \"...\" --client-address \"...\" --facility \"...\" --notice-address \"...\" \\"
+  echo "    --luci-signer \"...\" --luci-title \"...\" --customer-signer \"...\" --customer-title \"...\""
+  echo "  (see ui_kits/internal-portal/customization/mpsa/SKILL.md for the blank map)"
+  echo ""
+fi
 echo "To start the dev server:"
 echo "  cd \"$WORKSPACE\" && python3 ui_kits/internal-portal/customization/luci-dev-server.py"
 echo ""
 echo "Preview URL:"
 echo "  http://127.0.0.1:8771/clients/$CLIENT_FILE"
+if [ "$TEMPLATE_EXT" = "docx" ]; then
+  echo "  (.docx is rendered as an HTML preview; add ?download=1 for the raw Word file)"
+fi

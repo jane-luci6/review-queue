@@ -29,8 +29,8 @@ PORT = 8771
 ROOT = Path.cwd().resolve()
 SCRIPT_DIR = Path(__file__).resolve().parent
 # Bump when endpoints/behavior change — edit bar checks GET /__health.
-SERVER_VERSION = 3
-SERVER_FEATURES = ('save', 'pdf')
+SERVER_VERSION = 4
+SERVER_FEATURES = ('save', 'pdf', 'docx')
 
 
 def _check_pdf_deps():
@@ -133,6 +133,73 @@ def _pdf_display_name(html_path):
     return f"{client_name}-{doc_type} {date_str}.pdf"
 
 
+def _docx_preview_styles():
+    return """
+  *{box-sizing:border-box}
+  body{margin:0;background:#e9eef1;font-family:-apple-system,system-ui,sans-serif;color:#1a1a1a}
+  .luci-docx-toolbar{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:14px;
+    padding:10px 18px;background:#0A161C;color:#F5F8FA;border-bottom:1px solid rgba(104,227,190,.25)}
+  .luci-docx-toolbar .ttl{font:600 13px/1 'Space Grotesk',system-ui,sans-serif;letter-spacing:.02em}
+  .luci-docx-toolbar .sub{font:400 12px/1 'Inter',system-ui,sans-serif;color:#9fb4bd}
+  .luci-docx-toolbar a.dl{margin-left:auto;padding:7px 14px;border-radius:9999px;background:#68E3BE;color:#0A161C;
+    font:600 12px/1 'Space Grotesk',system-ui,sans-serif;text-decoration:none;letter-spacing:.02em}
+  .luci-docx-toolbar a.dl:hover{filter:brightness(1.05)}
+  .luci-docx-page{max-width:8.5in;margin:28px auto;background:#fff;padding:.9in .95in;
+    box-shadow:0 24px 48px rgba(0,0,0,.18);min-height:11in;font:11pt/1.5 'Calibri','Helvetica Neue',Arial,sans-serif}
+  .luci-docx-page h1{font-size:18pt;margin:.3em 0 .5em}
+  .luci-docx-page h2{font-size:13pt;margin:1.1em 0 .35em}
+  .luci-docx-page h3{font-size:11.5pt;margin:1em 0 .3em}
+  .luci-docx-page p{margin:0 0 .65em}
+  .luci-docx-page table{border-collapse:collapse;width:100%;margin:.5em 0;font-size:10pt}
+  .luci-docx-page th,.luci-docx-page td{border:1px solid #c9d2d7;padding:5px 8px;vertical-align:top}
+  .luci-docx-page th{background:#f0f4f6;font-weight:600}
+  .luci-docx-page ul,.luci-docx-page ol{margin:0 0 .65em;padding-left:1.4em}
+  .luci-docx-note{margin:0 0 1em;padding:8px 12px;background:#f4f9f6;border-left:3px solid #2b9e80;
+    font:10.5pt/1.45 'Inter',system-ui,sans-serif;color:#354f5c}
+"""
+
+
+def _render_docx_html(fs_path):
+    """Convert a .docx to a styled HTML preview page (mammoth) with a
+    Download-.docx toolbar. Returns HTML bytes, or an error page on failure."""
+    try:
+        import mammoth
+    except ImportError:
+        return ('<p style="font:14px system-ui;padding:24px;color:#a00">'
+                'mammoth is not installed. Run: pip3 install mammoth</p>').encode('utf-8')
+    try:
+        with open(str(fs_path), 'rb') as fh:
+            result = mammoth.convert_to_html(fh)
+        body_html = result.value
+    except Exception as e:
+        return ('<p style="font:14px system-ui;padding:24px;color:#a00">'
+                'Could not read this .docx: %s</p>' % e).encode('utf-8')
+
+    name = fs_path.name
+    try:
+        rel = fs_path.relative_to(ROOT)
+    except ValueError:
+        rel = Path(name)
+    download_href = '/' + str(rel).replace('\\', '/') + '?download=1'
+    note = ('This is a read-only preview of the Word document. Header, footer, and the LUCI '
+            'logo render in Microsoft Word. To edit text, use Download .docx and open in Word.')
+    html = (
+        '<!doctype html><html><head><meta charset="utf-8">'
+        '<meta name="viewport" content="width=device-width,initial-scale=1">'
+        '<title>%s — preview</title><style>%s</style></head><body>'
+        '<div class="luci-docx-toolbar">'
+        '<span class="ttl">MPSA preview</span>'
+        '<span class="sub">%s</span>'
+        '<a class="dl" href="%s" download>Download .docx</a>'
+        '</div>'
+        '<div class="luci-docx-page">'
+        '<div class="luci-docx-note">%s</div>'
+        '%s'
+        '</div></body></html>'
+    ) % (name, _docx_preview_styles(), name, download_href, note, body_html)
+    return html.encode('utf-8')
+
+
 class LUCIDevHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=str(ROOT), **kwargs)
@@ -202,6 +269,34 @@ class LUCIDevHandler(http.server.SimpleHTTPRequestHandler):
                 self.send_error(500, str(e))
                 return
             body = self._inject_edit_bar(html).encode('utf-8')
+            self.send_response(200)
+            self.send_header('Content-Type', 'text/html; charset=utf-8')
+            self.send_header('Content-Length', str(len(body)))
+            self.send_header('Cache-Control', 'no-cache, must-revalidate')
+            self.end_headers()
+            self.wfile.write(body)
+            return
+
+        # Word documents: render a read-only HTML preview (mammoth) so the
+        # agent/Mike can view the .docx in Cursor's in-editor browser. A
+        # ?download=1 request serves the raw .docx (the toolbar's Download
+        # button uses this) — the preview itself is view-only; text edits
+        # happen in Word after export.
+        if fs_path.is_file() and fs_path.suffix.lower() == '.docx':
+            query = self.path.split('?', 1)[1] if '?' in self.path else ''
+            if 'download=1' in query:
+                data = fs_path.read_bytes()
+                self.send_response(200)
+                self.send_header('Content-Type',
+                                 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+                self.send_header('Content-Disposition',
+                                 'attachment; filename="%s"' % fs_path.name)
+                self.send_header('Content-Length', str(len(data)))
+                self.send_header('Cache-Control', 'no-store')
+                self.end_headers()
+                self.wfile.write(data)
+                return
+            body = _render_docx_html(fs_path)
             self.send_response(200)
             self.send_header('Content-Type', 'text/html; charset=utf-8')
             self.send_header('Content-Length', str(len(body)))
@@ -426,6 +521,7 @@ def main():
     print('  Health:        GET  /__health')
     print('  Save endpoint: POST /__save')
     print('  PDF endpoint:  POST /__pdf  (headless Chrome — safe in Cursor)')
+    print('  Word preview:  GET  /clients/<file>.docx  (mammoth HTML render; ?download=1 for raw)')
     print('  Ctrl+C to stop.')
     try:
         server.serve_forever()

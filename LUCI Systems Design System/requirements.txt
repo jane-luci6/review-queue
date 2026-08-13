@@ -6,3 +6,9 @@
 
 Pillow>=10.0.0
 numpy>=1.24.0
+
+# Word (.docx) document pipeline — MPSA customization + preview.
+# python-docx fills blanks / adds headers in the master .docx; mammoth
+# renders the filled .docx to HTML for the in-Cursor preview.
+python-docx>=1.1.0
+mammoth>=1.5.0

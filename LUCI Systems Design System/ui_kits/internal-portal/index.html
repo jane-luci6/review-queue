@@ -784,6 +784,38 @@
       color: var(--mint-dark);
       font-weight: 600;
     }
+    .cursor-thumb__frame--docx {
+      width: 188px;
+      height: 244px;
+      border: 1px solid var(--rule);
+      background: linear-gradient(160deg, #f4f9f6 0%, #ffffff 70%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 18px;
+      text-align: center;
+      box-shadow: 0 4px 16px rgba(10, 22, 28, 0.08);
+    }
+    .cursor-thumb__docx-badge {
+      font: 700 11px/1 'Space Grotesk', system-ui, sans-serif;
+      letter-spacing: 0.18em;
+      color: #fff;
+      background: var(--navy-deep, #0A161C);
+      padding: 6px 12px;
+      border-radius: 6px;
+    }
+    .cursor-thumb__docx-text {
+      font: 400 12px/1.4 'Inter', system-ui, sans-serif;
+      color: var(--muted);
+      margin: 0;
+    }
+    .cursor-card__docx-note {
+      font: 400 12px/1 'Inter', system-ui, sans-serif;
+      color: var(--muted);
+      align-self: center;
+    }
 
     /* ---------- Doc picker (scales to many templates) ---------- */
     .doc-picker { position: relative; margin-bottom: 18px; }
@@ -1487,6 +1519,18 @@
         clientSuffix: 'proposal-upgrade',
         skillPath: 'ui_kits/internal-portal/customization/proposal-upgrade/SKILL.md',
       },
+      {
+        id: 'mpsa',
+        title: 'MPSA - Vendor Protective',
+        status: 'ready',
+        statusLabel: 'Ready',
+        description: 'Master Purchase & Services Agreement (Word .docx). Fill the blanks from Mike\'s proposal; preview in Cursor; export .docx. Legal boilerplate locked; header/footer built into the master.',
+        folder: 'mpsa',
+        html: '',
+        masterFile: 'mpsa-vendor-protective.docx',
+        clientSuffix: 'mpsa',
+        skillPath: 'ui_kits/internal-portal/customization/mpsa/SKILL.md',
+      },
     ];
 
     function portalDocUrl(t) {
@@ -1494,8 +1538,42 @@
     }
 
     function starterPromptForTemplate(t) {
-      var templateName = t.masterFile.replace(/\.html$/, '');
+      var isDocx = /\.docx$/i.test(t.masterFile);
+      var templateName = t.masterFile.replace(/\.(html|docx)$/i, '');
       var od = 'OneDrive "Cursor Branding Files" folder';
+      if (isDocx) {
+        return [
+          'Customize the LUCI ' + t.title + ' for [CLIENT NAME].',
+          '',
+          'Read ONLY these 2 SKILL files for instructions (in the ' + od + '):',
+          '- ' + od + '/ui_kits/internal-portal/customization/_brand/SKILL.md',
+          '- ' + od + '/ui_kits/internal-portal/customization/' + t.folder + '/SKILL.md',
+          '',
+          'This is a WORD (.docx) template, not an HTML template. The agent',
+          'fills the blanks from Mike\'s uploaded proposal; the legal boilerplate',
+          'is locked. There is no fit-check / pack-content / render-pdf step —',
+          'those are HTML/PDF-only. The deliverable is the native .docx.',
+          '',
+          'Create a client workspace (the script detects the .docx master):',
+          '  scripts/create-client-workspace.sh "[CLIENT NAME]" ' + templateName + ' ' + t.clientSuffix,
+          '  → ~/Desktop/LUCI Docs/[client-name]/clients/[client-name]-' + t.clientSuffix + '.docx',
+          '',
+          'Fill the blanks from Mike\'s proposal (see the template SKILL.md blank map):',
+          '  python3 scripts/fill-mpsa.py --out <working .docx> \\',
+          '    --client "..." --client-entity "..." --client-address "..." \\',
+          '    --facility "..." --notice-address "..." --effective-date "..." \\',
+          '    --luci-signer "..." --luci-title "..." --customer-signer "..." --customer-title "..."',
+          '',
+          'Preview in Cursor (dev server renders the .docx as read-only HTML):',
+          '  cd ~/Desktop/LUCI\\ Docs/[client-name] && python3 ui_kits/internal-portal/customization/luci-dev-server.py',
+          '  http://127.0.0.1:8771/clients/[client-name]-' + t.clientSuffix + '.docx',
+          '  Download .docx from the toolbar (or add ?download=1 for the raw Word file).',
+          '',
+          'Client notes:',
+          '[customer legal name + entity type (no leading "a"), address, facility,',
+          ' notice address, signers, effective date — from Mike\'s proposal]'
+        ].join('\n');
+      }
       return [
         'Customize the LUCI ' + t.title + ' for [CLIENT NAME].',
         '',
@@ -2545,6 +2623,32 @@
         const remotePath = REMOTE_CUSTOMIZATION_ROOT + '/' + t.folder + '/';
         const cursorUri = cursorRemoteFolderUri(remotePath);
         const docUrl = portalDocUrl(t);
+        const isDocx = /\.docx$/i.test(t.masterFile);
+        const actionsHtml = isDocx
+          ? `<button type="button" class="cursor-copy cursor-copy--prompt" data-template-id="${t.id}">Copy starter prompt</button>
+             <span class="cursor-card__docx-note">Word .docx — fill blanks locally, preview via dev server</span>`
+          : `<a class="cursor-thumb-link" href="${t.html}" target="_blank" rel="noopener">Open preview</a>
+             <button type="button" class="cursor-copy" data-copy-url="${docUrl}">Copy doc URL</button>
+             <button type="button" class="cursor-copy cursor-copy--prompt" data-template-id="${t.id}">Copy starter prompt</button>`;
+        const urlRowHtml = isDocx
+          ? ``
+          : `<code class="cursor-url" title="Click to copy URL" role="button" tabindex="0" data-copy-url="${docUrl}">${docUrl}</code>`;
+        const thumbHtml = isDocx
+          ? `<div class="cursor-card__thumb">
+               <div class="cursor-thumb__frame cursor-thumb__frame--docx">
+                 <span class="cursor-thumb__docx-badge">DOCX</span>
+                 <p class="cursor-thumb__docx-text">Word document<br>preview renders via the local dev server</p>
+               </div>
+               <p class="cursor-thumb__label"><strong>Master template</strong>Fill blanks → preview → download .docx</p>
+             </div>`
+          : `<div class="cursor-card__thumb">
+               <a class="cursor-thumb" href="${t.html}" target="_blank" rel="noopener" title="Open full preview — ${t.title}">
+                 <div class="cursor-thumb__frame">
+                   <iframe src="${previewWithCacheBust(t.html, t.id)}" title="${t.title} cover reference" loading="lazy" tabindex="-1"></iframe>
+                 </div>
+               </a>
+               <p class="cursor-thumb__label"><strong>Cover reference</strong>Click to open full doc</p>
+             </div>`;
         return `
           <article class="cursor-card" data-template-id="${t.id}">
             <div class="cursor-card__main">
@@ -2554,25 +2658,16 @@
               </div>
               <p>${t.description}</p>
               <div class="cursor-card__actions">
-                <a class="cursor-thumb-link" href="${t.html}" target="_blank" rel="noopener">Open preview</a>
-                <button type="button" class="cursor-copy" data-copy-url="${docUrl}">Copy doc URL</button>
-                <button type="button" class="cursor-copy cursor-copy--prompt" data-template-id="${t.id}">Copy starter prompt</button>
+                ${actionsHtml}
               </div>
-              <code class="cursor-url" title="Click to copy URL" role="button" tabindex="0" data-copy-url="${docUrl}">${docUrl}</code>
+              ${urlRowHtml}
               <details class="cursor-advanced">
                 <summary>Advanced: Remote-SSH folder</summary>
                 <a class="cursor-open" href="${cursorUri}">Open in Cursor</a>
                 <code class="cursor-path">${remotePath}</code>
               </details>
             </div>
-            <div class="cursor-card__thumb">
-              <a class="cursor-thumb" href="${t.html}" target="_blank" rel="noopener" title="Open full preview — ${t.title}">
-                <div class="cursor-thumb__frame">
-                  <iframe src="${previewWithCacheBust(t.html, t.id)}" title="${t.title} cover reference" loading="lazy" tabindex="-1"></iframe>
-                </div>
-              </a>
-              <p class="cursor-thumb__label"><strong>Cover reference</strong>Click to open full doc</p>
-            </div>
+            ${thumbHtml}
           </article>`;
       }).join('');
 
