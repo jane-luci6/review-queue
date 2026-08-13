@@ -49,7 +49,7 @@ After a capabilities review and demo where the client needs a written proposal w
 ### Variable page counts
 
 - **SOW pages (4–11):** the 8 SOW pages mirror the standalone Scope of Work template. Add or remove SOW continuation pages if the scope requires more or less detail (e.g., fewer IDF pages, additional phasing). Use subheads (`.sow-subsection-title`), not repeated section numbers. The SOW uses `scope-of-work.css` classes — do not mix in `led-*` classes from the LED proposal. **SOW content flows continuously** — sections, subsections, line items, and bullets may break across page boundaries; do not force section-start page breaks or leave large gaps (see `../_brand/SKILL.md` → Continuous page packing).
-- **Line items (page 12):** if the spreadsheet has more rows than fit on one page, the estimate spills onto a continuation page. Add a "continues on the following page" note; the continuation page reuses the same section header but does **not** add a second total.
+- **Line items (page 12):** if the spreadsheet has more rows than fit on one page, run `scripts/pack-content.py --mode lineitems` to repack across pages with continuous flow (see `../_brand/SKILL.md` -> Continuous page packing). The script handles greedy packing, the totals exception, and footer renumbering automatically.
 
 ---
 
@@ -132,7 +132,7 @@ Populate from the uploaded spreadsheet via `scripts/ingest-budgetary-lineitems.p
 
 **Only include rows that are in Mike's spreadsheet.** If the spreadsheet has a Sales Tax row, add it. If it doesn't, don't invent one. Same for freight, travel, or any other row.
 
-**Combine endpoint pricing into one line item.** LUCI OS endpoint licenses must appear as a **single line item** referencing the **total number of endpoints** — never split by video/audio/etc. (See `../_brand/SKILL.md` → Pricing.)
+**Combine endpoint pricing into one line item.** LUCI OS endpoint licenses must appear as a **single line item** with the **total endpoint count as the quantity** and the **per-endpoint price as the cost-ea** (e.g. qty 38 × $420/ea = $15,960) — never split by video/audio/etc. (See `../_brand/SKILL.md` → Pricing.)
 
 ### Investment summary (page 13) — `.doc-page--investment`
 
@@ -178,7 +178,7 @@ Capabilities-doc-style close page (dark, circuit texture, LUCI wordmark logo, Sy
 - **Locked regions** (identity diagram + feature cards on page 2; `.be-delivers` marketing grid on page 13; SOW section numbers `.sow-band-bignum`; LUCI logo on cover; LUCI company info on close) — **no changes of any kind**, including color, styling, or CSS. Run the pre-edit gate in `.cursor/rules/luci-doc-customization.mdc` first.
 - Add endpoint pricing tiers — this is the Proposal, not the Budgetary Estimate. Endpoint pricing stays in the BE.
 - Add a signature block, signature lines, or "accepted by" fields — the close page is a contact block, not a sign-off.
-- Split endpoint pricing into separate video/audio line items — combine into one row with the total endpoint count.
+- Split endpoint pricing into separate video/audio line items — combine into one row with the total endpoint count as the quantity.
 - Add "Addressed to" or similar labels to the cover.
 - Use opaque JPEG client logos on the cover (white box artifact) — use transparent PNG/SVG.
 - Invent hardware specs or pricing not supported by Mike's spreadsheet.
@@ -193,7 +193,7 @@ Capabilities-doc-style close page (dark, circuit texture, LUCI wordmark logo, Sy
 2. Overview (p2): update intro text to reference the specific property and phase.
 3. Review of scope (p3): set scope categories, endpoint counts, and descriptions per the site survey.
 4. SOW pages (p4–11): rewrite the 8 SOW pages to match the project scope — project intent, guiding principles, phasing, system scope (platform, IPTV, encoders, audio, network, remote access), IDF/rack scope, deliverables, assumptions/constraints/exclusions, and open items. Adapt from the standalone SOW template content. **Pack continuously** — sections, subsections, line items, and bullets may break across page boundaries (see `../_brand/SKILL.md` → Continuous page packing).
-5. Line items (p12): populate from Mike's spreadsheet via `ingest-budgetary-lineitems.py`; split to a continuation page if it overflows.
+5. Line items (p12): populate from Mike's spreadsheet via `ingest-budgetary-lineitems.py`; if it overflows, run `scripts/pack-content.py --mode lineitems` to repack across pages.
 6. Investment summary (p13): reconcile totals against the line items.
 7. Payment terms (p14): verify milestone percentages, labels, and due descriptions match the deal terms; update the 30-day validity date reference if needed.
 8. Close (p15): set the next-step body and contact name/email.

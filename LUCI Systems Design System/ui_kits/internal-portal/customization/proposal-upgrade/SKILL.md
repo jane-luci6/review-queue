@@ -96,7 +96,7 @@ Populate from the uploaded spreadsheet via `scripts/ingest-budgetary-lineitems.p
 
 **Only include rows that are in Mike's spreadsheet.** If the spreadsheet has a Sales Tax row, add it. If it doesn't, don't invent one. Same for freight, travel, or any other row.
 
-**Combine endpoint pricing into one line item.** LUCI OS endpoint licenses must appear as a **single line item** referencing the **total number of endpoints** — never split by video/audio/etc. (See `../_brand/SKILL.md` → Pricing.)
+**Combine endpoint pricing into one line item.** LUCI OS endpoint licenses must appear as a **single line item** with the **total endpoint count as the quantity** and the **per-endpoint price as the cost-ea** (e.g. qty 38 × $420/ea = $15,960) — never split by video/audio/etc. (See `../_brand/SKILL.md` → Pricing.)
 
 | Element | Selector / class |
 |---------|-----------------|

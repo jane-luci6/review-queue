@@ -82,21 +82,23 @@ Browser accessibility snapshots return the entire document tree and waste tokens
 
 - `browser_take_screenshot` for visual checks
 - CDP `Runtime.evaluate` for measurement / fit checks
+- **`scripts/fit-check.py`** for the mandatory post-edit fit check (see below)
 
-Pages are locked to fixed US Letter (8.5×11in, 1056px height) with `height: var(--page-h)` and `overflow: hidden` — **on screen and in print**. Pages cannot stretch or shrink beyond the printable area. Overflow **clips silently** (and visibly, on screen) so you catch it during editing, not in the PDF. A fit check is **mandatory** after any content edit:
+Pages are locked to fixed US Letter (8.5×11in, 1056px height) with `height: var(--page-h)` and `overflow: hidden` — **on screen and in print**. Pages cannot stretch or shrink beyond the printable area. Overflow **clips silently** (and visibly, on screen) so you catch it during editing, not in the PDF. A fit check is **mandatory** after any content edit.
 
-```js
-(() => [...document.querySelectorAll('.doc-page')].map((p,i) => {
-  const s = {h:p.style.height, m:p.style.minHeight,
-             o:p.style.overflow, j:p.style.justifyContent};
-  Object.assign(p.style, {height:'auto', minHeight:'0',
-                          overflow:'visible', justifyContent:'flex-start'});
-  const nat = p.getBoundingClientRect().height;
-  Object.assign(p.style, s);
-  const isDesignPage = p.classList.contains('doc-page--cover') || p.classList.contains('doc-page--close');
-  return {page: i+1, over: Math.round(nat - 1056), under: Math.round(1056 - nat), design: isDesignPage};
-}))()
+**Use the committed fit-check script — do not re-derive the measurement:**
+
+```bash
+# If the dev server is running (preferred — CSS/fonts resolve):
+python3 scripts/fit-check.py clients/<client>-<doc>.html --url http://127.0.0.1:8771/clients/<client>-<doc>.html
+
+# If the dev server is not running (file:// fallback):
+python3 scripts/fit-check.py clients/<client>-<doc>.html
 ```
+
+The script temporarily overrides `height`/`overflow` on each `.doc-page` to measure the true natural content height (since `scrollHeight` returns the fixed 1056px), then reports `OVERFLOW (+Npx)` or `UNDERFILL (Npx empty)` per page. Exit code 0 = all fit, 1 = overflow.
+
+**Do not write your own fit-check JS or Python.** The script handles the `scrollHeight`-returns-fixed-height trap, the iframe same-origin issue, and the Chrome headless polling. Just call it.
 
 - **`over > 0`** — content is clipped. **Trim copy or split to a new `.doc-page`** — do not change page height.
 - **`under > 200`** (more than ~200px of empty space at the bottom) — there is empty space. Whether to act depends on what follows:
@@ -110,11 +112,34 @@ Pages are locked to fixed US Letter (8.5×11in, 1056px height) with `height: var
 
 Fill each content page as far as it will go **when the same content stream continues onto the next page**. **Do not invent page breaks between continuing content.** This applies to **Scope of Work** sections and **line-item** tables alike.
 
+**Use the committed packing script — do not re-derive the algorithm:**
+
+```bash
+# SOW mode — element-level packing for .upg-scope blocks (sections break mid-way)
+python3 scripts/pack-content.py clients/<client>-<doc>.html --mode sow \
+    --start-page 3 --end-page 5 \
+    --url http://127.0.0.1:8771/clients/<client>-<doc>.html --dry-run
+
+# Line-items mode — group-level packing for .be-price-group blocks
+python3 scripts/pack-content.py clients/<client>-<doc>.html --mode lineitems \
+    --start-page 6 --end-page 14 \
+    --url http://127.0.0.1:8771/clients/<client>-<doc>.html --dry-run
+
+# Apply (writes the repacked HTML back, renumbers footers + comments):
+python3 scripts/pack-content.py clients/<client>-<doc>.html --mode sow \
+    --start-page 3 --end-page 5 \
+    --url http://127.0.0.1:8771/clients/<client>-<doc>.html --write
+```
+
+The script measures each element's rendered height via headless Chrome, greedily packs into 1056px pages, handles "(continued)" titles, applies the totals exception, and renumbers all footers + page comments. **Do not write your own packing algorithm** — the script handles the height measurement, the budget calibration, the group-label merging, and the splicing. Just call it, then run `fit-check.py` to verify.
+
+**Packing rules (enforced by the script):**
+
 - Pack **greedily** while natural height stays ≤ 1056px. If there is room for another partial section / group / rows from the same content stream, use it.
 - **Sections and groups may break across a page boundary.** Start the next page with a "(continued)" title/label and keep going. Do **not** force a whole section onto the next page just because only 2–3 sections fit on the current one.
-- **SOW continuous flow (locked):** the Scope of Work flows continuously across pages with no forced section-start page breaks. Page breaks may occur **anywhere** — between sections, mid-section (a subsection's body can start on one page and continue on the next), between line items, between bullet points, or mid-subsection. Subsections can cross a page boundary. The only rule: pack greedily, renumber footers, and keep going. Do not strand a section header alone at the bottom of a page with its content on the next — if the header + at least one line of body don't fit, move the header to the next page.
+- **SOW continuous flow (locked):** the Scope of Work flows continuously across pages with no forced section-start page breaks. Page breaks may occur **anywhere** — between sections, mid-section, between line items, between bullet points, or mid-subsection. Do not strand a section header alone at the bottom of a page with its content on the next — if the header + at least one line of body don't fit, move the header to the next page.
 - **End-of-stream pages are exempt:** the totals/investment-summary page (after all line items), the last SOW page (after the last section), and any page that ends a content stream may have empty space at the bottom. That is correct — there is nothing more to pull up. Do not invent content to fill it.
-- After packing, renumber `.doc-foot__page` and page comments sequentially. Drop empty continuation pages.
+- After packing, renumber `.doc-foot__page` and page comments sequentially (the script does this automatically).
 
 **Line items — totals exception:** follow the same greedy packing for all line-item **rows and groups**. Then:
 
@@ -140,7 +165,7 @@ After any pricing / qty / rate edit, reconcile totals. Known trap: a grand total
 
 **The spreadsheet is the source of truth for line-item content** (same fidelity rule as above). Mirror its categories, order, and breakout exactly — do not combine rows, split rows, or invent categories that are not in the spreadsheet. If the spreadsheet has a "Shipping" row, include it; if it doesn't, don't add one. If it has a "Sales Tax" row, include it; if it doesn't, don't invent one. Follow the spreadsheet's group labels and row order; do not reorganize. The only exception is the LUCI OS endpoint combining rule below.
 
-**Combine endpoint pricing into one line item.** LUCI OS endpoint licenses must appear as a **single line item** referencing the **total number of endpoints** — never split out by video, audio, or other sub-categories. If Mike's spreadsheet has them combined, mirror that. If a previous AI run split them into separate video/audio/etc. rows, combine them back into one row with the total endpoint count. The label should match Mike's spreadsheet (e.g. "LUCI OS & Endpoint Licenses" or "LUCI OS — Annual Partnership") — do not invent a different label.
+**Combine endpoint pricing into one line item.** LUCI OS endpoint licenses must appear as a **single line item** with the **total endpoint count as the quantity** and the **per-endpoint price as the cost-ea** (e.g. qty 38 × $420/ea = $15,960) — never split out by video, audio, or other sub-categories. If Mike's spreadsheet has them combined, mirror that. If a previous AI run split them into separate video/audio/etc. rows, combine them back into one row with the total endpoint count as the quantity. The label should match Mike's spreadsheet (e.g. "LUCI OS & Endpoint Licenses" or "LUCI OS — Annual Partnership") — do not invent a different label.
 
 ### 6. Logo + pattern (do not re-break these)
 
@@ -227,6 +252,10 @@ Canonical source: **LUCI Messaging Guide** (`ui_kits/review/messaging/messaging-
 **Use:** orchestration engine, platform, infrastructure · LUCI orchestrates / runs / operates / integrates / consolidates / refines · institutional, operational, embedded, accountable, continuous · LUCI FDE, the embedded team, the standard · "removes variables," "shorter list," "fewer moving parts."
 
 **Retire:** absurdly simple / easy to use / intuitive (consumer register) · revolutionize / transform / empower (empty emotional verbs) · best-in-class / game-changing (pitch-deck language) · owner's rep (use LUCI FDE or embedded team) · *layer* when naming LUCI · any percentage claim in brand-level copy · named clients in public materials.
+
+### Case studies (exception + spine)
+
+Case studies **name the property and operator** — required for the format. Brand voice already leads with subtraction; the **Consolidation you can see** section (verbatim homepage title) makes removals verifiable in 4–6 social-ready rows. **Denominator first:** scope stats before the one-interface claim. **Ship at handoff** with scope counts, not revenue/outcome metrics. Full spec: Messaging Guide → Case studies + `luci-case-studies.mdc`.
 
 ### Tone & voice (from the live website — the way we talk about LUCI)
 

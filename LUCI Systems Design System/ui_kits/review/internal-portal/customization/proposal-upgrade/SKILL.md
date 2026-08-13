@@ -37,8 +37,8 @@ When an existing LUCI client wants to add endpoint licenses, hardware, or profes
 
 ### Variable page counts
 
-- **Scope of work (page 3):** add or remove scope items as needed. Use numbered subheads (`.upg-scope__title`), not repeated section numbers.
-- **Line items (page 4):** if the table has more rows than fit on one page, the estimate spills onto a continuation page. Add a "continues on the following page" note; the continuation page reuses the same section header but does **not** add a second total.
+- **Scope of work (page 3):** add or remove scope items as needed. Use numbered subheads (`.upg-scope__title`), not repeated section numbers. If SOW content overflows, run `scripts/pack-content.py --mode sow` to repack across pages with continuous flow (see `../_brand/SKILL.md` -> Continuous page packing).
+- **Line items (page 4):** if the table has more rows than fit on one page, run `scripts/pack-content.py --mode lineitems` to repack across pages (see `../_brand/SKILL.md` -> Continuous page packing). The script handles greedy packing, the totals exception, and footer renumbering automatically.
 
 ---
 
@@ -96,7 +96,7 @@ Populate from the uploaded spreadsheet via `scripts/ingest-budgetary-lineitems.p
 
 **Only include rows that are in Mike's spreadsheet.** If the spreadsheet has a Sales Tax row, add it. If it doesn't, don't invent one. Same for freight, travel, or any other row.
 
-**Combine endpoint pricing into one line item.** LUCI OS endpoint licenses must appear as a **single line item** referencing the **total number of endpoints** — never split by video/audio/etc. (See `../_brand/SKILL.md` → Pricing.)
+**Combine endpoint pricing into one line item.** LUCI OS endpoint licenses must appear as a **single line item** with the **total endpoint count as the quantity** and the **per-endpoint price as the cost-ea** (e.g. qty 38 × $420/ea = $15,960) — never split by video/audio/etc. (See `../_brand/SKILL.md` → Pricing.)
 
 | Element | Selector / class |
 |---------|-----------------|
@@ -137,6 +137,6 @@ Populate from the uploaded spreadsheet via `scripts/ingest-budgetary-lineitems.p
 1. Cover (p1): set kicker, display `<em>`, sub copy, order summary (project name, date, MSA reference), client logo.
 2. Customer invoice (p2): fill invoice meta rows, invoicing terms, and licensing intro.
 3. Scope of work (p3): rewrite the numbered scope items and assumptions to match the project scope.
-4. Line items (p4): populate from Mike's spreadsheet via `ingest-budgetary-lineitems.py`; split to a continuation page if it overflows.
+4. Line items (p4): populate from Mike's spreadsheet via `ingest-budgetary-lineitems.py`; if it overflows, run `scripts/pack-content.py --mode lineitems` to repack across pages.
 5. Close (p5): update next-step body and contact if needed.
 6. Update `<title>` in `<head>` to reflect client/project name.

@@ -165,7 +165,7 @@ After any pricing / qty / rate edit, reconcile totals. Known trap: a grand total
 
 **The spreadsheet is the source of truth for line-item content** (same fidelity rule as above). Mirror its categories, order, and breakout exactly — do not combine rows, split rows, or invent categories that are not in the spreadsheet. If the spreadsheet has a "Shipping" row, include it; if it doesn't, don't add one. If it has a "Sales Tax" row, include it; if it doesn't, don't invent one. Follow the spreadsheet's group labels and row order; do not reorganize. The only exception is the LUCI OS endpoint combining rule below.
 
-**Combine endpoint pricing into one line item.** LUCI OS endpoint licenses must appear as a **single line item** referencing the **total number of endpoints** — never split out by video, audio, or other sub-categories. If Mike's spreadsheet has them combined, mirror that. If a previous AI run split them into separate video/audio/etc. rows, combine them back into one row with the total endpoint count. The label should match Mike's spreadsheet (e.g. "LUCI OS & Endpoint Licenses" or "LUCI OS — Annual Partnership") — do not invent a different label.
+**Combine endpoint pricing into one line item.** LUCI OS endpoint licenses must appear as a **single line item** with the **total endpoint count as the quantity** and the **per-endpoint price as the cost-ea** (e.g. qty 38 × $420/ea = $15,960) — never split out by video, audio, or other sub-categories. If Mike's spreadsheet has them combined, mirror that. If a previous AI run split them into separate video/audio/etc. rows, combine them back into one row with the total endpoint count as the quantity. The label should match Mike's spreadsheet (e.g. "LUCI OS & Endpoint Licenses" or "LUCI OS — Annual Partnership") — do not invent a different label.
 
 ### 6. Logo + pattern (do not re-break these)
 
@@ -252,6 +252,10 @@ Canonical source: **LUCI Messaging Guide** (`ui_kits/review/messaging/messaging-
 **Use:** orchestration engine, platform, infrastructure · LUCI orchestrates / runs / operates / integrates / consolidates / refines · institutional, operational, embedded, accountable, continuous · LUCI FDE, the embedded team, the standard · "removes variables," "shorter list," "fewer moving parts."
 
 **Retire:** absurdly simple / easy to use / intuitive (consumer register) · revolutionize / transform / empower (empty emotional verbs) · best-in-class / game-changing (pitch-deck language) · owner's rep (use LUCI FDE or embedded team) · *layer* when naming LUCI · any percentage claim in brand-level copy · named clients in public materials.
+
+### Case studies (exception + spine)
+
+Case studies **name the property and operator** — required for the format. Brand voice already leads with subtraction; the **Consolidation you can see** section (verbatim homepage title) makes removals verifiable in 4–6 social-ready rows. **Denominator first:** scope stats before the one-interface claim. **Ship at handoff** with scope counts, not revenue/outcome metrics. Full spec: Messaging Guide → Case studies + `luci-case-studies.mdc`.
 
 ### Tone & voice (from the live website — the way we talk about LUCI)
 

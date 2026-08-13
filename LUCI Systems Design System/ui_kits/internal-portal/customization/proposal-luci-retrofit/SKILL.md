@@ -132,7 +132,7 @@ Populate from the uploaded spreadsheet via `scripts/ingest-budgetary-lineitems.p
 
 **Only include rows that are in Mike's spreadsheet.** If the spreadsheet has a Sales Tax row, add it. If it doesn't, don't invent one. Same for freight, travel, or any other row.
 
-**Combine endpoint pricing into one line item.** LUCI OS endpoint licenses must appear as a **single line item** referencing the **total number of endpoints** — never split by video/audio/etc. (See `../_brand/SKILL.md` → Pricing.)
+**Combine endpoint pricing into one line item.** LUCI OS endpoint licenses must appear as a **single line item** with the **total endpoint count as the quantity** and the **per-endpoint price as the cost-ea** (e.g. qty 38 × $420/ea = $15,960) — never split by video/audio/etc. (See `../_brand/SKILL.md` → Pricing.)
 
 ### Investment summary (page 13) — `.doc-page--investment`
 
@@ -178,7 +178,7 @@ Capabilities-doc-style close page (dark, circuit texture, LUCI wordmark logo, Sy
 - **Locked regions** (identity diagram + feature cards on page 2; `.be-delivers` marketing grid on page 13; SOW section numbers `.sow-band-bignum`; LUCI logo on cover; LUCI company info on close) — **no changes of any kind**, including color, styling, or CSS. Run the pre-edit gate in `.cursor/rules/luci-doc-customization.mdc` first.
 - Add endpoint pricing tiers — this is the Proposal, not the Budgetary Estimate. Endpoint pricing stays in the BE.
 - Add a signature block, signature lines, or "accepted by" fields — the close page is a contact block, not a sign-off.
-- Split endpoint pricing into separate video/audio line items — combine into one row with the total endpoint count.
+- Split endpoint pricing into separate video/audio line items — combine into one row with the total endpoint count as the quantity.
 - Add "Addressed to" or similar labels to the cover.
 - Use opaque JPEG client logos on the cover (white box artifact) — use transparent PNG/SVG.
 - Invent hardware specs or pricing not supported by Mike's spreadsheet.
