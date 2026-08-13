@@ -42,17 +42,16 @@
   position: relative;
   min-height: 58px;
 }
-/* ── Print fidelity — keep SOW scope bands light in the PDF ─────────────────── */
+/* ── Print fidelity — keep SOW light-sheet bands light in the PDF ──────────────── */
 /* sales-document.css sets print-color-adjust: exact on .doc-page-band, which
    makes Chrome's print cascade let the earlier base navy (sales-document.css)
-   beat this later transparent for the band background — so the SOW scope band
-   goes dark in the PDF and the dark title becomes illegible. Force transparent
-   here, scoped to the SOW scope pages that are NOT be-band (the BE / investment /
-   line-item bands keep their dark navy header). */
+   beat this later transparent for the band background — so every SOW light-sheet
+   band goes dark in the PDF and the dark title becomes illegible. Force
+   transparent here for every SOW band (the ones carrying a sow-band-bignum
+   ghost numeral); the dark BE / investment / line-item bands have no bignum and
+   keep their navy header via the .be-band restore. */
 @media print {
-  .doc-page--overview:not(.be-band) > .doc-page-band,
-  .doc-page--phasing:not(.be-band) > .doc-page-band,
-  .doc-page--system-scope:not(.be-band) > .doc-page-band {
+  .doc-page-band:has(> .sow-band-bignum) {
     background: transparent !important;
     background-color: transparent !important;
   }
