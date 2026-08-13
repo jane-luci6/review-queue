@@ -122,6 +122,7 @@ Populate from the uploaded spreadsheet via `scripts/ingest-budgetary-lineitems.p
 ## Do not
 
 - **Locked regions** (LUCI logos on cover and close) — **no changes of any kind**, including color, styling, or CSS. Run the pre-edit gate in `.cursor/rules/luci-doc-customization.mdc` first.
+- Split endpoint pricing into separate video/audio line items — combine into one row with the total endpoint count as the quantity.
 - Add endpoint pricing tiers — this is a simple order form, not a budgetary estimate.
 - Add a capabilities overview, demo, or walkthrough content — the client already knows LUCI.
 - Add "Addressed to" or similar labels to the cover.

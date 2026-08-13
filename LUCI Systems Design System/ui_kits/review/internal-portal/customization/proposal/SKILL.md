@@ -248,6 +248,7 @@ If preview shows wrong fonts after an edit, the HTML structure was likely broken
 ## Do not
 
 - **Locked pages/regions** (page 3 COB advantage + architecture; page 12 warranty grid; spec schema labels; cover LUCI logo; document CSS/structure; page footers; band big numerals; LUCI contact line) are **locked — no changes of any kind, including color, styling, or CSS.** If asked to change one, do NOT edit first — flag it and ask whether to override (local-only vs canonical) before making any change.
+- Split endpoint pricing into separate video/audio line items — combine into one row with the total endpoint count as the quantity.
 - Change LUCI cover logo or document CSS/structure.
 - Remove page footers (`.doc-foot`) or band big numbers (`.sow-band-bignum`).
 - Manually edit the footer text span (`.doc-foot > span:first-child`) — it is auto-synced to the cover’s project title (`project-title`) by an inline script. To change the footer, change the project title on the cover; the footers update automatically. Page numbers (`.doc-foot__page`) are still manual.

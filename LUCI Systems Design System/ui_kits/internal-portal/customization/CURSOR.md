@@ -31,6 +31,7 @@ Portal base: `http://10.10.1.17:8081/internal-portal/customization/`
 | Pack SOW | `python3 scripts/pack-content.py <html> --mode sow --start-page N --end-page M --url <dev-url> --write` | When SOW sections overflow or are underfilled |
 | Pack line items | `python3 scripts/pack-content.py <html> --mode lineitems --start-page N --end-page M --url <dev-url> --write` | When line-item groups overflow or are underfilled |
 | Ingest spreadsheet | `python3 scripts/ingest-budgetary-lineitems.py <xlsx>` | To convert a line-item spreadsheet to HTML rows |
+| Footer integrity | `python3 scripts/check-footers.py <html>` (add `--fix` to repair) | **Automated now** — `pack-content.py --write` auto-checks after every pack, and the dev server `/__pdf` refuses to render (HTTP 422) if footers are broken. Run `--fix` only when a gate flags |
 | Render PDF | `POST /__pdf` on the dev server, or `bash scripts/render-pdf.sh <html> <out.pdf>` | To generate the final PDF |
 
 **Do not write your own fit-check, packing, or measurement scripts.** These are committed and handle the edge cases (scrollHeight-returns-fixed-height, iframe same-origin, Chrome headless polling, greedy packing with totals exception, footer renumbering). Just call them.

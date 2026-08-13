@@ -153,6 +153,7 @@ Populate from the uploaded spreadsheet via `scripts/ingest-budgetary-lineitems.p
 ## Do not
 
 - **Locked regions** (page 2 identity diagram + feature cards; `.be-delivers` marketing grid) — **no changes of any kind**, including color, styling, spacing, or CSS, not just copy. If asked to change a locked region, do NOT edit first — flag the lock and ask whether to override (local-only vs canonical) before making any change.
+- Split endpoint pricing into separate video/audio line items — combine into one row with the total endpoint count as the quantity.
 - Re-add full LUCI story pages from the old 10-page template.
 - Edit locked `.be-delivers` marketing copy without Jane’s approval.
 - Change diagram/screenshot assets on page 2 without Jane’s approval.
