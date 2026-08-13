@@ -278,8 +278,16 @@ def replace_pages(html, start_page, end_page, new_pages_html):
         nonlocal page_num
         s = f"{page_num:02d}"
         page_num += 1
+        # preserve the edit-bar's doc-edit/contenteditable attrs if present, so
+        # renumbering still works after a preview edit + save (the edit bar adds
+        # `doc-edit" contenteditable="true"` to footers; the old regex skipped them
+        # and the numbering silently drifted).
+        if 'doc-edit' in m.group(0):
+            return f'<span class="doc-foot__page doc-edit" contenteditable="true">{s}</span>'
         return f'<span class="doc-foot__page">{s}</span>'
-    result = re.sub(r'<span class="doc-foot__page">\d+</span>', foot_repl, result)
+    result = re.sub(
+        r'<span class="doc-foot__page(?:\s+doc-edit)?"\s*(?:contenteditable="true"\s*)?>\d+</span>',
+        foot_repl, result)
     page_num = 1
     def comment_repl(m):
         nonlocal page_num

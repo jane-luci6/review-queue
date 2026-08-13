@@ -133,6 +133,8 @@ python3 scripts/pack-content.py clients/<client>-<doc>.html --mode sow \
 
 The script measures each element's rendered height via headless Chrome, greedily packs into 1056px pages, handles "(continued)" titles, applies the totals exception, and renumbers all footers + page comments. **Do not write your own packing algorithm** — the script handles the height measurement, the budget calibration, the group-label merging, and the splicing. Just call it, then run `fit-check.py` to verify.
 
+**After packing (and after any edit-bar Save), run the footer-integrity check** — `python3 scripts/check-footers.py clients/<client>-<doc>.html`. It catches the "little details" that string-transform passes can silently drop or mangle: a page missing its `.doc-foot__page` number, a duplicated/out-of-sequence number, or mangled footer markup. It exits non-zero if anything is off; add `--fix` to renumber + repair in place. This is what keeps page numbers from disappearing on a re-pack.
+
 **Packing rules (enforced by the script):**
 
 - Pack **greedily** while natural height stays ≤ 1056px. If there is room for another partial section / group / rows from the same content stream, use it.

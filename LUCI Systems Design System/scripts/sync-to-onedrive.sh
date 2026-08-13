@@ -70,7 +70,8 @@ cp -R "$SRC/assets/diagrams/"* "$DEST/assets/diagrams/" 2>/dev/null && echo "  d
 echo ""
 echo "Copying scripts..."
 for f in render-pdf.sh prepare-client-doc.sh patch-sales-pdf-html.py prepare-sales-pdf-assets.py \
-         create-client-workspace.sh post-commit-sync-onedrive.sh sync-to-onedrive.sh; do
+         create-client-workspace.sh post-commit-sync-onedrive.sh sync-to-onedrive.sh \
+         fit-check.py pack-content.py ingest-budgetary-lineitems.py check-footers.py; do
   cp "$SRC/scripts/$f" "$DEST/scripts/" 2>/dev/null && echo "  $f"
 done
 
