@@ -16,6 +16,8 @@ on the next pass — no prompting required.
 import http.server
 import json
 import os
+import re
+import datetime
 import socketserver
 import subprocess
 import sys
@@ -52,6 +54,66 @@ def _check_pdf_deps():
     except ImportError:
         has_pil = False
     return {'chrome': bool(chrome_path), 'pil': has_pil, 'chrome_path': chrome_path}
+
+
+# PDF filename convention: "<ClientName>-<DocType> <M+D+YY>.pdf"
+# e.g. "Elwha River Casino-Proposal-LUCI-Retrofit 81326" (Aug 13 '26).
+# Longest doc-type slug first so "proposal-luci-retrofit" wins over "proposal".
+_DOC_TYPE_DISPLAY = [
+    ('proposal-luci-retrofit', 'Proposal-LUCI-Retrofit'),
+    ('capabilities-document', 'Capabilities-Document'),
+    ('budgetary-estimate', 'Budgetary-Estimate'),
+    ('proposal-upgrade', 'Proposal-Upgrade'),
+    ('scope-of-work', 'Scope-of-Work'),
+    ('sales-deck', 'Sales-Deck'),
+    ('proposal', 'Proposal-LED'),
+]
+
+
+def _pdf_display_name(html_path):
+    """Build the convention PDF filename: <ClientName>-<DocType> <M+D+YY>.pdf
+
+    ClientName is read from the document <title> — the customization templates
+    set it as "LUCI — <Doc> · <Client>" (newer) or "<Client> — <Doc>" (older);
+    we prefer the text after the last '·', then the text before the first ' — '
+    when that left side isn't "LUCI", and finally fall back to title-casing the
+    client slug. DocType is the longest known doc-type suffix of the HTML stem,
+    mapped to its display name. The date is today's export date — month and day
+    without leading zeros (e.g. 81326 = Aug 13 '26).
+    """
+    stem = html_path.stem  # <client-slug>-<doc-type>
+    doc_type = None
+    client_slug = stem
+    for slug, display in _DOC_TYPE_DISPLAY:
+        marker = '-' + slug
+        if stem.endswith(marker) and len(stem) > len(marker):
+            doc_type = display
+            client_slug = stem[:-len(marker)]
+            break
+    if doc_type is None:
+        doc_type = stem  # unknown doc-type — use the stem verbatim
+
+    # Client name from <title> (authoritative); fallback to slug title-case.
+    client_name = None
+    try:
+        html = html_path.read_text(encoding='utf-8', errors='replace')
+        m = re.search(r'<title>(.*?)</title>', html, re.S)
+        if m:
+            title = m.group(1).strip()
+            if '·' in title:
+                client_name = title.split('·')[-1].strip()
+            elif ' — ' in title:
+                left = title.split(' — ')[0].strip()
+                if left and left != 'LUCI':
+                    client_name = left
+    except Exception:
+        pass
+    if not client_name:
+        client_name = ' '.join(w.capitalize() for w in client_slug.split('-') if w)
+
+    now = datetime.date.today()
+    date_str = f"{now.month}{now.day}{str(now.year)[2:]}"
+    return f"{client_name}-{doc_type} {date_str}.pdf"
 
 
 class LUCIDevHandler(http.server.SimpleHTTPRequestHandler):
@@ -254,7 +316,7 @@ class LUCIDevHandler(http.server.SimpleHTTPRequestHandler):
             return
 
         # Write PDF beside a temp dir so we never leave export debris in sales/.
-        out_name = html_path.stem + '.pdf'
+        out_name = _pdf_display_name(html_path)
         tmp_dir = Path(tempfile.mkdtemp(prefix='luci-pdf-'))
         out_pdf = tmp_dir / out_name
 
