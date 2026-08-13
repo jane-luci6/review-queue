@@ -307,6 +307,8 @@ The website (lucisystems.com) is the reference for *how LUCI sounds* — the ton
 - Before any further agent pass after Mike types in preview: the working file is already updated (via the dev server save), so Cursor reads the latest version. If Mike used the download fallback instead, write the live DOM back into the working file before editing.
 - **Download PDF** = `POST /__pdf` on the LUCI dev server → `scripts/render-pdf.sh` (headless Chrome). Never `window.print()` — that crashes Cursor's in-editor browser. The button shows "Rendering…" then downloads the PDF. If the local preview server is not running, the button asks you to restart it.
 
+**PDF filename (automatic):** `POST /__pdf` names the download `<ClientName>-<DocType> <M+D+YY>.pdf` — e.g. `Elwha River Casino-Proposal-LUCI-Retrofit 81326.pdf` (Aug 13 '26). The client name is read from the document `<title>`, the doc type from the HTML stem (`proposal-luci-retrofit` → `Proposal-LUCI-Retrofit`, `proposal` → `Proposal-LED`, `scope-of-work` → `Scope-of-Work`, `budgetary-estimate` → `Budgetary-Estimate`, `capabilities-document` → `Capabilities-Document`, `sales-deck` → `Sales-Deck`, `proposal-upgrade` → `Proposal-Upgrade`), and the date is today's export date (month/day, no leading zeros). Do not rename the download — the dev server already applies the house convention to every exported PDF.
+
 **PDF button shows "Failed"?** The most common cause is a **missing dependency on Mike's machine**, not a timeout. The pipeline needs:
 1. **Google Chrome** (or Chromium/Edge/Brave) in `/Applications`. Without it, the render fails immediately.
 2. **Pillow + numpy** (Python packages) for raster optimization. Without them, the PDF still renders — just without optimized rasters.
@@ -317,7 +319,7 @@ The website (lucisystems.com) is the reference for *how LUCI sounds* — the ton
 - Install Google Chrome from google.com/chrome (or ensure Chromium/Edge/Brave is in `/Applications`).
 - Run `pip3 install -r requirements.txt` (from the `LUCI Systems Design System/` root) to install Pillow + numpy.
 
-**Fallback (always works):** The agent runs `render-pdf.sh` directly — `bash scripts/render-pdf.sh clients/<client>-<doc>.html ~/Downloads/<client>-<doc>.pdf` (from the `LUCI Systems Design System/` root). This bypasses the browser and produces the same PDF.
+**Fallback (always works):** The agent runs `render-pdf.sh` directly — `bash scripts/render-pdf.sh clients/<client>-<doc>.html "~/Downloads/<ClientName>-<DocType> <M+D+YY>.pdf"` (from the `LUCI Systems Design System/` root; use the house naming convention, e.g. `~/Downloads/Elwha River Casino-Proposal-LUCI-Retrofit 81326.pdf`). This bypasses the browser and produces the same PDF.
 
 **Always test PDF generation before handing off to Mike.** Generate a test PDF after any structural change (page add/remove, content move) to catch rendering issues early.
 
