@@ -28,6 +28,8 @@
       --mint:        #68E3BE;
       --mint-rgb:    104, 227, 190;   /* same as --mint, used for rgba() tints */
       --mint-dark:   #2b9e80;
+      --gold:        #EDD086;         /* bright gold — dark surfaces only (fails contrast on light) */
+      --gold-deep:   #CEB06E;         /* gold for text on light surfaces */
       --sand:        #E5E3DF;
       --off-white:   #F5F8FA;
       --white:       #FFFFFF;
@@ -310,6 +312,39 @@
     }
     .sec--dark > *, .sec--deep > *, .closing > *, .footer > * { position: relative; z-index: 1; }
 
+    /* Mute the mesh behind the reading column: a full-height horizontal
+       scrim darkens the central text band top-to-bottom (so longer sections
+       get consistent muting, not just the vertical middle) and fades to
+       transparent at the side margins, so the mesh stays vivid at the edges
+       and recedes behind the copy. */
+    .sec--dark::after, .sec--deep::after, .closing::after, .footer::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: linear-gradient(to right,
+        rgba(8,18,24,0) 2%,
+        rgba(8,18,24,0.66) 20%,
+        rgba(8,18,24,0.66) 80%,
+        rgba(8,18,24,0) 98%);
+    }
+
+    /* Closing stays flat — no mesh, no scrim (keeps the sign-off calm). */
+    .closing::before, .closing::after { display: none; }
+
+    /* Quick Tip — let more mesh show on the right side: fade the scrim to
+       transparent earlier on the right (just past the reading column) so
+       the right edge reads richer in mesh. Left side stays as the global
+       symmetric scrim. */
+    #quick-tip::after {
+      background: linear-gradient(to right,
+        rgba(8,18,24,0) 2%,
+        rgba(8,18,24,0.66) 20%,
+        rgba(8,18,24,0.66) 72%,
+        rgba(8,18,24,0) 90%);
+    }
+
     /* Marquee — lead story (In the field). Warm sand + scaled headline; no dark grey block after TOC. */
     .sec--marquee {
       background: var(--sand);
@@ -456,6 +491,16 @@
     .sec--dark .art-title   { color: var(--off-white); }
     .sec--deep .art-title   { color: var(--off-white); }
 
+    /* Standard half-highlight in gold — a key phrase wrapped in <em> inside a
+       section header. Bright gold on dark; gold-deep on light (contrast-safe). */
+    .art-title em {
+      font-style: normal;
+      color: var(--gold);
+    }
+    .sec--white .art-title em,
+    .sec--light .art-title em,
+    .sec--sand  .art-title em { color: var(--gold-deep); }
+
     /* Body copy */
     .art-body p {
       font-size: 17px;
@@ -546,6 +591,7 @@
       letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--mint);
+      margin-top: 32px;
       margin-bottom: 14px;
     }
 
@@ -1600,10 +1646,15 @@
 
     .steps {
       list-style: none;
-      margin: 20px 0;
+      margin: 36px 0;
       counter-reset: step;
       max-width: var(--read);
     }
+
+    /* Quick Tip — pull the reading column in a little so more mesh shows at the edges */
+    #quick-tip .art-body,
+    #quick-tip .steps,
+    #quick-tip .callout__kicker { max-width: 52ch; }
 
     .steps li {
       counter-increment: step;
@@ -1629,6 +1680,54 @@
     /* Steps on a dark canvas (Quick Tip) */
     .steps--dark li::before { color: var(--mint); }
     .steps--dark li p { color: rgba(235, 245, 248, 0.88); font-size: 16px; }
+
+    /* ── WHAT'S COMING — feature blocks, screenshots, future box ─── */
+    .feature-copy { max-width: 820px; margin: 0 0 28px; }
+    .feature-copy p { margin: 0; font-size: 17px; line-height: 1.6; color: #354F5C; }
+    .feature-copy strong { color: var(--navy); font-size: 18px; }
+    .feature-copy.after-shot { margin-top: -8px; margin-bottom: 50px; }
+
+    .shot-block { margin: 0 0 50px; }
+    .shot-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin: 0 0 10px;
+      color: var(--navy-muted);
+      font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .shot-label::before {
+      content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--mint-dark);
+    }
+    figure.ui-shot {
+      margin: 0; border: 1px solid var(--rule-light); border-radius: 14px;
+      overflow: hidden; background: #eef1ef;
+      box-shadow: 0 16px 40px rgba(10, 26, 33, 0.08);
+    }
+    figure.ui-shot img { display: block; width: 100%; height: auto; }
+
+    .future-box {
+      display: grid; grid-template-columns: 40px 1fr; gap: 16px;
+      margin: 8px 0 22px; padding: 22px 24px;
+      border: 1px solid #a8d9cb; border-radius: 12px; background: #f2fbf8;
+    }
+    .future-icon {
+      width: 36px; height: 36px; display: grid; place-items: center;
+      border-radius: 9px; background: var(--navy-deep); color: var(--mint);
+      font-size: 18px; font-weight: 900;
+    }
+    .future-box p { margin: 0; color: #354F5C; font-size: 16px; }
+    .future-box strong { color: var(--navy); }
+
+    .beta-note {
+      margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--rule-light);
+      max-width: 820px;
+    }
+    .beta-note p { margin: 0 0 8px; font-size: 16px; color: #354F5C; }
+    .beta-note .more { color: var(--mint-dark); font-weight: 700; }
+
+    @media (max-width: 720px) {
+      .feature-copy p { font-size: 16px; }
+      .future-box { grid-template-columns: 1fr; }
+    }
 
     /* ── COMMAND TRAIL (August release feature) ──── */
     .feature-lockup {
@@ -1686,6 +1785,18 @@
     /* Portrait art — column hugs the bulb, header gets the rest of the width */
     .article-head--mike { grid-template-columns: 1fr auto; }
     .article-head--mike .article-head__art svg { width: 200px; max-width: none; height: auto; }
+    .article-head--mike .article-head__art img.mike-portrait {
+      width: 200px;
+      max-width: none;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 0;                          /* brand: sharp corners */
+      border: 1px solid rgba(43, 158, 128, 0.32); /* mint hairline */
+      display: block;
+    }
+    @media (max-width: 640px) {
+      .article-head--mike .article-head__art img.mike-portrait { width: 160px; height: 200px; }
+    }
 
     /* ── 3-PART PROCESS FLOW (Minute with Mike) ──── */
     .flow--3 {
@@ -1920,6 +2031,28 @@
       .cs-web-next__grid { grid-template-columns: 1fr; }
     }
 
+    /* LinkedIn screenshot — social proof under the follow paragraph */
+    .social-shot {
+      max-width: 640px;
+      margin: 32px auto 0;
+    }
+    .social-shot__img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 0;                              /* brand: sharp corners */
+      border: 1px solid rgba(104, 227, 190, 0.28);  /* mint hairline */
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);   /* lift off the mesh */
+    }
+    .social-shot__caption {
+      margin-top: 12px;
+      font-family: var(--body), 'Inter', sans-serif;
+      font-size: 13px;
+      line-height: 1.5;
+      color: rgba(235, 245, 248, 0.62);
+      text-align: center;
+    }
+
     .closing__lead {
       font-size: 17px;
       line-height: 1.65;
@@ -2005,12 +2138,6 @@
 
 <article class="issue">
 
-  <!-- DRAFT BANNER — delete before publishing -->
-  <p class="draft" role="note" style="margin: 0; max-width: none; border-radius: 0; border-left: none; border-right: none; border-top: none;">
-    <strong>Issue 03 scaffold</strong>
-    Blank August template &mdash; same structure as Issue 02 (July). Update everything marked <code>EDIT</code>, then delete this banner. See <code>the-signal-issue-03-welcome-draft.md</code> for the planning checklist.
-  </p>
-
   <!-- MASTHEAD -->
   <header class="masthead">
     <div class="masthead__row">
@@ -2022,7 +2149,7 @@
     <h1 class="masthead__title">The<em>Signal.</em></h1>
     <div class="masthead__issue">
       <span class="masthead__issue-label">This Issue</span>
-      <span class="masthead__issue-title">EDIT — Issue theme goes here</span>
+      <span class="masthead__issue-title">Always moving, always forward</span>
     </div>
     <span class="masthead__numeral" aria-hidden="true">03</span>
   </header>
@@ -2034,15 +2161,16 @@
       <span class="kicker__label">Welcome</span>
       <span class="kicker__rule"></span>
     </div>
-    <h2 class="art-title">EDIT — Welcome headline (issue theme)</h2>
+    <h2 class="art-title">The Difference Between Moving and <em>Moving Forward</em></h2>
     <div class="art-body">
-      <p>EDIT: Open with the theme — on a live property everything is always in motion; standing still is the only way to fall behind. The new LUCI is how you keep moving forward.</p>
-      <p>EDIT: Preview what's inside — three new-platform features (TBD from this week's tech review), Sam's Town in the field, and a new lucisystems.com coming this fall. Match the TOC below.</p>
-      <p>EDIT: Bridge from July (Command Trail previewed) into this month's through-line — the ship arrives.</p>
-      <p>EDIT: Close with cadence reminder — The Signal arrives once a month.</p>
+      <p>A property never holds still. Rooms change hands, crowds arrive and thin out, equipment fails and gets replaced, and every season rewrites the schedule. On a live property, motion isn&rsquo;t an event. It&rsquo;s the default condition.</p>
+      <p>But motion and progress aren&rsquo;t the same thing. Throwing a new TV up when a monitor breaks is movement. So is bolting an entirely new system alongside the one you already run. Both leave a property busier without leaving it better, and over enough years the gap between the two shows up as a fractured guest experience.</p>
+      <p>Our work at LUCI is to keep every movement at your property pointed in the same direction &mdash; so that what changes this quarter builds on what changed last quarter instead of working against it. Always moving, always forward.</p>
+      <p>At LUCI, forward is the only movement that matters. In this issue we&rsquo;re excited to show you how our work at Sam&rsquo;s Town turned scattered motion into focused, intentional direction &mdash; a swath of mismatched TVs replaced with a beautiful, expansive LED wall, running on LUCI with the rest of the property. You&rsquo;ll see how the new LUCI platform is skyrocketing forward, just weeks from its first beta property.</p>
+      <p>We&rsquo;re here to move forward with you &mdash; because on a property that never holds still, forward is the only direction that counts.</p>
     </div>
     <div class="art-signoff">
-      <p class="art-signoff__line">EDIT — one-line handoff into the issue.</p>
+      <p class="art-signoff__line">Here&rsquo;s how we&rsquo;re doing it.</p>
       <p class="art-signoff__name">Mike Epstein</p>
       <p class="art-signoff__role">CEO, LUCI Systems</p>
     </div>
@@ -2165,7 +2293,7 @@
       </div>
       <div class="field-num__rule" aria-hidden="true"></div>
       <div class="field-num__body">
-        <p>LUCI had run Sam's Town's A/V end to end for more than a year: audio through the casino first, then video across the property, sportsbook included. But that room's screens had been assembled over time rather than designed &mdash; as TVs failed, each was replaced with whatever was on hand. The sizes stopped matching. Everything worked; it just stopped reading as one picture.</p>
+        <p>LUCI had run Sam&rsquo;s Town&rsquo;s A/V end to end for more than a year: audio through the casino first, then video across the property, sportsbook included. The sportsbook&rsquo;s screens were a different story &mdash; the property had replaced them over time, one TV at a time, with whatever was on hand. The sizes stopped matching. Everything worked; it just stopped reading as one picture.</p>
       </div>
     </div>
 
@@ -2175,7 +2303,7 @@
       </div>
       <div class="field-num__rule" aria-hidden="true"></div>
       <div class="field-num__body">
-        <p>Sam's Town hired LUCI to replace the mismatched screens with one proper LED wall &mdash; a single surface that would read as one picture from every seat. LUCI built and installed the wall: 39 feet wide, 12 feet tall, 6400 &times; 1980 at a 1.87mm pitch &mdash; one continuous surface, fine enough to hold up from the front row. The wall, the room's new TVs, and its three audio zones then came onto the LUCI platform already running the building, where the wall now drives six presets across eight video inputs.</p>
+        <p>Sam&rsquo;s Town decided to replace the mismatched screens with one 39 &times; 12 foot LED wall &mdash; and LUCI&rsquo;s team was the natural choice to install it. In less than a week, the wall, the room&rsquo;s new TVs, and its three audio zones came onto the LUCI platform already running the building. The wall now drives six presets across eight video inputs.</p>
       </div>
     </div>
 
@@ -2200,12 +2328,11 @@
       <span class="kicker__label">LUCI Quick Tip</span>
       <span class="kicker__rule"></span>
     </div>
-    <h2 class="art-title">Not every announcement should be the same volume</h2>
+    <h2 class="art-title"><em>Not every announcement</em> should be the same volume</h2>
     <div class="art-body">
-      <p>Announcements in LUCI carry a priority &mdash; low, medium, or high &mdash; and each priority has its own volume, per zone. They&rsquo;re three separate settings, not one.</p>
-      <p>That&rsquo;s the part worth knowing. A shift-change page and an emergency page don&rsquo;t have to share a level, and the level that works in the casino doesn&rsquo;t have to be the level in a steakhouse. Most properties set announcement volume once and live with the compromise. You don&rsquo;t have to.</p>
+      <p>Most properties set one announcement volume for everything and adjust manually for each exception. But in LUCI, you can give your announcements a priority &mdash; low, medium, or high &mdash; and each priority has its own volume, per zone. Three priorities, three separate volume settings &mdash; not one shared level.</p>
+      <p>Here&rsquo;s how.</p>
     </div>
-    <p class="callout__kicker">Setting it</p>
     <ol class="steps steps--dark">
       <li><p>Log in and switch the map to Control Mode, using the mode selector in the middle of the map.</p></li>
       <li><p>In the endpoint type selector at the top left of the map, choose the Announcement icon.</p></li>
@@ -2216,7 +2343,7 @@
       <li><p>Click a zone again to deselect it, or use the red X in the navigation bar to clear everything.</p></li>
     </ol>
     <div class="art-body">
-      <p><strong>One thing that&rsquo;ll save you a support ticket.</strong> When you have several zones selected, a change only reaches the zones that actually have announcements at that priority &mdash; so if a zone doesn&rsquo;t seem to respond, check whether it has anything assigned at that level.</p>
+      <p>One thing that&rsquo;ll save you a support ticket: When you have several zones selected, a change only reaches the zones that actually have announcements at that priority &mdash; so if a zone doesn&rsquo;t seem to respond, check whether it has anything assigned at that level.</p>
       <p>Full walkthrough: <a href="https://lucisystems.atlassian.net/servicedesk/customer/portal/1/article/642285569">Announcement Control</a> in the Support Portal.</p>
     </div>
   </section>
@@ -2228,24 +2355,43 @@
       <span class="kicker__label">What&rsquo;s coming</span>
       <span class="kicker__rule"></span>
     </div>
-    <h2 class="art-title">What&rsquo;s coming in the new LUCI</h2>
+    <h2 class="art-title">What&rsquo;s coming <em>in the new LUCI</em></h2>
     <div class="art-body">
-      <p>Sneak peek time. The new version of LUCI is close, and this is the first time we&rsquo;ve shown any of it outside the company. Here&rsquo;s what we think you&rsquo;ll notice first.</p>
+      <p>Sneak peek time. The new version of LUCI is close, and this is the first time we&rsquo;ve shown any of it outside the company. Here&rsquo;s a more detailed look at what&rsquo;s coming.</p>
     </div>
-    <figure class="field-figure" style="max-width: var(--read);">
-      <!-- EDIT: drop in the new sign-in screen screenshot (dark mode) at assets/new-luci/sign-in-dark.png -->
-      <div class="field-photo-ph" aria-label="New sign-in screen screenshot coming soon">Screenshot &mdash; coming soon</div>
-      <figcaption class="field-figure__caption">The new sign-in screen in dark mode. Themes, colors and backgrounds are yours to set.</figcaption>
-    </figure>
-    <ol class="steps">
-      <li><p><strong>A new look.</strong> New sign-in and splash screen, light and dark modes, and themes you can set to your own colors instead of ours. Wall panels can be themed too, so a panel in a suite doesn&rsquo;t have to look like a panel in a sportsbook.</p></li>
-      <li><p><strong>A map that matches reality.</strong> Every endpoint now sits at a real latitude and longitude. Type in an address and the map lands on the actual property, floor plans go on top, and your devices show where they physically are. You can also move between sites, buildings and levels in one view instead of a separate flat map for each property.</p></li>
-      <li><p><strong>Preset and staging mode.</strong> Set up a change before it happens, then trigger all of it at once. Pick the screens, audio zones and lighting you want to change and build the whole thing while the current state stays up. When you&rsquo;re ready, you apply, and everything lands together instead of one device at a time in front of a full room. Save it and it becomes a preset you can reuse or schedule.</p></li>
-      <li><p><strong>Panels you can put anywhere.</strong> Add a touch panel to a room, place it on your map, and control it from anywhere &mdash; or hand control to whoever&rsquo;s in that space. A bartender gets their bar, a slot manager gets their area, a guest in a suite or a cabana gets their own screen. Nobody gets more than they need.</p></li>
-    </ol>
-    <div class="art-body">
-      <p>Our first beta property goes live in the next thirty days. We&rsquo;ll let it run there for a while before rolling out more widely.</p>
-      <p>Expect more screenshots and a lot more detail over the next few issues &mdash; including the parts that don&rsquo;t go the way we planned.</p>
+
+    <div class="feature-copy">
+      <p><strong>A map that matches reality.</strong> Every property and every endpoint now sits at its actual latitude and longitude, so your buildings and devices show up where they physically are. Move between sites, buildings and levels in one continuous view instead of a separate flat map for each property.</p>
+    </div>
+    <div class="shot-block">
+      <div class="shot-label">Light mode &middot; portfolio view</div>
+      <figure class="ui-shot">
+        <img src="assets/new-luci/map-light.png?v=1" alt="New LUCI interface in light mode, annotated to show real-world mapping and zooming from portfolio level to individual endpoints." width="1535" height="1024" loading="lazy">
+      </figure>
+    </div>
+
+    <div class="feature-copy">
+      <p><strong>A new look. A much better way around.</strong> New sign-in and splash screens, light and dark modes, customizable themes, and a redesigned navigation system make the whole platform easier to move through.</p>
+    </div>
+    <div class="shot-block">
+      <div class="shot-label">Dark mode &middot; property view</div>
+      <figure class="ui-shot">
+        <img src="assets/new-luci/look-dark.png?v=1" alt="New LUCI interface in dark mode, annotated to show unified screens, audio and lighting, cluster status, and portfolio-to-venue navigation." width="1448" height="1086" loading="lazy">
+      </figure>
+    </div>
+
+    <div class="feature-copy after-shot">
+      <p><strong>One view, top to bottom.</strong> Screens, audio zones and lighting now live together on the same property map, with endpoint status visible before you drill in. A new navigation hierarchy takes you from your full portfolio to a single property, floor, venue or zone in a few clicks.</p>
+    </div>
+
+    <div class="future-box">
+      <div class="future-icon" aria-hidden="true">&rarr;</div>
+      <p><strong>And we&rsquo;re not done.</strong> Preset and staging mode lets you build an entire change while the current state stays live, then apply it all at once. Pick the screens, audio zones and lighting you want to change; when you&rsquo;re ready, everything lands together. Save it and it becomes a preset you can reuse or schedule. <strong>We&rsquo;ll show you that one next.</strong></p>
+    </div>
+
+    <div class="beta-note">
+      <p>Our first beta property goes live in the next thirty days; one step closer to getting all these future features into your hands.</p>
+      <p class="more">Expect more screenshots and a lot more detail over the next few issues!</p>
     </div>
   </section>
 
@@ -2265,9 +2411,9 @@
       <span class="kicker__label">What's next</span>
       <span class="kicker__rule"></span>
     </div>
-    <h2 id="cs-web-next-title" class="art-title">A new LUCI website is coming this fall</h2>
+    <h2 id="cs-web-next-title" class="art-title">A new LUCI website is <em>coming this fall</em></h2>
     <div class="art-body">
-      <p>It&rsquo;s built as a resource for the teams already running LUCI &mdash; a place to keep up with what&rsquo;s new, see what&rsquo;s possible, and get more out of the platform you already run. We&rsquo;ll point you there the moment it&rsquo;s live.</p>
+      <p>This fall, lucisystems.com gets a full rebuild, and we can&rsquo;t wait to show it to you! The new site will give you an easy way to keep up with what&rsquo;s new, see what&rsquo;s possible, and get more out of the platform you already run. We&rsquo;ll point you there the moment it&rsquo;s live.</p>
     </div>
     <div class="cs-web-next__grid">
       <div class="cs-web-next__card">
@@ -2276,17 +2422,22 @@
       </div>
       <div class="cs-web-next__card">
         <p class="cs-web-next__card-label">Role-specific guidance</p>
-        <p class="cs-web-next__card-body">Guidance for operators, IT, facilities, and ownership &mdash; what each role can do with the LUCI you already run.</p>
+        <p class="cs-web-next__card-body">Guidance for operations, marketing, IT, and ownership &mdash; tuned to what each role actually does.</p>
       </div>
       <div class="cs-web-next__card">
         <p class="cs-web-next__card-label">What LUCI can do</p>
-        <p class="cs-web-next__card-body">Short videos of LUCI on real properties &mdash; presets and workflows to borrow for your own.</p>
+        <p class="cs-web-next__card-body">Short videos of LUCI use cases and features &mdash; presets and workflows you can use today.</p>
       </div>
     </div>
     <div class="art-body">
-      <p>We&rsquo;ll also have self-serve guides and a blog &mdash; for sharpening your team&rsquo;s A/V skills, picking up new techniques, and simplifying their A/V life, plus LUCI-specific guidance as the platform grows.</p>
-      <p>We&rsquo;re ramping up on <a href="https://www.linkedin.com/company/lucisystems">LinkedIn</a> and <a href="https://x.com/lucisys">X</a> in the meantime &mdash; not to broadcast, but to share what we&rsquo;re building as we build it. Follow along for early looks at the new platform, field stories from real properties, and the operational details that don&rsquo;t make it into a proposal.</p>
+      <p>We&rsquo;ll also have self-serve guides, technical documentation, and real-world stories to sharpen your team&rsquo;s A/V skills and simplify their A/V life.</p>
+      <p>We&rsquo;re ramping up on <a href="https://www.linkedin.com/company/lucisystems">LinkedIn</a> and <a href="https://x.com/lucisys">X</a> in the meantime. Please take a moment to give us a follow.</p>
     </div>
+    <figure class="social-shot">
+      <a href="https://www.linkedin.com/company/lucisystems" target="_blank" rel="noopener">
+        <img class="social-shot__img" src="assets/social/linkedin-company-header.png?v=1" alt="LUCI Systems company page on LinkedIn" width="1024" height="381" loading="lazy">
+      </a>
+    </figure>
   </section>
 
   <!-- A MINUTE WITH MIKE — recurring CEO column -->
@@ -2298,14 +2449,11 @@
           <span class="kicker__label">A Minute with Mike</span>
           <span class="kicker__rule"></span>
         </div>
-        <h2 class="art-title">The best things we build aren&rsquo;t our ideas</h2>
+        <h2 class="art-title">The best things we build <em>aren&rsquo;t our ideas</em></h2>
         <p class="art-deck">Mike Epstein shares hard-won lessons from decades as an integrator, operator, and owner.</p>
       </div>
       <div class="article-head__art">
-        <!-- EDIT: column illustration SVG -->
-        <svg viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="EDIT — illustration">
-          <rect x="30" y="30" width="140" height="200" rx="8" fill="#E6F5EF" stroke="#2b9e80" stroke-width="1.4"/>
-        </svg>
+        <img class="mike-portrait" src="assets/people/mike-epstein.jpg?v=1" alt="Mike Epstein, CEO of LUCI Systems" width="200" height="250" loading="lazy">
       </div>
     </div>
     <div class="art-body">
