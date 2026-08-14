@@ -1997,39 +1997,187 @@
       border-top: 4px solid var(--mint);
     }
 
-    /* ── THE NEW LUCISYSTEMS.COM — article 05 ─────────── */
-    /* Mesh backdrop comes from the global .sec--deep::before rule.
-       This block only styles the content grid + cards on top of it. */
-    .cs-web-next__grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      margin: 32px 0;
-      max-width: var(--read);
-      background: rgba(var(--mint-rgb), 0.14);
-      border: 1px solid rgba(var(--mint-rgb), 0.18);
+    /* ── THE NEW LUCISYSTEMS.COM — article 05 (redesign, scoped under .luci-web-section) ─────────── */
+    /* Self-contained dark section. Vars scoped to the section so they don't
+       override the newsletter's global --navy/--mint/--gold tokens. Mesh
+       backdrop + reading scrim match the issue's other dark sections. */
+    .luci-web-section {
+      --navy: #0A161C;
+      --mint: #67E1C1;
+      --gold: #F0CF76;
+      --text: #F4F7F8;
+      --muted: #C8D2D6;
+      --line: rgba(103, 225, 193, 0.30);
+      position: relative;
+      overflow: hidden;
+      background: var(--navy);
+      padding: 56px 28px 60px;
+      border-top: 1px solid rgba(103, 225, 193, 0.08);
+      border-bottom: 1px solid rgba(103, 225, 193, 0.08);
     }
-    .cs-web-next__card {
-      background: rgba(10, 22, 28, 0.55);
-      padding: 28px 26px;
+    /* Mesh backdrop — same SVG + screen blend as the issue's dark sections */
+    .luci-web-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: url("assets/mesh/luci-bg-hero-1920x1080.svg") center / cover no-repeat;
+      mix-blend-mode: screen;
+      opacity: 0.26;
     }
-    .cs-web-next__card-label {
-      font-family: var(--head), 'Space Grotesk', sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
+    /* Scrim — mute the mesh behind the reading column, top to bottom */
+    .luci-web-section::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: linear-gradient(to right,
+        rgba(8, 18, 24, 0) 2%,
+        rgba(8, 18, 24, 0.66) 20%,
+        rgba(8, 18, 24, 0.66) 80%,
+        rgba(8, 18, 24, 0) 98%);
+    }
+    /* Rotated-square accent from the redesign (decorative, corner) */
+    .luci-web-accent {
+      position: absolute;
+      width: 460px;
+      height: 460px;
+      right: -210px;
+      top: -250px;
+      border: 1px solid rgba(103, 225, 193, 0.12);
+      transform: rotate(45deg);
+      box-shadow: 0 0 0 42px rgba(103, 225, 193, 0.025), 0 0 0 84px rgba(103, 225, 193, 0.018);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .luci-web-inner {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .luci-web-section .eyebrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 26px;
       color: var(--mint);
-      margin-bottom: 12px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
     }
-    .cs-web-next__card-body {
-      font-family: var(--body), 'Inter', sans-serif;
-      font-size: 15.5px;
-      line-height: 1.6;
-      color: rgba(235, 245, 248, 0.85);
+    .luci-web-section .eyebrow::before,
+    .luci-web-section .eyebrow::after {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: var(--mint);
     }
-    @media (max-width: 640px) {
-      .cs-web-next__grid { grid-template-columns: 1fr; }
+    .luci-web-section h2 {
+      margin: 0 0 22px;
+      max-width: 690px;
+      font-size: 42px;
+      line-height: 1.06;
+      letter-spacing: -0.035em;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .luci-web-section h2 .gold { color: var(--gold); }
+    .luci-web-section .intro {
+      max-width: 690px;
+      margin: 0 0 30px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.62;
+    }
+    .luci-web-section .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      border: 1px solid var(--line);
+      background: rgba(11, 30, 35, 0.54);
+      margin: 0 0 28px;
+    }
+    .luci-web-section .feature {
+      min-height: 210px;
+      padding: 28px 26px 26px;
+      background: linear-gradient(180deg, rgba(103, 225, 193, 0.025), rgba(103, 225, 193, 0));
+    }
+    .luci-web-section .feature + .feature { border-left: 1px solid rgba(103, 225, 193, 0.18); }
+    .luci-web-section .feature h3 {
+      margin: 0 0 14px;
+      color: var(--mint);
+      font-size: 12px;
+      line-height: 1.45;
+      letter-spacing: 0.16em;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .luci-web-section .feature p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.55;
+    }
+    .luci-web-section .utility {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 16px;
+      align-items: start;
+      margin-top: 8px;
+      padding: 22px 24px;
+      border-top: 1px solid rgba(103, 225, 193, 0.18);
+      border-bottom: 1px solid rgba(103, 225, 193, 0.18);
+      background: linear-gradient(90deg, rgba(103, 225, 193, 0.06), rgba(103, 225, 193, 0.015));
+    }
+    .luci-web-section .utility-mark {
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(103, 225, 193, 0.55);
+      display: grid;
+      place-items: center;
+      color: var(--mint);
+      font-size: 22px;
+    }
+    .luci-web-section .utility strong {
+      display: block;
+      margin: 0 0 5px;
+      color: var(--text);
+      font-size: 16px;
+    }
+    .luci-web-section .utility p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.55;
+    }
+    .luci-web-section .close {
+      margin: 26px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.58;
+    }
+    .luci-web-section .close strong { color: var(--gold); font-weight: 800; }
+    @media (max-width: 700px) {
+      .luci-web-section { padding: 42px 20px 46px; }
+      .luci-web-section h2 { font-size: 34px; }
+      .luci-web-section .intro { font-size: 17px; }
+      .luci-web-section .feature-grid { grid-template-columns: 1fr; }
+      .luci-web-section .feature { min-height: 0; padding: 24px 22px; }
+      .luci-web-section .feature + .feature {
+        border-left: 0;
+        border-top: 1px solid rgba(103, 225, 193, 0.18);
+      }
+    }
+    @media (max-width: 460px) {
+      .luci-web-section h2 { font-size: 30px; }
+      .luci-web-section .eyebrow { font-size: 11px; gap: 10px; }
+      .luci-web-section .feature p, .luci-web-section .utility p { font-size: 15px; }
+      .luci-web-section .utility { grid-template-columns: 1fr; }
     }
 
     /* LinkedIn screenshot — social proof under the follow paragraph */
@@ -2405,40 +2553,51 @@
     </div>
   </section>
 
-  <!-- THE NEW LUCISYSTEMS.COM — article 05 (mesh-backed, sec--deep) -->
-  <section class="sec sec--deep" id="web-next" aria-labelledby="cs-web-next-title">
-    <div class="kicker">
-      <span class="kicker__rule"></span>
-      <span class="kicker__label">What's next</span>
-      <span class="kicker__rule"></span>
-    </div>
-    <h2 id="cs-web-next-title" class="art-title">A new LUCI website is <em>coming this fall</em></h2>
-    <div class="art-body">
-      <p>This fall, lucisystems.com gets a full rebuild, and we can&rsquo;t wait to show it to you! The new site will give you an easy way to keep up with what&rsquo;s new, see what&rsquo;s possible, and get more out of the platform you already run. We&rsquo;ll point you there the moment it&rsquo;s live.</p>
-    </div>
-    <div class="cs-web-next__grid">
-      <div class="cs-web-next__card">
-        <p class="cs-web-next__card-label">The hub for the latest LUCI news</p>
-        <p class="cs-web-next__card-body">Platform releases, field stories, and operational notes &mdash; all in one place, as they happen.</p>
+  <!-- THE NEW LUCISYSTEMS.COM — article 05 (redesign, mesh-backed) -->
+  <section class="luci-web-section" id="web-next">
+    <div class="luci-web-accent" aria-hidden="true"></div>
+    <div class="luci-web-inner">
+
+      <div class="eyebrow">What's next</div>
+
+      <h2>
+        A new LUCI website is <span class="gold">coming this fall</span>
+      </h2>
+
+      <p class="intro">
+        This fall, lucisystems.com gets a full rebuild. The new site will give us a much better place to show you what LUCI is doing, what it can do, and what we&rsquo;ve learned from years spent solving complex A/V problems in the field. We&rsquo;ll point you there the moment it&rsquo;s live.
+      </p>
+
+      <div class="feature-grid">
+        <article class="feature">
+          <h3>See LUCI in action</h3>
+          <p>Case studies, real-world use cases, videos and examples of how properties are putting LUCI to work.</p>
+        </article>
+
+        <article class="feature">
+          <h3>From the people who know A/V</h3>
+          <p>Ideas, observations and practical insight from people who&rsquo;ve spent decades solving complex A/V problems in the field.</p>
+        </article>
+
+        <article class="feature">
+          <h3>Keep up with what&rsquo;s new</h3>
+          <p>Product updates, new capabilities, company news and deeper looks at what we&rsquo;re building.</p>
+        </article>
       </div>
-      <div class="cs-web-next__card">
-        <p class="cs-web-next__card-label">Role-specific guidance</p>
-        <p class="cs-web-next__card-body">Guidance for operations, marketing, IT, and ownership &mdash; tuned to what each role actually does.</p>
+
+      <div class="utility">
+        <div class="utility-mark" aria-hidden="true">+</div>
+        <div>
+          <strong>More to come.</strong>
+          <p>We&rsquo;re starting with case studies, use cases, videos, product updates and ideas from the field &mdash; and we&rsquo;ll keep building from there.</p>
+        </div>
       </div>
-      <div class="cs-web-next__card">
-        <p class="cs-web-next__card-label">What LUCI can do</p>
-        <p class="cs-web-next__card-body">Short videos of LUCI use cases and features &mdash; presets and workflows you can use today.</p>
-      </div>
+
+      <p class="close">
+        <strong>Coming this fall.</strong> We&rsquo;ll share the new site here in The Signal as soon as it&rsquo;s live.
+      </p>
+
     </div>
-    <div class="art-body">
-      <p>We&rsquo;ll also have self-serve guides, technical documentation, and real-world stories to sharpen your team&rsquo;s A/V skills and simplify their A/V life.</p>
-      <p>We&rsquo;re ramping up on <a href="https://www.linkedin.com/company/lucisystems">LinkedIn</a> and <a href="https://x.com/lucisys">X</a> in the meantime. Please take a moment to give us a follow.</p>
-    </div>
-    <figure class="social-shot">
-      <a href="https://www.linkedin.com/company/lucisystems" target="_blank" rel="noopener">
-        <img class="social-shot__img" src="assets/social/linkedin-company-header.png?v=1" alt="LUCI Systems company page on LinkedIn" width="1024" height="381" loading="lazy">
-      </a>
-    </figure>
   </section>
 
   <!-- A MINUTE WITH MIKE — recurring CEO column -->
