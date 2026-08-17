@@ -28,10 +28,10 @@
        bottom melts the header into the off-white logo grid. */
     .cx-hero {
       position: relative;
-      flex: 0 0 1.7in;
-      padding: 0.4in 0.6in 0;
+      flex: 0 0 1.5in;
+      padding: 0.5in 0.6in 0;
       background: linear-gradient(to bottom,
-        #0A161C 0%, #0A161C 74%, #10232D 87%, #F5F8FA 100%);
+        #0A161C 0%, #0A161C 70%, #10232D 86%, #F5F8FA 100%);
     }
     /* E-mesh, screen-blended (glows over navy), radially concentrated + faded. */
     .cx-hero::before {
@@ -48,35 +48,24 @@
       pointer-events: none;
       z-index: 0;
     }
-    /* Radial scrim behind the copy so the headline reads cleanly over mesh. */
+    /* Radial scrim behind the title so it reads cleanly over the mesh. */
     .cx-hero::after {
       content: '';
       position: absolute; inset: 0;
-      background: radial-gradient(ellipse 60% 70% at 34% 46%,
-        rgba(7,15,20,0.74) 0%, rgba(7,15,20,0.42) 36%, transparent 80%);
+      background: radial-gradient(ellipse 56% 72% at 32% 50%,
+        rgba(7,15,20,0.72) 0%, rgba(7,15,20,0.42) 36%, transparent 80%);
       pointer-events: none;
       z-index: 0;
     }
     .cx-hero > * { position: relative; z-index: 1; }
-    .cx-hero__kicker {
-      margin: 0 0 10px;
-      font-size: 11px; font-weight: 600; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--mint);
-    }
+    /* Single-line masthead: "LUCI's Clients" — white "LUCI's" + mint "Clients". */
     .cx-hero__title {
-      margin: 0 0 10px;
-      font-size: 26px; font-weight: 700; line-height: 1.1;
+      margin: 0;
+      font-size: 34px; font-weight: 700; line-height: 1.1;
       letter-spacing: -0.025em;
       color: rgba(245, 248, 250, 0.96);
-      max-width: 30ch;
     }
-    .cx-hero__title .cx-hero__accent { color: var(--gold); }
-    .cx-hero__dek {
-      margin: 0; max-width: 56ch;
-      font-family: var(--font-recede);
-      font-size: 14.5px; line-height: 1.5;
-      color: rgba(235, 245, 248, 0.78);
-    }
+    .cx-hero__title .cx-hero__accent { color: var(--mint); }
 
     /* ── Logo grid (continues out of the gradient on off-white) ────────── */
     .cx-body { padding: 0 0.6in 0.55in; flex: 1 1 0; min-height: 0; display: flex; flex-direction: column; }
@@ -112,9 +101,7 @@
   <article class="doc">
     <section class="doc-page doc-page--clients">
       <header class="cx-hero">
-        <p class="cx-hero__kicker">Selected clients</p>
-        <h1 class="cx-hero__title">Where LUCI <span class="cx-hero__accent">has worked</span></h1>
-        <p class="cx-hero__dek">A sample of properties LUCI has worked with across the U.S.</p>
+        <h1 class="cx-hero__title">LUCI&rsquo;s <span class="cx-hero__accent">Clients</span></h1>
       </header>
 
       <div class="cx-body">
