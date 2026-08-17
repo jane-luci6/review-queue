@@ -387,6 +387,11 @@
       z-index: 0;
     }
 
+    /* lighter scrim on Issue 01 so the circuit texture reads through */
+    .issue-card__thumb--01::before {
+      background: linear-gradient(180deg, rgba(16,35,45,0.30) 0%, rgba(10,22,28,0.50) 100%);
+    }
+
     .issue-card__thumb::after {
       content: '';
       position: absolute;
