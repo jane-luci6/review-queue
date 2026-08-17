@@ -333,17 +333,11 @@
     /* Closing stays flat — no mesh, no scrim (keeps the sign-off calm). */
     .closing::before, .closing::after { display: none; }
 
-    /* Quick Tip — let more mesh show on the right side: fade the scrim to
-       transparent earlier on the right (just past the reading column) so
-       the right edge reads richer in mesh. Left side stays as the global
-       symmetric scrim. */
-    #quick-tip::after {
-      background: linear-gradient(to right,
-        rgba(8,18,24,0) 2%,
-        rgba(8,18,24,0.66) 20%,
-        rgba(8,18,24,0.66) 72%,
-        rgba(8,18,24,0) 90%);
-    }
+    /* Quick Tip — solid slate, no mesh (keeps the tip calm and readable). */
+    #quick-tip::before, #quick-tip::after { display: none; }
+
+    /* Quick Tip — solid slate, no mesh/scrim (supersedes the earlier right-side fade,
+       which was for showing more mesh — now that the mesh is off entirely). */
 
     /* Marquee — lead story (In the field). Warm sand + scaled headline; no dark grey block after TOC. */
     .sec--marquee {
@@ -1357,13 +1351,44 @@
     .field-scope {
       margin: clamp(40px, 6vw, 64px) 0 0;
       margin-inline: calc(var(--pad) * -1);
-      background: var(--navy-mid);
+      background: var(--navy-deep);
       color: var(--off-white);
-      border-top: 1px solid rgba(var(--mint-rgb), 0.15);
+      border-top: 4px solid var(--mint);
       position: relative;
       overflow: hidden;
       padding-bottom: clamp(36px, 5vw, 52px);
     }
+    /* Mesh background to match the website's dark closer/ledger sections
+       (the home-ledger pattern): the E-mesh is screen-blended
+       so the mint lines glow over the navy, then a radial mask
+       hides the mesh in the center and shows it at the edges — clear
+       center for the statement, mesh atmosphere around it. A radial
+       scrim behind the dest keeps the headline + supporting
+       line legible. The description (.field-scope__dest-sub) stays
+       directly under the headline (.field-scope__dest-head). */
+    .field-scope::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: url("assets/mesh/luci-bg-hero-1920x1080.svg") center / cover no-repeat;
+      mix-blend-mode: screen;
+      opacity: 0.5;
+      -webkit-mask-image: radial-gradient(ellipse 74% 72% at 50% 42%, transparent 0%, rgba(0,0,0,0.18) 30%, rgba(0,0,0,0.55) 55%, #000 78%);
+              mask-image: radial-gradient(ellipse 74% 72% at 50% 42%, transparent 0%, rgba(0,0,0,0.18) 30%, rgba(0,0,0,0.55) 55%, #000 78%);
+    }
+    .field-scope::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: radial-gradient(ellipse 80% 74% at 50% 46%,
+        rgba(7,15,20,0.78) 0%, rgba(7,15,20,0.55) 32%,
+        rgba(7,15,20,0.25) 55%, transparent 78%);
+    }
+    .field-scope > * { position: relative; z-index: 1; }
     .field-scope__title {
       font-family: var(--body);
       font-size: clamp(22px, 3vw, 30px);
