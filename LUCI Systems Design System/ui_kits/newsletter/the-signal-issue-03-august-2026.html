@@ -1357,13 +1357,12 @@
     .field-scope {
       margin: clamp(40px, 6vw, 64px) 0 0;
       margin-inline: calc(var(--pad) * -1);
-      margin-bottom: calc(clamp(40px, 6vw, 64px) * -1);
       background: var(--navy-mid);
       color: var(--off-white);
       border-top: 1px solid rgba(var(--mint-rgb), 0.15);
       position: relative;
       overflow: hidden;
-      padding-bottom: clamp(28px, 4vw, 40px);
+      padding-bottom: clamp(36px, 5vw, 52px);
     }
     .field-scope__title {
       font-family: var(--body);
@@ -1395,11 +1394,7 @@
       padding: 0 clamp(8px, 1.4vw, 18px);
       position: relative; text-align: center;
     }
-    .field-scope__stats li + li::before {
-      content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
-      height: clamp(32px, 4.6vw, 48px); width: 1px;
-      background: rgba(var(--mint-rgb), 0.18);
-    }
+    .field-scope__stats li + li { border-left: 1px solid rgba(var(--mint-rgb), 0.18); }
     .field-scope__ic { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; flex: none; }
     .field-scope__ic svg { width: 100%; height: 100%; display: block; }
     .field-scope__converge { display: block; width: 100%; height: clamp(52px, 7vw, 76px); margin: 4px 0 -2px; overflow: visible; }
@@ -2500,7 +2495,7 @@
   </section>
 
   <!-- IN THE FIELD — body: before/after + numbered narrative + results on light canvas -->
-  <section class="sec sec--light" aria-labelledby="field-story-title" style="padding-top: clamp(40px, 6vw, 64px); border-bottom: none;">
+  <section class="sec sec--light" aria-labelledby="field-story-title" style="padding-top: clamp(40px, 6vw, 64px); padding-bottom: 0; border-bottom: none;">
 
     <!-- EDIT: optional highlight reel — Jane may shoot a walk-through once the furniture is done.
     <figure class="field-reel field-bleed">
@@ -2588,7 +2583,7 @@
 
       <svg class="field-scope__converge" viewBox="0 0 100 120" preserveAspectRatio="none" aria-hidden="true">
         <defs><linearGradient id="scope-funnel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#edd086" stop-opacity="0.75"/><stop offset="1" stop-color="#68e3be" stop-opacity="0.7"/></linearGradient></defs>
-        <line x1="10" y1="0" x2="50" y2="116" stroke="url(#scope-funnel)"/><line x1="30" y1="0" x2="50" y2="116" stroke="url(#scope-funnel)"/><line x1="50" y1="0" x2="50" y2="116" stroke="url(#scope-funnel)"/><line x1="70" y1="0" x2="50" y2="116" stroke="url(#scope-funnel)"/><line x1="90" y1="0" x2="50" y2="116" stroke="url(#scope-funnel)"/>
+        <line x1="10" y1="0" x2="50" y2="116" stroke="url(#scope-funnel)"/><line x1="30" y1="0" x2="50" y2="116" stroke="url(#scope-funnel)"/><line x1="50" y1="0" x2="50" y2="116" stroke="#68e3be" stroke-width="2"/><line x1="70" y1="0" x2="50" y2="116" stroke="url(#scope-funnel)"/><line x1="90" y1="0" x2="50" y2="116" stroke="url(#scope-funnel)"/>
       </svg>
       <div class="field-scope__arrow" aria-hidden="true"></div>
       <p class="field-scope__dest">One <em>LUCI</em> platform</p>
