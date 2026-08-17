@@ -1336,15 +1336,34 @@
       .field-runs--inline .field-runs__item:last-child { border-bottom: none; }
     }
 
+    /* Race book + results side-by-side for variety */
+    .field-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 40px;
+      align-items: start;
+      margin: clamp(28px, 4vw, 40px) 0 0;
+    }
+    .field-pair .field-num { margin-top: 0; margin-bottom: 0; }
+    .field-pair .field-runs--inline { margin-top: 0; max-width: none; }
+    .field-pair .field-runs--pair .field-runs__list { grid-template-columns: 1fr; }
+    .field-pair .field-runs--pair .field-runs__item:nth-child(n+3) { border-bottom: 1px solid var(--rule-light); }
+    .field-pair .field-runs--pair .field-runs__item:last-child { border-bottom: none; }
+    @media (max-width: 640px) {
+      .field-pair { grid-template-columns: 1fr; gap: 28px; }
+    }
+
     /* Property consolidation story — "many systems -> one platform" closer */
     .field-scope {
       margin: clamp(40px, 6vw, 64px) 0 0;
       margin-inline: calc(var(--pad) * -1);
-      background: var(--navy-deep);
+      margin-bottom: calc(clamp(40px, 6vw, 64px) * -1);
+      background: var(--navy-mid);
       color: var(--off-white);
-      border-top: 3px solid var(--mint);
+      border-top: 1px solid rgba(var(--mint-rgb), 0.15);
       position: relative;
       overflow: hidden;
+      padding-bottom: clamp(28px, 4vw, 40px);
     }
     .field-scope__title {
       font-family: var(--body);
@@ -1384,7 +1403,7 @@
     .field-scope__ic { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; flex: none; }
     .field-scope__ic svg { width: 100%; height: 100%; display: block; }
     .field-scope__converge { display: block; width: 100%; height: clamp(52px, 7vw, 76px); margin: 4px 0 -2px; overflow: visible; }
-    .field-scope__converge line { stroke-width: 1; vector-effect: non-scaling-stroke; }
+    .field-scope__converge line { stroke-width: 1.5; vector-effect: non-scaling-stroke; }
     .field-scope__arrow { position: relative; width: clamp(28px, 3vw, 38px); margin: 2px auto 0; }
     .field-scope__arrow::before {
       content: ''; display: block; width: clamp(6px, 0.8vw, 9px); height: clamp(28px, 4vw, 46px); margin: 0 auto;
@@ -2481,7 +2500,7 @@
   </section>
 
   <!-- IN THE FIELD — body: before/after + numbered narrative + results on light canvas -->
-  <section class="sec sec--light" aria-labelledby="field-story-title" style="padding-top: clamp(40px, 6vw, 64px);">
+  <section class="sec sec--light" aria-labelledby="field-story-title" style="padding-top: clamp(40px, 6vw, 64px); border-bottom: none;">
 
     <!-- EDIT: optional highlight reel — Jane may shoot a walk-through once the furniture is done.
     <figure class="field-reel field-bleed">
@@ -2531,25 +2550,27 @@
       </div>
     </div>
 
-    <div class="field-num">
-      <div class="field-num__head">
-        <h3 class="field-num__title">Bringing the race book on board</h3>
+    <div class="field-pair">
+      <div class="field-num">
+        <div class="field-num__head">
+          <h3 class="field-num__title">Bringing the race book on board</h3>
+        </div>
+        <div class="field-num__rule" aria-hidden="true"></div>
+        <div class="field-num__body">
+          <p>The race book took the same approach. Rather than trench new cable out to every betting carousel, LUCI sent ten channels of its own encoded video back out over the coax already buried under the property &mdash; live racing on existing cable, with no trenching and no new wire pulled through the floor.</p>
+        </div>
       </div>
-      <div class="field-num__rule" aria-hidden="true"></div>
-      <div class="field-num__body">
-        <p>The race book took the same approach. Rather than trench new cable out to every betting carousel, LUCI sent ten channels of its own encoded video back out over the coax already buried under the property &mdash; live racing on existing cable, with no trenching and no new wire pulled through the floor.</p>
-      </div>
-    </div>
 
-    <div class="field-runs field-runs--inline">
-      <h3 class="field-runs__title">What Sam&rsquo;s Town runs now</h3>
-      <div class="field-runs__rule" aria-hidden="true"></div>
-      <ul class="field-runs__list">
-        <li class="field-runs__item">A 480-sq-ft LED wall &mdash; one display where there used to be many</li>
-        <li class="field-runs__item">Six presets across eight video inputs, switched from LUCI</li>
-        <li class="field-runs__item">Three audio zones on the existing system</li>
-        <li class="field-runs__item">Ten channels of race video over existing coax &mdash; no trenching</li>
-      </ul>
+      <div class="field-runs field-runs--inline field-runs--pair">
+        <h3 class="field-runs__title">What Sam&rsquo;s Town runs now</h3>
+        <div class="field-runs__rule" aria-hidden="true"></div>
+        <ul class="field-runs__list">
+          <li class="field-runs__item">A 480-sq-ft LED wall &mdash; one display where there used to be many</li>
+          <li class="field-runs__item">Six presets across eight video inputs, switched from LUCI</li>
+          <li class="field-runs__item">Three audio zones on the existing system</li>
+          <li class="field-runs__item">Ten channels of race video over existing coax &mdash; no trenching</li>
+        </ul>
+      </div>
     </div>
 
     <div class="field-scope">
@@ -2566,7 +2587,7 @@
       </div>
 
       <svg class="field-scope__converge" viewBox="0 0 100 120" preserveAspectRatio="none" aria-hidden="true">
-        <defs><linearGradient id="scope-funnel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#edd086" stop-opacity="0.5"/><stop offset="1" stop-color="#68e3be" stop-opacity="0.45"/></linearGradient></defs>
+        <defs><linearGradient id="scope-funnel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#edd086" stop-opacity="0.75"/><stop offset="1" stop-color="#68e3be" stop-opacity="0.7"/></linearGradient></defs>
         <line x1="10" y1="0" x2="50" y2="116" stroke="url(#scope-funnel)"/><line x1="30" y1="0" x2="50" y2="116" stroke="url(#scope-funnel)"/><line x1="50" y1="0" x2="50" y2="116" stroke="url(#scope-funnel)"/><line x1="70" y1="0" x2="50" y2="116" stroke="url(#scope-funnel)"/><line x1="90" y1="0" x2="50" y2="116" stroke="url(#scope-funnel)"/>
       </svg>
       <div class="field-scope__arrow" aria-hidden="true"></div>
