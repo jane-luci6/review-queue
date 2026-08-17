@@ -1319,29 +1319,29 @@
       line-height: 1.5;
       color: #354F5C;
     }
-    /* Results callout — contained highlight within the light story */
-    .field-callout {
-      max-width: 760px;
-      margin: clamp(32px, 5vw, 48px) 0 0;
-      background: var(--navy-deep);
-      border-left: 4px solid var(--mint);
-      padding: clamp(28px, 4vw, 40px) clamp(28px, 4vw, 40px);
+    /* Results — compact light 2-column list (no box; lets the LUCI to Date closer stand out) */
+    .field-runs--inline { max-width: 760px; margin: clamp(28px, 4vw, 40px) 0 0; }
+    .field-runs--inline .field-runs__title { font-size: clamp(18px, 2.4vw, 22px); margin-bottom: 10px; }
+    .field-runs--inline .field-runs__rule { margin: 0 0 8px; }
+    .field-runs--inline .field-runs__list {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0 28px;
     }
-    .field-runs--callout { max-width: none; }
-    .field-runs--callout .field-runs__title { color: var(--off-white); font-size: clamp(24px, 3vw, 30px); }
-    .field-runs--callout .field-runs__rule { background: var(--mint); }
-    .field-runs--callout .field-runs__item {
-      color: rgba(235, 245, 248, 0.9);
-      border-bottom-color: rgba(var(--mint-rgb), 0.18);
-      font-size: 16px;
+    .field-runs--inline .field-runs__item {
+      padding: 10px 0; font-size: 14.5px; line-height: 1.45;
+    }
+    .field-runs--inline .field-runs__item:nth-child(n+3) { border-bottom: none; }
+    @media (max-width: 640px) {
+      .field-runs--inline .field-runs__list { grid-template-columns: 1fr; }
+      .field-runs--inline .field-runs__item:nth-child(n+3) { border-bottom: 1px solid var(--rule-light); }
+      .field-runs--inline .field-runs__item:last-child { border-bottom: none; }
     }
 
     /* Property consolidation story — "many systems -> one platform" closer */
     .field-scope {
       margin: clamp(40px, 6vw, 64px) 0 0;
+      margin-inline: calc(var(--pad) * -1);
       background: var(--navy-deep);
       color: var(--off-white);
-      padding: clamp(36px, 5vw, 56px) clamp(28px, 5vw, 48px);
       border-top: 3px solid var(--mint);
       position: relative;
       overflow: hidden;
@@ -1354,6 +1354,7 @@
       letter-spacing: -0.025em;
       color: var(--off-white);
       margin: 0 0 clamp(22px, 3vw, 32px);
+      padding: clamp(36px, 5vw, 56px) var(--pad) 0;
       text-align: center;
     }
     .field-scope__title em { font-style: normal; color: var(--mint); }
@@ -1366,14 +1367,14 @@
       -webkit-overflow-scrolling: touch;
     }
     .field-scope__stats {
-      list-style: none; margin: 0; padding: clamp(18px, 2.4vw, 26px) clamp(6px, 1.6vw, 12px);
-      display: flex; align-items: center; justify-content: center;
-      white-space: nowrap;
+      list-style: none; margin: 0; padding: clamp(18px, 2.4vw, 26px) 0;
+      display: flex; align-items: stretch; justify-content: center;
     }
     .field-scope__stats li {
-      display: inline-flex; align-items: center; gap: 12px;
-      padding: 0 clamp(16px, 2.4vw, 28px);
-      position: relative;
+      flex: 1 1 0; min-width: 140px;
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      padding: 0 clamp(8px, 1.4vw, 18px);
+      position: relative; text-align: center;
     }
     .field-scope__stats li + li::before {
       content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
@@ -1382,7 +1383,7 @@
     }
     .field-scope__ic { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; flex: none; }
     .field-scope__ic svg { width: 100%; height: 100%; display: block; }
-    .field-scope__converge { display: block; width: min(620px, 92%); height: clamp(52px, 7vw, 76px); margin: 4px auto -2px; overflow: visible; }
+    .field-scope__converge { display: block; width: 100%; height: clamp(52px, 7vw, 76px); margin: 4px 0 -2px; overflow: visible; }
     .field-scope__converge line { stroke-width: 1; vector-effect: non-scaling-stroke; }
     .field-scope__arrow { position: relative; width: clamp(28px, 3vw, 38px); margin: 2px auto 0; }
     .field-scope__arrow::before {
@@ -1407,7 +1408,7 @@
     }
     .field-scope__label {
       font-family: 'Inter', system-ui, sans-serif; font-size: 12px; line-height: 1.3;
-      letter-spacing: 0.02em; color: rgba(235, 245, 248, 0.7);
+      letter-spacing: 0.02em; color: rgba(235, 245, 248, 0.7); white-space: normal;
     }
 
     .field-figure { margin: 16px 0; }
@@ -2540,17 +2541,15 @@
       </div>
     </div>
 
-    <div class="field-callout">
-      <div class="field-runs field-runs--callout">
-        <h3 class="field-runs__title">What Sam's Town runs now</h3>
-        <div class="field-runs__rule" aria-hidden="true"></div>
-        <ul class="field-runs__list">
-          <li class="field-runs__item">A 480-square-foot LED wall, built and installed by LUCI: one multi-screen display where there used to be many</li>
-          <li class="field-runs__item">Six presets across eight video inputs, switched from the LUCI platform</li>
-          <li class="field-runs__item">Three audio zones &mdash; the floor split in two, plus the bar &mdash; on the existing system</li>
-          <li class="field-runs__item">Ten channels of race video over existing coax: no trenching, no new cable, no complications</li>
-        </ul>
-      </div>
+    <div class="field-runs field-runs--inline">
+      <h3 class="field-runs__title">What Sam&rsquo;s Town runs now</h3>
+      <div class="field-runs__rule" aria-hidden="true"></div>
+      <ul class="field-runs__list">
+        <li class="field-runs__item">A 480-sq-ft LED wall &mdash; one display where there used to be many</li>
+        <li class="field-runs__item">Six presets across eight video inputs, switched from LUCI</li>
+        <li class="field-runs__item">Three audio zones on the existing system</li>
+        <li class="field-runs__item">Ten channels of race video over existing coax &mdash; no trenching</li>
+      </ul>
     </div>
 
     <div class="field-scope">
