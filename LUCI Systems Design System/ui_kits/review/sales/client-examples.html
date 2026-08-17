@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>LUCI — Client Examples</title>
+  <!-- Static brand fonts (Inter + Space Grotesk + Syncopate) — self-contained, PDF-safe. No Google Fonts <link>. -->
+  <link rel="stylesheet" href="/assets/fonts/luci-brand-fonts.css">
+  <link rel="stylesheet" href="sales-document.css?v=3">
+  <style>
+    /* LUCI Client Examples — single-page logo sheet (PDF-first, US Letter, Track C).
+       Header: the LUCI E-mesh (mint lines + nodes) over a navy->off-white
+       gradient that bleeds down into the content — no boxy band, no hard
+       mint bar. The 16 client logos are pre-rendered monochrome so the only
+       color on the page is LUCI's. Follows luci-sales-document-system.mdc +
+       luci-dual-accent-system.mdc. */
+    .doc-page--clients { padding: 0; background: var(--off-white); }
+
+    /* ── Mesh hero — Variant A: atmospheric mesh (closest to homepage intro-c) ──
+       Compact (~1.6in) navy masthead. The E-mesh is screen-blended over the
+       navy so the mint lines glow (luminous, not a flat pattern), then a
+       radial mask concentrates the mesh center-left and fades it to nothing
+       at the edges — atmosphere, not texture. A radial scrim darkens behind
+       the headline so text stays legible over the mesh. Mint carries the
+       kicker (structure), gold carries the headline accent (highlight) —
+       the mint-primary-gold-secondary pairing. A short gradient bleed at the
+       bottom melts the header into the off-white logo grid. */
+    .cx-hero {
+      position: relative;
+      flex: 0 0 1.7in;
+      padding: 0.5in 0.6in 0;
+      background: linear-gradient(to bottom,
+        #0A161C 0%, #0A161C 72%, #10232D 88%, #F5F8FA 100%);
+    }
+    /* E-mesh — the same transparent mesh-lines the website uses
+       (luci-bg-hero-mesh-lines), screen-blended so the mint lines glow
+       over the navy. Mesh shows across most of the header (only a gentle
+       fade at the far edges) so it reads as a real background, not a faint
+       center blob. A lighter radial scrim sits behind the title for
+       legibility without killing the mesh. */
+    .cx-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url('assets/textures/luci-bg-hero-mesh-lines-1920x1080.svg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center top;
+      mix-blend-mode: screen;
+      -webkit-mask-image: radial-gradient(ellipse 96% 94% at 44% 38%, #000 38%, rgba(0,0,0,0.55) 74%, transparent 100%);
+              mask-image: radial-gradient(ellipse 96% 94% at 44% 38%, #000 38%, rgba(0,0,0,0.55) 74%, transparent 100%);
+      opacity: 0.9;
+      pointer-events: none;
+      z-index: 0;
+    }
+    /* Radial scrim behind the title (upper-left) so it reads cleanly
+       over the mesh; kept light so the mesh still glows through. */
+    .cx-hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 48% 70% at 26% 48%,
+        rgba(7,15,20,0.66) 0%, rgba(7,15,20,0.3) 46%, transparent 80%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .cx-hero > * { position: relative; z-index: 1; }
+    /* Masthead: "LUCI's Clients" — white "LUCI's" + mint "Clients". */
+    .cx-hero__title {
+      margin: 0 0 12px;
+      font-size: 30px; font-weight: 700; line-height: 1.1;
+      letter-spacing: -0.025em;
+      color: rgba(245, 248, 250, 0.96);
+    }
+    .cx-hero__title .cx-hero__accent { color: var(--mint); }
+    .cx-hero__dek {
+      margin: 0; max-width: 56ch;
+      font-family: var(--font-recede);
+      font-size: 14.5px; line-height: 1.5;
+      color: rgba(235, 245, 248, 0.78);
+    }
+
+    /* ── Logo grid (continues out of the gradient on off-white) ────────── */
+    .cx-body { padding: 0 0.6in 0.55in; flex: 1 1 0; min-height: 0; display: flex; flex-direction: column; }
+    .cx-grid {
+      flex: 1 1 0; min-height: 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 1fr;
+      gap: 0;
+    }
+    .cx-cell {
+      display: flex; align-items: center; justify-content: center;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--rule-light);
+    }
+    .cx-grid .cx-cell:nth-child(n+13) { border-bottom: 0; }
+    .cx-cell img {
+      max-width: 100%; max-height: 100%;
+      width: auto; height: auto;
+      object-fit: contain; display: block;
+    }
+    .doc-page--clients .doc-foot { flex: 0 0 auto; padding: 16px 0 0; }
+
+    @media print {
+      .doc-page--clients, .cx-hero, .cx-hero::before, .cx-cell {
+        -webkit-print-color-adjust: exact; print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body>
+  <article class="doc">
+    <section class="doc-page doc-page--clients">
+      <header class="cx-hero">
+        <h1 class="cx-hero__title">LUCI&rsquo;s <span class="cx-hero__accent">Clients</span></h1>
+        <p class="cx-hero__dek">A sample of properties LUCI has worked with across the U.S.</p>
+      </header>
+
+      <div class="cx-body">
+        <div class="cx-grid" aria-label="Client logos">
+          <div class="cx-cell"><img src="assets/clients-mono/yaamava.png" alt="Yaamava' Resort &amp; Casino at San Manuel"></div>
+          <div class="cx-cell"><img src="assets/clients-mono/cache-creek.png" alt="Cache Creek Casino Resort"></div>
+          <div class="cx-cell"><img src="assets/clients-mono/northern-quest.png" alt="Northern Quest Resort &amp; Casino"></div>
+          <div class="cx-cell"><img src="assets/clients-mono/horseshoe.png" alt="Horseshoe"></div>
+          <div class="cx-cell"><img src="assets/clients-mono/santa-ana-star.png" alt="Santa Ana Star Casino Hotel"></div>
+          <div class="cx-cell"><img src="assets/clients-mono/belterra-park.png" alt="Belterra Park Cincinnati"></div>
+          <div class="cx-cell"><img src="assets/clients-mono/choctaw.png" alt="Choctaw Casinos &amp; Resorts"></div>
+          <div class="cx-cell"><img src="assets/clients-mono/osage.png" alt="Osage Casino Hotel"></div>
+          <div class="cx-cell"><img src="assets/clients-mono/valley-view.png" alt="Valley View Casino &amp; Hotel"></div>
+          <div class="cx-cell"><img src="assets/clients-mono/spotlight-29.png" alt="Spotlight 29 Casino"></div>
+          <div class="cx-cell"><img src="assets/clients-mono/ameristar.png" alt="Ameristar Casino Hotel"></div>
+          <div class="cx-cell"><img src="assets/clients-mono/turtle-creek.png" alt="Turtle Creek Casino &amp; Hotel"></div>
+          <div class="cx-cell"><img src="assets/clients-mono/caesars-sportsbook.png" alt="Caesars Sportsbook"></div>
+          <div class="cx-cell"><img src="assets/clients-mono/isleta.png" alt="Isleta Resort &amp; Casino"></div>
+          <div class="cx-cell"><img src="assets/clients-mono/stanly-ranch.png" alt="Stanly Ranch, Auberge Resorts Collection, Napa Valley"></div>
+          <div class="cx-cell"><img src="assets/clients-mono/spirit-mountain.png" alt="Spirit Mountain Casino"></div>
+        </div>
+
+        <div class="doc-foot">
+          <span>LUCI Systems, Inc. &middot; Las Vegas, NV</span>
+          <span>lucisystems.com &middot; (833) 333-5868</span>
+        </div>
+      </div>
+    </section>
+  </article>
+</body>
+</html>

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-03",
+  "updated": "2026-08-17",
   "publishNote": "Build (npm run build:review) outputs to ui_kits/review. Bump reviewVersion + versionNote for new uploads (version history shown in portal). Set dueForReview for first-time review. Comments/approvals sync server-side via the comments_api container (proxied at /api/comments); Jane sees Mike/Mark's feedback on refresh. Archive with scripts/pull-review-comments.mjs.",
   "previewBaseUrl": "",
   "commentsApiUrl": "http://10.10.1.17:8081/api/comments",
@@ -8,17 +8,17 @@
     {
       "title": "Messaging guide",
       "url": "messaging/messaging-guide.html",
-      "note": "Updated Aug 3, 2026"
+      "note": "Updated Aug 17, 2026"
     },
     {
       "title": "LUCI philosophy",
       "url": "messaging/philosophy.html",
-      "note": "Updated Aug 3, 2026"
+      "note": "Updated Aug 17, 2026"
     },
     {
       "title": "Personas",
       "url": "messaging/personas.html",
-      "note": "Updated Aug 3, 2026"
+      "note": "Updated Aug 17, 2026"
     }
   ],
   "inProgress": [],
@@ -435,6 +435,28 @@
           "note": "Marked as the customer version (links to LUCI’s support portal — customers have access)."
         }
       ]
+    },
+    {
+      "id": "client-examples",
+      "title": "Client examples",
+      "summary": "One-page LUCI-branded logo sheet — a sample of properties LUCI has worked with across the U.S. Print-ready PDF for the sales team to attach to prospect emails asking where else we’ve worked.",
+      "approved": "2026-08-17",
+      "note": "First portal release — single-page roster (16 client logos, monochrome) with the LUCI E-mesh header. Industry proof for prospect outreach.",
+      "reviewVersion": 1,
+      "versionNote": "First portal release — single-page client roster with E-mesh header; monochrome logos so the only color on the page is LUCI’s.",
+      "hubPreviewPath": "ui_kits/sales/client-examples.html",
+      "previewUrl": "sales/client-examples.html",
+      "reviewBrief": {
+        "description": "A one-page, print-ready logo sheet LUCI attaches to prospect emails when asked for past work. Sixteen client logos in monochrome over the LUCI E-mesh header, with the LUCI Systems footer.",
+        "reviewAsk": "whether the roster reads on-brand and the header mesh matches the website — finalized for the sales team to download and send."
+      },
+      "versionHistory": [
+        {
+          "version": 1,
+          "published": "2026-08-17",
+          "note": "First portal release — single-page client roster with E-mesh header matching the website."
+        }
+      ]
     }
   ],
   "upcoming": [
@@ -446,5 +468,5 @@
     }
   ],
   "finalized": [],
-  "messagingDocsUpdated": "2026-08-03"
+  "messagingDocsUpdated": "2026-08-17"
 }
