@@ -1346,39 +1346,41 @@
       position: relative;
       overflow: hidden;
     }
-    .field-scope__head { max-width: 640px; margin-bottom: clamp(28px, 4vw, 40px); }
     .field-scope__title {
       font-family: var(--body);
-      font-size: clamp(24px, 3.2vw, 32px);
+      font-size: clamp(22px, 3vw, 30px);
       font-weight: 800;
       line-height: 1.1;
       letter-spacing: -0.025em;
       color: var(--off-white);
-      margin: 0 0 12px;
-    }
-    .field-scope__lede {
-      font-family: 'Inter', system-ui, sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
-      color: rgba(235, 245, 248, 0.78);
-      margin: 0;
-    }
-    .field-scope__funnel { text-align: center; margin-bottom: clamp(28px, 4vw, 40px); }
-    .field-scope__systems {
-      list-style: none; margin: 0; padding: clamp(24px, 3vw, 36px) 0;
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 1px;
-      background: rgba(var(--mint-rgb), 0.18);
-      border-top: 1px solid rgba(var(--mint-rgb), 0.2);
-      border-bottom: 1px solid rgba(var(--mint-rgb), 0.2);
-    }
-    .field-scope__systems li {
-      background: var(--navy-deep);
-      padding: 22px 16px 24px;
-      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      margin: 0 0 clamp(22px, 3vw, 32px);
       text-align: center;
     }
-    .field-scope__ic { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; flex: none; }
+    .field-scope__title em { font-style: normal; color: var(--mint); }
+    .field-scope__lede { display: none; }
+    .field-scope__ticker {
+      margin: 0 0 clamp(18px, 2.4vw, 26px);
+      border-top: 1px solid rgba(var(--mint-rgb), 0.2);
+      border-bottom: 1px solid rgba(var(--mint-rgb), 0.2);
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .field-scope__stats {
+      list-style: none; margin: 0; padding: clamp(18px, 2.4vw, 26px) clamp(6px, 1.6vw, 12px);
+      display: flex; align-items: center; justify-content: center;
+      white-space: nowrap;
+    }
+    .field-scope__stats li {
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 0 clamp(16px, 2.4vw, 28px);
+      position: relative;
+    }
+    .field-scope__stats li + li::before {
+      content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+      height: clamp(32px, 4.6vw, 48px); width: 1px;
+      background: rgba(var(--mint-rgb), 0.18);
+    }
+    .field-scope__ic { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; flex: none; }
     .field-scope__ic svg { width: 100%; height: 100%; display: block; }
     .field-scope__converge { display: block; width: min(620px, 92%); height: clamp(52px, 7vw, 76px); margin: 4px auto -2px; overflow: visible; }
     .field-scope__converge line { stroke-width: 1; vector-effect: non-scaling-stroke; }
@@ -1396,23 +1398,16 @@
     }
     .field-scope__dest {
       font-family: var(--body); font-weight: 800; letter-spacing: -0.02em;
-      font-size: clamp(22px, 3vw, 30px); color: var(--off-white); margin: 14px 0 0;
+      font-size: clamp(22px, 3vw, 30px); color: var(--off-white); margin: 14px 0 0; text-align: center;
     }
     .field-scope__dest em { font-style: normal; color: var(--mint); }
     .field-scope__num {
-      font-family: var(--display); font-size: clamp(30px, 4vw, 44px); font-weight: 700;
+      font-family: var(--display); font-size: clamp(26px, 3.4vw, 38px); font-weight: 700;
       line-height: 1; letter-spacing: -0.03em; color: var(--mint);
     }
     .field-scope__label {
-      font-family: 'Inter', system-ui, sans-serif; font-size: 12.5px; line-height: 1.4;
-      letter-spacing: 0.02em; color: rgba(235, 245, 248, 0.72);
-    }
-    .field-scope__close {
-      font-family: 'Inter', system-ui, sans-serif; font-size: 15px; line-height: 1.6;
-      color: rgba(235, 245, 248, 0.7); max-width: 60ch; margin: 0;
-    }
-    @media (max-width: 640px) {
-      .field-scope__systems { grid-template-columns: repeat(2, 1fr); }
+      font-family: 'Inter', system-ui, sans-serif; font-size: 12px; line-height: 1.3;
+      letter-spacing: 0.02em; color: rgba(235, 245, 248, 0.7);
     }
 
     .field-figure { margin: 16px 0; }
@@ -2559,49 +2554,24 @@
     </div>
 
     <div class="field-scope">
-      <div class="field-scope__head">
-        <h3 class="field-scope__title">The whole property on one platform</h3>
-        <p class="field-scope__lede">The full scope LUCI runs at Sam&rsquo;s Town &mdash; every endpoint, zone, and channel consolidated from a stack of separate systems and vendors onto a single platform your team controls from anywhere.</p>
-      </div>
+      <h3 class="field-scope__title">Sam&rsquo;s Town on LUCI <em>to Date</em></h3>
 
-      <div class="field-scope__funnel">
-        <ul class="field-scope__systems">
-          <li>
-            <span class="field-scope__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="13" rx="2" fill="#68E3BE" fill-opacity="0.20" stroke="#2b9e80" stroke-width="1.8"/><path d="M9 21h6M12 17v4" stroke="#2b9e80" stroke-width="1.8" stroke-linecap="round"/><circle cx="17.5" cy="8" r="1.5" fill="#CEB06E"/></svg></span>
-            <span class="field-scope__num">143</span>
-            <span class="field-scope__label">Video endpoints</span>
-          </li>
-          <li>
-            <span class="field-scope__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 9v6h3l5 4V5L7 9H4Z" fill="#68E3BE" fill-opacity="0.20" stroke="#2b9e80" stroke-width="1.8" stroke-linejoin="round"/><path d="M15 8.5c1.5 2 1.5 5 0 7M17.5 6c2.5 3 2.5 9 0 12" stroke="#CEB06E" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-            <span class="field-scope__num">88</span>
-            <span class="field-scope__label">Audio zones</span>
-          </li>
-          <li>
-            <span class="field-scope__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" fill="#68E3BE" fill-opacity="0.20" stroke="#2b9e80" stroke-width="1.8"/><path d="M10 9l6 3-6 3V9Z" fill="#CEB06E"/></svg></span>
-            <span class="field-scope__num">92</span>
-            <span class="field-scope__label">DirectTV channels</span>
-          </li>
-          <li>
-            <span class="field-scope__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="11" rx="1.5" fill="#68E3BE" fill-opacity="0.20" stroke="#2b9e80" stroke-width="1.8"/><path d="M12 14v6M8 20h8" stroke="#2b9e80" stroke-width="1.8" stroke-linecap="round"/><path d="M7 7h6" stroke="#CEB06E" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-            <span class="field-scope__num">45</span>
-            <span class="field-scope__label">Custom CMS/signage channels</span>
-          </li>
-          <li>
-            <span class="field-scope__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" fill="#68E3BE" fill-opacity="0.18" stroke="#2b9e80" stroke-width="1.8"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18" stroke="#2b9e80" stroke-width="1.4"/><rect x="9" y="9" width="6" height="6" fill="#CEB06E" fill-opacity="0.9"/></svg></span>
-            <span class="field-scope__num">4</span>
-            <span class="field-scope__label">Content interfaces</span>
-          </li>
+      <div class="field-scope__ticker">
+        <ul class="field-scope__stats">
+          <li><span class="field-scope__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="13" rx="2" fill="#68E3BE" fill-opacity="0.20" stroke="#2b9e80" stroke-width="1.8"/><path d="M9 21h6M12 17v4" stroke="#2b9e80" stroke-width="1.8" stroke-linecap="round"/><circle cx="17.5" cy="8" r="1.5" fill="#CEB06E"/></svg></span><span class="field-scope__num">143</span><span class="field-scope__label">Video endpoints</span></li>
+          <li><span class="field-scope__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 9v6h3l5 4V5L7 9H4Z" fill="#68E3BE" fill-opacity="0.20" stroke="#2b9e80" stroke-width="1.8" stroke-linejoin="round"/><path d="M15 8.5c1.5 2 1.5 5 0 7M17.5 6c2.5 3 2.5 9 0 12" stroke="#CEB06E" stroke-width="1.8" stroke-linecap="round"/></svg></span><span class="field-scope__num">88</span><span class="field-scope__label">Audio zones</span></li>
+          <li><span class="field-scope__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" fill="#68E3BE" fill-opacity="0.20" stroke="#2b9e80" stroke-width="1.8"/><path d="M10 9l6 3-6 3V9Z" fill="#CEB06E"/></svg></span><span class="field-scope__num">92</span><span class="field-scope__label">DirectTV channels</span></li>
+          <li><span class="field-scope__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="11" rx="1.5" fill="#68E3BE" fill-opacity="0.20" stroke="#2b9e80" stroke-width="1.8"/><path d="M12 14v6M8 20h8" stroke="#2b9e80" stroke-width="1.8" stroke-linecap="round"/><path d="M7 7h6" stroke="#CEB06E" stroke-width="1.8" stroke-linecap="round"/></svg></span><span class="field-scope__num">45</span><span class="field-scope__label">CMS/signage channels</span></li>
+          <li><span class="field-scope__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" fill="#68E3BE" fill-opacity="0.18" stroke="#2b9e80" stroke-width="1.8"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18" stroke="#2b9e80" stroke-width="1.4"/><rect x="9" y="9" width="6" height="6" fill="#CEB06E" fill-opacity="0.9"/></svg></span><span class="field-scope__num">4</span><span class="field-scope__label">Content interfaces</span></li>
         </ul>
-
-        <svg class="field-scope__converge" viewBox="0 0 100 120" preserveAspectRatio="none" aria-hidden="true">
-          <defs><linearGradient id="scope-funnel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#edd086" stop-opacity="0.5"/><stop offset="1" stop-color="#68e3be" stop-opacity="0.45"/></linearGradient></defs>
-          <line x1="10" y1="0" x2="50" y2="116" stroke="url(#scope-funnel)"/><line x1="30" y1="0" x2="50" y2="116" stroke="url(#scope-funnel)"/><line x1="50" y1="0" x2="50" y2="116" stroke="url(#scope-funnel)"/><line x1="70" y1="0" x2="50" y2="116" stroke="url(#scope-funnel)"/><line x1="90" y1="0" x2="50" y2="116" stroke="url(#scope-funnel)"/>
-        </svg>
-        <div class="field-scope__arrow" aria-hidden="true"></div>
-        <p class="field-scope__dest">One <em>LUCI</em> platform</p>
       </div>
 
-      <p class="field-scope__close">Many systems, one property, one platform &mdash; every endpoint, zone, and channel above, run from anywhere by the team that already runs the building.</p>
+      <svg class="field-scope__converge" viewBox="0 0 100 120" preserveAspectRatio="none" aria-hidden="true">
+        <defs><linearGradient id="scope-funnel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#edd086" stop-opacity="0.5"/><stop offset="1" stop-color="#68e3be" stop-opacity="0.45"/></linearGradient></defs>
+        <line x1="10" y1="0" x2="50" y2="116" stroke="url(#scope-funnel)"/><line x1="30" y1="0" x2="50" y2="116" stroke="url(#scope-funnel)"/><line x1="50" y1="0" x2="50" y2="116" stroke="url(#scope-funnel)"/><line x1="70" y1="0" x2="50" y2="116" stroke="url(#scope-funnel)"/><line x1="90" y1="0" x2="50" y2="116" stroke="url(#scope-funnel)"/>
+      </svg>
+      <div class="field-scope__arrow" aria-hidden="true"></div>
+      <p class="field-scope__dest">One <em>LUCI</em> platform</p>
     </div>
   </section>
 
