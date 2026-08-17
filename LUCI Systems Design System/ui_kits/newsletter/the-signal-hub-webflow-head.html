@@ -49,6 +49,17 @@
       overflow: hidden;
     }
 
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: url("https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a7e091df18dd3a992d8ac82_luci-bg-hero-1920x1080.svg") right center / cover no-repeat;
+      mix-blend-mode: screen;
+      opacity: 0.42;
+    }
+
     .hero::after {
       content: '';
       display: block;
@@ -67,6 +78,8 @@
       padding-bottom: 16px;
       margin-bottom: 16px;
       border-bottom: 1px solid rgba(var(--mint-rgb), 0.15);
+      position: relative;
+      z-index: 1;
     }
 
     .hero__logo img { height: 28px; display: block; }
@@ -337,11 +350,28 @@
     }
 
     .issue-card__thumb {
-      background: var(--navy);
+      background-color: var(--navy);
+      background-size: cover;
+      background-position: center;
       padding: 28px 22px 24px;
-      min-height: 140px;
+      min-height: 160px;
       position: relative;
       overflow: hidden;
+    }
+
+    /* per-issue case-study photo behind a navy scrim */
+    .issue-card__thumb--03 { background-image: url("https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a8262920aadc1f23defc4dd_AFter_5155.jpeg"); }
+    /* EDIT: upload tachi slider-after-web.jpg to Webflow Assets, then uncomment and paste the CDN URL */
+    /* .issue-card__thumb--02 { background-image: url("REPLACE_WITH_TACHI_SLIDER_AFTER_CDN"); } */
+    /* EDIT: upload texture-circuit-navy-steel.png to Webflow Assets, then uncomment and paste the CDN URL */
+    /* .issue-card__thumb--01 { background-image: url("REPLACE_WITH_CIRCUIT_TEXTURE_CDN"); } */
+
+    .issue-card__thumb::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(16,35,45,0.55) 0%, rgba(10,22,28,0.82) 100%);
+      z-index: 0;
     }
 
     .issue-card__thumb::after {
@@ -350,6 +380,7 @@
       bottom: 0; left: 0; right: 0;
       height: 3px;
       background: var(--mint);
+      z-index: 2;
     }
 
     .issue-card__num {
@@ -358,10 +389,11 @@
       font-weight: 700;
       line-height: 1;
       letter-spacing: -0.04em;
-      color: rgba(var(--mint-rgb), 0.35);
+      color: rgba(var(--mint-rgb), 0.5);
       position: absolute;
       top: 12px;
       right: 14px;
+      z-index: 1;
     }
 
     .issue-card__status {
@@ -371,6 +403,8 @@
       letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--mint);
+      position: relative;
+      z-index: 1;
     }
 
     .issue-card__body {
