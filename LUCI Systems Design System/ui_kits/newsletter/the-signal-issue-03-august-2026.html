@@ -1411,11 +1411,11 @@
       border-top: clamp(17px, 1.9vw, 24px) solid var(--mint);
       filter: drop-shadow(0 6px 12px rgba(var(--mint-rgb), 0.5));
     }
-    .field-scope__dest {
-      font-family: var(--body); font-weight: 800; letter-spacing: -0.02em;
-      font-size: clamp(22px, 3vw, 30px); color: var(--off-white); margin: 14px 0 0; text-align: center;
-    }
-    .field-scope__dest em { font-style: normal; color: var(--mint); }
+    .field-scope__dest { display: flex; flex-direction: column; align-items: center; gap: 12px; margin: 20px 0 0; }
+    .field-scope__dest-rule { width: 40px; height: 3px; background: var(--mint); }
+    .field-scope__dest-head { font-family: var(--body); font-weight: 800; letter-spacing: -0.02em; font-size: clamp(28px, 4vw, 40px); color: var(--off-white); text-align: center; margin: 0; }
+    .field-scope__dest-head em { font-style: normal; color: var(--mint); }
+    .field-scope__dest-sub { font-family: 'Inter', system-ui, sans-serif; font-size: clamp(14px, 1.6vw, 17px); color: rgba(235,245,248,0.72); text-align: center; margin: 0; max-width: 46ch; line-height: 1.5; }
     .field-scope__num {
       font-family: var(--display); font-size: clamp(26px, 3.4vw, 38px); font-weight: 700;
       line-height: 1; letter-spacing: -0.03em; color: var(--mint);
@@ -2586,7 +2586,11 @@
         <line x1="10" y1="0" x2="50" y2="116" stroke="url(#scope-funnel)"/><line x1="30" y1="0" x2="50" y2="116" stroke="url(#scope-funnel)"/><line x1="50" y1="0" x2="50" y2="116" stroke="#68e3be" stroke-width="2"/><line x1="70" y1="0" x2="50" y2="116" stroke="url(#scope-funnel)"/><line x1="90" y1="0" x2="50" y2="116" stroke="url(#scope-funnel)"/>
       </svg>
       <div class="field-scope__arrow" aria-hidden="true"></div>
-      <p class="field-scope__dest">One <em>LUCI</em> platform</p>
+      <div class="field-scope__dest">
+        <span class="field-scope__dest-rule" aria-hidden="true"></span>
+        <p class="field-scope__dest-head">One <em>LUCI</em> platform</p>
+        <p class="field-scope__dest-sub">Every endpoint, every zone, every channel — one interface.</p>
+      </div>
     </div>
   </section>
 
