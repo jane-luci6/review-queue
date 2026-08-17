@@ -28,44 +28,56 @@
        bottom melts the header into the off-white logo grid. */
     .cx-hero {
       position: relative;
-      flex: 0 0 1.5in;
+      flex: 0 0 1.7in;
       padding: 0.5in 0.6in 0;
       background: linear-gradient(to bottom,
-        #0A161C 0%, #0A161C 70%, #10232D 86%, #F5F8FA 100%);
+        #0A161C 0%, #0A161C 72%, #10232D 88%, #F5F8FA 100%);
     }
-    /* E-mesh, screen-blended (glows over navy), radially concentrated + faded. */
+    /* E-mesh — the same transparent mesh-lines the website uses
+       (luci-bg-hero-mesh-lines), screen-blended so the mint lines glow
+       over the navy. Mesh shows across most of the header (only a gentle
+       fade at the far edges) so it reads as a real background, not a faint
+       center blob. A lighter radial scrim sits behind the title for
+       legibility without killing the mesh. */
     .cx-hero::before {
       content: '';
       position: absolute; inset: 0;
-      background-image: url('assets/textures/luci-e-mesh-header-transparent.svg');
+      background-image: url('assets/textures/luci-bg-hero-mesh-lines-1920x1080.svg');
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center top;
       mix-blend-mode: screen;
-      -webkit-mask-image: radial-gradient(ellipse 72% 82% at 38% 42%, #000 0%, rgba(0,0,0,0.55) 38%, transparent 80%);
-              mask-image: radial-gradient(ellipse 72% 82% at 38% 42%, #000 0%, rgba(0,0,0,0.55) 38%, transparent 80%);
-      opacity: 0.85;
+      -webkit-mask-image: radial-gradient(ellipse 96% 94% at 44% 38%, #000 38%, rgba(0,0,0,0.55) 74%, transparent 100%);
+              mask-image: radial-gradient(ellipse 96% 94% at 44% 38%, #000 38%, rgba(0,0,0,0.55) 74%, transparent 100%);
+      opacity: 0.9;
       pointer-events: none;
       z-index: 0;
     }
-    /* Radial scrim behind the title so it reads cleanly over the mesh. */
+    /* Radial scrim behind the title (upper-left) so it reads cleanly
+       over the mesh; kept light so the mesh still glows through. */
     .cx-hero::after {
       content: '';
       position: absolute; inset: 0;
-      background: radial-gradient(ellipse 56% 72% at 32% 50%,
-        rgba(7,15,20,0.72) 0%, rgba(7,15,20,0.42) 36%, transparent 80%);
+      background: radial-gradient(ellipse 48% 70% at 26% 48%,
+        rgba(7,15,20,0.66) 0%, rgba(7,15,20,0.3) 46%, transparent 80%);
       pointer-events: none;
       z-index: 0;
     }
     .cx-hero > * { position: relative; z-index: 1; }
-    /* Single-line masthead: "LUCI's Clients" — white "LUCI's" + mint "Clients". */
+    /* Masthead: "LUCI's Clients" — white "LUCI's" + mint "Clients". */
     .cx-hero__title {
-      margin: 0;
-      font-size: 34px; font-weight: 700; line-height: 1.1;
+      margin: 0 0 12px;
+      font-size: 30px; font-weight: 700; line-height: 1.1;
       letter-spacing: -0.025em;
       color: rgba(245, 248, 250, 0.96);
     }
     .cx-hero__title .cx-hero__accent { color: var(--mint); }
+    .cx-hero__dek {
+      margin: 0; max-width: 56ch;
+      font-family: var(--font-recede);
+      font-size: 14.5px; line-height: 1.5;
+      color: rgba(235, 245, 248, 0.78);
+    }
 
     /* ── Logo grid (continues out of the gradient on off-white) ────────── */
     .cx-body { padding: 0 0.6in 0.55in; flex: 1 1 0; min-height: 0; display: flex; flex-direction: column; }
@@ -102,6 +114,7 @@
     <section class="doc-page doc-page--clients">
       <header class="cx-hero">
         <h1 class="cx-hero__title">LUCI&rsquo;s <span class="cx-hero__accent">Clients</span></h1>
+        <p class="cx-hero__dek">A sample of properties LUCI has worked with across the U.S.</p>
       </header>
 
       <div class="cx-body">
