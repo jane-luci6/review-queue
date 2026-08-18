@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-17",
+  "updated": "2026-08-18",
   "publishNote": "Build (npm run build:review) outputs to ui_kits/review. Bump reviewVersion + versionNote for new uploads (version history shown in portal). Set dueForReview for first-time review. Comments/approvals sync server-side via the comments_api container (proxied at /api/comments); Jane sees Mike/Mark's feedback on refresh. Archive with scripts/pull-review-comments.mjs.",
   "previewBaseUrl": "",
   "commentsApiUrl": "http://10.10.1.17:8081/api/comments",
@@ -8,21 +8,44 @@
     {
       "title": "Messaging guide",
       "url": "messaging/messaging-guide.html",
-      "note": "Updated Aug 17, 2026"
+      "note": "Updated Aug 18, 2026"
     },
     {
       "title": "LUCI philosophy",
       "url": "messaging/philosophy.html",
-      "note": "Updated Aug 17, 2026"
+      "note": "Updated Aug 18, 2026"
     },
     {
       "title": "Personas",
       "url": "messaging/personas.html",
-      "note": "Updated Aug 17, 2026"
+      "note": "Updated Aug 18, 2026"
     }
   ],
   "inProgress": [],
   "dueForReview": [
+    {
+      "id": "linkedin-strategy-summary",
+      "title": "LinkedIn strategy summary",
+      "summary": "The launch strategy for LUCI’s LinkedIn company page — zero-click approach, message sequencing, eight repeatable content streams, first-60-day goals, and the long-term audience objective.",
+      "reviewStatus": "New — strategy review",
+      "signOff": false,
+      "reviewVersion": 1,
+      "versionNote": "First branded portal edition, adapted from Jane’s 17 August 2026 strategy summary.",
+      "due": "2026-08-18",
+      "hubPreviewPath": "ui_kits/content-marketing/linkedin-strategy-summary.html",
+      "reviewBrief": {
+        "description": "A concise, branded summary of the LinkedIn launch strategy: why posts stay zero-click for now, how the message expands from one interface into four anchor themes, what LUCI will publish, and what success looks like in the first 60 days.",
+        "reviewAsk": "whether the strategy, sequence, and content priorities reflect how Mike wants LUCI to build its audience before prospecting begins; comments welcome, no formal sign-off required."
+      },
+      "versionHistory": [
+        {
+          "version": 1,
+          "published": "2026-08-18",
+          "note": "First branded portal edition."
+        }
+      ],
+      "previewUrl": "content-marketing/linkedin-strategy-summary.html"
+    },
     {
       "id": "case-study-tachi",
       "title": "Case Study · Tachi Palace Casino Resort",
@@ -468,5 +491,5 @@
     }
   ],
   "finalized": [],
-  "messagingDocsUpdated": "2026-08-17"
+  "messagingDocsUpdated": "2026-08-18"
 }

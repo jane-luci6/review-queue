@@ -1422,6 +1422,7 @@
       activeStepId: null,
       studioTab: 'cursor',
       studioImages: {},
+      renderedSignature: null,
     };
 
     const REMOTE_CUSTOMIZATION_ROOT = '/home/user-007/internal-marketing-portal/internal-portal/customization';
@@ -2039,18 +2040,31 @@
       writeLocal(LS_APPROVALS, serverApprovals);
     }
 
+    /* Fingerprint of the comment/approval state the current view was drawn from, so
+       polling only touches the DOM when something actually changed on the server. */
+    function stateSignature() {
+      return JSON.stringify({
+        comments: portal.comments.map((c) => [c.assetId, c.author, c.at, c.text]),
+        approvals: portal.approvals,
+        cleared: portal.cleared,
+      });
+    }
+
     // Pull fresh comments/approvals from the API and re-render the current view.
     // Skips re-render while the user is typing a comment so we don't clobber the form.
     async function refreshFromApi({ silent = true } = {}) {
       try {
         const server = await apiGetComments();
         mergeServerState(server);
+        const signature = stateSignature();
+        if (signature === portal.renderedSignature) return;
         const typing = document.querySelector('textarea[data-comment-input], input[data-comment-input]');
         if (typing && document.activeElement === typing) return;
+        portal.renderedSignature = signature;
         const { view, sub } = routeFromHash();
         if (view === 'review' && sub) {
           const item = assetById(sub);
-          if (item) renderReviewDetail(item);
+          if (item) updateReviewDetail(item);
         } else if (view === 'review') {
           renderReviewList();
         }
@@ -2168,8 +2182,9 @@
       }
 
       const view = routeFromHash();
-      if (view.view === 'review' && view.sub) renderReviewDetail(item);
+      if (view.view === 'review' && view.sub) updateReviewDetail(item);
       else { renderReviewList(); }
+      portal.renderedSignature = stateSignature();
     }
 
     function commentsFor(assetId) {
@@ -2184,7 +2199,8 @@
       const key = commentKey(comment);
       portal.cleared[key] = !portal.cleared[key];
       writeLocal(LS_CLEARED, portal.cleared);
-      renderReviewDetail(assetById(comment.assetId));
+      updateReviewDetail(assetById(comment.assetId));
+      portal.renderedSignature = stateSignature();
     }
 
     async function addComment(item, author, text) {
@@ -2208,9 +2224,10 @@
       }
 
       const view = routeFromHash();
-      if (view.view === 'review' && view.sub) renderReviewDetail(item);
+      if (view.view === 'review' && view.sub) updateReviewDetail(item);
       else renderReviewList();
       renderStatus();
+      portal.renderedSignature = stateSignature();
     }
 
     function renderStatus() {
@@ -2323,9 +2340,8 @@
       if (!item) return;
       const detail = $('review-detail');
       const src = previewUrl(item);
-      const thread = commentsFor(item.id);
-      const approved = approvalAt(item.id, 'Mike');
       const downloads = item.downloads || [];
+      detail.dataset.assetId = item.id;
       detail.innerHTML = `
         <a class="detail__back" href="#review">Back to review queue</a>
         <div class="detail__head">
@@ -2342,6 +2358,22 @@
         ${src ? `<div class="detail__preview"><iframe title="${item.title} preview" src="${src}" loading="lazy"></iframe></div>` : ''}
         ${src || downloads.length ? `<div class="actions" style="margin-top:14px;">${src ? `<a class="btn" href="${src}">Open full preview</a>` : ''}${downloads.map((dl) => `<a class="btn btn--mint" href="${pathFromReview(dl.path)}" download="${dl.path.split('/').pop()}">Download ${dl.label || 'file'}</a>`).join('')}</div>` : ''}
 
+        <div id="detail-state"></div>
+      `;
+
+      renderDetailState(item);
+    }
+
+    /* Sign-off + comments only. Kept separate from the detail shell so polling and
+       comment/approval posts never re-create the preview iframe — re-inserting an
+       iframe reloads the embedded document and throws the reader back to the top. */
+    function renderDetailState(item) {
+      if (!item) return;
+      const mount = $('detail-state');
+      if (!mount) return;
+      const thread = commentsFor(item.id);
+      const approved = approvalAt(item.id, 'Mike');
+      mount.innerHTML = `
         <div class="detail__section">
           <h3>Sign-off</h3>
           <div class="approval">
@@ -2364,9 +2396,9 @@
         </div>
       `;
 
-      detail.querySelector('#approval-toggle').addEventListener('click', () => toggleApproval(item, 'Mike'));
+      mount.querySelector('#approval-toggle').addEventListener('click', () => toggleApproval(item, 'Mike'));
 
-      const threadMount = detail.querySelector('.comment-thread');
+      const threadMount = mount.querySelector('.comment-thread');
       if (!thread.length) {
         threadMount.innerHTML = '<p class="empty">No comments yet.</p>';
       } else {
@@ -2386,13 +2418,21 @@
         });
       }
 
-      detail.querySelector('.comment-form').addEventListener('submit', (e) => {
+      mount.querySelector('.comment-form').addEventListener('submit', (e) => {
         e.preventDefault();
         const form = e.currentTarget;
         const text = form.comment.value.trim();
         if (!text) return;
         addComment(item, form.author.value, text);
       });
+    }
+
+    /* Refresh a detail view that's already on screen without rebuilding its shell. */
+    function updateReviewDetail(item) {
+      if (!item) return;
+      const detail = $('review-detail');
+      if (detail && detail.dataset.assetId === item.id && $('detail-state')) renderDetailState(item);
+      else renderReviewDetail(item);
     }
 
     function renderAssets() {
@@ -3123,6 +3163,7 @@
         await loadState();
         const { view, sub } = routeFromHash();
         showView(view, sub);
+        portal.renderedSignature = stateSignature();
         // Poll the sync API every 30s so new comments/approvals from Mike/Mark appear
         // without a manual refresh (skips re-render while someone is typing a comment).
         if (portal.apiAvailable) {
