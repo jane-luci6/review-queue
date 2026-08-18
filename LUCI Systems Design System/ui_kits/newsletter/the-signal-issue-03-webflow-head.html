@@ -340,9 +340,11 @@ body{font-family:var(--body);background:var(--navy-deep);color:#354F5C;-webkit-f
 .playbook-accent{position:absolute;top:0;left:0;width:4px;bottom:0;background:linear-gradient(to bottom,var(--mint) 0%,transparent 100%);}
 .steps{list-style:none;margin:36px 0;counter-reset:step;max-width:var(--read);}
 #quick-tip .art-body,#quick-tip .steps,#quick-tip .callout__kicker{max-width:52ch;}
-#quick-tip .quick-tip-visual{position:absolute;right:clamp(8px,4vw,64px);top:50%;transform:translateY(-50%);width:clamp(140px,16vw,210px);opacity:0.9;pointer-events:none;z-index:0;}
-#quick-tip .quick-tip-visual svg{width:100%;height:auto;display:block;}
-@media (max-width:900px){#quick-tip .quick-tip-visual{display:none;}}
+#quick-tip .quick-tip-head{display:flex;align-items:center;gap:clamp(20px,4vw,48px);max-width:720px;}
+#quick-tip .quick-tip-head__text{flex:1;min-width:0;}
+#quick-tip .quick-tip-icon{flex:0 0 auto;width:clamp(72px,9vw,112px);opacity:0.95;}
+#quick-tip .quick-tip-icon svg{width:100%;height:auto;display:block;}
+@media (max-width:700px){#quick-tip .quick-tip-head{flex-direction:column;align-items:flex-start;gap:18px;}#quick-tip .quick-tip-icon{width:76px;}}
 .steps li{counter-increment:step;display:flex;align-items:flex-start;gap:16px;margin-bottom:16px;}
 .steps li::before{content:counter(step,decimal-leading-zero);font-family:var(--display);font-size:13px;font-weight:700;color:var(--mint-dark);flex-shrink:0;padding-top:3px;min-width:28px;}
 .steps li p{margin:0;font-size:17px;color:#354F5C;}
@@ -435,7 +437,7 @@ figure.ui-shot img{display:block;width:100%;height:auto;}
 .luci-web-inner{position:relative;z-index:1;width:100%;max-width:760px;margin:0 auto;}
 .luci-web-section .eyebrow{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:26px;color:var(--mint);font-size:12px;font-weight:800;letter-spacing:0.24em;text-transform:uppercase;}
 .luci-web-section .eyebrow::before,.luci-web-section .eyebrow::after{content:"";width:28px;height:1px;background:var(--mint);}
-.luci-web-section h2{font-family:var(--body);margin:0 0 22px;max-width:690px;font-size:42px;line-height:1.06;letter-spacing:-0.035em;font-weight:800;text-transform:uppercase;color:var(--text);}
+.luci-web-section h2{font-family:var(--body);margin:0 0 22px;max-width:690px;font-size:42px;line-height:1.06;letter-spacing:-0.035em;font-weight:800;color:var(--text);}
 .luci-web-section h2 .gold{color:var(--gold);}
 .luci-web-section .intro{max-width:690px;margin:0 0 30px;color:var(--muted);font-size:18px;line-height:1.62;}
 .luci-web-section .feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--line);background:rgba(11,30,35,0.54);margin:0 0 28px;}
