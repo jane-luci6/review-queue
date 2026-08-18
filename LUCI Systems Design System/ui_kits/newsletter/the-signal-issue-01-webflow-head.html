@@ -963,6 +963,26 @@
       line-height: 1.5;
     }
 
+    .closing__more {
+      margin-top: 26px;
+      font-size: 15px;
+      color: rgba(165, 179, 188, 0.8);
+    }
+    .closing__more a {
+      color: var(--mint);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(var(--mint-rgb), 0.4);
+      transition: border-color 0.15s ease;
+    }
+    .closing__more a:hover { border-bottom-color: var(--mint); }
+    .closing__more a span {
+      display: inline-block;
+      margin-left: 4px;
+      transition: transform 0.15s ease;
+    }
+    .closing__more a:hover span { transform: translateX(3px); }
+
     /* ── FOOTER ───────────────────────────────────────── */
     .footer {
       background: var(--navy);
