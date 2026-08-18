@@ -1772,25 +1772,6 @@
     #quick-tip .steps,
     #quick-tip .callout__kicker { max-width: 52ch; }
 
-    /* Quick Tip — loudspeaker icon nested to the right of the title / first paragraph */
-    #quick-tip .quick-tip-head {
-      display: flex;
-      align-items: center;
-      gap: clamp(20px, 4vw, 48px);
-      max-width: 720px;
-    }
-    #quick-tip .quick-tip-head__text { flex: 1; min-width: 0; }
-    #quick-tip .quick-tip-icon {
-      flex: 0 0 auto;
-      width: clamp(72px, 9vw, 112px);
-      opacity: 0.95;
-    }
-    #quick-tip .quick-tip-icon svg { width: 100%; height: auto; display: block; }
-    @media (max-width: 700px) {
-      #quick-tip .quick-tip-head { flex-direction: column; align-items: flex-start; gap: 18px; }
-      #quick-tip .quick-tip-icon { width: 76px; }
-    }
-
     .steps li {
       counter-increment: step;
       display: flex;
@@ -2649,22 +2630,10 @@
       <span class="kicker__label">LUCI Quick Tip</span>
       <span class="kicker__rule"></span>
     </div>
-    <div class="quick-tip-head">
-      <div class="quick-tip-head__text">
-        <h2 class="art-title"><em>Not every announcement</em> should be the same volume</h2>
-        <div class="art-body">
-          <p>Most properties set one announcement volume for everything and adjust manually for each exception. But in LUCI, you can give your announcements a priority &mdash; low, medium, or high &mdash; and each priority has its own volume, per zone. Three priorities, three separate volume settings &mdash; not one shared level.</p>
-          <p>Here&rsquo;s how.</p>
-        </div>
-      </div>
-      <div class="quick-tip-icon" aria-hidden="true">
-        <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M16 48 L16 72 L36 72 L36 48 Z" fill="#68E3BE" fill-opacity="0.12" stroke="#68E3BE" stroke-width="2.2" stroke-linejoin="round"/>
-          <path d="M36 48 L74 26 L74 94 L36 72 Z" fill="#68E3BE" fill-opacity="0.10" stroke="#68E3BE" stroke-width="2.2" stroke-linejoin="round"/>
-          <path d="M86 40 C96 48 96 72 86 80" stroke="#EDD086" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-          <path d="M98 30 C112 46 112 74 98 90" stroke="#EDD086" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.55"/>
-        </svg>
-      </div>
+    <h2 class="art-title"><em>Not every announcement</em> should be the same volume</h2>
+    <div class="art-body">
+      <p>Most properties set one announcement volume for everything and adjust manually for each exception. But in LUCI, you can give your announcements a priority &mdash; low, medium, or high &mdash; and each priority has its own volume, per zone. Three priorities, three separate volume settings &mdash; not one shared level.</p>
+      <p>Here&rsquo;s how.</p>
     </div>
     <ol class="steps steps--dark">
       <li><p>Log in and switch the map to Control Mode, using the mode selector in the middle of the map.</p></li>
