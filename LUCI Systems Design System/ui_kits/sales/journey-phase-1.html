@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phase 1 · The Path to the Right Scope — LUCI</title>
+  <link rel="stylesheet" href="../../assets/fonts/luci-brand-fonts.css">
+  <style>
+    :root {
+      --navy: #10232D;
+      --navy-muted: #49616E;
+      --mint: #68E3BE;
+      --gold: #EDD086;
+      --gold-deep: #CEB06E;
+      --off-white: #F5F8FA;
+      --rule-light: #DBE1E4;
+      --ink-strong: #1C2B33;
+      --font-recede: 'Inter', 'Space Grotesk', 'Trebuchet MS', sans-serif;
+      --display: 'Syncopate', 'Arial Black', sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--off-white);
+      font-family: 'Inter', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .journey {
+      width: 1000px;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 48px 56px 56px;
+    }
+
+    /* Phase header */
+    .doc-phase {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      letter-spacing: normal;
+      text-transform: none;
+    }
+    .doc-phase__tag {
+      flex: 0 0 auto;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      background: rgba(237, 208, 134, 0.18);
+      color: var(--ink-strong);
+    }
+    .doc-phase__label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-strong);
+    }
+
+    /* Process steps */
+    .doc-process {
+      list-style: none;
+      margin: 26px 0 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      position: relative;
+    }
+    .doc-process::before {
+      content: "";
+      position: absolute;
+      top: 23px;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: rgba(237, 208, 134, 0.30);
+    }
+    .doc-process__step {
+      position: relative;
+      text-align: center;
+      padding: 0 8px;
+    }
+    .doc-process__node {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 46px;
+      height: 46px;
+      margin: 0 auto 14px;
+      border-radius: 9999px;
+      background: var(--gold);
+      color: #0E222C;
+      box-shadow: 0 0 0 5px var(--off-white);
+    }
+    .doc-process__node svg {
+      width: 23px;
+      height: 23px;
+      display: block;
+    }
+    .doc-process__name {
+      margin: 0 0 4px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13.5px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--ink-strong);
+    }
+    .doc-process__text {
+      margin: 0;
+      font-family: var(--font-recede);
+      font-size: 11px;
+      line-height: 1.4;
+      color: var(--navy-muted);
+    }
+
+    @media print {
+      body { background: #fff; }
+      .journey { width: 100%; padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="journey">
+    <p class="doc-phase">
+      <span class="doc-phase__tag">Phase 1</span>
+      <span class="doc-phase__label">The path to the right scope</span>
+    </p>
+    <ol class="doc-process">
+      <li class="doc-process__step">
+        <span class="doc-process__node" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polygon points="10 8 16 12 10 16 10 8"/>
+          </svg>
+        </span>
+        <p class="doc-process__name">Demo</p>
+        <p class="doc-process__text">See LUCI running on a property like yours.</p>
+      </li>
+      <li class="doc-process__step">
+        <span class="doc-process__node" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="7"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </span>
+        <p class="doc-process__name">Discovery</p>
+        <p class="doc-process__text">We learn your systems, zones, and goals.</p>
+      </li>
+      <li class="doc-process__step">
+        <span class="doc-process__node" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"/>
+            <circle cx="12" cy="12" r="4"/>
+            <line x1="12" y1="1" x2="12" y2="4"/>
+            <line x1="12" y1="20" x2="12" y2="23"/>
+            <line x1="1" y1="12" x2="4" y2="12"/>
+            <line x1="20" y1="12" x2="23" y2="12"/>
+          </svg>
+        </span>
+        <p class="doc-process__name">Scope</p>
+        <p class="doc-process__text">We map exactly what to orchestrate.</p>
+      </li>
+      <li class="doc-process__step">
+        <span class="doc-process__node" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="8" y1="13" x2="16" y2="13"/>
+            <line x1="8" y1="17" x2="13" y2="17"/>
+          </svg>
+        </span>
+        <p class="doc-process__name">Proposal</p>
+        <p class="doc-process__text">A clear plan, timeline, and price.</p>
+      </li>
+      <li class="doc-process__step">
+        <span class="doc-process__node" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+        </span>
+        <p class="doc-process__name">Decision</p>
+        <p class="doc-process__text">You approve; we mobilize the team.</p>
+      </li>
+    </ol>
+  </div>
+</body>
+</html>
