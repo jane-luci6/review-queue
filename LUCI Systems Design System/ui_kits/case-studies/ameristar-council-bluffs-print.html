@@ -475,8 +475,8 @@
     }
     .inline-quote__attrib span { color: var(--mint); margin-right: 8px; }
 
-    /* Quote + footer band (fills remaining height, footer bottom) */
-    .cs-quote { justify-content: flex-end; }
+    /* Quote + footer band (compact footer strip, not flex-fill) */
+    .cs-quote { flex: none; padding: 0; }
     .cs-quote .inline-quote {
       margin: 0;
       padding: 0;
@@ -490,8 +490,8 @@
       flex-shrink: 0;
       display: flex;
       align-items: center;
-      gap: 24px;
-      padding: 18px var(--px);
+      gap: 32px;
+      padding: 36px var(--px);
       background-color: var(--navy-deep);
       border-top: 4px solid var(--mint);
     }
@@ -500,36 +500,40 @@
       margin: 0;
       font-family: var(--body);
       font-style: italic;
-      font-size: 15px;
-      line-height: 1.45;
-      color: rgba(235, 245, 248, 0.92);
-      border-left: 3px solid var(--mint);
-      padding-left: 16px;
-      max-width: 52ch;
+      font-size: 26px;
+      line-height: 1.38;
+      color: rgba(235, 245, 248, 0.95);
+      border-left: 4px solid var(--mint);
+      padding-left: 22px;
+      max-width: 56ch;
     }
     .cs-quote-band__attrib {
       flex-shrink: 0;
       margin: 0;
       font-family: var(--display);
-      font-size: 9px;
+      font-size: 12px;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(var(--mint-rgb), 0.6);
+      color: rgba(var(--mint-rgb), 0.7);
       text-align: right;
       white-space: nowrap;
     }
     .cs-quote-band__attrib span {
       display: block;
       color: var(--mint);
-      margin-bottom: 3px;
+      margin-bottom: 4px;
     }
 
     /* ── FOOTER (standard for all case study PDFs) ──────── */
     .cs-footer {
       flex-shrink: 0;
       padding: 20px var(--px);
-      border-top: 1px solid rgba(var(--mint-rgb), 0.15);
+      background-color: var(--navy-deep);
+      background-image: url("assets/textures/texture-circuit-navy-steel-print-dark.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
     }
     .cs-footer__top {
       display: flex;
@@ -873,23 +877,21 @@
     </ul>
     <span class="scope-block__arrow" aria-hidden="true">
       <svg viewBox="0 0 520 56" preserveAspectRatio="none">
-        <!-- Four diagonal lines converging from stat columns to center -->
-        <line x1="65" y1="0" x2="260" y2="34" stroke="#68E3BE" stroke-width="1.5"/>
-        <line x1="195" y1="0" x2="260" y2="34" stroke="#68E3BE" stroke-width="1.5"/>
-        <line x1="325" y1="0" x2="260" y2="34" stroke="#68E3BE" stroke-width="1.5"/>
-        <line x1="455" y1="0" x2="260" y2="34" stroke="#68E3BE" stroke-width="1.5"/>
-        <!-- Horizontal line under stats -->
-        <line x1="65" y1="0" x2="455" y2="0" stroke="#68E3BE" stroke-width="1" opacity="0.3"/>
-        <!-- Vertical arrow from convergence point downward -->
-        <line x1="260" y1="34" x2="260" y2="52" stroke="#68E3BE" stroke-width="2"/>
-        <path d="M 252 46 L 260 54 L 268 46" fill="none" stroke="#68E3BE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Four diagonal lines converging from stat columns to center (mint) -->
+        <line x1="65" y1="2" x2="260" y2="34" stroke="#68E3BE" stroke-width="2"/>
+        <line x1="195" y1="2" x2="260" y2="34" stroke="#8BDC9D" stroke-width="2"/>
+        <line x1="325" y1="2" x2="260" y2="34" stroke="#B8D98F" stroke-width="2"/>
+        <line x1="455" y1="2" x2="260" y2="34" stroke="#D4D88A" stroke-width="2"/>
+        <!-- Vertical arrow from convergence point downward (gold) -->
+        <line x1="260" y1="34" x2="260" y2="52" stroke="#EDD086" stroke-width="2.5"/>
+        <path d="M 252 46 L 260 54 L 268 46" fill="none" stroke="#EDD086" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </span>
     <p class="scope-block__outcome">One <span>LUCI</span> platform</p>
     <p class="scope-block__dek">Every endpoint, every zone, every channel &mdash; one interface.</p>
   </section>
 
-  <section class="sec sec--light sec--fixed">
+  <section class="sec sec--light">
     <h2 class="sec__title">Built for the <span class="sec__title-accent">moves ahead</span></h2>
     <div class="body">
       <p>With the system centralized on land, the property is set up for what comes next.</p>
@@ -902,7 +904,7 @@
     </div>
   </section>
 
-  <section class="sec sec--deep cs-quote">
+  <section class="sec sec--deep cs-quote sec--fixed">
     <footer class="cs-footer">
       <div class="cs-footer__top">
         <div>
