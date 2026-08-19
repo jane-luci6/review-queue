@@ -12,7 +12,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Case Study — Ameristar Council Bluffs · LUCI Systems</title>
-  <meta name="description" content="How LUCI retrofitted Ameristar Council Bluffs Casino's AV infrastructure in under three days, centralizing control on land and preparing the property for its next phase of growth.">
+  <meta name="description" content="How LUCI retrofitted Ameristar Council Bluffs Casino's A/V infrastructure in under three days, centralizing control on land and preparing the property for its next phase of growth.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -286,6 +286,141 @@
       color: var(--body-ink);
     }
 
+    /* ── SCOPE STORY (many → one) ─────────────────────── */
+    .scope-story {
+      background-color: var(--navy-deep);
+      background-image: url("assets/textures/texture-circuit-navy-steel-print-dark.jpg");
+      background-size: cover;
+      background-position: center;
+      padding: clamp(48px, 7vw, 80px) var(--pad);
+      border-bottom: 1px solid rgba(var(--mint-rgb), 0.16);
+      text-align: center;
+    }
+
+    .scope-story__title {
+      margin: 0 0 36px;
+      font-family: var(--body);
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      color: var(--off-white);
+    }
+
+    .scope-story__title span { color: var(--mint); }
+
+    .scope-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      list-style: none;
+      margin: 0;
+      padding: 0 0 32px;
+      border-bottom: 1px solid rgba(var(--mint-rgb), 0.18);
+    }
+
+    .scope-stat {
+      padding: 0 18px;
+      border-left: 1px solid rgba(var(--mint-rgb), 0.2);
+    }
+
+    .scope-stat:first-child { border-left: 0; }
+    .scope-stat__icon {
+      display: block;
+      width: 28px;
+      height: 28px;
+      margin: 0 auto 12px;
+      color: var(--mint);
+    }
+
+    .scope-stat__value {
+      margin: 0 0 8px;
+      font-family: var(--body);
+      font-size: clamp(36px, 6vw, 52px);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: var(--mint);
+    }
+
+    .scope-stat__label {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.4;
+      color: rgba(235, 245, 248, 0.76);
+    }
+
+    .scope-converge {
+      position: relative;
+      height: 122px;
+      max-width: 760px;
+      margin: 0 auto 8px;
+    }
+
+    .scope-converge__line {
+      position: absolute;
+      top: 28px;
+      left: 50%;
+      width: 28%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), var(--mint));
+      opacity: 0.8;
+      transform-origin: right center;
+    }
+
+    .scope-converge__line:nth-child(1) { transform: translateX(-100%) rotate(15deg); }
+    .scope-converge__line:nth-child(2) { width: 18%; transform: translateX(-100%) rotate(24deg); }
+    .scope-converge__line:nth-child(3) { transform: rotate(-15deg); background: linear-gradient(90deg, var(--mint), var(--gold)); transform-origin: left center; }
+    .scope-converge__line:nth-child(4) { width: 18%; transform: rotate(-24deg); background: linear-gradient(90deg, var(--mint), var(--gold)); transform-origin: left center; }
+
+    .scope-converge__arrow {
+      position: absolute;
+      left: 50%;
+      top: 28px;
+      width: 4px;
+      height: 68px;
+      background: var(--mint);
+      transform: translateX(-50%);
+    }
+
+    .scope-converge__arrow::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -1px;
+      width: 22px;
+      height: 22px;
+      border-right: 4px solid var(--mint);
+      border-bottom: 4px solid var(--mint);
+      transform: translate(-50%, 2px) rotate(45deg);
+    }
+
+    .scope-story__outcome {
+      margin: 0;
+      font-family: var(--body);
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      color: var(--off-white);
+    }
+
+    .scope-story__outcome span { color: var(--mint); }
+    .scope-story__dek {
+      margin: 16px auto 0;
+      font-size: 17px;
+      line-height: 1.6;
+      color: rgba(235, 245, 248, 0.78);
+    }
+
+    @media (max-width: 620px) {
+      .scope-stats { grid-template-columns: repeat(2, 1fr); gap: 28px 0; }
+      .scope-stat:nth-child(3) { border-left: 0; }
+      .scope-stat__value { font-size: 38px; }
+      .scope-converge__line { display: none; }
+      .scope-converge { height: 96px; }
+      .scope-converge__arrow { top: 16px; height: 54px; }
+    }
+
     /* ── SECTIONS ─────────────────────────────────────── */
     .sec {
       padding: clamp(44px, 6vw, 72px) var(--pad);
@@ -305,6 +440,34 @@
     }
     .sec--dark  { background: var(--navy); border-bottom-color: rgba(0,0,0,0.3); }
     .sec--deep  { background: var(--navy-deep); border-bottom-color: rgba(0,0,0,0.4); }
+
+    .challenge-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(240px, 0.48fr);
+      gap: 40px;
+      align-items: start;
+    }
+
+    .property-photo { margin: 0; }
+    .property-photo img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .property-photo figcaption {
+      margin-top: 10px;
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--navy-muted);
+    }
+
+    @media (max-width: 700px) {
+      .challenge-grid { grid-template-columns: 1fr; gap: 28px; }
+      .property-photo { max-width: 420px; }
+    }
 
     .kicker {
       display: flex;
@@ -465,6 +628,28 @@
     .plan-list strong { font-weight: 700; }
     .sec--white .plan-list strong, .sec--light .plan-list strong { color: var(--navy); }
     .sec--mid .plan-list strong, .sec--dark .plan-list strong { color: var(--off-white); }
+
+    /* ── CONSOLIDATION YOU CAN SEE (canonical) ─────────── */
+    .cs-consolidation__header { margin-bottom: 32px; }
+    .cs-consolidation__rule {
+      display: block; width: 40px; height: 3px; background: var(--mint-dark); margin-bottom: 16px;
+    }
+    .cs-consolidation__title {
+      margin: 0; font-family: var(--body); font-weight: 700;
+      font-size: clamp(24px, 4vw, 34px); line-height: 1.12; letter-spacing: -0.025em;
+      color: var(--navy); max-width: 28ch;
+    }
+    .cs-consolidation__list {
+      list-style: none; margin: 0; padding: 0; max-width: var(--read);
+      border-top: 1px solid var(--rule-light);
+    }
+    .cs-consolidation__item { padding: 22px 0; border-bottom: 1px solid var(--rule-light); }
+    .cs-consolidation__item-title {
+      margin: 0 0 8px; font-weight: 700; font-size: 17px; line-height: 1.35; color: var(--navy);
+    }
+    .cs-consolidation__item-text {
+      margin: 0; font-size: 17px; line-height: 1.65; color: var(--body-ink);
+    }
 
     .bottom-line {
       margin-top: 4px;
@@ -654,7 +839,7 @@
   <header class="hero">
     <div class="hero__kicker"><span>Case Study</span></div>
     <h1 class="hero__title"><span class="hero__leadin">Three days to a</span><em>future-ready property</em></h1>
-    <p class="hero__dek">LUCI completed a full retrofit of Ameristar Council Bluffs' AV infrastructure in under three days, modernizing a system that had run since 2012 and centralizing control on land to prepare the property for its next phase of growth.</p>
+    <p class="hero__dek">LUCI completed a full retrofit of Ameristar Council Bluffs' A/V infrastructure in under three days, modernizing a system that had run since 2012 and centralizing control on land to prepare the property for its next phase of growth.</p>
     <div class="hero__actions">
       <a class="download-btn" href="/assets/sales/LUCI-Case-Study-Ameristar-Council-Bluffs.pdf" download="LUCI-Case-Study-Ameristar-Council-Bluffs.pdf"><span class="download-btn__icon" aria-hidden="true">&#8595;</span>Download PDF</a>
     </div>
@@ -688,11 +873,11 @@
     <div class="summary">
       <div class="summary__cell">
         <p class="summary__label">The challenge</p>
-        <p class="summary__text">A decade-old AV system, aging equipment, and a major casino buildout on the way.</p>
+        <p class="summary__text">A decade-old A/V system, aging equipment, and a major casino buildout on the way.</p>
       </div>
       <div class="summary__cell">
         <p class="summary__label">The approach</p>
-        <p class="summary__text">A full retrofit in under three days, with all AV processing relocated to the data center on land.</p>
+        <p class="summary__text">A full retrofit in under three days, with all A/V processing relocated to the data center on land.</p>
       </div>
       <div class="summary__cell">
         <p class="summary__label">The result</p>
@@ -704,10 +889,16 @@
   <!-- THE CHALLENGE -->
   <section class="sec sec--white">
     <h2 class="sec__title">A proven system, a <span class="sec__title-accent">bigger future</span></h2>
-    <div class="cs-copy">
-      <p>Ameristar Council Bluffs spans a land-based casino and a riverboat. Its audio-visual system was based on an early LUCI design that had been operating successfully since 2012.</p>
-      <p>Even after more than a decade of daily use, the original system continued to support property operations and guest experience demands. But the property was preparing for a new chapter: a major casino buildout on the land side and a planned transition away from the riverboat casino.</p>
-      <p>With years of ongoing upgrades, aging equipment, and that buildout approaching, Ameristar needed a more unified, scalable, and future-ready approach, one that could carry the property through its next phase of growth.</p>
+    <div class="challenge-grid">
+      <div class="cs-copy">
+        <p>Ameristar Council Bluffs spans a land-based casino and a riverboat. Its A/V system was based on an early LUCI design that had been operating successfully since 2012.</p>
+        <p>Even after more than a decade of daily use, the original system continued to support property operations and guest experience demands. But the property was preparing for a new chapter: a major casino buildout on the land side and a planned transition away from the riverboat casino.</p>
+        <p>With years of ongoing upgrades, aging equipment, and that buildout approaching, Ameristar needed a more unified, scalable, and future-ready approach, one that could carry the property through its next phase of growth.</p>
+      </div>
+      <figure class="property-photo">
+        <img src="assets/ameristar-riverboat.jpg?v=3" alt="Ameristar Council Bluffs riverboat beside the Missouri River at sunset">
+        <figcaption>The riverboat at Ameristar Council Bluffs, with the land-side property beyond.</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -715,9 +906,9 @@
   <section class="sec sec--mid">
     <h2 class="sec__title"><span class="sec__title-accent">Modernize</span> without disrupting the floor</h2>
     <div class="cs-copy">
-      <p>LUCI's goal was to modernize the property's AV foundation and position it for the transition ahead, without disrupting a floor that runs every day.</p>
-      <p>The defining move was location. As part of the upcoming transition away from the riverboat casino, LUCI relocated all new AV processing equipment into the property's IT data center on land. Since much of the previous system's processing was located on the boat, this single move eliminated the need to design additional AV rooms into the new buildout, helping reduce future construction and infrastructure costs.</p>
-      <p>The retrofit installation itself was completed in less than three days. In that window, the team:</p>
+      <p>LUCI's goal was to modernize the property's A/V foundation and position it for the transition ahead, without disrupting a floor that runs every day.</p>
+      <p>The defining move was location. As part of the upcoming transition away from the riverboat casino, LUCI relocated all new A/V processing equipment into the property's IT data center on land. Since much of the previous system's processing was located on the boat, this single move eliminated the need to design additional A/V rooms into the new buildout, helping reduce future construction and infrastructure costs.</p>
+      <p>The retrofit installation itself was completed in less than three days.</p>
             <ul class='scope-list'>
         <li><svg viewBox='0 0 24 24' fill='none' aria-hidden='true'>
   <rect x='4' y='3' width='16' height='5' rx='1.5' fill='#68E3BE' fill-opacity='0.16' stroke='#68E3BE' stroke-width='1.8'/>
@@ -725,7 +916,7 @@
   <rect x='4' y='17' width='16' height='4' rx='1.5' stroke='#68E3BE' stroke-width='1.8'/>
   <circle cx='7.5' cy='5.5' r='1' fill='#EDD086'/>
   <circle cx='7.5' cy='12.5' r='1' fill='#EDD086'/>
-</svg><span>Replaced the AV head-end systems, amplifiers, and control infrastructure</span></li>
+</svg><span>Replaced the A/V head-end systems, amplifiers, and control infrastructure</span></li>
         <li><svg viewBox='0 0 24 24' fill='none' aria-hidden='true'>
   <rect x='2.5' y='8' width='7' height='8' rx='1' fill='#68E3BE' fill-opacity='0.16' stroke='#68E3BE' stroke-width='1.8'/>
   <line x1='4.5' y1='11' x2='7.5' y2='11' stroke='#68E3BE' stroke-width='1.5' stroke-linecap='round'/>
@@ -733,7 +924,7 @@
   <path d='M10 12h5' stroke='#68E3BE' stroke-width='1.8' stroke-linecap='round'/>
   <path d='M13 9l3 3-3 3' fill='none' stroke='#EDD086' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/>
   <path d='M16 4.5h5.5v15H16' fill='none' stroke='#68E3BE' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/>
-</svg><span>Relocated all new AV processing into the property’s IT data center</span></li>
+</svg><span>Relocated all new A/V processing into the property’s IT data center</span></li>
         <li><svg viewBox='0 0 24 24' fill='none' aria-hidden='true'>
   <path d='M6 3h9l4 4v14H6z' fill='#68E3BE' fill-opacity='0.14' stroke='#68E3BE' stroke-width='1.8' stroke-linejoin='round'/>
   <path d='M15 3v4h4' stroke='#68E3BE' stroke-width='1.8' stroke-linejoin='round'/>
@@ -744,6 +935,32 @@
       </ul>
       <p>The result is a streamlined platform designed for years of reliable, trouble-free operation, with simplified future maintenance and expansion.</p>
     </div>
+  </section>
+
+  <!-- CONSOLIDATION YOU CAN SEE -->
+  <section class="sec sec--light cs-consolidation" aria-labelledby="cs-consolidation-title">
+    <header class="cs-consolidation__header">
+      <span class="cs-consolidation__rule" aria-hidden="true"></span>
+      <h2 id="cs-consolidation-title" class="cs-consolidation__title">Consolidation you can see</h2>
+    </header>
+    <ul class="cs-consolidation__list">
+      <li class="cs-consolidation__item">
+        <p class="cs-consolidation__item-title">A/V head-end and control hardware</p>
+        <p class="cs-consolidation__item-text">Replaced with a LUCI stack in the land-side data center &mdash; less gear to power, cool, and maintain.</p>
+      </li>
+      <li class="cs-consolidation__item">
+        <p class="cs-consolidation__item-title">Riverboat processing rooms</p>
+        <p class="cs-consolidation__item-text">Processing moved on land so the upcoming buildout does not need new A/V rooms designed into the floor plan.</p>
+      </li>
+      <li class="cs-consolidation__item">
+        <p class="cs-consolidation__item-title">Separate control workflows</p>
+        <p class="cs-consolidation__item-text">Collapsed into one browser-based interface &mdash; unlimited operational users from any authorized device.</p>
+      </li>
+      <li class="cs-consolidation__item">
+        <p class="cs-consolidation__item-title">Legacy system documentation</p>
+        <p class="cs-consolidation__item-text">Converted to a full LUCI modernization package the team can maintain going forward.</p>
+      </li>
+    </ul>
   </section>
 
   <!-- QUOTE -->
@@ -773,6 +990,55 @@
     </div>
   </section>
 
+  <!-- SCOPE STORY -->
+  <section class="scope-story" aria-labelledby="scope-story-title">
+    <h2 id="scope-story-title" class="scope-story__title">Ameristar on LUCI <span>today</span></h2>
+    <ul class="scope-stats" aria-label="Property scope managed through LUCI">
+      <li class="scope-stat">
+        <svg class="scope-stat__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="3" y="4" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.8"/>
+          <path d="M9 21h6M12 17v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        <p class="scope-stat__value">146</p>
+        <p class="scope-stat__label">Video endpoints</p>
+      </li>
+      <li class="scope-stat">
+        <svg class="scope-stat__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 10v4h4l5 4V6L8 10H4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+          <path d="M16 9c1.2 1.7 1.2 4.3 0 6M19 6.5c3 3.1 3 7.9 0 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        <p class="scope-stat__value">50</p>
+        <p class="scope-stat__label">Audio zones</p>
+      </li>
+      <li class="scope-stat">
+        <svg class="scope-stat__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="3" y="4" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.8"/>
+          <path d="m10 8 5 2.5-5 2.5V8Z" fill="currentColor"/>
+          <path d="M9 21h6M12 17v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        <p class="scope-stat__value">78</p>
+        <p class="scope-stat__label">DTV channels</p>
+      </li>
+      <li class="scope-stat">
+        <svg class="scope-stat__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.8"/>
+          <path d="M3 10h18M10 3v18M16 10v11" stroke="currentColor" stroke-width="1.6"/>
+        </svg>
+        <p class="scope-stat__value">26</p>
+        <p class="scope-stat__label">CMS/signage channels</p>
+      </li>
+    </ul>
+    <div class="scope-converge" aria-hidden="true">
+      <span class="scope-converge__line"></span>
+      <span class="scope-converge__line"></span>
+      <span class="scope-converge__line"></span>
+      <span class="scope-converge__line"></span>
+      <span class="scope-converge__arrow"></span>
+    </div>
+    <p class="scope-story__outcome">One <span>LUCI</span> platform</p>
+    <p class="scope-story__dek">Every endpoint, every zone, every channel &mdash; one interface.</p>
+  </section>
+
   <!-- WHAT'S NEXT -->
   <section class="sec sec--light">
     <h2 class="sec__title">Built for the <span class="sec__title-accent">moves ahead</span></h2>
@@ -782,7 +1048,7 @@
         <li><span><strong>The boat can sail.</strong> When the time comes, Ameristar can step away from the riverboat as a clean break, and keep running on LUCI.</span></li>
         <li><span><strong>The new build can plug in.</strong> When the new construction opens, it runs on the platform already powering the property &mdash; no second install, no parallel system to stand up.</span></li>        <li><span><strong>Future growth is built in.</strong> As Ameristar expands, it can do so unobstructed &mdash; LUCI has removed the logistical variables and A/V complications that would otherwise pile up over time.</span></li>
       </ul>
-      <p class="bottom-line">By modernizing the AV infrastructure and centralizing system control, LUCI helped Ameristar Council Bluffs prepare for its next phase of growth, preserving operational reliability, improving efficiency, and reducing long-term infrastructure costs.</p>
+      <p class="bottom-line">By modernizing the A/V infrastructure and centralizing system control, LUCI helped Ameristar Council Bluffs prepare for its next phase of growth, preserving operational reliability, improving efficiency, and reducing long-term infrastructure costs.</p>
     </div>
   </section>
 
@@ -795,7 +1061,7 @@
     </div>
     <div class="cta__about">
       <p class="cta__about-label">About LUCI</p>
-      <p class="cta__statement">LUCI Systems orchestrates every layer of technology running your property &mdash; AV, signage, building, and operational infrastructure &mdash; from a single interface your team controls from anywhere. Rather than adding layers to your stack, LUCI reduces the variables, hardware, and interfaces your team has to manage. When onsite experience and operational continuity are non-negotiable, LUCI delivers coordinated, real-time execution, end to end.</p>
+      <p class="cta__statement">LUCI Systems orchestrates every layer of technology running your property &mdash; A/V, signage, building, and operational infrastructure &mdash; from a single interface your team controls from anywhere. Rather than adding layers to your stack, LUCI reduces the variables, hardware, and interfaces your team has to manage. When onsite experience and operational continuity are non-negotiable, LUCI delivers coordinated, real-time execution, end to end.</p>
     </div>
   </section>
 
