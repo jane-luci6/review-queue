@@ -195,6 +195,54 @@
     .cs-scope li svg { display: block; width: 28px; height: 28px; flex-shrink: 0; }
     @media (max-width: 620px) { .cs-scope { grid-template-columns: 1fr; } }
 
+    /* Full-bleed photo section — text rides a horizontal scrim */
+    .cs-photo-band {
+      position: relative;
+      overflow: hidden;
+      min-height: clamp(380px, 52vw, 520px);
+      border-bottom: none;
+    }
+    .cs-photo-band__img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 40%;
+      display: block;
+    }
+    .cs-photo-band__scrim {
+      position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: linear-gradient(to right,
+        rgba(245, 248, 250, 0.97) 0%,
+        rgba(245, 248, 250, 0.96) 48%,
+        rgba(245, 248, 250, 0.74) 64%,
+        rgba(245, 248, 250, 0.22) 84%,
+        rgba(245, 248, 250, 0) 100%);
+    }
+    .cs-photo-band__content {
+      position: relative; z-index: 2;
+      padding: clamp(44px, 6vw, 72px) clamp(28px, 6vw, 64px);
+      max-width: 52ch;
+    }
+    .cs-photo-band .cs-sec__title { color: var(--navy); }
+    .cs-photo-band .cs-sec__title-accent { color: var(--accent-light); }
+    .cs-photo-band .cs-copy p { color: var(--ink); }
+    .cs-photo-band__caption {
+      margin: 26px 0 0; padding-top: 16px;
+      border-top: 1px solid rgba(43, 158, 128, 0.28);
+      font-family: var(--font-copy); font-size: 13px; letter-spacing: 0.02em;
+      line-height: 1.5; color: var(--navy-muted);
+    }
+    @media (max-width: 640px) {
+      .cs-photo-band { min-height: 420px; }
+      .cs-photo-band__scrim {
+        background: linear-gradient(to bottom,
+          rgba(245, 248, 250, 0.96) 0%,
+          rgba(245, 248, 250, 0.88) 48%,
+          rgba(245, 248, 250, 0.35) 72%,
+          rgba(245, 248, 250, 0) 100%);
+      }
+      .cs-photo-band__content { max-width: none; }
+    }
+
     /* Full-bleed property photo band — edge to edge, no card chrome */
     .cs-figure {
       margin: 0; background: var(--navy-deep);
@@ -422,20 +470,20 @@
       </div>
     </section>
 
-    <section class="cs-sec cs-sec--white">
-      <h2 class="cs-sec__title">Technology that grew <span class="cs-sec__title-accent">one piece at a time</span></h2>
-      <div class="cs-copy">
-        <p>Yaamava&rsquo; Resort &amp; Casino sits in Highland, California, owned and operated by the San Manuel Band of Mission Indians. What opened in 1986 has grown into one of the premier casino resort destinations in the country.</p>
-        <p>The technology underneath it grew the same way it did &mdash; one piece at a time. Broadcast content, signage, audio and paging, data, displays, and everything sitting underneath those each arrived with their own hardware, their own software, their own interface, and their own way of being operated.</p>
-        <p>Each one worked on its own; together, they didn&rsquo;t. Racks and players multiplied. Content that belonged on every screen in the building had to be pushed through several platforms to get there. A message the executive team wanted on the gaming floor crossed tools and teams before it reached a single display.</p>
-        <p>For a property built to feel like one experience, the technology behind it was running in pieces.</p>
+    <section class="cs-photo-band" aria-labelledby="cs-challenge-title">
+      <img class="cs-photo-band__img" src="assets/yaamava/sportsbook-led-web.jpg" alt="The curved LED ribbon wrapping the 909 Sportsbar at Yaamava&rsquo;, carrying live games and odds above the bar" width="1600" height="900" loading="lazy" />
+      <div class="cs-photo-band__scrim" aria-hidden="true"></div>
+      <div class="cs-photo-band__content">
+        <h2 id="cs-challenge-title" class="cs-sec__title">Technology that grew <span class="cs-sec__title-accent">one piece at a time</span></h2>
+        <div class="cs-copy">
+          <p>Yaamava&rsquo; Resort &amp; Casino sits in Highland, California, owned and operated by the San Manuel Band of Mission Indians. What opened in 1986 has grown into one of the premier casino resort destinations in the country.</p>
+          <p>The technology underneath it grew the same way it did &mdash; one piece at a time. Broadcast content, signage, audio and paging, data, displays, and everything sitting underneath those each arrived with their own hardware, their own software, their own interface, and their own way of being operated.</p>
+          <p>Each one worked on its own; together, they didn&rsquo;t. Racks and players multiplied. Content that belonged on every screen in the building had to be pushed through several platforms to get there. A message the executive team wanted on the gaming floor crossed tools and teams before it reached a single display.</p>
+          <p>For a property built to feel like one experience, the technology behind it was running in pieces.</p>
+        </div>
+        <p class="cs-photo-band__caption">The 909 Sportsbar &mdash; every screen in the room on the same platform.</p>
       </div>
     </section>
-
-    <figure class="cs-figure">
-      <img src="assets/yaamava/sportsbook-led-web.jpg" alt="The curved LED ribbon wrapping the 909 Sportsbar at Yaamava&rsquo;, carrying live games and odds above the bar" width="1600" height="900" loading="lazy" />
-      <figcaption>The 909 Sportsbar &mdash; every screen in the room on the same platform.</figcaption>
-    </figure>
 
     <section class="cs-sec cs-sec--mid">
       <h2 class="cs-sec__title">Bring every layer <span class="cs-sec__title-accent">onto one platform</span></h2>
