@@ -12,7 +12,13 @@ const root = path.resolve(__dirname, '..', 'ui_kits', 'case-studies');
 const srcPath = path.join(root, 'ameristar-council-bluffs.html');
 
 const DEMO_URL = 'https://www.lucisystems.com/#request-a-demo';
-const PDF_URL = 'https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a2c4a48af310cd38d35d17a_CS-Ameristar-Council-Bluffs-Final.pdf';
+const PDF_URL = 'https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a84c5372c872835564b6628_LUCI-Case-Study-Ameristar-Council-Bluffs.pdf';
+const RIVERBOAT_URL = 'https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a84c537c10de4e598813860_ameristar-riverboat.jpg';
+const MESH_HERO_URL = 'https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a7e091df18dd3a992d8ac82_luci-bg-hero-1920x1080.svg';
+const MESH_SPLIT_URL = 'https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a8628ddaf6d8e4a5769761d_luci-bg-hero-split-1920x1080.svg';
+const MESH_WIDE_URL = 'https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a8628dd242640e8859209c9_luci-bg-wide-2560x800.svg';
+const TEXTURE_DARK_URL = 'https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a57fde51b370b4b3195f5ad_texture-circuit-navy-steel-print-dark.jpg';
+const TEXTURE_MID_URL = 'https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a57fde1e1ec624efb621776_texture-circuit-navy-steel-print-mid.jpg';
 const LINK_NEW_TAB = ' target="_blank" rel="noopener noreferrer"';
 
 const WEBFLOW_RESET = `
@@ -64,6 +70,7 @@ const WEBFLOW_RESET = `
     }
 
     /* About LUCI — editorial block inside CTA, not a second footer */
+    .luci-cs .cs-cta__about,
     .luci-cs .cta__about {
       margin-top: 48px;
       padding-top: 32px;
@@ -71,11 +78,13 @@ const WEBFLOW_RESET = `
       max-width: 62ch;
     }
 
+    .luci-cs .cs-cta__about-label,
     .luci-cs .cta__about-label {
       color: var(--mint);
       margin-bottom: 12px;
     }
 
+    .luci-cs .cs-cta__statement,
     .luci-cs .cta__statement {
       color: rgba(235, 245, 248, 0.82);
       font-size: 17px;
@@ -83,7 +92,8 @@ const WEBFLOW_RESET = `
     }
 
     /* Footer bar only — no copyright row on Webflow */
-    .luci-cs .footer__top {
+    .luci-cs .footer__top,
+    .luci-cs .cs-footer__top {
       margin-bottom: 0;
       padding-bottom: 0;
       border-bottom: none;
@@ -160,15 +170,22 @@ function scopeCss(raw) {
 function replaceAssets(html) {
   return html
     .replace(/assets\/luci-case-study-ameristar-council-bluffs\.pdf/g, PDF_URL)
+    .replace(/\.\.\/\.\.\/assets\/sales\/LUCI-Case-Study-Ameristar-Council-Bluffs\.pdf/g, PDF_URL)
     .replace(/https:\/\/lucisystems\.com\/documents\/luci-case-study-ameristar-council-bluffs\.pdf/g, PDF_URL)
     .replace(/https:\/\/lucisystems\.com\/contact/g, DEMO_URL)
+    .replace(/assets\/ameristar-riverboat\.jpg(?:\?v=\d+)?/g, RIVERBOAT_URL)
+    .replace(/assets\/mesh\/luci-bg-hero-1920x1080\.svg/g, MESH_HERO_URL)
+    .replace(/assets\/mesh\/luci-bg-hero-split-1920x1080\.svg/g, MESH_SPLIT_URL)
+    .replace(/assets\/mesh\/luci-bg-wide-2560x800\.svg/g, MESH_WIDE_URL)
+    .replace(/assets\/textures\/texture-circuit-navy-steel-print-dark\.jpg/g, TEXTURE_DARK_URL)
+    .replace(/assets\/textures\/texture-circuit-navy-steel-print-mid\.jpg/g, TEXTURE_MID_URL)
     .replace(/\.\.\/\.\.\/assets\/logos\/ameristar-council-bluffs\.svg/g, 'https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a1e1c7089803edcc10a8491_ameristar-logo-cropped.png');
 }
 
 function addNewTabToExternalLinks(html) {
   return html
     .replace(
-      /(<a class="(?:cta-btn|download-btn|cta-btn--secondary)" href="[^"]+")(?! target=)/g,
+      /(<a class="(?:cs-cta-btn|cta-btn|cs-download|download-btn|cs-cta-btn--secondary|cta-btn--secondary)" href="[^"]+")(?! target=)/g,
       `$1${LINK_NEW_TAB}`
     )
     .replace(/ download="[^"]*"/g, '');
@@ -181,7 +198,9 @@ function stripWebflowFooter(html) {
 
 /** About LUCI block reads like a second footer on Webflow pages that use the site footer. */
 function stripWebflowCtaAbout(html) {
-  return html.replace(/\s*<div class="cta__about">[\s\S]*?<\/div>/, '');
+  return html
+    .replace(/\s*<div class="cs-cta__about">[\s\S]*?<\/div>/, '')
+    .replace(/\s*<div class="cta__about">[\s\S]*?<\/div>/, '');
 }
 
 function stripFooterCss(css) {
@@ -201,6 +220,7 @@ function fixFooterLogo(html) {
 /** Webflow: match live page bottom — no copyright row, single CTA button. PDF stays in hero. */
 function trimWebflowPageBottom(html) {
   return html
+    .replace(/\s*<a class="cs-cta-btn cs-cta-btn--secondary"[\s\S]*?<\/a>/, '')
     .replace(/\s*<a class="cta-btn cta-btn--secondary"[\s\S]*?<\/a>/, '')
     .replace(/\s*<p class="footer__legal">[\s\S]*?<\/p>/, '');
 }
@@ -218,18 +238,18 @@ function buildWebflowMarkup(markup, opts = {}) {
 
 const src = fs.readFileSync(srcPath, 'utf8');
 const styleMatch = src.match(/<style>([\s\S]*?)<\/style>/);
-const markupMatch = src.match(/<div class="luci-cs">[\s\S]*<\/div>\s*(?=<\/body>)/);
+const markupMatch = src.match(/<div class="luci-cs">[\s\S]*<\/article>\s*<\/div>/);
 
 if (!styleMatch || !markupMatch) {
   throw new Error('Could not parse ameristar-council-bluffs.html — expected .luci-cs wrapper');
 }
 
-const scopedCss = WEBFLOW_RESET + '\n' + scopeCss(styleMatch[1]);
+const scopedCss = replaceAssets(WEBFLOW_RESET + '\n' + scopeCss(styleMatch[1]));
 const styleBlock = `<style>${scopedCss}\n</style>`;
 
 const fonts = `<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 `;
 
 let markup = buildWebflowMarkup(markupMatch[0], { includeFooter: true, includeCtaAbout: true });
