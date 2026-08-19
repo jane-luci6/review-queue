@@ -1,5 +1,5 @@
 ---
-description: LUCI case studies - canonical hero header/title treatment, structure, and web+print variants. Web-first (Webflow) with a print/PDF variant. Always loaded so any agent starting a case study (any folder, before it lands in /case-studies/) can find it.
+description: LUCI case studies — narrative spine (consolidation / single interface), hero header, visual template (section rhythm, photo treatments, colors), PDF-as-derivative guidance, page structure, copy beats, and web+print variants. Always loaded when creating or editing a case study.
 globs: LUCI Systems Design System/ui_kits/case-studies/**
 alwaysApply: true
 ---
@@ -10,9 +10,178 @@ alwaysApply: true
 
 **Scope — case studies only.** Do **not** apply this header/title treatment, the split-title pattern, or any rule here to newsletters, sales documents, the website, the hub, emails, or any other asset. Those assets have their own rules (`luci-visual-design.mdc`, `luci-modern-design-guidelines.mdc`, `luci-sales-document-system.mdc`, `luci-website-review-deploy.mdc`, etc.). This rule governs **case study pages only**; everything here is case-study-scoped.
 
-Canonical pattern for **case study pages** - web-first (published on lucisystems.com via Webflow) with a print/PDF variant. Inherits Track A (web) / Track C (print) foundations from `luci-modern-design-guidelines.mdc` and brand/voice from `luci-visual-design.mdc`. This rule canonizes the **hero header / title treatment** so every case study opens the same way.
+Canonical pattern for **case study pages** — web-first (published on lucisystems.com via Webflow) with a print/PDF variant. Inherits Track A (web) / Track C (print) foundations from `luci-modern-design-guidelines.mdc` and brand/voice from `luci-messaging-voice.mdc` / `luci-visual-design.mdc`.
 
-**Reference implementation:** `ui_kits/case-studies/ameristar-council-bluffs.html` (canonical local draft) + `-webflow-embed.html` / `-webflow-body.html` (Webflow deploy) + `-print.html` (PDF). Wrapper: `.luci-cs`.
+This rule canonizes **three things**: (1) the **narrative spine** — consolidation and single-interface as the argument of the page, not footer boilerplate; (2) the **hero header / title treatment** and document structure; (3) the **visual template** — section backgrounds, photo treatments, and color decisions that give every case study a consistent look.
+
+**Reference implementations:**
+- **Visual template (canonical):** `ui_kits/case-studies/sams-town.html` + `luci-website/src/components/CaseStudySamsTown.astro` + `luci-website/src/data/caseStudySamsTown.ts` — the standing visual template: section backgrounds, photo-band, inline photo, scope story, color treatments. New case studies start here and adapt.
+- **Copy spine (target):** `ui_kits/case-studies/tachi-palace.html` — scope inventory, “what runs now,” subtraction, operator-facing results.
+- **Layout / variants:** `ui_kits/case-studies/ameristar-council-bluffs.html` + `-webflow-embed.html` / `-webflow-body.html` (Webflow) + `-print.html` (PDF). Wrapper: `.luci-cs`.
+
+---
+
+## Narrative spine — consolidation first (CANONICAL)
+
+Every LUCI case study is a **consolidation story told with operational proof**. The reader should know *what LUCI runs*, *what went away*, and *how staff use one interface* before they finish the property context.
+
+**Core thesis (repeatable):** fragmented A/V, signage, and control silos → **one interface** the property team runs from anywhere → fewer systems, racks, and workflows to manage.
+
+**LUCI already leads with subtraction in brand voice** (`luci-messaging-voice.mdc`, Messaging Guide worldview). Case studies must make subtraction **verifiable** — named systems decommissioned, licenses lapsed, vendors gone — not abstract “fewer variables.”
+
+**Register:** operational and institutional. What *reads* revenue-forward in competitor assets is usually **scope rendered concretely** (displays, zones, square footage under management) — not ROI, handle lift, or payback. Use **scope stats**, not outcome stats that require quarters of operator data. Case studies should be **shippable the day handoff completes**.
+
+**“Single interface” placement:** hero dek, glance summary, or a named mid-page section — **never only** in the footer “About LUCI” boilerplate. If the CTA repeats the value prop, the reader should already know the thesis.
+
+### Denominator first — many → one (CANONICAL)
+
+Build the **denominator before the benefit**. Stack scope stats (endpoints, zones, walls, speakers, machines on network) **before** claiming one interface, one login, or less training.
+
+- **Benefit-first** (“one unified view,” “less training”) reads as a claim to trust.
+- **Denominator-first** (70+ displays, 180+ speakers, eight walls → one interface) lets the reader reach the same conclusion.
+
+The story is arithmetic: **many → one**. Do not open results or the one-interface section with abstract benefits until the stat block has established volume.
+
+### Scope stats, not outcome stats
+
+**Use:** counts of what LUCI runs or replaced — displays, tickers, audio zones, LED walls, install window, racks removed, simultaneous sources.
+
+**Do not wait for or invent:** revenue lift, F&B impact, handle %, payback period, guest satisfaction scores. Those block publishing and violate voice rules on percentage claims.
+
+**Do not lead with borrowed project capex** ($144M redevelopment, nine-figure new-build totals) as authority — impressive but not LUCI’s number; it scopes the product as mega-build-only and makes a $2M refresh reader self-disqualify. One short venue line for context; **scope-under-management stats** carry scale.
+
+### Page spine (section order)
+
+Follow this order unless the project genuinely lacks a beat (say so in draft notes — do not skip inventory):
+
+| # | Beat | Job |
+|---|------|-----|
+| 1 | **Hero** | Split title (speed/transition may live in lead-in + Syncopate phrase). **Dek names consolidation** — what was unified, not just project duration. |
+| 2 | **At a glance** | Challenge / approach / result row **plus** **scope stat block first** — 4–6 counts of surface area under management (denominator). |
+| 3 | **Challenge** | Short. Silos + **volume** (how many systems/zones/endpoints were fragmented) — not only “aging equipment.” |
+| 4 | **Approach** | Embedded execution (install window, data-center move, on-site team, training/handoff) **and** what got consolidated. |
+| 5 | **One interface** | **One claim in the H2** — e.g. “One interface. Every endpoint.” Not three parallel claims (scale + simplicity + design). **Concrete scene** here or next: one moment, one person, one screen (fight night, bingo call, floor reset — property-specific). Then plain workflow language. |
+| 6 | **Consolidation you can see** | **Canonical section** — fixed H2 verbatim (homepage `homeLedger.kicker`). 4–6 social-ready removal/consolidation rows. See markup pattern below. |
+| 7 | **Results** | Operational outcomes; **tie bullets to numbers or named capabilities** where possible (“eight LED walls,” “every audio zone,” not “unified view” alone). |
+| 8 | **Forward** | Property transition / expansion (boat → land, one room → whole resort). **LUCI-only** — amplify this; competitors rarely own it. |
+| 9 | **CTA** | Short “About LUCI”; optional verbatim boilerplate — reader already has the spine. |
+
+### Hero dek — thesis before timeline
+
+The Syncopate phrase may celebrate **speed or readiness** (“one week,” “future-ready property”). The **dek must still answer**: what fragmented stack became one interface?
+
+**Pass:** “LUCI unified [scope] on one interface — [install window / transition hook].”  
+**Fail:** dek is only duration + “modernized AV” with no consolidation or scope.
+
+### At a glance — scope inventory / denominator (required)
+
+Add a **facts row or stat grid** immediately after the hero — **before** narrative prose argues one interface.
+
+Pull real project numbers; approximate only when exact counts are unavailable — label honestly in draft notes.
+
+**Inventory examples (scope under management):** displays · LED walls / tickers · audio zones · speakers · gaming or floor endpoints on network · sportsbook layouts · install duration · racks or head-ends removed · simultaneous sources.
+
+This block is the **denominator**. Abstract “unified control” without counts fails the format.
+
+### One interface section — concrete scene + operator moment
+
+**Concrete scene (required):** One property-specific moment — time, place, one operator, one screen, one action sequence. Beats isolated stats when written tightly. Place this **in or directly under** the one-interface H2 — do not bury the best operational detail in a late section.
+
+**Workflow:** Plain language for what staff used to do vs. one action now (search/select/send, zone volume, preset fire, channel swap, scheduled reset).
+
+**Quotes — credibility order:**
+1. **Property operator** (director of ops, AV lead, facilities, slot/bingo manager) — **required when available**; one operator quote beats any integrator quote for trust.
+2. **LUCI FDE / embedded team** — proves hands-on delivery.
+3. **Integrator or vendor** — optional; never the only voice in the asset. If every quote is from someone with a commercial stake in the sale, the piece fails credibility vs. competitors who make the same mistake.
+
+### Subtraction — verifiable removals (brand voice made provable)
+
+Per `luci-messaging-voice.mdc`, LUCI leads with what gets **removed**. In case studies, subtraction must **name line items** — verifiable, more credible than capability adds:
+
+- Standalone signage CMS or control platform **decommissioned** (name it when client approves)
+- External media players or redundant head-ends **removed**
+- Vendor or license **no longer in the building**
+- Parallel workflow or manual job **eliminated**
+- Infrastructure **not built** because processing moved (e.g. data center vs. new AV rooms)
+
+**Standing intake — ask on every install close** (for case study draft + handoff notes):
+- What was decommissioned?
+- Which license lapsed or contract ended?
+- Which vendor stopped being on property?
+- What task does nobody do anymore?
+- What rack, room, or interface disappeared?
+
+Capture answers in project notes even if the case study ships later.
+
+### Consolidation you can see — canonical section (REQUIRED)
+
+Every case study includes this section — **same title every time**, matching the homepage consolidation ledger kicker (`homeLedger.kicker` in `luci-website/src/data/site.ts`):
+
+**Section H2 (verbatim, do not paraphrase):** `Consolidation you can see`
+
+Place after **Approach**, before **Quote** or **Results**. Light canvas (`sec--light` / `cs-sec--light`).
+
+**Markup pattern:**
+
+```html
+<section class="sec sec--light cs-consolidation" aria-labelledby="cs-consolidation-title">
+  <header class="cs-consolidation__header">
+    <span class="cs-consolidation__rule" aria-hidden="true"></span>
+    <h2 id="cs-consolidation-title" class="cs-consolidation__title">Consolidation you can see</h2>
+  </header>
+  <ul class="cs-consolidation__list">
+    <li class="cs-consolidation__item">
+      <p class="cs-consolidation__item-title">Short removal headline</p>
+      <p class="cs-consolidation__item-text">One sentence — what left, merged, or stopped.</p>
+    </li>
+  </ul>
+</section>
+```
+
+(Tachi uses `cs-sec cs-sec--light`; Ameristar uses `sec sec--light` — same `.cs-consolidation` block classes.)
+
+**Row rules:**
+- **4–6 items** per property, from install-close intake.
+- Each row = **one verifiable consolidation/removal** — title names the thing; body states what happened.
+- **Social-ready:** each `.cs-consolidation__item` is a standalone card candidate (title → headline, text → body). Do not write rows that only make sense in paragraph context.
+- No checkmarks or numbered grid — **hairline-separated stack** (de-boxed list).
+
+**CSS:** mint 40×3px rule above title; title Space Grotesk 700; item titles bold; item text Inter or body stack per asset.
+
+### LUCI-only beats — always look for these
+
+Do not drop these for competitor-style guest glam:
+
+- Install speed **with the floor still running**  
+- Processing centralized (data center, land-side consolidation)  
+- **Embedded team** on site — hang, wire, train, stay on  
+- Multi-phase property transitions  
+- Platform grows without per-seat licensing / parallel systems (when true for the project)
+
+### Borrow vs. skip (competitive pattern)
+
+**Borrow:** consolidation stats above the fold · named “one interface” section · endpoint inventory · “what we eliminated” beat · operator micro-story.
+
+**Skip:** long property redevelopment / historic-building arc as main character · borrowed mega-project capex as lead authority · revenue / outcome metrics · integrator-only quotes · product SKU catalog · triple-claim section headers (“scale + simplicity + design” in one H2).
+
+### Case-study voice exceptions
+
+Named **property and operator** are required in the case-study format (unlike anonymous public marketing). **Scope counts and install durations** are encouraged — they are proof, not hype. Do not invent metrics; use project facts or approved client sign-off.
+
+### Copy pre-ship (narrative)
+
+1. **Denominator before benefit** — scope stat block precedes one-interface claim.  
+2. Consolidation thesis in hero dek or glance — not footer-only.  
+3. Scope inventory present (4+ stats of surface under management).  
+4. **Named subtraction** in **Consolidation you can see** — verifiable rows, not abstract “fewer variables” alone.  
+5. **Consolidation you can see** section present — exact H2, 4+ social-ready rows.  
+6. **Concrete scene** — one operator moment in or under one-interface section.  
+7. **Operator quote** when available — not integrator-only.  
+8. Results tied to specifics, not abstraction alone.  
+9. Forward-looking transition beat where the project has one.  
+10. No borrowed capex lead · no outcome/revenue stats · voice: operational, declarative, **A/V** — no “layer” for LUCI, no retired hype terms.
+
+---
 
 ## The hero header - split title (CANONICAL)
 
@@ -79,10 +248,135 @@ Every case study hero uses a **two-part title**: a small uppercase **lead-in** (
 - **Print/PDF:** `-print.html` variant on US Letter; keep the same split title. Embed fonts (no Google Fonts `<link>` - use `assets/fonts/luci-brand-fonts.css`); `print-color-adjust: exact` on the hero so the navy bg + mint render.
 - **Canonical local draft:** `<name>.html` (no prefix) is the source of truth; the webflow/print files are derived. Edit content here, then propagate.
 
-## Pre-ship
+## Pre-ship (visual + narrative)
 
-1. Split title present (lead-in + Syncopate `<em>`); Syncopate phrase max 3 words / single line.
-2. Hero is `--navy-deep` with 4px mint bottom border; kicker + dek + property row present.
-3. Fonts embedded (print) / Google Fonts loaded (web); Syncopate renders (verify, do not assume).
-4. One display moment only; section H2s are Space Grotesk.
-5. Webflow: head/body split pasted; hard-refresh after deploy.
+1. **Narrative spine** passes copy pre-ship checklist above.
+2. Split title present (lead-in + Syncopate `<em>`); Syncopate phrase max 3 words / single line.
+3. Hero is `--navy-deep` with 4px mint bottom border; kicker + dek + property row present.
+4. Fonts embedded (print) / Google Fonts loaded (web); Syncopate renders (verify, do not assume).
+5. One display moment only; section H2s are Space Grotesk.
+6. Webflow: head/body split pasted; hard-refresh after deploy.
+
+---
+
+## Visual template — section rhythm and treatments (CANONICAL)
+
+Sam's Town is the standing visual template. New case studies follow this rhythm and adapt content/media to what they have. The template is the **spine, not a straitjacket** — sections expand or retract based on content, and media choices flex (photo vs. video vs. collage, drag bar vs. side-by-side). What stays consistent: the narrative spine, the section order, the background rhythm, the color language, and the hero header.
+
+### Section background rhythm
+
+Alternate dark and light sections for contrast and pace. The default rhythm from Sam's Town:
+
+| # | Beat | Background |
+|---|------|-----------|
+| 1 | Hero | `--navy-deep` (dark) + 4px mint bottom border |
+| 2 | At a glance / Challenge | Light (`cs-sec--light`) |
+| 3 | Challenge photo | **Photo-band** — full-bleed image, horizontal gradient scrim for text legibility, no bottom border (runs directly into next section) |
+| 4 | Approach | Light |
+| 5 | Racebook / One interface | Light with **inline photo** (single image, not a crew grid) |
+| 6 | Wall they wanted / Mid | `cs-sec--mid` with **soft mint radial-gradient wash** (not circuit texture, not mesh) |
+| 7 | Consolidation you can see | Light (`sec--light`) |
+| 8 | Results | Light or dark — adapt to content |
+| 9 | Scope story | Dark (`--navy-deep` or `--navy`) — stat grid with mint numbers, scope-story title (see below) |
+| 10 | Forward / What's next | Light |
+| 11 | CTA | Dark or light — adapt to content |
+
+**Not every section needs its own background.** Merge short sections into adjacent ones; let the rhythm breathe. A section with no strong visual can stay light and let the copy carry it.
+
+### Photo-band (full-bleed image with gradient)
+
+For the "challenge" or "before" beat — the room they had, the old system, the problem:
+
+- Full-bleed image spanning the entire section width.
+- **Horizontal linear-gradient scrim** on the text side for legibility (dark side → transparent).
+- **No bottom border** — the section runs directly into the next one.
+- Text sits on the scrim side; image breathes on the other.
+
+**CSS classes:** `.cs-photo-band`, `.cs-photo-band__img` (absolute, covers section), `.cs-photo-band__scrim` (gradient overlay), `.cs-photo-band__content` (text, z-index above scrim).
+
+### Inline photo (single image)
+
+For the "approach" or "bringing X on board" beat — a technician working, an install moment:
+
+- Single image, not a multi-photo crew grid.
+- Centered or side-aligned within the section, with breathing room.
+- Caption optional; let the image speak when it's strong.
+
+**CSS class:** `.cs-inline-photo` with `img` inside.
+
+### Mid-section background — soft mint wash
+
+For the "wall they wanted" or transitional mid-page beat:
+
+- `cs-sec--mid` background uses a **radial-gradient mint wash** — soft, subtle, not a circuit texture or mesh pattern.
+- The wash is positioned and sized to add atmosphere without competing with content.
+- Mint is the primary accent; gold is secondary (per `luci-mint-primary-gold-secondary.mdc`).
+
+**CSS:** `background: radial-gradient(circle at <position>, rgba(104,227,190,<opacity>) 0%, transparent <spread>);` on `--navy-deep` or light canvas — adapt to the section's base.
+
+### Scope story title — color treatment
+
+The "Property on LUCI to date" heading uses a two-color treatment:
+
+- **"Property on LUCI"** (base text) → `--mint` (green carries the brand name)
+- **"to date"** (the `<em>` accent) → `--off-white` (white is the temporal qualifier, quieter)
+
+This is the inverse of the standard section-title pattern (white base + mint accent). The swap puts the brand emphasis on LUCI, not on the timeframe.
+
+**CSS:** `.cs-scope-story__title { color: var(--mint); }` and `.cs-scope-story__title em { color: var(--off-white); }` (or `--accent-light` on light canvases).
+
+### Flexibility — adapt the media to the content
+
+The template specifies the **structure** and **visual language**, not the exact media. Adapt freely:
+
+- **First image (challenge/before):** photo, video, or collage — whatever best shows the "before" state. Photo-band treatment is the default, but a standard inline image works if the photo doesn't need full-bleed.
+- **Before/after (slider):** drag bar is the default, but **two photos side by side** is fine when the contrast is more important than the interactive reveal. Choose based on what makes the transformation clearest.
+- **Install/approach image:** single photo, a short video loop, or a small grid — adapt to what you have. Don't force a grid when one strong photo tells the story.
+- **Text length:** the narrative spine (denominator first, concrete scene, named subtraction) is the constraint, not word count. A section can be 3 sentences or 3 paragraphs — let the content dictate.
+
+**Do not** drop a section entirely (say so in draft notes if the project lacks a beat), and **do not** add sections the spine doesn't call for. The spine is the contract; the media is flexible.
+
+### Data structure (TypeScript)
+
+New case studies on the website follow the `caseStudySamsTown.ts` data shape. Key fields:
+
+- `property`, `location`, `operator` — hero property row
+- `hero` — `leadin`, `titleAccent` (Syncopate phrase), `dek`, `photo`
+- `challenge` — `titleBefore`, `titleAccent`, `body[]`, `photo` (photo-band)
+- `approach` — `titleBefore`, `titleAccent`, `body[]`, `photo` (inline)
+- `raceBook` / one-interface section — `titleBefore`, `titleAccent`, `body[]`, `photo` (inline)
+- `consolidation` — `items[]` with `title` + `text` (canonical section)
+- `results` — `titleBefore`, `titleAccent`, `body[]`
+- `scopeStory` — `titleBefore` ("Property on LUCI"), `titleAccent` ("to date"), `stats[]`, `outcomeBefore`/`outcomeAccent`/`outcomeAfter`, `dek`
+- `whatsNext` — `titleBefore`, `titleAccent`, `body[]`
+
+Each case study gets its own `CaseStudy<Name>.astro` component and `caseStudy<Name>.ts` data file. The component handles the visual template; the data file holds the content. Swap content, keep the structure.
+
+---
+
+## PDF — derivative, not primary
+
+**Design web-first. PDF is a derivative, generated from the web version when a buyer asks for one.** Do not let print constraints limit the web design.
+
+### Why web-first
+
+- The web version is the primary deliverable — it's what lives on lucisystems.com and what the sales team links to.
+- Web allows video, scroll interactions, full-bleed photos — things that make the case study *better* on screen.
+- Designing for print first produces a flat document that happens to also be online; designing web-first produces a rich page that can be flattened to PDF when needed.
+
+### Why links, not attachments
+
+- **Trackable** — you can see if a prospect clicked, when, how often. A PDF attachment is a black box.
+- **Always current** — no stale PDFs with old numbers floating around. The link always serves the latest version.
+- **Less spam risk** — a personalized plain-text email with a single link to lucisystems.com is standard B2B practice and is *less* likely to hit spam filters than an email with a 5MB+ PDF attachment. Large attachments are one of the biggest spam triggers.
+- **Mobile-friendly** — a link works on a phone; a PDF attachment is a download.
+
+### When a buyer needs a PDF
+
+Some procurement processes require a document. Generate one from the web version:
+
+- `-print.html` variant on US Letter (see Ameristar's `-print.html` as the pattern).
+- `@media print` CSS: page breaks, font embedding (use `assets/fonts/luci-brand-fonts.css`, no Google Fonts `<link>`), `print-color-adjust: exact` on dark sections so navy + mint render.
+- Keep the same split title, same content, same spine — the PDF is the web page flattened, not a separate design.
+
+This is a **30-minute task after the web version is done**, not a parallel design track.
