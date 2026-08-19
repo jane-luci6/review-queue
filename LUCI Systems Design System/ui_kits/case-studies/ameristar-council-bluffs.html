@@ -81,6 +81,12 @@
       font-size: clamp(24px, 4.8vw, 44px); line-height: 1.2; letter-spacing: 0;
       color: var(--mint); text-transform: uppercase; max-width: 12ch;
     }
+    .cs-hero__leadin {
+      display: block; font-family: var(--font-body);
+      font-size: clamp(17px, 2.2vw, 24px); font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(235, 245, 248, 0.82); margin-bottom: 14px;
+    }
     .cs-hero__trail {
       display: block; font-family: var(--font-body);
       font-size: clamp(17px, 2.2vw, 24px); font-weight: 600;
@@ -178,6 +184,7 @@
     .cs-sec__title {
       margin: 0 0 22px; font-family: var(--font-body); font-weight: 700;
       font-size: clamp(24px, 4vw, 34px); line-height: 1.12; letter-spacing: -0.025em; max-width: 24ch;
+      text-transform: none;
     }
     .cs-sec--white .cs-sec__title, .cs-sec--light .cs-sec__title { color: var(--navy); }
     .cs-sec--mid .cs-sec__title, .cs-sec--dark .cs-sec__title { color: var(--off-white); }
@@ -318,7 +325,7 @@
     .cs-consolidation__title {
       margin: 0; font-family: var(--font-body); font-weight: 700;
       font-size: clamp(24px, 4vw, 34px); line-height: 1.12; letter-spacing: -0.025em;
-      color: var(--navy); max-width: 28ch;
+      color: var(--navy); max-width: 28ch; text-transform: none;
     }
     .cs-consolidation__list {
       list-style: none; margin: 0; padding: 0; max-width: 64ch;
@@ -370,6 +377,7 @@
     .cs-scope-story__title {
       margin: 0 0 36px; font-family: var(--font-body); font-size: clamp(24px, 4vw, 36px);
       font-weight: 700; line-height: 1.15; letter-spacing: -0.025em; color: var(--mint);
+      text-transform: none;
     }
     .cs-scope-story__title em { font-style: normal; color: var(--off-white); }
     .cs-scope-stats {
