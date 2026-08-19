@@ -199,6 +199,8 @@
       width: 100%; aspect-ratio: 16 / 9; object-fit: cover;
       border-radius: 14px; border: 1px solid rgba(104, 227, 190, 0.18);
     }
+    .cs-figure__pair { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(12px, 1.6vw, 18px); }
+    @media (max-width: 620px) { .cs-figure__pair { grid-template-columns: 1fr; } }
     .cs-figure figcaption {
       margin: 14px 0 0; font-family: var(--font-copy); font-size: 13px; letter-spacing: 0.02em;
       line-height: 1.5; color: rgba(235, 245, 248, 0.7); text-align: center;
@@ -287,7 +289,7 @@
     .cs-ledger__title {
       margin: 0 0 clamp(22px, 3vw, 32px);
       padding: clamp(36px, 5vw, 56px) clamp(28px, 6vw, 64px) 0;
-      font-family: var(--font-body); font-size: clamp(22px, 3vw, 30px); font-weight: 700;
+      font-family: var(--font-body); font-size: clamp(26px, 3.6vw, 38px); font-weight: 700;
       line-height: 1.1; letter-spacing: -0.025em; color: var(--off-white); text-align: center;
     }
     .cs-ledger__title em { font-style: normal; color: var(--mint); }
@@ -310,11 +312,11 @@
     .cs-ledger__ic { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; flex: none; }
     .cs-ledger__ic svg { width: 100%; height: 100%; display: block; }
     .cs-ledger__num {
-      font-family: var(--font-body); font-size: clamp(26px, 3.4vw, 38px); font-weight: 700;
+      font-family: var(--font-body); font-size: clamp(30px, 4vw, 44px); font-weight: 700;
       line-height: 1; letter-spacing: -0.03em; color: var(--mint);
     }
     .cs-ledger__label {
-      font-family: var(--font-copy); font-size: 12px; line-height: 1.3;
+      font-family: var(--font-copy); font-size: 13px; line-height: 1.3;
       letter-spacing: 0.02em; color: rgba(235, 245, 248, 0.72);
     }
     .cs-ledger__converge { display: block; width: 100%; height: clamp(52px, 7vw, 76px); margin: 4px 0 -2px; overflow: visible; }
@@ -335,7 +337,7 @@
     .cs-ledger__dest-rule { width: 40px; height: 3px; background: var(--mint); }
     .cs-ledger__dest-head {
       margin: 0; font-family: var(--font-body); font-weight: 700; letter-spacing: -0.02em;
-      font-size: clamp(28px, 4vw, 40px); color: var(--off-white); text-align: center;
+      font-size: clamp(32px, 5vw, 54px); color: var(--off-white); text-align: center;
     }
     .cs-ledger__dest-head em { font-style: normal; color: var(--mint); }
     .cs-ledger__dest-sub {
@@ -376,7 +378,7 @@
         <span class="cs-hero__leadin">Everything on the property</span>
         <em>One interface</em>
       </h1>
-      <p class="cs-hero__dek">LUCI brought Yaamava&rsquo;s broadcast content, signage, audio, data, and displays &mdash; and everything running underneath them &mdash; onto a single platform, so a 290,000-square-foot gaming floor can be run from one screen.</p>
+      <p class="cs-hero__dek">LUCI brought Yaamava&rsquo;s broadcast content, signage, audio, data, and displays &mdash; and everything running underneath them &mdash; onto a single platform, so a 290,000-square-foot gaming floor can be run from a single platform.</p>
       <p class="cs-hero__property">
         Yaamava&rsquo; Resort &amp; Casino
         <span>Highland, California &middot; San Manuel Band of Mission Indians</span>
@@ -412,7 +414,7 @@
       </ul>
       <div class="cs-summary">
         <div class="cs-summary__cell"><p class="cs-summary__label">The challenge</p><p class="cs-summary__text">Audio, video, and control each ran on their own hardware, their own software, and their own interfaces.</p></div>
-        <div class="cs-summary__cell"><p class="cs-summary__label">The approach</p><p class="cs-summary__text">Consolidation instead of addition &mdash; the property&rsquo;s separate technologies and interfaces replaced by one LUCI platform, plus new LED across the building.</p></div>
+        <div class="cs-summary__cell"><p class="cs-summary__label">The approach</p><p class="cs-summary__text">Consolidation instead of addition &mdash; the property&rsquo;s separate technologies and interfaces orchestrated from one LUCI platform, plus new LED across the building.</p></div>
         <div class="cs-summary__cell"><p class="cs-summary__label">The result</p><p class="cs-summary__text">Every audio zone, display, and network device on the property managed from a single interface.</p></div>
       </div>
     </section>
@@ -428,8 +430,8 @@
     </section>
 
     <figure class="cs-figure">
-      <img src="assets/yaamava/gaming-floor-led-web.jpg" alt="A wall-sized LED display on the Yaamava&rsquo; gaming floor, behind a bank of machines" width="1600" height="900" loading="lazy" />
-      <figcaption>290,000 square feet of gaming floor &mdash; every display on it now driven from the same platform.</figcaption>
+      <img src="assets/yaamava/sportsbook-led-web.jpg" alt="The curved LED ribbon wrapping the 909 Sportsbar at Yaamava&rsquo;, carrying live games and odds above the bar" width="1600" height="900" loading="lazy" />
+      <figcaption>The 909 Sportsbar &mdash; every screen in the room on the same platform.</figcaption>
     </figure>
 
     <section class="cs-sec cs-sec--mid">
@@ -493,24 +495,20 @@
       </header>
       <ul class="cs-consolidation__list">
         <li class="cs-consolidation__item">
-          <p class="cs-consolidation__item-title">Five separate technology silos</p>
-          <p class="cs-consolidation__item-text">Broadcast, signage, data, audio and paging, and displays each had their own hardware, software, and interface. They now run as one platform.</p>
+          <p class="cs-consolidation__item-title">Five silos, one platform</p>
+          <p class="cs-consolidation__item-text">Broadcast, signage, data, audio and paging, and displays each had their own hardware, software, and interface. They now run as one.</p>
         </li>
         <li class="cs-consolidation__item">
-          <p class="cs-consolidation__item-title">Multiplying racks and players</p>
-          <p class="cs-consolidation__item-text">Consolidation removed hardware rather than adding it &mdash; fewer boxes to power, cool, license, and replace.</p>
+          <p class="cs-consolidation__item-title">Less hardware, not more</p>
+          <p class="cs-consolidation__item-text">Consolidation removed racks and players rather than adding them &mdash; fewer boxes to power, cool, license, and replace.</p>
         </li>
         <li class="cs-consolidation__item">
-          <p class="cs-consolidation__item-title">Platform-by-platform content pushes</p>
-          <p class="cs-consolidation__item-text">Content that belonged on every screen no longer travels through several tools to get there. It goes out once.</p>
+          <p class="cs-consolidation__item-title">One send, every screen</p>
+          <p class="cs-consolidation__item-text">Content that belongs property-wide no longer travels through several tools to get there. It goes out once.</p>
         </li>
         <li class="cs-consolidation__item">
-          <p class="cs-consolidation__item-title">A parallel control system for the new LED</p>
-          <p class="cs-consolidation__item-text">Never stood up. The LED installed across the building joined the platform already running the property.</p>
-        </li>
-        <li class="cs-consolidation__item">
-          <p class="cs-consolidation__item-title">Interface-by-interface training</p>
-          <p class="cs-consolidation__item-text">Staff learn one interface instead of one per technology &mdash; and the A/V and IT team spends its time on priorities instead of upkeep.</p>
+          <p class="cs-consolidation__item-title">One interface to learn</p>
+          <p class="cs-consolidation__item-text">Staff train on LUCI instead of one tool per technology &mdash; and the A/V and IT team spends its time on priorities instead of upkeep.</p>
         </li>
       </ul>
     </section>
@@ -533,9 +531,12 @@
       </ul>
     </section>
 
-    <figure class="cs-figure">
-      <img src="assets/yaamava/event-entry-led-web.jpg" alt="LED-clad columns and soffit at the Yaamava&rsquo; event center entrance, all driven from LUCI" width="1600" height="900" loading="lazy" />
-      <figcaption>LED installed across the building &mdash; entry, floor, and bar &mdash; all on the same platform.</figcaption>
+    <figure class="cs-figure cs-figure--pair">
+      <div class="cs-figure__pair">
+        <img src="assets/yaamava/gaming-floor-led-web.jpg" alt="A wall-sized LED display on the Yaamava&rsquo; gaming floor, behind a bank of machines" width="1600" height="900" loading="lazy" />
+        <img src="assets/yaamava/event-entry-led-web.jpg" alt="LED-clad columns and soffit at the Yaamava&rsquo; event center entrance" width="1600" height="900" loading="lazy" />
+      </div>
+      <figcaption>LED LUCI designed and installed &mdash; the artwork on every wall changes from the same interface.</figcaption>
     </figure>
 
     <section class="cs-ledger" aria-labelledby="cs-ledger-title">

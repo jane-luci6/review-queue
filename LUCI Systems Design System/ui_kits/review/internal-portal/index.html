@@ -1388,7 +1388,7 @@
     // When reachable, comments/approvals are stored server-side so Jane sees Mike/Mark's feedback.
     // Falls back to localStorage (SEED + local) when the API is unavailable (e.g. local file preview).
     const COMMENTS_API_URL = '/api/comments';
-    const PUBLIC_MATERIALS = ['sales-brochure', 'capabilities-document', 'signal-issue-01', 'signal-issue-02', 'case-study-ameristar', 'field-activation-guide', 'field-activation-guide-prospect', 'client-examples'];
+    const PUBLIC_MATERIALS = ['sales-brochure', 'capabilities-document', 'signal-issue-01', 'signal-issue-02', 'case-study-ameristar', 'case-study-tachi', 'field-activation-guide', 'field-activation-guide-prospect', 'client-examples'];
 
     // Baseline history so the queue shows prior feedback even in local preview.
     const SEED_COMMENTS = [
@@ -1404,6 +1404,7 @@
       'signal-issue-01': { Mike: '2026-06-12T17:06:02.736Z' },
       'newsletter-email-teaser': { Mike: '2026-06-12T17:06:03.022Z' },
       'case-study-ameristar': { Mike: '2026-07-15T21:55:00.000Z' },
+      'case-study-tachi': { Mike: '2026-08-18T17:00:00.000Z' },
     };
 
     const SOURCE_PORTAL = location.pathname.includes('/ui_kits/internal-portal/');

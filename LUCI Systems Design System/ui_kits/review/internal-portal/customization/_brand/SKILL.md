@@ -1,9 +1,9 @@
 ---
 name: luci-brand
 description: >-
-  LUCI brand guardrails for customizing sales documents. Apply whenever editing
-  capabilities documents, scope of work, budgetary estimates, or other LUCI
-  marketing HTML templates.
+  LUCI brand guardrails for customizing sales and legal documents. Apply
+  whenever editing capabilities documents, scope of work, budgetary estimates,
+  the MPSA, or other LUCI templates (HTML and Word).
 ---
 
 # LUCI brand — document customization
@@ -16,7 +16,9 @@ Shared rules for all LUCI sales document customization. Read the template-specif
 
 This is a **populate-in-place** job, not a rebuild. Never regenerate the document from scratch. Locked regions must come through **byte-identical**. The master template already has the layout, CSS, textures, fonts, and locked copy — your job is to stamp client values into the existing file.
 
-**House-wide (every Customization Studio document):** Mike can click and type **any text**. Fonts, colors, and layout stay on CSS classes — change words only. Only LUCI logo images stay non-editable. Efficiency rules below apply to **every** template (Proposal - LED, Budgetary estimate, Scope of work, Capabilities, Sales deck, and future Proposal - LUCI Retrofit / Proposal - Upgrade).
+**House-wide (every Customization studio document):** Mike can click and type **any text**. Fonts, colors, and layout stay on CSS classes — change words only. Only LUCI logo images stay non-editable. Efficiency rules below apply to **every** template (Proposal - LED, Budgetary estimate, Scope of work, Capabilities, Sales deck, and future Proposal - LUCI Retrofit / Proposal - Upgrade).
+
+**Two pipelines — HTML and Word.** Most studio templates are **HTML** (click-to-edit preview → PDF export). The MPSA (and future legal docs) are **Word (`.docx`)**: the agent fills blanks from Mike's proposal with `scripts/fill-mpsa.py`, the dev server renders a **read-only** HTML preview (mammoth), and the deliverable is the native `.docx` (Download .docx). The HTML-specific steps below — click-to-edit, `fit-check.py`, `pack-content.py`, `render-pdf.sh`, footer renumbering — apply **only to HTML templates**. For a `.docx` template, follow the per-template `SKILL.md` (it names the pipeline and the blank map); do not run the HTML tools on a `.docx`.
 
 Burning millions of tokens on discovery, rebuilds, accessibility snapshots, or rewriting whole `<section>`s is a failure mode. Parse the request → touch only what changed → verify.
 
@@ -132,6 +134,12 @@ python3 scripts/pack-content.py clients/<client>-<doc>.html --mode sow \
 ```
 
 The script measures each element's rendered height via headless Chrome, greedily packs into 1056px pages, handles "(continued)" titles, applies the totals exception, and renumbers all footers + page comments. **Do not write your own packing algorithm** — the script handles the height measurement, the budget calibration, the group-label merging, and the splicing. Just call it, then run `fit-check.py` to verify.
+
+**Footer integrity is now automated — you don't run the check by hand unless something flags it.** Two gates catch missing/mangled page numbers without anyone remembering:
+- **`pack-content.py --write`** runs a footer-integrity check on the repacked HTML immediately after writing. It prints `✓ footer integrity check passed` or `⚠ FOOTER INTEGRITY CHECK FAILED` with the exact page list. If it flags, run `python3 scripts/check-footers.py <html> --fix` to repair + resequence, then re-export.
+- **The dev server `/__pdf` endpoint refuses to render a PDF with broken footers** — it returns HTTP 422 with the `footerIssues` list and the same `--fix` hint instead of shipping a deliverable with missing page numbers. So a broken-footers PDF can't leave the studio.
+
+`check-footers.py` is now the **repair tool** (run `--fix` when either gate flags), not a step you run after every pack. It still works as a manual auditor (`python3 scripts/check-footers.py <html>`) if you want a standalone check.
 
 **Packing rules (enforced by the script):**
 
@@ -307,6 +315,8 @@ The website (lucisystems.com) is the reference for *how LUCI sounds* — the ton
 - Before any further agent pass after Mike types in preview: the working file is already updated (via the dev server save), so Cursor reads the latest version. If Mike used the download fallback instead, write the live DOM back into the working file before editing.
 - **Download PDF** = `POST /__pdf` on the LUCI dev server → `scripts/render-pdf.sh` (headless Chrome). Never `window.print()` — that crashes Cursor's in-editor browser. The button shows "Rendering…" then downloads the PDF. If the local preview server is not running, the button asks you to restart it.
 
+**PDF filename (automatic):** `POST /__pdf` names the download `<ClientName>-<DocType> <M+D+YY>.pdf` — e.g. `Elwha River Casino-Proposal-LUCI-Retrofit 81326.pdf` (Aug 13 '26). The client name is read from the document `<title>`, the doc type from the HTML stem (`proposal-luci-retrofit` → `Proposal-LUCI-Retrofit`, `proposal` → `Proposal-LED`, `scope-of-work` → `Scope-of-Work`, `budgetary-estimate` → `Budgetary-Estimate`, `capabilities-document` → `Capabilities-Document`, `sales-deck` → `Sales-Deck`, `proposal-upgrade` → `Proposal-Upgrade`), and the date is today's export date (month/day, no leading zeros). Do not rename the download — the dev server already applies the house convention to every exported PDF.
+
 **PDF button shows "Failed"?** The most common cause is a **missing dependency on Mike's machine**, not a timeout. The pipeline needs:
 1. **Google Chrome** (or Chromium/Edge/Brave) in `/Applications`. Without it, the render fails immediately.
 2. **Pillow + numpy** (Python packages) for raster optimization. Without them, the PDF still renders — just without optimized rasters.
@@ -317,7 +327,7 @@ The website (lucisystems.com) is the reference for *how LUCI sounds* — the ton
 - Install Google Chrome from google.com/chrome (or ensure Chromium/Edge/Brave is in `/Applications`).
 - Run `pip3 install -r requirements.txt` (from the `LUCI Systems Design System/` root) to install Pillow + numpy.
 
-**Fallback (always works):** The agent runs `render-pdf.sh` directly — `bash scripts/render-pdf.sh clients/<client>-<doc>.html ~/Downloads/<client>-<doc>.pdf` (from the `LUCI Systems Design System/` root). This bypasses the browser and produces the same PDF.
+**Fallback (always works):** The agent runs `render-pdf.sh` directly — `bash scripts/render-pdf.sh clients/<client>-<doc>.html "~/Downloads/<ClientName>-<DocType> <M+D+YY>.pdf"` (from the `LUCI Systems Design System/` root; use the house naming convention, e.g. `~/Downloads/Elwha River Casino-Proposal-LUCI-Retrofit 81326.pdf`). This bypasses the browser and produces the same PDF.
 
 **Always test PDF generation before handing off to Mike.** Generate a test PDF after any structural change (page add/remove, content move) to catch rendering issues early.
 

@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LUCI Case Study · Sam's Town Hotel &amp; Gambling Hall</title>
+  <link rel="stylesheet" href="/assets/fonts/luci-brand-fonts.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy-deep: #0a161c;
+      --navy: #10232d;
+      --navy-mid: #314955;
+      --navy-muted: #49616e;
+      --mint: #68e3be;
+      --mint-rgb: 104, 227, 190;
+      --accent-light: #2b9e80;
+      --gold: #edd086;
+      --gold-rgb: 237, 208, 134;
+      --gold-deep: #ceb06e;
+      --sand: #e5e3df;
+      --off-white: #f5f8fa;
+      --rule-light: #dbe1e4;
+      --ink: #354f5c;
+      --ink-strong: #1c2b33;
+      --font-display: 'Syncopate', sans-serif;
+      --font-body: 'Space Grotesk', system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--navy-deep);
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+
+    .cs-page { background: var(--navy-deep); padding-bottom: clamp(48px, 8vw, 96px); }
+    .cs-page__sheet { max-width: 880px; margin: 0 auto; background: #fff; }
+
+    /* Hero */
+    /* Mesh stays vivid at the right edge; a scrim mutes it behind the
+       left-aligned title, dek, and property line so the type stays legible. */
+    .cs-hero {
+      background-color: var(--navy-deep);
+      background-image:
+        linear-gradient(to right,
+          rgba(8, 18, 24, 0.86) 0%,
+          rgba(8, 18, 24, 0.80) 48%,
+          rgba(8, 18, 24, 0.42) 78%,
+          rgba(8, 18, 24, 0.10) 100%),
+        url('assets/mesh/luci-bg-hero-1920x1080.svg');
+      background-size: cover; background-position: center; background-repeat: no-repeat;
+      padding: clamp(40px, 8vw, 84px) clamp(28px, 6vw, 64px) clamp(40px, 7vw, 72px);
+      overflow: hidden; position: relative;
+    }
+    .cs-hero::after {
+      content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 4px;
+      background: linear-gradient(to right, var(--mint) 0 62%, var(--gold) 62% 100%);
+    }
+    .cs-hero__kicker { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+    .cs-hero__kicker::before { content: ''; width: 28px; height: 2px; background: var(--mint); }
+    .cs-hero__kicker span {
+      font-family: var(--font-display); font-size: 10px; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--mint);
+    }
+    .cs-hero__title {
+      margin: 0 0 26px; font-family: var(--font-body); font-weight: 700;
+      font-size: clamp(34px, 6.5vw, 60px); line-height: 1.04; letter-spacing: -0.03em;
+      color: var(--off-white); max-width: 16ch;
+    }
+    .cs-hero__title em {
+      display: block; font-family: var(--font-display); font-style: normal;
+      font-size: clamp(24px, 4.8vw, 44px); line-height: 1.2; letter-spacing: 0;
+      color: var(--mint); text-transform: uppercase; max-width: 12ch;
+    }
+    .cs-hero__trail {
+      display: block; font-family: var(--font-body);
+      font-size: clamp(17px, 2.2vw, 24px); font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(235, 245, 248, 0.82); margin-top: 16px;
+    }
+    .cs-hero__dek {
+      margin: 0 0 30px; font-size: clamp(17px, 2.2vw, 20px); line-height: 1.6;
+      color: rgba(235, 245, 248, 0.82); max-width: 58ch;
+    }
+    .cs-hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 30px; }
+    .cs-download {
+      display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600;
+      letter-spacing: 0.04em; text-decoration: none; color: var(--mint);
+      border: 1px solid rgba(104, 227, 190, 0.45); padding: 12px 20px;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .cs-download:hover { background: rgba(104, 227, 190, 0.08); border-color: var(--mint); }
+    .cs-download__icon { font-size: 16px; line-height: 1; }
+    .cs-hero__property {
+      display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin: 0;
+      padding-top: 24px; border-top: 1px solid rgba(104, 227, 190, 0.15);
+      font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: var(--gold);
+    }
+    .cs-hero__property span { color: rgba(165, 179, 188, 0.7); font-weight: 500; }
+
+    /* Glance */
+    .cs-glance {
+      background: var(--off-white);
+      padding: clamp(32px, 5vw, 48px) clamp(28px, 6vw, 64px);
+      border-bottom: 1px solid var(--rule-light);
+    }
+    .cs-glance__logo { margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid var(--rule-light); }
+    .cs-glance__logo img { height: 72px; width: auto; display: block; }
+    .cs-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 32px; }
+    @media (max-width: 620px) { .cs-facts { grid-template-columns: repeat(2, 1fr); gap: 20px 24px; } }
+    .cs-facts__label {
+      margin: 0 0 8px; font-family: var(--font-display); font-size: 9px; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-light);
+    }
+    .cs-facts__value { margin: 0; font-size: 17px; font-weight: 600; line-height: 1.3; color: var(--navy); }
+
+    /* Scope inventory (denominator) */
+    .cs-inventory {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+      background: var(--rule-light); border: 1px solid var(--rule-light);
+      margin-bottom: 28px; list-style: none; padding: 0; margin-left: 0; margin-right: 0;
+    }
+    @media (max-width: 620px) { .cs-inventory { grid-template-columns: repeat(2, 1fr); } }
+    .cs-inventory__item { background: #fff; padding: 18px 16px; text-align: left; }
+    .cs-inventory__num {
+      margin: 0 0 6px; font-family: var(--font-body); font-size: clamp(28px, 4vw, 36px);
+      font-weight: 700; line-height: 1; letter-spacing: -0.03em; color: var(--accent-light);
+    }
+    .cs-inventory__label {
+      margin: 0; font-size: 13px; line-height: 1.35; color: var(--ink); font-weight: 500;
+    }
+
+    .cs-summary {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+      background: var(--rule-light); border: 1px solid var(--rule-light);
+    }
+    @media (max-width: 620px) { .cs-summary { grid-template-columns: 1fr; } }
+    .cs-summary__cell { background: #fff; padding: 22px; }
+    .cs-summary__label {
+      margin: 0 0 10px; font-family: var(--font-display); font-size: 9px; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-light);
+    }
+    .cs-summary__text { margin: 0; font-size: 15px; line-height: 1.55; color: var(--ink); }
+
+    /* Editorial chapter sections — large faded numeral + mint rule + Inter body */
+    .cs-chapter { position: relative; overflow: hidden; }
+    .cs-chapter__num {
+      position: absolute; top: clamp(16px, 2.5vw, 28px); right: clamp(20px, 4vw, 48px);
+      font-family: var(--font-display); font-size: clamp(72px, 13vw, 148px);
+      font-weight: 700; line-height: 0.82; letter-spacing: -0.04em;
+      pointer-events: none; user-select: none; z-index: 0;
+    }
+    .cs-sec--white .cs-chapter__num, .cs-sec--light .cs-chapter__num { color: var(--accent-light); opacity: 0.07; }
+    .cs-sec--mid .cs-chapter__num { color: var(--mint); opacity: 0.05; }
+    .cs-chapter__head { position: relative; z-index: 1; }
+    .cs-chapter__title {
+      margin: 0 0 14px; font-family: var(--font-body); font-weight: 700;
+      font-size: clamp(22px, 3vw, 30px); line-height: 1.15; letter-spacing: -0.02em;
+      max-width: 20ch;
+    }
+    .cs-sec--white .cs-chapter__title, .cs-sec--light .cs-chapter__title { color: var(--ink-strong); }
+    .cs-sec--mid .cs-chapter__title { color: var(--off-white); }
+    .cs-chapter__title-accent { color: var(--accent-light); }
+    .cs-sec--mid .cs-chapter__title-accent { color: var(--mint); }
+    .cs-chapter__rule {
+      width: 100%; height: 2px; margin: 0 0 24px;
+    }
+    .cs-sec--white .cs-chapter__rule, .cs-sec--light .cs-chapter__rule { background: var(--accent-light); opacity: 0.45; }
+    .cs-sec--mid .cs-chapter__rule { background: var(--mint); opacity: 0.35; }
+    .cs-chapter__body { position: relative; z-index: 1; }
+    .cs-chapter__body p {
+      margin: 0 0 18px; font-family: 'Inter', system-ui, sans-serif;
+      font-size: 17px; line-height: 1.72; max-width: 60ch;
+    }
+    .cs-chapter__body p:last-child { margin-bottom: 0; }
+    .cs-sec--white .cs-chapter__body p, .cs-sec--light .cs-chapter__body p { color: var(--ink); }
+    .cs-sec--mid .cs-chapter__body p { color: rgba(235, 245, 248, 0.88); }
+
+    /* Split layout for the approach section — narrative + scope side by side */
+    .cs-chapter--split .cs-chapter__grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: clamp(32px, 5vw, 56px); align-items: start;
+      position: relative; z-index: 1;
+    }
+    @media (max-width: 720px) {
+      .cs-chapter--split .cs-chapter__grid { grid-template-columns: 1fr; gap: 28px; }
+    }
+
+    /* Sections */
+    .cs-sec { padding: clamp(44px, 6vw, 72px) clamp(28px, 6vw, 64px); border-bottom: 1px solid var(--rule-light); }
+    .cs-sec--white { background: #fff; }
+    .cs-sec--light { background: var(--off-white); }
+    /* Flat slate — the longest reading passage in the piece, kept calm. */
+    .cs-sec--mid {
+      background-color: var(--navy-mid);
+      border-bottom-color: rgba(0, 0, 0, 0.2);
+    }
+    .cs-sec--dark { background: var(--navy); border-bottom-color: rgba(0, 0, 0, 0.3); }
+    .cs-sec__title {
+      margin: 0 0 22px; font-family: var(--font-body); font-weight: 700;
+      font-size: clamp(24px, 4vw, 34px); line-height: 1.12; letter-spacing: -0.025em; max-width: 24ch;
+    }
+    .cs-sec--white .cs-sec__title, .cs-sec--light .cs-sec__title { color: var(--navy); }
+    .cs-sec--mid .cs-sec__title, .cs-sec--dark .cs-sec__title { color: var(--off-white); }
+    .cs-sec__title-accent { color: var(--gold); }
+    .cs-sec--white .cs-sec__title-accent, .cs-sec--light .cs-sec__title-accent { color: var(--accent-light); }
+    .cs-copy p { margin: 0 0 18px; font-size: 17px; line-height: 1.72; max-width: 64ch; }
+    .cs-copy p:last-child { margin-bottom: 0; }
+    .cs-sec--white .cs-copy p, .cs-sec--light .cs-copy p { color: var(--ink); }
+    .cs-sec--mid .cs-copy p { color: rgba(235, 245, 248, 0.88); }
+    .cs-sec--dark .cs-copy p { color: rgba(235, 245, 248, 0.92); }
+
+    .cs-scope {
+      list-style: none; margin: 6px 0 0; padding: 0; max-width: 64ch;
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+    }
+    .cs-scope li {
+      display: flex; flex-direction: row; align-items: flex-start; gap: 14px;
+      padding: 16px 18px; font-size: 15px; line-height: 1.5; margin: 0;
+      color: rgba(235, 245, 248, 0.9); background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(104, 227, 190, 0.4); border-radius: 14px;
+    }
+    .cs-scope li svg { display: block; width: 28px; height: 28px; flex-shrink: 0; }
+    @media (max-width: 620px) { .cs-scope { grid-template-columns: 1fr; } }
+    /* Inside the split layout, scope is a single column of hairline-separated rows */
+    .cs-chapter--split .cs-scope {
+      grid-template-columns: 1fr; gap: 0; max-width: none;
+      border-top: 1px solid rgba(104, 227, 190, 0.18);
+    }
+    .cs-chapter--split .cs-scope li {
+      background: none; border: none; border-radius: 0;
+      border-bottom: 1px solid rgba(104, 227, 190, 0.18);
+      padding: 16px 0;
+    }
+
+    /* Before/after slider */
+    .cs-ba {
+      background: var(--navy-deep);
+      padding: clamp(36px, 6vw, 60px) clamp(28px, 6vw, 64px);
+      border-bottom: 1px solid rgba(104, 227, 190, 0.12);
+    }
+    .cs-ba__slider {
+      position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden;
+      user-select: none; touch-action: none; border-radius: 14px;
+      border: 1px solid rgba(104, 227, 190, 0.18); --pos: 50%;
+    }
+    .cs-ba__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+    .cs-ba__before { position: absolute; inset: 0; clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
+    .cs-ba__divider {
+      position: absolute; top: 0; bottom: 0; left: var(--pos); width: 2px;
+      background: var(--mint); transform: translateX(-1px); pointer-events: none;
+    }
+    .cs-ba__handle {
+      position: absolute; top: 50%; left: 50%; width: 44px; height: 44px;
+      transform: translate(-50%, -50%); border-radius: 9999px; background: var(--mint);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.45); display: grid; place-items: center;
+    }
+    .cs-ba__handle::before { content: "\2039\2003\203A"; color: var(--navy); font-weight: 700; font-size: 16px; }
+    .cs-ba__tag {
+      position: absolute; top: 16px; font-family: var(--font-display); font-size: 10px;
+      font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--off-white); background: rgba(10, 22, 28, 0.6); padding: 4px 10px;
+    }
+    .cs-ba__tag--before { left: 16px; }
+    .cs-ba__tag--after { right: 16px; }
+    .cs-ba__range { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
+    .cs-ba__slider:focus-within .cs-ba__handle { outline: 3px solid var(--off-white); outline-offset: 2px; }
+    .cs-ba__caption { margin: 14px 0 0; font-size: 13px; letter-spacing: 0.04em; color: rgba(235, 245, 248, 0.7); text-align: center; }
+
+    .cs-results {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
+      background: rgba(104, 227, 190, 0.18); list-style: none; margin: 0; padding: 0; counter-reset: cs-result;
+    }
+    @media (max-width: 620px) { .cs-results { grid-template-columns: 1fr; } }
+    .cs-results li { background: var(--navy); padding: 22px 20px; font-size: 15px; font-weight: 600; line-height: 1.4; color: var(--off-white); }
+    .cs-results li::before {
+      content: counter(cs-result, decimal-leading-zero); counter-increment: cs-result; display: block;
+      font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+      color: var(--gold); margin-bottom: 10px;
+    }
+
+    .cs-plan { list-style: none; margin: 22px 0 26px; padding: 0; display: flex; flex-direction: column; gap: 22px; max-width: 64ch; }
+    .cs-plan li { display: grid; grid-template-columns: 28px 1fr; gap: 14px; font-size: 17px; line-height: 1.65; color: var(--ink); }
+    .cs-plan li::before { content: '✓'; font-size: 20px; font-weight: 700; color: var(--gold-deep); line-height: 1.3; }
+    .cs-plan strong { font-weight: 700; color: var(--navy); }
+    .cs-bottom-line { margin-top: 4px; padding-top: 26px; border-top: 1px solid var(--rule-light); font-size: 18px; line-height: 1.6; color: var(--navy); }
+
+    /* Consolidation you can see (canonical) */
+    .cs-consolidation__header { margin-bottom: 32px; }
+    .cs-consolidation__rule {
+      display: block; width: 40px; height: 3px; background: var(--accent-light); margin-bottom: 16px;
+    }
+    .cs-consolidation__title {
+      margin: 0; font-family: var(--font-body); font-weight: 700;
+      font-size: clamp(24px, 4vw, 34px); line-height: 1.12; letter-spacing: -0.025em;
+      color: var(--navy); max-width: 28ch;
+    }
+    .cs-consolidation__list {
+      list-style: none; margin: 0; padding: 0; max-width: 64ch;
+      border-top: 1px solid var(--rule-light);
+    }
+    .cs-consolidation__item { padding: 22px 0; border-bottom: 1px solid var(--rule-light); }
+    .cs-consolidation__item-title {
+      margin: 0 0 8px; font-weight: 700; font-size: 17px; line-height: 1.35; color: var(--ink-strong);
+    }
+    .cs-consolidation__item-text {
+      margin: 0; font-size: 17px; line-height: 1.65; color: var(--ink);
+    }
+
+    /* Scope story — property-wide many → one */
+    /* Centered stats: radial scrim clears the middle, mesh breathes at the edges. */
+    .cs-scope-story {
+      background-color: var(--navy-deep);
+      background-image:
+        radial-gradient(ellipse 92% 100% at 50% 50%,
+          rgba(7, 15, 20, 0.97) 0%,
+          rgba(7, 15, 20, 0.94) 50%,
+          rgba(7, 15, 20, 0.78) 75%,
+          rgba(7, 15, 20, 0.12) 96%),
+        url('assets/mesh/luci-bg-hero-split-1920x1080.svg');
+      background-size: cover; background-position: center;
+      padding: clamp(48px, 7vw, 80px) clamp(28px, 6vw, 64px);
+      border-bottom: 1px solid rgba(104, 227, 190, 0.16);
+      text-align: center;
+    }
+    .cs-scope-story__title {
+      margin: 0 0 36px; font-family: var(--font-body); font-size: clamp(24px, 4vw, 36px);
+      font-weight: 700; line-height: 1.15; letter-spacing: -0.025em; color: var(--off-white);
+    }
+    .cs-scope-story__title em { font-style: normal; color: var(--mint); }
+    .cs-scope-stats {
+      display: grid; grid-template-columns: repeat(5, 1fr); list-style: none;
+      margin: 0; padding: 0 0 32px; border-bottom: 1px solid rgba(104, 227, 190, 0.18);
+    }
+    @media (max-width: 720px) {
+      .cs-scope-stats { grid-template-columns: repeat(2, 1fr); gap: 24px 0; }
+      .cs-scope-stat:nth-child(odd) { border-left: 0; }
+    }
+    .cs-scope-stat {
+      padding: 0 12px; border-left: 1px solid rgba(104, 227, 190, 0.2);
+    }
+    .cs-scope-stat:first-child { border-left: 0; }
+    .cs-scope-stat__value {
+      margin: 0 0 8px; font-family: var(--font-body); font-size: clamp(28px, 5vw, 44px);
+      font-weight: 700; line-height: 1; letter-spacing: -0.04em; color: var(--mint);
+    }
+    .cs-scope-stat__label {
+      margin: 0; font-size: 13px; line-height: 1.35; color: rgba(235, 245, 248, 0.76);
+    }
+    .cs-scope-story__outcome {
+      margin: 28px 0 0; font-family: var(--font-body); font-size: clamp(28px, 5vw, 44px);
+      font-weight: 700; line-height: 1.15; letter-spacing: -0.03em; color: var(--off-white);
+    }
+    .cs-scope-story__outcome em { font-style: normal; color: var(--mint); }
+    .cs-scope-story__dek {
+      margin: 16px auto 0; font-size: 17px; line-height: 1.6;
+      color: rgba(235, 245, 248, 0.78); max-width: 42ch;
+    }
+
+    /* Convergence diagram — five lines from the stats down to one arrow */
+    .cs-scope-converge {
+      display: block; width: 100%; height: clamp(52px, 7vw, 76px);
+      margin: 4px 0 -2px; overflow: visible;
+    }
+    .cs-scope-converge line { stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+    .cs-scope-arrow {
+      position: relative; width: clamp(28px, 3vw, 38px); margin: 2px auto 0;
+    }
+    .cs-scope-arrow::before {
+      content: ''; display: block; width: clamp(6px, 0.8vw, 9px);
+      height: clamp(28px, 4vw, 46px); margin: 0 auto;
+      background: var(--mint); border-radius: 4px;
+      box-shadow: 0 0 18px rgba(104, 227, 190, 0.55);
+    }
+    .cs-scope-arrow::after {
+      content: ''; display: block; width: 0; height: 0; margin: 0 auto;
+      border-left: clamp(13px, 1.4vw, 18px) solid transparent;
+      border-right: clamp(13px, 1.4vw, 18px) solid transparent;
+      border-top: clamp(17px, 1.9vw, 24px) solid var(--mint);
+      filter: drop-shadow(0 6px 12px rgba(104, 227, 190, 0.5));
+    }
+    .cs-scope-dest {
+      display: flex; flex-direction: column; align-items: center; gap: 12px; margin: 20px 0 0;
+    }
+    .cs-scope-dest-rule { width: 40px; height: 3px; background: var(--mint); }
+    .cs-scope-story__outcome { margin: 0; }
+    .cs-scope-story__dek { margin: 0; }
+
+    /* CTA */
+    .cs-cta {
+      background-color: var(--navy-deep);
+      background-image:
+        linear-gradient(to right,
+          rgba(8, 18, 24, 0.86) 0%,
+          rgba(8, 18, 24, 0.80) 52%,
+          rgba(8, 18, 24, 0.44) 80%,
+          rgba(8, 18, 24, 0.12) 100%),
+        url('assets/mesh/luci-bg-wide-2560x800.svg');
+      background-size: cover; background-position: center; background-repeat: no-repeat;
+      padding: clamp(44px, 7vw, 76px) clamp(28px, 6vw, 64px);
+      border-top: 4px solid var(--mint);
+    }
+    .cs-cta__body { margin: 0 0 24px; font-weight: 700; font-size: clamp(22px, 3vw, 30px); line-height: 1.2; letter-spacing: -0.02em; color: var(--off-white); max-width: 24ch; }
+    .cs-cta__actions { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+    .cs-cta-btn { display: inline-flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 700; letter-spacing: 0.04em; text-decoration: none; color: var(--navy); background: var(--mint); padding: 16px 28px; transition: background 0.15s; }
+    .cs-cta-btn:hover { background: #7aedc8; }
+    .cs-cta-btn__arrow { font-size: 18px; font-weight: 700; line-height: 1; }
+    .cs-cta__about { margin-top: 40px; padding-top: 26px; border-top: 1px solid rgba(255, 255, 255, 0.1); max-width: 62ch; }
+    .cs-cta__about-label { margin: 0 0 10px; font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(104, 227, 190, 0.7); }
+    .cs-cta__statement { margin: 0; font-size: 16px; line-height: 1.65; color: rgba(165, 179, 188, 0.88); }
+  </style>
+</head>
+<body>
+<article class="cs-page">
+  <div class="cs-page__sheet">
+    <header class="cs-hero">
+      <div class="cs-hero__kicker"><span>Case Study</span></div>
+      <h1 class="cs-hero__title">
+        <em>An LED wall this big</em>
+        <span class="cs-hero__trail">usually isn&rsquo;t this simple</span>
+      </h1>
+      <p class="cs-hero__dek">LUCI replaced a wall of mismatched TVs with one 480-square-foot LED display &mdash; looped into the same platform already running Sam&rsquo;s Town. No second system. Nothing for staff to relearn.</p>
+      <p class="cs-hero__property">
+        Sam&rsquo;s Town Hotel &amp; Gambling Hall
+        <span>Las Vegas, Nevada &middot; Boyd Gaming</span>
+      </p>
+    </header>
+
+    <section class="cs-glance" aria-label="At a glance">
+      <div class="cs-glance__logo">
+        <img src="/assets/logos/sams-town.png" alt="Sam's Town Hotel &amp; Gambling Hall" width="280" height="72" />
+      </div>
+      <div class="cs-facts">
+        <div><p class="cs-facts__label">Property</p><p class="cs-facts__value">Sam&rsquo;s Town Hotel &amp; Gambling Hall</p></div>
+        <div><p class="cs-facts__label">Location</p><p class="cs-facts__value">Las Vegas, Nevada</p></div>
+        <div><p class="cs-facts__label">Install</p><p class="cs-facts__value">Less than a week</p></div>
+      </div>
+      <ul class="cs-inventory" aria-label="Sportsbook scope under management">
+        <li class="cs-inventory__item">
+          <p class="cs-inventory__num">480</p>
+          <p class="cs-inventory__label">sq ft LED wall (39 &times; 12 ft)</p>
+        </li>
+        <li class="cs-inventory__item">
+          <p class="cs-inventory__num">10</p>
+          <p class="cs-inventory__label">race channels on existing coax</p>
+        </li>
+        <li class="cs-inventory__item">
+          <p class="cs-inventory__num">6</p>
+          <p class="cs-inventory__label">presets across 8 video inputs</p>
+        </li>
+        <li class="cs-inventory__item">
+          <p class="cs-inventory__num">3</p>
+          <p class="cs-inventory__label">audio zones in the sportsbook</p>
+        </li>
+      </ul>
+      <div class="cs-summary">
+        <div class="cs-summary__cell"><p class="cs-summary__label">The challenge</p><p class="cs-summary__text">Years of accumulated sportsbook TVs due for an upgrade &mdash; and a race book that needed live video without trenching new cable.</p></div>
+        <div class="cs-summary__cell"><p class="cs-summary__label">The approach</p><p class="cs-summary__text">Hang one continuous LED wall, loop it into the LUCI platform already running the property, and send race video out over coax already in the floor.</p></div>
+        <div class="cs-summary__cell"><p class="cs-summary__label">The result</p><p class="cs-summary__text">Nearly forty feet of unbroken video, six presets, three audio zones, and ten race channels &mdash; all on the same interface staff already know.</p></div>
+      </div>
+    </section>
+
+    <section class="cs-sec cs-sec--white cs-chapter">
+      <span class="cs-chapter__num" aria-hidden="true">01</span>
+      <div class="cs-chapter__head">
+        <h2 class="cs-chapter__title">The room <span class="cs-chapter__title-accent">they had</span></h2>
+        <div class="cs-chapter__rule" aria-hidden="true"></div>
+      </div>
+      <div class="cs-chapter__body">
+        <p>LUCI has run Sam&rsquo;s Town&rsquo;s A/V end to end for more than a year: we installed audio through the casino first, then video across the property, including the sportsbook. This year, Sam&rsquo;s Town decided the sportsbook screens were due for an upgrade to replace years of accumulated TVs.</p>
+      </div>
+    </section>
+
+    <section class="cs-sec cs-sec--mid cs-chapter cs-chapter--split">
+      <span class="cs-chapter__num" aria-hidden="true">02</span>
+      <div class="cs-chapter__grid">
+        <div>
+          <div class="cs-chapter__head">
+            <h2 class="cs-chapter__title">The wall <span class="cs-chapter__title-accent">they wanted</span></h2>
+            <div class="cs-chapter__rule" aria-hidden="true"></div>
+          </div>
+          <div class="cs-chapter__body">
+            <p>Sam&rsquo;s Town decided to replace a large portion of their screens with one 39 &times; 12 foot LED wall &mdash; and commissioned LUCI&rsquo;s team to install it. In less than a week, the LED wall, a new set of TVs, and the sportsbook&rsquo;s three audio zones were all live and running on LUCI. The wall drives six presets across eight video inputs, all easily controlled from a single interface.</p>
+          </div>
+        </div>
+        <ul class="cs-scope">
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="11" rx="1" fill="#68E3BE" fill-opacity="0.16" stroke="#68E3BE" stroke-width="1.8"/>
+            <path d="M8 21h8M12 16v5" stroke="#68E3BE" stroke-width="1.8" stroke-linecap="round"/>
+            <circle cx="17" cy="9" r="1.2" fill="#EDD086"/>
+          </svg><span>Hung and commissioned one 480-sq-ft LED wall</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="16" rx="1.5" fill="#68E3BE" fill-opacity="0.14" stroke="#68E3BE" stroke-width="1.8"/>
+            <path d="M7 10l3 2.2L7 14.4" fill="none" stroke="#EDD086" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="12" y1="14.5" x2="16.5" y2="14.5" stroke="#68E3BE" stroke-width="1.8" stroke-linecap="round"/>
+          </svg><span>Looped the wall into the existing LUCI platform</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="4" y="3" width="16" height="5" rx="1.5" fill="#68E3BE" fill-opacity="0.16" stroke="#68E3BE" stroke-width="1.8"/>
+            <rect x="4" y="10" width="16" height="5" rx="1.5" fill="#68E3BE" fill-opacity="0.16" stroke="#68E3BE" stroke-width="1.8"/>
+            <rect x="4" y="17" width="16" height="4" rx="1.5" stroke="#68E3BE" stroke-width="1.8"/>
+            <circle cx="7.5" cy="5.5" r="1" fill="#EDD086"/>
+            <circle cx="7.5" cy="12.5" r="1" fill="#EDD086"/>
+          </svg><span>Six presets across eight video inputs, one interface</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 9v6h3l5 4V5L7 9H4z" fill="#68E3BE" fill-opacity="0.16" stroke="#68E3BE" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M15.5 8.5a5 5 0 0 1 0 7" fill="none" stroke="#EDD086" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M18 6a8 8 0 0 1 0 12" fill="none" stroke="#68E3BE" stroke-width="1.8" stroke-linecap="round"/>
+          </svg><span>Three audio zones on the existing system</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="cs-sec cs-sec--white cs-chapter">
+      <span class="cs-chapter__num" aria-hidden="true">03</span>
+      <div class="cs-chapter__head">
+        <h2 class="cs-chapter__title">Bringing the <span class="cs-chapter__title-accent">race book on board</span></h2>
+        <div class="cs-chapter__rule" aria-hidden="true"></div>
+      </div>
+      <div class="cs-chapter__body">
+        <p>The race book took the same approach. Rather than trench new cable out to every betting carousel, LUCI sent ten channels of its own encoded video back out over the coax already buried under the property &mdash; live racing on existing cable, with no trenching and no new wire pulled through the floor.</p>
+      </div>
+    </section>
+
+    <section class="cs-ba" aria-label="Before and after">
+      <div class="cs-ba__slider" data-cs-slider>
+        <img class="cs-ba__img cs-ba__img--after" src="assets/sams-town/slider-after-web.jpg" alt="Sam's Town sportsbook after the remodel — one continuous LED wall running on LUCI" width="1600" height="900" />
+        <div class="cs-ba__before">
+          <img class="cs-ba__img" src="assets/sams-town/slider-before-web.jpg" alt="Sam's Town sportsbook before the remodel — a wall of mismatched TVs" width="1600" height="900" />
+        </div>
+        <div class="cs-ba__divider" aria-hidden="true"><span class="cs-ba__handle"></span></div>
+        <span class="cs-ba__tag cs-ba__tag--before">Before</span>
+        <span class="cs-ba__tag cs-ba__tag--after">After</span>
+        <input class="cs-ba__range" type="range" min="0" max="100" value="50" aria-label="Drag to reveal the finished sportsbook wall" />
+      </div>
+      <p class="cs-ba__caption">Drag to see the wall come together.</p>
+    </section>
+
+    <section class="cs-sec cs-sec--dark">
+      <h2 class="cs-sec__title">What Sam&rsquo;s Town <span class="cs-sec__title-accent">runs now</span></h2>
+      <ul class="cs-results">
+        <li>A 480-sq-ft LED wall &mdash; one display where there used to be many</li>
+        <li>Six presets across eight video inputs, switched from LUCI</li>
+        <li>Three audio zones on the existing system</li>
+        <li>Ten channels of race video over existing coax &mdash; no trenching</li>
+      </ul>
+    </section>
+
+    <section class="cs-scope-story" aria-labelledby="cs-scope-story-title">
+      <h2 id="cs-scope-story-title" class="cs-scope-story__title">Sam&rsquo;s Town on LUCI <em>to date</em></h2>
+      <ul class="cs-scope-stats" aria-label="Property scope managed through LUCI">
+        <li class="cs-scope-stat">
+          <p class="cs-scope-stat__value">143</p>
+          <p class="cs-scope-stat__label">Video endpoints</p>
+        </li>
+        <li class="cs-scope-stat">
+          <p class="cs-scope-stat__value">88</p>
+          <p class="cs-scope-stat__label">Audio zones</p>
+        </li>
+        <li class="cs-scope-stat">
+          <p class="cs-scope-stat__value">92</p>
+          <p class="cs-scope-stat__label">DTV channels</p>
+        </li>
+        <li class="cs-scope-stat">
+          <p class="cs-scope-stat__value">45</p>
+          <p class="cs-scope-stat__label">CMS/signage channels</p>
+        </li>
+        <li class="cs-scope-stat">
+          <p class="cs-scope-stat__value">4</p>
+          <p class="cs-scope-stat__label">Content interfaces</p>
+        </li>
+      </ul>
+      <svg class="cs-scope-converge" viewBox="0 0 100 120" preserveAspectRatio="none" aria-hidden="true">
+        <defs><linearGradient id="cs-funnel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#edd086" stop-opacity="0.75"/><stop offset="1" stop-color="#68e3be" stop-opacity="0.7"/></linearGradient></defs>
+        <line x1="10" y1="0" x2="50" y2="116" stroke="url(#cs-funnel)"/>
+        <line x1="30" y1="0" x2="50" y2="116" stroke="url(#cs-funnel)"/>
+        <line x1="50" y1="0" x2="50" y2="116" stroke="#68e3be" stroke-width="2"/>
+        <line x1="70" y1="0" x2="50" y2="116" stroke="url(#cs-funnel)"/>
+        <line x1="90" y1="0" x2="50" y2="116" stroke="url(#cs-funnel)"/>
+      </svg>
+      <div class="cs-scope-arrow" aria-hidden="true"></div>
+      <div class="cs-scope-dest">
+        <span class="cs-scope-dest-rule" aria-hidden="true"></span>
+        <p class="cs-scope-story__outcome">One <em>LUCI</em> platform</p>
+        <p class="cs-scope-story__dek">Every endpoint, every zone, every channel &mdash; one interface.</p>
+      </div>
+    </section>
+
+    <section class="cs-sec cs-sec--light">
+      <h2 class="cs-sec__title">Built for <span class="cs-sec__title-accent">the moves ahead</span></h2>
+      <div class="cs-copy">
+        <p>The sportsbook was not a new install on a blank slate &mdash; it was the next room tied into LUCI on a growing property.</p>
+        <ul class="cs-plan">
+          <li><span><strong>Same login, new wall.</strong> Operators run the LED wall from the LUCI interface they already use for the rest of the property.</span></li>
+          <li><span><strong>Infrastructure stays put.</strong> Race video rides existing coax; audio stays on the zones already wired &mdash; fewer pulls, fewer vendors, fewer variables.</span></li>
+          <li><span><strong>The property keeps growing onto LUCI.</strong> As more spaces come on, they join the same platform &mdash; no second system to stand up for each remodel.</span></li>
+        </ul>
+        <p class="cs-bottom-line">By looping the sportsbook into the platform already running Sam&rsquo;s Town, LUCI turned a wall upgrade into proof that the property grows without adding parallel control.</p>
+      </div>
+    </section>
+
+    <section class="cs-cta">
+      <p class="cs-cta__body">Curious what this looks like for your property? <span style="color: var(--mint);">Let&rsquo;s talk.</span></p>
+      <div class="cs-cta__actions">
+        <a class="cs-cta-btn" href="https://www.lucisystems.com/contact" target="_blank" rel="noopener noreferrer">Talk to LUCI<span class="cs-cta-btn__arrow" aria-hidden="true">&rarr;</span></a>
+      </div>
+      <div class="cs-cta__about">
+        <p class="cs-cta__about-label">About LUCI</p>
+        <p class="cs-cta__statement">LUCI Systems is the orchestration engine for enterprise multimedia &mdash; A/V, signage, building, and operational infrastructure &mdash; from a single interface your team controls from anywhere. LUCI reduces the variables, hardware, and interfaces your team has to manage. When onsite experience and operational continuity are non-negotiable, LUCI delivers coordinated, real-time execution, end to end.</p>
+      </div>
+    </section>
+  </div>
+</article>
+<script>
+  document.querySelectorAll('[data-cs-slider]').forEach(function (el) {
+    var range = el.querySelector('.cs-ba__range');
+    if (!range) return;
+    function set(v) {
+      el.style.setProperty('--pos', v + '%');
+      var tBefore = el.querySelector('.cs-ba__tag--before');
+      var tAfter = el.querySelector('.cs-ba__tag--after');
+      if (tBefore) tBefore.style.opacity = v > 6 ? 1 : 0;
+      if (tAfter) tAfter.style.opacity = v < 94 ? 1 : 0;
+    }
+    set(range.value);
+    range.addEventListener('input', function () { set(range.value); });
+    function pointTo(clientX) {
+      var r = el.getBoundingClientRect();
+      var pct = Math.min(100, Math.max(0, ((clientX - r.left) / r.width) * 100));
+      range.value = pct; set(pct);
+    }
+    el.addEventListener('pointerdown', function (e) { pointTo(e.clientX); try { el.setPointerCapture(e.pointerId); } catch (err) {} });
+    el.addEventListener('pointermove', function (e) { if (e.buttons === 1) pointTo(e.clientX); });
+  });
+</script>
+</body>
+</html>

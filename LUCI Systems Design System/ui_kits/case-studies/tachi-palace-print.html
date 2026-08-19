@@ -563,6 +563,25 @@
     }
     .plan-list strong { font-weight: 700; color: var(--navy); }
 
+    .cs-consolidation__header { margin-bottom: 24px; }
+    .cs-consolidation__rule {
+      display: block; width: 40px; height: 3px; background: var(--mint-dark); margin-bottom: 12px;
+    }
+    .cs-consolidation__title {
+      margin: 0; font-weight: 700; font-size: 22px; line-height: 1.12; letter-spacing: -0.025em;
+      color: var(--navy); max-width: 28ch;
+    }
+    .cs-consolidation__list {
+      list-style: none; margin: 0; padding: 0; max-width: 70ch; border-top: 1px solid var(--rule);
+    }
+    .cs-consolidation__item { padding: 16px 0; border-bottom: 1px solid var(--rule); }
+    .cs-consolidation__item-title {
+      margin: 0 0 6px; font-weight: 700; font-size: 14px; line-height: 1.35; color: var(--navy);
+    }
+    .cs-consolidation__item-text {
+      margin: 0; font-size: 14px; line-height: 1.6; color: var(--ink);
+    }
+
     .bottom-line {
       margin-top: 2px;
       padding-top: 18px;
@@ -804,6 +823,31 @@
   <path d='M18 6a8 8 0 0 1 0 12' fill='none' stroke='#68E3BE' stroke-width='1.8' stroke-linecap='round'/>
 </svg><span>Tuned every audio zone for full control through LUCI</span></li>
       </ul>
+  </section>
+
+  <section class="sec sec--light cs-consolidation sec--fixed" aria-labelledby="cs-consolidation-title">
+    <header class="cs-consolidation__header">
+      <span class="cs-consolidation__rule" aria-hidden="true"></span>
+      <h2 id="cs-consolidation-title" class="cs-consolidation__title">Consolidation you can see</h2>
+    </header>
+    <ul class="cs-consolidation__list">
+      <li class="cs-consolidation__item">
+        <p class="cs-consolidation__item-title">Legacy racks in the bingo hall</p>
+        <p class="cs-consolidation__item-text">Pulled out and replaced with a simplified LUCI stack &mdash; less equipment to power, cool, and maintain.</p>
+      </li>
+      <li class="cs-consolidation__item">
+        <p class="cs-consolidation__item-title">Separate wall and zone control</p>
+        <p class="cs-consolidation__item-text">Eight LED walls and every audio zone now run from one LUCI interface.</p>
+      </li>
+      <li class="cs-consolidation__item">
+        <p class="cs-consolidation__item-title">Per-zone player guesswork</p>
+        <p class="cs-consolidation__item-text">Every audio zone mapped in one place &mdash; staff no longer hunt for which player controls which zone.</p>
+      </li>
+      <li class="cs-consolidation__item">
+        <p class="cs-consolidation__item-title">A parallel resort rollout</p>
+        <p class="cs-consolidation__item-text">Bingo hall on LUCI first; other spaces plug into the same platform &mdash; no second install to stand up.</p>
+      </li>
+    </ul>
   </section>
 
 </div>

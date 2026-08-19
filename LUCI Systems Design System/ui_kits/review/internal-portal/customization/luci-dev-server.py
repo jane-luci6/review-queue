@@ -16,6 +16,8 @@ on the next pass — no prompting required.
 import http.server
 import json
 import os
+import re
+import datetime
 import socketserver
 import subprocess
 import sys
@@ -27,8 +29,8 @@ PORT = 8771
 ROOT = Path.cwd().resolve()
 SCRIPT_DIR = Path(__file__).resolve().parent
 # Bump when endpoints/behavior change — edit bar checks GET /__health.
-SERVER_VERSION = 3
-SERVER_FEATURES = ('save', 'pdf')
+SERVER_VERSION = 4
+SERVER_FEATURES = ('save', 'pdf', 'docx')
 
 
 def _check_pdf_deps():
@@ -52,6 +54,150 @@ def _check_pdf_deps():
     except ImportError:
         has_pil = False
     return {'chrome': bool(chrome_path), 'pil': has_pil, 'chrome_path': chrome_path}
+
+
+def _load_footer_checker():
+    """Load scripts/check-footers.py via importlib (hyphenated name can't be
+    imported normally). Returns the module or None if unavailable."""
+    import importlib.util
+    for cand in (ROOT / 'scripts' / 'check-footers.py',
+                 SCRIPT_DIR.parent.parent.parent / 'scripts' / 'check-footers.py'):
+        if cand.is_file():
+            try:
+                spec = importlib.util.spec_from_file_location('luci_check_footers', str(cand))
+                mod = importlib.util.module_from_spec(spec)
+                spec.loader.exec_module(mod)
+                return mod
+            except Exception:
+                return None
+    return None
+
+
+# PDF filename convention: "<ClientName>-<DocType> <M+D+YY>.pdf"
+# e.g. "Elwha River Casino-Proposal-LUCI-Retrofit 81326" (Aug 13 '26).
+# Longest doc-type slug first so "proposal-luci-retrofit" wins over "proposal".
+_DOC_TYPE_DISPLAY = [
+    ('proposal-luci-retrofit', 'Proposal-LUCI-Retrofit'),
+    ('capabilities-document', 'Capabilities-Document'),
+    ('budgetary-estimate', 'Budgetary-Estimate'),
+    ('proposal-upgrade', 'Proposal-Upgrade'),
+    ('scope-of-work', 'Scope-of-Work'),
+    ('sales-deck', 'Sales-Deck'),
+    ('proposal', 'Proposal-LED'),
+]
+
+
+def _pdf_display_name(html_path):
+    """Build the convention PDF filename: <ClientName>-<DocType> <M+D+YY>.pdf
+
+    ClientName is read from the document <title> — the customization templates
+    set it as "LUCI — <Doc> · <Client>" (newer) or "<Client> — <Doc>" (older);
+    we prefer the text after the last '·', then the text before the first ' — '
+    when that left side isn't "LUCI", and finally fall back to title-casing the
+    client slug. DocType is the longest known doc-type suffix of the HTML stem,
+    mapped to its display name. The date is today's export date — month and day
+    without leading zeros (e.g. 81326 = Aug 13 '26).
+    """
+    stem = html_path.stem  # <client-slug>-<doc-type>
+    doc_type = None
+    client_slug = stem
+    for slug, display in _DOC_TYPE_DISPLAY:
+        marker = '-' + slug
+        if stem.endswith(marker) and len(stem) > len(marker):
+            doc_type = display
+            client_slug = stem[:-len(marker)]
+            break
+    if doc_type is None:
+        doc_type = stem  # unknown doc-type — use the stem verbatim
+
+    # Client name from <title> (authoritative); fallback to slug title-case.
+    client_name = None
+    try:
+        html = html_path.read_text(encoding='utf-8', errors='replace')
+        m = re.search(r'<title>(.*?)</title>', html, re.S)
+        if m:
+            title = m.group(1).strip()
+            if '·' in title:
+                client_name = title.split('·')[-1].strip()
+            elif ' — ' in title:
+                left = title.split(' — ')[0].strip()
+                if left and left != 'LUCI':
+                    client_name = left
+    except Exception:
+        pass
+    if not client_name:
+        client_name = ' '.join(w.capitalize() for w in client_slug.split('-') if w)
+
+    now = datetime.date.today()
+    date_str = f"{now.month}{now.day}{str(now.year)[2:]}"
+    return f"{client_name}-{doc_type} {date_str}.pdf"
+
+
+def _docx_preview_styles():
+    return """
+  *{box-sizing:border-box}
+  body{margin:0;background:#e9eef1;font-family:-apple-system,system-ui,sans-serif;color:#1a1a1a}
+  .luci-docx-toolbar{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:14px;
+    padding:10px 18px;background:#0A161C;color:#F5F8FA;border-bottom:1px solid rgba(104,227,190,.25)}
+  .luci-docx-toolbar .ttl{font:600 13px/1 'Space Grotesk',system-ui,sans-serif;letter-spacing:.02em}
+  .luci-docx-toolbar .sub{font:400 12px/1 'Inter',system-ui,sans-serif;color:#9fb4bd}
+  .luci-docx-toolbar a.dl{margin-left:auto;padding:7px 14px;border-radius:9999px;background:#68E3BE;color:#0A161C;
+    font:600 12px/1 'Space Grotesk',system-ui,sans-serif;text-decoration:none;letter-spacing:.02em}
+  .luci-docx-toolbar a.dl:hover{filter:brightness(1.05)}
+  .luci-docx-page{max-width:8.5in;margin:28px auto;background:#fff;padding:.9in .95in;
+    box-shadow:0 24px 48px rgba(0,0,0,.18);min-height:11in;font:11pt/1.5 'Calibri','Helvetica Neue',Arial,sans-serif}
+  .luci-docx-page h1{font-size:18pt;margin:.3em 0 .5em}
+  .luci-docx-page h2{font-size:13pt;margin:1.1em 0 .35em}
+  .luci-docx-page h3{font-size:11.5pt;margin:1em 0 .3em}
+  .luci-docx-page p{margin:0 0 .65em}
+  .luci-docx-page table{border-collapse:collapse;width:100%;margin:.5em 0;font-size:10pt}
+  .luci-docx-page th,.luci-docx-page td{border:1px solid #c9d2d7;padding:5px 8px;vertical-align:top}
+  .luci-docx-page th{background:#f0f4f6;font-weight:600}
+  .luci-docx-page ul,.luci-docx-page ol{margin:0 0 .65em;padding-left:1.4em}
+  .luci-docx-note{margin:0 0 1em;padding:8px 12px;background:#f4f9f6;border-left:3px solid #2b9e80;
+    font:10.5pt/1.45 'Inter',system-ui,sans-serif;color:#354f5c}
+"""
+
+
+def _render_docx_html(fs_path):
+    """Convert a .docx to a styled HTML preview page (mammoth) with a
+    Download-.docx toolbar. Returns HTML bytes, or an error page on failure."""
+    try:
+        import mammoth
+    except ImportError:
+        return ('<p style="font:14px system-ui;padding:24px;color:#a00">'
+                'mammoth is not installed. Run: pip3 install mammoth</p>').encode('utf-8')
+    try:
+        with open(str(fs_path), 'rb') as fh:
+            result = mammoth.convert_to_html(fh)
+        body_html = result.value
+    except Exception as e:
+        return ('<p style="font:14px system-ui;padding:24px;color:#a00">'
+                'Could not read this .docx: %s</p>' % e).encode('utf-8')
+
+    name = fs_path.name
+    try:
+        rel = fs_path.relative_to(ROOT)
+    except ValueError:
+        rel = Path(name)
+    download_href = '/' + str(rel).replace('\\', '/') + '?download=1'
+    note = ('This is a read-only preview of the Word document. Header, footer, and the LUCI '
+            'logo render in Microsoft Word. To edit text, use Download .docx and open in Word.')
+    html = (
+        '<!doctype html><html><head><meta charset="utf-8">'
+        '<meta name="viewport" content="width=device-width,initial-scale=1">'
+        '<title>%s — preview</title><style>%s</style></head><body>'
+        '<div class="luci-docx-toolbar">'
+        '<span class="ttl">MPSA preview</span>'
+        '<span class="sub">%s</span>'
+        '<a class="dl" href="%s" download>Download .docx</a>'
+        '</div>'
+        '<div class="luci-docx-page">'
+        '<div class="luci-docx-note">%s</div>'
+        '%s'
+        '</div></body></html>'
+    ) % (name, _docx_preview_styles(), name, download_href, note, body_html)
+    return html.encode('utf-8')
 
 
 class LUCIDevHandler(http.server.SimpleHTTPRequestHandler):
@@ -123,6 +269,34 @@ class LUCIDevHandler(http.server.SimpleHTTPRequestHandler):
                 self.send_error(500, str(e))
                 return
             body = self._inject_edit_bar(html).encode('utf-8')
+            self.send_response(200)
+            self.send_header('Content-Type', 'text/html; charset=utf-8')
+            self.send_header('Content-Length', str(len(body)))
+            self.send_header('Cache-Control', 'no-cache, must-revalidate')
+            self.end_headers()
+            self.wfile.write(body)
+            return
+
+        # Word documents: render a read-only HTML preview (mammoth) so the
+        # agent/Mike can view the .docx in Cursor's in-editor browser. A
+        # ?download=1 request serves the raw .docx (the toolbar's Download
+        # button uses this) — the preview itself is view-only; text edits
+        # happen in Word after export.
+        if fs_path.is_file() and fs_path.suffix.lower() == '.docx':
+            query = self.path.split('?', 1)[1] if '?' in self.path else ''
+            if 'download=1' in query:
+                data = fs_path.read_bytes()
+                self.send_response(200)
+                self.send_header('Content-Type',
+                                 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+                self.send_header('Content-Disposition',
+                                 'attachment; filename="%s"' % fs_path.name)
+                self.send_header('Content-Length', str(len(data)))
+                self.send_header('Cache-Control', 'no-store')
+                self.end_headers()
+                self.wfile.write(data)
+                return
+            body = _render_docx_html(fs_path)
             self.send_response(200)
             self.send_header('Content-Type', 'text/html; charset=utf-8')
             self.send_header('Content-Length', str(len(body)))
@@ -253,8 +427,26 @@ class LUCIDevHandler(http.server.SimpleHTTPRequestHandler):
             })
             return
 
+        # PDF gate: refuse to render a deliverable with missing/mangled page
+        # numbers. The edit-bar "Download PDF" button surfaces this error to the
+        # agent; fix with `python3 scripts/check-footers.py <path> --fix`, retry.
+        checker = _load_footer_checker()
+        if checker is not None:
+            try:
+                issues = checker.check(html_path.read_text(encoding='utf-8', errors='replace'), quiet=True)
+            except Exception:
+                issues = []
+            if issues:
+                self._json(422, {
+                    'error': 'Footer integrity check failed — page numbers missing or mangled. '
+                             'Fix before exporting the PDF.',
+                    'footerIssues': issues,
+                    'hint': 'Run: python3 scripts/check-footers.py <path> --fix, then re-export.'
+                })
+                return
+
         # Write PDF beside a temp dir so we never leave export debris in sales/.
-        out_name = html_path.stem + '.pdf'
+        out_name = _pdf_display_name(html_path)
         tmp_dir = Path(tempfile.mkdtemp(prefix='luci-pdf-'))
         out_pdf = tmp_dir / out_name
 
@@ -329,6 +521,7 @@ def main():
     print('  Health:        GET  /__health')
     print('  Save endpoint: POST /__save')
     print('  PDF endpoint:  POST /__pdf  (headless Chrome — safe in Cursor)')
+    print('  Word preview:  GET  /clients/<file>.docx  (mammoth HTML render; ?download=1 for raw)')
     print('  Ctrl+C to stop.')
     try:
         server.serve_forever()

@@ -225,13 +225,22 @@
 .led-arch-text strong { color: rgba(245, 248, 250, 0.96); font-weight: 700; }
 
 /* ── 3 · Project gallery — editable photo grid on dark ─────────────────────── */
-/* Dark page. Mike can swap each photo (data-studio on the img) and edit captions.
-   2×2 grid, hairline-separated, photos fill cells. Locked layout. */
+/* Dark page. Photos + captions are editable per instance. Grid reflows to the
+   actual number of photos bound (1–4): 1 → full-width hero, 2 → 2 across,
+   3 → 3 across, 4 → 2×2. Never leave a slot blank or duplicate a photo to fill. */
 .led-gallery-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(3.25in, 1fr));
   gap: 16px;
   margin-top: 8px;
+}
+/* Single photo → full-width hero treatment. */
+.led-gallery-grid:has(.led-gallery-cell:only-child) .led-gallery-cell__img {
+  height: 3.4in;
+}
+/* Three photos → 3 across (avoids a lone half-width cell). */
+.led-gallery-grid:has(.led-gallery-cell:nth-child(3):last-child) {
+  grid-template-columns: repeat(3, 1fr);
 }
 .led-gallery-cell {
   display: flex;
