@@ -148,10 +148,25 @@
     .cs-sec--white { background: #fff; }
     .cs-sec--light { background: var(--off-white); }
     /* Flat slate — the longest reading passage in the piece, kept calm. */
+    /* Flat slate + soft mint wash — calm mid-tone, no pattern. */
     .cs-sec--mid {
+      position: relative;
+      isolation: isolate;
       background-color: var(--navy-mid);
       border-bottom-color: rgba(0, 0, 0, 0.2);
+      overflow: hidden;
     }
+    .cs-sec--mid::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 95% 100% at 0% 35%, rgba(104, 227, 190, 0.28) 0%, transparent 68%),
+        radial-gradient(ellipse 60% 75% at 15% 100%, rgba(104, 227, 190, 0.14) 0%, transparent 58%);
+    }
+    .cs-sec--mid > * { position: relative; z-index: 1; }
     .cs-sec--dark { background: var(--navy); border-bottom-color: rgba(0, 0, 0, 0.3); }
     .cs-sec__title {
       margin: 0 0 22px; font-family: var(--font-body); font-weight: 700;
@@ -168,7 +183,7 @@
     .cs-sec--dark .cs-copy p { color: rgba(235, 245, 248, 0.92); }
 
     .cs-scope {
-      list-style: none; margin: 6px 0 0; padding: 0; max-width: 64ch;
+      list-style: none; margin: 28px 0 0; padding: 0; max-width: 64ch;
       display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
     }
     .cs-scope li {
@@ -180,29 +195,20 @@
     .cs-scope li svg { display: block; width: 28px; height: 28px; flex-shrink: 0; }
     @media (max-width: 620px) { .cs-scope { grid-template-columns: 1fr; } }
 
-    /* Install photo strip — quiet imagery, no card chrome */
-    .cs-crew {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
-      margin: 26px 0 28px; max-width: 64ch; overflow: hidden; border-radius: 14px;
-    }
-    .cs-crew figure { margin: 0; }
-    .cs-crew img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
-    @media (max-width: 900px) { .cs-crew { grid-template-columns: 1fr 1fr; } }
-
-    /* Full-bleed property photo band */
+    /* Full-bleed property photo band — edge to edge, no card chrome */
     .cs-figure {
       margin: 0; background: var(--navy-deep);
-      padding: clamp(36px, 6vw, 60px) clamp(28px, 6vw, 64px);
+      padding: 0 0 clamp(16px, 2vw, 22px);
       border-bottom: 1px solid rgba(104, 227, 190, 0.12);
     }
     .cs-figure img {
-      width: 100%; aspect-ratio: 16 / 9; object-fit: cover;
-      border-radius: 14px; border: 1px solid rgba(104, 227, 190, 0.18);
+      display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover;
     }
-    .cs-figure__pair { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(12px, 1.6vw, 18px); }
+    .cs-figure__pair { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
     @media (max-width: 620px) { .cs-figure__pair { grid-template-columns: 1fr; } }
     .cs-figure figcaption {
-      margin: 14px 0 0; font-family: var(--font-copy); font-size: 13px; letter-spacing: 0.02em;
+      margin: 14px 0 0; padding: 0 clamp(28px, 6vw, 64px);
+      font-family: var(--font-copy); font-size: 13px; letter-spacing: 0.02em;
       line-height: 1.5; color: rgba(235, 245, 248, 0.7); text-align: center;
     }
 
@@ -229,9 +235,6 @@
 
     /* Consolidation you can see (canonical) */
     .cs-consolidation__header { margin-bottom: 32px; }
-    .cs-consolidation__rule {
-      display: block; width: 40px; height: 3px; background: var(--accent-light); margin-bottom: 16px;
-    }
     .cs-consolidation__title {
       margin: 0; font-family: var(--font-body); font-weight: 700;
       font-size: clamp(24px, 4vw, 34px); line-height: 1.12; letter-spacing: -0.025em;
@@ -290,9 +293,9 @@
       margin: 0 0 clamp(22px, 3vw, 32px);
       padding: clamp(36px, 5vw, 56px) clamp(28px, 6vw, 64px) 0;
       font-family: var(--font-body); font-size: clamp(26px, 3.6vw, 38px); font-weight: 700;
-      line-height: 1.1; letter-spacing: -0.025em; color: var(--off-white); text-align: center;
+      line-height: 1.1; letter-spacing: -0.025em; color: var(--mint); text-align: center;
     }
-    .cs-ledger__title em { font-style: normal; color: var(--mint); }
+    .cs-ledger__title em { font-style: normal; color: var(--off-white); }
     .cs-ledger__ticker {
       margin: 0 0 clamp(18px, 2.4vw, 26px);
       border-top: 1px solid rgba(var(--mint-rgb), 0.2);
@@ -441,12 +444,6 @@
         <p>With those consolidated, every sign and every TV on the property could work together instead of separately. LUCI also designed and installed LED across the rest of the building, bringing it onto the platform as well.</p>
         <p>Today, every audio zone, display, and network device at Yaamava&rsquo; is managed from one interface.</p>
       </div>
-      <div class="cs-crew">
-        <figure><img src="assets/yaamava/install-led-cabinets-web.jpg" alt="A technician on a scaffold seating LED cabinets into the wall frame" loading="lazy" /></figure>
-        <figure><img src="assets/yaamava/install-lobby-frame-web.jpg" alt="The steel frame for a lobby LED wall, wired and waiting for panels" loading="lazy" /></figure>
-        <figure><img src="assets/yaamava/install-head-end-web.jpg" alt="Head-end equipment racks in the property&rsquo;s A/V room" loading="lazy" /></figure>
-        <figure><img src="assets/yaamava/install-column-commission-web.jpg" alt="An LED column on the casino floor showing a test pattern during commissioning" loading="lazy" /></figure>
-      </div>
       <ul class="cs-scope" aria-label="What came onto the platform">
         <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <rect x="3" y="5" width="18" height="14" rx="2" fill="#68E3BE" fill-opacity="0.16" stroke="#68E3BE" stroke-width="1.8"/>
@@ -490,7 +487,6 @@
 
     <section class="cs-sec cs-sec--light cs-consolidation" aria-labelledby="cs-consolidation-title">
       <header class="cs-consolidation__header">
-        <span class="cs-consolidation__rule" aria-hidden="true"></span>
         <h2 id="cs-consolidation-title" class="cs-consolidation__title">Consolidation you can see</h2>
       </header>
       <ul class="cs-consolidation__list">
