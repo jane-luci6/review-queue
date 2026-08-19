@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-18",
+  "updated": "2026-08-19",
   "publishNote": "Build (npm run build:review) outputs to ui_kits/review. Bump reviewVersion + versionNote for new uploads (version history shown in portal). Set dueForReview for first-time review. Comments/approvals sync server-side via the comments_api container (proxied at /api/comments); Jane sees Mike/Mark's feedback on refresh. Archive with scripts/pull-review-comments.mjs.",
   "previewBaseUrl": "",
   "commentsApiUrl": "http://10.10.1.17:8081/api/comments",
@@ -8,17 +8,17 @@
     {
       "title": "Messaging guide",
       "url": "messaging/messaging-guide.html",
-      "note": "Updated Aug 18, 2026"
+      "note": "Updated Aug 19, 2026"
     },
     {
       "title": "LUCI philosophy",
       "url": "messaging/philosophy.html",
-      "note": "Updated Aug 18, 2026"
+      "note": "Updated Aug 19, 2026"
     },
     {
       "title": "Personas",
       "url": "messaging/personas.html",
-      "note": "Updated Aug 18, 2026"
+      "note": "Updated Aug 19, 2026"
     }
   ],
   "inProgress": [],
@@ -331,6 +331,75 @@
       ]
     },
     {
+      "id": "case-study-tachi",
+      "title": "Case Study · Tachi Palace Casino Resort",
+      "summary": "Tachi Palace case study — one week to a foundation for growth: eight LED walls, bingo hall refresh, results, and what's next.",
+      "approved": "2026-08-18",
+      "note": "Approved — available to download.",
+      "previewUrl": "case-studies/tachi-palace.html",
+      "hubPreviewPath": "ui_kits/case-studies/tachi-palace.html",
+      "reviewBrief": {
+        "description": "The Tachi Palace case study is the long-form Lemoore bingo-hall refresh story for the website, sales, and export — eight LED walls and casino audio onto one LUCI interface in one week.",
+        "reviewAsk": "finalized — available to open, print, or download."
+      },
+      "versionHistory": [
+        {
+          "version": 1,
+          "published": "2026-07-16",
+          "note": "First portal preview — live web edition + PDF download."
+        },
+        {
+          "version": 2,
+          "published": "2026-08-18",
+          "note": "Approved — moved to downloads."
+        }
+      ],
+      "downloads": [
+        {
+          "label": "PDF",
+          "path": "assets/sales/LUCI-Case-Study-Tachi-Palace.pdf"
+        }
+      ]
+    },
+    {
+      "id": "case-study-sams-town",
+      "title": "Case Study · Sam's Town Hotel & Gambling Hall",
+      "summary": "Sam's Town case study — 480-sq-ft sportsbook LED wall looped into the LUCI platform already running the property, plus race video over existing coax.",
+      "note": "Draft from Issue 03 field story — review copy and visuals.",
+      "previewUrl": "case-studies/sams-town.html",
+      "hubPreviewPath": "ui_kits/case-studies/sams-town.html",
+      "reviewBrief": {
+        "description": "Standalone Sam's Town case study adapted from The Signal Issue 03 field story — sportsbook LED wall, race-book coax, consolidation spine.",
+        "reviewAsk": "accuracy of scope numbers, story beats, and whether the before/after and consolidation rows read right."
+      },
+      "versionHistory": [
+        {
+          "version": 1,
+          "published": "2026-08-18",
+          "note": "First draft — adapted from newsletter In the Field."
+        }
+      ]
+    },
+    {
+      "id": "case-study-yaamava",
+      "title": "Case Study · Yaamava' Resort & Casino",
+      "summary": "Yaamava' case study — five technology silos consolidated onto one LUCI platform across a 290,000-sq-ft floor, plus new LED across the building.",
+      "note": "First draft from approved web copy — review scope numbers, imagery, and the 'on LUCI to date' ledger.",
+      "previewUrl": "case-studies/yaamava.html",
+      "hubPreviewPath": "ui_kits/case-studies/yaamava.html",
+      "reviewBrief": {
+        "description": "Standalone Yaamava' case study built from the approved web copy — consolidation spine, Toni Pepper quote, and the 'Yaamava' on LUCI to date' scope ledger.",
+        "reviewAsk": "accuracy of the scope counts, the property photography selection, and whether the ledger reads right against the Sam's Town version."
+      },
+      "versionHistory": [
+        {
+          "version": 1,
+          "published": "2026-08-19",
+          "note": "First draft — built from the approved Yaamava' web copy."
+        }
+      ]
+    },
+    {
       "id": "customer-emails",
       "title": "Customer emails",
       "summary": "Onboarding email series",
@@ -420,5 +489,5 @@
     }
   ],
   "finalized": [],
-  "messagingDocsUpdated": "2026-08-18"
+  "messagingDocsUpdated": "2026-08-19"
 }

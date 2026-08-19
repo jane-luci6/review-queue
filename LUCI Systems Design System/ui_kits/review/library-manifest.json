@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-16",
+  "updated": "2026-08-18",
   "groups": [
     {
       "id": "messaging",
@@ -122,12 +122,30 @@
       "defaultOpen": false,
       "items": [
         {
+          "id": "case-study-yaamava",
+          "label": "Yaamava' Resort & Casino",
+          "queueId": "case-study-yaamava"
+        },
+        {
           "id": "case-study-ameristar",
           "label": "Ameristar Council Bluffs",
           "queueId": "case-study-ameristar",
           "downloads": [
             { "label": "PDF", "path": "assets/sales/LUCI-Case-Study-Ameristar-Council-Bluffs.pdf" }
           ]
+        },
+        {
+          "id": "case-study-tachi",
+          "label": "Tachi Palace Casino Resort",
+          "queueId": "case-study-tachi",
+          "downloads": [
+            { "label": "PDF", "path": "assets/sales/LUCI-Case-Study-Tachi-Palace.pdf" }
+          ]
+        },
+        {
+          "id": "case-study-sams-town",
+          "label": "Sam's Town Hotel & Gambling Hall",
+          "queueId": "case-study-sams-town"
         },
         {
           "id": "signal-issue-01",
