@@ -17,6 +17,7 @@ const RIVERBOAT_URL = 'https://cdn.prod.website-files.com/62d7d68d14611c2a31d863
 const MESH_HERO_URL = 'https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a7e091df18dd3a992d8ac82_luci-bg-hero-1920x1080.svg';
 const MESH_SPLIT_URL = 'https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a8628ddaf6d8e4a5769761d_luci-bg-hero-split-1920x1080.svg';
 const MESH_WIDE_URL = 'https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a8628dd242640e8859209c9_luci-bg-wide-2560x800.svg';
+const RACK_URL = 'https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a8779d46ff6937fe4314af3_ameristar-rack-before.png';
 const TEXTURE_DARK_URL = 'https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a57fde51b370b4b3195f5ad_texture-circuit-navy-steel-print-dark.jpg';
 const TEXTURE_MID_URL = 'https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a57fde1e1ec624efb621776_texture-circuit-navy-steel-print-mid.jpg';
 const LINK_NEW_TAB = ' target="_blank" rel="noopener noreferrer"';
@@ -177,6 +178,7 @@ function replaceAssets(html) {
     .replace(/assets\/mesh\/luci-bg-hero-1920x1080\.svg/g, MESH_HERO_URL)
     .replace(/assets\/mesh\/luci-bg-hero-split-1920x1080\.svg/g, MESH_SPLIT_URL)
     .replace(/assets\/mesh\/luci-bg-wide-2560x800\.svg/g, MESH_WIDE_URL)
+    .replace(/assets\/ameristar-rack-before\.png/g, RACK_URL)
     .replace(/assets\/textures\/texture-circuit-navy-steel-print-dark\.jpg/g, TEXTURE_DARK_URL)
     .replace(/assets\/textures\/texture-circuit-navy-steel-print-mid\.jpg/g, TEXTURE_MID_URL)
     .replace(/\.\.\/\.\.\/assets\/logos\/ameristar-council-bluffs\.svg/g, 'https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a1e1c7089803edcc10a8491_ameristar-logo-cropped.png');

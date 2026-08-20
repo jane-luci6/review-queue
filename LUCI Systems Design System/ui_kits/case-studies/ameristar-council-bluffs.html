@@ -322,6 +322,16 @@
     .cs-consolidation {
       position: relative; isolation: isolate; overflow: hidden;
       background-color: var(--navy-deep);
+      background-image:
+        linear-gradient(to right,
+          var(--navy-deep) 0%,
+          var(--navy-deep) 42%,
+          rgba(7, 15, 20, 0.92) 58%,
+          rgba(7, 15, 20, 0.62) 100%),
+        url('assets/ameristar-rack-before.png');
+      background-size: cover, cover;
+      background-position: left top, right center;
+      background-repeat: no-repeat;
       border-bottom-color: rgba(104, 227, 190, 0.2);
     }
     .cs-consolidation__header { margin-bottom: 32px; position: relative; z-index: 1; }
