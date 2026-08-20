@@ -285,48 +285,58 @@
     .cs-plan strong { font-family: var(--font-body); font-weight: 700; color: var(--navy); }
     .cs-bottom-line { margin-top: 4px; padding-top: 26px; border-top: 1px solid var(--rule-light); font-family: var(--font-copy); font-size: 18px; line-height: 1.6; color: var(--navy); }
 
-    /* Consolidation you can see — before rack behind a dark, full-width scrim. */
+    /* Consolidation you can see — dark section, before rack on the right side only. */
     .cs-consolidation {
       position: relative; isolation: isolate; overflow: hidden;
       background-color: var(--navy-deep);
       background-image:
-        linear-gradient(rgba(7, 15, 20, 0.78), rgba(7, 15, 20, 0.88)),
+        linear-gradient(to right,
+          var(--navy-deep) 0%,
+          var(--navy-deep) 42%,
+          rgba(7, 15, 20, 0.92) 58%,
+          rgba(7, 15, 20, 0.62) 100%),
         url('assets/yaamava/legacy-rack-before-web.jpg');
       background-size: cover;
-      background-position: center 52%;
+      background-position: right center;
+      background-repeat: no-repeat;
       border-bottom-color: rgba(104, 227, 190, 0.2);
     }
-    .cs-consolidation__header { margin-bottom: 32px; }
+    .cs-consolidation__header { margin-bottom: 32px; position: relative; z-index: 1; }
     .cs-consolidation__title {
       margin: 0; font-family: var(--font-body); font-weight: 700;
       font-size: clamp(24px, 4vw, 34px); line-height: 1.12; letter-spacing: -0.025em;
       color: var(--off-white); max-width: 28ch;
     }
     .cs-consolidation__list {
-      list-style: none; margin: 0; padding: 0; max-width: none;
-      border-top: 1px solid rgba(235, 245, 248, 0.24);
+      list-style: none; margin: 0; padding: 0; max-width: 56ch;
+      border-top: 1px solid rgba(235, 245, 248, 0.18);
+      position: relative; z-index: 1;
     }
-    .cs-consolidation__item { padding: 22px 0; border-bottom: 1px solid rgba(235, 245, 248, 0.24); }
+    .cs-consolidation__item { padding: 22px 0; border-bottom: 1px solid rgba(235, 245, 248, 0.18); }
     .cs-consolidation__item-title {
       margin: 0 0 8px; font-family: var(--font-body); font-weight: 700;
-      font-size: 17px; line-height: 1.35; color: var(--off-white);
+      font-size: 17px; line-height: 1.35;
+      display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px;
     }
+    .cs-consolidation__problem,
+    .cs-consolidation__solution { color: var(--mint); }
+    .cs-consolidation__arrow { color: var(--off-white); font-weight: 400; }
     .cs-consolidation__item-text {
       margin: 0; font-family: var(--font-copy); font-size: 17px; line-height: 1.65; color: rgba(235, 245, 248, 0.84);
     }
 
-    /* Quote */
+    /* Quote — light block under the dark consolidation section. */
     .cs-quote {
-      background: #e8e2d6;
+      background: #ffffff;
       padding: clamp(44px, 7vw, 76px) clamp(28px, 6vw, 64px);
-      border-bottom: 1px solid rgba(8, 24, 34, 0.14);
+      border-bottom: 1px solid rgba(8, 24, 34, 0.08);
     }
     .cs-quote__text {
       margin: 0 0 20px; font-family: var(--font-copy); font-size: clamp(19px, 2.6vw, 24px);
       font-style: italic; line-height: 1.45; color: var(--navy);
-      border-left: 4px solid var(--accent-light); padding: 8px 0 8px 26px; max-width: 52ch;
+      border-left: 5px solid var(--accent-light); padding: 6px 0 6px 26px; max-width: 52ch;
     }
-    .cs-quote__attrib { margin: 0; padding-left: 30px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.6; color: var(--navy-muted); }
+    .cs-quote__attrib { margin: 0; padding-left: 31px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.6; color: var(--navy-muted); }
     .cs-quote__attrib span { display: block; color: var(--accent-light); }
 
     /* "On LUCI to date" ledger — many endpoints converging on one platform.
@@ -527,19 +537,35 @@
       </header>
       <ul class="cs-consolidation__list">
         <li class="cs-consolidation__item">
-          <p class="cs-consolidation__item-title">Five technology silos &rarr; one platform</p>
+          <p class="cs-consolidation__item-title">
+            <span class="cs-consolidation__problem">Five technology silos</span>
+            <span class="cs-consolidation__arrow" aria-hidden="true">&rarr;</span>
+            <span class="cs-consolidation__solution">one platform</span>
+          </p>
           <p class="cs-consolidation__item-text">Broadcast, signage, data, audio and paging, and displays now operate through LUCI.</p>
         </li>
         <li class="cs-consolidation__item">
-          <p class="cs-consolidation__item-title">34 new LED walls &rarr; same interface</p>
+          <p class="cs-consolidation__item-title">
+            <span class="cs-consolidation__problem">34 new LED walls</span>
+            <span class="cs-consolidation__arrow" aria-hidden="true">&rarr;</span>
+            <span class="cs-consolidation__solution">same interface</span>
+          </p>
           <p class="cs-consolidation__item-text">Walls across seven venues joined the property&rsquo;s existing A/V and signage control instead of creating another control environment.</p>
         </li>
         <li class="cs-consolidation__item">
-          <p class="cs-consolidation__item-title">Dedicated hardware &rarr; network distribution</p>
+          <p class="cs-consolidation__item-title">
+            <span class="cs-consolidation__problem">Dedicated hardware</span>
+            <span class="cs-consolidation__arrow" aria-hidden="true">&rarr;</span>
+            <span class="cs-consolidation__solution">network distribution</span>
+          </p>
           <p class="cs-consolidation__item-text">Audio and video run over the property network, reducing the processors, players, and rack equipment to power, cool, and maintain.</p>
         </li>
         <li class="cs-consolidation__item">
-          <p class="cs-consolidation__item-title">Coordinated interfaces &rarr; one operating view</p>
+          <p class="cs-consolidation__item-title">
+            <span class="cs-consolidation__problem">Coordinated interfaces</span>
+            <span class="cs-consolidation__arrow" aria-hidden="true">&rarr;</span>
+            <span class="cs-consolidation__solution">one operating view</span>
+          </p>
           <p class="cs-consolidation__item-text">Staff select content or channels, choose the destinations, and send them across the floor, signage, and video walls from LUCI.</p>
         </li>
       </ul>
