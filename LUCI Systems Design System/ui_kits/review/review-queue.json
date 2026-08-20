@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-19",
+  "updated": "2026-08-20",
   "publishNote": "Build (npm run build:review) outputs to ui_kits/review. Bump reviewVersion + versionNote for new uploads (version history shown in portal). Set dueForReview for first-time review. Comments/approvals sync server-side via the comments_api container (proxied at /api/comments); Jane sees Mike/Mark's feedback on refresh. Archive with scripts/pull-review-comments.mjs.",
   "previewBaseUrl": "",
   "commentsApiUrl": "http://10.10.1.17:8081/api/comments",
@@ -8,52 +8,48 @@
     {
       "title": "Messaging guide",
       "url": "messaging/messaging-guide.html",
-      "note": "Updated Aug 19, 2026"
+      "note": "Updated Aug 20, 2026"
     },
     {
       "title": "LUCI philosophy",
       "url": "messaging/philosophy.html",
-      "note": "Updated Aug 19, 2026"
+      "note": "Updated Aug 20, 2026"
     },
     {
       "title": "Personas",
       "url": "messaging/personas.html",
-      "note": "Updated Aug 19, 2026"
+      "note": "Updated Aug 20, 2026"
     }
   ],
   "inProgress": [],
   "dueForReview": [
     {
-      "id": "linkedin-strategy-summary",
-      "title": "Social media strategy summary",
-      "summary": "The launch strategy for LUCI's LinkedIn and X company pages — zero-click approach, message sequencing, six repeatable content streams, first-30-day goals, and the long-term audience objective.",
-      "reviewStatus": "New — strategy review",
+      "id": "case-study-sams-town",
+      "title": "Case Study · Sam's Town Hotel & Gambling Hall",
+      "summary": "Sam's Town case study — 480-sq-ft sportsbook LED wall looped into the LUCI platform already running the property, plus race video over existing coax.",
+      "reviewStatus": "Updated — new photo, color swap, visual template",
       "signOff": false,
-      "reviewVersion": 3,
-      "versionNote": "Adds X as a second channel (launching once Nick secures access), updates hero and approach to cover both channels.",
-      "due": "2026-08-18",
-      "hubPreviewPath": "ui_kits/content-marketing/linkedin-strategy-summary.html",
+      "reviewVersion": 2,
+      "versionNote": "Updated racebook photo (AI-generated with LUCI logo on shirt back), swapped scope story title colors (mint first, white for 'to date'), photo-band treatment for 'The room they had,' soft mint wash for mid-section. Established as the standing visual template for case studies.",
+      "due": "2026-08-20",
+      "hubPreviewPath": "ui_kits/case-studies/sams-town.html",
       "reviewBrief": {
-        "description": "The LinkedIn and X launch strategy — zero-click approach, message sequencing, content streams, and first-30-day goals."
+        "description": "Standalone Sam's Town case study adapted from The Signal Issue 03 field story — sportsbook LED wall, race-book coax, consolidation spine.",
+        "reviewAsk": "review the new racebook photo, the scope story title color swap, and the overall visual template as the standing format for future case studies."
       },
       "versionHistory": [
         {
           "version": 1,
           "published": "2026-08-18",
-          "note": "First branded portal edition."
+          "note": "First draft — adapted from newsletter In the Field."
         },
         {
           "version": 2,
-          "published": "2026-08-18",
-          "note": "Copy pass — 30-day window, content-stream edits, newsletter hold note; dropped zone video, client-proof card, and the first-post closing."
-        },
-        {
-          "version": 3,
-          "published": "2026-08-18",
-          "note": "Adds X as a second channel (launching once Nick secures access); updates hero, approach, and goals to cover both channels."
+          "published": "2026-08-20",
+          "note": "Updated racebook photo, scope story title color swap, photo-band and soft mint wash treatments; established as the visual template for case studies."
         }
       ],
-      "previewUrl": "content-marketing/linkedin-strategy-summary.html"
+      "previewUrl": "case-studies/sams-town.html"
     }
   ],
   "approvedAssets": [
@@ -362,21 +358,33 @@
       ]
     },
     {
-      "id": "case-study-sams-town",
-      "title": "Case Study · Sam's Town Hotel & Gambling Hall",
-      "summary": "Sam's Town case study — 480-sq-ft sportsbook LED wall looped into the LUCI platform already running the property, plus race video over existing coax.",
-      "note": "Draft from Issue 03 field story — review copy and visuals.",
-      "previewUrl": "case-studies/sams-town.html",
-      "hubPreviewPath": "ui_kits/case-studies/sams-town.html",
+      "id": "linkedin-strategy-summary",
+      "title": "Social media strategy summary",
+      "summary": "The launch strategy for LUCI's LinkedIn and X company pages — zero-click approach, message sequencing, six repeatable content streams, first-30-day goals, and the long-term audience objective.",
+      "approved": "2026-08-20",
+      "note": "Approved — moved to downloads.",
+      "reviewVersion": 3,
+      "versionNote": "Adds X as a second channel (launching once Nick secures access), updates hero and approach to cover both channels.",
+      "hubPreviewPath": "ui_kits/content-marketing/linkedin-strategy-summary.html",
+      "previewUrl": "content-marketing/linkedin-strategy-summary.html",
       "reviewBrief": {
-        "description": "Standalone Sam's Town case study adapted from The Signal Issue 03 field story — sportsbook LED wall, race-book coax, consolidation spine.",
-        "reviewAsk": "accuracy of scope numbers, story beats, and whether the before/after and consolidation rows read right."
+        "description": "The LinkedIn and X launch strategy — zero-click approach, message sequencing, content streams, and first-30-day goals."
       },
       "versionHistory": [
         {
           "version": 1,
           "published": "2026-08-18",
-          "note": "First draft — adapted from newsletter In the Field."
+          "note": "First branded portal edition."
+        },
+        {
+          "version": 2,
+          "published": "2026-08-18",
+          "note": "Copy pass — 30-day window, content-stream edits, newsletter hold note; dropped zone video, client-proof card, and the first-post closing."
+        },
+        {
+          "version": 3,
+          "published": "2026-08-18",
+          "note": "Adds X as a second channel (launching once Nick secures access); updates hero, approach, and goals to cover both channels."
         }
       ]
     },
@@ -489,5 +497,5 @@
     }
   ],
   "finalized": [],
-  "messagingDocsUpdated": "2026-08-19"
+  "messagingDocsUpdated": "2026-08-20"
 }
