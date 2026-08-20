@@ -182,18 +182,21 @@
     .cs-sec--mid .cs-copy p { color: rgba(235, 245, 248, 0.88); }
     .cs-sec--dark .cs-copy p { color: rgba(235, 245, 248, 0.92); }
 
+    .cs-scope__label {
+      margin: 32px 0 0; font-family: var(--font-display); font-size: 10px;
+      font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mint);
+    }
     .cs-scope {
-      list-style: none; margin: 28px 0 0; padding: 0; max-width: 64ch;
-      display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+      list-style: none; margin: 14px 0 0; padding: 0; max-width: 64ch;
+      border-top: 1px solid rgba(104, 227, 190, 0.24);
     }
     .cs-scope li {
       display: flex; flex-direction: row; align-items: flex-start; gap: 14px;
-      padding: 16px 18px; font-family: var(--font-copy); font-size: 15px; line-height: 1.5; margin: 0;
-      color: rgba(235, 245, 248, 0.9); background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(104, 227, 190, 0.4); border-radius: 14px;
+      padding: 18px 0; font-family: var(--font-copy); font-size: 16px; line-height: 1.5; margin: 0;
+      color: rgba(235, 245, 248, 0.94);
+      border-bottom: 1px solid rgba(104, 227, 190, 0.24);
     }
     .cs-scope li svg { display: block; width: 28px; height: 28px; flex-shrink: 0; }
-    @media (max-width: 620px) { .cs-scope { grid-template-columns: 1fr; } }
 
     /* Full-bleed photo section — text rides a horizontal scrim */
     .cs-photo-band {
@@ -282,39 +285,49 @@
     .cs-plan strong { font-family: var(--font-body); font-weight: 700; color: var(--navy); }
     .cs-bottom-line { margin-top: 4px; padding-top: 26px; border-top: 1px solid var(--rule-light); font-family: var(--font-copy); font-size: 18px; line-height: 1.6; color: var(--navy); }
 
-    /* Consolidation you can see (canonical) */
+    /* Consolidation you can see — before rack behind a dark, full-width scrim. */
+    .cs-consolidation {
+      position: relative; isolation: isolate; overflow: hidden;
+      background-color: var(--navy-deep);
+      background-image:
+        linear-gradient(rgba(7, 15, 20, 0.78), rgba(7, 15, 20, 0.88)),
+        url('assets/yaamava/legacy-rack-before-web.jpg');
+      background-size: cover;
+      background-position: center 52%;
+      border-bottom-color: rgba(104, 227, 190, 0.2);
+    }
     .cs-consolidation__header { margin-bottom: 32px; }
     .cs-consolidation__title {
       margin: 0; font-family: var(--font-body); font-weight: 700;
       font-size: clamp(24px, 4vw, 34px); line-height: 1.12; letter-spacing: -0.025em;
-      color: var(--navy); max-width: 28ch;
+      color: var(--off-white); max-width: 28ch;
     }
     .cs-consolidation__list {
-      list-style: none; margin: 0; padding: 0; max-width: 64ch;
-      border-top: 1px solid var(--rule-light);
+      list-style: none; margin: 0; padding: 0; max-width: none;
+      border-top: 1px solid rgba(235, 245, 248, 0.24);
     }
-    .cs-consolidation__item { padding: 22px 0; border-bottom: 1px solid var(--rule-light); }
+    .cs-consolidation__item { padding: 22px 0; border-bottom: 1px solid rgba(235, 245, 248, 0.24); }
     .cs-consolidation__item-title {
       margin: 0 0 8px; font-family: var(--font-body); font-weight: 700;
-      font-size: 17px; line-height: 1.35; color: var(--ink-strong);
+      font-size: 17px; line-height: 1.35; color: var(--off-white);
     }
     .cs-consolidation__item-text {
-      margin: 0; font-family: var(--font-copy); font-size: 17px; line-height: 1.65; color: var(--ink);
+      margin: 0; font-family: var(--font-copy); font-size: 17px; line-height: 1.65; color: rgba(235, 245, 248, 0.84);
     }
 
     /* Quote */
     .cs-quote {
-      background: var(--navy-deep);
+      background: #e8e2d6;
       padding: clamp(44px, 7vw, 76px) clamp(28px, 6vw, 64px);
-      border-bottom: 1px solid rgba(104, 227, 190, 0.12);
+      border-bottom: 1px solid rgba(8, 24, 34, 0.14);
     }
     .cs-quote__text {
       margin: 0 0 20px; font-family: var(--font-copy); font-size: clamp(19px, 2.6vw, 24px);
-      font-style: italic; line-height: 1.45; color: var(--off-white);
-      border-left: 4px solid var(--mint); padding: 8px 0 8px 26px; max-width: 52ch;
+      font-style: italic; line-height: 1.45; color: var(--navy);
+      border-left: 4px solid var(--accent-light); padding: 8px 0 8px 26px; max-width: 52ch;
     }
-    .cs-quote__attrib { margin: 0; padding-left: 30px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.6; color: rgba(165, 179, 188, 0.8); }
-    .cs-quote__attrib span { display: block; color: var(--mint); }
+    .cs-quote__attrib { margin: 0; padding-left: 30px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.6; color: var(--navy-muted); }
+    .cs-quote__attrib span { display: block; color: var(--accent-light); }
 
     /* "On LUCI to date" ledger — many endpoints converging on one platform.
        Mirrors the Signal Issue 03 scope block: icon + count row, funnel, one destination. */
@@ -466,7 +479,7 @@
       </ul>
       <div class="cs-summary">
         <div class="cs-summary__cell"><p class="cs-summary__label">The challenge</p><p class="cs-summary__text">Audio, video, and signage each ran on their own hardware, their own software, and their own interfaces.</p></div>
-        <div class="cs-summary__cell"><p class="cs-summary__label">The approach</p><p class="cs-summary__text">Run audio and video over the property network, centralize control in LUCI, and bring all 34 LED walls into the same platform as they were built.</p></div>
+        <div class="cs-summary__cell"><p class="cs-summary__label">The approach</p><p class="cs-summary__text">Run audio and video over the property network, centralize control in LUCI, and build 34 LED walls looped into the same interface.</p></div>
         <div class="cs-summary__cell"><p class="cs-summary__label">The result</p><p class="cs-summary__text">Every audio zone, display, and network device on the property &mdash; including 34 LED walls across seven venues &mdash; managed from a single interface.</p></div>
       </div>
     </section>
@@ -480,7 +493,7 @@
           <p>Yaamava&rsquo; Resort &amp; Casino sits in Highland, California, owned and operated by the San Manuel Band of Mission Indians. What opened in 1986 has grown into one of the premier casino resort destinations in the country.</p>
           <p>The technology underneath it grew the same way &mdash; one piece at a time. Broadcast content, signage, audio and paging, data, displays, and everything beneath them each arrived with its own hardware, software, interface, and operating model.</p>
           <p>Then Yaamava&rsquo; began remodeling and scaling the property, including 34 LED walls across seven venues. Without a different architecture, that expansion would have compounded the same problem: another control environment, more hardware, and more workflows for the team to manage.</p>
-          <p>The property was becoming one larger guest experience. Its technology was at risk of becoming even more fragmented.</p>
+          <p>As the property improved its guest experience, its technology was becoming more fragmented.</p>
         </div>
         <p class="cs-photo-band__caption">The 909 Sportsbar &mdash; every screen in the room on the same platform.</p>
       </div>
@@ -489,67 +502,49 @@
     <section class="cs-sec cs-sec--mid">
       <h2 class="cs-sec__title">Bringing every layer <span class="cs-sec__title-accent">onto one platform</span></h2>
       <div class="cs-copy">
-        <p>LUCI designed the system around Yaamava&rsquo;s network, distributing audio and video over it and centralizing control in the LUCI platform. That network-based architecture reduced the dedicated processors and other hardware the property had to install and maintain.</p>
-        <p>LUCI also designed and built 34 LED walls across seven remodeled venues. Instead of creating a separate control environment for the expansion, the team brought every wall into LUCI with the property&rsquo;s audio, video, and signage.</p>
+        <p>LUCI designed and built 34 LED walls across seven remodeled venues while Yaamava&rsquo; was scaling the property. Each wall was looped into LUCI as it came online, so the expansion did not create another control environment.</p>
+        <p>At the same time, LUCI distributed the property&rsquo;s audio and video over the network and brought its existing endpoints into the same interface. The network-based architecture reduced the dedicated processors and other hardware the property had to install and maintain.</p>
         <p>The property grew while its operating model got smaller: fewer systems, less hardware, and one place to run every endpoint.</p>
       </div>
-      <ul class="cs-scope" aria-label="What came onto the platform">
+      <p class="cs-scope__label">What LUCI did</p>
+      <ul class="cs-scope" aria-label="What LUCI did">
         <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <rect x="3" y="5" width="18" height="14" rx="2" fill="#68E3BE" fill-opacity="0.16" stroke="#68E3BE" stroke-width="1.8"/>
           <path d="M10 9l6 3-6 3V9Z" fill="#EDD086"/>
-        </svg><span>Broadcast content</span></li>
+        </svg><span>Designed and built 34 LED walls across seven venues</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <rect x="4" y="3" width="16" height="11" rx="1.5" fill="#68E3BE" fill-opacity="0.16" stroke="#68E3BE" stroke-width="1.8"/>
           <path d="M12 14v6M8 20h8" stroke="#68E3BE" stroke-width="1.8" stroke-linecap="round"/>
           <path d="M7 7h6" stroke="#EDD086" stroke-width="1.8" stroke-linecap="round"/>
-        </svg><span>Video and digital signage</span></li>
+        </svg><span>Distributed property audio and video over the network</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <rect x="3" y="4" width="18" height="16" rx="1.5" fill="#68E3BE" fill-opacity="0.14" stroke="#68E3BE" stroke-width="1.8"/>
           <path d="M7 10l3 2.2L7 14.4" fill="none" stroke="#EDD086" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
           <line x1="12" y1="14.5" x2="16.5" y2="14.5" stroke="#68E3BE" stroke-width="1.8" stroke-linecap="round"/>
-        </svg><span>API and data</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M4 9v6h3l5 4V5L7 9H4z" fill="#68E3BE" fill-opacity="0.16" stroke="#68E3BE" stroke-width="1.8" stroke-linejoin="round"/>
-          <path d="M15.5 8.5a5 5 0 0 1 0 7" fill="none" stroke="#EDD086" stroke-width="1.8" stroke-linecap="round"/>
-          <path d="M18 6a8 8 0 0 1 0 12" fill="none" stroke="#68E3BE" stroke-width="1.8" stroke-linecap="round"/>
-        </svg><span>Audio and paging</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <rect x="3" y="3" width="18" height="18" rx="2" fill="#68E3BE" fill-opacity="0.16" stroke="#68E3BE" stroke-width="1.8"/>
-          <path d="M3 9h18M3 15h18M9 3v18M15 3v18" stroke="#68E3BE" stroke-width="1.3"/>
-          <rect x="9" y="9" width="6" height="6" fill="#EDD086" fill-opacity="0.9"/>
-        </svg><span>Displays and video walls</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <rect x="2.5" y="6" width="19" height="9" rx="1" fill="#68E3BE" fill-opacity="0.16" stroke="#68E3BE" stroke-width="1.8"/>
-          <path d="M8 19h8M12 15v4" stroke="#68E3BE" stroke-width="1.8" stroke-linecap="round"/>
-          <path d="M6 9.5h4M6 12h7" stroke="#EDD086" stroke-width="1.6" stroke-linecap="round"/>
-        </svg><span>34 new LED walls across seven venues</span></li>
+        </svg><span>Mapped the new walls and existing endpoints into one LUCI interface</span></li>
       </ul>
     </section>
 
-    <section class="cs-sec cs-sec--light cs-consolidation" aria-labelledby="cs-consolidation-title">
+    <section class="cs-sec cs-consolidation" aria-labelledby="cs-consolidation-title">
       <header class="cs-consolidation__header">
         <h2 id="cs-consolidation-title" class="cs-consolidation__title">Consolidation you can see</h2>
       </header>
       <ul class="cs-consolidation__list">
         <li class="cs-consolidation__item">
-          <p class="cs-consolidation__item-title">Five silos, one platform</p>
-          <p class="cs-consolidation__item-text">Broadcast, signage, data, audio and paging, and displays each had their own hardware, software, and interface. They now run as one.</p>
+          <p class="cs-consolidation__item-title">Five technology silos &rarr; one platform</p>
+          <p class="cs-consolidation__item-text">Broadcast, signage, data, audio and paging, and displays now operate through LUCI.</p>
         </li>
         <li class="cs-consolidation__item">
-          <p class="cs-consolidation__item-title">Thirty-four walls, no second console</p>
-          <p class="cs-consolidation__item-text">The LED LUCI designed and installed across seven venues came online inside the platform already running the property &mdash; no parallel control environment or separate workflow to manage.</p>
+          <p class="cs-consolidation__item-title">34 new LED walls &rarr; same interface</p>
+          <p class="cs-consolidation__item-text">Walls across seven venues joined the property&rsquo;s existing A/V and signage control instead of creating another control environment.</p>
         </li>
         <li class="cs-consolidation__item">
-          <p class="cs-consolidation__item-title">Less hardware, not more</p>
-          <p class="cs-consolidation__item-text">Consolidation removed racks and players rather than adding them &mdash; fewer boxes to power, cool, license, and replace.</p>
+          <p class="cs-consolidation__item-title">Dedicated hardware &rarr; network distribution</p>
+          <p class="cs-consolidation__item-text">Audio and video run over the property network, reducing the processors, players, and rack equipment to power, cool, and maintain.</p>
         </li>
         <li class="cs-consolidation__item">
-          <p class="cs-consolidation__item-title">One send, every screen</p>
-          <p class="cs-consolidation__item-text">Content that belongs property-wide no longer travels through several tools to get there. It goes out once.</p>
-        </li>
-        <li class="cs-consolidation__item">
-          <p class="cs-consolidation__item-title">One interface to learn</p>
-          <p class="cs-consolidation__item-text">Staff train on LUCI instead of one tool per technology &mdash; and the A/V and IT team spends its time on priorities instead of upkeep.</p>
+          <p class="cs-consolidation__item-title">Coordinated interfaces &rarr; one operating view</p>
+          <p class="cs-consolidation__item-text">Staff select content or channels, choose the destinations, and send them across the floor, signage, and video walls from LUCI.</p>
         </li>
       </ul>
     </section>
@@ -566,12 +561,12 @@
       <h2 class="cs-sec__title">What Yaamava&rsquo; <span class="cs-sec__title-accent">runs now</span></h2>
       <ul class="cs-results">
         <li>One interface for every audio zone, display, and network device</li>
-        <li>Content that moves across the property at once, instead of platform by platform</li>
+        <li>Content and channels coordinated across the property from one interface</li>
         <li>34 LED walls across seven venues, running on the same platform as everything else</li>
         <li>An A/V and IT team spending its time on priorities instead of upkeep</li>
       </ul>
       <div class="cs-copy">
-        <p>A message that once crossed tools and teams now takes one person: open LUCI, pick the screens, send it &mdash; the floor, the signage, the video walls, all at once.</p>
+        <p>A content or channel change that once crossed tools and teams now takes one person: open LUCI, choose the source, select the screens, and send it to the gaming floor, signage, and video walls at once.</p>
         <p>There is no second login for signage, no separate console for the 34 LED walls, no third tool for paging.</p>
       </div>
     </section>
