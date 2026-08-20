@@ -97,6 +97,7 @@
       --ink-strong: #1c2b33;
       --font-display: 'Syncopate', sans-serif;
       --font-body: 'Space Grotesk', system-ui, sans-serif;
+      --font-copy: 'Inter', system-ui, sans-serif;
     }
 
 .luci-cs * { box-sizing: border-box; }
@@ -453,31 +454,42 @@
 
 .luci-cs .cs-bottom-line { margin-top: 4px; padding-top: 26px; border-top: 1px solid var(--rule-light); font-size: 18px; line-height: 1.6; color: var(--navy); }
 
-.luci-cs .cs-consolidation__header { margin-bottom: 32px; }
-
-.luci-cs .cs-consolidation__rule {
-      display: block; width: 40px; height: 3px; background: var(--accent-light); margin-bottom: 16px;
+.luci-cs .cs-consolidation {
+      position: relative; isolation: isolate; overflow: hidden;
+      background-color: var(--navy-deep);
+      border-bottom-color: rgba(104, 227, 190, 0.2);
     }
+
+.luci-cs .cs-consolidation__header { margin-bottom: 32px; position: relative; z-index: 1; }
 
 .luci-cs .cs-consolidation__title {
       margin: 0; font-family: var(--font-body); font-weight: 700;
       font-size: clamp(24px, 4vw, 34px); line-height: 1.12; letter-spacing: -0.025em;
-      color: var(--navy); max-width: 28ch; text-transform: none;
+      color: var(--off-white); max-width: 28ch; text-transform: none;
     }
+
+.luci-cs .cs-consolidation__title em { font-style: normal; color: var(--gold); }
 
 .luci-cs .cs-consolidation__list {
-      list-style: none; margin: 0; padding: 0; max-width: 64ch;
-      border-top: 1px solid var(--rule-light);
+      list-style: none; margin: 0; padding: 0; max-width: 56ch;
+      border-top: 1px solid rgba(235, 245, 248, 0.18);
+      position: relative; z-index: 1;
     }
 
-.luci-cs .cs-consolidation__item { padding: 22px 0; border-bottom: 1px solid var(--rule-light); }
+.luci-cs .cs-consolidation__item { padding: 22px 0; border-bottom: 1px solid rgba(235, 245, 248, 0.18); }
 
 .luci-cs .cs-consolidation__item-title {
-      margin: 0 0 8px; font-weight: 700; font-size: 17px; line-height: 1.35; color: var(--ink-strong);
+      margin: 0 0 8px; font-family: var(--font-body); font-weight: 700;
+      font-size: 17px; line-height: 1.35;
+      display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px;
     }
 
+.luci-cs .cs-consolidation__problem, .luci-cs .cs-consolidation__solution { color: var(--mint); }
+
+.luci-cs .cs-consolidation__arrow { color: var(--off-white); font-weight: 400; }
+
 .luci-cs .cs-consolidation__item-text {
-      margin: 0; font-size: 17px; line-height: 1.65; color: var(--ink);
+      margin: 0; font-family: var(--font-copy); font-size: 17px; line-height: 1.65; color: rgba(235, 245, 248, 0.84);
     }
 
 .luci-cs .cs-scope-story {
@@ -644,23 +656,23 @@
 .luci-cs .cs-scope { margin-bottom: 28px; }
 
 .luci-cs .cs-quote {
-      background: var(--navy-deep);
+      background: #ffffff;
       padding: clamp(44px, 7vw, 76px) clamp(28px, 6vw, 64px);
-      border-bottom: 1px solid rgba(104, 227, 190, 0.12);
+      border-bottom: 1px solid rgba(8, 24, 34, 0.08);
     }
 
 .luci-cs .cs-quote__text {
-      margin: 0 0 20px; font-size: clamp(22px, 3.4vw, 30px); font-style: italic;
-      line-height: 1.4; color: var(--off-white);
-      border-left: 4px solid var(--mint); padding: 8px 0 8px 26px; max-width: 26ch;
+      margin: 0 0 20px; font-family: var(--font-copy); font-size: clamp(19px, 2.6vw, 24px);
+      font-style: italic; line-height: 1.45; color: var(--navy);
+      border-left: 5px solid var(--accent-light); padding: 6px 0 6px 26px; max-width: 52ch;
     }
 
 .luci-cs .cs-quote__attrib {
-      margin: 0; padding-left: 30px; font-size: 12px; font-weight: 700;
-      letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.6;
+      margin: 0; padding-left: 31px; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.6; color: var(--navy-muted);
     }
 
-.luci-cs .cs-quote__attrib span { display: block; color: var(--mint); }
+.luci-cs .cs-quote__attrib span { display: block; color: var(--accent-light); }
 
 .luci-cs .cs-cta__accent { color: var(--mint); }
 
@@ -767,25 +779,41 @@
         <p>The result is a streamlined platform designed for years of reliable, trouble-free operation, with simplified future maintenance and expansion.</p>
       </div>
     </section>
-    <section class="cs-sec cs-sec--light cs-consolidation" aria-labelledby="cs-consolidation-title">
+    <section class="cs-sec cs-consolidation" aria-labelledby="cs-consolidation-title">
       <header class="cs-consolidation__header">
-        <h2 id="cs-consolidation-title" class="cs-consolidation__title">Consolidation you can see</h2>
+        <h2 id="cs-consolidation-title" class="cs-consolidation__title"><em>Consolidation</em> you can see</h2>
       </header>
       <ul class="cs-consolidation__list">
         <li class="cs-consolidation__item">
-          <p class="cs-consolidation__item-title">Processing off the riverboat</p>
+          <p class="cs-consolidation__item-title">
+            <span class="cs-consolidation__problem">A/V processing on the riverboat</span>
+            <span class="cs-consolidation__arrow" aria-hidden="true">&rarr;</span>
+            <span class="cs-consolidation__solution">one data center on land</span>
+          </p>
           <p class="cs-consolidation__item-text">All A/V processing moved from the boat to the IT data center on land &mdash; one location, not many.</p>
         </li>
         <li class="cs-consolidation__item">
-          <p class="cs-consolidation__item-title">No A/V rooms in the buildout</p>
+          <p class="cs-consolidation__item-title">
+            <span class="cs-consolidation__problem">A/V rooms in the buildout</span>
+            <span class="cs-consolidation__arrow" aria-hidden="true">&rarr;</span>
+            <span class="cs-consolidation__solution">zero new rooms needed</span>
+          </p>
           <p class="cs-consolidation__item-text">Centralizing processing in the data center eliminated the need to design separate A/V rooms into the new construction.</p>
         </li>
         <li class="cs-consolidation__item">
-          <p class="cs-consolidation__item-title">Old head-end replaced</p>
+          <p class="cs-consolidation__item-title">
+            <span class="cs-consolidation__problem">Decade-old head-end</span>
+            <span class="cs-consolidation__arrow" aria-hidden="true">&rarr;</span>
+            <span class="cs-consolidation__solution">one consolidated platform</span>
+          </p>
           <p class="cs-consolidation__item-text">The decade-old A/V head-end, amplifiers, and control infrastructure were replaced and consolidated onto the platform.</p>
         </li>
         <li class="cs-consolidation__item">
-          <p class="cs-consolidation__item-title">One login, not one per system</p>
+          <p class="cs-consolidation__item-title">
+            <span class="cs-consolidation__problem">One login per system</span>
+            <span class="cs-consolidation__arrow" aria-hidden="true">&rarr;</span>
+            <span class="cs-consolidation__solution">one browser-based interface</span>
+          </p>
           <p class="cs-consolidation__item-text">Staff now use one browser-based interface instead of separate tools for each A/V system.</p>
         </li>
       </ul>
