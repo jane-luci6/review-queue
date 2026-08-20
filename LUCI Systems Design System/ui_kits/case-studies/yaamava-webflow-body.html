@@ -1,0 +1,743 @@
+<style>
+    /* Webflow embed: break out of page container + beat site styles */
+    .luci-cs {
+      width: 100vw;
+      max-width: 100vw;
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+      position: relative;
+      font-family: var(--body);
+      background: var(--navy-deep);
+      color: var(--body-ink);
+      -webkit-font-smoothing: antialiased;
+      font-size: 18px;
+      line-height: 1.72;
+    }
+
+    .luci-cs *,
+    .luci-cs *::before,
+    .luci-cs *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    .w-embed .luci-cs,
+    .w-embed .luci-cs * {
+      box-sizing: border-box;
+    }
+
+    .luci-cs img {
+      max-width: none;
+    }
+
+    .luci-cs a {
+      text-decoration: none;
+    }
+
+    .luci-cs blockquote {
+      border: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .luci-cs ul,
+    .luci-cs ol {
+      list-style: none;
+    }
+
+    /* About LUCI — editorial block inside CTA, not a second footer */
+    .luci-cs .cs-cta__about,
+    .luci-cs .cta__about {
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      max-width: 62ch;
+    }
+
+    .luci-cs .cs-cta__about-label,
+    .luci-cs .cta__about-label {
+      color: var(--mint);
+      margin-bottom: 12px;
+    }
+
+    .luci-cs .cs-cta__statement,
+    .luci-cs .cta__statement {
+      color: rgba(235, 245, 248, 0.82);
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    /* Footer bar only — no copyright row on Webflow */
+    .luci-cs .footer__top,
+    .luci-cs .cs-footer__top {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    :root{
+      --navy-deep: #0a161c;
+      --navy: #10232d;
+      --navy-mid: #314955;
+      --navy-muted: #49616e;
+      --mint: #68e3be;
+      --mint-rgb: 104, 227, 190;
+      --accent-light: #2b9e80;
+      --gold: #edd086;
+      --gold-rgb: 237, 208, 134;
+      --gold-deep: #ceb06e;
+      --sand: #e5e3df;
+      --off-white: #f5f8fa;
+      --rule-light: #dbe1e4;
+      --ink: #354f5c;
+      --ink-strong: #1c2b33;
+      --font-display: 'Syncopate', sans-serif;
+      --font-body: 'Space Grotesk', system-ui, sans-serif;
+      --font-copy: 'Inter', system-ui, sans-serif;
+      --body: var(--font-body);
+      --body-ink: var(--ink);
+    }
+    
+    
+    
+    .luci-cs img{ max-width: 100%; height: auto; display: block; }
+
+    .luci-cs .cs-page{ background: var(--navy-deep); padding-bottom: clamp(48px, 8vw, 96px); }
+    .luci-cs .cs-page__sheet{ max-width: 880px; margin: 0 auto; background: #fff; }
+
+    /* Hero */
+    /* Mesh stays vivid at the right edge; a scrim mutes it behind the
+       left-aligned title, dek, and property line so the type stays legible. */
+    .luci-cs .cs-hero{
+      background-color: var(--navy-deep);
+      background-image:
+        linear-gradient(to right,
+          rgba(8, 18, 24, 0.86) 0%,
+          rgba(8, 18, 24, 0.80) 48%,
+          rgba(8, 18, 24, 0.42) 78%,
+          rgba(8, 18, 24, 0.10) 100%),
+        url('https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a7e091df18dd3a992d8ac82_luci-bg-hero-1920x1080.svg');
+      background-size: cover; background-position: center; background-repeat: no-repeat;
+      padding: clamp(40px, 8vw, 84px) clamp(28px, 6vw, 64px) clamp(40px, 7vw, 72px);
+      overflow: hidden; position: relative;
+    }
+    .luci-cs .cs-hero::after{
+      content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 4px;
+      background: linear-gradient(to right, var(--mint) 0 62%, var(--gold) 62% 100%);
+    }
+    .luci-cs .cs-hero__kicker{ display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+    .luci-cs .cs-hero__kicker::before{ content: ''; width: 28px; height: 2px; background: var(--mint); }
+    .luci-cs .cs-hero__kicker span{
+      font-family: var(--font-display); font-size: 10px; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--mint);
+    }
+    .luci-cs .cs-hero__title{
+      margin: 0 0 26px; font-family: var(--font-body); font-weight: 700;
+      font-size: clamp(34px, 6.5vw, 60px); line-height: 1.04; letter-spacing: -0.03em;
+      color: var(--off-white); max-width: 16ch;
+    }
+    .luci-cs .cs-hero__leadin{
+      display: block; font-family: var(--font-body);
+      font-size: clamp(17px, 2.2vw, 24px); font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(235, 245, 248, 0.82); margin-bottom: 14px;
+    }
+    .luci-cs .cs-hero__title em{
+      display: block; font-family: var(--font-display); font-style: normal;
+      font-size: clamp(26px, 5.2vw, 48px); line-height: 1.16; letter-spacing: 0;
+      color: var(--mint); text-transform: uppercase; max-width: 12ch;
+    }
+    .luci-cs .cs-hero__dek{
+      margin: 0 0 30px; font-family: var(--font-copy);
+      font-size: clamp(17px, 2.2vw, 20px); line-height: 1.6;
+      color: rgba(235, 245, 248, 0.82); max-width: 58ch;
+    }
+    .luci-cs .cs-hero__property{
+      display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin: 0;
+      padding-top: 24px; border-top: 1px solid rgba(104, 227, 190, 0.15);
+      font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: var(--gold);
+    }
+    .luci-cs .cs-hero__property span{ color: rgba(165, 179, 188, 0.7); font-weight: 500; }
+
+    /* Glance */
+    .luci-cs .cs-glance{
+      background: var(--off-white);
+      padding: clamp(32px, 5vw, 48px) clamp(28px, 6vw, 64px);
+      border-bottom: 1px solid var(--rule-light);
+    }
+    .luci-cs .cs-glance__logo{ margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid var(--rule-light); }
+    .luci-cs .cs-glance__logo img{ height: 124px; width: auto; display: block; }
+    .luci-cs .cs-facts{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 32px; }
+    @media (max-width: 620px) { .luci-cs .cs-facts{ grid-template-columns: repeat(2, 1fr); gap: 20px 24px; } }
+    .luci-cs .cs-facts__label{
+      margin: 0 0 8px; font-family: var(--font-display); font-size: 9px; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-light);
+    }
+    .luci-cs .cs-facts__value{ margin: 0; font-size: 17px; font-weight: 600; line-height: 1.3; color: var(--navy); }
+
+    /* Scope inventory (denominator) */
+    .luci-cs .cs-inventory{
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+      background: var(--rule-light); border: 1px solid var(--rule-light);
+      margin-bottom: 28px; list-style: none; padding: 0; margin-left: 0; margin-right: 0;
+    }
+    @media (max-width: 620px) { .luci-cs .cs-inventory{ grid-template-columns: repeat(2, 1fr); } }
+    .luci-cs .cs-inventory__item{ background: #fff; padding: 18px 16px; text-align: left; }
+    .luci-cs .cs-inventory__num{
+      margin: 0 0 6px; font-family: var(--font-body); font-size: clamp(26px, 3.6vw, 34px);
+      font-weight: 700; line-height: 1; letter-spacing: -0.03em; color: var(--accent-light);
+    }
+    .luci-cs .cs-inventory__label{
+      margin: 0; font-family: var(--font-copy); font-size: 13px; line-height: 1.35;
+      color: var(--ink); font-weight: 500;
+    }
+
+    .luci-cs .cs-summary{
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+      background: var(--rule-light); border: 1px solid var(--rule-light);
+    }
+    @media (max-width: 620px) { .luci-cs .cs-summary{ grid-template-columns: 1fr; } }
+    .luci-cs .cs-summary__cell{ background: #fff; padding: 22px; }
+    .luci-cs .cs-summary__label{
+      margin: 0 0 10px; font-family: var(--font-display); font-size: 9px; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-light);
+    }
+    .luci-cs .cs-summary__text{ margin: 0; font-family: var(--font-copy); font-size: 15px; line-height: 1.55; color: var(--ink); }
+
+    /* Sections */
+    .luci-cs .cs-sec{ padding: clamp(44px, 6vw, 72px) clamp(28px, 6vw, 64px); border-bottom: 1px solid var(--rule-light); }
+    .luci-cs .cs-sec--white{ background: #fff; }
+    .luci-cs .cs-sec--light{ background: var(--off-white); }
+    /* Flat slate — the longest reading passage in the piece, kept calm. */
+    /* Flat slate + soft mint wash — calm mid-tone, no pattern. */
+    .luci-cs .cs-sec--mid{
+      position: relative;
+      isolation: isolate;
+      background-color: var(--navy-mid);
+      border-bottom-color: rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+    }
+    .luci-cs .cs-sec--mid::before{
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 95% 100% at 0% 35%, rgba(104, 227, 190, 0.28) 0%, transparent 68%),
+        radial-gradient(ellipse 60% 75% at 15% 100%, rgba(104, 227, 190, 0.14) 0%, transparent 58%);
+    }
+    .luci-cs .cs-sec--mid > *{ position: relative; z-index: 1; }
+    .luci-cs .cs-sec--dark{ background: var(--navy); border-bottom-color: rgba(0, 0, 0, 0.3); }
+    .luci-cs .cs-sec__title{
+      margin: 0 0 22px; font-family: var(--font-body); font-weight: 700;
+      font-size: clamp(24px, 4vw, 34px); line-height: 1.12; letter-spacing: -0.025em; max-width: 24ch;
+    }
+    .luci-cs .cs-sec--white .cs-sec__title, .luci-cs .cs-sec--light .cs-sec__title{ color: var(--navy); }
+    .luci-cs .cs-sec--mid .cs-sec__title, .luci-cs .cs-sec--dark .cs-sec__title{ color: var(--off-white); }
+    .luci-cs .cs-sec__title-accent{ color: var(--gold); }
+    .luci-cs .cs-sec--white .cs-sec__title-accent, .luci-cs .cs-sec--light .cs-sec__title-accent{ color: var(--accent-light); }
+    .luci-cs .cs-copy p{ margin: 0 0 18px; font-family: var(--font-copy); font-size: 17px; line-height: 1.72; max-width: 64ch; }
+    .luci-cs .cs-copy p:last-child{ margin-bottom: 0; }
+    .luci-cs .cs-sec--white .cs-copy p, .luci-cs .cs-sec--light .cs-copy p{ color: var(--ink); }
+    .luci-cs .cs-sec--mid .cs-copy p{ color: rgba(235, 245, 248, 0.88); }
+    .luci-cs .cs-sec--dark .cs-copy p{ color: rgba(235, 245, 248, 0.92); }
+
+    .luci-cs .cs-scope__label{
+      margin: 32px 0 0; font-family: var(--font-display); font-size: 10px;
+      font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mint);
+    }
+    .luci-cs .cs-scope{
+      list-style: none; margin: 14px 0 0; padding: 0; max-width: 64ch;
+      border-top: 1px solid rgba(104, 227, 190, 0.24);
+    }
+    .luci-cs .cs-scope li{
+      display: flex; flex-direction: row; align-items: flex-start; gap: 14px;
+      padding: 18px 0; font-family: var(--font-copy); font-size: 16px; line-height: 1.5; margin: 0;
+      color: rgba(235, 245, 248, 0.94);
+      border-bottom: 1px solid rgba(104, 227, 190, 0.24);
+    }
+    .luci-cs .cs-scope li svg{ display: block; width: 28px; height: 28px; flex-shrink: 0; }
+
+    /* Full-bleed photo section — text rides a horizontal scrim */
+    .luci-cs .cs-photo-band{
+      position: relative;
+      overflow: hidden;
+      min-height: clamp(380px, 52vw, 520px);
+      border-bottom: none;
+    }
+    .luci-cs .cs-photo-band__img{
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 40%;
+      display: block;
+    }
+    .luci-cs .cs-photo-band__scrim{
+      position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: linear-gradient(to right,
+        rgba(245, 248, 250, 0.97) 0%,
+        rgba(245, 248, 250, 0.96) 48%,
+        rgba(245, 248, 250, 0.74) 64%,
+        rgba(245, 248, 250, 0.22) 84%,
+        rgba(245, 248, 250, 0) 100%);
+    }
+    .luci-cs .cs-photo-band__content{
+      position: relative; z-index: 2;
+      padding: clamp(44px, 6vw, 72px) clamp(28px, 6vw, 64px);
+      max-width: 52ch;
+    }
+    .luci-cs .cs-photo-band .cs-sec__title{ color: var(--navy); }
+    .luci-cs .cs-photo-band .cs-sec__title-accent{ color: var(--accent-light); }
+    .luci-cs .cs-photo-band .cs-copy p{ color: var(--ink); }
+    .luci-cs .cs-photo-band__caption{
+      margin: 26px 0 0; padding-top: 16px;
+      border-top: 1px solid rgba(43, 158, 128, 0.28);
+      font-family: var(--font-copy); font-size: 13px; letter-spacing: 0.02em;
+      line-height: 1.5; color: var(--navy-muted);
+    }
+    @media (max-width: 640px) {
+      .luci-cs .cs-photo-band{ min-height: 420px; }
+      .luci-cs .cs-photo-band__scrim{
+        background: linear-gradient(to bottom,
+          rgba(245, 248, 250, 0.96) 0%,
+          rgba(245, 248, 250, 0.88) 48%,
+          rgba(245, 248, 250, 0.35) 72%,
+          rgba(245, 248, 250, 0) 100%);
+      }
+      .luci-cs .cs-photo-band__content{ max-width: none; }
+    }
+
+    /* Full-bleed property photo band — edge to edge, no card chrome */
+    .luci-cs .cs-figure{
+      margin: 0; background: var(--navy-deep);
+      padding: 0 0 clamp(16px, 2vw, 22px);
+      border-bottom: 1px solid rgba(104, 227, 190, 0.12);
+    }
+    .luci-cs .cs-figure img{
+      display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover;
+    }
+    .luci-cs .cs-figure__pair{ display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    @media (max-width: 620px) { .luci-cs .cs-figure__pair{ grid-template-columns: 1fr; } }
+    .luci-cs .cs-figure figcaption{
+      margin: 14px 0 0; padding: 0 clamp(28px, 6vw, 64px);
+      font-family: var(--font-copy); font-size: 13px; letter-spacing: 0.02em;
+      line-height: 1.5; color: rgba(235, 245, 248, 0.7); text-align: center;
+    }
+
+    .luci-cs .cs-results{
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
+      background: rgba(104, 227, 190, 0.18); list-style: none; margin: 0; padding: 0; counter-reset: cs-result;
+    }
+    @media (max-width: 620px) { .luci-cs .cs-results{ grid-template-columns: 1fr; } }
+    .luci-cs .cs-results li{
+      background: var(--navy); padding: 22px 20px; font-family: var(--font-copy);
+      font-size: 15px; font-weight: 600; line-height: 1.45; color: var(--off-white);
+    }
+    .luci-cs .cs-results li::before{
+      content: counter(cs-result, decimal-leading-zero); counter-increment: cs-result; display: block;
+      font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+      color: var(--gold); margin-bottom: 10px;
+    }
+    .luci-cs .cs-results + .cs-copy{ margin-top: 32px; }
+
+    .luci-cs .cs-plan{ list-style: none; margin: 22px 0 26px; padding: 0; display: flex; flex-direction: column; gap: 22px; max-width: 64ch; }
+    .luci-cs .cs-plan li{ display: grid; grid-template-columns: 28px 1fr; gap: 14px; font-family: var(--font-copy); font-size: 17px; line-height: 1.65; color: var(--ink); }
+    .luci-cs .cs-plan li::before{ content: '✓'; font-size: 20px; font-weight: 700; color: var(--gold-deep); line-height: 1.3; }
+    .luci-cs .cs-plan strong{ font-family: var(--font-body); font-weight: 700; color: var(--navy); }
+    .luci-cs .cs-bottom-line{ margin-top: 4px; padding-top: 26px; border-top: 1px solid var(--rule-light); font-family: var(--font-copy); font-size: 18px; line-height: 1.6; color: var(--navy); }
+
+    /* Consolidation you can see — dark section, before rack on the right side only. */
+    .luci-cs .cs-consolidation{
+      position: relative; isolation: isolate; overflow: hidden;
+      background-color: var(--navy-deep);
+      background-image:
+        linear-gradient(to right,
+          var(--navy-deep) 0%,
+          var(--navy-deep) 42%,
+          rgba(7, 15, 20, 0.92) 58%,
+          rgba(7, 15, 20, 0.62) 100%),
+        url('https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a876c0c90378da95b862695_yaamava-legacy-rack-before-web.jpg');
+      background-size: cover, cover;
+      background-position: left top, right -2.5in center;
+      background-repeat: no-repeat;
+      border-bottom-color: rgba(104, 227, 190, 0.2);
+    }
+    .luci-cs .cs-consolidation__header{ margin-bottom: 32px; position: relative; z-index: 1; }
+    .luci-cs .cs-consolidation__title{
+      margin: 0; font-family: var(--font-body); font-weight: 700;
+      font-size: clamp(24px, 4vw, 34px); line-height: 1.12; letter-spacing: -0.025em;
+      color: var(--off-white); max-width: 28ch;
+    }
+    .luci-cs .cs-consolidation__list{
+      list-style: none; margin: 0; padding: 0; max-width: 56ch;
+      border-top: 1px solid rgba(235, 245, 248, 0.18);
+      position: relative; z-index: 1;
+    }
+    .luci-cs .cs-consolidation__item{ padding: 22px 0; border-bottom: 1px solid rgba(235, 245, 248, 0.18); }
+    .luci-cs .cs-consolidation__item-title{
+      margin: 0 0 8px; font-family: var(--font-body); font-weight: 700;
+      font-size: 17px; line-height: 1.35;
+      display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px;
+    }
+    .luci-cs .cs-consolidation__problem, .luci-cs .cs-consolidation__solution{ color: var(--mint); }
+    .luci-cs .cs-consolidation__arrow{ color: var(--off-white); font-weight: 400; }
+    .luci-cs .cs-consolidation__item-text{
+      margin: 0; font-family: var(--font-copy); font-size: 17px; line-height: 1.65; color: rgba(235, 245, 248, 0.84);
+    }
+
+    /* Quote — light block under the dark consolidation section. */
+    .luci-cs .cs-quote{
+      background: #ffffff;
+      padding: clamp(44px, 7vw, 76px) clamp(28px, 6vw, 64px);
+      border-bottom: 1px solid rgba(8, 24, 34, 0.08);
+    }
+    .luci-cs .cs-quote__text{
+      margin: 0 0 20px; font-family: var(--font-copy); font-size: clamp(19px, 2.6vw, 24px);
+      font-style: italic; line-height: 1.45; color: var(--navy);
+      border-left: 5px solid var(--accent-light); padding: 6px 0 6px 26px; max-width: 52ch;
+    }
+    .luci-cs .cs-quote__attrib{ margin: 0; padding-left: 31px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.6; color: var(--navy-muted); }
+    .luci-cs .cs-quote__attrib span{ display: block; color: var(--accent-light); }
+
+    /* "On LUCI to date" ledger — many endpoints converging on one platform.
+       Mirrors the Signal Issue 03 scope block: icon + count row, funnel, one destination. */
+    .luci-cs .cs-ledger{
+      position: relative; overflow: hidden;
+      background-color: var(--navy-deep);
+      border-top: 4px solid var(--mint);
+      border-bottom: 1px solid rgba(104, 227, 190, 0.16);
+      padding: 0 0 clamp(36px, 5vw, 52px);
+    }
+    .luci-cs .cs-ledger::before{
+      content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      background: url('https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a7e091df18dd3a992d8ac82_luci-bg-hero-1920x1080.svg') center / cover no-repeat;
+      mix-blend-mode: screen; opacity: 0.7;
+      -webkit-mask-image: radial-gradient(ellipse 82% 98% at 50% 58%, transparent 0%, transparent 34%, rgba(0,0,0,0.5) 60%, #000 80%);
+              mask-image: radial-gradient(ellipse 82% 98% at 50% 58%, transparent 0%, transparent 34%, rgba(0,0,0,0.5) 60%, #000 80%);
+    }
+    .luci-cs .cs-ledger::after{
+      content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      background: radial-gradient(ellipse 80% 94% at 50% 60%,
+        rgba(7,15,20,0.82) 0%, rgba(7,15,20,0.5) 40%, transparent 82%);
+    }
+    .luci-cs .cs-ledger > *{ position: relative; z-index: 1; }
+    .luci-cs .cs-ledger__title{
+      margin: 0 0 clamp(22px, 3vw, 32px);
+      padding: clamp(36px, 5vw, 56px) clamp(28px, 6vw, 64px) 0;
+      font-family: var(--font-body); font-size: clamp(26px, 3.6vw, 38px); font-weight: 700;
+      line-height: 1.1; letter-spacing: -0.025em; color: var(--mint); text-align: center;
+    }
+    .luci-cs .cs-ledger__title em{ font-style: normal; color: var(--off-white); }
+    .luci-cs .cs-ledger__ticker{
+      margin: 0 0 clamp(18px, 2.4vw, 26px);
+      border-top: 1px solid rgba(var(--mint-rgb), 0.2);
+      border-bottom: 1px solid rgba(var(--mint-rgb), 0.2);
+      overflow-x: auto; -webkit-overflow-scrolling: touch;
+    }
+    .luci-cs .cs-ledger__stats{
+      list-style: none; margin: 0; padding: clamp(18px, 2.4vw, 26px) 0;
+      display: flex; align-items: stretch; justify-content: center;
+    }
+    .luci-cs .cs-ledger__stats li{
+      flex: 1 1 0; min-width: 132px; position: relative; text-align: center;
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      padding: 0 clamp(8px, 1.4vw, 18px);
+    }
+    .luci-cs .cs-ledger__stats li + li{ border-left: 1px solid rgba(var(--mint-rgb), 0.18); }
+    .luci-cs .cs-ledger__ic{ display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; flex: none; }
+    .luci-cs .cs-ledger__ic svg{ width: 100%; height: 100%; display: block; }
+    .luci-cs .cs-ledger__num{
+      font-family: var(--font-body); font-size: clamp(30px, 4vw, 44px); font-weight: 700;
+      line-height: 1; letter-spacing: -0.03em; color: var(--mint);
+    }
+    .luci-cs .cs-ledger__label{
+      font-family: var(--font-copy); font-size: 13px; line-height: 1.3;
+      letter-spacing: 0.02em; color: rgba(235, 245, 248, 0.72);
+    }
+    .luci-cs .cs-ledger__converge{ display: block; width: 100%; height: clamp(52px, 7vw, 76px); margin: 4px 0 -2px; overflow: visible; }
+    .luci-cs .cs-ledger__converge line{ stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+    .luci-cs .cs-ledger__arrow{ position: relative; width: clamp(28px, 3vw, 38px); margin: 2px auto 0; }
+    .luci-cs .cs-ledger__arrow::before{
+      content: ''; display: block; width: clamp(6px, 0.8vw, 9px); height: clamp(28px, 4vw, 46px); margin: 0 auto;
+      background: var(--mint); border-radius: 4px; box-shadow: 0 0 18px rgba(var(--mint-rgb), 0.55);
+    }
+    .luci-cs .cs-ledger__arrow::after{
+      content: ''; display: block; width: 0; height: 0; margin: 0 auto;
+      border-left: clamp(13px, 1.4vw, 18px) solid transparent;
+      border-right: clamp(13px, 1.4vw, 18px) solid transparent;
+      border-top: clamp(17px, 1.9vw, 24px) solid var(--mint);
+      filter: drop-shadow(0 6px 12px rgba(var(--mint-rgb), 0.5));
+    }
+    .luci-cs .cs-ledger__dest{ display: flex; flex-direction: column; align-items: center; gap: 12px; margin: 20px 0 0; padding: 0 clamp(28px, 6vw, 64px); }
+    .luci-cs .cs-ledger__dest-rule{ width: 40px; height: 3px; background: var(--mint); }
+    .luci-cs .cs-ledger__dest-head{
+      margin: 0; font-family: var(--font-body); font-weight: 700; letter-spacing: -0.02em;
+      font-size: clamp(32px, 5vw, 54px); color: var(--off-white); text-align: center;
+    }
+    .luci-cs .cs-ledger__dest-head em{ font-style: normal; color: var(--mint); }
+    .luci-cs .cs-ledger__dest-sub{
+      margin: 0; font-family: var(--font-copy); font-size: clamp(14px, 1.6vw, 17px);
+      color: rgba(235, 245, 248, 0.72); text-align: center; max-width: 46ch; line-height: 1.5;
+    }
+
+    /* CTA */
+    .luci-cs .cs-cta{
+      background-color: var(--navy-deep);
+      background-image:
+        linear-gradient(to right,
+          rgba(8, 18, 24, 0.86) 0%,
+          rgba(8, 18, 24, 0.80) 52%,
+          rgba(8, 18, 24, 0.44) 80%,
+          rgba(8, 18, 24, 0.12) 100%),
+        url('https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a8628dd242640e8859209c9_luci-bg-wide-2560x800.svg');
+      background-size: cover; background-position: center; background-repeat: no-repeat;
+      padding: clamp(44px, 7vw, 76px) clamp(28px, 6vw, 64px);
+      border-top: 4px solid var(--mint);
+    }
+    .luci-cs .cs-cta__body{ margin: 0 0 24px; font-weight: 700; font-size: clamp(22px, 3vw, 30px); line-height: 1.2; letter-spacing: -0.02em; color: var(--off-white); max-width: 24ch; }
+    .luci-cs .cs-cta__actions{ display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+    .luci-cs .cs-cta-btn{ display: inline-flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 700; letter-spacing: 0.04em; text-decoration: none; color: var(--navy); background: var(--mint); padding: 16px 28px; transition: background 0.15s; }
+    .luci-cs .cs-cta-btn:hover{ background: #7aedc8; }
+    .luci-cs .cs-cta-btn__arrow{ font-size: 18px; font-weight: 700; line-height: 1; }
+    .luci-cs .cs-cta__about{ margin-top: 40px; padding-top: 26px; border-top: 1px solid rgba(255, 255, 255, 0.1); max-width: 62ch; }
+    .luci-cs .cs-cta__about-label{ margin: 0 0 10px; font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(104, 227, 190, 0.7); }
+    .luci-cs .cs-cta__statement{ margin: 0; font-family: var(--font-copy); font-size: 16px; line-height: 1.65; color: rgba(165, 179, 188, 0.88); }
+  </style>
+<div class="luci-cs">
+<article class="cs-page">
+  <div class="cs-page__sheet">
+    <header class="cs-hero">
+      <div class="cs-hero__kicker"><span>Case Study</span></div>
+      <h1 class="cs-hero__title">
+        <span class="cs-hero__leadin">Everything on the property</span>
+        <em>One interface</em>
+      </h1>
+      <p class="cs-hero__dek">LUCI brought Yaamava&rsquo;s broadcast content, signage, audio, data, and displays onto one platform, then designed and installed 34 LED walls across seven venues that came online inside it &mdash; so a 290,000-square-foot resort runs from a single interface.</p>
+      <p class="cs-hero__property">
+        Yaamava&rsquo; Resort &amp; Casino
+        <span>Highland, California &middot; San Manuel Band of Mission Indians</span>
+      </p>
+    </header>
+
+    <section class="cs-glance" aria-label="At a glance">
+      <div class="cs-glance__logo">
+        <img src="https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a876c0bd9831e582ed403a1_yaamava-logo.png" alt="Yaamava&rsquo; Resort &amp; Casino at San Manuel" width="541" height="669" />
+      </div>
+      <div class="cs-facts">
+        <div><p class="cs-facts__label">Property</p><p class="cs-facts__value">Yaamava&rsquo; Resort &amp; Casino</p></div>
+        <div><p class="cs-facts__label">Location</p><p class="cs-facts__value">Highland, California</p></div>
+        <div><p class="cs-facts__label">Operator</p><p class="cs-facts__value">San Manuel Band of Mission Indians</p></div>
+      </div>
+      <ul class="cs-inventory" aria-label="Property scope under management">
+        <li class="cs-inventory__item">
+          <p class="cs-inventory__num">290,000</p>
+          <p class="cs-inventory__label">sq ft of gaming floor under management</p>
+        </li>
+        <li class="cs-inventory__item">
+          <p class="cs-inventory__num">1,000+</p>
+          <p class="cs-inventory__label">endpoints on the platform</p>
+        </li>
+        <li class="cs-inventory__item">
+          <p class="cs-inventory__num">34</p>
+          <p class="cs-inventory__label">LED walls across seven venues</p>
+        </li>
+      </ul>
+      <div class="cs-summary">
+        <div class="cs-summary__cell"><p class="cs-summary__label">The challenge</p><p class="cs-summary__text">Audio, video, and signage each ran on their own hardware, their own software, and their own interfaces.</p></div>
+        <div class="cs-summary__cell"><p class="cs-summary__label">The approach</p><p class="cs-summary__text">Run audio and video over the property network, centralize control in LUCI, and build 34 LED walls looped into the same interface.</p></div>
+        <div class="cs-summary__cell"><p class="cs-summary__label">The result</p><p class="cs-summary__text">Every audio zone, display, and network device on the property &mdash; including 34 LED walls across seven venues &mdash; managed from a single interface.</p></div>
+      </div>
+    </section>
+
+    <section class="cs-photo-band" aria-labelledby="cs-challenge-title">
+      <img class="cs-photo-band__img" src="https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a876c0da50825a3a4311d36_yaamava-sportsbook-led-web.jpg" alt="The curved LED ribbon wrapping the 909 Sportsbar at Yaamava&rsquo;, carrying live games and odds above the bar" width="1600" height="900" loading="lazy" />
+      <div class="cs-photo-band__scrim" aria-hidden="true"></div>
+      <div class="cs-photo-band__content">
+        <h2 id="cs-challenge-title" class="cs-sec__title">Technology that grew <span class="cs-sec__title-accent">one piece at a time</span></h2>
+        <div class="cs-copy">
+          <p>Yaamava&rsquo; Resort &amp; Casino sits in Highland, California, owned and operated by the San Manuel Band of Mission Indians. What opened in 1986 has grown into one of the premier casino resort destinations in the country.</p>
+          <p>The technology underneath it grew the same way &mdash; one piece at a time. Broadcast content, signage, audio and paging, data, displays, and everything beneath them each arrived with its own hardware, software, interface, and operating model.</p>
+          <p>Then Yaamava&rsquo; began remodeling and scaling the property, including 34 LED walls across seven venues. Without a different architecture, that expansion would have compounded the same problem: another control environment, more hardware, and more workflows for the team to manage.</p>
+          <p>As the property improved its guest experience, its technology was becoming more fragmented.</p>
+        </div>
+        <p class="cs-photo-band__caption">The 909 Sportsbar &mdash; every screen in the room on the same platform.</p>
+      </div>
+    </section>
+
+    <section class="cs-sec cs-sec--mid">
+      <h2 class="cs-sec__title">Bringing every layer <span class="cs-sec__title-accent">onto one platform</span></h2>
+      <div class="cs-copy">
+        <p>LUCI designed and built 34 LED walls across seven remodeled venues while Yaamava&rsquo; was scaling the property. Each wall was looped into LUCI as it came online, so the expansion did not create another control environment.</p>
+        <p>At the same time, LUCI distributed the property&rsquo;s audio and video over the network and brought its existing endpoints into the same interface. The network-based architecture reduced the dedicated processors and other hardware the property had to install and maintain.</p>
+        <p>The property grew while its operating model got smaller: fewer systems, less hardware, and one place to run every endpoint.</p>
+      </div>
+      <p class="cs-scope__label">What LUCI did</p>
+      <ul class="cs-scope" aria-label="What LUCI did">
+        <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="3" y="5" width="18" height="14" rx="2" fill="#68E3BE" fill-opacity="0.16" stroke="#68E3BE" stroke-width="1.8"/>
+          <path d="M10 9l6 3-6 3V9Z" fill="#EDD086"/>
+        </svg><span>Designed and built 34 LED walls across seven venues</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="4" y="3" width="16" height="11" rx="1.5" fill="#68E3BE" fill-opacity="0.16" stroke="#68E3BE" stroke-width="1.8"/>
+          <path d="M12 14v6M8 20h8" stroke="#68E3BE" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M7 7h6" stroke="#EDD086" stroke-width="1.8" stroke-linecap="round"/>
+        </svg><span>Distributed property audio and video over the network</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="3" y="4" width="18" height="16" rx="1.5" fill="#68E3BE" fill-opacity="0.14" stroke="#68E3BE" stroke-width="1.8"/>
+          <path d="M7 10l3 2.2L7 14.4" fill="none" stroke="#EDD086" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="12" y1="14.5" x2="16.5" y2="14.5" stroke="#68E3BE" stroke-width="1.8" stroke-linecap="round"/>
+        </svg><span>Mapped the new walls and existing endpoints into one LUCI interface</span></li>
+      </ul>
+    </section>
+
+    <section class="cs-sec cs-consolidation" aria-labelledby="cs-consolidation-title">
+      <header class="cs-consolidation__header">
+        <h2 id="cs-consolidation-title" class="cs-consolidation__title">Consolidation you can see</h2>
+      </header>
+      <ul class="cs-consolidation__list">
+        <li class="cs-consolidation__item">
+          <p class="cs-consolidation__item-title">
+            <span class="cs-consolidation__problem">Five technology silos</span>
+            <span class="cs-consolidation__arrow" aria-hidden="true">&rarr;</span>
+            <span class="cs-consolidation__solution">one platform</span>
+          </p>
+          <p class="cs-consolidation__item-text">Broadcast, signage, data, audio and paging, and displays now operate through LUCI.</p>
+        </li>
+        <li class="cs-consolidation__item">
+          <p class="cs-consolidation__item-title">
+            <span class="cs-consolidation__problem">34 new LED walls</span>
+            <span class="cs-consolidation__arrow" aria-hidden="true">&rarr;</span>
+            <span class="cs-consolidation__solution">same interface</span>
+          </p>
+          <p class="cs-consolidation__item-text">Walls across seven venues joined the property&rsquo;s existing A/V and signage control instead of creating another control environment.</p>
+        </li>
+        <li class="cs-consolidation__item">
+          <p class="cs-consolidation__item-title">
+            <span class="cs-consolidation__problem">Dedicated hardware</span>
+            <span class="cs-consolidation__arrow" aria-hidden="true">&rarr;</span>
+            <span class="cs-consolidation__solution">network distribution</span>
+          </p>
+          <p class="cs-consolidation__item-text">Audio and video run over the property network, reducing the processors, players, and rack equipment to power, cool, and maintain.</p>
+        </li>
+        <li class="cs-consolidation__item">
+          <p class="cs-consolidation__item-title">
+            <span class="cs-consolidation__problem">Coordinated interfaces</span>
+            <span class="cs-consolidation__arrow" aria-hidden="true">&rarr;</span>
+            <span class="cs-consolidation__solution">one operating view</span>
+          </p>
+          <p class="cs-consolidation__item-text">Staff select content or channels, choose the destinations, and send them across the floor, signage, and video walls from LUCI.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="cs-quote">
+      <blockquote class="cs-quote__text">&ldquo;What I love about LUCI&rsquo;s approach is that they really focus on how to make the operations easier for the business, and they do it in a really cost-effective manner. They look for ways to implement solutions that are easy to administer, have a reasonable cost point, and are easy to use.&rdquo;</blockquote>
+      <p class="cs-quote__attrib">
+        <span>Toni Pepper</span>
+        CITO, San Manuel Band of Mission Indians
+      </p>
+    </section>
+
+    <section class="cs-sec cs-sec--dark">
+      <h2 class="cs-sec__title">What Yaamava&rsquo; <span class="cs-sec__title-accent">runs now</span></h2>
+      <ul class="cs-results">
+        <li>One interface for every audio zone, display, and network device</li>
+        <li>Content and channels coordinated across the property from one interface</li>
+        <li>34 LED walls across seven venues, running on the same platform as everything else</li>
+        <li>An A/V and IT team spending its time on priorities instead of upkeep</li>
+      </ul>
+      <div class="cs-copy">
+        <p>A content or channel change that once crossed tools and teams now takes one person: open LUCI, choose the source, select the screens, and send it to the gaming floor, signage, and video walls at once.</p>
+        <p>There is no second login for signage, no separate console for the 34 LED walls, no third tool for paging.</p>
+      </div>
+    </section>
+
+    <figure class="cs-figure cs-figure--pair">
+      <div class="cs-figure__pair">
+        <img src="https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a876c0d5b1c8be92b7bf83b_yaamava-gaming-floor-led-web.jpg" alt="A wall-sized LED display on the Yaamava&rsquo; gaming floor, behind a bank of machines" width="1600" height="900" loading="lazy" />
+        <img src="https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a876c0d1e3192a8919364b4_yaamava-event-entry-led-web.jpg" alt="LED-clad columns and soffit at the Yaamava&rsquo; event center entrance" width="1600" height="900" loading="lazy" />
+      </div>
+      <figcaption>LED LUCI designed and installed &mdash; the artwork on every wall changes from the same interface.</figcaption>
+    </figure>
+
+    <section class="cs-ledger" aria-labelledby="cs-ledger-title">
+      <h2 id="cs-ledger-title" class="cs-ledger__title">Yaamava&rsquo; on LUCI <em>to date</em></h2>
+
+      <div class="cs-ledger__ticker">
+        <ul class="cs-ledger__stats" aria-label="Property scope managed through LUCI">
+          <li>
+            <span class="cs-ledger__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="13" rx="2" fill="#68E3BE" fill-opacity="0.20" stroke="#68E3BE" stroke-width="1.8"/><path d="M9 21h6M12 17v4" stroke="#68E3BE" stroke-width="1.8" stroke-linecap="round"/><circle cx="17.5" cy="8" r="1.5" fill="#EDD086"/></svg></span>
+            <span class="cs-ledger__num">420</span>
+            <span class="cs-ledger__label">Displays</span>
+          </li>
+          <li>
+            <span class="cs-ledger__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="1.5" y="6" width="21" height="12" rx="1.2" fill="#68E3BE" fill-opacity="0.18" stroke="#68E3BE" stroke-width="1.8"/><rect x="8.6" y="6.4" width="6.8" height="11.2" fill="#EDD086" fill-opacity="0.9"/><path d="M8.6 6v12M15.4 6v12" stroke="#68E3BE" stroke-width="1.3"/></svg></span>
+            <span class="cs-ledger__num">34</span>
+            <span class="cs-ledger__label">LED walls</span>
+          </li>
+          <li>
+            <span class="cs-ledger__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 9v6h3l5 4V5L7 9H4Z" fill="#68E3BE" fill-opacity="0.20" stroke="#68E3BE" stroke-width="1.8" stroke-linejoin="round"/><path d="M15 8.5c1.5 2 1.5 5 0 7M17.5 6c2.5 3 2.5 9 0 12" stroke="#EDD086" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+            <span class="cs-ledger__num">284</span>
+            <span class="cs-ledger__label">Audio zones</span>
+          </li>
+          <li>
+            <span class="cs-ledger__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" fill="#68E3BE" fill-opacity="0.20" stroke="#68E3BE" stroke-width="1.8"/><path d="M10 9l6 3-6 3V9Z" fill="#EDD086"/></svg></span>
+            <span class="cs-ledger__num">92</span>
+            <span class="cs-ledger__label">DTV channels</span>
+          </li>
+          <li>
+            <span class="cs-ledger__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="11" rx="1.5" fill="#68E3BE" fill-opacity="0.20" stroke="#68E3BE" stroke-width="1.8"/><path d="M12 14v6M8 20h8" stroke="#68E3BE" stroke-width="1.8" stroke-linecap="round"/><path d="M7 7h6" stroke="#EDD086" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+            <span class="cs-ledger__num">220</span>
+            <span class="cs-ledger__label">Digital signage endpoints</span>
+          </li>
+          <li>
+            <span class="cs-ledger__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" fill="#68E3BE" fill-opacity="0.18" stroke="#68E3BE" stroke-width="1.8"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18" stroke="#68E3BE" stroke-width="1.4"/><rect x="9" y="9" width="6" height="6" fill="#EDD086" fill-opacity="0.9"/></svg></span>
+            <span class="cs-ledger__num">14</span>
+            <span class="cs-ledger__label">Technologies orchestrated</span>
+          </li>
+        </ul>
+      </div>
+
+      <svg class="cs-ledger__converge" viewBox="0 0 100 120" preserveAspectRatio="none" aria-hidden="true">
+        <defs><linearGradient id="yaamava-funnel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#edd086" stop-opacity="0.75"/><stop offset="1" stop-color="#68e3be" stop-opacity="0.7"/></linearGradient></defs>
+        <line x1="8.33" y1="0" x2="50" y2="116" stroke="url(#yaamava-funnel)"/>
+        <line x1="25" y1="0" x2="50" y2="116" stroke="url(#yaamava-funnel)"/>
+        <line x1="41.67" y1="0" x2="50" y2="116" stroke="url(#yaamava-funnel)"/>
+        <line x1="58.33" y1="0" x2="50" y2="116" stroke="url(#yaamava-funnel)"/>
+        <line x1="75" y1="0" x2="50" y2="116" stroke="url(#yaamava-funnel)"/>
+        <line x1="91.67" y1="0" x2="50" y2="116" stroke="url(#yaamava-funnel)"/>
+      </svg>
+      <div class="cs-ledger__arrow" aria-hidden="true"></div>
+      <div class="cs-ledger__dest">
+        <span class="cs-ledger__dest-rule" aria-hidden="true"></span>
+        <p class="cs-ledger__dest-head">One <em>LUCI</em> platform</p>
+        <p class="cs-ledger__dest-sub">Every endpoint, every zone, every wall, every channel &mdash; one interface.</p>
+      </div>
+    </section>
+
+    <section class="cs-sec cs-sec--light">
+      <h2 class="cs-sec__title">Built for <span class="cs-sec__title-accent">the moves ahead</span></h2>
+      <div class="cs-copy">
+        <ul class="cs-plan">
+          <li><span><strong>One platform to build on.</strong> As new spaces, screens, and zones come online, they join the system already running the resort &mdash; no second install, no parallel system to stand up. Thirty-four LED walls have already arrived that way.</span></li>
+          <li><span><strong>Less to maintain, not more.</strong> Consolidation removed hardware and interfaces rather than adding them. Every layer LUCI takes on is one fewer thing the team has to manage on its own.</span></li>
+          <li><span><strong>Room to grow the experience.</strong> With the property unified, a floor-wide moment is a configuration in LUCI &mdash; not a project that has to be rebuilt in every interface it touches.</span></li>
+        </ul>
+        <p class="cs-bottom-line">By consolidating the property&rsquo;s technology onto one platform, LUCI gave Yaamava&rsquo; a resort that operates as one &mdash; and a foundation it can keep building on.</p>
+      </div>
+    </section>
+
+    <section class="cs-cta">
+      <p class="cs-cta__body">Curious what this looks like for your property? <span style="color: var(--mint);">Let&rsquo;s talk.</span></p>
+      <div class="cs-cta__actions">
+        <a class="cs-cta-btn" href="https://www.lucisystems.com/contact" target="_blank" rel="noopener noreferrer">Talk to LUCI<span class="cs-cta-btn__arrow" aria-hidden="true">&rarr;</span></a>
+      </div>
+      <div class="cs-cta__about">
+        <p class="cs-cta__about-label">About LUCI</p>
+        <p class="cs-cta__statement">LUCI Systems is the orchestration engine for enterprise multimedia &mdash; A/V, signage, building, and operational infrastructure &mdash; from a single interface your team controls from anywhere. LUCI reduces the variables, hardware, and interfaces your team has to manage. When onsite experience and operational continuity are non-negotiable, LUCI delivers coordinated, real-time execution, end to end.</p>
+      </div>
+    </section>
+  </div>
+</article>
+</div>
