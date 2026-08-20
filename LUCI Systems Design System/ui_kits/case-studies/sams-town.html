@@ -149,59 +149,29 @@
     }
     .cs-summary__text { margin: 0; font-size: 15px; line-height: 1.55; color: var(--ink); }
 
-    /* Editorial chapter sections — large faded numeral + mint rule + Inter body */
-    .cs-chapter { position: relative; overflow: hidden; }
-    .cs-chapter__num {
-      position: absolute; top: clamp(16px, 2.5vw, 28px); right: clamp(20px, 4vw, 48px);
-      font-family: var(--font-display); font-size: clamp(72px, 13vw, 148px);
-      font-weight: 700; line-height: 0.82; letter-spacing: -0.04em;
-      pointer-events: none; user-select: none; z-index: 0;
-    }
-    .cs-sec--white .cs-chapter__num, .cs-sec--light .cs-chapter__num { color: var(--accent-light); opacity: 0.07; }
-    .cs-sec--mid .cs-chapter__num { color: var(--mint); opacity: 0.05; }
-    .cs-chapter__head { position: relative; z-index: 1; }
-    .cs-chapter__title {
-      margin: 0 0 14px; font-family: var(--font-body); font-weight: 700;
-      font-size: clamp(22px, 3vw, 30px); line-height: 1.15; letter-spacing: -0.02em;
-      max-width: 20ch;
-    }
-    .cs-sec--white .cs-chapter__title, .cs-sec--light .cs-chapter__title { color: var(--ink-strong); }
-    .cs-sec--mid .cs-chapter__title { color: var(--off-white); }
-    .cs-chapter__title-accent { color: var(--accent-light); }
-    .cs-sec--mid .cs-chapter__title-accent { color: var(--mint); }
-    .cs-chapter__rule {
-      width: 100%; height: 2px; margin: 0 0 24px;
-    }
-    .cs-sec--white .cs-chapter__rule, .cs-sec--light .cs-chapter__rule { background: var(--accent-light); opacity: 0.45; }
-    .cs-sec--mid .cs-chapter__rule { background: var(--mint); opacity: 0.35; }
-    .cs-chapter__body { position: relative; z-index: 1; }
-    .cs-chapter__body p {
-      margin: 0 0 18px; font-family: 'Inter', system-ui, sans-serif;
-      font-size: 17px; line-height: 1.72; max-width: 60ch;
-    }
-    .cs-chapter__body p:last-child { margin-bottom: 0; }
-    .cs-sec--white .cs-chapter__body p, .cs-sec--light .cs-chapter__body p { color: var(--ink); }
-    .cs-sec--mid .cs-chapter__body p { color: rgba(235, 245, 248, 0.88); }
-
-    /* Split layout for the approach section — narrative + scope side by side */
-    .cs-chapter--split .cs-chapter__grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: clamp(32px, 5vw, 56px); align-items: start;
-      position: relative; z-index: 1;
-    }
-    @media (max-width: 720px) {
-      .cs-chapter--split .cs-chapter__grid { grid-template-columns: 1fr; gap: 28px; }
-    }
-
     /* Sections */
     .cs-sec { padding: clamp(44px, 6vw, 72px) clamp(28px, 6vw, 64px); border-bottom: 1px solid var(--rule-light); }
     .cs-sec--white { background: #fff; }
     .cs-sec--light { background: var(--off-white); }
-    /* Flat slate — the longest reading passage in the piece, kept calm. */
+    /* Flat slate + soft mint wash — calm mid-tone, no pattern. */
     .cs-sec--mid {
+      position: relative;
+      isolation: isolate;
       background-color: var(--navy-mid);
       border-bottom-color: rgba(0, 0, 0, 0.2);
+      overflow: hidden;
     }
+    .cs-sec--mid::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 95% 100% at 0% 35%, rgba(104, 227, 190, 0.28) 0%, transparent 68%),
+        radial-gradient(ellipse 60% 75% at 15% 100%, rgba(104, 227, 190, 0.14) 0%, transparent 58%);
+    }
+    .cs-sec--mid > * { position: relative; z-index: 1; }
     .cs-sec--dark { background: var(--navy); border-bottom-color: rgba(0, 0, 0, 0.3); }
     .cs-sec__title {
       margin: 0 0 22px; font-family: var(--font-body); font-weight: 700;
@@ -217,8 +187,56 @@
     .cs-sec--mid .cs-copy p { color: rgba(235, 245, 248, 0.88); }
     .cs-sec--dark .cs-copy p { color: rgba(235, 245, 248, 0.92); }
 
+    /* Full-bleed photo section — text rides a horizontal scrim */
+    .cs-photo-band {
+      position: relative;
+      overflow: hidden;
+      min-height: clamp(380px, 52vw, 520px);
+      border-bottom: none;
+    }
+    .cs-photo-band__img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 40%;
+      display: block;
+    }
+    .cs-photo-band__scrim {
+      position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: linear-gradient(to right,
+        rgba(245, 248, 250, 0.96) 0%,
+        rgba(245, 248, 250, 0.92) 38%,
+        rgba(245, 248, 250, 0.62) 58%,
+        rgba(245, 248, 250, 0.18) 78%,
+        rgba(245, 248, 250, 0) 100%);
+    }
+    .cs-photo-band__content {
+      position: relative; z-index: 2;
+      padding: clamp(44px, 6vw, 72px) clamp(28px, 6vw, 64px);
+      max-width: 38ch;
+    }
+    .cs-photo-band .cs-sec__title { color: var(--navy); }
+    .cs-photo-band .cs-sec__title-accent { color: var(--accent-light); }
+    .cs-photo-band .cs-copy p { color: var(--ink); }
+    @media (max-width: 640px) {
+      .cs-photo-band { min-height: 420px; }
+      .cs-photo-band__scrim {
+        background: linear-gradient(to bottom,
+          rgba(245, 248, 250, 0.96) 0%,
+          rgba(245, 248, 250, 0.88) 48%,
+          rgba(245, 248, 250, 0.35) 72%,
+          rgba(245, 248, 250, 0) 100%);
+      }
+      .cs-photo-band__content { max-width: none; }
+    }
+
+    .cs-inline-photo { margin: 28px 0 0; max-width: 100%; }
+    .cs-inline-photo img {
+      display: block; width: 100%; aspect-ratio: 16 / 9;
+      object-fit: cover; object-position: center;
+    }
+
     .cs-scope {
-      list-style: none; margin: 6px 0 0; padding: 0; max-width: 64ch;
+      list-style: none; margin: 28px 0 0; padding: 0; max-width: 64ch;
       display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
     }
     .cs-scope li {
@@ -229,15 +247,13 @@
     }
     .cs-scope li svg { display: block; width: 28px; height: 28px; flex-shrink: 0; }
     @media (max-width: 620px) { .cs-scope { grid-template-columns: 1fr; } }
-    /* Inside the split layout, scope is a single column of hairline-separated rows */
-    .cs-chapter--split .cs-scope {
-      grid-template-columns: 1fr; gap: 0; max-width: none;
-      border-top: 1px solid rgba(104, 227, 190, 0.18);
-    }
-    .cs-chapter--split .cs-scope li {
-      background: none; border: none; border-radius: 0;
-      border-bottom: 1px solid rgba(104, 227, 190, 0.18);
-      padding: 16px 0;
+
+    /* Before/after nested inside results */
+    .cs-results-block .cs-ba {
+      background: transparent;
+      padding: 8px 0 32px;
+      border-bottom: 0;
+      margin: 0;
     }
 
     /* Before/after slider */
@@ -314,27 +330,46 @@
       margin: 0; font-size: 17px; line-height: 1.65; color: var(--ink);
     }
 
-    /* Scope story — property-wide many → one */
-    /* Centered stats: radial scrim clears the middle, mesh breathes at the edges. */
+    /* Scope story — mesh at the edges, clear center for type + converge lines.
+       Matches the newsletter field-scope treatment: screen-blended mesh masked
+       to the perimeter, plus a light center scrim for legibility. */
     .cs-scope-story {
+      position: relative;
+      overflow: hidden;
       background-color: var(--navy-deep);
-      background-image:
-        radial-gradient(ellipse 92% 100% at 50% 50%,
-          rgba(7, 15, 20, 0.97) 0%,
-          rgba(7, 15, 20, 0.94) 50%,
-          rgba(7, 15, 20, 0.78) 75%,
-          rgba(7, 15, 20, 0.12) 96%),
-        url('assets/mesh/luci-bg-hero-split-1920x1080.svg');
-      background-size: cover; background-position: center;
       padding: clamp(48px, 7vw, 80px) clamp(28px, 6vw, 64px);
       border-bottom: 1px solid rgba(104, 227, 190, 0.16);
       text-align: center;
     }
+    .cs-scope-story::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: url('assets/mesh/luci-bg-hero-split-1920x1080.svg') center / cover no-repeat;
+      mix-blend-mode: screen;
+      opacity: 0.55;
+      -webkit-mask-image: radial-gradient(ellipse 78% 92% at 50% 50%, transparent 0%, transparent 28%, rgba(0,0,0,0.45) 58%, #000 82%);
+              mask-image: radial-gradient(ellipse 78% 92% at 50% 50%, transparent 0%, transparent 28%, rgba(0,0,0,0.45) 58%, #000 82%);
+    }
+    .cs-scope-story::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: radial-gradient(ellipse 72% 88% at 50% 50%,
+        rgba(7, 15, 20, 0.72) 0%,
+        rgba(7, 15, 20, 0.38) 42%,
+        transparent 78%);
+    }
+    .cs-scope-story > * { position: relative; z-index: 1; }
     .cs-scope-story__title {
       margin: 0 0 36px; font-family: var(--font-body); font-size: clamp(24px, 4vw, 36px);
-      font-weight: 700; line-height: 1.15; letter-spacing: -0.025em; color: var(--off-white);
+      font-weight: 700; line-height: 1.15; letter-spacing: -0.025em; color: var(--mint);
     }
-    .cs-scope-story__title em { font-style: normal; color: var(--mint); }
+    .cs-scope-story__title em { font-style: normal; color: var(--off-white); }
     .cs-scope-stats {
       display: grid; grid-template-columns: repeat(5, 1fr); list-style: none;
       margin: 0; padding: 0 0 32px; border-bottom: 1px solid rgba(104, 227, 190, 0.18);
@@ -467,83 +502,73 @@
       </div>
     </section>
 
-    <section class="cs-sec cs-sec--white cs-chapter">
-      <span class="cs-chapter__num" aria-hidden="true">01</span>
-      <div class="cs-chapter__head">
-        <h2 class="cs-chapter__title">The room <span class="cs-chapter__title-accent">they had</span></h2>
-        <div class="cs-chapter__rule" aria-hidden="true"></div>
-      </div>
-      <div class="cs-chapter__body">
-        <p>LUCI has run Sam&rsquo;s Town&rsquo;s A/V end to end for more than a year: we installed audio through the casino first, then video across the property, including the sportsbook. This year, Sam&rsquo;s Town decided the sportsbook screens were due for an upgrade to replace years of accumulated TVs.</p>
-      </div>
-    </section>
-
-    <section class="cs-sec cs-sec--mid cs-chapter cs-chapter--split">
-      <span class="cs-chapter__num" aria-hidden="true">02</span>
-      <div class="cs-chapter__grid">
-        <div>
-          <div class="cs-chapter__head">
-            <h2 class="cs-chapter__title">The wall <span class="cs-chapter__title-accent">they wanted</span></h2>
-            <div class="cs-chapter__rule" aria-hidden="true"></div>
-          </div>
-          <div class="cs-chapter__body">
-            <p>Sam&rsquo;s Town decided to replace a large portion of their screens with one 39 &times; 12 foot LED wall &mdash; and commissioned LUCI&rsquo;s team to install it. In less than a week, the LED wall, a new set of TVs, and the sportsbook&rsquo;s three audio zones were all live and running on LUCI. The wall drives six presets across eight video inputs, all easily controlled from a single interface.</p>
-          </div>
+    <section class="cs-photo-band" aria-labelledby="cs-room-title">
+      <img class="cs-photo-band__img" src="assets/sams-town/room-before-web.jpg" alt="Sam's Town sportsbook before the remodel — tiered seating facing a wall of mismatched TVs" width="1600" height="900" loading="lazy" />
+      <div class="cs-photo-band__scrim" aria-hidden="true"></div>
+      <div class="cs-photo-band__content">
+        <h2 id="cs-room-title" class="cs-sec__title">The room <span class="cs-sec__title-accent">they had</span></h2>
+        <div class="cs-copy">
+          <p>LUCI has run Sam&rsquo;s Town&rsquo;s A/V end to end for more than a year: we installed audio through the casino first, then video across the property, including the sportsbook. This year, Sam&rsquo;s Town decided the sportsbook screens were due for an upgrade to replace years of accumulated TVs.</p>
         </div>
-        <ul class="cs-scope">
-          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <rect x="3" y="5" width="18" height="11" rx="1" fill="#68E3BE" fill-opacity="0.16" stroke="#68E3BE" stroke-width="1.8"/>
-            <path d="M8 21h8M12 16v5" stroke="#68E3BE" stroke-width="1.8" stroke-linecap="round"/>
-            <circle cx="17" cy="9" r="1.2" fill="#EDD086"/>
-          </svg><span>Hung and commissioned one 480-sq-ft LED wall</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <rect x="3" y="4" width="18" height="16" rx="1.5" fill="#68E3BE" fill-opacity="0.14" stroke="#68E3BE" stroke-width="1.8"/>
-            <path d="M7 10l3 2.2L7 14.4" fill="none" stroke="#EDD086" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            <line x1="12" y1="14.5" x2="16.5" y2="14.5" stroke="#68E3BE" stroke-width="1.8" stroke-linecap="round"/>
-          </svg><span>Looped the wall into the existing LUCI platform</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <rect x="4" y="3" width="16" height="5" rx="1.5" fill="#68E3BE" fill-opacity="0.16" stroke="#68E3BE" stroke-width="1.8"/>
-            <rect x="4" y="10" width="16" height="5" rx="1.5" fill="#68E3BE" fill-opacity="0.16" stroke="#68E3BE" stroke-width="1.8"/>
-            <rect x="4" y="17" width="16" height="4" rx="1.5" stroke="#68E3BE" stroke-width="1.8"/>
-            <circle cx="7.5" cy="5.5" r="1" fill="#EDD086"/>
-            <circle cx="7.5" cy="12.5" r="1" fill="#EDD086"/>
-          </svg><span>Six presets across eight video inputs, one interface</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M4 9v6h3l5 4V5L7 9H4z" fill="#68E3BE" fill-opacity="0.16" stroke="#68E3BE" stroke-width="1.8" stroke-linejoin="round"/>
-            <path d="M15.5 8.5a5 5 0 0 1 0 7" fill="none" stroke="#EDD086" stroke-width="1.8" stroke-linecap="round"/>
-            <path d="M18 6a8 8 0 0 1 0 12" fill="none" stroke="#68E3BE" stroke-width="1.8" stroke-linecap="round"/>
-          </svg><span>Three audio zones on the existing system</span></li>
-        </ul>
       </div>
     </section>
 
-    <section class="cs-sec cs-sec--white cs-chapter">
-      <span class="cs-chapter__num" aria-hidden="true">03</span>
-      <div class="cs-chapter__head">
-        <h2 class="cs-chapter__title">Bringing the <span class="cs-chapter__title-accent">race book on board</span></h2>
-        <div class="cs-chapter__rule" aria-hidden="true"></div>
+    <section class="cs-sec cs-sec--mid">
+      <h2 class="cs-sec__title">The wall <span class="cs-sec__title-accent">they wanted</span></h2>
+      <div class="cs-copy">
+        <p>Sam&rsquo;s Town decided to replace a large portion of their screens with one 39 &times; 12 foot LED wall &mdash; and commissioned LUCI&rsquo;s team to install it. In less than a week, the LED wall, a new set of TVs, and the sportsbook&rsquo;s three audio zones were all live and running on LUCI. The wall drives six presets across eight video inputs, all easily controlled from a single interface.</p>
       </div>
-      <div class="cs-chapter__body">
+      <ul class="cs-scope">
+        <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="3" y="5" width="18" height="11" rx="1" fill="#68E3BE" fill-opacity="0.16" stroke="#68E3BE" stroke-width="1.8"/>
+          <path d="M8 21h8M12 16v5" stroke="#68E3BE" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="17" cy="9" r="1.2" fill="#EDD086"/>
+        </svg><span>Hung and commissioned one 480-sq-ft LED wall</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="3" y="4" width="18" height="16" rx="1.5" fill="#68E3BE" fill-opacity="0.14" stroke="#68E3BE" stroke-width="1.8"/>
+          <path d="M7 10l3 2.2L7 14.4" fill="none" stroke="#EDD086" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="12" y1="14.5" x2="16.5" y2="14.5" stroke="#68E3BE" stroke-width="1.8" stroke-linecap="round"/>
+        </svg><span>Looped the wall into the existing LUCI platform</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="4" y="3" width="16" height="5" rx="1.5" fill="#68E3BE" fill-opacity="0.16" stroke="#68E3BE" stroke-width="1.8"/>
+          <rect x="4" y="10" width="16" height="5" rx="1.5" fill="#68E3BE" fill-opacity="0.16" stroke="#68E3BE" stroke-width="1.8"/>
+          <rect x="4" y="17" width="16" height="4" rx="1.5" stroke="#68E3BE" stroke-width="1.8"/>
+          <circle cx="7.5" cy="5.5" r="1" fill="#EDD086"/>
+          <circle cx="7.5" cy="12.5" r="1" fill="#EDD086"/>
+        </svg><span>Six presets across eight video inputs, one interface</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 9v6h3l5 4V5L7 9H4z" fill="#68E3BE" fill-opacity="0.16" stroke="#68E3BE" stroke-width="1.8" stroke-linejoin="round"/>
+          <path d="M15.5 8.5a5 5 0 0 1 0 7" fill="none" stroke="#EDD086" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M18 6a8 8 0 0 1 0 12" fill="none" stroke="#68E3BE" stroke-width="1.8" stroke-linecap="round"/>
+        </svg><span>Three audio zones on the existing system</span></li>
+      </ul>
+    </section>
+
+    <section class="cs-sec cs-sec--white">
+      <h2 class="cs-sec__title">Bringing the <span class="cs-sec__title-accent">race book on board</span></h2>
+      <div class="cs-copy">
         <p>The race book took the same approach. Rather than trench new cable out to every betting carousel, LUCI sent ten channels of its own encoded video back out over the coax already buried under the property &mdash; live racing on existing cable, with no trenching and no new wire pulled through the floor.</p>
       </div>
+      <figure class="cs-inline-photo">
+        <img src="assets/sams-town/luci-technician-server-rack-installation.jpg" alt="LUCI technician routing blue ethernet cables in a server rack during a casino AV installation" width="1600" height="900" loading="lazy" />
+      </figure>
     </section>
 
-    <section class="cs-ba" aria-label="Before and after">
-      <div class="cs-ba__slider" data-cs-slider>
-        <img class="cs-ba__img cs-ba__img--after" src="assets/sams-town/slider-after-web.jpg" alt="Sam's Town sportsbook after the remodel — one continuous LED wall running on LUCI" width="1600" height="900" />
-        <div class="cs-ba__before">
-          <img class="cs-ba__img" src="assets/sams-town/slider-before-web.jpg" alt="Sam's Town sportsbook before the remodel — a wall of mismatched TVs" width="1600" height="900" />
-        </div>
-        <div class="cs-ba__divider" aria-hidden="true"><span class="cs-ba__handle"></span></div>
-        <span class="cs-ba__tag cs-ba__tag--before">Before</span>
-        <span class="cs-ba__tag cs-ba__tag--after">After</span>
-        <input class="cs-ba__range" type="range" min="0" max="100" value="50" aria-label="Drag to reveal the finished sportsbook wall" />
-      </div>
-      <p class="cs-ba__caption">Drag to see the wall come together.</p>
-    </section>
-
-    <section class="cs-sec cs-sec--dark">
+    <section class="cs-sec cs-sec--dark cs-results-block">
       <h2 class="cs-sec__title">What Sam&rsquo;s Town <span class="cs-sec__title-accent">runs now</span></h2>
+      <div class="cs-ba" aria-label="Before and after">
+        <div class="cs-ba__slider" data-cs-slider>
+          <img class="cs-ba__img cs-ba__img--after" src="assets/sams-town/slider-after-web.jpg" alt="Sam's Town sportsbook after the remodel — one continuous LED wall running on LUCI" width="1600" height="900" />
+          <div class="cs-ba__before">
+            <img class="cs-ba__img" src="assets/sams-town/slider-before-web.jpg" alt="Sam's Town sportsbook before the remodel — a wall of mismatched TVs" width="1600" height="900" />
+          </div>
+          <div class="cs-ba__divider" aria-hidden="true"><span class="cs-ba__handle"></span></div>
+          <span class="cs-ba__tag cs-ba__tag--before">Before</span>
+          <span class="cs-ba__tag cs-ba__tag--after">After</span>
+          <input class="cs-ba__range" type="range" min="0" max="100" value="50" aria-label="Drag to reveal the finished sportsbook wall" />
+        </div>
+        <p class="cs-ba__caption">Drag to see the wall come together.</p>
+      </div>
       <ul class="cs-results">
         <li>A 480-sq-ft LED wall &mdash; one display where there used to be many</li>
         <li>Six presets across eight video inputs, switched from LUCI</li>
