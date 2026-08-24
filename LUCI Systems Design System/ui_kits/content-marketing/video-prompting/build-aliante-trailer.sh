@@ -72,39 +72,54 @@ black() {
   echo "file '$out'" >> "$WORK/list.txt"
 }
 
-# Act 3 in-points were chosen off a camera-motion profile (see the notes in the
-# markdown): each payoff shot ends on a settled frame so the move resolves
-# instead of drifting through the cut.
+# Structure: nothing finished appears until the payoff. Movements I-III are
+# strictly before / in-progress footage, so the lit wall is genuinely withheld.
+# Payoff in-points come off a camera-motion profile so each one settles.
 
-echo "→ Act 1: the ask"
-shot "$SRC/B-Roll/IMG_5017.mov"  1.5 3.5 "fade=t=in:st=0:d=1.0"
-card a 3.2
-shot "$SRC/IMG_4802.mov"         8.0 3.0
-card b 2.6
+echo "→ I. the world"
+shot "$SRC/B-Roll/IMG_5017.mov"  1.5 2.6 "fade=t=in:st=0:d=1.0"   # COMING SOON barricade
+card c1 3.0
+shot "$SRC/IMG_4853.mov"         2.0 2.2                          # dark shell, plastic sheeting
+card c2 2.0
+shot "$SRC/IMG_4802.mov"         8.0 2.2                          # bare wall going up
+card c3 2.2
 
-echo "→ Act 2: two weeks of build"
-shot "$SRC/IMG_4862.mov"         1.0 3.0
-shot "$SRC/IMG_4843.mov"         6.0 2.2
+echo "→ II. the hero"
 shot "$SRC/IMG_4854.mov"         2.0 2.2
-card c 3.2
-shot "$SRC/IMG_5006.mov"         0.5 2.6 "fade=t=out:st=2.1:d=0.5"
-card d 2.2 0.25 0.8
+card c4 2.4
+card c5 2.6
 
-echo "→ the breath"
+black 1.2
+
+echo "→ III. the odds"
+card c6 1.8
+shot "$SRC/IMG_4862.mov"         1.0 2.2                          # panel grid, two lifts
+card c7 1.8
+shot "$SRC/IMG_4843.mov"         6.0 2.0
+card c8 1.8
+shot "$SRC/IMG_5001.mov"         9.0 1.6                          # cable tray
+card c9 1.5
+shot "$SRC/IMG_4843.mov"         1.5 1.6 "fade=t=out:st=1.2:d=0.4" # lift working the grid
+card c10 1.4
+shot "$SRC/IMG_4850.mov"       150.0 1.8                          # crew at the wall
+card c11 2.6 0.25 0.8
+
+echo "→ the silence"
 black 2.0
 
-echo "→ Act 3: the wall, landing"
-shot "$SRC/IMG_5022.mov"         1.5 5.0 "fade=t=in:st=0:d=1.2"   # drifts, then settles
-card e 2.2
-shot "$SRC/IMG_5240.mov"         0.2 2.8                          # calm, tight on the wall
-card f 3.2
-shot "$SRC/IMG_5238.MOV"         9.5 4.0                          # lands on the hero wide
-card g 3.4
-still "$SRC/IMG_5033.jpeg"       3.2                              # run from a phone
+echo "→ IV. the payoff — first finished footage in the whole cut"
+shot "$SRC/IMG_5022.mov"         1.5 4.5 "fade=t=in:st=0:d=1.2"   # drifts, then settles
+card c12 2.4
+shot "$SRC/IMG_5240.mov"         0.2 2.2                          # calm, tight on the wall
+shot "$SRC/IMG_5238.MOV"         9.5 3.6                          # lands on the hero wide
+card c13 2.8
+shot "$SRC/IMG_5235.mov"        17.5 3.0                          # lands, room full
+still "$SRC/IMG_5033.jpeg"       2.6                              # run from a phone
 
-echo "→ end cards"
+echo "→ V. the tag"
+card c14 3.0 0.4 0.4
 card end1 3.5 0.5 0.3
-card end2 3.0 0.4 0.8
+card end2 2.6 0.4 0.8
 
 echo "→ assembling"
 ffmpeg -v error -f concat -safe 0 -i "$WORK/list.txt" -c copy -y "$OUT"

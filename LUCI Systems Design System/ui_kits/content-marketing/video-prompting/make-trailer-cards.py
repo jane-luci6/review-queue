@@ -60,7 +60,7 @@ def fit_size(draw, lines, size, tracking):
     return size
 
 
-def statement(path, lines, size=56, tracking=4.0):
+def statement(path, lines, size=56, tracking=4.0, accent_last=False):
     """Standard trailer card: mint rule, then one or two lines of tracked type."""
     img = Image.new("RGB", (W, H), BLACK)
     d = ImageDraw.Draw(img)
@@ -73,7 +73,9 @@ def statement(path, lines, size=56, tracking=4.0):
 
     rule(d, first_cy - size * 0.95)
     for i, ln in enumerate(lines):
-        draw_tracked(d, ln, font, tracking, first_cy + i * line_gap, OFF_WHITE)
+        last = i == len(lines) - 1
+        color = MINT if (accent_last and last) else OFF_WHITE
+        draw_tracked(d, ln, font, tracking, first_cy + i * line_gap, color)
 
     img.save(path)
     return path
@@ -102,27 +104,42 @@ def end_logo(path):
     return path
 
 
-# Cadence is deliberately mixed — long narrative cards against short punches,
-# so the whole thing doesn't read in one rhythm.
+# Classic trailer-narrator structure, five movements:
+#   I   THE WORLD      three escalating "where" clauses (rule of three)
+#   II  THE HERO       the refusal, then the call
+#   III THE ODDS       impossible, then the escalation — lines get shorter
+#   IV  THE PAYOFF     after the silence
+#   V   THE TAG        CTA + logo
+# Line length is the pacing device: long in I and II, clipped in III.
 CARDS = {
-    # setup — narrative
-    "a": (["IN A WORLD WHERE A SPORTSBOOK LIVES OR DIES",
-           "BY THE WALL IN FRONT OF IT\u2026"], 48, 3.0),
-    # the ask — punch
-    "b": (["THEY ASKED FOR TWO THOUSAND SQUARE FEET."], 52, 3.6),
-    # the build — narrative
-    "c": (["IT TOOK TWO WEEKS, A CURVED WALL,",
-           "AND A CREW THAT WOULDN\u2019T LEAVE IT UNEVEN."], 48, 3.0),
-    # the turn — shortest card in the cut
-    "d": (["THEN THEY TURNED IT ON."], 64, 5.2),
-    # payoff — punch
-    "e": (["TWENTY-FOUR ZONES."], 68, 6.0),
-    # capability — narrative
-    "f": (["SIX LAYOUTS.",
-           "ONE ROOM THAT RECONFIGURES ON COMMAND."], 50, 3.4),
-    # the point of the whole thing — narrative
-    "g": (["AND EVERY SCREEN IN THE SPORTSBOOK",
-           "NOW RUNS FROM ONE PLATFORM."], 52, 3.6),
+    # --- I. the world ---
+    "c1": (["IN A WORLD WHERE A SPORTSBOOK",
+            "LIVES OR DIES BY THE WALL IN FRONT OF IT\u2026"], 48, 3.0),
+    "c2": (["WHERE THE COMPETITION NEVER SLEEPS\u2026"], 50, 3.6),
+    "c3": (["AND GUEST EXPECTATIONS",
+            "HAVE NEVER BEEN HIGHER\u2026"], 52, 3.6),
+
+    # --- II. the hero ---
+    "c4": (["ONE CASINO REFUSED TO SETTLE FOR SECOND BEST."], 48, 3.0),
+    "c5": (["SO THEY CALLED THE ONLY TEAM",
+            "THAT COULD BUILD IT."], 52, 3.6),
+
+    # --- III. the odds (short, accelerating) ---
+    "c6": (["IT LOOKED IMPOSSIBLE."], 66, 5.6),
+    "c7": (["LUCI SHOWED UP ANYWAY."], 66, 5.6),
+    "c8": (["ONE 2,000-SQUARE-FOOT WALL."], 58, 4.4),
+    "c9": (["TWENTY-FOUR ZONES."], 66, 5.6),
+    "c10": (["SIX LAYOUTS."], 72, 6.4),
+    "c11": (["ONE TEAM THAT WOULDN\u2019T STOP",
+             "UNTIL THE JOB WAS DONE."], 54, 3.8),
+
+    # --- IV. the payoff ---
+    "c12": (["LUCI BROKE EVERY EXPECTATION."], 58, 4.4),
+    "c13": (["AND BUILT ONE OF THE BIGGEST LED WALLS",
+             "IN THE KNOWN UNIVERSE."], 48, 3.0),
+
+    # --- V. the tag ---
+    "c14": (["COME SEE HOW THEY DID IT.", "ALIANTE CASINO"], 54, 4.0, True),
     "end2": (["ONE PROPERTY.   ONE INTERFACE."], 50, 4.0),
 }
 
@@ -131,8 +148,10 @@ def main():
     out = Path(sys.argv[1] if len(sys.argv) > 1 else "/tmp/aliante-trailer-build/cards")
     out.mkdir(parents=True, exist_ok=True)
 
-    for key, (lines, size, tracking) in CARDS.items():
-        statement(out / f"card_{key}.png", lines, size, tracking)
+    for key, spec in CARDS.items():
+        lines, size, tracking = spec[0], spec[1], spec[2]
+        accent_last = spec[3] if len(spec) > 3 else False
+        statement(out / f"card_{key}.png", lines, size, tracking, accent_last)
     end_logo(out / "card_end1.png")
 
     print(f"wrote {len(CARDS) + 1} cards to {out}")
