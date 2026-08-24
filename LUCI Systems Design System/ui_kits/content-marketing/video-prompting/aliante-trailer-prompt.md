@@ -1,5 +1,76 @@
 # Aliante Race & Sports — mock movie trailer prompt
 
+## There is also a real-footage cut
+
+OpenArt Director is a paid feature (and commercial rights only start on the $29 Advanced plan), so the trailer was also cut from the actual project media:
+
+```bash
+./build-aliante-trailer.sh [output.mp4]     # defaults to ~/Desktop/aliante-trailer-v1.mp4
+```
+
+`make-trailer-cards.py` renders the title cards as PNGs with PIL — the local ffmpeg build has no `drawtext` filter, and PIL also gives real letter-spacing. The shot list, timings, and source clips all live in the build script.
+
+Everything below is the generative-AI path, kept for when invented shots are wanted (the corridor of mismatched racks, the macro on the plywood seam, the finger on the tablet — none of which exist in the camera roll).
+
+---
+
+## Paste this into OpenArt Director (Vibe)
+
+Do **not** paste this whole markdown file. Vibe is a chat director: it wants one brief, plus the photos you already attached. Copy everything between the lines.
+
+---
+
+```
+Create a 50-second dramatic theatrical movie trailer in the classic "In a world…" style. Genre parody: treat a real casino LED-wall install with the gravity of a summer blockbuster. Cinematic grade, documentary content. Photorealistic live-action, 16:9, anamorphic look, teal-and-amber trailer color, crushed blacks, 35mm grain. Practical light only — LED screens, work lights, casino downlights. No sci-fi, no CGI, no roulette, no chips, no Vegas skyline, no smiling at camera, no posed models, no garbled text on screens.
+
+Use my attached photos as the visual bible for the finished sportsbook. Match that exact room: the massive curved LED wall spanning the whole back of the book, the blue odds-board ribbon under it, plush lounge chairs, swirling patterned carpet, dark wood, coffered ceiling, hanging speaker clusters. @Image1 and @Image4 are the finished wall — use them for the reveal. @Image2 and @Image3 are the install crew — use them for the build shots (hi-vis, hard hats, work in progress). @Image5 is people in the space — use it for the game-night crowd. Do not invent a different sportsbook.
+
+Voiceover: classic gravelly trailer narrator, slow, one line per breath. Use this script verbatim:
+
+"In a world… where every screen answers to a different master…
+Where the sportsbook lives on one system… and the rest of the property lives on another.
+They came from customs. They came on a Saturday. They came with more crates than floor.
+One crew. One curved wall. And a quarter of an inch… that stood between them and perfect.
+This summer… they planed the wall by hand.
+Six runs to every node. Three up. Three down."
+(six seconds of total silence — music drops out — a finger touches a tablet)
+then a huge bass hit as the wall ignites
+"Hundreds of A/V endpoints…
+…one interface."
+
+Shot sequence:
+1. Slow push down a dark back-of-house corridor of mismatched, tangled AV racks, LEDs blinking out of sync. No people.
+2. Wide empty sportsbook before dawn. One person in a polo, back to camera, looking up at cold blue odds boards.
+3. Text card: SOME WALLS ARE BUILT.
+4. Saturday loading dock. Semi trailer full of wooden crates. Workers with a pallet jack. Barely room to walk.
+5. Extreme close-up: a hand finding a quarter-inch high spot in a plywood seam on a curved wall. Sawdust. Raking work light.
+6. Text card: THIS ONE HAD TO BE FLAT.
+7. A worker planing the curved plywood wall by hand. Wood shavings in a shaft of light. Half-built LED frame behind.
+8. Fast montage: gloved hands seating six data cables (three up, three down); a worker on a scissor lift as one LED panel snaps alive; a hand patching a clean labeled rack.
+9. Text card: TWENTY-FOUR ZONES. Then: ONE CANVAS.
+10. Silence. Over-the-shoulder: one finger taps a tablet. Tablet is the only light.
+11. The hero shot: that exact LED wall from my photos ignites from black and floods the empty sportsbook with light. Slow dolly back.
+12. Same room, game night, packed. Faces lit by the wall. One person half out of a chair.
+13. Wide pull-back of the full book at peak, then cut to black.
+
+End cards on black, clean type, spelled exactly:
+LUCI
+THE ORCHESTRATION ENGINE FOR ENTERPRISE MULTIMEDIA
+
+Then:
+ONE PROPERTY. ONE INTERFACE.
+
+Sound: low drone at the start, braams building through the build, TOTAL SILENCE on the tablet tap, one enormous bass hit when the wall lights, orchestral payoff through the last shots, hard cut to silence on black.
+
+Do not put any other text on screen. Do not paraphrase the voiceover or the end cards. Always write A/V with the slash.
+```
+
+---
+
+If Vibe chats back with a plan before generating, say yes — then iterate ("the wall has to match my photos," "more silence before the reveal," "less sci-fi"). First pass will be rough; that's normal.
+
+---
+
 A templated "In a world…" trailer for the Aliante LED wall project. Grounded in the real install (Jason walkthrough transcript, 07-15) and the real room (`OneDrive/.../Project Media/Aliante LED`).
 
 **Runtime:** ~50 seconds, 10 shots. Most generators cap at 5–8s per clip, so each shot below is a standalone prompt — generate them individually and assemble in edit.
