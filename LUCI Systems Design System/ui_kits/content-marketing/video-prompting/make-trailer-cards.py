@@ -46,10 +46,25 @@ def rule(draw, cy, width=80, thickness=3, color=MINT):
     draw.rectangle([x0, cy, x0 + width, cy + thickness], fill=color)
 
 
+MAX_TEXT_W = 1520  # keep type off the edges at 1920 wide
+
+
+def fit_size(draw, lines, size, tracking):
+    """Shrink until the longest line clears MAX_TEXT_W."""
+    while size > 24:
+        font = ImageFont.truetype(str(SG), size)
+        widest = max(tracked_width(draw, ln, font, tracking) for ln in lines)
+        if widest <= MAX_TEXT_W:
+            return size
+        size -= 2
+    return size
+
+
 def statement(path, lines, size=56, tracking=4.0):
     """Standard trailer card: mint rule, then one or two lines of tracked type."""
     img = Image.new("RGB", (W, H), BLACK)
     d = ImageDraw.Draw(img)
+    size = fit_size(d, lines, size, tracking)
     font = ImageFont.truetype(str(SG), size)
 
     line_gap = int(size * 1.34)
@@ -87,14 +102,27 @@ def end_logo(path):
     return path
 
 
+# Cadence is deliberately mixed — long narrative cards against short punches,
+# so the whole thing doesn't read in one rhythm.
 CARDS = {
-    "a": (["IN A WORLD WHERE EVERY SCREEN", "ANSWERS TO A DIFFERENT MASTER"], 52, 3.6),
-    "b": (["ONE CREW.", "ONE CURVED WALL."], 62, 5.0),
-    "c": (["SIX RUNS TO EVERY NODE."], 58, 4.4),
-    "d": (["TWENTY-FOUR ZONES."], 62, 5.0),
-    "e": (["ONE CANVAS."], 68, 6.0),
-    "f": (["HUNDREDS OF A/V ENDPOINTS."], 56, 4.2),
-    "g": (["ONE INTERFACE."], 68, 6.0),
+    # setup — narrative
+    "a": (["IN A WORLD WHERE A SPORTSBOOK LIVES OR DIES",
+           "BY THE WALL IN FRONT OF IT\u2026"], 48, 3.0),
+    # the ask — punch
+    "b": (["THEY ASKED FOR TWO THOUSAND SQUARE FEET."], 52, 3.6),
+    # the build — narrative
+    "c": (["IT TOOK TWO WEEKS, A CURVED WALL,",
+           "AND A CREW THAT WOULDN\u2019T LEAVE IT UNEVEN."], 48, 3.0),
+    # the turn — shortest card in the cut
+    "d": (["THEN THEY TURNED IT ON."], 64, 5.2),
+    # payoff — punch
+    "e": (["TWENTY-FOUR ZONES."], 68, 6.0),
+    # capability — narrative
+    "f": (["SIX LAYOUTS.",
+           "ONE ROOM THAT RECONFIGURES ON COMMAND."], 50, 3.4),
+    # the point of the whole thing — narrative
+    "g": (["AND EVERY SCREEN IN THE SPORTSBOOK",
+           "NOW RUNS FROM ONE PLATFORM."], 52, 3.6),
     "end2": (["ONE PROPERTY.   ONE INTERFACE."], 50, 4.0),
 }
 
