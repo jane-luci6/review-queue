@@ -5,12 +5,12 @@ description: >-
   proposing a full LUCI platform installation — endpoint licensing, integration
   hardware, professional services, and the full 8-page scope of work. Built from
   the Budgetary Estimate with endpoint pricing removed and the full standalone
-  SOW template inserted before line items. ~15 pages (variable).
+  SOW template inserted before line items. ~14 pages (variable).
 ---
 
 # Proposal — LUCI Retrofit · customization
 
-Full LUCI platform proposal. **~15 pages (US Letter, variable)** — cover (with date), overview (What LUCI is), review of scope, **full 8-page scope of work** (from the standalone SOW template), line items, investment summary, **payment terms**, and close (next step — no endpoint pricing tiers). Source master: `proposal-luci-retrofit.html` in this folder (build copy from `ui_kits/sales/`).
+Full LUCI platform proposal. **~14 pages (US Letter, variable)** — cover (with date), overview (What LUCI is), review of scope, **full 8-page scope of work** (from the standalone SOW template), line items, investment summary, **payment terms**, and close (next step — no endpoint pricing tiers). Source master: `proposal-luci-retrofit.html` in this folder (build copy from `ui_kits/sales/`).
 
 **This is the Budgetary Estimate + the full standalone Scope of Work, minus the endpoint pricing tiers.** The BE's line items, investment summary, and close are preserved; the BE's endpoint pricing tier chips are removed. The full 8-page SOW (pages 4–11) is inserted between the review of scope and the line items, using the standalone SOW template's content and CSS classes (`scope-of-work.css`).
 
@@ -26,7 +26,7 @@ After a capabilities review and demo where the client needs a written proposal w
 
 ## Page map — editable vs locked
 
-*Page numbers below reflect the default 15-page layout. They shift if SOW content or line items overflow to additional pages — always reference by section name, not absolute page number.*
+*Page numbers below reflect the default 14-page layout. They shift if SOW content or line items overflow to additional pages — always reference by section name, not absolute page number.*
 
 | Page | Section | Canvas | Status |
 |------|---------|--------|--------|
@@ -39,12 +39,11 @@ After a capabilities review and demo where the client needs a written proposal w
 | **7** | §4 System Scope cont. (4.5–4.6) + §5 IDF / Rack Scope opens (5.1) | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
 | **8** | §5 IDF / Rack Scope cont. (5.2–5.5) + 5.6 opens (title, target-rooms label, first 2 rooms) | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
 | **9** | §5 IDF / Rack Scope cont. (5.6 room list continued, scope intent, infrastructure) + §6 Deliverables opens (intro + first 6 deliverables) | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
-| **10** | §6 Deliverables cont. (last 3 deliverables) + §7 Assumptions/Constraints/Exclusions | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
-| **11** | §8 Open Items to Confirm | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
-| **12** | Proposal — Line items | Dark band | **EDITABLE** (all line items, qty, cost, subtotals, group labels, deck text) |
-| **13** | Investment summary | Dark band | **EDITABLE** (all summary values, total, CapEx/OpEx split); **LOCKED** `.be-delivers` marketing grid |
-| **14** | Payment terms | Light (LED-fee style) | **EDITABLE** (all milestone percentages, labels, due descriptions, notes) |
-| **15** | Close — Next step | Dark (capabilities-doc style) | **EDITABLE** (kicker, headline, next-step body, contact name/email); **LOCKED** LUCI logo + company info |
+| **10** | §6 Deliverables cont. (last 3 deliverables) + §7 Assumptions/Constraints/Exclusions + §8 Confirmed Scope Items | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
+| **11** | Proposal — Line items | Dark band | **EDITABLE** (all line items, qty, cost, subtotals, group labels, deck text) |
+| **12** | Investment summary | Dark band | **EDITABLE** (all summary values, total, CapEx/OpEx split); **LOCKED** `.be-delivers` marketing grid |
+| **13** | Payment terms | Light (LED-fee style) | **EDITABLE** (all milestone percentages, labels, due descriptions, notes) |
+| **14** | Close — Next step | Dark (capabilities-doc style) | **EDITABLE** (kicker, headline, next-step body, contact name/email); **LOCKED** LUCI logo + company info |
 
 ### Variable page counts
 
