@@ -102,13 +102,28 @@ The script temporarily overrides `height`/`overflow` on each `.doc-page` to meas
 
 **Do not write your own fit-check JS or Python.** The script handles the `scrollHeight`-returns-fixed-height trap, the iframe same-origin issue, and the Chrome headless polling. Just call it.
 
-- **`over > 0`** — content is clipped. **Trim copy or split to a new `.doc-page`** — do not change page height.
+- **`over > 0`** — content is clipped. **Add a page.** Split the section onto a new `.doc-page` with a "continued" band header and its own footer. Do not change page height, and **do not trim, shorten, or drop copy to make it fit** — cutting content is never the fix for an overflow (see the invariant below).
 - **`under > 200`** (more than ~200px of empty space at the bottom) — there is empty space. Whether to act depends on what follows:
   - **Same content stream continues on the next page** (more SOW sections, more line-item rows) → the page is underfilled. **Pull content up from the next page** so this page is full.
   - **This is the last page of a content stream** (totals/investment-summary page after all line items, last SOW page, last capabilities page) → empty space is **expected and correct**. Do not try to fill it.
 - **`design: true`** — this is a cover or close page. These pages are **intentionally spacious** — large whitespace is part of their design. **Do not** try to fill them, shorten them, or pull content onto them. Their `under` value is expected and correct.
 
 **Every page is a full 8.5×11 sheet** — the CSS locks the page size; pages cannot stretch or shrink. But "full sheet" means the **page** is the right size, not that every page must be stuffed with content. **Pack greedily only when the same content stream continues onto the next page** (SOW → more SOW, line items → more line items). **Pages that end a content stream naturally have empty space** — the totals page after all line items, the last SOW page, the cover, and the close page. That empty space is correct, not underfilling. Do not invent content to fill it, and do not shorten the page.
+
+### The page-count invariant — fixed sheet, never clipped (NON-NEGOTIABLE)
+
+`.doc-page` is locked to 1056px with `overflow: hidden`, so overflow is **silently swallowed** — no scrollbar, no warning, just missing content and a missing footer. Two templates shipped this way before it was caught: the LUCI Upgrade proposal was dropping its entire Assumptions/exclusions block and its grand total, and the LUCI Retrofit proposal was dropping band decks. Nobody noticed because a clipped page looks like a finished page.
+
+The rule, in order of precedence:
+
+1. **Page size is fixed.** Every sheet is 8.5×11. Never change `height`, never re-enable stretching, never scale content down to squeeze it in.
+2. **No content is ever cut off.** If content does not fit, **add a page.** The page count is elastic; the page size and the content are not.
+3. **Headers and footers survive the split.** Every added page gets its own band header (title + `continued.` accent, per the reference implementations) and its own `.doc-foot` with a page number. Renumber every downstream footer and `<!-- PAGE nn -->` marker after inserting.
+4. **Fill before you spill.** Pack each page as full as it goes while the same content stream continues, then start the next page. Don't break early and leave a half-empty sheet followed by a full one — pull content up until the page is full.
+
+**Trimming copy is not an overflow fix.** It is a separate editorial decision that only Jane makes. If content genuinely should be shorter, say so and ask — never silently shorten a document to make the math work.
+
+**Verify, don't eyeball.** A clipped page renders as a plausible-looking page, so the only reliable check is `fit-check.py`. Run it after any content edit and confirm every page reports a negative `over` value.
 
 ### Continuous page packing — SOW + line items (mandatory)
 
