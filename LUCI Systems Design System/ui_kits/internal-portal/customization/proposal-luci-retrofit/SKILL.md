@@ -36,9 +36,9 @@ After a capabilities review and demo where the client needs a written proposal w
 | **4** | §1 Project Intent + §2 Guiding Principles | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
 | **5** | §3 Project Phasing + §4 System Scope (4.1) | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
 | **6** | §4 System Scope cont. (4.2–4.4: IPTV, encoders, audio) | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
-| **7** | §4 System Scope cont. (4.5–4.6: network, remote access) | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
-| **8** | §5 IDF / Rack Scope (5.1–5.4) | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
-| **9** | §5 IDF / Rack Scope cont. (5.5–5.6) | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
+| **7** | §4 System Scope cont. (4.5–4.6) + §5 IDF / Rack Scope opens (5.1) | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
+| **8** | §5 IDF / Rack Scope cont. (5.2–5.5) | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
+| **9** | §5 IDF / Rack Scope cont. (5.6) | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
 | **10** | §6 Deliverables + §7 Assumptions/Constraints/Exclusions | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
 | **11** | §8 Open Items to Confirm | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
 | **12** | Proposal — Line items | Dark band | **EDITABLE** (all line items, qty, cost, subtotals, group labels, deck text) |
@@ -110,13 +110,13 @@ When Mike provides a source SOW, **mirror its verbiage and structure** (headers,
 - **Page 4 (§1–2):** Project Intent + Guiding Principles
 - **Page 5 (§3–4.1):** Project Phasing + System Scope intro
 - **Page 6 (§4.2–4.4):** IPTV upgrade, local content ingestion, audio modernization
-- **Page 7 (§4.5–4.6):** Network overhaul, secure remote access
-- **Page 8 (§5.1–5.4):** IDF/Rack scope (main casino, ISP ingest, hotel IPTV, sportsbook)
-- **Page 9 (§5.5–5.6):** IDF/Rack scope cont. (spa, meeting/conferencing)
+- **Page 7 (§4.5–4.6 + §5.1):** Network overhaul, secure remote access — then §5 opens on the same sheet with its band header and 5.1 (main casino head-end), filling what was 331px of dead space
+- **Page 8 (§5.2–5.5):** IDF/Rack scope cont. (ISP ingest, hotel IPTV, sportsbook, spa)
+- **Page 9 (§5.6):** IDF/Rack scope cont. (meeting/conferencing)
 - **Page 10 (§6–7):** Deliverables + Assumptions/Constraints/Exclusions
 - **Page 11 (§8):** Open Items to Confirm
 
-**These page boundaries are defaults, not fixed.** SOW content flows continuously — sections, subsections, line items, and bullets may break across page boundaries. If content shifts (more or less scope detail), repack greedily and renumber footers. Do not force a section to start on a new page when it would fit at the bottom of the current one.
+**These page boundaries are defaults, not fixed.** SOW content flows continuously — sections, subsections, line items, and bullets may break across page boundaries. If content shifts (more or less scope detail), repack greedily and renumber footers. Do not force a section to start on a new page when it would fit at the bottom of the current one. **A section's band header is allowed to sit mid-page** — pages 7 (§5) and 10 (§7) both open a section partway down the sheet, and the ghost numeral reads correctly there. Do not push a section to a fresh page just to put its header at the top.
 
 ### Line items (page 12) — `.doc-page--proposal`
 

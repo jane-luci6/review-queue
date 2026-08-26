@@ -68,6 +68,14 @@
 .doc-page--open-items::before {
   content: none;
 }
+/* Review-of-scope inventory ran ~59px past the locked sheet. .doc-page is a
+   flex column, so that overflow was absorbed by crushing the band header down
+   into its own mint rule rather than showing at the bottom of the page — the
+   header collision was the symptom, the long page was the cause. Tighten the
+   row rhythm here instead of cutting scope copy; every count, context note,
+   and the tally stay. Scoped to this page so the budgetary estimate, which
+   shares .be-scope-row, keeps its 20px rows. */
+.doc-page--scope .be-scope-row { padding: 12px 0; }
 </style>
 </head>
 <body>
@@ -106,7 +114,7 @@
       </header>
 
       <div class="be-intro">
-        <p class="be-intro__text doc-edit" contenteditable="true">Prepared for <strong>[Property Name]</strong> following our capabilities review and demo. Prepared for <strong>[Property Name]</strong> following our capabilities review, demo, and onsite walk. This proposal scopes endpoint licensing, integration hardware, and professional services to bring <strong>Phase 1</strong> online.</p>
+        <p class="be-intro__text doc-edit" contenteditable="true">Prepared for <strong>[Property Name]</strong> following our capabilities review, demo, and onsite walk. This proposal scopes endpoint licensing, integration hardware, and professional services to bring <strong>Phase 1</strong> online.</p>
       </div>
 
       <div class="be-why">
@@ -413,14 +421,6 @@
         </ul>
       </div>
 
-      <div class="doc-foot">
-        <span>LUCI Systems &middot; Proposal</span>
-        <span class="doc-foot__page">07</span>
-      </div>
-    </section>
-
-    <!-- PAGE 08 · SECTION 5 (5.1–5.4) ====================== -->
-    <section class="doc-page doc-page--band doc-page--idf-scope">
       <header class="doc-page-band">
         <span class="sow-band-bignum">05</span>
         <div class="doc-page-band__top">
@@ -438,6 +438,14 @@
         <li class="doc-edit" contenteditable="true">Integrate into LUCI for unified routing, presets, and support workflows</li>
       </ul>
 
+      <div class="doc-foot">
+        <span>LUCI Systems &middot; Proposal</span>
+        <span class="doc-foot__page">07</span>
+      </div>
+    </section>
+
+    <!-- PAGE 08 · SECTION 5 (CONTINUED · 5.2–5.5) ====================== -->
+    <section class="doc-page doc-page--band doc-page--idf-scope">
       <h3 class="sow-subsection-title doc-edit" contenteditable="true">5.2 IDF-A &mdash; ISP ingest / network switching (as required)</h3>
       <ul class="sow-scope-list sow-scope-list--bullets">
         <li class="doc-edit" contenteditable="true">Evaluate requirement for a network switch and/or associated components to ingest a separate ISP feed used for remote access architecture.</li>
@@ -459,14 +467,6 @@
       <p class="doc-section-head__text doc-edit" contenteditable="true">Consolidate with the property-wide system to eliminate the majority of standalone equipment, increasing reliability and enabling unified remote support/control.</p>
       <p class="sow-note doc-edit" contenteditable="true">Note: This scope may be deferred to a secondary phase pending stakeholder priorities and operational constraints.</p>
 
-      <div class="doc-foot">
-        <span>LUCI Systems &middot; Proposal</span>
-        <span class="doc-foot__page">08</span>
-      </div>
-    </section>
-
-    <!-- PAGE 09 · SECTION 5 (CONTINUED · 5.5–5.6) ====================== -->
-    <section class="doc-page doc-page--band doc-page--idf-scope">
       <h3 class="sow-subsection-title doc-edit" contenteditable="true">5.5 IDF-9 &mdash; Spa IDF</h3>
       <ul class="sow-scope-list sow-scope-list--bullets">
         <li class="doc-edit" contenteditable="true">Upgrade audio system components within the spa venue</li>
@@ -474,6 +474,14 @@
         <li class="doc-edit" contenteditable="true">Integrate spa audio control into LUCI workflows as appropriate</li>
       </ul>
 
+      <div class="doc-foot">
+        <span>LUCI Systems &middot; Proposal</span>
+        <span class="doc-foot__page">08</span>
+      </div>
+    </section>
+
+    <!-- PAGE 09 · SECTION 5 (CONTINUED · 5.6) ====================== -->
+    <section class="doc-page doc-page--band doc-page--idf-scope">
       <h3 class="sow-subsection-title doc-edit" contenteditable="true">5.6 Mezz Level 7 IDF &mdash; meeting/hospitality conferencing backbone (confirmed during the onsite walk)</h3>
       <p class="sow-list-label doc-edit" contenteditable="true">Target rooms/spaces (current understanding)</p>
       <ul class="sow-scope-list sow-scope-list--bullets">
@@ -603,41 +611,9 @@
             <span class="be-price__mfg" contenteditable="true">LUCI</span>
             <span class="be-price__item" contenteditable="true">LUCI OS</span>
             <span class="be-price__desc" contenteditable="true">Operating System Software, Consulting Services &amp; SLA Warranty &mdash; Annual Partnership Subscription</span>
-            <span class="be-price__num doc-edit" contenteditable="true">1</span>
-            <span class="be-price__num doc-edit" contenteditable="true">$35,112.00</span>
+            <span class="be-price__num doc-edit" contenteditable="true">88</span>
+            <span class="be-price__num doc-edit" contenteditable="true">$399.00</span>
             <span class="be-price__num be-price__subtotal doc-edit" contenteditable="true">$35,112.00</span>
-          </div>
-          <div class="be-price-row">
-            <span class="be-price__mfg" contenteditable="true">LUCI</span>
-            <span class="be-price__item" contenteditable="true">LUCI Endpoint</span>
-            <span class="be-price__desc" contenteditable="true">Video &mdash; IPTV Content Distribution and Controls</span>
-            <span class="be-price__num doc-edit" contenteditable="true">50</span>
-            <span class="be-price__num doc-edit" contenteditable="true">$399.00</span>
-            <span class="be-price__num be-price__subtotal doc-edit" contenteditable="true">$19,950.00</span>
-          </div>
-          <div class="be-price-row">
-            <span class="be-price__mfg" contenteditable="true">LUCI</span>
-            <span class="be-price__item" contenteditable="true">LUCI Endpoint</span>
-            <span class="be-price__desc" contenteditable="true">Audio &mdash; Audio Zone Programming Controls</span>
-            <span class="be-price__num doc-edit" contenteditable="true">38</span>
-            <span class="be-price__num doc-edit" contenteditable="true">$399.00</span>
-            <span class="be-price__num be-price__subtotal doc-edit" contenteditable="true">$15,162.00</span>
-          </div>
-          <div class="be-price-row">
-            <span class="be-price__mfg" contenteditable="true">LUCI</span>
-            <span class="be-price__item" contenteditable="true">LUCI Endpoint</span>
-            <span class="be-price__desc" contenteditable="true">Lighting &mdash; Lighting Area Group Zone Controls</span>
-            <span class="be-price__num doc-edit" contenteditable="true">0</span>
-            <span class="be-price__num doc-edit" contenteditable="true">$399.00</span>
-            <span class="be-price__num be-price__subtotal doc-edit" contenteditable="true">&mdash;</span>
-          </div>
-          <div class="be-price-row">
-            <span class="be-price__mfg" contenteditable="true">LUCI</span>
-            <span class="be-price__item" contenteditable="true">LUCI Endpoint</span>
-            <span class="be-price__desc" contenteditable="true">Digital Signage &mdash; Content Management System for Media Players</span>
-            <span class="be-price__num doc-edit" contenteditable="true">0</span>
-            <span class="be-price__num doc-edit" contenteditable="true">$399.00</span>
-            <span class="be-price__num be-price__subtotal doc-edit" contenteditable="true">&mdash;</span>
           </div>
         </div>
 
@@ -827,7 +803,7 @@
       <div class="doc-close__lead">
         <p class="doc-eyebrow doc-eyebrow--mint doc-edit" contenteditable="true">Next step</p>
         <h2 class="doc-close__head doc-edit" contenteditable="true">A property that<br><em>gets simpler as it grows.</em></h2>
-        <p class="doc-close__body doc-edit" contenteditable="true">Review this proposal with leadership. When you&rsquo;re ready to move forward, we&rsquo;ll schedule the project kickoff and begin Phase 1.</p>
+        <p class="doc-close__body doc-edit" contenteditable="true">The onsite walk is done, and the scope, endpoint counts, and hardware are confirmed &mdash; this proposal is ready to award. From there, LUCI issues the final Scope of Work and design deliverables for your approval, then begins Phase 1 with the same team that walked the property.</p>
       </div>
       <div class="doc-close__contacts">
         <div class="doc-close__rep">
