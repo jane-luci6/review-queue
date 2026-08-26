@@ -25,14 +25,6 @@
   content: '';
   position: absolute;
   top: 0; right: 0; bottom: 4px; left: 0;
-  background-image: url('../../assets/textures/texture-circuit-header-mintgold.png');
-  background-repeat: repeat;
-  background-position: right top;
-  background-size: 560px auto;
-  -webkit-mask-image: linear-gradient(90deg, transparent 32%, rgba(0,0,0,0.5) 60%, #000 100%);
-  mask-image: linear-gradient(90deg, transparent 32%, rgba(0,0,0,0.5) 60%, #000 100%);
-  opacity: 0.6;
-  pointer-events: none;
 }
 .be-band > .doc-page-band::after {
   content: '';
@@ -76,6 +68,80 @@
    and the tally stay. Scoped to this page so the budgetary estimate, which
    shares .be-scope-row, keeps its 20px rows. */
 .doc-page--scope .be-scope-row { padding: 12px 0; }
+
+/* ── Mesh background (replaces the circuit texture) ─────────────────────────
+   Scoped to this document only; the other sales docs still carry circuit.
+   Every dark surface gets the mesh instead: the four band-header rules below,
+   the cover hero band, the cover's navy footer strip, and the close page.
+
+   Technique is the house mesh pattern (About/CTA/case-study scope story): the
+   asset has navy baked in, so it is screen-blended over the surface's own navy
+   — screen can only lighten, so the baked navy contributes nothing and only the
+   mint linework lands. A gradient mask then fades the mesh out wherever copy
+   and logos sit: linear left→right on the wide bands (all their text is
+   left-aligned), radial into the top-right corner on the close page (its copy
+   runs down the left and its contact row spans the bottom).
+
+   No repeating backgrounds: each surface uses one no-repeat cover-sized image,
+   which sidesteps the vertical-shear bug sales-document.css documents for
+   masked *repeating* backgrounds under headless Chrome's PDF raster. Print is
+   unaffected either way — capabilities-document.css already display:none's all
+   of these texture layers in @media print, so the PDF has never shown one. */
+.doc-page-band,
+.doc-page--cover .doc-cover__hero,
+.doc-page--dark.doc-page--close { isolation: isolate; }
+
+/* Band headers, pages 2–13 (both the plain and the .be-band-wrapped bands). */
+.doc-page-band::before,
+.be-band > .doc-page-band::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 4px; left: 0;
+  background-image: url('../../assets/textures/texture-mesh-full.png');
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: cover;
+  mix-blend-mode: screen;
+  -webkit-mask-image: linear-gradient(90deg, transparent 30%, rgba(0,0,0,0.45) 58%, #000 100%);
+          mask-image: linear-gradient(90deg, transparent 30%, rgba(0,0,0,0.45) 58%, #000 100%);
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+/* Cover hero band — fades in later than the page bands because the display
+   headline and sub-deck run further across the sheet. */
+.doc-page--cover .doc-cover__hero::before {
+  background-image: url('../../assets/textures/texture-mesh-full.png');
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: cover;
+  mix-blend-mode: screen;
+  -webkit-mask-image: linear-gradient(90deg, transparent 46%, rgba(0,0,0,0.4) 66%, #000 100%);
+          mask-image: linear-gradient(90deg, transparent 46%, rgba(0,0,0,0.4) 66%, #000 100%);
+  opacity: 0.92;
+}
+
+/* Cover's 40px navy footer strip — bottom crop, where the mesh is just grid
+   and nodes; the dense floorplan would read as noise at that height. */
+.doc-page--cover::after {
+  background:
+    linear-gradient(180deg, rgba(12, 31, 40, 0.72) 0%, rgba(12, 31, 40, 0.84) 100%),
+    url('../../assets/textures/texture-mesh-full.png') right bottom / cover no-repeat;
+}
+
+/* Close page — portrait mesh so the linework keeps its drawn weight instead of
+   being blown up from a 16:9 crop. Radial mask parks it in the top-right, clear
+   of the wordmark, the headline, and the contact row. */
+.doc-page--close::before {
+  background-image: url('../../assets/textures/texture-mesh-full-portrait.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  mix-blend-mode: screen;
+  -webkit-mask-image: radial-gradient(ellipse 88% 66% at 100% 20%, #000 0%, rgba(0,0,0,0.55) 44%, transparent 78%);
+          mask-image: radial-gradient(ellipse 88% 66% at 100% 20%, #000 0%, rgba(0,0,0,0.55) 44%, transparent 78%);
+  opacity: 0.75;
+}
 </style>
 </head>
 <body>
