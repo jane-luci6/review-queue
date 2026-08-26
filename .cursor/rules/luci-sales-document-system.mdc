@@ -102,6 +102,23 @@ Full mint/gold/light-dark rules → **`luci-dual-accent-system.mdc`**. Summary:
 - Bright **gold** `#EDD086` on **dark only** — middle-chapter headline accents + icon strokes on navy tiles.
 - On light: accents `#2b9e80` (kickers, labels, links, callout bars); non-text icon strokes `#CEB06E` (gold-deep). Never bright mint or bright gold on light. (`#176B54` retired.)
 
+## The page-count invariant — fixed sheet, never clipped (NON-NEGOTIABLE)
+
+`.doc-page` is locked to `1056px` (US Letter) with `overflow: hidden`. Overflow is therefore **silently swallowed** — no scrollbar, no warning, and a clipped page renders as a perfectly plausible finished page. This has shipped real damage: a proposal lost its entire assumptions/exclusions block and its grand total, and nobody noticed by looking.
+
+In order of precedence:
+
+1. **Page size is fixed.** Every sheet is 8.5×11. Never change `height`, never restore `min-height`/stretching, never scale content down to squeeze it in.
+2. **No content is ever cut off.** If content does not fit, **add a page.** The page *count* is elastic; the page *size* and the *content* are not.
+3. **Headers and footers survive the split.** Every added page gets its own band header (title + `continued.` accent span) and its own `.doc-foot` with a page number. Renumber every downstream footer and `<!-- PAGE nn -->` marker after inserting.
+4. **Fill before you spill.** Pack each page as full as it goes *while the same content stream continues*, then start the next page. Don't break early and leave a half-empty sheet followed by a full one. A page that *ends* a stream (totals, last SOW page, cover, close) is expected to have empty space — that is correct, not underfill.
+
+**Trimming copy is not an overflow fix.** It's a separate editorial decision that only Jane makes. If content genuinely should be shorter, say so and ask — never silently shorten a document to make the math work.
+
+**Verify, don't eyeball.** Run `python3 scripts/fit-check.py <html>` after any content edit and confirm every page reports a negative `over`. `scripts/pack-content.py --mode sow|lineitems` does the split + renumber automatically. A `pre-commit` hook (`scripts/pre-commit-fit-check.sh`) blocks commits that would ship a clipped page; `scripts/fit-check-baseline.txt` lists documents that were already clipped before the hook existed and are being reflowed one at a time — remove a line as each is fixed.
+
+Full workflow detail: `ui_kits/internal-portal/customization/_brand/SKILL.md` → "The page-count invariant".
+
 ## Print / PDF
 
 - `@page { size: letter; margin: 0; }`; each `.doc-page` `break-after: page`.
@@ -135,5 +152,5 @@ Choppy scroll / blinking images in macOS Preview are almost always **file weight
 4. No dark band mid-doc; emphasis via `.doc-leadin`; only intentional boxes are callouts + proof panel.
 5. Dual-accent discipline per `luci-dual-accent-system.mdc`; body ≥ 4.5:1.
 6. Diagram labels clear all lines.
-7. Each `.doc-page` fits one sheet (render to PDF and verify no overflow) — and the last content block clears the pinned footer by ≥ ~24px (probe the gap; don't eyeball).
+7. Each `.doc-page` fits one sheet — verify with `fit-check.py`, never by eye, since a clipped page looks finished. Any overflow is fixed by **adding a page**, not by trimming copy (see the page-count invariant). The last content block clears the pinned footer by ≥ ~24px.
 8. Draft badges / notes / comments removed.

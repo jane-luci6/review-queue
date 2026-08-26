@@ -51,102 +51,101 @@ def find_chrome():
             return c
     return None
 
-def measure_via_url(url):
-    """Measure pages by navigating headless Chrome to a URL (dev server must be running)."""
+
+# The probe runs inside the document itself. An earlier implementation loaded the
+# document into an iframe from a file:// wrapper; iframe.onload never fired under
+# headless Chrome's virtual time, so every run reported "_timeout_" and exited 2.
+# That silent failure is why clipped pages shipped unnoticed. Injecting directly
+# avoids the iframe and the same-origin problem entirely.
+_INJECT = """
+<script>
+(() => {
+  const emit = () => {
+    try {
+      const results = %s;
+      document.title = '__RESULTS__' + JSON.stringify(results) + '__END__';
+    } catch (e) {
+      document.title = '__ERROR__' + e.message + '__END__';
+    }
+  };
+  const go = () => {
+    // Fonts change line-wrapping, so measuring before they load understates height.
+    const ready = document.fonts && document.fonts.ready
+      ? document.fonts.ready
+      : Promise.resolve();
+    ready.then(() => setTimeout(emit, 600));
+  };
+  if (document.readyState === 'complete') go();
+  else window.addEventListener('load', go);
+})();
+</script>
+""" % PROBE_JS
+
+
+def _run_probe(html_text, work_dir, label):
+    """Inject the probe into html_text, render it, and return the parsed results.
+
+    work_dir must be the directory the document's relative asset paths resolve
+    against, so the temp copy sees the same CSS and fonts as the real file.
+    """
     chrome = find_chrome()
     if not chrome:
         print("No Chrome found in /Applications.", file=sys.stderr)
         return None
-    wrapper_dir = tempfile.mkdtemp(prefix="fitcheck-")
-    wrapper = os.path.join(wrapper_dir, "fit-check.html")
-    wrapper_html = f"""<!DOCTYPE html><html><head><meta charset="utf-8">
-<style>html,body{{margin:0;padding:0;background:#fff;}}</style>
-</head><body>
-<iframe id="doc" style="width:816px;height:30000px;border:0;"></iframe>
-<script>
-const iframe = document.getElementById('doc');
-const poll = () => {{
-  try {{
-    const doc = iframe.contentDocument;
-    if (!doc || !doc.querySelector('.doc-page')) {{ setTimeout(poll, 200); return; }}
-    const results = {PROBE_JS.replace('document', 'doc')};
-    document.title = '__RESULTS__' + JSON.stringify(results) + '__END__';
-  }} catch(e) {{ document.title = '__ERROR__' + e.message + '__END__'; }}
-}};
-iframe.onload = poll;
-iframe.src = {url!r};
-setTimeout(() => {{ if (!document.title.startsWith('__')) document.title = '__ERROR__timeout__END__'; }}, 15000);
-</script>
-</body></html>"""
-    with open(wrapper, "w") as f:
-        f.write(wrapper_html)
+    if "</body>" in html_text:
+        html_text = html_text.replace("</body>", _INJECT + "</body>", 1)
+    else:
+        html_text += _INJECT
+    tmp = pathlib.Path(work_dir) / f"_fitcheck_{os.getpid()}_{label}"
+    tmp.write_text(html_text)
     try:
         proc = subprocess.run(
             [chrome, "--headless=new", "--disable-gpu", "--no-sandbox",
-             "--virtual-time-budget=20000", "--run-all-compositor-stages-before-draw",
-             "--dump-dom", wrapper],
-            capture_output=True, text=True, timeout=45)
+             "--hide-scrollbars", "--virtual-time-budget=20000",
+             "--run-all-compositor-stages-before-draw",
+             "--dump-dom", tmp.as_uri()],
+            capture_output=True, text=True, timeout=90)
     except subprocess.TimeoutExpired:
         print("Fit check timed out.", file=sys.stderr)
         return None
-    m = re.search(r'__RESULTS__.*?__END__|__ERROR__.*?__END__', proc.stdout, re.S)
+    finally:
+        tmp.unlink(missing_ok=True)
+    m = re.search(r'__RESULTS__(.*?)__END__|__ERROR__(.*?)__END__', proc.stdout, re.S)
     if not m:
-        print("Fit check: no results captured.", file=sys.stderr)
+        print("Fit check: no results captured (is .doc-page present?).", file=sys.stderr)
         return None
-    inner = m.group(0)
-    if inner.startswith("__ERROR__"):
-        print(f"Fit check ERROR: {inner[8:-6]}", file=sys.stderr)
+    if m.group(2) is not None:
+        print(f"Fit check ERROR: {m.group(2)}", file=sys.stderr)
         return None
-    return json.loads(inner[11:-6])
+    return json.loads(m.group(1))
+
+
+def measure_via_url(url):
+    """Measure pages served by the dev server.
+
+    The document is fetched and rewritten with a <base href> so its relative
+    asset paths keep resolving against the server while the probe runs locally.
+    """
+    import urllib.request, urllib.parse
+    try:
+        with urllib.request.urlopen(url, timeout=20) as r:
+            html = r.read().decode("utf-8", "replace")
+    except Exception as e:
+        print(f"Fit check: could not fetch {url} ({e}).", file=sys.stderr)
+        return None
+    base = urllib.parse.urljoin(url, ".")
+    tag = f'<base href="{base}">'
+    if "<head>" in html:
+        html = html.replace("<head>", "<head>\n" + tag, 1)
+    else:
+        html = tag + html
+    return _run_probe(html, tempfile.mkdtemp(prefix="fitcheck-"), "url.html")
+
 
 def measure_via_file(html_path):
-    """Measure pages by loading the file directly in an iframe."""
-    chrome = find_chrome()
-    if not chrome:
-        print("No Chrome found in /Applications.", file=sys.stderr)
-        return None
-    doc_uri = html_path.as_uri()
-    wrapper_dir = tempfile.mkdtemp(prefix="fitcheck-")
-    wrapper = os.path.join(wrapper_dir, "fit-check.html")
-    wrapper_html = f"""<!DOCTYPE html><html><head><meta charset="utf-8">
-<style>html,body{{margin:0;padding:0;background:#fff;}}</style>
-</head><body>
-<iframe id="doc" style="width:816px;height:30000px;border:0;"></iframe>
-<script>
-const iframe = document.getElementById('doc');
-const poll = () => {{
-  try {{
-    const doc = iframe.contentDocument;
-    if (!doc || !doc.querySelector('.doc-page')) {{ setTimeout(poll, 200); return; }}
-    const results = {PROBE_JS.replace('document', 'doc')};
-    document.title = '__RESULTS__' + JSON.stringify(results) + '__END__';
-  }} catch(e) {{ document.title = '__ERROR__' + e.message + '__END__'; }}
-}};
-iframe.onload = poll;
-iframe.src = {doc_uri!r};
-setTimeout(() => {{ if (!document.title.startsWith('__')) document.title = '__ERROR__timeout__END__'; }}, 15000);
-</script>
-</body></html>"""
-    with open(wrapper, "w") as f:
-        f.write(wrapper_html)
-    try:
-        proc = subprocess.run(
-            [chrome, "--headless=new", "--disable-gpu", "--no-sandbox",
-             "--virtual-time-budget=20000", "--run-all-compositor-stages-before-draw",
-             "--dump-dom", wrapper],
-            capture_output=True, text=True, timeout=45)
-    except subprocess.TimeoutExpired:
-        print("Fit check timed out.", file=sys.stderr)
-        return None
-    m = re.search(r'__RESULTS__.*?__END__|__ERROR__.*?__END__', proc.stdout, re.S)
-    if not m:
-        print("Fit check: no results captured.", file=sys.stderr)
-        return None
-    inner = m.group(0)
-    if inner.startswith("__ERROR__"):
-        print(f"Fit check ERROR: {inner[8:-6]}", file=sys.stderr)
-        return None
-    return json.loads(inner[11:-6])
+    """Measure pages by rendering the file in place (relative assets resolve)."""
+    return _run_probe(html_path.read_text(), html_path.parent, html_path.name)
+
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)

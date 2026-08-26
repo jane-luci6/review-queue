@@ -1,0 +1,22 @@
+# Documents with clipped pages as of 2026-08-26, before the pre-commit fit
+# check existed. The hook skips these so unrelated edits aren't blocked while
+# they're reflowed one at a time.
+#
+# DELETE A LINE the moment that document is fixed — the hook then guards it
+# like everything else. When this file is empty, delete the file.
+#
+# Audited with: for f in ui_kits/sales/*.html; do python3 scripts/fit-check.py "$f"; done
+#
+# Masters (client copies inherit the clipping, so these matter most):
+LUCI Systems Design System/ui_kits/sales/capabilities-document.html
+LUCI Systems Design System/ui_kits/sales/budgetary-estimate.html
+LUCI Systems Design System/ui_kits/sales/field-activation-guide.html
+LUCI Systems Design System/ui_kits/sales/proposal-luci-retrofit.html
+# Variants:
+LUCI Systems Design System/ui_kits/sales/field-activation-guide-prospect.html
+LUCI Systems Design System/ui_kits/sales/field-activation-guide-print.html
+LUCI Systems Design System/ui_kits/sales/field-activation-steps-preview.html
+# Client copies (inherited from the masters above):
+LUCI Systems Design System/ui_kits/sales/aliante-capabilities.html
+LUCI Systems Design System/ui_kits/sales/paragon-capabilities.html
+LUCI Systems Design System/ui_kits/sales/paragon-casino-budgetary-estimate.html
