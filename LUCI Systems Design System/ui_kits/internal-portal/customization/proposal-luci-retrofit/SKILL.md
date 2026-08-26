@@ -38,8 +38,8 @@ After a capabilities review and demo where the client needs a written proposal w
 | **6** | §4 System Scope cont. (4.2–4.4: IPTV, encoders, audio) | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
 | **7** | §4 System Scope cont. (4.5–4.6) + §5 IDF / Rack Scope opens (5.1) | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
 | **8** | §5 IDF / Rack Scope cont. (5.2–5.5) + 5.6 opens (title, target-rooms label, first 2 rooms) | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
-| **9** | §5 IDF / Rack Scope cont. (5.6 room list continued, scope intent, infrastructure) | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
-| **10** | §6 Deliverables + §7 Assumptions/Constraints/Exclusions | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
+| **9** | §5 IDF / Rack Scope cont. (5.6 room list continued, scope intent, infrastructure) + §6 Deliverables opens (intro + first 6 deliverables) | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
+| **10** | §6 Deliverables cont. (last 3 deliverables) + §7 Assumptions/Constraints/Exclusions | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
 | **11** | §8 Open Items to Confirm | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
 | **12** | Proposal — Line items | Dark band | **EDITABLE** (all line items, qty, cost, subtotals, group labels, deck text) |
 | **13** | Investment summary | Dark band | **EDITABLE** (all summary values, total, CapEx/OpEx split); **LOCKED** `.be-delivers` marketing grid |
