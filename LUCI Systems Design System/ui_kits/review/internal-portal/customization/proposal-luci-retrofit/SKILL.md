@@ -12,7 +12,7 @@ description: >-
 
 Full LUCI platform proposal. **~15 pages (US Letter, variable)** — cover (with date), overview (What LUCI is), review of scope, **full 8-page scope of work** (from the standalone SOW template), line items, investment summary, **payment terms**, and close (next step — no endpoint pricing tiers). Source master: `proposal-luci-retrofit.html` in this folder (build copy from `ui_kits/sales/`).
 
-**This is the Budgetary Estimate + the full standalone Scope of Work, minus the endpoint pricing tiers.** The BE's line items, investment summary, and close are preserved; the BE's endpoint pricing tier chips are removed. The full 8-page SOW (pages 5–12) is inserted between the review of scope and the line items, using the standalone SOW template's content and CSS classes (`scope-of-work.css`).
+**This is the Budgetary Estimate + the full standalone Scope of Work, minus the endpoint pricing tiers.** The BE's line items, investment summary, and close are preserved; the BE's endpoint pricing tier chips are removed. The full 8-page SOW (pages 4–11) is inserted between the review of scope and the line items, using the standalone SOW template's content and CSS classes (`scope-of-work.css`).
 
 **Workflow:** see `../_brand/SKILL.md` — two-folder architecture, create workspace, dev server, fit check, page packing, voice, PDF export. This file covers only the template-specific page map and editable regions.
 
@@ -26,33 +26,30 @@ After a capabilities review and demo where the client needs a written proposal w
 
 ## Page map — editable vs locked
 
-*Page numbers below reflect the default 17-page layout. They shift if SOW content or line items overflow to additional pages — always reference by section name, not absolute page number.*
+*Page numbers below reflect the default 15-page layout. They shift if SOW content or line items overflow to additional pages — always reference by section name, not absolute page number.*
 
 | Page | Section | Canvas | Status |
 |------|---------|--------|--------|
 | **1** | Cover | Light + navy hero band | **EDITABLE** (kicker, display, sub, client summary, **date**, prepared-for, client logo) |
 | **2** | Overview — What LUCI is | Dark band | **EDITABLE** (intro text); **LOCKED** identity diagram + feature cards (boilerplate) |
-| **3** | Review of scope (video, signage, audio) | Dark band | **EDITABLE** (scope categories, endpoint counts, descriptions, bridge text) |
-| **4** | Review of scope cont. (lighting, complex A/V) | Dark band | **EDITABLE** (scope categories, descriptions, footnote, tally) |
-| **5** | §1 Project Intent + §2 Guiding Principles | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
-| **6** | §3 Project Phasing + §4 System Scope (4.1) | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
-| **7** | §4 System Scope cont. (4.2–4.4: IPTV, encoders, audio) | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
-| **8** | §4 System Scope cont. (4.5–4.6: network, remote access) | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
-| **9** | §5 IDF / Rack Scope (5.1–5.4) | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
-| **10** | §5 IDF / Rack Scope cont. (5.5–5.6) | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
-| **11** | §6 Deliverables + §7 Assumptions/Constraints/Exclusions | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
-| **12** | §8 Open Items to Confirm | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
-| **13** | Proposal — Line items (LUCI software) | Dark band | **EDITABLE** (all line items, qty, cost, subtotals, group labels, deck text) |
-| **14** | Proposal — Line items cont. (hardware, professional services) | Dark band | **EDITABLE** (all line items, qty, cost, subtotals, group labels, deck text) |
-| **15** | Investment summary | Dark band | **EDITABLE** (all summary values, total, CapEx/OpEx split); **LOCKED** `.be-delivers` marketing grid |
-| **16** | Payment terms | Light (LED-fee style) | **EDITABLE** (all milestone percentages, labels, due descriptions, notes) |
-| **17** | Close — Next step | Dark (capabilities-doc style) | **EDITABLE** (kicker, headline, next-step body, contact name/email); **LOCKED** LUCI logo + company info |
+| **3** | Review of scope | Dark band | **EDITABLE** (scope categories, endpoint counts, descriptions, bridge text, footnote) |
+| **4** | §1 Project Intent + §2 Guiding Principles | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
+| **5** | §3 Project Phasing + §4 System Scope (4.1) | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
+| **6** | §4 System Scope cont. (4.2–4.4: IPTV, encoders, audio) | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
+| **7** | §4 System Scope cont. (4.5–4.6: network, remote access) | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
+| **8** | §5 IDF / Rack Scope (5.1–5.4) | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
+| **9** | §5 IDF / Rack Scope cont. (5.5–5.6) | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
+| **10** | §6 Deliverables + §7 Assumptions/Constraints/Exclusions | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
+| **11** | §8 Open Items to Confirm | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
+| **12** | Proposal — Line items | Dark band | **EDITABLE** (all line items, qty, cost, subtotals, group labels, deck text) |
+| **13** | Investment summary | Dark band | **EDITABLE** (all summary values, total, CapEx/OpEx split); **LOCKED** `.be-delivers` marketing grid |
+| **14** | Payment terms | Light (LED-fee style) | **EDITABLE** (all milestone percentages, labels, due descriptions, notes) |
+| **15** | Close — Next step | Dark (capabilities-doc style) | **EDITABLE** (kicker, headline, next-step body, contact name/email); **LOCKED** LUCI logo + company info |
 
 ### Variable page counts
 
-- **Review of scope (pages 3–4):** the five scope categories flow across two sheets so the navy deck and the endpoint tally stay visible. If a property has fewer categories, collapse back to one sheet — but re-run the fit check, because `.doc-page` is locked to 1056px with `overflow: hidden` and anything taller is silently clipped.
-- **SOW pages (5–12):** the 8 SOW pages mirror the standalone Scope of Work template. Add or remove SOW continuation pages if the scope requires more or less detail (e.g., fewer IDF pages, additional phasing). Use subheads (`.sow-subsection-title`), not repeated section numbers. The SOW uses `scope-of-work.css` classes — do not mix in `led-*` classes from the LED proposal. **SOW content flows continuously** — sections, subsections, line items, and bullets may break across page boundaries; do not force section-start page breaks or leave large gaps (see `../_brand/SKILL.md` → Continuous page packing).
-- **Line items (pages 13–14):** if the spreadsheet has more rows than fit, run `scripts/pack-content.py --mode lineitems` to repack across pages with continuous flow (see `../_brand/SKILL.md` -> Continuous page packing). The script handles greedy packing, the totals exception, and footer renumbering automatically.
+- **SOW pages (4–11):** the 8 SOW pages mirror the standalone Scope of Work template. Add or remove SOW continuation pages if the scope requires more or less detail (e.g., fewer IDF pages, additional phasing). Use subheads (`.sow-subsection-title`), not repeated section numbers. The SOW uses `scope-of-work.css` classes — do not mix in `led-*` classes from the LED proposal. **SOW content flows continuously** — sections, subsections, line items, and bullets may break across page boundaries; do not force section-start page breaks or leave large gaps (see `../_brand/SKILL.md` → Continuous page packing).
+- **Line items (page 12):** if the spreadsheet has more rows than fit on one page, run `scripts/pack-content.py --mode lineitems` to repack across pages with continuous flow (see `../_brand/SKILL.md` -> Continuous page packing). The script handles greedy packing, the totals exception, and footer renumbering automatically.
 
 ---
 
@@ -89,7 +86,7 @@ After a capabilities review and demo where the client needs a written proposal w
 | Tally numbers | `.be-scope-tally__num` |
 | Footnote | `.be-scope-footnote` |
 
-### Scope of Work (pages 5–12) — SOW template classes
+### Scope of Work (pages 4–11) — SOW template classes
 
 The SOW pages use the standalone Scope of Work template's CSS classes (`scope-of-work.css`). All text is editable; section numbers (`.sow-band-bignum`) and band kickers are locked structure.
 
@@ -121,7 +118,7 @@ When Mike provides a source SOW, **mirror its verbiage and structure** (headers,
 
 **These page boundaries are defaults, not fixed.** SOW content flows continuously — sections, subsections, line items, and bullets may break across page boundaries. If content shifts (more or less scope detail), repack greedily and renumber footers. Do not force a section to start on a new page when it would fit at the bottom of the current one.
 
-### Line items (pages 13–14) — `.doc-page--proposal`
+### Line items (page 12) — `.doc-page--proposal`
 
 Populate from the uploaded spreadsheet via `scripts/ingest-budgetary-lineitems.py` (same as the BE). The emitted `be-price-group` / `be-price-row` markup drops straight into the `.be-price` container. Each cell is `contenteditable` for word-level tweaks in preview. **No auto-math** — subtotals come from the spreadsheet; if you hand-edit a qty or unit price, recompute that row's subtotal yourself.
 
@@ -137,14 +134,14 @@ Populate from the uploaded spreadsheet via `scripts/ingest-budgetary-lineitems.p
 
 **Combine endpoint pricing into one line item.** LUCI OS endpoint licenses must appear as a **single line item** with the **total endpoint count as the quantity** and the **per-endpoint price as the cost-ea** (e.g. qty 38 × $420/ea = $15,960) — never split by video/audio/etc. (See `../_brand/SKILL.md` → Pricing.)
 
-### Investment summary (page 15) — `.doc-page--investment`
+### Investment summary (page 13) — `.doc-page--investment`
 
 | Element | Selector / class |
 |---------|-----------------|
 | Summary values | `.be-summary__value`, `.be-summary__total-value`, `.be-split__value` |
 | Delivers grid | `.be-delivers` — **locked** (marketing outcomes) |
 
-### Payment terms (page 16) — `.doc-page--led-fee`
+### Payment terms (page 14) — `.doc-page--led-fee`
 
 Standard payment terms page (light canvas, LED-fee style milestones). Defaults to multimedia equipment terms: 50% deposit upon award, 50% pre-shipment (second 50% due on final piece shipping date with tracking info provided), balance upon final acceptance. Quote valid for 30 days.
 
@@ -156,7 +153,7 @@ Standard payment terms page (light canvas, LED-fee style milestones). Defaults t
 | Milestone due description | `.led-fee-mile__due` |
 | Notes / validity | `.led-fee-notes` `<p>` (30-day validity, USD, sales tax note) |
 
-### Close (page 17) — `.doc-page--close`
+### Close (page 15) — `.doc-page--close`
 
 Capabilities-doc-style close page (dark, circuit texture, LUCI wordmark logo, Syncopate headline).
 
@@ -172,13 +169,13 @@ Capabilities-doc-style close page (dark, circuit texture, LUCI wordmark logo, Sy
 
 **No endpoint pricing tiers on this page.** The BE's tier chips (`.be-tier-chip`) are removed from this template. Per-endpoint pricing stays in the Budgetary Estimate only.
 
-**No signature block.** The close page uses the capabilities-doc-style contact block (LUCI wordmark + Syncopate headline + two-column contacts) — no signature lines, no "accepted by" fields. The proposal date lives on the cover (`.doc-cover__date`); payment terms live on page 16 (`.doc-page--led-fee`).
+**No signature block.** The close page uses the capabilities-doc-style contact block (LUCI wordmark + Syncopate headline + two-column contacts) — no signature lines, no "accepted by" fields. The proposal date lives on the cover (`.doc-cover__date`); payment terms live on page 14 (`.doc-page--led-fee`).
 
 ---
 
 ## Do not
 
-- **Locked regions** (identity diagram + feature cards on page 2; `.be-delivers` marketing grid on page 15; SOW section numbers `.sow-band-bignum`; LUCI logo on cover; LUCI company info on close) — **no changes of any kind**, including color, styling, or CSS. Run the pre-edit gate in `.cursor/rules/luci-doc-customization.mdc` first.
+- **Locked regions** (identity diagram + feature cards on page 2; `.be-delivers` marketing grid on page 13; SOW section numbers `.sow-band-bignum`; LUCI logo on cover; LUCI company info on close) — **no changes of any kind**, including color, styling, or CSS. Run the pre-edit gate in `.cursor/rules/luci-doc-customization.mdc` first.
 - Add endpoint pricing tiers — this is the Proposal, not the Budgetary Estimate. Endpoint pricing stays in the BE.
 - Add a signature block, signature lines, or "accepted by" fields — the close page is a contact block, not a sign-off.
 - Split endpoint pricing into separate video/audio line items — combine into one row with the total endpoint count as the quantity.
