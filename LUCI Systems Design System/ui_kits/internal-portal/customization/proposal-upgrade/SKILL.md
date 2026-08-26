@@ -33,8 +33,8 @@ When an existing LUCI client wants to add endpoint licenses, hardware, or profes
 | **2** | Customer invoice + invoicing | Dark band | **EDITABLE** (invoice meta rows, invoicing terms, licensing intro) |
 | **3** | Scope of work (items 1–4) | Dark band | **EDITABLE** (all scope items) |
 | **4** | Scope of work cont. (items 5–6 + assumptions) | Dark band | **EDITABLE** (all scope items, assumptions text) |
-| **5** | Line items (software, equipment) | Dark band | **EDITABLE** (all line items, qty, cost, subtotals, group labels) |
-| **6** | Line items cont. (professional services + totals) | Dark band | **EDITABLE** (line items, summary values, total) |
+| **5** | Line items (software, equipment, professional services) | Dark band | **EDITABLE** (all line items, qty, cost, subtotals, group labels) |
+| **6** | Order total (summary block only) | Dark band | **EDITABLE** (summary values, total) |
 | **7** | Close | Dark | **EDITABLE** (next-step copy, contact name/email; company block editable) |
 
 ### Variable page counts
@@ -42,7 +42,7 @@ When an existing LUCI client wants to add endpoint licenses, hardware, or profes
 `.doc-page` is locked to 1056px with `overflow: hidden`, so anything taller is **silently clipped** — no footer, no visible warning. Always run the fit check (`../_brand/SKILL.md`) after content edits; do not trust the eye.
 
 - **Scope of work (pages 3–4):** add or remove scope items as needed. Use numbered subheads (`.upg-scope__title`), not repeated section numbers. The six default items plus the assumptions block do not fit on one sheet, so they flow across two. If SOW content overflows, run `scripts/pack-content.py --mode sow` to repack across pages with continuous flow (see `../_brand/SKILL.md` -> Continuous page packing).
-- **Line items (pages 5–6):** the totals block sits on the continuation page per the totals-break rule below. If the table has more rows than fit, run `scripts/pack-content.py --mode lineitems` to repack across pages (see `../_brand/SKILL.md` -> Continuous page packing). The script handles greedy packing, the totals exception, and footer renumbering automatically.
+- **Line items (pages 5–6):** all three groups (software, equipment, professional services) fit on page 5 at the default row count, so page 6 carries the totals block alone — that is the totals-break rule working as intended, not an underfilled page to fix. Pack line-item rows greedily onto page 5 first; only spill rows to page 6 when page 5 is genuinely full. If the table has more rows than fit, run `scripts/pack-content.py --mode lineitems` to repack across pages (see `../_brand/SKILL.md` -> Continuous page packing). The script handles greedy packing, the totals exception, and footer renumbering automatically.
 
 ---
 

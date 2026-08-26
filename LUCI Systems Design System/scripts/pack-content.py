@@ -22,6 +22,7 @@ Requirements: Google Chrome in /Applications, dev server running at --url.
 """
 from __future__ import annotations
 import argparse, json, os, re, subprocess, sys, tempfile, pathlib
+import html as html_mod
 
 PAGE_HEIGHT = 1056
 PAGE_OVERHEAD = 240
@@ -86,8 +87,7 @@ def find_chrome():
 
 MEASURE_JS = r"""
 (() => {
-  const doc = iframe.contentDocument;
-  if (!doc) return {error: "no iframe document"};
+  const doc = document;
   const allPages = [...doc.querySelectorAll('.doc-page')];
   const targetPages = allPages.slice(START_PAGE - 1, END_PAGE);
   const elements = [];
@@ -126,50 +126,82 @@ MEASURE_JS = r"""
 """
 
 def measure_elements(url, start_page, end_page):
+    """Measure element heights by probing the document directly.
+
+    An earlier version loaded the document into an iframe and polled
+    contentDocument, which never resolved — so every run died on
+    "Measurement ERROR: _timeout_". The probe now runs inside the document
+    itself (same approach as scripts/fit-check.py): fetch the served HTML, add
+    a <base href> so its relative CSS and font paths still resolve against the
+    server, inject the probe, and render that copy.
+    """
+    import urllib.request, urllib.parse
+
     chrome = find_chrome()
     if not chrome:
         sys.exit("No Chrome found in /Applications.")
     js = MEASURE_JS.replace("START_PAGE", str(start_page)).replace("END_PAGE", str(end_page))
-    wrapper_dir = tempfile.mkdtemp(prefix="pack-")
-    wrapper = os.path.join(wrapper_dir, "measure.html")
-    wrapper_html = f"""<!DOCTYPE html><html><head><meta charset="utf-8">
-<style>html,body{{margin:0;padding:0;background:#fff;}}</style>
-</head><body>
-<iframe id="doc" style="width:816px;height:30000px;border:0;"></iframe>
+
+    try:
+        with urllib.request.urlopen(url, timeout=20) as r:
+            html = r.read().decode("utf-8", "replace")
+    except Exception as e:
+        sys.exit(f"Could not fetch {url} ({e}). Is the dev server running?")
+
+    tag = f'<base href="{urllib.parse.urljoin(url, ".")}">'
+    html = html.replace("<head>", "<head>\n" + tag, 1) if "<head>" in html else tag + html
+
+    # Fonts change line-wrapping, so measuring before they load understates height.
+    inject = """
 <script>
-const iframe = document.getElementById('doc');
-let done = false;
-const poll = () => {{
-  try {{
-    const doc = iframe.contentDocument;
-    if (!doc || !doc.querySelector('.doc-page')) {{ setTimeout(poll, 200); return; }}
-    const result = {js};
-    document.title = '__RESULTS__' + JSON.stringify(result) + '__END__';
-    done = true;
-  }} catch(e) {{ document.title = '__ERROR__' + e.message + '__END__'; done = true; }}
-}};
-iframe.onload = () => setTimeout(poll, 500);
-iframe.src = {url!r};
-setTimeout(() => {{ if (!done) document.title = '__ERROR__timeout__END__'; }}, 20000);
+(() => {
+  const emit = () => {
+    try {
+      document.title = '__RESULTS__' + JSON.stringify(%s) + '__END__';
+    } catch (e) {
+      document.title = '__ERROR__' + e.message + '__END__';
+    }
+  };
+  const ready = document.fonts && document.fonts.ready
+    ? document.fonts.ready : Promise.resolve();
+  const go = () => ready.then(() => setTimeout(emit, 600));
+  if (document.readyState === 'complete') go();
+  else window.addEventListener('load', go);
+})();
 </script>
-</body></html>"""
-    with open(wrapper, "w") as f:
-        f.write(wrapper_html)
+""" % js
+    html = html.replace("</body>", inject + "</body>", 1) if "</body>" in html else html + inject
+
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="pack-")) / "measure.html"
+    tmp.write_text(html)
     try:
         proc = subprocess.run(
             [chrome, "--headless=new", "--disable-gpu", "--no-sandbox",
-             "--virtual-time-budget=20000", "--run-all-compositor-stages-before-draw",
-             "--dump-dom", wrapper],
-            capture_output=True, text=True, timeout=45)
+             "--hide-scrollbars", "--virtual-time-budget=20000",
+             "--run-all-compositor-stages-before-draw",
+             "--dump-dom", tmp.as_uri()],
+            capture_output=True, text=True, timeout=90)
     except subprocess.TimeoutExpired:
         sys.exit("Measurement timed out.")
-    m = re.search(r'__RESULTS__.*?__END__|__ERROR__.*?__END__', proc.stdout, re.S)
+    finally:
+        tmp.unlink(missing_ok=True)
+    m = re.search(r'__RESULTS__(.*?)__END__|__ERROR__(.*?)__END__', proc.stdout, re.S)
     if not m:
-        sys.exit("Measurement: no results captured.")
-    inner = m.group(0)
-    if inner.startswith("__ERROR__"):
-        sys.exit(f"Measurement ERROR: {inner[8:-6]}")
-    return json.loads(inner[11:-6])
+        sys.exit("Measurement: no results captured (is .doc-page present?).")
+    if m.group(2) is not None:
+        sys.exit(f"Measurement ERROR: {m.group(2)}")
+
+    # The results ride out through <title>, and --dump-dom re-serializes that
+    # text, so every < > & in the captured outerHTML comes back escaped. The
+    # JSON still parses, which is why skipping this step didn't error — it
+    # quietly wrote &lt;div&gt; soup into the document. Unescape before parsing.
+    payload = html_mod.unescape(m.group(1))
+    elements_json = json.loads(payload)
+    for elem in elements_json.get("elements", []):
+        if "<" not in elem.get("html", ""):
+            sys.exit("Measurement: captured markup is still escaped — refusing "
+                     "to write escaped HTML into the document.")
+    return elements_json
 
 # ── Packing ────────────────────────────────────────────────────────────────
 
