@@ -3,13 +3,13 @@ name: luci-proposal-upgrade
 description: >-
   Customize the LUCI Services Order Form (Upgrade) for a specific client. Use
   when an existing client is adding endpoint licenses and hardware to their
-  existing LUCI platform. Simple ~5-page order form: cover, customer invoice +
+  existing LUCI platform. Simple ~7-page order form: cover, customer invoice +
   invoicing, scope of work, line items, and close.
 ---
 
 # Proposal — Upgrade · customization
 
-Simple services order form for existing clients adding endpoints/hardware to their LUCI platform. **~5 pages (US Letter, variable)** — cover (title, order summary, MSA reference, client logo), customer invoice + invoicing terms, scope of work (numbered items + assumptions), line items (software, hardware, professional services + totals), and close. Source master: `proposal-upgrade.html` in this folder (build copy from `ui_kits/sales/`).
+Simple services order form for existing clients adding endpoints/hardware to their LUCI platform. **~7 pages (US Letter, variable)** — cover (title, order summary, MSA reference, client logo), customer invoice + invoicing terms, scope of work (numbered items + assumptions), line items (software, hardware, professional services + totals), and close. Source master: `proposal-upgrade.html` in this folder (build copy from `ui_kits/sales/`).
 
 **This is for existing clients who already have a Master Purchase & Services Agreement (MSA) in place.** The cover references the existing MSA. No capabilities overview, no demo, no walkthrough — the client knows LUCI and is expanding.
 
@@ -25,20 +25,24 @@ When an existing LUCI client wants to add endpoint licenses, hardware, or profes
 
 ## Page map — editable vs locked
 
-*Page numbers below reflect the default 5-page layout. They shift if line items overflow to a second page — always reference by section name, not absolute page number.*
+*Page numbers below reflect the default 7-page layout. They shift as scope items or line items are added or removed — always reference by section name, not absolute page number.*
 
 | Page | Section | Canvas | Status |
 |------|---------|--------|--------|
 | **1** | Cover | Light + navy hero band | **EDITABLE** (kicker, display, sub, order summary, MSA reference, client logo) |
 | **2** | Customer invoice + invoicing | Dark band | **EDITABLE** (invoice meta rows, invoicing terms, licensing intro) |
-| **3** | Scope of work | Dark band | **EDITABLE** (all scope items, assumptions text) |
-| **4** | Line items | Dark band | **EDITABLE** (all line items, qty, cost, subtotals, group labels, summary values, total) |
-| **5** | Close | Dark | **EDITABLE** (next-step copy, contact name/email; company block editable) |
+| **3** | Scope of work (items 1–4) | Dark band | **EDITABLE** (all scope items) |
+| **4** | Scope of work cont. (items 5–6 + assumptions) | Dark band | **EDITABLE** (all scope items, assumptions text) |
+| **5** | Line items (software, equipment) | Dark band | **EDITABLE** (all line items, qty, cost, subtotals, group labels) |
+| **6** | Line items cont. (professional services + totals) | Dark band | **EDITABLE** (line items, summary values, total) |
+| **7** | Close | Dark | **EDITABLE** (next-step copy, contact name/email; company block editable) |
 
 ### Variable page counts
 
-- **Scope of work (page 3):** add or remove scope items as needed. Use numbered subheads (`.upg-scope__title`), not repeated section numbers. If SOW content overflows, run `scripts/pack-content.py --mode sow` to repack across pages with continuous flow (see `../_brand/SKILL.md` -> Continuous page packing).
-- **Line items (page 4):** if the table has more rows than fit on one page, run `scripts/pack-content.py --mode lineitems` to repack across pages (see `../_brand/SKILL.md` -> Continuous page packing). The script handles greedy packing, the totals exception, and footer renumbering automatically.
+`.doc-page` is locked to 1056px with `overflow: hidden`, so anything taller is **silently clipped** — no footer, no visible warning. Always run the fit check (`../_brand/SKILL.md`) after content edits; do not trust the eye.
+
+- **Scope of work (pages 3–4):** add or remove scope items as needed. Use numbered subheads (`.upg-scope__title`), not repeated section numbers. The six default items plus the assumptions block do not fit on one sheet, so they flow across two. If SOW content overflows, run `scripts/pack-content.py --mode sow` to repack across pages with continuous flow (see `../_brand/SKILL.md` -> Continuous page packing).
+- **Line items (pages 5–6):** the totals block sits on the continuation page per the totals-break rule below. If the table has more rows than fit, run `scripts/pack-content.py --mode lineitems` to repack across pages (see `../_brand/SKILL.md` -> Continuous page packing). The script handles greedy packing, the totals exception, and footer renumbering automatically.
 
 ---
 
@@ -69,7 +73,7 @@ When an existing LUCI client wants to add endpoint licenses, hardware, or profes
 | Meta labels / values | `.upg-meta__label` / `.upg-meta__value` |
 | Invoicing + licensing blocks | `.upg-block__text` |
 
-### Scope of work (page 3) — `.doc-page--band`
+### Scope of work (pages 3–4) — `.doc-page--band`
 
 When Mike provides a source SOW, **mirror its verbiage and structure** (headers, narrative vs bullets, section order) and dress it in this template’s branded classes (`.upg-scope*`). Pack continuously across pages — sections may break mid-way with “(continued)”. See `../_brand/SKILL.md` → Continuous page packing and Source fidelity.
 
@@ -82,7 +86,7 @@ When Mike provides a source SOW, **mirror its verbiage and structure** (headers,
 | Assumptions label | `.upg-scope__label` |
 | Assumptions body | `.upg-scope__text` (last block) |
 
-### Line items (page 4) — `.doc-page--proposal`
+### Line items (pages 5–6) — `.doc-page--proposal`
 
 Populate from the uploaded spreadsheet via `scripts/ingest-budgetary-lineitems.py` (same as the BE). The emitted `be-price-group` / `be-price-row` markup drops straight into the `.be-price` container. Each cell is `contenteditable` for word-level tweaks in preview. **No auto-math** — subtotals come from the spreadsheet; if you hand-edit a qty or unit price, recompute that row's subtotal yourself.
 
@@ -106,7 +110,7 @@ Populate from the uploaded spreadsheet via `scripts/ingest-budgetary-lineitems.p
 | Summary labels | `.be-summary__label` |
 | Summary values | `.be-summary__value`, `.be-summary__total-value` |
 
-### Close (page 5) — `.doc-page--close`
+### Close (page 7) — `.doc-page--close`
 
 | Element | Selector / class |
 |---------|-----------------|
@@ -138,6 +142,6 @@ Populate from the uploaded spreadsheet via `scripts/ingest-budgetary-lineitems.p
 1. Cover (p1): set kicker, display `<em>`, sub copy, order summary (project name, date, MSA reference), client logo.
 2. Customer invoice (p2): fill invoice meta rows, invoicing terms, and licensing intro.
 3. Scope of work (p3): rewrite the numbered scope items and assumptions to match the project scope.
-4. Line items (p4): populate from Mike's spreadsheet via `ingest-budgetary-lineitems.py`; if it overflows, run `scripts/pack-content.py --mode lineitems` to repack across pages.
+4. Line items (pp5–6): populate from Mike's spreadsheet via `ingest-budgetary-lineitems.py`; if it overflows, run `scripts/pack-content.py --mode lineitems` to repack across pages.
 5. Close (p5): update next-step body and contact if needed.
 6. Update `<title>` in `<head>` to reflect client/project name.
