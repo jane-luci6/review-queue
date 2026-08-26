@@ -202,7 +202,15 @@
   text-transform: none;
   color: var(--ink-strong);
 }
-.be-price-group:first-of-type .be-price-group__label {
+/* The group that opens a table drops its own hairline — the column-header row
+   above it already supplies one, and both together read as a double rule.
+   This was written as .be-price-group:first-of-type, which never matched:
+   .be-price__head is also a div, so it takes :first-of-type and no group ever
+   qualifies. Every doc with a pricing table has been showing the double line.
+   Matching on "group directly after a column-header row" also handles tables
+   that continue onto later pages, where each page repeats the header row. */
+.be-price__head + .be-price-group > .be-price-group__label,
+.be-price-group:first-child > .be-price-group__label {
   margin-top: 16px;
   padding-top: 0;
   border-top: 0;
