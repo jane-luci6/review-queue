@@ -102,6 +102,8 @@ Populate from the uploaded spreadsheet via `scripts/ingest-budgetary-lineitems.p
 
 **Combine endpoint pricing into one line item.** LUCI OS endpoint licenses must appear as a **single line item** with the **total endpoint count as the quantity** and the **per-endpoint price as the cost-ea** (e.g. qty 38 × $420/ea = $15,960) — never split by video/audio/etc. (See `../_brand/SKILL.md` → Pricing.)
 
+Keep the **description free of the endpoint breakdown** — no "Includes 38 Endpoint Licenses — Video: 20; Audio: 18". The quantity column already carries the count, and the scope-of-work items already say what the video and audio endpoints are for, so the breakdown is a third copy of the same fact and a third place to get it wrong. The description states the product and term only: "LUCI Operating System Software, Consulting Services & SLA Warranty — Annual Partnership Subscription."
+
 | Element | Selector / class |
 |---------|-----------------|
 | Band title / deck | `.doc-page-band__title` / `.doc-page-band__deck` |
@@ -127,6 +129,7 @@ Populate from the uploaded spreadsheet via `scripts/ingest-budgetary-lineitems.p
 
 - **Locked regions** (LUCI logos on cover and close) — **no changes of any kind**, including color, styling, or CSS. Run the pre-edit gate in `.cursor/rules/luci-doc-customization.mdc` first.
 - Split endpoint pricing into separate video/audio line items — combine into one row with the total endpoint count as the quantity.
+- Restate the video/audio endpoint counts in the LUCI OS description — the quantity column and the scope items already carry that.
 - Add endpoint pricing tiers — this is a simple order form, not a budgetary estimate.
 - Add a capabilities overview, demo, or walkthrough content — the client already knows LUCI.
 - Add "Addressed to" or similar labels to the cover.
