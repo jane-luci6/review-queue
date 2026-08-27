@@ -530,7 +530,9 @@
 }
 .doc-cs-quote__attrib span { color: var(--mint); font-weight: 600; }
 
-/* Outcome — soft-icon cards */
+/* Outcome — soft-icon cards. Used by the paragon and aliante client copies,
+   which still carry the Ameristar case study. The master (Yaamava) no longer
+   renders this markup, but the rules stay so the copies keep their layout. */
 .doc-cs-outcome {
   list-style: none;
   margin: 0;
@@ -553,6 +555,153 @@
   line-height: 1.5;
   color: var(--navy-muted);
 }
+
+/* Consolidation you can see — hairline-separated stack of verifiable removals.
+   Replaces the outcome cards on the Yaamava case study. Each row is a title
+   (what left → what it became) and one sentence. No icons, no boxes — the
+   hairline does the separation, per the de-boxed house style. Scoped under
+   .doc-page--proof-photo so the paragon/aliante copies are untouched. */
+.doc-page--proof-photo .doc-cs-consolidation { margin-top: 4px; }
+.doc-cs-consolidation__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.doc-cs-consolidation__item {
+  padding: 6px 0;
+  border-bottom: 1px solid var(--rule-light);
+}
+.doc-cs-consolidation__item:first-child { padding-top: 4px; }
+.doc-cs-consolidation__item:last-child { border-bottom: 0; padding-bottom: 0; }
+.doc-cs-consolidation__item-title {
+  margin: 0 0 1px;
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink-strong);
+}
+.doc-cs-consolidation__arrow { color: var(--accent-light); font-weight: 400; }
+.doc-cs-consolidation__item-text {
+  margin: 0;
+  font-family: var(--font-recede);
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: var(--navy-muted);
+}
+}
+
+/* ── Case study · photo-led variant ───────────────────────────────────────────
+   Scoped to .doc-page--proof-photo so the client copies (paragon, aliante),
+   which share this stylesheet and still run the older Ameristar case study on
+   the same .doc-page--proof markup, keep their original layout. */
+
+/* The band header already bleeds to the sheet edge via negative margins; the
+   photo picks that bleed up so the two read as one masthead. 24px is the band's
+   own bottom margin, cancelled here so the image butts against the mint rule. */
+.doc-page--proof-photo .doc-page-band { margin-bottom: 0; padding-bottom: 0.14in; }
+
+.doc-cs-photoband {
+  position: relative;
+  margin: 0 calc(-1 * var(--page-pad));
+  line-height: 0;
+  overflow: hidden;
+}
+.doc-cs-photoband img {
+  display: block;
+  width: 100%;
+  height: 112px;
+  object-fit: cover;
+  object-position: 50% 62%;
+}
+.doc-cs-photoband::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 72px;
+  background: linear-gradient(to top, rgba(8, 20, 26, 0.86) 0%, rgba(8, 20, 26, 0) 100%);
+}
+.doc-cs-photoband__caption {
+  position: absolute;
+  left: var(--page-pad);
+  right: var(--page-pad);
+  bottom: 16px;
+  z-index: 1;
+  font-family: var(--font-recede);
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: rgba(238, 246, 249, 0.9);
+}
+
+/* Identity + scope — the logo sits against the property name so it reads as a
+   lockup, and the stats take the remaining width so no dead air opens up. */
+.doc-cs-identity {
+  margin-top: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--rule-light);
+  display: grid;
+  /* Cap the identity column so the 290,000 numeral can't squeeze the other two
+     stat columns into two-line labels. */
+  grid-template-columns: minmax(0, 264px) 1fr;
+  align-items: center;
+  gap: 32px;
+}
+.doc-cs-identity__property {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+/* Yaamava's lockup is a stacked portrait mark (541x669), so it needs height,
+   not width, to keep the wordmark under the leaf readable. */
+.doc-cs-identity__logo { height: 64px; width: auto; display: block; }
+.doc-cs-identity__name {
+  margin: 0 0 4px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--ink-strong);
+}
+.doc-cs-identity__place {
+  margin: 0;
+  font-family: var(--font-recede);
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: var(--navy-muted);
+  max-width: 30ch;
+}
+
+.doc-cs-scope {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.doc-cs-scope > div { padding-left: 24px; border-left: 1px solid var(--rule-light); }
+.doc-cs-scope dt {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--ink-strong);
+}
+.doc-cs-scope dd {
+  margin: 8px 0 0;
+  font-family: var(--font-recede);
+  font-size: 11.5px;
+  line-height: 1.35;
+  color: var(--navy-muted);
+  white-space: nowrap;
+}
+
+.doc-page--proof-photo .doc-cs-situation { margin-top: 24px; }
+.doc-page--proof-photo .doc-cs-situation__text { max-width: 74ch; }
+.doc-page--proof-photo .doc-cs-quote { margin: 16px 0; padding: 14px 28px; }
+.doc-page--proof-photo .doc-cs-outcome { margin-bottom: 0; }
+/* Outranks the shared `.doc-page--proof .doc-foot { margin-top: 14px }` below,
+   which follows in source order and would otherwise unpin this page's footer. */
+.doc-page--proof.doc-page--proof-photo .doc-foot { margin-top: auto; }
 
 /* Client logo roster */
 .doc-logos { margin-top: auto; padding-top: 22px; }
@@ -1149,6 +1298,7 @@
   .doc-logos__band,
   .doc-cs-stat,
   .doc-cs-move,
+  .doc-cs-photoband::after,
   .doc-cs-quote,
   .doc-archpoints--cards li,
   .doc-ledger__fig,
