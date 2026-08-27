@@ -909,79 +909,72 @@
 .be-invest-tiers {
   margin-top: 16px;
 }
+/* Matches .be-block-label ("Investment summary", "What this investment
+   delivers") so the tier table is introduced the same way as every other
+   block in the document. No mint accent dash — this table is monochrome. */
 .be-invest__label {
   margin: 0 0 14px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
   font-family: var(--font);
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: none;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
   color: var(--navy-muted);
 }
-.be-invest__label::before {
-  content: '';
-  width: 22px;
-  height: 2px;
-  background: var(--mint-dark);
-  flex: none;
-}
 /* Tier table — reference material, not the argument of the page. The close
-   block below it is what the reader acts on, so the tiers are sized to be
-   scanned and moved past: 12 tiers on two hairline-separated rows rather than
-   four rows of large cells. Horizontal rules only — vertical gridlines on a
-   12-cell grid read as a spreadsheet. */
+   block below is what the reader acts on, so the 12 tiers run as two
+   six-row tables side by side: compact, and each half carries its own
+   column header so the three numbers are labelled rather than inferred.
+   Monochrome by design — no tier is highlighted; the note beneath states
+   which tier the estimate is priced at. Horizontal rules only. */
 .be-tier-compact {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  column-gap: 20px;
-  border-top: 1px solid var(--rule-light);
+  grid-template-columns: 1fr 1fr;
+  column-gap: 48px;
+}
+.be-tier-head,
+.be-tier-chip {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr 1fr;
+  gap: 12px;
+  border-bottom: 1px solid var(--rule-light);
+}
+.be-tier-head {
+  padding: 0 0 8px;
+}
+.be-tier-head span {
+  font-family: var(--font);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--navy-muted);
 }
 .be-tier-chip {
-  position: relative;
-  padding: 9px 2px 10px;
-  border-bottom: 1px solid var(--rule-light);
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
+  padding: 8px 0 9px;
   font-variant-numeric: tabular-nums;
 }
+.be-tier-head span + span,
+.be-tier-chip > span + span { text-align: right; }
 .be-tier-chip__qty {
   font-family: var(--font);
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 700;
   color: var(--ink-strong);
   letter-spacing: -0.01em;
 }
 .be-tier-chip__disc {
   font-family: var(--font-recede);
-  font-size: 9.5px;
+  font-size: 11.5px;
   font-weight: 500;
   color: var(--navy-muted);
 }
 .be-tier-chip__price {
   font-family: var(--font);
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 600;
-  color: var(--mint-dark);
+  color: var(--ink-strong);
 }
-
-/* Selected tier — marks the tier being offered to this customer. Move this class
-   to whichever chip Mike/Mark are pricing the job at. At this scale the cell is
-   too narrow for a "Your tier" tag, so the mark is a 2px mint underline plus
-   mint-weighted numerals — still the one cell your eye lands on, without
-   boxing it. The chip stays contenteditable so % and price edit inline. */
-.be-tier-chip--selected {
-  border-bottom: 2px solid var(--mint-dark);
-}
-.be-tier-chip--selected .be-tier-chip__qty { color: var(--mint-dark); }
-.be-tier-chip--selected .be-tier-chip__disc {
-  font-weight: 700;
-  color: var(--mint-dark);
-}
-.be-tier-chip--selected .be-tier-chip__price { font-weight: 700; }
 .be-tier-note {
   margin: 10px 0 0;
   font-size: 11px;
