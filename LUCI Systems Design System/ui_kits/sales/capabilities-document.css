@@ -469,6 +469,12 @@
   color: var(--navy-muted);
 }
 .doc-cs-meta__logo { height: 40px; width: auto; display: block; }
+/* Yaamava's lockup is a stacked portrait mark (541x669), not a horizontal one,
+   so at the row's 40px it renders 32px wide and the wordmark under the leaf is
+   unreadable. Give the stacked variant height instead — the same call the
+   case-study page makes at 124px. The row is only as tall as its tallest child,
+   so this costs the sheet a few pixels, not a reflow. */
+.doc-cs-meta__logo--stacked { height: 74px; }
 
 /* Defining-move row — situation text + relocation diagram */
 .doc-cs-grid {
@@ -497,7 +503,10 @@
 
 /* Pull-quote panel */
 .doc-cs-quote {
-  margin: 22px 0;
+  /* 14px, not 22px: the panel already carries 20px of internal padding, so the
+     rhythm reads the same and the sheet needs the difference to fit a two-line
+     quote alongside the case study's scope stats. */
+  margin: 14px 0;
   padding: 20px 28px;
   background: var(--navy);
   border-radius: 16px;

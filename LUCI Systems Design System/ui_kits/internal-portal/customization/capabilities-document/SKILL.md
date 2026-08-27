@@ -31,7 +31,7 @@ After a demo, when the prospect needs a capabilities overview scoped to their pr
 | **5** | Technical architecture | **LOCKED** |
 | **6** | The embedded operation (Systems delivery) | **LOCKED** |
 | **7** | Deployment & support (journey + commitments) | **LOCKED** |
-| **8** | Proof of impact (Ameristar case study) | **LOCKED** |
+| **8** | Proof of impact (Yaamava&rsquo; case study) | **LOCKED** |
 | **9** | Close (contact + next step) | **EDITABLE** (headers + contact rep only) |
 
 **Page 1 (cover)** and **page 9 (close)** may be customized. Pages 2–8 are protected brand and technical content.
@@ -95,7 +95,11 @@ Do **not** modify text, images, diagrams, stats, or structure in:
 
 On page 9, do **not** modify `.doc-close__company` or `.doc-close__logo`.
 
-This includes all diagrams under `assets/diagrams/`, feature SVGs, journey connector, and Ameristar proof copy.
+This includes all diagrams under `assets/diagrams/`, feature SVGs, journey connector, and the Yaamava&rsquo; proof copy.
+
+**Page 8 is the Yaamava&rsquo; Resort &amp; Casino case study.** Every number on it comes from the approved case study (`ui_kits/case-studies/yaamava.html`, mirrored in `luci-website/src/data/caseStudyYaamava.ts`) &mdash; 1,000+ endpoints, 34 LED walls across seven venues, 290,000 sq ft under management, and a named quote from Toni Pepper, CITO of the San Manuel Band of Mission Indians. Don't swap in a different property's numbers, and don't re-cut the quote: it's a verbatim fragment, elided with an ellipsis, not a paraphrase. The sheet fits US Letter with about 2px to spare, so any added copy has to displace copy of the same length.
+
+The Paragon and Aliante client copies were delivered on the earlier Ameristar case study and were deliberately left there &mdash; they are not out of sync by accident.
 
 ---
 
