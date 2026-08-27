@@ -95,6 +95,8 @@ Everything else on the cover with `doc-edit` / `contenteditable="true"` is edita
 
 Mike may click-edit any text here. Hooks: `tech-title`, `tech-cob-subhead`, `tech-cob-deck`, `tech-stat-1`…`4`, plus auto-* on advantage tiles / arch paragraph. **Agent:** treat as brand boilerplate — only change when Mike asks; do not invent alternate tech claims.
 
+**Resolution reads "Up to 8K" in three places** — the `tech-stat-1` tile here, the NovaStar architecture paragraph on this page, and the §1 scope bullet on page 2. If one changes, change all three; a document that claims 8K in the stat and 4K in the paragraph contradicts itself on the same spread.
+
 ### §2 Project Gallery (page 4)
 
 | Element | Selector |
@@ -155,7 +157,8 @@ Layout (2×2) stays locked.
 |---------|----------|
 | Subhead / name / # / date / total | `estimate-N-subhead` · `estimate-N-name` · `estimate-N-num` · `estimate-N-date` · `estimate-N-total` |
 | Line row R | `estimate-N-row-R-mfg` · `-item` · `-desc` · `-qty` · `-rate` · `-amount` |
-| Footnote | `estimate-N-footnote` |
+
+**No footnote under the estimate total.** The master no longer carries a freight/travel asterisk — the estimate ends at the project total. Don't reintroduce one unless Mike's spreadsheet has a corresponding line.
 
 **No auto-math** — recompute amount/total by hand when qty or rate changes. Clone the estimate section for more installs; keep the `estimate-N-…` numbering consecutive.
 

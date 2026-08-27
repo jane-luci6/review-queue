@@ -5,12 +5,12 @@ description: >-
   proposing a full LUCI platform installation — endpoint licensing, integration
   hardware, professional services, and the full 8-page scope of work. Built from
   the Budgetary Estimate with endpoint pricing removed and the full standalone
-  SOW template inserted before line items. ~15 pages (variable).
+  SOW template inserted before line items. ~14 pages (variable).
 ---
 
 # Proposal — LUCI Retrofit · customization
 
-Full LUCI platform proposal. **~15 pages (US Letter, variable)** — cover (with date), overview (What LUCI is), review of scope, **full 8-page scope of work** (from the standalone SOW template), line items, investment summary, **payment terms**, and close (next step — no endpoint pricing tiers). Source master: `proposal-luci-retrofit.html` in this folder (build copy from `ui_kits/sales/`).
+Full LUCI platform proposal. **~14 pages (US Letter, variable)** — cover (with date), overview (What LUCI is), review of scope, **full 8-page scope of work** (from the standalone SOW template), line items, investment summary, **payment terms**, and close (next step — no endpoint pricing tiers). Source master: `proposal-luci-retrofit.html` in this folder (build copy from `ui_kits/sales/`).
 
 **This is the Budgetary Estimate + the full standalone Scope of Work, minus the endpoint pricing tiers.** The BE's line items, investment summary, and close are preserved; the BE's endpoint pricing tier chips are removed. The full 8-page SOW (pages 4–11) is inserted between the review of scope and the line items, using the standalone SOW template's content and CSS classes (`scope-of-work.css`).
 
@@ -26,7 +26,7 @@ After a capabilities review and demo where the client needs a written proposal w
 
 ## Page map — editable vs locked
 
-*Page numbers below reflect the default 15-page layout. They shift if SOW content or line items overflow to additional pages — always reference by section name, not absolute page number.*
+*Page numbers below reflect the default 14-page layout. They shift if SOW content or line items overflow to additional pages — always reference by section name, not absolute page number.*
 
 | Page | Section | Canvas | Status |
 |------|---------|--------|--------|
@@ -36,15 +36,14 @@ After a capabilities review and demo where the client needs a written proposal w
 | **4** | §1 Project Intent + §2 Guiding Principles | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
 | **5** | §3 Project Phasing + §4 System Scope (4.1) | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
 | **6** | §4 System Scope cont. (4.2–4.4: IPTV, encoders, audio) | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
-| **7** | §4 System Scope cont. (4.5–4.6: network, remote access) | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
-| **8** | §5 IDF / Rack Scope (5.1–5.4) | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
-| **9** | §5 IDF / Rack Scope cont. (5.5–5.6) | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
-| **10** | §6 Deliverables + §7 Assumptions/Constraints/Exclusions | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
-| **11** | §8 Open Items to Confirm | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
-| **12** | Proposal — Line items | Dark band | **EDITABLE** (all line items, qty, cost, subtotals, group labels, deck text) |
-| **13** | Investment summary | Dark band | **EDITABLE** (all summary values, total, CapEx/OpEx split); **LOCKED** `.be-delivers` marketing grid |
-| **14** | Payment terms | Light (LED-fee style) | **EDITABLE** (all milestone percentages, labels, due descriptions, notes) |
-| **15** | Close — Next step | Dark (capabilities-doc style) | **EDITABLE** (kicker, headline, next-step body, contact name/email); **LOCKED** LUCI logo + company info |
+| **7** | §4 System Scope cont. (4.5–4.6) + §5 IDF / Rack Scope opens (5.1) | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
+| **8** | §5 IDF / Rack Scope cont. (5.2–5.5) + 5.6 opens (title, target-rooms label, first 2 rooms) | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
+| **9** | §5 IDF / Rack Scope cont. (5.6 room list continued, scope intent, infrastructure) + §6 Deliverables opens (intro + first 6 deliverables) | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
+| **10** | §6 Deliverables cont. (last 3 deliverables) + §7 Assumptions/Constraints/Exclusions + §8 Confirmed Scope Items | Light (SOW band) | **EDITABLE** (all text); **LOCKED** section numbers |
+| **11** | Proposal — Line items | Dark band | **EDITABLE** (all line items, qty, cost, subtotals, group labels, deck text) |
+| **12** | Investment summary | Dark band | **EDITABLE** (all summary values, total, CapEx/OpEx split); **LOCKED** `.be-delivers` marketing grid |
+| **13** | Payment terms | Light (LED-fee style) | **EDITABLE** (all milestone percentages, labels, due descriptions, notes) |
+| **14** | Close — Next step | Dark (capabilities-doc style) | **EDITABLE** (kicker, headline, next-step body, contact name/email); **LOCKED** LUCI logo + company info |
 
 ### Variable page counts
 
@@ -110,13 +109,13 @@ When Mike provides a source SOW, **mirror its verbiage and structure** (headers,
 - **Page 4 (§1–2):** Project Intent + Guiding Principles
 - **Page 5 (§3–4.1):** Project Phasing + System Scope intro
 - **Page 6 (§4.2–4.4):** IPTV upgrade, local content ingestion, audio modernization
-- **Page 7 (§4.5–4.6):** Network overhaul, secure remote access
-- **Page 8 (§5.1–5.4):** IDF/Rack scope (main casino, ISP ingest, hotel IPTV, sportsbook)
-- **Page 9 (§5.5–5.6):** IDF/Rack scope cont. (spa, meeting/conferencing)
+- **Page 7 (§4.5–4.6 + §5.1):** Network overhaul, secure remote access — then §5 opens on the same sheet with its band header and 5.1 (main casino head-end), filling what was 331px of dead space
+- **Page 8 (§5.2–5.5):** IDF/Rack scope cont. (ISP ingest, hotel IPTV, sportsbook, spa)
+- **Page 9 (§5.6):** IDF/Rack scope cont. (meeting/conferencing)
 - **Page 10 (§6–7):** Deliverables + Assumptions/Constraints/Exclusions
 - **Page 11 (§8):** Open Items to Confirm
 
-**These page boundaries are defaults, not fixed.** SOW content flows continuously — sections, subsections, line items, and bullets may break across page boundaries. If content shifts (more or less scope detail), repack greedily and renumber footers. Do not force a section to start on a new page when it would fit at the bottom of the current one.
+**These page boundaries are defaults, not fixed.** SOW content flows continuously — sections, subsections, line items, and bullets may break across page boundaries. If content shifts (more or less scope detail), repack greedily and renumber footers. Do not force a section to start on a new page when it would fit at the bottom of the current one. **A section's band header is allowed to sit mid-page** — pages 7 (§5) and 10 (§7) both open a section partway down the sheet, and the ghost numeral reads correctly there. Do not push a section to a fresh page just to put its header at the top.
 
 ### Line items (page 12) — `.doc-page--proposal`
 

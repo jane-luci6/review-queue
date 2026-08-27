@@ -33,8 +33,8 @@ When an existing LUCI client wants to add endpoint licenses, hardware, or profes
 | **2** | Customer invoice + invoicing | Dark band | **EDITABLE** (invoice meta rows, invoicing terms, licensing intro) |
 | **3** | Scope of work (items 1–4) | Dark band | **EDITABLE** (all scope items) |
 | **4** | Scope of work cont. (items 5–6 + assumptions) | Dark band | **EDITABLE** (all scope items, assumptions text) |
-| **5** | Line items (software, equipment) | Dark band | **EDITABLE** (all line items, qty, cost, subtotals, group labels) |
-| **6** | Line items cont. (professional services + totals) | Dark band | **EDITABLE** (line items, summary values, total) |
+| **5** | Line items (software, equipment, professional services) | Dark band | **EDITABLE** (all line items, qty, cost, subtotals, group labels) |
+| **6** | Order total (summary block only) | Dark band | **EDITABLE** (summary values, total) |
 | **7** | Close | Dark | **EDITABLE** (next-step copy, contact name/email; company block editable) |
 
 ### Variable page counts
@@ -42,7 +42,7 @@ When an existing LUCI client wants to add endpoint licenses, hardware, or profes
 `.doc-page` is locked to 1056px with `overflow: hidden`, so anything taller is **silently clipped** — no footer, no visible warning. Always run the fit check (`../_brand/SKILL.md`) after content edits; do not trust the eye.
 
 - **Scope of work (pages 3–4):** add or remove scope items as needed. Use numbered subheads (`.upg-scope__title`), not repeated section numbers. The six default items plus the assumptions block do not fit on one sheet, so they flow across two. If SOW content overflows, run `scripts/pack-content.py --mode sow` to repack across pages with continuous flow (see `../_brand/SKILL.md` -> Continuous page packing).
-- **Line items (pages 5–6):** the totals block sits on the continuation page per the totals-break rule below. If the table has more rows than fit, run `scripts/pack-content.py --mode lineitems` to repack across pages (see `../_brand/SKILL.md` -> Continuous page packing). The script handles greedy packing, the totals exception, and footer renumbering automatically.
+- **Line items (pages 5–6):** all three groups (software, equipment, professional services) fit on page 5 at the default row count, so page 6 carries the totals block alone — that is the totals-break rule working as intended, not an underfilled page to fix. Pack line-item rows greedily onto page 5 first; only spill rows to page 6 when page 5 is genuinely full. If the table has more rows than fit, run `scripts/pack-content.py --mode lineitems` to repack across pages (see `../_brand/SKILL.md` -> Continuous page packing). The script handles greedy packing, the totals exception, and footer renumbering automatically.
 
 ---
 
@@ -102,6 +102,8 @@ Populate from the uploaded spreadsheet via `scripts/ingest-budgetary-lineitems.p
 
 **Combine endpoint pricing into one line item.** LUCI OS endpoint licenses must appear as a **single line item** with the **total endpoint count as the quantity** and the **per-endpoint price as the cost-ea** (e.g. qty 38 × $420/ea = $15,960) — never split by video/audio/etc. (See `../_brand/SKILL.md` → Pricing.)
 
+Keep the **description free of the endpoint breakdown** — no "Includes 38 Endpoint Licenses — Video: 20; Audio: 18". The quantity column already carries the count, and the scope-of-work items already say what the video and audio endpoints are for, so the breakdown is a third copy of the same fact and a third place to get it wrong. The description states the product and term only: "LUCI Operating System Software, Consulting Services & SLA Warranty — Annual Partnership Subscription."
+
 | Element | Selector / class |
 |---------|-----------------|
 | Band title / deck | `.doc-page-band__title` / `.doc-page-band__deck` |
@@ -127,6 +129,7 @@ Populate from the uploaded spreadsheet via `scripts/ingest-budgetary-lineitems.p
 
 - **Locked regions** (LUCI logos on cover and close) — **no changes of any kind**, including color, styling, or CSS. Run the pre-edit gate in `.cursor/rules/luci-doc-customization.mdc` first.
 - Split endpoint pricing into separate video/audio line items — combine into one row with the total endpoint count as the quantity.
+- Restate the video/audio endpoint counts in the LUCI OS description — the quantity column and the scope items already carry that.
 - Add endpoint pricing tiers — this is a simple order form, not a budgetary estimate.
 - Add a capabilities overview, demo, or walkthrough content — the client already knows LUCI.
 - Add "Addressed to" or similar labels to the cover.

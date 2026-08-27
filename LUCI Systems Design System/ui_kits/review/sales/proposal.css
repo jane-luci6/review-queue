@@ -574,10 +574,15 @@
   z-index: 1;
 }
 .doc-page--led-overview > * { position: relative; z-index: 2; }
+/* No footer rule on this page: .led-stat-strip already closes with a
+   border-bottom 16px above, and the two hairlines read as a doubled line.
+   Explicit 0 rather than omitted — the base .doc-foot would otherwise draw
+   its light-canvas rule onto this navy sheet. Page 3's dark stat strip has
+   no bottom border, so it keeps its footer rule. */
 .doc-page--led-overview .doc-foot {
   margin-top: auto;
   padding-top: 16px;
-  border-top: 1px solid rgba(var(--mint-rgb), 0.18);
+  border-top: 0;
   color: rgba(235, 245, 248, 0.6);
 }
 .doc-page--led-overview .doc-foot__page { color: var(--mint); }

@@ -202,7 +202,15 @@
   text-transform: none;
   color: var(--ink-strong);
 }
-.be-price-group:first-of-type .be-price-group__label {
+/* The group that opens a table drops its own hairline — the column-header row
+   above it already supplies one, and both together read as a double rule.
+   This was written as .be-price-group:first-of-type, which never matched:
+   .be-price__head is also a div, so it takes :first-of-type and no group ever
+   qualifies. Every doc with a pricing table has been showing the double line.
+   Matching on "group directly after a column-header row" also handles tables
+   that continue onto later pages, where each page repeats the header row. */
+.be-price__head + .be-price-group > .be-price-group__label,
+.be-price-group:first-child > .be-price-group__label {
   margin-top: 16px;
   padding-top: 0;
   border-top: 0;
@@ -303,48 +311,10 @@
   letter-spacing: -0.02em;
 }
 
-/* ── Endpoint pricing tiers — compact two-row chip strip (bottom of page 9) ── */
-/* Less prominent than the estimate above: small type, six per row, two rows. */
-.be-tier-compact {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  column-gap: 18px;
-  margin-top: 4px;
-}
-.be-tier-chip {
-  position: relative;
-  padding: 10px 10px 11px;
-  border-bottom: 1px solid var(--rule-light);
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  font-variant-numeric: tabular-nums;
-}
-.be-tier-chip__qty {
-  font-family: var(--font);
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--ink-strong);
-}
-.be-tier-chip__disc {
-  font-family: var(--font-recede);
-  font-size: 9.5px;
-  color: var(--navy-muted);
-}
-.be-tier-chip__price {
-  font-family: var(--font);
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--mint-dark);
-}
-
-.be-tier-note {
-  margin: 14px 0 0;
-  font-size: 11.5px;
-  line-height: 1.55;
-  color: var(--navy-muted);
-  text-align: left;
-}
+/* Endpoint pricing tiers are defined once, further down — see "Tier table".
+   An earlier duplicate of the whole component lived here and still coloured the
+   price mint; every selector in it was redefined below, so it only served to
+   make the live rules hard to find. */
 
 /* ── Deployment page — journey (cap doc p8) + 3 rows of client logos ────────── */
 /* Commitments removed; client-logo rows sit closer to the journey (gap closed)
@@ -388,10 +358,8 @@
   .be-summary__total,
   .be-summary__total-value,
   .be-split__value,
-  .be-invest__label::before,
   .be-tier-compact,
   .be-tier-chip__disc,
-  .be-tier-chip--selected,
   .be-scope__count,
   .be-scope-tally,
   .be-scope-tally__num,
@@ -415,10 +383,6 @@
   .be-summary__total {
     background: linear-gradient(155deg, #E6F5EF 0%, #F3FAF8 100%) !important;
     box-shadow: inset 0 0 0 1px rgba(43, 158, 128, 0.18) !important;
-  }
-  .be-tier-chip--selected {
-    background: linear-gradient(155deg, #E6F5EF 0%, #F3FAF8 100%) !important;
-    box-shadow: inset 0 0 0 2px var(--mint-dark) !important;
   }
   /* Keep the HUD feature illustrations at landscape size in print — brochure.css
      softicon defaults would crush the 150×48 slots back to square tiles. */
@@ -656,6 +620,14 @@
   border-bottom: 1px solid var(--rule-light);
 }
 .be-scope-row:first-child { padding-top: 8px; }
+
+/* Five scope rows plus the bridge line, footnote, and tally overrun a US Letter
+   sheet at 20px rows. Tighten the row rhythm on the scope page rather than
+   cutting scope copy — every count, context note, and the tally stay. Applies
+   to every doc that carries a .doc-page--scope (budgetary estimate, retrofit,
+   and their client copies) so the fix doesn't have to be re-patched per file. */
+.doc-page--scope .be-scope-row { padding: 12px 0; }
+
 .be-scope__icon { width: 48px; height: 48px; border-radius: 13px; }
 .be-scope__icon svg { width: 25px; height: 25px; }
 .be-scope__icon--out {
@@ -713,10 +685,12 @@
   max-width: 62ch;
 }
 
+/* No border-top here: the last .be-scope-row already closes the list with a
+   full-width hairline, and this rule was only 62ch wide, so the two stacked as
+   a mismatched double line. Keep the padding for the gap, drop the second rule. */
 .be-scope-footnote {
   margin: 16px 0 0;
   padding-top: 14px;
-  border-top: 1px solid var(--rule-light);
   max-width: 62ch;
   font-family: var(--font-recede);
   font-size: 12px;
@@ -891,97 +865,75 @@
 .be-invest-tiers {
   margin-top: 16px;
 }
+/* Matches .be-block-label ("Investment summary", "What this investment
+   delivers") so the tier table is introduced the same way as every other
+   block in the document. No mint accent dash — this table is monochrome. */
 .be-invest__label {
   margin: 0 0 14px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
   font-family: var(--font);
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: none;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
   color: var(--navy-muted);
 }
-.be-invest__label::before {
-  content: '';
-  width: 22px;
-  height: 2px;
-  background: var(--mint-dark);
-  flex: none;
-}
+/* Tier table — reference material, not the argument of the page. The close
+   block below is what the reader acts on, so the 12 tiers run as two
+   six-row tables side by side: compact, and each half carries its own
+   column header so the three numbers are labelled rather than inferred.
+   Monochrome by design — no tier is highlighted; the note beneath states
+   which tier the estimate is priced at. Horizontal rules only. */
 .be-tier-compact {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  column-gap: 0;
-  border-top: 1px solid var(--rule-light);
-  border-left: 1px solid var(--rule-light);
+  grid-template-columns: 1fr 1fr;
+  column-gap: 48px;
+}
+.be-tier-head,
+.be-tier-chip {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr 1fr;
+  gap: 12px;
+  border-bottom: 1px solid var(--rule-light);
+}
+.be-tier-head {
+  padding: 0 0 8px;
+}
+.be-tier-head span {
+  font-family: var(--font);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--navy-muted);
 }
 .be-tier-chip {
-  padding: 22px 18px 26px;
-  border-right: 1px solid var(--rule-light);
-  border-bottom: 1px solid var(--rule-light);
-  display: grid;
-  grid-template-columns: 1fr auto;
-  grid-template-rows: auto auto;
-  column-gap: 8px;
-  row-gap: 8px;
-  align-items: baseline;
+  padding: 8px 0 9px;
   font-variant-numeric: tabular-nums;
 }
+.be-tier-head span + span,
+.be-tier-chip > span + span { text-align: right; }
 .be-tier-chip__qty {
-  grid-column: 1; grid-row: 1;
   font-family: var(--font);
-  font-size: 24px;
+  font-size: 12.5px;
   font-weight: 700;
   color: var(--ink-strong);
   letter-spacing: -0.01em;
 }
 .be-tier-chip__disc {
-  grid-column: 2; grid-row: 1;
-  text-align: right;
   font-family: var(--font-recede);
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--mint-dark);
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--navy-muted);
 }
 .be-tier-chip__price {
-  grid-column: 1 / -1; grid-row: 2;
   font-family: var(--font);
-  font-size: 19px;
+  font-size: 12.5px;
   font-weight: 600;
   color: var(--ink-strong);
 }
-
-/* Selected tier — marks the tier being offered to this customer. Move this class
-   to whichever chip Mike/Mark are pricing the job at. Mint fill + 2px mint
-   outline + mint numerals + a "Your tier" micro-tag, so the offered tier reads
-   at a glance among the white cells. The chip stays contenteditable so the
-   discount % and price can still be edited inline. */
-.be-tier-chip--selected {
-  position: relative;
-  background: linear-gradient(155deg, #E6F5EF 0%, #F3FAF8 100%);
-  box-shadow: inset 0 0 0 2px var(--mint-dark);
-  z-index: 1;
-}
-.be-tier-chip--selected .be-tier-chip__qty,
-.be-tier-chip--selected .be-tier-chip__price { color: var(--mint-dark); }
-.be-tier-chip--selected .be-tier-chip__disc { font-weight: 700; }
-.be-tier-chip--selected::after {
-  content: 'Your tier';
-  position: absolute;
-  right: 16px;
-  bottom: 10px;
-  font-family: var(--font);
-  font-size: 8.5px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--mint-dark);
-}
 .be-tier-note {
-  margin: 12px 0 0;
-  font-size: 11.5px;
+  margin: 10px 0 0;
+  font-size: 11px;
   line-height: 1.5;
   color: var(--navy-muted);
 }
