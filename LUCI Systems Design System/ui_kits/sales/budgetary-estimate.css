@@ -311,48 +311,10 @@
   letter-spacing: -0.02em;
 }
 
-/* ── Endpoint pricing tiers — compact two-row chip strip (bottom of page 9) ── */
-/* Less prominent than the estimate above: small type, six per row, two rows. */
-.be-tier-compact {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  column-gap: 18px;
-  margin-top: 4px;
-}
-.be-tier-chip {
-  position: relative;
-  padding: 10px 10px 11px;
-  border-bottom: 1px solid var(--rule-light);
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  font-variant-numeric: tabular-nums;
-}
-.be-tier-chip__qty {
-  font-family: var(--font);
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--ink-strong);
-}
-.be-tier-chip__disc {
-  font-family: var(--font-recede);
-  font-size: 9.5px;
-  color: var(--navy-muted);
-}
-.be-tier-chip__price {
-  font-family: var(--font);
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--mint-dark);
-}
-
-.be-tier-note {
-  margin: 14px 0 0;
-  font-size: 11.5px;
-  line-height: 1.55;
-  color: var(--navy-muted);
-  text-align: left;
-}
+/* Endpoint pricing tiers are defined once, further down — see "Tier table".
+   An earlier duplicate of the whole component lived here and still coloured the
+   price mint; every selector in it was redefined below, so it only served to
+   make the live rules hard to find. */
 
 /* ── Deployment page — journey (cap doc p8) + 3 rows of client logos ────────── */
 /* Commitments removed; client-logo rows sit closer to the journey (gap closed)
@@ -396,10 +358,8 @@
   .be-summary__total,
   .be-summary__total-value,
   .be-split__value,
-  .be-invest__label::before,
   .be-tier-compact,
   .be-tier-chip__disc,
-  .be-tier-chip--selected,
   .be-scope__count,
   .be-scope-tally,
   .be-scope-tally__num,
@@ -423,10 +383,6 @@
   .be-summary__total {
     background: linear-gradient(155deg, #E6F5EF 0%, #F3FAF8 100%) !important;
     box-shadow: inset 0 0 0 1px rgba(43, 158, 128, 0.18) !important;
-  }
-  .be-tier-chip--selected {
-    background: linear-gradient(155deg, #E6F5EF 0%, #F3FAF8 100%) !important;
-    box-shadow: inset 0 0 0 2px var(--mint-dark) !important;
   }
   /* Keep the HUD feature illustrations at landscape size in print — brochure.css
      softicon defaults would crush the 150×48 slots back to square tiles. */
