@@ -729,10 +729,12 @@
   max-width: 62ch;
 }
 
+/* No border-top here: the last .be-scope-row already closes the list with a
+   full-width hairline, and this rule was only 62ch wide, so the two stacked as
+   a mismatched double line. Keep the padding for the gap, drop the second rule. */
 .be-scope-footnote {
   margin: 16px 0 0;
   padding-top: 14px;
-  border-top: 1px solid var(--rule-light);
   max-width: 62ch;
   font-family: var(--font-recede);
   font-size: 12px;
