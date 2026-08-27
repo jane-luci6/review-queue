@@ -22,7 +22,7 @@ After the client has received the **Capabilities document** and leadership needs
 
 - **Pages 1–2 from Mike/Mark context** — cover property name, phase framing, and the page-2 "Prepared for…" intro come from what Mike/Mark tell you (or the portal form). Edit those regions directly; do not rebuild the locked "What LUCI is" block on page 2.
 - **Page 4 line items from the uploaded spreadsheet** — Mike/Mark attach an `.xlsx` of the proposal line items. Run `scripts/ingest-budgetary-lineitems.py` to convert it to the page-4 markup, paste it in. If it overflows, run `scripts/pack-content.py --mode lineitems` to repack across pages (see `../_brand/SKILL.md` → Continuous page packing).
-- **Page 6 tiers** — move `be-tier-chip--selected` to the tier you're pricing this job at, and edit the discount % / price inline for any customer-specific discount.
+- **Page 6 tiers** — move `be-tier-chip--selected` to the tier you're pricing this job at, and edit the discount % / price inline for any customer-specific discount. The tier table is deliberately compact (12 tiers on two hairline rows): it's a reference table, subordinate to the close block below it. Don't scale it back up — the page overflows a US Letter sheet when the chips are enlarged.
 
 ---
 
@@ -145,7 +145,7 @@ Populate from the uploaded spreadsheet via `scripts/ingest-budgetary-lineitems.p
 | Element | What to change |
 |---------|----------------|
 | `.be-tier-chip` | Tier pricing cells — qty, discount %, and price are all `contenteditable`; edit inline for a customer-specific discount |
-| `.be-tier-chip--selected` | **Highlight the tier you’re pricing this job at.** Move this class to the offered chip — it renders a mint fill, mint outline, mint numerals, and a “Your tier” tag. Default in the master is the 100-endpoint tier |
+| `.be-tier-chip--selected` | **Highlight the tier you’re pricing this job at.** Move this class to the offered chip — it renders a 2px mint underline plus mint numerals. Default in the master is the 100-endpoint tier |
 | `.be-close__body`, contact name/email | Next step + rep |
 
 ---

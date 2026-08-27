@@ -664,6 +664,14 @@
   border-bottom: 1px solid var(--rule-light);
 }
 .be-scope-row:first-child { padding-top: 8px; }
+
+/* Five scope rows plus the bridge line, footnote, and tally overrun a US Letter
+   sheet at 20px rows. Tighten the row rhythm on the scope page rather than
+   cutting scope copy — every count, context note, and the tally stay. Applies
+   to every doc that carries a .doc-page--scope (budgetary estimate, retrofit,
+   and their client copies) so the fix doesn't have to be re-patched per file. */
+.doc-page--scope .be-scope-row { padding: 12px 0; }
+
 .be-scope__icon { width: 48px; height: 48px; border-radius: 13px; }
 .be-scope__icon svg { width: 25px; height: 25px; }
 .be-scope__icon--out {
@@ -918,78 +926,63 @@
   background: var(--mint-dark);
   flex: none;
 }
+/* Tier table — reference material, not the argument of the page. The close
+   block below it is what the reader acts on, so the tiers are sized to be
+   scanned and moved past: 12 tiers on two hairline-separated rows rather than
+   four rows of large cells. Horizontal rules only — vertical gridlines on a
+   12-cell grid read as a spreadsheet. */
 .be-tier-compact {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  column-gap: 0;
+  grid-template-columns: repeat(6, 1fr);
+  column-gap: 20px;
   border-top: 1px solid var(--rule-light);
-  border-left: 1px solid var(--rule-light);
 }
 .be-tier-chip {
-  padding: 22px 18px 26px;
-  border-right: 1px solid var(--rule-light);
+  position: relative;
+  padding: 9px 2px 10px;
   border-bottom: 1px solid var(--rule-light);
-  display: grid;
-  grid-template-columns: 1fr auto;
-  grid-template-rows: auto auto;
-  column-gap: 8px;
-  row-gap: 8px;
-  align-items: baseline;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
   font-variant-numeric: tabular-nums;
 }
 .be-tier-chip__qty {
-  grid-column: 1; grid-row: 1;
   font-family: var(--font);
-  font-size: 24px;
+  font-size: 13px;
   font-weight: 700;
   color: var(--ink-strong);
   letter-spacing: -0.01em;
 }
 .be-tier-chip__disc {
-  grid-column: 2; grid-row: 1;
-  text-align: right;
   font-family: var(--font-recede);
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--mint-dark);
+  font-size: 9.5px;
+  font-weight: 500;
+  color: var(--navy-muted);
 }
 .be-tier-chip__price {
-  grid-column: 1 / -1; grid-row: 2;
   font-family: var(--font);
-  font-size: 19px;
+  font-size: 13px;
   font-weight: 600;
-  color: var(--ink-strong);
+  color: var(--mint-dark);
 }
 
 /* Selected tier — marks the tier being offered to this customer. Move this class
-   to whichever chip Mike/Mark are pricing the job at. Mint fill + 2px mint
-   outline + mint numerals + a "Your tier" micro-tag, so the offered tier reads
-   at a glance among the white cells. The chip stays contenteditable so the
-   discount % and price can still be edited inline. */
+   to whichever chip Mike/Mark are pricing the job at. At this scale the cell is
+   too narrow for a "Your tier" tag, so the mark is a 2px mint underline plus
+   mint-weighted numerals — still the one cell your eye lands on, without
+   boxing it. The chip stays contenteditable so % and price edit inline. */
 .be-tier-chip--selected {
-  position: relative;
-  background: linear-gradient(155deg, #E6F5EF 0%, #F3FAF8 100%);
-  box-shadow: inset 0 0 0 2px var(--mint-dark);
-  z-index: 1;
+  border-bottom: 2px solid var(--mint-dark);
 }
-.be-tier-chip--selected .be-tier-chip__qty,
-.be-tier-chip--selected .be-tier-chip__price { color: var(--mint-dark); }
-.be-tier-chip--selected .be-tier-chip__disc { font-weight: 700; }
-.be-tier-chip--selected::after {
-  content: 'Your tier';
-  position: absolute;
-  right: 16px;
-  bottom: 10px;
-  font-family: var(--font);
-  font-size: 8.5px;
+.be-tier-chip--selected .be-tier-chip__qty { color: var(--mint-dark); }
+.be-tier-chip--selected .be-tier-chip__disc {
   font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
   color: var(--mint-dark);
 }
+.be-tier-chip--selected .be-tier-chip__price { font-weight: 700; }
 .be-tier-note {
-  margin: 12px 0 0;
-  font-size: 11.5px;
+  margin: 10px 0 0;
+  font-size: 11px;
   line-height: 1.5;
   color: var(--navy-muted);
 }

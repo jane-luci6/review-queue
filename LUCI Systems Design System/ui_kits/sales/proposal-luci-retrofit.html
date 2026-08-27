@@ -68,14 +68,9 @@
 .doc-page--open-items::before {
   content: none;
 }
-/* Review-of-scope inventory ran ~59px past the locked sheet. .doc-page is a
-   flex column, so that overflow was absorbed by crushing the band header down
-   into its own mint rule rather than showing at the bottom of the page — the
-   header collision was the symptom, the long page was the cause. Tighten the
-   row rhythm here instead of cutting scope copy; every count, context note,
-   and the tally stay. Scoped to this page so the budgetary estimate, which
-   shares .be-scope-row, keeps its 20px rows. */
-.doc-page--scope .be-scope-row { padding: 12px 0; }
+/* The .doc-page--scope row-rhythm fix that used to live here moved into
+   budgetary-estimate.css — the budgetary estimate hit the same overflow, so the
+   patch belongs with the shared component rather than per-document. */
 </style>
 </head>
 <body>
