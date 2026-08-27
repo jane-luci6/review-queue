@@ -661,7 +661,10 @@
   gap: 24px;
   flex: 1 1 auto;
   align-content: start;
-  margin: 24px 0 40px;
+  /* 20px below the cards, not 40px: at 40px the sheet runs 17px past US Letter,
+     which the flex column absorbs by squeezing the band header. The gap above
+     the footer rule reads the same either way. */
+  margin: 24px 0 20px;
   padding: 0;
 }
 .doc-page--architecture .doc-archpoints--cards li {
@@ -824,11 +827,24 @@
   margin-top: 14px;
   min-height: 0;
 }
+/* min-height:0 + max-height are load-bearing. A replaced flex item's automatic
+   minimum size is its content height, so without them the ledger holds its
+   aspect-ratio height (671px) inside the 582px box left after the band header,
+   stats, source line and footer — and paints over the source line and footer
+   instead of shrinking.
+   The cap is an absolute 582px, not 100%: a percentage max-height resolves to
+   none against an auto-height parent, so it would vanish in the fit check's
+   unconstrained pass and the sheet would keep reporting +88px. 582px is the
+   space this page actually has. If the spacing above it ever changes, flex
+   shrink (with min-height:0) still takes the figure down further. */
 .doc-ledger__fig {
   display: block;
   width: 100%;
   height: auto;
   flex: 1 1 auto;
+  min-height: 0;
+  max-height: 582px;
+  object-fit: contain;
   border-radius: 0;
 }
 

@@ -8,12 +8,8 @@
 # Audited with: for f in ui_kits/sales/*.html; do python3 scripts/fit-check.py "$f"; done
 #
 # Masters (client copies inherit the clipping, so these matter most):
-LUCI Systems Design System/ui_kits/sales/capabilities-document.html
 LUCI Systems Design System/ui_kits/sales/field-activation-guide.html
 # Variants:
 LUCI Systems Design System/ui_kits/sales/field-activation-guide-prospect.html
 LUCI Systems Design System/ui_kits/sales/field-activation-guide-print.html
 LUCI Systems Design System/ui_kits/sales/field-activation-steps-preview.html
-# Client copies (inherited from the masters above):
-LUCI Systems Design System/ui_kits/sales/aliante-capabilities.html
-LUCI Systems Design System/ui_kits/sales/paragon-capabilities.html

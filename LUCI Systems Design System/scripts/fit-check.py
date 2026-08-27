@@ -16,16 +16,19 @@ import argparse, os, re, subprocess, sys, tempfile, pathlib, json
 
 PROBE_JS = r"""
 (() => {
-  const pages = [...document.querySelectorAll('.doc-page')];
+  // .cap-page is the capabilities document's own sheet class (pages 2-3). It is a
+  // full US Letter sheet like .doc-page, so it has to be measured too — it was
+  // invisible to this check, which reported "7 pages" on a 9-page document.
+  const pages = [...document.querySelectorAll('.doc-page, .cap-page')];
   return pages.map((p, i) => {
     const s = {h: p.style.height, mh: p.style.minHeight, o: p.style.overflow, jc: p.style.justifyContent};
     Object.assign(p.style, {height:'auto', minHeight:'0', overflow:'visible', justifyContent:'flex-start'});
     const nat = Math.round(p.getBoundingClientRect().height);
     Object.assign(p.style, s);
     const isDesign = p.classList.contains('doc-page--cover') || p.classList.contains('doc-page--close');
-    const titleEl = p.querySelector('.doc-page-band__title, h2');
+    const titleEl = p.querySelector('.doc-page-band__title, .cap-page-band__title, h2');
     const title = titleEl ? titleEl.textContent.trim().slice(0, 60) : '';
-    const footEl = p.querySelector('.doc-foot__page');
+    const footEl = p.querySelector('.doc-foot__page, .cap-foot__page');
     const foot = footEl ? footEl.textContent.trim() : '';
     return {
       page: i + 1,
