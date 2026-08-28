@@ -589,6 +589,24 @@
   line-height: 1.4;
   color: var(--navy-muted);
 }
+
+/* Consolidation ledger graphic — replaces the text rows with the full diagram
+   from page 04. Scoped under .doc-page--proof-photo so client copies keep their
+   text-row layout. The figure is centered and capped at a height that fits the
+   remaining sheet space after the band header, identity block, situation text,
+   and quote. */
+.doc-page--proof-photo .doc-cs-consolidation-fig { margin-top: 16px; }
+.doc-cs-ledger-fig {
+  margin: 8px 0 0;
+  text-align: center;
+}
+.doc-cs-ledger-fig img {
+  display: block;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  height: auto;
+}
 }
 
 /* ── Case study · photo-led variant ───────────────────────────────────────────
