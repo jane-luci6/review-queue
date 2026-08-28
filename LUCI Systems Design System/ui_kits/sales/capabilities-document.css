@@ -662,6 +662,9 @@
 .doc-page--proof-photo .doc-cs-situation__text { max-width: 74ch; }
 .doc-page--proof-photo .doc-cs-quote { margin: 12px 0; padding: 10px 24px; }
 .doc-page--proof-photo .doc-cs-quote blockquote { font-size: 16px; line-height: 1.35; }
+.doc-page--proof-photo .doc-cs-outcome { margin-bottom: 0; gap: 16px; }
+.doc-page--proof-photo .doc-cs-outcome__head { font-size: 13px; }
+.doc-page--proof-photo .doc-cs-outcome__body { font-size: 11px; line-height: 1.4; }
 
 /* "Yaamava' on LUCI to date" — convergence ledger from the case study, rebuilt
    for the fixed-size document. Six scope stats with duotone icons, converging
@@ -675,15 +678,15 @@
   border-top: 4px solid var(--mint);
   border-bottom: 1px solid rgba(var(--mint-rgb), 0.16);
   margin: 12px 0 0 calc(-1 * var(--page-pad));
-  padding: 0 var(--page-pad) 28px;
+  padding: 0 var(--page-pad) 12px;
   width: calc(100% + 2 * var(--page-pad));
 }
 .doc-page--proof-photo .doc-cs-ledger > * { position: relative; z-index: 1; }
 .doc-cs-ledger__title {
-  margin: 0 0 12px;
-  padding: 18px 0 0;
+  margin: 0 0 6px;
+  padding: 10px 0 0;
   font-family: var(--font);
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.025em;
@@ -692,14 +695,14 @@
 }
 .doc-cs-ledger__title em { font-style: normal; color: var(--off-white); }
 .doc-cs-ledger__ticker {
-  margin: 0 0 12px;
+  margin: 0 0 4px;
   border-top: 1px solid rgba(var(--mint-rgb), 0.2);
   border-bottom: 1px solid rgba(var(--mint-rgb), 0.2);
 }
 .doc-cs-ledger__stats {
   list-style: none;
   margin: 0;
-  padding: 14px 0;
+  padding: 8px 0;
   display: flex;
   align-items: stretch;
   justify-content: center;
@@ -711,15 +714,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
-  padding: 0 6px;
+  gap: 3px;
+  padding: 0 4px;
 }
 .doc-cs-ledger__stats li + li { border-left: 1px solid rgba(var(--mint-rgb), 0.18); }
-.doc-cs-ledger__ic { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; flex: none; }
+.doc-cs-ledger__ic { display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; flex: none; }
 .doc-cs-ledger__ic svg { width: 100%; height: 100%; display: block; }
 .doc-cs-ledger__num {
   font-family: var(--font);
-  font-size: 28px;
+  font-size: 20px;
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.03em;
@@ -727,41 +730,41 @@
 }
 .doc-cs-ledger__label {
   font-family: var(--font-recede);
-  font-size: 9.5px;
+  font-size: 8.5px;
   line-height: 1.3;
   letter-spacing: 0.02em;
   color: rgba(235, 245, 248, 0.72);
   white-space: nowrap;
 }
-.doc-cs-ledger__converge { display: block; width: 100%; height: 56px; margin: 2px 0 -2px; overflow: visible; }
+.doc-cs-ledger__converge { display: block; width: 100%; height: 28px; margin: 0 0 -2px; overflow: visible; }
 .doc-cs-ledger__converge line { stroke-width: 1.5; vector-effect: non-scaling-stroke; }
-.doc-cs-ledger__arrow { position: relative; width: 28px; margin: 0 auto; }
+.doc-cs-ledger__arrow { position: relative; width: 22px; margin: 0 auto; }
 .doc-cs-ledger__arrow::before {
-  content: ''; display: block; width: 7px; height: 28px; margin: 0 auto;
+  content: ''; display: block; width: 5px; height: 16px; margin: 0 auto;
   background: var(--mint); border-radius: 4px; box-shadow: 0 0 18px rgba(var(--mint-rgb), 0.55);
 }
 .doc-cs-ledger__arrow::after {
   content: ''; display: block; width: 0; height: 0; margin: 0 auto;
-  border-left: 14px solid transparent;
-  border-right: 14px solid transparent;
-  border-top: 18px solid var(--mint);
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+  border-top: 12px solid var(--mint);
   filter: drop-shadow(0 6px 12px rgba(var(--mint-rgb), 0.5));
 }
 .doc-cs-ledger__dest {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-  margin: 14px 0 0;
+  gap: 5px;
+  margin: 6px 0 0;
   padding: 0 28px;
 }
-.doc-cs-ledger__dest-rule { width: 40px; height: 3px; background: var(--mint); }
+.doc-cs-ledger__dest-rule { width: 32px; height: 3px; background: var(--mint); }
 .doc-cs-ledger__dest-head {
   margin: 0;
   font-family: var(--font);
   font-weight: 700;
   letter-spacing: -0.02em;
-  font-size: 30px;
+  font-size: 22px;
   color: var(--off-white);
   text-align: center;
 }
@@ -769,11 +772,11 @@
 .doc-cs-ledger__dest-sub {
   margin: 0;
   font-family: var(--font-recede);
-  font-size: 13px;
+  font-size: 10px;
   color: rgba(235, 245, 248, 0.72);
   text-align: center;
   max-width: 46ch;
-  line-height: 1.5;
+  line-height: 1.4;
 }
 /* Outranks the shared `.doc-page--proof .doc-foot { margin-top: 14px }` below,
    which follows in source order and would otherwise unpin this page's footer. */
