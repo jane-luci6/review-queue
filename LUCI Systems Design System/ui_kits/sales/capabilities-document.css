@@ -601,7 +601,7 @@
 /* Identity + scope — the logo sits against the property name so it reads as a
    lockup, and the stats take the remaining width so no dead air opens up. */
 .doc-cs-identity {
-  margin-top: 24px;
+  margin-top: 36px;
   padding-bottom: 16px;
   border-bottom: 1px solid var(--rule-light);
   display: grid;
@@ -639,11 +639,11 @@
   margin: 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 28px;
 }
 .doc-cs-scope > div { padding-left: 24px; border-left: 1px solid var(--rule-light); }
 .doc-cs-scope dt {
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1;
@@ -658,10 +658,10 @@
   white-space: nowrap;
 }
 
-.doc-page--proof-photo .doc-cs-situation { margin-top: 24px; }
+.doc-page--proof-photo .doc-cs-situation { margin-top: 36px; }
 .doc-page--proof-photo .doc-cs-situation__text { max-width: 74ch; }
-.doc-page--proof-photo .doc-cs-quote { margin: 24px 0; padding: 16px 28px; }
-.doc-page--proof-photo .doc-cs-outcome { margin-bottom: 0; }
+.doc-page--proof-photo .doc-cs-quote { margin: 36px 0; padding: 22px 28px; }
+.doc-page--proof-photo .doc-cs-outcome { margin-top: 28px; margin-bottom: 0; }
 /* Outranks the shared `.doc-page--proof .doc-foot { margin-top: 14px }` below,
    which follows in source order and would otherwise unpin this page's footer. */
 .doc-page--proof.doc-page--proof-photo .doc-foot { margin-top: auto; }
