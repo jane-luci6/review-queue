@@ -1,176 +1,229 @@
 {
-  "updated": "2026-08-18",
-  "groups": [
+  "updated": "2026-09-01",
+  "note": "Two-level folder tree for the portal Downloads tab: folders -> groups -> items. Items link to review-queue.json via queueId (title, summary, dates, preview and live URLs come from the queue). Items without a queueId carry their own label/path. Legacy top-level `groups` is still read by the portal for backward compatibility.",
+  "folders": [
     {
-      "id": "messaging",
-      "label": "Messaging & brand",
+      "id": "current-content",
+      "label": "Current Content",
+      "note": "Everything published for LUCI as it runs today.",
       "defaultOpen": true,
-      "items": [
-        { "id": "messaging-guide", "label": "Messaging guide", "path": "messaging/messaging-guide.html" },
-        { "id": "philosophy", "label": "LUCI philosophy", "path": "messaging/philosophy.html" },
-        { "id": "personas", "label": "Personas", "path": "messaging/personas.html" }
-      ]
-    },
-    {
-      "id": "diagrams",
-      "label": "Images & diagrams",
-      "defaultOpen": true,
-      "items": [
+      "groups": [
         {
-          "id": "what-luci-is-diagram",
-          "label": "What LUCI is",
-          "path": "messaging/what-luci-is.html",
-          "queueId": "what-luci-is-diagram",
-          "downloads": [
-            { "label": "SVG", "path": "assets/diagrams/luci-what-luci-is.svg" },
-            { "label": "PNG", "path": "assets/diagrams/luci-what-luci-is.png" }
+          "id": "case-studies",
+          "label": "Case studies",
+          "note": "Property stories — live on lucisystems.com, with print-ready PDFs where available.",
+          "defaultOpen": true,
+          "items": [
+            {
+              "id": "case-study-ameristar",
+              "label": "Ameristar Council Bluffs",
+              "queueId": "case-study-ameristar",
+              "downloads": [
+                { "label": "PDF", "path": "assets/sales/LUCI-Case-Study-Ameristar-Council-Bluffs.pdf" }
+              ]
+            },
+            {
+              "id": "case-study-tachi",
+              "label": "Tachi Palace Casino Resort",
+              "queueId": "case-study-tachi",
+              "downloads": [
+                { "label": "PDF", "path": "assets/sales/LUCI-Case-Study-Tachi-Palace.pdf" }
+              ]
+            },
+            {
+              "id": "case-study-sams-town",
+              "label": "Sam's Town Hotel & Gambling Hall",
+              "queueId": "case-study-sams-town"
+            },
+            {
+              "id": "case-study-yaamava",
+              "label": "Yaamava' Resort & Casino",
+              "queueId": "case-study-yaamava"
+            }
           ]
         },
         {
-          "id": "system-architecture-diagram",
-          "label": "System architecture",
-          "path": "messaging/system-architecture.html",
-          "queueId": "system-architecture-diagram",
-          "downloads": [
-            { "label": "Light SVG", "path": "assets/diagrams/luci-system-architecture.svg" },
-            { "label": "Light PNG", "path": "assets/diagrams/luci-system-architecture.png" },
-            { "label": "Dark SVG", "path": "assets/diagrams/luci-system-architecture.dark.svg" },
-            { "label": "Dark PNG", "path": "assets/diagrams/luci-system-architecture.dark.png" }
+          "id": "newsletters",
+          "label": "Newsletters",
+          "note": "The Signal — hub, every issue, and the email teaser.",
+          "items": [
+            {
+              "id": "signal-hub",
+              "label": "The Signal · Newsletter Hub",
+              "queueId": "signal-hub"
+            },
+            {
+              "id": "signal-issue-01",
+              "label": "The Signal · Issue 01 (June 2026)",
+              "queueId": "signal-issue-01"
+            },
+            {
+              "id": "signal-issue-02",
+              "label": "The Signal · Issue 02 (July 2026)",
+              "queueId": "signal-issue-02"
+            },
+            {
+              "id": "signal-issue-03",
+              "label": "The Signal · Issue 03 (August 2026)",
+              "queueId": "signal-issue-03"
+            },
+            {
+              "id": "signal-issue-04",
+              "label": "The Signal · Issue 04 (September 2026)",
+              "queueId": "signal-issue-04"
+            },
+            {
+              "id": "newsletter-email-teaser",
+              "label": "Issue 01 · Email teaser",
+              "queueId": "newsletter-email-teaser"
+            }
           ]
         },
         {
-          "id": "embedded-operation-orbit",
-          "label": "Embedded Operation orbit",
-          "path": "messaging/embedded-operation-orbit.html",
-          "downloads": [
-            { "label": "SVG", "path": "assets/diagrams/embedded-operation-orbit.svg" },
-            { "label": "PNG", "path": "assets/diagrams/embedded-operation-orbit.png" }
+          "id": "sales",
+          "label": "Sales",
+          "note": "Leave-behinds and prospect-facing collateral. Customize any of these in the Customize documents tab.",
+          "items": [
+            {
+              "id": "sales-brochure",
+              "label": "Sales brochure",
+              "queueId": "sales-brochure",
+              "downloads": [
+                { "label": "PDF", "path": "assets/sales/LUCI-Brochure.pdf" }
+              ]
+            },
+            {
+              "id": "capabilities-document",
+              "label": "Capabilities document",
+              "queueId": "capabilities-document",
+              "path": "sales/capabilities-document.html",
+              "downloads": [
+                { "label": "PDF", "path": "assets/sales/LUCI-Capabilities.pdf" }
+              ]
+            },
+            {
+              "id": "field-activation-guide",
+              "label": "Field Activation Guide · Customer",
+              "queueId": "field-activation-guide"
+            },
+            {
+              "id": "field-activation-guide-prospect",
+              "label": "Field Activation Guide · Prospect",
+              "queueId": "field-activation-guide-prospect",
+              "path": "assets/sales/LUCI-Field-Activation-Guide-Prospect.pdf",
+              "downloads": [
+                { "label": "PDF", "path": "assets/sales/LUCI-Field-Activation-Guide-Prospect.pdf" }
+              ]
+            },
+            {
+              "id": "client-examples",
+              "label": "Client examples",
+              "queueId": "client-examples",
+              "path": "sales/client-examples.html",
+              "downloads": [
+                { "label": "PDF", "path": "assets/sales/LUCI-Client-Examples.pdf" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "other",
+          "label": "Other",
+          "note": "Diagrams, customer email tooling, and strategy references that don't sit in the three folders above.",
+          "items": [
+            {
+              "id": "what-luci-is-diagram",
+              "label": "What LUCI is (identity diagram)",
+              "queueId": "what-luci-is-diagram",
+              "path": "messaging/what-luci-is.html",
+              "downloads": [
+                { "label": "SVG", "path": "assets/diagrams/luci-what-luci-is.svg" },
+                { "label": "PNG", "path": "assets/diagrams/luci-what-luci-is.png" }
+              ]
+            },
+            {
+              "id": "system-architecture-diagram",
+              "label": "System architecture diagram",
+              "queueId": "system-architecture-diagram",
+              "path": "messaging/system-architecture.html",
+              "downloads": [
+                { "label": "Light SVG", "path": "assets/diagrams/luci-system-architecture.svg" },
+                { "label": "Light PNG", "path": "assets/diagrams/luci-system-architecture.png" },
+                { "label": "Dark SVG", "path": "assets/diagrams/luci-system-architecture.dark.svg" },
+                { "label": "Dark PNG", "path": "assets/diagrams/luci-system-architecture.dark.png" }
+              ]
+            },
+            {
+              "id": "embedded-operation-orbit",
+              "label": "Embedded Operation orbit",
+              "note": "Diagram of the embedded team around the platform.",
+              "path": "messaging/embedded-operation-orbit.html",
+              "downloads": [
+                { "label": "SVG", "path": "assets/diagrams/embedded-operation-orbit.svg" },
+                { "label": "PNG", "path": "assets/diagrams/embedded-operation-orbit.png" }
+              ]
+            },
+            {
+              "id": "linkedin-strategy-summary",
+              "label": "Social media strategy summary",
+              "queueId": "linkedin-strategy-summary"
+            },
+            {
+              "id": "customer-journey-tracker",
+              "label": "Customer emails · Journey tracker",
+              "path": "email/customer-journey-tracker.html",
+              "note": "Send calendar — who's due, sent log, recipients."
+            },
+            {
+              "id": "email-subjects-preheaders",
+              "label": "Customer emails · Subject lines & preheaders",
+              "path": "email/email-subjects-preheaders.html",
+              "note": "All 10 emails — copy into ActiveCampaign."
+            }
           ]
         }
       ]
     },
     {
-      "id": "customer-emails",
-      "label": "Customer emails",
-      "defaultOpen": true,
-      "items": [
+      "id": "new-luci",
+      "label": "New LUCI",
+      "note": "Material for the new LUCI platform. Beta framing only — not a public launch. Case studies, newsletters, and sales collateral land here as they're made.",
+      "groups": [
         {
-          "id": "customer-journey-tracker",
-          "label": "Journey tracker",
-          "path": "email/customer-journey-tracker.html",
-          "note": "Send calendar — who's due, sent log, recipients"
+          "id": "case-studies",
+          "label": "Case studies",
+          "items": []
         },
         {
-          "id": "email-subjects-preheaders",
-          "label": "Subject lines & preheaders",
-          "path": "email/email-subjects-preheaders.html",
-          "note": "All 10 emails — copy into ActiveCampaign"
-        }
-      ]
-    },
-    {
-      "id": "sales",
-      "label": "Sales",
-      "defaultOpen": false,
-      "items": [
-        {
-          "id": "sales-brochure",
-          "label": "Sales brochure",
-          "queueId": "sales-brochure",
-          "downloads": [
-            { "label": "PDF", "path": "assets/sales/LUCI-Brochure.pdf" }
-          ]
+          "id": "newsletters",
+          "label": "Newsletters",
+          "items": []
         },
         {
-          "id": "capabilities-document",
-          "label": "Capabilities document",
-          "queueId": "capabilities-document",
-          "path": "sales/capabilities-document.html",
-          "downloads": [
-            { "label": "PDF", "path": "assets/sales/LUCI-Capabilities.pdf" }
-          ]
-        },
-    {
-      "id": "field-activation-guide",
-      "label": "Field Activation Guide \u00b7 Customer",
-      "queueId": "field-activation-guide",
-      "whenApproved": true
-    },
-        {
-          "id": "field-activation-guide-prospect",
-          "label": "Field Activation Guide · Prospect",
-          "queueId": "field-activation-guide-prospect",
-          "path": "assets/sales/LUCI-Field-Activation-Guide-Prospect.pdf",
-          "downloads": [
-            { "label": "PDF", "path": "assets/sales/LUCI-Field-Activation-Guide-Prospect.pdf" }
-          ]
+          "id": "sales",
+          "label": "Sales",
+          "items": []
         },
         {
-          "id": "client-examples",
-          "label": "Client examples",
-          "queueId": "client-examples",
-          "path": "sales/client-examples.html",
-          "downloads": [
-            { "label": "PDF", "path": "assets/sales/LUCI-Client-Examples.pdf" }
+          "id": "other",
+          "label": "Other",
+          "note": "Strategy and planning references, readable in the portal.",
+          "defaultOpen": true,
+          "items": [
+            {
+              "id": "new-luci-campaign-strategy",
+              "label": "New LUCI campaign strategy",
+              "href": "#coming-soon/new-luci-campaign-strategy",
+              "note": "Three audiences, sequencing, and channels. Not a public launch."
+            },
+            {
+              "id": "new-luci-feature-list",
+              "label": "New LUCI — Preliminary feature list",
+              "href": "#coming-soon/new-luci-feature-list",
+              "note": "Primary release features and also-in-release, in full."
+            }
           ]
         }
-      ]
-    },
-    {
-      "id": "marketing",
-      "label": "Marketing",
-      "defaultOpen": false,
-      "items": [
-        {
-          "id": "case-study-yaamava",
-          "label": "Yaamava' Resort & Casino",
-          "queueId": "case-study-yaamava"
-        },
-        {
-          "id": "case-study-ameristar",
-          "label": "Ameristar Council Bluffs",
-          "queueId": "case-study-ameristar",
-          "downloads": [
-            { "label": "PDF", "path": "assets/sales/LUCI-Case-Study-Ameristar-Council-Bluffs.pdf" }
-          ]
-        },
-        {
-          "id": "case-study-tachi",
-          "label": "Tachi Palace Casino Resort",
-          "queueId": "case-study-tachi",
-          "downloads": [
-            { "label": "PDF", "path": "assets/sales/LUCI-Case-Study-Tachi-Palace.pdf" }
-          ]
-        },
-        {
-          "id": "case-study-sams-town",
-          "label": "Sam's Town Hotel & Gambling Hall",
-          "queueId": "case-study-sams-town"
-        },
-        {
-          "id": "signal-issue-01",
-          "label": "The Signal · Issue 01",
-          "queueId": "signal-issue-01"
-        },
-        {
-          "id": "signal-issue-02",
-          "label": "The Signal · Issue 02",
-          "queueId": "signal-issue-02"
-        },
-        {
-          "id": "newsletter-email-teaser",
-          "label": "Issue 01 · Email teaser",
-          "queueId": "newsletter-email-teaser"
-        }
-      ]
-    },
-    {
-      "id": "templates",
-      "label": "Templates",
-      "defaultOpen": false,
-      "items": [
-        { "id": "budget-estimate", "label": "Budget estimate", "note": "Customizable in the Customization Studio" },
-        { "id": "proposal-builder", "label": "Proposal builder", "comingSoon": true, "note": "AI-assisted proposals — coming soon" }
       ]
     }
   ]

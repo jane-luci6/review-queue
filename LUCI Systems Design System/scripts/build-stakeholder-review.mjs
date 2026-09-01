@@ -151,10 +151,15 @@ function collectManifestAssetRefs(refs) {
   const manifestPath = path.join(reviewDir, 'library-manifest.json');
   if (!fs.existsSync(manifestPath)) return;
   const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
-  for (const group of manifest.groups || []) {
+  // Downloads tab groups live under folders[].groups[]; older manifests had a flat groups[].
+  const groups = [
+    ...(manifest.groups || []),
+    ...(manifest.folders || []).flatMap((folder) => folder.groups || []),
+  ];
+  for (const group of groups) {
     for (const item of group.items || []) {
-      for (const dl of item.downloads || []) {
-        if (dl.path && String(dl.path).startsWith('assets/')) refs.add(String(dl.path).split(/[?#]/)[0]);
+      for (const ref of [...(item.downloads || []).map((dl) => dl.path), item.path]) {
+        if (ref && String(ref).startsWith('assets/')) refs.add(String(ref).split(/[?#]/)[0]);
       }
     }
   }
@@ -593,15 +598,23 @@ function syncPreviewAssets(queue) {
 /** Root redirect so static hosts (VM python/nginx) open the portal at /. */
 function writePortalRootIndex() {
   const indexPath = path.join(reviewDir, 'index.html');
+  // Preserve location.hash so /#campaigns lands on /internal-portal/index.html#campaigns.
+  // No meta refresh: it cannot keep the hash and races the script.
   const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="refresh" content="0; url=internal-portal/index.html">
   <title>Internal Marketing Portal</title>
-  <script>location.replace('internal-portal/index.html');</script>
 </head>
-<body><p><a href="internal-portal/index.html">Internal Marketing Portal</a></p></body>
+<body>
+  <p><a id="portal-link" href="internal-portal/index.html">Internal Marketing Portal</a></p>
+  <script>
+    var dest = 'internal-portal/index.html' + location.hash;
+    var a = document.getElementById('portal-link');
+    if (a) a.href = dest;
+    location.replace(dest);
+  </script>
+</body>
 </html>
 `;
   fs.writeFileSync(indexPath, html);

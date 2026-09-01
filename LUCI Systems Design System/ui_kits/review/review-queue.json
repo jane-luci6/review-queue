@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-27",
+  "updated": "2026-08-31",
   "publishNote": "Build (npm run build:review) outputs to ui_kits/review. Bump reviewVersion + versionNote for new uploads (version history shown in portal). Set dueForReview for first-time review. Comments/approvals sync server-side via the comments_api container (proxied at /api/comments); Jane sees Mike/Mark's feedback on refresh. Archive with scripts/pull-review-comments.mjs.",
   "previewBaseUrl": "",
   "commentsApiUrl": "http://10.10.1.17:8081/api/comments",
@@ -8,34 +8,36 @@
     {
       "title": "Messaging guide",
       "url": "messaging/messaging-guide.html",
-      "note": "Updated Aug 27, 2026"
+      "note": "Updated Aug 31, 2026"
     },
     {
       "title": "LUCI philosophy",
       "url": "messaging/philosophy.html",
-      "note": "Updated Aug 27, 2026"
+      "note": "Updated Aug 31, 2026"
     },
     {
       "title": "Personas",
       "url": "messaging/personas.html",
-      "note": "Updated Aug 27, 2026"
+      "note": "Updated Aug 31, 2026"
     }
   ],
   "inProgress": [],
-  "dueForReview": [
+  "dueForReview": [],
+  "approvedAssets": [
     {
       "id": "case-study-sams-town",
       "title": "Case Study · Sam's Town Hotel & Gambling Hall",
       "summary": "Sam's Town case study — 480-sq-ft sportsbook LED wall looped into the LUCI platform already running the property, plus race video over existing coax.",
-      "reviewStatus": "Updated — new photo, color swap, visual template",
-      "signOff": false,
+      "approved": "2026-08-20",
+      "note": "Approved — live on lucisystems.com.",
+      "liveUrl": "https://www.lucisystems.com/case-studies/sams-town",
+      "embedPreview": true,
       "reviewVersion": 2,
       "versionNote": "Updated racebook photo (AI-generated with LUCI logo on shirt back), swapped scope story title colors (mint first, white for 'to date'), photo-band treatment for 'The room they had,' soft mint wash for mid-section. Established as the standing visual template for case studies.",
-      "due": "2026-08-20",
       "hubPreviewPath": "ui_kits/case-studies/sams-town.html",
       "reviewBrief": {
         "description": "Standalone Sam's Town case study adapted from The Signal Issue 03 field story — sportsbook LED wall, race-book coax, consolidation spine.",
-        "reviewAsk": "review the new racebook photo, the scope story title color swap, and the overall visual template as the standing format for future case studies."
+        "reviewAsk": "approved — open the live page or the local preview."
       },
       "versionHistory": [
         {
@@ -50,9 +52,7 @@
         }
       ],
       "previewUrl": "case-studies/sams-town.html"
-    }
-  ],
-  "approvedAssets": [
+    },
     {
       "id": "sales-brochure",
       "title": "Sales brochure",
@@ -276,6 +276,47 @@
       ]
     },
     {
+      "id": "signal-issue-03",
+      "title": "The Signal · Issue 03 (August 2026)",
+      "summary": "Issue 03 — Sam's Town sportsbook field story, the website coming this fall, and Inside LUCI.",
+      "approved": "2026-08-18",
+      "note": "Live on lucisystems.com.",
+      "reviewVersion": 1,
+      "liveUrl": "https://www.lucisystems.com/the-signal/issue-03",
+      "hubPreviewPath": "ui_kits/newsletter/the-signal-issue-03-august-2026.html",
+      "reviewBrief": {
+        "description": "Issue 03 is the August web edition of The Signal — the Sam's Town sportsbook field story, a first look at the website landing this fall, and Inside LUCI.",
+        "reviewAsk": "published — open the live issue."
+      },
+      "versionHistory": [
+        {
+          "version": 1,
+          "published": "2026-08-18",
+          "note": "Published to lucisystems.com."
+        }
+      ]
+    },
+    {
+      "id": "signal-issue-04",
+      "title": "The Signal · Issue 04 (September 2026)",
+      "summary": "Issue 04 — the September edition. Opens from the local preview until the live page is published.",
+      "approved": "2026-09-01",
+      "note": "Approved. The live URL isn't reachable yet — this entry opens the built preview; add liveUrl once it's published.",
+      "reviewVersion": 1,
+      "hubPreviewPath": "ui_kits/newsletter/the-signal-issue-04-september-2026.html",
+      "reviewBrief": {
+        "description": "Issue 04 is the September web edition of The Signal.",
+        "reviewAsk": "approved — open the preview."
+      },
+      "versionHistory": [
+        {
+          "version": 1,
+          "published": "2026-09-01",
+          "note": "Added to the portal — preview pending the live publish."
+        }
+      ]
+    },
+    {
       "id": "newsletter-email-teaser",
       "title": "Newsletter email · The Signal Issue 01 teaser",
       "summary": "Inbox teaser — Issue 01 highlights, deep links, read-issue CTA. Footer tagline synced to Messaging Guide.",
@@ -307,6 +348,8 @@
       "summary": "Ameristar case study — narrative, results, CTA.",
       "approved": "2026-07-15",
       "note": "Updated Jul 15, 2026",
+      "liveUrl": "https://www.lucisystems.com/case-studies/ameristar-council-bluffs",
+      "embedPreview": true,
       "previewUrl": "case-studies/ameristar-council-bluffs.html",
       "hubPreviewPath": "ui_kits/case-studies/ameristar-council-bluffs.html",
       "reviewBrief": {
@@ -332,6 +375,8 @@
       "summary": "Tachi Palace case study — one week to a foundation for growth: eight LED walls, bingo hall refresh, results, and what's next.",
       "approved": "2026-08-18",
       "note": "Approved — available to download.",
+      "liveUrl": "https://www.lucisystems.com/case-studies/tachi-palace-case-study",
+      "embedPreview": true,
       "previewUrl": "case-studies/tachi-palace.html",
       "hubPreviewPath": "ui_kits/case-studies/tachi-palace.html",
       "reviewBrief": {
@@ -392,12 +437,15 @@
       "id": "case-study-yaamava",
       "title": "Case Study · Yaamava' Resort & Casino",
       "summary": "Yaamava' case study — five technology silos consolidated onto one LUCI platform across a 290,000-sq-ft floor, plus new LED across the building.",
-      "note": "First draft from approved web copy — review scope numbers, imagery, and the 'on LUCI to date' ledger.",
+      "approved": "2026-08-19",
+      "note": "Approved — live on lucisystems.com.",
+      "liveUrl": "https://www.lucisystems.com/case-studies/yaamava-case-study",
+      "embedPreview": true,
       "previewUrl": "case-studies/yaamava.html",
       "hubPreviewPath": "ui_kits/case-studies/yaamava.html",
       "reviewBrief": {
         "description": "Standalone Yaamava' case study built from the approved web copy — consolidation spine, Toni Pepper quote, and the 'Yaamava' on LUCI to date' scope ledger.",
-        "reviewAsk": "accuracy of the scope counts, the property photography selection, and whether the ledger reads right against the Sam's Town version."
+        "reviewAsk": "approved — open the live page or the local preview."
       },
       "versionHistory": [
         {
@@ -497,5 +545,5 @@
     }
   ],
   "finalized": [],
-  "messagingDocsUpdated": "2026-08-27"
+  "messagingDocsUpdated": "2026-08-31"
 }

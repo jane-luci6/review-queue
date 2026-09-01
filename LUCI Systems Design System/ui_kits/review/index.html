@@ -2,9 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="refresh" content="0; url=internal-portal/index.html">
   <title>Internal Marketing Portal</title>
-  <script>location.replace('internal-portal/index.html');</script>
 </head>
-<body><p><a href="internal-portal/index.html">Internal Marketing Portal</a></p></body>
+<body>
+  <p><a id="portal-link" href="internal-portal/index.html">Internal Marketing Portal</a></p>
+  <script>
+    var dest = 'internal-portal/index.html' + location.hash;
+    var a = document.getElementById('portal-link');
+    if (a) a.href = dest;
+    location.replace(dest);
+  </script>
+</body>
 </html>
