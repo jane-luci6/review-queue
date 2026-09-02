@@ -9,8 +9,8 @@
   "summary": {
     "what_the_strongest_media_can_show": "The strongest available footage clearly demonstrates: (1) the scale and curvature of the completed 106-foot curved LED wall with live multi-source sports content, (2) the bar ticker integrated into the sportsbook bar environment with patrons present, (3) the installation process with technicians working on lifts during the build, (4) the decommissioned legacy projectors removed from the rack room, and (5) the overall finished sportsbook environment with patrons using the space. The footage is heavily weighted toward completed hero reveals of the finished wall from multiple angles, with strong installation progress and decommissioning coverage.",
     "what_is_missing": "No footage of the 2 LUCI racks that replaced the 15 legacy racks (only the 'before' decommissioning footage exists). No footage of the LUCI interface/iPad in operational use. No footage of wall configurations being switched. No customer/operator interview. No true 'before' footage of the old projector/screen sportsbook in operation (V0048 shows decommissioned projectors in storage, not the former setup running). No footage of the bar ticker under construction.",
-    "strongest_available_media_can_show": "The strongest available media demonstrates: (1) the scale and visual impact of the completed 106-foot curved LED wall (V0036, V0040, V0028, V0048 hero pans; I0065, I0066 hero stills), (2) the bar ticker under construction and during testing with test numbers (V0031, V0037 \u2014 Jane confirmed these are 'during' shots with testing data, not 'after'), (3) the rack room transformation \u2014 the 2-3 completed LUCI racks that replaced 15 legacy racks (V0051, V0050, V0052; I0078 LUCI IPTV ENCODER close-up), (4) LED panel installation with workers on lifts (V0027), (5) decommissioned legacy projectors and gear (V0048), (6) the completed sportsbook bar environment with integrated LED ticker (V0039, V0041, V0044), (7) construction/before context (V0020, V0021, V0006), and (8) general property context from B-Roll (V0001-V0019, not deeply reviewed). The human-curated 5-photo construction progression (IMG_4216 \u2192 IMG_4872) remains a supporting editorial device.",
-    "videos_deeply_reviewed": 10,
+    "strongest_available_media_can_show": "The strongest available media demonstrates: (1) the scale and visual impact of the completed 106-foot curved LED wall (V0036, V0040, V0028, V0048 hero pans; I0065, I0066 hero stills), (2) the bar ticker under construction and during testing with test numbers (V0031, V0037 \u2014 Jane confirmed these are 'during' shots with testing data, not 'after'), (3) the rack room transformation \u2014 the 2-3 completed LUCI racks that replaced 15 legacy racks (V0051, V0050, V0052; I0078 LUCI IPTV ENCODER close-up), (4) LED panel installation with workers on lifts (V0027, V0028), (5) decommissioned legacy projectors and gear (V0048, V0053), (6) the completed sportsbook bar environment with integrated LED ticker (V0039, V0041, V0044), (7) construction/before context (V0020, V0021, V0006), (8) the completed high-limit lounge with LED wall (V0007), and (9) general property context from B-Roll \u2014 casino floor, food court with digital signage, bar with gaming terminals, hotel lobby with guests (V0010, V0004, V0002, V0014, V0016). The human-curated 5-photo construction progression (IMG_4216 \u2192 IMG_4872) remains a supporting editorial device.",
+    "videos_deeply_reviewed": 45,
     "images_reviewed": 3
   },
   "redundancy_clusters": [
@@ -210,6 +210,55 @@
         ]
       },
       "notes": "V0027 (13s) shows workers on boom lift and scissor lift installing LED modules (green test pattern). V0023 is a still image (IMG_4873.jpeg) of the LED ticker mounting frame under construction. Note: V0027 may show the main wall, not the bar ticker specifically \u2014 first-pass classification said 'ticker frame' but contact sheet suggests main wall."
+    },
+    {
+      "cluster_id": "K-broll-property-context",
+      "description": "B-Roll property context \u2014 completed casino floor, food court, lounge/bar, hotel lobby",
+      "members": [
+        "V0001",
+        "V0002",
+        "V0003",
+        "V0004",
+        "V0005",
+        "V0008",
+        "V0009",
+        "V0010",
+        "V0011",
+        "V0012",
+        "V0013",
+        "V0014",
+        "V0015",
+        "V0016",
+        "V0017",
+        "V0018",
+        "V0019"
+      ],
+      "ranking": {
+        "preferred": [
+          "V0010",
+          "V0004"
+        ],
+        "alternate": [
+          "V0002",
+          "V0014",
+          "V0016"
+        ],
+        "redundant": [
+          "V0001",
+          "V0003",
+          "V0005",
+          "V0008",
+          "V0009",
+          "V0011",
+          "V0012",
+          "V0013",
+          "V0015",
+          "V0017",
+          "V0018",
+          "V0019"
+        ]
+      },
+      "notes": "V0010 (casino bar with gaming terminals, sports on TV) and V0004 (food court with digital signage) are the strongest \u2014 they show LUCI-managed AV in operational context. V0002 (casino floor), V0014 (lobby fireplace), V0016 (lobby with guests) are good alternates. The rest are redundant within their categories (casino floor, food court, lounge, lobby)."
     }
   ],
   "tier_1": [
@@ -237,7 +286,12 @@
     "V0049",
     "V0037",
     "V0027",
-    "I0066"
+    "I0066",
+    "V0010",
+    "V0004",
+    "V0002",
+    "V0014",
+    "V0016"
   ],
   "tier_3": [
     "V0033",
@@ -247,14 +301,25 @@
     "V0006",
     "V0045",
     "V0053",
-    "V0032"
+    "V0032",
+    "V0001",
+    "V0003",
+    "V0005",
+    "V0008",
+    "V0009",
+    "V0011",
+    "V0012",
+    "V0013",
+    "V0015",
+    "V0017",
+    "V0018",
+    "V0019"
   ],
   "coverage_gaps": [
     "No footage of the LUCI interface/iPad in operational use",
     "No footage of wall configurations being switched (the 6 configurations)",
     "No customer/operator interview (all speakers are LUCI team members)",
-    "No true 'before' footage of the old projector/screen sportsbook in operation (V0048 shows decommissioned projectors in storage, not the former setup running)",
-    "B-Roll footage (V0001-V0019) provides general property context (casino floor, lounges, bars, food court, hotel lobby) but was not deeply reviewed \u2014 available if needed"
+    "No true 'before' footage of the old projector/screen sportsbook in operation (V0048 shows decommissioned projectors in storage, not the former setup running)"
   ],
   "assets": [
     {
@@ -288,7 +353,8 @@
         "large curved LED wall installation",
         "completed sportsbook visual environment",
         "106-foot curved LED wall"
-      ]
+      ],
+      "asset_type": "video"
     },
     {
       "asset_id": "V0040",
@@ -335,7 +401,8 @@
         "completed sportsbook visual environment",
         "bar ticker",
         "106-foot curved LED wall"
-      ]
+      ],
+      "asset_type": "video"
     },
     {
       "asset_id": "V0028",
@@ -382,7 +449,8 @@
         "LED panel installation",
         "installation scale",
         "technicians working"
-      ]
+      ],
+      "asset_type": "video"
     },
     {
       "asset_id": "V0048",
@@ -418,7 +486,8 @@
         "15 racks of legacy gear consolidated to 2 LUCI racks",
         "20+ projectors removed",
         "removal/decommissioning of legacy infrastructure"
-      ]
+      ],
+      "asset_type": "video"
     },
     {
       "asset_id": "V0039",
@@ -449,7 +518,8 @@
       "supports": [
         "rebuilt the continuous odds ticker around the sportsbook bar",
         "150 ft bar ticker"
-      ]
+      ],
+      "asset_type": "video"
     },
     {
       "asset_id": "V0041",
@@ -481,7 +551,8 @@
       "supports": [
         "large curved LED wall installation",
         "completed sportsbook visual environment"
-      ]
+      ],
+      "asset_type": "video"
     },
     {
       "asset_id": "V0030",
@@ -512,7 +583,8 @@
       "supports": [
         "large curved LED wall installation",
         "completed sportsbook visual environment"
-      ]
+      ],
+      "asset_type": "video"
     },
     {
       "asset_id": "V0034",
@@ -545,7 +617,8 @@
       "supports": [
         "large curved LED wall installation",
         "completed sportsbook visual environment"
-      ]
+      ],
+      "asset_type": "video"
     },
     {
       "asset_id": "V0035",
@@ -579,7 +652,8 @@
         "LED panel installation",
         "technicians working",
         "completed sportsbook visual environment"
-      ]
+      ],
+      "asset_type": "video"
     },
     {
       "asset_id": "V0038",
@@ -610,7 +684,8 @@
       ],
       "supports": [
         "rebuilt the continuous odds ticker around the sportsbook bar"
-      ]
+      ],
+      "asset_type": "video"
     },
     {
       "asset_id": "V0044",
@@ -643,7 +718,8 @@
       "supports": [
         "rebuilt the continuous odds ticker around the sportsbook bar",
         "150 ft bar ticker"
-      ]
+      ],
+      "asset_type": "video"
     },
     {
       "asset_id": "V0021",
@@ -676,7 +752,8 @@
       "supports": [
         "sportsbook remodel",
         "construction phase"
-      ]
+      ],
+      "asset_type": "video"
     },
     {
       "asset_id": "V0007",
@@ -710,7 +787,8 @@
       "supports": [
         "overall property context",
         "LED lighting integration"
-      ]
+      ],
+      "asset_type": "video"
     },
     {
       "asset_id": "V0033",
@@ -741,7 +819,8 @@
       "supports": [
         "large curved LED wall installation",
         "completed sportsbook visual environment"
-      ]
+      ],
+      "asset_type": "video"
     },
     {
       "asset_id": "V0042",
@@ -772,7 +851,8 @@
       "supports": [
         "large curved LED wall installation",
         "completed sportsbook visual environment"
-      ]
+      ],
+      "asset_type": "video"
     },
     {
       "asset_id": "V0043",
@@ -803,7 +883,8 @@
       "supports": [
         "large curved LED wall installation",
         "completed sportsbook visual environment"
-      ]
+      ],
+      "asset_type": "video"
     },
     {
       "asset_id": "V0020",
@@ -834,7 +915,8 @@
       ],
       "supports": [
         "construction phase"
-      ]
+      ],
+      "asset_type": "video"
     },
     {
       "asset_id": "V0006",
@@ -865,7 +947,8 @@
       ],
       "supports": [
         "overall property context"
-      ]
+      ],
+      "asset_type": "video"
     },
     {
       "asset_id": "V0051",
@@ -1295,6 +1378,368 @@
       ],
       "supports": [
         "LUCI hardware installation"
+      ]
+    },
+    {
+      "asset_id": "V0010",
+      "deep_review_status": "reviewed",
+      "tier": 2,
+      "redundancy_cluster": "K-broll-property-context",
+      "asset_type": "video",
+      "shot_composition": "Pan across casino bar and lounge area with gaming terminals at bar",
+      "camera_movement": "smooth pan",
+      "technical_quality": 4,
+      "visual_interest": 4,
+      "subject_clarity": 4,
+      "uniqueness": "Strongest B-roll \u2014 shows bar with integrated gaming terminals, sports on TV, blue LED under-glow, patron seated. Shows LUCI-managed AV in operational context.",
+      "candidate_ranges": [
+        {
+          "in": "00:02.0",
+          "out": "00:22.2",
+          "recommended_duration": 20.0,
+          "description": "Pan from lounge seating to bar with gaming terminals, sports on TV ('RUN IT BACK'), blue LED under-glow, patron visible \u2014 the completed operational bar environment",
+          "strength": 4,
+          "use_cases": [
+            "property context",
+            "completed bar environment",
+            "AV integration in context"
+          ],
+          "issues": []
+        }
+      ],
+      "supports": [
+        "completed sportsbook visual environment",
+        "property-wide AV integration"
+      ]
+    },
+    {
+      "asset_id": "V0004",
+      "deep_review_status": "reviewed",
+      "tier": 2,
+      "redundancy_cluster": "K-broll-property-context",
+      "asset_type": "video",
+      "shot_composition": "Dolly through food court with Capriotti's and digital signage",
+      "camera_movement": "smooth dolly",
+      "technical_quality": 5,
+      "visual_interest": 4,
+      "subject_clarity": 4,
+      "uniqueness": "Shows LUCI-managed digital signage monitors on wall in food court context \u2014 connects the property tour to the LUCI platform",
+      "candidate_ranges": [
+        {
+          "in": "00:00.6",
+          "out": "00:06.7",
+          "recommended_duration": 6.0,
+          "description": "Dolly through food court past Capriotti's, revealing digital signage monitors on wall \u2014 clean, no people",
+          "strength": 4,
+          "use_cases": [
+            "property context",
+            "digital signage in context",
+            "LUCI-managed endpoints"
+          ],
+          "issues": []
+        }
+      ],
+      "supports": [
+        "98 digital signage endpoints",
+        "property-wide AV integration"
+      ]
+    },
+    {
+      "asset_id": "V0002",
+      "deep_review_status": "reviewed",
+      "tier": 2,
+      "redundancy_cluster": "K-broll-property-context",
+      "asset_type": "video",
+      "shot_composition": "Wide pan across casino floor with slot machines and neon",
+      "camera_movement": "smooth pan",
+      "technical_quality": 4,
+      "visual_interest": 4,
+      "subject_clarity": 4,
+      "uniqueness": "Vibrant casino floor with pink/purple neon walls, yellow lanterns, 'POKER PROGRESSIVE' $103,180 \u2014 strong gaming atmosphere",
+      "candidate_ranges": [
+        {
+          "in": "00:01.6",
+          "out": "00:17.5",
+          "recommended_duration": 16.0,
+          "description": "Pan down casino floor aisle with slot machines, pink/purple neon wall panels, yellow ceiling lanterns",
+          "strength": 4,
+          "use_cases": [
+            "property context",
+            "casino floor atmosphere",
+            "gaming environment"
+          ],
+          "issues": []
+        }
+      ],
+      "supports": [
+        "property-wide AV integration"
+      ]
+    },
+    {
+      "asset_id": "V0014",
+      "deep_review_status": "reviewed",
+      "tier": 2,
+      "redundancy_cluster": "K-broll-property-context",
+      "asset_type": "video",
+      "shot_composition": "Tilt up from lobby lounge seating to ceiling",
+      "camera_movement": "tilt up",
+      "technical_quality": 5,
+      "visual_interest": 4,
+      "subject_clarity": 4,
+      "uniqueness": "VQ=5/5 \u2014 lobby lounge with fireplace, red leather bench, palm trees through windows. Shows the hospitality side of Aliante.",
+      "candidate_ranges": [
+        {
+          "in": "00:00.4",
+          "out": "00:05.0",
+          "recommended_duration": 4.5,
+          "description": "Lobby lounge with fireplace, red leather bench, wicker chairs, palm trees through windows \u2014 warm hospitality atmosphere",
+          "strength": 4,
+          "use_cases": [
+            "property context",
+            "hospitality side",
+            "lobby atmosphere"
+          ],
+          "issues": []
+        }
+      ],
+      "supports": [
+        "property-wide AV integration"
+      ]
+    },
+    {
+      "asset_id": "V0016",
+      "deep_review_status": "reviewed",
+      "tier": 2,
+      "redundancy_cluster": "K-broll-property-context",
+      "asset_type": "video",
+      "shot_composition": "Pan across hotel lobby with Guest Services desk, chandelier, guests",
+      "camera_movement": "smooth pan",
+      "technical_quality": 4,
+      "visual_interest": 3,
+      "subject_clarity": 4,
+      "uniqueness": "Shows the hotel lobby with actual guests walking through with luggage, grand piano, golden chandelier \u2014 adds life and scale to the property context",
+      "candidate_ranges": [
+        {
+          "in": "00:01.7",
+          "out": "00:18.8",
+          "recommended_duration": 17.0,
+          "description": "Pan across hotel lobby: Guest Services desk, golden chandelier, guests with luggage, grand piano, seating area with TV \u2014 the full lobby experience",
+          "strength": 4,
+          "use_cases": [
+            "property context",
+            "hotel lobby",
+            "guest experience",
+            "scale"
+          ],
+          "issues": []
+        }
+      ],
+      "supports": [
+        "property-wide AV integration"
+      ]
+    },
+    {
+      "asset_id": "V0001",
+      "deep_review_status": "reviewed",
+      "tier": 3,
+      "redundancy_cluster": "K-broll-property-context",
+      "asset_type": "video",
+      "shot_composition": "Casino floor / food court / lounge / lobby \u2014 redundant within category",
+      "camera_movement": "pan",
+      "technical_quality": 3,
+      "visual_interest": 3,
+      "subject_clarity": 3,
+      "uniqueness": "Redundant with stronger B-roll in same category",
+      "candidate_ranges": [],
+      "supports": [
+        "property-wide AV integration"
+      ]
+    },
+    {
+      "asset_id": "V0003",
+      "deep_review_status": "reviewed",
+      "tier": 3,
+      "redundancy_cluster": "K-broll-property-context",
+      "asset_type": "video",
+      "shot_composition": "Casino floor / food court / lounge / lobby \u2014 redundant within category",
+      "camera_movement": "pan",
+      "technical_quality": 3,
+      "visual_interest": 3,
+      "subject_clarity": 3,
+      "uniqueness": "Redundant with stronger B-roll in same category",
+      "candidate_ranges": [],
+      "supports": [
+        "property-wide AV integration"
+      ]
+    },
+    {
+      "asset_id": "V0005",
+      "deep_review_status": "reviewed",
+      "tier": 3,
+      "redundancy_cluster": "K-broll-property-context",
+      "asset_type": "video",
+      "shot_composition": "Casino floor / food court / lounge / lobby \u2014 redundant within category",
+      "camera_movement": "pan",
+      "technical_quality": 3,
+      "visual_interest": 3,
+      "subject_clarity": 3,
+      "uniqueness": "Redundant with stronger B-roll in same category",
+      "candidate_ranges": [],
+      "supports": [
+        "property-wide AV integration"
+      ]
+    },
+    {
+      "asset_id": "V0008",
+      "deep_review_status": "reviewed",
+      "tier": 3,
+      "redundancy_cluster": "K-broll-property-context",
+      "asset_type": "video",
+      "shot_composition": "Casino floor / food court / lounge / lobby \u2014 redundant within category",
+      "camera_movement": "pan",
+      "technical_quality": 3,
+      "visual_interest": 3,
+      "subject_clarity": 3,
+      "uniqueness": "Redundant with stronger B-roll in same category",
+      "candidate_ranges": [],
+      "supports": [
+        "property-wide AV integration"
+      ]
+    },
+    {
+      "asset_id": "V0009",
+      "deep_review_status": "reviewed",
+      "tier": 3,
+      "redundancy_cluster": "K-broll-property-context",
+      "asset_type": "video",
+      "shot_composition": "Casino floor / food court / lounge / lobby \u2014 redundant within category",
+      "camera_movement": "pan",
+      "technical_quality": 3,
+      "visual_interest": 3,
+      "subject_clarity": 3,
+      "uniqueness": "Redundant with stronger B-roll in same category",
+      "candidate_ranges": [],
+      "supports": [
+        "property-wide AV integration"
+      ]
+    },
+    {
+      "asset_id": "V0011",
+      "deep_review_status": "reviewed",
+      "tier": 3,
+      "redundancy_cluster": "K-broll-property-context",
+      "asset_type": "video",
+      "shot_composition": "Casino floor / food court / lounge / lobby \u2014 redundant within category",
+      "camera_movement": "pan",
+      "technical_quality": 3,
+      "visual_interest": 3,
+      "subject_clarity": 3,
+      "uniqueness": "Redundant with stronger B-roll in same category",
+      "candidate_ranges": [],
+      "supports": [
+        "property-wide AV integration"
+      ]
+    },
+    {
+      "asset_id": "V0012",
+      "deep_review_status": "reviewed",
+      "tier": 3,
+      "redundancy_cluster": "K-broll-property-context",
+      "asset_type": "video",
+      "shot_composition": "Casino floor / food court / lounge / lobby \u2014 redundant within category",
+      "camera_movement": "pan",
+      "technical_quality": 3,
+      "visual_interest": 3,
+      "subject_clarity": 3,
+      "uniqueness": "Redundant with stronger B-roll in same category",
+      "candidate_ranges": [],
+      "supports": [
+        "property-wide AV integration"
+      ]
+    },
+    {
+      "asset_id": "V0013",
+      "deep_review_status": "reviewed",
+      "tier": 3,
+      "redundancy_cluster": "K-broll-property-context",
+      "asset_type": "video",
+      "shot_composition": "Casino floor / food court / lounge / lobby \u2014 redundant within category",
+      "camera_movement": "pan",
+      "technical_quality": 3,
+      "visual_interest": 3,
+      "subject_clarity": 3,
+      "uniqueness": "Redundant with stronger B-roll in same category",
+      "candidate_ranges": [],
+      "supports": [
+        "property-wide AV integration"
+      ]
+    },
+    {
+      "asset_id": "V0015",
+      "deep_review_status": "reviewed",
+      "tier": 3,
+      "redundancy_cluster": "K-broll-property-context",
+      "asset_type": "video",
+      "shot_composition": "Casino floor / food court / lounge / lobby \u2014 redundant within category",
+      "camera_movement": "pan",
+      "technical_quality": 3,
+      "visual_interest": 3,
+      "subject_clarity": 3,
+      "uniqueness": "Redundant with stronger B-roll in same category",
+      "candidate_ranges": [],
+      "supports": [
+        "property-wide AV integration"
+      ]
+    },
+    {
+      "asset_id": "V0017",
+      "deep_review_status": "reviewed",
+      "tier": 3,
+      "redundancy_cluster": "K-broll-property-context",
+      "asset_type": "video",
+      "shot_composition": "Casino floor / food court / lounge / lobby \u2014 redundant within category",
+      "camera_movement": "pan",
+      "technical_quality": 3,
+      "visual_interest": 3,
+      "subject_clarity": 3,
+      "uniqueness": "Redundant with stronger B-roll in same category",
+      "candidate_ranges": [],
+      "supports": [
+        "property-wide AV integration"
+      ]
+    },
+    {
+      "asset_id": "V0018",
+      "deep_review_status": "reviewed",
+      "tier": 3,
+      "redundancy_cluster": "K-broll-property-context",
+      "asset_type": "video",
+      "shot_composition": "Casino floor / food court / lounge / lobby \u2014 redundant within category",
+      "camera_movement": "pan",
+      "technical_quality": 3,
+      "visual_interest": 3,
+      "subject_clarity": 3,
+      "uniqueness": "Redundant with stronger B-roll in same category",
+      "candidate_ranges": [],
+      "supports": [
+        "property-wide AV integration"
+      ]
+    },
+    {
+      "asset_id": "V0019",
+      "deep_review_status": "reviewed",
+      "tier": 3,
+      "redundancy_cluster": "K-broll-property-context",
+      "asset_type": "video",
+      "shot_composition": "Casino floor / food court / lounge / lobby \u2014 redundant within category",
+      "camera_movement": "pan",
+      "technical_quality": 3,
+      "visual_interest": 3,
+      "subject_clarity": 3,
+      "uniqueness": "Redundant with stronger B-roll in same category",
+      "candidate_ranges": [],
+      "supports": [
+        "property-wide AV integration"
       ]
     }
   ],
