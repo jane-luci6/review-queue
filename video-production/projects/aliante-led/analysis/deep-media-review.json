@@ -8,7 +8,10 @@
   "v0024_v0026_editorial_note": "Excluded from deep review per Jane's editorial decision (2026-09-02). V0024/V0026 are not final-video A-roll candidates. Their transcripts remain project-intelligence sources.",
   "summary": {
     "what_the_strongest_media_can_show": "The strongest available footage clearly demonstrates: (1) the scale and curvature of the completed 106-foot curved LED wall with live multi-source sports content, (2) the bar ticker integrated into the sportsbook bar environment with patrons present, (3) the installation process with technicians working on lifts during the build, (4) the decommissioned legacy projectors removed from the rack room, and (5) the overall finished sportsbook environment with patrons using the space. The footage is heavily weighted toward completed hero reveals of the finished wall from multiple angles, with strong installation progress and decommissioning coverage.",
-    "what_is_missing": "No footage of the 2 LUCI racks that replaced the 15 legacy racks (only the 'before' decommissioning footage exists). No footage of the LUCI interface/iPad in operational use. No footage of wall configurations being switched. No customer/operator interview. No true 'before' footage of the old projector/screen sportsbook in operation (V0048 shows decommissioned projectors in storage, not the former setup running). No footage of the bar ticker under construction."
+    "what_is_missing": "No footage of the 2 LUCI racks that replaced the 15 legacy racks (only the 'before' decommissioning footage exists). No footage of the LUCI interface/iPad in operational use. No footage of wall configurations being switched. No customer/operator interview. No true 'before' footage of the old projector/screen sportsbook in operation (V0048 shows decommissioned projectors in storage, not the former setup running). No footage of the bar ticker under construction.",
+    "strongest_available_media_can_show": "The strongest available media demonstrates: (1) the scale and visual impact of the completed 106-foot curved LED wall (V0036, V0040, V0028, V0048 hero pans; I0065, I0066 hero stills), (2) the bar ticker under construction and during testing with test numbers (V0031, V0037 \u2014 Jane confirmed these are 'during' shots with testing data, not 'after'), (3) the rack room transformation \u2014 the 2-3 completed LUCI racks that replaced 15 legacy racks (V0051, V0050, V0052; I0078 LUCI IPTV ENCODER close-up), (4) LED panel installation with workers on lifts (V0027), (5) decommissioned legacy projectors and gear (V0048), (6) the completed sportsbook bar environment with integrated LED ticker (V0039, V0041, V0044), (7) construction/before context (V0020, V0021, V0006), and (8) general property context from B-Roll (V0001-V0019, not deeply reviewed). The human-curated 5-photo construction progression (IMG_4216 \u2192 IMG_4872) remains a supporting editorial device.",
+    "videos_deeply_reviewed": 10,
+    "images_reviewed": 3
   },
   "redundancy_clusters": [
     {
@@ -105,16 +108,19 @@
       "cluster_id": "E-decommissioning",
       "description": "Decommissioned legacy equipment",
       "members": [
-        "V0048"
+        "V0048",
+        "V0053"
       ],
       "ranking": {
         "preferred": [
           "V0048"
         ],
         "alternate": [],
-        "redundant": []
+        "redundant": [
+          "V0053"
+        ]
       },
-      "notes": "Only footage of decommissioned projectors. Unique."
+      "notes": "V0048 is the stronger decommissioning pan (dusty projectors, detached lenses, Belden box). V0053 shows a row of decommissioned rack units on the floor \u2014 less detailed."
     },
     {
       "cluster_id": "F-property-context",
@@ -130,6 +136,80 @@
         "redundant": []
       },
       "notes": "High-limit lounge with decorative LED lighting. Unique."
+    },
+    {
+      "cluster_id": "G-rack-room-completed",
+      "description": "Rack room completed \u2014 the 2-3 LUCI racks that replaced the 15 legacy racks",
+      "members": [
+        "V0050",
+        "V0051",
+        "V0052"
+      ],
+      "ranking": {
+        "preferred": [
+          "V0051"
+        ],
+        "alternate": [
+          "V0050",
+          "V0052"
+        ],
+        "redundant": []
+      },
+      "notes": "V0051 is the best completed rack shot (three full-height racks with active blue displays, 6.5s, clean). V0050 shows LUCI-branded hardware being installed with technician. V0052 shows cable management. Image I0078 (LUCI IPTV ENCODER close-up) is a strong companion still."
+    },
+    {
+      "cluster_id": "H-bar-ticker-during-testing",
+      "description": "Bar ticker during construction/testing with test numbers on display",
+      "members": [
+        "V0031",
+        "V0037"
+      ],
+      "ranking": {
+        "preferred": [
+          "V0031"
+        ],
+        "alternate": [
+          "V0037"
+        ],
+        "redundant": []
+      },
+      "notes": "V0031 clearly shows the bar ticker with red/white test numbers (320, 280) \u2014 a 'during' shot, not 'after'. V0037 shows the wrap-around ticker with diagnostic test data in wider room context. Jane clarified: these are testing numbers, not final content."
+    },
+    {
+      "cluster_id": "I-rack-room-progress",
+      "description": "Rack room during installation \u2014 LUCI hardware being mounted",
+      "members": [
+        "V0045",
+        "V0049"
+      ],
+      "ranking": {
+        "preferred": [
+          "V0049"
+        ],
+        "alternate": [
+          "V0045"
+        ],
+        "redundant": []
+      },
+      "notes": "V0049 (33s) shows LUCI-branded units being installed with technician present \u2014 frame 5 at t=24.8s is clearest. V0045 (17.3s) shows cable management and equipment but less organized."
+    },
+    {
+      "cluster_id": "J-led-wall-construction",
+      "description": "LED wall/ticker frame under construction",
+      "members": [
+        "V0027",
+        "V0023"
+      ],
+      "ranking": {
+        "preferred": [
+          "V0027"
+        ],
+        "alternate": [],
+        "redundant": [
+          "V0023"
+        ]
+      },
+      "notes": "V0027 (13s) shows workers on boom lift and scissor lift installing LED modules (green test pattern). V0023 is a still image (IMG_4873.jpeg) of the LED ticker mounting frame under construction. Note: V0027 may show the main wall, not the bar ticker specifically \u2014 first-pass classification said 'ticker frame' but contact sheet suggests main wall."
     }
   ],
   "tier_1": [
@@ -138,7 +218,11 @@
     "V0028",
     "V0048",
     "V0039",
-    "V0041"
+    "V0041",
+    "V0051",
+    "V0031",
+    "I0078",
+    "I0065"
   ],
   "tier_2": [
     "V0030",
@@ -147,22 +231,30 @@
     "V0038",
     "V0044",
     "V0021",
-    "V0007"
+    "V0007",
+    "V0050",
+    "V0052",
+    "V0049",
+    "V0037",
+    "V0027",
+    "I0066"
   ],
   "tier_3": [
     "V0033",
     "V0042",
     "V0043",
     "V0020",
-    "V0006"
+    "V0006",
+    "V0045",
+    "V0053",
+    "V0032"
   ],
   "coverage_gaps": [
-    "No footage of the 2 LUCI racks that replaced the 15 legacy racks",
     "No footage of the LUCI interface/iPad in operational use",
     "No footage of wall configurations being switched (the 6 configurations)",
     "No customer/operator interview (all speakers are LUCI team members)",
-    "No true 'before' footage of the old projector/screen sportsbook in operation",
-    "No footage of the bar ticker under construction (only completed)"
+    "No true 'before' footage of the old projector/screen sportsbook in operation (V0048 shows decommissioned projectors in storage, not the former setup running)",
+    "B-Roll footage (V0001-V0019) provides general property context (casino floor, lounges, bars, food court, hotel lobby) but was not deeply reviewed \u2014 available if needed"
   ],
   "assets": [
     {
@@ -774,6 +866,440 @@
       "supports": [
         "overall property context"
       ]
+    },
+    {
+      "asset_id": "V0051",
+      "deep_review_status": "reviewed",
+      "tier": 1,
+      "redundancy_cluster": "G-rack-room-completed",
+      "asset_type": "video",
+      "shot_composition": "Wide pan across three completed LUCI racks",
+      "camera_movement": "smooth pan",
+      "technical_quality": 4,
+      "visual_interest": 5,
+      "subject_clarity": 5,
+      "uniqueness": "Best 'after' shot of the 2-3 LUCI racks that replaced 15 legacy racks \u2014 fills major coverage gap",
+      "candidate_ranges": [
+        {
+          "in": "00:00.5",
+          "out": "00:06.5",
+          "recommended_duration": 6.0,
+          "description": "Pan across three full-height LUCI equipment racks with active blue status displays, neatly managed blue cabling \u2014 the completed rack room",
+          "strength": 5,
+          "use_cases": [
+            "rack room after",
+            "LUCI hardware",
+            "consolidation result"
+          ],
+          "issues": [
+            "short duration \u2014 only 6.5s"
+          ]
+        }
+      ],
+      "supports": [
+        "15 racks of legacy gear consolidated to 2 LUCI racks",
+        "LUCI hardware installation"
+      ]
+    },
+    {
+      "asset_id": "V0031",
+      "deep_review_status": "reviewed",
+      "tier": 1,
+      "redundancy_cluster": "H-bar-ticker-during-testing",
+      "asset_type": "video",
+      "shot_composition": "Wide pan across bar ticker with test numbers",
+      "camera_movement": "smooth pan",
+      "technical_quality": 4,
+      "visual_interest": 5,
+      "subject_clarity": 5,
+      "uniqueness": "Only footage of bar ticker with test numbers \u2014 a 'during' shot showing testing, not final content. Jane confirmed these are testing numbers.",
+      "candidate_ranges": [
+        {
+          "in": "00:00.8",
+          "out": "00:08.3",
+          "recommended_duration": 7.5,
+          "description": "Pan across bar ticker displaying red/white test numbers (320, 280) with construction context \u2014 scissor lift, plastic sheeting, worker in PPE",
+          "strength": 5,
+          "use_cases": [
+            "bar ticker during",
+            "testing phase",
+            "construction context"
+          ],
+          "issues": [
+            "construction clutter \u2014 but this is authentic 'during' footage"
+          ]
+        }
+      ],
+      "supports": [
+        "rebuilt the continuous odds ticker around the sportsbook bar",
+        "bar ticker under construction"
+      ]
+    },
+    {
+      "asset_id": "I0078",
+      "deep_review_status": "reviewed",
+      "tier": 1,
+      "redundancy_cluster": "G-rack-room-completed",
+      "asset_type": "image",
+      "shot_composition": "Close-up of five stacked LUCI IPTV ENCODER NX-5 units in rack",
+      "camera_movement": "static",
+      "technical_quality": 5,
+      "visual_interest": 5,
+      "subject_clarity": 5,
+      "uniqueness": "Best LUCI hardware close-up \u2014 branded units with active blue status displays, QR codes, lucisystems.com URL",
+      "candidate_ranges": [
+        {
+          "in": "static",
+          "out": "static",
+          "recommended_duration": 0,
+          "description": "Close-up of five LUCI IPTV ENCODER NX-5 units stacked in rack with blue status displays, LUCI branding, QR codes \u2014 strongest LUCI hardware shot",
+          "strength": 5,
+          "use_cases": [
+            "LUCI hardware",
+            "rack room detail",
+            "behind-the-scenes"
+          ],
+          "issues": []
+        }
+      ],
+      "supports": [
+        "LUCI hardware installation",
+        "15 racks of legacy gear consolidated to 2 LUCI racks"
+      ]
+    },
+    {
+      "asset_id": "I0065",
+      "deep_review_status": "reviewed",
+      "tier": 1,
+      "redundancy_cluster": "A-completed-main-wall",
+      "asset_type": "image",
+      "shot_composition": "Wide eye-level hero photo of completed curved LED wall with seating",
+      "camera_movement": "static",
+      "technical_quality": 5,
+      "visual_interest": 5,
+      "subject_clarity": 5,
+      "uniqueness": "Best static hero image of the finished sportsbook \u2014 full wall, seating, multi-zone content, architectural context",
+      "candidate_ranges": [
+        {
+          "in": "static",
+          "out": "static",
+          "recommended_duration": 0,
+          "description": "Wide hero photo of completed curved LED wall with dozens of content windows, blue armchairs, betting odds ticker \u2014 the definitive finished hero still",
+          "strength": 5,
+          "use_cases": [
+            "hero reveal",
+            "finished environment",
+            "scale",
+            "curvature"
+          ],
+          "issues": []
+        }
+      ],
+      "supports": [
+        "large curved LED wall installation",
+        "completed sportsbook visual environment",
+        "106-foot curved LED wall"
+      ]
+    },
+    {
+      "asset_id": "V0050",
+      "deep_review_status": "reviewed",
+      "tier": 2,
+      "redundancy_cluster": "G-rack-room-completed",
+      "asset_type": "video",
+      "shot_composition": "Close-up through empty racks, then pan to populated LUCI rack with technician",
+      "camera_movement": "handheld pan",
+      "technical_quality": 3,
+      "visual_interest": 4,
+      "subject_clarity": 4,
+      "uniqueness": "Shows LUCI-branded hardware being installed with technician present \u2014 progress footage",
+      "candidate_ranges": [
+        {
+          "in": "00:14.0",
+          "out": "00:22.5",
+          "recommended_duration": 8.5,
+          "description": "Technician working on populated LUCI rack with blue patch cables, monitor showing blue/white test data in background",
+          "strength": 4,
+          "use_cases": [
+            "rack room progress",
+            "LUCI hardware installation",
+            "technician at work"
+          ],
+          "issues": [
+            "first half is empty racks \u2014 less useful"
+          ]
+        }
+      ],
+      "supports": [
+        "LUCI hardware installation"
+      ]
+    },
+    {
+      "asset_id": "V0052",
+      "deep_review_status": "reviewed",
+      "tier": 2,
+      "redundancy_cluster": "G-rack-room-completed",
+      "asset_type": "video",
+      "shot_composition": "Mid-to-wide views of three completed racks, then closer detail shots",
+      "camera_movement": "handheld",
+      "technical_quality": 3,
+      "visual_interest": 4,
+      "subject_clarity": 4,
+      "uniqueness": "Good companion to V0051 \u2014 shows cable management and overhead infrastructure",
+      "candidate_ranges": [
+        {
+          "in": "00:01.7",
+          "out": "00:08.6",
+          "recommended_duration": 7.0,
+          "description": "Wide view of three completed LUCI racks with densely populated modules and blue cabling",
+          "strength": 4,
+          "use_cases": [
+            "rack room after",
+            "cable management",
+            "infrastructure"
+          ],
+          "issues": [
+            "some frames out of focus"
+          ]
+        }
+      ],
+      "supports": [
+        "LUCI hardware installation",
+        "15 racks of legacy gear consolidated to 2 LUCI racks"
+      ]
+    },
+    {
+      "asset_id": "V0049",
+      "deep_review_status": "reviewed",
+      "tier": 2,
+      "redundancy_cluster": "I-rack-room-progress",
+      "asset_type": "video",
+      "shot_composition": "Wide to close-up, showing empty racks then LUCI units being installed",
+      "camera_movement": "handheld",
+      "technical_quality": 3,
+      "visual_interest": 4,
+      "subject_clarity": 4,
+      "uniqueness": "Shows LUCI-branded units being installed \u2014 frame 5 at t=24.8s is clearest with LUCI label visible",
+      "candidate_ranges": [
+        {
+          "in": "00:22.0",
+          "out": "00:27.0",
+          "recommended_duration": 5.0,
+          "description": "Rack partially filled with LUCI-branded units and white devices, technician in grey shirt standing next to rack",
+          "strength": 4,
+          "use_cases": [
+            "rack room progress",
+            "LUCI hardware installation",
+            "technician at work"
+          ],
+          "issues": [
+            "several out-of-focus frames earlier in clip"
+          ]
+        }
+      ],
+      "supports": [
+        "LUCI hardware installation"
+      ]
+    },
+    {
+      "asset_id": "V0037",
+      "deep_review_status": "reviewed",
+      "tier": 2,
+      "redundancy_cluster": "H-bar-ticker-during-testing",
+      "asset_type": "video",
+      "shot_composition": "Close-up to wide, showing main wall and bar ticker with test data",
+      "camera_movement": "pan",
+      "technical_quality": 4,
+      "visual_interest": 4,
+      "subject_clarity": 4,
+      "uniqueness": "Shows the bar ticker in wider room context with test data visible on smaller screens \u2014 companion to V0031",
+      "candidate_ranges": [
+        {
+          "in": "00:05.0",
+          "out": "00:12.0",
+          "recommended_duration": 7.0,
+          "description": "Wide view of curved LED wall with bar ticker below showing test data, two people walking for scale",
+          "strength": 4,
+          "use_cases": [
+            "bar ticker during",
+            "scale context",
+            "testing phase"
+          ],
+          "issues": [
+            "some ticker screens show varied content \u2014 mix of testing and live"
+          ]
+        }
+      ],
+      "supports": [
+        "rebuilt the continuous odds ticker around the sportsbook bar",
+        "bar ticker under construction"
+      ]
+    },
+    {
+      "asset_id": "V0027",
+      "deep_review_status": "reviewed",
+      "tier": 2,
+      "redundancy_cluster": "J-led-wall-construction",
+      "asset_type": "video",
+      "shot_composition": "Wide shots of workers on lifts installing LED modules",
+      "camera_movement": "handheld",
+      "technical_quality": 4,
+      "visual_interest": 4,
+      "subject_clarity": 4,
+      "uniqueness": "Strong construction footage \u2014 workers on boom lift and scissor lift installing LED modules (green test pattern). Note: may show main wall, not bar ticker specifically.",
+      "candidate_ranges": [
+        {
+          "in": "00:01.0",
+          "out": "00:13.0",
+          "recommended_duration": 12.0,
+          "description": "Workers in safety gear on yellow boom lift and blue scissor lift installing LED modules against green test-pattern wall",
+          "strength": 4,
+          "use_cases": [
+            "construction progress",
+            "installation scale",
+            "technicians at work"
+          ],
+          "issues": [
+            "first-pass classified as 'ticker frame' but contact sheet suggests main wall \u2014 needs verification"
+          ]
+        }
+      ],
+      "supports": [
+        "large curved LED wall installation",
+        "LED panel installation"
+      ]
+    },
+    {
+      "asset_id": "I0066",
+      "deep_review_status": "reviewed",
+      "tier": 2,
+      "redundancy_cluster": "A-completed-main-wall",
+      "asset_type": "image",
+      "shot_composition": "Wide hero photo of finished racebook with LED screen",
+      "camera_movement": "static",
+      "technical_quality": 5,
+      "visual_interest": 5,
+      "subject_clarity": 5,
+      "uniqueness": "Companion to I0065 \u2014 similar angle, slightly different framing of the completed racebook",
+      "candidate_ranges": [
+        {
+          "in": "static",
+          "out": "static",
+          "recommended_duration": 0,
+          "description": "Wide hero photo of completed curved LED wall with content \u2014 alternate to I0065",
+          "strength": 4,
+          "use_cases": [
+            "hero reveal",
+            "finished environment",
+            "scale"
+          ],
+          "issues": [
+            "redundant with I0065"
+          ]
+        }
+      ],
+      "supports": [
+        "large curved LED wall installation",
+        "completed sportsbook visual environment"
+      ]
+    },
+    {
+      "asset_id": "V0045",
+      "deep_review_status": "reviewed",
+      "tier": 3,
+      "redundancy_cluster": "I-rack-room-progress",
+      "asset_type": "video",
+      "shot_composition": "Close-up of cable management and equipment, then wider messy room",
+      "camera_movement": "handheld",
+      "technical_quality": 2,
+      "visual_interest": 3,
+      "subject_clarity": 3,
+      "uniqueness": "Less clean than V0049 \u2014 shows cable management but room is cluttered with debris",
+      "candidate_ranges": [
+        {
+          "in": "00:01.0",
+          "out": "00:05.0",
+          "recommended_duration": 4.0,
+          "description": "Close-up of neatly bundled blue ethernet cables in back of rack",
+          "strength": 3,
+          "use_cases": [
+            "cable management detail"
+          ],
+          "issues": [
+            "cluttered environment, lower visual quality"
+          ]
+        }
+      ],
+      "supports": [
+        "LUCI hardware installation"
+      ]
+    },
+    {
+      "asset_id": "V0053",
+      "deep_review_status": "reviewed",
+      "tier": 3,
+      "redundancy_cluster": "E-decommissioning",
+      "asset_type": "video",
+      "shot_composition": "Row of decommissioned rack units on floor",
+      "camera_movement": "static/handheld",
+      "technical_quality": 2,
+      "visual_interest": 3,
+      "subject_clarity": 3,
+      "uniqueness": "Shows decommissioned rack units on floor \u2014 redundant with V0048 which is stronger",
+      "candidate_ranges": [
+        {
+          "in": "00:05.0",
+          "out": "00:15.0",
+          "recommended_duration": 10.0,
+          "description": "Row of dark grey decommissioned rack-mounted units lined up on concrete floor",
+          "strength": 3,
+          "use_cases": [
+            "decommissioning",
+            "legacy gear removal"
+          ],
+          "issues": [
+            "redundant with V0048, less detailed"
+          ]
+        }
+      ],
+      "supports": [
+        "15 racks of legacy gear consolidated to 2 LUCI racks"
+      ]
+    },
+    {
+      "asset_id": "V0032",
+      "deep_review_status": "reviewed",
+      "tier": 3,
+      "redundancy_cluster": null,
+      "asset_type": "video",
+      "shot_composition": "Rack room technical infrastructure and cable management",
+      "camera_movement": "handheld",
+      "technical_quality": 3,
+      "visual_interest": 3,
+      "subject_clarity": 3,
+      "uniqueness": "Generic rack room footage \u2014 less distinctive than V0049/V0050/V0051",
+      "candidate_ranges": [
+        {
+          "in": "00:02.0",
+          "out": "00:07.0",
+          "recommended_duration": 5.0,
+          "description": "Rack room with cable management and infrastructure",
+          "strength": 3,
+          "use_cases": [
+            "rack room B-roll"
+          ],
+          "issues": [
+            "not distinctive enough relative to stronger rack room footage"
+          ]
+        }
+      ],
+      "supports": [
+        "LUCI hardware installation"
+      ]
     }
+  ],
+  "coverage_gaps_corrected": [
+    "FILLED: No footage of the 2 LUCI racks that replaced the 15 legacy racks \u2014 NOW COVERED by V0050, V0051, V0052 (rack room completed footage) and I0078 (LUCI IPTV ENCODER image)",
+    "FILLED: No footage of the bar ticker under construction \u2014 NOW COVERED by V0023 (image), V0027 (video), V0031 (video with test numbers), V0037 (video with test data)"
   ]
 }
