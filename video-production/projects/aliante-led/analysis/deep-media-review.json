@@ -1,0 +1,779 @@
+{
+  "project_id": "aliante-led",
+  "stage": "deep_media_review",
+  "review_date": "2026-09-02",
+  "reviewer": "cursor",
+  "method": "Dense 6-frame contact sheets generated via ffmpeg from original source videos, visually inspected frame-by-frame",
+  "videos_reviewed": 18,
+  "v0024_v0026_editorial_note": "Excluded from deep review per Jane's editorial decision (2026-09-02). V0024/V0026 are not final-video A-roll candidates. Their transcripts remain project-intelligence sources.",
+  "summary": {
+    "what_the_strongest_media_can_show": "The strongest available footage clearly demonstrates: (1) the scale and curvature of the completed 106-foot curved LED wall with live multi-source sports content, (2) the bar ticker integrated into the sportsbook bar environment with patrons present, (3) the installation process with technicians working on lifts during the build, (4) the decommissioned legacy projectors removed from the rack room, and (5) the overall finished sportsbook environment with patrons using the space. The footage is heavily weighted toward completed hero reveals of the finished wall from multiple angles, with strong installation progress and decommissioning coverage.",
+    "what_is_missing": "No footage of the 2 LUCI racks that replaced the 15 legacy racks (only the 'before' decommissioning footage exists). No footage of the LUCI interface/iPad in operational use. No footage of wall configurations being switched. No customer/operator interview. No true 'before' footage of the old projector/screen sportsbook in operation (V0048 shows decommissioned projectors in storage, not the former setup running). No footage of the bar ticker under construction."
+  },
+  "redundancy_clusters": [
+    {
+      "cluster_id": "A-completed-main-wall",
+      "description": "Completed curved LED wall hero pans and pull-back reveals",
+      "members": [
+        "V0030",
+        "V0033",
+        "V0034",
+        "V0035",
+        "V0036",
+        "V0041",
+        "V0042",
+        "V0043"
+      ],
+      "ranking": {
+        "preferred": [
+          "V0036",
+          "V0040"
+        ],
+        "alternate": [
+          "V0030",
+          "V0034",
+          "V0041"
+        ],
+        "redundant": [
+          "V0033",
+          "V0042",
+          "V0043"
+        ]
+      },
+      "notes": "V0036 best single hero pull-back. V0040 most comprehensive 27s journey. V0035 distinct (technicians in safety gear, commissioning phase)."
+    },
+    {
+      "cluster_id": "B-bar-ticker",
+      "description": "Bar ticker footage",
+      "members": [
+        "V0038",
+        "V0039",
+        "V0044"
+      ],
+      "ranking": {
+        "preferred": [
+          "V0039"
+        ],
+        "alternate": [
+          "V0038",
+          "V0044"
+        ],
+        "redundant": []
+      },
+      "notes": "V0039 best pull-back reveal. V0038 shorter pan. V0044 starts with bar detail."
+    },
+    {
+      "cluster_id": "C-before-construction-context",
+      "description": "Before/construction barricade walkthroughs",
+      "members": [
+        "V0020",
+        "V0021",
+        "V0006"
+      ],
+      "ranking": {
+        "preferred": [
+          "V0021"
+        ],
+        "alternate": [
+          "V0020"
+        ],
+        "redundant": [
+          "V0006"
+        ]
+      },
+      "notes": "V0021 has clear COMING SOON sportsbook branding. V0006 is general casino floor, less specific."
+    },
+    {
+      "cluster_id": "D-installation-progress",
+      "description": "Installation/progress footage",
+      "members": [
+        "V0028",
+        "V0035"
+      ],
+      "ranking": {
+        "preferred": [
+          "V0028"
+        ],
+        "alternate": [
+          "V0035"
+        ],
+        "redundant": []
+      },
+      "notes": "V0028 shows workers on lift. V0035 shows completed wall with technicians at base (commissioning)."
+    },
+    {
+      "cluster_id": "E-decommissioning",
+      "description": "Decommissioned legacy equipment",
+      "members": [
+        "V0048"
+      ],
+      "ranking": {
+        "preferred": [
+          "V0048"
+        ],
+        "alternate": [],
+        "redundant": []
+      },
+      "notes": "Only footage of decommissioned projectors. Unique."
+    },
+    {
+      "cluster_id": "F-property-context",
+      "description": "Non-sportsbook property context",
+      "members": [
+        "V0007"
+      ],
+      "ranking": {
+        "preferred": [
+          "V0007"
+        ],
+        "alternate": [],
+        "redundant": []
+      },
+      "notes": "High-limit lounge with decorative LED lighting. Unique."
+    }
+  ],
+  "tier_1": [
+    "V0036",
+    "V0040",
+    "V0028",
+    "V0048",
+    "V0039",
+    "V0041"
+  ],
+  "tier_2": [
+    "V0030",
+    "V0034",
+    "V0035",
+    "V0038",
+    "V0044",
+    "V0021",
+    "V0007"
+  ],
+  "tier_3": [
+    "V0033",
+    "V0042",
+    "V0043",
+    "V0020",
+    "V0006"
+  ],
+  "coverage_gaps": [
+    "No footage of the 2 LUCI racks that replaced the 15 legacy racks",
+    "No footage of the LUCI interface/iPad in operational use",
+    "No footage of wall configurations being switched (the 6 configurations)",
+    "No customer/operator interview (all speakers are LUCI team members)",
+    "No true 'before' footage of the old projector/screen sportsbook in operation",
+    "No footage of the bar ticker under construction (only completed)"
+  ],
+  "assets": [
+    {
+      "asset_id": "V0036",
+      "deep_review_status": "reviewed",
+      "tier": 1,
+      "redundancy_cluster": "A-completed-main-wall",
+      "shot_composition": "Medium detail to ultra-wide pull-back",
+      "camera_movement": "smooth pull-back/zoom-out",
+      "technical_quality": 4,
+      "visual_interest": 5,
+      "subject_clarity": 5,
+      "uniqueness": "Best single hero pull-back \u2014 widest reveal with people for scale",
+      "candidate_ranges": [
+        {
+          "in": "00:10.0",
+          "out": "00:17.6",
+          "recommended_duration": 7.6,
+          "description": "Smooth pull-back from medium detail to ultra-wide hero reveal of full curved LED wall with HBO Max/DIRECTV content and people for scale",
+          "strength": 5,
+          "use_cases": [
+            "hero reveal",
+            "finished environment",
+            "scale",
+            "curvature"
+          ],
+          "issues": []
+        }
+      ],
+      "supports": [
+        "large curved LED wall installation",
+        "completed sportsbook visual environment",
+        "106-foot curved LED wall"
+      ]
+    },
+    {
+      "asset_id": "V0040",
+      "deep_review_status": "reviewed",
+      "tier": 1,
+      "redundancy_cluster": "A-completed-main-wall",
+      "shot_composition": "Close-up bar detail to wide room hero \u2014 comprehensive journey",
+      "camera_movement": "smooth walkthrough/pull-back",
+      "technical_quality": 4,
+      "visual_interest": 5,
+      "subject_clarity": 5,
+      "uniqueness": "Most comprehensive 27s journey covering bar + ticker + seating + main wall in one continuous move",
+      "candidate_ranges": [
+        {
+          "in": "00:11.0",
+          "out": "00:27.3",
+          "recommended_duration": 16.3,
+          "description": "Wide walkthrough from seating area through main wall hero to final low-angle hero shot with patrons in booths",
+          "strength": 5,
+          "use_cases": [
+            "hero reveal",
+            "finished environment",
+            "scale",
+            "bar ticker",
+            "seating context"
+          ],
+          "issues": []
+        },
+        {
+          "in": "00:20.0",
+          "out": "00:27.3",
+          "recommended_duration": 7.3,
+          "description": "Final hero sequence \u2014 GAME SUMMARY graphic, wide room reveal, low-angle hero with patrons",
+          "strength": 5,
+          "use_cases": [
+            "hero reveal",
+            "finished environment"
+          ],
+          "issues": []
+        }
+      ],
+      "supports": [
+        "large curved LED wall installation",
+        "completed sportsbook visual environment",
+        "bar ticker",
+        "106-foot curved LED wall"
+      ]
+    },
+    {
+      "asset_id": "V0028",
+      "deep_review_status": "reviewed",
+      "tier": 1,
+      "redundancy_cluster": "D-installation-progress",
+      "shot_composition": "Wide pan across construction site",
+      "camera_movement": "slow smooth left-to-right pan",
+      "technical_quality": 4,
+      "visual_interest": 5,
+      "subject_clarity": 4,
+      "uniqueness": "Strongest progress footage \u2014 workers on scissor lift, wall under construction with green test panels",
+      "candidate_ranges": [
+        {
+          "in": "00:01.7",
+          "out": "00:11.7",
+          "recommended_duration": 10.0,
+          "description": "Pan across curved LED wall under construction with workers on blue scissor lift, orange boom lift, green LED test panels \u2014 shows installation scale and technicians at work",
+          "strength": 5,
+          "use_cases": [
+            "installation scale",
+            "technicians working",
+            "LED panel installation",
+            "progress"
+          ],
+          "issues": [
+            "construction clutter typical of work-in-progress"
+          ]
+        },
+        {
+          "in": "00:01.7",
+          "out": "00:05.0",
+          "recommended_duration": 3.3,
+          "description": "Strongest section \u2014 workers on lift at upper rows, wall scale with green panels",
+          "strength": 5,
+          "use_cases": [
+            "technicians working",
+            "installation scale"
+          ],
+          "issues": []
+        }
+      ],
+      "supports": [
+        "LED panel installation",
+        "installation scale",
+        "technicians working"
+      ]
+    },
+    {
+      "asset_id": "V0048",
+      "deep_review_status": "reviewed",
+      "tier": 1,
+      "redundancy_cluster": "E-decommissioning",
+      "shot_composition": "Wide pan across rack room/storage",
+      "camera_movement": "handheld pan",
+      "technical_quality": 3,
+      "visual_interest": 4,
+      "subject_clarity": 4,
+      "uniqueness": "Only footage of decommissioned legacy projectors \u2014 dusty, detached lenses, Belden box, cable spools",
+      "candidate_ranges": [
+        {
+          "in": "00:01.1",
+          "out": "00:11.6",
+          "recommended_duration": 10.5,
+          "description": "Pan across row of decommissioned projectors on dusty concrete floor with detached lenses, cardboard boxes, Belden box, cable spool",
+          "strength": 4,
+          "use_cases": [
+            "removal/decommissioning",
+            "legacy infrastructure",
+            "before-and-after"
+          ],
+          "issues": [
+            "dim lighting",
+            "handheld shake",
+            "cluttered environment"
+          ]
+        }
+      ],
+      "supports": [
+        "15 racks of legacy gear consolidated to 2 LUCI racks",
+        "20+ projectors removed",
+        "removal/decommissioning of legacy infrastructure"
+      ]
+    },
+    {
+      "asset_id": "V0039",
+      "deep_review_status": "reviewed",
+      "tier": 1,
+      "redundancy_cluster": "B-bar-ticker",
+      "shot_composition": "Close-up bar counter to wide L-shaped ticker reveal",
+      "camera_movement": "smooth pull-back",
+      "technical_quality": 4,
+      "visual_interest": 5,
+      "subject_clarity": 5,
+      "uniqueness": "Best bar ticker reveal \u2014 pull-back from human element (patrons at bar) to full L-shaped ticker scale",
+      "candidate_ranges": [
+        {
+          "in": "00:05.8",
+          "out": "00:13.8",
+          "recommended_duration": 8.0,
+          "description": "Pull-back revealing L-shaped LED ticker wrapping around bar \u2014 starts with ticker entering frame, ends with full architectural context",
+          "strength": 5,
+          "use_cases": [
+            "bar ticker",
+            "finished environment",
+            "scale"
+          ],
+          "issues": []
+        }
+      ],
+      "supports": [
+        "rebuilt the continuous odds ticker around the sportsbook bar",
+        "150 ft bar ticker"
+      ]
+    },
+    {
+      "asset_id": "V0041",
+      "deep_review_status": "reviewed",
+      "tier": 1,
+      "redundancy_cluster": "A-completed-main-wall",
+      "shot_composition": "Close-up betting counter to ultra-wide hero",
+      "camera_movement": "smooth pull-back",
+      "technical_quality": 4,
+      "visual_interest": 5,
+      "subject_clarity": 5,
+      "uniqueness": "Excellent hero pull-back with Boyd Sports branding on screens and patrons scattered throughout",
+      "candidate_ranges": [
+        {
+          "in": "00:08.3",
+          "out": "00:14.3",
+          "recommended_duration": 6.0,
+          "description": "Wide pull-back to ultra-wide hero shot showing full curved LED wall with patrons, Boyd Sports branding, blue armchairs",
+          "strength": 5,
+          "use_cases": [
+            "hero reveal",
+            "finished environment",
+            "scale",
+            "curvature"
+          ],
+          "issues": []
+        }
+      ],
+      "supports": [
+        "large curved LED wall installation",
+        "completed sportsbook visual environment"
+      ]
+    },
+    {
+      "asset_id": "V0030",
+      "deep_review_status": "reviewed",
+      "tier": 2,
+      "redundancy_cluster": "A-completed-main-wall",
+      "shot_composition": "Wide pan across completed wall",
+      "camera_movement": "smooth left-to-right pan",
+      "technical_quality": 4,
+      "visual_interest": 4,
+      "subject_clarity": 5,
+      "uniqueness": "Smooth pan with person for scale \u2014 good but less dynamic than V0036 pull-back",
+      "candidate_ranges": [
+        {
+          "in": "00:03.4",
+          "out": "00:10.1",
+          "recommended_duration": 6.7,
+          "description": "Pan across completed curved LED wall with person walking for scale, live sports content, betting counter visible",
+          "strength": 4,
+          "use_cases": [
+            "hero reveal alternate",
+            "scale",
+            "finished environment"
+          ],
+          "issues": []
+        }
+      ],
+      "supports": [
+        "large curved LED wall installation",
+        "completed sportsbook visual environment"
+      ]
+    },
+    {
+      "asset_id": "V0034",
+      "deep_review_status": "reviewed",
+      "tier": 2,
+      "redundancy_cluster": "A-completed-main-wall",
+      "shot_composition": "Medium people observing to wide wall pan",
+      "camera_movement": "smooth pan",
+      "technical_quality": 4,
+      "visual_interest": 4,
+      "subject_clarity": 4,
+      "uniqueness": "Starts with people observing (human element) then reveals wall \u2014 good narrative device",
+      "candidate_ranges": [
+        {
+          "in": "00:06.2",
+          "out": "00:13.8",
+          "recommended_duration": 7.6,
+          "description": "Pan from people observing to full curved LED wall with person in green shirt for scale, ESPN content, multi-window layout",
+          "strength": 4,
+          "use_cases": [
+            "hero reveal alternate",
+            "human element",
+            "scale"
+          ],
+          "issues": [
+            "minor background clutter in early frames"
+          ]
+        }
+      ],
+      "supports": [
+        "large curved LED wall installation",
+        "completed sportsbook visual environment"
+      ]
+    },
+    {
+      "asset_id": "V0035",
+      "deep_review_status": "reviewed",
+      "tier": 2,
+      "redundancy_cluster": "D-installation-progress",
+      "shot_composition": "Wide pan across completed wall with technicians at base",
+      "camera_movement": "smooth pan",
+      "technical_quality": 4,
+      "visual_interest": 4,
+      "subject_clarity": 4,
+      "uniqueness": "Shows completed wall with technicians in safety gear at base \u2014 commissioning/testing phase, bridges completed and progress",
+      "candidate_ranges": [
+        {
+          "in": "00:07.3",
+          "out": "00:12.5",
+          "recommended_duration": 5.2,
+          "description": "Pan across completed wall with THE HERD content, technicians in high-visibility vests working at base near ladder \u2014 commissioning phase",
+          "strength": 4,
+          "use_cases": [
+            "commissioning",
+            "technicians working",
+            "finished environment"
+          ],
+          "issues": [
+            "workers may make it less suitable for clean final marketing shot"
+          ]
+        }
+      ],
+      "supports": [
+        "LED panel installation",
+        "technicians working",
+        "completed sportsbook visual environment"
+      ]
+    },
+    {
+      "asset_id": "V0038",
+      "deep_review_status": "reviewed",
+      "tier": 2,
+      "redundancy_cluster": "B-bar-ticker",
+      "shot_composition": "Wide pan across bar ticker",
+      "camera_movement": "smooth right-to-left pan",
+      "technical_quality": 4,
+      "visual_interest": 4,
+      "subject_clarity": 5,
+      "uniqueness": "Short but clear pan across bar ticker with patrons \u2014 alternate to V0039 pull-back",
+      "candidate_ranges": [
+        {
+          "in": "00:00.4",
+          "out": "00:04.2",
+          "recommended_duration": 3.8,
+          "description": "Pan across LED bar ticker with patrons at bar, sports betting info, MLB logo \u2014 short but complete coverage",
+          "strength": 4,
+          "use_cases": [
+            "bar ticker alternate",
+            "finished environment"
+          ],
+          "issues": [
+            "short duration \u2014 only 4.6s total"
+          ]
+        }
+      ],
+      "supports": [
+        "rebuilt the continuous odds ticker around the sportsbook bar"
+      ]
+    },
+    {
+      "asset_id": "V0044",
+      "deep_review_status": "reviewed",
+      "tier": 2,
+      "redundancy_cluster": "B-bar-ticker",
+      "shot_composition": "Close-up bar detail to wide bar with ticker",
+      "camera_movement": "smooth pull-back",
+      "technical_quality": 4,
+      "visual_interest": 4,
+      "subject_clarity": 4,
+      "uniqueness": "Starts with bar detail (bottles, POS) then reveals ticker \u2014 alternate to V0039",
+      "candidate_ranges": [
+        {
+          "in": "00:11.6",
+          "out": "00:19.9",
+          "recommended_duration": 8.3,
+          "description": "Pull-back from bar detail to wide establishing shot of bar area with curved LED ticker, patrons in leather lounge chairs",
+          "strength": 4,
+          "use_cases": [
+            "bar ticker alternate",
+            "finished environment",
+            "scale"
+          ],
+          "issues": [
+            "starts with tight bar detail that may not be relevant"
+          ]
+        }
+      ],
+      "supports": [
+        "rebuilt the continuous odds ticker around the sportsbook bar",
+        "150 ft bar ticker"
+      ]
+    },
+    {
+      "asset_id": "V0021",
+      "deep_review_status": "reviewed",
+      "tier": 2,
+      "redundancy_cluster": "C-before-construction-context",
+      "shot_composition": "Walkthrough past construction barricade",
+      "camera_movement": "gimbal-stabilized walkthrough",
+      "technical_quality": 3,
+      "visual_interest": 4,
+      "subject_clarity": 4,
+      "uniqueness": "Clear COMING SOON sportsbook branding \u2014 best before context with explicit sportsbook identification",
+      "candidate_ranges": [
+        {
+          "in": "00:01.3",
+          "out": "00:06.5",
+          "recommended_duration": 5.2,
+          "description": "Walkthrough past COMING SOON and A SPORTSBOOK BUILT FOR FANS branding on construction hoarding \u2014 clear before context",
+          "strength": 4,
+          "use_cases": [
+            "before context",
+            "construction phase",
+            "property context"
+          ],
+          "issues": [
+            "handheld motion may be slightly shaky"
+          ]
+        }
+      ],
+      "supports": [
+        "sportsbook remodel",
+        "construction phase"
+      ]
+    },
+    {
+      "asset_id": "V0007",
+      "deep_review_status": "reviewed",
+      "tier": 2,
+      "redundancy_cluster": "F-property-context",
+      "shot_composition": "Static wide pull-back in circular lounge",
+      "camera_movement": "smooth pull-back",
+      "technical_quality": 5,
+      "visual_interest": 4,
+      "subject_clarity": 4,
+      "uniqueness": "Only non-sportsbook completed footage \u2014 high-limit lounge with decorative LED lighting, luxury setting",
+      "candidate_ranges": [
+        {
+          "in": "00:00.6",
+          "out": "00:06.5",
+          "recommended_duration": 5.9,
+          "description": "Smooth pull-back in high-limit lounge with silver chandelier, pink/purple/blue lighting, curved banquette, vertical LED strips \u2014 luxury property context",
+          "strength": 4,
+          "use_cases": [
+            "property context",
+            "luxury setting",
+            "LED lighting integration"
+          ],
+          "issues": [
+            "TVs are off \u2014 does not show active content",
+            "does not show the main sportsbook wall"
+          ]
+        }
+      ],
+      "supports": [
+        "overall property context",
+        "LED lighting integration"
+      ]
+    },
+    {
+      "asset_id": "V0033",
+      "deep_review_status": "reviewed",
+      "tier": 3,
+      "redundancy_cluster": "A-completed-main-wall",
+      "shot_composition": "Wide pan across completed wall",
+      "camera_movement": "smooth pan",
+      "technical_quality": 4,
+      "visual_interest": 3,
+      "subject_clarity": 4,
+      "uniqueness": "Similar pan to V0030 but less dynamic \u2014 Boyd Rewards content, person's shoulder at end",
+      "candidate_ranges": [
+        {
+          "in": "00:04.0",
+          "out": "00:08.7",
+          "recommended_duration": 4.7,
+          "description": "Pan across completed wall with Boyd Rewards graphic, curve visible, person's shoulder for scale at end",
+          "strength": 3,
+          "use_cases": [
+            "hero reveal redundant"
+          ],
+          "issues": [
+            "less distinctive than V0036/V0030"
+          ]
+        }
+      ],
+      "supports": [
+        "large curved LED wall installation",
+        "completed sportsbook visual environment"
+      ]
+    },
+    {
+      "asset_id": "V0042",
+      "deep_review_status": "reviewed",
+      "tier": 3,
+      "redundancy_cluster": "A-completed-main-wall",
+      "shot_composition": "Medium to ultra-wide pull-back",
+      "camera_movement": "smooth pull-back",
+      "technical_quality": 4,
+      "visual_interest": 3,
+      "subject_clarity": 4,
+      "uniqueness": "Similar pull-back to V0036/V0041 \u2014 less distinctive, GOVX graphic",
+      "candidate_ranges": [
+        {
+          "in": "00:04.4",
+          "out": "00:09.6",
+          "recommended_duration": 5.2,
+          "description": "Pull-back to ultra-wide hero shot of full curved wall with patrons, mobile betting app content on screen",
+          "strength": 3,
+          "use_cases": [
+            "hero reveal redundant"
+          ],
+          "issues": [
+            "very similar to V0036 and V0041"
+          ]
+        }
+      ],
+      "supports": [
+        "large curved LED wall installation",
+        "completed sportsbook visual environment"
+      ]
+    },
+    {
+      "asset_id": "V0043",
+      "deep_review_status": "reviewed",
+      "tier": 3,
+      "redundancy_cluster": "A-completed-main-wall",
+      "shot_composition": "Medium to wide pan",
+      "camera_movement": "smooth pan",
+      "technical_quality": 4,
+      "visual_interest": 3,
+      "subject_clarity": 4,
+      "uniqueness": "Similar pan to V0030/V0034 \u2014 less distinctive, ends at raised seating area",
+      "candidate_ranges": [
+        {
+          "in": "00:04.0",
+          "out": "00:14.8",
+          "recommended_duration": 10.8,
+          "description": "Pan across completed wall with patrons, ending at right edge with raised seating area and glass railings",
+          "strength": 3,
+          "use_cases": [
+            "hero reveal redundant"
+          ],
+          "issues": [
+            "similar to other pans, less distinctive"
+          ]
+        }
+      ],
+      "supports": [
+        "large curved LED wall installation",
+        "completed sportsbook visual environment"
+      ]
+    },
+    {
+      "asset_id": "V0020",
+      "deep_review_status": "reviewed",
+      "tier": 3,
+      "redundancy_cluster": "C-before-construction-context",
+      "shot_composition": "Walkthrough past construction barricade",
+      "camera_movement": "smooth forward tracking",
+      "technical_quality": 3,
+      "visual_interest": 3,
+      "subject_clarity": 3,
+      "uniqueness": "EXCELLENCE IS ON THE WAY signage \u2014 less specific to sportsbook than V0021",
+      "candidate_ranges": [
+        {
+          "in": "00:01.1",
+          "out": "00:05.5",
+          "recommended_duration": 4.4,
+          "description": "Tracking shot past EXCELLENCE IS ON THE WAY construction barricade \u2014 before context",
+          "strength": 3,
+          "use_cases": [
+            "before context redundant"
+          ],
+          "issues": [
+            "prominent lens flare from glossy vinyl",
+            "less specific to sportsbook than V0021"
+          ]
+        }
+      ],
+      "supports": [
+        "construction phase"
+      ]
+    },
+    {
+      "asset_id": "V0006",
+      "deep_review_status": "reviewed",
+      "tier": 3,
+      "redundancy_cluster": "C-before-construction-context",
+      "shot_composition": "Wide pan across casino floor",
+      "camera_movement": "handheld pan",
+      "technical_quality": 4,
+      "visual_interest": 3,
+      "subject_clarity": 3,
+      "uniqueness": "General casino floor with Quick Hit LED sign and construction curtain \u2014 least specific to sportsbook",
+      "candidate_ranges": [
+        {
+          "in": "00:01.1",
+          "out": "00:06.0",
+          "recommended_duration": 4.9,
+          "description": "Pan across casino floor with Quick Hit LED sign and black construction curtain in background",
+          "strength": 3,
+          "use_cases": [
+            "property context redundant"
+          ],
+          "issues": [
+            "not specific to sportsbook",
+            "general atmosphere b-roll only"
+          ]
+        }
+      ],
+      "supports": [
+        "overall property context"
+      ]
+    }
+  ]
+}

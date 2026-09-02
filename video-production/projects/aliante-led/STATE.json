@@ -4,10 +4,10 @@
   "workflow": "customer-video",
   "workflow_version": "1.0",
   "status": "active",
-  "current_stage": "project_intelligence_complete",
+  "current_stage": "deep_media_review_complete",
   "current_owner": "cursor",
   "next_owner": "cursor",
-  "next_action": "perform_deep_media_review",
+  "next_action": "synthesize_editorial_opportunities",
   "source_media_path": "/Users/janehaynie/Library/CloudStorage/OneDrive-LUCISystems/Marketing - Documents/Content/Project Media/Aliante LED",
   "workspace_path": "/Users/janehaynie/Documents/Cursor Projects/luci-design/video-production/projects/aliante-led",
   "deliverable_path": "/Users/janehaynie/Library/CloudStorage/OneDrive-LUCISystems/Marketing - Documents/Content/Video",
@@ -18,9 +18,10 @@
     "source_asset_inventory_complete",
     "visual_asset_previews_complete",
     "visual_asset_analysis_complete",
-    "project_intelligence_complete"
+    "project_intelligence_complete",
+    "deep_media_review_complete"
   ],
   "open_issues": [],
   "last_updated_by": "cursor",
-  "notes": "Project intelligence analysis complete. Analyzed 3 existing transcripts (Jason interview, EJ description, Mike/EJ discussion), transcribed 2 new interview recordings (V0024 40s, V0026 ~7min via faster-whisper), and reviewed the existing written case study. Created analysis/project-intelligence.md with 13 sections: overview, scope, starting condition, challenges, solution, outcomes (visual/operational/technical/customer-stated), people, quote bank (15 quotes), useful facts, claim ledger (24 claims), open questions (10), visual-analysis relationships, and source distinction. No meaningful discrepancy found between written case study and primary transcripts. Next: perform_deep_media_review."
+  "notes": "Deep media review complete. 18 videos deeply reviewed via dense 6-frame contact sheets. 6 redundancy clusters identified (completed main wall, bar ticker, before/construction, installation progress, decommissioning, property context). Tier 1: 6 videos (V0036, V0040, V0028, V0048, V0039, V0041). Tier 2: 7 videos. Tier 3: 5 videos. 6 coverage gaps identified (no LUCI rack after, no iPad/interface footage, no config switching, no customer interview, no true before of old system running, no bar ticker construction). V0024/V0026 excluded per Jane's editorial decision. Analysis written to analysis/deep-media-review.json. Next: synthesize_editorial_opportunities."
 }
