@@ -1016,9 +1016,13 @@
           "note": "camera shifts to show scissor lift and LED modules high on wall"
         }
       ],
-      "needs_deeper_review": true,
-      "reason_for_deeper_review": "Must listen to interview content for potential voiceover or narrative hooks",
-      "confidence": "high"
+      "needs_deeper_review": false,
+      "reason_for_deeper_review": "Editorial decision (Jane, 2026-09-02): NOT a final-video A-roll candidate. Interviews determined not strong enough for narration/A-roll. Preserve as intelligence source only. Previous reason: Must listen to interview content for potential voiceover or narrative hooks",
+      "confidence": "high",
+      "editorial_status": "not_final_video_aroll",
+      "editorial_decision_source": "Jane",
+      "editorial_decision_date": "2026-09-02",
+      "editorial_decision_note": "Interview footage not strong enough to serve as narration or interview-driven A-roll in the finished case study. Transcript remains a valid project-intelligence source. Do not prioritize as final interview/A-roll candidate. May still be evaluated for independently useful non-interview visual material."
     },
     {
       "asset_id": "V0025",
@@ -1096,9 +1100,13 @@
           "note": "background workers visible on lift"
         }
       ],
-      "needs_deeper_review": true,
-      "reason_for_deeper_review": "Crucial to listen to interview content for narrative soundbites and technical project details",
-      "confidence": "high"
+      "needs_deeper_review": false,
+      "reason_for_deeper_review": "Editorial decision (Jane, 2026-09-02): NOT a final-video A-roll candidate. Interviews determined not strong enough for narration/A-roll. Preserve as intelligence source only. Previous reason: Crucial to listen to interview content for narrative soundbites and technical project details",
+      "confidence": "high",
+      "editorial_status": "not_final_video_aroll",
+      "editorial_decision_source": "Jane",
+      "editorial_decision_date": "2026-09-02",
+      "editorial_decision_note": "Interview footage not strong enough to serve as narration or interview-driven A-roll in the finished case study. Transcript remains a valid project-intelligence source. Do not prioritize as final interview/A-roll candidate. May still be evaluated for independently useful non-interview visual material."
     },
     {
       "asset_id": "V0027",
@@ -4291,6 +4299,35 @@
         "review and revision"
       ],
       "confidence": "high"
+    }
+  ],
+  "editorial_constraints": [
+    {
+      "constraint_id": "interview-footage-not-aroll",
+      "source": "Jane",
+      "date": "2026-09-02",
+      "scope": "V0024, V0026",
+      "decision": "V0024 and V0026 were originally recorded as potential narration or interview-driven A-roll. After review, Jane determined these interviews are not strong enough to serve that purpose in the finished case study.",
+      "should_use": [
+        "Transcripts remain valuable project-intelligence sources",
+        "May support factual understanding, claim verification, detail identification, and inspiration for later copy",
+        "Final copy must be written appropriately, not presented as verbatim customer testimonial"
+      ],
+      "should_not_use": [
+        "Do not build the case-study video around V0024/V0026 as talking-head A-roll",
+        "Do not use original audio as primary narration",
+        "Do not use interview sound bites as the main storytelling device",
+        "Do not assume one of these speakers should carry the video"
+      ],
+      "speaker_context": "All identified speakers are LUCI team members, not Aliante customer-side personnel. No usable customer interview available.",
+      "production_constraint": "Absence of usable interview A-roll is a production constraint, not a reason to force these recordings into the video.",
+      "case_study_structure": "Develop primarily from available project footage/photography, verified project story/claims, and whatever narrative treatment is selected during editorial/design stages.",
+      "deep_media_review_implication": [
+        "Do not prioritize V0024 or V0026 as final interview/A-roll candidates",
+        "Do not spend additional review effort looking for usable interview quotes unless a specific factual need arises",
+        "Preserve them as intelligence sources",
+        "If either recording contains independently useful non-interview visual material, it may still be evaluated on that basis"
+      ]
     }
   ]
 }

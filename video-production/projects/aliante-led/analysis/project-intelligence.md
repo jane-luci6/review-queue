@@ -389,6 +389,35 @@ Notes on useful relationships between project intelligence and the visual librar
 
 ---
 
+## Editorial constraints (human decisions)
+
+Authoritative editorial decisions from Jane that constrain future stages. Future agents must respect these.
+
+### Interview footage — V0024 and V0026 are NOT final-video A-roll
+
+**Decision (Jane, 2026-09-02):** The two interview recordings (V0024, V0026) were originally recorded in hopes that portions might be usable as narration or interview-driven A-roll in the final Aliante case-study video. After reviewing the material, Jane has determined that these interviews are not strong enough to serve that purpose in the finished case study.
+
+**How these assets SHOULD be used:**
+- Their transcripts remain valuable project-intelligence sources and may continue to support factual understanding of the project, claim verification, identification of useful details, understanding how the LUCI team describes the work, and inspiration for later copy — provided the final copy is written appropriately rather than presented as a verbatim customer testimonial.
+
+**How these assets should NOT be used:**
+- Do not build the case-study video around V0024/V0026 as talking-head A-roll.
+- Do not use their original audio as primary narration.
+- Do not use interview sound bites as the main storytelling device.
+- Do not assume that one of these speakers should carry the video.
+
+**Speaker context:** All identified speakers in V0024/V0026 are LUCI team members (Jason, and likely Jason again), not Aliante customer-side personnel. No usable customer interview is currently available. The absence of usable interview A-roll is a production constraint, not a reason to force these recordings into the video.
+
+**Case-study structure implication:** The eventual case-study structure should be developed primarily from the available project footage and photography, the verified project story and claims, and whatever text, graphics, music, voiceover, or other narrative treatment is ultimately selected during the editorial/design stages. Do not select that narrative treatment yet.
+
+**Deep-media-review implication (for `perform_deep_media_review`):**
+- Do not prioritize V0024 or V0026 as final interview/A-roll candidates.
+- Do not spend additional review effort looking for usable interview quotes unless a specific factual need arises.
+- Preserve them as intelligence sources.
+- If either recording happens to contain independently useful non-interview visual material, it may still be evaluated on that basis.
+
+---
+
 ## Source distinction
 
 **Primary evidence (transcripts/interviews):**
