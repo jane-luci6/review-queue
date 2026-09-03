@@ -61,11 +61,11 @@ Ranked in order of importance:
 
 Seven broad beats. This is not a frame-accurate shot list.
 
-### Beat 1 — Hook: the finished wall
+### Beat 1 — Hook: the wall (and the complexity behind it)
 
-**Purpose:** Open on spectacle. Establish scale and visual impact immediately. Create the question "how did this get here?"
+**Purpose:** Open on the wall. Establish scale and visual impact. But establish early that the wall is evidence of complexity — not the entire message. The governing thesis (complexity → simplicity) should land in or directly after this beat.
 
-**Message:** This is one of the largest curved LED walls in Las Vegas — and it's real, built, and operational.
+**Message:** This is one of the largest curved LED walls in Las Vegas — a substantial, technically complex installation. (The simplification message arrives in Beats 3-4; this beat establishes the complexity that makes it necessary.)
 
 **Relevant verified facts:**
 - 106-foot curved LED wall (claim #1, confirmed)
@@ -78,13 +78,13 @@ Seven broad beats. This is not a frame-accurate shot list.
 - **I0065** — definitive completed racebook hero still (hold/freeze frame)
 - **V0041** (00:08.3–00:14.3) — alternate hero pull-back with Boyd Sports branding, patrons
 
-**What must not be implied:** That this is a construction video, that LUCI is a construction company, or that the wall is the entire story.
+**What must not be implied:** That this is a construction video, that LUCI is a construction company, or that the wall is the entire story. The viewer should not leave this beat thinking "LUCI built a cool LED wall" — they should understand this is a massive, complex installation, and the simplification message is coming.
 
 ---
 
-### Beat 2 — Rewind: how it came together
+### Beat 2 — How it came together: the build
 
-**Purpose:** Answer the question from Beat 1. Show the work behind the wall — the installation, the scale of the build, the precision required for the curve.
+**Purpose:** Show the work behind the wall — the installation, the scale of the build, the precision required for the curve. In Option A (finished-first), this beat answers "how did this get here?" In Option B (tease-and-build), this beat develops the build toward the later reveal.
 
 **Message:** LUCI executed this installation — 972 frames, 5,800+ tiles, aligned to one-sixteenth of an inch on a curved wall that wasn't flat.
 
@@ -99,7 +99,7 @@ Seven broad beats. This is not a frame-accurate shot list.
 - **V0028** (00:01.7–00:11.7) — strongest installation progress (workers on scissor lift, green test panels)
 - **V0027** (00:01–00:13) — LED modules going up against green test pattern, workers on boom lift
 - **V0035** (00:07.3–00:12.5) — commissioning, technicians at base of completed wall
-- **5-photo progression** (I0054 → I0059 → I0062 → I0008 → I0027) — as the rewind mechanism (see "Role of the five-photo progression" below)
+- **5-photo progression** (I0054 → I0059 → I0062 → I0008 → I0027) — optional supporting device (see "Role of the five-photo progression" below). In Option A, may serve as the rewind mechanism; in Option B, may serve as a construction progression or interlude.
 
 **What must not be implied:** That the construction photos (including the 5-photo progression) show Aliante's former AV system or prior sportsbook technology. They show the wall before LUCI began installing LED panels — a construction/build progression, not a before/after of the old system.
 
@@ -107,9 +107,9 @@ Seven broad beats. This is not a frame-accurate shot list.
 
 ### Beat 3 — What came out: the rack room before/after
 
-**Purpose:** Make simplification visible. Show what was removed behind the wall — the infrastructure subtraction that gives the wall its business meaning.
+**Purpose:** Make simplification visible. This is where the complexity→simplicity thesis gets its strongest visual proof. Show what was removed behind the wall — the infrastructure subtraction that demonstrates LUCI's simplification value.
 
-**Message:** Behind this wall, 15 racks of legacy gear and more than 20 projectors came out. Two LUCI racks went in.
+**Message:** Behind this wall, 15 racks of legacy gear and more than 20 projectors came out. Two LUCI racks went in. The complexity required to create the guest-facing experience does not have to remain operationally complex behind the scenes.
 
 **Relevant verified facts:**
 - 15 racks → 2 LUCI racks (claim #5, confirmed)
@@ -130,9 +130,9 @@ Seven broad beats. This is not a frame-accurate shot list.
 
 ### Beat 4 — Complexity made simple: the LUCI message
 
-**Purpose:** The conceptual payoff. This enormous, complex installation is managed simply through one platform — alongside the rest of the casino.
+**Purpose:** The conceptual payoff of the complexity→simplicity thesis. This enormous, complex installation is managed simply through one platform — alongside the rest of the casino. This is where the wall story connects to LUCI's orchestration value.
 
-**Message:** Something this physically and technically substantial becomes simple to manage through LUCI. Six configurations, an iPad in the space, less than a minute to add the wall to the platform.
+**Message:** Something this physically and technically substantial becomes simple to manage through LUCI. The complexity that produced the wall does not remain operationally complex — LUCI is the orchestration layer that makes it simple to run.
 
 **Relevant verified facts:**
 - 6 wall configurations pre-built (claim #12, confirmed)
@@ -176,9 +176,9 @@ Seven broad beats. This is not a frame-accurate shot list.
 
 ### Beat 6 — Bigger than one wall: property-wide expansion
 
-**Purpose:** Expand the story. Show that this wall is one part of a much larger environment LUCI orchestrates across Aliante.
+**Purpose:** Expand the story. Show that this wall is one part of a much larger environment LUCI orchestrates across Aliante. The intended effect: LUCI does not merely simplify this wall — it orchestrates the larger casino environment.
 
-**Message:** LUCI was already live throughout Aliante before this project. The sportsbook came onto the same platform — 266 displays, 89 audio zones, 92 DTV channels, 98 digital signage endpoints.
+**Message:** LUCI was already live throughout Aliante before this project. The sportsbook came onto the same platform — 266 displays, 89 audio zones, 92 DTV channels, 98 digital signage endpoints. The wall is the latest endpoint on an existing platform, not a new system.
 
 **Relevant verified facts:**
 - LUCI already live throughout the property (claim #9, confirmed)
@@ -216,25 +216,40 @@ Seven broad beats. This is not a frame-accurate shot list.
 
 ---
 
-## Opening strategy
+## Opening strategy (provisional — two viable treatments)
 
-**Recommended: Open on the finished wall, then rewind into the build.**
+**The opening is NOT locked.** Two viable opening treatments are preserved. Final selection is an edit-stage decision that should be tested against the actual footage.
 
-**Why this is the strongest opening:**
+### Governing message for the opening (applies to either treatment)
 
-1. **The finished wall footage is the best in the library.** V0036 (7.6s hero pull-back with people for scale) and V0040 (16.3s comprehensive journey through the finished sportsbook) are the most visually compelling assets available. Opening on them gives the viewer immediate spectacle.
+Regardless of which visual opening is ultimately selected, the opening must establish the **complexity → simplicity** proposition very early.
 
-2. **It creates a natural question.** The viewer sees the finished wall and wonders: how did this get here? Who built this? What's behind it? That question drives the rewind into the build (Beat 2) and the rack room (Beat 3).
+The wall itself is not the primary message. The wall is the strongest visual evidence of the message.
 
-3. **It avoids the "construction video" positioning risk.** If the video opens on construction footage (workers on lifts, scaffolding), the first impression reads as "LUCI builds walls" — a construction company, not an orchestration platform. Opening on the finished wall reads as "this is an impressive installation" — and then the story earns the right to show the work and the simplification behind it.
+**Editorial thesis (not final copy):** This is a substantial, technically complex multimedia installation — and LUCI makes operating that complexity simple.
 
-4. **The rack room contrast lands harder after the wall.** If the viewer has already seen the finished wall (Beat 1), then sees the decommissioned projectors (V0048) and the 2 LUCI racks (V0051), the contrast is more impactful because they know what the simplification produced.
+The viewer should NOT leave the opening thinking: "LUCI built a cool LED wall."
+The viewer should instead understand: "This is a massive, complex installation, and LUCI makes something this complex simple to operate."
 
-5. **The 5-photo progression has a natural narrative function.** If the story opens on the finished wall and rewinds, the 5-photo progression can serve as the visual mechanism for the rewind — the wall "unbuilds" or the viewer dissolves back through the construction stages. This gives the progression a purpose rather than being a standalone interlude.
+### Option A — Finished-first
 
-**Alternative considered — build toward the reveal:** Opening on construction context (V0021 COMING SOON) and building through installation toward the hero reveal. This is a valid structure, but it asks the viewer to wait 60-90 seconds for the payoff — and the payoff (the finished wall) is the strongest footage. It also risks the "construction video" read in the opening seconds. The build-toward-reveal structure could work if the music and editing are strong enough to sustain tension, but the finished-wall-first structure is lower-risk and higher-impact.
+Open on the completed curved LED wall, establish the scale and quality of the finished environment immediately, then rewind into how it came together.
 
-**Decision:** Open on the finished wall (V0036 or V0040). Rewind into the build.
+**Why it works:** The finished wall footage (V0036, V0040) is the most visually compelling in the library. Opening on it gives immediate spectacle and scale. It creates a natural "how did this get here?" question that drives the rewind into the build. It avoids the "construction video" positioning risk. The rack room contrast lands harder after the viewer has seen what the simplification produced.
+
+**Risk:** If the full hero reveal is spent at the open, the ending has no visual payoff left to discover. The bookend (Beat 7) returns to the same footage, which may feel redundant rather than revelatory.
+
+### Option B — Tease-and-build (Jane is especially interested in this option)
+
+Show only a very brief teaser of the finished wall at the opening, then move into the build and reserve the full hero reveal for later in the narrative.
+
+**Why it works:** It establishes visual quality immediately (the teaser confirms the wall is real and impressive) without sacrificing the payoff of seeing the wall fully completed later. The full hero reveal (V0036, V0040, I0065) can land at Beat 7 (the payoff) or at a mid-point beat where the build completes — giving the ending a genuine visual reward the viewer has been waiting for.
+
+**Risk:** The teaser must be brief enough to intrigue without satisfying. If the teaser shows too much, the later reveal loses its impact. If the teaser shows too little, the viewer may not be hooked.
+
+### Decision
+
+**No decision yet.** Both treatments remain viable. The final opening selection is an edit-stage decision that should be tested against the actual footage. The copy (next stage) must work with either opening treatment — see "Copy-development constraint" below.
 
 ---
 
@@ -246,7 +261,7 @@ The video opened on the finished wall (Beat 1). The ending returns to it — but
 
 **Final visual:** V0036 (hero pull-back) or I0065 (definitive hero still) as the final freeze frame. If the 5-photo progression was used as the rewind in Beat 2, the final image I0027 (completed wall) can serve as the bookend match — the wall "rebuilds" to the same state the viewer saw at the open.
 
-**Conceptual payoff:** The closing message is not "LUCI builds walls" — it is "one wall, one platform, one standard for the whole property." The wall is the visual; the orchestration is the meaning. The ending should land on the wall as the visual payoff of that idea.
+**Conceptual payoff:** The closing message is not "LUCI builds walls" — it is "one wall, one platform, one standard for the whole property." The wall is the visual evidence; LUCI's orchestration is the meaning. The ending should land on the wall as the visual payoff of that idea — a complex multimedia environment made simple to run.
 
 ---
 
@@ -292,18 +307,17 @@ The contrast between V0048 and V0051 is one of the clearest ways available to ma
 
 ## Role of the five-photo progression
 
-**Recommendation: Likely useful — as the rewind mechanism in Beat 2.**
+**Recommendation: Likely useful — as a supporting visual device. Placement is not locked.**
 
-**Where it fits in the narrative:** The 5-photo progression (I0054 → I0059 → I0062 → I0008 → I0027) is the natural visual device for the rewind from the finished wall (Beat 1) into the build (Beat 2). The viewer sees the completed wall, then the wall "unbuilds" or dissolves back through the construction stages: scaffolding → early build → later pre-install → LED installation underway → completed wall.
+**Where it could fit in the narrative (depending on the opening treatment selected):**
+- **Option A (finished-first):** As the rewind mechanism in Beat 2 — the wall "unbuilds" or the viewer dissolves back through the construction stages.
+- **Option B (tease-and-build):** As a construction progression within Beat 2, or as an end-of-video recap (the wall "rebuilds" as a bookend before the final payoff).
+- **Either option:** As a brief interlude within Beat 2, between video installation footage (V0028, V0027) and the rack room (Beat 3).
 
-**Why it works here:**
-- It gives the progression a narrative function (the rewind mechanism) rather than being a standalone interlude.
+**Why it works as a supporting device:**
+- It gives the progression a narrative function rather than being a standalone interlude.
 - It bridges the visual quality gap — the progression is photo-based, so it can be treated stylistically (dissolve, flipbook, crop/reframe) without competing with the video footage.
-- It pays off at both ends: the opening (Beat 1) shows the finished wall; the progression's final image (I0027, completed wall) matches the opening, creating a bookend.
-
-**Alternative placement (if not used in Beat 2):**
-- **End-of-video recap** — the wall "rebuilds" as a bookend before the final payoff (Beat 7). The progression runs forward this time, from scaffolding to completed, landing on the same image the viewer saw at the open.
-- **Brief interlude** — a short construction progression within Beat 2, between video installation footage (V0028, V0027) and the rack room (Beat 3).
+- It pays off at both ends if used as a bookend: the progression's final image (I0027, completed wall) can match the opening or the ending.
 
 **Transition/motion treatment:** Not determined here. The candidate treatments (soft dissolve, flipbook, crop/reframe, longer hold on payoff) are recorded in `visual-analysis.json` under `human_curated_sequences` and remain options for the design/edit stage.
 
@@ -370,6 +384,40 @@ Rough message language is included above only where needed to demonstrate the na
 - Transition/motion treatments
 
 **The goal of this artifact is to settle what the video says and in what order before polishing language.** The next stage (`develop_case_study_copy`) will produce the onscreen text, supers, and any written narration or title cards.
+
+---
+
+## Copy-development constraint (for the next stage)
+
+The copy must work with **either** opening treatment:
+
+- **Option A (finished-first):** Open on the completed wall, then rewind into the build.
+- **Option B (tease-and-build):** Brief teaser of the finished wall, then build, full hero reveal later.
+
+**The copy must NOT depend on:**
+- A rewind gimmick or any one transition style
+- A specific opening shot or frame
+- The 5-photo progression being used in a specific way
+
+**The message architecture must survive either edit.** The beats, the thesis, and the hierarchy are fixed; the opening visual treatment is provisional and will be tested against the actual footage at the edit stage.
+
+---
+
+## Copy goal
+
+The eventual language should frame the wall around the contrast between:
+
+- **Visible scale / technical complexity** — the wall is enormous, precise, and substantial
+- **Operational simplicity / orchestration** — LUCI makes something this complex simple to run
+
+**Avoid language that makes LUCI sound primarily like:**
+- An LED installer
+- A construction contractor
+- A rack-consolidation company
+
+**The video should ultimately communicate LUCI as the orchestration layer that makes a complex multimedia environment simple to run.**
+
+The wall is the visual evidence of complexity. The rack consolidation is the visual proof of simplification. The property-wide scope is the expansion of the idea. LUCI is the platform that ties them together.
 
 ---
 
