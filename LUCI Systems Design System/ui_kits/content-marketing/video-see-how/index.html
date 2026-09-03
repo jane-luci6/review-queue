@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LUCI — See How We Did It</title>
+    <style>
+      @font-face {
+        font-family: "Syncopate";
+        src: url("./Syncopate-Bold.ttf") format("truetype");
+        font-weight: 700;
+      }
+
+      @font-face {
+        font-family: "Space Grotesk";
+        src: url("./SpaceGrotesk-Medium.ttf") format("truetype");
+        font-weight: 500;
+      }
+
+      @font-face {
+        font-family: "Space Grotesk";
+        src: url("./SpaceGrotesk-SemiBold.ttf") format("truetype");
+        font-weight: 600;
+      }
+
+      :root {
+        --canvas: #030607;
+        --ink: #f5f8fa;
+        --mint: #68e3be;
+        --muted: #a6b0b6;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+        background: #030607;
+      }
+
+      #main {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #030607;
+      }
+
+      .scene {
+        position: absolute;
+        inset: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background-color: #030607;
+        color: #f5f8fa;
+      }
+
+      .scene-content {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        padding: 120px 160px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 28px;
+      }
+
+      .title-lockup {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+      }
+
+      .title-rule {
+        width: 44px;
+        height: 3px;
+        background-color: #68e3be;
+      }
+
+      .title {
+        margin: 0;
+        max-width: 1500px;
+        font-family: "Syncopate", "Arial Black", sans-serif;
+        font-size: 92px;
+        font-weight: 700;
+        line-height: 1.02;
+        letter-spacing: 0.08em;
+        text-align: center;
+        text-transform: uppercase;
+        color: #f5f8fa;
+      }
+
+      .title-word {
+        display: inline-block;
+      }
+
+      .logo {
+        width: 560px;
+        height: auto;
+        display: block;
+      }
+
+      .tagline {
+        margin: 8px 0 0;
+        font-family: "Space Grotesk", "Trebuchet MS", sans-serif;
+        font-size: 28px;
+        font-weight: 600;
+        line-height: 1.25;
+        letter-spacing: 0.13em;
+        text-align: center;
+        text-transform: uppercase;
+        color: #68e3be;
+      }
+
+      .logo-contact {
+        margin-top: 36px;
+        padding-top: 28px;
+        display: flex;
+        align-items: center;
+        border-top: 1px solid rgba(166, 176, 182, 0.24);
+      }
+
+      .logo-contact-item {
+        margin: 0;
+        font-family: "Space Grotesk", "Trebuchet MS", sans-serif;
+        padding: 0 30px;
+        font-size: 23px;
+        font-weight: 500;
+        line-height: 1;
+        letter-spacing: 0.025em;
+        color: #a6b0b6;
+        white-space: nowrap;
+      }
+
+      .logo-contact-item:first-child {
+        padding-left: 0;
+      }
+
+      .logo-contact-item + .logo-contact-item {
+        border-left: 1px solid rgba(166, 176, 182, 0.24);
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="main"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="9.8"
+      data-width="1920"
+      data-height="1080"
+    >
+      <section
+        class="scene clip"
+        id="s2"
+        data-start="0"
+        data-duration="3.3"
+        data-track-index="0"
+      >
+        <div class="scene-content">
+          <div class="title-lockup">
+            <span class="title-rule" id="s2-rule" aria-hidden="true"></span>
+            <h1 class="title" id="s2-title">
+              <span class="title-word">See</span>
+              <span class="title-word">how</span>
+              <span class="title-word">we</span>
+              <span class="title-word">did</span>
+              <span class="title-word">it</span>
+            </h1>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="scene clip"
+        id="s3"
+        data-start="3.3"
+        data-duration="6.5"
+        data-track-index="0"
+        style="opacity: 0"
+      >
+        <div class="scene-content">
+          <img class="logo" id="s3-logo" src="./luci-logo.png" alt="LUCI" />
+          <p class="tagline" id="s3-tagline">The Orchestration Engine for Enterprise Multimedia</p>
+          <div class="logo-contact" id="s3-contact" aria-label="LUCI contact information">
+            <p class="logo-contact-item">lucisystems.com</p>
+            <p class="logo-contact-item">info@lucisystems.com</p>
+            <p class="logo-contact-item">(833) 333-5868</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@hyperframes/core/dist/hyperframe.runtime.iife.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@hyperframes/shader-transitions/dist/index.global.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      tl.from("#s2-rule", { scaleX: 0, transformOrigin: "center center", duration: 0.55, ease: "expo.out" }, 0.18);
+      tl.from("#s2-title .title-word", { opacity: 0, duration: 0.82, stagger: 0.065, ease: "sine.out" }, 0.28);
+
+      tl.from("#s3-logo", { y: 34, scale: 0.94, opacity: 0, duration: 0.78, ease: "power4.out" }, 3.52);
+      tl.from("#s3-tagline", { y: 22, opacity: 0, duration: 0.62, ease: "expo.out" }, 3.96);
+      tl.to("#s3-logo", { scale: 1.018, duration: 4.4, ease: "sine.inOut" }, 4.65);
+      tl.from("#s3-contact", { y: 18, opacity: 0, duration: 0.42, ease: "back.out(1.7)" }, 6.28);
+      tl.from("#s3-contact .logo-contact-item", { y: 10, opacity: 0, duration: 0.38, stagger: 0.1, ease: "power3.out" }, 6.36);
+      tl.to("#s3 .scene-content", { opacity: 0, duration: 0.45, ease: "sine.in" }, 9.35);
+
+      window.HyperShader.init({
+        bgColor: "#030607",
+        scenes: ["s2", "s3"],
+        timeline: tl,
+        transitions: [{ time: 3.05, shader: "cinematic-zoom", duration: 0.5 }]
+      });
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
