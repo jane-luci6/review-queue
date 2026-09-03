@@ -1,0 +1,712 @@
+/* New LUCI Launch Marketing Plan — shared deck base
+   Requires sales-deck.css linked in HTML before this file. */
+
+/* ── Launch cover ─────────────────────────────── */
+.lmp-cover__display {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 52px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mint);
+  margin-bottom: 20px;
+}
+
+.lmp-cover__title {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  color: #FFFFFF;
+  max-width: 16ch;
+}
+
+.lmp-cover__deck {
+  font-family: var(--font-body);
+  font-size: 20px;
+  line-height: 1.55;
+  color: rgba(235, 245, 248, 0.82);
+  max-width: 48ch;
+  margin-top: 22px;
+}
+
+.lmp-cover__session {
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(235, 245, 248, 0.55);
+}
+
+.lmp-cover--ecosystem::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 18% 42%, rgba(var(--mint-rgb), 0.14) 0%, transparent 28%),
+    radial-gradient(circle at 72% 28%, rgba(var(--gold-rgb), 0.10) 0%, transparent 24%),
+    radial-gradient(circle at 88% 78%, rgba(var(--mint-rgb), 0.08) 0%, transparent 22%);
+}
+
+.lmp-probe-label {
+  position: absolute;
+  top: 28px;
+  right: var(--pad);
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(235, 245, 248, 0.72);
+  z-index: 2;
+}
+
+.slide--light .lmp-probe-label {
+  color: var(--navy-muted);
+}
+
+/* ── Shared typography helpers ────────────────── */
+.lmp-label {
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mint-dark);
+}
+
+.slide--dark .lmp-label { color: var(--mint); }
+
+.lmp-audience {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: -0.015em;
+  color: var(--ink-strong);
+}
+
+.slide--dark .lmp-audience { color: #FFFFFF; }
+
+.lmp-path {
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--navy-muted);
+}
+
+.slide--dark .lmp-path { color: rgba(235, 245, 248, 0.9); }
+
+.lmp-path strong {
+  font-family: var(--font);
+  font-weight: 700;
+  color: var(--gold-deep);
+}
+
+.slide--dark .lmp-path strong { color: var(--gold); }
+
+.lmp-assets {
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.slide--dark .lmp-assets { color: rgba(235, 245, 248, 0.88); }
+
+.lmp-footnote {
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--navy-muted);
+  max-width: 100%;
+  padding-top: 16px;
+  margin-top: 8px;
+  border-top: 1px solid var(--rule-light);
+}
+
+.slide--dark .lmp-footnote {
+  color: rgba(235, 245, 248, 0.78);
+  border-top-color: rgba(235, 245, 248, 0.16);
+}
+
+/* ── Direction A · operating map ──────────────── */
+.lmp-map__lanes {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.lmp-map__lane {
+  display: grid;
+  grid-template-columns: 148px 24px 168px 24px minmax(0, 1fr);
+  gap: 0 16px;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rule-light);
+}
+
+.slide--dark .lmp-map__lane {
+  border-bottom-color: rgba(235, 245, 248, 0.1);
+}
+
+.lmp-map__lane:first-child { padding-top: 0; }
+.lmp-map__lane:last-child { border-bottom: 0; padding-bottom: 0; }
+
+.lmp-map__arrow {
+  font-family: var(--font);
+  font-size: 18px;
+  color: var(--mint-dark);
+  text-align: center;
+}
+
+.slide--dark .lmp-map__arrow { color: var(--mint); }
+
+.lmp-map__assets-label {
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--navy-muted);
+  margin-bottom: 6px;
+}
+
+.slide--dark .lmp-map__assets-label { color: rgba(235, 245, 248, 0.78); }
+
+.lmp-map__assets ul {
+  margin: 0;
+  padding-left: 14px;
+}
+
+.lmp-map__assets li { margin: 0 0 2px; }
+
+.lmp-sys {
+  display: grid;
+  grid-template-columns: 1fr 220px 1fr;
+  gap: 32px;
+  width: 100%;
+  align-items: stretch;
+  margin-top: 4px;
+}
+
+.lmp-sys__col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.lmp-sys__col-title {
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--navy-muted);
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--rule-light);
+}
+
+.lmp-sys__item {
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(219, 225, 228, 0.7);
+}
+
+.lmp-sys__item:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.lmp-sys__name {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--ink-strong);
+  margin-bottom: 4px;
+}
+
+.lmp-sys__purpose {
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--navy-muted);
+}
+
+.lmp-sys__hub {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 24px 16px;
+  border-left: 1px solid var(--rule-light);
+  border-right: 1px solid var(--rule-light);
+}
+
+.lmp-sys__hub-name {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--ink-strong);
+  margin-bottom: 8px;
+}
+
+.lmp-sys__hub-copy {
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--navy-muted);
+  max-width: 18ch;
+}
+
+.lmp-sys__dist {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 20px;
+  margin-top: 8px;
+}
+
+.lmp-sys__dist-item {
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--navy-muted);
+}
+
+.lmp-sys__dist-item strong {
+  font-family: var(--font);
+  font-weight: 700;
+  color: var(--ink-strong);
+  display: block;
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+
+/* ── Direction B · campaign ecosystem ─────────── */
+.lmp-eco__paths {
+  display: grid;
+  grid-template-columns: 168px minmax(0, 1fr);
+  gap: 28px;
+  width: 100%;
+  align-items: stretch;
+  margin-top: 4px;
+}
+
+.lmp-eco__launch {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 20px;
+  border-right: 1px solid rgba(235, 245, 248, 0.12);
+}
+
+.lmp-eco__launch-title {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  margin-bottom: 10px;
+}
+
+.lmp-eco__launch-copy {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(235, 245, 248, 0.9);
+}
+
+.lmp-eco__routes {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.lmp-eco__route {
+  position: relative;
+  padding-left: 20px;
+}
+
+.lmp-eco__route::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--mint);
+  box-shadow: 0 0 0 4px rgba(var(--mint-rgb), 0.15);
+}
+
+.lmp-eco__route-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.lmp-eco__route-name {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 15px;
+  color: #FFFFFF;
+}
+
+.lmp-eco__route-path {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--gold);
+}
+
+.lmp-eco__milestones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 8px;
+}
+
+.lmp-eco__milestone {
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 1.35;
+  color: rgba(235, 245, 248, 0.92);
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border-left: 3px solid var(--mint);
+}
+
+.lmp-eco__web {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr) 200px;
+  gap: 24px;
+  width: 100%;
+  align-items: stretch;
+  margin-top: 4px;
+}
+
+.lmp-eco__authority,
+.lmp-eco__distribution {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lmp-eco__section-label {
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--navy-muted);
+}
+
+.lmp-eco__card {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule-light);
+}
+
+.lmp-eco__card:last-child { border-bottom: 0; }
+
+.lmp-eco__card-name {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--ink-strong);
+  margin-bottom: 4px;
+}
+
+.lmp-eco__card-copy {
+  font-family: var(--font-body);
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--navy-muted);
+}
+
+.lmp-eco__home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px 12px;
+  background:
+    radial-gradient(circle at 50% 30%, rgba(var(--mint-rgb), 0.12) 0%, transparent 55%),
+    linear-gradient(180deg, rgba(16, 35, 45, 0.04) 0%, transparent 100%);
+  border-top: 3px solid var(--mint-dark);
+  border-bottom: 3px solid var(--mint-dark);
+}
+
+.lmp-eco__home-name {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--ink-strong);
+  margin-bottom: 8px;
+}
+
+.lmp-eco__home-copy {
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--navy-muted);
+  max-width: 20ch;
+}
+
+.lmp-eco__return {
+  margin-top: auto;
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mint-dark);
+  text-align: center;
+  padding-top: 8px;
+}
+
+.lmp-eco__dist-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lmp-eco__dist-row {
+  font-family: var(--font-body);
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--navy-muted);
+  padding-left: 12px;
+  border-left: 2px solid rgba(206, 176, 110, 0.55);
+}
+
+.lmp-eco__dist-row strong {
+  font-family: var(--font);
+  font-weight: 700;
+  color: var(--ink-strong);
+  display: block;
+  font-size: 12px;
+}
+
+/* ── Probe chooser page ───────────────────────── */
+.lmp-chooser {
+  min-height: 100vh;
+  background: var(--navy-deep);
+  color: var(--off-white);
+  font-family: var(--font-body);
+  padding: 48px clamp(28px, 6vw, 64px);
+}
+
+.lmp-chooser h1 {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: clamp(28px, 4vw, 40px);
+  letter-spacing: -0.025em;
+  margin-bottom: 12px;
+}
+
+.lmp-chooser p {
+  color: rgba(235, 245, 248, 0.78);
+  max-width: 62ch;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.lmp-chooser__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  max-width: 900px;
+}
+
+.lmp-chooser__card {
+  display: block;
+  padding: 24px;
+  border-top: 3px solid var(--mint);
+  background: rgba(255, 255, 255, 0.03);
+  color: inherit;
+  text-decoration: none;
+}
+
+.lmp-chooser__card:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.lmp-chooser__card h2 {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.lmp-chooser__card p {
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+/* ── Simplified paths (slide 03) ──────────────── */
+.lmp-paths-body {
+  display: flex !important;
+  flex-direction: column;
+  width: 100%;
+  align-self: stretch !important;
+}
+
+.lmp-paths {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex: 1;
+  justify-content: space-around;
+}
+
+.lmp-paths__row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(235, 245, 248, 0.12);
+}
+
+.lmp-paths__row:last-child {
+  border-bottom: 0;
+}
+
+.lmp-paths__head {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.lmp-paths__audience {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -0.015em;
+  color: #FFFFFF;
+  white-space: nowrap;
+}
+
+.lmp-paths__flow {
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.lmp-paths__touchpoints {
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.55;
+  color: rgba(235, 245, 248, 0.82);
+}
+
+/* ── Simplified demand gen (slide 04) ─────────── */
+.lmp-demand-body {
+  display: flex !important;
+  flex-direction: column;
+  width: 100%;
+  align-self: stretch !important;
+}
+
+.lmp-demand {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 64px;
+  width: 100%;
+  flex: 1;
+  align-items: center;
+}
+
+.lmp-demand__hub {
+  text-align: left;
+  padding-right: 32px;
+  border-right: 2px solid var(--mint-dark);
+}
+
+.lmp-demand__hub-name {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 32px;
+  letter-spacing: -0.02em;
+  color: var(--ink-strong);
+  margin-bottom: 8px;
+}
+
+.lmp-demand__hub-copy {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--navy-muted);
+}
+
+.lmp-demand__hub-return {
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mint-dark);
+  margin-top: 14px;
+}
+
+.lmp-demand__channels {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.lmp-demand__group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lmp-demand__group-label {
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mint-dark);
+  margin-bottom: 4px;
+}
+
+.lmp-demand__item {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.lmp-demand__item strong {
+  font-family: var(--font);
+  font-weight: 700;
+  color: var(--ink-strong);
+}
+
+/* ── Override slide padding for this deck ─────── */
+.slide {
+  --pad: 56px;
+  padding: 56px var(--pad) !important;
+}
+
+/* Scale up titles for this deck */
+.s-title {
+  font-size: 44px !important;
+}
+/* Use plain text label, not the navy chip */
+.slide--light .kicker {
+  background: none;
+  padding: 0;
+  display: inline;
+  border-radius: 0;
+  color: var(--mint-dark);
+}

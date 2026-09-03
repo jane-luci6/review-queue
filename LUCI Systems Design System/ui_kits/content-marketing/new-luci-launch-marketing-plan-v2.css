@@ -1,0 +1,411 @@
+/* New LUCI Launch Marketing Plan — design pass
+   Requires sales-deck.css linked in the HTML BEFORE this file.
+
+   Message hierarchy is carried by visual treatment, not by text alone:
+   · mint  — structural accent: column labels, rules, sequence arrows (primary)
+   · gold  — meaning marker: an asset that serves more than one audience (secondary)
+   · scale — identity (large) > sequence (tracked caps) > inventory (body copy)
+*/
+
+/* ── Slide shell tuning ───────────────────────── */
+.slide {
+  --pad: 64px;
+  padding: 58px var(--pad);
+}
+
+.s-head { margin-bottom: 34px; }
+.s-title { font-size: 42px; }
+
+/* Clear the absolutely-positioned slide footer */
+.s-body { padding-bottom: 30px; }
+
+/* Light-surface kicker: plain deep-mint text, no navy chip */
+.slide--light .kicker {
+  background: none;
+  padding: 0;
+  display: inline;
+  border-radius: 0;
+  color: var(--mint-dark);
+}
+
+/* ══ COVER ═══════════════════════════════════════ */
+.lmp-cover { justify-content: space-between; padding-bottom: 50px; }
+
+.lmp-cover__frame {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 0;
+}
+
+.lmp-cover__logo {
+  height: 52px;
+  width: auto;
+  align-self: flex-start;
+  margin-bottom: 46px;
+}
+
+.lmp-cover__eyebrow {
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mint);
+  margin-bottom: 18px;
+}
+
+.lmp-cover__title {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 62px;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  color: #FFFFFF;
+  max-width: 15ch;
+}
+
+.lmp-cover__rule {
+  display: block;
+  width: 56px;
+  height: 4px;
+  background: var(--gold);
+  border: 0;
+  margin: 26px 0 0;
+}
+
+.lmp-cover__deck {
+  font-family: var(--font-body);
+  font-size: 19px;
+  line-height: 1.55;
+  color: rgba(235, 245, 248, 0.80);
+  max-width: 52ch;
+  margin-top: 26px;
+}
+
+.lmp-cover__footer {
+  flex: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  padding-top: 26px;
+  border-top: 1px solid rgba(235, 245, 248, 0.12);
+}
+
+.lmp-cover__session,
+.lmp-cover__stamp {
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.lmp-cover__session { color: rgba(235, 245, 248, 0.55); }
+.lmp-cover__stamp { color: var(--mint); }
+
+/* ══ SLIDE 03 · AUDIENCE MATRIX ══════════════════
+   Columns are the three message types (who / sequence / inventory).
+   Rows are the three audiences. Each column gets its own treatment. */
+
+.lmp-matrix {
+  --col-who: 210px;
+  --col-path: 320px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+}
+
+.lmp-matrix__head,
+.lmp-row {
+  display: grid;
+  grid-template-columns: var(--col-who) var(--col-path) 1fr;
+  gap: 0 44px;
+}
+
+.lmp-matrix__head {
+  padding-bottom: 13px;
+  border-bottom: 1px solid rgba(235, 245, 248, 0.20);
+}
+
+.lmp-matrix__label {
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--mint);
+}
+
+.lmp-row {
+  flex: 1 1 0;
+  align-items: center;
+  padding: 22px 0;
+  border-bottom: 1px solid rgba(235, 245, 248, 0.10);
+}
+
+.lmp-row:last-of-type { border-bottom: 0; }
+
+/* Column 1 — identity (largest type, mint numeral) */
+.lmp-who {
+  display: flex;
+  align-items: baseline;
+  gap: 13px;
+}
+
+.lmp-who__num {
+  flex: none;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  color: var(--mint);
+}
+
+.lmp-who__name {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+}
+
+/* Column 2 — sequence (tracked caps + mint connectors) */
+.lmp-seq {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+  padding-top: 4px;
+}
+
+.lmp-seq__stage {
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(235, 245, 248, 0.92);
+}
+
+.lmp-seq__arrow {
+  font-family: var(--font);
+  font-size: 12px;
+  color: var(--mint);
+  opacity: 0.6;
+}
+
+/* Column 3 — inventory (body copy, dot-marked; gold = shared asset) */
+.lmp-gets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 0;
+  padding-top: 2px;
+}
+
+.lmp-get {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 9px;
+  margin-right: 20px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgba(235, 245, 248, 0.78);
+}
+
+.lmp-get::before {
+  content: '';
+  flex: none;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(235, 245, 248, 0.32);
+  transform: translateY(-3px);
+}
+
+.lmp-get--shared {
+  color: var(--gold);
+}
+
+.lmp-get--shared::before {
+  background: var(--gold);
+}
+
+/* Legend + footnote */
+.lmp-matrix__foot {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.lmp-legend__dot {
+  flex: none;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+.lmp-legend__text {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: rgba(235, 245, 248, 0.62);
+}
+
+.lmp-note {
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.45;
+  color: rgba(235, 245, 248, 0.58);
+  padding-top: 14px;
+  margin-top: 14px;
+  border-top: 1px solid rgba(235, 245, 248, 0.12);
+}
+
+.slide--light .lmp-note {
+  color: var(--navy-muted);
+  border-top-color: var(--rule-light);
+}
+
+/* ══ SLIDE 04 · DEMAND GENERATION ════════════════
+   Hub is an anchor block; channels are grouped into time-horizon bands.
+   Accent weight decreases with distance in time. */
+
+.lmp-gen {
+  display: grid;
+  grid-template-columns: 296px 1fr;
+  gap: 60px;
+  width: 100%;
+  align-self: stretch;
+  align-items: center;
+}
+
+/* The hub — thick mint bar sized to its content, largest type in the body */
+.lmp-hub {
+  border-left: 4px solid var(--mint-dark);
+  padding: 4px 0 4px 26px;
+}
+
+.lmp-hub__name {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 40px;
+  letter-spacing: -0.03em;
+  color: var(--ink-strong);
+}
+
+.lmp-hub__copy {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--navy-muted);
+  margin-top: 14px;
+}
+
+.lmp-hub__return {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule-light);
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mint-dark);
+}
+
+/* Time-horizon bands */
+.lmp-bands {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 46px;
+}
+
+.lmp-band__head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.lmp-band__label {
+  flex: none;
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.lmp-band__rule {
+  flex: 1 1 auto;
+  height: 1px;
+}
+
+.lmp-band--now .lmp-band__label { color: var(--mint-dark); }
+.lmp-band--now .lmp-band__rule { background: rgba(43, 158, 128, 0.38); }
+
+.lmp-band--horizon .lmp-band__label { color: var(--gold-deep); }
+.lmp-band--horizon .lmp-band__rule { background: rgba(206, 176, 110, 0.55); }
+
+.lmp-band--future .lmp-band__label { color: var(--navy-muted); }
+.lmp-band--future .lmp-band__rule { background: var(--rule-light); }
+
+/* "Now" — familiar tactics, listed tersely as inline names */
+.lmp-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+}
+
+.lmp-chip {
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 19px;
+  letter-spacing: -0.01em;
+  color: var(--ink-strong);
+}
+
+/* "Over time" — the strategic bet, so each gets a reason */
+.lmp-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.lmp-item {
+  display: grid;
+  grid-template-columns: 116px 1fr;
+  gap: 24px;
+  align-items: baseline;
+}
+
+.lmp-item__n {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.015em;
+  color: var(--ink-strong);
+}
+
+.lmp-item__d {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--navy-muted);
+}
+
+/* "2027" — deliberately quiet */
+.lmp-future {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--navy-muted);
+}
