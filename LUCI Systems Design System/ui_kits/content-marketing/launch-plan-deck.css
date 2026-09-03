@@ -693,6 +693,37 @@
 
 .slide--light .lp-ask__d { color: var(--navy-muted); }
 
+/* Horizontal variant — two asks side by side, large numbers, mint
+   top rule on each. Numbers align at the same horizontal level. */
+.lp-asks--row {
+  flex-direction: row;
+  gap: 56px;
+  align-items: stretch;
+}
+
+.lp-asks--row .lp-ask {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  flex: 1 1 0;
+  padding-bottom: 0;
+  border-bottom: 0;
+  border-top: 3px solid var(--mint);
+  padding-top: 28px;
+}
+
+.slide--light .lp-asks--row .lp-ask { border-top-color: var(--mint-dark); }
+
+.lp-asks--row .lp-ask__num {
+  font-size: 64px;
+  line-height: 1;
+}
+
+.lp-asks--row .lp-ask__h {
+  font-size: 24px;
+}
+
 
 /* ═══ 9 · STATEMENT / CLOSE ════════════════════════════════════
    One sentence at scale. <em> takes the mint emphasis.
