@@ -362,6 +362,16 @@
 
 .slide--light .lp-item::before { background: rgba(43, 158, 128, 0.55); }
 
+/* Stack modifier — one item per line. Use when the list is the
+   main content of a column rather than a dense inline inventory. */
+.lp-list--stack {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.lp-list--stack .lp-item { margin-right: 0; }
+
 
 /* ═══ 4 · TIMELINE RAIL ════════════════════════════════════════
    Sequential stops on one axis. Every stop gets IDENTICAL
@@ -698,7 +708,10 @@
 .lp-asks--row {
   flex-direction: row;
   gap: 56px;
-  align-items: stretch;
+  /* Cards size to their copy and top-align, so the mint rules and the
+     numerals sit on one line; the block as a whole centres in the body. */
+  align-items: flex-start;
+  align-self: center;
 }
 
 .lp-asks--row .lp-ask {
@@ -763,6 +776,20 @@
 }
 
 .slide--light .lp-statement__d { color: var(--navy-muted); }
+
+
+/* ═══ 9b · BODY STACK ══════════════════════════════════════════
+   .s-body is a flex ROW. Any slide that needs two things stacked
+   inside it — a pattern plus a note, say — wraps them in this so
+   they stack vertically and still fill the body width. Patterns
+   that carry their own note (matrix) don't need it.             */
+
+.lp-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
 
 
 /* ═══ 10 · NOTE ════════════════════════════════════════════════

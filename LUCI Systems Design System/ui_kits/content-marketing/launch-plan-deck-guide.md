@@ -269,6 +269,44 @@ Sits last in a slide body. For caveats and open decisions, not for content that 
 
 ---
 
+## Modifiers
+
+Three modifiers exist on top of the patterns above. They are already in
+`launch-plan-deck.css`; use them rather than inline style overrides.
+
+### `.lp-col` — stacking two things in one body
+
+**`.s-body` is a flex row.** Put two children in it and they become side-by-side
+columns, not stacked rows. A note added straight after a pattern will land in the
+top-right corner and steal width from the pattern beside it.
+
+Any slide that needs a pattern *and* a note wraps both:
+
+```html
+<div class="s-body">
+ <div class="lp-col">
+  <div class="lp-inds">…</div>
+  <p class="lp-note">…</p>
+ </div>
+</div>
+```
+
+The matrix carries its own note inside `.lp-matrix`, so matrix slides don't need this.
+
+### `.lp-list--stack` — one item per line
+
+`.lp-list` flows items inline and wraps them, which is right for a dense asset
+inventory in a matrix cell. When the list *is* the content of a column, add
+`lp-list--stack` so each item takes its own line.
+
+### `.lp-asks--row` — asks side by side
+
+Lays the numbered asks out horizontally instead of stacked: numerals scale to
+64px, each ask gets a mint top rule, and the numerals align on one line. Use for
+two asks; three still fit, four do not.
+
+---
+
 ## Copy rules for this deck
 
 Full detail is in `.cursor/rules/luci-messaging-voice.mdc`. The parts that bite most often:
@@ -287,5 +325,5 @@ Full detail is in `.cursor/rules/luci-messaging-voice.mdc`. The parts that bite 
 3. Every sentence in Inter; every label and name in Space Grotesk.
 4. At most one Syncopate element, three words or fewer.
 5. Slide numbers and `LUCI` wordmark present, in sequence, on all non-cover slides.
-6. Screenshot at 1280 × 720 and confirm the last line clears the footer. `.slide` is `overflow: hidden`, so content that runs past the bottom is silently cut — it will not warn you.
+6. Screenshot at 1280 × 720 and confirm the last line clears the footer. `.slide` is `overflow: hidden`, so content that runs past the bottom is silently cut — it will not warn you. Run `./shoot-deck.sh <page.html>` rather than driving Chrome by hand: slide N starts at `40 + N*752`, and guessing that pitch from pixels drifts (the drop shadow bleeds into the gap) until the last slide is clipped.
 7. Spacing on the 8px scale — 8, 16, 24, 32, 40, 48, 64.
