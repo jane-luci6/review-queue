@@ -299,6 +299,12 @@ The matrix carries its own note inside `.lp-matrix`, so matrix slides don't need
 inventory in a matrix cell. When the list *is* the content of a column, add
 `lp-list--stack` so each item takes its own line.
 
+**Don't put `<strong>` (or any element) inside `.lp-item`.** It is `inline-flex`
+with a `gap`, so a nested element becomes a flex child and the gap opens visible
+holes around it — you get "opportunity  stops automation  ." with stray spaces
+before the full stop. Keep `.lp-item` plain text. Emphasis inside a paragraph is
+fine anywhere that's a real block element, such as `.lp-ask__d`.
+
 ### `.lp-asks--row` — asks side by side
 
 Lays the numbered asks out horizontally instead of stacked: numerals scale to
