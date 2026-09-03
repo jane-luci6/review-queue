@@ -1,0 +1,754 @@
+/* ═══════════════════════════════════════════════════════════════
+   LUCI Launch Plan Deck — reusable slide patterns
+   ───────────────────────────────────────────────────────────────
+   Requires sales-deck.css linked in the HTML BEFORE this file.
+   All tokens (--mint, --gold, --ink-strong, --font, --font-body,
+   --display, --pad) come from sales-deck.css.
+
+   PREFIX: .lp-*   (launch plan)
+
+   ACCENT CONTRACT — do not deviate
+   · mint  is the PRIMARY accent and carries all structure:
+     kickers, column labels, rules, timeline nodes, spines, numerals.
+     Use --mint on dark canvases, --mint-dark (#2b9e80) on light.
+   · gold  is SECONDARY only: a highlighted phrase inside a headline,
+     a watermark numeral, a soft card edge. Never a structural rule,
+     never a kicker, never a section label.
+     Use --gold on dark, --gold-deep on light. Bright gold on light
+     fails contrast.
+
+   TYPE CONTRACT
+   · Syncopate (--display)  display moment only: cover numerals,
+     small tracked counters. Max 3 words / 25 chars / one line.
+     Never a headline, never a sentence.
+   · Space Grotesk (--font) headlines, section titles, labels,
+     kickers, item names, metric numerals.
+   · Inter (--font-body)    ALL running copy, descriptions, notes,
+     captions. Non-negotiable — body text is never Space Grotesk.
+
+   SPACING — multiples of 8 (4 only for tight type pairs).
+   ═══════════════════════════════════════════════════════════════ */
+
+
+/* ═══ 0 · SLIDE SHELL ══════════════════════════════════════════
+   Applies to every slide in this deck. */
+
+.slide {
+  --pad: 64px;
+  padding: 58px var(--pad);
+}
+
+.s-head { margin-bottom: 34px; }
+.s-title { font-size: 42px; }
+
+/* .s-foot is absolutely positioned at bottom:36px. Body copy must
+   clear it or the last line collides with the page number. */
+.s-body { padding-bottom: 30px; }
+
+/* Light-surface kicker: plain deep-mint text. The navy chip from
+   sales-deck.css reads as a stray pill in this deck — override it. */
+.slide--light .kicker {
+  background: none;
+  padding: 0;
+  display: inline;
+  border-radius: 0;
+  color: var(--mint-dark);
+}
+
+
+/* ═══ 1 · COVER ════════════════════════════════════════════════
+   Title slide. One per deck.
+
+   <section class="slide slide--dark lp-cover">
+     <div class="lp-cover__frame">
+       <img class="lp-cover__logo" src="…" alt="LUCI Systems">
+       <p  class="lp-cover__eyebrow">New LUCI</p>
+       <h1 class="lp-cover__title">Launch Marketing Plan</h1>
+       <hr class="lp-cover__rule">
+       <p  class="lp-cover__deck">One sentence of context.</p>
+     </div>
+     <footer class="lp-cover__footer">
+       <p class="lp-cover__session">Working session · names</p>
+       <p class="lp-cover__stamp">Internal</p>
+     </footer>
+   </section>                                                   */
+
+.lp-cover { justify-content: space-between; padding-bottom: 50px; }
+
+.lp-cover__frame {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 0;
+}
+
+.lp-cover__logo {
+  height: 52px;
+  width: auto;
+  align-self: flex-start;
+  margin-bottom: 46px;
+}
+
+.lp-cover__eyebrow {
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mint);
+  margin-bottom: 18px;
+}
+
+.lp-cover__title {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 62px;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  color: #FFFFFF;
+  max-width: 15ch;
+}
+
+/* Gold is legal here — a single secondary flourish, not structure. */
+.lp-cover__rule {
+  display: block;
+  width: 56px;
+  height: 4px;
+  background: var(--gold);
+  border: 0;
+  margin: 26px 0 0;
+}
+
+.lp-cover__deck {
+  font-family: var(--font-body);
+  font-size: 19px;
+  line-height: 1.55;
+  color: rgba(235, 245, 248, 0.80);
+  max-width: 52ch;
+  margin-top: 26px;
+}
+
+.lp-cover__footer {
+  flex: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  padding-top: 26px;
+  border-top: 1px solid rgba(235, 245, 248, 0.12);
+}
+
+.lp-cover__session,
+.lp-cover__stamp {
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.lp-cover__session { color: rgba(235, 245, 248, 0.55); }
+.lp-cover__stamp   { color: var(--mint); }
+
+
+/* ═══ 2 · SECTION DIVIDER ══════════════════════════════════════
+   Optional breather between deck sections. The oversized numeral
+   is the only place Syncopate appears outside the cover.
+
+   <section class="slide slide--dark lp-divider">
+     <p  class="lp-divider__num">02</p>
+     <h2 class="lp-divider__title">Where the leads come from</h2>
+     <p  class="lp-divider__deck">Optional one-liner.</p>
+   </section>                                                   */
+
+.lp-divider { justify-content: center; }
+
+.lp-divider__num {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.22em;
+  color: var(--mint);
+  margin-bottom: 22px;
+}
+
+.lp-divider__title {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 54px;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  color: #FFFFFF;
+  max-width: 18ch;
+}
+
+.slide--light .lp-divider__title { color: var(--ink-strong); }
+
+.lp-divider__deck {
+  font-family: var(--font-body);
+  font-size: 19px;
+  line-height: 1.55;
+  color: rgba(235, 245, 248, 0.78);
+  max-width: 62ch;
+  margin-top: 24px;
+}
+
+.slide--light .lp-divider__deck { color: var(--navy-muted); }
+
+
+/* ═══ 3 · MATRIX ═══════════════════════════════════════════════
+   Labelled columns × rows. Use when each COLUMN is a different
+   KIND of message and each ROW is a subject. The column labels do
+   the explaining, so the reader can scan one column in isolation.
+
+   Set the column widths with --lp-cols on .lp-matrix.
+
+   <div class="lp-matrix" style="--lp-cols: 210px 320px 1fr;">
+     <div class="lp-matrix__head">
+       <p class="lp-matrix__label">Audience</p>
+       <p class="lp-matrix__label">The path they follow</p>
+       <p class="lp-matrix__label">What we build for them</p>
+     </div>
+     <div class="lp-row">
+       <div class="lp-who">
+         <span class="lp-who__num">01</span>
+         <span class="lp-who__name">Existing<br>customers</span>
+       </div>
+       <div class="lp-seq"> …stages… </div>
+       <div class="lp-list"> …items… </div>
+     </div>
+     …more .lp-row…
+     <p class="lp-note">Optional caveat.</p>
+   </div>
+
+   Rows flex to fill the slide height — 2 to 4 rows works, 5+ gets
+   cramped. Keep column count at 3; 4 columns breaks the measure. */
+
+.lp-matrix {
+  --lp-cols: 210px 320px 1fr;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+}
+
+.lp-matrix__head,
+.lp-row {
+  display: grid;
+  grid-template-columns: var(--lp-cols);
+  gap: 0 44px;
+}
+
+.lp-matrix__head {
+  padding-bottom: 13px;
+  border-bottom: 1px solid rgba(235, 245, 248, 0.20);
+}
+
+.slide--light .lp-matrix__head { border-bottom-color: var(--rule-light); }
+
+.lp-matrix__label {
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--mint);
+}
+
+.slide--light .lp-matrix__label { color: var(--mint-dark); }
+
+.lp-row {
+  flex: 1 1 0;
+  align-items: center;
+  padding: 22px 0;
+  border-bottom: 1px solid rgba(235, 245, 248, 0.10);
+}
+
+.slide--light .lp-row { border-bottom-color: var(--rule-light); }
+
+.lp-row:last-of-type { border-bottom: 0; }
+
+/* 3a — identity cell: Syncopate counter + large name */
+.lp-who {
+  display: flex;
+  align-items: baseline;
+  gap: 13px;
+}
+
+.lp-who__num {
+  flex: none;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  color: var(--mint);
+}
+
+.slide--light .lp-who__num { color: var(--mint-dark); }
+
+.lp-who__name {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+}
+
+.slide--light .lp-who__name { color: var(--ink-strong); }
+
+/* 3b — sequence cell: tracked caps joined by mint arrows.
+   Reads as a progression, visually distinct from body copy.
+   <span class="lp-seq__stage">Preview</span>
+   <span class="lp-seq__arrow">&rarr;</span> … */
+.lp-seq {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+}
+
+.lp-seq__stage {
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(235, 245, 248, 0.92);
+}
+
+.slide--light .lp-seq__stage { color: var(--ink-strong); }
+
+.lp-seq__arrow {
+  font-family: var(--font);
+  font-size: 12px;
+  color: var(--mint);
+  opacity: 0.6;
+}
+
+.slide--light .lp-seq__arrow { color: var(--mint-dark); opacity: 0.8; }
+
+/* 3c — inventory cell: dot-marked body copy that wraps inline.
+   <span class="lp-item">Seminar &amp; recording</span> … */
+.lp-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 0;
+}
+
+.lp-item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 9px;
+  margin-right: 20px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgba(235, 245, 248, 0.78);
+}
+
+.slide--light .lp-item { color: var(--ink); }
+
+.lp-item::before {
+  content: '';
+  flex: none;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(235, 245, 248, 0.32);
+  transform: translateY(-3px);
+}
+
+.slide--light .lp-item::before { background: rgba(43, 158, 128, 0.55); }
+
+
+/* ═══ 4 · TIMELINE RAIL ════════════════════════════════════════
+   Sequential stops on one axis. Every stop gets IDENTICAL
+   treatment — a timeline ranks by position, never by colour. If
+   you find yourself wanting to de-emphasise a later stop, the
+   slide is a taxonomy, not a timeline: use the matrix instead.
+
+   <div class="lp-rail">
+     <div class="lp-stop">
+       <div class="lp-stop__head">
+         <span class="lp-stop__label">At launch</span>
+         <span class="lp-stop__rule"></span>
+       </div>
+       <div class="lp-defs">
+         <div class="lp-def">
+           <span class="lp-def__n">LinkedIn</span>
+           <span class="lp-def__d">Why it earns its place.</span>
+         </div>
+       </div>
+     </div>
+     …more .lp-stop…
+   </div>                                                       */
+
+.lp-rail {
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+  width: 100%;
+}
+
+.lp-stop {
+  position: relative;
+  padding-left: 30px;
+}
+
+/* connector — runs from this node down into the next stop */
+.lp-stop::before {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 18px;
+  bottom: -34px;
+  width: 1px;
+  background: rgba(var(--mint-rgb), 0.30);
+}
+
+.lp-stop:last-child::before { display: none; }
+
+/* node */
+.lp-stop::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 5px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--mint);
+}
+
+.slide--light .lp-stop::before { background: rgba(43, 158, 128, 0.35); }
+.slide--light .lp-stop::after  { background: var(--mint-dark); }
+
+.lp-stop__head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.lp-stop__label {
+  flex: none;
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mint);
+}
+
+.slide--light .lp-stop__label { color: var(--mint-dark); }
+
+.lp-stop__rule {
+  flex: 1 1 auto;
+  height: 1px;
+  background: rgba(var(--mint-rgb), 0.22);
+}
+
+.slide--light .lp-stop__rule { background: var(--rule-light); }
+
+
+/* ═══ 5 · DEFINITION LIST ══════════════════════════════════════
+   Name + reason. Use inside a timeline stop, or standalone when
+   each item needs a sentence of justification. Set the name
+   column with --lp-defw.                                       */
+
+.lp-defs {
+  --lp-defw: 116px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lp-def {
+  display: grid;
+  grid-template-columns: var(--lp-defw) 1fr;
+  gap: 24px;
+  align-items: baseline;
+}
+
+.lp-def__n {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.015em;
+  color: #FFFFFF;
+}
+
+.slide--light .lp-def__n { color: var(--ink-strong); }
+
+.lp-def__d {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgba(235, 245, 248, 0.76);
+}
+
+.slide--light .lp-def__d { color: var(--navy-muted); }
+
+
+/* ═══ 6 · SPLIT + ANCHOR ═══════════════════════════════════════
+   Two columns where the left one is a standing statement and the
+   right one carries the detail. Set the ratio with --lp-split.
+
+   <div class="lp-split" style="--lp-split: 296px 1fr;">
+     <div class="lp-anchor">
+       <p class="lp-anchor__name">Website</p>
+       <p class="lp-anchor__copy">One or two sentences.</p>
+       <p class="lp-anchor__tag">Every channel returns here</p>
+     </div>
+     <div> …rail, defs, list… </div>
+   </div>                                                       */
+
+.lp-split {
+  --lp-split: 296px 1fr;
+  display: grid;
+  grid-template-columns: var(--lp-split);
+  gap: 60px;
+  width: 100%;
+  align-self: stretch;
+  align-items: center;
+}
+
+.lp-anchor {
+  border-left: 4px solid var(--mint);
+  padding: 4px 0 4px 26px;
+}
+
+.slide--light .lp-anchor { border-left-color: var(--mint-dark); }
+
+.lp-anchor__name {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: #FFFFFF;
+}
+
+.slide--light .lp-anchor__name { color: var(--ink-strong); }
+
+.lp-anchor__copy {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.55;
+  color: rgba(235, 245, 248, 0.78);
+  margin-top: 14px;
+}
+
+.slide--light .lp-anchor__copy { color: var(--navy-muted); }
+
+.lp-anchor__tag {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(235, 245, 248, 0.16);
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mint);
+}
+
+.slide--light .lp-anchor__tag {
+  border-top-color: var(--rule-light);
+  color: var(--mint-dark);
+}
+
+
+/* ═══ 7 · INDICATORS ═══════════════════════════════════════════
+   Progress markers across the top rule. Built for named
+   indicators, not conversion percentages — .lp-ind__n is optional
+   and can hold a count, a cadence, or nothing at all.
+
+   <div class="lp-inds" style="--lp-ind-cols: 4;">
+     <div class="lp-ind">
+       <p class="lp-ind__n">Weekly</p>
+       <p class="lp-ind__l">Blog cadence</p>
+       <p class="lp-ind__d">Published, not drafted.</p>
+     </div>
+   </div>                                                       */
+
+.lp-inds {
+  --lp-ind-cols: 4;
+  display: grid;
+  grid-template-columns: repeat(var(--lp-ind-cols), 1fr);
+  gap: 40px;
+  width: 100%;
+  align-self: center;
+}
+
+.lp-ind {
+  border-top: 3px solid var(--mint);
+  padding-top: 22px;
+}
+
+.slide--light .lp-ind { border-top-color: var(--mint-dark); }
+
+.lp-ind__n {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 46px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: #FFFFFF;
+}
+
+.slide--light .lp-ind__n { color: var(--ink-strong); }
+
+.lp-ind__l {
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mint);
+  margin-top: 18px;
+}
+
+.slide--light .lp-ind__l { color: var(--mint-dark); }
+
+.lp-ind__d {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgba(235, 245, 248, 0.72);
+  margin-top: 10px;
+}
+
+.slide--light .lp-ind__d { color: var(--navy-muted); }
+
+
+/* ═══ 8 · NUMBERED ASKS ════════════════════════════════════════
+   A short list of decisions or requests. Deliberately large —
+   this is the slide people are meant to act on. Two or three
+   items; more than four and it stops being an ask.
+
+   <div class="lp-asks">
+     <div class="lp-ask">
+       <span class="lp-ask__num">01</span>
+       <div>
+         <p class="lp-ask__h">ActiveCampaign Pipelines</p>
+         <p class="lp-ask__d">What it unblocks and by when.</p>
+       </div>
+     </div>
+   </div>                                                       */
+
+.lp-asks {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 34px;
+  width: 100%;
+  align-self: stretch;
+}
+
+.lp-ask {
+  display: grid;
+  grid-template-columns: 62px 1fr;
+  gap: 24px;
+  align-items: baseline;
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(235, 245, 248, 0.12);
+}
+
+.slide--light .lp-ask { border-bottom-color: var(--rule-light); }
+
+.lp-ask:last-child { border-bottom: 0; padding-bottom: 0; }
+
+.lp-ask__num {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 0.08em;
+  color: var(--mint);
+}
+
+.slide--light .lp-ask__num { color: var(--mint-dark); }
+
+.lp-ask__h {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: #FFFFFF;
+}
+
+.slide--light .lp-ask__h { color: var(--ink-strong); }
+
+.lp-ask__d {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.55;
+  color: rgba(235, 245, 248, 0.76);
+  max-width: 62ch;
+  margin-top: 8px;
+}
+
+.slide--light .lp-ask__d { color: var(--navy-muted); }
+
+
+/* ═══ 9 · STATEMENT / CLOSE ════════════════════════════════════
+   One sentence at scale. <em> takes the mint emphasis.
+
+   <div class="lp-statement">
+     <p class="lp-statement__t">The launch is one motion, <em>run once.</em></p>
+     <p class="lp-statement__d">Optional supporting line.</p>
+   </div>                                                       */
+
+.lp-statement {
+  align-self: center;
+  width: 100%;
+}
+
+.lp-statement__t {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: #FFFFFF;
+  max-width: 20ch;
+}
+
+.slide--light .lp-statement__t { color: var(--ink-strong); }
+
+.lp-statement__t em { font-style: normal; color: var(--mint); }
+.slide--light .lp-statement__t em { color: var(--mint-dark); }
+
+.lp-statement__d {
+  font-family: var(--font-body);
+  font-size: 19px;
+  line-height: 1.55;
+  color: rgba(235, 245, 248, 0.78);
+  max-width: 56ch;
+  margin-top: 26px;
+}
+
+.slide--light .lp-statement__d { color: var(--navy-muted); }
+
+
+/* ═══ 10 · NOTE ════════════════════════════════════════════════
+   Caveats, open decisions, "preliminary until X confirms". Sits
+   at the bottom of a slide body, above the footer.             */
+
+.lp-note {
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.45;
+  color: rgba(235, 245, 248, 0.58);
+  padding-top: 14px;
+  margin-top: 18px;
+  border-top: 1px solid rgba(235, 245, 248, 0.12);
+}
+
+.slide--light .lp-note {
+  color: var(--navy-muted);
+  border-top-color: var(--rule-light);
+}
