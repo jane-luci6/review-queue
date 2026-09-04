@@ -1,9 +1,11 @@
 # Aliante LED — Case Study Copy
 
-**Stage:** Step 10 — develop case study copy
-**Purpose:** Produce the actual language system for the Aliante case-study video — onscreen supers, proof-point language, and the copy architecture that carries the complexity → simplicity thesis. This is NOT frame-accurate timestamps, shot order, typography, transition direction, or music direction.
+**Stage:** Step 10 — develop case study copy (persistence update)
+**Purpose:** Persist the current approved Aliante case-study copy and story direction. This is the onscreen-supers language system and the copy architecture for the Aliante case-study video. This is NOT frame-accurate timestamps, shot order, typography, transition direction, or music direction.
 **Owner:** Cursor
-**Foundation:** `editorial/case-study-narrative.md` (7-beat narrative architecture), `analysis/project-intelligence.md` (claim ledger), `editorial/editorial-opportunities.md` (story hierarchy)
+**Foundation:** `editorial/case-study-narrative.md` (narrative architecture), `analysis/project-intelligence.md` (claim ledger), `editorial/editorial-opportunities.md` (story hierarchy)
+
+> **Persistence note (2026-09-04):** This version replaces the prior "One Wall, One Platform" draft and earlier beat copy. Superseded content is listed in §"Obsolete / superseded" at the end of this file. Do not re-introduce superseded copy.
 
 ---
 
@@ -11,403 +13,235 @@
 
 - **No usable Aliante customer interview.** All speakers are LUCI team members. V0024/V0026 are intelligence sources, not A-roll.
 - **No LUCI interface/iPad footage.** The simplification message is carried by onscreen text + visual contrast, not product demonstration.
-- **No true "before" footage** of the old system operating. V0048 shows decommissioned gear, not the old system running.
-- **Construction photos are not evidence of the former AV system.** The 5-photo progression shows the wall before LUCI panel installation.
+- **True-before still photography now exists.** I0090, I0091, I0092 show the old sportsbook in operation with the legacy projector-based display system. No true-before VIDEO exists — only true-before stills.
+- **Construction photos are not evidence of the former AV system.** The human-curated 5-photo progression shows the wall before LUCI panel installation, not the former projector system.
 - **V0031 shows bar-ticker testing data**, not finished content.
 - **No unsupported claims:** No quantified ROI, savings, uptime, operator quotes, or interface behavior beyond the claim ledger.
-- **Voice:** Declarative, specific, institutional. Subtraction over addition. "A/V" not "AV." No "layer" for LUCI. No retired hype terms.
+- **Voice:** Declarative, specific, institutional. Subtraction over addition. "A/V" not "AV" in body copy. No "layer" for LUCI. No retired hype terms.
+- **Approved exception — ending end card:** The approved end card reads `Absurdly simple AV for complex properties.` (verbatim). This is an approved, deliberate exception to the house "A/V" spelling and the "retire absurdly simple" voice guidance for this video's final sign-off. Do not "correct" it back to "A/V" or rephrase it — it is the locked end card.
 
 ---
 
-## 1. Copy strategy
+## Copy / editorial rules
 
-The video is visual-first. The footage and photography carry as much of the storytelling as possible. Copy appears as concise onscreen supers — short proof-point and stat language that anchors what the viewer is seeing, not narration that explains it.
-
-The default is: a few words on screen at a time, held long enough to read, then gone. The viewer watches the wall, the racks, the property; the supers name what they're looking at and why it matters. The music sets the pace. The copy does not over-talk the visuals.
-
-There is no dense narration script. There is no VO (see §8). The video does not compensate for the absence of interviews by overwriting — it lets the visual evidence do the work and uses supers to turn the meaning.
-
-The copy must work with either opening visual treatment (Option A finished-first or Option B tease-and-build). No line depends on a rewind device, a specific edit transition, or the 5-photo progression being used.
-
----
-
-## 2. Working title
-
-Three options. These should feel like a LUCI case study — factual, specific, thesis-driven — not an ad campaign slogan.
-
-1. **Aliante: One Wall, One Platform**
-2. **Aliante: A 106-Foot Wall, Two Racks**
-3. **Aliante: The Sportsbook on the Platform**
-
-**Recommended: #1 — "Aliante: One Wall, One Platform"**
-
-It captures the thesis in four words. The wall is the visual evidence; one platform is the product meaning. It's declarative, not promotional. It works as a title card, a video filename, and a sales-team reference. It doesn't promise a "transformation" or a "revolution" — it states what happened.
+- No VO.
+- Approximately 10 words maximum per onscreen card.
+- 10 words is a ceiling, not a target.
+- Not every beat needs text.
+- Use straightforward narrative and factual language where appropriate.
+- Do not turn every card into a marketing slogan.
+- The wall is the visual centerpiece, but LUCI's orchestration/simplicity is the product meaning.
+- Rack consolidation is major visual proof.
+- Property-wide orchestration is the final expansion of the story.
 
 ---
 
-## 3. Beat-by-beat copy
+## Approved copy — current direction
 
-For each beat: **E** = essential (the video needs this line to land the beat), **O** = optional (strengthens the beat but the video works without it).
+### 1. Title / relationship
 
-### Beat 1 — Hook: the wall (and the complexity behind it)
+- `Aliante Casino + Hotel`
+- `A sportsbook renovation with LUCI Systems`
 
-**Beat purpose:** Open on the wall. Establish scale. Frame as evidence of complexity, not the entire message.
+The title/opening must establish the relationship clearly:
 
-**Core message:** This is one of the largest curved LED walls in Las Vegas — a substantial, technically complex installation.
+- **Aliante** = property/customer
+- **LUCI Systems** = renovation/build partner
+- **LUCI platform** = software platform already running Aliante's A/V
 
-**Recommended primary onscreen copy:**
-- **(E)** `106 feet. 2,000 square feet.`
-- **(E)** `One of the largest curved LED walls in Las Vegas.`
-
-**Optional secondary copy:**
-- **(O)** `A substantial, technically complex installation.`
-
-**Relevant verified proof points:**
-- 106-foot curved LED wall (claim #1, confirmed)
-- ~2,000 square feet (claim #3, confirmed)
-- "One of the biggest" in Las Vegas (claim #2, qualified — use "one of")
-
-**Essential vs. optional:** The two essential lines name the scale and the context. The optional line names the complexity explicitly — use it only if the visuals alone don't convey that this is complex (not just big). In Option B (tease-and-build), the optional line may not be needed because the build footage that follows makes the complexity visible.
+Do not blur LUCI Systems (the project team/company) with the LUCI software platform.
 
 ---
 
-### Beat 2 — How it came together: the build
+### 2. Establish Aliante
 
-**Beat purpose:** Show the work behind the wall — installation, scale of the build, precision.
-
-**Core message:** LUCI executed this installation — 972 frames, 5,800+ tiles, aligned to one-sixteenth of an inch on a curved wall that wasn't flat.
-
-**Recommended primary onscreen copy:**
-- **(E)** `972 frames. 5,800 tiles.`
-- **(E)** `Aligned to one-sixteenth of an inch.`
-
-**Optional secondary copy:**
-- **(O)** `A curved wall that wasn't flat.`
-- **(O)** `Three days to install and commission.`
-
-**Relevant verified proof points:**
-- 972 frames, 5,800+ tiles (claim #4, confirmed)
-- Curve alignment to one-sixteenth of an inch (claim #16, confirmed)
-- 3 days to install and commission (confirmed)
-- Wall flatness challenge: quarter-inch imperfections at plywood seams (confirmed)
-
-**Essential vs. optional:** The two essential lines name the scale of the build and the precision. The optional lines add the challenge (the wall wasn't flat) and the speed (3 days) — use them if the build footage needs context, omit them if the visuals alone show workers on lifts and tiles going up clearly enough.
+- `100,000+ square feet of gaming.`
+- `Across more than 40 acres.`
 
 ---
 
-### Beat 3 — What came out: the rack room before/after
+### 3. The renovation / old sportsbook
 
-**Beat purpose:** Make simplification visible. The strongest visual proof of the complexity → simplicity thesis. Show what was removed behind the wall.
+- `Aliante set out to renovate its 14,200-square-foot sportsbook.`
 
-**Core message:** Behind this wall, 15 racks of legacy gear and more than 20 projectors came out. Two LUCI racks went in. The complexity required to create the guest-facing experience does not have to remain operationally complex behind the scenes.
+Use the authoritative true-before sportsbook images:
 
-**Recommended primary onscreen copy:**
-- **(E)** `15 racks. 20+ projectors. Out.`
-- **(E)** `2 LUCI racks. In.`
+- I0090
+- I0091
+- I0092
 
-**Optional secondary copy:**
-- **(O)** `The complexity behind the wall / did not stay complex.`
+Then establish the old display system:
 
-**Relevant verified proof points:**
-- 15 racks → 2 LUCI racks (claim #5, confirmed)
-- 20+ projectors removed (claim #6, confirmed)
-- Former system: rear projection, state of the art in the early 2000s (claim #17, confirmed)
+- `The existing space relied on legacy projector technology.`
+- `The renovation removed more than 20 legacy projectors.`
+- `The 20+ projectors were specifically part of the old sportsbook wall system.`
 
-**Essential vs. optional:** The two essential lines are the before/after contrast — they ARE the simplification proof. The optional line names the meaning explicitly. Use it if the rack-room footage needs the conceptual turn stated; omit it if the visual contrast (dusty projectors → clean LUCI racks) makes the point on its own.
+Projector removal / supporting evidence includes V0048 and other assets classified as projector.
 
-**What must not be implied:** That V0048 shows the old system operating (it shows decommissioned gear). That cost savings can be quantified (claim #19 is qualitative only — NO dollar figure). That the former system was "bad" (it was state of the art in its time; the remodel was an upgrade, not a fix).
+Do not imply that the projectors were infrastructure for the new LED wall.
 
----
+The sequence must clearly communicate:
 
-### Beat 4 — Complexity made simple: the LUCI message
-
-**Beat purpose:** The conceptual payoff. This enormous, complex installation is managed simply through one platform — alongside the rest of the casino. This is where the wall story connects to LUCI's orchestration value.
-
-**Core message:** Something this physically and technically substantial becomes simple to manage through LUCI. The complexity that produced the wall does not remain operationally complex — LUCI is the orchestration layer that makes it simple to run.
-
-**Recommended primary onscreen copy:**
-- **(E)** `One interface. One login.`
-- **(E)** `The wall, the audio, the ticker — all of it.`
-
-**Optional secondary copy:**
-- **(O)** `Six configurations. Up to 28 sources.`
-- **(O)** `An iPad in the room.`
-- **(O)** `Added to LUCI in under a minute.`
-
-**Relevant verified proof points:**
-- 6 wall configurations pre-built (claim #12, confirmed)
-- Up to 28 images on the wall (claim #13, confirmed)
-- iPad control from in the space (claim #11, confirmed)
-- Adding the wall to LUCI < couple minutes (claim #14, confirmed)
-- Audio controlled by section (claim #15, confirmed)
-
-**Essential vs. optional:** The two essential lines state the orchestration value — one interface runs all of it. The optional lines add specific proof points (configurations, sources, iPad, integration speed). Use 1-2 of them if the beat needs concrete evidence; do not stack all four — that overloads the viewer with stats. The beat has no interface footage, so the copy must carry the message, but it should do so in 2-4 lines maximum, not a stat grid.
-
-**What must not be implied:** That we can show the interface (we cannot). That there is an operator quote (there is not). That switching configurations can be demonstrated (it cannot).
+> old sportsbook → old projector system removed → new sportsbook design
 
 ---
 
-### Beat 5 — The bar ticker: the "also"
+### 4. The new centerpiece
 
-**Beat purpose:** Show the bar ticker as another substantial endpoint — 150 feet of LED rebuilt around the sportsbook bar, on the same platform.
+- `The new centerpiece: a 106-foot curved LED wall.`
+- `2,000 square feet of display.`
+- `Plus a 150-foot LED ticker around the bar.`
 
-**Core message:** LUCI also rebuilt the continuous odds ticker around the sportsbook bar — 150 feet, the same platform.
-
-**Recommended primary onscreen copy:**
-- **(E)** `150 feet of odds ticker.`
-- **(E)** `Around the bar. On the same platform.`
-
-**Optional secondary copy:**
-- **(O)** `Phase two of the sportsbook. Same install, same interface.`
-
-**Relevant verified proof points:**
-- Bar ticker rebuilt around the sportsbook bar (claim #7, confirmed)
-- 150 ft bar ticker (claim #8, confirmed)
-- Phase 2 of the project (V0026 transcript)
-
-**Essential vs. optional:** The two essential lines name the ticker's scale and its relationship to the platform. The optional line adds the "phase two" context — use it only if the edit needs to explain why the ticker appears as a distinct piece.
-
-**What must not be implied:** That V0031 shows finished ticker content (it shows testing data — Jane confirmed this). That the bar ticker is as large as the main wall (it is 150 ft linear; the main wall is 106 ft × 20 ft).
+LUCI Systems' physical project scope for this story is the wall and ticker, not the broader sportsbook renovation.
 
 ---
 
-### Beat 6 — Bigger than one wall: property-wide expansion
+### 5. Why LUCI
 
-**Beat purpose:** Expand the story. Show that this wall is one part of a much larger environment LUCI orchestrates across Aliante.
+- `Aliante's A/V already ran on the LUCI platform.`
+- `So LUCI Systems was the obvious build partner.`
+- `For the wall and ticker.`
 
-**Core message:** LUCI was already live throughout Aliante before this project. The sportsbook came onto the same platform — 266 displays, 89 audio zones, 98 digital signage endpoints. The wall is the latest endpoint, not a new system.
+Intended idea: Aliante already trusted LUCI because the platform was operating its property-wide A/V. That existing partnership made LUCI Systems the natural team to build the new wall and ticker and bring them onto the existing LUCI environment.
 
-**Recommended primary onscreen copy:**
-- **(E)** `LUCI was already live throughout Aliante.`
-- **(E)** `266 displays. 89 audio zones. 98 digital signage endpoints.`
-
-**Optional secondary copy:**
-- **(O)** `The sportsbook was the latest addition — not a new system.`
-- **(O)** `92 DTV channels. 7+ technologies. One platform.`
-
-**Relevant verified proof points:**
-- LUCI already live throughout the property (claim #9, confirmed)
-- Long-time LUCI customer (claim #10, confirmed)
-- Property-wide: 266 displays, 89 audio zones, 92 DTV channels, 98 digital signage endpoints, 7+ technologies (claim #22, confirmed)
-
-**Essential vs. optional:** The two essential lines establish that LUCI was already there (the partnership) and the property-wide scope (the breadth). The optional lines add the "latest addition" framing and the remaining stats. Do NOT stack all the stats — 266/89/98 is enough to communicate scale and breadth. Adding 92 DTV channels and 7+ technologies risks overloading the viewer with a stat grid. Use them only if the B-roll needs more text to cover a longer sequence.
-
-**What must not be implied:** That the B-roll is the sportsbook (it is the broader property). That LUCI installed all of this during the sportsbook project (LUCI was already live). That generic casino footage is the case study thesis (it is supporting context).
+Do not add the previously discussed "embedded team / decades of experience" line. It has been removed from the approved copy.
 
 ---
 
-### Beat 7 — Payoff: back to the wall
+### 6. The build
 
-**Beat purpose:** Close on the finished wall as the final visual payoff. Bookend the opening with deeper meaning.
+- `Building at this scale was a significant undertaking.`
 
-**Core message:** One wall. One platform. One standard for the whole property.
+Then let the build imagery carry the sequence.
 
-**Recommended primary onscreen copy:**
-- **(E)** `One wall. One platform. One standard.`
+Useful visual material includes:
 
-**Optional secondary copy:**
-- **(O)** `The Orchestration Engine for Enterprise Multimedia.`
+- panel installation
+- lifts
+- workers
+- alignment / precision work
+- construction progression
+- the human-curated five-photo progress sequence
 
-**Relevant verified proof points:**
-- 106-foot curved LED wall (claim #1, confirmed)
-- One interface, one login (written case study, confirmed)
-- LUCI already live throughout the property (claim #9, confirmed)
-
-**Essential vs. optional:** The essential line is the bookend — it returns to the wall (one wall) and states the thesis (one platform, one standard). The optional line is the LUCI tagline — use it only if the video needs the brand positioning stated explicitly at the close. In most cases the essential line is enough; the tagline may feel like a CTA rather than a payoff.
+Some or most of this section should run without additional supers.
 
 ---
 
-## 4. Opening copy options
+### 7. The turn
 
-Three distinct opening-copy approaches. All express the same complexity → simplicity thesis. All work with either opening visual treatment (Option A finished-first or Option B tease-and-build). No line depends on a rewind device or a specific transition.
+- `Bringing the wall, ticker, and screens onto LUCI was easy.`
 
-### Opening Option 1 — "Scale, then the turn" (RECOMMENDED)
+This is the key transition:
 
-Supers, in sequence:
-1. `106 feet. 2,000 square feet.`
-2. `One of the largest curved LED walls in Las Vegas.`
-3. `Operated from one interface.`
-
-**Why it works:** Super 1 names the scale (the evidence). Super 2 names the context (one of the largest). Super 3 turns the meaning — the wall is not just big, it's operated from one interface. The turn from scale to simplicity happens in three lines, none of which depends on a rewind.
-
-**With Option A (finished-first):** All three supers land over the finished wall reveal. The viewer sees the wall and reads the turn.
-**With Option B (tease-and-build):** Supers 1-2 land over the brief teaser. Super 3 can land at the teaser or be held for the full reveal later — the edit decides.
-
-**Voice check:** Declarative, specific, no hype. "Operated from one interface" is a fact, not a claim.
+> significant physical build effort → operational simplicity through LUCI
 
 ---
 
-### Opening Option 2 — "The complexity, named"
+### 8. Rack consolidation
 
-Supers, in sequence:
-1. `972 frames. 5,800 tiles.`
-2. `A curved wall that wasn't flat.`
-3. `LUCI made it one piece.`
+Approved factual story:
 
-**Why it works:** This leads with the build complexity — the frames, the tiles, the curve challenge. It establishes that this is a technically difficult installation, then states that LUCI solved it. The turn is from difficulty to resolution.
+- `Aliante's legacy system filled 15 racks.`
+- `13 now sit empty.`
+- `Everything now runs from 2 LUCI racks.`
 
-**With Option A:** Supers land over the finished wall, then the build footage follows — the supers name what the viewer is about to see.
-**With Option B:** Supers land over the build footage itself — the viewer watches the work as the supers name it.
+Main-rack evidence hierarchy:
 
-**Voice check:** Specific, factual. "LUCI made it one piece" is declarative, not promotional. Risk: "one piece" could read as construction craft, not orchestration — the turn to the platform message must arrive clearly in Beat 4.
+**BEFORE**
 
----
+- I0069
+- I0070
+- I0071
 
-### Opening Option 3 — "Subtraction first"
+**AFTER / MOVING IMAGE**
 
-Supers, in sequence:
-1. `15 racks. 20+ projectors.`
-2. `Replaced by two.`
-3. `Behind a 106-foot wall.`
+- V0049 — IMG_4817.mov
+  - 00:20.0–00:28.0 strongest completed dual-rack reveal
+  - full clip can also provide empty-footprint → populated-rack transition
+- V0050 — IMG_4821.mov
+  - 00:17.0–00:22.5 strongest pure completed/operational 2-rack proof
+  - hero around ~00:21 includes active status lights and live scheduling dashboard
 
-**Why it works:** This leads with the consolidation — the subtraction story — before the viewer has seen the wall. It's the boldest opening because it front-loads the infrastructure simplification. Super 3 then reveals what the subtraction produced (the wall).
+**AFTER STILLS / DETAIL**
 
-**With Option A:** Supers land over the finished wall — the viewer sees the wall and learns what came out behind it.
-**With Option B:** Supers land over the rack-room footage or the teaser — the subtraction is established before the build.
+- I0067
+- I0068
+- I0074
+- I0075
+- I0078
 
-**Voice check:** Subtraction-first, which is on-brand. Risk: leading with racks before the wall may confuse a viewer who doesn't know what they're looking at. This opening works best if the rack-room footage is visually strong enough to carry the first 10-15 seconds.
+Small Rack assets are fallback only and must not be silently mixed into the primary 15-racks → 2-racks story.
 
----
-
-**Recommendation: Opening Option 1 — "Scale, then the turn"**
-
-It works with either visual treatment. It establishes scale first (the evidence), context second (one of the largest), and the thesis third (operated from one interface). The turn from complexity to simplicity happens without depending on a rewind. It's the lowest-risk opening because it doesn't front-load the rack room (which may confuse) or the build complexity (which may read as construction).
-
----
-
-## 5. Rack-consolidation copy
-
-Two to three concise ways to communicate the rack/infrastructure simplification using only verified facts. The language connects the physical subtraction to the broader simplicity/orchestration message.
-
-### Rack copy option A — "Out / In" (RECOMMENDED)
-
-- `15 racks. 20+ projectors. Out.`
-- `2 LUCI racks. In.`
-
-**Why it works:** The before/after is stated in four numbers and two directions. "Out" and "In" make the subtraction visible without explaining it. The viewer sees the decommissioned projectors (V0048), reads "Out," then sees the completed LUCI racks (V0051) and reads "In." The contrast is the proof; the copy names it.
-
-### Rack copy option B — "The complexity did not stay complex"
-
-- `Fifteen racks of legacy gear.`
-- `Two LUCI racks.`
-- `The complexity behind the wall / did not stay complex.`
-
-**Why it works:** This names the meaning explicitly. The first two lines are the contrast; the third line is the conceptual turn. It connects the physical subtraction to the orchestration thesis — the complexity that produced the wall does not remain operationally complex.
-
-### Rack copy option C — "What runs it"
-
-- `What runs a 106-foot wall?`
-- `Two racks.`
-
-**Why it works:** This frames the rack consolidation as a question-and-answer that connects the wall (the spectacle) to the racks (the simplification). It's the most explicit bridge between Beat 1 (the wall) and Beat 3 (the racks).
-
-**Recommendation:** Use Option A as the primary (it's the cleanest contrast). Use Option C as a bridge if the edit needs to connect the wall and the rack room explicitly. Avoid Option B unless the visual contrast alone isn't making the point — the third line is the most "explainy" of the three.
+Do not require the viewer to literally count 13 empty rack frames in one shot. The footage/stills illustrate the verified infrastructure subtraction.
 
 ---
 
-## 6. Property-wide copy
+### 9. Finished sportsbook payoff
 
-The minimal copy needed to make the transition from "this wall" to "the larger Aliante multimedia environment" feel clear and earned.
+After rack consolidation, give the completed wall and ticker a meaningful hero sequence.
 
-**Primary property-wide copy:**
-- `LUCI was already live throughout Aliante.`
-- `266 displays. 89 audio zones. 98 digital signage endpoints.`
+Use strongest completed assets such as V0036, V0040, V0039 and other Tier 1 finished sportsbook media as appropriate.
 
-**Why this is enough:** The first line establishes the partnership — LUCI was already there, the sportsbook was the new addition. The second line names the property-wide scope in three numbers. The viewer has just watched the wall and the rack room; now they learn this is one part of a much larger environment. Two lines, no stat grid.
+Allow the finished result to breathe with little or no text.
 
-**Optional add (only if the B-roll sequence is long enough to need more text):**
-- `The sportsbook was the latest addition — not a new system.`
+If useful:
 
-**What to avoid:** Do not dump all five property-wide stats (266/89/92/98/7+) at once. Three numbers (266/89/98) communicate scale and breadth. Adding the rest overloads the viewer and reads like a spec sheet. The remaining stats (92 DTV channels, 7+ technologies) can appear as smaller secondary text if the edit needs them, but they are not essential.
+- `A 150-foot LED ticker wraps the sportsbook bar.`
 
----
-
-## 7. Ending options
-
-Three conceptual closing-copy options. The ending returns to the finished experience with a deeper meaning than "look at the completed wall."
-
-### Ending Option 1 — "One wall. One platform. One standard." (RECOMMENDED)
-
-- `One wall. One platform. One standard.`
-
-**Why it works:** It's the bookend. The video opened on the wall (one wall); the ending returns to it but now the viewer understands what's behind it (one platform) and what it means for the property (one standard). Three phrases, four words each, the thesis in twelve words. Declarative, not promotional.
-
-### Ending Option 2 — "The list"
-
-- `A 106-foot wall. A 150-foot ticker. An entire property.`
-- `One interface.`
-
-**Why it works:** It recaps the scope — the wall, the ticker, the property — then lands on the single interface that runs all of it. It's more specific than Option 1 but risks reading as a list rather than a payoff.
-
-### Ending Option 3 — "One endpoint"
-
-- `The sportsbook is one endpoint.`
-- `The property is the platform.`
-
-**Why it works:** It states the thesis explicitly — the wall is one endpoint, LUCI is the platform that runs the whole property. It's the most conceptual of the three. Risk: "endpoint" is a technical term that may not land for a non-technical viewer; "one interface" in Option 1 is more universally legible.
-
-**Recommendation: Ending Option 1 — "One wall. One platform. One standard."**
-
-It's the cleanest bookend, the most legible, and the most declarative. It doesn't need the tagline or a CTA — it states what happened and lets the wall footage close the video.
+This finished-result section should feel like the payoff for everything that preceded it.
 
 ---
 
-## 8. Optional VO
+### 10. Property-wide expansion
 
-**Recommendation: No VO.**
-
-The video works better as music-led with onscreen supers. There is no usable customer interview. The LUCI-team interviews (V0024/V0026) are intelligence sources, not preferred narration. Adding VO would mean either:
-- A LUCI team member narrating (which reads as a vendor talking about itself, not a customer talking about the result), or
-- A professional voice actor reading marketing copy (which reads as a commercial, not a case study).
-
-Neither serves the complexity → simplicity thesis as well as the visual evidence + concise supers do. The wall, the rack room, and the property B-roll carry the argument. The supers name what the viewer is seeing. The music sets the pace. VO would over-talk the visuals — exactly the failure mode the copy strategy warns against.
-
-If a future stage determines that a single line of VO would materially improve clarity at a specific moment (e.g., the transition from the wall to the rack room), it can be added as a restrained single line. But the default is no VO, and the video should be cut to work without it.
+- `And the sportsbook is only part of it.`
+- `Across Aliante, LUCI orchestrates:`
+- `266 displays. 89 zones. 7+ technologies.`
+- `All through one interface.`
 
 ---
 
-## 9. Copy risks
+### 11. Ending
 
-### Risk: Reads as an LED-installation video
-- **Where:** Beats 1-2 (the wall and the build) if the copy only names the wall's size and the installation process.
-- **Mitigation:** The opening super 3 ("Operated from one interface") and Beat 4 ("One interface. One login.") turn the meaning from construction to orchestration. If these lines are cut, the video reads as a construction timelapse.
+Current approved direction:
 
-### Risk: Overstates what LUCI did
-- **Where:** Beat 2 if the copy says "LUCI built the wall" or "LUCI installed every tile" — which is true but positions LUCI as a contractor.
-- **Mitigation:** The copy names the facts (972 frames, 5,800 tiles, one-sixteenth of an inch) without saying "LUCI built" or "LUCI installed." The visuals show the work; the supers name the scale. The orchestration message arrives in Beat 4.
+- `Aliante runs its multimedia environment through LUCI.`
 
-### Risk: Becomes too technical
-- **Where:** Beat 4 if the copy lists Novastar H15, set-top boxes, IP addresses, or processing details.
-- **Mitigation:** The copy stays at the orchestration level (one interface, six configurations, an iPad). Technical details are not in the claim ledger for marketing use and would lose a non-technical viewer.
+End card:
 
-### Risk: Feels too promotional
-- **Where:** Any beat if the copy uses "revolutionize," "transform," "seamless," "next-level," or similar hype language.
-- **Mitigation:** All copy is declarative and factual. No hype terms. No percentage claims. No emotional verbs. The voice is institutional, not promotional.
+- `Absurdly simple AV for complex properties.`
 
-### Risk: Requires visual evidence we do not possess
-- **Where:** Beat 4 if the copy implies the viewer will see the LUCI interface, an iPad, or configuration switching.
-- **Mitigation:** The copy states the facts ("One interface. One login.") without implying the viewer will see them demonstrated. The visual anchors are the LUCI hardware (I0078) and the completed racks (V0051), not the interface.
+---
 
-### Risk: Overloads the viewer with stats
-- **Where:** Beat 6 if all five property-wide stats appear at once (266/89/92/98/7+).
-- **Mitigation:** Three stats (266/89/98) communicate scale and breadth. The rest are optional secondary text, not essential. The copy prioritizes the few facts that best communicate scale.
+## Obsolete / superseded
 
-### Risk: Construction imagery reads as the old system
-- **Where:** Beat 2 or the 5-photo progression if the viewer interprets scaffolding/framing as the former projector system.
-- **Mitigation:** The copy does not label the construction footage as "before" or "the old system." The 5-photo progression (if used) is a construction progression, not a before/after of the AV system. The rack-room footage (V0048) is labeled as "Out" (decommissioned), not as "the old system running."
+The following prior copy and direction is **obsolete** and must not be re-introduced. It is listed here so future agents do not revive it.
+
+- **Working title "Aliante: One Wall, One Platform"** (and the alternates "Aliante: A 106-Foot Wall, Two Racks" and "Aliante: The Sportsbook on the Platform") — superseded by the §1 title/relationship (`Aliante Casino + Hotel` / `A sportsbook renovation with LUCI Systems`).
+- **Prior 7-beat copy structure (Beat 1 Hook / Beat 2 Build / Beat 3 Rack room / Beat 4 Complexity made simple / Beat 5 Bar ticker / Beat 6 Property-wide / Beat 7 Payoff)** and its beat-by-beat essential/optional supers — superseded by the §1–§11 current direction.
+- **Opening Options 1–3 ("Scale, then the turn" / "The complexity, named" / "Subtraction first")** — superseded; the opening is now the §1–§3 sequence (title/relationship → establish Aliante → renovation/old sportsbook).
+- **Rack copy Options A/B/C ("Out / In" / "The complexity did not stay complex" / "What runs it")** — superseded by the §8 approved factual story (`15 racks` / `13 now sit empty` / `2 LUCI racks`).
+- **Ending Options 1–3 ("One wall. One platform. One standard." / "The list" / "One endpoint")** and the tagline line `The Orchestration Engine for Enterprise Multimedia.` as a closer — superseded by the §11 ending (`Aliante runs its multimedia environment through LUCI.` + end card `Absurdly simple AV for complex properties.`).
+- **Property-wide stat set `266 displays. 89 audio zones. 98 digital signage endpoints.` (and the optional `92 DTV channels` / `7+ technologies` stacking guidance)** — superseded by the §10 property-wide copy (`266 displays. 89 zones. 7+ technologies.` / `All through one interface.`).
+- **The "embedded team / decades of experience" line** — explicitly removed from the approved copy. Do not re-add.
+- **Prior rack-consolidation visual anchors that referenced Small Rack footage as primary proof (e.g., V0051 as "best completed rack shot", V0045 as the empty-rack pan)** — superseded by the §8 main-rack evidence hierarchy (V0049/V0050 as AFTER video; I0067/I0068/I0074/I0075/I0078 as AFTER stills; Small Rack fallback-only).
+- **Prior constraint wording "No true 'before' footage of the old system operating"** — corrected; true-before still photography (I0090/I0091/I0092) now exists.
 
 ---
 
 ## Handoff
 
-**To:** Strategic Marketer (Grok)
-**From:** Cursor (copy development)
-**Next action:** `review_case_study_strategy_and_copy` — review the narrative architecture (`case-study-narrative.md`) and this copy artifact together. Confirm the thesis, the beat structure, and the copy work as a coherent case-study strategy. Flag any copy that feels off-brand, off-thesis, or unsupported by evidence. Then proceed to design direction / edit planning.
+**To:** Strategic Marketer (Grok) / Edit planning
+**From:** Cursor (copy persistence)
+**Status:** `case-study-copy.md` updated to the current approved direction. No paper edit has been created in this step.
+**Next action:** Await direction to produce Paper Edit V2 from this approved copy. Do not generate Paper Edit V2 yet.
+
+**Not modified in this step (per instruction):** `STATE.json`, `editorial/case-study-narrative.md`, either V1 paper edit.
 
 **Supporting artifacts for inspection:**
-- `editorial/case-study-narrative.md` — 7-beat narrative architecture, opening/ending strategy, role of rack consolidation, role of 5-photo progression, narrative gaps
+- `editorial/case-study-narrative.md` — narrative architecture
 - `editorial/editorial-opportunities.md` — integrated editorial direction, story hierarchy, tiered asset inventory
-- `analysis/project-intelligence.md` — full project intelligence, claim ledger (24 claims), quote bank (15 quotes), open questions (10)
-- `analysis/deep-media-review.json` — 48 assets tiered, 11 redundancy clusters, candidate ranges with timestamps
-- `analysis/visual-analysis.json` — 143 assets classified, human-curated 5-photo progression, editorial constraints
+- `analysis/project-intelligence.md` — project intelligence, claim ledger, quote bank
+- `analysis/deep-media-review.json` — tiered assets, redundancy clusters, candidate ranges with timestamps
+- `analysis/visual-analysis.json` — classified assets, human-curated sequences, editorial constraints
 - `analysis/asset-manifest.json` — full asset inventory with persistent IDs and metadata
