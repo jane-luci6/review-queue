@@ -64,6 +64,8 @@ Only conditions actually supported by source material. Anything not known is fla
 
 **IMPORTANT — do not infer from construction photos:** The human-curated matched-viewpoint photo sequence (I0054, I0059, I0062, I0008, I0027) shows construction progression (scaffolding → framing → black backing → LED installation → completed wall). These are NOT "before" photos of Aliante's old projector/screen setup. They show the wall before LUCI began installing LED panels. They must not be used as evidence of the former AV system or prior sportsbook technology.
 
+**EVIDENCE CORRECTION (2026-09-04): True before-state imagery now exists.** Three images (I0090 — aliante-before.jpg, I0091 — aliante-before-2.jpg, I0092 — aliante-before-3.jpg) from Aliante's own website show the old sportsbook in operation with the legacy projector-based display system. These are TRUE before-state photos showing the former sportsbook in active operation — patrons visible, betting kiosks, seating, the old projection wall. They are fundamentally different from Mike's construction/early-build photos (I0054–I0089) which show the wall before LUCI panel installation, not the former AV system. The case study can now legitimately establish an old-sportsbook → renovation → new-sportsbook progression using actual before imagery. The previous constraint "no true before imagery exists" is corrected. Note: no true-before VIDEO exists — only true-before still photography.
+
 ---
 
 ## Project challenges
@@ -375,6 +377,7 @@ Notes on useful relationships between project intelligence and the visual librar
 - The transcripts discuss the rack-room consolidation (15 → 2 racks), and the visual library contains rack-room footage (rack-room folder images I0067-I0089, before/after rack photos).
 - The transcripts discuss the LED wall installation (frames, tiles, curve), and the visual library contains substantial progress and completed wall footage (V0001-V0054, I0005-I0049).
 - The human-curated matched-viewpoint photo sequence (I0054 → I0059 → I0062 → I0008 → I0027) shows the construction progression from scaffolding through completed wall. This is a supporting editorial device, not evidence of the former AV system.
+- **True before-state imagery now exists** (I0090, I0091, I0092 — added 2026-09-04). These images from Aliante's website show the old sportsbook in operation with the legacy projector-based display system. They enable a genuine old-sportsbook → renovated-sportsbook visual comparison. They are distinct from the construction-progression sequence.
 - V0024 (40s, direct-to-camera) and V0026 (~7min, interview) are the two interview clips whose audio was transcribed in this step. Both show the speaker in the sportsbook during construction with the LED wall behind.
 - The visual library contains completed hero shots of the finished wall (I0017-I0037, August 21) that could serve as the visual payoff if the construction-progression sequence is used.
 

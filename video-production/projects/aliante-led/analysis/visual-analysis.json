@@ -2,7 +2,7 @@
   "project_id": "aliante-led",
   "analysis_scope": "first_pass_previews_only",
   "summary": {
-    "before_assets": 1,
+    "before_assets": 4,
     "progress_assets": 71,
     "completed_assets": 67,
     "mixed_assets": 2,
@@ -101,7 +101,10 @@
       "V0050",
       "V0051",
       "V0052",
-      "V0054"
+      "V0054",
+      "I0090",
+      "I0091",
+      "I0092"
     ],
     "deeper_review_candidates": [
       "V0006",
@@ -124,7 +127,8 @@
       "V0043",
       "V0044",
       "V0048"
-    ]
+    ],
+    "total_assets": 146
   },
   "assets": [
     {
@@ -4164,6 +4168,120 @@
       ],
       "observed_problems": [],
       "confidence": "high"
+    },
+    {
+      "asset_id": "I0090",
+      "filename": "aliante-before.jpg",
+      "asset_type": "image",
+      "visual_stage": "before",
+      "primary_subject": "old sportsbook interior \u2014 legacy projector display wall in operation",
+      "environment": "Aliante sportsbook, pre-renovation. Dim casino sportsbook with large-format projection screens, row of smaller monitors, betting kiosks, patterned carpet. Patrons visible.",
+      "shot_type": "wide-angle interior, eye-level, architectural documentation",
+      "camera_behavior": "static",
+      "people_visible": true,
+      "screens_or_led_visible": true,
+      "technical_infrastructure_visible": "legacy projector-based display system \u2014 three large-format projection screens with matte/soft finish, continuous row of 15-20 smaller monitors below, Boyd Gaming betting kiosks in foreground",
+      "visual_quality": 3,
+      "editorial_value": 5,
+      "observed_strengths": [
+        "authoritative true-before imagery showing the old sportsbook in operation",
+        "clearly shows the legacy projector-based display system with its soft/matte visual quality",
+        "shows the scale of the former display wall that was replaced",
+        "patrons visible \u2014 the room was active and in operation",
+        "enables genuine old-sportsbook \u2192 renovated-sportsbook visual comparison"
+      ],
+      "observed_problems": [
+        "lower resolution than completed-wall hero footage (981x654)",
+        "slight color desaturation characteristic of projection photography"
+      ],
+      "representative_moments": [
+        {
+          "description": "Full wide-angle view of the legacy sportsbook \u2014 three large projection screens, row of smaller monitors, betting kiosks, patrons at carrels"
+        }
+      ],
+      "needs_deeper_review": false,
+      "reason_for_deeper_review": "",
+      "confidence": "high",
+      "source_context": "Aliante website",
+      "human_classification": "true_before",
+      "editorial_significance": "authoritative before-state imagery for sportsbook renovation \u2014 enables genuine old sportsbook \u2192 renovated sportsbook comparison",
+      "evidence_correction_note": "Added 2026-09-04. These are TRUE before-state images from Aliante's own website, showing the old sportsbook in operation. They are fundamentally different from Mike's construction/early-build photos (I0054-I0089) which show the wall before LUCI panel installation, not the former AV system."
+    },
+    {
+      "asset_id": "I0091",
+      "filename": "aliante-before-2.jpg",
+      "asset_type": "image",
+      "visual_stage": "before",
+      "primary_subject": "old sportsbook interior \u2014 legacy projector display wall with seating area in operation",
+      "environment": "Aliante sportsbook, pre-renovation. Dim room with three large projection screens, row of ~20 smaller monitors, dark leather armchairs, wood betting counter with blue LED accent lighting. One patron visible.",
+      "shot_type": "wide-angle interior, eye-level, architectural documentation",
+      "camera_behavior": "static",
+      "people_visible": true,
+      "screens_or_led_visible": true,
+      "technical_infrastructure_visible": "legacy projector-based display system \u2014 three large-format projection screens with matte finish, continuous row of ~20 smaller individual monitors, dark-wood betting counter with individual monitors",
+      "visual_quality": 3,
+      "editorial_value": 5,
+      "observed_strengths": [
+        "authoritative true-before imagery showing the old sportsbook in operation",
+        "clearly shows the fragmented array of disparate monitors and projection screens",
+        "shows the seating area and betting counter layout that was replaced",
+        "patron visible \u2014 the facility was open for business",
+        "yellow scrolling ticker visible on the large screens \u2014 shows the former odds display method"
+      ],
+      "observed_problems": [
+        "lower resolution than completed-wall hero footage (900x500)",
+        "matte finish and slight color desaturation characteristic of projection photography"
+      ],
+      "representative_moments": [
+        {
+          "description": "Full wide-angle view of the legacy sportsbook with seating \u2014 three projection screens with live sports, row of smaller monitors, leather armchairs, betting counter"
+        }
+      ],
+      "needs_deeper_review": false,
+      "reason_for_deeper_review": "",
+      "confidence": "high",
+      "source_context": "Aliante website",
+      "human_classification": "true_before",
+      "editorial_significance": "authoritative before-state imagery for sportsbook renovation \u2014 enables genuine old sportsbook \u2192 renovated sportsbook comparison",
+      "evidence_correction_note": "Added 2026-09-04. These are TRUE before-state images from Aliante's own website, showing the old sportsbook in operation. They are fundamentally different from Mike's construction/early-build photos (I0054-I0089) which show the wall before LUCI panel installation, not the former AV system."
+    },
+    {
+      "asset_id": "I0092",
+      "filename": "aliante-before-3.jpg",
+      "asset_type": "image",
+      "visual_stage": "before",
+      "primary_subject": "old sportsbook interior \u2014 legacy projector display wall with betting carrels in operation",
+      "environment": "Aliante sportsbook, pre-renovation. Dim room with three large projection screens, row of ~15-18 smaller monitors, rows of dark wooden betting carrels with task lights and individual monitors. Patron visible at carrel.",
+      "shot_type": "wide-angle interior, eye-level, architectural documentation",
+      "camera_behavior": "static",
+      "people_visible": true,
+      "screens_or_led_visible": true,
+      "technical_infrastructure_visible": "legacy projector-based display system \u2014 three large-format projection screens with matte/diffused finish, continuous row of ~15-18 smaller individual monitors, wooden betting carrels with individual monitors and task lights",
+      "visual_quality": 3,
+      "editorial_value": 5,
+      "observed_strengths": [
+        "authoritative true-before imagery showing the old sportsbook in operation",
+        "clearly shows the complexity and fragmentation of the old system \u2014 multiple projectors, gaps between screens, disparate smaller monitors",
+        "shows the betting carrel layout with individual monitors at each station",
+        "patron visible \u2014 the facility was in active operation",
+        "enables genuine old-sportsbook \u2192 renovated-sportsbook visual comparison"
+      ],
+      "observed_problems": [
+        "lowest resolution of the three before images (550x367)",
+        "matte finish characteristic of projection photography"
+      ],
+      "representative_moments": [
+        {
+          "description": "Full wide-angle view of the legacy sportsbook with carrels \u2014 three projection screens, row of smaller monitors, betting carrels, patron seated"
+        }
+      ],
+      "needs_deeper_review": false,
+      "reason_for_deeper_review": "",
+      "confidence": "high",
+      "source_context": "Aliante website",
+      "human_classification": "true_before",
+      "editorial_significance": "authoritative before-state imagery for sportsbook renovation \u2014 enables genuine old sportsbook \u2192 renovated sportsbook comparison",
+      "evidence_correction_note": "Added 2026-09-04. These are TRUE before-state images from Aliante's own website, showing the old sportsbook in operation. They are fundamentally different from Mike's construction/early-build photos (I0054-I0089) which show the wall before LUCI panel installation, not the former AV system."
     }
   ],
   "human_observations": [
@@ -4327,6 +4445,20 @@
         "Do not spend additional review effort looking for usable interview quotes unless a specific factual need arises",
         "Preserve them as intelligence sources",
         "If either recording contains independently useful non-interview visual material, it may still be evaluated on that basis"
+      ]
+    }
+  ],
+  "evidence_corrections": [
+    {
+      "correction_date": "2026-09-04",
+      "correction": "True before-state imagery added (I0090, I0091, I0092)",
+      "details": "Three images from Aliante's own website showing the old sportsbook in operation with the legacy projector-based display system. These are TRUE before-state photos, fundamentally different from Mike's construction/early-build photos (I0054-I0089) which show the wall before LUCI panel installation, not the former AV system. The previous constraint 'no true before imagery exists' is now corrected \u2014 true-before still photography exists, though no true-before video exists.",
+      "affected_files": [
+        "analysis/visual-analysis.json",
+        "analysis/project-intelligence.md",
+        "analysis/deep-media-review.json",
+        "editorial/editorial-opportunities.md",
+        "editorial/case-study-narrative.md"
       ]
     }
   ]

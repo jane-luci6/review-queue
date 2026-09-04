@@ -271,7 +271,8 @@
     "V0051",
     "V0031",
     "I0078",
-    "I0065"
+    "I0065",
+    "I0090"
   ],
   "tier_2": [
     "V0030",
@@ -291,7 +292,9 @@
     "V0004",
     "V0002",
     "V0014",
-    "V0016"
+    "V0016",
+    "I0091",
+    "I0092"
   ],
   "tier_3": [
     "V0033",
@@ -319,7 +322,7 @@
     "No footage of the LUCI interface/iPad in operational use",
     "No footage of wall configurations being switched (the 6 configurations)",
     "No customer/operator interview (all speakers are LUCI team members)",
-    "No true 'before' footage of the old projector/screen sportsbook in operation (V0048 shows decommissioned projectors in storage, not the former setup running)"
+    "No true-before VIDEO exists \u2014 true-before still photography now exists (I0090, I0091, I0092) and can support the renovation story"
   ],
   "assets": [
     {
@@ -1741,10 +1744,110 @@
       "supports": [
         "property-wide AV integration"
       ]
+    },
+    {
+      "asset_id": "I0090",
+      "asset_type": "image",
+      "deep_review_status": "important_still_candidate",
+      "tier": "Tier 1",
+      "description": "True before-state image from Aliante website showing the old sportsbook in operation with legacy projector-based display system. Patrons visible, betting kiosks, projection screens with matte finish.",
+      "candidate_ranges": [
+        {
+          "in": "static",
+          "out": "static",
+          "recommended_duration": 0,
+          "description": "True before-state still \u2014 old sportsbook with legacy projector display wall in operation",
+          "strength": 5,
+          "use_cases": [
+            "true before imagery",
+            "old sportsbook context",
+            "renovation comparison"
+          ],
+          "issues": []
+        }
+      ],
+      "supports": [
+        "former projector-based display system",
+        "old sportsbook in operation before renovation",
+        "20+ projectors removed"
+      ],
+      "issues": [
+        "lower resolution than completed-wall hero footage"
+      ],
+      "editorial_note": "Added 2026-09-04 as true before-state imagery. Enables genuine old-sportsbook \u2192 renovated-sportsbook visual comparison. Distinct from Mike's construction photos."
+    },
+    {
+      "asset_id": "I0091",
+      "asset_type": "image",
+      "deep_review_status": "important_still_candidate",
+      "tier": "Tier 2",
+      "description": "True before-state image from Aliante website showing the old sportsbook in operation with legacy projector-based display system. Patrons visible, betting kiosks, projection screens with matte finish.",
+      "candidate_ranges": [
+        {
+          "in": "static",
+          "out": "static",
+          "recommended_duration": 0,
+          "description": "True before-state still \u2014 old sportsbook with legacy projector display wall in operation",
+          "strength": 5,
+          "use_cases": [
+            "true before imagery",
+            "old sportsbook context",
+            "renovation comparison"
+          ],
+          "issues": []
+        }
+      ],
+      "supports": [
+        "former projector-based display system",
+        "old sportsbook in operation before renovation",
+        "20+ projectors removed"
+      ],
+      "issues": [
+        "lower resolution than completed-wall hero footage"
+      ],
+      "editorial_note": "Added 2026-09-04 as true before-state imagery. Enables genuine old-sportsbook \u2192 renovated-sportsbook visual comparison. Distinct from Mike's construction photos."
+    },
+    {
+      "asset_id": "I0092",
+      "asset_type": "image",
+      "deep_review_status": "important_still_candidate",
+      "tier": "Tier 2",
+      "description": "True before-state image from Aliante website showing the old sportsbook in operation with legacy projector-based display system. Patrons visible, betting kiosks, projection screens with matte finish.",
+      "candidate_ranges": [
+        {
+          "in": "static",
+          "out": "static",
+          "recommended_duration": 0,
+          "description": "True before-state still \u2014 old sportsbook with legacy projector display wall in operation",
+          "strength": 5,
+          "use_cases": [
+            "true before imagery",
+            "old sportsbook context",
+            "renovation comparison"
+          ],
+          "issues": []
+        }
+      ],
+      "supports": [
+        "former projector-based display system",
+        "old sportsbook in operation before renovation",
+        "20+ projectors removed"
+      ],
+      "issues": [
+        "lower resolution than completed-wall hero footage"
+      ],
+      "editorial_note": "Added 2026-09-04 as true before-state imagery. Enables genuine old-sportsbook \u2192 renovated-sportsbook visual comparison. Distinct from Mike's construction photos."
     }
   ],
   "coverage_gaps_corrected": [
     "FILLED: No footage of the 2 LUCI racks that replaced the 15 legacy racks \u2014 NOW COVERED by V0050, V0051, V0052 (rack room completed footage) and I0078 (LUCI IPTV ENCODER image)",
     "FILLED: No footage of the bar ticker under construction \u2014 NOW COVERED by V0023 (image), V0027 (video), V0031 (video with test numbers), V0037 (video with test data)"
+  ],
+  "evidence_corrections": [
+    {
+      "correction_date": "2026-09-04",
+      "correction": "True before-state still imagery added (I0090, I0091, I0092)",
+      "details": "Three images from Aliante's website show the old sportsbook in operation with the legacy projector-based display system. Previous coverage gap 'No true before footage of the old projector/screen sportsbook in operation' corrected to: no true-before VIDEO exists, but true-before still photography now exists and can support the renovation story."
+    }
   ]
 }

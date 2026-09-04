@@ -15,7 +15,7 @@
 
 - **No usable Aliante customer interview.** All speakers are LUCI team members.
 - **V0024 and V0026 are NOT A-roll** (Jane's decision, 2026-09-02). Transcripts remain intelligence sources only.
-- **No true "before" footage** of the old projector/screen sportsbook operating. V0048 shows decommissioned projectors in storage.
+- **No true-before VIDEO** of the old projector/screen sportsbook operating. However, **true-before still photography now exists** (I0090, I0091, I0092 — added 2026-09-04) from Aliante's own website, showing the old sportsbook in operation with the legacy projector-based display system. V0048 shows decommissioned projectors in storage.
 - **Construction photos must not be presented as evidence of the former AV system.** The 5-photo progression shows the wall before LUCI panel installation, NOT Aliante's former projector setup.
 - **V0031 shows bar-ticker testing data**, not finished content.
 - **V0048 shows decommissioned legacy gear**, not the old sportsbook operating.
@@ -273,7 +273,7 @@ Rack consolidation is a **major visual proof point of the simplification message
 
 Beat 3 (What came out) is where the rack room before/after makes simplification visible. The viewer has already seen the finished wall (Beat 1) and the build (Beat 2). Now they see what was removed behind it:
 
-- **V0048** — decommissioned legacy projectors (dusty, detached lenses, cable spools). This is the "before" of the infrastructure — not the old system operating, but the old system removed.
+- **V0048** — decommissioned legacy projectors (dusty, detached lenses, cable spools). This is the "before" of the infrastructure — not the old system operating, but the old system removed. **Note:** True before-state still photography now exists (I0090, I0091, I0092) showing the old sportsbook in operation — these can serve as the visual "before" for an old-sportsbook → new-sportsbook comparison, distinct from V0048 which shows decommissioned equipment.
 - **V0051** — completed LUCI racks (three racks with active blue displays). This is the "after" — 2 LUCI racks where 15 full-size AV racks used to be.
 - **I0078** — LUCI IPTV ENCODER NX-5 close-up. This is the hardware detail that anchors "this is what runs it."
 
@@ -345,13 +345,13 @@ Moments where the story requires information or visual proof we do not possess. 
 
 **How the narrative restructures around it:** The story is told through visuals, onscreen text, and music — not interview audio. This is a production constraint, not a narrative gap. The story works without a customer voice; the visual evidence (the wall, the racks, the property) carries the argument.
 
-### Gap 3 — No true "before" of the old system operating
+### Gap 3 — No true-before VIDEO of the old system operating (PARTIALLY RESOLVED)
 
 **What the story needs:** Footage of the old projector/screen sportsbook running, to show what was replaced.
 
-**What we have:** V0048 shows decommissioned projectors in storage — not the old system operating.
+**What we have:** V0048 shows decommissioned projectors in storage — not the old system operating. However, **true-before still photography now exists** (I0090, I0091, I0092 — added 2026-09-04) from Aliante's own website, showing the old sportsbook in operation with the legacy projector-based display system. Patrons visible, betting kiosks, the old projection wall — the room was in active operation.
 
-**How the narrative restructures around it:** The "before" is implied through the decommissioning footage (V0048 — "this came out") rather than shown as a live former system. The story frames the rack room as "what was removed" (Beat 3), not "what was running before." This avoids implying we can show the old system in operation.
+**How the narrative restructures around it:** The case study can now legitimately establish an old-sportsbook → renovation → new-sportsbook progression using actual before imagery (I0090/I0091/I0092). No true-before video exists — only still photography. The construction-progression photo sequence (I0054 → I0059 → I0062 → I0008 → I0027) remains separate and must not be confused with these true before-state images. The before imagery can support the opening or the renovation context; it does not replace the rack-room contrast (Beat 3) as the simplification proof.
 
 ### Gap 4 — No wall-configuration switching footage
 

@@ -14,7 +14,7 @@
 
 - **V0024 and V0026 are NOT A-roll** (Jane's decision, 2026-09-02). Transcripts remain intelligence sources only.
 - **No usable Aliante customer interview.** All speakers are LUCI team members.
-- **No true "before" footage** of the old projector/screen sportsbook operating. V0048 shows decommissioned projectors in storage, not the former system running.
+- **No true-before VIDEO** of the old projector/screen sportsbook operating. However, **true-before still photography now exists** (I0090, I0091, I0092 — added 2026-09-04) from Aliante's own website, showing the old sportsbook in operation with the legacy projector-based display system. V0048 shows decommissioned projectors in storage, not the former system running.
 - **The 5-photo matched-viewpoint progression** (I0054 → I0059 → I0062 → I0008 → I0027) shows the wall before LUCI panel installation, NOT Aliante's former AV system. It is an optional supporting editorial device, not the full video.
 - **V0031 shows bar-ticker testing data**, not the finished ticker.
 - **V0048 shows decommissioned legacy gear**, not the old sportsbook operating.
@@ -133,7 +133,7 @@ It may ultimately work better to open on the finished wall and then rewind into 
 
 - **No LUCI interface/iPad footage.** The story cannot show HOW LUCI controls the wall. The simplification message must be made through onscreen text, the breadth of what's shown, and the contrast between old and new infrastructure — not through a product demonstration.
 - **No customer voice.** All speakers are LUCI team members. V0024/V0026 are excluded as A-roll per Jane's decision. The story must be told through visuals, onscreen text, and music — not through interview audio.
-- **No true "before" of the old system operating.** V0048 shows decommissioned projectors in storage, not the old sportsbook running. The "before" must be implied through the decommissioning footage, not shown as a live former system.
+- **No true-before VIDEO of the old system operating.** V0048 shows decommissioned projectors in storage, not the old sportsbook running. However, **true-before still photography now exists** (I0090, I0091, I0092 — added 2026-09-04) showing the old sportsbook in operation with the legacy projector display wall. The case study can now establish an old-sportsbook → renovation → new-sportsbook progression using actual before imagery. No true-before video exists — only still photography.
 - **No wall-configuration switching footage.** The six configurations and the tap-a-box workflow cannot be shown. They must be described through onscreen text if used at all.
 
 ### Production implications
