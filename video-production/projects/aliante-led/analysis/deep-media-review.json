@@ -8,8 +8,8 @@
   "v0024_v0026_editorial_note": "Excluded from deep review per Jane's editorial decision (2026-09-02). V0024/V0026 are not final-video A-roll candidates. Their transcripts remain project-intelligence sources.",
   "summary": {
     "what_the_strongest_media_can_show": "The strongest available footage clearly demonstrates: (1) the scale and curvature of the completed 106-foot curved LED wall with live multi-source sports content, (2) the bar ticker integrated into the sportsbook bar environment with patrons present, (3) the installation process with technicians working on lifts during the build, (4) the decommissioned legacy projectors removed from the rack room, and (5) the overall finished sportsbook environment with patrons using the space. The footage is heavily weighted toward completed hero reveals of the finished wall from multiple angles, with strong installation progress and decommissioning coverage.",
-    "what_is_missing": "No footage of the 2 LUCI racks that replaced the 15 legacy racks (only the 'before' decommissioning footage exists). No footage of the LUCI interface/iPad in operational use. No footage of wall configurations being switched. No customer/operator interview. No true 'before' footage of the old projector/screen sportsbook in operation (V0048 shows decommissioned projectors in storage, not the former setup running). No footage of the bar ticker under construction.",
-    "strongest_available_media_can_show": "The strongest available media demonstrates: (1) the scale and visual impact of the completed 106-foot curved LED wall (V0036, V0040, V0028, V0048 hero pans; I0065, I0066 hero stills), (2) the bar ticker under construction and during testing with test numbers (V0031, V0037 \u2014 Jane confirmed these are 'during' shots with testing data, not 'after'), (3) the rack room transformation \u2014 the 2-3 completed LUCI racks that replaced 15 legacy racks (V0051, V0050, V0052; I0078 LUCI IPTV ENCODER close-up), (4) LED panel installation with workers on lifts (V0027, V0028), (5) decommissioned legacy projectors and gear (V0048, V0053), (6) the completed sportsbook bar environment with integrated LED ticker (V0039, V0041, V0044), (7) construction/before context (V0020, V0021, V0006), (8) the completed high-limit lounge with LED wall (V0007), and (9) general property context from B-Roll \u2014 casino floor, food court with digital signage, bar with gaming terminals, hotel lobby with guests (V0010, V0004, V0002, V0014, V0016). The human-curated 5-photo construction progression (IMG_4216 \u2192 IMG_4872) remains a supporting editorial device.",
+    "what_is_missing": "No footage of the LUCI interface/iPad in operational use. No footage of wall configurations being switched. No customer/operator interview. No true-before VIDEO of the old projector/screen sportsbook in operation \u2014 true-before still photography now exists (I0090, I0091, I0092). No footage of the bar ticker under construction.",
+    "strongest_available_media_can_show": "The strongest available media demonstrates: (1) the scale and visual impact of the completed 106-foot curved LED wall (V0036, V0040, V0028, V0048 hero pans; I0065, I0066 hero stills), (2) the bar ticker under construction and during testing with test numbers (V0031, V0037 \u2014 Jane confirmed these are 'during' shots with testing data, not 'after'), (3) the rack room transformation \u2014 the 2-3 completed LUCI racks that replaced 15 legacy racks (V0051, V0050, V0052; I0078 LUCI IPTV ENCODER close-up), AND the 13 empty rack positions after consolidation (V0045 \u2014 pan from active LUCI racks to long row of empty rack skeletons; I0071 companion still), (4) LED panel installation with workers on lifts (V0027, V0028), (5) decommissioned legacy projectors and gear (V0048, V0053), (6) the completed sportsbook bar environment with integrated LED ticker (V0039, V0041, V0044), (7) construction/before context (V0020, V0021, V0006), (8) the completed high-limit lounge with LED wall (V0007), and (9) general property context from B-Roll \u2014 casino floor, food court with digital signage, bar with gaming terminals, hotel lobby with guests (V0010, V0004, V0002, V0014, V0016). The human-curated 5-photo construction progression (IMG_4216 \u2192 IMG_4872) remains a supporting editorial device.",
     "videos_deeply_reviewed": 45,
     "images_reviewed": 3
   },
@@ -272,7 +272,8 @@
     "V0031",
     "I0078",
     "I0065",
-    "I0090"
+    "I0090",
+    "V0045"
   ],
   "tier_2": [
     "V0030",
@@ -294,7 +295,8 @@
     "V0014",
     "V0016",
     "I0091",
-    "I0092"
+    "I0092",
+    "I0071"
   ],
   "tier_3": [
     "V0033",
@@ -302,7 +304,6 @@
     "V0043",
     "V0020",
     "V0006",
-    "V0045",
     "V0053",
     "V0032",
     "V0001",
@@ -1292,7 +1293,7 @@
     {
       "asset_id": "V0045",
       "deep_review_status": "reviewed",
-      "tier": 3,
+      "tier": "Tier 1",
       "redundancy_cluster": "I-rack-room-progress",
       "asset_type": "video",
       "shot_composition": "Close-up of cable management and equipment, then wider messy room",
@@ -1303,22 +1304,67 @@
       "uniqueness": "Less clean than V0049 \u2014 shows cable management but room is cluttered with debris",
       "candidate_ranges": [
         {
-          "in": "00:01.0",
-          "out": "00:05.0",
-          "recommended_duration": 4.0,
-          "description": "Close-up of neatly bundled blue ethernet cables in back of rack",
-          "strength": 3,
+          "in": "00:01.4",
+          "out": "00:04.3",
+          "recommended_duration": 2.9,
+          "description": "Active LUCI racks with dense blue cabling \u2014 the 'after' (2 racks that replaced 15)",
+          "strength": 4,
           "use_cases": [
-            "cable management detail"
+            "LUCI hardware",
+            "rack room after",
+            "consolidation result"
           ],
           "issues": [
-            "cluttered environment, lower visual quality"
+            "cluttered environment"
+          ]
+        },
+        {
+          "in": "00:07.2",
+          "out": "00:15.9",
+          "recommended_duration": 8.7,
+          "description": "Pan from transition point across long row of empty rack skeletons \u2014 at least 5-6 distinct empty frames visible with perspective suggesting more extending into background. The strongest '13 empty racks' evidence.",
+          "strength": 5,
+          "use_cases": [
+            "empty rack positions",
+            "infrastructure subtraction",
+            "consolidation proof",
+            "rack room before"
+          ],
+          "issues": [
+            "handheld motion",
+            "flat lighting",
+            "construction debris in frame"
+          ]
+        },
+        {
+          "in": "00:01.4",
+          "out": "00:15.9",
+          "recommended_duration": 14.5,
+          "description": "Full pan: active LUCI racks \u2192 empty rack skeletons. The complete contrast in one continuous pan \u2014 the 2 racks that stayed and the 13 positions that were emptied.",
+          "strength": 5,
+          "use_cases": [
+            "rack room before/after",
+            "consolidation proof",
+            "infrastructure subtraction"
+          ],
+          "issues": [
+            "handheld motion",
+            "flat lighting"
           ]
         }
       ],
       "supports": [
-        "LUCI hardware installation"
-      ]
+        "15 racks of legacy gear consolidated to 2 LUCI racks",
+        "infrastructure subtraction / consolidation",
+        "empty rack positions after removal"
+      ],
+      "description": "Pan across rack room \u2014 starts with active LUCI racks (dense blue cabling), transitions to long row of empty rack skeletons showing 13 emptied positions after consolidation. Strongest visual proof of infrastructure subtraction.",
+      "issues": [
+        "handheld motion leads to blur",
+        "flat industrial lighting",
+        "construction debris in frame"
+      ],
+      "evidence_correction_note": "Updated 2026-09-04 per Jane human correction. V0045 shows the rack room with 13 empty rack positions after consolidation to 2 LUCI racks. Previously Tier 3 with only a brief cable close-up range \u2014 upgraded to Tier 1 as major proof point."
     },
     {
       "asset_id": "V0053",
@@ -1837,6 +1883,64 @@
         "lower resolution than completed-wall hero footage"
       ],
       "editorial_note": "Added 2026-09-04 as true before-state imagery. Enables genuine old-sportsbook \u2192 renovated-sportsbook visual comparison. Distinct from Mike's construction photos."
+    },
+    {
+      "asset_id": "V0046",
+      "asset_type": "video",
+      "deep_review_status": "reviewed",
+      "tier": "Tier 3",
+      "description": "Close-up of person hand holding bundle of white cables during rack room wiring work. Construction progress, not empty rack positions.",
+      "candidate_ranges": [],
+      "supports": [],
+      "issues": [
+        "construction progress footage, not essential for final edit"
+      ],
+      "editorial_note": "Added 2026-09-04 during targeted rack-room re-inspection. V0046 shows construction/cabling work, not the 13 empty rack positions. Classified Tier 3 \u2014 reviewed but unnecessary for the final edit."
+    },
+    {
+      "asset_id": "V0047",
+      "asset_type": "video",
+      "deep_review_status": "reviewed",
+      "tier": "Tier 3",
+      "description": "Close-up of single black server rack with loose white cable bundles during construction. Construction progress, not empty rack positions.",
+      "candidate_ranges": [],
+      "supports": [],
+      "issues": [
+        "construction progress footage, not essential for final edit"
+      ],
+      "editorial_note": "Added 2026-09-04 during targeted rack-room re-inspection. V0047 shows construction/cabling work, not the 13 empty rack positions. Classified Tier 3 \u2014 reviewed but unnecessary for the final edit."
+    },
+    {
+      "asset_id": "I0071",
+      "asset_type": "image",
+      "deep_review_status": "reviewed",
+      "tier": "Tier 2",
+      "description": "True before-state still image of rack room showing foreground racks densely populated with cabling and background racks visibly empty. Companion to V0045 \u2014 shows the same contrast in a single still frame.",
+      "candidate_ranges": [
+        {
+          "in": "static",
+          "out": "static",
+          "recommended_duration": 0,
+          "description": "Rack room still \u2014 populated foreground racks, empty background rack frames",
+          "strength": 4,
+          "use_cases": [
+            "empty rack positions",
+            "infrastructure subtraction",
+            "rack room before/after"
+          ],
+          "issues": [
+            "still image, no motion"
+          ]
+        }
+      ],
+      "supports": [
+        "empty rack positions after removal",
+        "infrastructure subtraction"
+      ],
+      "issues": [
+        "lower resolution still"
+      ],
+      "editorial_note": "Added 2026-09-04. I0071 (Aliante RR Before 2.jpeg) is a companion still to V0045 \u2014 shows the same contrast (populated racks \u2192 empty rack frames) in a single photograph."
     }
   ],
   "coverage_gaps_corrected": [
@@ -1848,6 +1952,11 @@
       "correction_date": "2026-09-04",
       "correction": "True before-state still imagery added (I0090, I0091, I0092)",
       "details": "Three images from Aliante's website show the old sportsbook in operation with the legacy projector-based display system. Previous coverage gap 'No true before footage of the old projector/screen sportsbook in operation' corrected to: no true-before VIDEO exists, but true-before still photography now exists and can support the renovation story."
+    },
+    {
+      "correction_date": "2026-09-04",
+      "correction": "Video footage of 13 empty rack positions identified (V0045)",
+      "details": "Jane confirmed from direct human review that good video footage exists showing the rack room with 13 empty racks after consolidation to 2 LUCI racks. V0045 (IMG_4811.mov) shows a pan from active LUCI racks to a long row of empty rack skeletons \u2014 at least 5-6 distinct empty frames visible with perspective suggesting more. I0071 (Aliante RR Before 2.jpeg) is a companion still showing the same contrast. V0045 upgraded from Tier 3 to Tier 1. V0046/V0047 reviewed as Tier 3 (construction/cabling, not empty racks). Previous coverage gap about missing empty-rack footage is corrected."
     }
   ]
 }
