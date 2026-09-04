@@ -38,6 +38,40 @@
   padding: 58px var(--pad);
 }
 
+
+/* ═══ 0b · FITTING A SMALLER SCREEN ════════════════════════════
+   Slides are a hard 1280 x 720. sales-deck.css centres them with
+   `align-items: center`, and a centred flex item that is wider
+   than its container overflows BOTH edges — the left half becomes
+   unreachable, so a narrow window shows only the middle of each
+   slide with no way to scroll to it.
+
+   Two defences, screen only. Print and PDF export are untouched,
+   so the exported deck stays at true 1280 x 720.
+
+   1. Scale the whole page down in steps so the slide fits the
+      window. Each step is sized to still fit at the NARROW end of
+      its range, with room for the drop shadow.
+   2. `safe center` as a backstop below the last step: when content
+      still overflows, centring falls back to start-alignment so
+      the left edge stays reachable by scrolling.
+
+   The first step starts at 1279px, deliberately below the 1280
+   screenshot viewport, so `shoot-deck.sh` keeps rendering at 1:1
+   and its crop geometry stays exact. Don't raise that number. */
+
+@media screen {
+  body { align-items: safe center; }
+}
+
+@media screen and (max-width: 1279px) { body { zoom: 0.88; } }
+@media screen and (max-width: 1180px) { body { zoom: 0.82; } }
+@media screen and (max-width: 1090px) { body { zoom: 0.75; } }
+@media screen and (max-width: 1000px) { body { zoom: 0.67; } }
+@media screen and (max-width:  900px) { body { zoom: 0.59; } }
+@media screen and (max-width:  800px) { body { zoom: 0.51; } }
+@media screen and (max-width:  700px) { body { zoom: 0.44; } }
+
 .s-head { margin-bottom: 34px; }
 .s-title { font-size: 42px; }
 
