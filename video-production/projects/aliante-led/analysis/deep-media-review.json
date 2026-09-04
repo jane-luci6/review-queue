@@ -268,12 +268,16 @@
     "V0048",
     "V0039",
     "V0041",
-    "V0051",
     "V0031",
     "I0078",
     "I0065",
     "I0090",
-    "V0045"
+    "I0067",
+    "I0068",
+    "I0074",
+    "I0075",
+    "I0070",
+    "I0071"
   ],
   "tier_2": [
     "V0030",
@@ -296,7 +300,10 @@
     "V0016",
     "I0091",
     "I0092",
-    "I0071"
+    "I0071",
+    "V0045",
+    "V0051",
+    "V0053"
   ],
   "tier_3": [
     "V0033",
@@ -304,7 +311,6 @@
     "V0043",
     "V0020",
     "V0006",
-    "V0053",
     "V0032",
     "V0001",
     "V0003",
@@ -491,7 +497,12 @@
         "20+ projectors removed",
         "removal/decommissioning of legacy infrastructure"
       ],
-      "asset_type": "video"
+      "asset_type": "video",
+      "rack_scope": "not_applicable",
+      "human_stage": "projector",
+      "human_priority": "supporting",
+      "description": "Legacy projector equipment - decommissioned projectors on floor. Projector footage, not rack footage. Supports the 20+ projectors removed claim.",
+      "evidence_correction_note": "CORRECTED 2026-09-04. Jane labeled this \"Projectors 5.mov\" - it is PROJECTOR footage, not rack footage. Confirms the 20+ projectors removed claim."
     },
     {
       "asset_id": "V0039",
@@ -957,7 +968,7 @@
     {
       "asset_id": "V0051",
       "deep_review_status": "reviewed",
-      "tier": 1,
+      "tier": "Tier 2",
       "redundancy_cluster": "G-rack-room-completed",
       "asset_type": "video",
       "shot_composition": "Wide pan across three completed LUCI racks",
@@ -971,22 +982,22 @@
           "in": "00:00.5",
           "out": "00:06.5",
           "recommended_duration": 6.0,
-          "description": "Pan across three full-height LUCI equipment racks with active blue status displays, neatly managed blue cabling \u2014 the completed rack room",
-          "strength": 5,
+          "description": "Three full-height LUCI racks with active blue displays - SMALL rack completed state. Fallback.",
+          "strength": 4,
           "use_cases": [
-            "rack room after",
-            "LUCI hardware",
-            "consolidation result"
+            "LUCI hardware (small rack fallback)",
+            "rack room after (fallback)"
           ],
           "issues": [
-            "short duration \u2014 only 6.5s"
+            "small rack, not main rack"
           ]
         }
       ],
       "supports": [
-        "15 racks of legacy gear consolidated to 2 LUCI racks",
-        "LUCI hardware installation"
-      ]
+        "LUCI hardware installation (small rack fallback)"
+      ],
+      "description": "SMALL rack room - completed LUCI racks with active blue displays. Small rack, not main rack. Fallback only.",
+      "evidence_correction_note": "CORRECTED 2026-09-04. Jane labeled this \"Small Rack 6.mov\" - it is SMALL RACK footage. Previously classified as the completed main-rack LUCI racks - that was incorrect. Downgraded from Tier 1 to Tier 2 (fallback)."
     },
     {
       "asset_id": "V0031",
@@ -1293,7 +1304,7 @@
     {
       "asset_id": "V0045",
       "deep_review_status": "reviewed",
-      "tier": "Tier 1",
+      "tier": "Tier 2",
       "redundancy_cluster": "I-rack-room-progress",
       "asset_type": "video",
       "shot_composition": "Close-up of cable management and equipment, then wider messy room",
@@ -1304,72 +1315,37 @@
       "uniqueness": "Less clean than V0049 \u2014 shows cable management but room is cluttered with debris",
       "candidate_ranges": [
         {
-          "in": "00:01.4",
-          "out": "00:04.3",
-          "recommended_duration": 2.9,
-          "description": "Active LUCI racks with dense blue cabling \u2014 the 'after' (2 racks that replaced 15)",
-          "strength": 4,
-          "use_cases": [
-            "LUCI hardware",
-            "rack room after",
-            "consolidation result"
-          ],
-          "issues": [
-            "cluttered environment"
-          ]
-        },
-        {
           "in": "00:07.2",
           "out": "00:15.9",
           "recommended_duration": 8.7,
-          "description": "Pan from transition point across long row of empty rack skeletons \u2014 at least 5-6 distinct empty frames visible with perspective suggesting more extending into background. The strongest '13 empty racks' evidence.",
-          "strength": 5,
+          "description": "Pan across empty rack skeletons in the SMALL rack area. Fallback evidence for empty rack positions.",
+          "strength": 4,
           "use_cases": [
-            "empty rack positions",
-            "infrastructure subtraction",
-            "consolidation proof",
-            "rack room before"
+            "empty rack positions (small rack fallback)",
+            "infrastructure subtraction (fallback)"
           ],
           "issues": [
-            "handheld motion",
-            "flat lighting",
-            "construction debris in frame"
-          ]
-        },
-        {
-          "in": "00:01.4",
-          "out": "00:15.9",
-          "recommended_duration": 14.5,
-          "description": "Full pan: active LUCI racks \u2192 empty rack skeletons. The complete contrast in one continuous pan \u2014 the 2 racks that stayed and the 13 positions that were emptied.",
-          "strength": 5,
-          "use_cases": [
-            "rack room before/after",
-            "consolidation proof",
-            "infrastructure subtraction"
-          ],
-          "issues": [
+            "small rack, not main rack",
             "handheld motion",
             "flat lighting"
           ]
         }
       ],
       "supports": [
-        "15 racks of legacy gear consolidated to 2 LUCI racks",
-        "infrastructure subtraction / consolidation",
-        "empty rack positions after removal"
+        "infrastructure subtraction (small rack fallback)"
       ],
-      "description": "Pan across rack room \u2014 starts with active LUCI racks (dense blue cabling), transitions to long row of empty rack skeletons showing 13 emptied positions after consolidation. Strongest visual proof of infrastructure subtraction.",
+      "description": "SMALL rack room - pan from active racks to long row of empty rack skeletons. Small rack, not main rack. Fallback only - do not use in main case-study rack-consolidation sequence unless main-rack footage is insufficient.",
       "issues": [
         "handheld motion leads to blur",
         "flat industrial lighting",
         "construction debris in frame"
       ],
-      "evidence_correction_note": "Updated 2026-09-04 per Jane human correction. V0045 shows the rack room with 13 empty rack positions after consolidation to 2 LUCI racks. Previously Tier 3 with only a brief cable close-up range \u2014 upgraded to Tier 1 as major proof point."
+      "evidence_correction_note": "CORRECTED 2026-09-04. Jane labeled this \"Small Rack 1.mov\" - it is SMALL RACK footage. Previously identified as showing the 13 empty MAIN rack positions - that was incorrect. The empty racks shown are in the small rack. Downgraded from Tier 1 to Tier 2 (fallback)."
     },
     {
       "asset_id": "V0053",
       "deep_review_status": "reviewed",
-      "tier": 3,
+      "tier": "Tier 2",
       "redundancy_cluster": "E-decommissioning",
       "asset_type": "video",
       "shot_composition": "Row of decommissioned rack units on floor",
@@ -1396,7 +1372,12 @@
       ],
       "supports": [
         "15 racks of legacy gear consolidated to 2 LUCI racks"
-      ]
+      ],
+      "rack_scope": "not_applicable",
+      "human_stage": "projector",
+      "human_priority": "supporting",
+      "description": "Legacy projector equipment - decommissioned projectors. Projector footage, not rack footage. Supports the 20+ projectors removed claim.",
+      "evidence_correction_note": "CORRECTED 2026-09-04. Jane labeled this \"Projectors.mov\" - it is PROJECTOR footage, not rack footage. Upgraded from Tier 3 to Tier 2 (supporting projector evidence)."
     },
     {
       "asset_id": "V0032",
@@ -1941,6 +1922,179 @@
         "lower resolution still"
       ],
       "editorial_note": "Added 2026-09-04. I0071 (Aliante RR Before 2.jpeg) is a companion still to V0045 \u2014 shows the same contrast (populated racks \u2192 empty rack frames) in a single photograph."
+    },
+    {
+      "asset_id": "I0067",
+      "asset_type": "image",
+      "deep_review_status": "reviewed",
+      "tier": "Tier 1",
+      "rack_scope": "main",
+      "human_stage": "rack_after",
+      "human_priority": "primary",
+      "description": "Main rack room AFTER consolidation - completed LUCI racks.",
+      "candidate_ranges": [
+        {
+          "in": "static",
+          "out": "static",
+          "recommended_duration": 0,
+          "description": "Main rack room AFTER consolidation - completed LUCI racks.",
+          "strength": 5,
+          "use_cases": [
+            "main rack after",
+            "completed LUCI racks"
+          ],
+          "issues": [
+            "still image"
+          ]
+        }
+      ],
+      "supports": [
+        "15 racks consolidated to 2 LUCI racks",
+        "main rack completed state"
+      ],
+      "issues": [
+        "still image"
+      ],
+      "editorial_note": "Added 2026-09-04 from Jane manual labeling. Main rack AFTER consolidation."
+    },
+    {
+      "asset_id": "I0068",
+      "asset_type": "image",
+      "deep_review_status": "reviewed",
+      "tier": "Tier 1",
+      "rack_scope": "main",
+      "human_stage": "rack_after",
+      "human_priority": "primary",
+      "description": "Main rack room AFTER consolidation - completed LUCI racks.",
+      "candidate_ranges": [
+        {
+          "in": "static",
+          "out": "static",
+          "recommended_duration": 0,
+          "description": "Main rack room AFTER consolidation - completed LUCI racks.",
+          "strength": 5,
+          "use_cases": [
+            "main rack after",
+            "completed LUCI racks"
+          ],
+          "issues": [
+            "still image"
+          ]
+        }
+      ],
+      "supports": [
+        "15 racks consolidated to 2 LUCI racks",
+        "main rack completed state"
+      ],
+      "issues": [
+        "still image"
+      ],
+      "editorial_note": "Added 2026-09-04 from Jane manual labeling. Main rack AFTER consolidation."
+    },
+    {
+      "asset_id": "I0074",
+      "asset_type": "image",
+      "deep_review_status": "reviewed",
+      "tier": "Tier 1",
+      "rack_scope": "main",
+      "human_stage": "rack_after",
+      "human_priority": "primary",
+      "description": "Main rack room AFTER consolidation - completed LUCI racks.",
+      "candidate_ranges": [
+        {
+          "in": "static",
+          "out": "static",
+          "recommended_duration": 0,
+          "description": "Main rack room AFTER consolidation - completed LUCI racks.",
+          "strength": 5,
+          "use_cases": [
+            "main rack after",
+            "completed LUCI racks"
+          ],
+          "issues": [
+            "still image"
+          ]
+        }
+      ],
+      "supports": [
+        "15 racks consolidated to 2 LUCI racks",
+        "main rack completed state"
+      ],
+      "issues": [
+        "still image"
+      ],
+      "editorial_note": "Added 2026-09-04 from Jane manual labeling. Main rack AFTER consolidation."
+    },
+    {
+      "asset_id": "I0075",
+      "asset_type": "image",
+      "deep_review_status": "reviewed",
+      "tier": "Tier 1",
+      "rack_scope": "main",
+      "human_stage": "rack_after",
+      "human_priority": "primary",
+      "description": "Main rack room AFTER consolidation - LUCI branded hardware.",
+      "candidate_ranges": [
+        {
+          "in": "static",
+          "out": "static",
+          "recommended_duration": 0,
+          "description": "Main rack room AFTER consolidation - LUCI branded hardware.",
+          "strength": 5,
+          "use_cases": [
+            "main rack after",
+            "completed LUCI racks"
+          ],
+          "issues": [
+            "still image"
+          ]
+        }
+      ],
+      "supports": [
+        "15 racks consolidated to 2 LUCI racks",
+        "main rack completed state"
+      ],
+      "issues": [
+        "still image"
+      ],
+      "editorial_note": "Added 2026-09-04 from Jane manual labeling. Main rack AFTER consolidation."
+    },
+    {
+      "asset_id": "I0070",
+      "asset_type": "image",
+      "deep_review_status": "reviewed",
+      "tier": "Tier 1",
+      "rack_scope": "main",
+      "human_stage": "rack_before",
+      "human_priority": "primary",
+      "description": "Main rack room BEFORE consolidation - populated racks with dense cabling, some empty frames visible in background.",
+      "candidate_ranges": [
+        {
+          "in": "static",
+          "out": "static",
+          "recommended_duration": 0,
+          "description": "Main rack room BEFORE consolidation - populated racks with dense cabling, some empty frames visible in background.",
+          "strength": 5,
+          "use_cases": [
+            "main rack before",
+            "infrastructure subtraction",
+            "empty rack positions"
+          ],
+          "issues": [
+            "still image"
+          ]
+        }
+      ],
+      "supports": [
+        "15 racks of legacy gear",
+        "infrastructure subtraction",
+        "empty rack positions (partial)"
+      ],
+      "issues": [
+        "still image",
+        "may not show all 13 empty positions in one frame"
+      ],
+      "editorial_note": "Added 2026-09-04 from Jane manual labeling. Main rack BEFORE consolidation."
     }
   ],
   "coverage_gaps_corrected": [
@@ -1957,6 +2111,28 @@
       "correction_date": "2026-09-04",
       "correction": "Video footage of 13 empty rack positions identified (V0045)",
       "details": "Jane confirmed from direct human review that good video footage exists showing the rack room with 13 empty racks after consolidation to 2 LUCI racks. V0045 (IMG_4811.mov) shows a pan from active LUCI racks to a long row of empty rack skeletons \u2014 at least 5-6 distinct empty frames visible with perspective suggesting more. I0071 (Aliante RR Before 2.jpeg) is a companion still showing the same contrast. V0045 upgraded from Tier 3 to Tier 1. V0046/V0047 reviewed as Tier 3 (construction/cabling, not empty racks). Previous coverage gap about missing empty-rack footage is corrected."
+    },
+    {
+      "correction_date": "2026-09-04",
+      "correction": "Jane manual rack-room labeling applied - Small Rack vs Main Rack vs Projector",
+      "details": "Jane renamed/labeled all Rack Room source files. Key corrections: V0045 and V0051 are SMALL RACK, not main rack - downgraded from Tier 1 to Tier 2 (fallback). V0048 and V0053 are PROJECTOR footage, not rack footage. I0069 renamed from After to Before - it is a rack_before image. Main rack evidence: I0067/I0068/I0074/I0075 (after stills), I0069/I0070/I0071 (before stills), V0049/V0050 (after video with installation progress). V0050 first half shows empty rack positions in the main rack. Small Rack constraint added: do not use Small Rack footage in the primary case-study rack-consolidation sequence unless main-rack footage is insufficient."
+    }
+  ],
+  "editorial_constraints": [
+    {
+      "constraint_id": "small-rack-fallback-only",
+      "source": "Jane manual file labeling",
+      "date": "2026-09-04",
+      "scope": "All Small Rack assets (V0045, V0047, V0051, V0052, I0072, I0073, I0080, I0085, I0086)",
+      "decision": "Do not use Small Rack footage in the primary case-study rack-consolidation sequence unless main-rack footage is insufficient.",
+      "should_use": [
+        "Small Rack footage may be used as fallback if main-rack footage cannot fill a coverage gap"
+      ],
+      "should_not_use": [
+        "Do not silently mix Small Rack footage with main rack footage",
+        "Do not present Small Rack as the main 15-to-2 consolidation"
+      ],
+      "identification_rule": "If Small Rack footage is ever proposed, explicitly identify it as fallback material rather than silently mixing it with the main rack."
     }
   ]
 }

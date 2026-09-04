@@ -1832,7 +1832,7 @@
     {
       "asset_id": "V0045",
       "visual_stage": "mixed",
-      "primary_subject": "rack room \u2014 pan from active LUCI racks to long row of empty rack skeletons (13 empty positions)",
+      "primary_subject": "SMALL rack room - pan from active racks to long row of empty rack skeletons (small rack, not main rack)",
       "secondary_subjects": [
         "blue signal cables neatly bundled",
         "LUCI-branded rack equipment",
@@ -1847,7 +1847,7 @@
       "screens_or_led_visible": false,
       "technical_infrastructure_visible": true,
       "visual_quality": 2,
-      "editorial_value": 5,
+      "editorial_value": 4,
       "observed_strengths": [
         "excellent view of cable management",
         "clear visibility of branded LUCI hardware",
@@ -1873,7 +1873,11 @@
       "needs_deeper_review": false,
       "reason_for_deeper_review": "",
       "confidence": "high",
-      "evidence_correction_note": "Updated 2026-09-04 per Jane human correction. V0045 shows the rack room with 13 empty rack positions after consolidation to 2 LUCI racks. The pan from active racks to empty skeletons is the strongest visual proof of infrastructure subtraction. Previously classified as Tier 3 with only a brief cable close-up range \u2014 upgraded to Tier 1."
+      "evidence_correction_note": "CORRECTED 2026-09-04. Jane labeled this file \"Small Rack 1.mov\" - it is SMALL RACK footage, not the main rack. The empty rack positions shown are in the small rack area, not the main 15-racks-to-2 consolidation. Downgraded from Tier 1 to Tier 2 (fallback). Do not use in the main case-study rack-consolidation sequence unless main-rack footage is insufficient.",
+      "rack_scope": "small",
+      "human_stage": "not_applicable",
+      "human_priority": "fallback",
+      "classification_source": "Jane manual file labeling"
     },
     {
       "asset_id": "V0046",
@@ -1953,12 +1957,16 @@
       ],
       "needs_deeper_review": false,
       "reason_for_deeper_review": "",
-      "confidence": "high"
+      "confidence": "high",
+      "rack_scope": "small",
+      "human_stage": "not_applicable",
+      "human_priority": "fallback",
+      "classification_source": "Jane manual file labeling"
     },
     {
       "asset_id": "V0048",
       "visual_stage": "progress",
-      "primary_subject": "decommissioned electronic hardware (projectors/server units) being removed",
+      "primary_subject": "legacy projector equipment - decommissioned projectors on floor (projector footage, not rack footage)",
       "secondary_subjects": [
         "dusty grey and black rectangular units",
         "detached camera lenses",
@@ -1994,7 +2002,11 @@
       ],
       "needs_deeper_review": true,
       "reason_for_deeper_review": "Documents the transformation aspect of project; check if full row of old equipment is shown",
-      "confidence": "high"
+      "confidence": "high",
+      "rack_scope": "not_applicable",
+      "human_stage": "projector",
+      "human_priority": "supporting",
+      "classification_source": "Jane manual file labeling"
     },
     {
       "asset_id": "V0049",
@@ -2032,7 +2044,11 @@
       ],
       "needs_deeper_review": false,
       "reason_for_deeper_review": "",
-      "confidence": "high"
+      "confidence": "high",
+      "rack_scope": "main",
+      "human_stage": "rack_after",
+      "human_priority": "primary",
+      "classification_source": "Jane manual file labeling"
     },
     {
       "asset_id": "V0050",
@@ -2069,12 +2085,16 @@
       ],
       "needs_deeper_review": false,
       "reason_for_deeper_review": "",
-      "confidence": "high"
+      "confidence": "high",
+      "rack_scope": "main",
+      "human_stage": "rack_after",
+      "human_priority": "primary",
+      "classification_source": "Jane manual file labeling"
     },
     {
       "asset_id": "V0051",
       "visual_stage": "completed",
-      "primary_subject": "three full-height equipment racks with active displays",
+      "primary_subject": "SMALL rack room - completed LUCI racks with active blue displays (small rack, not main rack)",
       "secondary_subjects": [
         "silver controller units with glowing displays",
         "vertical LED processor modules",
@@ -2110,7 +2130,12 @@
       ],
       "needs_deeper_review": false,
       "reason_for_deeper_review": "",
-      "confidence": "high"
+      "confidence": "high",
+      "rack_scope": "small",
+      "human_stage": "not_applicable",
+      "human_priority": "fallback",
+      "classification_source": "Jane manual file labeling",
+      "evidence_correction_note": "CORRECTED 2026-09-04. Jane labeled this file \"Small Rack 6.mov\" - it is SMALL RACK footage, not the main rack. The completed LUCI racks shown are in the small rack area. Downgraded from Tier 1 to Tier 2 (fallback). Do not use in the main case-study rack-consolidation sequence unless main-rack footage is insufficient."
     },
     {
       "asset_id": "V0052",
@@ -2148,12 +2173,16 @@
       ],
       "needs_deeper_review": false,
       "reason_for_deeper_review": "",
-      "confidence": "high"
+      "confidence": "high",
+      "rack_scope": "small",
+      "human_stage": "not_applicable",
+      "human_priority": "fallback",
+      "classification_source": "Jane manual file labeling"
     },
     {
       "asset_id": "V0053",
       "visual_stage": "progress",
-      "primary_subject": "row of decommissioned rack-mounted units on floor",
+      "primary_subject": "legacy projector equipment - decommissioned projectors (projector footage, not rack footage)",
       "secondary_subjects": [
         "15-20 identical dusty electronic units",
         "cable spools on top of units",
@@ -2190,7 +2219,11 @@
       ],
       "needs_deeper_review": false,
       "reason_for_deeper_review": "",
-      "confidence": "high"
+      "confidence": "high",
+      "rack_scope": "not_applicable",
+      "human_stage": "projector",
+      "human_priority": "supporting",
+      "classification_source": "Jane manual file labeling"
     },
     {
       "asset_id": "V0054",
@@ -3680,7 +3713,11 @@
       "observed_problems": [
         "vertical orientation"
       ],
-      "confidence": "high"
+      "confidence": "high",
+      "rack_scope": "main",
+      "human_stage": "rack_after",
+      "human_priority": "primary",
+      "classification_source": "Jane manual file labeling"
     },
     {
       "asset_id": "I0068",
@@ -3704,7 +3741,11 @@
       "observed_problems": [
         "vertical orientation"
       ],
-      "confidence": "high"
+      "confidence": "high",
+      "rack_scope": "main",
+      "human_stage": "rack_after",
+      "human_priority": "primary",
+      "classification_source": "Jane manual file labeling"
     },
     {
       "asset_id": "I0069",
@@ -3728,7 +3769,12 @@
       "observed_problems": [
         "vertical orientation"
       ],
-      "confidence": "high"
+      "confidence": "high",
+      "rack_scope": "main",
+      "human_stage": "rack_before",
+      "human_priority": "primary",
+      "classification_source": "Jane manual file labeling",
+      "evidence_correction_note": "CORRECTED 2026-09-04. Jane renamed this file from \"Aliante RR After 3.jpeg\" to \"Aliante RR Before 3.jpeg\" - it is a BEFORE image, not an AFTER image. Shows the main rack room before consolidation."
     },
     {
       "asset_id": "I0070",
@@ -3750,7 +3796,11 @@
         "human element"
       ],
       "observed_problems": [],
-      "confidence": "high"
+      "confidence": "high",
+      "rack_scope": "main",
+      "human_stage": "rack_before",
+      "human_priority": "primary",
+      "classification_source": "Jane manual file labeling"
     },
     {
       "asset_id": "I0071",
@@ -3770,7 +3820,11 @@
         "detailed view of cable management"
       ],
       "observed_problems": [],
-      "confidence": "high"
+      "confidence": "high",
+      "rack_scope": "main",
+      "human_stage": "rack_before",
+      "human_priority": "primary",
+      "classification_source": "Jane manual file labeling"
     },
     {
       "asset_id": "I0072",
@@ -3794,7 +3848,11 @@
       "observed_problems": [
         "cluttered with boxes and debris"
       ],
-      "confidence": "high"
+      "confidence": "high",
+      "rack_scope": "small",
+      "human_stage": "not_applicable",
+      "human_priority": "fallback",
+      "classification_source": "Jane manual file labeling"
     },
     {
       "asset_id": "I0073",
@@ -3818,7 +3876,11 @@
       "observed_problems": [
         "cluttered with boxes and debris"
       ],
-      "confidence": "high"
+      "confidence": "high",
+      "rack_scope": "small",
+      "human_stage": "not_applicable",
+      "human_priority": "fallback",
+      "classification_source": "Jane manual file labeling"
     },
     {
       "asset_id": "I0074",
@@ -3842,7 +3904,11 @@
       "observed_problems": [
         "cluttered with boxes and debris"
       ],
-      "confidence": "high"
+      "confidence": "high",
+      "rack_scope": "main",
+      "human_stage": "rack_after",
+      "human_priority": "primary",
+      "classification_source": "Jane manual file labeling"
     },
     {
       "asset_id": "I0075",
@@ -3863,7 +3929,11 @@
         "shows commissioning/configuration interface"
       ],
       "observed_problems": [],
-      "confidence": "high"
+      "confidence": "high",
+      "rack_scope": "main",
+      "human_stage": "rack_after",
+      "human_priority": "primary",
+      "classification_source": "Jane manual file labeling"
     },
     {
       "asset_id": "I0076",
@@ -3884,7 +3954,11 @@
         "shows geometric patterns of metal infrastructure"
       ],
       "observed_problems": [],
-      "confidence": "high"
+      "confidence": "high",
+      "rack_scope": "main",
+      "human_stage": "rack_after",
+      "human_priority": "primary",
+      "classification_source": "Jane manual file labeling"
     },
     {
       "asset_id": "I0077",
@@ -3905,7 +3979,11 @@
         "shows geometric patterns of metal infrastructure"
       ],
       "observed_problems": [],
-      "confidence": "high"
+      "confidence": "high",
+      "rack_scope": "main",
+      "human_stage": "rack_after",
+      "human_priority": "primary",
+      "classification_source": "Jane manual file labeling"
     },
     {
       "asset_id": "I0078",
@@ -3927,7 +4005,11 @@
         "clear legible branding"
       ],
       "observed_problems": [],
-      "confidence": "high"
+      "confidence": "high",
+      "rack_scope": "main",
+      "human_stage": "rack_after",
+      "human_priority": "primary",
+      "classification_source": "Jane manual file labeling"
     },
     {
       "asset_id": "I0079",
@@ -3949,7 +4031,11 @@
         "shows testing/commissioning phase with diagnostic equipment"
       ],
       "observed_problems": [],
-      "confidence": "high"
+      "confidence": "high",
+      "rack_scope": "main",
+      "human_stage": "rack_after",
+      "human_priority": "primary",
+      "classification_source": "Jane manual file labeling"
     },
     {
       "asset_id": "I0080",
@@ -3971,7 +4057,11 @@
         "shows testing/commissioning phase with diagnostic equipment"
       ],
       "observed_problems": [],
-      "confidence": "high"
+      "confidence": "high",
+      "rack_scope": "small",
+      "human_stage": "not_applicable",
+      "human_priority": "fallback",
+      "classification_source": "Jane manual file labeling"
     },
     {
       "asset_id": "I0081",
@@ -3995,7 +4085,11 @@
       "observed_problems": [
         "cluttered environment"
       ],
-      "confidence": "high"
+      "confidence": "high",
+      "rack_scope": "main",
+      "human_stage": "rack_after",
+      "human_priority": "primary",
+      "classification_source": "Jane manual file labeling"
     },
     {
       "asset_id": "I0082",
@@ -4018,7 +4112,11 @@
       "observed_problems": [
         "dark and underexposed"
       ],
-      "confidence": "high"
+      "confidence": "high",
+      "rack_scope": "main",
+      "human_stage": "rack_after",
+      "human_priority": "primary",
+      "classification_source": "Jane manual file labeling"
     },
     {
       "asset_id": "I0083",
@@ -4041,7 +4139,11 @@
         "human element"
       ],
       "observed_problems": [],
-      "confidence": "high"
+      "confidence": "high",
+      "rack_scope": "main",
+      "human_stage": "rack_after",
+      "human_priority": "primary",
+      "classification_source": "Jane manual file labeling"
     },
     {
       "asset_id": "I0084",
@@ -4062,7 +4164,11 @@
         "shows technician inspecting equipment"
       ],
       "observed_problems": [],
-      "confidence": "high"
+      "confidence": "high",
+      "rack_scope": "main",
+      "human_stage": "rack_after",
+      "human_priority": "primary",
+      "classification_source": "Jane manual file labeling"
     },
     {
       "asset_id": "I0085",
@@ -4084,7 +4190,11 @@
         "shows specific LUCI-related hardware"
       ],
       "observed_problems": [],
-      "confidence": "high"
+      "confidence": "high",
+      "rack_scope": "small",
+      "human_stage": "not_applicable",
+      "human_priority": "fallback",
+      "classification_source": "Jane manual file labeling"
     },
     {
       "asset_id": "I0086",
@@ -4106,7 +4216,11 @@
       "observed_problems": [
         "quite dark"
       ],
-      "confidence": "high"
+      "confidence": "high",
+      "rack_scope": "small",
+      "human_stage": "not_applicable",
+      "human_priority": "fallback",
+      "classification_source": "Jane manual file labeling"
     },
     {
       "asset_id": "I0087",
@@ -4128,7 +4242,11 @@
         "good action shot of technician unboxing components"
       ],
       "observed_problems": [],
-      "confidence": "high"
+      "confidence": "high",
+      "rack_scope": "main",
+      "human_stage": "rack_after",
+      "human_priority": "primary",
+      "classification_source": "Jane manual file labeling"
     },
     {
       "asset_id": "I0088",
@@ -4150,7 +4268,11 @@
         "shows equipment awaiting installation"
       ],
       "observed_problems": [],
-      "confidence": "high"
+      "confidence": "high",
+      "rack_scope": "not_applicable",
+      "human_stage": "projector",
+      "human_priority": "supporting",
+      "classification_source": "Jane manual file labeling"
     },
     {
       "asset_id": "I0089",
@@ -4171,7 +4293,11 @@
         "detail view of equipment hardware"
       ],
       "observed_problems": [],
-      "confidence": "high"
+      "confidence": "high",
+      "rack_scope": "not_applicable",
+      "human_stage": "projector",
+      "human_priority": "supporting",
+      "classification_source": "Jane manual file labeling"
     },
     {
       "asset_id": "I0090",
