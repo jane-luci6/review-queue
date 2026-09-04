@@ -1853,7 +1853,7 @@
         "clear visibility of branded LUCI hardware",
         "shows the contrast between 2 active LUCI racks and a long row of emptied rack positions",
         "pan across at least 5-6 empty rack skeletons with perspective suggesting more extending into background",
-        "directly visualizes the 15\u21922 infrastructure subtraction"
+        "directly visualizes the 15→2 infrastructure subtraction"
       ],
       "observed_problems": [
         "environment very cluttered with trash and debris",
@@ -2010,8 +2010,8 @@
     },
     {
       "asset_id": "V0049",
-      "visual_stage": "progress",
-      "primary_subject": "rack room with LUCI-branded hardware installation",
+      "visual_stage": "completed",
+      "primary_subject": "completed main rack room - two consolidated LUCI-branded racks fully populated and operational (main-rack AFTER state)",
       "secondary_subjects": [
         "tall black equipment racks",
         "LUCI logo on rack units",
@@ -2025,21 +2025,24 @@
       "people_visible": true,
       "screens_or_led_visible": true,
       "technical_infrastructure_visible": true,
-      "visual_quality": 2,
-      "editorial_value": 3,
+      "visual_quality": 3,
+      "editorial_value": 5,
       "observed_strengths": [
-        "features clear LUCI branding on hardware",
-        "shows scale of project backend"
+        "clearest moving-image proof of the completed 2-rack main-rack state",
+        "hero moment (~t=24s) shows two densely-populated LUCI-branded main racks with technician",
+        "early portion shows the emptied rack skeletons (the 15-rack footprint reduced to 2)"
       ],
       "observed_problems": [
-        "shaky camera work",
-        "significant motion blur",
-        "cluttered appearance from exposed cabling"
+        "early portion (before ~00:14) is shaky / empty-rack environmental - use the populated reveal range"
       ],
       "representative_moments": [
         {
-          "timestamp": 26.659,
-          "note": "close-up of LUCI-branded rack units with cabling"
+          "timestamp": 24.0,
+          "note": "hero populated dual-rack reveal - two LUCI-branded main racks, white vertical modules, blue patch cable, technician in grey t-shirt"
+        },
+        {
+          "timestamp": 14.0,
+          "note": "wide pan across emptied rack skeletons (the reduced footprint) toward active consolidated racks"
         }
       ],
       "needs_deeper_review": false,
@@ -2053,7 +2056,7 @@
     {
       "asset_id": "V0050",
       "visual_stage": "completed",
-      "primary_subject": "equipment racks with LUCI-branded hardware and status monitor",
+      "primary_subject": "completed main rack room - two consolidated LUCI-branded racks fully populated with active status lights and live scheduling dashboard (main-rack AFTER state)",
       "secondary_subjects": [
         "orange PDU outlets",
         "technician in grey t-shirt",
@@ -2068,19 +2071,19 @@
       "screens_or_led_visible": true,
       "technical_infrastructure_visible": true,
       "visual_quality": 3,
-      "editorial_value": 4,
+      "editorial_value": 5,
       "observed_strengths": [
-        "clear shots of branded equipment",
-        "shows scale and cleanliness of technical installation"
+        "clearest moving-image proof of the completed 2-rack main-rack state",
+        "hero moment (~t=21s) shows two fully-populated LUCI-branded main racks with active status lights",
+        "background monitor shows a live scheduling dashboard - proof of operational state"
       ],
       "observed_problems": [
-        "handheld movement might be shaky",
-        "technician presence is incidental rather than staged"
+        "early portion (before ~00:14) is PDU close-ups / empty-rack environmental - use the populated reveal range"
       ],
       "representative_moments": [
         {
-          "timestamp": 20.418,
-          "note": "strongest frame capturing branded gear, technician, and status monitor"
+          "timestamp": 21.0,
+          "note": "hero populated dual-rack reveal - two LUCI-branded main racks, white vertical modules, active green/amber status lights, live scheduling dashboard on background monitor"
         }
       ],
       "needs_deeper_review": false,
@@ -4304,21 +4307,21 @@
       "filename": "aliante-before.jpg",
       "asset_type": "image",
       "visual_stage": "before",
-      "primary_subject": "old sportsbook interior \u2014 legacy projector display wall in operation",
+      "primary_subject": "old sportsbook interior — legacy projector display wall in operation",
       "environment": "Aliante sportsbook, pre-renovation. Dim casino sportsbook with large-format projection screens, row of smaller monitors, betting kiosks, patterned carpet. Patrons visible.",
       "shot_type": "wide-angle interior, eye-level, architectural documentation",
       "camera_behavior": "static",
       "people_visible": true,
       "screens_or_led_visible": true,
-      "technical_infrastructure_visible": "legacy projector-based display system \u2014 three large-format projection screens with matte/soft finish, continuous row of 15-20 smaller monitors below, Boyd Gaming betting kiosks in foreground",
+      "technical_infrastructure_visible": "legacy projector-based display system — three large-format projection screens with matte/soft finish, continuous row of 15-20 smaller monitors below, Boyd Gaming betting kiosks in foreground",
       "visual_quality": 3,
       "editorial_value": 5,
       "observed_strengths": [
         "authoritative true-before imagery showing the old sportsbook in operation",
         "clearly shows the legacy projector-based display system with its soft/matte visual quality",
         "shows the scale of the former display wall that was replaced",
-        "patrons visible \u2014 the room was active and in operation",
-        "enables genuine old-sportsbook \u2192 renovated-sportsbook visual comparison"
+        "patrons visible — the room was active and in operation",
+        "enables genuine old-sportsbook → renovated-sportsbook visual comparison"
       ],
       "observed_problems": [
         "lower resolution than completed-wall hero footage (981x654)",
@@ -4326,7 +4329,7 @@
       ],
       "representative_moments": [
         {
-          "description": "Full wide-angle view of the legacy sportsbook \u2014 three large projection screens, row of smaller monitors, betting kiosks, patrons at carrels"
+          "description": "Full wide-angle view of the legacy sportsbook — three large projection screens, row of smaller monitors, betting kiosks, patrons at carrels"
         }
       ],
       "needs_deeper_review": false,
@@ -4334,7 +4337,7 @@
       "confidence": "high",
       "source_context": "Aliante website",
       "human_classification": "true_before",
-      "editorial_significance": "authoritative before-state imagery for sportsbook renovation \u2014 enables genuine old sportsbook \u2192 renovated sportsbook comparison",
+      "editorial_significance": "authoritative before-state imagery for sportsbook renovation — enables genuine old sportsbook → renovated sportsbook comparison",
       "evidence_correction_note": "Added 2026-09-04. These are TRUE before-state images from Aliante's own website, showing the old sportsbook in operation. They are fundamentally different from Mike's construction/early-build photos (I0054-I0089) which show the wall before LUCI panel installation, not the former AV system."
     },
     {
@@ -4342,21 +4345,21 @@
       "filename": "aliante-before-2.jpg",
       "asset_type": "image",
       "visual_stage": "before",
-      "primary_subject": "old sportsbook interior \u2014 legacy projector display wall with seating area in operation",
+      "primary_subject": "old sportsbook interior — legacy projector display wall with seating area in operation",
       "environment": "Aliante sportsbook, pre-renovation. Dim room with three large projection screens, row of ~20 smaller monitors, dark leather armchairs, wood betting counter with blue LED accent lighting. One patron visible.",
       "shot_type": "wide-angle interior, eye-level, architectural documentation",
       "camera_behavior": "static",
       "people_visible": true,
       "screens_or_led_visible": true,
-      "technical_infrastructure_visible": "legacy projector-based display system \u2014 three large-format projection screens with matte finish, continuous row of ~20 smaller individual monitors, dark-wood betting counter with individual monitors",
+      "technical_infrastructure_visible": "legacy projector-based display system — three large-format projection screens with matte finish, continuous row of ~20 smaller individual monitors, dark-wood betting counter with individual monitors",
       "visual_quality": 3,
       "editorial_value": 5,
       "observed_strengths": [
         "authoritative true-before imagery showing the old sportsbook in operation",
         "clearly shows the fragmented array of disparate monitors and projection screens",
         "shows the seating area and betting counter layout that was replaced",
-        "patron visible \u2014 the facility was open for business",
-        "yellow scrolling ticker visible on the large screens \u2014 shows the former odds display method"
+        "patron visible — the facility was open for business",
+        "yellow scrolling ticker visible on the large screens — shows the former odds display method"
       ],
       "observed_problems": [
         "lower resolution than completed-wall hero footage (900x500)",
@@ -4364,7 +4367,7 @@
       ],
       "representative_moments": [
         {
-          "description": "Full wide-angle view of the legacy sportsbook with seating \u2014 three projection screens with live sports, row of smaller monitors, leather armchairs, betting counter"
+          "description": "Full wide-angle view of the legacy sportsbook with seating — three projection screens with live sports, row of smaller monitors, leather armchairs, betting counter"
         }
       ],
       "needs_deeper_review": false,
@@ -4372,7 +4375,7 @@
       "confidence": "high",
       "source_context": "Aliante website",
       "human_classification": "true_before",
-      "editorial_significance": "authoritative before-state imagery for sportsbook renovation \u2014 enables genuine old sportsbook \u2192 renovated sportsbook comparison",
+      "editorial_significance": "authoritative before-state imagery for sportsbook renovation — enables genuine old sportsbook → renovated sportsbook comparison",
       "evidence_correction_note": "Added 2026-09-04. These are TRUE before-state images from Aliante's own website, showing the old sportsbook in operation. They are fundamentally different from Mike's construction/early-build photos (I0054-I0089) which show the wall before LUCI panel installation, not the former AV system."
     },
     {
@@ -4380,21 +4383,21 @@
       "filename": "aliante-before-3.jpg",
       "asset_type": "image",
       "visual_stage": "before",
-      "primary_subject": "old sportsbook interior \u2014 legacy projector display wall with betting carrels in operation",
+      "primary_subject": "old sportsbook interior — legacy projector display wall with betting carrels in operation",
       "environment": "Aliante sportsbook, pre-renovation. Dim room with three large projection screens, row of ~15-18 smaller monitors, rows of dark wooden betting carrels with task lights and individual monitors. Patron visible at carrel.",
       "shot_type": "wide-angle interior, eye-level, architectural documentation",
       "camera_behavior": "static",
       "people_visible": true,
       "screens_or_led_visible": true,
-      "technical_infrastructure_visible": "legacy projector-based display system \u2014 three large-format projection screens with matte/diffused finish, continuous row of ~15-18 smaller individual monitors, wooden betting carrels with individual monitors and task lights",
+      "technical_infrastructure_visible": "legacy projector-based display system — three large-format projection screens with matte/diffused finish, continuous row of ~15-18 smaller individual monitors, wooden betting carrels with individual monitors and task lights",
       "visual_quality": 3,
       "editorial_value": 5,
       "observed_strengths": [
         "authoritative true-before imagery showing the old sportsbook in operation",
-        "clearly shows the complexity and fragmentation of the old system \u2014 multiple projectors, gaps between screens, disparate smaller monitors",
+        "clearly shows the complexity and fragmentation of the old system — multiple projectors, gaps between screens, disparate smaller monitors",
         "shows the betting carrel layout with individual monitors at each station",
-        "patron visible \u2014 the facility was in active operation",
-        "enables genuine old-sportsbook \u2192 renovated-sportsbook visual comparison"
+        "patron visible — the facility was in active operation",
+        "enables genuine old-sportsbook → renovated-sportsbook visual comparison"
       ],
       "observed_problems": [
         "lowest resolution of the three before images (550x367)",
@@ -4402,7 +4405,7 @@
       ],
       "representative_moments": [
         {
-          "description": "Full wide-angle view of the legacy sportsbook with carrels \u2014 three projection screens, row of smaller monitors, betting carrels, patron seated"
+          "description": "Full wide-angle view of the legacy sportsbook with carrels — three projection screens, row of smaller monitors, betting carrels, patron seated"
         }
       ],
       "needs_deeper_review": false,
@@ -4410,7 +4413,7 @@
       "confidence": "high",
       "source_context": "Aliante website",
       "human_classification": "true_before",
-      "editorial_significance": "authoritative before-state imagery for sportsbook renovation \u2014 enables genuine old sportsbook \u2192 renovated sportsbook comparison",
+      "editorial_significance": "authoritative before-state imagery for sportsbook renovation — enables genuine old sportsbook → renovated sportsbook comparison",
       "evidence_correction_note": "Added 2026-09-04. These are TRUE before-state images from Aliante's own website, showing the old sportsbook in operation. They are fundamentally different from Mike's construction/early-build photos (I0054-I0089) which show the wall before LUCI panel installation, not the former AV system."
     }
   ],
@@ -4458,7 +4461,7 @@
         "I0065"
       ],
       "confidence": "high",
-      "viewpoint_notes": "Two closely related sub-positions within the left-of-wall area, both consistent with Jane's observation. (A) Orange 'KessmanGroup' tool chest foreground \u2014 appears across 5 shoot dates (2026-05-19, 05-28, 06-09, 07-15), strong evidence Mike returned to the same spot. (B) Elevated far-left with dark door frame on the left edge \u2014 appears on 2026-04-26 (before/early) and 2026-08-21 (completed), framing the full progression. Near-completion and completed shots from the far-left looking down the wall's length (I0015, I0043, I0040, I0030, I0033) align with the same general viewpoint.",
+      "viewpoint_notes": "Two closely related sub-positions within the left-of-wall area, both consistent with Jane's observation. (A) Orange 'KessmanGroup' tool chest foreground — appears across 5 shoot dates (2026-05-19, 05-28, 06-09, 07-15), strong evidence Mike returned to the same spot. (B) Elevated far-left with dark door frame on the left edge — appears on 2026-04-26 (before/early) and 2026-08-21 (completed), framing the full progression. Near-completion and completed shots from the far-left looking down the wall's length (I0015, I0043, I0040, I0030, I0033) align with the same general viewpoint.",
       "gaps": [
         "No matched-viewpoint capture between 2026-06-09 and 2026-07-15 (5-week gap during black-backing to frame-structure transition).",
         "No matched-viewpoint capture between 2026-07-15 and 2026-07-17 (I0008/I0010 are nearby but from a more frontal/centered angle, not the same left-of-wall position).",
@@ -4582,7 +4585,7 @@
     {
       "correction_date": "2026-09-04",
       "correction": "True before-state imagery added (I0090, I0091, I0092)",
-      "details": "Three images from Aliante's own website showing the old sportsbook in operation with the legacy projector-based display system. These are TRUE before-state photos, fundamentally different from Mike's construction/early-build photos (I0054-I0089) which show the wall before LUCI panel installation, not the former AV system. The previous constraint 'no true before imagery exists' is now corrected \u2014 true-before still photography exists, though no true-before video exists.",
+      "details": "Three images from Aliante's own website showing the old sportsbook in operation with the legacy projector-based display system. These are TRUE before-state photos, fundamentally different from Mike's construction/early-build photos (I0054-I0089) which show the wall before LUCI panel installation, not the former AV system. The previous constraint 'no true before imagery exists' is now corrected — true-before still photography exists, though no true-before video exists.",
       "affected_files": [
         "analysis/visual-analysis.json",
         "analysis/project-intelligence.md",
