@@ -6,165 +6,175 @@
 <title>New LUCI Launch Timeline</title>
 <link rel="stylesheet" href="../assets/fonts/luci-brand-fonts.css">
 <style>
-:root {
-  --navy-deep: #0A161C; --navy-muted: #49616E;
-  --mint-dark: #2b9e80; --gold-deep: #CEB06E; --gold-rgb: 237, 208, 134;
-  --off-white: #F5F8FA; --rule-light: #DBE1E4;
-  --ink: #354F5C; --ink-strong: #1C2B33;
-  --font: 'Space Grotesk', 'Trebuchet MS', sans-serif;
-  --font-body: 'Inter', 'Helvetica Neue', sans-serif;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: var(--font-body); background: var(--off-white); color: var(--ink); padding: 48px clamp(28px,6vw,64px) 64px; line-height: 1.5; }
-.tl-head { margin-bottom: 40px; }
-.tl-kicker { font-family: var(--font); font-weight: 700; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--mint-dark); margin-bottom: 14px; }
-.tl-title { font-family: var(--font); font-weight: 700; font-size: clamp(32px,5vw,44px); line-height: 1.1; letter-spacing: -0.03em; color: var(--ink-strong); }
-.tl-anchors { display: flex; gap: 32px; margin-top: 20px; flex-wrap: wrap; }
-.tl-anchor { font-family: var(--font); font-weight: 600; font-size: 14px; color: var(--navy-muted); }
-.tl-anchor strong { color: var(--ink-strong); font-weight: 700; }
-.tl-spine { display: flex; gap: 0; margin-bottom: 40px; padding: 24px 0; border-top: 2px solid var(--mint-dark); border-bottom: 1px solid var(--rule-light); flex-wrap: wrap; }
-.tl-spine__item { flex: 1; min-width: 140px; display: flex; flex-direction: column; gap: 6px; padding: 0 16px; border-right: 1px solid var(--rule-light); }
-.tl-spine__item:last-child { border-right: 0; }
-.tl-spine__num { font-family: var(--font); font-weight: 700; font-size: 11px; letter-spacing: 0.16em; color: var(--mint-dark); }
-.tl-spine__label { font-family: var(--font); font-weight: 700; font-size: 14px; color: var(--ink-strong); line-height: 1.25; }
-.tl-spine__date { font-family: var(--font-body); font-size: 12px; color: var(--navy-muted); }
-.tl-gantt { display: grid; grid-template-columns: 220px repeat(19,1fr); gap: 0; border-top: 1px solid var(--rule-light); border-bottom: 1px solid var(--rule-light); max-width: 100%; overflow-x: auto; }
-.tl-month { font-family: var(--font); font-weight: 700; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--mint-dark); padding: 16px 0 12px; border-bottom: 2px solid var(--mint-dark); text-align: center; }
-.tl-month--label { grid-column: 1; text-align: left; border-bottom: 2px solid var(--rule-light); }
-.tl-month--sep { grid-column: 2 / 6; }
-.tl-month--oct { grid-column: 6 / 10; }
-.tl-month--nov { grid-column: 10 / 13; }
-.tl-month--dec { grid-column: 13 / 16; }
-.tl-month--holiday { grid-column: 16 / 17; color: var(--navy-muted); border-bottom-color: var(--rule-light); }
-.tl-month--jan { grid-column: 17 / 21; }
-.tl-week { font-family: var(--font); font-weight: 600; font-size: 9px; color: var(--navy-muted); text-align: center; padding: 6px 0 10px; border-bottom: 1px solid var(--rule-light); }
-.tl-week--holiday { color: rgba(73,97,110,0.4); }
-.tl-label { font-family: var(--font); font-weight: 700; font-size: 14px; color: var(--ink-strong); padding: 18px 16px 18px 0; border-bottom: 1px solid var(--rule-light); display: flex; flex-direction: column; gap: 4px; }
-.tl-label__owner { font-family: var(--font); font-weight: 600; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mint-dark); }
-.tl-cell { border-bottom: 1px solid var(--rule-light); border-right: 1px solid rgba(219,225,228,0.4); position: relative; min-height: 56px; }
-.tl-cell:last-child { border-right: 0; }
-.tl-bar { position: relative; height: 28px; border-radius: 6px; margin: 14px 2px; display: flex; align-items: center; padding: 0 10px; font-family: var(--font); font-weight: 600; font-size: 11px; color: #fff; white-space: nowrap; overflow: hidden; }
-.tl-bar--pre { background: var(--mint-dark); }
-.tl-bar--build { background: rgba(43,158,128,0.55); }
-.tl-bar--launch { background: var(--navy-deep); }
-.tl-bar--post { background: rgba(43,158,128,0.35); }
-.tl-bar--sub { margin-top: 0; opacity: 0.8; height: 22px; font-size: 10px; }
-.tl-milestone { display: flex; flex-direction: column; align-items: center; padding-top: 10px; }
-.tl-milestone__diamond { width: 14px; height: 14px; background: var(--gold-deep); transform: rotate(45deg); border: 2px solid var(--off-white); box-shadow: 0 0 0 1px var(--gold-deep); }
-.tl-milestone__label { font-family: var(--font); font-weight: 700; font-size: 9px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold-deep); margin-top: 6px; white-space: nowrap; }
-.tl-holiday { grid-column: 16 / 17; background: repeating-linear-gradient(135deg, rgba(219,225,228,0.3) 0px, rgba(219,225,228,0.3) 4px, transparent 4px, transparent 8px); border-left: 1px solid var(--rule-light); border-right: 1px solid var(--rule-light); }
-.tl-holiday--label { grid-column: 16 / 17; text-align: center; padding: 8px 0; font-family: var(--font); font-weight: 600; font-size: 9px; color: rgba(73,97,110,0.5); text-transform: uppercase; letter-spacing: 0.1em; }
-.tl-legend { display: flex; gap: 24px; margin-top: 24px; flex-wrap: wrap; }
-.tl-legend__item { display: flex; align-items: center; gap: 8px; font-family: var(--font-body); font-size: 13px; color: var(--navy-muted); }
-.tl-legend__swatch { width: 24px; height: 12px; border-radius: 4px; }
-.tl-legend__diamond { width: 10px; height: 10px; background: var(--gold-deep); transform: rotate(45deg); }
-.tl-notes { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--rule-light); }
-.tl-notes__title { font-family: var(--font); font-weight: 700; font-size: 16px; color: var(--ink-strong); margin-bottom: 20px; }
-.tl-notes__list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
-.tl-notes__item { font-family: var(--font-body); font-size: 14px; line-height: 1.55; color: var(--ink); padding-left: 20px; position: relative; }
-.tl-notes__item::before { content: ''; position: absolute; left: 0; top: 8px; width: 5px; height: 5px; border-radius: 50%; background: var(--mint-dark); }
-.tl-notes__item strong { color: var(--ink-strong); font-weight: 700; }
-@media print { @page { size: landscape; margin: 0.5in; } body { padding: 0; } }
+  :root {
+    --navy-deep: #0A161C; --navy-muted: #49616E;
+    --mint-dark: #2b9e80; --gold-deep: #CEB06E;
+    --off-white: #F5F8FA; --rule-light: #DBE1E4;
+    --ink: #354F5C; --ink-strong: #1C2B33;
+    --font: 'Space Grotesk', 'Trebuchet MS', sans-serif;
+    --font-body: 'Inter', 'Helvetica Neue', sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-body);
+    background: var(--off-white);
+    color: var(--ink);
+    padding: 56px clamp(28px,6vw,72px) 72px;
+    line-height: 1.5;
+  }
+
+  /* Header */
+  .tl-kicker {
+    font-family: var(--font); font-weight: 700; font-size: 11px;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--mint-dark); margin-bottom: 14px;
+  }
+  .tl-title {
+    font-family: var(--font); font-weight: 700;
+    font-size: clamp(32px,5vw,44px); line-height: 1.1;
+    letter-spacing: -0.03em; color: var(--ink-strong);
+  }
+
+  /* Phase legend strip */
+  .tl-phases {
+    display: flex; gap: 0; margin-top: 32px; margin-bottom: 40px;
+    border-radius: 8px; overflow: hidden; max-width: 920px;
+  }
+  .tl-phase {
+    padding: 10px 18px; font-family: var(--font); font-weight: 700;
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  }
+  .tl-phase--pre   { background: rgba(43,158,128,0.14); color: var(--mint-dark); flex: 5; }
+  .tl-phase--launch{ background: var(--navy-deep); color: #fff; flex: 1; }
+  .tl-phase--post  { background: rgba(43,158,128,0.06); color: var(--navy-muted); flex: 2; }
+
+  /* Milestone timeline */
+  .tl-track {
+    position: relative; max-width: 920px; margin-bottom: 8px;
+    padding: 64px 0 8px;
+  }
+  .tl-line {
+    position: absolute; left: 0; right: 0; top: 88px;
+    height: 2px; background: var(--rule-light);
+  }
+  .tl-line__fill {
+    position: absolute; left: 0; top: 0; height: 100%;
+    background: var(--mint-dark);
+  }
+  .tl-nodes {
+    position: relative; display: grid;
+    grid-template-columns: repeat(6, 1fr); gap: 0;
+  }
+  .tl-node {
+    display: flex; flex-direction: column; align-items: center;
+    text-align: center; padding: 0 8px;
+  }
+  .tl-node__date {
+    font-family: var(--font); font-weight: 700; font-size: 12px;
+    color: var(--navy-muted); margin-bottom: 10px;
+  }
+  .tl-node__dot {
+    width: 16px; height: 16px; border-radius: 50%;
+    background: var(--off-white); border: 3px solid var(--mint-dark);
+    position: relative; z-index: 1;
+  }
+  .tl-node--launch .tl-node__dot {
+    background: var(--gold-deep); border-color: var(--gold-deep);
+    width: 20px; height: 20px;
+  }
+  .tl-node__num {
+    font-family: var(--font); font-weight: 700; font-size: 11px;
+    letter-spacing: 0.16em; color: var(--mint-dark); margin-top: 14px;
+  }
+  .tl-node--launch .tl-node__num { color: var(--gold-deep); }
+  .tl-node__label {
+    font-family: var(--font); font-weight: 700; font-size: 15px;
+    line-height: 1.25; color: var(--ink-strong); margin-top: 6px;
+    max-width: 13ch;
+  }
+
+  /* Month axis */
+  .tl-months {
+    max-width: 920px; display: flex; justify-content: space-between;
+    margin-top: 28px; padding-top: 14px; border-top: 1px solid var(--rule-light);
+  }
+  .tl-month {
+    font-family: var(--font); font-weight: 600; font-size: 11px;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy-muted);
+  }
+
+  @media print {
+    @page { size: landscape; margin: 0.5in; }
+    body { padding: 0; }
+  }
+  @media (max-width: 720px) {
+    .tl-nodes { grid-template-columns: 1fr; gap: 24px; }
+    .tl-line { display: none; }
+    .tl-node { flex-direction: row; gap: 14px; text-align: left; }
+    .tl-node__date { margin-bottom: 0; }
+    .tl-phases { flex-direction: column; }
+  }
 </style>
 </head>
 <body>
-<div class="tl-head">
   <p class="tl-kicker">New LUCI</p>
   <h1 class="tl-title">Launch Timeline</h1>
-  <div class="tl-anchors">
-    <p class="tl-anchor"><strong>Beta live:</strong> Sep 30</p>
-    <p class="tl-anchor"><strong>One-pager + website:</strong> Dec 4</p>
-    <p class="tl-anchor"><strong>Demo webinar:</strong> Jan 15</p>
-    <p class="tl-anchor"><strong>Upgrade launch:</strong> Jan 29</p>
+
+  <div class="tl-phases">
+    <div class="tl-phase tl-phase--pre">Pre-launch</div>
+    <div class="tl-phase tl-phase--launch">Launch</div>
+    <div class="tl-phase tl-phase--post">Post-launch</div>
   </div>
-</div>
 
-<div class="tl-spine">
-  <div class="tl-spine__item"><span class="tl-spine__num">01</span><span class="tl-spine__label">Beta property live</span><span class="tl-spine__date">Sep 30</span></div>
-  <div class="tl-spine__item"><span class="tl-spine__num">02</span><span class="tl-spine__label">Features one-pager + new website</span><span class="tl-spine__date">Dec 4</span></div>
-  <div class="tl-spine__item"><span class="tl-spine__num">03</span><span class="tl-spine__label">Demo webinar</span><span class="tl-spine__date">Jan 15</span></div>
-  <div class="tl-spine__item"><span class="tl-spine__num">04</span><span class="tl-spine__label">Upgrade launch</span><span class="tl-spine__date">Jan 29</span></div>
-  <div class="tl-spine__item"><span class="tl-spine__num">05</span><span class="tl-spine__label">Net-new prospecting</span><span class="tl-spine__date">Jan 29+</span></div>
-  <div class="tl-spine__item"><span class="tl-spine__num">06</span><span class="tl-spine__label">Post-launch customer comms</span><span class="tl-spine__date">Feb</span></div>
-</div>
+  <div class="tl-track">
+    <div class="tl-line"><div class="tl-line__fill" style="width: 82%"></div></div>
+    <div class="tl-nodes">
+      <div class="tl-node">
+        <span class="tl-node__date">Sep 30</span>
+        <span class="tl-node__dot"></span>
+        <span class="tl-node__num">01</span>
+        <span class="tl-node__label">Beta property live</span>
+      </div>
+      <div class="tl-node">
+        <span class="tl-node__date">Dec 4</span>
+        <span class="tl-node__dot"></span>
+        <span class="tl-node__num">02</span>
+        <span class="tl-node__label">Features one-pager + new website</span>
+      </div>
+      <div class="tl-node">
+        <span class="tl-node__date">Jan 15</span>
+        <span class="tl-node__dot"></span>
+        <span class="tl-node__num">03</span>
+        <span class="tl-node__label">Demo webinar</span>
+      </div>
+      <div class="tl-node tl-node--launch">
+        <span class="tl-node__date">Jan 29</span>
+        <span class="tl-node__dot"></span>
+        <span class="tl-node__num">04</span>
+        <span class="tl-node__label">Upgrade launch</span>
+      </div>
+      <div class="tl-node">
+        <span class="tl-node__date">Jan 29+</span>
+        <span class="tl-node__dot"></span>
+        <span class="tl-node__num">05</span>
+        <span class="tl-node__label">Net-new prospecting</span>
+      </div>
+      <div class="tl-node">
+        <span class="tl-node__date">Feb</span>
+        <span class="tl-node__dot"></span>
+        <span class="tl-node__num">06</span>
+        <span class="tl-node__label">Post-launch customer comms</span>
+      </div>
+    </div>
+  </div>
 
-<div class="tl-gantt">
-  <div class="tl-month tl-month--label">Workstream</div>
-  <div class="tl-month tl-month--sep">September</div>
-  <div class="tl-month tl-month--oct">October</div>
-  <div class="tl-month tl-month--nov">November</div>
-  <div class="tl-month tl-month--dec">December</div>
-  <div class="tl-month tl-month--holiday">Closed</div>
-  <div class="tl-month tl-month--jan">January</div>
-
-  <div></div>
-  <div class="tl-week">8</div><div class="tl-week">15</div><div class="tl-week">22</div><div class="tl-week">29</div>
-  <div class="tl-week">6</div><div class="tl-week">13</div><div class="tl-week">20</div><div class="tl-week">27</div>
-  <div class="tl-week">3</div><div class="tl-week">10</div><div class="tl-week">17</div>
-  <div class="tl-week">1</div><div class="tl-week">8</div><div class="tl-week">15</div>
-  <div class="tl-week tl-week--holiday">22</div>
-  <div class="tl-week">5</div><div class="tl-week">12</div><div class="tl-week">19</div><div class="tl-week">26</div>
-
-  <div class="tl-holiday--label">Holiday</div>
-  <div style="grid-column: 2 / 16"></div>
-  <div class="tl-holiday"></div>
-  <div style="grid-column: 17 / 21"></div>
-  <div class="tl-label">Product &amp; Rollout<span class="tl-label__owner">Mike / Ops</span></div>
-  <div class="tl-cell" style="grid-column: 5 / 6"><div class="tl-milestone"><div class="tl-milestone__diamond"></div><div class="tl-milestone__label">Beta</div></div></div>
-  <div class="tl-cell" style="grid-column: 2 / 13"><div class="tl-bar tl-bar--build">Beta testing &amp; fixes (30&ndash;45 days)</div></div>
-  <div class="tl-cell" style="grid-column: 10 / 14"><div class="tl-bar tl-bar--build tl-bar--sub">Rollout decisions</div></div>
-  <div class="tl-cell" style="grid-column: 17 / 21"><div class="tl-bar tl-bar--launch">Customer upgrades</div></div>
-
-  <div class="tl-label">Systems &amp; Infrastructure<span class="tl-label__owner">Jane / Nick</span></div>
-  <div class="tl-cell" style="grid-column: 2 / 11"><div class="tl-bar tl-bar--pre">ActiveCampaign + Salesforce migration</div></div>
-  <div class="tl-cell" style="grid-column: 4 / 13"><div class="tl-bar tl-bar--build tl-bar--sub">Cloudflare + website testing</div></div>
-  <div class="tl-cell" style="grid-column: 10 / 13"><div class="tl-bar tl-bar--build tl-bar--sub">Google Analytics access</div></div>
-
-  <div class="tl-label">Marketing assets<span class="tl-label__owner">Jane</span></div>
-  <div class="tl-cell" style="grid-column: 6 / 14"><div class="tl-bar tl-bar--build">One-pager, upgrade guide, FAQ, IT companion, proof pull, sales deck</div></div>
-  <div class="tl-cell" style="grid-column: 13 / 16"><div class="tl-bar tl-bar--build tl-bar--sub">Webinar content prep</div></div>
-  <div class="tl-cell" style="grid-column: 10 / 17"><div class="tl-bar tl-bar--build tl-bar--sub">Email comms build</div></div>
-  <div class="tl-cell" style="grid-column: 18 / 20"><div class="tl-bar tl-bar--build tl-bar--sub">Highlight reel (from webinar)</div></div>
-
-  <div class="tl-label">Channels<span class="tl-label__owner">Jane</span></div>
-  <div class="tl-cell" style="grid-column: 2 / 14"><div class="tl-bar tl-bar--build" style="opacity: 0.5;">Website rebuild</div></div>
-  <div class="tl-cell" style="grid-column: 13 / 14"><div class="tl-milestone"><div class="tl-milestone__diamond"></div><div class="tl-milestone__label">Site live</div></div></div>
-  <div class="tl-cell" style="grid-column: 13 / 14"><div class="tl-milestone"><div class="tl-milestone__diamond"></div><div class="tl-milestone__label">LinkedIn</div></div></div>
-
-  <div class="tl-label">Demo webinar<span class="tl-label__owner">Jane / Mark</span></div>
-  <div class="tl-cell" style="grid-column: 18 / 19"><div class="tl-milestone"><div class="tl-milestone__diamond"></div><div class="tl-milestone__label">Jan 15</div></div></div>
-
-  <div class="tl-label">Customer comms<span class="tl-label__owner">Jane</span></div>
-  <div class="tl-cell" style="grid-column: 13 / 19"><div class="tl-bar tl-bar--pre">Pre-launch emails</div></div>
-  <div class="tl-cell" style="grid-column: 20 / 21"><div class="tl-bar tl-bar--launch">Launch + upgrade follow-ups</div></div>
-  <div class="tl-cell" style="grid-column: 21 / 21"><div class="tl-bar tl-bar--post">Post-launch</div></div>
-
-  <div class="tl-label">Prospect comms<span class="tl-label__owner">Jane / Mark</span></div>
-  <div class="tl-cell" style="grid-column: 13 / 19"><div class="tl-bar tl-bar--pre">Warm pre-launch</div></div>
-  <div class="tl-cell" style="grid-column: 20 / 21"><div class="tl-bar tl-bar--launch">Warm launch + net-new acquisition</div></div>
-  <div class="tl-cell" style="grid-column: 21 / 21"><div class="tl-bar tl-bar--post">Prospect Pulse (monthly)</div></div>
-
-</div>
-<div class="tl-legend">
-  <div class="tl-legend__item"><div class="tl-legend__swatch" style="background: var(--mint-dark);"></div>Pre-launch activity</div>
-  <div class="tl-legend__item"><div class="tl-legend__swatch" style="background: rgba(43,158,128,0.55);"></div>Build / production</div>
-  <div class="tl-legend__item"><div class="tl-legend__swatch" style="background: var(--navy-deep);"></div>Launch window</div>
-  <div class="tl-legend__item"><div class="tl-legend__swatch" style="background: rgba(43,158,128,0.35);"></div>Post-launch</div>
-  <div class="tl-legend__item"><div class="tl-legend__diamond"></div>Milestone</div>
-</div>
-
-<div class="tl-notes">
-  <h2 class="tl-notes__title">Dependencies &amp; critical dates</h2>
-  <ul class="tl-notes__list">
-    <li class="tl-notes__item"><strong>Beta live (Sep 30):</strong> Everything downstream depends on this. 30&ndash;45 days of testing and fixing before the product is ready for other customers.</li>
-    <li class="tl-notes__item"><strong>Rollout decisions by Dec 1:</strong> Mike and Ops must determine eligibility, timing, sequencing, and customer actions. These feed the What&rsquo;s New one-pager and the customer FAQ &mdash; Marketing cannot finalize either without them.</li>
-    <li class="tl-notes__item"><strong>ActiveCampaign upgrade by Nov 3:</strong> Salesforce migration, pipeline stages, and workflow practice must be complete before any pre-launch emails are sent.</li>
-    <li class="tl-notes__item"><strong>One-pager + website (Dec 4):</strong> First public-facing communication. Kicks off the pre-launch email sequence. Cloudflare setup with Nick is the prerequisite for the website.</li>
-    <li class="tl-notes__item"><strong>Holiday closure (Dec 22 &ndash; Jan 2):</strong> LUCI is closed. Pre-launch emails pause naturally &mdash; last email Dec 18, first email back Jan 5.</li>
-    <li class="tl-notes__item"><strong>Demo webinar (Jan 15):</strong> Customers and select warm prospects. Feature highlight reel produced from the recording.</li>
-    <li class="tl-notes__item"><strong>Upgrade launch (Jan 29):</strong> Customer launch announcement goes out. Upgrade method (priority list or self-schedule) is TBD pending Mike&rsquo;s decision.</li>
-  </ul>
-</div>
-
+  <div class="tl-months">
+    <span class="tl-month">September</span>
+    <span class="tl-month">October</span>
+    <span class="tl-month">November</span>
+    <span class="tl-month">December</span>
+    <span class="tl-month">January</span>
+    <span class="tl-month">February</span>
+  </div>
 </body>
 </html>
