@@ -645,6 +645,26 @@
 
 .slide--light .lp-ind { border-top-color: var(--mint-dark); }
 
+/* Stretch modifier — the grid fills the body height and each column
+   distributes its content: number at the top, description at the
+   bottom. Use when the columns are the whole slide and short copy
+   would otherwise cluster in the middle. */
+.lp-inds--stretch {
+  align-self: stretch;
+}
+
+.lp-inds--stretch .lp-ind {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 24px;
+}
+
+.lp-inds--stretch .lp-ind__n {
+  font-size: 52px;
+  line-height: 1.02;
+}
+
 .lp-ind__n {
   font-family: var(--font);
   font-weight: 700;
@@ -1288,9 +1308,9 @@
 
 .lp-frame {
   border-left: 3px solid var(--mint-dark);
-  padding: 16px 20px;
+  padding: 12px 20px;
   background: rgba(43, 158, 128, 0.045);
-  margin-bottom: 32px;
+  margin-bottom: 24px;
   max-width: 72ch;
 }
 
