@@ -72,7 +72,6 @@ Use the authoritative true-before sportsbook images:
 
 Then establish the old display system:
 
-- `The existing space relied on legacy projector technology.`
 - `The renovation removed more than 20 legacy projectors.`
 - `The 20+ projectors were specifically part of the old sportsbook wall system.`
 
