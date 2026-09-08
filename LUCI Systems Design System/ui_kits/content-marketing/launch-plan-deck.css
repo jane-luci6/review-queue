@@ -447,6 +447,21 @@
   width: 100%;
 }
 
+/* Fill modifier — the rail owns the body height. Use when the rail IS
+   the slide; a three-stop rail left to its natural height clusters at
+   the top.
+
+   The stops grow rather than the gaps: .lp-stop::before draws the
+   connector down to -32px, so spacing the stops apart with
+   space-between would strand each line short of the next node. */
+.lp-rail--fill {
+  align-self: stretch;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.lp-rail--fill .lp-stop { flex: 1 1 0; }
+
 .lp-stop {
   position: relative;
   padding-left: 28px;
@@ -1060,10 +1075,7 @@
   list-style: none;
   margin: 12px 0 0;
   padding: 0;
-  border-top: 1px solid rgba(43, 158, 128, 0.18);
 }
-
-.slide--dark .lp-flow__emails { border-top-color: rgba(104, 227, 190, 0.18); }
 
 .lp-flow__email-row {
   padding: 8px 0;
@@ -1071,6 +1083,10 @@
 }
 
 .slide--dark .lp-flow__email-row { border-bottom-color: rgba(235, 245, 248, 0.08); }
+
+/* The separators sit BETWEEN emails; a rule under the last one dangles
+   off the bottom of the list with nothing beneath it. */
+.lp-flow__email-row:last-child { border-bottom: 0; }
 
 .lp-flow__email {
   display: block;
@@ -1186,13 +1202,6 @@
   display: block;
   margin-top: 0;
   font-size: 13px;
-}
-
-/* Email list below the box — lighter, no top border */
-.lp-flow__emails {
-  margin-top: 12px;
-  padding-top: 0;
-  border-top: 0;
 }
 
 
