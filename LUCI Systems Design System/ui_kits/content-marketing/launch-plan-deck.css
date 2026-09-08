@@ -1310,6 +1310,24 @@
   margin: 0;
 }
 
+.lp-frame__label {
+  display: block;
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mint-dark);
+  margin: 0 0 10px;
+}
+
+/* The campaign message itself, not commentary about it — set a step
+   up so it reads as the line every asset is built to carry. */
+.lp-frame--message p {
+  font-size: 18.5px;
+  line-height: 1.5;
+}
+
 .lp-frame em {
   font-style: normal;
   font-weight: 600;
