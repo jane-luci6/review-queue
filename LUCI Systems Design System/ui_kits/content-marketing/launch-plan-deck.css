@@ -890,6 +890,7 @@
   row-gap: 0;
   width: 100%;
   align-self: center;
+  margin-top: 6px;
 }
 
 /* Phase header row */
@@ -1155,4 +1156,21 @@
   margin-top: 14px;
   padding-top: 0;
   border-top: 0;
+}
+
+
+/* Mirror note — small line at the bottom of a flow card */
+.lp-flow__mirror {
+  font-family: var(--font-body);
+  font-size: 11px;
+  line-height: 1.3;
+  color: var(--navy-muted);
+  margin-top: 12px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(43, 158, 128, 0.12);
+}
+
+.slide--dark .lp-flow__mirror {
+  color: rgba(235, 245, 248, 0.5);
+  border-top-color: rgba(235, 245, 248, 0.1);
 }
