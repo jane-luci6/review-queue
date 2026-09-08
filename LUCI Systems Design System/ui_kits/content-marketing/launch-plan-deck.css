@@ -1005,3 +1005,98 @@
 }
 
 .slide--dark .lp-flow__arrow::after { border-left-color: var(--mint); }
+
+
+/* Email list inside a flow card — the emails that belong to this
+   phase, each with its timing. Replaces the separate detail slide. */
+
+.lp-flow__emails {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  border-top: 1px solid rgba(43, 158, 128, 0.18);
+}
+
+.slide--dark .lp-flow__emails { border-top-color: rgba(104, 227, 190, 0.18); }
+
+.lp-flow__email-row {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(43, 158, 128, 0.1);
+}
+
+.slide--dark .lp-flow__email-row { border-bottom-color: rgba(235, 245, 248, 0.08); }
+
+.lp-flow__email {
+  display: block;
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1.3;
+  color: var(--ink-strong);
+}
+
+.slide--dark .lp-flow__email { color: #FFFFFF; }
+
+.lp-flow__when {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(--navy-muted);
+  margin-top: 2px;
+}
+
+.slide--dark .lp-flow__when { color: rgba(235, 245, 248, 0.62); }
+
+/* Purpose line under the cycle name */
+.lp-flow__purpose {
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--navy-muted);
+  margin: 0 0 4px;
+}
+
+.slide--dark .lp-flow__purpose { color: rgba(235, 245, 248, 0.62); }
+
+/* Assets strip at the bottom of a flow slide */
+.lp-flow__assets {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule-light);
+}
+
+.slide--dark .lp-flow__assets { border-top-color: rgba(235, 245, 248, 0.12); }
+
+.lp-flow__assets-label {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mint-dark);
+}
+
+.slide--dark .lp-flow__assets-label { color: var(--mint); }
+
+.lp-flow__asset {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--navy-muted);
+}
+
+.slide--dark .lp-flow__asset { color: rgba(235, 245, 248, 0.7); }
+
+.lp-flow__asset::after {
+  content: '\00b7';
+  margin-left: 18px;
+  color: var(--mint-dark);
+}
+
+.slide--dark .lp-flow__asset::after { color: var(--mint); }
+
+.lp-flow__asset:last-child::after { content: ''; }
