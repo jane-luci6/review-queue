@@ -1559,8 +1559,38 @@
 
 .lp-feat-grid--pri .lp-feat {
   border-top: 2px solid var(--mint-dark);
-  padding-top: 14px;
+  padding-top: 16px;
 }
 
-.lp-feat-grid--sec .lp-feat__n { font-size: 15px; }
-.lp-feat-grid--sec .lp-feat__d { font-size: 12.5px; }
+/* Primary names carry the slide, so they are set at headline scale
+   and the supporting line stays to a single short phrase. */
+.lp-feat-grid--pri .lp-feat__n { font-size: 20px; line-height: 1.2; }
+.lp-feat-grid--pri .lp-feat__d { font-size: 14px; margin-top: 8px; }
+
+/* Secondary is a name list, nothing more — these only need to be
+   named, and descriptions here are what made the slide unscannable. */
+.lp-feat-grid--sec {
+  gap: 14px 34px;
+}
+
+.lp-feat-grid--sec .lp-feat {
+  position: relative;
+  padding-left: 17px;
+}
+
+.lp-feat-grid--sec .lp-feat::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--mint-dark);
+}
+
+.lp-feat-grid--sec .lp-feat__n {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--navy-muted);
+}
