@@ -773,13 +773,20 @@
 
 .slide--light .lp-asks--row .lp-ask { border-top-color: var(--mint-dark); }
 
+/* Sized for four columns. At 64px/24px the longest column ran into
+   the footer once a fourth ask was added. */
 .lp-asks--row .lp-ask__num {
-  font-size: 64px;
+  font-size: 52px;
   line-height: 1;
 }
 
 .lp-asks--row .lp-ask__h {
-  font-size: 24px;
+  font-size: 21px;
+}
+
+.lp-asks--row .lp-ask__d {
+  font-size: 15px;
+  line-height: 1.5;
 }
 
 
