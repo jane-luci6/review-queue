@@ -73,6 +73,14 @@
 @media screen and (max-width:  700px) { body { zoom: 0.44; } }
 
 .s-head { margin-bottom: 34px; }
+.s-deck {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--navy-muted);
+  margin-top: 10px;
+}
+.slide--dark .s-deck { color: rgba(235, 245, 248, 0.62); }
 .s-title { font-size: 42px; }
 
 /* .s-foot is absolutely positioned at bottom:36px. Body copy must
@@ -888,14 +896,14 @@
 .lp-flow__phase {
   font-family: var(--font);
   font-weight: 700;
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--mint);
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  color: var(--ink-strong);
   margin: 0 0 12px;
 }
 
-.slide--light .lp-flow__phase { color: var(--mint-dark); }
+.slide--dark .lp-flow__phase { color: #FFFFFF; }
 
 .lp-flow__rule {
   grid-column: 1 / -1;
