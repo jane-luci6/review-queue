@@ -35,7 +35,7 @@
 
 .slide {
   --pad: 64px;
-  padding: 58px var(--pad);
+  padding: 56px var(--pad);
 }
 
 
@@ -72,13 +72,13 @@
 @media screen and (max-width:  800px) { body { zoom: 0.51; } }
 @media screen and (max-width:  700px) { body { zoom: 0.44; } }
 
-.s-head { margin-bottom: 34px; }
+.s-head { margin-bottom: 32px; }
 .s-deck {
   font-family: var(--font-body);
   font-size: 15px;
   line-height: 1.5;
   color: var(--navy-muted);
-  margin-top: 10px;
+  margin-top: 8px;
   /* The title above is deliberately narrow; the deck line is not.
      Without this it inherits the title measure and orphans a word. */
   max-width: 64ch;
@@ -88,7 +88,7 @@
 
 /* .s-foot is absolutely positioned at bottom:36px. Body copy must
    clear it or the last line collides with the page number. */
-.s-body { padding-bottom: 30px; }
+.s-body { padding-bottom: 28px; }
 
 /* Light-surface kicker: plain deep-mint text. The navy chip from
    sales-deck.css reads as a stray pill in this deck — override it. */
@@ -118,7 +118,7 @@
      </footer>
    </section>                                                   */
 
-.lp-cover { justify-content: space-between; padding-bottom: 50px; }
+.lp-cover { justify-content: space-between; padding-bottom: 48px; }
 
 .lp-cover__frame {
   flex: 1 1 auto;
@@ -132,7 +132,7 @@
   height: 52px;
   width: auto;
   align-self: flex-start;
-  margin-bottom: 46px;
+  margin-bottom: 48px;
 }
 
 .lp-cover__eyebrow {
@@ -142,7 +142,7 @@
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--mint);
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .lp-cover__title {
@@ -160,9 +160,9 @@
   display: block;
   width: 56px;
   height: 4px;
-  background: var(--gold);
+  background: var(--mint);
   border: 0;
-  margin: 26px 0 0;
+  margin: 24px 0 0;
 }
 
 .lp-cover__deck {
@@ -171,7 +171,7 @@
   line-height: 1.55;
   color: rgba(235, 245, 248, 0.80);
   max-width: 52ch;
-  margin-top: 26px;
+  margin-top: 24px;
 }
 
 .lp-cover__footer {
@@ -180,7 +180,7 @@
   justify-content: space-between;
   align-items: baseline;
   gap: 24px;
-  padding-top: 26px;
+  padding-top: 24px;
   border-top: 1px solid rgba(235, 245, 248, 0.12);
 }
 
@@ -215,7 +215,7 @@
   font-size: 15px;
   letter-spacing: 0.22em;
   color: var(--mint);
-  margin-bottom: 22px;
+  margin-bottom: 20px;
 }
 
 .lp-divider__title {
@@ -286,7 +286,7 @@
 }
 
 .lp-matrix__head {
-  padding-bottom: 13px;
+  padding-bottom: 12px;
   border-bottom: 1px solid rgba(235, 245, 248, 0.20);
 }
 
@@ -306,7 +306,7 @@
 .lp-row {
   flex: 1 1 0;
   align-items: center;
-  padding: 22px 0;
+  padding: 20px 0;
   border-bottom: 1px solid rgba(235, 245, 248, 0.10);
 }
 
@@ -318,7 +318,7 @@
 .lp-who {
   display: flex;
   align-items: baseline;
-  gap: 13px;
+  gap: 12px;
 }
 
 .lp-who__num {
@@ -351,7 +351,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 7px;
+  gap: 8px;
 }
 
 .lp-seq__stage {
@@ -379,13 +379,13 @@
 .lp-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px 0;
+  gap: 4px 0;
 }
 
 .lp-item {
   display: inline-flex;
   align-items: baseline;
-  gap: 9px;
+  gap: 8px;
   margin-right: 20px;
   font-family: var(--font-body);
   font-size: 15px;
@@ -412,7 +412,7 @@
 .lp-list--stack {
   flex-direction: column;
   align-items: flex-start;
-  gap: 10px;
+  gap: 8px;
 }
 
 .lp-list--stack .lp-item { margin-right: 0; }
@@ -443,13 +443,13 @@
 .lp-rail {
   display: flex;
   flex-direction: column;
-  gap: 34px;
+  gap: 32px;
   width: 100%;
 }
 
 .lp-stop {
   position: relative;
-  padding-left: 30px;
+  padding-left: 28px;
 }
 
 /* connector — runs from this node down into the next stop */
@@ -484,7 +484,7 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .lp-stop__label {
@@ -517,7 +517,7 @@
   --lp-defw: 116px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 .lp-def {
@@ -539,7 +539,7 @@
 
 .lp-def__d {
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: 17px;
   line-height: 1.5;
   color: rgba(235, 245, 248, 0.76);
 }
@@ -572,7 +572,7 @@
 
 .lp-anchor {
   border-left: 4px solid var(--mint);
-  padding: 4px 0 4px 26px;
+  padding: 4px 0 4px 24px;
 }
 
 .slide--light .lp-anchor { border-left-color: var(--mint-dark); }
@@ -593,7 +593,7 @@
   font-size: 17px;
   line-height: 1.55;
   color: rgba(235, 245, 248, 0.78);
-  margin-top: 14px;
+  margin-top: 12px;
 }
 
 .slide--light .lp-anchor__copy { color: var(--navy-muted); }
@@ -640,7 +640,7 @@
 
 .lp-ind {
   border-top: 3px solid var(--mint);
-  padding-top: 22px;
+  padding-top: 20px;
 }
 
 .slide--light .lp-ind { border-top-color: var(--mint-dark); }
@@ -663,17 +663,17 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--mint);
-  margin-top: 18px;
+  margin-top: 16px;
 }
 
 .slide--light .lp-ind__l { color: var(--mint-dark); }
 
 .lp-ind__d {
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: 17px;
   line-height: 1.5;
   color: rgba(235, 245, 248, 0.72);
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
 .slide--light .lp-ind__d { color: var(--navy-muted); }
@@ -698,7 +698,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 34px;
+  gap: 32px;
   width: 100%;
   align-self: stretch;
 }
@@ -725,6 +725,7 @@
 }
 
 .slide--light .lp-ask__num { color: var(--mint-dark); }
+.slide--light .lp-asks--row .lp-ask__num { color: var(--gold-deep); }
 
 .lp-ask__h {
   font-family: var(--font);
@@ -774,10 +775,16 @@
 .slide--light .lp-asks--row .lp-ask { border-top-color: var(--mint-dark); }
 
 /* Sized for four columns. At 64px/24px the longest column ran into
-   the footer once a fourth ask was added. */
+   the footer once a fourth ask was added.
+
+   Gold, not mint: this is the deck's secondary accent doing watermark
+   duty. The mint top rule above still carries the structure, and the
+   ordinal is decoration - the heading beneath it holds the meaning -
+   so gold-deep's low contrast on off-white is the intent, not a miss. */
 .lp-asks--row .lp-ask__num {
   font-size: 52px;
   line-height: 1;
+  color: var(--gold-deep);
 }
 
 .lp-asks--row .lp-ask__h {
@@ -824,7 +831,7 @@
   line-height: 1.55;
   color: rgba(235, 245, 248, 0.78);
   max-width: 56ch;
-  margin-top: 26px;
+  margin-top: 24px;
 }
 
 .slide--light .lp-statement__d { color: var(--navy-muted); }
@@ -853,8 +860,8 @@
   font-size: 13px;
   line-height: 1.45;
   color: rgba(235, 245, 248, 0.58);
-  padding-top: 14px;
-  margin-top: 18px;
+  padding-top: 12px;
+  margin-top: 16px;
   border-top: 1px solid rgba(235, 245, 248, 0.12);
 }
 
@@ -896,11 +903,11 @@
 .lp-flow {
   display: grid;
   grid-template-columns: 1fr 30px 1fr 30px 1fr;
-  column-gap: 14px;
+  column-gap: 12px;
   row-gap: 0;
   width: 100%;
   align-self: center;
-  margin-top: 6px;
+  margin-top: 4px;
 }
 
 /* Phase header row */
@@ -920,7 +927,7 @@
   grid-column: 1 / -1;
   border: 0;
   border-top: 1px solid rgba(235, 245, 248, 0.12);
-  margin: 0 0 22px;
+  margin: 0 0 20px;
 }
 
 .slide--light .lp-flow__rule { border-top-color: var(--rule-light); }
@@ -929,9 +936,9 @@
 .lp-flow__step {
   box-sizing: border-box;
   border-radius: 12px;
-  padding: 16px 20px 18px;
-  background: #F5F8FA;
-  border: 1px solid #DBE1E4;
+  padding: 16px 20px 16px;
+  background: var(--off-white);
+  border: 1px solid var(--rule-light);
 }
 
 .slide--dark .lp-flow__step {
@@ -951,7 +958,7 @@
 
 .lp-flow__step--open {
   background: #FFFFFF;
-  border: 1px dashed #DBE1E4;
+  border: 1px dashed var(--rule-light);
 }
 
 .slide--dark .lp-flow__step--open {
@@ -1031,7 +1038,7 @@
 
 .lp-flow__emails {
   list-style: none;
-  margin: 14px 0 0;
+  margin: 12px 0 0;
   padding: 0;
   border-top: 1px solid rgba(43, 158, 128, 0.18);
 }
@@ -1083,7 +1090,7 @@
   display: flex;
   align-items: baseline;
   flex-wrap: wrap;
-  gap: 6px 18px;
+  gap: 4px 16px;
   margin-top: 24px;
   padding-top: 16px;
   border-top: 1px solid var(--rule-light);
@@ -1112,7 +1119,7 @@
 
 .lp-flow__asset::after {
   content: '\00b7';
-  margin-left: 18px;
+  margin-left: 16px;
   color: var(--mint-dark);
 }
 
@@ -1133,7 +1140,7 @@
   border-radius: 999px;
   background: rgba(43, 158, 128, 0.12);
   font-family: var(--font);
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 700;
   color: var(--mint-dark);
 }
@@ -1147,7 +1154,7 @@
 .lp-flow__emails .lp-flow__email-row {
   display: flex;
   align-items: baseline;
-  gap: 10px;
+  gap: 8px;
 }
 
 .lp-flow__emails .lp-flow__email {
@@ -1158,32 +1165,17 @@
 .lp-flow__emails .lp-flow__when {
   display: block;
   margin-top: 0;
-  font-size: 12.5px;
+  font-size: 13px;
 }
 
 /* Email list below the box — lighter, no top border */
 .lp-flow__emails {
-  margin-top: 14px;
+  margin-top: 12px;
   padding-top: 0;
   border-top: 0;
 }
 
 
-/* Mirror note — small line at the bottom of a flow card */
-.lp-flow__mirror {
-  font-family: var(--font-body);
-  font-size: 11px;
-  line-height: 1.3;
-  color: var(--navy-muted);
-  margin-top: 12px;
-  padding-top: 8px;
-  border-top: 1px solid rgba(43, 158, 128, 0.12);
-}
-
-.slide--dark .lp-flow__mirror {
-  color: rgba(235, 245, 248, 0.5);
-  border-top-color: rgba(235, 245, 248, 0.1);
-}
 
 
 /* ═══ 12 · FLOWX — 6-box response flow (boxes and arrows) ══════
@@ -1212,10 +1204,10 @@
 
 .lp-flowx__box {
   box-sizing: border-box;
-  border-radius: 8px;
-  padding: 18px 12px;
-  border: 1px solid #DBE1E4;
-  background: #F5F8FA;
+  border-radius: 12px;
+  padding: 16px 12px;
+  border: 1px solid var(--rule-light);
+  background: var(--off-white);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1229,13 +1221,13 @@
 }
 
 .lp-flowx__box--sales {
-  background: #0A161C;
-  border-color: #0A161C;
+  background: var(--navy-deep);
+  border-color: var(--navy-deep);
 }
 
 .lp-flowx__box--handback {
-  background: #FAF3E0;
-  border-color: #E5D5A8;
+  background: rgba(var(--gold-rgb), 0.16);
+  border-color: rgba(var(--gold-rgb), 0.55);
 }
 
 .lp-flowx__label {
@@ -1251,7 +1243,7 @@
 
 .lp-flowx__val {
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.3;
   color: var(--ink-strong);
 }
@@ -1260,7 +1252,7 @@
 
 .lp-flowx__sub {
   font-family: var(--font-body);
-  font-size: 11px;
+  font-size: 13px;
   line-height: 1.25;
   color: var(--navy-muted);
 }
@@ -1296,7 +1288,7 @@
 
 .lp-frame {
   border-left: 3px solid var(--mint-dark);
-  padding: 16px 22px;
+  padding: 16px 20px;
   background: rgba(43, 158, 128, 0.045);
   margin-bottom: 32px;
   max-width: 72ch;
@@ -1304,7 +1296,7 @@
 
 .lp-frame p {
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: 17px;
   line-height: 1.55;
   color: var(--ink-strong);
   margin: 0;
@@ -1318,13 +1310,13 @@
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--mint-dark);
-  margin: 0 0 10px;
+  margin: 0 0 8px;
 }
 
 /* The campaign message itself, not commentary about it — set a step
    up so it reads as the line every asset is built to carry. */
 .lp-frame--message p {
-  font-size: 18.5px;
+  font-size: 19px;
   line-height: 1.5;
 }
 
@@ -1355,7 +1347,7 @@
   grid-template-columns: 74px 1fr;
   grid-template-rows: 1fr auto 1fr;
   row-gap: 0;
-  column-gap: 14px;
+  column-gap: 12px;
   flex: 1;
   width: 100%;
 }
@@ -1368,8 +1360,8 @@
   display: grid;
   grid-template-columns: var(--swim-cols);
   align-items: stretch;
-  padding: 16px 14px;
-  border-radius: 10px;
+  padding: 16px 12px;
+  border-radius: 12px;
 }
 
 .lp-swim__track--mkt  { background: rgba(43, 158, 128, 0.045); }
@@ -1406,7 +1398,7 @@
   grid-template-columns: var(--swim-cols);
   /* Match the track's side padding so a connector at column N sits
      on the same axis as the box at column N. */
-  padding: 0 14px;
+  padding: 0 12px;
   height: 62px;
   position: relative;
 }
@@ -1456,7 +1448,7 @@
   left: calc(50% + 9px);
   font-family: var(--font);
   font-weight: 700;
-  font-size: 9.5px;
+  font-size: 10px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--mint-dark);
@@ -1484,7 +1476,7 @@
 .lp-assets {
   display: grid;
   grid-template-columns: repeat(var(--lp-asset-cols, 3), 1fr);
-  gap: 30px 44px;
+  gap: 28px 44px;
   width: 100%;
   /* Stretch and distribute so the rows use the full body height
      instead of clustering in the middle of the slide. */
@@ -1495,7 +1487,7 @@
 .lp-asset {
   display: grid;
   grid-template-columns: 64px 1fr;
-  gap: 18px;
+  gap: 16px;
   align-items: start;
 }
 
@@ -1528,10 +1520,10 @@
 
 .lp-asset__d {
   font-family: var(--font-body);
-  font-size: 14.5px;
+  font-size: 15px;
   line-height: 1.45;
   color: var(--navy-muted);
-  margin: 6px 0 0;
+  margin: 4px 0 0;
 }
 
 /* ═══ 15 · FEATS — primary / secondary feature hierarchy ═══════
@@ -1545,7 +1537,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 34px;
+  gap: 32px;
   width: 100%;
   align-self: stretch;
 }
@@ -1553,7 +1545,7 @@
 .lp-feat-grid {
   display: grid;
   grid-template-columns: repeat(var(--lp-feat-cols, 4), 1fr);
-  gap: 20px 34px;
+  gap: 20px 32px;
   margin-top: 20px;
 }
 
@@ -1569,10 +1561,10 @@
 
 .lp-feat__d {
   font-family: var(--font-body);
-  font-size: 13.5px;
+  font-size: 13px;
   line-height: 1.45;
   color: var(--navy-muted);
-  margin: 6px 0 0;
+  margin: 4px 0 0;
 }
 
 .lp-feat-grid--pri .lp-feat {
@@ -1583,17 +1575,17 @@
 /* Primary names carry the slide, so they are set at headline scale
    and the supporting line stays to a single short phrase. */
 .lp-feat-grid--pri .lp-feat__n { font-size: 20px; line-height: 1.2; }
-.lp-feat-grid--pri .lp-feat__d { font-size: 14px; margin-top: 8px; }
+.lp-feat-grid--pri .lp-feat__d { font-size: 15px; margin-top: 8px; }
 
 /* Secondary is a name list, nothing more — these only need to be
    named, and descriptions here are what made the slide unscannable. */
 .lp-feat-grid--sec {
-  gap: 14px 34px;
+  gap: 12px 32px;
 }
 
 .lp-feat-grid--sec .lp-feat {
   position: relative;
-  padding-left: 17px;
+  padding-left: 16px;
 }
 
 .lp-feat-grid--sec .lp-feat::before {
