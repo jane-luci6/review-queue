@@ -1515,3 +1515,52 @@
   color: var(--navy-muted);
   margin: 6px 0 0;
 }
+
+/* ═══ 15 · FEATS — primary / secondary feature hierarchy ═══════
+   Two grids under lp-stop headers. Primary carries a mint top rule
+   and larger type; secondary recedes to plain, smaller type. The
+   rule is what separates "leads the campaign" from "named in
+   supporting materials" — do not give both groups the same weight,
+   the hierarchy IS the content here. */
+
+.lp-feats {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 34px;
+  width: 100%;
+  align-self: stretch;
+}
+
+.lp-feat-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--lp-feat-cols, 4), 1fr);
+  gap: 20px 34px;
+  margin-top: 20px;
+}
+
+.lp-feat__n {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--ink-strong);
+  margin: 0;
+}
+
+.lp-feat__d {
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: var(--navy-muted);
+  margin: 6px 0 0;
+}
+
+.lp-feat-grid--pri .lp-feat {
+  border-top: 2px solid var(--mint-dark);
+  padding-top: 14px;
+}
+
+.lp-feat-grid--sec .lp-feat__n { font-size: 15px; }
+.lp-feat-grid--sec .lp-feat__d { font-size: 12.5px; }
