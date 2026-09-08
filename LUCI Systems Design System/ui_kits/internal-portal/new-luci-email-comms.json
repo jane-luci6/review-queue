@@ -79,6 +79,33 @@
               "cta": "Schedule your upgrade."
             }
           ]
+        },
+        {
+          "name": "Post-upgrade follow-up",
+          "summary": "After a customer goes live on New LUCI, three emails confirm the upgrade, gather feedback and a usable quote, and check in at 30 days.",
+          "emails": [
+            {
+              "number": 1,
+              "name": "New LUCI is Live",
+              "timing": "When the upgrade goes live for this customer",
+              "purpose": "Confirm the upgrade is complete and point to the upgrade guide, FAQ, and IT technical companion.",
+              "cta": "Review your upgrade guide."
+            },
+            {
+              "number": 2,
+              "name": "Feedback request",
+              "timing": "1–2 weeks after go-live",
+              "purpose": "Ask the customer about their experience and request a quote LUCI can use in marketing materials about LUCI in general.",
+              "cta": "Share your feedback."
+            },
+            {
+              "number": 3,
+              "name": "30-day check-in",
+              "timing": "30 days after go-live",
+              "purpose": "Check in on how things are working, surface any issues, and confirm the customer is settled on New LUCI.",
+              "cta": "Let us know how it’s going."
+            }
+          ]
         }
       ]
     },
