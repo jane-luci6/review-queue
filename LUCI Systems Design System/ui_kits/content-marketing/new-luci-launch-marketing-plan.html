@@ -6,7 +6,7 @@
 <title>New LUCI Launch Marketing Plan</title>
 <link rel="stylesheet" href="../../assets/fonts/luci-brand-fonts.css">
 <link rel="stylesheet" href="../sales/sales-deck.css">
-<link rel="stylesheet" href="launch-plan-deck.css?v=10">
+<link rel="stylesheet" href="launch-plan-deck.css?v=13">
 </head>
 <body>
 
@@ -319,65 +319,52 @@
    <div class="lp-col">
     <div class="lp-swim">
 
-      <div class="lp-swim__lane lp-swim__lane--mkt">
-        <span class="lp-swim__label">Marketing</span>
-        <div class="lp-swim__boxes">
-          <div class="lp-flowx__box lp-flowx__box--entry" style="width:130px">
-            <span class="lp-flowx__label">Hand raise</span>
-            <span class="lp-flowx__val">Reply, book, or demo request</span>
-          </div>
-          <span class="lp-flowx__arrow" style="width:22px; align-self:center" aria-hidden="true"></span>
-          <div class="lp-flowx__box" style="width:130px">
-            <span class="lp-flowx__label">Immediate response</span>
-            <span class="lp-flowx__val">Confirm + Calendly</span>
-            <span class="lp-flowx__sub">Sales follows within 1 day</span>
-          </div>
-          <span class="lp-flowx__arrow" style="width:22px; align-self:center" aria-hidden="true"></span>
-          <div class="lp-swim__gap"></div>
-          <span class="lp-flowx__arrow" style="width:22px; align-self:center" aria-hidden="true"></span>
-          <div class="lp-flowx__box lp-flowx__box--handback" style="width:130px">
-            <span class="lp-flowx__label">Explicit handback</span>
-            <span class="lp-flowx__val">After final attempt</span>
-          </div>
-          <span class="lp-flowx__arrow" style="width:22px; align-self:center" aria-hidden="true"></span>
-          <div class="lp-flowx__box" style="width:130px">
-            <span class="lp-flowx__label">Recovery</span>
-            <span class="lp-flowx__val">1&ndash;2 emails</span>
-          </div>
-          <span class="lp-flowx__arrow" style="width:22px; align-self:center" aria-hidden="true"></span>
-          <div class="lp-flowx__box" style="width:130px">
-            <span class="lp-flowx__label">Pulse</span>
-            <span class="lp-flowx__val">If quiet</span>
-          </div>
+      <span class="lp-swim__label">Marketing</span>
+      <div class="lp-swim__track lp-swim__track--mkt">
+        <div class="lp-flowx__box lp-flowx__box--entry" style="grid-column:1">
+          <span class="lp-flowx__label">Hand raise</span>
+          <span class="lp-flowx__val">Reply, book, or demo request</span>
+        </div>
+        <span class="lp-flowx__arrow" style="grid-column:2" aria-hidden="true"></span>
+        <div class="lp-flowx__box" style="grid-column:3">
+          <span class="lp-flowx__label">Immediate response</span>
+          <span class="lp-flowx__val">Confirm + Calendly</span>
+          <span class="lp-flowx__sub">Sales follows within 1 day</span>
+        </div>
+        <div class="lp-flowx__box lp-flowx__box--handback" style="grid-column:9">
+          <span class="lp-flowx__label">Recovery</span>
+          <span class="lp-flowx__val">1&ndash;2 emails</span>
+          <span class="lp-flowx__sub">Marketing owns again</span>
+        </div>
+        <span class="lp-flowx__arrow" style="grid-column:10" aria-hidden="true"></span>
+        <div class="lp-flowx__box" style="grid-column:11">
+          <span class="lp-flowx__label">Pulse</span>
+          <span class="lp-flowx__val">Monthly nurture</span>
+          <span class="lp-flowx__sub">Until they re-engage</span>
         </div>
       </div>
 
-      <div class="lp-swim__connect">
-        <span class="lp-swim__varrow lp-swim__varrow--down" style="flex:0 0 152px"><span>Hand off</span></span>
-        <span class="lp-swim__gap"></span>
-        <span class="lp-swim__varrow lp-swim__varrow--up" style="flex:0 0 152px"><span>Handback</span></span>
+      <div class="lp-swim__connect" style="grid-column:2">
+        <span class="lp-swim__v lp-swim__v--down" style="grid-column:4"><span>Hand off</span></span>
+        <span class="lp-swim__v lp-swim__v--up" style="grid-column:8"><span>If it stalls</span></span>
       </div>
 
-      <div class="lp-swim__lane lp-swim__lane--sales">
-        <span class="lp-swim__label">Sales</span>
-        <div class="lp-swim__boxes">
-          <div class="lp-swim__gap" style="flex:0 0 152px"></div>
-          <div class="lp-flowx__box lp-flowx__box--sales" style="width:130px">
-            <span class="lp-flowx__label">Sales owns</span>
-            <span class="lp-flowx__val">Schedule and demo</span>
-            <span class="lp-flowx__sub">Automation stops</span>
-          </div>
-          <span class="lp-flowx__arrow" style="width:22px; align-self:center" aria-hidden="true"></span>
-          <div class="lp-flowx__box lp-flowx__box--sales" style="width:130px">
-            <span class="lp-flowx__label">Demo</span>
-            <span class="lp-flowx__val">Run the demo</span>
-          </div>
-          <span class="lp-flowx__arrow" style="width:22px; align-self:center" aria-hidden="true"></span>
-          <div class="lp-flowx__box lp-flowx__box--sales" style="width:130px">
-            <span class="lp-flowx__label">Customer</span>
-            <span class="lp-flowx__val">Close or advance</span>
-          </div>
-          <div class="lp-swim__gap" style="flex:1"></div>
+      <span class="lp-swim__label">Sales</span>
+      <div class="lp-swim__track lp-swim__track--sales">
+        <div class="lp-flowx__box lp-flowx__box--sales" style="grid-column:5">
+          <span class="lp-flowx__label">Sales owns</span>
+          <span class="lp-flowx__val">Schedule the demo</span>
+          <span class="lp-flowx__sub">Automation stops</span>
+        </div>
+        <span class="lp-flowx__arrow" style="grid-column:6" aria-hidden="true"></span>
+        <div class="lp-flowx__box lp-flowx__box--sales" style="grid-column:7">
+          <span class="lp-flowx__label">Demo</span>
+          <span class="lp-flowx__val">Run the conversation</span>
+        </div>
+        <span class="lp-flowx__arrow" style="grid-column:8" aria-hidden="true"></span>
+        <div class="lp-flowx__box lp-flowx__box--win" style="grid-column:9">
+          <span class="lp-flowx__label">Customer</span>
+          <span class="lp-flowx__val">Close or advance</span>
         </div>
       </div>
 

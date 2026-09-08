@@ -79,6 +79,9 @@
   line-height: 1.5;
   color: var(--navy-muted);
   margin-top: 10px;
+  /* The title above is deliberately narrow; the deck line is not.
+     Without this it inherits the title measure and orphans a word. */
+  max-width: 64ch;
 }
 .slide--dark .s-deck { color: rgba(235, 245, 248, 0.62); }
 .s-title { font-size: 42px; }
@@ -1275,154 +1278,140 @@
   border-bottom: 5px solid transparent;
 }
 
-.lp-flowx__row {
-  flex: 1 1 0;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 24px;
-}
-
-.lp-flowx__title {
-  font-family: var(--font);
-  font-weight: 700;
-  font-size: 14px;
-  color: var(--ink-strong);
-  margin: 0 0 12px;
-}
-
-.lp-flowx__row .lp-flowx {
-  flex: 1;
-}
 
 
-/* ═══ 13 · SWIM — sales/marketing swim lanes ══════════════════
-   Two horizontal lanes with the flow moving between them.
-   Marketing lane (top) owns entry and fallback. Sales lane
-   (bottom) owns the active conversation. Vertical arrows
-   connect the lanes at the handoff and handback points.
 
-   <div class="lp-swim">
-     <div class="lp-swim__lane lp-swim__lane--mkt">
-       <span class="lp-swim__label">Marketing</span>
-       <div class="lp-swim__boxes">
-         <div class="lp-flowx__box …">…</div>
-         <span class="lp-flowx__arrow"></span>
-         <div class="lp-swim__gap"></div>
-         <div class="lp-flowx__box …">…</div>
-         …
-       </div>
-     </div>
-     <div class="lp-swim__connect">
-       <span class="lp-swim__varrow lp-swim__varrow--down">Hand off</span>
-       <span class="lp-swim__varrow lp-swim__varrow--up">Handback</span>
-     </div>
-     <div class="lp-swim__lane lp-swim__lane--sales">
-       <span class="lp-swim__label">Sales</span>
-       <div class="lp-swim__boxes">
-         <div class="lp-swim__gap"></div>
-         <div class="lp-flowx__box …">…</div>
-         …
-       </div>
-     </div>
-   </div> */
+/* ═══ 13 · SWIM — Marketing / Sales lanes ══════════════════════
+   Three stacked tracks that share ONE column template, so a box
+   in the Sales lane sits exactly under the gap it fills in the
+   Marketing lane and the vertical connectors land on the boxes
+   they actually join.
+
+   Rows:  Marketing track · connector strip · Sales track
+   Cols:  odd = box, even = gutter (26px arrows, 46px connectors)
+
+   The flow forks at the Demo box: it either continues right in
+   the Sales lane to Customer, or rises back into Marketing for
+   Recovery. Both destinations share column 9, one per lane, so
+   the fork reads as a real branch instead of a linear chain. */
 
 .lp-swim {
-  display: flex;
-  flex-direction: column;
+  --swim-cols: 1fr 26px 1fr 46px 1fr 26px 1fr 46px 1fr 26px 1fr;
+  display: grid;
+  grid-template-columns: 74px 1fr;
+  grid-template-rows: 1fr auto 1fr;
+  row-gap: 0;
+  column-gap: 14px;
   flex: 1;
   width: 100%;
 }
 
-.lp-swim__lane {
-  display: flex;
+/* The lane band. A wash this faint is not decoration — without it
+   the long empty stretch where Sales owns the conversation reads
+   as a layout error rather than as "nothing happens in Marketing
+   here", which is the whole point of a swim lane. */
+.lp-swim__track {
+  display: grid;
+  grid-template-columns: var(--swim-cols);
   align-items: stretch;
-  flex: 1;
-  gap: 12px;
+  padding: 16px 14px;
+  border-radius: 10px;
 }
 
+.lp-swim__track--mkt  { background: rgba(43, 158, 128, 0.045); }
+.lp-swim__track--sales { background: rgba(10, 22, 28, 0.045); }
+
 .lp-swim__label {
-  flex: 0 0 72px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   font-family: var(--font);
   font-weight: 700;
-  font-size: 10px;
-  letter-spacing: 0.18em;
+  font-size: 11px;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--mint-dark);
-  border-right: 1px solid var(--rule-light);
-  padding-right: 10px;
+  text-align: right;
 }
 
-.lp-swim__boxes {
-  flex: 1;
-  display: flex;
-  align-items: stretch;
-  gap: 4px;
+/* Hairline between the two lanes, run full width */
+.lp-swim__rule {
+  grid-column: 1 / -1;
+  border: 0;
+  border-top: 1px solid var(--rule-light);
+  margin: 0;
 }
 
-.lp-swim__gap {
-  flex: 1;
-}
+/* ── Connector strip ─────────────────────────────────────────
+   Same 11 columns as the tracks. A connector placed at column N
+   is vertically centred on the gutter between the boxes it
+   joins, so the arrowhead lands on the right lane. */
 
-/* Vertical connector zone between the two lanes */
 .lp-swim__connect {
-  display: flex;
-  height: 36px;
-  margin-left: 84px; /* align with boxes, past label */
-  gap: 4px;
+  display: grid;
+  grid-template-columns: var(--swim-cols);
+  /* Match the track's side padding so a connector at column N sits
+     on the same axis as the box at column N. */
+  padding: 0 14px;
+  height: 62px;
+  position: relative;
 }
 
-.lp-swim__varrow {
+.lp-swim__v {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.lp-swim__v::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: var(--mint-dark);
+  transform: translateX(-50%);
+}
+
+.lp-swim__v--down::after,
+.lp-swim__v--up::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+}
+
+.lp-swim__v--down::after {
+  bottom: 0;
+  border-top: 7px solid var(--mint-dark);
+}
+
+.lp-swim__v--up::after {
+  top: 0;
+  border-bottom: 7px solid var(--mint-dark);
+}
+
+/* Label sits BESIDE the line, not knocked out of it — the slide
+   carries a gradient, so a solid knockout would show its seam. */
+.lp-swim__v span {
+  position: absolute;
+  left: calc(50% + 9px);
   font-family: var(--font);
   font-weight: 700;
-  font-size: 9px;
-  letter-spacing: 0.12em;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--mint-dark);
   white-space: nowrap;
 }
 
-.lp-swim__varrow::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  width: 2px;
-  height: 100%;
-  background: var(--mint-dark);
-  transform: translateX(-50%);
-}
-
-.lp-swim__varrow--down::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-top: 7px solid var(--mint-dark);
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-}
-
-.lp-swim__varrow--up::after {
-  content: '';
-  position: absolute;
-  top: -1px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-bottom: 7px solid var(--mint-dark);
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-}
-
-.lp-swim__varrow span {
-  background: #F5F8FA;
-  padding: 0 6px;
-  position: relative;
-  z-index: 1;
+/* Terminal box — the successful end of the Sales lane */
+.lp-flowx__box--win {
+  background: #E6F5EF;
+  border-color: #2b9e80;
+  border-width: 2px;
 }
