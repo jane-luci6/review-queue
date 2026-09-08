@@ -1174,3 +1174,112 @@
   color: rgba(235, 245, 248, 0.5);
   border-top-color: rgba(235, 245, 248, 0.1);
 }
+
+
+/* ═══ 12 · FLOWX — 6-box response flow (boxes and arrows) ══════
+   Two rows of 6 flat-fill boxes joined by mint arrows, matching
+   the IMP response-handling screenshot. Each box has a small
+   mint label and a value line; optional sub line for detail.
+
+   Grid: 6 boxes + 5 arrow gutters = 11 columns.
+
+   <div class="lp-flowx">
+     <div class="lp-flowx__box lp-flowx__box--entry" style="grid-column:1">
+       <span class="lp-flowx__label">Hand raise</span>
+       <span class="lp-flowx__val">Reply or book</span>
+     </div>
+     <span class="lp-flowx__arrow" style="grid-column:2"></span>
+     …
+   </div> */
+
+.lp-flowx {
+  display: grid;
+  grid-template-columns: 1fr 22px 1fr 22px 1fr 22px 1fr 22px 1fr 22px 1fr;
+  column-gap: 4px;
+  align-items: stretch;
+  width: 100%;
+}
+
+.lp-flowx__box {
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: 12px 10px;
+  border: 1px solid #DBE1E4;
+  background: #F5F8FA;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.lp-flowx__box--entry {
+  background: #E6F5EF;
+  border-color: #A9DCCA;
+}
+
+.lp-flowx__box--sales {
+  background: #0A161C;
+  border-color: #0A161C;
+}
+
+.lp-flowx__box--handback {
+  background: #FAF3E0;
+  border-color: #E5D5A8;
+}
+
+.lp-flowx__label {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mint-dark);
+}
+
+.lp-flowx__box--sales .lp-flowx__label { color: var(--mint); }
+
+.lp-flowx__val {
+  font-family: var(--font-body);
+  font-size: 11.5px;
+  line-height: 1.3;
+  color: var(--ink-strong);
+}
+
+.lp-flowx__box--sales .lp-flowx__val { color: #FFFFFF; }
+
+.lp-flowx__sub {
+  font-family: var(--font-body);
+  font-size: 10px;
+  line-height: 1.25;
+  color: var(--navy-muted);
+}
+
+.lp-flowx__box--sales .lp-flowx__sub { color: rgba(235, 245, 248, 0.6); }
+
+.lp-flowx__arrow {
+  align-self: center;
+  position: relative;
+  height: 2px;
+  background: var(--mint-dark);
+}
+
+.lp-flowx__arrow::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-left: 7px solid var(--mint-dark);
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+}
+
+.lp-flowx__row { margin-bottom: 20px; }
+
+.lp-flowx__title {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--ink-strong);
+  margin: 0 0 10px;
+}
