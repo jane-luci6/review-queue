@@ -1451,3 +1451,67 @@
   border-color: #2b9e80;
   border-width: 2px;
 }
+
+/* ═══ 14 · ASSETS — soft-icon tile grid ════════════════════════
+   The house icon-led pattern (modern-design-guidelines §5.1) for a
+   grid where the items themselves are the content, not the
+   categories they group under. Light canvas only — the tile
+   gradient and duotone icons assume it.
+
+   Tile: 54px, 16px radius, soft mint gradient, inset mint hairline.
+   Icon: duotone — mint strokes with ONE gold accent element. Each
+   glyph must be visually distinct; near-identical shapes defeat the
+   point of iconising the list at all. */
+
+.lp-assets {
+  display: grid;
+  grid-template-columns: repeat(var(--lp-asset-cols, 3), 1fr);
+  gap: 30px 44px;
+  width: 100%;
+  /* Stretch and distribute so the rows use the full body height
+     instead of clustering in the middle of the slide. */
+  align-self: stretch;
+  align-content: space-evenly;
+}
+
+.lp-asset {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.lp-asset__tile {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  background: linear-gradient(155deg, #E6F5EF 0%, #F3FAF8 100%);
+  box-shadow: inset 0 0 0 1px rgba(43, 158, 128, 0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lp-asset__tile svg {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+
+.lp-asset__n {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--ink-strong);
+  margin: 0;
+}
+
+.lp-asset__d {
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  line-height: 1.45;
+  color: var(--navy-muted);
+  margin: 6px 0 0;
+}
