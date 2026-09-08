@@ -1,0 +1,90 @@
+{
+  "updated": "2026-09-03",
+  "title": "New LUCI Launch Campaign",
+  "objective": "Launch the new LUCI publicly, drive customer upgrades, re-engage warm leads, and generate net-new demand.",
+  "campaignIdea": "Upgrade Message: The LUCI that gave you full property control now also gives you increased operational precision",
+  "lede": "One coordinated launch with three audience paths.",
+  "resources": [
+    { "label": "Launch timeline", "href": "new-luci-launch-timeline.html" }
+  ],
+  "channels": [
+    { "name": "Website (updated)", "role": "The LUCI story, new capabilities, proof, search, and a path to a demo. The primary surface for customers and for new leads arriving from any channel." },
+    { "name": "LinkedIn (organic)", "role": "Launch announcements and capability posts. Reaches customers and prospects already aware of LUCI; supports every audience path." },
+    { "name": "Email", "role": "Direct outreach across every audience path: customer announcements, warm-lead re-engagement series, and inbound demo response." },
+    { "name": "Newsletter (The Signal)", "role": "Ongoing nurture that keeps LUCI present with customers and warm leads between launches; doubles as the warm-lead nurture track." },
+    { "name": "Demo seminar / webinar", "role": "A planned launch event. Operators and IT walk the new LUCI. Date, platform, and speaker TBD." },
+    { "name": "Industry directories and profiles", "role": "Establish and maintain a consistent LUCI presence across AVIXA and other relevant industry, association, integration, and business directories. Supports referral discovery, SEO, AEO, and consistent entity signals wherever buyers or answer engines look for LUCI." }
+  ],
+  "streams": [
+    {
+      "id": "existing-customers",
+      "name": "Existing customers",
+      "audience": "Operations and IT at current LUCI properties.",
+      "promise": "See what is new and how to upgrade.",
+      "objective": "Move current properties to the new version, hardware-first, in a set priority order.",
+      "strategy": "Every current customer receives a new laptop with the new LUCI and the security tunnel stack already loaded. Properties ship and upgrade in a priority order. The customer verifies on the new laptop, then officially switches. The laptop that is running the property stays untouched — no packet download onto that machine, no change-management on the live box.",
+      "story": "The upgrade arrives as a new machine they can prove before they switch. More control where the work happens: venue-specific panels, changes prepared before they go live, a record of every action, support in context, and an interface matched to the property.",
+      "assetsLabel": "Assets",
+      "assets": [
+        "What's New one-pager.",
+        "Upgrade guide and FAQ (new laptop, verify, then switch; priority order).",
+        "IT companion (how New LUCI sits above the property's existing A/V environment, and that the tunnel stack arrives already loaded).",
+        "Customer announcement email.",
+        "Internal talking points for the field.",
+        "Signal newsletter release article."
+      ],
+      "primaryIntro": "Primary",
+      "primary": [
+        { "name": "Venue panels", "text": "Control in the space, scoped to the venue." },
+        { "name": "Staging", "text": "Build the next look while the current one keeps running." },
+        { "name": "Audit trails and in-product support", "text": "Every action recorded. Start a support request from the device, incident, or error—with the relevant context already attached." },
+        { "name": "Customizable interface", "text": "The visual reveal: property photography, marks, colors." }
+      ],
+      "alsoIntro": "Also in the release",
+      "alsoInRelease": "Audio group control. A live map that reflects the floor. Add any endpoint from LUCI. Email, PIN, or Entra sign-in. Video wall layouts pulled from the processor. A central catalog of hospitality display models, pushed to the property.",
+      "plannedAssetLinks": [
+        { "label": "Preliminary feature list", "href": "#coming-soon/new-luci-feature-list" }
+      ],
+      "measures": "Upgrades scheduled and completed; feature adoption at 90 days; recurring support questions."
+    },
+    {
+      "id": "warm-leads",
+      "name": "Warm leads",
+      "audience": "Prospects who requested or completed a demo, and are not in an active sales conversation.",
+      "promise": "Get a reason to return.",
+      "objective": "Re-engage prospects who have seen LUCI but gone quiet, and move them back into a sales conversation.",
+      "strategy": "Use the launch to reopen quiet conversations with prospects who have already shown interest. Active opportunities remain in the sales cadence.",
+      "story": "LUCI now puts more control in the venue, makes complex changes safer to prepare, and gives operations and IT a clearer record of what happened.",
+      "assetsLabel": "Assets",
+      "assets": [
+        "Re-engagement email series (3–4 emails) after a form with no reply.",
+        "Re-engagement email series (3–4 emails) after a demo with no next step.",
+        "Ongoing nurture — likely The Signal newsletter — to stay present without a separate track.",
+        "Proof pull: consolidation numbers across running properties (displays, zones, walls, racks removed), not new-feature-specific.",
+        "Sales handoff prompt: a reply or a meeting ends the track."
+      ],
+      "measures": "Re-engaged conversations; demos re-booked; deals advanced."
+    },
+    {
+      "id": "demand-gen",
+      "name": "Demand gen",
+      "audience": "Casino and property A/V and IT who are not already in a conversation with us.",
+      "promise": "Meet the full LUCI platform through the updated website and campaign.",
+      "objective": "Generate qualified interest and demos from prospects who have not encountered LUCI.",
+      "strategy": "Earn attention through search, industry presence, and targeted paid social, then convert it on the website. The updated site and a new blog carry the story and the SEO surface; consistent profiles across AVIXA and other relevant directories strengthen discovery and entity recognition; paid LinkedIn puts LUCI in front of the right titles at mid-size casinos; outbound supports the prospects Mark is already working.",
+      "story": "Separate A/V systems create separate workflows, vendors, and points of failure. LUCI consolidates them into one operating environment, with a team that stays.",
+      "assetsLabel": "Outbound channels and tactics",
+      "assets": [
+        "Blog, launching with the new website — the SEO and thought-leadership surface.",
+        "SEO program: search-driven discovery of LUCI's capabilities and consolidation story.",
+        "AVIXA and directory program: claim, complete, and standardize LUCI profiles across relevant industry, association, integration, and business directories; keep the company name, description, categories, website, logo, and contact details consistent.",
+        "Paid LinkedIn ads targeting c-suite, VP, and Director levels at mid-size casinos.",
+        "Outbound sequence supporting Mark's existing prospecting cadence.",
+        "Inbound demo response and nurture emails.",
+        "Events (2027): develop an event strategy and presence as a longer-term demand-generation initiative.",
+        "demo seminar / webinar (date, platform, and speaker TBD)."
+      ],
+      "measures": "Directory and profile coverage; referral traffic; inbound leads by source; qualified opportunities; demos booked; pipeline created."
+    }
+  ]
+}

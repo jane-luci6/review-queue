@@ -1391,6 +1391,13 @@
       line-height: 1.5;
       color: var(--ink);
     }
+    .cmp-related {
+      display: inline-flex; align-items: center; margin-top: 16px;
+      font-family: var(--font); font-size: 13px; font-weight: 700;
+      color: var(--mint-dark); text-decoration: none;
+    }
+    .cmp-related::after { content: " \2192"; }
+    .cmp-related:hover { text-decoration: underline; }
 
     #campaigns-channels-wrap {
       background: var(--off-white);
@@ -1471,6 +1478,265 @@
       color: var(--muted);
     }
 
+
+    /* ---------- Feature list (New LUCI) ---------- */
+    #view-feature-list .page-head h2 {
+      font-family: var(--font);
+    }
+    #view-feature-list .page-head p {
+      max-width: 68ch;
+    }
+
+    /* In-page chapter chips — same pill language as campaign audience pills. */
+    .cmp-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 13px;
+      border-radius: 999px;
+      background: rgba(43, 158, 128, 0.12);
+      border: 1px solid transparent;
+      font-family: var(--font);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--mint-dark);
+      text-decoration: none;
+      transition: border-color .15s, box-shadow .15s;
+    }
+    .cmp-chip:hover {
+      border-color: var(--mint-dark);
+      box-shadow: 0 0 0 3px rgba(43, 158, 128, 0.08);
+    }
+    #view-feature-list .fl-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    #view-feature-list .fl-body {
+      display: grid;
+      gap: 40px;
+    }
+    #view-feature-list .fl-chapter {
+      scroll-margin-top: 24px;
+    }
+
+    /* Navy chapter band — Signal 03 e-mesh + floorplan, screen-blend, low opacity. */
+    #view-feature-list .fl-band {
+      position: relative;
+      overflow: hidden;
+      background: #10232D;
+      color: var(--off-white);
+      margin-inline: calc(0px - clamp(28px, 5vw, 56px));
+      padding: 28px clamp(28px, 5vw, 56px) 30px;
+    }
+    #view-feature-list .fl-band::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: url("assets/mesh/luci-bg-hero-1920x1080.svg") center / cover no-repeat;
+      mix-blend-mode: screen;
+      opacity: 0.26;
+    }
+    #view-feature-list .fl-band > * { position: relative; z-index: 1; }
+    #view-feature-list .fl-band__kicker {
+      margin: 0 0 10px;
+      font-family: var(--font);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #68E3BE;
+    }
+    #view-feature-list .fl-band__heading {
+      margin: 0;
+      font-family: var(--font);
+      font-size: clamp(22px, 3vw, 28px);
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      color: var(--off-white);
+    }
+    #view-feature-list .fl-band__intro {
+      margin: 12px 0 0;
+      max-width: 68ch;
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.6;
+      color: rgba(245, 248, 250, 0.82);
+    }
+
+    /* Features sit on the off-white sheet under the band — de-boxed list, hairlines. */
+    #view-feature-list .fl-sheet {
+      background: var(--off-white);
+    }
+    #view-feature-list .fl-feature {
+      padding: 26px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    #view-feature-list .fl-feature:last-child { border-bottom: 0; }
+    #view-feature-list .fl-feature__name {
+      margin: 0;
+      font-family: var(--font);
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      color: var(--ink-strong);
+    }
+    #view-feature-list .fl-feature__text {
+      margin: 10px 0 0;
+      max-width: 72ch;
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--ink);
+    }
+    #view-feature-list .fl-feature__bullets {
+      margin: 10px 0 0;
+      padding: 0;
+      max-width: 72ch;
+      list-style: none;
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--ink);
+    }
+    #view-feature-list .fl-feature__bullets li {
+      position: relative;
+      padding: 7px 0 7px 18px;
+    }
+    #view-feature-list .fl-feature__bullets li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.85em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--mint-dark);
+    }
+
+    /* IT additional — quieter nested block on the light sheet. */
+    #view-feature-list .fl-additional {
+      margin-top: 4px;
+      padding-top: 8px;
+    }
+    #view-feature-list .fl-additional__kicker {
+      margin: 18px 0 6px;
+      font-family: var(--font);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #2b9e80;
+    }
+    #view-feature-list .fl-additional__intro {
+      margin: 0 0 8px;
+      max-width: 72ch;
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+    #view-feature-list .fl-additional .fl-feature__name {
+      font-size: 16px;
+    }
+    #view-feature-list .fl-additional .fl-feature__text {
+      font-size: 14.5px;
+      color: var(--ink);
+    }
+
+    /* ---------- Email comms & nurture ---------- */
+    #view-email-comms .page-head { border-bottom: 0; padding-bottom: 10px; }
+    #view-email-comms .page-head h2 { margin-bottom: 8px; }
+    .ec-back {
+      display: inline-block; margin-bottom: 14px;
+      font-family: var(--font); font-size: 13px; font-weight: 600;
+      color: var(--mint-dark); text-decoration: none;
+    }
+    .ec-back::before { content: "\2190\00a0"; }
+    .ec-back:hover { text-decoration: underline; }
+    .ec-context { display: grid; grid-template-columns: 1.4fr 1fr; gap: 16px; margin-bottom: 20px; align-items: stretch; }
+    .ec-rules {
+      margin: 0; padding: 14px 18px;
+      background: var(--off-white); border: 1px solid var(--rule);
+      border-radius: var(--r-sm);
+    }
+    .ec-rules .board-label { margin: 0 0 8px; }
+    .ec-rules .board-label,
+    .ec-signal .board-label,
+    .ec-email .board-label {
+      font-family: var(--font); font-size: 10.5px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--mint-dark);
+    }
+    .ec-rules ul { margin: 0; padding: 0 0 0 18px; }
+    .ec-rules li { font-family: var(--font-body); font-size: 12.5px; line-height: 1.45; color: var(--ink); margin: 3px 0; }
+    .ec-signal {
+      margin: 0; padding: 14px 18px;
+      background: rgba(206,176,110,0.12); border-left: 3px solid var(--gold-deep);
+    }
+    .ec-signal .board-label { margin: 0 0 6px; color: var(--ink-strong); }
+    .ec-signal > p:last-child { margin: 0; font-family: var(--font-body); font-size: 12.5px; line-height: 1.45; color: var(--ink); }
+    .ec-diagrams { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 0 0 24px; }
+    .ec-fig { margin: 0; }
+    .ec-fig__link { display: block; }
+    .ec-fig img { display: block; width: 100%; height: auto; border: 1px solid var(--rule); border-radius: var(--r-sm); background: #fff; }
+    .ec-fig figcaption {
+      margin-top: 8px; font-family: var(--font); font-size: 12px; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted);
+    }
+    .ec-tracks { display: grid; grid-template-columns: 1fr; gap: 16px; align-items: start; }
+    .ec-track {
+      background: var(--off-white); border: 1px solid var(--rule);
+      border-radius: var(--r-sm); box-shadow: var(--shadow-sm);
+      padding: 16px 18px 4px;
+    }
+    .ec-track__head { display: grid; grid-template-columns: 180px 1fr; gap: 16px; margin-bottom: 6px; padding-bottom: 10px; border-bottom: 1px solid var(--rule); }
+    .ec-track__name { font-family: var(--font); font-size: 15px; font-weight: 700; color: var(--ink-strong); margin: 0; }
+    .ec-track__summary { font-family: var(--font-body); font-size: 12.5px; line-height: 1.4; color: var(--muted); margin: 0; }
+    .ec-cycle__name {
+      margin: 10px 0 0; padding: 6px 0;
+      font-family: var(--font); font-size: 10px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--mint-dark);
+    }
+    .ec-email {
+      display: grid;
+      grid-template-columns: minmax(150px,.85fr) 160px minmax(240px,1.5fr) minmax(150px,.85fr);
+      gap: 14px; align-items: start; padding: 10px 0; border-top: 1px solid var(--rule);
+    }
+    .ec-email__top { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+    .ec-email__title { display: flex; align-items: center; gap: 9px; }
+    .ec-email__number {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 20px; height: 20px; flex: 0 0 20px;
+      border-radius: 999px; background: rgba(43,158,128,0.12);
+      font-family: var(--font); font-size: 10.5px; font-weight: 700; color: var(--mint-dark);
+    }
+    .ec-email__name { font-family: var(--font); font-size: 12.5px; font-weight: 600; line-height: 1.35; color: var(--ink-strong); }
+    .ec-email__trigger { font-family: var(--font-body); font-size: 11.5px; line-height: 1.4; color: var(--muted); margin: 1px 0 0; }
+    .ec-email__field { margin: 0; }
+    .ec-email__field .board-label { margin: 0 0 3px; }
+    .ec-email__field p { font-family: var(--font-body); font-size: 11.5px; line-height: 1.4; color: var(--ink); margin: 0; }
+    .ec-email__cta { margin: 1px 0 0; font-family: var(--font-body); font-size: 11.5px; line-height: 1.4; color: var(--ink); }
+    .ec-email__cta span { font-family: var(--font); font-weight: 700; color: var(--ink-strong); }
+    .ec-email__copy {
+      display: inline-block; margin-top: 8px;
+      font-family: var(--font); font-size: 12.5px; font-weight: 600;
+      color: var(--mint-dark); text-decoration: none;
+    }
+    .ec-email__copy::after { content: " \2192"; }
+    .ec-email__copy:hover { text-decoration: underline; }
+    @media (max-width: 980px) {
+      .ec-context { grid-template-columns: 1fr; }
+      .ec-diagrams { grid-template-columns: 1fr; }
+      .ec-tracks { grid-template-columns: 1fr; }
+      .ec-track__head { grid-template-columns: 1fr; gap: 4px; }
+      .ec-email { grid-template-columns: 1fr 1fr; }
+    }
+
     @media (max-width: 980px) {
       .shell { grid-template-columns: 1fr; }
       .sidebar { position: relative; height: auto; }
@@ -1492,6 +1758,10 @@
       .board-col { border-right: 0; border-bottom: 0; padding: 26px 24px; }
       .board-col:last-child { border-bottom: 0; }
       .cmp-audiences { grid-template-columns: 1fr; }
+      #view-feature-list .fl-band {
+        margin-inline: -20px;
+        padding-inline: 20px;
+      }
     }
   </style>
 </head>
@@ -1625,11 +1895,16 @@
           <p id="campaigns-public"></p>
           <p id="campaigns-order"></p>
           <div class="cmp-audiences" id="campaigns-audiences" hidden aria-label="Campaign audiences"></div>
+          <a class="cmp-related" href="#coming-soon/new-luci-email-comms">Email communications &amp; nurture plan</a>
         </header>
         <div class="page-body">
           <div id="campaigns-channels-wrap" hidden>
             <p class="board-label" id="campaigns-channels-label">Campaign channels</p>
             <ul class="board-list board-list--named" id="campaigns-channels"></ul>
+          </div>
+          <div id="campaigns-resources-wrap" hidden>
+            <p class="board-label">Campaign resources</p>
+            <ul class="board-list board-list--named" id="campaigns-resources"></ul>
           </div>
           <div class="board-grid" id="campaigns-board"></div>
         </div>
@@ -1639,9 +1914,29 @@
         <header class="page-head">
           <h2 id="feature-list-title">New LUCI — Preliminary Feature List</h2>
           <p id="feature-list-deck"></p>
+          <nav class="fl-chips" id="feature-list-chips" aria-label="Chapters"></nav>
         </header>
         <div class="page-body">
-          <div class="list" id="feature-list-body"></div>
+          <div class="fl-body" id="feature-list-body"></div>
+        </div>
+      </div>
+
+      <div class="view" id="view-email-comms" hidden>
+        <header class="page-head">
+          <a class="ec-back" id="email-comms-back" href="#coming-soon/new-luci-campaign-strategy"></a>
+          <h2 id="email-comms-title">New LUCI — Email Communications &amp; Nurture</h2>
+          <p id="email-comms-deck"></p>
+        </header>
+        <div class="page-body">
+          <div class="ec-context">
+            <div class="ec-rules" id="email-comms-rules" hidden></div>
+            <div class="ec-signal" id="email-comms-signal" hidden></div>
+          </div>
+          <div class="ec-diagrams">
+            <figure class="ec-fig"><a class="ec-fig__link" href="luci-prospect-nurture-lifecycle.svg?v=20260903a" target="_blank" rel="noopener"><img id="email-comms-lifecycle" alt="Email plan by audience and phase" loading="lazy"></a><figcaption>Email plan by audience and phase · Open full size</figcaption></figure>
+            <figure class="ec-fig"><a class="ec-fig__link" href="luci-prospect-routing.svg?v=20260903a" target="_blank" rel="noopener"><img id="email-comms-routing" alt="Response handling after a prospect raises a hand" loading="lazy"></a><figcaption>Response handling after a prospect raises a hand · Open full size</figcaption></figure>
+          </div>
+          <div class="ec-tracks" id="email-comms-tracks"></div>
         </div>
       </div>
     </main>
@@ -2886,7 +3181,8 @@
 
     function renderRoadmap() {
       const nest = [
-        { title: 'New LUCI Campaign strategy', note: 'Three audiences. Not a public launch.', href: '#coming-soon/new-luci-campaign-strategy' },
+        { title: 'New LUCI Campaign strategy', note: 'One coordinated launch across customers and prospects.', href: '#coming-soon/new-luci-campaign-strategy' },
+        { title: 'New LUCI — Email Communications & Nurture', note: 'What email goes to whom, when, and why.', href: '#coming-soon/new-luci-email-comms' },
         { title: 'New LUCI — Preliminary Feature List', note: 'Primary and also-in-release, in full.', href: '#coming-soon/new-luci-feature-list' }
       ];
       const items = portal.queue.upcoming || [];
@@ -3607,7 +3903,7 @@
       if (!board) return;
       board.replaceChildren();
       try {
-        const res = await fetch('campaign-board.json?v=20260831n');
+        const res = await fetch('campaign-board.json?v=20260908a');
         if (!res.ok) throw new Error('load');
         const data = await res.json();
         const setHead = (el, val) => { if (!el) return; el.textContent = val || ''; el.hidden = !val; };
@@ -3640,6 +3936,22 @@
           if (channelsWrap) channelsWrap.hidden = false;
         } else if (channelsWrap) {
           channelsWrap.hidden = true;
+        }
+        const resWrap = $('campaigns-resources-wrap');
+        const resList = $('campaigns-resources');
+        if (resList && Array.isArray(data.resources) && data.resources.length) {
+          resList.replaceChildren();
+          data.resources.forEach((r) => {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = r.href;
+            a.textContent = r.label;
+            li.appendChild(a);
+            resList.appendChild(li);
+          });
+          if (resWrap) resWrap.hidden = false;
+        } else if (resWrap) {
+          resWrap.hidden = true;
         }
         if (audiencesEl) {
           audiencesEl.replaceChildren();
@@ -3689,62 +4001,209 @@
       const body = $('feature-list-body');
       const titleEl = $('feature-list-title');
       const deckEl = $('feature-list-deck');
+      const chipsEl = $('feature-list-chips');
       if (!body) return;
       body.replaceChildren();
+      if (chipsEl) chipsEl.replaceChildren();
       try {
-        const res = await fetch('new-luci-feature-list.json?v=20260828d');
+        const res = await fetch('new-luci-feature-list.json?v=20260901d');
         if (!res.ok) throw new Error('load');
         const data = await res.json();
         if (titleEl) titleEl.textContent = data.title || 'New LUCI — Preliminary Feature List';
         if (deckEl) deckEl.textContent = data.deck || '';
-        const blocks = [data.primary, data.secondary, data.it].filter(Boolean);
-        blocks.forEach((block) => {
-          const art = document.createElement('article');
-          art.className = 'row';
-          const wrap = document.createElement('div');
-          const h = document.createElement('h3');
-          h.textContent = block.heading || '';
-          wrap.appendChild(h);
+
+        const chapters = [
+          { key: 'primary', kicker: 'Primary', block: data.primary },
+          { key: 'secondary', kicker: 'Secondary', block: data.secondary },
+          { key: 'it', kicker: 'IT', block: data.it }
+        ].filter((ch) => ch.block);
+
+        const appendFeature = (parent, item) => {
+          const feat = document.createElement('article');
+          feat.className = 'fl-feature';
+          const name = document.createElement('h4');
+          name.className = 'fl-feature__name';
+          name.textContent = item.name || '';
+          feat.appendChild(name);
+          if (item.text) {
+            const t = document.createElement('p');
+            t.className = 'fl-feature__text';
+            t.textContent = item.text;
+            feat.appendChild(t);
+          }
+          const bullets = item.bullets || [];
+          if (bullets.length) {
+            const ul = document.createElement('ul');
+            ul.className = 'fl-feature__bullets';
+            bullets.forEach((b) => {
+              const li = document.createElement('li');
+              li.textContent = b;
+              ul.appendChild(li);
+            });
+            feat.appendChild(ul);
+          }
+          parent.appendChild(feat);
+        };
+
+        chapters.forEach((ch) => {
+          const block = ch.block;
+          if (chipsEl) {
+            const a = document.createElement('a');
+            a.className = 'cmp-chip';
+            a.href = '#coming-soon/new-luci-feature-list';
+            a.textContent = ch.kicker;
+            a.addEventListener('click', (ev) => {
+              ev.preventDefault();
+              const target = document.getElementById('fl-' + ch.key);
+              if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+            chipsEl.appendChild(a);
+          }
+
+          const section = document.createElement('section');
+          section.className = 'fl-chapter';
+          section.id = 'fl-' + ch.key;
+
+          const band = document.createElement('div');
+          band.className = 'fl-band';
+          const kicker = document.createElement('p');
+          kicker.className = 'fl-band__kicker';
+          kicker.textContent = ch.kicker;
+          band.appendChild(kicker);
+          const heading = document.createElement('h3');
+          heading.className = 'fl-band__heading';
+          heading.textContent = block.heading || '';
+          band.appendChild(heading);
           if (block.intro) {
             const intro = document.createElement('p');
+            intro.className = 'fl-band__intro';
             intro.textContent = block.intro;
-            wrap.appendChild(intro);
+            band.appendChild(intro);
           }
-          (block.items || []).forEach((item) => {
-            const name = document.createElement('p');
-            name.style.fontWeight = '600';
-            name.textContent = item.name || '';
-            wrap.appendChild(name);
-            if (item.text) {
-              const t = document.createElement('p');
-              t.textContent = item.text;
-              wrap.appendChild(t);
+          section.appendChild(band);
+
+          const sheet = document.createElement('div');
+          sheet.className = 'fl-sheet';
+          (block.items || []).forEach((item) => appendFeature(sheet, item));
+
+          const extraItems = block.additional || [];
+          if (extraItems.length) {
+            const extra = document.createElement('div');
+            extra.className = 'fl-additional';
+            const extraKicker = document.createElement('p');
+            extraKicker.className = 'fl-additional__kicker';
+            extraKicker.textContent = 'Additional';
+            extra.appendChild(extraKicker);
+            if (block.additionalIntro) {
+              const extraIntro = document.createElement('p');
+              extraIntro.className = 'fl-additional__intro';
+              extraIntro.textContent = block.additionalIntro;
+              extra.appendChild(extraIntro);
             }
-            (item.bullets || []).forEach((b) => {
-              const t = document.createElement('p');
-              t.textContent = b;
-              wrap.appendChild(t);
-            });
-          });
-          if (block.additionalIntro) {
-            const intro = document.createElement('p');
-            intro.textContent = block.additionalIntro;
-            wrap.appendChild(intro);
+            extraItems.forEach((item) => appendFeature(extra, item));
+            sheet.appendChild(extra);
           }
-          (block.additional || []).forEach((item) => {
-            const name = document.createElement('p');
-            name.style.fontWeight = '600';
-            name.textContent = item.name || '';
-            wrap.appendChild(name);
-            const t = document.createElement('p');
-            t.textContent = item.text || '';
-            wrap.appendChild(t);
-          });
-          art.appendChild(wrap);
-          body.appendChild(art);
+
+          section.appendChild(sheet);
+          body.appendChild(section);
         });
       } catch (e) {
         body.textContent = 'Could not load feature list.';
+      }
+    }
+
+    async function renderEmailComms() {
+      const root = $('view-email-comms');
+      const titleEl = $('email-comms-title');
+      const deckEl = $('email-comms-deck');
+      const backEl = $('email-comms-back');
+      const rulesEl = $('email-comms-rules');
+      const signalEl = $('email-comms-signal');
+      const tracksEl = $('email-comms-tracks');
+      const lifecycleImg = $('email-comms-lifecycle');
+      const routingImg = $('email-comms-routing');
+      if (!root) return;
+      try {
+        const res = await fetch('new-luci-email-comms.json?v=20260903b');
+        if (!res.ok) throw new Error('load');
+        const data = await res.json();
+        if (titleEl) titleEl.textContent = data.title || 'New LUCI — Email Communications & Nurture';
+        if (deckEl) deckEl.textContent = data.deck || '';
+        if (backEl && data.backLink) { backEl.textContent = data.backLink.label || 'Back'; backEl.href = data.backLink.href || '#coming-soon/new-luci-campaign-strategy'; }
+        if (lifecycleImg) lifecycleImg.src = 'luci-prospect-nurture-lifecycle.svg?v=20260903a';
+        if (routingImg) routingImg.src = 'luci-prospect-routing.svg?v=20260903a';
+        if (rulesEl && Array.isArray(data.sharedRules) && data.sharedRules.length) {
+          rulesEl.replaceChildren();
+          const label = document.createElement('p');
+          label.className = 'board-label'; label.textContent = 'Shared rules';
+          rulesEl.appendChild(label);
+          const ul = document.createElement('ul');
+          data.sharedRules.forEach((r) => { const li = document.createElement('li'); li.textContent = r; ul.appendChild(li); });
+          rulesEl.appendChild(ul);
+          rulesEl.hidden = false;
+        } else if (rulesEl) { rulesEl.hidden = true; }
+        if (signalEl && data.signalContext) {
+          signalEl.replaceChildren();
+          const label = document.createElement('p');
+          label.className = 'board-label';
+          label.textContent = 'How The Signal fits';
+          const text = document.createElement('p');
+          text.textContent = data.signalContext;
+          signalEl.append(label, text);
+          signalEl.hidden = false;
+        } else if (signalEl) { signalEl.hidden = true; }
+        if (tracksEl) {
+          tracksEl.replaceChildren();
+          (data.tracks || []).forEach((track) => {
+            const card = document.createElement('article');
+            card.className = 'ec-track';
+            const head = document.createElement('div');
+            head.className = 'ec-track__head';
+            const nm = document.createElement('h3'); nm.className = 'ec-track__name'; nm.textContent = track.name || ''; head.appendChild(nm);
+            if (track.summary) { const s = document.createElement('p'); s.className = 'ec-track__summary'; s.textContent = track.summary; head.appendChild(s); }
+            card.appendChild(head);
+            (track.cycles || []).forEach((cycle) => {
+              const cycleHead = document.createElement('h4');
+              cycleHead.className = 'ec-cycle__name';
+              cycleHead.textContent = cycle.name || '';
+              card.appendChild(cycleHead);
+              (cycle.emails || []).forEach((em) => {
+                const row = document.createElement('div'); row.className = 'ec-email';
+                const top = document.createElement('div'); top.className = 'ec-email__top';
+                const title = document.createElement('div'); title.className = 'ec-email__title';
+                const num = document.createElement('span'); num.className = 'ec-email__number'; num.textContent = em.number || '';
+                const name = document.createElement('span'); name.className = 'ec-email__name'; name.textContent = em.name || '';
+                title.append(num, name);
+                top.appendChild(title);
+                row.appendChild(top);
+                if (em.timing) {
+                  const timing = document.createElement('p');
+                  timing.className = 'ec-email__trigger';
+                  timing.textContent = 'Timing: ' + em.timing;
+                  row.appendChild(timing);
+                }
+                const purpose = document.createElement('div'); purpose.className = 'ec-email__field';
+                const purposeLabel = document.createElement('p'); purposeLabel.className = 'board-label'; purposeLabel.textContent = 'Purpose & message';
+                const purposeText = document.createElement('p'); purposeText.textContent = em.purpose || '';
+                purpose.append(purposeLabel, purposeText);
+                row.appendChild(purpose);
+                if (em.cta) {
+                  const cta = document.createElement('p'); cta.className = 'ec-email__cta';
+                  const ctaLabel = document.createElement('span'); ctaLabel.textContent = 'CTA: ';
+                  cta.append(ctaLabel, document.createTextNode(em.cta));
+                  row.appendChild(cta);
+                }
+                if (em.copyLink) {
+                  const a = document.createElement('a'); a.className = 'ec-email__copy'; a.href = em.copyLink; a.textContent = 'Email copy'; row.appendChild(a);
+                }
+                card.appendChild(row);
+              });
+            });
+            tracksEl.appendChild(card);
+          });
+        }
+      } catch (e) {
+        if (tracksEl) tracksEl.textContent = 'Could not load email comms plan.';
       }
     }
 
@@ -3789,8 +4248,10 @@
 
       const campaignsEl = $('view-campaigns');
       const featureEl = $('view-feature-list');
+      const emailEl = $('view-email-comms');
       if (campaignsEl) campaignsEl.hidden = true;
       if (featureEl) featureEl.hidden = true;
+      if (emailEl) emailEl.hidden = true;
 
       if (view === 'coming-soon' && sub === 'new-luci-campaign-strategy') {
         if (campaignsEl) campaignsEl.hidden = false;
@@ -3800,6 +4261,11 @@
       if (view === 'coming-soon' && sub === 'new-luci-feature-list') {
         if (featureEl) featureEl.hidden = false;
         renderFeatureList();
+        return;
+      }
+      if (view === 'coming-soon' && sub === 'new-luci-email-comms') {
+        if (emailEl) emailEl.hidden = false;
+        renderEmailComms();
         return;
       }
 
@@ -3847,7 +4313,7 @@
       showView(view, sub);
       // Re-fetch on navigation so the review list/detail reflects the latest server state.
       // Campaigns board is JSON-only — do not hit the comments API on this view.
-      if (!(view === 'coming-soon' && (sub === 'new-luci-campaign-strategy' || sub === 'new-luci-feature-list'))) refreshFromApi({ silent: true });
+      if (!(view === 'coming-soon' && (sub === 'new-luci-campaign-strategy' || sub === 'new-luci-feature-list' || sub === 'new-luci-email-comms'))) refreshFromApi({ silent: true });
     });
     boot();
   </script>
