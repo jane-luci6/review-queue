@@ -660,31 +660,17 @@
 
 .slide--light .lp-ind { border-top-color: var(--mint-dark); }
 
-/* Stretch modifier — the grid fills the body height and each column
-   distributes its content: number at the top, description at the
-   bottom. Use when the columns are the whole slide and short copy
-   would otherwise cluster in the middle. */
-.lp-inds--stretch {
-  align-self: stretch;
-}
-
-.lp-inds--stretch .lp-ind {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding-top: 24px;
-}
-
-.lp-inds--stretch .lp-ind__n {
-  font-size: 52px;
-  line-height: 1.02;
-}
-
+/* Stays under .s-title (42px). These are column heads, not the slide's
+   headline — sized above it they invert the hierarchy and read as
+   shouting. Don't stretch the column to fill the slide either: the
+   name, promise and description are one thought, and distributing them
+   to the edges reads as three unrelated fragments. Let the block sit
+   centred and let the slide keep its whitespace. */
 .lp-ind__n {
   font-family: var(--font);
   font-weight: 700;
-  font-size: 46px;
-  line-height: 1;
+  font-size: 36px;
+  line-height: 1.1;
   letter-spacing: -0.03em;
   color: #FFFFFF;
 }
