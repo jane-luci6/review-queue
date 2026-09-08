@@ -76,6 +76,7 @@ Choose by **what kind of information it is**, not by how it looks.
 | Decisions someone must make | Numbered asks | 8 |
 | One line that has to land | Statement | 9 |
 | A caveat or open question | Note | 10 |
+| Phases that feed each other | **Flow** | 11 |
 
 **Matrix vs. timeline is the decision people get wrong.** A matrix compares subjects that all exist at once — its columns are different *kinds* of thing, so each column gets its own visual treatment. A timeline shows one thing moving through stages — every stop gets *identical* treatment, because a timeline ranks by position, not by emphasis. If you want to make a later stage look quieter, it is not a timeline; it is a taxonomy, and it belongs in a matrix.
 
@@ -266,6 +267,40 @@ Two or three asks. More than four and it stops reading as a request.
 ```
 
 Sits last in a slide body. For caveats and open decisions, not for content that matters.
+
+### 11 · Flow
+
+A left-to-right sequence of soft cards joined by mint arrows. Use it when each
+phase **feeds** the next — a campaign path, a lifecycle. Independent categories
+belong in the matrix or the indicator columns; an arrow between unrelated things
+claims a causal link that isn't there.
+
+```html
+<div class="lp-flow">
+  <div class="lp-flow__step">
+    <p class="lp-flow__phase">Pre-launch</p>
+    <p class="lp-flow__name">Seminar cycle</p>
+    <div class="lp-defs">
+      <div class="lp-def">
+        <span class="lp-def__n">Emails</span>
+        <span class="lp-def__d">5 segmented touches</span>
+      </div>
+    </div>
+  </div>
+  <span class="lp-flow__arrow" aria-hidden="true"></span>
+  <!-- next step -->
+</div>
+```
+
+Card heads are deliberately small — phase 11px, name 21px — so the slide title
+stays the only large type on the slide. Do not raise them to compete with it.
+
+Inside a flow card the definition keys drop to small mint tracked labels
+automatically. The shared key column is 68px; a long key like "Handback" needs
+`style="--lp-defw: 84px;"` on that card's `.lp-defs` or it wraps.
+
+`.lp-flow__step--open` is dashed and unfilled, for a phase where nothing is
+sent. It reads as deliberately empty rather than as a card that failed to load.
 
 ---
 

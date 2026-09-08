@@ -844,3 +844,140 @@
   color: var(--navy-muted);
   border-top-color: var(--rule-light);
 }
+
+
+/* ═══ 11 · FLOW — BOXES AND ARROWS ═════════════════════════════
+   A left-to-right sequence of phases, each a soft card, joined by
+   mint arrows. Use when the point is that one phase FEEDS the next
+   (a campaign path, a lifecycle). If the phases are independent
+   categories, use the matrix or the indicator columns instead —
+   arrows between unrelated things are a lie.
+
+   Card heads are deliberately small (phase 11px, name 21px) so the
+   slide title stays the only large type on the slide.
+
+   <div class="lp-flow">
+     <div class="lp-flow__step">
+       <p class="lp-flow__phase">Pre-launch</p>
+       <p class="lp-flow__name">Seminar cycle</p>
+       <div class="lp-defs">
+         <div class="lp-def">
+           <span class="lp-def__n">Emails</span>
+           <span class="lp-def__d">5 segmented touches</span>
+         </div>
+       </div>
+     </div>
+     <span class="lp-flow__arrow" aria-hidden="true"></span>
+     …next step…
+   </div>
+
+   Modifier: .lp-flow__step--open — dashed and unfilled, for a phase
+   where nothing is sent. Reads as "deliberately empty", not as a
+   card that failed to render. */
+
+.lp-flow {
+  display: flex;
+  align-items: stretch;
+  gap: 14px;
+  width: 100%;
+  align-self: center;
+}
+
+.lp-flow__step {
+  box-sizing: border-box;
+  flex: 1 1 0;
+  border-radius: 16px;
+  padding: 32px 26px;
+  background: rgba(104, 227, 190, 0.07);
+  box-shadow: inset 0 0 0 1px rgba(104, 227, 190, 0.18);
+}
+
+.slide--light .lp-flow__step {
+  background: linear-gradient(155deg, #E6F5EF 0%, #F3FAF8 100%);
+  box-shadow: inset 0 0 0 1px rgba(43, 158, 128, 0.16);
+}
+
+.lp-flow__step--open {
+  background: none;
+  box-shadow: none;
+  border: 1px dashed rgba(235, 245, 248, 0.28);
+}
+
+.slide--light .lp-flow__step--open {
+  background: none;
+  box-shadow: none;
+  border: 1px dashed rgba(53, 79, 92, 0.28);
+}
+
+.lp-flow__phase {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mint);
+  margin-bottom: 10px;
+}
+
+.slide--light .lp-flow__phase { color: var(--mint-dark); }
+
+.lp-flow__name {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 21px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  margin-bottom: 18px;
+}
+
+.slide--light .lp-flow__name { color: var(--ink-strong); }
+
+/* Arrow: a mint rule with a solid head, vertically centred in the
+   gap between two cards. Fixed width so cards stay equal. */
+.lp-flow__arrow {
+  flex: 0 0 34px;
+  align-self: center;
+  position: relative;
+  height: 2px;
+  background: var(--mint);
+}
+
+.slide--light .lp-flow__arrow { background: var(--mint-dark); }
+
+.lp-flow__arrow::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-left: 9px solid var(--mint);
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+}
+
+.slide--light .lp-flow__arrow::after { border-left-color: var(--mint-dark); }
+
+/* Definition rows inside a flow card: keys drop to a small mint
+   tracked label so they read as metadata, not as headings. */
+.lp-flow .lp-defs {
+  --lp-defw: 68px;
+  gap: 12px;
+}
+
+.lp-flow .lp-def { gap: 14px; }
+
+.lp-flow .lp-def__n {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mint);
+}
+
+.slide--light .lp-flow .lp-def__n { color: var(--mint-dark); }
+
+.lp-flow .lp-def__d {
+  font-size: 15px;
+  line-height: 1.5;
+}

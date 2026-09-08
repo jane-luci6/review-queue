@@ -1,0 +1,329 @@
+{
+  "title": "New LUCI — Email Communications & Nurture",
+  "deck": "The email system for customers, warm prospects, and net-new prospects: sequence, timing, purpose, response handling, and long-term nurture.",
+  "backLink": {
+    "label": "Back to Campaign strategy",
+    "href": "#coming-soon/new-luci-campaign-strategy"
+  },
+  "signalContext": "The Signal carries the broad customer preview and can include the seminar save-the-date. It is planning context for this program, not an email in the cycles below. Each direct customer email has one specific job: drive event attendance, announce the release, or move a property toward an upgrade.",
+  "sharedRules": [
+    "A reply, booked meeting, or active opportunity stops marketing automation.",
+    "Anyone in an active Mark or Mike conversation is suppressed from automated nurture.",
+    "Opens and ordinary clicks inform reporting; they do not trigger a sales handoff.",
+    "A person receives only the cycle that matches their current lifecycle stage.",
+    "The pre-launch seminar is positioned as a private preview, not a sales demo. Every invitation states when New LUCI becomes available.",
+    "Only high-intent warm prospects receive the pre-launch preview invitation: people who completed a demo or seriously pursued one. Broader warm and net-new outreach begins at launch.",
+    "Marketing recovery begins only after Mark or Mike explicitly hands the prospect back. The handback timing remains to be defined with Sales."
+  ],
+  "tracks": [
+    {
+      "id": "customers",
+      "name": "Existing customers",
+      "summary": "Direct email supports the seminar and the upgrade path. The Signal provides the broader editorial context.",
+      "cycles": [
+        {
+          "name": "Pre-launch seminar",
+          "emails": [
+            {
+              "number": 1,
+              "name": "Seminar invitation",
+              "timing": "About 2–3 weeks before the seminar",
+              "purpose": "Give customers an early look at New LUCI. Include the What's New asset so they can see the features and customer benefits before deciding to attend.",
+              "cta": "Review what is coming and register for the live preview."
+            },
+            {
+              "number": 2,
+              "name": "What to expect",
+              "timing": "7–10 days before the seminar",
+              "purpose": "Give the invitation a second chance with three concrete takeaways. Registrants receive agenda content; nonregistrants receive another registration opportunity.",
+              "cta": "Review the agenda or register."
+            },
+            {
+              "number": 3,
+              "name": "Event reminder",
+              "timing": "2 days before the seminar",
+              "purpose": "Convert registrations into attendance with the date, time, and joining details.",
+              "cta": "Add to calendar or join the session."
+            },
+            {
+              "number": 4,
+              "name": "Recording for non-attendees",
+              "timing": "2–3 business days after the seminar; customers who did not attend",
+              "purpose": "Give customers who could not attend the same product view while the pre-launch announcement is still current.",
+              "cta": "Watch the seminar recording."
+            }
+          ]
+        },
+        {
+          "name": "Launch and upgrade",
+          "emails": [
+            {
+              "number": 1,
+              "name": "Customer launch announcement",
+              "timing": "Launch day",
+              "purpose": "Announce that New LUCI is available and package the What's New asset, upgrade process, preparation steps, and FAQ in one actionable message.",
+              "cta": "Review the release and start the upgrade process."
+            },
+            {
+              "number": 2,
+              "name": "Upgrade follow-up",
+              "timing": "7–10 days after launch; suppress once an upgrade is scheduled",
+              "purpose": "Resolve remaining timing or process questions without repeating the feature overview.",
+              "cta": "Choose the next step for the property."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "warm",
+      "name": "Warm prospects",
+      "summary": "A selected high-intent group may attend the private preview. The broader warm list begins at launch, when New LUCI is available.",
+      "cycles": [
+        {
+          "name": "Selected pre-launch preview",
+          "emails": [
+            {
+              "number": 1,
+              "name": "Private preview invitation",
+              "timing": "About 2–3 weeks before launch; past-demo and serious past-request prospects only",
+              "purpose": "Re-engage people who already invested meaningful time in LUCI by offering an early look at what changed. State the launch date clearly.",
+              "cta": "Register for the private preview."
+            },
+            {
+              "number": 2,
+              "name": "What to expect",
+              "timing": "7–10 days before the seminar",
+              "purpose": "Show three concrete changes they will see. Registrants receive agenda content; nonregistrants receive another registration opportunity.",
+              "cta": "Review the agenda or register."
+            },
+            {
+              "number": 3,
+              "name": "Registered-attendee reminder",
+              "timing": "2 days before the seminar; registrants only",
+              "purpose": "Convert registrations into attendance without sending another product pitch.",
+              "cta": "Add to calendar or join the session."
+            },
+            {
+              "number": 4,
+              "name": "Personal preview follow-up",
+              "timing": "Next business day after the seminar; sent by Mark",
+              "purpose": "Acknowledge their prior interest, ask what stood out, and offer a direct conversation before the broader launch follow-up begins.",
+              "cta": "Reply to Mark or choose a time to reconnect."
+            },
+            {
+              "number": 5,
+              "name": "Recording for no-shows",
+              "timing": "2–3 business days after the seminar; registrants who did not attend",
+              "purpose": "Preserve the value of the invitation without asking for another live commitment. This can come from Mark with a brief personal note.",
+              "cta": "Watch the private-preview recording."
+            }
+          ]
+        },
+        {
+          "name": "Launch re-engagement",
+          "emails": [
+            {
+              "number": 1,
+              "name": "What changed",
+              "timing": "Launch day",
+              "purpose": "\"LUCI has changed a lot since you last saw it.\" Reopen the broader warm list with the operational-precision story. Private-preview recipients receive a shorter availability follow-up instead.",
+              "cta": "See what is different."
+            },
+            {
+              "number": 2,
+              "name": "Recorded preview",
+              "timing": "4–5 days after email 1",
+              "purpose": "Let prospects see New LUCI without asking them to commit to a live sales demo. The feature highlight reel is the lead asset here — a short cut of the seminar's product moments for prospects who will not sit through the full recording. The full recording stays available as the deeper option.",
+              "cta": "Watch the feature highlight reel, or the full recording."
+            },
+            {
+              "number": 3,
+              "name": "Operational proof",
+              "timing": "4–5 days after email 2",
+              "purpose": "Make the platform credible with consolidation numbers from running properties.",
+              "cta": "See the proof or reply with a question."
+            },
+            {
+              "number": 4,
+              "name": "Direct invitation",
+              "timing": "5–7 days after email 3",
+              "purpose": "Close the launch cycle with a clear, low-friction invitation to reconnect.",
+              "cta": "Book a short conversation or walkthrough."
+            }
+          ]
+        },
+        {
+          "name": "After a warm response",
+          "emails": [
+            {
+              "number": 1,
+              "name": "Immediate response",
+              "timing": "Immediately after the reply, booking, or request",
+              "purpose": "Acknowledge the response, answer the immediate question, or confirm that Mark will follow up.",
+              "cta": "Reply or choose a time."
+            },
+            {
+              "number": 2,
+              "name": "Personal outreach",
+              "timing": "Same or next business day; sent by Mark",
+              "purpose": "Continue from the prospect's prior LUCI context rather than restarting the campaign pitch.",
+              "cta": "Confirm the next conversation or walkthrough."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "net-new",
+      "name": "Net-new prospects",
+      "summary": "Acquisition email introduces the full LUCI offer. Mark or Mike owns every hand-raiser until an explicit handback to Marketing.",
+      "cycles": [
+        {
+          "name": "Acquisition",
+          "emails": [
+            {
+              "number": 1,
+              "name": "The operational problem",
+              "timing": "Start of outbound cycle",
+              "purpose": "Lead with the cost of separate A/V systems and workflows—not with New LUCI features.",
+              "cta": "Recognize the problem."
+            },
+            {
+              "number": 2,
+              "name": "Consolidation proof",
+              "timing": "5 days after email 1",
+              "purpose": "Show what a shorter list of systems, vendors, and workflows looks like in practice.",
+              "cta": "See how LUCI consolidates the operation."
+            },
+            {
+              "number": 3,
+              "name": "Recorded walkthrough",
+              "timing": "5 days after email 2",
+              "purpose": "Introduce New LUCI visually after the prospect understands the problem and proof—without asking for a live meeting. The feature highlight reel is the lead asset here — a short cut of the seminar's product moments for prospects who will not sit through the full recording. The full recording stays available as the deeper option.",
+              "cta": "Watch the feature highlight reel, or the full recording."
+            },
+            {
+              "number": 4,
+              "name": "Platform, team, and invitation",
+              "timing": "5 days after email 3",
+              "purpose": "Connect the orchestration engine and embedded team, then invite qualified interest into a conversation.",
+              "cta": "Book a demo."
+            }
+          ]
+        },
+        {
+          "name": "After a demo request",
+          "emails": [
+            {
+              "number": 1,
+              "name": "Immediate confirmation",
+              "timing": "Immediately after the request",
+              "purpose": "Confirm the request and remove scheduling friction.",
+              "cta": "Choose a time."
+            },
+            {
+              "number": 2,
+              "name": "Personal follow-up",
+              "timing": "Same or next business day; sent by Mike or Mark",
+              "purpose": "Add a human response while interest is current.",
+              "cta": "Reply or confirm the meeting."
+            }
+          ]
+        },
+        {
+          "name": "Unbooked request recovery — after Sales handback",
+          "emails": [
+            {
+              "number": 1,
+              "name": "Scheduling recovery",
+              "timing": "Provisional: about 7 days after Mark or Mike's final attempt and explicit handback",
+              "purpose": "Offer one clean path to schedule without restarting the acquisition pitch.",
+              "cta": "Pick a time for the walkthrough."
+            },
+            {
+              "number": 2,
+              "name": "Leave the invitation open",
+              "timing": "Provisional: 7–10 days after recovery email 1",
+              "purpose": "Close the active scheduling cycle without pressure, then move the prospect to Pulse if they remain quiet.",
+              "cta": "Schedule now or return when the timing is better."
+            }
+          ]
+        },
+        {
+          "name": "Post-demo recovery — after Sales handback",
+          "emails": [
+            {
+              "number": 1,
+              "name": "Relevant reason to reconsider",
+              "timing": "Provisional: 10–14 days after the final personal attempt and explicit handback",
+              "purpose": "Reopen with one proof point or workflow tied to what the prospect cared about in the demo.",
+              "cta": "Reply if the priority is still active."
+            },
+            {
+              "number": 2,
+              "name": "Close the loop",
+              "timing": "Provisional: 7–10 days after recovery email 1",
+              "purpose": "End the recovery sequence respectfully, then move the prospect to Pulse if they remain quiet.",
+              "cta": "Restart the conversation when the timing is right."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pulse",
+      "name": "Prospect Pulse",
+      "summary": "Shared six-month nurture for warm and net-new prospects who complete their relevant cycle without entering sales. Each email starts with a recognizable property problem, connects it to a LUCI benefit, and proves the connection with a workflow, capability, or operating result.",
+      "cycles": [
+        {
+          "name": "Every 4–6 weeks",
+          "emails": [
+            {
+              "number": 1,
+              "name": "When the property has too many systems",
+              "timing": "Month 1",
+              "purpose": "Start with the operational drag of separate interfaces, vendors, and workflows. Tie the problem to LUCI's property-wide orchestration and control, with the recent New LUCI release as supporting proof that this control continues to expand.",
+              "cta": "See how LUCI runs the property from one interface."
+            },
+            {
+              "number": 2,
+              "name": "When a critical change cannot interrupt what is live",
+              "timing": "Month 2",
+              "purpose": "Tell the story of an event, source change, or floor update that must happen at the right moment without disrupting the current experience. Use staging and presets as proof of safer execution.",
+              "cta": "See how teams prepare the next change before it goes live."
+            },
+            {
+              "number": 3,
+              "name": "When every team needs the same picture",
+              "timing": "Month 3",
+              "purpose": "Show the cost of operations, IT, marketing, and leadership working from different systems or assumptions. Tie one shared operating view to faster, more accountable decisions.",
+              "cta": "See how LUCI aligns the operation."
+            },
+            {
+              "number": 4,
+              "name": "When the property adds another venue",
+              "timing": "Month 4",
+              "purpose": "Use an expansion, renovation, or new venue to show how isolated systems accumulate. Tie LUCI to extending the existing standard without adding another interface or parallel workflow.",
+              "cta": "See how the platform extends without rebuilding."
+            },
+            {
+              "number": 5,
+              "name": "When something fails and ownership is fragmented",
+              "timing": "Month 5",
+              "purpose": "Tell the story of an incident crossing devices, vendors, and teams with no single owner. Tie in-product context, audit history, and the embedded team to one accountable response.",
+              "cta": "See how LUCI carries context from incident to resolution."
+            },
+            {
+              "number": 6,
+              "name": "When the next refresh decision arrives",
+              "timing": "Month 6",
+              "purpose": "Frame the choice between another replacement cycle and a standardized platform that consolidates the environment and becomes more capable over time. End with the strongest invitation to revisit LUCI.",
+              "cta": "Compare the next refresh with a LUCI operating model."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
