@@ -1203,12 +1203,13 @@
 .lp-flowx__box {
   box-sizing: border-box;
   border-radius: 8px;
-  padding: 12px 10px;
+  padding: 18px 12px;
   border: 1px solid #DBE1E4;
   background: #F5F8FA;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  justify-content: center;
+  gap: 4px;
   min-width: 0;
 }
 
@@ -1230,7 +1231,7 @@
 .lp-flowx__label {
   font-family: var(--font);
   font-weight: 700;
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--mint-dark);
@@ -1240,7 +1241,7 @@
 
 .lp-flowx__val {
   font-family: var(--font-body);
-  font-size: 11.5px;
+  font-size: 13px;
   line-height: 1.3;
   color: var(--ink-strong);
 }
@@ -1249,7 +1250,7 @@
 
 .lp-flowx__sub {
   font-family: var(--font-body);
-  font-size: 10px;
+  font-size: 11px;
   line-height: 1.25;
   color: var(--navy-muted);
 }
@@ -1274,12 +1275,21 @@
   border-bottom: 5px solid transparent;
 }
 
-.lp-flowx__row { margin-bottom: 20px; }
+.lp-flowx__row {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+}
 
 .lp-flowx__title {
   font-family: var(--font);
   font-weight: 700;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--ink-strong);
-  margin: 0 0 10px;
+  margin: 0 0 12px;
+}
+
+.lp-flowx__row .lp-flowx {
+  flex: 1;
 }
