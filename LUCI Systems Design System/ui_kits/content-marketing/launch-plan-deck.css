@@ -1281,6 +1281,35 @@
 
 
 
+/* ═══ 12.5 · FRAME — strategic framing statement ═══════════════
+   A thesis statement that sits at the top of the body, not as a
+   subtitle. Mint left bar + faint tint gives it enough weight to
+   read as the frame for the slide without becoming a heavy callout.
+   <em> picks up mint to emphasize the key phrases. */
+
+.lp-frame {
+  border-left: 3px solid var(--mint-dark);
+  padding: 16px 22px;
+  background: rgba(43, 158, 128, 0.045);
+  margin-bottom: 32px;
+  max-width: 72ch;
+}
+
+.lp-frame p {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink-strong);
+  margin: 0;
+}
+
+.lp-frame em {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--mint-dark);
+}
+
+
 /* ═══ 13 · SWIM — Marketing / Sales lanes ══════════════════════
    Three stacked tracks that share ONE column template, so a box
    in the Sales lane sits exactly under the gap it fills in the
