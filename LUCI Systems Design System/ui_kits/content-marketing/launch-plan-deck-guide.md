@@ -270,37 +270,38 @@ Sits last in a slide body. For caveats and open decisions, not for content that 
 
 ### 11 · Flow
 
-A left-to-right sequence of soft cards joined by mint arrows. Use it when each
-phase **feeds** the next — a campaign path, a lifecycle. Independent categories
-belong in the matrix or the indicator columns; an arrow between unrelated things
-claims a causal link that isn't there.
+A left-to-right sequence of flat-fill boxes joined by mint arrows, with
+phase labels in a shared header row above — matching the prospect-nurture
+SVG on the IMP page. Use it when each phase **feeds** the next. Independent
+categories belong in the matrix or the indicator columns.
+
+Grid: 3 cards + 2 arrow gutters. Phase labels in row 1 align over their
+card; a rule spans row 2; cards + arrows fill row 3.
 
 ```html
 <div class="lp-flow">
-  <div class="lp-flow__step">
-    <p class="lp-flow__phase">Pre-launch</p>
+  <p class="lp-flow__phase" style="grid-column:1">Pre-launch</p>
+  <p class="lp-flow__phase" style="grid-column:3">Launch</p>
+  <p class="lp-flow__phase" style="grid-column:5">Follow-up</p>
+  <hr class="lp-flow__rule">
+  <div class="lp-flow__step lp-flow__step--accent" style="grid-column:1">
     <p class="lp-flow__name">Seminar cycle</p>
-    <div class="lp-defs">
-      <div class="lp-def">
-        <span class="lp-def__n">Emails</span>
-        <span class="lp-def__d">5 segmented touches</span>
-      </div>
-    </div>
+    <p class="lp-flow__row"><span class="lp-flow__key">Emails</span>
+      <span class="lp-flow__val">5 segmented touches</span></p>
   </div>
-  <span class="lp-flow__arrow" aria-hidden="true"></span>
-  <!-- next step -->
+  <span class="lp-flow__arrow" style="grid-column:2" aria-hidden="true"></span>
+  <!-- next step at grid-column:3, arrow at 4, step at 5 -->
 </div>
 ```
 
-Card heads are deliberately small — phase 11px, name 21px — so the slide title
-stays the only large type on the slide. Do not raise them to compete with it.
+Card names are 18px — deliberately smaller than the slide title so the
+title stays the only large type. Do not raise them to compete.
 
-Inside a flow card the definition keys drop to small mint tracked labels
-automatically. The shared key column is 68px; a long key like "Handback" needs
-`style="--lp-defw: 84px;"` on that card's `.lp-defs` or it wraps.
-
-`.lp-flow__step--open` is dashed and unfilled, for a phase where nothing is
-sent. It reads as deliberately empty rather than as a card that failed to load.
+Modifiers on `.lp-flow__step`:
+- `--accent` — mint-tinted fill (`#E6F5EF`) with mint border, for active
+  phases where email is sent.
+- `--open` — white fill with dashed grey border, for a phase where nothing
+  is sent. Reads as deliberately empty.
 
 ---
 
