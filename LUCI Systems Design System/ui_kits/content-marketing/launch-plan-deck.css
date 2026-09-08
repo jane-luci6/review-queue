@@ -1100,3 +1100,51 @@
 .slide--dark .lp-flow__asset::after { color: var(--mint); }
 
 .lp-flow__asset:last-child::after { content: ''; }
+
+
+/* Numbered email badge — small mint circle with the email's position
+   in its cycle. Sits at the left of each email row below the box. */
+.lp-flow__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  border-radius: 999px;
+  background: rgba(43, 158, 128, 0.12);
+  font-family: var(--font);
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--mint-dark);
+}
+
+.slide--dark .lp-flow__num {
+  background: rgba(104, 227, 190, 0.14);
+  color: var(--mint);
+}
+
+/* Email row with number badge — flex row, not stacked */
+.lp-flow__emails .lp-flow__email-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.lp-flow__emails .lp-flow__email {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.lp-flow__emails .lp-flow__when {
+  display: block;
+  margin-top: 0;
+  font-size: 11.5px;
+}
+
+/* Email list below the box — lighter, no top border */
+.lp-flow__emails {
+  margin-top: 14px;
+  padding-top: 0;
+  border-top: 0;
+}
