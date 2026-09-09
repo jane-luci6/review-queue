@@ -1326,6 +1326,18 @@
       padding: 10px 0; font-size: 14.5px; line-height: 1.45;
     }
     .field-runs--inline .field-runs__item:nth-child(n+3) { border-bottom: none; }
+    /* icon-led runs rows */
+    .field-runs--inline .field-runs__item--icon {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 12px 0;
+    }
+    .field-runs__ic {
+      flex: none; width: 26px; height: 26px;
+      display: inline-flex; align-items: center; justify-content: center;
+      margin-top: 1px;
+    }
+    .field-runs__ic svg { width: 100%; height: 100%; display: block; }
+    .field-runs__txt { flex: 1; }
     @media (max-width: 640px) {
       .field-runs--inline .field-runs__list { grid-template-columns: 1fr; }
       .field-runs--inline .field-runs__item:nth-child(n+3) { border-bottom: 1px solid var(--rule-light); }
@@ -2633,10 +2645,22 @@
         <h3 class="field-runs__title">What Aliante runs now</h3>
         <div class="field-runs__rule" aria-hidden="true"></div>
         <ul class="field-runs__list">
-          <li class="field-runs__item">Six configurations reshape the wall around the day&rsquo;s event mix</li>
-          <li class="field-runs__item">Section-level audio lets one event take focus</li>
-          <li class="field-runs__item">The main wall, bar ticker, and all sportsbar screens coordinate from a single interface</li>
-          <li class="field-runs__item">Aliante&rsquo;s team manages the room through the LUCI interface already used across the property</li>
+          <li class="field-runs__item field-runs__item--icon">
+            <span class="field-runs__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="5.5" height="6" rx="1" stroke="#2b9e80" stroke-width="1.7"/><rect x="9.25" y="5" width="5.5" height="6" rx="1" stroke="#2b9e80" stroke-width="1.7"/><rect x="15.5" y="5" width="5.5" height="6" rx="1" fill="#CEB06E" fill-opacity="0.8" stroke="#CEB06E" stroke-width="1.7"/><rect x="3" y="13" width="5.5" height="6" rx="1" stroke="#2b9e80" stroke-width="1.7"/><rect x="9.25" y="13" width="5.5" height="6" rx="1" stroke="#2b9e80" stroke-width="1.7"/><rect x="15.5" y="13" width="5.5" height="6" rx="1" stroke="#2b9e80" stroke-width="1.7"/></svg></span>
+            <span class="field-runs__txt">Six configurations reshape the wall around the day&rsquo;s event mix</span>
+          </li>
+          <li class="field-runs__item field-runs__item--icon">
+            <span class="field-runs__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 9v6h3l5 4V5L7 9H4Z" fill="#2b9e80" fill-opacity="0.18" stroke="#2b9e80" stroke-width="1.7" stroke-linejoin="round"/><path d="M15 8.5c1.5 2 1.5 5 0 7" stroke="#2b9e80" stroke-width="1.7" stroke-linecap="round"/><path d="M17.5 6c2.5 3 2.5 9 0 12" stroke="#CEB06E" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+            <span class="field-runs__txt">Section-level audio lets one event take focus</span>
+          </li>
+          <li class="field-runs__item field-runs__item--icon">
+            <span class="field-runs__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="13" rx="2" fill="#2b9e80" fill-opacity="0.16" stroke="#2b9e80" stroke-width="1.7"/><path d="M9 21h6M12 17v4" stroke="#2b9e80" stroke-width="1.7" stroke-linecap="round"/><rect x="6.5" y="7.5" width="4" height="3" rx="0.6" fill="#CEB06E" fill-opacity="0.85"/><rect x="11" y="7.5" width="4" height="3" rx="0.6" fill="#CEB06E" fill-opacity="0.55"/><rect x="15.5" y="7.5" width="4" height="3" rx="0.6" fill="#CEB06E" fill-opacity="0.3"/></svg></span>
+            <span class="field-runs__txt">The main wall, bar ticker, and all sportsbar screens coordinate from a single interface</span>
+          </li>
+          <li class="field-runs__item field-runs__item--icon">
+            <span class="field-runs__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="#2b9e80" stroke-width="1.7" stroke-linecap="round"/><circle cx="9" cy="7" r="2.2" fill="#fff" stroke="#2b9e80" stroke-width="1.7"/><circle cx="15" cy="12" r="2.2" fill="#fff" stroke="#2b9e80" stroke-width="1.7"/><circle cx="8" cy="17" r="2.2" fill="#CEB06E" fill-opacity="0.9" stroke="#CEB06E" stroke-width="1.7"/></svg></span>
+            <span class="field-runs__txt">Aliante&rsquo;s team manages the room through the LUCI interface already used across the property</span>
+          </li>
         </ul>
       </div>
     </div>
