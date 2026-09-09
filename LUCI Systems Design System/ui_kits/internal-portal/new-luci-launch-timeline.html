@@ -50,10 +50,18 @@ body {
 
 .wrap { max-width: 1160px; }
 
+/* ---- Expanded scale ------------------------------------------------------
+   The months are NOT equal width. Nov and Dec carry most of the activity, so
+   they get roughly twice the horizontal room; quiet months are compressed.
+   Column edges (%): Sep 0 | Oct 10 | Nov 18 | Dec 38 | Jan 60 | Feb 76 |
+   Mar 88 | end 100. Week ticks in the expanded months make the wider scale
+   visible rather than misleading.
+   ------------------------------------------------------------------------ */
+
 .months {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  margin-top: 32px;
+  grid-template-columns: 1fr 0.8fr 2fr 2.2fr 1.6fr 1.2fr 1.2fr;
+  margin-top: 30px;
 }
 
 .months span {
@@ -62,22 +70,46 @@ body {
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.1em;
-  padding-bottom: 8px;
+  padding-bottom: 6px;
   text-align: center;
   text-transform: uppercase;
 }
 
-/* Seven equal month columns: Sep 0–14.29 … Mar 85.71–100 */
-.track {
-  background-image: repeating-linear-gradient(
-    to right,
-    rgba(219, 225, 228, 0.55) 0,
-    rgba(219, 225, 228, 0.55) 1px,
-    transparent 1px,
-    transparent 14.2857%
-  );
-  height: 344px;
-  position: relative;
+.months .wide { color: var(--ink-strong); }
+
+.ticks { height: 10px; position: relative; }
+
+.ticks i {
+  background: rgba(43, 158, 128, 0.4);
+  bottom: 0;
+  position: absolute;
+  top: 2px;
+  width: 1px;
+}
+
+.scale-note {
+  color: var(--navy-muted);
+  font-family: var(--font);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  margin-top: 18px;
+  text-transform: uppercase;
+}
+
+.scale-note em {
+  color: var(--ink-strong);
+  font-style: normal;
+}
+
+.track { height: 340px; position: relative; }
+
+.grid i {
+  background: rgba(219, 225, 228, 0.6);
+  bottom: 0;
+  position: absolute;
+  top: 0;
+  width: 1px;
 }
 
 .line {
@@ -218,12 +250,7 @@ body {
 
 .prod--ga b { background: var(--gold-deep); opacity: 0.65; }
 
-.prod p {
-  bottom: 35px;
-  left: 0;
-  position: absolute;
-  right: 0;
-}
+.prod p { bottom: 35px; left: 0; position: absolute; right: 0; }
 
 .prod strong {
   color: var(--ink-strong);
@@ -247,12 +274,7 @@ body {
 
 /* Marketing below. Rows run in date order and each label reads away from the
    later stems, so no stem is ever drawn through a label. */
-.mkt {
-  position: absolute;
-  top: 100px;
-  width: 0;
-  z-index: 3;
-}
+.mkt { position: absolute; top: 100px; width: 0; z-index: 3; }
 
 .mkt i {
   background: var(--gold-deep);
@@ -275,7 +297,7 @@ body {
   width: 2px;
 }
 
-.mkt p { position: absolute; width: 172px; }
+.mkt p { position: absolute; width: 150px; }
 .mkt--left p { right: 12px; text-align: right; }
 .mkt--right p { left: 12px; text-align: left; }
 
@@ -318,65 +340,82 @@ body {
 
   <div class="wrap">
     <div class="months">
-      <span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
-      <span>Jan</span><span>Feb</span><span>Mar</span>
+      <span>Sep</span><span>Oct</span><span class="wide">Nov</span>
+      <span class="wide">Dec</span><span>Jan</span><span>Feb</span><span>Mar</span>
+    </div>
+
+    <div class="ticks">
+      <i style="left:22.67%"></i><i style="left:27.33%"></i>
+      <i style="left:32.00%"></i><i style="left:36.67%"></i>
+      <i style="left:42.97%"></i><i style="left:47.94%"></i>
+      <i style="left:52.90%"></i><i style="left:57.87%"></i>
     </div>
 
     <div class="track">
+      <div class="grid">
+        <i style="left:0"></i><i style="left:10%"></i><i style="left:18%"></i>
+        <i style="left:38%"></i><i style="left:60%"></i><i style="left:76%"></i>
+        <i style="left:88%"></i>
+      </div>
       <div class="line"></div>
 
-      <div class="closed" style="left:52.53%;width:5.07%"></div>
-      <div class="closed-badge" style="left:55.06%">Closed <em>Dec 22–Jan 2</em></div>
+      <div class="closed" style="left:52.90%;width:7.62%"></div>
+      <div class="closed-badge" style="left:56.71%">Closed <em>Dec 22–Jan 2</em></div>
 
-      <div class="phase" style="left:13.81%;width:20.48%"></div>
-      <div class="phase" style="left:34.29%;width:18.24%"></div>
-      <div class="phase" style="left:57.60%;width:12.45%"></div>
-      <div class="phase" style="left:70.05%;width:27.55%"></div>
-      <div class="phase phase--support" style="left:78.57%;width:19.03%">Post-release support</div>
-      <div class="arrow" style="left:98.2%">→</div>
+      <div class="phase" style="left:9.67%;width:18.33%"></div>
+      <div class="phase" style="left:28.00%;width:24.90%"></div>
+      <div class="phase" style="left:60.52%;width:13.93%"></div>
+      <div class="phase" style="left:74.45%;width:23.05%"></div>
+      <div class="phase phase--support" style="left:82.00%;width:15.50%">Post-release support</div>
+      <div class="arrow" style="left:98.1%">→</div>
 
-      <div class="phase-name" style="left:24.05%">Stabilization</div>
-      <div class="phase-name" style="left:43.41%">Release preparation</div>
-      <div class="phase-name" style="left:83.83%">Rollout</div>
+      <div class="phase-name" style="left:18.84%">Stabilization</div>
+      <div class="phase-name" style="left:40.45%">Release preparation</div>
+      <div class="phase-name" style="left:85.98%">Rollout</div>
 
-      <div class="prod" style="left:13.81%">
+      <div class="prod" style="left:9.67%">
         <p><strong>Beta</strong><time>Sep 30</time></p>
         <b></b><i></i>
       </div>
-      <div class="prod" style="left:34.29%">
+      <div class="prod" style="left:28.00%">
         <p><strong>Release candidate</strong><time>Nov 13</time></p>
         <b></b><i></i>
       </div>
-      <div class="prod prod--ga" style="left:70.05%">
+      <div class="prod prod--ga" style="left:74.45%">
         <p><strong>General availability</strong><time>Jan 29</time></p>
         <b></b><i></i>
       </div>
 
-      <div class="mkt r1 mkt--left" style="left:37.62%">
+      <div class="mkt r1 mkt--left" style="left:21.33%">
+        <i></i><b></b>
+        <p><strong>ActiveCampaign upgrade</strong><time>Nov 6</time></p>
+      </div>
+      <div class="mkt r2 mkt--left" style="left:30.67%">
         <i></i><b></b>
         <p><strong>Website live</strong><time>Nov 20</time></p>
       </div>
-      <div class="mkt r2 mkt--left" style="left:44.24%">
+      <div class="mkt r3 mkt--left" style="left:40.13%">
         <i></i><b></b>
         <p><strong>Features one-pager</strong><time>Dec 4</time></p>
       </div>
-      <div class="mkt r3 mkt--left" style="left:47.00%">
+      <div class="mkt r4 mkt--left" style="left:44.39%">
         <i></i><b></b>
         <p><strong>Demo webinar</strong><time>Dec 10</time></p>
       </div>
-      <div class="mkt r4 mkt--left" style="left:50.69%">
-        <i></i><b></b>
-        <p><strong>ActiveCampaign Upgrade</strong><time>Dec 18</time></p>
-      </div>
-      <div class="mkt r1 mkt--right" style="left:78.57%">
+      <div class="mkt r1 mkt--right" style="left:82.00%">
         <i></i><b></b>
         <p><strong>Post-launch comms</strong><time>Feb 15</time></p>
       </div>
-      <div class="mkt r2 mkt--right" style="left:70.05%">
+      <div class="mkt r2 mkt--right" style="left:74.45%">
         <i></i><b></b>
         <p><strong>Net-new prospecting</strong><time>Jan 29</time></p>
       </div>
     </div>
+
+    <p class="scale-note">
+      Months are not equal width &mdash; <em>Nov and Dec are shown at expanded
+      scale</em> to fit the launch run-up. Ticks mark weeks.
+    </p>
   </div>
 </body>
 </html>
