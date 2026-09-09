@@ -88,7 +88,7 @@ body {
 }
 
 
-.track { height: 454px; position: relative; }
+.track { height: 490px; position: relative; }
 
 .grid i {
   background: rgba(219, 225, 228, 0.6);
@@ -326,6 +326,12 @@ body {
   top: 328px;
 }
 
+.comms-bar--ongoing {
+  background: rgba(206, 176, 110, 0.16);
+  box-shadow: inset 0 0 0 1px rgba(206, 176, 110, 0.45);
+  color: var(--navy-muted);
+}
+
 .comms-head {
   color: var(--navy-muted);
   font-family: var(--font);
@@ -335,7 +341,7 @@ body {
   letter-spacing: 0.2em;
   position: absolute;
   text-transform: uppercase;
-  top: 342px;
+  top: 380px;
 }
 
 .comms-bar {
@@ -368,9 +374,10 @@ body {
   right: 0;
 }
 
-.cm1 { top: 372px; }
-.cm2 { top: 398px; }
-.cm3 { top: 424px; }
+.cm0 { top: 350px; }
+.cm1 { top: 406px; }
+.cm2 { top: 432px; }
+.cm3 { top: 458px; }
 
 @media print {
   @page { size: landscape; margin: 0.5in; }
@@ -460,6 +467,9 @@ body {
       </div>
 
       <div class="comms-rule"></div>
+
+      <div class="comms-bar comms-bar--ongoing cm0" style="left:0;width:97.5%">The Signal newsletter &middot; monthly</div>
+
       <p class="comms-head">Campaign email comms</p>
 
       <div class="comms-lane cm1"></div>
