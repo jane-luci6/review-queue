@@ -3907,7 +3907,7 @@
       if (!board) return;
       board.replaceChildren();
       try {
-        const res = await fetch('campaign-board.json?v=20260908a');
+        const res = await fetch('campaign-board.json?v=20260909b');
         if (!res.ok) throw new Error('load');
         const data = await res.json();
         const setHead = (el, val) => { if (!el) return; el.textContent = val || ''; el.hidden = !val; };
