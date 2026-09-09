@@ -14,9 +14,9 @@
   --rule-light: #DBE1E4;
   --ink: #354F5C;
   --ink-strong: #1C2B33;
-  --font: 'Space Grotesk', 'Trebuchet MS', sans-serif;
-  --font-body: 'Inter', 'Helvetica Neue', sans-serif;
-  --gutter: 112px;
+  --font: "Space Grotesk", "Trebuchet MS", sans-serif;
+  --font-body: "Inter", "Helvetica Neue", sans-serif;
+  --gutter: 88px;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -26,186 +26,140 @@ body {
   color: var(--ink);
   font-family: var(--font-body);
   line-height: 1.5;
-  padding: 56px clamp(28px, 6vw, 72px) 72px;
+  padding: 56px clamp(28px, 6vw, 64px) 72px;
 }
 
-.tl-kicker {
+.kicker {
   color: var(--mint-dark);
   font-family: var(--font);
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: .22em;
+  letter-spacing: 0.22em;
   margin-bottom: 14px;
   text-transform: uppercase;
 }
 
-.tl-title {
+.title {
   color: var(--ink-strong);
   font-family: var(--font);
   font-size: clamp(32px, 5vw, 44px);
   font-weight: 700;
-  letter-spacing: -.03em;
+  letter-spacing: -0.03em;
   line-height: 1.1;
 }
 
-.tl {
+/* One shared 8-month calendar. Every row uses the same columns. */
+.cal {
   display: grid;
-  grid-template-columns: var(--gutter) minmax(0, 1fr);
+  grid-template-columns: var(--gutter) repeat(8, minmax(0, 1fr));
   margin-top: 40px;
-  max-width: 1080px;
-  position: relative;
+  max-width: 1120px;
 }
 
-.tl__months {
-  display: grid;
-  grid-column: 2;
-  grid-template-columns: repeat(8, 1fr);
+.cal > * {
+  min-width: 0;
 }
 
-.tl__month {
+.row-label {
   color: var(--navy-muted);
   font-family: var(--font);
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: .1em;
+  letter-spacing: 0.14em;
+  padding: 16px 16px 16px 0;
+  text-transform: uppercase;
+}
+
+.row-label--mkt { color: var(--gold-deep); }
+
+.month {
+  border-bottom: 1px solid var(--rule-light);
+  color: var(--navy-muted);
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
   padding-bottom: 10px;
   text-align: center;
   text-transform: uppercase;
 }
 
-.tl__label {
-  border-top: 1px solid var(--rule-light);
-  color: var(--navy-muted);
-  font-family: var(--font);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: .16em;
-  padding: 20px 20px 0 0;
-  text-align: right;
-  text-transform: uppercase;
-}
-
-.tl__label--marketing { color: var(--gold-deep); }
-
-.tl__track {
-  background-image: repeating-linear-gradient(
-    to right,
-    rgba(219, 225, 228, .55) 0,
-    rgba(219, 225, 228, .55) 1px,
-    transparent 1px,
-    transparent 12.5%
-  );
-  border-top: 1px solid var(--rule-light);
+.month--closed {
   position: relative;
 }
 
-/* Marketing is a quiet calendar row: grouped by month, no cross-reference key. */
-.tl__track--marketing {
-  display: grid;
-  gap: 0;
-  grid-template-columns: repeat(8, 1fr);
-  min-height: 144px;
-  padding: 16px 0;
-}
-
-.tl__month-events {
-  min-width: 0;
-  padding: 0 10px;
-}
-
-.tl__month-events--nov { grid-column: 3; }
-.tl__month-events--dec { grid-column: 4; }
-.tl__month-events--jan { grid-column: 5; }
-.tl__month-events--feb { grid-column: 6; }
-
-.tl-event {
-  border-left: 2px solid var(--gold-deep);
-  padding-left: 8px;
-}
-
-.tl-event + .tl-event { margin-top: 12px; }
-
-.tl-event__date {
-  color: var(--gold-deep);
+.month--closed small {
+  color: rgba(73, 97, 110, 0.7);
   display: block;
-  font-family: var(--font);
+  font-family: var(--font-body);
   font-size: 10px;
-  font-weight: 700;
-  letter-spacing: .04em;
-  line-height: 1.2;
-  margin-bottom: 3px;
-  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0;
+  margin-top: 4px;
+  text-transform: none;
 }
 
-.tl-event__name {
-  color: var(--ink-strong);
-  display: block;
-  font-family: var(--font);
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 1.25;
+/* Product: one bar across the months, three named dots. */
+.product {
+  grid-column: 2 / -1;
+  height: 136px;
+  position: relative;
 }
 
-/* Product remains the primary timeline. */
-.tl__track--product { height: 128px; }
-
-.tl-line {
+.product::before {
   background: var(--rule-light);
+  content: "";
   height: 2px;
   left: 0;
   position: absolute;
   right: 0;
-  top: 48px;
+  top: 36px;
 }
 
-.tl-phase {
+.phase {
   align-items: center;
-  background: rgba(43, 158, 128, .24);
-  border-radius: 4px 4px 0 0;
+  background: rgba(43, 158, 128, 0.22);
+  border-radius: 4px;
   color: var(--mint-dark);
   display: flex;
   font-family: var(--font);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
-  height: 20px;
+  height: 22px;
   justify-content: center;
-  letter-spacing: .07em;
+  letter-spacing: 0.06em;
   overflow: hidden;
   position: absolute;
   text-transform: uppercase;
-  top: 28px;
+  top: 26px;
   white-space: nowrap;
 }
 
-.tl-phase--support {
-  background: rgba(43, 158, 128, .11);
-  border-radius: 0 0 4px 4px;
+.phase--support {
+  background: rgba(43, 158, 128, 0.1);
   color: var(--navy-muted);
-  font-size: 9px;
-  height: 16px;
-  top: 50px;
+  font-size: 10px;
+  height: 18px;
+  top: 52px;
 }
 
-.tl-arrow {
+.arrow {
   color: var(--mint-dark);
-  font-family: var(--font);
-  font-size: 13px;
-  font-weight: 700;
-  opacity: .5;
+  font-size: 14px;
+  opacity: 0.45;
   position: absolute;
-  top: 28px;
+  top: 26px;
 }
 
-.tl-node {
+.node {
   position: absolute;
   text-align: center;
-  top: 48px;
+  top: 36px;
   transform: translateX(-50%);
-  width: 120px;
-  z-index: 2;
+  width: 128px;
 }
 
-.tl-node__dot {
+.dot {
   background: var(--off-white);
   border: 3px solid var(--mint-dark);
   border-radius: 50%;
@@ -215,7 +169,7 @@ body {
   width: 16px;
 }
 
-.tl-node--ga .tl-node__dot {
+.node--ga .dot {
   background: var(--gold-deep);
   border-color: var(--gold-deep);
   height: 20px;
@@ -223,184 +177,125 @@ body {
   width: 20px;
 }
 
-.tl-node__name {
+.node strong {
   color: var(--ink-strong);
   display: block;
   font-family: var(--font);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 700;
   line-height: 1.2;
   margin-top: 14px;
 }
 
-.tl-node--ga .tl-node__name { color: var(--gold-deep); }
+.node--ga strong { color: var(--gold-deep); }
 
-.tl-node__date {
+.node span {
   color: var(--navy-muted);
   display: block;
   font-family: var(--font);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
-  margin-top: 3px;
+  margin-top: 4px;
 }
 
-/* Closed Dec 22–Jan 2: visible, but behind both lanes. */
-.tl-holiday {
-  background: repeating-linear-gradient(
-    135deg,
-    rgba(73, 97, 110, .08) 0,
-    rgba(73, 97, 110, .08) 3px,
-    transparent 3px,
-    transparent 7px
-  );
-  border-left: 1px dashed rgba(73, 97, 110, .3);
-  border-right: 1px dashed rgba(73, 97, 110, .3);
-  bottom: 0;
-  left: calc(var(--gutter) + (100% - var(--gutter)) * .46);
-  pointer-events: none;
-  position: absolute;
-  top: 20px;
-  width: calc((100% - var(--gutter)) * .044);
-  z-index: 1;
+/* Marketing: same month columns, just a short list. */
+.mkt {
+  border-top: 1px solid var(--rule-light);
+  padding: 16px 10px 8px;
 }
 
-.tl-holiday__label {
-  color: rgba(73, 97, 110, .68);
+.mkt p {
+  color: var(--ink-strong);
   font-family: var(--font);
-  font-size: 9px;
+  font-size: 14px;
   font-weight: 700;
-  left: 50%;
-  letter-spacing: .08em;
-  position: absolute;
-  text-transform: uppercase;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  white-space: nowrap;
-  writing-mode: vertical-rl;
+  line-height: 1.3;
 }
+
+.mkt p + p { margin-top: 14px; }
+
+.mkt time {
+  color: var(--gold-deep);
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.mkt--empty { border-top: 1px solid var(--rule-light); }
 
 @media print {
-  @page { size: landscape; margin: .5in; }
+  @page { size: landscape; margin: 0.5in; }
   body { padding: 0; }
 }
 
 @media (max-width: 820px) {
-  .tl { grid-template-columns: 1fr; }
-  .tl__months { grid-column: 1; }
-  .tl__label {
-    border-top: 0;
-    padding: 20px 0 8px;
-    text-align: left;
-  }
-  .tl__track--marketing { min-height: auto; }
-  .tl__month-events { grid-column: 1 / -1; padding: 8px 0; }
-  .tl__track--product {
-    background-image: none;
-    height: auto;
-    padding: 8px 0;
-  }
-  .tl-line,
-  .tl-phase,
-  .tl-arrow,
-  .tl-node,
-  .tl-holiday {
-    display: block;
-    margin: 10px 0;
-    position: static;
-    transform: none;
-    width: auto !important;
-  }
+  .cal { grid-template-columns: 1fr; }
+  .row-label { padding: 20px 0 8px; }
+  .product { grid-column: 1; height: auto; }
+  .product::before, .phase, .arrow, .node { position: static; transform: none; width: auto; margin: 10px 0; }
 }
 </style>
 </head>
 <body>
-<p class="tl-kicker">New LUCI</p>
-<h1 class="tl-title">Launch Timeline</h1>
+  <p class="kicker">New LUCI</p>
+  <h1 class="title">Launch Timeline</h1>
 
-<div class="tl">
-  <div class="tl-holiday">
-    <span class="tl-holiday__label">Holiday break</span>
+  <div class="cal">
+    <div></div>
+    <div class="month">Sep</div>
+    <div class="month">Oct</div>
+    <div class="month">Nov</div>
+    <div class="month month--closed">Dec<small>Closed Dec 22–Jan 2</small></div>
+    <div class="month">Jan</div>
+    <div class="month">Feb</div>
+    <div class="month">Mar</div>
+    <div class="month">Apr</div>
+
+    <div class="row-label">Product</div>
+    <div class="product">
+      <div class="phase" style="left:12.1%;width:17.9%">Stabilization</div>
+      <div class="phase" style="left:30%;width:31.3%">Release preparation</div>
+      <div class="phase" style="left:61.3%;width:34.7%">Rollout</div>
+      <div class="phase phase--support" style="left:75%;width:21%">Post-release support</div>
+      <div class="arrow" style="left:96.6%">→</div>
+
+      <div class="node" style="left:12.1%">
+        <i class="dot"></i>
+        <strong>Beta</strong>
+        <span>Sep 30</span>
+      </div>
+      <div class="node" style="left:30%">
+        <i class="dot"></i>
+        <strong>Release candidate</strong>
+        <span>Nov 13</span>
+      </div>
+      <div class="node node--ga" style="left:61.3%">
+        <i class="dot"></i>
+        <strong>General availability</strong>
+        <span>Jan 29</span>
+      </div>
+    </div>
+
+    <div class="row-label row-label--mkt">Marketing</div>
+    <div class="mkt mkt--empty"></div>
+    <div class="mkt mkt--empty"></div>
+    <div class="mkt">
+      <p><time>Nov 20</time> Website live</p>
+    </div>
+    <div class="mkt">
+      <p><time>Dec 4</time> Features one-pager</p>
+      <p><time>Dec 10</time> Demo webinar</p>
+      <p><time>Dec 18</time> ActiveCampaign Upgrade</p>
+    </div>
+    <div class="mkt">
+      <p><time>Jan 29</time> Net-new prospecting</p>
+    </div>
+    <div class="mkt">
+      <p><time>Feb 15</time> Post-launch comms</p>
+    </div>
+    <div class="mkt mkt--empty"></div>
+    <div class="mkt mkt--empty"></div>
   </div>
-
-  <div></div>
-  <div class="tl__months">
-    <span class="tl__month">Sep</span>
-    <span class="tl__month">Oct</span>
-    <span class="tl__month">Nov</span>
-    <span class="tl__month">Dec</span>
-    <span class="tl__month">Jan</span>
-    <span class="tl__month">Feb</span>
-    <span class="tl__month">Mar</span>
-    <span class="tl__month">Apr</span>
-  </div>
-
-  <div class="tl__label tl__label--marketing">Marketing</div>
-  <div class="tl__track tl__track--marketing">
-    <div class="tl__month-events tl__month-events--nov">
-      <div class="tl-event">
-        <span class="tl-event__date">Nov 20</span>
-        <span class="tl-event__name">Website live</span>
-      </div>
-    </div>
-
-    <div class="tl__month-events tl__month-events--dec">
-      <div class="tl-event">
-        <span class="tl-event__date">Dec 4</span>
-        <span class="tl-event__name">Features one-pager</span>
-      </div>
-      <div class="tl-event">
-        <span class="tl-event__date">Dec 10</span>
-        <span class="tl-event__name">Demo webinar</span>
-      </div>
-      <div class="tl-event">
-        <span class="tl-event__date">Dec 18</span>
-        <span class="tl-event__name">ActiveCampaign Upgrade</span>
-      </div>
-    </div>
-
-    <div class="tl__month-events tl__month-events--jan">
-      <div class="tl-event">
-        <span class="tl-event__date">Jan 29</span>
-        <span class="tl-event__name">Net-new prospecting</span>
-      </div>
-    </div>
-
-    <div class="tl__month-events tl__month-events--feb">
-      <div class="tl-event">
-        <span class="tl-event__date">Feb 15</span>
-        <span class="tl-event__name">Post-launch comms</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="tl__label">Product</div>
-  <div class="tl__track tl__track--product">
-    <div class="tl-line"></div>
-
-    <div class="tl-phase" style="left:12.1%; width:17.9%">Stabilization</div>
-    <div class="tl-phase" style="left:30%; width:31.3%">Release preparation</div>
-    <div class="tl-phase" style="left:61.3%; width:34.7%">Rollout</div>
-    <div class="tl-phase tl-phase--support" style="left:75%; width:21%">Post-release support</div>
-    <div class="tl-arrow" style="left:96.6%">&#8594;</div>
-
-    <div class="tl-node" style="left:12.1%">
-      <span class="tl-node__dot"></span>
-      <span class="tl-node__name">Beta</span>
-      <span class="tl-node__date">Sep 30</span>
-    </div>
-
-    <div class="tl-node" style="left:30%">
-      <span class="tl-node__dot"></span>
-      <span class="tl-node__name">Release candidate</span>
-      <span class="tl-node__date">Nov 13</span>
-    </div>
-
-    <div class="tl-node tl-node--ga" style="left:61.3%">
-      <span class="tl-node__dot"></span>
-      <span class="tl-node__name">General availability</span>
-      <span class="tl-node__date">Jan 29</span>
-    </div>
-  </div>
-</div>
 </body>
 </html>
