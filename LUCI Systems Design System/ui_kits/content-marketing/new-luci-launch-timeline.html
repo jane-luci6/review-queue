@@ -6,97 +6,171 @@
 <title>New LUCI Launch Timeline</title>
 <link rel="stylesheet" href="../../assets/fonts/luci-brand-fonts.css">
 <style>
-:root{--navy-deep:#0A161C;--navy-muted:#49616E;--mint-dark:#2b9e80;--gold-deep:#CEB06E;--off-white:#F5F8FA;--rule-light:#DBE1E4;--ink:#354F5C;--ink-strong:#1C2B33;--font:'Space Grotesk','Trebuchet MS',sans-serif;--font-body:'Inter','Helvetica Neue',sans-serif}
+:root{
+  --navy-deep:#0A161C;--navy-muted:#49616E;
+  --mint-dark:#2b9e80;--gold-deep:#CEB06E;
+  --off-white:#F5F8FA;--rule-light:#DBE1E4;
+  --ink:#354F5C;--ink-strong:#1C2B33;
+  --font:'Space Grotesk','Trebuchet MS',sans-serif;
+  --font-body:'Inter','Helvetica Neue',sans-serif;
+  --gutter:104px;
+}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:var(--font-body);background:var(--off-white);color:var(--ink);padding:56px clamp(28px,6vw,72px) 72px;line-height:1.5}
+
 .tl-kicker{font-family:var(--font);font-weight:700;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--mint-dark);margin-bottom:14px}
 .tl-title{font-family:var(--font);font-weight:700;font-size:clamp(32px,5vw,44px);line-height:1.1;letter-spacing:-.03em;color:var(--ink-strong)}
-.tl-months-top{display:flex;max-width:920px;margin-top:36px}
-.tl-months-top span{flex:1;text-align:center;font-family:var(--font);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy-muted);padding-bottom:10px;border-bottom:1px solid var(--rule-light)}
-.tl-timeline{position:relative;max-width:920px;height:150px;margin-bottom:8px;background-image:repeating-linear-gradient(to right,transparent 0,transparent calc(12.5% - 1px),rgba(219,225,228,.45) calc(12.5% - 1px),rgba(219,225,228,.45) 12.5%)}
-.tl-holiday{position:absolute;top:0;bottom:0;left:53%;width:5%;background:repeating-linear-gradient(135deg,rgba(219,225,228,.3) 0,rgba(219,225,228,.3) 3px,transparent 3px,transparent 6px);border-left:1px dashed rgba(219,225,228,.6);border-right:1px dashed rgba(219,225,228,.6);display:flex;justify-content:center;padding-top:3px}
-.tl-holiday span{font-family:var(--font);font-weight:600;font-size:8px;letter-spacing:.06em;text-transform:uppercase;color:rgba(73,97,110,.5);white-space:nowrap}
-.tl-line{position:absolute;left:0;right:0;top:66px;height:2px;background:var(--rule-light)}
-.tl-span{position:absolute;border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:var(--font);font-weight:600;font-size:10px;letter-spacing:.06em;text-transform:uppercase}
-.tl-span--main{top:48px;height:14px;background:rgba(43,158,128,.22);color:var(--mint-dark)}
-.tl-span--sub{top:74px;height:12px;background:rgba(43,158,128,.1);color:var(--navy-muted);font-size:9px}
-.tl-prod{position:absolute;transform:translateX(-50%);text-align:center;z-index:2;top:66px}
-.tl-prod__dot{display:block;width:16px;height:16px;border-radius:50%;background:var(--off-white);border:3px solid var(--mint-dark);margin:-8px auto 0}
-.tl-prod--ga .tl-prod__dot{background:var(--gold-deep);border-color:var(--gold-deep);width:20px;height:20px;margin:-10px auto 0}
-.tl-prod__label{display:block;font-family:var(--font);font-weight:700;font-size:14px;color:var(--ink-strong);margin-top:16px;line-height:1.2;max-width:14ch;margin-left:auto;margin-right:auto}
-.tl-prod--ga .tl-prod__label{color:var(--gold-deep)}
-.tl-prod__date{display:block;font-family:var(--font);font-weight:700;font-size:11px;color:var(--navy-muted);margin-top:4px}
-.tl-arrow{position:absolute;top:48px;height:14px;display:flex;align-items:center;font-family:var(--font);font-weight:700;font-size:12px;color:var(--mint-dark);opacity:.4}
-.tl-mkt{position:absolute;transform:translateX(-50%);text-align:center;z-index:3;width:100px}
-.tl-mkt--high{top:0}.tl-mkt--low{top:24px}
-.tl-mkt__label{display:block;font-family:var(--font);font-weight:700;font-size:10px;color:var(--gold-deep);line-height:1.2}
-.tl-mkt__date{display:block;font-family:var(--font);font-weight:600;font-size:9px;color:var(--navy-muted);margin-top:1px}
-.tl-mkt__stem{display:block;width:1px;background:rgba(206,176,110,.35);margin:4px auto 0}
-.tl-mkt--high .tl-mkt__stem{height:28px}.tl-mkt--low .tl-mkt__stem{height:8px}
-.tl-mkt__tip{display:block;width:7px;height:7px;background:var(--gold-deep);border-radius:2px;transform:rotate(45deg);margin:0 auto;position:relative;top:-4px}
+
+.tl-legend{display:flex;gap:24px;margin-top:24px;flex-wrap:wrap}
+.tl-legend__item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--navy-muted)}
+.tl-legend__dot{width:12px;height:12px;border-radius:50%;background:var(--off-white);border:3px solid var(--mint-dark)}
+.tl-legend__dot--ga{background:var(--gold-deep);border-color:var(--gold-deep)}
+.tl-legend__bar{width:24px;height:10px;border-radius:3px;background:rgba(43,158,128,.24)}
+.tl-legend__dia{width:9px;height:9px;background:var(--gold-deep);transform:rotate(45deg)}
+
+/* Grid: label gutter + track */
+.tl-grid{position:relative;display:grid;grid-template-columns:var(--gutter) 1fr;max-width:1000px;margin-top:36px}
+.tl-lane-name{font-family:var(--font);font-weight:700;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--navy-muted);padding-right:20px;padding-top:18px;text-align:right;border-top:1px solid var(--rule-light)}
+.tl-lane-name--mkt{color:var(--gold-deep)}
+
+/* Month header */
+.tl-months{grid-column:2;display:flex}
+.tl-months span{flex:1;text-align:center;font-family:var(--font);font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--navy-muted);padding-bottom:10px}
+.tl-months-spacer{grid-column:1}
+
+/* Track shared background: month gridlines */
+.tl-track{position:relative;border-top:1px solid var(--rule-light);
+  background-image:repeating-linear-gradient(to right,rgba(219,225,228,.5) 0,rgba(219,225,228,.5) 1px,transparent 1px,transparent 12.5%)}
+
+/* Product lane */
+.tl-track--product{height:120px}
+.tl-line{position:absolute;left:0;right:0;top:44px;height:2px;background:var(--rule-light)}
+.tl-bar{position:absolute;border-radius:4px;display:flex;align-items:center;justify-content:center;
+  font-family:var(--font);font-weight:700;font-size:10px;letter-spacing:.07em;text-transform:uppercase;white-space:nowrap;overflow:hidden}
+.tl-bar--phase{top:26px;height:18px;background:rgba(43,158,128,.24);color:var(--mint-dark)}
+.tl-bar--sub{top:52px;height:14px;background:rgba(43,158,128,.11);color:var(--navy-muted);font-size:9px}
+.tl-arrow{position:absolute;top:26px;height:18px;display:flex;align-items:center;font-family:var(--font);font-weight:700;font-size:13px;color:var(--mint-dark);opacity:.45}
+
+.tl-node{position:absolute;top:44px;transform:translateX(-50%);text-align:center;width:112px;z-index:2}
+.tl-node__dot{display:block;width:15px;height:15px;border-radius:50%;background:var(--off-white);border:3px solid var(--mint-dark);margin:-7.5px auto 0}
+.tl-node--ga .tl-node__dot{width:19px;height:19px;background:var(--gold-deep);border-color:var(--gold-deep);margin:-9.5px auto 0}
+.tl-node__label{display:block;font-family:var(--font);font-weight:700;font-size:13px;line-height:1.2;color:var(--ink-strong);margin-top:12px}
+.tl-node--ga .tl-node__label{color:var(--gold-deep)}
+.tl-node__date{display:block;font-family:var(--font);font-weight:600;font-size:11px;color:var(--navy-muted);margin-top:3px}
+
+/* Marketing lane */
+.tl-track--mkt{height:152px}
+.tl-mkt{position:absolute;transform:translateX(-50%);text-align:center;width:96px;z-index:2}
+.tl-mkt__dia{display:block;width:9px;height:9px;background:var(--gold-deep);transform:rotate(45deg);margin:0 auto}
+.tl-mkt__stem{display:block;width:1px;background:rgba(206,176,110,.4);margin:0 auto}
+.tl-mkt__label{display:block;font-family:var(--font);font-weight:700;font-size:11px;line-height:1.25;color:var(--ink-strong)}
+.tl-mkt__date{display:block;font-family:var(--font);font-weight:600;font-size:10px;color:var(--gold-deep);margin-top:2px}
+.tl-mkt--a{top:18px}
+.tl-mkt--a .tl-mkt__stem{height:10px}
+.tl-mkt--b{top:18px}
+.tl-mkt--b .tl-mkt__stem{height:72px}
+
+/* Holiday band spans both lanes */
+.tl-overlay{position:absolute;top:0;bottom:0;left:var(--gutter);right:0;pointer-events:none;z-index:1}
+.tl-holiday{position:absolute;top:22px;bottom:0;
+  background:repeating-linear-gradient(135deg,rgba(73,97,110,.09) 0,rgba(73,97,110,.09) 3px,transparent 3px,transparent 7px);
+  border-left:1px dashed rgba(73,97,110,.28);border-right:1px dashed rgba(73,97,110,.28)}
+.tl-holiday span{position:absolute;top:-20px;left:50%;transform:translateX(-50%);
+  font-family:var(--font);font-weight:700;font-size:9px;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(73,97,110,.62);white-space:nowrap}
+
 @media print{@page{size:landscape;margin:.5in}body{padding:0}}
-@media(max-width:760px){.tl-timeline{height:auto}.tl-months-top{flex-wrap:wrap}.tl-months-top span{flex:0 0 33%}.tl-line,.tl-span,.tl-arrow,.tl-prod,.tl-mkt,.tl-holiday{position:static;transform:none;display:block;margin:12px 0;width:auto}.tl-mkt__stem,.tl-mkt__tip{display:none}}
+@media(max-width:820px){
+  .tl-grid{grid-template-columns:1fr}
+  .tl-lane-name{text-align:left;padding:14px 0 6px;border-top:0}
+  .tl-months,.tl-months-spacer{grid-column:1}
+  .tl-track{height:auto!important;background-image:none;padding:8px 0}
+  .tl-line,.tl-bar,.tl-arrow,.tl-node,.tl-mkt,.tl-overlay{position:static;transform:none;display:block;width:auto;margin:10px 0}
+  .tl-mkt__stem,.tl-holiday{display:none}
+}
 </style>
 </head>
 <body>
 <p class="tl-kicker">New LUCI</p>
 <h1 class="tl-title">Launch Timeline</h1>
-<div class="tl-months-top">
-<span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span>
+
+<div class="tl-legend">
+  <div class="tl-legend__item"><span class="tl-legend__dot"></span>Product milestone</div>
+  <div class="tl-legend__item"><span class="tl-legend__dot tl-legend__dot--ga"></span>General availability</div>
+  <div class="tl-legend__item"><span class="tl-legend__bar"></span>Product phase</div>
+  <div class="tl-legend__item"><span class="tl-legend__dia"></span>Marketing milestone</div>
 </div>
-<div class="tl-timeline">
-<div class="tl-holiday"><span>Holiday</span></div>
-<div class="tl-line"></div>
-<div class="tl-mkt tl-mkt--high" style="left:31%">
-<span class="tl-mkt__label">Website live</span>
-<span class="tl-mkt__date">Nov 6</span>
-<span class="tl-mkt__stem"></span><span class="tl-mkt__tip"></span>
-</div>
-<div class="tl-mkt tl-mkt--low" style="left:44%">
-<span class="tl-mkt__label">One-pager</span>
-<span class="tl-mkt__date">Dec 4</span>
-<span class="tl-mkt__stem"></span><span class="tl-mkt__tip"></span>
-</div>
-<div class="tl-mkt tl-mkt--high" style="left:51%">
-<span class="tl-mkt__label">ActiveCampaign</span>
-<span class="tl-mkt__date">Dec 18</span>
-<span class="tl-mkt__stem"></span><span class="tl-mkt__tip"></span>
-</div>
-<div class="tl-mkt tl-mkt--low" style="left:64%">
-<span class="tl-mkt__label">Webinar</span>
-<span class="tl-mkt__date">Jan 15</span>
-<span class="tl-mkt__stem"></span><span class="tl-mkt__tip"></span>
-</div>
-<div class="tl-mkt tl-mkt--high" style="left:71%">
-<span class="tl-mkt__label">Net-new prospecting</span>
-<span class="tl-mkt__date">Jan 29+</span>
-<span class="tl-mkt__stem"></span><span class="tl-mkt__tip"></span>
-</div>
-<div class="tl-mkt tl-mkt--low" style="left:78%">
-<span class="tl-mkt__label">Post-launch comms</span>
-<span class="tl-mkt__date">Feb</span>
-<span class="tl-mkt__stem"></span><span class="tl-mkt__tip"></span>
-</div>
-<div class="tl-span tl-span--main" style="left:14%;width:20%">Stabilization</div>
-<div class="tl-span tl-span--main" style="left:34%;width:37%">Release preparation</div>
-<div class="tl-span tl-span--main" style="left:71%;width:24%">Rollout</div>
-<div class="tl-span tl-span--sub" style="left:85%;width:10%">Post-release support</div>
-<div class="tl-arrow" style="left:95%">&#8594;</div>
-<div class="tl-prod" style="left:14%">
-<span class="tl-prod__dot"></span>
-<span class="tl-prod__label">Beta</span>
-<span class="tl-prod__date">Sep 30</span>
-</div>
-<div class="tl-prod" style="left:34%">
-<span class="tl-prod__dot"></span>
-<span class="tl-prod__label">Release candidate</span>
-<span class="tl-prod__date">Nov 13</span>
-</div>
-<div class="tl-prod tl-prod--ga" style="left:71%">
-<span class="tl-prod__dot"></span>
-<span class="tl-prod__label">General availability</span>
-<span class="tl-prod__date">Jan 29</span>
-</div>
+
+<div class="tl-grid">
+  <div class="tl-overlay">
+    <div class="tl-holiday" style="left:46%;width:4.4%"><span>Holiday</span></div>
+  </div>
+
+  <div class="tl-months-spacer"></div>
+  <div class="tl-months">
+    <span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
+    <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span>
+  </div>
+
+  <div class="tl-lane-name">Product</div>
+  <div class="tl-track tl-track--product">
+    <div class="tl-line"></div>
+    <div class="tl-bar tl-bar--phase" style="left:12.1%;width:17.9%">Stabilization</div>
+    <div class="tl-bar tl-bar--phase" style="left:30%;width:31.3%">Release preparation</div>
+    <div class="tl-bar tl-bar--phase" style="left:61.3%;width:34.7%">Rollout</div>
+    <div class="tl-bar tl-bar--sub" style="left:75%;width:21%">Post-release support</div>
+    <div class="tl-arrow" style="left:96.6%">&#8594;</div>
+
+    <div class="tl-node" style="left:12.1%">
+      <span class="tl-node__dot"></span>
+      <span class="tl-node__label">Beta</span>
+      <span class="tl-node__date">Sep 30</span>
+    </div>
+    <div class="tl-node" style="left:30%">
+      <span class="tl-node__dot"></span>
+      <span class="tl-node__label">Release candidate</span>
+      <span class="tl-node__date">Nov 13</span>
+    </div>
+    <div class="tl-node tl-node--ga" style="left:61.3%">
+      <span class="tl-node__dot"></span>
+      <span class="tl-node__label">General availability</span>
+      <span class="tl-node__date">Jan 29</span>
+    </div>
+  </div>
+
+  <div class="tl-lane-name tl-lane-name--mkt">Marketing</div>
+  <div class="tl-track tl-track--mkt">
+    <div class="tl-mkt tl-mkt--a" style="left:27.1%">
+      <span class="tl-mkt__dia"></span><span class="tl-mkt__stem"></span>
+      <span class="tl-mkt__label">Website live</span>
+      <span class="tl-mkt__date">Nov 6</span>
+    </div>
+    <div class="tl-mkt tl-mkt--b" style="left:38.7%">
+      <span class="tl-mkt__dia"></span><span class="tl-mkt__stem"></span>
+      <span class="tl-mkt__label">One-pager</span>
+      <span class="tl-mkt__date">Dec 4</span>
+    </div>
+    <div class="tl-mkt tl-mkt--a" style="left:44.4%">
+      <span class="tl-mkt__dia"></span><span class="tl-mkt__stem"></span>
+      <span class="tl-mkt__label">ActiveCampaign</span>
+      <span class="tl-mkt__date">Dec 18</span>
+    </div>
+    <div class="tl-mkt tl-mkt--b" style="left:55.6%">
+      <span class="tl-mkt__dia"></span><span class="tl-mkt__stem"></span>
+      <span class="tl-mkt__label">Demo webinar</span>
+      <span class="tl-mkt__date">Jan 15</span>
+    </div>
+    <div class="tl-mkt tl-mkt--a" style="left:61.3%">
+      <span class="tl-mkt__dia"></span><span class="tl-mkt__stem"></span>
+      <span class="tl-mkt__label">Net-new outreach</span>
+      <span class="tl-mkt__date">Jan 29</span>
+    </div>
+    <div class="tl-mkt tl-mkt--b" style="left:68.8%">
+      <span class="tl-mkt__dia"></span><span class="tl-mkt__stem"></span>
+      <span class="tl-mkt__label">Post-launch comms</span>
+      <span class="tl-mkt__date">Feb 15</span>
+    </div>
+  </div>
 </div>
 </body>
 </html>
