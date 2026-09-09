@@ -16,14 +16,9 @@
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    font-family: var(--font-body);
-    background: var(--off-white);
-    color: var(--ink);
-    padding: 56px clamp(28px,6vw,72px) 72px;
-    line-height: 1.5;
+    font-family: var(--font-body); background: var(--off-white);
+    color: var(--ink); padding: 56px clamp(28px,6vw,72px) 72px; line-height: 1.5;
   }
-
-  /* Header */
   .tl-kicker {
     font-family: var(--font); font-weight: 700; font-size: 11px;
     letter-spacing: 0.22em; text-transform: uppercase;
@@ -34,8 +29,6 @@
     font-size: clamp(32px,5vw,44px); line-height: 1.1;
     letter-spacing: -0.03em; color: var(--ink-strong);
   }
-
-  /* Phase legend strip */
   .tl-phases {
     display: flex; gap: 0; margin-top: 32px; margin-bottom: 40px;
     border-radius: 8px; overflow: hidden; max-width: 920px;
@@ -44,70 +37,28 @@
     padding: 10px 18px; font-family: var(--font); font-weight: 700;
     font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
   }
-  .tl-phase--pre   { background: rgba(43,158,128,0.14); color: var(--mint-dark); flex: 5; }
+  .tl-phase--pre   { background: rgba(43,158,128,0.14); color: var(--mint-dark); flex: 4; }
   .tl-phase--launch{ background: var(--navy-deep); color: #fff; flex: 1; }
   .tl-phase--post  { background: rgba(43,158,128,0.06); color: var(--navy-muted); flex: 2; }
-
-  /* Milestone timeline */
-  .tl-track {
-    position: relative; max-width: 920px; margin-bottom: 8px;
-    padding: 64px 0 8px;
-  }
-  .tl-line {
-    position: absolute; left: 0; right: 0; top: 88px;
-    height: 2px; background: var(--rule-light);
-  }
-  .tl-line__fill {
-    position: absolute; left: 0; top: 0; height: 100%;
-    background: var(--mint-dark);
-  }
-  .tl-nodes {
-    position: relative; display: grid;
-    grid-template-columns: repeat(6, 1fr); gap: 0;
-  }
-  .tl-node {
-    display: flex; flex-direction: column; align-items: center;
-    text-align: center; padding: 0 8px;
-  }
-  .tl-node__date {
-    font-family: var(--font); font-weight: 700; font-size: 12px;
-    color: var(--navy-muted); margin-bottom: 10px;
-  }
-  .tl-node__dot {
-    width: 16px; height: 16px; border-radius: 50%;
-    background: var(--off-white); border: 3px solid var(--mint-dark);
-    position: relative; z-index: 1;
-  }
-  .tl-node--launch .tl-node__dot {
-    background: var(--gold-deep); border-color: var(--gold-deep);
-    width: 20px; height: 20px;
-  }
-  .tl-node__num {
-    font-family: var(--font); font-weight: 700; font-size: 11px;
-    letter-spacing: 0.16em; color: var(--mint-dark); margin-top: 14px;
-  }
+  .tl-track { position: relative; max-width: 920px; margin-bottom: 8px; padding: 64px 0 8px; }
+  .tl-line { position: absolute; left: 0; right: 0; top: 88px; height: 2px; background: var(--rule-light); }
+  .tl-line__fill { position: absolute; left: 0; top: 0; height: 100%; background: var(--mint-dark); }
+  .tl-nodes { position: relative; display: grid; grid-template-columns: repeat(7, 1fr); gap: 0; }
+  .tl-node { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 6px; }
+  .tl-node__date { font-family: var(--font); font-weight: 700; font-size: 12px; color: var(--navy-muted); margin-bottom: 10px; }
+  .tl-node__dot { width: 16px; height: 16px; border-radius: 50%; background: var(--off-white); border: 3px solid var(--mint-dark); position: relative; z-index: 1; }
+  .tl-node--launch .tl-node__dot { background: var(--gold-deep); border-color: var(--gold-deep); width: 20px; height: 20px; }
+  .tl-node__num { font-family: var(--font); font-weight: 700; font-size: 11px; letter-spacing: 0.16em; color: var(--mint-dark); margin-top: 14px; }
   .tl-node--launch .tl-node__num { color: var(--gold-deep); }
-  .tl-node__label {
-    font-family: var(--font); font-weight: 700; font-size: 15px;
-    line-height: 1.25; color: var(--ink-strong); margin-top: 6px;
-    max-width: 13ch;
-  }
-
-  /* Month axis */
-  .tl-months {
-    max-width: 920px; display: flex; justify-content: space-between;
-    margin-top: 28px; padding-top: 14px; border-top: 1px solid var(--rule-light);
-  }
-  .tl-month {
-    font-family: var(--font); font-weight: 600; font-size: 11px;
-    letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy-muted);
-  }
-
-  @media print {
-    @page { size: landscape; margin: 0.5in; }
-    body { padding: 0; }
-  }
-  @media (max-width: 720px) {
+  .tl-node__label { font-family: var(--font); font-weight: 700; font-size: 14px; line-height: 1.25; color: var(--ink-strong); margin-top: 6px; max-width: 12ch; }
+  .tl-months { max-width: 920px; display: flex; justify-content: space-between; margin-top: 28px; padding-top: 14px; border-top: 1px solid var(--rule-light); }
+  .tl-month { font-family: var(--font); font-weight: 600; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy-muted); }
+  .tl-sidenote { max-width: 920px; margin-top: 32px; padding: 14px 18px; background: rgba(43,158,128,0.06); border-left: 3px solid var(--mint-dark); border-radius: 0 6px 6px 0; }
+  .tl-sidenote__label { font-family: var(--font); font-weight: 700; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mint-dark); margin-bottom: 4px; }
+  .tl-sidenote__text { font-family: var(--font-body); font-size: 14px; color: var(--ink); line-height: 1.5; }
+  .tl-sidenote__text strong { color: var(--ink-strong); font-weight: 700; }
+  @media print { @page { size: landscape; margin: 0.5in; } body { padding: 0; } }
+  @media (max-width: 760px) {
     .tl-nodes { grid-template-columns: 1fr; gap: 24px; }
     .tl-line { display: none; }
     .tl-node { flex-direction: row; gap: 14px; text-align: left; }
@@ -127,7 +78,7 @@
   </div>
 
   <div class="tl-track">
-    <div class="tl-line"><div class="tl-line__fill" style="width: 82%"></div></div>
+    <div class="tl-line"><div class="tl-line__fill" style="width: 93%"></div></div>
     <div class="tl-nodes">
       <div class="tl-node">
         <span class="tl-node__date">Sep 30</span>
@@ -136,33 +87,39 @@
         <span class="tl-node__label">Beta property live</span>
       </div>
       <div class="tl-node">
-        <span class="tl-node__date">Dec 4</span>
+        <span class="tl-node__date">Nov 6</span>
         <span class="tl-node__dot"></span>
         <span class="tl-node__num">02</span>
-        <span class="tl-node__label">Features one-pager + new website</span>
+        <span class="tl-node__label">New website live</span>
+      </div>
+      <div class="tl-node">
+        <span class="tl-node__date">Dec 4</span>
+        <span class="tl-node__dot"></span>
+        <span class="tl-node__num">03</span>
+        <span class="tl-node__label">Features one-pager</span>
       </div>
       <div class="tl-node">
         <span class="tl-node__date">Jan 15</span>
         <span class="tl-node__dot"></span>
-        <span class="tl-node__num">03</span>
+        <span class="tl-node__num">04</span>
         <span class="tl-node__label">Demo webinar</span>
       </div>
       <div class="tl-node tl-node--launch">
         <span class="tl-node__date">Jan 29</span>
         <span class="tl-node__dot"></span>
-        <span class="tl-node__num">04</span>
+        <span class="tl-node__num">05</span>
         <span class="tl-node__label">Upgrade launch</span>
       </div>
       <div class="tl-node">
         <span class="tl-node__date">Jan 29+</span>
         <span class="tl-node__dot"></span>
-        <span class="tl-node__num">05</span>
+        <span class="tl-node__num">06</span>
         <span class="tl-node__label">Net-new prospecting</span>
       </div>
       <div class="tl-node">
         <span class="tl-node__date">Feb</span>
         <span class="tl-node__dot"></span>
-        <span class="tl-node__num">06</span>
+        <span class="tl-node__num">07</span>
         <span class="tl-node__label">Post-launch customer comms</span>
       </div>
     </div>
@@ -175,6 +132,11 @@
     <span class="tl-month">December</span>
     <span class="tl-month">January</span>
     <span class="tl-month">February</span>
+  </div>
+
+  <div class="tl-sidenote">
+    <p class="tl-sidenote__label">Side-note</p>
+    <p class="tl-sidenote__text"><strong>ActiveCampaign upgrade</strong> &mdash; target mid-December, about six weeks before launch. Salesforce migration, pipeline stages, and practice complete before the holiday closure.</p>
   </div>
 </body>
 </html>
