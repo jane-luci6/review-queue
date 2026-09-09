@@ -15,113 +15,116 @@
     --font-body: 'Inter', 'Helvetica Neue', sans-serif;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: var(--font-body); background: var(--off-white);
-    color: var(--ink); padding: 56px clamp(28px,6vw,72px) 72px; line-height: 1.5;
-  }
-  .tl-kicker {
-    font-family: var(--font); font-weight: 700; font-size: 11px;
-    letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--mint-dark); margin-bottom: 14px;
-  }
-  .tl-title {
-    font-family: var(--font); font-weight: 700;
-    font-size: clamp(32px,5vw,44px); line-height: 1.1;
-    letter-spacing: -0.03em; color: var(--ink-strong);
-  }
-  .tl-phases {
-    display: flex; gap: 0; margin-top: 32px; margin-bottom: 40px;
-    border-radius: 8px; overflow: hidden; max-width: 920px;
-  }
-  .tl-phase {
-    padding: 10px 18px; font-family: var(--font); font-weight: 700;
-    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
-  }
-  .tl-phase--pre   { background: rgba(43,158,128,0.14); color: var(--mint-dark); flex: 4; }
-  .tl-phase--launch{ background: var(--navy-deep); color: #fff; flex: 1; }
-  .tl-phase--post  { background: rgba(43,158,128,0.06); color: var(--navy-muted); flex: 2; }
-  .tl-track { position: relative; max-width: 920px; margin-bottom: 8px; padding: 64px 0 8px; }
-  .tl-line { position: absolute; left: 0; right: 0; top: 88px; height: 2px; background: var(--rule-light); }
-  .tl-line__fill { position: absolute; left: 0; top: 0; height: 100%; background: var(--mint-dark); }
-  .tl-nodes { position: relative; display: grid; grid-template-columns: repeat(7, 1fr); gap: 0; }
-  .tl-node { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 6px; }
-  .tl-node__date { font-family: var(--font); font-weight: 700; font-size: 12px; color: var(--navy-muted); margin-bottom: 10px; }
-  .tl-node__dot { width: 16px; height: 16px; border-radius: 50%; background: var(--off-white); border: 3px solid var(--mint-dark); position: relative; z-index: 1; }
-  .tl-node--launch .tl-node__dot { background: var(--gold-deep); border-color: var(--gold-deep); width: 20px; height: 20px; }
-  .tl-node__num { font-family: var(--font); font-weight: 700; font-size: 11px; letter-spacing: 0.16em; color: var(--mint-dark); margin-top: 14px; }
-  .tl-node--launch .tl-node__num { color: var(--gold-deep); }
-  .tl-node__label { font-family: var(--font); font-weight: 700; font-size: 14px; line-height: 1.25; color: var(--ink-strong); margin-top: 6px; max-width: 12ch; }
-  .tl-months { max-width: 920px; display: flex; justify-content: space-between; margin-top: 28px; padding-top: 14px; border-top: 1px solid var(--rule-light); }
+  body { font-family: var(--font-body); background: var(--off-white); color: var(--ink); padding: 56px clamp(28px,6vw,72px) 72px; line-height: 1.5; }
+  .tl-kicker { font-family: var(--font); font-weight: 700; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--mint-dark); margin-bottom: 14px; }
+  .tl-title { font-family: var(--font); font-weight: 700; font-size: clamp(32px,5vw,44px); line-height: 1.1; letter-spacing: -0.03em; color: var(--ink-strong); }
+
+  /* Legend */
+  .tl-legend { display: flex; gap: 28px; margin-top: 28px; flex-wrap: wrap; }
+  .tl-legend__item { display: flex; align-items: center; gap: 8px; font-family: var(--font-body); font-size: 13px; color: var(--navy-muted); }
+  .tl-legend__dot { width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--mint-dark); background: var(--off-white); }
+  .tl-legend__dot--gold { border-color: var(--gold-deep); background: var(--gold-deep); }
+  .tl-legend__dot--mkt { width: 10px; height: 10px; border: 0; background: var(--gold-deep); border-radius: 2px; }
+  .tl-legend__bar { width: 22px; height: 8px; border-radius: 3px; background: rgba(43,158,128,0.3); }
+
+  /* Timeline */
+  .tl-timeline { position: relative; max-width: 920px; margin-top: 36px; height: 260px; }
+  .tl-line { position: absolute; left: 0; right: 0; top: 120px; height: 2px; background: var(--rule-light); }
+
+  /* Marketing milestones (above) */
+  .tl-mkt { position: absolute; transform: translateX(-50%); text-align: center; z-index: 3; width: 120px; }
+  .tl-mkt--high { top: 0; } .tl-mkt--low { top: 52px; }
+  .tl-mkt__label { display: block; font-family: var(--font); font-weight: 700; font-size: 12px; color: var(--gold-deep); line-height: 1.2; }
+  .tl-mkt__date { display: block; font-family: var(--font); font-weight: 600; font-size: 11px; color: var(--navy-muted); margin-top: 2px; }
+  .tl-mkt__stem { display: block; width: 1px; background: rgba(206,176,110,0.45); margin: 8px auto 0; }
+  .tl-mkt--high .tl-mkt__stem { height: 56px; } .tl-mkt--low .tl-mkt__stem { height: 12px; }
+  .tl-mkt__tip { display: block; width: 8px; height: 8px; background: var(--gold-deep); border-radius: 2px; margin: 0 auto; transform: rotate(45deg); position: relative; top: -5px; }
+
+  /* Product spans (bars on the line) */
+  .tl-span { position: absolute; top: 113px; height: 16px; border-radius: 4px; background: rgba(43,158,128,0.22); display: flex; align-items: center; justify-content: center; font-family: var(--font); font-weight: 600; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--mint-dark); }
+
+  /* Product milestones (dots on the line) */
+  .tl-prod { position: absolute; transform: translateX(-50%); text-align: center; z-index: 2; top: 120px; }
+  .tl-prod__dot { display: block; width: 16px; height: 16px; border-radius: 50%; background: var(--off-white); border: 3px solid var(--mint-dark); margin: -8px auto 0; position: relative; }
+  .tl-prod--ga .tl-prod__dot { background: var(--gold-deep); border-color: var(--gold-deep); width: 20px; height: 20px; margin: -10px auto 0; }
+  .tl-prod__label { display: block; font-family: var(--font); font-weight: 700; font-size: 14px; color: var(--ink-strong); margin-top: 14px; line-height: 1.2; max-width: 14ch; margin-left: auto; margin-right: auto; }
+  .tl-prod--ga .tl-prod__label { color: var(--gold-deep); }
+  .tl-prod__date { display: block; font-family: var(--font); font-weight: 700; font-size: 11px; color: var(--navy-muted); margin-top: 4px; }
+
+  /* Month axis */
+  .tl-months { max-width: 920px; display: flex; justify-content: space-between; margin-top: 8px; padding-top: 14px; border-top: 1px solid var(--rule-light); }
   .tl-month { font-family: var(--font); font-weight: 600; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy-muted); }
-  .tl-sidenote { max-width: 920px; margin-top: 32px; padding: 14px 18px; background: rgba(43,158,128,0.06); border-left: 3px solid var(--mint-dark); border-radius: 0 6px 6px 0; }
-  .tl-sidenote__label { font-family: var(--font); font-weight: 700; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mint-dark); margin-bottom: 4px; }
-  .tl-sidenote__text { font-family: var(--font-body); font-size: 14px; color: var(--ink); line-height: 1.5; }
-  .tl-sidenote__text strong { color: var(--ink-strong); font-weight: 700; }
+
   @media print { @page { size: landscape; margin: 0.5in; } body { padding: 0; } }
-  @media (max-width: 760px) {
-    .tl-nodes { grid-template-columns: 1fr; gap: 24px; }
-    .tl-line { display: none; }
-    .tl-node { flex-direction: row; gap: 14px; text-align: left; }
-    .tl-node__date { margin-bottom: 0; }
-    .tl-phases { flex-direction: column; }
-  }
+  @media (max-width: 760px) { .tl-timeline { height: auto; } .tl-line, .tl-span, .tl-mkt, .tl-prod { position: static; transform: none; display: block; margin: 12px 0; width: auto; } .tl-mkt__stem, .tl-mkt__tip { display: none; } }
 </style>
 </head>
 <body>
   <p class="tl-kicker">New LUCI</p>
   <h1 class="tl-title">Launch Timeline</h1>
 
-  <div class="tl-phases">
-    <div class="tl-phase tl-phase--pre">Pre-launch</div>
-    <div class="tl-phase tl-phase--launch">Launch</div>
-    <div class="tl-phase tl-phase--post">Post-launch</div>
+  <div class="tl-legend">
+    <div class="tl-legend__item"><span class="tl-legend__dot"></span>Product milestone</div>
+    <div class="tl-legend__item"><span class="tl-legend__dot tl-legend__dot--gold"></span>General availability</div>
+    <div class="tl-legend__item"><span class="tl-legend__bar"></span>Product phase</div>
+    <div class="tl-legend__item"><span class="tl-legend__dot tl-legend__dot--mkt"></span>Marketing milestone</div>
   </div>
 
-  <div class="tl-track">
-    <div class="tl-line"><div class="tl-line__fill" style="width: 93%"></div></div>
-    <div class="tl-nodes">
-      <div class="tl-node">
-        <span class="tl-node__date">Sep 30</span>
-        <span class="tl-node__dot"></span>
-        <span class="tl-node__num">01</span>
-        <span class="tl-node__label">Beta property live</span>
-      </div>
-      <div class="tl-node">
-        <span class="tl-node__date">Nov 6</span>
-        <span class="tl-node__dot"></span>
-        <span class="tl-node__num">02</span>
-        <span class="tl-node__label">New website live</span>
-      </div>
-      <div class="tl-node">
-        <span class="tl-node__date">Dec 4</span>
-        <span class="tl-node__dot"></span>
-        <span class="tl-node__num">03</span>
-        <span class="tl-node__label">Features one-pager</span>
-      </div>
-      <div class="tl-node">
-        <span class="tl-node__date">Jan 15</span>
-        <span class="tl-node__dot"></span>
-        <span class="tl-node__num">04</span>
-        <span class="tl-node__label">Demo webinar</span>
-      </div>
-      <div class="tl-node tl-node--launch">
-        <span class="tl-node__date">Jan 29</span>
-        <span class="tl-node__dot"></span>
-        <span class="tl-node__num">05</span>
-        <span class="tl-node__label">Upgrade launch</span>
-      </div>
-      <div class="tl-node">
-        <span class="tl-node__date">Jan 29+</span>
-        <span class="tl-node__dot"></span>
-        <span class="tl-node__num">06</span>
-        <span class="tl-node__label">Net-new prospecting</span>
-      </div>
-      <div class="tl-node">
-        <span class="tl-node__date">Feb</span>
-        <span class="tl-node__dot"></span>
-        <span class="tl-node__num">07</span>
-        <span class="tl-node__label">Post-launch customer comms</span>
-      </div>
+  <div class="tl-timeline">
+    <div class="tl-line"></div>
+
+    <!-- Marketing milestones (gold, above) -->
+    <div class="tl-mkt tl-mkt--high" style="left:36%">
+      <span class="tl-mkt__label">New website live</span>
+      <span class="tl-mkt__date">Nov 6</span>
+      <span class="tl-mkt__stem"></span><span class="tl-mkt__tip"></span>
+    </div>
+    <div class="tl-mkt tl-mkt--low" style="left:52%">
+      <span class="tl-mkt__label">Features one-pager</span>
+      <span class="tl-mkt__date">Dec 4</span>
+      <span class="tl-mkt__stem"></span><span class="tl-mkt__tip"></span>
+    </div>
+    <div class="tl-mkt tl-mkt--high" style="left:59%">
+      <span class="tl-mkt__label">ActiveCampaign upgrade</span>
+      <span class="tl-mkt__date">Dec 18</span>
+      <span class="tl-mkt__stem"></span><span class="tl-mkt__tip"></span>
+    </div>
+    <div class="tl-mkt tl-mkt--low" style="left:75%">
+      <span class="tl-mkt__label">Demo webinar</span>
+      <span class="tl-mkt__date">Jan 15</span>
+      <span class="tl-mkt__stem"></span><span class="tl-mkt__tip"></span>
+    </div>
+    <div class="tl-mkt tl-mkt--high" style="left:82%">
+      <span class="tl-mkt__label">Net-new prospecting</span>
+      <span class="tl-mkt__date">Jan 29+</span>
+      <span class="tl-mkt__stem"></span><span class="tl-mkt__tip"></span>
+    </div>
+    <div class="tl-mkt tl-mkt--low" style="left:90%">
+      <span class="tl-mkt__label">Post-launch comms</span>
+      <span class="tl-mkt__date">Feb</span>
+      <span class="tl-mkt__stem"></span><span class="tl-mkt__tip"></span>
+    </div>
+
+    <!-- Product phase spans (bars on the line) -->
+    <div class="tl-span" style="left:16%; width:24%">Stabilization</div>
+    <div class="tl-span" style="left:82%; width:13%">Rollout</div>
+    <div class="tl-span" style="left:90%; width:10%">Post-release</div>
+
+    <!-- Product milestones (mint dots on the line) -->
+    <div class="tl-prod" style="left:16%">
+      <span class="tl-prod__dot"></span>
+      <span class="tl-prod__label">Beta</span>
+      <span class="tl-prod__date">Sep 30</span>
+    </div>
+    <div class="tl-prod" style="left:40%">
+      <span class="tl-prod__dot"></span>
+      <span class="tl-prod__label">Release candidate</span>
+      <span class="tl-prod__date">Nov 13</span>
+    </div>
+    <div class="tl-prod tl-prod--ga" style="left:82%">
+      <span class="tl-prod__dot"></span>
+      <span class="tl-prod__label">General availability</span>
+      <span class="tl-prod__date">Jan 29</span>
     </div>
   </div>
 
@@ -132,11 +135,6 @@
     <span class="tl-month">December</span>
     <span class="tl-month">January</span>
     <span class="tl-month">February</span>
-  </div>
-
-  <div class="tl-sidenote">
-    <p class="tl-sidenote__label">Side-note</p>
-    <p class="tl-sidenote__text"><strong>ActiveCampaign upgrade</strong> &mdash; target mid-December, about six weeks before launch. Salesforce migration, pipeline stages, and practice complete before the holiday closure.</p>
   </div>
 </body>
 </html>
