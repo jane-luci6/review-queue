@@ -26,7 +26,7 @@ body {
   color: var(--ink);
   font-family: var(--font-body);
   line-height: 1.5;
-  padding: 56px clamp(28px, 6vw, 64px) 64px;
+  padding: 56px clamp(28px, 6vw, 64px) 56px;
 }
 
 .kicker {
@@ -48,11 +48,12 @@ body {
   line-height: 1.1;
 }
 
+.wrap { max-width: 1160px; }
+
 .months {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  margin-top: 40px;
-  max-width: 1120px;
+  grid-template-columns: repeat(7, 1fr);
+  margin-top: 32px;
 }
 
 .months span {
@@ -66,17 +67,16 @@ body {
   text-transform: uppercase;
 }
 
-/* Shared month columns: Sep 0–12.5 … Apr 87.5–100 */
+/* Seven equal month columns: Sep 0–14.29 … Mar 85.71–100 */
 .track {
   background-image: repeating-linear-gradient(
     to right,
     rgba(219, 225, 228, 0.55) 0,
     rgba(219, 225, 228, 0.55) 1px,
     transparent 1px,
-    transparent 12.5%
+    transparent 14.2857%
   );
-  height: 360px;
-  max-width: 1120px;
+  height: 344px;
   position: relative;
 }
 
@@ -86,50 +86,63 @@ body {
   left: 0;
   position: absolute;
   right: 0;
-  top: 108px;
+  top: 100px;
 }
 
+/* Phase bars carry no text, so nothing collides with the date markers. */
 .phase {
-  align-items: center;
-  background: rgba(43, 158, 128, 0.22);
-  border-radius: 4px;
-  color: var(--mint-dark);
-  display: flex;
-  font-family: var(--font);
-  font-size: 11px;
-  font-weight: 700;
-  height: 22px;
-  justify-content: center;
-  letter-spacing: 0.06em;
-  overflow: hidden;
+  background: rgba(43, 158, 128, 0.28);
+  border-radius: 3px;
+  height: 10px;
   position: absolute;
-  text-transform: uppercase;
-  top: 98px;
-  white-space: nowrap;
+  top: 95px;
 }
 
 .phase--support {
-  background: rgba(43, 158, 128, 0.1);
+  align-items: center;
+  background: rgba(43, 158, 128, 0.12);
   color: var(--navy-muted);
+  display: flex;
+  font-family: var(--font);
   font-size: 10px;
+  font-weight: 700;
   height: 16px;
-  top: 124px;
+  justify-content: flex-end;
+  letter-spacing: 0.06em;
+  padding-right: 10px;
+  text-transform: uppercase;
+  top: 114px;
+}
+
+/* Phase names sit at segment midpoints, clear of every stem. */
+.phase-name {
+  color: var(--mint-dark);
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  position: absolute;
+  text-align: center;
+  text-transform: uppercase;
+  top: 74px;
+  transform: translateX(-50%);
+  white-space: nowrap;
 }
 
 .arrow {
   color: var(--mint-dark);
-  font-size: 16px;
-  opacity: 0.45;
+  font-size: 15px;
+  opacity: 0.5;
   position: absolute;
-  top: 96px;
+  top: 90px;
 }
 
-/* Holiday is a break in the bar — not a wash over the whole chart. */
+/* Closure: hatched column with a hard edge, badge on top. */
 .closed {
   background: repeating-linear-gradient(
     135deg,
-    rgba(10, 22, 28, 0.1) 0,
-    rgba(10, 22, 28, 0.1) 4px,
+    rgba(10, 22, 28, 0.09) 0,
+    rgba(10, 22, 28, 0.09) 4px,
     transparent 4px,
     transparent 8px
   );
@@ -137,51 +150,40 @@ body {
   border-right: 2px solid var(--navy-deep);
   bottom: 0;
   position: absolute;
-  top: 0;
+  top: 30px;
   z-index: 1;
 }
 
-.closed-cut {
-  background: var(--navy-deep);
-  border-radius: 4px;
-  height: 40px;
-  position: absolute;
-  top: 90px;
-  z-index: 3;
-}
-
-.closed-label {
+.closed-badge {
   background: var(--navy-deep);
   border-radius: 4px;
   color: #fff;
   font-family: var(--font);
   font-size: 11px;
   font-weight: 700;
-  left: 48.4%;
   letter-spacing: 0.04em;
-  padding: 6px 10px;
+  padding: 6px 12px;
   position: absolute;
-  text-align: center;
-  top: 48px;
+  top: 0;
   transform: translateX(-50%);
   white-space: nowrap;
   z-index: 4;
 }
 
-.closed-label em {
-  color: rgba(235, 245, 248, 0.72);
+.closed-badge em {
+  color: rgba(235, 245, 248, 0.75);
   font-style: normal;
   font-weight: 600;
 }
 
-/* Product labels sit above the line. */
+/* Product above the line. */
 .prod {
   position: absolute;
   text-align: center;
-  top: 108px;
+  top: 100px;
   transform: translateX(-50%);
-  width: 140px;
-  z-index: 2;
+  width: 156px;
+  z-index: 3;
 }
 
 .prod i {
@@ -202,84 +204,95 @@ body {
   width: 20px;
 }
 
+.prod b {
+  background: var(--mint-dark);
+  bottom: 9px;
+  display: block;
+  height: 22px;
+  left: 50%;
+  margin-left: -1px;
+  opacity: 0.5;
+  position: absolute;
+  width: 2px;
+}
+
+.prod--ga b { background: var(--gold-deep); opacity: 0.65; }
+
+.prod p {
+  bottom: 35px;
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+
 .prod strong {
   color: var(--ink-strong);
   display: block;
   font-family: var(--font);
   font-size: 15px;
   font-weight: 700;
-  left: 0;
   line-height: 1.2;
-  position: absolute;
-  right: 0;
-  top: -52px;
 }
 
 .prod--ga strong { color: var(--gold-deep); }
 
-.prod span {
+.prod time {
   color: var(--navy-muted);
   display: block;
   font-family: var(--font);
   font-size: 12px;
   font-weight: 600;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: -28px;
+  margin-top: 2px;
 }
 
-/* Marketing hangs from the date; the name sits beside the stem so close dates do not collide. */
+/* Marketing below. Rows run in date order and each label reads away from the
+   later stems, so no stem is ever drawn through a label. */
 .mkt {
   position: absolute;
-  top: 108px;
+  top: 100px;
   width: 0;
-  z-index: 2;
+  z-index: 3;
 }
 
 .mkt i {
   background: var(--gold-deep);
   border-radius: 50%;
   display: block;
-  height: 8px;
-  left: -4px;
+  height: 9px;
+  left: -4.5px;
   position: absolute;
-  top: -4px;
-  width: 8px;
+  top: -4.5px;
+  width: 9px;
 }
 
 .mkt b {
   background: var(--gold-deep);
   display: block;
   left: -1px;
-  opacity: 0.7;
+  opacity: 0.5;
   position: absolute;
-  top: 4px;
+  top: 5px;
   width: 2px;
 }
 
-.mkt--a b { height: 40px; }
-.mkt--b b { height: 96px; }
-.mkt--c b { height: 152px; }
+.mkt p { position: absolute; width: 172px; }
+.mkt--left p { right: 12px; text-align: right; }
+.mkt--right p { left: 12px; text-align: left; }
 
-.mkt p {
-  position: absolute;
-  top: 48px;
-  width: 132px;
-}
-
-.mkt--a p { top: 48px; }
-.mkt--b p { top: 104px; }
-.mkt--c p { top: 160px; }
-
-.mkt--left p { right: 10px; text-align: right; }
-.mkt--right p { left: 10px; text-align: left; }
+.r1 b { height: 46px; }
+.r1 p { top: 38px; }
+.r2 b { height: 92px; }
+.r2 p { top: 84px; }
+.r3 b { height: 138px; }
+.r3 p { top: 130px; }
+.r4 b { height: 184px; }
+.r4 p { top: 176px; }
 
 .mkt strong {
   color: var(--ink-strong);
   display: block;
   font-family: var(--font);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   line-height: 1.25;
 }
@@ -303,64 +316,66 @@ body {
   <p class="kicker">New LUCI</p>
   <h1 class="title">Launch Timeline</h1>
 
-  <div class="months">
-    <span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
-    <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span>
-  </div>
-
-  <div class="track">
-    <div class="line"></div>
-
-    <div class="phase" style="left:12.3%;width:17.9%">Stabilization</div>
-    <div class="phase" style="left:30.2%;width:16%">Release preparation</div>
-    <div class="phase" style="left:50.6%;width:10.9%"></div>
-    <div class="phase" style="left:61.5%;width:34.5%">Rollout</div>
-    <div class="phase phase--support" style="left:75%;width:21%">Post-release support</div>
-    <div class="arrow" style="left:96.6%">→</div>
-
-    <div class="closed" style="left:46.2%;width:4.4%"></div>
-    <div class="closed-cut" style="left:46.2%;width:4.4%"></div>
-    <div class="closed-label">Closed <em>Dec 22–Jan 2</em></div>
-
-    <div class="prod" style="left:12.3%">
-      <strong>Beta</strong>
-      <span>Sep 30</span>
-      <i></i>
-    </div>
-    <div class="prod" style="left:30.2%">
-      <strong>Release candidate</strong>
-      <span>Nov 13</span>
-      <i></i>
-    </div>
-    <div class="prod prod--ga" style="left:61.5%">
-      <strong>General availability</strong>
-      <span>Jan 29</span>
-      <i></i>
+  <div class="wrap">
+    <div class="months">
+      <span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
+      <span>Jan</span><span>Feb</span><span>Mar</span>
     </div>
 
-    <div class="mkt mkt--a mkt--left" style="left:33.1%">
-      <i></i><b></b>
-      <p><strong>Website live</strong><time>Nov 20</time></p>
-    </div>
-    <div class="mkt mkt--b mkt--right" style="left:38.9%">
-      <i></i><b></b>
-      <p><strong>Features one-pager</strong><time>Dec 4</time></p>
-    </div>
-    <div class="mkt mkt--a mkt--left" style="left:41.3%">
-      <i></i><b></b>
-      <p><strong>Demo webinar</strong><time>Dec 10</time></p>
-    </div>
-    <div class="mkt mkt--c mkt--left" style="left:44.6%">
-      <i></i><b></b>
-      <p><strong>ActiveCampaign Upgrade</strong><time>Dec 18</time></p>
-    </div>
-    <div class="mkt mkt--a mkt--right" style="left:61.5%">
-      <i></i><b></b>
-      <p><strong>Net-new prospecting</strong><time>Jan 29</time></p>
-    </div>
-    <div class="mkt mkt--b mkt--right" style="left:69%">
-      <i></i><b></b>
-      <p><strong>Post-launch comms</strong><time>Feb 15</time></p>
+    <div class="track">
+      <div class="line"></div>
+
+      <div class="closed" style="left:52.53%;width:5.07%"></div>
+      <div class="closed-badge" style="left:55.06%">Closed <em>Dec 22–Jan 2</em></div>
+
+      <div class="phase" style="left:13.81%;width:20.48%"></div>
+      <div class="phase" style="left:34.29%;width:18.24%"></div>
+      <div class="phase" style="left:57.60%;width:12.45%"></div>
+      <div class="phase" style="left:70.05%;width:27.55%"></div>
+      <div class="phase phase--support" style="left:78.57%;width:19.03%">Post-release support</div>
+      <div class="arrow" style="left:98.2%">→</div>
+
+      <div class="phase-name" style="left:24.05%">Stabilization</div>
+      <div class="phase-name" style="left:43.41%">Release preparation</div>
+      <div class="phase-name" style="left:83.83%">Rollout</div>
+
+      <div class="prod" style="left:13.81%">
+        <p><strong>Beta</strong><time>Sep 30</time></p>
+        <b></b><i></i>
+      </div>
+      <div class="prod" style="left:34.29%">
+        <p><strong>Release candidate</strong><time>Nov 13</time></p>
+        <b></b><i></i>
+      </div>
+      <div class="prod prod--ga" style="left:70.05%">
+        <p><strong>General availability</strong><time>Jan 29</time></p>
+        <b></b><i></i>
+      </div>
+
+      <div class="mkt r1 mkt--left" style="left:37.62%">
+        <i></i><b></b>
+        <p><strong>Website live</strong><time>Nov 20</time></p>
+      </div>
+      <div class="mkt r2 mkt--left" style="left:44.24%">
+        <i></i><b></b>
+        <p><strong>Features one-pager</strong><time>Dec 4</time></p>
+      </div>
+      <div class="mkt r3 mkt--left" style="left:47.00%">
+        <i></i><b></b>
+        <p><strong>Demo webinar</strong><time>Dec 10</time></p>
+      </div>
+      <div class="mkt r4 mkt--left" style="left:50.69%">
+        <i></i><b></b>
+        <p><strong>ActiveCampaign Upgrade</strong><time>Dec 18</time></p>
+      </div>
+      <div class="mkt r1 mkt--right" style="left:78.57%">
+        <i></i><b></b>
+        <p><strong>Post-launch comms</strong><time>Feb 15</time></p>
+      </div>
+      <div class="mkt r2 mkt--right" style="left:70.05%">
+        <i></i><b></b>
+        <p><strong>Net-new prospecting</strong><time>Jan 29</time></p>
+      </div>
     </div>
   </div>
 </body>
