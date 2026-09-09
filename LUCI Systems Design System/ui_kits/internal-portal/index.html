@@ -1522,6 +1522,15 @@
       scroll-margin-top: 24px;
     }
 
+    #view-feature-list .fl-narrative {
+      font-family: var(--font);
+      font-size: clamp(20px, 3vw, 28px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--mint-dark);
+      margin-bottom: 8px;
+    }
+
     /* Navy chapter band — Signal 03 e-mesh + floorplan, screen-blend, low opacity. */
     #view-feature-list .fl-band {
       position: relative;
@@ -4010,17 +4019,28 @@
       body.replaceChildren();
       if (chipsEl) chipsEl.replaceChildren();
       try {
-        const res = await fetch('new-luci-feature-list.json?v=20260909a');
+        const res = await fetch('new-luci-feature-list.json?v=20260909b');
         if (!res.ok) throw new Error('load');
         const data = await res.json();
-        if (titleEl) titleEl.textContent = data.title || 'New LUCI — Preliminary Feature List';
+        if (titleEl) titleEl.textContent = data.title || 'New LUCI — Feature List';
         if (deckEl) deckEl.textContent = data.deck || '';
 
-        const chapters = [
-          { key: 'primary', kicker: 'Primary', block: data.primary },
-          { key: 'secondary', kicker: 'Secondary', block: data.secondary },
-          { key: 'it', kicker: 'IT', block: data.it }
-        ].filter((ch) => ch.block);
+        // Narrative line
+        if (data.narrative) {
+          const nar = document.createElement('p');
+          nar.className = 'fl-narrative';
+          nar.textContent = data.narrative;
+          body.appendChild(nar);
+        }
+
+        // Build chapters from pillars + technical
+        const chapters = [];
+        (data.pillars || []).forEach((p, i) => {
+          chapters.push({ key: 'pillar-' + i, kicker: p.name, block: { heading: p.name, intro: p.argument, items: p.features } });
+        });
+        if (data.technical) {
+          chapters.push({ key: 'technical', kicker: 'Technical', block: data.technical });
+        }
 
         const appendFeature = (parent, item) => {
           const feat = document.createElement('article');
