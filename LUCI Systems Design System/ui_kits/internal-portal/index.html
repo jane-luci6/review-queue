@@ -4010,7 +4010,7 @@
       body.replaceChildren();
       if (chipsEl) chipsEl.replaceChildren();
       try {
-        const res = await fetch('new-luci-feature-list.json?v=20260901d');
+        const res = await fetch('new-luci-feature-list.json?v=20260909a');
         if (!res.ok) throw new Error('load');
         const data = await res.json();
         if (titleEl) titleEl.textContent = data.title || 'New LUCI — Preliminary Feature List';
@@ -4128,7 +4128,7 @@
       const routingImg = $('email-comms-routing');
       if (!root) return;
       try {
-        const res = await fetch('new-luci-email-comms.json?v=20260909a');
+        const res = await fetch('new-luci-email-comms.json?v=20260909b');
         if (!res.ok) throw new Error('load');
         const data = await res.json();
         if (titleEl) titleEl.textContent = data.title || 'New LUCI — Email Communications & Nurture';

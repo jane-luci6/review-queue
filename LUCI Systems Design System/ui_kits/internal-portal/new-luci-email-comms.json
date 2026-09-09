@@ -5,13 +5,13 @@
     "label": "Back to Campaign strategy",
     "href": "#coming-soon/new-luci-campaign-strategy"
   },
-  "signalContext": "The Signal carries the broad customer preview and can include the seminar save-the-date. It is planning context for this program, not an email in the cycles below. Each direct customer email has one specific job: drive event attendance, announce the release, or move a property toward an upgrade.",
+  "signalContext": "The Signal carries the broad customer preview and can include the webinar save-the-date. It is planning context for this program, not an email in the cycles below. Each direct customer email has one specific job: drive event attendance, announce the release, or move a property toward an upgrade.",
   "sharedRules": [
     "A reply, booked meeting, or active opportunity stops marketing automation.",
     "Anyone in an active Mark or Mike conversation is suppressed from automated nurture.",
     "Opens and ordinary clicks inform reporting; they do not trigger a sales handoff.",
     "A person receives only the cycle that matches their current lifecycle stage.",
-    "The pre-launch seminar is positioned as a private preview, not a sales demo. Every invitation states when New LUCI becomes available.",
+    "The pre-launch webinar is positioned as a private preview, not a sales demo. Every invitation states when New LUCI becomes available.",
     "Only high-intent warm prospects receive the pre-launch preview invitation: people who completed a demo or seriously pursued one. Broader warm and net-new outreach begins at launch.",
     "Marketing recovery begins only after Mark or Mike explicitly hands the prospect back. The handback timing remains to be defined with Sales."
   ],
@@ -22,33 +22,33 @@
       "summary": "Direct email supports the seminar and the upgrade path. The Signal provides the broader editorial context.",
       "cycles": [
         {
-          "name": "Pre-launch seminar",
+          "name": "Pre-launch webinar",
           "emails": [
             {
               "number": 1,
               "name": "Seminar invitation",
-              "timing": "About 2–3 weeks before the seminar",
+              "timing": "About 2–3 weeks before the webinar",
               "purpose": "Give customers an early look at New LUCI. Include the What's New asset so they can see the features and customer benefits before deciding to attend.",
               "cta": "Review what is coming and register for the live preview."
             },
             {
               "number": 2,
               "name": "What to expect",
-              "timing": "7–10 days before the seminar",
+              "timing": "7–10 days before the webinar",
               "purpose": "Give the invitation a second chance with three concrete takeaways. Registrants receive agenda content; nonregistrants receive another registration opportunity.",
               "cta": "Review the agenda or register."
             },
             {
               "number": 3,
               "name": "Event reminder",
-              "timing": "2 days before the seminar",
+              "timing": "2 days before the webinar",
               "purpose": "Convert registrations into attendance with the date, time, and joining details.",
               "cta": "Add to calendar or join the session."
             },
             {
               "number": 4,
               "name": "Recording for non-attendees",
-              "timing": "2–3 business days after the seminar; customers who did not attend",
+              "timing": "2–3 business days after the webinar; customers who did not attend",
               "purpose": "Give customers who could not attend the same product view while the pre-launch announcement is still current.",
               "cta": "Watch the seminar recording."
             }
@@ -69,7 +69,7 @@
               "number": 2,
               "name": "Launch reminder",
               "timing": "About a week before launch day",
-              "purpose": "Short reminder that New LUCI is available the following week. Carries the upgrade guide and FAQ for properties that want to prepare, and repeats that rollout is ordered rather than simultaneous.",
+              "purpose": "Short reminder that New LUCI is available the following week. Carries the upgrade guide and FAQ (merged with IT companion) for properties that want to prepare, and repeats that rollout is ordered rather than simultaneous.",
               "cta": "Get ready for launch."
             }
           ]
@@ -108,7 +108,7 @@
               "number": 1,
               "name": "New LUCI is Live",
               "timing": "When the upgrade goes live for this customer",
-              "purpose": "Confirm the upgrade is complete and point to the upgrade guide, FAQ, and IT technical companion.",
+              "purpose": "Confirm the upgrade is complete and point to the upgrade guide and FAQ (merged with IT companion) (merged with IT companion).",
               "cta": "Review your upgrade guide."
             },
             {
@@ -140,35 +140,35 @@
             {
               "number": 1,
               "name": "Private preview invitation",
-              "timing": "About 2–3 weeks before the preview seminar; past-demo and serious past-request prospects only",
+              "timing": "About 2–3 weeks before the preview webinar; past-demo and serious past-request prospects only",
               "purpose": "Re-engage people who already invested meaningful time in LUCI by offering an early look at what changed. State the launch date clearly.",
               "cta": "Register for the private preview."
             },
             {
               "number": 2,
               "name": "What to expect",
-              "timing": "7–10 days before the seminar",
+              "timing": "7–10 days before the webinar",
               "purpose": "Show three concrete changes they will see. Registrants receive agenda content; nonregistrants receive another registration opportunity.",
               "cta": "Review the agenda or register."
             },
             {
               "number": 3,
               "name": "Registered-attendee reminder",
-              "timing": "2 days before the seminar; registrants only",
+              "timing": "2 days before the webinar; registrants only",
               "purpose": "Convert registrations into attendance without sending another product pitch.",
               "cta": "Add to calendar or join the session."
             },
             {
               "number": 4,
               "name": "Personal preview follow-up",
-              "timing": "Next business day after the seminar; sent by Mark",
+              "timing": "Next business day after the webinar; sent by Mark",
               "purpose": "Acknowledge their prior interest, ask what stood out, and offer a direct conversation before the broader launch follow-up begins.",
               "cta": "Reply to Mark or choose a time to reconnect."
             },
             {
               "number": 5,
               "name": "Recording for no-shows",
-              "timing": "2–3 business days after the seminar; registrants who did not attend",
+              "timing": "2–3 business days after the webinar; registrants who did not attend",
               "purpose": "Preserve the value of the invitation without asking for another live commitment. This can come from Mark with a brief personal note.",
               "cta": "Watch the private-preview recording."
             }
@@ -188,7 +188,7 @@
               "number": 2,
               "name": "Recorded preview",
               "timing": "4–5 days after email 1",
-              "purpose": "Let prospects see New LUCI without asking them to commit to a live sales demo. The feature highlight reel is the lead asset here — a short cut of the seminar's product moments for prospects who will not sit through the full recording. The full recording stays available as the deeper option.",
+              "purpose": "Let prospects see New LUCI without asking them to commit to a live sales demo. The feature highlight reel is the lead asset here — a short cut of the webinar's product moments for prospects who will not sit through the full recording. The full recording stays available as the deeper option.",
               "cta": "Watch the feature highlight reel, or the full recording."
             },
             {
@@ -254,7 +254,7 @@
               "number": 3,
               "name": "Recorded walkthrough",
               "timing": "5 days after email 2",
-              "purpose": "Introduce New LUCI visually after the prospect understands the problem and proof—without asking for a live meeting. The feature highlight reel is the lead asset here — a short cut of the seminar's product moments for prospects who will not sit through the full recording. The full recording stays available as the deeper option.",
+              "purpose": "Introduce New LUCI visually after the prospect understands the problem and proof—without asking for a live meeting. The feature highlight reel is the lead asset here — a short cut of the webinar's product moments for prospects who will not sit through the full recording. The full recording stays available as the deeper option.",
               "cta": "Watch the feature highlight reel, or the full recording."
             },
             {
