@@ -13,20 +13,29 @@ body{font-family:var(--font-body);background:var(--off-white);color:var(--ink);p
 .tl-title{font-family:var(--font);font-weight:700;font-size:clamp(32px,5vw,44px);line-height:1.1;letter-spacing:-.03em;color:var(--ink-strong)}
 .tl-months-top{display:flex;max-width:920px;margin-top:36px}
 .tl-months-top span{flex:1;text-align:center;font-family:var(--font);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy-muted);padding-bottom:10px;border-bottom:1px solid var(--rule-light)}
-.tl-timeline{position:relative;max-width:920px;height:140px;margin-bottom:8px;background-image:repeating-linear-gradient(to right,transparent 0,transparent calc(12.5% - 1px),rgba(219,225,228,.45) calc(12.5% - 1px),rgba(219,225,228,.45) 12.5%)}
-.tl-line{position:absolute;left:0;right:0;top:28px;height:2px;background:var(--rule-light)}
+.tl-timeline{position:relative;max-width:920px;height:150px;margin-bottom:8px;background-image:repeating-linear-gradient(to right,transparent 0,transparent calc(12.5% - 1px),rgba(219,225,228,.45) calc(12.5% - 1px),rgba(219,225,228,.45) 12.5%)}
+.tl-holiday{position:absolute;top:0;bottom:0;left:53%;width:5%;background:repeating-linear-gradient(135deg,rgba(219,225,228,.3) 0,rgba(219,225,228,.3) 3px,transparent 3px,transparent 6px);border-left:1px dashed rgba(219,225,228,.6);border-right:1px dashed rgba(219,225,228,.6);display:flex;justify-content:center;padding-top:3px}
+.tl-holiday span{font-family:var(--font);font-weight:600;font-size:8px;letter-spacing:.06em;text-transform:uppercase;color:rgba(73,97,110,.5);white-space:nowrap}
+.tl-line{position:absolute;left:0;right:0;top:66px;height:2px;background:var(--rule-light)}
 .tl-span{position:absolute;border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:var(--font);font-weight:600;font-size:10px;letter-spacing:.06em;text-transform:uppercase}
-.tl-span--main{top:12px;height:14px;background:rgba(43,158,128,.22);color:var(--mint-dark)}
-.tl-span--sub{top:36px;height:12px;background:rgba(43,158,128,.1);color:var(--navy-muted);font-size:9px}
-.tl-prod{position:absolute;transform:translateX(-50%);text-align:center;z-index:2;top:28px}
+.tl-span--main{top:48px;height:14px;background:rgba(43,158,128,.22);color:var(--mint-dark)}
+.tl-span--sub{top:74px;height:12px;background:rgba(43,158,128,.1);color:var(--navy-muted);font-size:9px}
+.tl-prod{position:absolute;transform:translateX(-50%);text-align:center;z-index:2;top:66px}
 .tl-prod__dot{display:block;width:16px;height:16px;border-radius:50%;background:var(--off-white);border:3px solid var(--mint-dark);margin:-8px auto 0}
 .tl-prod--ga .tl-prod__dot{background:var(--gold-deep);border-color:var(--gold-deep);width:20px;height:20px;margin:-10px auto 0}
 .tl-prod__label{display:block;font-family:var(--font);font-weight:700;font-size:14px;color:var(--ink-strong);margin-top:16px;line-height:1.2;max-width:14ch;margin-left:auto;margin-right:auto}
 .tl-prod--ga .tl-prod__label{color:var(--gold-deep)}
 .tl-prod__date{display:block;font-family:var(--font);font-weight:700;font-size:11px;color:var(--navy-muted);margin-top:4px}
-.tl-arrow{position:absolute;top:12px;height:14px;display:flex;align-items:center;font-family:var(--font);font-weight:700;font-size:12px;color:var(--mint-dark);opacity:.4}
+.tl-arrow{position:absolute;top:48px;height:14px;display:flex;align-items:center;font-family:var(--font);font-weight:700;font-size:12px;color:var(--mint-dark);opacity:.4}
+.tl-mkt{position:absolute;transform:translateX(-50%);text-align:center;z-index:3;width:100px}
+.tl-mkt--high{top:0}.tl-mkt--low{top:24px}
+.tl-mkt__label{display:block;font-family:var(--font);font-weight:700;font-size:10px;color:var(--gold-deep);line-height:1.2}
+.tl-mkt__date{display:block;font-family:var(--font);font-weight:600;font-size:9px;color:var(--navy-muted);margin-top:1px}
+.tl-mkt__stem{display:block;width:1px;background:rgba(206,176,110,.35);margin:4px auto 0}
+.tl-mkt--high .tl-mkt__stem{height:28px}.tl-mkt--low .tl-mkt__stem{height:8px}
+.tl-mkt__tip{display:block;width:7px;height:7px;background:var(--gold-deep);border-radius:2px;transform:rotate(45deg);margin:0 auto;position:relative;top:-4px}
 @media print{@page{size:landscape;margin:.5in}body{padding:0}}
-@media(max-width:760px){.tl-timeline{height:auto}.tl-months-top{flex-wrap:wrap}.tl-months-top span{flex:0 0 33%}.tl-line,.tl-span,.tl-arrow,.tl-prod{position:static;transform:none;display:block;margin:12px 0;width:auto}}
+@media(max-width:760px){.tl-timeline{height:auto}.tl-months-top{flex-wrap:wrap}.tl-months-top span{flex:0 0 33%}.tl-line,.tl-span,.tl-arrow,.tl-prod,.tl-mkt,.tl-holiday{position:static;transform:none;display:block;margin:12px 0;width:auto}.tl-mkt__stem,.tl-mkt__tip{display:none}}
 </style>
 </head>
 <body>
@@ -36,7 +45,38 @@ body{font-family:var(--font-body);background:var(--off-white);color:var(--ink);p
 <span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span>
 </div>
 <div class="tl-timeline">
+<div class="tl-holiday"><span>Holiday</span></div>
 <div class="tl-line"></div>
+<div class="tl-mkt tl-mkt--high" style="left:31%">
+<span class="tl-mkt__label">Website live</span>
+<span class="tl-mkt__date">Nov 6</span>
+<span class="tl-mkt__stem"></span><span class="tl-mkt__tip"></span>
+</div>
+<div class="tl-mkt tl-mkt--low" style="left:44%">
+<span class="tl-mkt__label">One-pager</span>
+<span class="tl-mkt__date">Dec 4</span>
+<span class="tl-mkt__stem"></span><span class="tl-mkt__tip"></span>
+</div>
+<div class="tl-mkt tl-mkt--high" style="left:51%">
+<span class="tl-mkt__label">ActiveCampaign</span>
+<span class="tl-mkt__date">Dec 18</span>
+<span class="tl-mkt__stem"></span><span class="tl-mkt__tip"></span>
+</div>
+<div class="tl-mkt tl-mkt--low" style="left:64%">
+<span class="tl-mkt__label">Webinar</span>
+<span class="tl-mkt__date">Jan 15</span>
+<span class="tl-mkt__stem"></span><span class="tl-mkt__tip"></span>
+</div>
+<div class="tl-mkt tl-mkt--high" style="left:71%">
+<span class="tl-mkt__label">Net-new prospecting</span>
+<span class="tl-mkt__date">Jan 29+</span>
+<span class="tl-mkt__stem"></span><span class="tl-mkt__tip"></span>
+</div>
+<div class="tl-mkt tl-mkt--low" style="left:78%">
+<span class="tl-mkt__label">Post-launch comms</span>
+<span class="tl-mkt__date">Feb</span>
+<span class="tl-mkt__stem"></span><span class="tl-mkt__tip"></span>
+</div>
 <div class="tl-span tl-span--main" style="left:14%;width:20%">Stabilization</div>
 <div class="tl-span tl-span--main" style="left:34%;width:37%">Release preparation</div>
 <div class="tl-span tl-span--main" style="left:71%;width:24%">Rollout</div>
