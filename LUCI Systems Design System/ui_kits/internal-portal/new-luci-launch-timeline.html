@@ -13,7 +13,7 @@ body{font-family:var(--font-body);background:var(--off-white);color:var(--ink);p
 .tl-title{font-family:var(--font);font-weight:700;font-size:clamp(32px,5vw,44px);line-height:1.1;letter-spacing:-.03em;color:var(--ink-strong)}
 .tl-months-top{display:flex;max-width:920px;margin-top:36px}
 .tl-months-top span{flex:1;text-align:center;font-family:var(--font);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy-muted);padding-bottom:10px;border-bottom:1px solid var(--rule-light)}
-.tl-timeline{position:relative;max-width:920px;height:140px;margin-bottom:8px;background-image:repeating-linear-gradient(to right,transparent 0,transparent calc(10% - 1px),rgba(219,225,228,.45) calc(10% - 1px),rgba(219,225,228,.45) 10%)}
+.tl-timeline{position:relative;max-width:920px;height:140px;margin-bottom:8px;background-image:repeating-linear-gradient(to right,transparent 0,transparent calc(12.5% - 1px),rgba(219,225,228,.45) calc(12.5% - 1px),rgba(219,225,228,.45) 12.5%)}
 .tl-line{position:absolute;left:0;right:0;top:28px;height:2px;background:var(--rule-light)}
 .tl-span{position:absolute;border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:var(--font);font-weight:600;font-size:10px;letter-spacing:.06em;text-transform:uppercase}
 .tl-span--main{top:12px;height:14px;background:rgba(43,158,128,.22);color:var(--mint-dark)}
@@ -33,26 +33,26 @@ body{font-family:var(--font-body);background:var(--off-white);color:var(--ink);p
 <p class="tl-kicker">New LUCI</p>
 <h1 class="tl-title">Launch Timeline</h1>
 <div class="tl-months-top">
-<span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span>
+<span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span>
 </div>
 <div class="tl-timeline">
 <div class="tl-line"></div>
-<div class="tl-span tl-span--main" style="left:10%;width:14%">Stabilization</div>
-<div class="tl-span tl-span--main" style="left:24%;width:26%">Release preparation</div>
-<div class="tl-span tl-span--main" style="left:50%;width:45%">Rollout</div>
-<div class="tl-span tl-span--sub" style="left:60%;width:35%">Post-release support</div>
-<div class="tl-arrow" style="left:96%">&#8594;</div>
-<div class="tl-prod" style="left:10%">
+<div class="tl-span tl-span--main" style="left:14%;width:20%">Stabilization</div>
+<div class="tl-span tl-span--main" style="left:34%;width:37%">Release preparation</div>
+<div class="tl-span tl-span--main" style="left:71%;width:24%">Rollout</div>
+<div class="tl-span tl-span--sub" style="left:85%;width:10%">Post-release support</div>
+<div class="tl-arrow" style="left:95%">&#8594;</div>
+<div class="tl-prod" style="left:14%">
 <span class="tl-prod__dot"></span>
 <span class="tl-prod__label">Beta</span>
 <span class="tl-prod__date">Sep 30</span>
 </div>
-<div class="tl-prod" style="left:24%">
+<div class="tl-prod" style="left:34%">
 <span class="tl-prod__dot"></span>
 <span class="tl-prod__label">Release candidate</span>
 <span class="tl-prod__date">Nov 13</span>
 </div>
-<div class="tl-prod tl-prod--ga" style="left:50%">
+<div class="tl-prod tl-prod--ga" style="left:71%">
 <span class="tl-prod__dot"></span>
 <span class="tl-prod__label">General availability</span>
 <span class="tl-prod__date">Jan 29</span>
