@@ -1702,6 +1702,10 @@
       font-family: var(--font); font-size: 10px; font-weight: 700;
       letter-spacing: 0.12em; text-transform: uppercase; color: var(--mint-dark);
     }
+    .ec-cycle__summary {
+      margin: 0 0 4px; max-width: 78ch;
+      font-family: var(--font-body); font-size: 12.5px; line-height: 1.45; color: var(--muted);
+    }
     .ec-email {
       display: grid;
       grid-template-columns: minmax(150px,.85fr) 160px minmax(240px,1.5fr) minmax(150px,.85fr);
@@ -4124,7 +4128,7 @@
       const routingImg = $('email-comms-routing');
       if (!root) return;
       try {
-        const res = await fetch('new-luci-email-comms.json?v=20260903b');
+        const res = await fetch('new-luci-email-comms.json?v=20260909a');
         if (!res.ok) throw new Error('load');
         const data = await res.json();
         if (titleEl) titleEl.textContent = data.title || 'New LUCI — Email Communications & Nurture';
@@ -4167,6 +4171,12 @@
               cycleHead.className = 'ec-cycle__name';
               cycleHead.textContent = cycle.name || '';
               card.appendChild(cycleHead);
+              if (cycle.summary) {
+                const cs = document.createElement('p');
+                cs.className = 'ec-cycle__summary';
+                cs.textContent = cycle.summary;
+                card.appendChild(cs);
+              }
               (cycle.emails || []).forEach((em) => {
                 const row = document.createElement('div'); row.className = 'ec-email';
                 const top = document.createElement('div'); top.className = 'ec-email__top';
