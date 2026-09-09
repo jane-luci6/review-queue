@@ -107,18 +107,22 @@ body {
   top: 100px;
 }
 
-/* Phase bars carry no text, so nothing collides with the date markers. */
+/* Phase bars carry no text, so nothing collides with the date markers.
+   Each phase gets its own color so the boundaries read at a glance. */
 .phase {
-  background: rgba(43, 158, 128, 0.28);
   border-radius: 3px;
   height: 10px;
   position: absolute;
   top: 95px;
 }
 
+.phase--stab { background: rgba(43, 158, 128, 0.30); }
+.phase--prep  { background: rgba(206, 176, 110, 0.32); }
+.phase--roll { background: rgba(73, 97, 110, 0.26); }
+
 .phase--support {
   align-items: center;
-  background: rgba(43, 158, 128, 0.12);
+  background: rgba(73, 97, 110, 0.12);
   color: var(--navy-muted);
   display: flex;
   font-family: var(--font);
@@ -132,9 +136,9 @@ body {
   top: 114px;
 }
 
-/* Phase names sit at segment midpoints, clear of every stem. */
+/* Phase names sit at segment midpoints, clear of every stem.
+   Each name matches its bar color. */
 .phase-name {
-  color: var(--mint-dark);
   font-family: var(--font);
   font-size: 11px;
   font-weight: 700;
@@ -146,6 +150,10 @@ body {
   transform: translateX(-50%);
   white-space: nowrap;
 }
+
+.phase-name--stab { color: var(--mint-dark); }
+.phase-name--prep { color: var(--gold-deep); }
+.phase-name--roll { color: var(--navy-muted); }
 
 .arrow {
   color: var(--mint-dark);
@@ -344,16 +352,16 @@ body {
       <div class="closed" style="left:54.26%;width:8.26%"></div>
       <div class="closed-badge" style="left:58.39%">Closed <em>Dec 22–Jan 2</em></div>
 
-      <div class="phase" style="left:9.67%;width:16.33%"></div>
-      <div class="phase" style="left:26.00%;width:28.26%"></div>
-      <div class="phase" style="left:62.52%;width:8.77%"></div>
-      <div class="phase" style="left:71.29%;width:26.21%"></div>
+      <div class="phase phase--stab" style="left:9.67%;width:16.33%"></div>
+      <div class="phase phase--prep" style="left:26.00%;width:28.26%"></div>
+      <div class="phase phase--prep" style="left:62.52%;width:8.77%"></div>
+      <div class="phase phase--roll" style="left:71.29%;width:26.21%"></div>
       <div class="phase phase--support" style="left:80.00%;width:17.50%">Post-release support</div>
       <div class="arrow" style="left:98.1%">→</div>
 
-      <div class="phase-name" style="left:17.84%">Stabilization</div>
-      <div class="phase-name" style="left:40.13%">Release preparation</div>
-      <div class="phase-name" style="left:84.40%">Rollout</div>
+      <div class="phase-name phase-name--stab" style="left:17.84%">Stabilization</div>
+      <div class="phase-name phase-name--prep" style="left:40.13%">Release preparation</div>
+      <div class="phase-name phase-name--roll" style="left:84.40%">Rollout</div>
 
       <div class="prod" style="left:9.67%">
         <p><strong>Beta</strong><time>Sep 30</time></p>
