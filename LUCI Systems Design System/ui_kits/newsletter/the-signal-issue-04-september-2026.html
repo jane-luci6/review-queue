@@ -1287,7 +1287,8 @@
       color: #354F5C;
       max-width: var(--read);
     }
-    .field-num__body p { max-width: 60ch; }
+    .field-num__body p { max-width: 60ch; margin-bottom: 22px; }
+    .field-num__body p:last-child { margin-bottom: 0; }
 
     .field-runs { max-width: 760px; margin-top: clamp(8px, 2vw, 16px); }
     .field-runs__title {
@@ -1639,6 +1640,14 @@
     @media (prefers-reduced-motion: reduce) {
       .field-slider__divider { transition: none; }
     }
+    /* before photo reads as the older state — pull a little color out */
+    .field-slider__before .field-slider__img { filter: saturate(0.6) contrast(0.95) brightness(0.95); }
+    /* slider figure wrapper — same measure as the old two-column ba */
+    .field-slider-figure {
+      max-width: 880px;
+      margin: 0 0 clamp(40px, 6vw, 64px);
+    }
+    .field-slider-figure .field-ba__caption { margin-top: 12px; }
 
 
     .quote-attrib {
@@ -2578,8 +2587,8 @@
       </div>
       <div class="field-num__rule" aria-hidden="true"></div>
       <div class="field-num__body">
-        <p>Aliante&rsquo;s sportsbook remodel was a major investment in the guest experience, anchored by a 106-foot curved LED wall &mdash; roughly 2,000 square feet of canvas for live sports, racing, and odds. The room&rsquo;s projector-based display system had served the property for years; the remodel was the chance to build the next generation around a far larger, more flexible centerpiece.</p>
-        <p>LUCI was already live throughout the rest of Aliante, orchestrating audio, video, and signage across the property. The remodel simply brought the sportsbook onto that same platform &mdash; one interface, one standard of operations, already in place.</p>
+        <p>Aliante&rsquo;s sportsbook remodel was a major investment in the guest experience, anchored by a 106-foot curved LED wall &mdash; roughly 2,000 square feet of canvas for live sports, racing, and odds. The room&rsquo;s projector-based display system had served the property for years; the remodel created the opportunity to build the next generation around a far larger, more flexible centerpiece.</p>
+        <p>LUCI was already live throughout the rest of Aliante, orchestrating audio, video, and signage across the property. They simply brought the sportsbook remodel onto LUCI and continued to give the entire property a single interface and a single standard of operations.</p>
       </div>
     </div>
 
@@ -2589,29 +2598,24 @@
       </div>
       <div class="field-num__rule" aria-hidden="true"></div>
       <div class="field-num__body">
-        <p>LUCI&rsquo;s team built and installed one of the largest LED walls in Las Vegas. On a wall this size, the curve had to be exact &mdash; even a small variation can keep a tile from seating or leave a visible gap, so the team adjusted each section of the mounting structure to hold the intended curve across the full span.</p>
+        <p>LUCI&rsquo;s team built and installed one of the largest LED walls in Las Vegas. On a wall this size, the curve had to be exact: even a small variation can keep an LED tile from seating correctly or leave a visible gap. The team adjusted each section of the mounting structure to hold the intended curve, so every tile sat flush across the full span.</p>
         <p>Behind the wall, fifteen racks of legacy gear came out and were replaced by just two LUCI racks. More than twenty projectors came down. LUCI also rebuilt the continuous odds ticker around the sportsbook bar, bringing the main wall, the ticker, video sources, and audio onto the same platform already operating throughout Aliante.</p>
       </div>
     </div>
 
-    <div class="field-ba">
-      <div class="field-ba__col">
-        <div class="field-ba__head">
-          <span class="field-ba__badge">Before</span>
+    <figure class="field-slider-figure">
+      <div class="field-slider" data-field-slider>
+        <img class="field-slider__img" src="assets/aliante/after-web.jpg?v=1" alt="Aliante sportsbook after the remodel &mdash; 106-foot curved LED wall live with multiple sports zones and betting tickers" width="1600" height="900" loading="lazy">
+        <div class="field-slider__before">
+          <img class="field-slider__img" src="assets/aliante/before-web.jpg?v=1" alt="Aliante sportsbook before the remodel &mdash; curved wall of multiple projection screens with a long row of small monitors forming the odds ticker, theater-style seating in the foreground" width="1600" height="900" loading="lazy">
         </div>
-        <figure class="field-ba__media field-ba__media--before">
-          <img class="field-cinematic field-cinematic--wide" src="assets/aliante/before-web.jpg?v=1" alt="Aliante sportsbook before the remodel &mdash; curved wall of multiple projection screens with a long row of small monitors forming the odds ticker, theater-style seating in the foreground" width="1600" height="900" loading="lazy">
-        </figure>
+        <div class="field-slider__divider" aria-hidden="true"><span class="field-slider__handle"></span></div>
+        <span class="field-slider__tag field-slider__tag--before">Before</span>
+        <span class="field-slider__tag field-slider__tag--after">After</span>
+        <input class="field-slider__range" type="range" min="0" max="100" value="50" aria-label="Drag to see the wall come together">
       </div>
-      <div class="field-ba__col">
-        <div class="field-ba__head">
-          <span class="field-ba__badge">After</span>
-        </div>
-        <figure class="field-ba__media">
-          <img class="field-cinematic field-cinematic--wide" src="assets/aliante/after-web.jpg?v=1" alt="Aliante sportsbook after the remodel &mdash; 106-foot curved LED wall live with multiple sports zones and betting tickers" width="1600" height="900" loading="lazy">
-        </figure>
-      </div>
-    </div>
+      <figcaption class="field-ba__caption">Drag to see the wall come together.</figcaption>
+    </figure>
 
     <div class="field-pair">
       <div class="field-num">
@@ -2620,8 +2624,8 @@
         </div>
         <div class="field-num__rule" aria-hidden="true"></div>
         <div class="field-num__body">
-          <p>The operator chooses from six wall configurations, each designed for a different mix of events. Tap a box in the interface, select the game, race, or channel that belongs there, and LUCI sends it to that section of the wall. Audio is controlled by section as well, so the team can make one event the focus without changing the rest of the room.</p>
-          <p>The wall moves from a single marquee event to a full slate of simultaneous games without a separate workflow or control system.</p>
+          <p>The operator starts by choosing from six wall configurations, each designed for a different mix of events. Tap a box in the interface, select the game, race, or channel that belongs there, and LUCI sends it to that section of the wall.</p>
+          <p>Audio is controlled by section as well, so the team can make one event the focus without changing the rest of the room. The wall can move from a single marquee event to a full slate of simultaneous games without a separate workflow or control system.</p>
         </div>
       </div>
 
