@@ -88,7 +88,7 @@ body {
 }
 
 
-.track { height: 490px; position: relative; }
+.track { height: 324px; position: relative; }
 
 .grid i {
   background: rgba(219, 225, 228, 0.6);
@@ -215,8 +215,6 @@ body {
 }
 
 .prod--ga i {
-  background: var(--gold-deep);
-  border-color: var(--gold-deep);
   height: 20px;
   margin-top: -10px;
   width: 20px;
@@ -234,7 +232,7 @@ body {
   width: 2px;
 }
 
-.prod--ga b { background: var(--gold-deep); opacity: 0.65; }
+.prod--ga b { opacity: 0.65; }
 
 .prod p { bottom: 35px; left: 0; position: absolute; right: 0; }
 
@@ -246,8 +244,6 @@ body {
   font-weight: 700;
   line-height: 1.2;
 }
-
-.prod--ga strong { color: var(--gold-deep); }
 
 .prod time {
   color: var(--navy-muted);
@@ -313,71 +309,6 @@ body {
   font-weight: 600;
   margin-top: 2px;
 }
-
-/* Campaign email comms band: when campaign outreach runs for each audience.
-   Scoped to the campaign — the customer newsletter and Mark's live sales
-   conversations are not represented here. */
-.comms-rule {
-  background: var(--rule-light);
-  height: 1px;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 328px;
-}
-
-.comms-bar--ongoing {
-  background: rgba(206, 176, 110, 0.16);
-  box-shadow: inset 0 0 0 1px rgba(206, 176, 110, 0.45);
-  color: var(--navy-muted);
-}
-
-.comms-head {
-  color: var(--navy-muted);
-  font-family: var(--font);
-  font-size: 10px;
-  font-weight: 700;
-  left: 0;
-  letter-spacing: 0.2em;
-  position: absolute;
-  text-transform: uppercase;
-  top: 342px;
-}
-
-.comms-bar {
-  align-items: center;
-  background: rgba(206, 176, 110, 0.3);
-  border-radius: 3px;
-  color: var(--ink-strong);
-  display: flex;
-  font-family: var(--font);
-  font-size: 11px;
-  font-weight: 700;
-  height: 18px;
-  letter-spacing: 0.04em;
-  padding-left: 10px;
-  position: absolute;
-  white-space: nowrap;
-  z-index: 2;
-}
-
-.comms-bar--cont { background: rgba(206, 176, 110, 0.18); }
-
-/* A full-width rail per audience, so an active span reads as one lane
-   switching on rather than two unrelated bars. */
-.comms-lane {
-  background: rgba(10, 22, 28, 0.035);
-  border-radius: 3px;
-  height: 18px;
-  left: 0;
-  position: absolute;
-  right: 0;
-}
-
-.cm1 { top: 368px; }
-.cm2 { top: 394px; }
-.cm3 { top: 420px; }
-.cm0 { top: 456px; }
 
 @media print {
   @page { size: landscape; margin: 0.5in; }
@@ -465,24 +396,6 @@ body {
         <i></i><b></b>
         <p><strong>Post-launch comms</strong><time>Feb 9</time></p>
       </div>
-
-      <div class="comms-rule"></div>
-
-      <p class="comms-head">Campaign email comms</p>
-
-      <div class="comms-lane cm1"></div>
-      <div class="comms-lane cm2"></div>
-      <div class="comms-lane cm3"></div>
-
-      <div class="comms-bar cm1" style="left:30.00%;width:24.26%">Existing customers</div>
-      <div class="comms-bar comms-bar--cont cm1" style="left:64.58%;width:32.92%"></div>
-
-      <div class="comms-bar cm2" style="left:34.67%;width:19.59%">Warm prospects</div>
-      <div class="comms-bar comms-bar--cont cm2" style="left:71.29%;width:26.21%"></div>
-
-      <div class="comms-bar cm3" style="left:71.29%;width:26.21%">Net-new prospects</div>
-
-      <div class="comms-bar comms-bar--ongoing cm0" style="left:0;width:97.5%">The Signal newsletter &middot; monthly</div>
     </div>
 
   </div>
