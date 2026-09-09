@@ -1,0 +1,85 @@
+# New LUCI launch — messaging hierarchy (pillar structure)
+
+**When to use:** whenever building or editing a New LUCI launch campaign asset — the What's New one-pager, the demo webinar (script, slides, highlight reel, recording), email comms (all tracks), or any future asset that communicates the New LUCI release features to customers or prospects.
+
+**Scope — New LUCI launch campaign only.** This is not a house-wide rule. It does not apply to the website, newsletters, sales documents, case studies, or any other LUCI surface unless that surface is explicitly part of the New LUCI launch campaign. Those assets follow their own rules (`luci-messaging-voice.mdc`, `luci-modern-design-guidelines.mdc`, `luci-sales-document-system.mdc`, `luci-case-studies.mdc`, etc.).
+
+**Source of truth:** `LUCI Systems Design System/ui_kits/internal-portal/new-luci-feature-list.json` — the structured feature list. If the JSON and this rule disagree, the JSON wins (it's the live data); update this rule to match.
+
+---
+
+## The hierarchy (four layers)
+
+The New LUCI release is communicated as a **messaging hierarchy**, not a flat feature list. This follows 2026 product-marketing best practice for major-version releases (Inkly's release message house, The Starr Conspiracy's messaging architecture, Reforge's product messaging ladder). A flat primary/secondary list was the old structure; it was replaced Sep 2026.
+
+### Layer 1 — Narrative (the release thesis)
+
+One line that frames the entire release. Every asset opens with or implies this.
+
+> **Putting the power of programming in your hands**
+
+This is Mike's phrase. The theme is that New LUCI gives clients more control and less need of the LUCI team — they can do things on their own. Do not paraphrase this into "operational precision" (retired) or any other variant.
+
+### Layer 2 — Release pillars (the three arguments)
+
+The release argument is carried by **three pillars**. Each pillar has a one-sentence argument. Every proof feature plugs into one pillar.
+
+| Pillar | Argument | Proof features |
+|---|---|---|
+| **Operate** | Control now lives in the venue, not just the back office. | Venue panels · Staging |
+| **Make it yours** | Your maps, your look — the system belongs to the property. | Customizable interface · Live map flexibility |
+| **See and prove** | What's happening now, what happened, and who did it. | Audit trails and in-product support · Live monitoring |
+
+### Layer 3 — Proof features (the evidence)
+
+Each feature under a pillar **carries that pillar's argument**. When writing about a feature, frame it through its pillar — don't list features as standalone bullets disconnected from the argument they prove.
+
+Feature bullets live in the JSON; don't re-derive them from memory. Read `new-luci-feature-list.json` → `pillars[n].features[m].bullets` for the current copy.
+
+### Layer 4 — Technical detail (not mapped to a pillar)
+
+Features that support the platform but don't carry the release argument sit in `technical.items` — for the IT or A/V lead who asks, not for the campaign narrative. These include:
+
+- **Sign-in and session control** — *open question: Jane may promote this to a proof point under "Make it yours." Until she decides, it stays here.*
+- Audio group control
+- Add any endpoint from LUCI
+- Video wall layout sync
+- Central display model catalog
+
+Plus IT-facing deep versions of the pillar features (venue panels, staging, audit trails, identity/sessions, endpoint management, private tunnel, scoped diagnostic capture) in `technical.additional` — these feed the merged upgrade guide and IT companion, not the campaign copy.
+
+---
+
+## Which assets explicitly follow this structure
+
+All New LUCI launch assets should be **consistent with** the hierarchy. Three asset families must **explicitly structure** their content around it:
+
+| Asset | How the hierarchy applies |
+|---|---|
+| **What's New one-pager** (also for prospecting) | Lead with the narrative. Organize features under the three pillars. Technical detail is absent or relegated to a small "for IT" sidebar. This is the primary place a reader sees the pillar structure. |
+| **Demo webinar** (script, slides, highlight reel, recording) | The webinar walks through the pillars in order. Each pillar section introduces the argument, then shows its proof features. Technical detail is reserved for Q&A or an IT-specific segment. |
+| **Email comms** (all tracks: customers, warm prospects, net-new, Prospect Pulse) | Emails are written **under the umbrella** of the hierarchy. Individual emails don't need to name all three pillars, but the messaging is consistent with the pillar arguments. Prospect Pulse topics map to pillars, not to a flat feature list. |
+
+**Sales deck & capabilities updates** — *separate discussion pending.* How New LUCI features talk inside existing marketing materials (sales deck, capabilities document) has not been decided yet. Do not assume the pillar structure applies verbatim to those assets until Jane confirms the approach.
+
+---
+
+## How to use this rule
+
+1. **Before building any New LUCI asset**, read `new-luci-feature-list.json` for the current pillars, arguments, and feature bullets. The JSON is the source of truth — this rule is the guidance.
+2. **Structure the asset around the pillars.** The narrative opens; the pillars carry the argument; the proof features provide the evidence; technical detail is separated.
+3. **Don't flatten back to primary/secondary.** The old structure is retired. If someone asks for "the primary features," answer with the pillar structure — the pillars are the primary message, the features under them are the proof.
+4. **Don't invent new pillars.** Three is the count. If a feature doesn't fit, it goes in technical detail, not a fourth pillar.
+5. **Check the sign-in/session control question** before building. If Jane has decided to promote it, move it in the JSON first, then build.
+
+---
+
+## Research basis
+
+Restructured Sep 2026 based on 2026 product-marketing research:
+- **Inkly** — release message house: narrative → pillars → proof points → technical detail.
+- **The Starr Conspiracy** — messaging architecture: four layers from brand thesis to feature detail.
+- **Reforge** — product messaging ladder: features ladder up to brand, not flat.
+- **Major-version examples** — Elastic 9.5, Salesforce Agentforce 360, Pega Infinity: all use themed pillars for major releases, not flat feature lists.
+
+The flat primary/secondary list was the old approach. It made every feature compete for attention equally and gave the reader no argument to hold. The pillar structure gives the reader three things to remember, each with evidence underneath.
