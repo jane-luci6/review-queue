@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>COS Task Calendar</title>
+<style>
+body{font-family:Inter,system-ui,sans-serif;background:#0b1220;color:#e8eef7;margin:24px;}
+h1{font-size:22px;margin:0 0 4px}
+.sub{color:#8aa0b8;margin-bottom:20px;font-size:13px}
+.month{margin:18px 0 8px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#6ee7b7}
+.row{display:grid;grid-template-columns:18px 130px 90px 1fr 90px;gap:10px;align-items:center;padding:8px 10px;border-radius:8px;border:1px solid #1e2a3a}
+.row+.row{margin-top:6px}
+.row.overdue{border-color:#f87171;background:#2a1418}
+.row.soon{border-color:#fbbf24;background:#2a2314}
+.row.done{opacity:.55}
+.box{width:12px;height:12px;border:2px solid #64748b;border-radius:3px}
+.date{font-size:13px;color:#cbd5e1}.dow{color:#64748b;font-size:11px}
+.tag{font-size:11px;color:#94a3b8;text-transform:uppercase;letter-spacing:.04em}
+.title{font-size:14px;font-weight:600}.client{font-size:12px;color:#94a3b8}
+.badge{font-size:11px;padding:3px 8px;border-radius:999px;text-align:center}
+.badge.overdue{background:#7f1d1d;color:#fecaca}.badge.soon{background:#78350f;color:#fde68a}.badge.done{background:#14532d;color:#bbf7d0}
+h2{margin:28px 0 10px;font-size:16px}
+.proj,.ow,.park{border:1px solid #1e2a3a;border-radius:8px;padding:10px 12px;margin-bottom:8px}
+.next,.wait,.note{font-size:12px;color:#94a3b8;margin-top:4px}.pstatus{font-size:11px;color:#6ee7b7;margin-top:6px}
+</style></head><body>
+<h1>LUCI CoS board</h1>
+<div class="sub">Updated 2026-09-10 · America/Los_Angeles · Jane priorities first</div>
+<div class="month">August</div>  <div class="row done">
+    <div class="box"></div>
+    <div class="date">Aug 26 <span class="dow">Wednesday</span></div>
+    <div class="tag">Email 9</div>
+    <div><div class="title">60-day check-in</div><div class="client">Tachi Palace</div></div>
+    <div class="badge done">Done</div>
+  </div>  <div class="row done">
+    <div class="box"></div>
+    <div class="date">Aug 28 <span class="dow">Friday</span></div>
+    <div class="tag">Email 5</div>
+    <div><div class="title">Go live / LUCI is Live</div><div class="client">Clearwater River</div></div>
+    <div class="badge done">Done</div>
+  </div><div class="month">September</div>  <div class="row overdue">
+    <div class="box"></div>
+    <div class="date">Sep 1 <span class="dow">Tuesday</span></div>
+    <div class="tag">Signal</div>
+    <div><div class="title">Start September Signal</div><div class="client">The Signal</div></div>
+    <div class="badge overdue">Overdue</div>
+  </div>  <div class="row done">
+    <div class="box"></div>
+    <div class="date">Sep 4 <span class="dow">Friday</span></div>
+    <div class="tag">Email 6</div>
+    <div><div class="title">Survey</div><div class="client">Clearwater River</div></div>
+    <div class="badge done">Done</div>
+  </div>  <div class="row done">
+    <div class="box"></div>
+    <div class="date">Sep 8 <span class="dow">Tuesday</span></div>
+    <div class="tag">Meeting</div>
+    <div><div class="title">Present Launch plan to Mark and Mike — 2:30pm PT</div><div class="client"></div></div>
+    <div class="badge done">Done</div>
+  </div>  <div class="row soon">
+    <div class="box"></div>
+    <div class="date">Sep 10 <span class="dow">Thursday</span></div>
+    <div class="tag">Review</div>
+    <div><div class="title">Signal Issue 04 → Mike for review</div><div class="client"></div></div>
+    <div class="badge soon">Today</div>
+  </div>  <div class="row done">
+    <div class="box"></div>
+    <div class="date">Sep 11 <span class="dow">Friday</span></div>
+    <div class="tag">Email 7</div>
+    <div><div class="title">Signal welcome invitation — CANCELLED</div><div class="client">Clearwater River</div></div>
+    <div class="badge done">Done</div>
+  </div>  <div class="row ">
+    <div class="box"></div>
+    <div class="date">Sep 15 <span class="dow">Tuesday</span></div>
+    <div class="tag">Signal</div>
+    <div><div class="title">Send September Signal</div><div class="client">The Signal</div></div>
+    <div></div>
+  </div>  <div class="row ">
+    <div class="box"></div>
+    <div class="date">Sep 15 <span class="dow">Tuesday</span></div>
+    <div class="tag">Email</div>
+    <div><div class="title">Regular Signal newsletter</div><div class="client">Clearwater River</div></div>
+    <div></div>
+  </div>  <div class="row ">
+    <div class="box"></div>
+    <div class="date">Sep 23 <span class="dow">Wednesday</span></div>
+    <div class="tag">Email 8</div>
+    <div><div class="title">30-day check-in</div><div class="client">Clearwater River</div></div>
+    <div></div>
+  </div>  <div class="row ">
+    <div class="box"></div>
+    <div class="date">Sep 25 <span class="dow">Friday</span></div>
+    <div class="tag">Email 10</div>
+    <div><div class="title">90-day check-in</div><div class="client">Tachi Palace</div></div>
+    <div></div>
+  </div><div class="month">October</div>  <div class="row ">
+    <div class="box"></div>
+    <div class="date">Oct 1 <span class="dow">Thursday</span></div>
+    <div class="tag">Signal</div>
+    <div><div class="title">Start October Signal</div><div class="client">The Signal</div></div>
+    <div></div>
+  </div>  <div class="row ">
+    <div class="box"></div>
+    <div class="date">Oct 15 <span class="dow">Thursday</span></div>
+    <div class="tag">Signal</div>
+    <div><div class="title">Send October Signal</div><div class="client">The Signal</div></div>
+    <div></div>
+  </div>  <div class="row ">
+    <div class="box"></div>
+    <div class="date">Oct 23 <span class="dow">Friday</span></div>
+    <div class="tag">Email 9</div>
+    <div><div class="title">60-day check-in</div><div class="client">Clearwater River</div></div>
+    <div></div>
+  </div><div class="month">November</div>  <div class="row ">
+    <div class="box"></div>
+    <div class="date">Nov 16 <span class="dow">Monday</span></div>
+    <div class="tag">Milestone</div>
+    <div><div class="title">Treasure Chest expansion</div><div class="client">Boyd Treasure Chest</div></div>
+    <div></div>
+  </div>  <div class="row ">
+    <div class="box"></div>
+    <div class="date">Nov 22 <span class="dow">Sunday</span></div>
+    <div class="tag">Email 10</div>
+    <div><div class="title">90-day check-in</div><div class="client">Clearwater River</div></div>
+    <div></div>
+  </div>
+<h2>Open / waiting on Jane</h2>
+<div class="ow"><div class="title">Signal Issue 04: Theme, Advice, Minute with Mike + Welcome roster — Mike review TODAY Thu Sep 10; send Tue Sep 15</div><div class="wait">Waiting: Jane locks last picks TODAY so HTML can go to Mike today</div></div><div class="ow"><div class="title">Aliante LED video: Rough Cut 2 Review PASS (~2:29 at assembly/aliante-led-rough-cut-2.mp4; RC1 preserved). Written case study still needs her second pass.</div><div class="wait">Waiting: Jane: watch/approve RC2; decide polish; second pass on written study</div></div><div class="ow"><div class="title">Clearwater 30/60/90 from Aug 24 implementation: Sep 23, Oct 23, Nov 22. Add at start of CJ 2026-5 only after Jane says yes.</div><div class="wait">Waiting: Jane yes on the AC write; calendar dates are blocked.</div></div><div class="ow"><div class="title">New LUCI Demo seminar/webinar: date, platform, speaker TBD</div><div class="wait">Waiting: Jane / Mike</div></div><div class="ow"><div class="title">ActiveCampaign prospect tracks (plan exists, not built)</div><div class="wait">Waiting: Jane to approve</div></div><div class="ow"><div class="title">Four Winds: start Aaron Herrbach + Matt Roach in Customer Journey when deposit is received</div><div class="wait">Waiting: Jane to confirm deposit received; then ask for exact AC approval before adding both at the beginning of the automation</div></div><div class="ow"><div class="title">New LUCI launch — open: Jane call on sign-in/session placement; sales deck/Capabilities; proof pull; email bodies; AC Deals; Nick Cloudflare/GA</div><div class="wait">Waiting: Jane / Mark / Nick as needed</div></div>
+<h2>Projects in flight</h2>
+<div class="proj"><div class="title">New LUCI launch campaign</div><div class="next">Theme + messaging hierarchy live on IMP .17: narrative → Operate / Make it yours / See and prove → technical detail. Cursor rule luci-new-luci-messaging-hierarchy.mdc scopes which assets follow it (one-pager, webinar family) vs not (email, Prospect Pulse). Open: Jane call on sign-in/session under Make it yours vs technical; sales deck/Capabilities separate. Still: proof pull; email bodies/subjects; AC Deals when Mark ready; Nick Cloudflare/GA.</div><div class="pstatus">In flight</div></div><div class="proj"><div class="title">Website rebuild (luci-website)</div><div class="next">Fall launch. This week still: Jane tweak pass + evaluate against new LUCI features. E-mesh already on. Field Activation Guide is live at lucisystems.com/guides/customer-field-activation-guide.</div><div class="pstatus">In flight</div></div><div class="proj"><div class="title">Website content library (prospect)</div><div class="next">Wave 1 drafts waiting on Jane's read (REVIEW.html). Then look lock by type, Maker on luci-website, Review, live. Aliante held until live page drops 'largest in Las Vegas'.</div><div class="pstatus">In flight</div></div><div class="proj"><div class="title">Customization Studio (standalone app, with Will)</div><div class="next">Not IMP. Jane not building studio in IMP. Review hub still for content reviews/downloads.</div><div class="pstatus">In flight</div></div><div class="proj"><div class="title">Aliante case study + video + Signal</div><div class="next">Written case study: Jane's second pass. Video: Rough Cut 2 Review PASS (~2:29) at assembly/aliante-led-rough-cut-2.mp4; RC1 preserved. Optional polish: unfinished commissioning bridge before people/close. Jane watch / Mike-ready call. Not published.</div><div class="pstatus">In flight</div></div><div class="proj"><div class="title">The Signal Issue 04</div><div class="next">Issue 04: Mike needs look by Thu Sep 10; send Tue Sep 15. Still open: Theme, Advice, Minute with Mike + Welcome roster. Locked: Field Aliante, What's coming Panels, Happenings FAG, Quick Tip Kiosk. HTML held until last picks.</div><div class="pstatus">In flight</div></div><div class="proj"><div class="title">Prospect nurture (ActiveCampaign)</div><div class="next">Split RESOLVED by the IMP email plan: high-intent past-demo get the private preview, broader warm opens at launch, anyone finishing a cycle without going to sales lands in Prospect Pulse (6 months, every 4-6 weeks). Build in ActiveCampaign after copy exists. No AC writes without Jane's yes.</div><div class="pstatus">In flight</div></div><div class="proj"><div class="title">LinkedIn / social</div><div class="next">Mike reviewed the strategy. Hold until New LUCI product launch.</div><div class="pstatus">Held</div></div><div class="proj"><div class="title">2026 tactics brief</div><div class="next">Four tactics now: be the answer (AEO + entity binding), YouTube one-job how-tos, extend the Capabilities doc into a real committee packet (finance/procurement page, security answer sheet, forwardable variant, champion objections), and a state-of property A/V report from field expertise. Trials cut. Waiting on Jane's picks.</div><div class="pstatus">In flight</div></div>
+<h2>Parked</h2>
+<div class="park"><div class="title">LinkedIn / social posting</div><div class="note">Hold until New LUCI product launch.</div></div><div class="park"><div class="title">Case-study video skills (beat-mapping / Pass 1–2)</div><div class="note">Jane pulled Sep 1. Do not use or edit until she sends replacements.</div></div><div class="park"><div class="title">Signal Issue 04 decisions</div><div class="note">Park window ended Fri Sep 4. Still open: Theme, Advice, Minute with Mike + Welcome roster. Mike gate Thu Sep 10; send Sep 15.</div></div>
+</body></html>
