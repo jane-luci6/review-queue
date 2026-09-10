@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Signal — Issue 04</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #10232D;
+      --navy-muted: #49616E;
+      --mint-dark: #2b9e80;
+      --off-white: #F5F8FA;
+      --white: #FFFFFF;
+      --rule: #DBE1E4;
+      --ink: #354F5C;
+      --muted: #6D7B84;
+      --r-sm: 6px;
+      --font: "Space Grotesk", "Trebuchet MS", sans-serif;
+      --font-body: "Inter", "Space Grotesk", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body {
+      font-family: var(--font-body);
+      background: var(--off-white);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+    .sheet { max-width: 1080px; margin: 0 auto; padding: 0 28px 64px; }
+    .page-head { padding: 36px 0 24px; border-bottom: 1px solid var(--rule); }
+    .page-head h1 {
+      margin: 0;
+      font-family: var(--font);
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      color: var(--navy);
+      line-height: 1.15;
+    }
+    .page-head .meta {
+      margin: 10px 0 0;
+      font-family: var(--font);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--navy-muted);
+    }
+    .page-head .lede {
+      margin: 12px 0 0;
+      max-width: 72ch;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--ink);
+    }
+    .block { padding: 28px 0 8px; }
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 14px;
+      font-family: var(--font);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mint-dark);
+    }
+    .kicker::before { content: ""; width: 22px; height: 2px; background: var(--mint-dark); }
+    .note { margin: 0 0 12px; max-width: 72ch; font-size: 13px; color: var(--muted); }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .grid-3.tight { gap: 10px; }
+    .card {
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: var(--r-sm);
+      padding: 20px 18px 18px;
+    }
+    .card.tight { padding: 12px 14px 14px; }
+    .card .num {
+      font-family: var(--font);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--mint-dark);
+      margin: 0 0 8px;
+    }
+    .card h3 {
+      margin: 0 0 10px;
+      font-family: var(--font);
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--navy);
+      line-height: 1.25;
+    }
+    .card.tight h3 { font-size: 15px; margin-bottom: 6px; }
+    .card p { margin: 0; font-size: 14px; line-height: 1.55; color: var(--ink); }
+    .card.tight p { font-size: 13px; color: var(--muted); }
+    .field-block {
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: var(--r-sm);
+      padding: 20px 22px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px 24px;
+      align-items: start;
+    }
+    .field-block h3 {
+      margin: 0 0 6px;
+      font-family: var(--font);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .field-block p { margin: 0; font-size: 14px; }
+    .rows { margin: 0; padding: 0; list-style: none; }
+    .rows li {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px 18px;
+      align-items: baseline;
+      padding: 12px 0;
+      border-top: 1px solid var(--rule);
+    }
+    .rows li:first-child { border-top: 0; padding-top: 0; }
+    .rows h3 {
+      margin: 0 0 4px;
+      font-family: var(--font);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .rows p { margin: 0; font-size: 14px; }
+    .flag {
+      font-family: var(--font);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--mint-dark);
+      text-align: right;
+      max-width: 14ch;
+    }
+    .flag.needs { color: var(--navy-muted); }
+    .coda {
+      margin: 20px 0 0;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule);
+    }
+    .coda .label {
+      margin: 0 0 6px;
+      font-family: var(--font);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--navy-muted);
+    }
+    .coda p { margin: 0; font-size: 13px; color: var(--muted); }
+    .rec {
+      padding: 20px 0 8px;
+      border-top: 1px solid var(--rule);
+      margin-top: 20px;
+    }
+    .rec .kicker { color: var(--navy-muted); }
+    .rec .kicker::before { background: var(--navy-muted); }
+    .rec dl { margin: 0; }
+    .rec div {
+      display: grid;
+      grid-template-columns: 9rem 1fr;
+      gap: 8px 16px;
+      padding: 5px 0;
+      font-size: 14px;
+    }
+    .rec dt { font-family: var(--font); font-weight: 600; color: var(--navy-muted); }
+    .rec dd { margin: 0; color: var(--ink); }
+    @media (max-width: 860px) {
+      .grid-3, .grid-3.tight { grid-template-columns: 1fr; }
+      .field-block { grid-template-columns: 1fr; }
+      .rec div { grid-template-columns: 1fr; gap: 2px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <header class="page-head">
+      <h1>The Signal — Issue 04</h1>
+      <p class="meta">September · Send September 15</p>
+      <p class="lede">Pick a theme. In the Field is Aliante. What’s coming is one future-platform beat — your A/B/C. Everything else is today: current LUCI, industry, Mike.</p>
+    </header>
+
+    <section class="block">
+      <p class="kicker">Theme</p>
+      <div class="grid-3">
+        <article class="card">
+          <p class="num">1</p>
+          <h3>The Future Enters the Room</h3>
+          <p>The moment work in progress becomes something people can see, use, and walk up to.</p>
+        </article>
+        <article class="card">
+          <p class="num">2</p>
+          <h3>Closer to the Work</h3>
+          <p>LUCI showing up where the property actually runs: the floor, the wall, the next decision.</p>
+        </article>
+        <article class="card">
+          <p class="num">3</p>
+          <h3>What Forward Looks Like From Here</h3>
+          <p>The next specific mile after three months of motion.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="block">
+      <p class="kicker">In the Field</p>
+      <div class="field-block">
+        <div>
+          <h3>Aliante Race &amp; Sports wall</h3>
+          <p>The one field story. 106-foot curve, 15 racks to 2, LUCI already on the property.</p>
+        </div>
+        <span class="flag">Ready</span>
+      </div>
+    </section>
+
+    <section class="block">
+      <p class="kicker">What’s coming</p>
+      <p class="note">One beat. The future platform. Not a fact until you pick.</p>
+      <div class="grid-3 tight">
+        <article class="card tight">
+          <p class="num">A</p>
+          <h3>Beta live</h3>
+          <p>It’s operating. One screenshot or tidbit. What the team is learning.</p>
+          <p class="flag needs" style="display:block;margin-top:8px;text-align:left;">Needs you</p>
+        </article>
+        <article class="card tight">
+          <p class="num">B</p>
+          <h3>Still coming</h3>
+          <p>What has advanced since August, and the next milestone. Not another preview.</p>
+          <p class="flag needs" style="display:block;margin-top:8px;text-align:left;">Needs you</p>
+        </article>
+        <article class="card tight">
+          <p class="num">C</p>
+          <h3>Public launch</h3>
+          <p>The issue is the public introduction, with the campaign language you already wrote.</p>
+          <p class="flag needs" style="display:block;margin-top:8px;text-align:left;">Needs you</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="block">
+      <p class="kicker">Quick Tip — things people can do on LUCI now</p>
+      <ul class="rows">
+        <li>
+          <div>
+            <h3>Give one venue its own PIN, not the whole map</h3>
+            <p>Bingo (or any room) logs in and only sees its own endpoints. Confirm bingo as the example.</p>
+          </div>
+          <span class="flag needs">Needs you</span>
+        </li>
+        <li>
+          <div>
+            <h3>Name a new audio source without a ticket</h3>
+            <p>Plug into an input that’s already on the network, right-click in LUCI, label it. It’s on the map. Gain matching is the only reason to loop in an FDE.</p>
+          </div>
+          <span class="flag">Ready</span>
+        </li>
+        <li>
+          <div>
+            <h3>Put the TV’s audio on the room for a watch party</h3>
+            <p>That zone’s speakers play the game. No extra box. Lip-sync can drift on some sets; we’ll caveat if you pick it.</p>
+          </div>
+          <span class="flag needs">Needs you</span>
+        </li>
+        <li>
+          <div>
+            <h3>Kiosk login: a short list, not the map</h3>
+            <p>A conference room or cabana login sees only its screens and channels. Today’s permission pattern, not a new panel product.</p>
+          </div>
+          <span class="flag needs">Needs you</span>
+        </li>
+        <li>
+          <div>
+            <h3>Scan for offline before you walk</h3>
+            <p>Green is talking. Red is not. Fix volume and source from where you sit; walk only for a cable or a dead display.</p>
+          </div>
+          <span class="flag needs">Needs you</span>
+        </li>
+        <li>
+          <div>
+            <h3>Daypart the dining push, then revert</h3>
+            <p>One preset the hour before lunch, one before dinner. The floor hits the offer, then returns. Marketing does not walk TVs.</p>
+          </div>
+          <span class="flag">Ready</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="block">
+      <p class="kicker">Advice — how a live property should run</p>
+      <ul class="rows">
+        <li>
+          <div>
+            <h3>Divisible rooms are operating modes</h3>
+            <p>When the wall comes out, audio and video combine with the room. When it goes back, they split. You don’t lose that.</p>
+          </div>
+          <span class="flag">Ready</span>
+        </li>
+        <li>
+          <div>
+            <h3>Keep local control local</h3>
+            <p>The cabana or conference room gets the few controls it needs. The rest of the house stays coordinated. An operating rule, not a product.</p>
+          </div>
+          <span class="flag">Ready</span>
+        </li>
+        <li>
+          <div>
+            <h3>The systems already in the room stay</h3>
+            <p>LUCI coordinates them. It does not replace the A/V already bought.</p>
+          </div>
+          <span class="flag">Ready</span>
+        </li>
+        <li>
+          <div>
+            <h3>Expansion should join the house, not start a second console</h3>
+            <p>A new wall or room comes onto the interface already running the property.</p>
+          </div>
+          <span class="flag">Ready</span>
+        </li>
+        <li>
+          <div>
+            <h3>Use the plant that’s already in the floor</h3>
+            <p>If the old run still works, send the new stream back out on it. Don’t trench the floor to prove a point.</p>
+          </div>
+          <span class="flag">Ready</span>
+        </li>
+        <li>
+          <div>
+            <h3>Watch the calendar collision</h3>
+            <p>If two presets share the same TVs, the next one wins. Don’t stack a drawing on a daypart without a plan.</p>
+          </div>
+          <span class="flag">Ready</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="block">
+      <p class="kicker">Happenings — industry and current ops</p>
+      <ul class="rows">
+        <li>
+          <div>
+            <h3>A/V people are scarce</h3>
+            <p>The industry is small. A lot of properties assigned IT rather than hiring someone who wanted A/V. Routine changes should not need a specialist. Pick this <em>or</em> the same idea under Mike, not both.</p>
+          </div>
+          <span class="flag">Ready</span>
+        </li>
+        <li>
+          <div>
+            <h3>The useful AI work is in the back</h3>
+            <p>Efficiency and documentation. Not a lobby gimmick. Industry note, not a product. Pick this <em>or</em> Mike on AI, not both.</p>
+          </div>
+          <span class="flag">Ready</span>
+        </li>
+        <li>
+          <div>
+            <h3>Clearwater is live</h3>
+            <p>A property just came onto LUCI. One or two sentences, not a case study. Names and what we can say are yours.</p>
+          </div>
+          <span class="flag needs">Needs you</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="block">
+      <p class="kicker">Minute with Mike</p>
+      <ul class="rows">
+        <li>
+          <div>
+            <h3>A/V people are rare</h3>
+            <p>Expert judgment still matters. Every volume change should not. Pick this <em>or</em> Happenings on scarce, not both.</p>
+          </div>
+          <span class="flag">Ready</span>
+        </li>
+        <li>
+          <div>
+            <h3>LUCI is not the whole stack</h3>
+            <p>The misconception is that LUCI <em>is</em> the audio, the lighting, the TVs. It isn’t. Those stay. LUCI is how you run them together.</p>
+          </div>
+          <span class="flag">Ready</span>
+        </li>
+        <li>
+          <div>
+            <h3>Ninety days with the buttons, then tell us the impossible thing</h3>
+            <p>Get familiar. Then bring the weird request. Not the lightning story.</p>
+          </div>
+          <span class="flag">Ready</span>
+        </li>
+        <li>
+          <div>
+            <h3>Keep AI behind the experience</h3>
+            <p>Back of house. Not between the guest and the room. Pick this <em>or</em> Happenings on AI, not both.</p>
+          </div>
+          <span class="flag">Ready</span>
+        </li>
+        <li>
+          <div>
+            <h3>Stop designing from the catalog</h3>
+            <p>A/V last in the bid, catalogs over operations. Check the tone before it runs.</p>
+          </div>
+          <span class="flag needs">Needs you</span>
+        </li>
+      </ul>
+    </section>
+
+    <div class="coda">
+      <p class="label">Already ran</p>
+      <p>Ameristar · Tachi · Sam’s Town · Command Trail debut · first screenshots of look, map, and staging · “beta in thirty days” · Mike on lighting · Jane hire · phone/browser control · morning reset · revert preset · announcement volumes · fall website tease</p>
+    </div>
+
+    <section class="rec">
+      <p class="kicker">Recommended mix</p>
+      <p class="note">A recommendation. Ignore it.</p>
+      <dl>
+        <div><dt>Theme</dt><dd>Closer to the Work</dd></div>
+        <div><dt>Field</dt><dd>Aliante</dd></div>
+        <div><dt>Quick Tip</dt><dd>Name a new audio source without a ticket</dd></div>
+        <div><dt>Advice</dt><dd>Divisible rooms are operating modes</dd></div>
+        <div><dt>Happenings</dt><dd>Clearwater is live — if you can name it; otherwise A/V people are scarce</dd></div>
+        <div><dt>What’s coming</dt><dd>your A/B/C</dd></div>
+        <div><dt>Mike</dt><dd>LUCI is not the whole stack</dd></div>
+      </dl>
+    </section>
+  </div>
+</body>
+</html>
