@@ -21,16 +21,13 @@ usage() {
 Usage:
   run-cursor-delegation.sh --role ROLE --repo REPO --brief FILE [--execute] [--model MODEL_ID]
 
-Roles:
-  chief-of-staff | design-direction | design-direction-open
-  strategic-marketer | maker | review-mechanical | review-taste
+Roles (Grok picks GPT / GLM / Claude; these are presets):
+  gpt | glm | glm-design | claude | glm-qa | claude-review | chief-of-staff
+  Legacy names still work (strategic-marketer, maker, design-direction, ...).
 
-Repos:
-  design | website | both
-
-Design Direction starts on GLM (role design-direction). Use
-design-direction-open for open visual planning, or when a GLM pass has already
-been tried and did not get there.
+Grok picks the model. Cursor does not.
+gpt = ideas/copy. glm = build. glm-design = first visual pass.
+claude = open visual or Jane-level review.
 
 Default is read-only planning/review. Add --execute only when the brief
 authorizes Cursor to edit files. An explicit --model overrides the role default.
@@ -66,33 +63,33 @@ case "$ROLE" in
     DEFAULT_MODEL="glm-5.2-high"
     ROLE_BOUNDARY="Route and sequence the work. Do not take over strategy, visual taste, or implementation."
     ;;
-  design-direction)
-    ROLE_FILE="roles/design-direction.md"
-    DEFAULT_MODEL="glm-5.2-max"
-    ROLE_BOUNDARY="Lock visual direction only, working from the existing locked visual system. Do not implement production unless Jane's brief explicitly authorizes it. If the brief genuinely needs a new visual thesis, say so and stop rather than guessing."
-    ;;
-  design-direction-open)
-    ROLE_FILE="roles/design-direction.md"
-    DEFAULT_MODEL="claude-opus-5-thinking-medium"
-    ROLE_BOUNDARY="Open visual planning escalation. Set a new visual thesis or genuine variant axes. Do not implement production. Output a lock that GLM can apply."
-    ;;
-  strategic-marketer)
-    ROLE_FILE="roles/strategic-marketer.md"
+  gpt|copy|strategic-marketer)
+    ROLE_FILE="roles/retired/strategic-marketer.md"
     DEFAULT_MODEL="gpt-5.6-sol-high"
     ROLE_BOUNDARY="Lock message, argument, channel, and claims. Do not implement visual production."
     ;;
-  maker)
-    ROLE_FILE="roles/maker.md"
+  glm-design|design-direction)
+    ROLE_FILE="roles/retired/design-direction.md"
+    DEFAULT_MODEL="glm-5.2-max"
+    ROLE_BOUNDARY="Lock visual direction only, working from the existing locked visual system. Do not implement production unless Jane's brief explicitly authorizes it. If the brief genuinely needs a new visual thesis, say so and stop rather than guessing."
+    ;;
+  claude|claude-open|design-direction-open)
+    ROLE_FILE="roles/retired/design-direction.md"
+    DEFAULT_MODEL="claude-opus-5-thinking-medium"
+    ROLE_BOUNDARY="Open visual planning escalation. Set a new visual thesis or genuine variant axes. Do not implement production. Output a lock that GLM can apply."
+    ;;
+  glm|build|maker)
+    ROLE_FILE="roles/retired/maker.md"
     DEFAULT_MODEL="glm-5.2-max"
     ROLE_BOUNDARY="Implement the locked brief faithfully. Do not invent strategy, claims, visual direction, or rule scope."
     ;;
-  review-mechanical)
-    ROLE_FILE="roles/review.md"
+  glm-qa|review-mechanical)
+    ROLE_FILE="roles/retired/review.md"
     DEFAULT_MODEL="glm-5.2-max"
     ROLE_BOUNDARY="Review mechanical correctness only. Return severity, evidence, and required fixes; do not rebuild."
     ;;
-  review-taste)
-    ROLE_FILE="roles/review.md"
+  claude-review|review-taste)
+    ROLE_FILE="roles/retired/review.md"
     DEFAULT_MODEL="claude-opus-5-thinking-medium"
     ROLE_BOUNDARY="Perform Jane-level brand, layout, voice, and taste review. Return issues and fixes; do not rebuild."
     ;;

@@ -19,7 +19,9 @@
 
 **Voice in one line:** Institutions, not adjectives. Lead with the customer’s accumulated complexity; stage LUCI as subtraction — fewer variables, vendors, interfaces — not as a feeling.
 
-Jane owns marketing and design direction. She is **not** a developer. She works in Cursor in plain English. Mike owns demos, the feature list, and sales-doc customization. Mark owns personal cadence and cold outbound. Nick appears on portal/customization vision and older upgrade checklists.
+## How Grok is organized
+
+Jane’s Grok bots are **workstreams** (Chief of Staff, Website, Case Studies & Sales Proof, Editorial & Campaigns, Video). They pick GPT / GLM / Claude; Cursor runs the model. They do not own look vs copy vs build as Grok identities.
 
 ---
 

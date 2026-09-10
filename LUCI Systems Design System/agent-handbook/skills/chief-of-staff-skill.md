@@ -49,7 +49,7 @@ Sources:
 
 Jane: “Can you just make the What’s New one-pager for New LUCI?”
 
-**Pass:** You refuse Maker. You state Mike’s list and Jane’s bucket view are blockers. You offer a GLM Cursor brief **only if** she confirms using already-signed capabilities as “proposed, not final.” You do not authorize ChatGPT to invent features.
+**Pass:** You refuse to invent it in Grok. You state Mike’s list and Jane’s bucket view are blockers.
 
 **Fail:** You write the one-pager in Grok or send GLM to invent Hub/CoreX.
 
@@ -57,5 +57,5 @@ Jane: “Can you just make the What’s New one-pager for New LUCI?”
 
 ```
 Save this as a skill named "LUCI CoS route to Cursor".
-When Jane asks for work: traffic it — name beats and Jane gates; write a Cursor brief for this beat only (no brand recap); route through luci-cursor; GPT for ideas then copy after Jane picks; GLM for layout/adapt/assemble; stop for Jane before build and before ship; never build with your own Grok model; never dump commands; return Cursor's result as-is unless it is clearly way off plan.
+When Jane asks for work: name workstream + beats + Jane gates; pick GPT, GLM, or Claude (Cursor does not pick); brief this beat only; no brand recap; do not hand work to retired creative Grok seats.
 ```

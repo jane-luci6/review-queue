@@ -6,7 +6,7 @@
 
 ## 1. Grok vs Cursor
 
-Jane’s Grok Bots are **facilitators**. They take Jane’s request, write a complete brief, invoke the right Cursor role/model, ask Jane when a fact is missing, and return Cursor’s result in plain English.
+Jane’s Grok Bots **traffic workstreams**. They take Jane’s request, pick **GPT, GLM, or Claude**, write a complete brief, invoke Cursor, and return the result in plain English. **Cursor does not pick the LLM.**
 
 **Cursor’s models are the leading brains.** GLM, Claude, and ChatGPT make the strategy, design, copy, and implementation decisions. Grok follows that direction in most cases. A Bot may refine the next brief or stop a run **only** when Cursor is clearly way off plan (locked constraint broken, Jane’s outcome ignored, house-rule violation, or something Jane would reject at 11pm). “I would have done it differently” is not a reason to override.
 
@@ -46,7 +46,7 @@ CLI role: `strategic-marketer`.
 
 ### GLM 5.2 Max — also the **first** pass on visual direction
 
-Design Direction starts here, not on Claude. Applying the locked LUCI visual system, spatial variants inside an existing template, token and type decisions, brand-fit checks.
+Visual direction **starts on GLM**, not Claude. Applying the locked LUCI visual system, spatial variants inside an existing template, token and type decisions, brand-fit checks.
 
 CLI role: `design-direction`.
 
@@ -88,8 +88,7 @@ CoS (or the owning specialist) saves this as the brief passed to a **new `luci-c
 CURSOR BRIEF
 Repo: luci-design | luci-website | both
 Branch: main | existing | create <name>
-Cursor role: chief-of-staff | strategic-marketer | design-direction | design-direction-open | maker | review-mechanical | review-taste
-Model: role default | Jane override <model>
+Model: GPT | GLM | Claude
 Why not GLM: <one line or "n/a — GLM">
 Mode: read-only | execute
 
@@ -118,8 +117,8 @@ Jane is not a developer. CoS should:
 
 1. Write the brief in Grok.
 2. Save the brief as a local temporary text/Markdown file.
-3. Invoke `luci-cursor` on Jane’s local computer with the correct role, repo, and brief.
-4. Use the default read-only mode for strategy, direction, and review. Add execute authority only for Maker or when Jane explicitly authorizes edits.
+3. Invoke `luci-cursor` on Jane’s local computer with the model you picked, repo, and brief.
+4. Read-only for ideas/copy/review. Execute only when Jane’s brief authorizes file edits.
 5. Return Cursor’s actual evidence to Jane: changed paths, commit, checks, and review URL. Do not merely say “Cursor did it.”
 
 No visible Cursor chat window is expected. The Cursor agent runs headlessly and returns its output to the Bot. Do not ask Jane to remember repo paths, commands, or model IDs.

@@ -8,7 +8,7 @@ This file is the Grok-portable summary. If a rule file is newer, the rule wins.
 
 ---
 
-## Design Direction owns this file
+**Grok:** Case Studies & Sales Proof traffics this file. Cursor holds the live visual rules.
 
 Nothing is built until Jane or CoS settles direction. Maker applies tokens; Maker does not invent colors, type, or a new pattern.
 

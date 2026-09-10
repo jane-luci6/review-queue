@@ -4,7 +4,7 @@
 **Sources:** `luci-messaging-voice.mdc`, Messaging Guide HTML (`ui_kits/review/messaging/messaging-guide.html`), Philosophy, Personas, `_brand/SKILL.md`  
 **OneDrive Word files are canonical** if they disagree with an old HTML paste. Last noted sync: **27 Aug 2026**.
 
-Strategic Marketer owns direction, campaigns, and voice. Format, channel, and message settle **before** Maker.
+**Grok:** Editorial & Campaigns traffics channel and message. Cursor holds the live voice rules. Format, channel, and message settle **before** GLM builds.
 
 ---
 

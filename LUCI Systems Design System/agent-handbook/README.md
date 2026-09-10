@@ -1,17 +1,19 @@
 # LUCI Agent Handbook
 
 **Snapshot date:** 10 September 2026  
-**Audience:** Jane’s five Grok Bots — Chief of Staff, Design Direction, Strategic Marketer, Review, Maker  
+**Audience:** Jane’s Grok Bots — Chief of Staff, Website, Case Studies & Sales Proof, Editorial & Campaigns, Video  
 **Maintainable source:** this folder in `luci-design`  
 **Grok durable copy:** `/workspace/LUCI-Agent-Handbook` on the shared Grok Bot computer
 
-This pack is the shared briefing for the Grok team. It is **not** a license for Grok Bots to build LUCI assets with their own model on Grok’s cloud computer. Production happens through the **Cursor agent** on Jane’s machine, in `luci-design` and `luci-website`. Bots invoke Cursor through the local delegation bridge; a visible Cursor chat window is not required.
+This pack briefs the Grok team. It does **not** feed Cursor. Cursor already has `.cursor/rules`. Jane (and Grok, when trafficking) **pick the LLM**; Cursor runs it.
+
+Grok bots do not build LUCI assets with their own model. Production is the Cursor agent on Jane’s Mac (`luci-design`, `luci-website`) via `luci-cursor`.
 
 ## What this pack is for
 
-- Bring every Bot up to date on LUCI, what shipped, what is in flight, and what is parked.
-- Teach how Jane works: plain English, no dumped commands, review on LAN VMs, GLM-first.
-- Give each role authority boundaries, reading lists, Cursor briefs, and a training playbook.
+- What shipped, what’s in flight, what’s parked
+- How Jane works: plain English, no dumped commands, review on LAN VMs
+- Workstream boundaries and which model to pick for a beat
 
 ## Reading order (every Bot)
 
@@ -25,49 +27,45 @@ This pack is the shared briefing for the Grok team. It is **not** a license for 
 8. [`shared/SOURCE-OF-TRUTH-MAP.md`](shared/SOURCE-OF-TRUTH-MAP.md)
 9. Your role file in [`roles/`](roles/)
 10. Your skill file in [`skills/`](skills/)
-11. Canon files named in your role brief
-12. [`ONBOARDING-AND-CALIBRATION.md`](ONBOARDING-AND-CALIBRATION.md) — run the calibration for your role
+11. Canon named in your role brief
+12. [`ONBOARDING-AND-CALIBRATION.md`](ONBOARDING-AND-CALIBRATION.md)
+
+`roles/retired/` is history. Do not treat those as live seats.
 
 ## Non-negotiable operating picture
 
 | Rule | Meaning |
 |---|---|
-| Grok traffics. Cursor does the work. | Bots queue, sequence, and stop for Jane. GLM / Claude / ChatGPT write, design, and build. Do not recap brand in the brief. Do not ship production created by Grok’s own model. |
-| GLM is the default production model | GLM 5.2 Max builds locked briefs and performs mechanical QA. |
-| GPT / Claude are specialists | GPT-5.6 Sol = unlocked copy/strategy. Claude Opus 5 = open visual planning, a GLM design pass that fell short, or Jane-level review. Design Direction starts on GLM. One specialist pass becomes a lock for GLM. |
-| Jane is not a developer | Interpret plain English. Never ask her to run a command. |
-| Local repos beat GitHub | Direct local Cursor delegation does not need GitHub. Do not clone GitHub and assume it is current. |
-| Review URLs, not localhost | Website: `http://10.10.1.37`. Portal: `http://10.10.1.17:8081`. Hard-refresh (Cmd+Shift+R). |
-| Always **A/V** | Never “AV” or “A-V”. Never call LUCI a “layer”. |
+| Grok traffics. Cursor does the work. | Workstream bots queue, sequence, and stop for Jane. They **pick** GPT / GLM / Claude. Cursor **runs** that model. |
+| GLM default | Layout, adapt templates, build, deploy, mechanical check. First visual pass. |
+| GPT | Unlocked ideas and copy, after Jane has picked when required. |
+| Claude | Open visual thesis, GLM already missed, or Jane-level taste review. |
+| Jane is not a developer | Never dump commands. |
+| Local repos beat GitHub | `luci-cursor` uses Jane’s Mac. |
+| Review URLs | Website `http://10.10.1.37`. Portal `http://10.10.1.17:8081`. Hard-refresh. |
+| Always **A/V** | Cursor already enforces this. Do not recap it in briefs. |
 
 ## Confidentiality
 
-- Named clients appear in **case studies** and internal sales docs. Public marketing stays discreet unless the client has approved the named asset.
-- Do not put credentials, `.env`, SSH keys, or VPN passwords in this handbook or in `/workspace`.
-- Do not treat Grok `/workspace` as the system of record. Copy durable updates back into this repo folder.
+Named clients: case studies and internal sales docs. No credentials in this handbook or `/workspace`. Cursor’s folder is the master; `/workspace` is a copy.
 
 ## Onboarding prompt (paste to Chief of Staff first)
 
 ```
 Read /workspace/LUCI-Agent-Handbook/README.md and follow its reading order.
-You traffic the project. You do not build LUCI assets with your own Grok model, and you do not second-guess Cursor’s models.
-Production is through Cursor on Jane’s Mac: luci-design and luci-website. You queue beats and stop for Jane. GLM, Claude, and ChatGPT write, design, and build.
-Read shared/GROK-TO-CURSOR-DELEGATION.md. Delegate through the local luci-cursor bridge.
-Default production model is GLM 5.2 Max, including the first pass on visual direction. GPT-5.6 Sol handles unlocked copy/strategy; Claude Opus 5 handles open visual planning, a GLM design pass that fell short, and Jane-level review.
+Grok bots are workstreams, not creative seats. You pick GPT, GLM, or Claude; Cursor runs that model.
+Until Website / Case Studies & Sales Proof / Editorial & Campaigns / Video exist, you traffic all of it. Do not hand work to Design Direction, Strategic Marketer, Maker, or Review.
 Copy this handbook to /workspace/LUCI-Agent-Handbook if it is not already there.
-Then give me a one-page status: in flight, waiting on Jane/Mike, parked, next action.
+Then confirm in two sentences.
 ```
 
 ## Folder map
 
 ```
 agent-handbook/
-  README.md
-  00-LUCI-ORGANIZATIONAL-CONTEXT.md
-  ONBOARDING-AND-CALIBRATION.md
-  CHANGELOG.md
-  shared/     protocols, source map, chat index, work board
-  canon/      visual, voice, production, channel playbooks
-  roles/      one brief per Bot
-  skills/     training playbooks + native Grok skill-save prompts
+  roles/           live workstreams + chief-of-staff
+  roles/retired/   old creative Grok seats
+  skills/          training + skill-save prompts
+  shared/          protocols, board, decision log
+  canon/           visual, voice, channels
 ```

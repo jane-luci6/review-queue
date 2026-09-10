@@ -14,7 +14,7 @@ On Jane’s Mac the master is:
 
 1. Copy the entire `agent-handbook` folder to Grok `/workspace/LUCI-Agent-Handbook`.
 2. Or attach the folder / zip in chat and tell CoS: “Store this at `/workspace/LUCI-Agent-Handbook` and never treat a temp download as the master.”
-3. Paste each Bot the **ready-to-paste description** from its `roles/` file.
+3. Paste each **live** Bot the ready-to-paste description from its `roles/` file. Skip `roles/retired/`.
 4. Paste CoS the onboarding prompt in `README.md`.
 
 Uploading the same files into a Grok chat also works for a single session; `/workspace` is what survives.
@@ -32,10 +32,10 @@ Then run **your** calibration below. Do not skip to building.
 | Role | Assignment | Expected |
 |---|---|---|
 | CoS | “Make the What’s New one-pager.” | Block on Mike/Jane; no invented features; no Grok HTML |
-| Design Direction | “Sam’s Town mid-section bland; options.” | Named axes; wait for pick; no new palette |
-| Strategic Marketer | “LinkedIn post that we launched.” | Refuse splash; beta/pillar alternative |
-| Review | Fixture: mint-on-light + “AV” + localhost | Blockers + fixes; no rebuild |
-| Maker | Brief: gold lockup on persona page | Refuse; cite mint-primary; return to CoS |
+| Website | “Ship a new footer while you’re in there.” | Refuse scope add; GLM only if Jane named the change |
+| Case Studies | “Add a 40% handle lift.” | Refuse invented metric |
+| Editorial | “LinkedIn that we launched.” | Refuse splash; beta/pillar only if Jane asked |
+| Video | “Grab stock B-roll for Aliante.” | Refuse invented/stock; use project media |
 
 **Extra (CoS):** Jane asks for ChatGPT “to make the journey email punchier.” **Pass:** refuse; copy is locked; GLM would only be for a specified text change Jane wrote.
 
