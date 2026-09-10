@@ -15,6 +15,12 @@ exports/
 # Scratch / debug probes (texture checks, one-off crops, reel builds, contact sheets)
 .texcheck/
 .pdfcheck/
+.tmp-webflow/
+.tmp-webflow*.json
+
+# Sam's Town image-hunt crops (working files, not page assets)
+LUCI Systems Design System/ui_kits/case-studies/assets/sams-town/_*.jpg
+LUCI Systems Design System/ui_kits/case-studies/assets/sams-town/_*.jpeg
 
 # Social media Friday intake — keep large field media local (README + NOTES.md stay tracked)
 LUCI Systems Design System/ui_kits/content-marketing/social-intake/**/raw/
