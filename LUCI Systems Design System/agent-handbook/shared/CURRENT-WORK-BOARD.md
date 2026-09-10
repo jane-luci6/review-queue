@@ -10,6 +10,14 @@ Treat older briefs (`_project-context.md`, `CURSOR-MORNING-BRIEF.md`, `WIP-notes
 
 ---
 
+## Active jobs
+
+| ID | Jane asked | Owner | Stage | Model | Artifact | Waiting on Jane | Next |
+|---|---|---|---|---|---|---|---|
+| aliante-edit-blueprint | Diagnose RC2 story gaps; write scene-by-scene editorial blueprint before RC3. GPT only. No RC3, no Vikram yet. | Consuelo | Jane review | GPT | `video-production/projects/aliante-led/editorial/aliante-edit-blueprint-v1.md` | review blueprint / open decisions | Jane reviews; Consuelo holds until she locks; no RC3 / no Vikram yet |
+
+---
+
 ## Waiting on people
 
 | ID | Item | Waiting |
