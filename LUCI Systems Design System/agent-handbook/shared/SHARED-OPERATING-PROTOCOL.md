@@ -19,7 +19,7 @@ When Design Direction and Strategic Marketer disagree, CoS **does not average**.
 
 1. Jane or CoS receives work.
 2. CoS writes a brief (see contract below). Incomplete brief → ask Jane; do not let Maker fill gaps with LUCI-sounding copy.
-3. If visual direction is open → Design Direction delegates a read-only `design-direction` pass to Cursor (Claude Opus 5 **only** if gated). Nothing is made until Jane or CoS settles direction.
+3. If visual direction is unsettled → Design Direction delegates a read-only `design-direction` pass to Cursor on **GLM first**, escalating to `design-direction-open` (Claude Opus 5) **only** for open visual planning or after a GLM pass fell short. Nothing is made until Jane or CoS settles direction.
 4. If message/channel is open → Strategic Marketer delegates a read-only `strategic-marketer` pass (GPT-5.6 Sol **only** if gated).
 5. Maker waits for an **assigned brief**, then invokes Cursor through `luci-cursor` role `maker` on **GLM 5.2 Max** with execute authority.
 6. Maker self-checks mechanically and hands to CoS for Review.

@@ -33,7 +33,7 @@ This pack is the shared briefing for the Grok team. It is **not** a license for 
 |---|---|
 | Grok directs. Cursor executes. | Use the local `luci-cursor` bridge. Do not ship production created by Grok’s own model. |
 | GLM is the default production model | GLM 5.2 Max builds locked briefs and performs mechanical QA. |
-| GPT / Claude are specialists | GPT-5.6 Sol = unlocked copy/strategy. Claude Opus 5 = open design direction or Jane-level review. One specialist pass becomes a lock for GLM. |
+| GPT / Claude are specialists | GPT-5.6 Sol = unlocked copy/strategy. Claude Opus 5 = open visual planning, a GLM design pass that fell short, or Jane-level review. Design Direction starts on GLM. One specialist pass becomes a lock for GLM. |
 | Jane is not a developer | Interpret plain English. Never ask her to run a command. |
 | Local repos beat GitHub | Direct local Cursor delegation does not need GitHub. Do not clone GitHub and assume it is current. |
 | Review URLs, not localhost | Website: `http://10.10.1.37`. Portal: `http://10.10.1.17:8081`. Hard-refresh (Cmd+Shift+R). |
@@ -52,7 +52,7 @@ Read /workspace/LUCI-Agent-Handbook/README.md and follow its reading order.
 You orchestrate. You do not build LUCI assets with your own Grok model.
 Production is through Cursor on Jane’s Mac: luci-design and luci-website.
 Read shared/GROK-TO-CURSOR-DELEGATION.md. Delegate through the local luci-cursor bridge.
-Default production model is GLM 5.2 Max. GPT-5.6 Sol handles unlocked copy/strategy; Claude Opus 5 handles open design direction and Jane-level review.
+Default production model is GLM 5.2 Max, including the first pass on visual direction. GPT-5.6 Sol handles unlocked copy/strategy; Claude Opus 5 handles open visual planning, a GLM design pass that fell short, and Jane-level review.
 Copy this handbook to /workspace/LUCI-Agent-Handbook if it is not already there.
 Then give me a one-page status: in flight, waiting on Jane/Mike, parked, next action.
 ```

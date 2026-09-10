@@ -42,19 +42,25 @@ Examples that fail: rephrase locked boilerplate; fill a template; alt text; “m
 
 CLI role: `strategic-marketer`.
 
-### Claude Opus 5 Thinking Medium — design direction + Jane-level review only
+### GLM 5.2 Max — also the **first** pass on visual direction
+
+Design Direction starts here, not on Claude. Applying the locked LUCI visual system, spatial variants inside an existing template, token and type decisions, brand-fit checks.
+
+CLI role: `design-direction`.
+
+### Claude Opus 5 Thinking Medium — open visual planning + Jane-level review only
 
 Use only when **all** are true:
 
-1. Visual direction is **open**, *or* Review must catch Jane-at-11pm brand / layout / tone / strategy drift.
+1. Visual direction is **open**, *or* a GLM `design-direction` pass already ran and did not get there, *or* Review must catch Jane-at-11pm brand / layout / tone / strategy drift.
 2. The decision is not a token swap or a checklist.
 3. GLM would be **guessing taste**.
 
-Examples that pass: first layout thesis; genuine A/B/C variant axes; case-study spatial system; taste review of a finished page.
+Examples that pass: first layout thesis; genuine A/B/C variant axes for something new; case-study spatial system; taste review of a finished page; a second look after GLM came back thin.
 
-Examples that fail: implement CSS; apply a settled mock; run deploy; rubber-stamp GLM output; “looks off, you fix it.”
+Examples that fail: implement CSS; apply a settled mock; run deploy; rubber-stamp GLM output; “looks off, you fix it”; opening a routine visual job on Claude because it feels designy.
 
-CLI role: `design-direction` or `review-taste`.
+CLI role: `design-direction-open` or `review-taste`.
 
 ### GLM 5.2 High — routing/status only
 
@@ -80,7 +86,7 @@ CoS (or the owning specialist) saves this as the brief passed to a **new `luci-c
 CURSOR BRIEF
 Repo: luci-design | luci-website | both
 Branch: main | existing | create <name>
-Cursor role: chief-of-staff | strategic-marketer | design-direction | maker | review-mechanical | review-taste
+Cursor role: chief-of-staff | strategic-marketer | design-direction | design-direction-open | maker | review-mechanical | review-taste
 Model: role default | Jane override <model>
 Why not GLM: <one line or "n/a — GLM">
 Mode: read-only | execute

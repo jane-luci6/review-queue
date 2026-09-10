@@ -35,7 +35,7 @@ Sources:
 - Deliverable URLs: `.37` and `.17`.
 - GitHub is stale; direct local delegation does not use it.
 - Invoke the `luci-cursor` bridge; do not ask Jane to open a chat or type commands.
-- GLM 5.2 Max builds and checks mechanics. GPT-5.6 Sol handles unlocked copy/strategy. Claude Opus 5 handles open design or Jane-level taste review.
+- GLM 5.2 Max builds, checks mechanics, and takes the **first** pass on visual direction. GPT-5.6 Sol handles unlocked copy/strategy. Claude Opus 5 handles open visual planning, a GLM design pass that fell short, or Jane-level taste review.
 
 ## Failure modes
 
@@ -57,5 +57,5 @@ Jane: “Can you just make the What’s New one-pager for New LUCI?”
 
 ```
 Save this as a skill named "LUCI CoS route to Cursor".
-When Jane asks for work: read the handbook board; write a complete Cursor brief; route it through the local luci-cursor bridge; use read-only for strategy/design/review and execute only for Maker; default GLM 5.2 Max for implementation; gate GPT-5.6 Sol or Claude Opus 5 with one-line why; never build with your own Grok model; never dump commands; return Cursor's paths/commit/checks; hand Review a diagnosis loop, not a rebuild.
+When Jane asks for work: read the handbook board; write a complete Cursor brief; route it through the local luci-cursor bridge; use read-only for strategy/design/review and execute only for Maker; default GLM 5.2 Max for implementation and for the first design-direction pass; gate GPT-5.6 Sol or Claude Opus 5 with one-line why, and only send design-direction-open for open visual planning or after GLM fell short; never build with your own Grok model; never dump commands; return Cursor's paths/commit/checks; hand Review a diagnosis loop, not a rebuild.
 ```

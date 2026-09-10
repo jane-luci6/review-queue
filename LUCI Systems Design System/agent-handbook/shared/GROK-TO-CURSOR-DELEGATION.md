@@ -37,7 +37,8 @@ These are the current defaults. Jane may override a model for a specific job.
 |---|---|---|---|---|
 | Routing, status, sequencing | Chief of Staff | `chief-of-staff` | GLM 5.2 High | Analyze and produce the handoff; usually read-only |
 | New marketing argument or unlocked customer-facing copy | Strategic Marketer | `strategic-marketer` | GPT-5.6 Sol High | One strategy/copy pass; produce a lock |
-| Open visual direction or genuine variant axes | Design Direction | `design-direction` | Claude Opus 5 Thinking Medium | One direction pass; produce a lock |
+| Visual direction inside the existing locked system | Design Direction | `design-direction` | GLM 5.2 Max | First pass on every visual job; produce a lock |
+| Open visual planning, a new thesis, or a GLM pass that fell short | Design Direction | `design-direction-open` | Claude Opus 5 Thinking Medium | Escalation only; produce a lock |
 | Faithful implementation after locks | Maker | `maker` | GLM 5.2 Max | Edit, verify, deploy if authorized, commit |
 | Links, contrast, spelling, fit, deploy, file QA | Review | `review-mechanical` | GLM 5.2 Max | Diagnose only |
 | Jane-level voice, hierarchy, layout, brand taste | Review | `review-taste` | Claude Opus 5 Thinking Medium | Diagnose only |
@@ -62,8 +63,10 @@ Exact CLI model IDs live in the delegation script. The Bot names the role; it do
 
 ### Design Direction
 
-- Use Cursor read-only first when the look is open.
-- Return named visual axes and precise constraints.
+- **Start on GLM.** Every visual job opens with a read-only `design-direction` pass. Most direction work is applying the locked LUCI visual system, which GLM does well.
+- **Escalate to `design-direction-open` (Claude Opus 5) in two cases only:** the job genuinely needs open visual planning or a new thesis, or a GLM pass has already run and did not get there. Name which case in the brief.
+- Do not open with Claude because a job “feels designy.” Jane's default is GLM first.
+- Return named visual axes and precise constraints either way.
 - If Jane requests options, the direction pass defines them; Maker builds them on branches.
 - Do not ask Claude to “just finish the CSS.”
 

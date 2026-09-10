@@ -22,11 +22,15 @@ Usage:
   run-cursor-delegation.sh --role ROLE --repo REPO --brief FILE [--execute] [--model MODEL_ID]
 
 Roles:
-  chief-of-staff | design-direction | strategic-marketer | maker
-  review-mechanical | review-taste
+  chief-of-staff | design-direction | design-direction-open
+  strategic-marketer | maker | review-mechanical | review-taste
 
 Repos:
   design | website | both
+
+Design Direction starts on GLM (role design-direction). Use
+design-direction-open for open visual planning, or when a GLM pass has already
+been tried and did not get there.
 
 Default is read-only planning/review. Add --execute only when the brief
 authorizes Cursor to edit files. An explicit --model overrides the role default.
@@ -64,8 +68,13 @@ case "$ROLE" in
     ;;
   design-direction)
     ROLE_FILE="roles/design-direction.md"
+    DEFAULT_MODEL="glm-5.2-max"
+    ROLE_BOUNDARY="Lock visual direction only, working from the existing locked visual system. Do not implement production unless Jane's brief explicitly authorizes it. If the brief genuinely needs a new visual thesis, say so and stop rather than guessing."
+    ;;
+  design-direction-open)
+    ROLE_FILE="roles/design-direction.md"
     DEFAULT_MODEL="claude-opus-5-thinking-medium"
-    ROLE_BOUNDARY="Lock visual direction only. Do not implement production unless Jane's brief explicitly authorizes it."
+    ROLE_BOUNDARY="Open visual planning escalation. Set a new visual thesis or genuine variant axes. Do not implement production. Output a lock that GLM can apply."
     ;;
   strategic-marketer)
     ROLE_FILE="roles/strategic-marketer.md"
