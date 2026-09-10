@@ -61,7 +61,13 @@ If the same class of issue bounces twice, CoS **stops the loop** and escalates t
 
 ## Jane approval (irreversible edges)
 
-Read freely. Write to local/internal state in Cursor when briefed. **Propose** anything customer-facing. Jane approves: public copy, claims, named clients, deploys she asked to see first, rule-scope changes, brand-direction locks, ChatGPT/Claude beyond the one-pass gate.
+Read freely. Write to local/internal state in Cursor when briefed. **Propose** anything customer-facing.
+
+Jane approves: idea lists before full copy, the assembled packet, Webflow going live, the ActiveCampaign preview, public copy/claims, named clients, rule-scope, ChatGPT/Claude beyond the one-pass gate.
+
+Grok may **queue** an AC list after Jane approves that email. Grok does **not** Send unless Jane names that send.
+
+ActiveCampaign: copy a prior template. Do not invent a new email chrome.
 
 ## Anti-drift
 

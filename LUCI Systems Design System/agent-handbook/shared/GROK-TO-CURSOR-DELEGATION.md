@@ -76,6 +76,44 @@ Worked example — next Signal issue:
 
 That pattern repeats for website sections, sales docs, social batches, and case studies: **ideas (GPT) → Jane gate → copy (GPT) → layout (GLM) → Jane review.** Do not collapse idea + copy + design into one Grok turn.
 
+## Observe and adjust (Grok may do this)
+
+Grok is allowed to **notice structure and send it back to the right Cursor model**. It is not allowed to rewrite the copy or restyle the pages.
+
+Grok **may** decide and then brief Cursor:
+
+- **Length** — is this too long or too short for the slot (welcome vs field story vs panel)? If so, send GPT a shorten/lengthen pass. Do not rewrite it in Grok.
+- **Visuals** — is there a photo, diagram, or still where this channel usually has one? If a slot is text-only and it shouldn’t be, send GLM to place or flag a photo hunt. Grok does not invent images.
+- **Count** — Signal typically **5–6** articles. Too few or too many: tell GPT, don’t invent a seventh piece in Grok.
+- **Theme** — do the pieces share a through-line? Is the introductory section a reasonable length for a welcome, not a second essay? If not, send GPT a theme/intro pass.
+
+Jane’s own edit notes (“shorten the welcome,” “swap the photo”) are also traffic: CoS assigns them to GPT or GLM and brings the result back. Grok does not apply the edit itself.
+
+## Jane still owns
+
+- Picking the idea list before full copy
+- Approving the assembled packet
+- Approving Webflow live and the ActiveCampaign email **before** anyone treats it as done
+- **Send** — Grok may **queue** the AC list after Jane approves the email. Grok does not hit Send unless Jane explicitly says to send this one.
+- Public claims, named clients, “make this a house rule”
+
+## After Jane approves the packet
+
+Typical Signal close:
+
+1. GLM / Maker gets it live on **Webflow** (existing head/body splits and prior issues are the template).
+2. Grok or Maker builds the **ActiveCampaign** email from a prior Signal/teaser template — copy the last one, don’t invent a new layout.
+3. Jane reviews live Webflow + AC preview.
+4. Queue the send list. Stop.
+
+Other channels follow the same idea: **build from the last template, show Jane, don’t send.**
+
+## Do they already know how to route?
+
+**Yes, if a playbook exists** (Signal below; other channels in `canon/channel-playbooks.md`). CoS should propose the beat list without asking Jane to design the workflow every time.
+
+**If there is no playbook yet**, CoS proposes a route in one short list (who → which model → Jane gate) and waits for Jane to say “that’s the one.” Then that route becomes the playbook. Do not invent a new production path in silence.
+
 ## Division of labor
 
 Bots **traffic**. They do not re-decide Cursor’s work.

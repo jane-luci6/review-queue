@@ -10,7 +10,7 @@
 
 ## 2026-09-10
 
-- **Grok traffics; Cursor does the work** (Jane, 10 Sep). Bots queue, sequence, and stop for Jane (ideas → Jane → copy → layout → Jane review). They do not write, design, or recap brand. Newsletter-shaped projects are the pattern.
+- **Observe/adjust is Grok traffic** (Jane, 10 Sep). Length, visuals present, article count (Signal 5–6), theme, intro length — Grok notices and briefs GPT/GLM. Jane’s edit notes get assigned to the right model. After packet approval: Webflow live, AC from last template, queue the list, do not Send unless Jane says so.
 - **Decision log starts.** Cursor appends here at real lock points so CoS can see what Jane decided without the chat archive.
 - **Grok facilitates; Cursor decides.** GLM / Claude / ChatGPT lead strategy, design, copy, and implementation. Grok writes the assignment packet, asks Jane when a fact is missing, and follows Cursor unless the result is clearly way off plan.
 - **Design Direction starts on GLM.** Role `design-direction` = GLM 5.2 Max first. Escalate to `design-direction-open` (Claude Opus 5) only for open visual planning or after a GLM pass fell short.

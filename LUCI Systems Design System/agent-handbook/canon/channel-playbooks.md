@@ -47,11 +47,24 @@ Public discretion still applies **outside** the approved named study.
 
 ## The Signal (newsletter)
 
-Flagship Issue 01 for editorial rhythm. Issues 02–03 exist. Webflow head/body splits for live site. Hub on website `/the-signal/`.
+Flagship Issue 01 for editorial rhythm. Issues 02–04 exist in `ui_kits/newsletter/`. Webflow head/body splits for live site. Hub on website `/the-signal/`.
 
-Cadence: start ~day 1, send day 15. September 2026 next.
+Cadence: start ~day 1, send day 15.
 
 New LUCI in Signal = **beta framing only**, never “we launched.”
+
+**Traffic checklist (Grok observes; Cursor fixes):**
+
+- 5–6 articles
+- A theme that actually connects them
+- Welcome/intro is a welcome, not a second feature
+- Length fits the slot (field story longer; panels shorter)
+- Visuals where the channel usually has them
+- Jane picks ideas before GPT writes the issue
+- Jane approves the packet, then Webflow, then AC from the last teaser/issue template
+- Queue the list; do not Send unless Jane says so
+
+**Cursor routing:** GLM adapts a case study into the template and lays out locked copy. GPT proposes the rest + features, then writes after Jane picks. Photos from real project media, not invented.
 
 ---
 
