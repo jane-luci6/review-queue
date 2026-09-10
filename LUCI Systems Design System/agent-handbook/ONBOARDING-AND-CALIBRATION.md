@@ -60,7 +60,7 @@ If a Bot violates a gate: Jane or CoS names the file and the line. Bot restates 
 |---|---|---|
 | Week changes | CoS | Refresh `CURRENT-WORK-BOARD.md` from COS calendar + Jane |
 | Rule/canon change in Cursor | CoS + specialist | Update the matching `canon/` file, bump snapshot date, `CHANGELOG.md` |
-| Durable decision in a chat | CoS | Add row to `CURSOR-CHAT-INDEX.md` **and** distill into canon/board |
+| Durable decision in a chat | Cursor (then CoS if missed) | Append a short bullet to `shared/DECISION-LOG.md`. Add a chat-index row only if the original thread is still the provenance. Distill into canon/board if status or rules changed. |
 | After Grok `/workspace` copy | CoS | Copy **from repo master** so Grok does not fork |
 
 Do not add chats that contain no decision. Do not let `/workspace` become a second design system.

@@ -133,6 +133,7 @@ printf -v PROMPT '%s\n' \
   "Read these first:" \
   "- $HANDBOOK/README.md" \
   "- $HANDBOOK/shared/CURRENT-WORK-BOARD.md" \
+  "- $HANDBOOK/shared/DECISION-LOG.md" \
   "- $HANDBOOK/shared/CURSOR-AND-MODEL-PROTOCOL.md" \
   "- $HANDBOOK/shared/SHARED-OPERATING-PROTOCOL.md" \
   "- $HANDBOOK/$ROLE_FILE" \
@@ -149,6 +150,7 @@ printf -v PROMPT '%s\n' \
   "- follow the repository's commit cadence and never commit secrets or scratch;" \
   "- verify in proportion to risk;" \
   "- deploy only when the brief explicitly requires it;" \
+  "- if this run locks a real decision Jane accepted, append one short bullet to $HANDBOOK/shared/DECISION-LOG.md (newest first; do not rewrite older entries);" \
   "- return changed paths, verification, review URL when applicable, and anything not done." \
   "" \
   "Delegated brief:" \

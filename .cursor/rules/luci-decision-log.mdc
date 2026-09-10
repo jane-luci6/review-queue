@@ -1,0 +1,49 @@
+---
+description: When Jane locks a decision, append a short summary to the handbook decision log so Chief of Staff can see what happened without reading Cursor chats.
+alwaysApply: true
+---
+
+# LUCI decision log — lock points only
+
+**File:** `LUCI Systems Design System/agent-handbook/shared/DECISION-LOG.md`  
+(Always that path in `luci-design`, even when the current workspace is `luci-website`.)
+
+**Who reads it:** Jane’s Chief of Staff Grok Bot, and any Cursor pass that needs “what already got locked.”
+
+## When to append
+
+Jane reached a **decision point**. Examples:
+
+- She picked A/B/C, locked copy, locked visual direction, or locked claims
+- She parked, unparked, or dropped work
+- She changed routing, model defaults, or who owns a job
+- She said the equivalent of “that’s the one,” “make that a rule,” “ship that version,” “don’t do X anymore”
+- A specialist Cursor pass produced a lock **and Jane accepted it**
+
+## When not to append
+
+- Routine implementation of an already-locked brief
+- Spacing, color-token, or copy tweaks inside a lock
+- Exploratory variants **before** she picks
+- Mechanical QA findings that get fixed
+- Status updates with no new lock (those belong on the work board)
+
+If you are unsure, **don’t log it**. A missing nit is better than a noisy log.
+
+## How to write the entry
+
+1. Open the file. Put today’s date heading at the **top** of the dated sections if it isn’t there yet (`## YYYY-MM-DD`).
+2. Add **one bullet**, newest first under that date.
+3. Shape: **Name the lock. One or two sentences. Who decided (usually Jane).**
+4. No debate, no alternatives considered, no chat IDs unless the lock only exists in a named chat.
+5. No secrets, credentials, or named-client claims that don’t belong in the handbook.
+6. Do **not** rewrite older bullets. Append only.
+7. Do **not** duplicate the work board. If status also changed, update `CURRENT-WORK-BOARD.md` separately.
+
+Example:
+
+```
+- **Design Direction starts on GLM.** First pass is always GLM. Claude only for open visual planning or after GLM fell short. Jane.
+```
+
+Commit the log with the rest of the coherent unit when you commit (see commit cadence). Do not make a commit that is only “logged a decision” unless the decision had no other files.

@@ -65,6 +65,7 @@ Handbook snapshot: [`../canon/messaging-voice.md`](../canon/messaging-voice.md)
 | `luci-propagation-workflow.mdc` | “Propagate” diagrams |
 | `luci-visual-options-workflow.mdc` | 2–3 variants on branches |
 | `luci-commit-cadence.mdc` | Small local commits by Cursor, including Cursor runs delegated by Grok |
+| `luci-decision-log.mdc` | Append lock summaries to `shared/DECISION-LOG.md` — CoS’s feed of what Jane decided |
 | `luci-doc-customization.mdc` | Portal URL → Cursor customize |
 | `luci-stakeholder-review.mdc` | Mike/Nick queue |
 | `luci-phrasebook.mdc` | Jane’s plain English |

@@ -18,14 +18,15 @@ This pack is the shared briefing for the Grok team. It is **not** a license for 
 1. This README
 2. [`00-LUCI-ORGANIZATIONAL-CONTEXT.md`](00-LUCI-ORGANIZATIONAL-CONTEXT.md)
 3. [`shared/CURRENT-WORK-BOARD.md`](shared/CURRENT-WORK-BOARD.md)
-4. [`shared/CURSOR-AND-MODEL-PROTOCOL.md`](shared/CURSOR-AND-MODEL-PROTOCOL.md)
-5. [`shared/GROK-TO-CURSOR-DELEGATION.md`](shared/GROK-TO-CURSOR-DELEGATION.md)
-6. [`shared/SHARED-OPERATING-PROTOCOL.md`](shared/SHARED-OPERATING-PROTOCOL.md)
-7. [`shared/SOURCE-OF-TRUTH-MAP.md`](shared/SOURCE-OF-TRUTH-MAP.md)
-8. Your role file in [`roles/`](roles/)
-9. Your skill file in [`skills/`](skills/)
-10. Canon files named in your role brief
-11. [`ONBOARDING-AND-CALIBRATION.md`](ONBOARDING-AND-CALIBRATION.md) — run the calibration for your role
+4. [`shared/DECISION-LOG.md`](shared/DECISION-LOG.md)
+5. [`shared/CURSOR-AND-MODEL-PROTOCOL.md`](shared/CURSOR-AND-MODEL-PROTOCOL.md)
+6. [`shared/GROK-TO-CURSOR-DELEGATION.md`](shared/GROK-TO-CURSOR-DELEGATION.md)
+7. [`shared/SHARED-OPERATING-PROTOCOL.md`](shared/SHARED-OPERATING-PROTOCOL.md)
+8. [`shared/SOURCE-OF-TRUTH-MAP.md`](shared/SOURCE-OF-TRUTH-MAP.md)
+9. Your role file in [`roles/`](roles/)
+10. Your skill file in [`skills/`](skills/)
+11. Canon files named in your role brief
+12. [`ONBOARDING-AND-CALIBRATION.md`](ONBOARDING-AND-CALIBRATION.md) — run the calibration for your role
 
 ## Non-negotiable operating picture
 

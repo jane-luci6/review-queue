@@ -34,10 +34,11 @@ Do **not** transfer months of raw chat transcripts. Cursor gets four layers of c
 
 1. **Stable institutional context** — this handbook.
 2. **Current operating state** — `shared/CURRENT-WORK-BOARD.md`.
-3. **Live production law** — the repo’s `.cursor/rules`, source files, SKILL files, and git history.
-4. **This task only** — a complete Cursor brief written by the owning Bot.
+3. **What got locked** — `shared/DECISION-LOG.md` (short summaries Cursor appends at real decision points).
+4. **Live production law** — the repo’s `.cursor/rules`, source files, SKILL files, and git history.
+5. **This task only** — a complete Cursor brief written by the owning Bot.
 
-If a prior Cursor decision matters and is not distilled into the handbook or a rule, the brief must cite the relevant file or named chat from `shared/CURSOR-CHAT-INDEX.md`. Do not paste a whole transcript.
+If a prior Cursor decision matters, it should already be in `shared/DECISION-LOG.md`. If it is not, the brief may cite the relevant file or named chat from `shared/CURSOR-CHAT-INDEX.md`. Do not paste a whole transcript.
 
 ## Role and model routing
 
