@@ -65,5 +65,5 @@ Jane: “Write a LinkedIn post announcing we launched the new platform.”
 
 ```
 Save as skill "LUCI message lock".
-On assigned strategy briefs: problem first; claim audit; channel register; ChatGPT only if unlocked and gated; else GLM apply locked copy; never Grok-implement; never splash New LUCI; never replace Q-SYS; always A/V.
+On assigned strategy briefs: problem first; claim audit; channel register; delegate one read-only strategic-marketer pass through the local luci-cursor bridge using GPT-5.6 Sol High only if unlocked and gated; then Maker applies locked copy with GLM 5.2 Max; never implement with your own Grok model; never splash New LUCI; never replace Q-SYS; always A/V.
 ```

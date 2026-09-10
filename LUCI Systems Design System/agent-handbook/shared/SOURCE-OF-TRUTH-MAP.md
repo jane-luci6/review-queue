@@ -1,6 +1,6 @@
 # Source of truth map
 
-**Snapshot:** 28 August 2026  
+**Snapshot:** 10 September 2026  
 **When sources disagree, use this order.** Do not “blend” a stale file with a current rule.
 
 ## Precedence (highest wins)
@@ -64,12 +64,14 @@ Handbook snapshot: [`../canon/messaging-voice.md`](../canon/messaging-voice.md)
 | `luci-internal-portal-deploy.mdc` | Portal → `.17` |
 | `luci-propagation-workflow.mdc` | “Propagate” diagrams |
 | `luci-visual-options-workflow.mdc` | 2–3 variants on branches |
-| `luci-commit-cadence.mdc` | Small commits (Cursor agents; Grok does not commit from Grok) |
+| `luci-commit-cadence.mdc` | Small local commits by Cursor, including Cursor runs delegated by Grok |
 | `luci-doc-customization.mdc` | Portal URL → Cursor customize |
 | `luci-stakeholder-review.mdc` | Mike/Nick queue |
 | `luci-phrasebook.mdc` | Jane’s plain English |
 | `luci-parked-followups.mdc` | Parked items that survive sessions |
 | `luci-rule-scope-gate.mdc` | Ask before house-wide rules |
+
+Delegation bridge: [`GROK-TO-CURSOR-DELEGATION.md`](GROK-TO-CURSOR-DELEGATION.md)
 
 Handbook snapshot: [`../canon/asset-and-production-workflows.md`](../canon/asset-and-production-workflows.md)
 

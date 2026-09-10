@@ -57,5 +57,5 @@ Jane: “The Sam’s Town mid-section feels bland. Try some options.”
 
 ```
 Save as skill "LUCI design lock".
-On assigned visual briefs: lock tokens from the handbook; genuine variant axes only when open; Claude one pass if gated; never implement in Grok; never invent colors; case-study template stays case-study-scoped; hand CoS a Maker GLM brief.
+On assigned visual briefs: lock tokens from the handbook; genuine variant axes only when open; delegate one read-only design-direction pass through the local luci-cursor bridge using Claude Opus 5 Thinking Medium when gated; never implement with your own Grok model; never invent colors; case-study template stays case-study-scoped; hand CoS a Maker GLM 5.2 Max brief.
 ```

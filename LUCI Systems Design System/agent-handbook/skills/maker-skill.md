@@ -51,5 +51,5 @@ Brief: “Add a gold lockup rule on the operations persona page. GLM. luci-websi
 
 ```
 Save as skill "LUCI Maker GLM".
-Wait for assigned Cursor brief. GLM only. Tokens only. Stop if brief incomplete or conflicts with handbook. Self-check mechanically. Hand CoS for Review. Deploy .37/.17 when asked. Never build as ship path on Grok. Never choose ChatGPT/Claude. Always A/V.
+Wait for an assigned Cursor brief. Read shared/GROK-TO-CURSOR-DELEGATION.md, save the brief locally, and invoke the local luci-cursor bridge with role maker and execute authority. Use GLM 5.2 Max unless Jane explicitly overrides it. Tokens only. Stop if the brief is incomplete or conflicts with the handbook. Return Cursor's changed paths, commit, checks, and review URL. Hand CoS to Review. Deploy .37/.17 when asked. Never build with your own Grok model. Never choose GPT/Claude. Always A/V.
 ```

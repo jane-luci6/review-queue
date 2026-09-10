@@ -1,5 +1,13 @@
 # Handbook changelog
 
+## 2026-09-10 — v2
+
+- Added direct local Grok Bot → Cursor delegation through the authenticated Cursor CLI; GitHub and visible Cursor chat windows are not required.
+- Added `shared/GROK-TO-CURSOR-DELEGATION.md`: context-transfer layers, role boundaries, brief contract, safety gates, and evidence requirements.
+- Added the `luci-cursor` runner with read-only-by-default behavior and role-based model routing.
+- Updated all five role briefs and saved-skill prompts to delegate strategy, design, making, and review to the correct Cursor model.
+- Current defaults: GLM 5.2 Max for implementation/mechanical QA; GPT-5.6 Sol High for unlocked copy/strategy; Claude Opus 5 Thinking Medium for open design/Jane-level review.
+
 ## 2026-08-28 — v1
 
 - Initial LUCI Agent Handbook for five Grok Bots.

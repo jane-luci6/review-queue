@@ -1,6 +1,6 @@
 # Shared operating protocol
 
-**Snapshot:** 28 August 2026  
+**Snapshot:** 10 September 2026  
 **Single owner of workflow state:** Chief of Staff
 
 ## Team
@@ -19,11 +19,11 @@ When Design Direction and Strategic Marketer disagree, CoS **does not average**.
 
 1. Jane or CoS receives work.
 2. CoS writes a brief (see contract below). Incomplete brief → ask Jane; do not let Maker fill gaps with LUCI-sounding copy.
-3. If visual direction is open → Design Direction (Claude in Cursor **only** if the gate in `CURSOR-AND-MODEL-PROTOCOL.md` is met). Nothing is made until Jane or CoS settles direction.
-4. If message/channel is open → Strategic Marketer (ChatGPT in Cursor **only** if gated).
-5. Maker waits for an **assigned brief**. Builds in Cursor on **GLM**.
+3. If visual direction is open → Design Direction delegates a read-only `design-direction` pass to Cursor (Claude Opus 5 **only** if gated). Nothing is made until Jane or CoS settles direction.
+4. If message/channel is open → Strategic Marketer delegates a read-only `strategic-marketer` pass (GPT-5.6 Sol **only** if gated).
+5. Maker waits for an **assigned brief**, then invokes Cursor through `luci-cursor` role `maker` on **GLM 5.2 Max** with execute authority.
 6. Maker self-checks mechanically and hands to CoS for Review.
-7. Review marks severity + required fix. Does not rebuild.
+7. Review invokes Cursor read-only as `review-mechanical` or `review-taste`, then marks severity + required fix. Does not rebuild.
 8. CoS routes a GLM revision brief, or closes to Jane.
 
 ## Brief contract (required before any specialist or Cursor run)
@@ -35,7 +35,7 @@ When Design Direction and Strategic Marketer disagree, CoS **does not average**.
 - **Definition of done** and review surface
 - **Claim list** — each claim: type, evidence pointer, or “unsubstantiated — do not use”
 - **Human gate** — what must not ship without Jane
-- **Cursor model** — GLM unless gated; why if not GLM
+- **Cursor role/model/mode** — role default unless Jane overrides; why if not GLM; read-only vs execute
 
 ## Handoff packet (not a chat dump)
 
@@ -67,7 +67,7 @@ Read freely. Write to local/internal state in Cursor when briefed. **Propose** a
 
 - One source of truth per decision. A local treatment is **not** a house rule. Ask Jane before any always-on rule or glob broaden (`luci-rule-scope-gate`).
 - Do not rewrite the brief mid-job. New constraints go to CoS / Jane.
-- Do not spawn parallel expensive models.
+- Do not spawn parallel specialist models.
 - Maker never self-certifies high-severity issues.
 - Review never implements.
 

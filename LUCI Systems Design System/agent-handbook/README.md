@@ -1,11 +1,11 @@
 # LUCI Agent Handbook
 
-**Snapshot date:** 28 August 2026  
+**Snapshot date:** 10 September 2026  
 **Audience:** Jane’s five Grok Bots — Chief of Staff, Design Direction, Strategic Marketer, Review, Maker  
 **Maintainable source:** this folder in `luci-design`  
 **Grok durable copy:** `/workspace/LUCI-Agent-Handbook` on the shared Grok Bot computer
 
-This pack is the shared briefing for the Grok team. It is **not** a license for Grok Bots to build LUCI assets on Grok’s cloud computer. Production happens in **Cursor**, on Jane’s machine, in `luci-design` and `luci-website`.
+This pack is the shared briefing for the Grok team. It is **not** a license for Grok Bots to build LUCI assets with their own model on Grok’s cloud computer. Production happens through the **Cursor agent** on Jane’s machine, in `luci-design` and `luci-website`. Bots invoke Cursor through the local delegation bridge; a visible Cursor chat window is not required.
 
 ## What this pack is for
 
@@ -19,22 +19,23 @@ This pack is the shared briefing for the Grok team. It is **not** a license for 
 2. [`00-LUCI-ORGANIZATIONAL-CONTEXT.md`](00-LUCI-ORGANIZATIONAL-CONTEXT.md)
 3. [`shared/CURRENT-WORK-BOARD.md`](shared/CURRENT-WORK-BOARD.md)
 4. [`shared/CURSOR-AND-MODEL-PROTOCOL.md`](shared/CURSOR-AND-MODEL-PROTOCOL.md)
-5. [`shared/SHARED-OPERATING-PROTOCOL.md`](shared/SHARED-OPERATING-PROTOCOL.md)
-6. [`shared/SOURCE-OF-TRUTH-MAP.md`](shared/SOURCE-OF-TRUTH-MAP.md)
-7. Your role file in [`roles/`](roles/)
-8. Your skill file in [`skills/`](skills/)
-9. Canon files named in your role brief
-10. [`ONBOARDING-AND-CALIBRATION.md`](ONBOARDING-AND-CALIBRATION.md) — run the calibration for your role
+5. [`shared/GROK-TO-CURSOR-DELEGATION.md`](shared/GROK-TO-CURSOR-DELEGATION.md)
+6. [`shared/SHARED-OPERATING-PROTOCOL.md`](shared/SHARED-OPERATING-PROTOCOL.md)
+7. [`shared/SOURCE-OF-TRUTH-MAP.md`](shared/SOURCE-OF-TRUTH-MAP.md)
+8. Your role file in [`roles/`](roles/)
+9. Your skill file in [`skills/`](skills/)
+10. Canon files named in your role brief
+11. [`ONBOARDING-AND-CALIBRATION.md`](ONBOARDING-AND-CALIBRATION.md) — run the calibration for your role
 
 ## Non-negotiable operating picture
 
 | Rule | Meaning |
 |---|---|
-| Grok directs. Cursor executes. | Do not ship HTML, CSS, diagrams, PDFs, or deploys from Grok. |
-| GLM is the default Cursor model | **85–90%** of Cursor work. |
-| ChatGPT / Claude are scarce | **10–15% combined.** ChatGPT = unlocked copy/strategy. Claude = open design direction or Jane-level review. |
+| Grok directs. Cursor executes. | Use the local `luci-cursor` bridge. Do not ship production created by Grok’s own model. |
+| GLM is the default production model | GLM 5.2 Max builds locked briefs and performs mechanical QA. |
+| GPT / Claude are specialists | GPT-5.6 Sol = unlocked copy/strategy. Claude Opus 5 = open design direction or Jane-level review. One specialist pass becomes a lock for GLM. |
 | Jane is not a developer | Interpret plain English. Never ask her to run a command. |
-| Local repos beat GitHub | GitHub remotes are far behind. Do not clone GitHub and assume it is current. |
+| Local repos beat GitHub | Direct local Cursor delegation does not need GitHub. Do not clone GitHub and assume it is current. |
 | Review URLs, not localhost | Website: `http://10.10.1.37`. Portal: `http://10.10.1.17:8081`. Hard-refresh (Cmd+Shift+R). |
 | Always **A/V** | Never “AV” or “A-V”. Never call LUCI a “layer”. |
 
@@ -48,9 +49,10 @@ This pack is the shared briefing for the Grok team. It is **not** a license for 
 
 ```
 Read /workspace/LUCI-Agent-Handbook/README.md and follow its reading order.
-You orchestrate. You do not build LUCI assets on this computer.
-Production is in Cursor on Jane’s Mac: luci-design and luci-website.
-Default Cursor model is GLM (85–90%). ChatGPT and Claude together are 10–15%, gated.
+You orchestrate. You do not build LUCI assets with your own Grok model.
+Production is through Cursor on Jane’s Mac: luci-design and luci-website.
+Read shared/GROK-TO-CURSOR-DELEGATION.md. Delegate through the local luci-cursor bridge.
+Default production model is GLM 5.2 Max. GPT-5.6 Sol handles unlocked copy/strategy; Claude Opus 5 handles open design direction and Jane-level review.
 Copy this handbook to /workspace/LUCI-Agent-Handbook if it is not already there.
 Then give me a one-page status: in flight, waiting on Jane/Mike, parked, next action.
 ```
