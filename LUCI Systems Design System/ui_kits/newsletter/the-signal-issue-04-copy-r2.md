@@ -9,7 +9,6 @@ This packet contains copy only. GLM applies the locked copy and layout notes aft
 
 1. **What’s Coming:** supply the map-rotation video. No video treatment or missing action has been invented here.
 2. **LUCI Project Update:** select the Clearwater and Osage photos for the compact collage. California exterior is supplied at `assets/since-last-signal/california-casino.jpg`.
-3. **Minute with Mike:** no usable Mike transcript was found in the local `luci-design` uploads. The connected OneDrive search timed out, and `Marketing - Documents/Call Recordings/` was not available in the locally synced files. The draft below uses Jane’s direction and `the-signal-issue-04-choices.md`; no transcript language is presented as Mike’s quote. Mike should review the column before publication.
 
 ---
 
@@ -142,24 +141,24 @@ The CTA and all six role links use the published `customer-ag-content` root veri
 
 **Deck:** Change the equipment without changing the way your property operates.
 
-Here’s the test of a durable A/V standard: change the screen, player, processor, or manufacturer. If your team has to learn a new way to run the room, the standard was tied to the wrong thing.
+Years ago, I was asked to develop a strategy that could standardize technology across a group of properties. The problem was not only that every property had different equipment. Programmers came and went. Products were discontinued. Properties were left stuck with systems that became harder and more expensive to support.
 
-I’ve seen routine equipment changes trigger a full control redesign: new programming, a new interface, new training, and a new dependency on whoever built it. That is what I mean by another control project. The hardware changed, but the property had to rebuild the way it operates around that change.
+That is what I mean by another control project. A screen, player, or processor reaches the end of its life, and suddenly the property is paying for new programming, a new interface, new training, and a new dependency on whoever built it. The hardware changed, but the property had to rebuild the operation around it.
 
-When we built LUCI, we made a different choice. We standardized the protocols technology uses to communicate and the operating rules the property team uses every day—not a prescribed list of boxes.
+When we developed LUCI, we put the standard in the protocols technology uses to communicate and in the operating rules the property team uses every day—not in a prescribed list of boxes. That lets the operation stay consistent across properties even when the equipment does not.
 
-That choice is deliberate. Bring the hardware that fits the room and the budget. We do not pigeonhole a property into one manufacturer’s equipment. Forcing useful equipment out of service because it does not match a prescribed stack is expensive and wasteful.
+We are agnostic about the hardware that fits the room, the job, and the budget. We know what works well, and we will make recommendations. Then the property decides. We are not a this-way-or-no-way company.
 
-The hardware matters to the job it performs. It should not determine how your team operates. Sources can keep consistent names. Rooms can keep consistent controls. Schedules and support can keep working the same way while the equipment underneath them evolves.
+The hardware still matters to the job it performs. It just should not dictate the operation. Pigeonholing a property into one manufacturer is expensive and wasteful, especially when useful equipment has to be removed simply because it does not fit somebody else’s standard.
 
 > “We developed the solution around the protocols of technology, not the hardware of technology.”
 
-A good standard removes decisions your team should not have to make twice. Hardware will change. A durable operating standard lets it change without taking the operation with it.
+Screens, sources, and processors will change. The people running them should not have to change their method every time. That is the standard: consistent names, controls, schedules, and support across the property, with room to choose the hardware that fits.
 
 Mike Epstein<br>
 CEO, LUCI Systems
 
-**Source note:** The pull quote above is locked verbatim. No other sentence is represented as transcript language; the draft is synthesized from Jane’s 10 September direction and `the-signal-issue-04-choices.md`.
+**Source note:** Mike Epstein, `Marketing - Documents/Call Recordings/07-21 Customer Consultation_ Casino AV_IT Unified IPTV Platform Pitch (Lucy Systems)-transcript.docx` (~00:08:38). The pull quote above remains the locked newsletter form.
 
 ---
 
@@ -171,4 +170,4 @@ CEO, LUCI Systems
 4. **What’s Coming:** map-rotation video is still pending from Jane. Do not invent a substitute animation, screen recording, or missing interaction.
 5. **LUCI Project Update:** place the section immediately after the table of contents. Use a map with dots at **Lewiston, Idaho; Tulsa, Oklahoma; and Las Vegas, Nevada**. Pair the short property items with small photos or a compact collage—not three full-bleed bands. Use `assets/since-last-signal/california-casino.jpg` for California. Let the Las Vegas stop lead into Aliante.
 6. **From LUCI title:** set **“Across Every Team”** in gold. Place the six smaller linked role tiles after the second paragraph. Use the exact role links in the copy above and one consistent `customer-ag-content` root for the CTA.
-7. **Minute with Mike:** keep the pull quote verbatim and prominent. The body is pending Mike review because no transcript language was available for this pass.
+7. **Minute with Mike:** keep the pull quote verbatim and prominent. The body draws on Mike’s 07-21 Customer Consultation transcript and is ready for Jane’s copy lock.
