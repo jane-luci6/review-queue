@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-31",
+  "updated": "2026-09-10",
   "publishNote": "Build (npm run build:review) outputs to ui_kits/review. Bump reviewVersion + versionNote for new uploads (version history shown in portal). Set dueForReview for first-time review. Comments/approvals sync server-side via the comments_api container (proxied at /api/comments); Jane sees Mike/Mark's feedback on refresh. Archive with scripts/pull-review-comments.mjs.",
   "previewBaseUrl": "",
   "commentsApiUrl": "http://10.10.1.17:8081/api/comments",
@@ -8,21 +8,41 @@
     {
       "title": "Messaging guide",
       "url": "messaging/messaging-guide.html",
-      "note": "Updated Aug 31, 2026"
+      "note": "Updated Sep 10, 2026"
     },
     {
       "title": "LUCI philosophy",
       "url": "messaging/philosophy.html",
-      "note": "Updated Aug 31, 2026"
+      "note": "Updated Sep 10, 2026"
     },
     {
       "title": "Personas",
       "url": "messaging/personas.html",
-      "note": "Updated Aug 31, 2026"
+      "note": "Updated Sep 10, 2026"
     }
   ],
   "inProgress": [],
-  "dueForReview": [],
+  "dueForReview": [
+    {
+      "id": "case-study-aliante",
+      "title": "Case Study · Aliante Casino + Hotel + Spa",
+      "summary": "Aliante case study — a 106-foot curved LED wall (2,000 sq ft, 24 zones) built into the LUCI operation already running the property, with 15 legacy racks consolidated to 2 and 20+ projectors removed.",
+      "liveUrl": "http://10.10.1.37/resources/case-studies/aliante/",
+      "reviewVersion": 1,
+      "versionNote": "First draft — built on the website from the approved Aliante copy; before/after slider, consolidation ledger, scope story. Quote section removed.",
+      "reviewBrief": {
+        "description": "Standalone Aliante case study for the website — 106-foot curved LED wall sportsbook remodel, 15 racks consolidated to 2, 20+ projectors removed, six wall configurations, and the scope ledger. Built on the website (Astro) with a before/after slider and consolidation ledger.",
+        "reviewAsk": "whether the story reads true and the scope stats are accurate — anything to adjust before it goes live on lucisystems.com."
+      },
+      "versionHistory": [
+        {
+          "version": 1,
+          "published": "2026-09-10",
+          "note": "First draft — built on the website; before/after slider, consolidation ledger, scope story. Quote section removed."
+        }
+      ]
+    }
+  ],
   "approvedAssets": [
     {
       "id": "case-study-sams-town",
@@ -314,7 +334,8 @@
           "published": "2026-09-01",
           "note": "Added to the portal — preview pending the live publish."
         }
-      ]
+      ],
+      "previewUrl": "newsletter/the-signal-issue-04-september-2026.html"
     },
     {
       "id": "newsletter-email-teaser",
@@ -545,5 +566,5 @@
     }
   ],
   "finalized": [],
-  "messagingDocsUpdated": "2026-08-31"
+  "messagingDocsUpdated": "2026-09-10"
 }
