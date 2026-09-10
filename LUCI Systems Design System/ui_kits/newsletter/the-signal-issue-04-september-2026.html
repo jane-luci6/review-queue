@@ -2470,6 +2470,144 @@
     }
 
     .editor-notes strong { color: #d4a017; }
+
+    /* ── QUICK TIP — steps + screenshot side-by-side (dark section) ─── */
+    .quick-tip__media {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(24px, 4vw, 44px);
+      align-items: start;
+      margin: clamp(20px, 3vw, 28px) 0 clamp(20px, 3vw, 32px);
+    }
+    .quick-tip__media .steps { max-width: none; margin: 0; }
+    .quick-tip__shot { margin: 0; }
+    .quick-tip__shot .field-photo-ph { aspect-ratio: 4 / 3; height: auto; min-height: 180px; }
+    .quick-tip__shot figcaption {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 13px;
+      line-height: 1.5;
+      color: rgba(235, 245, 248, 0.72);
+      margin-top: 10px;
+    }
+    .quick-tip__shot figcaption strong { color: var(--mint); font-weight: 700; }
+    .field-photo-ph--dark {
+      background: rgba(104, 227, 190, 0.06);
+      border-color: rgba(104, 227, 190, 0.35);
+      color: rgba(235, 245, 248, 0.5);
+    }
+    @media (max-width: 640px) {
+      .quick-tip__media { grid-template-columns: 1fr; gap: 28px; }
+    }
+
+    /* ── SINCE THE LAST SIGNAL — wide photo bands ─── */
+    .since-bands { margin-top: clamp(28px, 4vw, 40px); display: flex; flex-direction: column; gap: clamp(20px, 3vw, 32px); }
+    .since-band {
+      position: relative;
+      margin: 0;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: 0;
+    }
+    .since-band__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .since-band__img.field-photo-ph { aspect-ratio: auto; height: 100%; }
+    .since-band__scrim {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(8, 18, 24, 0.92) 0%, rgba(8, 18, 24, 0.55) 38%, rgba(8, 18, 24, 0) 68%);
+      pointer-events: none;
+    }
+    .since-band__cap {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: clamp(20px, 3vw, 32px) var(--pad);
+      color: var(--off-white);
+    }
+    .since-band__metric {
+      display: block;
+      font-family: var(--display);
+      font-size: clamp(11px, 1.4vw, 13px);
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--mint);
+      margin-bottom: 6px;
+    }
+    .since-band__name {
+      display: block;
+      font-family: var(--body);
+      font-weight: 700;
+      font-size: clamp(20px, 3vw, 28px);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: var(--off-white);
+      margin-bottom: 10px;
+    }
+    .since-band__text {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: clamp(14px, 1.6vw, 16px);
+      line-height: 1.55;
+      color: rgba(235, 245, 248, 0.85);
+      max-width: 58ch;
+      margin: 0;
+    }
+
+    /* ── FROM LUCI — Field Activation Guide role tiles ─── */
+    .fag-tiles {
+      list-style: none;
+      margin: clamp(28px, 4vw, 40px) 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(16px, 2.5vw, 24px);
+    }
+    .fag-tile {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .fag-tile__art {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 0;
+    }
+    .fag-tile__name {
+      font-family: var(--body);
+      font-weight: 700;
+      font-size: clamp(14px, 1.5vw, 16px);
+      letter-spacing: -0.01em;
+      color: var(--navy);
+    }
+    @media (max-width: 640px) {
+      .fag-tiles { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 420px) {
+      .fag-tiles { grid-template-columns: 1fr; }
+    }
+    .fag-cta {
+      margin: clamp(8px, 1.5vw, 16px) 0 0;
+      font-family: var(--body);
+      font-size: clamp(16px, 2vw, 18px);
+      font-weight: 600;
+    }
+    .fag-cta a {
+      color: var(--mint-dark);
+      text-decoration: none;
+      border-bottom: 2px solid rgba(43, 158, 128, 0.35);
+      padding-bottom: 2px;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .fag-cta a:hover { border-bottom-color: var(--mint-dark); }
+    .fag-cta a span { transition: transform 0.15s; }
+    .fag-cta a:hover span { transform: translateX(3px); }
   </style>
 </head>
 
@@ -2486,7 +2624,7 @@
     <h1 class="masthead__title">The<em>Signal.</em></h1>
     <div class="masthead__issue">
       <span class="masthead__issue-label">This Issue</span>
-      <span class="masthead__issue-title">Lorem ipsum dolor sit</span>
+      <span class="masthead__issue-title">Navigating Standardization vs. Adaptation</span>
     </div>
     <span class="masthead__numeral" aria-hidden="true">04</span>
   </header>
@@ -2498,16 +2636,17 @@
       <span class="kicker__label">Welcome</span>
       <span class="kicker__rule"></span>
     </div>
-    <h2 class="art-title">Amet consectetur adipiscing elit sed <em>Do eiusmod</em></h2>
+    <h2 class="art-title">The Right Place for a <em>Standard</em></h2>
     <div class="art-body">
-      <p>Tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.</p>
-      <p>Pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in.</p>
-      <p>Reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod.</p>
-      <p>Tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore.</p>
-      <p>Magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit.</p>
+      <p>Your property needs both standardization and adaptation. Without a standard, every room becomes an exception your team has to learn and support. Without room to adapt, the standard becomes a constraint the moment your circumstances change.</p>
+      <p>The question is where each belongs.</p>
+      <p>What stays consistent should be the way you operate: one interface, common rules for access, clear device identification, and predictable behavior when a command is sent. Those constants give your team an environment they can run and support with confidence.</p>
+      <p>What remains adaptable is everything the room may require. Hardware changes. Spaces have different geometry. Maps need to match the operator&rsquo;s point of view. Sources, layouts, and volume levels shift with the event. Those variables need room to move without creating another system or workflow.</p>
+      <p>You&rsquo;ll see that balance throughout this issue. Aliante brought a custom 106-foot LED wall into the LUCI operation already running the property. The new LUCI map adapts to the operator&rsquo;s physical perspective. At Clearwater River, Osage, and California Casino, distinctly different projects joined the same operating model.</p>
+      <p>The goal isn&rsquo;t to erase the difference between standardization and adaptation. It&rsquo;s to apply each where it does the most good.</p>
+      <p>Here&rsquo;s what that balance looks like in practice.</p>
     </div>
     <div class="art-signoff">
-      <p class="art-signoff__line">In voluptate velit esse cillum dolore eu fugiat nulla.</p>
       <p class="art-signoff__name">Mike Epstein</p>
       <p class="art-signoff__role">CEO, LUCI Systems</p>
     </div>
@@ -2524,8 +2663,9 @@
       <li><a href="#field-story"><span class="toc__num">01</span><span class="toc__text">In the field</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
       <li><a href="#quick-tip"><span class="toc__num">02</span><span class="toc__text">LUCI Quick Tip</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
       <li><a href="#whats-coming"><span class="toc__num">03</span><span class="toc__text">What&rsquo;s coming</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
-      <li><a href="#web-next"><span class="toc__num">04</span><span class="toc__text">The new lucisystems.com</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
-      <li><a href="#mike-column"><span class="toc__num">05</span><span class="toc__text">A Minute with Mike</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
+      <li><a href="#since-last-signal"><span class="toc__num">04</span><span class="toc__text">Since the last Signal</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
+      <li><a href="#from-luci"><span class="toc__num">05</span><span class="toc__text">From LUCI</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
+      <li><a href="#mike-column"><span class="toc__num">06</span><span class="toc__text">A Minute with Mike</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
     </ol>
   </nav>
 
@@ -2704,123 +2844,155 @@
       <span class="kicker__label">LUCI Quick Tip</span>
       <span class="kicker__rule"></span>
     </div>
-    <h2 class="art-title"><em>Dolore magna aliqua</em> Ut enim ad minim veniam</h2>
+    <h2 class="art-title">Make Every Endpoint Easier to Find &mdash; and Easier to <em>Service</em></h2>
     <div class="art-body">
-      <p>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum lorem ipsum dolor sit amet.</p>
-      <p>Consectetur adipiscing elit sed.</p>
+      <p>If an endpoint still reads like a device number, add the context the next person will need.</p>
+      <p>Current LUCI lets administrators give an endpoint a recognizable, location-based name while preserving its physical zone number for troubleshooting. Custom notes can also hold the display model, serial number, nearby landmark, or useful service information.</p>
     </div>
-    <ol class="steps steps--dark">
-      <li><p>Do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco.</p></li>
-      <li><p>Laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate.</p></li>
-      <li><p>Velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui.</p></li>
-      <li><p>Officia deserunt mollit anim id est laborum lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></li>
-      <li><p>Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</p></li>
-      <li><p>Dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum lorem ipsum dolor sit.</p></li>
-      <li><p>Amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim.</p></li>
-    </ol>
+    <div class="quick-tip__media">
+      <ol class="steps steps--dark">
+        <li><p>Switch the map to <strong>Endpoint Mode</strong>.</p></li>
+        <li><p>Right-click the endpoint and select <strong>Edit</strong>.</p></li>
+        <li><p>Open <strong>Custom Info</strong> and add a clear name based on its location.</p></li>
+        <li><p>Add any notes that will help identify or service the device later, then save.</p></li>
+      </ol>
+      <figure class="quick-tip__shot">
+        <!-- ASSET MISSING: current LUCI endpoint editor screenshot (Name / Zone Number / Notes annotated).
+             Do NOT use New LUCI imagery. Replace this placeholder with the annotated current-LUCI screenshot when sourced. -->
+        <div class="field-photo-ph field-photo-ph--dark" role="img" aria-label="Placeholder: current LUCI endpoint editor screenshot showing Name, Zone Number, and Notes fields (asset pending)">
+          <span>Current LUCI &middot; endpoint editor</span>
+        </div>
+        <figcaption>Annotate three fields: <strong>Name</strong>, <strong>Zone Number</strong>, and <strong>Notes</strong>.</figcaption>
+      </figure>
+    </div>
     <div class="art-body">
-      <p>Veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum lorem ipsum dolor.</p>
-      <p>Sit amet <a href="https://lucisystems.atlassian.net/servicedesk/customer/portal/1/article/642285569">Consectetur adipiscing</a> Elit sed do eiusmod.</p>
+      <p>A useful name helps the operator. The zone number helps support. The notes help whoever works on it next.</p>
+      <p>Full walkthrough: <a href="https://lucisystems.atlassian.net/servicedesk/customer/portal/1/article/642285569">Endpoint Custom Info</a> in the Support Portal.</p>
     </div>
   </section>
 
-  <!-- WHAT'S COMING IN THE NEW LUCI — single consolidated section -->
+  <!-- WHAT'S COMING — map-rotation follow-through (deeper demo after Issue 03) -->
   <section class="sec sec--light" id="whats-coming">
     <div class="kicker">
       <span class="kicker__rule"></span>
       <span class="kicker__label">What&rsquo;s coming</span>
       <span class="kicker__rule"></span>
     </div>
-    <h2 class="art-title">Tempor incididunt ut labore <em>Et dolore magna aliqua</em></h2>
+    <h2 class="art-title">A Map That Faces <em>the Way You Do</em></h2>
     <div class="art-body">
-      <p>Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non.</p>
+      <p>Last month, we introduced the new LUCI map and showed how properties and endpoints can appear in their real locations. Now we can show what that changes for the person operating the room.</p>
+      <p>Today, north is always up. In the new LUCI, administrators can load their own maps and rotate the view to match the room, the panel, or the operator&rsquo;s line of sight.</p>
+      <p>If you&rsquo;re standing behind the bar looking across the floor, the map can face the same direction. Left on the screen is left in the room. The display in front of you appears in front of you &mdash; without requiring you to mentally rotate the property before acting.</p>
+      <p>It sounds like a small adjustment. In a room full of screens, zones, and people waiting for the next event, it removes one more translation between you and the space.</p>
     </div>
 
-    <div class="feature-copy">
-      <p><strong>Proident sunt in culpa qui officia deserunt mollit anim id est.</strong> Laborum lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-    </div>
     <div class="shot-block">
-      <div class="shot-label">Consequat duis aute irure dolor in reprehenderit in</div>
+      <div class="shot-label">Map rotation &middot; load, align, control</div>
       <figure class="ui-shot">
-        <img src="assets/new-luci/login-custom.png?v=3" alt="New LUCI login screen in dusk mode over a custom background photo, with the Login appearance sidebar open and annotations for pin or email sign-in, theme and color controls, and background image upload." width="1024" height="623" loading="lazy">
+        <!-- ASSET MISSING: silent 15-20s map-rotation loop (north-up -> rotate to operator view -> zoom -> select endpoint).
+             On-screen overlays: "Load your map." / "Match the room." / "Control what's in front of you."
+             Do NOT re-use Issue 03 login/theme/staging screenshots. Replace this placeholder with the loop when produced. -->
+        <div class="field-photo-ph" role="img" aria-label="Placeholder: map-rotation demonstration video (asset pending) — north-up map rotates to match the operator's viewpoint, zooms in, and selects an endpoint">
+          <span>Map rotation loop &middot; 15&ndash;20s</span>
+        </div>
       </figure>
-    </div>
-
-    <div class="feature-copy">
-      <p><strong>Voluptate velit esse cillum dolore.</strong> Eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut.</p>
-    </div>
-    <div class="shot-block">
-      <div class="shot-label">Enim ad minim veniam quis</div>
-      <figure class="ui-shot">
-        <img src="assets/new-luci/map-light.png?v=1" alt="New LUCI interface in light mode, annotated to show real-world mapping and zooming from portfolio level to individual endpoints." width="1535" height="1024" loading="lazy">
-      </figure>
-    </div>
-
-    <div class="future-box">
-      <div class="future-icon" aria-hidden="true">Nostrud</div>
-      <p><strong>Exercitation ullamco laboris nisi ut aliquip.</strong> Ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui.</p>
     </div>
 
     <div class="beta-note">
-      <p>Officia deserunt mollit anim id est laborum lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et.</p>
-      <p class="more">Dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris!</p>
+      <p>New LUCI is being prepared for property-by-property rollout. Specific details may continue to be refined before each upgrade.</p>
     </div>
   </section>
 
-  <!-- SUPPORT PORTAL — evergreen callout -->
-  <section class="sec sec--sand need-hand" id="support-portal">
-    <div class="need-hand__inner">
-      <p class="need-hand__header">Need a hand?</p>
-      <p class="need-hand__lead">Nisi ut aliquip ex ea commodo consequat duis <a href="https://lucisystems.atlassian.net/servicedesk/customer/portals">Aute irure dolor</a>.</p>
-      <p class="need-hand__sub">In reprehenderit in voluptate velit esse cillum dolore eu fugiat.</p>
+  <!-- SINCE THE LAST SIGNAL — photo wall (3 wide bands) -->
+  <section class="sec sec--white" id="since-last-signal">
+    <div class="kicker">
+      <span class="kicker__rule"></span>
+      <span class="kicker__label">Since the last Signal</span>
+      <span class="kicker__rule"></span>
     </div>
-  </section>
+    <h2 class="art-title">A Month <em>in the Field</em></h2>
+    <p class="art-deck">Three properties. Three very different scopes. One operating standard.</p>
 
-  <!-- THE NEW LUCISYSTEMS.COM — article 05 (redesign, mesh-backed) -->
-  <section class="luci-web-section" id="web-next">
-    <div class="luci-web-accent" aria-hidden="true"></div>
-    <div class="luci-web-inner">
+    <div class="since-bands">
+      <figure class="since-band field-bleed">
+        <img class="since-band__img" src="assets/since-last-signal/clearwater-river.jpeg?v=1" alt="Clearwater River Casino &amp; Lodge — LUCI live after rack environment cleanup" width="1600" height="900" loading="lazy">
+        <div class="since-band__scrim" aria-hidden="true"></div>
+        <figcaption class="since-band__cap">
+          <span class="since-band__metric">Live &middot; August 24</span>
+          <span class="since-band__name">Clearwater River Casino &amp; Lodge</span>
+          <p class="since-band__text">LUCI went live at Clearwater River after the team worked through an accumulated rack environment and removed equipment and cabling that no longer needed to remain.</p>
+        </figcaption>
+      </figure>
 
-      <div class="eyebrow">What's next</div>
+      <figure class="since-band field-bleed">
+        <img class="since-band__img" src="assets/since-last-signal/osage-swigs.jpeg?v=1" alt="Swigs at Osage Casino Hotel — LED install across three angled planes" width="1600" height="900" loading="lazy">
+        <div class="since-band__scrim" aria-hidden="true"></div>
+        <figcaption class="since-band__cap">
+          <span class="since-band__metric">60 cabinets &middot; 480 LED panels</span>
+          <span class="since-band__name">Swigs at Osage Casino Hotel</span>
+          <p class="since-band__text">A four-person team completed the LED installation across three angled planes, expanded the venue&rsquo;s audio, and brought the new bar and stage systems onto LUCI in 25.5 working hours.</p>
+        </figcaption>
+      </figure>
 
-      <h2>
-        Nulla pariatur excepteur sint occaecat <span class="gold">Cupidatat non proident</span>
-      </h2>
-
-      <p class="intro">
-        Sunt in culpa qui officia deserunt mollit anim id est laborum lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum.
-      </p>
-
-      <div class="feature-grid">
-        <article class="feature">
-          <h3>Dolore eu fugiat nulla</h3>
-          <p>Pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est.</p>
-        </article>
-
-        <article class="feature">
-          <h3>Laborum lorem ipsum dolor sit amet consectetur</h3>
-          <p>Adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud.</p>
-        </article>
-
-        <article class="feature">
-          <h3>Exercitation ullamco laboris nisi ut aliquip ex</h3>
-          <p>Ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.</p>
-        </article>
-      </div>
-
-      <div class="utility">
-        <div class="utility-mark" aria-hidden="true">+</div>
-        <div>
-          <strong>Eu fugiat nulla.</strong>
-          <p>Pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+      <figure class="since-band field-bleed">
+        <!-- ASSET MISSING: California Casino wide sportsbook or rack-work photo. No California-labeled
+             folder found in OneDrive Project Media. Replace placeholder when sourced. -->
+        <div class="since-band__img field-photo-ph" role="img" aria-label="Placeholder: California Casino sportsbook photo (asset pending)">
+          <span>California Casino &middot; photo pending</span>
         </div>
-      </div>
-
-      <p class="close">
-        <strong>Sed do eiusmod.</strong> Tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris.
-      </p>
-
+        <div class="since-band__scrim" aria-hidden="true"></div>
+        <figcaption class="since-band__cap">
+          <span class="since-band__metric">20 displays &middot; 3 hours</span>
+          <span class="since-band__name">California Casino</span>
+          <p class="since-band__text">The sportsbook rack was cleared and rebuilt, the cable modem was relocated, all twenty displays were brought online, and the property team was trained before the crew left.</p>
+        </figcaption>
+      </figure>
     </div>
+  </section>
+
+  <!-- FROM LUCI — Field Activation Guide -->
+  <section class="sec sec--light" id="from-luci">
+    <div class="kicker">
+      <span class="kicker__rule"></span>
+      <span class="kicker__label">From LUCI</span>
+      <span class="kicker__rule"></span>
+    </div>
+    <h2 class="art-title">Put LUCI to Work Across <em>Every Team</em></h2>
+    <div class="art-body">
+      <p>Once LUCI is live, every team has new ways to shape the guest experience and operate the property more efficiently.</p>
+      <p>The Field Activation Guide organizes those opportunities by role: Marketing, Gaming and Operations, A/V and Facilities, IT, Finance, and General Management. Each section includes practical use cases and one action the team can try this week.</p>
+      <p>See how Marketing can coordinate floor-wide content, how Operations can adjust the environment around the day&rsquo;s activity, how A/V can manage endpoints and route issues, and how property leadership can bring those efforts into one operating strategy.</p>
+      <p>Pick your team &mdash; or read across the guide to see how the whole property can work together through LUCI.</p>
+    </div>
+
+    <ul class="fag-tiles" aria-label="Field Activation Guide roles">
+      <li class="fag-tile">
+        <img class="fag-tile__art" src="assets/personas/persona-marketing.svg?v=1" alt="A marketing studio pushing promos, game-day content, and event branding to screens across the floor" width="320" height="180" loading="lazy">
+        <span class="fag-tile__name">Marketing</span>
+      </li>
+      <li class="fag-tile">
+        <img class="fag-tile__art" src="assets/personas/persona-gaming.svg?v=1" alt="A casino floor with a roulette wheel and a sportsbook odds board flipped to game-day mode" width="320" height="180" loading="lazy">
+        <span class="fag-tile__name">Gaming &amp; Operations</span>
+      </li>
+      <li class="fag-tile">
+        <img class="fag-tile__art" src="assets/personas/persona-av.svg?v=1" alt="A property map showing every screen and speaker status, with one alert routed to a fix" width="320" height="180" loading="lazy">
+        <span class="fag-tile__name">A/V &amp; Facilities</span>
+      </li>
+      <li class="fag-tile">
+        <img class="fag-tile__art" src="assets/personas/persona-it.svg?v=1" alt="A server rack with permissioned access and a stack of configs and backups in one place" width="320" height="180" loading="lazy">
+        <span class="fag-tile__name">IT</span>
+      </li>
+      <li class="fag-tile">
+        <img class="fag-tile__art" src="assets/personas/persona-finance.svg?v=1" alt="Many vendor invoices consolidating into one LUCI platform and one owner, lowering cost" width="320" height="180" loading="lazy">
+        <span class="fag-tile__name">Finance</span>
+      </li>
+      <li class="fag-tile">
+        <img class="fag-tile__art" src="assets/personas/persona-gm.svg?v=1" alt="A general manager at the center, with every team connected and working together on one property" width="320" height="180" loading="lazy">
+        <span class="fag-tile__name">General Management</span>
+      </li>
+    </ul>
+
+    <p class="fag-cta"><a href="https://www.lucisystems.com/guides/customer-field-activation-guide">Explore the Field Activation Guide <span aria-hidden="true">&rarr;</span></a></p>
   </section>
 
   <!-- A MINUTE WITH MIKE — recurring CEO column -->
@@ -2832,23 +3004,24 @@
           <span class="kicker__label">A Minute with Mike</span>
           <span class="kicker__rule"></span>
         </div>
-        <h2 class="art-title">Nisi ut aliquip ex ea <em>Commodo consequat duis aute irure</em></h2>
-        <p class="art-deck">Dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur.</p>
+        <h2 class="art-title">Standardize the Operation, <em>Not the Hardware</em></h2>
+        <p class="art-deck">Mike Epstein on why the operating standard outlives every product it runs on.</p>
       </div>
       <div class="article-head__art">
         <img class="mike-portrait" src="assets/people/mike-epstein.jpg?v=1" alt="Mike Epstein, CEO of LUCI Systems" width="200" height="250" loading="lazy">
       </div>
     </div>
     <div class="art-body">
-      <p>Sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
-      <p>Cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.</p>
-      <p>Nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur.</p>
-      <p>Sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+      <p>Every display, processor, and player has a replacement date. The way your property operates shouldn&rsquo;t.</p>
+      <p>I&rsquo;ve watched too many A/V systems become dependent on a particular product, programmer, or manufacturer. Then the product is discontinued, the programmer moves on, or the room needs a refresh &mdash; and what should have been a routine equipment change becomes another control project.</p>
+      <p>When we built LUCI, we started from the opposite direction. We standardized the protocols and the way the property operates, not every piece of hardware underneath it.</p>
+      <p>That doesn&rsquo;t mean forcing every property to buy identical equipment. It means establishing a consistent operating model: how sources are named, how rooms are controlled, how schedules run, and how support is handled. The equipment remains free to evolve without asking your staff to relearn the property every time it does.</p>
     </div>
-    <blockquote class="pullquote">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi</blockquote>
+    <blockquote class="pullquote">We developed the solution around the protocols of technology, not the hardware of technology.</blockquote>
     <div class="art-body">
-      <p>Ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt.</p>
-      <p>Ut labore et dolore magna aliqua ut enim ad.</p>
+      <p>Standardization applied too close to the hardware creates constraints. Applied to the operation, it creates a stable foundation your team can adapt around.</p>
+      <p>A good standard removes decisions your team shouldn&rsquo;t have to make twice. It also keeps the next equipment refresh from creating another interface, another workflow, and another dependency.</p>
+      <p>Hardware will change. Your operating standard should be ready when it does.</p>
     </div>
     <div class="author-card author-card--mike">
       <div class="author-card__content">
@@ -2860,10 +3033,19 @@
     </div>
   </section>
 
+  <!-- SUPPORT PORTAL — evergreen callout -->
+  <section class="sec sec--sand need-hand" id="support-portal">
+    <div class="need-hand__inner">
+      <p class="need-hand__header">Need a hand?</p>
+      <p class="need-hand__lead">Guides, troubleshooting, and ticket submission live in the <a href="https://lucisystems.atlassian.net/servicedesk/customer/portals">Customer Support Portal</a>.</p>
+      <p class="need-hand__sub">Same LUCI team, same LUCI engineers. Just another way in.</p>
+    </div>
+  </section>
+
   <!-- CLOSING -->
   <footer class="closing">
-    <p class="closing__lead">Minim veniam quis nostrud.</p>
-    <p class="closing__text">Exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat.</p>
+    <p class="closing__lead">That&rsquo;s it for September.</p>
+    <p class="closing__text">The right operating standard gives your property something dependable without standing in the way of what needs to change. We&rsquo;ll keep working with you to hold that balance as your spaces, equipment, and priorities evolve.</p>
     <p class="closing__sig">Talk soon,<br>The LUCI Team</p>
     <p class="closing__more">Catch up on <a href="https://www.lucisystems.com/the-signal">every issue of The Signal <span aria-hidden="true">&rarr;</span></a></p>
   </footer>
