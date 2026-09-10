@@ -20,6 +20,8 @@ Cursor remains the production environment: it reads the live local repo, follows
 
 Taste disagreements, “I would have phrased it differently,” and second-guessing a specialist pass do **not** count. Jane built this loop because Grok’s own judgment is weaker than GLM / Claude / ChatGPT on this work.
 
+**Do not recap brand or voice in the Cursor brief.** Cursor already has the live `.cursor/rules` (messaging, type, mint/gold, A/V, case-study chrome). The brief is Jane’s job: outcome, what’s locked *for this task*, what’s still open, files, and out of scope. Do not paste mint-on-dark, Inter, Syncopate limits, “always A/V,” or “never a layer” as instructions. Grok also does not restyle or “fix” Cursor’s result. Stop only if Cursor ignored Jane’s stated outcome for *this* job or is clearly way off plan.
+
 The bridge is Cursor’s local CLI, invoked through:
 
 `LUCI Systems Design System/scripts/run-cursor-delegation.sh`
@@ -123,6 +125,8 @@ Every delegation includes:
 - Definition of done
 - Human approval gates
 - Whether Cursor may edit or must remain read-only
+
+Do **not** include a recap of house brand or voice. Cursor already has those rules. “Locked” is this job only.
 
 Missing brief fields are a stop condition. Maker must not fill them with plausible LUCI language.
 

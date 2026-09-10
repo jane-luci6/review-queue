@@ -110,6 +110,8 @@ Definition of done:
 Handoff when done: CoS for Review. Do not self-certify high-severity issues.
 ```
 
+Do **not** add a brand/voice lecture to this brief. Cursor already has those rules. “Locked” means this job’s copy, layout, or claims Jane already decided — not a recap of mint, Inter, or A/V.
+
 ## 4. How Cursor starts
 
 Jane is not a developer. CoS should:
