@@ -1,10 +1,12 @@
 # Current work board
 
-**Board date:** 28 August 2026  
-**Corrected by Jane:** 28 August 2026, afternoon PT  
-**Primary source:** Jane this week, then `luci-design/COS-task-calendar.json`
+**Board date:** 10 September 2026  
+**Sources:** CoS live calendar (10 Sep morning), `the-signal-issue-04-choices.md`, `COS-task-calendar.json`.  
+**If a line is wrong, Jane corrects it.** The 28 Aug board is history.
 
-Treat older briefs (`_project-context.md` 16 Jun, `CURSOR-MORNING-BRIEF.md` 8 Jul, `WIP-notes.md` June, website README “next phases”) as **history**, not this board.
+Treat older briefs (`_project-context.md`, `CURSOR-MORNING-BRIEF.md`, `WIP-notes.md`, website README “next phases”) as **history**, not this board.
+
+**Grok seats (live):** Chief of Staff · Wesley (Website) · Caitlyn (Case Studies & Sales Proof) · Editorial & Campaigns (not stood up yet) · Video (not stood up yet). Until the last two exist, CoS traffics those streams.
 
 ---
 
@@ -12,11 +14,15 @@ Treat older briefs (`_project-context.md` 16 Jun, `CURSOR-MORNING-BRIEF.md` 8 Ju
 
 | ID | Item | Waiting |
 |---|---|---|
-| launch-buckets | Launch campaign: confirm bucket view (what / for whom / when) | Jane |
-| mike-features | Primary / secondary / IT feature list | Mike |
-| yaamava-layout | Capabilities p8: variant B with three Design fixes | Jane |
-| ac-nurture | Prospect tracks (plan exists, not built) | Jane to approve |
-| aliante-trailer | Aliante project trailer review + property name | Jane |
+| signal-04-open | Signal Issue 04: Theme, Advice, Minute with Mike; Welcome names | Jane, then Mike letter review |
+| aliante-cs | Aliante **written** case study, second pass | Jane |
+| aliante-rc2 | Aliante trailer RC2 (~2:29) — CoS marked review PASS; Jane still to watch / property-name if needed | Jane |
+| wave-1 | Website Wave 1 drafts in `REVIEW.html` | Jane read |
+| launch-remaining | New LUCI: sign-in/session placement, proof pull, email bodies, sales deck/Capabilities, AC Deals, Nick Cloudflare/GA; demo webinar date | Jane / Mike / Nick |
+| tactics | Four 2026 tactics — Jane’s picks | Jane |
+| four-winds | Deposit confirm before Customer Journey write | Jane |
+| clearwater-306090 | Add Clearwater 30/60/90 in ActiveCampaign | Jane’s **yes** on that write |
+| yaamava-p8 | Capabilities p8 variant B — last noted 28 Aug; **confirm if still open** | Jane |
 
 ---
 
@@ -24,17 +30,18 @@ Treat older briefs (`_project-context.md` 16 Jun, `CURSOR-MORNING-BRIEF.md` 8 Ju
 
 | Project | Status | Next |
 |---|---|---|
-| New LUCI launch campaign | in_flight | Confirm buckets. Mike still on the feature list. What’s New one-pager next. Beta, property by property. **Not** a public splash. LinkedIn/social held until this launch. |
-| Website rebuild (`luci-website`) | in_flight | Astro + Netlify. **Fall launch.** E-mesh already applied. Messaging/feature audit still open. Working branch `persona-hero-subhead-gold`. Review at `http://10.10.1.37`. |
-| Sales docs | in_flight | Yaamava p8 variant B, three Design fixes waiting Jane. Budgetary template is established. E-mesh not on sales docs yet. |
-| Customization Studio (standalone app, with Will) | in_flight | **Not IMP.** Jane is not building studio in the IMP anymore. |
-| Case studies | in_flight | Yaamava featured. Ameristar and Tachi live. **Sam’s Town complete** (Jane 28 Aug). E-mesh already applied. |
-| Customer journey emails | in_flight | Clearwater LUCI is Live sent 28 Aug. Jane will send Signal welcome next week, then drop the eight into 30/60/90 **by hand**. No ActiveCampaign writes without her yes. Tachi Email 10 on 25 Sep. |
-| The Signal | in_flight | Start **1 Sep**. Send **15 Sep**. |
-| Prospect nurture (ActiveCampaign) | in_flight | Two short tracks planned. **Not built.** Stay off Mark/Mike live deals. |
-| Aliante project trailer | in_flight | Jane review + property name sign-off. |
-| LinkedIn / social | held | Mike reviewed the strategy. **Hold until New LUCI product launch.** |
-| Review hub `http://10.10.1.37:8080` | live surface | Still used for content reviews, downloads, and other things. Not parked. Customization Studio is leaving that IMP page. |
+| The Signal Issue 04 | in_flight | **Send Tue 15 Sep.** Locked: Field (Aliante wall), Panels, FAG, Kiosk Quick Tip. Welcome idea locked, **names open**. Still open: Theme, Advice, Minute with Mike. Mike review after Jane locks open sections. |
+| New LUCI launch | in_flight | Mark/Mike lock-in done (CoS). Theme + Operate / Make it yours / See and prove live on IMP `.17`. Remaining: table above. Beta, property by property. **Not** a public splash. |
+| Website rebuild | in_flight | Fall launch. Wave 1 drafts waiting Jane. Working branch `persona-hero-subhead-gold`. Review `http://10.10.1.37`. Aliante “largest in Las Vegas” held until the live page drops that line (calendar). |
+| Case studies | in_flight | **Open: Aliante written study.** Ameristar, Tachi, Sam’s Town live. Yaamava is the **featured install on the site** — not the current “what’s next” case-study write. No New LUCI launch case study. |
+| Aliante trailer | in_flight | RC2 ~2:29; CoS review PASS. Jane watch. Video workstream when that bot exists. |
+| Sales docs | in_flight | Launch deck/Capabilities still in the remaining launch list. Yaamava p8: confirm with Jane. Budgetary template established. |
+| Customization Studio | in_flight | Standalone with Will. **Not IMP.** |
+| Customer journey | in_flight | Clearwater go-live sent 28 Aug. 30/60/90 still Jane-by-hand / Jane-yes in AC. Tachi Email 10 on **25 Sep**. Four Winds: wait on deposit. |
+| Prospect nurture (AC) | in_flight | Architecture on IMP. **Not built in AC.** Stay off live Mark/Mike deals. |
+| 2026 tactics | in_flight | Four tactics waiting Jane’s picks (calendar). |
+| LinkedIn / social | held | Hold until New LUCI product launch. |
+| Review hub `http://10.10.1.37:8080` | live surface | Reviews/downloads. Studio is leaving that IMP page. |
 
 ---
 
@@ -42,18 +49,13 @@ Treat older briefs (`_project-context.md` 16 Jun, `CURSOR-MORNING-BRIEF.md` 8 Ju
 
 | Date | Type | Item |
 |---|---|---|
-| 1 Sep | newsletter | Start September Signal |
-| ~next week | email | Clearwater — Signal welcome (Email 7), Jane sends manually |
-| 15 Sep | newsletter | Send September Signal |
+| 10 Sep | newsletter | Mike Signal 04 letter review (after Jane locks open sections) |
+| 15 Sep | newsletter | **Send** Signal Issue 04 |
 | 25 Sep | email | Tachi Palace — 90-day check-in |
-| after Jane drops them in by hand | email | Clearwater — 30/60/90 |
+| after Jane’s yes | email | Clearwater — 30/60/90 in AC |
 | 1 Oct | newsletter | Start October Signal |
 | 15 Oct | newsletter | Send October Signal |
-| 16 Nov | milestone | Boyd Treasure Chest expansion (already on LUCI since March — not a new install) |
-
-### September Signal candidate topics
-
-Clearwater go-live; Yaamava case study; New LUCI as **beta framing only** (not a ship announcement); website coming this fall (already teased in Issue 03); Field Activation Guide; Minute with Mike.
+| 16 Nov | milestone | Boyd Treasure Chest expansion (on LUCI since March — not a new install) |
 
 ---
 
@@ -62,41 +64,41 @@ Clearwater go-live; Yaamava case study; New LUCI as **beta framing only** (not a
 | Item | Note |
 |---|---|
 | PIN / zone-access screen recording post | Never shipped. Dropped 28 Aug. |
-| Homepage ticker NFL names | Resolved: photo regenerated without the ticker. Do not retry blur/card-over. |
-| Budgetary estimate template trim | Old. Template is established. |
-| IMP FastAPI / TipTap rebuild | **Does not exist.** Only Customization Studio is being rebuilt, as a standalone app. |
-| Client document library in IMP | That work is the standalone Customization Studio with Will. |
+| Homepage ticker NFL names | Do not retry blur/card-over (parked follow-up in Cursor rules). |
+| Budgetary estimate template trim | Template is established. |
+| IMP FastAPI / TipTap rebuild | **Does not exist.** Studio is a standalone app. |
 | E-mesh “still pending on website” | Wrong. E-mesh is on the website and case studies. |
 
 ---
 
 ## Standing rules (not projects)
 
-- Never write that LUCI **replaces** other technology. It works with and absorbs it so you manage everything through one interface. Marketing typically does not name partners.
-- E-mesh is the main design theme on website and case studies. Circuit texture only in select situations. Not yet on other marketing materials.
+- Never write that LUCI **replaces** other technology.
+- E-mesh is the main design theme on website and case studies. Circuit only in select situations.
 - Review hub stays for reviews/downloads. Studio is a separate app.
-- No ActiveCampaign writes without Jane’s explicit yes on that action.
-- Always **A/V**. Never call LUCI a “layer.” GitHub is stale. Grok facilitates; Cursor’s models decide.
+- ActiveCampaign: Jane’s **yes** before a write. After she approves a packet, Grok may build from the **last template** and **queue** the list. Do not **Send** unless she names that send.
+- Always **A/V**. Never call LUCI a “layer.” GitHub is stale. Grok picks GPT/GLM/Claude; Cursor runs it.
+- Work board vs CoS calendar: **this file** is what new bots should read. CoS refreshes it when the week changes.
 
 ---
 
 ## Launch / demand-gen guardrails (locked)
 
 - Offer: platform + partnership. Control / Automate / Execute (Oversee sits under Control).
-- New LUCI is **beta, property by property** — not a public splash. Do not date it as an August launch.
+- New LUCI is **beta, property by property** — not a public splash.
 - Sit above endpoints. **Never “LUCI replaces.”** Typically do not name partners.
 - Never name Hub, CoreX, the tunnel vendor, or correlation IDs.
 - Feature list is not final until **Mike signs it**.
-- Stay off live **Mark** (outbound) and **Mike** (demos, feature list, customization) conversations.
+- Stay off live **Mark** and **Mike** deal conversations.
 - No case study for this launch. No dedicated website release page — audit pages we have.
 - Journey and Signal stay out of live sales conversations.
 
 ---
 
-## Git / deploy reality (agents must know)
+## Git / deploy reality
 
-- **Do not clone GitHub and assume current work.** luci-design local `main` was far ahead of `origin/main`. luci-website working branch is `persona-hero-subhead-gold`.
+- **Do not clone GitHub and assume current work.** luci-website working branch: `persona-hero-subhead-gold`.
 - Website review: `http://10.10.1.37`.
-- Review hub (content reviews / downloads): `http://10.10.1.37:8080`.
-- Current IMP: `http://10.10.1.17:8081`. Customization Studio is moving off this to a standalone app.
-- Public lucisystems.com cutover to the Astro site is **fall**; Webflow still used for Signal, FAG, some case-study embeds.
+- Review hub: `http://10.10.1.37:8080`.
+- Current IMP: `http://10.10.1.17:8081`.
+- Public lucisystems.com cutover to Astro is **fall**; Webflow still used for Signal, FAG, some case-study embeds.
