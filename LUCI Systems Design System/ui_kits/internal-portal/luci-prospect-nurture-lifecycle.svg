@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="670" viewBox="0 0 1200 670" role="img" aria-labelledby="title desc">
+  <title id="title">Email communications by audience and phase</title>
+  <desc id="desc">Existing customers and selected high-intent warm prospects receive a pre-launch seminar invitation. Broader warm and net-new outreach begins at launch.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0 0L9 4.5L0 9Z" fill="#2b9e80"/>
+    </marker>
+    <style>
+      .title{font:700 26px 'Space Grotesk',Arial,sans-serif;fill:#1C2B33}
+      .phase{font:700 13px 'Space Grotesk',Arial,sans-serif;fill:#2b9e80;letter-spacing:1.3px}
+      .lane{font:700 16px 'Space Grotesk',Arial,sans-serif;fill:#1C2B33}
+      .head{font:700 14px 'Space Grotesk',Arial,sans-serif;fill:#1C2B33}
+      .label{font:700 11px 'Space Grotesk',Arial,sans-serif;fill:#49616E;letter-spacing:.5px}
+      .body{font:400 11.5px Inter,Arial,sans-serif;fill:#354F5C}
+      .box{fill:#F5F8FA;stroke:#DBE1E4;stroke-width:1.5}
+      .accent{fill:#E6F5EF;stroke:#A9DCCA;stroke-width:1.5}
+      .quiet{fill:#FFFFFF;stroke:#DBE1E4;stroke-width:1.5;stroke-dasharray:5 5}
+      .line{stroke:#2b9e80;stroke-width:2;fill:none;marker-end:url(#arrow)}
+      .rule{stroke:#DBE1E4;stroke-width:1}
+    </style>
+  </defs>
+  <rect width="1200" height="670" fill="#FFFFFF"/>
+  <text x="48" y="48" class="title">Email communications by audience and phase</text>
+
+  <text x="276" y="92" class="phase">PRE-LAUNCH</text>
+  <text x="616" y="92" class="phase">LAUNCH</text>
+  <text x="940" y="92" class="phase">FOLLOW-UP / NURTURE</text>
+  <line x1="214" y1="108" x2="1152" y2="108" class="rule"/>
+
+  <text x="48" y="166" class="lane">Existing customers</text>
+  <rect x="230" y="126" width="280" height="126" rx="12" class="accent"/>
+  <text x="250" y="153" class="head">Pre-launch seminar cycle</text>
+  <text x="250" y="178"><tspan class="label">EMAILS: </tspan><tspan class="body">4 segmented touches</tspan></text>
+  <text x="250" y="199"><tspan class="label">TIMING: </tspan><tspan class="body">T-2-3w through +3d</tspan></text>
+  <text x="250" y="220"><tspan class="label">INCLUDE: </tspan><tspan class="body">What's New asset</tspan></text>
+  <text x="250" y="241"><tspan class="label">CTA: </tspan><tspan class="body">Register / watch</tspan></text>
+  <path d="M510 189H548" class="line"/>
+  <rect x="558" y="126" width="280" height="126" rx="12" class="accent"/>
+  <text x="578" y="153" class="head">Launch and upgrade cycle</text>
+  <text x="578" y="178"><tspan class="label">EMAILS: </tspan><tspan class="body">1 Launch package / 2 Follow-up</tspan></text>
+  <text x="578" y="199"><tspan class="label">TIMING: </tspan><tspan class="body">Day 0 / Day 7-10</tspan></text>
+  <text x="578" y="220"><tspan class="label">PURPOSE: </tspan><tspan class="body">Awareness to upgrade action</tspan></text>
+  <text x="578" y="241"><tspan class="label">INCLUDE: </tspan><tspan class="body">Upgrade path + FAQ</tspan></text>
+  <path d="M838 189H876" class="line"/>
+  <rect x="886" y="126" width="266" height="126" rx="12" class="box"/>
+  <text x="906" y="153" class="head">Cycle ends</text>
+  <text x="906" y="178"><tspan class="label">WHEN: </tspan><tspan class="body">Upgrade is scheduled</tspan></text>
+  <text x="906" y="199"><tspan class="label">THEN: </tspan><tspan class="body">Field team owns follow-up</tspan></text>
+  <text x="906" y="220"><tspan class="label">CONTEXT: </tspan><tspan class="body">The Signal continues</tspan></text>
+
+  <line x1="48" y1="286" x2="1152" y2="286" class="rule"/>
+  <text x="48" y="344" class="lane">Warm prospects</text>
+  <rect x="230" y="304" width="280" height="126" rx="12" class="accent"/>
+  <text x="250" y="331" class="head">Selected private-preview invite</text>
+  <text x="250" y="356"><tspan class="label">WHO: </tspan><tspan class="body">Past demo / serious request</tspan></text>
+  <text x="250" y="377"><tspan class="label">EMAILS: </tspan><tspan class="body">5 segmented touches</tspan></text>
+  <text x="250" y="398"><tspan class="label">TIMING: </tspan><tspan class="body">T-2-3w through +3d</tspan></text>
+  <text x="250" y="419"><tspan class="label">FOLLOW-UP: </tspan><tspan class="body">Mark next business day</tspan></text>
+  <path d="M510 367H548" class="line"/>
+  <rect x="558" y="304" width="280" height="126" rx="12" class="accent"/>
+  <text x="578" y="331" class="head">Launch re-engagement cycle</text>
+  <text x="578" y="356"><tspan class="label">EMAILS 1-4: </tspan><tspan class="body">Change / replay / proof / ask</tspan></text>
+  <text x="578" y="377"><tspan class="label">TIMING: </tspan><tspan class="body">Day 0 through Day 14-17</tspan></text>
+  <text x="578" y="398"><tspan class="label">PURPOSE: </tspan><tspan class="body">Reopen a quiet relationship</tspan></text>
+  <text x="578" y="419"><tspan class="label">CTA: </tspan><tspan class="body">Conversation / walkthrough</tspan></text>
+  <path d="M838 367H876" class="line"/>
+  <rect x="886" y="304" width="266" height="126" rx="12" class="box"/>
+  <text x="906" y="331" class="head">Prospect Pulse</text>
+  <text x="906" y="356"><tspan class="label">EMAILS: </tspan><tspan class="body">6 light touches</tspan></text>
+  <text x="906" y="377"><tspan class="label">TIMING: </tspan><tspan class="body">Every 4-6 weeks</tspan></text>
+  <text x="906" y="398"><tspan class="label">FORMAT: </tspan><tspan class="body">One idea + proof + ask</tspan></text>
+  <text x="906" y="419"><tspan class="label">EXIT: </tspan><tspan class="body">Sales action or Month 6</tspan></text>
+
+  <line x1="48" y1="464" x2="1152" y2="464" class="rule"/>
+  <text x="48" y="522" class="lane">Net-new prospects</text>
+  <rect x="230" y="482" width="280" height="126" rx="12" class="quiet"/>
+  <text x="250" y="509" class="head">No direct pre-launch email</text>
+  <text x="250" y="534"><tspan class="label">REASON: </tspan><tspan class="body">No recent expressed interest</tspan></text>
+  <text x="250" y="555"><tspan class="label">VISIBLE: </tspan><tspan class="body">Website, search, LinkedIn</tspan></text>
+  <text x="250" y="576"><tspan class="label">START: </tspan><tspan class="body">Launch acquisition cycle</tspan></text>
+  <path d="M510 545H548" class="line"/>
+  <rect x="558" y="482" width="280" height="126" rx="12" class="accent"/>
+  <text x="578" y="509" class="head">Acquisition cycle</text>
+  <text x="578" y="534"><tspan class="label">EMAILS 1-4: </tspan><tspan class="body">Problem / proof / video / ask</tspan></text>
+  <text x="578" y="555"><tspan class="label">TIMING: </tspan><tspan class="body">Day 0 through Day 15</tspan></text>
+  <text x="578" y="576"><tspan class="label">PURPOSE: </tspan><tspan class="body">Create qualified interest</tspan></text>
+  <text x="578" y="597"><tspan class="label">CTA: </tspan><tspan class="body">Book a demo</tspan></text>
+  <path d="M838 545H876" class="line"/>
+  <rect x="886" y="482" width="266" height="126" rx="12" class="box"/>
+  <text x="906" y="509" class="head">Response or nurture</text>
+  <text x="906" y="534"><tspan class="label">HAND RAISE: </tspan><tspan class="body">Sales owns</tspan></text>
+  <text x="906" y="555"><tspan class="label">HANDBACK: </tspan><tspan class="body">Recovery 1-2</tspan></text>
+  <text x="906" y="576"><tspan class="label">THEN: </tspan><tspan class="body">Prospect Pulse if quiet</tspan></text>
+</svg>

@@ -94,19 +94,10 @@ set_font(sub.add_run("Features proposed for the launch campaign"),
 
 # ── Primary ──────────────────────────────────────────────────────────────────
 section_heading(doc, "Primary Features")
-para(doc, "The features we lead with \u2014 the ones we show repeatedly across the campaign.",
+para(doc, "The features we lead with. Three carry the campaign argument; the customizable interface gives the release its visual reveal.",
      size=11, color=MUTED, italic=True, space_after=6)
 
-feature_heading(doc, "Property-branded interface", 1)
-bullets(doc, [
-    "Sign-in and splash screens carry the property\u2019s own photography and marks.",
-    "Light or dark mode, with curated themes matched to the property\u2019s colors and typography chosen from an approved set.",
-    "Background image treatment \u2014 blur, opacity, and positioning \u2014 is adjustable.",
-    "Endpoint status colors arrive as operators already know them: green for healthy, yellow for attention, red for powered off. A property can change them across the whole install.",
-    "LUCI can design the theme for a property, or their own team can build it and adjust it later.",
-])
-
-feature_heading(doc, "Venue panels", 2)
+feature_heading(doc, "Venue panels", 1)
 bullets(doc, [
     "Control lives in the venue. A tablet in the space puts control in the hands of the person who runs it \u2014 an events manager at a ballroom panel, a guest at a pool cabana panel.",
     "Assign a panel to a venue and it adopts every endpoint already assigned to that venue. No hand-built device list.",
@@ -116,7 +107,7 @@ bullets(doc, [
     "A panel can also be scoped across several venues \u2014 a tablet that travels with the manager who covers four ballrooms.",
 ])
 
-feature_heading(doc, "Staging", 3)
+feature_heading(doc, "Staging", 2)
 bullets(doc, [
     "Build the next look while the current one is still running: choose screens, set sources, set volumes, set content. Nothing changes in the room until Apply.",
     "Apply on cue. The change lands at the moment the event actually starts, not the moment it was scheduled to.",
@@ -125,28 +116,22 @@ bullets(doc, [
     "Look at one display and see every preset and schedule due to touch it, and when.",
 ])
 
-feature_heading(doc, "Audio group control", 4)
+feature_heading(doc, "Audit trails and in-product support", 3)
 bullets(doc, [
-    "A group slider moves several zones at once and keeps their balance \u2014 the dining room stays quieter than the bar, the patio stays louder.",
-    "Move a group up or down by a step, set every zone in the group to the same level, or move a single zone on its own.",
-    "A day spent tuning zones survives the first time someone reaches for a group control.",
+    "Every action is recorded against a person and a time, including what triggered it \u2014 a person, a preset, or a schedule.",
+    "Search by device or user, filter by action type, and download the results as a CSV.",
+    "Changes made outside LUCI are noticed and recorded for most third-party device types. Device incidents open when a device stops responding and close when it returns, so a fault has a duration.",
+    "Raise a support request from the device, incident, or error itself. The request arrives with what happened, what changed, and the relevant logs already attached.",
+    "A person chooses what to escalate, so the property stays in control.",
 ])
 
-feature_heading(doc, "Audit trails", 5)
+feature_heading(doc, "Customizable interface", 4)
 bullets(doc, [
-    "Every action is recorded against a person and a time: power, source, volume, mute, channel changes, schedule runs, overrides, and configuration changes.",
-    "Each entry shows what triggered it \u2014 a person, a preset, or a schedule.",
-    "Search by device to see everything that changed it, or by user to see everything one person did.",
-    "Filter by user and action type, and download results as a CSV for reporting.",
-    "Changes made outside LUCI \u2014 someone picking up a remote and switching a display off \u2014 are noticed and recorded for most third-party device types, and appear on the map.",
-    "Device incidents open when a device stops responding and close when it comes back, so a fault has a duration instead of an anecdote.",
-])
-
-feature_heading(doc, "In-product support", 6)
-bullets(doc, [
-    "Raise a support request from inside LUCI, on the thing that is actually wrong \u2014 a device, an incident, an error.",
-    "The request arrives with its context attached: what happened, what changed, and the relevant logs.",
-    "Requests are opened by a person, not fired automatically by every device hiccup, so the property controls what escalates.",
+    "Sign-in and splash screens carry the property\u2019s own photography and marks.",
+    "Light or dark mode, with curated themes matched to the property\u2019s colors and typography selected from an approved set.",
+    "Background image blur, opacity, and positioning are adjustable.",
+    "Endpoint status colors arrive as operators already know them and can be changed across the whole install.",
+    "LUCI can design the theme for a property, or the property can build and adjust it.",
 ])
 
 # ── Secondary ────────────────────────────────────────────────────────────────
@@ -155,6 +140,7 @@ para(doc, "Worth naming in supporting materials, but not what the campaign leads
      size=11, color=MUTED, italic=True, space_after=6)
 
 bullets(doc, [
+    ("Audio group control. ", "Move several zones proportionally so their tuned balance survives, set every zone to the same level, or move one zone alone."),
     ("Live map accuracy. ", "The map reflects the real state of the floor through a live connection to devices rather than periodic polling, so what is on screen matches what is in the room."),
     ("Add any endpoint from LUCI. ", "Every device type can be added through the interface. Add one from the map or twenty at once with addresses incrementing, and get a warning when a record already exists."),
     ("Sign-in and session control. ", "Users sign in by email or PIN, or with the Microsoft credentials they already use at work through Entra ID. Administrators can sign a user out of the system and post a site-wide message banner to everyone using LUCI."),
@@ -182,13 +168,13 @@ bullets(doc, [
     "A scheduled preset can carry a lockout window, enforced at the control engine, so the devices it touched cannot be changed for a set period. A lock indicator appears on the device, and administrators can override.",
 ])
 
-feature_heading(doc, "Audit trails and device incidents")
+feature_heading(doc, "Audit trails, incidents, and support")
 bullets(doc, [
     "Commands sent to devices are grouped by the event that triggered them, so one entry resolves to a user, a preset, or a schedule.",
     "Administrative actions such as permission changes are recorded alongside device commands.",
     "Visibility of out-of-band changes depends on what each device driver reports. Devices that do not report their own state changes will not surface them.",
     "A device incident opens automatically when a device stops responding and closes when it recovers, producing measured downtime.",
-    "Incidents are distinct from support tickets. A person decides which incident becomes a ticket.",
+    "Incidents are distinct from support tickets. A person decides which incident becomes a ticket, and the ticket carries the incident context and relevant logs.",
 ])
 
 feature_heading(doc, "Endpoint management")

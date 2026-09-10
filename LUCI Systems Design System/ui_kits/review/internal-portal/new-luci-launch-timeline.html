@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New LUCI Launch Timeline</title>
+<link rel="stylesheet" href="../assets/fonts/luci-brand-fonts.css">
+<style>
+:root {
+  --navy-muted: #49616E;
+  --navy-deep: #0A161C;
+  --mint-dark: #2b9e80;
+  --gold-deep: #CEB06E;
+  --off-white: #F5F8FA;
+  --rule-light: #DBE1E4;
+  --ink: #354F5C;
+  --ink-strong: #1C2B33;
+  --font: "Space Grotesk", "Trebuchet MS", sans-serif;
+  --font-body: "Inter", "Helvetica Neue", sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--off-white);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  padding: 56px clamp(28px, 6vw, 64px) 56px;
+}
+
+.kicker {
+  color: var(--mint-dark);
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+
+.title {
+  color: var(--ink-strong);
+  font-family: var(--font);
+  font-size: clamp(32px, 5vw, 44px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.wrap { max-width: 1160px; }
+
+/* ---- Expanded scale ------------------------------------------------------
+   The months are NOT equal width. Nov and Dec carry most of the activity, so
+   they get roughly twice the horizontal room; quiet months are compressed.
+   Column edges (%): Sep 0 | Oct 10 | Nov 18 | Dec 38 | Jan 62 | Feb 78 |
+   Mar 89 | end 100. Week ticks in the expanded months make the wider scale
+   visible rather than misleading.
+   ------------------------------------------------------------------------ */
+
+.months {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr 2fr 2.4fr 1.6fr 1.1fr 1.1fr;
+  margin-top: 30px;
+}
+
+.months span {
+  color: var(--navy-muted);
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding-bottom: 6px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.months .wide { color: var(--ink-strong); }
+
+.ticks { height: 10px; position: relative; }
+
+.ticks i {
+  background: rgba(43, 158, 128, 0.4);
+  bottom: 0;
+  position: absolute;
+  top: 2px;
+  width: 1px;
+}
+
+
+.track { height: 324px; position: relative; }
+
+.grid i {
+  background: rgba(219, 225, 228, 0.6);
+  bottom: 0;
+  position: absolute;
+  top: 0;
+  width: 1px;
+}
+
+.line {
+  background: var(--rule-light);
+  height: 2px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 100px;
+}
+
+/* Phase bars carry no text, so nothing collides with the date markers.
+   Each phase gets its own color so the boundaries read at a glance. */
+.phase {
+  border-radius: 3px;
+  height: 10px;
+  position: absolute;
+  top: 95px;
+}
+
+.phase--stab { background: rgba(43, 158, 128, 0.30); }
+.phase--prep  { background: rgba(206, 176, 110, 0.32); }
+.phase--roll { background: rgba(73, 97, 110, 0.26); }
+
+.phase--support {
+  align-items: center;
+  background: rgba(73, 97, 110, 0.12);
+  color: var(--navy-muted);
+  display: flex;
+  font-family: var(--font);
+  font-size: 10px;
+  font-weight: 700;
+  height: 16px;
+  justify-content: flex-end;
+  letter-spacing: 0.06em;
+  padding-right: 10px;
+  text-transform: uppercase;
+  top: 114px;
+}
+
+/* Phase names sit at segment midpoints, clear of every stem.
+   Each name matches its bar color. */
+.phase-name {
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  position: absolute;
+  text-align: center;
+  text-transform: uppercase;
+  top: 74px;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.phase-name--stab { color: var(--mint-dark); }
+.phase-name--prep { color: var(--gold-deep); }
+.phase-name--roll { color: var(--navy-muted); }
+
+.arrow {
+  color: var(--mint-dark);
+  font-size: 15px;
+  opacity: 0.5;
+  position: absolute;
+  top: 90px;
+}
+
+/* Closure: hatched column with a hard edge, badge on top. */
+.closed {
+  background: repeating-linear-gradient(
+    135deg,
+    rgba(10, 22, 28, 0.09) 0,
+    rgba(10, 22, 28, 0.09) 4px,
+    transparent 4px,
+    transparent 8px
+  );
+  border-left: 2px solid var(--navy-deep);
+  border-right: 2px solid var(--navy-deep);
+  bottom: 0;
+  position: absolute;
+  top: 30px;
+  z-index: 1;
+}
+
+.closed-badge {
+  background: var(--navy-deep);
+  border-radius: 4px;
+  color: #fff;
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 6px 12px;
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  z-index: 4;
+}
+
+.closed-badge em {
+  color: rgba(235, 245, 248, 0.75);
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* Product above the line. */
+.prod {
+  position: absolute;
+  text-align: center;
+  top: 100px;
+  transform: translateX(-50%);
+  width: 140px;
+  z-index: 3;
+}
+
+.prod i {
+  background: var(--off-white);
+  border: 3px solid var(--mint-dark);
+  border-radius: 50%;
+  display: block;
+  height: 16px;
+  margin: -8px auto 0;
+  width: 16px;
+}
+
+.prod--ga i {
+  height: 20px;
+  margin-top: -10px;
+  width: 20px;
+}
+
+.prod b {
+  background: var(--mint-dark);
+  bottom: 9px;
+  display: block;
+  height: 22px;
+  left: 50%;
+  margin-left: -1px;
+  opacity: 0.5;
+  position: absolute;
+  width: 2px;
+}
+
+.prod--ga b { opacity: 0.65; }
+
+.prod p { bottom: 35px; left: 0; position: absolute; right: 0; }
+
+.prod strong {
+  color: var(--ink-strong);
+  display: block;
+  font-family: var(--font);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.prod time {
+  color: var(--navy-muted);
+  display: block;
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+/* Marketing below. Rows run in date order and each label reads away from the
+   later stems, so no stem is ever drawn through a label. */
+.mkt { position: absolute; top: 100px; width: 0; z-index: 3; }
+
+.mkt i {
+  background: var(--gold-deep);
+  border-radius: 50%;
+  display: block;
+  height: 9px;
+  left: -4.5px;
+  position: absolute;
+  top: -4.5px;
+  width: 9px;
+}
+
+.mkt b {
+  background: var(--gold-deep);
+  display: block;
+  left: -1px;
+  opacity: 0.5;
+  position: absolute;
+  top: 5px;
+  width: 2px;
+}
+
+.mkt p { position: absolute; width: 170px; }
+.mkt--left p { right: 12px; text-align: right; }
+.mkt--right p { left: 12px; text-align: left; }
+
+.r1 b { height: 42px; }
+.r1 p { top: 34px; width: 200px; }
+.r2 b { height: 88px; }
+.r2 p { top: 80px; }
+.r3 b { height: 134px; }
+.r3 p { top: 126px; }
+.r4 b { height: 180px; }
+.r4 p { top: 172px; }
+
+.mkt strong {
+  color: var(--ink-strong);
+  display: block;
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.mkt time {
+  color: var(--gold-deep);
+  display: block;
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+@media print {
+  @page { size: landscape; margin: 0.5in; }
+  body { padding: 0; }
+}
+</style>
+</head>
+<body>
+  <p class="kicker">New LUCI</p>
+  <h1 class="title">Launch Timeline</h1>
+
+  <div class="wrap">
+    <div class="months">
+      <span>Sep</span><span>Oct</span><span class="wide">Nov</span>
+      <span class="wide">Dec</span><span>Jan</span><span>Feb</span><span>Mar</span>
+    </div>
+
+    <div class="ticks">
+      <i style="left:22.67%"></i><i style="left:27.33%"></i>
+      <i style="left:32.00%"></i><i style="left:36.67%"></i>
+      <i style="left:43.42%"></i><i style="left:48.84%"></i>
+      <i style="left:54.26%"></i><i style="left:59.68%"></i>
+    </div>
+
+    <div class="track">
+      <div class="grid">
+        <i style="left:0"></i><i style="left:10%"></i><i style="left:18%"></i>
+        <i style="left:38%"></i><i style="left:62%"></i><i style="left:78%"></i>
+        <i style="left:89%"></i>
+      </div>
+      <div class="line"></div>
+
+      <div class="closed" style="left:54.26%;width:8.26%"></div>
+      <div class="closed-badge" style="left:58.39%">Closed <em>Dec 22–Jan 2</em></div>
+
+      <div class="phase phase--stab" style="left:9.67%;width:16.33%"></div>
+      <div class="phase phase--prep" style="left:26.00%;width:28.26%"></div>
+      <div class="phase phase--prep" style="left:62.52%;width:8.77%"></div>
+      <div class="phase phase--roll" style="left:71.29%;width:26.21%"></div>
+      <div class="phase phase--support" style="left:80.00%;width:17.50%">Post-release support</div>
+      <div class="arrow" style="left:98.1%">→</div>
+
+      <div class="phase-name phase-name--stab" style="left:17.84%">Stabilization</div>
+      <div class="phase-name phase-name--prep" style="left:40.13%">Release preparation</div>
+      <div class="phase-name phase-name--roll" style="left:84.40%">Rollout</div>
+
+      <div class="prod" style="left:9.67%">
+        <p><strong>Beta</strong><time>Sep 30</time></p>
+        <b></b><i></i>
+      </div>
+      <div class="prod" style="left:26.00%">
+        <p><strong>Release candidate</strong><time>Nov 13</time></p>
+        <b></b><i></i>
+      </div>
+      <div class="prod prod--ga" style="left:71.29%">
+        <p><strong>General availability</strong><time>Jan 19</time></p>
+        <b></b><i></i>
+      </div>
+
+      <div class="mkt r1 mkt--left" style="left:21.33%">
+        <i></i><b></b>
+        <p><strong>ActiveCampaign upgrade</strong><time>Nov 6</time></p>
+      </div>
+      <div class="mkt r2 mkt--left" style="left:30.67%">
+        <i></i><b></b>
+        <p><strong>Website live</strong><time>Nov 20</time></p>
+      </div>
+      <div class="mkt r3 mkt--left" style="left:40.32%">
+        <i></i><b></b>
+        <p><strong>Features one-pager</strong><time>Dec 4</time></p>
+      </div>
+      <div class="mkt r4 mkt--left" style="left:44.97%">
+        <i></i><b></b>
+        <p><strong>Demo webinar</strong><time>Dec 10</time></p>
+      </div>
+      <div class="mkt r3 mkt--right" style="left:64.58%">
+        <i></i><b></b>
+        <p><strong>Pre-GA Prep Comms</strong><time>Jan 6 &amp; Jan 14</time></p>
+      </div>
+      <div class="mkt r2 mkt--right" style="left:71.29%">
+        <i></i><b></b>
+        <p><strong>Net-new prospecting</strong><time>Jan 19</time></p>
+      </div>
+      <div class="mkt r1 mkt--right" style="left:81.14%">
+        <i></i><b></b>
+        <p><strong>Post-launch comms</strong><time>Feb 9</time></p>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

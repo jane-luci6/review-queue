@@ -1,72 +1,106 @@
 {
-  "title": "New LUCI — Preliminary Feature List",
-  "deck": "Features proposed for the campaign. Mike has not signed this list. Reshuffle when he does. Audio is secondary. Combined audit trails and in-product support.",
-  "primary": {
-    "heading": "Primary features",
-    "intro": "The features we lead with. Three carry the campaign argument; the customizable interface gives the release its visual reveal.",
+  "title": "New LUCI — Feature List",
+  "deck": "Restructured into release pillars per 2026 messaging-hierarchy best practice. Features that carry the campaign argument sit under a pillar; the rest sit as technical detail for the IT or A/V lead. Sign-in and session control is in technical detail pending Jane's decision on whether it earns a proof-point slot under 'Make it yours.'",
+  "narrative": "Putting the power of programming in your hands",
+  "pillars": [
+    {
+      "name": "Operate",
+      "argument": "Control now lives in the venue, not just the back office.",
+      "features": [
+        {
+          "name": "Venue panels",
+          "bullets": [
+            "Control lives in the venue. A tablet in the space puts control in the hands of the person who runs it — an events manager at a ballroom panel, a guest at a pool cabana panel.",
+            "Assign a panel to a venue and it adopts every endpoint already assigned to that venue. No hand-built device list.",
+            "Control is localized and scoped: the panel shows that one space, and only the controls the administrator allows — volume but not power, source but not volume, whatever fits the room.",
+            "The person at the panel never sees the main LUCI application and cannot reach anything outside the designated space. A public-facing panel can be opened without a PIN; a staff panel can require one.",
+            "Presets can be made available at the panel, so a room can be set to a saved look without leaving the space.",
+            "A panel can also be scoped across several venues — a tablet that travels with the manager who covers four ballrooms."
+          ]
+        },
+        {
+          "name": "Staging",
+          "bullets": [
+            "Build the next look while the current one is still running: choose screens, set sources, set volumes, set content. Nothing changes in the room until Apply.",
+            "Apply on cue. The change lands at the moment the event actually starts, not the moment it was scheduled to.",
+            "Save any staged set as a preset to run it again. Give a preset a time and it becomes a scheduled preset.",
+            "Scroll forward and back through days across new chart views to see what already ran and what is coming.",
+            "Look at one display and see every preset and schedule due to touch it, and when."
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Make it yours",
+      "argument": "Your maps, your look — the system belongs to the property.",
+      "features": [
+        {
+          "name": "Customizable interface",
+          "bullets": [
+            "Sign-in and splash screens carry the property’s own photography and marks.",
+            "Light or dark mode, with curated themes matched to the property’s colors and typography selected from an approved set.",
+            "Background image blur, opacity, and positioning are adjustable.",
+            "Endpoint status colors arrive as operators already know them and can be changed across the whole install.",
+            "LUCI can design the theme for a property, or the property can build and adjust it."
+          ]
+        },
+        {
+          "name": "Live map flexibility",
+          "bullets": [
+            "Load the property’s own floor plans — not a built-in generic layout.",
+            "Rotate and orient the map to match the physical space.",
+            "Live connection to devices means what is on screen matches what is in the room — not a periodic poll.",
+            "The map is also the monitoring surface — see every device’s state at a glance."
+          ]
+        }
+      ]
+    },
+    {
+      "name": "See and prove",
+      "argument": "What’s happening now, what happened, and who did it.",
+      "features": [
+        {
+          "name": "Audit trails and in-product support",
+          "bullets": [
+            "Every action is recorded against a person and a time, including what triggered it — a person, a preset, or a schedule.",
+            "Search by device or user, filter by action type, and download the results as a CSV.",
+            "Changes made outside LUCI are noticed and recorded for most third-party device types. Device incidents open when a device stops responding and close when it returns, so a fault has a duration.",
+            "Raise a support request from the device, incident, or error itself. The request arrives with what happened, what changed, and the relevant logs already attached.",
+            "A person chooses what to escalate, so the property stays in control."
+          ]
+        },
+        {
+          "name": "Live monitoring",
+          "bullets": [
+            "See the real-time state of every device, display, and audio zone from one view — what is on, what is off, what has a fault.",
+            "Device incidents surface as they happen, not on the next poll. A device that stops responding opens an incident; recovery closes it.",
+            "Filter by venue, device type, or status to find what needs attention without leaving the map.",
+            "Raise a support request from the monitoring view itself — the incident context and logs are already attached."
+          ]
+        }
+      ]
+    }
+  ],
+  "technical": {
+    "heading": "Technical detail",
+    "intro": "For the IT or A/V lead who asks. Not mapped to a campaign pillar — these features support the platform but don’t carry the release argument.",
     "items": [
       {
-        "name": "Venue panels",
+        "name": "Sign-in and session control",
         "bullets": [
-          "Control lives in the venue. A tablet in the space puts control in the hands of the person who runs it — an events manager at a ballroom panel, a guest at a pool cabana panel.",
-          "Assign a panel to a venue and it adopts every endpoint already assigned to that venue. No hand-built device list.",
-          "Control is localized and scoped: the panel shows that one space, and only the controls the administrator allows — volume but not power, source but not volume, whatever fits the room.",
-          "The person at the panel never sees the main LUCI application and cannot reach anything outside the designated space. A public-facing panel can be opened without a PIN; a staff panel can require one.",
-          "Presets can be made available at the panel, so a room can be set to a saved look without leaving the space.",
-          "A panel can also be scoped across several venues — a tablet that travels with the manager who covers four ballrooms."
+          "Users sign in by email or PIN, or with the Microsoft credentials they already use at work through Entra ID.",
+          "Administrators can sign a user out of the system and post a site-wide message banner to everyone using LUCI.",
+          "Session control means the property decides who is in the system and when — not just who has a login, but who is active right now.",
+          "The private tunnel consolidates every outbound connection into one encrypted link, so IT reviews one pairing instead of a list of firewall exceptions."
         ]
       },
-      {
-        "name": "Staging",
-        "bullets": [
-          "Build the next look while the current one is still running: choose screens, set sources, set volumes, set content. Nothing changes in the room until Apply.",
-          "Apply on cue. The change lands at the moment the event actually starts, not the moment it was scheduled to.",
-          "Save any staged set as a preset to run it again. Give a preset a time and it becomes a scheduled preset.",
-          "Scroll forward and back through days across new chart views to see what already ran and what is coming.",
-          "Look at one display and see every preset and schedule due to touch it, and when."
-        ]
-      },
-      {
-        "name": "Audit trails and in-product support",
-        "bullets": [
-          "Every action is recorded against a person and a time, including what triggered it — a person, a preset, or a schedule.",
-          "Search by device or user, filter by action type, and download the results as a CSV.",
-          "Changes made outside LUCI are noticed and recorded for most third-party device types. Device incidents open when a device stops responding and close when it returns, so a fault has a duration.",
-          "Raise a support request from the device, incident, or error itself. The request arrives with what happened, what changed, and the relevant logs already attached.",
-          "A person chooses what to escalate, so the property stays in control."
-        ]
-      },
-      {
-        "name": "Customizable interface",
-        "bullets": [
-          "Sign-in and splash screens carry the property’s own photography and marks.",
-          "Light or dark mode, with curated themes matched to the property’s colors and typography selected from an approved set.",
-          "Background image blur, opacity, and positioning are adjustable.",
-          "Endpoint status colors arrive as operators already know them and can be changed across the whole install.",
-          "LUCI can design the theme for a property, or the property can build and adjust it."
-        ]
-      }
-    ]
-  },
-  "secondary": {
-    "heading": "Secondary features",
-    "intro": "Worth naming in supporting materials, but not what the campaign leads with.",
-    "items": [
       {
         "name": "Audio group control",
         "text": "Move several zones proportionally so their tuned balance survives, set every zone to the same level, or move one zone alone."
       },
       {
-        "name": "Live map accuracy",
-        "text": "The map reflects the real state of the floor through a live connection to devices rather than periodic polling, so what is on screen matches what is in the room."
-      },
-      {
         "name": "Add any endpoint from LUCI",
         "text": "Every device type can be added through the interface. Add one from the map or twenty at once with addresses incrementing, and get a warning when a record already exists."
-      },
-      {
-        "name": "Sign-in and session control",
-        "text": "Users sign in by email or PIN, or with the Microsoft credentials they already use at work through Entra ID. Administrators can sign a user out of the system and post a site-wide message banner to everyone using LUCI."
       },
       {
         "name": "Video wall layout sync",
@@ -76,12 +110,9 @@
         "name": "Central display model catalog",
         "text": "New hospitality display models are added centrally and pushed out to the property, so buying a new model no longer means editing configuration files on site."
       }
-    ]
-  },
-  "it": {
-    "heading": "IT technical details",
-    "intro": "The same features, with the detail an IT or A/V lead will ask for — not a separate product story. The IT companion can use this block.",
-    "items": [
+    ],
+    "additionalIntro": "IT-facing detail for pillar features — the deeper version an IT or A/V lead will want. The merged upgrade guide and IT companion uses this block.",
+    "additional": [
       {
         "name": "Venue panels",
         "bullets": [
@@ -121,10 +152,7 @@
           "Federated sign-in uses a standard Microsoft Entra ID app registration with a callback to the property’s LUCI server. A profile is created on first sign-in, and a PIN can be assigned for floor use.",
           "Administrators can terminate active sessions and communicate to all signed-in users through a site-wide banner."
         ]
-      }
-    ],
-    "additionalIntro": "Items not on the promoted list, but the ones an IT audience will care about most.",
-    "additional": [
+      },
       {
         "name": "Private tunnel",
         "text": "Today a LUCI system on property needs a long list of outbound destinations opened by the property’s IT team. That consolidates into a single encrypted outbound connection between the on-property system and LUCI. Credentials no longer sit unrotated on the local machine — keys rotate on a schedule. For IT it is one paired connection to review instead of a list of exceptions, with no standing inbound access to the property network."
