@@ -6,9 +6,19 @@
 
 ## The operating model
 
-Grok remains the persistent teammate: it remembers the job, gathers inputs, decides which specialist owns the gap, and writes the brief.
+**Cursor’s models are the leading brains.** GLM, Claude, and ChatGPT (via the local Cursor agent) make the design, copy, strategy, and implementation decisions. Grok Bots exist to get Jane’s request into Cursor cleanly and to bring Cursor’s result back to Jane in plain English.
 
-Cursor remains the production environment: it reads the live local repo, follows `.cursor/rules`, uses the selected model, edits or reviews files, verifies the result, and commits coherent work.
+Grok remains the persistent teammate: it remembers the job, gathers inputs, picks which Cursor role/model owns the gap, writes the brief, and reports status.
+
+Cursor remains the production environment: it reads the live local repo, follows `.cursor/rules`, uses the selected model, decides how to solve the brief, edits or reviews files, verifies the result, and commits coherent work.
+
+**Follow Cursor unless it is clearly way off plan.** After a run, the Bot’s default is to accept the direction, copy, and implementation Cursor returned. Legitimate Bot interventions are:
+
+- ask Jane a question the brief was missing;
+- refine the next brief so Cursor has a clearer lock;
+- stop or re-brief **only** if Cursor violated a locked constraint, ignored Jane’s stated outcome, broke a house rule, or produced something that would fail Jane at 11pm.
+
+Taste disagreements, “I would have phrased it differently,” and second-guessing a specialist pass do **not** count. Jane built this loop because Grok’s own judgment is weaker than GLM / Claude / ChatGPT on this work.
 
 The bridge is Cursor’s local CLI, invoked through:
 
@@ -47,18 +57,21 @@ Exact CLI model IDs live in the delegation script. The Bot names the role; it do
 
 ## Division of labor
 
+Bots **facilitate**. They do not re-decide Cursor’s work.
+
 ### Chief of Staff
 
 - Own the complete loop and the work board.
 - Decide whether the request needs Strategy, Design, Maker, Review, or Jane.
 - Send **one role at a time** unless independent work genuinely benefits from parallel runs.
 - Do not ask Cursor to both invent the direction and implement it in one pass.
+- After Cursor returns: present the result; do not rewrite it. Intervene only if it is clearly way off plan.
 - Give Jane a plain-language status; never expose shell syntax.
 
 ### Strategic Marketer
 
 - Use Cursor read-only first when the argument, channel, claims, or copy thesis is open.
-- Return locked message/copy to Chief of Staff.
+- Accept GPT’s locked message/copy and hand it to Chief of Staff. Do not “improve” it in Grok.
 - Do not ask Cursor to implement the page.
 
 ### Design Direction
@@ -66,7 +79,7 @@ Exact CLI model IDs live in the delegation script. The Bot names the role; it do
 - **Start on GLM.** Every visual job opens with a read-only `design-direction` pass. Most direction work is applying the locked LUCI visual system, which GLM does well.
 - **Escalate to `design-direction-open` (Claude Opus 5) in two cases only:** the job genuinely needs open visual planning or a new thesis, or a GLM pass has already run and did not get there. Name which case in the brief.
 - Do not open with Claude because a job “feels designy.” Jane's default is GLM first.
-- Return named visual axes and precise constraints either way.
+- Return Cursor’s named visual axes and precise constraints. Do not substitute your own thesis.
 - If Jane requests options, the direction pass defines them; Maker builds them on branches.
 - Do not ask Claude to “just finish the CSS.”
 
@@ -76,12 +89,13 @@ Exact CLI model IDs live in the delegation script. The Bot names the role; it do
 - Use execute mode.
 - Stop and return the gap if the brief requires taste or strategy invention.
 - Deploy only when explicitly included in definition of done.
+- Do not restyle or rewrite what GLM built. If it looks off plan, tell CoS — do not patch it yourself.
 
 ### Review
 
-- Run after Maker.
+- Run after Maker, **in Cursor**, not as a Grok taste pass over Cursor’s work.
 - Mechanical and taste review are separate jobs with separate model defaults.
-- Return `PASS`, `REVISE`, or `ESCALATE` with severity, evidence, and required fixes.
+- Return `PASS`, `REVISE`, or `ESCALATE` with severity, evidence, and required fixes from the Cursor review.
 - Never fix the artifact directly. Chief of Staff turns findings into a Maker revision brief.
 
 ## Safety and authority
@@ -118,7 +132,7 @@ Jane speaks normally to a Bot. The Bot should answer with:
 1. who owns the next step;
 2. which Cursor model it is assigning and why;
 3. whether the run is planning/review or editing;
-4. when Cursor is finished, what changed and where Jane reviews it.
+4. when Cursor is finished, **Cursor’s** result — what changed and where Jane reviews it — not a Grok rewrite of that result.
 
 Jane should not receive CLI commands, repo paths to type, or model IDs to remember.
 

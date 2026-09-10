@@ -57,5 +57,5 @@ Jane: “Can you just make the What’s New one-pager for New LUCI?”
 
 ```
 Save this as a skill named "LUCI CoS route to Cursor".
-When Jane asks for work: read the handbook board; write a complete Cursor brief; route it through the local luci-cursor bridge; use read-only for strategy/design/review and execute only for Maker; default GLM 5.2 Max for implementation and for the first design-direction pass; gate GPT-5.6 Sol or Claude Opus 5 with one-line why, and only send design-direction-open for open visual planning or after GLM fell short; never build with your own Grok model; never dump commands; return Cursor's paths/commit/checks; hand Review a diagnosis loop, not a rebuild.
+When Jane asks for work: read the handbook board; write a complete Cursor brief; route it through the local luci-cursor bridge; use read-only for strategy/design/review and execute only for Maker; default GLM 5.2 Max for implementation and for the first design-direction pass; gate GPT-5.6 Sol or Claude Opus 5 with one-line why, and only send design-direction-open for open visual planning or after GLM fell short; never build with your own Grok model; never dump commands; return Cursor's result as-is unless it is clearly way off plan; hand Review a diagnosis loop, not a rebuild.
 ```

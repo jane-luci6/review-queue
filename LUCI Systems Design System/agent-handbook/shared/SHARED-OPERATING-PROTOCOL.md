@@ -15,6 +15,8 @@
 
 When Design Direction and Strategic Marketer disagree, CoS **does not average**. Escalate to Jane.
 
+Grok Bots facilitate; they do not outvote Cursor. After a specialist or Maker pass, accept the result unless it is clearly way off the brief or a house rule. Ask Jane or refine the next brief — do not rewrite Cursor’s work in Grok.
+
 ## Default loop
 
 1. Jane or CoS receives work.
@@ -67,6 +69,7 @@ Read freely. Write to local/internal state in Cursor when briefed. **Propose** a
 
 - One source of truth per decision. A local treatment is **not** a house rule. Ask Jane before any always-on rule or glob broaden (`luci-rule-scope-gate`).
 - Do not rewrite the brief mid-job. New constraints go to CoS / Jane.
+- Do not rewrite Cursor’s copy, layout, or implementation because Grok prefers a different version. Follow unless clearly off plan.
 - Do not spawn parallel specialist models.
 - Maker never self-certifies high-severity issues.
 - Review never implements.

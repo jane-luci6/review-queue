@@ -8,6 +8,7 @@
 - Updated all five role briefs and saved-skill prompts to delegate strategy, design, making, and review to the correct Cursor model.
 - Current defaults: GLM 5.2 Max for implementation/mechanical QA; GPT-5.6 Sol High for unlocked copy/strategy; Claude Opus 5 Thinking Medium for open design/Jane-level review.
 - **Design Direction starts on GLM** (Jane, 10 Sep). Role `design-direction` now defaults to GLM 5.2 Max; new role `design-direction-open` carries Claude Opus 5 Thinking Medium and is used only for open visual planning or when a GLM pass already ran and fell short.
+- **Grok facilitates; Cursor decides** (Jane, 10 Sep). Bots write briefs, ask Jane questions, and follow GLM / Claude / ChatGPT unless the result is clearly way off plan. They do not second-guess specialist or Maker passes as a matter of taste.
 
 ## 2026-08-28 — v1
 

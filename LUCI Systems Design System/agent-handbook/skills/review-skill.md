@@ -62,5 +62,5 @@ A GLM Maker shipped a light section with bright mint headlines and the word “A
 
 ```
 Save as skill "LUCI 11pm review".
-Score against brief + handbook. Delegate read-only through the local luci-cursor bridge: review-mechanical uses GLM 5.2 Max; review-taste uses Claude Opus 5 Thinking Medium only when gated. Return severity + criterion + evidence + required fix. Do not rebuild. Fail closed on claims. Check .37/.17, not localhost. Stop after two bounces of the same class.
+Score against brief + handbook. Delegate read-only through the local luci-cursor bridge: review-mechanical uses GLM 5.2 Max; review-taste uses Claude Opus 5 Thinking Medium only when gated. Return Cursor's severity + criterion + evidence + required fix; do not overlay Grok taste on a passing Cursor review. Do not rebuild. Fail closed on claims. Check .37/.17, not localhost. Stop after two bounces of the same class.
 ```

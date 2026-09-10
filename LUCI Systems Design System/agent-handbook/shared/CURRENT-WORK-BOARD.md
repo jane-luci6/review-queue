@@ -76,7 +76,7 @@ Clearwater go-live; Yaamava case study; New LUCI as **beta framing only** (not a
 - E-mesh is the main design theme on website and case studies. Circuit texture only in select situations. Not yet on other marketing materials.
 - Review hub stays for reviews/downloads. Studio is a separate app.
 - No ActiveCampaign writes without Jane’s explicit yes on that action.
-- Always **A/V**. Never call LUCI a “layer.” GitHub is stale. Grok directs; Cursor executes.
+- Always **A/V**. Never call LUCI a “layer.” GitHub is stale. Grok facilitates; Cursor’s models decide.
 
 ---
 

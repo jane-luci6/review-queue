@@ -72,7 +72,7 @@ These are **locked** unless Jane reopens them.
 - Photography: look like LUCI shot it. Casino = operations (racks, sportsbooks, LED walls), not gambling glamour. No in-progress field photos on social (OSHA + grand-reveal).
 
 ### How Jane works with agents
-- Small local commits in Cursor are the safety net. Grok directs; the Cursor agent it invokes through `luci-cursor` commits coherent production work.
+- Small local commits in Cursor are the safety net. Grok facilitates; GLM / Claude / ChatGPT in Cursor make the decisions and commit coherent production work.
 - Open visual decisions: offer 2–3 **genuine** variants on branches; Jane picks; merge winner. Tiny tweaks: just do one.
 - “Make a rule” is not automatically house-wide. Ask which assets.
 - Phrasebook: she never types commands.

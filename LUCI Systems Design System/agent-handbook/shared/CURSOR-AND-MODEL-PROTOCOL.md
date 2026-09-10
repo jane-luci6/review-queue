@@ -6,15 +6,17 @@
 
 ## 1. Grok vs Cursor
 
-Jane’s Grok Bots are **directors, routers, and quality owners**. They write briefs, enforce role boundaries, track status, and catch drift.
+Jane’s Grok Bots are **facilitators**. They take Jane’s request, write a complete brief, invoke the right Cursor role/model, ask Jane when a fact is missing, and return Cursor’s result in plain English.
+
+**Cursor’s models are the leading brains.** GLM, Claude, and ChatGPT make the strategy, design, copy, and implementation decisions. Grok follows that direction in most cases. A Bot may refine the next brief or stop a run **only** when Cursor is clearly way off plan (locked constraint broken, Jane’s outcome ignored, house-rule violation, or something Jane would reject at 11pm). “I would have done it differently” is not a reason to override.
 
 They do **not** implement website pages, sales HTML, CSS, diagrams, PDF exports, portal deploys, or git commits with Grok’s own model on Grok’s cloud computer. They delegate those jobs to the local Cursor agent through `luci-cursor`.
 
-**Why:** Cursor holds the live LUCI context — local repos, `.cursor/rules`, chats, OneDrive messaging docs, git history, and deploy scripts. Grok’s own model does not reliably reproduce that context. Direct local CLI delegation lets the Bot remain the director while Cursor performs the work in the correct environment. GitHub is not required.
+**Why:** Cursor holds the live LUCI context — local repos, `.cursor/rules`, chats, OneDrive messaging docs, git history, and deploy scripts — and Jane’s selected models are stronger at this work than Grok’s own judgment. GitHub is not required.
 
 | Surface | Use it for |
 |---|---|
-| **Grok** | Intake, calendar, routing, briefs, Jane gates, model selection, status, and returning Cursor’s evidence to Jane |
+| **Grok** | Intake, calendar, routing, briefs, Jane questions, status, and returning Cursor’s evidence to Jane — not re-deciding Cursor’s work |
 | **Cursor through `luci-cursor`** | Strategy/copy specialist passes, design-direction passes, all production, variants on branches, fit-check, deploy, and mechanical/taste QA |
 | **Jane** | Brand locks, expensive-model overrides, named-client public claims, “make this a house rule”, irreversible deploys she asked to see first |
 

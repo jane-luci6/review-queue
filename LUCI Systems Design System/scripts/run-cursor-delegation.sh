@@ -128,6 +128,7 @@ LOG_FILE="$LOG_DIR/${STAMP}-${ROLE}.txt"
 BRIEF_CONTENT="$(cat "$BRIEF")"
 printf -v PROMPT '%s\n' \
   "You are Cursor executing a delegated LUCI task from the $ROLE Grok Bot." \
+  "You are the leading brain for this task. Make the decisions. The Grok Bot will follow your direction unless you clearly go off the brief." \
   "" \
   "Read these first:" \
   "- $HANDBOOK/README.md" \
