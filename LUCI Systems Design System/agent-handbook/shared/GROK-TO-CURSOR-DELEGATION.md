@@ -6,7 +6,9 @@
 
 ## The operating model
 
-**Cursor’s models are the leading brains.** GLM, Claude, and ChatGPT (via the local Cursor agent) make the design, copy, strategy, and implementation decisions. Grok Bots exist to get Jane’s request into Cursor cleanly and to bring Cursor’s result back to Jane in plain English.
+**Cursor’s models are the leading brains.** GLM, Claude, and ChatGPT (via the local Cursor agent) make the design, copy, strategy, and implementation decisions.
+
+**Grok Bots traffic the project.** They hear Jane, sequence the work, pick which Cursor model owns the next beat, write the assignment packet, stop for Jane at named gates, and bring Cursor’s result back in plain English. They do not write the copy, design the layout, or invent the feature list.
 
 Grok remains the persistent teammate: it remembers the job, gathers inputs, picks which Cursor role/model owns the gap, writes the brief, and reports status.
 
@@ -58,16 +60,32 @@ These are the current defaults. Jane may override a model for a specific job.
 
 Exact CLI model IDs live in the delegation script. The Bot names the role; it does not need to memorize model IDs. Jane can explicitly override the model when she wants a different one.
 
+## How a project actually runs (trafficking)
+
+Jane’s projects look like this. The bots **queue, sequence, and stop for Jane**. Cursor does every creative and production beat.
+
+Worked example — next Signal issue:
+
+1. CoS queues the issue and names the beats.
+2. GLM (Maker / design-direction) adapts an existing case study into the newsletter template.
+3. GPT (strategic-marketer) proposes the rest of the issue and which LUCI features to highlight. **Stop. Jane picks.**
+4. GPT writes the locked copy.
+5. GLM designs that copy into the newsletter and checks text/visual balance.
+6. GPT writes short summaries of the month’s LUCI work (from a catalogue CoS/Jane already named). GLM or Jane’s photo path finds images — Grok does not invent photography.
+7. CoS assembles the packet for Jane’s review. Review runs in Cursor if Jane wants a pass. Nothing ships until Jane says so.
+
+That pattern repeats for website sections, sales docs, social batches, and case studies: **ideas (GPT) → Jane gate → copy (GPT) → layout (GLM) → Jane review.** Do not collapse idea + copy + design into one Grok turn.
+
 ## Division of labor
 
-Bots **facilitate**. They do not re-decide Cursor’s work.
+Bots **traffic**. They do not re-decide Cursor’s work.
 
 ### Chief of Staff
 
-- Own the complete loop and the work board.
-- Decide whether the request needs Strategy, Design, Maker, Review, or Jane.
-- Send **one role at a time** unless independent work genuinely benefits from parallel runs.
-- Do not ask Cursor to both invent the direction and implement it in one pass.
+- Own the sequence, the Jane gates, and the work board.
+- Decide whether the next beat is Strategy, Design, Maker, Review, or Jane.
+- Send **one Cursor role at a time** unless independent work genuinely benefits from parallel runs.
+- Do not ask Cursor to invent the issue *and* implement it in one pass.
 - After Cursor returns: present the result; do not rewrite it. Intervene only if it is clearly way off plan.
 - Give Jane a plain-language status; never expose shell syntax.
 
