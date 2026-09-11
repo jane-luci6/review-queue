@@ -1,20 +1,26 @@
 # Current work board
 
 **Board date:** 10 September 2026  
-**Sources:** CoS live calendar (10 Sep morning), `the-signal-issue-04-choices.md`, `COS-task-calendar.json`.  
+**Sources:** CoS live calendar (10 Sep morning), `DECISION-LOG.md`, `the-signal-issue-04-choices.md`, `COS-task-calendar.json`.  
 **If a line is wrong, Jane corrects it.** The 28 Aug board is history.
 
 Treat older briefs (`_project-context.md`, `CURSOR-MORNING-BRIEF.md`, `WIP-notes.md`, website README “next phases”) as **history**, not this board.
 
-**Grok seats (live):** Chief of Staff · Wesley (Website) · Caitlyn (Case Studies & Sales Proof) · Editorial & Campaigns (not stood up yet) · Video (not stood up yet). Until the last two exist, CoS traffics those streams.
+**Grok seats (live):** Cornelius (CoS) · Weatherby (Website) · Consuelo (Case Studies & Sales Proof) · Ermintrude (Editorial & Campaigns) · Vikram (Video) · Svetlana (Social) · Longinus (Librarian). Svetlana is idle until Jane says start.
+
+**Board rule:** every active job is logged below, whoever Jane talked to. Protocol: `shared/WORK-BOARD-PROTOCOL.md`. Cornelius reads this file before status answers. Jane does not brief him on work already assigned to another bot.
 
 ---
 
 ## Active jobs
 
+Workstream bots update this table when Jane assigns them work. Cornelius does not wait to be told.
+
 | ID | Jane asked | Owner | Stage | Model | Artifact | Waiting on Jane | Next |
 |---|---|---|---|---|---|---|---|
-| aliante-edit-blueprint | Diagnose RC2 story gaps; write scene-by-scene editorial blueprint before RC3. GPT only. No RC3, no Vikram yet. | Consuelo | Jane review | GPT | `video-production/projects/aliante-led/editorial/aliante-edit-blueprint-v1.md` | review blueprint / open decisions | Jane reviews; Consuelo holds until she locks; no RC3 / no Vikram yet |
+| aliante-edit-blueprint | Diagnose RC2 story gaps; write scene-by-scene editorial blueprint before RC3. GPT only. No RC3, no Vikram yet. | Consuelo | Parked — Jane said come back later | GPT | `video-production/projects/aliante-led/editorial/aliante-edit-blueprint-v1.md` | Jane returns to lock structure | Hold; no RC3 / no Vikram until Jane reopens |
+| aliante-imovie-handoff-rc2 | iMovie handoff folder reproducing RC2 as editable pieces (timeline 40 clips + titles.md verbatim + alternates + RC2 reference). No RC3, no shot swaps, no timing changes. | Vikram | Jane ready — package complete | GLM | `video-production/projects/aliante-led/assembly/imovie-handoff-rc2/` | Jane | Jane opens in iMovie; decides next (edit / RC3 / park) |
+| signal-04-layout | Project Update: own section but small; drop green metrics (cabinets/panels/hours). | Ermintrude | GLM project-update small section | GLM | localhost:8765 Issue 04 | Jane review | GLM finishes → Jane hard-refreshes |
 
 ---
 
@@ -22,7 +28,7 @@ Treat older briefs (`_project-context.md`, `CURSOR-MORNING-BRIEF.md`, `WIP-notes
 
 | ID | Item | Waiting |
 |---|---|---|
-| signal-04-open | Signal Issue 04: Theme, Advice, Minute with Mike; Welcome names | Jane, then Mike letter review |
+| signal-04-open | Signal Issue 04: Theme; Welcome names | Jane, then Mike letter review |
 | aliante-cs | Aliante **written** case study, second pass | Jane |
 | aliante-rc2 | Aliante trailer RC2 (~2:29) — CoS marked review PASS; Jane still to watch / property-name if needed | Jane |
 | wave-1 | Website Wave 1 drafts in `REVIEW.html` | Jane read |
@@ -38,17 +44,17 @@ Treat older briefs (`_project-context.md`, `CURSOR-MORNING-BRIEF.md`, `WIP-notes
 
 | Project | Status | Next |
 |---|---|---|
-| The Signal Issue 04 | in_flight | **Send Tue 15 Sep.** Locked: Field (Aliante wall), Panels, FAG, Kiosk Quick Tip. Welcome idea locked, **names open**. Still open: Theme, Advice, Minute with Mike. Mike review after Jane locks open sections. |
+| The Signal Issue 04 | in_flight | **Send Tue 15 Sep.** Locked: Field (short Aliante + link), Quick Tip (endpoint names/notes), What’s coming (panels + activity record), Mike (“Standardize the operation, not the hardware”), Since the last Signal (Clearwater, Sam’s Town, Osage, California), FAG. Extra visual parked. Welcome idea locked, **names open**. Still open: Theme. GPT copy → GLM into the Issue 04 template. **Ermintrude picks up after copy is finalized.** Stop before Webflow/AC until Jane approves. |
 | New LUCI launch | in_flight | Mark/Mike lock-in done (CoS). Theme + Operate / Make it yours / See and prove live on IMP `.17`. Remaining: table above. Beta, property by property. **Not** a public splash. |
 | Website rebuild | in_flight | Fall launch. Wave 1 drafts waiting Jane. Working branch `persona-hero-subhead-gold`. Review `http://10.10.1.37`. Aliante “largest in Las Vegas” held until the live page drops that line (calendar). |
 | Case studies | in_flight | **Open: Aliante written study.** Ameristar, Tachi, Sam’s Town live. Yaamava is the **featured install on the site** — not the current “what’s next” case-study write. No New LUCI launch case study. |
-| Aliante trailer | in_flight | RC2 ~2:29; CoS review PASS. Jane watch. Video workstream when that bot exists. |
+| Aliante trailer | in_flight | RC2 ~2:29; CoS review PASS. Jane watch. Vikram (Video). |
 | Sales docs | in_flight | Launch deck/Capabilities still in the remaining launch list. Yaamava p8: confirm with Jane. Budgetary template established. |
 | Customization Studio | in_flight | Standalone with Will. **Not IMP.** |
 | Customer journey | in_flight | Clearwater go-live sent 28 Aug. 30/60/90 still Jane-by-hand / Jane-yes in AC. Tachi Email 10 on **25 Sep**. Four Winds: wait on deposit. |
 | Prospect nurture (AC) | in_flight | Architecture on IMP. **Not built in AC.** Stay off live Mark/Mike deals. |
 | 2026 tactics | in_flight | Four tactics waiting Jane’s picks (calendar). |
-| LinkedIn / social | held | Hold until New LUCI product launch. |
+| LinkedIn / social | held | Svetlana exists; **idle until Jane says start.** Process is OneDrive `Social Media/` (`WORKFLOW.md`). Hold public posting through New LUCI unless she unparks. |
 | Review hub `http://10.10.1.37:8080` | live surface | Reviews/downloads. Studio is leaving that IMP page. |
 
 ---
@@ -86,7 +92,7 @@ Treat older briefs (`_project-context.md`, `CURSOR-MORNING-BRIEF.md`, `WIP-notes
 - Review hub stays for reviews/downloads. Studio is a separate app.
 - ActiveCampaign: Jane’s **yes** before a write. After she approves a packet, Grok may build from the **last template** and **queue** the list. Do not **Send** unless she names that send.
 - Always **A/V**. Never call LUCI a “layer.” GitHub is stale. Grok picks GPT/GLM/Claude; Cursor runs it.
-- Work board vs CoS calendar: **this file** is what new bots should read. CoS refreshes it when the week changes.
+- Work board vs CoS calendar: **this file** is what new bots should read. Workstream bots log **Active jobs** when Jane assigns them work. CoS reads the board before status; refreshes the rest when the week changes. See `shared/WORK-BOARD-PROTOCOL.md`.
 
 ---
 
