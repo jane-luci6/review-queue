@@ -10,6 +10,8 @@
 
 ## 2026-09-11
 
+- **Aliante iMovie card 02 — `40 acres` highlighted in mint display scale (revises prior card 02 lock).** Jane revised the one-off "Across more than 40 acres" card (no period) to highlight `40 acres` the same way as card 01's `100,000+`: SpaceGrotesk-SemiBold 128px, mint `#68E3BE`. Lead-in `Across more than` stays off-white Medium 52 @ 95%. No mint rule. Shared baseline at 128px exceeded the 864 measure, so the card breaks cleanly to two lines (lead-in above, mint numeral on the anchor y=920). S-class plate (top y=680) matches card 01. Per-card override of BODY-TREATMENT-LOCK §2/§3.1/§6 for this card only — not a house rule; lock still governs c02–c19. Per Vikram/GLM brief, 11 Sep.
+
 - **Signal Issue 04 TOC + From LUCI mechanical locks.** TOC now leads with LUCI Project Update as 01 and renumbers the rest (02 In the field → 06 A Minute with Mike) to match live section order. From LUCI drops "below" ("Choose your team, or read…") and gains breathing room (scoped margin-top) between the FAG role tiles and the following paragraph. Welcome r4 copy still pending (file not present). Jane, 11 Sep.
 
 - **Aliante iMovie card 02 — no mint rule, all off-white Medium (per-card override).** One-off "Across more than 40 acres" card (no period) extends the card 01 no-rule override: N-class plate + bed, single-line narrative, all words off-white Medium 52 (no mint type — no display numeral). Same per-card override pattern as card 01; still not a house rule, and the lock still governs the c02–c19 titles.md sequence. Per Vikram/GLM brief, 11 Sep.
