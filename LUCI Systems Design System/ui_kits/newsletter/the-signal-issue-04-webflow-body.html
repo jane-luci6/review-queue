@@ -55,14 +55,14 @@
     </ol>
   </nav>
 
-  <!-- LUCI PROJECT UPDATE — compact snapshot callout (between Welcome and Aliante; not a numbered article) -->
+  <!-- LUCI PROJECT UPDATE — compact own section (between Welcome and Aliante; not a numbered article) -->
   <section class="sec sec--white proj-snapshot" id="project-update">
-    <div class="proj-snapshot__callout">
-      <div class="proj-snapshot__head">
-        <span class="proj-snapshot__kicker">LUCI Project Update</span>
-        <span class="proj-snapshot__sub">A quick snapshot of LUCI over the last month</span>
-      </div>
-      <p class="proj-snapshot__intro">Since the last Signal, LUCI teams have been in Lewiston, Tulsa, and Las Vegas &mdash; bringing new spaces online, clearing out what no longer needed to stay, and making the next room part of the property&rsquo;s operating standard.</p>
+    <div class="kicker">
+      <span class="kicker__rule"></span>
+      <span class="kicker__label">LUCI Project Update</span>
+      <span class="kicker__rule"></span>
+    </div>
+    <p class="proj-snapshot__intro">Since the last Signal, LUCI teams have been in Lewiston, Tulsa, and Las Vegas &mdash; bringing new spaces online, clearing out what no longer needed to stay, and making the next room part of the property&rsquo;s operating standard.</p>
       <p class="proj-snapshot__route" aria-label="Three field stops">
         <span class="dot" aria-hidden="true"></span>Lewiston
         <span class="seg" aria-hidden="true"></span>
@@ -98,7 +98,6 @@
         </li>
       </ul>
       <p class="proj-snapshot__lead">Those were the quick stops. At <strong>Aliante</strong>, the work opened onto a much larger canvas. That&rsquo;s the next story.</p>
-    </div>
   </section>
 
   <section class="sec sec--deep" id="field-story" style="border-bottom: 4px solid var(--mint);">
@@ -319,12 +318,9 @@
     <div class="shot-block">
       <div class="shot-label">Map rotation &middot; load, align, control</div>
       <figure class="ui-shot">
-        <!-- ASSET MISSING: silent 15-20s map-rotation loop (north-up -> rotate to operator view -> zoom -> select endpoint).
-             On-screen overlays: "Load your map." / "Match the room." / "Control what's in front of you."
-             Do NOT re-use Issue 03 login/theme/staging screenshots. Replace this placeholder with the loop when produced. -->
-        <div class="field-photo-ph" role="img" aria-label="Placeholder: map-rotation demonstration video (asset pending) — north-up map rotates to match the operator's viewpoint, zooms in, and selects an endpoint">
-          <span>Map rotation loop &middot; 15&ndash;20s</span>
-        </div>
+        <video class="ui-shot__video" controls muted loop playsinline preload="metadata" aria-label="Map rotation demonstration: a north-up map rotates to match the operator's viewpoint, zooms in, and selects an endpoint">
+          <source src="assets/whats-coming/map-rotation.mp4" type="video/mp4">
+        </video>
       </figure>
     </div>
 

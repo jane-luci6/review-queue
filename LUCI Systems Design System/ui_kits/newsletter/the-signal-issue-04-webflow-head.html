@@ -355,6 +355,7 @@ body{font-family:var(--body);background:var(--navy-deep);color:#354F5C;-webkit-f
 .shot-label::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--mint-dark);}
 figure.ui-shot{margin:0;border:1px solid var(--rule-light);border-radius:14px;overflow:hidden;background:#eef1ef;box-shadow:0 16px 40px rgba(10,26,33,0.08);}
 figure.ui-shot img{display:block;width:100%;height:auto;}
+figure.ui-shot video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:var(--navy-deep);}
 .future-box{display:grid;grid-template-columns:40px 1fr;gap:16px;margin:8px 0 22px;padding:22px 24px;border:1px solid #a8d9cb;border-radius:12px;background:#f2fbf8;}
 .future-icon{width:36px;height:36px;display:grid;place-items:center;border-radius:9px;background:var(--navy-deep);color:var(--mint);font-size:18px;font-weight:900;}
 .future-box p{margin:0;color:#354F5C;font-size:16px;}
@@ -501,12 +502,8 @@ figure.ui-shot img{display:block;width:100%;height:auto;}
 .fag-cta a:hover{border-bottom-color:var(--mint-dark);}
 .fag-cta a span{transition:transform 0.15s;}
 .fag-cta a:hover span{transform:translateX(3px);}
-/* LUCI PROJECT UPDATE — compact snapshot callout (between Welcome and Aliante) */
-.proj-snapshot{padding:clamp(28px,4vw,40px) var(--pad);background:var(--off-white);}
-.proj-snapshot__callout{position:relative;max-width:var(--max);margin:0 auto;padding:clamp(20px,3vw,28px) clamp(20px,3vw,28px) clamp(20px,3vw,28px) clamp(24px,3vw,32px);background:var(--white);border-left:4px solid var(--mint-dark);border-bottom:1px solid var(--rule-light);}
-.proj-snapshot__head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:10px;}
-.proj-snapshot__kicker{font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--mint-dark);}
-.proj-snapshot__sub{font-family:'Inter',system-ui,sans-serif;font-size:13px;font-weight:500;color:var(--navy-muted);}
+/* LUCI PROJECT UPDATE — compact own section (between Welcome and Aliante) */
+.proj-snapshot{padding:clamp(36px,5vw,52px) var(--pad);background:var(--white);}
 .proj-snapshot__intro{font-family:'Inter',system-ui,sans-serif;font-size:clamp(15px,1.7vw,17px);line-height:1.6;color:#354F5C;max-width:62ch;margin:0 0 clamp(16px,2.5vw,22px);}
 .proj-snapshot__route{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 clamp(14px,2vw,18px);font-family:'Inter',system-ui,sans-serif;font-size:12px;font-weight:600;letter-spacing:0.04em;color:var(--navy-muted);}
 .proj-snapshot__route .dot{width:7px;height:7px;border-radius:50%;background:var(--mint-dark);flex-shrink:0;}
