@@ -10,6 +10,8 @@
 
 ## 2026-09-11
 
+- **Aliante iMovie card 02 — no mint rule, all off-white Medium (per-card override).** One-off "Across more than 40 acres" card (no period) extends the card 01 no-rule override: N-class plate + bed, single-line narrative, all words off-white Medium 52 (no mint type — no display numeral). Same per-card override pattern as card 01; still not a house rule, and the lock still governs the c02–c19 titles.md sequence. Per Vikram/GLM brief, 11 Sep.
+
 - **Signal Issue 04 §01 kicker shows a visible `01`.** Jane resolved Opus's open call #10 in favor of a number — the Project Update kicker now reads `01 · LUCI Project Update`. The `01` is a section marker only; per Opus §8 it is **not** added to the TOC (TOC keeps its 5 entries 01–05). Jane, 11 Sep.
 
 - **Aliante iMovie card 01 — mint on the numeral, no rule (per-card override).** Jane removed the 56×3 mint rule from the one-off "With 100,000+ square feet of gaming," card and set `100,000+` in LUCI mint `#68E3BE` (bright mint on the dark plate); `With` and `square feet of gaming,` stay off-white Medium. Overrides BODY-TREATMENT-LOCK §2/§6 (mint only as rule / no mint type) **for this card only** — not a house rule; the lock still governs c02–c19. Jane, 11 Sep.
