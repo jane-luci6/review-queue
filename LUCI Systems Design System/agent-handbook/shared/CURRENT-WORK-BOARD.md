@@ -20,7 +20,7 @@ Workstream bots update this table when Jane assigns them work. Cornelius does no
 |---|---|---|---|---|---|---|---|
 | aliante-edit-blueprint | Diagnose RC2 story gaps; write scene-by-scene editorial blueprint before RC3. GPT only. No RC3, no Vikram yet. | Consuelo | Parked — Jane said come back later | GPT | `video-production/projects/aliante-led/editorial/aliante-edit-blueprint-v1.md` | Jane returns to lock structure | Hold; no RC3 / no Vikram until Jane reopens |
 | aliante-imovie-handoff-rc2 | iMovie handoff folder reproducing RC2 as editable pieces (timeline 40 clips + titles.md verbatim + alternates + RC2 reference). No RC3, no shot swaps, no timing changes. | Vikram | Jane ready — package complete | GLM | `video-production/projects/aliante-led/assembly/imovie-handoff-rc2/` | Jane | Jane opens in iMovie; decides next (edit / RC3 / park) |
-| signal-04-layout | Project Update: own section but small; drop green metrics (cabinets/panels/hours). | Ermintrude | GLM project-update small section | GLM | localhost:8765 Issue 04 | Jane review | GLM finishes → Jane hard-refreshes |
+| signal-04-layout | copy-r3 landed; Opus Project Update design → GLM apply. | Ermintrude | Opus lock written | Claude | `CURSOR-LOCK-signal-04-project-update-opus.md` | Jane sees it after GLM applies; one open call (numbered vs unnumbered section) | GLM Maker applies the lock to issue-04 HTML + Webflow pair |
 
 ---
 
