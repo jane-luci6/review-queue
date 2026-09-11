@@ -10,6 +10,8 @@
 
 ## 2026-09-11
 
+- **Signal Issue 04 TOC + From LUCI mechanical locks.** TOC now leads with LUCI Project Update as 01 and renumbers the rest (02 In the field → 06 A Minute with Mike) to match live section order. From LUCI drops "below" ("Choose your team, or read…") and gains breathing room (scoped margin-top) between the FAG role tiles and the following paragraph. Welcome r4 copy still pending (file not present). Jane, 11 Sep.
+
 - **Aliante iMovie card 02 — no mint rule, all off-white Medium (per-card override).** One-off "Across more than 40 acres" card (no period) extends the card 01 no-rule override: N-class plate + bed, single-line narrative, all words off-white Medium 52 (no mint type — no display numeral). Same per-card override pattern as card 01; still not a house rule, and the lock still governs the c02–c19 titles.md sequence. Per Vikram/GLM brief, 11 Sep.
 
 - **Signal Issue 04 §01 kicker shows a visible `01`.** Jane resolved Opus's open call #10 in favor of a number — the Project Update kicker now reads `01 · LUCI Project Update`. The `01` is a section marker only; per Opus §8 it is **not** added to the TOC (TOC keeps its 5 entries 01–05). Jane, 11 Sep.
