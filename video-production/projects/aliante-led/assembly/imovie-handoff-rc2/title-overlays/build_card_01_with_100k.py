@@ -16,6 +16,16 @@ Jane's type note for THIS card (overrides the old S qualifier being too quiet):
     128) on a shared baseline. Line 2 "square feet of gaming," (Medium 52).
   - Copy verbatim, trailing comma preserved: "With 100,000+ square feet of gaming,"
 
+Jane's rev 11 Sep (this card only — per-card override, NOT a house-rule change):
+  - REMOVE the 56x3 mint rule. She finds it weird on this card.
+  - Set "100,000+" in LUCI mint #68E3BE (bright mint on dark plate — correct
+    for the dark plate; passes contrast).
+  - "With" and "square feet of gaming," stay off-white Medium 52 @ 95%.
+  - This overrides BODY-TREATMENT-LOCK.md §2 ("Type is off-white, never mint.
+    Mint type belongs to Jane's title. Body cards get mint only as the 3px
+    rule") and §6 ("nothing after the title slide sets type in mint") FOR THIS
+    CARD ONLY. The lock still governs every other body card.
+
 Outputs (into ./cards/):
   card-01-with-100k-transparent.png — transparent 1920x1080 overlay
   card-01-with-100k-preview.jpg      — overlay composited over a frame
@@ -174,7 +184,8 @@ def draw_line1_mixed(canvas: Image.Image) -> Image.Image:
     font_semibold = ImageFont.truetype(str(FONT_SEMIBOLD), NUMERAL_SIZE)
 
     fill_med = (OFF_WHITE[0], OFF_WHITE[1], OFF_WHITE[2], int(round(255 * MEDIUM_OPACITY)))
-    fill_num = (OFF_WHITE[0], OFF_WHITE[1], OFF_WHITE[2], 255)
+    # Jane's rev (this card only): numeral in LUCI mint #68E3BE, not off-white.
+    fill_num = (MINT[0], MINT[1], MINT[2], 255)
 
     # Measure "With" in Medium to find where "100,000+" starts
     with_w = _text_width(font_med, WITH_TEXT, MEDIUM_TRACKING)
@@ -234,7 +245,7 @@ def draw_line2(canvas: Image.Image) -> Image.Image:
 
 
 def render_card() -> Image.Image:
-    """Render the one-off card overlay: bed + plate + mint rule + two-line lockup."""
+    """Render the one-off card overlay: bed + plate + two-line lockup (no mint rule)."""
     canvas = Image.new("RGBA", (W, H), (0, 0, 0, 0))
 
     # 1. Bed (layer 1)
@@ -243,15 +254,11 @@ def render_card() -> Image.Image:
     # 2. Plate (layer 2) — S-class
     canvas = Image.alpha_composite(canvas, build_plate())
 
-    # 3. Mint rule (56x3, fully opaque)
-    draw = ImageDraw.Draw(canvas)
-    draw.rectangle([RULE_X0, RULE_Y0, RULE_X1 - 1, RULE_Y1 - 1],
-                   fill=(MINT[0], MINT[1], MINT[2], 255))
-
-    # 4. Line 1 — "With" (Medium 52, 95%) + "100,000+" (SemiBold 128, 100%)
+    # 3. Line 1 — "With" (Medium 52, 95%) + "100,000+" (SemiBold 128, mint 100%)
+    #    (Jane's rev: numeral recolored to mint #68E3BE; mint rule removed.)
     canvas = draw_line1_mixed(canvas)
 
-    # 5. Line 2 — "square feet of gaming," (Medium 52, 95%)
+    # 4. Line 2 — "square feet of gaming," (Medium 52, 95%)
     canvas = draw_line2(canvas)
 
     return canvas

@@ -10,6 +10,8 @@
 
 ## 2026-09-11
 
+- **Aliante iMovie card 01 — mint on the numeral, no rule (per-card override).** Jane removed the 56×3 mint rule from the one-off "With 100,000+ square feet of gaming," card and set `100,000+` in LUCI mint `#68E3BE` (bright mint on the dark plate); `With` and `square feet of gaming,` stay off-white Medium. Overrides BODY-TREATMENT-LOCK §2/§6 (mint only as rule / no mint type) **for this card only** — not a house rule; the lock still governs c02–c19. Jane, 11 Sep.
+
 - **Aliante RC2 body onscreen text locked to rev 2 — corner plate + bed.** Jane approved the left-anchored editorial direction with a hard-edged bottom-left corner plate (navy-deep @ 0.62) over a full-bleed gradient bed, replacing the rev 1 gradient-only pass that lost to busy footage; measure tightened to 864. Rendered as the c02 preview. Jane, 11 Sep.
 
 - **Learned preferences rule locked.** Grok bots may proactively add a preference to a Cursor brief only when prior Jane behavior shows she is at least ~80% likely to ask for that change herself in this situation; the bot tells Jane when it applies one. One-off ≠ house rule; repeated ≠ universal; only Jane promotes a preference to a universal rule. Jane, 11 Sep.
