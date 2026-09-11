@@ -2722,6 +2722,62 @@
       color: var(--mint-dark);
     }
   </style>
+
+  <style data-welcome-edit>
+    /* In-browser editable preview for #welcome (Issue 04).
+       Preview-only edit affordance; not shipped to Webflow. */
+    #welcome .welcome-edit-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin: -8px 0 24px;
+      font-family: var(--body);
+    }
+    #welcome .welcome-edit-bar__label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: #8A9AA3;
+    }
+    #welcome .welcome-edit-bar__reset {
+      appearance: none;
+      background: transparent;
+      border: 1px solid var(--rule-light);
+      border-radius: 9999px;
+      padding: 4px 12px;
+      font-family: var(--body);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--mint-dark);
+      cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+    #welcome .welcome-edit-bar__reset:hover {
+      background: rgba(43, 158, 128, 0.08);
+      border-color: var(--mint-dark);
+    }
+    #welcome .welcome-edit-bar__reset:focus-visible {
+      outline: 2px solid var(--mint-dark);
+      outline-offset: 2px;
+    }
+
+    /* Editable region cues — subtle hint on hover, clear outline on focus */
+    #welcome [contenteditable="true"] {
+      outline-offset: 4px;
+      transition: outline-color 0.15s ease;
+    }
+    #welcome [contenteditable="true"]:hover {
+      outline: 1px dashed rgba(43, 158, 128, 0.45);
+    }
+    #welcome [contenteditable="true"]:focus {
+      outline: 2px dashed var(--mint-dark);
+    }
+    #welcome [contenteditable="true"]:focus:hover {
+      outline: 2px dashed var(--mint-dark);
+    }
+  </style>
 </head>
 
 <article class="issue">
@@ -2748,6 +2804,10 @@
       <span class="kicker__rule"></span>
       <span class="kicker__label">Welcome</span>
       <span class="kicker__rule"></span>
+    </div>
+    <div class="welcome-edit-bar" role="note" aria-label="Editable preview">
+      <span class="welcome-edit-bar__label">Editable preview &mdash; autosaved in this browser</span>
+      <button type="button" class="welcome-edit-bar__reset" data-welcome-reset>Reset to file version</button>
     </div>
     <h2 class="art-title">The Right Place for a <em>Standard</em></h2>
     <div class="art-body">
@@ -3218,6 +3278,68 @@
         if (e.buttons === 1) pointTo(e.clientX);
       });
     });
+  })();
+</script>
+
+<script data-welcome-edit>
+  (function () {
+    var KEY = 'signal04-welcome-draft';
+    var welcome = document.getElementById('welcome');
+    if (!welcome) return;
+
+    var title = welcome.querySelector('.art-title');
+    var body = welcome.querySelector('.art-body');
+    var signoff = welcome.querySelector('.art-signoff');
+    if (!title || !body || !signoff) return;
+
+    var editables = [title, body, signoff];
+    editables.forEach(function (el) { el.setAttribute('contenteditable', 'true'); });
+
+    // Make Enter create <p> elements inside the body/signoff (best-effort; deprecated but widely supported).
+    function setParaSeparator() {
+      try {
+        document.execCommand('defaultParagraphSeparator', false, 'p');
+        document.execCommand('styleWithCSS', false, false);
+      } catch (e) {}
+    }
+    [body, signoff].forEach(function (el) {
+      el.addEventListener('focusin', setParaSeparator);
+    });
+
+    // --- Restore draft on load ---
+    try {
+      var saved = localStorage.getItem(KEY);
+      if (saved) {
+        var data = JSON.parse(saved);
+        if (data && typeof data.title === 'string') title.innerHTML = data.title;
+        if (data && typeof data.body === 'string') body.innerHTML = data.body;
+        if (data && typeof data.signoff === 'string') signoff.innerHTML = data.signoff;
+      }
+    } catch (e) {}
+
+    // --- Autosave (debounced) ---
+    var t;
+    function save() {
+      var payload = JSON.stringify({
+        title: title.innerHTML,
+        body: body.innerHTML,
+        signoff: signoff.innerHTML
+      });
+      try { localStorage.setItem(KEY, payload); } catch (e) {}
+    }
+    welcome.addEventListener('input', function () {
+      clearTimeout(t);
+      t = setTimeout(save, 300);
+    });
+
+    // --- Reset to file version ---
+    var resetBtn = welcome.querySelector('[data-welcome-reset]');
+    if (resetBtn) {
+      resetBtn.addEventListener('click', function () {
+        try { localStorage.removeItem(KEY); } catch (e) {}
+        location.reload();
+      });
+    }
   })();
 </script>
 </body>
