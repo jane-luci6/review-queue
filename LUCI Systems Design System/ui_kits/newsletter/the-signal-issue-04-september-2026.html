@@ -2616,84 +2616,148 @@
     .fag-cta a span { transition: transform 0.15s; }
     .fag-cta a:hover span { transform: translateX(3px); }
 
-    /* ── LUCI PROJECT UPDATE — map + compact collage ─── */
-    .proj-update__intro {
-      font-family: 'Inter', system-ui, sans-serif;
-      font-size: clamp(17px, 2vw, 19px);
-      line-height: 1.6;
-      color: var(--navy-muted);
-      max-width: 62ch;
-      margin: clamp(16px, 2.5vw, 24px) 0 0;
+    /* ── LUCI PROJECT UPDATE — compact snapshot callout (not a formal section) ─── */
+    /* House callout pattern: contained block, 4px mint left bar, sharp corners,
+       bracketed by whitespace. Reads as a band/notice between Welcome and Aliante. */
+    .proj-snapshot {
+      padding: clamp(28px, 4vw, 40px) var(--pad);
+      background: var(--off-white);
     }
-    .proj-map {
-      margin: clamp(28px, 4vw, 40px) 0 0;
-      padding: clamp(20px, 3vw, 32px);
-      background: #F5F8FA;
-      border: 1px solid rgba(43,158,128,0.14);
+    .proj-snapshot__callout {
+      position: relative;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: clamp(20px, 3vw, 28px) clamp(20px, 3vw, 28px) clamp(20px, 3vw, 28px) clamp(24px, 3vw, 32px);
+      background: var(--white);
+      border-left: 4px solid var(--mint-dark);
+      border-bottom: 1px solid var(--rule-light);
     }
-    .proj-map__art { width: 100%; height: auto; display: block; }
-    .proj-cards {
-      list-style: none;
-      margin: clamp(28px, 4vw, 40px) 0 0;
-      padding: 0;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: clamp(16px, 2.5vw, 24px);
+    .proj-snapshot__head {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
     }
-    .proj-card { display: flex; flex-direction: column; }
-    .proj-card__img {
-      width: 100%;
-      aspect-ratio: 16 / 10;
-      object-fit: cover;
-      object-position: center;
-      display: block;
-    }
-    .proj-card__body { padding-top: 14px; }
-    .proj-card__loc {
-      display: block;
-      font-family: 'Inter', system-ui, sans-serif;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--navy-muted);
-      margin-bottom: 6px;
-    }
-    .proj-card__metric {
-      display: block;
+    .proj-snapshot__kicker {
       font-family: var(--display);
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--mint-dark);
-      margin-bottom: 6px;
     }
-    .proj-card__name {
-      display: block;
-      font-family: var(--body);
-      font-weight: 700;
-      font-size: clamp(16px, 1.8vw, 19px);
-      letter-spacing: -0.01em;
-      line-height: 1.15;
-      color: var(--navy);
-      margin-bottom: 8px;
-    }
-    .proj-card__text {
+    .proj-snapshot__sub {
       font-family: 'Inter', system-ui, sans-serif;
-      font-size: clamp(13px, 1.4vw, 15px);
-      line-height: 1.55;
+      font-size: 13px;
+      font-weight: 500;
       color: var(--navy-muted);
-      margin: 0;
     }
-    .proj-update__lead {
+    .proj-snapshot__intro {
       font-family: 'Inter', system-ui, sans-serif;
       font-size: clamp(15px, 1.7vw, 17px);
       line-height: 1.6;
+      color: #354F5C;
+      max-width: 62ch;
+      margin: 0 0 clamp(16px, 2.5vw, 22px);
+    }
+    .proj-snapshot__route {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 0 0 clamp(14px, 2vw, 18px);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
       color: var(--navy-muted);
-      margin: clamp(28px, 4vw, 40px) 0 0;
+    }
+    .proj-snapshot__route .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--mint-dark);
+      flex-shrink: 0;
+    }
+    .proj-snapshot__route .dot--gold { background: var(--gold-deep); }
+    .proj-snapshot__route .seg {
+      width: 22px;
+      height: 1px;
+      background: var(--rule-light);
+      flex-shrink: 0;
+    }
+    .proj-snapshot__stops {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(14px, 2vw, 20px);
+    }
+    .proj-stop {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+    .proj-stop__thumb {
+      width: 56px;
+      height: 56px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      border-radius: 0;
+    }
+    .proj-stop__body { min-width: 0; }
+    .proj-stop__loc {
+      display: block;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--navy-muted);
+      margin-bottom: 3px;
+    }
+    .proj-stop__metric {
+      display: block;
+      font-family: var(--body);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--mint-dark);
+      margin-bottom: 4px;
+    }
+    .proj-stop__name {
+      display: block;
+      font-family: var(--body);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .proj-stop__text {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--navy-muted);
+      margin: 0;
+    }
+    .proj-snapshot__lead {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: clamp(15px, 1.7vw, 17px);
+      line-height: 1.6;
+      color: #354F5C;
+      margin: clamp(18px, 2.5vw, 24px) 0 0;
       max-width: 62ch;
     }
+    .proj-snapshot__lead strong {
+      font-weight: 700;
+      color: var(--navy);
+    }
     @media (max-width: 640px) {
-      .proj-cards { grid-template-columns: 1fr; }
+      .proj-snapshot__stops { grid-template-columns: 1fr; gap: 14px; }
     }
 
     /* ── FAG linked role tiles (compact, after second paragraph) ─── */
@@ -2833,87 +2897,60 @@
       <span class="kicker__rule"></span>
     </div>
     <ol class="toc__list">
-      <li><a href="#project-update"><span class="toc__num">01</span><span class="toc__text">LUCI Project Update</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
-      <li><a href="#field-story"><span class="toc__num">02</span><span class="toc__text">In the field</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
-      <li><a href="#quick-tip"><span class="toc__num">03</span><span class="toc__text">LUCI Quick Tip</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
-      <li><a href="#whats-coming"><span class="toc__num">04</span><span class="toc__text">What&rsquo;s coming</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
-      <li><a href="#from-luci"><span class="toc__num">05</span><span class="toc__text">From LUCI</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
-      <li><a href="#mike-column"><span class="toc__num">06</span><span class="toc__text">A Minute with Mike</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
+      <li><a href="#field-story"><span class="toc__num">01</span><span class="toc__text">In the field</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
+      <li><a href="#quick-tip"><span class="toc__num">02</span><span class="toc__text">LUCI Quick Tip</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
+      <li><a href="#whats-coming"><span class="toc__num">03</span><span class="toc__text">What&rsquo;s coming</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
+      <li><a href="#from-luci"><span class="toc__num">04</span><span class="toc__text">From LUCI</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
+      <li><a href="#mike-column"><span class="toc__num">05</span><span class="toc__text">A Minute with Mike</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
     </ol>
   </nav>
 
-  <!-- LUCI PROJECT UPDATE — map + compact collage (after TOC, leads into Aliante) -->
-  <section class="sec sec--white" id="project-update">
-    <div class="kicker">
-      <span class="kicker__rule"></span>
-      <span class="kicker__label">LUCI Project Update</span>
-      <span class="kicker__rule"></span>
+  <!-- LUCI PROJECT UPDATE — compact snapshot callout (between Welcome and Aliante; not a numbered article) -->
+  <section class="sec sec--white proj-snapshot" id="project-update">
+    <div class="proj-snapshot__callout">
+      <div class="proj-snapshot__head">
+        <span class="proj-snapshot__kicker">LUCI Project Update</span>
+        <span class="proj-snapshot__sub">A quick snapshot of LUCI over the last month</span>
+      </div>
+      <p class="proj-snapshot__intro">Since the last Signal, LUCI teams have been in Lewiston, Tulsa, and Las Vegas &mdash; bringing new spaces online, clearing out what no longer needed to stay, and making the next room part of the property&rsquo;s operating standard.</p>
+      <p class="proj-snapshot__route" aria-label="Three field stops">
+        <span class="dot" aria-hidden="true"></span>Lewiston
+        <span class="seg" aria-hidden="true"></span>
+        <span class="dot" aria-hidden="true"></span>Tulsa
+        <span class="seg" aria-hidden="true"></span>
+        <span class="dot dot--gold" aria-hidden="true"></span>Las Vegas
+      </p>
+      <ul class="proj-snapshot__stops">
+        <li class="proj-stop">
+          <img class="proj-stop__thumb" src="assets/since-last-signal/clearwater-river.jpeg?v=2" alt="Clearwater River Casino &amp; Lodge &mdash; LUCI live after rack environment cleanup" width="1600" height="1000" loading="lazy">
+          <div class="proj-stop__body">
+            <span class="proj-stop__loc">Lewiston, Idaho</span>
+            <span class="proj-stop__metric">Live &middot; August 24</span>
+            <span class="proj-stop__name">Clearwater River Casino &amp; Lodge</span>
+            <p class="proj-stop__text">Rack environment cleared of legacy equipment and cabling before the property went live.</p>
+          </div>
+        </li>
+        <li class="proj-stop">
+          <img class="proj-stop__thumb" src="assets/since-last-signal/osage-swigs.jpeg?v=2" alt="Swigs at Osage Casino Hotel &mdash; LED install across three angled planes" width="1600" height="1000" loading="lazy">
+          <div class="proj-stop__body">
+            <span class="proj-stop__loc">Tulsa, Oklahoma</span>
+            <span class="proj-stop__metric">60 cabinets &middot; 480 panels &middot; 25.5 hrs</span>
+            <span class="proj-stop__name">Swigs at Osage Casino Hotel</span>
+            <p class="proj-stop__text">LED installed across three angled planes; bar and stage systems brought onto LUCI.</p>
+          </div>
+        </li>
+        <li class="proj-stop">
+          <img class="proj-stop__thumb" src="assets/since-last-signal/california-casino.jpg?v=1" alt="California Casino &mdash; sportsbook rack rebuilt and 20 displays brought online" width="1600" height="1000" loading="lazy">
+          <div class="proj-stop__body">
+            <span class="proj-stop__loc">Las Vegas, Nevada</span>
+            <span class="proj-stop__metric">20 displays &middot; 3 hours</span>
+            <span class="proj-stop__name">California Casino</span>
+            <p class="proj-stop__text">Sportsbook rack rebuilt, all 20 displays online, and the team trained before the crew left.</p>
+          </div>
+        </li>
+      </ul>
+      <p class="proj-snapshot__lead">Those were the quick stops. At <strong>Aliante</strong>, the work opened onto a much larger canvas. That&rsquo;s the next story.</p>
     </div>
-    <h2 class="art-title">LUCI Has Been a Few Places <em>Recently</em></h2>
-    <p class="proj-update__intro">Since the last Signal, LUCI teams have been in Lewiston, Tulsa, and Las Vegas &mdash; bringing new spaces online, clearing out what no longer needed to stay, and making the next room part of the property&rsquo;s operating standard.</p>
-
-    <div class="proj-map" aria-label="Map of recent LUCI field stops">
-      <svg class="proj-map__art" viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="proj-map-title">
-        <title id="proj-map-title">Three LUCI field stops &mdash; Lewiston, Idaho; Tulsa, Oklahoma; and Las Vegas, Nevada</title>
-        <defs>
-          <pattern id="proj-grid" width="22" height="22" patternUnits="userSpaceOnUse">
-            <circle cx="1" cy="1" r="1" fill="rgba(43,158,128,0.16)"/>
-          </pattern>
-        </defs>
-        <rect x="0" y="0" width="800" height="380" fill="url(#proj-grid)"/>
-        <polyline points="150,80 470,240 185,275" fill="none" stroke="#2b9e80" stroke-width="2" stroke-dasharray="5 7" stroke-opacity="0.7" stroke-linecap="round"/>
-        <g>
-          <circle cx="150" cy="80" r="9" fill="#2b9e80"/>
-          <circle cx="150" cy="80" r="3.5" fill="#F5F8FA"/>
-        </g>
-        <g>
-          <circle cx="470" cy="240" r="9" fill="#2b9e80"/>
-          <circle cx="470" cy="240" r="3.5" fill="#F5F8FA"/>
-        </g>
-        <g>
-          <circle cx="185" cy="275" r="9" fill="#CEB06E"/>
-          <circle cx="185" cy="275" r="3.5" fill="#F5F8FA"/>
-        </g>
-        <text x="168" y="74" font-family="'Space Grotesk',sans-serif" font-size="16" font-weight="700" fill="#10232D">Lewiston</text>
-        <text x="168" y="92" font-family="'Inter',sans-serif" font-size="12" fill="#49616E">Idaho</text>
-        <text x="488" y="234" font-family="'Space Grotesk',sans-serif" font-size="16" font-weight="700" fill="#10232D">Tulsa</text>
-        <text x="488" y="252" font-family="'Inter',sans-serif" font-size="12" fill="#49616E">Oklahoma</text>
-        <text x="203" y="269" font-family="'Space Grotesk',sans-serif" font-size="16" font-weight="700" fill="#10232D">Las Vegas</text>
-        <text x="203" y="287" font-family="'Inter',sans-serif" font-size="12" fill="#49616E">Nevada</text>
-      </svg>
-    </div>
-
-    <ul class="proj-cards">
-      <li class="proj-card">
-        <img class="proj-card__img" src="assets/since-last-signal/clearwater-river.jpeg?v=2" alt="Clearwater River Casino &amp; Lodge &mdash; LUCI live after rack environment cleanup" width="1600" height="1000" loading="lazy">
-        <div class="proj-card__body">
-          <span class="proj-card__loc">Lewiston, Idaho</span>
-          <span class="proj-card__metric">Live &middot; August 24</span>
-          <span class="proj-card__name">Clearwater River Casino &amp; Lodge</span>
-          <p class="proj-card__text">The team worked through an accumulated rack environment, removing equipment and cabling that no longer needed to remain before Clearwater River went live.</p>
-        </div>
-      </li>
-      <li class="proj-card">
-        <img class="proj-card__img" src="assets/since-last-signal/osage-swigs.jpeg?v=2" alt="Swigs at Osage Casino Hotel &mdash; LED install across three angled planes" width="1600" height="1000" loading="lazy">
-        <div class="proj-card__body">
-          <span class="proj-card__loc">Tulsa, Oklahoma</span>
-          <span class="proj-card__metric">60 cabinets &middot; 480 LED panels &middot; 25.5 hrs</span>
-          <span class="proj-card__name">Swigs at Osage Casino Hotel</span>
-          <p class="proj-card__text">A four-person team completed the LED installation across three angled planes, expanded the venue&rsquo;s audio, and brought the new bar and stage systems onto LUCI.</p>
-        </div>
-      </li>
-      <li class="proj-card">
-        <img class="proj-card__img" src="assets/since-last-signal/california-casino.jpg?v=1" alt="California Casino &mdash; sportsbook rack rebuilt and 20 displays brought online" width="1600" height="1000" loading="lazy">
-        <div class="proj-card__body">
-          <span class="proj-card__loc">Las Vegas, Nevada</span>
-          <span class="proj-card__metric">20 displays &middot; 3 hours</span>
-          <span class="proj-card__name">California Casino</span>
-          <p class="proj-card__text">The sportsbook rack was cleared and rebuilt, the cable modem was relocated, all 20 displays came online, and the property team was trained before the crew left.</p>
-        </div>
-      </li>
-    </ul>
-
-    <p class="proj-update__lead">Those were the quick stops. At Aliante, the work opened onto a much larger canvas. That&rsquo;s the next story.</p>
   </section>
 
   <section class="sec sec--deep" id="field-story" style="border-bottom: 4px solid var(--mint);">
