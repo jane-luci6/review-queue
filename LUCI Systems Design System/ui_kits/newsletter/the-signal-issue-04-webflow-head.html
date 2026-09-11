@@ -501,4 +501,26 @@ figure.ui-shot img{display:block;width:100%;height:auto;}
 .fag-cta a:hover{border-bottom-color:var(--mint-dark);}
 .fag-cta a span{transition:transform 0.15s;}
 .fag-cta a:hover span{transform:translateX(3px);}
+/* LUCI PROJECT UPDATE — map + compact collage */
+.proj-update__intro{font-family:'Inter',system-ui,sans-serif;font-size:clamp(17px,2vw,19px);line-height:1.6;color:var(--navy-muted);max-width:62ch;margin:clamp(16px,2.5vw,24px) 0 0;}
+.proj-map{margin:clamp(28px,4vw,40px) 0 0;padding:clamp(20px,3vw,32px);background:#F5F8FA;border:1px solid rgba(43,158,128,0.14);}
+.proj-map__art{width:100%;height:auto;display:block;}
+.proj-cards{list-style:none;margin:clamp(28px,4vw,40px) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.5vw,24px);}
+.proj-card{display:flex;flex-direction:column;}
+.proj-card__img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:center;display:block;}
+.proj-card__body{padding-top:14px;}
+.proj-card__loc{display:block;font-family:'Inter',system-ui,sans-serif;font-size:12px;font-weight:600;color:var(--navy-muted);margin-bottom:6px;}
+.proj-card__metric{display:block;font-family:var(--display);font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--mint-dark);margin-bottom:6px;}
+.proj-card__name{display:block;font-family:var(--body);font-weight:700;font-size:clamp(16px,1.8vw,19px);letter-spacing:-0.01em;line-height:1.15;color:var(--navy);margin-bottom:8px;}
+.proj-card__text{font-family:'Inter',system-ui,sans-serif;font-size:clamp(13px,1.4vw,15px);line-height:1.55;color:var(--navy-muted);margin:0;}
+.proj-update__lead{font-family:'Inter',system-ui,sans-serif;font-size:clamp(15px,1.7vw,17px);line-height:1.6;color:var(--navy-muted);margin:clamp(28px,4vw,40px) 0 0;max-width:62ch;}
+@media(max-width:640px){.proj-cards{grid-template-columns:1fr;}}
+/* FAG linked role tiles */
+.fag-tiles--links{margin:clamp(20px,3vw,28px) 0 0;}
+.fag-tile--link{display:flex;flex-direction:column;gap:6px;text-decoration:none;padding:clamp(14px,2vw,18px);background:#F5F8FA;border:1px solid var(--rule-light);transition:border-color 0.15s,background 0.15s;}
+.fag-tile--link:hover{border-color:var(--mint-dark);background:#EAF6F1;}
+.fag-tile--link .fag-tile__name{font-size:clamp(14px,1.5vw,16px);color:var(--navy);}
+.fag-tile--link .fag-tile__go{font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--mint-dark);}
+/* Quick Tip video */
+.quick-tip__video{width:100%;height:auto;aspect-ratio:4/3;display:block;background:rgba(104,227,190,0.06);}
 </style>
