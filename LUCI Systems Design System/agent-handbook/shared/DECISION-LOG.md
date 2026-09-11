@@ -10,6 +10,8 @@
 
 ## 2026-09-11
 
+- **Aliante case study approved into Downloads; New LUCI launch timeline pushed to Review Queue.** Jane approved the Aliante case study (moved to IMP Downloads → Current Content → Case studies; live on review site `.37`); the New LUCI launch timeline entered the IMP Review Queue for internal planning review (beta, property by property — not a public splash). Jane, 11 Sep.
+
 - **Signal 04 Project Update stays its own compact section** between Welcome and Aliante (not the tall photo wall, not a numbered article). Green cabinet/panel/hour/display metric chips eliminated; property name + short human line + a quiet date (e.g. "Live · August 24") is enough. Jane, 11 Sep, revising the prior "callout / not a formal section" brief.
 
 ## 2026-09-10

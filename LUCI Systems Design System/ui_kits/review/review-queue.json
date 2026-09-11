@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-10",
+  "updated": "2026-09-11",
   "publishNote": "Build (npm run build:review) outputs to ui_kits/review. Bump reviewVersion + versionNote for new uploads (version history shown in portal). Set dueForReview for first-time review. Comments/approvals sync server-side via the comments_api container (proxied at /api/comments); Jane sees Mike/Mark's feedback on refresh. Archive with scripts/pull-review-comments.mjs.",
   "previewBaseUrl": "",
   "commentsApiUrl": "http://10.10.1.17:8081/api/comments",
@@ -24,21 +24,21 @@
   "inProgress": [],
   "dueForReview": [
     {
-      "id": "case-study-aliante",
-      "title": "Case Study · Aliante Casino + Hotel + Spa",
-      "summary": "Aliante case study — a 106-foot curved LED wall (2,000 sq ft, 24 zones) built into the LUCI operation already running the property, with 15 legacy racks consolidated to 2 and 20+ projectors removed.",
-      "liveUrl": "http://10.10.1.37/resources/case-studies/aliante/",
+      "id": "new-luci-launch-timeline",
+      "title": "New LUCI · Launch timeline",
+      "summary": "Internal launch timeline for New LUCI — beta, property by property, not a public splash.",
+      "liveUrl": "http://10.10.1.17:8081/internal-portal/new-luci-launch-timeline.html",
       "reviewVersion": 1,
-      "versionNote": "First draft — built on the website from the approved Aliante copy; before/after slider, consolidation ledger, scope story. Quote section removed.",
+      "versionNote": "First review — launch timeline published to the portal for internal planning review.",
       "reviewBrief": {
-        "description": "Standalone Aliante case study for the website — 106-foot curved LED wall sportsbook remodel, 15 racks consolidated to 2, 20+ projectors removed, six wall configurations, and the scope ledger. Built on the website (Astro) with a before/after slider and consolidation ledger.",
-        "reviewAsk": "whether the story reads true and the scope stats are accurate — anything to adjust before it goes live on lucisystems.com."
+        "description": "The New LUCI launch timeline lays out the beta, property-by-property rollout sequence for internal planning — not a public launch splash.",
+        "reviewAsk": "whether the sequence, dates, and ownership framing read right for internal launch planning."
       },
       "versionHistory": [
         {
           "version": 1,
-          "published": "2026-09-10",
-          "note": "First draft — built on the website; before/after slider, consolidation ledger, scope story. Quote section removed."
+          "published": "2026-09-11",
+          "note": "First review — launch timeline published to the portal for internal planning review."
         }
       ]
     }
@@ -473,6 +473,32 @@
           "version": 1,
           "published": "2026-08-19",
           "note": "First draft — built from the approved Yaamava' web copy."
+        }
+      ]
+    },
+    {
+      "id": "case-study-aliante",
+      "title": "Case Study · Aliante Casino + Hotel + Spa",
+      "summary": "Aliante case study — a 106-foot curved LED wall (2,000 sq ft, 24 zones) built into the LUCI operation already running the property, with 15 legacy racks consolidated to 2 and 20+ projectors removed.",
+      "approved": "2026-09-11",
+      "note": "Approved — available in Downloads under Case studies; live on review site .37",
+      "liveUrl": "http://10.10.1.37/resources/case-studies/aliante/",
+      "reviewVersion": 2,
+      "versionNote": "Approved — moved to Downloads under Case studies; live on review site .37.",
+      "reviewBrief": {
+        "description": "Standalone Aliante case study for the website — 106-foot curved LED wall sportsbook remodel, 15 racks consolidated to 2, 20+ projectors removed, six wall configurations, and the scope ledger. Built on the website (Astro) with a before/after slider and consolidation ledger.",
+        "reviewAsk": "approved — open the live page on the review site (.37)."
+      },
+      "versionHistory": [
+        {
+          "version": 1,
+          "published": "2026-09-10",
+          "note": "First draft — built on the website; before/after slider, consolidation ledger, scope story. Quote section removed."
+        },
+        {
+          "version": 2,
+          "published": "2026-09-11",
+          "note": "Approved — moved to Downloads under Case studies; live on review site .37."
         }
       ]
     },

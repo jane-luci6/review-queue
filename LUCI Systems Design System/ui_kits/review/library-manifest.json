@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-01",
+  "updated": "2026-09-11",
   "note": "Two-level folder tree for the portal Downloads tab: folders -> groups -> items. Items link to review-queue.json via queueId (title, summary, dates, preview and live URLs come from the queue). Items without a queueId carry their own label/path. Legacy top-level `groups` is still read by the portal for backward compatibility.",
   "folders": [
     {
@@ -39,6 +39,11 @@
               "id": "case-study-yaamava",
               "label": "Yaamava' Resort & Casino",
               "queueId": "case-study-yaamava"
+            },
+            {
+              "id": "case-study-aliante",
+              "label": "Aliante Casino + Hotel + Spa",
+              "queueId": "case-study-aliante"
             }
           ]
         },
