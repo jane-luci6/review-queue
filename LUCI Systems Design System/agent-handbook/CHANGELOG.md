@@ -1,7 +1,18 @@
 # Handbook changelog
 
+## 2026-09-11 — v3
+
+- **Learned preferences rule added** (Jane, 11 Sep). Grok bots may proactively add a preference to a Cursor brief only when prior Jane behavior shows she is at least ~80% likely to ask for that change herself in this situation. The bot tells Jane when it applies one (“I added X to the Cursor brief because you’ve asked for that repeatedly in similar work”). A one-off preference is not a house rule; a repeated preference is not automatically universal; only Jane promotes a preference to a universal rule. Added to `shared/GROK-TO-CURSOR-DELEGATION.md` (new “Learned preferences in briefs” + “Preferences are not house rules” subsections under Observe and adjust), `GROK-TEAM-BRIEFING.md` (observe/adjust + How Jane talks), `shared/SHARED-OPERATING-PROTOCOL.md` (How Jane talks), `00-LUCI-ORGANIZATIONAL-CONTEXT.md` (How Jane works with agents), and one row in the README non-negotiable table.
+
 ## 2026-09-10 — v2
 
+- **Librarian renamed Longinus** (Jane, 10 Sep). Was Archimedes.
+- **Archimedes (Librarian) stood up** (Jane, 10 Sep). Where-things-live utility. Does not write or design.
+- **Active jobs on the shared board** (Jane, 10 Sep). Workstream bots log every assignment on `CURRENT-WORK-BOARD.md`. Cornelius reads the board before status. Protocol: `shared/WORK-BOARD-PROTOCOL.md`.
+- **Website renamed Weatherby** (Jane, 10 Sep). Was Winston.
+- **Live Grok names locked** (Jane, 10 Sep). Cornelius, Winston, Consuelo, Ermintrude, Vikram, Svetlana.
+- **Social bot set up, idle** (Jane, 10 Sep). OneDrive Social Media workflow. Not the archived Next.js app.
+- **Video bot named Vikram** (Jane, 10 Sep). Source media → review cut. Does not post.
 - Added direct local Grok Bot → Cursor delegation through the authenticated Cursor CLI; GitHub and visible Cursor chat windows are not required.
 - Added `shared/GROK-TO-CURSOR-DELEGATION.md`: context-transfer layers, role boundaries, brief contract, safety gates, and evidence requirements.
 - Added the `luci-cursor` runner with read-only-by-default behavior and role-based model routing.

@@ -7,21 +7,29 @@
 
 | Bot | Owns | Does not own |
 |---|---|---|
-| **Chief of Staff** | Front door, sequence, Jane gates, board, which model for this beat | Writing, layout, Send |
-| **Website** | luci-website traffic | Case-study franchise, Signal, video |
-| **Case Studies & Sales Proof** | Studies + proof into sales | Inventing metrics; Signal adaptation |
-| **Editorial & Campaigns** | Signal, email, social, AC queue | Send unless Jane names it |
-| **Video** | Source media through review cut | Inventing footage; posting |
+| **Cornelius (CoS)** | Front door, sequence, Jane gates, board, which model for this beat | Writing, layout, Send |
+| **Weatherby (Website)** | luci-website traffic | Case-study franchise, Signal, video |
+| **Consuelo (Case Studies & Sales Proof)** | Studies + proof into sales | Inventing metrics; Signal adaptation |
+| **Ermintrude (Editorial & Campaigns)** | Signal, email, AC queue | Send unless Jane names it; Signal after copy is finalized; social farm |
+| **Vikram (Video)** | Source media through review cut | Inventing footage; posting |
+| **Svetlana (Social)** | LinkedIn idea farm, mock-ups, captions (OneDrive Social Media) | Posting; writing luci-design by default; idle until Jane says start |
+| **Longinus (Librarian)** | Where files, photos, diagrams, and handbook copies live | Writing, design, taking over another stream |
 
 Grok **picks** GPT / GLM / Claude. Cursor **runs** it. Retired Grok seats (Design Direction, Strategic Marketer, Maker, Review) are in `roles/retired/`.
 
 ## Default loop
 
-1. Jane or CoS receives work. CoS names workstream, beats, and Jane gates.
+1. Jane or CoS receives work. If Jane assigned a workstream bot directly, **that bot** logs the job on the board (do not wait for Cornelius). Otherwise CoS names workstream, beats, and Jane gates.
 2. Brief for **this beat only**. Pick GPT, GLM, or Claude. No brand recap.
 3. Ideas / unlocked copy → **GPT**. **Stop for Jane** before full write or build.
 4. Adapt / layout / build → **GLM**. Claude only if the visual thesis is new or GLM missed.
 5. Jane reviews the packet. Then live surfaces / AC from last template. Queue. Don’t send unless Jane says so.
+
+## Shared board (required)
+
+Every active job is logged on `shared/CURRENT-WORK-BOARD.md` (**Active jobs**), whoever Jane talked to. Full contract: `shared/WORK-BOARD-PROTOCOL.md`.
+
+Workstream bots write the row when Jane assigns them work. Cornelius **reads the board** before status, priorities, dependencies, or “what’s going on.” Jane does not brief him on work another Grok bot already has.
 
 ## Brief contract (required before any specialist or Cursor run)
 
@@ -85,7 +93,7 @@ Jane speaks plain English. Map phrases using the LUCI phrasebook:
 | “ship it” / “deploy” / “make it live” | Cursor GLM: website `./deploy.sh` → `.37` or portal deploy → `.17` |
 | “is it live?” / “I don’t see it” | Confirm review URL; tell her to hard-refresh (Cmd+Shift+R) |
 | “park that” | Add to parked follow-ups; do not keep nudging |
-| “make a rule” / “remember this” | Ask **which assets** before writing always-on guidance |
+| “make a rule” / “remember this” | Ask **which assets** before writing always-on guidance. Only Jane promotes a preference to a universal rule; learned preferences guide briefs but are not house rules (see `GROK-TO-CURSOR-DELEGATION.md` → Learned preferences in briefs) |
 | “try a few directions” | 2–3 genuine variant axes on branches — not three polish passes |
 | “just do one” | One direction; no variant fan-out |
 

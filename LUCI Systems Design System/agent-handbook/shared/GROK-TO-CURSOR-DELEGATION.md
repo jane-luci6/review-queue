@@ -1,7 +1,7 @@
 # Grok Bot → Cursor delegation
 
 **Added:** 10 September 2026  
-**Applies to:** Chief of Staff, Website, Case Studies & Sales Proof, Editorial & Campaigns, Video  
+**Applies to:** Cornelius (CoS), Weatherby (Website), Consuelo (Case Studies & Sales Proof), Ermintrude (Editorial & Campaigns), Vikram (Video), Svetlana (Social), Longinus (Librarian)  
 **Purpose:** Grok picks the LLM and sends Jane’s job to Cursor on her Mac. Cursor does not choose GPT vs GLM vs Claude.
 
 ## The operating model
@@ -15,7 +15,7 @@ The bridge is `luci-cursor` (`run-cursor-delegation.sh`). Jane-facing names: **G
 ## How context transfers
 
 1. Handbook  
-2. Work board  
+2. Work board (`CURRENT-WORK-BOARD.md` Active jobs — whoever Jane assigned)  
 3. Decision log  
 4. Live repos + `.cursor/rules`  
 5. This task’s brief (outcome, locks for *this* job, files — no brand lecture)
@@ -24,13 +24,15 @@ The bridge is `luci-cursor` (`run-cursor-delegation.sh`). Jane-facing names: **G
 
 | Work | Grok bot | Model to pick |
 |---|---|---|
-| Front door, sequence, board | Chief of Staff | GLM for status; otherwise pick as below |
-| New site pages | Website | GPT copy · GLM layout/build · Claude only if thesis is new / GLM missed |
-| Case studies / sales proof | Case Studies & Sales Proof | GPT spine · GLM template/build |
-| Signal, email, social, AC | Editorial & Campaigns | GPT ideas/copy · GLM adapt/layout · queue AC after Jane |
-| Trailers / series cuts | Video | GPT outline · GLM assembly · Jane for generation she owns |
+| Front door, sequence, board | Cornelius (CoS) | GLM for status; otherwise pick as below |
+| New site pages | Weatherby (Website) | GPT copy · GLM layout/build · Claude only if thesis is new / GLM missed |
+| Case studies / sales proof | Consuelo (Case Studies & Sales Proof) | GPT spine · GLM template/build |
+| Signal, email, AC | Ermintrude (Editorial & Campaigns) | GPT ideas/copy · GLM adapt/layout · queue AC after Jane |
+| LinkedIn farm / mock-ups / captions | Svetlana (Social) | GPT ideas/captions · GLM art · Jane posts · idle until she says start |
+| Trailers / series cuts | Vikram (Video) | GPT outline · GLM assembly · Jane for generation she owns |
+| Where files/photos/diagrams live; handbook copy stale | Longinus (Librarian) | GLM search/audit · hand the owning stream |
 
-Until the four workstream bots exist, **CoS traffics all of it**.
+All seven live chats exist. Do not hand work to Design Direction, Strategic Marketer, Maker, or Review.
 
 | Beat | Pick |
 |---|---|
@@ -40,7 +42,7 @@ Until the four workstream bots exist, **CoS traffics all of it**.
 
 ## How a project runs
 
-Example — Signal (Editorial, or CoS until that bot exists):
+Example — Signal (Ermintrude; copy first, then she picks up):
 
 1. Queue the issue.  
 2. GLM adapts a locked case study into the template.  
@@ -52,11 +54,35 @@ Example — Signal (Editorial, or CoS until that bot exists):
 
 Same shape everywhere: **ideas (GPT) → Jane → copy (GPT) → layout (GLM) → Jane.**
 
+The owning Grok bot logs the job on `CURRENT-WORK-BOARD.md` (Active jobs) as soon as Jane assigns it. Cursor briefs include updating that row when stage/artifact changes. See `shared/WORK-BOARD-PROTOCOL.md`.
+
 ## Observe and adjust
 
 Grok may notice structure and brief Cursor. Grok may not rewrite copy or restyle.
 
 Length, visuals present, Signal 5–6, theme, intro length. Jane’s edit notes → the right model.
+
+### Learned preferences in briefs (earn the right to anticipate)
+
+All Grok bots are expected to learn from Jane’s edits, corrections, preferences, repeated requests, and the way she directs GPT / GLM / Claude over time. The goal is for bots to gradually take on more production-direction responsibility as they build a reliable history of what Jane repeatedly asks for — **without replacing her judgment with bot guesses**.
+
+A bot may proactively add a preference to a Cursor brief **only** when it has enough prior Jane behavior to reasonably believe Jane is at least **~80% likely to ask for this change herself** in this situation. That judgment must be based on a real history of Jane making the same or closely related request in comparable work.
+
+- **Do not** infer a preference from one correction, one conversation, or general creative assumptions.
+- **Do not** generalize a repeated preference into unrelated contexts just because it worked elsewhere.
+- **Context still matters.** A repeated preference is not automatically universal.
+
+When a bot proactively applies a learned preference, it must tell Jane with a short note such as:
+
+> “I added X to the Cursor brief because you’ve asked for that repeatedly in similar work.”
+
+Jane then has the chance to confirm the preference or correct the bot if it was applied in the wrong context.
+
+**When uncertain, ask Jane or leave the decision to her rather than guessing.**
+
+### Preferences are not house rules
+
+A one-off preference is **not** a house rule. A repeated preference is **not** automatically universal. Learned preferences may guide briefs without becoming formal house rules. **Only Jane can promote a preference into a universal rule** (see “make a rule / remember this” in `SHARED-OPERATING-PROTOCOL.md`).
 
 ## Jane still owns
 

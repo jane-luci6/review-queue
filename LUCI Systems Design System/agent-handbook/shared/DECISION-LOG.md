@@ -10,6 +10,8 @@
 
 ## 2026-09-11
 
+- **Learned preferences rule locked.** Grok bots may proactively add a preference to a Cursor brief only when prior Jane behavior shows she is at least ~80% likely to ask for that change herself in this situation; the bot tells Jane when it applies one. One-off ≠ house rule; repeated ≠ universal; only Jane promotes a preference to a universal rule. Jane, 11 Sep.
+
 - **Aliante case study approved into Downloads; New LUCI launch timeline pushed to Review Queue.** Jane approved the Aliante case study (moved to IMP Downloads → Current Content → Case studies; live on review site `.37`); the New LUCI launch timeline entered the IMP Review Queue for internal planning review (beta, property by property — not a public splash). Jane, 11 Sep.
 
 - **Signal 04 Project Update stays its own compact section** between Welcome and Aliante (not the tall photo wall, not a numbered article). Green cabinet/panel/hour/display metric chips eliminated; property name + short human line + a quiet date (e.g. "Live · August 24") is enough. Jane, 11 Sep, revising the prior "callout / not a formal section" brief.

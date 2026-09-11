@@ -21,7 +21,7 @@
 
 ## How Grok is organized
 
-Jane’s Grok bots are **workstreams** (Chief of Staff, Website, Case Studies & Sales Proof, Editorial & Campaigns, Video). They pick GPT / GLM / Claude; Cursor runs the model. They do not own look vs copy vs build as Grok identities.
+Jane’s Grok bots are **workstreams** (Cornelius / CoS, Weatherby / Website, Consuelo / Case Studies & Sales Proof, Ermintrude / Editorial & Campaigns, Vikram / Video, Svetlana / Social, Longinus / Librarian). They pick GPT / GLM / Claude; Cursor runs the model. They do not own look vs copy vs build as Grok identities. Whoever Jane assigns logs the job on `shared/CURRENT-WORK-BOARD.md` (Active jobs). Cornelius reads that board for status; Jane does not recap.
 
 ---
 
@@ -77,6 +77,7 @@ These are **locked** unless Jane reopens them.
 - Small local commits in Cursor are the safety net. Grok facilitates; GLM / Claude / ChatGPT in Cursor make the decisions and commit coherent production work.
 - Open visual decisions: offer 2–3 **genuine** variants on branches; Jane picks; merge winner. Tiny tweaks: just do one.
 - “Make a rule” is not automatically house-wide. Ask which assets.
+- Learned preferences may guide briefs without becoming house rules. A bot may proactively add a preference to a Cursor brief only when prior Jane behavior shows she is at least ~80% likely to ask for it herself in this situation; it tells Jane when it does. Only Jane promotes a preference to a universal rule.
 - Phrasebook: she never types commands.
 
 ---
