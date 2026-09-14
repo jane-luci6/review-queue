@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-11",
+  "updated": "2026-09-14",
   "publishNote": "Build (npm run build:review) outputs to ui_kits/review. Bump reviewVersion + versionNote for new uploads (version history shown in portal). Set dueForReview for first-time review. Comments/approvals sync server-side via the comments_api container (proxied at /api/comments); Jane sees Mike/Mark's feedback on refresh. Archive with scripts/pull-review-comments.mjs.",
   "previewBaseUrl": "",
   "commentsApiUrl": "http://10.10.1.17:8081/api/comments",
@@ -8,17 +8,17 @@
     {
       "title": "Messaging guide",
       "url": "messaging/messaging-guide.html",
-      "note": "Updated Sep 10, 2026"
+      "note": "Updated Sep 14, 2026"
     },
     {
       "title": "LUCI philosophy",
       "url": "messaging/philosophy.html",
-      "note": "Updated Sep 10, 2026"
+      "note": "Updated Sep 14, 2026"
     },
     {
       "title": "Personas",
       "url": "messaging/personas.html",
-      "note": "Updated Sep 10, 2026"
+      "note": "Updated Sep 14, 2026"
     }
   ],
   "inProgress": [],
@@ -39,6 +39,31 @@
           "version": 1,
           "published": "2026-09-11",
           "note": "First review — launch timeline published to the portal for internal planning review."
+        }
+      ]
+    },
+    {
+      "id": "signal-issue-04",
+      "title": "The Signal · Issue 04 (September 2026)",
+      "summary": "Full September issue — theme: Navigating Standardization vs. Adaptation. Sections: Welcome, LUCI Project Update, In the Field (Aliante), Quick Tip, What's Coming (map POV), From LUCI / FAG, A Minute with Mike.",
+      "reviewVersion": 2,
+      "versionNote": "Full copy for Sep 15 send — Jane approved the look; stakeholder review of the final newsletter copy before the Tue Sep 15 customer send.",
+      "hubPreviewPath": "ui_kits/newsletter/the-signal-issue-04-september-2026.html",
+      "previewUrl": "newsletter/the-signal-issue-04-september-2026.html",
+      "reviewBrief": {
+        "description": "The full September 2026 edition of The Signal — the complete newsletter copy assembled into the Issue 04 template (Welcome through A Minute with Mike). Theme: Navigating Standardization vs. Adaptation. Jane has approved the look; this pass is the stakeholder read of the final copy before the Tue Sep 15 customer send.",
+        "reviewAsk": "read the full issue copy (Welcome through A Minute with Mike) for accuracy and voice before the Tue Sep 15 customer send; flag the Mike column if it still reads soft."
+      },
+      "versionHistory": [
+        {
+          "version": 1,
+          "published": "2026-09-01",
+          "note": "Added to the portal — preview pending the live publish."
+        },
+        {
+          "version": 2,
+          "published": "2026-09-14",
+          "note": "Full copy for Sep 15 send — Jane approved the look; stakeholder review of final newsletter copy before send."
         }
       ]
     }
@@ -317,27 +342,6 @@
       ]
     },
     {
-      "id": "signal-issue-04",
-      "title": "The Signal · Issue 04 (September 2026)",
-      "summary": "Issue 04 — the September edition. Opens from the local preview until the live page is published.",
-      "approved": "2026-09-01",
-      "note": "Approved. The live URL isn't reachable yet — this entry opens the built preview; add liveUrl once it's published.",
-      "reviewVersion": 1,
-      "hubPreviewPath": "ui_kits/newsletter/the-signal-issue-04-september-2026.html",
-      "reviewBrief": {
-        "description": "Issue 04 is the September web edition of The Signal.",
-        "reviewAsk": "approved — open the preview."
-      },
-      "versionHistory": [
-        {
-          "version": 1,
-          "published": "2026-09-01",
-          "note": "Added to the portal — preview pending the live publish."
-        }
-      ],
-      "previewUrl": "newsletter/the-signal-issue-04-september-2026.html"
-    },
-    {
       "id": "newsletter-email-teaser",
       "title": "Newsletter email · The Signal Issue 01 teaser",
       "summary": "Inbox teaser — Issue 01 highlights, deep links, read-issue CTA. Footer tagline synced to Messaging Guide.",
@@ -592,5 +596,5 @@
     }
   ],
   "finalized": [],
-  "messagingDocsUpdated": "2026-09-10"
+  "messagingDocsUpdated": "2026-09-14"
 }
