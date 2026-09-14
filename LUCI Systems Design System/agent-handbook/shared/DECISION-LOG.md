@@ -8,6 +8,12 @@
 
 ---
 
+## 2026-09-14
+
+- **Signal Issue 04 Mike goal line locked.** First sentence of the last body paragraph in "A Minute with Mike" changed to "The goal isn't a single manufacturer ecosystem." (was "The goal isn't identical hardware everywhere."); second sentence unchanged. Jane, 14 Sep.
+- **Hortensia not stood up.** Cursor already does mechanical and taste QA. No Headmistress Grok seat. Jane.
+- **Hortensia (Headmistress) stood up.** Final inspection of finished packets before Jane. Not the retired Review seat. Not project management. Jane.
+
 ## 2026-09-11
 
 - **Aliante iMovie card 02 — `40 acres` highlighted in mint display scale (revises prior card 02 lock).** Jane revised the one-off "Across more than 40 acres" card (no period) to highlight `40 acres` the same way as card 01's `100,000+`: SpaceGrotesk-SemiBold 128px, mint `#68E3BE`. Lead-in `Across more than` stays off-white Medium 52 @ 95%. No mint rule. Shared baseline at 128px exceeded the 864 measure, so the card breaks cleanly to two lines (lead-in above, mint numeral on the anchor y=920). S-class plate (top y=680) matches card 01. Per-card override of BODY-TREATMENT-LOCK §2/§3.1/§6 for this card only — not a house rule; lock still governs c02–c19. Per Vikram/GLM brief, 11 Sep.
