@@ -1,0 +1,475 @@
+<style>
+    .luci-cs { width: 100vw; max-width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); position: relative; font-family: var(--font-body); background: var(--navy-deep); color: var(--ink); -webkit-font-smoothing: antialiased; font-size: 18px; line-height: 1.72; }
+    .luci-cs *, .luci-cs *::before, .luci-cs *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    .w-embed .luci-cs, .w-embed .luci-cs * { box-sizing: border-box; }
+    .luci-cs img { max-width: none; }
+    .luci-cs a { text-decoration: none; }
+    .luci-cs blockquote { border: none; margin: 0; padding: 0; }
+    .luci-cs ul, .luci-cs ol { list-style: none; }
+    .luci-cs .cs-cta__about { margin-top: 48px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.12); max-width: 62ch; }
+    .luci-cs .cs-cta__about-label { color: var(--mint); margin-bottom: 12px; }
+    .luci-cs .cs-cta__statement { color: rgba(235,245,248,0.82); font-size: 17px; line-height: 1.65; }
+
+    :root {
+      --navy-deep: #0a161c; --navy: #10232d; --navy-mid: #314955; --navy-muted: #49616e;
+      --mint: #68e3be; --mint-rgb: 104, 227, 190; --accent-light: #2b9e80;
+      --gold: #edd086; --gold-rgb: 237, 208, 134; --gold-deep: #ceb06e;
+      --sand: #e5e3df; --off-white: #f5f8fa; --rule-light: #dbe1e4;
+      --ink: #354f5c; --ink-strong: #1c2b33;
+      --font-display: 'Syncopate', sans-serif;
+      --font-body: 'Space Grotesk', system-ui, sans-serif;
+      --font-copy: 'Inter', system-ui, sans-serif;
+    }
+
+    .luci-cs img { max-width: 100%; height: auto; display: block; }
+    .luci-cs .cs-page { background: var(--navy-deep); padding-bottom: clamp(48px, 8vw, 96px); }
+    .luci-cs .cs-page__sheet { max-width: 880px; margin: 0 auto; background: #fff; }
+        .luci-cs .cs-hero { background-color: var(--navy-deep); background-image: linear-gradient(to right, rgba(8,18,24,0.98) 0%, rgba(8,18,24,0.96) 55%, rgba(8,18,24,0.70) 82%, rgba(8,18,24,0.20) 100%), url('https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a7e091df18dd3a992d8ac82_luci-bg-hero-1920x1080.svg'); background-size: cover; background-position: center; background-repeat: no-repeat; padding: clamp(40px, 8vw, 84px) clamp(28px, 6vw, 64px) clamp(40px, 7vw, 72px); overflow: hidden; position: relative; }
+    .luci-cs .cs-hero::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 4px; background: linear-gradient(to right, var(--mint) 0 62%, var(--gold) 62% 100%); }
+    .luci-cs .cs-hero__kicker { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+    .luci-cs .cs-hero__kicker::before { content: ''; width: 28px; height: 2px; background: var(--mint); }
+    .luci-cs .cs-hero__kicker span { font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--mint); }
+    .luci-cs .cs-hero__title { margin: 0 0 26px; font-family: var(--font-body); font-weight: 700; font-size: clamp(34px, 6.5vw, 60px); line-height: 1.04; letter-spacing: -0.03em; color: var(--off-white); max-width: 16ch; }
+    .luci-cs .cs-hero__title em { display: block; font-family: var(--font-display); font-style: normal; font-size: clamp(24px, 4.8vw, 44px); line-height: 1.2; letter-spacing: 0; color: var(--mint); text-transform: uppercase; white-space: nowrap; }
+    .luci-cs .cs-hero__trail { display: block; font-family: var(--font-body); font-size: clamp(17px, 2.2vw, 24px); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(235,245,248,0.82); margin-top: 16px; }
+    .luci-cs .cs-hero__dek { margin: 0 0 30px; font-family: var(--font-copy); font-size: clamp(15px, 1.8vw, 18px); line-height: 1.6; color: rgba(235,245,248,0.82); max-width: 58ch; }
+    .luci-cs .cs-hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 30px; }
+    .luci-cs .cs-download { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; letter-spacing: 0.04em; text-decoration: none; color: var(--mint); border: 1px solid rgba(104,227,190,0.45); padding: 12px 20px; transition: background 0.15s, border-color 0.15s; }
+    .luci-cs .cs-download:hover { background: rgba(104,227,190,0.08); border-color: var(--mint); }
+    .luci-cs .cs-download__icon { font-size: 16px; line-height: 1; }
+    .luci-cs .cs-hero__property { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin: 0; padding-top: 24px; border-top: 1px solid rgba(104,227,190,0.15); font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: var(--gold); }
+    .luci-cs .cs-hero__property span { color: rgba(165,179,188,0.7); font-weight: 500; }
+        .luci-cs .cs-glance { background: var(--off-white); padding: clamp(32px, 5vw, 48px) clamp(28px, 6vw, 64px); border-bottom: 1px solid var(--rule-light); }
+    .luci-cs .cs-glance__logo { margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid var(--rule-light); }
+    .luci-cs .cs-glance__logo-card { display: inline-block; background: var(--navy-deep); padding: 14px 22px; border-radius: 8px; }
+    .luci-cs .cs-glance__logo img { height: 56px; width: auto; display: block; }
+    .luci-cs .cs-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 32px; }
+    @media (max-width: 620px) { .luci-cs .cs-facts { grid-template-columns: repeat(2, 1fr); gap: 20px 24px; } }
+    .luci-cs .cs-facts__label { margin: 0 0 8px; font-family: var(--font-display); font-size: 9px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-light); }
+    .luci-cs .cs-facts__value { margin: 0; font-size: 17px; font-weight: 600; line-height: 1.3; color: var(--navy); }
+    .luci-cs .cs-inventory { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--rule-light); border: 1px solid var(--rule-light); margin-bottom: 28px; list-style: none; padding: 0; }
+    @media (max-width: 768px) { .luci-cs .cs-inventory { grid-template-columns: repeat(2, 1fr); } }
+    .luci-cs .cs-inventory__item { background: #fff; padding: 18px 16px; text-align: left; }
+    .luci-cs .cs-inventory__num { margin: 0 0 6px; font-family: var(--font-body); font-size: clamp(28px, 4vw, 36px); font-weight: 700; line-height: 1; letter-spacing: -0.03em; color: var(--accent-light); }
+    .luci-cs .cs-inventory__label { margin: 0; font-family: var(--font-copy); font-size: 13px; line-height: 1.35; color: var(--ink); font-weight: 500; }
+    .luci-cs .cs-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule-light); border: 1px solid var(--rule-light); }
+    @media (max-width: 620px) { .luci-cs .cs-summary { grid-template-columns: 1fr; } }
+    .luci-cs .cs-summary__cell { background: #fff; padding: 22px; }
+    .luci-cs .cs-summary__label { margin: 0 0 10px; font-family: var(--font-display); font-size: 9px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-light); }
+    .luci-cs .cs-summary__text { margin: 0; font-family: var(--font-copy); font-size: 15px; line-height: 1.55; color: var(--ink); }
+        .luci-cs .cs-reel { background: var(--navy-deep); padding: clamp(32px, 5vw, 56px) clamp(28px, 6vw, 64px); border-bottom: 1px solid rgba(104,227,190,0.12); }
+    .luci-cs .cs-reel__video { display: block; width: 100%; max-width: 760px; margin: 0 auto; aspect-ratio: 16/9; background: #000; border: 1px solid rgba(104,227,190,0.15); }
+    .luci-cs .cs-reel__caption { margin: 14px auto 0; max-width: 760px; font-family: var(--font-copy); font-size: 13px; letter-spacing: 0.04em; color: rgba(235,245,248,0.7); text-align: center; }
+
+    .luci-cs .cs-sec { padding: clamp(44px, 6vw, 72px) clamp(28px, 6vw, 64px); border-bottom: 1px solid var(--rule-light); }
+    .luci-cs .cs-sec--white { background: #fff; }
+    .luci-cs .cs-sec--light { background: var(--off-white); }
+    .luci-cs .cs-sec--mid { position: relative; isolation: isolate; background-color: var(--navy-mid); border-bottom-color: rgba(0,0,0,0.2); overflow: hidden; }
+    .luci-cs .cs-sec--mid::before { content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(ellipse 95% 100% at 0% 35%, rgba(104,227,190,0.28) 0%, transparent 68%), radial-gradient(ellipse 60% 75% at 15% 100%, rgba(104,227,190,0.14) 0%, transparent 58%); }
+    .luci-cs .cs-sec--mid > * { position: relative; z-index: 1; }
+    .luci-cs .cs-sec--dark { background: var(--navy); border-bottom-color: rgba(0,0,0,0.3); }
+    .luci-cs .cs-sec__title { margin: 0 0 22px; font-family: var(--font-body); font-weight: 700; font-size: clamp(24px, 4vw, 34px); line-height: 1.12; letter-spacing: -0.025em; max-width: 24ch; }
+    .luci-cs .cs-sec--white .cs-sec__title, .luci-cs .cs-sec--light .cs-sec__title { color: var(--navy); }
+    .luci-cs .cs-sec--mid .cs-sec__title, .luci-cs .cs-sec--dark .cs-sec__title { color: var(--off-white); }
+    .luci-cs .cs-sec__title-accent { color: var(--gold); }
+    .luci-cs .cs-sec--white .cs-sec__title-accent, .luci-cs .cs-sec--light .cs-sec__title-accent { color: var(--accent-light); }
+    .luci-cs .cs-copy p { margin: 0 0 18px; font-family: var(--font-copy); font-size: 17px; line-height: 1.72; max-width: 64ch; }
+    .luci-cs .cs-copy p:last-child { margin-bottom: 0; }
+    .luci-cs .cs-sec--white .cs-copy p, .luci-cs .cs-sec--light .cs-copy p { color: var(--ink); }
+    .luci-cs .cs-sec--mid .cs-copy p { color: rgba(235,245,248,0.88); }
+    .luci-cs .cs-sec--dark .cs-copy p { color: rgba(235,245,248,0.92); }
+        .luci-cs .cs-photo-band { position: relative; overflow: hidden; min-height: clamp(380px, 52vw, 520px); border-bottom: none; }
+    .luci-cs .cs-photo-band__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block; }
+    .luci-cs .cs-photo-band__scrim { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(to right, rgba(245,248,250,0.97) 0%, rgba(245,248,250,0.95) 52%, rgba(245,248,250,0.78) 72%, rgba(245,248,250,0.30) 88%, rgba(245,248,250,0) 100%); }
+    .luci-cs .cs-photo-band__content { position: relative; z-index: 2; padding: clamp(44px, 6vw, 72px) clamp(28px, 6vw, 64px); max-width: 54ch; }
+    .luci-cs .cs-photo-band .cs-sec__title { color: var(--navy); }
+    .luci-cs .cs-photo-band .cs-sec__title-accent { color: var(--accent-light); }
+    .luci-cs .cs-photo-band .cs-copy p { color: var(--ink); }
+    @media (max-width: 640px) { .luci-cs .cs-photo-band { min-height: 420px; } .luci-cs .cs-photo-band__scrim { background: linear-gradient(to bottom, rgba(245,248,250,0.96) 0%, rgba(245,248,250,0.88) 48%, rgba(245,248,250,0.35) 72%, rgba(245,248,250,0) 100%); } .luci-cs .cs-photo-band__content { max-width: none; } }
+
+    .luci-cs .cs-crew { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3px; margin: 24px 0 28px; max-width: 100%; overflow: hidden; border-radius: 14px; background: var(--navy-deep); }
+    .luci-cs .cs-crew figure { margin: 0; position: relative; }
+    .luci-cs .cs-crew img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; }
+    .luci-cs .cs-crew figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 10px 12px; font-family: var(--font-body); font-size: 12px; font-weight: 700; line-height: 1.3; letter-spacing: 0.02em; color: var(--off-white); background: linear-gradient(to top, rgba(10,22,28,0.92) 0%, rgba(10,22,28,0) 100%); }
+    @media (max-width: 900px) { .luci-cs .cs-crew { grid-template-columns: 1fr 1fr; } }
+
+    .luci-cs .cs-scope { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .luci-cs .cs-scope li { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; padding: 16px 14px; font-family: var(--font-copy); font-size: 13px; line-height: 1.45; margin: 0; color: rgba(235,245,248,0.9); background: rgba(255,255,255,0.05); border: 1px solid rgba(104,227,190,0.4); border-radius: 14px; }
+    .luci-cs .cs-scope li svg { display: block; width: 26px; height: 26px; flex-shrink: 0; }
+    @media (max-width: 900px) { .luci-cs .cs-scope { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 620px) { .luci-cs .cs-scope { grid-template-columns: 1fr; } }
+        .luci-cs .cs-inline-photo { margin: 28px 0 0; max-width: 100%; }
+    .luci-cs .cs-inline-photo img { display: block; width: 100%; aspect-ratio: 16/9; object-fit: cover; object-position: center; }
+    .luci-cs .cs-inline-photo--ui { background: var(--navy-deep); border-radius: 12px; overflow: hidden; }
+    .luci-cs .cs-inline-photo--ui img { aspect-ratio: auto; height: auto; object-fit: contain; object-position: center; }
+    .luci-cs .cs-inline-photo__caption { margin: 12px 0 0; padding: 0 4px; font-family: var(--font-copy); font-size: 13px; line-height: 1.5; letter-spacing: 0.02em; color: var(--ink); opacity: 0.78; }
+
+    .luci-cs .cs-consolidation-band { position: relative; overflow: hidden; min-height: clamp(480px, 62vw, 640px); background-color: var(--navy-deep); }
+    .luci-cs .cs-consolidation-band__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center center; display: block; filter: brightness(0.32); }
+    .luci-cs .cs-consolidation-band__scrim { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(to right, rgba(10,22,28,0.98) 0%, rgba(10,22,28,0.94) 35%, rgba(10,22,28,0.60) 58%, rgba(10,22,28,0.12) 80%, rgba(10,22,28,0) 100%); }
+    .luci-cs .cs-consolidation-band__content { position: relative; z-index: 2; padding: clamp(48px, 7vw, 80px) clamp(28px, 6vw, 64px); max-width: 74ch; }
+    .luci-cs .cs-consolidation__header { margin-bottom: 0; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .luci-cs .cs-consolidation__title { margin: 0; font-family: var(--font-body); font-weight: 700; font-size: clamp(24px, 4vw, 34px); line-height: 1.12; letter-spacing: -0.025em; color: var(--off-white); max-width: 28ch; }
+    .luci-cs .cs-consolidation__title-accent { color: var(--gold); }
+    .luci-cs .cs-consolidation__list { list-style: none; margin: 0; padding: 0; }
+    .luci-cs .cs-consolidation__item { padding: 22px 0; }
+    .luci-cs .cs-consolidation__item:not(:last-child) { border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .luci-cs .cs-consolidation__item-title { margin: 0 0 8px; font-family: var(--font-body); font-weight: 700; font-size: 19px; line-height: 1.35; color: var(--mint); }
+    .luci-cs .cs-consolidation__item-text { margin: 0; font-family: var(--font-copy); font-size: 17px; line-height: 1.65; color: rgba(235,245,248,0.82); }
+    @media (max-width: 640px) { .luci-cs .cs-consolidation-band__scrim { background: linear-gradient(to bottom, rgba(10,22,28,0.95) 0%, rgba(10,22,28,0.88) 50%, rgba(10,22,28,0.45) 78%, rgba(10,22,28,0) 100%); } .luci-cs .cs-consolidation-band__content { max-width: none; } }
+        .luci-cs .cs-results-block .cs-ba { background: transparent; padding: 8px 0 32px; border-bottom: 0; margin: 0; }
+    .luci-cs .cs-ba { background: var(--navy-deep); padding: clamp(36px, 6vw, 60px) clamp(28px, 6vw, 64px); border-bottom: 1px solid rgba(104,227,190,0.12); }
+    .luci-cs .cs-ba__slider { position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; user-select: none; touch-action: none; border-radius: 14px; border: 1px solid rgba(104,227,190,0.18); --pos: 50%; }
+    .luci-cs .cs-ba__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+    .luci-cs .cs-ba__before { position: absolute; inset: 0; clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
+    .luci-cs .cs-ba__divider { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 2px; background: var(--mint); transform: translateX(-1px); pointer-events: none; }
+    .luci-cs .cs-ba__handle { position: absolute; top: 50%; left: 50%; width: 44px; height: 44px; transform: translate(-50%, -50%); border-radius: 9999px; background: var(--mint); box-shadow: 0 2px 12px rgba(0,0,0,0.45); display: grid; place-items: center; }
+    .luci-cs .cs-ba__handle::before { content: "\2039\2003\203A"; color: var(--navy); font-weight: 700; font-size: 16px; }
+    .luci-cs .cs-ba__tag { position: absolute; top: 16px; font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--off-white); background: rgba(10,22,28,0.6); padding: 4px 10px; }
+    .luci-cs .cs-ba__tag--before { left: 16px; }
+    .luci-cs .cs-ba__tag--after { right: 16px; }
+    .luci-cs .cs-ba__range { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
+    .luci-cs .cs-ba__slider:focus-within .cs-ba__handle { outline: 3px solid var(--off-white); outline-offset: 2px; }
+    .luci-cs .cs-ba__caption { margin: 14px 0 0; font-family: var(--font-copy); font-size: 13px; letter-spacing: 0.04em; color: rgba(235,245,248,0.7); text-align: center; }
+
+    .luci-cs .cs-results { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: rgba(104,227,190,0.18); list-style: none; margin: 0; padding: 0; counter-reset: cs-result; }
+    @media (max-width: 620px) { .luci-cs .cs-results { grid-template-columns: 1fr; } }
+    .luci-cs .cs-results li { background: var(--navy); padding: 22px 20px; font-family: var(--font-copy); font-size: 15px; font-weight: 600; line-height: 1.4; color: var(--off-white); }
+    .luci-cs .cs-results li::before { content: counter(cs-result, decimal-leading-zero); counter-increment: cs-result; display: block; font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: 0.12em; color: var(--gold); margin-bottom: 10px; }
+        .luci-cs .cs-ledger { position: relative; overflow: hidden; background-color: var(--navy-deep); border-top: 4px solid var(--mint); border-bottom: 1px solid rgba(104, 227, 190, 0.16); padding: 0 0 clamp(36px, 5vw, 52px); }
+    .luci-cs .cs-ledger::before { content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: url('https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a7e091df18dd3a992d8ac82_luci-bg-hero-1920x1080.svg') center / cover no-repeat; mix-blend-mode: screen; opacity: 0.7; -webkit-mask-image: radial-gradient(ellipse 82% 98% at 50% 58%, transparent 0%, transparent 34%, rgba(0,0,0,0.5) 60%, #000 80%); mask-image: radial-gradient(ellipse 82% 98% at 50% 58%, transparent 0%, transparent 34%, rgba(0,0,0,0.5) 60%, #000 80%); }
+    .luci-cs .cs-ledger::after { content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(ellipse 80% 94% at 50% 60%, rgba(7,15,20,0.82) 0%, rgba(7,15,20,0.5) 40%, transparent 82%); }
+    .luci-cs .cs-ledger > * { position: relative; z-index: 1; }
+    .luci-cs .cs-ledger__title { margin: 0 0 clamp(22px, 3vw, 32px); padding: clamp(36px, 5vw, 56px) clamp(28px, 6vw, 64px) 0; font-family: var(--font-body); font-size: clamp(26px, 3.6vw, 38px); font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; color: var(--mint); text-align: center; }
+    .luci-cs .cs-ledger__title em { font-style: normal; color: var(--off-white); }
+    .luci-cs .cs-ledger__ticker { margin: 0 0 clamp(18px, 2.4vw, 26px); border-top: 1px solid rgba(var(--mint-rgb), 0.2); border-bottom: 1px solid rgba(var(--mint-rgb), 0.2); overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .luci-cs .cs-ledger__stats { list-style: none; margin: 0; padding: clamp(18px, 2.4vw, 26px) 0; display: flex; align-items: stretch; justify-content: center; }
+    .luci-cs .cs-ledger__stats li { flex: 1 1 0; min-width: 132px; position: relative; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 0 clamp(8px, 1.4vw, 18px); }
+    .luci-cs .cs-ledger__stats li + li { border-left: 1px solid rgba(var(--mint-rgb), 0.18); }
+    .luci-cs .cs-ledger__ic { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; flex: none; }
+    .luci-cs .cs-ledger__ic svg { width: 100%; height: 100%; display: block; }
+    .luci-cs .cs-ledger__num { font-family: var(--font-body); font-size: clamp(30px, 4vw, 44px); font-weight: 700; line-height: 1; letter-spacing: -0.03em; color: var(--mint); }
+    .luci-cs .cs-ledger__label { font-family: var(--font-copy); font-size: 13px; line-height: 1.3; letter-spacing: 0.02em; color: rgba(235, 245, 248, 0.72); }
+    .luci-cs .cs-ledger__converge { display: block; width: 100%; height: clamp(52px, 7vw, 76px); margin: 4px 0 -2px; overflow: visible; }
+    .luci-cs .cs-ledger__converge line { stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+    .luci-cs .cs-ledger__arrow { position: relative; width: clamp(28px, 3vw, 38px); margin: 2px auto 0; }
+    .luci-cs .cs-ledger__arrow::before { content: ''; display: block; width: clamp(6px, 0.8vw, 9px); height: clamp(28px, 4vw, 46px); margin: 0 auto; background: var(--mint); border-radius: 4px; box-shadow: 0 0 18px rgba(var(--mint-rgb), 0.55); }
+    .luci-cs .cs-ledger__arrow::after { content: ''; display: block; width: 0; height: 0; margin: 0 auto; border-left: clamp(13px, 1.4vw, 18px) solid transparent; border-right: clamp(13px, 1.4vw, 18px) solid transparent; border-top: clamp(17px, 1.9vw, 24px) solid var(--mint); filter: drop-shadow(0 6px 12px rgba(var(--mint-rgb), 0.5)); }
+    .luci-cs .cs-ledger__dest { display: flex; flex-direction: column; align-items: center; gap: 12px; margin: 20px 0 0; padding: 0 clamp(28px, 6vw, 64px); }
+    .luci-cs .cs-ledger__dest-rule { width: 40px; height: 3px; background: var(--mint); }
+    .luci-cs .cs-ledger__dest-head { margin: 0; font-family: var(--font-body); font-weight: 700; letter-spacing: -0.02em; font-size: clamp(32px, 5vw, 54px); color: var(--off-white); text-align: center; }
+    .luci-cs .cs-ledger__dest-head em { font-style: normal; color: var(--mint); }
+    .luci-cs .cs-ledger__dest-sub { margin: 0; font-family: var(--font-copy); font-size: clamp(14px, 1.6vw, 17px); color: rgba(235, 245, 248, 0.72); text-align: center; max-width: 46ch; line-height: 1.5; }
+        .luci-cs .cs-future-photo { margin: 0; background: var(--navy-deep); overflow: hidden; }
+    .luci-cs .cs-future-photo img { display: block; width: 100%; height: auto; }
+
+    .luci-cs .cs-plan { list-style: none; margin: 22px 0 26px; padding: 0; display: flex; flex-direction: column; gap: 22px; max-width: 64ch; }
+    .luci-cs .cs-plan li { display: grid; grid-template-columns: 28px 1fr; gap: 14px; font-family: var(--font-copy); font-size: 17px; line-height: 1.65; color: var(--ink); }
+    .luci-cs .cs-plan li::before { content: '\2713'; font-size: 20px; font-weight: 700; color: var(--gold-deep); line-height: 1.3; }
+    .luci-cs .cs-plan strong { font-family: var(--font-body); font-weight: 700; color: var(--navy); }
+    .luci-cs .cs-bottom-line { margin-top: 4px; padding-top: 26px; border-top: 1px solid var(--rule-light); font-family: var(--font-copy); font-size: 18px; line-height: 1.6; color: var(--navy); }
+
+    .luci-cs .cs-cta { background-color: var(--navy-deep); background-image: linear-gradient(to right, rgba(8,18,24,0.86) 0%, rgba(8,18,24,0.80) 52%, rgba(8,18,24,0.44) 80%, rgba(8,18,24,0.12) 100%), url('https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a8628dd242640e8859209c9_luci-bg-wide-2560x800.svg'); background-size: cover; background-position: center; background-repeat: no-repeat; padding: clamp(44px, 7vw, 76px) clamp(28px, 6vw, 64px); border-top: 4px solid var(--mint); }
+    .luci-cs .cs-cta__body { margin: 0 0 24px; font-weight: 700; font-size: clamp(22px, 3vw, 30px); line-height: 1.2; letter-spacing: -0.02em; color: var(--off-white); max-width: 24ch; }
+    .luci-cs .cs-cta__actions { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+    .luci-cs .cs-cta-btn { display: inline-flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 700; letter-spacing: 0.04em; text-decoration: none; color: var(--navy); background: var(--mint); padding: 16px 28px; transition: background 0.15s; }
+    .luci-cs .cs-cta-btn:hover { background: #7aedc8; }
+    .luci-cs .cs-cta-btn__arrow { font-size: 18px; font-weight: 700; line-height: 1; }
+    .luci-cs .cs-cta-btn--secondary { background: transparent; color: var(--mint); border: 1px solid rgba(104,227,190,0.45); }
+    .luci-cs .cs-cta-btn--secondary:hover { background: rgba(104,227,190,0.08); }
+    .luci-cs .cs-cta__about { margin-top: 40px; padding-top: 26px; border-top: 1px solid rgba(255,255,255,0.1); max-width: 62ch; }
+    .luci-cs .cs-cta__about-label { margin: 0 0 10px; font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(104,227,190,0.7); }
+    .luci-cs .cs-cta__statement { margin: 0; font-family: var(--font-copy); font-size: 16px; line-height: 1.65; color: rgba(165,179,188,0.88); }
+    .luci-cs .cs-cta .cs-sec__title-accent { color: var(--mint); }
+</style>
+<div class="luci-cs">
+<article class="cs-page">
+  <div class="cs-page__sheet">
+    <header class="cs-hero">
+      <div class="cs-hero__kicker"><span>Case Study</span></div>
+      <h1 class="cs-hero__title">
+        <em>2,000 square feet</em>
+        <span class="cs-hero__trail">of game-day impact</span>
+      </h1>
+      <p class="cs-hero__dek">Aliante brought its established multimedia partner into a major sportsbook remodel. LUCI built the 106-foot curved LED wall, upgraded the bar ticker, and brought the room onto the platform already running the rest of the property.</p>
+      <div class="cs-hero__actions">
+        <a class="cs-download" href="https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/REPLACE-aliante-pdf" target="_blank" rel="noopener noreferrer">
+          <span class="cs-download__icon" aria-hidden="true">&#8595;</span>
+          Download PDF
+        </a>
+      </div>
+      <p class="cs-hero__property">
+        Aliante Casino + Hotel + Spa
+        <span>Las Vegas, Nevada &middot; Boyd Gaming</span>
+      </p>
+    </header>
+    <section class="cs-glance" aria-label="At a glance">
+      <div class="cs-glance__logo">
+        <div class="cs-glance__logo-card">
+          <img src="https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/REPLACE-aliante-logo-png" alt="Aliante Casino + Hotel + Spa" width="220" height="64" />
+        </div>
+      </div>
+      <div class="cs-facts">
+        <div><p class="cs-facts__label">Property</p><p class="cs-facts__value">Aliante Casino + Hotel + Spa</p></div>
+        <div><p class="cs-facts__label">Location</p><p class="cs-facts__value">Las Vegas, Nevada</p></div>
+        <div><p class="cs-facts__label">Scope</p><p class="cs-facts__value">Sportsbook LED wall + rack consolidation</p></div>
+      </div>
+      <ul class="cs-inventory" aria-label="Sportsbook scope under management">
+        <li class="cs-inventory__item"><p class="cs-inventory__num">2,000</p><p class="cs-inventory__label">sq ft curved LED wall</p></li>
+        <li class="cs-inventory__item"><p class="cs-inventory__num">150</p><p class="cs-inventory__label">ft bar ticker</p></li>
+        <li class="cs-inventory__item"><p class="cs-inventory__num">24</p><p class="cs-inventory__label">zones on the wall</p></li>
+        <li class="cs-inventory__item"><p class="cs-inventory__num">15&rarr;2</p><p class="cs-inventory__label">racks of legacy gear consolidated</p></li>
+      </ul>
+      <div class="cs-summary">
+        <div class="cs-summary__cell"><p class="cs-summary__label">The challenge</p><p class="cs-summary__text">Aliante wanted to transform its sportsbook with a full remodel, including a 2,000 sq ft curved LED wall.</p></div>
+        <div class="cs-summary__cell"><p class="cs-summary__label">The approach</p><p class="cs-summary__text">LUCI built a 106' x 20' curved wall and bar ticker, bringing the sportsbook onto one platform with the rest of the casino.</p></div>
+        <div class="cs-summary__cell"><p class="cs-summary__label">The result</p><p class="cs-summary__text">An immersive sportsbook experience, a simplified hardware and software stack, and centralized control &mdash; all through the interface Aliante&rsquo;s team already knows.</p></div>
+      </div>
+    </section>
+    <section class="cs-reel" aria-label="Highlight reel">
+      <video class="cs-reel__video" controls playsinline preload="metadata" poster="https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/REPLACE-aliante-wall-finished-wide-web-jpg">
+        <source src="https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/REPLACE-aliante-reel-mp4" type="video/mp4" />
+      </video>
+      <p class="cs-reel__caption">Watch: the wall at Aliante.</p>
+    </section>
+    <section class="cs-photo-band" aria-labelledby="cs-room-title">
+      <img class="cs-photo-band__img" src="https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/REPLACE-aliante-before-1-web-jpg" alt="Aliante sportsbook before the remodel &mdash; legacy projector-based display wall with multiple screens and a row of betting kiosks across patterned carpet" width="1600" height="900" loading="lazy" />
+      <div class="cs-photo-band__scrim" aria-hidden="true"></div>
+      <div class="cs-photo-band__content">
+        <h2 id="cs-room-title" class="cs-sec__title">The next chapter for <span class="cs-sec__title-accent">a proven destination</span></h2>
+        <div class="cs-copy">
+          <p>Aliante&rsquo;s sportsbook remodel was a major investment in the guest experience, anchored by a 106-foot curved LED wall &mdash; roughly 2,000 square feet of canvas for live sports, racing, and odds. The room&rsquo;s projector-based display system had served the property for years; the remodel created the opportunity to build the next generation around a far larger, more flexible centerpiece.</p>
+          <p>LUCI was already live throughout the rest of Aliante, orchestrating audio, video, and signage across the property. They simply brought the sportsbook remodel onto LUCI and continued to give the entire property a single interface and a single standard of operations.</p>
+        </div>
+      </div>
+    </section>
+    <section class="cs-sec cs-sec--mid">
+      <h2 class="cs-sec__title">Building the <span class="cs-sec__title-accent">106-foot centerpiece</span></h2>
+      <div class="cs-copy">
+        <p>LUCI&rsquo;s team built and installed the 106-foot curved LED wall. On a wall this size, the curve had to be exact: even a small variation can keep an LED tile from seating correctly or leave a visible gap. The team adjusted each section of the mounting structure to hold the intended curve, so every tile sat flush across the full span.</p>
+        <p>Behind the wall, fifteen racks of legacy gear came out and were replaced by just two LUCI racks. More than twenty projectors came down. LUCI also rebuilt the continuous odds ticker around the sportsbook bar, bringing the main wall, the ticker, video sources, and audio onto the same platform already operating throughout Aliante.</p>
+      </div>
+      <div class="cs-crew">
+        <figure>
+          <img src="https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/REPLACE-aliante-wall-build-web-jpg" alt="Construction of the 106-foot curved LED wall at Aliante &mdash; green LED tiles being installed on the curved mounting structure with scissor lifts and crew on the floor" loading="lazy" />
+          <figcaption>A 106-foot curved LED wall</figcaption>
+        </figure>
+        <figure>
+          <img src="https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/REPLACE-aliante-rack-room-2-before-web-jpg" alt="Legacy server racks with dense cabling in Aliante&rsquo;s rack room before LUCI consolidation" loading="lazy" />
+          <figcaption>15 racks &rarr; 2 LUCI racks</figcaption>
+        </figure>
+        <figure>
+          <img src="https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/REPLACE-aliante-projectors-before-web-jpg" alt="Row of dusty legacy projectors lined up on the floor before removal &mdash; the 20+ projectors replaced by the LED wall" loading="lazy" />
+          <figcaption>20+ projectors removed</figcaption>
+        </figure>
+        <figure>
+          <img src="https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/REPLACE-aliante-bar-build-web-jpg" alt="Skeletal metal framework for the sportsbook bar centerpiece suspended from the ceiling at Aliante, with the bar area below covered in protective plastic during construction" loading="lazy" />
+          <figcaption>Bar ticker rebuilt</figcaption>
+        </figure>
+      </div>
+      <ul class="cs-scope">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="3" width="8" height="6" rx="1" fill="#68E3BE" fill-opacity="0.16" stroke="#68E3BE" stroke-width="1.8"/>
+            <rect x="13" y="3" width="8" height="6" rx="1" fill="#68E3BE" fill-opacity="0.16" stroke="#68E3BE" stroke-width="1.8"/>
+            <rect x="3" y="12" width="8" height="6" rx="1" fill="#68E3BE" fill-opacity="0.16" stroke="#68E3BE" stroke-width="1.8"/>
+            <rect x="13" y="12" width="8" height="6" rx="1" stroke="#68E3BE" stroke-width="1.8"/>
+            <circle cx="17" cy="15" r="1" fill="#EDD086"/>
+          </svg>
+          <span>Built and installed a 106-foot curved LED wall</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="4" y="3" width="16" height="5" rx="1.5" fill="#68E3BE" fill-opacity="0.16" stroke="#68E3BE" stroke-width="1.8"/>
+            <rect x="4" y="10" width="16" height="5" rx="1.5" fill="#68E3BE" fill-opacity="0.16" stroke="#68E3BE" stroke-width="1.8"/>
+            <rect x="4" y="17" width="16" height="4" rx="1.5" stroke="#68E3BE" stroke-width="1.8"/>
+            <circle cx="7.5" cy="5.5" r="1" fill="#EDD086"/>
+            <circle cx="7.5" cy="12.5" r="1" fill="#EDD086"/>
+          </svg>
+          <span>Pulled 15 racks of legacy gear, replaced with 2 LUCI racks</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="16" rx="1.5" fill="#68E3BE" fill-opacity="0.14" stroke="#68E3BE" stroke-width="1.8"/>
+            <path d="M7 10l3 2.2L7 14.4" fill="none" stroke="#EDD086" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="12" y1="14.5" x2="16.5" y2="14.5" stroke="#68E3BE" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <span>Removed 20+ projectors from the former display system</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 9v6h3l5 4V5L7 9H4z" fill="#68E3BE" fill-opacity="0.16" stroke="#68E3BE" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M15.5 8.5a5 5 0 0 1 0 7" fill="none" stroke="#EDD086" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M18 6a8 8 0 0 1 0 12" fill="none" stroke="#68E3BE" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <span>Rebuilt the continuous odds ticker around the sportsbook bar</span>
+        </li>
+      </ul>
+    </section>
+    <section class="cs-sec cs-sec--white">
+      <h2 class="cs-sec__title">Operating the wall</h2>
+      <div class="cs-copy">
+        <p>The operator starts by choosing from six wall configurations, each designed for a different mix of events. Tap a box in the interface, select the game, race, or channel that belongs there, and LUCI sends it to that section of the wall.</p>
+        <p>Audio is controlled by section as well, so the team can make one event the focus without changing the rest of the room. The wall can move from a single marquee event to a full slate of simultaneous games without a separate workflow or control system.</p>
+      </div>
+      <figure class="cs-inline-photo cs-inline-photo--ui">
+        <img src="https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/REPLACE-aliante-platform-videowall-web-png" alt="LUCI Video Wall Control interface in dark mode &mdash; preset configuration selector across the top, the active wall layout preview in the center showing source assignments, and a scrollable source list of live channels on the right" loading="lazy" />
+        <figcaption class="cs-inline-photo__caption">The LUCI Video Wall Control interface &mdash; six preset layouts, with a source assigned to each box.</figcaption>
+      </figure>
+    </section>
+    <section class="cs-consolidation-band" aria-labelledby="cs-consolidation-title">
+      <img class="cs-consolidation-band__img" src="https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/REPLACE-aliante-rack-room-before-web-jpg" alt="Row of legacy server racks with dense, color-coded cabling in Aliante&rsquo;s rack room before LUCI consolidation &mdash; the infrastructure pulled and replaced" width="1600" height="900" loading="lazy" />
+      <div class="cs-consolidation-band__scrim" aria-hidden="true"></div>
+      <div class="cs-consolidation-band__content">
+        <header class="cs-consolidation__header">
+          <h2 id="cs-consolidation-title" class="cs-consolidation__title"><span class="cs-consolidation__title-accent">Consolidation</span> you can see</h2>
+        </header>
+        <ul class="cs-consolidation__list">
+          <li class="cs-consolidation__item">
+            <p class="cs-consolidation__item-title">15 racks &rarr; 2 LUCI racks</p>
+            <p class="cs-consolidation__item-text">Fifteen racks of legacy gear pulled and replaced with two LUCI racks &mdash; less equipment to power, cool, and maintain.</p>
+          </li>
+          <li class="cs-consolidation__item">
+            <p class="cs-consolidation__item-title">20+ projectors &rarr; one LED canvas</p>
+            <p class="cs-consolidation__item-text">20+ projectors removed and replaced by one continuous curved LED wall.</p>
+          </li>
+          <li class="cs-consolidation__item">
+            <p class="cs-consolidation__item-title">Separate sportsbook controls &rarr; one login</p>
+            <p class="cs-consolidation__item-text">The sportsbook now runs from the same LUCI interface as the rest of the property.</p>
+          </li>
+          <li class="cs-consolidation__item">
+            <p class="cs-consolidation__item-title">Legacy bar ticker &rarr; coordinated odds display</p>
+            <p class="cs-consolidation__item-text">The continuous ticker around the sportsbook bar was rebuilt and brought onto LUCI alongside the main wall, video, and audio.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="cs-sec cs-sec--dark cs-results-block">
+      <h2 class="cs-sec__title">A sportsbook <span class="cs-sec__title-accent">built around the guest</span></h2>
+      <div class="cs-ba" aria-label="Before and after">
+        <div class="cs-ba__slider" data-cs-slider>
+          <img class="cs-ba__img cs-ba__img--after" src="https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/REPLACE-aliante-wall-finished-wide-web-jpg" alt="Aliante sportsbook after the remodel &mdash; 106-foot curved LED wall live with multiple sports zones and betting tickers" width="1600" height="900" />
+          <div class="cs-ba__before">
+            <img class="cs-ba__img" src="https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/REPLACE-aliante-before-2-web-jpg" alt="Aliante sportsbook before the remodel &mdash; curved wall of multiple projection screens with a long row of small monitors forming the odds ticker, theater-style seating in the foreground" width="1600" height="900" />
+          </div>
+          <div class="cs-ba__divider" aria-hidden="true"><span class="cs-ba__handle"></span></div>
+          <span class="cs-ba__tag cs-ba__tag--before">Before</span>
+          <span class="cs-ba__tag cs-ba__tag--after">After</span>
+          <input class="cs-ba__range" type="range" min="0" max="100" value="50" aria-label="Drag to reveal the finished sportsbook" />
+        </div>
+        <p class="cs-ba__caption">Drag to see the wall come together.</p>
+      </div>
+      <ul class="cs-results">
+        <li>Six configurations reshape the wall around the day&rsquo;s event mix</li>
+        <li>Section-level audio lets one event take focus</li>
+        <li>The main wall, bar ticker, and all sportsbar screens can be coordinated from a single interface</li>
+        <li>Aliante&rsquo;s team manages the room through the LUCI interface already used across the property</li>
+      </ul>
+    </section>
+    <section class="cs-ledger" aria-labelledby="cs-ledger-title">
+      <h2 id="cs-ledger-title" class="cs-ledger__title">Aliante on LUCI <em>to date</em></h2>
+
+      <div class="cs-ledger__ticker">
+        <ul class="cs-ledger__stats" aria-label="Property scope managed through LUCI">
+          <li>
+            <span class="cs-ledger__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="13" rx="2" fill="#68E3BE" fill-opacity="0.20" stroke="#68E3BE" stroke-width="1.8"/><path d="M9 21h6M12 17v4" stroke="#68E3BE" stroke-width="1.8" stroke-linecap="round"/><circle cx="17.5" cy="8" r="1.5" fill="#EDD086"/></svg></span>
+            <span class="cs-ledger__num">266</span>
+            <span class="cs-ledger__label">Displays</span>
+          </li>
+          <li>
+            <span class="cs-ledger__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="1.5" y="6" width="21" height="12" rx="1.2" fill="#68E3BE" fill-opacity="0.18" stroke="#68E3BE" stroke-width="1.8"/><rect x="8.6" y="6.4" width="6.8" height="11.2" fill="#EDD086" fill-opacity="0.9"/><path d="M8.6 6v12M15.4 6v12" stroke="#68E3BE" stroke-width="1.3"/></svg></span>
+            <span class="cs-ledger__num">2 + 1</span>
+            <span class="cs-ledger__label">LED walls + ticker</span>
+          </li>
+          <li>
+            <span class="cs-ledger__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 9v6h3l5 4V5L7 9H4Z" fill="#68E3BE" fill-opacity="0.20" stroke="#68E3BE" stroke-width="1.8" stroke-linejoin="round"/><path d="M15 8.5c1.5 2 1.5 5 0 7M17.5 6c2.5 3 2.5 9 0 12" stroke="#EDD086" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+            <span class="cs-ledger__num">89</span>
+            <span class="cs-ledger__label">Audio zones</span>
+          </li>
+          <li>
+            <span class="cs-ledger__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" fill="#68E3BE" fill-opacity="0.20" stroke="#68E3BE" stroke-width="1.8"/><path d="M10 9l6 3-6 3V9Z" fill="#EDD086"/></svg></span>
+            <span class="cs-ledger__num">92</span>
+            <span class="cs-ledger__label">DTV channels</span>
+          </li>
+          <li>
+            <span class="cs-ledger__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="11" rx="1.5" fill="#68E3BE" fill-opacity="0.20" stroke="#68E3BE" stroke-width="1.8"/><path d="M12 14v6M8 20h8" stroke="#68E3BE" stroke-width="1.8" stroke-linecap="round"/><path d="M7 7h6" stroke="#EDD086" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+            <span class="cs-ledger__num">98</span>
+            <span class="cs-ledger__label">Digital signage endpoints</span>
+          </li>
+          <li>
+            <span class="cs-ledger__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" fill="#68E3BE" fill-opacity="0.18" stroke="#68E3BE" stroke-width="1.8"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18" stroke="#68E3BE" stroke-width="1.4"/><rect x="9" y="9" width="6" height="6" fill="#EDD086" fill-opacity="0.9"/></svg></span>
+            <span class="cs-ledger__num">7+</span>
+            <span class="cs-ledger__label">Technologies orchestrated</span>
+          </li>
+        </ul>
+      </div>
+
+      <svg class="cs-ledger__converge" viewBox="0 0 100 120" preserveAspectRatio="none" aria-hidden="true">
+        <defs><linearGradient id="aliante-funnel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#edd086" stop-opacity="0.75"/><stop offset="1" stop-color="#68e3be" stop-opacity="0.7"/></linearGradient></defs>
+        <line x1="8.33" y1="0" x2="50" y2="116" stroke="url(#aliante-funnel)"/>
+        <line x1="25" y1="0" x2="50" y2="116" stroke="url(#aliante-funnel)"/>
+        <line x1="41.67" y1="0" x2="50" y2="116" stroke="url(#aliante-funnel)"/>
+        <line x1="58.33" y1="0" x2="50" y2="116" stroke="url(#aliante-funnel)"/>
+        <line x1="75" y1="0" x2="50" y2="116" stroke="url(#aliante-funnel)"/>
+        <line x1="91.67" y1="0" x2="50" y2="116" stroke="url(#aliante-funnel)"/>
+      </svg>
+      <div class="cs-ledger__arrow" aria-hidden="true"></div>
+      <div class="cs-ledger__dest">
+        <span class="cs-ledger__dest-rule" aria-hidden="true"></span>
+        <p class="cs-ledger__dest-head">One <em>LUCI</em> platform</p>
+        <p class="cs-ledger__dest-sub">Every endpoint, every zone, every wall, every channel &mdash; one interface.</p>
+      </div>
+    </section>
+    <figure class="cs-future-photo">
+      <img src="https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/REPLACE-aliante-wall-finished-wide-web-jpg" alt="Wide view of the Aliante sportsbook with the 106-foot curved LED wall live, showing multiple sports zones and betting tickers" loading="lazy" />
+    </figure>
+    <section class="cs-sec cs-sec--light">
+      <h2 class="cs-sec__title">One property. <span class="cs-sec__title-accent">One operating standard.</span></h2>
+      <div class="cs-copy">
+        <p>The remodel gives Aliante more than a LED wall centerpiece. It gives the property a sportsbook that can change with the calendar, coordinate with the rest of the resort, and remain part of one operating standard.</p>
+        <ul class="cs-plan">
+          <li><span><strong>One guest experience.</strong> Wall layouts, individual sources, section-level audio, and the bar ticker work together, so guests experience one room rather than a collection of separate systems.</span></li>
+          <li><span><strong>Property-wide coordination.</strong> Because the sportsbook joins the same LUCI platform as the rest of Aliante, the team can manage and coordinate multimedia across the property without learning another interface.</span></li>
+          <li><span><strong>Ready for future change.</strong> Whatever Aliante renovates, reconfigures, or brings online next can join the operating standard already in place, with LUCI there to support the transition.</span></li>
+        </ul>
+        <p class="cs-bottom-line">The wall gives Aliante the visual centerpiece it set out to create. LUCI makes the entire experience operable, coordinated, and ready for whatever the property decides to do next.</p>
+      </div>
+    </section>
+    <section class="cs-cta">
+      <p class="cs-cta__body">Curious what this looks like for your property? <span class="cs-sec__title-accent">Let&rsquo;s talk.</span></p>
+      <div class="cs-cta__actions">
+        <a class="cs-cta-btn" href="https://www.lucisystems.com/contact" target="_blank" rel="noopener noreferrer">Talk to LUCI<span class="cs-cta-btn__arrow" aria-hidden="true">&rarr;</span></a>
+        <a class="cs-cta-btn cs-cta-btn--secondary" href="https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/REPLACE-aliante-pdf" target="_blank" rel="noopener noreferrer">
+          <span class="cs-download__icon" aria-hidden="true">&#8595;</span>Download PDF
+        </a>
+      </div>
+      <div class="cs-cta__about">
+        <p class="cs-cta__about-label">About LUCI</p>
+        <p class="cs-cta__statement">LUCI Systems is the orchestration engine for enterprise multimedia &mdash; A/V, signage, building, and operational infrastructure &mdash; from a single interface your team controls from anywhere. LUCI reduces the variables, hardware, and interfaces your team has to manage. When onsite experience and operational continuity are non-negotiable, LUCI delivers coordinated, real-time execution, end to end.</p>
+      </div>
+    </section>
+  </div>
+</article>
+</div>
+<script>
+  document.querySelectorAll('.luci-cs [data-cs-slider]').forEach(function (el) {
+    var range = el.querySelector('.cs-ba__range');
+    if (!range) return;
+    function set(v) {
+      el.style.setProperty('--pos', v + '%');
+      var tBefore = el.querySelector('.cs-ba__tag--before');
+      var tAfter = el.querySelector('.cs-ba__tag--after');
+      if (tBefore) tBefore.style.opacity = v > 6 ? 1 : 0;
+      if (tAfter) tAfter.style.opacity = v < 94 ? 1 : 0;
+    }
+    set(range.value);
+    range.addEventListener('input', function () { set(range.value); });
+    function pointTo(clientX) {
+      var r = el.getBoundingClientRect();
+      var pct = Math.min(100, Math.max(0, ((clientX - r.left) / r.width) * 100));
+      range.value = pct; set(pct);
+    }
+    el.addEventListener('pointerdown', function (e) { pointTo(e.clientX); try { el.setPointerCapture(e.pointerId); } catch (err) {} });
+    el.addEventListener('pointermove', function (e) { if (e.buttons === 1) pointTo(e.clientX); });
+  });
+</script>
