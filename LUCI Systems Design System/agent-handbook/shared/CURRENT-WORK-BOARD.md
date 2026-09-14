@@ -18,9 +18,11 @@ Workstream bots update this table when Jane assigns them work. Cornelius does no
 
 | ID | Jane asked | Owner | Stage | Model | Artifact | Waiting on Jane | Next |
 |---|---|---|---|---|---|---|---|
+| signal-04-ac-draft | Design/create Issue 04 email in ActiveCampaign from last template with placeholders (Webflow not ready). No Send. Jane finalizing copy today; send Tue Sep 15. | Ermintrude | GLM teaser HTML built from Issue 03 template; Mike card placeholder | GLM | `ui_kits/email/email-signal-issue-04-teaser.html` + `-notes.md` | Jane review AC draft | Ermintrude paste/create AC campaign draft; no Send |
+| aliante-rc2-finish | Finish Aliante video today — Jane watch/approve RC2; polish vs Mike-ready. | Vikram | Jane review / finish | none | assembly/aliante-led-rough-cut-2.mp4 | Jane finish call | Vikram ready for polish notes; no invent; no post |
 | aliante-edit-blueprint | Diagnose RC2 story gaps; write scene-by-scene editorial blueprint before RC3. GPT only. No RC3, no Vikram yet. | Consuelo | Parked — Jane said come back later | GPT | `video-production/projects/aliante-led/editorial/aliante-edit-blueprint-v1.md` | Jane returns to lock structure | Hold; no RC3 / no Vikram until Jane reopens |
 | aliante-imovie-handoff-rc2 | iMovie handoff folder reproducing RC2 as editable pieces (timeline 40 clips + titles.md verbatim + alternates + RC2 reference). No RC3, no shot swaps, no timing changes. | Vikram | Jane ready — package complete | GLM | `video-production/projects/aliante-led/assembly/imovie-handoff-rc2/` | Jane | Jane opens in iMovie; decides next (edit / RC3 / park) |
-| signal-04-layout | copy-r3 landed; Opus Project Update design → GLM apply. | Ermintrude | Opus lock written | Claude | `CURSOR-LOCK-signal-04-project-update-opus.md` | Jane sees it after GLM applies; one open call (numbered vs unnumbered section) | GLM Maker applies the lock to issue-04 HTML + Webflow pair |
+| signal-04-layout | GLM applying copy-r3 + Opus Project Update ledger into HTML. | Ermintrude | GLM layout r3 | GLM | lock 6c6f5f7 + copy f73725f | Jane review on 127.0.0.1:8765 | GLM running in Terminal |
 
 ---
 
