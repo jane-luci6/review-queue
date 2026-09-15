@@ -10,6 +10,7 @@
 
 ## 2026-09-15
 
+- **Signal Issue 04 ActiveCampaign teaser uses the Issue 03 intro register and exact wall dimensions.** The intro is one short preview paragraph; wall references use either `106' x 20'` or `2,000 square feet`, never “106-foot.” The secondary grid restores the “From the team” separator above From LUCI and A Minute with Mike. Jane, 15 Sep.
 - **Signal Issue 04 morning copy locks applied.** Welcome opening replaced with three-paragraph consistency/flexibility framing (kept "You'll see that principle…" onward + sign-off); Project Update Aliante dimension now `106' x 20'`; Clearwater "rack" → "headend"; Swigs city corrected to Ponca City, Oklahoma with two-phase copy (copy-r5); What's Coming close dropped "property-by-property" ("…as New LUCI moves through beta and toward release."). Synced review mirror + webflow body split. Jane, 15 Sep.
 
 ## 2026-09-14
