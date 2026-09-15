@@ -3315,7 +3315,8 @@
 
 <script data-welcome-edit>
   (function () {
-    var KEY = 'signal04-welcome-draft';
+    var KEY = 'signal04-welcome-draft-r5';
+    try { localStorage.removeItem('signal04-welcome-draft'); } catch (e) {}
     var welcome = document.getElementById('welcome');
     if (!welcome) return;
 
