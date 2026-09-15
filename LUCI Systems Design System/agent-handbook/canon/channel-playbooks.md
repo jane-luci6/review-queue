@@ -66,7 +66,7 @@ New LUCI in Signal = **beta framing only**, never “we launched.”
 
 **Cursor routing:** GLM adapts a case study into the template and lays out locked copy. GPT proposes the rest + features, then writes after Jane picks. Photos from real project media, not invented.
 
-**Publish to Webflow:** see `shared/SIGNAL-WEBFLOW-PUBLISH-PLAYBOOK.md`. Webflow publishing is a Cursor task — Cursor hosts media, wires URLs, pushes custom code via the Webflow API, and verifies the live page. Bots hand the publish to Cursor with a brief; they do not paste HTML into the Designer or call the Webflow API themselves.
+**Publish to Webflow + ActiveCampaign + Hub:** see `shared/SIGNAL-PUBLISH-PLAYBOOK.md`. The Signal ships on three surfaces — the Webflow issue page, the ActiveCampaign email, and the Hub — and all three must carry the same links. Webflow publishing is a Cursor task (Cursor hosts media, wires URLs, pushes custom code via the Webflow API, and verifies the live page). The ActiveCampaign email is a bot task (built in AC from the last template; Cursor has no AC access). Bots hand the publish to Cursor with a brief; they do not paste HTML into the Webflow Designer or call the Webflow API themselves.
 
 ---
 
