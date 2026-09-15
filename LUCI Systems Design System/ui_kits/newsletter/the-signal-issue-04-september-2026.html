@@ -3051,7 +3051,7 @@
 
     <div class="field-readmore">
       <p class="field-readmore__line">There&rsquo;s more to this one &mdash; the build, the rack consolidation, and how the room runs day to day.</p>
-      <a class="field-readmore__link" href="https://lucisystems.com/resources/case-studies/aliante">Read the full Aliante case study <span class="field-readmore__arrow" aria-hidden="true">&rarr;</span></a>
+      <a class="field-readmore__link" href="https://lucisystems.com/case-studies/aliante">Read the full Aliante case study <span class="field-readmore__arrow" aria-hidden="true">&rarr;</span></a>
     </div>
   </section>
 
@@ -3251,6 +3251,34 @@
       });
       el.addEventListener('pointermove', function (e) {
         if (e.buttons === 1) pointTo(e.clientX);
+      });
+    });
+  })();
+</script>
+<script>
+  // Snappy in-page smooth scroll for the TOC menu (replaces the slow native smooth scroll).
+  (function () {
+    var dur = 600;
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.documentElement.style.scrollBehavior = 'auto';
+    function ease(x) { return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }
+    document.querySelectorAll('.toc a[href^="#"]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        var id = a.getAttribute('href');
+        var t = id.length > 1 ? document.querySelector(id) : null;
+        if (!t) return;
+        e.preventDefault();
+        var start = window.pageYOffset || document.documentElement.scrollTop;
+        var end = t.getBoundingClientRect().top + start;
+        if (reduce) { window.scrollTo(0, end); return; }
+        var t0 = performance.now();
+        function step(now) {
+          var p = Math.min((now - t0) / dur, 1);
+          window.scrollTo(0, start + (end - start) * ease(p));
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+        if (history.replaceState) history.replaceState(null, '', id);
       });
     });
   })();
