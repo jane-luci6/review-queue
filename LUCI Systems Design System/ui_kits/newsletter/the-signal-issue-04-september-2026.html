@@ -1151,6 +1151,13 @@
       height: auto;
       display: block;
     }
+    .field-scale__video {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      display: block;
+      background: var(--navy-deep);
+    }
     .field-scale__caption {
       font-family: 'Inter', system-ui, sans-serif;
       font-size: 13px;
@@ -2982,31 +2989,9 @@
 
     <div class="field-scale field-bleed">
       <div class="field-scale__band">
-        <svg class="field-scale__art" viewBox="0 0 960 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="field-scale-title">
-          <title id="field-scale-title">The curved LED wall at scale &mdash; 106 feet wide, 20 feet tall, with a 6-foot person for comparison</title>
-          <defs>
-            <pattern id="wall-grid-ali" width="37" height="37" patternUnits="userSpaceOnUse">
-              <path d="M 37 0 L 0 0 0 37" fill="none" stroke="rgba(104,227,190,0.14)" stroke-width="1"/>
-            </pattern>
-            <marker id="arr-ali" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-              <path d="M 0 0 L 10 5 L 0 10 z" fill="rgba(104,227,190,0.55)"/>
-            </marker>
-          </defs>
-          <rect x="80" y="86" width="780" height="147" rx="6" fill="rgba(104,227,190,0.04)" stroke="#68E3BE" stroke-width="2"/>
-          <rect x="80" y="86" width="780" height="147" rx="6" fill="url(#wall-grid-ali)"/>
-          <text x="470" y="150" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="46" font-weight="700" letter-spacing="-0.02em" fill="#68E3BE">2,000 SQ FT</text>
-          <text x="470" y="182" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="14" font-weight="600" letter-spacing="0.08em" fill="rgba(104,227,190,0.82)">106&prime; &times; 20&prime; CURVED</text>
-          <line x1="44" y1="86" x2="44" y2="233" stroke="rgba(104,227,190,0.55)" stroke-width="1" marker-start="url(#arr-ali)" marker-end="url(#arr-ali)"/>
-          <text x="28" y="163" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="13" font-weight="700" letter-spacing="0.12em" fill="rgba(104,227,190,0.82)" transform="rotate(-90 28 163)">20 FT</text>
-          <line x1="80" y1="272" x2="860" y2="272" stroke="rgba(104,227,190,0.55)" stroke-width="1" marker-start="url(#arr-ali)" marker-end="url(#arr-ali)"/>
-          <text x="470" y="296" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="13" font-weight="700" letter-spacing="0.12em" fill="rgba(104,227,190,0.82)">106 FT</text>
-          <g fill="rgba(235,245,248,0.34)">
-            <circle cx="905" cy="178" r="11"/>
-            <path d="M 891 196 L 919 196 L 915 230 L 909 233 L 903 230 L 897 196 Z"/>
-          </g>
-          <line x1="885" y1="272" x2="925" y2="272" stroke="rgba(104,227,190,0.45)" stroke-width="1" marker-start="url(#arr-ali)" marker-end="url(#arr-ali)"/>
-          <text x="905" y="296" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="13" font-weight="700" letter-spacing="0.12em" fill="rgba(104,227,190,0.82)">6 FT</text>
-        </svg>
+        <video class="field-scale__video" controls playsinline preload="metadata" aria-label="Aliante sportsbook case study: a 106-foot by 20-foot curved LED wall built and brought online by LUCI">
+          <source src="assets/aliante/sportsbook-case-study.mp4" type="video/mp4">
+        </video>
         <p class="field-scale__caption">A 106&rsquo; x 20&rsquo; curved LED wall &mdash; 2,000 square feet of unbroken video across the sportsbook.</p>
       </div>
     </div>
