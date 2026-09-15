@@ -8,8 +8,13 @@
 
 ---
 
+## 2026-09-15
+
+- **Signal Issue 04 morning copy locks applied.** Welcome opening replaced with three-paragraph consistency/flexibility framing (kept "You'll see that principle…" onward + sign-off); Project Update Aliante dimension now `106' x 20'`; Clearwater "rack" → "headend"; Swigs city corrected to Ponca City, Oklahoma with two-phase copy (copy-r5); What's Coming close dropped "property-by-property" ("…as New LUCI moves through beta and toward release."). Synced review mirror + webflow body split. Jane, 15 Sep.
+
 ## 2026-09-14
 
+- **Aliante case-study video placed on luci-website Resources → Videos.** The Aliante Sportsbook reel (encoded from the OneDrive master to a web-ready 720p H.264/AAC ~15 MB file at `public/videos/aliante-reel.mp4`) added as a second player in the Resources Videos section alongside the existing LUCI Platform Run video; the Aliante case-study page reel points at the same hosted file with the approved wall-finished poster. Live on review VM `http://10.10.1.37`. Jane, 14 Sep.
 - **Signal Issue 04 Mike goal line locked.** First sentence of the last body paragraph in "A Minute with Mike" changed to "The goal isn't a single manufacturer ecosystem." (was "The goal isn't identical hardware everywhere."); second sentence unchanged. Jane, 14 Sep.
 - **Hortensia not stood up.** Cursor already does mechanical and taste QA. No Headmistress Grok seat. Jane.
 - **Hortensia (Headmistress) stood up.** Final inspection of finished packets before Jane. Not the retired Review seat. Not project management. Jane.
