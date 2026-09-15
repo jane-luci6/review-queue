@@ -66,6 +66,8 @@ New LUCI in Signal = **beta framing only**, never “we launched.”
 
 **Cursor routing:** GLM adapts a case study into the template and lays out locked copy. GPT proposes the rest + features, then writes after Jane picks. Photos from real project media, not invented.
 
+**Publish to Webflow:** see `shared/SIGNAL-WEBFLOW-PUBLISH-PLAYBOOK.md`. Webflow publishing is a Cursor task — Cursor hosts media, wires URLs, pushes custom code via the Webflow API, and verifies the live page. Bots hand the publish to Cursor with a brief; they do not paste HTML into the Designer or call the Webflow API themselves.
+
 ---
 
 ## LinkedIn / social
