@@ -5,7 +5,7 @@
 **Issue:** 04 · September 2026
 **Theme (masthead, locked):** Navigating Standardization vs. Adaptation
 **Web destination (when live):** `https://www.lucisystems.com/the-signal/issue-04`
-**Status:** Draft with placeholders. **No Send.** Jane reviewing; Ermintrude will paste/upload into ActiveCampaign.
+**Status:** Ready for ActiveCampaign paste. Mike card filled with locked copy and restyled to match Issue 03's dark/mint treatment. No placeholders remain. **No Send.** Jane reviews; Ermintrude pastes/uploads into ActiveCampaign.
 
 Enter the subject line and preheader text manually when creating the campaign in ActiveCampaign. Personalization tag: `%FIRSTNAME%`.
 
@@ -49,12 +49,12 @@ All six cards link to `https://www.lucisystems.com/the-signal/issue-04#<anchor>`
 
 ## Placeholder inventory
 
-| Location | Placeholder text | Why |
+| Location | Placeholder text | Status |
 |---|---|---|
-| Mike card headline | `[PLACEHOLDER: Minute with Mike — Jane finalizing]` | Jane reviewing Mike's column; copy may change before send. Do not invent a Mike rewrite. |
-| Mike card blurb | `[PLACEHOLDER: Jane is finalizing Mike's column for Issue 04. Copy may change before send.]` | Same. |
+| Mike card headline | `[PLACEHOLDER: Minute with Mike — Jane finalizing]` | **Filled** — "Standardize the Operation, Not the Hardware" (locked from newsletter `art-title`). |
+| Mike card blurb | `[PLACEHOLDER: Jane is finalizing Mike's column for Issue 04. Copy may change before send.]` | **Filled** — "Get consistency at the operating layer and flexibility at the hardware layer." (newsletter `art-deck`). |
 
-**No other placeholders.** All other card copy is pulled from the live Issue 04 newsletter HTML (`the-signal-issue-04-september-2026.html`).
+**No remaining placeholders.** All other card copy is pulled from the live Issue 04 newsletter HTML (`the-signal-issue-04-september-2026.html`).
 
 ---
 
@@ -87,18 +87,28 @@ All six cards link to `https://www.lucisystems.com/the-signal/issue-04#<anchor>`
 
 ---
 
-## Verification
+## Send-day updates (15 Sep)
 
-- File exists and opens locally (244 lines, valid XHTML transitional doctype).
+- **Mike card filled + restyled.** Headline "Standardize the Operation, Not the Hardware" and blurb "Get consistency at the operating layer and flexibility at the hardware layer." pulled from the locked newsletter `#mike-column` `art-title` / `art-deck`. Card restyled from a light panel (`#F5F8FA` bg, `#2b9e80` accents, `#10232D` title) to the Issue 03 Mike treatment: dark panel (`#10232D` + hero-texture gradient), mint `#68E3BE` kicker + "Read more", `#F5F8FA` title, `#C9D4DA` body. Title set as plain single-color text (no `<em>` split) to match Issue 03's teaser Mike card.
+- **Project Update lead: Tulsa → Ponca City.** The geographic sweep "From Lewiston to Tulsa to Las Vegas" was wrong — no Issue 04 property is in Tulsa; the Oklahoma property (Swigs Stage) is in Ponca City. Changed to "From Lewiston to Ponca City to Las Vegas" in the teaser **and** synced the newsletter `proj-snapshot__dek` + webflow body split so the teaser matches the newsletter.
+- **Aliante wall dimension: 106-foot → 106' x 20'.** Applied wherever the wall dimension is named: the Aliante field card and the Project Update lead clause ("…including a 106' x 20' curved LED wall at Aliante").
+- **TOC numbering (01–06) kept** as the Issue 04 structure; colors, spacing, card hierarchy, and CTA style already match Issue 03 — no other drift found in a full scan (header, welcome, section header, lead, both grid rows, primary CTA, footer all consistent with Issue 03).
+
+
+
+- File exists and opens locally (valid XHTML transitional doctype).
 - Tag balance: 17 `<tr>` / 17 `</tr>`, 6 `<table>` / 6 `</table>`.
 - No remaining `issue-03` / `Issue 03` / `August 2026` / `Sam's Town` / `web-next` references.
 - All six Issue 04 section anchors present and link to `issue-04#<anchor>`.
-- Mike placeholder visible in card (headline + blurb).
+- **No remaining `PLACEHOLDER` strings.** Mike card headline + blurb filled with locked copy.
+- **No remaining `Tulsa` references.** Project Update lead now reads "Lewiston to Ponca City to Las Vegas" (matches newsletter dek).
+- **No bare `106-foot`** — wall dimension now "106' x 20'" wherever named.
+- Mike card is a dark panel with mint `#68E3BE` kicker + "Read more" and `#F5F8FA` / `#C9D4DA` text (matches Issue 03 Mike card).
 
 ## Not done / handoff
 
-- **No ActiveCampaign API calls.** Ermintrude will paste/upload the HTML into AC and create the campaign draft.
+- **No ActiveCampaign API calls.** Ermintrude pastes/uploads the HTML into AC and creates the campaign draft.
 - **No Send.** Jane reviews the AC draft; send is Tue Sep 15 per work board (Jane names that send).
-- **Mike column copy:** placeholder only — Jane to finalize before send.
+- **Mike column body:** teaser carries title + deck only (Issue 03 pattern); the full Mike letter lives in the newsletter `#mike-column`.
 - **Webflow:** `https://www.lucisystems.com/the-signal/issue-04` is not live yet (Webflow pending). URL pattern used per brief; Jane knows Webflow is pending.
 - **Lead-story image:** omitted (no hosted Aliante image). If Jane wants a hero image on the lead card, a hosted AC-content URL will be needed.
