@@ -1,5 +1,13 @@
 # Handbook changelog
 
+## 2026-09-15 — v5
+
+- **Signal publish playbook corrected for Webflow API reality** (Jane, 15 Sep). On this (non-Enterprise) Webflow site, Cursor cannot add HTML via the API and there is no Publish API. The playbook now splits Webflow work by lane: Cursor hosts assets + wires URLs + preps the final HTML + briefs the bots with exact page IDs/field names; Grok bots (Ermintrude/Weatherby) paste the HTML into the Webflow Designer; Jane does the final Publish click. ActiveCampaign stays a bot task (Cursor has no AC access; Cursor still hands the canonical link list). Three-surface rule and Issue 04 failure lessons (wrong-page paste, Designer clobber, bad Aliante case-study URL) preserved. Updated `shared/SIGNAL-PUBLISH-PLAYBOOK.md` (§1, §2 ownership table, §5 sequence, §6 clobber rule, §10 handoff), and matching lines in `roles/chief-of-staff.md` and `canon/channel-playbooks.md`.
+
+## 2026-09-14 — v4
+
+- **Hortensia not stood up** (Jane, 14 Sep). Cursor already runs mechanical QA (GLM) and Jane-level taste review (Claude). A Headmistress Grok seat would duplicate that. Draft `roles/headmistress.md` and `skills/headmistress-skill.md` removed.
+
 ## 2026-09-11 — v3
 
 - **Learned preferences rule added** (Jane, 11 Sep). Grok bots may proactively add a preference to a Cursor brief only when prior Jane behavior shows she is at least ~80% likely to ask for that change herself in this situation. The bot tells Jane when it applies one (“I added X to the Cursor brief because you’ve asked for that repeatedly in similar work”). A one-off preference is not a house rule; a repeated preference is not automatically universal; only Jane promotes a preference to a universal rule. Added to `shared/GROK-TO-CURSOR-DELEGATION.md` (new “Learned preferences in briefs” + “Preferences are not house rules” subsections under Observe and adjust), `GROK-TEAM-BRIEFING.md` (observe/adjust + How Jane talks), `shared/SHARED-OPERATING-PROTOCOL.md` (How Jane talks), `00-LUCI-ORGANIZATIONAL-CONTEXT.md` (How Jane works with agents), and one row in the README non-negotiable table.

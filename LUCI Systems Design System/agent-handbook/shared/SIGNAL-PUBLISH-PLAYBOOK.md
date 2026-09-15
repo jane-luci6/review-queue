@@ -10,18 +10,18 @@ Operational companion to `shared/GROK-TO-CURSOR-DELEGATION.md` and `canon/channe
 
 ## 1. The one rule that broke last time
 
-**Publishing is a Cursor task where Cursor can reach; a bot task where only bots can reach.** The Signal ships on **three surfaces** — the Webflow issue page, the ActiveCampaign email, and the Hub — and all three must carry the **same links**.
+**Publishing is split across three lanes by what each can actually reach.** The Signal ships on **three surfaces** — the Webflow issue page, the ActiveCampaign email, and the Hub — and all three must carry the **same links**.
 
-- **Webflow (issue page + Hub):** Cursor has direct Webflow API access through the Webflow MCP tools (`plugin-webflow-webflow`). Bots do **not** paste HTML into the Webflow Designer themselves and do **not** call the Webflow API themselves.
+- **Webflow (issue page + Hub):** Cursor hosts assets (images/video/CSS) via the Webflow API **where the API allows**, wires every URL into the HTML, preps the final minified head/footer markup, and briefs the bots with exact page IDs + field names + what to paste where. Cursor **cannot** add HTML to Webflow via the API on this (non-Enterprise) site, and there is **no Publish API**. Pasting HTML into the Webflow Designer custom-code fields is a **Grok-bot lane** (Ermintrude/Weatherby as the owning stream); the final **Publish** is Jane's click.
 - **ActiveCampaign (email):** Cursor has **no** AC access. The Grok bots build the email directly in AC (Jane logs in for them), using the past issue/teaser email as the template. Cursor's job for AC is to hand the bots the **canonical link list** (§9) so the email wires the same URLs as the Webflow page.
 
-What went wrong on Issue 04:
+What went wrong on Issue 04 (preserve these lessons):
 - Bots pasted the newsletter HTML into the **wrong Webflow page** (the Aliante case-study page got the Issue 04 masthead).
 - Bots pasted huge HTML blocks into the Webflow Designer by hand, then published — which **clobbered** API-pushed custom code because the Designer held a stale version of the field.
 - The Aliante "Read the full case study" link pointed at `/resources/case-studies/aliante` (404) on the Webflow page; the same wrong link would have shipped in the email and the Hub if a cross-location link check hadn't been added.
-- Bots did not know Cursor could upload videos, host images, wire URLs, push custom code, and verify the live page end-to-end.
+- Bots did not know Cursor could upload videos, host images, wire URLs, and verify the live page end-to-end.
 
-**The fix:** the owning bot hands the publish to Cursor with a complete brief (issue number, source HTML path, media list). Cursor executes every Webflow step via the API, preps the canonical link list for the bot's AC build, and verifies what it can reach. Bots traffic and gate; Cursor builds and ships the Webflow side and supplies the links for the AC side.
+**The fix:** the owning bot hands the publish to Cursor with a complete brief (issue number, source HTML path, media list). Cursor hosts assets, wires URLs, preps the final markup, and briefs the bots with exact page IDs + field names + what to paste where. Bots paste the HTML into the correct Webflow Designer fields — following Cursor's brief so they don't paste onto the wrong page or clobber custom-code fields with a stale Designer version. Jane does the final **Publish** click. Cursor verifies what it can reach after publish. Bots traffic and gate; Cursor builds and supplies; bots paste; Jane publishes.
 
 ---
 
@@ -34,10 +34,12 @@ What went wrong on Issue 04:
 | Videos | Vikram | Delivers web-ready encodes (see §4) and tells Cursor the local paths. |
 | Featured case study | Consuelo | Confirms the locked case study; if its own page also ships this cycle, flags it to Cursor (see §8). |
 | Asset inventory | Longinus | Confirms where every photo/SVG/CSS lives locally so Cursor can host them. |
-| Webflow publish | Weatherby → **Cursor** | Weatherby owns the *intent*; **Cursor executes** the Webflow API work (host, wire, push, verify). |
+| Webflow asset hosting + URL wiring | **Cursor** | Hosts images/video/CSS via the Webflow API where the API allows; rewrites every local path in the issue HTML to a hosted URL; preps the final minified head/footer markup; briefs the bots with exact page IDs + field names + what to paste where. Cursor does **not** add HTML via the API on this site. |
+| Webflow HTML paste (Designer) | **Ermintrude / Weatherby (bots)** | Paste the prepped HTML into the correct Webflow Designer custom-code fields, following Cursor's brief (page ID + slug + field). For large bodies (> ~10 KB), Jane hand-pastes from a Desktop-staged file (§6). |
+| Webflow Publish | **Jane** | Final **Publish** click on the issue page + Hub. No Publish API on this non-Enterprise site. |
 | Sequence + gates | Cornelius | Logs the job on `CURRENT-WORK-BOARD.md`; gates Jane at packet-approve and at publish. |
 
-Bots never touch the Webflow Designer custom-code fields — Webflow is Cursor's. If a bot believes a Webflow field needs editing, it briefs Cursor. The ActiveCampaign email is the opposite: **AC is the bots'** (Jane logs in for them); Cursor only preps the link list and verifies what it can reach. The only Webflow action a human takes is the final **Publish** click (see §6 — there is no Publish API for non-Enterprise sites). The only AC action a human takes is the final **Send** (Jane names that send; bots queue, never send).
+Pasting HTML into the Webflow Designer custom-code fields is the **bots' lane** — the API cannot add HTML on this non-Enterprise site, so Ermintrude/Weatherby paste what Cursor preps. Cursor briefs them with the exact page ID + slug + field name so they paste into the right field on the right page and do not clobber custom-code fields with a stale Designer version (the Issue 04 failure). The ActiveCampaign email is the bots' too (Jane logs in for them); Cursor only preps the link list and verifies what it can reach. The only Webflow action a human takes is the final **Publish** click (§6 — no Publish API for non-Enterprise sites). The only AC action a human takes is the final **Send** (Jane names that send; bots queue, never send).
 
 ---
 
@@ -69,21 +71,21 @@ Source files (canonical, in `ui_kits/newsletter/`): `the-signal-hub.html` (stand
 | **Videos (MP4)** | **Background Video elements** on a `/video-upload` page — **not** the Assets panel (30 MB limit). Jane drags each MP4 into a Background Video element; Cursor retrieves the hosted S3 URL via `data_assets_tool > list_assets` (filter `video/mp4`). | Vikram delivers web-ready encodes: **720p, H.264 + AAC, ~15–22 MB**, one per video. Never ship the 200 MB+ master. |
 | Issue CSS | Assets API (`create_asset` + S3 POST). Reference from the head field via `<link rel="stylesheet" href="…hosted…css?v=N">`. | Bump `?v=N` on every re-push. Do not inline the CSS in the head field. |
 | Mesh / background SVG | Assets API. Replace the relative `url("assets/mesh/…svg")` in the CSS with the hosted URL. | A missing mesh was the "circuit texture isn't showing" bug. |
-| Logos | Assets API. Replace base64 data-URIs in the minified body with hosted image URLs. | Keeps the body field small enough to push/paste. |
+| Logos | Assets API. Replace base64 data-URIs in the minified body with hosted image URLs. | Keeps the body field small enough to paste. |
 
 **Cursor's hosting pass, in order:** (1) upload all images → collect URLs; (2) upload the mesh SVG → URL; (3) upload the CSS (with mesh URL + any `p` reset baked in) → URL; (4) retrieve video URLs from the Background Video elements; (5) rewrite the body HTML: every local path → hosted URL; (6) minify the body (single quotes, collapsed whitespace) for the field.
 
 ---
 
-## 5. The publish sequence (Cursor executes; bot briefs)
+## 5. The publish sequence (Cursor preps + hosts + wires + briefs; bots paste; Jane publishes; Cursor verifies)
 
 Cursor runs this end-to-end after Ermintrude confirms the source HTML is final and Vikram/Longinus have delivered media + paths.
 
 1. **Host assets** per §4. Collect every hosted URL.
-2. **Wire URLs** into a working copy of the issue body (all `src`/`url` → hosted). Never push a body with local paths.
-3. **Push the issue page head** (`data_scripts_tool > set_page_freeform_code`, location `head`) — Google Fonts `<link>` + the hosted CSS `<link>`.
-4. **Push the issue page footer** (location `footer`) — the wired, minified `<article>…</article>` + `<script>`.
-5. **Update the hub** (same cycle): edit the three hub source files, then push the hub body (`set_page_freeform_code`, location `footer`). Add the `thumb--NN` CSS for the new card if needed.
+2. **Wire URLs** into a working copy of the issue body (all `src`/`url` → hosted). Never hand a body to paste with local paths.
+3. **Cursor preps the issue page head** (Google Fonts `<link>` + the hosted CSS `<link>`) and briefs the bot with the page ID + slug + field name ("Inside head"). **Bot pastes** it into the Webflow Designer. (The API cannot add HTML on this non-Enterprise site.)
+4. **Cursor preps the issue page footer** (the wired, minified `<article>…</article>` + `<script>`) and briefs the bot with the page ID + slug + field name ("Before `</body>`"). **Bot pastes** it — or, for large bodies (> ~10 KB), Jane hand-pastes from a Desktop-staged file (§6).
+5. **Update the hub** (same cycle): Cursor edits the three hub source files, preps the hub body, and briefs the bot with the hub page ID + slug + field. **Bot pastes** the hub body. Add the `thumb--NN` CSS for the new card if needed.
 6. **Hand the canonical link list to Ermintrude** (§9) for the AC email build. Ermintrude builds the email in AC from the last issue/teaser template and wires these exact URLs. Ermintrude queues the list; she does not Send unless Jane names it.
 7. **Tell Jane to Publish** the Webflow issue page + Hub (§6) and **hard-refresh** the live URLs.
 8. **Verify all three surfaces** (§7): Cursor curls the Webflow issue page + Hub; for AC, the bot gives Cursor a preview URL/screenshot or checks the email links against the canonical list (Cursor can't access AC). The "all three locations agree" check is the gate before Jane approves Send.
@@ -94,13 +96,13 @@ Cursor commits the source-file edits in small chunks as it goes (per the commit-
 
 ## 6. The clobbering rule (read this twice)
 
-**An API push sets the custom-code field on the Webflow server. A Designer Publish serves whatever the Designer has cached in that field — not what the API just set.** If Jane's Designer session has a stale version of the field open, her Publish overwrites the API push. This has bitten us twice (Issue 04 head, Issue 04 hub body).
+**A Designer Publish serves whatever the Designer has cached in a custom-code field — not necessarily the freshest paste.** If a bot pastes fresh HTML into a field and Jane publishes from a stale Designer session (or another tab holds an older version of that field), the publish can serve the stale version and clobber the fresh paste. Pasting into the wrong field, or pasting a stale copy over a fresh one, clobbers the good value the same way. This has bitten us twice (Issue 04 head, Issue 04 hub body).
 
 Rules:
-- **After Cursor pushes via API, Jane must Publish without opening the custom-code field in the Designer** — just publish the page. The Designer loads the API-pushed value on open; if she does not edit it, the publish serves the new value.
-- **If the field is large (> ~10 KB) or the push was clobbered, the reliable path is hand-paste:** Cursor stages the exact body on Jane's Desktop (`~/Desktop/<name>.html`); Jane opens the page's "Before `</body>`" field, selects all, deletes, pastes the file contents, saves, publishes. This is how the 36 KB newsletter body and the 49 KB case-study body ship today.
-- **Never paste a body into the wrong page.** Before pasting, confirm the page slug (`issue-NN`, not a case-study slug). Cursor verifies the page ID + slug before any push.
-- **There is no Webflow Publish API for non-Enterprise sites.** The final Publish is always Jane's click. Cursor's job ends at "pushed + verified the field is correct on the server"; Jane's job is the Publish click + hard-refresh.
+- **After the bot pastes (or Jane hand-pastes) the final HTML into a field, Jane must Publish without re-opening or editing that field in the Designer** — just publish the page. The Designer loads the pasted value on open; if she does not edit it, the publish serves the pasted value.
+- **If the field is large (> ~10 KB) or a paste was clobbered, the reliable path is hand-paste:** Cursor stages the exact body on Jane's Desktop (`~/Desktop/<name>.html`); Jane opens the page's "Before `</body>`" field, selects all, deletes, pastes the file contents, saves, publishes. This is how the 36 KB newsletter body and the 49 KB case-study body ship today.
+- **Never paste a body into the wrong page.** Before pasting, confirm the page slug (`issue-NN`, not a case-study slug). Cursor briefs the bots with the verified page ID + slug; bots confirm before pasting.
+- **There is no Webflow Publish API for non-Enterprise sites.** The final Publish is always Jane's click. Cursor's job ends at "prepped + briefed the bots + verified the field is correct on the server after publish"; the bots' job is the paste; Jane's job is the Publish click + hard-refresh.
 
 ---
 
@@ -112,7 +114,7 @@ Cursor curls the live URLs with a cache-buster and confirms. The AC email is ver
 - **AC email (bot-verified):** the email links match the canonical list (§9) — the issue URL, the featured case-study URL, and any feature/CTA URLs are the same strings the Webflow page and Hub carry. No `/resources/` segment on the case-study link. The email is queued, not sent.
 - **Links across all three locations:** every `/the-signal/issue-NN` link resolves HTTP 200 (not 404) on the Webflow page **and** the Hub **and** the AC email. The featured case study's "Read the full … case study" link points to the live case-study URL (no `/resources/` segment — that 404s) in all three. This single cross-location check is the gate that would have caught the Aliante link bug.
 
-If anything is stale, it is almost always caching or a clobbered publish — re-push or re-paste and have Jane hard-refresh **before** debugging the code.
+If anything is stale, it is almost always caching or a clobbered publish — re-paste and have Jane hard-refresh **before** debugging the code.
 
 ---
 
@@ -166,8 +168,8 @@ Live URLs to verify after publish:
   - https://lucisystems.com/the-signal/issue-NN  (Webflow issue page)
   - https://lucisystems.com/the-signal/home       (Hub)
   - AC email preview URL (bot provides)          (AC — Cursor can't access; bot verifies or hands Cursor a preview)
-Jane gates: packet approved (yes) · publish (pending Cursor push) · Send (Jane names it; bots queue, never send)
+Jane gates: packet approved (yes) · publish (pending bot paste + Jane Publish) · Send (Jane names it; bots queue, never send)
 Three-location link check: all three surfaces carry the canonical link list before Jane approves Send.
 ```
 
-Cursor does the rest: host, wire, push the Webflow issue page + Hub, publish the canonical link list for Ermintrude's AC build, stage any hand-paste files on Desktop, tell Jane what to publish, verify what it can reach, and update the work-board row when live.
+Cursor does the rest: host assets via the API, wire URLs into the markup, prep the final head/footer HTML and brief the bots with exact page IDs + field names + what to paste where, publish the canonical link list for Ermintrude's AC build, stage any hand-paste files on Desktop, tell Jane what to publish, verify what it can reach after publish, and update the work-board row when live. Bots paste the HTML into the Webflow Designer fields per Cursor's brief; Jane does the final Publish click.
