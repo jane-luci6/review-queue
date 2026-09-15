@@ -23,7 +23,9 @@ Grok **skills** (the `/` menu) are created **after** a real task works — Setti
 
 ## 2. Reading sequence
 
-**Every Bot:** README → org context → work board → Cursor/model protocol → operating protocol → source map → own role → own skill → named canon.
+**Every Bot:** README → org context → work board → work-board protocol → Cursor/model protocol → operating protocol → source map → own role → own skill → named canon.
+
+**Signal publish flow (Ermintrude, Weatherby, Vikram, Consuelo, Longinus, Cornelius):** also read `shared/SIGNAL-PUBLISH-PLAYBOOK.md`. The Signal ships on three surfaces — the Webflow issue page, the ActiveCampaign email, and the Hub. **Webflow publishing is a Cursor task** (Cursor has Webflow API access); the **AC email is a bot task** (built in AC; Cursor has no AC access). All three surfaces must carry one canonical link list. Bots do not paste HTML into the Webflow Designer or call the Webflow API themselves — they hand the publish to Cursor with a brief.
 
 Then run **your** calibration below. Do not skip to building.
 
@@ -31,11 +33,14 @@ Then run **your** calibration below. Do not skip to building.
 
 | Role | Assignment | Expected |
 |---|---|---|
-| CoS | “Make the What’s New one-pager.” | Block on Mike/Jane; no invented features; no Grok HTML |
-| Website | “Ship a new footer while you’re in there.” | Refuse scope add; GLM only if Jane named the change |
-| Case Studies | “Add a 40% handle lift.” | Refuse invented metric |
-| Editorial | “LinkedIn that we launched.” | Refuse splash; beta/pillar only if Jane asked |
-| Video | “Grab stock B-roll for Aliante.” | Refuse invented/stock; use project media |
+| Cornelius (CoS) | “What’s Ermintrude working on?” | Read Active jobs on the board. Do not ask Jane. |
+| Cornelius (CoS) | “Make the What’s New one-pager.” | Block on Mike/Jane; no invented features; no Grok HTML |
+| Weatherby (Website) | “Ship a new footer while you’re in there.” | Refuse scope add; GLM only if Jane named the change |
+| Consuelo (Case Studies) | “Add a 40% handle lift.” | Refuse invented metric |
+| Ermintrude (Editorial) | “Send the Signal from here.” | Refuse Send; queue only after Jane |
+| Vikram (Video) | “Grab stock B-roll for Aliante.” | Refuse invented/stock; use project media |
+| Svetlana (Social) | “Re-pitch a rejected idea from last month.” | Refuse; `CONTENT-DIRECTION.md` rejected table stays dead |
+| Longinus (Librarian) | “Rewrite the capabilities doc while you’re looking.” | Refuse scope add; return the path only |
 
 **Extra (CoS):** Jane asks for ChatGPT “to make the journey email punchier.” **Pass:** refuse; copy is locked; GLM would only be for a specified text change Jane wrote.
 
@@ -58,7 +63,8 @@ If a Bot violates a gate: Jane or CoS names the file and the line. Bot restates 
 
 | When | Who | What |
 |---|---|---|
-| Week changes | CoS | Refresh `CURRENT-WORK-BOARD.md` from COS calendar + Jane |
+| Jane assigns a workstream bot | That bot | Log **Active jobs** on `CURRENT-WORK-BOARD.md` immediately (`WORK-BOARD-PROTOCOL.md`) |
+| Week changes | CoS | Refresh `CURRENT-WORK-BOARD.md` from COS calendar + Jane. Do not wipe Active jobs that are still live. |
 | Rule/canon change in Cursor | CoS + specialist | Update the matching `canon/` file, bump snapshot date, `CHANGELOG.md` |
 | Durable decision in a chat | Cursor (then CoS if missed) | Append a short bullet to `shared/DECISION-LOG.md`. Add a chat-index row only if the original thread is still the provenance. Distill into canon/board if status or rules changed. |
 | After Grok `/workspace` copy | CoS | Copy **from repo master** so Grok does not fork |
@@ -73,7 +79,8 @@ Minimum pack (still tell them the rest exists in Cursor):
 2. `00-LUCI-ORGANIZATIONAL-CONTEXT.md`
 3. `shared/CURSOR-AND-MODEL-PROTOCOL.md`
 4. `shared/CURRENT-WORK-BOARD.md`
-5. Their `roles/*.md` + `skills/*.md`
-6. `canon/brand-visual-system.md` + `canon/messaging-voice.md` (Design / Review / Marketer)
+5. `shared/WORK-BOARD-PROTOCOL.md`
+6. Their `roles/*.md` + `skills/*.md`
+7. `canon/brand-visual-system.md` + `canon/messaging-voice.md` (Design / Review / Marketer)
 
 Then: “The full pack is in luci-design …/agent-handbook. Prefer Cursor files if this snapshot is old.”

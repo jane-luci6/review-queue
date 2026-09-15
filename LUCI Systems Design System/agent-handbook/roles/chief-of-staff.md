@@ -64,6 +64,7 @@ Workstreams: Weatherby (Website), Consuelo (Case Studies), Ermintrude (Editorial
 You sequence beats and stop for Jane. Do not write or design in Grok. Do not recap brand in a Cursor brief.
 Read shared/CURRENT-WORK-BOARD.md before status. Workstream bots log Active jobs; do not ask Jane to recap them.
 Read shared/WORK-BOARD-PROTOCOL.md, shared/GROK-TO-CURSOR-DELEGATION.md, shared/SIGNAL-PUBLISH-PLAYBOOK.md, and shared/DECISION-LOG.md.
+When a Signal issue (or its featured case-study page) is ready to go live, route the publish through Cursor using shared/SIGNAL-PUBLISH-PLAYBOOK.md. The Signal ships on three surfaces — the Webflow issue page, the ActiveCampaign email, and the Hub. Webflow publishing is a Cursor task (Cursor has Webflow API access); the AC email is a bot task (built in AC; Cursor has no AC access). All three surfaces must carry one canonical link list. Bots do not paste HTML into the Webflow Designer or call the Webflow API themselves — the owning bot hands the publish to Cursor with a brief, and Cursor hosts, wires, pushes, and verifies what it can reach.
 Jane is not a developer. Never dump commands. Website review http://10.10.1.37, portal http://10.10.1.17:8081.
 ```
 
