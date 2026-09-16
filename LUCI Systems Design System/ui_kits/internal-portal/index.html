@@ -1879,6 +1879,16 @@
       border-radius: 50%;
       background: var(--mint-dark);
     }
+    #view-email-comms .ec-ov__enum {
+      display: inline-block;
+      min-width: 16px;
+      margin-right: 4px;
+      font-family: var(--font);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--mint-dark);
+      text-align: right;
+    }
     /* Arrow row between phases */
     #view-email-comms .ec-ov__arrow-row {
       display: grid;
@@ -4552,7 +4562,7 @@
               name: 'Pre-launch',
               sub: 'Must be ready before webinar invitations go out',
               cols: {
-                customers: findCycles(custTrack, ['Pre-launch webinar']),
+                customers: findCycles(custTrack, ['Pre-launch webinar','Upgrade readiness']),
                 warm: findCycles(warmTrack, ['Selected pre-launch preview']),
                 'net-new': []
               }
@@ -4561,7 +4571,7 @@
               name: 'Launch',
               sub: 'Must be ready by GA day',
               cols: {
-                customers: findCycles(custTrack, ['Upgrade readiness','Launch and upgrade']),
+                customers: findCycles(custTrack, ['Launch and upgrade']),
                 warm: findCycles(warmTrack, ['Launch re-engagement']),
                 'net-new': findCycles(nnTrack, ['Acquisition'])
               }
@@ -4609,7 +4619,7 @@
               ul.className = 'ec-ov__emails';
               (cycle.emails || []).forEach((em) => {
                 const li = document.createElement('li');
-                li.textContent = em.name;
+                li.innerHTML = '<span class="ec-ov__enum">' + (em.number || '') + '</span>' + em.name;
                 ul.appendChild(li);
               });
               box.appendChild(ul);
@@ -4701,7 +4711,7 @@
                 ul.className = 'ec-ov__emails';
                 (cycle.emails || []).forEach((em) => {
                   const li = document.createElement('li');
-                  li.textContent = em.name;
+                  li.innerHTML = '<span class="ec-ov__enum">' + (em.number || '') + '</span>' + em.name;
                   ul.appendChild(li);
                 });
                 box.appendChild(ul);
