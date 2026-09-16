@@ -1767,65 +1767,94 @@
     #view-email-comms .page-head { border-bottom: 0; padding-bottom: 10px; }
     #view-email-comms .page-head h2 { margin-bottom: 8px; }
 
-    /* --- Overview: two sides --- */
+    /* --- Overview: three audiences aligned by phase --- */
     #view-email-comms .ec-overview { margin-bottom: 48px; }
     #view-email-comms .ec-ov {
-      display: grid;
-      grid-template-columns: 1fr 48px 1fr;
-      gap: 0;
-    }
-    #view-email-comms .ec-ov__side {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 0;
     }
-    #view-email-comms .ec-ov__head {
-      margin: 0 0 4px;
+    /* Header row: phase spacer + 3 audience columns */
+    #view-email-comms .ec-ov__head-row {
+      display: grid;
+      grid-template-columns: 140px 1fr 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    #view-email-comms .ec-ov__head-spacer { }
+    #view-email-comms .ec-ov__col-head {
+      margin: 0;
       font-family: var(--font);
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 700;
       letter-spacing: -0.01em;
       color: var(--ink-strong);
+      text-align: center;
+      padding: 10px 8px;
+      background: #10232D;
+      color: var(--off-white);
+      border-radius: 6px;
     }
-    #view-email-comms .ec-ov__sub {
-      margin: 0 0 8px;
-      font-family: var(--font-body);
-      font-size: 13px;
-      line-height: 1.5;
-      color: var(--muted);
-      max-width: 52ch;
+    /* Phase rows */
+    #view-email-comms .ec-ov__phase-row {
+      display: grid;
+      grid-template-columns: 140px 1fr 1fr 1fr;
+      gap: 12px;
     }
-    #view-email-comms .ec-ov__track {
+    #view-email-comms .ec-ov__phase-label {
       display: flex;
       flex-direction: column;
+      justify-content: flex-start;
+      padding-top: 4px;
     }
-    #view-email-comms .ec-ov__track-label {
-      margin: 0 0 10px;
+    #view-email-comms .ec-ov__phase-name {
+      margin: 0 0 4px;
       font-family: var(--font);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
       color: var(--mint-dark);
     }
+    #view-email-comms .ec-ov__phase-sub {
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: 11px;
+      line-height: 1.4;
+      color: var(--muted);
+    }
+    /* Cells */
+    #view-email-comms .ec-ov__cell {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    #view-email-comms .ec-ov__empty {
+      margin: 0;
+      text-align: center;
+      padding: 20px 0;
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--muted);
+      opacity: 0.4;
+    }
+    #view-email-comms .ec-ov__cycle-sep {
+      margin: 0;
+      height: 1px;
+      background: var(--rule);
+    }
     #view-email-comms .ec-ov__cycle {
-      padding: 12px 14px;
+      padding: 10px 12px;
       background: var(--off-white);
       border: 1px solid var(--rule);
-      border-radius: 8px;
+      border-radius: 6px;
     }
     #view-email-comms .ec-ov__cycle-name {
-      margin: 0 0 2px;
+      margin: 0 0 6px;
       font-family: var(--font);
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 600;
       color: var(--ink-strong);
-    }
-    #view-email-comms .ec-ov__email-count {
-      margin: 0 0 8px;
-      font-family: var(--font-body);
-      font-size: 12px;
-      color: var(--muted);
+      line-height: 1.3;
     }
     #view-email-comms .ec-ov__emails {
       margin: 0;
@@ -1833,10 +1862,10 @@
       list-style: none;
     }
     #view-email-comms .ec-ov__emails li {
-      padding: 3px 0 3px 14px;
+      padding: 2px 0 2px 12px;
       font-family: var(--font-body);
-      font-size: 13px;
-      line-height: 1.45;
+      font-size: 12.5px;
+      line-height: 1.4;
       color: var(--ink);
       position: relative;
     }
@@ -1844,50 +1873,60 @@
       content: "";
       position: absolute;
       left: 0;
-      top: 0.7em;
-      width: 5px;
-      height: 5px;
+      top: 0.65em;
+      width: 4px;
+      height: 4px;
       border-radius: 50%;
       background: var(--mint-dark);
     }
-    #view-email-comms .ec-ov__arrow {
+    /* Arrow row between phases */
+    #view-email-comms .ec-ov__arrow-row {
+      display: grid;
+      grid-template-columns: 140px 1fr 1fr 1fr;
+      gap: 12px;
       margin: 2px 0;
+    }
+    #view-email-comms .ec-ov__phase-arrow {
+      margin: 0;
       text-align: center;
-      font-size: 16px;
+      font-size: 14px;
       color: var(--mint-dark);
       line-height: 1;
     }
-    /* Divider between the two sides */
-    #view-email-comms .ec-ov__divider {
+    /* Prospect Pulse — full-width row */
+    #view-email-comms .ec-ov__pulse-row {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 12px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 2px solid var(--rule);
+    }
+    #view-email-comms .ec-ov__pulse-label {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-top: 4px;
     }
-    #view-email-comms .ec-ov__divider::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      width: 1px;
-      background: var(--rule);
-    }
-    #view-email-comms .ec-ov__divider-label {
-      position: relative;
-      z-index: 1;
-      margin: 0;
-      padding: 8px 6px;
+    #view-email-comms .ec-ov__pulse-name {
+      margin: 0 0 4px;
       font-family: var(--font);
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
       color: var(--mint-dark);
-      background: var(--bg);
-      text-align: center;
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
+    }
+    #view-email-comms .ec-ov__pulse-sub {
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: 11px;
+      line-height: 1.4;
+      color: var(--muted);
+    }
+    #view-email-comms .ec-ov__pulse-cell {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
 
     .ec-back {
@@ -2010,24 +2049,17 @@
       #view-feature-list .fl-brief-grid {
         grid-template-columns: 1fr;
       }
-      #view-email-comms .ec-ov {
+      #view-email-comms .ec-ov__head-row,
+      #view-email-comms .ec-ov__phase-row,
+      #view-email-comms .ec-ov__arrow-row {
         grid-template-columns: 1fr;
-        gap: 16px;
+        gap: 4px;
       }
-      #view-email-comms .ec-ov__divider {
-        height: 32px;
+      #view-email-comms .ec-ov__phase-label {
+        padding-top: 8px;
       }
-      #view-email-comms .ec-ov__divider::before {
-        top: 50%;
-        bottom: auto;
-        left: 0;
-        right: 0;
-        width: auto;
-        height: 1px;
-      }
-      #view-email-comms .ec-ov__divider-label {
-        writing-mode: horizontal-tb;
-        transform: none;
+      #view-email-comms .ec-ov__pulse-row {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -4502,65 +4534,184 @@
         if (deckEl) deckEl.textContent = data.deck || '';
         if (backEl && data.backLink) { backEl.textContent = data.backLink.label || 'Back'; backEl.href = data.backLink.href || '#coming-soon/new-luci-campaign-strategy'; }
 
-        // --- Overview: two sides side-by-side ---
+        // --- Overview: three audiences aligned by phase ---
         const overviewEl = $('email-comms-overview');
         if (overviewEl) {
           overviewEl.replaceChildren();
-          const campaignCycleNames = ['Pre-launch webinar','Upgrade readiness','Launch and upgrade','Post-upgrade follow-up','Selected pre-launch preview','Launch re-engagement','Acquisition'];
-          const responseGroups = [
-            { label: 'Warm prospects', trackId: 'warm', cycleNames: ['After a warm response'] },
-            { label: 'Net-new prospects', trackId: 'net-new', cycleNames: ['After a demo request','Unbooked request recovery — after Sales handback','Post-demo recovery — after Sales handback'] },
-            { label: 'Shared nurture (warm + net-new)', trackId: 'pulse', cycleNames: ['Every 4–6 weeks'] },
-          ];
           const tracks = data.tracks || [];
           const findTrack = (id) => tracks.find(t => t.id === id);
           const findCycles = (track, names) => (track.cycles || []).filter(c => names.includes(c.name));
 
-          const buildSide = (headText, subText, groups) => {
-            const side = document.createElement('div');
-            side.className = 'ec-ov__side';
-            const h = document.createElement('p'); h.className = 'ec-ov__head'; h.textContent = headText; side.appendChild(h);
-            const s = document.createElement('p'); s.className = 'ec-ov__sub'; s.textContent = subText; side.appendChild(s);
-            groups.forEach((g) => {
-              const track = g.track ? g.track : findTrack(g.trackId);
-              if (!track) return;
-              const cycles = g.cycles ? g.cycles : findCycles(track, g.cycleNames);
-              if (!cycles.length) return;
-              const trackDiv = document.createElement('div'); trackDiv.className = 'ec-ov__track';
-              const tl = document.createElement('p'); tl.className = 'ec-ov__track-label'; tl.textContent = g.label; trackDiv.appendChild(tl);
-              cycles.forEach((cycle, ci) => {
-                const box = document.createElement('div'); box.className = 'ec-ov__cycle';
-                const cn = document.createElement('p'); cn.className = 'ec-ov__cycle-name'; cn.textContent = cycle.name; box.appendChild(cn);
-                const ec = (cycle.emails || []).length;
-                const ct = document.createElement('p'); ct.className = 'ec-ov__email-count'; ct.textContent = ec + ' email' + (ec !== 1 ? 's' : ''); box.appendChild(ct);
-                const ul = document.createElement('ul'); ul.className = 'ec-ov__emails';
-                (cycle.emails || []).forEach((em) => { const li = document.createElement('li'); li.textContent = em.name; ul.appendChild(li); });
-                box.appendChild(ul);
-                trackDiv.appendChild(box);
-                if (ci < cycles.length - 1) { const a = document.createElement('p'); a.className = 'ec-ov__arrow'; a.textContent = '\u2193'; trackDiv.appendChild(a); }
-              });
-              side.appendChild(trackDiv);
-            });
-            return side;
-          };
-
-          // Campaign groups
           const custTrack = findTrack('customers');
           const warmTrack = findTrack('warm');
           const nnTrack = findTrack('net-new');
-          const campaignGroups = [
-            { label: 'Existing customers', track: custTrack, cycles: findCycles(custTrack, campaignCycleNames) },
-            { label: 'Warm prospects', track: warmTrack, cycles: findCycles(warmTrack, ['Selected pre-launch preview','Launch re-engagement']) },
-            { label: 'Net-new prospects', track: nnTrack, cycles: findCycles(nnTrack, ['Acquisition']) },
+          const pulseTrack = findTrack('pulse');
+
+          const phases = [
+            {
+              name: 'Pre-launch',
+              sub: 'Must be ready before webinar invitations go out',
+              cols: {
+                customers: findCycles(custTrack, ['Pre-launch webinar']),
+                warm: findCycles(warmTrack, ['Selected pre-launch preview']),
+                'net-new': []
+              }
+            },
+            {
+              name: 'Launch',
+              sub: 'Must be ready by GA day',
+              cols: {
+                customers: findCycles(custTrack, ['Upgrade readiness','Launch and upgrade']),
+                warm: findCycles(warmTrack, ['Launch re-engagement']),
+                'net-new': findCycles(nnTrack, ['Acquisition'])
+              }
+            },
+            {
+              name: 'Post-launch & ongoing',
+              sub: 'Can be built after launch',
+              cols: {
+                customers: findCycles(custTrack, ['Post-upgrade follow-up']),
+                warm: findCycles(warmTrack, ['After a warm response']),
+                'net-new': findCycles(nnTrack, ['After a demo request','Unbooked request recovery — after Sales handback','Post-demo recovery — after Sales handback'])
+              }
+            }
           ];
 
-          const left = buildSide('Upgrade campaign flow', 'Outbound, timed sequences that drive awareness and action toward the New LUCI upgrade.', campaignGroups);
-          const divider = document.createElement('div'); divider.className = 'ec-ov__divider';
-          const dl = document.createElement('p'); dl.className = 'ec-ov__divider-label'; dl.textContent = 'When a prospect responds \u2192'; divider.appendChild(dl);
-          const right = buildSide('Prospecting response flow', 'Triggered by a reply, booking, or demo request. Owned by Sales until explicit handback to Marketing.', responseGroups);
+          const audienceLabels = [
+            { id: 'customers', name: 'Existing customers' },
+            { id: 'warm', name: 'Warm prospects' },
+            { id: 'net-new', name: 'Net-new prospects' },
+          ];
 
-          const ov = document.createElement('div'); ov.className = 'ec-ov';
-          ov.append(left, divider, right);
+          const buildCell = (cycles) => {
+            const cell = document.createElement('div');
+            cell.className = 'ec-ov__cell';
+            if (!cycles.length) {
+              const empty = document.createElement('p');
+              empty.className = 'ec-ov__empty';
+              empty.textContent = '\u2014';
+              cell.appendChild(empty);
+              return cell;
+            }
+            cycles.forEach((cycle, ci) => {
+              if (ci > 0) {
+                const sep = document.createElement('p');
+                sep.className = 'ec-ov__cycle-sep';
+                cell.appendChild(sep);
+              }
+              const box = document.createElement('div');
+              box.className = 'ec-ov__cycle';
+              const cn = document.createElement('p');
+              cn.className = 'ec-ov__cycle-name';
+              cn.textContent = cycle.name;
+              box.appendChild(cn);
+              const ul = document.createElement('ul');
+              ul.className = 'ec-ov__emails';
+              (cycle.emails || []).forEach((em) => {
+                const li = document.createElement('li');
+                li.textContent = em.name;
+                ul.appendChild(li);
+              });
+              box.appendChild(ul);
+              cell.appendChild(box);
+            });
+            return cell;
+          };
+
+          const ov = document.createElement('div');
+          ov.className = 'ec-ov';
+
+          // Column headers
+          const headRow = document.createElement('div');
+          headRow.className = 'ec-ov__head-row';
+          const headSpacer = document.createElement('div');
+          headSpacer.className = 'ec-ov__head-spacer';
+          headRow.appendChild(headSpacer);
+          audienceLabels.forEach((al) => {
+            const h = document.createElement('p');
+            h.className = 'ec-ov__col-head';
+            h.textContent = al.name;
+            headRow.appendChild(h);
+          });
+          ov.appendChild(headRow);
+
+          // Phase rows
+          phases.forEach((phase, pi) => {
+            const phaseRow = document.createElement('div');
+            phaseRow.className = 'ec-ov__phase-row';
+            const phaseLabel = document.createElement('div');
+            phaseLabel.className = 'ec-ov__phase-label';
+            const pn = document.createElement('p');
+            pn.className = 'ec-ov__phase-name';
+            pn.textContent = phase.name;
+            phaseLabel.appendChild(pn);
+            const ps = document.createElement('p');
+            ps.className = 'ec-ov__phase-sub';
+            ps.textContent = phase.sub;
+            phaseLabel.appendChild(ps);
+            phaseRow.appendChild(phaseLabel);
+            audienceLabels.forEach((al) => {
+              phaseRow.appendChild(buildCell(phase.cols[al.id] || []));
+            });
+            ov.appendChild(phaseRow);
+            // Arrow between phases
+            if (pi < phases.length - 1) {
+              const arrowRow = document.createElement('div');
+              arrowRow.className = 'ec-ov__arrow-row';
+              const aSpacer = document.createElement('div');
+              aSpacer.className = 'ec-ov__head-spacer';
+              arrowRow.appendChild(aSpacer);
+              audienceLabels.forEach(() => {
+                const a = document.createElement('p');
+                a.className = 'ec-ov__phase-arrow';
+                a.textContent = '\u2193';
+                arrowRow.appendChild(a);
+              });
+              ov.appendChild(arrowRow);
+            }
+          });
+
+          // Prospect Pulse — full-width row at bottom
+          if (pulseTrack) {
+            const pulseCycles = pulseTrack.cycles || [];
+            if (pulseCycles.length) {
+              const pulseRow = document.createElement('div');
+              pulseRow.className = 'ec-ov__pulse-row';
+              const pulseLabel = document.createElement('div');
+              pulseLabel.className = 'ec-ov__pulse-label';
+              const pl = document.createElement('p');
+              pl.className = 'ec-ov__pulse-name';
+              pl.textContent = 'Prospect Pulse';
+              pulseLabel.appendChild(pl);
+              const ps = document.createElement('p');
+              ps.className = 'ec-ov__pulse-sub';
+              ps.textContent = 'Shared 6-month nurture for warm + net-new prospects who complete their cycle without entering sales';
+              pulseLabel.appendChild(ps);
+              pulseRow.appendChild(pulseLabel);
+              const pulseCell = document.createElement('div');
+              pulseCell.className = 'ec-ov__pulse-cell';
+              pulseCycles.forEach((cycle) => {
+                const box = document.createElement('div');
+                box.className = 'ec-ov__cycle';
+                const cn = document.createElement('p');
+                cn.className = 'ec-ov__cycle-name';
+                cn.textContent = cycle.name;
+                box.appendChild(cn);
+                const ul = document.createElement('ul');
+                ul.className = 'ec-ov__emails';
+                (cycle.emails || []).forEach((em) => {
+                  const li = document.createElement('li');
+                  li.textContent = em.name;
+                  ul.appendChild(li);
+                });
+                box.appendChild(ul);
+                pulseCell.appendChild(box);
+              });
+              pulseRow.appendChild(pulseCell);
+              ov.appendChild(pulseRow);
+            }
+          }
+
           overviewEl.appendChild(ov);
         }
 
