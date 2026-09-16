@@ -1,7 +1,7 @@
 # Current work board
 
-**Board date:** 10 September 2026  
-**Sources:** CoS live calendar (10 Sep morning), `DECISION-LOG.md`, `the-signal-issue-04-choices.md`, `COS-task-calendar.json`.  
+**Board date:** 16 September 2026  
+**Sources:** CoS live calendar (16 Sep), `DECISION-LOG.md`, `the-signal-issue-04-choices.md`, `COS-task-calendar.json`.  
 **If a line is wrong, Jane corrects it.** The 28 Aug board is history.
 
 Treat older briefs (`_project-context.md`, `CURSOR-MORNING-BRIEF.md`, `WIP-notes.md`, website README “next phases”) as **history**, not this board.
@@ -18,11 +18,13 @@ Workstream bots update this table when Jane assigns them work. Cornelius does no
 
 | ID | Jane asked | Owner | Stage | Model | Artifact | Waiting on Jane | Next |
 |---|---|---|---|---|---|---|---|
-| signal-04-ac-draft | Design/create Issue 04 email in ActiveCampaign from last template with placeholders (Webflow not ready). No Send. Jane finalizing copy today; send Tue Sep 15. | Ermintrude | GLM teaser HTML built from Issue 03 template; Mike card placeholder | GLM | `ui_kits/email/email-signal-issue-04-teaser.html` + `-notes.md` | Jane review AC draft | Ermintrude paste/create AC campaign draft; no Send |
+| signal-04-ac-draft | Issue 04 AC draft created (campaign 179). No Send. Jane finalizing; send Tue Sep 15. | Ermintrude | AC draft live | — | https://lucisystems.activehosted.com/app/campaigns/179 | Jane review → queue only after yes; Send only if Jane says | Draft ready |
+| signal-04-imp-review | Put full Issue 04 newsletter in IMP Review Queue (dueForReview) before Tue send. | Ermintrude | GLM sync HTML + queue + deploy portal | GLM | review-queue.json + review/newsletter | Live on http://10.10.1.17:8081 | GLM running |
 | aliante-rc2-finish | Finish Aliante video today — Jane watch/approve RC2; polish vs Mike-ready. | Vikram | Jane review / finish | none | assembly/aliante-led-rough-cut-2.mp4 | Jane finish call | Vikram ready for polish notes; no invent; no post |
-| aliante-edit-blueprint | Diagnose RC2 story gaps; write scene-by-scene editorial blueprint before RC3. GPT only. No RC3, no Vikram yet. | Consuelo | Parked — Jane said come back later | GPT | `video-production/projects/aliante-led/editorial/aliante-edit-blueprint-v1.md` | Jane returns to lock structure | Hold; no RC3 / no Vikram until Jane reopens |
 | aliante-imovie-handoff-rc2 | iMovie handoff folder reproducing RC2 as editable pieces (timeline 40 clips + titles.md verbatim + alternates + RC2 reference). No RC3, no shot swaps, no timing changes. | Vikram | Jane ready — package complete | GLM | `video-production/projects/aliante-led/assembly/imovie-handoff-rc2/` | Jane | Jane opens in iMovie; decides next (edit / RC3 / park) |
+| aliante-astro-publish | Jane: publish Aliante video + written case study on Astro site. | Weatherby | committed + redeployed | GLM | `public/videos/aliante-reel.mp4` + case-studies/aliante (commit `6cf7cc5` on `persona-hero-subhead-gold`; live on `.37`) | Jane hard-refresh confirm | Weatherby reports to Jane/CoS |
 | signal-04-layout | GLM applying copy-r3 + Opus Project Update ledger into HTML. | Ermintrude | GLM layout r3 | GLM | lock 6c6f5f7 + copy f73725f | Jane review on 127.0.0.1:8765 | GLM running in Terminal |
+| new-luci-imp-launch-storage | Stand up New LUCI Launch Campaign IMP section (Strategy + Working) below Coming Soon. | Weatherby | deployed | GLM | `#new-luci-launch` + `/strategy/*` + `/working/*` live on http://10.10.1.17:8081 (commit `fbc2568`) | Jane glance | Weatherby reports |
 
 ---
 
@@ -79,6 +81,7 @@ Workstream bots update this table when Jane assigns them work. Cornelius does no
 
 | Item | Note |
 |---|---|
+| aliante-edit-blueprint | Video complete 15 Sep; blueprint superseded. No Consuelo copy rewrite unless Jane asks. Weatherby: reel mp4 + Resources index + .37 redeploy — done 15 Sep (commit `6cf7cc5`, live on `.37`). |
 | PIN / zone-access screen recording post | Never shipped. Dropped 28 Aug. |
 | Homepage ticker NFL names | Do not retry blur/card-over (parked follow-up in Cursor rules). |
 | Budgetary estimate template trim | Template is established. |
