@@ -1479,7 +1479,7 @@
     }
 
 
-    /* ---------- Feature list (New LUCI) ---------- */
+    /* ---------- Feature list (New LUCI) — redesigned ---------- */
     #view-feature-list .page-head h2 {
       font-family: var(--font);
     }
@@ -1487,7 +1487,7 @@
       max-width: 68ch;
     }
 
-    /* In-page chapter chips — same pill language as campaign audience pills. */
+    /* In-page chapter chips */
     .cmp-chip {
       display: inline-flex;
       align-items: center;
@@ -1516,78 +1516,182 @@
 
     #view-feature-list .fl-body {
       display: grid;
-      gap: 40px;
-    }
-    #view-feature-list .fl-chapter {
-      scroll-margin-top: 24px;
+      gap: 48px;
     }
 
-    #view-feature-list .fl-narrative {
-      font-family: var(--font);
-      font-size: clamp(20px, 3vw, 28px);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: var(--mint-dark);
-      margin-bottom: 8px;
+    /* --- 1. Campaign theme --- */
+    #view-feature-list .fl-theme {
+      padding: 24px 28px;
+      background: linear-gradient(135deg, rgba(43,158,128,0.08), rgba(43,158,128,0.03));
+      border-left: 4px solid var(--mint-dark);
+      border-radius: 0 8px 8px 0;
     }
-
-    /* Navy chapter band — Signal 03 e-mesh + floorplan, screen-blend, low opacity. */
-    #view-feature-list .fl-band {
-      position: relative;
-      overflow: hidden;
-      background: #10232D;
-      color: var(--off-white);
-      margin-inline: calc(0px - clamp(28px, 5vw, 56px));
-      padding: 28px clamp(28px, 5vw, 56px) 30px;
-    }
-    #view-feature-list .fl-band::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      background: url("assets/mesh/luci-bg-hero-1920x1080.svg") center / cover no-repeat;
-      mix-blend-mode: screen;
-      opacity: 0.26;
-    }
-    #view-feature-list .fl-band > * { position: relative; z-index: 1; }
-    #view-feature-list .fl-band__kicker {
-      margin: 0 0 10px;
+    #view-feature-list .fl-theme__label {
+      margin: 0 0 6px;
       font-family: var(--font);
       font-size: 11px;
       font-weight: 600;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: #68E3BE;
+      color: var(--mint-dark);
     }
-    #view-feature-list .fl-band__heading {
+    #view-feature-list .fl-theme__text {
       margin: 0;
       font-family: var(--font);
-      font-size: clamp(22px, 3vw, 28px);
+      font-size: clamp(20px, 3vw, 26px);
       font-weight: 700;
-      line-height: 1.12;
+      letter-spacing: -0.02em;
+      color: var(--ink-strong);
+      line-height: 1.2;
+    }
+
+    /* --- 3. Pillar visual --- */
+    #view-feature-list .fl-pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      scroll-margin-top: 24px;
+    }
+    #view-feature-list .fl-pillar {
+      display: flex;
+      flex-direction: column;
+    }
+    /* Capital — the wider top band */
+    #view-feature-list .fl-pillar__cap {
+      padding: 22px 24px 20px;
+      background: #10232D;
+      color: var(--off-white);
+      border-top: 4px solid var(--mint-dark);
+    }
+    #view-feature-list .fl-pillar__name {
+      margin: 0 0 8px;
+      font-family: var(--font);
+      font-size: 20px;
+      font-weight: 700;
       letter-spacing: -0.02em;
       color: var(--off-white);
     }
-    #view-feature-list .fl-band__intro {
-      margin: 12px 0 0;
-      max-width: 68ch;
+    #view-feature-list .fl-pillar__arg {
+      margin: 0;
       font-family: var(--font-body);
-      font-size: 15px;
-      line-height: 1.6;
-      color: rgba(245, 248, 250, 0.82);
+      font-size: 13.5px;
+      line-height: 1.5;
+      color: rgba(245, 248, 250, 0.78);
     }
-
-    /* Features sit on the off-white sheet under the band — de-boxed list, hairlines. */
-    #view-feature-list .fl-sheet {
+    /* Shaft — the feature list below the capital */
+    #view-feature-list .fl-pillar__feats {
+      flex: 1;
+      margin: 0;
+      padding: 20px 24px 28px;
+      list-style: none;
       background: var(--off-white);
-    }
-    #view-feature-list .fl-feature {
-      padding: 26px 0;
+      border-left: 1px solid var(--rule);
+      border-right: 1px solid var(--rule);
       border-bottom: 1px solid var(--rule);
     }
-    #view-feature-list .fl-feature:last-child { border-bottom: 0; }
-    #view-feature-list .fl-feature__name {
+    #view-feature-list .fl-pillar__feats li {
+      padding: 8px 0;
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink-strong);
+      border-bottom: 1px solid var(--rule);
+    }
+    #view-feature-list .fl-pillar__feats li:last-child {
+      border-bottom: 0;
+    }
+
+    /* --- 4. Feature briefs --- */
+    #view-feature-list .fl-briefs {
+      scroll-margin-top: 24px;
+    }
+    #view-feature-list .fl-briefs__label {
+      margin: 0 0 4px;
+      font-family: var(--font);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mint-dark);
+    }
+    #view-feature-list .fl-briefs__sub {
+      margin: 0 0 16px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--muted);
+      max-width: 68ch;
+    }
+    #view-feature-list .fl-brief-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    #view-feature-list .fl-brief {
+      padding: 18px 20px;
+      background: var(--off-white);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+    }
+    #view-feature-list .fl-brief__name {
+      margin: 0 0 6px;
+      font-family: var(--font);
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--ink-strong);
+    }
+    #view-feature-list .fl-brief__desc {
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--ink);
+    }
+
+    /* --- 5. Honorable mentions — same brief style, slightly muted --- */
+    #view-feature-list .fl-briefs--tech .fl-brief {
+      background: rgba(245, 248, 250, 0.5);
+      border-color: rgba(0, 0, 0, 0.06);
+    }
+    #view-feature-list .fl-briefs--tech .fl-brief__name {
+      color: var(--navy-muted);
+    }
+
+    /* --- 6. Feature details --- */
+    #view-feature-list .fl-details {
+      scroll-margin-top: 24px;
+    }
+    #view-feature-list .fl-details__label {
+      margin: 0 0 4px;
+      font-family: var(--font);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mint-dark);
+    }
+    #view-feature-list .fl-details__sub {
+      margin: 0 0 20px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+    #view-feature-list .fl-detail {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    #view-feature-list .fl-detail:last-child {
+      border-bottom: 0;
+    }
+    #view-feature-list .fl-detail__head {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    #view-feature-list .fl-detail__name {
       margin: 0;
       font-family: var(--font);
       font-size: 18px;
@@ -1595,7 +1699,27 @@
       letter-spacing: -0.015em;
       color: var(--ink-strong);
     }
-    #view-feature-list .fl-feature__text {
+    #view-feature-list .fl-detail__tag {
+      font-family: var(--font);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mint-dark);
+      background: rgba(43, 158, 128, 0.1);
+      padding: 3px 8px;
+      border-radius: 999px;
+    }
+    #view-feature-list .fl-detail__brief {
+      margin: 8px 0 0;
+      max-width: 72ch;
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--ink);
+      font-weight: 500;
+    }
+    #view-feature-list .fl-detail__text {
       margin: 10px 0 0;
       max-width: 72ch;
       font-family: var(--font-body);
@@ -1603,7 +1727,7 @@
       line-height: 1.6;
       color: var(--ink);
     }
-    #view-feature-list .fl-feature__bullets {
+    #view-feature-list .fl-detail__bullets {
       margin: 10px 0 0;
       padding: 0;
       max-width: 72ch;
@@ -1613,11 +1737,11 @@
       line-height: 1.6;
       color: var(--ink);
     }
-    #view-feature-list .fl-feature__bullets li {
+    #view-feature-list .fl-detail__bullets li {
       position: relative;
       padding: 7px 0 7px 18px;
     }
-    #view-feature-list .fl-feature__bullets li::before {
+    #view-feature-list .fl-detail__bullets li::before {
       content: "";
       position: absolute;
       left: 0;
@@ -1627,35 +1751,16 @@
       border-radius: 50%;
       background: var(--mint-dark);
     }
-
-    /* IT additional — quieter nested block on the light sheet. */
-    #view-feature-list .fl-additional {
-      margin-top: 4px;
-      padding-top: 8px;
-    }
-    #view-feature-list .fl-additional__kicker {
-      margin: 18px 0 6px;
+    #view-feature-list .fl-detail__add-hdr {
+      margin: 32px 0 0;
+      padding-top: 20px;
       font-family: var(--font);
       font-size: 11px;
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #2b9e80;
-    }
-    #view-feature-list .fl-additional__intro {
-      margin: 0 0 8px;
-      max-width: 72ch;
-      font-family: var(--font-body);
-      font-size: 14px;
-      line-height: 1.55;
-      color: var(--muted);
-    }
-    #view-feature-list .fl-additional .fl-feature__name {
-      font-size: 16px;
-    }
-    #view-feature-list .fl-additional .fl-feature__text {
-      font-size: 14.5px;
-      color: var(--ink);
+      color: var(--mint-dark);
+      border-top: 1px solid var(--rule);
     }
 
     /* ---------- Email comms & nurture ---------- */
@@ -1771,9 +1876,15 @@
       .board-col { border-right: 0; border-bottom: 0; padding: 26px 24px; }
       .board-col:last-child { border-bottom: 0; }
       .cmp-audiences { grid-template-columns: 1fr; }
-      #view-feature-list .fl-band {
-        margin-inline: -20px;
-        padding-inline: 20px;
+      #view-feature-list .fl-pillars {
+        grid-template-columns: 1fr;
+      }
+      #view-feature-list .fl-pillar__feats {
+        border-left: 0;
+        border-right: 0;
+      }
+      #view-feature-list .fl-brief-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -4019,46 +4130,188 @@
       body.replaceChildren();
       if (chipsEl) chipsEl.replaceChildren();
       try {
-        const res = await fetch('new-luci-feature-list.json?v=20260916a');
+        const res = await fetch('new-luci-feature-list.json?v=20260916b');
         if (!res.ok) throw new Error('load');
         const data = await res.json();
         if (titleEl) titleEl.textContent = data.title || 'New LUCI — Feature List';
         if (deckEl) deckEl.textContent = data.deck || '';
 
-        // Narrative line
+        // --- 1. Campaign theme ---
         if (data.narrative) {
-          const nar = document.createElement('p');
-          nar.className = 'fl-narrative';
-          nar.textContent = data.narrative;
-          body.appendChild(nar);
+          const theme = document.createElement('div');
+          theme.className = 'fl-theme';
+          const label = document.createElement('p');
+          label.className = 'fl-theme__label';
+          label.textContent = 'Campaign theme';
+          const text = document.createElement('p');
+          text.className = 'fl-theme__text';
+          text.textContent = data.narrative;
+          theme.appendChild(label);
+          theme.appendChild(text);
+          body.appendChild(theme);
         }
 
-        // Build chapters from pillars + technical
-        const chapters = [];
-        (data.pillars || []).forEach((p, i) => {
-          chapters.push({ key: 'pillar-' + i, kicker: p.name, block: { heading: p.name, intro: p.argument, items: p.features } });
+        // --- 2. Click menu (chips) ---
+        if (chipsEl) {
+          const chipItems = [
+            { key: 'pillars', label: 'Pillars' },
+            ...((data.pillars || []).map((p, i) => ({ key: 'briefs-' + i, label: p.name }))),
+            { key: 'honorable', label: 'Honorable mentions' },
+            { key: 'details', label: 'Feature details' },
+          ];
+          chipItems.forEach((ci) => {
+            const a = document.createElement('a');
+            a.className = 'cmp-chip';
+            a.href = '#coming-soon/new-luci-feature-list';
+            a.textContent = ci.label;
+            a.addEventListener('click', (ev) => {
+              ev.preventDefault();
+              const target = document.getElementById('fl-' + ci.key);
+              if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+            chipsEl.appendChild(a);
+          });
+        }
+
+        // --- 3. Pillar visual ---
+        const pillarSection = document.createElement('section');
+        pillarSection.className = 'fl-pillars';
+        pillarSection.id = 'fl-pillars';
+        (data.pillars || []).forEach((p) => {
+          const col = document.createElement('div');
+          col.className = 'fl-pillar';
+          const cap = document.createElement('div');
+          cap.className = 'fl-pillar__cap';
+          const name = document.createElement('h3');
+          name.className = 'fl-pillar__name';
+          name.textContent = p.name;
+          cap.appendChild(name);
+          const arg = document.createElement('p');
+          arg.className = 'fl-pillar__arg';
+          arg.textContent = p.argument;
+          cap.appendChild(arg);
+          col.appendChild(cap);
+          const feats = document.createElement('ul');
+          feats.className = 'fl-pillar__feats';
+          (p.features || []).forEach((f) => {
+            const li = document.createElement('li');
+            li.textContent = f.name;
+            feats.appendChild(li);
+          });
+          col.appendChild(feats);
+          pillarSection.appendChild(col);
         });
+        body.appendChild(pillarSection);
+
+        // --- 4. Feature briefs (by pillar) ---
+        (data.pillars || []).forEach((p, i) => {
+          const section = document.createElement('section');
+          section.className = 'fl-briefs';
+          section.id = 'fl-briefs-' + i;
+          const label = document.createElement('p');
+          label.className = 'fl-briefs__label';
+          label.textContent = p.name;
+          section.appendChild(label);
+          const grid = document.createElement('div');
+          grid.className = 'fl-brief-grid';
+          (p.features || []).forEach((f) => {
+            const card = document.createElement('div');
+            card.className = 'fl-brief';
+            const nm = document.createElement('p');
+            nm.className = 'fl-brief__name';
+            nm.textContent = f.name;
+            card.appendChild(nm);
+            if (f.brief) {
+              const desc = document.createElement('p');
+              desc.className = 'fl-brief__desc';
+              desc.textContent = f.brief;
+              card.appendChild(desc);
+            }
+            grid.appendChild(card);
+          });
+          section.appendChild(grid);
+          body.appendChild(section);
+        });
+
+        // --- 5. Honorable mentions (technical detail) ---
         if (data.technical) {
-          chapters.push({ key: 'technical', kicker: 'Technical', block: data.technical });
+          const section = document.createElement('section');
+          section.className = 'fl-briefs fl-briefs--tech';
+          section.id = 'fl-honorable';
+          const label = document.createElement('p');
+          label.className = 'fl-briefs__label';
+          label.textContent = 'Honorable mentions';
+          section.appendChild(label);
+          const sub = document.createElement('p');
+          sub.className = 'fl-briefs__sub';
+          sub.textContent = data.technical.intro || '';
+          section.appendChild(sub);
+          const grid = document.createElement('div');
+          grid.className = 'fl-brief-grid';
+          (data.technical.items || []).forEach((f) => {
+            const card = document.createElement('div');
+            card.className = 'fl-brief';
+            const nm = document.createElement('p');
+            nm.className = 'fl-brief__name';
+            nm.textContent = f.name;
+            card.appendChild(nm);
+            if (f.brief) {
+              const desc = document.createElement('p');
+              desc.className = 'fl-brief__desc';
+              desc.textContent = f.brief;
+              card.appendChild(desc);
+            }
+            grid.appendChild(card);
+          });
+          section.appendChild(grid);
+          body.appendChild(section);
         }
 
-        const appendFeature = (parent, item) => {
+        // --- 6. Feature details (full bullets for copy review) ---
+        const detailsSection = document.createElement('section');
+        detailsSection.className = 'fl-details';
+        detailsSection.id = 'fl-details';
+        const dLabel = document.createElement('p');
+        dLabel.className = 'fl-details__label';
+        dLabel.textContent = 'Feature details';
+        detailsSection.appendChild(dLabel);
+        const dSub = document.createElement('p');
+        dSub.className = 'fl-details__sub';
+        dSub.textContent = 'Full descriptions for copy review.';
+        detailsSection.appendChild(dSub);
+
+        const appendDetail = (parent, item, pillarName) => {
           const feat = document.createElement('article');
-          feat.className = 'fl-feature';
-          const name = document.createElement('h4');
-          name.className = 'fl-feature__name';
-          name.textContent = item.name || '';
-          feat.appendChild(name);
+          feat.className = 'fl-detail';
+          const head = document.createElement('div');
+          head.className = 'fl-detail__head';
+          const nm = document.createElement('h4');
+          nm.className = 'fl-detail__name';
+          nm.textContent = item.name || '';
+          head.appendChild(nm);
+          if (pillarName) {
+            const tag = document.createElement('span');
+            tag.className = 'fl-detail__tag';
+            tag.textContent = pillarName;
+            head.appendChild(tag);
+          }
+          feat.appendChild(head);
+          if (item.brief) {
+            const b = document.createElement('p');
+            b.className = 'fl-detail__brief';
+            b.textContent = item.brief;
+            feat.appendChild(b);
+          }
           if (item.text) {
             const t = document.createElement('p');
-            t.className = 'fl-feature__text';
+            t.className = 'fl-detail__text';
             t.textContent = item.text;
             feat.appendChild(t);
           }
           const bullets = item.bullets || [];
           if (bullets.length) {
             const ul = document.createElement('ul');
-            ul.className = 'fl-feature__bullets';
+            ul.className = 'fl-detail__bullets';
             bullets.forEach((b) => {
               const li = document.createElement('li');
               li.textContent = b;
@@ -4069,68 +4322,18 @@
           parent.appendChild(feat);
         };
 
-        chapters.forEach((ch) => {
-          const block = ch.block;
-          if (chipsEl) {
-            const a = document.createElement('a');
-            a.className = 'cmp-chip';
-            a.href = '#coming-soon/new-luci-feature-list';
-            a.textContent = ch.kicker;
-            a.addEventListener('click', (ev) => {
-              ev.preventDefault();
-              const target = document.getElementById('fl-' + ch.key);
-              if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
-            chipsEl.appendChild(a);
-          }
-
-          const section = document.createElement('section');
-          section.className = 'fl-chapter';
-          section.id = 'fl-' + ch.key;
-
-          const band = document.createElement('div');
-          band.className = 'fl-band';
-          const kicker = document.createElement('p');
-          kicker.className = 'fl-band__kicker';
-          kicker.textContent = ch.kicker;
-          band.appendChild(kicker);
-          const heading = document.createElement('h3');
-          heading.className = 'fl-band__heading';
-          heading.textContent = block.heading || '';
-          band.appendChild(heading);
-          if (block.intro) {
-            const intro = document.createElement('p');
-            intro.className = 'fl-band__intro';
-            intro.textContent = block.intro;
-            band.appendChild(intro);
-          }
-          section.appendChild(band);
-
-          const sheet = document.createElement('div');
-          sheet.className = 'fl-sheet';
-          (block.items || []).forEach((item) => appendFeature(sheet, item));
-
-          const extraItems = block.additional || [];
-          if (extraItems.length) {
-            const extra = document.createElement('div');
-            extra.className = 'fl-additional';
-            const extraKicker = document.createElement('p');
-            extraKicker.className = 'fl-additional__kicker';
-            extraKicker.textContent = 'Additional';
-            extra.appendChild(extraKicker);
-            if (block.additionalIntro) {
-              const extraIntro = document.createElement('p');
-              extraIntro.className = 'fl-additional__intro';
-              extraIntro.textContent = block.additionalIntro;
-              extra.appendChild(extraIntro);
-            }
-            extraItems.forEach((item) => appendFeature(extra, item));
-            sheet.appendChild(extra);
-          }
-
-          section.appendChild(sheet);
-          body.appendChild(section);
+        (data.pillars || []).forEach((p) => {
+          (p.features || []).forEach((f) => appendDetail(detailsSection, f, p.name));
         });
+        const additional = (data.technical || {}).additional || [];
+        if (additional.length) {
+          const addHdr = document.createElement('p');
+          addHdr.className = 'fl-detail__add-hdr';
+          addHdr.textContent = 'IT-facing detail';
+          detailsSection.appendChild(addHdr);
+          additional.forEach((f) => appendDetail(detailsSection, f, 'IT'));
+        }
+        body.appendChild(detailsSection);
       } catch (e) {
         body.textContent = 'Could not load feature list.';
       }
