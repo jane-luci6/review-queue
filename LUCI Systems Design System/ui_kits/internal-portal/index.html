@@ -4019,7 +4019,7 @@
       body.replaceChildren();
       if (chipsEl) chipsEl.replaceChildren();
       try {
-        const res = await fetch('new-luci-feature-list.json?v=20260909b');
+        const res = await fetch('new-luci-feature-list.json?v=20260916a');
         if (!res.ok) throw new Error('load');
         const data = await res.json();
         if (titleEl) titleEl.textContent = data.title || 'New LUCI — Feature List';

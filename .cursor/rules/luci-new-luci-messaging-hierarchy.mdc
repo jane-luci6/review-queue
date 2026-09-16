@@ -26,9 +26,9 @@ The release argument is carried by **three pillars**. Each pillar has a one-sent
 
 | Pillar | Argument | Proof features |
 |---|---|---|
-| **Operate** | Control now lives in the venue, not just the back office. | Venue panels · Staging |
+| **Operate** | Control now lives in the venue, not just the back office. | Venue panels · Staging · In-product support |
 | **Make it yours** | Your maps, your look — the system belongs to the property. | Customizable interface · Live map flexibility |
-| **See and prove** | What's happening now, what happened, and who did it. | Audit trails and in-product support · Live monitoring |
+| **See and secure** | What's happening now, what happened, and who's in the system. | Audit trails · Live monitoring · Sign-in and session control |
 
 ### Layer 3 — Proof features (the evidence)
 
@@ -40,7 +40,6 @@ Feature bullets live in the JSON; don't re-derive them from memory. Read `new-lu
 
 Features that support the platform but don't carry the release argument sit in `technical.items` — for the IT or A/V lead who asks, not for the campaign narrative. These include:
 
-- **Sign-in and session control** — *open question: Jane may promote this to a proof point under "Make it yours." Until she decides, it stays here.*
 - Audio group control
 - Add any endpoint from LUCI
 - Video wall layout sync
@@ -71,7 +70,7 @@ All New LUCI launch assets should be **consistent with** the hierarchy. Two asse
 2. **Structure the asset around the pillars.** The narrative opens; the pillars carry the argument; the proof features provide the evidence; technical detail is separated.
 3. **Don't flatten back to primary/secondary.** The old structure is retired. If someone asks for "the primary features," answer with the pillar structure — the pillars are the primary message, the features under them are the proof.
 4. **Don't invent new pillars.** Three is the count. If a feature doesn't fit, it goes in technical detail, not a fourth pillar.
-5. **Check the sign-in/session control question** before building. If Jane has decided to promote it, move it in the JSON first, then build.
+5. **Check the JSON before building.** The pillar structure may have shifted since this rule was last updated — always read `new-luci-feature-list.json` for the current state.
 
 ---
 
