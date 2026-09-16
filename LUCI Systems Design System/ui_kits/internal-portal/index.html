@@ -1766,6 +1766,130 @@
     /* ---------- Email comms & nurture ---------- */
     #view-email-comms .page-head { border-bottom: 0; padding-bottom: 10px; }
     #view-email-comms .page-head h2 { margin-bottom: 8px; }
+
+    /* --- Overview: two sides --- */
+    #view-email-comms .ec-overview { margin-bottom: 48px; }
+    #view-email-comms .ec-ov {
+      display: grid;
+      grid-template-columns: 1fr 48px 1fr;
+      gap: 0;
+    }
+    #view-email-comms .ec-ov__side {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    #view-email-comms .ec-ov__head {
+      margin: 0 0 4px;
+      font-family: var(--font);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--ink-strong);
+    }
+    #view-email-comms .ec-ov__sub {
+      margin: 0 0 8px;
+      font-family: var(--font-body);
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--muted);
+      max-width: 52ch;
+    }
+    #view-email-comms .ec-ov__track {
+      display: flex;
+      flex-direction: column;
+    }
+    #view-email-comms .ec-ov__track-label {
+      margin: 0 0 10px;
+      font-family: var(--font);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mint-dark);
+    }
+    #view-email-comms .ec-ov__cycle {
+      padding: 12px 14px;
+      background: var(--off-white);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+    }
+    #view-email-comms .ec-ov__cycle-name {
+      margin: 0 0 2px;
+      font-family: var(--font);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink-strong);
+    }
+    #view-email-comms .ec-ov__email-count {
+      margin: 0 0 8px;
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--muted);
+    }
+    #view-email-comms .ec-ov__emails {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    #view-email-comms .ec-ov__emails li {
+      padding: 3px 0 3px 14px;
+      font-family: var(--font-body);
+      font-size: 13px;
+      line-height: 1.45;
+      color: var(--ink);
+      position: relative;
+    }
+    #view-email-comms .ec-ov__emails li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.7em;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--mint-dark);
+    }
+    #view-email-comms .ec-ov__arrow {
+      margin: 2px 0;
+      text-align: center;
+      font-size: 16px;
+      color: var(--mint-dark);
+      line-height: 1;
+    }
+    /* Divider between the two sides */
+    #view-email-comms .ec-ov__divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    #view-email-comms .ec-ov__divider::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 1px;
+      background: var(--rule);
+    }
+    #view-email-comms .ec-ov__divider-label {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      padding: 8px 6px;
+      font-family: var(--font);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mint-dark);
+      background: var(--bg);
+      text-align: center;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+    }
+
     .ec-back {
       display: inline-block; margin-bottom: 14px;
       font-family: var(--font); font-size: 13px; font-weight: 600;
@@ -1885,6 +2009,25 @@
       }
       #view-feature-list .fl-brief-grid {
         grid-template-columns: 1fr;
+      }
+      #view-email-comms .ec-ov {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      #view-email-comms .ec-ov__divider {
+        height: 32px;
+      }
+      #view-email-comms .ec-ov__divider::before {
+        top: 50%;
+        bottom: auto;
+        left: 0;
+        right: 0;
+        width: auto;
+        height: 1px;
+      }
+      #view-email-comms .ec-ov__divider-label {
+        writing-mode: horizontal-tb;
+        transform: none;
       }
     }
   </style>
@@ -2052,6 +2195,7 @@
           <p id="email-comms-deck"></p>
         </header>
         <div class="page-body">
+          <div class="ec-overview" id="email-comms-overview"></div>
           <div class="ec-context">
             <div class="ec-rules" id="email-comms-rules" hidden></div>
             <div class="ec-signal" id="email-comms-signal" hidden></div>
@@ -4351,12 +4495,75 @@
       const routingImg = $('email-comms-routing');
       if (!root) return;
       try {
-        const res = await fetch('new-luci-email-comms.json?v=20260909b');
+        const res = await fetch('new-luci-email-comms.json?v=20260916a');
         if (!res.ok) throw new Error('load');
         const data = await res.json();
         if (titleEl) titleEl.textContent = data.title || 'New LUCI — Email Communications & Nurture';
         if (deckEl) deckEl.textContent = data.deck || '';
         if (backEl && data.backLink) { backEl.textContent = data.backLink.label || 'Back'; backEl.href = data.backLink.href || '#coming-soon/new-luci-campaign-strategy'; }
+
+        // --- Overview: two sides side-by-side ---
+        const overviewEl = $('email-comms-overview');
+        if (overviewEl) {
+          overviewEl.replaceChildren();
+          const campaignCycleNames = ['Pre-launch webinar','Upgrade readiness','Launch and upgrade','Post-upgrade follow-up','Selected pre-launch preview','Launch re-engagement','Acquisition'];
+          const responseGroups = [
+            { label: 'Warm prospects', trackId: 'warm', cycleNames: ['After a warm response'] },
+            { label: 'Net-new prospects', trackId: 'net-new', cycleNames: ['After a demo request','Unbooked request recovery — after Sales handback','Post-demo recovery — after Sales handback'] },
+            { label: 'Shared nurture (warm + net-new)', trackId: 'pulse', cycleNames: ['Every 4–6 weeks'] },
+          ];
+          const tracks = data.tracks || [];
+          const findTrack = (id) => tracks.find(t => t.id === id);
+          const findCycles = (track, names) => (track.cycles || []).filter(c => names.includes(c.name));
+
+          const buildSide = (headText, subText, groups) => {
+            const side = document.createElement('div');
+            side.className = 'ec-ov__side';
+            const h = document.createElement('p'); h.className = 'ec-ov__head'; h.textContent = headText; side.appendChild(h);
+            const s = document.createElement('p'); s.className = 'ec-ov__sub'; s.textContent = subText; side.appendChild(s);
+            groups.forEach((g) => {
+              const track = g.track ? g.track : findTrack(g.trackId);
+              if (!track) return;
+              const cycles = g.cycles ? g.cycles : findCycles(track, g.cycleNames);
+              if (!cycles.length) return;
+              const trackDiv = document.createElement('div'); trackDiv.className = 'ec-ov__track';
+              const tl = document.createElement('p'); tl.className = 'ec-ov__track-label'; tl.textContent = g.label; trackDiv.appendChild(tl);
+              cycles.forEach((cycle, ci) => {
+                const box = document.createElement('div'); box.className = 'ec-ov__cycle';
+                const cn = document.createElement('p'); cn.className = 'ec-ov__cycle-name'; cn.textContent = cycle.name; box.appendChild(cn);
+                const ec = (cycle.emails || []).length;
+                const ct = document.createElement('p'); ct.className = 'ec-ov__email-count'; ct.textContent = ec + ' email' + (ec !== 1 ? 's' : ''); box.appendChild(ct);
+                const ul = document.createElement('ul'); ul.className = 'ec-ov__emails';
+                (cycle.emails || []).forEach((em) => { const li = document.createElement('li'); li.textContent = em.name; ul.appendChild(li); });
+                box.appendChild(ul);
+                trackDiv.appendChild(box);
+                if (ci < cycles.length - 1) { const a = document.createElement('p'); a.className = 'ec-ov__arrow'; a.textContent = '\u2193'; trackDiv.appendChild(a); }
+              });
+              side.appendChild(trackDiv);
+            });
+            return side;
+          };
+
+          // Campaign groups
+          const custTrack = findTrack('customers');
+          const warmTrack = findTrack('warm');
+          const nnTrack = findTrack('net-new');
+          const campaignGroups = [
+            { label: 'Existing customers', track: custTrack, cycles: findCycles(custTrack, campaignCycleNames) },
+            { label: 'Warm prospects', track: warmTrack, cycles: findCycles(warmTrack, ['Selected pre-launch preview','Launch re-engagement']) },
+            { label: 'Net-new prospects', track: nnTrack, cycles: findCycles(nnTrack, ['Acquisition']) },
+          ];
+
+          const left = buildSide('Upgrade campaign flow', 'Outbound, timed sequences that drive awareness and action toward the New LUCI upgrade.', campaignGroups);
+          const divider = document.createElement('div'); divider.className = 'ec-ov__divider';
+          const dl = document.createElement('p'); dl.className = 'ec-ov__divider-label'; dl.textContent = 'When a prospect responds \u2192'; divider.appendChild(dl);
+          const right = buildSide('Prospecting response flow', 'Triggered by a reply, booking, or demo request. Owned by Sales until explicit handback to Marketing.', responseGroups);
+
+          const ov = document.createElement('div'); ov.className = 'ec-ov';
+          ov.append(left, divider, right);
+          overviewEl.appendChild(ov);
+        }
+
         if (lifecycleImg) lifecycleImg.src = 'luci-prospect-nurture-lifecycle.svg?v=20260903a';
         if (routingImg) routingImg.src = 'luci-prospect-routing.svg?v=20260903a';
         if (rulesEl && Array.isArray(data.sharedRules) && data.sharedRules.length) {
