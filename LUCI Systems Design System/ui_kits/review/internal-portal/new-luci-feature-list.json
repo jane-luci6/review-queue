@@ -1,6 +1,6 @@
 {
   "title": "New LUCI — Feature List",
-  "deck": "Restructured into release pillars per 2026 messaging-hierarchy best practice. Features that carry the campaign argument sit under a pillar; the rest sit as technical detail for the IT or A/V lead. Sign-in and session control is in technical detail pending Jane's decision on whether it earns a proof-point slot under 'Make it yours.'",
+  "deck": "Restructured into release pillars per 2026 messaging-hierarchy best practice. Features that carry the campaign argument sit under a pillar; the rest sit as technical detail for the IT or A/V lead. In-product support moved to Operate (keeps the boat moving). Sign-in and session control promoted to See and secure alongside audit trails and live monitoring.",
   "narrative": "Putting the power of programming in your hands",
   "pillars": [
     {
@@ -16,7 +16,8 @@
             "The person at the panel never sees the main LUCI application and cannot reach anything outside the designated space. A public-facing panel can be opened without a PIN; a staff panel can require one.",
             "Presets can be made available at the panel, so a room can be set to a saved look without leaving the space.",
             "A panel can also be scoped across several venues — a tablet that travels with the manager who covers four ballrooms."
-          ]
+          ],
+          "brief": "Control lives in the venue — a tablet in the space puts it in the hands of the person who runs it."
         },
         {
           "name": "Staging",
@@ -26,7 +27,16 @@
             "Save any staged set as a preset to run it again. Give a preset a time and it becomes a scheduled preset.",
             "Scroll forward and back through days across new chart views to see what already ran and what is coming.",
             "Look at one display and see every preset and schedule due to touch it, and when."
-          ]
+          ],
+          "brief": "Build the next look while the current one keeps running. Apply on cue."
+        },
+        {
+          "name": "In-product support",
+          "bullets": [
+            "Raise a support request from the device, incident, or error itself. The request arrives with what happened, what changed, and the relevant logs already attached.",
+            "A person chooses what to escalate, so the property stays in control."
+          ],
+          "brief": "Raise a support request from the device, incident, or error itself — context and logs already attached."
         }
       ]
     },
@@ -42,7 +52,8 @@
             "Background image blur, opacity, and positioning are adjustable.",
             "Endpoint status colors arrive as operators already know them and can be changed across the whole install.",
             "LUCI can design the theme for a property, or the property can build and adjust it."
-          ]
+          ],
+          "brief": "Sign-in and splash screens carry the property’s own photography, marks, and colors."
         },
         {
           "name": "Live map flexibility",
@@ -51,23 +62,23 @@
             "Rotate and orient the map to match the physical space.",
             "Live connection to devices means what is on screen matches what is in the room — not a periodic poll.",
             "The map is also the monitoring surface — see every device’s state at a glance."
-          ]
+          ],
+          "brief": "Load the property’s own floor plans, oriented to match the physical space."
         }
       ]
     },
     {
-      "name": "See and prove",
-      "argument": "What’s happening now, what happened, and who did it.",
+      "name": "See and secure",
+      "argument": "What’s happening now, what happened, and who’s in the system.",
       "features": [
         {
-          "name": "Audit trails and in-product support",
+          "name": "Audit trails",
           "bullets": [
             "Every action is recorded against a person and a time, including what triggered it — a person, a preset, or a schedule.",
             "Search by device or user, filter by action type, and download the results as a CSV.",
-            "Changes made outside LUCI are noticed and recorded for most third-party device types. Device incidents open when a device stops responding and close when it returns, so a fault has a duration.",
-            "Raise a support request from the device, incident, or error itself. The request arrives with what happened, what changed, and the relevant logs already attached.",
-            "A person chooses what to escalate, so the property stays in control."
-          ]
+            "Changes made outside LUCI are noticed and recorded for most third-party device types. Device incidents open when a device stops responding and close when it returns, so a fault has a duration."
+          ],
+          "brief": "Every action recorded against a person and a time — what triggered it, who did it, when."
         },
         {
           "name": "Live monitoring",
@@ -76,7 +87,18 @@
             "Device incidents surface as they happen, not on the next poll. A device that stops responding opens an incident; recovery closes it.",
             "Filter by venue, device type, or status to find what needs attention without leaving the map.",
             "Raise a support request from the monitoring view itself — the incident context and logs are already attached."
-          ]
+          ],
+          "brief": "Real-time state of every device, display, and audio zone — what’s on, what’s off, what has a fault."
+        },
+        {
+          "name": "Sign-in and session control",
+          "bullets": [
+            "Users sign in by email or PIN, or with the Microsoft credentials they already use at work through Entra ID.",
+            "Administrators can sign a user out of the system and post a site-wide message banner to everyone using LUCI.",
+            "Session control means the property decides who is in the system and when — not just who has a login, but who is active right now.",
+            "The private tunnel consolidates every outbound connection into one encrypted link, so IT reviews one pairing instead of a list of firewall exceptions."
+          ],
+          "brief": "Email, PIN, or Entra sign-in. Administrators control who is active and can sign users out."
         }
       ]
     }
@@ -86,29 +108,24 @@
     "intro": "For the IT or A/V lead who asks. Not mapped to a campaign pillar — these features support the platform but don’t carry the release argument.",
     "items": [
       {
-        "name": "Sign-in and session control",
-        "bullets": [
-          "Users sign in by email or PIN, or with the Microsoft credentials they already use at work through Entra ID.",
-          "Administrators can sign a user out of the system and post a site-wide message banner to everyone using LUCI.",
-          "Session control means the property decides who is in the system and when — not just who has a login, but who is active right now.",
-          "The private tunnel consolidates every outbound connection into one encrypted link, so IT reviews one pairing instead of a list of firewall exceptions."
-        ]
-      },
-      {
         "name": "Audio group control",
-        "text": "Move several zones proportionally so their tuned balance survives, set every zone to the same level, or move one zone alone."
+        "text": "Move several zones proportionally so their tuned balance survives, set every zone to the same level, or move one zone alone.",
+        "brief": "Move several zones proportionally, set every zone to the same level, or move one alone."
       },
       {
         "name": "Add any endpoint from LUCI",
-        "text": "Every device type can be added through the interface. Add one from the map or twenty at once with addresses incrementing, and get a warning when a record already exists."
+        "text": "Every device type can be added through the interface. Add one from the map or twenty at once with addresses incrementing, and get a warning when a record already exists.",
+        "brief": "Every device type added through the interface — one at a time or twenty at once."
       },
       {
         "name": "Video wall layout sync",
-        "text": "Wall layouts and window assignments are pulled from the video wall processor with per-pixel geometry instead of being rebuilt by hand. Multi-window templates can be assigned to a player and changed live."
+        "text": "Wall layouts and window assignments are pulled from the video wall processor with per-pixel geometry instead of being rebuilt by hand. Multi-window templates can be assigned to a player and changed live.",
+        "brief": "Wall layouts pulled from the processor with per-pixel geometry, not rebuilt by hand."
       },
       {
         "name": "Central display model catalog",
-        "text": "New hospitality display models are added centrally and pushed out to the property, so buying a new model no longer means editing configuration files on site."
+        "text": "New hospitality display models are added centrally and pushed out to the property, so buying a new model no longer means editing configuration files on site.",
+        "brief": "New display models added centrally and pushed to the property — no on-site config edits."
       }
     ],
     "additionalIntro": "IT-facing detail for pillar features — the deeper version an IT or A/V lead will want. The merged upgrade guide and IT companion uses this block.",

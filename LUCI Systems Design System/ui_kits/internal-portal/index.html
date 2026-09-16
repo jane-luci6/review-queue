@@ -2028,6 +2028,113 @@
       .ec-email { grid-template-columns: 1fr 1fr; }
     }
 
+    /* ---------- New LUCI Launch Campaign ---------- */
+    .nll-group {
+      border: 1px solid var(--rule);
+      border-radius: var(--r);
+      background: var(--white);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+    .nll-group + .nll-group { margin-top: 18px; }
+    .nll-group__head {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 16px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 14px;
+      padding: 20px 24px;
+      border: 0;
+      background: none;
+      text-align: left;
+      cursor: pointer;
+      color: inherit;
+      transition: background 0.15s;
+    }
+    .nll-group__head:hover { background: var(--tint); }
+    .nll-group__head:focus-visible { outline: 2px solid var(--mint-dark); outline-offset: -2px; }
+    .nll-group__chevron {
+      width: 0; height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 6px solid var(--muted);
+      transition: transform 0.18s;
+    }
+    .nll-group__head[aria-expanded="true"] .nll-group__chevron { transform: rotate(90deg); }
+    .nll-group__name {
+      font-family: var(--font);
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--ink-strong);
+    }
+    .nll-group__count {
+      font-family: var(--font);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted);
+    }
+    .nll-group__body { padding: 0 24px 22px; }
+    .nll-group__body[hidden] { display: none; }
+    .nll-group .row { padding: 16px 0; }
+    .nll-group .row:first-child { border-top: 1px solid var(--rule); padding-top: 18px; }
+    .nll-group .row .actions { display: grid; gap: 8px; justify-items: end; }
+    .nll-group .nll-tag {
+      display: inline-block;
+      margin-top: 6px;
+      font-family: var(--font);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--mint-dark);
+    }
+
+    /* Working shell (editable draft) */
+    #view-new-luci-working .page-head { border-bottom: 0; padding-bottom: 6px; }
+    #nll-working-deck { max-width: 70ch; }
+    .nll-working__save {
+      margin: 10px 0 0;
+      font-family: var(--font);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--mint-dark);
+      min-height: 16px;
+    }
+    .nll-working__body {
+      min-height: 320px;
+      padding: 22px 24px;
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: var(--r);
+      box-shadow: var(--shadow-sm);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .nll-working__body:focus {
+      border-color: var(--mint-dark);
+      box-shadow: 0 0 0 3px rgba(43, 158, 128, 0.10);
+    }
+    .nll-working__body:empty::before {
+      content: attr(data-placeholder);
+      color: var(--muted);
+      font-style: italic;
+    }
+    .nll-working__body h3 { font-family: var(--font); font-size: 17px; color: var(--ink-strong); margin: 18px 0 8px; }
+    .nll-working__body p { margin: 0 0 12px; }
+    .nll-working__body ul, .nll-working__body ol { margin: 0 0 12px; padding-left: 22px; }
+
+    @media (max-width: 980px) {
+      .nll-group__head { grid-template-columns: 16px minmax(0, 1fr) auto; }
+      .nll-group__body { padding: 0 18px 18px; }
+      .nll-group .row { grid-template-columns: 1fr; }
+      .nll-group .row .actions { justify-items: start; }
+    }
+
     @media (max-width: 980px) {
       .shell { grid-template-columns: 1fr; }
       .sidebar { position: relative; height: auto; }
@@ -2090,6 +2197,7 @@
         <a href="#customize" data-nav="customize"><span>Customize documents</span></a>
         <a href="#guidelines" data-nav="guidelines"><span>Messaging &amp; Philosophy</span></a>
         <a href="#coming-soon" data-nav="coming-soon"><span>Coming Soon</span></a>
+        <a href="#new-luci-launch" data-nav="new-luci-launch"><span>New LUCI Launch Campaign</span></a>
       </nav>
       <div class="sidebar__bottom">
         <p class="sidebar__docs">
@@ -2204,7 +2312,7 @@
           <p id="campaigns-public"></p>
           <p id="campaigns-order"></p>
           <div class="cmp-audiences" id="campaigns-audiences" hidden aria-label="Campaign audiences"></div>
-          <a class="cmp-related" href="#coming-soon/new-luci-email-comms">Email communications &amp; nurture plan</a>
+          <a class="cmp-related" href="#new-luci-launch/strategy/email-comms">Email communications &amp; nurture plan</a>
         </header>
         <div class="page-body">
           <div id="campaigns-channels-wrap" hidden>
@@ -2232,7 +2340,7 @@
 
       <div class="view" id="view-email-comms" hidden>
         <header class="page-head">
-          <a class="ec-back" id="email-comms-back" href="#coming-soon/new-luci-campaign-strategy"></a>
+          <a class="ec-back" id="email-comms-back" href="#new-luci-launch/strategy/campaign-strategy"></a>
           <h2 id="email-comms-title">New LUCI — Email Communications &amp; Nurture</h2>
           <p id="email-comms-deck"></p>
         </header>
@@ -2249,6 +2357,57 @@
           <div class="ec-tracks" id="email-comms-tracks"></div>
         </div>
       </div>
+      <div class="view" id="view-new-luci-launch" hidden>
+        <header class="page-head">
+          <p class="kicker">Campaign</p>
+          <h2>New LUCI Launch Campaign</h2>
+          <p>The coordinated New LUCI launch — strategy on one side, day-to-day working assets on the other. Strategy holds the locked plans; Working is scratch space for each campaign piece as it comes together.</p>
+        </header>
+        <div class="page-body">
+          <section class="nll-group" aria-labelledby="nll-strategy-title">
+            <button class="nll-group__head" type="button" aria-expanded="true" aria-controls="nll-strategy-body" data-group="strategy">
+              <span class="nll-group__chevron" aria-hidden="true"></span>
+              <span class="nll-group__name" id="nll-strategy-title">Strategy</span>
+              <span class="nll-group__count">3 docs</span>
+            </button>
+            <div class="nll-group__body" id="nll-strategy-body">
+              <div class="list" id="nll-strategy-list"></div>
+            </div>
+          </section>
+          <section class="nll-group" aria-labelledby="nll-working-title">
+            <button class="nll-group__head" type="button" aria-expanded="true" aria-controls="nll-working-body" data-group="working">
+              <span class="nll-group__chevron" aria-hidden="true"></span>
+              <span class="nll-group__name" id="nll-working-title">Working</span>
+              <span class="nll-group__count">5 drafts</span>
+            </button>
+            <div class="nll-group__body" id="nll-working-body">
+              <div class="list" id="nll-working-list"></div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div class="view" id="view-new-luci-working" hidden>
+        <header class="page-head">
+          <a class="ec-back" id="nll-working-back" href="#new-luci-launch"></a>
+          <h2 id="nll-working-title">Working draft</h2>
+          <p id="nll-working-deck"></p>
+          <p class="nll-working__save" id="nll-working-save" aria-live="polite"></p>
+        </header>
+        <div class="page-body">
+          <div
+            class="nll-working__body"
+            id="nll-working-editor"
+            contenteditable="true"
+            role="textbox"
+            aria-multiline="true"
+            aria-label="Working draft body"
+            data-placeholder="Add content here"
+            spellcheck="true"
+          ></div>
+        </div>
+      </div>
+
     </main>
   </div>
 
@@ -3491,11 +3650,12 @@
 
     function renderRoadmap() {
       const nest = [
-        { title: 'New LUCI Campaign strategy', note: 'One coordinated launch across customers and prospects.', href: '#coming-soon/new-luci-campaign-strategy' },
-        { title: 'New LUCI — Email Communications & Nurture', note: 'What email goes to whom, when, and why.', href: '#coming-soon/new-luci-email-comms' },
-        { title: 'New LUCI — Preliminary Feature List', note: 'Primary and also-in-release, in full.', href: '#coming-soon/new-luci-feature-list' }
+        { title: 'New LUCI Campaign strategy', note: 'One coordinated launch across customers and prospects.', href: '#new-luci-launch/strategy/campaign-strategy' },
+        { title: 'New LUCI — Email Communications & Nurture', note: 'What email goes to whom, when, and why.', href: '#new-luci-launch/strategy/email-comms' },
+        { title: 'New LUCI — Preliminary Feature List', note: 'Primary and also-in-release, in full.', href: '#new-luci-launch/strategy/feature-list' }
       ];
       const items = portal.queue.upcoming || [];
+      const movedNote = `<p class="empty" style="margin:0 0 18px;">The New LUCI launch plans now live under <a class="row__link" href="#new-luci-launch" style="color:var(--mint-dark);font-weight:600;text-decoration:none;">New LUCI Launch Campaign</a> in the sidebar. The links below still open each plan.</p>`;
       const nestHtml = nest.map((item) => `
         <article class="row">
           <div>
@@ -3515,7 +3675,133 @@
           <div class="actions">${item.hubPreviewPath ? `<a class="btn btn--ghost" href="../${item.hubPreviewPath.replace(/^ui_kits\//, '')}" target="_blank" rel="noopener">Preview</a>` : ''}</div>
         </article>
       `).join('') : '';
-      $('roadmap-list').innerHTML = nestHtml + rest || '<p class="empty">Nothing listed yet.</p>';
+      $('roadmap-list').innerHTML = movedNote + nestHtml + rest || '<p class="empty">Nothing listed yet.</p>';
+    }
+
+    // ---------- New LUCI Launch Campaign section ----------
+
+    // Strategy docs (re-homed from Coming Soon). Renderers reused; only the route moved.
+    const NEW_LUCI_STRATEGY_DOCS = [
+      { slug: 'campaign-strategy', title: 'New LUCI Campaign strategy', note: 'One coordinated launch across customers and prospects.', tag: 'Strategy' },
+      { slug: 'email-comms', title: 'Email communications & nurture', note: 'What email goes to whom, when, and why.', tag: 'Strategy' },
+      { slug: 'feature-list', title: 'Preliminary Feature List', note: 'Primary and also-in-release, in full.', tag: 'Strategy' }
+    ];
+
+    // Working draft shells — labeled placeholders, no invented copy. Each persists
+    // simple wording edits to localStorage (same spirit as other Jane-facing IMP docs).
+    const NEW_LUCI_WORKING_SHELLS = [
+      { slug: 'whats-new', title: "What's New one-pager", deck: 'Short release-notes style summary of what is new in New LUCI for customers.' },
+      { slug: 'webinar', title: 'Webinar', deck: 'Landing page copy plus script and slide drafts for the launch webinar.' },
+      { slug: 'email-packets', title: 'Email copy packets', deck: 'Email copy by track — customers, warm prospects, net-new — as each packet comes together.' },
+      { slug: 'upgrade-guide', title: 'Upgrade guide & FAQ', deck: 'How current customers move onto New LUCI, plus the questions that come up.' },
+      { slug: 'proof-pull', title: 'Proof pull', deck: 'Running list of proof points, quotes, and evidence to draw from for launch assets.' }
+    ];
+
+    const LS_NEW_LUCI_WORKING = 'luci-internal-portal-new-luci-working';
+
+    function readWorkingDrafts() { return readLocal(LS_NEW_LUCI_WORKING, {}); }
+    function writeWorkingDrafts(map) { writeLocal(LS_NEW_LUCI_WORKING, map); }
+
+    function renderNewLuciLaunch() {
+      const stratList = $('nll-strategy-list');
+      const workList = $('nll-working-list');
+      if (stratList) {
+        stratList.innerHTML = NEW_LUCI_STRATEGY_DOCS.map((d) => `
+          <article class="row">
+            <div>
+              <h3>${d.title}</h3>
+              <p>${d.note}</p>
+              <span class="nll-tag">${d.tag}</span>
+            </div>
+            <div class="actions"><a class="btn btn--ghost" href="#new-luci-launch/strategy/${d.slug}">Open</a></div>
+          </article>
+        `).join('');
+      }
+      if (workList) {
+        const drafts = readWorkingDrafts();
+        workList.innerHTML = NEW_LUCI_WORKING_SHELLS.map((s) => {
+          const hasDraft = !!(drafts[s.slug] && drafts[s.slug].trim());
+          const status = hasDraft ? '<span class="nll-tag">In progress</span>' : '<span class="nll-tag" style="color:var(--muted);">Empty</span>';
+          return `
+            <article class="row">
+              <div>
+                <h3>${s.title}</h3>
+                <p>${s.deck}</p>
+                ${status}
+              </div>
+              <div class="actions"><a class="btn btn--ghost" href="#new-luci-launch/working/${s.slug}">Open draft</a></div>
+            </article>
+          `;
+        }).join('');
+      }
+      wireNllGroupToggles();
+    }
+
+    // Accordion open/close for the Strategy / Working groups (persists per group).
+    const LS_NEW_LUCI_GROUPS = 'luci-internal-portal-new-luci-groups';
+    function wireNllGroupToggles() {
+      document.querySelectorAll('.nll-group__head').forEach((head) => {
+        if (head.dataset.wired) return;
+        head.dataset.wired = '1';
+        const key = head.dataset.group;
+        const states = readLocal(LS_NEW_LUCI_GROUPS, { strategy: true, working: true });
+        const open = key in states ? states[key] : true;
+        head.setAttribute('aria-expanded', String(open));
+        const body = document.getElementById(head.getAttribute('aria-controls'));
+        if (body) body.hidden = !open;
+        head.addEventListener('click', () => {
+          const next = head.getAttribute('aria-expanded') !== 'true';
+          head.setAttribute('aria-expanded', String(next));
+          if (body) body.hidden = !next;
+          const s = readLocal(LS_NEW_LUCI_GROUPS, { strategy: true, working: true });
+          s[key] = next;
+          writeLocal(LS_NEW_LUCI_GROUPS, s);
+        });
+      });
+    }
+
+    function renderWorkingShell(slug) {
+      const shell = NEW_LUCI_WORKING_SHELLS.find((s) => s.slug === slug);
+      const titleEl = $('nll-working-title');
+      const deckEl = $('nll-working-deck');
+      const backEl = $('nll-working-back');
+      const bodyEl = $('nll-working-editor');
+      const saveEl = $('nll-working-save');
+      if (!shell) {
+        if (titleEl) titleEl.textContent = 'Working draft';
+        if (deckEl) deckEl.textContent = '';
+        if (bodyEl) bodyEl.innerHTML = '';
+        return;
+      }
+      if (titleEl) titleEl.textContent = shell.title;
+      if (deckEl) deckEl.textContent = shell.deck;
+      if (backEl) backEl.textContent = 'Back to New LUCI Launch Campaign';
+      if (backEl) backEl.href = '#new-luci-launch';
+      const drafts = readWorkingDrafts();
+      if (bodyEl) {
+        bodyEl.innerHTML = drafts[slug] || '';
+        bodyEl.dataset.slug = slug;
+        if (saveEl) saveEl.textContent = drafts[slug] ? 'Saved' : '';
+      }
+      if (bodyEl && !bodyEl.dataset.bound) {
+        bodyEl.dataset.bound = '1';
+        let t = null;
+        const flush = () => {
+          const s = bodyEl.dataset.slug;
+          if (!s) return;
+          const map = readWorkingDrafts();
+          const val = bodyEl.innerHTML.trim();
+          if (val) map[s] = bodyEl.innerHTML; else delete map[s];
+          writeWorkingDrafts(map);
+          if (saveEl) { saveEl.textContent = 'Saved'; if (t) clearTimeout(t); t = setTimeout(() => { if (saveEl) saveEl.textContent = ''; }, 1600); }
+        };
+        bodyEl.addEventListener('input', () => {
+          if (saveEl) saveEl.textContent = 'Editing…';
+          if (t) clearTimeout(t);
+          t = setTimeout(flush, 400);
+        });
+        bodyEl.addEventListener('blur', flush);
+      }
     }
 
     function sanitizeFilePart(value) {
@@ -4348,7 +4634,7 @@
           chipItems.forEach((ci) => {
             const a = document.createElement('a');
             a.className = 'cmp-chip';
-            a.href = '#coming-soon/new-luci-feature-list';
+            a.href = '#new-luci-launch/strategy/feature-list';
             a.textContent = ci.label;
             a.addEventListener('click', (ev) => {
               ev.preventDefault();
@@ -4542,7 +4828,7 @@
         const data = await res.json();
         if (titleEl) titleEl.textContent = data.title || 'New LUCI — Email Communications & Nurture';
         if (deckEl) deckEl.textContent = data.deck || '';
-        if (backEl && data.backLink) { backEl.textContent = data.backLink.label || 'Back'; backEl.href = data.backLink.href || '#coming-soon/new-luci-campaign-strategy'; }
+        if (backEl && data.backLink) { backEl.textContent = data.backLink.label || 'Back'; backEl.href = data.backLink.href || '#new-luci-launch/strategy/campaign-strategy'; }
 
         // --- Overview: three audiences aligned by phase ---
         const overviewEl = $('email-comms-overview');
@@ -4808,16 +5094,37 @@
       }
     }
 
-    const VIEWS = ['home', 'materials', 'review', 'customize', 'guidelines', 'coming-soon'];
+    const VIEWS = ['home', 'materials', 'review', 'customize', 'guidelines', 'coming-soon', 'new-luci-launch'];
+
+    // Old Coming Soon / #campaigns hashes now live under #new-luci-launch/strategy/*.
+    // Map them so legacy bookmarks still open the same docs (thin redirect aliases).
+    const NEW_LUCI_STRATEGY_ALIASES = {
+      'new-luci-campaign-strategy': 'strategy/campaign-strategy',
+      'new-luci-email-comms': 'strategy/email-comms',
+      'new-luci-feature-list': 'strategy/feature-list'
+    };
 
     function routeFromHash() {
       const raw = (location.hash || '#home').replace(/^#/, '');
-      let [view, sub] = raw.split('/');
+      const parts = raw.split('/');
+      let view = parts[0] || 'home';
+      let sub = parts.slice(1).join('/');
       if (view === 'campaigns') {
-        view = 'coming-soon';
-        sub = sub || 'new-luci-campaign-strategy';
+        view = 'new-luci-launch';
+        sub = 'strategy/campaign-strategy';
+      } else if (view === 'coming-soon' && Object.prototype.hasOwnProperty.call(NEW_LUCI_STRATEGY_ALIASES, sub)) {
+        view = 'new-luci-launch';
+        sub = NEW_LUCI_STRATEGY_ALIASES[sub];
       }
       return { view: VIEWS.includes(view) ? view : 'home', sub: sub || '' };
+    }
+
+    // Canonical hash for a resolved route, when the original hash was a legacy alias.
+    function canonicalHashFor(view, sub) {
+      if (view === 'new-luci-launch' && sub === 'strategy/campaign-strategy') return '#new-luci-launch/strategy/campaign-strategy';
+      if (view === 'new-luci-launch' && sub === 'strategy/email-comms') return '#new-luci-launch/strategy/email-comms';
+      if (view === 'new-luci-launch' && sub === 'strategy/feature-list') return '#new-luci-launch/strategy/feature-list';
+      return null;
     }
 
     function showView(view, sub) {
@@ -4850,23 +5157,33 @@
       const campaignsEl = $('view-campaigns');
       const featureEl = $('view-feature-list');
       const emailEl = $('view-email-comms');
+      const launchEl = $('view-new-luci-launch');
+      const workingEl = $('view-new-luci-working');
       if (campaignsEl) campaignsEl.hidden = true;
       if (featureEl) featureEl.hidden = true;
       if (emailEl) emailEl.hidden = true;
+      if (launchEl) launchEl.hidden = true;
+      if (workingEl) workingEl.hidden = true;
 
-      if (view === 'coming-soon' && sub === 'new-luci-campaign-strategy') {
+      // New LUCI Launch Campaign — strategy docs reuse the existing renderers.
+      if (view === 'new-luci-launch' && sub === 'strategy/campaign-strategy') {
         if (campaignsEl) campaignsEl.hidden = false;
         renderCampaigns();
         return;
       }
-      if (view === 'coming-soon' && sub === 'new-luci-feature-list') {
+      if (view === 'new-luci-launch' && sub === 'strategy/feature-list') {
         if (featureEl) featureEl.hidden = false;
         renderFeatureList();
         return;
       }
-      if (view === 'coming-soon' && sub === 'new-luci-email-comms') {
+      if (view === 'new-luci-launch' && sub === 'strategy/email-comms') {
         if (emailEl) emailEl.hidden = false;
         renderEmailComms();
+        return;
+      }
+      // New LUCI Launch Campaign — working draft shells (editable, localStorage).
+      if (view === 'new-luci-launch' && sub.startsWith('working/')) {
+        if (workingEl) { workingEl.hidden = false; renderWorkingShell(sub.slice('working/'.length)); }
         return;
       }
 
@@ -4878,6 +5195,7 @@
       else if (view === 'customize') renderStudio();
       else if (view === 'guidelines') renderGuidelines();
       else if (view === 'coming-soon') renderRoadmap();
+      else if (view === 'new-luci-launch') renderNewLuciLaunch();
     }
 
     function updateNav() {
@@ -4892,6 +5210,7 @@
         await loadState();
         const { view, sub } = routeFromHash();
         showView(view, sub);
+        normalizeLegacyHash(view, sub);
         portal.renderedSignature = stateSignature();
         // Poll the sync API every 30s so new comments/approvals from Mike/Mark appear
         // without a manual refresh (skips re-render while someone is typing a comment).
@@ -4909,12 +5228,33 @@
       }
     }
 
+    // Rewrite the address bar to the canonical New LUCI Launch hash when a legacy
+    // alias (#coming-soon/new-luci-*, #campaigns) was used. replaceState does not
+    // fire hashchange, so this is a silent, loop-free redirect.
+    function normalizeLegacyHash(view, sub) {
+      const canon = canonicalHashFor(view, sub);
+      if (canon && location.hash !== canon) {
+        try { history.replaceState(null, '', canon); } catch (e) { /* noop */ }
+      }
+    }
+
+    function isStrategyDocRoute(view, sub) {
+      return view === 'new-luci-launch' && (
+        sub === 'strategy/campaign-strategy' ||
+        sub === 'strategy/feature-list' ||
+        sub === 'strategy/email-comms'
+      );
+    }
+
     window.addEventListener('hashchange', () => {
       const { view, sub } = routeFromHash();
       showView(view, sub);
+      normalizeLegacyHash(view, sub);
       // Re-fetch on navigation so the review list/detail reflects the latest server state.
-      // Campaigns board is JSON-only — do not hit the comments API on this view.
-      if (!(view === 'coming-soon' && (sub === 'new-luci-campaign-strategy' || sub === 'new-luci-feature-list' || sub === 'new-luci-email-comms'))) refreshFromApi({ silent: true });
+      // Strategy docs + working drafts are JSON/localStorage-only — skip the comments API.
+      if (!isStrategyDocRoute(view, sub) && !(view === 'new-luci-launch' && sub.startsWith('working/'))) {
+        refreshFromApi({ silent: true });
+      }
     });
     boot();
   </script>

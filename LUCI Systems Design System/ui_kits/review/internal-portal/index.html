@@ -1479,7 +1479,7 @@
     }
 
 
-    /* ---------- Feature list (New LUCI) ---------- */
+    /* ---------- Feature list (New LUCI) — redesigned ---------- */
     #view-feature-list .page-head h2 {
       font-family: var(--font);
     }
@@ -1487,7 +1487,7 @@
       max-width: 68ch;
     }
 
-    /* In-page chapter chips — same pill language as campaign audience pills. */
+    /* In-page chapter chips */
     .cmp-chip {
       display: inline-flex;
       align-items: center;
@@ -1516,78 +1516,182 @@
 
     #view-feature-list .fl-body {
       display: grid;
-      gap: 40px;
-    }
-    #view-feature-list .fl-chapter {
-      scroll-margin-top: 24px;
+      gap: 48px;
     }
 
-    #view-feature-list .fl-narrative {
-      font-family: var(--font);
-      font-size: clamp(20px, 3vw, 28px);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: var(--mint-dark);
-      margin-bottom: 8px;
+    /* --- 1. Campaign theme --- */
+    #view-feature-list .fl-theme {
+      padding: 24px 28px;
+      background: linear-gradient(135deg, rgba(43,158,128,0.08), rgba(43,158,128,0.03));
+      border-left: 4px solid var(--mint-dark);
+      border-radius: 0 8px 8px 0;
     }
-
-    /* Navy chapter band — Signal 03 e-mesh + floorplan, screen-blend, low opacity. */
-    #view-feature-list .fl-band {
-      position: relative;
-      overflow: hidden;
-      background: #10232D;
-      color: var(--off-white);
-      margin-inline: calc(0px - clamp(28px, 5vw, 56px));
-      padding: 28px clamp(28px, 5vw, 56px) 30px;
-    }
-    #view-feature-list .fl-band::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      background: url("assets/mesh/luci-bg-hero-1920x1080.svg") center / cover no-repeat;
-      mix-blend-mode: screen;
-      opacity: 0.26;
-    }
-    #view-feature-list .fl-band > * { position: relative; z-index: 1; }
-    #view-feature-list .fl-band__kicker {
-      margin: 0 0 10px;
+    #view-feature-list .fl-theme__label {
+      margin: 0 0 6px;
       font-family: var(--font);
       font-size: 11px;
       font-weight: 600;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: #68E3BE;
+      color: var(--mint-dark);
     }
-    #view-feature-list .fl-band__heading {
+    #view-feature-list .fl-theme__text {
       margin: 0;
       font-family: var(--font);
-      font-size: clamp(22px, 3vw, 28px);
+      font-size: clamp(20px, 3vw, 26px);
       font-weight: 700;
-      line-height: 1.12;
+      letter-spacing: -0.02em;
+      color: var(--ink-strong);
+      line-height: 1.2;
+    }
+
+    /* --- 3. Pillar visual --- */
+    #view-feature-list .fl-pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      scroll-margin-top: 24px;
+    }
+    #view-feature-list .fl-pillar {
+      display: flex;
+      flex-direction: column;
+    }
+    /* Capital — the wider top band */
+    #view-feature-list .fl-pillar__cap {
+      padding: 22px 24px 20px;
+      background: #10232D;
+      color: var(--off-white);
+      border-top: 4px solid var(--mint-dark);
+    }
+    #view-feature-list .fl-pillar__name {
+      margin: 0 0 8px;
+      font-family: var(--font);
+      font-size: 20px;
+      font-weight: 700;
       letter-spacing: -0.02em;
       color: var(--off-white);
     }
-    #view-feature-list .fl-band__intro {
-      margin: 12px 0 0;
-      max-width: 68ch;
+    #view-feature-list .fl-pillar__arg {
+      margin: 0;
       font-family: var(--font-body);
-      font-size: 15px;
-      line-height: 1.6;
-      color: rgba(245, 248, 250, 0.82);
+      font-size: 13.5px;
+      line-height: 1.5;
+      color: rgba(245, 248, 250, 0.78);
     }
-
-    /* Features sit on the off-white sheet under the band — de-boxed list, hairlines. */
-    #view-feature-list .fl-sheet {
+    /* Shaft — the feature list below the capital */
+    #view-feature-list .fl-pillar__feats {
+      flex: 1;
+      margin: 0;
+      padding: 20px 24px 28px;
+      list-style: none;
       background: var(--off-white);
-    }
-    #view-feature-list .fl-feature {
-      padding: 26px 0;
+      border-left: 1px solid var(--rule);
+      border-right: 1px solid var(--rule);
       border-bottom: 1px solid var(--rule);
     }
-    #view-feature-list .fl-feature:last-child { border-bottom: 0; }
-    #view-feature-list .fl-feature__name {
+    #view-feature-list .fl-pillar__feats li {
+      padding: 8px 0;
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink-strong);
+      border-bottom: 1px solid var(--rule);
+    }
+    #view-feature-list .fl-pillar__feats li:last-child {
+      border-bottom: 0;
+    }
+
+    /* --- 4. Feature briefs --- */
+    #view-feature-list .fl-briefs {
+      scroll-margin-top: 24px;
+    }
+    #view-feature-list .fl-briefs__label {
+      margin: 0 0 4px;
+      font-family: var(--font);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mint-dark);
+    }
+    #view-feature-list .fl-briefs__sub {
+      margin: 0 0 16px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--muted);
+      max-width: 68ch;
+    }
+    #view-feature-list .fl-brief-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    #view-feature-list .fl-brief {
+      padding: 18px 20px;
+      background: var(--off-white);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+    }
+    #view-feature-list .fl-brief__name {
+      margin: 0 0 6px;
+      font-family: var(--font);
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--ink-strong);
+    }
+    #view-feature-list .fl-brief__desc {
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--ink);
+    }
+
+    /* --- 5. Honorable mentions — same brief style, slightly muted --- */
+    #view-feature-list .fl-briefs--tech .fl-brief {
+      background: rgba(245, 248, 250, 0.5);
+      border-color: rgba(0, 0, 0, 0.06);
+    }
+    #view-feature-list .fl-briefs--tech .fl-brief__name {
+      color: var(--navy-muted);
+    }
+
+    /* --- 6. Feature details --- */
+    #view-feature-list .fl-details {
+      scroll-margin-top: 24px;
+    }
+    #view-feature-list .fl-details__label {
+      margin: 0 0 4px;
+      font-family: var(--font);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mint-dark);
+    }
+    #view-feature-list .fl-details__sub {
+      margin: 0 0 20px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+    #view-feature-list .fl-detail {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    #view-feature-list .fl-detail:last-child {
+      border-bottom: 0;
+    }
+    #view-feature-list .fl-detail__head {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    #view-feature-list .fl-detail__name {
       margin: 0;
       font-family: var(--font);
       font-size: 18px;
@@ -1595,7 +1699,27 @@
       letter-spacing: -0.015em;
       color: var(--ink-strong);
     }
-    #view-feature-list .fl-feature__text {
+    #view-feature-list .fl-detail__tag {
+      font-family: var(--font);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mint-dark);
+      background: rgba(43, 158, 128, 0.1);
+      padding: 3px 8px;
+      border-radius: 999px;
+    }
+    #view-feature-list .fl-detail__brief {
+      margin: 8px 0 0;
+      max-width: 72ch;
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--ink);
+      font-weight: 500;
+    }
+    #view-feature-list .fl-detail__text {
       margin: 10px 0 0;
       max-width: 72ch;
       font-family: var(--font-body);
@@ -1603,7 +1727,7 @@
       line-height: 1.6;
       color: var(--ink);
     }
-    #view-feature-list .fl-feature__bullets {
+    #view-feature-list .fl-detail__bullets {
       margin: 10px 0 0;
       padding: 0;
       max-width: 72ch;
@@ -1613,11 +1737,11 @@
       line-height: 1.6;
       color: var(--ink);
     }
-    #view-feature-list .fl-feature__bullets li {
+    #view-feature-list .fl-detail__bullets li {
       position: relative;
       padding: 7px 0 7px 18px;
     }
-    #view-feature-list .fl-feature__bullets li::before {
+    #view-feature-list .fl-detail__bullets li::before {
       content: "";
       position: absolute;
       left: 0;
@@ -1627,40 +1751,194 @@
       border-radius: 50%;
       background: var(--mint-dark);
     }
-
-    /* IT additional — quieter nested block on the light sheet. */
-    #view-feature-list .fl-additional {
-      margin-top: 4px;
-      padding-top: 8px;
-    }
-    #view-feature-list .fl-additional__kicker {
-      margin: 18px 0 6px;
+    #view-feature-list .fl-detail__add-hdr {
+      margin: 32px 0 0;
+      padding-top: 20px;
       font-family: var(--font);
       font-size: 11px;
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #2b9e80;
-    }
-    #view-feature-list .fl-additional__intro {
-      margin: 0 0 8px;
-      max-width: 72ch;
-      font-family: var(--font-body);
-      font-size: 14px;
-      line-height: 1.55;
-      color: var(--muted);
-    }
-    #view-feature-list .fl-additional .fl-feature__name {
-      font-size: 16px;
-    }
-    #view-feature-list .fl-additional .fl-feature__text {
-      font-size: 14.5px;
-      color: var(--ink);
+      color: var(--mint-dark);
+      border-top: 1px solid var(--rule);
     }
 
     /* ---------- Email comms & nurture ---------- */
     #view-email-comms .page-head { border-bottom: 0; padding-bottom: 10px; }
     #view-email-comms .page-head h2 { margin-bottom: 8px; }
+
+    /* --- Overview: three audiences aligned by phase --- */
+    #view-email-comms .ec-overview { margin-bottom: 48px; }
+    #view-email-comms .ec-ov {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    /* Header row: phase spacer + 3 audience columns */
+    #view-email-comms .ec-ov__head-row {
+      display: grid;
+      grid-template-columns: 140px 1fr 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    #view-email-comms .ec-ov__head-spacer { }
+    #view-email-comms .ec-ov__col-head {
+      margin: 0;
+      font-family: var(--font);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--ink-strong);
+      text-align: center;
+      padding: 10px 8px;
+      background: #10232D;
+      color: var(--off-white);
+      border-radius: 6px;
+    }
+    /* Phase rows */
+    #view-email-comms .ec-ov__phase-row {
+      display: grid;
+      grid-template-columns: 140px 1fr 1fr 1fr;
+      gap: 12px;
+    }
+    #view-email-comms .ec-ov__phase-label {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-top: 4px;
+    }
+    #view-email-comms .ec-ov__phase-name {
+      margin: 0 0 4px;
+      font-family: var(--font);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--mint-dark);
+    }
+    #view-email-comms .ec-ov__phase-sub {
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: 11px;
+      line-height: 1.4;
+      color: var(--muted);
+    }
+    /* Cells */
+    #view-email-comms .ec-ov__cell {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    #view-email-comms .ec-ov__empty {
+      margin: 0;
+      text-align: center;
+      padding: 20px 0;
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--muted);
+      opacity: 0.4;
+    }
+    #view-email-comms .ec-ov__cycle-sep {
+      margin: 0;
+      height: 1px;
+      background: var(--rule);
+    }
+    #view-email-comms .ec-ov__cycle {
+      padding: 10px 12px;
+      background: var(--off-white);
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+    }
+    #view-email-comms .ec-ov__cycle-name {
+      margin: 0 0 6px;
+      font-family: var(--font);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ink-strong);
+      line-height: 1.3;
+    }
+    #view-email-comms .ec-ov__emails {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    #view-email-comms .ec-ov__emails li {
+      padding: 2px 0 2px 12px;
+      font-family: var(--font-body);
+      font-size: 12.5px;
+      line-height: 1.4;
+      color: var(--ink);
+      position: relative;
+    }
+    #view-email-comms .ec-ov__emails li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.65em;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--mint-dark);
+    }
+    #view-email-comms .ec-ov__enum {
+      display: inline-block;
+      min-width: 16px;
+      margin-right: 4px;
+      font-family: var(--font);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--mint-dark);
+      text-align: right;
+    }
+    /* Arrow row between phases */
+    #view-email-comms .ec-ov__arrow-row {
+      display: grid;
+      grid-template-columns: 140px 1fr 1fr 1fr;
+      gap: 12px;
+      margin: 2px 0;
+    }
+    #view-email-comms .ec-ov__phase-arrow {
+      margin: 0;
+      text-align: center;
+      font-size: 14px;
+      color: var(--mint-dark);
+      line-height: 1;
+    }
+    /* Prospect Pulse — full-width row */
+    #view-email-comms .ec-ov__pulse-row {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 12px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 2px solid var(--rule);
+    }
+    #view-email-comms .ec-ov__pulse-label {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-top: 4px;
+    }
+    #view-email-comms .ec-ov__pulse-name {
+      margin: 0 0 4px;
+      font-family: var(--font);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--mint-dark);
+    }
+    #view-email-comms .ec-ov__pulse-sub {
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: 11px;
+      line-height: 1.4;
+      color: var(--muted);
+    }
+    #view-email-comms .ec-ov__pulse-cell {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
     .ec-back {
       display: inline-block; margin-bottom: 14px;
       font-family: var(--font); font-size: 13px; font-weight: 600;
@@ -1750,6 +2028,113 @@
       .ec-email { grid-template-columns: 1fr 1fr; }
     }
 
+    /* ---------- New LUCI Launch Campaign ---------- */
+    .nll-group {
+      border: 1px solid var(--rule);
+      border-radius: var(--r);
+      background: var(--white);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+    .nll-group + .nll-group { margin-top: 18px; }
+    .nll-group__head {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 16px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 14px;
+      padding: 20px 24px;
+      border: 0;
+      background: none;
+      text-align: left;
+      cursor: pointer;
+      color: inherit;
+      transition: background 0.15s;
+    }
+    .nll-group__head:hover { background: var(--tint); }
+    .nll-group__head:focus-visible { outline: 2px solid var(--mint-dark); outline-offset: -2px; }
+    .nll-group__chevron {
+      width: 0; height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 6px solid var(--muted);
+      transition: transform 0.18s;
+    }
+    .nll-group__head[aria-expanded="true"] .nll-group__chevron { transform: rotate(90deg); }
+    .nll-group__name {
+      font-family: var(--font);
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--ink-strong);
+    }
+    .nll-group__count {
+      font-family: var(--font);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted);
+    }
+    .nll-group__body { padding: 0 24px 22px; }
+    .nll-group__body[hidden] { display: none; }
+    .nll-group .row { padding: 16px 0; }
+    .nll-group .row:first-child { border-top: 1px solid var(--rule); padding-top: 18px; }
+    .nll-group .row .actions { display: grid; gap: 8px; justify-items: end; }
+    .nll-group .nll-tag {
+      display: inline-block;
+      margin-top: 6px;
+      font-family: var(--font);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--mint-dark);
+    }
+
+    /* Working shell (editable draft) */
+    #view-new-luci-working .page-head { border-bottom: 0; padding-bottom: 6px; }
+    #nll-working-deck { max-width: 70ch; }
+    .nll-working__save {
+      margin: 10px 0 0;
+      font-family: var(--font);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--mint-dark);
+      min-height: 16px;
+    }
+    .nll-working__body {
+      min-height: 320px;
+      padding: 22px 24px;
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: var(--r);
+      box-shadow: var(--shadow-sm);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .nll-working__body:focus {
+      border-color: var(--mint-dark);
+      box-shadow: 0 0 0 3px rgba(43, 158, 128, 0.10);
+    }
+    .nll-working__body:empty::before {
+      content: attr(data-placeholder);
+      color: var(--muted);
+      font-style: italic;
+    }
+    .nll-working__body h3 { font-family: var(--font); font-size: 17px; color: var(--ink-strong); margin: 18px 0 8px; }
+    .nll-working__body p { margin: 0 0 12px; }
+    .nll-working__body ul, .nll-working__body ol { margin: 0 0 12px; padding-left: 22px; }
+
+    @media (max-width: 980px) {
+      .nll-group__head { grid-template-columns: 16px minmax(0, 1fr) auto; }
+      .nll-group__body { padding: 0 18px 18px; }
+      .nll-group .row { grid-template-columns: 1fr; }
+      .nll-group .row .actions { justify-items: start; }
+    }
+
     @media (max-width: 980px) {
       .shell { grid-template-columns: 1fr; }
       .sidebar { position: relative; height: auto; }
@@ -1771,9 +2156,27 @@
       .board-col { border-right: 0; border-bottom: 0; padding: 26px 24px; }
       .board-col:last-child { border-bottom: 0; }
       .cmp-audiences { grid-template-columns: 1fr; }
-      #view-feature-list .fl-band {
-        margin-inline: -20px;
-        padding-inline: 20px;
+      #view-feature-list .fl-pillars {
+        grid-template-columns: 1fr;
+      }
+      #view-feature-list .fl-pillar__feats {
+        border-left: 0;
+        border-right: 0;
+      }
+      #view-feature-list .fl-brief-grid {
+        grid-template-columns: 1fr;
+      }
+      #view-email-comms .ec-ov__head-row,
+      #view-email-comms .ec-ov__phase-row,
+      #view-email-comms .ec-ov__arrow-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+      #view-email-comms .ec-ov__phase-label {
+        padding-top: 8px;
+      }
+      #view-email-comms .ec-ov__pulse-row {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -1794,6 +2197,7 @@
         <a href="#customize" data-nav="customize"><span>Customize documents</span></a>
         <a href="#guidelines" data-nav="guidelines"><span>Messaging &amp; Philosophy</span></a>
         <a href="#coming-soon" data-nav="coming-soon"><span>Coming Soon</span></a>
+        <a href="#new-luci-launch" data-nav="new-luci-launch"><span>New LUCI Launch Campaign</span></a>
       </nav>
       <div class="sidebar__bottom">
         <p class="sidebar__docs">
@@ -1908,7 +2312,7 @@
           <p id="campaigns-public"></p>
           <p id="campaigns-order"></p>
           <div class="cmp-audiences" id="campaigns-audiences" hidden aria-label="Campaign audiences"></div>
-          <a class="cmp-related" href="#coming-soon/new-luci-email-comms">Email communications &amp; nurture plan</a>
+          <a class="cmp-related" href="#new-luci-launch/strategy/email-comms">Email communications &amp; nurture plan</a>
         </header>
         <div class="page-body">
           <div id="campaigns-channels-wrap" hidden>
@@ -1936,11 +2340,12 @@
 
       <div class="view" id="view-email-comms" hidden>
         <header class="page-head">
-          <a class="ec-back" id="email-comms-back" href="#coming-soon/new-luci-campaign-strategy"></a>
+          <a class="ec-back" id="email-comms-back" href="#new-luci-launch/strategy/campaign-strategy"></a>
           <h2 id="email-comms-title">New LUCI — Email Communications &amp; Nurture</h2>
           <p id="email-comms-deck"></p>
         </header>
         <div class="page-body">
+          <div class="ec-overview" id="email-comms-overview"></div>
           <div class="ec-context">
             <div class="ec-rules" id="email-comms-rules" hidden></div>
             <div class="ec-signal" id="email-comms-signal" hidden></div>
@@ -1952,6 +2357,57 @@
           <div class="ec-tracks" id="email-comms-tracks"></div>
         </div>
       </div>
+      <div class="view" id="view-new-luci-launch" hidden>
+        <header class="page-head">
+          <p class="kicker">Campaign</p>
+          <h2>New LUCI Launch Campaign</h2>
+          <p>The coordinated New LUCI launch — strategy on one side, day-to-day working assets on the other. Strategy holds the locked plans; Working is scratch space for each campaign piece as it comes together.</p>
+        </header>
+        <div class="page-body">
+          <section class="nll-group" aria-labelledby="nll-strategy-title">
+            <button class="nll-group__head" type="button" aria-expanded="true" aria-controls="nll-strategy-body" data-group="strategy">
+              <span class="nll-group__chevron" aria-hidden="true"></span>
+              <span class="nll-group__name" id="nll-strategy-title">Strategy</span>
+              <span class="nll-group__count">3 docs</span>
+            </button>
+            <div class="nll-group__body" id="nll-strategy-body">
+              <div class="list" id="nll-strategy-list"></div>
+            </div>
+          </section>
+          <section class="nll-group" aria-labelledby="nll-working-title">
+            <button class="nll-group__head" type="button" aria-expanded="true" aria-controls="nll-working-body" data-group="working">
+              <span class="nll-group__chevron" aria-hidden="true"></span>
+              <span class="nll-group__name" id="nll-working-title">Working</span>
+              <span class="nll-group__count">5 drafts</span>
+            </button>
+            <div class="nll-group__body" id="nll-working-body">
+              <div class="list" id="nll-working-list"></div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div class="view" id="view-new-luci-working" hidden>
+        <header class="page-head">
+          <a class="ec-back" id="nll-working-back" href="#new-luci-launch"></a>
+          <h2 id="nll-working-title">Working draft</h2>
+          <p id="nll-working-deck"></p>
+          <p class="nll-working__save" id="nll-working-save" aria-live="polite"></p>
+        </header>
+        <div class="page-body">
+          <div
+            class="nll-working__body"
+            id="nll-working-editor"
+            contenteditable="true"
+            role="textbox"
+            aria-multiline="true"
+            aria-label="Working draft body"
+            data-placeholder="Add content here"
+            spellcheck="true"
+          ></div>
+        </div>
+      </div>
+
     </main>
   </div>
 
@@ -3194,11 +3650,12 @@
 
     function renderRoadmap() {
       const nest = [
-        { title: 'New LUCI Campaign strategy', note: 'One coordinated launch across customers and prospects.', href: '#coming-soon/new-luci-campaign-strategy' },
-        { title: 'New LUCI — Email Communications & Nurture', note: 'What email goes to whom, when, and why.', href: '#coming-soon/new-luci-email-comms' },
-        { title: 'New LUCI — Preliminary Feature List', note: 'Primary and also-in-release, in full.', href: '#coming-soon/new-luci-feature-list' }
+        { title: 'New LUCI Campaign strategy', note: 'One coordinated launch across customers and prospects.', href: '#new-luci-launch/strategy/campaign-strategy' },
+        { title: 'New LUCI — Email Communications & Nurture', note: 'What email goes to whom, when, and why.', href: '#new-luci-launch/strategy/email-comms' },
+        { title: 'New LUCI — Preliminary Feature List', note: 'Primary and also-in-release, in full.', href: '#new-luci-launch/strategy/feature-list' }
       ];
       const items = portal.queue.upcoming || [];
+      const movedNote = `<p class="empty" style="margin:0 0 18px;">The New LUCI launch plans now live under <a class="row__link" href="#new-luci-launch" style="color:var(--mint-dark);font-weight:600;text-decoration:none;">New LUCI Launch Campaign</a> in the sidebar. The links below still open each plan.</p>`;
       const nestHtml = nest.map((item) => `
         <article class="row">
           <div>
@@ -3218,7 +3675,133 @@
           <div class="actions">${item.hubPreviewPath ? `<a class="btn btn--ghost" href="../${item.hubPreviewPath.replace(/^ui_kits\//, '')}" target="_blank" rel="noopener">Preview</a>` : ''}</div>
         </article>
       `).join('') : '';
-      $('roadmap-list').innerHTML = nestHtml + rest || '<p class="empty">Nothing listed yet.</p>';
+      $('roadmap-list').innerHTML = movedNote + nestHtml + rest || '<p class="empty">Nothing listed yet.</p>';
+    }
+
+    // ---------- New LUCI Launch Campaign section ----------
+
+    // Strategy docs (re-homed from Coming Soon). Renderers reused; only the route moved.
+    const NEW_LUCI_STRATEGY_DOCS = [
+      { slug: 'campaign-strategy', title: 'New LUCI Campaign strategy', note: 'One coordinated launch across customers and prospects.', tag: 'Strategy' },
+      { slug: 'email-comms', title: 'Email communications & nurture', note: 'What email goes to whom, when, and why.', tag: 'Strategy' },
+      { slug: 'feature-list', title: 'Preliminary Feature List', note: 'Primary and also-in-release, in full.', tag: 'Strategy' }
+    ];
+
+    // Working draft shells — labeled placeholders, no invented copy. Each persists
+    // simple wording edits to localStorage (same spirit as other Jane-facing IMP docs).
+    const NEW_LUCI_WORKING_SHELLS = [
+      { slug: 'whats-new', title: "What's New one-pager", deck: 'Short release-notes style summary of what is new in New LUCI for customers.' },
+      { slug: 'webinar', title: 'Webinar', deck: 'Landing page copy plus script and slide drafts for the launch webinar.' },
+      { slug: 'email-packets', title: 'Email copy packets', deck: 'Email copy by track — customers, warm prospects, net-new — as each packet comes together.' },
+      { slug: 'upgrade-guide', title: 'Upgrade guide & FAQ', deck: 'How current customers move onto New LUCI, plus the questions that come up.' },
+      { slug: 'proof-pull', title: 'Proof pull', deck: 'Running list of proof points, quotes, and evidence to draw from for launch assets.' }
+    ];
+
+    const LS_NEW_LUCI_WORKING = 'luci-internal-portal-new-luci-working';
+
+    function readWorkingDrafts() { return readLocal(LS_NEW_LUCI_WORKING, {}); }
+    function writeWorkingDrafts(map) { writeLocal(LS_NEW_LUCI_WORKING, map); }
+
+    function renderNewLuciLaunch() {
+      const stratList = $('nll-strategy-list');
+      const workList = $('nll-working-list');
+      if (stratList) {
+        stratList.innerHTML = NEW_LUCI_STRATEGY_DOCS.map((d) => `
+          <article class="row">
+            <div>
+              <h3>${d.title}</h3>
+              <p>${d.note}</p>
+              <span class="nll-tag">${d.tag}</span>
+            </div>
+            <div class="actions"><a class="btn btn--ghost" href="#new-luci-launch/strategy/${d.slug}">Open</a></div>
+          </article>
+        `).join('');
+      }
+      if (workList) {
+        const drafts = readWorkingDrafts();
+        workList.innerHTML = NEW_LUCI_WORKING_SHELLS.map((s) => {
+          const hasDraft = !!(drafts[s.slug] && drafts[s.slug].trim());
+          const status = hasDraft ? '<span class="nll-tag">In progress</span>' : '<span class="nll-tag" style="color:var(--muted);">Empty</span>';
+          return `
+            <article class="row">
+              <div>
+                <h3>${s.title}</h3>
+                <p>${s.deck}</p>
+                ${status}
+              </div>
+              <div class="actions"><a class="btn btn--ghost" href="#new-luci-launch/working/${s.slug}">Open draft</a></div>
+            </article>
+          `;
+        }).join('');
+      }
+      wireNllGroupToggles();
+    }
+
+    // Accordion open/close for the Strategy / Working groups (persists per group).
+    const LS_NEW_LUCI_GROUPS = 'luci-internal-portal-new-luci-groups';
+    function wireNllGroupToggles() {
+      document.querySelectorAll('.nll-group__head').forEach((head) => {
+        if (head.dataset.wired) return;
+        head.dataset.wired = '1';
+        const key = head.dataset.group;
+        const states = readLocal(LS_NEW_LUCI_GROUPS, { strategy: true, working: true });
+        const open = key in states ? states[key] : true;
+        head.setAttribute('aria-expanded', String(open));
+        const body = document.getElementById(head.getAttribute('aria-controls'));
+        if (body) body.hidden = !open;
+        head.addEventListener('click', () => {
+          const next = head.getAttribute('aria-expanded') !== 'true';
+          head.setAttribute('aria-expanded', String(next));
+          if (body) body.hidden = !next;
+          const s = readLocal(LS_NEW_LUCI_GROUPS, { strategy: true, working: true });
+          s[key] = next;
+          writeLocal(LS_NEW_LUCI_GROUPS, s);
+        });
+      });
+    }
+
+    function renderWorkingShell(slug) {
+      const shell = NEW_LUCI_WORKING_SHELLS.find((s) => s.slug === slug);
+      const titleEl = $('nll-working-title');
+      const deckEl = $('nll-working-deck');
+      const backEl = $('nll-working-back');
+      const bodyEl = $('nll-working-editor');
+      const saveEl = $('nll-working-save');
+      if (!shell) {
+        if (titleEl) titleEl.textContent = 'Working draft';
+        if (deckEl) deckEl.textContent = '';
+        if (bodyEl) bodyEl.innerHTML = '';
+        return;
+      }
+      if (titleEl) titleEl.textContent = shell.title;
+      if (deckEl) deckEl.textContent = shell.deck;
+      if (backEl) backEl.textContent = 'Back to New LUCI Launch Campaign';
+      if (backEl) backEl.href = '#new-luci-launch';
+      const drafts = readWorkingDrafts();
+      if (bodyEl) {
+        bodyEl.innerHTML = drafts[slug] || '';
+        bodyEl.dataset.slug = slug;
+        if (saveEl) saveEl.textContent = drafts[slug] ? 'Saved' : '';
+      }
+      if (bodyEl && !bodyEl.dataset.bound) {
+        bodyEl.dataset.bound = '1';
+        let t = null;
+        const flush = () => {
+          const s = bodyEl.dataset.slug;
+          if (!s) return;
+          const map = readWorkingDrafts();
+          const val = bodyEl.innerHTML.trim();
+          if (val) map[s] = bodyEl.innerHTML; else delete map[s];
+          writeWorkingDrafts(map);
+          if (saveEl) { saveEl.textContent = 'Saved'; if (t) clearTimeout(t); t = setTimeout(() => { if (saveEl) saveEl.textContent = ''; }, 1600); }
+        };
+        bodyEl.addEventListener('input', () => {
+          if (saveEl) saveEl.textContent = 'Editing…';
+          if (t) clearTimeout(t);
+          t = setTimeout(flush, 400);
+        });
+        bodyEl.addEventListener('blur', flush);
+      }
     }
 
     function sanitizeFilePart(value) {
@@ -4019,46 +4602,188 @@
       body.replaceChildren();
       if (chipsEl) chipsEl.replaceChildren();
       try {
-        const res = await fetch('new-luci-feature-list.json?v=20260909b');
+        const res = await fetch('new-luci-feature-list.json?v=20260916b');
         if (!res.ok) throw new Error('load');
         const data = await res.json();
         if (titleEl) titleEl.textContent = data.title || 'New LUCI — Feature List';
         if (deckEl) deckEl.textContent = data.deck || '';
 
-        // Narrative line
+        // --- 1. Campaign theme ---
         if (data.narrative) {
-          const nar = document.createElement('p');
-          nar.className = 'fl-narrative';
-          nar.textContent = data.narrative;
-          body.appendChild(nar);
+          const theme = document.createElement('div');
+          theme.className = 'fl-theme';
+          const label = document.createElement('p');
+          label.className = 'fl-theme__label';
+          label.textContent = 'Campaign theme';
+          const text = document.createElement('p');
+          text.className = 'fl-theme__text';
+          text.textContent = data.narrative;
+          theme.appendChild(label);
+          theme.appendChild(text);
+          body.appendChild(theme);
         }
 
-        // Build chapters from pillars + technical
-        const chapters = [];
-        (data.pillars || []).forEach((p, i) => {
-          chapters.push({ key: 'pillar-' + i, kicker: p.name, block: { heading: p.name, intro: p.argument, items: p.features } });
+        // --- 2. Click menu (chips) ---
+        if (chipsEl) {
+          const chipItems = [
+            { key: 'pillars', label: 'Pillars' },
+            ...((data.pillars || []).map((p, i) => ({ key: 'briefs-' + i, label: p.name }))),
+            { key: 'honorable', label: 'Honorable mentions' },
+            { key: 'details', label: 'Feature details' },
+          ];
+          chipItems.forEach((ci) => {
+            const a = document.createElement('a');
+            a.className = 'cmp-chip';
+            a.href = '#new-luci-launch/strategy/feature-list';
+            a.textContent = ci.label;
+            a.addEventListener('click', (ev) => {
+              ev.preventDefault();
+              const target = document.getElementById('fl-' + ci.key);
+              if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+            chipsEl.appendChild(a);
+          });
+        }
+
+        // --- 3. Pillar visual ---
+        const pillarSection = document.createElement('section');
+        pillarSection.className = 'fl-pillars';
+        pillarSection.id = 'fl-pillars';
+        (data.pillars || []).forEach((p) => {
+          const col = document.createElement('div');
+          col.className = 'fl-pillar';
+          const cap = document.createElement('div');
+          cap.className = 'fl-pillar__cap';
+          const name = document.createElement('h3');
+          name.className = 'fl-pillar__name';
+          name.textContent = p.name;
+          cap.appendChild(name);
+          const arg = document.createElement('p');
+          arg.className = 'fl-pillar__arg';
+          arg.textContent = p.argument;
+          cap.appendChild(arg);
+          col.appendChild(cap);
+          const feats = document.createElement('ul');
+          feats.className = 'fl-pillar__feats';
+          (p.features || []).forEach((f) => {
+            const li = document.createElement('li');
+            li.textContent = f.name;
+            feats.appendChild(li);
+          });
+          col.appendChild(feats);
+          pillarSection.appendChild(col);
         });
+        body.appendChild(pillarSection);
+
+        // --- 4. Feature briefs (by pillar) ---
+        (data.pillars || []).forEach((p, i) => {
+          const section = document.createElement('section');
+          section.className = 'fl-briefs';
+          section.id = 'fl-briefs-' + i;
+          const label = document.createElement('p');
+          label.className = 'fl-briefs__label';
+          label.textContent = p.name;
+          section.appendChild(label);
+          const grid = document.createElement('div');
+          grid.className = 'fl-brief-grid';
+          (p.features || []).forEach((f) => {
+            const card = document.createElement('div');
+            card.className = 'fl-brief';
+            const nm = document.createElement('p');
+            nm.className = 'fl-brief__name';
+            nm.textContent = f.name;
+            card.appendChild(nm);
+            if (f.brief) {
+              const desc = document.createElement('p');
+              desc.className = 'fl-brief__desc';
+              desc.textContent = f.brief;
+              card.appendChild(desc);
+            }
+            grid.appendChild(card);
+          });
+          section.appendChild(grid);
+          body.appendChild(section);
+        });
+
+        // --- 5. Honorable mentions (technical detail) ---
         if (data.technical) {
-          chapters.push({ key: 'technical', kicker: 'Technical', block: data.technical });
+          const section = document.createElement('section');
+          section.className = 'fl-briefs fl-briefs--tech';
+          section.id = 'fl-honorable';
+          const label = document.createElement('p');
+          label.className = 'fl-briefs__label';
+          label.textContent = 'Honorable mentions';
+          section.appendChild(label);
+          const sub = document.createElement('p');
+          sub.className = 'fl-briefs__sub';
+          sub.textContent = data.technical.intro || '';
+          section.appendChild(sub);
+          const grid = document.createElement('div');
+          grid.className = 'fl-brief-grid';
+          (data.technical.items || []).forEach((f) => {
+            const card = document.createElement('div');
+            card.className = 'fl-brief';
+            const nm = document.createElement('p');
+            nm.className = 'fl-brief__name';
+            nm.textContent = f.name;
+            card.appendChild(nm);
+            if (f.brief) {
+              const desc = document.createElement('p');
+              desc.className = 'fl-brief__desc';
+              desc.textContent = f.brief;
+              card.appendChild(desc);
+            }
+            grid.appendChild(card);
+          });
+          section.appendChild(grid);
+          body.appendChild(section);
         }
 
-        const appendFeature = (parent, item) => {
+        // --- 6. Feature details (full bullets for copy review) ---
+        const detailsSection = document.createElement('section');
+        detailsSection.className = 'fl-details';
+        detailsSection.id = 'fl-details';
+        const dLabel = document.createElement('p');
+        dLabel.className = 'fl-details__label';
+        dLabel.textContent = 'Feature details';
+        detailsSection.appendChild(dLabel);
+        const dSub = document.createElement('p');
+        dSub.className = 'fl-details__sub';
+        dSub.textContent = 'Full descriptions for copy review.';
+        detailsSection.appendChild(dSub);
+
+        const appendDetail = (parent, item, pillarName) => {
           const feat = document.createElement('article');
-          feat.className = 'fl-feature';
-          const name = document.createElement('h4');
-          name.className = 'fl-feature__name';
-          name.textContent = item.name || '';
-          feat.appendChild(name);
+          feat.className = 'fl-detail';
+          const head = document.createElement('div');
+          head.className = 'fl-detail__head';
+          const nm = document.createElement('h4');
+          nm.className = 'fl-detail__name';
+          nm.textContent = item.name || '';
+          head.appendChild(nm);
+          if (pillarName) {
+            const tag = document.createElement('span');
+            tag.className = 'fl-detail__tag';
+            tag.textContent = pillarName;
+            head.appendChild(tag);
+          }
+          feat.appendChild(head);
+          if (item.brief) {
+            const b = document.createElement('p');
+            b.className = 'fl-detail__brief';
+            b.textContent = item.brief;
+            feat.appendChild(b);
+          }
           if (item.text) {
             const t = document.createElement('p');
-            t.className = 'fl-feature__text';
+            t.className = 'fl-detail__text';
             t.textContent = item.text;
             feat.appendChild(t);
           }
           const bullets = item.bullets || [];
           if (bullets.length) {
             const ul = document.createElement('ul');
-            ul.className = 'fl-feature__bullets';
+            ul.className = 'fl-detail__bullets';
             bullets.forEach((b) => {
               const li = document.createElement('li');
               li.textContent = b;
@@ -4069,68 +4794,18 @@
           parent.appendChild(feat);
         };
 
-        chapters.forEach((ch) => {
-          const block = ch.block;
-          if (chipsEl) {
-            const a = document.createElement('a');
-            a.className = 'cmp-chip';
-            a.href = '#coming-soon/new-luci-feature-list';
-            a.textContent = ch.kicker;
-            a.addEventListener('click', (ev) => {
-              ev.preventDefault();
-              const target = document.getElementById('fl-' + ch.key);
-              if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
-            chipsEl.appendChild(a);
-          }
-
-          const section = document.createElement('section');
-          section.className = 'fl-chapter';
-          section.id = 'fl-' + ch.key;
-
-          const band = document.createElement('div');
-          band.className = 'fl-band';
-          const kicker = document.createElement('p');
-          kicker.className = 'fl-band__kicker';
-          kicker.textContent = ch.kicker;
-          band.appendChild(kicker);
-          const heading = document.createElement('h3');
-          heading.className = 'fl-band__heading';
-          heading.textContent = block.heading || '';
-          band.appendChild(heading);
-          if (block.intro) {
-            const intro = document.createElement('p');
-            intro.className = 'fl-band__intro';
-            intro.textContent = block.intro;
-            band.appendChild(intro);
-          }
-          section.appendChild(band);
-
-          const sheet = document.createElement('div');
-          sheet.className = 'fl-sheet';
-          (block.items || []).forEach((item) => appendFeature(sheet, item));
-
-          const extraItems = block.additional || [];
-          if (extraItems.length) {
-            const extra = document.createElement('div');
-            extra.className = 'fl-additional';
-            const extraKicker = document.createElement('p');
-            extraKicker.className = 'fl-additional__kicker';
-            extraKicker.textContent = 'Additional';
-            extra.appendChild(extraKicker);
-            if (block.additionalIntro) {
-              const extraIntro = document.createElement('p');
-              extraIntro.className = 'fl-additional__intro';
-              extraIntro.textContent = block.additionalIntro;
-              extra.appendChild(extraIntro);
-            }
-            extraItems.forEach((item) => appendFeature(extra, item));
-            sheet.appendChild(extra);
-          }
-
-          section.appendChild(sheet);
-          body.appendChild(section);
+        (data.pillars || []).forEach((p) => {
+          (p.features || []).forEach((f) => appendDetail(detailsSection, f, p.name));
         });
+        const additional = (data.technical || {}).additional || [];
+        if (additional.length) {
+          const addHdr = document.createElement('p');
+          addHdr.className = 'fl-detail__add-hdr';
+          addHdr.textContent = 'IT-facing detail';
+          detailsSection.appendChild(addHdr);
+          additional.forEach((f) => appendDetail(detailsSection, f, 'IT'));
+        }
+        body.appendChild(detailsSection);
       } catch (e) {
         body.textContent = 'Could not load feature list.';
       }
@@ -4148,12 +4823,194 @@
       const routingImg = $('email-comms-routing');
       if (!root) return;
       try {
-        const res = await fetch('new-luci-email-comms.json?v=20260909b');
+        const res = await fetch('new-luci-email-comms.json?v=20260916a');
         if (!res.ok) throw new Error('load');
         const data = await res.json();
         if (titleEl) titleEl.textContent = data.title || 'New LUCI — Email Communications & Nurture';
         if (deckEl) deckEl.textContent = data.deck || '';
-        if (backEl && data.backLink) { backEl.textContent = data.backLink.label || 'Back'; backEl.href = data.backLink.href || '#coming-soon/new-luci-campaign-strategy'; }
+        if (backEl && data.backLink) { backEl.textContent = data.backLink.label || 'Back'; backEl.href = data.backLink.href || '#new-luci-launch/strategy/campaign-strategy'; }
+
+        // --- Overview: three audiences aligned by phase ---
+        const overviewEl = $('email-comms-overview');
+        if (overviewEl) {
+          overviewEl.replaceChildren();
+          const tracks = data.tracks || [];
+          const findTrack = (id) => tracks.find(t => t.id === id);
+          const findCycles = (track, names) => (track.cycles || []).filter(c => names.includes(c.name));
+
+          const custTrack = findTrack('customers');
+          const warmTrack = findTrack('warm');
+          const nnTrack = findTrack('net-new');
+          const pulseTrack = findTrack('pulse');
+
+          const phases = [
+            {
+              name: 'Pre-launch',
+              sub: 'Must be ready before webinar invitations go out',
+              cols: {
+                customers: findCycles(custTrack, ['Pre-launch webinar','Upgrade readiness']),
+                warm: findCycles(warmTrack, ['Selected pre-launch preview']),
+                'net-new': []
+              }
+            },
+            {
+              name: 'Launch',
+              sub: 'Must be ready by GA day',
+              cols: {
+                customers: findCycles(custTrack, ['Launch and upgrade']),
+                warm: findCycles(warmTrack, ['Launch re-engagement']),
+                'net-new': findCycles(nnTrack, ['Acquisition'])
+              }
+            },
+            {
+              name: 'Post-launch & ongoing',
+              sub: 'Can be built after launch',
+              cols: {
+                customers: findCycles(custTrack, ['Post-upgrade follow-up']),
+                warm: findCycles(warmTrack, ['After a warm response']),
+                'net-new': findCycles(nnTrack, ['After a demo request','Unbooked request recovery — after Sales handback','Post-demo recovery — after Sales handback'])
+              }
+            }
+          ];
+
+          const audienceLabels = [
+            { id: 'customers', name: 'Existing customers' },
+            { id: 'warm', name: 'Warm prospects' },
+            { id: 'net-new', name: 'Net-new prospects' },
+          ];
+
+          const buildCell = (cycles) => {
+            const cell = document.createElement('div');
+            cell.className = 'ec-ov__cell';
+            if (!cycles.length) {
+              const empty = document.createElement('p');
+              empty.className = 'ec-ov__empty';
+              empty.textContent = '\u2014';
+              cell.appendChild(empty);
+              return cell;
+            }
+            cycles.forEach((cycle, ci) => {
+              if (ci > 0) {
+                const sep = document.createElement('p');
+                sep.className = 'ec-ov__cycle-sep';
+                cell.appendChild(sep);
+              }
+              const box = document.createElement('div');
+              box.className = 'ec-ov__cycle';
+              const cn = document.createElement('p');
+              cn.className = 'ec-ov__cycle-name';
+              cn.textContent = cycle.name;
+              box.appendChild(cn);
+              const ul = document.createElement('ul');
+              ul.className = 'ec-ov__emails';
+              (cycle.emails || []).forEach((em) => {
+                const li = document.createElement('li');
+                li.innerHTML = '<span class="ec-ov__enum">' + (em.number || '') + '</span>' + em.name;
+                ul.appendChild(li);
+              });
+              box.appendChild(ul);
+              cell.appendChild(box);
+            });
+            return cell;
+          };
+
+          const ov = document.createElement('div');
+          ov.className = 'ec-ov';
+
+          // Column headers
+          const headRow = document.createElement('div');
+          headRow.className = 'ec-ov__head-row';
+          const headSpacer = document.createElement('div');
+          headSpacer.className = 'ec-ov__head-spacer';
+          headRow.appendChild(headSpacer);
+          audienceLabels.forEach((al) => {
+            const h = document.createElement('p');
+            h.className = 'ec-ov__col-head';
+            h.textContent = al.name;
+            headRow.appendChild(h);
+          });
+          ov.appendChild(headRow);
+
+          // Phase rows
+          phases.forEach((phase, pi) => {
+            const phaseRow = document.createElement('div');
+            phaseRow.className = 'ec-ov__phase-row';
+            const phaseLabel = document.createElement('div');
+            phaseLabel.className = 'ec-ov__phase-label';
+            const pn = document.createElement('p');
+            pn.className = 'ec-ov__phase-name';
+            pn.textContent = phase.name;
+            phaseLabel.appendChild(pn);
+            const ps = document.createElement('p');
+            ps.className = 'ec-ov__phase-sub';
+            ps.textContent = phase.sub;
+            phaseLabel.appendChild(ps);
+            phaseRow.appendChild(phaseLabel);
+            audienceLabels.forEach((al) => {
+              phaseRow.appendChild(buildCell(phase.cols[al.id] || []));
+            });
+            ov.appendChild(phaseRow);
+            // Arrow between phases
+            if (pi < phases.length - 1) {
+              const arrowRow = document.createElement('div');
+              arrowRow.className = 'ec-ov__arrow-row';
+              const aSpacer = document.createElement('div');
+              aSpacer.className = 'ec-ov__head-spacer';
+              arrowRow.appendChild(aSpacer);
+              audienceLabels.forEach(() => {
+                const a = document.createElement('p');
+                a.className = 'ec-ov__phase-arrow';
+                a.textContent = '\u2193';
+                arrowRow.appendChild(a);
+              });
+              ov.appendChild(arrowRow);
+            }
+          });
+
+          // Prospect Pulse — full-width row at bottom
+          if (pulseTrack) {
+            const pulseCycles = pulseTrack.cycles || [];
+            if (pulseCycles.length) {
+              const pulseRow = document.createElement('div');
+              pulseRow.className = 'ec-ov__pulse-row';
+              const pulseLabel = document.createElement('div');
+              pulseLabel.className = 'ec-ov__pulse-label';
+              const pl = document.createElement('p');
+              pl.className = 'ec-ov__pulse-name';
+              pl.textContent = 'Prospect Pulse';
+              pulseLabel.appendChild(pl);
+              const ps = document.createElement('p');
+              ps.className = 'ec-ov__pulse-sub';
+              ps.textContent = 'Shared 6-month nurture for warm + net-new prospects who complete their cycle without entering sales';
+              pulseLabel.appendChild(ps);
+              pulseRow.appendChild(pulseLabel);
+              const pulseCell = document.createElement('div');
+              pulseCell.className = 'ec-ov__pulse-cell';
+              pulseCycles.forEach((cycle) => {
+                const box = document.createElement('div');
+                box.className = 'ec-ov__cycle';
+                const cn = document.createElement('p');
+                cn.className = 'ec-ov__cycle-name';
+                cn.textContent = cycle.name;
+                box.appendChild(cn);
+                const ul = document.createElement('ul');
+                ul.className = 'ec-ov__emails';
+                (cycle.emails || []).forEach((em) => {
+                  const li = document.createElement('li');
+                  li.innerHTML = '<span class="ec-ov__enum">' + (em.number || '') + '</span>' + em.name;
+                  ul.appendChild(li);
+                });
+                box.appendChild(ul);
+                pulseCell.appendChild(box);
+              });
+              pulseRow.appendChild(pulseCell);
+              ov.appendChild(pulseRow);
+            }
+          }
+
+          overviewEl.appendChild(ov);
+        }
+
         if (lifecycleImg) lifecycleImg.src = 'luci-prospect-nurture-lifecycle.svg?v=20260903a';
         if (routingImg) routingImg.src = 'luci-prospect-routing.svg?v=20260903a';
         if (rulesEl && Array.isArray(data.sharedRules) && data.sharedRules.length) {
@@ -4237,16 +5094,37 @@
       }
     }
 
-    const VIEWS = ['home', 'materials', 'review', 'customize', 'guidelines', 'coming-soon'];
+    const VIEWS = ['home', 'materials', 'review', 'customize', 'guidelines', 'coming-soon', 'new-luci-launch'];
+
+    // Old Coming Soon / #campaigns hashes now live under #new-luci-launch/strategy/*.
+    // Map them so legacy bookmarks still open the same docs (thin redirect aliases).
+    const NEW_LUCI_STRATEGY_ALIASES = {
+      'new-luci-campaign-strategy': 'strategy/campaign-strategy',
+      'new-luci-email-comms': 'strategy/email-comms',
+      'new-luci-feature-list': 'strategy/feature-list'
+    };
 
     function routeFromHash() {
       const raw = (location.hash || '#home').replace(/^#/, '');
-      let [view, sub] = raw.split('/');
+      const parts = raw.split('/');
+      let view = parts[0] || 'home';
+      let sub = parts.slice(1).join('/');
       if (view === 'campaigns') {
-        view = 'coming-soon';
-        sub = sub || 'new-luci-campaign-strategy';
+        view = 'new-luci-launch';
+        sub = 'strategy/campaign-strategy';
+      } else if (view === 'coming-soon' && Object.prototype.hasOwnProperty.call(NEW_LUCI_STRATEGY_ALIASES, sub)) {
+        view = 'new-luci-launch';
+        sub = NEW_LUCI_STRATEGY_ALIASES[sub];
       }
       return { view: VIEWS.includes(view) ? view : 'home', sub: sub || '' };
+    }
+
+    // Canonical hash for a resolved route, when the original hash was a legacy alias.
+    function canonicalHashFor(view, sub) {
+      if (view === 'new-luci-launch' && sub === 'strategy/campaign-strategy') return '#new-luci-launch/strategy/campaign-strategy';
+      if (view === 'new-luci-launch' && sub === 'strategy/email-comms') return '#new-luci-launch/strategy/email-comms';
+      if (view === 'new-luci-launch' && sub === 'strategy/feature-list') return '#new-luci-launch/strategy/feature-list';
+      return null;
     }
 
     function showView(view, sub) {
@@ -4279,23 +5157,33 @@
       const campaignsEl = $('view-campaigns');
       const featureEl = $('view-feature-list');
       const emailEl = $('view-email-comms');
+      const launchEl = $('view-new-luci-launch');
+      const workingEl = $('view-new-luci-working');
       if (campaignsEl) campaignsEl.hidden = true;
       if (featureEl) featureEl.hidden = true;
       if (emailEl) emailEl.hidden = true;
+      if (launchEl) launchEl.hidden = true;
+      if (workingEl) workingEl.hidden = true;
 
-      if (view === 'coming-soon' && sub === 'new-luci-campaign-strategy') {
+      // New LUCI Launch Campaign — strategy docs reuse the existing renderers.
+      if (view === 'new-luci-launch' && sub === 'strategy/campaign-strategy') {
         if (campaignsEl) campaignsEl.hidden = false;
         renderCampaigns();
         return;
       }
-      if (view === 'coming-soon' && sub === 'new-luci-feature-list') {
+      if (view === 'new-luci-launch' && sub === 'strategy/feature-list') {
         if (featureEl) featureEl.hidden = false;
         renderFeatureList();
         return;
       }
-      if (view === 'coming-soon' && sub === 'new-luci-email-comms') {
+      if (view === 'new-luci-launch' && sub === 'strategy/email-comms') {
         if (emailEl) emailEl.hidden = false;
         renderEmailComms();
+        return;
+      }
+      // New LUCI Launch Campaign — working draft shells (editable, localStorage).
+      if (view === 'new-luci-launch' && sub.startsWith('working/')) {
+        if (workingEl) { workingEl.hidden = false; renderWorkingShell(sub.slice('working/'.length)); }
         return;
       }
 
@@ -4307,6 +5195,7 @@
       else if (view === 'customize') renderStudio();
       else if (view === 'guidelines') renderGuidelines();
       else if (view === 'coming-soon') renderRoadmap();
+      else if (view === 'new-luci-launch') renderNewLuciLaunch();
     }
 
     function updateNav() {
@@ -4321,6 +5210,7 @@
         await loadState();
         const { view, sub } = routeFromHash();
         showView(view, sub);
+        normalizeLegacyHash(view, sub);
         portal.renderedSignature = stateSignature();
         // Poll the sync API every 30s so new comments/approvals from Mike/Mark appear
         // without a manual refresh (skips re-render while someone is typing a comment).
@@ -4338,12 +5228,33 @@
       }
     }
 
+    // Rewrite the address bar to the canonical New LUCI Launch hash when a legacy
+    // alias (#coming-soon/new-luci-*, #campaigns) was used. replaceState does not
+    // fire hashchange, so this is a silent, loop-free redirect.
+    function normalizeLegacyHash(view, sub) {
+      const canon = canonicalHashFor(view, sub);
+      if (canon && location.hash !== canon) {
+        try { history.replaceState(null, '', canon); } catch (e) { /* noop */ }
+      }
+    }
+
+    function isStrategyDocRoute(view, sub) {
+      return view === 'new-luci-launch' && (
+        sub === 'strategy/campaign-strategy' ||
+        sub === 'strategy/feature-list' ||
+        sub === 'strategy/email-comms'
+      );
+    }
+
     window.addEventListener('hashchange', () => {
       const { view, sub } = routeFromHash();
       showView(view, sub);
+      normalizeLegacyHash(view, sub);
       // Re-fetch on navigation so the review list/detail reflects the latest server state.
-      // Campaigns board is JSON-only — do not hit the comments API on this view.
-      if (!(view === 'coming-soon' && (sub === 'new-luci-campaign-strategy' || sub === 'new-luci-feature-list' || sub === 'new-luci-email-comms'))) refreshFromApi({ silent: true });
+      // Strategy docs + working drafts are JSON/localStorage-only — skip the comments API.
+      if (!isStrategyDocRoute(view, sub) && !(view === 'new-luci-launch' && sub.startsWith('working/'))) {
+        refreshFromApi({ silent: true });
+      }
     });
     boot();
   </script>
