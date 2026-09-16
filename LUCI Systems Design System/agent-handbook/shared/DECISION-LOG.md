@@ -8,6 +8,10 @@
 
 ---
 
+## 2026-09-16
+
+- **New LUCI What’s New one-pager uses Option 1 — Three promises.** The release page opens with “Putting the power of programming in your hands” and organizes proof under Operate, Make it yours, and See and secure; later layout should feel like an announcement, not an equal-column datasheet. Jane.
+
 ## 2026-09-15
 
 - **Signal publish playbook reflects Webflow API reality.** On this (non-Enterprise) Webflow site, Cursor cannot add HTML via the API and there is no Publish API. Webflow work is now split by lane: Cursor hosts assets + wires URLs + preps the final HTML + briefs the bots with exact page IDs/field names; Grok bots paste the HTML into the Designer; Jane does the final Publish click. ActiveCampaign stays a bot task; Cursor still hands the canonical link list. Jane, 15 Sep.
