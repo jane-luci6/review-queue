@@ -409,7 +409,11 @@ function syncCustomizationApp(copied) {
  *  Also writes studio-manifest.json mapping each template id -> source file's last-modified date,
  *  so the Customization Studio can show an accurate "Last updated" without manual bumps. */
 function syncStudioPreviews(copied) {
-  const studioPreviews = ['sales/capabilities-document.html', 'sales/sales-deck.html', 'sales/budgetary-estimate.html', 'sales/scope-of-work.html', 'sales/proposal.html', 'sales/proposal-luci-retrofit.html', 'sales/proposal-upgrade.html', 'guides/lg-device-setup-guide.html'];
+  // Sales HTML copied into ui_kits/review/sales/ so it resolves on the deployed
+  // portal/review site. Most are Customization Studio templates (mapped in
+  // STUDIO_ID below); the What's New one-pager is a standalone handout preview
+  // linked from the IMP Working shell, not a studio template, so it has no id.
+  const studioPreviews = ['sales/capabilities-document.html', 'sales/sales-deck.html', 'sales/budgetary-estimate.html', 'sales/scope-of-work.html', 'sales/proposal.html', 'sales/proposal-luci-retrofit.html', 'sales/proposal-upgrade.html', 'sales/new-luci-whats-new-onepager.html', 'guides/lg-device-setup-guide.html'];
   const STUDIO_ID = {
     'sales/capabilities-document.html': 'capabilities',
     'sales/sales-deck.html': 'sales-deck',

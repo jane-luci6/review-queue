@@ -2124,9 +2124,18 @@
       color: var(--muted);
       font-style: italic;
     }
+    .nll-working__body h1 { font-family: var(--font); font-size: 26px; color: var(--ink-strong); margin: 4px 0 10px; letter-spacing: -0.01em; }
+    .nll-working__body h2 { font-family: var(--font); font-size: 21px; color: var(--ink-strong); margin: 22px 0 10px; letter-spacing: -0.01em; }
     .nll-working__body h3 { font-family: var(--font); font-size: 17px; color: var(--ink-strong); margin: 18px 0 8px; }
+    .nll-working__body h4 { font-family: var(--font); font-size: 15px; font-weight: 700; color: var(--ink-strong); margin: 14px 0 6px; }
     .nll-working__body p { margin: 0 0 12px; }
     .nll-working__body ul, .nll-working__body ol { margin: 0 0 12px; padding-left: 22px; }
+    .nll-working__body ul li { margin: 0 0 6px; }
+    .nll-working__body hr { border: 0; border-top: 1px solid var(--rule); margin: 20px 0; }
+    .nll-working__body em { color: var(--navy-muted); font-style: italic; }
+    .nll-working__body strong { color: var(--ink-strong); }
+    .nll-working__preview-row { margin: 12px 0 0; }
+    .nll-working__preview-row .btn { font-size: 13px; }
 
     /* Email copy tree (nested audience → cycle → email rows) */
     .nll-email { font-family: var(--font); }
@@ -2460,6 +2469,7 @@
           <h2 id="nll-working-title">Working draft</h2>
           <p id="nll-working-deck"></p>
           <p class="nll-working__save" id="nll-working-save" aria-live="polite"></p>
+          <p class="nll-working__preview-row"><a class="btn btn--ghost" id="nll-working-preview" target="_blank" rel="noopener" hidden>Open layout preview</a></p>
         </header>
         <div class="page-body">
           <div
@@ -3759,13 +3769,83 @@
     // Email copy lives in its own accordion below (Email copy) with per-email pages
     // derived from new-luci-email-comms.json — see NEW_LUCI_EMAIL_*.
     const NEW_LUCI_WORKING_SHELLS = [
-      { slug: 'whats-new', title: "What's New one-pager", deck: 'Short release-notes style summary of what is new in New LUCI for customers.' },
+      { slug: 'whats-new', title: "What's New one-pager", deck: 'Short release-notes style summary of what is new in New LUCI for customers.', layoutPreviewUrl: '../sales/new-luci-whats-new-onepager.html' },
       { slug: 'webinar', title: 'Webinar', deck: 'Landing page copy plus script and slide drafts for the launch webinar.' },
       { slug: 'upgrade-guide', title: 'Upgrade guide & FAQ', deck: 'How current customers move onto New LUCI, plus the questions that come up.' },
       { slug: 'proof-pull', title: 'Proof pull', deck: 'Running list of proof points, quotes, and evidence to draw from for launch assets.' }
     ];
 
     const LS_NEW_LUCI_WORKING = 'luci-internal-portal-new-luci-working';
+
+    // Default seed HTML shown inside the contenteditable when a Working shell has no
+    // saved draft in localStorage. Seeds are built verbatim from the locked copy in
+    // ui_kits/sales/new-luci-whats-new-onepager-copy.md — readable, editable, with
+    // explicit placeholders for [RELEASE DATE], UI captures, proof strip, and CTA
+    // options. Once Jane edits, her localStorage wins; the seed only fills an empty
+    // editor so she has something to react to instead of a blank box.
+    const NEW_LUCI_WORKING_SEEDS = {
+      'whats-new': `<h1>What’s New</h1>
+<p><em>A new LUCI platform release is on the way.</em></p>
+
+<h2>Putting the power of programming in your hands</h2>
+<p>New LUCI gives your team more direct control to shape the experience, run the venue, and see what needs attention—without waiting for a programmer to make every change.</p>
+
+<p><strong>Release date:</strong> [RELEASE DATE]</p>
+<p>For LUCI customers and prospects.</p>
+
+<hr>
+
+<h3>Pillar 1 — Operate</h3>
+<h4>Control now lives in the venue, not just the back office.</h4>
+<p>Put the right controls in the space, prepare the next change while the room keeps running, and bring support into the work itself.</p>
+<p><strong>Feature in focus — Venue panels</strong><br>Control lives in the venue. A tablet in the space puts it in the hands of the person who runs it, with controls scoped to that space.</p>
+<p><strong>More proof</strong></p>
+<ul>
+<li><strong>Staging</strong> — Build the next look while the current one keeps running. Apply on cue.</li>
+<li><strong>In-product support</strong> — Raise a support request from the device, incident, or error itself, with context and relevant logs already attached.</li>
+</ul>
+<p><em>[UI CAPTURE: Venue panel controlling a single space]</em></p>
+
+<hr>
+
+<h3>Pillar 2 — Make it yours</h3>
+<h4>Your maps, your look — the system belongs to the property.</h4>
+<p>Bring the property’s identity and physical layout into the interface operators use every day.</p>
+<p><strong>Feature in focus — Customizable interface</strong><br>Sign-in and splash screens carry the property’s own photography, marks, and colors, with curated light and dark themes.</p>
+<p><strong>More proof</strong></p>
+<ul>
+<li><strong>Live map flexibility</strong> — Load the property’s own floor plans and orient the map to match the physical space.</li>
+</ul>
+<p><em>[UI CAPTURE: Property-branded interface beside its live floor-plan map]</em></p>
+
+<hr>
+
+<h3>Pillar 3 — See and secure</h3>
+<h4>What’s happening now, what happened, and who’s in the system.</h4>
+<p>Give the team a current operating view, a record of activity, and control over active access.</p>
+<p><strong>Feature in focus — Live monitoring</strong><br>See the real-time state of every device, display, and audio zone—what is on, what is off, and what has a fault.</p>
+<p><strong>More proof</strong></p>
+<ul>
+<li><strong>Audit trails</strong> — Every action is recorded against a person and a time, including what triggered it.</li>
+<li><strong>Sign-in and session control</strong> — Email, PIN, or Microsoft Entra sign-in, with administrator control over who is active.</li>
+</ul>
+<p><em>[UI CAPTURE: Live monitoring view with activity and session controls]</em></p>
+
+<hr>
+
+<h3>CTA</h3>
+<p><strong>See New LUCI in action.</strong></p>
+<p><strong>CTA options (Jane locks later):</strong></p>
+<ul>
+<li><strong>Option A — working default:</strong> See New LUCI in action.</li>
+<li><strong>Option B:</strong> Schedule a New LUCI walkthrough.</li>
+</ul>
+
+<hr>
+
+<h3>Proof strip</h3>
+<p><em>[PROOF STRIP: add consolidation metric — no client names]</em></p>`
+    };
 
     function readWorkingDrafts() { return readLocal(LS_NEW_LUCI_WORKING, {}); }
     function writeWorkingDrafts(map) { writeLocal(LS_NEW_LUCI_WORKING, map); }
@@ -3837,19 +3917,37 @@
       const backEl = $('nll-working-back');
       const bodyEl = $('nll-working-editor');
       const saveEl = $('nll-working-save');
+      const previewEl = $('nll-working-preview');
       if (!shell) {
         if (titleEl) titleEl.textContent = 'Working draft';
         if (deckEl) deckEl.textContent = '';
         if (bodyEl) bodyEl.innerHTML = '';
+        if (previewEl) previewEl.hidden = true;
         return;
       }
       if (titleEl) titleEl.textContent = shell.title;
       if (deckEl) deckEl.textContent = shell.deck;
       if (backEl) backEl.textContent = 'Back to New LUCI Launch Campaign';
       if (backEl) backEl.href = '#new-luci-launch';
+      // "Open layout preview" — only shown for shells that ship a designed HTML
+      // (e.g. the What's New one-pager). Stable relative URL survives the portal
+      // deploy because build-stakeholder-review.mjs copies the sales HTML into
+      // ui_kits/review/sales/ on every build.
+      if (previewEl) {
+        if (shell.layoutPreviewUrl) {
+          previewEl.href = shell.layoutPreviewUrl;
+          previewEl.hidden = false;
+        } else {
+          previewEl.removeAttribute('href');
+          previewEl.hidden = true;
+        }
+      }
       const drafts = readWorkingDrafts();
       if (bodyEl) {
-        bodyEl.innerHTML = drafts[slug] || '';
+        // Seed only when empty: Jane's saved draft (or her edits this session)
+        // always wins. The seed is a readable default built from the locked
+        // copy so she has something to react to instead of a blank editor.
+        bodyEl.innerHTML = drafts[slug] || NEW_LUCI_WORKING_SEEDS[slug] || '';
         bodyEl.dataset.slug = slug;
         bodyEl.dataset.storage = LS_NEW_LUCI_WORKING;
         if (saveEl) saveEl.textContent = drafts[slug] ? 'Saved' : '';
@@ -4024,7 +4122,10 @@
       const backEl = $('nll-working-back');
       const bodyEl = $('nll-working-editor');
       const saveEl = $('nll-working-save');
+      const previewEl = $('nll-working-preview');
       const shell = tree && tree.byId[emailId];
+      // Email shells reuse the Working view but have no designed layout preview.
+      if (previewEl) { previewEl.removeAttribute('href'); previewEl.hidden = true; }
       if (!shell) {
         if (titleEl) titleEl.textContent = 'Email copy';
         if (deckEl) deckEl.textContent = '';

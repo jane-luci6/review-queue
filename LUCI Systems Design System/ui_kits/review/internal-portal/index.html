@@ -2124,15 +2124,79 @@
       color: var(--muted);
       font-style: italic;
     }
+    .nll-working__body h1 { font-family: var(--font); font-size: 26px; color: var(--ink-strong); margin: 4px 0 10px; letter-spacing: -0.01em; }
+    .nll-working__body h2 { font-family: var(--font); font-size: 21px; color: var(--ink-strong); margin: 22px 0 10px; letter-spacing: -0.01em; }
     .nll-working__body h3 { font-family: var(--font); font-size: 17px; color: var(--ink-strong); margin: 18px 0 8px; }
+    .nll-working__body h4 { font-family: var(--font); font-size: 15px; font-weight: 700; color: var(--ink-strong); margin: 14px 0 6px; }
     .nll-working__body p { margin: 0 0 12px; }
     .nll-working__body ul, .nll-working__body ol { margin: 0 0 12px; padding-left: 22px; }
+    .nll-working__body ul li { margin: 0 0 6px; }
+    .nll-working__body hr { border: 0; border-top: 1px solid var(--rule); margin: 20px 0; }
+    .nll-working__body em { color: var(--navy-muted); font-style: italic; }
+    .nll-working__body strong { color: var(--ink-strong); }
+    .nll-working__preview-row { margin: 12px 0 0; }
+    .nll-working__preview-row .btn { font-size: 13px; }
+
+    /* Email copy tree (nested audience → cycle → email rows) */
+    .nll-email { font-family: var(--font); }
+    .nll-email .empty { color: var(--muted); font-style: italic; margin: 0; }
+    .nll-email__audience { padding: 14px 0 0; }
+    .nll-email__audience + .nll-email__audience { border-top: 1px solid var(--rule); margin-top: 14px; padding-top: 16px; }
+    .nll-email__aud-name {
+      font-family: var(--font);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--ink-strong);
+      margin: 0 0 4px;
+    }
+    .nll-email__cycle { padding: 6px 0 0; }
+    .nll-email__cycle + .nll-email__cycle { margin-top: 8px; }
+    .nll-email__cycle-name {
+      font-family: var(--font);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--mint-dark);
+      margin: 0 0 4px;
+    }
+    .nll-email__row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: start;
+      gap: 16px;
+      padding: 12px 0;
+      border-top: 1px solid var(--rule);
+    }
+    .nll-email__row:first-of-type { border-top: 0; }
+    .nll-email__row h3 {
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--ink-strong);
+      margin: 0 0 4px;
+    }
+    .nll-email__row p { margin: 0; font-family: var(--font-body); font-size: 14px; line-height: 1.5; color: var(--ink); }
+    .nll-email__id {
+      display: inline-block;
+      margin-top: 6px;
+      font-family: var(--font);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .nll-email__row .actions { display: grid; gap: 8px; justify-items: end; align-content: center; }
 
     @media (max-width: 980px) {
       .nll-group__head { grid-template-columns: 16px minmax(0, 1fr) auto; }
       .nll-group__body { padding: 0 18px 18px; }
       .nll-group .row { grid-template-columns: 1fr; }
       .nll-group .row .actions { justify-items: start; }
+      .nll-email__row { grid-template-columns: 1fr; }
+      .nll-email__row .actions { justify-items: start; }
     }
 
     @media (max-width: 980px) {
@@ -2378,10 +2442,22 @@
             <button class="nll-group__head" type="button" aria-expanded="true" aria-controls="nll-working-body" data-group="working">
               <span class="nll-group__chevron" aria-hidden="true"></span>
               <span class="nll-group__name" id="nll-working-title">Working</span>
-              <span class="nll-group__count">5 drafts</span>
+              <span class="nll-group__count">4 drafts</span>
             </button>
             <div class="nll-group__body" id="nll-working-body">
               <div class="list" id="nll-working-list"></div>
+            </div>
+          </section>
+          <section class="nll-group" aria-labelledby="nll-email-title">
+            <button class="nll-group__head" type="button" aria-expanded="true" aria-controls="nll-email-body" data-group="email">
+              <span class="nll-group__chevron" aria-hidden="true"></span>
+              <span class="nll-group__name" id="nll-email-title">Email copy</span>
+              <span class="nll-group__count" id="nll-email-count">—</span>
+            </button>
+            <div class="nll-group__body" id="nll-email-body">
+              <div class="nll-email" id="nll-email-list">
+                <p class="empty">Loading email copy tree…</p>
+              </div>
             </div>
           </section>
         </div>
@@ -2393,6 +2469,7 @@
           <h2 id="nll-working-title">Working draft</h2>
           <p id="nll-working-deck"></p>
           <p class="nll-working__save" id="nll-working-save" aria-live="polite"></p>
+          <p class="nll-working__preview-row"><a class="btn btn--ghost" id="nll-working-preview" target="_blank" rel="noopener" hidden>Open layout preview</a></p>
         </header>
         <div class="page-body">
           <div
@@ -3689,15 +3766,86 @@
 
     // Working draft shells — labeled placeholders, no invented copy. Each persists
     // simple wording edits to localStorage (same spirit as other Jane-facing IMP docs).
+    // Email copy lives in its own accordion below (Email copy) with per-email pages
+    // derived from new-luci-email-comms.json — see NEW_LUCI_EMAIL_*.
     const NEW_LUCI_WORKING_SHELLS = [
-      { slug: 'whats-new', title: "What's New one-pager", deck: 'Short release-notes style summary of what is new in New LUCI for customers.' },
+      { slug: 'whats-new', title: "What's New one-pager", deck: 'Short release-notes style summary of what is new in New LUCI for customers.', layoutPreviewUrl: '../sales/new-luci-whats-new-onepager.html' },
       { slug: 'webinar', title: 'Webinar', deck: 'Landing page copy plus script and slide drafts for the launch webinar.' },
-      { slug: 'email-packets', title: 'Email copy packets', deck: 'Email copy by track — customers, warm prospects, net-new — as each packet comes together.' },
       { slug: 'upgrade-guide', title: 'Upgrade guide & FAQ', deck: 'How current customers move onto New LUCI, plus the questions that come up.' },
       { slug: 'proof-pull', title: 'Proof pull', deck: 'Running list of proof points, quotes, and evidence to draw from for launch assets.' }
     ];
 
     const LS_NEW_LUCI_WORKING = 'luci-internal-portal-new-luci-working';
+
+    // Default seed HTML shown inside the contenteditable when a Working shell has no
+    // saved draft in localStorage. Seeds are built verbatim from the locked copy in
+    // ui_kits/sales/new-luci-whats-new-onepager-copy.md — readable, editable, with
+    // explicit placeholders for [RELEASE DATE], UI captures, proof strip, and CTA
+    // options. Once Jane edits, her localStorage wins; the seed only fills an empty
+    // editor so she has something to react to instead of a blank box.
+    const NEW_LUCI_WORKING_SEEDS = {
+      'whats-new': `<h1>What’s New</h1>
+<p><em>A new LUCI platform release is on the way.</em></p>
+
+<h2>Putting the power of programming in your hands</h2>
+<p>New LUCI gives your team more direct control to shape the experience, run the venue, and see what needs attention—without waiting for a programmer to make every change.</p>
+
+<p><strong>Release date:</strong> [RELEASE DATE]</p>
+<p>For LUCI customers and prospects.</p>
+
+<hr>
+
+<h3>Pillar 1 — Operate</h3>
+<h4>Control now lives in the venue, not just the back office.</h4>
+<p>Put the right controls in the space, prepare the next change while the room keeps running, and bring support into the work itself.</p>
+<p><strong>Feature in focus — Venue panels</strong><br>Control lives in the venue. A tablet in the space puts it in the hands of the person who runs it, with controls scoped to that space.</p>
+<p><strong>More proof</strong></p>
+<ul>
+<li><strong>Staging</strong> — Build the next look while the current one keeps running. Apply on cue.</li>
+<li><strong>In-product support</strong> — Raise a support request from the device, incident, or error itself, with context and relevant logs already attached.</li>
+</ul>
+<p><em>[UI CAPTURE: Venue panel controlling a single space]</em></p>
+
+<hr>
+
+<h3>Pillar 2 — Make it yours</h3>
+<h4>Your maps, your look — the system belongs to the property.</h4>
+<p>Bring the property’s identity and physical layout into the interface operators use every day.</p>
+<p><strong>Feature in focus — Customizable interface</strong><br>Sign-in and splash screens carry the property’s own photography, marks, and colors, with curated light and dark themes.</p>
+<p><strong>More proof</strong></p>
+<ul>
+<li><strong>Live map flexibility</strong> — Load the property’s own floor plans and orient the map to match the physical space.</li>
+</ul>
+<p><em>[UI CAPTURE: Property-branded interface beside its live floor-plan map]</em></p>
+
+<hr>
+
+<h3>Pillar 3 — See and secure</h3>
+<h4>What’s happening now, what happened, and who’s in the system.</h4>
+<p>Give the team a current operating view, a record of activity, and control over active access.</p>
+<p><strong>Feature in focus — Live monitoring</strong><br>See the real-time state of every device, display, and audio zone—what is on, what is off, and what has a fault.</p>
+<p><strong>More proof</strong></p>
+<ul>
+<li><strong>Audit trails</strong> — Every action is recorded against a person and a time, including what triggered it.</li>
+<li><strong>Sign-in and session control</strong> — Email, PIN, or Microsoft Entra sign-in, with administrator control over who is active.</li>
+</ul>
+<p><em>[UI CAPTURE: Live monitoring view with activity and session controls]</em></p>
+
+<hr>
+
+<h3>CTA</h3>
+<p><strong>See New LUCI in action.</strong></p>
+<p><strong>CTA options (Jane locks later):</strong></p>
+<ul>
+<li><strong>Option A — working default:</strong> See New LUCI in action.</li>
+<li><strong>Option B:</strong> Schedule a New LUCI walkthrough.</li>
+</ul>
+
+<hr>
+
+<h3>Proof strip</h3>
+<p><em>[PROOF STRIP: add consolidation metric — no client names]</em></p>`
+    };
 
     function readWorkingDrafts() { return readLocal(LS_NEW_LUCI_WORKING, {}); }
     function writeWorkingDrafts(map) { writeLocal(LS_NEW_LUCI_WORKING, map); }
@@ -3734,17 +3882,19 @@
           `;
         }).join('');
       }
+      // Email copy tree is derived from JSON — render async (loads once, cached).
+      renderNewLuciEmailList();
       wireNllGroupToggles();
     }
 
-    // Accordion open/close for the Strategy / Working groups (persists per group).
+    // Accordion open/close for the Strategy / Working / Email copy groups (persists per group).
     const LS_NEW_LUCI_GROUPS = 'luci-internal-portal-new-luci-groups';
     function wireNllGroupToggles() {
       document.querySelectorAll('.nll-group__head').forEach((head) => {
         if (head.dataset.wired) return;
         head.dataset.wired = '1';
         const key = head.dataset.group;
-        const states = readLocal(LS_NEW_LUCI_GROUPS, { strategy: true, working: true });
+        const states = readLocal(LS_NEW_LUCI_GROUPS, { strategy: true, working: true, email: true });
         const open = key in states ? states[key] : true;
         head.setAttribute('aria-expanded', String(open));
         const body = document.getElementById(head.getAttribute('aria-controls'));
@@ -3753,7 +3903,7 @@
           const next = head.getAttribute('aria-expanded') !== 'true';
           head.setAttribute('aria-expanded', String(next));
           if (body) body.hidden = !next;
-          const s = readLocal(LS_NEW_LUCI_GROUPS, { strategy: true, working: true });
+          const s = readLocal(LS_NEW_LUCI_GROUPS, { strategy: true, working: true, email: true });
           s[key] = next;
           writeLocal(LS_NEW_LUCI_GROUPS, s);
         });
@@ -3767,41 +3917,235 @@
       const backEl = $('nll-working-back');
       const bodyEl = $('nll-working-editor');
       const saveEl = $('nll-working-save');
+      const previewEl = $('nll-working-preview');
       if (!shell) {
         if (titleEl) titleEl.textContent = 'Working draft';
         if (deckEl) deckEl.textContent = '';
         if (bodyEl) bodyEl.innerHTML = '';
+        if (previewEl) previewEl.hidden = true;
         return;
       }
       if (titleEl) titleEl.textContent = shell.title;
       if (deckEl) deckEl.textContent = shell.deck;
       if (backEl) backEl.textContent = 'Back to New LUCI Launch Campaign';
       if (backEl) backEl.href = '#new-luci-launch';
+      // "Open layout preview" — only shown for shells that ship a designed HTML
+      // (e.g. the What's New one-pager). Stable relative URL survives the portal
+      // deploy because build-stakeholder-review.mjs copies the sales HTML into
+      // ui_kits/review/sales/ on every build.
+      if (previewEl) {
+        if (shell.layoutPreviewUrl) {
+          previewEl.href = shell.layoutPreviewUrl;
+          previewEl.hidden = false;
+        } else {
+          previewEl.removeAttribute('href');
+          previewEl.hidden = true;
+        }
+      }
       const drafts = readWorkingDrafts();
       if (bodyEl) {
-        bodyEl.innerHTML = drafts[slug] || '';
+        // Seed only when empty: Jane's saved draft (or her edits this session)
+        // always wins. The seed is a readable default built from the locked
+        // copy so she has something to react to instead of a blank editor.
+        bodyEl.innerHTML = drafts[slug] || NEW_LUCI_WORKING_SEEDS[slug] || '';
         bodyEl.dataset.slug = slug;
+        bodyEl.dataset.storage = LS_NEW_LUCI_WORKING;
         if (saveEl) saveEl.textContent = drafts[slug] ? 'Saved' : '';
       }
-      if (bodyEl && !bodyEl.dataset.bound) {
-        bodyEl.dataset.bound = '1';
-        let t = null;
-        const flush = () => {
-          const s = bodyEl.dataset.slug;
-          if (!s) return;
-          const map = readWorkingDrafts();
-          const val = bodyEl.innerHTML.trim();
-          if (val) map[s] = bodyEl.innerHTML; else delete map[s];
-          writeWorkingDrafts(map);
-          if (saveEl) { saveEl.textContent = 'Saved'; if (t) clearTimeout(t); t = setTimeout(() => { if (saveEl) saveEl.textContent = ''; }, 1600); }
-        };
-        bodyEl.addEventListener('input', () => {
-          if (saveEl) saveEl.textContent = 'Editing…';
-          if (t) clearTimeout(t);
-          t = setTimeout(flush, 400);
-        });
-        bodyEl.addEventListener('blur', flush);
+      bindEditableShell(bodyEl, saveEl);
+    }
+
+    // Shared contenteditable binder for Working + Email copy shells. Reads the
+    // storage key + slug from dataset so the same editor element serves both
+    // without rebuilding TipTap or duplicating the debounce logic.
+    function bindEditableShell(bodyEl, saveEl) {
+      if (!bodyEl || bodyEl.dataset.bound) return;
+      bodyEl.dataset.bound = '1';
+      let t = null;
+      const flush = () => {
+        const s = bodyEl.dataset.slug;
+        const sk = bodyEl.dataset.storage;
+        if (!s || !sk) return;
+        const map = readLocal(sk, {});
+        const val = bodyEl.innerHTML.trim();
+        if (val) map[s] = bodyEl.innerHTML; else delete map[s];
+        writeLocal(sk, map);
+        if (saveEl) { saveEl.textContent = 'Saved'; if (t) clearTimeout(t); t = setTimeout(() => { if (saveEl) saveEl.textContent = ''; }, 1600); }
+      };
+      bodyEl.addEventListener('input', () => {
+        if (saveEl) saveEl.textContent = 'Editing…';
+        if (t) clearTimeout(t);
+        t = setTimeout(flush, 400);
+      });
+      bodyEl.addEventListener('blur', flush);
+    }
+
+    // ---------- Email copy accordion (third group on #new-luci-launch) ----------
+    // Tree is derived from new-luci-email-comms.json so titles/purpose/timing stay
+    // aligned with the Strategy plan. Stable IDs follow OneDrive Email-Copy naming.
+    // Do not invent emails; if the JSON changes, update EMAIL_CYCLE_PREFIXES.
+    const LS_NEW_LUCI_EMAILS = 'luci-internal-portal-new-luci-emails';
+    // Per-track cycle → ID prefix map. Order matches the JSON cycles array.
+    const EMAIL_CYCLE_PREFIXES = {
+      customers: ['CUST-WEBINAR', 'CUST-READY', 'CUST-LAUNCH', 'CUST-POST'],
+      warm: ['WARM-PREVIEW', 'WARM-REENGAGE', 'WARM-RESPONSE'],
+      'net-new': ['NET-ACQ', 'NET-DEMO', 'NET-UNBOOKED', 'NET-POSTDEMO'],
+      pulse: ['PULSE']
+    };
+    let NEW_LUCI_EMAIL_DATA = null;
+    let NEW_LUCI_EMAIL_TREE = null; // { byId, audiences }
+
+    async function loadNewLuciEmailData() {
+      if (NEW_LUCI_EMAIL_DATA) return NEW_LUCI_EMAIL_DATA;
+      try {
+        const res = await fetch('new-luci-email-comms.json?v=20260917a');
+        if (!res.ok) throw new Error('load');
+        NEW_LUCI_EMAIL_DATA = await res.json();
+      } catch (e) {
+        NEW_LUCI_EMAIL_DATA = null;
       }
+      return NEW_LUCI_EMAIL_DATA;
+    }
+
+    function slugifyCycle(name) {
+      return String(name || '')
+        .replace(/—.*$/, '') // strip em-dash (U+2014) sub-clauses only
+        .replace(/[^a-zA-Z0-9]+/g, ' ') // any non-alphanumeric run → single space
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, '-');
+    }
+
+    function deriveEmailTree(data) {
+      const byId = {};
+      const audiences = [];
+      (data.tracks || []).forEach((track) => {
+        const prefixes = EMAIL_CYCLE_PREFIXES[track.id] || [];
+        const audience = { id: track.id, name: track.name, cycles: [] };
+        (track.cycles || []).forEach((cycle, ci) => {
+          const prefix = prefixes[ci] || 'EMAIL';
+          const cycleSlug = slugifyCycle(cycle.name);
+          const cycleEntry = { slug: cycleSlug, name: cycle.name, emails: [] };
+          (cycle.emails || []).forEach((em) => {
+            const emailId = `${prefix}-${String(em.number || 1).padStart(2, '0')}`;
+            const hash = `#new-luci-launch/email/${track.id}/${cycleSlug}/${emailId}`;
+            const deckParts = [em.purpose, em.timing].filter(Boolean);
+            const shell = {
+              id: emailId,
+              audienceId: track.id,
+              audienceName: track.name,
+              cycleSlug,
+              cycleName: cycle.name,
+              number: em.number,
+              name: em.name || emailId,
+              timing: em.timing || '',
+              purpose: em.purpose || '',
+              cta: em.cta || '',
+              title: em.name || emailId,
+              deck: deckParts.join(' · '),
+              hash
+            };
+            byId[emailId] = shell;
+            cycleEntry.emails.push(shell);
+          });
+          audience.cycles.push(cycleEntry);
+        });
+        audiences.push(audience);
+      });
+      return { byId, audiences };
+    }
+
+    async function ensureEmailTree() {
+      if (NEW_LUCI_EMAIL_TREE) return NEW_LUCI_EMAIL_TREE;
+      const data = await loadNewLuciEmailData();
+      if (!data) { NEW_LUCI_EMAIL_TREE = null; return null; }
+      NEW_LUCI_EMAIL_TREE = deriveEmailTree(data);
+      return NEW_LUCI_EMAIL_TREE;
+    }
+
+    async function renderNewLuciEmailList() {
+      const listEl = $('nll-email-list');
+      const countEl = $('nll-email-count');
+      if (!listEl) return;
+      const tree = await ensureEmailTree();
+      if (!tree) {
+        listEl.innerHTML = '<p class="empty">Could not load email copy tree. Check new-luci-email-comms.json.</p>';
+        if (countEl) countEl.textContent = '—';
+        return;
+      }
+      const drafts = readLocal(LS_NEW_LUCI_EMAILS, {});
+      let total = 0;
+      let inProgress = 0;
+      const html = tree.audiences.map((aud) => {
+        const cyclesHtml = aud.cycles.map((cyc) => {
+          const rowsHtml = cyc.emails.map((sh) => {
+            total += 1;
+            const hasDraft = !!(drafts[sh.id] && drafts[sh.id].trim());
+            if (hasDraft) inProgress += 1;
+            const status = hasDraft
+              ? '<span class="nll-tag">In progress</span>'
+              : '<span class="nll-tag" style="color:var(--muted);">Empty</span>';
+            return `
+              <article class="nll-email__row">
+                <div>
+                  <h3>${escapeHtml(sh.title)}</h3>
+                  <p>${escapeHtml(sh.deck)}</p>
+                  <span class="nll-email__id">${sh.id}</span>
+                  ${status}
+                </div>
+                <div class="actions"><a class="btn btn--ghost" href="${sh.hash}">Open draft</a></div>
+              </article>
+            `;
+          }).join('');
+          return `
+            <div class="nll-email__cycle">
+              <p class="nll-email__cycle-name">${escapeHtml(cyc.name)}</p>
+              ${rowsHtml}
+            </div>
+          `;
+        }).join('');
+        return `
+          <div class="nll-email__audience">
+            <p class="nll-email__aud-name">${escapeHtml(aud.name)}</p>
+            ${cyclesHtml}
+          </div>
+        `;
+      }).join('');
+      listEl.innerHTML = html;
+      if (countEl) countEl.textContent = `${total} emails${inProgress ? ' · ' + inProgress + ' in progress' : ''}`;
+    }
+
+    function renderEmailShell(emailId) {
+      const tree = NEW_LUCI_EMAIL_TREE;
+      const titleEl = $('nll-working-title');
+      const deckEl = $('nll-working-deck');
+      const backEl = $('nll-working-back');
+      const bodyEl = $('nll-working-editor');
+      const saveEl = $('nll-working-save');
+      const previewEl = $('nll-working-preview');
+      const shell = tree && tree.byId[emailId];
+      // Email shells reuse the Working view but have no designed layout preview.
+      if (previewEl) { previewEl.removeAttribute('href'); previewEl.hidden = true; }
+      if (!shell) {
+        if (titleEl) titleEl.textContent = 'Email copy';
+        if (deckEl) deckEl.textContent = '';
+        if (bodyEl) bodyEl.innerHTML = '';
+        return;
+      }
+      if (titleEl) titleEl.textContent = shell.title;
+      if (deckEl) deckEl.textContent = shell.deck;
+      if (backEl) {
+        backEl.textContent = `Back to ${shell.audienceName}`;
+        backEl.href = `#new-luci-launch/email/${shell.audienceId}/${shell.cycleSlug}`;
+      }
+      const drafts = readLocal(LS_NEW_LUCI_EMAILS, {});
+      if (bodyEl) {
+        bodyEl.innerHTML = drafts[emailId] || '';
+        bodyEl.dataset.slug = emailId;
+        bodyEl.dataset.storage = LS_NEW_LUCI_EMAILS;
+        if (saveEl) saveEl.textContent = drafts[emailId] ? 'Saved' : '';
+      }
+      bindEditableShell(bodyEl, saveEl);
     }
 
     function sanitizeFilePart(value) {
@@ -5183,7 +5527,33 @@
       }
       // New LUCI Launch Campaign — working draft shells (editable, localStorage).
       if (view === 'new-luci-launch' && sub.startsWith('working/')) {
-        if (workingEl) { workingEl.hidden = false; renderWorkingShell(sub.slice('working/'.length)); }
+        const slug = sub.slice('working/'.length);
+        // Thin-redirect the removed email-packets shell to the Email copy landing.
+        if (slug === 'email-packets') {
+          try { history.replaceState(null, '', '#new-luci-launch'); } catch (e) { /* noop */ }
+          if (launchEl) launchEl.hidden = false;
+          renderNewLuciLaunch();
+          return;
+        }
+        if (workingEl) { workingEl.hidden = false; renderWorkingShell(slug); }
+        return;
+      }
+      // New LUCI Launch Campaign — Email copy pages (editable, localStorage).
+      // Route: email/<audience>/<cycle-slug>/<email-id> → single email draft page.
+      if (view === 'new-luci-launch' && sub.startsWith('email/')) {
+        const parts = sub.slice('email/'.length).split('/');
+        const emailId = parts.length >= 3 ? parts[2] : '';
+        // No email-id (audience/cycle landing) → show the campaign landing; the
+        // Email copy accordion below Working is the destination.
+        if (!emailId) {
+          if (launchEl) launchEl.hidden = false;
+          renderNewLuciLaunch();
+          return;
+        }
+        // Ensure the tree is loaded before rendering the shell.
+        ensureEmailTree().then(() => {
+          if (workingEl) { workingEl.hidden = false; renderEmailShell(emailId); }
+        });
         return;
       }
 
@@ -5246,13 +5616,22 @@
       );
     }
 
+    function isLocalOnlyRoute(view, sub) {
+      // Strategy docs, Working drafts, and Email copy pages are JSON/localStorage-only
+      // — skip the comments API on navigation.
+      return view === 'new-luci-launch' && (
+        isStrategyDocRoute(view, sub) ||
+        sub.startsWith('working/') ||
+        sub.startsWith('email/')
+      );
+    }
+
     window.addEventListener('hashchange', () => {
       const { view, sub } = routeFromHash();
       showView(view, sub);
       normalizeLegacyHash(view, sub);
       // Re-fetch on navigation so the review list/detail reflects the latest server state.
-      // Strategy docs + working drafts are JSON/localStorage-only — skip the comments API.
-      if (!isStrategyDocRoute(view, sub) && !(view === 'new-luci-launch' && sub.startsWith('working/'))) {
+      if (!isLocalOnlyRoute(view, sub)) {
         refreshFromApi({ silent: true });
       }
     });
