@@ -7,129 +7,135 @@
 <title>LUCI — What’s New · Flow C · Three promises, split proof ledger</title>
 <link rel="stylesheet" href="../../assets/fonts/luci-brand-fonts.css">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-:root {
-  --navy-deep: #0A161C; --navy: #10232D; --navy-mid: #314955; --navy-muted: #49616E;
-  --mint: #68E3BE; --mint-rgb: 104, 227, 190; --mint-dark: #2b9e80; --accent-light: #2b9e80;
-  --gold: #EDD086; --gold-deep: #CEB06E; --gold-rgb: 237, 208, 134;
-  --off-white: #F5F8FA; --tint: #EEF2F4; --rule-light: #DBE1E4;
-  --ink: #354F5C; --ink-strong: #1C2B33;
-  --font: 'Space Grotesk', 'Trebuchet MS', sans-serif;
-  --font-body: 'Inter', 'Space Grotesk', 'Trebuchet MS', sans-serif;
-  --display: 'Syncopate', 'Arial Black', sans-serif;
-  --page-w: 8.5in; --page-h: 11in; --page-pad: 0.55in;
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy-deep:#0A161C;--navy:#10232D;--navy-mid:#314955;--navy-muted:#49616E;
+  --mint:#68E3BE;--mint-rgb:104,227,190;--mint-dark:#2b9e80;--accent-light:#2b9e80;
+  --gold:#EDD086;--gold-deep:#CEB06E;--gold-rgb:237,208,134;
+  --off-white:#F5F8FA;--tint:#EEF2F4;--rule-light:#DBE1E4;
+  --ink:#354F5C;--ink-strong:#1C2B33;
+  --font:'Space Grotesk','Trebuchet MS',sans-serif;
+  --font-body:'Inter','Space Grotesk','Trebuchet MS',sans-serif;
+  --display:'Syncopate','Arial Black',sans-serif;
+  --page-w:8.5in;--page-h:11in;--page-pad:0.55in;
 }
-
-html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
-body { font-family: var(--font-body); background: #c8cdd0; color: var(--ink); font-size: 14px; line-height: 1.6; }
-
-.hub-link { max-width: var(--page-w); margin: 0 auto; padding: 14px 16px 6px; font-family: var(--font); font-size: 11px; text-align: center; color: var(--navy-muted); }
-.hub-link a { color: var(--navy-mid); font-weight: 600; text-decoration: none; }
-.hub-link a:hover { text-decoration: underline; }
-
-.doc { max-width: var(--page-w); margin: 0 auto; }
-
-/* ── Locked sheet — one 8.5×11 page ── */
-.sheet {
-  position: relative;
-  width: var(--page-w);
-  height: var(--page-h);
-  padding: 0;
-  background: var(--off-white);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:14px;line-height:1.6}
+.hub-link{max-width:var(--page-w);margin:0 auto;padding:14px 16px 6px;font-family:var(--font);font-size:11px;text-align:center;color:var(--navy-muted)}
+.hub-link a{color:var(--navy-mid);font-weight:600;text-decoration:none}
+.hub-link a:hover{text-decoration:underline}
+.doc{max-width:var(--page-w);margin:0 auto}
+.sheet{position:relative;width:var(--page-w);height:var(--page-h);padding:0;background:var(--off-white);display:flex;flex-direction:column;overflow:hidden}
+@media screen{.sheet{margin:22px auto;box-shadow:0 6px 28px rgba(10,22,28,0.16)}}
+@page{size:letter;margin:0}
+@media print{
+  body{background:#fff}.hub-link{display:none}
+  .sheet{margin:0;box-shadow:none;page-break-after:always;break-after:page}
+  .mast,.foot,.mast::after,.ledger__num,.close__rule{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
-@media screen { .sheet { margin: 22px auto; box-shadow: 0 6px 28px rgba(10,22,28,0.16); } }
-
-@page { size: letter; margin: 0; }
-@media print {
-  body { background: #fff; }
-  .hub-link { display: none; }
-  .sheet { margin: 0; box-shadow: none; page-break-after: always; break-after: page; }
-  .mast, .foot, .mast::after, .ledger__num, .close__rule { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-}
-
-/* ── MASTHEAD · top field: kicker + announcement + headline + subhead + date ── */
-.mast {
-  position: relative;
-  padding: 0.40in var(--page-pad) 0.32in;
+/* MASTHEAD · navy + mint-gold circuit mesh (capabilities/brochure/FAG pattern) */
+.mast{position:relative;padding:0.42in var(--page-pad) 0.34in;
   background:
-    radial-gradient(130% 120% at 8% 0%, rgba(var(--mint-rgb),0.10), transparent 46%),
-    radial-gradient(120% 130% at 100% 100%, rgba(var(--gold-rgb),0.06), transparent 50%),
-    linear-gradient(158deg, var(--navy) 0%, var(--navy-deep) 78%, #06121A 100%);
-  color: var(--off-white);
-  overflow: hidden;
+    linear-gradient(162deg,rgba(16,35,45,0.94) 0%,rgba(12,31,40,0.98) 100%),
+    url('assets/textures/texture-3.png') center/cover no-repeat,
+    linear-gradient(158deg,var(--navy) 0%,var(--navy-deep) 78%,#06121A 100%);
+  color:var(--off-white);overflow:hidden}
+.mast::before{content:'';position:absolute;inset:0;
+  background-image:url('assets/textures/texture-circuit-header-mintgold.png');
+  background-repeat:repeat;background-position:right center;background-size:460px auto;
+  -webkit-mask-image:linear-gradient(90deg,transparent 38%,rgba(0,0,0,0.42) 64%,#000 100%);
+          mask-image:linear-gradient(90deg,transparent 38%,rgba(0,0,0,0.42) 64%,#000 100%);
+  opacity:0.72;pointer-events:none}
+.mast__glow{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(120% 90% at 6% -8%,rgba(var(--mint-rgb),0.10),transparent 52%)}
+.mast::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--mint)}
+.mast>*{position:relative;z-index:1}
+.mast__row{display:flex;justify-content:space-between;align-items:center;gap:20px}
+.mast__brand{display:flex;align-items:center;gap:12px}
+.mast__logo{height:26px;width:auto}
+.mast__kicker{font-family:var(--display);font-weight:700;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--mint)}
+.mast__announce{margin-top:18px;font-family:var(--display);font-weight:700;font-size:11px;letter-spacing:0.20em;text-transform:uppercase;color:var(--mint)}
+.mast__theme{margin-top:12px;font-family:var(--font);font-weight:700;font-size:30px;line-height:1.06;letter-spacing:-0.03em;color:var(--off-white);max-width:20ch}
+.mast__theme em{font-style:normal;color:var(--mint)}
+.mast__sub{margin-top:12px;font-family:var(--font-body);font-size:14px;line-height:1.5;color:rgba(235,245,248,0.82);max-width:58ch}
+.mast__date{margin-top:16px;padding-top:11px;border-top:1px solid rgba(var(--mint-rgb),0.20);font-family:var(--font);font-weight:700;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--mint)}
+/* MIDDLE · section title + split proof ledger */
+.middle{flex:1 1 auto;display:flex;flex-direction:column;padding:0.32in var(--page-pad) 0.24in}
+.middle__head{margin-bottom:4px}
+.middle__title{font-family:var(--font);font-weight:700;font-size:20px;letter-spacing:-0.02em;line-height:1.15;color:var(--ink-strong)}
+.middle__rule{width:40px;height:3px;background:var(--mint-dark);margin-top:10px;margin-bottom:16px}
+.ledger{display:flex;flex-direction:column}
+.row{display:grid;grid-template-columns:30% 1fr;column-gap:24px;padding:16px 0;border-top:1px solid var(--rule-light)}
+.row:last-of-type{border-bottom:1px solid var(--rule-light)}
+.row__lead{min-width:0}
+.ledger__num{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:0.16em;color:var(--mint-dark);line-height:1;margin-bottom:10px}
+.row__name{font-family:var(--font);font-weight:700;font-size:17px;letter-spacing:-0.02em;line-height:1.18;color:var(--ink-strong);margin-bottom:7px}
+.row__benefit{font-family:var(--font-body);font-size:12.5px;line-height:1.45;color:var(--navy);max-width:30ch}
+.features{min-width:0;display:flex;flex-direction:column}
+.feature{display:grid;grid-template-columns:0.46fr 1fr;column-gap:16px;padding:7px 0;border-top:1px solid var(--rule-light)}
+.feature:first-child{border-top:none;padding-top:2px}
+.features__name{font-family:var(--font);font-weight:700;font-size:12.5px;letter-spacing:-0.005em;color:var(--ink-strong);line-height:1.3}
+.features__teaser{font-family:var(--font-body);font-weight:400;font-size:12.5px;line-height:1.4;color:var(--ink)}
+/* CLOSE · compact information close (not a download CTA) */
+.close{padding:0.24in var(--page-pad) 0.20in}
+.close__rule{width:40px;height:3px;background:var(--mint-dark);margin-bottom:11px}
+.close__info{font-family:var(--font-body);font-size:13px;line-height:1.5;color:var(--ink)}
+.close__info strong{font-family:var(--font);font-weight:700;color:var(--ink-strong)}
+.close__url{font-family:var(--font);font-weight:600;color:var(--mint-dark)}
+.close__contact{margin-top:8px;font-family:var(--font-body);font-size:11.5px;line-height:1.5;color:var(--navy-muted)}
+.close__contact strong{font-family:var(--font);font-weight:700;color:var(--ink-strong)}
+/* FOOTER · navy bookend with mint-only circuit (screen); solid navy in print */
+.foot{position:relative;background:var(--navy-deep);color:rgba(235,245,248,0.45);
+  padding:11px var(--page-pad) 13px;display:flex;justify-content:space-between;align-items:center;gap:12px;
+  font-family:var(--font);font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase;
+  border-top:1px solid rgba(235,245,248,0.06);overflow:hidden}
+.foot::before{content:'';position:absolute;top:0;right:0;bottom:0;width:60%;
+  background-image:url('assets/textures/texture-circuit-navy-mint.png');
+  background-repeat:no-repeat;background-position:right center;background-size:320px auto;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,0.35) 55%,#000 100%);
+          mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,0.35) 55%,#000 100%);
+  opacity:0.55;pointer-events:none}
+.foot>*{position:relative;z-index:1}
+.foot__wordmark{font-family:var(--display);font-weight:700;letter-spacing:0.18em;color:rgba(var(--mint-rgb),0.7)}
+/* Print-only circuit <img> for the masthead (Chrome print-to-pdf skips CSS bg) */
+.band-circuit-print{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;z-index:0;pointer-events:none}
+@media screen{.band-circuit-print{display:none}}
+@media print{
+  .mast{background:var(--navy-deep) !important}
+  .mast::before{display:none !important}
+  .mast__glow{display:none !important}
+  .foot::before{display:none !important}
+  .foot{background:var(--navy-deep) !important}
 }
-.mast::after { content:''; position:absolute; bottom:0; left:0; right:0; height:4px; background: var(--mint); }
-.mast__row { display:flex; justify-content:space-between; align-items:center; gap:20px; }
-.mast__brand { display:flex; align-items:center; gap:12px; }
-.mast__logo { height:26px; width:auto; }
-.mast__kicker { font-family: var(--display); font-weight:700; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; color: var(--mint); }
-.mast__announce { margin-top:16px; font-family: var(--display); font-weight:700; font-size:11px; letter-spacing:0.20em; text-transform:uppercase; color: var(--mint); }
-.mast__theme { margin-top:10px; font-family: var(--font); font-weight:700; font-size: clamp(26px, 3.1vw, 32px); line-height:1.06; letter-spacing:-0.03em; color: var(--off-white); max-width:20ch; }
-.mast__theme em { font-style:normal; color: var(--mint); }
-.mast__sub { margin-top:10px; font-family: var(--font-body); font-size: 14px; line-height:1.5; color: rgba(235,245,248,0.82); max-width:58ch; }
-.mast__date { margin-top:14px; padding-top:10px; border-top:1px solid rgba(var(--mint-rgb),0.18); font-family: var(--font); font-weight:700; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color: var(--mint); }
-
-/* ── MIDDLE · section title + split proof ledger ── */
-.middle { flex: 1 1 auto; display:flex; flex-direction:column; padding: 0.30in var(--page-pad) 0.22in; }
-.middle__title { font-family: var(--font); font-weight:700; font-size: 19px; letter-spacing:-0.02em; line-height:1.15; color: var(--ink-strong); margin-bottom:6px; }
-.middle__rule { width:40px; height:3px; background: var(--mint-dark); margin-bottom:14px; }
-
-.ledger { display:flex; flex-direction:column; }
-.row { display:grid; grid-template-columns: 30% 1fr; column-gap: 22px; padding: 14px 0; border-top: 1px solid var(--rule-light); }
-.row:last-of-type { border-bottom: 1px solid var(--rule-light); }
-
-.row__lead { min-width:0; }
-.ledger__num { font-family: var(--display); font-weight:700; font-size:13px; letter-spacing:0.16em; color: var(--mint-dark); line-height:1; margin-bottom:8px; }
-.row__name { font-family: var(--font); font-weight:700; font-size: 17px; letter-spacing:-0.02em; line-height:1.18; color: var(--ink-strong); margin-bottom:6px; }
-.row__benefit { font-family: var(--font-body); font-size: 12.5px; line-height:1.45; color: var(--navy); max-width:30ch; }
-
-.features { min-width:0; display:flex; flex-direction:column; }
-.feature { display:grid; grid-template-columns: 0.46fr 1fr; column-gap: 14px; padding: 6px 0; border-top: 1px solid var(--rule-light); }
-.feature:first-child { border-top: none; padding-top: 2px; }
-.features__name { font-family: var(--font); font-weight:700; font-size: 12.5px; letter-spacing:-0.005em; color: var(--ink-strong); line-height:1.3; }
-.features__teaser { font-family: var(--font-body); font-weight:400; font-size: 12.5px; line-height:1.4; color: var(--ink); }
-
-/* ── CLOSE · compact information close (not a download CTA) ── */
-.close { padding: 0.22in var(--page-pad) 0.18in; }
-.close__rule { width:40px; height:3px; background: var(--mint-dark); margin-bottom:10px; }
-.close__info { font-family: var(--font-body); font-size: 13px; line-height:1.5; color: var(--ink); }
-.close__info strong { font-family: var(--font); font-weight:700; color: var(--ink-strong); }
-.close__url { font-family: var(--font); font-weight:600; color: var(--mint-dark); }
-.close__contact { margin-top:8px; font-family: var(--font-body); font-size: 11.5px; line-height:1.5; color: var(--navy-muted); }
-.close__contact strong { font-family: var(--font); font-weight:700; color: var(--ink-strong); }
-
-/* ── FOOTER ── */
-.foot { background: var(--navy-deep); color: rgba(235,245,248,0.45); padding: 10px var(--page-pad) 12px; display:flex; justify-content:space-between; align-items:center; gap:12px; font-family: var(--font); font-size:9.5px; letter-spacing:0.14em; text-transform:uppercase; border-top:1px solid rgba(235,245,248,0.06); }
-.foot__wordmark { font-family: var(--display); font-weight:700; letter-spacing:0.18em; color: rgba(var(--mint-rgb),0.7); }
 </style>
 </head>
 <body>
-<p class="hub-link"><a href="../../index.html">&larr; Design Hub</a> &middot; LUCI What’s New · Flow C (Three promises, split proof ledger) &middot; Print or Save as PDF (US Letter)</p>
+<p class="hub-link"><a href="../../index.html">&larr; Design Hub</a> &middot; LUCI What&rsquo;s New &middot; Flow C (Three promises, split proof ledger) &middot; Print or Save as PDF (US Letter)</p>
 
 <article class="doc">
   <section class="sheet">
 
     <!-- ═══ MASTHEAD · top field ═══ -->
     <header class="mast">
+      <img class="band-circuit-print" src="assets/textures/band-circuit-baked.jpg" alt="" aria-hidden="true">
+      <span class="mast__glow" aria-hidden="true"></span>
       <div class="mast__row">
         <div class="mast__brand">
           <img class="mast__logo" src="assets/logos/luci-wordmark-white-320.png?v=7" alt="LUCI Systems" width="140" height="26">
-          <span class="mast__kicker">What’s New</span>
+          <span class="mast__kicker">What&rsquo;s New</span>
         </div>
       </div>
       <p class="mast__announce">A new version of LUCI is coming</p>
       <h1 class="mast__theme">Putting the power of <em>programming</em> in your hands</h1>
-      <p class="mast__sub">The new version of LUCI puts more control in your hands—with better support behind it.</p>
-      <p class="mast__date">Release date · January 19</p>
+      <p class="mast__sub">The new version of LUCI puts more control in your hands&mdash;with better support behind it.</p>
+      <p class="mast__date">Release date &middot; January 19</p>
     </header>
 
     <!-- ═══ MIDDLE · The 3 Promises of New LUCI · split proof ledger ═══ -->
     <div class="middle">
-      <h2 class="middle__title">The 3 Promises of New LUCI</h2>
+      <div class="middle__head">
+        <h2 class="middle__title">The 3 Promises of New LUCI</h2>
+      </div>
       <div class="middle__rule" aria-hidden="true"></div>
 
       <div class="ledger">
@@ -154,7 +160,7 @@ body { font-family: var(--font-body); background: #c8cdd0; color: var(--ink); fo
             <p class="row__benefit">Shape the interface around your property and operation.</p>
           </div>
           <div class="features">
-            <div class="feature"><span class="features__name">Customizable interface</span><span class="features__teaser">Bring your property’s identity into LUCI.</span></div>
+            <div class="feature"><span class="features__name">Customizable interface</span><span class="features__teaser">Bring your property&rsquo;s identity into LUCI.</span></div>
             <div class="feature"><span class="features__name">Live map flexibility</span><span class="features__teaser">Match live floor plans to physical spaces.</span></div>
             <div class="feature"><span class="features__name">Video/LED wall layout sync</span><span class="features__teaser">Pull processor layouts into LUCI without rebuilding.</span></div>
           </div>
@@ -181,13 +187,13 @@ body { font-family: var(--font-body); background: #c8cdd0; color: var(--ink); fo
     <div class="close">
       <div class="close__rule" aria-hidden="true"></div>
       <p class="close__info"><strong>For more information, visit</strong> <span class="close__url">[UPGRADE GUIDE URL]</span>.</p>
-      <p class="close__contact"><strong>[NAME]</strong> · [TITLE]<br>[EMAIL] · [PHONE]</p>
+      <p class="close__contact"><strong>[NAME]</strong> &middot; [TITLE]<br>[EMAIL] &middot; [PHONE]</p>
     </div>
 
     <!-- ═══ FOOTER ═══ -->
     <footer class="foot">
       <span class="foot__wordmark">LUCI</span>
-      <span>What’s New · For LUCI customers and prospects</span>
+      <span>What&rsquo;s New &middot; For LUCI customers and prospects</span>
     </footer>
 
   </section>
