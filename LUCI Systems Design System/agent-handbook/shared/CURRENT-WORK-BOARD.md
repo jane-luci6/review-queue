@@ -25,6 +25,7 @@ Workstream bots update this table when Jane assigns them work. Cornelius does no
 | aliante-astro-publish | Jane: publish Aliante video + written case study on Astro site. | Weatherby | committed + redeployed | GLM | `public/videos/aliante-reel.mp4` + case-studies/aliante (commit `6cf7cc5` on `persona-hero-subhead-gold`; live on `.37`) | Jane hard-refresh confirm | Weatherby reports to Jane/CoS |
 | signal-04-layout | GLM applying copy-r3 + Opus Project Update ledger into HTML. | Ermintrude | GLM layout r3 | GLM | lock 6c6f5f7 + copy f73725f | Jane review on 127.0.0.1:8765 | GLM running in Terminal |
 | new-luci-imp-launch-storage | Stand up New LUCI Launch Campaign IMP section (Strategy + Working) below Coming Soon. | Weatherby | deployed | GLM | `#new-luci-launch` + `/strategy/*` + `/working/*` live on http://10.10.1.17:8081 (commit `fbc2568`) | Jane glance | Weatherby reports |
+| new-luci-imp-email-copy | Restructure `#new-luci-launch`: add third accordion Email copy (4 audiences → cycles → per-email editable pages) below Working; remove single Working shell `email-packets`. | Weatherby | deployed | GLM | Email copy accordion live on http://10.10.1.17:8081 — 39 editable email pages under `#new-luci-launch/email/<audience>/<cycle-slug>/<email-id>` (commit `6380b00`) | Jane glance | Weatherby reports |
 
 ---
 
