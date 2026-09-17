@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>LUCI — What’s New · Flow B · Three decisions</title>
+<link rel="stylesheet" href="../../assets/fonts/luci-brand-fonts.css">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy-deep: #0A161C; --navy: #10232D; --navy-mid: #314955; --navy-muted: #49616E;
+  --mint: #68E3BE; --mint-rgb: 104, 227, 190; --mint-dark: #2b9e80; --accent-light: #2b9e80;
+  --gold: #EDD086; --gold-deep: #CEB06E; --gold-rgb: 237, 208, 134;
+  --off-white: #F5F8FA; --tint: #EEF2F4; --rule-light: #DBE1E4;
+  --ink: #354F5C; --ink-strong: #1C2B33;
+  --font: 'Space Grotesk', 'Trebuchet MS', sans-serif;
+  --font-body: 'Inter', 'Space Grotesk', 'Trebuchet MS', sans-serif;
+  --display: 'Syncopate', 'Arial Black', sans-serif;
+  --page-w: 8.5in; --page-h: 11in; --page-pad: 0.55in;
+}
+
+html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+body { font-family: var(--font-body); background: #c8cdd0; color: var(--ink); font-size: 14px; line-height: 1.6; }
+
+.hub-link { max-width: var(--page-w); margin: 0 auto; padding: 14px 16px 6px; font-family: var(--font); font-size: 11px; text-align: center; color: var(--navy-muted); }
+.hub-link a { color: var(--navy-mid); font-weight: 600; text-decoration: none; }
+.hub-link a:hover { text-decoration: underline; }
+
+.doc { max-width: var(--page-w); margin: 0 auto; }
+
+/* ── Locked sheet — one 8.5×11 page ── */
+.sheet {
+  position: relative;
+  width: var(--page-w);
+  height: var(--page-h);
+  padding: 0;
+  background: var(--off-white);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+@media screen { .sheet { margin: 22px auto; box-shadow: 0 6px 28px rgba(10,22,28,0.16); } }
+
+@page { size: letter; margin: 0; }
+@media print {
+  body { background: #fff; }
+  .hub-link { display: none; }
+  .sheet { margin: 0; box-shadow: none; page-break-after: always; break-after: page; }
+  .mast, .cta, .mast::after, .cta::before, .qa__q::before, .proof-chip { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+
+/* ── MASTHEAD ── */
+.mast {
+  position: relative;
+  padding: 0.38in var(--page-pad) 0.28in;
+  background:
+    radial-gradient(130% 120% at 8% 0%, rgba(var(--mint-rgb),0.10), transparent 46%),
+    radial-gradient(120% 130% at 100% 100%, rgba(var(--gold-rgb),0.06), transparent 50%),
+    linear-gradient(158deg, var(--navy) 0%, var(--navy-deep) 78%, #06121A 100%);
+  color: var(--off-white);
+  overflow: hidden;
+}
+.mast::after { content:''; position:absolute; bottom:0; left:0; right:0; height:4px; background: var(--mint); }
+.mast__row { display:flex; justify-content:space-between; align-items:center; gap:20px; }
+.mast__brand { display:flex; align-items:center; gap:12px; }
+.mast__logo { height:26px; width:auto; }
+.mast__kicker { font-family: var(--display); font-weight:700; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; color: var(--mint); }
+.mast__date { font-family: var(--font); font-weight:600; font-size:11px; letter-spacing:0.04em; color: var(--mint); text-align:right; }
+.mast__date strong { display:block; font-size:9px; letter-spacing:0.22em; text-transform:uppercase; color: rgba(235,245,248,0.5); font-weight:600; margin-bottom:4px; }
+.mast__theme { margin-top:12px; font-family: var(--font); font-weight:700; font-size: clamp(24px, 3vw, 30px); line-height:1.06; letter-spacing:-0.03em; color: var(--off-white); max-width:20ch; }
+.mast__theme em { font-style:normal; color: var(--mint); }
+.mast__shift { font-family: var(--font-body); font-size: 13px; color: rgba(235,245,248,0.78); margin-top:10px; max-width:60ch; }
+
+/* ── QUESTIONS · the first-read field ── */
+.questions { padding: 0.2in var(--page-pad) 0.14in; }
+.questions__label { font-family: var(--font); font-weight:600; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; color: var(--mint-dark); margin-bottom:10px; }
+.q-list { list-style:none; display:flex; flex-direction:column; gap:4px; }
+.q-list li { display:flex; align-items:baseline; gap:12px; padding:6px 0; border-top:1px solid var(--rule-light); font-family: var(--font); font-weight:600; font-size:14.5px; line-height:1.3; color: var(--ink-strong); }
+.q-list li:last-child { border-bottom:1px solid var(--rule-light); }
+.q-list li::before { content: counter(q, decimal-leading-zero); counter-increment: q; font-family: var(--display); font-weight:700; font-size:11px; letter-spacing:0.16em; color: var(--mint-dark); flex:none; }
+.q-list { counter-reset: q; }
+
+/* ── Q→A BLOCKS · each question resolves into its pillar ── */
+.qa-list { padding: 0 var(--page-pad); flex: 1 1 auto; display:flex; flex-direction:column; }
+.qa { padding: 11px 0; border-top: 1px solid var(--rule-light); }
+.qa__q { display:flex; align-items:baseline; gap:10px; margin-bottom:6px; }
+.qa__q::before { content:'Q'; font-family: var(--display); font-weight:700; font-size:10px; letter-spacing:0.18em; color: var(--navy-muted); flex:none; }
+.qa__q-text { font-family: var(--font-body); font-style:italic; font-size:12.5px; line-height:1.4; color: var(--navy-muted); max-width:54ch; }
+.qa__a { display:flex; align-items:baseline; gap:10px; margin-bottom:5px; }
+.qa__a::before { content:'A'; font-family: var(--display); font-weight:700; font-size:10px; letter-spacing:0.18em; color: var(--mint-dark); flex:none; }
+.qa__name { font-family: var(--font); font-weight:700; font-size: 17px; letter-spacing:-0.02em; color: var(--ink-strong); }
+.qa__benefit { font-family: var(--font); font-weight:600; font-size: 13.5px; line-height:1.35; color: var(--navy); max-width:54ch; margin-bottom:7px; padding-left:24px; }
+.proof { display:flex; flex-wrap:wrap; gap:0; align-items:center; padding-left:24px; }
+.proof__label { font-family: var(--font); font-weight:600; font-size:9px; letter-spacing:0.22em; text-transform:uppercase; color: var(--navy-muted); margin-right:10px; }
+.proof-chip { font-family: var(--font); font-weight:600; font-size:11.5px; color: var(--ink-strong); padding:2px 0; }
+.proof-chip + .proof-chip::before { content:'·'; color: var(--mint-dark); font-weight:700; margin:0 8px; }
+
+/* ── PARTNERSHIP LINE ── */
+.partner { padding: 0.14in var(--page-pad) 0.16in; }
+.partner__bar { width:40px; height:3px; background: var(--mint-dark); margin-bottom:7px; }
+.partner__text { font-family: var(--font-body); font-size: 13px; line-height:1.5; color: var(--ink); max-width:62ch; }
+.partner__text strong { font-family: var(--font); font-weight:700; color: var(--ink-strong); }
+
+/* ── CTA ── */
+.cta { position: relative; background: var(--navy-deep); color: var(--off-white); padding: 0.24in var(--page-pad) 0.28in; overflow:hidden; }
+.cta::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background: var(--mint); }
+.cta__head { font-family: var(--font); font-weight:700; font-size: 17px; letter-spacing:-0.02em; line-height:1.2; color:#FFFFFF; margin-bottom:9px; max-width:32ch; }
+.cta__head em { font-style:normal; color: var(--mint); }
+.cta__support { font-family: var(--font-body); font-size:12px; line-height:1.5; color: rgba(235,245,248,0.78); max-width:60ch; padding-top:10px; border-top:1px solid rgba(var(--mint-rgb),0.18); }
+.cta__support strong { color: var(--mint); font-weight:700; }
+.cta__contact { font-family: var(--font-body); font-size:10.5px; color: rgba(235,245,248,0.55); margin-top:7px; }
+
+/* ── FOOTER ── */
+.foot { background: var(--navy-deep); color: rgba(235,245,248,0.45); padding: 12px var(--page-pad) 16px; display:flex; justify-content:space-between; align-items:center; gap:12px; font-family: var(--font); font-size:9.5px; letter-spacing:0.14em; text-transform:uppercase; border-top:1px solid rgba(235,245,248,0.06); }
+.foot__wordmark { font-family: var(--display); font-weight:700; letter-spacing:0.18em; color: rgba(var(--mint-rgb),0.7); }
+</style>
+</head>
+<body>
+<p class="hub-link"><a href="../../index.html">&larr; Design Hub</a> &middot; LUCI What’s New · Flow B (Three decisions) &middot; Print or Save as PDF (US Letter)</p>
+
+<article class="doc">
+  <section class="sheet">
+
+    <!-- ═══ MASTHEAD · theme + release shift ═══ -->
+    <header class="mast">
+      <div class="mast__row">
+        <div class="mast__brand">
+          <img class="mast__logo" src="assets/logos/luci-wordmark-white-320.png?v=7" alt="LUCI Systems" width="140" height="26">
+          <span class="mast__kicker">What’s New</span>
+        </div>
+        <div class="mast__date">
+          <strong>Release date</strong>
+          [RELEASE DATE]
+        </div>
+      </div>
+      <h1 class="mast__theme">Putting the power of <em>programming</em> in your hands</h1>
+      <p class="mast__shift">New LUCI shifts more of the operating decision onto your team — and keeps the LUCI team right beside the work.</p>
+    </header>
+
+    <!-- ═══ THREE QUESTIONS · first-read field ═══ -->
+    <div class="questions">
+      <p class="questions__label">Three decisions now in your hands</p>
+      <ol class="q-list">
+        <li>What needs to happen in the room?</li>
+        <li>What does the team need to see?</li>
+        <li>What needs to be known, governed, or escalated?</li>
+      </ol>
+    </div>
+
+    <!-- ═══ Q→A · each question resolves into its pillar ═══ -->
+    <div class="qa-list">
+
+      <article class="qa">
+        <div class="qa__q"><span class="qa__q-text">What needs to happen in the room?</span></div>
+        <div class="qa__a"><h2 class="qa__name">Control the room</h2></div>
+        <p class="qa__benefit">Act in the space — put controls where the venue runs, and prepare the next change while the current one keeps running.</p>
+        <div class="proof">
+          <span class="proof__label">Proof</span>
+          <span class="proof-chip">Venue panels</span>
+          <span class="proof-chip">Staging</span>
+          <span class="proof-chip">Audio group control</span>
+        </div>
+      </article>
+
+      <article class="qa">
+        <div class="qa__q"><span class="qa__q-text">What does the team need to see?</span></div>
+        <div class="qa__a"><h2 class="qa__name">Control your view</h2></div>
+        <p class="qa__benefit">Shape the interface around your property — its identity, its layout, the way your walls and screens actually sit.</p>
+        <div class="proof">
+          <span class="proof__label">Proof</span>
+          <span class="proof-chip">Customizable interface</span>
+          <span class="proof-chip">Live map flexibility</span>
+          <span class="proof-chip">Video/LED wall layout sync</span>
+        </div>
+      </article>
+
+      <article class="qa">
+        <div class="qa__q"><span class="qa__q-text">What needs to be known, governed, or escalated?</span></div>
+        <div class="qa__a"><h2 class="qa__name">Control your security</h2></div>
+        <p class="qa__benefit">See the live state, hold the record, and govern who is in — with support reachable from the work itself.</p>
+        <div class="proof">
+          <span class="proof__label">Proof</span>
+          <span class="proof-chip">Audit trails</span>
+          <span class="proof-chip">Live monitoring</span>
+          <span class="proof-chip">Sign-in &amp; session</span>
+          <span class="proof-chip">In-product support</span>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- ═══ PARTNERSHIP LINE ═══ -->
+    <div class="partner">
+      <div class="partner__bar" aria-hidden="true"></div>
+      <p class="partner__text"><strong>In-product support is the LUCI team.</strong> More control in your hands does not mean less support from ours — it means help reaches you from inside the work.</p>
+    </div>
+
+    <!-- ═══ CTA ═══ -->
+    <section class="cta">
+      <h2 class="cta__head">Talk with <em>[NAME]</em> about the plan for your property.</h2>
+      <p class="cta__support">A <strong>thin account-specific plan</strong>, a <strong>shipped laptop</strong>, and a <strong>coordinated activation with LUCI</strong> — guided, not self-service.</p>
+      <p class="cta__contact">[NAME] · [TITLE] · [EMAIL] · [PHONE]</p>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="foot">
+      <span class="foot__wordmark">LUCI</span>
+      <span>What’s New · For LUCI customers and prospects</span>
+    </footer>
+
+  </section>
+</article>
+</body>
+</html>

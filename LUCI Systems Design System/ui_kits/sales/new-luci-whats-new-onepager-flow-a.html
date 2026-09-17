@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>LUCI — What’s New · Flow A · The control arc</title>
+<link rel="stylesheet" href="../../assets/fonts/luci-brand-fonts.css">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy-deep: #0A161C; --navy: #10232D; --navy-mid: #314955; --navy-muted: #49616E;
+  --mint: #68E3BE; --mint-rgb: 104, 227, 190; --mint-dark: #2b9e80; --accent-light: #2b9e80;
+  --gold: #EDD086; --gold-deep: #CEB06E; --gold-rgb: 237, 208, 134;
+  --off-white: #F5F8FA; --tint: #EEF2F4; --rule-light: #DBE1E4;
+  --ink: #354F5C; --ink-strong: #1C2B33;
+  --font: 'Space Grotesk', 'Trebuchet MS', sans-serif;
+  --font-body: 'Inter', 'Space Grotesk', 'Trebuchet MS', sans-serif;
+  --display: 'Syncopate', 'Arial Black', sans-serif;
+  --page-w: 8.5in; --page-h: 11in; --page-pad: 0.55in;
+}
+
+html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+body { font-family: var(--font-body); background: #c8cdd0; color: var(--ink); font-size: 14px; line-height: 1.6; }
+
+.hub-link { max-width: var(--page-w); margin: 0 auto; padding: 14px 16px 6px; font-family: var(--font); font-size: 11px; text-align: center; color: var(--navy-muted); }
+.hub-link a { color: var(--navy-mid); font-weight: 600; text-decoration: none; }
+.hub-link a:hover { text-decoration: underline; }
+
+.doc { max-width: var(--page-w); margin: 0 auto; }
+
+/* ── Locked sheet — one 8.5×11 page, overflow clipped so it can't lie ── */
+.sheet {
+  position: relative;
+  width: var(--page-w);
+  height: var(--page-h);
+  padding: 0;
+  background: var(--off-white);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+@media screen { .sheet { margin: 22px auto; box-shadow: 0 6px 28px rgba(10,22,28,0.16); } }
+
+@page { size: letter; margin: 0; }
+@media print {
+  body { background: #fff; }
+  .hub-link { display: none; }
+  .sheet { margin: 0; box-shadow: none; page-break-after: always; break-after: page; }
+  .mast, .cta, .mast::after, .cta::before, .arc-bar, .proof-chip { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+
+/* ── MASTHEAD · dark bookend with circuit texture ── */
+.mast {
+  position: relative;
+  padding: 0.46in var(--page-pad) 0.42in;
+  background:
+    radial-gradient(130% 120% at 8% 0%, rgba(var(--mint-rgb),0.10), transparent 46%),
+    radial-gradient(120% 130% at 100% 100%, rgba(var(--gold-rgb),0.06), transparent 50%),
+    linear-gradient(158deg, var(--navy) 0%, var(--navy-deep) 78%, #06121A 100%);
+  color: var(--off-white);
+  overflow: hidden;
+}
+.mast::after { content:''; position:absolute; bottom:0; left:0; right:0; height:4px; background: var(--mint); }
+.mast__row { display:flex; justify-content:space-between; align-items:center; gap:20px; }
+.mast__brand { display:flex; align-items:center; gap:12px; }
+.mast__logo { height:26px; width:auto; }
+.mast__kicker { font-family: var(--display); font-weight:700; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; color: var(--mint); }
+.mast__date { font-family: var(--font); font-weight:600; font-size:11px; letter-spacing:0.04em; color: var(--mint); text-align:right; }
+.mast__date strong { display:block; font-size:9px; letter-spacing:0.22em; text-transform:uppercase; color: rgba(235,245,248,0.5); font-weight:600; margin-bottom:4px; }
+.mast__announce { font-family: var(--font-body); font-size: 13px; color: rgba(235,245,248,0.78); margin-top:14px; }
+.mast__theme { margin-top:16px; font-family: var(--font); font-weight:700; font-size: clamp(26px, 3.4vw, 34px); line-height:1.06; letter-spacing:-0.03em; color: var(--off-white); max-width:18ch; }
+.mast__theme em { font-style:normal; color: var(--mint); }
+
+/* ── PARTNERSHIP BRIDGE · single line, mint accent bar ── */
+.bridge { padding: 0.28in var(--page-pad) 0.22in; }
+.bridge__bar { width:40px; height:3px; background: var(--mint-dark); margin-bottom:10px; }
+.bridge__text { font-family: var(--font-body); font-size: 14.5px; line-height:1.5; color: var(--ink); max-width:62ch; }
+.bridge__text strong { font-family: var(--font); font-weight:700; color: var(--ink-strong); }
+
+/* ── CONTROL ARC · three descending rows, single column ── */
+.arc { padding: 0 var(--page-pad); flex: 1 1 auto; display:flex; flex-direction:column; }
+.arc__intro { font-family: var(--font); font-weight:600; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; color: var(--mint-dark); margin-bottom:6px; }
+
+.pillar { position: relative; padding: 14px 0 14px 20px; border-top: 1px solid var(--rule-light); }
+.pillar:last-of-type { border-bottom: 1px solid var(--rule-light); }
+.pillar::before { content:''; position:absolute; left:0; top:14px; bottom:14px; width:3px; background: var(--mint-dark); }
+
+.pillar__head { display:flex; align-items:baseline; gap:14px; margin-bottom:6px; }
+.pillar__num { font-family: var(--display); font-weight:700; font-size:11px; letter-spacing:0.18em; color: var(--mint-dark); flex:none; }
+.pillar__name { font-family: var(--font); font-weight:700; font-size: 19px; letter-spacing:-0.02em; color: var(--ink-strong); }
+.pillar__benefit { font-family: var(--font); font-weight:600; font-size: 14.5px; line-height:1.35; color: var(--navy); max-width:54ch; margin-bottom:10px; }
+
+.proof { display:flex; flex-wrap:wrap; gap:0; align-items:center; }
+.proof__label { font-family: var(--font); font-weight:600; font-size:9px; letter-spacing:0.22em; text-transform:uppercase; color: var(--navy-muted); margin-right:12px; }
+.proof-chip { font-family: var(--font); font-weight:600; font-size:12px; color: var(--ink-strong); padding:3px 0; }
+.proof-chip + .proof-chip::before { content:'·'; color: var(--mint-dark); font-weight:700; margin:0 10px; }
+
+/* ── CTA · compact dark band with 3-step path ── */
+.cta { position: relative; background: var(--navy-deep); color: var(--off-white); padding: 0.3in var(--page-pad) 0.34in; overflow:hidden; }
+.cta::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background: var(--mint); }
+.cta__head { font-family: var(--font); font-weight:700; font-size: 19px; letter-spacing:-0.02em; line-height:1.2; color:#FFFFFF; margin-bottom:14px; max-width:30ch; }
+.cta__head em { font-style:normal; color: var(--mint); }
+.cta__path { display:flex; align-items:center; gap:0; flex-wrap:wrap; padding-top:14px; border-top: 1px solid rgba(var(--mint-rgb),0.18); }
+.cta__step { font-family: var(--font); font-weight:600; font-size:12px; color: rgba(235,245,248,0.9); }
+.cta__step strong { color: var(--mint); font-weight:700; }
+.cta__step + .cta__step::before { content:'→'; color: var(--mint); font-weight:400; margin:0 12px; }
+.cta__contact { font-family: var(--font-body); font-size:11px; color: rgba(235,245,248,0.55); margin-top:10px; }
+
+/* ── FOOTER ── */
+.foot { background: var(--navy-deep); color: rgba(235,245,248,0.45); padding: 12px var(--page-pad) 16px; display:flex; justify-content:space-between; align-items:center; gap:12px; font-family: var(--font); font-size:9.5px; letter-spacing:0.14em; text-transform:uppercase; border-top:1px solid rgba(235,245,248,0.06); }
+.foot__wordmark { font-family: var(--display); font-weight:700; letter-spacing:0.18em; color: rgba(var(--mint-rgb),0.7); }
+</style>
+</head>
+<body>
+<p class="hub-link"><a href="../../index.html">&larr; Design Hub</a> &middot; LUCI What’s New · Flow A (The control arc) &middot; Print or Save as PDF (US Letter)</p>
+
+<article class="doc">
+  <section class="sheet">
+
+    <!-- ═══ MASTHEAD · announcement + theme ═══ -->
+    <header class="mast">
+      <div class="mast__row">
+        <div class="mast__brand">
+          <img class="mast__logo" src="assets/logos/luci-wordmark-white-320.png?v=7" alt="LUCI Systems" width="140" height="26">
+          <span class="mast__kicker">What’s New</span>
+        </div>
+        <div class="mast__date">
+          <strong>Release date</strong>
+          [RELEASE DATE]
+        </div>
+      </div>
+      <p class="mast__announce">A new LUCI platform release is on the way.</p>
+      <h1 class="mast__theme">Putting the power of <em>programming</em> in your hands</h1>
+    </header>
+
+    <!-- ═══ PARTNERSHIP BRIDGE ═══ -->
+    <div class="bridge">
+      <div class="bridge__bar" aria-hidden="true"></div>
+      <p class="bridge__text">Your team gets a <strong>more direct path from decision to action</strong> — with LUCI still beside the operation. More control in your hands does not mean less support from ours.</p>
+    </div>
+
+    <!-- ═══ CONTROL ARC · three descending pillars ═══ -->
+    <div class="arc">
+      <p class="arc__intro">Three controls, one arc</p>
+
+      <article class="pillar">
+        <div class="pillar__head">
+          <span class="pillar__num">01</span>
+          <h2 class="pillar__name">Control the room</h2>
+        </div>
+        <p class="pillar__benefit">Put the right controls in the space, so the person who runs the venue can act without waiting on a programmer.</p>
+        <div class="proof">
+          <span class="proof__label">Proof</span>
+          <span class="proof-chip">Venue panels</span>
+          <span class="proof-chip">Staging</span>
+          <span class="proof-chip">Audio group control</span>
+        </div>
+      </article>
+
+      <article class="pillar">
+        <div class="pillar__head">
+          <span class="pillar__num">02</span>
+          <h2 class="pillar__name">Control your view</h2>
+        </div>
+        <p class="pillar__benefit">Shape what the team sees — your property’s identity and layout, carried into the interface operators use every day.</p>
+        <div class="proof">
+          <span class="proof__label">Proof</span>
+          <span class="proof-chip">Customizable interface</span>
+          <span class="proof-chip">Live map flexibility</span>
+          <span class="proof-chip">Video/LED wall layout sync</span>
+        </div>
+      </article>
+
+      <article class="pillar">
+        <div class="pillar__head">
+          <span class="pillar__num">03</span>
+          <h2 class="pillar__name">Control your security</h2>
+        </div>
+        <p class="pillar__benefit">See what’s happening now, know what happened, and govern who is in the system — with support built into the work itself.</p>
+        <div class="proof">
+          <span class="proof__label">Proof</span>
+          <span class="proof-chip">Audit trails</span>
+          <span class="proof-chip">Live monitoring</span>
+          <span class="proof-chip">Sign-in &amp; session</span>
+          <span class="proof-chip">In-product support</span>
+        </div>
+      </article>
+    </div>
+
+    <!-- ═══ CTA · compact dark band + 3-step path ═══ -->
+    <section class="cta">
+      <h2 class="cta__head">Plan your New LUCI upgrade with <em>[NAME]</em>.</h2>
+      <div class="cta__path">
+        <span class="cta__step"><strong>Confirm the plan</strong></span>
+        <span class="cta__step"><strong>Receive the laptop</strong></span>
+        <span class="cta__step"><strong>Coordinate activation with LUCI</strong></span>
+      </div>
+      <p class="cta__contact">[NAME] · [TITLE] · [EMAIL] · [PHONE]</p>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="foot">
+      <span class="foot__wordmark">LUCI</span>
+      <span>What’s New · For LUCI customers and prospects</span>
+    </footer>
+
+  </section>
+</article>
+</body>
+</html>
