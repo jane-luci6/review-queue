@@ -10,6 +10,7 @@
 
 ## 2026-09-17
 
+- **New LUCI What’s New one-pager advances Flow C with a split proof ledger.** Announce a new version for January 19, use one more-control/better-support subhead, present the three retitled promises with 5–8-word feature teasers, and close with an information URL plus contact details—no duplicate promise index or fulfillment path. Jane.
 - **New LUCI release communications follow a fulfilled, not self-serve, path.** Keep one benefit-led release story, route customers through direct upgrade fulfillment and prospects through simple orientation, add PR and optional demonstration, and do not create a public Upgrade Guide/download archive; end-of-support belongs in intentional direct customer communication. Jane.
 
 ## 2026-09-16
