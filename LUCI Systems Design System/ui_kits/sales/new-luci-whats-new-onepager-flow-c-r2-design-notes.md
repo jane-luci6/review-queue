@@ -1,56 +1,73 @@
-# New LUCI What’s New one-pager — Flow C R2 · design-elevation notes
+# New LUCI What's New one-pager — Flow C R2 · design notes (e-mesh pass)
 
-**Built:** 17 September 2026 · GLM · design-elevation pass over `new-luci-whats-new-onepager-flow-c.html`.
-**Copy source:** `new-luci-whats-new-onepager-flow-c-r2-copy.md` (locked). **No copy was rewritten.** No line was flexed for letter fit.
+**Built:** 17 September 2026 · GLM · rebuild per `CURSOR-BRIEF-new-luci-whats-new-flow-c-r2-glm-emesh.md`.
+**Design lock:** `new-luci-whats-new-onepager-flow-c-r2-opus-visual-plan.md` (Opus visual plan — eye path, hierarchy, e-mesh, ledger craft).
+**Copy lock:** `new-luci-whats-new-onepager-flow-c-r2-copy.md`. **No copy was rewritten.** No teaser was dropped.
 
-## What this pass did
+## Jane rejection fixed
 
-Applied the LUCI sales-print mesh treatment and elevated craft so the sheet reads as finished LUCI sales print, matching the most recent sales pieces GLM has built (capabilities document, brochure, field-activation guide).
+Prior pass used **circuit textures** (`texture-circuit-header-mintgold.png`, `texture-circuit-navy-mint.png`, `band-circuit-baked.jpg`, `texture-3.png` smoke base). Jane rejected the circuit read. **All circuit textures removed** — grepped the file: zero matches for `circuit`, `band-circuit`, or `texture-3`. The masthead and footer now use **e-mesh only**.
 
-### 1. Mesh integrated into the masthead (the primary dark field)
+## E-mesh integration (per Opus plan §3)
 
-The masthead was a flat navy gradient with soft radial glows. It now carries the **mint-gold circuit mesh** used across the latest sales hero bands:
+- **Masthead:** `assets/textures/luci-e-mesh-header-transparent.svg` as a real `<img>` (`.mast__mesh`), `position:absolute; object-fit:cover; object-position:right center`, right-pinned at 62% width, opacity 0.5. A left-to-right scrim (`linear-gradient(90deg, navy-deep 0% → 0.92α at 46% → transparent at 78%)`) mutes the mesh behind the headline and subhead. The existing `.mast__glow` mint radial stays as warm-up at top-left. Mint 4px bottom rule retained.
+- **Footer:** same e-mesh file (`.foot__mesh`), right-pinned at 55% width, **opacity 0.22** — the masthead's echo, not a second event. Scrim from the left.
+- **White middle: no texture.** The ledger is the reading zone — cleanest canvas on the sheet.
+- **Print stability:** mesh ships as real `<img>` elements (not CSS `background-image`) with `print-color-adjust:exact` on `.mast`, `.foot`, and the mesh layers. Chrome print-to-pdf renders the `<img>` correctly. `@media print` falls back to solid `--navy-deep` if the image drops.
+- **Fallback asset** (not used this pass): `assets/textures/luci-bg-hero-mesh-lines-1920x1080.svg` — available if the header variant reads too dense at letter scale.
 
-- Smoke base (`assets/textures/texture-3.png`) + navy gradient, same layer order as the capabilities/brochure cover band.
-- `texture-circuit-header-mintgold.png` as a `::before`, masked to **fade in from the right** (`linear-gradient(90deg, transparent 38% → #000 100%)`) so the left-aligned announcement + headline read clean. Opacity 0.72, `background-size: 460px auto` — reads as a real background, not a faint center blob.
-- A soft mint radial glow upper-left for depth (atmosphere, not a spotlight).
-- Mint 4px bottom rule retained (structure).
+## Hierarchy — eye path applied (per Opus plan §1–§2)
 
-### 2. Mesh bookends the footer (second dark field)
+**Dominant (one tier):**
+- **Theme headline** — Space Grotesk 700, 32px, line-height 1.08, tracking −0.025em, off-white with **`--gold` `<em>`** on "programming." The single point of color contrast in the top field — eye lands mid-headline, not at the top-left corner. (Changed from `--mint` to `--gold` per Opus plan; gold on dark navy passes contrast.)
+- **Date** — Space Grotesk 700, 13px, tracked 0.18em uppercase, `--mint`, **right-aligned** with a short mint hairline (120×1px) above it. Second stop on the eye path — catches on the way out of the headline. Moved out of paragraph flow; no longer trailing the subhead.
 
-The thin navy footer now carries the **mint-only circuit** (`texture-circuit-navy-mint.png`) fading in from the right — the capabilities cover pattern where a second visible mint texture bookends the hero. Subtle (opacity 0.55, 60% width) so it doesn't compete with the wordmark/audience label.
+**Structural (second tier, equal):**
+- **Promise headers** (`.row__name`) — Space Grotesk 700, 16px, `--ink-strong`, tracking −0.01em. All three identical weight; row 03's extra feature does not make its header heavier.
+- **Numerals** (`.ledger__num`) — Space Grotesk 700, 27px, `--accent-light` `#2b9e80`. Stacked above the promise header with 6px gap (not inline). Sized to build the spine but kept **below** the promise header in visual weight by using the accent color rather than ink. (Changed from Syncopate 13px to Space Grotesk 27px per Opus plan.)
+- **Middle title** — Space Grotesk 700, 17px, ink, over 40×3px mint rule. Label, not headline. Reduced from 20px so it doesn't approach the masthead headline's scale.
 
-### 3. Print-stable mesh (Chrome print-to-pdf skips CSS backgrounds)
+**Recede (third tier):**
+- **Announcement** (`.mast__announce`) — 10px Space Grotesk, tracked 0.20em uppercase, `--mint`. Kicker above the headline.
+- **Subhead** — Inter 400, 12.5px, line-height 1.55, `rgba(235,245,248,0.80)`, max 58ch. Sits below the date; read on the rebound.
+- **Promise leads** (`.row__benefit`) — Inter 400, 11.5px, `--navy-muted`, max 30ch. Left column stays a column.
+- **Feature names** — Inter 600, 11.5px, `--ink-strong`. **Feature teasers** — Inter 400, 11px, `--navy-muted`. Weight step is the only separation; no color accent on either. (Changed feature names from Space Grotesk 700 to Inter 600 per Opus plan.)
+- **Close + footer** — Inter, 10.5–11.5px. `[UPGRADE GUIDE URL]` in `#2b9e80` (link slot), contact lines in muted ink.
 
-Chrome's `--print-to-pdf` does not reliably render `url()` CSS backgrounds, so the masthead also includes a print-only `<img class="band-circuit-print" src="assets/textures/band-circuit-baked.jpg">` (fade + navy baked into the JPG), hidden on screen. In `@media print` the masked `::before` and glow are disabled and the masthead/footer fall back to solid navy + the baked image — the same approach the field-activation guide uses for its bands.
+## Ledger craft (per Opus plan §4)
 
-### 4. Craft elevation (hierarchy, spacing, type roles)
+- **One shared left edge** for numerals, one for promise headers + leads, one for feature names; teasers right-aligned on the same line as their name. Four vertical lines the eye trusts across all three rows.
+- **Separators:** 1px `rgba(53,79,92,0.14)` hairline between ledger rows only (full-bleed). Inside the feature stack, lighter `0.08` alpha hairline between feature lines, none after the last line. No boxes, no cards, no vertical rule between the 30/70 columns — the 28px column gap does that.
+- **Row rhythm:** 22px above and below each hairline. Row 03 is taller by one feature line; all three headers retain equal visual weight.
+- **Feature lines:** name left, teaser right, baseline-aligned, 6px padding. No dot-leaders, no right-aligned names.
+- **Breathing room:** 28px between the promise lead column and the feature column.
 
-- **Theme headline** is now the dominant read: bumped from `clamp(26px, 3.1vw, 32px)` (which resolved to ~26px on the 816px sheet) to a fixed **30px**. Space Grotesk 700, mint `<em>` on *programming* retained.
-- **Announcement** sits as a mint Syncopate eyebrow above the headline; **date** stays a distinct mint line below a hairline at the masthead foot (visible at a glance, per the locked layout instruction).
-- **Middle title** “The 3 Promises of New LUCI” gets a proper head + 40×3 mint rule lockup (was a loose title + rule).
-- **Ledger rows** keep the 30/70 split proof ledger; refined rhythm — promise numerals (Syncopate, mint-dark) get a touch more breathing room above the header, feature rows stack on hairlines (no cards, no equal columns), row height follows content (promise 03 is slightly taller for its four features; all three headers keep equal visual weight).
-- **Close** stays a compact information close (mint rule + info line + contact placeholders) — **not** a download CTA, **not** a dark band.
-- Three-tier type discipline held: Syncopate for kicker + announcement + promise numerals (display moments); Space Grotesk bold for theme headline, promise headers, feature names, section title; **Inter for the subhead, promise leads, feature teasers, close copy** (all non-head text).
+## Spacing budget (per Opus plan §2 — masthead ~34%, ledger ~52%, close+footer ~14%)
 
-## What did not change
+- Masthead padding: 0.36in top / 0.30in bottom (tightened from 0.42/0.34 to fit the sheet after the position fix).
+- Middle padding: 0.32in top / 0.26in bottom.
+- Close padding: 0.22in top / 0.18in bottom.
+- All gaps on the 8px scale.
 
-- **Copy:** every locked string verbatim (HTML entities for apostrophes/dashes/middots render identically; no wording flexed).
-- **Structure:** masthead → “The 3 Promises of New LUCI” → split proof ledger (promise left / features+teasers right) → thin close → footer. No upgrade-path steps, no download CTA, no promise index band.
-- **Feature mapping / promise titles:** untouched.
-- **Placeholders:** `[UPGRADE GUIDE URL]`, `[NAME]`, `[TITLE]`, `[EMAIL]`, `[PHONE]` retained.
-- **Feature-list JSON:** not touched (none referenced by this file).
-- **No invented metrics, no client names.**
-- Self-contained (no shared `sales-document.css` dependency); brand fonts via `../../assets/fonts/luci-brand-fonts.css` (static Inter / Space Grotesk / Syncopate, no Google Fonts `<link>`).
+## Copy lock — no changes
+
+- Every locked string verbatim (HTML entities for apostrophes/dashes/middots render identically).
+- **No micro fit flex was needed** — no hyphens added, no line-break hints, no teaser shortened. Zero copy flags.
+- Placeholders retained: `[UPGRADE GUIDE URL]`, `[NAME]`, `[TITLE]`, `[EMAIL]`, `[PHONE]`.
+- No invented metrics, no client names.
+- No structure changes: no promise index, no upgrade path, no download CTA.
 
 ## Print verification (this pass)
 
-- Headless Chrome `--print-to-pdf`: **1 page**, US Letter, **353 KB** (up from 153 KB — the baked circuit JPG embedded for print; well under the 1.2 MB target).
-- Natural content-height probe: **1046px** vs 1056px target → **−10px** (underfill, no overflow, no clipping). Block heights: mast 342 · middle 546 · close 118 · foot 40.
+- **Headless Chrome `--print-to-pdf`:** 1 page, US Letter (612×792 pts = 8.5×11in), **90 KB** (down from 353 KB — no baked circuit JPG; e-mesh is vector SVG via `<img>`).
+- **`fit-check.py`:** natural content height **1009px** vs 1056px target → **−47px** (underfill, no overflow, no clipping). One `.doc-page` detected.
 - `@page { size: letter; margin: 0 }`; `.sheet` locked to `8.5in × 11in` with `overflow: hidden`.
+- `print-color-adjust: exact` on `.mast`, `.foot`, mesh `<img>` layers, numerals, rules.
+
+## Bug fixed during this pass
+
+Initial rebuild overflowed by +412px because `.mast>*` and `.foot>*` catch-all rules set `position:relative` on ALL children, overriding `position:absolute` on the mesh/scrim/glow layers — the e-mesh `<img>` was in flow and expanded the layout. Fixed by replacing the catch-alls with explicit content-element selectors (`.mast__row`, `.mast__announce`, etc.) so the mesh layers keep `position:absolute`.
 
 ## How to open / print
 
 Open in a browser (or Cursor's in-editor preview). Print → Save as PDF: US Letter, margins none, scale 100%, background graphics ON.
-
-If a future edit overflows, do **not** trim copy — the sheet is locked at 8.5×11 with `overflow: hidden`, so overflow is silently clipped. Inspect in the browser and tighten spacing (not copy) in the embedded `<style>`.
