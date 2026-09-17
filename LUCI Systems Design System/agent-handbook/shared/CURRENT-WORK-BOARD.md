@@ -26,6 +26,7 @@ Workstream bots update this table when Jane assigns them work. Cornelius does no
 | signal-04-layout | GLM applying copy-r3 + Opus Project Update ledger into HTML. | Ermintrude | GLM layout r3 | GLM | lock 6c6f5f7 + copy f73725f | Jane review on 127.0.0.1:8765 | GLM running in Terminal |
 | new-luci-imp-launch-storage | Stand up New LUCI Launch Campaign IMP section (Strategy + Working) below Coming Soon. | Weatherby | deployed | GLM | `#new-luci-launch` + `/strategy/*` + `/working/*` live on http://10.10.1.17:8081 (commit `fbc2568`) | Jane glance | Weatherby reports |
 | new-luci-imp-email-copy | Restructure `#new-luci-launch`: add third accordion Email copy (4 audiences → cycles → per-email editable pages) below Working; remove single Working shell `email-packets`. | Weatherby | deployed | GLM | Email copy accordion live on http://10.10.1.17:8081 — 39 editable email pages under `#new-luci-launch/email/<audience>/<cycle-slug>/<email-id>` (commit `6380b00`) | Jane glance | Weatherby reports |
+| imp-whats-new-seed | Seed IMP Working `whats-new` one-pager with the locked copy + add Open layout preview control. | Weatherby | deployed | GLM | Working `whats-new` seeded + `Open layout preview` → http://10.10.1.17:8081/sales/new-luci-whats-new-onepager.html (commit `60693fd`); live on http://10.10.1.17:8081#new-luci-launch/working/whats-new | Jane hard-refresh | Weatherby reports |
 
 ---
 
