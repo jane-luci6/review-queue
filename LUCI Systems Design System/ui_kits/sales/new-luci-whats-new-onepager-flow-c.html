@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>LUCI — What’s New · Flow C · Promise, proof, path</title>
+<title>LUCI — What’s New · Flow C · Three promises, split proof ledger</title>
 <link rel="stylesheet" href="../../assets/fonts/luci-brand-fonts.css">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -48,13 +48,13 @@ body { font-family: var(--font-body); background: #c8cdd0; color: var(--ink); fo
   body { background: #fff; }
   .hub-link { display: none; }
   .sheet { margin: 0; box-shadow: none; page-break-after: always; break-after: page; }
-  .mast, .path, .mast::after, .path::before, .index__item, .ledger__num, .proof-chip { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .mast, .foot, .mast::after, .ledger__num, .close__rule { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
 
-/* ── MASTHEAD ── */
+/* ── MASTHEAD · top field: kicker + announcement + headline + subhead + date ── */
 .mast {
   position: relative;
-  padding: 0.42in var(--page-pad) 0.34in;
+  padding: 0.40in var(--page-pad) 0.32in;
   background:
     radial-gradient(130% 120% at 8% 0%, rgba(var(--mint-rgb),0.10), transparent 46%),
     radial-gradient(120% 130% at 100% 100%, rgba(var(--gold-rgb),0.06), transparent 50%),
@@ -67,146 +67,122 @@ body { font-family: var(--font-body); background: #c8cdd0; color: var(--ink); fo
 .mast__brand { display:flex; align-items:center; gap:12px; }
 .mast__logo { height:26px; width:auto; }
 .mast__kicker { font-family: var(--display); font-weight:700; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; color: var(--mint); }
-.mast__date { font-family: var(--font); font-weight:600; font-size:11px; letter-spacing:0.04em; color: var(--mint); text-align:right; }
-.mast__date strong { display:block; font-size:9px; letter-spacing:0.22em; text-transform:uppercase; color: rgba(235,245,248,0.5); font-weight:600; margin-bottom:4px; }
-.mast__theme { margin-top:12px; font-family: var(--font); font-weight:700; font-size: clamp(24px, 3vw, 30px); line-height:1.06; letter-spacing:-0.03em; color: var(--off-white); max-width:20ch; }
+.mast__announce { margin-top:16px; font-family: var(--display); font-weight:700; font-size:11px; letter-spacing:0.20em; text-transform:uppercase; color: var(--mint); }
+.mast__theme { margin-top:10px; font-family: var(--font); font-weight:700; font-size: clamp(26px, 3.1vw, 32px); line-height:1.06; letter-spacing:-0.03em; color: var(--off-white); max-width:20ch; }
 .mast__theme em { font-style:normal; color: var(--mint); }
-.mast__partner { font-family: var(--font-body); font-size: 13px; color: rgba(235,245,248,0.78); margin-top:10px; max-width:60ch; }
-.mast__partner strong { font-family: var(--font); font-weight:700; color: var(--off-white); }
+.mast__sub { margin-top:10px; font-family: var(--font-body); font-size: 14px; line-height:1.5; color: rgba(235,245,248,0.82); max-width:58ch; }
+.mast__date { margin-top:14px; padding-top:10px; border-top:1px solid rgba(var(--mint-rgb),0.18); font-family: var(--font); font-weight:700; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color: var(--mint); }
 
-/* ── PROMISE INDEX · three pillar names in a horizontal row ── */
-.index { padding: 0.24in var(--page-pad) 0.2in; }
-.index__label { font-family: var(--font); font-weight:600; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; color: var(--mint-dark); margin-bottom:10px; }
-.index__row { display:grid; grid-template-columns: repeat(3, 1fr); gap:0; border-top:1px solid var(--rule-light); border-bottom:1px solid var(--rule-light); }
-.index__item { padding: 12px 14px; display:flex; flex-direction:column; gap:4px; }
-.index__item + .index__item { border-left:1px solid var(--rule-light); }
-.index__num { font-family: var(--display); font-weight:700; font-size:10px; letter-spacing:0.18em; color: var(--mint-dark); }
-.index__name { font-family: var(--font); font-weight:700; font-size: 16px; letter-spacing:-0.015em; color: var(--ink-strong); }
+/* ── MIDDLE · section title + split proof ledger ── */
+.middle { flex: 1 1 auto; display:flex; flex-direction:column; padding: 0.30in var(--page-pad) 0.22in; }
+.middle__title { font-family: var(--font); font-weight:700; font-size: 19px; letter-spacing:-0.02em; line-height:1.15; color: var(--ink-strong); margin-bottom:6px; }
+.middle__rule { width:40px; height:3px; background: var(--mint-dark); margin-bottom:14px; }
 
-/* ── PROOF LEDGER · ordered rows beneath the index ── */
-.ledger { padding: 0 var(--page-pad); flex: 1 1 auto; display:flex; flex-direction:column; }
-.ledger__label { font-family: var(--font); font-weight:600; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; color: var(--navy-muted); margin: 4px 0 8px; }
-
-.row { display:grid; grid-template-columns: 0.42in 1fr; column-gap: 14px; padding: 12px 0; border-top: 1px solid var(--rule-light); }
+.ledger { display:flex; flex-direction:column; }
+.row { display:grid; grid-template-columns: 30% 1fr; column-gap: 22px; padding: 14px 0; border-top: 1px solid var(--rule-light); }
 .row:last-of-type { border-bottom: 1px solid var(--rule-light); }
-.ledger__num { font-family: var(--display); font-weight:700; font-size:18px; letter-spacing:-0.01em; color: var(--mint-dark); line-height:1; padding-top:2px; }
-.row__body { min-width:0; }
-.row__name { font-family: var(--font); font-weight:700; font-size: 16px; letter-spacing:-0.02em; color: var(--ink-strong); margin-bottom:4px; }
-.row__benefit { font-family: var(--font); font-weight:600; font-size: 13.5px; line-height:1.4; color: var(--navy); max-width:56ch; margin-bottom:8px; }
-.proof { display:flex; flex-wrap:wrap; gap:0; align-items:center; }
-.proof__label { font-family: var(--font); font-weight:600; font-size:9px; letter-spacing:0.22em; text-transform:uppercase; color: var(--navy-muted); margin-right:10px; }
-.proof-chip { font-family: var(--font); font-weight:600; font-size:11.5px; color: var(--ink-strong); padding:2px 0; }
-.proof-chip + .proof-chip::before { content:'·'; color: var(--mint-dark); font-weight:700; margin:0 8px; }
 
-/* ── YOUR PATH · distinct close section ── */
-.path { position: relative; background: var(--navy-deep); color: var(--off-white); padding: 0.3in var(--page-pad) 0.34in; overflow:hidden; }
-.path::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background: var(--mint); }
-.path__label { font-family: var(--display); font-weight:700; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; color: var(--mint); margin-bottom:10px; }
-.path__head { font-family: var(--font); font-weight:700; font-size: 19px; letter-spacing:-0.02em; line-height:1.2; color:#FFFFFF; margin-bottom:14px; max-width:32ch; }
-.path__head em { font-style:normal; color: var(--mint); }
-.path__steps { display:flex; align-items:center; gap:0; flex-wrap:wrap; padding-top:14px; border-top:1px solid rgba(var(--mint-rgb),0.18); }
-.path__step { font-family: var(--font); font-weight:600; font-size:12px; color: rgba(235,245,248,0.9); }
-.path__step strong { color: var(--mint); font-weight:700; }
-.path__step + .path__step::before { content:'→'; color: var(--mint); font-weight:400; margin:0 12px; }
-.path__contact { font-family: var(--font-body); font-size:11px; color: rgba(235,245,248,0.55); margin-top:10px; }
+.row__lead { min-width:0; }
+.ledger__num { font-family: var(--display); font-weight:700; font-size:13px; letter-spacing:0.16em; color: var(--mint-dark); line-height:1; margin-bottom:8px; }
+.row__name { font-family: var(--font); font-weight:700; font-size: 17px; letter-spacing:-0.02em; line-height:1.18; color: var(--ink-strong); margin-bottom:6px; }
+.row__benefit { font-family: var(--font-body); font-size: 12.5px; line-height:1.45; color: var(--navy); max-width:30ch; }
+
+.features { min-width:0; display:flex; flex-direction:column; }
+.feature { display:grid; grid-template-columns: 0.46fr 1fr; column-gap: 14px; padding: 6px 0; border-top: 1px solid var(--rule-light); }
+.feature:first-child { border-top: none; padding-top: 2px; }
+.features__name { font-family: var(--font); font-weight:700; font-size: 12.5px; letter-spacing:-0.005em; color: var(--ink-strong); line-height:1.3; }
+.features__teaser { font-family: var(--font-body); font-weight:400; font-size: 12.5px; line-height:1.4; color: var(--ink); }
+
+/* ── CLOSE · compact information close (not a download CTA) ── */
+.close { padding: 0.22in var(--page-pad) 0.18in; }
+.close__rule { width:40px; height:3px; background: var(--mint-dark); margin-bottom:10px; }
+.close__info { font-family: var(--font-body); font-size: 13px; line-height:1.5; color: var(--ink); }
+.close__info strong { font-family: var(--font); font-weight:700; color: var(--ink-strong); }
+.close__url { font-family: var(--font); font-weight:600; color: var(--mint-dark); }
+.close__contact { margin-top:8px; font-family: var(--font-body); font-size: 11.5px; line-height:1.5; color: var(--navy-muted); }
+.close__contact strong { font-family: var(--font); font-weight:700; color: var(--ink-strong); }
 
 /* ── FOOTER ── */
-.foot { background: var(--navy-deep); color: rgba(235,245,248,0.45); padding: 12px var(--page-pad) 16px; display:flex; justify-content:space-between; align-items:center; gap:12px; font-family: var(--font); font-size:9.5px; letter-spacing:0.14em; text-transform:uppercase; border-top:1px solid rgba(235,245,248,0.06); }
+.foot { background: var(--navy-deep); color: rgba(235,245,248,0.45); padding: 10px var(--page-pad) 12px; display:flex; justify-content:space-between; align-items:center; gap:12px; font-family: var(--font); font-size:9.5px; letter-spacing:0.14em; text-transform:uppercase; border-top:1px solid rgba(235,245,248,0.06); }
 .foot__wordmark { font-family: var(--display); font-weight:700; letter-spacing:0.18em; color: rgba(var(--mint-rgb),0.7); }
 </style>
 </head>
 <body>
-<p class="hub-link"><a href="../../index.html">&larr; Design Hub</a> &middot; LUCI What’s New · Flow C (Promise, proof, path) &middot; Print or Save as PDF (US Letter)</p>
+<p class="hub-link"><a href="../../index.html">&larr; Design Hub</a> &middot; LUCI What’s New · Flow C (Three promises, split proof ledger) &middot; Print or Save as PDF (US Letter)</p>
 
 <article class="doc">
   <section class="sheet">
 
-    <!-- ═══ MASTHEAD · theme + partnership sentence ═══ -->
+    <!-- ═══ MASTHEAD · top field ═══ -->
     <header class="mast">
       <div class="mast__row">
         <div class="mast__brand">
           <img class="mast__logo" src="assets/logos/luci-wordmark-white-320.png?v=7" alt="LUCI Systems" width="140" height="26">
           <span class="mast__kicker">What’s New</span>
         </div>
-        <div class="mast__date">
-          <strong>Release date</strong>
-          [RELEASE DATE]
-        </div>
       </div>
+      <p class="mast__announce">A new version of LUCI is coming</p>
       <h1 class="mast__theme">Putting the power of <em>programming</em> in your hands</h1>
-      <p class="mast__partner"><strong>More control in your hands — with the LUCI team still beside the operation.</strong> This release hands the team more direct authority over the room, the view, and the record; it does not hand off the support.</p>
+      <p class="mast__sub">The new version of LUCI puts more control in your hands—with better support behind it.</p>
+      <p class="mast__date">Release date · January 19</p>
     </header>
 
-    <!-- ═══ PROMISE INDEX · three pillar names, horizontal ═══ -->
-    <div class="index">
-      <p class="index__label">The promise — three controls</p>
-      <div class="index__row">
-        <div class="index__item"><span class="index__num">01</span><span class="index__name">Control the room</span></div>
-        <div class="index__item"><span class="index__num">02</span><span class="index__name">Control your view</span></div>
-        <div class="index__item"><span class="index__num">03</span><span class="index__name">Control your security</span></div>
+    <!-- ═══ MIDDLE · The 3 Promises of New LUCI · split proof ledger ═══ -->
+    <div class="middle">
+      <h2 class="middle__title">The 3 Promises of New LUCI</h2>
+      <div class="middle__rule" aria-hidden="true"></div>
+
+      <div class="ledger">
+
+        <article class="row">
+          <div class="row__lead">
+            <span class="ledger__num">01</span>
+            <h3 class="row__name">Greater control of the room</h3>
+            <p class="row__benefit">Operate from the room with the controls you need.</p>
+          </div>
+          <div class="features">
+            <div class="feature"><span class="features__name">Venue panels</span><span class="features__teaser">Put room controls where work happens.</span></div>
+            <div class="feature"><span class="features__name">Staging</span><span class="features__teaser">Build the next look before applying it.</span></div>
+            <div class="feature"><span class="features__name">Audio group control</span><span class="features__teaser">Adjust linked zones without losing their balance.</span></div>
+          </div>
+        </article>
+
+        <article class="row">
+          <div class="row__lead">
+            <span class="ledger__num">02</span>
+            <h3 class="row__name">More flexible control of your view</h3>
+            <p class="row__benefit">Shape the interface around your property and operation.</p>
+          </div>
+          <div class="features">
+            <div class="feature"><span class="features__name">Customizable interface</span><span class="features__teaser">Bring your property’s identity into LUCI.</span></div>
+            <div class="feature"><span class="features__name">Live map flexibility</span><span class="features__teaser">Match live floor plans to physical spaces.</span></div>
+            <div class="feature"><span class="features__name">Video/LED wall layout sync</span><span class="features__teaser">Pull processor layouts into LUCI without rebuilding.</span></div>
+          </div>
+        </article>
+
+        <article class="row">
+          <div class="row__lead">
+            <span class="ledger__num">03</span>
+            <h3 class="row__name">Deeper control over security</h3>
+            <p class="row__benefit">See activity, govern access, and bring support closer.</p>
+          </div>
+          <div class="features">
+            <div class="feature"><span class="features__name">Audit trails</span><span class="features__teaser">Trace each action to person and time.</span></div>
+            <div class="feature"><span class="features__name">Live monitoring</span><span class="features__teaser">See device, display, and audio status live.</span></div>
+            <div class="feature"><span class="features__name">Sign-in/session</span><span class="features__teaser">Control who signs in and stays active.</span></div>
+            <div class="feature"><span class="features__name">In-product support</span><span class="features__teaser">Raise support requests with context already attached.</span></div>
+          </div>
+        </article>
+
       </div>
     </div>
 
-    <!-- ═══ PROOF LEDGER · ordered rows ═══ -->
-    <div class="ledger">
-      <p class="ledger__label">The proof — what each control delivers</p>
-
-      <article class="row">
-        <span class="ledger__num">01</span>
-        <div class="row__body">
-          <h2 class="row__name">Control the room</h2>
-          <p class="row__benefit">Put the right controls in the space, so the person who runs the venue can act without waiting on a programmer.</p>
-          <div class="proof">
-            <span class="proof__label">Proof</span>
-            <span class="proof-chip">Venue panels</span>
-            <span class="proof-chip">Staging</span>
-            <span class="proof-chip">Audio group control</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="row">
-        <span class="ledger__num">02</span>
-        <div class="row__body">
-          <h2 class="row__name">Control your view</h2>
-          <p class="row__benefit">Shape what the team sees — your property’s identity and physical layout, carried into the interface operators use every day.</p>
-          <div class="proof">
-            <span class="proof__label">Proof</span>
-            <span class="proof-chip">Customizable interface</span>
-            <span class="proof-chip">Live map flexibility</span>
-            <span class="proof-chip">Video/LED wall layout sync</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="row">
-        <span class="ledger__num">03</span>
-        <div class="row__body">
-          <h2 class="row__name">Control your security</h2>
-          <p class="row__benefit">See what’s happening now, hold the record of what did, and govern who is in the system — with support built into the work itself.</p>
-          <div class="proof">
-            <span class="proof__label">Proof</span>
-            <span class="proof-chip">Audit trails</span>
-            <span class="proof-chip">Live monitoring</span>
-            <span class="proof-chip">Sign-in &amp; session</span>
-            <span class="proof-chip">In-product support</span>
-          </div>
-        </div>
-      </article>
-
+    <!-- ═══ CLOSE · compact information close ═══ -->
+    <div class="close">
+      <div class="close__rule" aria-hidden="true"></div>
+      <p class="close__info"><strong>For more information, visit</strong> <span class="close__url">[UPGRADE GUIDE URL]</span>.</p>
+      <p class="close__contact"><strong>[NAME]</strong> · [TITLE]<br>[EMAIL] · [PHONE]</p>
     </div>
-
-    <!-- ═══ YOUR PATH TO NEW LUCI · distinct close ═══ -->
-    <section class="path">
-      <p class="path__label">Your path to New LUCI</p>
-      <h2 class="path__head">Start with <em>[NAME]</em>. We’ll confirm the plan and coordinate what comes next.</h2>
-      <div class="path__steps">
-        <span class="path__step"><strong>Thin account-specific plan</strong></span>
-        <span class="path__step"><strong>Shipped laptop</strong></span>
-        <span class="path__step"><strong>Coordinated activation &amp; support</strong></span>
-      </div>
-      <p class="path__contact">[NAME] · [TITLE] · [EMAIL] · [PHONE]</p>
-    </section>
 
     <!-- ═══ FOOTER ═══ -->
     <footer class="foot">
