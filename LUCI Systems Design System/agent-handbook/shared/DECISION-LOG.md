@@ -8,6 +8,10 @@
 
 ---
 
+## 2026-09-17
+
+- **New LUCI release communications follow a fulfilled, not self-serve, path.** Keep one benefit-led release story, route customers through direct upgrade fulfillment and prospects through simple orientation, add PR and optional demonstration, and do not create a public Upgrade Guide/download archive; end-of-support belongs in intentional direct customer communication. Jane.
+
 ## 2026-09-16
 
 - **New LUCI What’s New one-pager uses Option 1 — Three promises.** The release page opens with “Putting the power of programming in your hands” and organizes proof under Operate, Make it yours, and See and secure; later layout should feel like an announcement, not an equal-column datasheet. Jane.
