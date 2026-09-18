@@ -30,7 +30,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 @media print{
   body{background:#fff}.hub-link{display:none}
   .sheet{margin:0;box-shadow:none;page-break-after:always}
-  .mast,.mast__mesh,.mast__scrim,.field,.field__shot,.field__scrim,.copy,.foot,.close,.p__num,.ft__mark{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .mast,.mast__mesh,.mast__scrim,.field,.field__shot,.field__scrim,.copy,.copy::before,.foot,.close,.p__num,.ft__mark{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
 
 /* ── HEADER (Variant B) ──────────────────────────────────────────────── */
@@ -70,14 +70,17 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
       rgba(245,248,250,0.18) 42%,
       rgba(245,248,250,0) 68%)}
 
-.copy{position:relative;z-index:2;
-  padding:32px var(--pad) 20px;
-  max-width:70%;
+.copy{position:relative;z-index:2;isolation:isolate;
+  padding:32px var(--pad) 64px;
+  max-width:70%}
+.copy::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
   background:linear-gradient(to right,
     rgba(245,248,250,0.96) 0%,
     rgba(245,248,250,0.92) 70%,
     rgba(245,248,250,0.45) 88%,
-    rgba(245,248,250,0) 100%)}
+    rgba(245,248,250,0) 100%);
+  -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 84%,rgba(0,0,0,0.4) 93%,transparent 100%);
+  mask-image:linear-gradient(to bottom,#000 0%,#000 84%,rgba(0,0,0,0.4) 93%,transparent 100%)}
 .copy__title{font-family:var(--font);font-weight:700;font-size:23px;
   line-height:1.15;letter-spacing:-0.025em;color:var(--ink-strong)}
 
