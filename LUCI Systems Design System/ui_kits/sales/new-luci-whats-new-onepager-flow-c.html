@@ -98,14 +98,21 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
    map reads through the plate, not because of a paper mat. */
 .p{position:relative;color:var(--off-white);padding:18px 20px 20px;
   border-radius:14px;
+  box-shadow:0 8px 22px rgba(10,22,28,0.10)}
+.p::before{content:"";position:absolute;inset:0;z-index:0;border-radius:14px;
   background:linear-gradient(152deg,
     rgba(10,22,28,0.74) 0%, rgba(6,18,26,0.68) 60%, rgba(10,22,28,0.74) 100%);
-  box-shadow:0 12px 28px rgba(10,22,28,0.18)}
+  -webkit-mask-image:radial-gradient(ellipse 100% 100% at center,#000 84%,transparent 100%);
+  mask-image:radial-gradient(ellipse 100% 100% at center,#000 84%,transparent 100%)}
 .p__mesh{position:absolute;inset:0;z-index:0;pointer-events:none;
-  width:100%;height:100%;object-fit:cover;object-position:60% 30%;opacity:0.22}
+  width:100%;height:100%;object-fit:cover;object-position:60% 30%;opacity:0.22;
+  -webkit-mask-image:radial-gradient(ellipse 100% 100% at center,#000 84%,transparent 100%);
+  mask-image:radial-gradient(ellipse 100% 100% at center,#000 84%,transparent 100%)}
 .p__scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
   background:linear-gradient(100deg,
-    rgba(8,18,24,0.55) 0%, rgba(8,18,24,0.30) 50%, rgba(8,18,24,0.10) 100%)}
+    rgba(8,18,24,0.55) 0%, rgba(8,18,24,0.30) 50%, rgba(8,18,24,0.10) 100%);
+  -webkit-mask-image:radial-gradient(ellipse 100% 100% at center,#000 84%,transparent 100%);
+  mask-image:radial-gradient(ellipse 100% 100% at center,#000 84%,transparent 100%)}
 .p__inner{position:relative;z-index:2}
 .p:nth-child(3){grid-column:1 / -1;justify-self:start;width:62%;padding:20px 24px 22px}
 
