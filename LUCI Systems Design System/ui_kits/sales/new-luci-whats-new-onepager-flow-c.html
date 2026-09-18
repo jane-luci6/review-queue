@@ -30,7 +30,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 @media print{
   body{background:#fff}.hub-link{display:none}
   .sheet{margin:0;box-shadow:none;page-break-after:always}
-  .mast,.mast__mesh,.mast__scrim,.field,.field__shot,.field__scrim,.copy,.copy::before,.foot,.close,.p__num,.ft__mark{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .mast,.mast__mesh,.mast__scrim,.field,.field__shot,.field__scrim,.copy,.copy::before,.foot,.close,.p__num{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
 
 /* ── HEADER (Variant B) ──────────────────────────────────────────────── */
@@ -72,35 +72,34 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 
 .copy{position:relative;z-index:2;isolation:isolate;
   padding:32px var(--pad) 80px;
-  max-width:70%}
+  max-width:82%}
 .copy::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
   background:linear-gradient(to right,
     rgba(245,248,250,0.96) 0%,
-    rgba(245,248,250,0.92) 70%,
-    rgba(245,248,250,0.45) 88%,
+    rgba(245,248,250,0.92) 62%,
+    rgba(245,248,250,0.45) 82%,
     rgba(245,248,250,0) 100%);
   -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 90%,rgba(0,0,0,0.45) 96%,transparent 100%);
   mask-image:linear-gradient(to bottom,#000 0%,#000 90%,rgba(0,0,0,0.45) 96%,transparent 100%)}
 .copy__title{font-family:var(--font);font-weight:700;font-size:23px;
   line-height:1.15;letter-spacing:-0.025em;color:var(--ink-strong)}
 
-.promises{margin-top:26px;display:flex;flex-direction:column;gap:22px}
-.p{padding-top:18px;border-top:1px solid rgba(53,79,92,0.12)}
+.promises{margin-top:28px;display:flex;flex-direction:column;gap:26px}
+.p{padding-top:20px;border-top:1px solid rgba(53,79,92,0.12)}
 .p:first-of-type{padding-top:0;border-top:none}
 
-.p__head{display:flex;align-items:baseline;gap:12px}
+.p__head{display:flex;align-items:baseline;gap:14px}
 .p__num{flex:none;font-family:var(--font);font-weight:700;font-size:22px;
   line-height:1;letter-spacing:-0.03em;color:var(--accent-light)}
-.p__name{font-family:var(--font);font-weight:700;font-size:16px;
+.p__name{font-family:var(--font);font-weight:700;font-size:17px;
   line-height:1.2;letter-spacing:-0.02em;color:var(--ink-strong)}
 
-.features{margin-top:14px;display:flex;flex-direction:column;gap:9px}
-.ft{display:grid;grid-template-columns:12px 176px 1fr;column-gap:12px;align-items:start}
-.ft__mark{width:8px;height:8px;margin-top:3px;background:var(--gold-deep);align-self:start}
-.ft__name{font-family:var(--font);font-weight:600;font-size:12.5px;
-  line-height:1.35;letter-spacing:-0.01em;color:var(--ink-strong)}
-.ft__desc{font-family:var(--font-body);font-size:11.5px;
-  line-height:1.4;color:var(--navy-muted);white-space:nowrap}
+.features{margin-top:12px;display:flex;flex-direction:column;gap:7px}
+.ft{display:flex;align-items:baseline;gap:0.75em;margin:0;line-height:1.4}
+.ft__name{flex:none;font-family:var(--font);font-weight:700;font-size:13px;
+  letter-spacing:-0.015em;color:var(--accent-light)}
+.ft__desc{font-family:var(--font-body);font-weight:400;font-size:13px;
+  color:var(--ink)}
 
 /* ── FOOTER (includes "for more information") ────────────────────────── */
 .close{background:var(--tint);padding:18px var(--pad) 20px;
@@ -152,18 +151,9 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
               <h3 class="p__name">Greater control of the room</h3>
             </div>
             <div class="features">
-              <div class="ft"><span class="ft__mark" aria-hidden="true"></span>
-                <p class="ft__name">Venue panels</p>
-                <p class="ft__desc">Put room controls where the work happens.</p>
-              </div>
-              <div class="ft"><span class="ft__mark" aria-hidden="true"></span>
-                <p class="ft__name">Staging</p>
-                <p class="ft__desc">Build the next look before applying it.</p>
-              </div>
-              <div class="ft"><span class="ft__mark" aria-hidden="true"></span>
-                <p class="ft__name">Audio group control</p>
-                <p class="ft__desc">Adjust linked zones without losing their balance.</p>
-              </div>
+              <p class="ft"><span class="ft__name">Venue panels</span><span class="ft__desc">Put room controls where the work happens.</span></p>
+              <p class="ft"><span class="ft__name">Staging</span><span class="ft__desc">Build the next look before applying it.</span></p>
+              <p class="ft"><span class="ft__name">Audio group control</span><span class="ft__desc">Adjust linked zones without losing their balance.</span></p>
             </div>
           </section>
 
@@ -173,18 +163,9 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
               <h3 class="p__name">More flexible control of your view</h3>
             </div>
             <div class="features">
-              <div class="ft"><span class="ft__mark" aria-hidden="true"></span>
-                <p class="ft__name">Customizable interface</p>
-                <p class="ft__desc">Bring your property&rsquo;s identity into LUCI.</p>
-              </div>
-              <div class="ft"><span class="ft__mark" aria-hidden="true"></span>
-                <p class="ft__name">Live map flexibility</p>
-                <p class="ft__desc">Match live floor plans to physical spaces.</p>
-              </div>
-              <div class="ft"><span class="ft__mark" aria-hidden="true"></span>
-                <p class="ft__name">Video/LED wall layout sync</p>
-                <p class="ft__desc">Pull processor layouts in without rebuilding.</p>
-              </div>
+              <p class="ft"><span class="ft__name">Customizable interface</span><span class="ft__desc">Bring your property&rsquo;s identity into LUCI.</span></p>
+              <p class="ft"><span class="ft__name">Live map flexibility</span><span class="ft__desc">Match live floor plans to physical spaces.</span></p>
+              <p class="ft"><span class="ft__name">Video/LED wall layout sync</span><span class="ft__desc">Pull processor layouts in without rebuilding.</span></p>
             </div>
           </section>
 
@@ -194,22 +175,10 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
               <h3 class="p__name">Deeper control over security</h3>
             </div>
             <div class="features">
-              <div class="ft"><span class="ft__mark" aria-hidden="true"></span>
-                <p class="ft__name">Audit trails</p>
-                <p class="ft__desc">Trace each action to a person and a time.</p>
-              </div>
-              <div class="ft"><span class="ft__mark" aria-hidden="true"></span>
-                <p class="ft__name">Live monitoring</p>
-                <p class="ft__desc">See device, display, and audio status live.</p>
-              </div>
-              <div class="ft"><span class="ft__mark" aria-hidden="true"></span>
-                <p class="ft__name">Sign-in and session control</p>
-                <p class="ft__desc">Control who signs in and stays active.</p>
-              </div>
-              <div class="ft"><span class="ft__mark" aria-hidden="true"></span>
-                <p class="ft__name">In-product support</p>
-                <p class="ft__desc">Raise requests with context already attached.</p>
-              </div>
+              <p class="ft"><span class="ft__name">Audit trails</span><span class="ft__desc">Trace each action to a person and a time.</span></p>
+              <p class="ft"><span class="ft__name">Live monitoring</span><span class="ft__desc">See device, display, and audio status live.</span></p>
+              <p class="ft"><span class="ft__name">Sign-in and session control</span><span class="ft__desc">Control who signs in and stays active.</span></p>
+              <p class="ft"><span class="ft__name">In-product support</span><span class="ft__desc">Raise requests with context already attached.</span></p>
             </div>
           </section>
         </div>
