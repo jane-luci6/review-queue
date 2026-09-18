@@ -33,7 +33,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
   .sheet{margin:0;box-shadow:none;page-break-after:always;break-after:page;overflow:hidden}
   .mast,.mast__mesh,.mast__scrim,.field,.field__shot,.copy,.p,.p__inner,.foot,.close,.p__num,
   .mast__inner,.mast__theme,.mast__announce,.mast__base,.mast__date-value,.copy__title,
-  .p__name,.p__lead,.ft dt,.ft dd,.foot__wordmark{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .p__name,.p__lead,.p__ghost,.p__rule,.ft dt,.ft dd,.foot__wordmark{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   /* Blinking fix: Chrome turns multi-stop CSS gradients into PDF Pattern/Shading
      objects that repaint lazily (blink on open). Flatten to flat fills in print. */
   .mast__scrim{background:rgba(8,18,24,0.72) !important;background-image:none !important}
@@ -114,9 +114,11 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 .p__name{font-family:var(--font);font-weight:700;font-size:18px;
   line-height:1.15;letter-spacing:-0.015em;color:var(--ink-strong)}
 .p:nth-child(3) .p__name{font-size:19px}
-.p__lead{margin-top:6px;font-family:var(--font-body);font-weight:400;font-size:11.5px;
-  line-height:1.45;color:var(--navy-muted);max-width:34ch}
-.p:nth-child(3) .p__lead{font-size:12px}
+.p__rule{display:block;width:40px;height:3px;background:var(--accent-light);
+  margin:11px 0 0}
+.p__lead{margin-top:11px;font-family:var(--font-body);font-weight:400;font-size:12.5px;
+  line-height:1.5;color:var(--navy-muted);max-width:36ch}
+.p:nth-child(3) .p__lead{font-size:13px}
 
 .features{margin:16px 0 0;display:flex;flex-direction:column;gap:0}
 .p:nth-child(3) .features{display:grid;grid-template-columns:1fr 1fr;gap:0 24px}
@@ -181,6 +183,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
                 <span class="p__num">01</span>
                 <h3 class="p__name">Greater control of the room</h3>
               </div>
+              <span class="p__rule" aria-hidden="true"></span>
               <p class="p__lead">Operate from the room with the controls you need.</p>
               <dl class="features">
                 <div class="ft"><dt>Venue panels</dt><dd>Put room controls where the work happens.</dd></div>
@@ -197,6 +200,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
                 <span class="p__num">02</span>
                 <h3 class="p__name">Flexible control of your view</h3>
               </div>
+              <span class="p__rule" aria-hidden="true"></span>
               <p class="p__lead">Shape the interface around your property and operation.</p>
               <dl class="features">
                 <div class="ft"><dt>Customizable interface</dt><dd>Bring your property&rsquo;s identity into LUCI.</dd></div>
@@ -213,6 +217,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
                 <span class="p__num">03</span>
                 <h3 class="p__name">Deeper control over security</h3>
               </div>
+              <span class="p__rule" aria-hidden="true"></span>
               <p class="p__lead">See activity, govern access, and bring support closer.</p>
               <dl class="features">
                 <div class="ft"><dt>Audit trails</dt><dd>Trace each action to a person and a time.</dd></div>
