@@ -16,6 +16,7 @@
   --ink:#354F5C;--ink-strong:#1C2B33;
   --font:'Space Grotesk','Trebuchet MS',sans-serif;
   --font-body:'Inter','Space Grotesk','Trebuchet MS',sans-serif;
+  --display:'Syncopate','Arial Black',sans-serif;
   --pad:56px;
 }
 html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
@@ -48,9 +49,9 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 .mast__logo{display:block;height:28px;width:121px;object-fit:contain}
 .mast__announce{margin-top:28px;font-family:var(--font);font-weight:700;font-size:10px;
   letter-spacing:0.24em;text-transform:uppercase;color:var(--mint)}
-.mast__theme{margin-top:14px;font-family:var(--font);font-weight:700;font-size:38px;
-  line-height:1.06;letter-spacing:-0.035em;color:var(--off-white);max-width:14ch}
-.mast__theme em{font-style:normal;color:var(--gold)}
+.mast__theme{margin-top:14px;font-family:var(--display);font-weight:700;font-size:30px;
+  line-height:1.1;letter-spacing:0.05em;text-transform:uppercase;color:var(--off-white);max-width:100%}
+.mast__theme em{font-style:normal;color:var(--mint)}
 .mast__base{margin-top:auto;display:flex;justify-content:flex-end;align-items:baseline;gap:14px}
 .mast__date-label{font-family:var(--font);font-weight:700;font-size:9.5px;
   letter-spacing:0.24em;text-transform:uppercase;color:rgba(235,245,248,0.5)}
@@ -162,7 +163,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
       <div class="mast__inner">
         <img class="mast__logo" src="assets/logos/luci-wordmark-white-320.png?v=7" alt="LUCI Systems" width="121" height="28">
         <p class="mast__announce">A new version of LUCI is coming</p>
-        <h1 class="mast__theme">Putting the power of <em>programming</em> in your hands</h1>
+        <h1 class="mast__theme">Putting the <em>power of programming</em><br>in your hands</h1>
         <p class="mast__base">
           <span class="mast__date-label">Release date</span>
           <span class="mast__date-value">January 19</span>
