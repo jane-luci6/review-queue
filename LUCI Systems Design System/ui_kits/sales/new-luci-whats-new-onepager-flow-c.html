@@ -68,9 +68,9 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 /* Three fades working together:
    - Top band: clean paper for the section label.
    - Left edge: muted entry-TV cards recede behind the live sportsbook side.
-   - Card area: the map fades behind where 01/02/03 sit (top-left
-     through mid), so the cards don't fight the floorplan lines. The
-     bottom-right stays vivid — that's the backwards L proof. */
+   - Card area: the map fades diagonally toward where 01/02/03 sit
+     (top-left), so the floorplan lines quiet behind the cards without
+     a circular halo. Clears by mid-field so the backwards L stays vivid. */
 .field__scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
   background:
     linear-gradient(to bottom,
@@ -79,9 +79,9 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
     linear-gradient(to right,
       rgba(245,248,250,0.82) 0%, rgba(245,248,250,0.62) 14%,
       rgba(245,248,250,0.24) 32%, transparent 58%),
-    radial-gradient(85% 62% at 30% 38%,
-      rgba(245,248,250,0.72) 0%, rgba(245,248,250,0.48) 30%,
-      rgba(245,248,250,0.18) 60%, rgba(245,248,250,0) 88%)}}
+    linear-gradient(135deg,
+      rgba(243,244,242,0.68) 0%, rgba(243,244,242,0.42) 28%,
+      rgba(243,244,242,0.12) 52%, transparent 72%)}}
 
 .copy{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;
   padding:18px 32px 34px}
