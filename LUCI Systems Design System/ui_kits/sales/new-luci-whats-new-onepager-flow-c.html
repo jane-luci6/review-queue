@@ -30,7 +30,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 @media print{
   body{background:#fff}.hub-link{display:none}
   .sheet{margin:0;box-shadow:none;page-break-after:always}
-  .mast,.mast__mesh,.mast__scrim,.field,.field__shot,.field__scrim,.copy,.copy::before,.foot,.close,.p__num{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .mast,.mast__mesh,.mast__scrim,.field,.field__shot,.field__scrim,.copy,.p,.foot,.close,.p__num{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
 
 /* ── HEADER (Variant B) ──────────────────────────────────────────────── */
@@ -57,51 +57,56 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 .mast__date-value{font-family:var(--font);font-weight:700;font-size:20px;
   line-height:1;letter-spacing:-0.02em;color:var(--mint)}
 
-/* ── FIELD — light map as the whole content canvas ───────────────────── */
+/* ── FIELD — map stays the canvas; promises sit as dark plates ───────── */
 .field{position:relative;flex:1 1 auto;min-height:0;overflow:hidden;background:#F3F4F2}
 .field__shot{position:absolute;inset:0;z-index:0;pointer-events:none;
   width:100%;height:100%;object-fit:cover;object-position:100% 100%}
-/* Light wash only — the copy block carries its own fade, so the map
-   reads as a backwards L: right rail + bottom control bar. */
+/* Lift the map where the plates sit so the drawing reads under them,
+   and keep the lower-right quadrant clean for the live UI. */
+/* Wash the top band so the label sits on clean paper, and fade the left
+   edge so the muted entry-TV cards recede behind the live sportsbook side. */
 .field__scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
   background:
-    radial-gradient(90% 70% at 0% 0%,
-      rgba(245,248,250,0.55) 0%,
-      rgba(245,248,250,0.18) 42%,
-      rgba(245,248,250,0) 68%)}
+    linear-gradient(to bottom,
+      rgba(245,248,250,0.96) 0%, rgba(245,248,250,0.90) 5%,
+      rgba(245,248,250,0.30) 12%, rgba(245,248,250,0) 22%),
+    linear-gradient(to right,
+      rgba(245,248,250,0.82) 0%, rgba(245,248,250,0.62) 14%,
+      rgba(245,248,250,0.24) 32%, transparent 58%)}
 
-.copy{position:relative;z-index:2;isolation:isolate;
-  padding:32px var(--pad) 80px;
-  max-width:82%}
-.copy::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:linear-gradient(to right,
-    rgba(245,248,250,0.96) 0%,
-    rgba(245,248,250,0.92) 62%,
-    rgba(245,248,250,0.45) 82%,
-    rgba(245,248,250,0) 100%);
-  -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 90%,rgba(0,0,0,0.45) 96%,transparent 100%);
-  mask-image:linear-gradient(to bottom,#000 0%,#000 90%,rgba(0,0,0,0.45) 96%,transparent 100%)}
-.copy__title{font-family:var(--font);font-weight:700;font-size:23px;
-  line-height:1.15;letter-spacing:-0.025em;color:var(--ink-strong)}
+.copy{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;
+  padding:18px 32px 34px}
+.copy__title{font-family:var(--font);font-weight:700;font-size:13px;
+  letter-spacing:0.16em;text-transform:uppercase;color:var(--navy-muted);
+  margin-bottom:16px}
 
-.promises{margin-top:24px;display:flex;flex-direction:column;gap:24px}
-.p{padding:0}
+.promises{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
 
-.p__head{display:flex;align-items:baseline;gap:14px}
-.p__num{flex:none;font-family:var(--font);font-weight:700;font-size:22px;
-  line-height:1;letter-spacing:-0.03em;color:var(--accent-light)}
-.p__name{font-family:var(--font);font-weight:700;font-size:17px;
-  line-height:1.2;letter-spacing:-0.02em;color:var(--ink-strong)}
+/* Same material as the masthead — translucent navy, so the floorplan
+   stays visible through the plate instead of being cut out by it. */
+.p{position:relative;color:var(--off-white);padding:18px 20px 20px;
+  background:linear-gradient(152deg,
+    rgba(16,35,45,0.94) 0%, rgba(10,22,28,0.92) 60%, rgba(6,18,26,0.94) 100%);
+  box-shadow:0 10px 26px rgba(10,22,28,0.16)}
+.p:nth-child(3){grid-column:1 / -1;justify-self:start;width:62%;padding:20px 24px 22px}
 
-/* Sharp de-boxed list — Issue 01 svc-list, light canvas, horizontal */
-.features{margin:8px 0 0}
-.ft{display:grid;grid-template-columns:232px 1fr;column-gap:24px;align-items:baseline;
-  padding:8px 0;border-bottom:1px solid rgba(53,79,92,0.14)}
-.ft:last-child{border-bottom:none}
-.ft dt{font-family:var(--font);font-weight:700;font-size:13px;
-  letter-spacing:-0.01em;color:var(--accent-light)}
-.ft dd{margin:0;font-family:var(--font-body);font-weight:400;font-size:13px;
-  line-height:1.4;color:var(--ink)}
+.p__head{display:flex;align-items:baseline;gap:11px}
+/* Gold numerals echo the masthead's one gold word; mint stays on features. */
+.p__num{flex:none;font-family:var(--font);font-weight:700;font-size:17px;
+  line-height:1;letter-spacing:-0.02em;color:var(--gold)}
+.p__name{font-family:var(--font);font-weight:700;font-size:14.5px;
+  line-height:1.2;letter-spacing:-0.015em;color:rgba(235,245,248,0.92)}
+.p:nth-child(3) .p__name{font-size:15.5px}
+
+/* Features are the one magnetic device on the plate: mint, bold, no chrome. */
+.features{margin:12px 0 0;display:flex;flex-direction:column;gap:9px}
+.p:nth-child(3) .features{display:grid;grid-template-columns:1fr 1fr;gap:10px 26px}
+.ft{padding:0}
+.ft dt{display:block;font-family:var(--font);font-weight:700;font-size:12.5px;
+  letter-spacing:-0.005em;color:var(--mint);line-height:1.25}
+.ft dd{display:block;margin:2px 0 0;font-family:var(--font-body);font-weight:400;font-size:11px;
+  line-height:1.45;color:rgba(235,245,248,0.70)}
+.p:nth-child(3) .ft dd{max-width:30ch}
 
 /* ── FOOTER (includes "for more information") ────────────────────────── */
 .close{background:var(--tint);padding:18px var(--pad) 20px;
@@ -140,7 +145,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
     </header>
 
     <div class="field">
-      <img class="field__shot" src="assets/new-luci-map-light-v3.png?v=1" alt="" aria-hidden="true">
+      <img class="field__shot" src="assets/new-luci-map-light-v4.png?v=1" alt="" aria-hidden="true">
       <span class="field__scrim" aria-hidden="true"></span>
 
       <div class="copy">
