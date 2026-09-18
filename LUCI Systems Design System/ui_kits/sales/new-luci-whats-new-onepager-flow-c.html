@@ -30,8 +30,14 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 @page{size:letter;margin:0}
 @media print{
   body{background:#fff}.hub-link{display:none}
-  .sheet{margin:0;box-shadow:none;page-break-after:always}
-  .mast,.mast__mesh,.mast__scrim,.field,.field__shot,.field__scrim,.copy,.p,.p__inner,.foot,.close,.p__num{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .sheet{margin:0;box-shadow:none;page-break-after:always;break-after:page;overflow:hidden}
+  .mast,.mast__mesh,.mast__scrim,.field,.field__shot,.copy,.p,.p__inner,.foot,.close,.p__num,
+  .mast__inner,.mast__theme,.mast__announce,.mast__base,.mast__date-value,.copy__title,
+  .p__name,.p__lead,.ft dt,.ft dd,.foot__wordmark{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  /* Blinking fix: Chrome turns multi-stop CSS gradients into PDF Pattern/Shading
+     objects that repaint lazily (blink on open). Flatten to flat fills in print. */
+  .mast__scrim{background:rgba(8,18,24,0.72) !important;background-image:none !important}
+  .field__scrim{display:none !important}
 }
 
 /* ── HEADER (Variant B) ──────────────────────────────────────────────── */
