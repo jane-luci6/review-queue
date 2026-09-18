@@ -86,17 +86,24 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 
 .copy{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;
   padding:18px 32px 34px}
-.copy__title{font-family:var(--font);font-weight:700;font-size:13px;
+.copy__title{display:flex;align-items:center;gap:12px;
+  font-family:var(--font);font-weight:700;font-size:13px;
   letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-strong);
-  margin-bottom:16px;text-shadow:0 1px 2px rgba(245,248,250,0.75)}
+  margin-bottom:20px;text-shadow:0 1px 2px rgba(245,248,250,0.75)}
+.copy__title::before{content:"";flex:none;width:24px;height:2px;background:var(--accent-light)}
 
 .promises{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
 
-/* Cards = the header's material, continued into the field. Same navy-deep
-   base, same mesh texture at low opacity, directional scrim so type reads.
-   Translucent so the map shows through — the edge is soft because the
-   map reads through the plate, not because of a paper mat. */
+/* Ghost numerals — the architectural anchor. A large faded mint Syncopate
+   watermark bleeds out from behind each promise head. The magnetism lives
+   in the ghost number, not in boxes or bars. The map reads through it. */
 .p{position:relative;color:var(--ink);padding:18px 20px 20px}
+.p__ghost{position:absolute;top:-16px;left:-16px;z-index:0;
+  font-family:var(--display);font-weight:700;font-size:124px;
+  line-height:0.85;letter-spacing:-0.03em;
+  color:rgba(43,158,128,0.14);
+  pointer-events:none;user-select:none;text-shadow:none}
+.p:nth-child(3) .p__ghost{font-size:136px}
 .p__inner{position:relative;z-index:1;text-shadow:0 1px 2px rgba(245,248,250,0.75)}
 .p:nth-child(1){margin-left:40px}
 .p:nth-child(3){grid-column:1 / -1;justify-self:start;width:62%;padding:20px 24px 22px;margin-left:40px}
@@ -111,9 +118,11 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
   line-height:1.45;color:var(--navy-muted);max-width:34ch}
 .p:nth-child(3) .p__lead{font-size:12px}
 
-.features{margin:14px 0 0;display:flex;flex-direction:column;gap:10px}
-.p:nth-child(3) .features{display:grid;grid-template-columns:1fr 1fr;gap:10px 26px}
-.ft{padding:0}
+.features{margin:16px 0 0;display:flex;flex-direction:column;gap:0}
+.p:nth-child(3) .features{display:grid;grid-template-columns:1fr 1fr;gap:0 24px}
+.ft{padding:8px 0;border-top:1px solid rgba(43,158,128,0.16)}
+.features .ft:first-child{border-top:none;padding-top:0}
+.features .ft:last-child{padding-bottom:0}
 .ft dt{display:block;font-family:var(--font);font-weight:700;font-size:14px;
   letter-spacing:-0.01em;color:var(--ink-strong);line-height:1.2}
 .p:nth-child(3) .ft dt{font-size:14.5px}
@@ -166,6 +175,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 
         <div class="promises">
           <section class="p">
+            <span class="p__ghost" aria-hidden="true">01</span>
             <div class="p__inner">
               <div class="p__head">
                 <span class="p__num">01</span>
@@ -181,6 +191,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
           </section>
 
           <section class="p">
+            <span class="p__ghost" aria-hidden="true">02</span>
             <div class="p__inner">
               <div class="p__head">
                 <span class="p__num">02</span>
@@ -196,6 +207,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
           </section>
 
           <section class="p">
+            <span class="p__ghost" aria-hidden="true">03</span>
             <div class="p__inner">
               <div class="p__head">
                 <span class="p__num">03</span>
