@@ -1,22 +1,44 @@
 # Try a look. Get the last one back.
 
-A live floor leaves little room for uncertain changes. A different source, audio level, or zone layout may improve the room. But if the result is wrong, someone has to restore the last state while the property is still operating.
+A live casino or resort floor leaves little room for uncertain A/V changes. Property teams may want to test a different source, audio level, or zone layout, but they still have to protect the guest experience while the room is operating.
 
-That is where experimentation stops. The problem is not the change itself. It is the absence of a dependable way back. If the prior state has to be remembered or rebuilt one system at a time, keeping the current look can feel safer than testing the next one.
+The risk is not the change itself. The risk is having no dependable way back. If staff must remember or rebuild the prior state one system at a time, they will often leave a working room alone rather than test a better look.
 
 A revert preset in current LUCI preserves the known state before the room changes. Staff can save that state, apply a new look, and assess the result. If it is not the room they wanted, they can revert. The sources, zones, levels, and other saved controls return to the prior state.
 
-The feature is a small control with a larger operational effect. Staff can consider what the room should become without losing the state that is already working. The last look remains available while the next one is tested.
+The move has three parts:
 
-The move is direct: save the known state, apply the change, and revert if the result is not right. This is not a procedure for rebuilding the room. It is the removal of the rebuild from the decision.
+1. Save the known state.
+2. Apply the proposed change.
+3. Keep the new look or revert to the saved state.
 
-For property A/V and operations teams, that means a live room does not have to be fixed in place. A new event look can be assessed. A different source arrangement can be tested. A zone can be changed for the way the room is being used. If the change does not hold up in the space, the saved state is still there.
+Revert removes the rebuild from the decision. Staff can assess a change in the room without giving up the state that already works. They know which state they saved, what they changed, and what LUCI will restore if the new look does not hold up.
 
-LUCI works with and absorbs the A/V already on the floor. It does not replace the displays, audio, sources, or control systems the property uses. The revert preset acts across the controls brought into LUCI, so the return is not divided into separate jobs for separate systems.
+Property A/V and operations teams can use that protection when they:
 
-This is what one interface makes possible: not only sending a new command, but keeping the prior operating state within reach. The property can move forward without giving up its way back.
+- test an event look before the room fills;
+- compare a different source arrangement;
+- change a zone for a new use; or
+- adjust levels while the floor remains live.
 
-A walkthrough can use the property’s actual A/V as the starting point. See a known look saved, a change applied, and the prior state restored through LUCI.
+If the change does not hold up in the space, the saved state remains available.
+
+That matters because a proposed look can behave differently on the floor than it did in planning. A source may not read clearly from the guest area. An audio level may compete with the room. A zone arrangement may not match the way people are using the space. Staff need to see and hear the result in context before they keep it.
+
+Without a revert preset, each test carries the work of reconstructing the prior state. With the preset, the property can separate two decisions: whether to try the change and whether to keep it. A rejected look does not become a recovery project.
+
+LUCI works with and absorbs the A/V already on the floor. It does not replace the displays, audio, sources, or control systems the property uses. The revert preset acts across the controls brought into LUCI, so staff do not have to restore separate systems as separate jobs.
+
+This is what one interface makes possible: staff can send a new command and keep the prior operating state within reach. The property can move forward without losing its way back.
+
+A walkthrough starts with the property’s actual A/V:
+
+- the rooms and zones staff change;
+- the states the property needs to protect;
+- the sources, levels, and layouts included in those states; and
+- the moments when staff avoid a change because recovery is uncertain.
+
+See the team save a known look, apply a change, and restore the prior state through LUCI.
 
 Book a walkthrough. See a look tried and put back.
 

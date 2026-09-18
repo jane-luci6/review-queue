@@ -1,24 +1,44 @@
 # Not every announcement should be the same volume
 
-Not every announcement has the same job. A bingo call, an emergency page, and “the buffet is open” ask for different levels of attention. When all three are delivered at the same volume, the guest-facing A/V treats them as if they carry the same weight.
+Casino and resort audio systems carry messages with very different jobs. A bingo call, an emergency page, and “the buffet is open” demand different levels of attention, but many properties still send every announcement through one building-wide volume setting.
 
-The result is a false choice. Keep every announcement loud enough to cut through, and routine messages become intrusive. Keep every announcement restrained, and the messages that must take the room may not do their job. One building-wide setting cannot express the difference.
+That setting creates a false choice:
 
-This is not a speaker problem. It is a control problem. The audio system can deliver the page, but the operation needs to determine how that page should behave.
+- Set every announcement loud enough to cut through, and routine messages become intrusive.
+- Keep every announcement restrained, and critical pages may fail to command attention.
 
-Current LUCI assigns announcement levels by job instead of relying on one slider for the building. A routine page can have its place. An emergency page can have another. The level belongs to the announcement, much as a look belongs to a zone.
+One setting cannot express the difference. This is not a speaker problem. The audio system can deliver the page; the property needs to determine how each page should behave. Volume and scope should follow the job of the announcement, not the last position of a building-wide slider.
 
-The benefit is alignment between the message and the way the property delivers it. Routine pages can remain routine. Announcements that must cut through can do so. Staff are not forced to choose one permanent level for unrelated messages.
+Current LUCI assigns announcement levels by job instead of relying on one slider for the building. A routine page can use one level. An emergency page can use another. The level belongs to the announcement, much as a look belongs to a zone.
 
-Property A/V and operations teams can define levels around the work each announcement performs. That might mean keeping a guest update within the room it serves while allowing a critical page to reach the areas where it must be heard. The property decides the level for the job instead of asking one setting to cover every use.
+Property A/V and operations teams can define how each announcement should work:
 
-The move is visible in the interface: the announcement has a level, the way a zone has a look. Staff select the announcement they need; LUCI applies the behavior the property assigned to that job.
+- Keep routine messages at a routine level.
+- Scope a guest update to the room it serves.
+- Let a critical page reach the areas where it must be heard.
 
-The message determines the treatment. The building no longer has to make every announcement compete at one setting.
+The property assigns the treatment before staff need the message. In the interface, staff select the announcement; LUCI applies the level and scope assigned to that job.
 
-LUCI works with and absorbs the audio system already on the floor. It does not replace the speakers, amplifiers, paging infrastructure, or other A/V the property has selected. It gives those systems one operating interface, including control over how an announcement is scoped.
+That changes the decision staff make in the moment. They select the message they need instead of adjusting a general setting, sending the page, and trying to return the building to its prior level. The property has already decided how that announcement should behave.
 
-A walkthrough begins with the property’s existing zones, paging paths, and announcement jobs. From there, the team can hear how LUCI distinguishes a routine message from one that needs the building’s attention.
+The distinction also protects the purpose of each message:
+
+- A routine announcement can inform without taking over the room.
+- A room-specific update can stay with the guests it serves.
+- A critical page can command attention where the property requires it.
+
+The result is direct: guest-facing A/V matches the message. Staff no longer have to make unrelated announcements compete at one permanent setting or improvise the treatment every time someone sends a page.
+
+LUCI works with and absorbs the audio system already on the floor. It does not replace the speakers, amplifiers, paging infrastructure, or other A/V the property has selected. LUCI brings those controls into one operating interface, including the level and scope of each announcement.
+
+A walkthrough starts with the property’s existing operation:
+
+- the zones and paging paths already in the building;
+- the routine and critical announcements staff send;
+- the areas each message needs to reach; and
+- the levels the property assigns to those jobs.
+
+The LUCI team maps that operation, then demonstrates how staff select an announcement and LUCI applies its defined treatment.
 
 Book a walkthrough. Hear how announcements are scoped in LUCI.
 

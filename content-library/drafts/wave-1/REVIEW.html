@@ -51,7 +51,7 @@
   h2 { font: 700 1.1rem/1.3 "Helvetica Neue", Arial, sans-serif; }
   p { margin: 0 0 1rem; }
   a { color: var(--kicker); }
-  ul { margin: 0 0 1rem; padding-left: 1.2rem; }
+  ul, ol { margin: 0 0 1rem; padding-left: 1.2rem; }
   .footer { color: #6b6660; font-size: .85rem; font-family: "Helvetica Neue", Arial, sans-serif; }
   .note {
     font: 15px/1.4 "Helvetica Neue", Arial, sans-serif;
@@ -65,152 +65,305 @@
   <a href="#spotlight-morning-reset">Morning reset</a><a href="#spotlight-lighting">Lighting through LUCI</a><a href="#spotlight-revert-preset">Revert preset</a><a href="#spotlight-announcement-volume">Announcement volume</a><a href="#case-blog-ameristar">Ameristar</a><a href="#case-blog-tachi">Tachi Palace</a><a href="#case-blog-sams-town">Sam’s Town</a><a href="#case-blog-yaamava">Yaamava</a><a href="#mike-01-blog">What you may not know</a><a href="#mike-01-sales-onepager">Sales one-pager</a>
 </nav>
 <main>
-  <p class="note">Cursor ChatGPT drafts as they landed, including the two “replace” lines. Click a title in the bar to jump.</p>
+  <p class="note">GPT edit pass for cold-reader context, scannable lists, and specific active voice. Click a title in the bar to jump.</p>
   <article id="spotlight-morning-reset">
   <p class="kicker">Morning reset</p>
   <h1>Start the day on a known look</h1>
-  <p>Every shift leaves decisions behind. A source was changed for an event. A volume was raised for a busy room. A display stayed on after the audience moved on. By morning, the floor may still reflect the night before instead of the day ahead.</p>
-<p>Then opening becomes a negotiation with the last shift. Property A/V and operations teams have to determine what changed, what should still be running, and what needs to return to normal. The work is familiar, but it should not have to be reconstructed each day.</p>
-<p>A morning reset in current LUCI gives the property a known starting point. One command returns the house to the state selected for open: the intended sources, display looks, audio zones, and volume levels. The reset runs from the same interface used to operate the property’s A/V.</p>
-<p>The day starts on purpose, not on whatever last night left behind.</p>
-<p>The property defines the open look once, based on how the floor should operate. That state becomes the reset. When the day begins, staff can call it back without rebuilding each zone or retracing the previous shift’s changes.</p>
-<p>The move is direct: choose the preset, apply it, and the floor returns to the selected state. Displays and audio do not have to be addressed as separate jobs. The command reaches the systems already coordinated through LUCI.</p>
-<p>This matters because opening is not the only time a known state has value. Events, promotions, and late changes can all move a room away from its standard look. A reset gives the operation a defined point to return to. It replaces guesswork with the property’s own decision about what normal should be.</p>
-<p>The value is consistency across shifts: the opening state belongs to the property, not to whoever last touched the controls.</p>
-<p>LUCI works with and absorbs the A/V already on the floor. It does not replace the displays, audio, sources, or control systems the property has chosen. It brings them into one operating interface, where a morning reset can act across the room instead of stopping at the boundary between systems.</p>
-<p>A walkthrough begins with the property as it exists: its sources, zones, opening conditions, and accumulated A/V. From there, the team can see what a known opening state would include and how LUCI would call it back.</p>
+<p>Casino and resort floors rely on A/V to set the opening environment across displays, sources, and audio zones. But every shift leaves decisions behind: a source changed for an event, a volume raised for a busy room, or a display left on after the audience moved on.</p>
+<p>By morning, the floor may still reflect the night before instead of the day ahead. Property A/V and operations teams must determine what changed, what should still be running, and what needs to return to normal. Opening becomes a negotiation with the last shift.</p>
+<p>A morning reset in current LUCI gives the property a known starting point. The property defines its opening state based on how the floor should operate, then saves that state as a preset. One command can restore:</p>
+<ul>
+<li>the intended sources;</li>
+<li>the selected display looks;</li>
+<li>the correct audio zones; and</li>
+<li>the opening volume levels.</li>
+</ul>
+<p>The reset runs from the same interface staff use to operate the property’s A/V. They do not have to inspect every display, rebuild each zone, or retrace the previous shift’s changes across separate controls.</p>
+<p>The move is direct:</p>
+<ol>
+<li>Staff choose the opening preset.</li>
+<li>They apply it.</li>
+<li>LUCI returns the floor to the property’s selected state.</li>
+</ol>
+<p>Displays and audio do not become separate reset jobs. The command reaches the systems already coordinated through LUCI.</p>
+<p>That changes the opening conversation. Staff can verify that the floor matches the property’s decision instead of asking what the last shift changed. A known state also gives managers a clear standard across teams: the opening look belongs to the operation, not to one person’s memory.</p>
+<p>Opening is not the only time that standard matters. Events, promotions, and late changes can move a room away from its normal look. After the event ends, staff need a defined point to return to. The same reset gives them that point without turning the close of one event into the manual setup for the next shift.</p>
+<p>The result is consistency across shifts. The property sets the opening state; the last person who touched the controls does not.</p>
+<p>LUCI works with and absorbs the A/V already on the floor. It does not replace the displays, audio, sources, or control systems the property has chosen. LUCI brings their controls into one operating interface, so a morning reset can act across the room instead of stopping at system boundaries.</p>
+<p>A walkthrough starts with the property as it exists:</p>
+<ul>
+<li>the sources and zones staff operate now;</li>
+<li>the look the property wants at open;</li>
+<li>the changes that tend to remain after events or late shifts; and</li>
+<li>the systems staff currently reset one by one.</li>
+</ul>
+<p>The LUCI team maps those conditions, defines what belongs in the opening state, and shows how staff can call it back from one interface.</p>
 <p>Book a walkthrough. See a morning reset in LUCI.</p>
   <p class="footer">Source brief: spotlight-morning-reset.md</p>
-</article><article id="spotlight-lighting">
+</article>
+  <article id="spotlight-lighting">
   <p class="kicker">Lighting through LUCI</p>
   <h1>Lighting lives with the rest of the A/V</h1>
-  <p>Lighting is often treated as a separate operation. It has its own console, its own controls, and its own place in the room. A/V lives somewhere else. When the room changes, the two systems have to be coordinated even though the guest experiences them together.</p>
-<p>That separation adds another interface to staff and another set of actions to align. The display can change while the lighting stays behind. The audio can move into an event state while the room remains in its everyday look. Operations is left to make separate systems behave like one environment.</p>
-<p>Current LUCI brings lighting into the same interface as displays, audio, and sources. Lighting remains the lighting system the property already has. LUCI absorbs its controls into the wider A/V operation, so staff can manage zones, levels, and looks without leaving the interface that runs the room.</p>
-<p>The benefit is one place to operate the experience. The property does not have to treat lighting and A/V as separate events that happen to occupy the same space. The room is one room. The interface reflects that.</p>
-<p>From LUCI, staff can change a lighting look, select a zone, or adjust a level alongside the other controls for the space. The lighting look appears as a control in LUCI, just as a source does. Staff can see it in the context of what the room is doing instead of moving to a separate console and reconstructing that context.</p>
-<p>This is not a case for replacing the property’s lighting. It is a case for operating it with the rest of the room. LUCI works with and absorbs the lighting and A/V systems already on the floor. The fixtures, controllers, displays, audio, and sources remain in place. Their controls stop living in separate operational silos.</p>
-<p>For A/V, IT, and operations leaders, that changes the scope of the question. It is no longer, “Who is running lighting tonight?” and “Who is running A/V?” It becomes, “What should the room do?” The answer can include the lighting look, display sources, and audio state on the interface used to run the property.</p>
-<p>A walkthrough starts with the lighting and A/V already in the building. Bring the systems, zones, and looks the property uses now. See how lighting can live on the same interface as the rest of the floor.</p>
+<p>In a casino, resort, or event space, guests experience lighting, displays, and audio as one room. Property teams often have to operate them as separate systems, with lighting on one console and the rest of the A/V somewhere else.</p>
+<p>That split adds another interface for staff to learn and another set of actions to coordinate. A display can change while the lighting stays behind. Audio can move into an event state while the room remains in its everyday look. Operations has to make separate systems behave like one environment.</p>
+<p>Current LUCI brings lighting into the same interface as displays, audio, and sources. The property keeps its lighting system. LUCI absorbs its controls into the wider A/V operation, so staff can run the room without moving between consoles.</p>
+<p>From LUCI, staff can:</p>
+<ul>
+<li>change a lighting look;</li>
+<li>select the zone that needs attention;</li>
+<li>adjust a lighting level; and</li>
+<li>coordinate those changes with display sources and audio states.</li>
+</ul>
+<p>The lighting look appears as a control in LUCI, just as a source does. Staff see it in the context of what the room is doing instead of leaving the interface and reconstructing that context at another console.</p>
+<p>The benefit is one place to operate the room. When staff prepare for an event, they can set the lighting look, display sources, and audio state from the interface used to run the property. They work from the intended guest experience instead of treating lighting and A/V as separate events that happen to occupy the same space.</p>
+<p>That operating model matters during live changes, too. If the room moves from everyday programming to an event, staff can coordinate the elements that define the change:</p>
+<ol>
+<li>Select the lighting look for the room.</li>
+<li>Set the display sources for the event.</li>
+<li>Put the audio zones in the required state.</li>
+</ol>
+<p>Each system still performs its own job. Staff no longer need a separate operating path for each one.</p>
+<p>This is not a case for replacing the property’s lighting. LUCI works with and absorbs the lighting and A/V systems already on the floor. The fixtures, controllers, displays, audio, and sources remain in place. Their controls stop operating as separate silos.</p>
+<p>For A/V, IT, and operations leaders, that changes the question from “Who is running each system tonight?” to “What should the room do?” The answer can include every guest-facing element without assigning staff a separate operating path for each one.</p>
+<p>A walkthrough starts with the lighting and A/V already in the building. Bring:</p>
+<ul>
+<li>the lighting system and looks the property uses now;</li>
+<li>the rooms and zones staff operate;</li>
+<li>the display and audio states that accompany those looks; and</li>
+<li>the points where staff currently change consoles.</li>
+</ul>
+<p>The LUCI team maps those controls and shows how lighting can join the same interface as the rest of the floor.</p>
 <p>Book a walkthrough. See lighting on the same interface as the floor.</p>
   <p class="footer">Source brief: spotlight-lighting.md</p>
-</article><article id="spotlight-revert-preset">
+</article>
+  <article id="spotlight-revert-preset">
   <p class="kicker">Revert preset</p>
   <h1>Try a look. Get the last one back.</h1>
-  <p>A live floor leaves little room for uncertain changes. A different source, audio level, or zone layout may improve the room. But if the result is wrong, someone has to restore the last state while the property is still operating.</p>
-<p>That is where experimentation stops. The problem is not the change itself. It is the absence of a dependable way back. If the prior state has to be remembered or rebuilt one system at a time, keeping the current look can feel safer than testing the next one.</p>
+<p>A live casino or resort floor leaves little room for uncertain A/V changes. Property teams may want to test a different source, audio level, or zone layout, but they still have to protect the guest experience while the room is operating.</p>
+<p>The risk is not the change itself. The risk is having no dependable way back. If staff must remember or rebuild the prior state one system at a time, they will often leave a working room alone rather than test a better look.</p>
 <p>A revert preset in current LUCI preserves the known state before the room changes. Staff can save that state, apply a new look, and assess the result. If it is not the room they wanted, they can revert. The sources, zones, levels, and other saved controls return to the prior state.</p>
-<p>The feature is a small control with a larger operational effect. Staff can consider what the room should become without losing the state that is already working. The last look remains available while the next one is tested.</p>
-<p>The move is direct: save the known state, apply the change, and revert if the result is not right. This is not a procedure for rebuilding the room. It is the removal of the rebuild from the decision.</p>
-<p>For property A/V and operations teams, that means a live room does not have to be fixed in place. A new event look can be assessed. A different source arrangement can be tested. A zone can be changed for the way the room is being used. If the change does not hold up in the space, the saved state is still there.</p>
-<p>LUCI works with and absorbs the A/V already on the floor. It does not replace the displays, audio, sources, or control systems the property uses. The revert preset acts across the controls brought into LUCI, so the return is not divided into separate jobs for separate systems.</p>
-<p>This is what one interface makes possible: not only sending a new command, but keeping the prior operating state within reach. The property can move forward without giving up its way back.</p>
-<p>A walkthrough can use the property’s actual A/V as the starting point. See a known look saved, a change applied, and the prior state restored through LUCI.</p>
+<p>The move has three parts:</p>
+<ol>
+<li>Save the known state.</li>
+<li>Apply the proposed change.</li>
+<li>Keep the new look or revert to the saved state.</li>
+</ol>
+<p>Revert removes the rebuild from the decision. Staff can assess a change in the room without giving up the state that already works. They know which state they saved, what they changed, and what LUCI will restore if the new look does not hold up.</p>
+<p>Property A/V and operations teams can use that protection when they:</p>
+<ul>
+<li>test an event look before the room fills;</li>
+<li>compare a different source arrangement;</li>
+<li>change a zone for a new use; or</li>
+<li>adjust levels while the floor remains live.</li>
+</ul>
+<p>If the change does not hold up in the space, the saved state remains available.</p>
+<p>That matters because a proposed look can behave differently on the floor than it did in planning. A source may not read clearly from the guest area. An audio level may compete with the room. A zone arrangement may not match the way people are using the space. Staff need to see and hear the result in context before they keep it.</p>
+<p>Without a revert preset, each test carries the work of reconstructing the prior state. With the preset, the property can separate two decisions: whether to try the change and whether to keep it. A rejected look does not become a recovery project.</p>
+<p>LUCI works with and absorbs the A/V already on the floor. It does not replace the displays, audio, sources, or control systems the property uses. The revert preset acts across the controls brought into LUCI, so staff do not have to restore separate systems as separate jobs.</p>
+<p>This is what one interface makes possible: staff can send a new command and keep the prior operating state within reach. The property can move forward without losing its way back.</p>
+<p>A walkthrough starts with the property’s actual A/V:</p>
+<ul>
+<li>the rooms and zones staff change;</li>
+<li>the states the property needs to protect;</li>
+<li>the sources, levels, and layouts included in those states; and</li>
+<li>the moments when staff avoid a change because recovery is uncertain.</li>
+</ul>
+<p>See the team save a known look, apply a change, and restore the prior state through LUCI.</p>
 <p>Book a walkthrough. See a look tried and put back.</p>
   <p class="footer">Source brief: spotlight-revert-preset.md</p>
-</article><article id="spotlight-announcement-volume">
+</article>
+  <article id="spotlight-announcement-volume">
   <p class="kicker">Announcement volume</p>
   <h1>Not every announcement should be the same volume</h1>
-  <p>Not every announcement has the same job. A bingo call, an emergency page, and “the buffet is open” ask for different levels of attention. When all three are delivered at the same volume, the guest-facing A/V treats them as if they carry the same weight.</p>
-<p>The result is a false choice. Keep every announcement loud enough to cut through, and routine messages become intrusive. Keep every announcement restrained, and the messages that must take the room may not do their job. One building-wide setting cannot express the difference.</p>
-<p>This is not a speaker problem. It is a control problem. The audio system can deliver the page, but the operation needs to determine how that page should behave.</p>
-<p>Current LUCI assigns announcement levels by job instead of relying on one slider for the building. A routine page can have its place. An emergency page can have another. The level belongs to the announcement, much as a look belongs to a zone.</p>
-<p>The benefit is alignment between the message and the way the property delivers it. Routine pages can remain routine. Announcements that must cut through can do so. Staff are not forced to choose one permanent level for unrelated messages.</p>
-<p>Property A/V and operations teams can define levels around the work each announcement performs. That might mean keeping a guest update within the room it serves while allowing a critical page to reach the areas where it must be heard. The property decides the level for the job instead of asking one setting to cover every use.</p>
-<p>The move is visible in the interface: the announcement has a level, the way a zone has a look. Staff select the announcement they need; LUCI applies the behavior the property assigned to that job.</p>
-<p>The message determines the treatment. The building no longer has to make every announcement compete at one setting.</p>
-<p>LUCI works with and absorbs the audio system already on the floor. It does not replace the speakers, amplifiers, paging infrastructure, or other A/V the property has selected. It gives those systems one operating interface, including control over how an announcement is scoped.</p>
-<p>A walkthrough begins with the property’s existing zones, paging paths, and announcement jobs. From there, the team can hear how LUCI distinguishes a routine message from one that needs the building’s attention.</p>
+<p>Casino and resort audio systems carry messages with very different jobs. A bingo call, an emergency page, and “the buffet is open” demand different levels of attention, but many properties still send every announcement through one building-wide volume setting.</p>
+<p>That setting creates a false choice:</p>
+<ul>
+<li>Set every announcement loud enough to cut through, and routine messages become intrusive.</li>
+<li>Keep every announcement restrained, and critical pages may fail to command attention.</li>
+</ul>
+<p>One setting cannot express the difference. This is not a speaker problem. The audio system can deliver the page; the property needs to determine how each page should behave. Volume and scope should follow the job of the announcement, not the last position of a building-wide slider.</p>
+<p>Current LUCI assigns announcement levels by job instead of relying on one slider for the building. A routine page can use one level. An emergency page can use another. The level belongs to the announcement, much as a look belongs to a zone.</p>
+<p>Property A/V and operations teams can define how each announcement should work:</p>
+<ul>
+<li>Keep routine messages at a routine level.</li>
+<li>Scope a guest update to the room it serves.</li>
+<li>Let a critical page reach the areas where it must be heard.</li>
+</ul>
+<p>The property assigns the treatment before staff need the message. In the interface, staff select the announcement; LUCI applies the level and scope assigned to that job.</p>
+<p>That changes the decision staff make in the moment. They select the message they need instead of adjusting a general setting, sending the page, and trying to return the building to its prior level. The property has already decided how that announcement should behave.</p>
+<p>The distinction also protects the purpose of each message:</p>
+<ul>
+<li>A routine announcement can inform without taking over the room.</li>
+<li>A room-specific update can stay with the guests it serves.</li>
+<li>A critical page can command attention where the property requires it.</li>
+</ul>
+<p>The result is direct: guest-facing A/V matches the message. Staff no longer have to make unrelated announcements compete at one permanent setting or improvise the treatment every time someone sends a page.</p>
+<p>LUCI works with and absorbs the audio system already on the floor. It does not replace the speakers, amplifiers, paging infrastructure, or other A/V the property has selected. LUCI brings those controls into one operating interface, including the level and scope of each announcement.</p>
+<p>A walkthrough starts with the property’s existing operation:</p>
+<ul>
+<li>the zones and paging paths already in the building;</li>
+<li>the routine and critical announcements staff send;</li>
+<li>the areas each message needs to reach; and</li>
+<li>the levels the property assigns to those jobs.</li>
+</ul>
+<p>The LUCI team maps that operation, then demonstrates how staff select an announcement and LUCI applies its defined treatment.</p>
 <p>Book a walkthrough. Hear how announcements are scoped in LUCI.</p>
   <p class="footer">Source brief: spotlight-announcement-volume.md</p>
-</article><article id="case-blog-ameristar">
+</article>
+  <article id="case-blog-ameristar">
   <p class="kicker">Ameristar</p>
   <h1>Ameristar Council Bluffs: a retrofit the floor never saw</h1>
-  <p>For a property that cannot take its floor dark, an A/V retrofit presents a direct operational problem. The work has to move forward while the property keeps running. The transition cannot become a separate event that displaces the operation it is meant to support.</p>
+<p>Casino A/V retrofits create a direct operational problem: the property needs new infrastructure, but the floor still has to serve guests. Ameristar Council Bluffs shows how a team can complete that transition without turning the retrofit into a shutdown.</p>
 <p>Ameristar Council Bluffs in Council Bluffs, Iowa, completed a full A/V retrofit in under three days. The floor never closed.</p>
-<p>Those two facts belong together. The duration matters because the operation continued. This was not a project measured only by what was installed. It was a transition measured by whether the property could remain open while the work was completed.</p>
-<p>The retrofit also moved A/V processing that had lived on the riverboat into the IT data center on land. That move established a clean boundary for what comes next. The boat can retire as a clean break, while the new buildout connects to the platform already running on land.</p>
-<p>The property does not have to carry the old location of the processing into the next phase. It also does not have to start the A/V operation over when that phase arrives. The platform is in place for the transition.</p>
-<p>Taken together, the retrofit and the move inland form one operational decision: keep the floor running now while establishing where control will live next.</p>
-<p>The installation window served both the present operation and the transition ahead.</p>
+<p>The duration matters because the operation continued. LUCI staged the work around a live floor instead of asking the property to suspend the operation the new A/V was meant to support.</p>
+<p>The retrofit solved the immediate assignment and prepared the property for its next phase:</p>
+<ul>
+<li>The team completed the full A/V retrofit in under three days.</li>
+<li>The floor remained open throughout the work.</li>
+<li>A/V processing moved from the riverboat into the IT data center on land.</li>
+<li>The new buildout can connect to the platform already running there.</li>
+</ul>
+<p>Moving the processing inland established a clean boundary for what comes next. The boat can retire without forcing the property to carry its former processing location into the new buildout. When that phase arrives, the property can connect it to the platform already operating from the land-based data center instead of starting the A/V operation over.</p>
+<p>Taken together, the retrofit and the move inland form one operational decision: keep the floor running now while establishing where control will live next. The installation window served both the current operation and the transition ahead.</p>
 <p>The Facilities Manager’s response, published in the case study, is concise: “Well done, LUCI team! This was the best installation — so seamless.”</p>
-<p>For A/V, IT, and operations leaders considering a retrofit, Ameristar raises the questions that matter before a schedule is approved. Can the work happen around a live floor? Where should the processing live when the property changes? Will the next buildout connect to what is already running, or require another operating system beside it?</p>
-<p>LUCI worked with the property’s A/V and brought its operation onto one platform. It did not replace the systems on the floor. The case is about continuity: through the retrofit, through the move from riverboat to land, and into the buildout ahead.</p>
-<p>The full story shows how the work was staged and what the move means for the property’s next phase. <a href="https://www.lucisystems.com/case-studies/ameristar-council-bluffs">Read the Ameristar Council Bluffs case study</a>. Then book a walkthrough to see how LUCI would work with the A/V already in your building.</p>
+<p>For A/V, IT, and operations leaders considering a retrofit, Ameristar raises three questions before anyone approves the schedule:</p>
+<ul>
+<li>Can the team complete the work around a live floor?</li>
+<li>Where should A/V processing live after the property changes?</li>
+<li>Will the next buildout connect to the existing operation, or add another operating system beside it?</li>
+</ul>
+<p>Those questions belong together. A short installation window is not enough if the work interrupts the floor or leaves the property with another isolated system. A future-ready processing location is not enough if the current operation cannot reach it. The retrofit has to protect today’s floor and establish a usable path into the next buildout.</p>
+<p>LUCI worked with the property’s A/V and brought its controls onto one platform. It did not replace the systems on the floor. The case is about continuity through the retrofit, the move from riverboat to land, and the buildout ahead.</p>
+<p>The full case study shows how the team staged the work, kept the floor open, and moved processing to land. <a href="https://www.lucisystems.com/case-studies/ameristar-council-bluffs">Read the Ameristar Council Bluffs case study</a>. Then book a walkthrough to see how LUCI would work with the A/V already in your building.</p>
   <p class="footer">Source brief: case-blog-ameristar.md</p>
-</article><article id="case-blog-tachi">
+</article>
+  <article id="case-blog-tachi">
   <p class="kicker">Tachi Palace</p>
   <h1>Tachi Palace: a room done in a week, a foundation for the rest</h1>
-  <p>A room can be urgent without being isolated. The property may need it operating now, while still expecting the A/V decisions made there to support the rest of the resort later.</p>
-<p>That distinction matters. A room completed as a one-off solves the immediate assignment but adds another system to the property. A room completed on a common platform can become the first part of a wider operation.</p>
-<p>At Tachi Palace Casino Resort in Lemoore, California, the immediate assignment was the bingo hall. The work was completed in one week: eight LED video walls, audio zones, an immersive bingo environment, and one interface to run it.</p>
-<p>The denominator makes the operating point concrete. Eight walls and the room’s audio do not live as separate controls. They are run together through LUCI. The property gained a working room without creating an interface that ends at the bingo hall doors.</p>
-<p>That makes the project a foundation for the rest of the resort rather than a one-off installation. Growth can happen from the platform already running. The next phase does not need to begin by introducing another way to operate A/V.</p>
-<p>LUCI sits with the A/V already in the building. It works with and absorbs those systems; it does not replace them. Displays, audio, and sources become part of one operating picture, even when the property brings rooms onto the platform in phases.</p>
-<p>This approach separates the pace of construction from the shape of the operation. Tachi Palace could complete the bingo hall in the window it had without defining that room as the limit of the platform. The one-week assignment and the longer property plan could move on the same foundation.</p>
-<p>For property A/V, IT, and operations leaders, the Tachi Palace project presents a practical way to think about phased growth. The first room still has to perform as a complete room. At the same time, the platform beneath it should leave the property with fewer operating paths, not another isolated system to manage.</p>
-<p>The case study carries the detail. This is the door to it: one week, eight LED video walls, audio zones, immersive bingo, and one interface—with a foundation that extends beyond the room.</p>
+<p>Casino and resort teams often need one room operating now without creating another isolated A/V system. Tachi Palace Casino Resort faced that choice in its bingo hall: finish the immediate assignment while building a foundation the rest of the property could use later.</p>
+<p>At the Lemoore, California, property, the team completed the bingo hall in one week. The room brought together:</p>
+<ul>
+<li>eight LED video walls;</li>
+<li>audio zones;</li>
+<li>an immersive bingo environment; and</li>
+<li>one interface to run it.</li>
+</ul>
+<p>That scope makes the operating point concrete. Staff do not run eight walls and the room’s audio as separate controls. They run them together through LUCI. The property gained a complete bingo hall without creating an interface that ends at the room’s doors.</p>
+<p>A one-off room would have solved the schedule and added another system to the property. Tachi Palace took a different path. The bingo hall became the first part of a wider operation, so future growth can start from the platform already running.</p>
+<p>LUCI works with and absorbs the A/V already in the building; it does not replace those systems. Displays, audio, and sources become part of one operating picture, even when the property brings rooms onto the platform in phases.</p>
+<p>This approach separates the construction schedule from the operating model. Tachi Palace completed the bingo hall in the window it had without defining that room as the limit of the platform. The property did not have to choose between finishing one room now and preparing for the rest of the resort. The one-week assignment and the longer property plan could move on the same foundation.</p>
+<p>The distinction appears after installation. Staff have a complete room to run today, but the interface is not a dead end. When the property adds another space, the operating model can extend beyond the bingo hall instead of forcing teams to learn and maintain another isolated control path.</p>
+<p>For property A/V, IT, and operations leaders planning phased growth, the project sets a clear test:</p>
+<ul>
+<li>The first room must perform as a complete room.</li>
+<li>Staff should operate its systems from one interface.</li>
+<li>The next phase should extend the operation instead of introducing another path.</li>
+</ul>
+<p>That test keeps the immediate project honest. Speed matters, but the property also has to live with the operating decision after the construction team leaves. A room that joins the wider operation gives the next phase somewhere to start.</p>
+<p>The live case study carries the full account. This is the door to it: one week, eight LED video walls, audio zones, immersive bingo, and one interface, with a foundation that extends beyond the room.</p>
 <p><a href="https://www.lucisystems.com/case-studies/tachi-palace-case-study">Read the Tachi Palace case study</a>. Then book a walkthrough to see how a room can join the A/V already running across your property.</p>
   <p class="footer">Source brief: case-blog-tachi.md</p>
-</article><article id="case-blog-sams-town">
+</article>
+  <article id="case-blog-sams-town">
   <p class="kicker">Sam’s Town</p>
   <h1>Sam&#x27;s Town: a wall that big, on the platform already running the house</h1>
-  <p>A new display can introduce more than a new surface. If it arrives with its own operating system, it also adds another interface for staff, another workflow to maintain, and another boundary inside the property’s A/V.</p>
-<p>That is the decision behind a large LED wall: not only what the guest will see, but whether the property will have to run it apart from everything already in the room.</p>
-<p>At Sam’s Town Hotel &amp; Gambling Hall in Las Vegas, one 480-square-foot LED replaced a collection of mismatched TVs. The new wall joined the same platform already running the property.</p>
-<p>The visible change is the wall. The operational change is what did not get added: no second system for staff to run and nothing new for them to relearn. The wall appears inside the interface they already use for Sam’s Town.</p>
-<p>That is the distinction between adding capacity and adding complexity. The property gained a new display surface without dividing the room between the A/V that was already there and the A/V that arrived with the wall.</p>
-<p>LUCI worked with what was there. It did not replace the property’s A/V. The platform absorbed the new wall alongside the displays, audio, sources, and controls already in the building. Staff continued to operate the room through the same interface.</p>
-<p>That continuity is the central point. A major visual change did not require a parallel operating model. The new wall became part of the house instead of a separate system beside it.</p>
-<p>For A/V, IT, and operations leaders, the Sam’s Town project reframes the planning question. The wall itself is only one part of the scope. The operating model underneath it determines whether the installation consolidates the room or creates another silo.</p>
-<p>The case study shows the completed wall and the platform decision behind it. This short account is not a substitute for that story. It is the reason to open it: one 480-square-foot LED in place of mismatched TVs, joined to the platform already running the house.</p>
-<p>If the next wall on your property is being treated as a separate A/V system, there is another approach. The new surface can join the operation already in place, with LUCI as the interface that brings it into the room.</p>
+<p>When a casino adds a large LED wall, the operating decision matters as much as the display. If the wall arrives with its own control path, property staff inherit another interface, another workflow, and another boundary inside the A/V operation.</p>
+<p>Sam’s Town Hotel &amp; Gambling Hall in Las Vegas took a different approach. One 480-square-foot LED replaced a collection of mismatched TVs, and the new wall joined the platform already running the property.</p>
+<p>The project changed what guests saw without adding a second operating model for staff:</p>
+<ul>
+<li>One LED replaced the mismatched TV collection.</li>
+<li>The wall appeared inside the interface staff already used.</li>
+<li>Staff did not have to learn a second system.</li>
+<li>The property kept one operating path for the room.</li>
+</ul>
+<p>The visible change is the wall. The operational change is what Sam’s Town did not add. The property gained a new display surface without dividing the room between the A/V already there and the A/V that arrived with the wall.</p>
+<p>LUCI worked with what was there; it did not replace the property’s A/V. LUCI absorbed the new wall alongside the displays, audio, sources, and controls already in the building. Staff continued to operate the room through the same interface.</p>
+<p>That continuity is the central point. A major visual change did not require a parallel operating model. The wall became part of the house instead of a separate system beside it. Staff gained a new surface to operate, but they did not gain another place to operate it.</p>
+<p>The difference reaches beyond training. A second control path would divide responsibility whenever the room changed: one workflow for the wall, another for the systems around it. By bringing the wall into the existing platform, Sam’s Town kept the room inside one operating picture.</p>
+<p>For A/V, IT, and operations leaders, the Sam’s Town project reframes the planning questions:</p>
+<ul>
+<li>Will the wall join the property’s current operation?</li>
+<li>Will staff control it from the interface they already use?</li>
+<li>Will the installation consolidate the room or create another silo?</li>
+</ul>
+<p>Those questions should be answered before a property treats the display as an isolated purchase. The wall will be visible to guests, but staff will live with its controls, sources, and operating path every day. The platform decision determines whether the new surface joins the room or sits beside it.</p>
+<p>The live case study shows the completed wall and the decision behind it. This short account is the reason to open that story: one 480-square-foot LED in place of mismatched TVs, joined to the platform already running the house.</p>
+<p>If your property is treating its next wall as a separate A/V system, the new surface can instead join the operation already in place. LUCI brings it into the interface staff already use.</p>
 <p><a href="https://www.lucisystems.com/case-studies/sams-town">Read the Sam’s Town case study</a>. Then book a walkthrough to see how LUCI can absorb the next display into the A/V your staff already runs.</p>
   <p class="footer">Source brief: case-blog-sams-town.md</p>
-</article><article id="case-blog-yaamava">
-  <p class="kicker">Yaamava</p>
+</article>
+  <article id="case-blog-yaamava">
+  <p class="kicker">Yaamava’</p>
   <h1>Yaamava’: everything on the property, one interface</h1>
-  <p>“One interface” only matters when the scope behind it is clear. Without a denominator, it can describe a single room, a single system, or a demonstration that never reaches the floor.</p>
-<p>At Yaamava’ Resort &amp; Casino in Highland, California, the denominator is the property: broadcast content, signage, audio, data, and displays on one platform. Thirty-four LED walls across seven venues operate inside that same interface. The resort covers 290,000 square feet.</p>
-<p>Those facts establish what the phrase means here. One interface is not a control for one category of A/V. It is the operating point for systems that would otherwise remain separate across the resort.</p>
-<p>The LED walls make the scale visible, but they are not the whole story. They sit alongside broadcast content, signage, audio, data, and displays in the same operating picture. The property does not need one platform for the walls and another for everything around them.</p>
-<p>LUCI works with and absorbs those systems. It does not replace them. The A/V selected for the property remains in place; LUCI gives it one interface for control, automation, and execution.</p>
-<p>For property A/V, IT, and operations leaders, that distinction is the reason to look past the phrase and into the case. Whole-resort control is not proven by a claim about simplicity. It is proven by the systems and venues that actually operate through the interface.</p>
-<p>The categories matter as much as the count. Broadcast content, signage, audio, data, and displays do different work across a resort. Bringing them into one interface does not erase those differences. It gives the property one place to operate across them.</p>
-<p>The interface carries the full scope, not a demonstration subset.</p>
-<p>Yaamava’ provides that proof in public: 34 LED walls, seven venues, multiple categories of A/V and content, and a 290,000-square-foot resort run from a single interface. The numbers come before the benefit because they show what “one” is responsible for.</p>
-<p>The live case study carries the full account. This is the door to it. If your property has accumulated separate systems for broadcast, signage, audio, data, and displays, the relevant question is not whether each system works. It is whether the property can operate them together without adding another isolated control path.</p>
+<p>Whole-resort A/V operations span rooms, venues, and systems that often run through separate controls. “One interface” only matters when it can carry that full property scope, not just one room or a demonstration that never reaches the floor.</p>
+<p>At Yaamava’ Resort &amp; Casino in Highland, California, the denominator is the property. One interface operates across:</p>
+<ul>
+<li>broadcast content;</li>
+<li>signage;</li>
+<li>audio;</li>
+<li>data;</li>
+<li>displays; and</li>
+<li>34 LED walls across seven venues.</li>
+</ul>
+<p>That scope runs across a 290,000-square-foot resort.</p>
+<p>Those facts define what “one interface” means here. It is not a control for one category of A/V. It is the operating point for systems that would otherwise remain separate across the resort.</p>
+<p>The LED walls make the scale visible, but they are not the whole story. They operate alongside broadcast content, signage, audio, data, and other displays in the same picture. The property does not need one platform for the walls and another for everything around them.</p>
+<p>LUCI works with and absorbs those systems; it does not replace them. The A/V selected for the property remains in place. LUCI gives property teams one interface to control, automate, and execute across it.</p>
+<p>The categories matter as much as the count. Broadcast content, signage, audio, data, and displays do different work in different parts of a resort. Bringing them into one interface does not erase those differences. It gives staff one place to operate across them.</p>
+<p>That is the practical test behind the phrase. Whole-resort control is not proven by showing that one screen can reach one type of endpoint. The interface has to carry the mix of systems, venues, and guest-facing changes that property teams actually run.</p>
+<p>For property A/V, IT, and operations leaders, Yaamava’ sets a concrete standard for evaluating a whole-resort platform:</p>
+<ul>
+<li>Count the venues the interface reaches.</li>
+<li>Identify the A/V and content categories it operates.</li>
+<li>Confirm whether staff can run that scope together.</li>
+</ul>
+<p>This order matters. Start with the property’s operating scope, then assess the interface against it. A claim about one interface means little until the systems and venues behind that “one” are visible.</p>
+<p>Yaamava’ provides that proof in public: 34 LED walls, seven venues, multiple categories of A/V and content, and a 290,000-square-foot resort run from a single interface. The numbers show what the interface is responsible for.</p>
+<p>The live case study carries the full account. If your property has accumulated separate systems for broadcast, signage, audio, data, and displays, the question is not whether each system works. The question is whether staff can operate them together without another isolated control path.</p>
 <p><a href="https://www.lucisystems.com/case-studies/yaamava-case-study">Read the Yaamava’ case study</a>. Then book a walkthrough to see how LUCI would work with and absorb the systems already on your floor.</p>
   <p class="footer">Source brief: case-blog-yaamava.md</p>
-</article><article id="mike-01-blog">
+</article>
+  <article id="mike-01-blog">
   <p class="kicker">What you may not know</p>
   <h1>What you may not know about LUCI</h1>
-  <p>The first misconception about LUCI is usually a hardware misconception. A prospect hears LUCI and assumes it means new displays, new speakers, new lighting controls, or a new stack to replace what the property already bought.</p>
-<p>That is not what LUCI is.</p>
-<p>The A/V stays. Displays, audio, lighting, sources, and control systems remain in place. LUCI works with and absorbs them, bringing their controls into one interface. It is how the property runs the systems together—not a replacement for the systems themselves.</p>
-<p>That distinction changes the first conversation. If LUCI is mistaken for the stack, the discussion starts with a catalog: which displays, which speakers, which controllers, which boxes. It treats the property as an empty room waiting to be specified.</p>
-<p>Most prospects are starting somewhere else. The room is full. The property has accumulated A/V over time, often across separate projects, interfaces, and operating paths. Each system may perform its assigned job. The problem appears when staff have to run the property as a collection of systems instead of one operation.</p>
-<p>That is where a first look at LUCI should begin: with the property’s actual A/V. What is already on the floor? Which systems are separate? Which rooms require their own controls? Where do staff move between interfaces to complete one guest-facing change?</p>
-<p>The purpose is not to assemble a list of new hardware. It is to see the current operation in one place, then understand what changes when its controls are consolidated. The displays remain displays. The lighting remains lighting. The audio remains audio. LUCI gives the property one interface to control, automate, and execute across them.</p>
-<p>That does not make the underlying systems interchangeable, and it does not erase the expertise required to operate A/V. It removes the need to treat every system boundary as an operating boundary. Staff can work from a common picture of the property instead of reconstructing that picture across separate consoles.</p>
-<p>This is what LUCI is—and what it is not. It is not the wall, the speakers, the lighting, or a demand to replace them. It is the orchestration engine that brings the A/V already in the building into one operation.</p>
-<p>The first walkthrough should reflect that. Bring the systems already on your floor and the way your teams run them today. The conversation starts there, not with a catalog.</p>
+<p>Most casino and resort properties already have A/V on the floor: displays, audio, lighting, sources, and control systems installed across different projects. The operating problem appears when staff have to coordinate those systems across separate interfaces. Prospects often assume LUCI solves that problem by replacing what the property owns.</p>
+<p>It does not.</p>
+<p>The A/V stays. LUCI works with and absorbs the systems already in the building, bringing their controls into one interface. LUCI is how the property runs the systems together, not a replacement for the systems themselves.</p>
+<p>That distinction changes the first conversation. If a prospect mistakes LUCI for the stack, the discussion starts with a catalog of displays, speakers, controllers, and boxes. But the property is not an empty room waiting for someone to specify it.</p>
+<p>The room is full. The property has accumulated A/V over time, often across separate projects, interfaces, and operating paths. Each system may perform its assigned job. The problem appears when staff have to run the property as a collection of systems instead of one operation.</p>
+<p>A first look at LUCI should begin with the property’s actual A/V:</p>
+<ul>
+<li>What systems are already on the floor?</li>
+<li>Which rooms require separate controls?</li>
+<li>Where do staff switch interfaces to complete one guest-facing change?</li>
+<li>Which operating paths should come together?</li>
+</ul>
+<p>The purpose is not to assemble a hardware shopping list. The purpose is to see the current operation in one place, then identify what changes when LUCI consolidates its controls.</p>
+<p>The displays remain displays. The lighting remains lighting. The audio remains audio. LUCI gives the property one interface to control, automate, and execute across them.</p>
+<p>LUCI does not make the underlying systems interchangeable or erase the expertise required to operate A/V. It removes the need to treat every system boundary as an operating boundary. Staff can work from a common picture of the property instead of reconstructing that picture across separate consoles.</p>
+<p>In practical terms, the property keeps:</p>
+<ul>
+<li>the displays, speakers, lighting, sources, and controls it selected;</li>
+<li>the rooms and zones built around those systems; and</li>
+<li>the A/V expertise required to run the environment.</li>
+</ul>
+<p>LUCI changes how staff reach and coordinate those systems. One guest-facing change no longer has to become a sequence of disconnected changes across separate interfaces.</p>
+<p>That is what LUCI is—and what it is not. LUCI is not the wall, the speakers, the lighting, or a demand to replace them. It is the orchestration engine that brings the A/V already in the building into one operation.</p>
+<p>The first walkthrough should reflect that. Bring the systems already on your floor, the rooms they serve, and the way your teams run them today. The conversation starts with your property, not a catalog.</p>
 <p>Book a walkthrough. Bring the systems you already have.</p>
   <p class="footer">Source brief: mike-01-blog.md</p>
-</article><article id="mike-01-sales-onepager">
+</article>
+  <article id="mike-01-sales-onepager">
   <p class="kicker">Sales one-pager</p>
   <h1>What LUCI is (and is not)</h1>
-  <p>LUCI is not the stack. The A/V stays. One interface to control, automate, and execute the entire guest experience.</p>
+<p>Your property already has A/V on the floor. LUCI brings those systems into one operating picture; it does not ask you to replace them.</p>
 <ul>
 <li><strong>Keep the A/V already on the floor.</strong> Displays, speakers, lighting, sources, and control systems remain in place. LUCI works with and absorbs them. It does not replace them.</li>
-<ul>
-<li><strong>Run separate systems as one operation.</strong> LUCI brings their controls into one interface, so the property does not have to treat every system boundary as an operating boundary.</li>
-<ul>
-<li><strong>Start with the property, not a catalog.</strong> A first look maps the A/V you have, the interfaces your teams use, and the places where one change crosses multiple systems.</li>
-<ul>
-<li><strong>See your world in one place.</strong> The walkthrough is built around the rooms, systems, and operating priorities already in front of you.</li>
+<li><strong>Run separate systems as one operation.</strong> LUCI brings their controls into one interface so staff can control, automate, and execute across the guest experience.</li>
+<li><strong>Map the operation you have.</strong> A first look identifies your rooms, systems, interfaces, and the places where one change crosses multiple controls.</li>
+<li><strong>See the property in one place.</strong> The walkthrough uses your A/V and operating priorities—not a catalog of new boxes.</li>
 </ul>
-<p>The next step is the conversation: your A/V, one operating picture, and the questions that matter on your floor.</p>
+<p>The next step stays in the room: your A/V, one interface, and the questions that matter on your floor.</p>
   <p class="footer">Source brief: mike-01-sales-onepager.md</p>
 </article>
 </main>
