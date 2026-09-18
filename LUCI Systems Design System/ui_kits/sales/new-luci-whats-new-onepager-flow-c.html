@@ -30,7 +30,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 @media print{
   body{background:#fff}.hub-link{display:none}
   .sheet{margin:0;box-shadow:none;page-break-after:always}
-  .mast,.mast__mesh,.mast__scrim,.field,.field__shot,.field__scrim,.foot,.close,.p__num,.ft__mark{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .mast,.mast__mesh,.mast__scrim,.field,.field__shot,.field__scrim,.copy,.foot,.close,.p__num,.ft__mark{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
 
 /* ── HEADER (Variant B) ──────────────────────────────────────────────── */
@@ -61,19 +61,23 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 .field{position:relative;flex:1 1 auto;min-height:0;overflow:hidden;background:#F3F4F2}
 .field__shot{position:absolute;inset:0;z-index:0;pointer-events:none;
   width:100%;height:100%;object-fit:cover;object-position:100% 100%}
+/* Light wash only — the copy block carries its own fade, so the map
+   reads as a backwards L: right rail + bottom control bar. */
 .field__scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
   background:
-    linear-gradient(96deg,
-      rgba(245,248,250,0.97) 0%,
-      rgba(245,248,250,0.96) 48%,
-      rgba(245,248,250,0.78) 62%,
-      rgba(245,248,250,0.22) 76%,
-      rgba(245,248,250,0.04) 90%,
-      rgba(245,248,250,0.08) 100%)}
+    radial-gradient(90% 70% at 0% 0%,
+      rgba(245,248,250,0.55) 0%,
+      rgba(245,248,250,0.18) 42%,
+      rgba(245,248,250,0) 68%)}
 
-.copy{position:relative;z-index:2;height:100%;
-  padding:32px var(--pad) 24px;
-  display:flex;flex-direction:column;max-width:70%}
+.copy{position:relative;z-index:2;
+  padding:32px var(--pad) 20px;
+  max-width:70%;
+  background:linear-gradient(to right,
+    rgba(245,248,250,0.96) 0%,
+    rgba(245,248,250,0.92) 70%,
+    rgba(245,248,250,0.45) 88%,
+    rgba(245,248,250,0) 100%)}
 .copy__title{font-family:var(--font);font-weight:700;font-size:23px;
   line-height:1.15;letter-spacing:-0.025em;color:var(--ink-strong)}
 
@@ -132,7 +136,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
     </header>
 
     <div class="field">
-      <img class="field__shot" src="assets/new-luci-map-light-v2.png?v=1" alt="" aria-hidden="true">
+      <img class="field__shot" src="assets/new-luci-map-light-v3.png?v=1" alt="" aria-hidden="true">
       <span class="field__scrim" aria-hidden="true"></span>
 
       <div class="copy">
