@@ -65,22 +65,20 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
   background:
     linear-gradient(96deg,
       rgba(245,248,250,0.97) 0%,
-      rgba(245,248,250,0.95) 36%,
-      rgba(245,248,250,0.72) 52%,
-      rgba(245,248,250,0.22) 70%,
-      rgba(245,248,250,0.04) 86%,
+      rgba(245,248,250,0.96) 48%,
+      rgba(245,248,250,0.78) 62%,
+      rgba(245,248,250,0.22) 76%,
+      rgba(245,248,250,0.04) 90%,
       rgba(245,248,250,0.08) 100%)}
 
 .copy{position:relative;z-index:2;height:100%;
-  padding:28px var(--pad) 24px;
-  display:flex;flex-direction:column;max-width:52%}
-.copy__kicker{font-family:var(--font);font-weight:700;font-size:9.5px;
-  letter-spacing:0.24em;text-transform:uppercase;color:var(--accent-light)}
-.copy__title{margin-top:8px;font-family:var(--font);font-weight:700;font-size:23px;
+  padding:32px var(--pad) 24px;
+  display:flex;flex-direction:column;max-width:70%}
+.copy__title{font-family:var(--font);font-weight:700;font-size:23px;
   line-height:1.15;letter-spacing:-0.025em;color:var(--ink-strong)}
 
-.promises{margin-top:22px;display:flex;flex-direction:column;gap:18px}
-.p{padding-top:16px;border-top:1px solid rgba(53,79,92,0.12)}
+.promises{margin-top:26px;display:flex;flex-direction:column;gap:22px}
+.p{padding-top:18px;border-top:1px solid rgba(53,79,92,0.12)}
 .p:first-of-type{padding-top:0;border-top:none}
 
 .p__head{display:flex;align-items:baseline;gap:12px}
@@ -89,13 +87,13 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 .p__name{font-family:var(--font);font-weight:700;font-size:16px;
   line-height:1.2;letter-spacing:-0.02em;color:var(--ink-strong)}
 
-.features{margin-top:12px;display:flex;flex-direction:column;gap:10px}
-.ft{display:grid;grid-template-columns:12px 1fr;column-gap:10px;align-items:start}
-.ft__mark{width:8px;height:8px;margin-top:4px;background:var(--gold-deep)}
+.features{margin-top:14px;display:flex;flex-direction:column;gap:9px}
+.ft{display:grid;grid-template-columns:12px 176px 1fr;column-gap:12px;align-items:start}
+.ft__mark{width:8px;height:8px;margin-top:3px;background:var(--gold-deep);align-self:start}
 .ft__name{font-family:var(--font);font-weight:600;font-size:12.5px;
-  line-height:1.3;letter-spacing:-0.01em;color:var(--ink-strong)}
-.ft__desc{margin-top:2px;font-family:var(--font-body);font-size:11px;
-  line-height:1.4;color:var(--navy-muted)}
+  line-height:1.35;letter-spacing:-0.01em;color:var(--ink-strong)}
+.ft__desc{font-family:var(--font-body);font-size:11.5px;
+  line-height:1.4;color:var(--navy-muted);white-space:nowrap}
 
 /* ── FOOTER (includes "for more information") ────────────────────────── */
 .close{background:var(--tint);padding:18px var(--pad) 20px;
@@ -134,11 +132,10 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
     </header>
 
     <div class="field">
-      <img class="field__shot" src="assets/new-luci-map-light.png?v=1" alt="" aria-hidden="true">
+      <img class="field__shot" src="assets/new-luci-map-light-v2.png?v=1" alt="" aria-hidden="true">
       <span class="field__scrim" aria-hidden="true"></span>
 
       <div class="copy">
-        <p class="copy__kicker">What&rsquo;s new</p>
         <h2 class="copy__title">The 3 Promises of New LUCI</h2>
 
         <div class="promises">
@@ -148,18 +145,18 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
               <h3 class="p__name">Greater control of the room</h3>
             </div>
             <div class="features">
-              <div class="ft"><span class="ft__mark" aria-hidden="true"></span><div>
+              <div class="ft"><span class="ft__mark" aria-hidden="true"></span>
                 <p class="ft__name">Venue panels</p>
                 <p class="ft__desc">Put room controls where the work happens.</p>
-              </div></div>
-              <div class="ft"><span class="ft__mark" aria-hidden="true"></span><div>
+              </div>
+              <div class="ft"><span class="ft__mark" aria-hidden="true"></span>
                 <p class="ft__name">Staging</p>
                 <p class="ft__desc">Build the next look before applying it.</p>
-              </div></div>
-              <div class="ft"><span class="ft__mark" aria-hidden="true"></span><div>
+              </div>
+              <div class="ft"><span class="ft__mark" aria-hidden="true"></span>
                 <p class="ft__name">Audio group control</p>
                 <p class="ft__desc">Adjust linked zones without losing their balance.</p>
-              </div></div>
+              </div>
             </div>
           </section>
 
@@ -169,18 +166,18 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
               <h3 class="p__name">More flexible control of your view</h3>
             </div>
             <div class="features">
-              <div class="ft"><span class="ft__mark" aria-hidden="true"></span><div>
+              <div class="ft"><span class="ft__mark" aria-hidden="true"></span>
                 <p class="ft__name">Customizable interface</p>
                 <p class="ft__desc">Bring your property&rsquo;s identity into LUCI.</p>
-              </div></div>
-              <div class="ft"><span class="ft__mark" aria-hidden="true"></span><div>
+              </div>
+              <div class="ft"><span class="ft__mark" aria-hidden="true"></span>
                 <p class="ft__name">Live map flexibility</p>
                 <p class="ft__desc">Match live floor plans to physical spaces.</p>
-              </div></div>
-              <div class="ft"><span class="ft__mark" aria-hidden="true"></span><div>
+              </div>
+              <div class="ft"><span class="ft__mark" aria-hidden="true"></span>
                 <p class="ft__name">Video/LED wall layout sync</p>
                 <p class="ft__desc">Pull processor layouts in without rebuilding.</p>
-              </div></div>
+              </div>
             </div>
           </section>
 
@@ -190,22 +187,22 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
               <h3 class="p__name">Deeper control over security</h3>
             </div>
             <div class="features">
-              <div class="ft"><span class="ft__mark" aria-hidden="true"></span><div>
+              <div class="ft"><span class="ft__mark" aria-hidden="true"></span>
                 <p class="ft__name">Audit trails</p>
                 <p class="ft__desc">Trace each action to a person and a time.</p>
-              </div></div>
-              <div class="ft"><span class="ft__mark" aria-hidden="true"></span><div>
+              </div>
+              <div class="ft"><span class="ft__mark" aria-hidden="true"></span>
                 <p class="ft__name">Live monitoring</p>
                 <p class="ft__desc">See device, display, and audio status live.</p>
-              </div></div>
-              <div class="ft"><span class="ft__mark" aria-hidden="true"></span><div>
+              </div>
+              <div class="ft"><span class="ft__mark" aria-hidden="true"></span>
                 <p class="ft__name">Sign-in and session control</p>
                 <p class="ft__desc">Control who signs in and stays active.</p>
-              </div></div>
-              <div class="ft"><span class="ft__mark" aria-hidden="true"></span><div>
+              </div>
+              <div class="ft"><span class="ft__mark" aria-hidden="true"></span>
                 <p class="ft__name">In-product support</p>
                 <p class="ft__desc">Raise requests with context already attached.</p>
-              </div></div>
+              </div>
             </div>
           </section>
         </div>
