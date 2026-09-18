@@ -31,12 +31,12 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
   body{background:#fff}.hub-link{display:none}
   .sheet{margin:0;box-shadow:none;page-break-after:always;break-after:page}
   .mast,.mast__hero,.mast__scrim,.mast__rule,.mast__date-gold,.middle__step,.foot,
-  .ledger__num,.close__rule,.mast__date-top{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .promise__num,.ftile,.close__rule{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
 
-/* MASTHEAD - full hero (mesh + floorplan), full bleed */
-.mast{position:relative;height:356px;overflow:hidden;
-  padding:36px var(--pad) 30px;
+/* MASTHEAD */
+.mast{position:relative;height:340px;overflow:hidden;
+  padding:32px var(--pad) 28px;
   background:linear-gradient(152deg,#10232D 0%,#0A161C 62%,#06121A 100%);
   color:var(--off-white)}
 .mast__hero{position:absolute;inset:0;width:100%;height:100%;
@@ -52,85 +52,87 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 .mast__rule{position:absolute;left:0;right:0;bottom:0;height:4px;
   background:var(--mint);z-index:3}
 
-/* MASTHEAD GRID - 1fr / 188px */
 .mast__grid{position:relative;z-index:2;height:100%;
   display:grid;
-  grid-template-columns:1fr 188px;
+  grid-template-columns:1fr 160px;
   grid-template-rows:auto auto 1fr auto;
-  column-gap:32px}
-.mast__top{grid-column:1 / span 2;display:flex;justify-content:space-between;align-items:center;gap:20px}
-.mast__brand{display:flex;align-items:center;gap:12px}
+  column-gap:28px}
+
+.mast__top{grid-column:1 / span 2;display:flex;align-items:center;gap:12px}
 .mast__logo{height:24px;width:132px}
-.mast__kicker{font-family:var(--font);font-weight:700;font-size:10px;
-  letter-spacing:0.22em;text-transform:uppercase;color:rgba(104,227,190,0.85)}
 
-.mast__announce{grid-column:1;grid-row:2;margin-top:22px;
+.mast__announce{grid-column:1;grid-row:2;margin-top:20px;
   font-family:var(--font);font-weight:700;font-size:10px;
-  letter-spacing:0.20em;text-transform:uppercase;color:var(--mint)}
+  letter-spacing:0.22em;text-transform:uppercase;color:var(--mint)}
+.mast__announce span{color:rgba(104,227,190,0.5);margin-right:8px}
 
-.mast__theme{grid-column:1;grid-row:3;align-self:start;margin-top:12px;
+.mast__theme{grid-column:1;grid-row:3;align-self:start;margin-top:10px;
   font-family:var(--font);font-weight:700;font-size:42px;
   line-height:1.06;letter-spacing:-0.03em;color:var(--off-white);
   max-width:430px}
 .mast__theme em{font-style:normal;color:var(--mint)}
 
-/* date plate - the right rail's anchor */
-.mast__date{grid-column:2;grid-row:3;align-self:start;margin-top:14px;
+.mast__date{grid-column:2;grid-row:3;align-self:start;margin-top:12px;
   display:flex;flex-direction:column;align-items:flex-end;text-align:right}
-.mast__date-top{width:188px;height:1px;background:rgba(104,227,190,0.42)}
-.mast__date-label{margin-top:10px;
-  font-family:var(--font);font-weight:700;font-size:9.5px;
-  letter-spacing:0.22em;text-transform:uppercase;color:rgba(235,245,248,0.62)}
-.mast__date-value{margin-top:6px;
+.mast__date-label{font-family:var(--font);font-weight:700;font-size:9.5px;
+  letter-spacing:0.22em;text-transform:uppercase;color:rgba(235,245,248,0.55)}
+.mast__date-value{margin-top:8px;
   font-family:var(--font);font-weight:700;font-size:26px;
   line-height:1;letter-spacing:-0.02em;color:var(--mint)}
-.mast__date-gold{margin-top:10px;width:56px;height:2px;background:var(--gold)}
+.mast__date-gold{margin-top:10px;width:48px;height:2px;background:var(--gold)}
 
-.mast__sub{grid-column:1;grid-row:4;
+.mast__sub{grid-column:1;grid-row:4;margin-top:14px;
   font-family:var(--font-body);font-weight:400;font-size:13px;
-  line-height:1.62;color:rgba(235,245,248,0.82);max-width:430px;
-  border-top:1px solid rgba(104,227,190,0.16);padding-top:16px}
+  line-height:1.62;color:rgba(235,245,248,0.82);max-width:430px}
 
-/* THRESHOLD - dark to white handoff */
-.middle__step{height:16px;flex:0 0 16px;
+/* THRESHOLD */
+.middle__step{height:14px;flex:0 0 14px;
   background:linear-gradient(to bottom,#E4EDF0 0%,var(--off-white) 100%)}
 
-/* MIDDLE - chapter title + split proof ledger */
+/* MIDDLE — 3 Promises with icon-led features */
 .middle{flex:1 1 auto;display:flex;flex-direction:column;
-  padding:18px var(--pad) 14px;justify-content:flex-start}
-.middle__title{font-family:var(--font);font-weight:700;font-size:24px;
+  padding:16px var(--pad) 12px}
+.middle__title{font-family:var(--font);font-weight:700;font-size:22px;
   line-height:1.14;letter-spacing:-0.02em;color:var(--ink-strong)}
 .middle__rule{width:40px;height:3px;background:var(--accent-light);
-  margin:8px 0 12px}
+  margin:6px 0 10px}
 
-.ledger{display:flex;flex-direction:column}
-.row{display:grid;grid-template-columns:214px 1fr;column-gap:30px;
-  padding:16px 0;border-top:1px solid rgba(53,79,92,0.16)}
-.row:first-of-type{border-top:2px solid var(--accent-light)}
-.row:last-of-type{border-bottom:1px solid rgba(53,79,92,0.16)}
-.row__lead{align-self:start;min-width:0}
-.ledger__num{display:block;font-family:var(--font);font-weight:700;
-  font-size:40px;line-height:1;letter-spacing:-0.02em;
-  color:var(--accent-light);margin-bottom:8px}
-.row__name{font-family:var(--font);font-weight:700;font-size:16.5px;
-  line-height:1.2;letter-spacing:-0.015em;color:var(--ink-strong);
-  margin-bottom:8px}
-.row__benefit{font-family:var(--font-body);font-weight:400;font-size:11.5px;
-  line-height:1.5;color:var(--navy-muted);max-width:190px}
+/* Promise block */
+.promise{display:grid;grid-template-columns:200px 1fr;column-gap:28px;
+  padding:14px 0;border-top:1px solid rgba(53,79,92,0.14)}
+.promise:first-of-type{border-top:2px solid var(--accent-light)}
+.promise:last-of-type{border-bottom:1px solid rgba(53,79,92,0.14)}
 
-.features{min-width:0;display:flex;flex-direction:column}
-.feature{display:grid;grid-template-columns:178px 1fr;column-gap:20px;
-  align-items:baseline;padding:6.5px 0;
-  border-top:1px solid rgba(53,79,92,0.09)}
-.feature:first-child{border-top:none;padding-top:1px}
+.promise__lead{display:flex;flex-direction:column;gap:6px}
+.promise__num{font-family:var(--font);font-weight:700;font-size:32px;
+  line-height:1;letter-spacing:-0.02em;color:var(--accent-light)}
+.promise__name{font-family:var(--font);font-weight:700;font-size:15px;
+  line-height:1.2;letter-spacing:-0.015em;color:var(--ink-strong)}
+.promise__benefit{font-family:var(--font-body);font-weight:400;font-size:11.5px;
+  line-height:1.5;color:var(--navy-muted);max-width:180px}
+
+/* Right features — icon-led rows */
+.features{display:flex;flex-direction:column}
+.feature{display:flex;align-items:flex-start;gap:10px;
+  padding:5px 0;border-top:1px solid rgba(53,79,92,0.08)}
+.feature:first-child{border-top:none;padding-top:0}
 .feature:last-child{padding-bottom:0}
-.features__name{font-family:var(--font-body);font-weight:600;font-size:11.5px;
+
+/* Soft-icon tile — compact one-pager version */
+.ftile{display:flex;align-items:center;justify-content:center;
+  width:36px;height:36px;border-radius:10px;flex:none;
+  background:linear-gradient(155deg,#E6F5EF 0%,#F3FAF8 100%);
+  box-shadow:inset 0 0 0 1px rgba(43,158,128,0.14)}
+.ftile svg{width:20px;height:20px;display:block}
+
+.feature__body{display:flex;flex-direction:column;gap:1px;min-width:0}
+.feature__name{font-family:var(--font);font-weight:600;font-size:12px;
   line-height:1.3;color:var(--ink-strong)}
-.features__teaser{font-family:var(--font-body);font-weight:400;font-size:11px;
+.feature__teaser{font-family:var(--font-body);font-weight:400;font-size:11px;
   line-height:1.4;color:var(--navy-muted)}
 
-/* CLOSE - compact information close */
-.close{margin-top:auto;padding:0 var(--pad) 24px}
+/* CLOSE */
+.close{margin-top:auto;padding:0 var(--pad) 22px}
 .close__rule{width:40px;height:3px;background:var(--accent-light);margin-bottom:8px}
 .close__info{font-family:var(--font-body);font-size:11.5px;line-height:1.5;color:var(--ink)}
 .close__info strong{font-family:var(--font);font-weight:700;color:var(--ink-strong)}
@@ -139,7 +141,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
   line-height:1.5;color:var(--navy-muted)}
 .close__contact strong{font-family:var(--font);font-weight:700;color:var(--ink-strong)}
 
-/* FOOTER - navy bookend (no mesh echo) */
+/* FOOTER */
 .foot{background:var(--navy-deep);color:rgba(235,245,248,0.45);
   padding:11px var(--pad) 13px;display:flex;justify-content:space-between;align-items:center;gap:12px;
   font-family:var(--font);font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase;
@@ -157,7 +159,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 <article class="doc">
   <section class="sheet doc-page">
 
-    <!-- MASTHEAD - full hero (mesh + floorplan), full bleed -->
+    <!-- MASTHEAD -->
     <header class="mast">
       <img class="mast__hero" src="assets/textures/luci-bg-hero-with-plan-transparent-1920x1080.svg" alt="" aria-hidden="true">
       <span class="mast__scrim" aria-hidden="true"></span>
@@ -165,18 +167,14 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 
       <div class="mast__grid">
         <div class="mast__top">
-          <div class="mast__brand">
-            <img class="mast__logo" src="assets/logos/luci-wordmark-white-320.png?v=7" alt="LUCI Systems" width="132" height="24">
-          </div>
-          <span class="mast__kicker">What&rsquo;s New</span>
+          <img class="mast__logo" src="assets/logos/luci-wordmark-white-320.png?v=7" alt="LUCI Systems" width="132" height="24">
         </div>
 
-        <p class="mast__announce">A new version of LUCI is coming</p>
+        <p class="mast__announce"><span>What&rsquo;s New</span>A new version of LUCI is coming</p>
 
         <h1 class="mast__theme">Putting the power of <em>programming</em> in your hands</h1>
 
         <div class="mast__date">
-          <span class="mast__date-top" aria-hidden="true"></span>
           <span class="mast__date-label">Release date</span>
           <span class="mast__date-value">January 19</span>
           <span class="mast__date-gold" aria-hidden="true"></span>
@@ -186,67 +184,127 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
       </div>
     </header>
 
-    <!-- THRESHOLD - dark to white handoff -->
+    <!-- THRESHOLD -->
     <div class="middle__step" aria-hidden="true"></div>
 
-    <!-- MIDDLE - The 3 Promises of New LUCI - split proof ledger -->
+    <!-- MIDDLE — 3 Promises with icon-led features -->
     <div class="middle">
       <h2 class="middle__title">The 3 Promises of New LUCI</h2>
       <div class="middle__rule" aria-hidden="true"></div>
 
-      <div class="ledger">
+      <!-- Promise 01 — Operate -->
+      <article class="promise">
+        <div class="promise__lead">
+          <span class="promise__num">01</span>
+          <h3 class="promise__name">Greater control of the room</h3>
+          <p class="promise__benefit">Operate from the room with the controls you need.</p>
+        </div>
+        <div class="features">
+          <div class="feature">
+            <span class="ftile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" fill="#68E3BE" fill-opacity="0.18" stroke="#2b9e80" stroke-width="1.8"/><path d="M8 10h8M8 14h8M8 18h5" stroke="#2b9e80" stroke-width="1.5" stroke-linecap="round"/><circle cx="16.5" cy="18" r="1" fill="#CEB06E"/></svg></span>
+            <div class="feature__body">
+              <p class="feature__name">Venue panels</p>
+              <p class="feature__teaser">Put room controls where work happens.</p>
+            </div>
+          </div>
+          <div class="feature">
+            <span class="ftile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="13" width="18" height="8" rx="1.5" fill="#68E3BE" fill-opacity="0.18" stroke="#2b9e80" stroke-width="1.8"/><rect x="3" y="3" width="18" height="8" rx="1.5" stroke="#2b9e80" stroke-width="1.8" stroke-opacity="0.5"/><path d="M7 7h4M7 17h4" stroke="#CEB06E" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+            <div class="feature__body">
+              <p class="feature__name">Staging</p>
+              <p class="feature__teaser">Build the next look before applying it.</p>
+            </div>
+          </div>
+          <div class="feature">
+            <span class="ftile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 9v6h4l5 4V5l-5 4H4z" fill="#68E3BE" fill-opacity="0.18" stroke="#2b9e80" stroke-width="1.8" stroke-linejoin="round"/><path d="M17 8a4 4 0 0 1 0 8" stroke="#2b9e80" stroke-width="1.8" stroke-linecap="round"/><path d="M19.5 6a7 7 0 0 1 0 12" stroke="#CEB06E" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+            <div class="feature__body">
+              <p class="feature__name">Audio group control</p>
+              <p class="feature__teaser">Adjust linked zones without losing their balance.</p>
+            </div>
+          </div>
+        </div>
+      </article>
 
-        <article class="row">
-          <div class="row__lead">
-            <span class="ledger__num">01</span>
-            <h3 class="row__name">Greater control of the room</h3>
-            <p class="row__benefit">Operate from the room with the controls you need.</p>
+      <!-- Promise 02 — Make it yours -->
+      <article class="promise">
+        <div class="promise__lead">
+          <span class="promise__num">02</span>
+          <h3 class="promise__name">More flexible control of your view</h3>
+          <p class="promise__benefit">Shape the interface around your property and operation.</p>
+        </div>
+        <div class="features">
+          <div class="feature">
+            <span class="ftile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z" fill="#68E3BE" fill-opacity="0.14" stroke="#2b9e80" stroke-width="1.8"/><path d="M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18M3 12h18" stroke="#2b9e80" stroke-width="1.5" stroke-opacity="0.6"/><circle cx="12" cy="12" r="2" fill="#CEB06E"/></svg></span>
+            <div class="feature__body">
+              <p class="feature__name">Customizable interface</p>
+              <p class="feature__teaser">Bring your property&rsquo;s identity into LUCI.</p>
+            </div>
           </div>
-          <div class="features">
-            <div class="feature"><span class="features__name">Venue panels</span><span class="features__teaser">Put room controls where work happens.</span></div>
-            <div class="feature"><span class="features__name">Staging</span><span class="features__teaser">Build the next look before applying it.</span></div>
-            <div class="feature"><span class="features__name">Audio group control</span><span class="features__teaser">Adjust linked zones without losing their balance.</span></div>
+          <div class="feature">
+            <span class="ftile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M9 4l-6 2v14l6-2 6 2 6-2V4l-6 2-6-2z" fill="#68E3BE" fill-opacity="0.14" stroke="#2b9e80" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 4v14M15 6v14" stroke="#2b9e80" stroke-width="1.5" stroke-opacity="0.5"/><circle cx="12" cy="11" r="1.5" fill="#CEB06E"/></svg></span>
+            <div class="feature__body">
+              <p class="feature__name">Live map flexibility</p>
+              <p class="feature__teaser">Match live floor plans to physical spaces.</p>
+            </div>
           </div>
-        </article>
+          <div class="feature">
+            <span class="ftile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#2b9e80" stroke-width="1.8"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18" stroke="#2b9e80" stroke-width="1.5" stroke-opacity="0.4"/><rect x="9" y="9" width="6" height="6" fill="#68E3BE" fill-opacity="0.22" stroke="#CEB06E" stroke-width="1.5"/></svg></span>
+            <div class="feature__body">
+              <p class="feature__name">Video/LED wall layout sync</p>
+              <p class="feature__teaser">Pull processor layouts into LUCI without rebuilding.</p>
+            </div>
+          </div>
+        </div>
+      </article>
 
-        <article class="row">
-          <div class="row__lead">
-            <span class="ledger__num">02</span>
-            <h3 class="row__name">More flexible control of your view</h3>
-            <p class="row__benefit">Shape the interface around your property and operation.</p>
+      <!-- Promise 03 — See and secure -->
+      <article class="promise">
+        <div class="promise__lead">
+          <span class="promise__num">03</span>
+          <h3 class="promise__name">Deeper control over security</h3>
+          <p class="promise__benefit">See activity, govern access, and bring support closer.</p>
+        </div>
+        <div class="features">
+          <div class="feature">
+            <span class="ftile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 4h14v16H5z" fill="#68E3BE" fill-opacity="0.14" stroke="#2b9e80" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 8h8M8 12h8M8 16h5" stroke="#2b9e80" stroke-width="1.5" stroke-linecap="round"/><circle cx="16.5" cy="16" r="1" fill="#CEB06E"/></svg></span>
+            <div class="feature__body">
+              <p class="feature__name">Audit trails</p>
+              <p class="feature__teaser">Trace each action to person and time.</p>
+            </div>
           </div>
-          <div class="features">
-            <div class="feature"><span class="features__name">Customizable interface</span><span class="features__teaser">Bring your property&rsquo;s identity into LUCI.</span></div>
-            <div class="feature"><span class="features__name">Live map flexibility</span><span class="features__teaser">Match live floor plans to physical spaces.</span></div>
-            <div class="feature"><span class="features__name">Video/LED wall layout sync</span><span class="features__teaser">Pull processor layouts into LUCI without rebuilding.</span></div>
+          <div class="feature">
+            <span class="ftile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" fill="#68E3BE" fill-opacity="0.14" stroke="#2b9e80" stroke-width="1.8"/><circle cx="12" cy="12" r="3" stroke="#2b9e80" stroke-width="1.8"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3" stroke="#CEB06E" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+            <div class="feature__body">
+              <p class="feature__name">Live monitoring</p>
+              <p class="feature__teaser">See device, display, and audio status live.</p>
+            </div>
           </div>
-        </article>
+          <div class="feature">
+            <span class="ftile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="10" rx="2" fill="#68E3BE" fill-opacity="0.18" stroke="#2b9e80" stroke-width="1.8"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="#2b9e80" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="16" r="1.5" fill="#CEB06E"/></svg></span>
+            <div class="feature__body">
+              <p class="feature__name">Sign-in/session</p>
+              <p class="feature__teaser">Control who signs in and stays active.</p>
+            </div>
+          </div>
+          <div class="feature">
+            <span class="ftile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" fill="#68E3BE" fill-opacity="0.18" stroke="#2b9e80" stroke-width="1.8"/><path d="M12 8v4l2.5 2.5" stroke="#2b9e80" stroke-width="1.5" stroke-linecap="round"/><path d="M5 5l2 2M19 5l-2 2M5 19l2-2M19 19l-2-2" stroke="#CEB06E" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+            <div class="feature__body">
+              <p class="feature__name">In-product support</p>
+              <p class="feature__teaser">Raise support requests with context already attached.</p>
+            </div>
+          </div>
+        </div>
+      </article>
 
-        <article class="row">
-          <div class="row__lead">
-            <span class="ledger__num">03</span>
-            <h3 class="row__name">Deeper control over security</h3>
-            <p class="row__benefit">See activity, govern access, and bring support closer.</p>
-          </div>
-          <div class="features">
-            <div class="feature"><span class="features__name">Audit trails</span><span class="features__teaser">Trace each action to person and time.</span></div>
-            <div class="feature"><span class="features__name">Live monitoring</span><span class="features__teaser">See device, display, and audio status live.</span></div>
-            <div class="feature"><span class="features__name">Sign-in/session</span><span class="features__teaser">Control who signs in and stays active.</span></div>
-            <div class="feature"><span class="features__name">In-product support</span><span class="features__teaser">Raise support requests with context already attached.</span></div>
-          </div>
-        </article>
-
-      </div>
     </div>
 
-    <!-- CLOSE - compact information close -->
+    <!-- CLOSE -->
     <div class="close">
       <div class="close__rule" aria-hidden="true"></div>
       <p class="close__info"><strong>For more information, visit</strong> <span class="close__url">[UPGRADE GUIDE URL]</span>.</p>
       <p class="close__contact"><strong>[NAME]</strong> &middot; [TITLE]<br>[EMAIL] &middot; [PHONE]</p>
     </div>
 
-    <!-- FOOTER - navy bookend -->
+    <!-- FOOTER -->
     <footer class="foot">
       <span class="foot__wordmark">LUCI</span>
       <span>What&rsquo;s New &middot; For LUCI customers and prospects</span>
