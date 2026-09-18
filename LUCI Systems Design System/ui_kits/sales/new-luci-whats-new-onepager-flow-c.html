@@ -31,7 +31,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 @media print{
   body{background:#fff}.hub-link{display:none}
   .sheet{margin:0;box-shadow:none;page-break-after:always}
-  .mast,.mast__mesh,.mast__scrim,.field,.field__shot,.field__scrim,.copy,.p,.p__mesh,.p__scrim,.p__inner,.foot,.close,.p__num{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .mast,.mast__mesh,.mast__scrim,.field,.field__shot,.field__scrim,.copy,.p,.p__inner,.foot,.close,.p__num{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
 
 /* ── HEADER (Variant B) ──────────────────────────────────────────────── */
@@ -75,14 +75,10 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 .field__scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
   background:
     linear-gradient(to bottom,
-      rgba(245,248,250,0.96) 0%, rgba(245,248,250,0.90) 5%,
-      rgba(245,248,250,0.30) 12%, rgba(245,248,250,0) 22%),
+      rgba(245,248,250,0.94) 0%, rgba(245,248,250,0.80) 6%,
+      rgba(245,248,250,0.18) 16%, rgba(245,248,250,0) 26%),
     linear-gradient(to right,
-      rgba(245,248,250,0.82) 0%, rgba(245,248,250,0.62) 14%,
-      rgba(245,248,250,0.24) 32%, transparent 58%),
-    linear-gradient(135deg,
-      rgba(220,230,238,0.88) 0%, rgba(220,230,238,0.68) 24%,
-      rgba(220,230,238,0.30) 48%, transparent 68%)}}
+      rgba(245,248,250,0.50) 0%, rgba(245,248,250,0.22) 18%, transparent 44%)}}
 
 .copy{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;
   padding:18px 32px 34px}
@@ -96,50 +92,31 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
    base, same mesh texture at low opacity, directional scrim so type reads.
    Translucent so the map shows through — the edge is soft because the
    map reads through the plate, not because of a paper mat. */
-.p{position:relative;color:var(--off-white);padding:18px 20px 20px;
-  border-radius:14px;
-  box-shadow:0 8px 22px rgba(10,22,28,0.10)}
-.p::before{content:"";position:absolute;inset:0;z-index:0;border-radius:14px;
-  background:linear-gradient(152deg,
-    rgba(10,22,28,0.74) 0%, rgba(6,18,26,0.68) 60%, rgba(10,22,28,0.74) 100%);
-  -webkit-mask-image:radial-gradient(ellipse 100% 100% at center,#000 84%,transparent 100%);
-  mask-image:radial-gradient(ellipse 100% 100% at center,#000 84%,transparent 100%)}
-.p__mesh{position:absolute;inset:0;z-index:0;pointer-events:none;
-  width:100%;height:100%;object-fit:cover;object-position:60% 30%;opacity:0.22;
-  -webkit-mask-image:radial-gradient(ellipse 100% 100% at center,#000 84%,transparent 100%);
-  mask-image:radial-gradient(ellipse 100% 100% at center,#000 84%,transparent 100%)}
-.p__scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:linear-gradient(100deg,
-    rgba(8,18,24,0.55) 0%, rgba(8,18,24,0.30) 50%, rgba(8,18,24,0.10) 100%);
-  -webkit-mask-image:radial-gradient(ellipse 100% 100% at center,#000 84%,transparent 100%);
-  mask-image:radial-gradient(ellipse 100% 100% at center,#000 84%,transparent 100%)}
-.p__inner{position:relative;z-index:2}
+.p{position:relative;color:var(--ink);padding:18px 20px 20px;
+  border-radius:16px;
+  background:linear-gradient(160deg,#F4F7F9 0%,#E9EEF1 100%);
+  box-shadow:inset 0 0 0 1px rgba(43,158,128,0.20)}
+.p__inner{position:relative;z-index:1}
 .p:nth-child(3){grid-column:1 / -1;justify-self:start;width:62%;padding:20px 24px 22px}
 
 .p__head{display:flex;align-items:baseline;gap:11px}
-/* Gold numeral = one gold per card, same rule as the header's one gold word. */
-.p__num{flex:none;font-family:var(--font);font-weight:700;font-size:19px;
-  line-height:1;letter-spacing:-0.02em;color:var(--gold)}
+.p__num{flex:none;font-family:var(--display);font-weight:700;font-size:17px;
+  line-height:1;letter-spacing:0.06em;color:var(--accent-light);padding-top:3px}
 .p__name{font-family:var(--font);font-weight:700;font-size:18px;
-  line-height:1.15;letter-spacing:-0.02em;color:var(--off-white)}
+  line-height:1.15;letter-spacing:-0.015em;color:var(--ink-strong)}
 .p:nth-child(3) .p__name{font-size:19px}
-/* Short lead under the promise name, from the locked copy. Quieter than
-   the name, present enough to orient. */
 .p__lead{margin-top:6px;font-family:var(--font-body);font-weight:400;font-size:11.5px;
-  line-height:1.45;color:rgba(235,245,248,0.72);max-width:34ch}
+  line-height:1.45;color:var(--navy-muted);max-width:34ch}
 .p:nth-child(3) .p__lead{font-size:12px}
 
-/* Mint feature names = the one structural accent on the plate, same role
-   as mint in the header (kicker, date). Bigger than the prior 12.5px so
-   they actually scan — this is the magnetism, from type not chrome. */
 .features{margin:14px 0 0;display:flex;flex-direction:column;gap:10px}
 .p:nth-child(3) .features{display:grid;grid-template-columns:1fr 1fr;gap:10px 26px}
 .ft{padding:0}
 .ft dt{display:block;font-family:var(--font);font-weight:700;font-size:14px;
-  letter-spacing:-0.01em;color:var(--mint);line-height:1.2}
+  letter-spacing:-0.01em;color:var(--ink-strong);line-height:1.2}
 .p:nth-child(3) .ft dt{font-size:14.5px}
 .ft dd{display:block;margin:3px 0 0;font-family:var(--font-body);font-weight:400;font-size:11px;
-  line-height:1.45;color:rgba(235,245,248,0.82)}
+  line-height:1.45;color:var(--navy-muted)}
 .p:nth-child(3) .ft dd{max-width:30ch}
 
 /* ── FOOTER (includes "for more information") ────────────────────────── */
@@ -187,8 +164,6 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 
         <div class="promises">
           <section class="p">
-            <img class="p__mesh" src="assets/textures/luci-bg-hero-with-plan-transparent-1920x1080.svg" alt="" aria-hidden="true">
-            <span class="p__scrim" aria-hidden="true"></span>
             <div class="p__inner">
               <div class="p__head">
                 <span class="p__num">01</span>
@@ -204,12 +179,10 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
           </section>
 
           <section class="p">
-            <img class="p__mesh" src="assets/textures/luci-bg-hero-with-plan-transparent-1920x1080.svg" alt="" aria-hidden="true">
-            <span class="p__scrim" aria-hidden="true"></span>
             <div class="p__inner">
               <div class="p__head">
                 <span class="p__num">02</span>
-                <h3 class="p__name">More flexible control of your view</h3>
+                <h3 class="p__name">Flexible control of your view</h3>
               </div>
               <p class="p__lead">Shape the interface around your property and operation.</p>
               <dl class="features">
@@ -221,8 +194,6 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
           </section>
 
           <section class="p">
-            <img class="p__mesh" src="assets/textures/luci-bg-hero-with-plan-transparent-1920x1080.svg" alt="" aria-hidden="true">
-            <span class="p__scrim" aria-hidden="true"></span>
             <div class="p__inner">
               <div class="p__head">
                 <span class="p__num">03</span>
