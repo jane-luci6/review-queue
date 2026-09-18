@@ -4,230 +4,197 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>LUCI — What's New · Flow C R4 · Three promises</title>
+<title>LUCI — What's New · Flow C R5 · Three promises</title>
 <link rel="stylesheet" href="../../assets/fonts/luci-brand-fonts.css">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --navy-deep:#0A161C;--navy:#10232D;--navy-mid:#314955;--navy-muted:#49616E;
-  --mint:#68E3BE;--mint-rgb:104,227,190;--mint-dark:#2b9e80;--accent-light:#2b9e80;
+  --mint:#68E3BE;--mint-dark:#2b9e80;--accent-light:#2b9e80;
   --gold:#EDD086;--gold-deep:#CEB06E;
-  --off-white:#F5F8FA;--tint:#EEF2F4;--rule-light:#DBE1E4;
+  --off-white:#F5F8FA;--tint:#EDF2F4;--rule-light:#DCE3E6;
   --ink:#354F5C;--ink-strong:#1C2B33;
   --font:'Space Grotesk','Trebuchet MS',sans-serif;
   --font-body:'Inter','Space Grotesk','Trebuchet MS',sans-serif;
-  --pad:56px;
+  --pad:58px;
 }
 html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:14px;line-height:1.6}
 .hub-link{max-width:816px;margin:0 auto;padding:14px 16px 6px;font-family:var(--font);font-size:11px;text-align:center;color:var(--navy-muted)}
 .hub-link a{color:var(--navy-mid);font-weight:600;text-decoration:none}
-.hub-link a:hover{text-decoration:underline}
 .doc{max-width:816px;margin:0 auto}
-.sheet{position:relative;width:816px;height:1056px;background:var(--off-white);display:flex;flex-direction:column;overflow:hidden}
+.sheet{position:relative;width:816px;height:1056px;background:var(--off-white);
+  display:flex;flex-direction:column;overflow:hidden}
 @media screen{.sheet{margin:22px auto;box-shadow:0 6px 28px rgba(10,22,28,0.16)}}
 @page{size:letter;margin:0}
 @media print{
   body{background:#fff}.hub-link{display:none}
   .sheet{margin:0;box-shadow:none;page-break-after:always;break-after:page}
-  .mast,.mast__hero,.mast__scrim,.mast__rule,.step,.foot,
-  .ptile,.close__rule,.mid__rule{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .mast,.mast__shot,.mast__scrim,.mast__rule,.mast__fade,.foot,.close,
+  .promises,.p__num,.p__rule,.mid__rule,.close__rule{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
 
-/* ── MASTHEAD ─────────────────────────────────────────────────────────── */
-.mast{position:relative;height:352px;flex:0 0 352px;overflow:hidden;
-  padding:34px var(--pad) 30px;
-  background:linear-gradient(152deg,#10232D 0%,#0A161C 62%,#06121A 100%);
-  color:var(--off-white)}
-.mast__hero{position:absolute;inset:0;width:100%;height:100%;
-  object-fit:cover;object-position:64% 18%;
-  opacity:0.9;z-index:0;pointer-events:none}
+/* ══ MASTHEAD — the real product, heavily scrimmed ═══════════════════════ */
+.mast{position:relative;flex:0 0 372px;height:372px;overflow:hidden;
+  padding:36px var(--pad) 32px;background:var(--navy-deep);color:var(--off-white)}
+.mast__shot{position:absolute;top:0;bottom:0;left:-4%;width:132%;height:100%;
+  object-fit:cover;object-position:46% 36%;
+  opacity:0.62;z-index:0;pointer-events:none}
+/* Deep scrim on the left so type sits on near-solid navy; product breathes right */
 .mast__scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
   background:
-    radial-gradient(70% 78% at 20% 40%,
-      rgba(8,18,24,0.80) 0%, rgba(8,18,24,0.54) 40%, rgba(8,18,24,0.18) 66%, transparent 86%),
-    linear-gradient(100deg,
-      rgba(8,18,24,0.90) 0%, rgba(8,18,24,0.82) 34%, rgba(8,18,24,0.50) 60%,
-      rgba(8,18,24,0.16) 84%, rgba(8,18,24,0.04) 100%)}
-.mast__rule{position:absolute;left:0;right:0;bottom:0;height:4px;
-  background:var(--mint);z-index:3}
+    linear-gradient(94deg,
+      rgba(8,18,24,0.97) 0%, rgba(8,18,24,0.95) 30%, rgba(8,18,24,0.80) 50%,
+      rgba(8,18,24,0.48) 70%, rgba(8,18,24,0.30) 100%),
+    linear-gradient(to bottom,
+      rgba(8,18,24,0.55) 0%, rgba(8,18,24,0) 26%, rgba(8,18,24,0) 62%, rgba(8,18,24,0.72) 100%)}
+.mast__rule{position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--mint);z-index:4}
 
-.mast__inner{position:relative;z-index:2;height:100%;
-  display:flex;flex-direction:column}
-
-.mast__logo{height:24px;width:132px;display:block}
-
-.mast__announce{margin-top:26px;
-  font-family:var(--font);font-weight:700;font-size:10px;
-  letter-spacing:0.22em;text-transform:uppercase;color:var(--mint)}
-
-.mast__theme{margin-top:14px;
-  font-family:var(--font);font-weight:700;font-size:38px;
-  line-height:1.06;letter-spacing:-0.03em;color:var(--off-white);
-  max-width:14ch}
+.mast__inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column}
+.mast__logo{height:25px;width:138px;display:block}
+.mast__announce{margin-top:30px;font-family:var(--font);font-weight:700;font-size:10px;
+  letter-spacing:0.24em;text-transform:uppercase;color:var(--mint)}
+.mast__theme{margin-top:18px;font-family:var(--font);font-weight:700;font-size:45px;
+  line-height:1.05;letter-spacing:-0.035em;color:var(--off-white);max-width:15ch}
 .mast__theme em{font-style:normal;color:var(--mint)}
 
-.mast__sub{margin-top:14px;
-  font-family:var(--font-body);font-weight:400;font-size:13.5px;
-  line-height:1.6;color:rgba(235,245,248,0.80);max-width:46ch}
-.mast__sub strong{font-weight:600;color:var(--off-white)}
-
-/* Date sits at the base of the header */
-.mast__date{margin-top:auto;display:flex;align-items:baseline;gap:14px}
+/* Date — base of the header, right side */
+.mast__base{margin-top:auto;display:flex;justify-content:flex-end;align-items:baseline;gap:14px}
 .mast__date-label{font-family:var(--font);font-weight:700;font-size:9.5px;
-  letter-spacing:0.22em;text-transform:uppercase;color:rgba(235,245,248,0.52)}
-.mast__date-value{font-family:var(--font);font-weight:700;font-size:22px;
+  letter-spacing:0.24em;text-transform:uppercase;color:rgba(235,245,248,0.55)}
+.mast__date-value{font-family:var(--font);font-weight:700;font-size:23px;
   line-height:1;letter-spacing:-0.02em;color:var(--mint)}
 
-/* Threshold */
-.step{height:12px;flex:0 0 12px;
-  background:linear-gradient(to bottom,#E4EDF0 0%,var(--off-white) 100%)}
+/* ══ MIDDLE ══════════════════════════════════════════════════════════════ */
+.mid{flex:1 1 auto;display:flex;flex-direction:column;padding:38px var(--pad) 0}
+.mid__kicker{font-family:var(--font);font-weight:700;font-size:9.5px;
+  letter-spacing:0.24em;text-transform:uppercase;color:var(--accent-light)}
+.mid__title{margin-top:10px;font-family:var(--font);font-weight:700;font-size:26px;
+  line-height:1.14;letter-spacing:-0.025em;color:var(--ink-strong)}
+.mid__rule{width:40px;height:3px;background:var(--accent-light);margin-top:14px}
 
-/* ── MIDDLE ───────────────────────────────────────────────────────────── */
-.mid{flex:1 1 auto;display:flex;flex-direction:column;
-  padding:22px var(--pad) 0}
-.mid__title{font-family:var(--font);font-weight:700;font-size:23px;
-  line-height:1.14;letter-spacing:-0.02em;color:var(--ink-strong)}
-.mid__rule{width:40px;height:3px;background:var(--accent-light);margin:10px 0 4px}
+/* Three columns, separated by air + a single hairline */
+.promises{margin-top:34px;display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.p{padding:0 26px;border-left:1px solid var(--rule-light)}
+.p:first-child{padding-left:0;border-left:none}
+.p:last-child{padding-right:0}
 
-/* One promise = one row: icon + label block on the left, features on the right */
-.promise{display:grid;grid-template-columns:238px 1fr;column-gap:36px;
-  padding:16px 0;border-bottom:1px solid var(--rule-light)}
-.promise:last-of-type{border-bottom:none}
+.p__num{font-family:var(--font);font-weight:700;font-size:34px;line-height:1;
+  letter-spacing:-0.03em;color:var(--accent-light)}
+.p__rule{display:block;width:26px;height:2px;background:var(--gold-deep);margin:12px 0 16px}
+.p__name{min-height:2.48em;font-family:var(--font);font-weight:700;font-size:16px;line-height:1.24;
+  letter-spacing:-0.02em;color:var(--ink-strong)}
+.p__benefit{margin-top:9px;font-family:var(--font-body);font-size:11.5px;
+  line-height:1.55;color:var(--ink)}
 
-.promise__lead{display:flex;flex-direction:column}
-.ptile{display:flex;align-items:center;justify-content:center;
-  width:44px;height:44px;border-radius:12px;flex:none;
-  background:linear-gradient(155deg,#E6F5EF 0%,#F3FAF8 100%);
-  box-shadow:inset 0 0 0 1px rgba(43,158,128,0.14)}
-.ptile svg{width:23px;height:23px;display:block}
-.promise__num{margin-top:10px;
-  font-family:var(--font);font-weight:700;font-size:9.5px;
-  letter-spacing:0.22em;text-transform:uppercase;color:var(--accent-light)}
-.promise__name{margin-top:6px;
-  font-family:var(--font);font-weight:700;font-size:17px;
-  line-height:1.2;letter-spacing:-0.02em;color:var(--ink-strong)}
-.promise__benefit{margin-top:7px;
-  font-family:var(--font-body);font-weight:400;font-size:11.5px;
-  line-height:1.5;color:var(--navy-muted)}
-
-/* Features — hairline-separated single lines, no per-item icons */
-.features{display:flex;flex-direction:column;align-self:center}
-.features li{list-style:none;padding:7px 0;
-  border-top:1px solid rgba(53,79,92,0.09);
-  font-family:var(--font-body);font-size:11.5px;line-height:1.5;
-  color:var(--navy-muted)}
-.features li:first-child{border-top:none;padding-top:0}
-.features li:last-child{padding-bottom:0}
-.features b{font-family:var(--font);font-weight:600;font-size:12.5px;
+.p__list{margin-top:26px;list-style:none;display:flex;flex-direction:column;gap:17px}
+.p__list dt{font-family:var(--font);font-weight:600;font-size:12px;line-height:1.3;
   color:var(--ink-strong)}
+.p__list dd{margin-top:3px;font-family:var(--font-body);font-size:11px;line-height:1.5;
+  color:var(--navy-muted)}
 
-/* ── CLOSE ────────────────────────────────────────────────────────────── */
-.close{padding:0 var(--pad) 22px}
+/* ══ CLOSE — tint band, full bleed ═══════════════════════════════════════ */
+.close{margin-top:auto;background:var(--tint);
+  padding:24px var(--pad) 26px;
+  display:flex;justify-content:space-between;align-items:flex-end;gap:32px;
+  border-top:1px solid var(--rule-light)}
 .close__rule{width:40px;height:3px;background:var(--accent-light);margin-bottom:12px}
 .close__info{font-family:var(--font-body);font-size:12px;line-height:1.5;color:var(--ink)}
 .close__info strong{font-family:var(--font);font-weight:700;color:var(--ink-strong)}
-.close__url{font-family:var(--font);font-weight:600;color:var(--accent-light)}
-.close__contact{margin-top:8px;font-family:var(--font-body);font-size:10.5px;
-  line-height:1.55;color:var(--navy-muted)}
+.close__url{display:block;margin-top:4px;font-family:var(--font);font-weight:700;
+  font-size:13px;color:var(--accent-light)}
+.close__contact{font-family:var(--font-body);font-size:10.5px;line-height:1.6;
+  color:var(--navy-muted);text-align:right;flex:none}
 .close__contact strong{font-family:var(--font);font-weight:700;color:var(--ink-strong)}
 
-/* ── FOOTER ───────────────────────────────────────────────────────────── */
-.foot{background:var(--navy-deep);color:rgba(235,245,248,0.45);
-  padding:12px var(--pad) 14px;display:flex;justify-content:space-between;align-items:center;gap:12px;
-  font-family:var(--font);font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase;
-  border-top:1px solid rgba(235,245,248,0.06)}
-.foot__wordmark{font-family:var(--font);font-weight:700;letter-spacing:0.18em;color:rgba(104,227,190,0.7)}
-
-@media print{ .mast{background:var(--navy-deep) !important} }
+/* ══ FOOTER ══════════════════════════════════════════════════════════════ */
+.foot{background:var(--navy-deep);color:rgba(235,245,248,0.42);
+  padding:12px var(--pad) 14px;display:flex;justify-content:space-between;align-items:center;
+  font-family:var(--font);font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase}
+.foot__wordmark{font-weight:700;letter-spacing:0.18em;color:rgba(104,227,190,0.7)}
 </style>
 </head>
 <body>
-<p class="hub-link"><a href="../../index.html">&larr; Design Hub</a> &middot; LUCI What&rsquo;s New &middot; Flow C R4 &middot; Print or Save as PDF (US Letter)</p>
+<p class="hub-link"><a href="../../index.html">&larr; Design Hub</a> &middot; LUCI What&rsquo;s New &middot; Flow C R5 &middot; Print or Save as PDF (US Letter)</p>
 
 <article class="doc">
   <section class="sheet doc-page">
 
     <!-- MASTHEAD -->
     <header class="mast">
-      <img class="mast__hero" src="assets/textures/luci-bg-hero-with-plan-transparent-1920x1080.svg" alt="" aria-hidden="true">
+      <img class="mast__shot" src="assets/new-luci-look-dark.png?v=1" alt="" aria-hidden="true">
       <span class="mast__scrim" aria-hidden="true"></span>
       <span class="mast__rule" aria-hidden="true"></span>
 
       <div class="mast__inner">
-        <img class="mast__logo" src="assets/logos/luci-wordmark-white-320.png?v=7" alt="LUCI Systems" width="132" height="24">
+        <img class="mast__logo" src="assets/logos/luci-wordmark-white-320.png?v=7" alt="LUCI Systems" width="138" height="25">
 
         <p class="mast__announce">A new version of LUCI is coming</p>
 
         <h1 class="mast__theme">Putting the power of <em>programming</em> in your hands</h1>
 
-        <p class="mast__sub"><strong>The new version of LUCI</strong> puts more control in your hands&mdash;with better support behind it.</p>
-
-        <p class="mast__date">
+        <p class="mast__base">
           <span class="mast__date-label">Release date</span>
           <span class="mast__date-value">January 19</span>
         </p>
       </div>
     </header>
 
-    <div class="step" aria-hidden="true"></div>
-
     <!-- MIDDLE -->
     <div class="mid">
+      <p class="mid__kicker">What&rsquo;s new</p>
       <h2 class="mid__title">The 3 Promises of New LUCI</h2>
       <div class="mid__rule" aria-hidden="true"></div>
 
-      <!-- 01 -->
-      <article class="promise">
-        <div class="promise__lead">
-          <span class="ptile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" fill="#68E3BE" fill-opacity="0.18" stroke="#2b9e80" stroke-width="1.8"/><path d="M8 9h8M8 13h8M8 17h5" stroke="#2b9e80" stroke-width="1.5" stroke-linecap="round"/><circle cx="16.5" cy="17" r="1.1" fill="#CEB06E"/></svg></span>
-          <span class="promise__num">Promise 01</span>
-          <h3 class="promise__name">Greater control of the room</h3>
-          <p class="promise__benefit">Operate from the room with the controls you need.</p>
-        </div>
-        <ul class="features">
-          <li><b>Venue panels</b> &mdash; put room controls where the work happens.</li>
-          <li><b>Staging</b> &mdash; build the next look before applying it.</li>
-          <li><b>Audio group control</b> &mdash; adjust linked zones without losing their balance.</li>
-        </ul>
-      </article>
+      <div class="promises">
 
-      <!-- 02 -->
-      <article class="promise">
-        <div class="promise__lead">
-          <span class="ptile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2-6-2z" fill="#68E3BE" fill-opacity="0.16" stroke="#2b9e80" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 4v14M15 6v14" stroke="#2b9e80" stroke-width="1.5" stroke-opacity="0.55"/><circle cx="12" cy="11" r="1.6" fill="#CEB06E"/></svg></span>
-          <span class="promise__num">Promise 02</span>
-          <h3 class="promise__name">More flexible control of your view</h3>
-          <p class="promise__benefit">Shape the interface around your property and operation.</p>
-        </div>
-        <ul class="features">
-          <li><b>Customizable interface</b> &mdash; bring your property&rsquo;s identity into LUCI.</li>
-          <li><b>Live map flexibility</b> &mdash; match live floor plans to physical spaces.</li>
-          <li><b>Video/LED wall layout sync</b> &mdash; pull processor layouts in without rebuilding.</li>
-        </ul>
-      </article>
+        <section class="p">
+          <p class="p__num">01</p>
+          <span class="p__rule" aria-hidden="true"></span>
+          <h3 class="p__name">Greater control of the room</h3>
+          <p class="p__benefit">Operate from the room with the controls you need.</p>
+          <dl class="p__list">
+            <div><dt>Venue panels</dt><dd>Put room controls where the work happens.</dd></div>
+            <div><dt>Staging</dt><dd>Build the next look before applying it.</dd></div>
+            <div><dt>Audio group control</dt><dd>Adjust linked zones without losing their balance.</dd></div>
+          </dl>
+        </section>
 
-      <!-- 03 -->
-      <article class="promise">
-        <div class="promise__lead">
-          <span class="ptile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.7-7 8.5-4.1-.8-7-4.3-7-8.5V6l7-3z" fill="#68E3BE" fill-opacity="0.16" stroke="#2b9e80" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2.2 2.2L15.5 10" stroke="#CEB06E" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span class="promise__num">Promise 03</span>
-          <h3 class="promise__name">Deeper control over security</h3>
-          <p class="promise__benefit">See activity, govern access, and bring support closer.</p>
-        </div>
-        <ul class="features">
-          <li><b>Audit trails</b> &mdash; trace each action to a person and a time.</li>
-          <li><b>Live monitoring</b> &mdash; see device, display, and audio status live.</li>
-          <li><b>Sign-in and session control</b> &mdash; control who signs in and stays active.</li>
-          <li><b>In-product support</b> &mdash; raise requests with context already attached.</li>
-        </ul>
-      </article>
+        <section class="p">
+          <p class="p__num">02</p>
+          <span class="p__rule" aria-hidden="true"></span>
+          <h3 class="p__name">More flexible control of your view</h3>
+          <p class="p__benefit">Shape the interface around your property and operation.</p>
+          <dl class="p__list">
+            <div><dt>Customizable interface</dt><dd>Bring your property&rsquo;s identity into LUCI.</dd></div>
+            <div><dt>Live map flexibility</dt><dd>Match live floor plans to physical spaces.</dd></div>
+            <div><dt>Video/LED wall layout sync</dt><dd>Pull processor layouts in without rebuilding.</dd></div>
+          </dl>
+        </section>
+
+        <section class="p">
+          <p class="p__num">03</p>
+          <span class="p__rule" aria-hidden="true"></span>
+          <h3 class="p__name">Deeper control over security</h3>
+          <p class="p__benefit">See activity, govern access, and bring support closer.</p>
+          <dl class="p__list">
+            <div><dt>Audit trails</dt><dd>Trace each action to a person and a time.</dd></div>
+            <div><dt>Live monitoring</dt><dd>See device, display, and audio status live.</dd></div>
+            <div><dt>Sign-in and session control</dt><dd>Control who signs in and stays active.</dd></div>
+            <div><dt>In-product support</dt><dd>Raise requests with context already attached.</dd></div>
+          </dl>
+        </section>
+
+      </div>
     </div>
 
     <!-- CLOSE -->
     <div class="close">
-      <div class="close__rule" aria-hidden="true"></div>
-      <p class="close__info"><strong>For more information, visit</strong> <span class="close__url">[UPGRADE GUIDE URL]</span>.</p>
+      <div>
+        <div class="close__rule" aria-hidden="true"></div>
+        <p class="close__info"><strong>For more information, visit</strong>
+          <span class="close__url">[UPGRADE GUIDE URL]</span></p>
+      </div>
       <p class="close__contact"><strong>[NAME]</strong> &middot; [TITLE]<br>[EMAIL] &middot; [PHONE]</p>
     </div>
 
