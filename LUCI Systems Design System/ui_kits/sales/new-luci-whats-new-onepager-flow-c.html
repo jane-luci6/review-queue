@@ -138,28 +138,27 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
   font-family:var(--font);font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase}
 .foot__wordmark{font-weight:700;letter-spacing:0.18em;color:rgba(104,227,190,0.7)}
 
-/* ── PAGE 2 — three sections side-by-side, each on its own tint ───────
-   Col 1 Room (3 features) and Col 2 View (3 features) stack vertically;
-   Col 3 Security (4 features) sits as a 2×2 grid. Soft-icon tiles
-   match the brochure capabilities pattern (§5.1). */
+/* ── PAGE 2 — sections stacked vertically, cards in a row under each ──
+   Each section is a full-width band on its own tint. Cards sit in a
+   horizontal row beneath the section header. Soft-icon tiles match
+   the brochure capabilities pattern (§5.1). */
 .p2-head{padding:24px var(--pad) 8px}
 .p2-logo{display:block;height:22px;width:96px;object-fit:contain;margin-bottom:10px}
 .p2-title{font-family:var(--font);font-weight:700;font-size:20px;line-height:1.1;
   letter-spacing:-0.02em;color:var(--ink-strong)}
-.p2-body{flex:1 1 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:0}
-.p2-grp{display:flex;flex-direction:column;padding:20px 18px 18px;gap:14px}
+.p2-body{flex:1 1 auto;display:flex;flex-direction:column}
+.p2-grp{display:flex;flex-direction:column;padding:18px var(--pad) 20px;gap:14px}
 .p2-grp:nth-child(1){background:var(--off-white)}
 .p2-grp:nth-child(2){background:#EAF4EE}
 .p2-grp:nth-child(3){background:#F5EDD8}
-.p2-lockup{display:flex;align-items:baseline;gap:8px;padding-bottom:10px;
+.p2-lockup{display:flex;align-items:baseline;gap:10px;padding-bottom:10px;
   border-bottom:1px solid rgba(43,158,128,0.18)}
-.p2-num{flex:none;font-family:var(--display);font-weight:700;font-size:12px;
+.p2-num{flex:none;font-family:var(--display);font-weight:700;font-size:13px;
   line-height:1;letter-spacing:0.08em;color:var(--accent-light)}
-.p2-grpname{font-family:var(--font);font-weight:700;font-size:13px;
+.p2-grpname{font-family:var(--font);font-weight:700;font-size:14px;
   line-height:1.15;letter-spacing:-0.01em;color:var(--ink-strong)}
-.p2-cards{display:flex;flex-direction:column;gap:10px}
-.p2-grp:nth-child(3) .p2-cards{display:grid;grid-template-columns:1fr 1fr;
-  grid-template-rows:1fr 1fr;gap:10px}
+.p2-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.p2-grp:nth-child(3) .p2-cards{grid-template-columns:repeat(4,1fr)}
 .p2-card{display:flex;flex-direction:column;align-items:flex-start;gap:8px;
   padding:12px;border-radius:14px;background:rgba(255,255,255,0.62);
   box-shadow:inset 0 0 0 1px rgba(43,158,128,0.14)}
