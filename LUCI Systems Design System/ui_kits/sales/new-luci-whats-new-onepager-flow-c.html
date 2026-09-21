@@ -103,17 +103,22 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
    bottom third of the field clear for the L. */
 .promises{flex:1 1 auto;min-height:0;margin:0;padding:0;list-style:none;
   display:grid;grid-template-columns:1fr 1fr;gap:86px 44px;align-content:start}
-.promise{min-width:0;max-width:29ch}
+/* Ghost numeral behind the title: the number sets the scale, the title
+   crosses its lower third, indented so the numeral's opening counter
+   stays readable. */
+.promise{position:relative;min-width:0;max-width:30ch}
 .promise:nth-child(3){grid-column:1;grid-row:2}
-.promise__num{display:block;margin-bottom:12px;font-family:var(--font);font-weight:700;
-  font-size:68px;line-height:0.9;letter-spacing:-0.035em;color:var(--accent-light)}
+.promise__num{position:absolute;top:0;left:-3px;z-index:0;pointer-events:none;
+  font-family:var(--font);font-weight:700;font-size:116px;line-height:0.85;
+  letter-spacing:-0.045em;color:#D8DBDF}
 /* two-line floor keeps 01 and 02 descriptions on a shared baseline */
-.promise__name{margin:0 0 8px;min-height:2.4em;font-family:var(--font);font-weight:700;font-size:20px;
-  line-height:1.2;letter-spacing:-0.022em;color:var(--ink-strong);
-  text-shadow:0 1px 2px rgba(245,248,250,0.85)}
-.promise__lead{margin:0;font-family:var(--font-body);font-weight:400;font-size:13.5px;
+.promise__name{position:relative;z-index:1;margin:56px 0 9px 28px;min-height:2.4em;
+  font-family:var(--font);font-weight:700;font-size:21px;
+  line-height:1.2;letter-spacing:-0.024em;color:var(--ink-strong)}
+.promise__lead{position:relative;z-index:1;margin:0 0 0 28px;
+  font-family:var(--font-body);font-weight:400;font-size:13.5px;
   line-height:1.55;color:var(--navy-muted);
-  text-shadow:0 1px 2px rgba(245,248,250,0.85)}
+  text-shadow:0 1px 2px rgba(245,248,250,0.8)}
 
 /* ── FOOTER (includes "for more information") ────────────────────────── */
 .close{background:var(--tint);padding:18px var(--pad) 20px;
