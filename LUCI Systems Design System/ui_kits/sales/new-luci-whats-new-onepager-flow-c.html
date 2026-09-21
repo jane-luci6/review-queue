@@ -31,99 +31,76 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 @media print{
   body{background:#fff}.hub-link{display:none}
   .sheet{margin:0;box-shadow:none;page-break-after:always;break-after:page;overflow:hidden}
-  .mast,.mast__mesh,.mast__scrim,.field,.field__shot,.copy,.p,.p__inner,.foot,.close,.p__num,
-  .mast__inner,.mast__theme,.mast__announce,.mast__base,.mast__date-value,.copy__title,
-  .p__name,.p__lead,.p__ghost,.p__rule,.ft dt,.ft dd,.foot__wordmark,
+  .mast,.mast::after,.mast__mesh,.mast__scrim,.mast__row,.mast__kicker,.mast__title,
+  .mast__meta,.mapband,.mapband__img,.mapband__fade,.mapband__eye,
+  .brings__lead,.promise__num,.promise__name,.foot,.close,.foot__wordmark,
   .p2-ic,.p2-card,.p2-cn,.p2-cb,.p2-num,.p2-grpname,.p2-title,.p2-deck{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   /* Blinking fix: Chrome turns multi-stop CSS gradients into PDF Pattern/Shading
      objects that repaint lazily (blink on open). Flatten to flat fills in print. */
-  .mast__scrim{background:rgba(8,18,24,0.72) !important;background-image:none !important}
-  .field__scrim{display:none !important}
+  .mast__scrim{background:rgba(8,18,24,0.76) !important;background-image:none !important}
 }
 
-/* ── HEADER (Variant B) ──────────────────────────────────────────────── */
-.mast{position:relative;flex:0 0 236px;height:236px;overflow:hidden;
-  padding:32px var(--pad) 26px;background:var(--navy-deep);color:var(--off-white)}
-.mast__mesh{position:absolute;inset:0;width:100%;height:100%;
-  object-fit:cover;object-position:62% 28%;opacity:0.55;z-index:0;pointer-events:none}
+/* ── PAGE 1 ──────────────────────────────────────────────────────────
+   Three horizontal bands, brochure p1 rhythm: dark masthead → map →
+   light promises. No negative margins: .sheet has no padding, so each
+   band is already full-bleed and owns its own inset. */
+
+/* Masthead — dark, mesh + scrim, 4px mint rule. Matches brochure hero. */
+.mast{position:relative;flex:0 0 228px;overflow:hidden;
+  padding:30px var(--pad) 26px;background:var(--navy-deep);color:var(--off-white)}
+.mast__mesh{position:absolute;inset:0;width:100%;height:100%;z-index:0;
+  object-fit:cover;object-position:62% 30%;opacity:0.5;pointer-events:none}
 .mast__scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:
-    linear-gradient(100deg,
-      rgba(8,18,24,0.88) 0%, rgba(8,18,24,0.70) 42%, rgba(8,18,24,0.38) 72%,
-      rgba(8,18,24,0.22) 100%),
-    linear-gradient(to bottom, rgba(8,18,24,0.35) 0%, transparent 30%, rgba(8,18,24,0.4) 100%)}
+  background:linear-gradient(100deg,
+    rgba(8,18,24,0.90) 0%,rgba(8,18,24,0.74) 46%,rgba(8,18,24,0.42) 100%)}
+.mast::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;
+  background:var(--mint);z-index:3}
 .mast__inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column}
+.mast__row{display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding-bottom:13px;margin-bottom:20px;border-bottom:1px solid rgba(104,227,190,0.18)}
 .mast__logo{display:block;height:28px;width:121px;object-fit:contain}
-.mast__announce{margin-top:28px;font-family:var(--font);font-weight:700;font-size:10px;
+.mast__meta{font-family:var(--font);font-weight:700;font-size:9.5px;
+  letter-spacing:0.2em;text-transform:uppercase;color:rgba(235,245,248,0.52)}
+.mast__meta b{color:var(--mint);font-weight:700}
+.mast__kicker{margin:0 0 13px;font-family:var(--font);font-weight:700;font-size:10px;
   letter-spacing:0.24em;text-transform:uppercase;color:var(--mint)}
-.mast__theme{margin-top:14px;font-family:var(--display);font-weight:700;font-size:30px;
-  line-height:1.1;letter-spacing:0.05em;text-transform:uppercase;color:var(--off-white);max-width:100%}
-.mast__theme em{font-style:normal;color:var(--mint)}
-.mast__base{margin-top:auto;display:flex;justify-content:flex-start;align-items:baseline;gap:14px}
-.mast__date-label{font-family:var(--font);font-weight:700;font-size:9.5px;
-  letter-spacing:0.24em;text-transform:uppercase;color:rgba(235,245,248,0.5)}
-.mast__date-value{font-family:var(--font);font-weight:700;font-size:20px;
-  line-height:1;letter-spacing:-0.02em;color:var(--mint)}
+.mast__title{margin:0;font-family:var(--display);font-weight:700;font-size:26px;
+  line-height:1.16;letter-spacing:0.045em;text-transform:uppercase;color:var(--off-white)}
+.mast__title em{font-style:normal;color:var(--mint)}
 
-/* ── FIELD — map stays the canvas; promises sit as dark plates ───────── */
-.field{position:relative;flex:1 1 auto;min-height:0;overflow:hidden;background:#F3F4F2}
-/* Full map visible — the backwards L (right rail + bottom endpoints) is the
-   product proof. The control bar is the live UI; the cards sit above it. */
-.field__shot{position:absolute;inset:0;z-index:0;pointer-events:none;
-  width:100%;height:100%;object-fit:cover;object-position:100% 100%}
-/* Lift the map where the plates sit so the drawing reads under them,
-   and keep the lower-right quadrant clean for the live UI. */
-/* Three fades working together:
-   - Top band: clean paper for the section label.
-   - Left edge: muted entry-TV cards recede behind the live sportsbook side.
-   - Card area: the map fades toward the card material (a cool blue-grey,
-     not white paper) so the floorplan dissolves into the plates
-     instead of sitting under them. Clears by mid-field for the backwards L. */
-.field__scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:
-    linear-gradient(105deg,
-      rgba(245,248,250,0.97) 0%, rgba(245,248,250,0.93) 40%,
-      rgba(245,248,250,0.55) 62%, rgba(245,248,250,0.12) 78%, transparent 92%),
-    linear-gradient(to bottom, rgba(245,248,250,0.82) 0%, transparent 58%)}
+/* Map band — full bleed at the image's native 1.75 landscape proportion,
+   bottom edge feathered into the light canvas below. */
+/* 466px = 816 / 1.751, the image's native ratio — the whole floor plan, uncropped. */
+.mapband{position:relative;flex:0 0 466px;overflow:hidden;background:#EEF2F4}
+.mapband__img{position:absolute;inset:0;width:100%;height:100%;z-index:0;
+  object-fit:cover;object-position:50% 50%;filter:contrast(1.07) saturate(1.06);
+  image-rendering:-webkit-optimize-contrast}
+.mapband__fade{position:absolute;left:0;right:0;bottom:0;height:46px;z-index:2;
+  pointer-events:none;
+  background:linear-gradient(to bottom,rgba(245,248,250,0) 0%,var(--off-white) 92%)}
+.mapband__eye{position:absolute;top:14px;left:var(--pad);z-index:3;
+  font-family:var(--font);font-weight:700;font-size:9.5px;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--accent-light);
+  background:rgba(255,255,255,0.86);padding:5px 11px;border-radius:9999px;
+  box-shadow:inset 0 0 0 1px rgba(43,158,128,0.2)}
 
-.copy{position:relative;z-index:10;height:100%;display:flex;flex-direction:column;
-  padding:18px 32px 34px}
-.copy__title{display:flex;align-items:center;gap:12px;
-  font-family:var(--font);font-weight:700;font-size:13px;
-  letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-strong);
-  margin-bottom:20px;text-shadow:0 1px 2px rgba(245,248,250,0.75)}
-.copy__title::before{content:"";flex:none;width:24px;height:2px;background:var(--accent-light)}
-
-.copy__lead{font-family:var(--font);font-weight:700;font-size:26px;
-  line-height:1.12;letter-spacing:-0.02em;color:var(--ink-strong);
-  margin-bottom:4px}
-.copy__lead::after{content:"";display:block;width:40px;height:3px;
-  background:var(--accent-light);margin-top:13px}
-
-.promises{display:grid;grid-template-columns:1fr 1fr;gap:22px 40px;align-items:start;
-  margin-top:10px}
-
-/* Page 1 — overview. Each promise is anchored by a large faded gold Syncopate
-   numeral (the hero). The name + lead overlap the numeral (text crosses the
-   number). 1 & 2 sit on the top row; 3 sits below, larger and left-justified,
-   so the map's right rail + bottom endpoints stay visible. */
-.p{position:relative;color:var(--ink);padding:8px 8px 8px 4px;min-height:150px}
-.p__ghost{position:absolute;top:-14px;left:-8px;z-index:0;
-  font-family:var(--display);font-weight:700;
-  font-size:118px;line-height:0.82;letter-spacing:-0.03em;
-  color:rgba(43,158,128,0.28);pointer-events:none}
-.p__name{position:relative;z-index:1;font-family:var(--font);font-weight:700;
-  font-size:19px;line-height:1.18;letter-spacing:-0.015em;color:var(--ink-strong);
-  margin-top:40px;max-width:16ch}
-.p__lead{position:relative;z-index:1;margin-top:8px;font-family:var(--font-body);
-  font-weight:400;font-size:13px;line-height:1.5;color:var(--navy-muted);max-width:22ch}
-
-/* Promise 3 — larger, left-justified, sits below 1 & 2 */
-.p:nth-child(3){grid-column:1;grid-row:2;margin-top:8px}
-.p:nth-child(3) .p__ghost{font-size:152px;top:-20px;left:-10px;
-  color:rgba(43,158,128,0.28)}
-.p:nth-child(3) .p__name{font-size:22px;margin-top:54px;max-width:18ch}
-.p:nth-child(3) .p__lead{font-size:13.5px;max-width:30ch}
+/* Promises — light band, three columns, mint numerals. */
+.brings{position:relative;flex:1 1 auto;min-height:0;z-index:2;
+  padding:6px var(--pad) 28px;display:flex;flex-direction:column;justify-content:center}
+.brings__lead{display:flex;align-items:center;gap:11px;margin:0 0 22px;
+  font-family:var(--font);font-weight:700;font-size:11px;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--accent-light)}
+.brings__lead::before{content:"";flex:none;width:26px;height:2px;background:var(--accent-light)}
+.promises{margin:0;padding:0;list-style:none;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.promise{min-width:0}
+.promise__num{display:block;margin-bottom:9px;font-family:var(--font);font-weight:700;
+  font-size:42px;line-height:1;letter-spacing:-0.02em;color:var(--accent-light)}
+/* two-line floor keeps the three descriptions on a shared baseline */
+.promise__name{margin:0 0 7px;min-height:2.4em;font-family:var(--font);font-weight:700;
+  font-size:17px;line-height:1.2;letter-spacing:-0.02em;color:var(--ink-strong)}
+.promise__lead{margin:0;font-family:var(--font-body);font-weight:400;font-size:12.5px;
+  line-height:1.5;color:var(--navy-muted)}
 
 /* ── FOOTER (includes "for more information") ────────────────────────── */
 .close{background:var(--tint);padding:18px var(--pad) 20px;
@@ -184,43 +161,40 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
       <img class="mast__mesh" src="assets/textures/luci-bg-hero-with-plan-transparent-1920x1080.svg" alt="" aria-hidden="true">
       <span class="mast__scrim" aria-hidden="true"></span>
       <div class="mast__inner">
-        <img class="mast__logo" src="assets/logos/luci-wordmark-white-320.png?v=7" alt="LUCI Systems" width="121" height="28">
-        <p class="mast__announce">A new version of LUCI is coming</p>
-        <h1 class="mast__theme">The <em>power of programming</em><br>is in your hands</h1>
-        <p class="mast__base">
-          <span class="mast__date-label">Release date</span>
-          <span class="mast__date-value">January 19</span>
-        </p>
+        <div class="mast__row">
+          <img class="mast__logo" src="assets/logos/luci-wordmark-white-320.png?v=7" alt="LUCI Systems" width="121" height="28">
+          <p class="mast__meta">Release date &middot; <b>January 19</b></p>
+        </div>
+        <p class="mast__kicker">A new version of LUCI is coming</p>
+        <h1 class="mast__title">The <em>power of programming</em><br>is in your hands</h1>
       </div>
     </header>
 
-    <div class="field">
-      <img class="field__shot" src="assets/new-luci-map-light-v6.png?v=1" alt="" aria-hidden="true">
-      <span class="field__scrim" aria-hidden="true"></span>
+    <figure class="mapband">
+      <img class="mapband__img" src="assets/new-luci-map-light-v6.png?v=1" alt="LUCI map-based control: every display and audio zone on one live floor plan.">
+      <span class="mapband__eye">Live floor plan</span>
+      <span class="mapband__fade" aria-hidden="true"></span>
+    </figure>
 
-      <div class="copy">
-        <h2 class="copy__lead">LUCI 2.0 brings you</h2>
-
-        <div class="promises">
-          <section class="p">
-            <span class="p__ghost" aria-hidden="true">01</span>
-            <h3 class="p__name">Greater control of the room</h3>
-            <p class="p__lead">Operate from the room with the controls you need.</p>
-          </section>
-
-          <section class="p">
-            <span class="p__ghost" aria-hidden="true">02</span>
-            <h3 class="p__name">Flexible control of your view</h3>
-            <p class="p__lead">Shape the interface around your property and operation.</p>
-          </section>
-
-          <section class="p">
-            <span class="p__ghost" aria-hidden="true">03</span>
-            <h3 class="p__name">Deeper control over security</h3>
-            <p class="p__lead">See activity, govern access, and bring support closer.</p>
-          </section>
-        </div>
-      </div>
+    <div class="brings">
+      <p class="brings__lead">LUCI 2.0 brings you</p>
+      <ul class="promises">
+        <li class="promise">
+          <span class="promise__num" aria-hidden="true">01</span>
+          <h3 class="promise__name">Greater control of the room</h3>
+          <p class="promise__lead">Operate from the room with the controls you need.</p>
+        </li>
+        <li class="promise">
+          <span class="promise__num" aria-hidden="true">02</span>
+          <h3 class="promise__name">Flexible control of your view</h3>
+          <p class="promise__lead">Shape the interface around your property and operation.</p>
+        </li>
+        <li class="promise">
+          <span class="promise__num" aria-hidden="true">03</span>
+          <h3 class="promise__name">Deeper control over security</h3>
+          <p class="promise__lead">See activity, govern access, and bring support closer.</p>
+        </li>
+      </ul>
     </div>
 
     <footer class="foot">
