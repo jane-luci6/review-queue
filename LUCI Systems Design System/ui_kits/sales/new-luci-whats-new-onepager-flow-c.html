@@ -77,63 +77,46 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
    scrimmed inward so the promises stay legible over it. */
 .field{position:relative;flex:1 1 auto;min-height:0;overflow:hidden;
   background:var(--off-white)}
-.field__map{position:absolute;inset:0;width:100%;height:100%;z-index:0;
-  object-fit:cover;object-position:100% 100%;filter:contrast(1.06) saturate(1.05);
-  image-rendering:-webkit-optimize-contrast}
-/* Ellipse centred on the bottom-right corner: clear at the corner, opaque by
-   the time it reaches the copy. Leaves the right and bottom edges rich. */
-/* One ellipse, weighted into the middle of the field where the numbers
-   live, falling away before it reaches the bottom or right edges — so the
-   backwards L (right rail + the full bottom run of endpoints) stays intact
-   while the centre clears right out for the copy. */
-.field__scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:
-    radial-gradient(58% 30% at 27% 4%,
-      var(--off-white) 0%,
-      rgba(245,248,250,0.96) 60%,
-      rgba(245,248,250,0) 100%),
-    radial-gradient(72% 48% at 42% 27%,
-      rgba(245,248,250,0.98) 0%,
-      rgba(245,248,250,0.97) 52%,
-      rgba(245,248,250,0.88) 68%,
-      rgba(245,248,250,0.28) 86%,
-      rgba(245,248,250,0) 100%)}
+/* The plan is cropped hard to the endpoint run and held as a deliberate
+   detail strip along the foot, so it reads as evidence rather than wallpaper. */
+.field__map{position:absolute;left:0;right:0;bottom:0;height:318px;z-index:0;
+  width:100%;object-fit:cover;object-position:50% 100%;
+  filter:contrast(1.06) saturate(1.05);image-rendering:-webkit-optimize-contrast}
+.field__scrim{position:absolute;left:0;right:0;bottom:0;height:318px;z-index:1;
+  pointer-events:none;
+  background:linear-gradient(to bottom,
+    var(--off-white) 0%,rgba(245,248,250,0.80) 16%,rgba(245,248,250,0.10) 42%,
+    rgba(245,248,250,0) 100%)}
 
 .copy{position:relative;z-index:3;height:100%;display:flex;flex-direction:column;
-  padding:26px var(--pad) 36px}
-.copy__lead{position:relative;margin:0 0 24px;padding-left:38px;max-width:25ch;
-  font-family:var(--font);font-weight:700;font-size:22px;line-height:1.15;
+  padding:34px var(--pad) 318px}
+.copy__lead{position:relative;margin:0 0 24px;padding-left:38px;max-width:30ch;
+  font-family:var(--font);font-weight:700;font-size:25px;line-height:1.14;
   letter-spacing:-0.025em;color:var(--ink-strong)}
 .copy__lead::before{content:"";position:absolute;left:0;top:0.55em;
   width:26px;height:3px;background:var(--accent-light)}
 .copy__lead em{font-style:normal;color:var(--accent-light)}
 
-/* Three equal promise columns fill the upper field; the floorplan owns the
-   lower half. Right padding stops the third column before the live UI rail. */
-.promises{flex:1 1 auto;min-height:0;margin:0;padding:0;list-style:none;
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;
-  align-content:start;padding-right:64px}
-/* Ghost numeral behind the title: the number sets the scale, the title
-   crosses its lower third, indented so the numeral's opening counter
-   stays readable. */
-.promise{position:relative;min-width:0;max-width:30ch}
-.promise__num{position:absolute;top:0;left:-3px;z-index:0;pointer-events:none;
-  font-family:var(--font);font-weight:700;font-size:104px;line-height:0.85;
-  letter-spacing:-0.045em;color:#D8DBDF}
-/* two-line floor keeps 01 and 02 descriptions on a shared baseline */
-.promise__name{position:relative;z-index:1;margin:49px 0 8px 20px;min-height:2.4em;
-  font-family:var(--font);font-weight:700;font-size:19px;
-  line-height:1.2;letter-spacing:-0.024em;color:var(--ink-strong)}
-.promise__lead{position:relative;z-index:1;margin:0 0 0 20px;min-height:4.65em;
-  font-family:var(--font-body);font-weight:400;font-size:13px;
-  line-height:1.55;color:var(--navy-muted);
-  text-shadow:0 1px 2px rgba(245,248,250,0.8)}
-/* Capability names stay attached to the promise, but recede into one compact
-   line instead of becoming a second list system over the floorplan. */
-.caps{position:relative;z-index:1;margin:12px 0 0 20px;max-width:28ch;
-  font-family:var(--font-body);font-weight:600;font-size:11.5px;line-height:1.5;
-  color:var(--ink);text-shadow:0 1px 2px rgba(245,248,250,0.8)}
-.caps__label{display:block;margin-bottom:3px;font-family:var(--font);
+/* Three columns sized to genuinely fill the upper field — on a sheet someone
+   holds, the promises carry the weight, not the background. */
+.promises{position:relative;flex:1 1 auto;min-height:0;margin:0;padding:0;
+  list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:26px;align-content:start}
+.promise{position:relative}
+.promise__num{position:absolute;top:-8px;left:-4px;z-index:0;pointer-events:none;
+  font-family:var(--font);font-weight:700;font-size:124px;line-height:0.82;
+  letter-spacing:-0.05em;color:#D8DBDF}
+.promise__name{position:relative;z-index:1;margin:60px 0 10px 22px;
+  font-family:var(--font);font-weight:700;font-size:21px;min-height:2.4em;
+  line-height:1.18;letter-spacing:-0.026em;color:var(--ink-strong)}
+.promise__lead{position:relative;z-index:1;margin:0 0 0 22px;min-height:4.4em;
+  font-family:var(--font-body);font-weight:400;font-size:13.5px;
+  line-height:1.55;color:var(--navy-muted)}
+.caps{position:relative;z-index:1;margin:14px 0 0 22px;padding-top:12px;
+  border-top:1px solid var(--rule-light);
+  font-family:var(--font-body);font-weight:600;font-size:12px;line-height:1.55;
+  color:var(--ink)}
+.caps__label{display:block;margin-bottom:4px;font-family:var(--font);
   font-weight:700;font-size:9px;line-height:1;letter-spacing:0.18em;
   text-transform:uppercase;color:var(--accent-light)}
 
