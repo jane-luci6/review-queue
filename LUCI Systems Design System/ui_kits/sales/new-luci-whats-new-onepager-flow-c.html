@@ -87,46 +87,53 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
    backwards L (right rail + the full bottom run of endpoints) stays intact
    while the centre clears right out for the copy. */
 .field__scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:radial-gradient(80% 67% at 28% 31%,
-    rgba(245,248,250,0.97) 0%,
-    rgba(245,248,250,0.95) 45%,
-    rgba(245,248,250,0.72) 62%,
-    rgba(245,248,250,0.28) 80%,
-    rgba(245,248,250,0) 100%)}
+  background:
+    radial-gradient(58% 30% at 27% 4%,
+      var(--off-white) 0%,
+      rgba(245,248,250,0.96) 60%,
+      rgba(245,248,250,0) 100%),
+    radial-gradient(68% 56% at 34% 38%,
+      rgba(245,248,250,0.98) 0%,
+      rgba(245,248,250,0.97) 58%,
+      rgba(245,248,250,0.88) 72%,
+      rgba(245,248,250,0.28) 87%,
+      rgba(245,248,250,0) 100%)}
 
 .copy{position:relative;z-index:3;height:100%;display:flex;flex-direction:column;
-  padding:28px var(--pad) 36px}
-.copy__lead{display:flex;align-items:center;gap:11px;margin:0 0 26px;
-  font-family:var(--font);font-weight:700;font-size:11px;letter-spacing:0.2em;
-  text-transform:uppercase;color:var(--accent-light)}
-.copy__lead::before{content:"";flex:none;width:26px;height:2px;background:var(--accent-light)}
+  padding:26px var(--pad) 36px}
+.copy__lead{position:relative;margin:0 0 24px;padding-left:38px;max-width:25ch;
+  font-family:var(--font);font-weight:700;font-size:22px;line-height:1.15;
+  letter-spacing:-0.025em;color:var(--ink-strong)}
+.copy__lead::before{content:"";position:absolute;left:0;top:0.55em;
+  width:26px;height:3px;background:var(--accent-light)}
+.copy__lead em{font-style:normal;color:var(--accent-light)}
 
 /* 01 and 02 across the top, 03 underneath in column one — the empty
    bottom-right cell is where the floorplan's L shows through. */
 /* Row gap is deliberately large: it opens the numbers up and keeps the
    bottom third of the field clear for the L. */
 .promises{flex:1 1 auto;min-height:0;margin:0;padding:0;list-style:none;
-  display:grid;grid-template-columns:1fr 1fr;gap:48px 44px;align-content:start}
+  display:grid;grid-template-columns:1fr 1fr;gap:52px 52px;align-content:start}
 /* Ghost numeral behind the title: the number sets the scale, the title
    crosses its lower third, indented so the numeral's opening counter
    stays readable. */
 .promise{position:relative;min-width:0;max-width:30ch}
 .promise:nth-child(3){grid-column:1;grid-row:2}
 .promise__num{position:absolute;top:0;left:-3px;z-index:0;pointer-events:none;
-  font-family:var(--font);font-weight:700;font-size:116px;line-height:0.85;
+  font-family:var(--font);font-weight:700;font-size:104px;line-height:0.85;
   letter-spacing:-0.045em;color:#D8DBDF}
 /* two-line floor keeps 01 and 02 descriptions on a shared baseline */
-.promise__name{position:relative;z-index:1;margin:56px 0 9px 28px;min-height:2.4em;
-  font-family:var(--font);font-weight:700;font-size:21px;
+.promise__name{position:relative;z-index:1;margin:49px 0 8px 24px;min-height:1.2em;
+  font-family:var(--font);font-weight:700;font-size:19px;
   line-height:1.2;letter-spacing:-0.024em;color:var(--ink-strong)}
-.promise__lead{position:relative;z-index:1;margin:0 0 0 28px;
-  font-family:var(--font-body);font-weight:400;font-size:13.5px;
+.promise__lead{position:relative;z-index:1;margin:0 0 0 24px;
+  font-family:var(--font-body);font-weight:400;font-size:13px;
   line-height:1.55;color:var(--navy-muted);
   text-shadow:0 1px 2px rgba(245,248,250,0.8)}
 /* Capability names stay attached to the promise, but recede into one compact
    line instead of becoming a second list system over the floorplan. */
-.caps{position:relative;z-index:1;margin:14px 0 0 28px;max-width:30ch;
-  font-family:var(--font-body);font-weight:600;font-size:12px;line-height:1.55;
+.caps{position:relative;z-index:1;margin:13px 0 0 24px;max-width:31ch;
+  font-family:var(--font-body);font-weight:600;font-size:11.5px;line-height:1.5;
   color:var(--ink);text-shadow:0 1px 2px rgba(245,248,250,0.8)}
 .caps__label{display:block;margin-bottom:3px;font-family:var(--font);
   font-weight:700;font-size:9px;line-height:1;letter-spacing:0.18em;
@@ -206,7 +213,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
       <span class="field__scrim" aria-hidden="true"></span>
 
       <div class="copy">
-        <p class="copy__lead">LUCI 2.0 brings you</p>
+        <h2 class="copy__lead">Three ways <em>LUCI 2.0</em> gives you more control</h2>
         <ul class="promises">
           <li class="promise">
             <span class="promise__num" aria-hidden="true">01</span>
