@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>LUCI — What's New · Flow C · Mesh header, light map field</title>
+<title>LUCI 2.0 — What's New · Two-pager (overview + feature detail)</title>
 <link rel="stylesheet" href="../../assets/fonts/luci-brand-fonts.css">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -33,7 +33,8 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
   .sheet{margin:0;box-shadow:none;page-break-after:always;break-after:page;overflow:hidden}
   .mast,.mast__mesh,.mast__scrim,.field,.field__shot,.copy,.p,.p__inner,.foot,.close,.p__num,
   .mast__inner,.mast__theme,.mast__announce,.mast__base,.mast__date-value,.copy__title,
-  .p__name,.p__lead,.p__ghost,.p__rule,.ft dt,.ft dd,.foot__wordmark{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .p__name,.p__lead,.p__ghost,.p__rule,.ft dt,.ft dd,.foot__wordmark,
+  .p2-ic,.p2-card,.p2-cn,.p2-cb,.p2-num,.p2-grpname,.p2-title,.p2-deck{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   /* Blinking fix: Chrome turns multi-stop CSS gradients into PDF Pattern/Shading
      objects that repaint lazily (blink on open). Flatten to flat fills in print. */
   .mast__scrim{background:rgba(8,18,24,0.72) !important;background-image:none !important}
@@ -79,10 +80,10 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
      not white paper) so the floorplan dissolves into the plates
      instead of sitting under them. Clears by mid-field for the backwards L. */
 .field__scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:radial-gradient(ellipse 84% 80% at 34% 28%,
-    rgba(245,248,250,0.98) 0%, rgba(245,248,250,0.94) 45%,
-    rgba(245,248,250,0.82) 62%, rgba(245,248,250,0.30) 76%,
-    rgba(245,248,250,0.10) 90%, transparent 100%)}}
+  background:radial-gradient(ellipse 94% 80% at 50% 30%,
+    rgba(245,248,250,0.98) 0%, rgba(245,248,250,0.96) 40%,
+    rgba(245,248,250,0.88) 56%, rgba(245,248,250,0.34) 70%,
+    rgba(245,248,250,0.10) 84%, transparent 100%)}}
 
 .copy{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;
   padding:18px 32px 34px}
@@ -92,45 +93,23 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
   margin-bottom:20px;text-shadow:0 1px 2px rgba(245,248,250,0.75)}
 .copy__title::before{content:"";flex:none;width:24px;height:2px;background:var(--accent-light)}
 
-.promises{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+.promises{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;align-items:start;
+  margin-top:8px}
 
-/* Ghost numerals — the architectural anchor. A large faded mint Syncopate
-   watermark bleeds out from behind each promise head. The magnetism lives
-   in the ghost number, not in boxes or bars. The map reads through it. */
-.p{position:relative;color:var(--ink);padding:18px 20px 20px}
-.p__ghost{position:absolute;top:-16px;left:-16px;z-index:0;
-  font-family:var(--display);font-weight:700;font-size:124px;
-  line-height:0.85;letter-spacing:-0.03em;
-  color:rgba(43,158,128,0.14);
-  pointer-events:none;user-select:none;text-shadow:none}
-.p:nth-child(3) .p__ghost{font-size:136px}
-.p__inner{position:relative;z-index:1;text-shadow:0 1px 2px rgba(245,248,250,0.75)}
-.p:nth-child(1){margin-left:40px}
-.p:nth-child(3){grid-column:1 / -1;justify-self:start;width:62%;padding:20px 24px 22px;margin-left:40px}
-
-.p__head{display:flex;align-items:baseline;gap:11px}
-.p__num{flex:none;font-family:var(--display);font-weight:700;font-size:17px;
-  line-height:1;letter-spacing:0.06em;color:var(--accent-light);padding-top:3px}
+/* Page 1 — overview. Each promise is a column anchored by a large faded
+   mint Syncopate numeral (the hero), name + one-line lead stacked below.
+   No feature lists here (they live on page 2). The numeral sits in flow,
+   not behind, so nothing overlaps the map. */
+.p{position:relative;display:flex;flex-direction:column;color:var(--ink);
+  padding:24px 14px}
+.p__ghost{display:block;font-family:var(--display);font-weight:700;
+  font-size:128px;line-height:0.82;letter-spacing:-0.03em;
+  color:rgba(43,158,128,0.28)}
 .p__name{font-family:var(--font);font-weight:700;font-size:18px;
-  line-height:1.15;letter-spacing:-0.015em;color:var(--ink-strong)}
-.p:nth-child(3) .p__name{font-size:19px}
-.p__rule{display:block;width:40px;height:3px;background:var(--accent-light);
-  margin:11px 0 0}
-.p__lead{margin-top:11px;font-family:var(--font-body);font-weight:400;font-size:12.5px;
-  line-height:1.5;color:var(--navy-muted);max-width:36ch}
-.p:nth-child(3) .p__lead{font-size:13px}
-
-.features{margin:16px 0 0;display:flex;flex-direction:column;gap:0}
-.p:nth-child(3) .features{display:grid;grid-template-columns:1fr 1fr;gap:0 24px}
-.ft{padding:8px 0;border-top:1px solid rgba(43,158,128,0.16)}
-.features .ft:first-child{border-top:none;padding-top:0}
-.features .ft:last-child{padding-bottom:0}
-.ft dt{display:block;font-family:var(--font);font-weight:700;font-size:14px;
-  letter-spacing:-0.01em;color:var(--ink-strong);line-height:1.2}
-.p:nth-child(3) .ft dt{font-size:14.5px}
-.ft dd{display:block;margin:3px 0 0;font-family:var(--font-body);font-weight:400;font-size:11px;
-  line-height:1.45;color:var(--navy-muted)}
-.p:nth-child(3) .ft dd{max-width:30ch}
+  line-height:1.18;letter-spacing:-0.015em;color:var(--ink-strong);
+  margin-top:16px}
+.p__lead{margin-top:10px;font-family:var(--font-body);font-weight:400;font-size:13px;
+  line-height:1.5;color:var(--navy-muted);max-width:24ch}
 
 /* ── FOOTER (includes "for more information") ────────────────────────── */
 .close{background:var(--tint);padding:18px var(--pad) 20px;
@@ -146,6 +125,39 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
   padding:12px var(--pad) 14px;display:flex;justify-content:space-between;align-items:center;
   font-family:var(--font);font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase}
 .foot__wordmark{font-weight:700;letter-spacing:0.18em;color:rgba(104,227,190,0.7)}
+
+/* ── PAGE 2 — feature detail (brochure-style soft-icon cards) ────────── */
+.p2-head{padding:30px var(--pad) 20px;display:flex;flex-direction:column}
+.p2-logo{display:block;height:26px;width:113px;object-fit:contain;margin-bottom:20px}
+.p2-title{display:flex;align-items:center;gap:13px;
+  font-family:var(--font);font-weight:700;font-size:22px;line-height:1.1;
+  letter-spacing:-0.02em;color:var(--ink-strong)}
+.p2-title::before{content:"";flex:none;width:32px;height:3px;background:var(--accent-light)}
+.p2-deck{margin-top:9px;font-family:var(--font-body);font-size:12px;line-height:1.5;
+  color:var(--navy-muted);max-width:56ch}
+.p2-body{flex:1 1 auto;padding:4px var(--pad) 16px;display:flex;
+  flex-direction:column;gap:22px}
+.p2-grp{display:flex;flex-direction:column;gap:11px}
+.p2-lockup{display:flex;align-items:baseline;gap:12px}
+.p2-num{flex:none;font-family:var(--display);font-weight:700;font-size:15px;
+  line-height:1;letter-spacing:0.06em;color:var(--accent-light);padding-top:2px}
+.p2-grpname{font-family:var(--font);font-weight:700;font-size:16px;
+  line-height:1.15;letter-spacing:-0.015em;color:var(--ink-strong)}
+.p2-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px 14px}
+.p2-grp:nth-child(3) .p2-cards{grid-template-columns:repeat(4,1fr)}
+.p2-card{display:flex;flex-direction:column;align-items:flex-start;gap:9px;
+  padding:14px;border-radius:16px;
+  background:linear-gradient(160deg,#E6F5EF 0%,#F3FAF8 100%);
+  box-shadow:inset 0 0 0 1px rgba(43,158,128,0.16)}
+.p2-ic{display:flex;align-items:center;justify-content:center;
+  width:46px;height:46px;border-radius:14px;flex:none;
+  background:linear-gradient(155deg,#E6F5EF 0%,#F3FAF8 100%);
+  box-shadow:inset 0 0 0 1px rgba(43,158,128,0.14)}
+.p2-ic svg{display:block;width:24px;height:24px}
+.p2-cn{font-family:var(--font);font-weight:700;font-size:13.5px;
+  line-height:1.2;letter-spacing:-0.01em;color:var(--ink-strong)}
+.p2-cb{font-family:var(--font-body);font-weight:400;font-size:11px;
+  line-height:1.4;color:var(--navy-muted)}
 </style>
 </head>
 <body>
@@ -160,7 +172,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
       <div class="mast__inner">
         <img class="mast__logo" src="assets/logos/luci-wordmark-white-320.png?v=7" alt="LUCI Systems" width="121" height="28">
         <p class="mast__announce">A new version of LUCI is coming</p>
-        <h1 class="mast__theme">The <em>power of programming</em><br>is in your hands</h1>
+        <h1 class="mast__theme"><em>LUCI 2.0</em> brings you</h1>
         <p class="mast__base">
           <span class="mast__date-label">Release date</span>
           <span class="mast__date-value">January 19</span>
@@ -173,62 +185,122 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
       <span class="field__scrim" aria-hidden="true"></span>
 
       <div class="copy">
-        <h2 class="copy__title">The 3 Promises of New LUCI</h2>
 
         <div class="promises">
           <section class="p">
             <span class="p__ghost" aria-hidden="true">01</span>
-            <div class="p__inner">
-              <div class="p__head">
-                <span class="p__num">01</span>
-                <h3 class="p__name">Greater control of the room</h3>
-              </div>
-              <span class="p__rule" aria-hidden="true"></span>
-              <p class="p__lead">Operate from the room with the controls you need.</p>
-              <dl class="features">
-                <div class="ft"><dt>Venue panels</dt><dd>Put room controls where the work happens.</dd></div>
-                <div class="ft"><dt>Staging</dt><dd>Build the next look before applying it.</dd></div>
-                <div class="ft"><dt>Audio group control</dt><dd>Adjust linked zones without losing their balance.</dd></div>
-              </dl>
-            </div>
+            <h3 class="p__name">Greater control of the room</h3>
+            <p class="p__lead">Operate from the room with the controls you need.</p>
           </section>
 
           <section class="p">
             <span class="p__ghost" aria-hidden="true">02</span>
-            <div class="p__inner">
-              <div class="p__head">
-                <span class="p__num">02</span>
-                <h3 class="p__name">Flexible control of your view</h3>
-              </div>
-              <span class="p__rule" aria-hidden="true"></span>
-              <p class="p__lead">Shape the interface around your property and operation.</p>
-              <dl class="features">
-                <div class="ft"><dt>Customizable interface</dt><dd>Bring your property&rsquo;s identity into LUCI.</dd></div>
-                <div class="ft"><dt>Live map flexibility</dt><dd>Match live floor plans to physical spaces.</dd></div>
-                <div class="ft"><dt>Video/LED wall layout sync</dt><dd>Pull processor layouts in without rebuilding.</dd></div>
-              </dl>
-            </div>
+            <h3 class="p__name">Flexible control of your view</h3>
+            <p class="p__lead">Shape the interface around your property and operation.</p>
           </section>
 
           <section class="p">
             <span class="p__ghost" aria-hidden="true">03</span>
-            <div class="p__inner">
-              <div class="p__head">
-                <span class="p__num">03</span>
-                <h3 class="p__name">Deeper control over security</h3>
-              </div>
-              <span class="p__rule" aria-hidden="true"></span>
-              <p class="p__lead">See activity, govern access, and bring support closer.</p>
-              <dl class="features">
-                <div class="ft"><dt>Audit trails</dt><dd>Trace each action to a person and a time.</dd></div>
-                <div class="ft"><dt>Live monitoring</dt><dd>See device, display, and audio status live.</dd></div>
-                <div class="ft"><dt>Sign-in and session control</dt><dd>Control who signs in and stays active.</dd></div>
-                <div class="ft"><dt>In-product support</dt><dd>Raise requests with context already attached.</dd></div>
-              </dl>
-            </div>
+            <h3 class="p__name">Deeper control over security</h3>
+            <p class="p__lead">See activity, govern access, and bring support closer.</p>
           </section>
         </div>
       </div>
+    </div>
+
+    <footer class="foot">
+      <span class="foot__wordmark">LUCI</span>
+      <span>What&rsquo;s New &middot; For LUCI customers and prospects</span>
+    </footer>
+
+  </section>
+
+  <section class="sheet">
+
+    <header class="p2-head">
+      <img class="p2-logo" src="assets/logos/luci-wordmark-black-320.png?v=2" alt="LUCI Systems" width="113" height="26">
+      <h2 class="p2-title">What&rsquo;s new, in detail</h2>
+      <p class="p2-deck">Three promises, ten capabilities &mdash; what LUCI 2.0 puts in your hands.</p>
+    </header>
+
+    <div class="p2-body">
+
+      <section class="p2-grp">
+        <div class="p2-lockup">
+          <span class="p2-num">01</span>
+          <h3 class="p2-grpname">Greater control of the room</h3>
+        </div>
+        <div class="p2-cards">
+          <div class="p2-card">
+            <span class="p2-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="#2b9e80" stroke-width="1.8"/><path d="M3 10h18" stroke="#2b9e80" stroke-width="1.5" stroke-opacity="0.45"/><circle cx="7" cy="14.5" r="1.4" fill="#CEB06E"/><circle cx="11.5" cy="14.5" r="1.4" fill="#2b9e80" fill-opacity="0.35"/><circle cx="16" cy="14.5" r="1.4" fill="#2b9e80" fill-opacity="0.35"/></svg></span>
+            <p class="p2-cn">Venue panels</p>
+            <p class="p2-cb">Put room controls where the work happens.</p>
+          </div>
+          <div class="p2-card">
+            <span class="p2-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="6" width="16" height="6" rx="1.5" fill="#68E3BE" fill-opacity="0.18" stroke="#2b9e80" stroke-width="1.8"/><path d="M4 15h16M4 18h16" stroke="#2b9e80" stroke-width="1.6" stroke-linecap="round" stroke-opacity="0.4"/><path d="M14 9l2.5 2.5L14 14" stroke="#CEB06E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <p class="p2-cn">Staging</p>
+            <p class="p2-cb">Build the next look before applying it.</p>
+          </div>
+          <div class="p2-card">
+            <span class="p2-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 9v6h3l4 3V6L7 9z" fill="#68E3BE" fill-opacity="0.18" stroke="#2b9e80" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 10c1.4 1.4 1.4 3.6 0 5" stroke="#2b9e80" stroke-width="1.8" stroke-linecap="round"/><path d="M17 7.5c2.6 2.6 2.6 6.9 0 9.5" stroke="#CEB06E" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+            <p class="p2-cn">Audio group control</p>
+            <p class="p2-cb">Adjust linked zones without losing their balance.</p>
+          </div>
+        </div>
+      </section>
+      <section class="p2-grp">
+        <div class="p2-lockup">
+          <span class="p2-num">02</span>
+          <h3 class="p2-grpname">Flexible control of your view</h3>
+        </div>
+        <div class="p2-cards">
+          <div class="p2-card">
+            <span class="p2-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="#2b9e80" stroke-width="1.6" stroke-linecap="round" stroke-opacity="0.45"/><circle cx="9" cy="7" r="2.4" fill="#68E3BE" fill-opacity="0.2" stroke="#2b9e80" stroke-width="1.8"/><circle cx="15" cy="12" r="2.4" fill="#68E3BE" fill-opacity="0.2" stroke="#2b9e80" stroke-width="1.8"/><circle cx="8" cy="17" r="2.4" fill="#CEB06E"/></svg></span>
+            <p class="p2-cn">Customizable interface</p>
+            <p class="p2-cb">Bring your property&rsquo;s identity into LUCI.</p>
+          </div>
+          <div class="p2-card">
+            <span class="p2-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#2b9e80" stroke-width="1.8"/><path d="M3 9h18M9 3v18" stroke="#2b9e80" stroke-width="1.4" stroke-opacity="0.4"/><path d="M6 6l3 3-3 3" stroke="#CEB06E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <p class="p2-cn">Live map flexibility</p>
+            <p class="p2-cb">Match live floor plans to physical spaces.</p>
+          </div>
+          <div class="p2-card">
+            <span class="p2-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="8" height="7" rx="1" stroke="#2b9e80" stroke-width="1.6"/><rect x="13" y="4" width="8" height="7" rx="1" stroke="#2b9e80" stroke-width="1.6"/><rect x="3" y="13" width="8" height="7" rx="1" stroke="#2b9e80" stroke-width="1.6"/><rect x="13" y="13" width="8" height="7" rx="1" fill="#68E3BE" fill-opacity="0.16" stroke="#2b9e80" stroke-width="1.6"/><path d="M11 7.5h2M11 16.5h2" stroke="#CEB06E" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+            <p class="p2-cn">Video/LED wall layout sync</p>
+            <p class="p2-cb">Pull processor layouts in without rebuilding.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="p2-grp">
+        <div class="p2-lockup">
+          <span class="p2-num">03</span>
+          <h3 class="p2-grpname">Deeper control over security</h3>
+        </div>
+        <div class="p2-cards">
+          <div class="p2-card">
+            <span class="p2-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 3h10l4 4v14H5z" fill="#68E3BE" fill-opacity="0.14" stroke="#2b9e80" stroke-width="1.8" stroke-linejoin="round"/><path d="M15 3v4h4" stroke="#2b9e80" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 13l2 2 4-4" stroke="#CEB06E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <p class="p2-cn">Audit trails</p>
+            <p class="p2-cb">Trace each action to a person and a time.</p>
+          </div>
+          <div class="p2-card">
+            <span class="p2-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M3 12h4l2-5 4 3-6 4 2-3h3" fill="none" stroke="#2b9e80" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="18" cy="12" r="2.4" fill="#CEB06E"/></svg></span>
+            <p class="p2-cn">Live monitoring</p>
+            <p class="p2-cb">See device, display, and audio status live.</p>
+          </div>
+          <div class="p2-card">
+            <span class="p2-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="#2b9e80" stroke-width="1.8"/><path d="M8 11V8a4 4 0 0 1 15.5 6.5" stroke="#2b9e80" stroke-width="1.8" stroke-linecap="round"/><circle cx="16" cy="7" r="2" fill="#CEB06E"/></svg></span>
+            <p class="p2-cn">Sign-in &amp; session control</p>
+            <p class="p2-cb">Control who signs in and stays active.</p>
+          </div>
+          <div class="p2-card">
+            <span class="p2-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v11H9l-4 4V5z" fill="#68E3BE" fill-opacity="0.16" stroke="#2b9e80" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 10h8M8 13h5" stroke="#2b9e80" stroke-width="1.6" stroke-linecap="round" stroke-opacity="0.5"/><circle cx="17" cy="13" r="1.6" fill="#CEB06E"/></svg></span>
+            <p class="p2-cn">In-product support</p>
+            <p class="p2-cb">Raise requests with context already attached.</p>
+          </div>
+        </div>
+      </section>
+
     </div>
 
     <div class="close">
