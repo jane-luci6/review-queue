@@ -79,15 +79,16 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
   background:var(--off-white);display:flex;flex-direction:column}
 /* The plan is cropped hard to the endpoint run and held as a deliberate
    detail strip along the foot, so it reads as evidence rather than wallpaper. */
-.field__map{position:absolute;left:0;right:0;bottom:0;height:580px;z-index:0;
-  width:100%;object-fit:cover;object-position:88% 100%;
+.field__map{position:absolute;inset:0;z-index:0;
+  width:100%;height:100%;object-fit:cover;object-position:100% 100%;
   filter:contrast(1.06) saturate(1.05);image-rendering:-webkit-optimize-contrast}
-.field__scrim{position:absolute;left:0;right:0;bottom:0;height:580px;z-index:1;
-  pointer-events:none;
-  background:linear-gradient(to bottom,
-    var(--off-white) 0%,var(--off-white) 33%,
-    rgba(245,248,250,0.93) 44%,rgba(245,248,250,0.58) 55%,
-    rgba(245,248,250,0.18) 65%,rgba(245,248,250,0) 73%)}
+/* Ellipse seated in the upper-left: opaque where the type sits, releasing
+   outward so the plan's backwards L reads along the right and bottom. */
+.field__scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(96% 74% at 28% 26%,
+    var(--off-white) 0%,var(--off-white) 46%,
+    rgba(245,248,250,0.92) 62%,rgba(245,248,250,0.60) 78%,
+    rgba(245,248,250,0.16) 92%,rgba(245,248,250,0) 100%)}
 
 .copy{position:relative;z-index:3;flex:1 1 auto;min-height:0;display:flex;flex-direction:column;
   padding:34px var(--pad) 0}
