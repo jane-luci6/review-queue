@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 200" role="img" aria-label="LUCI relocated A/V processing off the riverboat into the property data center on land">
+  <defs>
+    <linearGradient id="bld" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1A4150"/>
+      <stop offset="1" stop-color="#0B1D26"/>
+    </linearGradient>
+    <linearGradient id="flow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#CEB06E"/>
+      <stop offset="1" stop-color="#2b9e80"/>
+    </linearGradient>
+    <filter id="bsoft" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#0B1D26" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <g stroke="#2b9e80" stroke-opacity="0.30" stroke-width="2" fill="none" stroke-linecap="round">
+    <path d="M14 176 q10 -6 20 0 t20 0 t20 0 t20 0 t20 0 t20 0"/>
+    <path d="M20 186 q10 -6 20 0 t20 0 t20 0 t20 0 t20 0" stroke-opacity="0.18"/>
+  </g>
+
+  <g opacity="0.62" stroke-linejoin="round">
+    <circle cx="24" cy="156" r="14" fill="none" stroke="#46606C" stroke-width="2"/>
+    <g stroke="#46606C" stroke-width="1.6"><line x1="24" y1="142" x2="24" y2="170"/><line x1="10" y1="156" x2="38" y2="156"/><line x1="14" y1="146" x2="34" y2="166"/><line x1="14" y1="166" x2="34" y2="146"/></g>
+    <path d="M26 150 H150 l-9 17 a5 5 0 0 1 -4 2 H39 a5 5 0 0 1 -4 -2 Z" fill="#6E8A96" fill-opacity="0.45" stroke="#46606C" stroke-width="1.6"/>
+    <rect x="40" y="126" width="100" height="24" rx="3" fill="#88A2AD" fill-opacity="0.35" stroke="#46606C" stroke-width="1.4"/>
+    <rect x="56" y="108" width="62" height="18" rx="3" fill="#88A2AD" fill-opacity="0.3" stroke="#46606C" stroke-width="1.4"/>
+    <rect x="70" y="94" width="30" height="14" rx="2" fill="#88A2AD" fill-opacity="0.3" stroke="#46606C" stroke-width="1.4"/>
+    <rect x="106" y="92" width="5" height="16" rx="1.5" fill="#46606C"/>
+    <rect x="118" y="92" width="5" height="16" rx="1.5" fill="#46606C"/>
+    <path d="M85 94 V82 h12 l-4 4 4 4 h-12" fill="#46606C" fill-opacity="0.6" stroke="none"/>
+  </g>
+
+  <g>
+    <rect x="98" y="129" width="30" height="18" rx="3" fill="#2b9e80" fill-opacity="0.10" stroke="#2b9e80" stroke-width="1.6" stroke-dasharray="3 3"/>
+    <rect x="105" y="135" width="16" height="6" rx="1.5" fill="#2b9e80" fill-opacity="0.45"/>
+    <g stroke="#2b9e80" stroke-opacity="0.6" stroke-width="1.4"><line x1="103" y1="129" x2="103" y2="126"/><line x1="113" y1="129" x2="113" y2="126"/><line x1="123" y1="129" x2="123" y2="126"/></g>
+  </g>
+
+  <path d="M150 122 C 186 96, 214 96, 246 116" fill="none" stroke="url(#flow)" stroke-width="7" stroke-linecap="round"/>
+  <path d="M238 104 L249 117 L233 122" fill="none" stroke="#2b9e80" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <rect x="236" y="172" width="136" height="6" rx="3" fill="#CEB06E" fill-opacity="0.35"/>
+
+  <g filter="url(#bsoft)">
+    <rect x="260" y="96" width="100" height="76" rx="8" fill="url(#bld)"/>
+  </g>
+  <line x1="310" y1="96" x2="310" y2="84" stroke="#68E3BE" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="310" cy="83" r="2.6" fill="#68E3BE"/>
+  <g fill="none" stroke="#68E3BE" stroke-width="1.6" stroke-linecap="round" stroke-opacity="0.55"><path d="M302 82 a11 11 0 0 1 16 0"/><path d="M297 78 a18 18 0 0 1 26 0"/></g>
+  <rect x="296" y="106" width="28" height="15" rx="3" fill="#68E3BE"/>
+  <rect x="301" y="111" width="14" height="5" rx="1.5" fill="#0E222C" fill-opacity="0.55"/>
+  <g stroke="#68E3BE" stroke-linecap="round"><line x1="274" y1="134" x2="346" y2="134" stroke-width="4" stroke-opacity="0.85"/><line x1="274" y1="146" x2="346" y2="146" stroke-width="4" stroke-opacity="0.55"/><line x1="274" y1="158" x2="346" y2="158" stroke-width="4" stroke-opacity="0.35"/></g>
+  <circle cx="350" cy="134" r="2.2" fill="#EDD086"/>
+  <circle cx="350" cy="146" r="2.2" fill="#68E3BE"/>
+</svg>

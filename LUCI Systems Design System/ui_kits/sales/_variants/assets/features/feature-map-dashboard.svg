@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" role="img" aria-label="A property map on a live dashboard with glowing location markers">
+  <defs>
+    <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1A4150"/>
+      <stop offset="1" stop-color="#0B1D26"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#68E3BE" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#68E3BE" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="7" stdDeviation="8" flood-color="#0B1D26" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+  <rect width="320" height="180" fill="#EFF3F5"/>
+  <circle cx="276" cy="26" r="84" fill="#E4EBEE" opacity="0.7"/>
+  <rect x="38" y="24" width="244" height="132" rx="13" fill="url(#screen)" filter="url(#soft)"/>
+  <circle cx="55" cy="40" r="3.6" fill="#68E3BE"/>
+  <rect x="65" y="37" width="46" height="6" rx="3" fill="#FFFFFF" opacity="0.20"/>
+  <rect x="236" y="37" width="30" height="6" rx="3" fill="#FFFFFF" opacity="0.10"/>
+  <g stroke="#68E3BE" stroke-opacity="0.30" stroke-width="1.4" fill="none">
+    <rect x="58" y="56" width="204" height="84"/>
+    <path d="M132 56v40M132 96h130M198 96v44M58 116h74"/>
+  </g>
+  <g fill="#68E3BE" opacity="0.06">
+    <rect x="58" y="56" width="74" height="40"/>
+    <rect x="198" y="96" width="64" height="44"/>
+  </g>
+  <circle cx="96" cy="80" r="17" fill="url(#halo)"/>
+  <circle cx="96" cy="80" r="5" fill="#68E3BE"/><circle cx="96" cy="80" r="2" fill="#0B1D26"/>
+  <circle cx="226" cy="120" r="17" fill="url(#halo)"/>
+  <circle cx="226" cy="120" r="5" fill="#68E3BE"/><circle cx="226" cy="120" r="2" fill="#0B1D26"/>
+  <circle cx="170" cy="74" r="5" fill="#EDD086"/><circle cx="170" cy="74" r="2" fill="#0B1D26"/>
+  <circle cx="108" cy="126" r="5" fill="#68E3BE"/><circle cx="108" cy="126" r="2" fill="#0B1D26"/>
+  <circle cx="172" cy="118" r="4.5" fill="#68E3BE" opacity="0.85"/>
+</svg>

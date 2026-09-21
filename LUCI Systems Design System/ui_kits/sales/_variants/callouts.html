@@ -33,7 +33,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
   .sheet{margin:0;box-shadow:none;page-break-after:always;break-after:page;overflow:hidden}
   .mast,.mast::after,.mast__mesh,.mast__scrim,.mast__kicker,.mast__title,
   .mast__base,.mast__date-value,.field,.field__map,.field__scrim,
-  .copy__lead,.promise__num,.promise__name,.promise__lead,.caps,.caps__label,.foot,.close,.foot__wordmark,
+  .copy__lead,.promise__tie,.promise__num,.promise__name,.promise__lead,.caps,.caps__label,.foot,.close,.foot__wordmark,
   .p2-ic,.p2-card,.p2-cn,.p2-cb,.p2-num,.p2-grpname,.p2-title,.p2-deck{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   /* Blinking fix: Chrome turns multi-stop CSS gradients into PDF Pattern/Shading
      objects that repaint lazily (blink on open). Flatten to flat fills in print. */
@@ -77,48 +77,67 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
    scrimmed inward so the promises stay legible over it. */
 .field{position:relative;flex:1 1 auto;min-height:0;overflow:hidden;
   background:var(--off-white)}
-/* The plan is cropped hard to the endpoint run and held as a deliberate
-   detail strip along the foot, so it reads as evidence rather than wallpaper. */
-.field__map{position:absolute;left:0;right:0;bottom:0;height:318px;z-index:0;
-  width:100%;object-fit:cover;object-position:50% 100%;
-  filter:contrast(1.06) saturate(1.05);image-rendering:-webkit-optimize-contrast}
-.field__scrim{position:absolute;left:0;right:0;bottom:0;height:318px;z-index:1;
-  pointer-events:none;
-  background:linear-gradient(to bottom,
-    var(--off-white) 0%,rgba(245,248,250,0.80) 16%,rgba(245,248,250,0.10) 42%,
-    rgba(245,248,250,0) 100%)}
+.field__map{position:absolute;inset:0;width:100%;height:100%;z-index:0;
+  object-fit:cover;object-position:100% 100%;filter:contrast(1.06) saturate(1.05);
+  image-rendering:-webkit-optimize-contrast}
+/* Ellipse centred on the bottom-right corner: clear at the corner, opaque by
+   the time it reaches the copy. Leaves the right and bottom edges rich. */
+/* One ellipse, weighted into the middle of the field where the numbers
+   live, falling away before it reaches the bottom or right edges — so the
+   backwards L (right rail + the full bottom run of endpoints) stays intact
+   while the centre clears right out for the copy. */
+.field__scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(27% 20% at 23% 27%,
+      var(--off-white) 0%,var(--off-white) 42%,rgba(245,248,250,0.88) 74%,rgba(245,248,250,0) 100%),
+    radial-gradient(27% 20% at 56% 55%,
+      var(--off-white) 0%,var(--off-white) 42%,rgba(245,248,250,0.88) 74%,rgba(245,248,250,0) 100%),
+    radial-gradient(27% 20% at 23% 79%,
+      var(--off-white) 0%,var(--off-white) 42%,rgba(245,248,250,0.88) 74%,rgba(245,248,250,0) 100%),
+    linear-gradient(to bottom,
+      rgba(245,248,250,0.55) 0%,rgba(245,248,250,0.28) 34%,rgba(245,248,250,0.30) 100%)}
 
 .copy{position:relative;z-index:3;height:100%;display:flex;flex-direction:column;
-  padding:34px var(--pad) 318px}
-.copy__lead{position:relative;margin:0 0 26px;max-width:none;
-  font-family:var(--font);font-weight:700;font-size:25px;line-height:1.14;
+  padding:26px var(--pad) 36px}
+.copy__lead{position:relative;margin:0 0 24px;padding-left:38px;max-width:25ch;
+  font-family:var(--font);font-weight:700;font-size:22px;line-height:1.15;
   letter-spacing:-0.025em;color:var(--ink-strong)}
+.copy__lead::before{content:"";position:absolute;left:0;top:0.55em;
+  width:26px;height:3px;background:var(--accent-light)}
 .copy__lead em{font-style:normal;color:var(--accent-light)}
 
-/* Three columns sized to genuinely fill the upper field — on a sheet someone
-   holds, the promises carry the weight, not the background. */
-.promises{position:relative;flex:1 1 auto;min-height:0;margin:0;padding:0;
-  list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:26px;align-content:start;padding-right:56px}
-.promise{position:relative}
-.promise__num{position:absolute;top:-8px;left:-4px;z-index:0;pointer-events:none;
-  font-family:var(--font);font-weight:700;font-size:124px;line-height:0.82;
-  letter-spacing:-0.05em;color:#ECEEF1}
-.promise__name{position:relative;z-index:1;margin:60px 0 10px 22px;
-  font-family:var(--font);font-weight:700;font-size:21px;min-height:2.4em;
-  line-height:1.18;letter-spacing:-0.026em;color:var(--ink-strong)}
-.promise__lead{position:relative;z-index:1;margin:0 0 0 22px;min-height:4em;
-  font-family:var(--font-body);font-weight:400;font-size:15.5px;
-  line-height:1.5;color:var(--navy-muted)}
-.caps{position:relative;z-index:1;margin:16px 0 0 22px;
-  display:flex;flex-wrap:wrap;gap:6px 5px}
-.caps__label{display:block;width:100%;margin-bottom:6px;font-family:var(--font);
+/* Annotation callouts — the floorplan's own visual language. Each promise
+   sits in a cleared pocket and ties into the plan with a leader rule that
+   ends on the region it describes, so the image is read, not decorated. */
+.promises{position:relative;flex:1 1 auto;min-height:0;margin:0;padding:0;list-style:none}
+.promise{position:absolute;width:266px}
+.promise:nth-child(1){left:0;top:4px}
+.promise:nth-child(2){left:272px;top:212px}
+.promise:nth-child(3){left:0;top:402px}
+.promise__num{position:absolute;top:0;left:-3px;z-index:0;pointer-events:none;
+  font-family:var(--font);font-weight:700;font-size:96px;line-height:0.85;
+  letter-spacing:-0.045em;color:#D8DBDF}
+.promise__name{position:relative;z-index:1;margin:44px 0 8px 20px;
+  font-family:var(--font);font-weight:700;font-size:19px;
+  line-height:1.2;letter-spacing:-0.024em;color:var(--ink-strong)}
+.promise__lead{position:relative;z-index:1;margin:0 0 0 20px;
+  font-family:var(--font-body);font-weight:400;font-size:13px;
+  line-height:1.55;color:var(--navy-muted);
+  text-shadow:0 1px 2px rgba(245,248,250,0.9)}
+.caps{position:relative;z-index:1;margin:12px 0 0 20px;
+  font-family:var(--font-body);font-weight:600;font-size:11.5px;line-height:1.5;
+  color:var(--ink);text-shadow:0 1px 2px rgba(245,248,250,0.9)}
+.caps__label{display:block;margin-bottom:3px;font-family:var(--font);
   font-weight:700;font-size:9px;line-height:1;letter-spacing:0.18em;
   text-transform:uppercase;color:var(--accent-light)}
-.caps__pill{display:inline-block;padding:4px 10px;
-  border:1px solid var(--rule-light);border-radius:9999px;
-  font-family:var(--font-body);font-weight:600;font-size:11px;line-height:1.3;
-  color:var(--ink);background:rgba(255,255,255,0.55)}
+/* leader rule + terminal dot, drawn from the callout into the plan */
+.promise__tie{position:absolute;z-index:1;top:52px;height:1px;pointer-events:none;
+  background:linear-gradient(to right,rgba(43,158,128,0.85),rgba(43,158,128,0.18))}
+.promise__tie::after{content:"";position:absolute;right:-3px;top:-2.5px;
+  width:6px;height:6px;border-radius:50%;background:var(--accent-light)}
+.promise:nth-child(1) .promise__tie{left:224px;width:150px}
+.promise:nth-child(2) .promise__tie{left:250px;width:126px}
+.promise:nth-child(3) .promise__tie{left:224px;width:196px}
 
 /* ── FOOTER (includes "for more information") ────────────────────────── */
 .close{background:var(--tint);padding:18px var(--pad) 20px;
@@ -200,19 +219,22 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
             <span class="promise__num" aria-hidden="true">01</span>
             <h3 class="promise__name">Greater control of the room</h3>
             <p class="promise__lead">Operate from the room with the controls you need.</p>
-            <p class="caps"><span class="caps__label">Features</span><span class="caps__pill">Venue panels</span><span class="caps__pill">Staging</span><span class="caps__pill">Audio group control</span></p>
+            <p class="caps"><span class="caps__label">Features</span>Venue panels &middot; Staging &middot; Audio group control</p>
+            <span class="promise__tie" aria-hidden="true"></span>
           </li>
           <li class="promise">
             <span class="promise__num" aria-hidden="true">02</span>
             <h3 class="promise__name">Flexible control of your view</h3>
             <p class="promise__lead">Shape the interface around your property and operation.</p>
-            <p class="caps"><span class="caps__label">Features</span><span class="caps__pill">Customizable interface</span><span class="caps__pill">Live map flexibility</span><span class="caps__pill">Live screen view</span></p>
+            <p class="caps"><span class="caps__label">Features</span>Customizable interface &middot; Live map flexibility &middot; Video/LED wall layout sync</p>
+            <span class="promise__tie" aria-hidden="true"></span>
           </li>
           <li class="promise">
             <span class="promise__num" aria-hidden="true">03</span>
             <h3 class="promise__name">Deeper control over security</h3>
             <p class="promise__lead">See activity, govern access, and bring support closer.</p>
-            <p class="caps"><span class="caps__label">Features</span><span class="caps__pill">Audit trails</span><span class="caps__pill">Live monitoring</span><span class="caps__pill">Sign-in &amp; session control</span><span class="caps__pill">In-product support</span></p>
+            <p class="caps"><span class="caps__label">Features</span>Audit trails &middot; Live monitoring &middot; Sign-in &amp; session control &middot; In-product support</p>
+            <span class="promise__tie" aria-hidden="true"></span>
           </li>
         </ul>
       </div>
@@ -276,8 +298,8 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
           </div>
           <div class="p2-card">
             <span class="p2-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="8" height="7" rx="1" stroke="#2b9e80" stroke-width="1.6"/><rect x="13" y="4" width="8" height="7" rx="1" stroke="#2b9e80" stroke-width="1.6"/><rect x="3" y="13" width="8" height="7" rx="1" stroke="#2b9e80" stroke-width="1.6"/><rect x="13" y="13" width="8" height="7" rx="1" fill="#68E3BE" fill-opacity="0.16" stroke="#2b9e80" stroke-width="1.6"/><path d="M11 7.5h2M11 16.5h2" stroke="#CEB06E" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-            <p class="p2-cn">Live screen view</p>
-            <p class="p2-cb">See the live content of any screen on your iPad, formatted exactly as it plays.</p>
+            <p class="p2-cn">Video/LED wall layout sync</p>
+            <p class="p2-cb">Pull processor layouts in without rebuilding.</p>
           </div>
         </div>
       </section>

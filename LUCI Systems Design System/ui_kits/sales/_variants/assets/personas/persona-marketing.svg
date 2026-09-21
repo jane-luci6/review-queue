@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" role="img" aria-label="A marketing studio pushing promos, game-day content, and event branding to screens across the floor">
+  <defs>
+    <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1A4150"/><stop offset="1" stop-color="#0B1D26"/></linearGradient>
+    <linearGradient id="promo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8FEBD0"/><stop offset="1" stop-color="#4FB59A"/></linearGradient>
+    <radialGradient id="halo" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#68E3BE" stop-opacity="0.55"/><stop offset="1" stop-color="#68E3BE" stop-opacity="0"/></radialGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#0B1D26" flood-opacity="0.22"/></filter>
+  </defs>
+  <rect width="320" height="180" fill="#EFF3F5"/>
+  <circle cx="278" cy="24" r="82" fill="#E4EBEE" opacity="0.7"/>
+  <g filter="url(#soft)">
+    <rect x="24" y="38" width="92" height="104" rx="12" fill="#FFFFFF"/>
+    <path d="M24 68 L24 50 A12 12 0 0 1 36 38 L100 38 A12 12 0 0 1 112 50 L112 68 Z" fill="url(#promo)"/>
+    <path d="M70 44l2.6 5.8 6.3.5-4.8 4.2 1.4-5.5-4.6 4.2-6.3-.5z" fill="#0B1D26" opacity="0.55"/>
+    <rect x="36" y="80" width="68" height="6" rx="3" fill="#1A4150" opacity="0.55"/>
+    <rect x="36" y="92" width="52" height="5" rx="2.5" fill="#1A4150" opacity="0.30"/>
+    <rect x="36" y="104" width="60" height="5" rx="2.5" fill="#1A4150" opacity="0.30"/>
+    <rect x="40" y="120" width="60" height="16" rx="8" fill="url(#promo)"/>
+    <path d="M88 128l5 5 9-9" stroke="#0B1D26" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
+  <g fill="none" stroke="#68E3BE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M120 70 C 150 60, 170 48, 200 46"/>
+    <path d="M120 90 H 200"/>
+    <path d="M120 110 C 150 120, 170 132, 200 134"/>
+  </g>
+  <g fill="#68E3BE"><polygon points="200,42 210,46 202,52"/><polygon points="200,86 210,90 200,94"/><polygon points="200,130 210,134 202,140"/></g>
+  <g filter="url(#soft)">
+    <rect x="206" y="28" width="90" height="40" rx="8" fill="url(#screen)"/>
+    <rect x="212" y="34" width="78" height="22" rx="3" fill="url(#promo)"/>
+    <polygon points="244,38 244,52 256,45" fill="#0B1D26" opacity="0.7"/>
+  </g>
+  <g filter="url(#soft)">
+    <rect x="206" y="72" width="90" height="40" rx="8" fill="url(#screen)"/>
+    <rect x="212" y="78" width="78" height="22" rx="3" fill="#68E3BE" opacity="0.85"/>
+    <rect x="220" y="84" width="30" height="5" rx="2.5" fill="#FFFFFF" opacity="0.85"/>
+    <rect x="220" y="92" width="46" height="4" rx="2" fill="#FFFFFF" opacity="0.6"/>
+  </g>
+  <g filter="url(#soft)">
+    <rect x="206" y="116" width="90" height="40" rx="8" fill="url(#screen)"/>
+    <circle cx="232" cy="136" r="11" fill="none" stroke="#EDD086" stroke-width="2"/>
+    <path d="M232 129v14M227 132h10" stroke="#EDD086" stroke-width="2" stroke-linecap="round"/>
+    <rect x="252" y="128" width="36" height="6" rx="3" fill="#FFFFFF" opacity="0.5"/>
+    <rect x="252" y="138" width="24" height="5" rx="2.5" fill="#FFFFFF" opacity="0.35"/>
+  </g>
+</svg>
