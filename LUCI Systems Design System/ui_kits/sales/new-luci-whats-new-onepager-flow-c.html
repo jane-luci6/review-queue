@@ -32,8 +32,8 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
   body{background:#fff}.hub-link{display:none}
   .sheet{margin:0;box-shadow:none;page-break-after:always;break-after:page;overflow:hidden}
   .mast,.mast::after,.mast__mesh,.mast__scrim,.mast__row,.mast__kicker,.mast__title,
-  .mast__meta,.mapband,.mapband__img,.mapband__fade,.mapband__eye,
-  .brings__lead,.promise__num,.promise__name,.foot,.close,.foot__wordmark,
+  .mast__meta,.field,.field__map,.field__scrim,
+  .copy__lead,.promise__num,.promise__name,.promise__lead,.foot,.close,.foot__wordmark,
   .p2-ic,.p2-card,.p2-cn,.p2-cb,.p2-num,.p2-grpname,.p2-title,.p2-deck{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   /* Blinking fix: Chrome turns multi-stop CSS gradients into PDF Pattern/Shading
      objects that repaint lazily (blink on open). Flatten to flat fills in print. */
@@ -68,39 +68,56 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
   line-height:1.16;letter-spacing:0.045em;text-transform:uppercase;color:var(--off-white)}
 .mast__title em{font-style:normal;color:var(--mint)}
 
-/* Map band — full bleed at the image's native 1.75 landscape proportion,
-   bottom edge feathered into the light canvas below. */
-/* 466px = 816 / 1.751, the image's native ratio — the whole floor plan, uncropped. */
-.mapband{position:relative;flex:0 0 466px;overflow:hidden;background:#EEF2F4}
-.mapband__img{position:absolute;inset:0;width:100%;height:100%;z-index:0;
-  object-fit:cover;object-position:50% 50%;filter:contrast(1.07) saturate(1.06);
+/* Field — the floorplan is the canvas. Anchored bottom-right so the
+   backwards L (right rail + bottom endpoints) reads as the product proof,
+   scrimmed inward so the promises stay legible over it. */
+.field{position:relative;flex:1 1 auto;min-height:0;overflow:hidden;
+  background:var(--off-white)}
+.field__map{position:absolute;inset:0;width:100%;height:100%;z-index:0;
+  object-fit:cover;object-position:100% 100%;filter:contrast(1.06) saturate(1.05);
   image-rendering:-webkit-optimize-contrast}
-.mapband__fade{position:absolute;left:0;right:0;bottom:0;height:46px;z-index:2;
-  pointer-events:none;
-  background:linear-gradient(to bottom,rgba(245,248,250,0) 0%,var(--off-white) 92%)}
-.mapband__eye{position:absolute;top:14px;left:var(--pad);z-index:3;
-  font-family:var(--font);font-weight:700;font-size:9.5px;letter-spacing:0.2em;
-  text-transform:uppercase;color:var(--accent-light);
-  background:rgba(255,255,255,0.86);padding:5px 11px;border-radius:9999px;
-  box-shadow:inset 0 0 0 1px rgba(43,158,128,0.2)}
+/* Ellipse centred on the bottom-right corner: clear at the corner, opaque by
+   the time it reaches the copy. Leaves the right and bottom edges rich. */
+/* Two layers: a left-edge wash that keeps the whole copy column clean
+   (01, 02 and 03 all sit against it), over an ellipse anchored on the
+   bottom-right corner. Where both clear — the right rail and the bottom
+   endpoints — the floorplan reads at full strength. */
+.field__scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(to right,
+      rgba(245,248,250,0.97) 0%,
+      rgba(245,248,250,0.94) 30%,
+      rgba(245,248,250,0.58) 48%,
+      rgba(245,248,250,0.14) 66%,
+      rgba(245,248,250,0) 80%),
+    radial-gradient(135% 150% at 100% 100%,
+      rgba(245,248,250,0) 0%,
+      rgba(245,248,250,0.12) 30%,
+      rgba(245,248,250,0.55) 50%,
+      rgba(245,248,250,0.88) 68%,
+      rgba(245,248,250,0.96) 85%)}
 
-/* Promises — light band, three columns, mint numerals. */
-.brings{position:relative;flex:1 1 auto;min-height:0;z-index:2;
-  padding:6px var(--pad) 28px;display:flex;flex-direction:column;justify-content:center}
-.brings__lead{display:flex;align-items:center;gap:11px;margin:0 0 22px;
+.copy{position:relative;z-index:3;height:100%;display:flex;flex-direction:column;
+  padding:28px var(--pad) 36px}
+.copy__lead{display:flex;align-items:center;gap:11px;margin:0 0 26px;
   font-family:var(--font);font-weight:700;font-size:11px;letter-spacing:0.2em;
   text-transform:uppercase;color:var(--accent-light)}
-.brings__lead::before{content:"";flex:none;width:26px;height:2px;background:var(--accent-light)}
-.promises{margin:0;padding:0;list-style:none;
-  display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-.promise{min-width:0}
+.copy__lead::before{content:"";flex:none;width:26px;height:2px;background:var(--accent-light)}
+
+/* 01 and 02 across the top, 03 underneath in column one — the empty
+   bottom-right cell is where the floorplan's L shows through. */
+.promises{flex:1 1 auto;min-height:0;margin:0;padding:0;list-style:none;
+  display:grid;grid-template-columns:1fr 1fr;gap:52px 40px;align-content:start}
+.promise{min-width:0;max-width:30ch}
+.promise:nth-child(3){grid-column:1;grid-row:2}
 .promise__num{display:block;margin-bottom:9px;font-family:var(--font);font-weight:700;
-  font-size:42px;line-height:1;letter-spacing:-0.02em;color:var(--accent-light)}
-/* two-line floor keeps the three descriptions on a shared baseline */
-.promise__name{margin:0 0 7px;min-height:2.4em;font-family:var(--font);font-weight:700;
-  font-size:17px;line-height:1.2;letter-spacing:-0.02em;color:var(--ink-strong)}
-.promise__lead{margin:0;font-family:var(--font-body);font-weight:400;font-size:12.5px;
-  line-height:1.5;color:var(--navy-muted)}
+  font-size:44px;line-height:1;letter-spacing:-0.02em;color:var(--accent-light)}
+.promise__name{margin:0 0 7px;font-family:var(--font);font-weight:700;font-size:18px;
+  line-height:1.2;letter-spacing:-0.02em;color:var(--ink-strong);
+  text-shadow:0 1px 2px rgba(245,248,250,0.85)}
+.promise__lead{margin:0;font-family:var(--font-body);font-weight:400;font-size:13px;
+  line-height:1.5;color:var(--navy-muted);
+  text-shadow:0 1px 2px rgba(245,248,250,0.85)}
 
 /* ── FOOTER (includes "for more information") ────────────────────────── */
 .close{background:var(--tint);padding:18px var(--pad) 20px;
@@ -170,31 +187,30 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
       </div>
     </header>
 
-    <figure class="mapband">
-      <img class="mapband__img" src="assets/new-luci-map-light-v6.png?v=1" alt="LUCI map-based control: every display and audio zone on one live floor plan.">
-      <span class="mapband__eye">Live floor plan</span>
-      <span class="mapband__fade" aria-hidden="true"></span>
-    </figure>
+    <div class="field">
+      <img class="field__map" src="assets/new-luci-map-light-v6.png?v=1" alt="LUCI map-based control: every display and audio zone on one live floor plan.">
+      <span class="field__scrim" aria-hidden="true"></span>
 
-    <div class="brings">
-      <p class="brings__lead">LUCI 2.0 brings you</p>
-      <ul class="promises">
-        <li class="promise">
-          <span class="promise__num" aria-hidden="true">01</span>
-          <h3 class="promise__name">Greater control of the room</h3>
-          <p class="promise__lead">Operate from the room with the controls you need.</p>
-        </li>
-        <li class="promise">
-          <span class="promise__num" aria-hidden="true">02</span>
-          <h3 class="promise__name">Flexible control of your view</h3>
-          <p class="promise__lead">Shape the interface around your property and operation.</p>
-        </li>
-        <li class="promise">
-          <span class="promise__num" aria-hidden="true">03</span>
-          <h3 class="promise__name">Deeper control over security</h3>
-          <p class="promise__lead">See activity, govern access, and bring support closer.</p>
-        </li>
-      </ul>
+      <div class="copy">
+        <p class="copy__lead">LUCI 2.0 brings you</p>
+        <ul class="promises">
+          <li class="promise">
+            <span class="promise__num" aria-hidden="true">01</span>
+            <h3 class="promise__name">Greater control of the room</h3>
+            <p class="promise__lead">Operate from the room with the controls you need.</p>
+          </li>
+          <li class="promise">
+            <span class="promise__num" aria-hidden="true">02</span>
+            <h3 class="promise__name">Flexible control of your view</h3>
+            <p class="promise__lead">Shape the interface around your property and operation.</p>
+          </li>
+          <li class="promise">
+            <span class="promise__num" aria-hidden="true">03</span>
+            <h3 class="promise__name">Deeper control over security</h3>
+            <p class="promise__lead">See activity, govern access, and bring support closer.</p>
+          </li>
+        </ul>
+      </div>
     </div>
 
     <footer class="foot">
