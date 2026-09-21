@@ -78,24 +78,17 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
   image-rendering:-webkit-optimize-contrast}
 /* Ellipse centred on the bottom-right corner: clear at the corner, opaque by
    the time it reaches the copy. Leaves the right and bottom edges rich. */
-/* Two layers: a left-edge wash that keeps the whole copy column clean
-   (01, 02 and 03 all sit against it), over an ellipse anchored on the
-   bottom-right corner. Where both clear — the right rail and the bottom
-   endpoints — the floorplan reads at full strength. */
+/* One ellipse, weighted into the middle of the field where the numbers
+   live, falling away before it reaches the bottom or right edges — so the
+   backwards L (right rail + the full bottom run of endpoints) stays intact
+   while the centre clears right out for the copy. */
 .field__scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:
-    linear-gradient(to right,
-      rgba(245,248,250,0.97) 0%,
-      rgba(245,248,250,0.94) 30%,
-      rgba(245,248,250,0.58) 48%,
-      rgba(245,248,250,0.14) 66%,
-      rgba(245,248,250,0) 80%),
-    radial-gradient(135% 150% at 100% 100%,
-      rgba(245,248,250,0) 0%,
-      rgba(245,248,250,0.12) 30%,
-      rgba(245,248,250,0.55) 50%,
-      rgba(245,248,250,0.88) 68%,
-      rgba(245,248,250,0.96) 85%)}
+  background:radial-gradient(80% 62% at 28% 30%,
+    rgba(245,248,250,0.97) 0%,
+    rgba(245,248,250,0.95) 45%,
+    rgba(245,248,250,0.72) 62%,
+    rgba(245,248,250,0.28) 80%,
+    rgba(245,248,250,0) 100%)}
 
 .copy{position:relative;z-index:3;height:100%;display:flex;flex-direction:column;
   padding:28px var(--pad) 36px}
@@ -106,17 +99,20 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 
 /* 01 and 02 across the top, 03 underneath in column one — the empty
    bottom-right cell is where the floorplan's L shows through. */
+/* Row gap is deliberately large: it opens the numbers up and keeps the
+   bottom third of the field clear for the L. */
 .promises{flex:1 1 auto;min-height:0;margin:0;padding:0;list-style:none;
-  display:grid;grid-template-columns:1fr 1fr;gap:52px 40px;align-content:start}
-.promise{min-width:0;max-width:30ch}
+  display:grid;grid-template-columns:1fr 1fr;gap:86px 44px;align-content:start}
+.promise{min-width:0;max-width:29ch}
 .promise:nth-child(3){grid-column:1;grid-row:2}
-.promise__num{display:block;margin-bottom:9px;font-family:var(--font);font-weight:700;
-  font-size:44px;line-height:1;letter-spacing:-0.02em;color:var(--accent-light)}
-.promise__name{margin:0 0 7px;font-family:var(--font);font-weight:700;font-size:18px;
-  line-height:1.2;letter-spacing:-0.02em;color:var(--ink-strong);
+.promise__num{display:block;margin-bottom:12px;font-family:var(--font);font-weight:700;
+  font-size:68px;line-height:0.9;letter-spacing:-0.035em;color:var(--accent-light)}
+/* two-line floor keeps 01 and 02 descriptions on a shared baseline */
+.promise__name{margin:0 0 8px;min-height:2.4em;font-family:var(--font);font-weight:700;font-size:20px;
+  line-height:1.2;letter-spacing:-0.022em;color:var(--ink-strong);
   text-shadow:0 1px 2px rgba(245,248,250,0.85)}
-.promise__lead{margin:0;font-family:var(--font-body);font-weight:400;font-size:13px;
-  line-height:1.5;color:var(--navy-muted);
+.promise__lead{margin:0;font-family:var(--font-body);font-weight:400;font-size:13.5px;
+  line-height:1.55;color:var(--navy-muted);
   text-shadow:0 1px 2px rgba(245,248,250,0.85)}
 
 /* ── FOOTER (includes "for more information") ────────────────────────── */
