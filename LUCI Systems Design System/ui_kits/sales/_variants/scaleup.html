@@ -79,14 +79,15 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
   background:var(--off-white);display:flex;flex-direction:column}
 /* The plan is cropped hard to the endpoint run and held as a deliberate
    detail strip along the foot, so it reads as evidence rather than wallpaper. */
-.field__map{position:absolute;left:0;right:0;bottom:0;height:440px;z-index:0;
-  width:100%;object-fit:cover;object-position:54% 38%;
+.field__map{position:absolute;left:0;right:0;bottom:0;height:580px;z-index:0;
+  width:100%;object-fit:cover;object-position:88% 100%;
   filter:contrast(1.06) saturate(1.05);image-rendering:-webkit-optimize-contrast}
-.field__scrim{position:absolute;left:0;right:0;bottom:0;height:440px;z-index:1;
+.field__scrim{position:absolute;left:0;right:0;bottom:0;height:580px;z-index:1;
   pointer-events:none;
   background:linear-gradient(to bottom,
-    var(--off-white) 0%,rgba(245,248,250,0.72) 10%,rgba(245,248,250,0.18) 28%,
-    rgba(245,248,250,0) 48%)}
+    var(--off-white) 0%,var(--off-white) 33%,
+    rgba(245,248,250,0.93) 44%,rgba(245,248,250,0.58) 55%,
+    rgba(245,248,250,0.18) 65%,rgba(245,248,250,0) 73%)}
 
 .copy{position:relative;z-index:3;flex:1 1 auto;min-height:0;display:flex;flex-direction:column;
   padding:34px var(--pad) 0}
