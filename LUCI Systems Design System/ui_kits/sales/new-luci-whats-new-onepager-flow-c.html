@@ -76,20 +76,20 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
    backwards L (right rail + bottom endpoints) reads as the product proof,
    scrimmed inward so the promises stay legible over it. */
 .field{position:relative;flex:1 1 auto;min-height:0;overflow:hidden;
-  background:var(--off-white)}
+  background:var(--off-white);display:flex;flex-direction:column}
 /* The plan is cropped hard to the endpoint run and held as a deliberate
    detail strip along the foot, so it reads as evidence rather than wallpaper. */
-.field__map{position:absolute;left:0;right:0;bottom:0;height:318px;z-index:0;
-  width:100%;object-fit:cover;object-position:50% 100%;
+.field__map{position:absolute;left:0;right:0;bottom:0;height:440px;z-index:0;
+  width:100%;object-fit:cover;object-position:54% 38%;
   filter:contrast(1.06) saturate(1.05);image-rendering:-webkit-optimize-contrast}
-.field__scrim{position:absolute;left:0;right:0;bottom:0;height:318px;z-index:1;
+.field__scrim{position:absolute;left:0;right:0;bottom:0;height:440px;z-index:1;
   pointer-events:none;
   background:linear-gradient(to bottom,
-    var(--off-white) 0%,rgba(245,248,250,0.80) 16%,rgba(245,248,250,0.10) 42%,
-    rgba(245,248,250,0) 100%)}
+    var(--off-white) 0%,rgba(245,248,250,0.72) 10%,rgba(245,248,250,0.18) 28%,
+    rgba(245,248,250,0) 48%)}
 
-.copy{position:relative;z-index:3;height:100%;display:flex;flex-direction:column;
-  padding:34px var(--pad) 318px}
+.copy{position:relative;z-index:3;flex:1 1 auto;min-height:0;display:flex;flex-direction:column;
+  padding:34px var(--pad) 0}
 .copy__lead{position:relative;margin:0 0 26px;max-width:none;
   font-family:var(--font);font-weight:700;font-size:25px;line-height:1.14;
   letter-spacing:-0.025em;color:var(--ink-strong)}
@@ -98,27 +98,28 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 /* Three columns sized to genuinely fill the upper field — on a sheet someone
    holds, the promises carry the weight, not the background. */
 .promises{position:relative;flex:1 1 auto;min-height:0;margin:0;padding:0;
-  list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:26px;align-content:start;padding-right:56px}
-.promise{position:relative}
+  list-style:none;display:flex;flex-direction:row;align-items:stretch;
+  gap:26px;padding-right:108px}
+.promise{position:relative;flex:1 1 0;display:flex;flex-direction:column;justify-content:space-between;min-height:0}
 .promise__num{position:absolute;top:-8px;left:-4px;z-index:0;pointer-events:none;
   font-family:var(--font);font-weight:700;font-size:124px;line-height:0.82;
-  letter-spacing:-0.05em;color:#ECEEF1}
-.promise__name{position:relative;z-index:1;margin:60px 0 10px 22px;
+  letter-spacing:-0.05em;color:#D8DBDF}
+.promise__name{position:relative;z-index:1;margin:64px 0 10px 22px;
   font-family:var(--font);font-weight:700;font-size:21px;min-height:2.4em;
   line-height:1.18;letter-spacing:-0.026em;color:var(--ink-strong)}
-.promise__lead{position:relative;z-index:1;margin:0 0 0 22px;min-height:4em;
+.promise__lead{position:relative;z-index:1;margin:0 0 0 22px;
   font-family:var(--font-body);font-weight:400;font-size:15.5px;
-  line-height:1.5;color:var(--navy-muted)}
+  line-height:1.5;color:var(--navy-muted);
+  text-shadow:0 1px 3px rgba(245,248,250,0.85)}
 .caps{position:relative;z-index:1;margin:16px 0 0 22px;
   display:flex;flex-wrap:wrap;gap:6px 5px}
 .caps__label{display:block;width:100%;margin-bottom:6px;font-family:var(--font);
   font-weight:700;font-size:9px;line-height:1;letter-spacing:0.18em;
   text-transform:uppercase;color:var(--accent-light)}
-.caps__pill{display:inline-block;padding:4px 10px;
-  border:1px solid var(--rule-light);border-radius:9999px;
+.caps__pill{display:inline-block;padding:5px 11px;
+  border:1px solid rgba(237,208,134,0.25);border-radius:9999px;
   font-family:var(--font-body);font-weight:600;font-size:11px;line-height:1.3;
-  color:var(--ink);background:rgba(255,255,255,0.55)}
+  color:var(--gold);background:var(--navy-deep)}
 
 /* ── FOOTER (includes "for more information") ────────────────────────── */
 .close{background:var(--tint);padding:18px var(--pad) 20px;
