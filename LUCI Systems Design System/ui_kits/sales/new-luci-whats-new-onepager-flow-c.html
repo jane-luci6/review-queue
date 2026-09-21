@@ -107,7 +107,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
   font-family:var(--font);font-weight:700;font-size:138px;line-height:0.82;
   letter-spacing:-0.05em;color:#D8DBDF}
 .promise__name{position:relative;z-index:1;margin:76px 0 12px 22px;
-  font-family:var(--font);font-weight:700;font-size:22px;min-height:2.4em;
+  font-family:var(--font);font-weight:700;font-size:24px;min-height:2.4em;
   line-height:1.18;letter-spacing:-0.026em;color:var(--ink-strong)}
 .promise__lead{position:relative;z-index:1;margin:0 0 0 22px;min-height:6.2em;
   font-family:var(--font-body);font-weight:400;font-size:16px;
@@ -141,31 +141,25 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 /* ── PAGE 2 — grouped feature explainer ─────────────────────────────
    Compact category labels for wayfinding. Each feature is a horizontal
    row: small icon beside two sentences (what/where/how, then why). */
-.p2-head{padding:28px var(--pad) 8px}
+.p2-head{padding:32px var(--pad) 12px}
 .p2-logo{display:block;height:24px;width:104px;object-fit:contain;margin-bottom:16px}
 .p2-title{font-family:var(--font);font-weight:700;font-size:22px;line-height:1.1;
   letter-spacing:-0.02em;color:var(--ink-strong)}
-.p2-body{flex:1 1 auto;padding:8px var(--pad) 12px;display:flex;flex-direction:column;gap:18px}
+.p2-body{flex:1 1 auto;padding:12px var(--pad) 28px;display:flex;flex-direction:column;gap:30px}
 .p2-grp{display:flex;flex-direction:column}
-.p2-lockup{display:flex;align-items:baseline;gap:10px;padding-bottom:8px;
+.p2-lockup{display:flex;align-items:baseline;gap:10px;padding-bottom:10px;
   border-bottom:1px solid var(--rule-light)}
 .p2-num{flex:none;font-family:var(--display);font-weight:700;font-size:13px;
   line-height:1;letter-spacing:0.08em;color:var(--accent-light)}
 .p2-grpname{font-family:var(--font);font-weight:700;font-size:14px;
   line-height:1.15;letter-spacing:-0.01em;color:var(--ink-strong)}
 .p2-cards{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}
-.p2-card{display:flex;align-items:flex-start;gap:12px;padding:11px 0 12px;
-  border-bottom:1px solid var(--rule-light)}
-.p2-ic{display:flex;align-items:center;justify-content:center;
-  width:36px;height:36px;border-radius:12px;flex:none;margin-top:1px;
-  background:linear-gradient(155deg,#E6F5EF 0%,#F3FAF8 100%);
-  box-shadow:inset 0 0 0 1px rgba(43,158,128,0.14)}
-.p2-ic svg{display:block;width:20px;height:20px}
+.p2-card{padding:14px 0 16px;border-bottom:1px solid var(--rule-light)}
 .p2-copy{min-width:0}
-.p2-cn{font-family:var(--font);font-weight:700;font-size:13.5px;
+.p2-cn{font-family:var(--font);font-weight:700;font-size:14px;
   line-height:1.2;letter-spacing:-0.01em;color:var(--ink-strong)}
-.p2-cb{margin-top:3px;font-family:var(--font-body);font-weight:400;font-size:11.5px;
-  line-height:1.45;color:var(--navy-muted)}
+.p2-cb{margin-top:5px;font-family:var(--font-body);font-weight:400;font-size:13px;
+  line-height:1.5;color:var(--navy-muted)}
 </style>
 </head>
 <body>
@@ -240,19 +234,16 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
         </div>
         <div class="p2-cards">
           <div class="p2-card">
-            <span class="p2-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="#2b9e80" stroke-width="1.8"/><path d="M3 10h18" stroke="#2b9e80" stroke-width="1.5" stroke-opacity="0.45"/><circle cx="7" cy="14.5" r="1.4" fill="#CEB06E"/><circle cx="11.5" cy="14.5" r="1.4" fill="#2b9e80" fill-opacity="0.35"/><circle cx="16" cy="14.5" r="1.4" fill="#2b9e80" fill-opacity="0.35"/></svg></span>
             <div class="p2-copy"><p class="p2-cn">Venue panels</p>
-            <p class="p2-cb">A tablet in the space puts control with the person running it, from a ballroom events manager to a guest at a cabana. Assign it to a venue and it adopts that room&rsquo;s endpoints, showing only the controls an administrator allows.</p></div>
+            <p class="p2-cb">Place scoped control on a tablet inside the venue. It adopts that room&rsquo;s endpoints and shows only the controls an administrator allows.</p></div>
           </div>
           <div class="p2-card">
-            <span class="p2-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="6" width="16" height="6" rx="1.5" fill="#68E3BE" fill-opacity="0.18" stroke="#2b9e80" stroke-width="1.8"/><path d="M4 15h16M4 18h16" stroke="#2b9e80" stroke-width="1.6" stroke-linecap="round" stroke-opacity="0.4"/><path d="M14 9l2.5 2.5L14 14" stroke="#CEB06E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             <div class="p2-copy"><p class="p2-cn">Staging</p>
-            <p class="p2-cb">Choose screens, sources, and volumes for the next look while the current one keeps running. Nothing in the room changes until Apply, and any staged set can be saved as a preset to run again.</p></div>
+            <p class="p2-cb">Prepare screens, sources, and volumes while the current look keeps running. Apply on cue, then save the setup as a preset.</p></div>
           </div>
           <div class="p2-card">
-            <span class="p2-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 9v6h3l4 3V6L7 9z" fill="#68E3BE" fill-opacity="0.18" stroke="#2b9e80" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 10c1.4 1.4 1.4 3.6 0 5" stroke="#2b9e80" stroke-width="1.8" stroke-linecap="round"/><path d="M17 7.5c2.6 2.6 2.6 6.9 0 9.5" stroke="#CEB06E" stroke-width="1.8" stroke-linecap="round"/></svg></span>
             <div class="p2-copy"><p class="p2-cn">Audio group control</p>
-            <p class="p2-cb">Move several zones together so their tuned balance holds, set every zone to one level, or adjust a single zone on its own. Linked rooms stay in proportion instead of being reset one by one.</p></div>
+            <p class="p2-cb">Adjust linked audio zones together without losing their tuned balance, or change one zone on its own.</p></div>
           </div>
         </div>
       </section>
@@ -263,19 +254,16 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
         </div>
         <div class="p2-cards">
           <div class="p2-card">
-            <span class="p2-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="#2b9e80" stroke-width="1.6" stroke-linecap="round" stroke-opacity="0.45"/><circle cx="9" cy="7" r="2.4" fill="#68E3BE" fill-opacity="0.2" stroke="#2b9e80" stroke-width="1.8"/><circle cx="15" cy="12" r="2.4" fill="#68E3BE" fill-opacity="0.2" stroke="#2b9e80" stroke-width="1.8"/><circle cx="8" cy="17" r="2.4" fill="#CEB06E"/></svg></span>
             <div class="p2-copy"><p class="p2-cn">Customizable interface</p>
-            <p class="p2-cb">Sign-in and splash screens carry the property&rsquo;s photography and marks, in light or dark, with themes drawn from an approved set. The interface reads as the property&rsquo;s, not a generic console.</p></div>
+            <p class="p2-cb">Apply approved photography, marks, colors, and light or dark themes so LUCI reflects the property&rsquo;s identity.</p></div>
           </div>
           <div class="p2-card">
-            <span class="p2-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#2b9e80" stroke-width="1.8"/><path d="M3 9h18M9 3v18" stroke="#2b9e80" stroke-width="1.4" stroke-opacity="0.4"/><path d="M6 6l3 3-3 3" stroke="#CEB06E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             <div class="p2-copy"><p class="p2-cn">Live map flexibility</p>
-            <p class="p2-cb">The floor plan stays tied to the devices on it through a live connection, so what is on screen matches the room. Shape the plan to the property&rsquo;s actual spaces rather than a generic layout.</p></div>
+            <p class="p2-cb">Shape the live floor plan around the property&rsquo;s actual spaces, with device status kept current on the map.</p></div>
           </div>
           <div class="p2-card">
-            <span class="p2-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="8" height="7" rx="1" stroke="#2b9e80" stroke-width="1.6"/><rect x="13" y="4" width="8" height="7" rx="1" stroke="#2b9e80" stroke-width="1.6"/><rect x="3" y="13" width="8" height="7" rx="1" stroke="#2b9e80" stroke-width="1.6"/><rect x="13" y="13" width="8" height="7" rx="1" fill="#68E3BE" fill-opacity="0.16" stroke="#2b9e80" stroke-width="1.6"/><path d="M11 7.5h2M11 16.5h2" stroke="#CEB06E" stroke-width="1.8" stroke-linecap="round"/></svg></span>
             <div class="p2-copy"><p class="p2-cn">Live screen view</p>
-            <p class="p2-cb">Open a display on an iPad and see the content playing there, laid out the way it is on the wall. Confirm what guests are seeing without walking to the screen.</p></div>
+            <p class="p2-cb">See the content playing on any screen from an iPad, formatted as it appears live.</p></div>
           </div>
         </div>
       </section>
@@ -287,24 +275,20 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
         </div>
         <div class="p2-cards">
           <div class="p2-card">
-            <span class="p2-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 3h10l4 4v14H5z" fill="#68E3BE" fill-opacity="0.14" stroke="#2b9e80" stroke-width="1.8" stroke-linejoin="round"/><path d="M15 3v4h4" stroke="#2b9e80" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 13l2 2 4-4" stroke="#CEB06E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             <div class="p2-copy"><p class="p2-cn">Audit trails</p>
-            <p class="p2-cb">Every action is recorded against a person and a time, including whether a person, a preset, or a schedule triggered it. Search by device or user, and download the record when you need it.</p></div>
+            <p class="p2-cb">Trace each action to a person, preset, or schedule and export the record when needed.</p></div>
           </div>
           <div class="p2-card">
-            <span class="p2-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M3 12h4l2-5 4 3-6 4 2-3h3" fill="none" stroke="#2b9e80" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="18" cy="12" r="2.4" fill="#CEB06E"/></svg></span>
             <div class="p2-copy"><p class="p2-cn">Live monitoring</p>
-            <p class="p2-cb">Device, display, and audio status stay current. When a device stops responding, an incident opens and closes when it returns, so a fault has a measured duration.</p></div>
+            <p class="p2-cb">See device, display, and audio status live, including when a device stops responding and returns.</p></div>
           </div>
           <div class="p2-card">
-            <span class="p2-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="#2b9e80" stroke-width="1.8"/><path d="M8 11V8a4 4 0 0 1 15.5 6.5" stroke="#2b9e80" stroke-width="1.8" stroke-linecap="round"/><circle cx="16" cy="7" r="2" fill="#CEB06E"/></svg></span>
             <div class="p2-copy"><p class="p2-cn">Sign-in &amp; session control</p>
-            <p class="p2-cb">People sign in by email, PIN, or the Microsoft credentials they already use. Administrators can end a session and post a message to everyone currently in LUCI.</p></div>
+            <p class="p2-cb">Use email, PIN, or Microsoft credentials, then end sessions or message everyone currently in LUCI.</p></div>
           </div>
           <div class="p2-card">
-            <span class="p2-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v11H9l-4 4V5z" fill="#68E3BE" fill-opacity="0.16" stroke="#2b9e80" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 10h8M8 13h5" stroke="#2b9e80" stroke-width="1.6" stroke-linecap="round" stroke-opacity="0.5"/><circle cx="17" cy="13" r="1.6" fill="#CEB06E"/></svg></span>
             <div class="p2-copy"><p class="p2-cn">In-product support</p>
-            <p class="p2-cb">Raise a request from the device, incident, or error itself. It arrives with what happened, what changed, and the logs already attached, and a person decides what gets sent.</p></div>
+            <p class="p2-cb">Raise a request from a device, incident, or error with the relevant context and logs already attached.</p></div>
           </div>
         </div>
       </section>
