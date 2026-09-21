@@ -80,18 +80,24 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
      not white paper) so the floorplan dissolves into the plates
      instead of sitting under them. Clears by mid-field for the backwards L. */
 .field__scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:radial-gradient(ellipse 94% 80% at 50% 30%,
-    rgba(245,248,250,0.98) 0%, rgba(245,248,250,0.96) 40%,
-    rgba(245,248,250,0.88) 56%, rgba(245,248,250,0.34) 70%,
-    rgba(245,248,250,0.10) 84%, transparent 100%)}}
+  background:linear-gradient(to bottom,
+    rgba(245,248,250,1) 0%, rgba(245,248,250,0.99) 40%,
+    rgba(245,248,250,0.90) 50%, rgba(245,248,250,0.30) 63%,
+    rgba(245,248,250,0.06) 76%, transparent 90%)}
 
-.copy{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;
+.copy{position:relative;z-index:10;height:100%;display:flex;flex-direction:column;
   padding:18px 32px 34px}
 .copy__title{display:flex;align-items:center;gap:12px;
   font-family:var(--font);font-weight:700;font-size:13px;
   letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-strong);
   margin-bottom:20px;text-shadow:0 1px 2px rgba(245,248,250,0.75)}
 .copy__title::before{content:"";flex:none;width:24px;height:2px;background:var(--accent-light)}
+
+.copy__lead{font-family:var(--font);font-weight:700;font-size:26px;
+  line-height:1.12;letter-spacing:-0.02em;color:var(--ink-strong);
+  margin-bottom:4px}
+.copy__lead::after{content:"";display:block;width:40px;height:3px;
+  background:var(--accent-light);margin-top:13px}
 
 .promises{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;align-items:start;
   margin-top:8px}
@@ -172,7 +178,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
       <div class="mast__inner">
         <img class="mast__logo" src="assets/logos/luci-wordmark-white-320.png?v=7" alt="LUCI Systems" width="121" height="28">
         <p class="mast__announce">A new version of LUCI is coming</p>
-        <h1 class="mast__theme"><em>LUCI 2.0</em> brings you</h1>
+        <h1 class="mast__theme">The <em>power of programming</em><br>is in your hands</h1>
         <p class="mast__base">
           <span class="mast__date-label">Release date</span>
           <span class="mast__date-value">January 19</span>
@@ -185,6 +191,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
       <span class="field__scrim" aria-hidden="true"></span>
 
       <div class="copy">
+        <h2 class="copy__lead">LUCI 2.0 brings you</h2>
 
         <div class="promises">
           <section class="p">
