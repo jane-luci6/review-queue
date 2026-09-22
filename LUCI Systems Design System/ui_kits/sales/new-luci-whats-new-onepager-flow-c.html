@@ -35,7 +35,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
   body{background:#fff}.hub-link{display:none}
   .sheet{margin:0;box-shadow:none;page-break-after:always;break-after:page;overflow:hidden}
   .p1-head,.p1-tex,.p1-bar,.p1-eyebrow,.p1-headline,.p1-date,.p1-map,.p1-foot,.p1-luci,.p1-tag,.foot,.close,.foot__wordmark,
-  .p2-head,.p2-mesh,.p2-scrim,.p2-ic,.p2-card,.p2-cn,.p2-cb,.p2-num,.p2-grpname,.p2-title,.p2-deck{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .p2-head,.p2-mesh,.p2-scrim,.p2-ic,.p2-card,.p2-cn,.p2-cb,.p2-num,.p2-grpname,.p2-title,.p2-deck,.p2-spotlight{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   /* Blinking fix: Chrome turns multi-stop CSS gradients into PDF Pattern/Shading
      objects that repaint lazily (blink on open). Flatten to flat fills in print. */
 }
@@ -143,7 +143,6 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 .p2-body{position:relative;min-height:0;overflow:hidden}
 .p2-grp{position:relative;overflow:hidden;padding:18px var(--pad) 20px;height:249px;
   background:#fff}
-.p2-grp:nth-child(3){height:350px}
 .p2-lockup{display:flex;align-items:baseline;gap:10px;padding-bottom:10px;
   border-bottom:1px solid rgba(43,158,128,0.18)}
 .p2-num{flex:none;font-family:var(--display);font-weight:700;font-size:13px;
@@ -153,7 +152,6 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 .p2-cards{position:absolute;top:59px;left:var(--pad);right:var(--pad);height:calc(100% - 79px);
   display:flex;flex-direction:column;gap:12px}
 .p2-row{height:100%;display:flex;gap:12px;align-items:stretch}
-.p2-grp:nth-child(3) .p2-row{height:calc(50% - 6px)}
 .p2-card{flex:1 1 0;min-width:0;height:100%;display:flex;flex-direction:column;align-items:flex-start;gap:8px;
   padding:14px;border-radius:14px}
 .p2-grp:nth-child(1) .p2-card{background:rgba(229,227,223,0.55);
@@ -172,6 +170,14 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
   line-height:1.2;letter-spacing:-0.01em;color:var(--ink-strong)}
 .p2-cb{margin-top:3px;font-family:var(--font-body);font-weight:400;font-size:11px;
   line-height:1.42;color:var(--navy-muted)}
+.p2-spotlight{position:relative;overflow:hidden;padding:20px var(--pad) 22px;
+  height:155px;background:#0F1E27;display:flex;align-items:center;gap:22px}
+.p2-spotlight .p2-ic{width:48px;height:48px;border-radius:14px;flex:none;
+  background:rgba(255,255,255,0.06);box-shadow:inset 0 0 0 1px rgba(225,210,145,0.18)}
+.p2-spotlight .p2-ic svg{width:28px;height:28px}
+.p2-spotlight .p2-copy{min-width:0;flex:1}
+.p2-spotlight .p2-cn{font-size:16px;color:#fff}
+.p2-spotlight .p2-cb{font-size:12px;line-height:1.5;color:rgba(235,245,248,0.78);margin-top:6px}
 </style>
 </head>
 <body>
@@ -336,19 +342,20 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
             <div class="p2-copy"><p class="p2-cn">Live monitoring</p>
             <p class="p2-cb">See device, display, and audio status live, including when a device stops responding and returns.</p></div>
           </div>
-          </div>
-          <div class="p2-row">
             <div class="p2-card">
             <span class="p2-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="#2b9e80" stroke-width="1.8"/><path d="M8 11V8a4 4 0 0 1 15.5 6.5" stroke="#2b9e80" stroke-width="1.8" stroke-linecap="round"/><circle cx="16" cy="7" r="2" fill="#CEB06E"/></svg></span>
             <div class="p2-copy"><p class="p2-cn">Sign-in &amp; session control</p>
             <p class="p2-cb">Use email, PIN, or Microsoft credentials, then end sessions or message everyone currently in LUCI.</p></div>
           </div>
-          <div class="p2-card">
-            <span class="p2-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v11H9l-4 4V5z" fill="#68E3BE" fill-opacity="0.16" stroke="#2b9e80" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 10h8M8 13h5" stroke="#2b9e80" stroke-width="1.6" stroke-linecap="round" stroke-opacity="0.5"/><circle cx="17" cy="13" r="1.6" fill="#CEB06E"/></svg></span>
-            <div class="p2-copy"><p class="p2-cn">In-product support</p>
-            <p class="p2-cb">Raise a request from a device, incident, or error with the relevant context and logs already attached.</p></div>
           </div>
-          </div>
+        </div>
+      </section>
+
+      <section class="p2-spotlight">
+        <span class="p2-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v11H9l-4 4V5z" fill="#68E3BE" fill-opacity="0.16" stroke="#E1D291" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 10h8M8 13h5" stroke="#E1D291" stroke-width="1.6" stroke-linecap="round" stroke-opacity="0.5"/><circle cx="17" cy="13" r="1.6" fill="#E1D291"/></svg></span>
+        <div class="p2-copy">
+          <p class="p2-cn">In-product support</p>
+          <p class="p2-cb">Raise a request from a device, incident, or error with the relevant context and logs already attached.</p>
         </div>
       </section>
 
