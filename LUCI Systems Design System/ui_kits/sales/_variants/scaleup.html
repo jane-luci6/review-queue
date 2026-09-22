@@ -141,19 +141,21 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 .p2-title em{font-style:normal;color:var(--mint)}
 .sheet--p2{display:grid;grid-template-rows:60px 1fr auto auto auto}
 .p2-body{position:relative;min-height:0;overflow:hidden}
-.p2-grp{position:relative;overflow:hidden;padding:18px var(--pad) 20px;height:249px;
+.p2-grp{position:relative;overflow:hidden;padding:12px var(--pad) 14px;height:258px;
   background:#fff}
-.p2-lockup{display:flex;align-items:baseline;gap:10px;padding-bottom:10px;
-  border-bottom:1px solid rgba(43,158,128,0.18)}
-.p2-num{flex:none;font-family:var(--display);font-weight:700;font-size:13px;
-  line-height:1;letter-spacing:0.08em;color:var(--accent-light)}
-.p2-grpname{font-family:var(--font);font-weight:700;font-size:14px;
-  line-height:1.15;letter-spacing:-0.01em;color:var(--ink-strong)}
-.p2-cards{position:absolute;top:59px;left:var(--pad);right:var(--pad);height:calc(100% - 79px);
+.p2-lockup{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.p2-num{flex:none;min-width:22px;height:22px;padding:0 5px;border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--display);font-weight:700;font-size:11px;
+  letter-spacing:0.04em;color:var(--off-white);background:var(--accent-light)}
+.p2-grpname{font-family:var(--display);font-weight:700;font-size:11.5px;
+  line-height:1;letter-spacing:0.09em;text-transform:uppercase;color:var(--text-gray)}
+.p2-rule{height:1px;background:var(--rule-light);margin-bottom:14px}
+.p2-cards{position:absolute;top:57px;left:var(--pad);right:var(--pad);height:calc(100% - 71px);
   display:flex;flex-direction:column;gap:12px}
 .p2-row{height:100%;display:flex;gap:12px;align-items:stretch}
-.p2-card{flex:1 1 0;min-width:0;height:100%;
-  padding:16px 15px 14px;border-radius:14px}
+.p2-card{flex:1 1 0;min-width:0;height:100%;overflow:hidden;
+  padding:12px 15px 12px;border-radius:14px}
 .p2-grp:nth-child(1) .p2-card{background:rgba(229,227,223,0.55);
   box-shadow:inset 0 0 0 1px rgba(180,170,155,0.10)}
 .p2-grp:nth-child(2) .p2-card{background:linear-gradient(155deg,#EBF9F4 0%,#F4FCF9 100%);
@@ -161,18 +163,18 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 .p2-grp:nth-child(3) .p2-card{background:linear-gradient(155deg,#C8E8D8 0%,#D8F0E2 100%);
   box-shadow:inset 0 0 0 1px rgba(43,158,128,0.18)}
 .p2-copy{min-width:0}
-.p2-cn{font-family:var(--font);font-weight:700;font-size:13.5px;
-  line-height:1.2;letter-spacing:-0.01em;color:var(--ink-strong)}
-.p2-cb{margin-top:5px;font-family:var(--font-body);font-weight:400;font-size:13px;
-  line-height:1.45;color:var(--navy-muted)}
-.p2-spotlight{position:relative;padding:14px var(--pad) 24px;height:130px;background:#fff}
+.p2-cn{font-family:var(--font);font-weight:700;font-size:20px;
+  line-height:1.15;letter-spacing:-0.2px;color:var(--ink-strong);margin-bottom:8px}
+.p2-cb{margin-top:0;font-family:var(--font-body);font-weight:400;font-size:15.5px;
+  line-height:1.55;color:var(--text-gray)}
+.p2-spotlight{position:relative;padding:12px var(--pad) 16px;height:118px;background:#fff}
 .p2-spotlight__box{background:#0F1E27;border-radius:14px;padding:20px 24px;
   height:100%;display:flex;align-items:center;gap:22px}
 .p2-spotlight .p2-ic{width:48px;height:48px;border-radius:14px;flex:none;
   background:rgba(255,255,255,0.06);box-shadow:inset 0 0 0 1px rgba(225,210,145,0.18)}
 .p2-spotlight .p2-ic svg{width:28px;height:28px}
 .p2-spotlight .p2-copy{min-width:0;flex:1}
-.p2-spotlight .p2-cn{font-size:16px;color:#fff}
+.p2-spotlight .p2-cn{color:#fff}
 .p2-spotlight .p2-star{width:15px;height:15px;display:inline-block;vertical-align:-2px;margin-left:7px}
 .p2-spotlight .p2-cb{font-size:12px;line-height:1.5;color:rgba(235,245,248,0.78);margin-top:6px}
 </style>
@@ -276,6 +278,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
           <span class="p2-num">01</span>
           <h3 class="p2-grpname">Greater control of the room</h3>
         </div>
+        <div class="p2-rule"></div>
         <div class="p2-cards">
           <div class="p2-row">
             <div class="p2-card">            <div class="p2-copy"><p class="p2-cn">Venue panels</p>
@@ -295,6 +298,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
           <span class="p2-num">02</span>
           <h3 class="p2-grpname">Flexible control of your view</h3>
         </div>
+        <div class="p2-rule"></div>
         <div class="p2-cards">
           <div class="p2-row">
             <div class="p2-card">            <div class="p2-copy"><p class="p2-cn">Customizable interface</p>
@@ -315,6 +319,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
           <span class="p2-num">03</span>
           <h3 class="p2-grpname">Deeper control over security</h3>
         </div>
+        <div class="p2-rule"></div>
         <div class="p2-cards">
           <div class="p2-row">
             <div class="p2-card">            <div class="p2-copy"><p class="p2-cn">Audit trails</p>
