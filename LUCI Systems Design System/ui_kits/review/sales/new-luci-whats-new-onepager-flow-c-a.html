@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>LUCI — What's New · Variant A · Dark map header</title>
+<link rel="stylesheet" href="../../assets/fonts/luci-brand-fonts.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy-deep:#0A161C;--navy:#10232D;--navy-mid:#314955;--navy-muted:#49616E;
+  --mint:#68E3BE;--accent-light:#2b9e80;
+  --off-white:#F5F8FA;--tint:#EDF2F4;--rule-light:#DCE3E6;
+  --ink:#354F5C;--ink-strong:#1C2B33;
+  --font:'Space Grotesk','Trebuchet MS',sans-serif;
+  --font-body:'Inter','Space Grotesk','Trebuchet MS',sans-serif;
+  --pad:56px;
+}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:14px;line-height:1.6}
+.hub-link{max-width:816px;margin:0 auto;padding:14px 16px 6px;font-family:var(--font);font-size:11px;text-align:center;color:var(--navy-muted)}
+.hub-link a{color:var(--navy-mid);font-weight:600;text-decoration:none}
+.doc{max-width:816px;margin:0 auto}
+.sheet{position:relative;width:816px;height:1056px;background:var(--off-white);
+  display:flex;flex-direction:column;overflow:hidden}
+@media screen{.sheet{margin:22px auto;box-shadow:0 6px 28px rgba(10,22,28,0.16)}}
+@page{size:letter;margin:0}
+@media print{
+  body{background:#fff}.hub-link{display:none}
+  .sheet{margin:0;box-shadow:none;page-break-after:always}
+  .mast,.mast__shot,.mast__scrim,.foot,.close,.p__num{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+
+.mast{position:relative;flex:0 0 392px;height:392px;overflow:hidden;
+  padding:34px var(--pad) 28px;background:#000;color:var(--off-white)}
+.mast__shot{position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:72% 42%;z-index:0;pointer-events:none}
+.mast__scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(96deg,
+      rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.72) 28%, rgba(0,0,0,0.28) 54%,
+      rgba(0,0,0,0.08) 78%, rgba(0,0,0,0.18) 100%),
+    linear-gradient(to bottom,
+      rgba(0,0,0,0.42) 0%, transparent 22%, transparent 70%, rgba(0,0,0,0.55) 100%)}
+
+.mast__inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column}
+.mast__logo{height:24px;width:132px;display:block}
+.mast__announce{margin-top:36px;font-family:var(--font);font-weight:700;font-size:10px;
+  letter-spacing:0.24em;text-transform:uppercase;color:var(--mint)}
+.mast__theme{margin-top:16px;font-family:var(--font);font-weight:700;font-size:42px;
+  line-height:1.06;letter-spacing:-0.035em;color:var(--off-white);max-width:13ch}
+.mast__theme em{font-style:normal;color:var(--mint)}
+.mast__base{margin-top:auto;display:flex;justify-content:flex-end;align-items:baseline;gap:14px}
+.mast__date-label{font-family:var(--font);font-weight:700;font-size:9.5px;
+  letter-spacing:0.24em;text-transform:uppercase;color:rgba(235,245,248,0.5)}
+.mast__date-value{font-family:var(--font);font-weight:700;font-size:22px;
+  line-height:1;letter-spacing:-0.02em;color:var(--mint)}
+
+.mid{flex:1 1 auto;display:flex;flex-direction:column;padding:32px var(--pad) 0}
+.mid__kicker{font-family:var(--font);font-weight:700;font-size:9.5px;
+  letter-spacing:0.24em;text-transform:uppercase;color:var(--accent-light)}
+.mid__title{margin-top:8px;font-family:var(--font);font-weight:700;font-size:24px;
+  line-height:1.15;letter-spacing:-0.025em;color:var(--ink-strong)}
+
+.promises{margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr)}
+.p{padding:0 24px;border-left:1px solid var(--rule-light)}
+.p:first-child{padding-left:0;border-left:none}
+.p:last-child{padding-right:0}
+.p__num{font-family:var(--font);font-weight:700;font-size:13px;letter-spacing:0.18em;
+  text-transform:uppercase;color:var(--accent-light)}
+.p__name{margin-top:10px;min-height:2.5em;font-family:var(--font);font-weight:700;
+  font-size:16px;line-height:1.25;letter-spacing:-0.02em;color:var(--ink-strong)}
+.p__benefit{margin-top:8px;font-family:var(--font-body);font-size:12px;
+  line-height:1.5;color:var(--ink)}
+.p__list{margin-top:22px;display:flex;flex-direction:column;gap:14px}
+.p__list dt{font-family:var(--font);font-weight:600;font-size:12px;line-height:1.3;color:var(--ink-strong)}
+.p__list dd{margin-top:2px;font-family:var(--font-body);font-size:11px;line-height:1.45;color:var(--navy-muted)}
+
+.close{margin-top:auto;background:var(--tint);padding:22px var(--pad);
+  display:flex;justify-content:space-between;align-items:flex-end;gap:32px}
+.close__info{font-family:var(--font-body);font-size:12px;line-height:1.5;color:var(--ink)}
+.close__info strong{font-family:var(--font);font-weight:700;color:var(--ink-strong)}
+.close__url{display:block;margin-top:4px;font-family:var(--font);font-weight:700;font-size:13px;color:var(--accent-light)}
+.close__contact{font-family:var(--font-body);font-size:10.5px;line-height:1.6;color:var(--navy-muted);text-align:right}
+.close__contact strong{font-family:var(--font);font-weight:700;color:var(--ink-strong)}
+
+.foot{background:var(--navy-deep);color:rgba(235,245,248,0.42);
+  padding:12px var(--pad) 14px;display:flex;justify-content:space-between;align-items:center;
+  font-family:var(--font);font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase}
+.foot__wordmark{font-weight:700;letter-spacing:0.18em;color:rgba(104,227,190,0.7)}
+</style>
+</head>
+<body>
+<p class="hub-link"><a href="new-luci-whats-new-onepager-flow-c-compare.html">&larr; Compare variants</a> &middot; A &middot; Dark map header</p>
+<article class="doc">
+  <section class="sheet">
+    <header class="mast">
+      <img class="mast__shot" src="assets/new-luci-map-dark.png?v=1" alt="" aria-hidden="true">
+      <span class="mast__scrim" aria-hidden="true"></span>
+      <div class="mast__inner">
+        <img class="mast__logo" src="assets/logos/luci-wordmark-white-320.png?v=7" alt="LUCI Systems" width="132" height="24">
+        <p class="mast__announce">A new version of LUCI is coming</p>
+        <h1 class="mast__theme">Putting the power of <em>programming</em> in your hands</h1>
+        <p class="mast__base">
+          <span class="mast__date-label">Release date</span>
+          <span class="mast__date-value">January 19</span>
+        </p>
+      </div>
+    </header>
+
+    <div class="mid">
+      <p class="mid__kicker">What&rsquo;s new</p>
+      <h2 class="mid__title">The 3 Promises of New LUCI</h2>
+      <div class="promises">
+        <section class="p">
+          <p class="p__num">01</p>
+          <h3 class="p__name">Greater control of the room</h3>
+          <p class="p__benefit">Operate from the room with the controls you need.</p>
+          <dl class="p__list">
+            <div><dt>Venue panels</dt><dd>Put room controls where the work happens.</dd></div>
+            <div><dt>Staging</dt><dd>Build the next look before applying it.</dd></div>
+            <div><dt>Audio group control</dt><dd>Adjust linked zones without losing their balance.</dd></div>
+          </dl>
+        </section>
+        <section class="p">
+          <p class="p__num">02</p>
+          <h3 class="p__name">More flexible control of your view</h3>
+          <p class="p__benefit">Shape the interface around your property and operation.</p>
+          <dl class="p__list">
+            <div><dt>Customizable interface</dt><dd>Bring your property&rsquo;s identity into LUCI.</dd></div>
+            <div><dt>Live map flexibility</dt><dd>Match live floor plans to physical spaces.</dd></div>
+            <div><dt>Video/LED wall layout sync</dt><dd>Pull processor layouts in without rebuilding.</dd></div>
+          </dl>
+        </section>
+        <section class="p">
+          <p class="p__num">03</p>
+          <h3 class="p__name">Deeper control over security</h3>
+          <p class="p__benefit">See activity, govern access, and bring support closer.</p>
+          <dl class="p__list">
+            <div><dt>Audit trails</dt><dd>Trace each action to a person and a time.</dd></div>
+            <div><dt>Live monitoring</dt><dd>See device, display, and audio status live.</dd></div>
+            <div><dt>Sign-in and session control</dt><dd>Control who signs in and stays active.</dd></div>
+            <div><dt>In-product support</dt><dd>Raise requests with context already attached.</dd></div>
+          </dl>
+        </section>
+      </div>
+    </div>
+
+    <div class="close">
+      <p class="close__info"><strong>For more information, visit</strong>
+        <span class="close__url">[UPGRADE GUIDE URL]</span></p>
+      <p class="close__contact"><strong>[NAME]</strong> &middot; [TITLE]<br>[EMAIL] &middot; [PHONE]</p>
+    </div>
+    <footer class="foot">
+      <span class="foot__wordmark">LUCI</span>
+      <span>What&rsquo;s New &middot; For LUCI customers and prospects</span>
+    </footer>
+  </section>
+</article>
+</body>
+</html>

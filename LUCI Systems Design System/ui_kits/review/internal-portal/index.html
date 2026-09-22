@@ -3257,8 +3257,8 @@
       const map = {};
       libraryFolders().forEach((folder) => {
         (folder.groups || []).forEach((group) => {
-          (group.items || []).forEach((item) => {
-            if (item.queueId) map[item.queueId] = item;
+        (group.items || []).forEach((item) => {
+          if (item.queueId) map[item.queueId] = item;
           });
         });
       });
@@ -3599,20 +3599,20 @@
         asset.reviewVersion ? `<span class="pill">v${asset.reviewVersion}</span>` : '',
       ].filter(Boolean).join('');
 
-      const row = document.createElement('article');
-      row.className = 'row';
-      row.innerHTML = `
-        <div>
+        const row = document.createElement('article');
+        row.className = 'row';
+        row.innerHTML = `
+          <div>
           <h3>${escapeHtml(title)}</h3>
           ${summary ? `<p>${escapeHtml(summary)}</p>` : ''}
           ${pills ? `<div class="meta">${pills}</div>` : ''}
-        </div>
-        <div class="actions">
-          ${openUrl ? `<a class="btn btn--ghost" href="${openUrl}">Open</a>` : ''}
+          </div>
+          <div class="actions">
+            ${openUrl ? `<a class="btn btn--ghost" href="${openUrl}">Open</a>` : ''}
           ${downloads.map((dl) => `<a class="btn btn--mint" href="${pathFromReview(dl.path)}" download="${dl.path.split('/').pop()}">Download ${escapeHtml(dl.label || 'file')}</a>`).join('')}
           ${liveUrl ? `<a class="btn btn--ghost" href="${liveUrl}" target="_blank" rel="noopener">Live</a>` : ''}
-        </div>
-      `;
+          </div>
+        `;
       return row;
     }
 
@@ -3769,7 +3769,7 @@
     // Email copy lives in its own accordion below (Email copy) with per-email pages
     // derived from new-luci-email-comms.json — see NEW_LUCI_EMAIL_*.
     const NEW_LUCI_WORKING_SHELLS = [
-      { slug: 'whats-new', title: "What's New one-pager", deck: 'Short release-notes style summary of what is new in New LUCI for customers.', layoutPreviewUrl: '../sales/new-luci-whats-new-onepager.html' },
+      { slug: 'whats-new', title: "What's New one-pager", deck: 'Letter leave-behind: The 3 Promises of New LUCI (Flow C). Open layout preview for the print sheet.', layoutPreviewUrl: '../sales/new-luci-whats-new-onepager.html' },
       { slug: 'webinar', title: 'Webinar', deck: 'Landing page copy plus script and slide drafts for the launch webinar.' },
       { slug: 'upgrade-guide', title: 'Upgrade guide & FAQ', deck: 'How current customers move onto New LUCI, plus the questions that come up.' },
       { slug: 'proof-pull', title: 'Proof pull', deck: 'Running list of proof points, quotes, and evidence to draw from for launch assets.' }
@@ -5118,10 +5118,10 @@
             b.textContent = item.brief;
             feat.appendChild(b);
           }
-          if (item.text) {
-            const t = document.createElement('p');
+            if (item.text) {
+              const t = document.createElement('p');
             t.className = 'fl-detail__text';
-            t.textContent = item.text;
+              t.textContent = item.text;
             feat.appendChild(t);
           }
           const bullets = item.bullets || [];

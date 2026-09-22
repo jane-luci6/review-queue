@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-14",
+  "updated": "2026-09-22",
   "publishNote": "Build (npm run build:review) outputs to ui_kits/review. Bump reviewVersion + versionNote for new uploads (version history shown in portal). Set dueForReview for first-time review. Comments/approvals sync server-side via the comments_api container (proxied at /api/comments); Jane sees Mike/Mark's feedback on refresh. Archive with scripts/pull-review-comments.mjs.",
   "previewBaseUrl": "",
   "commentsApiUrl": "http://10.10.1.17:8081/api/comments",
@@ -8,17 +8,17 @@
     {
       "title": "Messaging guide",
       "url": "messaging/messaging-guide.html",
-      "note": "Updated Sep 14, 2026"
+      "note": "Updated Sep 22, 2026"
     },
     {
       "title": "LUCI philosophy",
       "url": "messaging/philosophy.html",
-      "note": "Updated Sep 14, 2026"
+      "note": "Updated Sep 22, 2026"
     },
     {
       "title": "Personas",
       "url": "messaging/personas.html",
-      "note": "Updated Sep 14, 2026"
+      "note": "Updated Sep 22, 2026"
     }
   ],
   "inProgress": [],
@@ -596,5 +596,5 @@
     }
   ],
   "finalized": [],
-  "messagingDocsUpdated": "2026-09-14"
+  "messagingDocsUpdated": "2026-09-22"
 }
