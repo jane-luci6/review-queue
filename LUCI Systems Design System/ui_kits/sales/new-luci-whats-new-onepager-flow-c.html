@@ -122,24 +122,11 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 .foot__wordmark{font-weight:700;letter-spacing:0.18em;color:rgba(104,227,190,0.7)}
 
 /* ── PAGE 2 — sections stacked vertically, cards in a row under each ──
-   Dark masthead-style header (matches page 1, shorter). Each section is a
-   full-width band on its own tint; cards stretch to fill the page so there's
-   no empty space at the foot. Soft-icon tiles per brochure §5.1. */
-.p2-head{position:relative;flex:0 0 60px;overflow:hidden;background:var(--navy-deep)}
-.p2-mesh{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-  object-position:62% 28%;opacity:0.55;pointer-events:none}
-.p2-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:linear-gradient(100deg,rgba(8,18,24,0.88) 0%,rgba(8,18,24,0.70) 42%,
-    rgba(8,18,24,0.38) 72%,rgba(8,18,24,0.22) 100%)}
-.p2-head::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;
-  background:var(--mint);z-index:3}
-.p2-inner{position:relative;z-index:2;height:100%;display:flex;
-  flex-direction:column;justify-content:center;padding:0 var(--pad)}
-.p2-logo{display:block;height:24px;width:104px;object-fit:contain;margin-bottom:6px}
-.p2-title{font-family:var(--font);font-weight:700;font-size:22px;line-height:1.1;
-  letter-spacing:-0.02em;color:var(--off-white)}
-.p2-title em{font-style:normal;color:var(--mint)}
-.sheet--p2{display:grid;grid-template-rows:60px 1fr auto auto auto}
+   No header band on page 2 — page 1 already carries the masthead; the
+   footer alone repeats the LUCI mark for continuity. Each section is a
+   full-width band; cards stretch to fill the page so there's no empty
+   space at the foot. Soft-icon tiles per brochure §5.1. */
+.sheet--p2{display:grid;grid-template-rows:1fr auto auto auto}
 .p2-body{position:relative;min-height:0;overflow:hidden;display:flex;flex-direction:column}
 .p2-grp{position:relative;flex:1 1 0;display:flex;flex-direction:column;
   padding:0 var(--pad);justify-content:center}
@@ -256,14 +243,6 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 
   <section class="sheet sheet--p2">
 
-    <header class="p2-head">
-      <img class="p2-mesh" src="assets/textures/luci-bg-hero-with-plan-transparent-1920x1080.svg" alt="" aria-hidden="true">
-      <span class="p2-scrim" aria-hidden="true"></span>
-      <div class="p2-inner">
-        <img class="p2-logo" src="assets/logos/luci-wordmark-white-320.png?v=7" alt="LUCI Systems" width="104" height="24">
-      </div>
-    </header>
-
     <div class="p2-body">
 
       <section class="p2-grp">
@@ -367,7 +346,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
     <div class="close">
       <p class="close__info"><strong>For more information, visit</strong>
         <span class="close__url">[UPGRADE GUIDE URL]</span></p>
-      <p class="close__contact"><strong>[NAME]</strong> &middot; [TITLE]<br>[EMAIL] &middot; [PHONE]</p>
+      <p class="close__contact"><strong>Michael Epstein</strong> &middot; CEO<br>mepstein@lucisystems.com &middot; 702.326.5700</p>
     </div>
     <footer class="foot">
       <span class="foot__wordmark">LUCI</span>
