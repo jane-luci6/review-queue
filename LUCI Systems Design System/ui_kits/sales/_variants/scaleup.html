@@ -141,16 +141,15 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 .p2-title em{font-style:normal;color:var(--mint)}
 .sheet--p2{display:grid;grid-template-rows:60px 1fr auto auto auto}
 .p2-body{position:relative;min-height:0;overflow:hidden}
-.p2-grp{position:relative;overflow:hidden;padding:14px var(--pad) 16px;height:249px;
+.p2-grp{position:relative;overflow:hidden;padding:12px var(--pad) 16px;height:249px;
   background:#fff}
-.p2-lockup{position:relative;z-index:1;height:22px;display:flex;align-items:flex-end}
-.p2-num{position:absolute;left:-8px;top:-10px;z-index:0;pointer-events:none;
-  font-family:var(--font);font-weight:700;font-size:168px;line-height:0.82;
-  letter-spacing:-6px;color:rgba(15,30,39,0.07)}
-.p2-grpname{position:relative;z-index:1;margin:0;
-  font-family:var(--font);font-weight:600;font-size:11px;
-  line-height:1;letter-spacing:0.14em;text-transform:uppercase;color:var(--navy-muted)}
-.p2-cards{position:absolute;top:36px;left:var(--pad);right:var(--pad);height:calc(100% - 52px);
+.p2-lockup{position:relative;z-index:1;display:flex;align-items:baseline;gap:10px;
+  padding:0 0 8px}
+.p2-num{flex:none;font-family:var(--font);font-weight:700;font-size:22px;
+  line-height:1;letter-spacing:-0.03em;color:rgba(15,30,39,0.28)}
+.p2-grpname{font-family:var(--font);font-weight:700;font-size:20px;
+  line-height:1.1;letter-spacing:-0.02em;color:var(--ink-strong)}
+.p2-cards{position:absolute;top:42px;left:var(--pad);right:var(--pad);height:calc(100% - 58px);
   display:flex;flex-direction:column;gap:12px}
 .p2-row{height:100%;display:flex;gap:12px;align-items:stretch}
 .p2-card{flex:1 1 0;min-width:0;height:100%;
