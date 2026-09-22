@@ -125,7 +125,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
    Dark masthead-style header (matches page 1, shorter). Each section is a
    full-width band on its own tint; cards stretch to fill the page so there's
    no empty space at the foot. Soft-icon tiles per brochure §5.1. */
-.p2-head{position:relative;flex:0 0 96px;overflow:hidden;background:var(--navy-deep)}
+.p2-head{position:relative;flex:0 0 60px;overflow:hidden;background:var(--navy-deep)}
 .p2-mesh{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
   object-position:62% 28%;opacity:0.55;pointer-events:none}
 .p2-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
@@ -139,7 +139,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 .p2-title{font-family:var(--font);font-weight:700;font-size:22px;line-height:1.1;
   letter-spacing:-0.02em;color:var(--off-white)}
 .p2-title em{font-style:normal;color:var(--mint)}
-.sheet--p2{display:grid;grid-template-rows:96px 1fr auto auto}
+.sheet--p2{display:grid;grid-template-rows:60px 1fr auto auto}
 .p2-body{position:relative;min-height:0;overflow:hidden}
 .p2-grp{position:relative;overflow:hidden;padding:18px var(--pad) 20px;height:249px;
   background:#fff}
@@ -172,9 +172,6 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
   line-height:1.2;letter-spacing:-0.01em;color:var(--ink-strong)}
 .p2-cb{margin-top:3px;font-family:var(--font-body);font-weight:400;font-size:11px;
   line-height:1.42;color:var(--navy-muted)}
-.p2-grp:nth-child(1) .p2-cb{
-  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;
-  overflow:hidden}
 </style>
 </head>
 <body>
@@ -266,7 +263,6 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
       <span class="p2-scrim" aria-hidden="true"></span>
       <div class="p2-inner">
         <img class="p2-logo" src="assets/logos/luci-wordmark-white-320.png?v=7" alt="LUCI Systems" width="104" height="24">
-        <h2 class="p2-title">Top <em>New Features</em></h2>
       </div>
     </header>
 
