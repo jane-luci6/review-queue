@@ -42,24 +42,26 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 
 /* ── PAGE 1 ──────────────────────────────────────────────────────────
    Dark masthead → map field → 3 columns. Design by external LLM. */
-.p1-head{position:relative;flex:0 0 216px;overflow:hidden;
-  padding:34px var(--pad) 0;background:var(--header-navy)}
+.p1-head{position:relative;flex:0 0 236px;overflow:hidden;
+  padding:32px var(--pad) 26px;background:var(--header-navy);
+  display:flex;flex-direction:column}
 .p1-tex{position:absolute;top:0;right:0;width:480px;height:270px;opacity:.55;
   object-fit:cover;object-position:top right;pointer-events:none}
-.p1-logo{height:30px;display:block;position:relative;z-index:2}
-.p1-eyebrow{margin-top:20px;position:relative;z-index:2;
-  font-family:var(--display);font-weight:700;font-size:11.5px;letter-spacing:.16em;
-  color:var(--mint)}
-.p1-headline{margin-top:8px;position:relative;z-index:2;
-  font-family:var(--display);font-size:32px;font-weight:700;line-height:1.08;
-  color:#fff;letter-spacing:0}
+.p1-logo{height:28px;width:121px;display:block;position:relative;z-index:2}
+.p1-eyebrow{margin:28px 0 0;position:relative;z-index:2;
+  font-family:var(--font);font-weight:700;font-size:10px;
+  letter-spacing:0.24em;text-transform:uppercase;color:var(--mint)}
+.p1-headline{margin:14px 0 0;position:relative;z-index:2;
+  font-family:var(--display);font-weight:700;font-size:30px;
+  line-height:1.1;letter-spacing:0.05em;text-transform:uppercase;color:var(--off-white)}
 .p1-headline .p1-accent{color:var(--mint)}
-.p1-release{margin-top:6px;display:flex;align-items:baseline;gap:12px;
+.p1-release{margin-top:auto;display:flex;align-items:baseline;gap:14px;
   position:relative;z-index:2}
-.p1-rlabel{font-family:var(--display);font-weight:700;font-size:10px;
-  letter-spacing:.14em;color:#8CA0A8}
-.p1-date{font-family:var(--font);font-size:19px;font-weight:600;color:var(--mint)}
-.p1-bar{position:absolute;left:0;right:0;bottom:0;height:5px;background:var(--mint)}
+.p1-rlabel{font-family:var(--font);font-weight:700;font-size:9.5px;
+  letter-spacing:0.24em;text-transform:uppercase;color:rgba(235,245,248,0.5)}
+.p1-date{font-family:var(--font);font-weight:700;font-size:20px;
+  line-height:1;letter-spacing:-0.02em;color:var(--mint)}
+.p1-bar{position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--mint)}
 
 .p1-field{position:relative;flex:1 1 auto;min-height:0;overflow:hidden;
   background:var(--off-white)}
@@ -191,7 +193,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
             <div class="p1-num" aria-hidden="true">01</div>
             <div class="p1-headwrap">
               <h3>Greater control<br>of the room</h3>
-              <p>Customize your in-room panels, stage the next event on cue, and group audio zones so one move adjusts them all.</p>
+              <p>Tune in-room panels, stage events, and group audio zones.</p>
               <div class="p1-feat-label">FEATURES</div>
               <div class="p1-pillrow">
                 <div class="p1-pill">Venue panels</div>
@@ -204,7 +206,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
             <div class="p1-num" aria-hidden="true">02</div>
             <div class="p1-headwrap">
               <h3>Flexible control<br>of your view</h3>
-              <p>Shape the interface around your property and operation.</p>
+              <p>Adjust the interface to reflect your brand and customize your view.</p>
               <div class="p1-feat-label">FEATURES</div>
               <div class="p1-pillrow">
                 <div class="p1-pill">Customizable interface</div>
