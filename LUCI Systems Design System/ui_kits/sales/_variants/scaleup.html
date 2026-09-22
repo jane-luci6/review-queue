@@ -18,6 +18,9 @@
   --font-body:'Inter','Space Grotesk','Trebuchet MS',sans-serif;
   --display:'Syncopate','Arial Black',sans-serif;
   --pad:62px;
+  --header-navy:#081318;
+  --text-gray:#5B6670;
+  --num-gray:#DADBDF;
 }
 html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:14px;line-height:1.6}
@@ -31,98 +34,65 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 @media print{
   body{background:#fff}.hub-link{display:none}
   .sheet{margin:0;box-shadow:none;page-break-after:always;break-after:page;overflow:hidden}
-  .mast,.mast::after,.mast__mesh,.mast__scrim,.mast__kicker,.mast__title,
-  .mast__base,.mast__date-value,.field,.field__map,.field__scrim,
-  .copy__lead,.promise__num,.promise__name,.promise__lead,.caps,.caps__label,.foot,.close,.foot__wordmark,
+  .p1-head,.p1-tex,.p1-bar,.p1-eyebrow,.p1-headline,.p1-date,.p1-map,.p1-foot,.p1-luci,.p1-tag,.foot,.close,.foot__wordmark,
   .p2-head,.p2-mesh,.p2-scrim,.p2-ic,.p2-card,.p2-cn,.p2-cb,.p2-num,.p2-grpname,.p2-title,.p2-deck{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   /* Blinking fix: Chrome turns multi-stop CSS gradients into PDF Pattern/Shading
      objects that repaint lazily (blink on open). Flatten to flat fills in print. */
-  .mast__scrim{background:rgba(8,18,24,0.76) !important;background-image:none !important}
 }
 
 /* ── PAGE 1 ──────────────────────────────────────────────────────────
-   Three horizontal bands, brochure p1 rhythm: dark masthead → map →
-   light promises. No negative margins: .sheet has no padding, so each
-   band is already full-bleed and owns its own inset. */
+   Dark masthead → map field → 3 columns. Design by external LLM. */
+.p1-head{position:relative;flex:0 0 216px;overflow:hidden;
+  padding:34px var(--pad) 0;background:var(--header-navy)}
+.p1-tex{position:absolute;top:0;right:0;width:480px;height:270px;opacity:.55;
+  object-fit:cover;object-position:top right;pointer-events:none}
+.p1-logo{height:30px;display:block;position:relative;z-index:2}
+.p1-eyebrow{margin-top:20px;position:relative;z-index:2;
+  font-family:var(--display);font-weight:700;font-size:11.5px;letter-spacing:.16em;
+  color:var(--mint)}
+.p1-headline{margin-top:8px;position:relative;z-index:2;
+  font-family:var(--display);font-size:32px;font-weight:700;line-height:1.08;
+  color:#fff;letter-spacing:0}
+.p1-headline .p1-accent{color:var(--mint)}
+.p1-release{margin-top:6px;display:flex;align-items:baseline;gap:12px;
+  position:relative;z-index:2}
+.p1-rlabel{font-family:var(--display);font-weight:700;font-size:10px;
+  letter-spacing:.14em;color:#8CA0A8}
+.p1-date{font-family:var(--font);font-size:19px;font-weight:600;color:var(--mint)}
+.p1-bar{position:absolute;left:0;right:0;bottom:0;height:5px;background:var(--mint)}
 
-/* Masthead — dark, mesh + scrim, 4px mint rule. Matches brochure hero. */
-.mast{position:relative;flex:0 0 236px;overflow:hidden;
-  padding:32px var(--pad) 26px;background:var(--navy-deep);color:var(--off-white)}
-.mast__mesh{position:absolute;inset:0;width:100%;height:100%;z-index:0;
-  object-fit:cover;object-position:62% 28%;opacity:0.55;pointer-events:none}
-.mast__scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:
-    linear-gradient(100deg,
-      rgba(8,18,24,0.88) 0%,rgba(8,18,24,0.70) 42%,
-      rgba(8,18,24,0.38) 72%,rgba(8,18,24,0.22) 100%),
-    linear-gradient(to bottom,
-      rgba(8,18,24,0.35) 0%,transparent 30%,rgba(8,18,24,0.4) 100%)}
-.mast::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;
-  background:var(--mint);z-index:3}
-.mast__inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column}
-.mast__logo{display:block;height:28px;width:121px;object-fit:contain}
-.mast__kicker{margin:28px 0 0;font-family:var(--font);font-weight:700;font-size:10px;
-  letter-spacing:0.24em;text-transform:uppercase;color:var(--mint)}
-.mast__title{margin:14px 0 0;font-family:var(--display);font-weight:700;font-size:30px;
-  line-height:1.1;letter-spacing:0.05em;text-transform:uppercase;color:var(--off-white)}
-.mast__title em{font-style:normal;color:var(--mint)}
-.mast__base{margin-top:auto;display:flex;align-items:baseline;gap:14px}
-.mast__date-label{font-family:var(--font);font-weight:700;font-size:9.5px;
-  letter-spacing:0.24em;text-transform:uppercase;color:rgba(235,245,248,0.5)}
-.mast__date-value{font-family:var(--font);font-weight:700;font-size:20px;
-  line-height:1;letter-spacing:-0.02em;color:var(--mint)}
+.p1-field{position:relative;flex:1 1 auto;min-height:0;overflow:hidden;
+  background:var(--off-white)}
+.p1-map{position:absolute;left:0;bottom:0;width:816px;height:725px;
+  object-fit:fill;opacity:1;pointer-events:none}
+.p1-inner{position:relative;z-index:2;padding:38px 115px 0 var(--pad)}
+.p1-pagehead{font-family:var(--font);font-size:30px;font-weight:700;
+  color:var(--ink-strong);margin-bottom:54px;letter-spacing:-.2px}
+.p1-pagehead b{color:var(--accent-light);font-weight:700}
+.p1-cols{display:grid;grid-template-columns:repeat(3,1fr);column-gap:34px}
+.p1-col{position:relative;padding-top:60px}
+.p1-num{position:absolute;top:-14px;left:-6px;z-index:0;
+  font-family:var(--font);font-size:142px;font-weight:700;color:var(--num-gray);
+  line-height:1;letter-spacing:-3px}
+.p1-headwrap{position:relative;z-index:1}
+.p1-col h3{font-family:var(--font);font-size:25px;font-weight:700;
+  color:var(--ink-strong);line-height:1.24;margin-bottom:24px}
+.p1-col p{font-family:var(--font-body);font-size:14.5px;color:var(--text-gray);
+  line-height:1.68;margin-bottom:46px}
+.p1-feat-label{font-family:var(--display);font-size:11.5px;font-weight:700;
+  letter-spacing:.1em;color:var(--accent-light);margin-bottom:20px}
+.p1-pillrow{display:flex;flex-direction:column;align-items:flex-start;gap:18px}
+.p1-pill{display:inline-block;background:rgba(245,248,250,.72);
+  border:1.3px solid var(--accent-light);color:var(--accent-light);
+  font-family:var(--font);font-size:13.5px;font-weight:600;
+  padding:11px 18px;border-radius:20px}
 
-/* Field — the floorplan is the canvas. Anchored bottom-right so the
-   backwards L (right rail + bottom endpoints) reads as the product proof,
-   scrimmed inward so the promises stay legible over it. */
-.field{position:relative;flex:1 1 auto;min-height:0;overflow:hidden;
-  background:var(--off-white);display:flex;flex-direction:column}
-/* The plan is cropped hard to the endpoint run and held as a deliberate
-   detail strip along the foot, so it reads as evidence rather than wallpaper. */
-.field__map{position:absolute;inset:0;z-index:0;
-  width:100%;height:100%;object-fit:cover;object-position:100% 100%;
-  transform:translateX(20px);
-  filter:contrast(1.06) saturate(1.05);image-rendering:-webkit-optimize-contrast}
-/* Ellipse seated in the upper-left: opaque where the type sits, releasing
-   outward so the plan's backwards L reads along the right and bottom. */
-.field__scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:radial-gradient(96% 74% at 28% 26%,
-    var(--off-white) 0%,var(--off-white) 46%,
-    rgba(245,248,250,0.92) 62%,rgba(245,248,250,0.60) 78%,
-    rgba(245,248,250,0.16) 92%,rgba(245,248,250,0) 100%)}
-
-.copy{position:relative;z-index:3;flex:1 1 auto;min-height:0;display:flex;flex-direction:column;
-  padding:34px var(--pad) 0}
-.copy__lead{position:relative;margin:0 0 54px;max-width:none;
-  font-family:var(--font);font-weight:700;font-size:30px;line-height:1.3;
-  letter-spacing:-0.2px;color:var(--ink-strong)}
-.copy__lead em{font-style:normal;color:var(--accent-light)}
-
-/* Three columns sized to genuinely fill the upper field — on a sheet someone
-   holds, the promises carry the weight, not the background. */
-.promises{position:relative;flex:1 1 auto;min-height:0;margin:0;padding:0;
-  list-style:none;display:flex;flex-direction:row;align-items:flex-start;
-  gap:34px;padding-right:108px}
-.promise{position:relative;flex:1 1 0}
-.promise__num{position:absolute;top:-14px;left:-6px;z-index:0;pointer-events:none;
-  font-family:var(--font);font-weight:700;font-size:142px;line-height:1;
-  letter-spacing:-3px;color:#D8DBDF}
-.promise__name{position:relative;z-index:1;margin:60px 0 24px 22px;
-  font-family:var(--font);font-weight:700;font-size:25px;min-height:2.4em;
-  line-height:1.24;letter-spacing:normal;color:var(--ink-strong)}
-.promise__lead{position:relative;z-index:1;margin:0 0 56px 22px;min-height:5em;
-  font-family:var(--font);font-weight:400;font-size:14.5px;
-  line-height:1.68;color:var(--navy-muted);
-  text-shadow:0 1px 3px rgba(245,248,250,0.85)}
-.caps{position:relative;z-index:1;margin:0 0 0 22px;
-  display:flex;flex-direction:column;align-items:flex-start;gap:18px}
-.caps__label{display:block;width:100%;margin-bottom:20px;font-family:var(--display);
-  font-weight:700;font-size:11.5px;line-height:normal;letter-spacing:0.1em;
-  text-transform:uppercase;color:var(--accent-light)}
-.caps__pill{display:inline-block;padding:11px 18px;
-  border:1.3px solid rgba(43,158,128,0.30);border-radius:20px;
-  font-family:var(--font);font-weight:600;font-size:13.5px;line-height:1.3;
-  color:var(--accent-light);background:rgba(255,255,255,0.72)}
+.p1-foot{flex:0 0 54px;background:var(--navy-deep);
+  display:flex;align-items:center;justify-content:space-between;padding:0 var(--pad)}
+.p1-luci{font-family:var(--display);font-weight:700;font-size:12px;
+  letter-spacing:.1em;color:var(--mint)}
+.p1-tag{font-family:var(--display);font-weight:400;font-size:9.5px;
+  letter-spacing:.1em;color:#7C8A90}
 
 /* ── FOOTER (includes "for more information") ────────────────────────── */
 .close{flex:0 0 auto;background:var(--tint);padding:18px var(--pad) 20px;
@@ -200,52 +170,69 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 <article class="doc">
   <section class="sheet">
 
-    <header class="mast">
-      <img class="mast__mesh" src="assets/textures/luci-bg-hero-with-plan-transparent-1920x1080.svg" alt="" aria-hidden="true">
-      <span class="mast__scrim" aria-hidden="true"></span>
-      <div class="mast__inner">
-        <img class="mast__logo" src="assets/logos/luci-wordmark-white-320.png?v=7" alt="LUCI Systems" width="121" height="28">
-        <p class="mast__kicker">A new version of LUCI is coming</p>
-        <h1 class="mast__title">The <em>power of programming</em><br>is in your hands</h1>
-        <p class="mast__base">
-          <span class="mast__date-label">Release date</span>
-          <span class="mast__date-value">January 19</span>
-        </p>
+    <header class="p1-head">
+      <img class="p1-tex" src="assets/header_tex_rgba.png" alt="" aria-hidden="true">
+      <img class="p1-logo" src="assets/logo_rgba.png" alt="LUCI Systems">
+      <div class="p1-eyebrow">A NEW VERSION OF LUCI IS COMING</div>
+      <div class="p1-headline">THE <span class="p1-accent">POWER OF PROGRAMMING</span><br>IS IN YOUR HANDS</div>
+      <div class="p1-release">
+        <span class="p1-rlabel">RELEASE DATE</span>
+        <span class="p1-date">January 19</span>
       </div>
+      <div class="p1-bar" aria-hidden="true"></div>
     </header>
 
-    <div class="field">
-      <img class="field__map" src="assets/new-luci-map-light-v7.png?v=1" alt="LUCI map-based control: every display and audio zone on one live floor plan.">
-      <span class="field__scrim" aria-hidden="true"></span>
-
-      <div class="copy">
-        <h2 class="copy__lead">Three ways <em>LUCI 2.0</em> gives you more control</h2>
-        <ul class="promises">
-          <li class="promise">
-            <span class="promise__num" aria-hidden="true">01</span>
-            <h3 class="promise__name">Greater control of the room</h3>
-            <p class="promise__lead">Operate from the room with the controls you need.</p>
-            <p class="caps"><span class="caps__label">Features</span><span class="caps__pill">Venue panels</span><span class="caps__pill">Staging</span><span class="caps__pill">Audio group control</span></p>
-          </li>
-          <li class="promise">
-            <span class="promise__num" aria-hidden="true">02</span>
-            <h3 class="promise__name">Flexible control of your view</h3>
-            <p class="promise__lead">Shape the interface around your property and operation.</p>
-            <p class="caps"><span class="caps__label">Features</span><span class="caps__pill">Customizable interface</span><span class="caps__pill">Live map flexibility</span><span class="caps__pill">Live screen view</span></p>
-          </li>
-          <li class="promise">
-            <span class="promise__num" aria-hidden="true">03</span>
-            <h3 class="promise__name">Deeper control over security</h3>
-            <p class="promise__lead">See activity, govern access, and bring support closer.</p>
-            <p class="caps"><span class="caps__label">Features</span><span class="caps__pill">Audit trails</span><span class="caps__pill">Live monitoring</span><span class="caps__pill">Sign-in &amp; session control</span><span class="caps__pill">In-product support</span></p>
-          </li>
-        </ul>
+    <div class="p1-field">
+      <img class="p1-map" src="assets/map_v7_lshape.png" alt="LUCI map-based control: every display and audio zone on one live floor plan.">
+      <div class="p1-inner">
+        <div class="p1-pagehead">Three ways <b>LUCI 2.0</b> gives you more control</div>
+        <div class="p1-cols">
+          <div class="p1-col">
+            <div class="p1-num" aria-hidden="true">01</div>
+            <div class="p1-headwrap">
+              <h3>Greater control<br>of the room</h3>
+              <p>Operate from the room with the controls you need.</p>
+              <div class="p1-feat-label">FEATURES</div>
+              <div class="p1-pillrow">
+                <div class="p1-pill">Venue panels</div>
+                <div class="p1-pill">Staging</div>
+                <div class="p1-pill">Audio group control</div>
+              </div>
+            </div>
+          </div>
+          <div class="p1-col">
+            <div class="p1-num" aria-hidden="true">02</div>
+            <div class="p1-headwrap">
+              <h3>Flexible control<br>of your view</h3>
+              <p>Shape the interface around your property and operation.</p>
+              <div class="p1-feat-label">FEATURES</div>
+              <div class="p1-pillrow">
+                <div class="p1-pill">Customizable interface</div>
+                <div class="p1-pill">Live map flexibility</div>
+                <div class="p1-pill">Live screen view</div>
+              </div>
+            </div>
+          </div>
+          <div class="p1-col">
+            <div class="p1-num" aria-hidden="true">03</div>
+            <div class="p1-headwrap">
+              <h3>Deeper control<br>over security</h3>
+              <p>See activity, govern access, and bring support closer.</p>
+              <div class="p1-feat-label">FEATURES</div>
+              <div class="p1-pillrow">
+                <div class="p1-pill">Audit trails</div>
+                <div class="p1-pill">Live monitoring</div>
+                <div class="p1-pill">Session control</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <footer class="foot">
-      <span class="foot__wordmark">LUCI</span>
-      <span>What&rsquo;s New &middot; For LUCI customers and prospects</span>
+    <footer class="p1-foot">
+      <span class="p1-luci">LUCI</span>
+      <span class="p1-tag">WHAT&rsquo;S NEW &middot; FOR LUCI CUSTOMERS AND PROSPECTS</span>
     </footer>
 
   </section>
@@ -273,17 +260,17 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
             <div class="p2-card">
             <span class="p2-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="#2b9e80" stroke-width="1.8"/><path d="M3 10h18" stroke="#2b9e80" stroke-width="1.5" stroke-opacity="0.45"/><circle cx="7" cy="14.5" r="1.4" fill="#CEB06E"/><circle cx="11.5" cy="14.5" r="1.4" fill="#2b9e80" fill-opacity="0.35"/><circle cx="16" cy="14.5" r="1.4" fill="#2b9e80" fill-opacity="0.35"/></svg></span>
             <div class="p2-copy"><p class="p2-cn">Venue panels</p>
-            <p class="p2-cb">Scoped control on a venue tablet. It shows only the allowed controls for that room.</p></div>
+            <p class="p2-cb">In-venue tablets show only the approved controls for that space. Operators adjust what they need without full access.</p></div>
           </div>
           <div class="p2-card">
             <span class="p2-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="6" width="16" height="6" rx="1.5" fill="#68E3BE" fill-opacity="0.18" stroke="#2b9e80" stroke-width="1.8"/><path d="M4 15h16M4 18h16" stroke="#2b9e80" stroke-width="1.6" stroke-linecap="round" stroke-opacity="0.4"/><path d="M14 9l2.5 2.5L14 14" stroke="#CEB06E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             <div class="p2-copy"><p class="p2-cn">Staging</p>
-            <p class="p2-cb">Prepare screens, sources, and volumes while the current look runs. Apply on cue, then save as a preset.</p></div>
+            <p class="p2-cb">Prepare screens, sources, and audio levels behind the scenes. Apply the change on cue, or save it as a preset for next time.</p></div>
           </div>
           <div class="p2-card">
             <span class="p2-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 9v6h3l4 3V6L7 9z" fill="#68E3BE" fill-opacity="0.18" stroke="#2b9e80" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 10c1.4 1.4 1.4 3.6 0 5" stroke="#2b9e80" stroke-width="1.8" stroke-linecap="round"/><path d="M17 7.5c2.6 2.6 2.6 6.9 0 9.5" stroke="#CEB06E" stroke-width="1.8" stroke-linecap="round"/></svg></span>
             <div class="p2-copy"><p class="p2-cn">Audio group control</p>
-            <p class="p2-cb">Adjust linked audio zones together without losing their tuned balance, or change one zone on its own.</p></div>
+            <p class="p2-cb">Move several audio zones together: apply the same incremental change to keep their balance, or set them all to one volume.</p></div>
           </div>
           </div>
         </div>
