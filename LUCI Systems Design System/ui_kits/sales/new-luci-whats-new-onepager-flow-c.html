@@ -76,19 +76,20 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
   color:var(--ink-strong);background:rgba(43,158,128,0.05)}
 .p1-callout b{color:var(--accent-light);font-weight:700}
 .p1-cols{display:grid;grid-template-columns:repeat(3,1fr);column-gap:34px}
-.p1-col{position:relative;padding-top:44px}
-.p1-col::before{content:"";position:absolute;top:-14px;left:-6px;right:-6px;
-  height:130px;z-index:1;pointer-events:none;
-  background:var(--navy-deep);border-radius:20px;
-  box-shadow:0 8px 24px rgba(10,22,28,0.18)}
-.p1-num{position:absolute;top:-14px;left:-6px;z-index:2;
-  font-family:var(--font);font-size:142px;font-weight:700;
-  color:rgba(255,255,255,0.07);line-height:1;letter-spacing:-3px}
-.p1-headwrap{position:relative;z-index:3}
-.p1-col h3{font-family:var(--font);font-size:25px;font-weight:700;
-  color:var(--off-white);line-height:1.24;margin-bottom:24px;
-  padding:0 18px}
-.p1-col h3 b{color:var(--gold);font-weight:700}
+.p1-col{position:relative}
+.p1-card{background:#0F1E27;border-radius:18px;position:relative;overflow:hidden;
+  padding:24px 26px 22px;margin-bottom:22px;
+  box-shadow:0 14px 26px -16px rgba(10,20,26,.4)}
+.p1-tex{position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center 30%;opacity:.5;z-index:0;
+  mix-blend-mode:screen}
+.p1-num{position:absolute;top:-4px;left:10px;z-index:0;
+  font-family:var(--font);font-size:92px;font-weight:700;
+  color:rgba(255,255,255,.14);line-height:1;letter-spacing:-3px}
+.p1-headwrap{position:relative;z-index:1}
+.p1-card h3{font-family:var(--font);font-size:21px;font-weight:700;
+  color:#fff;line-height:1.22;margin:0}
+.p1-card h3 .ctrl{color:#E1D291}
 .p1-col p{font-family:var(--font-body);font-size:14.5px;color:var(--text-gray);
   line-height:1.68;margin-bottom:36px}
 .p1-feat-label{font-family:var(--display);font-size:11.5px;font-weight:700;
@@ -200,42 +201,51 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
         <div class="p1-callout">The only A/V that scales and improves <b>just got better</b></div>
         <div class="p1-cols">
           <div class="p1-col">
-            <div class="p1-num" aria-hidden="true">01</div>
-            <div class="p1-headwrap">
-              <h3>Greater <b>control</b><br>of the room</h3>
-              <p>Tune in-room panels, stage events, and group audio zones.</p>
-              <div class="p1-feat-label">FEATURES</div>
-              <div class="p1-pillrow">
-                <div class="p1-pill">Venue panels</div>
-                <div class="p1-pill">Staging</div>
-                <div class="p1-pill">Audio group control</div>
+            <div class="p1-card">
+              <img class="p1-tex" src="assets/header_tex_rgba.png" alt="" aria-hidden="true">
+              <div class="p1-num" aria-hidden="true">01</div>
+              <div class="p1-headwrap">
+                <h3>Greater <span class="ctrl">control</span><br>of the room</h3>
               </div>
+            </div>
+            <p>Tune in-room panels, stage events, and group audio zones.</p>
+            <div class="p1-feat-label">FEATURES</div>
+            <div class="p1-pillrow">
+              <div class="p1-pill">Venue panels</div>
+              <div class="p1-pill">Staging</div>
+              <div class="p1-pill">Audio group control</div>
             </div>
           </div>
           <div class="p1-col">
-            <div class="p1-num" aria-hidden="true">02</div>
-            <div class="p1-headwrap">
-              <h3>Flexible <b>control</b><br>of your view</h3>
-              <p>Adjust the interface to reflect your brand and customize your view.</p>
-              <div class="p1-feat-label">FEATURES</div>
-              <div class="p1-pillrow">
-                <div class="p1-pill">Customizable interface</div>
-                <div class="p1-pill">Live map flexibility</div>
-                <div class="p1-pill">Live screen view</div>
+            <div class="p1-card">
+              <img class="p1-tex" src="assets/header_tex_rgba.png" alt="" aria-hidden="true">
+              <div class="p1-num" aria-hidden="true">02</div>
+              <div class="p1-headwrap">
+                <h3>Flexible <span class="ctrl">control</span><br>of your view</h3>
               </div>
+            </div>
+            <p>Adjust the interface to reflect your brand and customize your view.</p>
+            <div class="p1-feat-label">FEATURES</div>
+            <div class="p1-pillrow">
+              <div class="p1-pill">Customizable interface</div>
+              <div class="p1-pill">Live map flexibility</div>
+              <div class="p1-pill">Live screen view</div>
             </div>
           </div>
           <div class="p1-col">
-            <div class="p1-num" aria-hidden="true">03</div>
-            <div class="p1-headwrap">
-              <h3>Deeper <b>control</b><br>over security</h3>
-              <p>See activity, govern access, and bring support closer.</p>
-              <div class="p1-feat-label">FEATURES</div>
-              <div class="p1-pillrow">
-                <div class="p1-pill">Audit trails</div>
-                <div class="p1-pill">Live monitoring</div>
-                <div class="p1-pill">Session control</div>
+            <div class="p1-card">
+              <img class="p1-tex" src="assets/header_tex_rgba.png" alt="" aria-hidden="true">
+              <div class="p1-num" aria-hidden="true">03</div>
+              <div class="p1-headwrap">
+                <h3>Deeper <span class="ctrl">control</span><br>over security</h3>
               </div>
+            </div>
+            <p>See activity, govern access, and bring support closer.</p>
+            <div class="p1-feat-label">FEATURES</div>
+            <div class="p1-pillrow">
+              <div class="p1-pill">Audit trails</div>
+              <div class="p1-pill">Live monitoring</div>
+              <div class="p1-pill">Session control</div>
             </div>
           </div>
         </div>
