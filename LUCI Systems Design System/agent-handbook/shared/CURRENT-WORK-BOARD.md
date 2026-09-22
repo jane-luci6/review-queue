@@ -18,6 +18,7 @@ Workstream bots update this table when Jane assigns them work. Cornelius does no
 
 | ID | Jane asked | Owner | Stage | Model | Artifact | Waiting on Jane | Next |
 |---|---|---|---|---|---|---|---|
+| upgrade-path-rewrite | Rewrite upgrade path as shipped-laptop fulfillment with a proposed timeline. | Weatherby | deployed (`7bf9ef6`); Jane review | GPT | http://10.10.1.37/luci-upgrade-guide/#ug-upgrade | Copy and proposed dates | Jane hard-refreshes and reviews |
 | new-luci-whats-new-map-variants | Jane: research one-pager field type (not newsletter Sharp); apply to feature rows over the map. | Ermintrude | Jane visual | Grok | `sales/new-luci-whats-new-onepager-field-research-2026-09-18.md` + `flow-c.html` | Jane visual | Open HTML; confirm field type |
 | wave-1-gpt-edit | Jane: GPT edit Wave 1 drafts — cold-reader context openers; bullets/steps where lists beat paragraphs; specific active voice (no dancing). | Ermintrude | DONE GPT edit; Jane read | GPT | `drafts/wave-1/*.md` + REVIEW.html + EDIT-NOTES-gpt.md (commit `0553d62`) | Jane read | Open REVIEW.html |
 | new-luci-whats-new-flow-c-r3-fullmesh | Jane: prior e-mesh pass shoddy — lines-only≠full mesh+floorplan; weird left-gap masthead; no pull into 3 promises. Opus hard redo → GLM → IMP sync. | Ermintrude | DONE r3 deployed; Jane visual | Claude then GLM | live /sales/new-luci-whats-new-onepager.html + flow-c.html + r3 notes | Jane hard-refresh visual | Cmd+Shift+R then Open layout preview |
