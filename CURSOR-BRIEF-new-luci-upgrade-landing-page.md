@@ -163,6 +163,24 @@ The feature deep-dive uses a two-column layout:
 
 ---
 
+## Page navigation — sticky section nav + back-to-top
+
+Jane's concern: multi-open accordions will make the page really lengthy once they're open. There need to be easy ways to jump from section to section or back to the top.
+
+**Solution (locked):**
+
+1. **Sticky section nav** — same pattern as `platform.astro`'s `PlatformChapterNav`. A horizontal bar that stays pinned to the top of the viewport, showing all 9 sections. Scroll-spy highlights the section the reader is currently in. Click any section name to jump to it. This is the primary navigation mechanism — it makes a long page feel short because you're always one click from anywhere.
+
+2. **Back-to-top button** — a small fixed button (bottom-right) that appears after the reader scrolls past the hero. One click returns to the top. Standard pattern; respects `prefers-reduced-motion`.
+
+3. **Expand all / Collapse all toggle** (optional, per pillar) — a small text link at the top of each pillar's accordion that lets a reader collapse the section after scanning it, or expand all features in that pillar at once. Helps manage the length when multiple accordions are open.
+
+4. **The sticky detail panel** (Section 4's right column) already mitigates the visual length — only the left accordion grows; the right panel stays fixed in view, so the reader always has a visual anchor even when the left column is long.
+
+**Reference:** `platform.astro`'s `PlatformChapterNav` component (chapters array with id + label, scroll-spy, sticky positioning). The FAG customer page's `.fag-nav` (sticky nav with scroll-spy, anchor-aware scrolling that accounts for nav height). Either pattern works; `PlatformChapterNav` is the closer match since this page lives on the main site.
+
+---
+
 ## Content inventory — what we have vs. what needs writing
 
 ### Already have (from the two-pager + JSON)
@@ -231,14 +249,15 @@ That line is a framing recommendation, not locked final copy. The final wording 
 
 ## Open decisions (Jane still owns)
 
-1. **Release date** — January 19 is in the two-pager but may be placeholder. Confirm before building.
-2. **Past-improvements timeline visual** (Section 2) — does Jane want it, or just a paragraph?
-3. **Accordion behavior** — one feature open at a time per pillar, or allow multiple?
-4. **Live screen view** — this feature is in the two-pager but not in the feature-list JSON. Does it need a JSON entry, or stays page-only?
-5. **Technical detail section format** — tabs or accordions? (Tabs are cleaner for 4 categories; accordions are more consistent with the rest of the page.)
-6. **Screenshots** — 10 feature visuals needed. Real New LUCI captures only, cropped to the action, anonymized. Who supplies these?
-7. **Access model** — is the upgrade guide public, unlisted, or customer-only? (The format strategy flagged this as a decision; Jane hasn't locked it yet.)
-8. **Deep-link anchors** — the format strategy says emails should deep-link to relevant sections. Confirm the anchor scheme before building.
+1. **Release date** — ~~January 19 is in the two-pager but may be placeholder. Confirm before building.~~ **LOCKED for now:** Use January 19 as placeholder. Jane confirms it will most likely change; update when the real date is set.
+2. **Past-improvements timeline visual** (Section 2) — *Jane asked what this means.* This would be a small horizontal timeline showing LUCI's version evolution (e.g., v1.0 initial release → v1.5 first major update → v2.0 January 19) to make the "improves over time" point visual and concrete — proof the platform has actually gotten more capable over time, not just a claim. Think 3-4 markers with version labels, dates, and a one-line "what changed" under each. **Optional** — a paragraph alone works too. **Jane to decide; leaning skip unless she wants it.**
+3. **Accordion behavior** — ~~one feature open at a time per pillar, or allow multiple?~~ **LOCKED:** Multi-open is fine.
+4. **Accordion length concern** — Jane's concern: multi-open accordions will make the page really lengthy once they're open. **SOLUTION (locked):** Add a sticky section nav (like `platform.astro`'s `PlatformChapterNav` — shows all 9 sections, highlights the active one via scroll-spy, click to jump) + a back-to-top button (appears after scrolling, one click to return to top). The sticky detail panel on the right already mitigates the visual length — only the left accordion grows; the right panel stays fixed. Also consider an "Expand all / Collapse all" toggle per pillar so a reader can collapse the section after scanning it.
+5. **Live screen view** — this feature is in the two-pager but not in the feature-list JSON. Does it need a JSON entry, or stays page-only? *Still open — Cornelius to flag when he builds.*
+6. **Technical detail section format** — tabs or accordions? (Tabs are cleaner for 4 categories; accordions are more consistent with the rest of the page.) *Still open — Cornelius to propose.*
+7. **Screenshots and videos** — ~~10 feature visuals needed. Real New LUCI captures only, cropped to the action, anonymized. Who supplies these?~~ **LOCKED:** Leave placeholders for now. Jane supplies screenshots and videos at a later date. Build the layout to accept them (fixed aspect-ratio containers with placeholder states) so swapping them in later is trivial.
+8. **Access model** — is the upgrade guide public, unlisted, or customer-only? (The format strategy flagged this as a decision; Jane hasn't locked it yet.) *Still open.*
+9. **Deep-link anchors** — the format strategy says emails should deep-link to relevant sections. Confirm the anchor scheme before building. *Still open — but build with semantic section IDs regardless.*
 
 ---
 
@@ -248,10 +267,13 @@ That line is a framing recommendation, not locked final copy. The final wording 
 - Model the design on the two-pager (dark masthead, mint/gold, 3 pillars, mint-tinted cards)
 - Use progressive disclosure: Layer 1 (scan the pillars) → Layer 2 (accordion + sticky panel for feature depth) → Layer 3 (technical detail tabs/accordions)
 - 9 sections: hero → thesis → pillars overview → feature deep-dive → in-product support → technical detail → upgrade path → FAQ → CTA
+- **Sticky section nav** (like `platform.astro`'s `PlatformChapterNav`) + back-to-top button — handles the long-page concern from multi-open accordions
+- **Multi-open accordions** are fine; add an optional "Expand all / Collapse all" toggle per pillar
+- **Screenshots and videos: leave placeholders** — Jane supplies later. Build fixed aspect-ratio containers with placeholder states so swapping is trivial.
+- **Release date: January 19** as placeholder — likely to change; update when the real date is set
 - **Read `new-luci-feature-list.json` first** — it's the source of truth for all feature content
 - **Read the two-pager HTML** for the final tuned copy and design language
 - Follow LUCI design system rules (Track A, three-tier fonts, mint primary/gold secondary, de-boxed)
-- 10 feature screenshots still needed (real captures, anonymized)
 - Upgrade path, FAQ, and thesis paragraph content still to be written
-- Jane still owns: release date, timeline visual, accordion behavior, access model, screenshot supply
+- Jane still owns: past-improvements timeline visual (optional, leaning skip), live-screen-view JSON entry, technical-detail format (tabs vs accordions), access model (public vs customer-only)
 
