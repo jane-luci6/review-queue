@@ -1,0 +1,47 @@
+# New LUCI email-copy scaffold index
+
+- **Source of email list:** `new-luci-email-comms.json`
+- **Status:** scaffold — coverage bullets + empty copy templates only; bodies not written
+- **Count:** 39 emails
+
+| ID | Cycle | Purpose | Relative path | Status |
+|---|---|---|---|---|
+| CUST-WEBINAR-01 | Pre-launch webinar | Give customers an early look at New LUCI. Include the What’s New asset so they can see the features and customer benefits before deciding to attend. | `CUST/CUST-WEBINAR-01-seminar-invitation.md` | scaffold |
+| CUST-WEBINAR-02 | Pre-launch webinar | Give the invitation a second chance with three concrete takeaways. Registrants receive agenda content; nonregistrants receive another registration opportunity. | `CUST/CUST-WEBINAR-02-what-to-expect.md` | scaffold |
+| CUST-WEBINAR-03 | Pre-launch webinar | Convert registrations into attendance with the date, time, and joining details. | `CUST/CUST-WEBINAR-03-event-reminder.md` | scaffold |
+| CUST-WEBINAR-04 | Pre-launch webinar | Give customers who could not attend the same product view while the pre-launch announcement is still current. | `CUST/CUST-WEBINAR-04-recording-for-non-attendees.md` | scaffold |
+| CUST-READY-01 | Upgrade readiness | Restart the conversation after the break and set the parameters: what the upgrade involves on-property, what LUCI handles, and that rollout runs in priority order rather than every property at once. | `CUST/CUST-READY-01-what-to-expect-at-upgrade.md` | scaffold |
+| CUST-READY-02 | Upgrade readiness | Short reminder that New LUCI is available the following week. Carries the upgrade guide and FAQ (merged with IT companion) for properties that want to prepare, and repeats that rollout is ordered rather than simultaneous. | `CUST/CUST-READY-02-launch-reminder.md` | scaffold |
+| CUST-LAUNCH-01 | Launch and upgrade | Announce that New LUCI is available and tell each property what happens next for them. The upgrade parameters were set in the readiness cycle, so this stays focused on availability, the What’s New asset, and the first step to take. | `CUST/CUST-LAUNCH-01-customer-launch-announcement.md` | scaffold |
+| CUST-LAUNCH-02 | Launch and upgrade | Resolve remaining timing or process questions without repeating the feature overview. | `CUST/CUST-LAUNCH-02-upgrade-follow-up-one.md` | scaffold |
+| CUST-LAUNCH-03 | Launch and upgrade | A second nudge for customers who have not yet scheduled an upgrade, keeping the invitation open without pressure. | `CUST/CUST-LAUNCH-03-upgrade-follow-up-two.md` | scaffold |
+| CUST-POST-01 | Post-upgrade follow-up | Confirm the upgrade is complete and point to the upgrade guide and FAQ (merged with IT companion). | `CUST/CUST-POST-01-new-luci-is-live.md` | scaffold |
+| CUST-POST-02 | Post-upgrade follow-up | Ask the customer about their experience and request a quote LUCI can use in marketing materials about LUCI in general. | `CUST/CUST-POST-02-feedback-request.md` | scaffold |
+| CUST-POST-03 | Post-upgrade follow-up | Check in on how things are working, surface any issues, and confirm the customer is settled on New LUCI. | `CUST/CUST-POST-03-30-day-check-in.md` | scaffold |
+| WARM-PREVIEW-01 | Selected pre-launch preview | Re-engage people who already invested meaningful time in LUCI by offering an early look at what changed. State the launch date clearly. | `WARM/WARM-PREVIEW-01-private-preview-invitation.md` | scaffold |
+| WARM-PREVIEW-02 | Selected pre-launch preview | Show three concrete changes they will see. Registrants receive agenda content; nonregistrants receive another registration opportunity. | `WARM/WARM-PREVIEW-02-what-to-expect.md` | scaffold |
+| WARM-PREVIEW-03 | Selected pre-launch preview | Convert registrations into attendance without sending another product pitch. | `WARM/WARM-PREVIEW-03-registered-attendee-reminder.md` | scaffold |
+| WARM-PREVIEW-04 | Selected pre-launch preview | Acknowledge their prior interest, ask what stood out, and offer a direct conversation before the broader launch follow-up begins. | `WARM/WARM-PREVIEW-04-personal-preview-follow-up.md` | scaffold |
+| WARM-PREVIEW-05 | Selected pre-launch preview | Preserve the value of the invitation without asking for another live commitment. This can come from Mark with a brief personal note. | `WARM/WARM-PREVIEW-05-recording-for-no-shows.md` | scaffold |
+| WARM-REENGAGE-01 | Launch re-engagement | Reopen the broader warm list with more control in their hands and a concrete reason to look again. Private-preview recipients receive a shorter availability follow-up instead. | `WARM/WARM-REENGAGE-01-what-changed.md` | scaffold |
+| WARM-REENGAGE-02 | Launch re-engagement | Let prospects see New LUCI without asking them to commit to a live sales demo. The feature highlight reel is the lead asset here; the full recording stays available as the deeper option. | `WARM/WARM-REENGAGE-02-recorded-preview.md` | scaffold |
+| WARM-REENGAGE-03 | Launch re-engagement | Make the platform credible with approved consolidation numbers from running properties. | `WARM/WARM-REENGAGE-03-operational-proof.md` | scaffold |
+| WARM-REENGAGE-04 | Launch re-engagement | Close the launch cycle with a clear, low-friction invitation to reconnect. | `WARM/WARM-REENGAGE-04-direct-invitation.md` | scaffold |
+| WARM-RESPONSE-01 | After a warm response | Acknowledge the response, answer the immediate question, or confirm that Mark will follow up. | `WARM/WARM-RESPONSE-01-immediate-response.md` | scaffold |
+| WARM-RESPONSE-02 | After a warm response | Continue from the prospect’s prior LUCI context rather than restarting the campaign pitch. | `WARM/WARM-RESPONSE-02-personal-outreach.md` | scaffold |
+| NET-ACQ-01 | Acquisition | Lead with the cost of separate A/V systems and workflows—not with New LUCI features. | `NEW/NET-ACQ-01-the-operational-problem.md` | scaffold |
+| NET-ACQ-02 | Acquisition | Show what a shorter list of systems, vendors, and workflows looks like in practice. | `NEW/NET-ACQ-02-consolidation-proof.md` | scaffold |
+| NET-ACQ-03 | Acquisition | Introduce New LUCI visually after the prospect understands the problem and proof—without asking for a live meeting. The feature highlight reel is the lead asset; the full recording stays available as the deeper option. | `NEW/NET-ACQ-03-recorded-walkthrough.md` | scaffold |
+| NET-ACQ-04 | Acquisition | Connect the orchestration engine and embedded team, then invite qualified interest into a conversation. | `NEW/NET-ACQ-04-platform-team-and-invitation.md` | scaffold |
+| NET-DEMO-01 | After a demo request | Confirm the request and remove scheduling friction. | `NEW/NET-DEMO-01-immediate-confirmation.md` | scaffold |
+| NET-DEMO-02 | After a demo request | Add a human response while interest is current. | `NEW/NET-DEMO-02-personal-follow-up.md` | scaffold |
+| NET-UNBOOKED-01 | Unbooked request recovery — after Sales handback | Offer one clean path to schedule without restarting the acquisition pitch. | `NEW/NET-UNBOOKED-01-scheduling-recovery.md` | scaffold |
+| NET-UNBOOKED-02 | Unbooked request recovery — after Sales handback | Close the active scheduling cycle without pressure, then move the prospect to Pulse if they remain quiet. | `NEW/NET-UNBOOKED-02-leave-the-invitation-open.md` | scaffold |
+| NET-POSTDEMO-01 | Post-demo recovery — after Sales handback | Reopen with one proof point or workflow tied to what the prospect cared about in the demo. | `NEW/NET-POSTDEMO-01-relevant-reason-to-reconsider.md` | scaffold |
+| NET-POSTDEMO-02 | Post-demo recovery — after Sales handback | End the recovery sequence respectfully, then move the prospect to Pulse if they remain quiet. | `NEW/NET-POSTDEMO-02-close-the-loop.md` | scaffold |
+| PULSE-01 | Every 4–6 weeks | Start with the operational drag of separate interfaces, vendors, and workflows. Tie the problem to LUCI’s property-wide orchestration and control, with the recent New LUCI release as supporting proof that this control continues to expand. | `PULSE/PULSE-01-orchestration.md` | scaffold |
+| PULSE-02 | Every 4–6 weeks | Frame the choice between another replacement cycle and a standardized platform that consolidates the environment. End with the strongest invitation to revisit LUCI. | `PULSE/PULSE-02-consolidation-over-replacement.md` | scaffold |
+| PULSE-03 | Every 4–6 weeks | Show the cost of operations, IT, marketing, and leadership working from different systems or assumptions. Tie complete visibility—every endpoint from a map-based interface—to faster, more aligned decisions. | `PULSE/PULSE-03-one-shared-operating-view.md` | scaffold |
+| PULSE-04 | Every 4–6 weeks | Tell the story of an incident or decision crossing teams with no single owner. Tie in-product context, audit history, and the embedded team to one accountable response. Accountability is part of the alignment story, not a separate capability. | `PULSE/PULSE-04-aligning-teams.md` | scaffold |
+| PULSE-05 | Every 4–6 weeks | Show the gap between passive screens and purposeful, real-time guest moments. Tie LUCI’s ability to activate every endpoint to a tangible guest-experience outcome the prospect recognizes. | `PULSE/PULSE-05-activate-the-guest-experience.md` | scaffold |
+| PULSE-06 | Every 4–6 weeks | Frame LUCI as the A/V platform refined continuously and built to extend when the property expands. Use New LUCI as proof that the investment becomes more capable over time, not another replacement cycle. | `PULSE/PULSE-06-platform-that-scales-and-improves.md` | scaffold |
