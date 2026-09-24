@@ -36,8 +36,8 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
   .sheet{margin:0;box-shadow:none;page-break-after:always;break-after:page;overflow:hidden}
   .p1-head,.p1-tex,.p1-bar,.p1-eyebrow,.p1-headline,.p1-date,.p1-map,.p1-foot,.p1-luci,.p1-tag,.p1-pill,.foot,.close,.foot__wordmark,
   .p2-head,.p2-mesh,.p2-scrim,.p2-ic,.p2-card,.p2-cn,.p2-cb,.p2-num,.p2-grpname,.p2-title,.p2-deck,.p2-spotlight{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  /* MOCK: ensure ghost num + accent-light ctrl render in print */
-  .p1-card,.p1-num,.p1-card h3,.p1-card h3 .ctrl{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  /* MOCK: ensure ghost num + accent-light ctrl + column washes render in print */
+  .p1-card,.p1-num,.p1-card h3,.p1-card h3 .ctrl,.p1-col,.p1-pill{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   /* Blinking fix: Chrome turns multi-stop CSS gradients into PDF Pattern/Shading
      objects that repaint lazily (blink on open). Flatten to flat fills in print. */
 }
@@ -77,8 +77,11 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
   font-family:var(--font);font-size:18px;font-weight:600;line-height:1.45;
   color:var(--ink-strong);background:rgba(43,158,128,0.05)}
 .p1-callout b{color:var(--accent-light);font-weight:700}
-.p1-cols{display:grid;grid-template-columns:repeat(3,1fr);column-gap:34px}
-.p1-col{position:relative}
+.p1-cols{display:grid;grid-template-columns:repeat(3,1fr);column-gap:12px}
+.p1-col{position:relative;border-radius:12px;padding:12px 12px 14px;
+  background:linear-gradient(155deg,#e8eef2 0%,#f3f6f8 100%)}
+.p1-col:nth-child(2){background:linear-gradient(155deg,#ebf9f4 0%,#f4fcf9 100%)}
+.p1-col:nth-child(3){background:linear-gradient(155deg,#d4efe4 0%,#e8f6ef 100%)}
 .p1-card{background:#0F1E27;border-radius:10px;position:relative;overflow:hidden;
   padding:24px 26px 22px;margin-bottom:22px;
   box-shadow:0 14px 26px -16px rgba(10,20,26,.4)}
@@ -96,13 +99,11 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
   letter-spacing:.1em;color:var(--accent-light);margin-bottom:16px}
 .p1-pillrow{display:flex;flex-direction:column;align-items:stretch;gap:8px}
 .p1-pill{display:flex;align-items:center;gap:8px;
-  background:linear-gradient(155deg,#E8EEF2 0%,#F3F6F8 100%);
+  background:#ffffffb8;
   border-left:3px solid var(--accent-light);border-radius:8px;
   padding:16px 16px 16px 12px;
   font-family:var(--font);font-size:13.5px;font-weight:700;line-height:1.2;
   letter-spacing:-0.01em;color:var(--ink-strong)}
-.p1-col:nth-child(2) .p1-pill{background:linear-gradient(155deg,#EBF9F4 0%,#F4FCF9 100%)}
-.p1-col:nth-child(3) .p1-pill{background:linear-gradient(155deg,#D4EFE4 0%,#E8F6EF 100%)}
 .p1-pill svg{flex:none;display:block;width:20px;height:20px}
 
 .p1-foot{flex:0 0 54px;background:var(--navy-deep);
@@ -192,8 +193,8 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
   background:transparent !important;
   border-radius:0 !important;
   box-shadow:none !important;
-  padding:18px 0 14px !important;
-  margin-bottom:14px !important;
+  padding:8px 0 12px !important;
+  margin-bottom:12px !important;
   border-bottom:1px solid rgba(104,227,190,0.28);
   overflow:visible;
 }
@@ -228,7 +229,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 <body>
 <div class="mock-banner" role="note" aria-label="Mockup notice">
   <strong>MOCKUP — not applied to canonical.</strong>
-  Page-1 pillar headers restyled to Upgrade Guide treatment B (transparent + mint hairline + right ghost numbers). Canonical files unchanged:
+  Page-1 columns now read as softly rounded panels (per-column gradient washes on <code>.p1-col</code>) with uniform translucent-white <code>.p1-pill</code> treatments (mint left border, no per-column tint), keeping the UG-style transparent pillar headers + mint hairline + right ghost numbers. Canonical files unchanged:
   <code>new-luci-whats-new-onepager.html</code> &middot; <code>new-luci-whats-new-onepager-flow-c.html</code>.
   Sibling mock: <code>ui_kits/sales/new-luci-whats-new-onepager-p1-ug-pillar-mock.html</code>.
 </div>
