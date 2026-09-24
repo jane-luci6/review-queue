@@ -18,7 +18,8 @@ Workstream bots update this table when Jane assigns them work. Cornelius does no
 
 | ID | Jane asked | Owner | Stage | Model | Artifact | Waiting on Jane | Next |
 |---|---|---|---|---|---|---|---|
-| upgrade-guide-deepdive-design | Jane via CoS/Weatherby: navy section header + accordion open alignment + single rule under 01 (no copy rewrite) | Weatherby | deployed (`9c5f0e1`) | CSS (GLM empty-log → Weatherby) | http://10.10.1.37/luci-upgrade-guide/#ug-features | Jane Cmd+Shift+R | Idle until feedback |
+| upgrade-guide-support-plus | Jane via CoS: Plus tag on In-product support row (gold chip; no body rewrite) | Weatherby | deployed (`dd1888d`) | CSS | http://10.10.1.37/luci-upgrade-guide/ | Jane Cmd+Shift+R | Idle until feedback |
+| upgrade-guide-deepdive-design | Jane via CoS: Feature deep-dive design — navy header, accordion align, single rule under 01; no copy rewrite | Weatherby | deployed (`9c5f0e1`) | GLM+watcher | http://10.10.1.37/luci-upgrade-guide/#ug-features | Jane Cmd+Shift+R | Idle until feedback |
 | upgrade-guide-pillars-support | Jane via CoS: pillar fills from What’s New two-pager + In-product support full-width row | Weatherby | deployed (`f392897`) | GLM | http://10.10.1.37/luci-upgrade-guide/ | Jane Cmd+Shift+R | Idle until feedback |
 | upgrade-guide-hero-mesh | Jane: keep ~125% zoom; shift floorplan Y down (~72%) | Weatherby | deployed (`7b487d9`) | CSS | http://10.10.1.37/luci-upgrade-guide/ — `center 72% / 125% auto` | Jane Cmd+Shift+R | Idle on hero until feedback |
 | upgrade-guide-intro-first | Jane: intro first sentence second-person; second sentence locked | Weatherby | options ready — waiting pick | GPT | `weatherby-briefs/upgrade-guide-intro-first-sentence-OPTIONS.md` | Jane pick Option 1/2/3 | After pick: GLM swap first sentence only + redeploy .37 |
