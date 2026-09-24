@@ -3994,6 +3994,12 @@
     };
     let NEW_LUCI_EMAIL_DATA = null;
     let NEW_LUCI_EMAIL_TREE = null; // { byId, audiences }
+    // Seed HTML shown inside the contenteditable when an Email copy shell has no
+    // saved draft in localStorage. Loaded once from new-luci-email-copy-seeds.json
+    // (object keyed by email ID, values = HTML strings for contenteditable). Same
+    // rule as Working shells: Jane's saved localStorage always wins; seeds only
+    // fill empty editors. On failure, set {} and continue — never break the page.
+    let NEW_LUCI_EMAIL_COPY_SEEDS = null;
 
     async function loadNewLuciEmailData() {
       if (NEW_LUCI_EMAIL_DATA) return NEW_LUCI_EMAIL_DATA;
@@ -4005,6 +4011,18 @@
         NEW_LUCI_EMAIL_DATA = null;
       }
       return NEW_LUCI_EMAIL_DATA;
+    }
+
+    async function loadNewLuciEmailCopySeeds() {
+      if (NEW_LUCI_EMAIL_COPY_SEEDS) return NEW_LUCI_EMAIL_COPY_SEEDS;
+      try {
+        const res = await fetch('new-luci-email-copy-seeds.json?v=20260924a');
+        if (!res.ok) throw new Error('load');
+        NEW_LUCI_EMAIL_COPY_SEEDS = await res.json();
+      } catch (e) {
+        NEW_LUCI_EMAIL_COPY_SEEDS = {};
+      }
+      return NEW_LUCI_EMAIL_COPY_SEEDS;
     }
 
     function slugifyCycle(name) {
@@ -4140,7 +4158,11 @@
       }
       const drafts = readLocal(LS_NEW_LUCI_EMAILS, {});
       if (bodyEl) {
-        bodyEl.innerHTML = drafts[emailId] || '';
+        // Seed only when empty: Jane's saved draft (or her edits this session)
+        // always wins. The seed is the scaffold from new-luci-email-copy-seeds.json
+        // (coverage bullets + empty copy template) so she has something to react
+        // to instead of a blank editor. List status tags stay localStorage-only.
+        bodyEl.innerHTML = drafts[emailId] || (NEW_LUCI_EMAIL_COPY_SEEDS && NEW_LUCI_EMAIL_COPY_SEEDS[emailId]) || '';
         bodyEl.dataset.slug = emailId;
         bodyEl.dataset.storage = LS_NEW_LUCI_EMAILS;
         if (saveEl) saveEl.textContent = drafts[emailId] ? 'Saved' : '';
@@ -5550,8 +5572,9 @@
           renderNewLuciLaunch();
           return;
         }
-        // Ensure the tree is loaded before rendering the shell.
-        ensureEmailTree().then(() => {
+        // Ensure the tree + copy seeds are loaded before rendering the shell.
+        // Seeds fill empty editors only; Jane's saved localStorage always wins.
+        Promise.all([ensureEmailTree(), loadNewLuciEmailCopySeeds()]).then(() => {
           if (workingEl) { workingEl.hidden = false; renderEmailShell(emailId); }
         });
         return;
