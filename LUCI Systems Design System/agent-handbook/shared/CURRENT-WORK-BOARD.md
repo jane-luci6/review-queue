@@ -1,6 +1,6 @@
 # Current work board
 
-**Board date:** 16 September 2026  
+**Board date:** 24 September 2026  
 **Sources:** CoS live calendar (16 Sep), `DECISION-LOG.md`, `the-signal-issue-04-choices.md`, `COS-task-calendar.json`.  
 **If a line is wrong, Jane corrects it.** The 28 Aug board is history.
 
@@ -18,14 +18,16 @@ Workstream bots update this table when Jane assigns them work. Cornelius does no
 
 | ID | Jane asked | Owner | Stage | Model | Artifact | Waiting on Jane | Next |
 |---|---|---|---|---|---|---|---|
-| upgrade-guide-hero-fade-right | Jane: v2 faded left mesh (fine); fade the RIGHT plan column instead | Weatherby | deployed hero fade right | CSS | 9b1790d — reverted v2 left linear wash; right plan opacity 0.52 + right scrim wash; http://10.10.1.37/luci-upgrade-guide/ | Jane Cmd+Shift+R | Idle until feedback |
+| upgrade-guide-pillar-headers | Jane: see pillar table headers if black boxes replaced with subtle OR removed (options pass) | Weatherby | waiting Jane pick (`832f15f` on .37) | Claude visual + GLM build | compare URLs ?tableHeaders=subtle / none / alt on http://10.10.1.37/luci-upgrade-guide/ + sticky picker; OPTIONS weatherby-briefs/upgrade-guide-pillar-table-headers-OPTIONS.md | Jane pick current / subtle / none / alt | Strip picker + lock chosen treatment after pick |
+| upgrade-guide-intro-day-to-day | Jane: rewrite day-to-day intro sentence + split thesis into 2 paragraphs (typo fix your your→your) | Weatherby | deployed (`419444a`) | — | `419444a` — thesis paragraphs[0]=A/V investment opener; paragraphs[1]=Jane autonomy/control + LUCI team in the loop; http://10.10.1.37/luci-upgrade-guide/ | Jane Cmd+Shift+R | Idle until feedback |
+| upgrade-guide-hero-fade | Jane: abandon fade iteration (copy wrap shifted whole header); restore pre-fade hero | Weatherby | deployed (`4286829`) — fade abandoned | — | `4286829` — hero markup+scrim/plan CSS matched to `f8daf43`/`42fc845` (no `.ug-hero__copy`, original radial scrim, vivid right plan); mint wash/intro kept; http://10.10.1.37/luci-upgrade-guide/ | Jane Cmd+Shift+R once | No further fade tweaks |
 | new-luci-email-series-scaffold | Jane: coverage bullets + empty copy templates for every New LUCI IMP email; seed Open draft in portal | Ermintrude | DONE scaffolds+IMP seeds deployed | GPT then GLM | `4fcf102` email-copy 39 md + `_INDEX` + OneDrive mirror + `new-luci-email-copy-seeds.json`; `524026d` IMP empty-draft seed load; live http://10.10.1.17:8081/internal-portal/index.html#new-luci-launch/email/customers/pre-launch-webinar/CUST-WEBINAR-01 | Jane Cmd+Shift+R then open sample hash | Bodies still empty (scaffold only); Jane write when ready |
 | upgrade-guide-support-plus | Jane via CoS: Plus as top-left badge on In-product support box (not inline / not account tier) | Weatherby | deployed (`5bd7be6`) | CSS | `5bd7be6` — Plus top-left overlapping pill on support box (`.ug-support-spotlight__plus`); http://10.10.1.37/luci-upgrade-guide/ | Jane Cmd+Shift+R | Jane feedback |
 | upgrade-guide-deepdive-design | Jane via CoS: Feature deep-dive design — navy header, accordion align, single rule under 01; no copy rewrite | Weatherby | deployed (`9c5f0e1`) | GLM+watcher | http://10.10.1.37/luci-upgrade-guide/#ug-features | Jane Cmd+Shift+R | Idle until feedback |
 | upgrade-guide-pillars-support | Jane via CoS: pillar fills from What’s New two-pager + In-product support full-width row | Weatherby | deployed (`f392897`) | GLM | http://10.10.1.37/luci-upgrade-guide/ | Jane Cmd+Shift+R | Idle until feedback |
 | upgrade-guide-hero-mesh | Jane: extend floorplan to cover right side of header after text (keep cover mesh) | Weatherby | deployed (`f8daf43`) | CSS | `f8daf43` — kept `.ug-hero__mesh` center/cover; added right-pinned `.ug-hero__plan` with dense plan crop (`luci-plan-right-panel.png`); http://10.10.1.37/luci-upgrade-guide/ | Jane Cmd+Shift+R | Jane feedback |
 | upgrade-guide-copy-fix | Jane: change exact upgrade-guide copy from `extending the same A/V investment` to `extending your A/V investment` only | Weatherby | deployed (`78f2e5f`) | — | `78f2e5f` — exact copy fix; http://10.10.1.37/luci-upgrade-guide/ | Jane Cmd+Shift+R | Jane review |
-| upgrade-guide-intro-first | Jane: intro first sentence second-person; second sentence locked | Weatherby | options ready — waiting pick | GPT | `weatherby-briefs/upgrade-guide-intro-first-sentence-OPTIONS.md` | Jane pick Option 1/2/3 | After pick: GLM swap first sentence only + redeploy .37 |
+| upgrade-guide-intro-first | Jane: intro first sentence second-person; second sentence locked | Weatherby | SUPERSEDED — Jane rewrote day-to-day sentence + 2 paras (`419444a`) | GPT | `weatherby-briefs/upgrade-guide-intro-first-sentence-OPTIONS.md` | none | Superseded by upgrade-guide-intro-day-to-day; first-sentence options parked |
 | upgrade-path-rewrite | Rewrite upgrade path as shipped-laptop fulfillment; remove internal proposed timeline ladder; keep Release (Jan 19) + approximate pace line; tighten path/CTA IA. | Weatherby | deployed (`6d8abff`); Jane review | GLM | http://10.10.1.37/luci-upgrade-guide/#ug-upgrade | Jane review of timing strip + pace line | Hard-refresh Cmd+Shift+R |
 | new-luci-upgrade-landing | Jane: kicker→headline on thesis/pillars + remove ALL media placeholders. | Weatherby | deployed (`55ab4cf`) | — | http://10.10.1.37/luci-upgrade-guide/ | Jane review | Hard-refresh Cmd+Shift+R |
 | new-luci-whats-new-map-variants | Jane: research one-pager field type (not newsletter Sharp); apply to feature rows over the map. | Ermintrude | Jane visual | Grok | `sales/new-luci-whats-new-onepager-field-research-2026-09-18.md` + `flow-c.html` | Jane visual | Open HTML; confirm field type |
@@ -51,6 +53,9 @@ Workstream bots update this table when Jane assigns them work. Cornelius does no
 
 | ID | Item | Waiting |
 |---|---|---|
+| upgrade-guide-pillar-headers | Pillar `.ug-pillar__head` black-box options on .37 | Jane pick: current / subtle / none / alt |
+| upgrade-guide-hero-fade | Hero fade abandoned; pre-fade hero restored on .37 (`4286829`) | Jane Cmd+Shift+R once |
+| upgrade-guide-intro-day-to-day | Thesis 2-para Jane rewrite live on .37 | Jane Cmd+Shift+R |
 | signal-04-open | Signal Issue 04: Theme; Welcome names | Jane, then Mike letter review |
 | aliante-cs | Aliante **written** case study, second pass | Jane |
 | aliante-rc2 | Aliante trailer RC2 (~2:29) — CoS marked review PASS; Jane still to watch / property-name if needed | Jane |
