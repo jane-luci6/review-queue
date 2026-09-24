@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>LUCI 2.0 — What's New · Two-pager (overview + feature detail)</title>
+<link rel="stylesheet" href="../../assets/fonts/luci-brand-fonts.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy-deep:#0A161C;--navy:#10232D;--navy-mid:#314955;--navy-muted:#49616E;
+  --mint:#68E3BE;--accent-light:#2b9e80;
+  --gold:#EDD086;--gold-deep:#CEB06E;
+  --off-white:#F5F8FA;--tint:#EDF2F4;--rule-light:#DCE3E6;
+  --ink:#354F5C;--ink-strong:#1C2B33;
+  --font:'Space Grotesk','Trebuchet MS',sans-serif;
+  --font-body:'Inter','Space Grotesk','Trebuchet MS',sans-serif;
+  --display:'Syncopate','Arial Black',sans-serif;
+  --pad:62px;
+  --header-navy:#081318;
+  --text-gray:#5B6670;
+  --num-gray:#DADBDF;
+}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:14px;line-height:1.6}
+.hub-link{max-width:816px;margin:0 auto;padding:14px 16px 6px;font-family:var(--font);font-size:11px;text-align:center;color:var(--navy-muted)}
+.hub-link a{color:var(--navy-mid);font-weight:600;text-decoration:none}
+.doc{max-width:816px;margin:0 auto}
+.sheet{position:relative;width:816px;height:1056px;background:var(--off-white);
+  display:flex;flex-direction:column;overflow:hidden}
+@media screen{.sheet{margin:22px auto;box-shadow:0 6px 28px rgba(10,22,28,0.16)}}
+@page{size:letter;margin:0}
+@media print{
+  body{background:#fff}.hub-link{display:none}
+  .sheet{margin:0;box-shadow:none;page-break-after:always;break-after:page;overflow:hidden}
+  .p1-head,.p1-tex,.p1-bar,.p1-eyebrow,.p1-headline,.p1-date,.p1-map,.p1-foot,.p1-luci,.p1-tag,.p1-pill,.foot,.close,.foot__wordmark,
+  .p2-head,.p2-mesh,.p2-scrim,.p2-ic,.p2-card,.p2-cn,.p2-cb,.p2-num,.p2-grpname,.p2-title,.p2-deck,.p2-spotlight{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  /* MOCK: ensure ghost num + accent-light ctrl render in print */
+  .p1-card,.p1-num,.p1-card h3,.p1-card h3 .ctrl{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  /* Blinking fix: Chrome turns multi-stop CSS gradients into PDF Pattern/Shading
+     objects that repaint lazily (blink on open). Flatten to flat fills in print. */
+}
+
+/* ── PAGE 1 ──────────────────────────────────────────────────────────
+   Dark masthead → map field → 3 columns. Design by external LLM. */
+.p1-head{position:relative;flex:0 0 236px;overflow:hidden;
+  padding:32px var(--pad) 26px;background:var(--header-navy);
+  display:flex;flex-direction:column}
+.p1-tex{position:absolute;top:0;right:0;width:480px;height:270px;opacity:.55;
+  object-fit:cover;object-position:top right;pointer-events:none}
+.p1-logo{height:28px;width:121px;display:block;position:relative;z-index:2}
+.p1-eyebrow{margin:28px 0 0;position:relative;z-index:2;
+  font-family:var(--font);font-weight:700;font-size:10px;
+  letter-spacing:0.24em;text-transform:uppercase;color:var(--mint)}
+.p1-headline{margin:14px 0 0;position:relative;z-index:2;
+  font-family:var(--display);font-weight:700;font-size:30px;
+  line-height:1.1;letter-spacing:0.05em;text-transform:uppercase;color:var(--off-white)}
+.p1-headline .p1-accent{color:var(--mint)}
+.p1-release{margin-top:auto;display:flex;align-items:baseline;gap:14px;
+  position:relative;z-index:2}
+.p1-rlabel{font-family:var(--font);font-weight:700;font-size:9.5px;
+  letter-spacing:0.24em;text-transform:uppercase;color:rgba(235,245,248,0.5)}
+.p1-date{font-family:var(--font);font-weight:700;font-size:20px;
+  line-height:1;letter-spacing:-0.02em;color:var(--gold)}
+.p1-bar{position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--mint)}
+
+.p1-field{position:relative;flex:1 1 auto;min-height:0;overflow:hidden;
+  background:var(--off-white)}
+.p1-map{position:absolute;left:0;bottom:0;width:816px;height:725px;
+  object-fit:fill;opacity:1;pointer-events:none}
+.p1-inner{position:relative;z-index:2;padding:24px 115px 0 var(--pad)}
+.p1-pagehead{font-family:var(--font);font-size:30px;font-weight:700;
+  color:var(--ink-strong);margin-bottom:38px;letter-spacing:-.2px}
+.p1-pagehead b{color:var(--accent-light);font-weight:700}
+.p1-callout{margin:0 0 32px;padding:14px 20px;border-left:4px solid var(--accent-light);
+  font-family:var(--font);font-size:18px;font-weight:600;line-height:1.45;
+  color:var(--ink-strong);background:rgba(43,158,128,0.05)}
+.p1-callout b{color:var(--accent-light);font-weight:700}
+.p1-cols{display:grid;grid-template-columns:repeat(3,1fr);column-gap:34px}
+.p1-col{position:relative}
+.p1-card{background:#0F1E27;border-radius:10px;position:relative;overflow:hidden;
+  padding:24px 26px 22px;margin-bottom:22px;
+  box-shadow:0 14px 26px -16px rgba(10,20,26,.4)}
+.p1-card .p1-tex{display:none}
+.p1-num{position:absolute;top:-4px;left:10px;z-index:0;
+  font-family:var(--font);font-size:92px;font-weight:700;
+  color:rgba(255,255,255,.14);line-height:1;letter-spacing:-3px}
+.p1-headwrap{position:relative;z-index:1}
+.p1-card h3{font-family:var(--font);font-size:21px;font-weight:700;
+  color:#fff;line-height:1.22;margin:0}
+.p1-card h3 .ctrl{color:var(--gold)}
+.p1-col p{font-family:var(--font-body);font-size:14.5px;color:var(--text-gray);
+  line-height:1.68;margin-bottom:24px;min-height:calc(3 * 1.68em)}
+.p1-feat-label{font-family:var(--display);font-size:11.5px;font-weight:700;
+  letter-spacing:.1em;color:var(--accent-light);margin-bottom:16px}
+.p1-pillrow{display:flex;flex-direction:column;align-items:stretch;gap:8px}
+.p1-pill{display:flex;align-items:center;gap:8px;
+  background:linear-gradient(155deg,#E8EEF2 0%,#F3F6F8 100%);
+  border-left:3px solid var(--accent-light);border-radius:8px;
+  padding:16px 16px 16px 12px;
+  font-family:var(--font);font-size:13.5px;font-weight:700;line-height:1.2;
+  letter-spacing:-0.01em;color:var(--ink-strong)}
+.p1-col:nth-child(2) .p1-pill{background:linear-gradient(155deg,#EBF9F4 0%,#F4FCF9 100%)}
+.p1-col:nth-child(3) .p1-pill{background:linear-gradient(155deg,#D4EFE4 0%,#E8F6EF 100%)}
+.p1-pill svg{flex:none;display:block;width:20px;height:20px}
+
+.p1-foot{flex:0 0 54px;background:var(--navy-deep);
+  display:flex;align-items:center;justify-content:space-between;padding:0 var(--pad)}
+.p1-luci{font-family:var(--display);font-weight:700;font-size:12px;
+  letter-spacing:.1em;color:var(--mint)}
+.p1-tag{font-family:var(--display);font-weight:400;font-size:9.5px;
+  letter-spacing:.1em;color:#7C8A90}
+
+/* ── FOOTER (includes "for more information") ────────────────────────── */
+.close{flex:0 0 auto;background:var(--tint);padding:24px var(--pad) 24px;
+  display:flex;justify-content:space-between;align-items:flex-end;gap:32px;
+  border-top:1px solid var(--rule-light)}.close__info{font-family:var(--font-body);font-size:12px;line-height:1.5;color:var(--ink)}
+.close__info strong{font-family:var(--font);font-weight:700;color:var(--ink-strong)}
+.close__url{display:block;margin-top:3px;font-family:var(--font);font-weight:700;font-size:13px;color:var(--accent-light)}
+.close__contact{font-family:var(--font-body);font-size:10.5px;line-height:1.6;color:var(--navy-muted);text-align:right}
+.close__contact strong{font-family:var(--font);font-weight:700;color:var(--ink-strong)}
+
+.foot{flex:0 0 auto;background:var(--navy-deep);color:rgba(235,245,248,0.42);
+  padding:16px var(--pad) 16px;display:flex;justify-content:space-between;align-items:center;
+  font-family:var(--font);font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase}
+.foot__wordmark{font-weight:700;letter-spacing:0.18em;color:rgba(104,227,190,0.7)}
+
+/* ── PAGE 2 — sections stacked vertically, cards in a row under each ──
+   No header band on page 2 — page 1 already carries the masthead; the
+   footer alone repeats the LUCI mark for continuity. Each section is a
+   full-width band; cards stretch to fill the page so there's no empty
+   space at the foot. Soft-icon tiles per brochure §5.1. */
+.sheet--p2{display:grid;grid-template-rows:1fr auto auto}
+.p2-body{position:relative;min-height:0;overflow:hidden;display:flex;flex-direction:column}
+.p2-grp{position:relative;flex:1 1 0;display:flex;flex-direction:column;
+  padding:0 var(--pad);justify-content:center}
+.p2-grp + .p2-grp{border-top:1px solid var(--rule-light)}
+.p2-lockup{flex:none;margin-bottom:16px}
+.p2-grpname{font-family:var(--font);font-weight:700;font-size:15px;
+  line-height:1.2;letter-spacing:-0.01em;color:var(--ink-strong)}
+.p2-grpname .p2-num{font-weight:400;color:var(--gold);margin-right:8px}
+.p2-grpname .p2-dot{display:none}
+.p2-cards{flex:none;display:flex;gap:16px;align-items:stretch}
+.p2-card{flex:1 1 0;min-width:0;display:flex;flex-direction:column;justify-content:center;
+  padding:16px;border-radius:10px;border-left:3px solid var(--accent-light);
+  background:linear-gradient(155deg,#E8EEF2 0%,#F3F6F8 100%)}
+.p2-grp:nth-child(2) .p2-card{background:linear-gradient(155deg,#EBF9F4 0%,#F4FCF9 100%)}
+.p2-grp:nth-child(3) .p2-card{background:linear-gradient(155deg,#D4EFE4 0%,#E8F6EF 100%)}
+.p2-card-head{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.p2-ic{flex:none;width:24px;height:24px;display:flex;align-items:center;justify-content:center}
+.p2-ic svg{display:block;width:22px;height:22px}
+.p2-cn{font-family:var(--font);font-weight:700;font-size:14.5px;
+  line-height:1.2;letter-spacing:-0.01em;color:var(--ink-strong)}
+.p2-cb{font-family:var(--font-body);font-weight:400;font-size:13px;
+  line-height:1.5;color:var(--text-gray)}
+.p2-spotlight{position:relative;flex:none;display:flex;flex-direction:column;
+  justify-content:center;padding:24px var(--pad);
+  background:var(--off-white);border-top:1px solid var(--rule-light)}
+.p2-spotlight__box{
+  background:linear-gradient(155deg,#D8DEE3 0%,#E8EDF0 100%);
+  border-radius:10px;border-left:3px solid var(--accent-light);
+  padding:20px 24px;display:flex;flex-direction:column;justify-content:center}
+.p2-spotlight .p2-card-head{margin-bottom:8px}
+.p2-spotlight .p2-ic{width:26px;height:26px}
+.p2-spotlight .p2-ic svg{width:24px;height:24px}
+.p2-spotlight .p2-cn{color:var(--ink-strong);font-size:15.5px}
+.p2-spotlight .p2-star{width:14px;height:14px;display:inline-block;vertical-align:-2px;margin-left:6px}
+.p2-spotlight .p2-cb{color:var(--text-gray)}
+
+/* ── MOCK BANNER (top of document, above sheets) ────────────────────── */
+.mock-banner{
+  position:sticky;top:0;z-index:50;
+  max-width:816px;margin:0 auto 14px;padding:12px 18px;
+  background:#0A161C;color:#F5F8FA;
+  border-left:4px solid #EDD086;border-radius:6px;
+  font-family:var(--font-body);font-size:12px;line-height:1.5;
+  box-shadow:0 4px 14px rgba(10,22,28,.18);
+}
+.mock-banner strong{font-family:var(--font);font-weight:700;color:#68E3BE;letter-spacing:.02em}
+.mock-banner code{
+  font-family:var(--font);font-size:11px;color:#EDD086;
+  background:rgba(237,208,134,.10);padding:2px 6px;border-radius:3px;
+}
+@media print{.mock-banner{display:none}}
+
+/* ── MOCK ONLY — page-1 pillar headers restyled to UG treatment B ─────
+   Scope: .p1-card / .p1-num / .p1-card h3 / .p1-card h3 .ctrl only.
+   Does NOT touch pills, map field, masthead, footers, or page 2.
+   UG ref: luci-website/src/pages/luci-upgrade-guide.astro (edcd296). */
+.p1-card{
+  background:transparent !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+  padding:18px 0 14px !important;
+  margin-bottom:14px !important;
+  border-bottom:1px solid rgba(104,227,190,0.28);
+  overflow:visible;
+}
+.p1-card .p1-tex{display:none !important}
+.p1-num{
+  top:-6px !important;
+  left:auto !important;
+  right:0 !important;
+  text-align:right;
+  font-size:80px !important;
+  color:#10232d0d !important;
+  font-weight:700;
+  letter-spacing:-3px;
+  line-height:1;
+  pointer-events:none;
+  user-select:none;
+}
+.p1-headwrap{position:relative;z-index:1}
+.p1-card h3{
+  color:var(--ink-strong) !important;
+  font-size:23px !important;
+  line-height:1.22 !important;
+  font-weight:700;
+  margin:0;
+}
+.p1-card h3 .ctrl{
+  color:var(--accent-light) !important;
+}
+/* keep the existing <br> after "control"; nothing else changes in markup */
+</style>
+</head>
+<body>
+<div class="mock-banner" role="note" aria-label="Mockup notice">
+  <strong>MOCKUP — not applied to canonical.</strong>
+  Page-1 pillar headers restyled to Upgrade Guide treatment B (transparent + mint hairline + right ghost numbers). Canonical files unchanged:
+  <code>new-luci-whats-new-onepager.html</code> &middot; <code>new-luci-whats-new-onepager-flow-c.html</code>.
+  Sibling mock: <code>ui_kits/sales/new-luci-whats-new-onepager-p1-ug-pillar-mock.html</code>.
+</div>
+<p class="hub-link"><a href="new-luci-whats-new-onepager-flow-c-compare.html">&larr; Compare variants</a> &middot; Combined &middot; Mesh header + light map field</p>
+
+<article class="doc">
+  <section class="sheet">
+
+    <header class="p1-head">
+      <img class="p1-tex" src="assets/header_tex_rgba.png" alt="" aria-hidden="true">
+      <img class="p1-logo" src="assets/logo_rgba.png" alt="LUCI Systems">
+      <div class="p1-eyebrow">A NEW VERSION OF LUCI IS COMING</div>
+      <div class="p1-headline">THE <span class="p1-accent">POWER OF PROGRAMMING</span><br>IS IN YOUR HANDS</div>
+      <div class="p1-release">
+        <span class="p1-rlabel">RELEASE DATE</span>
+        <span class="p1-date">January 19</span>
+      </div>
+      <div class="p1-bar" aria-hidden="true"></div>
+    </header>
+
+    <div class="p1-field">
+      <img class="p1-map" src="assets/map_v7_lshape.png" alt="LUCI map-based control: every display and audio zone on one live floor plan.">
+      <div class="p1-inner">
+        <div class="p1-callout">The only A/V that scales and improves <b>just got better</b></div>
+        <div class="p1-cols">
+          <div class="p1-col">
+            <div class="p1-card">
+              <img class="p1-tex" src="assets/header_tex_rgba.png" alt="" aria-hidden="true">
+              <div class="p1-num" aria-hidden="true">01</div>
+              <div class="p1-headwrap">
+                <h3>Greater <span class="ctrl">control</span><br>of the room</h3>
+              </div>
+            </div>
+            <p>Tune in-room panels, stage events, and group audio zones.</p>
+            <div class="p1-pillrow">
+              <div class="p1-pill"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2" fill="none" stroke="#2b9e80" stroke-width="1.6"/><path d="M3 9h18" stroke="#2b9e80" stroke-width="1.2" stroke-opacity=".35"/><circle cx="7" cy="13.5" r="1.2" fill="#CEB06E"/><circle cx="11" cy="13.5" r="1.2" fill="#2b9e80" fill-opacity=".4"/><circle cx="15" cy="13.5" r="1.2" fill="#2b9e80" fill-opacity=".4"/></svg><span>Venue panels</span></div>
+              <div class="p1-pill"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="6" rx="1.3" fill="#68E3BE" fill-opacity=".15" stroke="#2b9e80" stroke-width="1.6"/><path d="M4 14h16M4 17h11" stroke="#2b9e80" stroke-width="1.3" stroke-linecap="round" stroke-opacity=".4"/><path d="M14 8l2 2-2 2" fill="none" stroke="#CEB06E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Staging</span></div>
+              <div class="p1-pill"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h3l4 3V6L7 9z" fill="#68E3BE" fill-opacity=".15" stroke="#2b9e80" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 10c1.2 1.2 1.2 2.8 0 4" fill="none" stroke="#2b9e80" stroke-width="1.6" stroke-linecap="round"/><path d="M16.5 8c2 2 2 6 0 8" fill="none" stroke="#CEB06E" stroke-width="1.6" stroke-linecap="round"/></svg><span>Audio group control</span></div>
+            </div>
+          </div>
+          <div class="p1-col">
+            <div class="p1-card">
+              <img class="p1-tex" src="assets/header_tex_rgba.png" alt="" aria-hidden="true">
+              <div class="p1-num" aria-hidden="true">02</div>
+              <div class="p1-headwrap">
+                <h3>Flexible <span class="ctrl">control</span><br>of your view</h3>
+              </div>
+            </div>
+            <p>Adjust the interface to reflect your brand and customize your view.</p>
+            <div class="p1-pillrow">
+              <div class="p1-pill"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="#2b9e80" stroke-width="1.3" stroke-linecap="round" stroke-opacity=".35"/><circle cx="8" cy="7" r="2.1" fill="#68E3BE" fill-opacity=".2" stroke="#2b9e80" stroke-width="1.6"/><circle cx="14" cy="12" r="2.1" fill="#68E3BE" fill-opacity=".2" stroke="#2b9e80" stroke-width="1.6"/><circle cx="8" cy="17" r="2.1" fill="#CEB06E"/></svg><span>Customizable interface</span></div>
+              <div class="p1-pill"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5l6-1 6 2 4-1v14l-4 1-6-2-6 1V5z" fill="#68E3BE" fill-opacity=".12" stroke="#2b9e80" stroke-width="1.4" stroke-linejoin="round"/><path d="M10 4v16M16 6v14" stroke="#2b9e80" stroke-width="1.1" stroke-opacity=".3"/><circle cx="13" cy="11" r="1.6" fill="#CEB06E"/></svg><span>Live map flexibility</span></div>
+              <div class="p1-pill"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="8" height="7" rx="1" fill="none" stroke="#2b9e80" stroke-width="1.4"/><rect x="13" y="4" width="8" height="7" rx="1" fill="none" stroke="#2b9e80" stroke-width="1.4"/><rect x="3" y="13" width="8" height="7" rx="1" fill="none" stroke="#2b9e80" stroke-width="1.4"/><rect x="13" y="13" width="8" height="7" rx="1" fill="#68E3BE" fill-opacity=".18" stroke="#2b9e80" stroke-width="1.4"/><path d="M11 7.5h2M11 16.5h2" stroke="#CEB06E" stroke-width="1.6" stroke-linecap="round"/></svg><span>Live screen view</span></div>
+            </div>
+          </div>
+          <div class="p1-col">
+            <div class="p1-card">
+              <img class="p1-tex" src="assets/header_tex_rgba.png" alt="" aria-hidden="true">
+              <div class="p1-num" aria-hidden="true">03</div>
+              <div class="p1-headwrap">
+                <h3>Deeper <span class="ctrl">control</span><br>over security</h3>
+              </div>
+            </div>
+            <p>See activity, govern access, and bring support closer.</p>
+            <div class="p1-pillrow">
+              <div class="p1-pill"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l3 3v15H6z" fill="#68E3BE" fill-opacity=".12" stroke="#2b9e80" stroke-width="1.4" stroke-linejoin="round"/><path d="M15 3v3h3" fill="none" stroke="#2b9e80" stroke-width="1.4" stroke-linejoin="round"/><path d="M9 13l2 2 4-4" fill="none" stroke="#CEB06E" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Audit trails</span></div>
+              <div class="p1-pill"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h4l2-5 4 3-2 5 2-3h4" fill="none" stroke="#2b9e80" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="19" cy="12" r="2" fill="#CEB06E"/></svg><span>Live monitoring</span></div>
+              <div class="p1-pill"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2" fill="none" stroke="#2b9e80" stroke-width="1.6"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="#2b9e80" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="15.5" r="1.6" fill="#CEB06E"/></svg><span>Session control</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="p1-foot">
+      <span class="p1-luci">LUCI</span>
+      <span class="p1-tag">THE NEW VERSION OF LUCI</span>
+    </footer>
+
+  </section>
+
+  <section class="sheet sheet--p2">
+
+    <div class="p2-body">
+
+      <section class="p2-grp">
+        <div class="p2-lockup">
+          <h3 class="p2-grpname"><span class="p2-num">01</span><span class="p2-dot">&middot;</span>Greater control of the room</h3>
+        </div>
+        <div class="p2-cards">
+          <div class="p2-card">
+            <div class="p2-card-head">
+              <span class="p2-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2" fill="none" stroke="#2b9e80" stroke-width="1.6"/><path d="M3 9h18" stroke="#2b9e80" stroke-width="1.2" stroke-opacity=".35"/><circle cx="7" cy="13.5" r="1.2" fill="#CEB06E"/><circle cx="11" cy="13.5" r="1.2" fill="#2b9e80" fill-opacity=".4"/><circle cx="15" cy="13.5" r="1.2" fill="#2b9e80" fill-opacity=".4"/></svg></span>
+              <p class="p2-cn">Venue panels</p>
+            </div>
+            <p class="p2-cb">In-venue tablets show only the approved controls for that space. Operators adjust what they need without full access.</p>
+          </div>
+          <div class="p2-card">
+            <div class="p2-card-head">
+              <span class="p2-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="6" rx="1.3" fill="#68E3BE" fill-opacity=".15" stroke="#2b9e80" stroke-width="1.6"/><path d="M4 14h16M4 17h11" stroke="#2b9e80" stroke-width="1.3" stroke-linecap="round" stroke-opacity=".4"/><path d="M14 8l2 2-2 2" fill="none" stroke="#CEB06E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <p class="p2-cn">Staging</p>
+            </div>
+            <p class="p2-cb">Prepare screens, sources, and audio levels behind the scenes. Apply the change on cue, or save it as a preset for next time.</p>
+          </div>
+          <div class="p2-card">
+            <div class="p2-card-head">
+              <span class="p2-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h3l4 3V6L7 9z" fill="#68E3BE" fill-opacity=".15" stroke="#2b9e80" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 10c1.2 1.2 1.2 2.8 0 4" fill="none" stroke="#2b9e80" stroke-width="1.6" stroke-linecap="round"/><path d="M16.5 8c2 2 2 6 0 8" fill="none" stroke="#CEB06E" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+              <p class="p2-cn">Audio group control</p>
+            </div>
+            <p class="p2-cb">Move several audio zones together: apply the same incremental change to keep their balance, or set them all to one volume.</p>
+          </div>
+        </div>
+      </section>
+      <section class="p2-grp">
+        <div class="p2-lockup">
+          <h3 class="p2-grpname"><span class="p2-num">02</span><span class="p2-dot">&middot;</span>Flexible control of your view</h3>
+        </div>
+        <div class="p2-cards">
+          <div class="p2-card">
+            <div class="p2-card-head">
+              <span class="p2-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="#2b9e80" stroke-width="1.3" stroke-linecap="round" stroke-opacity=".35"/><circle cx="8" cy="7" r="2.1" fill="#68E3BE" fill-opacity=".2" stroke="#2b9e80" stroke-width="1.6"/><circle cx="14" cy="12" r="2.1" fill="#68E3BE" fill-opacity=".2" stroke="#2b9e80" stroke-width="1.6"/><circle cx="8" cy="17" r="2.1" fill="#CEB06E"/></svg></span>
+              <p class="p2-cn">Customizable interface</p>
+            </div>
+            <p class="p2-cb">Make LUCI your own with brand colors, light and dark modes, backsplashes, and more.</p>
+          </div>
+          <div class="p2-card">
+            <div class="p2-card-head">
+              <span class="p2-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5l6-1 6 2 4-1v14l-4 1-6-2-6 1V5z" fill="#68E3BE" fill-opacity=".12" stroke="#2b9e80" stroke-width="1.4" stroke-linejoin="round"/><path d="M10 4v16M16 6v14" stroke="#2b9e80" stroke-width="1.1" stroke-opacity=".3"/><circle cx="13" cy="11" r="1.6" fill="#CEB06E"/></svg></span>
+              <p class="p2-cn">Live map flexibility</p>
+            </div>
+            <p class="p2-cb">Upload your own floor plan maps, rotate them to match your view, and see every device&rsquo;s status update live.</p>
+          </div>
+          <div class="p2-card">
+            <div class="p2-card-head">
+              <span class="p2-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="8" height="7" rx="1" fill="none" stroke="#2b9e80" stroke-width="1.4"/><rect x="13" y="4" width="8" height="7" rx="1" fill="none" stroke="#2b9e80" stroke-width="1.4"/><rect x="3" y="13" width="8" height="7" rx="1" fill="none" stroke="#2b9e80" stroke-width="1.4"/><rect x="13" y="13" width="8" height="7" rx="1" fill="#68E3BE" fill-opacity=".18" stroke="#2b9e80" stroke-width="1.4"/><path d="M11 7.5h2M11 16.5h2" stroke="#CEB06E" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+              <p class="p2-cn">Live screen view</p>
+            </div>
+            <p class="p2-cb">See what&rsquo;s playing on any TV or LED wall from your iPad, shown exactly as it appears live.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="p2-grp">
+        <div class="p2-lockup">
+          <h3 class="p2-grpname"><span class="p2-num">03</span><span class="p2-dot">&middot;</span>Deeper control over security</h3>
+        </div>
+        <div class="p2-cards">
+          <div class="p2-card">
+            <div class="p2-card-head">
+              <span class="p2-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l3 3v15H6z" fill="#68E3BE" fill-opacity=".12" stroke="#2b9e80" stroke-width="1.4" stroke-linejoin="round"/><path d="M15 3v3h3" fill="none" stroke="#2b9e80" stroke-width="1.4" stroke-linejoin="round"/><path d="M9 13l2 2 4-4" fill="none" stroke="#CEB06E" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <p class="p2-cn">Audit trails</p>
+            </div>
+            <p class="p2-cb">Trace each action to a person, preset, or schedule and export the record when needed.</p>
+          </div>
+          <div class="p2-card">
+            <div class="p2-card-head">
+              <span class="p2-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h4l2-5 4 3-2 5 2-3h4" fill="none" stroke="#2b9e80" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="19" cy="12" r="2" fill="#CEB06E"/></svg></span>
+              <p class="p2-cn">Live monitoring</p>
+            </div>
+            <p class="p2-cb">See device, display, and audio status live, including when a device stops responding.</p>
+          </div>
+          <div class="p2-card">
+            <div class="p2-card-head">
+              <span class="p2-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2" fill="none" stroke="#2b9e80" stroke-width="1.6"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="#2b9e80" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="15.5" r="1.6" fill="#CEB06E"/></svg></span>
+              <p class="p2-cn">Sign-in &amp; session control</p>
+            </div>
+            <p class="p2-cb">Use email, PIN, or Microsoft for sign-in, end sessions on command, or message everyone in the platform.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="p2-spotlight">
+        <div class="p2-spotlight__box">
+          <div class="p2-card-head">
+            <span class="p2-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-4 4V5z" fill="#2b9e80" fill-opacity=".12" stroke="#2b9e80" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 10h8M8 13h5" stroke="#2b9e80" stroke-width="1.3" stroke-linecap="round" stroke-opacity=".45"/><circle cx="17" cy="13" r="1.5" fill="#CEB06E"/></svg></span>
+            <p class="p2-cn">In-product support<svg class="p2-star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z" fill="#CEB06E"/></svg></p>
+          </div>
+          <p class="p2-cb">Raise a request from a device, incident, or error with the relevant context and logs already attached.</p>
+        </div>
+      </section>
+
+    </div>
+
+    <div class="close">
+      <p class="close__info"><strong>For more information, visit</strong>
+        <span class="close__url">www.lucisystems.com/luci-upgrade-guide</span></p>
+      <p class="close__contact"><strong>Michael Epstein</strong> &middot; CEO<br>mepstein@lucisystems.com &middot; 833.333.5868</p>
+    </div>
+    <footer class="foot">
+      <span class="foot__wordmark">LUCI</span>
+      <span>The new version of LUCI</span>
+    </footer>
+
+  </section>
+</article>
+</body>
+</html>
