@@ -3769,7 +3769,7 @@
     // Email copy lives in its own accordion below (Email copy) with per-email pages
     // derived from new-luci-email-comms.json — see NEW_LUCI_EMAIL_*.
     const NEW_LUCI_WORKING_SHELLS = [
-      { slug: 'whats-new', title: "What's New one-pager", deck: 'Letter leave-behind: The 3 Promises of New LUCI (Flow C). Open layout preview for the print sheet.', layoutPreviewUrl: '../sales/new-luci-whats-new-onepager.html' },
+      { slug: 'whats-new', title: "What's New two-pager", deck: 'Two-page sales leave-behind: three pillars on page 1, ten features plus In-product support on page 2. Open the designed layout from the list.', layoutPreviewUrl: '../sales/new-luci-whats-new-onepager.html' },
       { slug: 'webinar', title: 'Webinar', deck: 'Landing page copy plus script and slide drafts for the launch webinar.' },
       { slug: 'upgrade-guide', title: 'Upgrade guide & FAQ', deck: 'How current customers move onto New LUCI, plus the questions that come up.' },
       { slug: 'proof-pull', title: 'Proof pull', deck: 'Running list of proof points, quotes, and evidence to draw from for launch assets.' }
@@ -3877,7 +3877,7 @@
                 <p>${s.deck}</p>
                 ${status}
               </div>
-              <div class="actions"><a class="btn btn--ghost" href="#new-luci-launch/working/${s.slug}">Open draft</a></div>
+              <div class="actions">${s.layoutPreviewUrl ? `<a class="btn btn--ghost" href="${s.layoutPreviewUrl}" target="_blank" rel="noopener">Open two-pager</a>` : ''}<a class="btn btn--ghost" href="#new-luci-launch/working/${s.slug}">Open draft</a></div>
             </article>
           `;
         }).join('');
@@ -3930,7 +3930,7 @@
       if (backEl) backEl.textContent = 'Back to New LUCI Launch Campaign';
       if (backEl) backEl.href = '#new-luci-launch';
       // "Open layout preview" — only shown for shells that ship a designed HTML
-      // (e.g. the What's New one-pager). Stable relative URL survives the portal
+      // (e.g. the What's New two-pager). Stable relative URL survives the portal
       // deploy because build-stakeholder-review.mjs copies the sales HTML into
       // ui_kits/review/sales/ on every build.
       if (previewEl) {
