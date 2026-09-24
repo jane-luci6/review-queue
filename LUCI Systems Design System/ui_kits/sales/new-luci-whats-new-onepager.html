@@ -34,7 +34,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 @media print{
   body{background:#fff}.hub-link{display:none}
   .sheet{margin:0;box-shadow:none;page-break-after:always;break-after:page;overflow:hidden}
-  .p1-head,.p1-tex,.p1-bar,.p1-eyebrow,.p1-headline,.p1-date,.p1-map,.p1-foot,.p1-luci,.p1-tag,.foot,.close,.foot__wordmark,
+  .p1-head,.p1-tex,.p1-bar,.p1-eyebrow,.p1-headline,.p1-date,.p1-map,.p1-foot,.p1-luci,.p1-tag,.p1-pill,.foot,.close,.foot__wordmark,
   .p2-head,.p2-mesh,.p2-scrim,.p2-ic,.p2-card,.p2-cn,.p2-cb,.p2-num,.p2-grpname,.p2-title,.p2-deck,.p2-spotlight{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   /* Blinking fix: Chrome turns multi-stop CSS gradients into PDF Pattern/Shading
      objects that repaint lazily (blink on open). Flatten to flat fills in print. */
@@ -94,11 +94,13 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
   letter-spacing:.1em;color:var(--accent-light);margin-bottom:16px}
 .p1-pillrow{display:flex;flex-direction:column;align-items:stretch;gap:8px}
 .p1-pill{display:flex;align-items:center;gap:8px;
-  background:linear-gradient(155deg,#EBF9F4 0%,#F4FCF9 100%);
+  background:linear-gradient(155deg,#E8EEF2 0%,#F3F6F8 100%);
   border-left:3px solid var(--accent-light);border-radius:8px;
   padding:16px 16px 16px 12px;
   font-family:var(--font);font-size:13.5px;font-weight:700;line-height:1.2;
   letter-spacing:-0.01em;color:var(--ink-strong)}
+.p1-col:nth-child(2) .p1-pill{background:linear-gradient(155deg,#EBF9F4 0%,#F4FCF9 100%)}
+.p1-col:nth-child(3) .p1-pill{background:linear-gradient(155deg,#D4EFE4 0%,#E8F6EF 100%)}
 .p1-pill svg{flex:none;display:block;width:20px;height:20px}
 
 .p1-foot{flex:0 0 54px;background:var(--navy-deep);
@@ -140,7 +142,9 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 .p2-cards{flex:none;display:flex;gap:16px;align-items:stretch}
 .p2-card{flex:1 1 0;min-width:0;display:flex;flex-direction:column;justify-content:center;
   padding:16px;border-radius:10px;border-left:3px solid var(--accent-light);
-  background:linear-gradient(155deg,#EBF9F4 0%,#F4FCF9 100%)}
+  background:linear-gradient(155deg,#E8EEF2 0%,#F3F6F8 100%)}
+.p2-grp:nth-child(2) .p2-card{background:linear-gradient(155deg,#EBF9F4 0%,#F4FCF9 100%)}
+.p2-grp:nth-child(3) .p2-card{background:linear-gradient(155deg,#D4EFE4 0%,#E8F6EF 100%)}
 .p2-card-head{display:flex;align-items:center;gap:8px;margin-bottom:8px}
 .p2-ic{flex:none;width:24px;height:24px;display:flex;align-items:center;justify-content:center}
 .p2-ic svg{display:block;width:22px;height:22px}
@@ -152,7 +156,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
   justify-content:center;padding:24px var(--pad);
   background:var(--off-white);border-top:1px solid var(--rule-light)}
 .p2-spotlight__box{
-  background:linear-gradient(155deg,#EBF9F4 0%,#F4FCF9 100%);
+  background:linear-gradient(155deg,#D8DEE3 0%,#E8EDF0 100%);
   border-radius:10px;border-left:3px solid var(--accent-light);
   padding:20px 24px;display:flex;flex-direction:column;justify-content:center}
 .p2-spotlight .p2-card-head{margin-bottom:8px}

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-22",
+  "updated": "2026-09-24",
   "publishNote": "Build (npm run build:review) outputs to ui_kits/review. Bump reviewVersion + versionNote for new uploads (version history shown in portal). Set dueForReview for first-time review. Comments/approvals sync server-side via the comments_api container (proxied at /api/comments); Jane sees Mike/Mark's feedback on refresh. Archive with scripts/pull-review-comments.mjs.",
   "previewBaseUrl": "",
   "commentsApiUrl": "http://10.10.1.17:8081/api/comments",
@@ -8,17 +8,17 @@
     {
       "title": "Messaging guide",
       "url": "messaging/messaging-guide.html",
-      "note": "Updated Sep 22, 2026"
+      "note": "Updated Sep 24, 2026"
     },
     {
       "title": "LUCI philosophy",
       "url": "messaging/philosophy.html",
-      "note": "Updated Sep 22, 2026"
+      "note": "Updated Sep 24, 2026"
     },
     {
       "title": "Personas",
       "url": "messaging/personas.html",
-      "note": "Updated Sep 22, 2026"
+      "note": "Updated Sep 24, 2026"
     }
   ],
   "inProgress": [],
@@ -28,8 +28,8 @@
       "title": "New LUCI · What's New two-pager",
       "summary": "Sales leave-behind for New LUCI 2.0 — page 1: three pillars (control of the room, your view, security) over a map field; page 2: 10 feature cards + In-product support spotlight.",
       "previewUrl": "sales/new-luci-whats-new-onepager.html",
-      "reviewVersion": 1,
-      "versionNote": "First review — two-pager design and copy locked, ready for stakeholder review on the IMP.",
+      "reviewVersion": 2,
+      "versionNote": "Card colors: 01 light gray, 02 pale mint, 03 deeper mint, In-product support darker gray — slight variation so groups are easier to scan.",
       "reviewBrief": {
         "description": "A two-page sales leave-behind for the New LUCI 2.0 release. Page 1 carries the masthead, the 'power of programming' headline, release date, and three pillar columns over a live map field. Page 2 details 10 features across three groups (Greater control of the room, Flexible control of your view, Deeper control over security) plus a full-width In-product support card.",
         "reviewAsk": "whether the design hierarchy, feature copy, and overall messaging read cleanly as a customer-facing leave-behind; whether the In-product support treatment works as a feature that applies across all categories."
@@ -39,6 +39,11 @@
           "version": 1,
           "published": "2026-09-22",
           "note": "First review — two-pager design and copy locked, ready for stakeholder review on the IMP."
+        },
+        {
+          "version": 2,
+          "published": "2026-09-24",
+          "note": "Card colors: 01 light gray, 02 pale mint, 03 deeper mint, In-product support darker gray — slight variation so groups are easier to scan."
         }
       ]
     },
@@ -617,5 +622,5 @@
     }
   ],
   "finalized": [],
-  "messagingDocsUpdated": "2026-09-22"
+  "messagingDocsUpdated": "2026-09-24"
 }
