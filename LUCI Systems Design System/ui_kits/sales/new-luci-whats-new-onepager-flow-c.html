@@ -36,6 +36,8 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
   .sheet{margin:0;box-shadow:none;page-break-after:always;break-after:page;overflow:hidden}
   .p1-head,.p1-tex,.p1-bar,.p1-eyebrow,.p1-headline,.p1-date,.p1-map,.p1-foot,.p1-luci,.p1-tag,.p1-pill,.foot,.close,.foot__wordmark,
   .p2-head,.p2-mesh,.p2-scrim,.p2-ic,.p2-card,.p2-cn,.p2-cb,.p2-num,.p2-grpname,.p2-title,.p2-deck,.p2-spotlight{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  /* Ghost nums + accent-light ctrl + column washes render in print */
+  .p1-card,.p1-num,.p1-card h3,.p1-card h3 .ctrl,.p1-col,.p1-pill{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   /* Blinking fix: Chrome turns multi-stop CSS gradients into PDF Pattern/Shading
      objects that repaint lazily (blink on open). Flatten to flat fills in print. */
 }
@@ -76,31 +78,38 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
   color:var(--ink-strong);background:rgba(43,158,128,0.05)}
 .p1-callout b{color:var(--accent-light);font-weight:700}
 .p1-cols{display:grid;grid-template-columns:repeat(3,1fr);column-gap:34px}
-.p1-col{position:relative}
-.p1-card{background:#0F1E27;border-radius:10px;position:relative;overflow:hidden;
-  padding:24px 26px 22px;margin-bottom:22px;
-  box-shadow:0 14px 26px -16px rgba(10,20,26,.4)}
+/* Column washes on rounded panels (UG / approved mock); not on individual pills.
+   Spacing: keep pre-mock canonical vertical rhythm (no mock-tightened gaps). */
+.p1-col{position:relative;border-radius:12px;
+  background:linear-gradient(155deg,#e8eef2 0%,#f3f6f8 100%)}
+.p1-col:nth-child(2){background:linear-gradient(155deg,#ebf9f4 0%,#f4fcf9 100%)}
+.p1-col:nth-child(3){background:linear-gradient(155deg,#d4efe4 0%,#e8f6ef 100%)}
+/* Transparent pillar headers + mint hairline (no navy boxes); padding/margin match pre-mock */
+.p1-card{background:transparent;border-radius:0;position:relative;overflow:visible;
+  padding:24px 0 22px;margin-bottom:22px;box-shadow:none;
+  border-bottom:1px solid rgba(104,227,190,0.28)}
 .p1-card .p1-tex{display:none}
-.p1-num{position:absolute;top:-4px;left:10px;z-index:0;
-  font-family:var(--font);font-size:92px;font-weight:700;
-  color:rgba(255,255,255,.14);line-height:1;letter-spacing:-3px}
+/* Ghost nums — quieter than mock #10232d0d (~5%) → #10232d08 (~3%), right-aligned */
+.p1-num{position:absolute;top:-4px;left:auto;right:0;z-index:0;text-align:right;
+  font-family:var(--font);font-size:80px;font-weight:700;
+  color:#10232d08;line-height:1;letter-spacing:-3px;
+  pointer-events:none;user-select:none}
 .p1-headwrap{position:relative;z-index:1}
-.p1-card h3{font-family:var(--font);font-size:21px;font-weight:700;
-  color:#fff;line-height:1.22;margin:0}
-.p1-card h3 .ctrl{color:var(--gold)}
+.p1-card h3{font-family:var(--font);font-size:23px;font-weight:700;
+  color:var(--ink-strong);line-height:1.22;margin:0}
+.p1-card h3 .ctrl{color:var(--accent-light)}
 .p1-col p{font-family:var(--font-body);font-size:14.5px;color:var(--text-gray);
   line-height:1.68;margin-bottom:24px;min-height:calc(3 * 1.68em)}
 .p1-feat-label{font-family:var(--display);font-size:11.5px;font-weight:700;
   letter-spacing:.1em;color:var(--accent-light);margin-bottom:16px}
 .p1-pillrow{display:flex;flex-direction:column;align-items:stretch;gap:8px}
+/* Unified translucent white pills + mint left border (no per-column tint) */
 .p1-pill{display:flex;align-items:center;gap:8px;
-  background:linear-gradient(155deg,#E8EEF2 0%,#F3F6F8 100%);
+  background:#ffffffb8;
   border-left:3px solid var(--accent-light);border-radius:8px;
   padding:16px 16px 16px 12px;
   font-family:var(--font);font-size:13.5px;font-weight:700;line-height:1.2;
   letter-spacing:-0.01em;color:var(--ink-strong)}
-.p1-col:nth-child(2) .p1-pill{background:linear-gradient(155deg,#EBF9F4 0%,#F4FCF9 100%)}
-.p1-col:nth-child(3) .p1-pill{background:linear-gradient(155deg,#D4EFE4 0%,#E8F6EF 100%)}
 .p1-pill svg{flex:none;display:block;width:20px;height:20px}
 
 .p1-foot{flex:0 0 54px;background:var(--navy-deep);
