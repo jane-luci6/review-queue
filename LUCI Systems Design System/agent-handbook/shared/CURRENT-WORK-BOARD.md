@@ -18,7 +18,7 @@ Workstream bots update this table when Jane assigns them work. Cornelius does no
 
 | ID | Jane asked | Owner | Stage | Model | Artifact | Waiting on Jane | Next |
 |---|---|---|---|---|---|---|---|
-| upgrade-guide-pillar-headers | Jane: see pillar table headers if black boxes replaced with subtle OR removed (options pass) | Weatherby | waiting Jane pick (`832f15f` on .37) | Claude visual + GLM build | compare URLs ?tableHeaders=subtle / none / alt on http://10.10.1.37/luci-upgrade-guide/ + sticky picker; OPTIONS weatherby-briefs/upgrade-guide-pillar-table-headers-OPTIONS.md | Jane pick current / subtle / none / alt | Strip picker + lock chosen treatment after pick |
+| upgrade-guide-pillar-headers | Jane locked B none + restore ghost pillar numbers (no black boxes) | Weatherby | deployed (5bfe81e) | GLM | bare URL none: type+hairline + ghost `.ug-pillar__num`; picker/`?tableHeaders=` stripped; http://10.10.1.37/luci-upgrade-guide/ | Jane Cmd+Shift+R | Idle until feedback |
 | upgrade-guide-intro-day-to-day | Jane: rewrite day-to-day intro sentence + split thesis into 2 paragraphs (typo fix your your→your) | Weatherby | deployed (`419444a`) | — | `419444a` — thesis paragraphs[0]=A/V investment opener; paragraphs[1]=Jane autonomy/control + LUCI team in the loop; http://10.10.1.37/luci-upgrade-guide/ | Jane Cmd+Shift+R | Idle until feedback |
 | upgrade-guide-hero-fade | Jane: abandon fade iteration (copy wrap shifted whole header); restore pre-fade hero | Weatherby | deployed (`4286829`) — fade abandoned | — | `4286829` — hero markup+scrim/plan CSS matched to `f8daf43`/`42fc845` (no `.ug-hero__copy`, original radial scrim, vivid right plan); mint wash/intro kept; http://10.10.1.37/luci-upgrade-guide/ | Jane Cmd+Shift+R once | No further fade tweaks |
 | new-luci-email-series-scaffold | Jane: coverage bullets + empty copy templates for every New LUCI IMP email; seed Open draft in portal | Ermintrude | DONE scaffolds+IMP seeds deployed | GPT then GLM | `4fcf102` email-copy 39 md + `_INDEX` + OneDrive mirror + `new-luci-email-copy-seeds.json`; `524026d` IMP empty-draft seed load; live http://10.10.1.17:8081/internal-portal/index.html#new-luci-launch/email/customers/pre-launch-webinar/CUST-WEBINAR-01 | Jane Cmd+Shift+R then open sample hash | Bodies still empty (scaffold only); Jane write when ready |
@@ -53,7 +53,7 @@ Workstream bots update this table when Jane assigns them work. Cornelius does no
 
 | ID | Item | Waiting |
 |---|---|---|
-| upgrade-guide-pillar-headers | Pillar `.ug-pillar__head` black-box options on .37 | Jane pick: current / subtle / none / alt |
+| upgrade-guide-pillar-headers | Pillar headers locked none + ghost nums on .37 (5bfe81e) | Jane Cmd+Shift+R |
 | upgrade-guide-hero-fade | Hero fade abandoned; pre-fade hero restored on .37 (`4286829`) | Jane Cmd+Shift+R once |
 | upgrade-guide-intro-day-to-day | Thesis 2-para Jane rewrite live on .37 | Jane Cmd+Shift+R |
 | signal-04-open | Signal Issue 04: Theme; Welcome names | Jane, then Mike letter review |
