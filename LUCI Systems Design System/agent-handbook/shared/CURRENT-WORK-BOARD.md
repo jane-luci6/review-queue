@@ -1,6 +1,6 @@
 # Current work board
 
-**Board date:** 24 September 2026  
+**Board date:** 25 September 2026  
 **Sources:** CoS live calendar (16 Sep), `DECISION-LOG.md`, `the-signal-issue-04-choices.md`, `COS-task-calendar.json`.  
 **If a line is wrong, Jane corrects it.** The 28 Aug board is history.
 
@@ -18,6 +18,8 @@ Workstream bots update this table when Jane assigns them work. Cornelius does no
 
 | ID | Jane asked | Owner | Stage | Model | Artifact | Waiting on Jane | Next |
 |---|---|---|---|---|---|---|---|
+| ug-asset-features-nav-mock | Jane lock: UG deep = FAG-style standalone (one sticky nav, no site chrome) + landing; features open sections; accordion only Tech/FAQ; Webflow-portable IA | Weatherby | deployed mock — Waiting on Jane | GLM | `09cb08b` landing http://10.10.1.37/luci-upgrade-guide-asset-mock/ · guide http://10.10.1.37/luci-upgrade-guide-asset-mock/guide/ | Jane review sticky jump + Venue cards; approve before live cutover | Do not replace live accordion yet; do not ping Jane from bot |
+| upgrade-guide-thesis1-venue-panels | Jane lock: Thesis 1 scenario cards + fuller use-case beats + media slot at bottom of open detail | Weatherby | deployed — Waiting on Jane | GPT → GLM | `61c99b9` http://10.10.1.37/luci-upgrade-guide/ Cmd+Shift+R | Jane review | Hard-refresh Venue panels accordion; Weatherby pings Jane |
 | upgrade-guide-pillar-headers | Jane locked B none + restore ghost pillar numbers (no black boxes) | Weatherby | deployed (edcd296) | GLM | bare URL none: type+hairline + ghost `.ug-pillar__num`; picker/`?tableHeaders=` stripped; ghost num color `#10232d14` (~8% ink) → `#10232d0d` (~5% ink); http://10.10.1.37/luci-upgrade-guide/ | Jane Cmd+Shift+R | Idle until feedback |
 | whats-new-p1-ug-pillar-apply | Jane approved mock → match column wash geometry to sample | Weatherby | applied; Waiting Jane Cmd+Shift+R | GLM | Canonical + twin + IMP review: http://10.10.1.17:8081/sales/new-luci-whats-new-onepager.html — commit `488e261`; `.p1-cols` gap 34px→12px; `.p1-col` padding 16px 14px 18px→12px 12px 14px; preserved transparent `.p1-card`, mint hairline, unified pills `#ffffffb8`, ghost nums `#10232d08`, and p1 rhythm (pad 24/22 + mb 22). Mock file kept, banner SUPERSEDED. | Jane Cmd+Shift+R | Idle until feedback |
 | upgrade-guide-intro-day-to-day | Jane: rewrite day-to-day intro sentence + split thesis into 2 paragraphs (typo fix your your→your) | Weatherby | deployed (`419444a`) | — | `419444a` — thesis paragraphs[0]=A/V investment opener; paragraphs[1]=Jane autonomy/control + LUCI team in the loop; http://10.10.1.37/luci-upgrade-guide/ | Jane Cmd+Shift+R | Idle until feedback |

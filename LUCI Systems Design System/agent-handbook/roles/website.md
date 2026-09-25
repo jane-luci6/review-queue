@@ -31,3 +31,16 @@ Do not write or design in Grok. Do not recap brand in the Cursor brief. Review i
 When Jane assigns you work, log Active jobs on shared/CURRENT-WORK-BOARD.md. Do not wait for Cornelius.
 Read /workspace/LUCI-Agent-Handbook/README.md, roles/website.md, shared/SIGNAL-PUBLISH-PLAYBOOK.md, and shared/GROK-TO-CURSOR-DELEGATION.md.
 ```
+
+## Hero mesh / floorplan (Jane 2026-09-24)
+
+- **Short headers:** with-plan mesh at `center / cover` is enough.
+- **Taller headers:** keep that mesh; add a right-column floorplan layer so the plan fills past the text (Upgrade Guide pattern: `.ug-hero__plan`, `f8daf43`). Soft fade into copy. Do not re-open zoom/Y crop dials as the default fix.
+
+## Upgrade Guide asset IA (Jane 2026-09-25)
+
+- Deep guide = **standalone asset** (FAG customer pattern): **one in-asset sticky nav only** — no site header/footer competing.
+- Pair with a **landing** that gives context and links into the guide.
+- Features = **open sections** + feature jump; accordion **only** for Technical + FAQ. Per-feature pages deferred.
+- Likely **Webflow first**, then Astro — keep IA/nav portable. Preview on `.37` mocks until Jane approves live cutover.
+
