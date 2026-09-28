@@ -8,6 +8,10 @@
 
 ---
 
+## 2026-09-28
+
+- **Upgrade Guide first sections = energy thesis C (Release sheet), applied to LIVE.** Jane locked C from the A/B/C energy mock and had it ported to the live `/luci-upgrade-guide/`. Live hero gets the C specrow (two-cell eyebrow/date, 1px mint vertical rule, full-width mint hairline) + Syncopate headline `clamp(36px,7.5vw,76px)` / ls 0.01em / lh 1.0 / max-width 15ch + ~22px mint date with gold underline + 4px mint bottom bar — no oversize ghost watermark in hero. Thesis becomes a C grid: vertical side ghost date in the left margin between the thesis lockup wash and the pillars wash (writing-mode vertical-rl, rotate 180, ~5.5% ink ghost, mask fade, hide <900px, aria-hidden), copy + media columns (1fr / 1.15fr ≥900px), 16:10 media frame with L/T/B mint hairline + dashed mint inset placeholder (no real video), ≥1200px right-bleed + sticky top 84px. Release date is `January 2026` (month only) sitewide on the guide (hero, upgrade path timing strip, meta). GPT RECOMMENDED thesis copy verbatim with curly apostrophes/em dashes. Pillars/features/tech/FAQ/CTA unchanged. Live on `http://10.10.1.37/luci-upgrade-guide/` (commit `bfee4b1`). Jane, 28 Sep (Weatherby/GLM brief).
+
 ## 2026-09-25
 
 - **Upgrade Guide deep content = FAG-style standalone asset (not under site chrome).** Jane lock: deep guide is a standalone asset page like the FAG customer guide — **one in-asset sticky nav only** (back-to-landing + chapter/feature jump; scroll-spy + shareable `#` hashes; mobile wrap). **No competing website header/nav.** Pair with a **landing page** that gives context and links into the guide. Features render as **always-open sections** (not accordion); accordion **only** for Technical + FAQ. Per-feature pages deferred. Will likely ship on **old Webflow first** before new Astro — IA/nav pattern must port; Astro/.37 mocks are for review only. Live `/luci-upgrade-guide/` accordion stays until Jane approves cutover. Preview mocks: landing `http://10.10.1.37/luci-upgrade-guide-asset-mock/` · guide `http://10.10.1.37/luci-upgrade-guide-asset-mock/guide/`. Jane, 25 Sep (Weatherby).
