@@ -33,7 +33,7 @@ This order matters. Start with the property’s operating scope, then assess the
 
 Yaamava’ provides that proof in public: 34 LED walls, seven venues, multiple categories of A/V and content, and a 290,000-square-foot resort run from a single interface. The numbers show what the interface is responsible for.
 
-The live case study carries the full account. If your property has accumulated separate systems for broadcast, signage, audio, data, and displays, the question is not whether each system works. The question is whether staff can operate them together without another isolated control path.
+The live case study carries the full account. If your property has accumulated separate systems for broadcast, signage, audio, data, and displays, the question is not whether each system works. The question is whether your staff can operate them together without another isolated control path.
 
 [Read the Yaamava’ case study](https://www.lucisystems.com/case-studies/yaamava-case-study). Then book a walkthrough to see how LUCI would work with and absorb the systems already on your floor.
 

@@ -29,7 +29,7 @@ Those questions should be answered before a property treats the display as an is
 
 The live case study shows the completed wall and the decision behind it. This short account is the reason to open that story: one 480-square-foot LED in place of mismatched TVs, joined to the platform already running the house.
 
-If your property is treating its next wall as a separate A/V system, the new surface can instead join the operation already in place. LUCI brings it into the interface staff already use.
+If your property is treating its next wall as a separate A/V system, the new surface can instead join the operation already in place. LUCI brings it into the interface your staff already use.
 
 [Read the Sam’s Town case study](https://www.lucisystems.com/case-studies/sams-town). Then book a walkthrough to see how LUCI can absorb the next display into the A/V your staff already runs.
 
