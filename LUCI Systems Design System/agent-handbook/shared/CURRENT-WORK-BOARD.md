@@ -1,6 +1,6 @@
 # Current work board
 
-**Board date:** 25 September 2026  
+**Board date:** 28 September 2026  
 **Sources:** CoS live calendar (16 Sep), `DECISION-LOG.md`, `the-signal-issue-04-choices.md`, `COS-task-calendar.json`.  
 **If a line is wrong, Jane corrects it.** The 28 Aug board is history.
 
@@ -18,6 +18,7 @@ Workstream bots update this table when Jane assigns them work. Cornelius does no
 
 | ID | Jane asked | Owner | Stage | Model | Artifact | Waiting on Jane | Next |
 |---|---|---|---|---|---|---|---|
+| upgrade-guide-first-sections-energy | Jane asked: Amp Upgrade Guide first sections for release excitement — stronger design (bold type, visuals), pumped copy, and UI walkthrough video beside or behind first section (Jane will supply video later — DO NOT generate video; thesis right col = labeled poster/placeholder frame only) | Weatherby | GLM mocking A/B/C for Jane compare — deployed | GLM (`5c1c9ba`) | http://10.10.1.37/luci-upgrade-guide-energy-mock/ (A Release masthead · B Product plate · C Release sheet; GPT RECOMMENDED copy; placeholder plate only; live UG untouched) | Jane pick after hard-refresh (Cmd+Shift+R) | Apply winner to live UG after Jane picks; no video invent |
 | ug-asset-features-nav-mock | Jane lock: UG deep = FAG-style standalone (one sticky nav, no site chrome) + landing; features open sections; accordion only Tech/FAQ; Webflow-portable IA | Weatherby | deployed mock — Waiting on Jane | GLM | `09cb08b` landing http://10.10.1.37/luci-upgrade-guide-asset-mock/ · guide http://10.10.1.37/luci-upgrade-guide-asset-mock/guide/ | Jane review sticky jump + Venue cards; approve before live cutover | Do not replace live accordion yet; do not ping Jane from bot |
 | upgrade-guide-thesis1-venue-panels | Jane lock: Thesis 1 scenario cards + fuller use-case beats + media slot at bottom of open detail | Weatherby | deployed — Waiting on Jane | GPT → GLM | `61c99b9` http://10.10.1.37/luci-upgrade-guide/ Cmd+Shift+R | Jane review | Hard-refresh Venue panels accordion; Weatherby pings Jane |
 | upgrade-guide-pillar-headers | Jane locked B none + restore ghost pillar numbers (no black boxes) | Weatherby | deployed (edcd296) | GLM | bare URL none: type+hairline + ghost `.ug-pillar__num`; picker/`?tableHeaders=` stripped; ghost num color `#10232d14` (~8% ink) → `#10232d0d` (~5% ink); http://10.10.1.37/luci-upgrade-guide/ | Jane Cmd+Shift+R | Idle until feedback |
@@ -56,6 +57,7 @@ Workstream bots update this table when Jane assigns them work. Cornelius does no
 
 | ID | Item | Waiting |
 |---|---|---|
+| upgrade-guide-first-sections-energy | Energy A/B/C mock on .37 (`5c1c9ba`) — pick A/B/C | Jane Cmd+Shift+R then pick |
 | upgrade-guide-pillar-headers | Pillar headers locked none + ghost nums quieter on .37 (edcd296; `#10232d14`→`#10232d0d`) | Jane Cmd+Shift+R |
 | upgrade-guide-hero-fade | Hero fade abandoned; pre-fade hero restored on .37 (`4286829`) | Jane Cmd+Shift+R once |
 | upgrade-guide-intro-day-to-day | Thesis 2-para Jane rewrite live on .37 | Jane Cmd+Shift+R |
