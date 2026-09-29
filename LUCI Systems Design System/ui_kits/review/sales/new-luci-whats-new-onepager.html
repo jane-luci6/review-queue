@@ -96,7 +96,9 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
   pointer-events:none;user-select:none}
 .p1-headwrap{position:relative;z-index:1}
 .p1-card h3{font-family:var(--font);font-size:23px;font-weight:700;
-  color:var(--ink-strong);line-height:1.22;margin:0}
+  color:var(--ink-strong);line-height:1.22;margin:0;
+  /* 01 title wraps to 3 lines (“of the guest experience”); reserve height so 02/03 align (UG min-height) */
+  min-height:calc(1.22em * 3)}
 .p1-card h3 .ctrl{color:var(--accent-light)}
 .p1-col p{font-family:var(--font-body);font-size:14.5px;color:var(--text-gray);
   line-height:1.68;margin-bottom:24px;min-height:calc(3 * 1.68em)}
@@ -145,7 +147,9 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 .p2-grp + .p2-grp{border-top:1px solid var(--rule-light)}
 .p2-lockup{flex:none;margin-bottom:16px}
 .p2-grpname{font-family:var(--font);font-weight:700;font-size:15px;
-  line-height:1.2;letter-spacing:-0.01em;color:var(--ink-strong)}
+  line-height:1.2;letter-spacing:-0.01em;color:var(--ink-strong);
+  /* Reserve 2 lines so 02/03 align if 01 (“guest experience”) wraps */
+  min-height:calc(1.2em * 2)}
 .p2-grpname .p2-num{font-weight:400;color:var(--gold);margin-right:8px}
 .p2-grpname .p2-dot{display:none}
 .p2-cards{flex:none;display:flex;gap:16px;align-items:stretch}
@@ -204,7 +208,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
               <img class="p1-tex" src="assets/header_tex_rgba.png" alt="" aria-hidden="true">
               <div class="p1-num" aria-hidden="true">01</div>
               <div class="p1-headwrap">
-                <h3>Greater <span class="ctrl">control</span><br>of the room</h3>
+                <h3>Greater <span class="ctrl">control</span><br>of the guest experience</h3>
               </div>
             </div>
             <p>Tune in-room panels, stage events, and group audio zones.</p>
@@ -250,7 +254,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 
     <footer class="p1-foot">
       <span class="p1-luci">LUCI</span>
-      <span class="p1-tag">THE NEW VERSION OF LUCI</span>
+      <span class="p1-tag">The Orchestration Engine for Enterprise Multimedia</span>
     </footer>
 
   </section>
@@ -261,7 +265,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 
       <section class="p2-grp">
         <div class="p2-lockup">
-          <h3 class="p2-grpname"><span class="p2-num">01</span><span class="p2-dot">&middot;</span>Greater control of the room</h3>
+          <h3 class="p2-grpname"><span class="p2-num">01</span><span class="p2-dot">&middot;</span>Greater control of the guest experience</h3>
         </div>
         <div class="p2-cards">
           <div class="p2-card">
@@ -269,7 +273,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
               <span class="p2-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2" fill="none" stroke="#2b9e80" stroke-width="1.6"/><path d="M3 9h18" stroke="#2b9e80" stroke-width="1.2" stroke-opacity=".35"/><circle cx="7" cy="13.5" r="1.2" fill="#CEB06E"/><circle cx="11" cy="13.5" r="1.2" fill="#2b9e80" fill-opacity=".4"/><circle cx="15" cy="13.5" r="1.2" fill="#2b9e80" fill-opacity=".4"/></svg></span>
               <p class="p2-cn">Venue panels</p>
             </div>
-            <p class="p2-cb">In-venue tablets show only the approved controls for that space. Operators adjust what they need without full access.</p>
+            <p class="p2-cb">Venue panels let operators and guests adjust what they need in only the room&mdash;or rooms&mdash;they should control, with only the actions approved for that space. Scheduling allows automatic shut-down for venue panels in a selected space.</p>
           </div>
           <div class="p2-card">
             <div class="p2-card-head">
@@ -311,7 +315,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
               <span class="p2-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="8" height="7" rx="1" fill="none" stroke="#2b9e80" stroke-width="1.4"/><rect x="13" y="4" width="8" height="7" rx="1" fill="none" stroke="#2b9e80" stroke-width="1.4"/><rect x="3" y="13" width="8" height="7" rx="1" fill="none" stroke="#2b9e80" stroke-width="1.4"/><rect x="13" y="13" width="8" height="7" rx="1" fill="#68E3BE" fill-opacity=".18" stroke="#2b9e80" stroke-width="1.4"/><path d="M11 7.5h2M11 16.5h2" stroke="#CEB06E" stroke-width="1.6" stroke-linecap="round"/></svg></span>
               <p class="p2-cn">Live screen view</p>
             </div>
-            <p class="p2-cb">See what&rsquo;s playing on any TV or LED wall from your iPad, shown exactly as it appears live.</p>
+            <p class="p2-cb">See what&rsquo;s playing on any TV or LED wall from your iPad or any browser device, shown exactly as it appears live.</p>
           </div>
         </div>
       </section>
@@ -351,7 +355,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
             <span class="p2-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-4 4V5z" fill="#2b9e80" fill-opacity=".12" stroke="#2b9e80" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 10h8M8 13h5" stroke="#2b9e80" stroke-width="1.3" stroke-linecap="round" stroke-opacity=".45"/><circle cx="17" cy="13" r="1.5" fill="#CEB06E"/></svg></span>
             <p class="p2-cn">In-product support<svg class="p2-star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z" fill="#CEB06E"/></svg></p>
           </div>
-          <p class="p2-cb">Raise a request from a device, incident, or error with the relevant context and logs already attached.</p>
+          <p class="p2-cb">Raise a request from a device, incident, or error with context and logs attached&mdash;and when sites throw errors, LUCI is notified so the team can be more proactive.</p>
         </div>
       </section>
 
@@ -364,7 +368,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
     </div>
     <footer class="foot">
       <span class="foot__wordmark">LUCI</span>
-      <span>The new version of LUCI</span>
+      <span>The Orchestration Engine for Enterprise Multimedia</span>
     </footer>
 
   </section>
