@@ -170,7 +170,7 @@ See [`shared/CURRENT-WORK-BOARD.md`](shared/CURRENT-WORK-BOARD.md) for the dated
 
 ## 8. What “good” looks like for this team
 
-- Strategy and design **settle** before Maker touches files.
+- Strategy and design **settle** before GLM touches files.
 - GLM does the production. ChatGPT/Claude only when the protocol gate is met.
 - Review sounds like Jane at 11pm: specific issue + specific fix. No silent redesign.
 - Nothing customer-facing invents claims, percentages, or Q-SYS replacement.

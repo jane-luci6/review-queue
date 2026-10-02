@@ -23,8 +23,11 @@
 | Internal Marketing Portal | `http://10.10.1.17:8081` | `npm run deploy:portal` |
 | Old hub | `http://10.10.1.37:8080` | **Stale.** Parked cleanup. |
 | Messaging Word | OneDrive `Marketing - Documents/Strategy & Messaging/` | Paths in `messaging-sources.json` |
-| Client photography reference | OneDrive `Marketing - Documents/Content/Project Media` | Environments only; never publish those files as site images |
-| Grok shared files | `/workspace/LUCI-Agent-Handbook` | Copy of this pack. Not the master. |
+| Client photography + raw project video | OneDrive `Marketing - Documents/Content/Project Media` | Per-property folders. Source for trailers and stills. Do not invent footage. |
+| Video working cuts | `luci-design/video-production/projects/` | Inventories and review cuts. Aliante: `aliante-led` |
+| Finished video exports | OneDrive `Marketing - Documents/Content/Video` | Deliverables after Jane’s review |
+| LinkedIn process + post masters | OneDrive `Marketing - Documents/Social Media` | `WORKFLOW.md` + `CONTENT-DIRECTION.md`. Idea docs, captions, series folders. Svetlana writes here, not luci-design. |
+| Grok shared files | `/workspace/LUCI-Agent-Handbook` | Copy of this pack. Not the master. Active jobs live in `shared/CURRENT-WORK-BOARD.md` so Cornelius can see work Jane gave other bots. |
 
 **GitHub is not the day-to-day source of truth.** A Bot that clones `jane-luci6/luci-website` or `review-queue` will miss most of 2026.
 

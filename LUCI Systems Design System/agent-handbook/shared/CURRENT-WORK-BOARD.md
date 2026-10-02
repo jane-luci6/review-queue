@@ -1,6 +1,6 @@
 # Current work board
 
-**Board date:** 28 September 2026  
+**Board date:** 29 September 2026  
 **Sources:** CoS live calendar (16 Sep), `DECISION-LOG.md`, `the-signal-issue-04-choices.md`, `COS-task-calendar.json`.  
 **If a line is wrong, Jane corrects it.** The 28 Aug board is history.
 
@@ -18,6 +18,9 @@ Workstream bots update this table when Jane assigns them work. Cornelius does no
 
 | ID | Jane asked | Owner | Stage | Model | Artifact | Waiting on Jane | Next |
 |---|---|---|---|---|---|---|---|
+| upgrade-guide-livemap-flexibility | Jane: add Live map benefits — move endpoint labels + lock viewpoint on login (bartender); tighten Scale/pan line | Weatherby | LIVE on .37 (`e8bc2bf`) | executor | http://10.10.1.37/luci-upgrade-guide/#ug-feature-live-map-flexibility — Cmd+Shift+R | Jane review | Jane notes |
+| wave-1-spotlight-lighting | Publish Wave 1 lighting spotlight on luci-website (.37), same pattern as morning-reset; Jane locked cover via CoS | Weatherby | LIVE pending Jane review | executor | `38f16c7` · http://10.10.1.37/blog/lighting-lives-with-the-rest-of-the-av/ · hero `lighting-hero.jpg` (not map); map in body | Jane hard-refresh review | Weatherby tells CoS the URL |
+| upgrade-guide-venue-panels-landscape | Jane: login less zoomed + hands in front; landscape plates (not 960×1280); section design pass; stop for review before next feature | Weatherby | deployed — Waiting on Jane | executor+GLM | `609ded7` · http://10.10.1.37/luci-upgrade-guide/#ug-feature-venue-panels · plates 1280×960 (4:3); login scale~0.60 inside bezel; hands over UI; CSS aspect 4/3 + smaller cards; grey deepdive/locks kept | Jane Cmd+Shift+R | Idle until Jane feedback — she moves to next feature after |
 | upgrade-guide-first-sections-energy | Jane asked: Amp Upgrade Guide first sections for release excitement — stronger design (bold type, visuals), pumped copy, and UI walkthrough video beside or behind first section (Jane will supply video later — DO NOT generate video; thesis right col = labeled poster/placeholder frame only) | Weatherby | live C applied | GLM (`bfee4b1`) | http://10.10.1.37/luci-upgrade-guide/ — energy C (Release sheet) on live hero+thesis; January 2026 sitewide; side ghost between mint bands; placeholder plate only; commit `bfee4b1` | Jane hard-refresh review | Idle until Jane feedback |
 | ug-asset-features-nav-mock | Jane lock: UG deep = FAG-style standalone (one sticky nav, no site chrome) + landing; features open sections; accordion only Tech/FAQ; Webflow-portable IA | Weatherby | deployed mock — Waiting on Jane | GLM | `09cb08b` landing http://10.10.1.37/luci-upgrade-guide-asset-mock/ · guide http://10.10.1.37/luci-upgrade-guide-asset-mock/guide/ | Jane review sticky jump + Venue cards; approve before live cutover | Do not replace live accordion yet; do not ping Jane from bot |
 | upgrade-guide-thesis1-venue-panels | Jane lock: Thesis 1 scenario cards + fuller use-case beats + media slot at bottom of open detail | Weatherby | deployed — Waiting on Jane | GPT → GLM | `61c99b9` http://10.10.1.37/luci-upgrade-guide/ Cmd+Shift+R | Jane review | Hard-refresh Venue panels accordion; Weatherby pings Jane |
@@ -57,6 +60,7 @@ Workstream bots update this table when Jane assigns them work. Cornelius does no
 
 | ID | Item | Waiting |
 |---|---|---|
+| wave-1-spotlight-lighting | Lighting spotlight LIVE on .37 (`38f16c7`) — http://10.10.1.37/blog/lighting-lives-with-the-rest-of-the-av/ | Jane hard-refresh review |
 | upgrade-guide-first-sections-energy | Live UG energy C applied on .37 (`bfee4b1`) — January 2026 sitewide, side ghost between mint bands, placeholder only | Jane hard-refresh review |
 | upgrade-guide-pillar-headers | Pillar headers locked none + ghost nums quieter on .37 (edcd296; `#10232d14`→`#10232d0d`) | Jane Cmd+Shift+R |
 | upgrade-guide-hero-fade | Hero fade abandoned; pre-fade hero restored on .37 (`4286829`) | Jane Cmd+Shift+R once |

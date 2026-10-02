@@ -2,7 +2,7 @@
 
 **For:** ChatGPT (or any model helping Jane write prompts, check a plan, or talk through work).  
 **Not for:** replacing Cornelius or doing production in Grok.  
-**Date:** 10 September 2026  
+**Date:** 14 September 2026  
 **Owner:** Jane Haynie, LUCI Systems (marketing / design). She is not a developer.
 
 If you are ChatGPT reading this: Jane may paste a task and ask you to draft a prompt for a named Grok bot, or to sanity-check whether work is routed correctly. Follow this file. Do not invent a different team structure. Do not write production HTML, CSS, or git commands for her to run.
