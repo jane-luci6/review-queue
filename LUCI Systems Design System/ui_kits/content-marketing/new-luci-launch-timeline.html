@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>New LUCI Launch Timeline</title>
-<link rel="stylesheet" href="../../assets/fonts/luci-brand-fonts.css">
+<title>New LUCI Launch Timeline — Best Case</title>
+<link rel="stylesheet" href="../assets/fonts/luci-brand-fonts.css">
 <style>
 :root {
   --navy-muted: #49616E;
@@ -35,8 +35,16 @@ body {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.22em;
-  margin-bottom: 14px;
+  margin-bottom: 8px;
   text-transform: uppercase;
+}
+
+.sub {
+  color: var(--navy-muted);
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 14px;
 }
 
 .title {
@@ -50,17 +58,10 @@ body {
 
 .wrap { max-width: 1160px; }
 
-/* ---- Expanded scale ------------------------------------------------------
-   The months are NOT equal width. Nov and Dec carry most of the activity, so
-   they get roughly twice the horizontal room; quiet months are compressed.
-   Column edges (%): Sep 0 | Oct 10 | Nov 18 | Dec 38 | Jan 62 | Feb 78 |
-   Mar 89 | end 100. Week ticks in the expanded months make the wider scale
-   visible rather than misleading.
-   ------------------------------------------------------------------------ */
-
+/* Day-proportional Oct–early Jan (axis ends Jan 12); Feb dropped. */
 .months {
   display: grid;
-  grid-template-columns: 1fr 0.8fr 2fr 2.4fr 1.6fr 1.1fr 1.1fr;
+  grid-template-columns: 31fr 30fr 31fr 11fr;
   margin-top: 30px;
 }
 
@@ -87,7 +88,6 @@ body {
   width: 1px;
 }
 
-
 .track { height: 324px; position: relative; }
 
 .grid i {
@@ -107,8 +107,6 @@ body {
   top: 100px;
 }
 
-/* Phase bars carry no text, so nothing collides with the date markers.
-   Each phase gets its own color so the boundaries read at a glance. */
 .phase {
   border-radius: 3px;
   height: 10px;
@@ -117,7 +115,7 @@ body {
 }
 
 .phase--stab { background: rgba(43, 158, 128, 0.30); }
-.phase--prep  { background: rgba(206, 176, 110, 0.32); }
+.phase--upd  { background: rgba(206, 176, 110, 0.32); }
 .phase--roll { background: rgba(73, 97, 110, 0.26); }
 
 .phase--support {
@@ -136,8 +134,6 @@ body {
   top: 114px;
 }
 
-/* Phase names sit at segment midpoints, clear of every stem.
-   Each name matches its bar color. */
 .phase-name {
   font-family: var(--font);
   font-size: 11px;
@@ -152,7 +148,7 @@ body {
 }
 
 .phase-name--stab { color: var(--mint-dark); }
-.phase-name--prep { color: var(--gold-deep); }
+.phase-name--upd { color: var(--gold-deep); }
 .phase-name--roll { color: var(--navy-muted); }
 
 .arrow {
@@ -163,7 +159,6 @@ body {
   top: 90px;
 }
 
-/* Closure: hatched column with a hard edge, badge on top. */
 .closed {
   background: repeating-linear-gradient(
     135deg,
@@ -202,7 +197,6 @@ body {
   font-weight: 600;
 }
 
-/* Product above the line. */
 .prod {
   position: absolute;
   text-align: center;
@@ -262,8 +256,6 @@ body {
   margin-top: 2px;
 }
 
-/* Marketing below. Rows run in date order and each label reads away from the
-   later stems, so no stem is ever drawn through a label. */
 .mkt { position: absolute; top: 100px; width: 0; z-index: 3; }
 
 .mkt i {
@@ -327,82 +319,96 @@ body {
 <body>
   <p class="kicker">New LUCI</p>
   <h1 class="title">Launch Timeline</h1>
+  <p class="sub">Best case · no Release preparation · late-October beta start · as of Oct 1, 2026</p>
 
   <div class="wrap">
+    <!-- Axis: Oct 1 → Jan 12 (103 days, day-proportional). Month edges: Oct 0 | Nov 30.1 | Dec 59.2 | Jan 89.3 | end 100. Feb dropped. -->
+    <!-- Beta start locked Oct 22 (Thu; ~3 wks from Oct 1 / latter of Nick 2–3 wks). Shape: Beta ~1 mo, Updates ~2 wks, GA after Updates. -->
     <div class="months">
-      <span>Sep</span><span>Oct</span><span class="wide">Nov</span>
-      <span class="wide">Dec</span><span>Jan</span><span>Feb</span><span>Mar</span>
+      <span>Oct</span>
+      <span class="wide">Nov</span>
+      <span class="wide">Dec</span>
+      <span>Jan</span>
     </div>
 
     <div class="ticks">
-      <i style="left:22.67%"></i><i style="left:27.33%"></i>
-      <i style="left:32.00%"></i><i style="left:36.67%"></i>
-      <i style="left:43.42%"></i><i style="left:48.84%"></i>
-      <i style="left:54.26%"></i><i style="left:59.68%"></i>
+      <i style="left:5.8%"></i><i style="left:12.6%"></i><i style="left:19.4%"></i>
+      <i style="left:35.9%"></i><i style="left:42.7%"></i><i style="left:49.5%"></i><i style="left:56.3%"></i>
+      <i style="left:65.0%"></i><i style="left:71.8%"></i><i style="left:78.6%"></i>
     </div>
 
     <div class="track">
       <div class="grid">
-        <i style="left:0"></i><i style="left:10%"></i><i style="left:18%"></i>
-        <i style="left:38%"></i><i style="left:62%"></i><i style="left:78%"></i>
-        <i style="left:89%"></i>
+        <i style="left:0"></i>
+        <i style="left:30.1%"></i>
+        <i style="left:59.2%"></i>
+        <i style="left:89.3%"></i>
       </div>
       <div class="line"></div>
 
-      <div class="closed" style="left:54.26%;width:8.26%"></div>
-      <div class="closed-badge" style="left:58.39%">Closed <em>Dec 22–Jan 2</em></div>
+      <!-- Thanksgiving -->
+      <div class="closed" style="left:54.4%;width:1.5%"></div>
+      <div class="closed-badge" style="left:55.1%;top:8px;font-size:10px;padding:4px 8px">TG <em>Nov 26</em></div>
 
-      <div class="phase phase--stab" style="left:9.67%;width:16.33%"></div>
-      <div class="phase phase--prep" style="left:26.00%;width:28.26%"></div>
-      <div class="phase phase--prep" style="left:62.52%;width:8.77%"></div>
-      <div class="phase phase--roll" style="left:71.29%;width:26.21%"></div>
-      <div class="phase phase--support" style="left:80.00%;width:17.50%">Post-release support</div>
+      <!-- Year-end closed -->
+      <div class="closed" style="left:79.6%;width:11.7%"></div>
+      <div class="closed-badge" style="left:85.4%">Closed <em>Dec 22–Jan 2</em></div>
+
+      <!-- Phases: Beta Oct 22–Nov 20 | Updates Nov 21–Dec 4 | Rollout Dec 7→ -->
+      <div class="phase phase--stab" style="left:20.4%;width:29.1%"></div>
+      <div class="phase phase--upd" style="left:49.5%;width:15.5%"></div>
+      <div class="phase phase--roll" style="left:65.0%;width:35.0%"></div>
+      <div class="phase phase--support" style="left:78.6%;width:21.4%">Post-release support</div>
       <div class="arrow" style="left:98.1%">→</div>
 
-      <div class="phase-name phase-name--stab" style="left:17.84%">Stabilization</div>
-      <div class="phase-name phase-name--prep" style="left:40.13%">Release preparation</div>
-      <div class="phase-name phase-name--roll" style="left:84.40%">Rollout</div>
+      <div class="phase-name phase-name--stab" style="left:35.0%">Beta</div>
+      <div class="phase-name phase-name--upd" style="left:57.2%">Updates</div>
+      <div class="phase-name phase-name--roll" style="left:82.5%">Rollout</div>
 
-      <div class="prod" style="left:9.67%">
-        <p><strong>Beta</strong><time>Sep 30</time></p>
+      <div class="prod" style="left:20.4%">
+        <p><strong>Beta</strong><time>Oct 22</time></p>
         <b></b><i></i>
       </div>
-      <div class="prod" style="left:26.00%">
-        <p><strong>Release candidate</strong><time>Nov 13</time></p>
+      <div class="prod" style="left:48.5%">
+        <p><strong>Beta ends</strong><time>Nov 20</time></p>
         <b></b><i></i>
       </div>
-      <div class="prod prod--ga" style="left:71.29%">
-        <p><strong>General availability</strong><time>Jan 19</time></p>
+      <div class="prod prod--ga" style="left:65.0%">
+        <p><strong>General availability</strong><time>Dec 7</time></p>
         <b></b><i></i>
       </div>
 
-      <div class="mkt r1 mkt--left" style="left:21.33%">
+      <div class="mkt r4 mkt--left" style="left:34.0%">
         <i></i><b></b>
-        <p><strong>ActiveCampaign upgrade</strong><time>Nov 6</time></p>
+        <p><strong>AC Deals upgrade</strong><time>~Nov 5 · Jane + Mark</time></p>
       </div>
-      <div class="mkt r2 mkt--left" style="left:30.67%">
+      <div class="mkt r1 mkt--left" style="left:13.6%">
         <i></i><b></b>
-        <p><strong>Website live</strong><time>Nov 20</time></p>
+        <p><strong>What’s New two-pager</strong><time>Oct ~15 · Signal</time></p>
       </div>
-      <div class="mkt r3 mkt--left" style="left:40.32%">
+      <div class="mkt r2 mkt--left" style="left:19.4%">
         <i></i><b></b>
-        <p><strong>Features one-pager</strong><time>Dec 4</time></p>
+        <p><strong>Upgrade Guide</strong><time>mid–late Oct</time></p>
       </div>
-      <div class="mkt r4 mkt--left" style="left:44.97%">
+      <div class="mkt r3 mkt--left" style="left:29.1%">
         <i></i><b></b>
-        <p><strong>Demo webinar</strong><time>Dec 10</time></p>
+        <p><strong>Website live</strong><time>~Oct 31</time></p>
       </div>
-      <div class="mkt r3 mkt--right" style="left:64.58%">
+      <div class="mkt r4 mkt--left" style="left:52.4%">
         <i></i><b></b>
-        <p><strong>Pre-GA Prep Comms</strong><time>Jan 6 &amp; Jan 14</time></p>
+        <p><strong>Demo webinar</strong><time>~Nov 24</time></p>
       </div>
-      <div class="mkt r2 mkt--right" style="left:71.29%">
+      <div class="mkt r3 mkt--right" style="left:59.2%">
         <i></i><b></b>
-        <p><strong>Net-new prospecting</strong><time>Jan 19</time></p>
+        <p><strong>Pre-GA Prep Comms</strong><time>Dec 1 &amp; Dec 4</time></p>
       </div>
-      <div class="mkt r1 mkt--right" style="left:81.14%">
+      <div class="mkt r2 mkt--right" style="left:65.0%">
         <i></i><b></b>
-        <p><strong>Post-launch comms</strong><time>Feb 9</time></p>
+        <p><strong>Net-new prospecting</strong><time>Dec 7</time></p>
+      </div>
+      <div class="mkt r1 mkt--right" style="left:78.6%">
+        <i></i><b></b>
+        <p><strong>Post-launch comms</strong><time>~Dec 21</time></p>
       </div>
     </div>
 
