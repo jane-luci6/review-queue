@@ -4,14 +4,19 @@
 
 ## Decision log
 
-**Filled**
-- Field: Aliante Race & Sports wall
-- What’s coming: Panels
+**Filled** (Jane, September newsletter chat, 9–10 Sep)
+- Field: shortened Aliante study + link to the full page (slider before/after)
+- Quick Tip: current LUCI endpoint names/notes (overrides earlier kiosk pick)
+- What’s coming: unused New LUCI, visual — venue panels + searchable activity record (look/map/staging already ran in Issue 03)
+- Minute with Mike: “Standardize the operation, not the hardware”
+- Since the last Signal: short photo wall — Clearwater, Sam’s Town, Osage, California
 - Happenings includes: Field Activation Guide
-- Quick Tip: Kiosk — manage devices, sources, and presets in specific zones
 
 **Idea locked, names open**
 - Welcome to the Family — new properties + current-customer expansions. One section, two lists. Not a second Field story.
+
+**Parked**
+- Extra visual/infographic (“one room, three ways”) — Jane not sold; build the rest first
 
 
 **Schedule (locked 8 Sep)**
@@ -20,12 +25,11 @@
 
 **Still open**
 - Theme
-- Advice
-- Minute with Mike
+- Welcome names
 
 ---
 
-## Theme — still open
+## Theme — still open (Jane did not pick in the September chat)
 
 ### 1. The Future Enters the Room
 The moment work in progress becomes something people can see, use, and walk up to.
@@ -40,8 +44,8 @@ The next specific mile after three months of motion.
 
 ## In the Field — filled
 
-**Aliante Race & Sports wall** — Locked
-The one field story. 106-foot curve, 15 racks to 2, LUCI already on the property.
+**Shortened Aliante study + link to the full page** — Locked (Jane, 9 Sep)
+The one field story. 106-foot curve, 15 racks to 2, LUCI already on the property. Slider for before/after. Drop “one of the largest LED walls in Las Vegas.” Icons on “What Aliante runs now.” Six-layout header is a plain descriptive line.
 
 ---
 
@@ -64,27 +68,29 @@ If a new property lands on this roster, it does not also get a Happenings blurb.
 
 ## What’s coming — filled
 
-**Panels** — Locked
-A tablet in the cabana, the bar, or the event room. Control for that space, not the main LUCI application. Not live. Not a SKU name. Not a dump of the rest of New LUCI.
+**Venue panels + searchable activity record** — Locked (Jane, 10 Sep: unused New LUCI, visual)
+Issue 03 already showed look/themes, geo map, and staging. Do not re-debut those.
 
-**What is already true today (Kiosk):** a login can be limited to one zone — devices, sources, and presets in that space only. That is the Quick Tip.
+**Panels:** a dedicated panel for a ballroom, bar, cabana, or other space. Starts with that location’s endpoints. Staff work that room, not the main application. Not live. Not a SKU name.
 
-**What is new (Panels):** a dedicated tablet in the room, scoped to that venue, so the person at the panel never works in the main application. Hardware name and ship timing are not on this page.
+**Activity record:** searchable history by user, device, or action; when a device stopped responding and when it returned. Compact, not a second feature dump.
 
-**Needs Jane if we go further:** pairing flow, guest vs operator at the cabana, any product name.
+**Needs Jane if we go further:** pairing flow, guest vs operator at the cabana, any product name, product screenshots from Richard or Nick.
 
 ---
 
 ## Quick Tip — filled
 
-**Did you know you can manage devices, sources, and presets in specific zones?** — Locked
-Current LUCI. A kiosk or zone login sees only its list — not the whole map. Not Panels.
+**Leave a useful record on every endpoint** — Locked (Jane, 10 Sep; overrides kiosk)
+Current LUCI. Endpoint Mode → Edit / Custom Info: location-based name, keep the zone number, add notes for the next technician. Not Panels. Not New LUCI.
 
-Article: [Manage devices, sources, and presets in specific zones](https://lucisystems.atlassian.net/servicedesk/customer/portal/1/article/168624141?source=topic)
+Kiosk / zone login was an earlier pick. Jane replaced it.
 
 ---
 
-## Advice — still open
+## Advice — parked as the extra visual
+
+Jane parked the “one room, three ways” infographic. Do not treat an Advice column as locked. The list below stays as unused fodder.
 
 **Divisible rooms are operating modes** — Ready
 When the wall comes out, audio and video combine with the room. When it goes back, they split. You don’t lose that.
@@ -122,22 +128,29 @@ A property on that roster does not also get a Happenings blurb.
 
 ---
 
-## Minute with Mike — still open
+## Minute with Mike — filled
 
-**A/V people are rare** — Ready
-Expert judgment still matters. Every volume change should not. Pick this *or* Happenings on scarce, not both.
+**Standardize the operation, not the hardware** — Locked (Jane, 10 Sep: “your suggestion is perfect”)
+Displays, players, programmers, and manufacturers change. Rebuilding the operating method every time they do is the real cost. One operating standard; hardware can evolve. Pull quote: “We developed the solution around the protocols of technology, not the hardware of technology.” Distinct from Issue 03 lighting and customer-driven ideas.
 
-**LUCI is not the whole stack** — Ready
-The misconception is that LUCI *is* the audio, the lighting, the TVs. It isn’t. Those stay. LUCI is how you run them together.
+Unused fodder (do not also run):
+- A/V people are rare — Ready. Pick this *or* Happenings on scarce, not both.
+- LUCI is not the whole stack — Ready.
+- Ninety days with the buttons, then tell us the impossible thing — Ready. Not the lightning story.
+- Keep AI behind the experience — Ready. Pick this *or* Happenings on AI, not both.
+- Stop designing from the catalog — Needs you. Check the tone before it runs.
 
-**Ninety days with the buttons, then tell us the impossible thing** — Ready
-Get familiar. Then bring the weird request. Not the lightning story.
+---
 
-**Keep AI behind the experience** — Ready
-Back of house. Not between the guest and the room. Pick this *or* Happenings on AI, not both.
+## Since the last Signal — filled
 
-**Stop designing from the catalog** — Needs you
-A/V last in the bid, catalogs over operations. Check the tone before it runs.
+**Short photo wall** — Locked (Jane, 9–10 Sep)
+Highly visual, one metric + one sentence per card. Photos from Project Media. Not a second Field story. Aliante stays In the Field.
+
+- Clearwater River — live 24 Aug
+- Sam’s Town — sportsbook LED (already the Issue 03 Field; keep this card short)
+- Osage — small LED since last Signal (Jane added)
+- California Casino — 20 displays, three hours
 
 ---
 
