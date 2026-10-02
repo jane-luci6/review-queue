@@ -49,3 +49,7 @@
 - Added a one-sentence cold-reader orientation while preserving the short leave-behind format.
 - Tightened the four points around concrete actions and the existing A/V.
 - Recast the close as the conversation already happening in the room.
+
+## spotlight-lighting.md (Sep 29, 2026)
+- Jane locked GPT Option A for the open (guest perception → separate-console problem).
+- Replaced "In a casino…" ¶1–2 with Option A. Rest of draft unchanged.

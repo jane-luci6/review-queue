@@ -1,44 +1,28 @@
 # Lighting lives with the rest of the A/V
 
-In a casino, resort, or event space, guests experience lighting, displays, and audio as one room. Property teams often have to operate them as separate systems, with lighting on one console and the rest of the A/V somewhere else.
+Guests read a room as one environment. Lighting, displays, and audio land together, and any change in one changes how the whole space feels.
 
-That split adds another interface for staff to learn and another set of actions to coordinate. A display can change while the lighting stays behind. Audio can move into an event state while the room remains in its everyday look. Operations has to make separate systems behave like one environment.
+You often have to run that environment on separate control paths, with lighting on its own console and the rest of the A/V somewhere else. Your staff have to leave the main interface, work another system, and manually keep the lighting look in step with display and audio changes. When that coordination slips, the room does not change as one room. It changes in pieces.
 
-Current LUCI brings lighting into the same interface as displays, audio, and sources. You keep your lighting system. LUCI absorbs its controls into the wider A/V operation, so your staff can run the room without moving between consoles.
+LUCI brings lighting into the same interface as displays, audio, and sources. Your staff can call a lighting look, select the zone that needs attention, and adjust levels in context with the rest of the room. LUCI works with and absorbs the systems already on the floor, so lighting joins the wider A/V operation instead of staying on a separate console.
 
-From LUCI, your staff can:
+![Lighting controls on the LUCI map](assets/lighting-map-web.png)
 
-- change a lighting look;
-- select the zone that needs attention;
-- adjust a lighting level; and
-- coordinate those changes with display sources and audio states.
+*Lighting looks and zones sit on the same map as the rest of the floor.*
 
-The lighting look appears as a control in LUCI, just as a source does. Your staff see it in the context of what the room is doing instead of leaving the interface and reconstructing that context at another console.
+That matters most during live room changes. When a space moves from everyday programming to an event, your staff can:
 
-The benefit is one place to operate the room. When your staff prepare for an event, they can set the lighting look, display sources, and audio state from the interface used to run your property. They work from the intended guest experience instead of treating lighting and A/V as separate events that happen to occupy the same space.
+1. call the lighting look for the room;
+2. switch displays to the event source; and
+3. put the audio zones in the required state.
 
-That operating model matters during live changes, too. If the room moves from everyday programming to an event, your staff can coordinate the elements that define the change:
+Each system still performs its own job. The change is operational: your staff run it from one interface, in the order the guest experience requires.
 
-1. Select the lighting look for the room.
-2. Set the display sources for the event.
-3. Put the audio zones in the required state.
+Guests notice when a room holds together. They do not separate lighting from screens from sound. They read the space as one environment, and the experience is stronger when those changes arrive together.
 
-Each system still performs its own job. Your staff no longer need a separate operating path for each one.
+That is why lighting belongs inside the same A/V operation as the rest of the room. Your staff no longer have to leave the main interface to keep the lighting look aligned with the display and audio change. LUCI gives you one operating point for the room, and your guests get one coherent experience instead of a handoff between systems.
 
-This is not a case for replacing your lighting. LUCI works with and absorbs the lighting and A/V systems already on the floor. The fixtures, controllers, displays, audio, and sources remain in place. Their controls stop operating as separate silos.
-
-For A/V, IT, and operations leaders, that changes the question from “Who is running each system tonight?” to “What should the room do?” The answer can include every guest-facing element without assigning your staff a separate operating path for each one.
-
-A walkthrough starts with the lighting and A/V already in the building. Bring:
-
-- the lighting system and looks you use now;
-- the rooms and zones your staff operate;
-- the display and audio states that accompany those looks; and
-- the points where your staff currently change consoles.
-
-The LUCI team maps those controls and shows how lighting can join the same interface as the rest of the floor.
-
-Book a walkthrough. See lighting on the same interface as the floor.
+If you would like to see that on a floor like yours, we can show you [in a short demo](/contact).
 
 ---
 Source brief: spotlight-lighting.md

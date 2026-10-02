@@ -1,46 +1,26 @@
-# Try a look. Get the last one back.
+# Hold the event look. Revert when it ends.
 
-A live casino or resort floor leaves little room for uncertain A/V changes. Property teams may want to test a different source, audio level, or zone layout, but they still have to protect the guest experience while the room is operating.
+When you change your A/V settings for a specific event—sources, levels, zones, and displays set for the moment—the room leaves its ordinary settings. When the event ends, you have to get it back to its previous state as soon as possible. Without a defined point of return, you end up scrambling to remember where your sources sat before the change. And you might end up just guessing.
 
-The risk is not the change itself. The risk is having no dependable way back. If staff must remember or rebuild the prior state one system at a time, they will often leave a working room alone rather than test a better look.
+A revert preset in LUCI is that defined return. We built this feature to give our customers a smooth entry and exit from temporary A/V changes they can run from LUCI. When you activate a preset, LUCI automatically snapshots the state in place before the change. If you enter a hold time, LUCI keeps that snapshot and reverts the room after the allotted time. If you leave the hold time blank, LUCI does not schedule a timed revert from that snapshot.
 
-A revert preset in current LUCI preserves the known state before the room changes. Your staff can save that state, apply a new look, and assess the result. If it is not the room they wanted, they can revert. The sources, zones, levels, and other saved controls return to the prior state.
+The move is three parts of one feature:
 
-The move has three parts:
+1. You activate the preset—LUCI snapshots the before state.
+2. You enter a hold time when you want the room to revert after a set duration.
+3. When the hold expires, LUCI restores the snapshotted state across the controls brought into the interface.
 
-1. Save the known state.
-2. Apply the proposed change.
-3. Keep the new look or revert to the saved state.
+That covers the moments that matter most on a live floor. After a tournament, a promotion, or a short guest activation, you do not have to reconstruct where every source and level sat. The return is already built into the preset activation.
 
-Revert removes the rebuild from the decision. Your staff can assess a change in the room without giving up the state that already works. They know which state they saved, what they changed, and what LUCI will restore if the new look does not hold up.
+Timed holds are useful for short-lived looks as well. A two-minute promo on selected displays can run for two minutes and then revert to the programming that was already in place. You set the duration when you activate the preset; the room does not wait for someone to remember to switch it back.
 
-Your A/V and operations teams can use that protection when they:
+The same protection also helps when you want to try a different look while the floor is live. You activate the proposed change, put a hold on it if you want an automatic return, and LUCI has already captured the prior state. That use remains available—it is just not the only reason for a revert preset.
 
-- test an event look before the room fills;
-- compare a different source arrangement;
-- change a zone for a new use; or
-- adjust levels while the floor remains live.
+LUCI works with and absorbs the A/V already on the floor. It does not replace the displays, audio, sources, or control systems you use. The revert acts across those controls in one place, so the return is not a separate job on each system.
 
-If the change does not hold up in the space, the saved state remains available.
+When an event ends or a timed look expires, the prior state is still there. Your A/V and operations teams get a defined way back without rebuilding the room by hand.
 
-That matters because a proposed look can behave differently on the floor than it did in planning. A source may not read clearly from the guest area. An audio level may compete with the room. A zone arrangement may not match the way people are using the space. Staff need to see and hear the result in context before they keep it.
-
-Without a revert preset, each test carries the work of reconstructing the prior state. With the preset, you can separate two decisions: whether to try the change and whether to keep it. A rejected look does not become a recovery project.
-
-LUCI works with and absorbs the A/V already on the floor. It does not replace the displays, audio, sources, or control systems you use. The revert preset acts across the controls brought into LUCI, so your staff do not have to restore separate systems as separate jobs.
-
-This is what one interface makes possible: your staff can send a new command and keep the prior operating state within reach. You can move forward without losing your way back.
-
-A walkthrough starts with your actual A/V:
-
-- the rooms and zones your staff change;
-- the states you need to protect;
-- the sources, levels, and layouts included in those states; and
-- the moments when your staff avoid a change because recovery is uncertain.
-
-See your team save a known look, apply a change, and restore the prior state through LUCI.
-
-Book a walkthrough. See a look tried and put back.
+Seeing a hold-and-revert cycle [in a short demo](/contact) makes the workflow concrete for your A/V and ops leads.
 
 ---
 Source brief: spotlight-revert-preset.md

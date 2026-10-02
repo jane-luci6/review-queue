@@ -9,7 +9,7 @@ That setting creates a false choice:
 
 One setting cannot express the difference. This is not a speaker problem. The audio system can deliver the page; you need to determine how each page should behave. Volume and scope should follow the job of the announcement, not the last position of a building-wide slider.
 
-Current LUCI assigns announcement levels by job instead of relying on one slider for the building. A routine page can use one level. An emergency page can use another. The level belongs to the announcement, much as a look belongs to a zone.
+LUCI assigns announcement levels by job instead of relying on one slider for the building. A routine page can use one level. An emergency page can use another. The level belongs to the announcement, much as a look belongs to a zone.
 
 Your A/V and operations teams can define how each announcement should work:
 
