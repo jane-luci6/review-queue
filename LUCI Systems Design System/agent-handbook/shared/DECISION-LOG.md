@@ -8,6 +8,10 @@
 
 ---
 
+## 2026-10-02
+
+- **Services lives in the Platform menu before Integrations.** The broader Platform-versus-Technology information architecture remains open for positioning work; this navigation placement is locked in the meantime. Jane.
+
 ## 2026-10-01
 
 - **Services-page capability section is titled “The Services that Make Up LUCI Systems.”** Avoid a numbered section header; the six services appear as unnumbered service names within one continuous relationship. All six are included in the LUCI subscription, so that point is stated once at section level rather than repeated within individual service copy. Jane.
