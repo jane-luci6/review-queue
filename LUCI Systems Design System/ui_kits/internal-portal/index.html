@@ -1241,6 +1241,84 @@
       font-weight: 600;
     }
 
+    /* Unread badges (Jane last-seen cursors in localStorage) */
+    .nav-badge {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      min-width: 18px;
+      height: 18px;
+      margin-left: 8px;
+      padding: 0 5px;
+      border-radius: 999px;
+      background: #E24B4A;
+      color: #fff;
+      font-family: var(--font);
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1;
+      vertical-align: middle;
+    }
+    .nav-badge.is-on { display: inline-flex; }
+    .nav-badge.is-dot {
+      min-width: 8px;
+      width: 8px;
+      height: 8px;
+      padding: 0;
+      font-size: 0;
+    }
+    .review-row__unread {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 20px;
+      height: 20px;
+      padding: 0 6px;
+      border-radius: 999px;
+      background: #E24B4A;
+      color: #fff;
+      font-family: var(--font);
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .review-row.has-unread .review-row__title { font-weight: 700; }
+
+    .review-viewer {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 12px;
+      margin: 0 0 16px;
+      padding: 10px 14px;
+      border: 1px solid var(--rule);
+      border-radius: var(--r-sm);
+      background: var(--panel, #fff);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .review-viewer label { font-weight: 600; color: var(--ink); }
+    .review-viewer select {
+      font: inherit;
+      padding: 4px 8px;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      background: #fff;
+    }
+    .review-viewer__hint { flex: 1 1 220px; }
+    .review-viewer__reset {
+      font: inherit;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--rule);
+      background: var(--panel, #fff);
+      color: var(--ink);
+      cursor: pointer;
+    }
+    .review-viewer__reset:hover { border-color: var(--ink); }
+
     .studio-requests { max-width: 820px; }
     .studio-requests__empty {
       padding: 40px 24px;
@@ -2257,7 +2335,7 @@
       <nav class="nav" aria-label="Hub sections">
         <a href="#home" data-nav="home" class="is-active"><span>Home</span></a>
         <a href="#materials" data-nav="materials"><span>Download LUCI Marketing Materials</span></a>
-        <a href="#review" data-nav="review"><span>Review Queue</span></a>
+        <a href="#review" data-nav="review"><span>Review Queue</span><span class="nav-badge" id="nav-review-badge" aria-label="Unread review activity" hidden>0</span></a>
         <a href="#customize" data-nav="customize"><span>Customize documents</span></a>
         <a href="#guidelines" data-nav="guidelines"><span>Messaging &amp; Philosophy</span></a>
         <a href="#coming-soon" data-nav="coming-soon"><span>Coming Soon</span></a>
@@ -2314,6 +2392,12 @@
           <p>What needs Mike's sign-off, and where each piece stands. Click an item to read the brief, see the content, and check off or comment.</p>
         </header>
         <div class="page-body">
+          <div class="review-viewer" id="review-viewer">
+            <label for="review-viewer-select">Viewing badges as</label>
+            <select id="review-viewer-select" aria-label="Viewer identity for unread badges"></select>
+            <button type="button" class="review-viewer__reset" id="review-reset-unread" title="Clear last-seen for this viewer so existing non-you comments badge again (testing / after a bad seed)">Reset unread</button>
+            <span class="review-viewer__hint">Unread = comments/approvals from everyone except this person after their last-seen. Opening an item clears it for the current viewer only. Use Reset unread if a prior seed hid Mark/Mike&rsquo;s posts.</span>
+          </div>
           <div class="review-list" id="review-list"></div>
         </div>
       </div>
@@ -2495,6 +2579,13 @@
     const LS_APPROVALS = 'luci-internal-portal-approvals';
     const LS_COMMENTS = 'luci-internal-portal-comments';
     const LS_CLEARED = 'luci-internal-portal-cleared-comments';
+    // Per-viewer, per-asset last-seen ISO timestamps for unread badges (browser-local).
+    // Shape: { "Jane": { "<assetId>": "<iso>" }, "Mike": { ... } }. Legacy flat maps migrate under Jane.
+    const LS_LAST_SEEN = 'luci-internal-portal-last-seen';
+    // Who the badge viewer is (Jane by default). Comments/approvals by this author
+    // do not count as unread. Switch to Mike/Mark in the Review Queue control to test.
+    const LS_VIEWER = 'luci-internal-portal-viewer';
+    const DEFAULT_VIEWER = 'Jane';
     const LS_SUBMISSIONS = 'luci-internal-portal-submissions';
     // Same-origin sync API (nginx proxies /api/comments → comments_api container on .17).
     // When reachable, comments/approvals are stored server-side so Jane sees Mike/Mark's feedback.
@@ -2530,6 +2621,7 @@
       comments: [],
       approvals: {},
       cleared: {},
+      lastSeen: {},
       activeReviewId: null,
       activeDocId: 'capabilities',
       apiAvailable: false,
@@ -3215,6 +3307,7 @@
       // fall back to SEED baseline + localStorage when the API is unreachable
       // (e.g. local file:// preview, or the comments_api container is down).
       portal.cleared = readLocal(LS_CLEARED, {});
+      portal.lastSeen = readLocal(LS_LAST_SEEN, {});
       try {
         const server = await apiGetComments();
         mergeServerState(server);
@@ -3225,6 +3318,9 @@
         portal.comments = [...SEED_COMMENTS, ...localComments];
         portal.approvals = Object.assign({}, SEED_APPROVALS, localApprovals);
       }
+      // Migrate legacy flat lastSeen → per-viewer, then seed only if this viewer has no map yet.
+      readLastSeenStore();
+      seedLastSeenIfEmpty(getViewerAuthor());
     }
 
     function allReviewItems() {
@@ -3334,6 +3430,234 @@
       return [comment.assetId, comment.author, comment.at, comment.text].join('|');
     }
 
+    /** Parse ISO (Z or +00:00 / microseconds) to epoch ms; invalid → NaN. */
+    function isoMillis(iso) {
+      if (!iso) return NaN;
+      const ms = Date.parse(iso);
+      return Number.isFinite(ms) ? ms : NaN;
+    }
+
+    function isNewerThanSeen(iso, seenIso) {
+      if (!iso) return false;
+      if (!seenIso) return true;
+      const a = isoMillis(iso);
+      const b = isoMillis(seenIso);
+      if (Number.isFinite(a) && Number.isFinite(b)) return a > b;
+      // Fallback: lexicographic (legacy) if parse fails.
+      return iso > seenIso;
+    }
+
+    function getViewerAuthor() {
+      const raw = (readLocal(LS_VIEWER, DEFAULT_VIEWER) || DEFAULT_VIEWER).trim();
+      return COMMENTATORS.includes(raw) ? raw : DEFAULT_VIEWER;
+    }
+
+    function setViewerAuthor(name) {
+      const next = COMMENTATORS.includes(name) ? name : DEFAULT_VIEWER;
+      writeLocal(LS_VIEWER, next);
+      return next;
+    }
+
+    /** True when stored lastSeen is { Viewer: { assetId: iso } } (not legacy flat). */
+    function isViewerKeyedLastSeen(store) {
+      if (!store || typeof store !== 'object' || Array.isArray(store)) return false;
+      const keys = Object.keys(store);
+      if (!keys.length) return true;
+      // Viewer-keyed: every top-level key is a commentator and values are plain objects.
+      return keys.every((k) => COMMENTATORS.includes(k) && store[k] && typeof store[k] === 'object' && !Array.isArray(store[k]));
+    }
+
+    /**
+     * lastSeen is per badge-viewer: { Jane: { assetId: iso }, Mike: {...} }.
+     * Legacy flat { assetId: iso } migrates under DEFAULT_VIEWER only — other
+     * viewers stay unset until seeded, so "Viewing as Mike" is not poisoned by
+     * Jane having opened threads.
+     */
+    function readLastSeenStore() {
+      const raw = portal.lastSeen && typeof portal.lastSeen === 'object'
+        ? portal.lastSeen
+        : (readLocal(LS_LAST_SEEN, {}) || {});
+      if (isViewerKeyedLastSeen(raw)) return raw;
+      // Legacy flat map → wrap under Jane; do not copy to other viewers.
+      const wrapped = { [DEFAULT_VIEWER]: Object.assign({}, raw) };
+      portal.lastSeen = wrapped;
+      writeLocal(LS_LAST_SEEN, wrapped);
+      return wrapped;
+    }
+
+    function writeLastSeenStore(store) {
+      portal.lastSeen = store;
+      writeLocal(LS_LAST_SEEN, store);
+    }
+
+    function readLastSeenForViewer(viewer) {
+      const store = readLastSeenStore();
+      const v = viewer || getViewerAuthor();
+      return (store[v] && typeof store[v] === 'object') ? store[v] : {};
+    }
+
+    function lastSeenAt(assetId) {
+      const raw = readLastSeenForViewer(getViewerAuthor())[assetId];
+      return raw || '';
+    }
+
+    /** Latest activity ISO for an asset (comments + approvals), or ''. */
+    function latestActivityIso(assetId) {
+      const times = [];
+      commentsFor(assetId).forEach((c) => { if (c && c.at) times.push(c.at); });
+      const row = (portal.approvals && portal.approvals[assetId]) || {};
+      Object.values(row).forEach((iso) => { if (iso) times.push(iso); });
+      if (!times.length) return '';
+      return times.slice().sort((a, b) => {
+        const da = isoMillis(a);
+        const db = isoMillis(b);
+        if (Number.isFinite(da) && Number.isFinite(db)) return da - db;
+        return a < b ? -1 : a > b ? 1 : 0;
+      }).pop();
+    }
+
+    /**
+     * First-time seed for one viewer only: set each known asset's cursor to that
+     * asset's latest activity (not wall-clock now). Avoids (a) flooding with
+     * historical unread and (b) stamping "now" after Mark already commented so
+     * his post can never badge. Does NOT run on viewer switch if that viewer
+     * already has a map (including after Reset → empty object still counts as
+     * present only when the viewer key exists — see resetUnreadForViewer).
+     */
+    function seedLastSeenIfEmpty(viewer) {
+      const v = viewer || getViewerAuthor();
+      const store = readLastSeenStore();
+      if (store[v] && typeof store[v] === 'object') return; // already initialized (possibly {})
+      const seeded = {};
+      const stampAsset = (id) => {
+        if (!id || seeded[id]) return;
+        const latest = latestActivityIso(id);
+        // No activity yet → omit; first open/comment will mark seen.
+        if (latest) seeded[id] = latest;
+      };
+      (portal.comments || []).forEach((c) => { if (c && c.assetId) stampAsset(c.assetId); });
+      Object.keys(portal.approvals || {}).forEach(stampAsset);
+      (typeof allReviewItems === 'function' ? allReviewItems() : []).forEach((item) => {
+        if (item && item.id) stampAsset(item.id);
+      });
+      store[v] = seeded;
+      writeLastSeenStore(store);
+    }
+
+    /** Clear current viewer's cursors so existing non-self comments badge (demo / recovery). */
+    function resetUnreadForViewer() {
+      const v = getViewerAuthor();
+      const store = readLastSeenStore();
+      // Empty map (key present) → seedLastSeenIfEmpty will not re-flood; all
+      // non-self comments with an `at` count as unread via !seenIso.
+      store[v] = {};
+      writeLastSeenStore(store);
+      const { view, sub } = routeFromHash();
+      if (view === 'review' && !sub) renderReviewList();
+      else if (view === 'review' && sub) updateReviewUnreadBadges();
+      else updateReviewUnreadBadges();
+    }
+
+    function bindReviewViewerSelect() {
+      const sel = $('review-viewer-select');
+      if (!sel) return;
+      const current = getViewerAuthor();
+      sel.innerHTML = COMMENTATORS.map((name) =>
+        `<option value="${name}"${name === current ? ' selected' : ''}>${name}</option>`
+      ).join('');
+      sel.onchange = () => {
+        setViewerAuthor(sel.value);
+        // Initialize this viewer's map once if missing — never rewrite an existing
+        // map and never stamp wall-clock now (that hid Mark's Oct 2 comment).
+        seedLastSeenIfEmpty(sel.value);
+        const { view, sub } = routeFromHash();
+        if (view === 'review' && !sub) renderReviewList();
+        else updateReviewUnreadBadges();
+        const formSel = document.querySelector('.comment-form select[name="author"]');
+        if (formSel) formSel.value = getViewerAuthor();
+      };
+      const resetBtn = $('review-reset-unread');
+      if (resetBtn && !resetBtn.dataset.bound) {
+        resetBtn.dataset.bound = '1';
+        resetBtn.addEventListener('click', () => resetUnreadForViewer());
+      }
+    }
+
+    /** Unread = comments from anyone other than the badge viewer with at > lastSeen[viewer][asset]. */
+    function unreadCommentsFor(assetId) {
+      const seen = lastSeenAt(assetId);
+      const self = getViewerAuthor();
+      return commentsFor(assetId).filter((c) => {
+        if (!c || !c.at) return false;
+        if ((c.author || '') === self) return false;
+        return isNewerThanSeen(c.at, seen);
+      });
+    }
+
+    function unreadCountFor(assetId) {
+      return unreadCommentsFor(assetId).length;
+    }
+
+    /** New non-self approval after lastSeen counts as one tab/item signal. */
+    function hasUnreadApproval(assetId) {
+      const seen = lastSeenAt(assetId);
+      const self = getViewerAuthor();
+      const row = (portal.approvals && portal.approvals[assetId]) || {};
+      return Object.entries(row).some(([reviewer, iso]) => {
+        if (!iso) return false;
+        if (reviewer === self) return false;
+        return isNewerThanSeen(iso, seen);
+      });
+    }
+
+    function unreadBadgeCountFor(assetId) {
+      return unreadCountFor(assetId) + (hasUnreadApproval(assetId) ? 1 : 0);
+    }
+
+    function totalUnreadBadgeCount() {
+      return allReviewItems().reduce((sum, item) => sum + unreadBadgeCountFor(item.id), 0);
+    }
+
+    function markAssetSeen(assetId) {
+      if (!assetId) return;
+      const v = getViewerAuthor();
+      const store = readLastSeenStore();
+      const mine = Object.assign({}, store[v] || {});
+      const times = [];
+      commentsFor(assetId).forEach((c) => { if (c && c.at) times.push(c.at); });
+      const row = (portal.approvals && portal.approvals[assetId]) || {};
+      Object.values(row).forEach((iso) => { if (iso) times.push(iso); });
+      times.push(new Date().toISOString());
+      const latest = times.slice().sort((a, b) => {
+        const da = isoMillis(a);
+        const db = isoMillis(b);
+        if (Number.isFinite(da) && Number.isFinite(db)) return da - db;
+        return a < b ? -1 : a > b ? 1 : 0;
+      }).pop();
+      mine[assetId] = latest;
+      store[v] = mine;
+      writeLastSeenStore(store);
+      updateReviewUnreadBadges();
+    }
+
+    function updateReviewUnreadBadges() {
+      const total = totalUnreadBadgeCount();
+      const el = $('nav-review-badge');
+      if (!el) return;
+      if (total > 0) {
+        el.hidden = false;
+        el.classList.add('is-on');
+        el.classList.toggle('is-dot', total > 99);
+        el.textContent = total > 99 ? '' : String(total);
+        el.setAttribute('aria-label', total + ' unread review update' + (total === 1 ? '' : 's'));
+      } else {
+        el.hidden = true;
+        el.classList.remove('is-on', 'is-dot');
+        el.textContent = '0';
+        el.setAttribute('aria-label', 'No unread review activity');
+      }
+    }
+
     function toggleCleared(comment) {
       const key = commentKey(comment);
       portal.cleared[key] = !portal.cleared[key];
@@ -3363,8 +3687,19 @@
       }
 
       const view = routeFromHash();
-      if (view.view === 'review' && view.sub) updateReviewDetail(item);
-      else renderReviewList();
+      if (view.view === 'review' && view.sub) {
+        // Posting as the badge viewer: she's looking at the thread → mark seen.
+        // Posting as someone else (simulating Mike/Mark): refresh the thread but
+        // do NOT advance lastSeen, so the nav/row badge can light up for testing.
+        const detail = $('review-detail');
+        if (detail && detail.dataset.assetId === item.id && $('detail-state')) {
+          renderDetailState(item);
+          if (author === getViewerAuthor()) markAssetSeen(item.id);
+          else updateReviewUnreadBadges();
+        } else {
+          renderReviewDetail(item);
+        }
+      } else renderReviewList();
       renderStatus();
       portal.renderedSignature = stateSignature();
     }
@@ -3373,6 +3708,7 @@
       $('stat-review').textContent = String(allReviewItems().length);
       $('stat-comments').textContent = String(portal.comments.length);
       $('stat-soon').textContent = String((portal.queue.upcoming || []).length);
+      updateReviewUnreadBadges();
     }
 
     function renderQuickActions() {
@@ -3448,21 +3784,24 @@
     }
 
     function renderReviewList() {
+      bindReviewViewerSelect();
       const items = allReviewItems();
       const list = $('review-list');
       if (!items.length) {
         list.innerHTML = '<p class="empty">Nothing is currently waiting for review.</p>';
+        updateReviewUnreadBadges();
         return;
       }
       list.innerHTML = '';
       items.forEach((item) => {
         const status = reviewStatus(item);
+        const unread = unreadBadgeCountFor(item.id);
         const btn = document.createElement('button');
         btn.type = 'button';
-        btn.className = 'review-row';
+        btn.className = 'review-row' + (unread ? ' has-unread' : '');
         btn.innerHTML = `
           <span>
-            <span class="review-row__title">${item.title}</span>
+            <span class="review-row__title">${item.title}${unread ? ` <span class="review-row__unread" title="${unread} unread">${unread}</span>` : ''}</span>
             <span class="review-row__sub">${item.summary || item.versionNote || ''}</span>
           </span>
           <span class="review-row__meta">
@@ -3474,14 +3813,18 @@
         btn.addEventListener('click', () => { location.hash = '#review/' + item.id; });
         list.appendChild(btn);
       });
+      updateReviewUnreadBadges();
     }
 
     function renderReviewDetail(item) {
       if (!item) return;
+      markAssetSeen(item.id);
       const detail = $('review-detail');
+      const detailView = $('view-review-detail');
       const src = previewUrl(item);
       const downloads = item.downloads || [];
       detail.dataset.assetId = item.id;
+      if (detailView) detailView.dataset.assetId = item.id;
       detail.innerHTML = `
         <a class="detail__back" href="#review">Back to review queue</a>
         <div class="detail__head">
@@ -3529,7 +3872,7 @@
           <h3>Comments</h3>
           <div class="comment-thread"></div>
           <form class="comment-form">
-            <select name="author" aria-label="Comment author">${COMMENTATORS.map((name) => `<option>${name}</option>`).join('')}</select>
+            <select name="author" aria-label="Comment author">${COMMENTATORS.map((name) => `<option value="${name}"${name === getViewerAuthor() ? ' selected' : ''}>${name}</option>`).join('')}</select>
             <textarea name="comment" data-comment-input placeholder="Add a comment or revision note..." required></textarea>
             <button class="btn" type="submit">Post comment</button>
           </form>
@@ -3571,8 +3914,10 @@
     function updateReviewDetail(item) {
       if (!item) return;
       const detail = $('review-detail');
-      if (detail && detail.dataset.assetId === item.id && $('detail-state')) renderDetailState(item);
-      else renderReviewDetail(item);
+      if (detail && detail.dataset.assetId === item.id && $('detail-state')) {
+        renderDetailState(item);
+        markAssetSeen(item.id); // she's viewing the thread — clear unread for newly polled comments
+      } else renderReviewDetail(item);
     }
 
     /* Pair each manifest item with its queue asset. A queueId that no longer exists in
