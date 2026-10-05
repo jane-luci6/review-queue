@@ -8,6 +8,10 @@
 
 ---
 
+## 2026-10-05
+
+- **New LUCI keeps control as the headline, with performance as the release foundation.** The third pillar is “Informed control of your operation,” bringing Live monitoring, Audit trails, Reporting & Analytics, and Sign-in & session control together as operational oversight; In-product support remains cross-pillar. Jane.
+
 ## 2026-10-02
 
 - **Services lives in the Platform menu before Integrations.** The broader Platform-versus-Technology information architecture remains open for positioning work; this navigation placement is locked in the meantime. Jane.
