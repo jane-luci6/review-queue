@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-24",
+  "updated": "2026-10-05",
   "publishNote": "Build (npm run build:review) outputs to ui_kits/review. Bump reviewVersion + versionNote for new uploads (version history shown in portal). Set dueForReview for first-time review. Comments/approvals sync server-side via the comments_api container (proxied at /api/comments); Jane sees Mike/Mark's feedback on refresh. Archive with scripts/pull-review-comments.mjs.",
   "previewBaseUrl": "",
   "commentsApiUrl": "http://10.10.1.17:8081/api/comments",
@@ -21,7 +21,87 @@
       "note": "Updated Sep 24, 2026"
     }
   ],
-  "inProgress": [],
+  "inProgress": [
+    {
+      "id": "new-luci-upgrade-guide",
+      "title": "New LUCI · Upgrade Guide",
+      "summary": "Customer-facing walkthrough of the New LUCI release (custom URL, not in nav). V1 complete; Jane reviewing with Richard Mon Oct 5 — not ready for Mike’s pass yet.",
+      "liveUrl": "http://10.10.1.37/luci-upgrade-guide/",
+      "reviewVersion": 1,
+      "versionNote": "V1 complete — on Review Queue for tracking; Richard review Mon Oct 5.",
+      "reviewBrief": {
+        "description": "Customer-facing Upgrade Guide page that walks existing properties through the New LUCI release — cutover, control story, in-product support, and feature deep-dive. Lives on the website at a custom URL (not in the main nav).",
+        "reviewAsk": "Tracking only for now — Jane + Richard review first; not ready for Mike."
+      },
+      "versionHistory": [
+        {
+          "version": 1,
+          "published": "2026-10-02",
+          "note": "V1 complete — added to Review Queue for tracking ahead of Richard review."
+        }
+      ]
+    },
+    {
+      "id": "signal-issue-05",
+      "title": "The Signal · Issue 05 (October 2026)",
+      "summary": "October shell with locked Field (Osage/Sand Springs) + Design services + What's New two-pager slot. Open for Jane: Theme, Quick Tip, Advice, Happenings, What's coming (beta only), Minute with Mike. Send target ~Oct 15. Choices sheet wired.",
+      "hubPreviewPath": "ui_kits/newsletter/the-signal-issue-05-october-2026.html",
+      "previewUrl": "newsletter/the-signal-issue-05-october-2026.html",
+      "reviewVersion": 1,
+      "versionNote": "Shell + locks published to review bundle for Jane picks — not ready for Mike.",
+      "reviewBrief": {
+        "description": "October Signal HTML shell for Jane's open picks. Locked: Osage/Sand Springs Field, Design services, What's New two-pager slot. Choices sheet linked.",
+        "reviewAsk": "Tracking / Jane picks only — not ready for Mike."
+      },
+      "versionHistory": [
+        {
+          "version": 1,
+          "published": "2026-10-05",
+          "note": "Added to In Progress + review bundle with locks filled and open picks marked."
+        }
+      ]
+    },
+    {
+      "id": "signal-issue-05-choices",
+      "title": "The Signal · Issue 05 Choices",
+      "summary": "Decision sheet for Issue 05 — locked Field/Design services; open Theme, Quick Tip, Advice, Happenings, What's coming, Minute with Mike.",
+      "hubPreviewPath": "ui_kits/newsletter/the-signal-issue-05-choices.html",
+      "previewUrl": "newsletter/the-signal-issue-05-choices.html",
+      "reviewVersion": 1,
+      "versionNote": "Choices sheet in review bundle; wire from October shell.",
+      "reviewBrief": {
+        "description": "CoS choices sheet for October Signal. Jane picks open slots here.",
+        "reviewAsk": "Jane picks — not a Mike review item."
+      },
+      "versionHistory": [
+        {
+          "version": 1,
+          "published": "2026-10-05",
+          "note": "Published into review bundle alongside Issue 05 shell."
+        }
+      ]
+    },
+    {
+      "id": "wave-1-revert-preset",
+      "title": "Wave 1 · Revert preset (unfinished)",
+      "summary": "Only unfinished Wave 1 spotlight. Morning reset + Lighting already live on .37 — stripped from In Progress. Draft/REVIEW from content-library/drafts/wave-1/.",
+      "hubPreviewPath": "ui_kits/content-marketing/wave-1-revert-preset-review.html",
+      "previewUrl": "content-marketing/wave-1-revert-preset-review.html",
+      "reviewVersion": 1,
+      "versionNote": "Revert-preset only on In Progress; live morning-reset + lighting excluded.",
+      "reviewBrief": {
+        "description": "Wave 1 revert-preset draft review HTML for Jane/agent handoff.",
+        "reviewAsk": "Jane finish / publish when ready — not Mike dueForReview."
+      },
+      "versionHistory": [
+        {
+          "version": 1,
+          "published": "2026-10-05",
+          "note": "In Progress card; REVIEW copy under content-marketing for .17 URLs."
+        }
+      ]
+    }
+  ],
   "dueForReview": [
     {
       "id": "new-luci-whats-new-onepager",

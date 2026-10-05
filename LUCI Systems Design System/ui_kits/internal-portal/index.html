@@ -2338,7 +2338,7 @@
         <a href="#review" data-nav="review"><span>Review Queue</span><span class="nav-badge" id="nav-review-badge" aria-label="Unread review activity" hidden>0</span></a>
         <a href="#customize" data-nav="customize"><span>Customize documents</span></a>
         <a href="#guidelines" data-nav="guidelines"><span>Messaging &amp; Philosophy</span></a>
-        <a href="#coming-soon" data-nav="coming-soon"><span>Coming Soon</span></a>
+        <a href="#in-progress" data-nav="in-progress"><span>In Progress</span></a>
         <a href="#new-luci-launch" data-nav="new-luci-launch"><span>New LUCI Launch Campaign</span></a>
       </nav>
       <div class="sidebar__bottom">
@@ -2360,7 +2360,7 @@
           <div class="status-strip" id="status-strip">
             <div class="stat"><span class="stat__num" id="stat-review">—</span><span class="stat__label">In review</span></div>
             <div class="stat"><span class="stat__num" id="stat-comments">—</span><span class="stat__label">Comments</span></div>
-            <div class="stat"><span class="stat__num" id="stat-soon">—</span><span class="stat__label">Coming soon</span></div>
+            <div class="stat"><span class="stat__num" id="stat-soon">—</span><span class="stat__label">In progress</span></div>
           </div>
         </header>
 
@@ -2438,16 +2438,18 @@
         </div>
       </div>
 
-      <div class="view" id="view-coming-soon" hidden>
+      <div class="view" id="view-in-progress" hidden>
         <header class="page-head">
-          <p class="kicker">Pipeline</p>
-          <h2>Coming Soon</h2>
-          <p>What's forthcoming, for anyone who wants visibility before it's ready for review.</p>
+          <p class="kicker">Working</p>
+          <h2>In Progress</h2>
+          <p>Active work Jane can open or hand to an agent. Strategy and Email copy for the New LUCI launch stay under New LUCI Launch Campaign.</p>
         </header>
         <div class="page-body">
-          <div class="list" id="roadmap-list"></div>
+          <div class="list" id="in-progress-list"></div>
         </div>
       </div>
+      <!-- Legacy alias mount so old #coming-soon scripts don't throw if referenced -->
+      <div class="view" id="view-coming-soon" hidden></div>
 
       <div class="view" id="view-campaigns" hidden>
         <header class="page-head">
@@ -3707,7 +3709,7 @@
     function renderStatus() {
       $('stat-review').textContent = String(allReviewItems().length);
       $('stat-comments').textContent = String(portal.comments.length);
-      $('stat-soon').textContent = String((portal.queue.upcoming || []).length);
+      $('stat-soon').textContent = String(8); // In Progress card count (curated list)
       updateReviewUnreadBadges();
     }
 
@@ -4070,35 +4072,97 @@
       if (!docs.length) list.innerHTML = '<p class="empty">No guideline docs found.</p>';
     }
 
-    function renderRoadmap() {
-      const nest = [
-        { title: 'New LUCI Campaign strategy', note: 'One coordinated launch across customers and prospects.', href: '#new-luci-launch/strategy/campaign-strategy' },
-        { title: 'New LUCI — Email Communications & Nurture', note: 'What email goes to whom, when, and why.', href: '#new-luci-launch/strategy/email-comms' },
-        { title: 'New LUCI — Preliminary Feature List', note: 'Primary and also-in-release, in full.', href: '#new-luci-launch/strategy/feature-list' }
+    function renderInProgress() {
+      const items = [
+        {
+          title: 'New LUCI Launch Campaign',
+          note: 'Strategy / Working / Email copy — unchanged. Open the campaign hub.',
+          href: '#new-luci-launch',
+          external: false,
+          pill: 'Campaign'
+        },
+        {
+          title: 'Platform page redo',
+          note: 'Mockup only. Do not edit Platform files or live /platform.',
+          href: 'http://10.10.1.37/previews/platform-mockup/',
+          external: true,
+          pill: 'Website'
+        },
+        {
+          title: 'LUCI 2.0 site readiness brief',
+          note: 'Parked for Jane’s picks — no deploy until she chooses.',
+          href: 'http://10.10.1.37/previews/luci-2-0-site-readiness-brief.html',
+          external: true,
+          pill: 'Website'
+        },
+        {
+          title: 'Upgrade campaign emails',
+          note: 'CUST-* scaffolds in Email copy (webinar → readiness → launch → post).',
+          href: '#new-luci-launch/email/customers/pre-launch-webinar/CUST-WEBINAR-01',
+          external: false,
+          pill: 'Email'
+        },
+        {
+          title: 'Upgrade Guide',
+          note: 'Also on Review Queue (inProgress). Customer-facing walkthrough on .37.',
+          href: 'http://10.10.1.37/luci-upgrade-guide/',
+          external: true,
+          pill: 'Guide'
+        },
+        {
+          title: 'The Signal · Issue 05 (October 2026)',
+          note: 'Shell + locks on .17. Open picks: Theme, Quick Tip, Advice, Happenings, What’s coming, Minute with Mike. Send ~Oct 15.',
+          href: 'http://10.10.1.17:8081/newsletter/the-signal-issue-05-october-2026.html',
+          external: true,
+          secondaryHref: 'http://10.10.1.17:8081/newsletter/the-signal-issue-05-choices.html',
+          secondaryLabel: 'Choices',
+          pill: 'Newsletter'
+        },
+        {
+          title: 'Osage / Sand Springs case study',
+          note: 'Consuelo is building the shell from the standard case-study template. Preview URL pending — placeholder until she lands it on .37.',
+          href: '',
+          external: false,
+          placeholder: true,
+          pill: 'Case study'
+        },
+        {
+          title: 'Wave 1 · Revert preset',
+          note: 'Only unfinished Wave 1 item. Morning reset + Lighting are live on .37 and removed from this list.',
+          href: 'http://10.10.1.17:8081/content-marketing/wave-1-revert-preset-review.html#spotlight-revert-preset',
+          external: true,
+          pill: 'Content'
+        }
       ];
-      const items = portal.queue.upcoming || [];
-      const movedNote = `<p class="empty" style="margin:0 0 18px;">The New LUCI launch plans now live under <a class="row__link" href="#new-luci-launch" style="color:var(--mint-dark);font-weight:600;text-decoration:none;">New LUCI Launch Campaign</a> in the sidebar. The links below still open each plan.</p>`;
-      const nestHtml = nest.map((item) => `
-        <article class="row">
-          <div>
-            <h3>${item.title}</h3>
-            <p>${item.note}</p>
-          </div>
-          <div class="actions"><a class="btn btn--ghost" href="${item.href}">Open</a></div>
-        </article>
-      `).join('');
-      const rest = items.length ? items.map((item) => `
+      const list = $('in-progress-list');
+      if (!list) return;
+      list.innerHTML = items.map((item) => {
+        const meta = item.pill ? `<div class="meta"><span class="pill pill--gold">${item.pill}</span>${item.placeholder ? '<span class="pill">Placeholder</span>' : ''}</div>` : '';
+        let actions = '';
+        if (item.placeholder) {
+          actions = `<div class="actions"><span class="btn btn--ghost" style="opacity:0.55;pointer-events:none;">URL pending</span></div>`;
+        } else if (item.external) {
+          const sec = item.secondaryHref
+            ? `<a class="btn btn--ghost" href="${item.secondaryHref}" target="_blank" rel="noopener">${item.secondaryLabel || 'Related'}</a>`
+            : '';
+          actions = `<div class="actions"><a class="btn btn--ghost" href="${item.href}" target="_blank" rel="noopener">Open</a>${sec}</div>`;
+        } else {
+          actions = `<div class="actions"><a class="btn btn--ghost" href="${item.href}">Open</a></div>`;
+        }
+        return `
         <article class="row">
           <div>
             <h3>${item.title}</h3>
             <p>${item.note || ''}</p>
-            <div class="meta">${item.target ? `<span class="pill pill--gold">Target ${formatDate(item.target)}</span>` : ''}</div>
+            ${meta}
           </div>
-          <div class="actions">${item.hubPreviewPath ? `<a class="btn btn--ghost" href="../${item.hubPreviewPath.replace(/^ui_kits\//, '')}" target="_blank" rel="noopener">Preview</a>` : ''}</div>
-        </article>
-      `).join('') : '';
-      $('roadmap-list').innerHTML = movedNote + nestHtml + rest || '<p class="empty">Nothing listed yet.</p>';
+          ${actions}
+        </article>`;
+      }).join('');
     }
+
+    // Legacy name kept so any stray calls still resolve during the Coming Soon → In Progress cutover.
+    function renderRoadmap() { renderInProgress(); }
 
     // ---------- New LUCI Launch Campaign section ----------
 
@@ -5805,7 +5869,7 @@
       }
     }
 
-    const VIEWS = ['home', 'materials', 'review', 'customize', 'guidelines', 'coming-soon', 'new-luci-launch'];
+    const VIEWS = ['home', 'materials', 'review', 'customize', 'guidelines', 'in-progress', 'new-luci-launch'];
 
     // Old Coming Soon / #campaigns hashes now live under #new-luci-launch/strategy/*.
     // Map them so legacy bookmarks still open the same docs (thin redirect aliases).
@@ -5826,6 +5890,8 @@
       } else if (view === 'coming-soon' && Object.prototype.hasOwnProperty.call(NEW_LUCI_STRATEGY_ALIASES, sub)) {
         view = 'new-luci-launch';
         sub = NEW_LUCI_STRATEGY_ALIASES[sub];
+      } else if (view === 'coming-soon') {
+        view = 'in-progress';
       }
       return { view: VIEWS.includes(view) ? view : 'home', sub: sub || '' };
     }
@@ -5925,6 +5991,7 @@
         return;
       }
 
+      if (view === 'coming-soon') view = 'in-progress';
       const el = $('view-' + view);
       if (el) el.hidden = false;
       if (view === 'home') { renderStatus(); renderQuickActions(); renderHomeHighlights(); }
@@ -5932,7 +5999,7 @@
       else if (view === 'review') renderReviewList();
       else if (view === 'customize') renderStudio();
       else if (view === 'guidelines') renderGuidelines();
-      else if (view === 'coming-soon') renderRoadmap();
+      else if (view === 'in-progress' || view === 'coming-soon') renderInProgress();
       else if (view === 'new-luci-launch') renderNewLuciLaunch();
     }
 
