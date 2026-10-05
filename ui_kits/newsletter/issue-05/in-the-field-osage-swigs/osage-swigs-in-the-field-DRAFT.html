@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DRAFT · In the Field · Swigs / Osage Ponca City · Signal 05</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Syncopate:wght@700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy-deep: #0A161C;
+      --navy: #10232D;
+      --navy-mid: #314955;
+      --navy-muted: #49616E;
+      --mint: #68E3BE;
+      --mint-dark: #2b9e80;
+      --sand: #E5E3DF;
+      --off-white: #F5F8FA;
+      --white: #FFFFFF;
+      --rule-light: #D4D9DC;
+      --display: 'Syncopate', 'Arial Black', sans-serif;
+      --body: 'Space Grotesk', 'Trebuchet MS', sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--navy-deep);
+      color: #354F5C;
+      font-family: var(--body);
+      font-size: 17px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .draft-bar {
+      padding: 10px 24px;
+      background: var(--navy);
+      color: var(--mint);
+      font-family: var(--display);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    main {
+      width: min(100%, 820px);
+      margin: 0 auto;
+      background: var(--off-white);
+    }
+
+    .story-head {
+      padding: clamp(40px, 7vw, 64px) clamp(28px, 6vw, 60px);
+      background: var(--sand);
+      border-bottom: 1px solid var(--rule-light);
+    }
+
+    .kicker {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 24px;
+      color: var(--mint-dark);
+      font-family: var(--display);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .kicker::before {
+      width: 28px;
+      height: 3px;
+      background: var(--mint-dark);
+      content: '';
+    }
+
+    h1 {
+      max-width: 18ch;
+      margin: 0 0 24px;
+      color: var(--navy);
+      font-size: clamp(32px, 6vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.06;
+    }
+
+    .property {
+      margin: 0;
+      padding-top: 20px;
+      border-top: 1px solid var(--rule-light);
+      color: var(--mint-dark);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .property span {
+      display: block;
+      margin-top: 4px;
+      color: var(--navy-muted);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: none;
+    }
+
+    .story-body {
+      padding: clamp(40px, 7vw, 64px) clamp(28px, 6vw, 60px);
+    }
+
+    .lede {
+      max-width: 60ch;
+      margin: 0 0 24px;
+      color: var(--navy);
+      font-size: clamp(19px, 3vw, 22px);
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    p {
+      max-width: 60ch;
+      margin: 0 0 20px;
+    }
+
+    .photo-slot {
+      margin: 32px 0;
+    }
+
+    .photo-slot__frame {
+      display: grid;
+      min-height: 260px;
+      place-items: center;
+      border: 2px dashed rgba(43, 158, 128, 0.45);
+      background: linear-gradient(155deg, #E6F5EF 0%, #F3FAF8 100%);
+      color: var(--mint-dark);
+      font-family: var(--display);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    figcaption {
+      margin-top: 8px;
+      color: var(--navy-muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin: 32px 0;
+      padding: 0;
+      border-top: 1px solid var(--rule-light);
+      border-bottom: 1px solid var(--rule-light);
+      list-style: none;
+    }
+
+    .stats li {
+      padding: 20px 16px 20px 0;
+    }
+
+    .stats li + li {
+      padding-left: 16px;
+      border-left: 1px solid var(--rule-light);
+    }
+
+    .stats strong {
+      display: block;
+      color: var(--navy);
+      font-size: clamp(23px, 4vw, 30px);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+
+    .stats span {
+      display: block;
+      margin-top: 6px;
+      color: var(--mint-dark);
+      font-family: var(--display);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      line-height: 1.45;
+      text-transform: uppercase;
+    }
+
+    .case-link {
+      margin: 32px 0 0;
+      padding-top: 24px;
+      border-top: 1px solid var(--rule-light);
+      color: var(--navy-muted);
+      font-size: 15px;
+    }
+
+    .case-link a {
+      color: var(--mint-dark);
+      font-weight: 700;
+      text-underline-offset: 4px;
+    }
+
+    @media (max-width: 600px) {
+      .stats { grid-template-columns: 1fr; }
+      .stats li,
+      .stats li + li {
+        padding: 16px 0;
+        border-left: 0;
+      }
+      .stats li + li { border-top: 1px solid var(--rule-light); }
+      .photo-slot__frame { min-height: 200px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="draft-bar">Draft for Jane review · Signal 05</div>
+
+  <main>
+    <header class="story-head">
+      <p class="kicker">In the field</p>
+      <h1>One wall, more ways to run the night</h1>
+      <p class="property">
+        Swigs at Osage Casino Hotel
+        <span>Ponca City, Oklahoma</span>
+      </p>
+    </header>
+
+    <article class="story-body">
+      <p class="lede">Inside Osage Casino Hotel in Ponca City, Oklahoma, Swigs is the property&rsquo;s new bar and live entertainment venue. LUCI helped bring it online with a three-plane LED wall, two new audio zones, and centralized control.</p>
+
+      <figure class="photo-slot">
+        <div class="photo-slot__frame" role="img" aria-label="Project photo placeholder">Swigs project image</div>
+        <figcaption>Photo TBD: Osage Project Media</figcaption>
+      </figure>
+
+      <p>The nearly 20-foot-wide, 1.56mm-pitch CoB display follows the room instead of flattening it: a 7&prime; 10&frac12;&Prime; center section behind the stage, with two 5&prime; 10&frac34;&Prime; wings angled toward the audience. Sixty cabinets and 480 panels had to meet cleanly at each turn, then map as one continuous 3840 &times; 1296 canvas.</p>
+
+      <ul class="stats" aria-label="Project facts">
+        <li><strong>3 planes</strong><span>One continuous wall</span></li>
+        <li><strong>480 panels</strong><span>Across 60 cabinets</span></li>
+        <li><strong>25.5 hours</strong><span>Total working time</span></li>
+      </ul>
+
+      <p>The onsite team completed installation-to-finish work in 25.5 working hours, against four full working days on the schedule. Four operational presets now move the wall from large-format marketing to multi-source television and a live-performance backdrop. LUCI also brings the new A/V endpoints and audio zones into centralized control alongside the property&rsquo;s existing technology.</p>
+
+      <p>For guests, the technical precision disappears into the room. Swigs can shift from drinks and the game to live music without asking one screen to do only one job.</p>
+
+      <p class="case-link"><a href="#TBD-full-case-study">Read the full case study &rarr; TBD</a></p>
+    </article>
+  </main>
+</body>
+</html>
