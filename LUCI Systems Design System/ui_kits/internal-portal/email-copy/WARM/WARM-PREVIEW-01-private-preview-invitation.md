@@ -12,7 +12,7 @@
 - Acknowledgment of prior LUCI interest without pretending they are customers
 - Private preview of what changed since they last looked
 - More control in the room, the interface, and security operations
-- New LUCI availability on January 19
+- New LUCI availability in December 2026
 - Live operators-and-IT walkthrough, not a customer upgrade briefing
 - No Field Activation Guide or customer upgrade FAQ
 - Registration at [WEBINAR REGISTRATION URL]
@@ -21,7 +21,7 @@
 
 ### Subject lines (test 2–3)
 1. A private preview of what’s new in LUCI
-2. See New LUCI before the January 19 release
+2. See New LUCI before the December 2026 release
 3. An early look at New LUCI
 
 ### Preheader (placeholder)
