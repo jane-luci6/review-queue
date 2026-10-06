@@ -8,6 +8,10 @@
 
 ---
 
+## 2026-10-06
+
+- **New LUCI feature nesting refined.** Pillar 03 is shortened to “Informed control of operations”; Calendar Gantt view belongs in Pillar 02, WebGL performance stays with Live Map, outside-change detection stays with Audit trails, and in-app staff messaging appears as a smaller feature at the end of the Upgrade Guide. Jane.
+
 ## 2026-10-05
 
 - **New LUCI keeps control as the headline, with performance as the release foundation.** The third pillar is “Informed control of your operation,” bringing Live monitoring, Audit trails, Reporting & Analytics, and Sign-in & session control together as operational oversight; In-product support remains cross-pillar. Jane.
