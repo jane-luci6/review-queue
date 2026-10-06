@@ -10,6 +10,8 @@
 
 ## 2026-10-06
 
+- **Private tunnel leads “Also in this upgrade”; the extra In-product support bar is removed.** The tunnel keeps its “One encrypted connection” framing as the first additional feature instead of a standalone callout. In-product support remains in Pillar 03 and no longer repeats in a separate bar. Jane.
+
 - **Private tunnel is a cross-pillar security-and-setup feature in the Upgrade Guide.** It no longer sits under Sign-in & session control. A dedicated “One encrypted connection” callout explains that IT maintains one encrypted outbound connection instead of a long list of exceptions, reducing setup work and attack surface; the preloaded tunnel configuration remains in the upgrade path. Jane.
 
 - **In-product support carries the aspirational auto-triage claim.** Per the 10-05 Richard call, the Upgrade Guide now states LUCI detects problems and starts triage before a ticket is opened. Wording stays general (no "LUCI Hub"), no "looking ahead" — the whole guide is already forward-looking. Jane noted the copy may need to be adjusted closer to release if the capability isn't ready. Jane.
