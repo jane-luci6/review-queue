@@ -10,6 +10,8 @@
 
 ## 2026-10-06
 
+- **"Also in this upgrade" becomes a condensed chip wall that expands on hover.** The 12 additional features render as a wrapping row of grey pill chips (each led by a small mint dot); hovering or focusing one chip expands just that one into a soft-grey tile with its name and description, while the rest reflow around it. The section heading is promoted from a tiny mint kicker to a visible Space Grotesk subhead (no accent rule). Replaces the overused mint-left-bar list. Jane picked this hybrid of the C (chips) and B (tiles) variants over A (two-column list). Jane.
+
 - **Private tunnel leads “Also in this upgrade”; the extra In-product support bar is removed.** The tunnel keeps its “One encrypted connection” framing as the first additional feature instead of a standalone callout. In-product support remains in Pillar 03 and no longer repeats in a separate bar. Jane.
 
 - **Private tunnel is a cross-pillar security-and-setup feature in the Upgrade Guide.** It no longer sits under Sign-in & session control. A dedicated “One encrypted connection” callout explains that IT maintains one encrypted outbound connection instead of a long list of exceptions, reducing setup work and attack surface; the preloaded tunnel configuration remains in the upgrade path. Jane.
