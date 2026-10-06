@@ -10,6 +10,8 @@
 
 ## 2026-10-06
 
+- **"Also in this upgrade" switches from chip wall to two-column accordion list.** The hover-expanding chip wall had a Chrome flex-wrap sub-pixel rendering bug at row boundaries (1px artifact on the last chip per row in wide windows) that couldn't be killed — sr-only clip, solid background, fixed border-radius, and GPU compositing all failed; the glitch just moved to whichever chip landed at the wrap. Replaced with a two-column CSS-grid accordion (mint dot + name per row, hairline dividers, hover/focus expands the description inline). Grid, not flex-wrap, so the bug can't occur. Jane picked this over the pop-out card grid variant. Jane.
+
 - **Signal Issue 05 What’s Coming features Reporting & Analytics.** Frame it as part of the new version / beta, align claims to the Upgrade Guide, show only the Overview, Commands, Automation, and Reliability tabs, and invite readers to the What’s New two-pager. Jane.
 
 - **Signal Issue 05 Quick Tip is calendar collision, not admin PIN.** Describe today’s behavior: when two scheduled presets share the same TVs, the next one wins; do not tease New LUCI lockout or Staging-Apply. Jane.
