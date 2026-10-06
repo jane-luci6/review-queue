@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Signal Issue 05 — Picks for Jane (theme / Advice / Minute with Mike)</title>
+  <title>Signal Issue 05 — Picks for Jane</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syncopate:wght@700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --navy-deep: #0A161C;
@@ -22,6 +22,7 @@
       --gold-deep: #8A6C28;
       --display: "Syncopate", "Arial Black", sans-serif;
       --structure: "Space Grotesk", "Trebuchet MS", sans-serif;
+      --body: "Inter", Arial, sans-serif;
       --pad: clamp(24px, 5vw, 56px);
     }
 
@@ -33,7 +34,7 @@
       margin: 0;
       background: var(--navy-deep);
       color: var(--ink);
-      font-family: var(--structure);
+      font-family: var(--body);
       font-size: 17px;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
@@ -102,6 +103,7 @@
     h1 {
       max-width: 17ch;
       margin: 0;
+      font-family: var(--structure);
       font-size: clamp(31px, 5.5vw, 56px);
       line-height: 1.06;
       letter-spacing: -0.035em;
@@ -186,6 +188,7 @@
     .section__head h2 {
       margin: 10px 0 0;
       color: var(--navy);
+      font-family: var(--structure);
       font-size: clamp(27px, 4vw, 40px);
       line-height: 1.12;
       letter-spacing: -0.025em;
@@ -277,6 +280,7 @@
     .option h3 {
       margin: 5px 0 0;
       color: var(--navy);
+      font-family: var(--structure);
       font-size: 20px;
       line-height: 1.25;
       letter-spacing: -0.015em;
@@ -304,6 +308,7 @@
     .choice-title {
       margin: 0;
       color: var(--navy);
+      font-family: var(--structure);
       font-size: clamp(22px, 3vw, 30px);
       line-height: 1.2;
       letter-spacing: -0.02em;
@@ -331,6 +336,7 @@
     .blurb h4 {
       margin: 0;
       color: var(--navy);
+      font-family: var(--structure);
       font-size: 16px;
       line-height: 1.3;
     }
@@ -390,6 +396,7 @@
     .quote-pulls h3 {
       margin: 8px 0 0;
       color: var(--navy);
+      font-family: var(--structure);
       font-size: 26px;
       line-height: 1.2;
     }
@@ -457,10 +464,66 @@
     .recommendation h3 {
       margin: 6px 0 8px;
       color: var(--navy);
+      font-family: var(--structure);
       font-size: 24px;
     }
 
     .recommendation p { margin: 0; }
+
+    .draft-copy {
+      max-width: 70ch;
+      padding: clamp(24px, 4vw, 32px);
+      background: var(--white);
+      border-left: 4px solid var(--mint-dark);
+    }
+
+    .draft-copy h3,
+    .coming-copy h3 {
+      margin: 0;
+      color: var(--navy);
+      font-family: var(--structure);
+      font-size: clamp(22px, 3vw, 28px);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .draft-copy p,
+    .coming-copy p {
+      margin: 14px 0 0;
+    }
+
+    .coming-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+      gap: clamp(24px, 5vw, 48px);
+      align-items: center;
+    }
+
+    .promo {
+      margin-top: 24px;
+      padding: 20px 24px;
+      background: rgba(43, 158, 128, 0.1);
+      border-left: 4px solid var(--mint-dark);
+    }
+
+    .promo strong { color: var(--navy); }
+
+    .analytics-figure {
+      margin: 0;
+    }
+
+    .analytics-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .analytics-figure figcaption {
+      margin-top: 12px;
+      color: var(--navy-muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
 
     .footer {
       padding: 28px var(--pad);
@@ -475,7 +538,8 @@
       .status__grid,
       .option-grid,
       .blurb-pair,
-      .quote__use {
+      .quote__use,
+      .coming-grid {
         grid-template-columns: 1fr;
       }
 
@@ -508,22 +572,18 @@
   <main class="pack">
     <header class="hero">
       <p class="draft">Draft review pack · October 2026</p>
-      <h1>Signal Issue 05 — Picks for Jane (theme / Advice / Minute with Mike)</h1>
-      <p class="hero__deck">Three decisions, one reply: choose a theme title, an Advice section name, and a Minute with Mike spine. No final newsletter copy is being advanced from this pack.</p>
+      <h1>Signal Issue 05 — Picks for Jane</h1>
+      <p class="hero__deck">Five decisions, one reply: choose a theme title, an Advice section name, and a Minute with Mike spine—then approve or edit the Quick Tip and What’s Coming drafts.</p>
     </header>
 
     <aside class="status" aria-labelledby="status-title">
       <p id="status-title" class="status__label">Issue status before these picks</p>
       <div class="status__grid">
-        <p class="status__item"><strong>What’s Coming:</strong> feature body ON HOLD until you pick the feature.</p>
-        <p class="status__item"><strong>Quick Tip:</strong> admin PIN still GATED. No full tip copy in this pack.</p>
+        <p class="status__item"><strong>What’s Coming:</strong> Reporting &amp; Analytics draft in this pack → approve.</p>
+        <p class="status__item"><strong>Quick Tip:</strong> calendar collision LOCKED. Draft blurb in this pack.</p>
         <p class="status__item"><strong>Field:</strong> Osage Ponca City Swigs draft already in review.</p>
         <p class="status__item"><strong>Design services:</strong> still yours next.</p>
       </div>
-      <div class="gate">
-        <p><strong>Admin PIN gate:</strong> no public KB is available without Atlassian login (<code>lucisystems.com/support</code> → <code>lucisystems.atlassian.net/servicedesk</code>). Demo source only: Mike consult 06-26 at ~00:39:07 — default admin <strong>9999</strong>, PIN <strong>4–12 digits</strong>, rename admin. <strong>Needs Jane confirm in-instance KB before publish.</strong></p>
-      </div>
-      <p class="parked"><strong>Parked alternate Quick Tip only:</strong> Calendar collision — if another preset is scheduled and TVs are in both, the next one wins. Today’s behavior only. Seed: don’t stack a drawing on a daypart without a plan. No New LUCI lockout or Staging-Apply tease.</p>
     </aside>
 
     <section class="section" aria-labelledby="theme-title">
@@ -777,8 +837,46 @@
       </div>
     </section>
 
+    <section class="section section--sand" aria-labelledby="quick-tip-title">
+      <div class="section__head">
+        <p class="section__kicker">04 · Quick Tip · locked topic</p>
+        <h2 id="quick-tip-title">Calendar collision draft → approve / edit / reject</h2>
+        <p class="section__intro">Today’s behavior only. This draft does not tease New LUCI lockout or Staging-Apply.</p>
+        <span class="reply-key">Reply with: QT approve</span>
+      </div>
+
+      <article class="draft-copy">
+        <h3>Check the TVs before schedules overlap</h3>
+        <p>When two scheduled presets share the same TVs, the next one wins. Before adding a drawing over an existing daypart, check the shared TVs and timing—don’t stack a drawing on a daypart without a plan.</p>
+      </article>
+    </section>
+
+    <section class="section" aria-labelledby="whats-coming-title">
+      <div class="section__head">
+        <p class="section__kicker">05 · What’s Coming · locked feature</p>
+        <h2 id="whats-coming-title">What’s Coming draft → approve / edit / reject</h2>
+        <p class="section__intro">Reporting &amp; Analytics · new-version / beta framing</p>
+        <span class="reply-key">Reply with: What’s Coming approve</span>
+      </div>
+
+      <div class="coming-grid">
+        <div class="coming-copy">
+          <h3>See the patterns behind day-to-day activity</h3>
+          <p>See how your property has been running—not just what is happening now. Reporting &amp; Analytics in the new version of LUCI brings incident volume and duration, command success and failure, latency, and preset activity into 24-hour, 7-day, and 30-day views. Start with the overview to spot patterns, then move into the relevant device, command, or automation record when something needs attention.</p>
+          <aside class="promo">
+            <strong>What’s New two-pager.</strong> This issue includes the first published piece on the new LUCI. Open it for the broader release story and a concise view of what is coming.
+          </aside>
+        </div>
+
+        <figure class="analytics-figure">
+          <img src="signal-05-reporting-analytics-fan.png" alt="Overlapping previews of the Overview, Commands, Automation, and Reliability tabs in Reporting and Analytics">
+          <figcaption>Draft visual: four Analytics tabs—Overview, Commands, Automation, and Reliability. “Realtime degraded” and “Establishing connection” were scrubbed; Systems and Device Incidents are not included.</figcaption>
+        </figure>
+      </div>
+    </section>
+
     <footer class="footer">
-      <strong>DRAFT:</strong> selection pack only. No Webflow, ActiveCampaign, Send, final Minute with Mike column, Quick Tip body, or What’s New two-pager was produced.
+      <strong>DRAFT:</strong> review pack only. No Webflow, ActiveCampaign, Send, final Minute with Mike column, or final newsletter assembly was produced.
     </footer>
   </main>
 </body>

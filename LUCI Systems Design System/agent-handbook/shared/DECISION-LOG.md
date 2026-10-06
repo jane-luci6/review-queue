@@ -10,6 +10,10 @@
 
 ## 2026-10-06
 
+- **Signal Issue 05 What’s Coming features Reporting & Analytics.** Frame it as part of the new version / beta, align claims to the Upgrade Guide, show only the Overview, Commands, Automation, and Reliability tabs, and invite readers to the What’s New two-pager. Jane.
+
+- **Signal Issue 05 Quick Tip is calendar collision, not admin PIN.** Describe today’s behavior: when two scheduled presets share the same TVs, the next one wins; do not tease New LUCI lockout or Staging-Apply. Jane.
+
 - **"Also in this upgrade" becomes a condensed chip wall that expands on hover.** The 12 additional features render as a wrapping row of grey pill chips (each led by a small mint dot); hovering or focusing one chip expands just that one into a soft-grey tile with its name and description, while the rest reflow around it. The section heading is promoted from a tiny mint kicker to a visible Space Grotesk subhead (no accent rule). Replaces the overused mint-left-bar list. Jane picked this hybrid of the C (chips) and B (tiles) variants over A (two-column list). Jane.
 
 - **Private tunnel leads “Also in this upgrade”; the extra In-product support bar is removed.** The tunnel keeps its “One encrypted connection” framing as the first additional feature instead of a standalone callout. In-product support remains in Pillar 03 and no longer repeats in a separate bar. Jane.
