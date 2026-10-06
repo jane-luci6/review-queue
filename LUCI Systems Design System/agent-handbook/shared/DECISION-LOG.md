@@ -10,6 +10,8 @@
 
 ## 2026-10-06
 
+- **New LUCI two-pager direction approved.** Jane approved the two-page sales leave-behind after the final intro, pillar spacing, page-two feature copy, cool-grey In-product support treatment with top-left Plus badge, and December 2026 release date refinements.
+
 - **New LUCI feature nesting refined.** Pillar 03 is shortened to “Informed control of operations”; Calendar Gantt view belongs in Pillar 02, WebGL performance stays with Live Map, outside-change detection stays with Audit trails, and in-app staff messaging appears as a smaller feature at the end of the Upgrade Guide. Jane.
 
 ## 2026-10-05
