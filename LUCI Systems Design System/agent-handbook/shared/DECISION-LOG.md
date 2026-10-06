@@ -10,6 +10,8 @@
 
 ## 2026-10-06
 
+- **In-product support carries the aspirational auto-triage claim.** Per the 10-05 Richard call, the Upgrade Guide now states LUCI detects problems and starts triage before a ticket is opened. Wording stays general (no "LUCI Hub"), no "looking ahead" — the whole guide is already forward-looking. Jane noted the copy may need to be adjusted closer to release if the capability isn't ready. Jane.
+
 - **Real-location zoom stays within Live map flexibility.** Floor plans sit at each property's real geographic location, allowing larger multi-property clients to zoom from a property to a city or country view. The two-pager leads with this benefit instead of live device-status updates. Jane.
 
 - **Upgrade Guide drops the duplicate pillar overview.** The opening thesis now flows directly into the feature deep-dive; its three pillar tabs provide the orientation map, and In-product support moves to a cross-pillar row at the end of the deep-dive. Jane.
