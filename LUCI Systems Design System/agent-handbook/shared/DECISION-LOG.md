@@ -10,6 +10,8 @@
 
 ## 2026-10-06
 
+- **Real-location zoom stays within Live map flexibility.** Floor plans sit at each property's real geographic location, allowing larger multi-property clients to zoom from a property to a city or country view. The two-pager leads with this benefit instead of live device-status updates. Jane.
+
 - **Upgrade Guide drops the duplicate pillar overview.** The opening thesis now flows directly into the feature deep-dive; its three pillar tabs provide the orientation map, and In-product support moves to a cross-pillar row at the end of the deep-dive. Jane.
 
 - **New LUCI two-pager direction approved.** Jane approved the two-page sales leave-behind after the final intro, pillar spacing, page-two feature copy, cool-grey In-product support treatment with top-left Plus badge, and December 2026 release date refinements.
