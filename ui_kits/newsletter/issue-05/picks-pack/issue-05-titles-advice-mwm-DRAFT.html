@@ -1,0 +1,785 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Signal Issue 05 — Picks for Jane (theme / Advice / Minute with Mike)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy-deep: #0A161C;
+      --navy: #10232D;
+      --navy-muted: #49616E;
+      --mint: #68E3BE;
+      --mint-dark: #2b9e80;
+      --sand: #E5E3DF;
+      --off-white: #F5F8FA;
+      --white: #FFFFFF;
+      --rule: #D4D9DC;
+      --ink: #354F5C;
+      --gold-deep: #8A6C28;
+      --display: "Syncopate", "Arial Black", sans-serif;
+      --structure: "Space Grotesk", "Trebuchet MS", sans-serif;
+      --pad: clamp(24px, 5vw, 56px);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--navy-deep);
+      color: var(--ink);
+      font-family: var(--structure);
+      font-size: 17px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    button,
+    input,
+    label { font: inherit; }
+
+    .pack {
+      width: min(960px, 100%);
+      margin: 0 auto;
+      background: var(--off-white);
+      min-height: 100vh;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(40px, 7vw, 72px) var(--pad);
+      color: var(--off-white);
+      background:
+        radial-gradient(circle at 92% 10%, rgba(104, 227, 190, 0.14), transparent 35%),
+        var(--navy);
+      border-bottom: 4px solid var(--mint);
+    }
+
+    .hero::after {
+      content: "05";
+      position: absolute;
+      right: var(--pad);
+      bottom: -34px;
+      color: rgba(104, 227, 190, 0.05);
+      font-family: var(--display);
+      font-size: clamp(110px, 24vw, 210px);
+      font-weight: 700;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .hero > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .draft {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 24px;
+      color: var(--mint);
+      font-family: var(--display);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .draft::before {
+      width: 32px;
+      height: 3px;
+      background: var(--mint);
+      content: "";
+    }
+
+    h1 {
+      max-width: 17ch;
+      margin: 0;
+      font-size: clamp(31px, 5.5vw, 56px);
+      line-height: 1.06;
+      letter-spacing: -0.035em;
+    }
+
+    .hero__deck {
+      max-width: 58ch;
+      margin: 24px 0 0;
+      color: rgba(245, 248, 250, 0.8);
+      font-size: 18px;
+    }
+
+    .status {
+      padding: 32px var(--pad);
+      color: var(--off-white);
+      background: var(--navy-deep);
+    }
+
+    .status__label,
+    .section__kicker,
+    .eyebrow {
+      margin: 0;
+      color: var(--mint);
+      font-family: var(--display);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .status__grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0 28px;
+      margin-top: 16px;
+      border-top: 1px solid rgba(104, 227, 190, 0.18);
+    }
+
+    .status__item {
+      margin: 0;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(104, 227, 190, 0.18);
+      color: rgba(245, 248, 250, 0.78);
+    }
+
+    .status__item strong { color: var(--off-white); }
+
+    .gate {
+      margin-top: 24px;
+      padding: 20px 0 0 20px;
+      border-left: 4px solid var(--mint);
+    }
+
+    .gate p {
+      max-width: 70ch;
+      margin: 0;
+      color: rgba(245, 248, 250, 0.82);
+    }
+
+    .gate strong { color: var(--mint); }
+
+    .parked {
+      margin: 16px 0 0;
+      color: rgba(245, 248, 250, 0.68);
+      font-size: 14px;
+    }
+
+    .section {
+      padding: clamp(48px, 8vw, 80px) var(--pad);
+      background: var(--off-white);
+    }
+
+    .section + .section { border-top: 1px solid var(--rule); }
+
+    .section--sand { background: var(--sand); }
+
+    .section__head {
+      max-width: 720px;
+      margin-bottom: 32px;
+    }
+
+    .section__head h2 {
+      margin: 10px 0 0;
+      color: var(--navy);
+      font-size: clamp(27px, 4vw, 40px);
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+    }
+
+    .section__intro {
+      max-width: 65ch;
+      margin: 14px 0 0;
+      color: var(--navy-muted);
+    }
+
+    .reply-key {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 5px 10px;
+      color: var(--navy);
+      background: rgba(43, 158, 128, 0.1);
+      border: 1px solid rgba(43, 158, 128, 0.22);
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .option-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .option {
+      position: relative;
+    }
+
+    .option input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    .option label {
+      display: grid;
+      grid-template-columns: 48px minmax(0, 1fr);
+      gap: 16px;
+      align-items: start;
+      min-height: 100%;
+      padding: 24px;
+      background: var(--white);
+      border: 1px solid var(--rule);
+      cursor: pointer;
+      transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+    }
+
+    .option label:hover {
+      border-color: rgba(43, 158, 128, 0.55);
+      transform: translateY(-2px);
+    }
+
+    .option input:focus-visible + label {
+      outline: 3px solid var(--mint-dark);
+      outline-offset: 3px;
+    }
+
+    .option input:checked + label {
+      background: #ECF7F3;
+      border-color: var(--mint-dark);
+    }
+
+    .radio {
+      display: grid;
+      width: 48px;
+      height: 48px;
+      place-items: center;
+      color: var(--mint-dark);
+      background: rgba(43, 158, 128, 0.08);
+      border: 2px solid var(--mint-dark);
+      border-radius: 50%;
+      font-family: var(--display);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .option input:checked + label .radio {
+      color: var(--navy-deep);
+      background: var(--mint);
+      box-shadow: inset 0 0 0 5px #ECF7F3;
+    }
+
+    .option h3 {
+      margin: 5px 0 0;
+      color: var(--navy);
+      font-size: 20px;
+      line-height: 1.25;
+      letter-spacing: -0.015em;
+    }
+
+    .option p {
+      margin: 10px 0 0;
+      color: var(--navy-muted);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .advice-stack,
+    .spine-stack {
+      display: grid;
+      gap: 20px;
+    }
+
+    .advice-option label,
+    .spine-option label {
+      grid-template-columns: 56px minmax(0, 1fr);
+      padding: clamp(24px, 4vw, 36px);
+    }
+
+    .choice-title {
+      margin: 0;
+      color: var(--navy);
+      font-size: clamp(22px, 3vw, 30px);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .choice-code {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--mint-dark);
+      font-family: var(--display);
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .blurb-pair {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .blurb h4 {
+      margin: 0;
+      color: var(--navy);
+      font-size: 16px;
+      line-height: 1.3;
+    }
+
+    .blurb p {
+      margin: 8px 0 0;
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    .beats {
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: beat;
+    }
+
+    .beats li {
+      position: relative;
+      margin: 0;
+      padding: 10px 0 10px 38px;
+      border-top: 1px solid var(--rule);
+      color: var(--ink);
+      counter-increment: beat;
+    }
+
+    .beats li::before {
+      position: absolute;
+      left: 0;
+      top: 10px;
+      color: var(--mint-dark);
+      font-weight: 700;
+      content: counter(beat, decimal-leading-zero);
+    }
+
+    .recommended {
+      display: inline-block;
+      margin-left: 10px;
+      padding: 4px 8px;
+      color: var(--gold-deep);
+      background: rgba(206, 176, 110, 0.2);
+      border-radius: 9999px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      vertical-align: middle;
+    }
+
+    .quote-pulls {
+      margin-top: 48px;
+      padding-top: 40px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .quote-pulls h3 {
+      margin: 8px 0 0;
+      color: var(--navy);
+      font-size: 26px;
+      line-height: 1.2;
+    }
+
+    .quote {
+      margin-top: 24px;
+      padding: 24px;
+      background: var(--navy);
+      border-left: 4px solid var(--mint);
+      color: var(--off-white);
+    }
+
+    .quote__meta {
+      margin: 0;
+      color: var(--mint);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    blockquote {
+      margin: 16px 0 0;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .quote__use {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(104, 227, 190, 0.18);
+    }
+
+    .quote__use h4 {
+      margin: 0 0 5px;
+      color: var(--mint);
+      font-size: 13px;
+    }
+
+    .quote__use p {
+      margin: 0;
+      color: rgba(245, 248, 250, 0.78);
+      font-size: 15px;
+    }
+
+    .accuracy-note,
+    .recommendation {
+      margin-top: 24px;
+      padding: 20px 24px;
+      background: #E7ECEF;
+      border-left: 4px solid var(--mint-dark);
+    }
+
+    .accuracy-note strong,
+    .recommendation strong { color: var(--navy); }
+
+    .recommendation {
+      margin-top: 40px;
+      background: #ECF7F3;
+    }
+
+    .recommendation h3 {
+      margin: 6px 0 8px;
+      color: var(--navy);
+      font-size: 24px;
+    }
+
+    .recommendation p { margin: 0; }
+
+    .footer {
+      padding: 28px var(--pad);
+      color: rgba(245, 248, 250, 0.66);
+      background: var(--navy-deep);
+      font-size: 13px;
+    }
+
+    .footer strong { color: var(--mint); }
+
+    @media (max-width: 700px) {
+      .status__grid,
+      .option-grid,
+      .blurb-pair,
+      .quote__use {
+        grid-template-columns: 1fr;
+      }
+
+      .option label,
+      .advice-option label,
+      .spine-option label {
+        grid-template-columns: 44px minmax(0, 1fr);
+        padding: 20px;
+      }
+
+      .radio {
+        width: 44px;
+        height: 44px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .option label { transition: none; }
+    }
+
+    @media print {
+      body { background: var(--white); }
+      .pack { width: 100%; }
+      .option label:hover { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="pack">
+    <header class="hero">
+      <p class="draft">Draft review pack · October 2026</p>
+      <h1>Signal Issue 05 — Picks for Jane (theme / Advice / Minute with Mike)</h1>
+      <p class="hero__deck">Three decisions, one reply: choose a theme title, an Advice section name, and a Minute with Mike spine. No final newsletter copy is being advanced from this pack.</p>
+    </header>
+
+    <aside class="status" aria-labelledby="status-title">
+      <p id="status-title" class="status__label">Issue status before these picks</p>
+      <div class="status__grid">
+        <p class="status__item"><strong>What’s Coming:</strong> feature body ON HOLD until you pick the feature.</p>
+        <p class="status__item"><strong>Quick Tip:</strong> admin PIN still GATED. No full tip copy in this pack.</p>
+        <p class="status__item"><strong>Field:</strong> Osage Ponca City Swigs draft already in review.</p>
+        <p class="status__item"><strong>Design services:</strong> still yours next.</p>
+      </div>
+      <div class="gate">
+        <p><strong>Admin PIN gate:</strong> no public KB is available without Atlassian login (<code>lucisystems.com/support</code> → <code>lucisystems.atlassian.net/servicedesk</code>). Demo source only: Mike consult 06-26 at ~00:39:07 — default admin <strong>9999</strong>, PIN <strong>4–12 digits</strong>, rename admin. <strong>Needs Jane confirm in-instance KB before publish.</strong></p>
+      </div>
+      <p class="parked"><strong>Parked alternate Quick Tip only:</strong> Calendar collision — if another preset is scheduled and TVs are in both, the next one wins. Today’s behavior only. Seed: don’t stack a drawing on a daypart without a plan. No New LUCI lockout or Staging-Apply tease.</p>
+    </aside>
+
+    <section class="section" aria-labelledby="theme-title">
+      <div class="section__head">
+        <p class="section__kicker">01 · Theme titles</p>
+        <h2 id="theme-title">Continuity that steadies the whole A/V project</h2>
+        <p class="section__intro">The idea is locked: LUCI is the stabilizer that carries alignment through a complex project, from planning into day-to-day operation. These are title options for that one idea.</p>
+        <span class="reply-key">Reply with: Theme A–H</span>
+      </div>
+
+      <div class="option-grid">
+        <div class="option">
+          <input type="radio" id="theme-a" name="theme">
+          <label for="theme-a">
+            <span class="radio">A</span>
+            <span><span class="choice-code">Theme A</span><h3>Keep A/V on Course</h3></span>
+          </label>
+        </div>
+        <div class="option">
+          <input type="radio" id="theme-b" name="theme">
+          <label for="theme-b">
+            <span class="radio">B</span>
+            <span><span class="choice-code">Theme B</span><h3>Hold the Project Steady</h3></span>
+          </label>
+        </div>
+        <div class="option">
+          <input type="radio" id="theme-c" name="theme">
+          <label for="theme-c">
+            <span class="radio">C</span>
+            <span><span class="choice-code">Theme C</span><h3>Carry the Standard Through Every Handoff</h3></span>
+          </label>
+        </div>
+        <div class="option">
+          <input type="radio" id="theme-d" name="theme">
+          <label for="theme-d">
+            <span class="radio">D</span>
+            <span><span class="choice-code">Theme D</span><h3>Stay Aligned from Design to Operation</h3></span>
+          </label>
+        </div>
+        <div class="option">
+          <input type="radio" id="theme-e" name="theme">
+          <label for="theme-e">
+            <span class="radio">E</span>
+            <span><span class="choice-code">Theme E</span><h3>Plan It. Build It. Run It.</h3></span>
+          </label>
+        </div>
+        <div class="option">
+          <input type="radio" id="theme-f" name="theme">
+          <label for="theme-f">
+            <span class="radio">F</span>
+            <span><span class="choice-code">Theme F</span><h3>Keep Complex A/V Moving Together</h3></span>
+          </label>
+        </div>
+        <div class="option">
+          <input type="radio" id="theme-g" name="theme">
+          <label for="theme-g">
+            <span class="radio">G</span>
+            <span><span class="choice-code">Theme G</span><h3>Turn Continuity into Control</h3></span>
+          </label>
+        </div>
+        <div class="option">
+          <input type="radio" id="theme-h" name="theme">
+          <label for="theme-h">
+            <span class="radio">H</span>
+            <span><span class="choice-code">Theme H</span><h3>Bring Every Phase into Line</h3></span>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--sand" aria-labelledby="advice-title">
+      <div class="section__head">
+        <p class="section__kicker">02 · Advice section</p>
+        <h2 id="advice-title">Name the section</h2>
+        <p class="section__intro">The two blurbs are locked. Each naming option shows the same copy so you can judge how the section reads as a whole.</p>
+        <span class="reply-key">Reply with: Advice name 1, 2, or 3</span>
+      </div>
+
+      <div class="advice-stack">
+        <div class="option advice-option">
+          <input type="radio" id="advice-1" name="advice">
+          <label for="advice-1">
+            <span class="radio">1</span>
+            <span>
+              <span class="choice-code">Advice name 1</span>
+              <span class="choice-title">Operating Notes</span>
+              <span class="blurb-pair">
+                <span class="blurb">
+                  <h4>Build venues first, then add endpoints</h4>
+                  <p>Start by building the property in LUCI: create every venue, save the views, and name each section. Then, as endpoints come online, assign control according to who needs it and where.</p>
+                </span>
+                <span class="blurb">
+                  <h4>Choose how access gets distributed</h4>
+                  <p>There is no single right way to distribute access. One property keeps a single administrator everyone calls for changes; most create users freely, then filter each person’s access by location and source. Choose the model deliberately.</p>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+
+        <div class="option advice-option">
+          <input type="radio" id="advice-2" name="advice">
+          <label for="advice-2">
+            <span class="radio">2</span>
+            <span>
+              <span class="choice-code">Advice name 2</span>
+              <span class="choice-title">How to Run It</span>
+              <span class="blurb-pair">
+                <span class="blurb">
+                  <h4>Build venues first, then add endpoints</h4>
+                  <p>Start by building the property in LUCI: create every venue, save the views, and name each section. Then, as endpoints come online, assign control according to who needs it and where.</p>
+                </span>
+                <span class="blurb">
+                  <h4>Choose how access gets distributed</h4>
+                  <p>There is no single right way to distribute access. One property keeps a single administrator everyone calls for changes; most create users freely, then filter each person’s access by location and source. Choose the model deliberately.</p>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+
+        <div class="option advice-option">
+          <input type="radio" id="advice-3" name="advice">
+          <label for="advice-3">
+            <span class="radio">3</span>
+            <span>
+              <span class="choice-code">Advice name 3</span>
+              <span class="choice-title">The Operating Playbook</span>
+              <span class="blurb-pair">
+                <span class="blurb">
+                  <h4>Build venues first, then add endpoints</h4>
+                  <p>Start by building the property in LUCI: create every venue, save the views, and name each section. Then, as endpoints come online, assign control according to who needs it and where.</p>
+                </span>
+                <span class="blurb">
+                  <h4>Choose how access gets distributed</h4>
+                  <p>There is no single right way to distribute access. One property keeps a single administrator everyone calls for changes; most create users freely, then filter each person’s access by location and source. Choose the model deliberately.</p>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="mwm-title">
+      <div class="section__head">
+        <p class="section__kicker">03 · A Minute with Mike</p>
+        <h2 id="mwm-title">Pick the “power of programming” spine</h2>
+        <p class="section__intro">Direction is locked: put more control in the client’s hands while keeping LUCI partnership visibly behind them. This is outline and source pull only—not the final column.</p>
+        <span class="reply-key">Reply with: MwM spine 1, 2, or 3</span>
+      </div>
+
+      <div class="spine-stack">
+        <div class="option spine-option">
+          <input type="radio" id="mwm-1" name="mwm">
+          <label for="mwm-1">
+            <span class="radio">1</span>
+            <span>
+              <span class="choice-code">MwM spine 1</span>
+              <span class="choice-title">Lead with the principle <span class="recommended">Recommended</span></span>
+              <ol class="beats">
+                <li>Open on Mike’s phrase: the power of programming belongs in the client’s hands.</li>
+                <li>Contrast configuration once buried in Level 2 and the database with controls now brought forward.</li>
+                <li>Use loading maps as the concrete proof of what clients and their integrators can handle directly.</li>
+                <li>Set the external promise: more day-to-day control, with the LUCI team and partnership still behind the operation.</li>
+                <li>Close with the What’s New two-pager as the issue’s deeper look at that direction.</li>
+              </ol>
+            </span>
+          </label>
+        </div>
+
+        <div class="option spine-option">
+          <input type="radio" id="mwm-2" name="mwm">
+          <label for="mwm-2">
+            <span class="radio">2</span>
+            <span>
+              <span class="choice-code">MwM spine 2</span>
+              <span class="choice-title">Lead with the operator’s moment</span>
+              <ol class="beats">
+                <li>Open with a property team making a routine configuration change for its own operation.</li>
+                <li>Name the shift: maps and configuration move out of the hidden database work and into the hands of clients and integrators.</li>
+                <li>Land Mike’s “power of programming” principle as the reason behind the shift.</li>
+                <li>Clarify that autonomy and partnership grow together; LUCI remains accountable behind the system.</li>
+                <li>Point to the What’s New two-pager for the product details shipping with the issue.</li>
+              </ol>
+            </span>
+          </label>
+        </div>
+
+        <div class="option spine-option">
+          <input type="radio" id="mwm-3" name="mwm">
+          <label for="mwm-3">
+            <span class="radio">3</span>
+            <span>
+              <span class="choice-code">MwM spine 3</span>
+              <span class="choice-title">Lead with continuity</span>
+              <ol class="beats">
+                <li>Open on continuity: the same line of accountability should hold from design into daily operation.</li>
+                <li>Show the old constraint—important configuration lived deep in the database.</li>
+                <li>Show the new operating posture—clients and integrators can load maps and handle more configuration directly.</li>
+                <li>Use Mike’s “power of programming” line, then reinforce that the LUCI partnership stays in place.</li>
+                <li>Bridge once to Design services: the continuity that steadies design and commissioning carries into day-to-day control.</li>
+                <li>Close on the What’s New two-pager.</li>
+              </ol>
+            </span>
+          </label>
+        </div>
+      </div>
+
+      <div class="quote-pulls" aria-labelledby="pulls-title">
+        <p class="eyebrow">Source pulls · internal drafting reference</p>
+        <h3 id="pulls-title">Verbatim Mike quotes</h3>
+
+        <article class="quote">
+          <p class="quote__meta">A · Mark/Mike · 09_28 · Mike 00:10:40</p>
+          <blockquote>“I always say, the power of programming. Let them do it. Let our clients do it, versus having to rely on us or a third party.”</blockquote>
+          <div class="quote__use">
+            <div>
+              <h4>Clean paraphrase</h4>
+              <p>Mike’s principle is to put the power of programming in the client’s hands so property teams can do more directly.</p>
+            </div>
+            <div>
+              <h4>Suggested beat</h4>
+              <p>Use as the thesis. In public copy, pair added client control with the LUCI partnership that remains behind them.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="quote">
+          <p class="quote__meta">B · Mark/Mike · 09_28 · Mike 00:10:02</p>
+          <blockquote>“They’re able to load their own maps now. Think of it this way: we’re trying to build this, where it’s completely customizable, like completely independent of needing us. The reason why everybody needed us is because everything was done like level two, like in a basement. Right in our database. Everything had to be configured in the database. These guys brought all of that forward, so they’re able to allow our client or our client’s integrator to do whatever they want.”</blockquote>
+          <div class="quote__use">
+            <div>
+              <h4>Clean paraphrase</h4>
+              <p>Configuration that once sat deep in Level 2 and the database is moving forward, allowing clients and their integrators to load maps and manage more of the system directly.</p>
+            </div>
+            <div>
+              <h4>Suggested beat</h4>
+              <p>Use as the proof after the thesis. Do not carry “independent of needing us” into the external promise; the partnership remains part of the offer.</p>
+            </div>
+          </div>
+        </article>
+
+        <p class="accuracy-note"><strong>Speaker accuracy for Jane:</strong> The CoS cue said “Adam/Boyd config-forward from basement.” The basement metaphor is Mike on the 09_28 Mark/Mike call. Adam/Boyd on 09-10 is the demo of the modern login, branding, and configuration UI. Keep both sources, but do not merge their speakers.</p>
+      </div>
+
+      <div class="recommendation">
+        <p class="eyebrow">GPT recommendation</p>
+        <h3>Approve MwM spine 1</h3>
+        <p>It gives the column a clean argument: principle → old constraint → concrete proof → partnership guardrail → issue tie-in. It also keeps Mike’s strongest phrase in front without turning “independent of needing us” into a customer-facing support claim.</p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <strong>DRAFT:</strong> selection pack only. No Webflow, ActiveCampaign, Send, final Minute with Mike column, Quick Tip body, or What’s New two-pager was produced.
+    </footer>
+  </main>
+</body>
+</html>
