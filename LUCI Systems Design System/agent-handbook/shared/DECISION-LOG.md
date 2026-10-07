@@ -10,6 +10,8 @@
 
 ## 2026-10-07
 
+- **Upgrade path section: Variant A (horizontal timeline) is the locked direction.** Fact strip (4 facts) + "How your upgrade works" subhead + horizontal track with 4 numbered nodes connected by a gold→mint gradient line. Beats the facts-rail+cards (B) and interactive stepper (C) directions. Jane.
+
 - **Osage Casino Hotel – Ponca City is a multi-year partnership story, not an LED spotlight.** Follow the original LUCI installation → ballroom → Swizzle and Swigs arc; lead with relationship continuity and the embedded team, keep Swigs specifications secondary, and leave relationship/consolidation totals as Jane-supplied placeholders. Jane.
 
 ## 2026-10-06
