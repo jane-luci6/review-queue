@@ -8,7 +8,7 @@
 - **Status:** scaffold — coverage + empty template only; body not written
 
 ## Coverage bullets
-- January 19 release context without implying simultaneous rollout
+- December 2026 release context without implying simultaneous rollout
 - New laptop arrives with New LUCI and the security tunnel stack loaded
 - Current property laptop remains untouched while the new machine is verified
 - Verify on the new laptop, then complete the official switch

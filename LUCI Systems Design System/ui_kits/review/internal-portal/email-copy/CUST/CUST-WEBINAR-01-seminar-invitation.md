@@ -9,7 +9,7 @@
 
 ## Coverage bullets
 - Private customer preview; not a sales-demo frame
-- New LUCI availability on January 19
+- New LUCI availability in December 2026
 - Core promise: putting the power of programming in their hands, with LUCI support behind them
 - Three release promises: room control, view flexibility, and security control
 - Operations-and-IT walkthrough of concrete product changes

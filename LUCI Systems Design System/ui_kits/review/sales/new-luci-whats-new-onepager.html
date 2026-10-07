@@ -82,37 +82,37 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 .p1-cols{display:grid;grid-template-columns:repeat(3,1fr);column-gap:12px}
 /* Column washes on rounded panels (UG / approved mock); not on individual pills.
    Spacing: keep pre-mock canonical vertical rhythm (no mock-tightened gaps). */
-.p1-col{position:relative;border-radius:12px;padding:12px 12px 14px;
+.p1-col{position:relative;border-radius:12px;padding:10px 10px 12px;
   background:linear-gradient(155deg,#e8eef2 0%,#f3f6f8 100%)}
 .p1-col:nth-child(2){background:linear-gradient(155deg,#ebf9f4 0%,#f4fcf9 100%)}
 .p1-col:nth-child(3){background:linear-gradient(155deg,#d4efe4 0%,#e8f6ef 100%)}
 /* Transparent pillar headers + mint hairline (no navy boxes); padding/margin match pre-mock */
 .p1-card{background:transparent;border-radius:0;position:relative;overflow:visible;
-  padding:24px 0 22px;margin-bottom:22px;box-shadow:none;
+  padding:18px 0 14px;margin-bottom:16px;box-shadow:none;
   border-bottom:1px solid rgba(104,227,190,0.28)}
 .p1-card .p1-tex{display:none}
 /* Ghost nums — quieter than mock #10232d0d (~5%) → #10232d08 (~3%), right-aligned */
-.p1-num{position:absolute;top:-4px;left:auto;right:0;z-index:0;text-align:right;
-  font-family:var(--font);font-size:80px;font-weight:700;
-  color:#10232d08;line-height:1;letter-spacing:-3px;
+.p1-num{position:absolute;top:-2px;left:auto;right:0;z-index:0;text-align:right;
+  font-family:var(--font);font-size:60px;font-weight:700;
+  color:#10232d08;line-height:1;letter-spacing:-2px;
   pointer-events:none;user-select:none}
 .p1-headwrap{position:relative;z-index:1}
-.p1-card h3{font-family:var(--font);font-size:23px;font-weight:700;
-  color:var(--ink-strong);line-height:1.22;margin:0;
-  /* 01 title wraps to 3 lines (“of the guest experience”); reserve height so 02/03 align (UG min-height) */
-  min-height:calc(1.22em * 3)}
+.p1-card h3{font-family:var(--font);font-size:21px;font-weight:700;
+  color:var(--ink-strong);line-height:1.2;margin:0;
+  /* 01 title wraps to 3 lines (“of the guest experience”); reserve 2 lines so 02/03 align */
+  min-height:calc(1.2em * 2)}
 .p1-card h3 .ctrl{color:var(--accent-light)}
 .p1-col p{font-family:var(--font-body);font-size:13.5px;color:var(--text-gray);
-  line-height:1.52;margin-bottom:18px;min-height:calc(3 * 1.52em)}
+  line-height:1.52;margin-bottom:14px;min-height:calc(3 * 1.52em)}
 .p1-feat-label{font-family:var(--display);font-size:11.5px;font-weight:700;
-  letter-spacing:.1em;color:var(--accent-light);margin-bottom:16px}
-.p1-pillrow{display:flex;flex-direction:column;align-items:stretch;gap:8px}
+  letter-spacing:.1em;color:var(--accent-light);margin-bottom:14px}
+.p1-pillrow{display:flex;flex-direction:column;align-items:stretch;gap:6px}
 /* Unified translucent white pills + mint left border (no per-column tint) */
 .p1-pill{display:flex;align-items:center;gap:8px;
   background:#ffffffb8;
   border-left:3px solid var(--accent-light);border-radius:8px;
-  padding:16px 16px 16px 12px;
-  font-family:var(--font);font-size:13.5px;font-weight:700;line-height:1.2;
+  padding:13px 14px 13px 10px;
+  font-family:var(--font);font-size:13px;font-weight:700;line-height:1.2;
   letter-spacing:-0.01em;color:var(--ink-strong)}
 .p1-pill svg{flex:none;display:block;width:20px;height:20px}
 
@@ -126,10 +126,10 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 /* ── FOOTER (includes "for more information") ────────────────────────── */
 .close{flex:0 0 auto;background:var(--tint);padding:24px var(--pad) 24px;
   display:flex;justify-content:space-between;align-items:flex-end;gap:32px;
-  border-top:1px solid var(--rule-light)}.close__info{font-family:var(--font-body);font-size:12px;line-height:1.5;color:var(--ink)}
+  border-top:1px solid var(--rule-light)}.close__info{font-family:var(--font);font-size:12px;line-height:1.5;color:var(--ink)}
 .close__info strong{font-family:var(--font);font-weight:700;color:var(--ink-strong)}
 .close__url{display:block;margin-top:3px;font-family:var(--font);font-weight:700;font-size:13px;color:var(--accent-light)}
-.close__contact{font-family:var(--font-body);font-size:10.5px;line-height:1.6;color:var(--navy-muted);text-align:right}
+.close__contact{font-family:var(--font);font-size:10.5px;line-height:1.6;color:var(--navy-muted);text-align:right}
 .close__contact strong{font-family:var(--font);font-weight:700;color:var(--ink-strong)}
 
 .foot{flex:0 0 auto;background:var(--navy-deep);color:rgba(235,245,248,0.42);
@@ -143,7 +143,8 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
    full-width band; cards stretch to fill the page so there's no empty
    space at the foot. Soft-icon tiles per brochure §5.1. */
 .sheet--p2{display:grid;grid-template-rows:1fr auto auto}
-.p2-body{position:relative;min-height:0;overflow:hidden;display:flex;flex-direction:column}
+.p2-body{position:relative;min-height:0;overflow:hidden;display:flex;flex-direction:column;
+  padding-top:24px}
 .p2-grp{position:relative;flex:1 1 0;display:flex;flex-direction:column;
   padding:0 var(--pad);justify-content:center}
 .p2-grp + .p2-grp{border-top:1px solid var(--rule-light)}
@@ -171,14 +172,21 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
   justify-content:center;padding:24px var(--pad);
   background:var(--off-white);border-top:1px solid var(--rule-light)}
 .p2-spotlight__box{
-  background:linear-gradient(155deg,#F1E5C7 0%,#F8F2E5 100%);
+  position:relative;
+  background:linear-gradient(155deg,#e8eef2 0%,#f3f6f8 100%);
   border-radius:10px;border-left:3px solid var(--accent-light);
   padding:20px 24px;display:flex;flex-direction:column;justify-content:center}
 .p2-spotlight .p2-card-head{margin-bottom:8px}
 .p2-spotlight .p2-ic{width:26px;height:26px}
 .p2-spotlight .p2-ic svg{width:24px;height:24px}
 .p2-spotlight .p2-cn{color:var(--ink-strong);font-size:15.5px}
-.p2-spotlight .p2-star{width:14px;height:14px;display:inline-block;vertical-align:-2px;margin-left:6px}
+.p2-spotlight .p2-star{display:none}
+.p2-spotlight .p2-plus{position:absolute;top:0;left:16px;transform:translateY(-50%);
+  z-index:1;display:inline-flex;align-items:center;
+  font-family:var(--font);font-weight:700;font-size:10px;
+  letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-strong);
+  background:#CEB06E;border-radius:9999px;padding:4px 10px 3px;
+  line-height:1.2;box-shadow:0 2px 8px -2px rgba(10,20,26,0.22)}
 .p2-spotlight .p2-cb{color:var(--text-gray)}
 </style>
 </head>
@@ -195,7 +203,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
       <div class="p1-headline">THE <span class="p1-accent">POWER OF PROGRAMMING</span><br>IS IN YOUR HANDS</div>
       <div class="p1-release">
         <span class="p1-rlabel">RELEASE DATE</span>
-        <span class="p1-date">January 19</span>
+        <span class="p1-date">December 2026</span>
       </div>
       <div class="p1-bar" aria-hidden="true"></div>
     </header>
@@ -204,14 +212,14 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
       <img class="p1-map" src="assets/map_v7_lshape.png" alt="LUCI map-based control: every display and audio zone on one live floor plan.">
       <div class="p1-inner">
         <div class="p1-callout">The only A/V that scales and improves <b>just got better</b></div>
-        <p class="p1-intro">New LUCI puts more <b>day-to-day programming control</b> in your hands—across the room, the interface, and the operation. It is also <b>faster and more responsive</b>, with stronger real-time behavior and fixes throughout the platform. The <b>LUCI team</b> remains right there when you need us.</p>
+        <p class="p1-intro">A new version of LUCI is on its way, putting more <b>day-to-day programming control</b> in your hands—across the room, the interface, and the operation. We've built a <b>faster, more responsive foundation</b>, so LUCI and the room move together, the moment you act.</p>
         <div class="p1-cols">
           <div class="p1-col">
             <div class="p1-card">
               <img class="p1-tex" src="assets/header_tex_rgba.png" alt="" aria-hidden="true">
               <div class="p1-num" aria-hidden="true">01</div>
               <div class="p1-headwrap">
-                <h3>Greater <span class="ctrl">control</span><br>of the guest experience</h3>
+                <h3>Greater <span class="ctrl">control</span><br>of the room</h3>
               </div>
             </div>
             <p>Tune in-room panels, stage events, and group audio zones.</p>
@@ -276,21 +284,21 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
               <span class="p2-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2" fill="none" stroke="#2b9e80" stroke-width="1.6"/><path d="M3 9h18" stroke="#2b9e80" stroke-width="1.2" stroke-opacity=".35"/><circle cx="7" cy="13.5" r="1.2" fill="#CEB06E"/><circle cx="11" cy="13.5" r="1.2" fill="#2b9e80" fill-opacity=".4"/><circle cx="15" cy="13.5" r="1.2" fill="#2b9e80" fill-opacity=".4"/></svg></span>
               <p class="p2-cn">Venue panels</p>
             </div>
-            <p class="p2-cb">In-venue tablets show only the approved controls for that space. Operators adjust what they need without full access.</p>
+            <p class="p2-cb">In-venue tablets show only the approved controls for that space.</p>
           </div>
           <div class="p2-card">
             <div class="p2-card-head">
               <span class="p2-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="6" rx="1.3" fill="#68E3BE" fill-opacity=".15" stroke="#2b9e80" stroke-width="1.6"/><path d="M4 14h16M4 17h11" stroke="#2b9e80" stroke-width="1.3" stroke-linecap="round" stroke-opacity=".4"/><path d="M14 8l2 2-2 2" fill="none" stroke="#CEB06E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
               <p class="p2-cn">Staging</p>
             </div>
-            <p class="p2-cb">Prepare screens, sources, and audio levels behind the scenes. Apply the change on cue, or save it as a preset for next time.</p>
+            <p class="p2-cb">Prepare screens, sources, and audio levels behind the scenes and apply the changes on cue.</p>
           </div>
           <div class="p2-card">
             <div class="p2-card-head">
               <span class="p2-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h3l4 3V6L7 9z" fill="#68E3BE" fill-opacity=".15" stroke="#2b9e80" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 10c1.2 1.2 1.2 2.8 0 4" fill="none" stroke="#2b9e80" stroke-width="1.6" stroke-linecap="round"/><path d="M16.5 8c2 2 2 6 0 8" fill="none" stroke="#CEB06E" stroke-width="1.6" stroke-linecap="round"/></svg></span>
               <p class="p2-cn">Audio group control</p>
             </div>
-            <p class="p2-cb">Move several audio zones together: apply the same incremental change to keep their balance, or set them all to one volume.</p>
+            <p class="p2-cb">Move several audio zones together either incrementally or to a single level.</p>
           </div>
         </div>
       </section>
@@ -311,7 +319,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
               <span class="p2-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5l6-1 6 2 4-1v14l-4 1-6-2-6 1V5z" fill="#68E3BE" fill-opacity=".12" stroke="#2b9e80" stroke-width="1.4" stroke-linejoin="round"/><path d="M10 4v16M16 6v14" stroke="#2b9e80" stroke-width="1.1" stroke-opacity=".3"/><circle cx="13" cy="11" r="1.6" fill="#CEB06E"/></svg></span>
               <p class="p2-cn">Live map flexibility</p>
             </div>
-            <p class="p2-cb">Upload your own floor plan maps, rotate them to match your view, and see every device&rsquo;s status update live.</p>
+            <p class="p2-cb">Upload your own floor plan maps to their true geography and rotate them to match your view.</p>
           </div>
           <div class="p2-card">
             <div class="p2-card-head">
@@ -354,6 +362,7 @@ body{font-family:var(--font-body);background:#c8cdd0;color:var(--ink);font-size:
 
       <section class="p2-spotlight">
         <div class="p2-spotlight__box">
+          <span class="p2-plus">Plus</span>
           <div class="p2-card-head">
             <span class="p2-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-4 4V5z" fill="#2b9e80" fill-opacity=".12" stroke="#2b9e80" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 10h8M8 13h5" stroke="#2b9e80" stroke-width="1.3" stroke-linecap="round" stroke-opacity=".45"/><circle cx="17" cy="13" r="1.5" fill="#CEB06E"/></svg></span>
             <p class="p2-cn">In-product support<svg class="p2-star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z" fill="#CEB06E"/></svg></p>

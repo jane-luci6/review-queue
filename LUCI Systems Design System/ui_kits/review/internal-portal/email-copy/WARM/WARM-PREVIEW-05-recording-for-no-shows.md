@@ -11,7 +11,7 @@
 - Registered no-shows only; suppress attendees and active opportunities
 - Brief personal note from Mark
 - On-demand access without another live-meeting ask
-- January 19 availability context
+- December 2026 availability context
 - Feature highlight reel only if approved; full recording remains sufficient
 - No customer upgrade assets or ownership language
 - Response or booking stops marketing automation

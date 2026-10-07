@@ -14,7 +14,7 @@
 - More control in the room through venue panels
 - Safer preparation of changes through staging
 - Clearer activity, status, and support context through audit trails, live monitoring, and in-product support
-- January 19 availability
+- December 2026 availability
 - What’s New link or product overview; no customer upgrade guide
 
 ## Copy template
