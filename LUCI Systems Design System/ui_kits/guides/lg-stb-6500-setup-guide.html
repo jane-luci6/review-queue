@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUCI — LG STB-6500 Pro:Centric Setup</title>
+  <link rel="stylesheet" href="../sales/sales-document.css">
+  <link rel="stylesheet" href="assets/luci-brand-fonts.css">
+  <style>
+    :root { --mono: 'SFMono-Regular', ui-monospace, 'Roboto Mono', 'Menlo', monospace; }
+    .doc-page { padding: 0.5in 0.55in; }
+    .doc-hub-link { max-width: 8.5in; }
+
+    /* Page-1 header band — the one dark moment; full-bleed top of sheet 1 only */
+    .guide-band {
+      position: relative;
+      margin: calc(-1 * 0.5in) calc(-1 * 0.55in) 32px;
+      padding: 0.5in 0.55in 0.5in;
+      background: var(--navy);
+      overflow: hidden;
+    }
+    .guide-band::before {
+      content: ''; position: absolute; top: 0; right: 0; bottom: 4px; left: 0;
+      background-image: url('assets/texture-circuit-header-mintgold.png');
+      background-repeat: repeat; background-position: right top; background-size: 560px auto;
+      -webkit-mask-image: linear-gradient(90deg, transparent 30%, rgba(0,0,0,.5) 60%, #000 100%);
+              mask-image: linear-gradient(90deg, transparent 30%, rgba(0,0,0,.5) 60%, #000 100%);
+      opacity: .55; pointer-events: none;
+    }
+    .guide-band::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 4px; background: var(--mint); }
+    .guide-band > * { position: relative; z-index: 1; }
+    .guide-band__logos { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: 22px; }
+    .guide-band__luci { height: 26px; width: auto; display: block; }
+    .guide-band__client { height: 30px; width: auto; display: block; opacity: .9; filter: brightness(0) invert(1); }
+    .guide-band__kicker { margin: 0 0 10px; font-size: 11px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--mint); }
+    .guide-band__title { margin: 0; font-family: var(--font); font-size: 30px; font-weight: 700; line-height: 1.1; letter-spacing: -.025em; color: var(--off-white); }
+    .guide-band__title .guide-gold { color: var(--gold); }
+    .guide-band__meta { margin-top: 12px; font-family: var(--font-recede); font-size: 11px; letter-spacing: .04em; color: rgba(235,245,248,.6); }
+
+    /* Intro + prerequisite (light) */
+    .guide-intro { margin: 0 0 14px; font-family: var(--font-recede); font-size: 14.5px; line-height: 1.55; color: var(--ink); max-width: 66ch; }
+    .guide-intro strong { color: var(--ink-strong); font-weight: 700; }
+    .guide-prereq { margin: 0 0 18px; padding: 10px 0 10px 18px; border-left: 4px solid var(--gold-deep); font-family: var(--font-recede); font-size: 13.5px; line-height: 1.45; color: var(--ink-strong); max-width: 72ch; }
+    .guide-prereq__label { font-family: var(--font); font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-light); margin-right: 8px; }
+
+    /* Settings at a Glance — hero reference panel */
+    .guide-settings { margin: 40px 0 0; padding: 22px 28px 24px; background: var(--tint); border-top: 4px solid var(--accent-light); }
+    .guide-settings__label { margin: 0 0 16px; font-size: 11px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--accent-light); }
+    .guide-settings__cols { display: grid; grid-template-columns: 1fr 1fr; column-gap: 40px; align-items: start; }
+    .guide-settings__group { list-style: none; margin: 0; padding: 0; }
+    .guide-settings__head { padding-bottom: 8px; border-bottom: 1.5px solid var(--navy-mid); font-family: var(--font); font-size: 15px; font-weight: 700; letter-spacing: -.01em; color: var(--ink-strong); }
+    .guide-settings__head span { margin-left: 8px; font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-light); }
+    .guide-settings__row { padding: 12px 0; }
+    .guide-settings__row + .guide-settings__row { border-top: 1px solid var(--rule-light); }
+    .guide-settings__k { display: block; margin-bottom: 4px; font-family: var(--font); font-size: 10.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--navy-muted); }
+    .guide-settings__v { display: block; font-family: var(--mono); font-size: 20px; font-weight: 600; letter-spacing: -.01em; color: var(--ink-strong); }
+    .guide-settings__v--note { font-family: var(--font); font-size: 18px; font-weight: 700; letter-spacing: -.01em; }
+    .guide-settings__sub { display: block; margin-top: 2px; font-family: var(--font-recede); font-size: 12px; color: var(--navy-muted); }
+    /* Section lockup (light typographic header; NO negative margins) */
+    .guide-sec { margin: 26px 0 4px; }
+    .doc-page > .guide-sec:first-child { margin-top: 0; }
+    .guide-sec + .guide-sec { margin-top: 32px; }
+    .guide-sec__kicker { margin: 0 0 6px; font-family: var(--font); font-size: 11px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--accent-light); }
+    .guide-sec__title { margin: 0 0 10px; font-family: var(--font); font-size: 22px; font-weight: 700; line-height: 1.15; letter-spacing: -.02em; color: var(--ink-strong); }
+    .guide-sec__title .guide-gold { color: var(--gold-deep); }
+    .guide-sec__rule { width: 40px; height: 3px; background: var(--accent-light); margin: 0 0 14px; }
+    .guide-sec__deck { margin: 0 0 14px; font-family: var(--font-recede); font-size: 14px; line-height: 1.5; color: var(--ink); max-width: 60ch; }
+
+    /* Procedure step row (two-tier; left-rail number + action + optional chip/note) */
+    .guide-steps { margin: 0; }
+    .guide-step { display: grid; grid-template-columns: 0.5in 1fr; column-gap: 18px; padding: 8px 0; align-items: start; }
+    .guide-step + .guide-step { border-top: 1px solid var(--rule-light); }
+    .guide-step__num { font-family: var(--font); font-size: 20px; font-weight: 700; line-height: 1.1; letter-spacing: -.02em; color: var(--accent-light); font-variant-numeric: tabular-nums; }
+    .guide-step__body { grid-column: 2; }
+    .guide-step__do { font-family: var(--font-recede); font-size: 14.5px; font-weight: 400; line-height: 1.45; color: var(--ink-strong); }
+    .guide-step__do strong { font-weight: 700; }
+    .guide-step__line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; }
+    .guide-step__enter { font-family: var(--mono); font-size: 15px; font-weight: 600; color: var(--ink-strong); background: var(--tint); padding: 2px 9px; border-radius: 4px; white-space: nowrap; }
+    .guide-step__see { margin-top: 6px; font-family: var(--font-recede); font-size: 12.5px; line-height: 1.45; color: var(--ink); }
+    .guide-step__see strong { color: var(--ink-strong); font-weight: 700; }
+    .guide-step__tag { font-family: var(--font); font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin-right: 8px; }
+    .guide-step__tag--expect { color: var(--accent-light); }
+    .guide-step__tag--caution { color: var(--ink-strong); position: relative; padding-left: 11px; }
+    .guide-step__tag--caution::before { content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 3px; height: 100%; background: var(--gold-deep); }
+
+    /* Inline value in sentences (no chip) */
+    .guide-code { font-family: var(--mono); font-size: .92em; font-weight: 600; color: var(--ink-strong); }
+    /* Troubleshooting rows */
+    .guide-trouble { margin: 0; }
+    .guide-trouble__row { display: grid; grid-template-columns: 1.9in 1fr; column-gap: 20px; padding: 16px 0; }
+    .guide-trouble__row + .guide-trouble__row { border-top: 1px solid var(--rule-light); }
+    .guide-trouble__problem { font-family: var(--font); font-size: 14px; font-weight: 700; line-height: 1.3; letter-spacing: -.01em; color: var(--ink-strong); }
+    .guide-trouble__fix { list-style: none; margin: 0; padding: 0; }
+    .guide-trouble__fix li { position: relative; padding-left: 15px; font-family: var(--font-recede); font-size: 12.5px; line-height: 1.5; color: var(--ink); }
+    .guide-trouble__fix li + li { margin-top: 4px; }
+    .guide-trouble__fix li::before { content: ''; position: absolute; left: 0; top: .55em; width: 8px; height: 2px; background: var(--accent-light); }
+    .guide-trouble__fix .guide-code { color: var(--accent-light); }
+
+    /* Factory reset caution panel */
+    .guide-reset { margin: 32px 0 0; padding: 20px 24px 22px; background: var(--tint); border-left: 4px solid var(--gold-deep); }
+    .guide-reset__label { font-family: var(--font); font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 4px; }
+    .guide-reset__lead { margin: 0 0 12px; font-family: var(--font-recede); font-size: 13px; line-height: 1.45; color: var(--ink-strong); }
+    .guide-reset__steps { list-style: none; margin: 0; counter-reset: r; }
+    .guide-reset__step { counter-increment: r; display: grid; grid-template-columns: 0.34in 1fr; column-gap: 14px; padding: 7px 0; align-items: start; }
+    .guide-reset__step + .guide-reset__step { border-top: 1px solid var(--rule-light); }
+    .guide-reset__step::before { content: counter(r); font-family: var(--font); font-size: 16px; font-weight: 700; line-height: 1.2; color: var(--accent-light); font-variant-numeric: tabular-nums; }
+    .guide-reset__text { grid-column: 2; font-family: var(--font-recede); font-size: 13.5px; line-height: 1.45; color: var(--ink-strong); }
+    .guide-reset__text strong { font-weight: 700; }
+    .guide-reset__codes { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--rule-light); font-family: var(--font-recede); font-size: 12px; line-height: 1.6; color: var(--ink); }
+    .guide-reset__codes .guide-code { color: var(--accent-light); }
+    .guide-reset__codes strong { color: var(--ink-strong); font-weight: 700; }
+    /* Install Log worksheet */
+    .guide-log-intro { margin: 0 0 12px; font-family: var(--font-recede); font-size: 13px; line-height: 1.5; color: var(--ink); max-width: 64ch; }
+    .guide-log-intro strong { color: var(--ink-strong); font-weight: 700; }
+    .guide-log { margin: 0; }
+    .guide-log__head, .guide-log__row { display: grid; grid-template-columns: 0.5in 1.35in 2.1in 0.85in 0.85in 1fr; column-gap: 10px; align-items: center; padding: 0 6px; }
+    .guide-log__head { padding-bottom: 8px; border-bottom: 1.5px solid var(--navy-mid); }
+    .guide-log__col { font-family: var(--font); font-size: 9.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--navy-muted); line-height: 1.2; }
+    .guide-log__row { height: 0.30in; }
+    .guide-log__row + .guide-log__row { border-top: 1px solid var(--rule-light); }
+    .guide-log__row:nth-child(even) { background: rgba(16,35,45,.025); }
+    .guide-log__label { font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--accent-light); }
+    .guide-log__ip { font-family: var(--mono); font-size: 12px; font-weight: 600; color: var(--ink-strong); }
+    .guide-log__write { position: relative; height: 100%; }
+    .guide-log__write::after { content: ''; position: absolute; left: 2px; right: 2px; bottom: 6px; height: 1px; background: rgba(73,97,110,.4); }
+    .guide-log__box { display: inline-block; width: 16px; height: 16px; border: 1.5px solid var(--navy-mid); border-radius: 3px; vertical-align: middle; }
+    .guide-log__box--write { border-color: rgba(73,97,110,.4); }
+    .guide-log__note { margin-top: 14px; font-family: var(--font-recede); font-size: 12px; line-height: 1.5; color: var(--navy-muted); }
+    .guide-log__note strong { color: var(--ink-strong); font-weight: 700; }
+
+    /* Running footer (sales-document.css already provides .doc-foot; this is a light override for the guide) */
+    .doc-foot { font-family: var(--font-recede); }
+  </style>
+</head>
+<body>
+  <p class="doc-hub-link">Internal field guide · <a href="../../index.html">Back to Design Hub</a></p>
+  <div class="doc">
+    <!-- ════════ SHEET 1 ════════ -->
+    <section class="doc-page" data-page="1">
+      <header class="guide-band">
+        <div class="guide-band__logos">
+          <img class="guide-band__luci" src="assets/luci-full-mintmark-white.png" alt="LUCI">
+        </div>
+        <p class="guide-band__kicker">Field Setup Guide</p>
+        <h1 class="guide-band__title">LG STB-6500 <span class="guide-gold">Pro:Centric Setup</span></h1>
+        <p class="guide-band__meta">Internal · Rev 1 · October 2026</p>
+      </header>
+
+      <p class="guide-intro">Configure each new <strong>STB-6500</strong> set-top box on the bench, label it, and repack it in its own numbered box. Pro:Centric pairs the box to the LUCI server, downloads the profile, and reboots. <strong>Factory reset is only for boxes that don't set up correctly</strong> — see Troubleshooting on page 4.</p>
+
+      <div class="guide-prereq">
+        <span class="guide-prereq__label">Before you start</span>
+        Open the <strong>Install Log</strong> on the last page — every box gets one line, numbered from <span class="guide-code">155</span> up. <strong>Never reuse a number.</strong>
+      </div>
+
+      <div class="guide-settings">
+        <p class="guide-settings__label">Settings at a Glance</p>
+        <div class="guide-settings__cols">
+          <ul class="guide-settings__group">
+            <li class="guide-settings__head">Network <span>Step 2</span></li>
+            <li class="guide-settings__row">
+              <span class="guide-settings__k">IP Address</span>
+              <span class="guide-settings__v">10.14.153.155</span>
+              <span class="guide-settings__sub">first box, then count up by one</span>
+            </li>
+            <li class="guide-settings__row">
+              <span class="guide-settings__k">Subnet Mask</span>
+              <span class="guide-settings__v">255.255.252.0</span>
+            </li>
+            <li class="guide-settings__row">
+              <span class="guide-settings__k">Gateway</span>
+              <span class="guide-settings__v">10.14.152.1</span>
+            </li>
+            <li class="guide-settings__row">
+              <span class="guide-settings__k">DNS</span>
+              <span class="guide-settings__v guide-settings__v--note">Leave blank</span>
+            </li>
+          </ul>
+          <ul class="guide-settings__group">
+            <li class="guide-settings__head">Pro:Centric <span>Step 3</span></li>
+            <li class="guide-settings__row">
+              <span class="guide-settings__k">Mode</span>
+              <span class="guide-settings__v guide-settings__v--note">Manual → HTML</span>
+            </li>
+            <li class="guide-settings__row">
+              <span class="guide-settings__k">Server IP</span>
+              <span class="guide-settings__v">10.14.152.30</span>
+            </li>
+            <li class="guide-settings__row">
+              <span class="guide-settings__k">Server Port</span>
+              <span class="guide-settings__v">2126</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="doc-foot">LUCI · LG STB-6500 Pro:Centric Setup &nbsp;·&nbsp; Page 1 of 5</p>
+    </section>
+    <!-- ════════ SHEET 2 ════════ -->
+    <section class="doc-page" data-page="2">
+      <section class="guide-sec">
+        <p class="guide-sec__kicker">Step 1</p>
+        <h2 class="guide-sec__title">Assign an IP and label the box</h2>
+        <div class="guide-sec__rule"></div>
+        <p class="guide-sec__deck">Pick the next unused number, write it on the STB and the shipping box, and log it before you touch network settings.</p>
+        <ol class="guide-steps">
+          <li class="guide-step">
+            <span class="guide-step__num">1</span>
+            <div class="guide-step__body">
+              <p class="guide-step__do"><strong>Pick the next unused IP.</strong> Start at <span class="guide-code">10.14.153.155</span>, count up, and never reuse a number.</p>
+            </div>
+          </li>
+          <li class="guide-step">
+            <span class="guide-step__num">2</span>
+            <div class="guide-step__body">
+              <p class="guide-step__do"><strong>Label the STB.</strong> Write the last octet on the box itself — e.g. <span class="guide-code">10.14.153.155</span> → <span class="guide-code">155</span>.</p>
+            </div>
+          </li>
+          <li class="guide-step">
+            <span class="guide-step__num">3</span>
+            <div class="guide-step__body">
+              <p class="guide-step__do"><strong>Mark the shipping box</strong> with the same number so the STB and its box stay paired.</p>
+            </div>
+          </li>
+          <li class="guide-step">
+            <span class="guide-step__num">4</span>
+            <div class="guide-step__body">
+              <p class="guide-step__do"><strong>Log it.</strong> Fill in the matching line on the Install Log (last page) before moving on.</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section class="guide-sec">
+        <p class="guide-sec__kicker">Step 2</p>
+        <h2 class="guide-sec__title">Network Configuration — set a static IP</h2>
+        <div class="guide-sec__rule"></div>
+        <p class="guide-sec__deck">Open the network menu, switch off auto, and enter the static IP you picked in Step 1. The DNS warning at the end is expected.</p>
+        <ol class="guide-steps">
+          <li class="guide-step">
+            <span class="guide-step__num">5</span>
+            <div class="guide-step__body"><p class="guide-step__do">Open <strong>Network Configuration</strong> on the STB menu.</p></div>
+          </li>
+          <li class="guide-step">
+            <span class="guide-step__num">6</span>
+            <div class="guide-step__body"><p class="guide-step__do">Select <strong>Network Setting</strong>.</p></div>
+          </li>
+          <li class="guide-step">
+            <span class="guide-step__num">7</span>
+            <div class="guide-step__body"><p class="guide-step__do">Choose <strong>Wired Connected</strong>.</p></div>
+          </li>
+          <li class="guide-step">
+            <span class="guide-step__num">8</span>
+            <div class="guide-step__body"><p class="guide-step__do">Select <strong>Edit</strong>.</p></div>
+          </li>
+          <li class="guide-step">
+            <span class="guide-step__num">9</span>
+            <div class="guide-step__body">
+              <p class="guide-step__do">Uncheck <strong>Set Automatically</strong>. The box switches to <strong>Static IP</strong>.</p>
+            </div>
+          </li>
+          <li class="guide-step">
+            <span class="guide-step__num">10</span>
+            <div class="guide-step__body">
+              <p class="guide-step__line"><span class="guide-step__do"><strong>IP Address</strong> — enter</span><span class="guide-step__enter">10.14.153.[label]</span></p>
+              <p class="guide-step__see"><span class="guide-step__tag guide-step__tag--expect">Example</span>for box <span class="guide-code">155</span>, enter <span class="guide-code">10.14.153.155</span>.</p>
+            </div>
+          </li>
+          <li class="guide-step">
+            <span class="guide-step__num">11</span>
+            <div class="guide-step__body">
+              <p class="guide-step__line"><span class="guide-step__do"><strong>Subnet Mask</strong> — enter</span><span class="guide-step__enter">255.255.252.0</span></p>
+            </div>
+          </li>
+          <li class="guide-step">
+            <span class="guide-step__num">12</span>
+            <div class="guide-step__body">
+              <p class="guide-step__line"><span class="guide-step__do"><strong>Gateway</strong> — enter</span><span class="guide-step__enter">10.14.152.1</span></p>
+            </div>
+          </li>
+          <li class="guide-step">
+            <span class="guide-step__num">13</span>
+            <div class="guide-step__body">
+              <p class="guide-step__do">Select <strong>Connect</strong>.</p>
+              <p class="guide-step__see"><span class="guide-step__tag guide-step__tag--caution">Expected</span>A <strong>No DNS</strong> error is normal here — press <strong>Back</strong>. The static IP is kept.</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <p class="doc-foot">LUCI · LG STB-6500 Pro:Centric Setup &nbsp;·&nbsp; Page 2 of 5</p>
+    </section>
+    <!-- ════════ SHEET 3 ════════ -->
+    <section class="doc-page" data-page="3">
+      <section class="guide-sec">
+        <p class="guide-sec__kicker">Step 3</p>
+        <h2 class="guide-sec__title">Pro:Centric Server — point the box at LUCI</h2>
+        <div class="guide-sec__rule"></div>
+        <p class="guide-sec__deck">Walk the Pro:Centric wizard to Manual / HTML, enter the LUCI server address and port, then let the box find the server and pull its profile.</p>
+        <ol class="guide-steps">
+          <li class="guide-step">
+            <span class="guide-step__num">14</span>
+            <div class="guide-step__body"><p class="guide-step__do">Press <strong>Next</strong> through the Pro:Centric intro.</p></div>
+          </li>
+          <li class="guide-step">
+            <span class="guide-step__num">15</span>
+            <div class="guide-step__body"><p class="guide-step__do">Press <strong>Next</strong> again.</p></div>
+          </li>
+          <li class="guide-step">
+            <span class="guide-step__num">16</span>
+            <div class="guide-step__body"><p class="guide-step__do">Select <strong>Pro:Centric Manual</strong>.</p></div>
+          </li>
+          <li class="guide-step">
+            <span class="guide-step__num">17</span>
+            <div class="guide-step__body"><p class="guide-step__do">Select <strong>HTML</strong>.</p></div>
+          </li>
+          <li class="guide-step">
+            <span class="guide-step__num">18</span>
+            <div class="guide-step__body">
+              <p class="guide-step__line"><span class="guide-step__do"><strong>Server IP</strong> — enter</span><span class="guide-step__enter">10.14.152.30</span></p>
+            </div>
+          </li>
+          <li class="guide-step">
+            <span class="guide-step__num">19</span>
+            <div class="guide-step__body">
+              <p class="guide-step__line"><span class="guide-step__do"><strong>Server Port</strong> — enter</span><span class="guide-step__enter">2126</span></p>
+            </div>
+          </li>
+          <li class="guide-step">
+            <span class="guide-step__num">20</span>
+            <div class="guide-step__body">
+              <p class="guide-step__do">Select <strong>Search</strong>.</p>
+              <p class="guide-step__see"><span class="guide-step__tag guide-step__tag--expect">Expect</span><strong>Server Found</strong>. If not, see Troubleshooting on page 4.</p>
+            </div>
+          </li>
+          <li class="guide-step">
+            <span class="guide-step__num">21</span>
+            <div class="guide-step__body">
+              <p class="guide-step__do">Press <strong>Next</strong>. The download starts.</p>
+              <p class="guide-step__see"><span class="guide-step__tag guide-step__tag--caution">Caution</span><strong>Do not unplug</strong> the box while it downloads.</p>
+            </div>
+          </li>
+          <li class="guide-step">
+            <span class="guide-step__num">22</span>
+            <div class="guide-step__body">
+              <p class="guide-step__do">Select <strong>Reboot</strong>. Let it finish restarting.</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section class="guide-sec">
+        <p class="guide-sec__kicker">Step 4</p>
+        <h2 class="guide-sec__title">Finish — confirm, repack, log</h2>
+        <div class="guide-sec__rule"></div>
+        <p class="guide-sec__deck">Verify the three numbers match, put the box back in its numbered carton, and check it off on the Install Log.</p>
+        <ol class="guide-steps">
+          <li class="guide-step">
+            <span class="guide-step__num">23</span>
+            <div class="guide-step__body">
+              <p class="guide-step__do"><strong>Confirm the label.</strong> The STB, the shipping box, and the IP must all show the same number.</p>
+            </div>
+          </li>
+          <li class="guide-step">
+            <span class="guide-step__num">24</span>
+            <div class="guide-step__body">
+              <p class="guide-step__do"><strong>Repack.</strong> Unplug the box and put it back in its numbered shipping box.</p>
+            </div>
+          </li>
+          <li class="guide-step">
+            <span class="guide-step__num">25</span>
+            <div class="guide-step__body">
+              <p class="guide-step__do"><strong>Complete the log.</strong> Check off the row for this box on the Install Log (last page).</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <p class="doc-foot">LUCI · LG STB-6500 Pro:Centric Setup &nbsp;·&nbsp; Page 3 of 5</p>
+    </section>
+    <!-- ════════ SHEET 4 ════════ -->
+    <section class="doc-page" data-page="4">
+      <section class="guide-sec">
+        <p class="guide-sec__kicker">Troubleshooting</p>
+        <h2 class="guide-sec__title">When a box won't set up</h2>
+        <div class="guide-sec__rule"></div>
+        <div class="guide-trouble">
+          <div class="guide-trouble__row">
+            <p class="guide-trouble__problem">Server not found</p>
+            <ul class="guide-trouble__fix">
+              <li>Check the network cable and link light on the STB.</li>
+              <li>Re-check the IP, subnet, and gateway from <strong>Step 2</strong>.</li>
+              <li>Make sure the IP isn't already in use on the network.</li>
+              <li>Confirm the server IP is <span class="guide-code">10.14.152.30</span> and port is <span class="guide-code">2126</span>.</li>
+            </ul>
+          </div>
+          <div class="guide-trouble__row">
+            <p class="guide-trouble__problem">No DNS error on Connect</p>
+            <ul class="guide-trouble__fix">
+              <li>Normal. Press <strong>Back</strong> — the static IP is kept. Continue to Step 3.</li>
+            </ul>
+          </div>
+          <div class="guide-trouble__row">
+            <p class="guide-trouble__problem">Wrong IP, download fails, or box won't finish</p>
+            <ul class="guide-trouble__fix">
+              <li>Run the <strong>Factory Reset</strong> below.</li>
+              <li>Restart at <strong>Step 2</strong> using the <em>same</em> IP and label.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="guide-reset">
+        <p class="guide-reset__label">Factory Reset · InStop — only if setup failed</p>
+        <p class="guide-reset__lead">Use this only when a box won't take its profile. After the reset, return to <strong>Step 2</strong> with the same IP and label.</p>
+        <ol class="guide-reset__steps">
+          <li class="guide-reset__step">
+            <span class="guide-reset__text">Open the <strong>Installer Menu</strong>: press <span class="guide-code">Menu</span> ten times, then <span class="guide-code">9 8 7 6</span>, then <span class="guide-code">Exit</span>.</span>
+          </li>
+          <li class="guide-reset__step">
+            <span class="guide-reset__text">Enter <span class="guide-code">117</span> then press <span class="guide-code">Menu</span>.</span>
+          </li>
+          <li class="guide-reset__step">
+            <span class="guide-reset__text">Enter <span class="guide-code">413</span> then press <span class="guide-code">OK</span>.</span>
+          </li>
+          <li class="guide-reset__step">
+            <span class="guide-reset__text">Enter the password <span class="guide-code">0413</span>.</span>
+          </li>
+        </ol>
+        <p class="guide-reset__codes"><strong>Code sequence:</strong> <span class="guide-code">Menu ×10</span> → <span class="guide-code">9 8 7 6</span> → <span class="guide-code">Exit</span> → <span class="guide-code">117</span> + <span class="guide-code">Menu</span> → <span class="guide-code">413</span> + <span class="guide-code">OK</span> → <span class="guide-code">0413</span>.</p>
+      </section>
+
+      <p class="doc-foot">LUCI · LG STB-6500 Pro:Centric Setup &nbsp;·&nbsp; Page 4 of 5</p>
+    </section>
+    <!-- ════════ SHEET 5 ════════ -->
+    <section class="doc-page" data-page="5">
+      <section class="guide-sec">
+        <p class="guide-sec__kicker">Install Log</p>
+        <h2 class="guide-sec__title">One line per box — numbered in order</h2>
+        <div class="guide-sec__rule"></div>
+        <p class="guide-log-intro">Fill in one row per STB as you configure it. <strong>Never reuse a number.</strong> The Label and IP are pre-filled for the first twenty boxes; add lines past <span class="guide-code">.174</span> as needed.</p>
+      </section>
+
+      <div class="guide-log">
+        <div class="guide-log__head">
+          <span class="guide-log__col">Label</span>
+          <span class="guide-log__col">IP Address</span>
+          <span class="guide-log__col">STB MAC Address</span>
+          <span class="guide-log__col">Server Found</span>
+          <span class="guide-log__col">Box Marked</span>
+          <span class="guide-log__col">Initials</span>
+        </div>
+        <div class="guide-log__row"><span class="guide-log__label">155</span><span class="guide-log__ip">10.14.153.155</span><span class="guide-log__write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__write"></span></div>
+        <div class="guide-log__row"><span class="guide-log__label">156</span><span class="guide-log__ip">10.14.153.156</span><span class="guide-log__write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__write"></span></div>
+        <div class="guide-log__row"><span class="guide-log__label">157</span><span class="guide-log__ip">10.14.153.157</span><span class="guide-log__write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__write"></span></div>
+        <div class="guide-log__row"><span class="guide-log__label">158</span><span class="guide-log__ip">10.14.153.158</span><span class="guide-log__write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__write"></span></div>
+        <div class="guide-log__row"><span class="guide-log__label">159</span><span class="guide-log__ip">10.14.153.159</span><span class="guide-log__write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__write"></span></div>
+        <div class="guide-log__row"><span class="guide-log__label">160</span><span class="guide-log__ip">10.14.153.160</span><span class="guide-log__write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__write"></span></div>
+        <div class="guide-log__row"><span class="guide-log__label">161</span><span class="guide-log__ip">10.14.153.161</span><span class="guide-log__write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__write"></span></div>
+        <div class="guide-log__row"><span class="guide-log__label">162</span><span class="guide-log__ip">10.14.153.162</span><span class="guide-log__write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__write"></span></div>
+        <div class="guide-log__row"><span class="guide-log__label">163</span><span class="guide-log__ip">10.14.153.163</span><span class="guide-log__write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__write"></span></div>
+        <div class="guide-log__row"><span class="guide-log__label">164</span><span class="guide-log__ip">10.14.153.164</span><span class="guide-log__write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__write"></span></div>
+        <div class="guide-log__row"><span class="guide-log__label">165</span><span class="guide-log__ip">10.14.153.165</span><span class="guide-log__write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__write"></span></div>
+        <div class="guide-log__row"><span class="guide-log__label">166</span><span class="guide-log__ip">10.14.153.166</span><span class="guide-log__write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__write"></span></div>
+        <div class="guide-log__row"><span class="guide-log__label">167</span><span class="guide-log__ip">10.14.153.167</span><span class="guide-log__write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__write"></span></div>
+        <div class="guide-log__row"><span class="guide-log__label">168</span><span class="guide-log__ip">10.14.153.168</span><span class="guide-log__write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__write"></span></div>
+        <div class="guide-log__row"><span class="guide-log__label">169</span><span class="guide-log__ip">10.14.153.169</span><span class="guide-log__write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__write"></span></div>
+        <div class="guide-log__row"><span class="guide-log__label">170</span><span class="guide-log__ip">10.14.153.170</span><span class="guide-log__write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__write"></span></div>
+        <div class="guide-log__row"><span class="guide-log__label">171</span><span class="guide-log__ip">10.14.153.171</span><span class="guide-log__write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__write"></span></div>
+        <div class="guide-log__row"><span class="guide-log__label">172</span><span class="guide-log__ip">10.14.153.172</span><span class="guide-log__write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__write"></span></div>
+        <div class="guide-log__row"><span class="guide-log__label">173</span><span class="guide-log__ip">10.14.153.173</span><span class="guide-log__write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__write"></span></div>
+        <div class="guide-log__row"><span class="guide-log__label">174</span><span class="guide-log__ip">10.14.153.174</span><span class="guide-log__write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__write"></span></div>
+        <div class="guide-log__row"><span class="guide-log__write"></span><span class="guide-log__write"></span><span class="guide-log__write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__write"></span></div>
+        <div class="guide-log__row"><span class="guide-log__write"></span><span class="guide-log__write"></span><span class="guide-log__write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__write"></span></div>
+        <div class="guide-log__row"><span class="guide-log__write"></span><span class="guide-log__write"></span><span class="guide-log__write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__write"></span></div>
+        <div class="guide-log__row"><span class="guide-log__write"></span><span class="guide-log__write"></span><span class="guide-log__write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__box guide-log__box--write"></span><span class="guide-log__write"></span></div>
+      </div>
+      <p class="guide-log__note"><strong>Add lines past <span class="guide-code">.174</span> as needed</strong> — continue the count and never reuse a number from a box already deployed.</p>
+      <p class="doc-foot">LUCI · LG STB-6500 Pro:Centric Setup &nbsp;·&nbsp; Page 5 of 5</p>
+    </section>
+  </div>
+</body>
+</html>

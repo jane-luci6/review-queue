@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Export the Belterra STB guide as a PDF with every IP address as an editable form field.
+"""Export an LG STB-6500 guide as a PDF with every IP address and box number as an editable form field.
 
 Usage:
-  python3 build-fillable-pdf.py [output.pdf]
+  python3 build-fillable-pdf.py <guide.html> <output.pdf>
 
 Two headless-Chrome passes: one measures each IP element's box, one prints the page
 with those values hidden. PyMuPDF then drops a pre-filled text field over each box.
@@ -11,8 +11,8 @@ import html, json, pathlib, re, subprocess, sys, tempfile
 import fitz
 
 HERE = pathlib.Path(__file__).resolve().parent
-SRC = HERE / 'belterra-park-lg-stb-setup-guide.html'
-OUT = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else pathlib.Path.home() / 'Desktop' / 'LUCI - Belterra Park LG STB-6500 Setup Guide.pdf'
+SRC = (HERE / sys.argv[1]).resolve()
+OUT = pathlib.Path(sys.argv[2]).expanduser()
 CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
 PX_TO_PT = 0.75
 
@@ -21,15 +21,16 @@ TAG_JS = r"""
 (() => {
   const ip = /^\d{1,3}\.\d{1,3}\.\d{1,3}\.(\d{1,3}|\[label\])$/;
   const port = /^\d{4}$/;
-  const isAddr = t => ip.test(t) || port.test(t);
+  const label = /^\.?\d{1,3}$/;
+  const isAddr = t => ip.test(t) || port.test(t) || label.test(t);
   const targets = [];
-  document.querySelectorAll('.guide-settings__v:not(.guide-settings__v--note), .guide-step__enter, .guide-code, .guide-log__ip').forEach(el => {
-    if (isAddr(el.textContent.trim())) targets.push(el);
+  document.querySelectorAll('.guide-settings__v:not(.guide-settings__v--note), .guide-step__enter, .guide-code, .guide-log__label, .guide-log__ip').forEach(el => {
+    if (isAddr(el.textContent.trim()) && !el.closest('.guide-reset')) targets.push(el);
   });
   document.querySelectorAll('.guide-log__row').forEach(row => {
-    if (!row.querySelector('.guide-log__ip')) targets.push(row.children[1]);
+    if (!row.querySelector('.guide-log__ip')) targets.push(row.children[0], row.children[1]);
   });
-  targets.forEach((el, i) => el.setAttribute('data-f', i));
+  targets.forEach((el, i) => { el.dataset.c = getComputedStyle(el).color; el.setAttribute('data-f', i); });
   const st = document.createElement('style');
   st.textContent = '[data-f]{color:transparent!important}';
   document.head.appendChild(st);
@@ -48,8 +49,7 @@ window.addEventListener('load', () => setTimeout(() => {
     const r = el.getBoundingClientRect();
     const cs = getComputedStyle(el);
     const pad = parseFloat(cs.paddingLeft) || 0;
-    el.style.color = '';
-    const color = getComputedStyle(el).color;
+    const color = el.dataset.c;
     return {i, page: pages.indexOf(page), x: r.left - pr.left + pad, y: r.top - pr.top,
             w: r.width - pad * 2, h: r.height, fs: parseFloat(cs.fontSize),
             color, value: el.textContent.trim(), log: !!el.closest('.guide-log')};
@@ -91,7 +91,7 @@ def main():
     for f in fields:
         page = doc[f['page']]
         x0, y0 = f['x'] * PX_TO_PT, f['y'] * PX_TO_PT
-        w = max(f['w'], 90 if f['log'] else 0) * PX_TO_PT
+        w = f['w'] * PX_TO_PT
         rect = fitz.Rect(x0 - 1, y0, x0 + w + 2, y0 + f['h'] * PX_TO_PT)
         wd = fitz.Widget()
         wd.field_type = fitz.PDF_WIDGET_TYPE_TEXT
