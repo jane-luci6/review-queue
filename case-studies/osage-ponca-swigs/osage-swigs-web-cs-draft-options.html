@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Osage Casino Hotel – Ponca City (Swigs) | Case-study draft options</title>
+  <title>Osage Casino Hotel – Ponca City | Case-study draft options</title>
   <style>
     :root {
       --navy: #0a161c;
@@ -51,10 +51,18 @@
       font-size: clamp(28px, 5vw, 44px);
       line-height: 1.12;
     }
-    .review-bar p:last-child {
+    .review-bar h1 + p {
       margin: 12px 0 0;
       max-width: 70ch;
       color: rgba(255,255,255,.78);
+    }
+    .lock-banner {
+      margin-top: 20px;
+      padding: 16px 20px;
+      border-left: 4px solid var(--gold);
+      background: rgba(237,208,134,.1);
+      color: var(--white);
+      font-weight: 700;
     }
     .jump {
       display: flex;
@@ -80,6 +88,7 @@
     }
     .option-label {
       margin: 0;
+      max-width: none;
       padding: 14px 28px;
       background: var(--gold);
       color: var(--navy);
@@ -146,7 +155,7 @@
 
     .facts {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 1px;
       margin: 24px 0;
       padding: 1px;
@@ -166,6 +175,11 @@
       color: var(--muted);
       font-size: 14px;
       line-height: 1.4;
+    }
+    .facts .tbd {
+      margin-top: 0;
+      color: var(--mint-dark);
+      font-size: 26px;
     }
     .summary {
       display: grid;
@@ -215,6 +229,50 @@
     }
     .mode h4 { margin: 0 0 6px; }
     .mode p { margin: 0; }
+    .timeline {
+      margin: 28px 0 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: chapter;
+    }
+    .timeline li {
+      position: relative;
+      padding: 0 0 30px 64px;
+      counter-increment: chapter;
+    }
+    .timeline li:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      left: 19px;
+      top: 40px;
+      bottom: 6px;
+      width: 1px;
+      background: var(--rule);
+    }
+    .timeline li::before {
+      content: counter(chapter, decimal-leading-zero);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 40px;
+      color: var(--mint-dark);
+      font-weight: 800;
+      letter-spacing: .08em;
+    }
+    .timeline h4 { margin: 0 0 8px; }
+    .timeline p { margin: 0; }
+    .source-note {
+      margin-top: 24px;
+      padding: 16px 20px;
+      background: #edf5f2;
+      border-left: 4px solid var(--mint-dark);
+      color: var(--ink);
+      font-size: 14px;
+    }
+    .spec-note {
+      color: var(--muted);
+      font-size: 14px;
+    }
     .quote {
       background: var(--navy) !important;
       color: var(--white);
@@ -229,9 +287,10 @@
     }
     .tbd {
       display: inline-block;
-      color: var(--gold);
+      color: var(--mint-dark);
       font-weight: 800;
     }
+    .quote .tbd { color: var(--gold); }
     .photo-file {
       display: block;
       margin-top: 4px;
@@ -251,6 +310,9 @@
     }
     .decisions p { color: var(--muted); }
 
+    @media (max-width: 850px) {
+      .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
     @media (max-width: 700px) {
       .facts, .summary { grid-template-columns: 1fr; }
       .specs th, .specs td { display: block; width: 100%; }
@@ -263,8 +325,9 @@
   <header class="review-bar">
     <div class="review-bar__inner">
       <p class="eyebrow">Draft review · no publish</p>
-      <h1>Osage Casino Hotel – Ponca City (Swigs)</h1>
-      <p>Two complete copy directions for the web case study. Option A leads with the build and operator control. Option B leads with the venue and the experiences the system supports.</p>
+      <h1>Osage Casino Hotel – Ponca City</h1>
+      <p>Two complete web case-study directions built from the same source-safe timeline. Option A leads with the value of an ongoing LUCI relationship. Option B leads with the way Ponca City’s spaces evolved under one control platform.</p>
+      <p class="lock-banner">Oct 7 Jane lock — rebuilt around multi-year Ponca City partnership; prior LED-spotlight drafts superseded.</p>
       <nav class="jump" aria-label="Draft options">
         <a href="#option-a">Option A</a>
         <a href="#option-b">Option B</a>
@@ -275,85 +338,94 @@
 
   <main>
     <article class="option" id="option-a">
-      <p class="option-label">Option A · Technical / operator spine</p>
+      <p class="option-label">Option A · Partnership / embedded-team spine</p>
       <header class="hero">
         <p class="eyebrow">Case study</p>
-        <h2>Three planes. One continuous wall.</h2>
-        <p class="dek">At Swigs, a four-person LUCI team aligned 60 cabinets across an angled, nearly 20-foot display, mapped 480 panels, commissioned four operating presets, expanded the audio system, and integrated every new endpoint alongside the property’s existing technology—in 25.5 working hours.</p>
-        <p class="property">Osage Casino Hotel – Ponca City (Swigs) <span>· Ponca City, Oklahoma</span></p>
+        <h2>Already there for what comes next.</h2>
+        <p class="dek">The value at Osage Casino Hotel – Ponca City is not one installation. It is a control platform already in place and a LUCI team that keeps returning as the property changes—from the original LUCI deployment, to the ballroom, to Swizzle and Swigs.</p>
+        <p class="property">Osage Casino Hotel – Ponca City <span>· Ponca City, Oklahoma</span></p>
       </header>
 
       <section aria-labelledby="a-glance">
         <h3 id="a-glance">At a glance</h3>
+        <p class="section-lead">Relationship totals stay open until Jane supplies the publishable numbers.</p>
         <ul class="facts">
-          <li><strong>3 planes</strong><span>One nearly 20-foot continuous LED canvas</span></li>
-          <li><strong>60 / 480</strong><span>LED cabinets / individual panels</span></li>
-          <li><strong>3840 × 1296</strong><span>Native resolution</span></li>
-          <li><strong>4 presets</strong><span>Full-wall, two seven-screen, and featured-center layouts</span></li>
-          <li><strong>7 sources</strong><span>Independent set-top boxes for multi-screen viewing</span></li>
-          <li><strong>25.5 hours</strong><span>Total working time for the onsite installation</span></li>
+          <li><strong><span class="tbd">[TBD]</span></strong><span>Jane: published years with LUCI<br>Source floor: at least four years</span></li>
+          <li><strong><span class="tbd">[TBD]</span></strong><span>Jane: projects or phases at Ponca City</span></li>
+          <li><strong><span class="tbd">[TBD]</span></strong><span>Jane: rooms or venues managed through LUCI</span></li>
+          <li><strong><span class="tbd">[TBD]</span></strong><span>Jane: endpoints, zones, or systems consolidated</span></li>
         </ul>
 
         <div class="summary">
           <div>
             <h4>The challenge</h4>
-            <p>Make cabinets and content align across three walls set at different angles.</p>
+            <p>Keep each new room and upgrade connected to the operating environment already in place.</p>
           </div>
           <div>
             <h4>The approach</h4>
-            <p>Build the wall, map the canvas, commission video and audio, then integrate the new endpoints into LUCI.</p>
+            <p>Return across multiple phases: original LUCI, ballroom, then Swizzle and Swigs.</p>
           </div>
           <div>
             <h4>The result</h4>
-            <p>One continuous display with four operating layouts, seven independent sources, two new audio zones, and centralized control.</p>
+            <p><span class="tbd">[TBD — Jane: relationship-wide consolidation result]</span></p>
           </div>
         </div>
+      </section>
 
-        <h4>Hardware specifications · facts block</h4>
+      <section aria-labelledby="a-challenge">
+        <h3 id="a-challenge">The challenge: make the next project part of the same operation</h3>
+        <p>Casino environments do not stop changing after the first installation. Rooms take on new uses, venues expand, and new audio and video systems arrive. Without an operating standard already in place, each project can add another interface, another workflow, and another set of variables for the property team to manage.</p>
+        <p>The available sources do not document Ponca City’s original before-state or the exact scope of its first LUCI installation. They do establish something more useful for this story: LUCI was already running before the later work began. When the ballroom needed a solution, the team returned. When Swizzle and Swigs followed, LUCI returned again.</p>
+        <p class="source-note"><strong>Source boundary:</strong> Jane still needs to supply the original-install date, the early scope, and any approved account of what the property needed to consolidate.</p>
+      </section>
+
+      <section aria-labelledby="a-approach">
+        <h3 id="a-approach">An embedded relationship, built across the timeline</h3>
+        <p class="section-lead">The source-safe sequence is clear even where dates and early project details remain open.</p>
+        <ol class="timeline">
+          <li>
+            <h4>The foundation · Original LUCI installation</h4>
+            <p>LUCI was already operating at Ponca City before the team members in the Oct. 5 conversation began the later work. The transcript points to an initial casino-floor deployment, but the exact year, endpoint count, and original scope remain <span class="tbd">[TBD — Jane]</span>.</p>
+          </li>
+          <li>
+            <h4>The extension · Ballroom</h4>
+            <p>LUCI later returned with a ballroom solution. The source specifically mentions projectors and bringing the ballroom work onto LUCI; it does not support wall dimensions, room counts, or an exact date.</p>
+          </li>
+          <li>
+            <h4>The latest chapters · Swizzle, then Swigs</h4>
+            <p>The recent Ponca City venue work happened in phases: the venue Jane identifies as Swizzle first, then Swigs as part of the casino expansion. The Swizzle name and specifications still need public confirmation. The Swigs source is complete enough to document the LED, audio, video, and LUCI integration as secondary proof.</p>
+          </li>
+        </ol>
+
+        <h4>Relationship scope supported today</h4>
+        <ul class="scope">
+          <li>Original LUCI environment at Ponca City <span class="tbd">[exact scope TBD — Jane]</span></li>
+          <li>Later ballroom solution involving projectors brought onto LUCI</li>
+          <li>Swizzle LED venue phase <span class="tbd">[public spelling and specifications TBD — Jane]</span></li>
+          <li>Swigs LED, video sources, audio zones, and endpoints integrated into LUCI alongside existing property technology</li>
+        </ul>
+
+        <h4>Latest chapter — Swigs <span class="spec-note">(secondary technical detail · optional public facts block)</span></h4>
         <table class="specs">
           <tbody>
-            <tr><th>LED</th><td>Design LED 1.56mm-pitch CoB</td></tr>
-            <tr><th>Processing</th><td>NovaStar H5</td></tr>
-            <tr><th>Video sources</th><td>Seven LG set-top boxes</td></tr>
-            <tr><th>Amplification</th><td>QSC CX-Q 8K8</td></tr>
-            <tr><th>Speakers</th><td>Five JBL stage speakers, two JBL subwoofers, three JBL in-ceiling speakers</td></tr>
+            <tr><th>LED canvas</th><td>60 cabinets · 480 panels · 3840 × 1296</td></tr>
+            <tr><th>Display system</th><td>Design LED 1.56mm-pitch CoB · NovaStar H5</td></tr>
+            <tr><th>Operating modes</th><td>Four presets · seven independent LG video sources</td></tr>
+            <tr><th>Audio</th><td>QSC amplification · two zones · five JBL stage speakers · two JBL subwoofers · three JBL in-ceiling speakers</td></tr>
+            <tr><th>Delivery</th><td>Four-person onsite team · 25.5 working hours · additional home-office support</td></tr>
+            <tr><th>Integration</th><td>New audio and video endpoints joined the property’s existing LUCI control environment</td></tr>
           </tbody>
         </table>
       </section>
 
-      <section aria-labelledby="a-challenge">
-        <h3 id="a-challenge">The challenge: align the architecture and the image</h3>
-        <p>Swigs’ LED wall is not flat. A center section sits behind the stage while two wings angle forward toward the audience. Every cabinet edge and LED module had to meet cleanly where one plane changed to the next.</p>
-        <p>Physical alignment was only the first half of the job. After the 60 cabinets and 480 panels were in place, the team had to map the 3840 × 1296 image across all three surfaces so content would remain continuous from one end of the wall to the other.</p>
-      </section>
-
-      <section aria-labelledby="a-built">
-        <h3 id="a-built">What we built</h3>
-        <p class="section-lead">The team moved from cabinet installation to a commissioned display, expanded audio, and LUCI control integration in 25.5 working hours.</p>
-        <p>All 60 cabinets went up during the first working day. The team then installed the 480 panels, completed the display mapping and programming, and commissioned the wall. Four presets gave the property a full-wall view, two seven-screen layouts, and a featured center image with content continuing on the outer sections.</p>
-        <p>The audio work added amplification, five stage speakers, two subwoofers, three in-ceiling speakers, and two new zones for the bar and stage. LUCI integrated those zones, the new video sources, and the other endpoints alongside the property’s existing technology.</p>
-
-        <h4>Scope</h4>
-        <ul class="scope">
-          <li>Installed and aligned 60 LED cabinets across three angled planes</li>
-          <li>Installed 480 LED panels and terminated cabinet power and data</li>
-          <li>Mapped and programmed one 3840 × 1296 continuous canvas</li>
-          <li>Built four operational presets for full-wall, multi-screen, and featured-center use</li>
-          <li>Integrated seven independent video sources</li>
-          <li>Added two audio zones with five stage speakers, two subwoofers, and three in-ceiling speakers</li>
-          <li>Integrated the new audio and video endpoints into LUCI alongside existing property technology</li>
-        </ul>
-      </section>
-
       <section aria-labelledby="a-results">
-        <h3 id="a-results">Results: installation to operation in 25.5 hours</h3>
-        <p>The project had been scheduled for four full working days. A four-person onsite team, supported by LUCI’s home office, completed the primary installation and programming during the first two days. By Thursday, the remaining work had been reduced to a three-item punch list.</p>
+        <h3 id="a-results">Consolidation you can see</h3>
+        <p>The sources confirm that the latest Swigs endpoints joined technology already managed through LUCI. They do not provide relationship-wide totals, removals, or before-and-after counts, so the proof rows remain open.</p>
         <ul class="results">
-          <li>The three physical planes read as one continuous LED canvas.</li>
-          <li>Four presets reshape the wall for a single large image, two seven-screen arrangements, or a featured center image.</li>
-          <li>Seven independent sources support multi-screen television viewing.</li>
-          <li>Two new audio zones support the bar, stage, everyday operation, and live entertainment.</li>
-          <li>Operators manage the new audio and video endpoints through LUCI alongside the property’s existing technology.</li>
+          <li><span class="tbd">[TBD — Jane: original systems, interfaces, or workflows brought under LUCI]</span></li>
+          <li><span class="tbd">[TBD — Jane: ballroom rooms, projectors, or controls consolidated]</span></li>
+          <li><span class="tbd">[TBD — Jane: Swizzle systems and endpoints integrated]</span></li>
+          <li><span class="tbd">[TBD — Jane: Ponca City total endpoints, zones, rooms, or interfaces managed through LUCI]</span></li>
         </ul>
       </section>
 
@@ -364,119 +436,112 @@
 
       <section aria-labelledby="a-next">
         <h3 id="a-next">What’s next</h3>
-        <p>LUCI has worked with Osage for at least four years. At Swigs, the immediate result is a new LED, audio, and control environment built to operate with the technology already in place.</p>
-        <p><strong>TBD:</strong> Specific future plans for Swigs are not documented in the current sources.</p>
+        <p>The current sources do not document a future Ponca City phase. The relationship history supports a light close about continuity, but any named next project or promised result must wait.</p>
+        <p><span class="tbd">[TBD — Jane: approved next chapter, or omit this section]</span></p>
       </section>
 
       <section aria-labelledby="a-photos">
         <h3 id="a-photos">Suggested photo slots</h3>
         <ul class="photos">
-          <li><strong>Hero:</strong> Finished three-plane wall showing the full architectural shape.<span class="photo-file">osage-hero-wall-finished-web.jpg</span></li>
-          <li><strong>Challenge:</strong> Empty wall cavity before the LED installation.<span class="photo-file">osage-wall-cavity-before-web.jpg</span></li>
-          <li><strong>Build:</strong> Cabinets and panels going in across the three surfaces.<span class="photo-file">osage-wall-build-web.jpg</span></li>
-          <li><strong>Commissioning:</strong> Active panels and calibration work during the build.<span class="photo-file">osage-wall-build-2-web.jpg</span></li>
-          <li><strong>Result:</strong> Bar view with the wall active behind the stage.<span class="photo-file">osage-bar-logo-screens-web.jpg</span></li>
+          <li><strong>Hero · relationship context:</strong> Property exterior or gaming-floor context, so the page opens on Ponca City rather than the latest wall.<span class="photo-file">osage-exterior-dusk-web.jpg · osage-gaming-floor-web.jpg</span></li>
+          <li><strong>Original LUCI chapter:</strong> <span class="tbd">[Photo TBD — Jane: source image that proves the original installation]</span></li>
+          <li><strong>Ballroom chapter:</strong> <span class="tbd">[Photo TBD — Jane: ballroom or projector work]</span></li>
+          <li><strong>Swizzle chapter:</strong> <span class="tbd">[Photo TBD — Jane: confirm which available wall images depict Swizzle]</span></li>
+          <li><strong>Swigs build:</strong> Installation and commissioning details as proof of the embedded team at work.<span class="photo-file">osage-wall-build-web.jpg · osage-wall-build-2-web.jpg</span></li>
+          <li><strong>Swigs result:</strong> Finished venue view, used later in the page rather than as the opening thesis.<span class="photo-file">osage-hero-wall-finished-web.jpg · osage-bar-logo-screens-web.jpg</span></li>
         </ul>
       </section>
     </article>
 
     <article class="option" id="option-b">
-      <p class="option-label">Option B · Guest experience / venue spine</p>
+      <p class="option-label">Option B · Venue evolution / one-platform spine</p>
       <header class="hero">
         <p class="eyebrow">Case study</p>
-        <h2>A venue that changes with the moment.</h2>
-        <p class="dek">Swigs can move from a nearly 20-foot branding canvas to a multi-screen sports destination or a live-show backdrop. Four display presets, seven independent video sources, expanded audio, and LUCI control let the same room support each experience.</p>
-        <p class="property">Osage Casino Hotel – Ponca City (Swigs) <span>· Ponca City, Oklahoma</span></p>
+        <h2>The spaces changed. Control stayed connected.</h2>
+        <p class="dek">Ponca City’s multimedia environment grew in chapters: an original LUCI deployment, a later ballroom solution, then new venue work at Swizzle and Swigs. Each chapter extended the control platform already in place.</p>
+        <p class="property">Osage Casino Hotel – Ponca City <span>· Ponca City, Oklahoma</span></p>
       </header>
 
       <section aria-labelledby="b-glance">
         <h3 id="b-glance">At a glance</h3>
+        <p class="section-lead">Lead with the relationship denominator once Jane supplies it—not the dimensions of the latest wall.</p>
         <ul class="facts">
-          <li><strong>1 canvas</strong><span>Nearly 20 feet wide across three planes</span></li>
-          <li><strong>4 presets</strong><span>Layouts for branding, television, and live events</span></li>
-          <li><strong>7 sources</strong><span>Independent television inputs</span></li>
-          <li><strong>2 zones</strong><span>New audio zones for the expanded bar and stage</span></li>
-          <li><strong>60 / 480</strong><span>LED cabinets / individual panels</span></li>
-          <li><strong>25.5 hours</strong><span>Total working time with a four-person onsite team</span></li>
+          <li><strong><span class="tbd">[TBD]</span></strong><span>Jane: published relationship length</span></li>
+          <li><strong><span class="tbd">[TBD]</span></strong><span>Jane: Ponca City project or phase count</span></li>
+          <li><strong><span class="tbd">[TBD]</span></strong><span>Jane: total spaces connected through LUCI</span></li>
+          <li><strong><span class="tbd">[TBD]</span></strong><span>Jane: total systems, endpoints, or zones now managed</span></li>
         </ul>
 
         <div class="summary">
           <div>
             <h4>The challenge</h4>
-            <p>Create one venue for everyday casino activity, sports viewing, promotions, and live entertainment.</p>
+            <p>Expand the property without turning each new space into a separate control environment.</p>
           </div>
           <div>
             <h4>The approach</h4>
-            <p>Build the visual centerpiece around the room, then connect its modes, sources, and audio through LUCI.</p>
+            <p>Bring each new room and venue into the LUCI environment established at the property.</p>
           </div>
           <div>
             <h4>The result</h4>
-            <p>A wall that changes with the room while still reading as one continuous architectural feature.</p>
+            <p><span class="tbd">[TBD — Jane: property-wide operating result]</span></p>
           </div>
         </div>
+      </section>
 
-        <h4>Hardware specifications · facts block</h4>
+      <section aria-labelledby="b-challenge">
+        <h3 id="b-challenge">The challenge: let the property grow without multiplying the operation</h3>
+        <p>A casino floor, a ballroom, a restaurant venue, and a live-entertainment space ask different things of A/V. If each project arrives with its own operating logic, the property inherits more interfaces and more disconnected workflows every time it expands.</p>
+        <p>Ponca City’s history offers a different frame. LUCI was already running before the later projects began. The question at each new phase was not how to start over, but how to bring another space into the control environment the property already had.</p>
+        <p class="source-note"><strong>Source boundary:</strong> This is the strategic problem the timeline illustrates. Jane still needs to provide any property-specific before-state, operator pain, or measurable consolidation result.</p>
+      </section>
+
+      <section aria-labelledby="b-approach">
+        <h3 id="b-approach">One control spine through each new space</h3>
+        <p class="section-lead">This direction makes the rooms the organizing device while keeping the same required chronological arc.</p>
+        <ol class="timeline">
+          <li>
+            <h4>Casino floor · Establish the platform</h4>
+            <p>The source conversation says LUCI was already in place and initially centered on the casino floor. The exact installation year and the systems under management remain <span class="tbd">[TBD — Jane]</span>.</p>
+          </li>
+          <li>
+            <h4>Ballroom · Extend beyond the floor</h4>
+            <p>The team later returned with a ballroom solution involving projectors. This was the first sourced expansion beyond the initial floor environment, but room counts, specifications, and dates are not available for publication.</p>
+          </li>
+          <li>
+            <h4>Swizzle and Swigs · Add new venue experiences</h4>
+            <p>The recent venue work was ordered together and built in phases: Swizzle first, then Swigs. Swizzle’s publishable details remain open. At Swigs, the expansion added a stage venue with LED, video distribution, audio zones, and new endpoints integrated into the property’s LUCI environment.</p>
+          </li>
+        </ol>
+
+        <h4>What the relationship now spans</h4>
+        <ul class="scope">
+          <li>Casino-floor control foundation <span class="tbd">[complete scope TBD — Jane]</span></li>
+          <li>Ballroom projectors and control solution</li>
+          <li>Swizzle venue LED and LUCI control <span class="tbd">[specifications TBD — Jane]</span></li>
+          <li>Swigs LED display, independent video sources, expanded audio, and LUCI integration</li>
+        </ul>
+
+        <h4>Latest chapter — Swigs <span class="spec-note">(secondary technical detail · optional public facts block)</span></h4>
         <table class="specs">
           <tbody>
-            <tr><th>LED</th><td>Design LED 1.56mm-pitch CoB, 3840 × 1296 native resolution</td></tr>
-            <tr><th>Processing</th><td>NovaStar H5</td></tr>
-            <tr><th>Video sources</th><td>Seven LG set-top boxes</td></tr>
-            <tr><th>Amplification</th><td>QSC CX-Q 8K8</td></tr>
-            <tr><th>Speakers</th><td>Five JBL stage speakers, two JBL subwoofers, three JBL in-ceiling speakers</td></tr>
+            <tr><th>LED canvas</th><td>60 cabinets · 480 panels · 3840 × 1296</td></tr>
+            <tr><th>Display system</th><td>Design LED 1.56mm-pitch CoB · NovaStar H5</td></tr>
+            <tr><th>Operating modes</th><td>Four presets · seven independent LG video sources</td></tr>
+            <tr><th>Audio</th><td>QSC amplification · two zones · five JBL stage speakers · two JBL subwoofers · three JBL in-ceiling speakers</td></tr>
+            <tr><th>Delivery</th><td>Four-person onsite team · 25.5 working hours · additional home-office support</td></tr>
+            <tr><th>Integration</th><td>New audio and video endpoints joined the property’s existing LUCI control environment</td></tr>
           </tbody>
         </table>
       </section>
 
-      <section aria-labelledby="b-challenge">
-        <h3 id="b-challenge">The challenge: make one room serve more than one occasion</h3>
-        <p>Swigs was designed as more than another bar. The venue needed to support drinks and everyday casino activity, sports and television viewing, property promotions, and live entertainment.</p>
-        <p>The centerpiece also had to belong to the room. Instead of placing a flat screen behind the stage, the design follows three architectural planes: a center section at the back and two wings angled toward the audience. The visual experience needed to feel continuous even as the physical wall changed direction.</p>
-      </section>
-
-      <section aria-labelledby="b-built">
-        <h3 id="b-built">What we built</h3>
-        <p class="section-lead">One flexible display and audio environment, with distinct modes for the way Swigs changes throughout the day and across events.</p>
-
-        <div class="mode">
-          <h4>One large-format canvas</h4>
-          <p>The entire wall can carry marketing, branding, promotional content, or large-format video across all three planes.</p>
-        </div>
-        <div class="mode">
-          <h4>A multi-screen sports view</h4>
-          <p>Two seven-screen layouts and seven independent sources let the property show multiple channels at the same time.</p>
-        </div>
-        <div class="mode">
-          <h4>A live-event backdrop</h4>
-          <p>A featured image can take over the center of the wall while the outer sections continue to carry branded or promotional content.</p>
-        </div>
-        <div class="mode">
-          <h4>Audio for the bar and stage</h4>
-          <p>Two new zones, five stage speakers, two subwoofers, and three in-ceiling speakers support everyday operation and live entertainment.</p>
-        </div>
-
-        <p>Behind those experiences are 60 cabinets, 480 panels, a 3840 × 1296 canvas, four presets, seven video sources, new amplification, and multiple audio endpoints. LUCI brings the new systems into the property’s existing control environment.</p>
-
-        <h4>Scope</h4>
-        <ul class="scope">
-          <li>Built a nearly 20-foot display around three architectural planes</li>
-          <li>Aligned 60 cabinets and 480 panels into one continuous image</li>
-          <li>Programmed four operational presets for the venue’s different uses</li>
-          <li>Integrated seven independent video sources for multi-screen viewing</li>
-          <li>Expanded the bar and stage audio with two new zones</li>
-          <li>Integrated the new audio and video endpoints into LUCI alongside existing property technology</li>
-        </ul>
-      </section>
-
       <section aria-labelledby="b-results">
-        <h3 id="b-results">Results: one room, multiple experiences</h3>
-        <p>The finished wall feels like part of the architecture rather than a screen attached to it. Its three planes create a more immersive visual field while operating as one continuous display.</p>
+        <h3 id="b-results">Consolidation you can see</h3>
+        <p>This direction should show how the denominator grew while the operating environment stayed unified. The available sources do not provide the totals, so Jane’s numbers remain the proof required to finish the section.</p>
         <ul class="results">
-          <li>Between events, the wall can carry property marketing, branding, and promotional content.</li>
-          <li>For sports viewing, seven independent sources turn the wall into a multi-screen environment.</li>
-          <li>For live entertainment, the center can carry the featured image while the outer sections continue branded content.</li>
-          <li>The expanded audio system supports everyday bar operation and the stage.</li>
-          <li>LUCI gives operators centralized control of the new endpoints alongside the property’s existing technology.</li>
-          <li>A four-person onsite team completed the work in 25.5 hours; the original four-day schedule ended with only a three-item Thursday punch list.</li>
+          <li><span class="tbd">[TBD — Jane: casino-floor systems or endpoints on LUCI]</span></li>
+          <li><span class="tbd">[TBD — Jane: ballroom rooms, projectors, or workflows added]</span></li>
+          <li><span class="tbd">[TBD — Jane: Swizzle systems or endpoints added]</span></li>
+          <li><span class="tbd">[TBD — Jane: complete Ponca City denominator → one LUCI interface]</span></li>
         </ul>
       </section>
 
@@ -487,18 +552,19 @@
 
       <section aria-labelledby="b-next">
         <h3 id="b-next">What’s next</h3>
-        <p>LUCI has worked with Osage for at least four years. Swigs extends that relationship with a venue designed to change across daily use, sports viewing, promotions, and live events without separating those experiences into different control environments.</p>
-        <p><strong>TBD:</strong> Specific future plans for Swigs are not documented in the current sources.</p>
+        <p>No future Ponca City project is documented in the sources. If Jane has an approved next phase, it can close the venue-evolution arc. Otherwise, this section should end with the established pattern: new spaces can join the operating environment already in place.</p>
+        <p><span class="tbd">[TBD — Jane: approved future work, or omit this section]</span></p>
       </section>
 
       <section aria-labelledby="b-photos">
         <h3 id="b-photos">Suggested photo slots</h3>
         <ul class="photos">
-          <li><strong>Hero:</strong> Finished wall active in the venue, framed wide enough to show all three planes.<span class="photo-file">osage-hero-wall-finished-web.jpg</span></li>
-          <li><strong>Venue context:</strong> Swigs bar view with the stage screens active.<span class="photo-file">osage-bar-logo-screens-web.jpg</span></li>
-          <li><strong>Architecture:</strong> Before view of the wall cavity to establish how the display follows the room.<span class="photo-file">osage-wall-cavity-before-web.jpg</span></li>
-          <li><strong>Making the experience:</strong> Technician working across the partially built wall.<span class="photo-file">osage-wall-build-2-web.jpg</span></li>
-          <li><strong>Property context:</strong> Exterior at dusk as a transition into the short relationship-history close.<span class="photo-file">osage-exterior-dusk-web.jpg</span></li>
+          <li><strong>Hero · property evolution:</strong> Exterior at dusk, reserving the finished Swigs wall for the latest chapter.<span class="photo-file">osage-exterior-dusk-web.jpg</span></li>
+          <li><strong>Chapter 1 · casino floor:</strong> Property context only; do not present it as proof of the original LUCI scope without confirmation.<span class="photo-file">osage-gaming-floor-web.jpg</span></li>
+          <li><strong>Chapter 2 · ballroom:</strong> <span class="tbd">[Photo TBD — Jane: ballroom or projector image]</span></li>
+          <li><strong>Chapter 3 · Swizzle:</strong> <span class="tbd">[Photo TBD — Jane: identify and confirm Swizzle image]</span></li>
+          <li><strong>Chapter 3 · Swigs before/build:</strong> Move from the empty cavity into installation and commissioning.<span class="photo-file">osage-wall-cavity-before-web.jpg · osage-wall-build-web.jpg · osage-wall-build-2-web.jpg</span></li>
+          <li><strong>Chapter 3 · Swigs finished:</strong> Close the timeline on the venue operating today.<span class="photo-file">osage-hero-wall-finished-web.jpg · osage-bar-logo-screens-web.jpg</span></li>
         </ul>
       </section>
     </article>
@@ -506,14 +572,16 @@
     <section class="decisions" id="open-decisions">
       <p class="eyebrow">Jane review</p>
       <h2>Open decisions</h2>
-      <p>The property name and website slug are already resolved. These are the remaining editorial forks.</p>
+      <p>These are the decisions needed before the copy becomes an implementation brief.</p>
       <ul>
-        <li><strong>Primary spine:</strong> Option A’s build/operator story or Option B’s venue/guest-experience story.</li>
-        <li><strong>Partner and vendor names:</strong> Keep Design LED, NovaStar, LG, QSC, and JBL in facts/specification blocks only, as drafted, or omit them from the public page entirely. Neither option uses them in narrative body copy.</li>
-        <li><strong>Quote:</strong> Source and approve a customer/operator quote, or run the case study without a quote block.</li>
-        <li><strong>Other Ponca City work:</strong> Whether to mention Swizzle and the ballroom at all. Both drafts currently omit them because publishable scope details are TBD.</li>
-        <li><strong>Technical depth after the option pick:</strong> Keep the detailed preset breakdown in the narrative or move it entirely into the facts block. The sourced count remains four.</li>
-        <li><strong>Relationship context:</strong> Keep the “at least four years” Osage line in What’s Next or make the page entirely Swigs-specific.</li>
+        <li><strong>Lead direction:</strong> Option A’s partnership / embedded-team argument or Option B’s venue-evolution / one-platform argument.</li>
+        <li><strong>Relationship denominator:</strong> Jane to supply the published years with LUCI, project or phase count, spaces, and the strongest relationship-wide endpoint / zone / system total.</li>
+        <li><strong>Consolidation proof:</strong> Jane to identify what systems, interfaces, workflows, vendors, racks, licenses, or other variables were actually consolidated in each chapter.</li>
+        <li><strong>Swizzle naming:</strong> Confirm Swizzle as the public spelling against the transcript’s “Swallows” and other transcription variants before implementation.</li>
+        <li><strong>Original + ballroom detail:</strong> Supply the original-install year and scope, plus ballroom room/projector counts or approved descriptive detail if available.</li>
+        <li><strong>Partner and vendor names:</strong> Keep Design LED, NovaStar, LG, QSC, and JBL in the optional Swigs facts block only, or omit partner names from the public page entirely. Neither option uses them in narrative body copy.</li>
+        <li><strong>Quote:</strong> Source and approve a property/operator quote, or remove the quote section.</li>
+        <li><strong>What’s next:</strong> Add a sourced Ponca City next phase, close only on the established continuity pattern, or omit the section.</li>
       </ul>
     </section>
   </main>

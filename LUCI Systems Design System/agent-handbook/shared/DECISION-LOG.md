@@ -8,6 +8,10 @@
 
 ---
 
+## 2026-10-07
+
+- **Osage Casino Hotel – Ponca City is a multi-year partnership story, not an LED spotlight.** Follow the original LUCI installation → ballroom → Swizzle and Swigs arc; lead with relationship continuity and the embedded team, keep Swigs specifications secondary, and leave relationship/consolidation totals as Jane-supplied placeholders. Jane.
+
 ## 2026-10-06
 
 - **"Also in this upgrade" switches from chip wall to two-column accordion list.** The hover-expanding chip wall had a Chrome flex-wrap sub-pixel rendering bug at row boundaries (1px artifact on the last chip per row in wide windows) that couldn't be killed — sr-only clip, solid background, fixed border-radius, and GPU compositing all failed; the glitch just moved to whichever chip landed at the wrap. Replaced with a two-column CSS-grid accordion (mint dot + name per row, hairline dividers, hover/focus expands the description inline). Grid, not flex-wrap, so the bug can't occur. Jane picked this over the pop-out card grid variant. Jane.
