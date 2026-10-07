@@ -4,45 +4,44 @@ Draft status: Signal Issue 05 browser review only. No Webflow, ActiveCampaign, s
 
 ## Partnership-spine status
 
-- The r2 story leads with the multi-year LUCI–Osage relationship, then uses this year’s Ponca City expansion and Swigs work as the current chapter.
-- The hero row uses relationship/project fields rather than LED specifications.
-- The current fact sheet at `case-studies/osage-ponca-swigs/osage-swigs-fact-sheet.md` was checked on Oct. 7. It is still the LED-era sourced sheet and does not yet contain rebuilt relationship/project hero facts.
-- In accordance with the r2 brief, **Years with Osage** and **Venues in this chapter** remain `TBD` in the hero row. **Ponca City — This year’s focus** is supported by the transcript.
-- The HTML carries a small review banner noting the fact-sheet rebuild and the naming question.
+- The fact sheet at `case-studies/osage-ponca-swigs/osage-swigs-fact-sheet.md` was rebuilt Oct. 7 around the multi-year Ponca City partnership.
+- The r2 story follows the sourced order: original LUCI install → ballroom onto LUCI → Swizzle → Swigs.
+- The hero row uses relationship/project fields rather than LED specifications. **Years with LUCI** and **Projects / phases at property** remain `TBD` pending Jane’s published figures. **Ponca City — This year’s focus** is supported by the transcript.
+- Swigs LED, audio, preset, and 25.5-working-hour facts remain secondary body proof, not hero stats.
+- The HTML banner now says the fact sheet is aligned and asks Jane only to confirm the Oct. 7 Swizzle publishing lock.
 
-## Naming flag — Jane decision required
+## Naming flag — Jane confirmation required
 
-**Swallow vs Swizzle — Jane: which venue name to publish?**
+**Confirm venue spelling: Swizzle (Jane Oct. 7 lock) vs. transcript “Swallow(s)” — Jane confirm before publish.**
 
 Evidence:
 
-- Jane’s earlier brief used **Swigs and Swizzle**, plus the ballroom.
-- The current Consuelo/CoS frame uses **Swigs/Swallow**.
-- The Oct. 5 transcript ASR produces several inconsistent forms: “swallows,” “follows,” “swags,” and “snakes.” It is not reliable enough to settle the name.
+- Jane’s Oct. 7 publishing name is **Swizzle**.
+- The Oct. 5 transcript ASR produces inconsistent forms including “swallows,” “follows,” “swags,” and “snakes.” It is not reliable enough to verify spelling.
+- CoS sometimes wrote **Swallow**.
 - Brian’s spotlight names **Swigs only**.
-- Project Media folder names are `Osage Ponca LED 1` and `Osage Ponca LED 2`; neither confirms a venue name.
+- Editorial handling in r2: publish-name direction is **Swizzle** for the earlier venue chapter and **Swigs** for the latest chapter; the banner keeps Swizzle open for Jane’s final confirmation rather than presenting a free naming choice.
 
-Editorial handling in r2: **Swigs** is the named lead venue. The other location appears only as “another venue” in body copy and `[second venue TBD]` in the property line.
+## Fact-sheet rows used
 
-## Claims used in the HTML
-
-- **Osage operates multiple properties in Oklahoma.** Source: `10-05-osage-case-study-transcript.txt`; the team discusses multiple locations and confirms they are all in Oklahoma. The draft does not publish a property count or roster.
-- **LUCI has worked with Osage for at least four years.** Source: transcript at 00:10:47–00:10:52: “four plus?” / “At least four years.”
-- **Ponca City was the focus of this year’s work.** Source: transcript at 00:06:50–00:07:13 and 00:10:50–00:10:59.
-- **Another Ponca City venue preceded Swigs in the expansion sequence.** Source: transcript at 00:07:13–00:07:20, 00:09:47–00:10:03, and 00:19:42–00:19:58. Its public name remains unresolved, so the draft does not name it.
-- **Swigs is the property’s new bar and live entertainment venue.** Source: `swigs-osage-ponca-city-spotlight.txt`, opening project summary.
-- **Swigs needed to support bar service, sports viewing, and live entertainment.** Source: spotlight sections “Transforming the Guest Experience at Swigs,” “One Display. Multiple Experiences,” and “Audio Built for Entertainment.”
-- **LUCI delivered integrated A/V and control centered on a nearly 20-foot display.** Source: spotlight opening, “Three Planes. One Seamless Display,” and “Bringing Everything Under One Control Platform.”
-- **The display contains 60 cabinets and 480 panels across three angled planes, reading as one continuous canvas.** Source: spotlight opening and “Three Planes. One Seamless Display.”
-- **Four presets support large-format content, multi-source television, and live-entertainment use.** Source: spotlight, “From 60 Cabinets to 480 LED Panels” and “One Display. Multiple Experiences.”
-- **Two new audio zones support the expanded bar and stage area.** Source: spotlight, “Building Out the Audio System.”
-- **New video and audio endpoints were integrated into LUCI alongside the property’s existing technology.** Source: spotlight, “Building Out the Audio System” and “Bringing Everything Under One Control Platform.”
-- **A four-person onsite team had additional home-office support and completed the project in 25.5 total working hours.** Source: spotlight, “25.5 Hours From Installation to Completion.” The draft says working hours, not calendar days.
+- **Subject / chapter frame:** fact-sheet row “The case study subject is Osage Casino Hotel – Ponca City, with the ballroom, Swizzle, and Swigs treated as chapters of one property relationship.”
+- **Original install before ballroom:** rows “LUCI had already been installed before the later ballroom work” and “The original installation predates the current team’s later visits.”
+- **Ballroom second:** row “LUCI later returned for ballroom work involving projectors and a ballroom solution brought onto LUCI.”
+- **Recent venue order:** rows “The venue work occurred in sequence: the venue transcribed as ‘Swallows’ first, then Swigs” and “Jane’s Oct. 7 publishing name for the first venue is Swizzle.”
+- **This year’s Ponca City focus:** row “The latest Ponca City venue work came after the ballroom chapter,” supported by the transcript excerpt “At least four, and then this year we went back and did Ponca City.”
+- **Phased venue work:** row “The two recent venue installations were ordered together and built in phases.”
+- **Swigs identity:** latest-chapter row “Swigs is a bar and live-entertainment venue at Osage Casino Hotel in Ponca City, Oklahoma.”
+- **Swigs display proof:** latest-chapter row “The wall contains 60 LED cabinets and 480 individual panels”; three-plane placement is supported by the spotlight’s “Three Planes. One Seamless Display” section.
+- **Swigs presets:** latest-chapter row “Four operating presets cover full-screen content, two seven-screen layouts, and a featured-center layout.”
+- **Swigs audio:** latest-chapter row describing “two new audio zones” supporting the expanded bar and stage area.
+- **Swigs integration:** latest-chapter row “LUCI integrated the new audio and video endpoints and zones alongside technology already at the property.”
+- **Swigs delivery:** latest-chapter row “A four-person onsite team, supported by the home office, completed 25.5 working hours.”
 
 ## Editorial decisions and omissions
 
 - The story body is within the requested 180–280-word range, excluding headline, banners, stats, caption, and link.
-- The LED facts appear once in narrative body copy as proof of the continuing relationship; they do not lead the headline or stat row.
+- Swizzle receives a light, sequence-only mention; no Swizzle technical specifications are invented.
+- Swigs LED/audio facts appear once in narrative body copy as proof of the continuing relationship; they do not lead the headline or stat row.
 - Design LED, QSC, JBL, NovaStar, and LG are omitted. They do not improve this short partnership-led story.
 - Resolution, pixel pitch, detailed wall dimensions, individual speaker counts, and the four-day schedule are omitted for focus.
 - No property count, firm venue count, relationship install count, customer quote, business outcome, or detailed operator workflow is invented.
