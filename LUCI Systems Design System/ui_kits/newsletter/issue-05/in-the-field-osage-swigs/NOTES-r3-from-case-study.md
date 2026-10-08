@@ -1,0 +1,19 @@
+# Issue 05 In the Field — r3 source notes
+- Body-copy word count: 355, including the opener dek and narrative paragraphs; excludes headline, property line, stats, titles, and “What Ponca City runs now” list.
+- Opener dek condenses the case-study thesis at lines 4–6.
+- “The project was never just one room” condenses the challenge and continuity paragraphs at lines 29–35.
+- “Four phases. One relationship.” condenses the relationship section at lines 35–39 and the phase sequence at lines 42–45.
+- “The latest project — Swigs” condenses the Swigs build and operating paragraphs at lines 45–50.
+- “What Ponca City runs now” draws from the consolidation scope at lines 59–60 and relationship outcomes at lines 64–69.
+- Stats: `4+ years growing on LUCI`, `4 connected projects`, `2 venue phases in the latest expansion`, and `98 endpoints on LUCI` are verbatim from lines 13–22.
+- Swigs build stats: nearly 20 feet, 60 cabinets, 480 panels, and 3840 × 1296 are from lines 45–48.
+- Team/timing stats: four onsite people and 25.5 working hours are from lines 48–49.
+- Operating stats: four presets, seven independent video sources, and two new audio zones are from lines 49–50.
+- Layout counts: one full canvas and two seven-screen layouts are from line 50.
+- The list’s `98 endpoints` is supported at lines 59–60; its `four presets`, `seven sources`, and `one three-plane canvas` are supported at lines 45–50 and 67–69.
+- Dropped the glance labels, photo-caption inventory, consolidation section, forward section, and CTA so this stays at Issue 04 newsletter length.
+- Dropped all unresolved case-study placeholders: casino-floor denominator, ballroom denominator, Swizzle denominator, and total audio zones (lines 52–59 and 73–79).
+- Conflict corrected: previous Issue 05 headline said “every next phase”; source headline says “for every property expansion.”
+- Conflict corrected: previous property location said only “Oklahoma”; source says “Ponca City, Oklahoma.”
+- Conflict corrected: previous stats used two TBDs, `Ponca City / This year’s focus`, and `4 / Swigs display presets`; source inventory is the four-stat set now used.
+- Conflict corrected: previous copy added “this year,” “new bar and live entertainment venue,” and `25.5 total working hours`; those were removed or narrowed to the source’s installation-and-primary-programming claim.
