@@ -1167,6 +1167,41 @@
       max-width: 52ch;
     }
 
+    /* 2-up photo gallery inside the field-scale band (Issue 05 — replaces Issue 04 video) */
+    .field-gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .field-gallery__item {
+      position: relative;
+      margin: 0;
+    }
+    .field-gallery__img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 0;
+    }
+    .field-gallery__tag {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      font-family: var(--display);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--off-white);
+      background: rgba(10,22,28,0.6);
+      padding: 4px 10px;
+    }
+    @media (max-width: 600px) {
+      .field-gallery { grid-template-columns: 1fr; }
+    }
+
     .field-stats {
       background: var(--navy);
       padding: clamp(28px, 4vw, 44px) var(--pad);
@@ -2969,8 +3004,17 @@
     </div>
     <div class="field-scale field-bleed">
       <div class="field-scale__band">
-        <div class="field-photo-ph" aria-hidden="true"></div>
-        <p class="field-scale__caption">Photo TBD: Osage Project Media</p>
+        <div class="field-gallery">
+          <figure class="field-gallery__item">
+            <img class="field-gallery__img" src="assets/in-the-field/osage-led1-wall-finished.jpg" alt="Swizzle at Osage Casino Hotel &mdash; Ponca City: the finished LED wall displaying the LUCI logo" width="1600" height="900" loading="lazy">
+            <span class="field-gallery__tag">Swizzle</span>
+          </figure>
+          <figure class="field-gallery__item">
+            <img class="field-gallery__img" src="assets/in-the-field/osage-swigs-live-wall.jpg" alt="Swigs at Osage Casino Hotel &mdash; Ponca City: the three-plane LED wall live with multiple sports sources above the stage and bar" width="1600" height="900" loading="lazy">
+            <span class="field-gallery__tag">Swigs</span>
+          </figure>
+        </div>
+        <p class="field-scale__caption">Swizzle and Swigs, the two venue phases of the latest expansion, on the same LUCI foundation.</p>
       </div>
     </div>
   </section>
@@ -2986,7 +3030,6 @@
       <div class="field-num__body">
         <p>Casino technology rarely becomes complicated because of one project. Complexity accumulates as each remodel, venue, and new system arrives with its own controls, vendors, and operating logic.</p>
         <p>The original Ponca City installation put the LUCI platform, control infrastructure, and operating standard in place before the later expansions began. The same team returned when the ballroom came online, then again for Swizzle and Swigs. Each phase extended the software already running the property instead of adding another isolated A/V environment for the property team to manage.</p>
-        <p>That continuity mattered because the later rooms did not arrive as standalone work. The team already understood the property, its infrastructure, and its operating standard before each new phase began.</p>
       </div>
     </div>
 
@@ -2996,14 +3039,23 @@
       </div>
       <div class="field-num__rule" aria-hidden="true"></div>
       <div class="field-num__body">
-        <p>The relationship started with the original LUCI installation, then expanded through the ballroom, Swizzle, and Swigs. The software grew with each project instead of resetting for every new room. The team returned with the property knowledge and operating context needed to bring each phase into the same operation. At every step, new LED, video, and audio systems joined what was already running.</p>
+        <p>The relationship started with the original LUCI installation, then expanded through the ballroom, Swizzle, and Swigs. The software grew with each project instead of resetting for every new room. The team returned with the property knowledge and operating context needed to bring each phase into the same operation. Swizzle and Swigs brought their upgraded LED, video, and audio systems into the same software.</p>
         <p>That continuity changes every project after the first. The software carries forward. The team carries the context. Each new space joins a standard instead of adding another exception.</p>
       </div>
     </div>
 
     <figure class="field-slider-figure">
-      <div class="field-photo-ph" aria-hidden="true"></div>
-      <figcaption class="field-ba__caption">Photo TBD: Osage Project Media</figcaption>
+      <div class="field-slider" data-field-slider>
+        <img class="field-slider__img" src="assets/in-the-field/osage-swigs-multiview.jpg" alt="The commissioned three-plane Swigs LED wall running a multi-source video layout" width="1600" height="900" loading="lazy">
+        <div class="field-slider__before">
+          <img class="field-slider__img" src="assets/in-the-field/osage-swigs-install.jpg" alt="The three-plane Swigs LED wall during cabinet installation" width="1600" height="900" loading="lazy">
+        </div>
+        <div class="field-slider__divider" aria-hidden="true"><span class="field-slider__handle"></span></div>
+        <span class="field-slider__tag field-slider__tag--before">Before</span>
+        <span class="field-slider__tag field-slider__tag--after">After</span>
+        <input class="field-slider__range" type="range" min="0" max="100" value="50" aria-label="Drag to see the Swigs wall move from installation to live programming">
+      </div>
+      <figcaption class="field-ba__caption">Drag to see the three-plane wall move from installation to live programming.</figcaption>
     </figure>
 
     <div class="field-pair">
