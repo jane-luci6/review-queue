@@ -2791,6 +2791,10 @@
     /* VARIANT A — larger inline stamps */
     .proj-log__row { grid-template-columns: 120px 1fr; column-gap: 22px; padding: 24px 0; align-items: center; }
     .proj-log__stamp { width: 120px; height: 120px; }
+
+    /* DRAFT placeholder highlight — Issue 05 first draft for Mike review */
+    .tbd { background: #FFE58A; color: #10232D; padding: 0 .25em; border-radius: 3px; font-weight: 600; }
+    .tbd--dark { background: #FFE58A; color: #10232D; padding: 0 .25em; border-radius: 3px; font-weight: 600; }
   </style>
 </head>
 
@@ -2807,18 +2811,15 @@
     <h1 class="masthead__title">The<em>Signal.</em></h1>
     <div class="masthead__issue">
       <span class="masthead__issue-label">This Issue</span>
-      <span class="masthead__issue-title">[OPEN — Theme · Jane picks from choices]</span>
+      <span class="masthead__issue-title"><mark class="tbd tbd--dark">[Theme &mdash; TBD]</mark></span>
     </div>
     <span class="masthead__numeral" aria-hidden="true">05</span>
   </header>
 
-  <!-- IMP traffic / Jane picks — not customer-facing chrome -->
-  <aside class="sec sec--sand" id="issue-05-traffic" style="border-bottom:1px solid #DBE1E4;">
-    <div class="art-body" style="padding-top:20px;padding-bottom:8px;">
-      <p style="margin:0 0 8px;font-family:var(--display, 'Space Grotesk', sans-serif);font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#2b9e80;">Issue 05 traffic · send target ~Oct 15</p>
-      <p style="margin:0 0 10px;"><strong>LOCKED:</strong> In the Field = Osage / Sand Springs · Design services piece · What&rsquo;s New two-pager slot for new LUCI (parked below).</p>
-      <p style="margin:0 0 10px;"><strong>OPEN for Jane:</strong> Theme · Quick Tip · Advice · Happenings · What&rsquo;s coming (beta only) · Minute with Mike.</p>
-      <p style="margin:0 0 12px;">Open the choices sheet to pick: <a href="the-signal-issue-05-choices.html"><strong>the-signal-issue-05-choices.html</strong></a>. Shell stays parked until Jane chooses — no deploy.</p>
+  <!-- DRAFT status strip — not customer-facing chrome -->
+  <aside class="sec sec--sand" id="issue-05-draft" style="border-bottom:1px solid #DBE1E4;">
+    <div class="art-body" style="padding-top:14px;padding-bottom:10px;">
+      <p style="margin:0;font-family:var(--font, 'Space Grotesk', sans-serif);font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#2b9e80;">DRAFT &middot; Signal Issue 05 &middot; first draft for Mike review &middot; placeholders highlighted</p>
     </div>
   </aside>
 
@@ -2829,11 +2830,13 @@
       <span class="kicker__label">Welcome</span>
       <span class="kicker__rule"></span>
     </div>
-    <h2 class="art-title">[OPEN — Theme Headline <em>Jane picks</em>]</h2>
+    <h2 class="art-title"><mark class="tbd">[THEME TITLE &mdash; TBD]</mark></h2>
+    <p class="art-deck">The steadier the line from planning through daily operation, the better a complex A/V project holds together.</p>
     <div class="art-body">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Jane picks the Issue 05 theme from the choices sheet; Ermintrude writes this welcome to match.</p>
-      <p>Placeholder only — CoS traffic. Active voice in final. A/V always. Never call LUCI a layer. New LUCI stays in beta framing if mentioned.</p>
-      <p>Here&rsquo;s what this issue holds: Osage / Sand Springs In the Field, Design services as a current LUCI offering, and the open slots Jane locks next.</p>
+      <p>Complex properties ask a lot of an A/V project. Plans move through architects, trades, installers, operators, and support teams before the first guest ever sees the result. Through every handoff, the project needs a stabilizer: one operating foundation that keeps the intent intact from the drawing set to the floor&mdash;and keeps working after the room opens.</p>
+      <p>That continuity runs through this issue. We visit Osage Casino Hotel in Ponca City, where an original LUCI installation became the foundation for a ballroom, Swizzle, and now Swigs. We look at Design with LUCI, where the team planning the infrastructure stays through coordination, turn-on, training, and operation. The Quick Tip and <mark class="tbd">[ADVICE SECTION NAME &mdash; TBD]</mark> offer practical ways to keep schedules, venues, endpoints, and access aligned.</p>
+      <p>We also share an early look at Reporting &amp; Analytics in the new version of LUCI, introduce the first What&rsquo;s New two-pager, and close with a Minute with Mike on putting more programming control in your hands&mdash;with the LUCI team still right behind you.</p>
+      <p>Here&rsquo;s what this issue holds: a multi-year partnership in Ponca City, Design with LUCI, practical operating advice, a calendar Quick Tip, Reporting &amp; Analytics, the What&rsquo;s New two-pager, and a Minute with Mike.</p>
     </div>
     <div class="art-signoff">
       <p class="art-signoff__name">Mike Epstein</p>
@@ -2852,9 +2855,11 @@
       <li><a href="#project-update"><span class="toc__num">01</span><span class="toc__text">LUCI Project Update</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
       <li><a href="#field-story"><span class="toc__num">02</span><span class="toc__text">In the field</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
       <li><a href="#design-services"><span class="toc__num">03</span><span class="toc__text">Design with LUCI</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
+      <li><a href="#advice"><span class="toc__text"><mark class="tbd">[ADVICE SECTION NAME &mdash; TBD]</mark></span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
       <li><a href="#quick-tip"><span class="toc__num">04</span><span class="toc__text">LUCI Quick Tip</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
       <li><a href="#whats-coming"><span class="toc__num">05</span><span class="toc__text">What&rsquo;s coming</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
       <li><a href="#mike-column"><span class="toc__num">06</span><span class="toc__text">A Minute with Mike</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
+      <li><a href="#happenings"><span class="toc__text">Happenings</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
     </ol>
   </nav>
 
@@ -2866,35 +2871,36 @@
       <span class="kicker__label">LUCI Project Update</span>
       <span class="kicker__rule"></span>
     </div>
-    <p class="proj-snapshot__opening">Placeholder project update for October.</p>
-    <p class="proj-snapshot__dek">Jane and Ermintrude fill live jobs from the month. Do not invent a roster. Osage / Sand Springs stays the In the Field story — keep this log short if it overlaps.</p>
+    <p class="proj-snapshot__opening">Around the LUCI operation</p>
+    <p class="proj-snapshot__dek">Our teams have been moving projects from plan to operating floor. Here are the latest stops.</p>
     <ul class="proj-log">
       <li class="proj-log__row">
         <div style="width:160px;height:100px;background:#DBE1E4;border-radius:4px;flex-shrink:0;" aria-hidden="true"></div>
         <div>
           <div class="proj-log__head">
-            <span class="proj-log__name">[Property TBD]</span>
-            <span class="proj-log__place">[City, State]</span>
-            <span class="proj-log__date">[Date]</span>
+            <span class="proj-log__name"><mark class="tbd">[Property TBD]</mark></span>
+            <span class="proj-log__place"><mark class="tbd">[City, State]</mark></span>
+            <span class="proj-log__date"><mark class="tbd">[Date]</mark></span>
           </div>
-          <p class="proj-log__text">Lorem ipsum — one sentence on what went live. Photos from Project Media when Jane picks.</p>
+          <p class="proj-log__text"><mark class="tbd">[One sourced sentence on the work &mdash; TBD]</mark></p>
         </div>
       </li>
       <li class="proj-log__row">
         <div style="width:160px;height:100px;background:#DBE1E4;border-radius:4px;flex-shrink:0;" aria-hidden="true"></div>
         <div>
           <div class="proj-log__head">
-            <span class="proj-log__name">[Property TBD]</span>
-            <span class="proj-log__place">[City, State]</span>
-            <span class="proj-log__date">[Date]</span>
+            <span class="proj-log__name"><mark class="tbd">[Property TBD]</mark></span>
+            <span class="proj-log__place"><mark class="tbd">[City, State]</mark></span>
+            <span class="proj-log__date"><mark class="tbd">[Date]</mark></span>
           </div>
-          <p class="proj-log__text">Lorem ipsum — optional second card. Skip if the month is thin.</p>
+          <p class="proj-log__text"><mark class="tbd">[One sourced sentence on the work &mdash; TBD]</mark></p>
         </div>
       </li>
     </ul>
+    <p class="proj-log__bridge"><mark class="tbd">[Project photo and caption to follow the confirmed roster.]</mark></p>
   </section>
 
-  <!-- IN THE FIELD — Osage / Sand Springs LOCKED placeholders -->
+  <!-- IN THE FIELD — Osage Casino Hotel, Ponca City -->
   <section class="sec sec--sand" id="field-story">
     <div class="kicker">
       <span class="kicker__rule"></span>
@@ -2903,47 +2909,56 @@
       <span class="kicker__rule"></span>
     </div>
     <div class="field-opener">
-      <h2 class="field-opener__title" id="field-story-title">[Osage / Sand Springs — <span class="field-opener__title-mint">longevity headline TBD</span>]</h2>
-      <p class="field-opener__dek">LOCKED Field story: Osage Casino Hotel / Sand Springs. Angle Mike liked — longevity, family feel, we haven&rsquo;t lost a client. Optional soft Clearwater &ldquo;all sizes&rdquo; nod. Skip Flamingo. Ermintrude writes; CoS does not draft final Field copy.</p>
+      <h2 class="field-opener__title" id="field-story-title">One foundation for <span class="field-opener__title-mint">every next phase</span></h2>
+      <p class="field-opener__dek">For <mark class="tbd">[YEARS WITH LUCI &mdash; TBD]</mark>, Osage Casino Hotel in Ponca City has extended the same LUCI foundation through <mark class="tbd">[PROJECTS AT PONCA CITY &mdash; TBD]</mark> projects&mdash;from the original installation to the ballroom, Swizzle, and now Swigs.</p>
     </div>
     <p class="field-property">
-      <span class="field-property__name">Osage Casino Hotel — Sand Springs</span>
+      <span class="field-property__name">Osage Casino Hotel &mdash; Ponca City</span>
       <span class="field-property__dot" aria-hidden="true">&middot;</span>
       <span class="field-property__location">Oklahoma</span>
     </p>
     <div class="field-divider" aria-hidden="true"></div>
     <div class="field-stats field-bleed">
       <div class="field-stats__row field-stats__row--4">
-        <div class="field-stats__item"><span class="field-stats__num">—</span><span class="field-stats__label">stat TBD</span></div>
-        <div class="field-stats__item"><span class="field-stats__num">—</span><span class="field-stats__label">stat TBD</span></div>
-        <div class="field-stats__item"><span class="field-stats__num">—</span><span class="field-stats__label">stat TBD</span></div>
-        <div class="field-stats__item"><span class="field-stats__num">—</span><span class="field-stats__label">stat TBD</span></div>
+        <div class="field-stats__item"><span class="field-stats__num"><mark class="tbd">[TBD]</mark></span><span class="field-stats__label">Years with LUCI</span></div>
+        <div class="field-stats__item"><span class="field-stats__num"><mark class="tbd">[TBD]</mark></span><span class="field-stats__label">Projects at Ponca City</span></div>
+        <div class="field-stats__item"><span class="field-stats__num">Ponca City</span><span class="field-stats__label">This year&rsquo;s focus</span></div>
+        <div class="field-stats__item"><span class="field-stats__num">4</span><span class="field-stats__label">Swigs display presets</span></div>
       </div>
     </div>
     <div class="field-scale field-bleed">
       <div class="field-scale__band">
         <div style="aspect-ratio:16/9;background:#DBE1E4;display:flex;align-items:center;justify-content:center;color:#49616E;font-family:var(--font, Space Grotesk, sans-serif);font-size:14px;text-align:center;padding:24px;">
-          PHOTO PLACEHOLDER<br>OneDrive Project Media: Osage Ponca LED 1 · Osage Ponca LED 2
+          PHOTO PLACEHOLDER<br>OneDrive Project Media: Osage Ponca LED 1 &middot; Osage Ponca LED 2
         </div>
-        <p class="field-scale__caption">Placeholder — pull stills from Osage Ponca LED folders. Not Flamingo.</p>
+        <p class="field-scale__caption">Photo TBD: Osage Project Media</p>
       </div>
     </div>
   </section>
 
   <section class="sec sec--white">
     <div class="art-body">
-      <h3 class="field-num__title">01 · A long relationship</h3>
-      <p>Lorem ipsum — longevity / family / haven&rsquo;t lost a client. Jane outlines; Ermintrude drafts.</p>
-      <h3 class="field-num__title">02 · Redesign on a small property</h3>
-      <p>Lorem ipsum — redesign beat without inventing specs. Pair with Design services (same issue) without double-counting the story.</p>
-      <h3 class="field-num__title">03 · Optional soft Clearwater nod</h3>
-      <p>Lorem ipsum — one line max if Jane wants the &ldquo;all sizes&rdquo; beat. Not a second Field story.</p>
-      <h3 class="field-runs__title">What Sand Springs runs now</h3>
-      <p>Placeholder outcomes list — fill from Jane / Mike, not invented ROI.</p>
+      <p>LUCI was already operating on the casino floor before the later ballroom work. When the property added its ballroom projectors, that room joined the same control environment. This year, the next expansion arrived in two phases: Swizzle first, followed by Swigs, the property&rsquo;s new bar and live entertainment venue.</p>
+      <p>Each return built on what was already running. The property did not have to start a separate control project for every new room. New A/V technology joined the same operating foundation, with an embedded team that already understood the property and stayed accountable through turn-on.</p>
+      <p>Swigs is the latest proof. Its nearly 20-foot display spans three angled planes, with 60 cabinets and 480 panels forming one 3840 &times; 1296 canvas. Four display presets move between full-screen content, multi-source television, and a featured center layout. Two new audio zones support the bar and stage. A four-person onsite team, backed by home-office support, completed the work in 25.5 total working hours.</p>
+      <p>The specifications show the scale of the latest room. The larger story is continuity: the ballroom, Swizzle, and Swigs all extend an established LUCI operation instead of creating another isolated system for the property to manage.</p>
+    </div>
+    <div class="field-runs field-runs--inline">
+      <h3 class="field-runs__title">What Ponca City runs on LUCI now</h3>
+      <div class="field-runs__rule" aria-hidden="true"></div>
+      <ul class="field-runs__list">
+        <li class="field-runs__item">The ballroom&rsquo;s projectors and room control</li>
+        <li class="field-runs__item">Swigs video endpoints, two audio zones, and four display presets, managed alongside the property&rsquo;s existing technology</li>
+      </ul>
+    </div>
+    <div class="field-readmore">
+      <p class="field-readmore__line">There&rsquo;s more to this one &mdash; the multi-year partnership and how each phase extends the same foundation.</p>
+      <a class="field-readmore__link" href="#">Read the full case study <span class="field-readmore__arrow" aria-hidden="true">&rarr;</span></a>
+      <p class="field-readmore__line" style="margin-top:10px;"><mark class="tbd">[CASE STUDY URL &mdash; TBD]</mark></p>
     </div>
   </section>
 
-  <!-- DESIGN SERVICES — LOCKED slot; Ermintrude owns copy -->
+  <!-- DESIGN WITH LUCI -->
   <section class="sec sec--light" id="design-services">
     <div class="kicker">
       <span class="kicker__rule"></span>
@@ -2951,54 +2966,45 @@
       <span class="kicker__label">Design with LUCI</span>
       <span class="kicker__rule"></span>
     </div>
-    <h2 class="art-title">[Design Services Headline <em>TBD</em>]</h2>
+    <h2 class="art-title">Keep the operating intent <em>intact</em></h2>
+    <p class="art-deck">The same team plans the infrastructure LUCI needs, coordinates it through construction, turns the system on, and trains the owner.</p>
     <div class="art-body">
-      <p><strong>LOCKED slot.</strong> Frame as a current LUCI offering. Plan and design support through commission and owner training. Continuity: the same team designs the infrastructure LUCI needs, turns the system on, and trains the owner.</p>
-      <p><strong>Do not mention D3</strong> in public copy. Authoritative source: Call Recordings <code>09-30 LUCI Design Services-transcript.docx</code>.</p>
-      <p>OPTIONAL seed for Ermintrude only (GPT rewrite — CoS does not own final): <code>signal-design-services-draft.md</code> in <code>jesse-design-services-2026-09-30/</code>.</p>
-      <p style="padding:16px;border:1px dashed #DBE1E4;border-radius:6px;color:#49616E;">[DIAGRAM PLACEHOLDER] Awaiting Jesse cleaned Osage/Sand Springs plan → AI redraw. Do not publish the customer floor plan as-is.</p>
-      <p>Lorem body — Ermintrude writes. Active voice. A/V. Never call LUCI a layer.</p>
+      <p>A/V design can lose its intent one handoff at a time. A consultant draws the system. A different team coordinates the building. Contractors interpret the plans. Then someone new arrives to turn everything on&mdash;and the owner has to trace the decisions backward when the finished room does not work as expected.</p>
+      <p>Design with LUCI keeps that chain shorter. Plan and design support is part of the LUCI service relationship, so the team designing the infrastructure already knows the operating platform it must support. We coordinate rack locations, endpoints, speaker groups, landing rooms, and connections with the other trades, then stay through system turn-on and owner training.</p>
+      <p>That continuity shapes the design itself. We plan around the infrastructure LUCI needs and minimize rack hardware from the start. The scope can fit the project: a tenant improvement, an LED-only design, or a fuller low-voltage and LED design for a larger addition. Contractors still install the hardware; LUCI carries the operating intent from the plans into the system the owner will use.</p>
+      <p>The result is fewer &ldquo;who built this?&rdquo; calls after opening. The people who planned how the system should work are still there when it is time to make it work&mdash;and when the owner begins running it.</p>
+      <p style="padding:16px;border:1px dashed #DBE1E4;border-radius:6px;color:#49616E;"><mark class="tbd">[DESIGN DIAGRAM &mdash; TBD: AI redraw of cleaned plan; never the customer floor plan]</mark></p>
+      <p><strong>Planning a renovation, venue, or addition?</strong> Talk to your LUCI team about the design support included in your service relationship.</p>
     </div>
   </section>
 
-
-  <!-- WHAT'S NEW TWO-PAGER SLOT — LOCKED as a slot; asset lives on IMP dueForReview -->
-  <section class="sec sec--white" id="whats-new-slot">
-    <div class="kicker">
-      <span class="kicker__rule"></span>
-      <span class="kicker__label">What&rsquo;s New · slot locked</span>
-      <span class="kicker__rule"></span>
-    </div>
-    <h2 class="art-title">New LUCI What&rsquo;s New two-pager</h2>
-    <div class="art-body">
-      <p><strong>LOCKED slot</strong> for the New LUCI What&rsquo;s New two-pager in this issue&rsquo;s package. Customer-facing leave-behind already on IMP Review Queue (dueForReview). Do not invent alternate leave-behind copy here.</p>
-      <p>Preview on IMP: <a href="http://10.10.1.17:8081/sales/new-luci-whats-new-onepager.html">sales/new-luci-whats-new-onepager.html</a>.</p>
-    </div>
-  </section>
-
-  <!-- ADVICE — OPEN -->
+  <!-- ADVICE -->
   <section class="sec sec--light" id="advice">
     <div class="kicker">
       <span class="kicker__rule"></span>
-      <span class="kicker__label">Advice · OPEN</span>
+      <span class="kicker__label"><mark class="tbd">[ADVICE SECTION NAME &mdash; TBD]</mark></span>
       <span class="kicker__rule"></span>
     </div>
-    <h2 class="art-title">[OPEN — Advice <em>Jane picks or hold</em>]</h2>
+    <h2 class="art-title">Set the operating structure <em>before the devices arrive</em></h2>
+    <p class="art-deck">Two choices made early can keep control clear as the property grows.</p>
     <div class="art-body">
-      <p>Open pick on the choices sheet. If this issue carries Advice, Jane locks it there; otherwise hold the slot.</p>
+      <h3 class="field-num__title">Build venues first, then drop endpoints</h3>
+      <p>Create every venue, save the views, and name each section before endpoints come online. When the endpoints land, you can place them inside a structure the property already understands and delegate control cleanly by venue.</p>
+      <h3 class="field-num__title">Choose the access model on purpose</h3>
+      <p>There is no harm in keeping control with one administrator everyone calls. Most clients create users freely, then filter each person&rsquo;s access by location and source. Both models work; choose deliberately instead of letting access grow by accident.</p>
     </div>
   </section>
 
-  <!-- HAPPENINGS — OPEN (Design services is its own locked section) -->
+  <!-- HAPPENINGS -->
   <section class="sec sec--white" id="happenings">
     <div class="kicker">
       <span class="kicker__rule"></span>
-      <span class="kicker__label">Happenings · OPEN</span>
+      <span class="kicker__label">Happenings</span>
       <span class="kicker__rule"></span>
     </div>
-    <h2 class="art-title">[OPEN — Happenings <em>beyond Design services</em>]</h2>
+    <h2 class="art-title"><mark class="tbd">[HAPPENINGS &mdash; TBD]</mark></h2>
     <div class="art-body">
-      <p>Design services is its own locked section above — not a Happenings blurb. Jane picks any additional Happenings (or none) on the choices sheet. Do not stack the same scarce-A/V or AI idea here and in Minute with Mike.</p>
+      <p>Additional October company news was not part of the confirmed picks. Hold this section until Jane confirms whether Issue 05 carries a Happenings item.</p>
     </div>
   </section>
 
@@ -3007,17 +3013,21 @@
     <div class="kicker">
       <span class="kicker__rule"></span>
       <span class="kicker__num">04</span>
-      <span class="kicker__label">Quick Tip</span>
+      <span class="kicker__label">LUCI Quick Tip</span>
       <span class="kicker__rule"></span>
     </div>
-    <h2 class="art-title">[OPEN — Quick Tip <em>Jane picks</em>]</h2>
+    <h2 class="art-title">Know what wins <em>before schedules overlap</em></h2>
+    <p class="art-deck">Today, when two scheduled presets share the same TVs, the next preset wins. Don&rsquo;t stack a drawing on a daypart without a plan.</p>
     <div class="art-body">
-      <p>Lorem ipsum — Jane picks from the Issue 05 choices shortlist (Venue PIN, label audio source, bartender IR backup, etc.). Current LUCI only. Skip kiosk tip (Issue 04).</p>
-      <p>Placeholder steps go here once the tip is locked.</p>
+      <ol class="steps steps--dark">
+        <li><p><strong>Check the TVs.</strong> Confirm which TVs each preset touches, including any screens shared across venues or event plans.</p></li>
+        <li><p><strong>Check the timing.</strong> Compare the start time and duration of the daypart and the drawing so you know where they overlap.</p></li>
+        <li><p><strong>Plan the hand-back.</strong> Decide what should run after the drawing and schedule or coordinate the return before the event begins.</p></li>
+      </ol>
     </div>
   </section>
 
-  <!-- WHAT'S COMING — beta-only soft beat (or hold) -->
+  <!-- WHAT'S COMING — Reporting & Analytics + What's New two-pager promo -->
   <section class="sec sec--white" id="whats-coming">
     <div class="kicker">
       <span class="kicker__rule"></span>
@@ -3025,10 +3035,31 @@
       <span class="kicker__label">What&rsquo;s coming</span>
       <span class="kicker__rule"></span>
     </div>
-    <h2 class="art-title">[OPEN — What&rsquo;s coming · beta only <em>or Hold</em>]</h2>
+    <h2 class="art-title">See the patterns behind <em>day-to-day activity</em></h2>
+    <p class="art-deck">Reporting &amp; Analytics in the new version of LUCI brings system activity into 24-hour, 7-day, and 30-day views.</p>
     <div class="art-body">
-      <p>Lorem ipsum — at most one soft New LUCI beta beat. Never &ldquo;we launched.&rdquo; Options on the choices sheet: soft beta pulse, config comes forward, or hold the slot.</p>
-      <p>Do not re-debut Issue 03 look/map/staging or Issue 04 panels/activity.</p>
+      <p>Live monitoring shows what is happening now. Audit trails show who or what changed something and when. Reporting &amp; Analytics, now taking shape in beta, shows patterns across time.</p>
+      <p>Review incident volume and duration, command success and failure, latency, and preset activity across the last 24 hours, 7 days, or 30 days. Start with the overview to spot a pattern, then move into the relevant device, command, or automation record when something needs attention.</p>
+    </div>
+
+    <figure class="ui-shot ui-shot--lg">
+      <img src="assets/whats-coming/signal-05-reporting-analytics-fan.png" alt="Reporting &amp; Analytics in the new version of LUCI: four tabs &mdash; Overview, Commands, Automation, and Reliability &mdash; with 24-hour, 7-day, and 30-day views of system activity" loading="lazy">
+      <figcaption class="ui-shot__cap">Four Reporting &amp; Analytics tabs: Overview, Commands, Automation, and Reliability.</figcaption>
+    </figure>
+
+    <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,40px);max-width:var(--read);margin:clamp(24px,4vw,36px) 0;border-top:1px solid var(--rule-light);border-bottom:1px solid var(--rule-light);padding:clamp(20px,3vw,28px) 0;">
+      <div style="flex:1;min-width:120px;"><span style="font-family:var(--body);font-weight:700;font-size:clamp(28px,4vw,40px);line-height:1;letter-spacing:-0.03em;color:var(--mint-dark);display:block;margin-bottom:8px;">24-hour</span><span style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#49616E;">view</span></div>
+      <div style="flex:1;min-width:120px;"><span style="font-family:var(--body);font-weight:700;font-size:clamp(28px,4vw,40px);line-height:1;letter-spacing:-0.03em;color:var(--mint-dark);display:block;margin-bottom:8px;">7-day</span><span style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#49616E;">view</span></div>
+      <div style="flex:1;min-width:120px;"><span style="font-family:var(--body);font-weight:700;font-size:clamp(28px,4vw,40px);line-height:1;letter-spacing:-0.03em;color:var(--mint-dark);display:block;margin-bottom:8px;">30-day</span><span style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#49616E;">view</span></div>
+    </div>
+
+    <div class="callout">
+      <p class="callout__kicker">Also in this issue</p>
+      <p>This issue includes our first published piece on the new LUCI. Open the What&rsquo;s New two-pager for a concise introduction to the direction of the new version and the capabilities coming with it.</p>
+    </div>
+
+    <div class="art-body">
+      <p><strong>Want to talk through what is coming?</strong> Contact your LUCI team.</p>
     </div>
   </section>
 
@@ -3040,10 +3071,15 @@
       <span class="kicker__label">A Minute with Mike</span>
       <span class="kicker__rule"></span>
     </div>
-    <h2 class="art-title">[OPEN — Minute with Mike <em>Jane picks</em>]</h2>
+    <h2 class="art-title">Putting the power of programming <em>in your hands</em></h2>
+    <p class="art-deck">More day-to-day control for your team, with the LUCI partnership still behind the operation.</p>
     <div class="art-body">
-      <p>Lorem ipsum — Jane picks from the choices sheet. Top open cue: &ldquo;the power of programming — let clients do it&rdquo; (Mark/Mike). External frame: more control with partnership still behind them.</p>
-      <p>Do not stack the same scarce-A/V or AI idea in Happenings and here.</p>
+      <p>I use the phrase &ldquo;the power of programming&rdquo; because the people running a property should have more direct control over the system they use every day.</p>
+      <p>In the current version of LUCI, some configuration lives deep in the database. A property may know exactly what needs to change, but the work still has to route through our team or a third party. That can turn a straightforward operating change into a longer chain than it needs to be.</p>
+      <p>The new version brings more of that configuration forward. Clients and their integrators will be able to load their own maps and make more changes directly. The point is not to turn every operator into a programmer. It is to put the right tools in the hands of the people who understand the property, the room, and the work in front of them.</p>
+      <p>More control does not mean less partnership. Our team remains alongside yours to help plan, monitor, diagnose, and support the system. We are moving routine control closer to the operation while keeping the relationship and accountability behind it.</p>
+      <p>That principle runs through the new LUCI: give your team more ability to shape the rooms, views, data, and access it uses every day. The What&rsquo;s New two-pager included with this issue is the first published look at where that direction is going.</p>
+      <p><strong>Open the What&rsquo;s New two-pager,</strong> then contact your LUCI team with questions.</p>
     </div>
     <div class="art-signoff">
       <p class="art-signoff__name">Mike Epstein</p>
@@ -3063,7 +3099,7 @@
   <!-- CLOSING -->
   <footer class="closing">
     <p class="closing__lead">That&rsquo;s it for October.</p>
-    <p class="closing__text">The right operating standard gives your property something dependable without standing in the way of what needs to change. We&rsquo;ll keep working with you to hold that balance as your spaces, equipment, and priorities evolve.</p>
+    <p class="closing__text">Complex A/V projects move through many hands, but the operating intent should stay intact. We&rsquo;ll keep carrying that continuity from the first plan into the rooms your team runs every day&mdash;and into whatever comes next.</p>
     <p class="closing__sig">Talk soon,<br>The LUCI Team</p>
     <p class="closing__more">Catch up on <a href="https://www.lucisystems.com/the-signal">every issue of The Signal <span aria-hidden="true">&rarr;</span></a></p>
   </footer>
