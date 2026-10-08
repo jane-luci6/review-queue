@@ -48,7 +48,10 @@ case "$MODE" in
     ssh "${SSH_OPTS[@]}" "$HOST" "mkdir -p '${REMOTE_PATH}'"
 
     echo "Syncing ui_kits/review/ → ${HOST}:${REMOTE_PATH}"
-    rsync -avz --delete -e "ssh ${SSH_OPTS[*]}" "$ROOT/ui_kits/review/" "${HOST}:${REMOTE_PATH}"
+    # --chmod: served files always world-readable (owner-only files on the Mac caused 403s).
+    # Exit 23 (partial transfer: old remote files rsync cannot delete) is non-fatal so the
+    # permission, service, and live checks below still run; any other non-zero exit stays fatal.
+    rsync -avz --delete --chmod=Du=rwx,Dgo=rx,Fu=rw,Fgo=r -e "ssh ${SSH_OPTS[*]}" "$ROOT/ui_kits/review/" "${HOST}:${REMOTE_PATH}" || { rc=$?; if [ "$rc" -eq 23 ]; then echo "  warning: rsync exit 23 (partial transfer; some remote files could not be deleted) — continuing."; else exit "$rc"; fi; }
 
     echo "Normalizing permissions…"
     ssh "${SSH_OPTS[@]}" "$HOST" "find '${REMOTE_PATH}' -type f ! -perm -004 -exec chmod a+r {} +" \
