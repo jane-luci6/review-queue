@@ -2795,10 +2795,49 @@
     /* DRAFT placeholder highlight — Issue 05 first draft for Mike review */
     .tbd { background: #FFE58A; color: #10232D; padding: 0 .25em; border-radius: 3px; font-weight: 600; }
     .tbd--dark { background: #FFE58A; color: #10232D; padding: 0 .25em; border-radius: 3px; font-weight: 600; }
+
+    /* DRAFT strip — slim line above the masthead (not customer-facing chrome) */
+    .draft-strip {
+      display: block;
+      width: 100%;
+      background: #FFE58A;
+      color: #10232D;
+      font-family: var(--body);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 7px var(--pad);
+      line-height: 1;
+    }
+
+    /* Project Update stamp placeholder — dashed box matching .proj-log__stamp size */
+    .proj-log__stamp--placeholder {
+      background: #F2F5F7;
+      border: 1px dashed #B8C3CA;
+      border-radius: 0;
+      display: block;
+    }
+
+    /* Advice subhead — minimal art-body subhead (no 04/03 equivalent exists) */
+    .art-sub {
+      font-family: var(--body);
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      color: var(--navy);
+      margin: 26px 0 8px;
+    }
+    .art-sub:first-child { margin-top: 0; }
   </style>
 </head>
 
 <article class="issue">
+
+  <!-- DRAFT strip — slim line above the masthead (not customer-facing chrome) -->
+  <div class="draft-strip">DRAFT &middot; Signal Issue 05 &middot; first draft for Mike review &middot; placeholders highlighted</div>
 
   <!-- MASTHEAD -->
   <header class="masthead">
@@ -2815,13 +2854,6 @@
     </div>
     <span class="masthead__numeral" aria-hidden="true">05</span>
   </header>
-
-  <!-- DRAFT status strip — not customer-facing chrome -->
-  <aside class="sec sec--sand" id="issue-05-draft" style="border-bottom:1px solid #DBE1E4;">
-    <div class="art-body" style="padding-top:14px;padding-bottom:10px;">
-      <p style="margin:0;font-family:var(--font, 'Space Grotesk', sans-serif);font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#2b9e80;">DRAFT &middot; Signal Issue 05 &middot; first draft for Mike review &middot; placeholders highlighted</p>
-    </div>
-  </aside>
 
   <!-- WELCOME — white -->
   <section class="sec sec--white" id="welcome">
@@ -2867,7 +2899,6 @@
   <section class="sec sec--white proj-snapshot" id="project-update">
     <div class="kicker">
       <span class="kicker__rule"></span>
-      <span class="kicker__num">01</span>
       <span class="kicker__label">LUCI Project Update</span>
       <span class="kicker__rule"></span>
     </div>
@@ -2875,7 +2906,7 @@
     <p class="proj-snapshot__dek">Our teams have been moving projects from plan to operating floor. Here are the latest stops.</p>
     <ul class="proj-log">
       <li class="proj-log__row">
-        <div style="width:160px;height:100px;background:#DBE1E4;border-radius:4px;flex-shrink:0;" aria-hidden="true"></div>
+        <div class="proj-log__stamp proj-log__stamp--placeholder" aria-hidden="true"></div>
         <div>
           <div class="proj-log__head">
             <span class="proj-log__name"><mark class="tbd">[Property TBD]</mark></span>
@@ -2886,7 +2917,7 @@
         </div>
       </li>
       <li class="proj-log__row">
-        <div style="width:160px;height:100px;background:#DBE1E4;border-radius:4px;flex-shrink:0;" aria-hidden="true"></div>
+        <div class="proj-log__stamp proj-log__stamp--placeholder" aria-hidden="true"></div>
         <div>
           <div class="proj-log__head">
             <span class="proj-log__name"><mark class="tbd">[Property TBD]</mark></span>
@@ -2901,10 +2932,9 @@
   </section>
 
   <!-- IN THE FIELD — Osage Casino Hotel, Ponca City -->
-  <section class="sec sec--sand" id="field-story">
+  <section class="sec sec--deep" id="field-story" style="border-bottom: 4px solid var(--mint);">
     <div class="kicker">
       <span class="kicker__rule"></span>
-      <span class="kicker__num">02</span>
       <span class="kicker__label">In the field</span>
       <span class="kicker__rule"></span>
     </div>
@@ -2928,41 +2958,70 @@
     </div>
     <div class="field-scale field-bleed">
       <div class="field-scale__band">
-        <div style="aspect-ratio:16/9;background:#DBE1E4;display:flex;align-items:center;justify-content:center;color:#49616E;font-family:var(--font, Space Grotesk, sans-serif);font-size:14px;text-align:center;padding:24px;">
-          PHOTO PLACEHOLDER<br>OneDrive Project Media: Osage Ponca LED 1 &middot; Osage Ponca LED 2
-        </div>
+        <div class="field-photo-ph" aria-hidden="true"></div>
         <p class="field-scale__caption">Photo TBD: Osage Project Media</p>
       </div>
     </div>
   </section>
 
-  <section class="sec sec--white">
-    <div class="art-body">
-      <p>LUCI was already operating on the casino floor before the later ballroom work. When the property added its ballroom projectors, that room joined the same control environment. This year, the next expansion arrived in two phases: Swizzle first, followed by Swigs, the property&rsquo;s new bar and live entertainment venue.</p>
-      <p>Each return built on what was already running. The property did not have to start a separate control project for every new room. New A/V technology joined the same operating foundation, with an embedded team that already understood the property and stayed accountable through turn-on.</p>
-      <p>Swigs is the latest proof. Its nearly 20-foot display spans three angled planes, with 60 cabinets and 480 panels forming one 3840 &times; 1296 canvas. Four display presets move between full-screen content, multi-source television, and a featured center layout. Two new audio zones support the bar and stage. A four-person onsite team, backed by home-office support, completed the work in 25.5 total working hours.</p>
-      <p>The specifications show the scale of the latest room. The larger story is continuity: the ballroom, Swizzle, and Swigs all extend an established LUCI operation instead of creating another isolated system for the property to manage.</p>
+  <!-- IN THE FIELD — body: numbered narrative + results on light canvas -->
+  <section class="sec sec--light" aria-labelledby="field-story-title" style="padding-top: clamp(40px, 6vw, 64px); padding-bottom: 0; border-bottom: none;">
+
+    <div class="field-num">
+      <div class="field-num__rule" aria-hidden="true"></div>
+      <div class="field-num__body">
+        <p>LUCI was already operating on the casino floor before the later ballroom work. When the property added its ballroom projectors, that room joined the same control environment. This year, the next expansion arrived in two phases: Swizzle first, followed by Swigs, the property&rsquo;s new bar and live entertainment venue.</p>
+      </div>
     </div>
-    <div class="field-runs field-runs--inline">
-      <h3 class="field-runs__title">What Ponca City runs on LUCI now</h3>
-      <div class="field-runs__rule" aria-hidden="true"></div>
-      <ul class="field-runs__list">
-        <li class="field-runs__item">The ballroom&rsquo;s projectors and room control</li>
-        <li class="field-runs__item">Swigs video endpoints, two audio zones, and four display presets, managed alongside the property&rsquo;s existing technology</li>
-      </ul>
+
+    <div class="field-num">
+      <div class="field-num__rule" aria-hidden="true"></div>
+      <div class="field-num__body">
+        <p>Each return built on what was already running. The property did not have to start a separate control project for every new room. New A/V technology joined the same operating foundation, with an embedded team that already understood the property and stayed accountable through turn-on.</p>
+      </div>
     </div>
+
+    <figure class="field-slider-figure">
+      <div class="field-photo-ph" aria-hidden="true"></div>
+      <figcaption class="field-ba__caption">Photo TBD: Osage Project Media</figcaption>
+    </figure>
+
+    <div class="field-pair">
+      <div class="field-num">
+        <div class="field-num__rule" aria-hidden="true"></div>
+        <div class="field-num__body">
+          <p>Swigs is the latest proof. Its nearly 20-foot display spans three angled planes, with 60 cabinets and 480 panels forming one 3840 &times; 1296 canvas. Four display presets move between full-screen content, multi-source television, and a featured center layout. Two new audio zones support the bar and stage. A four-person onsite team, backed by home-office support, completed the work in 25.5 total working hours.</p>
+          <p>The specifications show the scale of the latest room. The larger story is continuity: the ballroom, Swizzle, and Swigs all extend an established LUCI operation instead of creating another isolated system for the property to manage.</p>
+        </div>
+      </div>
+
+      <div class="field-runs field-runs--inline field-runs--pair">
+        <h3 class="field-runs__title">What Ponca City runs on LUCI now</h3>
+        <div class="field-runs__rule" aria-hidden="true"></div>
+        <ul class="field-runs__list">
+          <li class="field-runs__item field-runs__item--icon">
+            <span class="field-runs__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="5.5" height="6" rx="1" stroke="#2b9e80" stroke-width="1.7"/><rect x="9.25" y="5" width="5.5" height="6" rx="1" stroke="#2b9e80" stroke-width="1.7"/><rect x="15.5" y="5" width="5.5" height="6" rx="1" fill="#CEB06E" fill-opacity="0.8" stroke="#CEB06E" stroke-width="1.7"/><rect x="3" y="13" width="5.5" height="6" rx="1" stroke="#2b9e80" stroke-width="1.7"/><rect x="9.25" y="13" width="5.5" height="6" rx="1" stroke="#2b9e80" stroke-width="1.7"/><rect x="15.5" y="13" width="5.5" height="6" rx="1" stroke="#2b9e80" stroke-width="1.7"/></svg></span>
+            <span class="field-runs__txt">The ballroom&rsquo;s projectors and room control</span>
+          </li>
+          <li class="field-runs__item field-runs__item--icon">
+            <span class="field-runs__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 9v6h3l5 4V5L7 9H4Z" fill="#2b9e80" fill-opacity="0.18" stroke="#2b9e80" stroke-width="1.7" stroke-linejoin="round"/><path d="M15 8.5c1.5 2 1.5 5 0 7" stroke="#2b9e80" stroke-width="1.7" stroke-linecap="round"/><path d="M17.5 6c2.5 3 2.5 9 0 12" stroke="#CEB06E" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+            <span class="field-runs__txt">Swigs video endpoints, two audio zones, and four display presets, managed alongside the property&rsquo;s existing technology</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
     <div class="field-readmore">
       <p class="field-readmore__line">There&rsquo;s more to this one &mdash; the multi-year partnership and how each phase extends the same foundation.</p>
       <a class="field-readmore__link" href="#">Read the full case study <span class="field-readmore__arrow" aria-hidden="true">&rarr;</span></a>
-      <p class="field-readmore__line" style="margin-top:10px;"><mark class="tbd">[CASE STUDY URL &mdash; TBD]</mark></p>
+      <p class="field-readmore__line"><mark class="tbd">[CASE STUDY URL &mdash; TBD]</mark></p>
     </div>
   </section>
 
   <!-- DESIGN WITH LUCI -->
-  <section class="sec sec--light" id="design-services">
+  <section class="sec sec--white" id="design-services">
     <div class="kicker">
       <span class="kicker__rule"></span>
-      <span class="kicker__num">03</span>
       <span class="kicker__label">Design with LUCI</span>
       <span class="kicker__rule"></span>
     </div>
@@ -2973,7 +3032,14 @@
       <p>Design with LUCI keeps that chain shorter. Plan and design support is part of the LUCI service relationship, so the team designing the infrastructure already knows the operating platform it must support. We coordinate rack locations, endpoints, speaker groups, landing rooms, and connections with the other trades, then stay through system turn-on and owner training.</p>
       <p>That continuity shapes the design itself. We plan around the infrastructure LUCI needs and minimize rack hardware from the start. The scope can fit the project: a tenant improvement, an LED-only design, or a fuller low-voltage and LED design for a larger addition. Contractors still install the hardware; LUCI carries the operating intent from the plans into the system the owner will use.</p>
       <p>The result is fewer &ldquo;who built this?&rdquo; calls after opening. The people who planned how the system should work are still there when it is time to make it work&mdash;and when the owner begins running it.</p>
-      <p style="padding:16px;border:1px dashed #DBE1E4;border-radius:6px;color:#49616E;"><mark class="tbd">[DESIGN DIAGRAM &mdash; TBD: AI redraw of cleaned plan; never the customer floor plan]</mark></p>
+    </div>
+
+    <figure class="ui-shot">
+      <div class="field-photo-ph" aria-hidden="true"></div>
+      <figcaption class="ui-shot__cap"><mark class="tbd">[DESIGN DIAGRAM &mdash; TBD: AI redraw of cleaned plan; never the customer floor plan]</mark></figcaption>
+    </figure>
+
+    <div class="art-body">
       <p><strong>Planning a renovation, venue, or addition?</strong> Talk to your LUCI team about the design support included in your service relationship.</p>
     </div>
   </section>
@@ -2988,9 +3054,9 @@
     <h2 class="art-title">Set the operating structure <em>before the devices arrive</em></h2>
     <p class="art-deck">Two choices made early can keep control clear as the property grows.</p>
     <div class="art-body">
-      <h3 class="field-num__title">Build venues first, then drop endpoints</h3>
+      <h3 class="art-sub">Build venues first, then drop endpoints</h3>
       <p>Create every venue, save the views, and name each section before endpoints come online. When the endpoints land, you can place them inside a structure the property already understands and delegate control cleanly by venue.</p>
-      <h3 class="field-num__title">Choose the access model on purpose</h3>
+      <h3 class="art-sub">Choose the access model on purpose</h3>
       <p>There is no harm in keeping control with one administrator everyone calls. Most clients create users freely, then filter each person&rsquo;s access by location and source. Both models work; choose deliberately instead of letting access grow by accident.</p>
     </div>
   </section>
@@ -3009,16 +3075,15 @@
   </section>
 
   <!-- QUICK TIP -->
-  <section class="sec sec--mid" id="quick-tip">
+  <section class="sec sec--dark" id="quick-tip">
     <div class="kicker">
       <span class="kicker__rule"></span>
-      <span class="kicker__num">04</span>
       <span class="kicker__label">LUCI Quick Tip</span>
       <span class="kicker__rule"></span>
     </div>
     <h2 class="art-title">Know what wins <em>before schedules overlap</em></h2>
     <p class="art-deck">Today, when two scheduled presets share the same TVs, the next preset wins. Don&rsquo;t stack a drawing on a daypart without a plan.</p>
-    <div class="art-body">
+    <div class="quick-tip__media">
       <ol class="steps steps--dark">
         <li><p><strong>Check the TVs.</strong> Confirm which TVs each preset touches, including any screens shared across venues or event plans.</p></li>
         <li><p><strong>Check the timing.</strong> Compare the start time and duration of the daypart and the drawing so you know where they overlap.</p></li>
@@ -3028,10 +3093,9 @@
   </section>
 
   <!-- WHAT'S COMING — Reporting & Analytics + What's New two-pager promo -->
-  <section class="sec sec--white" id="whats-coming">
+  <section class="sec sec--light" id="whats-coming">
     <div class="kicker">
       <span class="kicker__rule"></span>
-      <span class="kicker__num">05</span>
       <span class="kicker__label">What&rsquo;s coming</span>
       <span class="kicker__rule"></span>
     </div>
@@ -3040,6 +3104,11 @@
     <div class="art-body">
       <p>Live monitoring shows what is happening now. Audit trails show who or what changed something and when. Reporting &amp; Analytics, now taking shape in beta, shows patterns across time.</p>
       <p>Review incident volume and duration, command success and failure, latency, and preset activity across the last 24 hours, 7 days, or 30 days. Start with the overview to spot a pattern, then move into the relevant device, command, or automation record when something needs attention.</p>
+      <ul>
+        <li>24-hour view</li>
+        <li>7-day view</li>
+        <li>30-day view</li>
+      </ul>
     </div>
 
     <figure class="ui-shot ui-shot--lg">
@@ -3047,14 +3116,8 @@
       <figcaption class="ui-shot__cap">Four Reporting &amp; Analytics tabs: Overview, Commands, Automation, and Reliability.</figcaption>
     </figure>
 
-    <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,40px);max-width:var(--read);margin:clamp(24px,4vw,36px) 0;border-top:1px solid var(--rule-light);border-bottom:1px solid var(--rule-light);padding:clamp(20px,3vw,28px) 0;">
-      <div style="flex:1;min-width:120px;"><span style="font-family:var(--body);font-weight:700;font-size:clamp(28px,4vw,40px);line-height:1;letter-spacing:-0.03em;color:var(--mint-dark);display:block;margin-bottom:8px;">24-hour</span><span style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#49616E;">view</span></div>
-      <div style="flex:1;min-width:120px;"><span style="font-family:var(--body);font-weight:700;font-size:clamp(28px,4vw,40px);line-height:1;letter-spacing:-0.03em;color:var(--mint-dark);display:block;margin-bottom:8px;">7-day</span><span style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#49616E;">view</span></div>
-      <div style="flex:1;min-width:120px;"><span style="font-family:var(--body);font-weight:700;font-size:clamp(28px,4vw,40px);line-height:1;letter-spacing:-0.03em;color:var(--mint-dark);display:block;margin-bottom:8px;">30-day</span><span style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#49616E;">view</span></div>
-    </div>
-
-    <div class="callout">
-      <p class="callout__kicker">Also in this issue</p>
+    <div class="beta-note">
+      <p><strong>Also in this issue</strong></p>
       <p>This issue includes our first published piece on the new LUCI. Open the What&rsquo;s New two-pager for a concise introduction to the direction of the new version and the capabilities coming with it.</p>
     </div>
 
@@ -3064,15 +3127,21 @@
   </section>
 
   <!-- A MINUTE WITH MIKE -->
-  <section class="sec sec--light" id="mike-column">
-    <div class="kicker">
-      <span class="kicker__rule"></span>
-      <span class="kicker__num">06</span>
-      <span class="kicker__label">A Minute with Mike</span>
-      <span class="kicker__rule"></span>
+  <section class="sec sec--white" id="mike-column">
+    <div class="article-head article-head--mike">
+      <div class="article-head__text">
+        <div class="kicker">
+          <span class="kicker__rule"></span>
+          <span class="kicker__label">A Minute with Mike</span>
+          <span class="kicker__rule"></span>
+        </div>
+        <h2 class="art-title">Putting the power of programming <em>in your hands</em></h2>
+        <p class="art-deck">More day-to-day control for your team, with the LUCI partnership still behind the operation.</p>
+      </div>
+      <div class="article-head__art">
+        <img class="mike-portrait" src="https://s3.amazonaws.com/webflow-prod-assets/62d7d68d14611c2a31d863cd/6aa987c809a45884e4a15a8c_mike-epstein.jpg" alt="Mike Epstein, CEO of LUCI Systems" width="200" height="250" loading="lazy">
+      </div>
     </div>
-    <h2 class="art-title">Putting the power of programming <em>in your hands</em></h2>
-    <p class="art-deck">More day-to-day control for your team, with the LUCI partnership still behind the operation.</p>
     <div class="art-body">
       <p>I use the phrase &ldquo;the power of programming&rdquo; because the people running a property should have more direct control over the system they use every day.</p>
       <p>In the current version of LUCI, some configuration lives deep in the database. A property may know exactly what needs to change, but the work still has to route through our team or a third party. That can turn a straightforward operating change into a longer chain than it needs to be.</p>
@@ -3081,9 +3150,13 @@
       <p>That principle runs through the new LUCI: give your team more ability to shape the rooms, views, data, and access it uses every day. The What&rsquo;s New two-pager included with this issue is the first published look at where that direction is going.</p>
       <p><strong>Open the What&rsquo;s New two-pager,</strong> then contact your LUCI team with questions.</p>
     </div>
-    <div class="art-signoff">
-      <p class="art-signoff__name">Mike Epstein</p>
-      <p class="art-signoff__role">CEO, LUCI Systems</p>
+    <div class="author-card author-card--mike">
+      <div class="author-card__content">
+        <div class="author-card__body">
+          <p class="author-card__name">Mike Epstein</p>
+          <p class="author-card__title">CEO, LUCI Systems</p>
+        </div>
+      </div>
     </div>
   </section>
 
