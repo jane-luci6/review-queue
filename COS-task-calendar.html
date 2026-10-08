@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html><head><meta charset="utf-8"><title>LUCI CoS calendar</title>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>LUCI task calendar</title>
 <style>
   :root {
     --navy: #0A161C; --navy-2: #10232D; --mid: #314955; --ink: #354F5C;
@@ -39,11 +42,28 @@
   .pstatus { grid-column: 2; grid-row: 1 / span 2; align-self: center; text-align: right;
     font-size: 11px; letter-spacing: .06em; text-transform: uppercase; font-weight: 700; color: var(--accent); }
 </style>
-</head><body>
-<h1>LUCI marketing board</h1>
-<p class="updated">Updated 2026-09-30 · America/Los_Angeles</p>
-<p class="notes">Board refreshed Wed Sep 30 2026 morning snapshot. TOP Jane: Upgrade Guide review pile on .37 (asset-mock sticky nav + venue cards before cutover; hard-refresh pillar/intro/support passes); Upgrade email template copy this week; tomorrow Thu Oct 1 Start October Signal (Osage/Sand Springs In the Field). Wave 1: morning-reset + lighting live; revert-preset draft still open when bandwidth. Flow C one-pager r3 + Aliante/Yaamava case-study updates still on open list. Blue Chip Greg case-study call Fri Oct 3 8:30 AM PT. What’s New two-pager with Mike (non-urgent). No journey sends due through Oct 2 (next Clearwater Email 9 Oct 23). Mac COS-task-calendar.json still stamped Sep 14 — mirror is source of truth; sync Mac when Jane has a quiet minute.</p>
-<section><h2>Calendar</h2>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div>
+      <div class="kicker">LUCI Systems · Chief of Staff</div>
+      <h1>Task calendar</h1>
+    </div>
+    <div class="meta">As of Wed Oct 7, 2026<br>Dates · projects · The Signal</div>
+  </header>
+  <h2>Projects in flight</h2>
+<div class="proj"><div class="title">New LUCI launch campaign</div><div class="next">What’s New two-pager done / in review with Mike (non-urgent). Upgrade Guide webpage in flight on .37. Upgrade email templates in flight — copy this week. Theme: Putting the power of programming in your hands.</div><div class="pstatus">In flight</div></div>
+<div class="proj"><div class="title">Website rebuild (luci-website)</div><div class="next">Astro site production-ready for cutover to lucisystems.com (confirmed Oct 7); Upgrade Guide Oct 6 work live on .37 for Mike review. Revert-preset Wave 1 draft still open. Platform page redo in flight.</div><div class="pstatus">In flight</div></div>
+<div class="proj"><div class="title">Website content library (prospect)</div><div class="next">Morning-reset + lighting published. Revert-preset draft still open for Jane. Aliante resources grid + featured swap DONE. What’s New two-pager done / in review with Mike. Then look lock by type / Maker / live.</div><div class="pstatus">In flight</div></div>
+<div class="proj"><div class="title">Customization Studio (standalone app, with Will)</div><div class="next">Not IMP. Jane not building studio in IMP. Review hub still for content reviews/downloads.</div><div class="pstatus">In flight</div></div>
+<div class="proj"><div class="title">Aliante case study + video + Signal</div><div class="next">Closed for current standup framing (Sep 25). Reel + case study live on Astro .37. Reopen only if Jane asks. Resources grid + featured swap DONE.</div><div class="pstatus">Held</div></div>
+<div class="proj"><div class="title">The Signal (October)</div><div class="next">Issue 05 picks locked Oct 6 (see item). Open for Jane: theme title iterations, Advice blurbs + section name, Minute with Mike pack, Osage Signal short (Ermintrude). Send ~Oct 15.</div><div class="pstatus">In flight</div></div>
+<div class="proj"><div class="title">Prospect nurture (ActiveCampaign)</div><div class="next">Split RESOLVED by the IMP email plan: high-intent past-demo get the private preview, broader warm opens at launch, anyone finishing a cycle without going to sales lands in Prospect Pulse (6 months, every 4-6 weeks). Build in ActiveCampaign after copy exists. No AC writes without Jane's yes.</div><div class="pstatus">In flight</div></div>
+<div class="proj"><div class="title">LinkedIn / social</div><div class="next">Mike reviewed the strategy. Hold until New LUCI product launch.</div><div class="pstatus">Held</div></div>
+<div class="proj"><div class="title">2026 tactics brief</div><div class="next">Four tactics now: be the answer (AEO + entity binding), YouTube one-job how-tos, extend the Capabilities doc into a real committee packet (finance/procurement page, security answer sheet, forwardable variant, champion objections), and a state-of property A/V report from field expertise. Trials cut. Waiting on Jane's picks.</div><div class="pstatus">In flight</div></div>
+<div class="proj"><div class="title">Osage Ponca City case study (web + Signal short)</div><div class="next">Consuelo full web case study, Ermintrude Signal short, from Brian docs + Project Media photos. Drafts for Jane browser approval first.</div><div class="pstatus">In flight</div></div>
+  <h2>Dated</h2>
 <div class="month">August</div>
   <div class="row done">
     <div class="box"></div>
@@ -129,7 +149,7 @@
     <div class="date">Oct 1 <span class="dow">Thursday</span></div>
     <div class="tag">Signal</div>
     <div><div class="title">Start October Signal</div><div class="client">The Signal</div></div>
-    <div class="badge soon">Tomorrow</div>
+    <div></div>
   </div>
   <div class="row ">
     <div class="box"></div>
@@ -160,23 +180,12 @@
     <div><div class="title">90-day check-in</div><div class="client">Clearwater River</div></div>
     <div></div>
   </div>
-</section>
-<section><h2>Open work</h2>
-<div class="open"><div class="title">Clearwater 30/60/90: Email 8 SENT Sep 23; Email 9 Oct 23; Email 10 Nov 22. AC automation add only after Jane yes.</div><div class="wait">Waiting: Jane yes on any AC write; Oct 23 Email 9 is next manual send</div></div>
-<div class="open"><div class="title">New LUCI Demo seminar/webinar: date, platform, speaker TBD</div><div class="wait">Waiting: Jane / Mike</div></div>
-<div class="open"><div class="title">ActiveCampaign prospect tracks (plan exists, not built)</div><div class="wait">Waiting: Jane to approve</div></div>
-<div class="open"><div class="title">Four Winds: start Aaron Herrbach + Matt Roach in Customer Journey when deposit is received</div><div class="wait">Waiting: Jane to confirm deposit received; then ask for exact AC approval before adding both at the beginning of the automation</div></div>
-<div class="open"><div class="title">New LUCI launch — open: Jane call on sign-in/session placement; sales deck/Capabilities; proof pull; email bodies; AC Deals; Nick Cloudflare/GA</div><div class="wait">Waiting: Jane / Mark / Nick as needed</div></div>
-</section>
-<section><h2>Projects</h2>
-<div class="proj"><div class="title">New LUCI launch campaign</div><div class="next">What’s New two-pager design locked, in Mike review queue (non-urgent). Upgrade Guide webpage in flight on .37. Upgrade email templates in flight — copy this week. Theme: Putting the power of programming in your hands.</div><div class="pstatus">In flight</div></div>
-<div class="proj"><div class="title">Website rebuild (luci-website)</div><div class="next">Fall launch. Morning-reset + lighting spotlights live on .37. Revert-preset Wave 1 draft still open. Upgrade Guide live review http://10.10.1.37/luci-upgrade-guide/. Resources/blog card layout polish queued.</div><div class="pstatus">In flight</div></div>
-<div class="proj"><div class="title">Website content library (prospect)</div><div class="next">Morning-reset + lighting published. Revert-preset draft still open for Jane. Flow C one-pager r3 + Aliante/Yaamava case-study updates still on her open list. Then look lock by type / Maker / live.</div><div class="pstatus">In flight</div></div>
-<div class="proj"><div class="title">Customization Studio (standalone app, with Will)</div><div class="next">Not IMP. Jane not building studio in IMP. Review hub still for content reviews/downloads.</div><div class="pstatus">In flight</div></div>
-<div class="proj"><div class="title">Aliante case study + video + Signal</div><div class="next">Closed for current standup framing (Sep 25). Reel + case study live on Astro .37. Reopen only if Jane asks.</div><div class="pstatus">Held</div></div>
-<div class="proj"><div class="title">The Signal (October)</div><div class="next">Issue 04 SENT Sep 16. Start October Signal Thu Oct 1 (Osage/Sand Springs In the Field cue ready). Send target Oct 15.</div><div class="pstatus">In flight</div></div>
-<div class="proj"><div class="title">Prospect nurture (ActiveCampaign)</div><div class="next">Split RESOLVED by the IMP email plan: high-intent past-demo get the private preview, broader warm opens at launch, anyone finishing a cycle without going to sales lands in Prospect Pulse (6 months, every 4-6 weeks). Build in ActiveCampaign after copy exists. No AC writes without Jane's yes.</div><div class="pstatus">In flight</div></div>
-<div class="proj"><div class="title">LinkedIn / social</div><div class="next">Mike reviewed the strategy. Hold until New LUCI product launch.</div><div class="pstatus">Held</div></div>
-<div class="proj"><div class="title">2026 tactics brief</div><div class="next">Four tactics now: be the answer (AEO + entity binding), YouTube one-job how-tos, extend the Capabilities doc into a real committee packet (finance/procurement page, security answer sheet, forwardable variant, champion objections), and a state-of property A/V report from field expertise. Trials cut. Waiting on Jane's picks.</div><div class="pstatus">In flight</div></div>
-</section>
-</body></html>
+  <h2>The Signal · running ideas</h2>
+  <div class="client" style="margin:-4px 0 10px">Send the 15th. Start about two weeks out.</div>
+<div class="idea">October Signal Issue 05 — prep ready Oct 1; Jane picks open; send ~Oct 15</div>
+  <h2>Parked</h2>
+<div class="idea parked">LinkedIn / social posting <span class="client">· Hold until New LUCI product launch.</span></div>
+<div class="idea parked">Case-study video skills (beat-mapping / Pass 1–2) <span class="client">· Jane pulled Sep 1. Do not use or edit until she sends replacements.</span></div>
+</div>
+</body>
+</html>

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-01",
+  "updated": "2026-10-07",
   "timezone": "America/Los_Angeles",
   "items": [
     {
@@ -127,7 +127,8 @@
       "client": "The Signal",
       "status": "soon",
       "done": false,
-      "notes": "Issue 05 prep packet delivered morning of Oct 1 on box /workspace/signal-05/ and luci-design ui_kits/newsletter/ + OneDrive Newsletter/. LOCKED: Osage/Sand Springs Field + Design services (no D3). Open for Jane: Theme, Quick Tip, Advice, Happenings, What\u2019s coming (beta-only), Minute with Mike. Ermintrude owns polished newsletter copy. Send target ~Oct 15."
+      "notes": "Issue 05 in progress. Jane LOCKED Oct 6: Field = Osage Casino Hotel Ponca City (Swigs/Swizzle + ballroom LED; not Sand Springs); Design services (no D3); Theme idea = continuity / A/V stabilizer bar (title iterations open); Quick Tip = calendar collision on shared TVs; Advice = Build venues first + Users like candy (blurbs + section name open); Minute with Mike = power of programming tied to two-pager; What's Coming = Reporting & Analytics + two-pager promo. Ermintrude owns copy; Consuelo full Osage web case study. Draft -> Jane approve -> implement. Send target ~Oct 15.",
+      "in_progress": true
     },
     {
       "id": "signal-oct-send",
@@ -137,7 +138,8 @@
       "label": "Send October Signal",
       "client": "The Signal",
       "status": "upcoming",
-      "done": false
+      "done": false,
+      "notes": "Target ~Oct 15. No Send without Jane's say-so."
     },
     {
       "id": "clearwater-e9",
@@ -206,13 +208,13 @@
     },
     {
       "id": "four-winds-cj-deposit",
-      "label": "Four Winds: start Aaron Herrbach + Matt Roach in Customer Journey when deposit is received",
+      "label": "Four Winds: PO arrived Tue Oct 6; deposit still outstanding. Start Aaron Herrbach + Matt Roach in Customer Journey only after deposit + Jane yes",
       "waiting": "Jane to confirm deposit received; then ask for exact AC approval before adding both at the beginning of the automation",
       "done": false
     },
     {
       "id": "launch-meeting-followups",
-      "label": "New LUCI launch \u2014 open: Jane call on sign-in/session placement; sales deck/Capabilities; proof pull; email bodies; AC Deals; Nick Cloudflare/GA",
+      "label": "New LUCI launch - Richard Oct 5 follow-up packet (UG-01-54 actions, U-01-31 undecided) waiting on Jane green-lights per item; Upgrade Guide work live on .37 for Mike review; Pillar 03 locked Oct 5 (Informed control of your operation). Also open: sales deck/Capabilities; proof pull; email bodies; AC Deals; Nick Cloudflare/GA",
       "waiting": "Jane / Mark / Nick as needed",
       "done": false
     }
@@ -240,7 +242,7 @@
     {
       "id": "website",
       "name": "Website rebuild (luci-website)",
-      "next": "Fall launch. Morning-reset + lighting spotlights live on .37. Revert-preset Wave 1 draft still open. Upgrade Guide live review http://10.10.1.37/luci-upgrade-guide/. Resources/blog card layout polish queued. Aliante resources grid + featured swap DONE.",
+      "next": "Astro site production-ready for cutover to lucisystems.com (confirmed Oct 7); Upgrade Guide Oct 6 work live on .37 for Mike review. Revert-preset Wave 1 draft still open. Platform page redo in flight.",
       "status": "in_flight"
     },
     {
@@ -264,7 +266,7 @@
     {
       "id": "signal",
       "name": "The Signal (October)",
-      "next": "Issue 05 prep ready Oct 1 (choices + lorem shell + call-recordings pass). LOCKED: Osage/Sand Springs In the Field; Design services = current LUCI offering (no D3). Jane picks Theme/Tip/Advice/Happenings/What\u2019s coming/Minute. Ermintrude writes when queued. Send ~Oct 15. Photos: Project Media/Osage Ponca LED 1 and 2.",
+      "next": "Issue 05 picks locked Oct 6 (see item). Open for Jane: theme title iterations, Advice blurbs + section name, Minute with Mike pack, Osage Signal short (Ermintrude). Send ~Oct 15.",
       "status": "in_flight"
     },
     {
@@ -284,6 +286,12 @@
       "name": "2026 tactics brief",
       "next": "Four tactics now: be the answer (AEO + entity binding), YouTube one-job how-tos, extend the Capabilities doc into a real committee packet (finance/procurement page, security answer sheet, forwardable variant, champion objections), and a state-of property A/V report from field expertise. Trials cut. Waiting on Jane's picks.",
       "status": "in_flight"
+    },
+    {
+      "id": "osage",
+      "name": "Osage Ponca City case study (web + Signal short)",
+      "next": "Consuelo full web case study, Ermintrude Signal short, from Brian docs + Project Media photos. Drafts for Jane browser approval first.",
+      "status": "in_flight"
     }
   ],
   "parked": [
@@ -298,7 +306,7 @@
       "note": "Jane pulled Sep 1. Do not use or edit until she sends replacements."
     }
   ],
-  "notes": "Board refreshed Thu Oct 1 2026 morning. TOP Jane today: (1) October Signal Issue 05 picks \u2014 Theme/Tip/Advice/Happenings/What\u2019s coming/Minute; Field+Design services locked; prep in signal-05. (2) Upgrade Guide on .37. (3) Blue Chip Greg Fri Oct 3 8:30 AM PT. Wave 1: morning-reset + lighting live; revert-preset still open. What\u2019s New two-pager in review with Mike (non-urgent). Upgrade email copy this week. No journey sends due through Oct 2; Clearwater Email 9 Oct 23. Infocomm CFP (next year talk with Mike) \u2014 submit by Oct 30.",
+  "notes": "Board refreshed Wed Oct 7 2026 morning. TOP Jane: Signal 05 draft reviews (send ~Oct 15), Osage drafts, Greg/Blue Chip reschedule follow-up, Richard packet green-lights, Four Winds deposit check, Forum Partner audience research (hotel cutoff Oct 31). No journey sends due through Oct 9; Clearwater Email 9 Oct 23. Mike standup Fri Oct 9 11:11 AM PT. Infocomm CFP Oct 30.",
   "dropped": [
     {
       "id": "screen-rec",
@@ -340,6 +348,14 @@
       "client": "Events",
       "status": "open",
       "notes": "Jane + Mike: put together presentation for Infocomm next year. Call for Presentations received 2026-10-01. Chat with Mike first."
+    },
+    {
+      "id": "nalf-west-2026",
+      "date": "2026-12-02",
+      "label": "Native American Leadership Forum-West (Dec 2-4, Hyatt Regency Maui) - Forum Partner ~$5k under evaluation",
+      "client": "Events",
+      "status": "open",
+      "notes": "Jane wants audience-size research; Mike said dig deeper (Oct 6). Hotel block cut-off Oct 31, code G-NATI, $379."
     }
   ]
 }
