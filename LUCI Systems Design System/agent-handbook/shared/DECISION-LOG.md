@@ -10,7 +10,7 @@
 
 ## 2026-10-08
 
-- **Osage Casino Hotel – Ponca City case-study headline is “One LUCI foundation for every property expansion.”** The headline leads with the customer value of one operating foundation that each later project extends. Jane.
+- **Osage Casino Hotel – Ponca City case-study headline is “One foundation for every property expansion.”** The headline leads with the customer value of one operating foundation that each later project extends. Jane.
 
 ## 2026-10-07
 
