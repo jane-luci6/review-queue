@@ -8,6 +8,10 @@
 
 ---
 
+## 2026-10-08
+
+- **Osage Casino Hotel – Ponca City case-study headline is “One LUCI foundation for every property expansion.”** The headline leads with the customer value of one operating foundation that each later project extends. Jane.
+
 ## 2026-10-07
 
 - **Upgrade path section: Variant A (horizontal timeline) is the locked direction.** Fact strip (4 facts) + "How your upgrade works" subhead + horizontal track with 4 numbered nodes connected by a gold→mint gradient line. Beats the facts-rail+cards (B) and interactive stepper (C) directions. Jane.
