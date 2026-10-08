@@ -10,6 +10,7 @@
 
 ## 2026-10-08
 
+- **What’s New two-pager no longer links to the Upgrade Guide.** Close line is “For more information, contact LUCI,” with Michael Epstein’s contact remaining on the right. Jane: release the two assets one at a time. Jane.
 - **Osage Casino Hotel – Ponca City case-study headline is “One foundation for every property expansion.”** The headline leads with the customer value of one operating foundation that each later project extends. Jane.
 
 ## 2026-10-07
