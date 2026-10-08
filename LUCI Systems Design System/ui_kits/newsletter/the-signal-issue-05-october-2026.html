@@ -2824,8 +2824,17 @@
       color: var(--mint-dark);
     }
     /* VARIANT A — larger inline stamps */
-    .proj-log__row { grid-template-columns: 120px 1fr; column-gap: 22px; padding: 24px 0; align-items: center; }
-    .proj-log__stamp { width: 120px; height: 120px; }
+    /* Issue 05: landscape 16:10 stamps so the full photo shows uncropped */
+    .proj-log__row { grid-template-columns: 224px 1fr; column-gap: 24px; padding: 24px 0; align-items: center; }
+    .proj-log__stamp { width: 224px; height: 140px; object-fit: cover; }
+    @media (max-width: 640px) {
+      .proj-log__row { grid-template-columns: 160px 1fr; column-gap: 16px; padding: 20px 0; }
+      .proj-log__stamp { width: 160px; height: 100px; }
+    }
+    @media (max-width: 420px) {
+      .proj-log__row { grid-template-columns: 1fr; row-gap: 12px; }
+      .proj-log__stamp { width: 100%; height: auto; aspect-ratio: 16 / 10; }
+    }
 
     /* DRAFT placeholder highlight — Issue 05 first draft for Mike review */
     .tbd { background: #FFE58A; color: #10232D; padding: 0 .25em; border-radius: 3px; font-weight: 600; }
