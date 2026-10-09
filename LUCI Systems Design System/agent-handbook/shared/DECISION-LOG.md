@@ -10,6 +10,7 @@
 
 ## 2026-10-09
 
+- **Osage In the Field first-section title is \"Where the relationship started.\"** Replaces the earlier \"The project was never just one room\" placeholder, which Jane found odd and off-fit for the relationship-origin content. Applies to both the Signal Issue 05 newsletter and the full Osage Ponca City case study. Jane.
 - **Osage Ponca City first restaurant is Swallows, not Swizzle.** Transcript ASR supports "swallows" (Brian's spotlight); Jane questioned the prior Oct 7 "Swizzle" lock and confirmed Swallows as the correct venue name. Overrides the Oct 7 Swizzle reference. Swigs is confirmed. Jane.
 - **Osage case study stays centered on Ponca City and its nine-year LUCI relationship.** Tulsa is the 10+ year Osage origin, and Bartlesville, Pawhuska, Sand Springs, and Skiatook establish broader relationship depth, but those locations remain supporting context rather than the main story. Jane.
 - **Osage relationship origin is Tulsa, 10+ years, spanning six properties.** Mike: LUCI has been with Osage more than ten years, starting at Tulsa during construction and helping with design; Jane asked that origin plus the later locations (Bartlesville, Pawhuska, Ponca City, Sand Springs, Skiatook) into the Ponca City case study and Signal Issue 05 In the Field. Ponca City remains the featured latest chapter; 98 endpoints stay Ponca-only.
