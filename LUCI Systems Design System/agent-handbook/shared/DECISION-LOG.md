@@ -10,6 +10,7 @@
 
 ## 2026-10-09
 
+- **Upgrade Guide shows no release date and no “Coming soon.”** Hero date label and the Availability fact are removed; the guide does not publish a calendar date. Jane.
 - **Signal Issue 05 is ready for Mike’s Review Queue.** Remove the draft strip and title highlighting, show “Keep the Work Connected” consistently in the masthead and welcome section, and route the completed issue to Mike for technical and messaging review. Jane.
 - **Signal Issue 05 theme is “Keep the Work Connected.”** This is the locked welcome headline and replaces the “Hold the Project Steady” working title. Jane.
 - **Signal Issue 05 opens and closes on continuity over time.** The intro follows one operating plan through design, construction, installation, daily use, and expansion; the sign-off defines a good A/V project by what it keeps delivering after turn-on. Jane.
