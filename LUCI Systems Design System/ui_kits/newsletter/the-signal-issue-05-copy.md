@@ -86,6 +86,8 @@ Casino technology rarely becomes complicated because of one project. It becomes 
 
 LUCI’s partnership with Osage started with the Tulsa casino location, where Osage wanted to remove this kind of complexity from their A/V system from the first day of construction. LUCI was brought into the Ponca City property soon after.
 
+Since then, LUCI has also expanded into Osage’s Bartlesville, Pawhuska, Sand Springs, and Skiatook casino locations — a 10+ year relationship that now spans six properties.
+
 **Phase 01 — The LUCI install.** The original Ponca City installation put the software and control foundation in place — the operating standard every later phase extends.
 
 **Phase 02 — The ballroom.** LUCI brought the room’s projectors and controls into the same software already running the casino floor, so the team runs the space from one interface instead of a separate control system.
