@@ -222,20 +222,22 @@ When this happens, LUCI currently prioritizes the preset that starts later. But 
 
 **Kicker:** 05 · What’s coming
 
-**Headline:** See the patterns behind day-to-day activity
+**Headline:** Reporting & Analytics gives you full visibility
 
-**Dek:** The new version of LUCI is taking shape. Reporting & Analytics will turn day-to-day system activity into a clearer view of what is happening, what keeps happening, and where to look next.
+**Highlight:** full visibility
+
+**Dek:** The new version of LUCI is bringing more control, visibility, and flexibility to your operation. This month, we’re introducing Reporting & Analytics, which gives you a clearer view of what is happening, what has happened over time, and who or what initiated each action across your properties.
 
 **Body:**
 
-We’re looking forward to putting these capabilities in your hands. Live monitoring shows what is happening now. Audit trails show who or what changed something and when. Reporting & Analytics adds the view across time, so your team can identify patterns and investigate the activity behind them.
+Reporting & Analytics turns the activity LUCI already records into a connected operational history. Instead of reconstructing an issue from individual logs, you can see where incidents recur, how commands and automations are performing, and which endpoints need attention. Compare the last 24 hours, 7 days, or 30 days, then open the relevant record to understand what happened and where.
 
 - **Overview:** Scan incident volume and duration, command success and failure, latency, and preset activity across 24-hour, 7-day, and 30-day views.
 - **Commands:** Trace individual commands by result and timing when a specific action needs a closer look.
 - **Automation:** Review scheduled presets and automated workflows to see what ran, when it ran, and whether it completed.
 - **Reliability:** Bring device incidents and system logs into view to identify endpoints that need attention.
 
-Start with the broad pattern, then move into the relevant command, automation, or reliability record. Shift between the last 24 hours, 7 days, and 30 days to separate a one-time event from a recurring issue.
+Together, these views take you from “something happened” to the record behind it without losing the larger pattern across your operation.
 
 ### Sneak peek: See more of what’s coming
 
