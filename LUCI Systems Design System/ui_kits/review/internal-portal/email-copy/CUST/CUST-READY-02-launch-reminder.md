@@ -8,7 +8,7 @@
 - **Status:** scaffold — coverage + empty template only; body not written
 
 ## Coverage bullets
-- December 2026 availability reminder
+- Availability reminder (no release date)
 - Upgrade guide and FAQ as the preparation source
 - New-laptop, verify, then switch sequence
 - Existing live laptop remains untouched during verification
@@ -19,7 +19,7 @@
 ## Copy template
 
 ### Subject lines (test 2–3)
-1. New LUCI arrives in December 2026
+1. New LUCI is almost here
 2. Your New LUCI upgrade guide
 3. One week until New LUCI
 

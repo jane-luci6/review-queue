@@ -10,7 +10,7 @@
 ## Coverage bullets
 - Non-attendees only; suppress attendees
 - Recording positioned as the same product view, available on demand
-- December 2026 availability kept visible
+- Coming-soon framing kept visible; no release date
 - More control in customers’ hands, with LUCI partnership behind them
 - What’s New two-pager as the scan-first companion
 - Full [WEBINAR RECORDING URL] as the primary CTA

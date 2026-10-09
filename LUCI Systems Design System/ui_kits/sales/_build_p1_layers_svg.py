@@ -67,14 +67,7 @@ parts.append(f'<text x="56" y="161" font-family="{FD}" font-weight="700" font-si
              f'letter-spacing="1.5" fill="{OFF}">IS IN YOUR HANDS</text>\n')
 parts.append('</g>\n')
 
-# ---- HEADER release date ----
-parts.append('<g id="layer-header-date" inkscape:label="header-date" '
-             'xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">\n')
-parts.append(f'<text x="56" y="216" font-family="{FH}" font-weight="700" font-size="9.5" '
-             f'letter-spacing="2.2" fill="rgba(235,245,248,0.5)">RELEASE DATE</text>\n')
-parts.append(f'<text x="146" y="216" font-family="{FH}" font-weight="700" font-size="20" '
-             f'fill="{MINT}">January 19</text>\n')
-parts.append('</g>\n')
+# ---- HEADER release date: removed 2026-10-09 (Jane: no public release date) ----
 
 # ---- FIELD map (236..1020) cover, bottom-right anchor ----
 parts.append('<g id="layer-map" inkscape:label="map" '

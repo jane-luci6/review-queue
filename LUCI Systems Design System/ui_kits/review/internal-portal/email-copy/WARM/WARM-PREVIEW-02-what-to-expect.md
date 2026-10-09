@@ -14,7 +14,7 @@
 - Audit trails, live monitoring, and sign-in/session control for clearer oversight
 - Registrant branch: agenda and session expectations
 - Nonregistrant branch: concise registration opportunity
-- December 2026 availability
+- Coming-soon framing; no release date
 - No customer-only upgrade guide, FAQ, or ownership language
 
 ## Copy template

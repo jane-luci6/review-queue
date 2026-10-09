@@ -74,7 +74,7 @@ Warm prospects include anyone with prior LUCI exposure—a demo, request, websit
 
 1. **Private preview invitation**
    - **Timing:** About two to three weeks before launch; past-demo and serious past-request prospects only.
-   - **Purpose and message:** Offer an early look at what has changed and state the launch date clearly.
+   - **Purpose and message:** Offer an early look at what has changed. Do not state a release date.
    - **CTA:** Register for the private preview.
 
 2. **What to expect**

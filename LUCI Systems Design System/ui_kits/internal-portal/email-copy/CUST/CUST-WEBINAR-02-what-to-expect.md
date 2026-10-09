@@ -14,7 +14,7 @@
 - Audit trails, live monitoring, and access control: clearer activity and status
 - Registrant branch: agenda and session expectations; no repeat registration ask
 - Nonregistrant branch: concise second invitation and registration link
-- December 2026 availability restated
+- Coming-soon framing restated; no release date
 - No webinar date, time, platform, or speaker beyond approved placeholders
 
 ## Copy template
