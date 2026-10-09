@@ -20,11 +20,11 @@ First draft for Mike review on October 9, 2026. Copy only. GLM will place approv
 
 Complex properties ask a lot of an A/V project. Plans move through architects, trades, installers, operators, and support teams before the first guest ever sees the result. Through every handoff, the project needs a stabilizer: one operating foundation that keeps the intent intact from the drawing set to the floor—and keeps working after the room opens.
 
-That continuity runs through this issue. We visit Osage Casino Hotel in Ponca City, where an original LUCI installation became the foundation for a ballroom, Swizzle, and now Swigs. We look at Design with LUCI, where the team planning the infrastructure stays through coordination, turn-on, training, and operation. The Quick Tip and [ADVICE SECTION NAME — TBD] offer practical ways to keep schedules, venues, endpoints, and access aligned.
+That continuity runs through this issue. We visit Osage Casino Hotel in Ponca City, where a nine-year LUCI relationship became the foundation for the ballroom, Swizzle, and now Swigs. We look at Design with LUCI, where the team planning the infrastructure stays through coordination, turn-on, training, and operation. The Quick Tip and [ADVICE SECTION NAME — TBD] offer practical ways to keep schedules, venues, endpoints, and access aligned.
 
 We also share an early look at Reporting & Analytics in the new version of LUCI, introduce the first What’s New two-pager, and close with a Minute with Mike on putting more programming control in your hands—with the LUCI team still right behind you.
 
-**One-line issue summary:** Here’s what this issue holds: a multi-year partnership in Ponca City, Design with LUCI, practical operating advice, a calendar Quick Tip, Reporting & Analytics, the What’s New two-pager, and a Minute with Mike.
+**One-line issue summary:** Here’s what this issue holds: a nine-year partnership in Ponca City, Design with LUCI, practical operating advice, a calendar Quick Tip, Reporting & Analytics, the What’s New two-pager, and a Minute with Mike.
 
 **TOC labels:**
 
@@ -76,31 +76,33 @@ For each card, add the property, city and state, date, and one sourced sentence 
 
 **Kicker:** 02 · In the field
 
-**Headline:** One foundation for every next phase
+**Headline:** One foundation for every property expansion
 
-**Dek:** For [YEARS WITH LUCI — TBD], Osage Casino Hotel in Ponca City has extended the same LUCI foundation through [PROJECTS AT PONCA CITY — TBD] projects—from the original installation to the ballroom, Swizzle, and now Swigs.
+**Dek:** For nine years, Osage Casino Hotel — Ponca City has extended the same LUCI foundation from the original installation to the ballroom, Swizzle, and Swigs. The property now runs 98 endpoints through one operating standard.
 
 **Body:**
 
-LUCI was already operating on the casino floor before the later ballroom work. When the property added its ballroom projectors, that room joined the same control environment. This year, the next expansion arrived in two phases: Swizzle first, followed by Swigs, the property’s new bar and live entertainment venue.
+The LUCI team installed the platform at Ponca City nine years ago, putting the control infrastructure and operating standard in place before the later expansions began. The same team returned for the ballroom, then again for Swizzle and Swigs. Each phase extended the software already running the property instead of adding another isolated A/V environment to manage.
 
-Each return built on what was already running. The property did not have to start a separate control project for every new room. New A/V technology joined the same operating foundation, with an embedded team that already understood the property and stayed accountable through turn-on.
+Ponca City is one part of a broader Osage relationship that began at Tulsa during construction more than ten years ago, with LUCI helping design the A/V infrastructure. Osage has since brought LUCI into Bartlesville, Pawhuska, Sand Springs, and Skiatook as well.
 
 Swigs is the latest proof. Its nearly 20-foot display spans three angled planes, with 60 cabinets and 480 panels forming one 3840 × 1296 canvas. Four display presets move between full-screen content, multi-source television, and a featured center layout. Two new audio zones support the bar and stage. A four-person onsite team, backed by home-office support, completed the work in 25.5 total working hours.
 
-The specifications show the scale of the latest room. The larger story is continuity: the ballroom, Swizzle, and Swigs all extend an established LUCI operation instead of creating another isolated system for the property to manage.
+The specifications show the scale of the latest room. The larger story is continuity: nine years at Ponca City, with every new room extending the operating standard already in place.
 
 **Stats:**
 
-- **[YEARS WITH LUCI — TBD]** · Years with LUCI
-- **[PROJECTS AT PONCA CITY — TBD]** · Projects at Ponca City
-- **Ponca City** · This year’s focus
-- **4** · Swigs display presets
+- **9** · Years at Ponca City
+- **4** · Ponca City project phases
+- **2** · Venue phases in the latest expansion
+- **98** · Endpoints at Ponca City
 
-**Pull-out — What Ponca City runs on LUCI now:**
+**Pull-out — What Ponca City runs now:**
 
-- The ballroom’s projectors and room control
-- Swigs video endpoints, two audio zones, and four display presets, managed alongside the property’s existing technology
+- One LUCI foundation across the casino floor, ballroom, Swizzle, and Swigs
+- 98 endpoints at Ponca City through the same LUCI environment
+- Four presets organizing seven independent video sources across one three-plane canvas
+- New LED, video, and audio endpoints at Swigs joined the property’s existing LUCI environment
 
 **Captions:**
 

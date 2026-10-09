@@ -8,6 +8,11 @@
 
 ---
 
+## 2026-10-09
+
+- **Osage case study stays centered on Ponca City and its nine-year LUCI relationship.** Tulsa is the 10+ year Osage origin, and Bartlesville, Pawhuska, Sand Springs, and Skiatook establish broader relationship depth, but those locations remain supporting context rather than the main story. Jane.
+- **Osage relationship origin is Tulsa, 10+ years, spanning six properties.** Mike: LUCI has been with Osage more than ten years, starting at Tulsa during construction and helping with design; Jane asked that origin plus the later locations (Bartlesville, Pawhuska, Ponca City, Sand Springs, Skiatook) into the Ponca City case study and Signal Issue 05 In the Field. Ponca City remains the featured latest chapter; 98 endpoints stay Ponca-only.
+
 ## 2026-10-08
 
 - **Upgrade Guide Sign-in & session control includes roles and permissions.** Combined into that existing Pillar 03 feature — not a new section. Copy describes only the new platform (create roles, Access profiles, one admin-level control without full admin access); no old-LUCI two-role comparison. Jane.
