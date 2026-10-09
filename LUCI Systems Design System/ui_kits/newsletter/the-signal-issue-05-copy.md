@@ -259,17 +259,17 @@ Explore What's New for a concise look at the new LUCI—what is changing, what y
 
 **Body:**
 
-For most of its history, A/V control has been built around dependency. The owner receives the finished system, but the ability to change it stays with a programmer. A device goes offline. A room stops responding. A configuration needs to change. Too often, the property has to call a vendor, integrator, or third party and wait.
+Traditional A/V control systems leave most changes in the hands of programmers. The owner gets the finished system, but when a display goes dark, a control panel stops responding, or a configuration needs to change, the property often has to call a vendor or integrator and wait.
 
-We built LUCI to change that relationship—to put the power of programming in your hands. It means the people responsible for the operation can manage the users, see the activity behind an issue, and access the tools they need to make changes without routing it through someone else.
+We built LUCI to change that relationship—to put the power of programming in your hands. That means the people responsible for the operation can manage users, see the activity behind an issue, and make routine changes directly.
 
 The current version moved much of that control into one interface, but some configuration still lived deep in the database. We saw the next step clearly: bring more of it forward.
 
-That principle shaped the new version from the beginning. Clients and their integrators will be able to load and orient their own maps, add endpoints, and make more changes directly. The people who understand the property, the room, and the work in front of them should have the access to act on that knowledge.
+That principle shaped the new version from the beginning. Clients and their integrators will be able to load and orient maps, add endpoints, and make more changes directly. The people who run the property can handle more work without waiting for every change to move through another company.
 
-Better performance matters. So do modern security, monitoring, and support. But this is also about shortening the distance between knowing what should change and having the ability to change it.
+Better performance matters. So do modern security, monitoring, and support. The practical result is fewer calls, fewer handoffs, and less time waiting on routine changes.
 
-More control does not mean less partnership. Our team remains alongside yours to help plan, monitor, diagnose, and support the system. The new version moves routine control closer to your operation while keeping the LUCI team and its accountability behind it.
+But more control does not mean less partnership. LUCI remains responsible for helping plan, monitor, diagnose, and support the system. Your team gets more day-to-day control; our team remains accountable for the platform and support behind it.
 
 **Stats:** None.
 
