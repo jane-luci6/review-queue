@@ -10,6 +10,7 @@
 
 ## 2026-10-09
 
+- **Signal Issue 05 opens and closes on continuity over time.** The intro follows one operating plan through design, construction, installation, daily use, and expansion; the sign-off defines a good A/V project by what it keeps delivering after turn-on. Jane.
 - **Signal Issue 05 Minute with Mike explains the new LUCI as the next step in client control.** Lead with the A/V industry’s historic programmer dependency, explain that LUCI was built to put routine programming power in clients’ hands, and frame performance, security, monitoring, and support as part of a larger goal: more direct access and authority for the people operating the property. Jane.
 - **Signal Issue 05 design-support article is “Why our clients bring LUCI in early.”** The article is instructive rather than promotional: explain which planning decisions benefit from early involvement, where handoffs blur operating intent, and when to bring LUCI into the conversation. Jane.
 - **Osage In the Field first-section title is \"Where the relationship started.\"** Replaces the earlier \"The project was never just one room\" placeholder, which Jane found odd and off-fit for the relationship-origin content. Applies to both the Signal Issue 05 newsletter and the full Osage Ponca City case study. Jane.

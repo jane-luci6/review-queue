@@ -18,13 +18,13 @@ First draft for Mike review on October 9, 2026. Copy only. GLM will place approv
 
 **Body:**
 
-Complex properties ask a lot of an A/V project. Plans move through architects, trades, installers, operators, and support teams before the first guest ever sees the result. Through every handoff, the project needs a stabilizer: one operating foundation that keeps the intent intact from the drawing set to the floor—and keeps working after the room opens.
+A complex A/V project passes through a lot of hands. Architects, contractors, installers, IT teams, and operators all have a part to play. And with every handoff comes the risk of losing something along the way—a design decision, an operational requirement, or the bigger picture of how everything needs to work together.
 
-That continuity runs through this issue. We visit Osage Casino Hotel in Ponca City, where a nine-year LUCI relationship became the foundation for the ballroom, Swallows, and now Swigs. We look at Design with LUCI, where the team planning the infrastructure stays through coordination, turn-on, training, and operation. The Quick Tip and Inside LUCI sections offer practical ways to keep schedules, venues, endpoints, and access aligned.
+That’s why continuity over time matters. When the same operating plan keeps the work connected through design, construction, installation, and daily use, there are fewer gaps to work around and fewer surprises down the road. And when a property expands, it can build instead of replacing, reworking, or adding clutter.
 
-We also share an early look at Reporting & Analytics in the new version of LUCI, introduce What’s New—a concise overview of the capabilities on the way—and close with a Minute with Mike on putting more programming control in your hands, with the LUCI team still right behind you.
+LUCI is the foundation of that continuity with each of our customers. From early planning and infrastructure design through installation, training, and ongoing support, our team stays involved to keep your efforts aligned with your property’s operational needs.
 
-**One-line issue summary:** Here’s what this issue holds: a nine-year partnership in Ponca City, Design with LUCI, practical operating advice, a calendar Quick Tip, Reporting & Analytics, the What’s New overview, and a Minute with Mike.
+In this issue, you’ll see this in our nine-year partnership with Osage Casino Hotel, the design services we offer with every LUCI subscription, and the operating advice we provide clients. We’ll also share how the next version of LUCI is giving your team greater visibility and control, while keeping the same support behind it.
 
 **TOC labels:**
 
@@ -314,7 +314,7 @@ Same LUCI team, same LUCI engineers. Just another way in.
 
 **Body:**
 
-Complex A/V projects move through many hands, but the operating intent should stay intact. We’ll keep carrying that continuity from the first plan into the rooms your team runs every day—and into whatever comes next.
+A good A/V project doesn’t end when the equipment turns on. It keeps delivering when the room opens, when operations change, and when the next project comes along. That’s what we’re working to build with you.
 
 **Stats:** None.
 
