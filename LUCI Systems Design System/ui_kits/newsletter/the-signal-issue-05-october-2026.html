@@ -1304,18 +1304,36 @@
       .field-ba { grid-template-columns: 1fr; gap: 28px; }
     }
 
-    /* 2x2 phase grid */
+    /* phase layout: 2 horizontal boxes (01, 02), then full-width 03, 04 */
     .field-phases {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
+      flex-direction: column;
       gap: 1px;
       background: var(--rule-light);
       border: 1px solid var(--rule-light);
       margin: 0 0 clamp(36px, 5vw, 52px);
     }
+    .field-phases__row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--rule-light);
+    }
     .field-phase {
       background: #fff;
       padding: 28px 24px;
+    }
+    .field-phase--wide {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      align-items: stretch;
+    }
+    .field-phase--wide .field-phase__copy {
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     .field-phase__num {
       display: block;
@@ -1342,15 +1360,17 @@
       color: #354F5C;
       margin: 0 0 12px;
     }
-    .field-phase__text:last-of-type { margin-bottom: 16px; }
+    .field-phase__text:last-of-type { margin-bottom: 0; }
     .field-phase__img {
       display: block;
       width: 100%;
-      aspect-ratio: 4/3;
+      height: 100%;
       object-fit: cover;
-      border-radius: 8px;
     }
-    .field-phase--media { padding-bottom: 0; }
+    .field-phase--wide .field-slider,
+    .field-phase--wide .field-phase__img {
+      min-height: 100%;
+    }
 
     /* before/after slider inside phase grid */
     .field-slider {
@@ -1436,7 +1456,10 @@
       outline-offset: 2px;
     }
     @media (max-width: 640px) {
-      .field-phases { grid-template-columns: 1fr; }
+      .field-phases__row { grid-template-columns: 1fr; }
+      .field-phase--wide { grid-template-columns: 1fr; }
+      .field-phase--wide .field-phase__img,
+      .field-phase--wide .field-slider { min-height: 280px; }
     }
 
     .field-num { margin: 0 0 clamp(36px, 5vw, 52px); }
@@ -3173,28 +3196,34 @@
     </div>
 
     <div class="field-phases">
-      <div class="field-phase">
-        <span class="field-phase__num">01</span>
-        <h3 class="field-phase__title">The LUCI install</h3>
-        <p class="field-phase__text">The original Ponca City installation put the software and control foundation in place &mdash; the operating standard every later phase extends.</p>
+      <div class="field-phases__row">
+        <div class="field-phase">
+          <span class="field-phase__num">01</span>
+          <h3 class="field-phase__title">The LUCI install</h3>
+          <p class="field-phase__text">The original Ponca City installation put the software and control foundation in place &mdash; the operating standard every later phase extends.</p>
+        </div>
+        <div class="field-phase">
+          <span class="field-phase__num">02</span>
+          <h3 class="field-phase__title">The ballroom</h3>
+          <p class="field-phase__text">LUCI brought the room&rsquo;s projectors and controls into the same software already running the casino floor, so the team runs the space from one interface instead of a separate control system.</p>
+        </div>
       </div>
-      <div class="field-phase">
-        <span class="field-phase__num">02</span>
-        <h3 class="field-phase__title">The ballroom</h3>
-        <p class="field-phase__text">LUCI brought the room&rsquo;s projectors and controls into the same software already running the casino floor, so the team runs the space from one interface instead of a separate control system.</p>
-      </div>
-      <div class="field-phase field-phase--media">
-        <span class="field-phase__num">03</span>
-        <h3 class="field-phase__title">Swallows</h3>
-        <p class="field-phase__text">Rather than bring in a new LED vendor and then coordinate separate vendors for video, audio, and control, Osage brought LUCI in. The new wall, video sources, and audio zones plugged into the platform already running the property.</p>
-        <p class="field-phase__text">Four operating presets, seven independent video sources, and two new audio zones. The team can run one full canvas, two seven-screen layouts, or a featured center image with supporting content.</p>
+      <div class="field-phase field-phase--wide">
+        <div class="field-phase__copy">
+          <span class="field-phase__num">03</span>
+          <h3 class="field-phase__title">Swallows</h3>
+          <p class="field-phase__text">Rather than bring in a new LED vendor and then coordinate separate vendors for video, audio, and control, Osage brought LUCI in. The new wall, video sources, and audio zones plugged into the platform already running the property.</p>
+          <p class="field-phase__text">Four operating presets, seven independent video sources, and two new audio zones. The team can run one full canvas, two seven-screen layouts, or a featured center image with supporting content.</p>
+        </div>
         <img class="field-phase__img" src="assets/in-the-field/osage-swallows-after.jpg" alt="Swallows at Osage Casino Hotel &mdash; Ponca City: the finished LED wall running a multi-source sports layout" width="1600" height="1200" loading="lazy">
       </div>
-      <div class="field-phase field-phase--media">
-        <span class="field-phase__num">04</span>
-        <h3 class="field-phase__title">Swigs</h3>
-        <p class="field-phase__text">A bar and live-entertainment venue with a nearly 20-foot LED canvas crossing three planes. The same approach held: LUCI installed and integrated the wall, so the new LED, video, and audio joined the platform already running the property.</p>
-        <p class="field-phase__text">Four operating presets, seven independent video sources, and two new audio zones. The team can run one full canvas, two seven-screen layouts, or a featured center image with supporting content.</p>
+      <div class="field-phase field-phase--wide">
+        <div class="field-phase__copy">
+          <span class="field-phase__num">04</span>
+          <h3 class="field-phase__title">Swigs</h3>
+          <p class="field-phase__text">A bar and live-entertainment venue with a nearly 20-foot LED canvas crossing three planes. The same approach held: LUCI installed and integrated the wall, so the new LED, video, and audio joined the platform already running the property.</p>
+          <p class="field-phase__text">Four operating presets, seven independent video sources, and two new audio zones. The team can run one full canvas, two seven-screen layouts, or a featured center image with supporting content.</p>
+        </div>
         <div class="field-slider" data-field-slider>
           <img class="field-slider__img field-slider__img--after" src="assets/in-the-field/osage-swigs-after.jpg" alt="The commissioned three-plane Swigs LED wall running a multi-source sports layout" width="1600" height="1200" loading="lazy">
           <div class="field-slider__before">
