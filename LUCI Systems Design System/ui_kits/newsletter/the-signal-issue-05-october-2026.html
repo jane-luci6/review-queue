@@ -222,11 +222,17 @@
       list-style: none;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(4, auto);
+      grid-auto-flow: column;
       column-gap: 36px;
     }
 
     @media (max-width: 600px) {
-      .toc__list { grid-template-columns: 1fr; }
+      .toc__list {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+        grid-auto-flow: row;
+      }
     }
 
     .toc__list a {
@@ -251,6 +257,7 @@
       color: var(--mint);
       min-width: 22px;
     }
+    .toc__num--blank { color: transparent; }
 
     .toc__text { flex: 1; }
 
@@ -3241,11 +3248,10 @@
       <li><a href="#project-update"><span class="toc__num">01</span><span class="toc__text">LUCI Project Update</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
       <li><a href="#field-story"><span class="toc__num">02</span><span class="toc__text">In the field</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
       <li><a href="#design-services"><span class="toc__num">03</span><span class="toc__text">Beyond the platform</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
-      <li><a href="#advice"><span class="toc__text">Inside LUCI</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
+      <li><a href="#advice"><span class="toc__num toc__num--blank" aria-hidden="true">00</span><span class="toc__text">Inside LUCI</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
       <li><a href="#quick-tip"><span class="toc__num">04</span><span class="toc__text">When presets share a TV</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
       <li><a href="#whats-coming"><span class="toc__num">05</span><span class="toc__text">What&rsquo;s coming</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
       <li><a href="#mike-column"><span class="toc__num">06</span><span class="toc__text">A Minute with Mike</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
-      <li><a href="#happenings"><span class="toc__text">Happenings</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
     </ol>
   </nav>
 
