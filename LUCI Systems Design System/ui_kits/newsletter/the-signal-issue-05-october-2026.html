@@ -2105,6 +2105,28 @@
       max-width: 62ch;
     }
     .ui-shot--lg { margin: 0 0 50px; }
+    .design-article {
+      display: flow-root;
+    }
+    figure.design-plan {
+      float: right;
+      width: min(42%, 360px);
+      margin: 4px 0 24px 32px;
+      border-radius: 0;
+      box-shadow: none;
+    }
+    figure.design-plan .ui-shot__cap {
+      margin: 12px 0 0;
+      font-size: 12px;
+    }
+    @media (max-width: 640px) {
+      figure.design-plan {
+        float: none;
+        width: 100%;
+        max-width: none;
+        margin: 0 0 28px;
+      }
+    }
 
     .future-box {
       display: grid; grid-template-columns: 40px 1fr; gap: 16px;
@@ -3282,21 +3304,18 @@
       <span class="kicker__label">Beyond the platform</span>
       <span class="kicker__rule"></span>
     </div>
-    <h2 class="art-title">Why our clients bring LUCI in <em>early</em></h2>
+    <h2 class="art-title">Why our clients <em>bring LUCI in early</em></h2>
     <p class="art-deck">The best time to define how a room will operate is before rack locations, pathways, endpoints, and trade scopes are fixed.</p>
-    <div class="art-body">
+    <div class="art-body design-article">
+      <figure class="ui-shot design-plan">
+        <img src="assets/design-with-luci-early-floor-plan.png" alt="Illustrative architectural floor plan with A/V endpoint routes mapped throughout the property" width="1024" height="768" loading="lazy">
+        <figcaption class="ui-shot__cap">An early planning study maps endpoints and routes before construction fixes them in place. Illustrative plan; not a customer drawing.</figcaption>
+      </figure>
+      <p>Most of the decisions that determine how an A/V system will operate are made before the equipment arrives. Rack rooms, pathways, endpoint locations, trade responsibilities, and the way spaces connect all begin on the plan. Clients bring LUCI into that stage so the operating model can guide those decisions while they are still easy to change.</p>
       <h3 class="art-sub">Before the infrastructure hardens</h3>
       <p>Early planning lets the operating model shape rack locations, landing rooms, cable paths, endpoints, speaker groups, and connections between trades. Those choices are easier to coordinate on a plan than after walls close and equipment locations are fixed.</p>
       <h3 class="art-sub">Before the handoffs multiply</h3>
       <p>A/V intent can blur as drawings move from consultant to architect, contractor, programmer, and commissioning team. Bringing LUCI in early keeps the chain shorter: the team planning the required infrastructure coordinates it through construction, system turn-on, and owner training.</p>
-    </div>
-
-    <figure class="ui-shot ui-shot--lg">
-      <img src="assets/design-with-luci-early-floor-plan.png" alt="Illustrative architectural floor plan with A/V endpoint routes mapped throughout the property" width="1024" height="768" loading="lazy">
-      <figcaption class="ui-shot__cap">An early planning study maps endpoints and routes before construction fixes them in place. Illustrative plan; not a customer drawing.</figcaption>
-    </figure>
-
-    <div class="art-body">
       <h3 class="art-sub">Bring LUCI in while the plan can still move</h3>
       <p>The scope can match the project&mdash;a tenant improvement, an LED-only design, or a fuller low-voltage and LED design for a larger addition. Contractors still install the hardware. LUCI defines the infrastructure the operating platform needs and carries that intent into the system the owner will use.</p>
       <p><strong>If the rack room, pathways, or endpoint plan is still being drawn, that is the right time to bring LUCI into the conversation.</strong></p>

@@ -134,9 +134,13 @@ The larger story is continuity: nine years at Ponca City, with every new room ex
 
 **Headline:** Why our clients bring LUCI in early
 
+**Highlight:** bring LUCI in early
+
 **Dek:** The best time to define how a room will operate is before rack locations, pathways, endpoints, and trade scopes are fixed.
 
 **Body:**
+
+Most of the decisions that determine how an A/V system will operate are made before the equipment arrives. Rack rooms, pathways, endpoint locations, trade responsibilities, and the way spaces connect all begin on the plan. Clients bring LUCI into that stage so the operating model can guide those decisions while they are still easy to change.
 
 ### Before the infrastructure hardens
 
