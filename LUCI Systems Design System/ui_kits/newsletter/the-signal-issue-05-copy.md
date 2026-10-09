@@ -20,19 +20,19 @@ First draft for Mike review on October 9, 2026. Copy only. GLM will place approv
 
 Complex properties ask a lot of an A/V project. Plans move through architects, trades, installers, operators, and support teams before the first guest ever sees the result. Through every handoff, the project needs a stabilizer: one operating foundation that keeps the intent intact from the drawing set to the floor—and keeps working after the room opens.
 
-That continuity runs through this issue. We visit Osage Casino Hotel in Ponca City, where a nine-year LUCI relationship became the foundation for the ballroom, Swallows, and now Swigs. We look at Design with LUCI, where the team planning the infrastructure stays through coordination, turn-on, training, and operation. The Quick Tip and [ADVICE SECTION NAME — TBD] offer practical ways to keep schedules, venues, endpoints, and access aligned.
+That continuity runs through this issue. We visit Osage Casino Hotel in Ponca City, where a nine-year LUCI relationship became the foundation for the ballroom, Swallows, and now Swigs. We look at Design with LUCI, where the team planning the infrastructure stays through coordination, turn-on, training, and operation. The Quick Tip and Inside LUCI sections offer practical ways to keep schedules, venues, endpoints, and access aligned.
 
-We also share an early look at Reporting & Analytics in the new version of LUCI, introduce the first What’s New two-pager, and close with a Minute with Mike on putting more programming control in your hands—with the LUCI team still right behind you.
+We also share an early look at Reporting & Analytics in the new version of LUCI, introduce What’s New—a concise overview of the capabilities on the way—and close with a Minute with Mike on putting more programming control in your hands, with the LUCI team still right behind you.
 
-**One-line issue summary:** Here’s what this issue holds: a nine-year partnership in Ponca City, Design with LUCI, practical operating advice, a calendar Quick Tip, Reporting & Analytics, the What’s New two-pager, and a Minute with Mike.
+**One-line issue summary:** Here’s what this issue holds: a nine-year partnership in Ponca City, Design with LUCI, practical operating advice, a calendar Quick Tip, Reporting & Analytics, the What’s New overview, and a Minute with Mike.
 
 **TOC labels:**
 
 1. 01 · LUCI Project Update
 2. 02 · In the field
 3. 03 · Design with LUCI
-4. [ADVICE SECTION NAME — TBD]
-5. 04 · LUCI Quick Tip
+4. Inside LUCI
+5. 04 · When presets share a TV
 6. 05 · What’s coming
 7. 06 · A Minute with Mike
 8. Happenings
@@ -168,23 +168,23 @@ These planning and design services are included in the LUCI subscription.
 
 ## 5. Advice
 
-**Kicker:** [ADVICE SECTION NAME — TBD]
+**Kicker:** Inside LUCI
 
 **Headline:** Set the operating structure before the devices arrive
 
-**Dek:** How you organize venues, endpoints, and access inside LUCI shapes how cleanly your team can run the property as it grows. Two choices made early keep control clear.
+**Dek:** A clean venue structure gives every endpoint a home and each person the right level of access.
 
 **Body:**
 
-Every endpoint in a LUCI environment—every display, speaker zone, LED wall, and controlled device—lives inside a venue structure the property team can see and delegate by name. That structure is easier to build before the endpoints come online than to untangle after the fact. Two choices made during setup keep control clear as the property grows.
+In LUCI, displays, speaker zones, LED walls, and other controlled devices are organized by venue. Define those venues—and decide who can control them—before endpoints come online. The structure will be easier for your team to understand today and easier to extend later.
 
 ### Build venues first, then drop endpoints
 
-Create every venue, save the views, and name each section before endpoints come online. When the endpoints land, you can place them inside a structure the property already understands and delegate control cleanly by venue.
+Create every venue, save its views, and name each section first. When endpoints come online, place them inside a structure your team already recognizes. That keeps navigation clear and makes control easier to delegate by venue.
 
 ### Choose the access model on purpose
 
-There is no harm in keeping control with one administrator everyone calls. Most clients create users freely, then filter each person’s access by location and source. Both models work; choose deliberately instead of letting access grow by accident.
+Choose whether one administrator controls everything or users receive access by location and source. Both models work. The important part is to decide deliberately before permissions grow by accident.
 
 **Stats:** None.
 
@@ -200,7 +200,7 @@ There is no harm in keeping control with one administrator everyone calls. Most 
 
 **Headline:** What to do when two scheduled presets share the same TV
 
-**Dek:** Today, when two scheduled presets share the same TVs, the next preset wins. Don’t stack a drawing on a daypart without a plan.
+**Dek:** When two scheduled presets overlap on the same TV, the one that starts later takes control. Check the overlap—and plan what the screen should return to afterward.
 
 **Body:**
 
@@ -222,19 +222,22 @@ There is no harm in keeping control with one administrator everyone calls. Most 
 
 **Headline:** See the patterns behind day-to-day activity
 
-**Dek:** We're still plugging away at the new version of LUCI, and we're looking forward to getting these new features in your hands. Take a look at what you'll be able to access in Reporting & Analytics.
+**Dek:** The new version of LUCI is taking shape. Reporting & Analytics will turn day-to-day system activity into a clearer view of what is happening, what keeps happening, and where to look next.
 
 **Body:**
 
-Live monitoring shows what is happening now. Audit trails show who or what changed something and when. Reporting & Analytics, now taking shape in beta, shows patterns across time—so you can see not just what happened, but what keeps happening.
+We’re looking forward to putting these capabilities in your hands. Live monitoring shows what is happening now. Audit trails show who or what changed something and when. Reporting & Analytics adds the view across time, so your team can identify patterns and investigate the activity behind them.
 
-Four tabs organize the view. **Overview** surfaces incident volume and duration, command success and failure, latency, and preset activity across the last 24 hours, 7 days, or 30 days. **Commands** breaks down individual command records—success, failure, and timing—so you can trace a specific action. **Automation** tracks scheduled presets and automated workflows, showing what fired, when, and whether it completed. **Reliability** brings device incidents and system logs together so you can see which endpoints are staying online and which need attention.
+- **Overview:** Scan incident volume and duration, command success and failure, latency, and preset activity across 24-hour, 7-day, and 30-day views.
+- **Commands:** Trace individual commands by result and timing when a specific action needs a closer look.
+- **Automation:** Review scheduled presets and automated workflows to see what ran, when it ran, and whether it completed.
+- **Reliability:** Bring device incidents and system logs into view to identify endpoints that need attention.
 
-Start with the Overview to spot a pattern, then move into the relevant device, command, or automation record when something needs attention. The 24-hour, 7-day, and 30-day views let you shift between what just happened, what happened this week, and what the trend looks like over a month.
+Start with the broad pattern, then move into the relevant command, automation, or reliability record. Shift between the last 24 hours, 7 days, and 30 days to separate a one-time event from a recurring issue.
 
-### Sneak peek: the What's New two-pager
+### Sneak peek: See more of what’s coming
 
-Take a look at what's coming in the new version of LUCI. The What's New two-pager walks through the direction of the platform and the capabilities on the way. [WHAT'S NEW TWO-PAGER URL — Jane to provide]
+Explore What’s New for a concise look at the new LUCI—what is changing, what your team will be able to do, and where the platform is headed.
 
 **Stats:** None.
 
@@ -262,13 +265,13 @@ The new version brings more of that configuration forward. Clients and their int
 
 More control does not mean less partnership. Our team remains alongside yours to help plan, monitor, diagnose, and support the system. We are moving routine control closer to the operation while keeping the relationship and accountability behind it.
 
-That principle runs through the new LUCI: give your team more ability to shape the rooms, views, data, and access it uses every day. The What’s New two-pager included with this issue is the first published look at where that direction is going.
+That principle runs through the new LUCI: give your team more ability to shape the rooms, views, data, and access it uses every day. The What’s New overview included with this issue is the first published look at where that direction is going.
 
 **Stats:** None.
 
 **Captions:** None.
 
-**CTA:** Open the What’s New two-pager, then contact your LUCI team with questions.
+**CTA:** Explore What’s New, then contact your LUCI team with questions.
 
 **Signoff:**
 
@@ -327,12 +330,11 @@ The LUCI Team
 ## Placeholders left
 
 - `[THEME TITLE — TBD]`
-- `[ADVICE SECTION NAME — TBD]`
 - `[PROJECT UPDATE — TBD]`
 - `[YEARS WITH LUCI — TBD]`
 - `[PROJECTS AT PONCA CITY — TBD]`
 - `[CASE STUDY URL — TBD]`
-- `[WHAT'S NEW TWO-PAGER URL — Jane to provide]`
+- `[WHAT'S NEW URL — Jane to provide]`
 
 Required media caption cue, retained exactly: `Photo TBD: Osage Project Media`.
 

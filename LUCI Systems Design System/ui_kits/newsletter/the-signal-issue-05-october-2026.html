@@ -2156,14 +2156,36 @@
     .beta-note p { margin: 0 0 8px; font-size: 16px; color: #354F5C; }
     .beta-note .more { color: var(--mint-dark); font-weight: 700; }
 
-    /* Sneak peek callout — links to the What's New two-pager */
+    .analytics-views {
+      list-style: none;
+      margin: 24px 0 28px;
+      padding: 0;
+      max-width: 760px;
+    }
+    .analytics-views li {
+      margin: 0;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--rule-light);
+    }
+    .analytics-views li:first-child {
+      border-top: 1px solid var(--rule-light);
+    }
+    .analytics-views strong {
+      display: block;
+      margin-bottom: 4px;
+      font-family: var(--body);
+      font-size: 16px;
+      color: var(--navy);
+    }
+
+    /* Sneak peek callout — links to the customer-facing What's New overview */
     .sneak-peek {
       margin: clamp(32px, 4vw, 44px) 0 0;
       padding: clamp(24px, 3vw, 32px);
       border: 1px solid rgba(43, 158, 128, 0.28);
       border-left: 4px solid var(--mint-dark);
-      border-radius: 0 12px 12px 0;
-      background: linear-gradient(135deg, #f2fbf8 0%, #f8fcfa 100%);
+      border-radius: 0;
+      background: #f2fbf8;
       max-width: 820px;
     }
     .sneak-peek__label {
@@ -2173,6 +2195,15 @@
       letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--mint-dark);
+      margin: 0 0 10px;
+    }
+    .sneak-peek__title {
+      font-family: var(--body);
+      font-size: clamp(20px, 2.6vw, 24px);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.015em;
+      color: var(--navy);
       margin: 0 0 10px;
     }
     .sneak-peek__text {
@@ -3140,8 +3171,8 @@
     <div class="art-body">
       <p>Complex properties ask a lot of an A/V project. Plans move through architects, trades, installers, operators, and support teams before the first guest ever sees the result. Through every handoff, the project needs a stabilizer: one operating foundation that keeps the intent intact from the drawing set to the floor&mdash;and keeps working after the room opens.</p>
       <p>That continuity runs through this issue. We visit Osage Casino Hotel in Ponca City, where a nine-year LUCI relationship became the foundation for the ballroom, Swallows, and now Swigs. We look at LUCI&rsquo;s design support, where the team planning the infrastructure stays through coordination, turn-on, training, and operation. The Quick Tip and Inside LUCI sections offer practical ways to keep schedules, venues, endpoints, and access aligned.</p>
-      <p>We also share an early look at Reporting &amp; Analytics in the new version of LUCI, introduce the first What&rsquo;s New two-pager, and close with a Minute with Mike on putting more programming control in your hands&mdash;with the LUCI team still right behind you.</p>
-      <p>Here&rsquo;s what this issue holds: a nine-year partnership in Ponca City, LUCI&rsquo;s design support, practical operating advice, a calendar Quick Tip, Reporting &amp; Analytics, the What&rsquo;s New two-pager, and a Minute with Mike.</p>
+      <p>We also share an early look at Reporting &amp; Analytics in the new version of LUCI, introduce What&rsquo;s New&mdash;a concise overview of the capabilities on the way&mdash;and close with a Minute with Mike on putting more programming control in your hands, with the LUCI team still right behind you.</p>
+      <p>Here&rsquo;s what this issue holds: a nine-year partnership in Ponca City, LUCI&rsquo;s design support, practical operating advice, a calendar Quick Tip, Reporting &amp; Analytics, the What&rsquo;s New overview, and a Minute with Mike.</p>
     </div>
     <div class="art-signoff">
       <p class="art-signoff__name">Mike Epstein</p>
@@ -3161,7 +3192,7 @@
       <li><a href="#field-story"><span class="toc__num">02</span><span class="toc__text">In the field</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
       <li><a href="#design-services"><span class="toc__num">03</span><span class="toc__text">Beyond the platform</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
       <li><a href="#advice"><span class="toc__text">Inside LUCI</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
-      <li><a href="#quick-tip"><span class="toc__num">04</span><span class="toc__text">LUCI Quick Tip</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
+      <li><a href="#quick-tip"><span class="toc__num">04</span><span class="toc__text">When presets share a TV</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
       <li><a href="#whats-coming"><span class="toc__num">05</span><span class="toc__text">What&rsquo;s coming</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
       <li><a href="#mike-column"><span class="toc__num">06</span><span class="toc__text">A Minute with Mike</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
       <li><a href="#happenings"><span class="toc__text">Happenings</span><span class="toc__arrow" aria-hidden="true">&rarr;</span></a></li>
@@ -3375,13 +3406,13 @@
       <span class="kicker__rule"></span>
     </div>
     <h2 class="art-title">Set the operating structure <em>before the devices arrive</em></h2>
-    <p class="art-deck">How you organize venues, endpoints, and access inside LUCI shapes how cleanly your team can run the property as it grows. Two choices made early keep control clear.</p>
+    <p class="art-deck">A clean venue structure gives every endpoint a home and each person the right level of access.</p>
     <div class="art-body">
-      <p>Every endpoint in a LUCI environment&mdash;every display, speaker zone, LED wall, and controlled device&mdash;lives inside a venue structure the property team can see and delegate by name. That structure is easier to build before the endpoints come online than to untangle after the fact. Two choices made during setup keep control clear as the property grows.</p>
+      <p>In LUCI, displays, speaker zones, LED walls, and other controlled devices are organized by venue. Define those venues&mdash;and decide who can control them&mdash;before endpoints come online. The structure will be easier for your team to understand today and easier to extend later.</p>
       <h3 class="art-sub">Build venues first, then drop endpoints</h3>
-      <p>Create every venue, save the views, and name each section before endpoints come online. When the endpoints land, you can place them inside a structure the property already understands and delegate control cleanly by venue.</p>
+      <p>Create every venue, save its views, and name each section first. When endpoints come online, place them inside a structure your team already recognizes. That keeps navigation clear and makes control easier to delegate by venue.</p>
       <h3 class="art-sub">Choose the access model on purpose</h3>
-      <p>There is no harm in keeping control with one administrator everyone calls. Most clients create users freely, then filter each person&rsquo;s access by location and source. Both models work; choose deliberately instead of letting access grow by accident.</p>
+      <p>Choose whether one administrator controls everything or users receive access by location and source. Both models work. The important part is to decide deliberately before permissions grow by accident.</p>
     </div>
   </section>
 
@@ -3393,7 +3424,7 @@
       <span class="kicker__rule"></span>
     </div>
     <h2 class="art-title">What to do when two scheduled presets <em>share the same TV</em></h2>
-    <p class="art-deck">Today, when two scheduled presets share the same TVs, the next preset wins. Don&rsquo;t stack a drawing on a daypart without a plan.</p>
+    <p class="art-deck">When two scheduled presets overlap on the same TV, the one that starts later takes control. Check the overlap&mdash;and plan what the screen should return to afterward.</p>
     <div class="quick-tip__media">
       <ol class="steps steps--dark">
         <li><p><strong>Check the TVs.</strong> Confirm which TVs each preset touches, including any screens shared across venues or event plans.</p></li>
@@ -3403,7 +3434,7 @@
     </div>
   </section>
 
-  <!-- WHAT'S COMING — Reporting & Analytics + What's New two-pager promo -->
+  <!-- WHAT'S COMING — Reporting & Analytics + What's New preview -->
   <section class="sec sec--light" id="whats-coming">
     <div class="kicker">
       <span class="kicker__rule"></span>
@@ -3411,11 +3442,16 @@
       <span class="kicker__rule"></span>
     </div>
     <h2 class="art-title">See the patterns behind <em>day-to-day activity</em></h2>
-    <p class="art-deck">We&rsquo;re still plugging away at the new version of LUCI, and we&rsquo;re looking forward to getting these new features in your hands. Take a look at what you&rsquo;ll be able to access in Reporting &amp; Analytics.</p>
+    <p class="art-deck">The new version of LUCI is taking shape. Reporting &amp; Analytics will turn day-to-day system activity into a clearer view of what is happening, what keeps happening, and where to look next.</p>
     <div class="art-body">
-      <p>Live monitoring shows what is happening now. Audit trails show who or what changed something and when. Reporting &amp; Analytics, now taking shape in beta, shows patterns across time&mdash;so you can see not just what happened, but what keeps happening.</p>
-      <p>Four tabs organize the view. <strong>Overview</strong> surfaces incident volume and duration, command success and failure, latency, and preset activity across the last 24 hours, 7 days, or 30 days. <strong>Commands</strong> breaks down individual command records&mdash;success, failure, and timing&mdash;so you can trace a specific action. <strong>Automation</strong> tracks scheduled presets and automated workflows, showing what fired, when, and whether it completed. <strong>Reliability</strong> brings device incidents and system logs together so you can see which endpoints are staying online and which need attention.</p>
-      <p>Start with the Overview to spot a pattern, then move into the relevant device, command, or automation record when something needs attention. The 24-hour, 7-day, and 30-day views let you shift between what just happened, what happened this week, and what the trend looks like over a month.</p>
+      <p>We&rsquo;re looking forward to putting these capabilities in your hands. Live monitoring shows what is happening now. Audit trails show who or what changed something and when. Reporting &amp; Analytics adds the view across time, so your team can identify patterns and investigate the activity behind them.</p>
+      <ul class="analytics-views">
+        <li><strong>Overview</strong> Scan incident volume and duration, command success and failure, latency, and preset activity across 24-hour, 7-day, and 30-day views.</li>
+        <li><strong>Commands</strong> Trace individual commands by result and timing when a specific action needs a closer look.</li>
+        <li><strong>Automation</strong> Review scheduled presets and automated workflows to see what ran, when it ran, and whether it completed.</li>
+        <li><strong>Reliability</strong> Bring device incidents and system logs into view to identify endpoints that need attention.</li>
+      </ul>
+      <p>Start with the broad pattern, then move into the relevant command, automation, or reliability record. Shift between the last 24 hours, 7 days, and 30 days to separate a one-time event from a recurring issue.</p>
     </div>
 
     <figure class="ui-shot ui-shot--lg">
@@ -3425,8 +3461,10 @@
 
     <div class="sneak-peek">
       <p class="sneak-peek__label">Sneak peek</p>
-      <p class="sneak-peek__text">Take a look at what&rsquo;s coming in the new version of LUCI. The What&rsquo;s New two-pager walks through the direction of the platform and the capabilities on the way.</p>
-      <a class="sneak-peek__link" href="#"><mark class="tbd">[WHAT&rsquo;S NEW TWO-PAGER URL &mdash; Jane to provide]</mark> <span aria-hidden="true">&rarr;</span></a>
+      <h3 class="sneak-peek__title">See more of what&rsquo;s coming</h3>
+      <p class="sneak-peek__text">Explore What&rsquo;s New for a concise look at the new LUCI&mdash;what is changing, what your team will be able to do, and where the platform is headed.</p>
+      <!-- TODO: Replace # with the customer-facing What's New URL. -->
+      <a class="sneak-peek__link" href="#">Explore What&rsquo;s New <span aria-hidden="true">&rarr;</span></a>
     </div>
 
     <div class="art-body">
@@ -3455,8 +3493,8 @@
       <p>In the current version of LUCI, some configuration lives deep in the database. A property may know exactly what needs to change, but the work still has to route through our team or a third party. That can turn a straightforward operating change into a longer chain than it needs to be.</p>
       <p>The new version brings more of that configuration forward. Clients and their integrators will be able to load their own maps and make more changes directly. The point is not to turn every operator into a programmer. It is to put the right tools in the hands of the people who understand the property, the room, and the work in front of them.</p>
       <p>More control does not mean less partnership. Our team remains alongside yours to help plan, monitor, diagnose, and support the system. We are moving routine control closer to the operation while keeping the relationship and accountability behind it.</p>
-      <p>That principle runs through the new LUCI: give your team more ability to shape the rooms, views, data, and access it uses every day. The What&rsquo;s New two-pager included with this issue is the first published look at where that direction is going.</p>
-      <p><strong>Open the What&rsquo;s New two-pager,</strong> then contact your LUCI team with questions.</p>
+      <p>That principle runs through the new LUCI: give your team more ability to shape the rooms, views, data, and access it uses every day. The What&rsquo;s New overview included with this issue is the first published look at where that direction is going.</p>
+      <p><strong>Explore What&rsquo;s New,</strong> then contact your LUCI team with questions.</p>
     </div>
     <div class="author-card author-card--mike">
       <div class="author-card__content">
