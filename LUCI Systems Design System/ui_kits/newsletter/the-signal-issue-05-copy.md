@@ -255,15 +255,15 @@ Explore What's New for a concise look at the new LUCI—what is changing, what y
 
 **Headline:** Putting the power of programming in your hands
 
-**Dek:** The new version improves performance, but its larger purpose is to give your team more control over the system it operates every day.
+**Dek:** The new version of LUCI is built to improve performance, but its larger purpose is to give you greater operational agility.
 
 **Body:**
 
-For most of its history, A/V control has been built around dependency. The owner receives the finished system, but the ability to change it stays with a programmer. Add a user. Adjust a schedule. Build a preset. Update a map. Too often, the property has to call a vendor, integrator, or third party and wait.
+For most of its history, A/V control has been built around dependency. The owner receives the finished system, but the ability to change it stays with a programmer. A device goes offline. A room stops responding. A configuration needs to change. Too often, the property has to call a vendor, integrator, or third party and wait.
 
-LUCI was built to change that relationship. I have always described the goal as putting “the power of programming” in your hands. That does not mean handing over software code or asking every operator to become a programmer. It means the people responsible for the operation can manage the users, schedules, presets, and other tools they depend on without routing every routine change through someone else.
+We built LUCI to change that relationship—to put the power of programming in your hands. It means the people responsible for the operation can manage the users, see the activity behind an issue, and access the tools they need to make changes without routing it through someone else.
 
-The current version moved much of that control into one interface, but some configuration still lives deep in the database. We saw the next step clearly: bring more of it forward.
+The current version moved much of that control into one interface, but some configuration still lived deep in the database. We saw the next step clearly: bring more of it forward.
 
 That principle shaped the new version from the beginning. Clients and their integrators will be able to load and orient their own maps, add endpoints, and make more changes directly. The people who understand the property, the room, and the work in front of them should have the access to act on that knowledge.
 
