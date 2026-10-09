@@ -2812,11 +2812,15 @@
     .quick-tip__intro {
       max-width: 62ch;
       margin: 24px 0 0;
+    }
+    .quick-tip__intro p {
+      margin: 0 0 16px;
       font-family: 'Inter', system-ui, sans-serif;
       font-size: 16px;
       line-height: 1.65;
       color: rgba(235, 245, 248, 0.88);
     }
+    .quick-tip__intro p:last-child { margin-bottom: 0; }
     .quick-tip__media .steps { max-width: 62ch; margin: 0; }
     .quick-tip__shot { margin: 0; }
     .quick-tip__shot .field-photo-ph { aspect-ratio: 4 / 3; height: auto; min-height: 180px; }
@@ -3432,8 +3436,10 @@
       <span class="kicker__rule"></span>
     </div>
     <h2 class="art-title">What to do when two scheduled presets <em>share the same TV</em></h2>
-    <p class="art-deck">LUCI gives you a lot of ways to use presets&mdash;dayparts, drawings, live events, promotions, and recurring schedules. That flexibility is useful, but it also means we sometimes run into situations where a client has two scheduled presets unintentionally assigned to the same TV. Maybe they added a drawing to a TV that already follows a daypart, or an event runs into the next scheduled change.</p>
-    <p class="quick-tip__intro">When this happens, LUCI currently prioritizes the preset that starts later. But that may or may not be the result you want. To better plan for overlapping schedules, use these three checks to decide what should take priority and what the TV should return to afterward.</p>
+    <div class="quick-tip__intro">
+      <p>LUCI gives you a lot of ways to use presets&mdash;dayparts, drawings, live events, promotions, and recurring schedules. That flexibility is useful, but it also means we sometimes run into situations where a client has two scheduled presets unintentionally assigned to the same TV. Maybe they added a drawing to a TV that already follows a daypart, or an event runs into the next scheduled change.</p>
+      <p>When this happens, LUCI currently prioritizes the preset that starts later. But that may or may not be the result you want. To better plan for overlapping schedules, use these three checks to decide what should take priority and what the TV should return to afterward.</p>
+    </div>
     <div class="quick-tip__media">
       <ol class="steps steps--dark">
         <li><p><strong>Check the TVs.</strong> Confirm which TVs each preset touches, including any screens shared across venues or event plans.</p></li>
