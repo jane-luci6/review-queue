@@ -1257,6 +1257,17 @@
       .field-stats__row { grid-template-columns: 1fr; gap: 28px; }
     }
 
+    .field-property-photo {
+      margin: 0;
+      line-height: 0;
+    }
+    .field-property-photo img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
     .field-ba {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -3179,6 +3190,9 @@
         <div class="field-stats__item"><span class="field-stats__num">98</span><span class="field-stats__label">endpoints at Ponca City</span></div>
       </div>
     </div>
+    <figure class="field-property-photo">
+      <img src="assets/in-the-field/osage-property-exterior.jpg" alt="Osage Casino Hotel &mdash; Ponca City exterior at dusk, with the lit porte-cochere and casino signage" width="1100" height="734" loading="lazy">
+    </figure>
   </section>
 
   <!-- IN THE FIELD — body: numbered narrative + results on light canvas -->
@@ -3224,16 +3238,7 @@
           <p class="field-phase__text">A bar and live-entertainment venue with a nearly 20-foot LED canvas crossing three planes. The same approach held: LUCI installed and integrated the wall, so the new LED, video, and audio joined the platform already running the property.</p>
           <p class="field-phase__text">Four operating presets, seven independent video sources, and two new audio zones. The team can run one full canvas, two seven-screen layouts, or a featured center image with supporting content.</p>
         </div>
-        <div class="field-slider" data-field-slider>
-          <img class="field-slider__img field-slider__img--after" src="assets/in-the-field/osage-swigs-after.jpg" alt="The commissioned three-plane Swigs LED wall running a multi-source sports layout" width="1600" height="1200" loading="lazy">
-          <div class="field-slider__before">
-            <img class="field-slider__img" src="assets/in-the-field/osage-swigs-before.jpg" alt="The three-plane Swigs LED wall during installation, with plywood backing and tools on the floor" width="1600" height="1200" loading="lazy">
-          </div>
-          <div class="field-slider__divider" aria-hidden="true"><span class="field-slider__handle"></span></div>
-          <span class="field-slider__tag field-slider__tag--before">Before</span>
-          <span class="field-slider__tag field-slider__tag--after">After</span>
-          <input class="field-slider__range" type="range" min="0" max="100" value="50" aria-label="Drag to reveal the commissioned Swigs LED wall">
-        </div>
+        <img class="field-phase__img" src="assets/in-the-field/osage-swigs-after.jpg" alt="The commissioned three-plane Swigs LED wall running a multi-source sports layout" width="1600" height="1200" loading="lazy">
       </div>
     </div>
 

@@ -92,9 +92,11 @@ LUCI’s partnership with Osage started with the Tulsa casino location, where Os
 
 **Phase 03 — Swallows.** Rather than bring in a new LED vendor and then coordinate separate vendors for video, audio, and control, Osage brought LUCI in. The new wall, video sources, and audio zones plugged into the platform already running the property. Four operating presets, seven independent video sources, and two new audio zones. The team can run one full canvas, two seven-screen layouts, or a featured center image with supporting content. [Photo: Osage_1 with screen content composited — full-width box]
 
-**Phase 04 — Swigs.** A bar and live-entertainment venue with a nearly 20-foot LED canvas crossing three planes. The same approach held: LUCI installed and integrated the wall, so the new LED, video, and audio joined the platform already running the property. Four operating presets, seven independent video sources, and two new audio zones. The team can run one full canvas, two seven-screen layouts, or a featured center image with supporting content. [Before/after slider: Swigs_Before_1 → Swigs_After_1 — full-width box]
+**Phase 04 — Swigs.** A bar and live-entertainment venue with a nearly 20-foot LED canvas crossing three planes. The same approach held: LUCI installed and integrated the wall, so the new LED, video, and audio joined the platform already running the property. Four operating presets, seven independent video sources, and two new audio zones. The team can run one full canvas, two seven-screen layouts, or a featured center image with supporting content. [Photo: Swigs_After_1 — full-width box, single after photo, no slider]
 
-**Layout:** Phases 01 and 02 as two horizontal boxes side by side; Phases 03 and 04 as full-width horizontal boxes (text + media side by side) to give the photos more room.
+**Layout:** Phases 01 and 02 as two horizontal boxes side by side; Phases 03 and 04 as full-width horizontal boxes (text + photo side by side) to give the photos more room. The before/after slider was removed from Phase 04 to reduce clutter — single after photo only.
+
+**Property photo:** A full-bleed exterior shot of the Osage Casino Hotel — Ponca City at dusk sits directly under the stats, above the narrative. Source: `osage-exterior-dusk.jpeg` from the Swigs OneDrive folder.
 
 The larger story is continuity: nine years at Ponca City, with every new room extending the operating standard already in place.
 
