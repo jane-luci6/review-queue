@@ -132,25 +132,29 @@ The larger story is continuity: nine years at Ponca City, with every new room ex
 
 **Kicker:** 03 · Design with LUCI
 
-**Headline:** Keep the operating intent intact
+**Headline:** Why our clients bring LUCI in early
 
-**Dek:** The same team plans the infrastructure LUCI needs, coordinates it through construction, turns the system on, and trains the owner.
+**Dek:** The best time to define how a room will operate is before rack locations, pathways, endpoints, and trade scopes are fixed.
 
 **Body:**
 
-A/V design can lose its intent one handoff at a time. A consultant draws the system. A different team coordinates the building. Contractors interpret the plans. Then someone new arrives to turn everything on—and the owner has to trace the decisions backward when the finished room does not work as expected.
+### Before the infrastructure hardens
 
-Design with LUCI keeps that chain shorter. Plan and design support is part of the LUCI service relationship, so the team designing the infrastructure already knows the operating platform it must support. We coordinate rack locations, endpoints, speaker groups, landing rooms, and connections with the other trades, then stay through system turn-on and owner training.
+Early planning lets the operating model shape rack locations, landing rooms, cable paths, endpoints, speaker groups, and connections between trades. Those choices are easier to coordinate on a plan than after walls close and equipment locations are fixed.
 
-That continuity shapes the design itself. We plan around the infrastructure LUCI needs and minimize rack hardware from the start. The scope can fit the project: a tenant improvement, an LED-only design, or a fuller low-voltage and LED design for a larger addition. Contractors still install the hardware; LUCI carries the operating intent from the plans into the system the owner will use.
+### Before the handoffs multiply
 
-The result is fewer “who built this?” calls after opening. The people who planned how the system should work are still there when it is time to make it work—and when the owner begins running it.
+A/V intent can blur as drawings move from consultant to architect, contractor, programmer, and commissioning team. Bringing LUCI in early keeps the chain shorter: the team planning the required infrastructure coordinates it through construction, system turn-on, and owner training.
+
+### Bring LUCI in while the plan can still move
+
+The scope can match the project—a tenant improvement, an LED-only design, or a fuller low-voltage and LED design for a larger addition. Contractors still install the hardware. LUCI defines the infrastructure the operating platform needs and carries that intent into the system the owner will use.
 
 **Stats:** None.
 
-**Captions:** [DESIGN DIAGRAM — TBD: AI redraw of cleaned plan; never the customer floor plan]
+**Caption:** An early planning study maps endpoints and routes before construction fixes them in place. Illustrative plan; not a customer drawing.
 
-**CTA:** Planning a renovation, venue, or addition? Talk to your LUCI team about the design support included in your service relationship.
+**CTA:** If the rack room, pathways, or endpoint plan is still being drawn, that is the right time to bring LUCI into the conversation.
 
 ---
 
@@ -338,7 +342,6 @@ The LUCI Team
 - `[YEARS WITH LUCI — TBD]`
 - `[PROJECTS AT PONCA CITY — TBD]`
 - `[CASE STUDY URL — TBD]`
-- `[DESIGN DIAGRAM — TBD: AI redraw of cleaned plan; never the customer floor plan]`
 - `[HAPPENINGS — TBD]`
 
 Required media caption cue, retained exactly: `Photo TBD: Osage Project Media`.
