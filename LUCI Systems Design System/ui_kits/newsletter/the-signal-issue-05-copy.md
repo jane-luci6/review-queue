@@ -200,7 +200,9 @@ Choose whether one administrator controls everything or users receive access by 
 
 **Headline:** What to do when two scheduled presets share the same TV
 
-**Dek:** LUCI gives you a lot of ways to use presets—dayparts, drawings, live events, promotions, and recurring schedules. That flexibility is useful, but it also means we sometimes see two scheduled presets assigned to the same TV by accident. Maybe you add a drawing to a TV that already follows a daypart, or an event runs into the next scheduled change. When the schedules overlap, the preset that starts later takes control. If this happens on your property, here are three things to check.
+**Dek:** LUCI gives you a lot of ways to use presets—dayparts, drawings, live events, promotions, and recurring schedules. That flexibility is useful, but it also means we sometimes run into situations where a client has two scheduled presets unintentionally assigned to the same TV. Maybe they added a drawing to a TV that already follows a daypart, or an event runs into the next scheduled change.
+
+**Intro:** When this happens, LUCI currently prioritizes the preset that starts later. But that may or may not be the result you want. To better plan for overlapping schedules, use these three checks to decide what should take priority and what the TV should return to afterward.
 
 **Body:**
 
