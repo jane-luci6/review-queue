@@ -90,13 +90,13 @@ LUCI’s partnership with Osage started with the Tulsa casino location, where Os
 
 **Phase 02 — The ballroom.** LUCI brought the room’s projectors and controls into the same software already running the casino floor, so the team runs the space from one interface instead of a separate control system.
 
-**Phase 03 — Swallows.** Rather than bring in a new LED vendor and then coordinate separate vendors for video, audio, and control, Osage brought LUCI in. The new wall, video sources, and audio zones plugged into the platform already running the property. Four operating presets, seven independent video sources, and two new audio zones. The team can run one full canvas, two seven-screen layouts, or a featured center image with supporting content. [Text-only box — no photo]
+**Phase 03 — Swallows.** Rather than coordinate separate LED, video, audio, and control vendors, Osage brought LUCI in. The new wall and sources plugged into the platform already running the property. [Text-only box in 2x2 grid]
 
-**Phase 04 — Swigs.** A bar and live-entertainment venue with a nearly 20-foot LED canvas crossing three planes. The same approach held: LUCI installed and integrated the wall, so the new LED, video, and audio joined the platform already running the property. Four operating presets, seven independent video sources, and two new audio zones. The team can run one full canvas, two seven-screen layouts, or a featured center image with supporting content. [Text-only box — no photo]
+**Phase 04 — Swigs.** A bar and live-entertainment venue with a nearly 20-foot LED canvas crossing three planes. LUCI installed and integrated the wall, so the new LED, video, and audio joined the same platform. [Text-only box in 2x2 grid]
 
-**Swigs before/after slider:** Full-width slider below box 04, with room to breathe. Before = Swigs_Before_1 (plywood/installation state), After = Swigs_After_1 (commissioned three-plane LED wall with sports content).
+**Swigs before/after slider:** Full-width slider below the 2x2 phase grid, with room to breathe. Before = Swigs_Before_1 (plywood/installation state), After = Swigs After 2 (commissioned three-plane LED wall with sports content, zoomed ~1.18x and shifted down ~4.5% to align screen heights across the divider). Caption: "Swigs — the LED wall portion of the Osage Ponca City partnership. Drag to compare the build with the finished wall."
 
-**Layout:** Phases 01 and 02 as two horizontal boxes side by side; Phases 03 and 04 as full-width text-only boxes underneath. The Swigs before/after slider sits below box 04 as a standalone full-width element — no photos crammed into the text boxes.
+**Layout:** Phases 01–04 in a 2x2 grid (two rows of two boxes side by side). The Swigs before/after slider sits below the grid as a standalone full-width element with a caption.
 
 **Property photo:** A full-bleed exterior shot of the Osage Casino Hotel — Ponca City at dusk sits directly under the stats, above the narrative. Source: `osage-exterior-dusk.jpeg` from the Swigs OneDrive folder.
 
