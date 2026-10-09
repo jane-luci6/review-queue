@@ -160,7 +160,7 @@ These planning and design services are included in the LUCI subscription.
 
 **Stats:** None.
 
-**Caption:** An early planning study maps endpoints and routes before construction fixes them in place. Illustrative plan; not a customer drawing.
+**Caption:** An early planning study maps endpoints and routes before construction fixes them in place.
 
 **CTA:** If you have an upcoming remodel, new venue, addition, or location, reach out to your LUCI team while the plans can still move.
 
@@ -172,9 +172,11 @@ These planning and design services are included in the LUCI subscription.
 
 **Headline:** Set the operating structure before the devices arrive
 
-**Dek:** Two choices made early can keep control clear as the property grows.
+**Dek:** How you organize venues, endpoints, and access inside LUCI shapes how cleanly your team can run the property as it grows. Two choices made early keep control clear.
 
 **Body:**
+
+Every endpoint in a LUCI environment—every display, speaker zone, LED wall, and controlled device—lives inside a venue structure the property team can see and delegate by name. That structure is easier to build before the endpoints come online than to untangle after the fact. Two choices made during setup keep control clear as the property grows.
 
 ### Build venues first, then drop endpoints
 
@@ -196,7 +198,7 @@ There is no harm in keeping control with one administrator everyone calls. Most 
 
 **Kicker:** 04 · LUCI Quick Tip
 
-**Headline:** Know what wins before schedules overlap
+**Headline:** What to do when two scheduled presets share the same TV
 
 **Dek:** Today, when two scheduled presets share the same TVs, the next preset wins. Don’t stack a drawing on a daypart without a plan.
 
@@ -220,23 +222,21 @@ There is no harm in keeping control with one administrator everyone calls. Most 
 
 **Headline:** See the patterns behind day-to-day activity
 
-**Dek:** Reporting & Analytics in the new version of LUCI brings system activity into 24-hour, 7-day, and 30-day views.
+**Dek:** We're still plugging away at the new version of LUCI, and we're looking forward to getting these new features in your hands. Take a look at what you'll be able to access in Reporting & Analytics.
 
 **Body:**
 
-Live monitoring shows what is happening now. Audit trails show who or what changed something and when. Reporting & Analytics, now taking shape in beta, shows patterns across time.
+Live monitoring shows what is happening now. Audit trails show who or what changed something and when. Reporting & Analytics, now taking shape in beta, shows patterns across time—so you can see not just what happened, but what keeps happening.
 
-Review incident volume and duration, command success and failure, latency, and preset activity across the last 24 hours, 7 days, or 30 days. Start with the overview to spot a pattern, then move into the relevant device, command, or automation record when something needs attention.
+Four tabs organize the view. **Overview** surfaces incident volume and duration, command success and failure, latency, and preset activity across the last 24 hours, 7 days, or 30 days. **Commands** breaks down individual command records—success, failure, and timing—so you can trace a specific action. **Automation** tracks scheduled presets and automated workflows, showing what fired, when, and whether it completed. **Reliability** brings device incidents and system logs together so you can see which endpoints are staying online and which need attention.
 
-### Also in this issue: the What’s New two-pager
+Start with the Overview to spot a pattern, then move into the relevant device, command, or automation record when something needs attention. The 24-hour, 7-day, and 30-day views let you shift between what just happened, what happened this week, and what the trend looks like over a month.
 
-This issue includes our first published piece on the new LUCI. Open the What’s New two-pager for a concise introduction to the direction of the new version and the capabilities coming with it.
+### Sneak peek: the What's New two-pager
 
-**Stats:**
+Take a look at what's coming in the new version of LUCI. The What's New two-pager walks through the direction of the platform and the capabilities on the way. [WHAT'S NEW TWO-PAGER URL — Jane to provide]
 
-- 24-hour view
-- 7-day view
-- 30-day view
+**Stats:** None.
 
 **Captions:** Four Reporting & Analytics tabs: Overview, Commands, Automation, and Reliability.
 
@@ -277,25 +277,7 @@ CEO, LUCI Systems
 
 ---
 
-## 9. Happenings
-
-**Kicker:** Happenings
-
-**Headline:** [HAPPENINGS — TBD]
-
-**Dek:** Additional October company news was not part of the confirmed picks.
-
-**Body:** Hold this section until Jane confirms whether Issue 05 carries a Happenings item.
-
-**Stats:** None.
-
-**Captions:** None.
-
-**CTA:** None.
-
----
-
-## 10. Closing + support block
+## 9. Closing + support block
 
 ### Support block
 
@@ -350,7 +332,7 @@ The LUCI Team
 - `[YEARS WITH LUCI — TBD]`
 - `[PROJECTS AT PONCA CITY — TBD]`
 - `[CASE STUDY URL — TBD]`
-- `[HAPPENINGS — TBD]`
+- `[WHAT'S NEW TWO-PAGER URL — Jane to provide]`
 
 Required media caption cue, retained exactly: `Photo TBD: Osage Project Media`.
 
