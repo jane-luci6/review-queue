@@ -232,16 +232,16 @@ When this happens, LUCI currently prioritizes the preset that starts later. But 
 
 Reporting & Analytics turns the activity LUCI already records into a connected operational history. Instead of reconstructing an issue from individual logs, you can see where incidents recur, how commands and automations are performing, and which endpoints need attention. Compare the last 24 hours, 7 days, or 30 days, then open the relevant record to understand what happened and where.
 
-- **Overview:** Scan incident volume and duration, command success and failure, latency, and preset activity across 24-hour, 7-day, and 30-day views.
-- **Commands:** Trace individual commands by result and timing when a specific action needs a closer look.
-- **Automation:** Review scheduled presets and automated workflows to see what ran, when it ran, and whether it completed.
-- **Reliability:** Bring device incidents and system logs into view to identify endpoints that need attention.
+- **How and when automations are running:** Review scheduled presets and automated workflows to see what ran, when it ran, and whether it completed.
+- **User activity:** Trace individual commands by result and timing, and see preset activity across 24-hour, 7-day, and 30-day views.
+- **Device incidents:** Bring device incidents into view to identify endpoints that need attention and see where incidents recur.
+- **System logs:** Bring system logs into view alongside incident volume, command success and failure, and latency.
 
-Together, these views take you from “something happened” to the record behind it without losing the larger pattern across your operation.
+Together, these views take you from "something happened" to the record behind it without losing the larger pattern across your operation.
 
-### Sneak peek: See more of what’s coming
+### Take a look: See more of what's coming
 
-Explore What’s New for a concise look at the new LUCI—what is changing, what your team will be able to do, and where the platform is headed.
+Explore What's New for a concise look at the new LUCI—what is changing, what your team will be able to do, and where the platform is headed.
 
 **Stats:** None.
 
