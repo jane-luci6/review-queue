@@ -136,11 +136,13 @@ The larger story is continuity: nine years at Ponca City, with every new room ex
 
 **Highlight:** bring LUCI in early
 
-**Dek:** The best time to define how a room will operate is before rack locations, pathways, endpoints, and trade scopes are fixed.
+**Dek:** The best time to define and plan how your A/V will function with LUCI is before rack locations, pathways, endpoints, and trade scopes are fixed.
 
 **Body:**
 
-Most of the decisions that determine how an A/V system will operate are made before the equipment arrives. Rack rooms, pathways, endpoint locations, trade responsibilities, and the way spaces connect all begin on the plan. Clients bring LUCI into that stage so the operating model can guide those decisions while they are still easy to change.
+Most of the decisions that determine how an A/V system will operate are made before the equipment arrives. That is also the period when architects, trades, installers, and operators are still aligning scopes and assumptions. When those teams are not working from the same operating plan, small gaps on the drawing set become lasting limits on how the A/V functions after opening.
+
+Successful casinos bring LUCI into the early stages of planning so the operating model can guide those decisions while they are still easy to change.
 
 ### Before the infrastructure hardens
 
@@ -154,11 +156,13 @@ A/V intent can blur as drawings move from consultant to architect, contractor, p
 
 The scope can match the project—a tenant improvement, an LED-only design, or a fuller low-voltage and LED design for a larger addition. Contractors still install the hardware. LUCI defines the infrastructure the operating platform needs and carries that intent into the system the owner will use.
 
+These planning and design services are included in the LUCI subscription.
+
 **Stats:** None.
 
 **Caption:** An early planning study maps endpoints and routes before construction fixes them in place. Illustrative plan; not a customer drawing.
 
-**CTA:** If the rack room, pathways, or endpoint plan is still being drawn, that is the right time to bring LUCI into the conversation.
+**CTA:** If you have an upcoming remodel, new venue, addition, or location, reach out to your LUCI team while the plans can still move.
 
 ---
 
