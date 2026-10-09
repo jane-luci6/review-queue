@@ -1304,6 +1304,141 @@
       .field-ba { grid-template-columns: 1fr; gap: 28px; }
     }
 
+    /* 2x2 phase grid */
+    .field-phases {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--rule-light);
+      border: 1px solid var(--rule-light);
+      margin: 0 0 clamp(36px, 5vw, 52px);
+    }
+    .field-phase {
+      background: #fff;
+      padding: 28px 24px;
+    }
+    .field-phase__num {
+      display: block;
+      font-family: var(--body);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      color: var(--mint-dark);
+      margin-bottom: 10px;
+    }
+    .field-phase__title {
+      font-family: var(--body);
+      font-size: clamp(18px, 2.2vw, 22px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: #1A2B36;
+      margin: 0 0 12px;
+    }
+    .field-phase__text {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: #354F5C;
+      margin: 0 0 12px;
+    }
+    .field-phase__text:last-of-type { margin-bottom: 16px; }
+    .field-phase__img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .field-phase--media { padding-bottom: 0; }
+
+    /* before/after slider inside phase grid */
+    .field-slider {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      user-select: none;
+      touch-action: none;
+      border-radius: 8px;
+      --pos: 50%;
+    }
+    .field-slider__img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .field-slider__before {
+      position: absolute;
+      inset: 0;
+      clip-path: inset(0 calc(100% - var(--pos)) 0 0);
+    }
+    .field-slider__divider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: var(--pos);
+      width: 2px;
+      background: var(--mint);
+      transform: translateX(-1px);
+      pointer-events: none;
+      z-index: 2;
+    }
+    .field-slider__handle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 36px;
+      height: 36px;
+      transform: translate(-50%, -50%);
+      border-radius: 9999px;
+      background: var(--mint);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.35);
+      display: grid;
+      place-items: center;
+    }
+    .field-slider__handle::before {
+      content: "\2039\2003\203A";
+      color: #0A161C;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .field-slider__tag {
+      position: absolute;
+      top: 10px;
+      font-family: var(--body);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #fff;
+      background: rgba(10,22,28,0.65);
+      padding: 3px 8px;
+      z-index: 2;
+    }
+    .field-slider__tag--before { left: 10px; }
+    .field-slider__tag--after { right: 10px; }
+    .field-slider__range {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      opacity: 0;
+      cursor: ew-resize;
+      z-index: 3;
+    }
+    .field-slider:focus-within .field-slider__handle {
+      outline: 3px solid #fff;
+      outline-offset: 2px;
+    }
+    @media (max-width: 640px) {
+      .field-phases { grid-template-columns: 1fr; }
+    }
+
     .field-num { margin: 0 0 clamp(36px, 5vw, 52px); }
     .field-num__head {
       display: flex;
@@ -3016,24 +3151,9 @@
     <div class="field-divider" aria-hidden="true"></div>
     <div class="field-stats field-bleed">
       <div class="field-stats__row">
-        <div class="field-stats__item"><span class="field-stats__num">9 yrs</span><span class="field-stats__label">of partnership with LUCI</span></div>
+        <div class="field-stats__item"><span class="field-stats__num">9</span><span class="field-stats__label">yrs of partnership with LUCI</span></div>
         <div class="field-stats__item"><span class="field-stats__num">4</span><span class="field-stats__label">Ponca City project phases</span></div>
         <div class="field-stats__item"><span class="field-stats__num">98</span><span class="field-stats__label">endpoints at Ponca City</span></div>
-      </div>
-    </div>
-    <div class="field-scale field-bleed">
-      <div class="field-scale__band">
-        <div class="field-gallery">
-          <figure class="field-gallery__item">
-            <img class="field-gallery__img" src="assets/in-the-field/osage-led1-wall-finished.jpg" alt="Swallows at Osage Casino Hotel &mdash; Ponca City: the finished LED wall displaying the LUCI logo" width="1600" height="900" loading="lazy">
-            <span class="field-gallery__tag">Swallows</span>
-          </figure>
-          <figure class="field-gallery__item">
-            <img class="field-gallery__img" src="assets/in-the-field/osage-swigs-live-wall.jpg" alt="Swigs at Osage Casino Hotel &mdash; Ponca City: the three-plane LED wall live with multiple sports sources above the stage and bar" width="1600" height="900" loading="lazy">
-            <span class="field-gallery__tag">Swigs</span>
-          </figure>
-        </div>
-        <p class="field-scale__caption">Swallows and Swigs, the two restaurant LED walls of the latest expansion, on the same LUCI foundation.</p>
       </div>
     </div>
   </section>
@@ -3048,51 +3168,44 @@
       <div class="field-num__rule" aria-hidden="true"></div>
       <div class="field-num__body">
         <p>Casino technology rarely becomes complicated because of one project. It becomes complicated as each new room, remodel, and system arrives with its own controls, vendors, and operating logic.</p>
-        <p>LUCI&rsquo;s partnership with Osage started with the Tulsa location, where Osage wanted to build simplicity and stability into their A/V system from the first day of construction. The Ponca City project came soon after. It began with a technology upgrade, then expanded into the ballroom and two restaurants &mdash; Swallows and Swigs &mdash; with new LED walls that also run from the LUCI platform. Since then, LUCI has also expanded into their Bartlesville, Pawhuska, Sand Springs, and Skiatook casino locations.</p>
+        <p>LUCI&rsquo;s partnership with Osage started with the Tulsa casino location, where Osage wanted to remove this kind of complexity from their A/V system from the first day of construction. LUCI was brought into the Ponca City property soon after.</p>
       </div>
     </div>
 
-    <div class="field-num">
-      <div class="field-num__head">
-        <h3 class="field-num__title">The ballroom</h3>
+    <div class="field-phases">
+      <div class="field-phase">
+        <span class="field-phase__num">01</span>
+        <h3 class="field-phase__title">The LUCI install</h3>
+        <p class="field-phase__text">The original Ponca City installation put the software and control foundation in place &mdash; the operating standard every later phase extends.</p>
       </div>
-      <div class="field-num__rule" aria-hidden="true"></div>
-      <div class="field-num__body">
-        <p>The ballroom came next. LUCI brought the room&rsquo;s projectors and controls into the same software already running the casino floor, so the property team runs the space from one interface instead of a separate control system.</p>
+      <div class="field-phase">
+        <span class="field-phase__num">02</span>
+        <h3 class="field-phase__title">The ballroom</h3>
+        <p class="field-phase__text">LUCI brought the room&rsquo;s projectors and controls into the same software already running the casino floor, so the team runs the space from one interface instead of a separate control system.</p>
       </div>
-    </div>
-
-    <div class="field-num">
-      <div class="field-num__head">
-        <h3 class="field-num__title">Swallows</h3>
+      <div class="field-phase field-phase--media">
+        <span class="field-phase__num">03</span>
+        <h3 class="field-phase__title">Swallows</h3>
+        <p class="field-phase__text">Rather than bring in a new LED vendor and then coordinate separate vendors for video, audio, and control, Osage brought LUCI in. The new wall, video sources, and audio zones plugged into the platform already running the property.</p>
+        <p class="field-phase__text">Four operating presets, seven independent video sources, and two new audio zones. The team can run one full canvas, two seven-screen layouts, or a featured center image with supporting content.</p>
+        <img class="field-phase__img" src="assets/in-the-field/osage-swallows-after.jpg" alt="Swallows at Osage Casino Hotel &mdash; Ponca City: the finished LED wall running a multi-source sports layout" width="1600" height="1200" loading="lazy">
       </div>
-      <div class="field-num__rule" aria-hidden="true"></div>
-      <div class="field-num__body">
-        <p>Swallows was the first of two new restaurant LED walls. Rather than bring in a new LED vendor and then coordinate separate vendors for video, audio, and control, Osage brought LUCI in. The new wall, video sources, and audio zones plugged into the platform already running the property.</p>
-        <p>The room came online with four operating presets, seven independent video sources, and two new audio zones. The property team can run one full canvas, two seven-screen layouts, or a featured center image with supporting content on the outer sections.</p>
+      <div class="field-phase field-phase--media">
+        <span class="field-phase__num">04</span>
+        <h3 class="field-phase__title">Swigs</h3>
+        <p class="field-phase__text">A bar and live-entertainment venue with a nearly 20-foot LED canvas crossing three planes. The same approach held: LUCI installed and integrated the wall, so the new LED, video, and audio joined the platform already running the property.</p>
+        <p class="field-phase__text">Four operating presets, seven independent video sources, and two new audio zones. The team can run one full canvas, two seven-screen layouts, or a featured center image with supporting content.</p>
+        <div class="field-slider" data-field-slider>
+          <img class="field-slider__img field-slider__img--after" src="assets/in-the-field/osage-swigs-after.jpg" alt="The commissioned three-plane Swigs LED wall running a multi-source sports layout" width="1600" height="1200" loading="lazy">
+          <div class="field-slider__before">
+            <img class="field-slider__img" src="assets/in-the-field/osage-swigs-before.jpg" alt="The three-plane Swigs LED wall during installation, with plywood backing and tools on the floor" width="1600" height="1200" loading="lazy">
+          </div>
+          <div class="field-slider__divider" aria-hidden="true"><span class="field-slider__handle"></span></div>
+          <span class="field-slider__tag field-slider__tag--before">Before</span>
+          <span class="field-slider__tag field-slider__tag--after">After</span>
+          <input class="field-slider__range" type="range" min="0" max="100" value="50" aria-label="Drag to reveal the commissioned Swigs LED wall">
+        </div>
       </div>
-    </div>
-
-    <div class="field-num">
-      <div class="field-num__head">
-        <h3 class="field-num__title">Swigs</h3>
-      </div>
-      <div class="field-num__rule" aria-hidden="true"></div>
-      <div class="field-num__body">
-        <p>Swigs followed as the second &mdash; a bar and live-entertainment venue with a nearly 20-foot LED canvas crossing three planes. The same approach held: LUCI installed and integrated the wall, so the new LED, video, and audio joined the platform already running the property instead of a separate vendor stack.</p>
-        <p>The room came online with four operating presets, seven independent video sources, and two new audio zones. The property team can run one full canvas, two seven-screen layouts, or a featured center image with supporting content on the outer sections.</p>
-      </div>
-    </div>
-
-    <div class="field-ba">
-      <figure class="field-ba__media field-ba__media--before">
-        <img class="field-cinematic field-cinematic--wide" src="assets/in-the-field/osage-swigs-before.jpg" alt="The three-plane Swigs LED wall during early cabinet installation, with plywood backing and tools on the floor" width="1600" height="900" loading="lazy">
-        <figcaption class="field-ba__caption"><span class="field-ba__badge">Before</span> The three-plane wall during installation.</figcaption>
-      </figure>
-      <figure class="field-ba__media">
-        <img class="field-cinematic field-cinematic--wide" src="assets/in-the-field/osage-swigs-after-RAW.jpg" alt="The commissioned three-plane Swigs LED wall running a multi-source sports layout" width="1600" height="900" loading="lazy">
-        <figcaption class="field-ba__caption"><span class="field-ba__badge">After</span> The same wall live with multiple sports sources. <mark class="tbd">[Final asset: remove person and equipment from IMG_1650]</mark></figcaption>
-      </figure>
     </div>
 
     <div class="field-runs">
@@ -3362,6 +3475,28 @@
       });
     });
   })();
+</script>
+<script>
+  document.querySelectorAll('[data-field-slider]').forEach(function (el) {
+    var range = el.querySelector('.field-slider__range');
+    if (!range) return;
+    function set(v) {
+      el.style.setProperty('--pos', v + '%');
+      var tBefore = el.querySelector('.field-slider__tag--before');
+      var tAfter = el.querySelector('.field-slider__tag--after');
+      if (tBefore) tBefore.style.opacity = v > 6 ? 1 : 0;
+      if (tAfter) tAfter.style.opacity = v < 94 ? 1 : 0;
+    }
+    set(range.value);
+    range.addEventListener('input', function () { set(range.value); });
+    function pointTo(clientX) {
+      var r = el.getBoundingClientRect();
+      var pct = Math.min(100, Math.max(0, ((clientX - r.left) / r.width) * 100));
+      range.value = pct; set(pct);
+    }
+    el.addEventListener('pointerdown', function (e) { pointTo(e.clientX); try { el.setPointerCapture(e.pointerId); } catch (err) {} });
+    el.addEventListener('pointermove', function (e) { if (e.buttons === 1) pointTo(e.clientX); });
+  });
 </script>
 </body>
 </html>

@@ -84,19 +84,21 @@ For each card, add the property, city and state, date, and one sourced sentence 
 
 Casino technology rarely becomes complicated because of one project. It becomes complicated as each new room, remodel, and system arrives with its own controls, vendors, and operating logic.
 
-LUCI’s partnership with Osage started with the Tulsa location, where Osage wanted to build simplicity and stability into their A/V system from the first day of construction. The Ponca City project came soon after. It began with a technology upgrade, then expanded into the ballroom and two restaurants — Swallows and Swigs — with new LED walls that also run from the LUCI platform. Since then, LUCI has also expanded into their Bartlesville, Pawhuska, Sand Springs, and Skiatook casino locations.
+LUCI’s partnership with Osage started with the Tulsa casino location, where Osage wanted to remove this kind of complexity from their A/V system from the first day of construction. LUCI was brought into the Ponca City property soon after.
 
-**The ballroom.** The ballroom came next. LUCI brought the room’s projectors and controls into the same software already running the casino floor, so the property team runs the space from one interface instead of a separate control system.
+**Phase 01 — The LUCI install.** The original Ponca City installation put the software and control foundation in place — the operating standard every later phase extends.
 
-**Swallows.** Swallows was the first of two new restaurant LED walls. Rather than bring in a new LED vendor and then coordinate separate vendors for video, audio, and control, Osage brought LUCI in. The new wall, video sources, and audio zones plugged into the platform already running the property. The room came online with four operating presets, seven independent video sources, and two new audio zones. The property team can run one full canvas, two seven-screen layouts, or a featured center image with supporting content on the outer sections.
+**Phase 02 — The ballroom.** LUCI brought the room’s projectors and controls into the same software already running the casino floor, so the team runs the space from one interface instead of a separate control system.
 
-**Swigs.** Swigs followed as the second — a bar and live-entertainment venue with a nearly 20-foot LED canvas crossing three planes. The same approach held: LUCI installed and integrated the wall, so the new LED, video, and audio joined the platform already running the property instead of a separate vendor stack. The room came online with four operating presets, seven independent video sources, and two new audio zones. The property team can run one full canvas, two seven-screen layouts, or a featured center image with supporting content on the outer sections.
+**Phase 03 — Swallows.** Rather than bring in a new LED vendor and then coordinate separate vendors for video, audio, and control, Osage brought LUCI in. The new wall, video sources, and audio zones plugged into the platform already running the property. Four operating presets, seven independent video sources, and two new audio zones. The team can run one full canvas, two seven-screen layouts, or a featured center image with supporting content. [Photo: Osage_1 with screen content composited]
+
+**Phase 04 — Swigs.** A bar and live-entertainment venue with a nearly 20-foot LED canvas crossing three planes. The same approach held: LUCI installed and integrated the wall, so the new LED, video, and audio joined the platform already running the property. Four operating presets, seven independent video sources, and two new audio zones. The team can run one full canvas, two seven-screen layouts, or a featured center image with supporting content. [Before/after slider: Image (3) → IMG_1649]
 
 The larger story is continuity: nine years at Ponca City, with every new room extending the operating standard already in place.
 
 **Stats:**
 
-- **9 yrs** · Of partnership with LUCI
+- **9** · Yrs of partnership with LUCI
 - **4** · Ponca City project phases
 - **98** · Endpoints at Ponca City
 
@@ -109,8 +111,10 @@ The larger story is continuity: nine years at Ponca City, with every new room ex
 
 **Captions:**
 
-- Before: the three-plane Swigs LED wall during installation (IMG_1642)
-- After: the same wall live with multiple sports sources (IMG_1650 — final asset to remove person and equipment)
+- Swallows: the finished LED wall running a multi-source sports layout (Osage_1 with screen content composited)
+- Swigs before: the three-plane wall during installation (Image (3))
+- Swigs after: the same wall live with multiple sports sources (IMG_1649)
+- [Follow-up: IMG_1650 needs person and equipment removed before it can be placed]
 
 **CTA:** Read the full case study → [CASE STUDY URL — TBD]
 
