@@ -1335,16 +1335,11 @@
       padding: 28px 24px;
     }
     .field-phase--wide {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-      align-items: stretch;
+      background: #fff;
+      padding: 28px 24px;
     }
     .field-phase--wide .field-phase__copy {
-      padding: 28px 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      max-width: 62ch;
     }
     .field-phase__num {
       display: block;
@@ -1377,10 +1372,6 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-    }
-    .field-phase--wide .field-slider,
-    .field-phase--wide .field-phase__img {
-      min-height: 100%;
     }
 
     /* before/after slider inside phase grid */
@@ -1468,9 +1459,7 @@
     }
     @media (max-width: 640px) {
       .field-phases__row { grid-template-columns: 1fr; }
-      .field-phase--wide { grid-template-columns: 1fr; }
-      .field-phase--wide .field-phase__img,
-      .field-phase--wide .field-slider { min-height: 280px; }
+      .field-slider-figure .field-slider { min-height: 280px; }
     }
 
     .field-num { margin: 0 0 clamp(36px, 5vw, 52px); }
@@ -1877,10 +1866,9 @@
     }
     /* before photo reads as the older state — pull a little color out */
     .field-slider__before .field-slider__img { filter: saturate(0.6) contrast(0.95) brightness(0.95); }
-    /* slider figure wrapper — same measure as the old two-column ba */
+    /* slider figure wrapper — full-width below the phase boxes, room to breathe */
     .field-slider-figure {
-      max-width: 880px;
-      margin: 0 0 clamp(40px, 6vw, 64px);
+      margin: clamp(36px, 5vw, 52px) 0 0;
     }
     .field-slider-figure .field-ba__caption { margin-top: 12px; }
 
@@ -3229,7 +3217,6 @@
           <p class="field-phase__text">Rather than bring in a new LED vendor and then coordinate separate vendors for video, audio, and control, Osage brought LUCI in. The new wall, video sources, and audio zones plugged into the platform already running the property.</p>
           <p class="field-phase__text">Four operating presets, seven independent video sources, and two new audio zones. The team can run one full canvas, two seven-screen layouts, or a featured center image with supporting content.</p>
         </div>
-        <img class="field-phase__img" src="assets/in-the-field/osage-swallows-after.jpg" alt="Swallows at Osage Casino Hotel &mdash; Ponca City: the finished LED wall running a multi-source sports layout" width="1600" height="1200" loading="lazy">
       </div>
       <div class="field-phase field-phase--wide">
         <div class="field-phase__copy">
@@ -3238,9 +3225,21 @@
           <p class="field-phase__text">A bar and live-entertainment venue with a nearly 20-foot LED canvas crossing three planes. The same approach held: LUCI installed and integrated the wall, so the new LED, video, and audio joined the platform already running the property.</p>
           <p class="field-phase__text">Four operating presets, seven independent video sources, and two new audio zones. The team can run one full canvas, two seven-screen layouts, or a featured center image with supporting content.</p>
         </div>
-        <img class="field-phase__img" src="assets/in-the-field/osage-swigs-after.jpg" alt="The commissioned three-plane Swigs LED wall running a multi-source sports layout" width="1600" height="1200" loading="lazy">
       </div>
     </div>
+
+    <figure class="field-slider-figure">
+      <div class="field-slider" data-field-slider>
+        <img class="field-slider__img field-slider__img--after" src="assets/in-the-field/osage-swigs-after.jpg" alt="The commissioned three-plane Swigs LED wall running a multi-source sports layout" width="1600" height="1200" loading="lazy">
+        <div class="field-slider__before">
+          <img class="field-slider__img" src="assets/in-the-field/osage-swigs-before.jpg" alt="The three-plane Swigs LED wall during installation, with plywood backing and tools on the floor" width="1600" height="1200" loading="lazy">
+        </div>
+        <div class="field-slider__divider" aria-hidden="true"><span class="field-slider__handle"></span></div>
+        <span class="field-slider__tag field-slider__tag--before">Before</span>
+        <span class="field-slider__tag field-slider__tag--after">After</span>
+        <input class="field-slider__range" type="range" min="0" max="100" value="50" aria-label="Drag to reveal the commissioned Swigs LED wall">
+      </div>
+    </figure>
 
     <div class="field-runs">
         <h3 class="field-runs__title">What Ponca City runs now</h3>

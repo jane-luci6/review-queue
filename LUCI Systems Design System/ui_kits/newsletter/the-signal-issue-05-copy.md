@@ -90,11 +90,13 @@ LUCI’s partnership with Osage started with the Tulsa casino location, where Os
 
 **Phase 02 — The ballroom.** LUCI brought the room’s projectors and controls into the same software already running the casino floor, so the team runs the space from one interface instead of a separate control system.
 
-**Phase 03 — Swallows.** Rather than bring in a new LED vendor and then coordinate separate vendors for video, audio, and control, Osage brought LUCI in. The new wall, video sources, and audio zones plugged into the platform already running the property. Four operating presets, seven independent video sources, and two new audio zones. The team can run one full canvas, two seven-screen layouts, or a featured center image with supporting content. [Photo: Osage_1 with screen content composited — full-width box]
+**Phase 03 — Swallows.** Rather than bring in a new LED vendor and then coordinate separate vendors for video, audio, and control, Osage brought LUCI in. The new wall, video sources, and audio zones plugged into the platform already running the property. Four operating presets, seven independent video sources, and two new audio zones. The team can run one full canvas, two seven-screen layouts, or a featured center image with supporting content. [Text-only box — no photo]
 
-**Phase 04 — Swigs.** A bar and live-entertainment venue with a nearly 20-foot LED canvas crossing three planes. The same approach held: LUCI installed and integrated the wall, so the new LED, video, and audio joined the platform already running the property. Four operating presets, seven independent video sources, and two new audio zones. The team can run one full canvas, two seven-screen layouts, or a featured center image with supporting content. [Photo: Swigs_After_1 — full-width box, single after photo, no slider]
+**Phase 04 — Swigs.** A bar and live-entertainment venue with a nearly 20-foot LED canvas crossing three planes. The same approach held: LUCI installed and integrated the wall, so the new LED, video, and audio joined the platform already running the property. Four operating presets, seven independent video sources, and two new audio zones. The team can run one full canvas, two seven-screen layouts, or a featured center image with supporting content. [Text-only box — no photo]
 
-**Layout:** Phases 01 and 02 as two horizontal boxes side by side; Phases 03 and 04 as full-width horizontal boxes (text + photo side by side) to give the photos more room. The before/after slider was removed from Phase 04 to reduce clutter — single after photo only.
+**Swigs before/after slider:** Full-width slider below box 04, with room to breathe. Before = Swigs_Before_1 (plywood/installation state), After = Swigs_After_1 (commissioned three-plane LED wall with sports content).
+
+**Layout:** Phases 01 and 02 as two horizontal boxes side by side; Phases 03 and 04 as full-width text-only boxes underneath. The Swigs before/after slider sits below box 04 as a standalone full-width element — no photos crammed into the text boxes.
 
 **Property photo:** A full-bleed exterior shot of the Osage Casino Hotel — Ponca City at dusk sits directly under the stats, above the narrative. Source: `osage-exterior-dusk.jpeg` from the Swigs OneDrive folder.
 
