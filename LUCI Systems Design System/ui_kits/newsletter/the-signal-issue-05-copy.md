@@ -12,7 +12,7 @@ First draft for Mike review on October 9, 2026. Copy only. GLM will place approv
 
 **Kicker:** Welcome
 
-**Headline:** [THEME TITLE — TBD]
+**Headline:** Keep the Work Connected
 
 **Dek:** The steadier the line from planning through daily operation, the better a complex A/V project holds together.
 
@@ -331,7 +331,6 @@ The LUCI Team
 
 ## Placeholders left
 
-- `[THEME TITLE — TBD]`
 - `[PROJECT UPDATE — TBD]`
 - `[YEARS WITH LUCI — TBD]`
 - `[PROJECTS AT PONCA CITY — TBD]`
