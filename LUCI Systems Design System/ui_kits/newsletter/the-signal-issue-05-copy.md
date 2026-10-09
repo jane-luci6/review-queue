@@ -200,7 +200,7 @@ Choose whether one administrator controls everything or users receive access by 
 
 **Headline:** What to do when two scheduled presets share the same TV
 
-**Dek:** When two scheduled presets overlap on the same TV, the one that starts later takes control. Check the overlap—and plan what the screen should return to afterward.
+**Dek:** LUCI can schedule presets to change content automatically by daypart or event. If a one-time drawing overlaps a recurring schedule on the same TV, the preset that starts later takes control.
 
 **Body:**
 
