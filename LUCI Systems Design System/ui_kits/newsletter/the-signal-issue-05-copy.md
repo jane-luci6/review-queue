@@ -247,8 +247,6 @@ Explore What's New for a concise look at the new LUCI—what is changing, what y
 
 **Captions:** Four Reporting & Analytics tabs: Overview, Commands, Automation, and Reliability.
 
-**CTA:** Want to talk through what is coming? Contact your LUCI team.
-
 ---
 
 ## 8. A Minute with Mike
@@ -257,25 +255,25 @@ Explore What's New for a concise look at the new LUCI—what is changing, what y
 
 **Headline:** Putting the power of programming in your hands
 
-**Dek:** More day-to-day control for your team, with the LUCI partnership still behind the operation.
+**Dek:** The new version improves performance, but its larger purpose is to give your team more control over the system it operates every day.
 
 **Body:**
 
-I use the phrase “the power of programming” because the people running a property should have more direct control over the system they use every day.
+For most of its history, A/V control has been built around dependency. The owner receives the finished system, but the ability to change it stays with a programmer. Add a user. Adjust a schedule. Build a preset. Update a map. Too often, the property has to call a vendor, integrator, or third party and wait.
 
-In the current version of LUCI, some configuration lives deep in the database. A property may know exactly what needs to change, but the work still has to route through our team or a third party. That can turn a straightforward operating change into a longer chain than it needs to be.
+LUCI was built to change that relationship. I have always described the goal as putting “the power of programming” in your hands. That does not mean handing over software code or asking every operator to become a programmer. It means the people responsible for the operation can manage the users, schedules, presets, and other tools they depend on without routing every routine change through someone else.
 
-The new version brings more of that configuration forward. Clients and their integrators will be able to load their own maps and make more changes directly. The point is not to turn every operator into a programmer. It is to put the right tools in the hands of the people who understand the property, the room, and the work in front of them.
+The current version moved much of that control into one interface, but some configuration still lives deep in the database. We saw the next step clearly: bring more of it forward.
 
-More control does not mean less partnership. Our team remains alongside yours to help plan, monitor, diagnose, and support the system. We are moving routine control closer to the operation while keeping the relationship and accountability behind it.
+That principle shaped the new version from the beginning. Clients and their integrators will be able to load and orient their own maps, add endpoints, and make more changes directly. The people who understand the property, the room, and the work in front of them should have the access to act on that knowledge.
 
-That principle runs through the new LUCI: give your team more ability to shape the rooms, views, data, and access it uses every day. The What’s New overview included with this issue is the first published look at where that direction is going.
+Better performance matters. So do modern security, monitoring, and support. But this is also about shortening the distance between knowing what should change and having the ability to change it.
+
+More control does not mean less partnership. Our team remains alongside yours to help plan, monitor, diagnose, and support the system. The new version moves routine control closer to your operation while keeping the LUCI team and its accountability behind it.
 
 **Stats:** None.
 
 **Captions:** None.
-
-**CTA:** Explore What’s New, then contact your LUCI team with questions.
 
 **Signoff:**
 
