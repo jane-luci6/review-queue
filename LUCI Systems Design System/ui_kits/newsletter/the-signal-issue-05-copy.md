@@ -226,7 +226,7 @@ When this happens, LUCI currently prioritizes the preset that starts later. But 
 
 **Highlight:** full visibility
 
-**Dek:** The new version of LUCI is bringing more control, visibility, and flexibility to your operation. This month, we’re introducing Reporting & Analytics, which gives you a clearer view of what is happening, what has happened over time, and who or what initiated each action across your properties.
+**Dek:** The new version of LUCI is bringing more control, visibility, and flexibility to your operation. This month, learn more about the Reporting & Analytics features in the upgrade.
 
 **Body:**
 
