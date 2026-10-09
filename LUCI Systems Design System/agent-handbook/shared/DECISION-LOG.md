@@ -10,6 +10,7 @@
 
 ## 2026-10-09
 
+- **Signal Issue 05 is ready for Mike’s Review Queue.** Remove the draft strip and title highlighting, show “Keep the Work Connected” consistently in the masthead and welcome section, and route the completed issue to Mike for technical and messaging review. Jane.
 - **Signal Issue 05 theme is “Keep the Work Connected.”** This is the locked welcome headline and replaces the “Hold the Project Steady” working title. Jane.
 - **Signal Issue 05 opens and closes on continuity over time.** The intro follows one operating plan through design, construction, installation, daily use, and expansion; the sign-off defines a good A/V project by what it keeps delivering after turn-on. Jane.
 - **Signal Issue 05 Minute with Mike explains the new LUCI as the next step in client control.** Lead with the A/V industry’s historic programmer dependency, explain that LUCI was built to put routine programming power in clients’ hands, and frame performance, security, monitoring, and support as part of a larger goal: more direct access and authority for the people operating the property. Jane.
