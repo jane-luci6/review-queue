@@ -20,7 +20,7 @@ First draft for Mike review on October 9, 2026. Copy only. GLM will place approv
 
 Complex properties ask a lot of an A/V project. Plans move through architects, trades, installers, operators, and support teams before the first guest ever sees the result. Through every handoff, the project needs a stabilizer: one operating foundation that keeps the intent intact from the drawing set to the floor—and keeps working after the room opens.
 
-That continuity runs through this issue. We visit Osage Casino Hotel in Ponca City, where a nine-year LUCI relationship became the foundation for the ballroom, Swizzle, and now Swigs. We look at Design with LUCI, where the team planning the infrastructure stays through coordination, turn-on, training, and operation. The Quick Tip and [ADVICE SECTION NAME — TBD] offer practical ways to keep schedules, venues, endpoints, and access aligned.
+That continuity runs through this issue. We visit Osage Casino Hotel in Ponca City, where a nine-year LUCI relationship became the foundation for the ballroom, Swallows, and now Swigs. We look at Design with LUCI, where the team planning the infrastructure stays through coordination, turn-on, training, and operation. The Quick Tip and [ADVICE SECTION NAME — TBD] offer practical ways to keep schedules, venues, endpoints, and access aligned.
 
 We also share an early look at Reporting & Analytics in the new version of LUCI, introduce the first What’s New two-pager, and close with a Minute with Mike on putting more programming control in your hands—with the LUCI team still right behind you.
 
@@ -78,36 +78,39 @@ For each card, add the property, city and state, date, and one sourced sentence 
 
 **Headline:** One foundation for every property expansion
 
-**Dek:** For nine years, Osage Casino Hotel — Ponca City has extended the same LUCI foundation from the original installation to the ballroom, Swizzle, and Swigs. The property now runs 98 endpoints through one operating standard.
+**Dek:** For nine years, Osage Casino Hotel — Ponca City has extended the same LUCI foundation from the original installation to the ballroom, Swallows, and Swigs. The property now runs 98 endpoints through one operating standard.
 
 **Body:**
 
-The LUCI team installed the platform at Ponca City nine years ago, putting the control infrastructure and operating standard in place before the later expansions began. The same team returned for the ballroom, then again for Swizzle and Swigs. Each phase extended the software already running the property instead of adding another isolated A/V environment to manage.
+Casino technology rarely becomes complicated because of one project. It becomes complicated as each new room, remodel, and system arrives with its own controls, vendors, and operating logic.
 
-Ponca City is one part of a broader Osage relationship that began at Tulsa during construction more than ten years ago, with LUCI helping design the A/V infrastructure. Osage has since brought LUCI into Bartlesville, Pawhuska, Sand Springs, and Skiatook as well.
+LUCI’s partnership with Osage started with the Tulsa location, where Osage wanted to build simplicity and stability into their A/V system from the first day of construction. The Ponca City project came soon after. It began with a technology upgrade, then expanded into the ballroom and two restaurants — Swallows and Swigs — with new LED walls that also run from the LUCI platform. Since then, LUCI has also expanded into their Bartlesville, Pawhuska, Sand Springs, and Skiatook casino locations.
 
-Swigs is the latest proof. Its nearly 20-foot display spans three angled planes, with 60 cabinets and 480 panels forming one 3840 × 1296 canvas. Four display presets move between full-screen content, multi-source television, and a featured center layout. Two new audio zones support the bar and stage. A four-person onsite team, backed by home-office support, completed the work in 25.5 total working hours.
+**The ballroom.** The ballroom came next. LUCI brought the room’s projectors and controls into the same software already running the casino floor, so the property team runs the space from one interface instead of a separate control system.
 
-The specifications show the scale of the latest room. The larger story is continuity: nine years at Ponca City, with every new room extending the operating standard already in place.
+**Swallows.** Swallows was the first of two new restaurant LED walls. Rather than bring in a new LED vendor and then coordinate separate vendors for video, audio, and control, Osage brought LUCI in. The new wall, video sources, and audio zones plugged into the platform already running the property. The room came online with four operating presets, seven independent video sources, and two new audio zones. The property team can run one full canvas, two seven-screen layouts, or a featured center image with supporting content on the outer sections.
+
+**Swigs.** Swigs followed as the second — a bar and live-entertainment venue with a nearly 20-foot LED canvas crossing three planes. The same approach held: LUCI installed and integrated the wall, so the new LED, video, and audio joined the platform already running the property instead of a separate vendor stack. The room came online with four operating presets, seven independent video sources, and two new audio zones. The property team can run one full canvas, two seven-screen layouts, or a featured center image with supporting content on the outer sections.
+
+The larger story is continuity: nine years at Ponca City, with every new room extending the operating standard already in place.
 
 **Stats:**
 
-- **9** · Years at Ponca City
+- **9 yrs** · Of partnership with LUCI
 - **4** · Ponca City project phases
-- **2** · Venue phases in the latest expansion
 - **98** · Endpoints at Ponca City
 
 **Pull-out — What Ponca City runs now:**
 
-- One LUCI foundation across the casino floor, ballroom, Swizzle, and Swigs
+- One LUCI foundation across the casino floor, ballroom, Swallows, and Swigs
 - 98 endpoints at Ponca City through the same LUCI environment
-- Four presets organizing seven independent video sources across one three-plane canvas
-- New LED, video, and audio endpoints at Swigs joined the property’s existing LUCI environment
+- Four presets on each restaurant LED wall organize seven independent video sources
+- New LED, video, and audio endpoints at Swallows and Swigs joined the property’s existing LUCI environment
 
 **Captions:**
 
-- Photo TBD: Osage Project Media
-- Photo TBD: Osage Project Media
+- Before: the three-plane Swigs LED wall during installation (IMG_1642)
+- After: the same wall live with multiple sports sources (IMG_1650 — final asset to remove person and equipment)
 
 **CTA:** Read the full case study → [CASE STUDY URL — TBD]
 
