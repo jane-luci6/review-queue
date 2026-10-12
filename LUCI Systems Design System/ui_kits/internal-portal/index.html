@@ -3336,6 +3336,8 @@
         ...(portal.queue.dueForReview || []),
         ...(portal.queue.inProgress || []),
         ...(portal.queue.approvedAssets || []),
+        // Parked items back In Progress cards that open as an embedded #review/<id> detail.
+        ...(portal.queue.parkedFromReviewQueue || []),
       ].find((item) => item.id === id);
     }
 
@@ -3390,9 +3392,11 @@
     }
 
     function reviewStatus(item) {
+      if (item.reference) return { label: item.reviewStatus || 'Reference', tone: item.reviewStatusTone || 'neutral' };
       if (approvalAt(item.id, 'Mike')) return { label: 'Approved by Mike', tone: 'mint' };
       const hasFeedback = commentsFor(item.id).some((c) => c.author !== 'Jane');
       if (hasFeedback) return { label: 'Feedback received · Up next: Jane', tone: 'gold' };
+      if (item.reviewStatus) return { label: item.reviewStatus, tone: item.reviewStatusTone || 'ink' };
       return { label: "Awaiting Mike's review", tone: 'ink' };
     }
 
@@ -3750,7 +3754,7 @@
         ? reviewItems.map((item) => `
             <button type="button" class="hl-link" data-go-review="${item.id}">
               <span class="hl-link__title">${item.title}</span>
-              <span class="hl-link__sub">${approvalSummary(item.id)}</span>
+              <span class="hl-link__sub">${item.reference ? (item.reviewStatus || 'Reference') : approvalSummary(item.id)}</span>
             </button>`).join('')
         : '<p class="empty">Nothing waiting for review right now.</p>';
 
@@ -3808,7 +3812,7 @@
           <span class="review-row__meta">
             <span class="pill pill--${status.tone}">${status.label}</span>
             ${item.due ? `<span class="pill">Due ${formatDate(item.due)}</span>` : ''}
-            <span class="review-row__approver">Approver: <strong>Mike</strong></span>
+            ${item.reference ? '' : '<span class="review-row__approver">Approver: <strong>Mike</strong></span>'}
           </span>
         `;
         btn.addEventListener('click', () => { location.hash = '#review/' + item.id; });
@@ -3858,7 +3862,7 @@
       const thread = commentsFor(item.id);
       const approved = approvalAt(item.id, 'Mike');
       mount.innerHTML = `
-        <div class="detail__section">
+        ${item.reference ? '' : `<div class="detail__section">
           <h3>Sign-off</h3>
           <div class="approval">
             <span class="approval__name">Mike</span>
@@ -3867,7 +3871,7 @@
             </button>
             ${approved ? '<span class="pill pill--mint">Approved by Mike</span>' : ''}
           </div>
-        </div>
+        </div>`}
 
         <div class="detail__section">
           <h3>Comments</h3>
@@ -3880,7 +3884,7 @@
         </div>
       `;
 
-      mount.querySelector('#approval-toggle').addEventListener('click', () => toggleApproval(item, 'Mike'));
+      if (!item.reference) mount.querySelector('#approval-toggle').addEventListener('click', () => toggleApproval(item, 'Mike'));
 
       const threadMount = mount.querySelector('.comment-thread');
       if (!thread.length) {
@@ -4096,8 +4100,8 @@
         },
         {
           title: 'Upgrade campaign emails',
-          note: 'CUST-* scaffolds in Email copy (webinar → readiness → launch → post).',
-          href: '#new-luci-launch/email/customers/pre-launch-webinar/CUST-WEBINAR-01',
+          note: 'In progress. Email communications &amp; outlines for the upgrade tracks (webinar → readiness → launch → post).',
+          href: '#new-luci-launch/strategy/email-comms',
           external: false,
           pill: 'Email'
         },
@@ -4118,8 +4122,8 @@
           pill: 'Newsletter'
         },
         {
-          title: 'Osage / Ponca City case study',
-          note: 'Shell on .37 (Ponca City — Swigs/Swizzle + ballroom). Slug osage-ponca-swigs; Sand Springs not done yet. Draft options (two spines + open decisions) ready for review.',
+          title: 'Osage Ponca City web case study',
+          note: 'In progress. Full web case study on .37 (Ballroom, Swallows, Swigs).',
           href: 'http://10.10.1.37/resources/case-studies/osage-ponca-swigs/',
           external: true,
           secondaryHref: 'http://10.10.1.37/previews/osage-swigs-web-cs-draft-options.html',
@@ -4132,6 +4136,20 @@
           href: 'http://10.10.1.17:8081/content-marketing/wave-1-revert-preset-review.html#spotlight-revert-preset',
           external: true,
           pill: 'Content'
+        },
+        {
+          title: 'New LUCI · Launch timeline',
+          note: 'Internal launch timeline (beta, property by property). Moved off Mike’s Review Queue Oct 9, 2026.',
+          href: '#review/new-luci-launch-timeline',
+          external: false,
+          pill: 'Timeline'
+        },
+        {
+          title: 'New LUCI upgrade highlight video',
+          note: 'Owner: Vikram · Added Oct 8, 2026. Waiting on Jane: feature map, VO script, intro pick (A/B/C). ~70s master + 30s cutdown plan from New LUCI-Platform-Demo; no cut until approved.',
+          href: '#review/new-luci-upgrade-highlight-video',
+          external: false,
+          pill: 'Video'
         }
       ];
       const list = $('in-progress-list');

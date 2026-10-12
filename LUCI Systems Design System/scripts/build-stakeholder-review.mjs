@@ -561,6 +561,8 @@ function syncPreviewAssets(queue) {
   const previewQueueItems = [
     ...(queue.dueForReview || []),
     ...(queue.inProgress || []),
+    // Parked items still back IMP sidebar In Progress cards — keep their previews published.
+    ...(queue.parkedFromReviewQueue || []),
     ...(queue.approvedAssets || []).filter((item) => item.hubPreviewPath || item.previewUrl),
   ];
   for (const item of previewQueueItems) {

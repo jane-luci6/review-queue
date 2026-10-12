@@ -56,7 +56,9 @@
           "published": "2026-10-09",
           "note": "Removed Fremont from the completed September project update; work remains in progress."
         }
-      ]
+      ],
+      "reviewStatus": "Waiting on Mike",
+      "reviewStatusTone": "gold"
     },
     {
       "id": "new-luci-whats-new-onepager",
@@ -80,26 +82,8 @@
           "published": "2026-09-24",
           "note": "Card colors: 01 light gray, 02 pale mint, 03 deeper mint, In-product support darker gray — slight variation so groups are easier to scan."
         }
-      ]
-    },
-    {
-      "id": "new-luci-launch-timeline",
-      "title": "New LUCI · Launch timeline",
-      "summary": "Internal launch timeline for New LUCI — beta, property by property, not a public splash.",
-      "liveUrl": "http://10.10.1.17:8081/internal-portal/new-luci-launch-timeline.html",
-      "reviewVersion": 1,
-      "versionNote": "First review — launch timeline published to the portal for internal planning review.",
-      "reviewBrief": {
-        "description": "The New LUCI launch timeline lays out the beta, property-by-property rollout sequence for internal planning — not a public launch splash.",
-        "reviewAsk": "whether the sequence, dates, and ownership framing read right for internal launch planning."
-      },
-      "versionHistory": [
-        {
-          "version": 1,
-          "published": "2026-09-11",
-          "note": "First review — launch timeline published to the portal for internal planning review."
-        }
-      ]
+      ],
+      "reviewStatus": "Basically approved"
     },
     {
       "id": "new-luci-upgrade-guide",
@@ -123,7 +107,8 @@
           "published": "2026-10-07",
           "note": "Ready for Mike — Jane finished the guide; moved to dueForReview."
         }
-      ]
+      ],
+      "reviewStatus": "Next: tech review with Nick and Richard — not waiting on Mike"
     },
     {
       "id": "events-overview-2026-10",
@@ -154,7 +139,10 @@
           "published": "2026-10-08",
           "note": "Oct 8 Mike decisions: TribalNet + IGA planned for 2027; InfoComm on hold (revisit 2028); June conference passed."
         }
-      ]
+      ],
+      "reviewStatus": "Reference",
+      "reviewStatusTone": "neutral",
+      "reference": true
     }
   ],
   "approvedAssets": [
@@ -775,6 +763,27 @@
           "note": "In Progress card; Vikram review page embedded from .17 (not committed — public repo)."
         }
       ]
+    },
+    {
+      "id": "new-luci-launch-timeline",
+      "title": "New LUCI · Launch timeline",
+      "summary": "Internal launch timeline for New LUCI — beta, property by property, not a public splash.",
+      "liveUrl": "http://10.10.1.17:8081/internal-portal/new-luci-launch-timeline.html",
+      "reviewVersion": 1,
+      "versionNote": "First review — launch timeline published to the portal for internal planning review.",
+      "reviewBrief": {
+        "description": "The New LUCI launch timeline lays out the beta, property-by-property rollout sequence for internal planning — not a public launch splash.",
+        "reviewAsk": "whether the sequence, dates, and ownership framing read right for internal launch planning."
+      },
+      "versionHistory": [
+        {
+          "version": 1,
+          "published": "2026-09-11",
+          "note": "First review — launch timeline published to the portal for internal planning review."
+        }
+      ],
+      "reviewStatus": "In progress · Jane",
+      "parkedNote": "Moved off Mike’s Review Queue Oct 9, 2026; internal planning on Jane’s In Progress board."
     }
   ]
 }
