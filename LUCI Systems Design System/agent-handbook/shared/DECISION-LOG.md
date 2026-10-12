@@ -8,6 +8,10 @@
 
 ---
 
+## 2026-10-12
+
+- **LUCI copy names the specific system, place, and action instead of relying on vague shorthand.** Avoid dead-end phrases such as “what’s already there”; readers should not have to infer what LUCI supports, integrates, or expands. Jane.
+
 ## 2026-10-09
 
 - **Upgrade Guide shows no release date and no “Coming soon.”** Hero date label and the Availability fact are removed; the guide does not publish a calendar date. Jane.
