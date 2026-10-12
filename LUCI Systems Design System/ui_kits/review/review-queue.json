@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-09",
+  "updated": "2026-10-12",
   "publishNote": "Build (npm run build:review) outputs to ui_kits/review. Bump reviewVersion + versionNote for new uploads (version history shown in portal). Set dueForReview for first-time review. Comments/approvals sync server-side via the comments_api container (proxied at /api/comments); Jane sees Mike/Mark's feedback on refresh. Archive with scripts/pull-review-comments.mjs.",
   "previewBaseUrl": "",
   "commentsApiUrl": "http://10.10.1.17:8081/api/comments",
@@ -8,17 +8,17 @@
     {
       "title": "Messaging guide",
       "url": "messaging/messaging-guide.html",
-      "note": "Updated Oct 9, 2026"
+      "note": "Updated Oct 12, 2026"
     },
     {
       "title": "LUCI philosophy",
       "url": "messaging/philosophy.html",
-      "note": "Updated Oct 9, 2026"
+      "note": "Updated Oct 12, 2026"
     },
     {
       "title": "Personas",
       "url": "messaging/personas.html",
-      "note": "Updated Oct 9, 2026"
+      "note": "Updated Oct 12, 2026"
     }
   ],
   "inProgress": [],
@@ -55,6 +55,27 @@
           "version": 4,
           "published": "2026-10-09",
           "note": "Removed Fremont from the completed September project update; work remains in progress."
+        }
+      ],
+      "reviewStatus": "Waiting on Mike",
+      "reviewStatusTone": "gold"
+    },
+    {
+      "id": "case-study-osage-ponca-swigs",
+      "title": "Case Study · Osage Casino Hotel — Ponca City",
+      "summary": "Ponca City case study — nine years on one LUCI foundation, from the original install through the ballroom, Swallows, and Swigs, inside a 10+ year Osage relationship that now spans six properties.",
+      "liveUrl": "http://10.10.1.37/resources/case-studies/osage-ponca-swigs/",
+      "reviewVersion": 1,
+      "versionNote": "Ready for Mike — Jane completed the web case study on .37.",
+      "reviewBrief": {
+        "description": "Standalone Osage Casino Hotel — Ponca City case study on the website. The story is the nine-year Ponca City relationship: original LUCI install, ballroom, Swallows, and Swigs, with Tulsa as origin and five other Osage properties as supporting context.",
+        "reviewAsk": "whether the story, technical claims, and property details read accurately for LUCI customers; flag anything that should change before it is treated as shippable."
+      },
+      "versionHistory": [
+        {
+          "version": 1,
+          "published": "2026-10-12",
+          "note": "Added to Mike’s Review Queue after Jane completed the web case study on .37."
         }
       ],
       "reviewStatus": "Waiting on Mike",
@@ -700,7 +721,7 @@
     }
   ],
   "finalized": [],
-  "messagingDocsUpdated": "2026-10-09",
+  "messagingDocsUpdated": "2026-10-12",
   "parkedFromReviewQueue": [
     {
       "id": "signal-issue-05-choices",
