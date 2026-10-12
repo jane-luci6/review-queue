@@ -18,13 +18,11 @@ First draft for Mike review on October 9, 2026. Copy only. GLM will place approv
 
 **Body:**
 
-A complex A/V project passes through a lot of hands. Architects, contractors, installers, IT teams, and operators all have a part to play. And with every handoff comes the risk of losing something along the way—a design decision, an operational requirement, or the bigger picture of how everything needs to work together.
+A complex A/V project passes through many hands—from architects and contractors to installers, IT teams, and operators. Every handoff risks losing a design decision, an operating requirement, or the larger plan.
 
-That’s why continuity over time matters. When the same operating plan keeps the work connected through design, construction, installation, and daily use, there are fewer gaps to work around and fewer surprises down the road. And when a property expands, it can build instead of replacing, reworking, or adding clutter.
+Continuity keeps that plan connected from early design through daily operation. LUCI provides the foundation and a team that stays involved, so each expansion can build on what is already working instead of adding another system to manage.
 
-LUCI is the foundation of that continuity with each of our customers. From early planning and infrastructure design through installation, training, and ongoing support, our team stays involved to keep your efforts aligned with your property’s operational needs.
-
-In this issue, you’ll see this in our nine-year partnership with Osage Casino Hotel, the design services we offer with every LUCI subscription, and the operating advice we provide clients. We’ll also share how the next version of LUCI is giving your team greater visibility and control, while keeping the same support behind it.
+This issue shows that continuity at work: nine years with Osage Casino Hotel, design services included with every LUCI subscription, practical operating advice, and the next version of LUCI extending your own control so you can provide a consistent customer experience.
 
 **TOC labels:**
 
@@ -92,9 +90,9 @@ Since then, LUCI has also expanded into Osage’s Bartlesville, Pawhuska, Sand S
 
 **Phase 02 — The ballroom.** LUCI brought the room’s projectors and controls into the same software already running the casino floor, so the team runs the space from one interface instead of a separate control system.
 
-**Phase 03 — Swallows.** Rather than coordinate separate LED, video, audio, and control vendors, Osage brought LUCI in. The new wall and sources plugged into the platform already running the property. [Text-only box in 2x2 grid]
+**Phase 03 — Swallows.** When Osage needed a new 18-foot LED wall for their restaurant upgrade at Swallows, they had LUCI take care of the build and the integration — rather than bring in a new vendor and juggle technological overlap. [Text-only box in 2x2 grid]
 
-**Phase 04 — Swigs.** A bar and live-entertainment venue with a nearly 20-foot LED canvas crossing three planes. LUCI installed and integrated the wall, so the new LED, video, and audio joined the same platform. [Text-only box in 2x2 grid]
+**Phase 04 — Swigs.** Osage then re-engaged LUCI to build the nearly 20-foot LED wall at Swigs, a new bar and live-entertainment venue — easily bringing it onto the same LUCI environment already running the property. [Text-only box in 2x2 grid]
 
 **Swigs before/after slider:** Full-width slider below the 2x2 phase grid, with room to breathe. Before = Swigs_Before_1 (plywood/installation state), After = Swigs After 2 (commissioned three-plane LED wall with sports content, zoomed ~1.18x and shifted down ~4.5% to align screen heights across the divider). Caption: "Swigs — the LED wall portion of the Osage Ponca City partnership. Drag to compare the build with the finished wall."
 
@@ -114,7 +112,7 @@ The larger story is continuity: nine years at Ponca City, with every new room ex
 
 - One LUCI foundation across the casino floor, ballroom, Swallows, and Swigs
 - 98 endpoints at Ponca City through the same LUCI environment
-- Four presets on each restaurant LED wall organize seven independent video sources
+- The Swigs LED wall runs four presets across seven independent video sources
 - New LED, video, and audio endpoints at Swallows and Swigs joined the property’s existing LUCI environment
 
 **Captions:**
