@@ -1,5 +1,5 @@
 {
-  "campaign_strategy": "Move current customers from informed consideration to attendance without repeating the same product pitch. Email 1 uses the LUCI Upgrade Overview as the decision aid before registration. Email 2 makes the preview concrete with three takeaways and gives registrants and nonregistrants clearly labeled next steps. Email 3 is registrant-only logistics. Email 4 restores the same product view for non-attendees, with the recording primary and the overview secondary. The tone moves from invitational to concrete to logistical to accommodating. More day-to-day programming control remains paired with continuing LUCI support throughout.",
+  "campaign_strategy": "Move current customers from informed consideration to attendance without repeating the same product pitch. Every email defines New LUCI in one line so it works for a cold reader. Email 1 opens on putting programming power in the customer’s hands, uses the LUCI Upgrade Overview before registration, and uses the retention claim once to reassure customers that the same LUCI team remains behind them. Email 2 makes the preview concrete with three takeaways and clearly labeled next steps. Email 3 is registrant-only logistics. Email 4 restores the product view for non-attendees. The tone moves from invitational to concrete to logistical to accommodating, with one earned human line in each send.",
   "open_questions": [
     "Who should be the named sender and signer: the customer’s usual LUCI contact, one campaign-wide customer lead, or Marketing?",
     "Should email 2 use two visible links in one shared send, or should ActiveCampaign swap only the final CTA line by registration status?",
@@ -13,232 +13,233 @@
       "title": "Seminar invitation",
       "timing": "About 2–3 weeks before the webinar",
       "audience": "Operations and IT at current LUCI properties",
-      "primary_message": "Review how New LUCI will give your team more day-to-day programming control, then register for a private customer preview.",
+      "primary_message": "See how New LUCI puts more programming power in your hands, with the same LUCI team behind you, then register for a private customer preview.",
       "strategy": {
         "what_why": "A customer invitation that gives the LUCI Upgrade Overview enough weight to help a cold reader decide whether the private preview is useful.",
         "for_whom": "Operations should recognize more direct control over rooms and day-to-day changes; IT should recognize stronger visibility, access control, and support context.",
         "reach": "Send from a named LUCI customer-facing lead through the marketing platform about 2–3 weeks before the preview. Put the overview link before registration.",
-        "impact": "Open on the practical change in authority, call the event a private customer preview, and state the continuing LUCI partnership plainly."
+        "impact": "Open on the campaign theme, call the event a private customer preview, and use the retention claim once as reassurance that the same LUCI team remains behind the customer."
       },
       "directions": [
         {
           "name": "Control, backed by LUCI",
           "summary": "Lead with more day-to-day control and continuing support, then invite customers into the preview.",
-          "draft": "Dear #Name#,\n\nA new version of LUCI is on its way, putting more day-to-day programming control in your hands while keeping the LUCI team fully behind you.\n\nWe’re inviting current customers to a private preview on [WEBINAR DATE] at [WEBINAR TIME] on [WEBINAR PLATFORM]. We’ll show the new controls across the room, the interface, and the operation.\n\nReview the LUCI Upgrade Overview, then register if you’d like to join us.\n\nLUCI Upgrade Overview: https://www.lucisystems.com/product-briefs/luci-upgrade-overview\n\nRegister: [REGISTRATION LINK]"
+          "draft": "Dear #Name#,\n\nPutting the power of programming in your hands is the idea behind New LUCI, the next version of the platform your team uses to operate A/V across the property, now on its way.\n\nYou’ll have more day-to-day control, and the same LUCI team will remain behind you. We’d be glad to show you what that means in practice.\n\nReview the LUCI Upgrade Overview, then register for the private preview on [WEBINAR DATE] at [WEBINAR TIME] on [WEBINAR PLATFORM].\n\nLUCI Upgrade Overview: https://www.lucisystems.com/product-briefs/luci-upgrade-overview\n\nRegister: [REGISTRATION LINK]"
         },
         {
           "name": "See it before you decide",
           "summary": "Make the overview the decision aid and position registration as the informed next step.",
-          "draft": "Dear #Name#,\n\nBefore you decide whether to attend our private customer preview, take a few minutes with the LUCI Upgrade Overview. It shows how New LUCI will expand room control, interface flexibility, operational visibility, and in-product support.\n\nThe live session on [WEBINAR DATE] at [WEBINAR TIME] on [WEBINAR PLATFORM] will put those changes into one Operations-and-IT walkthrough.\n\nReview the overview, then register for the private preview.\n\nOverview: https://www.lucisystems.com/product-briefs/luci-upgrade-overview\n\nRegister: [REGISTRATION LINK]"
+          "draft": "Dear #Name#,\n\nStart with the LUCI Upgrade Overview before you decide whether to attend our private customer preview. It shows how New LUCI, the next version of the LUCI platform, expands day-to-day control across the room, interface, and operation.\n\nMore control does not mean less partnership. The same LUCI team will keep supporting your property. We’d be glad to have you with us on [WEBINAR DATE] at [WEBINAR TIME] on [WEBINAR PLATFORM].\n\nOverview: https://www.lucisystems.com/product-briefs/luci-upgrade-overview\n\nRegister: [REGISTRATION LINK]"
         },
         {
           "name": "One preview for Operations and IT",
           "summary": "Use a short feature list to show why the same customer preview matters to both teams.",
-          "draft": "Dear #Name#,\n\nNew LUCI is on its way. We’re bringing Operations and IT together for a private customer preview of the day-to-day changes: approved controls on venue panels; staging and live screen views; and audit trails, monitoring, and sign-in control.\n\nThe LUCI team remains fully behind the platform, including support with product context and logs.\n\nStart with the LUCI Upgrade Overview, then register for [WEBINAR DATE] at [WEBINAR TIME] on [WEBINAR PLATFORM].\n\nOverview: https://www.lucisystems.com/product-briefs/luci-upgrade-overview\n\nRegister: [REGISTRATION LINK]"
+          "draft": "Dear #Name#,\n\nNew LUCI is the next version of the platform your team uses to operate A/V across the property. We’re bringing Operations and IT together for a private customer preview of the day-to-day changes: approved controls on venue panels; staging and live screen views; and audit trails, monitoring, and sign-in control.\n\nYour team gets more direct control while the same LUCI team continues to support your property with product context and logs.\n\nStart with the LUCI Upgrade Overview, then register for [WEBINAR DATE] at [WEBINAR TIME] on [WEBINAR PLATFORM].\n\nOverview: https://www.lucisystems.com/product-briefs/luci-upgrade-overview\n\nRegister: [REGISTRATION LINK]"
         }
       ],
-      "winner": "See it before you decide",
-      "why_won": "It lets customers understand the changes before making a time commitment. The final also borrows the partnership language and concrete capability sweep from the other directions.",
+      "winner": "Control, backed by LUCI",
+      "why_won": "It gives the campaign theme immediate prominence and makes the platform-and-partnership promise clear before the event details. The final also borrows the overview-first decision path and cold-reader clarity from the other directions.",
       "subject_lines": [
         {
-          "mood": "Direct",
-          "text": "A private preview of New LUCI"
+          "mood": "Warm",
+          "text": "We’d be glad to show you New LUCI"
         },
         {
-          "mood": "Curious",
-          "text": "See what’s changing in New LUCI"
+          "mood": "Theme-led",
+          "text": "Programming power, in your hands"
         },
         {
-          "mood": "Practical",
-          "text": "Review New LUCI, then reserve your place"
+          "mood": "Exclusive",
+          "text": "Your private preview of New LUCI"
         }
       ],
-      "preheader": "See the changes first, then register for a private customer preview.",
+      "preheader": "See what changes day to day, with the same LUCI team behind you.",
       "body": [
         "Dear #Name#,",
-        "A new version of LUCI is on its way, giving your team more day-to-day programming control while keeping the LUCI team fully behind you.",
-        "We’re inviting current customers to a private preview on [WEBINAR DATE] at [WEBINAR TIME] on [WEBINAR PLATFORM]. We’ll show how New LUCI expands control across the room, the interface, and the operation, from venue panels and staging to live screen views, audit trails, and in-product support.",
-        "Start with the LUCI Upgrade Overview, then register if you’d like to join us.",
-        "Review the LUCI Upgrade Overview: https://www.lucisystems.com/product-briefs/luci-upgrade-overview",
+        "Putting the power of programming in your hands is the idea behind New LUCI, the next version of the platform your team uses to operate A/V across the property, now on its way.",
+        "You’ll have more day-to-day control across the room, the interface, and the operation. More control does not mean less partnership: we’ve never lost a client, and the same LUCI team will remain behind you.",
+        "We’re inviting current customers to a private preview on [WEBINAR DATE] at [WEBINAR TIME] on [WEBINAR PLATFORM]. We’d be glad to have you with us.",
+        "Start with the LUCI Upgrade Overview: https://www.lucisystems.com/product-briefs/luci-upgrade-overview",
         "Register for the private preview: [REGISTRATION LINK]"
       ],
       "cta_label": "Review the LUCI Upgrade Overview and register",
-      "word_count": 99,
-      "guardrail_notes": "More client control is paired with continuing LUCI support. New LUCI is on its way; no release, launch, or availability date appears. The event is a private customer preview. All claims come from the published LUCI Upgrade Overview. The retention claim is omitted because it would compete with the email’s decision-aid job."
+      "word_count": 108,
+      "guardrail_notes": "More client control is paired with the same LUCI team’s continuing support. New LUCI is defined for a cold reader and remains on its way; no release, launch, or availability date appears. The event is a private customer preview. The retention claim appears once, after ‘More control does not mean less partnership,’ where it reassures rather than boasts. R2 changes: added the campaign theme, warm invitation, concrete partnership proof, differentiated subject moods, complementary preheader, and exact 108-word recount."
     },
     {
       "id": "CUST-WEBINAR-02",
       "title": "What to expect",
       "timing": "7–10 days before the webinar",
       "audience": "Operations and IT at current LUCI properties",
-      "primary_message": "The private preview will show three practical ways New LUCI expands control of the room, the view, and the operation.",
+      "primary_message": "The private preview will show three practical ways New LUCI gives Operations and IT more control, with the same LUCI team still behind them.",
       "strategy": {
         "what_why": "A second-touch agenda email that earns attention with three concrete takeaways instead of repeating the invitation.",
         "for_whom": "Operations gets tangible room, screen, and audio workflows; IT gets floor-plan control, activity records, monitoring, authentication, and session management.",
         "reach": "Use the same sender 7–10 days before the preview. Lead with a numbered list and close with clearly labeled agenda and registration paths.",
-        "impact": "Replace broad promises with product behavior the reader can picture, using parallel room, view, and operation categories."
+        "impact": "Replace broad promises with product behavior the reader can picture, define New LUCI for a cold reader, and state that the same LUCI team keeps supporting the property."
       },
       "directions": [
         {
           "name": "Three kinds of control",
           "summary": "Deliver the promised takeaways in a numbered room, view, and operation structure.",
-          "draft": "Dear #Name#,\n\nThe private preview is built around three things your Operations and IT teams can use day to day:\n\n1. Control the room with venue panels, staging, and audio groups.\n2. Control the view with interface options, your own floor plans, and live screen views.\n3. Understand the operation with audit trails, monitoring and analytics, and sign-in controls.\n\nAlready registered? Review the agenda at [AGENDA LINK].\n\nStill deciding? Register at [REGISTRATION LINK]."
+          "draft": "Dear #Name#,\n\nNew LUCI is the next version of the platform your team uses to operate A/V across the property. We shaped the private preview around three things your Operations and IT teams can use day to day:\n\n1. Control the room with venue panels, staging, and audio groups.\n2. Control the view with interface options, your own floor plans, and live screen views.\n3. Understand the operation with audit trails, monitoring and analytics, and sign-in controls.\n\nThe same LUCI team will keep supporting your property as your team gains more control.\n\nAlready registered? Review the agenda at [AGENDA LINK].\n\nStill deciding? Register at [REGISTRATION LINK]."
         },
         {
           "name": "Follow one change from setup to proof",
           "summary": "Organize the preview as a workflow from staging a change to confirming what happened.",
-          "draft": "Dear #Name#,\n\nIn the private preview, we’ll follow day-to-day changes from preparation through confirmation. You’ll see how teams can stage screens, sources, and audio before applying them; tailor the interface and floor plan to the property; then use live screen views, audit trails, and monitoring to understand what is happening.\n\nNew LUCI is on its way, with the LUCI team still connected through in-product support.\n\nReview the agenda at [AGENDA LINK], or register at [REGISTRATION LINK]."
+          "draft": "Dear #Name#,\n\nNew LUCI is the next version of the platform your team uses to operate A/V across the property. In the private preview, we’ll follow a day-to-day change from preparation through confirmation: stage screens, sources, and audio; tailor the interface and floor plan; then use live views, audit trails, and monitoring to confirm what happened.\n\nYou’ll have more control, and the same LUCI team will keep supporting your property through in-product requests with context and logs.\n\nReview the agenda at [AGENDA LINK], or register at [REGISTRATION LINK]."
         },
         {
           "name": "Two teams, one operating view",
           "summary": "Split the proof by Operations and IT, then bring the teams back together around shared control.",
-          "draft": "Dear #Name#,\n\nFor Operations, the private preview shows room controls where the work happens: venue panels, staged changes, audio groups, and live screen views.\n\nFor IT, it shows the controls around that work: approved access, sign-in and session management, audit trails, monitoring, and support requests with context and logs.\n\nTogether, those changes put more day-to-day programming control in your hands without moving the LUCI team out of the picture.\n\nAgenda: [AGENDA LINK]\n\nRegistration: [REGISTRATION LINK]"
+          "draft": "Dear #Name#,\n\nNew LUCI is the next version of the platform your team uses to operate A/V across the property.\n\nFor Operations, the private preview shows room controls where the work happens: venue panels, staged changes, audio groups, and live screen views.\n\nFor IT, it shows the controls around that work: approved access, sign-in and session management, audit trails, monitoring, and support requests with context and logs.\n\nTogether, those changes put more day-to-day programming control in your hands. The same LUCI team continues to support your property.\n\nAgenda: [AGENDA LINK]\n\nRegistration: [REGISTRATION LINK]"
         }
       ],
       "winner": "Three kinds of control",
-      "why_won": "It promises three takeaways and delivers them in the fastest scan. The final also borrows the day-to-day framing and explicit Operations-and-IT relevance from the other directions.",
+      "why_won": "It still promises three takeaways and delivers them in the fastest scan. The revision adds workflow clarity, explicit Operations-and-IT relevance, and the same-team reassurance before the recipient-state links.",
       "subject_lines": [
         {
-          "mood": "Specific",
-          "text": "Three things you’ll see in New LUCI"
+          "mood": "Practical",
+          "text": "Three things the New LUCI preview will cover"
         },
         {
-          "mood": "Agenda-led",
-          "text": "Your private preview agenda"
+          "mood": "Curious",
+          "text": "What changes from room to operating view?"
         },
         {
-          "mood": "Inviting",
-          "text": "Still deciding? See what the preview will cover"
+          "mood": "Warm",
+          "text": "A closer look at the work you do every day"
         }
       ],
-      "preheader": "Room control, flexible views, and clearer operating information in one preview.",
+      "preheader": "Room control, flexible views, and operating insight, with support unchanged.",
       "body": [
         "Dear #Name#,",
-        "The private preview is built around three things your Operations and IT teams can use day to day:",
+        "New LUCI, the next version of the platform your team uses to operate A/V across the property, is on its way. It gives you more day-to-day programming control, with the same LUCI team still supporting your property.",
+        "We shaped the private preview around the work Operations and IT handle every day:",
         "1. Control the room: show only approved controls on venue panels, stage changes behind the scenes, and manage audio groups.",
         "2. Control the view: tailor the interface, use your own floor plans, and see live screen content from an iPad or browser.",
         "3. Understand the operation: review audit trails, use monitoring and analytics, and manage sign-ins and sessions.",
-        "New LUCI is still on its way. The preview shows what is changing and how LUCI support stays connected.",
         "Already registered? Review the agenda: [AGENDA LINK]",
         "Still deciding? Register for the private preview: [REGISTRATION LINK]"
       ],
       "cta_label": "Review the agenda or register",
-      "word_count": 113,
-      "guardrail_notes": "All three takeaways come from the published overview. New LUCI is still on its way, support stays connected, and no release date appears. The shared send uses recipient-state labels so registrants are not asked to register again. The retention claim is omitted because the agenda is the only proof this email needs."
+      "word_count": 127,
+      "guardrail_notes": "All three takeaways come from the published overview. New LUCI is defined for a cold reader and remains on its way, the same LUCI team still supports the property, and no release date appears. The shared send uses recipient-state labels so registrants are not asked to register again. The retention claim stays in email 1 only. R2 changes: added the warm work-centered line, concrete partnership language, differentiated subject moods, complementary preheader, and exact 127-word recount."
     },
     {
       "id": "CUST-WEBINAR-03",
       "title": "Event reminder",
       "timing": "2 days before the webinar",
       "audience": "Registered Operations and IT contacts at current LUCI properties",
-      "primary_message": "Your private New LUCI preview details and access links are all in one place.",
+      "primary_message": "Your private New LUCI preview details and access links are all in one place, with a clear reminder of what the session covers.",
       "strategy": {
         "what_why": "A registrant-only logistics reminder whose sole job is to make attendance easy.",
         "for_whom": "Operations and IT registrants need the same date, time, platform, calendar link, and join path.",
         "reach": "Send from the same recognizable LUCI sender two days before the preview, put logistics first, and leave the join link last for easy retrieval.",
-        "impact": "Use restraint and repeat only the day-to-day walkthrough context, without adding product claims or unapproved preparation instructions."
+        "impact": "Use restraint, add a warm welcome, define New LUCI in one sentence, and connect more control to the same LUCI team without adding a feature list."
       },
       "directions": [
         {
           "name": "Logistics first",
           "summary": "Put date, time, platform, calendar, and join details into the shortest complete reminder.",
-          "draft": "Dear #Name#,\n\nYour private preview of New LUCI is coming up on [WEBINAR DATE] at [WEBINAR TIME] on [WEBINAR PLATFORM].\n\nWe’ll walk through the new day-to-day controls for Operations and IT. Use the links below to save the session and join when it begins.\n\nAdd to your calendar: [CALENDAR LINK]\n\nJoin the private preview: [JOIN LINK]"
+          "draft": "Dear #Name#,\n\nWe’re looking forward to seeing you at the private customer preview on [WEBINAR DATE] at [WEBINAR TIME] on [WEBINAR PLATFORM].\n\nNew LUCI is the next version of the platform your team uses to operate A/V across the property. You’ll see how it gives Operations and IT more day-to-day control while the same LUCI team continues to support your property.\n\nAdd to your calendar: [CALENDAR LINK]\n\nJoin the private preview: [JOIN LINK]"
         },
         {
           "name": "Calendar first",
           "summary": "Present the event details as a compact calendar block before the access links.",
-          "draft": "Dear #Name#,\n\nPlease add the private New LUCI preview to your calendar:\n\n[WEBINAR DATE]\n[WEBINAR TIME]\n[WEBINAR PLATFORM]\n\nThe session will cover the new day-to-day controls for Operations and IT.\n\nUse the calendar link to save the details, then return to this email when it is time to join.\n\nAdd to your calendar: [CALENDAR LINK]\n\nKeep this link for the session: [JOIN LINK]"
+          "draft": "Dear #Name#,\n\nPlease add the private New LUCI customer preview to your calendar:\n\n[WEBINAR DATE]\n[WEBINAR TIME]\n[WEBINAR PLATFORM]\n\nNew LUCI is the next version of the platform your team uses to operate A/V across the property. The session will show its new day-to-day controls for Operations and IT, with the same LUCI team behind you.\n\nUse the calendar link to save the details, then return to this email when it is time to join.\n\nAdd to your calendar: [CALENDAR LINK]\n\nKeep this link for the session: [JOIN LINK]"
         },
         {
           "name": "Keep the link handy",
           "summary": "Use a human reminder and make the join link the dominant retrieval action.",
-          "draft": "Dear #Name#,\n\nWe’ll see you for the private New LUCI preview on [WEBINAR DATE] at [WEBINAR TIME] on [WEBINAR PLATFORM].\n\nThis is the customer walkthrough of the new day-to-day controls for Operations and IT. Keep the join link below handy.\n\nUse the calendar link now, then return to the join link when the session begins.\n\nCalendar: [CALENDAR LINK]\n\nJoin: [JOIN LINK]"
+          "draft": "Dear #Name#,\n\nWe’ll see you for the private New LUCI customer preview on [WEBINAR DATE] at [WEBINAR TIME] on [WEBINAR PLATFORM].\n\nNew LUCI is the next version of the platform your team uses to operate A/V across the property. This customer walkthrough covers more day-to-day control for Operations and IT while the same LUCI team continues to support your property.\n\nUse the calendar link now, then return to the join link when the session begins.\n\nCalendar: [CALENDAR LINK]\n\nJoin: [JOIN LINK]"
         }
       ],
       "winner": "Logistics first",
-      "why_won": "A registrant can understand the when, where, and next action from the first paragraph. It keeps the compact treatment of the other directions without implying preparation requirements.",
+      "why_won": "A registrant can understand the when, where, and next action from the first paragraph. The revision adds the human opening and keeps the compact calendar treatment without implying preparation requirements.",
       "subject_lines": [
         {
-          "mood": "Urgent",
-          "text": "Reminder: your New LUCI preview is in two days"
+          "mood": "Direct",
+          "text": "Your New LUCI preview is [WEBINAR DATE]"
         },
         {
-          "mood": "Useful",
-          "text": "Your link for the private New LUCI preview"
+          "mood": "Practical",
+          "text": "Calendar and join links for your preview"
         },
         {
-          "mood": "Calendar-led",
-          "text": "New LUCI preview: [WEBINAR DATE]"
+          "mood": "Warm",
+          "text": "We’re looking forward to seeing you"
         }
       ],
-      "preheader": "Save the session details and keep your private preview link handy.",
+      "preheader": "[WEBINAR TIME], [WEBINAR PLATFORM], and both access links are inside.",
       "body": [
         "Dear #Name#,",
-        "Your private preview of New LUCI is coming up on [WEBINAR DATE] at [WEBINAR TIME] on [WEBINAR PLATFORM].",
-        "We’ll walk through the new day-to-day controls for Operations and IT. Use the links below to save the session and join when it begins.",
+        "We’re looking forward to seeing you at the private customer preview on [WEBINAR DATE] at [WEBINAR TIME] on [WEBINAR PLATFORM].",
+        "New LUCI, the next version of the platform your team uses to operate A/V across the property, is on its way. You’ll see how it gives Operations and IT more day-to-day control while the same LUCI team continues to support your property.",
         "Add to your calendar: [CALENDAR LINK]",
         "Join the private preview: [JOIN LINK]"
       ],
       "cta_label": "Add to calendar or join",
-      "word_count": 56,
-      "guardrail_notes": "This is logistics only. The webinar date appears only as the approved placeholder, and no release date or expanded product claim appears. The private-preview frame remains intact. Use the ‘in two days’ subject only if send timing is fixed. The retention claim is omitted because it would distract from attendance."
+      "word_count": 76,
+      "guardrail_notes": "This remains a logistics email. The webinar date appears only as the approved placeholder, and no release date appears. New LUCI is defined for a cold reader and remains on its way, and more control is paired with the same LUCI team. The retention claim stays in email 1 only. R2 changes: removed the false ‘Urgent’ mood and timing-dependent subject, added the warm opening, differentiated subject moods, complementary preheader, and exact 76-word recount."
     },
     {
       "id": "CUST-WEBINAR-04",
       "title": "Recording for non-attendees",
       "timing": "2–3 business days after the webinar",
       "audience": "Operations and IT contacts at current LUCI properties who did not attend",
-      "primary_message": "Watch the private preview recording to see the same New LUCI product view on your schedule.",
+      "primary_message": "Watch the private preview recording on your schedule to see how New LUCI expands control while the same LUCI team continues to support your property.",
       "strategy": {
         "what_why": "A non-attendee recovery email that preserves the private preview without asking for another live commitment.",
         "for_whom": "Operations should see day-to-day control; IT should see visibility, access, and support context. Neither group should read the message as the start of an upgrade.",
         "reach": "Send from the same named LUCI sender 2–3 business days after the preview, open with the recording, and place its CTA before the overview.",
-        "impact": "Treat the missed event as ordinary, offer the same product view on demand, and connect greater control to in-product support."
+        "impact": "Treat the missed event as ordinary, acknowledge that schedules fill up, define New LUCI in one line, and connect greater control to the same LUCI team’s concrete support actions."
       },
       "directions": [
         {
           "name": "Recording first",
           "summary": "Lead with immediate on-demand access and keep the overview as a lighter companion.",
-          "draft": "Dear #Name#,\n\nIf you couldn’t attend the private preview, the recording is ready. It gives you the same view of New LUCI while the new version is still on its way.\n\nSee how the room, interface, and operation give your team more day-to-day programming control, with in-product support keeping the LUCI team connected.\n\nWatch the recording: [RECORDING LINK]\n\nFor a quick scan, review the LUCI Upgrade Overview: https://www.lucisystems.com/product-briefs/luci-upgrade-overview"
+          "draft": "Dear #Name#,\n\nWe know schedules fill up. If you couldn’t attend the private preview, the recording is ready when you are.\n\nNew LUCI is the next version of the platform your team uses to operate A/V across the property. See how it gives your team more day-to-day control while the same LUCI team supports your property through requests with context and logs, plus alerts when something goes down.\n\nWatch the recording: [RECORDING LINK]\n\nFor a quick scan, review the LUCI Upgrade Overview: https://www.lucisystems.com/product-briefs/luci-upgrade-overview"
         },
         {
           "name": "Scan first, watch deeper",
           "summary": "Offer the overview as the fast entry point and the recording as the complete walkthrough.",
-          "draft": "Dear #Name#,\n\nYou can still get the full New LUCI preview on your schedule.\n\nStart with the LUCI Upgrade Overview for a quick look at venue panels, staging, live screen views, audit trails, monitoring, sign-in controls, and in-product support. When you want the complete walkthrough, the private preview recording is ready.\n\nLUCI Upgrade Overview: https://www.lucisystems.com/product-briefs/luci-upgrade-overview\n\nWatch the recording: [RECORDING LINK]"
+          "draft": "Dear #Name#,\n\nYou can still get the full New LUCI preview on your schedule. We know the live time does not work for everyone.\n\nNew LUCI is the next version of the platform your team uses to operate A/V across the property. Start with the LUCI Upgrade Overview for a quick look, then use the recording for the complete walkthrough and the same-team support details.\n\nLUCI Upgrade Overview: https://www.lucisystems.com/product-briefs/luci-upgrade-overview\n\nWatch the recording: [RECORDING LINK]"
         },
         {
           "name": "Pick up the customer preview on demand",
           "summary": "Lead with control and use specific in-product support behavior to keep the partnership visible.",
-          "draft": "Dear #Name#,\n\nThe recording of the private customer preview is ready on demand. It shows how New LUCI puts more day-to-day programming control in your hands across the room, the interface, and the operation.\n\nIt also shows how the LUCI team stays connected through support requests with context and logs, plus alerts when something goes down.\n\nWatch the recording: [RECORDING LINK]\n\nCompanion overview: https://www.lucisystems.com/product-briefs/luci-upgrade-overview"
+          "draft": "Dear #Name#,\n\nThe recording of the private customer preview is ready on demand. We hope it makes the session easier to catch.\n\nNew LUCI is the next version of the platform your team uses to operate A/V across the property. The recording shows more day-to-day control across the room, interface, and operation, with the same LUCI team supporting your property through requests with context and logs, plus alerts when something goes down.\n\nWatch the recording: [RECORDING LINK]\n\nCompanion overview: https://www.lucisystems.com/product-briefs/luci-upgrade-overview"
         }
       ],
       "winner": "Recording first",
-      "why_won": "The primary action appears immediately and the message acknowledges the missed session without pressure. The final also borrows the scan-first companion and specific partnership proof from the other directions.",
+      "why_won": "The primary action appears immediately and the message acknowledges the missed session without pressure. The revision adds the warm schedule acknowledgment and borrows the scan-first companion and specific partnership proof from the other directions.",
       "subject_lines": [
         {
-          "mood": "Direct",
-          "text": "The New LUCI private preview, on demand"
-        },
-        {
           "mood": "Helpful",
-          "text": "Couldn’t attend? Watch the New LUCI preview"
+          "text": "The New LUCI preview recording is ready"
         },
         {
           "mood": "Low-pressure",
-          "text": "Watch the New LUCI preview on your schedule"
+          "text": "Watch the customer preview when it suits you"
+        },
+        {
+          "mood": "Curious",
+          "text": "What did you miss in the New LUCI preview?"
         }
       ],
-      "preheader": "The customer preview recording and LUCI Upgrade Overview are ready when you are.",
+      "preheader": "See the new day-to-day controls and how the LUCI team stays with you.",
       "body": [
         "Dear #Name#,",
-        "If you couldn’t attend the private preview, the recording is ready. It gives you the same view of New LUCI while the new version is still on its way.",
-        "See how venue panels, staging, customizable views, audit trails, monitoring, and sign-in controls put more day-to-day programming control in your hands. You’ll also see how in-product support keeps the LUCI team connected with context and logs, plus alerts when something goes down.",
+        "We know schedules fill up. If you couldn’t attend the private customer preview, the recording is ready when you are.",
+        "New LUCI, the next version of the platform your team uses to operate A/V across the property, is on its way. The recording shows how venue panels, staging, customizable views, audit trails, monitoring, and sign-in controls give you more day-to-day programming control.",
+        "You’ll also see how the same LUCI team continues to support your property through requests with context and logs, plus alerts when something goes down.",
         "Watch the recording: [RECORDING LINK]",
         "For a quick scan, review the LUCI Upgrade Overview: https://www.lucisystems.com/product-briefs/luci-upgrade-overview"
       ],
       "cta_label": "Watch the recording",
-      "word_count": 88,
-      "guardrail_notes": "The recording is the primary CTA and does not start an upgrade process. More control is paired with continuing LUCI support and alerts. New LUCI is still on its way, and every capability comes from the published overview. The retention claim is omitted because it would make the follow-up feel promotional."
+      "word_count": 104,
+      "guardrail_notes": "The recording is the primary CTA and does not start an upgrade process. New LUCI is defined for a cold reader and remains on its way, and more control is paired with concrete support from the same LUCI team. Every capability comes from the published overview. The retention claim stays in email 1 only. R2 changes: added the warm schedule acknowledgment, differentiated subject moods, complementary preheader, and exact 104-word recount."
     }
   ]
 }

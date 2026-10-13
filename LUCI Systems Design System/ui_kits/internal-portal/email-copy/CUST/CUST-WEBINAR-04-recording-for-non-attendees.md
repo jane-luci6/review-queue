@@ -5,7 +5,10 @@
 - **Timing:** 2–3 business days after the webinar; customers who did not attend
 - **Purpose:** Give customers who could not attend the same product view while the pre-launch announcement is still current.
 - **CTA:** Watch the seminar recording.
-- **Status:** draft v1 — for Jane review
+- **Status:** draft r2 — for Jane review
+
+## r2 changes
+Added a human acknowledgment of busy schedules, defined New LUCI for cold readers, made the same-team support promise concrete, differentiated the subject-line moods, and recounted the final body at 104 words.
 
 ## Strategy
 
@@ -19,19 +22,19 @@ Operations and IT customers who registered but did not attend, or who received t
 Send from the same named LUCI sender 2–3 business days after the preview while the topic is current. Open with the recording, summarize the value in two sentences, and place the recording CTA before the overview link.
 
 ### How to make impact while staying professional
-Treat the missed event as ordinary, not as a failure to act. Offer the same product view on demand, keep New LUCI “on its way,” and connect greater control to in-product support so the customer never sounds left alone.
+Treat the missed event as ordinary, not as a failure to act. Acknowledge that schedules fill up, define New LUCI in one line, and connect greater control to the same LUCI team’s concrete support actions.
 
 ### Primary message
-Watch the private preview recording to see the same New LUCI product view on your schedule.
+Watch the private preview recording on your schedule to see how New LUCI expands control while the same LUCI team continues to support your property.
 
 ## Three draft directions
 
 ### Direction 1 — Recording first
 Dear #Name#,
 
-If you couldn’t attend the private preview, the recording is ready. It gives you the same view of New LUCI while the new version is still on its way.
+We know schedules fill up. If you couldn’t attend the private preview, the recording is ready when you are.
 
-See how the room, interface, and operation give your team more day-to-day programming control, with in-product support keeping the LUCI team connected.
+New LUCI is the next version of the platform your team uses to operate A/V across the property. See how it gives your team more day-to-day control while the same LUCI team supports your property through requests with context and logs, plus alerts when something goes down.
 
 Watch the recording: [RECORDING LINK]
 
@@ -40,9 +43,9 @@ For a quick scan, review the LUCI Upgrade Overview: https://www.lucisystems.com/
 ### Direction 2 — Scan first, watch deeper
 Dear #Name#,
 
-You can still get the full New LUCI preview on your schedule.
+You can still get the full New LUCI preview on your schedule. We know the live time does not work for everyone.
 
-Start with the LUCI Upgrade Overview for a quick look at venue panels, staging, live screen views, audit trails, monitoring, sign-in controls, and in-product support. When you want the complete walkthrough, the private preview recording is ready.
+New LUCI is the next version of the platform your team uses to operate A/V across the property. Start with the LUCI Upgrade Overview for a quick look, then use the recording for the complete walkthrough and the same-team support details.
 
 LUCI Upgrade Overview: https://www.lucisystems.com/product-briefs/luci-upgrade-overview
 
@@ -51,9 +54,9 @@ Watch the recording: [RECORDING LINK]
 ### Direction 3 — Pick up the customer preview on demand
 Dear #Name#,
 
-The recording of the private customer preview is ready on demand. It shows how New LUCI puts more day-to-day programming control in your hands across the room, the interface, and the operation.
+The recording of the private customer preview is ready on demand. We hope it makes the session easier to catch.
 
-It also shows how the LUCI team stays connected through support requests with context and logs, plus alerts when something goes down.
+New LUCI is the next version of the platform your team uses to operate A/V across the property. The recording shows more day-to-day control across the room, interface, and operation, with the same LUCI team supporting your property through requests with context and logs, plus alerts when something goes down.
 
 Watch the recording: [RECORDING LINK]
 
@@ -62,31 +65,33 @@ Companion overview: https://www.lucisystems.com/product-briefs/luci-upgrade-over
 ## Winner
 **Direction 1 — Recording first**
 
-It wins because the primary action appears immediately and the message acknowledges the missed session without pressure. The final borrows Direction 2’s scan-first companion option and Direction 3’s specific partnership proof.
+It still wins because the primary action appears immediately and the message acknowledges the missed session without pressure. The revision borrows Direction 2’s scan-first companion option and Direction 3’s specific partnership proof, then adds the warmer schedule acknowledgment.
 
 ## Final copy
 
 ### Subject lines
-1. **Direct:** The New LUCI private preview, on demand
-2. **Helpful:** Couldn’t attend? Watch the New LUCI preview
-3. **Low-pressure:** Watch the New LUCI preview on your schedule
+1. **Helpful:** The New LUCI preview recording is ready
+2. **Low-pressure:** Watch the customer preview when it suits you
+3. **Curious:** What did you miss in the New LUCI preview?
 
 ### Preheader
-The customer preview recording and LUCI Upgrade Overview are ready when you are.
+See the new day-to-day controls and how the LUCI team stays with you.
 
 ### Body
 Dear #Name#,
 
-If you couldn’t attend the private preview, the recording is ready. It gives you the same view of New LUCI while the new version is still on its way.
+We know schedules fill up. If you couldn’t attend the private customer preview, the recording is ready when you are.
 
-See how venue panels, staging, customizable views, audit trails, monitoring, and sign-in controls put more day-to-day programming control in your hands. You’ll also see how in-product support keeps the LUCI team connected with context and logs, plus alerts when something goes down.
+New LUCI, the next version of the platform your team uses to operate A/V across the property, is on its way. The recording shows how venue panels, staging, customizable views, audit trails, monitoring, and sign-in controls give you more day-to-day programming control.
+
+You’ll also see how the same LUCI team continues to support your property through requests with context and logs, plus alerts when something goes down.
 
 Watch the recording: [RECORDING LINK]
 
 For a quick scan, review the LUCI Upgrade Overview: https://www.lucisystems.com/product-briefs/luci-upgrade-overview
 
 ### Word count
-**88 words** from greeting through CTA, excluding the signature.
+**104 words** from greeting through CTA, excluding the signature.
 
 ### Signature
 [NAME]
@@ -104,8 +109,9 @@ LUCI Systems
 - Only approved placeholders appear; no exact webinar date is stated.
 - The copy does not imply that watching starts an upgrade process.
 - Body is under 150 words; preheader is under 90 characters.
-- “We’ve never lost a client” is intentionally omitted because the recording and current product changes already provide the reason to engage; the claim would make the follow-up feel promotional.
+- “We’ve never lost a client” is intentionally omitted because email 1 already carries the proof once; repeating it in a recording follow-up would feel promotional.
 - Tension: the overview is secondary by design. Reversing the links would weaken the brief’s primary recording CTA.
+- R2: added the warm schedule line, cold-reader definition, concrete same-team support actions, complementary preheader, and helpful/low-pressure/curious subject moods; exact body count is 104.
 
 ## Production notes
 - Send only to non-attendees; suppress attendees

@@ -5,7 +5,10 @@
 - **Timing:** 7–10 days before the webinar
 - **Purpose:** Give the invitation a second chance with three concrete takeaways. Registrants receive agenda content; nonregistrants receive another registration opportunity.
 - **CTA:** Review the agenda or register.
-- **Status:** draft v1 — for Jane review
+- **Status:** draft r2 — for Jane review
+
+## r2 changes
+Added a warm line about the customer’s daily work, defined New LUCI for cold readers, replaced vague support language with the same-team reassurance, differentiated the subject-line moods, and recounted the final body at 127 words.
 
 ## Strategy
 
@@ -19,21 +22,23 @@ Operations gets tangible room, screen, and audio workflows. IT gets floor-plan c
 Use the same named sender and reply path as email 1. Send 7–10 days before the preview. Lead with a numbered list for skimming, keep each takeaway to one sentence, and use a two-line CTA close: agenda for registrants, registration for everyone still deciding.
 
 ### How to make impact while staying professional
-Replace broad promises with product behavior the reader can picture. Keep the categories parallel: room, view, operation. End with the status of New LUCI and the continuing support relationship so more control never reads as less partnership.
+Replace broad promises with product behavior the reader can picture. Keep the categories parallel: room, view, operation. Define New LUCI before the list and state the partnership concretely: customers gain control while the same LUCI team keeps supporting their property.
 
 ### Primary message
-The private preview will show three practical ways New LUCI expands control of the room, the view, and the operation.
+The private preview will show three practical ways New LUCI gives Operations and IT more control, with the same LUCI team still behind them.
 
 ## Three draft directions
 
 ### Direction 1 — Three kinds of control
 Dear #Name#,
 
-The private preview is built around three things your Operations and IT teams can use day to day:
+New LUCI is the next version of the platform your team uses to operate A/V across the property. We shaped the private preview around three things your Operations and IT teams can use day to day:
 
 1. Control the room with venue panels, staging, and audio groups.
 2. Control the view with interface options, your own floor plans, and live screen views.
 3. Understand the operation with audit trails, monitoring and analytics, and sign-in controls.
+
+The same LUCI team will keep supporting your property as your team gains more control.
 
 Already registered? Review the agenda at [AGENDA LINK].
 
@@ -42,20 +47,22 @@ Still deciding? Register at [REGISTRATION LINK].
 ### Direction 2 — Follow one change from setup to proof
 Dear #Name#,
 
-In the private preview, we’ll follow day-to-day changes from preparation through confirmation. You’ll see how teams can stage screens, sources, and audio before applying them; tailor the interface and floor plan to the property; then use live screen views, audit trails, and monitoring to understand what is happening.
+New LUCI is the next version of the platform your team uses to operate A/V across the property. In the private preview, we’ll follow a day-to-day change from preparation through confirmation: stage screens, sources, and audio; tailor the interface and floor plan; then use live views, audit trails, and monitoring to confirm what happened.
 
-New LUCI is on its way, with the LUCI team still connected through in-product support.
+You’ll have more control, and the same LUCI team will keep supporting your property through in-product requests with context and logs.
 
 Review the agenda at [AGENDA LINK], or register at [REGISTRATION LINK].
 
 ### Direction 3 — Two teams, one operating view
 Dear #Name#,
 
+New LUCI is the next version of the platform your team uses to operate A/V across the property.
+
 For Operations, the private preview shows room controls where the work happens: venue panels, staged changes, audio groups, and live screen views.
 
 For IT, it shows the controls around that work: approved access, sign-in and session management, audit trails, monitoring, and support requests with context and logs.
 
-Together, those changes put more day-to-day programming control in your hands without moving the LUCI team out of the picture.
+Together, those changes put more day-to-day programming control in your hands. The same LUCI team continues to support your property.
 
 Agenda: [AGENDA LINK]
 
@@ -64,22 +71,24 @@ Registration: [REGISTRATION LINK]
 ## Winner
 **Direction 1 — Three kinds of control**
 
-It wins because the email promises three takeaways and delivers them in the fastest scan. The final borrows Direction 2’s day-to-day framing and Direction 3’s explicit Operations-and-IT relevance, then closes with separate, labeled paths for the two recipient states.
+It still wins because the email promises three takeaways and delivers them in the fastest scan. The revision adds Direction 2’s workflow clarity and Direction 3’s explicit Operations-and-IT relevance, then states the continuing partnership before the separate recipient-state links.
 
 ## Final copy
 
 ### Subject lines
-1. **Specific:** Three things you’ll see in New LUCI
-2. **Agenda-led:** Your private preview agenda
-3. **Inviting:** Still deciding? See what the preview will cover
+1. **Practical:** Three things the New LUCI preview will cover
+2. **Curious:** What changes from room to operating view?
+3. **Warm:** A closer look at the work you do every day
 
 ### Preheader
-Room control, flexible views, and clearer operating information in one preview.
+Room control, flexible views, and operating insight, with support unchanged.
 
 ### Body
 Dear #Name#,
 
-The private preview is built around three things your Operations and IT teams can use day to day:
+New LUCI, the next version of the platform your team uses to operate A/V across the property, is on its way. It gives you more day-to-day programming control, with the same LUCI team still supporting your property.
+
+We shaped the private preview around the work Operations and IT handle every day:
 
 1. Control the room: show only approved controls on venue panels, stage changes behind the scenes, and manage audio groups.
 
@@ -87,14 +96,12 @@ The private preview is built around three things your Operations and IT teams ca
 
 3. Understand the operation: review audit trails, use monitoring and analytics, and manage sign-ins and sessions.
 
-New LUCI is still on its way. The preview shows what is changing and how LUCI support stays connected.
-
 Already registered? Review the agenda: [AGENDA LINK]
 
 Still deciding? Register for the private preview: [REGISTRATION LINK]
 
 ### Word count
-**113 words** from greeting through CTA, excluding the signature.
+**127 words** from greeting through CTA, excluding the signature.
 
 ### Signature
 [NAME]
@@ -111,8 +118,9 @@ LUCI Systems
 - Active voice, cold-reader context, “A/V” spelling rule observed, no hype or em-dash chain.
 - Only approved placeholders appear; no exact webinar date is stated.
 - Body is under 150 words; preheader is under 90 characters.
-- “We’ve never lost a client” is intentionally omitted because this email’s job is to make the agenda concrete, not introduce a corporate proof claim.
+- “We’ve never lost a client” is intentionally omitted here because email 1 already uses it once as partnership proof. Repeating it would turn reassurance into campaign promotion.
 - Tension: the shared email contains two CTA lines. Clear recipient-state labels prevent registrants from reading the registration line as their required next step.
+- R2: added a warm work-centered line, a cold-reader definition, the same-team reassurance, complementary preheader, and distinct practical/curious/warm subject moods; exact body count is 127.
 
 ## Production notes
 - From: same named LUCI customer-facing lead as email 1, sent through Marketing

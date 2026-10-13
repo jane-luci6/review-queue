@@ -3,15 +3,18 @@
 - **Audience:** Operations and IT at current LUCI properties
 - **Cycle:** Existing-customer pre-launch webinar
 - **Scope:** Emails 1–4, from initial invitation through non-attendee recording
-- **Status:** draft v1 — for Jane review
+- **Status:** draft r2 — for Jane review
+
+## r2 changes
+The revision makes every email understandable on its own, adds one earned human line per send, makes partnership concrete, gives each subject set genuinely different moods, and uses the retention claim once in email 1 as reassurance rather than promotion.
 
 ## Campaign job
-Give current customers an informed, low-pressure path into a private preview of New LUCI. The sequence should make the product changes concrete, convert interest into attendance, and preserve access for people who cannot join live. More day-to-day programming control is the throughline; the LUCI team’s continuing partnership prevents that control from reading as self-service or reduced support.
+Give current customers an informed, low-pressure path into a private preview of New LUCI. Each email defines New LUCI in one line so it can stand alone for a reader who skipped the earlier messages. More day-to-day programming control is the throughline; the same LUCI team’s continuing support prevents that control from reading as self-service or reduced partnership.
 
 ## Arc across the four emails
 
 ### 1. Orient and invite
-Email 1 introduces New LUCI to a cold reader, gives the LUCI Upgrade Overview priority, and asks the reader to register only after seeing what is changing. Its job is informed consideration, not attendance pressure.
+Email 1 opens on “Putting the power of programming in your hands,” introduces New LUCI to a cold reader, gives the LUCI Upgrade Overview priority, and asks the reader to register only after seeing what is changing. Its job is informed consideration, not attendance pressure.
 
 ### 2. Make the preview concrete
 Email 2 earns a second look with three skimmable takeaways: control of the room, flexibility of the view, and better information about the operation. It serves registrants with an agenda and nonregistrants with a second registration path.
@@ -38,7 +41,7 @@ Email 4 goes only to non-attendees. It offers the same private-preview content o
 3. **Email 3:** brief, calm, logistical.
 4. **Email 4:** accommodating, current, low-pressure.
 
-The campaign stays human and professional throughout. It avoids announcement hype because this is a private customer preview, not a public launch or sales demonstration.
+The campaign stays human and professional through one earned line in each send: an invitation, recognition of the customer’s daily work, a welcome, and an acknowledgment that schedules fill up. It avoids announcement hype because this is a private customer preview, not a public launch or sales demonstration.
 
 ## Audience balance
 Operations and IT remain in one shared sequence. Operations proof centers on venue panels, staging, audio groups, interface choices, and live screen views. IT proof centers on floor-plan control, audit trails, monitoring and analytics, sign-in and session control, and support context. Neither role gets a separate fork because the preview’s value is the shared operating picture.
@@ -51,10 +54,10 @@ Operations and IT remain in one shared sequence. Operations proof centers on ven
 - Keep `[WEBINAR TIME]` responsible for the complete approved time expression, including time zone if needed.
 
 ## Claim discipline
-All product claims come from the published LUCI Upgrade Overview. New LUCI remains “on its way”; the sequence states no release, launch, or availability date. More client control always sits beside continuing LUCI support. The copy does not mention hardware, replacement, partner/vendor names, pricing, or the start of an upgrade process.
+All product claims come from the published LUCI Upgrade Overview. The sequence states no release, launch, or availability date. Each email identifies New LUCI as the next version of the platform customers use to operate A/V across the property. More client control sits beside the same LUCI team’s continuing support. The copy does not mention hardware, replacement, partner/vendor names, pricing, or the start of an upgrade process.
 
 ## “We’ve never lost a client”
-The claim is intentionally absent from all four emails. None of the messages has a retention-proof job: emails 1–2 orient customers to the product and event, email 3 is logistics, and email 4 restores access. Adding the line would make a private customer preview sound like a sales credibility pitch and would compete with each email’s one action.
+Use the claim once, in email 1, immediately after “More control does not mean less partnership.” That is the one natural place where it answers a customer concern: more authority does not mean the relationship is changing. Keep it out of the subject line and do not repeat it in emails 2–4; repetition would turn reassurance into a campaign boast.
 
 ## Open questions for Jane
 1. Who should be the named sender and signer: the customer’s usual LUCI contact, one campaign-wide customer lead, or Marketing?

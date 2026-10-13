@@ -5,7 +5,10 @@
 - **Timing:** 2 days before the webinar
 - **Purpose:** Convert registrations into attendance with the date, time, and joining details.
 - **CTA:** Add to calendar or join the session.
-- **Status:** draft v1 — for Jane review
+- **Status:** draft r2 — for Jane review
+
+## r2 changes
+Added a warm welcome, defined New LUCI for anyone who skipped the earlier emails, made the same-team partnership explicit, replaced the false “Urgent” mood with truthful subject choices, and recounted the final body at 76 words.
 
 ## Strategy
 
@@ -19,19 +22,19 @@ Operations and IT registrants who already chose to attend. Both groups need the 
 Send from the same recognizable LUCI sender two days before the preview. Keep the body near 50 words, place logistics in the opening line, and put the join link last so it is easy to find when the recipient returns to the message.
 
 ### How to make impact while staying professional
-Use restraint. A useful reminder feels reliable, not promotional. Repeat only the day-to-day Operations-and-IT walkthrough context and avoid adding features, claims, preparation instructions, or support details that event owners have not supplied.
+Use restraint. A useful reminder feels reliable and welcoming, not promotional. Define New LUCI in one sentence, connect more control to the same LUCI team, and avoid adding feature lists or preparation instructions that event owners have not supplied.
 
 ### Primary message
-Your private New LUCI preview details and access links are all in one place.
+Your private New LUCI preview details and access links are all in one place, with a clear reminder of what the session covers.
 
 ## Three draft directions
 
 ### Direction 1 — Logistics first
 Dear #Name#,
 
-Your private preview of New LUCI is coming up on [WEBINAR DATE] at [WEBINAR TIME] on [WEBINAR PLATFORM].
+We’re looking forward to seeing you at the private customer preview on [WEBINAR DATE] at [WEBINAR TIME] on [WEBINAR PLATFORM].
 
-We’ll walk through the new day-to-day controls for Operations and IT. Use the links below to save the session and join when it begins.
+New LUCI is the next version of the platform your team uses to operate A/V across the property. You’ll see how it gives Operations and IT more day-to-day control while the same LUCI team continues to support your property.
 
 Add to your calendar: [CALENDAR LINK]
 
@@ -40,13 +43,13 @@ Join the private preview: [JOIN LINK]
 ### Direction 2 — Calendar first
 Dear #Name#,
 
-Please add the private New LUCI preview to your calendar:
+Please add the private New LUCI customer preview to your calendar:
 
 Date: [WEBINAR DATE]
 Time: [WEBINAR TIME]
 Platform: [WEBINAR PLATFORM]
 
-The session will cover the new day-to-day controls for Operations and IT.
+New LUCI is the next version of the platform your team uses to operate A/V across the property. The session will show its new day-to-day controls for Operations and IT, with the same LUCI team behind you.
 
 Use the calendar link to save the details, then return to this email when it is time to join.
 
@@ -57,9 +60,9 @@ Keep this link for the session: [JOIN LINK]
 ### Direction 3 — Keep the link handy
 Dear #Name#,
 
-We’ll see you for the private New LUCI preview on [WEBINAR DATE] at [WEBINAR TIME] on [WEBINAR PLATFORM].
+We’ll see you for the private New LUCI customer preview on [WEBINAR DATE] at [WEBINAR TIME] on [WEBINAR PLATFORM].
 
-This is the customer walkthrough of the new day-to-day controls for Operations and IT. Keep the join link below handy.
+New LUCI is the next version of the platform your team uses to operate A/V across the property. This customer walkthrough covers more day-to-day control for Operations and IT while the same LUCI team continues to support your property.
 
 Use the calendar link now, then return to the join link when the session begins.
 
@@ -70,31 +73,31 @@ Join: [JOIN LINK]
 ## Winner
 **Direction 1 — Logistics first**
 
-It wins because a registrant can understand the when, where, and next action from the first paragraph. The final borrows Direction 2’s calendar emphasis and Direction 3’s compact treatment, without implying any preparation requirement.
+It still wins because a registrant can understand the when, where, and next action from the first paragraph. The revision borrows Direction 3’s human opening and keeps Direction 2’s calendar emphasis without implying any preparation requirement.
 
 ## Final copy
 
 ### Subject lines
-1. **Urgent:** Reminder: your New LUCI preview is in two days
-2. **Useful:** Your link for the private New LUCI preview
-3. **Calendar-led:** New LUCI preview: [WEBINAR DATE]
+1. **Direct:** Your New LUCI preview is [WEBINAR DATE]
+2. **Practical:** Calendar and join links for your preview
+3. **Warm:** We’re looking forward to seeing you
 
 ### Preheader
-Save the session details and keep your private preview link handy.
+[WEBINAR TIME], [WEBINAR PLATFORM], and both access links are inside.
 
 ### Body
 Dear #Name#,
 
-Your private preview of New LUCI is coming up on [WEBINAR DATE] at [WEBINAR TIME] on [WEBINAR PLATFORM].
+We’re looking forward to seeing you at the private customer preview on [WEBINAR DATE] at [WEBINAR TIME] on [WEBINAR PLATFORM].
 
-We’ll walk through the new day-to-day controls for Operations and IT. Use the links below to save the session and join when it begins.
+New LUCI, the next version of the platform your team uses to operate A/V across the property, is on its way. You’ll see how it gives Operations and IT more day-to-day control while the same LUCI team continues to support your property.
 
 Add to your calendar: [CALENDAR LINK]
 
 Join the private preview: [JOIN LINK]
 
 ### Word count
-**56 words** from greeting through CTA, excluding the signature.
+**76 words** from greeting through CTA, excluding the signature.
 
 ### Signature
 [NAME]
@@ -103,15 +106,15 @@ LUCI Systems
 [EMAIL] · [PHONE]
 
 ## Self-audit
-- The email does not reframe greater control as reduced LUCI support; it simply avoids reopening the product argument in a logistics reminder.
+- Greater control and the same continuing LUCI team both appear without reopening the full product argument.
 - No release, launch, or availability date appears. `[WEBINAR DATE]` refers only to webinar timing.
 - No unapproved product claim or hardware language; no claim that LUCI displaces existing technology; no partner/vendor name; no forbidden positioning or rollout framing.
 - The webinar remains a private customer preview, with no sales, pricing, or demo framing.
 - Active voice, cold-reader context, “A/V” spelling rule observed, no hype or em-dash chain.
 - Only approved placeholders appear; the exact webinar date appears only as `[WEBINAR DATE]`.
 - Body is under 150 words; preheader is under 90 characters.
-- “We’ve never lost a client” is intentionally omitted. A retention claim would distract from the reminder’s single logistics job.
-- Tension: “in two days” appears in one subject line because the scheduled send is two days before the event. If send timing can drift, use subject line 2 or 3.
+- “We’ve never lost a client” is intentionally omitted. Email 1 carries that proof once; repeating it would distract from this reminder’s logistics job.
+- R2: removed the inaccurate “Urgent” label and timing-dependent “in two days” line; added the warm opening, cold-reader definition, same-team reassurance, and direct/practical/warm subject moods; exact body count is 76.
 
 ## Production notes
 - Send only to registrants; suppress nonregistrants
