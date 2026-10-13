@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-12",
+  "updated": "2026-10-13",
   "publishNote": "Build (npm run build:review) outputs to ui_kits/review. Bump reviewVersion + versionNote for new uploads (version history shown in portal). Set dueForReview for first-time review. Comments/approvals sync server-side via the comments_api container (proxied at /api/comments); Jane sees Mike/Mark's feedback on refresh. Archive with scripts/pull-review-comments.mjs.",
   "previewBaseUrl": "",
   "commentsApiUrl": "http://10.10.1.17:8081/api/comments",
@@ -8,17 +8,17 @@
     {
       "title": "Messaging guide",
       "url": "messaging/messaging-guide.html",
-      "note": "Updated Oct 12, 2026"
+      "note": "Updated Oct 13, 2026"
     },
     {
       "title": "LUCI philosophy",
       "url": "messaging/philosophy.html",
-      "note": "Updated Oct 12, 2026"
+      "note": "Updated Oct 13, 2026"
     },
     {
       "title": "Personas",
       "url": "messaging/personas.html",
-      "note": "Updated Oct 12, 2026"
+      "note": "Updated Oct 13, 2026"
     }
   ],
   "inProgress": [],
@@ -29,8 +29,8 @@
       "summary": "October issue — theme: Keep the Work Connected. Sections include the Osage Casino Hotel partnership, Design with LUCI, operating advice, a preset scheduling Quick Tip, Reporting & Analytics, and A Minute with Mike.",
       "hubPreviewPath": "ui_kits/newsletter/the-signal-issue-05-october-2026.html",
       "previewUrl": "newsletter/the-signal-issue-05-october-2026.html",
-      "reviewVersion": 4,
-      "versionNote": "Project update corrected before review — Fremont removed because the work is still in progress.",
+      "reviewVersion": 8,
+      "versionNote": "NEW pill + subhead",
       "reviewBrief": {
         "description": "The complete October 2026 edition of The Signal. Theme: Keep the Work Connected. The issue follows continuity from early A/V planning through installation, daily operation, and later expansion.",
         "reviewAsk": "whether the full issue reads accurately and clearly for LUCI customers; flag any technical claims, project details, or messaging that should change before publication."
@@ -55,6 +55,11 @@
           "version": 4,
           "published": "2026-10-09",
           "note": "Removed Fremont from the completed September project update; work remains in progress."
+        },
+        {
+          "version": 8,
+          "published": "2026-10-13",
+          "note": "NEW pill + subhead"
         }
       ],
       "reviewStatus": "Waiting on Mike",
@@ -710,6 +715,28 @@
           "note": "First portal release — single-page client roster with E-mesh header matching the website."
         }
       ]
+    },
+    {
+      "id": "signal-issue-05-email",
+      "title": "The Signal · Issue 05 — Email Teaser (October 2026)",
+      "summary": "October issue email teaser — five highlights: Osage field story, the new LUCI overview, Reporting & Analytics, a Quick Tip, and a Minute with Mike.",
+      "approved": "2026-10-13",
+      "note": "First-pass teaser aligned to Issue 04 pattern (5 highlights).",
+      "hubPreviewPath": "ui_kits/newsletter/the-signal-issue-05-email.html",
+      "previewUrl": "newsletter/the-signal-issue-05-email.html",
+      "reviewVersion": 1,
+      "versionNote": "First pass",
+      "reviewBrief": {
+        "description": "Email teaser for the October issue.",
+        "reviewAsk": "whether the teaser length, copy, and highlight selection match prior issues."
+      },
+      "versionHistory": [
+        {
+          "version": 1,
+          "published": "2026-10-13",
+          "note": "First-pass rewrite aligned to Issue 04 teaser pattern (5 highlights, tighter copy)."
+        }
+      ]
     }
   ],
   "upcoming": [
@@ -721,7 +748,7 @@
     }
   ],
   "finalized": [],
-  "messagingDocsUpdated": "2026-10-12",
+  "messagingDocsUpdated": "2026-10-13",
   "parkedFromReviewQueue": [
     {
       "id": "signal-issue-05-choices",
