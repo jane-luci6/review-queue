@@ -1,0 +1,223 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>New LUCI upgrade emails — Chunk 1 review</title><style>
+  :root {
+    --navy: #0A161C;
+    --ink: #10232D;
+    --sand: #E5E3DF;
+    --kicker: #2b9e80;
+    --line: #cfcbc4;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font: 18px/1.55 "Georgia", "Times New Roman", serif;
+    color: var(--ink);
+    background: var(--sand);
+  }
+  nav {
+    position: sticky; top: 0; z-index: 2;
+    background: var(--navy); color: #fff;
+    padding: 14px 22px 16px;
+    display: flex; flex-wrap: wrap; gap: 8px 18px;
+    align-items: baseline;
+  }
+  nav strong {
+    font: 700 12px/1 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .08em; text-transform: uppercase;
+    color: #68E3BE; margin-right: 8px;
+  }
+  nav a {
+    color: #fff; text-decoration: none;
+    font: 15px/1.3 "Helvetica Neue", Arial, sans-serif;
+    border-bottom: 1px solid transparent;
+  }
+  nav a:hover { border-bottom-color: #68E3BE; }
+  main { max-width: 38rem; margin: 0 auto; padding: 2.5rem 1.5rem 6rem; }
+  article { padding: 2.5rem 0 3rem; border-bottom: 1px solid var(--line); }
+  .kicker {
+    font: 700 12px/1 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .1em; text-transform: uppercase;
+    color: var(--kicker); margin: 0 0 .6rem;
+  }
+  h1 {
+    font: 700 1.7rem/1.2 "Helvetica Neue", Arial, sans-serif;
+    color: var(--navy); margin: 0 0 1.2rem;
+  }
+  h2 { font: 700 1.1rem/1.3 "Helvetica Neue", Arial, sans-serif; }
+  p { margin: 0 0 1rem; }
+  a { color: var(--kicker); }
+  ul, ol { margin: 0 0 1rem; padding-left: 1.2rem; }
+  .footer { color: #6b6660; font-size: .85rem; font-family: "Helvetica Neue", Arial, sans-serif; }
+  .note {
+    font: 15px/1.4 "Helvetica Neue", Arial, sans-serif;
+    color: #5c5852; margin: 1.5rem 0 0;
+  }
+
+  main{max-width:52rem}
+  .intro{font:16px/1.55 "Helvetica Neue",Arial,sans-serif}
+  h2{margin:2rem 0 .8rem;color:var(--navy);letter-spacing:.02em}
+  dl{font:16px/1.5 "Helvetica Neue",Arial,sans-serif;margin:0}dt{font-weight:700;color:var(--navy);margin-top:.6rem}dd{margin:0}
+  .primary{background:#fff;border-left:4px solid var(--kicker);padding:.8rem 1rem;font-family:"Helvetica Neue",Arial,sans-serif;font-size:17px}
+  .dirs{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:12px}
+  .dir{background:#f3f1ed;border:1px solid var(--line);border-radius:6px;padding:12px 14px;font-size:15px}
+  .dir.win{background:#fff;border-color:var(--kicker);box-shadow:0 0 0 1px var(--kicker)}
+  .dir h4{font:700 14px/1.3 "Helvetica Neue",Arial,sans-serif;margin:0 0 .4rem;color:var(--navy)}
+  .badge{background:var(--kicker);color:#fff;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:2px 6px;border-radius:3px;margin-left:4px}
+  .sum{font:italic 14px/1.4 "Helvetica Neue",Arial,sans-serif;color:#5c5852}.draft{white-space:pre-line}
+  .why{font:15px/1.5 "Helvetica Neue",Arial,sans-serif;margin-top:1rem}
+  .wc{font:600 12px/1 "Helvetica Neue",Arial,sans-serif;background:var(--navy);color:#68E3BE;padding:4px 8px;border-radius:3px;margin-left:8px;vertical-align:middle}
+  .email{background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .meta{background:var(--navy);color:#fff;padding:14px 20px;font:15px/1.45 "Helvetica Neue",Arial,sans-serif;display:grid;gap:10px}
+  .meta b{color:#68E3BE;font-size:11px;letter-spacing:.1em;text-transform:uppercase}.meta p{margin:.2rem 0 0}
+  .subj{list-style:none;padding:0;margin:.3rem 0 0}.subj li{margin:.2rem 0}
+  .mood{display:inline-block;min-width:7.5rem;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#a9c7bd}
+  .ebody{padding:22px 26px}.ebody a{word-break:break-all}.sig{color:#6b6660;font-size:15px}
+  .ph{background:#fff3c4;padding:0 3px;border-radius:2px;font-family:"Helvetica Neue",Arial,sans-serif;font-size:.85em}
+  .meta .ph{color:var(--ink)}
+  .oq{background:#fff;border:1px solid var(--line);border-radius:6px;padding:1rem 1.4rem;font:15px/1.5 "Helvetica Neue",Arial,sans-serif}
+</style></head><body>
+<nav><strong>New LUCI · Chunk 1</strong><a href="#overview">Overview</a><a href="#CUST-WEBINAR-01">01 · Seminar invitation</a><a href="#CUST-WEBINAR-02">02 · What to expect</a><a href="#CUST-WEBINAR-03">03 · Event reminder</a><a href="#CUST-WEBINAR-04">04 · Recording for non-attendees</a><a href="#questions">Open questions</a></nav><main>
+<article id="overview"><p class="kicker">Existing customers · Pre-launch webinar cycle · Draft v2 for Jane</p><h1>New LUCI upgrade campaign: emails 1–4</h1>
+<p class="intro"><strong>Theme:</strong> Putting the power of programming in your hands. <strong>Asset:</strong> <a href="https://www.lucisystems.com/product-briefs/luci-upgrade-overview">LUCI Upgrade Overview</a>. Private preview around late November, after beta. No release date appears anywhere. Yellow marks a placeholder.</p>
+<h2>Campaign strategy</h2><p class="intro">Move current customers from informed consideration to attendance without repeating the same product pitch. Every email defines New LUCI in one line so it works for a cold reader. Email 1 opens on putting programming power in the customer’s hands, uses the LUCI Upgrade Overview before registration, and uses the retention claim once to reassure customers that the same LUCI team remains behind them. Email 2 makes the preview concrete with three takeaways and clearly labeled next steps. Email 3 is registrant-only logistics. Email 4 restores the product view for non-attendees. The tone moves from invitational to concrete to logistical to accommodating, with one earned human line in each send.</p></article>
+<article id="CUST-WEBINAR-01"><p class="kicker">CUST-WEBINAR-01 · About 2–3 weeks before the webinar</p><h1>Seminar invitation</h1>
+<p class="primary"><strong>Primary message:</strong> See how New LUCI puts more programming power in your hands, with the same LUCI team behind you, then register for a private customer preview.</p>
+<h2>Strategy</h2><dl><dt>What &amp; why</dt><dd>A customer invitation that gives the LUCI Upgrade Overview enough weight to help a cold reader decide whether the private preview is useful.</dd><dt>For whom</dt><dd>Operations should recognize more direct control over rooms and day-to-day changes; IT should recognize stronger visibility, access control, and support context.</dd><dt>Best way to reach them</dt><dd>Send from a named LUCI customer-facing lead through the marketing platform about 2–3 weeks before the preview. Put the overview link before registration.</dd><dt>Impact, professionally</dt><dd>Open on the campaign theme, call the event a private customer preview, and use the retention claim once as reassurance that the same LUCI team remains behind the customer.</dd></dl>
+<h2>Three directions</h2><div class="dirs"><div class="dir win"><h4>Control, backed by LUCI <span class=badge>Final</span></h4><p class="sum">Lead with more day-to-day control and continuing support, then invite customers into the preview.</p><p class="draft">Dear #Name#,
+
+Putting the power of programming in your hands is the idea behind New LUCI, the next version of the platform your team uses to operate A/V across the property, now on its way.
+
+You’ll have more day-to-day control, and the same LUCI team will remain behind you. We’d be glad to show you what that means in practice.
+
+Review the LUCI Upgrade Overview, then register for the private preview on <span class="ph">[WEBINAR DATE]</span> at <span class="ph">[WEBINAR TIME]</span> on <span class="ph">[WEBINAR PLATFORM]</span>.
+
+LUCI Upgrade Overview: https://www.lucisystems.com/product-briefs/luci-upgrade-overview
+
+Register: <span class="ph">[REGISTRATION LINK]</span></p></div><div class="dir"><h4>See it before you decide</h4><p class="sum">Make the overview the decision aid and position registration as the informed next step.</p><p class="draft">Dear #Name#,
+
+Start with the LUCI Upgrade Overview before you decide whether to attend our private customer preview. It shows how New LUCI, the next version of the LUCI platform, expands day-to-day control across the room, interface, and operation.
+
+More control does not mean less partnership. The same LUCI team will keep supporting your property. We’d be glad to have you with us on <span class="ph">[WEBINAR DATE]</span> at <span class="ph">[WEBINAR TIME]</span> on <span class="ph">[WEBINAR PLATFORM]</span>.
+
+Overview: https://www.lucisystems.com/product-briefs/luci-upgrade-overview
+
+Register: <span class="ph">[REGISTRATION LINK]</span></p></div><div class="dir"><h4>One preview for Operations and IT</h4><p class="sum">Use a short feature list to show why the same customer preview matters to both teams.</p><p class="draft">Dear #Name#,
+
+New LUCI is the next version of the platform your team uses to operate A/V across the property. We’re bringing Operations and IT together for a private customer preview of the day-to-day changes: approved controls on venue panels; staging and live screen views; and audit trails, monitoring, and sign-in control.
+
+Your team gets more direct control while the same LUCI team continues to support your property with product context and logs.
+
+Start with the LUCI Upgrade Overview, then register for <span class="ph">[WEBINAR DATE]</span> at <span class="ph">[WEBINAR TIME]</span> on <span class="ph">[WEBINAR PLATFORM]</span>.
+
+Overview: https://www.lucisystems.com/product-briefs/luci-upgrade-overview
+
+Register: <span class="ph">[REGISTRATION LINK]</span></p></div></div><p class="why"><strong>Why “Control, backed by LUCI” won:</strong> It gives the campaign theme immediate prominence and makes the platform-and-partnership promise clear before the event details. The final also borrows the overview-first decision path and cold-reader clarity from the other directions.</p>
+<h2>Final copy <span class="wc">108 words / 150</span></h2>
+<div class="email"><div class="meta"><div><b>Subject lines</b><ul class="subj"><li><span class="mood">Warm</span>We’d be glad to show you New LUCI</li><li><span class="mood">Theme-led</span>Programming power, in your hands</li><li><span class="mood">Exclusive</span>Your private preview of New LUCI</li></ul></div><div><b>Preheader</b><p>See what changes day to day, with the same LUCI team behind you.</p></div></div><div class="ebody"><p>Dear #Name#,</p><p>Putting the power of programming in your hands is the idea behind New LUCI, the next version of the platform your team uses to operate A/V across the property, now on its way.</p><p>You’ll have more day-to-day control across the room, the interface, and the operation. More control does not mean less partnership: we’ve never lost a client, and the same LUCI team will remain behind you.</p><p>We’re inviting current customers to a private preview on <span class="ph">[WEBINAR DATE]</span> at <span class="ph">[WEBINAR TIME]</span> on <span class="ph">[WEBINAR PLATFORM]</span>. We’d be glad to have you with us.</p><p>Start with the LUCI Upgrade Overview: <a href="https://www.lucisystems.com/product-briefs/luci-upgrade-overview">https://www.lucisystems.com/product-briefs/luci-upgrade-overview</a></p><p>Register for the private preview: <span class="ph">[REGISTRATION LINK]</span></p><p class="sig">[NAME]<br>[TITLE]<br>LUCI Systems<br>[EMAIL] · [PHONE]</p></div></div>
+<p class="note"><strong>Guardrail notes:</strong> More client control is paired with the same LUCI team’s continuing support. New LUCI is defined for a cold reader and remains on its way; no release, launch, or availability date appears. The event is a private customer preview. The retention claim appears once, after ‘More control does not mean less partnership,’ where it reassures rather than boasts. R2 changes: added the campaign theme, warm invitation, concrete partnership proof, differentiated subject moods, complementary preheader, and exact 108-word recount.</p></article><article id="CUST-WEBINAR-02"><p class="kicker">CUST-WEBINAR-02 · 7–10 days before the webinar</p><h1>What to expect</h1>
+<p class="primary"><strong>Primary message:</strong> The private preview will show three practical ways New LUCI gives Operations and IT more control, with the same LUCI team still behind them.</p>
+<h2>Strategy</h2><dl><dt>What &amp; why</dt><dd>A second-touch agenda email that earns attention with three concrete takeaways instead of repeating the invitation.</dd><dt>For whom</dt><dd>Operations gets tangible room, screen, and audio workflows; IT gets floor-plan control, activity records, monitoring, authentication, and session management.</dd><dt>Best way to reach them</dt><dd>Use the same sender 7–10 days before the preview. Lead with a numbered list and close with clearly labeled agenda and registration paths.</dd><dt>Impact, professionally</dt><dd>Replace broad promises with product behavior the reader can picture, define New LUCI for a cold reader, and state that the same LUCI team keeps supporting the property.</dd></dl>
+<h2>Three directions</h2><div class="dirs"><div class="dir win"><h4>Three kinds of control <span class=badge>Final</span></h4><p class="sum">Deliver the promised takeaways in a numbered room, view, and operation structure.</p><p class="draft">Dear #Name#,
+
+New LUCI is the next version of the platform your team uses to operate A/V across the property. We shaped the private preview around three things your Operations and IT teams can use day to day:
+
+1. Control the room with venue panels, staging, and audio groups.
+2. Control the view with interface options, your own floor plans, and live screen views.
+3. Understand the operation with audit trails, monitoring and analytics, and sign-in controls.
+
+The same LUCI team will keep supporting your property as your team gains more control.
+
+Already registered? Review the agenda at <span class="ph">[AGENDA LINK]</span>.
+
+Still deciding? Register at <span class="ph">[REGISTRATION LINK]</span>.</p></div><div class="dir"><h4>Follow one change from setup to proof</h4><p class="sum">Organize the preview as a workflow from staging a change to confirming what happened.</p><p class="draft">Dear #Name#,
+
+New LUCI is the next version of the platform your team uses to operate A/V across the property. In the private preview, we’ll follow a day-to-day change from preparation through confirmation: stage screens, sources, and audio; tailor the interface and floor plan; then use live views, audit trails, and monitoring to confirm what happened.
+
+You’ll have more control, and the same LUCI team will keep supporting your property through in-product requests with context and logs.
+
+Review the agenda at <span class="ph">[AGENDA LINK]</span>, or register at <span class="ph">[REGISTRATION LINK]</span>.</p></div><div class="dir"><h4>Two teams, one operating view</h4><p class="sum">Split the proof by Operations and IT, then bring the teams back together around shared control.</p><p class="draft">Dear #Name#,
+
+New LUCI is the next version of the platform your team uses to operate A/V across the property.
+
+For Operations, the private preview shows room controls where the work happens: venue panels, staged changes, audio groups, and live screen views.
+
+For IT, it shows the controls around that work: approved access, sign-in and session management, audit trails, monitoring, and support requests with context and logs.
+
+Together, those changes put more day-to-day programming control in your hands. The same LUCI team continues to support your property.
+
+Agenda: <span class="ph">[AGENDA LINK]</span>
+
+Registration: <span class="ph">[REGISTRATION LINK]</span></p></div></div><p class="why"><strong>Why “Three kinds of control” won:</strong> It still promises three takeaways and delivers them in the fastest scan. The revision adds workflow clarity, explicit Operations-and-IT relevance, and the same-team reassurance before the recipient-state links.</p>
+<h2>Final copy <span class="wc">127 words / 150</span></h2>
+<div class="email"><div class="meta"><div><b>Subject lines</b><ul class="subj"><li><span class="mood">Practical</span>Three things the New LUCI preview will cover</li><li><span class="mood">Curious</span>What changes from room to operating view?</li><li><span class="mood">Warm</span>A closer look at the work you do every day</li></ul></div><div><b>Preheader</b><p>Room control, flexible views, and operating insight, with support unchanged.</p></div></div><div class="ebody"><p>Dear #Name#,</p><p>New LUCI, the next version of the platform your team uses to operate A/V across the property, is on its way. It gives you more day-to-day programming control, with the same LUCI team still supporting your property.</p><p>We shaped the private preview around the work Operations and IT handle every day:</p><p>1. Control the room: show only approved controls on venue panels, stage changes behind the scenes, and manage audio groups.</p><p>2. Control the view: tailor the interface, use your own floor plans, and see live screen content from an iPad or browser.</p><p>3. Understand the operation: review audit trails, use monitoring and analytics, and manage sign-ins and sessions.</p><p>Already registered? Review the agenda: <span class="ph">[AGENDA LINK]</span></p><p>Still deciding? Register for the private preview: <span class="ph">[REGISTRATION LINK]</span></p><p class="sig">[NAME]<br>[TITLE]<br>LUCI Systems<br>[EMAIL] · [PHONE]</p></div></div>
+<p class="note"><strong>Guardrail notes:</strong> All three takeaways come from the published overview. New LUCI is defined for a cold reader and remains on its way, the same LUCI team still supports the property, and no release date appears. The shared send uses recipient-state labels so registrants are not asked to register again. The retention claim stays in email 1 only. R2 changes: added the warm work-centered line, concrete partnership language, differentiated subject moods, complementary preheader, and exact 127-word recount.</p></article><article id="CUST-WEBINAR-03"><p class="kicker">CUST-WEBINAR-03 · 2 days before the webinar</p><h1>Event reminder</h1>
+<p class="primary"><strong>Primary message:</strong> Your private New LUCI preview details and access links are all in one place, with a clear reminder of what the session covers.</p>
+<h2>Strategy</h2><dl><dt>What &amp; why</dt><dd>A registrant-only logistics reminder whose sole job is to make attendance easy.</dd><dt>For whom</dt><dd>Operations and IT registrants need the same date, time, platform, calendar link, and join path.</dd><dt>Best way to reach them</dt><dd>Send from the same recognizable LUCI sender two days before the preview, put logistics first, and leave the join link last for easy retrieval.</dd><dt>Impact, professionally</dt><dd>Use restraint, add a warm welcome, define New LUCI in one sentence, and connect more control to the same LUCI team without adding a feature list.</dd></dl>
+<h2>Three directions</h2><div class="dirs"><div class="dir win"><h4>Logistics first <span class=badge>Final</span></h4><p class="sum">Put date, time, platform, calendar, and join details into the shortest complete reminder.</p><p class="draft">Dear #Name#,
+
+We’re looking forward to seeing you at the private customer preview on <span class="ph">[WEBINAR DATE]</span> at <span class="ph">[WEBINAR TIME]</span> on <span class="ph">[WEBINAR PLATFORM]</span>.
+
+New LUCI is the next version of the platform your team uses to operate A/V across the property. You’ll see how it gives Operations and IT more day-to-day control while the same LUCI team continues to support your property.
+
+Add to your calendar: <span class="ph">[CALENDAR LINK]</span>
+
+Join the private preview: <span class="ph">[JOIN LINK]</span></p></div><div class="dir"><h4>Calendar first</h4><p class="sum">Present the event details as a compact calendar block before the access links.</p><p class="draft">Dear #Name#,
+
+Please add the private New LUCI customer preview to your calendar:
+
+<span class="ph">[WEBINAR DATE]</span>
+<span class="ph">[WEBINAR TIME]</span>
+<span class="ph">[WEBINAR PLATFORM]</span>
+
+New LUCI is the next version of the platform your team uses to operate A/V across the property. The session will show its new day-to-day controls for Operations and IT, with the same LUCI team behind you.
+
+Use the calendar link to save the details, then return to this email when it is time to join.
+
+Add to your calendar: <span class="ph">[CALENDAR LINK]</span>
+
+Keep this link for the session: <span class="ph">[JOIN LINK]</span></p></div><div class="dir"><h4>Keep the link handy</h4><p class="sum">Use a human reminder and make the join link the dominant retrieval action.</p><p class="draft">Dear #Name#,
+
+We’ll see you for the private New LUCI customer preview on <span class="ph">[WEBINAR DATE]</span> at <span class="ph">[WEBINAR TIME]</span> on <span class="ph">[WEBINAR PLATFORM]</span>.
+
+New LUCI is the next version of the platform your team uses to operate A/V across the property. This customer walkthrough covers more day-to-day control for Operations and IT while the same LUCI team continues to support your property.
+
+Use the calendar link now, then return to the join link when the session begins.
+
+Calendar: <span class="ph">[CALENDAR LINK]</span>
+
+Join: <span class="ph">[JOIN LINK]</span></p></div></div><p class="why"><strong>Why “Logistics first” won:</strong> A registrant can understand the when, where, and next action from the first paragraph. The revision adds the human opening and keeps the compact calendar treatment without implying preparation requirements.</p>
+<h2>Final copy <span class="wc">76 words / 150</span></h2>
+<div class="email"><div class="meta"><div><b>Subject lines</b><ul class="subj"><li><span class="mood">Direct</span>Your New LUCI preview is <span class="ph">[WEBINAR DATE]</span></li><li><span class="mood">Practical</span>Calendar and join links for your preview</li><li><span class="mood">Warm</span>We’re looking forward to seeing you</li></ul></div><div><b>Preheader</b><p><span class="ph">[WEBINAR TIME]</span>, <span class="ph">[WEBINAR PLATFORM]</span>, and both access links are inside.</p></div></div><div class="ebody"><p>Dear #Name#,</p><p>We’re looking forward to seeing you at the private customer preview on <span class="ph">[WEBINAR DATE]</span> at <span class="ph">[WEBINAR TIME]</span> on <span class="ph">[WEBINAR PLATFORM]</span>.</p><p>New LUCI, the next version of the platform your team uses to operate A/V across the property, is on its way. You’ll see how it gives Operations and IT more day-to-day control while the same LUCI team continues to support your property.</p><p>Add to your calendar: <span class="ph">[CALENDAR LINK]</span></p><p>Join the private preview: <span class="ph">[JOIN LINK]</span></p><p class="sig">[NAME]<br>[TITLE]<br>LUCI Systems<br>[EMAIL] · [PHONE]</p></div></div>
+<p class="note"><strong>Guardrail notes:</strong> This remains a logistics email. The webinar date appears only as the approved placeholder, and no release date appears. New LUCI is defined for a cold reader and remains on its way, and more control is paired with the same LUCI team. The retention claim stays in email 1 only. R2 changes: removed the false ‘Urgent’ mood and timing-dependent subject, added the warm opening, differentiated subject moods, complementary preheader, and exact 76-word recount.</p></article><article id="CUST-WEBINAR-04"><p class="kicker">CUST-WEBINAR-04 · 2–3 business days after the webinar</p><h1>Recording for non-attendees</h1>
+<p class="primary"><strong>Primary message:</strong> Watch the private preview recording on your schedule to see how New LUCI expands control while the same LUCI team continues to support your property.</p>
+<h2>Strategy</h2><dl><dt>What &amp; why</dt><dd>A non-attendee recovery email that preserves the private preview without asking for another live commitment.</dd><dt>For whom</dt><dd>Operations should see day-to-day control; IT should see visibility, access, and support context. Neither group should read the message as the start of an upgrade.</dd><dt>Best way to reach them</dt><dd>Send from the same named LUCI sender 2–3 business days after the preview, open with the recording, and place its CTA before the overview.</dd><dt>Impact, professionally</dt><dd>Treat the missed event as ordinary, acknowledge that schedules fill up, define New LUCI in one line, and connect greater control to the same LUCI team’s concrete support actions.</dd></dl>
+<h2>Three directions</h2><div class="dirs"><div class="dir win"><h4>Recording first <span class=badge>Final</span></h4><p class="sum">Lead with immediate on-demand access and keep the overview as a lighter companion.</p><p class="draft">Dear #Name#,
+
+We know schedules fill up. If you couldn’t attend the private preview, the recording is ready when you are.
+
+New LUCI is the next version of the platform your team uses to operate A/V across the property. See how it gives your team more day-to-day control while the same LUCI team supports your property through requests with context and logs, plus alerts when something goes down.
+
+Watch the recording: <span class="ph">[RECORDING LINK]</span>
+
+For a quick scan, review the LUCI Upgrade Overview: https://www.lucisystems.com/product-briefs/luci-upgrade-overview</p></div><div class="dir"><h4>Scan first, watch deeper</h4><p class="sum">Offer the overview as the fast entry point and the recording as the complete walkthrough.</p><p class="draft">Dear #Name#,
+
+You can still get the full New LUCI preview on your schedule. We know the live time does not work for everyone.
+
+New LUCI is the next version of the platform your team uses to operate A/V across the property. Start with the LUCI Upgrade Overview for a quick look, then use the recording for the complete walkthrough and the same-team support details.
+
+LUCI Upgrade Overview: https://www.lucisystems.com/product-briefs/luci-upgrade-overview
+
+Watch the recording: <span class="ph">[RECORDING LINK]</span></p></div><div class="dir"><h4>Pick up the customer preview on demand</h4><p class="sum">Lead with control and use specific in-product support behavior to keep the partnership visible.</p><p class="draft">Dear #Name#,
+
+The recording of the private customer preview is ready on demand. We hope it makes the session easier to catch.
+
+New LUCI is the next version of the platform your team uses to operate A/V across the property. The recording shows more day-to-day control across the room, interface, and operation, with the same LUCI team supporting your property through requests with context and logs, plus alerts when something goes down.
+
+Watch the recording: <span class="ph">[RECORDING LINK]</span>
+
+Companion overview: https://www.lucisystems.com/product-briefs/luci-upgrade-overview</p></div></div><p class="why"><strong>Why “Recording first” won:</strong> The primary action appears immediately and the message acknowledges the missed session without pressure. The revision adds the warm schedule acknowledgment and borrows the scan-first companion and specific partnership proof from the other directions.</p>
+<h2>Final copy <span class="wc">104 words / 150</span></h2>
+<div class="email"><div class="meta"><div><b>Subject lines</b><ul class="subj"><li><span class="mood">Helpful</span>The New LUCI preview recording is ready</li><li><span class="mood">Low-pressure</span>Watch the customer preview when it suits you</li><li><span class="mood">Curious</span>What did you miss in the New LUCI preview?</li></ul></div><div><b>Preheader</b><p>See the new day-to-day controls and how the LUCI team stays with you.</p></div></div><div class="ebody"><p>Dear #Name#,</p><p>We know schedules fill up. If you couldn’t attend the private customer preview, the recording is ready when you are.</p><p>New LUCI, the next version of the platform your team uses to operate A/V across the property, is on its way. The recording shows how venue panels, staging, customizable views, audit trails, monitoring, and sign-in controls give you more day-to-day programming control.</p><p>You’ll also see how the same LUCI team continues to support your property through requests with context and logs, plus alerts when something goes down.</p><p>Watch the recording: <span class="ph">[RECORDING LINK]</span></p><p>For a quick scan, review the LUCI Upgrade Overview: <a href="https://www.lucisystems.com/product-briefs/luci-upgrade-overview">https://www.lucisystems.com/product-briefs/luci-upgrade-overview</a></p><p class="sig">[NAME]<br>[TITLE]<br>LUCI Systems<br>[EMAIL] · [PHONE]</p></div></div>
+<p class="note"><strong>Guardrail notes:</strong> The recording is the primary CTA and does not start an upgrade process. New LUCI is defined for a cold reader and remains on its way, and more control is paired with concrete support from the same LUCI team. Every capability comes from the published overview. The retention claim stays in email 1 only. R2 changes: added the warm schedule acknowledgment, differentiated subject moods, complementary preheader, and exact 104-word recount.</p></article>
+<article id="questions"><p class="kicker">For Jane</p><h1>Open questions &amp; tensions</h1><ul class="oq"><li>Who should be the named sender and signer: the customer’s usual LUCI contact, one campaign-wide customer lead, or Marketing?</li><li>Should email 2 use two visible links in one shared send, or should ActiveCampaign swap only the final CTA line by registration status?</li><li>Will <span class="ph">[AGENDA LINK]</span> point to a standalone agenda, a calendar event, or the registration confirmation page?</li><li>Confirm the final values for <span class="ph">[WEBINAR DATE]</span>, <span class="ph">[WEBINAR TIME]</span>, <span class="ph">[WEBINAR PLATFORM]</span>, <span class="ph">[REGISTRATION LINK]</span>, <span class="ph">[JOIN LINK]</span>, <span class="ph">[CALENDAR LINK]</span>, and <span class="ph">[RECORDING LINK]</span>.</li><li>Should the recording link remain available indefinitely, or should the follow-up avoid implying a lasting archive?</li><li>The plan’s shared rule “every invitation states when New LUCI becomes available” conflicts with the locked no-release-date guardrail. The guardrail wins: no date appears anywhere.</li><li>The webinar date (around Nov 24) and all links are placeholders until the registration platform is set.</li><li>“We’ve never lost a client” is used once, in Email 1, as partnership reassurance. Is that placement OK with Mike and Jane?</li></ul>
+<p class="footer">Drafted in GPT passes (strategy + directions, then editorial revision). Source: ui_kits/internal-portal/email-copy/CUST/CUST-WEBINAR-*. Nothing has been sent or loaded into ActiveCampaign.</p></article>
+</main></body></html>
