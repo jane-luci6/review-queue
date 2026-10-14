@@ -3273,9 +3273,18 @@
       <span class="kicker__label">LUCI Project Update</span>
       <span class="kicker__rule"></span>
     </div>
-    <p class="proj-snapshot__opening">Around the LUCI operation</p>
-    <p class="proj-snapshot__dek">Our teams have been moving projects from plan to operating floor. Here are the latest stops.</p>
-    <ul class="proj-log">
+    <p class="proj-snapshot__opening">This month at LUCI</p>
+    <p class="proj-snapshot__dek" style="margin-bottom:16px;">Earlier this year, the LUCI crew stood up LUCI at Blue Chip, Belterra Park, and Valley Forge to convert each sportsbook to Boyd Sports. This fall we returned to all three to extend LUCI across the rest of each property, bringing more of their audio, video, and control onto the same system.</p>
+    <p class="proj-snapshot__dek">At Valley Forge, that included the registration remodel&rsquo;s new ceiling audio and IPTV TVs. At Blue Chip, it included new amplifiers and LUCI support documentation for the property&rsquo;s IT team. It&rsquo;s the latest chapter in LUCI&rsquo;s long partnership with Boyd: beginning early in the design phase, through implementation, expansion, and ongoing support to ensure each property has everything it needs to operate smoothly.</p>
+    <style>
+      .proj-log--grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; border: 0; }
+      .proj-log--grid .proj-log__row { display: block; padding: 0; border: 0; }
+      .proj-log--grid .proj-log__stamp { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; margin: 0 0 12px; }
+      .proj-log--grid .proj-log__head { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
+      .proj-log--grid .proj-log__date { margin-left: 0; margin-top: 6px; }
+      @media (max-width: 640px) { .proj-log--grid { grid-template-columns: 1fr; gap: 28px; } }
+    </style>
+    <ul class="proj-log proj-log--grid">
       <li class="proj-log__row">
         <img class="proj-log__stamp" src="assets/since-last-signal/blue-chip-exterior.jpg" alt="Blue Chip &mdash; exterior of the property at dusk" width="720" height="450" loading="lazy" style="object-position: 35% 50%;">
         <div>
@@ -3284,7 +3293,6 @@
             <span class="proj-log__place">Michigan City, Indiana</span>
             <span class="proj-log__date">Live &middot; September 24</span>
           </div>
-          <p class="proj-log__text">The LUCI crew completed the implementation at Blue Chip, installing new amplifiers and giving the property&rsquo;s IT team access to their LUCI support documentation.</p>
         </div>
       </li>
       <li class="proj-log__row">
@@ -3295,7 +3303,6 @@
             <span class="proj-log__place">Cincinnati, Ohio</span>
             <span class="proj-log__date">On site &middot; September 30</span>
           </div>
-          <p class="proj-log__text">The LUCI crew was on site at Belterra Park, working with the property team on its LUCI system.</p>
         </div>
       </li>
       <li class="proj-log__row">
@@ -3306,7 +3313,6 @@
             <span class="proj-log__place">King of Prussia, Pennsylvania</span>
             <span class="proj-log__date">Live &middot; October 15</span>
           </div>
-          <p class="proj-log__text">The LUCI crew completed its work on the registration remodel, bringing new ceiling audio and IPTV TVs in the area onto LUCI.</p>
         </div>
       </li>
     </ul>
