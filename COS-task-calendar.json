@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-07",
+  "updated": "2026-10-13",
   "timezone": "America/Los_Angeles",
   "items": [
     {
@@ -125,10 +125,70 @@
       "stage": null,
       "label": "Start October Signal",
       "client": "The Signal",
-      "status": "soon",
-      "done": false,
-      "notes": "Issue 05 in progress. Jane LOCKED Oct 6: Field = Osage Casino Hotel Ponca City (Swigs/Swizzle + ballroom LED; not Sand Springs); Design services (no D3); Theme idea = continuity / A/V stabilizer bar (title iterations open); Quick Tip = calendar collision on shared TVs; Advice = Build venues first + Users like candy (blurbs + section name open); Minute with Mike = power of programming tied to two-pager; What's Coming = Reporting & Analytics + two-pager promo. Ermintrude owns copy; Consuelo full Osage web case study. Draft -> Jane approve -> implement. Send target ~Oct 15.",
+      "status": "done",
+      "done": true,
+      "notes": "Issue 05 in progress. Jane LOCKED Oct 6 picks. Oct 13: build on new Astro site with Newsletter Hub card; ActiveCampaign email as unsent draft; Webflow during cutover still undecided. Mon Oct 12 kickoff queued drafts for Jane review; nothing publishes/sends without her yes. Send tracked on signal-oct-send (~Oct 15).",
       "in_progress": true
+    },
+    {
+      "id": "imp-review-queue-cleanup",
+      "date": "2026-10-07",
+      "type": "task",
+      "label": "IMP Review Queue cleanup",
+      "client": "Internal Marketing Portal",
+      "done": true,
+      "status": "done",
+      "notes": "In Progress items parked to parkedFromReviewQueue; queue tidied Oct 7."
+    },
+    {
+      "id": "ug-finished-mike-queue",
+      "date": "2026-10-07",
+      "type": "review",
+      "label": "Upgrade Guide finished, live on .37 \u2192 Mike's Review Queue",
+      "client": "With the two-pager + launch timeline",
+      "done": true,
+      "status": "done",
+      "notes": "Jane finished UG Oct 7; ~29 commits, last 3:17 PM PT; .37 matches Mac. Added to Mike's IMP Review Queue alongside two-pager + launch timeline."
+    },
+    {
+      "id": "ac-adds-ballys-caesars",
+      "date": "2026-10-07",
+      "type": "task",
+      "label": "AC adds: 15 new contacts \u2192 Existing Clients + Master list",
+      "client": "Caesars \u00b7 Bally's \u00b7 Acres \u2014 James Hawkins moved to Bally's Shreveport",
+      "done": true,
+      "status": "done",
+      "notes": "IDs 1784-1798, no sends/automations. Vanessa Hurtado (1493) + James Hawkins (1677) already existed. Companies filled; Hawkins -> Bally's Corporation / Bally's Shreveport (email still @boydgaming.com). Mike's Oct 7 ask."
+    },
+    {
+      "id": "luci-design-cleanup",
+      "date": "2026-10-08",
+      "type": "task",
+      "label": "luci-design cleanup: 119 finished files archived",
+      "client": "_archive/luci-design-cleanup-2026-10-08.zip \u00b7 Wave 1 kept",
+      "done": true,
+      "status": "done",
+      "notes": "Wave 1 (10 files), active (29 incl. Signal 05, Osage, Richard packet) and 5 not-sure left in place. Title-card deletion committed; sharp removed."
+    },
+    {
+      "id": "greg-blue-chip-followup",
+      "date": "2026-10-08",
+      "type": "task",
+      "label": "Follow up with Greg \u2014 Blue Chip reschedule",
+      "client": "Blue Chip (carried from Oct 7)",
+      "done": false,
+      "notes": "Jane followed up with Greg Oct 8; still awaiting reply as of Oct 13.",
+      "status": "overdue"
+    },
+    {
+      "id": "mike-standup-oct9",
+      "date": "2026-10-09",
+      "type": "meeting",
+      "label": "Mike standup \u2014 11:11 AM PT",
+      "client": "Right after Grok Bot 201 (10\u201311 AM PT)",
+      "done": true,
+      "notes": "Held Fri Oct 9 11:11 AM PT (routine fired).",
+      "status": "done"
     },
     {
       "id": "signal-oct-send",
@@ -139,7 +199,7 @@
       "client": "The Signal",
       "status": "upcoming",
       "done": false,
-      "notes": "Target ~Oct 15. No Send without Jane's say-so."
+      "notes": "Target ~Oct 15 (Wed). Due in 2 days from Tue Oct 13. No Send without Jane's say-so. Astro page + Hub card + AC draft path."
     },
     {
       "id": "clearwater-e9",
@@ -151,6 +211,26 @@
       "status": "upcoming",
       "done": false,
       "notes": "60 days from Aug 24 implementation. Peek routine T-2 on Oct 21."
+    },
+    {
+      "id": "infocomm-cfp",
+      "date": "2026-10-30",
+      "type": "event",
+      "label": "Infocomm CFP submit deadline",
+      "client": "Parked (Mike Oct 8)",
+      "done": true,
+      "notes": "Mike Oct 8: on hold for 2027, not presenting; revisit InfoComm 2028. CFP page still closes Oct 30 2026, but events research marked not submitting.",
+      "status": "done"
+    },
+    {
+      "id": "nalf-hotel-cutoff",
+      "date": "2026-10-31",
+      "type": "event",
+      "label": "NALF-West hotel block \u2014 PASSED (event declined)",
+      "client": "Audience-size research first \u00b7 code G-NATI, $379",
+      "done": true,
+      "notes": "Jane/LUCI decided against NALF-West Dec 2026 (Oct 8). Evaluating Native Nation Events June 19th Annual Tribal Casino and Hotel Development Conference instead.",
+      "status": "done"
     },
     {
       "id": "boyd-expansion",
@@ -214,8 +294,56 @@
     },
     {
       "id": "launch-meeting-followups",
-      "label": "New LUCI launch - Richard Oct 5 follow-up packet (UG-01-54 actions, U-01-31 undecided) waiting on Jane green-lights per item; Upgrade Guide work live on .37 for Mike review; Pillar 03 locked Oct 5 (Informed control of your operation). Also open: sales deck/Capabilities; proof pull; email bodies; AC Deals; Nick Cloudflare/GA",
-      "waiting": "Jane / Mark / Nick as needed",
+      "label": "New LUCI launch: Upgrade Guide finished, live on .37, in Mike's Review Queue (with two-pager + launch timeline). Richard Oct 5 follow-ups closed Oct 6. Open: sales deck/Capabilities; proof pull; email bodies; AC Deals",
+      "waiting": "Mike/tech on UG; Jane on next pieces (email bodies, deck, proof, AC Deals)",
+      "done": false
+    },
+    {
+      "id": "imp-review-queue-cleanup",
+      "label": "IMP Review Queue cleanup \u2014 done Oct 7",
+      "waiting": "none",
+      "done": true
+    },
+    {
+      "id": "ac-adds-oct7",
+      "label": "AC: 15 new Caesars/Bally's/Acres contacts (1784-1798) + James Hawkins -> Bally's \u2014 done Oct 7",
+      "waiting": "none (titles: Jane, optional)",
+      "done": true
+    },
+    {
+      "id": "luci-design-cleanup",
+      "label": "luci-design cleanup: 119 files archived Oct 8; Wave 1 kept",
+      "waiting": "Jane: 5 not-sure files (e.g. Mike Jul 21 origin-story excerpt) whenever",
+      "done": true
+    },
+    {
+      "id": "osage-web-cs",
+      "label": "Osage web CS \u2014 multi-year partnership arc (Ponca City); live page is the working version",
+      "waiting": "Jane finishing page at http://10.10.1.37/resources/case-studies/osage-ponca-swigs/ (A/B draft deleted Oct 12); consolidation numbers still placeholders",
+      "done": false
+    },
+    {
+      "id": "cutover-cloudflare-ga4",
+      "label": "lucisystems.com cutover: Cloudflare host, DNS off Webflow, redirects, new GA4",
+      "waiting": "Jane's go",
+      "done": false
+    },
+    {
+      "id": "greg-blue-chip",
+      "label": "Greg / Blue Chip reschedule follow-up",
+      "waiting": "Greg reply (Jane followed up Oct 8; still open Oct 13)",
+      "done": false
+    },
+    {
+      "id": "never-lost-client",
+      "label": "Make \"we've never lost a client\" prominent on website + materials; relationship campaign (Yaamava / Choctaw / Osage)",
+      "waiting": "Jane: campaign concepts when ready",
+      "done": false
+    },
+    {
+      "id": "penn-campaign",
+      "label": "Penn campaign after Blackhawk close \u2014 EOY 2026 target via Mark's Penn contacts; messaging/structure TBD",
+      "waiting": "Jane / Mark messaging",
       "done": false
     }
   ],
@@ -226,7 +354,7 @@
     "ideas": [
       {
         "id": "oct-start",
-        "text": "October Signal Issue 05 \u2014 prep ready Oct 1; Jane picks open; send ~Oct 15",
+        "text": "October Signal Issue 05 \u2014 Astro + Hub + AC draft; Mike Review Queue priority; send ~Oct 15",
         "status": "soon"
       }
     ],
@@ -236,19 +364,19 @@
     {
       "id": "launch",
       "name": "New LUCI launch campaign",
-      "next": "What\u2019s New two-pager done / in review with Mike (non-urgent). Upgrade Guide webpage in flight on .37. Upgrade email templates in flight \u2014 copy this week. Theme: Putting the power of programming in your hands.",
+      "next": "Upgrade Guide live on .37 \u2192 tech review Nick/Richard; What\u2019s New two-pager basically approved (working name New LUCI Overview; not sales-collateral label). Next: upgrade email bodies, sales deck/Capabilities, proof pull, AC Deals. Theme: Putting the power of programming in your hands.",
       "status": "in_flight"
     },
     {
       "id": "website",
       "name": "Website rebuild (luci-website)",
-      "next": "Astro site production-ready for cutover to lucisystems.com (confirmed Oct 7); Upgrade Guide Oct 6 work live on .37 for Mike review. Revert-preset Wave 1 draft still open. Platform page redo in flight.",
+      "next": "Astro site production-ready. Cutover = Cloudflare host + DNS off Webflow + redirects + fresh GA4 property \u2014 on Jane\u2019s go. Platform page redo in flight; Revert-preset Wave 1 draft still open.",
       "status": "in_flight"
     },
     {
       "id": "content-library",
       "name": "Website content library (prospect)",
-      "next": "Morning-reset + lighting published. Revert-preset draft still open for Jane. Aliante resources grid + featured swap DONE. What\u2019s New two-pager done / in review with Mike. Then look lock by type / Maker / live.",
+      "next": "Morning-reset + lighting published. Revert-preset draft + Wave 1 files still open for Jane (kept out of cleanup). Aliante resources grid DONE. Two-pager in Mike\u2019s queue.",
       "status": "in_flight"
     },
     {
@@ -266,7 +394,7 @@
     {
       "id": "signal",
       "name": "The Signal (October)",
-      "next": "Issue 05 picks locked Oct 6 (see item). Open for Jane: theme title iterations, Advice blurbs + section name, Minute with Mike pack, Osage Signal short (Ermintrude). Send ~Oct 15.",
+      "next": "Issue 05: build on Astro + Newsletter Hub card; AC email unsent draft (Webflow cutover path undecided). Only item truly awaiting Mike in Review Queue. Send ~Oct 15 \u2014 Jane's say-so.",
       "status": "in_flight"
     },
     {
@@ -289,9 +417,21 @@
     },
     {
       "id": "osage",
-      "name": "Osage Ponca City case study (web + Signal short)",
-      "next": "Consuelo full web case study, Ermintrude Signal short, from Brian docs + Project Media photos. Drafts for Jane browser approval first.",
+      "name": "Osage Ponca City web case study",
+      "next": "Working page only: http://10.10.1.37/resources/case-studies/osage-ponca-swigs/ (A/B deleted Oct 12). Still needs consolidation numbers from Jane. Lead stats = relationship length / # projects.",
       "status": "in_flight"
+    },
+    {
+      "id": "four-winds",
+      "name": "Four Winds \u2192 Customer Journey",
+      "next": "PO in Oct 6; deposit still outstanding. Add Aaron Herrbach + Matt Roach only after deposit + Jane\u2019s explicit AC yes.",
+      "status": "waiting"
+    },
+    {
+      "id": "cutover",
+      "name": "lucisystems.com cutover (Cloudflare + new GA4)",
+      "next": "Nick wants Cloudflare; Webflow goes away. Skip old-GA recovery; new GA4 property at cutover. Ready when Jane says go.",
+      "status": "waiting"
     }
   ],
   "parked": [
@@ -306,7 +446,7 @@
       "note": "Jane pulled Sep 1. Do not use or edit until she sends replacements."
     }
   ],
-  "notes": "Board refreshed Wed Oct 7 2026 morning. TOP Jane: Signal 05 draft reviews (send ~Oct 15), Osage drafts, Greg/Blue Chip reschedule follow-up, Richard packet green-lights, Four Winds deposit check, Forum Partner audience research (hotel cutoff Oct 31). No journey sends due through Oct 9; Clearwater Email 9 Oct 23. Mike standup Fri Oct 9 11:11 AM PT. Infocomm CFP Oct 30.",
+  "notes": "Board refreshed Tue Oct 13 2026 ~8:30 AM PT. TOP Jane today: (1) Signal 05 \u2014 push Mike review / lock Astro+Hub+AC draft path for ~Oct 15 send, (2) Osage Ponca City page finish + consolidation numbers, (3) never-lost-client prominence + tribal relationship campaign (Yaamava/Choctaw/Osage), (4) Penn/Blackhawk EOY campaign shape with Mark, (5) Greg/Blue Chip reply watch, (6) Four Winds deposit before CJ adds. Overdue: Greg Blue Chip follow-up (since Oct 8). Due in 2 days: Signal Issue 05 send ~Oct 15. Next journey: Clearwater Email 9 Oct 23. Infocomm CFP parked (2027 hold). NALF-West declined.",
   "dropped": [
     {
       "id": "screen-rec",
@@ -345,17 +485,18 @@
       "id": "infocomm-cfp-2026",
       "date": "2026-10-30",
       "label": "Infocomm CFP submit deadline",
-      "client": "Events",
-      "status": "open",
-      "notes": "Jane + Mike: put together presentation for Infocomm next year. Call for Presentations received 2026-10-01. Chat with Mike first."
+      "client": "Parked (Mike Oct 8)",
+      "status": "done",
+      "notes": "Mike Oct 8: on hold for 2027, not presenting; revisit InfoComm 2028. CFP page still closes Oct 30 2026, but events research marked not submitting.",
+      "done": true
     },
     {
       "id": "nalf-west-2026",
       "date": "2026-12-02",
       "label": "Native American Leadership Forum-West (Dec 2-4, Hyatt Regency Maui) - Forum Partner ~$5k under evaluation",
       "client": "Events",
-      "status": "open",
-      "notes": "Jane wants audience-size research; Mike said dig deeper (Oct 6). Hotel block cut-off Oct 31, code G-NATI, $379."
+      "status": "declined",
+      "notes": "Declined Oct 8 2026. Evaluating Native Nation Events June conference instead: https://nativenationevents.org/events-conferences/19th-annual-tribal-casino-and-hotel-development-conference/"
     }
   ]
 }

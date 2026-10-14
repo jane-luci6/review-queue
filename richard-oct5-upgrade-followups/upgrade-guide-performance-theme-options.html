@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>Upgrade Guide — performance theme options</title>
+<style>
+  :root {
+    --bg: #0f1419;
+    --card: #1a222c;
+    --ink: #e8eef4;
+    --muted: #9aa8b5;
+    --line: #2a3542;
+    --p1: #3d8bfd;
+    --p2: #34c38f;
+    --p3: #f0ad4e;
+    --below: #a78bfa;
+    --perf: #fb7185;
+    --report: #38bdf8;
+    --webgl: #fbbf24;
+    --hold: #94a3b8;
+    --good: #34c38f;
+    --warn: #f0ad4e;
+    --bad: #fb7185;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: rgba(15, 20, 25, .94);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+    padding: 1rem 1.25rem .85rem;
+  }
+  header h1 { margin: 0 0 .35rem; font-size: 1.15rem; font-weight: 650; }
+  header p { margin: 0; color: var(--muted); font-size: .9rem; max-width: 74rem; }
+  nav.jumps {
+    display: flex; flex-wrap: wrap; gap: .45rem .9rem;
+    margin-top: .7rem; font-size: .8rem;
+  }
+  nav.jumps a { color: #7dd3fc; text-decoration: none; }
+  nav.jumps a:hover { text-decoration: underline; }
+  .legend {
+    display: flex; flex-wrap: wrap; gap: .45rem .85rem;
+    margin-top: .75rem; font-size: .78rem; color: var(--muted);
+  }
+  .legend span { display: inline-flex; align-items: center; gap: .35rem; }
+  .dot { width: .65rem; height: .65rem; border-radius: 999px; display: inline-block; }
+  main { padding: 1.25rem; display: grid; gap: 1.25rem; max-width: 78rem; margin: 0 auto; }
+  section.block, .scheme {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .scheme.pick { border-color: #1f6b45; box-shadow: inset 3px 0 0 var(--good); }
+  .scheme.alt { box-shadow: inset 3px 0 0 var(--p1); }
+  .block > h2, .scheme > h2 {
+    margin: 0;
+    padding: .85rem 1rem;
+    font-size: 1rem;
+    border-bottom: 1px solid var(--line);
+    display: flex; flex-wrap: wrap; gap: .45rem .7rem; align-items: baseline;
+  }
+  .tag {
+    font-size: .72rem; font-weight: 600; letter-spacing: .03em; text-transform: uppercase;
+    color: var(--muted); border: 1px solid var(--line); border-radius: 999px;
+    padding: .12rem .5rem;
+  }
+  .tag.rec { color: #052e1a; background: var(--good); border-color: transparent; }
+  .tag.run { color: #082033; background: var(--p1); border-color: transparent; }
+  .tag.stop { color: #3f121c; background: var(--perf); border-color: transparent; }
+  .tag.rule { color: #1a1028; background: var(--below); border-color: transparent; }
+  .pad { padding: .9rem 1rem 1rem; }
+  .note { margin: 0; padding: .75rem 1rem 0; color: var(--muted); font-size: .88rem; }
+  .lede { font-size: 1.02rem; margin: 0 0 .75rem; }
+  p { margin: 0 0 .7rem; }
+  p:last-child { margin-bottom: 0; }
+  a { color: #7dd3fc; }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+    gap: .75rem;
+  }
+  .mini {
+    background: #121820;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: .75rem .8rem;
+  }
+  .mini h3 { margin: 0 0 .35rem; font-size: .92rem; }
+  .mini p, .mini li { color: var(--muted); font-size: .84rem; }
+  .kicker {
+    font-size: .72rem; font-weight: 700; letter-spacing: .04em;
+    text-transform: uppercase; color: var(--muted); margin: 0 0 .25rem;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: .84rem; }
+  .scroll { overflow-x: auto; }
+  th, td {
+    text-align: left; vertical-align: top;
+    border-bottom: 1px solid var(--line);
+    padding: .55rem .65rem;
+  }
+  th { color: var(--muted); font-size: .72rem; letter-spacing: .04em; text-transform: uppercase; font-weight: 650; }
+  td.use { white-space: nowrap; font-weight: 650; font-size: .75rem; letter-spacing: .02em; }
+  td.use.yes { color: var(--good); }
+  td.use.hold { color: var(--warn); }
+  td.use.no { color: var(--perf); }
+  blockquote {
+    margin: .75rem 0;
+    padding: .65rem .8rem;
+    background: #121820;
+    border-left: 3px solid var(--line);
+    border-radius: 0 8px 8px 0;
+    color: var(--ink);
+    font-size: .88rem;
+  }
+  blockquote footer { color: var(--muted); font-size: .75rem; margin-top: .35rem; }
+  .skel { display: grid; gap: 0; border-top: 1px solid var(--line); margin-top: .75rem; }
+  .slot { padding: .75rem 1rem; border-bottom: 1px solid var(--line); }
+  .slot h3 {
+    margin: 0 0 .4rem; font-size: .75rem; letter-spacing: .04em; text-transform: uppercase;
+    display: flex; gap: .4rem; align-items: center;
+  }
+  .slot ul, .col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .35rem; }
+  .slot li, .col li {
+    background: #121820; border: 1px solid var(--line); border-radius: 8px;
+    padding: .4rem .55rem; font-size: .84rem;
+  }
+  .slot.perf { background: rgba(251, 113, 133, .06); }
+  .slot.perf h3 { color: var(--perf); }
+  .slot.below { background: rgba(167, 139, 250, .06); }
+  .slot.below h3 { color: #d8b4fe; }
+  .slot.quiet h3 { color: var(--hold); }
+  .cols {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14.5rem, 1fr));
+  }
+  .col { padding: .8rem 1rem 1rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .col:last-child { border-right: none; }
+  .col h3 {
+    margin: 0 0 .45rem; font-size: .78rem; text-transform: uppercase; letter-spacing: .04em;
+    display: flex; gap: .4rem; align-items: center; flex-wrap: wrap;
+  }
+  .num {
+    font-size: .7rem; font-weight: 700; width: 1.35rem; height: 1.35rem; border-radius: 6px;
+    display: inline-grid; place-items: center; color: #0b1220; flex: none;
+  }
+  .p1 .num { background: var(--p1); }
+  .p2 .num { background: var(--p2); }
+  .p3 .num { background: var(--p3); }
+  .p4 .num { background: var(--perf); }
+  .col .pname { color: var(--ink); font-size: .82rem; font-weight: 650; text-transform: none; letter-spacing: 0; }
+  .gloss { color: var(--muted); font-size: .72rem; font-weight: 500; text-transform: none; letter-spacing: 0; display: block; margin-top: .15rem; }
+  .badge {
+    display: inline-block; font-size: .65rem; font-weight: 700; letter-spacing: .03em;
+    text-transform: uppercase; border-radius: 4px; padding: .08rem .35rem; margin-left: .25rem;
+    vertical-align: middle;
+  }
+  .badge.perf { background: rgba(251, 113, 133, .18); color: var(--perf); }
+  .badge.report { background: rgba(56, 189, 248, .16); color: var(--report); }
+  .badge.webgl { background: rgba(251, 191, 36, .16); color: var(--webgl); }
+  .badge.hold { background: rgba(148, 163, 184, .15); color: var(--hold); }
+  .badge.same { background: rgba(52, 195, 143, .14); color: var(--good); }
+  .fit {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: .5rem;
+    padding: .75rem 1rem 1rem;
+  }
+  .fit div { background: #121820; border-radius: 8px; padding: .5rem .65rem; }
+  .fit dt { font-size: .68rem; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); margin: 0; }
+  .fit dd { margin: .15rem 0 0; font-size: .82rem; }
+  .q { margin: 0; padding: 0 0 0 1.1rem; display: grid; gap: .55rem; }
+  .q li { padding-left: .2rem; }
+  .q strong { font-weight: 650; }
+  footer.page {
+    padding: 0 1.25rem 2rem;
+    max-width: 78rem;
+    margin: 0 auto;
+    color: var(--muted);
+    font-size: .8rem;
+  }
+  code { font-size: .84em; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Upgrade Guide — where performance sits</h1>
+  <p>Decision draft for Jane. The control theme stays: putting the power of programming in your hands. This page picks a frame for improved performance, and homes for Reporting &amp; Analytics and WebGL, before Tunnel, Gantt, outside-change, and staff chat get nested. Recommendation only — the live Guide is unchanged.</p>
+  <nav class="jumps" aria-label="On this page">
+    <a href="#answer">Pick</a>
+    <a href="#facts">Fact sheet</a>
+    <a href="#schemes">Five schemes</a>
+    <a href="#recommend">Why this ranking</a>
+    <a href="#channels">Guide, two-pager, email</a>
+    <a href="#risks">Risks</a>
+    <a href="#questions">Open questions</a>
+  </nav>
+  <div class="legend">
+    <span><i class="dot" style="background:var(--perf)"></i> Performance claim</span>
+    <span><i class="dot" style="background:var(--webgl)"></i> WebGL</span>
+    <span><i class="dot" style="background:var(--report)"></i> Reporting &amp; Analytics</span>
+    <span><i class="dot" style="background:var(--good)"></i> Control pillar, unchanged</span>
+    <span><i class="dot" style="background:var(--hold)"></i> Not this decision</span>
+  </div>
+</header>
+
+<main>
+
+<section class="block" id="answer">
+  <h2>Pick <span class="tag rec">Scheme 1</span> <span class="tag run">Runner-up: scheme 2</span></h2>
+  <div class="pad">
+    <p class="lede">Address performance <strong>before the pillars</strong>. Leave the three control pillars as they are.</p>
+    <div class="grid-2">
+      <div class="mini">
+        <p class="kicker">Primary · scheme 1</p>
+        <h3>A short condition under the control headline</h3>
+        <p>Headline stays the programming theme. Under it, before the pillar cards, at most three qualitative lines: real-time connection (only once Richard confirms the customer build), version-one cleanup with no counts, and a pointer to the map. Then the pillars.</p>
+        <p><strong>WebGL</strong> stays under Your view → Live map. <strong>Reporting &amp; Analytics</strong> is its own section below the pillars, separate from In-product support, led by operator views rather than CoreX Health.</p>
+      </div>
+      <div class="mini">
+        <p class="kicker">Runner-up · scheme 2</p>
+        <h3>A fuller block before the pillars, if the band feels too thin</h3>
+        <p>Same pillar row. The before-pillars block grows and holds Reporting &amp; Analytics inside it. WebGL’s write-up still lives on the map. Use this only if scheme 1 cannot carry “performance is at the heart.” Keep that block shorter than the pillar row so the control theme stays first.</p>
+      </div>
+    </div>
+    <p style="margin-top:.85rem">Schemes 3 and 4 rethink the pillars. They lose to the locked theme. Scheme 5 is the publishing rule inside scheme 1: the Guide stays specific, the What’s New two-pager carries a few felt lines, email can be warmer. Ferrari is Jane’s metaphor for this ask. It is a framing option for email, not Guide copy, and it never sits next to a number Richard did not give.</p>
+  </div>
+</section>
+
+<section class="block" id="facts">
+  <h2>Fact sheet <span class="tag">Transcript vs hypothesis</span></h2>
+  <p class="note">Oct 5, 2026 working session (Jane, Richard, Nick). Quotes are tightened only where the transcript repeats a word. No load-time, frame-rate, or percent-faster figure appears anywhere in that conversation. “Ferrari” does not appear there either.</p>
+  <div class="pad" style="padding-top:.6rem">
+    <p>Richard talked about performance as three separate things, then named a different major goal. He did not hand over one speed story that also includes analytics.</p>
+    <div class="grid-2">
+      <div class="mini">
+        <p class="kicker">What he actually split apart</p>
+        <p>1. A standard release line: increased performance, fewer version-one issues. No list, no measurements.</p>
+        <p>2. One place people should feel a difference: the map, because it is WebGL.</p>
+        <p>3. A stability problem he wants gone: “establishing connection” and “real-time degraded.” He said that is fixed in the latest build. Later in the same meeting the demo still showed it.</p>
+      </div>
+      <div class="mini">
+        <p class="kicker">What he called the major goal</p>
+        <p>Site configuration doable in the tool, so a customer is not waiting on LUCI staff in the database backend. That is the control theme (programming in the customer’s hands). It is not a speed claim. External wording still has to keep LUCI as the partner behind the property.</p>
+        <p>Jane’s bundle in this ask — faster load, improved real-time, bug fixes, fewer performance issues, analytics, WebGL, “the Ferrari of LUCI” — is wider than what he attested. The Guide can honor the instinct that performance belongs in the story without attesting the whole bundle.</p>
+      </div>
+    </div>
+  </div>
+  <div class="scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Topic</th>
+          <th>What the transcript supports</th>
+          <th>Guide use</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Real-time degraded / establishing connection</td>
+          <td>During the theme demo Richard asked to do the walkthrough again without “the establishing connection and real-time degraded thing going away all the time,” and said “It’s fixed in the latest one.” Later, on the dashboard, the same indicator still bothered him; he said it should read green / online. On sessions he would not screenshot active users, because he was signed in and the screen did not show him, “because of that real-time failure.”</td>
+          <td class="use hold">Hold the word “fixed”</td>
+        </tr>
+        <tr>
+          <td>Version-one performance and bugs</td>
+          <td>His wording: put in “the standard like increased performance, less bugs, like cleaned up a lot of the issues from version one.” He offered that as the ordinary line, then moved to the configuration goal. He did not name which issues, and he did not rank this above control.</td>
+          <td class="use yes">Qualitative line only</td>
+        </tr>
+        <tr>
+          <td>Faster load</td>
+          <td>Jane’s description in this ask. Richard never mentioned load time and never gave seconds or a percent.</td>
+          <td class="use no">Leave out</td>
+        </tr>
+        <tr>
+          <td>WebGL</td>
+          <td>“We’re using WebGL, which uses your graphics card. People should notice that the maps are much more responsive to zoom in, zoom out, to panning… That’s a fairly significant difference… our map technology is much better.” Jane: it might be its own section under View, or wrapped into an existing map section. He also called real locations on a United States map a significant map change; Jane said Mike had pulled that back. That location point is separate from WebGL.</td>
+          <td class="use yes">Felt difference, no timings</td>
+        </tr>
+        <tr>
+          <td>Reporting &amp; Analytics vs Audit Trail</td>
+          <td>Richard, after the dashboard tour: “No, this is not part of Audit Trail… this is part of reporting and analytics.” Jane: “I do not have reporting and analytics. So maybe we need to add that feature.” She guessed Security, then said it also has to do with View. He said it also spans guest-experience control, and “maybe we put it down.” Jane then floated a fourth pillar for in-product support plus reporting, because support cuts across all three. He said they could go as their own. She landed on “separate things down here.”</td>
+          <td class="use yes">Own section, not Audit</td>
+        </tr>
+        <tr>
+          <td>What the reporting views contain</td>
+          <td>Dashboard: TVs, incidents. CoreX Health tab: scheduling, optimizing, health events, device incidents, offline and online — he called this “nerdy stuff. Nobody needs to ever be looking at like CoreX Health. But overview, maybe,” and “if they want to.” Analytics: “Latency, how many incidents, how many presets were run across twenty-four hours, across seven days, across thirty days.” Also which commands are failing or working, which drivers, who sent them; an automation view of when presets run; incident trends over time. System logs (search by user, TV, time) are the audit trail, a different screen.</td>
+          <td class="use yes">Lead with operator views</td>
+        </tr>
+        <tr>
+          <td>Live monitoring vs reporting</td>
+          <td>Jane thought live monitoring might be for LUCI only. Richard: it is for the property too. Active incidents and recent alerts on the dashboard are “pretty real time.” Jane’s distinction, which he confirmed: online/offline icons already exist; what is new is a place on their dashboard for the status of everything in one spot. Analytics “shows us some of this information too… multiple ways to view the same sets of things.” Device-incident history keeps how long something was down (he pointed at sportsbook TVs as an example, with no count we should publish).</td>
+          <td class="use yes">Now vs roll-up</td>
+        </tr>
+        <tr>
+          <td>Site configuration in the tool</td>
+          <td>Major goal he named in the same breath as the standard performance line: configuration done in the product, not by LUCI staff in the database backend. Same family as bulk-adding endpoints, pulling a NovaStar config from the product, the central display-model catalog, and licenses pushed from LUCI Hub. Jane heard “less reliant on us.” Richard’s phrase a minute later, about the catalog, was putting the power back in their hands. Jane identified that as Mike’s theme: putting the power of programming in your hands.</td>
+          <td class="use hold">Control story, not the performance band</td>
+        </tr>
+        <tr>
+          <td>Self-serve upgrade</td>
+          <td>He wants customers to preview an upgrade and go forward themselves. He then said that preview path is not new; people have not been using it. Recent practice has been LUCI staff upgrading a site when a bug is fixed in a newer build. He also said pushing upgrades is possible and “not wired up.”</td>
+          <td class="use no">Out of this decision</td>
+        </tr>
+        <tr>
+          <td>Ferrari</td>
+          <td>Jane’s metaphor in the Oct 5 ask that prompted this memo. Richard did not use it. Useful as an internal test (response you can feel, not a longer feature list). Risky as customer language because it sounds measured.</td>
+          <td class="use hold">Email option only, her call</td>
+        </tr>
+        <tr>
+          <td>Other demo faults the same day</td>
+          <td>Venue-panel settings save did not take. An audio move “had that CoreX bug.” Map framing still assumes north is up even though rotation exists. Microsoft Entra sign-in: he has never seen it turned on. None of these are release claims.</td>
+          <td class="use no">Leave out</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pad">
+    <p class="kicker">Lines worth keeping in reach</p>
+    <blockquote>
+      I’d really love for you to do this again without the establishing connection and real-time degraded thing going away all the time. … It’s fixed in the latest one.
+      <footer>Richard, ~00:33, theme demo. The dashboard and session screens later in the meeting still showed the failure.</footer>
+    </blockquote>
+    <blockquote>
+      We’re using WebGL, which uses your graphics card. People should notice that the maps are much more responsive to zoom in, zoom out, to panning. … That’s a fairly significant difference. … Our map technology is much better.
+      <footer>Richard, ~01:31. Jane: own section under View, or wrap it into a map section.</footer>
+    </blockquote>
+    <blockquote>
+      You can always put in the standard like increased performance, less bugs, like cleaned up a lot of the issues from version one. … One of the major goals … site configuration should be all doable with this tool.
+      <footer>Richard, ~01:32. He said he does not know how she wants to sell the configuration goal. The database-backend sentence is paraphrased here without the original wording; the meaning is that customers should not need LUCI staff in the backend to configure the site.</footer>
+    </blockquote>
+    <blockquote>
+      Latency, how many incidents, how many presets were run across twenty-four hours, across seven days, across thirty days.
+      <footer>Richard, ~01:09, Analytics. CoreX Health, a minute earlier: “Nobody needs to ever be looking at like CoreX Health. But overview, maybe.”</footer>
+    </blockquote>
+  </div>
+</section>
+
+<section class="block" id="pillars">
+  <h2>Pillar titles this page uses</h2>
+  <div class="pad">
+    <p>Diagrams below use the titles on the live Guide and in the nesting comps Richard was walking: <strong>Guest experience</strong>, <strong>Your view</strong>, <strong>Security</strong>, with <strong>In-product support</strong> full width underneath.</p>
+    <p>The brief for this memo also names a benefit-led set from the control lock: See and secure, Program and stage, Operate deeply. Those read here as the control meaning of the release, not as a second layout. Guest experience is the program-and-stage column (panels, staging, presets). View and Security are the two halves of “see and secure” (Live Map on one side; sign-in and audit on the other). This page keeps them as two columns because WebGL has to land on the map. “Operate deeply” is not a title on the live page; the nearest homes are In-product support and the control story of configuring the site in the tool. This memo does not add an Operate pillar.</p>
+    <p>If those benefit-led titles have already replaced the live ones, the placement still holds: performance before the pillar row, WebGL inside whichever pillar contains Live Map, Reporting below the row as its own block.</p>
+  </div>
+</section>
+
+<section id="schemes" style="display:grid; gap:1.25rem">
+
+<section class="scheme" id="s0">
+  <h2>0 · What the Guide does today <span class="tag">Baseline gap</span></h2>
+  <p class="note">Performance is nowhere. Reporting and WebGL are still unplaced, along with Tunnel, Gantt, outside-change, and staff chat. Those four stay unplaced in every scheme on this page.</p>
+  <div class="skel">
+    <div class="slot quiet">
+      <h3>Above the pillars</h3>
+      <ul><li>Overview / walkthrough. No performance condition.</li></ul>
+    </div>
+    <div class="cols">
+      <div class="col p1">
+        <h3><span class="num">01</span><span class="pname">Guest experience</span></h3>
+        <ul>
+          <li>Venue panels</li>
+          <li>Staging</li>
+          <li>Audio group control</li>
+        </ul>
+      </div>
+      <div class="col p2">
+        <h3><span class="num">02</span><span class="pname">Your view</span></h3>
+        <ul>
+          <li>Customizable interface</li>
+          <li>Live map flexibility <span class="badge hold">no WebGL yet</span></li>
+          <li>Live screen view</li>
+        </ul>
+      </div>
+      <div class="col p3">
+        <h3><span class="num">03</span><span class="pname">Security</span></h3>
+        <ul>
+          <li>Audit trails</li>
+          <li>Live monitoring</li>
+          <li>Sign-in &amp; session</li>
+        </ul>
+      </div>
+    </div>
+    <div class="slot below">
+      <h3>Below</h3>
+      <ul>
+        <li>In-product support</li>
+        <li>Unplaced: Reporting &amp; Analytics, WebGL, Tunnel, Gantt, outside-change, staff chat</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="scheme pick" id="s1">
+  <h2>1 · Condition before the pillars <span class="tag rec">Recommended</span> <span class="tag">Before pillars</span></h2>
+  <p class="note">Answers Jane’s fork by addressing performance first, without rethinking the pillars. The band is a condition on the control headline, not a feature catalog and not a second headline. Structure labels below are for this review. They are not customer copy.</p>
+  <div class="skel">
+    <div class="slot perf">
+      <h3>Above the pillars · performance condition</h3>
+      <ul>
+        <li><span class="badge perf">Claim</span> Control headline stays first: putting the power of programming in your hands.</li>
+        <li><span class="badge perf">Claim</span> Line A — real-time connection stays up (establishing-connection / real-time-degraded). Publish “fixed” only after Richard confirms the customer build. Until then, omit the line.</li>
+        <li><span class="badge perf">Claim</span> Line B — version-one cleanup: increased performance, fewer of those issues. No counts, no load time, no Ferrari.</li>
+        <li><span class="badge webgl">Pointer</span> Line C — the map is where responsiveness is easiest to notice. Detail lives under View, not in this band.</li>
+        <li><span class="badge hold">Out</span> Tunnel, Gantt, outside-change, staff chat, CoreX Health, and “you won’t need to call LUCI” do not go in this band.</li>
+      </ul>
+    </div>
+    <div class="cols">
+      <div class="col p1">
+        <h3><span class="num">01</span><span class="pname">Guest experience</span><span class="gloss">Brief: program and stage</span></h3>
+        <ul>
+          <li>Venue panels, staging, audio <span class="badge same">unchanged</span></li>
+          <li>No speed line added here</li>
+        </ul>
+      </div>
+      <div class="col p2">
+        <h3><span class="num">02</span><span class="pname">Your view</span><span class="gloss">Live Map half of “see and secure”</span></h3>
+        <ul>
+          <li>Customizable interface</li>
+          <li>Live map flexibility
+            <ul>
+              <li style="margin-top:.35rem">Existing map bullets</li>
+              <li>WebGL: zoom and pan use the graphics card and should feel more responsive <span class="badge webgl">home</span></li>
+            </ul>
+          </li>
+          <li>Live screen view</li>
+        </ul>
+      </div>
+      <div class="col p3">
+        <h3><span class="num">03</span><span class="pname">Security</span><span class="gloss">Sign-in and audit half</span></h3>
+        <ul>
+          <li>Audit trails <span class="badge hold">not reporting</span></li>
+          <li>Live monitoring <span class="badge hold">right now, not the roll-up</span></li>
+          <li>Sign-in &amp; session</li>
+        </ul>
+      </div>
+    </div>
+    <div class="slot below">
+      <h3>Below the pillars · peers, not a fourth pillar</h3>
+      <ul>
+        <li>Reporting &amp; Analytics <span class="badge report">home</span> — incidents, downtime length, presets run, latency, failing vs working commands, 24h / 7d / 30d. CoreX Health as a short “if you want the system detail,” or held out.</li>
+        <li>In-product support <span class="badge same">stays its own block</span> — help is a different job from reading how the property has been running.</li>
+      </ul>
+    </div>
+  </div>
+  <dl class="fit">
+    <div><dt>Fork</dt><dd>Before the pillars. Pillar count stays three.</dd></div>
+    <div><dt>Control theme</dt><dd>Headline is untouched. The band is subordinate to it.</dd></div>
+    <div><dt>Honesty</dt><dd>Only the map feeling and the version-one line are ready. Real-time “fixed” waits.</dd></div>
+    <div><dt>Nesting handoff</dt><dd>Tunnel, Gantt, outside-change, and staff chat stay on the nesting comps.</dd></div>
+  </dl>
+</section>
+
+<section class="scheme alt" id="s2">
+  <h2>2 · A section before the pillars <span class="tag run">Runner-up</span> <span class="tag">Before pillars</span></h2>
+  <p class="note">Use if scheme 1 is too small for “performance is at the heart.” Still not a pillar rethink. Reporting moves up into the before-block because Jane wants analytics next to the performance story. The block has to stay visibly shorter and quieter than the three pillars.</p>
+  <div class="skel">
+    <div class="slot perf">
+      <h3>Above the pillars · “how it’s running” section</h3>
+      <ul>
+        <li><span class="badge perf">Claim</span> Same two or three qualitative lines as scheme 1, under the control headline.</li>
+        <li><span class="badge report">Home</span> Reporting &amp; Analytics is the body of this section: operator roll-ups, not CoreX Health as the lead.</li>
+        <li><span class="badge webgl">Pointer</span> One line to the map. Full WebGL treatment stays under View.</li>
+        <li>Section job, in structure language only: see how the property is running, and trust the tool while you program it. That sentence is a placement note, not copy.</li>
+      </ul>
+    </div>
+    <div class="cols">
+      <div class="col p1">
+        <h3><span class="num">01</span><span class="pname">Guest experience</span></h3>
+        <ul><li>Unchanged. No speed claims.</li></ul>
+      </div>
+      <div class="col p2">
+        <h3><span class="num">02</span><span class="pname">Your view</span></h3>
+        <ul><li>WebGL on Live map <span class="badge webgl">home</span></li></ul>
+      </div>
+      <div class="col p3">
+        <h3><span class="num">03</span><span class="pname">Security</span></h3>
+        <ul><li>Audit and live monitoring stay. Reporting does not join them.</li></ul>
+      </div>
+    </div>
+    <div class="slot below">
+      <h3>Below</h3>
+      <ul><li>In-product support only. Reporting has moved above the pillars.</li></ul>
+    </div>
+  </div>
+  <dl class="fit">
+    <div><dt>Fork</dt><dd>Before the pillars. Pillars stay.</dd></div>
+    <div><dt>Why it is second</dt><dd>Puts a feature (analytics) in the same bucket as a release claim (it runs better). Readers can remember the bucket and miss the control headline.</dd></div>
+    <div><dt>When to promote it</dt><dd>Jane reads scheme 1 and the band feels like a disclaimer instead of the heart of the release.</dd></div>
+    <div><dt>Guardrail</dt><dd>This section stays shorter than the pillar row. It does not become pillar 00.</dd></div>
+  </dl>
+</section>
+
+<section class="scheme" id="s3">
+  <h2>3 · Fourth pillar <span class="tag stop">Do not pick</span> <span class="tag">Rethink pillars</span></h2>
+  <p class="note">The rethink-pillars fork, taken literally. Performance, WebGL, and Reporting become a co-equal fourth pillar. This matches the shape of Jane’s mid-meeting float (support + reporting as a fourth), with performance added on top. It fights the lock.</p>
+  <div class="skel">
+    <div class="slot quiet">
+      <h3>Above the pillars</h3>
+      <ul><li>Control headline only. Performance has been promoted to a pillar, so nothing is “before.”</li></ul>
+    </div>
+    <div class="cols">
+      <div class="col p1">
+        <h3><span class="num">01</span><span class="pname">Guest experience</span></h3>
+        <ul><li>Unchanged, now sharing the row with speed.</li></ul>
+      </div>
+      <div class="col p2">
+        <h3><span class="num">02</span><span class="pname">Your view</span></h3>
+        <ul><li>Live map loses WebGL <span class="badge webgl">moved</span></li></ul>
+      </div>
+      <div class="col p3">
+        <h3><span class="num">03</span><span class="pname">Security</span></h3>
+        <ul><li>Audit, live monitoring, sign-in.</li></ul>
+      </div>
+      <div class="col p4">
+        <h3><span class="num">04</span><span class="pname">Runs better</span></h3>
+        <ul>
+          <li>Version-one line <span class="badge perf">claim</span></li>
+          <li>Real-time connection <span class="badge perf">claim</span></li>
+          <li>WebGL <span class="badge webgl">pulled off the map</span></li>
+          <li>Reporting &amp; Analytics <span class="badge report">home</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="slot below">
+      <h3>Below</h3>
+      <ul><li>In-product support, unless it is also dragged into pillar 04.</li></ul>
+    </div>
+  </div>
+  <dl class="fit">
+    <div><dt>Fork</dt><dd>Rethinks the pillars. Count goes to four.</dd></div>
+    <div><dt>Why it loses</dt><dd>A fourth benefit beside “programming in your hands” becomes a second theme. WebGL leaves the map, which is where someone will look for how the map behaves.</dd></div>
+    <div><dt>What to salvage</dt><dd>Her instinct that support and reporting cut across the three pillars. Scheme 1 keeps them below the row, which is where she and Richard finished the meeting (“separate things down here”).</dd></div>
+  </dl>
+</section>
+
+<section class="scheme" id="s4">
+  <h2>4 · Weave performance through the three pillars <span class="tag stop">Do not pick</span> <span class="tag">Rethink pillars</span></h2>
+  <p class="note">The other rethink: keep three titles, and give each pillar its own “this also runs better” beat, because everything performs better. Richard did not attest a per-feature speed gain.</p>
+  <div class="skel">
+    <div class="slot quiet">
+      <h3>Above the pillars</h3>
+      <ul><li>Control headline. No shared performance condition — the claim is repeated inside the cards.</li></ul>
+    </div>
+    <div class="cols">
+      <div class="col p1">
+        <h3><span class="num">01</span><span class="pname">Guest experience</span></h3>
+        <ul><li>Would need a staging / panel speed line <span class="badge perf">not attested</span></li></ul>
+      </div>
+      <div class="col p2">
+        <h3><span class="num">02</span><span class="pname">Your view</span></h3>
+        <ul>
+          <li>WebGL <span class="badge webgl">attested home</span></li>
+          <li>Reporting, if forced into View <span class="badge report">possible, crowded</span></li>
+        </ul>
+      </div>
+      <div class="col p3">
+        <h3><span class="num">03</span><span class="pname">Security</span></h3>
+        <ul>
+          <li>Real-time banner treated as a security feature <span class="badge perf">it is app-wide</span></li>
+          <li>Reporting, if forced into Security <span class="badge report">Jane’s first guess</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="slot below">
+      <h3>Below</h3>
+      <ul><li>In-product support. Reporting has to land in View or Security and makes that column the heavy one.</li></ul>
+    </div>
+  </div>
+  <dl class="fit">
+    <div><dt>Fork</dt><dd>Rethinks what each pillar is about. Titles can stay.</dd></div>
+    <div><dt>Why it loses</dt><dd>Three “faster” lines would be written without Richard. The real-time indicator is not a Security feature. Reporting under Security collapses it into Audit, which he rejected. Reporting under View crowds the map.</dd></div>
+    <div><dt>What is true in it</dt><dd>WebGL belongs in View. Scheme 1 keeps that part and drops the invented beats.</dd></div>
+  </dl>
+</section>
+
+<section class="scheme" id="s5">
+  <h2>5 · Performance heat leaves the Guide <span class="tag rule">Publishing rule</span> <span class="tag">Pillars stay</span></h2>
+  <p class="note">The Guide deep-dive stays on control features. Felt performance is carried by the What’s New two-pager and by email. WebGL and Reporting still need homes on the Guide because they are features, not slogans. Adopt this split inside scheme 1. Do not use it as a reason to leave performance out of the Guide entirely — existing customers reading the deep dive would miss the thing Jane thinks is the heart of the release.</p>
+  <div class="skel">
+    <div class="slot quiet">
+      <h3>Guide</h3>
+      <ul>
+        <li>Three pillars, control headline, no performance band.</li>
+        <li>WebGL still on Live map <span class="badge webgl">feature</span></li>
+        <li>Reporting still below <span class="badge report">feature</span></li>
+      </ul>
+    </div>
+    <div class="cols">
+      <div class="col p1">
+        <h3><span class="num">W</span><span class="pname">What’s New two-pager</span></h3>
+        <ul>
+          <li>A few felt lines: map, connection once confirmed, version-one cleanup.</li>
+          <li>Points into the Guide for the control features.</li>
+          <li>No timings. No Ferrari.</li>
+        </ul>
+      </div>
+      <div class="col p2">
+        <h3><span class="num">E</span><span class="pname">Email</span></h3>
+        <ul>
+          <li>Shortest and warmest.</li>
+          <li>Map responsiveness is the line someone can picture.</li>
+          <li>Ferrari only if Jane wants her metaphor here, with no number beside it.</li>
+        </ul>
+      </div>
+      <div class="col p3">
+        <h3><span class="num">G</span><span class="pname">Guide under scheme 1</span></h3>
+        <ul>
+          <li>Keeps the three-line condition so the deep dive is not silent.</li>
+          <li>Stays cooler than the email.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <dl class="fit">
+    <div><dt>Fork</dt><dd>Does not rethink pillars. Also does not put a performance frame on the Guide by itself.</dd></div>
+    <div><dt>How to use it</dt><dd>As the channel rule under scheme 1, not as the structure pick.</dd></div>
+  </dl>
+</section>
+
+</section>
+
+<section class="block" id="recommend">
+  <h2>Why this ranking</h2>
+  <div class="pad">
+    <p>Scheme 1 is the one that answers Jane’s fork and still obeys the lock. She asked for performance on its own before the pillars, or a rethink of the pillars. Before the pillars is the option that leaves “putting the power of programming in your hands” as the theme. Richard’s own order of operations matches that: the performance sentence is the standard line, and the major goal is that the customer can configure the site in the tool.</p>
+    <p>The band earns its place because one attested difference is easy to feel (the map) and one stability issue is visible enough that he stopped a demo for it (real-time degraded). A Guide that never mentions either will feel, to Jane, like it skipped the heart of the release. A Guide that builds a pillar out of them will feel, to the lock, like speed replaced programming.</p>
+    <p>Scheme 2 is the runner-up because it is the same fork — before, not rethink — with Reporting pulled up next to the claim. That honors her reason for putting analytics in this conversation: the views tell you what is happening and, via latency and incidents, something about how fast. The cost is mixture. Analytics is a place to look. It is not, on this transcript, proof that the release got faster. He never said latency improved. If scheme 2 is chosen, captions have to say “see latency and incidents over 24 hours, 7 days, and 30 days,” and stop there.</p>
+    <p>Scheme 3 loses because a co-equal pillar is a second theme, and because WebGL stops sitting with the map. Scheme 4 loses because it asks for speed sentences Richard did not say, on panels, staging, and sign-in. Scheme 5’s channel split is adopted, not chosen instead: the Guide gets the short honest condition, the two-pager gets a few felt lines, email is allowed to be warmer.</p>
+
+    <p class="kicker" style="margin-top:1rem">Reporting &amp; Analytics — the nest</p>
+    <p>Own section below the pillars, separate from In-product support. He said it is not Audit Trail. It also refused to sit inside one pillar: Jane tried Security, then View; he added guest-experience control; both of them moved it “down here.” A fourth pillar would make insight co-equal with programming. A peer below the row says it cuts across, which is what they said, without a new theme.</p>
+    <p>Lead with the operator job. What is down, how long it was down, how many presets ran, where latency shows up, which commands are failing, across the last day, week, and 30 days. Live monitoring remains the “right now” view (active incidents, recent alerts, online and offline). Reporting is the other views of those sets. CoreX Health — scheduling, optimizing, health events — is the tab he said nobody needs to live in. Give it one subordinate line (“system detail, if you want it”) or leave it out of the Guide until he says operators use it. Do not open the section on it.</p>
+
+    <p class="kicker" style="margin-top:1rem">WebGL — the nest</p>
+    <p>Under Your view, inside Live map flexibility, as a bullet beside the other map behaviors. He described it as why the map technology is better, in the same stretch as other map changes, not as a separate product. Customer sense of the bullet: zoom and pan should feel more responsive because the map uses the graphics card. No frame rate. No claim that LUCI replaces the property’s displays, walls, or controllers.</p>
+    <p>Jane’s alternative — its own card under View — stays available if a bullet cannot carry “fairly significant.” That promotion still happens inside View. It does not move WebGL into the performance band (except the one-line pointer) and it does not move WebGL into Reporting.</p>
+    <p>Real locations on a United States map stay out of this decision. Mike pulled that back. It is not a performance claim.</p>
+
+    <p class="kicker" style="margin-top:1rem">What stays in the control story, not the performance band</p>
+    <p>Site configuration in the tool, bulk add by IP, NovaStar config pull, the central display-model catalog, and licenses pushed from LUCI Hub are programming-in-your-hands. They are easy to file under “Ferrari” or under “you will not need us.” External language is: more of the everyday programming sits with the property, and LUCI stays the partner behind it. Richard’s backend sentence is internal color for that theme. It is not a line to print, and it is not a performance line.</p>
+
+    <p class="kicker" style="margin-top:1rem">If scheme 1 is the pick, nesting can start from here</p>
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr><th>Item</th><th>Where it goes</th><th>Still open on the nesting comps</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Performance claim</td>
+            <td>Three-line condition above the pillars. Not a feature card.</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td>WebGL</td>
+            <td>Live map bullet under View. Own View card only if the bullet is too small.</td>
+            <td>Bullet vs own card</td>
+          </tr>
+          <tr>
+            <td>Reporting &amp; Analytics</td>
+            <td>Peer section below the pillars, not merged with support, not under Audit.</td>
+            <td>No, unless Jane promotes scheme 2</td>
+          </tr>
+          <tr>
+            <td>In-product support</td>
+            <td>Stays full width below. Separate from Reporting.</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td>Private tunnel</td>
+            <td>Not in the performance band.</td>
+            <td>Yes — intro vs security</td>
+          </tr>
+          <tr>
+            <td>Calendar Gantt</td>
+            <td>Not in the performance band.</td>
+            <td>Yes — staging vs view</td>
+          </tr>
+          <tr>
+            <td>Outside-change detection</td>
+            <td>Not a performance feature. Map plus audit, per Richard.</td>
+            <td>Yes — view vs security</td>
+          </tr>
+          <tr>
+            <td>Staff chat</td>
+            <td>Hold. He had not tested the in-app piece.</td>
+            <td>Yes — include only if a test says so</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="channels">
+  <h2>Guide vs What’s New vs email</h2>
+  <div class="scroll">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Upgrade Guide</th>
+          <th>What’s New two-pager</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Job</td>
+          <td>Deep dive for existing customers. Enough detail to answer most AV-side questions.</td>
+          <td>Short orientation. Points at the Guide for control features.</td>
+          <td>Warmest and shortest.</td>
+        </tr>
+        <tr>
+          <td>Performance</td>
+          <td>Condition under the control headline. Qualitative. Real-time “fixed” only after confirmation.</td>
+          <td>A few felt lines, same limits, then the pointer into the Guide.</td>
+          <td>One or two felt lines. Map first.</td>
+        </tr>
+        <tr>
+          <td>Reporting</td>
+          <td>Own section. Operator lead. 24h / 7d / 30d. Not proof of a speed gain.</td>
+          <td>One line and a pointer. Not the dashboard tour.</td>
+          <td>Only if the email is about seeing the property, not as the speed claim.</td>
+        </tr>
+        <tr>
+          <td>WebGL</td>
+          <td>Live map bullet. Graphics card, more responsive zoom and pan.</td>
+          <td>One line someone can picture.</td>
+          <td>The concrete line.</td>
+        </tr>
+        <tr>
+          <td>Ferrari</td>
+          <td>Leave out.</td>
+          <td>Leave out.</td>
+          <td>Only if Jane chooses it. No figure next to it.</td>
+        </tr>
+        <tr>
+          <td>Partnership</td>
+          <td>More programming in the customer’s hands. LUCI stays behind them.</td>
+          <td>Same.</td>
+          <td>Same. The backend anecdote stays internal.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="block" id="risks">
+  <h2>Risks</h2>
+  <div class="pad">
+    <div class="grid-2">
+      <div class="mini">
+        <h3>Ferrari, or “faster load,” without a figure</h3>
+        <p>Both sound like a spec. Load time is Jane’s description of the release. It is not in the transcript. A customer who times the app and finds no change will trust the rest of the Guide less. The internal test is fair: does this release respond better in the hand. The public word for that, until Richard signs a number, is the map sentence he already said.</p>
+      </div>
+      <div class="mini">
+        <h3>The condition outranks the control theme</h3>
+        <p>If the band is louder than “programming in your hands,” or if scheme 3’s fourth pillar ships, performance becomes the theme. Richard ranked the configuration goal as the major one and performance as the standard line. Scheme 2 has the same risk if the before-block grows taller than the pillars.</p>
+      </div>
+      <div class="mini">
+        <h3>Reporting opens on CoreX Health</h3>
+        <p>He called CoreX Health nerdy and said nobody needs to live there. Overview, maybe, if they want it. Opening on health events teaches the section as an engineer console. Opening on incidents, downtime, presets, and latency teaches it as a way to run the property. Jane’s reason for including analytics — know what is happening, and how fast — is the operator reading, and it survives without the health tab in the lead.</p>
+      </div>
+      <div class="mini">
+        <h3>“Fixed in the latest” copied straight into the Guide</h3>
+        <p>He said the establishing-connection / real-time-degraded behavior is fixed in the latest build. The same meeting still showed that indicator, and a signed-in user missing from active sessions. Publishing “fixed” before he confirms the customer build advertises a demo the recording contradicts.</p>
+      </div>
+      <div class="mini">
+        <h3>Control copy that reads as LUCI stepping back</h3>
+        <p>“You don’t have to call Richard and Nathan” is the internal version of the theme. Printed, it says the partnership shrank. The external version is more of the everyday programming in the customer’s hands, with LUCI still behind the property. That sentence belongs to the control story, not to a speed banner.</p>
+      </div>
+      <div class="mini">
+        <h3>WebGL as a replacement claim, or Audit mixed with Reporting</h3>
+        <p>WebGL is how LUCI draws the map. It does not replace the property’s screens, walls, or controllers. Audit Trail is who changed what. Reporting is the roll-up. He separated them on the call. Mixing them sends people looking for charts inside Audit, or looking for the map story inside Analytics.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="questions">
+  <h2>Open questions for Jane and Richard</h2>
+  <div class="pad">
+    <ol class="q">
+      <li><strong>Measurements.</strong> Will Richard sign any number — load time, map responsiveness, command latency — and for which surface? Until he does, the Guide, the two-pager, and email stay qualitative.</li>
+      <li><strong>What “real-time” means externally.</strong> The degraded banner gone, session presence updating, dashboard incidents staying current, or all three? Is the fix in the build this Guide describes? If he will not confirm it this week, scheme 1 ships with the version-one line and the map pointer only.</li>
+      <li><strong>Version-one list.</strong> Is the general line enough, or is there a short list of cleaned-up issues he will stand behind in front of a customer? The panel-settings save failure and the CoreX audio glitch from this meeting are not that list.</li>
+      <li><strong>CoreX Health in the Guide.</strong> Subordinate line, or absent until operators are actually using it?</li>
+      <li><strong>The word “latency.”</strong> Fine for this audience (AV-side, his word), or does the section need “how long actions take” beside it?</li>
+      <li><strong>WebGL weight.</strong> Bullet on Live map, or its own card under View? Placement column is decided either way: View, not the performance band, not Reporting.</li>
+      <li><strong>Ferrari.</strong> Internal name only, or one email line Jane writes herself? Guide and two-pager stay without it.</li>
+      <li><strong>Pillar titles before anyone nests further.</strong> Confirm Guest experience / Your view / Security, or the benefit-led See and secure / Program and stage / Operate deeply. Performance placement does not change. Feature nesting labels will.</li>
+      <li><strong>Screenshots.</strong> He did not want “establishing connection” in the picture. Jane planned a fan of report views, not a full screen. Which operator views are safe to show?</li>
+      <li><strong>Partnership sentence.</strong> Who signs the external line for site configuration, so “more in your hands” cannot be read as reduced LUCI support?</li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer class="page">
+  Internal review for Jane, 5 Oct 2026. Sources: Richard working session the same day; current pillar-nesting comps; locked theme “putting the power of programming in your hands.” Draft recommendation only. Live Upgrade Guide pages, guide data, and site navigation are unchanged. Repo copy: <code>docs/upgrade-guide-performance-theme-options.md</code>.
+</footer>
+</body>
+</html>

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Upgrade Guide — pillar nesting options</title>
+<style>
+  :root {
+    --bg: #0f1419;
+    --card: #1a222c;
+    --ink: #e8eef4;
+    --muted: #9aa8b5;
+    --line: #2a3542;
+    --p1: #3d8bfd;
+    --p2: #34c38f;
+    --p3: #f0ad4e;
+    --below: #a78bfa;
+    --intro: #f472b6;
+    --new: #fb923c;
+    --move: #38bdf8;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+    background: var(--bg); color: var(--ink); line-height: 1.45;
+  }
+  header {
+    position: sticky; top: 0; z-index: 5;
+    background: rgba(15,20,25,.94); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line); padding: 1rem 1.25rem;
+  }
+  header h1 { margin: 0 0 .35rem; font-size: 1.15rem; font-weight: 650; }
+  header p { margin: 0; color: var(--muted); font-size: .9rem; max-width: 70rem; }
+  .legend {
+    display: flex; flex-wrap: wrap; gap: .5rem .85rem; margin-top: .75rem; font-size: .78rem; color: var(--muted);
+  }
+  .legend span { display: inline-flex; align-items: center; gap: .35rem; }
+  .dot { width: .65rem; height: .65rem; border-radius: 999px; display: inline-block; }
+  main { padding: 1.25rem; display: grid; gap: 1.25rem; max-width: 78rem; margin: 0 auto; }
+  .scheme {
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden;
+  }
+  .scheme > h2 {
+    margin: 0; padding: .85rem 1rem; font-size: 1rem; border-bottom: 1px solid var(--line);
+    display: flex; flex-wrap: wrap; gap: .5rem .75rem; align-items: baseline;
+  }
+  .scheme > h2 .tag {
+    font-size: .72rem; font-weight: 600; letter-spacing: .03em; text-transform: uppercase;
+    color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: .15rem .55rem;
+  }
+  .scheme .note { padding: 0 1rem .75rem; color: var(--muted); font-size: .85rem; margin: 0; }
+  .cols {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(15.5rem, 1fr));
+    gap: 0; border-top: 1px solid var(--line);
+  }
+  .col { padding: .85rem 1rem 1rem; border-right: 1px solid var(--line); }
+  .col:last-child { border-right: none; }
+  .col h3 {
+    margin: 0 0 .55rem; font-size: .78rem; text-transform: uppercase; letter-spacing: .04em;
+    display: flex; gap: .4rem; align-items: center;
+  }
+  .col h3 .num {
+    font-size: .7rem; font-weight: 700; width: 1.35rem; height: 1.35rem; border-radius: 6px;
+    display: inline-grid; place-items: center; color: #0b1220;
+  }
+  .p1 .num { background: var(--p1); } .p2 .num { background: var(--p2); }
+  .p3 .num { background: var(--p3); } .below .num { background: var(--below); color: #1a1028; }
+  .intro .num { background: var(--intro); color: #2a1020; }
+  .col .pname { color: var(--ink); font-size: .82rem; font-weight: 600; text-transform: none; letter-spacing: 0; margin-left: .15rem; }
+  ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .4rem; }
+  li {
+    background: #121820; border: 1px solid var(--line); border-radius: 8px;
+    padding: .45rem .55rem; font-size: .84rem;
+  }
+  li .name { font-weight: 600; }
+  li .sub { color: var(--muted); font-size: .75rem; margin-top: .2rem; }
+  li ul.kids { margin-top: .35rem; gap: .25rem; }
+  li ul.kids li {
+    background: #0d1218; font-size: .78rem; font-weight: 500; padding: .3rem .45rem;
+  }
+  .badge {
+    display: inline-block; font-size: .65rem; font-weight: 700; letter-spacing: .03em;
+    text-transform: uppercase; border-radius: 4px; padding: .08rem .35rem; margin-left: .3rem;
+    vertical-align: middle;
+  }
+  .badge.new { background: rgba(251,146,60,.2); color: var(--new); }
+  .badge.move { background: rgba(56,189,248,.18); color: var(--move); }
+  .badge.keep { background: rgba(148,163,184,.15); color: #94a3b8; }
+  footer { padding: 0 1.25rem 2rem; max-width: 78rem; margin: 0 auto; color: var(--muted); font-size: .8rem; }
+  a { color: #7dd3fc; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Upgrade Guide — feature nesting options</h1>
+  <p>Baseline is what’s live on the Guide today. Candidates from the Oct 5 Richard review sit next to that so you can see overcrowding before you pick a structure. Structure only — no new marketing copy.</p>
+  <div class="legend">
+    <span><i class="dot" style="background:var(--new)"></i> New / not on Guide yet</span>
+    <span><i class="dot" style="background:var(--move)"></i> Propose move from current home</span>
+    <span><i class="dot" style="background:#94a3b8"></i> Already nested here</span>
+  </div>
+</header>
+<main>
+
+<section class="scheme" id="current">
+  <h2>0 · Current Guide <span class="tag">Baseline</span></h2>
+  <p class="note">What ships today. Tunnel is still a bullet under Sign-in. Reporting, Gantt, WebGL, outside-change, and staff chat are not placed yet.</p>
+  <div class="cols">
+    <div class="col p1">
+      <h3><span class="num">01</span><span class="pname">Greater control of the guest experience</span></h3>
+      <ul>
+        <li><span class="name">Venue panels</span><span class="badge keep">keep</span></li>
+        <li><span class="name">Staging</span><span class="badge keep">keep</span><div class="sub">→ rename Staging and Presets</div></li>
+        <li><span class="name">Audio group control</span><span class="badge keep">keep</span></li>
+      </ul>
+    </div>
+    <div class="col p2">
+      <h3><span class="num">02</span><span class="pname">Flexible control of your view</span></h3>
+      <ul>
+        <li><span class="name">Customizable interface</span><span class="badge keep">keep</span></li>
+        <li>
+          <span class="name">Live map flexibility</span><span class="badge keep">keep</span>
+          <ul class="kids">
+            <li>Load / replace floor plans</li>
+            <li>Keep maps current</li>
+            <li>Open facing operator <em>(meeting: replace with save map position)</em></li>
+            <li>Live device state on map</li>
+          </ul>
+        </li>
+        <li><span class="name">Live screen view</span><span class="badge keep">keep</span></li>
+      </ul>
+    </div>
+    <div class="col p3">
+      <h3><span class="num">03</span><span class="pname">Deeper control over security</span></h3>
+      <ul>
+        <li><span class="name">Audit trails</span><span class="badge keep">keep</span></li>
+        <li><span class="name">Live monitoring</span><span class="badge keep">keep</span></li>
+        <li>
+          <span class="name">Sign-in &amp; session control</span><span class="badge keep">keep</span>
+          <ul class="kids">
+            <li>Email / PIN / Entra</li>
+            <li>Active sessions / sign-out / banner</li>
+            <li>Private tunnel <em>(Richard: doesn’t belong here)</em></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="col below">
+      <h3><span class="num">↓</span><span class="pname">Below pillars today</span></h3>
+      <ul>
+        <li><span class="name">In-product support</span><span class="badge keep">keep</span><div class="sub">Spotlight under the three pillars</div></li>
+      </ul>
+      <h3 style="margin-top:1rem"><span class="num">?</span><span class="pname">Not nested yet</span></h3>
+      <ul>
+        <li><span class="name">Reporting &amp; Analytics</span><span class="badge new">new</span></li>
+        <li><span class="name">Calendar Gantt view</span><span class="badge new">new</span></li>
+        <li><span class="name">WebGL map performance</span><span class="badge new">new</span></li>
+        <li><span class="name">Outside-change detection</span><span class="badge new">new</span></li>
+        <li><span class="name">Staff chat (in-app)</span><span class="badge new">new</span><div class="sub">Hold until test</div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="scheme" id="a">
+  <h2>A · Three pillars + peer sections below <span class="tag">Room’s late close</span></h2>
+  <p class="note">Support + Reporting as peers under the pillars. Tunnel to intro. Gantt under Staging. Live Map keeps its bullets + WebGL + save-position swap. Outside-change under Audit / Security.</p>
+  <div class="cols">
+    <div class="col intro">
+      <h3><span class="num">↑</span><span class="pname">Guide intro (not a feature card)</span></h3>
+      <ul>
+        <li><span class="name">Private tunnel</span><span class="badge move">move</span><div class="sub">Out of Sign-in · general IT/buyer line</div></li>
+      </ul>
+    </div>
+    <div class="col p1">
+      <h3><span class="num">01</span><span class="pname">Guest experience</span></h3>
+      <ul>
+        <li><span class="name">Venue panels</span></li>
+        <li>
+          <span class="name">Staging and Presets</span>
+          <ul class="kids">
+            <li>Existing staging story</li>
+            <li>Calendar Gantt view <span class="badge new">new</span></li>
+          </ul>
+        </li>
+        <li><span class="name">Audio group control</span></li>
+      </ul>
+    </div>
+    <div class="col p2">
+      <h3><span class="num">02</span><span class="pname">Your view</span></h3>
+      <ul>
+        <li><span class="name">Customizable interface</span></li>
+        <li>
+          <span class="name">Live map flexibility</span>
+          <ul class="kids">
+            <li>Load / replace floor plans</li>
+            <li>Keep maps current</li>
+            <li>Save map position <span class="badge move">swap</span></li>
+            <li>Live device state</li>
+            <li>WebGL performance <span class="badge new">new</span></li>
+          </ul>
+        </li>
+        <li><span class="name">Live screen view</span></li>
+      </ul>
+    </div>
+    <div class="col p3">
+      <h3><span class="num">03</span><span class="pname">Security</span></h3>
+      <ul>
+        <li>
+          <span class="name">Audit trails</span>
+          <ul class="kids">
+            <li>Outside-change detection <span class="badge new">new</span></li>
+          </ul>
+        </li>
+        <li><span class="name">Live monitoring</span></li>
+        <li>
+          <span class="name">Sign-in &amp; session</span>
+          <ul class="kids">
+            <li>No tunnel line here</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="col below">
+      <h3><span class="num">↓</span><span class="pname">Peer sections below</span></h3>
+      <ul>
+        <li><span class="name">Reporting &amp; Analytics</span><span class="badge new">new</span></li>
+        <li><span class="name">In-product support</span></li>
+        <li><span class="name">Staff chat</span><span class="badge new">new</span><div class="sub">Only if test says include · else omit</div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="scheme" id="b">
+  <h2>B · Fourth pillar for Support + Reporting <span class="tag">Your mid-meeting float</span></h2>
+  <p class="note">Same nesting for Tunnel / Gantt / Live Map / outside-change as A, but Support + Reporting become pillar 04 instead of “down here.”</p>
+  <div class="cols">
+    <div class="col intro">
+      <h3><span class="num">↑</span><span class="pname">Intro</span></h3>
+      <ul><li><span class="name">Private tunnel</span><span class="badge move">move</span></li></ul>
+    </div>
+    <div class="col p1">
+      <h3><span class="num">01</span><span class="pname">Guest experience</span></h3>
+      <ul>
+        <li><span class="name">Venue panels</span></li>
+        <li><span class="name">Staging and Presets</span>
+          <ul class="kids"><li>Calendar Gantt <span class="badge new">new</span></li></ul>
+        </li>
+        <li><span class="name">Audio group control</span></li>
+      </ul>
+    </div>
+    <div class="col p2">
+      <h3><span class="num">02</span><span class="pname">Your view</span></h3>
+      <ul>
+        <li><span class="name">Customizable interface</span></li>
+        <li><span class="name">Live map flexibility</span>
+          <ul class="kids">
+            <li>Floor plans / current / save position / live state</li>
+            <li>WebGL performance <span class="badge new">new</span></li>
+          </ul>
+        </li>
+        <li><span class="name">Live screen view</span></li>
+      </ul>
+    </div>
+    <div class="col p3">
+      <h3><span class="num">03</span><span class="pname">Security</span></h3>
+      <ul>
+        <li><span class="name">Audit trails</span> + outside-change <span class="badge new">new</span></li>
+        <li><span class="name">Live monitoring</span></li>
+        <li><span class="name">Sign-in &amp; session</span> (no tunnel)</li>
+      </ul>
+    </div>
+    <div class="col below">
+      <h3><span class="num">04</span><span class="pname">Support &amp; insight <em>(new pillar)</em></span></h3>
+      <ul>
+        <li><span class="name">Reporting &amp; Analytics</span><span class="badge new">new</span></li>
+        <li><span class="name">In-product support</span><span class="badge move">move up</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="scheme" id="c">
+  <h2>C · Nest Reporting + tunnel into existing pillars <span class="tag">Early Security / View guesses</span></h2>
+  <p class="note">No peer sections added. Reporting under Security (or swap to View — marked). Tunnel stays related to Sign-in/security story. Support stays below as today. Heavier Security column.</p>
+  <div class="cols">
+    <div class="col p1">
+      <h3><span class="num">01</span><span class="pname">Guest experience</span></h3>
+      <ul>
+        <li><span class="name">Venue panels</span></li>
+        <li><span class="name">Staging and Presets</span>
+          <ul class="kids"><li>Calendar Gantt <span class="badge new">new</span></li></ul>
+        </li>
+        <li><span class="name">Audio group control</span></li>
+      </ul>
+    </div>
+    <div class="col p2">
+      <h3><span class="num">02</span><span class="pname">Your view</span></h3>
+      <ul>
+        <li><span class="name">Customizable interface</span></li>
+        <li><span class="name">Live map flexibility</span>
+          <ul class="kids">
+            <li>Floor plans / save position / live state</li>
+            <li>WebGL performance <span class="badge new">new</span></li>
+          </ul>
+        </li>
+        <li><span class="name">Live screen view</span></li>
+        <li><span class="name">Reporting &amp; Analytics</span><span class="badge new">new</span><div class="sub">Alt home if you prefer View over Security</div></li>
+      </ul>
+    </div>
+    <div class="col p3">
+      <h3><span class="num">03</span><span class="pname">Security</span></h3>
+      <ul>
+        <li><span class="name">Audit trails</span> + outside-change</li>
+        <li><span class="name">Live monitoring</span></li>
+        <li><span class="name">Sign-in &amp; session</span></li>
+        <li><span class="name">Private tunnel</span><span class="badge keep">keep near</span><div class="sub">Or own bullet under this pillar, not under Sign-in</div></li>
+        <li><span class="name">Reporting &amp; Analytics</span><span class="badge new">new</span><div class="sub">Primary nest in this scheme</div></li>
+      </ul>
+    </div>
+    <div class="col below">
+      <h3><span class="num">↓</span><span class="pname">Below</span></h3>
+      <ul>
+        <li><span class="name">In-product support</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="scheme" id="d">
+  <h2>D · Gantt under View · WebGL as its own View feature <span class="tag">Alternate map/calendar split</span></h2>
+  <p class="note">Same “below” treatment as A for Support + Reporting + tunnel-in-intro, but calendar Gantt rides with View (control over what you see of the schedule) and WebGL is a sibling feature under View instead of a Live Map bullet.</p>
+  <div class="cols">
+    <div class="col intro">
+      <h3><span class="num">↑</span><span class="pname">Intro</span></h3>
+      <ul><li><span class="name">Private tunnel</span><span class="badge move">move</span></li></ul>
+    </div>
+    <div class="col p1">
+      <h3><span class="num">01</span><span class="pname">Guest experience</span></h3>
+      <ul>
+        <li><span class="name">Venue panels</span></li>
+        <li><span class="name">Staging and Presets</span><div class="sub">No Gantt here</div></li>
+        <li><span class="name">Audio group control</span></li>
+      </ul>
+    </div>
+    <div class="col p2">
+      <h3><span class="num">02</span><span class="pname">Your view</span></h3>
+      <ul>
+        <li><span class="name">Customizable interface</span></li>
+        <li>
+          <span class="name">Live map flexibility</span>
+          <ul class="kids">
+            <li>Load / replace floor plans</li>
+            <li>Keep maps current</li>
+            <li>Save map position <span class="badge move">swap</span></li>
+            <li>Live device state</li>
+          </ul>
+        </li>
+        <li><span class="name">WebGL map performance</span><span class="badge new">new</span><div class="sub">Own feature card under View</div></li>
+        <li><span class="name">Live screen view</span></li>
+        <li><span class="name">Scheduling calendar (Gantt)</span><span class="badge new">new</span></li>
+      </ul>
+    </div>
+    <div class="col p3">
+      <h3><span class="num">03</span><span class="pname">Security</span></h3>
+      <ul>
+        <li><span class="name">Audit trails</span> + outside-change</li>
+        <li><span class="name">Live monitoring</span></li>
+        <li><span class="name">Sign-in &amp; session</span> (no tunnel)</li>
+      </ul>
+    </div>
+    <div class="col below">
+      <h3><span class="num">↓</span><span class="pname">Peer sections below</span></h3>
+      <ul>
+        <li><span class="name">Reporting &amp; Analytics</span><span class="badge new">new</span></li>
+        <li><span class="name">In-product support</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="scheme" id="e">
+  <h2>E · Lean pillars · one-liners tray <span class="tag">Matches “small additions” intent</span></h2>
+  <p class="note">Pillars stay at three features each (current set, with Live Map bullet updates only). Support + Reporting below. Everything else (Gantt, WebGL, outside-change, tunnel, display walls, etc.) goes in a short “Also in this upgrade” one-liner tray — not nested as full feature cards.</p>
+  <div class="cols">
+    <div class="col p1">
+      <h3><span class="num">01</span><span class="pname">Guest experience</span></h3>
+      <ul>
+        <li><span class="name">Venue panels</span></li>
+        <li><span class="name">Staging and Presets</span></li>
+        <li><span class="name">Audio group control</span></li>
+      </ul>
+    </div>
+    <div class="col p2">
+      <h3><span class="num">02</span><span class="pname">Your view</span></h3>
+      <ul>
+        <li><span class="name">Customizable interface</span></li>
+        <li><span class="name">Live map flexibility</span>
+          <ul class="kids">
+            <li>Floor plans / current / <strong>save position</strong> / live state</li>
+          </ul>
+        </li>
+        <li><span class="name">Live screen view</span></li>
+      </ul>
+    </div>
+    <div class="col p3">
+      <h3><span class="num">03</span><span class="pname">Security</span></h3>
+      <ul>
+        <li><span class="name">Audit trails</span></li>
+        <li><span class="name">Live monitoring</span></li>
+        <li><span class="name">Sign-in &amp; session</span> (no tunnel)</li>
+      </ul>
+    </div>
+    <div class="col below">
+      <h3><span class="num">↓</span><span class="pname">Below + tray</span></h3>
+      <ul>
+        <li><span class="name">Reporting &amp; Analytics</span><span class="badge new">new</span></li>
+        <li><span class="name">In-product support</span></li>
+        <li>
+          <span class="name">Also in this upgrade (one-liners)</span><span class="badge new">new</span>
+          <ul class="kids">
+            <li>Private tunnel</li>
+            <li>Calendar Gantt</li>
+            <li>WebGL map performance</li>
+            <li>Outside-change detection</li>
+            <li>+ other UG-38–55 one-liners</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer>
+  Source: live <code>upgradeGuide.ts</code> pillars + Oct 5 Richard transcript / action breakdown.
+  File: <code>richard-oct5-upgrade-followups/pillar-nesting-options.html</code>.
+  Weatherby holds UG-02 until you pick (or mix) a scheme.
+</footer>
+</body>
+</html>

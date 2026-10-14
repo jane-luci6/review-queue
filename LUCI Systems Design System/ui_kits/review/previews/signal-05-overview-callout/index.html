@@ -1,0 +1,39 @@
+<!doctype html><html><head><meta charset="utf-8"><title>DRAFT · Signal 05 overview callout + nav highlight</title>
+<style>body{margin:0;font-family:system-ui,sans-serif;background:#eef2f4;color:#13232c}header{padding:18px 24px;background:#0B2A3A;color:#fff}header p{margin:4px 0 0;opacity:.8;font-size:14px}
+.wrap{display:grid;grid-template-columns:minmax(320px,420px) 1fr;gap:18px;padding:18px}.cards h3{margin:8px 0}
+.card{display:block;width:100%;text-align:left;font:inherit;color:inherit;cursor:pointer;background:#fff;border-radius:10px;padding:12px 14px;margin:0 0 10px;border:2px solid transparent}.card:hover{border-color:#9fd9c4}.card.on{border-color:#2bb88a;box-shadow:0 0 0 3px rgba(43,184,138,.2)}.card.on h4::after{content:" ✓ showing";color:#2bb88a;font-size:12px}.card h4{margin:0 0 6px}
+dl{margin:0;font-size:14px}dt{font-weight:700;font-size:11px;text-transform:uppercase;color:#5a7380;margin-top:6px}dd{margin:0}
+iframe{width:100%;height:calc(100vh - 120px);border:0;border-radius:10px;background:#fff}.note{font-size:13px;background:#fff8e1;padding:10px;border-radius:8px}</style></head><body>
+<header><strong>DRAFT for Jane — Signal Issue 05: overview callout + nav highlight</strong><p>Nothing live changed. Copy by GPT (Cursor CLI). Click any option to swap it into the issue on the right. All CTAs link to https://www.lucisystems.com/product-briefs/luci-upgrade-overview</p></header>
+<div class="wrap"><div class="cards">
+<p class="note"><b>Placement:</b> callout moved up one section — end of the Quick Tip, directly before What's Coming (was end of What's Coming, before A Minute with Mike).<br><b>Nav highlight:</b> featured row at top of "In this issue". <b>Email:</b> the AC email uses this same HTML, so the same callout + nav carry over.<br><b>Note:</b> option B's "Download PDF" would need to point at the PDF, not the page.</p>
+<p id="status" style="font-size:13px;font-weight:600">Showing: Callout A · Nav A</p>
+<h3>Callout copy</h3><button type="button" class="card" data-kind="c" data-key="A"><h4>Callout A</h4><dl><dt>title</dt><dd>New LUCI Overview</dd><dt>sub</dt><dd>Two pages your team can align on.</dd><dt>text</dt><dd>Get the official rundown of the new LUCI—core capabilities, what’s changing, and how “the power of programming” shifts more day-to-day control to your team, with LUCI still accountable for planning, monitoring, and support.</dd><dt>button</dt><dd>Read the Overview</dd></dl></button><button type="button" class="card" data-kind="c" data-key="B"><h4>Callout B</h4><dl><dt>title</dt><dd>Built to Share</dd><dt>sub</dt><dd>A clear reference for ops and A/V.</dd><dt>text</dt><dd>Download the New LUCI Overview PDF for a finished, detailed summary of platform features and workflows. It’s designed to help your team use programming with confidence—while LUCI remains your partner for oversight, monitoring, and support.</dd><dt>button</dt><dd>Download PDF</dd></dl></button><button type="button" class="card" data-kind="c" data-key="C"><h4>Callout C</h4><dl><dt>title</dt><dd>Programming, Made Practical</dd><dt>sub</dt><dd>See what control looks like in LUCI.</dd><dt>text</dt><dd>The New LUCI Overview lays out the updated feature set and how your team can run more of the day-to-day through programming. Keep it handy as a shared baseline—LUCI stays with you for planning, monitoring, and support.</dd><dt>button</dt><dd>Explore Overview</dd></dl></button>
+<h3>Nav highlight</h3><button type="button" class="card" data-kind="n" data-key="A"><h4>Nav A</h4><dl><dt>label</dt><dd>Overview</dd><dt>text</dt><dd>Official guide to the new LUCI</dd><dt>cta</dt><dd>View</dd></dl></button><button type="button" class="card" data-kind="n" data-key="B"><h4>Nav B</h4><dl><dt>label</dt><dd>PDF</dd><dt>text</dt><dd>Two-page LUCI feature summary</dd><dt>cta</dt><dd>Download</dd></dl></button><button type="button" class="card" data-kind="n" data-key="C"><h4>Nav C</h4><dl><dt>label</dt><dd>Control</dd><dt>text</dt><dd>Put programming in your hands</dd><dt>cta</dt><dd>Read</dd></dl></button>
+</div><iframe id="issue" src="issue-option-a.html"></iframe></div>
+<script>
+const OPTS={"callout": {"A": {"title": "New LUCI Overview", "sub": "Two pages your team can align on.", "text": "Get the official rundown of the new LUCI\u2014core capabilities, what\u2019s changing, and how \u201cthe power of programming\u201d shifts more day-to-day control to your team, with LUCI still accountable for planning, monitoring, and support.", "button": "Read the Overview"}, "B": {"title": "Built to Share", "sub": "A clear reference for ops and A/V.", "text": "Download the New LUCI Overview PDF for a finished, detailed summary of platform features and workflows. It\u2019s designed to help your team use programming with confidence\u2014while LUCI remains your partner for oversight, monitoring, and support.", "button": "Download PDF"}, "C": {"title": "Programming, Made Practical", "sub": "See what control looks like in LUCI.", "text": "The New LUCI Overview lays out the updated feature set and how your team can run more of the day-to-day through programming. Keep it handy as a shared baseline\u2014LUCI stays with you for planning, monitoring, and support.", "button": "Explore Overview"}}, "nav": {"A": {"label": "Overview", "text": "Official guide to the new LUCI", "cta": "View"}, "B": {"label": "PDF", "text": "Two-page LUCI feature summary", "cta": "Download"}, "C": {"label": "Control", "text": "Put programming in your hands", "cta": "Read"}}};
+const q=new URLSearchParams(location.search);
+const sel={c:(q.get('c')||'A').toUpperCase(),n:(q.get('n')||'A').toUpperCase()};
+const fr=document.getElementById('issue');
+function apply(){
+  const d=fr.contentDocument; if(!d||!d.querySelector('.take-a-look')) return false;
+  const c=OPTS.callout[sel.c], n=OPTS.nav[sel.n], t=d.querySelector('.take-a-look');
+  t.querySelector('.take-a-look__title').textContent=c.title;
+  t.querySelector('.take-a-look__sub').textContent=c.sub;
+  t.querySelector('.take-a-look__text').textContent=c.text;
+  t.querySelector('.take-a-look__link').innerHTML='';
+  t.querySelector('.take-a-look__link').append(c.button+' →');
+  const s=d.querySelectorAll('.toc-feature > span');
+  s[0].textContent=n.label; s[1].textContent=n.text; s[2].textContent=n.cta+' →';
+  d.documentElement.setAttribute('data-sel','c'+sel.c+'-n'+sel.n);
+  return true;
+}
+function render(){
+  document.querySelectorAll('.card').forEach(b=>b.classList.toggle('on',sel[b.dataset.kind]===b.dataset.key));
+  document.getElementById('status').textContent='Showing: Callout '+sel.c+' · Nav '+sel.n;
+  apply();
+}
+document.querySelectorAll('.card').forEach(b=>b.addEventListener('click',()=>{sel[b.dataset.kind]=b.dataset.key;render();}));
+fr.addEventListener('load',render); render();
+</script></body></html>
