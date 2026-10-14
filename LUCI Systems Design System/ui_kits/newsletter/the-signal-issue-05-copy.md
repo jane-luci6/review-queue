@@ -4,7 +4,14 @@
 
 ## Draft status
 
-First draft for Mike review on October 9, 2026. Copy only. GLM will place approved copy into the existing Issue 05 shell in a separate step.
+Synced to the live issue on October 14, 2026 (Webflow `/the-signal/issue-05`, `the-signal-issue-05-october-2026.html`). This deck now matches published copy.
+
+**Email (ActiveCampaign):**
+
+- **Subject:** The Signal — Issue 05: Keep the Work Connected
+- **Preheader:** 10+ years with Osage, the official overview of the new LUCI, a Quick Tip, and a Minute with Mike.
+- **Campaign name:** The Signal — Issue 05 (October 2026)
+- **From:** Michael Epstein
 
 ---
 
@@ -22,18 +29,18 @@ A complex A/V project passes through many hands—from architects and contractor
 
 Continuity keeps that plan connected from early design through daily operation. LUCI provides the foundation and a team that stays involved, so each expansion can build on what is already working instead of adding another system to manage.
 
-This issue shows that continuity at work: nine years with Osage Casino Hotel, design services included with every LUCI subscription, practical operating advice, and the next version of LUCI extending your own control so you can provide a consistent customer experience.
+This issue shows that continuity at work: more than a decade with Osage Casino Hotels, design services included with every LUCI subscription, practical operating advice, and the next version of LUCI extending your own control so you can provide a consistent customer experience.
 
 **TOC labels:**
 
+- New · Official overview of the new LUCI → View
 1. 01 · LUCI Project Update
 2. 02 · In the field
-3. 03 · Design with LUCI
-4. Inside LUCI
-5. 04 · When presets share a TV
-6. 05 · What’s coming
-7. 06 · A Minute with Mike
-8. Happenings
+3. 03 · Beyond the platform
+4. 04 · Inside LUCI
+5. 05 · LUCI Quick Tip
+6. 06 · What’s coming
+7. 07 · A Minute with Mike
 
 **Stats:** None.
 
@@ -52,19 +59,25 @@ CEO, LUCI Systems
 
 **Kicker:** 01 · LUCI Project Update
 
-**Headline:** Around the LUCI operation
-
-**Dek:** Our teams have been moving projects from plan to operating floor. Here are the latest stops.
+**Headline:** This month at LUCI
 
 **Body:**
 
-[PROJECT UPDATE — TBD]
+Earlier this year, the LUCI crew stood up LUCI at Blue Chip, Belterra Park, and Valley Forge to convert each sportsbook to Boyd Sports. This fall we returned to all three to extend LUCI across the rest of each property, bringing more of their audio, video, and control onto the same system.
 
-For each card, add the property, city and state, date, and one sourced sentence on the work. Do not add a job without a confirmed October roster.
+At Valley Forge, that included the registration remodel’s new ceiling audio and IPTV TVs. At Blue Chip, it included new amplifiers and LUCI support documentation for the property’s IT team. It’s the latest chapter in LUCI’s long partnership with Boyd: beginning early in the design phase, through implementation, expansion, and ongoing support to ensure each property has everything it needs to operate smoothly.
+
+**Cards (three across, photo + name / city / status · date; no descriptions):**
+
+1. **Blue Chip** · Michigan City, Indiana · Live · September 24
+2. **Belterra Park** · Cincinnati, Ohio · On site · September 30
+3. **Valley Forge Casino Resort** · King of Prussia, Pennsylvania · Live · October 15
+
+**Layout:** Two paragraphs with a 16px gap (matches Welcome paragraph spacing), then the three cards.
 
 **Stats:** None.
 
-**Captions:** Project photo and caption to follow the confirmed roster.
+**Captions:** None. Card photos: Blue Chip exterior at dusk; Belterra Park horse and rider on the racetrack; Valley Forge Casino Resort exterior at night.
 
 **CTA:** None.
 
@@ -76,15 +89,21 @@ For each card, add the property, city and state, date, and one sourced sentence 
 
 **Headline:** One foundation for every property expansion
 
-**Dek:** For nine years, Osage Casino Hotel — Ponca City has extended the same LUCI foundation from the original installation to the ballroom, Swallows, and Swigs. The property now runs 98 endpoints through one operating standard.
+**Dek:** Over a 10+ year partnership with Osage, Ponca City has extended the same LUCI foundation from the original installation through the ballroom, Swallows, and Swigs. The property now runs 98 endpoints through one operating standard.
+
+**Property line:** Osage Casino Hotel — Ponca City · Ponca City, Oklahoma
 
 **Body:**
+
+LUCI has also expanded into Osage’s Bartlesville, Pawhuska, Sand Springs, and Skiatook casino locations — six Osage properties in all.
+
+### Where the relationship started
 
 Casino technology rarely becomes complicated because of one project. It becomes complicated as each new room, remodel, and system arrives with its own controls, vendors, and operating logic.
 
 LUCI’s partnership with Osage started with the Tulsa casino location, where Osage wanted to remove this kind of complexity from their A/V system from the first day of construction. LUCI was brought into the Ponca City property soon after.
 
-Since then, LUCI has also expanded into Osage’s Bartlesville, Pawhuska, Sand Springs, and Skiatook casino locations — a 10+ year relationship that now spans six properties.
+Ponca City is a smaller Osage property in northern Oklahoma, and it has become the clearest example of what a single LUCI foundation can carry. Each new room and venue arrived on its own schedule, with its own screens, audio, and control needs — but instead of layering a new system on top each time, Osage extended the one already running the property. Four phases tell that story.
 
 **Phase 01 — The LUCI install.** The original Ponca City installation put the software and control foundation in place — the operating standard every later phase extends.
 
@@ -100,18 +119,16 @@ Since then, LUCI has also expanded into Osage’s Bartlesville, Pawhuska, Sand S
 
 **Property photo:** A full-bleed exterior shot of the Osage Casino Hotel — Ponca City at dusk sits directly under the stats, above the narrative. Source: `osage-exterior-dusk.jpeg` from the Swigs OneDrive folder.
 
-The larger story is continuity: nine years at Ponca City, with every new room extending the operating standard already in place.
-
 **Stats:**
 
-- **9** · Yrs of partnership with LUCI
+- **10+** · Yrs of partnership with Osage
 - **4** · Ponca City project phases
 - **98** · Endpoints at Ponca City
 
 **Pull-out — What Ponca City runs now:**
 
-- One LUCI foundation across the casino floor, ballroom, Swallows, and Swigs
-- 98 endpoints at Ponca City through the same LUCI environment
+- One LUCI foundation extends across the casino floor, ballroom, Swallows, and Swigs
+- 98 endpoints at Ponca City run through the same LUCI environment
 - The Swigs LED wall runs four presets across seven independent video sources
 - New LED, video, and audio endpoints at Swallows and Swigs joined the property’s existing LUCI environment
 
@@ -122,13 +139,13 @@ The larger story is continuity: nine years at Ponca City, with every new room ex
 - Swigs after: the same wall live with multiple sports sources (IMG_1649)
 - [Follow-up: IMG_1650 needs person and equipment removed before it can be placed]
 
-**CTA:** Read the full case study → [CASE STUDY URL — TBD]
+**CTA:** Read the full case study → https://www.lucisystems.com/case-studies/osage-ponca-city
 
 ---
 
-## 4. Design with LUCI
+## 4. Beyond the platform
 
-**Kicker:** 03 · Design with LUCI
+**Kicker:** 03 · Beyond the platform
 
 **Headline:** Why our clients bring LUCI in early
 
@@ -166,7 +183,7 @@ These planning and design services are included in the LUCI subscription.
 
 ## 5. Advice
 
-**Kicker:** Inside LUCI
+**Kicker:** 04 · Inside LUCI
 
 **Headline:** Set the operating structure before the devices arrive
 
@@ -175,6 +192,10 @@ These planning and design services are included in the LUCI subscription.
 **Body:**
 
 In LUCI, displays, speaker zones, LED walls, and other controlled devices are organized by venue. Define those venues—and decide who can control them—before endpoints come online. The structure will be easier for your team to understand today and easier to extend later.
+
+[Venue Mode floor-plan screenshot]
+
+*Venue Mode in LUCI: each endpoint has a home on the venue’s floor plan.*
 
 ### Build venues first, then drop endpoints
 
@@ -186,7 +207,7 @@ Choose whether one administrator controls everything or users receive access by 
 
 **Stats:** None.
 
-**Captions:** None.
+**Caption (italic):** Venue Mode in LUCI: each endpoint has a home on the venue’s floor plan.
 
 **CTA:** None.
 
@@ -194,7 +215,7 @@ Choose whether one administrator controls everything or users receive access by 
 
 ## 6. Quick Tip: calendar collision
 
-**Kicker:** 04 · LUCI Quick Tip
+**Kicker:** 05 · LUCI Quick Tip
 
 **Headline:** What to do when two scheduled presets share the same TV
 
@@ -214,11 +235,23 @@ When this happens, LUCI currently prioritizes the preset that starts later. But 
 
 **CTA:** None.
 
+### Upgrade Overview callout (after Quick Tip)
+
+**Badge:** NEW
+
+**Kicker:** LUCI Upgrade Overview
+
+**Headline:** New features, changes, and control coming your way
+
+**Body:** Get the official rundown of the new LUCI—core capabilities, what’s changing, and how “the power of programming” shifts more day-to-day control to your team, with the LUCI team always available as your A/V partner.
+
+**CTA:** Read the Overview → https://www.lucisystems.com/product-briefs/luci-upgrade-overview
+
 ---
 
 ## 7. What’s Coming: Reporting & Analytics + What’s New
 
-**Kicker:** 05 · What’s coming
+**Kicker:** 06 · What’s coming
 
 **Headline:** Reporting & Analytics gives you full visibility
 
@@ -235,11 +268,7 @@ Reporting & Analytics turns the activity LUCI already records into a connected o
 - **Device incidents:** Bring device incidents into view to identify endpoints that need attention and see where incidents recur.
 - **System logs:** Bring system logs into view alongside incident volume, command success and failure, and latency.
 
-Together, these views take you from "something happened" to the record behind it without losing the larger pattern across your operation.
-
-### Take a look: See more of what's coming
-
-Explore What's New for a concise look at the new LUCI—what is changing, what your team will be able to do, and where the platform is headed.
+Together, these views take you from “something happened” to the record behind it without losing the larger pattern across your operation.
 
 **Stats:** None.
 
@@ -249,7 +278,7 @@ Explore What's New for a concise look at the new LUCI—what is changing, what y
 
 ## 8. A Minute with Mike
 
-**Kicker:** 06 · A Minute with Mike
+**Kicker:** 07 · A Minute with Mike
 
 **Headline:** Putting the power of programming in your hands
 
@@ -329,13 +358,7 @@ The LUCI Team
 
 ## Placeholders left
 
-- `[PROJECT UPDATE — TBD]`
-- `[YEARS WITH LUCI — TBD]`
-- `[PROJECTS AT PONCA CITY — TBD]`
-- `[CASE STUDY URL — TBD]`
-- `[WHAT'S NEW URL — Jane to provide]`
-
-Required media caption cue, retained exactly: `Photo TBD: Osage Project Media`.
+None. All placeholders were resolved in the live issue.
 
 ## Sources used
 
@@ -361,7 +384,6 @@ Customer-facing copy checked for the following:
 - A/V is spelled with the slash throughout.
 - No partner or vendor brands appear.
 - No use of “launched” or other shipped-availability framing for the new version; beta framing only.
-- No Sand Springs reference.
 - No D3 reference.
 - No pricing or dollar figures.
 - No invented project roster, relationship total, customer quote, outcome, UI path, or public Upgrade Guide link.
