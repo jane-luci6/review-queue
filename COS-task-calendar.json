@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-13",
+  "updated": "2026-10-21",
   "timezone": "America/Los_Angeles",
   "items": [
     {
@@ -127,8 +127,7 @@
       "client": "The Signal",
       "status": "done",
       "done": true,
-      "notes": "Issue 05 in progress. Jane LOCKED Oct 6 picks. Oct 13: build on new Astro site with Newsletter Hub card; ActiveCampaign email as unsent draft; Webflow during cutover still undecided. Mon Oct 12 kickoff queued drafts for Jane review; nothing publishes/sends without her yes. Send tracked on signal-oct-send (~Oct 15).",
-      "in_progress": true
+      "notes": "Issue 05 built and live on Webflow + Astro (Oct 13), Hub updated on both. AC #181 final/unsent. Send tracked on signal-oct-send (~Oct 15)."
     },
     {
       "id": "imp-review-queue-cleanup",
@@ -177,7 +176,7 @@
       "label": "Follow up with Greg \u2014 Blue Chip reschedule",
       "client": "Blue Chip (carried from Oct 7)",
       "done": false,
-      "notes": "Jane followed up with Greg Oct 8; still awaiting reply as of Oct 13.",
+      "notes": "Jane's last check-in email to Greg Bucy Oct 7; no reply in Outlook as of Mon Oct 19 8:40 AM PT.",
       "status": "overdue"
     },
     {
@@ -197,9 +196,9 @@
       "stage": null,
       "label": "Send October Signal",
       "client": "The Signal",
-      "status": "upcoming",
-      "done": false,
-      "notes": "Target ~Oct 15 (Wed). Due in 2 days from Tue Oct 13. No Send without Jane's say-so. Astro page + Hub card + AC draft path."
+      "status": "done",
+      "done": true,
+      "notes": "SENT Thu Oct 15 ~8:55 AM PT (AC #181 completed; Jane confirmed via bounce email to Mike). 206 sent, 102 unique opens, 26 unique clickers, 6 hard bounces (Isleta/Ilani/Osage Dakota), 1 unsub. Moved to IMP Download."
     },
     {
       "id": "clearwater-e9",
@@ -289,7 +288,7 @@
     {
       "id": "four-winds-cj-deposit",
       "label": "Four Winds: PO arrived Tue Oct 6; deposit still outstanding. Start Aaron Herrbach + Matt Roach in Customer Journey only after deposit + Jane yes",
-      "waiting": "Jane to confirm deposit received; then ask for exact AC approval before adding both at the beginning of the automation",
+      "waiting": "Jane to confirm deposit received; then ask for exact AC approval before adding both at the beginning of the automation | Oct 16: Mike sent 4 Four Winds contacts for tracking report/support docs/newsletters: Aaron Herrbach (#1774), Matt Roach (#1775), Joshua Kaiser (#1393, exists), Alec James (NOT in AC). Deposit status not stated.",
       "done": false
     },
     {
@@ -319,7 +318,7 @@
     {
       "id": "osage-web-cs",
       "label": "Osage web CS \u2014 multi-year partnership arc (Ponca City); live page is the working version",
-      "waiting": "Jane finishing page at http://10.10.1.37/resources/case-studies/osage-ponca-swigs/ (A/B draft deleted Oct 12); consolidation numbers still placeholders",
+      "waiting": "Moved to IMP Download Oct 15; consolidation numbers still placeholders",
       "done": false
     },
     {
@@ -331,7 +330,7 @@
     {
       "id": "greg-blue-chip",
       "label": "Greg / Blue Chip reschedule follow-up",
-      "waiting": "Greg reply (Jane followed up Oct 8; still open Oct 13)",
+      "waiting": "Greg reply (Jane's last check-in Oct 7; no reply as of Oct 19)",
       "done": false
     },
     {
@@ -353,9 +352,9 @@
     "start_offset_days": 14,
     "ideas": [
       {
-        "id": "oct-start",
-        "text": "October Signal Issue 05 \u2014 Astro + Hub + AC draft; Mike Review Queue priority; send ~Oct 15",
-        "status": "soon"
+        "id": "oct-sent",
+        "text": "Issue 05 SENT Oct 15. Bounce cleanup (Isleta addresses, Ilani: confirm Philip Wastradowski + AJ Silva). November Issue 06 prep Nov 1 (Mike topics: long-term relationships, client forums, scripting).",
+        "status": "done"
       }
     ],
     "clearwater_note": "Journey: Email 8 SENT Sep 23; next Email 9 Oct 23."
@@ -393,8 +392,8 @@
     },
     {
       "id": "signal",
-      "name": "The Signal (October)",
-      "next": "Issue 05: build on Astro + Newsletter Hub card; AC email unsent draft (Webflow cutover path undecided). Only item truly awaiting Mike in Review Queue. Send ~Oct 15 \u2014 Jane's say-so.",
+      "name": "The Signal (November)",
+      "next": "Issue 05 SENT Oct 15 (206 sent, 102 unique opens). Bounce fixes + possible resend to corrected Isleta addresses. Issue 06 prep starts Nov 1.",
       "status": "in_flight"
     },
     {
@@ -418,7 +417,7 @@
     {
       "id": "osage",
       "name": "Osage Ponca City web case study",
-      "next": "Working page only: http://10.10.1.37/resources/case-studies/osage-ponca-swigs/ (A/B deleted Oct 12). Still needs consolidation numbers from Jane. Lead stats = relationship length / # projects.",
+      "next": "Finished, on IMP Download (Oct 15). Consolidation numbers still placeholders.",
       "status": "in_flight"
     },
     {
@@ -446,7 +445,7 @@
       "note": "Jane pulled Sep 1. Do not use or edit until she sends replacements."
     }
   ],
-  "notes": "Board refreshed Tue Oct 13 2026 ~8:30 AM PT. TOP Jane today: (1) Signal 05 \u2014 push Mike review / lock Astro+Hub+AC draft path for ~Oct 15 send, (2) Osage Ponca City page finish + consolidation numbers, (3) never-lost-client prominence + tribal relationship campaign (Yaamava/Choctaw/Osage), (4) Penn/Blackhawk EOY campaign shape with Mark, (5) Greg/Blue Chip reply watch, (6) Four Winds deposit before CJ adds. Overdue: Greg Blue Chip follow-up (since Oct 8). Due in 2 days: Signal Issue 05 send ~Oct 15. Next journey: Clearwater Email 9 Oct 23. Infocomm CFP parked (2027 hold). NALF-West declined.",
+  "notes": "Board refreshed Wed Oct 21 2026 ~8:20 AM PT. Jane OUT until Thu Oct 22 (back tomorrow). Her priorities (Oct 15): 1) Platform page redo, 2) LUCI 2.0 site readiness, 3) upgrade highlight video, 4) Upgrade Guide final screenshots/videos, 5) upgrade campaign emails. Quiet since Tue: inbox only vendor pitches and Smartsheet tracking digests (Cannery, Ameristar KC, NX5, Four Winds, Chumash, Customer-List-Sync). Due in 2 days: Clearwater Email 9 (60-day) Fri Oct 23 \u2014 manual send. Open: newsletter bounces (Isleta fix + resend; confirm Ilani's Philip Wastradowski + AJ Silva), Four Winds contacts (deposit + Jane AC yes still gate), Greg/Blue Chip silent since Oct 7. Mac offline at 8:20 snapshot; box mirror used.",
   "dropped": [
     {
       "id": "screen-rec",
