@@ -3,90 +3,88 @@
 - **Audience:** Warm and net-new prospects eligible for long-term nurture
 - **Cycle:** Every 4–6 weeks
 - **Timing:** Month 3
-- **Purpose:** Show the cost of operations, IT, marketing, and leadership working from different systems or assumptions. Tie complete visibility—every endpoint from a map-based interface—to faster, more aligned decisions.
+- **Purpose:** Show how one map gives marketing, IT, operations, and leadership current evidence about every screen.
 - **CTA:** See how LUCI gives every team the same picture.
-- **Status:** draft v1 for Jane review
+- **Status:** draft r2 for Jane review
 
 ## Strategy
 
 ### What we’re writing and why
-The third Pulse email moves from system consolidation to decision alignment. It shows how different teams can each hold a partial truth, then makes the shared operating view concrete through map, status, and access behavior.
+Move from consolidation to cross-team visibility. Show one campaign question splitting into a schedule, an endpoint alert, and a floor walk.
 
 ### For whom
-Cross-functional property leaders who lose time reconciling updates from operations, IT, marketing, and executives before acting.
+Cross-functional property leaders who spend time reconciling partial screen-status reports.
 
 ### Best way to reach them
-Send from LUCI Marketing in Month 3. Use a three-team scene, define LUCI plainly, and link to a short workflow proof rather than asking for a meeting.
+Send from LUCI Marketing in Month 3. Define LUCI through the map workflow and route to one proof asset.
 
 ### How to make impact while staying professional
-Show one current picture as shared evidence, while making clear that shared visibility does not mean identical permissions.
+Make the committee joke earn its place by showing the exact reconciliation problem the map removes.
 
 ### Primary message
-A shared map-based view gives operations, IT, marketing, and leadership current evidence without giving every team identical access.
+A shared map lets marketing, IT, operations, and leadership answer the same screen-status question from current evidence.
 
 ## Three draft directions
 
-### Direction 1 — Three teams, three answers
+### Direction 1 — The lobby-screen question
 Dear #Name#,
 
-Marketing says the promotion changed. Operations says the screens look right. IT sees one device offline. Leadership gets the answer after those three views are reconciled.
+Leadership asks whether the campaign is on every lobby screen. Marketing has the schedule, IT sees an endpoint alert, and operations sends someone to walk the floor. By then, the question has grown a committee.
 
-LUCI runs a property's A/V from one map-based interface. Teams can see current device state, check what displays and video walls are playing, and work from the same operating picture. Role-based access keeps each person inside the controls they need.
-
-Shared visibility does not mean identical permissions. It means decisions start with the same evidence.
-
-See the workflow: [PROOF URL]
-
-### Direction 2 — One question, one current picture
-Dear #Name#,
-
-“What is happening across the property right now?” should not produce a different answer from every team.
-
-LUCI runs a property's A/V from one map-based interface. Operations can see the floor, IT can see live device state, marketing can confirm what screens are playing, and leadership can work from the same current picture. Access remains role-appropriate rather than identical for everyone.
-
-That shared view removes the reconciliation step between separate systems and assumptions.
-
-See how LUCI gives every team the same picture: [PROOF URL]
-
-### Direction 3 — Evidence before escalation
-Dear #Name#,
-
-A screenshot in one thread, a device alert in another, and a floor report by phone are not a shared operating view. They are fragments that someone has to reconcile before the property can act.
-
-LUCI runs a property's A/V from one map-based interface. Live device state and live screen views put current evidence in one place, while roles and permissions keep access appropriate to each team.
-
-Operations, IT, marketing, and leadership do not need the same controls. They do need the same picture.
+LUCI runs a property's A/V from a map-based interface. Teams can see device state and confirm what each display or LED wall is playing. Roles keep controls appropriate while everyone works from the same current picture.
 
 See the shared-view workflow: [PROOF URL]
 
-## Why the final won
-**Direction 1 — Three teams, three answers**
+### Direction 2 — Three answers are not one answer
+Dear #Name#,
 
-It turns cross-functional misalignment into a specific scene without inventing a failure or time-savings claim. The final borrows Direction 2’s role-appropriate access distinction and Direction 3’s evidence language.
+Marketing says the content changed. IT says the endpoint is online. Operations says the screen looks wrong. All three can be accurate and still leave leadership without an answer.
+
+LUCI orchestrates the property's A/V through one map. Live device state and live screen views show what the system reports and what the screen displays. Each role gets the controls it needs, while the evidence stays shared.
+
+One question should not need three versions of the truth.
+
+See the workflow: [PROOF URL]
+
+### Direction 3 — Retire the floor walk
+Dear #Name#,
+
+When the only sure way to check a screen is to walk over and look, the map is not doing enough.
+
+LUCI operates a property's A/V from one map-based interface. IT can see live device state, marketing can confirm the content on a display, and operations can check the same evidence without starting a phone chain.
+
+Roles and permissions keep access appropriate. The current picture does not depend on who reached the lobby first.
+
+See how the shared view works: [PROOF URL]
+
+## Why the final won
+**Direction 1 — The lobby-screen question**
+
+It gives every team a legitimate piece of the answer and makes the cost of reconciling them visible. The final takes Direction 2's evidence distinction and Direction 3's role-appropriate access.
 
 ## Final copy
 
 ### Subject lines
-1. **Curious:** Would every team give the same answer?
-2. **Practical:** One current view across the property
-3. **Direct:** Give every team the same A/V picture
+1. **Curious:** What is actually playing in the lobby?
+2. **Practical:** One map for every screen and wall
+3. **Direct:** Give each team the same current picture
 
 ### Preheader
-Share current endpoint evidence while keeping access appropriate to each role.
+See device state and screen content on one map while each role keeps the right controls.
 
 ### Body
 Dear #Name#,
 
-Marketing says the promotion changed. Operations says the screens look right. IT sees one device offline. Leadership gets the answer after those three views are reconciled.
+Leadership asks whether the campaign is on every lobby screen. Marketing has the schedule, IT sees an endpoint alert, and operations sends someone to walk the floor. By then, the question has grown a committee.
 
-LUCI runs a property's A/V from one map-based interface. Teams can see current device state, check what displays and video walls are playing, and work from the same operating picture.
+LUCI runs a property's A/V from a map-based interface. Teams can see device state and confirm what each display or LED wall is playing.
 
-Shared visibility does not mean identical permissions. Role-based access keeps each person inside the controls they need while decisions start with the same evidence.
+Roles keep controls appropriate while everyone works from the same current picture.
 
 See how LUCI gives every team the same picture: [PROOF URL]
 
 ### Word count
-**93 words** from greeting through CTA, excluding the signature.
+**84 words** from greeting through CTA, excluding the signature.
 
 ### Signature
 [NAME]
@@ -95,15 +93,14 @@ LUCI Systems
 [EMAIL] · [PHONE]
 
 ## Automation notes
-Send only while the prospect remains eligible for long-term nurture and outside active sales. Any reply, booking, or active opportunity stops automation. An ordinary click on the workflow proof remains a reporting signal and does not create a sales task.
+Send in Month 3 only while the prospect remains eligible for long-term nurture and outside active sales. Any reply, booking, or active opportunity stops automation. An ordinary click on the workflow proof remains a reporting signal and does not create a sales task.
 
 ## Guardrail audit
-- The email claims alignment around shared current evidence, not a quantified speed improvement.
-- Live device state, live screen views, maps, roles, and permissions come from the approved product facts.
-- Shared visibility is explicitly distinguished from identical access.
-- No named customer, financial claim, percentage, or invented operating result appears.
+- r2 changes: Replaced the generic multi-team opener with one lobby campaign question and a recognizable floor walk, then added a restrained committee line.
+- The message claims shared evidence, not quantified speed, and the body has one proof CTA.
+- The retention line is skipped because this email's single job is current visibility.
+- No named property, financial claim, percentage, or invented result appears.
 - Body is under 150 words; subjects are under 55 characters; preheader is under 90 characters.
-- The retention line is skipped to keep this email focused on cross-team visibility.
 
 ## Placeholders to fill
 - [PROOF URL]

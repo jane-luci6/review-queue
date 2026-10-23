@@ -3,92 +3,90 @@
 - **Audience:** Warm and net-new prospects eligible for long-term nurture
 - **Cycle:** Every 4–6 weeks
 - **Timing:** Month 1
-- **Purpose:** Start with the operational drag of separate interfaces, vendors, and workflows. Tie the problem to LUCI’s property-wide orchestration and control, with New LUCI as supporting proof that this control continues to expand.
+- **Purpose:** Reintroduce LUCI through one time-sensitive screen change and show how New LUCI gives staff more direct control with the LUCI team still behind them.
 - **CTA:** See how LUCI runs the property from one interface.
-- **Status:** draft v1 for Jane review
+- **Status:** draft r2 for Jane review
 
 ## Strategy
 
 ### What we’re writing and why
-The opening Pulse email reintroduces LUCI through a familiar operating scene rather than assuming campaign recall. Its job is to make accumulated interfaces, vendors, and handoffs visible, then show one-interface orchestration as the answer.
+Reintroduce LUCI through a bartender's time-sensitive source change. Show the cost of scattered controls, then define both LUCI and New LUCI for a reader with no campaign memory.
 
 ### For whom
-Property operations and IT leaders who may remember LUCI faintly or not at all, and who are accustomed to coordinating screens, sources, and audio through separate tools and people.
+Operations and IT leaders who manage screens, sources, and audio through separate tools and people.
 
 ### Best way to reach them
-Send from LUCI Marketing in Month 1. Keep the body concise, define LUCI on first mention, and use the LUCI Upgrade Guide as the written product view.
+Send from LUCI Marketing in Month 1. Keep the scene short and route the reader to the LUCI Upgrade Guide.
 
 ### How to make impact while staying professional
-Begin in the middle of a real change request, move from many handoffs to one operating action, and use beta product facts as evidence that control continues to expand.
+Let the late game create the pressure. The scavenger-hunt line adds a human edge while staging, screen view, and ongoing monitoring supply the proof.
 
 ### Primary message
-Separate A/V workflows create handoffs; LUCI brings the property into one operating interface, and New LUCI extends that control.
+LUCI brings a time-sensitive screen change into one interface, and New LUCI adds more direct control without removing the team behind it.
 
 ## Three draft directions
 
-### Direction 1 — The Friday-night change
+### Direction 1 — The bartender and the late game
 Dear #Name#,
 
-A Friday-night change should not require three logins, two calls, and a search for the person who knows which system controls the room.
+A bartender needs the corner TVs on the late game while the video wall keeps the main event. That should not start a scavenger hunt through remotes, logins, and phone numbers.
 
-That drag comes from accumulation: separate interfaces, vendors, and workflows around the same guest environment. LUCI runs a property's A/V from one interface, coordinating displays, sources, and audio zones as one operation.
+LUCI orchestrates a property's A/V from one interface. New LUCI, now in beta, adds staging and live screen views on a faster foundation, so staff can prepare the switch, apply it on cue, and confirm the result.
 
-New LUCI, now in beta, adds staging and live screen views so teams can prepare a change, apply it on cue, and confirm what is playing without walking the floor.
+The LUCI team still monitors, diagnoses, and supports the environment.
 
-See the operating model in the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]
+See the workflow in the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]
 
-### Direction 2 — Count the handoffs
+### Direction 2 — One change, too many controls
 Dear #Name#,
 
-Change the source. Check the wall. Call the audio vendor. Find the right interface. Confirm the result on the floor.
+Change one source. Check the wall. Find the audio control. Call the person with the other login. The request is ordinary; the route is not.
 
-None of those tasks is unusual. The problem is the number of systems and handoffs between them.
+LUCI runs a property's A/V from one interface. New LUCI, now in beta, adds staging and live screen views on a faster, more responsive foundation. Staff can prepare screens, sources, and audio behind the scenes, then verify the result without walking the floor.
 
-LUCI runs a property's A/V from one interface, giving the team one place to coordinate displays, devices, and audio zones. New LUCI, now in beta, extends that control with staging, live screen views, and audit history.
+One change should have one operating path.
 
-The result is not another dashboard. It is a shorter operating path.
+Review the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]
 
-Explore the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]
-
-### Direction 3 — A shorter operating path
+### Direction 3 — The game does not pause
 Dear #Name#,
 
-A cleaner screen does not fix an operation spread across separate systems, vendors, and workarounds. The real gain comes from shortening the path between a decision and what happens across the property.
+The game does not pause while someone hunts for the right interface.
 
-LUCI runs a property's A/V from one interface. Teams can coordinate displays, sources, and audio zones without treating each system as a separate job.
+LUCI is the orchestration engine that operates a property's A/V from one place. New LUCI, now in beta, gives staff more direct room control through staging and live screen views on a faster foundation.
 
-New LUCI, now in beta, adds staging and live screen views, putting more day-to-day programming control in the team's hands while the LUCI team stays alongside them.
+They can set the next look quietly, apply it on cue, and confirm what every display is showing. Meanwhile, the LUCI team continues to monitor, diagnose, and support the environment.
 
-See how the model works: [LUCI UPGRADE GUIDE URL]
+See what changes in the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]
 
 ## Why the final won
-**Direction 1 — The Friday-night change**
+**Direction 1 — The bartender and the late game**
 
-It starts the series with an immediate, recognizable property problem and gives the many-to-one argument a human cost. The final borrows the shorter operating-path language from Direction 2 and the partnership reassurance from Direction 3.
+It opens on one person, one room, and one recognizable request, so the one-interface argument lands without abstraction. The final keeps Direction 3's explicit support reassurance and Direction 2's short operating path.
 
 ## Final copy
 
 ### Subject lines
-1. **Curious:** Why does one A/V change take five handoffs?
-2. **Direct:** Run the property from one interface
-3. **Practical:** A shorter operating path for A/V
+1. **Curious:** Why is one screen change a scavenger hunt?
+2. **Practical:** One interface for the Friday-night switch
+3. **Dryly playful:** The late game should not need three logins
 
 ### Preheader
-Coordinate displays, sources, and audio without the usual chain of handoffs.
+Prepare the next screen change, apply it on cue, and confirm the result from one place.
 
 ### Body
 Dear #Name#,
 
-A Friday-night change should not require three logins, two calls, and a search for the person who knows which system controls the room.
+A bartender needs the corner TVs on the late game while the video wall keeps the main event. That should not start a scavenger hunt through remotes, logins, and phone numbers.
 
-That drag comes from accumulation: separate interfaces, vendors, and workflows around the same guest environment. LUCI runs a property's A/V from one interface, coordinating displays, sources, and audio zones as one operation.
+LUCI orchestrates a property's A/V from one interface. New LUCI, now in beta, adds staging and live screen views on a faster foundation, so staff can prepare the switch, apply it on cue, and confirm the result.
 
-New LUCI, now in beta, adds staging and live screen views. Your team can prepare a change, apply it on cue, and confirm what is playing without walking the floor.
+The LUCI team still monitors, diagnoses, and supports the environment.
 
 See how LUCI runs the property from one interface in the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]
 
 ### Word count
-**105 words** from greeting through CTA, excluding the signature.
+**98 words** from greeting through CTA, excluding the signature.
 
 ### Signature
 [NAME]
@@ -97,15 +95,14 @@ LUCI Systems
 [EMAIL] · [PHONE]
 
 ## Automation notes
-Send only after the prospect completes the relevant warm or net-new cycle without entering sales. Suppress anyone in an active Mark or Mike conversation. A reply, booked meeting, or active opportunity stops the automation; opens and ordinary clicks remain reporting signals only.
+Send in Month 1 only after the prospect completes the relevant warm or net-new cycle without entering sales. Suppress anyone in an active Mark or Mike conversation. A reply, booked meeting, or active opportunity stops the automation; opens and ordinary clicks remain reporting signals only.
 
 ## Guardrail audit
-- Cold-reader context is present and the property problem leads.
-- All product details come from the approved shared brief.
-- New LUCI is framed as beta with no calendar or availability claim.
-- No client, scale, performance, or financial claim appears.
+- r2 changes: Rebuilt the opener around a bartender and a late-game source change, added a lightly witty scavenger-hunt line, and defined LUCI and New LUCI in adjacent plain sentences.
+- The body has one guide CTA and all product details come from approved facts.
+- No calendar or access-status claim appears.
+- The retention line is skipped because this email proves direct control and ongoing support rather than relationship longevity.
 - Body is under 150 words; subjects are under 55 characters; preheader is under 90 characters.
-- The retention line is intentionally skipped because this email’s job is one-interface control, not relationship proof.
 
 ## Placeholders to fill
 - [LUCI UPGRADE GUIDE URL]
