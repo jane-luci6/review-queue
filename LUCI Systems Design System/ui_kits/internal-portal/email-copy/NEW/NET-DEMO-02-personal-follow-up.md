@@ -2,85 +2,83 @@
 
 - **Audience:** Net-new prospects who submitted a demo request
 - **Cycle:** After a demo request
-- **Timing:** Same or next business day; sent by Mike or Mark
+- **Timing:** Same or next business day
 - **Purpose:** Add a human response while interest is current.
-- **CTA:** Reply or confirm the meeting.
-- **Status:** draft v1 for Jane review
+- **CTA:** Reply with one priority.
+- **Status:** draft r2 for Jane review
 
 ## Strategy
 
 ### What we’re writing and why
-A short personal note that proves the request reached Mike or Mark and gathers one useful input without restarting the campaign.
+Show that Mike or Mark saw the request and collect one useful input.
 
 ### For whom
-Prospects whose interest is current and who may already have booked or may still need scheduling help.
+Prospects whose interest is current and who should not receive another campaign summary.
 
 ### Best way to reach them
-Send personally from Mike or Mark the same or next business day. Use first person, ask one question, and keep the booking link conditional.
+Send personally the same or next business day. Ask one question and use reply as the sole CTA.
 
 ### How to make impact while staying professional
-Acknowledge the request, tell booked prospects they are set, and ask about one room, workflow, or A/V issue so the meeting begins with relevance.
+Offer three recognizable examples and sound like the sender wrote the note in 30 seconds.
 
 ### Primary message
-A real person has seen the request and wants one focused priority to shape a useful walkthrough.
+A real person wants one concrete priority so the LUCI walkthrough starts with the prospect's operation.
 
 ## Three directions
 
-### Direction 1 — One useful question
+### Direction 1 — One thing
 Dear #Name#,
 
-I saw your request for a LUCI walkthrough and wanted to follow up personally.
+I saw your request. LUCI runs a property's A/V from one interface, and I want the walkthrough to start with your operation, not our slide order.
 
-If you already chose a time, you're set. Is there one room, workflow, or A/V issue you want us to focus on? Reply here and I'll make sure we cover it.
+What is the one thing you want to see: a bartender's controls, a ballroom changeover, or a screen that never shows what it should? One line is plenty. I promise not to turn it into homework.
 
-If you still need a time, choose one here: [BOOKING URL]
+Reply with the one priority we should cover.
 
-### Direction 2 — Booked or unbooked
+### Direction 2 — Skip the tour
 Dear #Name#,
 
-Thanks for reaching out about LUCI. I have your request.
+I have your request to see LUCI, the platform that brings a property's A/V into one interface.
 
-Already booked? Reply with the main thing you want to see, and I will shape the walkthrough around it.
+Rather than run every screen in order, tell me where the operation gets stuck. A room reset, a wrong feed, a control nobody wants to touch. I will start there.
 
-Still choosing a time? You can use [BOOKING URL], or reply with a few windows that work better.
+Reply with the problem you want the walkthrough to answer.
 
-Either way, I will confirm the next step with you directly.
-
-### Direction 3 — Reply first
+### Direction 3 — Thirty-second note
 Dear #Name#,
 
-I wanted to put a person behind the confirmation you received. I saw your LUCI request and will help with the next step.
+Saw your LUCI request. It runs a property's A/V from one interface, but the useful demo starts with your room, wall, or workflow.
 
-Reply with the A/V priority that prompted the request. One sentence is plenty. I will use it to keep the walkthrough focused.
+Send me the one thing that should work better. A sentence is plenty; a novel creates more homework for both of us.
 
-If you have not booked yet, the calendar is here: [BOOKING URL]
+Reply with the priority, and I will build around it.
 
 ## Why the final won
-**Direction 1 — One useful question**
+**Direction 1 — One thing**
 
-It sounds like a person, handles booked and unbooked prospects without awkward branching, and asks one concrete question that improves the meeting. The final borrows the low-effort reply cue from Direction 3.
+It reads like a genuine personal note, defines LUCI without restarting the pitch, and makes the requested input concrete. The three examples help the prospect answer quickly, while the homework line supplies the light touch.
 
 ## Final copy
 
 ### Subject lines
 1. **Personal:** I saw your LUCI request
-2. **Practical:** One question before your LUCI walkthrough
-3. **Warm:** A quick note about your demo
+2. **Practical:** What should we cover first?
+3. **Warm:** One quick question before the walkthrough
 
 ### Preheader
-Tell me the one room, workflow, or A/V issue we should focus on.
+Give me one room, wall, or workflow and I will start there.
 
 ### Body
 Dear #Name#,
 
-I saw your request for a LUCI walkthrough and wanted to follow up personally.
+I saw your request. LUCI runs a property's A/V from one interface, and I want the walkthrough to start with your operation, not our slide order.
 
-If you already chose a time, you're set. Is there one room, workflow, or A/V issue you want us to focus on? Reply here and I'll make sure we cover it.
+What is the one thing you want to see: a bartender's controls, a ballroom changeover, or a screen that never shows what it should? One line is plenty. I promise not to turn it into homework.
 
-If you still need a time, choose one here: [BOOKING URL]
+Reply with the one priority we should cover.
 
 ### Word count
-**58 words** from greeting through CTA, excluding the signature.
+**72 words** from greeting through CTA, excluding the signature.
 
 ### Signature
 [NAME]
@@ -94,18 +92,10 @@ LUCI Systems
 - If the prospect remains quiet, do not begin recovery until Mike or Mark explicitly hands the contact back to Marketing.
 
 ## Guardrail audit
-- Short, first-person, and centered on one useful question.
-- Does not repeat the acquisition argument or describe capabilities.
-- Omits the retention claim and keeps the booking link conditional.
-- Keeps the body under 150 words and the preheader under 90 characters.
+r2 changes: Removed calendar branching, made reply the sole CTA, defined LUCI in one quick line, and rewrote the note around three concrete examples. The client-retention claim is skipped because a personal response should focus on the prospect.
 
 ## Placeholders to fill
-- `[BOOKING URL]`
 - `[NAME]`
 - `[TITLE]`
 - `[EMAIL]`
 - `[PHONE]`
-
-## Production notes
-- From: Mike or Mark
-- AC merge tags: keep `#Name#` as Jane specified; flag if AC needs `%FIRSTNAME%` later

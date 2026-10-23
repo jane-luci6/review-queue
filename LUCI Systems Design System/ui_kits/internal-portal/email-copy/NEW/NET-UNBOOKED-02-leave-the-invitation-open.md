@@ -1,86 +1,90 @@
 # NET-UNBOOKED-02 — Leave the invitation open
 
 - **Audience:** Net-new demo requesters still quiet after scheduling recovery
-- **Cycle:** Unbooked request recovery — after Sales handback
+- **Cycle:** Unbooked request recovery after Sales handback
 - **Timing:** Provisional: 7–10 days after recovery email 1
-- **Purpose:** Close the active scheduling cycle without pressure, then move the prospect to Pulse if they remain quiet.
-- **CTA:** Schedule now or return when the timing is better.
-- **Status:** draft v1 for Jane review
+- **Purpose:** Close active scheduling without pressure.
+- **CTA:** Schedule the walkthrough.
+- **Status:** draft r2 for Jane review
 
 ## Strategy
 
 ### What we’re writing and why
-The respectful end of an active scheduling sequence. It gives the prospect one final direct path to the walkthrough, makes clear that silence requires no action, and keeps future contact limited to occasional useful notes.
+End active scheduling clearly and preserve the invitation without another persuasion attempt.
 
 ### For whom
-Net-new prospects who requested a walkthrough but stayed quiet after personal Sales outreach and the first recovery email. Interest may have faded, priorities may have moved, or the timing may simply be wrong.
+Prospects who requested a walkthrough but stayed quiet through personal outreach and one recovery note.
 
 ### Best way to reach them
-Send from LUCI Marketing 7–10 days after the first recovery note, subject to the provisional Sales handback rules. Keep the booking link available, route replies to the sales owner, and end the active sequence after this send.
+Send only after explicit Sales handback and no response to NET-UNBOOKED-01. Keep one booking CTA.
 
 ### How to make impact while staying professional
-State the close instead of disguising it as another sales touch. “No action is needed” removes pressure. “Occasional notes” accurately describes the quieter Prospect Pulse path without promising a rigid frequency.
+Give the reader permission to do nothing and avoid making silence feel like a debt.
 
 ### Primary message
-This scheduling sequence is ending, but the invitation remains open whenever a LUCI walkthrough becomes useful.
+Active scheduling ends here, while one link keeps the LUCI walkthrough available when timing improves.
 
-## Three draft directions
+## Three directions
 
-### Direction 1 — Close the sequence, not the door
+### Direction 1 — No calendar apology
 Dear #Name#,
 
-We’re closing this scheduling sequence, but not the invitation. If a LUCI walkthrough still makes sense, you can choose a time here:
+This is the last scheduling note. No calendar apology required.
+
+LUCI brings a property's A/V into one interface, and the walkthrough will still be here if that becomes useful later.
+
+Schedule the walkthrough: [BOOKING URL]
+
+If now is not the time, do nothing. We will shift to occasional useful notes.
+
+### Direction 2 — Close the sequence
+Dear #Name#,
+
+We are ending the active scheduling sequence, not the invitation.
+
+LUCI runs a property's A/V from one interface. If you want to see how that fits your rooms and workflows later, keep this link:
 
 Schedule a walkthrough: [BOOKING URL]
 
-If now is not the right time, no action is needed. We’ll keep you on the list for occasional notes, and you can return whenever the timing is better. A reply will go directly to the sales owner who handled your request.
-
-### Direction 2 — No action needed
-Dear #Name#,
-
-If the timing for a LUCI walkthrough is not right, there is nothing you need to do. This is the last note in the active scheduling sequence.
-
-The invitation stays open: [BOOKING URL]
-
-We’ll send occasional notes from here, and you can reply whenever the conversation becomes useful again. Any reply will go directly to the sales owner who handled your request.
+Otherwise, nothing is due from you. We will send only occasional notes.
 
 ### Direction 3 — Keep the link
 Dear #Name#,
 
-Here is the scheduling link one last time so you have it if the timing changes:
+Here is the LUCI calendar link once more, for whenever the timing fits. LUCI brings screens, rooms, and controls into one A/V interface.
 
-Choose a time for the LUCI walkthrough: [BOOKING URL]
+Choose a time: [BOOKING URL]
 
-We won’t keep asking you to book. If you remain on our list, you’ll receive occasional notes instead. You can use the link or reply to this email whenever you want to pick the conversation back up.
+We will stop the scheduling notes here. Your inbox has done enough project management for one conversation.
 
-## Winner
-**Direction 1 — Close the sequence, not the door**
+## Why the final won
+**Direction 1 — No calendar apology**
 
-It wins because the first sentence does both jobs cleanly: it ends active scheduling while preserving the invitation. The final borrows Direction 2’s explicit “no action” permission and Direction 3’s restrained description of future contact.
+It closes active scheduling in six words, removes any obligation to explain, and keeps the invitation intelligible for someone who forgot what LUCI does. The occasional-note transition stays quiet.
 
 ## Final copy
 
 ### Subject lines
-1. **Warm:** We’ll leave the LUCI invitation open
-2. **Practical:** One link if you still want the walkthrough
-3. **Low-pressure:** Return whenever the timing is better
+1. **Low-pressure:** No calendar apology required
+2. **Practical:** Keep the LUCI link for later
+3. **Warm:** The walkthrough can wait
 
 ### Preheader
-One last scheduling note, then we’ll leave the invitation open.
+We are ending the scheduling notes, not the invitation.
 
 ### Body
 Dear #Name#,
 
-We’re closing this scheduling sequence, but not the invitation. If a LUCI walkthrough still makes sense, you can choose a time here:
+This is the last scheduling note. No calendar apology required.
 
-Schedule a walkthrough: [BOOKING URL]
+LUCI brings a property's A/V into one interface, and the walkthrough will still be here if that becomes useful later.
 
-If now is not the right time, no action is needed. We’ll keep you on the list for occasional notes, and you can return whenever the timing is better.
+Schedule the walkthrough: [BOOKING URL]
 
-A reply will go directly to the sales owner who handled your request.
+If now is not the time, do nothing. We will shift to occasional useful notes.
 
 ### Word count
-**71 words** from greeting through CTA, excluding the signature.
+**52 words** from greeting through CTA, excluding the signature.
 
 ### Signature
 [NAME]
@@ -91,17 +95,12 @@ LUCI Systems
 ## Automation notes
 - Send only after explicit Sales handback and no response or booking from NET-UNBOOKED-01.
 - A reply, booking, or active opportunity stops all marketing automation and returns the contact to the assigned sales owner.
-- Opens and ordinary clicks inform reporting only; they do not trigger Sales outreach.
-- If the prospect remains quiet, end this recovery cycle and move the contact to Prospect Pulse, with only one cycle active for the lifecycle stage.
-- Keep the timing provisional until Sales finalizes the handback process.
+- Opens and ordinary clicks remain reporting signals only.
+- If quiet, end this cycle and move the contact to Prospect Pulse, with one lifecycle cycle active.
+- Timing remains provisional.
 
 ## Guardrail audit
-- The email says the active scheduling sequence is ending and leaves the invitation open without a deadline.
-- “Occasional notes” describes Prospect Pulse without promising a fixed frequency.
-- No pressure, guilt, acquisition recap, capability list, or invented urgency appears.
-- The retention claim is intentionally omitted; using it in a scheduling close would add pressure.
-- Body is under 150 words; all subject lines are under 55 characters; the preheader is under 90 characters.
-- No date, customer, deal, pricing, percentage, partner, vendor, or unsupported proof appears.
+r2 changes: Shortened the close, added a varied LUCI definition, removed the reply prompt, and kept one calendar CTA. The client-retention claim is skipped because a respectful close should not introduce fresh persuasion.
 
 ## Placeholders to fill
 - `[BOOKING URL]`

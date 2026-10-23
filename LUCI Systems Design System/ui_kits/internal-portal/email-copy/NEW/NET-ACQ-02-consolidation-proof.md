@@ -3,88 +3,96 @@
 - **Audience:** Cold net-new prospects who received NET-ACQ-01 and have not replied, booked, or entered an active sales conversation
 - **Cycle:** Acquisition
 - **Timing:** 5 days after email 1
-- **Purpose:** Show what a shorter list of systems, vendors, and workflows looks like in practice.
-- **CTA:** See how LUCI consolidates the operation.
-- **Status:** draft v1 for Jane review
+- **Purpose:** Show what consolidation looks like in practice.
+- **CTA:** See the consolidation proof.
+- **Status:** draft r2 for Jane review
 
 ## Strategy
 
 ### What we’re writing and why
-A proof email that turns the prior problem into a concrete many-to-one result using one approved project count and one proof destination.
+Move from a familiar problem to concrete proof, using one approved count and one destination.
 
 ### For whom
-Operations and IT leaders who may agree that fragmentation is a problem but need evidence that consolidation can work with an existing A/V environment.
+Operations and IT leaders who need evidence that consolidation can work across varied A/V hardware.
 
 ### Best way to reach them
-Send five days after NET-ACQ-01 from the same sender. Put the approved count before the platform explanation and use the proof URL as the only CTA.
+Send five days after NET-ACQ-01 from the same sender. Put the approved count first and use the proof URL as the only CTA.
 
 ### How to make impact while staying professional
-Let the denominator carry credibility, then explain that LUCI coordinates existing A/V and preserves hardware choice while standardizing the operating model.
+Make the ballroom changeover the practical consequence of a shorter list.
 
 ### Primary message
-One approved project count shows what a shorter list of systems, vendor handoffs, and workflows looks like without giving up hardware choice.
+One approved property count shows how LUCI brings varied rooms and hardware into one operating interface.
 
 ## Three directions
 
-### Direction 1 — Denominator first
+### Direction 1 — Count before claim
 Dear #Name#,
 
-A shorter list only matters when you can see what left the operating burden.
+What does consolidation look like after the diagram?
 
-One approved project gives us a concrete denominator: [APPROVED PROOF POINT]. The result was fewer systems, vendor handoffs, and workflows for the property team to manage day to day.
+At one operating property: [APPROVED PROOF POINT]. LUCI runs those screens, rooms, and controls from one interface while the underlying hardware stays varied.
 
-LUCI runs a property's A/V from one interface. It absorbs and coordinates the existing environment, so the property can preserve hardware choice while standardizing how the operation runs.
+The rack can remain complicated. A ballroom changeover does not have to.
+
+That is the practical proof: fewer control paths and vendor handoffs between the request and the room.
 
 See the consolidation proof: [PROOF URL]
 
-### Direction 2 — Before and after the handoff
+### Direction 2 — Ballroom reset
 Dear #Name#,
 
-Before consolidation, a routine A/V change can move through separate controls, people, and vendor calls. After consolidation, the hardware can stay varied while the operating workflow becomes consistent.
+A ballroom flips from a general session to dinner. Screens, sources, and audio all need to move together, but the equipment behind them may come from several eras.
 
-The proof is concrete: [APPROVED PROOF POINT]. LUCI coordinates the property's existing A/V from one interface, reducing the list the team has to manage without forcing a single hardware ecosystem.
+LUCI runs that varied A/V from one interface. At one property, the scope included [APPROVED PROOF POINT].
 
-See how that operating model works in practice: [PROOF URL]
+Staff get one path through the change instead of a scavenger hunt across controls and contacts.
 
-### Direction 3 — Keep the hardware choice
+See how the operation came together: [PROOF URL]
+
+### Direction 3 — Keep the hardware mix
 Dear #Name#,
 
-Standardizing the A/V operation should not require every room to use the same hardware.
+A consistent A/V workflow does not require identical hardware in every room.
 
-LUCI works with and absorbs the existing environment, coordinating varied equipment through one operating interface. In one approved project, that produced a measurable result: [APPROVED PROOF POINT].
+LUCI brings varied equipment into one operating interface. One approved project makes the scale concrete: [APPROVED PROOF POINT].
 
-The useful change was not another device. It was a shorter list of systems, vendor handoffs, and workflows for the property team to manage.
+The useful result is not another device. It is a bartender, banquet manager, or technician following the same path to the screen.
 
-See the approved proof: [PROOF URL]
+Hardware can vary. The hunt for the right control should not.
+
+See the consolidation proof: [PROOF URL]
 
 ## Why the final won
-**Direction 1 — Denominator first**
+**Direction 1 — Count before claim**
 
-It lets the approved count establish scale before making a platform claim, then answers the likely hardware-choice concern in the fewest words. The final borrows the operating-model clarity from Direction 3.
+It gives proof before interpretation, defines LUCI for a reader who skipped the opener, and lands the benefit in a ballroom changeover instead of an abstract framework. It borrows the hardware reassurance from Direction 3.
 
 ## Final copy
 
 ### Subject lines
-1. **Practical:** What a shorter A/V list looks like
-2. **Outcome-led:** Fewer handoffs, one operating view
-3. **Curious:** Consolidation you can count
+1. **Practical:** What consolidation looks like in one property
+2. **Scene-led:** A smoother ballroom changeover
+3. **Curious:** Can varied A/V run from one place?
 
 ### Preheader
-See one approved project count, then the operating model behind it.
+One approved count shows what fewer control paths look like in practice.
 
 ### Body
 Dear #Name#,
 
-A shorter list only matters when you can see what left the operating burden.
+What does consolidation look like after the diagram?
 
-One approved project gives us a concrete denominator: [APPROVED PROOF POINT]. The result was fewer systems, vendor handoffs, and workflows for the property team to manage day to day.
+At one operating property: [APPROVED PROOF POINT]. LUCI runs those screens, rooms, and controls from one interface while the underlying hardware stays varied.
 
-LUCI runs a property's A/V from one interface. It absorbs and coordinates the existing environment, so the property can preserve hardware choice while standardizing how the operation runs.
+The rack can remain complicated. A ballroom changeover does not have to.
+
+That is the practical proof: fewer control paths and vendor handoffs between the request and the room.
 
 See the consolidation proof: [PROOF URL]
 
 ### Word count
-**79 words** from greeting through CTA, excluding the signature.
+**68 words** from greeting through CTA, excluding the signature.
 
 ### Signature
 [NAME]
@@ -98,11 +106,7 @@ LUCI Systems
 - The proof click alone does not trigger a sales handoff.
 
 ## Guardrail audit
-- Uses only the approved count placeholder and proof URL; no client, percentage, or invented figure appears.
-- Establishes the denominator before the many-to-one result.
-- Preserves existing A/V and hardware choice.
-- Omits the retention claim so consolidation proof remains the single job.
-- Keeps the body under 150 words and the preheader under 90 characters.
+r2 changes: Put the approved count before the platform claim, tied the result to a ballroom changeover, and removed abstract framework language. The client-retention claim is skipped so the project count remains the only proof.
 
 ## Placeholders to fill
 - `[APPROVED PROOF POINT]`
@@ -111,7 +115,3 @@ LUCI Systems
 - `[TITLE]`
 - `[EMAIL]`
 - `[PHONE]`
-
-## Production notes
-- From: same named LUCI lead through Marketing
-- AC merge tags: keep `#Name#` as Jane specified; flag if AC needs `%FIRSTNAME%` later

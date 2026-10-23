@@ -1,84 +1,84 @@
 # NET-DEMO-01 — Immediate confirmation
 
-- **Audience:** Net-new prospects who submit a demo request
+- **Audience:** Net-new prospects who submitted a demo request
 - **Cycle:** After a demo request
 - **Timing:** Immediately after the request
 - **Purpose:** Confirm the request and remove scheduling friction.
 - **CTA:** Choose a time.
-- **Status:** draft v1 for Jane review
+- **Status:** draft r2 for Jane review
 
 ## Strategy
 
 ### What we’re writing and why
-A transactional confirmation that closes the uncertainty after form submission and gives the prospect one immediate scheduling path.
+Confirm the request and remove scheduling uncertainty.
 
 ### For whom
-Hand-raisers who already asked for a demo and need confirmation, not another explanation of LUCI.
+Hand-raisers who need logistics, not persuasion.
 
 ### Best way to reach them
-Send immediately from a monitored address. Put the booking URL in its own line and keep the reply fallback in the final sentence.
+Send immediately from a monitored address. Put the booking URL on its own line.
 
 ### How to make impact while staying professional
-Use plain language, explain what happens after booking, and remove every campaign message that could slow the next step.
+Keep the tone plain and warm, with one human sentence about calendar friction.
 
 ### Primary message
-The request is received, the prospect can choose a time now, and a direct reply solves any scheduling conflict.
+LUCI received the request, and the prospect can choose a time without reading another pitch.
 
 ## Three directions
 
-### Direction 1 — Scheduling first
+### Direction 1 — Time first
 Dear #Name#,
 
-We received your request for a LUCI demo.
+Thanks for asking to see LUCI, the platform that runs a property's A/V from one interface.
 
-Choose a time that works for you: [BOOKING URL]
+Mike or Mark will confirm the meeting and shape the walkthrough around any priorities you shared. Calendars create enough friction on their own, so the note stays short.
 
-Once you book, Mike or Mark will confirm the meeting and use any priorities you shared to shape the walkthrough. If none of the available times work, reply to this email and we will find another.
+Choose a time: [BOOKING URL]
 
 ### Direction 2 — Confirmation first
 Dear #Name#,
 
-Your LUCI demo request is with our team. Mike or Mark will follow up, and you can choose a meeting time now if you are ready.
+We have your request to see LUCI, which brings a property's A/V into one interface.
+
+Mike or Mark will handle the walkthrough and use the priorities from your form. The calendar is the only housekeeping left.
 
 Choose a time: [BOOKING URL]
 
-We will confirm the meeting after you book. If the calendar does not show a workable option, reply here with a few times that do.
-
-### Direction 3 — Reply fallback first
+### Direction 3 — Plain next step
 Dear #Name#,
 
-Thank you for requesting a LUCI demo. The fastest next step is to choose a time here: [BOOKING URL]
+Your LUCI demo request reached our team. LUCI runs a property's A/V from one interface, and Mike or Mark will tailor the walkthrough to your operation.
 
-If those times do not fit, reply to this email. Mike or Mark will help find another option and confirm the meeting directly.
+No extra reading assignment today.
 
-Any priorities you shared with the request will help us shape the walkthrough.
+Choose a time: [BOOKING URL]
 
 ## Why the final won
-**Direction 1 — Scheduling first**
+**Direction 1 — Time first**
 
-It gives the prospect the action immediately, names the human owner, and makes the fallback clear without adding unnecessary product copy. The final borrows the monitored reply path from Direction 3.
+It confirms the request, gives a skipped-earlier-email reader one compact definition, and puts the only action in its own line. The warm calendar sentence keeps it human without slowing the transaction.
 
 ## Final copy
 
 ### Subject lines
 1. **Confirming:** We received your LUCI demo request
-2. **Action-led:** Choose a time for your LUCI walkthrough
-3. **Practical:** Your next step with LUCI
+2. **Action-led:** Choose a time for your walkthrough
+3. **Warm:** Thanks for asking to see LUCI
 
 ### Preheader
-Pick a meeting time, or reply if the calendar does not fit.
+Pick a meeting time, and Mike or Mark will handle the rest.
 
 ### Body
 Dear #Name#,
 
-We received your request for a LUCI demo.
+Thanks for asking to see LUCI, the platform that runs a property's A/V from one interface.
 
-Choose a time that works for you: [BOOKING URL]
+Mike or Mark will confirm the meeting and shape the walkthrough around any priorities you shared. Calendars create enough friction on their own, so the note stays short.
 
-Once you book, Mike or Mark will confirm the meeting and use any priorities you shared to shape the walkthrough. If none of the available times work, reply to this email and we will find another.
+Choose a time: [BOOKING URL]
 
 ### Word count
-**55 words** from greeting through CTA, excluding the signature.
+**51 words** from greeting through CTA, excluding the signature.
 
 ### Signature
 [NAME]
@@ -92,10 +92,7 @@ LUCI Systems
 - Do not send recovery or nurture while Sales ownership is active.
 
 ## Guardrail audit
-- Confirmation and scheduling only; no campaign pitch or feature inventory.
-- Makes the booking path and reply fallback equally clear.
-- Uses no product asset, date claim, proof claim, or retention claim.
-- Keeps the body under 150 words and the preheader under 90 characters.
+r2 changes: Kept the transaction plain, added one short LUCI definition for a reader who skipped prior email, used one booking CTA, and added a warm calendar line. The client-retention claim is skipped because logistics do not need proof.
 
 ## Placeholders to fill
 - `[BOOKING URL]`
@@ -103,7 +100,3 @@ LUCI Systems
 - `[TITLE]`
 - `[EMAIL]`
 - `[PHONE]`
-
-## Production notes
-- From: Marketing automation on behalf of LUCI
-- AC merge tags: keep `#Name#` as Jane specified; flag if AC needs `%FIRSTNAME%` later

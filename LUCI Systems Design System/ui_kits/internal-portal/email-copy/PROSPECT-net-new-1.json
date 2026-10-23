@@ -1,11 +1,12 @@
 {
   "track": "Net-new prospects: acquisition and after a demo request",
-  "track_strategy": "Earn attention in four distinct moves: name the operational drag, prove consolidation with one approved count, show New LUCI without requiring a meeting, then connect the orchestration engine and embedded team to a qualified demo invitation. Once a prospect requests a demo, stop persuasion, remove scheduling friction, and move the conversation to Mike or Mark.",
+  "track_strategy": "Earn attention in four steps: show the drag of fragmented A/V in a recognizable property moment, prove consolidation, demonstrate New LUCI through one short visual, then connect the platform and continuing LUCI team to a focused demo. After a request, stop persuading and make the human handoff easy.",
   "open_questions": [
     "Which named LUCI lead should send the four acquisition emails?",
     "What approved project count and proof URL should fill [APPROVED PROOF POINT] and [PROOF URL]?",
-    "What final URLs should fill [FEATURE HIGHLIGHT REEL URL], [FULL RECORDING URL], [LUCI UPGRADE GUIDE URL], and [BOOKING URL]?",
-    "Should Mike or Mark own NET-DEMO-02, and should the same person receive the booking notifications?",
+    "What final URL should fill [FEATURE HIGHLIGHT REEL URL]?",
+    "What final URL should fill [BOOKING URL]?",
+    "Should Mike or Mark own NET-DEMO-02?",
     "Should ActiveCampaign keep #Name# or map it to the production first-name field?"
   ],
   "emails": [
@@ -16,59 +17,59 @@
       "timing": "Start of outbound cycle",
       "sender": "Marketing, from a named LUCI lead",
       "audience": "Cold operations, IT, A/V, F&B and entertainment, and marketing leaders at casinos, resorts, and venues",
-      "primary_message": "Separate A/V systems turn routine property changes into extra interfaces, handoffs, and troubleshooting, a problem LUCI consolidates into one operating view.",
+      "primary_message": "Routine A/V changes become relay races when separate controls, vendors, and workarounds own different parts of the room.",
       "strategy": {
-        "what_why": "A problem-first introduction that earns the next email by naming work the reader already recognizes, without opening on product capabilities.",
-        "for_whom": "Leaders who inherit separate room controls, vendor contacts, and workarounds but may not know LUCI or use category language for the problem.",
-        "reach": "Send from a named LUCI lead through Marketing. Keep the body under 100 words, use no asset, and close with a soft reply prompt rather than a meeting request.",
-        "impact": "Make one routine screen change the concrete entry point, then widen to the accumulated operational burden and define LUCI in one plain sentence."
+        "what_why": "Open the acquisition sequence with a screen change the reader recognizes, then name the accumulated handoffs behind it.",
+        "for_whom": "Leaders who inherit separate room controls, vendor contacts, and workarounds but may not know LUCI.",
+        "reach": "Send from a named LUCI lead through Marketing. Keep the body compact, use no asset, and ask for one low-effort reply.",
+        "impact": "Put a bartender and a wrong feed in the scene, then define LUCI in one plain line."
       },
       "directions": [
         {
-          "name": "Routine change, multiplied",
-          "summary": "Start with a simple screen change that crosses too many systems and people.",
-          "draft": "Dear #Name#,\n\nA screen change should not require a tour of control systems, vendor contacts, and workarounds. Yet routine A/V work often crosses several interfaces before anything reaches the room.\n\nThat accumulation creates more handoffs, more places to troubleshoot, and no single operating view when the property cannot afford failure.\n\nLUCI runs a property's A/V from one interface, consolidating the work without asking the property to start over.\n\nIf that sounds familiar, reply with the part of the process that creates the most friction."
+          "name": "Bartender relay",
+          "summary": "Show one ordinary screen change crossing too many controls and people.",
+          "draft": "Dear #Name#,\n\nA bartender changing one game should not need three logins, two vendor calls, and a workaround saved in a notes app.\n\nSeparate controls turn a routine screen change into a relay race. When the wall shows the wrong feed, nobody wants the baton.\n\nLUCI orchestrates a property's A/V from one interface, so staff can change rooms, screens, and sources without chasing the system that owns each step.\n\nReply with the A/V task that takes more handoffs than it should."
         },
         {
-          "name": "The incident test",
-          "summary": "Use a time-sensitive wrong-screen moment to reveal fragmented ownership.",
-          "draft": "Dear #Name#,\n\nWhen the wrong content reaches a screen before doors open, the first question is often not how to fix it. It is which system, vendor, or team owns the next step.\n\nSeparate A/V systems create separate workflows. Each handoff adds time and another place for context to disappear.\n\nLUCI runs a property's A/V from one interface so Operations and IT can work from the same operating view.\n\nDoes that ownership gap show up at your property? A one-line reply is enough."
+          "name": "Wrong wall",
+          "summary": "Open on the moment a wall shows the wrong content before guests arrive.",
+          "draft": "Dear #Name#,\n\nThe wall is showing the wrong feed, doors open soon, and the first question is not how to fix it. It is which control, vendor, or workaround owns the problem.\n\nThat is the tax of separate A/V systems: more handoffs before anyone touches the screen.\n\nLUCI runs a property's A/V from one interface, bringing rooms, sources, and controls into the same operating view.\n\nReply with the screen change that creates the longest phone tree."
         },
         {
-          "name": "Count the handoffs",
-          "summary": "Ask the reader to inventory the tools and people behind one ordinary change.",
-          "draft": "Dear #Name#,\n\nPick one ordinary A/V change at your property. How many interfaces, calls, and workarounds sit between the request and the room?\n\nThe burden rarely comes from one bad system. It comes from everything the environment has accumulated around it: separate controls, separate vendors, and separate ways of working.\n\nLUCI runs a property's A/V from one interface, bringing that work into one operating environment.\n\nIf the list is longer than it should be, reply and tell me where it usually breaks down."
+          "name": "Count the steps",
+          "summary": "Ask the reader to count what sits between a request and the room.",
+          "draft": "Dear #Name#,\n\nPick one ordinary A/V request: move the game, reset the ballroom, change the lobby wall. How many interfaces, calls, and workarounds sit between the request and the room?\n\nThe burden comes from everything the environment accumulates around the hardware.\n\nLUCI brings a property's A/V into one interface, so staff work from one view instead of tracing the request across separate systems.\n\nReply with the task that has collected the most steps."
         }
       ],
-      "winner": "Routine change, multiplied",
-      "why_won": "It opens with the most broadly recognizable task, shows the accumulated burden without dramatizing it, and introduces LUCI only after the reader has recognized the problem. The final borrows the shared-view consequence from The incident test.",
+      "winner": "Bartender relay",
+      "why_won": "It starts in the reader's day, gives the email one memorable human line, and defines LUCI only after the problem lands. It borrows the wrong-feed urgency from Wrong wall without turning the note into an incident story.",
       "subject_lines": [
         {
           "mood": "Curious",
-          "text": "How much work lives between your A/V systems?"
+          "text": "How many steps does one screen change take?"
         },
         {
-          "mood": "Recognizable",
-          "text": "When every room has its own workflow"
+          "mood": "Scene-led",
+          "text": "The wall is showing the wrong feed"
         },
         {
           "mood": "Direct",
-          "text": "Does running A/V take too many handoffs?"
+          "text": "When A/V becomes a relay race"
         }
       ],
-      "preheader": "Separate interfaces and vendors turn routine changes into coordinated work.",
+      "preheader": "One routine screen change can expose every extra interface and handoff.",
       "body": [
         "Dear #Name#,",
-        "A screen change should not require a tour of separate control systems, vendor contacts, and workarounds. Yet at many casinos, resorts, and venues, routine A/V work crosses multiple interfaces before anything reaches the room.",
-        "That accumulation creates more handoffs, more places to troubleshoot, and no single operating view when the environment cannot afford failure.",
-        "LUCI runs a property's A/V from one interface, consolidating the work without asking the property to start over.",
-        "If that sounds familiar, reply with the part of the process that creates the most friction."
+        "A bartender changing one game should not need three logins, two vendor calls, and a workaround saved in a notes app.",
+        "Separate controls turn a routine screen change into a relay race. When the wall shows the wrong feed, nobody wants the baton.",
+        "LUCI orchestrates a property's A/V from one interface, so staff can change rooms, screens, and sources without chasing the system that owns each step.",
+        "Reply with the A/V task that takes more handoffs than it should."
       ],
-      "cta_label": "Reply if the problem sounds familiar",
-      "word_count": 90,
+      "cta_label": "Reply with the task",
+      "word_count": 81,
       "assets_used": [],
       "automation_notes": "Enter only cold net-new contacts who are not in an active Mike or Mark conversation. A reply or booked meeting stops automation and moves the contact to Sales. Opens and ordinary clicks remain reporting signals only.",
-      "guardrail_notes": "The email leads with the operational problem, contains no New LUCI capability inventory, and makes no meeting ask. LUCI is defined in one plain line. No proof, client name, figure, date, or retention claim is used."
+      "guardrail_notes": "r2 changes: Rebuilt the opener around a bartender, a wrong feed, and a concrete handoff problem; added one earned human line; kept one reply CTA. The client-retention claim is skipped because first contact has not earned it."
     },
     {
       "id": "NET-ACQ-02",
@@ -77,62 +78,63 @@
       "timing": "5 days after email 1",
       "sender": "Marketing, from the same named LUCI lead",
       "audience": "Cold net-new prospects who received NET-ACQ-01 and have not replied, booked, or entered an active sales conversation",
-      "primary_message": "One approved project count shows what a shorter list of systems, vendor handoffs, and workflows looks like without giving up hardware choice.",
+      "primary_message": "One approved property count shows how LUCI brings varied rooms and hardware into one operating interface.",
       "strategy": {
-        "what_why": "A proof email that turns the prior problem into a concrete many-to-one result using one approved project count and one proof destination.",
-        "for_whom": "Operations and IT leaders who may agree that fragmentation is a problem but need evidence that consolidation can work with an existing A/V environment.",
-        "reach": "Send five days after NET-ACQ-01 from the same sender. Put the approved count before the platform explanation and use the proof URL as the only CTA.",
-        "impact": "Let the denominator carry credibility, then explain that LUCI coordinates existing A/V and preserves hardware choice while standardizing the operating model."
+        "what_why": "Move from a familiar problem to concrete proof, using one approved count and one destination.",
+        "for_whom": "Operations and IT leaders who need evidence that consolidation can work across varied A/V hardware.",
+        "reach": "Send five days after NET-ACQ-01 from the same sender. Put the approved count first and use the proof URL as the only CTA.",
+        "impact": "Make the ballroom changeover the practical consequence of a shorter list."
       },
       "directions": [
         {
-          "name": "Denominator first",
-          "summary": "Lead with one approved count, then explain the shorter operating list it produced.",
-          "draft": "Dear #Name#,\n\nA shorter list only matters when you can see what left the operating burden.\n\nOne approved project gives us a concrete denominator: [APPROVED PROOF POINT]. The result was fewer systems, vendor handoffs, and workflows for the property team to manage day to day.\n\nLUCI runs a property's A/V from one interface. It absorbs and coordinates the existing environment, so the property can preserve hardware choice while standardizing how the operation runs.\n\nSee the consolidation proof: [PROOF URL]"
+          "name": "Count before claim",
+          "summary": "Lead with the approved denominator, then show what one interface changes.",
+          "draft": "Dear #Name#,\n\nWhat does consolidation look like after the diagram?\n\nAt one operating property: [APPROVED PROOF POINT]. LUCI runs those screens, rooms, and controls from one interface while the underlying hardware stays varied.\n\nThe rack can remain complicated. A ballroom changeover does not have to.\n\nThat is the practical proof: fewer control paths and vendor handoffs between the request and the room.\n\nSee the consolidation proof: [PROOF URL]"
         },
         {
-          "name": "Before and after the handoff",
-          "summary": "Contrast a fragmented workflow with one coordinated operating environment.",
-          "draft": "Dear #Name#,\n\nBefore consolidation, a routine A/V change can move through separate controls, people, and vendor calls. After consolidation, the hardware can stay varied while the operating workflow becomes consistent.\n\nThe proof is concrete: [APPROVED PROOF POINT]. LUCI coordinates the property's existing A/V from one interface, reducing the list the team has to manage without forcing a single hardware ecosystem.\n\nSee how that operating model works in practice: [PROOF URL]"
+          "name": "Ballroom reset",
+          "summary": "Use a room turnover to turn consolidation into an observable workflow.",
+          "draft": "Dear #Name#,\n\nA ballroom flips from a general session to dinner. Screens, sources, and audio all need to move together, but the equipment behind them may come from several eras.\n\nLUCI runs that varied A/V from one interface. At one property, the scope included [APPROVED PROOF POINT].\n\nStaff get one path through the change instead of a scavenger hunt across controls and contacts.\n\nSee how the operation came together: [PROOF URL]"
         },
         {
-          "name": "Keep the hardware choice",
-          "summary": "Lead with the concern that standardization might constrain the property's equipment decisions.",
-          "draft": "Dear #Name#,\n\nStandardizing the A/V operation should not require every room to use the same hardware.\n\nLUCI works with and absorbs the existing environment, coordinating varied equipment through one operating interface. In one approved project, that produced a measurable result: [APPROVED PROOF POINT].\n\nThe useful change was not another device. It was a shorter list of systems, vendor handoffs, and workflows for the property team to manage.\n\nSee the approved proof: [PROOF URL]"
+          "name": "Keep the hardware mix",
+          "summary": "Answer the concern that a consistent operation demands uniform equipment.",
+          "draft": "Dear #Name#,\n\nA consistent A/V workflow does not require identical hardware in every room.\n\nLUCI brings varied equipment into one operating interface. One approved project makes the scale concrete: [APPROVED PROOF POINT].\n\nThe useful result is not another device. It is a bartender, banquet manager, or technician following the same path to the screen.\n\nHardware can vary. The hunt for the right control should not.\n\nSee the consolidation proof: [PROOF URL]"
         }
       ],
-      "winner": "Denominator first",
-      "why_won": "It lets the approved count establish scale before making a platform claim, then answers the likely hardware-choice concern in the fewest words. The final borrows the operating-model clarity from Keep the hardware choice.",
+      "winner": "Count before claim",
+      "why_won": "It gives proof before interpretation, defines LUCI for a reader who skipped the opener, and lands the benefit in a ballroom changeover instead of an abstract framework. It borrows the hardware reassurance from Keep the hardware mix.",
       "subject_lines": [
         {
           "mood": "Practical",
-          "text": "What a shorter A/V list looks like"
+          "text": "What consolidation looks like in one property"
         },
         {
-          "mood": "Outcome-led",
-          "text": "Fewer handoffs, one operating view"
+          "mood": "Scene-led",
+          "text": "A smoother ballroom changeover"
         },
         {
           "mood": "Curious",
-          "text": "Consolidation you can count"
+          "text": "Can varied A/V run from one place?"
         }
       ],
-      "preheader": "See one approved project count, then the operating model behind it.",
+      "preheader": "One approved count shows what fewer control paths look like in practice.",
       "body": [
         "Dear #Name#,",
-        "A shorter list only matters when you can see what left the operating burden.",
-        "One approved project gives us a concrete denominator: [APPROVED PROOF POINT]. The result was fewer systems, vendor handoffs, and workflows for the property team to manage day to day.",
-        "LUCI runs a property's A/V from one interface. It absorbs and coordinates the existing environment, so the property can preserve hardware choice while standardizing how the operation runs.",
+        "What does consolidation look like after the diagram?",
+        "At one operating property: [APPROVED PROOF POINT]. LUCI runs those screens, rooms, and controls from one interface while the underlying hardware stays varied.",
+        "The rack can remain complicated. A ballroom changeover does not have to.",
+        "That is the practical proof: fewer control paths and vendor handoffs between the request and the room.",
         "See the consolidation proof: [PROOF URL]"
       ],
       "cta_label": "See the consolidation proof",
-      "word_count": 79,
+      "word_count": 68,
       "assets_used": [
         "[APPROVED PROOF POINT]",
         "[PROOF URL]"
       ],
       "automation_notes": "Send only if NET-ACQ-01 produced no reply, booking, or active opportunity. A reply or booked meeting stops automation and moves the contact to Sales. The proof click alone does not trigger a sales handoff.",
-      "guardrail_notes": "The only project evidence is the approved count placeholder and proof URL; no client, percentage, or invented figure appears. Existing A/V and hardware choice are preserved. The retention claim is omitted so consolidation proof remains the email's single job."
+      "guardrail_notes": "r2 changes: Put the approved count before the platform claim, tied the result to a ballroom changeover, and removed abstract framework language. The client-retention claim is skipped so the project count remains the only proof."
     },
     {
       "id": "NET-ACQ-03",
@@ -141,64 +143,61 @@
       "timing": "5 days after email 2",
       "sender": "Marketing, from the same named LUCI lead",
       "audience": "Cold net-new prospects who received the first two acquisition emails and have not entered a sales conversation",
-      "primary_message": "A short reel lets prospects see New LUCI's beta product moments without committing to a live meeting, with a full recording and written guide available for more depth.",
+      "primary_message": "A short reel shows how New LUCI gives staff more direct control of room changes, screen checks, maps, and activity history.",
       "strategy": {
-        "what_why": "A visual product introduction that follows problem recognition and proof, leading with the shortest asset and offering deeper formats without gating access behind a meeting.",
-        "for_whom": "Busy property leaders who may be curious about the product but will not begin with a full recording or a sales conversation.",
-        "reach": "Send five days after NET-ACQ-02. Lead with the feature highlight reel, make the full recording secondary, and place the LUCI Upgrade Guide last as the written companion.",
-        "impact": "Define LUCI for a cold reader, state beta status plainly, and name a tight set of visible workflows that demonstrate more control in the operator's hands."
+        "what_why": "Show the product only after the reader understands the problem and proof, using the shortest visual asset.",
+        "for_whom": "Busy venue leaders who want to see the workflow before considering a meeting.",
+        "reach": "Send five days after NET-ACQ-02. Define LUCI and New LUCI in one line, then use the feature reel as the sole CTA.",
+        "impact": "Follow a room change from preparation through verification and keep the tone brisk."
       },
       "directions": [
         {
-          "name": "Short cut first",
-          "summary": "Respect the reader's time by leading with the shortest visual asset.",
-          "draft": "Dear #Name#,\n\nLUCI runs a property's A/V from one interface. New LUCI is in beta, putting more day-to-day programming control in the operator's hands on a faster, more responsive foundation.\n\nThe short feature reel shows the product moments first: Staging, tailored operating views, live screen content, and audit history.\n\nWatch the feature highlight reel: [FEATURE HIGHLIGHT REEL URL]\n\nFor more depth, watch the full recording: [FULL RECORDING URL]\n\nRead the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]"
+          "name": "Cue without cardio",
+          "summary": "Follow a room change and make the short reel the only action.",
+          "draft": "Dear #Name#,\n\nLUCI runs a property's A/V from one interface. New LUCI is in beta and runs on a faster foundation, giving staff more direct control over rooms, maps, data, and access.\n\nThe short reel follows the useful moments: prepare screens, sources, and audio with Staging; apply the plan on cue; check what the wall is playing; trace the change in activity history.\n\nCue time should not double as cardio.\n\nWatch the feature highlight reel: [FEATURE HIGHLIGHT REEL URL]"
         },
         {
-          "name": "Follow one room change",
-          "summary": "Turn the visual assets into a compact prepare, apply, confirm workflow.",
-          "draft": "Dear #Name#,\n\nWhat does more programming control look like during a real room change?\n\nNew LUCI is in beta. In the short feature reel, see an operator prepare screens, sources, and audio with Staging, apply the change on cue, confirm live screen content, and trace what happened through audit history.\n\nWatch the feature highlight reel: [FEATURE HIGHLIGHT REEL URL]\n\nThe full walkthrough is here: [FULL RECORDING URL]\n\nFor the written product view, read the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]"
+          "name": "Bartender view",
+          "summary": "Show how approved controls and live screen checks simplify one shift.",
+          "draft": "Dear #Name#,\n\nLUCI brings a property's A/V into one interface. New LUCI is its beta update, giving staff more direct control on a faster, more responsive foundation.\n\nIn the short reel, a bartender opens only the controls approved for that space, checks what a screen is actually playing, and changes the room without searching the building for help.\n\nThe screen gets the attention. The control hunt does not.\n\nWatch the feature highlight reel: [FEATURE HIGHLIGHT REEL URL]"
         },
         {
-          "name": "Choose your depth",
-          "summary": "Present three formats in order of time commitment, with no meeting attached.",
-          "draft": "Dear #Name#,\n\nYou do not need a live meeting to see New LUCI. The platform is in beta, and three formats let you choose the level of detail that fits your schedule.\n\nStart with the feature highlight reel for the product moments: [FEATURE HIGHLIGHT REEL URL]\n\nUse the full recording for the complete walkthrough: [FULL RECORDING URL]\n\nRead the LUCI Upgrade Guide for the written view: [LUCI UPGRADE GUIDE URL]\n\nEach shows how more day-to-day programming control moves into the operator's hands while the LUCI team stays alongside."
+          "name": "Map to wall",
+          "summary": "Use the live map and screen view as the visual thread.",
+          "draft": "Dear #Name#,\n\nLUCI runs A/V across a property from one interface. New LUCI is the beta version that adds more direct control over the map, room views, activity, and access.\n\nThe short reel moves from a floor plan to a live screen check, then into the history behind a change. It is a quick look at how staff find the room, confirm the wall, and see what happened without walking the floor.\n\nWatch the feature highlight reel: [FEATURE HIGHLIGHT REEL URL]"
         }
       ],
-      "winner": "Short cut first",
-      "why_won": "It makes the lead asset unmistakable, defines LUCI before naming the beta, and gives enough workflow detail to earn the click without summarizing the whole product. The final borrows the prepare-and-confirm sequence from Follow one room change.",
+      "winner": "Cue without cardio",
+      "why_won": "It defines both LUCI and New LUCI for a cold reader, turns the feature list into one prepare-apply-confirm sequence, and gives the email a human line without distracting from the reel. It keeps the single CTA unmistakable.",
       "subject_lines": [
         {
           "mood": "Direct",
-          "text": "Watch the New LUCI feature reel"
+          "text": "Watch one room change in New LUCI"
         },
         {
           "mood": "Curious",
-          "text": "What does more control look like?"
+          "text": "What is the wall actually playing?"
         },
         {
-          "mood": "Low-pressure",
-          "text": "See New LUCI without a live meeting"
+          "mood": "Playful",
+          "text": "Cue time without the cardio"
         }
       ],
-      "preheader": "Start with the short product cut, then choose the deeper format if useful.",
+      "preheader": "See staff stage a room, confirm the wall, and trace the change.",
       "body": [
         "Dear #Name#,",
-        "LUCI runs a property's A/V from one interface. New LUCI is in beta, putting more day-to-day programming control in the operator's hands on a faster, more responsive foundation.",
-        "The short feature reel shows the product moments first: prepare room changes with Staging, tailor the operating view, confirm live screen content, and trace activity through audit history.",
-        "Watch the feature highlight reel: [FEATURE HIGHLIGHT REEL URL]",
-        "For the deeper walkthrough, watch the full recording: [FULL RECORDING URL]",
-        "Prefer a written view? Read the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]"
+        "LUCI runs a property's A/V from one interface. New LUCI is in beta and runs on a faster foundation, giving staff more direct control over rooms, maps, data, and access.",
+        "The short reel follows the useful moments: prepare screens, sources, and audio with Staging; apply the plan on cue; check what the wall is playing; trace the change in activity history.",
+        "Cue time should not double as cardio.",
+        "Watch the feature highlight reel: [FEATURE HIGHLIGHT REEL URL]"
       ],
       "cta_label": "Watch the feature highlight reel",
-      "word_count": 91,
+      "word_count": 79,
       "assets_used": [
-        "[FEATURE HIGHLIGHT REEL URL]",
-        "[FULL RECORDING URL]",
-        "[LUCI UPGRADE GUIDE URL]"
+        "[FEATURE HIGHLIGHT REEL URL]"
       ],
-      "automation_notes": "Send only if the prospect has not replied, booked, or entered an active opportunity. A reply or booked meeting stops automation and moves the contact to Sales. Asset clicks remain reporting signals and do not create a hand-raiser.",
-      "guardrail_notes": "New LUCI is explicitly in beta, with no date or availability statement. The feature reel leads, the full recording is secondary, and the LUCI Upgrade Guide is labeled exactly. There is no live-meeting ask. The retention claim is omitted because this email's job is visual orientation."
+      "automation_notes": "Send only if the prospect has not replied, booked, or entered an active opportunity. A reply or booked meeting stops automation and moves the contact to Sales. The reel click remains a reporting signal and does not create a hand-raiser.",
+      "guardrail_notes": "r2 changes: Added a varied one-line definition of LUCI and New LUCI, turned features into a room-change sequence, added one lightly witty line, and reduced the email to one visual CTA. The client-retention claim is skipped because this email's job is product orientation."
     },
     {
       "id": "NET-ACQ-04",
@@ -207,61 +206,61 @@
       "timing": "5 days after email 3",
       "sender": "Marketing, from the same named LUCI lead",
       "audience": "Cold net-new prospects completing the acquisition cycle without a reply, booking, or active opportunity",
-      "primary_message": "LUCI combines an orchestration engine that preserves hardware choice with an embedded team that stays accountable, giving qualified prospects a reason to book a demo.",
+      "primary_message": "LUCI brings varied A/V into one interface and keeps a team monitoring, diagnosing, and supporting the environment.",
       "strategy": {
-        "what_why": "The acquisition close connects the platform and permanent team, then invites prospects with a real consolidation priority into a focused demo.",
-        "for_whom": "Operations and IT leaders who now understand the problem, proof, and product view but need to know who stays accountable after implementation.",
-        "reach": "Send five days after NET-ACQ-03 from the same sender. Keep one qualification cue in the close and use the booking URL as the only asset.",
-        "impact": "Lead with hardware-choice preservation, make the embedded team's continuing work concrete, and place the retention claim beside that accountability rather than using it as a headline."
+        "what_why": "Close the acquisition cycle by pairing the platform with the people who remain accountable, then offer a focused demo.",
+        "for_whom": "Operations and IT leaders who understand the problem and product but still need confidence in the continuing relationship.",
+        "reach": "Send five days after NET-ACQ-03 from the same sender. Use the booking URL as the only CTA.",
+        "impact": "Make the Monday-morning work of monitoring and diagnosis more concrete than a generic partnership promise."
       },
       "directions": [
         {
-          "name": "Engine and team",
-          "summary": "Give equal weight to the platform that coordinates the operation and the people who stay accountable.",
-          "draft": "Dear #Name#,\n\nStandardizing A/V should not mean standardizing every device. LUCI is the orchestration engine that runs a property's existing A/V from one interface while preserving hardware choice.\n\nThe platform handles the operation; an embedded team stays accountable after implementation, monitoring, diagnosing, and refining the environment alongside your staff. That combination matters: we've never lost a client.\n\nIf consolidating the operation without starting over is a priority, book a demo. We can focus on the rooms, systems, and workflows you need to bring together.\n\nBook a demo: [BOOKING URL]"
+          "name": "Monday morning",
+          "summary": "Connect one interface to the team that remains after the walkthrough.",
+          "draft": "Dear #Name#,\n\nDifferent rooms can keep different hardware. Staff should not need different operating habits for each one.\n\nLUCI is the A/V orchestration engine that brings those rooms into one interface. The LUCI team keeps monitoring, diagnosing, and supporting the environment after the demo. Software gets the meeting; accountability has to show up Monday morning.\n\nThat continuing work matters: we've never lost a client.\n\nIf fewer interfaces and handoffs are on your list, book a focused demo: [BOOKING URL]"
         },
         {
-          "name": "Standardize the operation",
-          "summary": "Lead on a standardized operating model that does not demand uniform equipment.",
-          "draft": "Dear #Name#,\n\nA consistent A/V operation does not require a uniform hardware estate. LUCI coordinates the property's existing systems through one interface, giving staff one operating model across varied rooms and devices.\n\nAn embedded LUCI team stays with that environment to monitor, diagnose, and refine it. The technology and the accountability come together.\n\nIf your next priority is fewer interfaces, vendor handoffs, or room-by-room workflows, a demo can focus on that exact operating problem.\n\nBook a demo: [BOOKING URL]"
+          "name": "Map and people",
+          "summary": "Pair a shared property map with the people watching the environment.",
+          "draft": "Dear #Name#,\n\nLUCI runs a property's A/V from one interface, giving staff one map for rooms, screens, and sources even when the equipment varies behind it.\n\nThe same view helps the LUCI team monitor the environment, diagnose issues, and support the people on site. A shared screen is useful. Shared accountability is the part that survives a busy Saturday.\n\nIf that combination fits an active priority, book a demo built around your property: [BOOKING URL]"
         },
         {
-          "name": "Qualified invitation",
-          "summary": "Open with the operational situations that make a LUCI conversation timely.",
-          "draft": "Dear #Name#,\n\nA LUCI conversation is most useful when the property is trying to bring separate rooms, systems, or workflows into one operating model without starting over.\n\nLUCI is the orchestration engine across the existing A/V environment. It preserves hardware choice, while an embedded team stays accountable for monitoring, diagnosis, and continued refinement.\n\nIf that matches a current priority, book a demo. We will shape the walkthrough around the part of the operation you need to consolidate, not a generic feature tour.\n\nBook a demo: [BOOKING URL]"
+          "name": "Focused invitation",
+          "summary": "Qualify the demo around a current room, screen, or workflow problem.",
+          "draft": "Dear #Name#,\n\nA LUCI demo is most useful when there is a specific knot to untangle: a ballroom with too many control paths, a wall nobody can verify remotely, or staff moving between different interfaces.\n\nLUCI brings the property's A/V into one operating interface. Its team continues to monitor, diagnose, and support the environment as needs change.\n\nWe will skip the generic tour and start with the knot.\n\nBook a focused demo: [BOOKING URL]"
         }
       ],
-      "winner": "Engine and team",
-      "why_won": "It states the full LUCI offer in the cleanest sequence: hardware choice, orchestration engine, embedded accountability, then a qualified invitation. The final borrows the focused-demo promise from Qualified invitation.",
+      "winner": "Monday morning",
+      "why_won": "It defines the platform, makes continuing support concrete, and gives the retention line a natural trust context. It borrows the focused invitation from Focused invitation and avoids repeating the prior reel's workflow sequence.",
       "subject_lines": [
         {
-          "mood": "Institutional",
-          "text": "The platform and team behind the operation"
+          "mood": "Trust-led",
+          "text": "What stays after the walkthrough"
         },
         {
           "mood": "Direct",
-          "text": "See what LUCI could run at your property"
+          "text": "Bring your A/V knot to the demo"
         },
         {
           "mood": "Curious",
-          "text": "What stays after the demo?"
+          "text": "Who watches the system on Monday?"
         }
       ],
-      "preheader": "One operating engine, preserved hardware choice, and a team that stays.",
+      "preheader": "One A/V interface, plus a team that keeps monitoring and diagnosing.",
       "body": [
         "Dear #Name#,",
-        "Standardizing A/V should not mean standardizing every device. LUCI is the orchestration engine that runs a property's existing A/V from one interface while preserving hardware choice.",
-        "The platform handles the operation; an embedded team stays accountable after implementation, monitoring, diagnosing, and refining the environment alongside your staff. That combination matters: we've never lost a client.",
-        "If consolidating the operation without starting over is a priority, book a demo. We can focus the conversation on the rooms, systems, and workflows you need to bring together.",
-        "Book a demo: [BOOKING URL]"
+        "Different rooms can keep different hardware. Staff should not need different operating habits for each one.",
+        "LUCI is the A/V orchestration engine that brings those rooms into one interface. The LUCI team keeps monitoring, diagnosing, and supporting the environment after the demo. Software gets the meeting; accountability has to show up Monday morning.",
+        "That continuing work matters: we've never lost a client.",
+        "If fewer interfaces and handoffs are on your list, book a focused demo: [BOOKING URL]"
       ],
-      "cta_label": "Book a demo",
-      "word_count": 91,
+      "cta_label": "Book a focused demo",
+      "word_count": 79,
       "assets_used": [
         "[BOOKING URL]"
       ],
-      "automation_notes": "Send only if the prospect remains outside active Sales ownership. A reply or booking stops the acquisition cycle immediately and routes the hand-raiser to Mike or Mark. If the prospect stays quiet after this email, move them to Prospect Pulse on the planned cadence, with no overlapping cycle.",
-      "guardrail_notes": "The email preserves existing A/V and hardware choice, connects the orchestration engine to the embedded team, and uses one qualification cue. The exact retention claim appears here because trust and continuing accountability are the subject. It is the claim's only use in the four-email acquisition cycle; both demo follow-ups omit it."
+      "automation_notes": "Send only if the prospect remains outside active Sales ownership. A reply or booking stops the acquisition cycle immediately and routes the hand-raiser to Mike or Mark. If the prospect stays quiet, move them to Prospect Pulse on the planned cadence, with no overlapping cycle.",
+      "guardrail_notes": "r2 changes: Replaced generic partnership copy with monitoring, diagnosis, support, and a Monday-morning accountability line; kept one booking CTA. The exact client-retention claim stays here because continuing responsibility makes it credible and relevant; every other email in this file skips it."
     },
     {
       "id": "NET-DEMO-01",
@@ -270,32 +269,32 @@
       "timing": "Immediately after the request",
       "sender": "Marketing automation on behalf of LUCI",
       "audience": "Net-new prospects who submitted a demo request",
-      "primary_message": "The request is received, the prospect can choose a time now, and a direct reply solves any scheduling conflict.",
+      "primary_message": "LUCI received the request, and the prospect can choose a time without reading another pitch.",
       "strategy": {
-        "what_why": "A transactional confirmation that closes the uncertainty after form submission and gives the prospect one immediate scheduling path.",
-        "for_whom": "Hand-raisers who already asked for a demo and need confirmation, not another explanation of LUCI.",
-        "reach": "Send immediately from a monitored address. Put the booking URL in its own line and keep the reply fallback in the final sentence.",
-        "impact": "Use plain language, explain what happens after booking, and remove every campaign message that could slow the next step."
+        "what_why": "Confirm the request and remove scheduling uncertainty.",
+        "for_whom": "Hand-raisers who need logistics, not persuasion.",
+        "reach": "Send immediately from a monitored address. Put the booking URL on its own line.",
+        "impact": "Keep the tone plain and warm, with one human sentence about calendar friction."
       },
       "directions": [
         {
-          "name": "Scheduling first",
-          "summary": "Confirm receipt, surface the booking link, then explain the human follow-up.",
-          "draft": "Dear #Name#,\n\nWe received your request for a LUCI demo.\n\nChoose a time that works for you: [BOOKING URL]\n\nOnce you book, Mike or Mark will confirm the meeting and use any priorities you shared to shape the walkthrough. If none of the available times work, reply to this email and we will find another."
+          "name": "Time first",
+          "summary": "Confirm receipt, define LUCI briefly, and move straight to the calendar.",
+          "draft": "Dear #Name#,\n\nThanks for asking to see LUCI, the platform that runs a property's A/V from one interface.\n\nMike or Mark will confirm the meeting and shape the walkthrough around any priorities you shared. Calendars create enough friction on their own, so the note stays short.\n\nChoose a time: [BOOKING URL]"
         },
         {
           "name": "Confirmation first",
-          "summary": "Lead with reassurance that the request reached the right team.",
-          "draft": "Dear #Name#,\n\nYour LUCI demo request is with our team. Mike or Mark will follow up, and you can choose a meeting time now if you are ready.\n\nChoose a time: [BOOKING URL]\n\nWe will confirm the meeting after you book. If the calendar does not show a workable option, reply here with a few times that do."
+          "summary": "Assure the reader that a person will pick up the request.",
+          "draft": "Dear #Name#,\n\nWe have your request to see LUCI, which brings a property's A/V into one interface.\n\nMike or Mark will handle the walkthrough and use the priorities from your form. The calendar is the only housekeeping left.\n\nChoose a time: [BOOKING URL]"
         },
         {
-          "name": "Reply fallback first",
-          "summary": "Make clear that the calendar is convenient, not a barrier.",
-          "draft": "Dear #Name#,\n\nThank you for requesting a LUCI demo. The fastest next step is to choose a time here: [BOOKING URL]\n\nIf those times do not fit, reply to this email. Mike or Mark will help find another option and confirm the meeting directly.\n\nAny priorities you shared with the request will help us shape the walkthrough."
+          "name": "Plain next step",
+          "summary": "Use the shortest possible confirmation with one clear action.",
+          "draft": "Dear #Name#,\n\nYour LUCI demo request reached our team. LUCI runs a property's A/V from one interface, and Mike or Mark will tailor the walkthrough to your operation.\n\nNo extra reading assignment today.\n\nChoose a time: [BOOKING URL]"
         }
       ],
-      "winner": "Scheduling first",
-      "why_won": "It gives the prospect the action immediately, names the human owner, and makes the fallback clear without adding unnecessary product copy. The final borrows the monitored reply path from Reply fallback first.",
+      "winner": "Time first",
+      "why_won": "It confirms the request, gives a skipped-earlier-email reader one compact definition, and puts the only action in its own line. The warm calendar sentence keeps it human without slowing the transaction.",
       "subject_lines": [
         {
           "mood": "Confirming",
@@ -303,27 +302,27 @@
         },
         {
           "mood": "Action-led",
-          "text": "Choose a time for your LUCI walkthrough"
+          "text": "Choose a time for your walkthrough"
         },
         {
-          "mood": "Practical",
-          "text": "Your next step with LUCI"
+          "mood": "Warm",
+          "text": "Thanks for asking to see LUCI"
         }
       ],
-      "preheader": "Pick a meeting time, or reply if the calendar does not fit.",
+      "preheader": "Pick a meeting time, and Mike or Mark will handle the rest.",
       "body": [
         "Dear #Name#,",
-        "We received your request for a LUCI demo.",
-        "Choose a time that works for you: [BOOKING URL]",
-        "Once you book, Mike or Mark will confirm the meeting and use any priorities you shared to shape the walkthrough. If none of the available times work, reply to this email and we will find another."
+        "Thanks for asking to see LUCI, the platform that runs a property's A/V from one interface.",
+        "Mike or Mark will confirm the meeting and shape the walkthrough around any priorities you shared. Calendars create enough friction on their own, so the note stays short.",
+        "Choose a time: [BOOKING URL]"
       ],
       "cta_label": "Choose a time",
-      "word_count": 55,
+      "word_count": 51,
       "assets_used": [
         "[BOOKING URL]"
       ],
       "automation_notes": "Submitting the request stops all marketing automation immediately. Mike or Mark owns the prospect until an explicit handback to Marketing. Do not send recovery or nurture while Sales ownership is active.",
-      "guardrail_notes": "This is confirmation and scheduling only. It contains no campaign pitch, feature inventory, product asset, date claim, proof claim, or retention claim. The reply fallback keeps the booking calendar from becoming a barrier."
+      "guardrail_notes": "r2 changes: Kept the transaction plain, added one short LUCI definition for a reader who skipped prior email, used one booking CTA, and added a warm calendar line. The client-retention claim is skipped because logistics do not need proof."
     },
     {
       "id": "NET-DEMO-02",
@@ -331,33 +330,33 @@
       "title": "Personal follow-up",
       "timing": "Same or next business day",
       "sender": "Mike or Mark",
-      "audience": "Net-new prospects who submitted a demo request, whether booked or still choosing a time",
-      "primary_message": "A real person has seen the request and wants one focused priority to shape a useful walkthrough.",
+      "audience": "Net-new prospects who submitted a demo request",
+      "primary_message": "A real person wants one concrete priority so the LUCI walkthrough starts with the prospect's operation.",
       "strategy": {
-        "what_why": "A short personal note that proves the request reached Mike or Mark and gathers one useful input without restarting the campaign.",
-        "for_whom": "Prospects whose interest is current and who may already have booked or may still need scheduling help.",
-        "reach": "Send personally from Mike or Mark the same or next business day. Use first person, ask one question, and keep the booking link conditional.",
-        "impact": "Acknowledge the request, tell booked prospects they are set, and ask about one room, workflow, or A/V issue so the meeting begins with relevance."
+        "what_why": "Show that Mike or Mark saw the request and collect one useful input.",
+        "for_whom": "Prospects whose interest is current and who should not receive another campaign summary.",
+        "reach": "Send personally the same or next business day. Ask one question and use reply as the sole CTA.",
+        "impact": "Offer three recognizable examples and sound like the sender wrote the note in 30 seconds."
       },
       "directions": [
         {
-          "name": "One useful question",
-          "summary": "Use a single operational question to shape the walkthrough.",
-          "draft": "Dear #Name#,\n\nI saw your request for a LUCI walkthrough and wanted to follow up personally.\n\nIf you already chose a time, you're set. Is there one room, workflow, or A/V issue you want us to focus on? Reply here and I'll make sure we cover it.\n\nIf you still need a time, choose one here: [BOOKING URL]"
+          "name": "One thing",
+          "summary": "Ask for one priority using three concrete examples.",
+          "draft": "Dear #Name#,\n\nI saw your request. LUCI runs a property's A/V from one interface, and I want the walkthrough to start with your operation, not our slide order.\n\nWhat is the one thing you want to see: a bartender's controls, a ballroom changeover, or a screen that never shows what it should? One line is plenty. I promise not to turn it into homework.\n\nReply with the one priority we should cover."
         },
         {
-          "name": "Booked or unbooked",
-          "summary": "Split the note cleanly based on whether the prospect already scheduled.",
-          "draft": "Dear #Name#,\n\nThanks for reaching out about LUCI. I have your request.\n\nAlready booked? Reply with the main thing you want to see, and I will shape the walkthrough around it.\n\nStill choosing a time? You can use [BOOKING URL], or reply with a few windows that work better.\n\nEither way, I will confirm the next step with you directly."
+          "name": "Skip the tour",
+          "summary": "Promise a focused session instead of a generic product tour.",
+          "draft": "Dear #Name#,\n\nI have your request to see LUCI, the platform that brings a property's A/V into one interface.\n\nRather than run every screen in order, tell me where the operation gets stuck. A room reset, a wrong feed, a control nobody wants to touch. I will start there.\n\nReply with the problem you want the walkthrough to answer."
         },
         {
-          "name": "Reply first",
-          "summary": "Make the personal conversation primary and keep the calendar secondary.",
-          "draft": "Dear #Name#,\n\nI wanted to put a person behind the confirmation you received. I saw your LUCI request and will help with the next step.\n\nReply with the A/V priority that prompted the request. One sentence is plenty. I will use it to keep the walkthrough focused.\n\nIf you have not booked yet, the calendar is here: [BOOKING URL]"
+          "name": "Thirty-second note",
+          "summary": "Keep the note especially brief and let the reply set the agenda.",
+          "draft": "Dear #Name#,\n\nSaw your LUCI request. It runs a property's A/V from one interface, but the useful demo starts with your room, wall, or workflow.\n\nSend me the one thing that should work better. A sentence is plenty; a novel creates more homework for both of us.\n\nReply with the priority, and I will build around it."
         }
       ],
-      "winner": "One useful question",
-      "why_won": "It sounds like a person, handles booked and unbooked prospects without awkward branching, and asks one concrete question that improves the meeting. The final borrows the low-effort reply cue from Reply first.",
+      "winner": "One thing",
+      "why_won": "It reads like a genuine personal note, defines LUCI without restarting the pitch, and makes the requested input concrete. The three examples help the prospect answer quickly, while the homework line supplies the light touch.",
       "subject_lines": [
         {
           "mood": "Personal",
@@ -365,27 +364,25 @@
         },
         {
           "mood": "Practical",
-          "text": "One question before your LUCI walkthrough"
+          "text": "What should we cover first?"
         },
         {
           "mood": "Warm",
-          "text": "A quick note about your demo"
+          "text": "One quick question before the walkthrough"
         }
       ],
-      "preheader": "Tell me the one room, workflow, or A/V issue we should focus on.",
+      "preheader": "Give me one room, wall, or workflow and I will start there.",
       "body": [
         "Dear #Name#,",
-        "I saw your request for a LUCI walkthrough and wanted to follow up personally.",
-        "If you already chose a time, you're set. Is there one room, workflow, or A/V issue you want us to focus on? Reply here and I'll make sure we cover it.",
-        "If you still need a time, choose one here: [BOOKING URL]"
+        "I saw your request. LUCI runs a property's A/V from one interface, and I want the walkthrough to start with your operation, not our slide order.",
+        "What is the one thing you want to see: a bartender's controls, a ballroom changeover, or a screen that never shows what it should? One line is plenty. I promise not to turn it into homework.",
+        "Reply with the one priority we should cover."
       ],
-      "cta_label": "Reply or choose a time",
-      "word_count": 58,
-      "assets_used": [
-        "[BOOKING URL]"
-      ],
+      "cta_label": "Reply with one priority",
+      "word_count": 72,
+      "assets_used": [],
       "automation_notes": "Send personally from Mike or Mark while Sales ownership is active. Keep all marketing automation stopped. If the prospect remains quiet, do not begin recovery until Mike or Mark explicitly hands the contact back to Marketing.",
-      "guardrail_notes": "The note is short, first-person, and centered on one useful question. It does not repeat the acquisition argument, describe capabilities, or use the retention claim. The booking link appears only for prospects who still need a time."
+      "guardrail_notes": "r2 changes: Removed calendar branching, made reply the sole CTA, defined LUCI in one quick line, and rewrote the note around three concrete examples. The client-retention claim is skipped because a personal response should focus on the prospect."
     }
   ]
 }

@@ -3,90 +3,90 @@
 - **Audience:** Cold operations, IT, A/V, F&B and entertainment, and marketing leaders at casinos, resorts, and venues
 - **Cycle:** Acquisition
 - **Timing:** Start of outbound cycle
-- **Purpose:** Lead with the cost of separate A/V systems and workflows—not with New LUCI features.
-- **CTA:** Recognize the problem.
-- **Status:** draft v1 for Jane review
+- **Purpose:** Lead with the cost of separate A/V systems and workflows.
+- **CTA:** Reply with the task.
+- **Status:** draft r2 for Jane review
 
 ## Strategy
 
 ### What we’re writing and why
-A problem-first introduction that earns the next email by naming work the reader already recognizes, without opening on product capabilities.
+Open the acquisition sequence with a screen change the reader recognizes, then name the accumulated handoffs behind it.
 
 ### For whom
-Leaders who inherit separate room controls, vendor contacts, and workarounds but may not know LUCI or use category language for the problem.
+Leaders who inherit separate room controls, vendor contacts, and workarounds but may not know LUCI.
 
 ### Best way to reach them
-Send from a named LUCI lead through Marketing. Keep the body under 100 words, use no asset, and close with a soft reply prompt rather than a meeting request.
+Send from a named LUCI lead through Marketing. Keep the body compact, use no asset, and ask for one low-effort reply.
 
 ### How to make impact while staying professional
-Make one routine screen change the concrete entry point, then widen to the accumulated operational burden and define LUCI in one plain sentence.
+Put a bartender and a wrong feed in the scene, then define LUCI in one plain line.
 
 ### Primary message
-Separate A/V systems turn routine property changes into extra interfaces, handoffs, and troubleshooting, a problem LUCI consolidates into one operating view.
+Routine A/V changes become relay races when separate controls, vendors, and workarounds own different parts of the room.
 
 ## Three directions
 
-### Direction 1 — Routine change, multiplied
+### Direction 1 — Bartender relay
 Dear #Name#,
 
-A screen change should not require a tour of control systems, vendor contacts, and workarounds. Yet routine A/V work often crosses several interfaces before anything reaches the room.
+A bartender changing one game should not need three logins, two vendor calls, and a workaround saved in a notes app.
 
-That accumulation creates more handoffs, more places to troubleshoot, and no single operating view when the property cannot afford failure.
+Separate controls turn a routine screen change into a relay race. When the wall shows the wrong feed, nobody wants the baton.
 
-LUCI runs a property's A/V from one interface, consolidating the work without asking the property to start over.
+LUCI orchestrates a property's A/V from one interface, so staff can change rooms, screens, and sources without chasing the system that owns each step.
 
-If that sounds familiar, reply with the part of the process that creates the most friction.
+Reply with the A/V task that takes more handoffs than it should.
 
-### Direction 2 — The incident test
+### Direction 2 — Wrong wall
 Dear #Name#,
 
-When the wrong content reaches a screen before doors open, the first question is often not how to fix it. It is which system, vendor, or team owns the next step.
+The wall is showing the wrong feed, doors open soon, and the first question is not how to fix it. It is which control, vendor, or workaround owns the problem.
 
-Separate A/V systems create separate workflows. Each handoff adds time and another place for context to disappear.
+That is the tax of separate A/V systems: more handoffs before anyone touches the screen.
 
-LUCI runs a property's A/V from one interface so Operations and IT can work from the same operating view.
+LUCI runs a property's A/V from one interface, bringing rooms, sources, and controls into the same operating view.
 
-Does that ownership gap show up at your property? A one-line reply is enough.
+Reply with the screen change that creates the longest phone tree.
 
-### Direction 3 — Count the handoffs
+### Direction 3 — Count the steps
 Dear #Name#,
 
-Pick one ordinary A/V change at your property. How many interfaces, calls, and workarounds sit between the request and the room?
+Pick one ordinary A/V request: move the game, reset the ballroom, change the lobby wall. How many interfaces, calls, and workarounds sit between the request and the room?
 
-The burden rarely comes from one bad system. It comes from everything the environment has accumulated around it: separate controls, separate vendors, and separate ways of working.
+The burden comes from everything the environment accumulates around the hardware.
 
-LUCI runs a property's A/V from one interface, bringing that work into one operating environment.
+LUCI brings a property's A/V into one interface, so staff work from one view instead of tracing the request across separate systems.
 
-If the list is longer than it should be, reply and tell me where it usually breaks down.
+Reply with the task that has collected the most steps.
 
 ## Why the final won
-**Direction 1 — Routine change, multiplied**
+**Direction 1 — Bartender relay**
 
-It opens with the most broadly recognizable task, shows the accumulated burden without dramatizing it, and introduces LUCI only after the reader has recognized the problem. The final borrows the shared-view consequence from Direction 2.
+It starts in the reader's day, gives the email one memorable human line, and defines LUCI only after the problem lands. It borrows the wrong-feed urgency from Direction 2 without turning the note into an incident story.
 
 ## Final copy
 
 ### Subject lines
-1. **Curious:** How much work lives between your A/V systems?
-2. **Recognizable:** When every room has its own workflow
-3. **Direct:** Does running A/V take too many handoffs?
+1. **Curious:** How many steps does one screen change take?
+2. **Scene-led:** The wall is showing the wrong feed
+3. **Direct:** When A/V becomes a relay race
 
 ### Preheader
-Separate interfaces and vendors turn routine changes into coordinated work.
+One routine screen change can expose every extra interface and handoff.
 
 ### Body
 Dear #Name#,
 
-A screen change should not require a tour of separate control systems, vendor contacts, and workarounds. Yet at many casinos, resorts, and venues, routine A/V work crosses multiple interfaces before anything reaches the room.
+A bartender changing one game should not need three logins, two vendor calls, and a workaround saved in a notes app.
 
-That accumulation creates more handoffs, more places to troubleshoot, and no single operating view when the environment cannot afford failure.
+Separate controls turn a routine screen change into a relay race. When the wall shows the wrong feed, nobody wants the baton.
 
-LUCI runs a property's A/V from one interface, consolidating the work without asking the property to start over.
+LUCI orchestrates a property's A/V from one interface, so staff can change rooms, screens, and sources without chasing the system that owns each step.
 
-If that sounds familiar, reply with the part of the process that creates the most friction.
+Reply with the A/V task that takes more handoffs than it should.
 
 ### Word count
-**90 words** from greeting through CTA, excluding the signature.
+**81 words** from greeting through CTA, excluding the signature.
 
 ### Signature
 [NAME]
@@ -100,18 +100,10 @@ LUCI Systems
 - Opens and ordinary clicks remain reporting signals only.
 
 ## Guardrail audit
-- Leads with the operational problem, not New LUCI capabilities.
-- Defines LUCI in one plain line.
-- Makes no meeting ask and uses no proof, client name, figure, date, product asset, or retention claim.
-- Keeps the body under 150 words and the preheader under 90 characters.
-- Uses active voice and the required A/V spelling.
+r2 changes: Rebuilt the opener around a bartender, a wrong feed, and a concrete handoff problem; added one earned human line; kept one reply CTA. The client-retention claim is skipped because first contact has not earned it.
 
 ## Placeholders to fill
 - `[NAME]`
 - `[TITLE]`
 - `[EMAIL]`
 - `[PHONE]`
-
-## Production notes
-- From: named LUCI lead through Marketing
-- AC merge tags: keep `#Name#` as Jane specified; flag if AC needs `%FIRSTNAME%` later

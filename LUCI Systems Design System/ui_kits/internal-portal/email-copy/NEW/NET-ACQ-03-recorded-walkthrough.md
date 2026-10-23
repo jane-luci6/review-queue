@@ -3,98 +3,88 @@
 - **Audience:** Cold net-new prospects who received the first two acquisition emails and have not entered a sales conversation
 - **Cycle:** Acquisition
 - **Timing:** 5 days after email 2
-- **Purpose:** Introduce New LUCI visually after the prospect understands the problem and proof—without asking for a live meeting. The feature highlight reel is the lead asset; the full recording stays available as the deeper option.
-- **CTA:** Watch the feature highlight reel, or the full recording.
-- **Status:** draft v1 for Jane review
+- **Purpose:** Show New LUCI visually after the prospect understands the problem and proof.
+- **CTA:** Watch the feature highlight reel.
+- **Status:** draft r2 for Jane review
 
 ## Strategy
 
 ### What we’re writing and why
-A visual product introduction that follows problem recognition and proof, leading with the shortest asset and offering deeper formats without gating access behind a meeting.
+Show the product only after the reader understands the problem and proof, using the shortest visual asset.
 
 ### For whom
-Busy property leaders who may be curious about the product but will not begin with a full recording or a sales conversation.
+Busy venue leaders who want to see the workflow before considering a meeting.
 
 ### Best way to reach them
-Send five days after NET-ACQ-02. Lead with the feature highlight reel, make the full recording secondary, and place the LUCI Upgrade Guide last as the written companion.
+Send five days after NET-ACQ-02. Define LUCI and New LUCI in one line, then use the feature reel as the sole CTA.
 
 ### How to make impact while staying professional
-Define LUCI for a cold reader, state beta status plainly, and name a tight set of visible workflows that demonstrate more control in the operator's hands.
+Follow a room change from preparation through verification and keep the tone brisk.
 
 ### Primary message
-A short reel lets prospects see New LUCI's beta product moments without committing to a live meeting, with a full recording and written guide available for more depth.
+A short reel shows how New LUCI gives staff more direct control of room changes, screen checks, maps, and activity history.
 
 ## Three directions
 
-### Direction 1 — Short cut first
+### Direction 1 — Cue without cardio
 Dear #Name#,
 
-LUCI runs a property's A/V from one interface. New LUCI is in beta, putting more day-to-day programming control in the operator's hands on a faster, more responsive foundation.
+LUCI runs a property's A/V from one interface. New LUCI is in beta and runs on a faster foundation, giving staff more direct control over rooms, maps, data, and access.
 
-The short feature reel shows the product moments first: Staging, tailored operating views, live screen content, and audit history.
+The short reel follows the useful moments: prepare screens, sources, and audio with Staging; apply the plan on cue; check what the wall is playing; trace the change in activity history.
+
+Cue time should not double as cardio.
 
 Watch the feature highlight reel: [FEATURE HIGHLIGHT REEL URL]
 
-For more depth, watch the full recording: [FULL RECORDING URL]
-
-Read the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]
-
-### Direction 2 — Follow one room change
+### Direction 2 — Bartender view
 Dear #Name#,
 
-What does more programming control look like during a real room change?
+LUCI brings a property's A/V into one interface. New LUCI is its beta update, giving staff more direct control on a faster, more responsive foundation.
 
-New LUCI is in beta. In the short feature reel, see an operator prepare screens, sources, and audio with Staging, apply the change on cue, confirm live screen content, and trace what happened through audit history.
+In the short reel, a bartender opens only the controls approved for that space, checks what a screen is actually playing, and changes the room without searching the building for help.
+
+The screen gets the attention. The control hunt does not.
 
 Watch the feature highlight reel: [FEATURE HIGHLIGHT REEL URL]
 
-The full walkthrough is here: [FULL RECORDING URL]
-
-For the written product view, read the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]
-
-### Direction 3 — Choose your depth
+### Direction 3 — Map to wall
 Dear #Name#,
 
-You do not need a live meeting to see New LUCI. The platform is in beta, and three formats let you choose the level of detail that fits your schedule.
+LUCI runs A/V across a property from one interface. New LUCI is the beta version that adds more direct control over the map, room views, activity, and access.
 
-Start with the feature highlight reel for the product moments: [FEATURE HIGHLIGHT REEL URL]
+The short reel moves from a floor plan to a live screen check, then into the history behind a change. It is a quick look at how staff find the room, confirm the wall, and see what happened without walking the floor.
 
-Use the full recording for the complete walkthrough: [FULL RECORDING URL]
-
-Read the LUCI Upgrade Guide for the written view: [LUCI UPGRADE GUIDE URL]
-
-Each shows how more day-to-day programming control moves into the operator's hands while the LUCI team stays alongside.
+Watch the feature highlight reel: [FEATURE HIGHLIGHT REEL URL]
 
 ## Why the final won
-**Direction 1 — Short cut first**
+**Direction 1 — Cue without cardio**
 
-It makes the lead asset unmistakable, defines LUCI before naming the beta, and gives enough workflow detail to earn the click without summarizing the whole product. The final borrows the prepare-and-confirm sequence from Direction 2.
+It defines both LUCI and New LUCI for a cold reader, turns the feature list into one prepare-apply-confirm sequence, and gives the email a human line without distracting from the reel. It keeps the single CTA unmistakable.
 
 ## Final copy
 
 ### Subject lines
-1. **Direct:** Watch the New LUCI feature reel
-2. **Curious:** What does more control look like?
-3. **Low-pressure:** See New LUCI without a live meeting
+1. **Direct:** Watch one room change in New LUCI
+2. **Curious:** What is the wall actually playing?
+3. **Playful:** Cue time without the cardio
 
 ### Preheader
-Start with the short product cut, then choose the deeper format if useful.
+See staff stage a room, confirm the wall, and trace the change.
 
 ### Body
 Dear #Name#,
 
-LUCI runs a property's A/V from one interface. New LUCI is in beta, putting more day-to-day programming control in the operator's hands on a faster, more responsive foundation.
+LUCI runs a property's A/V from one interface. New LUCI is in beta and runs on a faster foundation, giving staff more direct control over rooms, maps, data, and access.
 
-The short feature reel shows the product moments first: prepare room changes with Staging, tailor the operating view, confirm live screen content, and trace activity through audit history.
+The short reel follows the useful moments: prepare screens, sources, and audio with Staging; apply the plan on cue; check what the wall is playing; trace the change in activity history.
+
+Cue time should not double as cardio.
 
 Watch the feature highlight reel: [FEATURE HIGHLIGHT REEL URL]
 
-For the deeper walkthrough, watch the full recording: [FULL RECORDING URL]
-
-Prefer a written view? Read the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]
-
 ### Word count
-**91 words** from greeting through CTA, excluding the signature.
+**79 words** from greeting through CTA, excluding the signature.
 
 ### Signature
 [NAME]
@@ -105,24 +95,14 @@ LUCI Systems
 ## Automation notes
 - Send only if the prospect has not replied, booked, or entered an active opportunity.
 - A reply or booked meeting stops automation and moves the contact to Sales.
-- Asset clicks remain reporting signals and do not create a hand-raiser.
+- The reel click remains a reporting signal and does not create a hand-raiser.
 
 ## Guardrail audit
-- States beta status plainly, with no date or availability statement.
-- Leads with the feature highlight reel; the full recording is secondary.
-- Labels the written companion exactly as the LUCI Upgrade Guide.
-- Makes no live-meeting ask and omits the retention claim.
-- Keeps the body under 150 words and the preheader under 90 characters.
+r2 changes: Added a varied one-line definition of LUCI and New LUCI, turned features into a room-change sequence, added one lightly witty line, and reduced the email to one visual CTA. The client-retention claim is skipped because this email's job is product orientation.
 
 ## Placeholders to fill
 - `[FEATURE HIGHLIGHT REEL URL]`
-- `[FULL RECORDING URL]`
-- `[LUCI UPGRADE GUIDE URL]`
 - `[NAME]`
 - `[TITLE]`
 - `[EMAIL]`
 - `[PHONE]`
-
-## Production notes
-- From: same named LUCI lead through Marketing
-- AC merge tags: keep `#Name#` as Jane specified; flag if AC needs `%FIRSTNAME%` later

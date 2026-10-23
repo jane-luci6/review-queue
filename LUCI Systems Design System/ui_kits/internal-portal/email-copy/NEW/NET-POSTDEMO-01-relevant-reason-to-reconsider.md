@@ -1,84 +1,92 @@
 # NET-POSTDEMO-01 — Relevant reason to reconsider
 
 - **Audience:** Net-new prospects explicitly handed back to Marketing after a demo and personal Sales follow-up
-- **Cycle:** Post-demo recovery — after Sales handback
+- **Cycle:** Post-demo recovery after Sales handback
 - **Timing:** Provisional: 10–14 days after the final personal attempt and explicit handback
-- **Purpose:** Reopen with one proof point or workflow tied to what the prospect cared about in the demo.
-- **CTA:** Reply if the priority is still active.
-- **Status:** draft v1 for Jane review
+- **Purpose:** Reopen with one workflow tied to what the prospect cared about.
+- **CTA:** Reply with what still needs to work.
+- **Status:** draft r2 for Jane review
 
 ## Strategy
 
 ### What we’re writing and why
-A post-demo recovery note built around one verified priority from the prospect’s conversation. It gives the prospect a relevant reason to reconsider LUCI without retelling the demo or implying that Marketing knows more than Sales recorded.
+Reopen one verified workflow instead of replaying the demo.
 
 ### For whom
-Net-new prospects who completed a demo, received personal follow-up, and were explicitly handed back to Marketing after going quiet. They know LUCI, but the original priority may have changed or lost urgency.
+Prospects who completed a demo, received personal follow-up, and then went quiet.
 
 ### Best way to reach them
-Send from LUCI Marketing 10–14 days after the final personal Sales attempt, subject to the provisional handback rules. Mark must populate the workflow placeholder from demo notes before activation. A reply routes back to the sales owner.
+Send only after explicit handback and only after Sales fills the workflow placeholder from notes. Use reply as the sole CTA.
 
 ### How to make impact while staying professional
-Use one specific workflow instead of a broad capability recap. Tie it to LUCI’s one-interface operating model and the embedded team. Use the client-retention claim once as continuity proof, not as a demand for action.
+Connect the workflow to one A/V interface and to continuing monitoring, diagnosis, and support.
 
 ### Primary message
-If the workflow discussed in the demo is still a priority, LUCI offers one operating path and a team that stays involved.
+One verified workflow from the demo deserves a concrete second look if it remains an active priority.
 
-## Three draft directions
+## Three directions
 
-### Direction 1 — Revisit the workflow
+### Direction 1 — Real rooms decide
 Dear #Name#,
 
-One point from your LUCI demo may still be worth revisiting: [WORKFLOW THEY CARED ABOUT].
+You spent time with LUCI, which runs a property's A/V from one interface. One point may still deserve a second look: [WORKFLOW THEY CARED ABOUT].
 
-LUCI can bring that work into one interface while the embedded team stays involved after the demo. That continuity matters: we've never lost a client.
+Real rooms have a way of overruling slide decks.
 
-If this priority is still active, reply with what has changed or what you still need to solve. Your reply will go directly to the sales owner who met with you.
+LUCI can bring that workflow into the same view as the screens, sources, and activity behind it. The LUCI team continues to monitor, diagnose, and support the environment.
 
-### Direction 2 — Is the priority still active?
+If the priority is still active, reply with what still needs to work.
+
+### Direction 2 — Priority check
 Dear #Name#,
 
-Is [WORKFLOW THEY CARED ABOUT] still an active priority for your property?
+Is [WORKFLOW THEY CARED ABOUT] still active?
 
-If it is, LUCI can bring the screens, sources, controls, and operating record behind that workflow into one interface. The embedded team stays involved as the operation changes.
+LUCI brings a property's A/V into one interface. For this workflow, that means the room controls, sources, screen status, and activity record can sit in the same operating view while the LUCI team keeps monitoring and diagnosing.
 
-Reply with the part that still needs to work better. The sales owner who joined your demo will receive your note directly and continue from there.
+No need to recap the whole demo.
 
-### Direction 3 — One reason to look again
+Reply with the part that still needs an answer.
+
+### Direction 3 — One scene
 Dear #Name#,
 
-There is one practical reason to look again at the workflow you raised in your demo: [WORKFLOW THEY CARED ABOUT] does not have to sit apart from the rest of the A/V operation.
+One scene from your LUCI conversation is worth keeping concrete: [WORKFLOW THEY CARED ABOUT].
 
-LUCI brings that work into the same interface and keeps an embedded team alongside it.
+LUCI runs a property's A/V from one interface, so that task can connect to the room, screen, source, and activity history around it. The team continues to watch and support the environment after the meeting ends.
 
-If that problem is still worth solving, reply here. Your note will go directly to the sales owner who met with you.
+Slides close. The wall still has to behave.
 
-## Winner
-**Direction 1 — Revisit the workflow**
+Reply if that priority still matters.
 
-It wins because it starts with the prospect’s verified priority, makes one concise platform-and-partnership case, and asks a useful question. The final borrows Direction 2’s direct routing language and Direction 3’s focus on the workflow’s place in the wider A/V operation.
+## Why the final won
+**Direction 1 — Real rooms decide**
+
+It reminds the reader what LUCI does, uses one verified workflow rather than generic personalization, and makes the continuing team's role concrete. The lightly witty line reinforces the operational stakes instead of decorating them.
 
 ## Final copy
 
 ### Subject lines
-1. **Specific:** Is [WORKFLOW THEY CARED ABOUT] still active?
-2. **Curious:** One reason to revisit your LUCI demo
-3. **Direct:** Reply if this priority is still active
+1. **Specific:** Is this workflow still active?
+2. **Curious:** One point worth a second look
+3. **Direct:** What still needs to work?
 
 ### Preheader
-A workflow from your demo may still be worth solving, with the LUCI team behind it.
+Return to one workflow from the demo, not the whole presentation.
 
 ### Body
 Dear #Name#,
 
-One point from your LUCI demo may still be worth revisiting: [WORKFLOW THEY CARED ABOUT].
+You spent time with LUCI, which runs a property's A/V from one interface. One point may still deserve a second look: [WORKFLOW THEY CARED ABOUT].
 
-LUCI can bring that work into one interface while the embedded team stays involved after the demo. That continuity matters: we've never lost a client.
+Real rooms have a way of overruling slide decks.
 
-If this priority is still active, reply with what has changed or what you still need to solve. Your reply will go directly to the sales owner who met with you.
+LUCI can bring that workflow into the same view as the screens, sources, and activity behind it. The LUCI team continues to monitor, diagnose, and support the environment.
+
+If the priority is still active, reply with what still needs to work.
 
 ### Word count
-**73 words** from greeting through CTA, excluding the signature.
+**77 words** from greeting through CTA, excluding the signature.
 
 ### Signature
 [NAME]
@@ -89,20 +97,12 @@ LUCI Systems
 ## Automation notes
 - Send only after the final personal Sales attempt, explicit handback, and a verified demo note for the workflow placeholder.
 - A reply, booking, or active opportunity stops all marketing automation and returns the contact to the assigned sales owner.
-- Opens and ordinary clicks inform reporting only; they do not trigger Sales outreach.
-- Do not activate the email while the workflow placeholder remains unpopulated.
-- Keep the timing provisional until Sales finalizes the handback process.
+- Opens and ordinary clicks remain reporting signals only.
+- Do not activate while the placeholder is unpopulated.
+- Timing remains provisional.
 
 ## Guardrail audit
-- The body contains one clearly marked workflow placeholder and no fabricated memory, customer name, deal detail, pricing, or broad feature recap.
-- Before send, Mark should choose one verified hook from the demo notes:
-  1. **Staging changes:** prepare screens, sources, and audio behind the scenes, then apply the plan on cue.
-  2. **Live screen verification:** confirm what a TV or LED wall is playing without walking the floor.
-  3. **Audit and access:** see who changed what and when, then manage roles and sessions from the same operating view.
-- The three hooks are production options only; they do not appear together in the email body.
-- “We've never lost a client” appears once, where it supports continuity of the embedded relationship rather than pressure.
-- More control remains paired with a team that stays involved.
-- Body is under 150 words; all subject lines are under 55 characters once the workflow subject is populated; the preheader is under 90 characters.
+r2 changes: Rebuilt the note around one verified workflow, added a varied LUCI definition and a concrete continuing-team sentence, and made reply the only CTA. Approved workflow options for Sales are: stage screens, sources, and audio before applying them on cue; confirm what a TV or LED wall is playing without walking the floor; or trace who changed what and when while managing roles and sessions. Use one only. The client-retention claim is skipped because it sounded bolted onto a quiet-prospect recovery note.
 
 ## Placeholders to fill
 - `[WORKFLOW THEY CARED ABOUT]`

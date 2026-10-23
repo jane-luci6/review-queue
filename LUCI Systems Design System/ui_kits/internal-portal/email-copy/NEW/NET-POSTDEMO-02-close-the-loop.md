@@ -1,88 +1,84 @@
 # NET-POSTDEMO-02 — Close the loop
 
 - **Audience:** Net-new prospects still quiet after post-demo recovery
-- **Cycle:** Post-demo recovery — after Sales handback
+- **Cycle:** Post-demo recovery after Sales handback
 - **Timing:** Provisional: 7–10 days after recovery email 1
-- **Purpose:** End the recovery sequence respectfully, then move the prospect to Pulse if they remain quiet.
-- **CTA:** Restart the conversation when the timing is right.
-- **Status:** draft v1 for Jane review
+- **Purpose:** End the recovery sequence respectfully.
+- **CTA:** Reply when the timing fits.
+- **Status:** draft r2 for Jane review
 
 ## Strategy
 
 ### What we’re writing and why
-The final post-demo recovery note. It closes active follow-up without interpreting silence, keeps the reply and booking paths available, and lets the prospect return to the part of the conversation that matters when timing changes.
+Close active follow-up without interpreting silence or adding a fresh sales argument.
 
 ### For whom
-Net-new prospects who completed a demo, received personal Sales follow-up, and stayed quiet after one relevant Marketing recovery email. Their priority may have changed, paused, or moved elsewhere.
+Prospects who completed a demo and stayed quiet after one relevant recovery note.
 
 ### Best way to reach them
-Send from LUCI Marketing 7–10 days after the first post-demo recovery note, subject to the provisional Sales handback rules. Keep the body short, make reply the human path, and present the booking link as an optional convenience.
+Send after explicit Sales handback and no response to NET-POSTDEMO-01. Use reply as the only CTA.
 
 ### How to make impact while staying professional
-Say that the sequence is ending. Do not introduce a fresh proof point or ask the prospect to explain the silence. The strongest reassurance is that LUCI will pick up from the useful part of the prior conversation whenever the prospect returns.
+State the close, preserve context, and avoid making the prospect perform a formal goodbye.
 
 ### Primary message
-The active follow-up is ending, and the prospect can resume the LUCI conversation whenever the timing becomes right.
+Active follow-up ends here, and a reply can resume the LUCI conversation from the useful point whenever timing changes.
 
-## Three draft directions
+## Three directions
 
-### Direction 1 — Pick up where it matters
+### Direction 1 — No closing ceremony
 Dear #Name#,
 
-We’re closing this follow-up sequence for now. Your priorities or timing may have changed, and there is no need to respond unless the conversation is still useful.
+We are closing the active follow-up here. LUCI runs a property's A/V from one interface, and Mike or Mark will keep the context from your walkthrough.
 
-When the timing is right, reply here and we’ll pick up from the point that matters to you. You can also choose a time directly:
+Priorities move. Inboxes do not need a closing ceremony.
 
-Restart the conversation: [BOOKING URL]
+When the timing fits, reply to this note and we will continue from the useful point, not the beginning.
 
-We’ll keep the door open and send only occasional notes in the meantime.
-
-### Direction 2 — No explanation needed
+### Direction 2 — Context kept
 Dear #Name#,
 
-We haven’t heard back, so we’ll close this active follow-up without asking you to explain. Priorities move.
+This is the last active follow-up after your LUCI walkthrough. LUCI brings a property's A/V into one interface, and the sales owner who met with you will keep the notes from your conversation.
 
-If the LUCI conversation becomes useful again, reply to this note and the sales owner who met with you will pick it up from there.
+You do not owe us an explanation for the pause.
 
-If you would rather choose a time directly, use [BOOKING URL]. Until then, you’ll hear from us only occasionally.
+Reply whenever the original priority becomes useful again. We will pick up from there.
 
-### Direction 3 — Leave the next move with them
+### Direction 3 — Leave the next move
 Dear #Name#,
 
-This is the last note in our active follow-up after your LUCI demo.
+We will leave the next move with you. LUCI runs a property's A/V from one interface, and your prior walkthrough gives Mike or Mark the context to resume later.
 
-We’ll leave the next move with you. Reply whenever the original priority becomes active again, or choose a time here: [BOOKING URL].
+No fresh pitch, no rewind.
 
-Your reply will go directly to the sales owner who met with you, so the conversation can continue from the useful part rather than beginning again. We’ll send only occasional notes in the meantime.
+If the timing changes, reply here. The conversation can restart at the room, wall, or workflow that mattered.
 
-## Winner
-**Direction 1 — Pick up where it matters**
+## Why the final won
+**Direction 1 — No closing ceremony**
 
-It wins because it closes the sequence in the opening, allows for changed priorities without guessing, and offers reply before the optional calendar path. The final borrows Direction 2’s restraint and Direction 3’s continuity with the prior Sales conversation.
+It closes the sequence immediately, defines LUCI for a reader returning cold, and promises continuity without another link or feature pitch. The inbox line sounds human while keeping the note respectful.
 
 ## Final copy
 
 ### Subject lines
-1. **Warm:** We’ll leave the LUCI conversation open
-2. **Direct:** Closing the loop for now
-3. **Low-pressure:** Come back when the timing is right
+1. **Direct:** Closing the follow-up here
+2. **Warm:** We will keep the context
+3. **Low-pressure:** No closing ceremony required
 
 ### Preheader
-No pressure to answer now. Pick up the conversation whenever it becomes useful again.
+We will stop the active notes and keep the useful context.
 
 ### Body
 Dear #Name#,
 
-We’re closing this follow-up sequence for now. Your priorities or timing may have changed, and there is no need to respond unless the conversation is still useful.
+We are closing the active follow-up here. LUCI runs a property's A/V from one interface, and Mike or Mark will keep the context from your walkthrough.
 
-When the timing is right, reply here and we’ll pick up from the point that matters to you. You can also choose a time directly:
+Priorities move. Inboxes do not need a closing ceremony.
 
-Restart the conversation: [BOOKING URL]
-
-We’ll keep the door open and send only occasional notes in the meantime.
+When the timing fits, reply to this note and we will continue from the useful point, not the beginning.
 
 ### Word count
-**72 words** from greeting through CTA, excluding the signature.
+**56 words** from greeting through CTA, excluding the signature.
 
 ### Signature
 [NAME]
@@ -93,20 +89,14 @@ LUCI Systems
 ## Automation notes
 - Send only after explicit Sales handback and no response or booking from NET-POSTDEMO-01.
 - A reply, booking, or active opportunity stops all marketing automation and returns the contact to the assigned sales owner.
-- Opens and ordinary clicks inform reporting only; they do not trigger Sales outreach.
-- If the prospect remains quiet, end this recovery cycle and move the contact to Prospect Pulse, with only one cycle active for the lifecycle stage.
-- Keep the timing provisional until Sales finalizes the handback process.
+- Opens and ordinary clicks remain reporting signals only.
+- If quiet, end this cycle and move the contact to Prospect Pulse, with one lifecycle cycle active.
+- Timing remains provisional.
 
 ## Guardrail audit
-- The email closes the active recovery sequence and acknowledges changed timing or priorities without guessing why.
-- Reply is the primary human path; the booking link is an optional convenience.
-- “Occasional notes” describes the next nurture state without promising a fixed frequency.
-- No new proof point, capability pitch, deadline, guilt, or deal language appears.
-- The retention claim is intentionally omitted because NET-POSTDEMO-01 already uses it once; repetition here would make the close feel promotional.
-- Body is under 150 words; all subject lines are under 55 characters; the preheader is under 90 characters.
+r2 changes: Removed the optional calendar link, made reply the only CTA, added a compact LUCI definition, and shortened the close. The client-retention claim is skipped because the final note should lower pressure, not add proof.
 
 ## Placeholders to fill
-- `[BOOKING URL]`
 - `[NAME]`
 - `[TITLE]`
 - `[EMAIL]`
