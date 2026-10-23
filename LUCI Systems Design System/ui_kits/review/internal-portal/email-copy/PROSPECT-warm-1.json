@@ -1,0 +1,328 @@
+{
+  "track": "Warm prospects — selected private preview",
+  "track_strategy": "This selected-preview track is the earliest high-trust branch of the campaign: it rewards serious prior interest, shows three practical beta workflows, and lets Mark continue personally. It stays distinct from broader warm re-engagement by emphasizing access and continuity rather than reopening the full LUCI case.",
+  "open_questions": [
+    "Jane-only decision: confirm Mark as the default sender for WARM-PREVIEW-01 through 03; WARM-PREVIEW-04 and 05 remain personal Mark notes.",
+    "Confirm [WEBINAR DATE], [WEBINAR TIME] including time zone, [WEBINAR PLATFORM], [REGISTRATION LINK], [AGENDA LINK], [CALENDAR LINK], [JOIN LINK], and [RECORDING LINK].",
+    "Confirm Mark's direct [MARK EMAIL] and [BOOKING URL].",
+    "Confirm whether [AGENDA LINK] points to a standalone agenda, the registration confirmation page, or a calendar event."
+  ],
+  "emails": [
+    {
+      "id": "WARM-PREVIEW-01",
+      "cycle": "Selected private preview",
+      "title": "Private preview invitation",
+      "timing": "About 2–3 weeks before the preview webinar; past-demo and serious past-request prospects only",
+      "sender": "Mark",
+      "audience": "Past-demo and serious-request prospects chosen for the private preview and not in an active sales conversation",
+      "primary_message": "Their earlier time with LUCI earned a private look at the beta and the specific daily controls it adds.",
+      "strategy": {
+        "what_why": "A selective invitation that recognizes prior effort and gives the recipient one clear reason to register.",
+        "for_whom": "People who evaluated LUCI seriously before, may remember little now, and do not use it today.",
+        "reach": "Send from Mark about 2–3 weeks before the session. Define LUCI and the beta change in one line, then make registration the only primary action.",
+        "impact": "Make selection feel earned, explain the beta concretely, and use the retention line once as reassurance that more direct control keeps the relationship intact."
+      },
+      "directions": [
+        {
+          "name": "You earned the early look",
+          "summary": "The selected direction, revised for whole-campaign consistency.",
+          "draft": "Dear #Name#,\n\nYou spent real time with LUCI before, so we chose you for a private preview. LUCI gives operators one place to run a property's A/V; New LUCI is in beta and puts more control over rooms, screen views, activity, and access in staff hands.\n\nThe embedded LUCI team stays with the property and sees the operating context when something needs attention.\n\nThis is a useful first look, not a broad sales tour: [WEBINAR DATE] at [WEBINAR TIME] on [WEBINAR PLATFORM].\n\nThat continuity matters: we've never lost a client.\n\nRegister for the private preview: [REGISTRATION LINK]"
+        },
+        {
+          "name": "The useful short version",
+          "summary": "Assume weak recall and define the product before the invitation.",
+          "draft": "Dear #Name#,\n\nIf LUCI has become a faint memory, here is the useful short version: it runs a property’s A/V from one interface. New LUCI is in beta and puts more room changes, screen checks, activity history, and access control in staff hands, with our team still monitoring and supporting the work.\n\nWe chose a small group of earlier evaluators for a private preview on [WEBINAR DATE] at [WEBINAR TIME].\n\nRegister: [REGISTRATION LINK]"
+        },
+        {
+          "name": "Control with continuity",
+          "summary": "Lead with the beta change and make the relationship proof earn its place.",
+          "draft": "Dear #Name#,\n\nLUCI gives operators one interface for a property’s A/V. New LUCI is in beta and gives operators more direct control over room settings, live screen views, activity history, and access. Our team still monitors, diagnoses, and supports the platform.\n\nThat continuity matters: we've never lost a client. Because you looked seriously at LUCI before, we would like you at the private preview on [WEBINAR DATE].\n\nRegister: [REGISTRATION LINK]"
+        }
+      ],
+      "winner": "You earned the early look",
+      "why_won": "It makes prior effort the reason for contact, defines LUCI for a cold reader, and pairs direct control with the team that stays. The r3 final removes campaign theater and keeps one registration action.",
+      "subject_lines": [
+        {
+          "mood": "Warm",
+          "text": "A private look, because you looked before"
+        },
+        {
+          "mood": "Curious",
+          "text": "What changed since you saw LUCI?"
+        },
+        {
+          "mood": "Direct",
+          "text": "Your private New LUCI preview"
+        }
+      ],
+      "preheader": "A selected beta preview with a practical look at what changed.",
+      "body": [
+        "Dear #Name#,",
+        "You spent real time with LUCI before, so we chose you for a private preview. LUCI gives operators one place to run a property's A/V; New LUCI is in beta and puts more control over rooms, screen views, activity, and access in staff hands.",
+        "The embedded LUCI team stays with the property and sees the operating context when something needs attention.",
+        "This is a useful first look, not a broad sales tour: [WEBINAR DATE] at [WEBINAR TIME] on [WEBINAR PLATFORM].",
+        "That continuity matters: we've never lost a client.",
+        "Register for the private preview: [REGISTRATION LINK]"
+      ],
+      "cta_label": "Register for the private preview",
+      "word_count": 97,
+      "assets_used": [],
+      "automation_notes": "Send only to chosen past-demo and serious-request contacts. Suppress active opportunities and anyone in an active Mark or Mike conversation. A reply or booking stops marketing automation; opens and ordinary clicks remain reporting signals. Keep each person in one stage cycle.",
+      "guardrail_notes": "r3 changes: Kept the exact client-retention claim because this high-trust invitation is about continuity; selected-preview recipients will not meet it again in Pulse. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language."
+    },
+    {
+      "id": "WARM-PREVIEW-02",
+      "cycle": "Selected private preview",
+      "title": "What to expect",
+      "timing": "7–10 days before the webinar",
+      "sender": "Mark",
+      "audience": "Chosen private-preview prospects, with one recipient-state CTA rendered for each person",
+      "primary_message": "The preview will show three concrete workflows that put more daily control in staff hands without reducing LUCI support.",
+      "strategy": {
+        "what_why": "A second touch that earns attention with three observable workflows instead of another invitation recap.",
+        "for_whom": "Earlier evaluators who may recall the old product but need a fast, concrete reason to attend.",
+        "reach": "Send from Mark 7–10 days before the session. Render one CTA by registration state: agenda for registrants or registration for everyone else.",
+        "impact": "Use three distinct property moments so the beta feels operational without repeating the campaign's bartender, ballroom, or wrong-screen scenes."
+      },
+      "directions": [
+        {
+          "name": "Three scenes",
+          "summary": "The selected direction, revised for whole-campaign consistency.",
+          "draft": "Dear #Name#,\n\nThe private preview stays close to real property work:\n\n1. A concourse lead opens only the controls approved for that zone.\n\n2. A conference team adjusts grouped audio zones during the break without opening controls for the rest of the building.\n\n3. A sportsbook operator confirms what each display shows and checks the activity record behind a change.\n\nThree workflows, no broad product tour. Each keeps the approved operating limits clear.\n\n[IF REGISTERED] Review the agenda: [AGENDA LINK]\n\n[IF NOT REGISTERED] Register for the private preview: [REGISTRATION LINK]"
+        },
+        {
+          "name": "From setup to proof",
+          "summary": "Organize the preview as one sequence from preparation to verification.",
+          "draft": "Dear #Name#,\n\nLUCI brings a property’s A/V into one operating interface. New LUCI is in beta and moves more of the daily sequence into staff hands: prepare screens and audio, apply the change on cue, verify the result, and check the activity record. Our team still monitors and supports the platform.\n\nThe preview follows that sequence, not a tour of every button.\n\n[IF REGISTERED] Open the agenda: [AGENDA LINK]\n[IF NOT REGISTERED] Reserve your place: [REGISTRATION LINK]"
+        },
+        {
+          "name": "One room, one wall, one record",
+          "summary": "Use three memorable nouns to make the preview easy to scan.",
+          "draft": "Dear #Name#,\n\nHere is what the private preview covers: one room, one wall, one record. LUCI brings a property’s A/V into one operating interface; New LUCI is in beta and lets staff stage a room change, confirm a wall’s content, and see who changed what while our team continues monitoring and support.\n\nThree useful tests beat a feature parade.\n\n[IF REGISTERED] Review the agenda: [AGENDA LINK]\n[IF NOT REGISTERED] Register: [REGISTRATION LINK]"
+        }
+      ],
+      "winner": "Three scenes",
+      "why_won": "It turns each capability into a different property moment and keeps one recipient-state action. The r3 final removes the repeated bartender, ballroom, scavenger-hunt, and wall-check material.",
+      "subject_lines": [
+        {
+          "mood": "Practical",
+          "text": "Three workflows in the private preview"
+        },
+        {
+          "mood": "Curious",
+          "text": "What happens during the conference break?"
+        },
+        {
+          "mood": "Warm",
+          "text": "A practical second look at LUCI"
+        }
+      ],
+      "preheader": "A concourse, conference break, and sportsbook make the beta concrete.",
+      "body": [
+        "Dear #Name#,",
+        "The private preview stays close to real property work:",
+        "1. A concourse lead opens only the controls approved for that zone.",
+        "2. A conference team adjusts grouped audio zones during the break without opening controls for the rest of the building.",
+        "3. A sportsbook operator confirms what each display shows and checks the activity record behind a change.",
+        "Three workflows, no broad product tour. Each keeps the approved operating limits clear.",
+        "[IF REGISTERED] Review the agenda: [AGENDA LINK]",
+        "[IF NOT REGISTERED] Register for the private preview: [REGISTRATION LINK]"
+      ],
+      "cta_label": "Review the agenda or register — render one conditional CTA",
+      "word_count": 90,
+      "assets_used": [
+        "Preview agenda"
+      ],
+      "automation_notes": "Render exactly one CTA by recipient state: agenda for registrants, registration for nonregistrants. Suppress active opportunities and anyone in an active Mark or Mike conversation. A reply or booking stops automation; opens and ordinary clicks do not trigger a sales handoff.",
+      "guardrail_notes": "r3 changes: Skipped the client-retention claim because WARM-PREVIEW-01 already carries the cycle's relationship proof. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language."
+    },
+    {
+      "id": "WARM-PREVIEW-03",
+      "cycle": "Selected private preview",
+      "title": "Registered-attendee reminder",
+      "timing": "2 days before the webinar; registrants only",
+      "sender": "Mark",
+      "audience": "Registered private-preview prospects",
+      "primary_message": "The event facts, calendar action, and join link sit in one easy-to-find note.",
+      "strategy": {
+        "what_why": "A logistics-only reminder that removes attendance friction.",
+        "for_whom": "People who already registered and need accurate details, not another product argument.",
+        "reach": "Send from Mark two days before the session. Put the facts first, make calendar save the primary action, and present the join link as access information.",
+        "impact": "Sound calm and useful; one lightly human line makes the reminder memorable without turning it into promotion."
+      },
+      "directions": [
+        {
+          "name": "Everything in one place",
+          "summary": "The selected direction, revised for whole-campaign consistency.",
+          "draft": "Dear #Name#,\n\nCalendars hide links with remarkable efficiency, so here are both in one place.\n\nDate: [WEBINAR DATE]\n\nTime: [WEBINAR TIME]\n\nPlatform: [WEBINAR PLATFORM]\n\nAdd to calendar: [CALENDAR LINK]\n\nJoin link for session time: [JOIN LINK]"
+        },
+        {
+          "name": "Save it now",
+          "summary": "Make the calendar action immediate and the join link easy to retrieve later.",
+          "draft": "Dear #Name#,\n\nYour private preview is on [WEBINAR DATE] at [WEBINAR TIME] on [WEBINAR PLATFORM].\n\nSave it now; future-you has enough tabs open.\n\nAdd to calendar: [CALENDAR LINK]\n\nJoin link: [JOIN LINK]"
+        },
+        {
+          "name": "Keep this note",
+          "summary": "Treat the message as a clean access card.",
+          "draft": "Dear #Name#,\n\nKeep this note for the private preview. It has the details and the link you will need.\n\n[WEBINAR DATE]\n[WEBINAR TIME]\n[WEBINAR PLATFORM]\n\nAdd to calendar: [CALENDAR LINK]\n\nSession access: [JOIN LINK]"
+        }
+      ],
+      "winner": "Everything in one place",
+      "why_won": "It gives registered attendees every access detail in one scan and keeps calendar save as the only primary action. The r3 campaign pass confirmed that logistics stay separate from product and proof.",
+      "subject_lines": [
+        {
+          "mood": "Direct",
+          "text": "Your private preview details"
+        },
+        {
+          "mood": "Practical",
+          "text": "Calendar and join link, in one place"
+        },
+        {
+          "mood": "Warm",
+          "text": "We saved you a seat"
+        }
+      ],
+      "preheader": "Date, time, platform, calendar, and session access are together inside.",
+      "body": [
+        "Dear #Name#,",
+        "Calendars hide links with remarkable efficiency, so here are both in one place.",
+        "Date: [WEBINAR DATE]",
+        "Time: [WEBINAR TIME]",
+        "Platform: [WEBINAR PLATFORM]",
+        "Add to calendar: [CALENDAR LINK]",
+        "Join link for session time: [JOIN LINK]"
+      ],
+      "cta_label": "Add to calendar",
+      "word_count": 36,
+      "assets_used": [],
+      "automation_notes": "Send only to registrants. Suppress nonregistrants, active opportunities, and anyone in an active Mark or Mike conversation. A reply or booking stops automation; opens and ordinary clicks remain reporting signals.",
+      "guardrail_notes": "r3 changes: Skipped the client-retention claim because this logistics-only reminder should contain facts and access, not a trust slogan. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language."
+    },
+    {
+      "id": "WARM-PREVIEW-04",
+      "cycle": "Selected private preview",
+      "title": "Personal preview follow-up",
+      "timing": "Next business day after the webinar; sent by Mark",
+      "sender": "Mark",
+      "audience": "Private-preview attendees outside active sales conversations",
+      "primary_message": "Mark wants one honest reaction and will continue only if a direct conversation helps.",
+      "strategy": {
+        "what_why": "A short personal note that turns attendance into an honest response rather than another campaign touch.",
+        "for_whom": "Attendees with earlier context who can compare what they saw with what they remembered.",
+        "reach": "Send from Mark the next business day, ask one question, and make reply the primary action. Keep the calendar quiet and secondary.",
+        "impact": "Sound as if Mark wrote the note in 30 seconds after seeing the attendee list."
+      },
+      "directions": [
+        {
+          "name": "What looked useful",
+          "summary": "The selected direction, revised for whole-campaign consistency.",
+          "draft": "Dear #Name#,\n\nThanks for joining the private preview. You had seen the platform before, so I'm curious: what looked useful this time, and what did not?\n\nNo form to complete. Just reply with the room or workflow you would test against your own plans.\n\nReply to Mark: [MARK EMAIL]\n\nIf a call is easier: [BOOKING URL]"
+        },
+        {
+          "name": "What changed your view",
+          "summary": "Ask whether anything shifted and keep the note conversational.",
+          "draft": "Dear #Name#,\n\nYou had an earlier point of comparison, which makes your read useful. Did anything in the private preview change how you see the platform?\n\nNo scorecard required. Reply with the one thing that landed, or the one thing that still needs an answer.\n\nReply to Mark: [MARK EMAIL]\n\nCalendar if useful: [BOOKING URL]"
+        },
+        {
+          "name": "Pick one workflow",
+          "summary": "Move quickly from attendance to a specific real-world test.",
+          "draft": "Dear #Name#,\n\nThanks for coming back for another look. Rather than replay the session in your inbox, tell me which room or workflow you would put under the microscope first.\n\nI can answer by reply, or we can talk it through.\n\nReply to Mark: [MARK EMAIL]\n\nOptional calendar: [BOOKING URL]"
+        }
+      ],
+      "winner": "What looked useful",
+      "why_won": "It sounds like a real note from Mark, invites a useful negative as well as a positive, and keeps reply ahead of the optional calendar. The r3 final removes the repeated survey joke.",
+      "subject_lines": [
+        {
+          "mood": "Curious",
+          "text": "What looked useful this time?"
+        },
+        {
+          "mood": "Personal",
+          "text": "A quick note from Mark"
+        },
+        {
+          "mood": "Direct",
+          "text": "Your honest read on the preview"
+        }
+      ],
+      "preheader": "One honest reaction is more useful than another recap.",
+      "body": [
+        "Dear #Name#,",
+        "Thanks for joining the private preview. You had seen the platform before, so I'm curious: what looked useful this time, and what did not?",
+        "No form to complete. Just reply with the room or workflow you would test against your own plans.",
+        "Reply to Mark: [MARK EMAIL]",
+        "If a call is easier: [BOOKING URL]"
+      ],
+      "cta_label": "Reply to Mark",
+      "word_count": 56,
+      "assets_used": [],
+      "automation_notes": "Send from Mark the next business day only to attendees outside active opportunities. A reply or booking stops marketing automation and moves ownership to Sales. Keep the calendar visually secondary and suppress anyone already in an active Mark or Mike conversation.",
+      "guardrail_notes": "r3 changes: Skipped the client-retention claim because a personal Mark note should focus on the recipient's reaction. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language."
+    },
+    {
+      "id": "WARM-PREVIEW-05",
+      "cycle": "Selected private preview",
+      "title": "Recording for no-shows",
+      "timing": "2–3 business days after the webinar; registrants who did not attend",
+      "sender": "Mark",
+      "audience": "Chosen registrants who missed the private preview and remain outside active sales conversations",
+      "primary_message": "The recording gives them the same early product view without another live commitment.",
+      "strategy": {
+        "what_why": "A brief service note that preserves the value of the invitation after a missed session.",
+        "for_whom": "Registrants who did not attend and may still want the product view on their own time.",
+        "reach": "Send from Mark 2–3 business days later. Put the recording first and the written guide in a quiet secondary line.",
+        "impact": "Remove guilt, preserve the value of the invitation, and let the recording carry the product explanation without repeating email 01's LUCI definition."
+      },
+      "directions": [
+        {
+          "name": "Watch on your time",
+          "summary": "The selected direction, revised for whole-campaign consistency.",
+          "draft": "Dear #Name#,\n\nThe preview and your schedule missed each other. No problem.\n\nThe recording shows the beta's more direct room control, live screen views, activity history, and access settings. When help is needed, a support request carries device context and logs.\n\nWatch the private-preview recording: [RECORDING LINK]\n\nWritten companion: LUCI Upgrade Guide — [LUCI UPGRADE GUIDE URL]"
+        },
+        {
+          "name": "Watch on your time",
+          "summary": "Lead with on-demand access and define the product in one practical line.",
+          "draft": "Dear #Name#,\n\nYou missed the private preview, but you did not miss the product view. LUCI lets staff run a property’s A/V from one place; New LUCI is in beta and adds direct staff control over rooms, screen checks, activity, and access while our team continues monitoring and support.\n\nWatch whenever the calendar gives you the floor.\n\nRecording: [RECORDING LINK]\n\nWritten detail: LUCI Upgrade Guide — [LUCI UPGRADE GUIDE URL]"
+        },
+        {
+          "name": "No second appointment",
+          "summary": "Make freedom from another meeting the main benefit.",
+          "draft": "Dear #Name#,\n\nNo need to find another live date. LUCI lets staff run a property’s A/V from one place; New LUCI is in beta and puts more daily room, view, activity, and access work in staff hands without removing our monitoring and support.\n\nThe recording is the private preview, minus the calendar negotiation.\n\nWatch it here: [RECORDING LINK]\n\nWritten companion: LUCI Upgrade Guide — [LUCI UPGRADE GUIDE URL]"
+        }
+      ],
+      "winner": "Watch on your time",
+      "why_won": "It sounds personal, removes guilt, and protects the recording as the primary action. The r3 final drops the repeated calendar-won joke and relies on the sequence's earlier product context.",
+      "subject_lines": [
+        {
+          "mood": "Helpful",
+          "text": "Your private-preview recording"
+        },
+        {
+          "mood": "Low-pressure",
+          "text": "Watch the preview on your time"
+        },
+        {
+          "mood": "Direct",
+          "text": "Open the private-preview recording"
+        }
+      ],
+      "preheader": "The same early product view, without another appointment.",
+      "body": [
+        "Dear #Name#,",
+        "The preview and your schedule missed each other. No problem.",
+        "The recording shows the beta's more direct room control, live screen views, activity history, and access settings. When help is needed, a support request carries device context and logs.",
+        "Watch the private-preview recording: [RECORDING LINK]",
+        "Written companion: LUCI Upgrade Guide — [LUCI UPGRADE GUIDE URL]"
+      ],
+      "cta_label": "Watch the private-preview recording",
+      "word_count": 57,
+      "assets_used": [
+        "Private-preview recording",
+        "LUCI Upgrade Guide"
+      ],
+      "automation_notes": "Send from Mark only to registered no-shows. Suppress attendees, active opportunities, and anyone in an active Mark or Mike conversation. A reply or booking stops automation; recording and guide clicks remain reporting signals. Keep the guide visually secondary.",
+      "guardrail_notes": "r3 changes: Skipped the client-retention claim because this service note is about access to a missed preview. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language."
+    }
+  ]
+}

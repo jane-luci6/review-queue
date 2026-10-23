@@ -1,0 +1,958 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>New LUCI prospect emails — review</title><style>
+  :root {
+    --navy: #0A161C;
+    --ink: #10232D;
+    --sand: #E5E3DF;
+    --kicker: #2b9e80;
+    --line: #cfcbc4;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font: 18px/1.55 "Georgia", "Times New Roman", serif;
+    color: var(--ink);
+    background: var(--sand);
+  }
+  nav {
+    position: sticky; top: 0; z-index: 2;
+    background: var(--navy); color: #fff;
+    padding: 14px 22px 16px;
+    display: flex; flex-wrap: wrap; gap: 8px 18px;
+    align-items: baseline;
+  }
+  nav strong {
+    font: 700 12px/1 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .08em; text-transform: uppercase;
+    color: #68E3BE; margin-right: 8px;
+  }
+  nav a {
+    color: #fff; text-decoration: none;
+    font: 15px/1.3 "Helvetica Neue", Arial, sans-serif;
+    border-bottom: 1px solid transparent;
+  }
+  nav a:hover { border-bottom-color: #68E3BE; }
+  main { max-width: 38rem; margin: 0 auto; padding: 2.5rem 1.5rem 6rem; }
+  article { padding: 2.5rem 0 3rem; border-bottom: 1px solid var(--line); }
+  .kicker {
+    font: 700 12px/1 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .1em; text-transform: uppercase;
+    color: var(--kicker); margin: 0 0 .6rem;
+  }
+  h1 {
+    font: 700 1.7rem/1.2 "Helvetica Neue", Arial, sans-serif;
+    color: var(--navy); margin: 0 0 1.2rem;
+  }
+  h2 { font: 700 1.1rem/1.3 "Helvetica Neue", Arial, sans-serif; }
+  p { margin: 0 0 1rem; }
+  a { color: var(--kicker); }
+  ul, ol { margin: 0 0 1rem; padding-left: 1.2rem; }
+  .footer { color: #6b6660; font-size: .85rem; font-family: "Helvetica Neue", Arial, sans-serif; }
+  .note {
+    font: 15px/1.4 "Helvetica Neue", Arial, sans-serif;
+    color: #5c5852; margin: 1.5rem 0 0;
+  }
+
+  main{max-width:52rem}
+  .intro{font:16px/1.55 "Helvetica Neue",Arial,sans-serif}
+  h2{margin:2rem 0 .8rem;color:var(--navy);letter-spacing:.02em}
+  dl{font:16px/1.5 "Helvetica Neue",Arial,sans-serif;margin:0}dt{font-weight:700;color:var(--navy);margin-top:.6rem}dd{margin:0}
+  .primary{background:#fff;border-left:4px solid var(--kicker);padding:.8rem 1rem;font-family:"Helvetica Neue",Arial,sans-serif;font-size:17px}
+  .dirs{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:12px}
+  .dir{background:#f3f1ed;border:1px solid var(--line);border-radius:6px;padding:12px 14px;font-size:15px}
+  .dir.win{background:#fff;border-color:var(--kicker);box-shadow:0 0 0 1px var(--kicker)}
+  .dir h4{font:700 14px/1.3 "Helvetica Neue",Arial,sans-serif;margin:0 0 .4rem;color:var(--navy)}
+  .badge{background:var(--kicker);color:#fff;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:2px 6px;border-radius:3px;margin-left:4px}
+  .sum{font:italic 14px/1.4 "Helvetica Neue",Arial,sans-serif;color:#5c5852}.draft{white-space:pre-line}
+  .why{font:15px/1.5 "Helvetica Neue",Arial,sans-serif;margin-top:1rem}
+  .wc{font:600 12px/1 "Helvetica Neue",Arial,sans-serif;background:var(--navy);color:#68E3BE;padding:4px 8px;border-radius:3px;margin-left:8px;vertical-align:middle}
+  .email{background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .meta{background:var(--navy);color:#fff;padding:14px 20px;font:15px/1.45 "Helvetica Neue",Arial,sans-serif;display:grid;gap:10px}
+  .meta b{color:#68E3BE;font-size:11px;letter-spacing:.1em;text-transform:uppercase}.meta p{margin:.2rem 0 0}
+  .subj{list-style:none;padding:0;margin:.3rem 0 0}.subj li{margin:.2rem 0}
+  .mood{display:inline-block;min-width:7.5rem;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#a9c7bd}
+  .ebody{padding:22px 26px}.ebody a{word-break:break-all}.sig{color:#6b6660;font-size:15px}
+  .ph{background:#fff3c4;padding:0 3px;border-radius:2px;font-family:"Helvetica Neue",Arial,sans-serif;font-size:.85em}
+  .meta .ph{color:var(--ink)}
+  .oq{background:#fff;border:1px solid var(--line);border-radius:6px;padding:1rem 1.4rem;font:15px/1.5 "Helvetica Neue",Arial,sans-serif}
+
+  section{padding:1rem 0 2rem}
+  h2{font:700 1.5rem/1.2 "Helvetica Neue",Arial,sans-serif;color:var(--navy);margin:2.5rem 0 .6rem;padding-top:1rem;border-top:3px solid var(--navy)}
+  .n{font:600 12px/1 "Helvetica Neue",Arial,sans-serif;color:var(--kicker);letter-spacing:.06em;text-transform:uppercase;margin-left:8px}
+  h3{font:700 1.25rem/1.25 "Helvetica Neue",Arial,sans-serif;color:var(--navy);margin:0 0 .6rem}
+  article.em{padding:2rem 0 2.2rem;border-bottom:1px solid var(--line)}
+  .scopeline{background:#fff;border-left:4px solid #d4a017;padding:.8rem 1rem;font:16px/1.5 "Helvetica Neue",Arial,sans-serif}
+  .tm{font:14px/1.4 "Helvetica Neue",Arial,sans-serif;color:#5c5852}
+  .toc{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:18px;font:14px/1.45 "Helvetica Neue",Arial,sans-serif}
+  .tocgrp h3{font-size:1rem}.tocgrp ol{margin:0;padding-left:1.1rem}.wc2{color:#6b6660;font-size:12px}
+  details{margin:.6rem 0;font:15px/1.5 "Helvetica Neue",Arial,sans-serif}
+  summary{cursor:pointer;font-weight:700;color:var(--navy);padding:.3rem 0}
+  h4.fc{font:700 1.05rem/1.3 "Helvetica Neue",Arial,sans-serif;color:var(--navy);margin:1.3rem 0 .6rem}
+  .ph{background:#fff3c4;padding:0 3px;border-radius:2px;font-family:"Helvetica Neue",Arial,sans-serif;font-size:.85em}
+  .meta .ph{color:var(--ink)}
+  .dir .sum .ph,.dir .draft .ph{font-size:.9em}
+</style></head><body>
+<nav><strong>New LUCI · Prospect emails</strong><a href="#scope">Scope</a><a href="#t-warm">Warm prospects</a><a href="#t-net-new">Net-new prospects</a><a href="#t-pulse">Prospect Pulse (nurture)</a><a href="#decisions">Jane’s decisions</a></nav><main>
+<section id="scope"><p class="kicker">Warm · Net-new · Nurture · Draft v1 for Jane</p><h1>New LUCI prospect emails: 27 drafts</h1>
+<p class="scopeline"><strong>Scope read:</strong> “Prospect upgrade” = every email in the plan’s Warm prospects track (11) and Net-new prospects track (10), including response and Sales-handback recovery cycles; “nurture” = Prospect Pulse (6). The 12 existing-customer emails are excluded (webinar cycle already drafted in Chunk 1).</p>
+<p class="intro"><strong>Theme:</strong> Putting the power of programming in your hands. Upgrade links go to the <span class="ph">[LUCI UPGRADE GUIDE URL]</span> (planned path /luci-upgrade-guide; not publicly live yet). No release date anywhere; New LUCI is in beta. Yellow marks a placeholder. Nothing has been sent or loaded into ActiveCampaign.</p>
+<div class="toc"><div class="tocgrp"><h3><a href="#t-warm">Warm prospects</a> <span class="n">11 emails</span></h3><ol><li><a href="#WARM-PREVIEW-01">WARM-PREVIEW-01</a> Private preview invitation <span class="wc2">97w</span></li><li><a href="#WARM-PREVIEW-02">WARM-PREVIEW-02</a> What to expect <span class="wc2">90w</span></li><li><a href="#WARM-PREVIEW-03">WARM-PREVIEW-03</a> Registered-attendee reminder <span class="wc2">36w</span></li><li><a href="#WARM-PREVIEW-04">WARM-PREVIEW-04</a> Personal preview follow-up <span class="wc2">56w</span></li><li><a href="#WARM-PREVIEW-05">WARM-PREVIEW-05</a> Recording for no-shows <span class="wc2">57w</span></li><li><a href="#WARM-REENGAGE-01">WARM-REENGAGE-01</a> What changed <span class="wc2">86w</span></li><li><a href="#WARM-REENGAGE-02">WARM-REENGAGE-02</a> Recorded preview <span class="wc2">71w</span></li><li><a href="#WARM-REENGAGE-03">WARM-REENGAGE-03</a> Operational proof <span class="wc2">63w</span></li><li><a href="#WARM-REENGAGE-04">WARM-REENGAGE-04</a> Direct invitation <span class="wc2">61w</span></li><li><a href="#WARM-RESPONSE-01">WARM-RESPONSE-01</a> Immediate response <span class="wc2">52w</span></li><li><a href="#WARM-RESPONSE-02">WARM-RESPONSE-02</a> Personal outreach <span class="wc2">46w</span></li></ol></div><div class="tocgrp"><h3><a href="#t-net-new">Net-new prospects</a> <span class="n">10 emails</span></h3><ol><li><a href="#NET-ACQ-01">NET-ACQ-01</a> The operational problem <span class="wc2">85w</span></li><li><a href="#NET-ACQ-02">NET-ACQ-02</a> Consolidation proof <span class="wc2">78w</span></li><li><a href="#NET-ACQ-03">NET-ACQ-03</a> Recorded walkthrough <span class="wc2">68w</span></li><li><a href="#NET-ACQ-04">NET-ACQ-04</a> Platform, team, and invitation <span class="wc2">82w</span></li><li><a href="#NET-DEMO-01">NET-DEMO-01</a> Immediate confirmation <span class="wc2">33w</span></li><li><a href="#NET-DEMO-02">NET-DEMO-02</a> Personal follow-up <span class="wc2">48w</span></li><li><a href="#NET-UNBOOKED-01">NET-UNBOOKED-01</a> Scheduling recovery <span class="wc2">44w</span></li><li><a href="#NET-UNBOOKED-02">NET-UNBOOKED-02</a> Leave the invitation open <span class="wc2">43w</span></li><li><a href="#NET-POSTDEMO-01">NET-POSTDEMO-01</a> Relevant reason to reconsider <span class="wc2">72w</span></li><li><a href="#NET-POSTDEMO-02">NET-POSTDEMO-02</a> Close the loop <span class="wc2">48w</span></li></ol></div><div class="tocgrp"><h3><a href="#t-pulse">Prospect Pulse (nurture)</a> <span class="n">6 emails</span></h3><ol><li><a href="#PULSE-01">PULSE-01</a> Orchestration from one interface <span class="wc2">96w</span></li><li><a href="#PULSE-02">PULSE-02</a> Consolidation without starting over <span class="wc2">80w</span></li><li><a href="#PULSE-03">PULSE-03</a> One shared operating view <span class="wc2">84w</span></li><li><a href="#PULSE-04">PULSE-04</a> One accountable incident response <span class="wc2">88w</span></li><li><a href="#PULSE-05">PULSE-05</a> Activate the guest experience <span class="wc2">84w</span></li><li><a href="#PULSE-06">PULSE-06</a> A platform that scales and improves <span class="wc2">86w</span></li></ol></div></div></section>
+<section id="t-warm"><p class="kicker">Track</p><h2>Warm prospects <span class="n">11 emails</span></h2><p class="intro">Selected pre-launch private preview, broader launch re-engagement, and after-a-response emails.</p><p class="intro">This selected-preview track is the earliest high-trust branch of the campaign: it rewards serious prior interest, shows three practical beta workflows, and lets Mark continue personally. It stays distinct from broader warm re-engagement by emphasizing access and continuity rather than reopening the full LUCI case. This track reopens LUCI for the broader warm list through a fresh operating problem, visual proof, approved scale, and one focused invitation. It follows a different relationship stage from the selected preview, then hands every response to Mark and stops campaign language.</p><article class="em" id="WARM-PREVIEW-01"><p class="kicker">WARM-PREVIEW-01 · Selected private preview</p><h3>Private preview invitation</h3>
+<p class="tm"><b>Timing:</b> About 2–3 weeks before the preview webinar; past-demo and serious past-request prospects only &nbsp;·&nbsp; <b>Sender:</b> Mark</p>
+<p class="primary"><strong>Primary message:</strong> Their earlier time with LUCI earned a private look at the beta and the specific daily controls it adds.</p>
+<details open><summary>Strategy</summary><dl><dt>What &amp; why</dt><dd>A selective invitation that recognizes prior effort and gives the recipient one clear reason to register.</dd><dt>For whom</dt><dd>People who evaluated LUCI seriously before, may remember little now, and do not use it today.</dd><dt>Best way to reach them</dt><dd>Send from Mark about 2–3 weeks before the session. Define LUCI and the beta change in one line, then make registration the only primary action.</dd><dt>Impact, professionally</dt><dd>Make selection feel earned, explain the beta concretely, and use the retention line once as reassurance that more direct control keeps the relationship intact.</dd></dl></details>
+<details open><summary>Three directions &amp; why the final won</summary><div class="dirs"><div class="dir win"><h4>You earned the early look <span class=badge>Final</span></h4><p class="sum">The selected direction, revised for whole-campaign consistency.</p><p class="draft">Dear #Name#,
+
+You spent real time with LUCI before, so we chose you for a private preview. LUCI gives operators one place to run a property&#x27;s A/V; New LUCI is in beta and puts more control over rooms, screen views, activity, and access in staff hands.
+
+The embedded LUCI team stays with the property and sees the operating context when something needs attention.
+
+This is a useful first look, not a broad sales tour: <span class="ph">[WEBINAR DATE]</span> at <span class="ph">[WEBINAR TIME]</span> on <span class="ph">[WEBINAR PLATFORM]</span>.
+
+That continuity matters: we&#x27;ve never lost a client.
+
+Register for the private preview: <span class="ph">[REGISTRATION LINK]</span></p></div><div class="dir"><h4>The useful short version</h4><p class="sum">Assume weak recall and define the product before the invitation.</p><p class="draft">Dear #Name#,
+
+If LUCI has become a faint memory, here is the useful short version: it runs a property’s A/V from one interface. New LUCI is in beta and puts more room changes, screen checks, activity history, and access control in staff hands, with our team still monitoring and supporting the work.
+
+We chose a small group of earlier evaluators for a private preview on <span class="ph">[WEBINAR DATE]</span> at <span class="ph">[WEBINAR TIME]</span>.
+
+Register: <span class="ph">[REGISTRATION LINK]</span></p></div><div class="dir"><h4>Control with continuity</h4><p class="sum">Lead with the beta change and make the relationship proof earn its place.</p><p class="draft">Dear #Name#,
+
+LUCI gives operators one interface for a property’s A/V. New LUCI is in beta and gives operators more direct control over room settings, live screen views, activity history, and access. Our team still monitors, diagnoses, and supports the platform.
+
+That continuity matters: we&#x27;ve never lost a client. Because you looked seriously at LUCI before, we would like you at the private preview on <span class="ph">[WEBINAR DATE]</span>.
+
+Register: <span class="ph">[REGISTRATION LINK]</span></p></div></div><p class="why"><strong>Why “You earned the early look” won:</strong> It makes prior effort the reason for contact, defines LUCI for a cold reader, and pairs direct control with the team that stays. The r3 final removes campaign theater and keeps one registration action.</p></details>
+<h4 class="fc">Final copy <span class="wc">97 words / 150</span></h4>
+<div class="email"><div class="meta"><div><b>Subject lines</b><ul class="subj"><li><span class="mood">Warm</span>A private look, because you looked before</li><li><span class="mood">Curious</span>What changed since you saw LUCI?</li><li><span class="mood">Direct</span>Your private New LUCI preview</li></ul></div><div><b>Preheader</b><p>A selected beta preview with a practical look at what changed.</p></div></div><div class="ebody"><p>Dear #Name#,</p><p>You spent real time with LUCI before, so we chose you for a private preview. LUCI gives operators one place to run a property&#x27;s A/V; New LUCI is in beta and puts more control over rooms, screen views, activity, and access in staff hands.</p><p>The embedded LUCI team stays with the property and sees the operating context when something needs attention.</p><p>This is a useful first look, not a broad sales tour: <span class="ph">[WEBINAR DATE]</span> at <span class="ph">[WEBINAR TIME]</span> on <span class="ph">[WEBINAR PLATFORM]</span>.</p><p>That continuity matters: we&#x27;ve never lost a client.</p><p>Register for the private preview: <span class="ph">[REGISTRATION LINK]</span></p><p class="sig">[NAME]<br>[TITLE]<br>LUCI Systems<br>[EMAIL] · [PHONE]</p></div></div>
+<p class="note"><strong>Automation:</strong> Send only to chosen past-demo and serious-request contacts. Suppress active opportunities and anyone in an active Mark or Mike conversation. A reply or booking stops marketing automation; opens and ordinary clicks remain reporting signals. Keep each person in one stage cycle.</p>
+<p class="note"><strong>Guardrail notes:</strong> r3 changes: Kept the exact client-retention claim because this high-trust invitation is about continuity; selected-preview recipients will not meet it again in Pulse. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.</p></article><article class="em" id="WARM-PREVIEW-02"><p class="kicker">WARM-PREVIEW-02 · Selected private preview</p><h3>What to expect</h3>
+<p class="tm"><b>Timing:</b> 7–10 days before the webinar &nbsp;·&nbsp; <b>Sender:</b> Mark</p>
+<p class="primary"><strong>Primary message:</strong> The preview will show three concrete workflows that put more daily control in staff hands without reducing LUCI support.</p>
+<details open><summary>Strategy</summary><dl><dt>What &amp; why</dt><dd>A second touch that earns attention with three observable workflows instead of another invitation recap.</dd><dt>For whom</dt><dd>Earlier evaluators who may recall the old product but need a fast, concrete reason to attend.</dd><dt>Best way to reach them</dt><dd>Send from Mark 7–10 days before the session. Render one CTA by registration state: agenda for registrants or registration for everyone else.</dd><dt>Impact, professionally</dt><dd>Use three distinct property moments so the beta feels operational without repeating the campaign&#x27;s bartender, ballroom, or wrong-screen scenes.</dd></dl></details>
+<details open><summary>Three directions &amp; why the final won</summary><div class="dirs"><div class="dir win"><h4>Three scenes <span class=badge>Final</span></h4><p class="sum">The selected direction, revised for whole-campaign consistency.</p><p class="draft">Dear #Name#,
+
+The private preview stays close to real property work:
+
+1. A concourse lead opens only the controls approved for that zone.
+
+2. A conference team adjusts grouped audio zones during the break without opening controls for the rest of the building.
+
+3. A sportsbook operator confirms what each display shows and checks the activity record behind a change.
+
+Three workflows, no broad product tour. Each keeps the approved operating limits clear.
+
+<span class="ph">[IF REGISTERED]</span> Review the agenda: <span class="ph">[AGENDA LINK]</span>
+
+<span class="ph">[IF NOT REGISTERED]</span> Register for the private preview: <span class="ph">[REGISTRATION LINK]</span></p></div><div class="dir"><h4>From setup to proof</h4><p class="sum">Organize the preview as one sequence from preparation to verification.</p><p class="draft">Dear #Name#,
+
+LUCI brings a property’s A/V into one operating interface. New LUCI is in beta and moves more of the daily sequence into staff hands: prepare screens and audio, apply the change on cue, verify the result, and check the activity record. Our team still monitors and supports the platform.
+
+The preview follows that sequence, not a tour of every button.
+
+<span class="ph">[IF REGISTERED]</span> Open the agenda: <span class="ph">[AGENDA LINK]</span>
+<span class="ph">[IF NOT REGISTERED]</span> Reserve your place: <span class="ph">[REGISTRATION LINK]</span></p></div><div class="dir"><h4>One room, one wall, one record</h4><p class="sum">Use three memorable nouns to make the preview easy to scan.</p><p class="draft">Dear #Name#,
+
+Here is what the private preview covers: one room, one wall, one record. LUCI brings a property’s A/V into one operating interface; New LUCI is in beta and lets staff stage a room change, confirm a wall’s content, and see who changed what while our team continues monitoring and support.
+
+Three useful tests beat a feature parade.
+
+<span class="ph">[IF REGISTERED]</span> Review the agenda: <span class="ph">[AGENDA LINK]</span>
+<span class="ph">[IF NOT REGISTERED]</span> Register: <span class="ph">[REGISTRATION LINK]</span></p></div></div><p class="why"><strong>Why “Three scenes” won:</strong> It turns each capability into a different property moment and keeps one recipient-state action. The r3 final removes the repeated bartender, ballroom, scavenger-hunt, and wall-check material.</p></details>
+<h4 class="fc">Final copy <span class="wc">90 words / 150</span></h4>
+<div class="email"><div class="meta"><div><b>Subject lines</b><ul class="subj"><li><span class="mood">Practical</span>Three workflows in the private preview</li><li><span class="mood">Curious</span>What happens during the conference break?</li><li><span class="mood">Warm</span>A practical second look at LUCI</li></ul></div><div><b>Preheader</b><p>A concourse, conference break, and sportsbook make the beta concrete.</p></div></div><div class="ebody"><p>Dear #Name#,</p><p>The private preview stays close to real property work:</p><p>1. A concourse lead opens only the controls approved for that zone.</p><p>2. A conference team adjusts grouped audio zones during the break without opening controls for the rest of the building.</p><p>3. A sportsbook operator confirms what each display shows and checks the activity record behind a change.</p><p>Three workflows, no broad product tour. Each keeps the approved operating limits clear.</p><p><span class="ph">[IF REGISTERED]</span> Review the agenda: <span class="ph">[AGENDA LINK]</span></p><p><span class="ph">[IF NOT REGISTERED]</span> Register for the private preview: <span class="ph">[REGISTRATION LINK]</span></p><p class="sig">[NAME]<br>[TITLE]<br>LUCI Systems<br>[EMAIL] · [PHONE]</p></div></div>
+<p class="note"><strong>Automation:</strong> Render exactly one CTA by recipient state: agenda for registrants, registration for nonregistrants. Suppress active opportunities and anyone in an active Mark or Mike conversation. A reply or booking stops automation; opens and ordinary clicks do not trigger a sales handoff.</p>
+<p class="note"><strong>Guardrail notes:</strong> r3 changes: Skipped the client-retention claim because WARM-PREVIEW-01 already carries the cycle&#x27;s relationship proof. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.</p><p class="note"><strong>Assets:</strong> Preview agenda</p></article><article class="em" id="WARM-PREVIEW-03"><p class="kicker">WARM-PREVIEW-03 · Selected private preview</p><h3>Registered-attendee reminder</h3>
+<p class="tm"><b>Timing:</b> 2 days before the webinar; registrants only &nbsp;·&nbsp; <b>Sender:</b> Mark</p>
+<p class="primary"><strong>Primary message:</strong> The event facts, calendar action, and join link sit in one easy-to-find note.</p>
+<details open><summary>Strategy</summary><dl><dt>What &amp; why</dt><dd>A logistics-only reminder that removes attendance friction.</dd><dt>For whom</dt><dd>People who already registered and need accurate details, not another product argument.</dd><dt>Best way to reach them</dt><dd>Send from Mark two days before the session. Put the facts first, make calendar save the primary action, and present the join link as access information.</dd><dt>Impact, professionally</dt><dd>Sound calm and useful; one lightly human line makes the reminder memorable without turning it into promotion.</dd></dl></details>
+<details open><summary>Three directions &amp; why the final won</summary><div class="dirs"><div class="dir win"><h4>Everything in one place <span class=badge>Final</span></h4><p class="sum">The selected direction, revised for whole-campaign consistency.</p><p class="draft">Dear #Name#,
+
+Calendars hide links with remarkable efficiency, so here are both in one place.
+
+Date: <span class="ph">[WEBINAR DATE]</span>
+
+Time: <span class="ph">[WEBINAR TIME]</span>
+
+Platform: <span class="ph">[WEBINAR PLATFORM]</span>
+
+Add to calendar: <span class="ph">[CALENDAR LINK]</span>
+
+Join link for session time: <span class="ph">[JOIN LINK]</span></p></div><div class="dir"><h4>Save it now</h4><p class="sum">Make the calendar action immediate and the join link easy to retrieve later.</p><p class="draft">Dear #Name#,
+
+Your private preview is on <span class="ph">[WEBINAR DATE]</span> at <span class="ph">[WEBINAR TIME]</span> on <span class="ph">[WEBINAR PLATFORM]</span>.
+
+Save it now; future-you has enough tabs open.
+
+Add to calendar: <span class="ph">[CALENDAR LINK]</span>
+
+Join link: <span class="ph">[JOIN LINK]</span></p></div><div class="dir"><h4>Keep this note</h4><p class="sum">Treat the message as a clean access card.</p><p class="draft">Dear #Name#,
+
+Keep this note for the private preview. It has the details and the link you will need.
+
+<span class="ph">[WEBINAR DATE]</span>
+<span class="ph">[WEBINAR TIME]</span>
+<span class="ph">[WEBINAR PLATFORM]</span>
+
+Add to calendar: <span class="ph">[CALENDAR LINK]</span>
+
+Session access: <span class="ph">[JOIN LINK]</span></p></div></div><p class="why"><strong>Why “Everything in one place” won:</strong> It gives registered attendees every access detail in one scan and keeps calendar save as the only primary action. The r3 campaign pass confirmed that logistics stay separate from product and proof.</p></details>
+<h4 class="fc">Final copy <span class="wc">36 words / 150</span></h4>
+<div class="email"><div class="meta"><div><b>Subject lines</b><ul class="subj"><li><span class="mood">Direct</span>Your private preview details</li><li><span class="mood">Practical</span>Calendar and join link, in one place</li><li><span class="mood">Warm</span>We saved you a seat</li></ul></div><div><b>Preheader</b><p>Date, time, platform, calendar, and session access are together inside.</p></div></div><div class="ebody"><p>Dear #Name#,</p><p>Calendars hide links with remarkable efficiency, so here are both in one place.</p><p>Date: <span class="ph">[WEBINAR DATE]</span></p><p>Time: <span class="ph">[WEBINAR TIME]</span></p><p>Platform: <span class="ph">[WEBINAR PLATFORM]</span></p><p>Add to calendar: <span class="ph">[CALENDAR LINK]</span></p><p>Join link for session time: <span class="ph">[JOIN LINK]</span></p><p class="sig">[NAME]<br>[TITLE]<br>LUCI Systems<br>[EMAIL] · [PHONE]</p></div></div>
+<p class="note"><strong>Automation:</strong> Send only to registrants. Suppress nonregistrants, active opportunities, and anyone in an active Mark or Mike conversation. A reply or booking stops automation; opens and ordinary clicks remain reporting signals.</p>
+<p class="note"><strong>Guardrail notes:</strong> r3 changes: Skipped the client-retention claim because this logistics-only reminder should contain facts and access, not a trust slogan. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.</p></article><article class="em" id="WARM-PREVIEW-04"><p class="kicker">WARM-PREVIEW-04 · Selected private preview</p><h3>Personal preview follow-up</h3>
+<p class="tm"><b>Timing:</b> Next business day after the webinar; sent by Mark &nbsp;·&nbsp; <b>Sender:</b> Mark</p>
+<p class="primary"><strong>Primary message:</strong> Mark wants one honest reaction and will continue only if a direct conversation helps.</p>
+<details open><summary>Strategy</summary><dl><dt>What &amp; why</dt><dd>A short personal note that turns attendance into an honest response rather than another campaign touch.</dd><dt>For whom</dt><dd>Attendees with earlier context who can compare what they saw with what they remembered.</dd><dt>Best way to reach them</dt><dd>Send from Mark the next business day, ask one question, and make reply the primary action. Keep the calendar quiet and secondary.</dd><dt>Impact, professionally</dt><dd>Sound as if Mark wrote the note in 30 seconds after seeing the attendee list.</dd></dl></details>
+<details open><summary>Three directions &amp; why the final won</summary><div class="dirs"><div class="dir win"><h4>What looked useful <span class=badge>Final</span></h4><p class="sum">The selected direction, revised for whole-campaign consistency.</p><p class="draft">Dear #Name#,
+
+Thanks for joining the private preview. You had seen the platform before, so I&#x27;m curious: what looked useful this time, and what did not?
+
+No form to complete. Just reply with the room or workflow you would test against your own plans.
+
+Reply to Mark: <span class="ph">[MARK EMAIL]</span>
+
+If a call is easier: <span class="ph">[BOOKING URL]</span></p></div><div class="dir"><h4>What changed your view</h4><p class="sum">Ask whether anything shifted and keep the note conversational.</p><p class="draft">Dear #Name#,
+
+You had an earlier point of comparison, which makes your read useful. Did anything in the private preview change how you see the platform?
+
+No scorecard required. Reply with the one thing that landed, or the one thing that still needs an answer.
+
+Reply to Mark: <span class="ph">[MARK EMAIL]</span>
+
+Calendar if useful: <span class="ph">[BOOKING URL]</span></p></div><div class="dir"><h4>Pick one workflow</h4><p class="sum">Move quickly from attendance to a specific real-world test.</p><p class="draft">Dear #Name#,
+
+Thanks for coming back for another look. Rather than replay the session in your inbox, tell me which room or workflow you would put under the microscope first.
+
+I can answer by reply, or we can talk it through.
+
+Reply to Mark: <span class="ph">[MARK EMAIL]</span>
+
+Optional calendar: <span class="ph">[BOOKING URL]</span></p></div></div><p class="why"><strong>Why “What looked useful” won:</strong> It sounds like a real note from Mark, invites a useful negative as well as a positive, and keeps reply ahead of the optional calendar. The r3 final removes the repeated survey joke.</p></details>
+<h4 class="fc">Final copy <span class="wc">56 words / 150</span></h4>
+<div class="email"><div class="meta"><div><b>Subject lines</b><ul class="subj"><li><span class="mood">Curious</span>What looked useful this time?</li><li><span class="mood">Personal</span>A quick note from Mark</li><li><span class="mood">Direct</span>Your honest read on the preview</li></ul></div><div><b>Preheader</b><p>One honest reaction is more useful than another recap.</p></div></div><div class="ebody"><p>Dear #Name#,</p><p>Thanks for joining the private preview. You had seen the platform before, so I&#x27;m curious: what looked useful this time, and what did not?</p><p>No form to complete. Just reply with the room or workflow you would test against your own plans.</p><p>Reply to Mark: <span class="ph">[MARK EMAIL]</span></p><p>If a call is easier: <span class="ph">[BOOKING URL]</span></p><p class="sig">[NAME]<br>[TITLE]<br>LUCI Systems<br>[EMAIL] · [PHONE]</p></div></div>
+<p class="note"><strong>Automation:</strong> Send from Mark the next business day only to attendees outside active opportunities. A reply or booking stops marketing automation and moves ownership to Sales. Keep the calendar visually secondary and suppress anyone already in an active Mark or Mike conversation.</p>
+<p class="note"><strong>Guardrail notes:</strong> r3 changes: Skipped the client-retention claim because a personal Mark note should focus on the recipient&#x27;s reaction. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.</p></article><article class="em" id="WARM-PREVIEW-05"><p class="kicker">WARM-PREVIEW-05 · Selected private preview</p><h3>Recording for no-shows</h3>
+<p class="tm"><b>Timing:</b> 2–3 business days after the webinar; registrants who did not attend &nbsp;·&nbsp; <b>Sender:</b> Mark</p>
+<p class="primary"><strong>Primary message:</strong> The recording gives them the same early product view without another live commitment.</p>
+<details open><summary>Strategy</summary><dl><dt>What &amp; why</dt><dd>A brief service note that preserves the value of the invitation after a missed session.</dd><dt>For whom</dt><dd>Registrants who did not attend and may still want the product view on their own time.</dd><dt>Best way to reach them</dt><dd>Send from Mark 2–3 business days later. Put the recording first and the written guide in a quiet secondary line.</dd><dt>Impact, professionally</dt><dd>Remove guilt, preserve the value of the invitation, and let the recording carry the product explanation without repeating email 01&#x27;s LUCI definition.</dd></dl></details>
+<details open><summary>Three directions &amp; why the final won</summary><div class="dirs"><div class="dir win"><h4>Watch on your time <span class=badge>Final</span></h4><p class="sum">The selected direction, revised for whole-campaign consistency.</p><p class="draft">Dear #Name#,
+
+The preview and your schedule missed each other. No problem.
+
+The recording shows the beta&#x27;s more direct room control, live screen views, activity history, and access settings. When help is needed, a support request carries device context and logs.
+
+Watch the private-preview recording: <span class="ph">[RECORDING LINK]</span>
+
+Written companion: LUCI Upgrade Guide — <span class="ph">[LUCI UPGRADE GUIDE URL]</span></p></div><div class="dir win"><h4>Watch on your time <span class=badge>Final</span></h4><p class="sum">Lead with on-demand access and define the product in one practical line.</p><p class="draft">Dear #Name#,
+
+You missed the private preview, but you did not miss the product view. LUCI lets staff run a property’s A/V from one place; New LUCI is in beta and adds direct staff control over rooms, screen checks, activity, and access while our team continues monitoring and support.
+
+Watch whenever the calendar gives you the floor.
+
+Recording: <span class="ph">[RECORDING LINK]</span>
+
+Written detail: LUCI Upgrade Guide — <span class="ph">[LUCI UPGRADE GUIDE URL]</span></p></div><div class="dir"><h4>No second appointment</h4><p class="sum">Make freedom from another meeting the main benefit.</p><p class="draft">Dear #Name#,
+
+No need to find another live date. LUCI lets staff run a property’s A/V from one place; New LUCI is in beta and puts more daily room, view, activity, and access work in staff hands without removing our monitoring and support.
+
+The recording is the private preview, minus the calendar negotiation.
+
+Watch it here: <span class="ph">[RECORDING LINK]</span>
+
+Written companion: LUCI Upgrade Guide — <span class="ph">[LUCI UPGRADE GUIDE URL]</span></p></div></div><p class="why"><strong>Why “Watch on your time” won:</strong> It sounds personal, removes guilt, and protects the recording as the primary action. The r3 final drops the repeated calendar-won joke and relies on the sequence&#x27;s earlier product context.</p></details>
+<h4 class="fc">Final copy <span class="wc">57 words / 150</span></h4>
+<div class="email"><div class="meta"><div><b>Subject lines</b><ul class="subj"><li><span class="mood">Helpful</span>Your private-preview recording</li><li><span class="mood">Low-pressure</span>Watch the preview on your time</li><li><span class="mood">Direct</span>Open the private-preview recording</li></ul></div><div><b>Preheader</b><p>The same early product view, without another appointment.</p></div></div><div class="ebody"><p>Dear #Name#,</p><p>The preview and your schedule missed each other. No problem.</p><p>The recording shows the beta&#x27;s more direct room control, live screen views, activity history, and access settings. When help is needed, a support request carries device context and logs.</p><p>Watch the private-preview recording: <span class="ph">[RECORDING LINK]</span></p><p>Written companion: LUCI Upgrade Guide — <span class="ph">[LUCI UPGRADE GUIDE URL]</span></p><p class="sig">[NAME]<br>[TITLE]<br>LUCI Systems<br>[EMAIL] · [PHONE]</p></div></div>
+<p class="note"><strong>Automation:</strong> Send from Mark only to registered no-shows. Suppress attendees, active opportunities, and anyone in an active Mark or Mike conversation. A reply or booking stops automation; recording and guide clicks remain reporting signals. Keep the guide visually secondary.</p>
+<p class="note"><strong>Guardrail notes:</strong> r3 changes: Skipped the client-retention claim because this service note is about access to a missed preview. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.</p><p class="note"><strong>Assets:</strong> Private-preview recording, LUCI Upgrade Guide</p></article><article class="em" id="WARM-REENGAGE-01"><p class="kicker">WARM-REENGAGE-01 · Broader warm re-engagement</p><h3>What changed</h3>
+<p class="tm"><b>Timing:</b> When Marketing opens the broader warm cycle &nbsp;·&nbsp; <b>Sender:</b> Marketing, from the same named LUCI lead</p>
+<p class="primary"><strong>Primary message:</strong> A cold reader sees the problem first: one wrong screen should not require several interfaces and an off-site expert.</p>
+<details open><summary>Strategy</summary><dl><dt>What &amp; why</dt><dd>A true reintroduction for the broader warm list, built around a familiar failure rather than selective access.</dd><dt>For whom</dt><dd>Past contacts who may barely remember LUCI and did not receive the private-preview invitation.</dd><dt>Best way to reach them</dt><dd>Open on one wrong screen after hours, define LUCI and the beta change, then make the guide the one primary action.</dd><dt>Impact, professionally</dt><dd>Use a restaurant opening to reintroduce LUCI without repeating the campaign&#x27;s wall-failure scenes.</dd></dl></details>
+<details open><summary>Three directions &amp; why the final won</summary><div class="dirs"><div class="dir win"><h4>The dinner screen <span class=badge>Final</span></h4><p class="sum">The selected direction, revised for whole-campaign consistency.</p><p class="draft">Dear #Name#,
+
+Dinner service begins, but a restaurant TV still shows yesterday&#x27;s brunch menu. The person who knows that control is not on property.
+
+One stale screen should not start the shift&#x27;s first phone tree.
+
+LUCI orchestrates property A/V through one operating view. New LUCI is in beta, giving staff live screen checks, approved controls, and activity history. If they need help, the request reaches the LUCI team with device context and logs attached.
+
+See the details in the LUCI Upgrade Guide: <span class="ph">[LUCI UPGRADE GUIDE URL]</span></p></div><div class="dir"><h4>One wrong wall</h4><p class="sum">Use a visible failure to show why another look matters.</p><p class="draft">Dear #Name#,
+
+A wall that is not showing what it should creates a simple question: who can see the problem and act without starting a phone tree?
+
+LUCI consolidates property A/V into one interface. New LUCI is in beta and adds direct screen checks, approved controls, and activity history for on-site staff, with our team still monitoring and supporting the platform.
+
+The wall is complicated enough. The response should not be.
+
+Read the LUCI Upgrade Guide: <span class="ph">[LUCI UPGRADE GUIDE URL]</span></p></div><div class="dir"><h4>Skip the interface hunt</h4><p class="sum">Open on the cost of searching across systems and people.</p><p class="draft">Dear #Name#,
+
+When a screen goes wrong, the first job should be fixing it, not finding the right interface and the person who knows it.
+
+LUCI gives the property one place to operate its A/V; New LUCI is in beta and gives staff more direct screen control, live status, and activity history while our team continues monitoring, diagnosis, and support.
+
+No interface scavenger hunt required.
+
+Review the LUCI Upgrade Guide: <span class="ph">[LUCI UPGRADE GUIDE URL]</span></p></div></div><p class="why"><strong>Why “The dinner screen” won:</strong> It gives broader warm re-engagement its own property moment, assumes no product memory, and makes the support path concrete through attached context and logs.</p></details>
+<h4 class="fc">Final copy <span class="wc">86 words / 150</span></h4>
+<div class="email"><div class="meta"><div><b>Subject lines</b><ul class="subj"><li><span class="mood">Direct</span>When dinner inherits yesterday&#x27;s brunch menu</li><li><span class="mood">Curious</span>Who owns the restaurant TV at opening?</li><li><span class="mood">Practical</span>A shorter path from screen to answer</li></ul></div><div><b>Preheader</b><p>One stale restaurant screen should not start the shift&#x27;s first phone tree.</p></div></div><div class="ebody"><p>Dear #Name#,</p><p>Dinner service begins, but a restaurant TV still shows yesterday&#x27;s brunch menu. The person who knows that control is not on property.</p><p>One stale screen should not start the shift&#x27;s first phone tree.</p><p>LUCI orchestrates property A/V through one operating view. New LUCI is in beta, giving staff live screen checks, approved controls, and activity history. If they need help, the request reaches the LUCI team with device context and logs attached.</p><p>See the details in the LUCI Upgrade Guide: <span class="ph">[LUCI UPGRADE GUIDE URL]</span></p><p class="sig">[NAME]<br>[TITLE]<br>LUCI Systems<br>[EMAIL] · [PHONE]</p></div></div>
+<p class="note"><strong>Automation:</strong> Send only to the broader warm list. Exclude selected-preview recipients from this version and suppress active opportunities or active Mark and Mike conversations. A reply or booking stops automation; opens and guide clicks remain reporting signals.</p>
+<p class="note"><strong>Guardrail notes:</strong> r3 changes: Skipped the client-retention claim so the fresh problem and response carry the reintroduction. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.</p><p class="note"><strong>Assets:</strong> LUCI Upgrade Guide</p></article><article class="em" id="WARM-REENGAGE-02"><p class="kicker">WARM-REENGAGE-02 · Broader warm re-engagement</p><h3>Recorded preview</h3>
+<p class="tm"><b>Timing:</b> 4–5 days after email 1 &nbsp;·&nbsp; <b>Sender:</b> Marketing, from the same named LUCI lead</p>
+<p class="primary"><strong>Primary message:</strong> The short reel shows the map workflow in motion; the full recording remains a quiet deeper option.</p>
+<details open><summary>Strategy</summary><dl><dt>What &amp; why</dt><dd>A visual step focused on the map and live device view, distinct from the preceding wrong-screen problem.</dd><dt>For whom</dt><dd>Warm contacts who may give a short reel two minutes but will not yet commit to a meeting.</dd><dt>Best way to reach them</dt><dd>Make the feature reel the only primary CTA and place the full recording in one secondary line.</dd><dt>Impact, professionally</dt><dd>Let the map carry the explanation: move from property view to floor plan, see device state, and confirm screen content.</dd></dl></details>
+<details open><summary>Three directions &amp; why the final won</summary><div class="dirs"><div class="dir win"><h4>Let the map explain <span class=badge>Final</span></h4><p class="sum">The selected direction, revised for whole-campaign consistency.</p><p class="draft">Dear #Name#,
+
+A map explains this better than another paragraph.
+
+The short reel moves from property view to floor plan, then to live device state and screen content. Staff can find the endpoint, confirm what it shows, and inspect recent activity without walking the floor.
+
+The LUCI team works from the same current context when support is needed.
+
+Watch the feature reel: <span class="ph">[FEATURE HIGHLIGHT REEL URL]</span>
+
+Deeper option: <span class="ph">[FULL RECORDING URL]</span></p></div><div class="dir"><h4>From property to screen</h4><p class="sum">Follow the visual path from the full site to one endpoint.</p><p class="draft">Dear #Name#,
+
+Start with the property. Move into the floor plan. Select one endpoint and confirm its live state and content.
+
+LUCI puts property A/V in one interface; New LUCI is in beta and gives staff that direct map-based view without removing our monitoring or support. The short reel shows the path in motion.
+
+Watch the feature reel: <span class="ph">[FEATURE HIGHLIGHT REEL URL]</span>
+
+Full session, if useful: <span class="ph">[FULL RECORDING URL]</span></p></div><div class="dir"><h4>A two-minute map tour</h4><p class="sum">Make the visual asset a low-friction relevance check.</p><p class="draft">Dear #Name#,
+
+Before you give this a meeting, give it two minutes. LUCI consolidates a property’s A/V into one operating interface; New LUCI is in beta and lets staff navigate floor plans, see live device state, and verify screen content while our team continues monitoring and support.
+
+The map does the talking.
+
+Watch the feature reel: <span class="ph">[FEATURE HIGHLIGHT REEL URL]</span>
+
+Full recording: <span class="ph">[FULL RECORDING URL]</span></p></div></div><p class="why"><strong>Why “Let the map explain” won:</strong> It gives the visual email one job and lets the map prove it quickly. The r3 final removes the repeated one-interface definition because email 01 already established LUCI.</p></details>
+<h4 class="fc">Final copy <span class="wc">71 words / 150</span></h4>
+<div class="email"><div class="meta"><div><b>Subject lines</b><ul class="subj"><li><span class="mood">Visual</span>Let the live map explain</li><li><span class="mood">Low-pressure</span>Give the map two minutes</li><li><span class="mood">Practical</span>From property view to one screen</li></ul></div><div><b>Preheader</b><p>Move from floor plan to live device state and screen content.</p></div></div><div class="ebody"><p>Dear #Name#,</p><p>A map explains this better than another paragraph.</p><p>The short reel moves from property view to floor plan, then to live device state and screen content. Staff can find the endpoint, confirm what it shows, and inspect recent activity without walking the floor.</p><p>The LUCI team works from the same current context when support is needed.</p><p>Watch the feature reel: <span class="ph">[FEATURE HIGHLIGHT REEL URL]</span></p><p>Deeper option: <span class="ph">[FULL RECORDING URL]</span></p><p class="sig">[NAME]<br>[TITLE]<br>LUCI Systems<br>[EMAIL] · [PHONE]</p></div></div>
+<p class="note"><strong>Automation:</strong> Continue only for eligible broader-warm contacts who did not receive the selected preview. Suppress active opportunities and active Mark or Mike conversations. A reply or booking stops automation; opens and video clicks remain reporting signals. Present the full recording as a secondary text link.</p>
+<p class="note"><strong>Guardrail notes:</strong> r3 changes: Skipped the client-retention claim because the map workflow is the proof and this is the second email in the cycle. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.</p><p class="note"><strong>Assets:</strong> Feature highlight reel, Full recording</p></article><article class="em" id="WARM-REENGAGE-03"><p class="kicker">WARM-REENGAGE-03 · Broader warm re-engagement</p><h3>Operational proof</h3>
+<p class="tm"><b>Timing:</b> 4–5 days after email 2 &nbsp;·&nbsp; <b>Sender:</b> Marketing, from the same named LUCI lead</p>
+<p class="primary"><strong>Primary message:</strong> Approved counts establish scale before LUCI draws the one-interface conclusion.</p>
+<details open><summary>Strategy</summary><dl><dt>What &amp; why</dt><dd>A proof email grounded in approved counts and relationship continuity.</dd><dt>For whom</dt><dd>Warm contacts who have seen the product behavior but still need evidence that LUCI handles real scale.</dd><dt>Best way to reach them</dt><dd>Put three approved counts first, define LUCI in the conclusion, and make the proof link the only primary action.</dd><dt>Impact, professionally</dt><dd>Let the denominator carry the claim, then use the retention line once where proof and continuity naturally meet.</dd></dl></details>
+<details open><summary>Three directions &amp; why the final won</summary><div class="dirs"><div class="dir win"><h4>The denominator is the story <span class=badge>Final</span></h4><p class="sum">The selected direction, revised for whole-campaign consistency.</p><p class="draft">Dear #Name#,
+
+“One operating view” is easy to claim. The denominator is the interesting part.
+
+<span class="ph">[APPROVED PROOF POINT]</span>
+
+<span class="ph">[APPROVED PROOF POINT]</span>
+
+<span class="ph">[APPROVED PROOF POINT]</span>
+
+Together, those approved counts show the screens, zones, walls, and workflows LUCI brings into a shorter list to manage.
+
+Scale is half the proof. Continuity is the other: we&#x27;ve never lost a client.
+
+See the approved proof: <span class="ph">[PROOF URL]</span></p></div><div class="dir"><h4>Count the work</h4><p class="sum">Use scope counts to challenge feature-list thinking.</p><p class="draft">Dear #Name#,
+
+The useful question is not how many features appear on a list. It is how much work one platform can run together.
+
+<span class="ph">[APPROVED PROOF POINT]</span>
+<span class="ph">[APPROVED PROOF POINT]</span>
+<span class="ph">[APPROVED PROOF POINT]</span>
+
+LUCI brings a property’s screens, zones, walls, and workflows into one A/V operating view. Arithmetic makes a better argument than adjectives.
+
+Review the proof: <span class="ph">[PROOF URL]</span></p></div><div class="dir"><h4>Proof before promise</h4><p class="sum">State the proof standard and avoid unsupported scale language.</p><p class="draft">Dear #Name#,
+
+Property-wide should mean something countable.
+
+<span class="ph">[APPROVED PROOF POINT]</span>
+<span class="ph">[APPROVED PROOF POINT]</span>
+<span class="ph">[APPROVED PROOF POINT]</span>
+
+LUCI gives the property one interface for its A/V. These approved counts show the actual surface under management before we ask anyone to trust the one-interface conclusion.
+
+See the proof: <span class="ph">[PROOF URL]</span></p></div></div><p class="why"><strong>Why “The denominator is the story” won:</strong> It puts approved evidence ahead of interpretation and gives the retention statement a natural continuity context. The r3 final avoids repeating the cycle&#x27;s LUCI definition.</p></details>
+<h4 class="fc">Final copy <span class="wc">63 words / 150</span></h4>
+<div class="email"><div class="meta"><div><b>Subject lines</b><ul class="subj"><li><span class="mood">Evidence-led</span>The denominator behind one interface</li><li><span class="mood">Curious</span>How much can one interface actually run?</li><li><span class="mood">Practical</span>Count the work under management</li></ul></div><div><b>Preheader</b><p>Approved counts establish the scale before the conclusion.</p></div></div><div class="ebody"><p>Dear #Name#,</p><p>“One operating view” is easy to claim. The denominator is the interesting part.</p><p><span class="ph">[APPROVED PROOF POINT]</span></p><p><span class="ph">[APPROVED PROOF POINT]</span></p><p><span class="ph">[APPROVED PROOF POINT]</span></p><p>Together, those approved counts show the screens, zones, walls, and workflows LUCI brings into a shorter list to manage.</p><p>Scale is half the proof. Continuity is the other: we&#x27;ve never lost a client.</p><p>See the approved proof: <span class="ph">[PROOF URL]</span></p><p class="sig">[NAME]<br>[TITLE]<br>LUCI Systems<br>[EMAIL] · [PHONE]</p></div></div>
+<p class="note"><strong>Automation:</strong> Do not advance this email until every proof placeholder contains one sourced, project-true count approved for prospect use. Send only to eligible broader-warm contacts who did not receive the selected preview. Suppress active opportunities and active Mark or Mike conversations. A reply or booking stops automation; proof clicks remain reporting signals.</p>
+<p class="note"><strong>Guardrail notes:</strong> r3 changes: Kept the exact client-retention claim because this email&#x27;s sole job is operating and relationship proof; selected-preview recipients are excluded from this cycle, and no other email in this cycle uses it. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.</p><p class="note"><strong>Assets:</strong> Approved proof</p></article><article class="em" id="WARM-REENGAGE-04"><p class="kicker">WARM-REENGAGE-04 · Broader warm re-engagement</p><h3>Direct invitation</h3>
+<p class="tm"><b>Timing:</b> 5–7 days after email 3 &nbsp;·&nbsp; <b>Sender:</b> Marketing, from the same named LUCI lead</p>
+<p class="primary"><strong>Primary message:</strong> A focused conversation can test the beta against one real room, wall, or workflow.</p>
+<details open><summary>Strategy</summary><dl><dt>What &amp; why</dt><dd>A concise close that offers one low-friction human next step.</dd><dt>For whom</dt><dd>Warm contacts who may have skipped every prior message but have a current A/V question.</dd><dt>Best way to reach them</dt><dd>Define LUCI and the beta change in one line, promise a focused discussion, and make booking the only primary CTA.</dd><dt>Impact, professionally</dt><dd>Skip the broad presentation and let the reader choose the concrete operating question.</dd></dl></details>
+<details open><summary>Three directions &amp; why the final won</summary><div class="dirs"><div class="dir win"><h4>Skip the grand tour <span class=badge>Final</span></h4><p class="sum">The selected direction, revised for whole-campaign consistency.</p><p class="draft">Dear #Name#,
+
+New LUCI is in beta, with more direct control over rooms, live screen views, activity, and access. The LUCI team still stays with the operation.
+
+If that fits something you are planning, we can skip the broad presentation and go straight to the room or workflow on your list.
+
+A short conversation is enough.
+
+Book a time: <span class="ph">[BOOKING URL]</span></p></div><div class="dir"><h4>One useful question</h4><p class="sum">Make the meeting about one question rather than a full presentation.</p><p class="draft">Dear #Name#,
+
+LUCI gives staff one interface for property-wide A/V operations. New LUCI is in beta and puts more daily programming control in staff hands without reducing our monitoring or support.
+
+Bring one useful question: a ballroom changeover, a wall that is not showing what it should, or an access concern. We will start there, not at slide one.
+
+Choose a time: <span class="ph">[BOOKING URL]</span></p></div><div class="dir"><h4>Test the fit</h4><p class="sum">Frame the conversation as a relevance check.</p><p class="draft">Dear #Name#,
+
+The shortest way to test fit is against real work. LUCI gives staff one interface for property-wide A/V operations; New LUCI is in beta and gives staff direct control over room changes, screen checks, activity, and access while our team remains accountable for support.
+
+No broad presentation required. Pick the workflow that matters now.
+
+Book a focused conversation: <span class="ph">[BOOKING URL]</span></p></div></div><p class="why"><strong>Why “Skip the grand tour” won:</strong> It offers one small next step and trusts the preceding sequence to supply the LUCI definition. The r3 final keeps the invitation focused without recycling a wall scene.</p></details>
+<h4 class="fc">Final copy <span class="wc">61 words / 150</span></h4>
+<div class="email"><div class="meta"><div><b>Subject lines</b><ul class="subj"><li><span class="mood">Warm</span>Want to test one real LUCI workflow?</li><li><span class="mood">Direct</span>Book a focused LUCI conversation</li><li><span class="mood">Practical</span>Start with the room on your list</li></ul></div><div><b>Preheader</b><p>Skip the broad presentation and start with one operating question.</p></div></div><div class="ebody"><p>Dear #Name#,</p><p>New LUCI is in beta, with more direct control over rooms, live screen views, activity, and access. The LUCI team still stays with the operation.</p><p>If that fits something you are planning, we can skip the broad presentation and go straight to the room or workflow on your list.</p><p>A short conversation is enough.</p><p>Book a time: <span class="ph">[BOOKING URL]</span></p><p class="sig">[NAME]<br>[TITLE]<br>LUCI Systems<br>[EMAIL] · [PHONE]</p></div></div>
+<p class="note"><strong>Automation:</strong> Send only to eligible broader-warm contacts who did not receive the selected preview and remain quiet after the proof email. Suppress active opportunities and active Mark or Mike conversations. A reply or booking stops automation and moves ownership to Sales. If the contact remains quiet, end this cycle before long-term nurture begins.</p>
+<p class="note"><strong>Guardrail notes:</strong> r3 changes: Skipped the client-retention claim because WARM-REENGAGE-03 already carries the cycle&#x27;s proof. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.</p><p class="note"><strong>Assets:</strong> Booking link</p></article><article class="em" id="WARM-RESPONSE-01"><p class="kicker">WARM-RESPONSE-01 · After a warm response</p><h3>Immediate response</h3>
+<p class="tm"><b>Timing:</b> Immediately after the reply, booking, or request &nbsp;·&nbsp; <b>Sender:</b> Marketing on behalf of Mark</p>
+<p class="primary"><strong>Primary message:</strong> Mark has the response or booking and will continue without asking the prospect to repeat anything already shared.</p>
+<details open><summary>Strategy</summary><dl><dt>What &amp; why</dt><dd>A transactional acknowledgement that works for replies, requests, and booking-only responses.</dd><dt>For whom</dt><dd>People who already raised a hand and should receive no more campaign persuasion.</dd><dt>Best way to reach them</dt><dd>Send immediately, make reply the primary action, and show the calendar only when the person has not booked.</dd><dt>Impact, professionally</dt><dd>Use one plain reassurance: Mark has the handoff, and the prospect will not repeat anything already shared.</dd></dl></details>
+<details open><summary>Three directions &amp; why the final won</summary><div class="dirs"><div class="dir win"><h4>Mark has it <span class=badge>Final</span></h4><p class="sum">The selected direction, revised for whole-campaign consistency.</p><p class="draft">Dear #Name#,
+
+Thanks for getting back in touch. Mark has your response or booking and will take it from here. You will not have to repeat anything you already shared.
+
+Reply if there is anything else he should see first.
+
+Reply to Mark: <span class="ph">[MARK EMAIL]</span>
+
+If you have not booked: <span class="ph">[BOOKING URL]</span></p></div><div class="dir"><h4>The handoff is complete</h4><p class="sum">Confirm ownership and keep added context optional.</p><p class="draft">Dear #Name#,
+
+Your response reached Mark, and he will continue from there. No inbox relay race.
+
+If you want to add context before he follows up, reply directly.
+
+Reply to Mark: <span class="ph">[MARK EMAIL]</span>
+
+Calendar if needed: <span class="ph">[BOOKING URL]</span></p></div><div class="dir"><h4>One human next step</h4><p class="sum">State who owns the next step in the shortest form.</p><p class="draft">Dear #Name#,
+
+Thanks for raising your hand. Mark has the next step and will follow up personally. You do not need to submit the same context twice.
+
+Add anything else by reply.
+
+Reply to Mark: <span class="ph">[MARK EMAIL]</span>
+
+Optional calendar: <span class="ph">[BOOKING URL]</span></p></div></div><p class="why"><strong>Why “Mark has it” won:</strong> It stays truthful for a reply, request, or booking-only response, names Mark as the owner, and keeps reply primary while the calendar remains conditional. The r3 campaign pass confirmed this acknowledgement does not restart campaign persuasion.</p></details>
+<h4 class="fc">Final copy <span class="wc">52 words / 150</span></h4>
+<div class="email"><div class="meta"><div><b>Subject lines</b><ul class="subj"><li><span class="mood">Confirming</span>Mark has your response</li><li><span class="mood">Warm</span>You will not need to repeat yourself</li><li><span class="mood">Practical</span>Add anything Mark should see</li></ul></div><div><b>Preheader</b><p>Mark has the handoff and will continue from here.</p></div></div><div class="ebody"><p>Dear #Name#,</p><p>Thanks for getting back in touch. Mark has your response or booking and will take it from here. You will not have to repeat anything you already shared.</p><p>Reply if there is anything else he should see first.</p><p>Reply to Mark: <span class="ph">[MARK EMAIL]</span></p><p>If you have not booked: <span class="ph">[BOOKING URL]</span></p><p class="sig">[NAME]<br>[TITLE]<br>LUCI Systems<br>[EMAIL] · [PHONE]</p></div></div>
+<p class="note"><strong>Automation:</strong> Stop marketing automation before sending this acknowledgement. Assign the response to Mark and suppress every other campaign or nurture cycle. Keep reply primary. Omit the calendar line when the prospect already booked.</p>
+<p class="note"><strong>Guardrail notes:</strong> r3 changes: Skipped the client-retention claim because this transactional acknowledgement only confirms ownership and next steps. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.</p><p class="note"><strong>Assets:</strong> Booking link</p></article><article class="em" id="WARM-RESPONSE-02"><p class="kicker">WARM-RESPONSE-02 · After a warm response</p><h3>Personal outreach</h3>
+<p class="tm"><b>Timing:</b> Same or next business day; sent by Mark &nbsp;·&nbsp; <b>Sender:</b> Mark</p>
+<p class="primary"><strong>Primary message:</strong> Mark acknowledges the prospect’s earlier LUCI context and asks which focused next step would help now.</p>
+<details open><summary>Strategy</summary><dl><dt>What &amp; why</dt><dd>A short personal note that works even when a booking contains no written detail.</dd><dt>For whom</dt><dd>Warm prospects who responded or booked and have already encountered LUCI.</dd><dt>Best way to reach them</dt><dd>Send the same or next business day, make reply primary, and leave the calendar secondary.</dd><dt>Impact, professionally</dt><dd>Sound written in 30 seconds by skipping slide one and asking what the prospect wants to cover now.</dd></dl></details>
+<details open><summary>Three directions &amp; why the final won</summary><div class="dirs"><div class="dir win"><h4>Start with what matters now <span class=badge>Final</span></h4><p class="sum">The selected direction, revised for whole-campaign consistency.</p><p class="draft">Dear #Name#,
+
+Thanks for getting in touch. I know you have seen LUCI before, so I&#x27;ll start with what matters now.
+
+Reply with what would help: a short conversation or a focused walkthrough of one workflow.
+
+Reply to Mark: <span class="ph">[MARK EMAIL]</span>
+
+Calendar if easier: <span class="ph">[BOOKING URL]</span></p></div><div class="dir"><h4>No broad introduction</h4><p class="sum">Ask for the current priority and promise a focused next step.</p><p class="draft">Dear #Name#,
+
+You already have LUCI context, so I can skip the broad introduction. Tell me the room, screen, or workflow you want to discuss now.
+
+I can answer it in a short conversation or show it in a focused walkthrough.
+
+Reply to Mark: <span class="ph">[MARK EMAIL]</span>
+
+Optional calendar: <span class="ph">[BOOKING URL]</span></p></div><div class="dir"><h4>Pick the format</h4><p class="sum">Let the prospect choose the useful next step without fabricated personalization.</p><p class="draft">Dear #Name#,
+
+Thanks for coming back to the conversation. We do not need to rewind it.
+
+Reply with which format helps more: a quick conversation or a focused walkthrough. I will keep the next step to that.
+
+Reply to Mark: <span class="ph">[MARK EMAIL]</span>
+
+Calendar: <span class="ph">[BOOKING URL]</span></p></div></div><p class="why"><strong>Why “Start with what matters now” won:</strong> It sounds like Mark, stays truthful when the prospect supplied no written detail, and continues from known context. The r3 final removes the repeated slide and ceremonial-tour language.</p></details>
+<h4 class="fc">Final copy <span class="wc">46 words / 150</span></h4>
+<div class="email"><div class="meta"><div><b>Subject lines</b><ul class="subj"><li><span class="mood">Personal</span>I&#x27;ll start with what matters now</li><li><span class="mood">Direct</span>What would help now?</li><li><span class="mood">Practical</span>Conversation or focused walkthrough?</li></ul></div><div><b>Preheader</b><p>You have seen LUCI before, so we can begin with the current priority.</p></div></div><div class="ebody"><p>Dear #Name#,</p><p>Thanks for getting in touch. I know you have seen LUCI before, so I&#x27;ll start with what matters now.</p><p>Reply with what would help: a short conversation or a focused walkthrough of one workflow.</p><p>Reply to Mark: <span class="ph">[MARK EMAIL]</span></p><p>Calendar if easier: <span class="ph">[BOOKING URL]</span></p><p class="sig">[NAME]<br>[TITLE]<br>LUCI Systems<br>[EMAIL] · [PHONE]</p></div></div>
+<p class="note"><strong>Automation:</strong> Mark owns the contact before this note goes out. Keep all Marketing automation stopped and suppress every other cycle. If the prospect already booked, remove the calendar line and confirm the scheduled conversation.</p>
+<p class="note"><strong>Guardrail notes:</strong> r3 changes: Skipped the client-retention claim because a personal Mark note should not carry a campaign proof line. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.</p><p class="note"><strong>Assets:</strong> Booking link</p></article></section><section id="t-net-new"><p class="kicker">Track</p><h2>Net-new prospects <span class="n">10 emails</span></h2><p class="intro">Acquisition, demo-request, and Sales-handback recovery emails.</p><p class="intro">This is the campaign&#x27;s first cold-reader argument: accumulated A/V handoffs, consolidation proof, a short product view, then the platform-and-team invitation. It deliberately uses different property scenes from Prospect Pulse so the same person can enter long-term nurture later without hearing the acquisition sequence again. This recovery track resumes only an unfinished next step after an explicit Sales handback; it never restarts the acquisition argument. Unbooked contacts get a clean scheduling close, while post-demo contacts get one verified workflow and a respectful end before Prospect Pulse.</p><article class="em" id="NET-ACQ-01"><p class="kicker">NET-ACQ-01 · Acquisition</p><h3>The operational problem</h3>
+<p class="tm"><b>Timing:</b> Start of outbound cycle &nbsp;·&nbsp; <b>Sender:</b> Marketing, from the same named LUCI lead</p>
+<p class="primary"><strong>Primary message:</strong> Routine A/V changes become relay races when separate controls, vendors, and workarounds own different parts of the room.</p>
+<details open><summary>Strategy</summary><dl><dt>What &amp; why</dt><dd>Open the acquisition sequence with a screen change the reader recognizes, then name the accumulated handoffs behind it.</dd><dt>For whom</dt><dd>Leaders who inherit separate room controls, vendor contacts, and workarounds but may not know LUCI.</dd><dt>Best way to reach them</dt><dd>Send from a named LUCI lead through Marketing. Keep the body compact, use no asset, and ask for one low-effort reply.</dd><dt>Impact, professionally</dt><dd>Put a ticket-window source change in the scene, then define LUCI only after the handoff problem lands.</dd></dl></details>
+<details open><summary>Three directions &amp; why the final won</summary><div class="dirs"><div class="dir win"><h4>Ticket-window relay <span class=badge>Final</span></h4><p class="sum">The selected direction, revised for whole-campaign consistency.</p><p class="draft">Dear #Name#,
+
+At the ticket window, switching the display from daily hours to event-entry instructions should not require three logins, two calls, and a workaround saved in a notes app.
+
+Separate controls turn a routine request into a relay race. Everyone knows the next guest will arrive before the handoffs finish.
+
+LUCI orchestrates a property&#x27;s A/V from one interface, so staff can change screens and sources without tracing which system owns each step.
+
+Reply with the A/V task that takes more handoffs than it should.</p></div><div class="dir"><h4>Wrong wall</h4><p class="sum">Open on the moment a wall shows the wrong content before guests arrive.</p><p class="draft">Dear #Name#,
+
+The wall is showing the wrong feed, doors open soon, and the first question is not how to fix it. It is which control, vendor, or workaround owns the problem.
+
+That is the tax of separate A/V systems: more handoffs before anyone touches the screen.
+
+LUCI runs a property&#x27;s A/V from one interface, bringing rooms, sources, and controls into the same operating view.
+
+Reply with the screen change that creates the longest phone tree.</p></div><div class="dir"><h4>Count the steps</h4><p class="sum">Ask the reader to count what sits between a request and the room.</p><p class="draft">Dear #Name#,
+
+Pick one ordinary A/V request: move the game, reset the ballroom, change the lobby wall. How many interfaces, calls, and workarounds sit between the request and the room?
+
+The burden comes from everything the environment accumulates around the hardware.
+
+LUCI brings a property&#x27;s A/V into one interface, so staff work from one view instead of tracing the request across separate systems.
+
+Reply with the task that has collected the most steps.</p></div></div><p class="why"><strong>Why “Ticket-window relay” won:</strong> It starts in property life, gives the email one dry human observation, and defines LUCI after the problem lands. The r3 final removes the repeated bartender and wrong-wall scenes.</p></details>
+<h4 class="fc">Final copy <span class="wc">85 words / 150</span></h4>
+<div class="email"><div class="meta"><div><b>Subject lines</b><ul class="subj"><li><span class="mood">Curious</span>How many steps does one display change take?</li><li><span class="mood">Scene-led</span>The ticket window needs a faster answer</li><li><span class="mood">Direct</span>When A/V becomes a relay race</li></ul></div><div><b>Preheader</b><p>One ticket-window display can expose every extra interface and handoff.</p></div></div><div class="ebody"><p>Dear #Name#,</p><p>At the ticket window, switching the display from daily hours to event-entry instructions should not require three logins, two calls, and a workaround saved in a notes app.</p><p>Separate controls turn a routine request into a relay race. Everyone knows the next guest will arrive before the handoffs finish.</p><p>LUCI orchestrates a property&#x27;s A/V from one interface, so staff can change screens and sources without tracing which system owns each step.</p><p>Reply with the A/V task that takes more handoffs than it should.</p><p class="sig">[NAME]<br>[TITLE]<br>LUCI Systems<br>[EMAIL] · [PHONE]</p></div></div>
+<p class="note"><strong>Automation:</strong> Enter only cold net-new contacts who are not in an active Mike or Mark conversation. A reply or booked meeting stops automation and moves the contact to Sales. Opens and ordinary clicks remain reporting signals only.</p>
+<p class="note"><strong>Guardrail notes:</strong> r3 changes: Skipped the client-retention claim because first contact has not earned a relationship claim. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.</p></article><article class="em" id="NET-ACQ-02"><p class="kicker">NET-ACQ-02 · Acquisition</p><h3>Consolidation proof</h3>
+<p class="tm"><b>Timing:</b> 5 days after email 1 &nbsp;·&nbsp; <b>Sender:</b> Marketing, from the same named LUCI lead</p>
+<p class="primary"><strong>Primary message:</strong> One approved property count shows how LUCI brings varied rooms and hardware into one operating interface.</p>
+<details open><summary>Strategy</summary><dl><dt>What &amp; why</dt><dd>Move from a familiar problem to concrete proof, using one approved count and one destination.</dd><dt>For whom</dt><dd>Operations and IT leaders who need evidence that consolidation can work across varied A/V hardware.</dd><dt>Best way to reach them</dt><dd>Send five days after NET-ACQ-01 from the same sender. Put the approved count first and use the proof URL as the only CTA.</dd><dt>Impact, professionally</dt><dd>Make a mixed-era back-of-house rack the practical consequence of a shorter operating list.</dd></dl></details>
+<details open><summary>Three directions &amp; why the final won</summary><div class="dirs"><div class="dir win"><h4>Count before claim <span class=badge>Final</span></h4><p class="sum">The selected direction, revised for whole-campaign consistency.</p><p class="draft">Dear #Name#,
+
+What does consolidation look like after the diagram?
+
+At one operating property: <span class="ph">[APPROVED PROOF POINT]</span>. LUCI brings those screens, rooms, and controls into a shared operating view while the underlying hardware stays varied.
+
+In the back-of-house rack, equipment can still come from several eras. Staff should not inherit a different control path for each one.
+
+That is the practical proof: fewer paths and handoffs between the request and the room.
+
+See the consolidation proof: <span class="ph">[PROOF URL]</span></p></div><div class="dir"><h4>Ballroom reset</h4><p class="sum">Use a room turnover to turn consolidation into an observable workflow.</p><p class="draft">Dear #Name#,
+
+A ballroom flips from a general session to dinner. Screens, sources, and audio all need to move together, but the equipment behind them may come from several eras.
+
+LUCI runs that varied A/V from one interface. At one property, the scope included <span class="ph">[APPROVED PROOF POINT]</span>.
+
+Staff get one path through the change instead of a scavenger hunt across controls and contacts.
+
+See how the operation came together: <span class="ph">[PROOF URL]</span></p></div><div class="dir"><h4>Keep the hardware mix</h4><p class="sum">Answer the concern that a consistent operation demands uniform equipment.</p><p class="draft">Dear #Name#,
+
+A consistent A/V workflow does not require identical hardware in every room.
+
+LUCI brings varied equipment into one operating interface. One approved project makes the scale concrete: <span class="ph">[APPROVED PROOF POINT]</span>.
+
+The useful result is not another device. It is a bartender, banquet manager, or technician following the same path to the screen.
+
+Hardware can vary. The hunt for the right control should not.
+
+See the consolidation proof: <span class="ph">[PROOF URL]</span></p></div></div><p class="why"><strong>Why “Count before claim” won:</strong> It gives proof before interpretation and turns hardware variety into a back-of-house operating point. The r3 final removes the repeated ballroom changeover.</p></details>
+<h4 class="fc">Final copy <span class="wc">78 words / 150</span></h4>
+<div class="email"><div class="meta"><div><b>Subject lines</b><ul class="subj"><li><span class="mood">Practical</span>What consolidation looks like on property</li><li><span class="mood">Scene-led</span>The rack can span eras; control should not</li><li><span class="mood">Curious</span>Can varied A/V share one operating view?</li></ul></div><div><b>Preheader</b><p>One approved count shows what fewer control paths look like in practice.</p></div></div><div class="ebody"><p>Dear #Name#,</p><p>What does consolidation look like after the diagram?</p><p>At one operating property: <span class="ph">[APPROVED PROOF POINT]</span>. LUCI brings those screens, rooms, and controls into a shared operating view while the underlying hardware stays varied.</p><p>In the back-of-house rack, equipment can still come from several eras. Staff should not inherit a different control path for each one.</p><p>That is the practical proof: fewer paths and handoffs between the request and the room.</p><p>See the consolidation proof: <span class="ph">[PROOF URL]</span></p><p class="sig">[NAME]<br>[TITLE]<br>LUCI Systems<br>[EMAIL] · [PHONE]</p></div></div>
+<p class="note"><strong>Automation:</strong> Do not send until <span class="ph">[APPROVED PROOF POINT]</span> contains one sourced, project-true count approved for prospect use and <span class="ph">[PROOF URL]</span> is final. Send only if NET-ACQ-01 produced no reply, booking, or active opportunity. A reply or booked meeting stops automation and moves the contact to Sales. The proof click alone does not trigger a sales handoff.</p>
+<p class="note"><strong>Guardrail notes:</strong> r3 changes: Skipped the client-retention claim so the approved project count remains the only proof. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.</p><p class="note"><strong>Assets:</strong> <span class="ph">[APPROVED PROOF POINT]</span>, <span class="ph">[PROOF URL]</span></p></article><article class="em" id="NET-ACQ-03"><p class="kicker">NET-ACQ-03 · Acquisition</p><h3>Recorded walkthrough</h3>
+<p class="tm"><b>Timing:</b> 5 days after email 2 &nbsp;·&nbsp; <b>Sender:</b> Marketing, from the same named LUCI lead</p>
+<p class="primary"><strong>Primary message:</strong> A short reel shows how New LUCI gives staff more direct control of room changes, screen checks, maps, and activity history.</p>
+<details open><summary>Strategy</summary><dl><dt>What &amp; why</dt><dd>Show the product only after the reader understands the problem and proof, using the shortest visual asset.</dd><dt>For whom</dt><dd>Busy venue leaders who want to see the workflow before considering a meeting.</dd><dt>Best way to reach them</dt><dd>Send five days after NET-ACQ-02. Define LUCI and New LUCI in one line, then use the feature reel as the sole CTA.</dd><dt>Impact, professionally</dt><dd>Follow one access-and-control sequence without borrowing another property&#x27;s scene or the ballroom&#x27;s staging workflow.</dd></dl></details>
+<details open><summary>Three directions &amp; why the final won</summary><div class="dirs"><div class="dir win"><h4>Access in sequence <span class=badge>Final</span></h4><p class="sum">The selected direction, revised for whole-campaign consistency.</p><p class="draft">Dear #Name#,
+
+New LUCI is in beta on a faster foundation, giving staff more direct control over rooms, maps, activity, and access.
+
+The short reel follows one access sequence: sign in, open only the controls approved for the room, adjust grouped audio, review the activity record, and end the session.
+
+Access should be clear before anyone touches a control.
+
+Watch the feature highlight reel: <span class="ph">[FEATURE HIGHLIGHT REEL URL]</span></p></div><div class="dir"><h4>Bartender view</h4><p class="sum">Show how approved controls and live screen checks simplify one shift.</p><p class="draft">Dear #Name#,
+
+LUCI brings a property&#x27;s A/V into one interface. New LUCI is its beta update, giving staff more direct control on a faster, more responsive foundation.
+
+In the short reel, a bartender opens only the controls approved for that space, checks what a screen is actually playing, and changes the room without searching the building for help.
+
+The screen gets the attention. The control hunt does not.
+
+Watch the feature highlight reel: <span class="ph">[FEATURE HIGHLIGHT REEL URL]</span></p></div><div class="dir"><h4>Map to wall</h4><p class="sum">Use the live map and screen view as the visual thread.</p><p class="draft">Dear #Name#,
+
+LUCI runs A/V across a property from one interface. New LUCI is the beta version that adds more direct control over the map, room views, activity, and access.
+
+The short reel moves from a floor plan to a live screen check, then into the history behind a change. It is a quick look at how staff find the room, confirm the wall, and see what happened without walking the floor.
+
+Watch the feature highlight reel: <span class="ph">[FEATURE HIGHLIGHT REEL URL]</span></p></div></div><p class="why"><strong>Why “Access in sequence” won:</strong> It turns the product view into one sign-in-to-session sequence and keeps the visual CTA unmistakable. The r3 final removes the repeated definition, staging sequence, and cardio joke.</p></details>
+<h4 class="fc">Final copy <span class="wc">68 words / 150</span></h4>
+<div class="email"><div class="meta"><div><b>Subject lines</b><ul class="subj"><li><span class="mood">Direct</span>Watch one access sequence in New LUCI</li><li><span class="mood">Curious</span>What should each room control expose?</li><li><span class="mood">Practical</span>Sign in, adjust, review, end</li></ul></div><div><b>Preheader</b><p>See approved room controls, grouped audio, activity history, and session control.</p></div></div><div class="ebody"><p>Dear #Name#,</p><p>New LUCI is in beta on a faster foundation, giving staff more direct control over rooms, maps, activity, and access.</p><p>The short reel follows one access sequence: sign in, open only the controls approved for the room, adjust grouped audio, review the activity record, and end the session.</p><p>Access should be clear before anyone touches a control.</p><p>Watch the feature highlight reel: <span class="ph">[FEATURE HIGHLIGHT REEL URL]</span></p><p class="sig">[NAME]<br>[TITLE]<br>LUCI Systems<br>[EMAIL] · [PHONE]</p></div></div>
+<p class="note"><strong>Automation:</strong> Send only if the prospect has not replied, booked, or entered an active opportunity. A reply or booked meeting stops automation and moves the contact to Sales. The reel click remains a reporting signal and does not create a hand-raiser.</p>
+<p class="note"><strong>Guardrail notes:</strong> r3 changes: Skipped the client-retention claim because this email&#x27;s job is product orientation. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.</p><p class="note"><strong>Assets:</strong> <span class="ph">[FEATURE HIGHLIGHT REEL URL]</span></p></article><article class="em" id="NET-ACQ-04"><p class="kicker">NET-ACQ-04 · Acquisition</p><h3>Platform, team, and invitation</h3>
+<p class="tm"><b>Timing:</b> 5 days after email 3 &nbsp;·&nbsp; <b>Sender:</b> Marketing, from the same named LUCI lead</p>
+<p class="primary"><strong>Primary message:</strong> LUCI brings varied A/V into one interface and keeps a team monitoring, diagnosing, and supporting the environment.</p>
+<details open><summary>Strategy</summary><dl><dt>What &amp; why</dt><dd>Close the acquisition cycle by pairing the platform with the people who remain accountable, then offer a focused demo.</dd><dt>For whom</dt><dd>Operations and IT leaders who understand the problem and product but still need confidence in the continuing relationship.</dd><dt>Best way to reach them</dt><dd>Send five days after NET-ACQ-03 from the same sender. Use the booking URL as the only CTA.</dd><dt>Impact, professionally</dt><dd>Make the Monday-morning work of monitoring and diagnosis more concrete than a generic partnership promise.</dd></dl></details>
+<details open><summary>Three directions &amp; why the final won</summary><div class="dirs"><div class="dir win"><h4>Monday morning <span class=badge>Final</span></h4><p class="sum">The selected direction, revised for whole-campaign consistency.</p><p class="draft">Dear #Name#,
+
+Different rooms can keep different hardware. Staff should not need different operating habits for each one.
+
+LUCI standardizes the operating path across those rooms. If an endpoint fails, the LUCI team receives an alert and sees device context and logs before the support conversation begins.
+
+Software can earn the meeting. Accountability has to stay after it.
+
+That continuing work matters: we&#x27;ve never lost a client.
+
+If fewer interfaces and handoffs are on your list, book a focused demo: <span class="ph">[BOOKING URL]</span></p></div><div class="dir"><h4>Map and people</h4><p class="sum">Pair a shared property map with the people watching the environment.</p><p class="draft">Dear #Name#,
+
+LUCI runs a property&#x27;s A/V from one interface, giving staff one map for rooms, screens, and sources even when the equipment varies behind it.
+
+The same view helps the LUCI team monitor the environment, diagnose issues, and support the people on site. A shared screen is useful. Shared accountability is the part that survives a busy Saturday.
+
+If that combination fits an active priority, book a demo built around your property: <span class="ph">[BOOKING URL]</span></p></div><div class="dir"><h4>Focused invitation</h4><p class="sum">Qualify the demo around a current room, screen, or workflow problem.</p><p class="draft">Dear #Name#,
+
+A LUCI demo is most useful when there is a specific knot to untangle: a ballroom with too many control paths, a wall nobody can verify remotely, or staff moving between different interfaces.
+
+LUCI brings the property&#x27;s A/V into one operating interface. Its team continues to monitor, diagnose, and support the environment as needs change.
+
+We will skip the generic tour and start with the knot.
+
+Book a focused demo: <span class="ph">[BOOKING URL]</span></p></div></div><p class="why"><strong>Why “Monday morning” won:</strong> It makes continuing support concrete and gives the retention line a natural invitation context. The r3 final varies the partnership language through alerts, context, and logs.</p></details>
+<h4 class="fc">Final copy <span class="wc">82 words / 150</span></h4>
+<div class="email"><div class="meta"><div><b>Subject lines</b><ul class="subj"><li><span class="mood">Trust-led</span>What stays after the walkthrough</li><li><span class="mood">Direct</span>Bring your A/V knot to the demo</li><li><span class="mood">Curious</span>Who watches the system on Monday?</li></ul></div><div><b>Preheader</b><p>A consistent A/V operation, plus a team that receives the context.</p></div></div><div class="ebody"><p>Dear #Name#,</p><p>Different rooms can keep different hardware. Staff should not need different operating habits for each one.</p><p>LUCI standardizes the operating path across those rooms. If an endpoint fails, the LUCI team receives an alert and sees device context and logs before the support conversation begins.</p><p>Software can earn the meeting. Accountability has to stay after it.</p><p>That continuing work matters: we&#x27;ve never lost a client.</p><p>If fewer interfaces and handoffs are on your list, book a focused demo: <span class="ph">[BOOKING URL]</span></p><p class="sig">[NAME]<br>[TITLE]<br>LUCI Systems<br>[EMAIL] · [PHONE]</p></div></div>
+<p class="note"><strong>Automation:</strong> Send only if the prospect remains outside active Sales ownership. A reply or booking stops the acquisition cycle immediately and routes the hand-raiser to Mike or Mark. If the prospect stays quiet, move them to Prospect Pulse on the planned cadence, with no overlapping cycle.</p>
+<p class="note"><strong>Guardrail notes:</strong> r3 changes: Kept the exact client-retention claim because the cycle closes on trust and continuing responsibility; no other acquisition email uses it. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.</p><p class="note"><strong>Assets:</strong> <span class="ph">[BOOKING URL]</span></p></article><article class="em" id="NET-DEMO-01"><p class="kicker">NET-DEMO-01 · After a demo request</p><h3>Immediate confirmation</h3>
+<p class="tm"><b>Timing:</b> Immediately after the request &nbsp;·&nbsp; <b>Sender:</b> Marketing on behalf of the assigned sales owner (Mike or Mark)</p>
+<p class="primary"><strong>Primary message:</strong> LUCI received the request, and the prospect can choose a time without reading another pitch.</p>
+<details open><summary>Strategy</summary><dl><dt>What &amp; why</dt><dd>Confirm the request and remove scheduling uncertainty.</dd><dt>For whom</dt><dd>Hand-raisers who need logistics, not persuasion.</dd><dt>Best way to reach them</dt><dd>Send immediately from a monitored address. Put the booking URL on its own line.</dd><dt>Impact, professionally</dt><dd>Keep the tone plain and warm, with one human sentence about calendar friction.</dd></dl></details>
+<details open><summary>Three directions &amp; why the final won</summary><div class="dirs"><div class="dir win"><h4>Time first <span class=badge>Final</span></h4><p class="sum">The selected direction, revised for whole-campaign consistency.</p><p class="draft">Dear #Name#,
+
+Thanks for asking to see LUCI.
+
+Your LUCI contact will confirm the meeting and shape the walkthrough around any priorities you shared. The note stays short.
+
+Choose a time: <span class="ph">[BOOKING URL]</span></p></div><div class="dir"><h4>Confirmation first</h4><p class="sum">Assure the reader that a person will pick up the request.</p><p class="draft">Dear #Name#,
+
+We have your request to see LUCI, which brings a property&#x27;s A/V into one interface.
+
+Mike or Mark will handle the walkthrough and use the priorities from your form. The calendar is the only housekeeping left.
+
+Choose a time: <span class="ph">[BOOKING URL]</span></p></div><div class="dir"><h4>Plain next step</h4><p class="sum">Use the shortest possible confirmation with one clear action.</p><p class="draft">Dear #Name#,
+
+Your LUCI demo request reached our team. LUCI runs a property&#x27;s A/V from one interface, and Mike or Mark will tailor the walkthrough to your operation.
+
+No extra reading assignment today.
+
+Choose a time: <span class="ph">[BOOKING URL]</span></p></div></div><p class="why"><strong>Why “Time first” won:</strong> It confirms the request and puts the only action in its own line. The r3 final drops the repeated LUCI definition because this recipient just requested the walkthrough.</p></details>
+<h4 class="fc">Final copy <span class="wc">33 words / 150</span></h4>
+<div class="email"><div class="meta"><div><b>Subject lines</b><ul class="subj"><li><span class="mood">Confirming</span>We received your LUCI demo request</li><li><span class="mood">Action-led</span>Choose a time for your walkthrough</li><li><span class="mood">Warm</span>Thanks for asking to see LUCI</li></ul></div><div><b>Preheader</b><p>Pick a meeting time, and your LUCI contact will handle the rest.</p></div></div><div class="ebody"><p>Dear #Name#,</p><p>Thanks for asking to see LUCI.</p><p>Your LUCI contact will confirm the meeting and shape the walkthrough around any priorities you shared. The note stays short.</p><p>Choose a time: <span class="ph">[BOOKING URL]</span></p><p class="sig">[NAME]<br>[TITLE]<br>LUCI Systems<br>[EMAIL] · [PHONE]</p></div></div>
+<p class="note"><strong>Automation:</strong> Submitting the request stops all marketing automation immediately. Mike or Mark owns the prospect until an explicit handback to Marketing. Do not send recovery or nurture while Sales ownership is active.</p>
+<p class="note"><strong>Guardrail notes:</strong> r3 changes: Skipped the client-retention claim because this transactional confirmation needs logistics, not proof. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.</p><p class="note"><strong>Assets:</strong> <span class="ph">[BOOKING URL]</span></p></article><article class="em" id="NET-DEMO-02"><p class="kicker">NET-DEMO-02 · After a demo request</p><h3>Personal follow-up</h3>
+<p class="tm"><b>Timing:</b> Same or next business day &nbsp;·&nbsp; <b>Sender:</b> Assigned Mike or Mark</p>
+<p class="primary"><strong>Primary message:</strong> A real person wants one concrete priority so the LUCI walkthrough starts with the prospect&#x27;s operation.</p>
+<details open><summary>Strategy</summary><dl><dt>What &amp; why</dt><dd>Show that Mike or Mark saw the request and collect one useful input.</dd><dt>For whom</dt><dd>Prospects whose interest is current and who should not receive another campaign summary.</dd><dt>Best way to reach them</dt><dd>Send personally the same or next business day. Ask one question and use reply as the sole CTA.</dd><dt>Impact, professionally</dt><dd>Offer three recognizable examples and sound like the sender wrote the note in 30 seconds.</dd></dl></details>
+<details open><summary>Three directions &amp; why the final won</summary><div class="dirs"><div class="dir win"><h4>One thing <span class=badge>Final</span></h4><p class="sum">The selected direction, revised for whole-campaign consistency.</p><p class="draft">Dear #Name#,
+
+I saw your request, and I want the walkthrough to start with your operation rather than a generic tour.
+
+What is the one room, screen, or workflow you want us to cover? One line is enough.
+
+Reply with the priority, and I will build around it.</p></div><div class="dir"><h4>Skip the tour</h4><p class="sum">Promise a focused session instead of a generic product tour.</p><p class="draft">Dear #Name#,
+
+I have your request to see LUCI, the platform that brings a property&#x27;s A/V into one interface.
+
+Rather than run every screen in order, tell me where the operation gets stuck. A room reset, a wrong feed, a control nobody wants to touch. I will start there.
+
+Reply with the problem you want the walkthrough to answer.</p></div><div class="dir"><h4>Thirty-second note</h4><p class="sum">Keep the note especially brief and let the reply set the agenda.</p><p class="draft">Dear #Name#,
+
+Saw your LUCI request. It runs a property&#x27;s A/V from one interface, but the useful demo starts with your room, wall, or workflow.
+
+Send me the one thing that should work better. A sentence is plenty; a novel creates more homework for both of us.
+
+Reply with the priority, and I will build around it.</p></div></div><p class="why"><strong>Why “One thing” won:</strong> It reads like a genuine personal note and asks for one useful input. The r3 final removes the repeated bartender, ballroom, wrong-screen, slide-order, and homework material.</p></details>
+<h4 class="fc">Final copy <span class="wc">48 words / 150</span></h4>
+<div class="email"><div class="meta"><div><b>Subject lines</b><ul class="subj"><li><span class="mood">Personal</span>I saw your LUCI request</li><li><span class="mood">Practical</span>What should we cover first?</li><li><span class="mood">Warm</span>One quick question before the walkthrough</li></ul></div><div><b>Preheader</b><p>Give me one room, screen, or workflow and I will start there.</p></div></div><div class="ebody"><p>Dear #Name#,</p><p>I saw your request, and I want the walkthrough to start with your operation rather than a generic tour.</p><p>What is the one room, screen, or workflow you want us to cover? One line is enough.</p><p>Reply with the priority, and I will build around it.</p><p class="sig">[NAME]<br>[TITLE]<br>LUCI Systems<br>[EMAIL] · [PHONE]</p></div></div>
+<p class="note"><strong>Automation:</strong> Send personally from Mike or Mark while Sales ownership is active. Keep all marketing automation stopped. If the prospect remains quiet, do not begin recovery until Mike or Mark explicitly hands the contact back to Marketing.</p>
+<p class="note"><strong>Guardrail notes:</strong> r3 changes: Skipped the client-retention claim because a personal Mike or Mark note should focus on the prospect. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.</p></article><article class="em" id="NET-UNBOOKED-01"><p class="kicker">NET-UNBOOKED-01 · Unbooked request recovery after Sales handback</p><h3>Scheduling recovery</h3>
+<p class="tm"><b>Timing:</b> Provisional: about 7 days after Mark or Mike&#x27;s final attempt and explicit handback &nbsp;·&nbsp; <b>Sender:</b> Marketing, from the same named LUCI lead; replies route to the assigned sales owner</p>
+<p class="primary"><strong>Primary message:</strong> The requested LUCI walkthrough still has one direct calendar path, with no need to repeat the original request.</p>
+<details open><summary>Strategy</summary><dl><dt>What &amp; why</dt><dd>Resume only the unfinished scheduling step without replaying the sales case.</dd><dt>For whom</dt><dd>Prospects who requested a walkthrough, then went quiet after personal outreach.</dd><dt>Best way to reach them</dt><dd>Send only after explicit Sales handback. Keep one booking link and no second ask.</dd><dt>Impact, professionally</dt><dd>Acknowledge that the calendar may have won and remove the burden of starting over.</dd></dl></details>
+<details open><summary>Three directions &amp; why the final won</summary><div class="dirs"><div class="dir win"><h4>Calendar won <span class=badge>Final</span></h4><p class="sum">The selected direction, revised for whole-campaign consistency.</p><p class="draft">Dear #Name#,
+
+You asked for a LUCI walkthrough, but the calendar won that round.
+
+Your LUCI contact will continue from your original request. You will not need to retell the whole story.
+
+If the walkthrough still makes sense, pick a time here: <span class="ph">[BOOKING URL]</span></p></div><div class="dir"><h4>No restart</h4><p class="sum">Lead with continuity and make the calendar the only action.</p><p class="draft">Dear #Name#,
+
+Your request to see LUCI is still open. LUCI brings a property&#x27;s A/V into one interface, and Mike or Mark still has the context you shared.
+
+No need to restart the conversation or reconstruct the original form.
+
+Pick a time for the walkthrough: <span class="ph">[BOOKING URL]</span></p></div><div class="dir"><h4>One direct path</h4><p class="sum">Use the shortest possible recovery note.</p><p class="draft">Dear #Name#,
+
+The LUCI walkthrough you requested never found a calendar slot. LUCI runs a property&#x27;s A/V from one interface; the next step only needs one link.
+
+Choose a time: <span class="ph">[BOOKING URL]</span>
+
+Mike or Mark will pick up from there with your original request in hand.</p></div></div><p class="why"><strong>Why “Calendar won” won:</strong> It respects the prior request and gives the scheduling miss a human line without blaming the reader. The r3 final removes the unnecessary product definition.</p></details>
+<h4 class="fc">Final copy <span class="wc">44 words / 150</span></h4>
+<div class="email"><div class="meta"><div><b>Subject lines</b><ul class="subj"><li><span class="mood">Human</span>Did the calendar win?</li><li><span class="mood">Direct</span>Pick a time for your LUCI walkthrough</li><li><span class="mood">Warm</span>Your LUCI request is still open</li></ul></div><div><b>Preheader</b><p>One calendar link, with no need to repeat why you reached out.</p></div></div><div class="ebody"><p>Dear #Name#,</p><p>You asked for a LUCI walkthrough, but the calendar won that round.</p><p>Your LUCI contact will continue from your original request. You will not need to retell the whole story.</p><p>If the walkthrough still makes sense, pick a time here: <span class="ph">[BOOKING URL]</span></p><p class="sig">[NAME]<br>[TITLE]<br>LUCI Systems<br>[EMAIL] · [PHONE]</p></div></div>
+<p class="note"><strong>Automation:</strong> Send only after the final personal Sales attempt and explicit handback. A reply, booking, or active opportunity stops recovery and nurture automation and returns the contact to the assigned sales owner. Opens and ordinary clicks remain reporting signals only. Timing remains provisional.</p>
+<p class="note"><strong>Guardrail notes:</strong> r3 changes: Skipped the client-retention claim because a scheduling recovery is transactional. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.</p><p class="note"><strong>Assets:</strong> <span class="ph">[BOOKING URL]</span></p></article><article class="em" id="NET-UNBOOKED-02"><p class="kicker">NET-UNBOOKED-02 · Unbooked request recovery after Sales handback</p><h3>Leave the invitation open</h3>
+<p class="tm"><b>Timing:</b> Provisional: 7–10 days after recovery email 1 &nbsp;·&nbsp; <b>Sender:</b> Marketing, from the same named LUCI lead; replies route to the assigned sales owner</p>
+<p class="primary"><strong>Primary message:</strong> Active scheduling ends here, while one link keeps the LUCI walkthrough available when timing improves.</p>
+<details open><summary>Strategy</summary><dl><dt>What &amp; why</dt><dd>End active scheduling clearly and preserve the invitation without another persuasion attempt.</dd><dt>For whom</dt><dd>Prospects who requested a walkthrough but stayed quiet through personal outreach and one recovery note.</dd><dt>Best way to reach them</dt><dd>Send only after explicit Sales handback and no response to NET-UNBOOKED-01. Keep one booking CTA.</dd><dt>Impact, professionally</dt><dd>Give the reader permission to do nothing and avoid making silence feel like a debt.</dd></dl></details>
+<details open><summary>Three directions &amp; why the final won</summary><div class="dirs"><div class="dir win"><h4>No calendar apology <span class=badge>Final</span></h4><p class="sum">The selected direction, revised for whole-campaign consistency.</p><p class="draft">Dear #Name#,
+
+This is the last scheduling note. No explanation required.
+
+The LUCI walkthrough will still be here if it becomes useful later.
+
+Schedule the walkthrough: <span class="ph">[BOOKING URL]</span>
+
+If now is not the time, do nothing. We will shift to occasional useful notes.</p></div><div class="dir"><h4>Close the sequence</h4><p class="sum">State the close immediately and keep the invitation available.</p><p class="draft">Dear #Name#,
+
+We are ending the active scheduling sequence, not the invitation.
+
+LUCI runs a property&#x27;s A/V from one interface. If you want to see how that fits your rooms and workflows later, keep this link:
+
+Schedule a walkthrough: <span class="ph">[BOOKING URL]</span>
+
+Otherwise, nothing is due from you. We will send only occasional notes.</p></div><div class="dir"><h4>Keep the link</h4><p class="sum">Make the calendar a resource for later, not another nudge.</p><p class="draft">Dear #Name#,
+
+Here is the LUCI calendar link once more, for whenever the timing fits. LUCI brings screens, rooms, and controls into one A/V interface.
+
+Choose a time: <span class="ph">[BOOKING URL]</span>
+
+We will stop the scheduling notes here. Your inbox has done enough project management for one conversation.</p></div></div><p class="why"><strong>Why “No calendar apology” won:</strong> It closes active scheduling, removes any obligation to explain, and leaves one useful link. The r3 final trusts the prior request instead of redefining LUCI or repeating the calendar joke.</p></details>
+<h4 class="fc">Final copy <span class="wc">43 words / 150</span></h4>
+<div class="email"><div class="meta"><div><b>Subject lines</b><ul class="subj"><li><span class="mood">Low-pressure</span>No explanation required</li><li><span class="mood">Practical</span>Keep the LUCI link for later</li><li><span class="mood">Warm</span>The walkthrough can wait</li></ul></div><div><b>Preheader</b><p>We are ending the scheduling notes, not the invitation.</p></div></div><div class="ebody"><p>Dear #Name#,</p><p>This is the last scheduling note. No explanation required.</p><p>The LUCI walkthrough will still be here if it becomes useful later.</p><p>Schedule the walkthrough: <span class="ph">[BOOKING URL]</span></p><p>If now is not the time, do nothing. We will shift to occasional useful notes.</p><p class="sig">[NAME]<br>[TITLE]<br>LUCI Systems<br>[EMAIL] · [PHONE]</p></div></div>
+<p class="note"><strong>Automation:</strong> Send only after explicit Sales handback and no response or booking from NET-UNBOOKED-01. A reply, booking, or active opportunity stops all marketing automation and returns the contact to the assigned sales owner. Opens and ordinary clicks remain reporting signals only. If quiet, end this cycle and move the contact to Prospect Pulse, with one lifecycle cycle active. Timing remains provisional.</p>
+<p class="note"><strong>Guardrail notes:</strong> r3 changes: Skipped the client-retention claim because a respectful scheduling close should not introduce fresh persuasion. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.</p><p class="note"><strong>Assets:</strong> <span class="ph">[BOOKING URL]</span></p></article><article class="em" id="NET-POSTDEMO-01"><p class="kicker">NET-POSTDEMO-01 · Post-demo recovery after Sales handback</p><h3>Relevant reason to reconsider</h3>
+<p class="tm"><b>Timing:</b> Provisional: 10–14 days after the final personal attempt and explicit handback &nbsp;·&nbsp; <b>Sender:</b> Marketing, from the same named LUCI lead; replies route to the assigned sales owner</p>
+<p class="primary"><strong>Primary message:</strong> One verified workflow from the demo deserves a concrete second look if it remains an active priority.</p>
+<details open><summary>Strategy</summary><dl><dt>What &amp; why</dt><dd>Reopen one verified workflow instead of replaying the demo.</dd><dt>For whom</dt><dd>Prospects who completed a demo, received personal follow-up, and then went quiet.</dd><dt>Best way to reach them</dt><dd>Send only after explicit handback and only after Sales fills the workflow placeholder from notes. Use reply as the sole CTA.</dd><dt>Impact, professionally</dt><dd>Use the Monday-morning handover to test one verified workflow without replaying the presentation.</dd></dl></details>
+<details open><summary>Three directions &amp; why the final won</summary><div class="dirs"><div class="dir win"><h4>Real rooms decide <span class=badge>Final</span></h4><p class="sum">The selected direction, revised for whole-campaign consistency.</p><p class="draft">Dear #Name#,
+
+One point from your LUCI walkthrough may still deserve a second look: <span class="ph">[WORKFLOW THEY CARED ABOUT]</span>.
+
+By the Monday-morning handover, the useful question is whether that workflow fits the operating plan.
+
+LUCI can connect the task to the rooms, screens, sources, and activity behind it. If support is needed, the request arrives with the relevant endpoint history.
+
+If the priority is still active, reply with what still needs to work.</p></div><div class="dir"><h4>Priority check</h4><p class="sum">Ask whether the recorded workflow still matters before explaining anything else.</p><p class="draft">Dear #Name#,
+
+Is <span class="ph">[WORKFLOW THEY CARED ABOUT]</span> still active?
+
+LUCI brings a property&#x27;s A/V into one interface. For this workflow, that means the room controls, sources, screen status, and activity record can sit in the same operating view while the LUCI team keeps monitoring and diagnosing.
+
+No need to recap the whole demo.
+
+Reply with the part that still needs an answer.</p></div><div class="dir"><h4>One scene</h4><p class="sum">Turn the verified workflow into the smallest possible operating scene.</p><p class="draft">Dear #Name#,
+
+One scene from your LUCI conversation is worth keeping concrete: <span class="ph">[WORKFLOW THEY CARED ABOUT]</span>.
+
+LUCI runs a property&#x27;s A/V from one interface, so that task can connect to the room, screen, source, and activity history around it. The team continues to watch and support the environment after the meeting ends.
+
+Slides close. The wall still has to behave.
+
+Reply if that priority still matters.</p></div></div><p class="why"><strong>Why “Real rooms decide” won:</strong> It returns to one verified workflow and grounds the reconsideration in the Monday-morning operating handover. The r3 final removes slide-deck language and varies the support phrasing.</p></details>
+<h4 class="fc">Final copy <span class="wc">72 words / 150</span></h4>
+<div class="email"><div class="meta"><div><b>Subject lines</b><ul class="subj"><li><span class="mood">Specific</span>Is this workflow still active?</li><li><span class="mood">Curious</span>One point worth a second look</li><li><span class="mood">Direct</span>What still needs to work?</li></ul></div><div><b>Preheader</b><p>Return to one workflow from the demo and test it against the operating plan.</p></div></div><div class="ebody"><p>Dear #Name#,</p><p>One point from your LUCI walkthrough may still deserve a second look: <span class="ph">[WORKFLOW THEY CARED ABOUT]</span>.</p><p>By the Monday-morning handover, the useful question is whether that workflow fits the operating plan.</p><p>LUCI can connect the task to the rooms, screens, sources, and activity behind it. If support is needed, the request arrives with the relevant endpoint history.</p><p>If the priority is still active, reply with what still needs to work.</p><p class="sig">[NAME]<br>[TITLE]<br>LUCI Systems<br>[EMAIL] · [PHONE]</p></div></div>
+<p class="note"><strong>Automation:</strong> Send only after the final personal Sales attempt, explicit handback, and a verified demo note for the workflow placeholder. A reply, booking, or active opportunity stops all marketing automation and returns the contact to the assigned sales owner. Opens and ordinary clicks remain reporting signals only. Do not activate while the placeholder is unpopulated. Timing remains provisional.</p>
+<p class="note"><strong>Guardrail notes:</strong> r3 changes: Skipped the client-retention claim because it would feel added onto a quiet-prospect recovery note. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.</p></article><article class="em" id="NET-POSTDEMO-02"><p class="kicker">NET-POSTDEMO-02 · Post-demo recovery after Sales handback</p><h3>Close the loop</h3>
+<p class="tm"><b>Timing:</b> Provisional: 7–10 days after recovery email 1 &nbsp;·&nbsp; <b>Sender:</b> Marketing, from the same named LUCI lead; replies route to the assigned sales owner</p>
+<p class="primary"><strong>Primary message:</strong> Active follow-up ends here, and a reply can resume the LUCI conversation from the useful point whenever timing changes.</p>
+<details open><summary>Strategy</summary><dl><dt>What &amp; why</dt><dd>Close active follow-up without interpreting silence or adding a fresh sales argument.</dd><dt>For whom</dt><dd>Prospects who completed a demo and stayed quiet after one relevant recovery note.</dd><dt>Best way to reach them</dt><dd>Send after explicit Sales handback and no response to NET-POSTDEMO-01. Use reply as the only CTA.</dd><dt>Impact, professionally</dt><dd>State the close, preserve context, and avoid making the prospect perform a formal goodbye.</dd></dl></details>
+<details open><summary>Three directions &amp; why the final won</summary><div class="dirs"><div class="dir win"><h4>No closing ceremony <span class=badge>Final</span></h4><p class="sum">The selected direction, revised for whole-campaign consistency.</p><p class="draft">Dear #Name#,
+
+We are closing the active follow-up here. Your LUCI contact will keep the context from your walkthrough.
+
+Priorities move. Your inbox does not need a formal sign-off.
+
+When the timing fits, reply to this note and we will continue from the useful point, not the beginning.</p></div><div class="dir"><h4>Context kept</h4><p class="sum">Lead with reassurance that the prior conversation will not disappear.</p><p class="draft">Dear #Name#,
+
+This is the last active follow-up after your LUCI walkthrough. LUCI brings a property&#x27;s A/V into one interface, and the sales owner who met with you will keep the notes from your conversation.
+
+You do not owe us an explanation for the pause.
+
+Reply whenever the original priority becomes useful again. We will pick up from there.</p></div><div class="dir"><h4>Leave the next move</h4><p class="sum">Put control of any future conversation entirely with the prospect.</p><p class="draft">Dear #Name#,
+
+We will leave the next move with you. LUCI runs a property&#x27;s A/V from one interface, and your prior walkthrough gives Mike or Mark the context to resume later.
+
+No fresh pitch, no rewind.
+
+If the timing changes, reply here. The conversation can restart at the room, wall, or workflow that mattered.</p></div></div><p class="why"><strong>Why “No closing ceremony” won:</strong> It closes the sequence immediately and promises continuity without another link or product pitch. The r3 final removes the repeated definition and ceremony language.</p></details>
+<h4 class="fc">Final copy <span class="wc">48 words / 150</span></h4>
+<div class="email"><div class="meta"><div><b>Subject lines</b><ul class="subj"><li><span class="mood">Direct</span>Closing the follow-up here</li><li><span class="mood">Warm</span>We will keep the context</li><li><span class="mood">Low-pressure</span>No formal sign-off needed</li></ul></div><div><b>Preheader</b><p>We will stop the active notes and keep the useful context.</p></div></div><div class="ebody"><p>Dear #Name#,</p><p>We are closing the active follow-up here. Your LUCI contact will keep the context from your walkthrough.</p><p>Priorities move. Your inbox does not need a formal sign-off.</p><p>When the timing fits, reply to this note and we will continue from the useful point, not the beginning.</p><p class="sig">[NAME]<br>[TITLE]<br>LUCI Systems<br>[EMAIL] · [PHONE]</p></div></div>
+<p class="note"><strong>Automation:</strong> Send only after explicit Sales handback and no response or booking from NET-POSTDEMO-01. A reply, booking, or active opportunity stops all marketing automation and returns the contact to the assigned sales owner. Opens and ordinary clicks remain reporting signals only. If quiet, end this cycle and move the contact to Prospect Pulse, with one lifecycle cycle active. Timing remains provisional.</p>
+<p class="note"><strong>Guardrail notes:</strong> r3 changes: Skipped the client-retention claim because the final recovery note should lower pressure, not add proof. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.</p></article></section><section id="t-pulse"><p class="kicker">Track</p><h2>Prospect Pulse (nurture) <span class="n">6 emails</span></h2><p class="intro">Shared six-month nurture, one email every 4–6 weeks.</p><p class="intro">Prospect Pulse is the campaign&#x27;s independent six-touch long view: daily control, consolidation, shared visibility, accountable response, guest activation, and expansion. Each email stands alone with its own property scene and a varied LUCI definition, without replaying the warm or net-new cycles.</p><article class="em" id="PULSE-01"><p class="kicker">PULSE-01 · Every 4–6 weeks</p><h3>Orchestration from one interface</h3>
+<p class="tm"><b>Timing:</b> Month 1 &nbsp;·&nbsp; <b>Sender:</b> Marketing, from the same named LUCI lead</p>
+<p class="primary"><strong>Primary message:</strong> LUCI brings a time-sensitive screen change into one interface, and New LUCI adds more direct control without removing the team behind it.</p>
+<details open><summary>Strategy</summary><dl><dt>What &amp; why</dt><dd>Reintroduce LUCI through a bartender&#x27;s time-sensitive source change. Show the cost of scattered controls, then define both LUCI and New LUCI for a reader with no campaign memory.</dd><dt>For whom</dt><dd>Operations and IT leaders who manage screens, sources, and audio through separate tools and people.</dd><dt>Best way to reach them</dt><dd>Send from LUCI Marketing in Month 1. Keep the scene short and route the reader to the LUCI Upgrade Guide.</dd><dt>Impact, professionally</dt><dd>Let the late game create the pressure. The scavenger-hunt line adds a human edge while staging, screen view, and ongoing monitoring supply the proof.</dd></dl></details>
+<details open><summary>Three directions &amp; why the final won</summary><div class="dirs"><div class="dir win"><h4>The bartender and the late game <span class=badge>Final</span></h4><p class="sum">The selected direction, revised for whole-campaign consistency.</p><p class="draft">Dear #Name#,
+
+A bartender needs the corner TVs on the late game while the video wall keeps the main event. That should not start a scavenger hunt through remotes, logins, and phone numbers.
+
+LUCI coordinates a property&#x27;s A/V in one operating view. New LUCI, now in beta, adds staging and live screen views on a faster foundation, so staff can prepare the switch, apply it on cue, and confirm the result.
+
+If something drops, the LUCI team receives the alert with the operating context.
+
+See the workflow in the LUCI Upgrade Guide: <span class="ph">[LUCI UPGRADE GUIDE URL]</span></p></div><div class="dir"><h4>One change, too many controls</h4><p class="sum">Count the ordinary steps that turn one request into a handoff chain.</p><p class="draft">Dear #Name#,
+
+Change one source. Check the wall. Find the audio control. Call the person with the other login. The request is ordinary; the route is not.
+
+LUCI runs a property&#x27;s A/V from one interface. New LUCI, now in beta, adds staging and live screen views on a faster, more responsive foundation. Staff can prepare screens, sources, and audio behind the scenes, then verify the result without walking the floor.
+
+One change should have one operating path.
+
+Review the LUCI Upgrade Guide: <span class="ph">[LUCI UPGRADE GUIDE URL]</span></p></div><div class="dir"><h4>The game does not pause</h4><p class="sum">Use the pace of a live room to argue for direct control and continued support.</p><p class="draft">Dear #Name#,
+
+The game does not pause while someone hunts for the right interface.
+
+LUCI is the orchestration engine that operates a property&#x27;s A/V from one place. New LUCI, now in beta, gives staff more direct room control through staging and live screen views on a faster foundation.
+
+They can set the next look quietly, apply it on cue, and confirm what every display is showing. Meanwhile, the LUCI team continues to monitor, diagnose, and support the environment.
+
+See what changes in the LUCI Upgrade Guide: <span class="ph">[LUCI UPGRADE GUIDE URL]</span></p></div></div><p class="why"><strong>Why “The bartender and the late game” won:</strong> It opens on one recognizable request and makes the operating path concrete. The r3 final reserves the bartender and scavenger-hunt scene for this email alone and varies the team language through alerts and context.</p></details>
+<h4 class="fc">Final copy <span class="wc">96 words / 150</span></h4>
+<div class="email"><div class="meta"><div><b>Subject lines</b><ul class="subj"><li><span class="mood">Curious</span>Why is one screen change a scavenger hunt?</li><li><span class="mood">Practical</span>One interface for the Friday-night switch</li><li><span class="mood">Dryly playful</span>The late game should not need three logins</li></ul></div><div><b>Preheader</b><p>Prepare the next screen change, apply it on cue, and confirm the result from one place.</p></div></div><div class="ebody"><p>Dear #Name#,</p><p>A bartender needs the corner TVs on the late game while the video wall keeps the main event. That should not start a scavenger hunt through remotes, logins, and phone numbers.</p><p>LUCI coordinates a property&#x27;s A/V in one operating view. New LUCI, now in beta, adds staging and live screen views on a faster foundation, so staff can prepare the switch, apply it on cue, and confirm the result.</p><p>If something drops, the LUCI team receives the alert with the operating context.</p><p>See the workflow in the LUCI Upgrade Guide: <span class="ph">[LUCI UPGRADE GUIDE URL]</span></p><p class="sig">[NAME]<br>[TITLE]<br>LUCI Systems<br>[EMAIL] · [PHONE]</p></div></div>
+<p class="note"><strong>Automation:</strong> Send in Month 1 only after the prospect completes the relevant warm or net-new cycle without entering sales. Suppress anyone in an active Mark or Mike conversation. A reply, booked meeting, or active opportunity stops the automation; opens and ordinary clicks remain reporting signals only.</p>
+<p class="note"><strong>Guardrail notes:</strong> r3 changes: Skipped the client-retention claim so Pulse does not repeat it after either a warm or net-new journey. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.</p><p class="note"><strong>Assets:</strong> LUCI Upgrade Guide: <span class="ph">[LUCI UPGRADE GUIDE URL]</span></p></article><article class="em" id="PULSE-02"><p class="kicker">PULSE-02 · Every 4–6 weeks</p><h3>Consolidation without starting over</h3>
+<p class="tm"><b>Timing:</b> Month 2 &nbsp;·&nbsp; <b>Sender:</b> Marketing, from the same named LUCI lead</p>
+<p class="primary"><strong>Primary message:</strong> A refresh should consolidate control and workflows while keeping useful hardware in service.</p>
+<details open><summary>Strategy</summary><dl><dt>What &amp; why</dt><dd>Challenge the habit of changing equipment while recreating the same operating tangle. Make preserved hardware choice and consolidation concrete.</dd><dt>For whom</dt><dd>Property and technology leaders planning a refresh who want less disruption and fewer control paths.</dd><dt>Best way to reach them</dt><dd>Send from LUCI Marketing in Month 2. Use one approved project-true count as proof and make the booking link the only CTA.</dd><dt>Impact, professionally</dt><dd>Use a pool-area refresh to distinguish useful hardware choice from a fragmented staff workflow.</dd></dl></details>
+<details open><summary>Three directions &amp; why the final won</summary><div class="dirs"><div class="dir win"><h4>Mixed years, one workflow <span class=badge>Final</span></h4><p class="sum">The selected direction, revised for whole-campaign consistency.</p><p class="draft">Dear #Name#,
+
+A pool-area refresh mixes older cabana displays with newer screens. The hardware may span years; the staff workflow should not.
+
+LUCI works with the equipment a property keeps and consolidates control in one interface. Teams keep hardware choice while screens, sources, and audio share one operating path.
+
+At one property, <span class="ph">[APPROVED PROOF POINT]</span>. That is the useful measure: a shorter list to run, not a matching-equipment contest.
+
+Compare the next refresh with a LUCI operating model: <span class="ph">[BOOKING URL]</span></p></div><div class="dir"><h4>Keep what earns its place</h4><p class="sum">Lead with the practical value of useful equipment already on property.</p><p class="draft">Dear #Name#,
+
+A refresh does not need to put every useful piece of A/V on the curb.
+
+LUCI orchestrates the environment from one interface while working with the equipment that still earns its place. Teams keep hardware choice and gain one control path for screens, sources, and audio.
+
+That is consolidation: fewer interfaces and handoffs, not a matching-equipment contest. <span class="ph">[APPROVED PROOF POINT]</span>.
+
+We&#x27;ve never lost a client because our team remains accountable for the system after installation.
+
+Compare the next refresh with LUCI: <span class="ph">[BOOKING URL]</span></p></div><div class="dir"><h4>Start with the room</h4><p class="sum">Frame the refresh around what staff need to operate rather than a component list.</p><p class="draft">Dear #Name#,
+
+If a refresh starts only with the equipment list, the staff workflow usually arrives by accident.
+
+LUCI starts with the room: what staff need to change, what IT needs to see, and how screens, sources, and audio should work together. The orchestration engine works with existing A/V and consolidates those actions in one interface.
+
+At one property, <span class="ph">[APPROVED PROOF POINT]</span>. Useful hardware stays useful, and the control path gets shorter.
+
+Talk through the next refresh: <span class="ph">[BOOKING URL]</span></p></div></div><p class="why"><strong>Why “Mixed years, one workflow” won:</strong> It makes the refresh decision concrete without recycling the acquisition track&#x27;s rack scene. The r3 final removes the retention claim so no prospect encounters it again in Pulse.</p></details>
+<h4 class="fc">Final copy <span class="wc">80 words / 150</span></h4>
+<div class="email"><div class="meta"><div><b>Subject lines</b><ul class="subj"><li><span class="mood">Provocative</span>Can a refresh keep useful hardware?</li><li><span class="mood">Reassuring</span>Let cabana screens span more than one era</li><li><span class="mood">Direct</span>Compare your next A/V refresh with LUCI</li></ul></div><div><b>Preheader</b><p>Keep useful equipment in service while staff gain one operating path.</p></div></div><div class="ebody"><p>Dear #Name#,</p><p>A pool-area refresh mixes older cabana displays with newer screens. The hardware may span years; the staff workflow should not.</p><p>LUCI works with the equipment a property keeps and consolidates control in one interface. Teams keep hardware choice while screens, sources, and audio share one operating path.</p><p>At one property, <span class="ph">[APPROVED PROOF POINT]</span>. That is the useful measure: a shorter list to run, not a matching-equipment contest.</p><p>Compare the next refresh with a LUCI operating model: <span class="ph">[BOOKING URL]</span></p><p class="sig">[NAME]<br>[TITLE]<br>LUCI Systems<br>[EMAIL] · [PHONE]</p></div></div>
+<p class="note"><strong>Automation:</strong> Do not send until <span class="ph">[APPROVED PROOF POINT]</span> contains one sourced, project-true count approved for prospect use. Send in Month 2 only if the prospect remains outside active sales. Suppress active Mark or Mike conversations. A reply or booking stops the automation and routes the person to human follow-up; ordinary clicks do not trigger a handoff.</p>
+<p class="note"><strong>Guardrail notes:</strong> r3 changes: Skipped the client-retention claim because both warm and net-new entrants may have already seen it; the approved project count is this email&#x27;s proof. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.</p><p class="note"><strong>Assets:</strong> Approved project-true count: <span class="ph">[APPROVED PROOF POINT]</span>, Conversation: <span class="ph">[BOOKING URL]</span></p></article><article class="em" id="PULSE-03"><p class="kicker">PULSE-03 · Every 4–6 weeks</p><h3>One shared operating view</h3>
+<p class="tm"><b>Timing:</b> Month 3 &nbsp;·&nbsp; <b>Sender:</b> Marketing, from the same named LUCI lead</p>
+<p class="primary"><strong>Primary message:</strong> A shared map lets marketing, IT, operations, and leadership answer the same screen-status question from current evidence.</p>
+<details open><summary>Strategy</summary><dl><dt>What &amp; why</dt><dd>Move from consolidation to cross-team visibility. Show one campaign question splitting into a schedule, an endpoint alert, and a floor walk.</dd><dt>For whom</dt><dd>Cross-functional property leaders who spend time reconciling partial screen-status reports.</dd><dt>Best way to reach them</dt><dd>Send from LUCI Marketing in Month 3. Define LUCI through the map workflow and route to one proof asset.</dd><dt>Impact, professionally</dt><dd>Make the committee joke earn its place by showing the exact reconciliation problem the map removes.</dd></dl></details>
+<details open><summary>Three directions &amp; why the final won</summary><div class="dirs"><div class="dir win"><h4>The lobby-screen question <span class=badge>Final</span></h4><p class="sum">The selected direction, revised for whole-campaign consistency.</p><p class="draft">Dear #Name#,
+
+Leadership asks whether the campaign is on every lobby screen. Marketing has the schedule, IT sees an endpoint alert, and operations sends someone to walk the floor. By then, the question has grown a committee.
+
+LUCI runs a property&#x27;s A/V from a map-based interface. Teams can see device state and confirm what each display or LED wall is playing.
+
+Roles keep controls appropriate while everyone works from the same current picture.
+
+See how LUCI gives every team the same picture: <span class="ph">[PROOF URL]</span></p></div><div class="dir"><h4>Three answers are not one answer</h4><p class="sum">Contrast partial reports with one current map.</p><p class="draft">Dear #Name#,
+
+Marketing says the content changed. IT says the endpoint is online. Operations says the screen looks wrong. All three can be accurate and still leave leadership without an answer.
+
+LUCI orchestrates the property&#x27;s A/V through one map. Live device state and live screen views show what the system reports and what the screen displays. Each role gets the controls it needs, while the evidence stays shared.
+
+One question should not need three versions of the truth.
+
+See the workflow: <span class="ph">[PROOF URL]</span></p></div><div class="dir"><h4>Retire the floor walk</h4><p class="sum">Start with the physical check that fills the gap between systems.</p><p class="draft">Dear #Name#,
+
+When the only sure way to check a screen is to walk over and look, the map is not doing enough.
+
+LUCI operates a property&#x27;s A/V from one map-based interface. IT can see live device state, marketing can confirm the content on a display, and operations can check the same evidence without starting a phone chain.
+
+Roles and permissions keep access appropriate. The current picture does not depend on who reached the lobby first.
+
+See how the shared view works: <span class="ph">[PROOF URL]</span></p></div></div><p class="why"><strong>Why “The lobby-screen question” won:</strong> It gives marketing, IT, and operations legitimate pieces of one lobby-screen question, then shows why shared current evidence matters. The r3 campaign pass reserves the lobby scene for this email alone.</p></details>
+<h4 class="fc">Final copy <span class="wc">84 words / 150</span></h4>
+<div class="email"><div class="meta"><div><b>Subject lines</b><ul class="subj"><li><span class="mood">Curious</span>What is actually playing in the lobby?</li><li><span class="mood">Practical</span>One map for every screen and wall</li><li><span class="mood">Direct</span>Give each team the same current picture</li></ul></div><div><b>Preheader</b><p>See device state and screen content on one map while each role keeps the right controls.</p></div></div><div class="ebody"><p>Dear #Name#,</p><p>Leadership asks whether the campaign is on every lobby screen. Marketing has the schedule, IT sees an endpoint alert, and operations sends someone to walk the floor. By then, the question has grown a committee.</p><p>LUCI runs a property&#x27;s A/V from a map-based interface. Teams can see device state and confirm what each display or LED wall is playing.</p><p>Roles keep controls appropriate while everyone works from the same current picture.</p><p>See how LUCI gives every team the same picture: <span class="ph">[PROOF URL]</span></p><p class="sig">[NAME]<br>[TITLE]<br>LUCI Systems<br>[EMAIL] · [PHONE]</p></div></div>
+<p class="note"><strong>Automation:</strong> Send in Month 3 only while the prospect remains eligible for long-term nurture and outside active sales. Any reply, booking, or active opportunity stops automation. An ordinary click on the workflow proof remains a reporting signal and does not create a sales task.</p>
+<p class="note"><strong>Guardrail notes:</strong> r3 changes: Skipped the client-retention claim because this independent email proves shared visibility, not relationship longevity. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.</p><p class="note"><strong>Assets:</strong> Shared-view workflow proof: <span class="ph">[PROOF URL]</span></p></article><article class="em" id="PULSE-04"><p class="kicker">PULSE-04 · Every 4–6 weeks</p><h3>One accountable incident response</h3>
+<p class="tm"><b>Timing:</b> Month 4 &nbsp;·&nbsp; <b>Sender:</b> Marketing, from the same named LUCI lead</p>
+<p class="primary"><strong>Primary message:</strong> Audit history, incident context, and LUCI&#x27;s monitoring team keep one visible A/V issue connected from report through response.</p>
+<details open><summary>Strategy</summary><dl><dt>What &amp; why</dt><dd>Tell one pre-event LED wall incident from first report through diagnosis. Treat alignment and accountability as one response path.</dd><dt>For whom</dt><dd>Operations and IT leaders who have watched visible issues lose context as they cross teams.</dd><dt>Best way to reach them</dt><dd>Send from LUCI Marketing in Month 4. Use the wall incident, name the evidence attached to it, and link to one workflow proof.</dd><dt>Impact, professionally</dt><dd>The dark-wall line adds a human truth; audit history, logs, monitoring, and diagnosis make ownership concrete.</dd></dl></details>
+<details open><summary>Three directions &amp; why the final won</summary><div class="dirs"><div class="dir win"><h4>Twenty minutes before doors <span class=badge>Final</span></h4><p class="sum">The selected direction, revised for whole-campaign consistency.</p><p class="draft">Dear #Name#,
+
+An LED wall goes dark 20 minutes before doors open. The floor calls operations, operations calls IT, and someone asks who changed what. A dark wall is very good at finding an audience.
+
+LUCI keeps the property&#x27;s A/V, audit history, and incident context connected. A request carries device details and logs; the LUCI team sees the same evidence and starts diagnosis from the same record.
+
+The incident keeps its context while the people keep their roles.
+
+See how LUCI aligns the operation by default: <span class="ph">[PROOF URL]</span></p></div><div class="dir"><h4>Stop forwarding the problem</h4><p class="sum">Expose the context loss in a familiar message chain.</p><p class="draft">Dear #Name#,
+
+The floor sends a photo. Operations forwards it to IT. IT asks what changed. The wall remains dark while the message gains recipients.
+
+LUCI orchestrates the property&#x27;s A/V and keeps the incident record attached. Audit history shows who did what and when. Device details and logs travel with the request, and the LUCI team monitors the environment, diagnoses the issue, and supports the response.
+
+More names on the thread do not create ownership. Shared evidence does.
+
+See the workflow: <span class="ph">[PROOF URL]</span></p></div><div class="dir"><h4>Who changed what?</h4><p class="sum">Build the email around the first question during a visible failure.</p><p class="draft">Dear #Name#,
+
+When a wall stops showing what it should, the first useful question is often, “Who changed what?” The least useful answer is a tour of three systems.
+
+LUCI runs the property&#x27;s A/V with audit history and incident context in one place. Teams can see the action, person, and time. A request includes relevant device details and logs, so the LUCI team can diagnose and support the response from the same record.
+
+See how the response stays connected: <span class="ph">[PROOF URL]</span></p></div></div><p class="why"><strong>Why “Twenty minutes before doors” won:</strong> It creates urgency without inventing an outcome and keeps every handoff attached to one record. The r3 final reserves the dark-wall scene for this email and varies the partnership language.</p></details>
+<h4 class="fc">Final copy <span class="wc">88 words / 150</span></h4>
+<div class="email"><div class="meta"><div><b>Subject lines</b><ul class="subj"><li><span class="mood">Urgent</span>The wall is dark and doors open in 20</li><li><span class="mood">Accountability</span>Who changed what on the LED wall?</li><li><span class="mood">Calm</span>Keep A/V context attached to the issue</li></ul></div><div><b>Preheader</b><p>Audit history, device details, and logs keep the response connected under pressure.</p></div></div><div class="ebody"><p>Dear #Name#,</p><p>An LED wall goes dark 20 minutes before doors open. The floor calls operations, operations calls IT, and someone asks who changed what. A dark wall is very good at finding an audience.</p><p>LUCI keeps the property&#x27;s A/V, audit history, and incident context connected. A request carries device details and logs; the LUCI team sees the same evidence and starts diagnosis from the same record.</p><p>The incident keeps its context while the people keep their roles.</p><p>See how LUCI aligns the operation by default: <span class="ph">[PROOF URL]</span></p><p class="sig">[NAME]<br>[TITLE]<br>LUCI Systems<br>[EMAIL] · [PHONE]</p></div></div>
+<p class="note"><strong>Automation:</strong> Send in Month 4 only to eligible Pulse contacts. Suppress anyone in an active Mark or Mike conversation. A reply or booking stops the automation and transfers ownership to human follow-up; an ordinary proof click does not.</p>
+<p class="note"><strong>Guardrail notes:</strong> r3 changes: Skipped the client-retention claim because the connected response already supplies the trust proof. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.</p><p class="note"><strong>Assets:</strong> Incident workflow proof: <span class="ph">[PROOF URL]</span></p></article><article class="em" id="PULSE-05"><p class="kicker">PULSE-05 · Every 4–6 weeks</p><h3>Activate the guest experience</h3>
+<p class="tm"><b>Timing:</b> Month 5 &nbsp;·&nbsp; <b>Sender:</b> Marketing, from the same named LUCI lead</p>
+<p class="primary"><strong>Primary message:</strong> Staging and approved room controls let staff prepare a ballroom changeover quietly and execute it in one coordinated cue.</p>
+<details open><summary>Strategy</summary><dl><dt>What &amp; why</dt><dd>Shift from internal operations to the visible guest result. Use a ballroom changeover rather than another screen-status problem.</dd><dt>For whom</dt><dd>Operations and marketing leaders who need screens, wall content, and audio to change together while a room remains active.</dd><dt>Best way to reach them</dt><dd>Send from LUCI Marketing in Month 5. Explain staging through one event transition and link to one visual proof.</dd><dt>Impact, professionally</dt><dd>Let the guests-never-see-the-menu-diving line humanize a precise sequence: prepare, approve, apply.</dd></dl></details>
+<details open><summary>Three directions &amp; why the final won</summary><div class="dirs"><div class="dir win"><h4>Keynote to awards <span class=badge>Final</span></h4><p class="sum">The selected direction, revised for whole-campaign consistency.</p><p class="draft">Dear #Name#,
+
+The ballroom has ten minutes to turn from keynote mode to awards: new wall content, walk-up music, and different confidence screens while guests wait outside. Guests should see the moment, not the menu-diving behind it.
+
+LUCI orchestrates screens, sources, and audio from one interface. Staff can stage the next room look while the keynote continues, then apply it on cue.
+
+A venue panel exposes only the approved controls for that ballroom.
+
+See how LUCI turns passive screens into guest moments: <span class="ph">[PROOF URL]</span></p></div><div class="dir"><h4>Prepare quietly</h4><p class="sum">Center the benefit on behind-the-scenes setup before one coordinated cue.</p><p class="draft">Dear #Name#,
+
+A room changeover should look instant to guests, even when it took careful work behind the scenes.
+
+LUCI runs a property&#x27;s A/V from one interface. Staging lets staff prepare screens, sources, and audio while the current program continues. When the cue arrives, an approved venue panel applies the next look across the room.
+
+The useful magic is not magic at all. It is one prepared action instead of a sprint between controls.
+
+See how it works: <span class="ph">[PROOF URL]</span></p></div><div class="dir"><h4>Installed is not coordinated</h4><p class="sum">Contrast a room full of working endpoints with a room ready for a live moment.</p><p class="draft">Dear #Name#,
+
+Every screen can work perfectly and the ballroom changeover can still wobble. Installed equipment does not coordinate itself.
+
+LUCI orchestrates the room&#x27;s A/V from one interface. Staff can stage wall content, confidence screens, sources, and audio before the transition, then use approved controls to execute the prepared look on cue.
+
+No guest needs to watch someone negotiate three menus during the applause.
+
+See the ballroom workflow: <span class="ph">[PROOF URL]</span></p></div></div><p class="why"><strong>Why “Keynote to awards” won:</strong> It gives staging a specific keynote-to-awards transition, a deadline, and a guest-facing reason to matter. The r3 campaign pass keeps this as the campaign&#x27;s only ballroom changeover.</p></details>
+<h4 class="fc">Final copy <span class="wc">84 words / 150</span></h4>
+<div class="email"><div class="meta"><div><b>Subject lines</b><ul class="subj"><li><span class="mood">Situational</span>The ballroom changes in ten minutes</li><li><span class="mood">Playful</span>Guests do not need to see the menu diving</li><li><span class="mood">Direct</span>Stage the next room look before the cue</li></ul></div><div><b>Preheader</b><p>Prepare wall content, confidence screens, and audio while the current program continues.</p></div></div><div class="ebody"><p>Dear #Name#,</p><p>The ballroom has ten minutes to turn from keynote mode to awards: new wall content, walk-up music, and different confidence screens while guests wait outside. Guests should see the moment, not the menu-diving behind it.</p><p>LUCI orchestrates screens, sources, and audio from one interface. Staff can stage the next room look while the keynote continues, then apply it on cue.</p><p>A venue panel exposes only the approved controls for that ballroom.</p><p>See how LUCI turns passive screens into guest moments: <span class="ph">[PROOF URL]</span></p><p class="sig">[NAME]<br>[TITLE]<br>LUCI Systems<br>[EMAIL] · [PHONE]</p></div></div>
+<p class="note"><strong>Automation:</strong> Send in Month 5 only while the contact remains eligible for Pulse. Suppress active Mark or Mike conversations. A reply, booking, or active opportunity stops automation; an ordinary click to the workflow proof does not trigger sales outreach.</p>
+<p class="note"><strong>Guardrail notes:</strong> r3 changes: Skipped the client-retention claim because this independent email stays focused on the guest-facing ballroom moment. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.</p><p class="note"><strong>Assets:</strong> Guest-experience workflow proof: <span class="ph">[PROOF URL]</span></p></article><article class="em" id="PULSE-06"><p class="kicker">PULSE-06 · Every 4–6 weeks</p><h3>A platform that scales and improves</h3>
+<p class="tm"><b>Timing:</b> Month 6 &nbsp;·&nbsp; <b>Sender:</b> Marketing, from the same named LUCI lead</p>
+<p class="primary"><strong>Primary message:</strong> LUCI extends the same A/V operation into a new spa, while New LUCI shows how the platform continues to gain practical control.</p>
+<details open><summary>Strategy</summary><dl><dt>What &amp; why</dt><dd>Close the six-month series on a spa expansion and product continuity. Define LUCI and New LUCI for a reader who saw none of the earlier emails.</dd><dt>For whom</dt><dd>Property and technology leaders adding rooms, endpoints, or venues who want to avoid a separate control path.</dd><dt>Best way to reach them</dt><dd>Send from the named LUCI lead through Marketing in Month 6. Use one spa-expansion scene and make the LUCI Upgrade Guide the only CTA.</dd><dt>Impact, professionally</dt><dd>Use a spa expansion to close the series on physical growth and continuing platform refinement without repeating the ballroom scene.</dd></dl></details>
+<details open><summary>Three directions &amp; why the final won</summary><div class="dirs"><div class="dir win"><h4>The new spa <span class=badge>Final</span></h4><p class="sum">The selected direction, revised for whole-campaign consistency.</p><p class="draft">Dear #Name#,
+
+A new spa opens while the existing rooms stay busy, and someone proposes a separate control path for the added space. Expansion has a habit of collecting logins.
+
+LUCI extends one A/V operating plan across rooms and endpoints. New LUCI, now in beta, adds flexible maps, audit history, and stronger access control on a faster foundation.
+
+The embedded LUCI team stays with the operation as the footprint changes.
+
+See how the platform scales and improves in the LUCI Upgrade Guide: <span class="ph">[LUCI UPGRADE GUIDE URL]</span></p></div><div class="dir"><h4>More rooms, one operation</h4><p class="sum">Lead with continuity across old and new spaces.</p><p class="draft">Dear #Name#,
+
+The new room should add capacity, not another way for staff to run A/V.
+
+LUCI orchestrates existing and added spaces through one interface. New LUCI, now in beta, expands that control with flexible live maps, audit history, and role-based access on a faster foundation.
+
+As the footprint changes, the LUCI team continues to monitor, diagnose, and support the environment. We&#x27;ve never lost a client because the relationship continues with the system.
+
+See how the platform extends in the LUCI Upgrade Guide: <span class="ph">[LUCI UPGRADE GUIDE URL]</span></p></div><div class="dir"><h4>Capability that keeps moving</h4><p class="sum">Frame the beta capabilities as evidence of continuous platform refinement.</p><p class="draft">Dear #Name#,
+
+A/V infrastructure should not freeze on installation day while the property keeps changing around it.
+
+LUCI is an orchestration engine for running rooms, screens, sources, and audio from one interface. New LUCI, now in beta, adds staging, flexible maps, screen views, audit history, and stronger access control on a faster foundation.
+
+Those capabilities extend the same operation; they do not create another one. The LUCI team continues to monitor, diagnose, and support it.
+
+Explore the LUCI Upgrade Guide: <span class="ph">[LUCI UPGRADE GUIDE URL]</span></p></div></div><p class="why"><strong>Why “The new spa” won:</strong> It turns scale into one physical expansion decision and makes the risk of a separate control path legible. The r3 final removes the second Pulse retention claim and gives the series a distinct closing scene.</p></details>
+<h4 class="fc">Final copy <span class="wc">86 words / 150</span></h4>
+<div class="email"><div class="meta"><div><b>Subject lines</b><ul class="subj"><li><span class="mood">Strategic</span>Will the new spa need another control path?</li><li><span class="mood">Forward-looking</span>Let the A/V investment keep improving</li><li><span class="mood">Plainspoken</span>More rooms, not more ways to run them</li></ul></div><div><b>Preheader</b><p>Extend one operating plan across new spaces while the LUCI team stays with it.</p></div></div><div class="ebody"><p>Dear #Name#,</p><p>A new spa opens while the existing rooms stay busy, and someone proposes a separate control path for the added space. Expansion has a habit of collecting logins.</p><p>LUCI extends one A/V operating plan across rooms and endpoints. New LUCI, now in beta, adds flexible maps, audit history, and stronger access control on a faster foundation.</p><p>The embedded LUCI team stays with the operation as the footprint changes.</p><p>See how the platform scales and improves in the LUCI Upgrade Guide: <span class="ph">[LUCI UPGRADE GUIDE URL]</span></p><p class="sig">[NAME]<br>[TITLE]<br>LUCI Systems<br>[EMAIL] · [PHONE]</p></div></div>
+<p class="note"><strong>Automation:</strong> Send in Month 6 only if the prospect remains outside active sales. A reply, booking, or active opportunity stops the marketing automation. If the person remains quiet, do not restart another acquisition or Pulse cycle without a lifecycle-stage decision.</p>
+<p class="note"><strong>Guardrail notes:</strong> r3 changes: Skipped the client-retention claim so Pulse contains no repeat of a line prospects may have seen in their warm or net-new cycle. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.</p><p class="note"><strong>Assets:</strong> LUCI Upgrade Guide: <span class="ph">[LUCI UPGRADE GUIDE URL]</span></p></article></section>
+<section id="decisions"><p class="kicker">For Jane</p><h2>Decisions only you can make</h2><ul class="oq"><li>Scope read: I treated “prospect upgrade” as the whole Warm prospects track (11) plus the whole Net-new prospects track (10), and “nurture” as Prospect Pulse (6). That is 27 emails. The plan holds 39 in total (customers 12), not 30. Tell me if you meant a narrower set.</li><li>Release-date conflict: the plan’s shared rules still say “Every invitation states when New LUCI becomes available”, and some lines say “launch day” or “recent New LUCI release”. I followed the locked rule: no date, beta framing only. The warm re-engagement and Pulse emails therefore have no launch trigger. Decide how Marketing will know when to start the broader warm cycle.</li><li><span class="ph">[LUCI UPGRADE GUIDE URL]</span>: the Guide’s planned path is /luci-upgrade-guide (noindex), but lucisystems.com returns 404 for it today. Confirm the public URL before any send.</li><li>Proof points: <span class="ph">[APPROVED PROOF POINT]</span> and <span class="ph">[PROOF URL]</span> appear in WARM-REENGAGE-03, NET-ACQ-02 and PULSE-02 and need approved, project-true counts (no percentages, no customer names). Pulse 03–05 point to <span class="ph">[PROOF URL]</span> too; decide whether that is one shared proof page or separate assets.</li><li>“We’ve never lost a client” appears in only three of the 27 emails, where it fits the sentence: WARM-PREVIEW-01, WARM-REENGAGE-03 and NET-ACQ-04. The campaign editor pass removed it from Pulse and the recovery emails so it never reads as a slogan. Mike wants it prominent: tell me if you want it in more places (Pulse 02 and 06 are the natural next two).</li><li>Sender: WARM-PREVIEW-01 to 03 default to Mark. Net-new acquisition and Pulse come from a named LUCI lead via Marketing. Confirm who signs, and the <span class="ph">[NAME]</span> / <span class="ph">[TITLE]</span> / <span class="ph">[EMAIL]</span> / <span class="ph">[PHONE]</span> block.</li><li>Shorter follow-up for private-preview attendees: the plan says they get a shorter availability message instead of WARM-REENGAGE-01. That email is not written, and it cannot say availability. Do you want a separate short version?</li><li>Net-new CTA: NET-ACQ-04 says “Book a demo”. The private preview is deliberately not a demo, so confirm the demo ask is right for net-new only.</li><li>Recovery timing (unbooked and post-demo) is provisional until Mark and Mike define the explicit handback. Each recovery email also needs a demo-note field for <span class="ph">[WORKFLOW THEY CARED ABOUT]</span>.</li><li>Merge tag: the scaffolds keep #Name#. Confirm ActiveCampaign’s real merge field before anything is loaded (nothing has been loaded).</li><li>Chunk 1 customer webinar page: I added it to In Progress too so it can be found. It has not been edited.</li><li>Jane-only decision: confirm Mark as the default sender for WARM-PREVIEW-01 through 03; WARM-PREVIEW-04 and 05 remain personal Mark notes.</li><li>Confirm <span class="ph">[WEBINAR DATE]</span>, <span class="ph">[WEBINAR TIME]</span> including time zone, <span class="ph">[WEBINAR PLATFORM]</span>, <span class="ph">[REGISTRATION LINK]</span>, <span class="ph">[AGENDA LINK]</span>, <span class="ph">[CALENDAR LINK]</span>, <span class="ph">[JOIN LINK]</span>, and <span class="ph">[RECORDING LINK]</span>.</li><li>Confirm Mark&#x27;s direct <span class="ph">[MARK EMAIL]</span> and <span class="ph">[BOOKING URL]</span>.</li><li>Confirm whether <span class="ph">[AGENDA LINK]</span> points to a standalone agenda, the registration confirmation page, or a calendar event.</li><li>Confirm the named LUCI lead used for WARM-REENGAGE-01 through 04; Marketing sends each email on that person&#x27;s behalf.</li><li>Confirm the neutral trigger for opening the broader warm cycle.</li><li>Confirm the shorter follow-up selected-preview recipients receive instead of the full WARM-REENGAGE cycle.</li><li>Confirm <span class="ph">[LUCI UPGRADE GUIDE URL]</span>, <span class="ph">[FEATURE HIGHLIGHT REEL URL]</span>, <span class="ph">[FULL RECORDING URL]</span>, <span class="ph">[PROOF URL]</span>, <span class="ph">[BOOKING URL]</span>, and <span class="ph">[MARK EMAIL]</span>.</li><li>Approve each project-true count inserted for <span class="ph">[APPROVED PROOF POINT]</span> before WARM-REENGAGE-03 enters review.</li><li>Confirm that WARM-RESPONSE-01 sends from Marketing on Mark&#x27;s behalf before Mark sends WARM-RESPONSE-02 personally.</li><li>Confirm the named LUCI lead used for all four acquisition emails sent through Marketing.</li><li>Confirm the approved project count and proof URL for <span class="ph">[APPROVED PROOF POINT]</span> and <span class="ph">[PROOF URL]</span>.</li><li>Confirm <span class="ph">[FEATURE HIGHLIGHT REEL URL]</span> and <span class="ph">[BOOKING URL]</span>.</li><li>Confirm whether Mike or Mark owns each demo request and sends NET-DEMO-02 personally.</li><li>Confirm whether ActiveCampaign keeps #Name# or maps it to the production first-name field.</li><li>Confirm the named LUCI lead used for every Marketing recovery email; replies still route to the assigned sales owner.</li><li>Confirm <span class="ph">[BOOKING URL]</span> and whether it routes by assigned sales owner.</li><li>Confirm which ActiveCampaign field records explicit Sales handback and the assigned sales owner.</li><li>Confirm that <span class="ph">[WORKFLOW THEY CARED ABOUT]</span> comes from a required manual field populated from demo notes.</li><li>Confirm the provisional handback intervals with Mark and Mike before activation.</li><li>Confirm the named LUCI lead used for all six Pulse emails sent through Marketing and the signature values for <span class="ph">[NAME]</span>, <span class="ph">[TITLE]</span>, <span class="ph">[EMAIL]</span>, and <span class="ph">[PHONE]</span>.</li><li>Confirm <span class="ph">[LUCI UPGRADE GUIDE URL]</span>, <span class="ph">[PROOF URL]</span>, and <span class="ph">[BOOKING URL]</span>.</li><li>Choose and approve the project-true <span class="ph">[APPROVED PROOF POINT]</span> for PULSE-02.</li><li>Confirm whether <span class="ph">[PROOF URL]</span> points to one shared proof page or separate workflow assets for PULSE-03, PULSE-04, and PULSE-05.</li><li>The source plan contains timing and access-status language that conflicts with the beta-only rule; these emails omit those claims.</li><li>The source purpose for PULSE-06 contains an unsupported exclusivity claim; the email makes the continuous-refinement argument without it.</li></ul>
+<p class="footer">Drafted with GPT through luci-cursor: strategy and three directions per email, an editorial pass per chunk, and a whole-campaign consistency pass. Source: ui_kits/internal-portal/email-copy/ (WARM, NEW, PULSE) and PROSPECT-*.json.</p></section>
+</main></body></html>

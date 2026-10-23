@@ -1,0 +1,394 @@
+{
+  "track": "Prospect Pulse",
+  "track_strategy": "Prospect Pulse is the campaign's independent six-touch long view: daily control, consolidation, shared visibility, accountable response, guest activation, and expansion. Each email stands alone with its own property scene and a varied LUCI definition, without replaying the warm or net-new cycles.",
+  "open_questions": [
+    "Confirm the named LUCI lead used for all six Pulse emails sent through Marketing and the signature values for [NAME], [TITLE], [EMAIL], and [PHONE].",
+    "Confirm [LUCI UPGRADE GUIDE URL], [PROOF URL], and [BOOKING URL].",
+    "Choose and approve the project-true [APPROVED PROOF POINT] for PULSE-02.",
+    "Confirm whether [PROOF URL] points to one shared proof page or separate workflow assets for PULSE-03, PULSE-04, and PULSE-05.",
+    "Confirm whether ActiveCampaign keeps #Name# or maps it to the production first-name field.",
+    "The source plan contains timing and access-status language that conflicts with the beta-only rule; these emails omit those claims.",
+    "The source purpose for PULSE-06 contains an unsupported exclusivity claim; the email makes the continuous-refinement argument without it."
+  ],
+  "emails": [
+    {
+      "id": "PULSE-01",
+      "cycle": "Every 4–6 weeks",
+      "title": "Orchestration from one interface",
+      "timing": "Month 1",
+      "sender": "Marketing, from the same named LUCI lead",
+      "audience": "Warm and net-new prospects who completed an earlier cycle without entering sales and are not in an active Mark or Mike conversation",
+      "primary_message": "LUCI brings a time-sensitive screen change into one interface, and New LUCI adds more direct control without removing the team behind it.",
+      "strategy": {
+        "what_why": "Reintroduce LUCI through a bartender's time-sensitive source change. Show the cost of scattered controls, then define both LUCI and New LUCI for a reader with no campaign memory.",
+        "for_whom": "Operations and IT leaders who manage screens, sources, and audio through separate tools and people.",
+        "reach": "Send from LUCI Marketing in Month 1. Keep the scene short and route the reader to the LUCI Upgrade Guide.",
+        "impact": "Let the late game create the pressure. The scavenger-hunt line adds a human edge while staging, screen view, and ongoing monitoring supply the proof."
+      },
+      "directions": [
+        {
+          "name": "The bartender and the late game",
+          "summary": "The selected direction, revised for whole-campaign consistency.",
+          "draft": "Dear #Name#,\n\nA bartender needs the corner TVs on the late game while the video wall keeps the main event. That should not start a scavenger hunt through remotes, logins, and phone numbers.\n\nLUCI coordinates a property's A/V in one operating view. New LUCI, now in beta, adds staging and live screen views on a faster foundation, so staff can prepare the switch, apply it on cue, and confirm the result.\n\nIf something drops, the LUCI team receives the alert with the operating context.\n\nSee the workflow in the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]"
+        },
+        {
+          "name": "One change, too many controls",
+          "summary": "Count the ordinary steps that turn one request into a handoff chain.",
+          "draft": "Dear #Name#,\n\nChange one source. Check the wall. Find the audio control. Call the person with the other login. The request is ordinary; the route is not.\n\nLUCI runs a property's A/V from one interface. New LUCI, now in beta, adds staging and live screen views on a faster, more responsive foundation. Staff can prepare screens, sources, and audio behind the scenes, then verify the result without walking the floor.\n\nOne change should have one operating path.\n\nReview the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]"
+        },
+        {
+          "name": "The game does not pause",
+          "summary": "Use the pace of a live room to argue for direct control and continued support.",
+          "draft": "Dear #Name#,\n\nThe game does not pause while someone hunts for the right interface.\n\nLUCI is the orchestration engine that operates a property's A/V from one place. New LUCI, now in beta, gives staff more direct room control through staging and live screen views on a faster foundation.\n\nThey can set the next look quietly, apply it on cue, and confirm what every display is showing. Meanwhile, the LUCI team continues to monitor, diagnose, and support the environment.\n\nSee what changes in the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]"
+        }
+      ],
+      "winner": "The bartender and the late game",
+      "why_won": "It opens on one recognizable request and makes the operating path concrete. The r3 final reserves the bartender and scavenger-hunt scene for this email alone and varies the team language through alerts and context.",
+      "subject_lines": [
+        {
+          "mood": "Curious",
+          "text": "Why is one screen change a scavenger hunt?"
+        },
+        {
+          "mood": "Practical",
+          "text": "One interface for the Friday-night switch"
+        },
+        {
+          "mood": "Dryly playful",
+          "text": "The late game should not need three logins"
+        }
+      ],
+      "preheader": "Prepare the next screen change, apply it on cue, and confirm the result from one place.",
+      "body": [
+        "Dear #Name#,",
+        "A bartender needs the corner TVs on the late game while the video wall keeps the main event. That should not start a scavenger hunt through remotes, logins, and phone numbers.",
+        "LUCI coordinates a property's A/V in one operating view. New LUCI, now in beta, adds staging and live screen views on a faster foundation, so staff can prepare the switch, apply it on cue, and confirm the result.",
+        "If something drops, the LUCI team receives the alert with the operating context.",
+        "See the workflow in the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]"
+      ],
+      "cta_label": "See how LUCI runs the property from one interface",
+      "word_count": 96,
+      "assets_used": [
+        "LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]"
+      ],
+      "automation_notes": "Send in Month 1 only after the prospect completes the relevant warm or net-new cycle without entering sales. Suppress anyone in an active Mark or Mike conversation. A reply, booked meeting, or active opportunity stops the automation; opens and ordinary clicks remain reporting signals only.",
+      "guardrail_notes": "r3 changes: Skipped the client-retention claim so Pulse does not repeat it after either a warm or net-new journey. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language."
+    },
+    {
+      "id": "PULSE-02",
+      "cycle": "Every 4–6 weeks",
+      "title": "Consolidation without starting over",
+      "timing": "Month 2",
+      "sender": "Marketing, from the same named LUCI lead",
+      "audience": "Warm and net-new prospects who completed an earlier cycle without entering sales and are not in an active Mark or Mike conversation",
+      "primary_message": "A refresh should consolidate control and workflows while keeping useful hardware in service.",
+      "strategy": {
+        "what_why": "Challenge the habit of changing equipment while recreating the same operating tangle. Make preserved hardware choice and consolidation concrete.",
+        "for_whom": "Property and technology leaders planning a refresh who want less disruption and fewer control paths.",
+        "reach": "Send from LUCI Marketing in Month 2. Use one approved project-true count as proof and make the booking link the only CTA.",
+        "impact": "Use a pool-area refresh to distinguish useful hardware choice from a fragmented staff workflow."
+      },
+      "directions": [
+        {
+          "name": "Mixed years, one workflow",
+          "summary": "The selected direction, revised for whole-campaign consistency.",
+          "draft": "Dear #Name#,\n\nA pool-area refresh mixes older cabana displays with newer screens. The hardware may span years; the staff workflow should not.\n\nLUCI works with the equipment a property keeps and consolidates control in one interface. Teams keep hardware choice while screens, sources, and audio share one operating path.\n\nAt one property, [APPROVED PROOF POINT]. That is the useful measure: a shorter list to run, not a matching-equipment contest.\n\nCompare the next refresh with a LUCI operating model: [BOOKING URL]"
+        },
+        {
+          "name": "Keep what earns its place",
+          "summary": "Lead with the practical value of useful equipment already on property.",
+          "draft": "Dear #Name#,\n\nA refresh does not need to put every useful piece of A/V on the curb.\n\nLUCI orchestrates the environment from one interface while working with the equipment that still earns its place. Teams keep hardware choice and gain one control path for screens, sources, and audio.\n\nThat is consolidation: fewer interfaces and handoffs, not a matching-equipment contest. [APPROVED PROOF POINT].\n\nWe've never lost a client because our team remains accountable for the system after installation.\n\nCompare the next refresh with LUCI: [BOOKING URL]"
+        },
+        {
+          "name": "Start with the room",
+          "summary": "Frame the refresh around what staff need to operate rather than a component list.",
+          "draft": "Dear #Name#,\n\nIf a refresh starts only with the equipment list, the staff workflow usually arrives by accident.\n\nLUCI starts with the room: what staff need to change, what IT needs to see, and how screens, sources, and audio should work together. The orchestration engine works with existing A/V and consolidates those actions in one interface.\n\nAt one property, [APPROVED PROOF POINT]. Useful hardware stays useful, and the control path gets shorter.\n\nTalk through the next refresh: [BOOKING URL]"
+        }
+      ],
+      "winner": "Mixed years, one workflow",
+      "why_won": "It makes the refresh decision concrete without recycling the acquisition track's rack scene. The r3 final removes the retention claim so no prospect encounters it again in Pulse.",
+      "subject_lines": [
+        {
+          "mood": "Provocative",
+          "text": "Can a refresh keep useful hardware?"
+        },
+        {
+          "mood": "Reassuring",
+          "text": "Let cabana screens span more than one era"
+        },
+        {
+          "mood": "Direct",
+          "text": "Compare your next A/V refresh with LUCI"
+        }
+      ],
+      "preheader": "Keep useful equipment in service while staff gain one operating path.",
+      "body": [
+        "Dear #Name#,",
+        "A pool-area refresh mixes older cabana displays with newer screens. The hardware may span years; the staff workflow should not.",
+        "LUCI works with the equipment a property keeps and consolidates control in one interface. Teams keep hardware choice while screens, sources, and audio share one operating path.",
+        "At one property, [APPROVED PROOF POINT]. That is the useful measure: a shorter list to run, not a matching-equipment contest.",
+        "Compare the next refresh with a LUCI operating model: [BOOKING URL]"
+      ],
+      "cta_label": "Compare the next refresh with a LUCI operating model",
+      "word_count": 80,
+      "assets_used": [
+        "Approved project-true count: [APPROVED PROOF POINT]",
+        "Conversation: [BOOKING URL]"
+      ],
+      "automation_notes": "Do not send until [APPROVED PROOF POINT] contains one sourced, project-true count approved for prospect use. Send in Month 2 only if the prospect remains outside active sales. Suppress active Mark or Mike conversations. A reply or booking stops the automation and routes the person to human follow-up; ordinary clicks do not trigger a handoff.",
+      "guardrail_notes": "r3 changes: Skipped the client-retention claim because both warm and net-new entrants may have already seen it; the approved project count is this email's proof. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language."
+    },
+    {
+      "id": "PULSE-03",
+      "cycle": "Every 4–6 weeks",
+      "title": "One shared operating view",
+      "timing": "Month 3",
+      "sender": "Marketing, from the same named LUCI lead",
+      "audience": "Warm and net-new prospects who completed an earlier cycle without entering sales and are not in an active Mark or Mike conversation",
+      "primary_message": "A shared map lets marketing, IT, operations, and leadership answer the same screen-status question from current evidence.",
+      "strategy": {
+        "what_why": "Move from consolidation to cross-team visibility. Show one campaign question splitting into a schedule, an endpoint alert, and a floor walk.",
+        "for_whom": "Cross-functional property leaders who spend time reconciling partial screen-status reports.",
+        "reach": "Send from LUCI Marketing in Month 3. Define LUCI through the map workflow and route to one proof asset.",
+        "impact": "Make the committee joke earn its place by showing the exact reconciliation problem the map removes."
+      },
+      "directions": [
+        {
+          "name": "The lobby-screen question",
+          "summary": "The selected direction, revised for whole-campaign consistency.",
+          "draft": "Dear #Name#,\n\nLeadership asks whether the campaign is on every lobby screen. Marketing has the schedule, IT sees an endpoint alert, and operations sends someone to walk the floor. By then, the question has grown a committee.\n\nLUCI runs a property's A/V from a map-based interface. Teams can see device state and confirm what each display or LED wall is playing.\n\nRoles keep controls appropriate while everyone works from the same current picture.\n\nSee how LUCI gives every team the same picture: [PROOF URL]"
+        },
+        {
+          "name": "Three answers are not one answer",
+          "summary": "Contrast partial reports with one current map.",
+          "draft": "Dear #Name#,\n\nMarketing says the content changed. IT says the endpoint is online. Operations says the screen looks wrong. All three can be accurate and still leave leadership without an answer.\n\nLUCI orchestrates the property's A/V through one map. Live device state and live screen views show what the system reports and what the screen displays. Each role gets the controls it needs, while the evidence stays shared.\n\nOne question should not need three versions of the truth.\n\nSee the workflow: [PROOF URL]"
+        },
+        {
+          "name": "Retire the floor walk",
+          "summary": "Start with the physical check that fills the gap between systems.",
+          "draft": "Dear #Name#,\n\nWhen the only sure way to check a screen is to walk over and look, the map is not doing enough.\n\nLUCI operates a property's A/V from one map-based interface. IT can see live device state, marketing can confirm the content on a display, and operations can check the same evidence without starting a phone chain.\n\nRoles and permissions keep access appropriate. The current picture does not depend on who reached the lobby first.\n\nSee how the shared view works: [PROOF URL]"
+        }
+      ],
+      "winner": "The lobby-screen question",
+      "why_won": "It gives marketing, IT, and operations legitimate pieces of one lobby-screen question, then shows why shared current evidence matters. The r3 campaign pass reserves the lobby scene for this email alone.",
+      "subject_lines": [
+        {
+          "mood": "Curious",
+          "text": "What is actually playing in the lobby?"
+        },
+        {
+          "mood": "Practical",
+          "text": "One map for every screen and wall"
+        },
+        {
+          "mood": "Direct",
+          "text": "Give each team the same current picture"
+        }
+      ],
+      "preheader": "See device state and screen content on one map while each role keeps the right controls.",
+      "body": [
+        "Dear #Name#,",
+        "Leadership asks whether the campaign is on every lobby screen. Marketing has the schedule, IT sees an endpoint alert, and operations sends someone to walk the floor. By then, the question has grown a committee.",
+        "LUCI runs a property's A/V from a map-based interface. Teams can see device state and confirm what each display or LED wall is playing.",
+        "Roles keep controls appropriate while everyone works from the same current picture.",
+        "See how LUCI gives every team the same picture: [PROOF URL]"
+      ],
+      "cta_label": "See how LUCI gives every team the same picture",
+      "word_count": 84,
+      "assets_used": [
+        "Shared-view workflow proof: [PROOF URL]"
+      ],
+      "automation_notes": "Send in Month 3 only while the prospect remains eligible for long-term nurture and outside active sales. Any reply, booking, or active opportunity stops automation. An ordinary click on the workflow proof remains a reporting signal and does not create a sales task.",
+      "guardrail_notes": "r3 changes: Skipped the client-retention claim because this independent email proves shared visibility, not relationship longevity. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language."
+    },
+    {
+      "id": "PULSE-04",
+      "cycle": "Every 4–6 weeks",
+      "title": "One accountable incident response",
+      "timing": "Month 4",
+      "sender": "Marketing, from the same named LUCI lead",
+      "audience": "Warm and net-new prospects who completed an earlier cycle without entering sales and are not in an active Mark or Mike conversation",
+      "primary_message": "Audit history, incident context, and LUCI's monitoring team keep one visible A/V issue connected from report through response.",
+      "strategy": {
+        "what_why": "Tell one pre-event LED wall incident from first report through diagnosis. Treat alignment and accountability as one response path.",
+        "for_whom": "Operations and IT leaders who have watched visible issues lose context as they cross teams.",
+        "reach": "Send from LUCI Marketing in Month 4. Use the wall incident, name the evidence attached to it, and link to one workflow proof.",
+        "impact": "The dark-wall line adds a human truth; audit history, logs, monitoring, and diagnosis make ownership concrete."
+      },
+      "directions": [
+        {
+          "name": "Twenty minutes before doors",
+          "summary": "The selected direction, revised for whole-campaign consistency.",
+          "draft": "Dear #Name#,\n\nAn LED wall goes dark 20 minutes before doors open. The floor calls operations, operations calls IT, and someone asks who changed what. A dark wall is very good at finding an audience.\n\nLUCI keeps the property's A/V, audit history, and incident context connected. A request carries device details and logs; the LUCI team sees the same evidence and starts diagnosis from the same record.\n\nThe incident keeps its context while the people keep their roles.\n\nSee how LUCI aligns the operation by default: [PROOF URL]"
+        },
+        {
+          "name": "Stop forwarding the problem",
+          "summary": "Expose the context loss in a familiar message chain.",
+          "draft": "Dear #Name#,\n\nThe floor sends a photo. Operations forwards it to IT. IT asks what changed. The wall remains dark while the message gains recipients.\n\nLUCI orchestrates the property's A/V and keeps the incident record attached. Audit history shows who did what and when. Device details and logs travel with the request, and the LUCI team monitors the environment, diagnoses the issue, and supports the response.\n\nMore names on the thread do not create ownership. Shared evidence does.\n\nSee the workflow: [PROOF URL]"
+        },
+        {
+          "name": "Who changed what?",
+          "summary": "Build the email around the first question during a visible failure.",
+          "draft": "Dear #Name#,\n\nWhen a wall stops showing what it should, the first useful question is often, “Who changed what?” The least useful answer is a tour of three systems.\n\nLUCI runs the property's A/V with audit history and incident context in one place. Teams can see the action, person, and time. A request includes relevant device details and logs, so the LUCI team can diagnose and support the response from the same record.\n\nSee how the response stays connected: [PROOF URL]"
+        }
+      ],
+      "winner": "Twenty minutes before doors",
+      "why_won": "It creates urgency without inventing an outcome and keeps every handoff attached to one record. The r3 final reserves the dark-wall scene for this email and varies the partnership language.",
+      "subject_lines": [
+        {
+          "mood": "Urgent",
+          "text": "The wall is dark and doors open in 20"
+        },
+        {
+          "mood": "Accountability",
+          "text": "Who changed what on the LED wall?"
+        },
+        {
+          "mood": "Calm",
+          "text": "Keep A/V context attached to the issue"
+        }
+      ],
+      "preheader": "Audit history, device details, and logs keep the response connected under pressure.",
+      "body": [
+        "Dear #Name#,",
+        "An LED wall goes dark 20 minutes before doors open. The floor calls operations, operations calls IT, and someone asks who changed what. A dark wall is very good at finding an audience.",
+        "LUCI keeps the property's A/V, audit history, and incident context connected. A request carries device details and logs; the LUCI team sees the same evidence and starts diagnosis from the same record.",
+        "The incident keeps its context while the people keep their roles.",
+        "See how LUCI aligns the operation by default: [PROOF URL]"
+      ],
+      "cta_label": "See how LUCI aligns the operation by default",
+      "word_count": 88,
+      "assets_used": [
+        "Incident workflow proof: [PROOF URL]"
+      ],
+      "automation_notes": "Send in Month 4 only to eligible Pulse contacts. Suppress anyone in an active Mark or Mike conversation. A reply or booking stops the automation and transfers ownership to human follow-up; an ordinary proof click does not.",
+      "guardrail_notes": "r3 changes: Skipped the client-retention claim because the connected response already supplies the trust proof. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language."
+    },
+    {
+      "id": "PULSE-05",
+      "cycle": "Every 4–6 weeks",
+      "title": "Activate the guest experience",
+      "timing": "Month 5",
+      "sender": "Marketing, from the same named LUCI lead",
+      "audience": "Warm and net-new prospects who completed an earlier cycle without entering sales and are not in an active Mark or Mike conversation",
+      "primary_message": "Staging and approved room controls let staff prepare a ballroom changeover quietly and execute it in one coordinated cue.",
+      "strategy": {
+        "what_why": "Shift from internal operations to the visible guest result. Use a ballroom changeover rather than another screen-status problem.",
+        "for_whom": "Operations and marketing leaders who need screens, wall content, and audio to change together while a room remains active.",
+        "reach": "Send from LUCI Marketing in Month 5. Explain staging through one event transition and link to one visual proof.",
+        "impact": "Let the guests-never-see-the-menu-diving line humanize a precise sequence: prepare, approve, apply."
+      },
+      "directions": [
+        {
+          "name": "Keynote to awards",
+          "summary": "The selected direction, revised for whole-campaign consistency.",
+          "draft": "Dear #Name#,\n\nThe ballroom has ten minutes to turn from keynote mode to awards: new wall content, walk-up music, and different confidence screens while guests wait outside. Guests should see the moment, not the menu-diving behind it.\n\nLUCI orchestrates screens, sources, and audio from one interface. Staff can stage the next room look while the keynote continues, then apply it on cue.\n\nA venue panel exposes only the approved controls for that ballroom.\n\nSee how LUCI turns passive screens into guest moments: [PROOF URL]"
+        },
+        {
+          "name": "Prepare quietly",
+          "summary": "Center the benefit on behind-the-scenes setup before one coordinated cue.",
+          "draft": "Dear #Name#,\n\nA room changeover should look instant to guests, even when it took careful work behind the scenes.\n\nLUCI runs a property's A/V from one interface. Staging lets staff prepare screens, sources, and audio while the current program continues. When the cue arrives, an approved venue panel applies the next look across the room.\n\nThe useful magic is not magic at all. It is one prepared action instead of a sprint between controls.\n\nSee how it works: [PROOF URL]"
+        },
+        {
+          "name": "Installed is not coordinated",
+          "summary": "Contrast a room full of working endpoints with a room ready for a live moment.",
+          "draft": "Dear #Name#,\n\nEvery screen can work perfectly and the ballroom changeover can still wobble. Installed equipment does not coordinate itself.\n\nLUCI orchestrates the room's A/V from one interface. Staff can stage wall content, confidence screens, sources, and audio before the transition, then use approved controls to execute the prepared look on cue.\n\nNo guest needs to watch someone negotiate three menus during the applause.\n\nSee the ballroom workflow: [PROOF URL]"
+        }
+      ],
+      "winner": "Keynote to awards",
+      "why_won": "It gives staging a specific keynote-to-awards transition, a deadline, and a guest-facing reason to matter. The r3 campaign pass keeps this as the campaign's only ballroom changeover.",
+      "subject_lines": [
+        {
+          "mood": "Situational",
+          "text": "The ballroom changes in ten minutes"
+        },
+        {
+          "mood": "Playful",
+          "text": "Guests do not need to see the menu diving"
+        },
+        {
+          "mood": "Direct",
+          "text": "Stage the next room look before the cue"
+        }
+      ],
+      "preheader": "Prepare wall content, confidence screens, and audio while the current program continues.",
+      "body": [
+        "Dear #Name#,",
+        "The ballroom has ten minutes to turn from keynote mode to awards: new wall content, walk-up music, and different confidence screens while guests wait outside. Guests should see the moment, not the menu-diving behind it.",
+        "LUCI orchestrates screens, sources, and audio from one interface. Staff can stage the next room look while the keynote continues, then apply it on cue.",
+        "A venue panel exposes only the approved controls for that ballroom.",
+        "See how LUCI turns passive screens into guest moments: [PROOF URL]"
+      ],
+      "cta_label": "See how LUCI turns passive screens into guest moments",
+      "word_count": 84,
+      "assets_used": [
+        "Guest-experience workflow proof: [PROOF URL]"
+      ],
+      "automation_notes": "Send in Month 5 only while the contact remains eligible for Pulse. Suppress active Mark or Mike conversations. A reply, booking, or active opportunity stops automation; an ordinary click to the workflow proof does not trigger sales outreach.",
+      "guardrail_notes": "r3 changes: Skipped the client-retention claim because this independent email stays focused on the guest-facing ballroom moment. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language."
+    },
+    {
+      "id": "PULSE-06",
+      "cycle": "Every 4–6 weeks",
+      "title": "A platform that scales and improves",
+      "timing": "Month 6",
+      "sender": "Marketing, from the same named LUCI lead",
+      "audience": "Warm and net-new prospects who completed an earlier cycle without entering sales and are not in an active Mark or Mike conversation",
+      "primary_message": "LUCI extends the same A/V operation into a new spa, while New LUCI shows how the platform continues to gain practical control.",
+      "strategy": {
+        "what_why": "Close the six-month series on a spa expansion and product continuity. Define LUCI and New LUCI for a reader who saw none of the earlier emails.",
+        "for_whom": "Property and technology leaders adding rooms, endpoints, or venues who want to avoid a separate control path.",
+        "reach": "Send from the named LUCI lead through Marketing in Month 6. Use one spa-expansion scene and make the LUCI Upgrade Guide the only CTA.",
+        "impact": "Use a spa expansion to close the series on physical growth and continuing platform refinement without repeating the ballroom scene."
+      },
+      "directions": [
+        {
+          "name": "The new spa",
+          "summary": "The selected direction, revised for whole-campaign consistency.",
+          "draft": "Dear #Name#,\n\nA new spa opens while the existing rooms stay busy, and someone proposes a separate control path for the added space. Expansion has a habit of collecting logins.\n\nLUCI extends one A/V operating plan across rooms and endpoints. New LUCI, now in beta, adds flexible maps, audit history, and stronger access control on a faster foundation.\n\nThe embedded LUCI team stays with the operation as the footprint changes.\n\nSee how the platform scales and improves in the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]"
+        },
+        {
+          "name": "More rooms, one operation",
+          "summary": "Lead with continuity across old and new spaces.",
+          "draft": "Dear #Name#,\n\nThe new room should add capacity, not another way for staff to run A/V.\n\nLUCI orchestrates existing and added spaces through one interface. New LUCI, now in beta, expands that control with flexible live maps, audit history, and role-based access on a faster foundation.\n\nAs the footprint changes, the LUCI team continues to monitor, diagnose, and support the environment. We've never lost a client because the relationship continues with the system.\n\nSee how the platform extends in the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]"
+        },
+        {
+          "name": "Capability that keeps moving",
+          "summary": "Frame the beta capabilities as evidence of continuous platform refinement.",
+          "draft": "Dear #Name#,\n\nA/V infrastructure should not freeze on installation day while the property keeps changing around it.\n\nLUCI is an orchestration engine for running rooms, screens, sources, and audio from one interface. New LUCI, now in beta, adds staging, flexible maps, screen views, audit history, and stronger access control on a faster foundation.\n\nThose capabilities extend the same operation; they do not create another one. The LUCI team continues to monitor, diagnose, and support it.\n\nExplore the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]"
+        }
+      ],
+      "winner": "The new spa",
+      "why_won": "It turns scale into one physical expansion decision and makes the risk of a separate control path legible. The r3 final removes the second Pulse retention claim and gives the series a distinct closing scene.",
+      "subject_lines": [
+        {
+          "mood": "Strategic",
+          "text": "Will the new spa need another control path?"
+        },
+        {
+          "mood": "Forward-looking",
+          "text": "Let the A/V investment keep improving"
+        },
+        {
+          "mood": "Plainspoken",
+          "text": "More rooms, not more ways to run them"
+        }
+      ],
+      "preheader": "Extend one operating plan across new spaces while the LUCI team stays with it.",
+      "body": [
+        "Dear #Name#,",
+        "A new spa opens while the existing rooms stay busy, and someone proposes a separate control path for the added space. Expansion has a habit of collecting logins.",
+        "LUCI extends one A/V operating plan across rooms and endpoints. New LUCI, now in beta, adds flexible maps, audit history, and stronger access control on a faster foundation.",
+        "The embedded LUCI team stays with the operation as the footprint changes.",
+        "See how the platform scales and improves in the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]"
+      ],
+      "cta_label": "See how the platform scales and improves",
+      "word_count": 86,
+      "assets_used": [
+        "LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]"
+      ],
+      "automation_notes": "Send in Month 6 only if the prospect remains outside active sales. A reply, booking, or active opportunity stops the marketing automation. If the person remains quiet, do not restart another acquisition or Pulse cycle without a lifecycle-stage decision.",
+      "guardrail_notes": "r3 changes: Skipped the client-retention claim so Pulse contains no repeat of a line prospects may have seen in their warm or net-new cycle. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language."
+    }
+  ]
+}

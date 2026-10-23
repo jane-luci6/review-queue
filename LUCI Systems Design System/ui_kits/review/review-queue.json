@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-13",
+  "updated": "2026-10-23",
   "publishNote": "Build (npm run build:review) outputs to ui_kits/review. Bump reviewVersion + versionNote for new uploads (version history shown in portal). Set dueForReview for first-time review. Comments/approvals sync server-side via the comments_api container (proxied at /api/comments); Jane sees Mike/Mark's feedback on refresh. Archive with scripts/pull-review-comments.mjs.",
   "previewBaseUrl": "",
   "commentsApiUrl": "http://10.10.1.17:8081/api/comments",
@@ -8,17 +8,17 @@
     {
       "title": "Messaging guide",
       "url": "messaging/messaging-guide.html",
-      "note": "Updated Oct 13, 2026"
+      "note": "Updated Oct 23, 2026"
     },
     {
       "title": "LUCI philosophy",
       "url": "messaging/philosophy.html",
-      "note": "Updated Oct 13, 2026"
+      "note": "Updated Oct 23, 2026"
     },
     {
       "title": "Personas",
       "url": "messaging/personas.html",
-      "note": "Updated Oct 13, 2026"
+      "note": "Updated Oct 23, 2026"
     }
   ],
   "inProgress": [],
@@ -748,7 +748,7 @@
     }
   ],
   "finalized": [],
-  "messagingDocsUpdated": "2026-10-13",
+  "messagingDocsUpdated": "2026-10-23",
   "parkedFromReviewQueue": [
     {
       "id": "signal-issue-05-choices",
@@ -832,6 +832,46 @@
       ],
       "reviewStatus": "In progress · Jane",
       "parkedNote": "Moved off Mike’s Review Queue Oct 9, 2026; internal planning on Jane’s In Progress board."
+    },
+    {
+      "id": "new-luci-prospect-emails-review",
+      "title": "New LUCI · Prospect emails (warm, net-new, nurture)",
+      "summary": "27 prospect emails for the New LUCI campaign: strategy, three directions, final copy, preheader and subject lines per email, grouped by track.",
+      "hubPreviewPath": "ui_kits/content-marketing/new-luci-prospect-emails-review.html",
+      "previewUrl": "content-marketing/new-luci-prospect-emails-review.html",
+      "reviewVersion": 1,
+      "versionNote": "Draft v1 for Jane review (Oct 23, 2026). Nothing sent; ActiveCampaign untouched.",
+      "reviewBrief": {
+        "description": "27 prospect emails for the New LUCI campaign: strategy, three directions, final copy, preheader and subject lines per email, grouped by track.",
+        "reviewAsk": "Jane picks sender, proof points, asset URLs and the beta-only framing calls listed at the end of the page."
+      },
+      "versionHistory": [
+        {
+          "version": 1,
+          "published": "2026-10-23",
+          "note": "In Progress card; review page under content-marketing on .17."
+        }
+      ]
+    },
+    {
+      "id": "new-luci-cust-webinar-chunk1-review",
+      "title": "New LUCI · Customer webinar emails (Chunk 1)",
+      "summary": "Four existing-customer pre-launch webinar emails: invitation, what to expect, reminder, recording.",
+      "hubPreviewPath": "ui_kits/content-marketing/new-luci-cust-webinar-chunk1-review.html",
+      "previewUrl": "content-marketing/new-luci-cust-webinar-chunk1-review.html",
+      "reviewVersion": 1,
+      "versionNote": "Drafted Oct 13, 2026; added to In Progress Oct 23. Nothing sent; ActiveCampaign untouched.",
+      "reviewBrief": {
+        "description": "Four existing-customer pre-launch webinar emails: invitation, what to expect, reminder, recording.",
+        "reviewAsk": "Jane reviews copy, sender and the open questions at the end of the page."
+      },
+      "versionHistory": [
+        {
+          "version": 1,
+          "published": "2026-10-13",
+          "note": "Review page on .17; In Progress card added Oct 23."
+        }
+      ]
     }
   ]
 }

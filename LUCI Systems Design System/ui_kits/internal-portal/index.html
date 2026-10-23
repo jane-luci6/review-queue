@@ -3712,7 +3712,7 @@
     function renderStatus() {
       $('stat-review').textContent = String(allReviewItems().length);
       $('stat-comments').textContent = String(portal.comments.length);
-      $('stat-soon').textContent = String(8); // In Progress card count (curated list)
+      $('stat-soon').textContent = String(12); // In Progress card count (curated list)
       updateReviewUnreadBadges();
     }
 
@@ -4103,6 +4103,20 @@
           note: 'In progress. Email communications &amp; outlines for the upgrade tracks (webinar → readiness → launch → post).',
           href: '#new-luci-launch/strategy/email-comms',
           external: false,
+          pill: 'Email'
+        },
+        {
+          title: 'New LUCI · Prospect emails (warm, net-new, nurture)',
+          note: 'Draft v1 for Jane, Oct 23, 2026. 27 emails with strategy, three directions, final copy, preheader and subject lines. Nothing sent.',
+          href: 'http://10.10.1.17:8081/content-marketing/new-luci-prospect-emails-review.html',
+          external: true,
+          pill: 'Email'
+        },
+        {
+          title: 'New LUCI · Customer webinar emails (Chunk 1)',
+          note: 'Draft for Jane, Oct 13, 2026. Four pre-launch webinar emails for existing customers. Nothing sent.',
+          href: 'http://10.10.1.17:8081/content-marketing/new-luci-cust-webinar-chunk1-review.html',
+          external: true,
           pill: 'Email'
         },
         {

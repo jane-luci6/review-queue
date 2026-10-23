@@ -1,42 +1,114 @@
 # WARM-REENGAGE-03 — Operational proof
 
-- **Audience:** Warm prospects continuing the launch re-engagement cycle
-- **Cycle:** Launch re-engagement
+- **Audience:** Broader warm contacts who need approved scale and relationship proof
+- **Cycle:** Broader warm re-engagement
 - **Timing:** 4–5 days after email 2
-- **Purpose:** Make the platform credible with approved consolidation numbers from running properties.
-- **CTA:** See the proof or reply with a question.
-- **Status:** scaffold — coverage + empty template only; body not written
+- **Purpose:** Approved counts establish scale before LUCI draws the one-interface conclusion.
+- **CTA:** See the approved proof.
+- **Status:** draft r3 for Jane review
 
-## Coverage bullets
-- Approved aggregate consolidation proof only; no invented figures or client names
-- Denominator-first scope such as displays, zones, walls, and racks only when sourced
-- Shorter list of systems, vendors, interfaces, and workflows to manage
-- One-interface operating model as the conclusion, not an unsupported opening claim
-- Proof grounded in running properties, not New LUCI feature adoption
-- Clear source placeholder [APPROVED PROOF SOURCE]
-- Reply path for questions; reply or booking stops automation
+## Strategy
 
-## Copy template
+### What we're writing and why
+A proof email grounded in approved counts and relationship continuity.
 
-### Subject lines (test 2–3)
-1. What consolidation looks like in practice
-2. The proof behind one operating environment
-3. A shorter list of systems to manage
+### For whom
+Warm contacts who have seen the product behavior but still need evidence that LUCI handles real scale.
 
-### Preheader (placeholder)
-[PREHEADER]
+### Best way to reach them
+Put three approved counts first, define LUCI in the conclusion, and make the proof link the only primary action.
 
-### Greeting
+### How to make impact while staying professional
+Let the denominator carry the claim, then use the retention line once where proof and continuity naturally meet.
+
+### Primary message
+Approved counts establish scale before LUCI draws the one-interface conclusion.
+
+## Three directions
+
+### Direction 1 — The denominator is the story
+_The selected direction, revised for whole-campaign consistency._
+
 Dear #Name#,
 
+“One operating view” is easy to claim. The denominator is the interesting part.
+
+[APPROVED PROOF POINT]
+
+[APPROVED PROOF POINT]
+
+[APPROVED PROOF POINT]
+
+Together, those approved counts show the screens, zones, walls, and workflows LUCI brings into a shorter list to manage.
+
+Scale is half the proof. Continuity is the other: we've never lost a client.
+
+See the approved proof: [PROOF URL]
+
+### Direction 2 — Count the work
+_Use scope counts to challenge feature-list thinking._
+
+Dear #Name#,
+
+The useful question is not how many features appear on a list. It is how much work one platform can run together.
+
+[APPROVED PROOF POINT]
+[APPROVED PROOF POINT]
+[APPROVED PROOF POINT]
+
+LUCI brings a property’s screens, zones, walls, and workflows into one A/V operating view. Arithmetic makes a better argument than adjectives.
+
+Review the proof: [PROOF URL]
+
+### Direction 3 — Proof before promise
+_State the proof standard and avoid unsupported scale language._
+
+Dear #Name#,
+
+Property-wide should mean something countable.
+
+[APPROVED PROOF POINT]
+[APPROVED PROOF POINT]
+[APPROVED PROOF POINT]
+
+LUCI gives the property one interface for its A/V. These approved counts show the actual surface under management before we ask anyone to trust the one-interface conclusion.
+
+See the proof: [PROOF URL]
+
+## Why the final won
+**The denominator is the story**
+
+It puts approved evidence ahead of interpretation and gives the retention statement a natural continuity context. The r3 final avoids repeating the cycle's LUCI definition.
+
+## Final copy
+
+### Subject lines
+1. **Evidence-led:** The denominator behind one interface
+2. **Curious:** How much can one interface actually run?
+3. **Practical:** Count the work under management
+
+### Preheader
+Approved counts establish the scale before the conclusion.
+
 ### Body
-[OPENING — one job for this email; not written yet]
+Dear #Name#,
 
-[COVERAGE — expand coverage bullets into short paragraphs later]
+“One operating view” is easy to claim. The denominator is the interesting part.
 
-[PROOF — approved consolidation proof: [PROOF URL]; source: [APPROVED PROOF SOURCE]]
+[APPROVED PROOF POINT]
 
-[CTA — See the proof or reply with a question. Link: [CTA URL]]
+[APPROVED PROOF POINT]
+
+[APPROVED PROOF POINT]
+
+Together, those approved counts show the screens, zones, walls, and workflows LUCI brings into a shorter list to manage.
+
+Scale is half the proof. Continuity is the other: we've never lost a client.
+
+See the approved proof: [PROOF URL]
+
+### Word count
+**63 words** from greeting through CTA, excluding the signature.
 
 ### Signature
 [NAME]
@@ -44,6 +116,20 @@ Dear #Name#,
 LUCI Systems
 [EMAIL] · [PHONE]
 
-### Notes for later write
-- From: Marketing
-- AC merge tags: keep `#Name#` as Jane specified; flag if AC needs `%FIRSTNAME%` later
+## Automation notes
+Do not advance this email until every proof placeholder contains one sourced, project-true count approved for prospect use. Send only to eligible broader-warm contacts who did not receive the selected preview. Suppress active opportunities and active Mark or Mike conversations. A reply or booking stops automation; proof clicks remain reporting signals.
+
+## Guardrail audit
+r3 changes: Kept the exact client-retention claim because this email's sole job is operating and relationship proof; selected-preview recipients are excluded from this cycle, and no other email in this cycle uses it. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.
+
+## r3 changes:
+- Whole-campaign scene: approved proof denominator.
+- Sender story, product-definition cadence, partnership language, claim use, subjects, preheader, and count were checked against the other 26 finals.
+
+## Placeholders to fill
+- [APPROVED PROOF POINT]
+- [EMAIL]
+- [NAME]
+- [PHONE]
+- [PROOF URL]
+- [TITLE]

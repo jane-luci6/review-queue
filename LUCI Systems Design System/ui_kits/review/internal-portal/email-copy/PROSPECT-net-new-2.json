@@ -1,0 +1,259 @@
+{
+  "track": "Net-new prospects: Sales handback recovery",
+  "track_strategy": "This recovery track resumes only an unfinished next step after an explicit Sales handback; it never restarts the acquisition argument. Unbooked contacts get a clean scheduling close, while post-demo contacts get one verified workflow and a respectful end before Prospect Pulse.",
+  "open_questions": [
+    "Confirm the named LUCI lead used for every Marketing recovery email; replies still route to the assigned sales owner.",
+    "Confirm [BOOKING URL] and whether it routes by assigned sales owner.",
+    "Confirm which ActiveCampaign field records explicit Sales handback and the assigned sales owner.",
+    "Confirm that [WORKFLOW THEY CARED ABOUT] comes from a required manual field populated from demo notes.",
+    "Confirm the provisional handback intervals with Mark and Mike before activation."
+  ],
+  "emails": [
+    {
+      "id": "NET-UNBOOKED-01",
+      "cycle": "Unbooked request recovery after Sales handback",
+      "title": "Scheduling recovery",
+      "timing": "Provisional: about 7 days after Mark or Mike's final attempt and explicit handback",
+      "sender": "Marketing, from the same named LUCI lead; replies route to the assigned sales owner",
+      "audience": "Net-new demo requesters explicitly handed back to Marketing after personal Sales attempts",
+      "primary_message": "The requested LUCI walkthrough still has one direct calendar path, with no need to repeat the original request.",
+      "strategy": {
+        "what_why": "Resume only the unfinished scheduling step without replaying the sales case.",
+        "for_whom": "Prospects who requested a walkthrough, then went quiet after personal outreach.",
+        "reach": "Send only after explicit Sales handback. Keep one booking link and no second ask.",
+        "impact": "Acknowledge that the calendar may have won and remove the burden of starting over."
+      },
+      "directions": [
+        {
+          "name": "Calendar won",
+          "summary": "The selected direction, revised for whole-campaign consistency.",
+          "draft": "Dear #Name#,\n\nYou asked for a LUCI walkthrough, but the calendar won that round.\n\nYour LUCI contact will continue from your original request. You will not need to retell the whole story.\n\nIf the walkthrough still makes sense, pick a time here: [BOOKING URL]"
+        },
+        {
+          "name": "No restart",
+          "summary": "Lead with continuity and make the calendar the only action.",
+          "draft": "Dear #Name#,\n\nYour request to see LUCI is still open. LUCI brings a property's A/V into one interface, and Mike or Mark still has the context you shared.\n\nNo need to restart the conversation or reconstruct the original form.\n\nPick a time for the walkthrough: [BOOKING URL]"
+        },
+        {
+          "name": "One direct path",
+          "summary": "Use the shortest possible recovery note.",
+          "draft": "Dear #Name#,\n\nThe LUCI walkthrough you requested never found a calendar slot. LUCI runs a property's A/V from one interface; the next step only needs one link.\n\nChoose a time: [BOOKING URL]\n\nMike or Mark will pick up from there with your original request in hand."
+        }
+      ],
+      "winner": "Calendar won",
+      "why_won": "It respects the prior request and gives the scheduling miss a human line without blaming the reader. The r3 final removes the unnecessary product definition.",
+      "subject_lines": [
+        {
+          "mood": "Human",
+          "text": "Did the calendar win?"
+        },
+        {
+          "mood": "Direct",
+          "text": "Pick a time for your LUCI walkthrough"
+        },
+        {
+          "mood": "Warm",
+          "text": "Your LUCI request is still open"
+        }
+      ],
+      "preheader": "One calendar link, with no need to repeat why you reached out.",
+      "body": [
+        "Dear #Name#,",
+        "You asked for a LUCI walkthrough, but the calendar won that round.",
+        "Your LUCI contact will continue from your original request. You will not need to retell the whole story.",
+        "If the walkthrough still makes sense, pick a time here: [BOOKING URL]"
+      ],
+      "cta_label": "Pick a time",
+      "word_count": 44,
+      "assets_used": [
+        "[BOOKING URL]"
+      ],
+      "automation_notes": "Send only after the final personal Sales attempt and explicit handback. A reply, booking, or active opportunity stops recovery and nurture automation and returns the contact to the assigned sales owner. Opens and ordinary clicks remain reporting signals only. Timing remains provisional.",
+      "guardrail_notes": "r3 changes: Skipped the client-retention claim because a scheduling recovery is transactional. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language."
+    },
+    {
+      "id": "NET-UNBOOKED-02",
+      "cycle": "Unbooked request recovery after Sales handback",
+      "title": "Leave the invitation open",
+      "timing": "Provisional: 7–10 days after recovery email 1",
+      "sender": "Marketing, from the same named LUCI lead; replies route to the assigned sales owner",
+      "audience": "Net-new demo requesters still quiet after scheduling recovery",
+      "primary_message": "Active scheduling ends here, while one link keeps the LUCI walkthrough available when timing improves.",
+      "strategy": {
+        "what_why": "End active scheduling clearly and preserve the invitation without another persuasion attempt.",
+        "for_whom": "Prospects who requested a walkthrough but stayed quiet through personal outreach and one recovery note.",
+        "reach": "Send only after explicit Sales handback and no response to NET-UNBOOKED-01. Keep one booking CTA.",
+        "impact": "Give the reader permission to do nothing and avoid making silence feel like a debt."
+      },
+      "directions": [
+        {
+          "name": "No calendar apology",
+          "summary": "The selected direction, revised for whole-campaign consistency.",
+          "draft": "Dear #Name#,\n\nThis is the last scheduling note. No explanation required.\n\nThe LUCI walkthrough will still be here if it becomes useful later.\n\nSchedule the walkthrough: [BOOKING URL]\n\nIf now is not the time, do nothing. We will shift to occasional useful notes."
+        },
+        {
+          "name": "Close the sequence",
+          "summary": "State the close immediately and keep the invitation available.",
+          "draft": "Dear #Name#,\n\nWe are ending the active scheduling sequence, not the invitation.\n\nLUCI runs a property's A/V from one interface. If you want to see how that fits your rooms and workflows later, keep this link:\n\nSchedule a walkthrough: [BOOKING URL]\n\nOtherwise, nothing is due from you. We will send only occasional notes."
+        },
+        {
+          "name": "Keep the link",
+          "summary": "Make the calendar a resource for later, not another nudge.",
+          "draft": "Dear #Name#,\n\nHere is the LUCI calendar link once more, for whenever the timing fits. LUCI brings screens, rooms, and controls into one A/V interface.\n\nChoose a time: [BOOKING URL]\n\nWe will stop the scheduling notes here. Your inbox has done enough project management for one conversation."
+        }
+      ],
+      "winner": "No calendar apology",
+      "why_won": "It closes active scheduling, removes any obligation to explain, and leaves one useful link. The r3 final trusts the prior request instead of redefining LUCI or repeating the calendar joke.",
+      "subject_lines": [
+        {
+          "mood": "Low-pressure",
+          "text": "No explanation required"
+        },
+        {
+          "mood": "Practical",
+          "text": "Keep the LUCI link for later"
+        },
+        {
+          "mood": "Warm",
+          "text": "The walkthrough can wait"
+        }
+      ],
+      "preheader": "We are ending the scheduling notes, not the invitation.",
+      "body": [
+        "Dear #Name#,",
+        "This is the last scheduling note. No explanation required.",
+        "The LUCI walkthrough will still be here if it becomes useful later.",
+        "Schedule the walkthrough: [BOOKING URL]",
+        "If now is not the time, do nothing. We will shift to occasional useful notes."
+      ],
+      "cta_label": "Schedule the walkthrough",
+      "word_count": 43,
+      "assets_used": [
+        "[BOOKING URL]"
+      ],
+      "automation_notes": "Send only after explicit Sales handback and no response or booking from NET-UNBOOKED-01. A reply, booking, or active opportunity stops all marketing automation and returns the contact to the assigned sales owner. Opens and ordinary clicks remain reporting signals only. If quiet, end this cycle and move the contact to Prospect Pulse, with one lifecycle cycle active. Timing remains provisional.",
+      "guardrail_notes": "r3 changes: Skipped the client-retention claim because a respectful scheduling close should not introduce fresh persuasion. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language."
+    },
+    {
+      "id": "NET-POSTDEMO-01",
+      "cycle": "Post-demo recovery after Sales handback",
+      "title": "Relevant reason to reconsider",
+      "timing": "Provisional: 10–14 days after the final personal attempt and explicit handback",
+      "sender": "Marketing, from the same named LUCI lead; replies route to the assigned sales owner",
+      "audience": "Net-new prospects explicitly handed back to Marketing after a demo and personal Sales follow-up",
+      "primary_message": "One verified workflow from the demo deserves a concrete second look if it remains an active priority.",
+      "strategy": {
+        "what_why": "Reopen one verified workflow instead of replaying the demo.",
+        "for_whom": "Prospects who completed a demo, received personal follow-up, and then went quiet.",
+        "reach": "Send only after explicit handback and only after Sales fills the workflow placeholder from notes. Use reply as the sole CTA.",
+        "impact": "Use the Monday-morning handover to test one verified workflow without replaying the presentation."
+      },
+      "directions": [
+        {
+          "name": "Real rooms decide",
+          "summary": "The selected direction, revised for whole-campaign consistency.",
+          "draft": "Dear #Name#,\n\nOne point from your LUCI walkthrough may still deserve a second look: [WORKFLOW THEY CARED ABOUT].\n\nBy the Monday-morning handover, the useful question is whether that workflow fits the operating plan.\n\nLUCI can connect the task to the rooms, screens, sources, and activity behind it. If support is needed, the request arrives with the relevant endpoint history.\n\nIf the priority is still active, reply with what still needs to work."
+        },
+        {
+          "name": "Priority check",
+          "summary": "Ask whether the recorded workflow still matters before explaining anything else.",
+          "draft": "Dear #Name#,\n\nIs [WORKFLOW THEY CARED ABOUT] still active?\n\nLUCI brings a property's A/V into one interface. For this workflow, that means the room controls, sources, screen status, and activity record can sit in the same operating view while the LUCI team keeps monitoring and diagnosing.\n\nNo need to recap the whole demo.\n\nReply with the part that still needs an answer."
+        },
+        {
+          "name": "One scene",
+          "summary": "Turn the verified workflow into the smallest possible operating scene.",
+          "draft": "Dear #Name#,\n\nOne scene from your LUCI conversation is worth keeping concrete: [WORKFLOW THEY CARED ABOUT].\n\nLUCI runs a property's A/V from one interface, so that task can connect to the room, screen, source, and activity history around it. The team continues to watch and support the environment after the meeting ends.\n\nSlides close. The wall still has to behave.\n\nReply if that priority still matters."
+        }
+      ],
+      "winner": "Real rooms decide",
+      "why_won": "It returns to one verified workflow and grounds the reconsideration in the Monday-morning operating handover. The r3 final removes slide-deck language and varies the support phrasing.",
+      "subject_lines": [
+        {
+          "mood": "Specific",
+          "text": "Is this workflow still active?"
+        },
+        {
+          "mood": "Curious",
+          "text": "One point worth a second look"
+        },
+        {
+          "mood": "Direct",
+          "text": "What still needs to work?"
+        }
+      ],
+      "preheader": "Return to one workflow from the demo and test it against the operating plan.",
+      "body": [
+        "Dear #Name#,",
+        "One point from your LUCI walkthrough may still deserve a second look: [WORKFLOW THEY CARED ABOUT].",
+        "By the Monday-morning handover, the useful question is whether that workflow fits the operating plan.",
+        "LUCI can connect the task to the rooms, screens, sources, and activity behind it. If support is needed, the request arrives with the relevant endpoint history.",
+        "If the priority is still active, reply with what still needs to work."
+      ],
+      "cta_label": "Reply with what still needs to work",
+      "word_count": 72,
+      "assets_used": [],
+      "automation_notes": "Send only after the final personal Sales attempt, explicit handback, and a verified demo note for the workflow placeholder. A reply, booking, or active opportunity stops all marketing automation and returns the contact to the assigned sales owner. Opens and ordinary clicks remain reporting signals only. Do not activate while the placeholder is unpopulated. Timing remains provisional.",
+      "guardrail_notes": "r3 changes: Skipped the client-retention claim because it would feel added onto a quiet-prospect recovery note. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language."
+    },
+    {
+      "id": "NET-POSTDEMO-02",
+      "cycle": "Post-demo recovery after Sales handback",
+      "title": "Close the loop",
+      "timing": "Provisional: 7–10 days after recovery email 1",
+      "sender": "Marketing, from the same named LUCI lead; replies route to the assigned sales owner",
+      "audience": "Net-new prospects still quiet after post-demo recovery",
+      "primary_message": "Active follow-up ends here, and a reply can resume the LUCI conversation from the useful point whenever timing changes.",
+      "strategy": {
+        "what_why": "Close active follow-up without interpreting silence or adding a fresh sales argument.",
+        "for_whom": "Prospects who completed a demo and stayed quiet after one relevant recovery note.",
+        "reach": "Send after explicit Sales handback and no response to NET-POSTDEMO-01. Use reply as the only CTA.",
+        "impact": "State the close, preserve context, and avoid making the prospect perform a formal goodbye."
+      },
+      "directions": [
+        {
+          "name": "No closing ceremony",
+          "summary": "The selected direction, revised for whole-campaign consistency.",
+          "draft": "Dear #Name#,\n\nWe are closing the active follow-up here. Your LUCI contact will keep the context from your walkthrough.\n\nPriorities move. Your inbox does not need a formal sign-off.\n\nWhen the timing fits, reply to this note and we will continue from the useful point, not the beginning."
+        },
+        {
+          "name": "Context kept",
+          "summary": "Lead with reassurance that the prior conversation will not disappear.",
+          "draft": "Dear #Name#,\n\nThis is the last active follow-up after your LUCI walkthrough. LUCI brings a property's A/V into one interface, and the sales owner who met with you will keep the notes from your conversation.\n\nYou do not owe us an explanation for the pause.\n\nReply whenever the original priority becomes useful again. We will pick up from there."
+        },
+        {
+          "name": "Leave the next move",
+          "summary": "Put control of any future conversation entirely with the prospect.",
+          "draft": "Dear #Name#,\n\nWe will leave the next move with you. LUCI runs a property's A/V from one interface, and your prior walkthrough gives Mike or Mark the context to resume later.\n\nNo fresh pitch, no rewind.\n\nIf the timing changes, reply here. The conversation can restart at the room, wall, or workflow that mattered."
+        }
+      ],
+      "winner": "No closing ceremony",
+      "why_won": "It closes the sequence immediately and promises continuity without another link or product pitch. The r3 final removes the repeated definition and ceremony language.",
+      "subject_lines": [
+        {
+          "mood": "Direct",
+          "text": "Closing the follow-up here"
+        },
+        {
+          "mood": "Warm",
+          "text": "We will keep the context"
+        },
+        {
+          "mood": "Low-pressure",
+          "text": "No formal sign-off needed"
+        }
+      ],
+      "preheader": "We will stop the active notes and keep the useful context.",
+      "body": [
+        "Dear #Name#,",
+        "We are closing the active follow-up here. Your LUCI contact will keep the context from your walkthrough.",
+        "Priorities move. Your inbox does not need a formal sign-off.",
+        "When the timing fits, reply to this note and we will continue from the useful point, not the beginning."
+      ],
+      "cta_label": "Reply when the timing fits",
+      "word_count": 48,
+      "assets_used": [],
+      "automation_notes": "Send only after explicit Sales handback and no response or booking from NET-POSTDEMO-01. A reply, booking, or active opportunity stops all marketing automation and returns the contact to the assigned sales owner. Opens and ordinary clicks remain reporting signals only. If quiet, end this cycle and move the contact to Prospect Pulse, with one lifecycle cycle active. Timing remains provisional.",
+      "guardrail_notes": "r3 changes: Skipped the client-retention claim because the final recovery note should lower pressure, not add proof. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language."
+    }
+  ]
+}

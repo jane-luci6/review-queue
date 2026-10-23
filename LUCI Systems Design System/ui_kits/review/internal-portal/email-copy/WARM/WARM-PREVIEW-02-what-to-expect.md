@@ -1,43 +1,108 @@
 # WARM-PREVIEW-02 — What to expect
 
-- **Audience:** Selected high-intent warm prospects not in an active sales conversation
-- **Cycle:** Selected pre-launch preview
+- **Audience:** Chosen private-preview prospects, with one recipient-state CTA rendered for each person
+- **Cycle:** Selected private preview
 - **Timing:** 7–10 days before the webinar
-- **Purpose:** Show three concrete changes they will see. Registrants receive agenda content; nonregistrants receive another registration opportunity.
-- **CTA:** Review the agenda or register.
-- **Status:** scaffold — coverage + empty template only; body not written
+- **Purpose:** The preview will show three concrete workflows that put more daily control in staff hands without reducing LUCI support.
+- **CTA:** Review the agenda or register — render one conditional CTA.
+- **Status:** draft r3 for Jane review
 
-## Coverage bullets
-- Three preview changes only; no full feature inventory
-- Venue panels for control where work happens
-- Staging and interface flexibility for preparing the next look
-- Audit trails, live monitoring, and sign-in/session control for clearer oversight
-- Registrant branch: agenda and session expectations
-- Nonregistrant branch: concise registration opportunity
-- Coming-soon framing; no release date
-- No customer-only upgrade guide, FAQ, or ownership language
+## Strategy
 
-## Copy template
+### What we're writing and why
+A second touch that earns attention with three observable workflows instead of another invitation recap.
 
-### Subject lines (test 2–3)
-1. Three changes you’ll see in New LUCI
-2. Your private-preview agenda
-3. What to expect from the New LUCI preview
+### For whom
+Earlier evaluators who may recall the old product but need a fast, concrete reason to attend.
 
-### Preheader (placeholder)
-[PREHEADER]
+### Best way to reach them
+Send from Mark 7–10 days before the session. Render one CTA by registration state: agenda for registrants or registration for everyone else.
 
-### Greeting
+### How to make impact while staying professional
+Use three distinct property moments so the beta feels operational without repeating the campaign's bartender, ballroom, or wrong-screen scenes.
+
+### Primary message
+The preview will show three concrete workflows that put more daily control in staff hands without reducing LUCI support.
+
+## Three directions
+
+### Direction 1 — Three scenes
+_The selected direction, revised for whole-campaign consistency._
+
 Dear #Name#,
 
+The private preview stays close to real property work:
+
+1. A concourse lead opens only the controls approved for that zone.
+
+2. A conference team adjusts grouped audio zones during the break without opening controls for the rest of the building.
+
+3. A sportsbook operator confirms what each display shows and checks the activity record behind a change.
+
+Three workflows, no broad product tour. Each keeps the approved operating limits clear.
+
+[IF REGISTERED] Review the agenda: [AGENDA LINK]
+
+[IF NOT REGISTERED] Register for the private preview: [REGISTRATION LINK]
+
+### Direction 2 — From setup to proof
+_Organize the preview as one sequence from preparation to verification._
+
+Dear #Name#,
+
+LUCI brings a property’s A/V into one operating interface. New LUCI is in beta and moves more of the daily sequence into staff hands: prepare screens and audio, apply the change on cue, verify the result, and check the activity record. Our team still monitors and supports the platform.
+
+The preview follows that sequence, not a tour of every button.
+
+[IF REGISTERED] Open the agenda: [AGENDA LINK]
+[IF NOT REGISTERED] Reserve your place: [REGISTRATION LINK]
+
+### Direction 3 — One room, one wall, one record
+_Use three memorable nouns to make the preview easy to scan._
+
+Dear #Name#,
+
+Here is what the private preview covers: one room, one wall, one record. LUCI brings a property’s A/V into one operating interface; New LUCI is in beta and lets staff stage a room change, confirm a wall’s content, and see who changed what while our team continues monitoring and support.
+
+Three useful tests beat a feature parade.
+
+[IF REGISTERED] Review the agenda: [AGENDA LINK]
+[IF NOT REGISTERED] Register: [REGISTRATION LINK]
+
+## Why the final won
+**Three scenes**
+
+It turns each capability into a different property moment and keeps one recipient-state action. The r3 final removes the repeated bartender, ballroom, scavenger-hunt, and wall-check material.
+
+## Final copy
+
+### Subject lines
+1. **Practical:** Three workflows in the private preview
+2. **Curious:** What happens during the conference break?
+3. **Warm:** A practical second look at LUCI
+
+### Preheader
+A concourse, conference break, and sportsbook make the beta concrete.
+
 ### Body
-[OPENING — one job for this email; not written yet]
+Dear #Name#,
 
-[COVERAGE — expand coverage bullets into short paragraphs later]
+The private preview stays close to real property work:
 
-[ASSET — agenda for registrants / [WEBINAR REGISTRATION URL] for nonregistrants]
+1. A concourse lead opens only the controls approved for that zone.
 
-[CTA — Review the agenda or register. Link: [CTA URL]]
+2. A conference team adjusts grouped audio zones during the break without opening controls for the rest of the building.
+
+3. A sportsbook operator confirms what each display shows and checks the activity record behind a change.
+
+Three workflows, no broad product tour. Each keeps the approved operating limits clear.
+
+[IF REGISTERED] Review the agenda: [AGENDA LINK]
+
+[IF NOT REGISTERED] Register for the private preview: [REGISTRATION LINK]
+
+### Word count
+**90 words** from greeting through CTA, excluding the signature.
 
 ### Signature
 [NAME]
@@ -45,6 +110,20 @@ Dear #Name#,
 LUCI Systems
 [EMAIL] · [PHONE]
 
-### Notes for later write
-- From: Marketing
-- AC merge tags: keep `#Name#` as Jane specified; flag if AC needs `%FIRSTNAME%` later
+## Automation notes
+Render exactly one CTA by recipient state: agenda for registrants, registration for nonregistrants. Suppress active opportunities and anyone in an active Mark or Mike conversation. A reply or booking stops automation; opens and ordinary clicks do not trigger a sales handoff.
+
+## Guardrail audit
+r3 changes: Skipped the client-retention claim because WARM-PREVIEW-01 already carries the cycle's relationship proof. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.
+
+## r3 changes:
+- Whole-campaign scene: concourse, conference break, and sportsbook preview workflows.
+- Sender story, product-definition cadence, partnership language, claim use, subjects, preheader, and count were checked against the other 26 finals.
+
+## Placeholders to fill
+- [AGENDA LINK]
+- [EMAIL]
+- [NAME]
+- [PHONE]
+- [REGISTRATION LINK]
+- [TITLE]
