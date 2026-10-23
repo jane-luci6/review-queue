@@ -1,84 +1,98 @@
 # WARM-RESPONSE-01 — Immediate response
 
-- **Audience:** Warm prospects who reply, book, or request follow-up
+- **Audience:** Warm prospects who replied, booked, or asked for follow-up
 - **Cycle:** After a warm response
 - **Timing:** Immediately after the reply, booking, or request
-- **Purpose:** Acknowledge the response and confirm that Mark will follow up from the context already provided.
-- **CTA:** Reply or choose a time.
-- **Status:** draft v1 for Jane review
+- **Purpose:** Confirm receipt and tell the prospect that Mark has the handoff.
+- **CTA:** Reply with any added context.
+- **Status:** draft r2 for Jane review
 
 ## Strategy
 
 ### What we’re writing and why
-A transactional acknowledgement that confirms a human next step and removes uncertainty after the prospect responds.
+A transactional acknowledgement that works for replies, requests, and booking-only responses.
 
 ### For whom
-Warm prospects who have raised their hand through a reply, booking, or request and should no longer receive campaign persuasion.
+People who already raised a hand and should receive no more campaign persuasion.
 
 ### Best way to reach them
-Send immediately, keep the note to about 60 words, confirm Mark’s follow-up, and leave a reply and optional booking path.
+Send immediately, make reply the primary action, and show the calendar only when the person has not booked.
 
 ### How to make impact while staying professional
-Sound attentive by promising continuity from the prospect’s note, not by recapping LUCI or adding a feature claim.
+Use one plain reassurance: Mark has the handoff, and the prospect will not repeat anything already shared.
 
 ### Primary message
-The prospect’s response has been received, and Mark will continue from it without asking them to repeat their question or request.
+Mark has the response or booking and will continue without asking the prospect to repeat anything already shared.
 
 ## Three directions
 
-### Direction 1 — Received and routed
+### Direction 1 — Mark has it
+_Acknowledge every response type without assuming a written note._
+
 Dear #Name#,
 
-Thanks for getting back in touch about LUCI. We received your note, and Mark will continue from what you sent so you will not need to repeat the question or request.
+Thanks for getting back in touch. Mark has your response or booking and will take it from here. You will not have to repeat anything you already shared.
 
-If there is anything else you want him to see first, reply here. If choosing a time is easier, use his calendar.
+Reply if there is anything else he should see first.
 
-Choose a time: [BOOKING URL]
+Reply to Mark: [MARK EMAIL]
 
-### Direction 2 — Continue from your note
+If you have not booked: [BOOKING URL]
+
+### Direction 2 — The handoff is complete
+_Confirm ownership and keep added context optional._
+
 Dear #Name#,
 
-Thank you for your response. Mark has the context you shared and will pick up from there directly.
+Your response reached Mark, and he will continue from there. No inbox relay race.
 
-You can reply to add anything else, or choose a time if you would rather put the next conversation on the calendar now.
+If you want to add context before he follows up, reply directly.
 
-Choose a time: [BOOKING URL]
+Reply to Mark: [MARK EMAIL]
 
-### Direction 3 — A human next step
+Calendar if needed: [BOOKING URL]
+
+### Direction 3 — One human next step
+_State who owns the next step in the shortest form._
+
 Dear #Name#,
 
-We received your LUCI response. The next step is a personal follow-up from Mark, based on the question or request you already sent.
+Thanks for raising your hand. Mark has the next step and will follow up personally. You do not need to submit the same context twice.
 
-Reply here if you want to add context. You can also choose a time for the conversation directly.
+Add anything else by reply.
 
-Choose a time: [BOOKING URL]
+Reply to Mark: [MARK EMAIL]
+
+Optional calendar: [BOOKING URL]
 
 ## Why the final won
-**Direction 1 — Received and routed**
+**Mark has it**
 
-It sounds immediate, identifies Mark, and explicitly saves the prospect from repeating their context. The final keeps the optional booking path secondary to the acknowledgement.
+It stays truthful for a reply, request, or booking-only response, names the owner, and makes reply primary while the calendar remains conditional.
 
 ## Final copy
 
 ### Subject lines
-1. **Confirming:** We received your LUCI note
-2. **Personal:** Mark will follow up from here
-3. **Practical:** Your next step with LUCI
+1. **Confirming:** Mark has your response
+2. **Warm:** You will not need to repeat yourself
+3. **Practical:** Add anything Mark should see
 
 ### Preheader
-Mark will continue from your note, so you will not need to repeat the context.
+Mark has the handoff and will continue from here.
 
 ### Body
 Dear #Name#,
 
-Thanks for getting back in touch about LUCI. We received your note, and Mark will continue from what you sent so you will not need to repeat the question or request.
+Thanks for getting back in touch. Mark has your response or booking and will take it from here. You will not have to repeat anything you already shared.
 
-If there is anything else you want him to see first, reply here. If choosing a time is easier, use his calendar.
+Reply if there is anything else he should see first.
 
-Choose a time: [BOOKING URL]
+Reply to Mark: [MARK EMAIL]
+
+If you have not booked: [BOOKING URL]
 
 ### Word count
-**60 words** from greeting through CTA, excluding the signature.
+**52 words** from greeting through CTA, excluding the signature.
 
 ### Signature
 [NAME]
@@ -87,19 +101,20 @@ LUCI Systems
 [EMAIL] · [PHONE]
 
 ## Automation notes
-- Stop marketing automation before sending this acknowledgement.
-- Assign the response to Mark and suppress all other campaign or nurture cycles.
-- Do not wait for another engagement signal.
-- Use the booking path only when the prospect has not already booked.
+Stop marketing automation before sending this acknowledgement. Assign the response to Mark and suppress every other campaign or nurture cycle. Keep reply primary. Omit the calendar line when the prospect already booked.
 
 ## Guardrail audit
-- This is transactional and contains no product pitch.
-- It acknowledges receipt and names the human follow-up.
-- It contains no product asset, timing promise, beta claim, or client-retention claim.
-- Omit the booking line when the prospect has already booked.
+r2 changes: The acknowledgement now works for replies, requests, and booking-only responses without inventing a note. It adds one warm reassurance and makes reply the sole primary CTA; the calendar remains conditional and secondary. The retention claim stays out because this is transactional. No product pitch, date or availability claim, product asset, named account, price, percentage, or passive construction appears.
+
+## r2 changes:
+- Re-edited for light, sharp human voice and one earned human line.
+- Added cold-reader product context where the product appears.
+- Reduced the message to one primary CTA and kept any secondary link quiet or conditional.
+- Recounted the final body with whitespace splitting and synchronized this scaffold to the JSON source.
 
 ## Placeholders to fill
-- [BOOKING URL] — omit if already booked
+- [MARK EMAIL]
+- [BOOKING URL]
 - [NAME]
 - [TITLE]
 - [EMAIL]

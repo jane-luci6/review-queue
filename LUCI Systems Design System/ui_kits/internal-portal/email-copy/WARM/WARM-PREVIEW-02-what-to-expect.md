@@ -1,108 +1,105 @@
 # WARM-PREVIEW-02 — What to expect
 
-- **Audience:** Selected high-intent warm prospects not in an active sales conversation
-- **Cycle:** Selected pre-launch preview
+- **Audience:** Chosen private-preview prospects, with one recipient-state CTA rendered for each person
+- **Cycle:** Selected private preview
 - **Timing:** 7–10 days before the webinar
-- **Purpose:** Show three concrete changes they will see. Registrants receive agenda content; nonregistrants receive another registration opportunity.
-- **CTA:** Review the agenda or register.
-- **Status:** draft v1 for Jane review
+- **Purpose:** Show three concrete workflows and render one action by registration state.
+- **CTA:** Review the agenda or register — render one conditional CTA.
+- **Status:** draft r2 for Jane review
 
 ## Strategy
 
 ### What we’re writing and why
-A second touch that earns attention by showing exactly what has changed, rather than repeating the invitation. It gives the selected audience three product behaviors to assess against their own operation, then routes registrants and nonregistrants to different next steps in one shared send.
+A second touch that earns attention with three observable workflows instead of another invitation recap.
 
 ### For whom
-Past-demo and serious past-request prospects who may remember an earlier version of LUCI but have not committed to another conversation. Operations should recognize room and screen workflows; IT should recognize shared visibility, activity history, monitoring, and access control.
+Earlier evaluators who may recall the old product but need a fast, concrete reason to attend.
 
 ### Best way to reach them
-Send from the same named LUCI contact 7–10 days before the webinar. Use three numbered changes for fast scanning, connect them with the programming-control theme, and close with two labeled lines: agenda for registrants and registration for nonregistrants.
+Send from Mark 7–10 days before the session. Render one CTA by registration state: agenda for registrants or registration for everyone else.
 
 ### How to make impact while staying professional
-Make the second email more concrete than the first. The recipient’s prior evaluation justifies going directly into product behavior. Keep the list selective, not exhaustive, and leave the deeper written detail to the LUCI Upgrade Guide.
+Use a bartender, a ballroom changeover, and a wall check so the beta change feels operational rather than abstract.
 
 ### Primary message
-The private preview will show three concrete ways New LUCI gives property teams more direct control while the LUCI team stays alongside them.
+The preview will show three concrete workflows that put more daily control in staff hands without reducing LUCI support.
 
-## Three draft directions
+## Three directions
 
-### Direction 1 — Three operating changes
+### Direction 1 — Three scenes
+_Show the change through three people doing real work._
+
 Dear #Name#,
 
-Because you’ve looked seriously at LUCI before, this preview goes past a general introduction. It focuses on three changes you can assess against the way your property operates:
+LUCI brings a property’s A/V into one operating interface; New LUCI is in beta and gives staff more direct control while our team keeps monitoring, diagnosing, and supporting.
 
-1. Approved venue-panel controls, Staging, and audio groups.
-2. A customizable interface, flexible live maps, and live screen views.
-3. Audit trails, live monitoring, reporting, and sign-in and session control.
+You will see three scenes: a bartender with only the approved controls for that bar, a ballroom team staging screens and audio before a changeover, and an operator checking what a wall shows from the map.
 
-Already registered? Review the agenda: [AGENDA LINK]
+No scavenger hunt through menus. Just three workflows worth judging.
 
-Not registered? Reserve a place: [REGISTRATION LINK]
+[IF REGISTERED] Review the agenda: [AGENDA LINK]
+[IF NOT REGISTERED] Register: [REGISTRATION LINK]
 
-Read the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]
+### Direction 2 — From setup to proof
+_Organize the preview as one sequence from preparation to verification._
 
-### Direction 2 — From cue to confirmation
 Dear #Name#,
 
-The private preview will follow a practical sequence: prepare screens, sources, and audio behind the scenes; apply the change when the room is ready; then confirm what is playing and review what happened.
+LUCI brings a property’s A/V into one operating interface. New LUCI is in beta and moves more of the daily sequence into staff hands: prepare screens and audio, apply the change on cue, verify the result, and check the activity record. Our team still monitors and supports the platform.
 
-New LUCI is in beta, putting more programming power in the property team’s hands without leaving the team on its own.
+The preview follows that sequence, not a tour of every button.
 
-Already registered? See the agenda: [AGENDA LINK]
+[IF REGISTERED] Open the agenda: [AGENDA LINK]
+[IF NOT REGISTERED] Reserve your place: [REGISTRATION LINK]
 
-Still deciding? Register here: [REGISTRATION LINK]
+### Direction 3 — One room, one wall, one record
+_Use three memorable nouns to make the preview easy to scan._
 
-Written product view: LUCI Upgrade Guide — [LUCI UPGRADE GUIDE URL]
-
-### Direction 3 — One view for Operations and IT
 Dear #Name#,
 
-You have seen LUCI before. This private preview focuses on how the new beta gives Operations and IT a clearer shared operating view.
+Here is what the private preview covers: one room, one wall, one record. LUCI brings a property’s A/V into one operating interface; New LUCI is in beta and lets staff stage a room change, confirm a wall’s content, and see who changed what while our team continues monitoring and support.
 
-Operations will see venue controls, Staging, audio groups, and live screen views. IT will see flexible maps, audit history, monitoring, reporting, and sign-in and session control. Both teams get more direct authority, with the LUCI team still alongside the property.
+Three useful tests beat a feature parade.
 
-Agenda for registrants: [AGENDA LINK]
-
-Registration for everyone still deciding: [REGISTRATION LINK]
-
-LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]
+[IF REGISTERED] Review the agenda: [AGENDA LINK]
+[IF NOT REGISTERED] Register: [REGISTRATION LINK]
 
 ## Why the final won
-**Direction 1 — Three operating changes**
+**Three scenes**
 
-It delivers the promised three changes in the clearest scan and uses the recipient’s prior LUCI context to skip a generic introduction. The final borrows Direction 2’s cue-to-confirmation logic and Direction 3’s shared Operations-and-IT relevance.
+It turns each capability into a scene the reader can picture and keeps the two audience states from seeing competing actions. The final borrows Direction 2’s setup-to-proof progression.
 
 ## Final copy
 
 ### Subject lines
-1. **Practical:** Three changes to assess in New LUCI
-2. **Curious:** From room control to proof of what happened
-3. **Warm:** Since your last look at LUCI
+1. **Practical:** Three workflows in the private preview
+2. **Curious:** What can a bartender control now?
+3. **Warm:** A useful second look at LUCI
 
 ### Preheader
-See the room, view, and oversight changes we’ll cover in the private preview.
+A bar, a ballroom, and a wall make the beta change concrete.
 
 ### Body
 Dear #Name#,
 
-Because you’ve looked seriously at LUCI before, this preview goes past a general introduction. It focuses on three changes you can assess against the way your property operates:
+LUCI brings a property’s A/V into one operating interface; New LUCI is in beta and gives staff more direct control while our team keeps monitoring, diagnosing, and supporting.
 
-1. Control where work happens: approved venue-panel controls, Staging, and audio groups.
+You will see three scenes:
 
-2. Shape the operating view: a customizable interface, flexible live maps, and live screen views.
+1. A bartender opens only the controls approved for that bar.
 
-3. See what happened: audit trails, live monitoring, reporting, and sign-in and session control.
+2. A ballroom team stages screens, sources, and audio, then applies the change on cue.
 
-The common thread is more programming power in your team’s hands, with the LUCI team still alongside the property.
+3. An operator checks what a wall shows and sees who changed it.
 
-Already registered? Review the agenda: [AGENDA LINK]
+No scavenger hunt through menus. Just three workflows worth judging against your own building.
 
-Not registered? Reserve a place: [REGISTRATION LINK]
+[IF REGISTERED] Review the agenda: [AGENDA LINK]
 
-Read the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]
+[IF NOT REGISTERED] Register for the private preview: [REGISTRATION LINK]
 
 ### Word count
-**113 words** from greeting through CTA, excluding the signature.
+**105 words** from greeting through CTA, excluding the signature.
 
 ### Signature
 [NAME]
@@ -111,20 +108,21 @@ LUCI Systems
 [EMAIL] · [PHONE]
 
 ## Automation notes
-Use one shared send with two visibly labeled recipient-state lines. Suppress active opportunities and anyone in an active Mark or Mike conversation. A reply or booked meeting stops marketing automation; opens, agenda clicks, guide clicks, and ordinary registration-page clicks do not trigger a sales handoff. Keep each recipient in only the cycle matching the current stage.
+Render exactly one CTA by recipient state: agenda for registrants, registration for nonregistrants. Suppress active opportunities and anyone in an active Mark or Mike conversation. A reply or booking stops automation; opens and ordinary clicks do not trigger a sales handoff.
 
 ## Guardrail audit
-- Exactly three product changes appear; the email does not become a full feature inventory.
-- New LUCI is treated as a beta with no release or availability date.
-- The LUCI Upgrade Guide is the only linked product-detail asset.
-- The two CTA paths are labeled so registrants are not asked to register again.
-- More direct control is paired with the LUCI team staying alongside the property.
-- The retention claim is intentionally omitted because email 1 already carries it and repetition would weaken this email’s concrete agenda job.
-- No customer ownership, upgrade process, sales-demo, hardware, vendor, pricing, or unsupported proof language appears.
-- Body is under 150 words; preheader and all subject lines meet their character limits.
+r2 changes: The final now defines LUCI and the beta change, uses three concrete scenes, adds one dry human line, and requires one conditional CTA per recipient. The retention claim stays out because email 01 already uses it and this email must earn attendance through substance. No date or availability claim, product-detail link, named account, price, percentage, or passive construction appears.
+
+## r2 changes:
+- Re-edited for light, sharp human voice and one earned human line.
+- Added cold-reader product context where the product appears.
+- Reduced the message to one primary CTA and kept any secondary link quiet or conditional.
+- Recounted the final body with whitespace splitting and synchronized this scaffold to the JSON source.
 
 ## Placeholders to fill
+- [NAME]
 - [AGENDA LINK]
 - [REGISTRATION LINK]
-- [LUCI UPGRADE GUIDE URL]
-- [NAME], [TITLE], [EMAIL], [PHONE]
+- [TITLE]
+- [EMAIL]
+- [PHONE]

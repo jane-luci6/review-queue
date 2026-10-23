@@ -1,303 +1,298 @@
 {
   "track": "Warm prospects — selected private preview",
-  "track_strategy": "Re-engage only people who previously completed a LUCI demo or seriously pursued one. The five-email ladder moves from recognition and selective access, to concrete product changes, to pure logistics, then splits into a human attendee follow-up and an on-demand no-show path. The history is acknowledged without implying current use or customer status. New LUCI remains in beta, greater property-team control always keeps the LUCI partnership visible, and the event is consistently a private preview rather than a sales demo.",
+  "track_strategy": "Invite only past-demo and serious-request prospects to a private beta preview. The sequence earns attention through prior context, three concrete workflows, clean logistics, a brief note from Mark, and an on-demand recording for no-shows. Each message has one primary action. The emails define LUCI and the beta change when product context appears, while logistics and personal notes stay plain.",
   "open_questions": [
+    "Jane-only decision: use Mark as the default recognizable LUCI sender for WARM-PREVIEW-01 through 03, with the [NAME] signature placeholder retained until Jane confirms.",
     "Confirm [WEBINAR DATE], [WEBINAR TIME] including time zone, [WEBINAR PLATFORM], [REGISTRATION LINK], [AGENDA LINK], [CALENDAR LINK], [JOIN LINK], and [RECORDING LINK].",
-    "Should emails 01–03 use Mark as the named sender, another recognizable LUCI contact, or a Marketing sender with a named signature?",
-    "Will [AGENDA LINK] point to a standalone agenda, the registration confirmation page, or a calendar event?",
     "Confirm Mark’s direct [MARK EMAIL] and [BOOKING URL].",
-    "The source plan ties broader warm outreach to a later market milestone, but this selected cycle intentionally states no product-availability timing."
+    "Will [AGENDA LINK] point to a standalone agenda, the registration confirmation page, or a calendar event?"
   ],
   "emails": [
     {
       "id": "WARM-PREVIEW-01",
-      "cycle": "Selected pre-launch preview",
+      "cycle": "Selected private preview",
       "title": "Private preview invitation",
       "timing": "About 2–3 weeks before the preview webinar; past-demo and serious past-request prospects only",
-      "sender": "Named LUCI contact via Marketing",
-      "audience": "Selected high-intent warm prospects who completed a demo or seriously pursued one and are not in an active sales conversation",
-      "primary_message": "Because you took a serious look at LUCI before, you are invited to a private preview of the beta and the greater day-to-day control it puts in property teams’ hands.",
+      "sender": "Mark (default for Jane confirmation); signature remains [NAME]",
+      "audience": "Past-demo and serious-request prospects chosen for the private preview and not in an active sales conversation",
+      "primary_message": "Their earlier time with LUCI earned a private look at the beta and the specific daily controls it adds.",
       "strategy": {
-        "what_why": "A selective invitation that reopens a serious prior conversation through an early product view, without restarting a sales pitch.",
-        "for_whom": "People with meaningful prior LUCI evaluation who do not necessarily use LUCI and may not want another introductory meeting.",
-        "reach": "Send from a named LUCI contact about 2–3 weeks before the webinar, recognize the prior investment first, and keep registration as the primary action.",
-        "impact": "Make selection feel earned, define the change concretely, and use the client-retention line once as evidence that more direct control does not reduce the LUCI partnership."
+        "what_why": "A selective invitation that recognizes prior effort and gives the recipient one clear reason to register.",
+        "for_whom": "People who evaluated LUCI seriously before, may remember little now, and do not use it today.",
+        "reach": "Send from Mark about 2–3 weeks before the session. Define LUCI and the beta change in one line, then make registration the only primary action.",
+        "impact": "Make selection feel earned, keep the product explanation concrete, and use the retention line as reassurance that more direct control does not weaken the relationship."
       },
       "directions": [
         {
-          "name": "Your prior look earns the early one",
-          "summary": "Use the recipient’s earlier investment as the reason for selected access.",
-          "draft": "Dear #Name#,\n\nYou spent meaningful time with LUCI before. Since then, a new version has moved into beta, with more day-to-day programming control on a faster, more responsive foundation.\n\nWe’re inviting a small group of people who previously completed a LUCI demo or seriously pursued one to a private preview on [WEBINAR DATE] at [WEBINAR TIME] on [WEBINAR PLATFORM]. This is an early product look, not a sales demo.\n\nRead the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]\n\nRegister for the private preview: [REGISTRATION LINK]"
+          "name": "You earned the early look",
+          "summary": "Make prior effort the reason for the invitation.",
+          "draft": "Dear #Name#,\n\nYou spent real time with LUCI before, so we chose you for a private preview. LUCI gives operators one interface for a property’s A/V; New LUCI is in beta and gives staff more direct control over rooms, screen views, activity, and access while our team continues to monitor, diagnose, and support.\n\nNo parade, no sales-demo theater; just a useful first look on [WEBINAR DATE] at [WEBINAR TIME] on [WEBINAR PLATFORM].\n\nRegister for the private preview: [REGISTRATION LINK]"
         },
         {
-          "name": "See what changed",
-          "summary": "Invite another look by moving quickly from their prior interest to concrete control changes.",
-          "draft": "Dear #Name#,\n\nIf LUCI has stayed somewhere on your list since we last spoke, this is the right time for another look. New LUCI is in beta, with more direct control over rooms, views, data, and access while the LUCI team stays alongside the property.\n\nThis selected private preview is for people who previously spent real time evaluating LUCI. Join us on [WEBINAR DATE] at [WEBINAR TIME] on [WEBINAR PLATFORM].\n\nReview the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]\n\nRegister: [REGISTRATION LINK]"
+          "name": "The useful short version",
+          "summary": "Assume weak recall and define the product before the invitation.",
+          "draft": "Dear #Name#,\n\nIf LUCI has become a faint memory, here is the useful short version: it runs a property’s A/V from one interface. New LUCI is in beta and puts more room changes, screen checks, activity history, and access control in staff hands, with our team still monitoring and supporting the work.\n\nWe chose a small group of earlier evaluators for a private preview on [WEBINAR DATE] at [WEBINAR TIME].\n\nRegister: [REGISTRATION LINK]"
         },
         {
-          "name": "Control without a handoff",
-          "summary": "Lead with more property-team authority and use the continuing relationship as reassurance.",
-          "draft": "Dear #Name#,\n\nMore programming power is moving into the property team’s hands. New LUCI is in beta on a faster, more responsive foundation, with direct control across rooms, views, data, and access.\n\nThat does not mean stepping away from the partnership. The LUCI team remains alongside the property, and we’ve never lost a client.\n\nBecause you took a serious look at LUCI before, we’re inviting you to a private preview on [WEBINAR DATE] at [WEBINAR TIME] on [WEBINAR PLATFORM].\n\nRegister: [REGISTRATION LINK]"
+          "name": "Control with continuity",
+          "summary": "Lead with the beta change and make the relationship proof earn its place.",
+          "draft": "Dear #Name#,\n\nLUCI gives operators one interface for a property’s A/V. New LUCI is in beta and gives operators more direct control over room settings, live screen views, activity history, and access. Our team still monitors, diagnoses, and supports the platform.\n\nThat continuity matters: we've never lost a client. Because you looked seriously at LUCI before, we would like you at the private preview on [WEBINAR DATE].\n\nRegister: [REGISTRATION LINK]"
         }
       ],
-      "winner": "Your prior look earns the early one",
-      "why_won": "It makes the recipient’s prior investment the reason for contact, so the selection feels earned rather than promotional. The final borrows the room-to-access specificity and the continuing-partnership proof from the other directions.",
+      "winner": "You earned the early look",
+      "why_won": "It makes prior effort the reason for contact, gives a cold reader the full product-and-change line, and keeps one action. The final borrows the continuity proof from Direction 3.",
       "subject_lines": [
         {
           "mood": "Warm",
-          "text": "You took a serious look. Here’s the next one."
+          "text": "A private look, because you looked before"
         },
         {
           "mood": "Curious",
-          "text": "What changed in LUCI since we last spoke?"
+          "text": "What changed since you saw LUCI?"
         },
         {
           "mood": "Direct",
-          "text": "Invitation: a private New LUCI preview"
+          "text": "Private New LUCI preview invitation"
         }
       ],
-      "preheader": "An early beta look for people who already spent meaningful time with LUCI.",
+      "preheader": "A selected beta preview with one useful look at what changed.",
       "body": [
         "Dear #Name#,",
-        "You spent meaningful time with LUCI before. Since then, a new version has moved into beta, with more day-to-day programming control on a faster, more responsive foundation.",
-        "We’re inviting a small group of people who previously completed a LUCI demo or seriously pursued one to a private preview on [WEBINAR DATE] at [WEBINAR TIME] on [WEBINAR PLATFORM]. This is an early product look, not a sales demo.",
-        "You’ll see greater control across rooms, views, data, and access. More control does not mean less partnership: we’ve never lost a client, and the LUCI team stays alongside the property as property teams take on more day-to-day programming.",
-        "Read the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]",
+        "You spent real time with LUCI before, so we chose you for a private preview. LUCI gives operators one interface for a property’s A/V; New LUCI is in beta and gives staff more direct control over rooms, screen views, activity, and access while our team continues to monitor, diagnose, and support.",
+        "No parade, no sales-demo theater; just a useful first look on [WEBINAR DATE] at [WEBINAR TIME] on [WEBINAR PLATFORM].",
+        "That continuity matters: we've never lost a client.",
         "Register for the private preview: [REGISTRATION LINK]"
       ],
       "cta_label": "Register for the private preview",
-      "word_count": 123,
-      "assets_used": [
-        "LUCI Upgrade Guide"
-      ],
-      "automation_notes": "Send only to selected past-demo and serious past-request contacts. Suppress active opportunities and anyone in an active Mark or Mike conversation. A reply or booked meeting stops marketing automation; opens and ordinary clicks remain reporting signals only. Do not place the recipient in another stage cycle at the same time.",
-      "guardrail_notes": "The event is a private beta preview, explicitly not a sales demo. No product-availability date appears. The LUCI Upgrade Guide is the only product-detail asset. Greater control is paired with the continuing LUCI partnership. The exact line “we’ve never lost a client” appears once, where it supports that partnership; it is skipped in the other four emails. The recipient’s history is acknowledged without implying current use, customer status, or an active deal."
+      "word_count": 87,
+      "assets_used": [],
+      "automation_notes": "Send only to chosen past-demo and serious-request contacts. Suppress active opportunities and anyone in an active Mark or Mike conversation. A reply or booking stops marketing automation; opens and ordinary clicks remain reporting signals. Keep each person in one stage cycle.",
+      "guardrail_notes": "r2 changes: Mark is the proposed sender pending Jane’s decision; the opening now defines LUCI and the beta change, adds one human line, and leaves registration as the sole primary action. The exact line “we've never lost a client” earns its place as reassurance about continuity. No date or availability claim, product-detail link, named account, price, percentage, or passive construction appears."
     },
     {
       "id": "WARM-PREVIEW-02",
-      "cycle": "Selected pre-launch preview",
+      "cycle": "Selected private preview",
       "title": "What to expect",
       "timing": "7–10 days before the webinar",
-      "sender": "Same named LUCI contact as email 01",
-      "audience": "Selected high-intent warm prospects not in an active sales conversation",
-      "primary_message": "The private preview will show three concrete ways New LUCI gives property teams more direct control while the LUCI team stays alongside them.",
+      "sender": "Mark (default for Jane confirmation); signature remains [NAME]",
+      "audience": "Chosen private-preview prospects, with one recipient-state CTA rendered for each person",
+      "primary_message": "The preview will show three concrete workflows that put more daily control in staff hands without reducing LUCI support.",
       "strategy": {
-        "what_why": "A second touch that earns attention with three product behaviors instead of repeating the invitation.",
-        "for_whom": "Past-demo and serious past-request prospects who may remember an earlier LUCI but have not committed to another conversation.",
-        "reach": "Send 7–10 days before the webinar, use three numbered changes, and close with clearly labeled agenda and registration paths.",
-        "impact": "Use the recipient’s prior evaluation to move directly into concrete room, view, and oversight changes, with the guide as the deeper written view."
+        "what_why": "A second touch that earns attention with three observable workflows instead of another invitation recap.",
+        "for_whom": "Earlier evaluators who may recall the old product but need a fast, concrete reason to attend.",
+        "reach": "Send from Mark 7–10 days before the session. Render one CTA by registration state: agenda for registrants or registration for everyone else.",
+        "impact": "Use a bartender, a ballroom changeover, and a wall check so the beta change feels operational rather than abstract."
       },
       "directions": [
         {
-          "name": "Three operating changes",
-          "summary": "Deliver the promised changes in the fastest room, view, and oversight scan.",
-          "draft": "Dear #Name#,\n\nBecause you’ve looked seriously at LUCI before, this preview goes past a general introduction. It focuses on three changes you can assess against the way your property operates:\n\n1. Approved venue-panel controls, Staging, and audio groups.\n2. A customizable interface, flexible live maps, and live screen views.\n3. Audit trails, live monitoring, reporting, and sign-in and session control.\n\nAlready registered? Review the agenda: [AGENDA LINK]\n\nNot registered? Reserve a place: [REGISTRATION LINK]\n\nRead the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]"
+          "name": "Three scenes",
+          "summary": "Show the change through three people doing real work.",
+          "draft": "Dear #Name#,\n\nLUCI brings a property’s A/V into one operating interface; New LUCI is in beta and gives staff more direct control while our team keeps monitoring, diagnosing, and supporting.\n\nYou will see three scenes: a bartender with only the approved controls for that bar, a ballroom team staging screens and audio before a changeover, and an operator checking what a wall shows from the map.\n\nNo scavenger hunt through menus. Just three workflows worth judging.\n\n[IF REGISTERED] Review the agenda: [AGENDA LINK]\n[IF NOT REGISTERED] Register: [REGISTRATION LINK]"
         },
         {
-          "name": "From cue to confirmation",
-          "summary": "Organize the preview as one workflow from preparation through proof.",
-          "draft": "Dear #Name#,\n\nThe private preview will follow a practical sequence: prepare screens, sources, and audio behind the scenes; apply the change when the room is ready; then confirm what is playing and review what happened.\n\nNew LUCI is in beta, putting more programming power in the property team’s hands without leaving the team on its own.\n\nAlready registered? See the agenda: [AGENDA LINK]\n\nStill deciding? Register here: [REGISTRATION LINK]\n\nWritten product view: LUCI Upgrade Guide — [LUCI UPGRADE GUIDE URL]"
+          "name": "From setup to proof",
+          "summary": "Organize the preview as one sequence from preparation to verification.",
+          "draft": "Dear #Name#,\n\nLUCI brings a property’s A/V into one operating interface. New LUCI is in beta and moves more of the daily sequence into staff hands: prepare screens and audio, apply the change on cue, verify the result, and check the activity record. Our team still monitors and supports the platform.\n\nThe preview follows that sequence, not a tour of every button.\n\n[IF REGISTERED] Open the agenda: [AGENDA LINK]\n[IF NOT REGISTERED] Reserve your place: [REGISTRATION LINK]"
         },
         {
-          "name": "One view for Operations and IT",
-          "summary": "Split the concrete changes by team, then reunite them around shared control.",
-          "draft": "Dear #Name#,\n\nYou have seen LUCI before. This private preview focuses on how the new beta gives Operations and IT a clearer shared operating view.\n\nOperations will see venue controls, Staging, audio groups, and live screen views. IT will see flexible maps, audit history, monitoring, reporting, and sign-in and session control. Both teams get more direct authority, with the LUCI team still alongside the property.\n\nAgenda for registrants: [AGENDA LINK]\n\nRegistration for everyone still deciding: [REGISTRATION LINK]\n\nLUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]"
+          "name": "One room, one wall, one record",
+          "summary": "Use three memorable nouns to make the preview easy to scan.",
+          "draft": "Dear #Name#,\n\nHere is what the private preview covers: one room, one wall, one record. LUCI brings a property’s A/V into one operating interface; New LUCI is in beta and lets staff stage a room change, confirm a wall’s content, and see who changed what while our team continues monitoring and support.\n\nThree useful tests beat a feature parade.\n\n[IF REGISTERED] Review the agenda: [AGENDA LINK]\n[IF NOT REGISTERED] Register: [REGISTRATION LINK]"
         }
       ],
-      "winner": "Three operating changes",
-      "why_won": "It delivers the promised three changes in the clearest scan and uses the recipient’s prior LUCI context to skip a generic introduction. The final borrows the workflow logic and shared Operations-and-IT relevance from the other directions.",
+      "winner": "Three scenes",
+      "why_won": "It turns each capability into a scene the reader can picture and keeps the two audience states from seeing competing actions. The final borrows Direction 2’s setup-to-proof progression.",
       "subject_lines": [
         {
           "mood": "Practical",
-          "text": "Three changes to assess in New LUCI"
+          "text": "Three workflows in the private preview"
         },
         {
           "mood": "Curious",
-          "text": "From room control to proof of what happened"
+          "text": "What can a bartender control now?"
         },
         {
           "mood": "Warm",
-          "text": "Since your last look at LUCI"
+          "text": "A useful second look at LUCI"
         }
       ],
-      "preheader": "See the room, view, and oversight changes we’ll cover in the private preview.",
+      "preheader": "A bar, a ballroom, and a wall make the beta change concrete.",
       "body": [
         "Dear #Name#,",
-        "Because you’ve looked seriously at LUCI before, this preview goes past a general introduction. It focuses on three changes you can assess against the way your property operates:",
-        "1. Control where work happens: approved venue-panel controls, Staging, and audio groups.",
-        "2. Shape the operating view: a customizable interface, flexible live maps, and live screen views.",
-        "3. See what happened: audit trails, live monitoring, reporting, and sign-in and session control.",
-        "The common thread is more programming power in your team’s hands, with the LUCI team still alongside the property.",
-        "Already registered? Review the agenda: [AGENDA LINK]",
-        "Not registered? Reserve a place: [REGISTRATION LINK]",
-        "Read the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]"
+        "LUCI brings a property’s A/V into one operating interface; New LUCI is in beta and gives staff more direct control while our team keeps monitoring, diagnosing, and supporting.",
+        "You will see three scenes:",
+        "1. A bartender opens only the controls approved for that bar.",
+        "2. A ballroom team stages screens, sources, and audio, then applies the change on cue.",
+        "3. An operator checks what a wall shows and sees who changed it.",
+        "No scavenger hunt through menus. Just three workflows worth judging against your own building.",
+        "[IF REGISTERED] Review the agenda: [AGENDA LINK]",
+        "[IF NOT REGISTERED] Register for the private preview: [REGISTRATION LINK]"
       ],
-      "cta_label": "Review the agenda or register",
-      "word_count": 113,
+      "cta_label": "Review the agenda or register — render one conditional CTA",
+      "word_count": 105,
       "assets_used": [
-        "LUCI Upgrade Guide"
+        "Preview agenda"
       ],
-      "automation_notes": "Use one shared send with two visibly labeled recipient-state lines. Suppress active opportunities and anyone in an active Mark or Mike conversation. A reply or booked meeting stops marketing automation; opens, agenda clicks, guide clicks, and ordinary registration-page clicks do not trigger a sales handoff. Keep each recipient in only the cycle matching the current stage.",
-      "guardrail_notes": "Exactly three product changes appear. New LUCI remains in beta and no product-availability date appears. The LUCI Upgrade Guide is the only product-detail asset. The two paths are labeled so registrants are not asked to register again. Greater control is paired with the LUCI team staying alongside the property. The retention claim is skipped because email 01 already carries it and this email’s job is concrete agenda value."
+      "automation_notes": "Render exactly one CTA by recipient state: agenda for registrants, registration for nonregistrants. Suppress active opportunities and anyone in an active Mark or Mike conversation. A reply or booking stops automation; opens and ordinary clicks do not trigger a sales handoff.",
+      "guardrail_notes": "r2 changes: The final now defines LUCI and the beta change, uses three concrete scenes, adds one dry human line, and requires one conditional CTA per recipient. The retention claim stays out because email 01 already uses it and this email must earn attendance through substance. No date or availability claim, product-detail link, named account, price, percentage, or passive construction appears."
     },
     {
       "id": "WARM-PREVIEW-03",
-      "cycle": "Selected pre-launch preview",
+      "cycle": "Selected private preview",
       "title": "Registered-attendee reminder",
       "timing": "2 days before the webinar; registrants only",
-      "sender": "Same named LUCI contact as emails 01–02",
-      "audience": "Registered selected warm prospects",
-      "primary_message": "Your private New LUCI preview details, calendar link, and join link are in one easy-to-retrieve note.",
+      "sender": "Mark (default for Jane confirmation); signature remains [NAME]",
+      "audience": "Registered private-preview prospects",
+      "primary_message": "The event facts, calendar action, and join link sit in one easy-to-find note.",
       "strategy": {
-        "what_why": "A registrant-only logistics reminder whose entire job is to remove attendance friction.",
-        "for_whom": "Selected warm prospects who registered and need accurate timing, platform, calendar, and join details.",
-        "reach": "Send two days before the webinar, put the event facts first, and leave the join link as the final line.",
-        "impact": "Use restraint and reliability; do not add product persuasion, preparation requirements, or urgency."
+        "what_why": "A logistics-only reminder that removes attendance friction.",
+        "for_whom": "People who already registered and need accurate details, not another product argument.",
+        "reach": "Send from Mark two days before the session. Put the facts first, make calendar save the primary action, and present the join link as access information.",
+        "impact": "Sound calm and useful; one lightly human line makes the reminder memorable without turning it into promotion."
       },
       "directions": [
         {
-          "name": "Details first",
-          "summary": "Put every event fact and access link into the fastest scan.",
-          "draft": "Dear #Name#,\n\nYour private New LUCI preview is coming up.\n\nDate: [WEBINAR DATE]\n\nTime: [WEBINAR TIME]\n\nPlatform: [WEBINAR PLATFORM]\n\nAdd it to your calendar now, then return to the join link when the session begins.\n\nAdd to calendar: [CALENDAR LINK]\n\nJoin the private preview: [JOIN LINK]"
+          "name": "Everything in one place",
+          "summary": "Lead with the reason to keep the note.",
+          "draft": "Dear #Name#,\n\nCalendars hide links with remarkable efficiency, so here are both in one place.\n\nDate: [WEBINAR DATE]\nTime: [WEBINAR TIME]\nPlatform: [WEBINAR PLATFORM]\n\nAdd to calendar: [CALENDAR LINK]\n\nJoin link for session time: [JOIN LINK]"
         },
         {
-          "name": "Calendar first",
-          "summary": "Open by acknowledging registration, then make saving the session the immediate action.",
-          "draft": "Dear #Name#,\n\nThanks for registering for the private New LUCI preview.\n\nPlease save the session:\n\n[WEBINAR DATE] at [WEBINAR TIME]\n\n[WEBINAR PLATFORM]\n\nCalendar: [CALENDAR LINK]\n\nWhen it is time to join, use this link: [JOIN LINK]"
+          "name": "Save it now",
+          "summary": "Make the calendar action immediate and the join link easy to retrieve later.",
+          "draft": "Dear #Name#,\n\nYour private preview is on [WEBINAR DATE] at [WEBINAR TIME] on [WEBINAR PLATFORM].\n\nSave it now; future-you has enough tabs open.\n\nAdd to calendar: [CALENDAR LINK]\n\nJoin link: [JOIN LINK]"
         },
         {
           "name": "Keep this note",
-          "summary": "Frame the email as the note to retrieve when the session starts.",
-          "draft": "Dear #Name#,\n\nKeep this note for the private New LUCI preview on [WEBINAR DATE].\n\nThe session begins at [WEBINAR TIME] on [WEBINAR PLATFORM].\n\nAdd it to your calendar: [CALENDAR LINK]\n\nJoin the session: [JOIN LINK]\n\nWe’ll see you there."
+          "summary": "Treat the message as a clean access card.",
+          "draft": "Dear #Name#,\n\nKeep this note for the private preview. It has the details and the link you will need.\n\n[WEBINAR DATE]\n[WEBINAR TIME]\n[WEBINAR PLATFORM]\n\nAdd to calendar: [CALENDAR LINK]\n\nSession access: [JOIN LINK]"
         }
       ],
-      "winner": "Details first",
-      "why_won": "It is the fastest to scan and the easiest to retrieve at session time. The final keeps the other directions’ human tone without adding anything beyond the logistics job.",
+      "winner": "Everything in one place",
+      "why_won": "It gives the reminder a human reason to exist, scans fastest, and makes calendar save the single primary action while preserving the join link as a logistical detail.",
       "subject_lines": [
         {
           "mood": "Direct",
-          "text": "Your private preview is [WEBINAR DATE]"
+          "text": "Your private preview details"
         },
         {
           "mood": "Practical",
-          "text": "Calendar and join links for your preview"
+          "text": "Calendar and join link, in one place"
         },
         {
           "mood": "Warm",
-          "text": "We’ll see you at the New LUCI preview"
+          "text": "We saved you a seat"
         }
       ],
-      "preheader": "[WEBINAR TIME], [WEBINAR PLATFORM], and both access links are inside.",
+      "preheader": "Date, time, platform, calendar, and session access are together inside.",
       "body": [
         "Dear #Name#,",
-        "Your private New LUCI preview is coming up.",
+        "Calendars hide links with remarkable efficiency, so here are both in one place.",
         "Date: [WEBINAR DATE]",
         "Time: [WEBINAR TIME]",
         "Platform: [WEBINAR PLATFORM]",
-        "Add it to your calendar now, then return to the join link when the session begins.",
         "Add to calendar: [CALENDAR LINK]",
-        "Join the private preview: [JOIN LINK]"
+        "Join link for session time: [JOIN LINK]"
       ],
-      "cta_label": "Add to calendar or join the session",
-      "word_count": 46,
+      "cta_label": "Add to calendar",
+      "word_count": 36,
       "assets_used": [],
-      "automation_notes": "Send only to registrants in this selected-preview cycle. Suppress nonregistrants, active opportunities, and anyone in an active Mark or Mike conversation. A reply or booked meeting stops marketing automation; opens and ordinary clicks do not trigger a sales handoff. Do not place the recipient in another stage cycle at the same time.",
-      "guardrail_notes": "The final is logistics only: no feature list, product pitch, customer-upgrade language, or new claim. [WEBINAR DATE] is event timing, not product-availability timing. Only approved webinar placeholders appear. The retention claim and LUCI Upgrade Guide are skipped because neither helps the logistics job."
+      "automation_notes": "Send only to registrants. Suppress nonregistrants, active opportunities, and anyone in an active Mark or Mike conversation. A reply or booking stops automation; opens and ordinary clicks remain reporting signals.",
+      "guardrail_notes": "r2 changes: The reminder now uses Mark as the proposed sender, adds one restrained human line, and makes calendar save the sole primary CTA; the join link remains access information. The retention claim stays out because logistics needs no trust proof. The note contains no product pitch, date or availability claim, product asset, named account, price, percentage, or passive construction."
     },
     {
       "id": "WARM-PREVIEW-04",
-      "cycle": "Selected pre-launch preview",
+      "cycle": "Selected private preview",
       "title": "Personal preview follow-up",
       "timing": "Next business day after the webinar; sent by Mark",
       "sender": "Mark",
-      "audience": "Selected warm prospects who attended the private preview and are not in an active opportunity",
-      "primary_message": "You had prior context and saw the private preview; tell Mark what stood out, then reconnect directly if a conversation would be useful.",
+      "audience": "Private-preview attendees outside active sales conversations",
+      "primary_message": "Mark wants one honest reaction and will continue only if a direct conversation helps.",
       "strategy": {
-        "what_why": "A short personal note from Mark that turns attendance into a real response rather than another campaign touch.",
-        "for_whom": "Attendees who have now seen LUCI at two points in time but are not already in an active opportunity.",
-        "reach": "Send from Mark the next business day, ask one question, and provide both a direct reply address and booking path.",
-        "impact": "Let the question do the work so the note sounds observed and human, not like another product summary."
+        "what_why": "A short personal note that turns attendance into an honest response rather than another campaign touch.",
+        "for_whom": "Attendees with earlier context who can compare what they saw with what they remembered.",
+        "reach": "Send from Mark the next business day, ask one question, and make reply the primary action. Keep the calendar quiet and secondary.",
+        "impact": "Sound as if Mark wrote the note in 30 seconds after seeing the attendee list."
       },
       "directions": [
         {
-          "name": "What stood out this time?",
-          "summary": "Ask the broadest useful question and leave the response open.",
-          "draft": "Dear #Name#,\n\nThanks for joining the private preview. You’d already taken a serious look at LUCI, so I’m curious: what stood out this time?\n\nReply and tell me what you noticed, or choose a time if it would be useful to talk it through directly.\n\nReply to Mark: [MARK EMAIL]\n\nChoose a time: [BOOKING URL]"
+          "name": "What looked useful",
+          "summary": "Ask for one honest reaction without steering it.",
+          "draft": "Dear #Name#,\n\nThanks for joining the private preview. You had seen the platform before, so I’m curious: what looked useful this time, and what did not?\n\nI’ll spare you the survey disguised as a follow-up. Just reply with the room or workflow you would test against your own plans.\n\nReply to Mark: [MARK EMAIL]\n\nIf a call is easier: [BOOKING URL]"
         },
         {
-          "name": "Did anything change your view?",
-          "summary": "Ask whether the beta changed how the recipient thinks about the platform.",
-          "draft": "Dear #Name#,\n\nI appreciated you making time for the private preview. Since you had seen LUCI before, I’d value your read: did anything in the new beta change how you think about the platform?\n\nYou can reply directly, or use my calendar if a short conversation would be easier.\n\nReply: [MARK EMAIL]\n\nCalendar: [BOOKING URL]"
+          "name": "What changed your view",
+          "summary": "Ask whether anything shifted and keep the note conversational.",
+          "draft": "Dear #Name#,\n\nYou had an earlier point of comparison, which makes your read useful. Did anything in the private preview change how you see the platform?\n\nNo scorecard required. Reply with the one thing that landed, or the one thing that still needs an answer.\n\nReply to Mark: [MARK EMAIL]\n\nCalendar if useful: [BOOKING URL]"
         },
         {
-          "name": "Continue the earlier conversation",
-          "summary": "Avoid recap and ask which change best fits the recipient’s operation.",
-          "draft": "Dear #Name#,\n\nThanks for coming back for another look at LUCI. I don’t want to repeat the preview in your inbox. I’d rather ask one question: which change felt most relevant to the way your property operates?\n\nReply here, or choose a time and we can pick up the conversation directly.\n\nReply to Mark: [MARK EMAIL]\n\nChoose a time: [BOOKING URL]"
+          "name": "Pick one workflow",
+          "summary": "Move quickly from attendance to a specific real-world test.",
+          "draft": "Dear #Name#,\n\nThanks for coming back for another look. Rather than replay the session in your inbox, tell me which room or workflow you would put under the microscope first.\n\nI can answer by reply, or we can talk it through.\n\nReply to Mark: [MARK EMAIL]\n\nOptional calendar: [BOOKING URL]"
         }
       ],
-      "winner": "What stood out this time?",
-      "why_won": "It is the most natural human note and asks the broadest useful question without steering the recipient toward a preferred answer. It recognizes that they have seen LUCI at two points in time and does not recap the preview.",
+      "winner": "What looked useful",
+      "why_won": "It sounds like a real note from Mark, invites a useful negative as well as a positive, and keeps reply clearly ahead of the optional calendar.",
       "subject_lines": [
         {
           "mood": "Curious",
-          "text": "What stood out this time?"
+          "text": "What looked useful this time?"
         },
         {
           "mood": "Personal",
-          "text": "A quick follow-up from Mark"
+          "text": "A quick note from Mark"
         },
         {
           "mood": "Direct",
-          "text": "Your read on the private preview"
+          "text": "Your honest read on the preview"
         }
       ],
-      "preheader": "You had seen LUCI before. I’d like to know what landed differently.",
+      "preheader": "One honest reaction is more useful than another recap.",
       "body": [
         "Dear #Name#,",
-        "Thanks for joining the private preview. You’d already taken a serious look at LUCI, so I’m curious: what stood out this time?",
-        "Reply and tell me what you noticed, or choose a time if it would be useful to talk it through directly.",
+        "Thanks for joining the private preview. You had seen the platform before, so I’m curious: what looked useful this time, and what did not?",
+        "I’ll spare you the survey disguised as a follow-up. Just reply with the room or workflow you would test against your own plans.",
         "Reply to Mark: [MARK EMAIL]",
-        "Choose a time: [BOOKING URL]"
+        "If a call is easier: [BOOKING URL]"
       ],
-      "cta_label": "Reply to Mark or choose a time",
-      "word_count": 55,
+      "cta_label": "Reply to Mark",
+      "word_count": 61,
       "assets_used": [],
-      "automation_notes": "Send from Mark the next business day only to attendees who are not in an active opportunity. A reply to [MARK EMAIL] or a booking at [BOOKING URL] stops marketing automation and moves ownership to Sales. Suppress anyone already in an active Mark or Mike conversation. Opens and ordinary clicks do not trigger a separate handoff.",
-      "guardrail_notes": "The email asks one real question and does not restart the product pitch. Prior interest is acknowledged without presuming current use, a deal, or buying intent. The note is first-person and short, with both required response paths. No product asset or product-availability timing appears. The retention claim is skipped because it would make a personal question sound scripted."
+      "automation_notes": "Send from Mark the next business day only to attendees outside active opportunities. A reply or booking stops marketing automation and moves ownership to Sales. Keep the calendar visually secondary and suppress anyone already in an active Mark or Mike conversation.",
+      "guardrail_notes": "r2 changes: The note now asks for an honest positive or negative, adds one lightly witty line, and makes reply the sole primary CTA with the calendar secondary. The retention claim stays out because it would make a personal question sound scripted. No product recap, date or availability claim, asset link, named account, price, percentage, or passive construction appears."
     },
     {
       "id": "WARM-PREVIEW-05",
-      "cycle": "Selected pre-launch preview",
+      "cycle": "Selected private preview",
       "title": "Recording for no-shows",
       "timing": "2–3 business days after the webinar; registrants who did not attend",
       "sender": "Mark",
-      "audience": "Registered selected warm prospects who did not attend and are not in an active opportunity",
-      "primary_message": "You can still get the selected private-preview view on your schedule, with no additional live commitment.",
+      "audience": "Chosen registrants who missed the private preview and remain outside active sales conversations",
+      "primary_message": "The recording gives them the same early product view without another live commitment.",
       "strategy": {
-        "what_why": "A brief note from Mark that preserves the invitation’s value after a missed session.",
-        "for_whom": "Registered no-shows who may still be interested despite a scheduling conflict; absence is not treated as an intent signal.",
-        "reach": "Send from Mark 2–3 business days after the webinar, acknowledge the missed session without guilt, and put the recording first.",
-        "impact": "Make access easy and judgment-free, with the LUCI Upgrade Guide only as a written companion."
+        "what_why": "A brief service note that preserves the value of the invitation after a missed session.",
+        "for_whom": "Registrants who did not attend and may still want the product view on their own time.",
+        "reach": "Send from Mark 2–3 business days later. Put the recording first and the written guide in a quiet secondary line.",
+        "impact": "Remove guilt, define the product change for a cold reader, and let the recording do the work."
       },
       "directions": [
         {
-          "name": "Same early look, on demand",
-          "summary": "Make sure the recipient gets what they registered for without another live ask.",
-          "draft": "Dear #Name#,\n\nI saw you couldn’t make the private preview. No problem. I wanted to make sure you still had the same early look, without another live commitment.\n\nThe recording shows what has changed in New LUCI and how it puts more day-to-day programming control in the property team’s hands while the LUCI team stays alongside it.\n\nWatch the private-preview recording: [RECORDING LINK]\n\nFor a written view, read the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]"
+          "name": "The calendar won",
+          "summary": "Acknowledge the miss without guilt and move directly to the recording.",
+          "draft": "Dear #Name#,\n\nThe calendar won this one. No problem.\n\nLUCI lets staff run a property’s A/V from one place; New LUCI is in beta and gives staff more direct control over room changes, live screen views, activity history, and access while our team keeps monitoring and supporting. The recording shows that work without asking for another live commitment.\n\nWatch the private-preview recording: [RECORDING LINK]\n\nWritten companion: LUCI Upgrade Guide — [LUCI UPGRADE GUIDE URL]"
         },
         {
-          "name": "Recording first",
-          "summary": "Lead with immediate on-demand access, then summarize the beta changes.",
-          "draft": "Dear #Name#,\n\nThe private-preview recording is ready when you have time. Since you registered for the session, I wanted you to have the full product view without needing to find another live date.\n\nNew LUCI is in beta, with more control across rooms, views, data, and access on a faster, more responsive foundation.\n\nWatch the recording: [RECORDING LINK]\n\nRead the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]"
+          "name": "Watch on your time",
+          "summary": "Lead with on-demand access and define the product in one practical line.",
+          "draft": "Dear #Name#,\n\nYou missed the private preview, but you did not miss the product view. LUCI lets staff run a property’s A/V from one place; New LUCI is in beta and adds direct staff control over rooms, screen checks, activity, and access while our team continues monitoring and support.\n\nWatch whenever the calendar gives you the floor.\n\nRecording: [RECORDING LINK]\n\nWritten detail: LUCI Upgrade Guide — [LUCI UPGRADE GUIDE URL]"
         },
         {
-          "name": "Pick up where the invitation left off",
-          "summary": "Use prior LUCI history to explain why the recording moves directly into what changed.",
-          "draft": "Dear #Name#,\n\nSchedules move. The private preview is available to watch whenever it works for you.\n\nBecause you had taken a serious look at LUCI before, the recording goes directly into what has changed: more day-to-day programming authority for the property team, with the LUCI team still alongside it.\n\nWatch the private preview: [RECORDING LINK]\n\nWritten companion: LUCI Upgrade Guide — [LUCI UPGRADE GUIDE URL]"
+          "name": "No second appointment",
+          "summary": "Make freedom from another meeting the main benefit.",
+          "draft": "Dear #Name#,\n\nNo need to find another live date. LUCI lets staff run a property’s A/V from one place; New LUCI is in beta and puts more daily room, view, activity, and access work in staff hands without removing our monitoring and support.\n\nThe recording is the private preview, minus the calendar negotiation.\n\nWatch it here: [RECORDING LINK]\n\nWritten companion: LUCI Upgrade Guide — [LUCI UPGRADE GUIDE URL]"
         }
       ],
-      "winner": "Same early look, on demand",
-      "why_won": "It sounds most like a short note from Mark, removes guilt around the missed session, and explicitly protects the recipient from another live commitment. It also recognizes their prior context and keeps the written guide secondary.",
+      "winner": "The calendar won",
+      "why_won": "It sounds like Mark, removes guilt in five words, defines the product and change, and protects the recording as the primary action. The guide remains clearly secondary.",
       "subject_lines": [
         {
           "mood": "Helpful",
@@ -305,28 +300,30 @@
         },
         {
           "mood": "Low-pressure",
-          "text": "The preview, whenever you have time"
+          "text": "Watch the preview on your time"
         },
         {
           "mood": "Personal",
-          "text": "I wanted to make sure you had this"
+          "text": "The calendar won this one"
         }
       ],
-      "preheader": "The same early product view, without another live commitment.",
+      "preheader": "The same early product view, without another appointment.",
       "body": [
         "Dear #Name#,",
-        "I saw you couldn’t make the private preview. No problem. I wanted to make sure you still had the same early look, without another live commitment.",
-        "The recording shows what has changed in New LUCI and how it puts more day-to-day programming control in the property team’s hands while the LUCI team stays alongside it.",
+        "The calendar won this one. No problem.",
+        "LUCI lets staff run a property’s A/V from one place; New LUCI is in beta and gives staff more direct control over room changes, live screen views, activity history, and access while our team keeps monitoring and supporting.",
+        "The recording shows that work without asking for another live commitment.",
         "Watch the private-preview recording: [RECORDING LINK]",
-        "For a written view, read the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]"
+        "Written companion: LUCI Upgrade Guide — [LUCI UPGRADE GUIDE URL]"
       ],
       "cta_label": "Watch the private-preview recording",
-      "word_count": 76,
+      "word_count": 74,
       "assets_used": [
+        "Private-preview recording",
         "LUCI Upgrade Guide"
       ],
-      "automation_notes": "Send from Mark only to registered no-shows in this selected-preview cycle. Suppress attendees, active opportunities, and anyone in an active Mark or Mike conversation. A reply or booked meeting stops marketing automation; watching the recording, opening, or clicking the guide does not trigger a sales handoff. Keep the recipient out of overlapping stage cycles.",
-      "guardrail_notes": "The recording is the primary action and no new live commitment is requested. The LUCI Upgrade Guide is the only product-detail asset and remains secondary. The copy acknowledges prior interest without implying customer status, current use, or a deal. More direct control is paired with LUCI staying alongside the property. No product-availability date appears. The retention claim is skipped because it would make this short personal service note feel promotional."
+      "automation_notes": "Send from Mark only to registered no-shows. Suppress attendees, active opportunities, and anyone in an active Mark or Mike conversation. A reply or booking stops automation; recording and guide clicks remain reporting signals. Keep the guide visually secondary.",
+      "guardrail_notes": "r2 changes: The email now opens with a human scheduling line, defines LUCI and the beta change, and makes the recording the sole primary CTA while the guide stays secondary. The retention claim stays out because this service note needs access, not proof. No date or availability claim, named account, price, percentage, or passive construction appears."
     }
   ]
 }

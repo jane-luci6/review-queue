@@ -1,86 +1,96 @@
 # WARM-REENGAGE-01 — What changed
 
-- **Audience:** Broader warm prospect list not in an active sales conversation
-- **Cycle:** Launch re-engagement
+- **Audience:** Broader warm contacts who did not receive the selected preview and remain outside active sales conversations
+- **Cycle:** Broader warm re-engagement
 - **Timing:** When Marketing opens the broader warm cycle
-- **Purpose:** Reopen the broader warm list with more control in their hands and a concrete reason to look again. Private-preview recipients receive a shorter follow-up instead.
-- **CTA:** See what is different.
-- **Status:** draft v1 for Jane review
+- **Purpose:** Reintroduce LUCI to the broader warm list through a specific A/V failure.
+- **CTA:** See the details.
+- **Status:** draft r2 for Jane review
 
 ## Strategy
 
 ### What we’re writing and why
-A reintroduction that gives an old LUCI contact a concrete reason to look again without assuming they remember the platform.
+A true reintroduction for the broader warm list, built around a familiar failure rather than selective access.
 
 ### For whom
-Past conversations and demo requests outside active Sales work. They may barely remember LUCI and do not use it today.
+Past contacts who may barely remember LUCI and did not receive the private-preview invitation.
 
 ### Best way to reach them
-Send from a named LUCI contact when Marketing opens the broader warm cycle. State the beta status plainly and use the LUCI Upgrade Guide as the single written product view.
+Open on one wrong screen after hours, define LUCI and the beta change, then make the guide the one primary action.
 
 ### How to make impact while staying professional
-Lead with recognizable day-to-day actions: preparing a room change, checking screens, and tracing activity. Do not open on an abstract product story.
+Use a specific failure scene and show how direct screen checks, activity history, and continued LUCI support change the response.
 
 ### Primary message
-LUCI has changed substantially since the reader’s last look, giving property teams more direct control over daily A/V work while the LUCI team stays alongside them.
+A cold reader sees the problem first: one wrong screen should not require several interfaces and an off-site expert.
 
 ## Three directions
 
-### Direction 1 — The work changed
+### Direction 1 — The 9:12 p.m. screen
+_Reintroduce LUCI through one wrong-screen incident after hours._
+
 Dear #Name#,
 
-LUCI has changed a lot since you last saw it. A new version is in beta, built to put more day-to-day programming control in the property team’s hands.
+At 9:12 p.m., a screen shows the wrong source. The right control sits in another interface, and the person who usually fixes it is off site. That is too much plot for one screen.
 
-Teams can prepare room changes behind the scenes, confirm what screens are playing without walking the floor, and review activity when something needs an answer. LUCI runs a property’s A/V from one interface, while the LUCI team stays alongside the operation to monitor, diagnose, and support.
+LUCI orchestrates a property’s A/V through one interface; New LUCI is in beta and lets staff confirm live screen content, make approved changes, and check the activity record while our team keeps monitoring, diagnosing, and supporting.
 
-See what is different in the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]
+See the details in the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]
 
-### Direction 2 — One shift, three examples
+### Direction 2 — One wrong wall
+_Use a visible failure to show why another look matters._
+
 Dear #Name#,
 
-The biggest change since your last look at LUCI is who can handle more of the daily programming work. A new version is in beta, giving property teams direct control over rooms, views, data, and access.
+A wall that is not showing what it should creates a simple question: who can see the problem and act without starting a phone tree?
 
-That includes staging screens and audio before a cue, checking live screen content from an iPad or browser, and using audit trails to see what happened. The LUCI team remains alongside the property for monitoring, diagnosis, and support.
+LUCI consolidates property A/V into one interface. New LUCI is in beta and adds direct screen checks, approved controls, and activity history for on-site staff, with our team still monitoring and supporting the platform.
+
+The wall is complicated enough. The response should not be.
+
+Read the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]
+
+### Direction 3 — Skip the interface hunt
+_Open on the cost of searching across systems and people._
+
+Dear #Name#,
+
+When a screen goes wrong, the first job should be fixing it, not finding the right interface and the person who knows it.
+
+LUCI gives the property one place to operate its A/V; New LUCI is in beta and gives staff more direct screen control, live status, and activity history while our team continues monitoring, diagnosis, and support.
+
+No interface scavenger hunt required.
 
 Review the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]
 
-### Direction 3 — A fresh introduction
-Dear #Name#,
-
-If LUCI is only a faint memory, here is the short version: LUCI runs a property’s A/V from one interface. Since we last spoke, a new version has moved into beta.
-
-It gives property teams more direct control over room settings, floor plans, screen views, activity history, and access. That authority comes with the LUCI team still alongside the operation, monitoring and supporting the platform.
-
-The LUCI Upgrade Guide shows what is different: [LUCI UPGRADE GUIDE URL]
-
 ## Why the final won
-**Direction 1 — The work changed**
+**The 9:12 p.m. screen**
 
-It opens with the required recognition line, immediately translates the beta into daily work, and defines LUCI before asking for another look. The final borrows the sharper room-view-activity structure from Direction 2.
+It gives the broader re-engagement a distinct problem-first opening, assumes no memory, and explains the beta through a recognizable incident rather than replaying preview scenes.
 
 ## Final copy
 
 ### Subject lines
-1. **Direct:** LUCI has changed since you last saw it
-2. **Curious:** What can the property team control now?
-3. **Practical:** A fresh look at day-to-day A/V control
+1. **Direct:** When one screen shows the wrong source
+2. **Curious:** Who can fix the wall at 9:12 p.m.?
+3. **Practical:** A shorter path from problem to control
 
 ### Preheader
-See what changed across room control, live views, activity, and support.
+One wrong screen should not require several interfaces and an off-site expert.
 
 ### Body
 Dear #Name#,
 
-LUCI has changed a lot since you last saw it. A new version is in beta, built to put more day-to-day programming control in the property team’s hands.
+At 9:12 p.m., a screen shows the wrong source. The right control sits in another interface, and the person who usually fixes it is off site.
 
-Teams can prepare room changes behind the scenes, confirm what screens are playing without walking the floor, and review activity when something needs an answer.
+That is too much plot for one screen.
 
-LUCI runs a property’s A/V from one interface, while the LUCI team stays alongside the operation to monitor, diagnose, and support.
+LUCI orchestrates a property’s A/V through one interface; New LUCI is in beta and lets staff confirm live screen content, make approved changes, and check the activity record while our team keeps monitoring, diagnosing, and supporting.
 
-See what is different in the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]
+See the details in the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]
 
 ### Word count
-**89 words** from greeting through CTA, excluding the signature.
+**84 words** from greeting through CTA, excluding the signature.
 
 ### Signature
 [NAME]
@@ -89,20 +99,16 @@ LUCI Systems
 [EMAIL] · [PHONE]
 
 ## Automation notes
-- Send to the broader warm list only.
-- Exclude private-preview recipients from this version.
-- Suppress active opportunities and anyone in an active Mark or Mike conversation.
-- A reply or booking stops marketing automation. Opens and ordinary guide clicks remain reporting signals only.
-- Keep each person in only one stage cycle.
+Send only to the broader warm list. Exclude selected-preview recipients from this version and suppress active opportunities or active Mark and Mike conversations. A reply or booking stops automation; opens and guide clicks remain reporting signals.
 
 ## Guardrail audit
-- Customer copy uses beta framing and gives no date or availability claim.
-- The lead is daily control, not the source plan’s old positioning phrase.
-- LUCI is defined for a low-recall reader.
-- More authority remains paired with the LUCI team’s monitoring, diagnosis, and support.
-- The LUCI Upgrade Guide is the only product-detail asset.
-- The client-retention claim is held for email 04.
-- Plan tension: the source plan calls this “launch day,” but the locked guardrail prohibits that customer-facing framing. Jane should confirm the neutral Marketing trigger.
+r2 changes: The broader cycle now opens on a specific wrong-screen incident rather than repeating the private-preview scenes. The body defines LUCI and the beta change, adds one dry human line, and keeps the guide as the sole primary CTA. The retention claim stays out so the problem and response carry the message. No date or availability claim, named account, price, percentage, or passive construction appears.
+
+## r2 changes:
+- Re-edited for light, sharp human voice and one earned human line.
+- Added cold-reader product context where the product appears.
+- Reduced the message to one primary CTA and kept any secondary link quiet or conditional.
+- Recounted the final body with whitespace splitting and synchronized this scaffold to the JSON source.
 
 ## Placeholders to fill
 - [LUCI UPGRADE GUIDE URL]

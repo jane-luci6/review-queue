@@ -1,84 +1,98 @@
 # WARM-RESPONSE-02 — Personal outreach
 
-- **Audience:** Warm prospects who responded and need personal follow-up
+- **Audience:** Warm prospects whose response now belongs to Mark
 - **Cycle:** After a warm response
 - **Timing:** Same or next business day; sent by Mark
-- **Purpose:** Continue from the prospect’s prior LUCI context rather than restarting the campaign pitch.
-- **CTA:** Confirm the next conversation or walkthrough.
-- **Status:** draft v1 for Jane review
+- **Purpose:** Continue from known prior LUCI context without inventing a detail.
+- **CTA:** Reply with the preferred next step.
+- **Status:** draft r2 for Jane review
 
 ## Strategy
 
 ### What we’re writing and why
-A short personal note that turns a Marketing response into a relevant Sales conversation.
+A short personal note that works even when a booking contains no written detail.
 
 ### For whom
-Warm prospects whose prior LUCI history and current response give Mark one real detail to reference.
+Warm prospects who responded or booked and have already encountered LUCI.
 
 ### Best way to reach them
-Send from Mark the same or next business day, fill one [PRIOR CONTEXT] detail, and ask whether a conversation or focused walkthrough is more useful.
+Send the same or next business day, make reply primary, and leave the calendar secondary.
 
 ### How to make impact while staying professional
-Make the note feel observed by starting with the prospect’s actual context and refusing to restart from a generic introduction.
+Sound written in 30 seconds by skipping slide one and asking what the prospect wants to cover now.
 
 ### Primary message
-Mark recognizes the prospect’s specific prior context and proposes continuing from it rather than restarting the LUCI pitch.
+Mark acknowledges the prospect’s earlier LUCI context and asks which focused next step would help now.
 
 ## Three directions
 
-### Direction 1 — Continue from there
+### Direction 1 — Start with what matters now
+_Acknowledge prior LUCI context without inventing a detail._
+
 Dear #Name#,
 
-Thanks for getting in touch. I saw your note about [PRIOR CONTEXT]. I’d like to continue from there rather than take you through LUCI from the beginning.
+Thanks for getting in touch. I know you have seen LUCI before, so I will not start at slide one. That should save us both the ceremonial tour of material you already know.
 
-Would a short conversation or a focused walkthrough be more useful? Reply with what you want to cover, or choose a time that works.
+Reply with what would help now: a short conversation or a focused walkthrough of one workflow.
 
-Choose a time: [BOOKING URL]
+Reply to Mark: [MARK EMAIL]
 
-### Direction 2 — One useful next step
+Calendar if easier: [BOOKING URL]
+
+### Direction 2 — No broad introduction
+_Ask for the current priority and promise a focused next step._
+
 Dear #Name#,
 
-I’m following up on [PRIOR CONTEXT]. That gives us a clear place to start.
+You already have LUCI context, so I can skip the broad introduction. Tell me the room, screen, or workflow you want to discuss now.
 
-I can answer it in a short conversation, or show the relevant part of LUCI in a focused walkthrough. Tell me which would be more useful, and we’ll keep the next step to that.
+I can answer it in a short conversation or show it in a focused walkthrough.
 
-Reply here, or choose a time: [BOOKING URL]
+Reply to Mark: [MARK EMAIL]
 
-### Direction 3 — Pick up the earlier thread
+Optional calendar: [BOOKING URL]
+
+### Direction 3 — Pick the format
+_Let the prospect choose the useful next step without fabricated personalization._
+
 Dear #Name#,
 
-Your note about [PRIOR CONTEXT] connects directly to the earlier LUCI conversation. I’d like to pick up that thread, not start over with a broad presentation.
+Thanks for coming back to the conversation. We do not need to rewind it.
 
-If a short call is enough, we’ll keep it short. If seeing the workflow would help, I can make it a focused walkthrough.
+Reply with which format helps more: a quick conversation or a focused walkthrough. I will keep the next step to that.
 
-What works better? Reply here or choose a time: [BOOKING URL]
+Reply to Mark: [MARK EMAIL]
+
+Calendar: [BOOKING URL]
 
 ## Why the final won
-**Direction 1 — Continue from there**
+**Start with what matters now**
 
-It is the most natural note from Mark, uses exactly one specific context placeholder, and lets the prospect choose between two useful next steps without adding campaign language.
+It sounds like Mark, stays truthful when the prospect supplied no written detail, and uses known warm-prospect context without restarting campaign language.
 
 ## Final copy
 
 ### Subject lines
-1. **Personal:** Following up on your LUCI note
-2. **Direct:** Let’s continue from your LUCI note
+1. **Personal:** I will skip slide one
+2. **Direct:** What would help now?
 3. **Practical:** Conversation or focused walkthrough?
 
 ### Preheader
-I saw your note and want to continue from the context you already shared.
+You have seen LUCI before, so we can start with what matters now.
 
 ### Body
 Dear #Name#,
 
-Thanks for getting in touch. I saw your note about [PRIOR CONTEXT]. I’d like to continue from there rather than take you through LUCI from the beginning.
+Thanks for getting in touch. I know you have seen LUCI before, so I will not start at slide one. That should save us both the ceremonial tour of material you already know.
 
-Would a short conversation or a focused walkthrough be more useful? Reply with what you want to cover, or choose a time that works.
+Reply with what would help now: a short conversation or a focused walkthrough of one workflow.
 
-Choose a time: [BOOKING URL]
+Reply to Mark: [MARK EMAIL]
+
+Calendar if easier: [BOOKING URL]
 
 ### Word count
-**58 words** from greeting through CTA, excluding the signature.
+**61 words** from greeting through CTA, excluding the signature.
 
 ### Signature
 [NAME]
@@ -87,18 +101,20 @@ LUCI Systems
 [EMAIL] · [PHONE]
 
 ## Automation notes
-- Mark owns the contact before this note is sent.
-- Keep all Marketing automation stopped and suppress every other campaign or nurture cycle.
-- If the prospect already booked, remove [BOOKING URL] and confirm the scheduled conversation in the note.
+Mark owns the contact before this note goes out. Keep all Marketing automation stopped and suppress every other cycle. If the prospect already booked, remove the calendar line and confirm the scheduled conversation.
 
 ## Guardrail audit
-- Fill [PRIOR CONTEXT] with one true detail from the prospect’s earlier LUCI conversation or current response.
-- The note contains no fabricated personalization, product recap, beta pitch, asset link, timing promise, or client-retention claim.
-- It continues the prospect’s context instead of restarting campaign language.
+r2 changes: The personal note no longer depends on an unapproved context placeholder or assumes a written note. It uses only the known earlier LUCI encounter, adds one dry line about skipping slide one, and makes reply the sole primary CTA with the calendar secondary. The retention claim stays out because it would sound scripted here. No fabricated personalization, product recap, date or availability claim, named account, price, percentage, or passive construction appears.
+
+## r2 changes:
+- Re-edited for light, sharp human voice and one earned human line.
+- Added cold-reader product context where the product appears.
+- Reduced the message to one primary CTA and kept any secondary link quiet or conditional.
+- Recounted the final body with whitespace splitting and synchronized this scaffold to the JSON source.
 
 ## Placeholders to fill
-- [PRIOR CONTEXT] — one true detail from the prospect’s prior LUCI context
-- [BOOKING URL] — omit if already booked
+- [MARK EMAIL]
+- [BOOKING URL]
 - [NAME]
 - [TITLE]
 - [EMAIL]

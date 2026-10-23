@@ -1,101 +1,95 @@
 # WARM-REENGAGE-03 — Operational proof
 
-- **Audience:** Warm prospects continuing the launch re-engagement cycle
-- **Cycle:** Launch re-engagement
+- **Audience:** Broader warm contacts who need approved scale and relationship proof
+- **Cycle:** Broader warm re-engagement
 - **Timing:** 4–5 days after email 2
-- **Purpose:** Make the platform credible with approved consolidation numbers from running properties.
-- **CTA:** See the proof or reply with a question.
-- **Status:** draft v1 for Jane review
+- **Purpose:** Establish scale with approved counts before drawing the one-interface conclusion.
+- **CTA:** See the approved proof.
+- **Status:** draft r2 for Jane review
 
 ## Strategy
 
 ### What we’re writing and why
-A proof email that grounds the platform in approved consolidation counts rather than feature claims or named clients.
+A proof email grounded in approved counts and relationship continuity.
 
 ### For whom
-Warm contacts who have seen the product story but still need evidence that the operating model holds at property scale.
+Warm contacts who have seen the product behavior but still need evidence that LUCI handles real scale.
 
 ### Best way to reach them
-Put approved counts first, state what those counts mean second, and offer both the proof link and a direct reply path.
+Put three approved counts first, define LUCI in the conclusion, and make the proof link the only primary action.
 
 ### How to make impact while staying professional
-Let the arithmetic make the argument: many displays, zones, walls, systems, or racks become a shorter operating list and one interface.
+Let the denominator carry the claim, then use the retention line once where proof and continuity naturally meet.
 
 ### Primary message
-Approved counts from running properties show the scale LUCI consolidates before the email draws the one-interface conclusion.
+Approved counts establish scale before LUCI draws the one-interface conclusion.
 
 ## Three directions
 
-### Direction 1 — The denominator first
+### Direction 1 — The denominator is the story
+_Lead with approved counts and let the conclusion follow._
+
 Dear #Name#,
 
-A one-interface claim only matters if the denominator is clear. Across running properties, the proof starts with counts like these:
+“One interface” is easy to claim. The denominator is the interesting part.
 
 [APPROVED PROOF POINT]
-
+[APPROVED PROOF POINT]
 [APPROVED PROOF POINT]
 
-[APPROVED PROOF POINT]
-
-Those numbers show what LUCI consolidates into a shorter list of systems, interfaces, vendors, and workflows to manage. The counts come first; one operating view is the result.
+LUCI consolidates a property’s A/V, its endpoints, and its workflows into one interface and a shorter list to manage. Scale is half the proof. Continuity is the other: we've never lost a client.
 
 See the approved proof: [PROOF URL]
 
-Or reply with the part of the operating model you want to examine.
+### Direction 2 — Count the work
+_Use scope counts to challenge feature-list thinking._
 
-### Direction 2 — Count what is under management
 Dear #Name#,
 
-The useful question is not how many features a platform lists. It is how much of the property it can run together.
+The useful question is not how many features appear on a list. It is how much work one platform can run together.
 
 [APPROVED PROOF POINT]
-
+[APPROVED PROOF POINT]
 [APPROVED PROOF POINT]
 
-[APPROVED PROOF POINT]
-
-Each approved count comes from a running property. Together, they show the consolidation argument in practical terms: fewer separate interfaces and workflows, with one operating environment for the work.
+LUCI brings a property’s screens, zones, walls, and workflows into one A/V operating view. Arithmetic makes a better argument than adjectives.
 
 Review the proof: [PROOF URL]
 
-Have a question about the numbers? Reply directly.
-
 ### Direction 3 — Proof before promise
+_State the proof standard and avoid unsupported scale language._
+
 Dear #Name#,
 
-“Property-wide” should be demonstrated, not merely stated. We use approved counts from running properties to show the actual surface under management:
+Property-wide should mean something countable.
 
 [APPROVED PROOF POINT]
-
+[APPROVED PROOF POINT]
 [APPROVED PROOF POINT]
 
-[APPROVED PROOF POINT]
-
-That is the operating problem LUCI consolidates: many endpoints, systems, and workflows brought into one interface and supported by one accountable team.
+LUCI gives the property one interface for its A/V. These approved counts show the actual surface under management before we ask anyone to trust the one-interface conclusion.
 
 See the proof: [PROOF URL]
 
-Or reply with a question and we’ll answer it directly.
-
 ## Why the final won
-**Direction 1 — The denominator first**
+**The denominator is the story**
 
-It makes the proof standard explicit, puts approved counts before the benefit, and reaches the one-interface conclusion without asking the reader to trust an unsupported claim. The final borrows the direct question path from Direction 2.
+It puts approved evidence ahead of the claim, defines LUCI in one line, and gives the retention statement a natural proof context instead of bolting it onto an invitation.
 
 ## Final copy
 
 ### Subject lines
-1. **Evidence-led:** The counts behind one operating view
+1. **Evidence-led:** The denominator behind one interface
 2. **Curious:** How much can one interface actually run?
-3. **Practical:** What consolidation looks like in practice
+3. **Practical:** Count the work under management
 
 ### Preheader
-Approved property counts come first. The shorter operating list is the result.
+Approved counts establish the scale before the conclusion.
 
 ### Body
 Dear #Name#,
 
-A one-interface claim only matters if the denominator is clear. Across running properties, the proof starts with approved counts:
+“One interface” is easy to claim. The denominator is the interesting part.
 
 [APPROVED PROOF POINT]
 
@@ -103,14 +97,14 @@ A one-interface claim only matters if the denominator is clear. Across running p
 
 [APPROVED PROOF POINT]
 
-Those numbers show what LUCI consolidates into a shorter list of systems, interfaces, vendors, and workflows to manage. The counts come first; one operating view is the result.
+LUCI consolidates a property’s A/V, its endpoints, and its workflows into one interface and a shorter list to manage.
+
+Scale is half the proof. Continuity is the other: we've never lost a client.
 
 See the approved proof: [PROOF URL]
 
-Or reply with the part of the operating model you want to examine.
-
 ### Word count
-**77 words** from greeting through CTA, excluding the signature.
+**62 words** from greeting through CTA, excluding the signature.
 
 ### Signature
 [NAME]
@@ -119,21 +113,19 @@ LUCI Systems
 [EMAIL] · [PHONE]
 
 ## Automation notes
-- Queue only after every [APPROVED PROOF POINT] is populated with a sourced, project-true consolidation count approved for prospect use.
-- Suppress active opportunities and anyone in an active Mark or Mike conversation.
-- A reply or booking stops marketing automation.
-- Opening or clicking the proof does not trigger Sales handoff.
+Do not advance this email until every proof placeholder contains one sourced, project-true count approved for prospect use. Suppress active opportunities and active Mark or Mike conversations. A reply or booking stops automation; proof clicks remain reporting signals.
 
 ## Guardrail audit
-- All objective proof remains in [APPROVED PROOF POINT] placeholders.
-- No figure, percentage, client, property, vendor, or deal is invented or named.
-- Counts precede the one-interface conclusion.
-- The proof concerns running properties, not beta adoption.
-- The client-retention line is held for email 04.
-- The LUCI Upgrade Guide is skipped because this email’s job is operating proof.
+r2 changes: The proof now opens with one sharp human observation, defines LUCI after the approved counts, and uses the exact line “we've never lost a client” where scale and continuity meet. The proof link is the sole primary CTA. No unapproved figure, date or availability claim, named account, price, percentage, or passive construction appears.
+
+## r2 changes:
+- Re-edited for light, sharp human voice and one earned human line.
+- Added cold-reader product context where the product appears.
+- Reduced the message to one primary CTA and kept any secondary link quiet or conditional.
+- Recounted the final body with whitespace splitting and synchronized this scaffold to the JSON source.
 
 ## Placeholders to fill
-- [APPROVED PROOF POINT] — three approved, project-true consolidation counts
+- [APPROVED PROOF POINT]
 - [PROOF URL]
 - [NAME]
 - [TITLE]

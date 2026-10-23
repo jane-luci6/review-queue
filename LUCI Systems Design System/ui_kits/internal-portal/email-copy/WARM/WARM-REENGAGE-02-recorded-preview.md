@@ -1,96 +1,98 @@
 # WARM-REENGAGE-02 — Recorded preview
 
-- **Audience:** Warm prospects continuing the launch re-engagement cycle
-- **Cycle:** Launch re-engagement
+- **Audience:** Broader warm contacts who continue after the first re-engagement email
+- **Cycle:** Broader warm re-engagement
 - **Timing:** 4–5 days after email 1
-- **Purpose:** Let prospects see New LUCI without asking them to commit to a live sales demo. The feature highlight reel is the lead asset; the full recording is the deeper option.
-- **CTA:** Watch the feature highlight reel, or the full recording.
-- **Status:** draft v1 for Jane review
+- **Purpose:** Show the beta’s map workflow in a short reel before any meeting.
+- **CTA:** Watch the feature reel.
+- **Status:** draft r2 for Jane review
 
 ## Strategy
 
 ### What we’re writing and why
-An on-demand product view that lets interested prospects see the beta without turning attention into a sales appointment.
+A visual step focused on the map and live device view, distinct from the preceding wrong-screen problem.
 
 ### For whom
-Warm contacts who may watch a short visual but are unlikely to commit to a full recording or live walkthrough yet.
+Warm contacts who may give a short reel two minutes but will not yet commit to a meeting.
 
 ### Best way to reach them
-Lead with the feature highlight reel, keep the full recording clearly secondary, and make both links self-serve.
+Make the feature reel the only primary CTA and place the full recording in one secondary line.
 
 ### How to make impact while staying professional
-Let visible product behavior carry the message: prepare a change, apply it on cue, check the result, and review the record.
+Let the map carry the explanation: move from property view to floor plan, see device state, and confirm screen content.
 
 ### Primary message
-A short feature reel lets the reader see the New LUCI beta in action without committing to a live meeting, with the full recording available for a deeper view.
+The short reel shows the map workflow in motion; the full recording remains a quiet deeper option.
 
 ## Three directions
 
-### Direction 1 — Watch the work
+### Direction 1 — Let the map explain
+_Use one visual workflow that benefits from video._
+
 Dear #Name#,
 
-The quickest way to understand what changed in LUCI is to watch the work. This short feature reel shows the new beta moving through a practical sequence: prepare screens and audio, apply the change on cue, confirm what is playing, and review what happened.
+A map explains this better than another paragraph.
 
-No live meeting is required. Start with the short cut, or use the full recording when you want the deeper product view.
+LUCI brings a property’s A/V into one map-based interface; the New LUCI beta lets staff load a floor plan, move through the property view, see live device state, and confirm what a TV or LED wall displays while our team keeps monitoring and supporting.
 
-Watch the feature highlight reel: [FEATURE HIGHLIGHT REEL URL]
+Watch the feature reel: [FEATURE HIGHLIGHT REEL URL]
 
-Watch the full recording: [FULL RECORDING URL]
+Deeper option: [FULL RECORDING URL]
 
-### Direction 2 — Two viewing depths
+### Direction 2 — From property to screen
+_Follow the visual path from the full site to one endpoint._
+
 Dear #Name#,
 
-You do not need a live appointment to see the New LUCI beta. We made two ways to watch.
+Start with the property. Move into the floor plan. Select one endpoint and confirm its live state and content.
 
-The feature highlight reel is the short version, focused on room control, flexible views, and operating oversight. The full recording adds the complete walkthrough and context behind those changes.
+LUCI puts property A/V in one interface; New LUCI is in beta and gives staff that direct map-based view without removing our monitoring or support. The short reel shows the path in motion.
 
-Start short: [FEATURE HIGHLIGHT REEL URL]
+Watch the feature reel: [FEATURE HIGHLIGHT REEL URL]
 
-Go deeper: [FULL RECORDING URL]
+Full session, if useful: [FULL RECORDING URL]
 
-More control sits with the property team, while the LUCI team remains alongside the operation.
+### Direction 3 — A two-minute map tour
+_Make the visual asset a low-friction relevance check._
 
-### Direction 3 — See before you schedule
 Dear #Name#,
 
-Before deciding whether another LUCI conversation is useful, see the new beta for yourself. The short feature reel covers the product moments most relevant to daily work: approved room controls, staged changes, live screen views, and a clearer record of activity.
+Before you give this a meeting, give it two minutes. LUCI consolidates a property’s A/V into one operating interface; New LUCI is in beta and lets staff navigate floor plans, see live device state, and verify screen content while our team continues monitoring and support.
 
-If you want the complete session, the full recording is available too. Neither option asks you to schedule a live meeting.
+The map does the talking.
 
-Feature highlight reel: [FEATURE HIGHLIGHT REEL URL]
+Watch the feature reel: [FEATURE HIGHLIGHT REEL URL]
 
 Full recording: [FULL RECORDING URL]
 
 ## Why the final won
-**Direction 1 — Watch the work**
+**Let the map explain**
 
-It makes the video useful before describing it and turns several features into one operating sequence the reader can picture. The final borrows the explicit two-depth choice and no-meeting reassurance from the other directions.
+It gives the visual email its own job, uses a workflow that video can prove quickly, and keeps the short reel clearly dominant over the deeper recording.
 
 ## Final copy
 
 ### Subject lines
-1. **Visual:** Watch what changed in New LUCI
-2. **Low-pressure:** See the beta without a live meeting
-3. **Practical:** From staging a change to confirming it
+1. **Visual:** Let the live map explain
+2. **Low-pressure:** Give the map two minutes
+3. **Practical:** From property view to one screen
 
 ### Preheader
-Start with the short feature reel, or use the full recording for the deeper view.
+Move from floor plan to live device state and screen content.
 
 ### Body
 Dear #Name#,
 
-The quickest way to understand what changed in LUCI is to watch the work.
+A map explains this better than another paragraph.
 
-This short feature reel shows the new beta moving through a practical sequence: prepare screens and audio, apply the change on cue, confirm what is playing, and review what happened.
+LUCI brings a property’s A/V into one map-based interface; the New LUCI beta lets staff load a floor plan, move through the property view, see live device state, and confirm what a TV or LED wall displays while our team keeps monitoring and supporting.
 
-No live meeting is required. Start with the short cut, or use the full recording when you want the deeper product view.
+Watch the feature reel: [FEATURE HIGHLIGHT REEL URL]
 
-Watch the feature highlight reel: [FEATURE HIGHLIGHT REEL URL]
-
-Watch the full recording: [FULL RECORDING URL]
+Deeper option: [FULL RECORDING URL]
 
 ### Word count
-**84 words** from greeting through CTA, excluding the signature.
+**67 words** from greeting through CTA, excluding the signature.
 
 ### Signature
 [NAME]
@@ -99,16 +101,16 @@ LUCI Systems
 [EMAIL] · [PHONE]
 
 ## Automation notes
-- Continue only for warm contacts still eligible for Marketing nurture.
-- Suppress active opportunities and anyone in an active Mark or Mike conversation.
-- A reply or booking stops marketing automation.
-- Opening, watching, or clicking either recording remains a reporting signal and does not trigger Sales handoff.
+Continue only for eligible warm contacts. Suppress active opportunities and active Mark or Mike conversations. A reply or booking stops automation; opens and video clicks remain reporting signals. Present the full recording as a secondary text link.
 
 ## Guardrail audit
-- The feature highlight reel is the lead asset and the full recording is the deeper option.
-- No live commitment is requested.
-- The copy uses beta framing and makes no product-availability claim.
-- The client-retention line and LUCI Upgrade Guide are skipped because this email’s single job is self-serve viewing.
+r2 changes: The visual email now owns a distinct map workflow instead of repeating the preceding wrong-screen incident. It defines LUCI and the beta change, adds one restrained human line, and makes the feature reel the sole primary CTA; the full recording stays secondary. The retention claim stays out because the map provides the proof. No date or availability claim, named account, price, percentage, or passive construction appears.
+
+## r2 changes:
+- Re-edited for light, sharp human voice and one earned human line.
+- Added cold-reader product context where the product appears.
+- Reduced the message to one primary CTA and kept any secondary link quiet or conditional.
+- Recounted the final body with whitespace splitting and synchronized this scaffold to the JSON source.
 
 ## Placeholders to fill
 - [FEATURE HIGHLIGHT REEL URL]

@@ -1,92 +1,98 @@
 # WARM-PREVIEW-04 — Personal preview follow-up
 
-- **Audience:** Selected warm prospects who attended the private preview and are not in an active opportunity
-- **Cycle:** Selected pre-launch preview
+- **Audience:** Private-preview attendees outside active sales conversations
+- **Cycle:** Selected private preview
 - **Timing:** Next business day after the webinar; sent by Mark
-- **Purpose:** Acknowledge their prior interest, ask what stood out, and offer a direct conversation before the broader follow-up begins.
-- **CTA:** Reply to Mark or choose a time to reconnect.
-- **Status:** draft v1 for Jane review
+- **Purpose:** Ask attendees for one honest reaction and offer a direct reply to Mark.
+- **CTA:** Reply to Mark.
+- **Status:** draft r2 for Jane review
 
 ## Strategy
 
 ### What we’re writing and why
-A short personal note from Mark that turns attendance into a real response, not another campaign touch. It acknowledges the recipient’s earlier LUCI evaluation, asks one useful question, and makes a direct conversation available without restarting the pitch.
+A short personal note that turns attendance into an honest response rather than another campaign touch.
 
 ### For whom
-Selected warm prospects who attended the private preview and are not already in an active opportunity. They have now seen LUCI at two points in time, so Mark can ask what changed in their view without presuming purchase intent.
+Attendees with earlier context who can compare what they saw with what they remembered.
 
 ### Best way to reach them
-Send from Mark the next business day. Keep the message plain and short, ask one question, and provide both a direct reply address and a booking path.
+Send from Mark the next business day, ask one question, and make reply the primary action. Keep the calendar quiet and secondary.
 
 ### How to make impact while staying professional
-Let the question do the work. The email should sound like Mark noticed their attendance and genuinely wants to know what landed, not like Marketing is disguising another product summary as a personal note.
+Sound as if Mark wrote the note in 30 seconds after seeing the attendee list.
 
 ### Primary message
-You had prior context and saw the private preview; tell Mark what stood out, then reconnect directly if a conversation would be useful.
+Mark wants one honest reaction and will continue only if a direct conversation helps.
 
-## Three draft directions
+## Three directions
 
-### Direction 1 — What stood out this time?
+### Direction 1 — What looked useful
+_Ask for one honest reaction without steering it._
+
 Dear #Name#,
 
-Thanks for joining the private preview. You’d already taken a serious look at LUCI, so I’m curious: what stood out this time?
+Thanks for joining the private preview. You had seen the platform before, so I’m curious: what looked useful this time, and what did not?
 
-Reply and tell me what you noticed, or choose a time if it would be useful to talk it through directly.
+I’ll spare you the survey disguised as a follow-up. Just reply with the room or workflow you would test against your own plans.
 
 Reply to Mark: [MARK EMAIL]
 
-Choose a time: [BOOKING URL]
+If a call is easier: [BOOKING URL]
 
-### Direction 2 — Did anything change your view?
+### Direction 2 — What changed your view
+_Ask whether anything shifted and keep the note conversational._
+
 Dear #Name#,
 
-I appreciated you making time for the private preview. Since you had seen LUCI before, I’d value your read: did anything in the new beta change how you think about the platform?
+You had an earlier point of comparison, which makes your read useful. Did anything in the private preview change how you see the platform?
 
-You can reply directly, or use my calendar if a short conversation would be easier.
-
-Reply: [MARK EMAIL]
-
-Calendar: [BOOKING URL]
-
-### Direction 3 — Continue the earlier conversation
-Dear #Name#,
-
-Thanks for coming back for another look at LUCI. I don’t want to repeat the preview in your inbox. I’d rather ask one question: which change felt most relevant to the way your property operates?
-
-Reply here, or choose a time and we can pick up the conversation directly.
+No scorecard required. Reply with the one thing that landed, or the one thing that still needs an answer.
 
 Reply to Mark: [MARK EMAIL]
 
-Choose a time: [BOOKING URL]
+Calendar if useful: [BOOKING URL]
+
+### Direction 3 — Pick one workflow
+_Move quickly from attendance to a specific real-world test._
+
+Dear #Name#,
+
+Thanks for coming back for another look. Rather than replay the session in your inbox, tell me which room or workflow you would put under the microscope first.
+
+I can answer by reply, or we can talk it through.
+
+Reply to Mark: [MARK EMAIL]
+
+Optional calendar: [BOOKING URL]
 
 ## Why the final won
-**Direction 1 — What stood out this time?**
+**What looked useful**
 
-It is the most natural human note and asks the broadest useful question without steering the recipient toward a preferred answer. The final borrows Direction 2’s recognition that they have seen two versions and Direction 3’s restraint.
+It sounds like a real note from Mark, invites a useful negative as well as a positive, and keeps reply clearly ahead of the optional calendar.
 
 ## Final copy
 
 ### Subject lines
-1. **Curious:** What stood out this time?
-2. **Personal:** A quick follow-up from Mark
-3. **Direct:** Your read on the private preview
+1. **Curious:** What looked useful this time?
+2. **Personal:** A quick note from Mark
+3. **Direct:** Your honest read on the preview
 
 ### Preheader
-You had seen LUCI before. I’d like to know what landed differently.
+One honest reaction is more useful than another recap.
 
 ### Body
 Dear #Name#,
 
-Thanks for joining the private preview. You’d already taken a serious look at LUCI, so I’m curious: what stood out this time?
+Thanks for joining the private preview. You had seen the platform before, so I’m curious: what looked useful this time, and what did not?
 
-Reply and tell me what you noticed, or choose a time if it would be useful to talk it through directly.
+I’ll spare you the survey disguised as a follow-up. Just reply with the room or workflow you would test against your own plans.
 
 Reply to Mark: [MARK EMAIL]
 
-Choose a time: [BOOKING URL]
+If a call is easier: [BOOKING URL]
 
 ### Word count
-**55 words** from greeting through CTA, excluding the signature.
+**61 words** from greeting through CTA, excluding the signature.
 
 ### Signature
 [NAME]
@@ -95,18 +101,21 @@ LUCI Systems
 [EMAIL] · [PHONE]
 
 ## Automation notes
-Send from Mark the next business day only to attendees who are not in an active opportunity. A reply to [MARK EMAIL] or a booking at [BOOKING URL] stops marketing automation and moves ownership to Sales. Suppress anyone already in an active Mark or Mike conversation. Opens and ordinary clicks do not trigger a separate handoff.
+Send from Mark the next business day only to attendees outside active opportunities. A reply or booking stops marketing automation and moves ownership to Sales. Keep the calendar visually secondary and suppress anyone already in an active Mark or Mike conversation.
 
 ## Guardrail audit
-- The email asks one real question and does not restart the product pitch.
-- Prior interest is acknowledged without presuming current use, a deal, or buying intent.
-- The sender is Mark, the note is first-person and short, and both required response paths appear.
-- No product asset is linked because a personal follow-up does not need one.
-- No release or availability language appears.
-- The retention claim is intentionally omitted; it would make a personal question sound scripted.
-- Body is under 150 words; preheader and all subject lines meet their character limits.
+r2 changes: The note now asks for an honest positive or negative, adds one lightly witty line, and makes reply the sole primary CTA with the calendar secondary. The retention claim stays out because it would make a personal question sound scripted. No product recap, date or availability claim, asset link, named account, price, percentage, or passive construction appears.
+
+## r2 changes:
+- Re-edited for light, sharp human voice and one earned human line.
+- Added cold-reader product context where the product appears.
+- Reduced the message to one primary CTA and kept any secondary link quiet or conditional.
+- Recounted the final body with whitespace splitting and synchronized this scaffold to the JSON source.
 
 ## Placeholders to fill
 - [MARK EMAIL]
 - [BOOKING URL]
-- [NAME], [TITLE], [EMAIL], [PHONE]
+- [NAME]
+- [TITLE]
+- [EMAIL]
+- [PHONE]

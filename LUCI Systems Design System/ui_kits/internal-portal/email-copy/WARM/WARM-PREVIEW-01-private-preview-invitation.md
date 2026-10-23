@@ -1,94 +1,92 @@
 # WARM-PREVIEW-01 — Private preview invitation
 
-- **Audience:** Selected high-intent warm prospects: past-demo and serious past-request contacts not in an active sales conversation
-- **Cycle:** Selected pre-launch preview
+- **Audience:** Past-demo and serious-request prospects chosen for the private preview and not in an active sales conversation
+- **Cycle:** Selected private preview
 - **Timing:** About 2–3 weeks before the preview webinar; past-demo and serious past-request prospects only
-- **Purpose:** Re-engage people who already invested meaningful time in LUCI by offering an early look at what changed. Do not state a release date.
+- **Purpose:** Invite earlier serious evaluators to one private beta preview.
 - **CTA:** Register for the private preview.
-- **Status:** draft v1 for Jane review
+- **Status:** draft r2 for Jane review
 
 ## Strategy
 
 ### What we’re writing and why
-A selective invitation that reopens a serious prior conversation by giving the recipient an early product view. It acknowledges the time they already invested, explains why this preview is different from another introductory meeting, and keeps registration as the single primary action.
+A selective invitation that recognizes prior effort and gives the recipient one clear reason to register.
 
 ### For whom
-People who completed a LUCI demo or seriously pursued one, but do not use LUCI and are not in an active Mark or Mike conversation. They know enough to notice a meaningful change, but the copy does not assume they remember the product or want to restart a sales process.
+People who evaluated LUCI seriously before, may remember little now, and do not use it today.
 
 ### Best way to reach them
-Send from a named LUCI contact through Marketing about 2–3 weeks before the webinar. Open by recognizing their prior investment, identify the event as a selected private preview rather than a sales demo, then offer the LUCI Upgrade Guide as optional context before the registration line.
+Send from Mark about 2–3 weeks before the session. Define LUCI and the beta change in one line, then make registration the only primary action.
 
 ### How to make impact while staying professional
-Selection matters more than manufactured urgency. Use the prior relationship as the reason for the invitation, make the product change concrete, and use the client-retention line once as evidence that more direct control does not reduce LUCI’s partnership.
+Make selection feel earned, keep the product explanation concrete, and use the retention line as reassurance that more direct control does not weaken the relationship.
 
 ### Primary message
-Because you took a serious look at LUCI before, you are invited to a private preview of the beta and the greater day-to-day control it puts in property teams’ hands.
+Their earlier time with LUCI earned a private look at the beta and the specific daily controls it adds.
 
-## Three draft directions
+## Three directions
 
-### Direction 1 — Your prior look earns the early one
+### Direction 1 — You earned the early look
+_Make prior effort the reason for the invitation._
+
 Dear #Name#,
 
-You spent meaningful time with LUCI before. Since then, a new version has moved into beta, with more day-to-day programming control on a faster, more responsive foundation.
+You spent real time with LUCI before, so we chose you for a private preview. LUCI gives operators one interface for a property’s A/V; New LUCI is in beta and gives staff more direct control over rooms, screen views, activity, and access while our team continues to monitor, diagnose, and support.
 
-We’re inviting a small group of people who previously completed a LUCI demo or seriously pursued one to a private preview on [WEBINAR DATE] at [WEBINAR TIME] on [WEBINAR PLATFORM]. This is an early product look, not a sales demo.
-
-Read the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]
+No parade, no sales-demo theater; just a useful first look on [WEBINAR DATE] at [WEBINAR TIME] on [WEBINAR PLATFORM].
 
 Register for the private preview: [REGISTRATION LINK]
 
-### Direction 2 — See what changed
+### Direction 2 — The useful short version
+_Assume weak recall and define the product before the invitation._
+
 Dear #Name#,
 
-If LUCI has stayed somewhere on your list since we last spoke, this is the right time for another look. New LUCI is in beta, with more direct control over rooms, views, data, and access while the LUCI team stays alongside the property.
+If LUCI has become a faint memory, here is the useful short version: it runs a property’s A/V from one interface. New LUCI is in beta and puts more room changes, screen checks, activity history, and access control in staff hands, with our team still monitoring and supporting the work.
 
-This selected private preview is for people who previously spent real time evaluating LUCI. Join us on [WEBINAR DATE] at [WEBINAR TIME] on [WEBINAR PLATFORM].
-
-Review the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]
+We chose a small group of earlier evaluators for a private preview on [WEBINAR DATE] at [WEBINAR TIME].
 
 Register: [REGISTRATION LINK]
 
-### Direction 3 — Control without a handoff
+### Direction 3 — Control with continuity
+_Lead with the beta change and make the relationship proof earn its place._
+
 Dear #Name#,
 
-More programming power is moving into the property team’s hands. New LUCI is in beta on a faster, more responsive foundation, with direct control across rooms, views, data, and access.
+LUCI gives operators one interface for a property’s A/V. New LUCI is in beta and gives operators more direct control over room settings, live screen views, activity history, and access. Our team still monitors, diagnoses, and supports the platform.
 
-That does not mean stepping away from the partnership. The LUCI team remains alongside the property, and we’ve never lost a client.
-
-Because you took a serious look at LUCI before, we’re inviting you to a private preview on [WEBINAR DATE] at [WEBINAR TIME] on [WEBINAR PLATFORM].
+That continuity matters: we've never lost a client. Because you looked seriously at LUCI before, we would like you at the private preview on [WEBINAR DATE].
 
 Register: [REGISTRATION LINK]
 
 ## Why the final won
-**Direction 1 — Your prior look earns the early one**
+**You earned the early look**
 
-It makes the recipient’s prior investment the reason for contact, so the selection feels earned rather than promotional. The final borrows Direction 2’s room-to-access specificity and Direction 3’s partnership proof, while keeping the event clearly separate from a sales demo.
+It makes prior effort the reason for contact, gives a cold reader the full product-and-change line, and keeps one action. The final borrows the continuity proof from Direction 3.
 
 ## Final copy
 
 ### Subject lines
-1. **Warm:** You took a serious look. Here’s the next one.
-2. **Curious:** What changed in LUCI since we last spoke?
-3. **Direct:** Invitation: a private New LUCI preview
+1. **Warm:** A private look, because you looked before
+2. **Curious:** What changed since you saw LUCI?
+3. **Direct:** Private New LUCI preview invitation
 
 ### Preheader
-An early beta look for people who already spent meaningful time with LUCI.
+A selected beta preview with one useful look at what changed.
 
 ### Body
 Dear #Name#,
 
-You spent meaningful time with LUCI before. Since then, a new version has moved into beta, with more day-to-day programming control on a faster, more responsive foundation.
+You spent real time with LUCI before, so we chose you for a private preview. LUCI gives operators one interface for a property’s A/V; New LUCI is in beta and gives staff more direct control over rooms, screen views, activity, and access while our team continues to monitor, diagnose, and support.
 
-We’re inviting a small group of people who previously completed a LUCI demo or seriously pursued one to a private preview on [WEBINAR DATE] at [WEBINAR TIME] on [WEBINAR PLATFORM]. This is an early product look, not a sales demo.
+No parade, no sales-demo theater; just a useful first look on [WEBINAR DATE] at [WEBINAR TIME] on [WEBINAR PLATFORM].
 
-You’ll see greater control across rooms, views, data, and access. More control does not mean less partnership: we’ve never lost a client, and the LUCI team stays alongside the property as property teams take on more day-to-day programming.
-
-Read the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]
+That continuity matters: we've never lost a client.
 
 Register for the private preview: [REGISTRATION LINK]
 
 ### Word count
-**123 words** from greeting through CTA, excluding the signature.
+**87 words** from greeting through CTA, excluding the signature.
 
 ### Signature
 [NAME]
@@ -97,22 +95,23 @@ LUCI Systems
 [EMAIL] · [PHONE]
 
 ## Automation notes
-Send only to selected past-demo and serious past-request contacts. Suppress active opportunities and anyone in an active Mark or Mike conversation. A reply or booked meeting stops marketing automation; opens and ordinary clicks remain reporting signals only. Do not place the recipient in another stage cycle at the same time.
+Send only to chosen past-demo and serious-request contacts. Suppress active opportunities and anyone in an active Mark or Mike conversation. A reply or booking stops marketing automation; opens and ordinary clicks remain reporting signals. Keep each person in one stage cycle.
 
 ## Guardrail audit
-- The event is a private preview of a beta, explicitly not a sales demo.
-- No release or availability date appears; the only timing is the approved webinar placeholder.
-- The LUCI Upgrade Guide is the only linked product-detail asset.
-- More control is paired with the continuing LUCI partnership.
-- “We’ve never lost a client” appears once as support for that partnership. It is omitted from the other four emails because logistics and personal follow-up do not benefit from repeating it.
-- The recipient’s history is acknowledged without implying current use, customer status, or an active deal.
-- No hardware, vendor, pricing, named-customer, percentage, or unapproved proof claim appears.
-- Body is under 150 words; preheader and all subject lines meet their character limits.
+r2 changes: Mark is the proposed sender pending Jane’s decision; the opening now defines LUCI and the beta change, adds one human line, and leaves registration as the sole primary action. The exact line “we've never lost a client” earns its place as reassurance about continuity. No date or availability claim, product-detail link, named account, price, percentage, or passive construction appears.
+
+## r2 changes:
+- Re-edited for light, sharp human voice and one earned human line.
+- Added cold-reader product context where the product appears.
+- Reduced the message to one primary CTA and kept any secondary link quiet or conditional.
+- Recounted the final body with whitespace splitting and synchronized this scaffold to the JSON source.
 
 ## Placeholders to fill
+- [NAME]
 - [WEBINAR DATE]
 - [WEBINAR TIME]
 - [WEBINAR PLATFORM]
 - [REGISTRATION LINK]
-- [LUCI UPGRADE GUIDE URL]
-- [NAME], [TITLE], [EMAIL], [PHONE]
+- [TITLE]
+- [EMAIL]
+- [PHONE]

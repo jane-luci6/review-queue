@@ -1,86 +1,92 @@
 # WARM-REENGAGE-04 — Direct invitation
 
-- **Audience:** Warm prospects completing the launch re-engagement cycle
-- **Cycle:** Launch re-engagement
+- **Audience:** Broader warm contacts completing re-engagement outside active sales conversations
+- **Cycle:** Broader warm re-engagement
 - **Timing:** 5–7 days after email 3
-- **Purpose:** Close the cycle with a clear, low-friction invitation to reconnect.
-- **CTA:** Book a short conversation or walkthrough.
-- **Status:** draft v1 for Jane review
+- **Purpose:** Close with one focused, low-friction invitation.
+- **CTA:** Book a focused conversation.
+- **Status:** draft r2 for Jane review
 
 ## Strategy
 
 ### What we’re writing and why
-A concise close that converts renewed interest into one low-friction human next step.
+A concise close that offers one low-friction human next step.
 
 ### For whom
-Warm contacts who have received the written view, visual walkthrough, and proof but have not replied or booked.
+Warm contacts who may have skipped every prior message but have a current A/V question.
 
 ### Best way to reach them
-Send one direct invitation with a reply option and [BOOKING URL], without recapping the preceding emails.
+Define LUCI and the beta change in one line, promise a focused discussion, and make booking the only primary CTA.
 
 ### How to make impact while staying professional
-Recognize the recipient’s earlier interest, keep the ask small, and use the client-retention claim as evidence that a conversation begins a long-term operating relationship rather than a one-time product handoff.
+Skip the broad presentation and let the reader choose the concrete operating question.
 
 ### Primary message
-If the beta’s changes are relevant to what the prospect is planning, a short conversation or focused walkthrough is available without pressure.
+A focused conversation can test the beta against one real room, wall, or workflow.
 
 ## Three directions
 
-### Direction 1 — Take another look together
+### Direction 1 — Skip the grand tour
+_Promise a focused conversation around one real operating question._
+
 Dear #Name#,
 
-You had a reason to look at LUCI before. If the new beta’s greater day-to-day control is relevant to what you are planning now, let’s take another look together.
+LUCI gives staff one interface for property-wide A/V operations; New LUCI is in beta and gives staff more direct control over rooms, live screen views, activity, and access while our team keeps monitoring and supporting.
 
-We can keep it to a short conversation, or focus a walkthrough on the rooms, views, activity, or access questions that matter to your operation. The relationship matters as much as the platform: we've never lost a client.
+If that fits something you are planning, we can skip the grand tour and go straight to the room, wall, or workflow on your list. A short conversation is enough.
 
-Reply to this email, or choose a time: [BOOKING URL]
+Book a time: [BOOKING URL]
 
-### Direction 2 — A small next step
+### Direction 2 — One useful question
+_Make the meeting about one question rather than a full presentation._
+
 Dear #Name#,
 
-The next step does not need to be a full sales meeting. If what you have seen in the New LUCI beta merits another look, choose the format that would be useful: a short conversation or a focused product walkthrough.
+LUCI gives staff one interface for property-wide A/V operations. New LUCI is in beta and puts more daily programming control in staff hands without reducing our monitoring or support.
 
-Reply with the part of your operation you want to discuss, or pick a time directly. We’ll start there rather than repeat the whole story.
+Bring one useful question: a ballroom changeover, a wall that is not showing what it should, or an access concern. We will start there, not at slide one.
 
 Choose a time: [BOOKING URL]
 
-### Direction 3 — Does it fit what you are planning?
+### Direction 3 — Test the fit
+_Frame the conversation as a relevance check._
+
 Dear #Name#,
 
-You have now seen what changed in the New LUCI beta and the operating proof behind it. The remaining question is whether it fits what your property is planning.
+The shortest way to test fit is against real work. LUCI gives staff one interface for property-wide A/V operations; New LUCI is in beta and gives staff direct control over room changes, screen checks, activity, and access while our team remains accountable for support.
 
-A short conversation can answer that. If a visual is more useful, we can make it a focused walkthrough instead. No broad presentation, just the parts relevant to your operation.
+No broad presentation required. Pick the workflow that matters now.
 
-Reply here, or choose a time: [BOOKING URL]
+Book a focused conversation: [BOOKING URL]
 
 ## Why the final won
-**Direction 1 — Take another look together**
+**Skip the grand tour**
 
-It reconnects the new reason to look with the reader’s earlier interest, offers two low-friction formats, and gives the retention claim a relationship context. The final borrows the promise to focus only on relevant operating questions from the other directions.
+It works for someone who skipped the sequence, defines both the platform and the beta change, and offers one small next step tied to a concrete operating question.
 
 ## Final copy
 
 ### Subject lines
-1. **Warm:** Want to take another look at LUCI?
-2. **Direct:** A short conversation or focused walkthrough
-3. **Relevant:** Does the beta fit what you’re planning?
+1. **Warm:** Want to test LUCI against one real workflow?
+2. **Direct:** Book a focused LUCI conversation
+3. **Practical:** Start with the room or wall on your list
 
 ### Preheader
-Choose a short conversation or a walkthrough focused on your operating questions.
+Skip the broad presentation and start with one operating question.
 
 ### Body
 Dear #Name#,
 
-You had a reason to look at LUCI before. If the new beta’s greater day-to-day control is relevant to what you are planning now, let’s take another look together.
+LUCI gives staff one interface for property-wide A/V operations; New LUCI is in beta and gives staff more direct control over rooms, live screen views, activity, and access while our team keeps monitoring and supporting.
 
-We can keep it to a short conversation, or focus a walkthrough on the rooms, views, activity, or access questions that matter to your operation.
+If that fits something you are planning, we can skip the grand tour and go straight to the room, wall, or workflow on your list.
 
-The relationship matters as much as the platform: we've never lost a client.
+A short conversation is enough.
 
-Reply to this email, or choose a time: [BOOKING URL]
+Book a time: [BOOKING URL]
 
 ### Word count
-**79 words** from greeting through CTA, excluding the signature.
+**72 words** from greeting through CTA, excluding the signature.
 
 ### Signature
 [NAME]
@@ -89,16 +95,16 @@ LUCI Systems
 [EMAIL] · [PHONE]
 
 ## Automation notes
-- Send only to eligible warm contacts who remain quiet after email 03.
-- Suppress active opportunities and anyone in an active Mark or Mike conversation.
-- A reply or booking immediately stops marketing automation and moves the contact to personal follow-up.
-- If the contact remains quiet, end this cycle and move them only to the appropriate long-term nurture path.
+Send only to eligible warm contacts who remain quiet after the proof email. Suppress active opportunities and active Mark or Mike conversations. A reply or booking stops automation and moves ownership to Sales. If the contact remains quiet, end this cycle before long-term nurture begins.
 
 ## Guardrail audit
-- The invitation is low-pressure, offers two clear formats, and repeats no feature list.
-- The exact line “we've never lost a client” appears once across the four promotional re-engagement emails: one in four.
-- The retention claim is used as relationship reassurance and does not appear in either transactional response email.
-- No date or product-availability claim appears.
+r2 changes: The close now works for a cold reader, defines LUCI and the beta change, adds one human promise to skip the grand tour, and makes booking the sole primary CTA. The retention claim stays out because WARM-REENGAGE-03 already uses it and repetition would weaken the invitation. No date or availability claim, named account, price, percentage, or passive construction appears.
+
+## r2 changes:
+- Re-edited for light, sharp human voice and one earned human line.
+- Added cold-reader product context where the product appears.
+- Reduced the message to one primary CTA and kept any secondary link quiet or conditional.
+- Recounted the final body with whitespace splitting and synchronized this scaffold to the JSON source.
 
 ## Placeholders to fill
 - [BOOKING URL]

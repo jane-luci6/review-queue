@@ -1,95 +1,93 @@
 # WARM-PREVIEW-03 — Registered-attendee reminder
 
-- **Audience:** Registered selected warm prospects
-- **Cycle:** Selected pre-launch preview
+- **Audience:** Registered private-preview prospects
+- **Cycle:** Selected private preview
 - **Timing:** 2 days before the webinar; registrants only
-- **Purpose:** Convert registrations into attendance without sending another product pitch.
-- **CTA:** Add to calendar or join the session.
-- **Status:** draft v1 for Jane review
+- **Purpose:** Put the calendar action and session access in one retrievable note.
+- **CTA:** Add to calendar.
+- **Status:** draft r2 for Jane review
 
 ## Strategy
 
 ### What we’re writing and why
-A registrant-only logistics reminder whose entire job is to remove attendance friction. The recipient already chose to attend, so the message should not restate the product argument or add a new reason to buy.
+A logistics-only reminder that removes attendance friction.
 
 ### For whom
-Selected warm prospects who registered for the private preview and are not in an active opportunity. They need accurate timing, platform, calendar, and join details in a message they can retrieve quickly when the session begins.
+People who already registered and need accurate details, not another product argument.
 
 ### Best way to reach them
-Send from the same recognizable campaign sender two days before the webinar. Put the event facts first, use one short instruction, and leave the join link as the final line.
+Send from Mark two days before the session. Put the facts first, make calendar save the primary action, and present the join link as access information.
 
 ### How to make impact while staying professional
-Reliability is the tone. Do not add feature language, preparation requirements, or urgency that event owners have not supplied. A clean reminder respects the recipient’s earlier decision.
+Sound calm and useful; one lightly human line makes the reminder memorable without turning it into promotion.
 
 ### Primary message
-Your private New LUCI preview details, calendar link, and join link are in one easy-to-retrieve note.
+The event facts, calendar action, and join link sit in one easy-to-find note.
 
-## Three draft directions
+## Three directions
 
-### Direction 1 — Details first
+### Direction 1 — Everything in one place
+_Lead with the reason to keep the note._
+
 Dear #Name#,
 
-Your private New LUCI preview is coming up.
+Calendars hide links with remarkable efficiency, so here are both in one place.
 
 Date: [WEBINAR DATE]
-
 Time: [WEBINAR TIME]
-
 Platform: [WEBINAR PLATFORM]
-
-Add it to your calendar now, then return to the join link when the session begins.
 
 Add to calendar: [CALENDAR LINK]
 
-Join the private preview: [JOIN LINK]
+Join link for session time: [JOIN LINK]
 
-### Direction 2 — Calendar first
+### Direction 2 — Save it now
+_Make the calendar action immediate and the join link easy to retrieve later._
+
 Dear #Name#,
 
-Thanks for registering for the private New LUCI preview.
+Your private preview is on [WEBINAR DATE] at [WEBINAR TIME] on [WEBINAR PLATFORM].
 
-Please save the session:
+Save it now; future-you has enough tabs open.
 
-[WEBINAR DATE] at [WEBINAR TIME]
+Add to calendar: [CALENDAR LINK]
 
-[WEBINAR PLATFORM]
-
-Calendar: [CALENDAR LINK]
-
-When it is time to join, use this link: [JOIN LINK]
+Join link: [JOIN LINK]
 
 ### Direction 3 — Keep this note
+_Treat the message as a clean access card._
+
 Dear #Name#,
 
-Keep this note for the private New LUCI preview on [WEBINAR DATE].
+Keep this note for the private preview. It has the details and the link you will need.
 
-The session begins at [WEBINAR TIME] on [WEBINAR PLATFORM].
+[WEBINAR DATE]
+[WEBINAR TIME]
+[WEBINAR PLATFORM]
 
-Add it to your calendar: [CALENDAR LINK]
+Add to calendar: [CALENDAR LINK]
 
-Join the session: [JOIN LINK]
-
-We’ll see you there.
+Session access: [JOIN LINK]
 
 ## Why the final won
-**Direction 1 — Details first**
+**Everything in one place**
 
-It is the fastest to scan and the easiest to retrieve at session time. The final keeps Direction 2’s registration acknowledgment implicit and Direction 3’s human tone without adding anything beyond the logistics job.
+It gives the reminder a human reason to exist, scans fastest, and makes calendar save the single primary action while preserving the join link as a logistical detail.
 
 ## Final copy
 
 ### Subject lines
-1. **Direct:** Your private preview is [WEBINAR DATE]
-2. **Practical:** Calendar and join links for your preview
-3. **Warm:** We’ll see you at the New LUCI preview
+1. **Direct:** Your private preview details
+2. **Practical:** Calendar and join link, in one place
+3. **Warm:** We saved you a seat
 
 ### Preheader
-[WEBINAR TIME], [WEBINAR PLATFORM], and both access links are inside.
+Date, time, platform, calendar, and session access are together inside.
 
 ### Body
 Dear #Name#,
 
-Your private New LUCI preview is coming up.
+Calendars hide links with remarkable efficiency, so here are both in one place.
 
 Date: [WEBINAR DATE]
 
@@ -97,14 +95,12 @@ Time: [WEBINAR TIME]
 
 Platform: [WEBINAR PLATFORM]
 
-Add it to your calendar now, then return to the join link when the session begins.
-
 Add to calendar: [CALENDAR LINK]
 
-Join the private preview: [JOIN LINK]
+Join link for session time: [JOIN LINK]
 
 ### Word count
-**46 words** from greeting through CTA, excluding the signature.
+**36 words** from greeting through CTA, excluding the signature.
 
 ### Signature
 [NAME]
@@ -113,19 +109,24 @@ LUCI Systems
 [EMAIL] · [PHONE]
 
 ## Automation notes
-Send only to registrants in this selected-preview cycle. Suppress nonregistrants, active opportunities, and anyone in an active Mark or Mike conversation. A reply or booked meeting stops marketing automation; opens and ordinary clicks do not trigger a sales handoff. Do not place the recipient in another stage cycle at the same time.
+Send only to registrants. Suppress nonregistrants, active opportunities, and anyone in an active Mark or Mike conversation. A reply or booking stops automation; opens and ordinary clicks remain reporting signals.
 
 ## Guardrail audit
-- The final is logistics only: no feature list, sales pitch, customer-upgrade language, or new claim.
-- [WEBINAR DATE] is event timing, not a release or availability date.
-- Only the approved webinar placeholders appear; no preparation requirement is invented.
-- The retention claim and LUCI Upgrade Guide are intentionally omitted because neither helps the logistics job.
-- Body is under 150 words; preheader and all subject lines meet their character limits.
+r2 changes: The reminder now uses Mark as the proposed sender, adds one restrained human line, and makes calendar save the sole primary CTA; the join link remains access information. The retention claim stays out because logistics needs no trust proof. The note contains no product pitch, date or availability claim, product asset, named account, price, percentage, or passive construction.
+
+## r2 changes:
+- Re-edited for light, sharp human voice and one earned human line.
+- Added cold-reader product context where the product appears.
+- Reduced the message to one primary CTA and kept any secondary link quiet or conditional.
+- Recounted the final body with whitespace splitting and synchronized this scaffold to the JSON source.
 
 ## Placeholders to fill
+- [NAME]
 - [WEBINAR DATE]
 - [WEBINAR TIME]
 - [WEBINAR PLATFORM]
 - [CALENDAR LINK]
 - [JOIN LINK]
-- [NAME], [TITLE], [EMAIL], [PHONE]
+- [TITLE]
+- [EMAIL]
+- [PHONE]
