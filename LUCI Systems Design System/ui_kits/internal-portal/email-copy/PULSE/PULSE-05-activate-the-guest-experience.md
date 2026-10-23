@@ -1,15 +1,15 @@
 # PULSE-05 — Activate the guest experience
 
-- **Audience:** Warm and net-new prospects eligible for long-term nurture
+- **Audience:** Warm and net-new prospects who completed an earlier cycle without entering sales and are not in an active Mark or Mike conversation
 - **Cycle:** Every 4–6 weeks
 - **Timing:** Month 5
-- **Purpose:** Show how staging and approved room controls turn a ballroom changeover into one coordinated cue.
+- **Purpose:** Staging and approved room controls let staff prepare a ballroom changeover quietly and execute it in one coordinated cue.
 - **CTA:** See how LUCI turns passive screens into guest moments.
-- **Status:** draft r2 for Jane review
+- **Status:** draft r3 for Jane review
 
 ## Strategy
 
-### What we’re writing and why
+### What we're writing and why
 Shift from internal operations to the visible guest result. Use a ballroom changeover rather than another screen-status problem.
 
 ### For whom
@@ -24,18 +24,24 @@ Let the guests-never-see-the-menu-diving line humanize a precise sequence: prepa
 ### Primary message
 Staging and approved room controls let staff prepare a ballroom changeover quietly and execute it in one coordinated cue.
 
-## Three draft directions
+## Three directions
 
 ### Direction 1 — Keynote to awards
+_The selected direction, revised for whole-campaign consistency._
+
 Dear #Name#,
 
 The ballroom has ten minutes to turn from keynote mode to awards: new wall content, walk-up music, and different confidence screens while guests wait outside. Guests should see the moment, not the menu-diving behind it.
 
-LUCI orchestrates screens, sources, and audio from one interface. Staff can stage the next room look while the keynote continues, then apply it on cue. A venue panel exposes only the approved controls for that ballroom.
+LUCI orchestrates screens, sources, and audio from one interface. Staff can stage the next room look while the keynote continues, then apply it on cue.
 
-See the changeover workflow: [PROOF URL]
+A venue panel exposes only the approved controls for that ballroom.
+
+See how LUCI turns passive screens into guest moments: [PROOF URL]
 
 ### Direction 2 — Prepare quietly
+_Center the benefit on behind-the-scenes setup before one coordinated cue._
+
 Dear #Name#,
 
 A room changeover should look instant to guests, even when it took careful work behind the scenes.
@@ -47,6 +53,8 @@ The useful magic is not magic at all. It is one prepared action instead of a spr
 See how it works: [PROOF URL]
 
 ### Direction 3 — Installed is not coordinated
+_Contrast a room full of working endpoints with a room ready for a live moment._
+
 Dear #Name#,
 
 Every screen can work perfectly and the ballroom changeover can still wobble. Installed equipment does not coordinate itself.
@@ -58,9 +66,9 @@ No guest needs to watch someone negotiate three menus during the applause.
 See the ballroom workflow: [PROOF URL]
 
 ## Why the final won
-**Direction 1 — Keynote to awards**
+**Keynote to awards**
 
-It gives staging a specific before-and-after state, a deadline, and a guest-facing reason to matter. The final borrows Direction 2's prepared-action logic and Direction 3's endpoint distinction.
+It gives staging a specific keynote-to-awards transition, a deadline, and a guest-facing reason to matter. The r3 campaign pass keeps this as the campaign's only ballroom changeover.
 
 ## Final copy
 
@@ -96,15 +104,15 @@ LUCI Systems
 Send in Month 5 only while the contact remains eligible for Pulse. Suppress active Mark or Mike conversations. A reply, booking, or active opportunity stops automation; an ordinary click to the workflow proof does not trigger sales outreach.
 
 ## Guardrail audit
-- r2 changes: Changed the scene from another watch-party screen problem to a ballroom keynote-to-awards transition, added one human line about menu diving, and made the control sequence specific.
-- The body has one proof CTA and claims coordinated timing, not a financial or guest-satisfaction result.
-- The retention line is skipped so this email stays focused on the guest-facing moment.
-- No named property, percentage, or unsupported outcome appears.
-- Body is under 150 words; subjects are under 55 characters; preheader is under 90 characters.
+r3 changes: Skipped the client-retention claim because this independent email stays focused on the guest-facing ballroom moment. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.
+
+## r3 changes:
+- Whole-campaign scene: ballroom keynote-to-awards changeover.
+- Sender story, product-definition cadence, partnership language, claim use, subjects, preheader, and count were checked against the other 26 finals.
 
 ## Placeholders to fill
-- [PROOF URL]
-- [NAME]
-- [TITLE]
 - [EMAIL]
+- [NAME]
 - [PHONE]
+- [PROOF URL]
+- [TITLE]

@@ -3,13 +3,13 @@
 - **Audience:** Registered private-preview prospects
 - **Cycle:** Selected private preview
 - **Timing:** 2 days before the webinar; registrants only
-- **Purpose:** Put the calendar action and session access in one retrievable note.
+- **Purpose:** The event facts, calendar action, and join link sit in one easy-to-find note.
 - **CTA:** Add to calendar.
-- **Status:** draft r2 for Jane review
+- **Status:** draft r3 for Jane review
 
 ## Strategy
 
-### What we’re writing and why
+### What we're writing and why
 A logistics-only reminder that removes attendance friction.
 
 ### For whom
@@ -27,14 +27,16 @@ The event facts, calendar action, and join link sit in one easy-to-find note.
 ## Three directions
 
 ### Direction 1 — Everything in one place
-_Lead with the reason to keep the note._
+_The selected direction, revised for whole-campaign consistency._
 
 Dear #Name#,
 
 Calendars hide links with remarkable efficiency, so here are both in one place.
 
 Date: [WEBINAR DATE]
+
 Time: [WEBINAR TIME]
+
 Platform: [WEBINAR PLATFORM]
 
 Add to calendar: [CALENDAR LINK]
@@ -72,7 +74,7 @@ Session access: [JOIN LINK]
 ## Why the final won
 **Everything in one place**
 
-It gives the reminder a human reason to exist, scans fastest, and makes calendar save the single primary action while preserving the join link as a logistical detail.
+It gives registered attendees every access detail in one scan and keeps calendar save as the only primary action. The r3 campaign pass confirmed that logistics stay separate from product and proof.
 
 ## Final copy
 
@@ -112,21 +114,19 @@ LUCI Systems
 Send only to registrants. Suppress nonregistrants, active opportunities, and anyone in an active Mark or Mike conversation. A reply or booking stops automation; opens and ordinary clicks remain reporting signals.
 
 ## Guardrail audit
-r2 changes: The reminder now uses Mark as the proposed sender, adds one restrained human line, and makes calendar save the sole primary CTA; the join link remains access information. The retention claim stays out because logistics needs no trust proof. The note contains no product pitch, date or availability claim, product asset, named account, price, percentage, or passive construction.
+r3 changes: Skipped the client-retention claim because this logistics-only reminder should contain facts and access, not a trust slogan. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.
 
-## r2 changes:
-- Re-edited for light, sharp human voice and one earned human line.
-- Added cold-reader product context where the product appears.
-- Reduced the message to one primary CTA and kept any secondary link quiet or conditional.
-- Recounted the final body with whitespace splitting and synchronized this scaffold to the JSON source.
+## r3 changes:
+- Whole-campaign scene: event logistics.
+- Sender story, product-definition cadence, partnership language, claim use, subjects, preheader, and count were checked against the other 26 finals.
 
 ## Placeholders to fill
-- [NAME]
-- [WEBINAR DATE]
-- [WEBINAR TIME]
-- [WEBINAR PLATFORM]
 - [CALENDAR LINK]
-- [JOIN LINK]
-- [TITLE]
 - [EMAIL]
+- [JOIN LINK]
+- [NAME]
 - [PHONE]
+- [TITLE]
+- [WEBINAR DATE]
+- [WEBINAR PLATFORM]
+- [WEBINAR TIME]

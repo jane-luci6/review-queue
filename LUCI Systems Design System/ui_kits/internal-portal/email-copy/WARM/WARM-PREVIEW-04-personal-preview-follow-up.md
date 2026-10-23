@@ -3,13 +3,13 @@
 - **Audience:** Private-preview attendees outside active sales conversations
 - **Cycle:** Selected private preview
 - **Timing:** Next business day after the webinar; sent by Mark
-- **Purpose:** Ask attendees for one honest reaction and offer a direct reply to Mark.
+- **Purpose:** Mark wants one honest reaction and will continue only if a direct conversation helps.
 - **CTA:** Reply to Mark.
-- **Status:** draft r2 for Jane review
+- **Status:** draft r3 for Jane review
 
 ## Strategy
 
-### What we’re writing and why
+### What we're writing and why
 A short personal note that turns attendance into an honest response rather than another campaign touch.
 
 ### For whom
@@ -27,13 +27,13 @@ Mark wants one honest reaction and will continue only if a direct conversation h
 ## Three directions
 
 ### Direction 1 — What looked useful
-_Ask for one honest reaction without steering it._
+_The selected direction, revised for whole-campaign consistency._
 
 Dear #Name#,
 
-Thanks for joining the private preview. You had seen the platform before, so I’m curious: what looked useful this time, and what did not?
+Thanks for joining the private preview. You had seen the platform before, so I'm curious: what looked useful this time, and what did not?
 
-I’ll spare you the survey disguised as a follow-up. Just reply with the room or workflow you would test against your own plans.
+No form to complete. Just reply with the room or workflow you would test against your own plans.
 
 Reply to Mark: [MARK EMAIL]
 
@@ -68,7 +68,7 @@ Optional calendar: [BOOKING URL]
 ## Why the final won
 **What looked useful**
 
-It sounds like a real note from Mark, invites a useful negative as well as a positive, and keeps reply clearly ahead of the optional calendar.
+It sounds like a real note from Mark, invites a useful negative as well as a positive, and keeps reply ahead of the optional calendar. The r3 final removes the repeated survey joke.
 
 ## Final copy
 
@@ -83,16 +83,16 @@ One honest reaction is more useful than another recap.
 ### Body
 Dear #Name#,
 
-Thanks for joining the private preview. You had seen the platform before, so I’m curious: what looked useful this time, and what did not?
+Thanks for joining the private preview. You had seen the platform before, so I'm curious: what looked useful this time, and what did not?
 
-I’ll spare you the survey disguised as a follow-up. Just reply with the room or workflow you would test against your own plans.
+No form to complete. Just reply with the room or workflow you would test against your own plans.
 
 Reply to Mark: [MARK EMAIL]
 
 If a call is easier: [BOOKING URL]
 
 ### Word count
-**61 words** from greeting through CTA, excluding the signature.
+**56 words** from greeting through CTA, excluding the signature.
 
 ### Signature
 [NAME]
@@ -104,18 +104,16 @@ LUCI Systems
 Send from Mark the next business day only to attendees outside active opportunities. A reply or booking stops marketing automation and moves ownership to Sales. Keep the calendar visually secondary and suppress anyone already in an active Mark or Mike conversation.
 
 ## Guardrail audit
-r2 changes: The note now asks for an honest positive or negative, adds one lightly witty line, and makes reply the sole primary CTA with the calendar secondary. The retention claim stays out because it would make a personal question sound scripted. No product recap, date or availability claim, asset link, named account, price, percentage, or passive construction appears.
+r3 changes: Skipped the client-retention claim because a personal Mark note should focus on the recipient's reaction. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.
 
-## r2 changes:
-- Re-edited for light, sharp human voice and one earned human line.
-- Added cold-reader product context where the product appears.
-- Reduced the message to one primary CTA and kept any secondary link quiet or conditional.
-- Recounted the final body with whitespace splitting and synchronized this scaffold to the JSON source.
+## r3 changes:
+- Whole-campaign scene: personal reaction request.
+- Sender story, product-definition cadence, partnership language, claim use, subjects, preheader, and count were checked against the other 26 finals.
 
 ## Placeholders to fill
-- [MARK EMAIL]
 - [BOOKING URL]
-- [NAME]
-- [TITLE]
 - [EMAIL]
+- [MARK EMAIL]
+- [NAME]
 - [PHONE]
+- [TITLE]

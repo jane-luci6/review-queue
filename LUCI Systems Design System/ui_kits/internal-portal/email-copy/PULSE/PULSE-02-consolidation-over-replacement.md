@@ -1,15 +1,15 @@
 # PULSE-02 — Consolidation without starting over
 
-- **Audience:** Warm and net-new prospects eligible for long-term nurture
+- **Audience:** Warm and net-new prospects who completed an earlier cycle without entering sales and are not in an active Mark or Mike conversation
 - **Cycle:** Every 4–6 weeks
 - **Timing:** Month 2
-- **Purpose:** Show how a refresh can keep useful hardware in service while LUCI consolidates control and workflows.
+- **Purpose:** A refresh should consolidate control and workflows while keeping useful hardware in service.
 - **CTA:** Compare the next refresh with a LUCI operating model.
-- **Status:** draft r2 for Jane review
+- **Status:** draft r3 for Jane review
 
 ## Strategy
 
-### What we’re writing and why
+### What we're writing and why
 Challenge the habit of changing equipment while recreating the same operating tangle. Make preserved hardware choice and consolidation concrete.
 
 ### For whom
@@ -19,25 +19,29 @@ Property and technology leaders planning a refresh who want less disruption and 
 Send from LUCI Marketing in Month 2. Use one approved project-true count as proof and make the booking link the only CTA.
 
 ### How to make impact while staying professional
-Use the new-rack, old-headache line to sharpen the distinction between equipment change and operating improvement.
+Use a pool-area refresh to distinguish useful hardware choice from a fragmented staff workflow.
 
 ### Primary message
 A refresh should consolidate control and workflows while keeping useful hardware in service.
 
-## Three draft directions
+## Three directions
 
-### Direction 1 — A new rack, the old headache
+### Direction 1 — Mixed years, one workflow
+_The selected direction, revised for whole-campaign consistency._
+
 Dear #Name#,
 
-During a refresh, old equipment leaves, new equipment arrives, and the operating tangle can stroll right back in. A new rack can carry an old headache.
+A pool-area refresh mixes older cabana displays with newer screens. The hardware may span years; the staff workflow should not.
 
-LUCI is an A/V orchestration engine that works with the equipment a property keeps and consolidates control in one interface. Hardware can still fit the job instead of one uniform rule.
+LUCI works with the equipment a property keeps and consolidates control in one interface. Teams keep hardware choice while screens, sources, and audio share one operating path.
 
-At one property, [APPROVED PROOF POINT]. We've never lost a client; the relationship continues after installation.
+At one property, [APPROVED PROOF POINT]. That is the useful measure: a shorter list to run, not a matching-equipment contest.
 
 Compare the next refresh with a LUCI operating model: [BOOKING URL]
 
 ### Direction 2 — Keep what earns its place
+_Lead with the practical value of useful equipment already on property._
+
 Dear #Name#,
 
 A refresh does not need to put every useful piece of A/V on the curb.
@@ -51,6 +55,8 @@ We've never lost a client because our team remains accountable for the system af
 Compare the next refresh with LUCI: [BOOKING URL]
 
 ### Direction 3 — Start with the room
+_Frame the refresh around what staff need to operate rather than a component list._
+
 Dear #Name#,
 
 If a refresh starts only with the equipment list, the staff workflow usually arrives by accident.
@@ -62,33 +68,33 @@ At one property, [APPROVED PROOF POINT]. Useful hardware stays useful, and the c
 Talk through the next refresh: [BOOKING URL]
 
 ## Why the final won
-**Direction 1 — A new rack, the old headache**
+**Mixed years, one workflow**
 
-It makes the refresh trap memorable in one human line, then moves immediately to the concrete alternative: keep useful equipment and consolidate control. The final borrows Direction 2's hardware-choice reassurance and Direction 3's shorter control path.
+It makes the refresh decision concrete without recycling the acquisition track's rack scene. The r3 final removes the retention claim so no prospect encounters it again in Pulse.
 
 ## Final copy
 
 ### Subject lines
-1. **Provocative:** Can a new rack bring back the old headache?
-2. **Reassuring:** Keep the hardware that still does its job
+1. **Provocative:** Can a refresh keep useful hardware?
+2. **Reassuring:** Let cabana screens span more than one era
 3. **Direct:** Compare your next A/V refresh with LUCI
 
 ### Preheader
-Keep useful equipment in service while one interface consolidates the way staff run it.
+Keep useful equipment in service while staff gain one operating path.
 
 ### Body
 Dear #Name#,
 
-During a refresh, old equipment leaves, new equipment arrives, and the operating tangle can stroll right back in. A new rack can carry an old headache.
+A pool-area refresh mixes older cabana displays with newer screens. The hardware may span years; the staff workflow should not.
 
-LUCI is an A/V orchestration engine that works with the equipment a property keeps and consolidates control in one interface. Hardware can still fit the job instead of one uniform rule.
+LUCI works with the equipment a property keeps and consolidates control in one interface. Teams keep hardware choice while screens, sources, and audio share one operating path.
 
-At one property, [APPROVED PROOF POINT]. We've never lost a client; the relationship continues after installation.
+At one property, [APPROVED PROOF POINT]. That is the useful measure: a shorter list to run, not a matching-equipment contest.
 
 Compare the next refresh with a LUCI operating model: [BOOKING URL]
 
 ### Word count
-**86 words** from greeting through CTA, excluding the signature.
+**80 words** from greeting through CTA, excluding the signature.
 
 ### Signature
 [NAME]
@@ -97,19 +103,19 @@ LUCI Systems
 [EMAIL] · [PHONE]
 
 ## Automation notes
-Send in Month 2 only if the prospect remains outside active sales. Suppress active Mark or Mike conversations. A reply or booking stops the automation and routes the person to human follow-up; ordinary clicks do not trigger a handoff.
+Do not send until [APPROVED PROOF POINT] contains one sourced, project-true count approved for prospect use. Send in Month 2 only if the prospect remains outside active sales. Suppress active Mark or Mike conversations. A reply or booking stops the automation and routes the person to human follow-up; ordinary clicks do not trigger a handoff.
 
 ## Guardrail audit
-- r2 changes: Removed the competing proof link, changed the message from an abstract model to a rack-and-workflow scene, and added one dry human line.
-- The approved proof stays a placeholder and the body has one booking CTA.
-- The exact retention line remains because a refresh asks the reader to trust who will support the system after installation.
-- No named property, pricing, percentage, or unsupported result appears.
-- Body is under 150 words; subjects are under 55 characters; preheader is under 90 characters.
+r3 changes: Skipped the client-retention claim because both warm and net-new entrants may have already seen it; the approved project count is this email's proof. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.
+
+## r3 changes:
+- Whole-campaign scene: pool-cabana hardware refresh.
+- Sender story, product-definition cadence, partnership language, claim use, subjects, preheader, and count were checked against the other 26 finals.
 
 ## Placeholders to fill
 - [APPROVED PROOF POINT]
 - [BOOKING URL]
-- [NAME]
-- [TITLE]
 - [EMAIL]
+- [NAME]
 - [PHONE]
+- [TITLE]

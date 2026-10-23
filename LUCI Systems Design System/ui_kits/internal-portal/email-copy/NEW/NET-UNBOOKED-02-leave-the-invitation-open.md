@@ -3,13 +3,13 @@
 - **Audience:** Net-new demo requesters still quiet after scheduling recovery
 - **Cycle:** Unbooked request recovery after Sales handback
 - **Timing:** Provisional: 7–10 days after recovery email 1
-- **Purpose:** Close active scheduling without pressure.
+- **Purpose:** Active scheduling ends here, while one link keeps the LUCI walkthrough available when timing improves.
 - **CTA:** Schedule the walkthrough.
-- **Status:** draft r2 for Jane review
+- **Status:** draft r3 for Jane review
 
 ## Strategy
 
-### What we’re writing and why
+### What we're writing and why
 End active scheduling clearly and preserve the invitation without another persuasion attempt.
 
 ### For whom
@@ -27,17 +27,21 @@ Active scheduling ends here, while one link keeps the LUCI walkthrough available
 ## Three directions
 
 ### Direction 1 — No calendar apology
+_The selected direction, revised for whole-campaign consistency._
+
 Dear #Name#,
 
-This is the last scheduling note. No calendar apology required.
+This is the last scheduling note. No explanation required.
 
-LUCI brings a property's A/V into one interface, and the walkthrough will still be here if that becomes useful later.
+The LUCI walkthrough will still be here if it becomes useful later.
 
 Schedule the walkthrough: [BOOKING URL]
 
 If now is not the time, do nothing. We will shift to occasional useful notes.
 
 ### Direction 2 — Close the sequence
+_State the close immediately and keep the invitation available._
+
 Dear #Name#,
 
 We are ending the active scheduling sequence, not the invitation.
@@ -49,6 +53,8 @@ Schedule a walkthrough: [BOOKING URL]
 Otherwise, nothing is due from you. We will send only occasional notes.
 
 ### Direction 3 — Keep the link
+_Make the calendar a resource for later, not another nudge._
+
 Dear #Name#,
 
 Here is the LUCI calendar link once more, for whenever the timing fits. LUCI brings screens, rooms, and controls into one A/V interface.
@@ -58,14 +64,14 @@ Choose a time: [BOOKING URL]
 We will stop the scheduling notes here. Your inbox has done enough project management for one conversation.
 
 ## Why the final won
-**Direction 1 — No calendar apology**
+**No calendar apology**
 
-It closes active scheduling in six words, removes any obligation to explain, and keeps the invitation intelligible for someone who forgot what LUCI does. The occasional-note transition stays quiet.
+It closes active scheduling, removes any obligation to explain, and leaves one useful link. The r3 final trusts the prior request instead of redefining LUCI or repeating the calendar joke.
 
 ## Final copy
 
 ### Subject lines
-1. **Low-pressure:** No calendar apology required
+1. **Low-pressure:** No explanation required
 2. **Practical:** Keep the LUCI link for later
 3. **Warm:** The walkthrough can wait
 
@@ -75,16 +81,16 @@ We are ending the scheduling notes, not the invitation.
 ### Body
 Dear #Name#,
 
-This is the last scheduling note. No calendar apology required.
+This is the last scheduling note. No explanation required.
 
-LUCI brings a property's A/V into one interface, and the walkthrough will still be here if that becomes useful later.
+The LUCI walkthrough will still be here if it becomes useful later.
 
 Schedule the walkthrough: [BOOKING URL]
 
 If now is not the time, do nothing. We will shift to occasional useful notes.
 
 ### Word count
-**52 words** from greeting through CTA, excluding the signature.
+**43 words** from greeting through CTA, excluding the signature.
 
 ### Signature
 [NAME]
@@ -93,18 +99,18 @@ LUCI Systems
 [EMAIL] · [PHONE]
 
 ## Automation notes
-- Send only after explicit Sales handback and no response or booking from NET-UNBOOKED-01.
-- A reply, booking, or active opportunity stops all marketing automation and returns the contact to the assigned sales owner.
-- Opens and ordinary clicks remain reporting signals only.
-- If quiet, end this cycle and move the contact to Prospect Pulse, with one lifecycle cycle active.
-- Timing remains provisional.
+Send only after explicit Sales handback and no response or booking from NET-UNBOOKED-01. A reply, booking, or active opportunity stops all marketing automation and returns the contact to the assigned sales owner. Opens and ordinary clicks remain reporting signals only. If quiet, end this cycle and move the contact to Prospect Pulse, with one lifecycle cycle active. Timing remains provisional.
 
 ## Guardrail audit
-r2 changes: Shortened the close, added a varied LUCI definition, removed the reply prompt, and kept one calendar CTA. The client-retention claim is skipped because a respectful close should not introduce fresh persuasion.
+r3 changes: Skipped the client-retention claim because a respectful scheduling close should not introduce fresh persuasion. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.
+
+## r3 changes:
+- Whole-campaign scene: scheduling close.
+- Sender story, product-definition cadence, partnership language, claim use, subjects, preheader, and count were checked against the other 26 finals.
 
 ## Placeholders to fill
-- `[BOOKING URL]`
-- `[NAME]`
-- `[TITLE]`
-- `[EMAIL]`
-- `[PHONE]`
+- [BOOKING URL]
+- [EMAIL]
+- [NAME]
+- [PHONE]
+- [TITLE]

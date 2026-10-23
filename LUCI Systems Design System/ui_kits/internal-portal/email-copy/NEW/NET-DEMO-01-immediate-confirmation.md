@@ -3,13 +3,13 @@
 - **Audience:** Net-new prospects who submitted a demo request
 - **Cycle:** After a demo request
 - **Timing:** Immediately after the request
-- **Purpose:** Confirm the request and remove scheduling friction.
+- **Purpose:** LUCI received the request, and the prospect can choose a time without reading another pitch.
 - **CTA:** Choose a time.
-- **Status:** draft r2 for Jane review
+- **Status:** draft r3 for Jane review
 
 ## Strategy
 
-### What we’re writing and why
+### What we're writing and why
 Confirm the request and remove scheduling uncertainty.
 
 ### For whom
@@ -27,15 +27,19 @@ LUCI received the request, and the prospect can choose a time without reading an
 ## Three directions
 
 ### Direction 1 — Time first
+_The selected direction, revised for whole-campaign consistency._
+
 Dear #Name#,
 
-Thanks for asking to see LUCI, the platform that runs a property's A/V from one interface.
+Thanks for asking to see LUCI.
 
-Mike or Mark will confirm the meeting and shape the walkthrough around any priorities you shared. Calendars create enough friction on their own, so the note stays short.
+Your LUCI contact will confirm the meeting and shape the walkthrough around any priorities you shared. The note stays short.
 
 Choose a time: [BOOKING URL]
 
 ### Direction 2 — Confirmation first
+_Assure the reader that a person will pick up the request._
+
 Dear #Name#,
 
 We have your request to see LUCI, which brings a property's A/V into one interface.
@@ -45,6 +49,8 @@ Mike or Mark will handle the walkthrough and use the priorities from your form. 
 Choose a time: [BOOKING URL]
 
 ### Direction 3 — Plain next step
+_Use the shortest possible confirmation with one clear action._
+
 Dear #Name#,
 
 Your LUCI demo request reached our team. LUCI runs a property's A/V from one interface, and Mike or Mark will tailor the walkthrough to your operation.
@@ -54,9 +60,9 @@ No extra reading assignment today.
 Choose a time: [BOOKING URL]
 
 ## Why the final won
-**Direction 1 — Time first**
+**Time first**
 
-It confirms the request, gives a skipped-earlier-email reader one compact definition, and puts the only action in its own line. The warm calendar sentence keeps it human without slowing the transaction.
+It confirms the request and puts the only action in its own line. The r3 final drops the repeated LUCI definition because this recipient just requested the walkthrough.
 
 ## Final copy
 
@@ -66,19 +72,19 @@ It confirms the request, gives a skipped-earlier-email reader one compact defini
 3. **Warm:** Thanks for asking to see LUCI
 
 ### Preheader
-Pick a meeting time, and Mike or Mark will handle the rest.
+Pick a meeting time, and your LUCI contact will handle the rest.
 
 ### Body
 Dear #Name#,
 
-Thanks for asking to see LUCI, the platform that runs a property's A/V from one interface.
+Thanks for asking to see LUCI.
 
-Mike or Mark will confirm the meeting and shape the walkthrough around any priorities you shared. Calendars create enough friction on their own, so the note stays short.
+Your LUCI contact will confirm the meeting and shape the walkthrough around any priorities you shared. The note stays short.
 
 Choose a time: [BOOKING URL]
 
 ### Word count
-**51 words** from greeting through CTA, excluding the signature.
+**33 words** from greeting through CTA, excluding the signature.
 
 ### Signature
 [NAME]
@@ -87,16 +93,18 @@ LUCI Systems
 [EMAIL] · [PHONE]
 
 ## Automation notes
-- Submitting the request stops all marketing automation immediately.
-- Mike or Mark owns the prospect until an explicit handback to Marketing.
-- Do not send recovery or nurture while Sales ownership is active.
+Submitting the request stops all marketing automation immediately. Mike or Mark owns the prospect until an explicit handback to Marketing. Do not send recovery or nurture while Sales ownership is active.
 
 ## Guardrail audit
-r2 changes: Kept the transaction plain, added one short LUCI definition for a reader who skipped prior email, used one booking CTA, and added a warm calendar line. The client-retention claim is skipped because logistics do not need proof.
+r3 changes: Skipped the client-retention claim because this transactional confirmation needs logistics, not proof. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.
+
+## r3 changes:
+- Whole-campaign scene: demo-request logistics.
+- Sender story, product-definition cadence, partnership language, claim use, subjects, preheader, and count were checked against the other 26 finals.
 
 ## Placeholders to fill
-- `[BOOKING URL]`
-- `[NAME]`
-- `[TITLE]`
-- `[EMAIL]`
-- `[PHONE]`
+- [BOOKING URL]
+- [EMAIL]
+- [NAME]
+- [PHONE]
+- [TITLE]

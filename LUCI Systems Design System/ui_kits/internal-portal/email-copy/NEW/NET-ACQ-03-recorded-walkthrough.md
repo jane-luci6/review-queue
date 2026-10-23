@@ -3,13 +3,13 @@
 - **Audience:** Cold net-new prospects who received the first two acquisition emails and have not entered a sales conversation
 - **Cycle:** Acquisition
 - **Timing:** 5 days after email 2
-- **Purpose:** Show New LUCI visually after the prospect understands the problem and proof.
+- **Purpose:** A short reel shows how New LUCI gives staff more direct control of room changes, screen checks, maps, and activity history.
 - **CTA:** Watch the feature highlight reel.
-- **Status:** draft r2 for Jane review
+- **Status:** draft r3 for Jane review
 
 ## Strategy
 
-### What we’re writing and why
+### What we're writing and why
 Show the product only after the reader understands the problem and proof, using the shortest visual asset.
 
 ### For whom
@@ -19,25 +19,29 @@ Busy venue leaders who want to see the workflow before considering a meeting.
 Send five days after NET-ACQ-02. Define LUCI and New LUCI in one line, then use the feature reel as the sole CTA.
 
 ### How to make impact while staying professional
-Follow a room change from preparation through verification and keep the tone brisk.
+Follow one access-and-control sequence without borrowing another property's scene or the ballroom's staging workflow.
 
 ### Primary message
 A short reel shows how New LUCI gives staff more direct control of room changes, screen checks, maps, and activity history.
 
 ## Three directions
 
-### Direction 1 — Cue without cardio
+### Direction 1 — Access in sequence
+_The selected direction, revised for whole-campaign consistency._
+
 Dear #Name#,
 
-LUCI runs a property's A/V from one interface. New LUCI is in beta and runs on a faster foundation, giving staff more direct control over rooms, maps, data, and access.
+New LUCI is in beta on a faster foundation, giving staff more direct control over rooms, maps, activity, and access.
 
-The short reel follows the useful moments: prepare screens, sources, and audio with Staging; apply the plan on cue; check what the wall is playing; trace the change in activity history.
+The short reel follows one access sequence: sign in, open only the controls approved for the room, adjust grouped audio, review the activity record, and end the session.
 
-Cue time should not double as cardio.
+Access should be clear before anyone touches a control.
 
 Watch the feature highlight reel: [FEATURE HIGHLIGHT REEL URL]
 
 ### Direction 2 — Bartender view
+_Show how approved controls and live screen checks simplify one shift._
+
 Dear #Name#,
 
 LUCI brings a property's A/V into one interface. New LUCI is its beta update, giving staff more direct control on a faster, more responsive foundation.
@@ -49,6 +53,8 @@ The screen gets the attention. The control hunt does not.
 Watch the feature highlight reel: [FEATURE HIGHLIGHT REEL URL]
 
 ### Direction 3 — Map to wall
+_Use the live map and screen view as the visual thread._
+
 Dear #Name#,
 
 LUCI runs A/V across a property from one interface. New LUCI is the beta version that adds more direct control over the map, room views, activity, and access.
@@ -58,33 +64,33 @@ The short reel moves from a floor plan to a live screen check, then into the his
 Watch the feature highlight reel: [FEATURE HIGHLIGHT REEL URL]
 
 ## Why the final won
-**Direction 1 — Cue without cardio**
+**Access in sequence**
 
-It defines both LUCI and New LUCI for a cold reader, turns the feature list into one prepare-apply-confirm sequence, and gives the email a human line without distracting from the reel. It keeps the single CTA unmistakable.
+It turns the product view into one sign-in-to-session sequence and keeps the visual CTA unmistakable. The r3 final removes the repeated definition, staging sequence, and cardio joke.
 
 ## Final copy
 
 ### Subject lines
-1. **Direct:** Watch one room change in New LUCI
-2. **Curious:** What is the wall actually playing?
-3. **Playful:** Cue time without the cardio
+1. **Direct:** Watch one access sequence in New LUCI
+2. **Curious:** What should each room control expose?
+3. **Practical:** Sign in, adjust, review, end
 
 ### Preheader
-See staff stage a room, confirm the wall, and trace the change.
+See approved room controls, grouped audio, activity history, and session control.
 
 ### Body
 Dear #Name#,
 
-LUCI runs a property's A/V from one interface. New LUCI is in beta and runs on a faster foundation, giving staff more direct control over rooms, maps, data, and access.
+New LUCI is in beta on a faster foundation, giving staff more direct control over rooms, maps, activity, and access.
 
-The short reel follows the useful moments: prepare screens, sources, and audio with Staging; apply the plan on cue; check what the wall is playing; trace the change in activity history.
+The short reel follows one access sequence: sign in, open only the controls approved for the room, adjust grouped audio, review the activity record, and end the session.
 
-Cue time should not double as cardio.
+Access should be clear before anyone touches a control.
 
 Watch the feature highlight reel: [FEATURE HIGHLIGHT REEL URL]
 
 ### Word count
-**79 words** from greeting through CTA, excluding the signature.
+**68 words** from greeting through CTA, excluding the signature.
 
 ### Signature
 [NAME]
@@ -93,16 +99,18 @@ LUCI Systems
 [EMAIL] · [PHONE]
 
 ## Automation notes
-- Send only if the prospect has not replied, booked, or entered an active opportunity.
-- A reply or booked meeting stops automation and moves the contact to Sales.
-- The reel click remains a reporting signal and does not create a hand-raiser.
+Send only if the prospect has not replied, booked, or entered an active opportunity. A reply or booked meeting stops automation and moves the contact to Sales. The reel click remains a reporting signal and does not create a hand-raiser.
 
 ## Guardrail audit
-r2 changes: Added a varied one-line definition of LUCI and New LUCI, turned features into a room-change sequence, added one lightly witty line, and reduced the email to one visual CTA. The client-retention claim is skipped because this email's job is product orientation.
+r3 changes: Skipped the client-retention claim because this email's job is product orientation. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.
+
+## r3 changes:
+- Whole-campaign scene: sign-in-to-session access sequence.
+- Sender story, product-definition cadence, partnership language, claim use, subjects, preheader, and count were checked against the other 26 finals.
 
 ## Placeholders to fill
-- `[FEATURE HIGHLIGHT REEL URL]`
-- `[NAME]`
-- `[TITLE]`
-- `[EMAIL]`
-- `[PHONE]`
+- [EMAIL]
+- [FEATURE HIGHLIGHT REEL URL]
+- [NAME]
+- [PHONE]
+- [TITLE]

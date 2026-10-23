@@ -3,13 +3,13 @@
 - **Audience:** Broader warm contacts who did not receive the selected preview and remain outside active sales conversations
 - **Cycle:** Broader warm re-engagement
 - **Timing:** When Marketing opens the broader warm cycle
-- **Purpose:** Reintroduce LUCI to the broader warm list through a specific A/V failure.
+- **Purpose:** A cold reader sees the problem first: one wrong screen should not require several interfaces and an off-site expert.
 - **CTA:** See the details.
-- **Status:** draft r2 for Jane review
+- **Status:** draft r3 for Jane review
 
 ## Strategy
 
-### What we’re writing and why
+### What we're writing and why
 A true reintroduction for the broader warm list, built around a familiar failure rather than selective access.
 
 ### For whom
@@ -19,21 +19,23 @@ Past contacts who may barely remember LUCI and did not receive the private-previ
 Open on one wrong screen after hours, define LUCI and the beta change, then make the guide the one primary action.
 
 ### How to make impact while staying professional
-Use a specific failure scene and show how direct screen checks, activity history, and continued LUCI support change the response.
+Use a restaurant opening to reintroduce LUCI without repeating the campaign's wall-failure scenes.
 
 ### Primary message
 A cold reader sees the problem first: one wrong screen should not require several interfaces and an off-site expert.
 
 ## Three directions
 
-### Direction 1 — The 9:12 p.m. screen
-_Reintroduce LUCI through one wrong-screen incident after hours._
+### Direction 1 — The dinner screen
+_The selected direction, revised for whole-campaign consistency._
 
 Dear #Name#,
 
-At 9:12 p.m., a screen shows the wrong source. The right control sits in another interface, and the person who usually fixes it is off site. That is too much plot for one screen.
+Dinner service begins, but a restaurant TV still shows yesterday's brunch menu. The person who knows that control is not on property.
 
-LUCI orchestrates a property’s A/V through one interface; New LUCI is in beta and lets staff confirm live screen content, make approved changes, and check the activity record while our team keeps monitoring, diagnosing, and supporting.
+One stale screen should not start the shift's first phone tree.
+
+LUCI orchestrates property A/V through one operating view. New LUCI is in beta, giving staff live screen checks, approved controls, and activity history. If they need help, the request reaches the LUCI team with device context and logs attached.
 
 See the details in the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]
 
@@ -64,33 +66,33 @@ No interface scavenger hunt required.
 Review the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]
 
 ## Why the final won
-**The 9:12 p.m. screen**
+**The dinner screen**
 
-It gives the broader re-engagement a distinct problem-first opening, assumes no memory, and explains the beta through a recognizable incident rather than replaying preview scenes.
+It gives broader warm re-engagement its own property moment, assumes no product memory, and makes the support path concrete through attached context and logs.
 
 ## Final copy
 
 ### Subject lines
-1. **Direct:** When one screen shows the wrong source
-2. **Curious:** Who can fix the wall at 9:12 p.m.?
-3. **Practical:** A shorter path from problem to control
+1. **Direct:** When dinner inherits yesterday's brunch menu
+2. **Curious:** Who owns the restaurant TV at opening?
+3. **Practical:** A shorter path from screen to answer
 
 ### Preheader
-One wrong screen should not require several interfaces and an off-site expert.
+One stale restaurant screen should not start the shift's first phone tree.
 
 ### Body
 Dear #Name#,
 
-At 9:12 p.m., a screen shows the wrong source. The right control sits in another interface, and the person who usually fixes it is off site.
+Dinner service begins, but a restaurant TV still shows yesterday's brunch menu. The person who knows that control is not on property.
 
-That is too much plot for one screen.
+One stale screen should not start the shift's first phone tree.
 
-LUCI orchestrates a property’s A/V through one interface; New LUCI is in beta and lets staff confirm live screen content, make approved changes, and check the activity record while our team keeps monitoring, diagnosing, and supporting.
+LUCI orchestrates property A/V through one operating view. New LUCI is in beta, giving staff live screen checks, approved controls, and activity history. If they need help, the request reaches the LUCI team with device context and logs attached.
 
 See the details in the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]
 
 ### Word count
-**84 words** from greeting through CTA, excluding the signature.
+**86 words** from greeting through CTA, excluding the signature.
 
 ### Signature
 [NAME]
@@ -102,17 +104,15 @@ LUCI Systems
 Send only to the broader warm list. Exclude selected-preview recipients from this version and suppress active opportunities or active Mark and Mike conversations. A reply or booking stops automation; opens and guide clicks remain reporting signals.
 
 ## Guardrail audit
-r2 changes: The broader cycle now opens on a specific wrong-screen incident rather than repeating the private-preview scenes. The body defines LUCI and the beta change, adds one dry human line, and keeps the guide as the sole primary CTA. The retention claim stays out so the problem and response carry the message. No date or availability claim, named account, price, percentage, or passive construction appears.
+r3 changes: Skipped the client-retention claim so the fresh problem and response carry the reintroduction. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.
 
-## r2 changes:
-- Re-edited for light, sharp human voice and one earned human line.
-- Added cold-reader product context where the product appears.
-- Reduced the message to one primary CTA and kept any secondary link quiet or conditional.
-- Recounted the final body with whitespace splitting and synchronized this scaffold to the JSON source.
+## r3 changes:
+- Whole-campaign scene: restaurant TV at dinner opening.
+- Sender story, product-definition cadence, partnership language, claim use, subjects, preheader, and count were checked against the other 26 finals.
 
 ## Placeholders to fill
+- [EMAIL]
 - [LUCI UPGRADE GUIDE URL]
 - [NAME]
-- [TITLE]
-- [EMAIL]
 - [PHONE]
+- [TITLE]

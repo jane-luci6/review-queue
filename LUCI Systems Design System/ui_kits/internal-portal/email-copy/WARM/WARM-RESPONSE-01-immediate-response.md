@@ -3,13 +3,13 @@
 - **Audience:** Warm prospects who replied, booked, or asked for follow-up
 - **Cycle:** After a warm response
 - **Timing:** Immediately after the reply, booking, or request
-- **Purpose:** Confirm receipt and tell the prospect that Mark has the handoff.
+- **Purpose:** Mark has the response or booking and will continue without asking the prospect to repeat anything already shared.
 - **CTA:** Reply with any added context.
-- **Status:** draft r2 for Jane review
+- **Status:** draft r3 for Jane review
 
 ## Strategy
 
-### What we’re writing and why
+### What we're writing and why
 A transactional acknowledgement that works for replies, requests, and booking-only responses.
 
 ### For whom
@@ -27,7 +27,7 @@ Mark has the response or booking and will continue without asking the prospect t
 ## Three directions
 
 ### Direction 1 — Mark has it
-_Acknowledge every response type without assuming a written note._
+_The selected direction, revised for whole-campaign consistency._
 
 Dear #Name#,
 
@@ -68,7 +68,7 @@ Optional calendar: [BOOKING URL]
 ## Why the final won
 **Mark has it**
 
-It stays truthful for a reply, request, or booking-only response, names the owner, and makes reply primary while the calendar remains conditional.
+It stays truthful for a reply, request, or booking-only response, names Mark as the owner, and keeps reply primary while the calendar remains conditional. The r3 campaign pass confirmed this acknowledgement does not restart campaign persuasion.
 
 ## Final copy
 
@@ -104,18 +104,16 @@ LUCI Systems
 Stop marketing automation before sending this acknowledgement. Assign the response to Mark and suppress every other campaign or nurture cycle. Keep reply primary. Omit the calendar line when the prospect already booked.
 
 ## Guardrail audit
-r2 changes: The acknowledgement now works for replies, requests, and booking-only responses without inventing a note. It adds one warm reassurance and makes reply the sole primary CTA; the calendar remains conditional and secondary. The retention claim stays out because this is transactional. No product pitch, date or availability claim, product asset, named account, price, percentage, or passive construction appears.
+r3 changes: Skipped the client-retention claim because this transactional acknowledgement only confirms ownership and next steps. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.
 
-## r2 changes:
-- Re-edited for light, sharp human voice and one earned human line.
-- Added cold-reader product context where the product appears.
-- Reduced the message to one primary CTA and kept any secondary link quiet or conditional.
-- Recounted the final body with whitespace splitting and synchronized this scaffold to the JSON source.
+## r3 changes:
+- Whole-campaign scene: response handoff.
+- Sender story, product-definition cadence, partnership language, claim use, subjects, preheader, and count were checked against the other 26 finals.
 
 ## Placeholders to fill
-- [MARK EMAIL]
 - [BOOKING URL]
-- [NAME]
-- [TITLE]
 - [EMAIL]
+- [MARK EMAIL]
+- [NAME]
 - [PHONE]
+- [TITLE]

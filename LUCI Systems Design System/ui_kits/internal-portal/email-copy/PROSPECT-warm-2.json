@@ -1,13 +1,13 @@
 {
   "track": "Warm prospects — broader re-engagement and response",
-  "track_strategy": "Reopen the broader warm list without borrowing the selected-preview invitation. The sequence moves from a cold-reader reintroduction to a short visual, approved operating proof, and one direct invitation. Once someone responds, campaign language stops and Mark continues from the context already provided. Every email has one primary action and keeps ordinary engagement separate from a sales handoff.",
+  "track_strategy": "This track reopens LUCI for the broader warm list through a fresh operating problem, visual proof, approved scale, and one focused invitation. It follows a different relationship stage from the selected preview, then hands every response to Mark and stops campaign language.",
   "open_questions": [
-    "Jane should confirm the neutral trigger for opening the broader warm cycle.",
-    "What shorter follow-up should selected-preview recipients receive instead of WARM-REENGAGE-01, and should Mark send it personally?",
+    "Confirm the named LUCI lead used for WARM-REENGAGE-01 through 04; Marketing sends each email on that person's behalf.",
+    "Confirm the neutral trigger for opening the broader warm cycle.",
+    "Confirm the shorter follow-up selected-preview recipients receive instead of the full WARM-REENGAGE cycle.",
     "Confirm [LUCI UPGRADE GUIDE URL], [FEATURE HIGHLIGHT REEL URL], [FULL RECORDING URL], [PROOF URL], [BOOKING URL], and [MARK EMAIL].",
-    "Approve each project-true consolidation count inserted for [APPROVED PROOF POINT] before WARM-REENGAGE-03 enters review.",
-    "Who should be the named sender for WARM-REENGAGE-01 through 04?",
-    "Should WARM-RESPONSE-01 come from Marketing or from the LUCI contact who receives the response?"
+    "Approve each project-true count inserted for [APPROVED PROOF POINT] before WARM-REENGAGE-03 enters review.",
+    "Confirm that WARM-RESPONSE-01 sends from Marketing on Mark's behalf before Mark sends WARM-RESPONSE-02 personally."
   ],
   "emails": [
     {
@@ -15,20 +15,20 @@
       "cycle": "Broader warm re-engagement",
       "title": "What changed",
       "timing": "When Marketing opens the broader warm cycle",
-      "sender": "Named LUCI contact via Marketing",
+      "sender": "Marketing, from the same named LUCI lead",
       "audience": "Broader warm contacts who did not receive the selected preview and remain outside active sales conversations",
       "primary_message": "A cold reader sees the problem first: one wrong screen should not require several interfaces and an off-site expert.",
       "strategy": {
         "what_why": "A true reintroduction for the broader warm list, built around a familiar failure rather than selective access.",
         "for_whom": "Past contacts who may barely remember LUCI and did not receive the private-preview invitation.",
         "reach": "Open on one wrong screen after hours, define LUCI and the beta change, then make the guide the one primary action.",
-        "impact": "Use a specific failure scene and show how direct screen checks, activity history, and continued LUCI support change the response."
+        "impact": "Use a restaurant opening to reintroduce LUCI without repeating the campaign's wall-failure scenes."
       },
       "directions": [
         {
-          "name": "The 9:12 p.m. screen",
-          "summary": "Reintroduce LUCI through one wrong-screen incident after hours.",
-          "draft": "Dear #Name#,\n\nAt 9:12 p.m., a screen shows the wrong source. The right control sits in another interface, and the person who usually fixes it is off site. That is too much plot for one screen.\n\nLUCI orchestrates a property’s A/V through one interface; New LUCI is in beta and lets staff confirm live screen content, make approved changes, and check the activity record while our team keeps monitoring, diagnosing, and supporting.\n\nSee the details in the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]"
+          "name": "The dinner screen",
+          "summary": "The selected direction, revised for whole-campaign consistency.",
+          "draft": "Dear #Name#,\n\nDinner service begins, but a restaurant TV still shows yesterday's brunch menu. The person who knows that control is not on property.\n\nOne stale screen should not start the shift's first phone tree.\n\nLUCI orchestrates property A/V through one operating view. New LUCI is in beta, giving staff live screen checks, approved controls, and activity history. If they need help, the request reaches the LUCI team with device context and logs attached.\n\nSee the details in the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]"
         },
         {
           "name": "One wrong wall",
@@ -41,44 +41,44 @@
           "draft": "Dear #Name#,\n\nWhen a screen goes wrong, the first job should be fixing it, not finding the right interface and the person who knows it.\n\nLUCI gives the property one place to operate its A/V; New LUCI is in beta and gives staff more direct screen control, live status, and activity history while our team continues monitoring, diagnosis, and support.\n\nNo interface scavenger hunt required.\n\nReview the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]"
         }
       ],
-      "winner": "The 9:12 p.m. screen",
-      "why_won": "It gives the broader re-engagement a distinct problem-first opening, assumes no memory, and explains the beta through a recognizable incident rather than replaying preview scenes.",
+      "winner": "The dinner screen",
+      "why_won": "It gives broader warm re-engagement its own property moment, assumes no product memory, and makes the support path concrete through attached context and logs.",
       "subject_lines": [
         {
           "mood": "Direct",
-          "text": "When one screen shows the wrong source"
+          "text": "When dinner inherits yesterday's brunch menu"
         },
         {
           "mood": "Curious",
-          "text": "Who can fix the wall at 9:12 p.m.?"
+          "text": "Who owns the restaurant TV at opening?"
         },
         {
           "mood": "Practical",
-          "text": "A shorter path from problem to control"
+          "text": "A shorter path from screen to answer"
         }
       ],
-      "preheader": "One wrong screen should not require several interfaces and an off-site expert.",
+      "preheader": "One stale restaurant screen should not start the shift's first phone tree.",
       "body": [
         "Dear #Name#,",
-        "At 9:12 p.m., a screen shows the wrong source. The right control sits in another interface, and the person who usually fixes it is off site.",
-        "That is too much plot for one screen.",
-        "LUCI orchestrates a property’s A/V through one interface; New LUCI is in beta and lets staff confirm live screen content, make approved changes, and check the activity record while our team keeps monitoring, diagnosing, and supporting.",
+        "Dinner service begins, but a restaurant TV still shows yesterday's brunch menu. The person who knows that control is not on property.",
+        "One stale screen should not start the shift's first phone tree.",
+        "LUCI orchestrates property A/V through one operating view. New LUCI is in beta, giving staff live screen checks, approved controls, and activity history. If they need help, the request reaches the LUCI team with device context and logs attached.",
         "See the details in the LUCI Upgrade Guide: [LUCI UPGRADE GUIDE URL]"
       ],
       "cta_label": "See the details",
-      "word_count": 84,
+      "word_count": 86,
       "assets_used": [
         "LUCI Upgrade Guide"
       ],
       "automation_notes": "Send only to the broader warm list. Exclude selected-preview recipients from this version and suppress active opportunities or active Mark and Mike conversations. A reply or booking stops automation; opens and guide clicks remain reporting signals.",
-      "guardrail_notes": "r2 changes: The broader cycle now opens on a specific wrong-screen incident rather than repeating the private-preview scenes. The body defines LUCI and the beta change, adds one dry human line, and keeps the guide as the sole primary CTA. The retention claim stays out so the problem and response carry the message. No date or availability claim, named account, price, percentage, or passive construction appears."
+      "guardrail_notes": "r3 changes: Skipped the client-retention claim so the fresh problem and response carry the reintroduction. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language."
     },
     {
       "id": "WARM-REENGAGE-02",
       "cycle": "Broader warm re-engagement",
       "title": "Recorded preview",
       "timing": "4–5 days after email 1",
-      "sender": "Same named LUCI contact as WARM-REENGAGE-01",
+      "sender": "Marketing, from the same named LUCI lead",
       "audience": "Broader warm contacts who continue after the first re-engagement email",
       "primary_message": "The short reel shows the map workflow in motion; the full recording remains a quiet deeper option.",
       "strategy": {
@@ -90,8 +90,8 @@
       "directions": [
         {
           "name": "Let the map explain",
-          "summary": "Use one visual workflow that benefits from video.",
-          "draft": "Dear #Name#,\n\nA map explains this better than another paragraph.\n\nLUCI brings a property’s A/V into one map-based interface; the New LUCI beta lets staff load a floor plan, move through the property view, see live device state, and confirm what a TV or LED wall displays while our team keeps monitoring and supporting.\n\nWatch the feature reel: [FEATURE HIGHLIGHT REEL URL]\n\nDeeper option: [FULL RECORDING URL]"
+          "summary": "The selected direction, revised for whole-campaign consistency.",
+          "draft": "Dear #Name#,\n\nA map explains this better than another paragraph.\n\nThe short reel moves from property view to floor plan, then to live device state and screen content. Staff can find the endpoint, confirm what it shows, and inspect recent activity without walking the floor.\n\nThe LUCI team works from the same current context when support is needed.\n\nWatch the feature reel: [FEATURE HIGHLIGHT REEL URL]\n\nDeeper option: [FULL RECORDING URL]"
         },
         {
           "name": "From property to screen",
@@ -105,7 +105,7 @@
         }
       ],
       "winner": "Let the map explain",
-      "why_won": "It gives the visual email its own job, uses a workflow that video can prove quickly, and keeps the short reel clearly dominant over the deeper recording.",
+      "why_won": "It gives the visual email one job and lets the map prove it quickly. The r3 final removes the repeated one-interface definition because email 01 already established LUCI.",
       "subject_lines": [
         {
           "mood": "Visual",
@@ -124,25 +124,26 @@
       "body": [
         "Dear #Name#,",
         "A map explains this better than another paragraph.",
-        "LUCI brings a property’s A/V into one map-based interface; the New LUCI beta lets staff load a floor plan, move through the property view, see live device state, and confirm what a TV or LED wall displays while our team keeps monitoring and supporting.",
+        "The short reel moves from property view to floor plan, then to live device state and screen content. Staff can find the endpoint, confirm what it shows, and inspect recent activity without walking the floor.",
+        "The LUCI team works from the same current context when support is needed.",
         "Watch the feature reel: [FEATURE HIGHLIGHT REEL URL]",
         "Deeper option: [FULL RECORDING URL]"
       ],
       "cta_label": "Watch the feature reel",
-      "word_count": 67,
+      "word_count": 71,
       "assets_used": [
         "Feature highlight reel",
         "Full recording"
       ],
-      "automation_notes": "Continue only for eligible warm contacts. Suppress active opportunities and active Mark or Mike conversations. A reply or booking stops automation; opens and video clicks remain reporting signals. Present the full recording as a secondary text link.",
-      "guardrail_notes": "r2 changes: The visual email now owns a distinct map workflow instead of repeating the preceding wrong-screen incident. It defines LUCI and the beta change, adds one restrained human line, and makes the feature reel the sole primary CTA; the full recording stays secondary. The retention claim stays out because the map provides the proof. No date or availability claim, named account, price, percentage, or passive construction appears."
+      "automation_notes": "Continue only for eligible broader-warm contacts who did not receive the selected preview. Suppress active opportunities and active Mark or Mike conversations. A reply or booking stops automation; opens and video clicks remain reporting signals. Present the full recording as a secondary text link.",
+      "guardrail_notes": "r3 changes: Skipped the client-retention claim because the map workflow is the proof and this is the second email in the cycle. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language."
     },
     {
       "id": "WARM-REENGAGE-03",
       "cycle": "Broader warm re-engagement",
       "title": "Operational proof",
       "timing": "4–5 days after email 2",
-      "sender": "Same named LUCI contact as WARM-REENGAGE-01",
+      "sender": "Marketing, from the same named LUCI lead",
       "audience": "Broader warm contacts who need approved scale and relationship proof",
       "primary_message": "Approved counts establish scale before LUCI draws the one-interface conclusion.",
       "strategy": {
@@ -154,8 +155,8 @@
       "directions": [
         {
           "name": "The denominator is the story",
-          "summary": "Lead with approved counts and let the conclusion follow.",
-          "draft": "Dear #Name#,\n\n“One interface” is easy to claim. The denominator is the interesting part.\n\n[APPROVED PROOF POINT]\n[APPROVED PROOF POINT]\n[APPROVED PROOF POINT]\n\nLUCI consolidates a property’s A/V, its endpoints, and its workflows into one interface and a shorter list to manage. Scale is half the proof. Continuity is the other: we've never lost a client.\n\nSee the approved proof: [PROOF URL]"
+          "summary": "The selected direction, revised for whole-campaign consistency.",
+          "draft": "Dear #Name#,\n\n“One operating view” is easy to claim. The denominator is the interesting part.\n\n[APPROVED PROOF POINT]\n\n[APPROVED PROOF POINT]\n\n[APPROVED PROOF POINT]\n\nTogether, those approved counts show the screens, zones, walls, and workflows LUCI brings into a shorter list to manage.\n\nScale is half the proof. Continuity is the other: we've never lost a client.\n\nSee the approved proof: [PROOF URL]"
         },
         {
           "name": "Count the work",
@@ -169,7 +170,7 @@
         }
       ],
       "winner": "The denominator is the story",
-      "why_won": "It puts approved evidence ahead of the claim, defines LUCI in one line, and gives the retention statement a natural proof context instead of bolting it onto an invitation.",
+      "why_won": "It puts approved evidence ahead of interpretation and gives the retention statement a natural continuity context. The r3 final avoids repeating the cycle's LUCI definition.",
       "subject_lines": [
         {
           "mood": "Evidence-led",
@@ -187,28 +188,28 @@
       "preheader": "Approved counts establish the scale before the conclusion.",
       "body": [
         "Dear #Name#,",
-        "“One interface” is easy to claim. The denominator is the interesting part.",
+        "“One operating view” is easy to claim. The denominator is the interesting part.",
         "[APPROVED PROOF POINT]",
         "[APPROVED PROOF POINT]",
         "[APPROVED PROOF POINT]",
-        "LUCI consolidates a property’s A/V, its endpoints, and its workflows into one interface and a shorter list to manage.",
+        "Together, those approved counts show the screens, zones, walls, and workflows LUCI brings into a shorter list to manage.",
         "Scale is half the proof. Continuity is the other: we've never lost a client.",
         "See the approved proof: [PROOF URL]"
       ],
       "cta_label": "See the approved proof",
-      "word_count": 62,
+      "word_count": 63,
       "assets_used": [
         "Approved proof"
       ],
-      "automation_notes": "Do not advance this email until every proof placeholder contains one sourced, project-true count approved for prospect use. Suppress active opportunities and active Mark or Mike conversations. A reply or booking stops automation; proof clicks remain reporting signals.",
-      "guardrail_notes": "r2 changes: The proof now opens with one sharp human observation, defines LUCI after the approved counts, and uses the exact line “we've never lost a client” where scale and continuity meet. The proof link is the sole primary CTA. No unapproved figure, date or availability claim, named account, price, percentage, or passive construction appears."
+      "automation_notes": "Do not advance this email until every proof placeholder contains one sourced, project-true count approved for prospect use. Send only to eligible broader-warm contacts who did not receive the selected preview. Suppress active opportunities and active Mark or Mike conversations. A reply or booking stops automation; proof clicks remain reporting signals.",
+      "guardrail_notes": "r3 changes: Kept the exact client-retention claim because this email's sole job is operating and relationship proof; selected-preview recipients are excluded from this cycle, and no other email in this cycle uses it. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language."
     },
     {
       "id": "WARM-REENGAGE-04",
       "cycle": "Broader warm re-engagement",
       "title": "Direct invitation",
       "timing": "5–7 days after email 3",
-      "sender": "Same named LUCI contact as WARM-REENGAGE-01",
+      "sender": "Marketing, from the same named LUCI lead",
       "audience": "Broader warm contacts completing re-engagement outside active sales conversations",
       "primary_message": "A focused conversation can test the beta against one real room, wall, or workflow.",
       "strategy": {
@@ -220,8 +221,8 @@
       "directions": [
         {
           "name": "Skip the grand tour",
-          "summary": "Promise a focused conversation around one real operating question.",
-          "draft": "Dear #Name#,\n\nLUCI gives staff one interface for property-wide A/V operations; New LUCI is in beta and gives staff more direct control over rooms, live screen views, activity, and access while our team keeps monitoring and supporting.\n\nIf that fits something you are planning, we can skip the grand tour and go straight to the room, wall, or workflow on your list. A short conversation is enough.\n\nBook a time: [BOOKING URL]"
+          "summary": "The selected direction, revised for whole-campaign consistency.",
+          "draft": "Dear #Name#,\n\nNew LUCI is in beta, with more direct control over rooms, live screen views, activity, and access. The LUCI team still stays with the operation.\n\nIf that fits something you are planning, we can skip the broad presentation and go straight to the room or workflow on your list.\n\nA short conversation is enough.\n\nBook a time: [BOOKING URL]"
         },
         {
           "name": "One useful question",
@@ -235,11 +236,11 @@
         }
       ],
       "winner": "Skip the grand tour",
-      "why_won": "It works for someone who skipped the sequence, defines both the platform and the beta change, and offers one small next step tied to a concrete operating question.",
+      "why_won": "It offers one small next step and trusts the preceding sequence to supply the LUCI definition. The r3 final keeps the invitation focused without recycling a wall scene.",
       "subject_lines": [
         {
           "mood": "Warm",
-          "text": "Want to test LUCI against one real workflow?"
+          "text": "Want to test one real LUCI workflow?"
         },
         {
           "mood": "Direct",
@@ -247,31 +248,31 @@
         },
         {
           "mood": "Practical",
-          "text": "Start with the room or wall on your list"
+          "text": "Start with the room on your list"
         }
       ],
       "preheader": "Skip the broad presentation and start with one operating question.",
       "body": [
         "Dear #Name#,",
-        "LUCI gives staff one interface for property-wide A/V operations; New LUCI is in beta and gives staff more direct control over rooms, live screen views, activity, and access while our team keeps monitoring and supporting.",
-        "If that fits something you are planning, we can skip the grand tour and go straight to the room, wall, or workflow on your list.",
+        "New LUCI is in beta, with more direct control over rooms, live screen views, activity, and access. The LUCI team still stays with the operation.",
+        "If that fits something you are planning, we can skip the broad presentation and go straight to the room or workflow on your list.",
         "A short conversation is enough.",
         "Book a time: [BOOKING URL]"
       ],
       "cta_label": "Book a focused conversation",
-      "word_count": 72,
+      "word_count": 61,
       "assets_used": [
         "Booking link"
       ],
-      "automation_notes": "Send only to eligible warm contacts who remain quiet after the proof email. Suppress active opportunities and active Mark or Mike conversations. A reply or booking stops automation and moves ownership to Sales. If the contact remains quiet, end this cycle before long-term nurture begins.",
-      "guardrail_notes": "r2 changes: The close now works for a cold reader, defines LUCI and the beta change, adds one human promise to skip the grand tour, and makes booking the sole primary CTA. The retention claim stays out because WARM-REENGAGE-03 already uses it and repetition would weaken the invitation. No date or availability claim, named account, price, percentage, or passive construction appears."
+      "automation_notes": "Send only to eligible broader-warm contacts who did not receive the selected preview and remain quiet after the proof email. Suppress active opportunities and active Mark or Mike conversations. A reply or booking stops automation and moves ownership to Sales. If the contact remains quiet, end this cycle before long-term nurture begins.",
+      "guardrail_notes": "r3 changes: Skipped the client-retention claim because WARM-REENGAGE-03 already carries the cycle's proof. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language."
     },
     {
       "id": "WARM-RESPONSE-01",
       "cycle": "After a warm response",
       "title": "Immediate response",
       "timing": "Immediately after the reply, booking, or request",
-      "sender": "Marketing or the named LUCI contact receiving the response",
+      "sender": "Marketing on behalf of Mark",
       "audience": "Warm prospects who replied, booked, or asked for follow-up",
       "primary_message": "Mark has the response or booking and will continue without asking the prospect to repeat anything already shared.",
       "strategy": {
@@ -283,7 +284,7 @@
       "directions": [
         {
           "name": "Mark has it",
-          "summary": "Acknowledge every response type without assuming a written note.",
+          "summary": "The selected direction, revised for whole-campaign consistency.",
           "draft": "Dear #Name#,\n\nThanks for getting back in touch. Mark has your response or booking and will take it from here. You will not have to repeat anything you already shared.\n\nReply if there is anything else he should see first.\n\nReply to Mark: [MARK EMAIL]\n\nIf you have not booked: [BOOKING URL]"
         },
         {
@@ -298,7 +299,7 @@
         }
       ],
       "winner": "Mark has it",
-      "why_won": "It stays truthful for a reply, request, or booking-only response, names the owner, and makes reply primary while the calendar remains conditional.",
+      "why_won": "It stays truthful for a reply, request, or booking-only response, names Mark as the owner, and keeps reply primary while the calendar remains conditional. The r3 campaign pass confirmed this acknowledgement does not restart campaign persuasion.",
       "subject_lines": [
         {
           "mood": "Confirming",
@@ -327,7 +328,7 @@
         "Booking link"
       ],
       "automation_notes": "Stop marketing automation before sending this acknowledgement. Assign the response to Mark and suppress every other campaign or nurture cycle. Keep reply primary. Omit the calendar line when the prospect already booked.",
-      "guardrail_notes": "r2 changes: The acknowledgement now works for replies, requests, and booking-only responses without inventing a note. It adds one warm reassurance and makes reply the sole primary CTA; the calendar remains conditional and secondary. The retention claim stays out because this is transactional. No product pitch, date or availability claim, product asset, named account, price, percentage, or passive construction appears."
+      "guardrail_notes": "r3 changes: Skipped the client-retention claim because this transactional acknowledgement only confirms ownership and next steps. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language."
     },
     {
       "id": "WARM-RESPONSE-02",
@@ -346,8 +347,8 @@
       "directions": [
         {
           "name": "Start with what matters now",
-          "summary": "Acknowledge prior LUCI context without inventing a detail.",
-          "draft": "Dear #Name#,\n\nThanks for getting in touch. I know you have seen LUCI before, so I will not start at slide one. That should save us both the ceremonial tour of material you already know.\n\nReply with what would help now: a short conversation or a focused walkthrough of one workflow.\n\nReply to Mark: [MARK EMAIL]\n\nCalendar if easier: [BOOKING URL]"
+          "summary": "The selected direction, revised for whole-campaign consistency.",
+          "draft": "Dear #Name#,\n\nThanks for getting in touch. I know you have seen LUCI before, so I'll start with what matters now.\n\nReply with what would help: a short conversation or a focused walkthrough of one workflow.\n\nReply to Mark: [MARK EMAIL]\n\nCalendar if easier: [BOOKING URL]"
         },
         {
           "name": "No broad introduction",
@@ -361,11 +362,11 @@
         }
       ],
       "winner": "Start with what matters now",
-      "why_won": "It sounds like Mark, stays truthful when the prospect supplied no written detail, and uses known warm-prospect context without restarting campaign language.",
+      "why_won": "It sounds like Mark, stays truthful when the prospect supplied no written detail, and continues from known context. The r3 final removes the repeated slide and ceremonial-tour language.",
       "subject_lines": [
         {
           "mood": "Personal",
-          "text": "I will skip slide one"
+          "text": "I'll start with what matters now"
         },
         {
           "mood": "Direct",
@@ -376,21 +377,21 @@
           "text": "Conversation or focused walkthrough?"
         }
       ],
-      "preheader": "You have seen LUCI before, so we can start with what matters now.",
+      "preheader": "You have seen LUCI before, so we can begin with the current priority.",
       "body": [
         "Dear #Name#,",
-        "Thanks for getting in touch. I know you have seen LUCI before, so I will not start at slide one. That should save us both the ceremonial tour of material you already know.",
-        "Reply with what would help now: a short conversation or a focused walkthrough of one workflow.",
+        "Thanks for getting in touch. I know you have seen LUCI before, so I'll start with what matters now.",
+        "Reply with what would help: a short conversation or a focused walkthrough of one workflow.",
         "Reply to Mark: [MARK EMAIL]",
         "Calendar if easier: [BOOKING URL]"
       ],
       "cta_label": "Reply with the preferred next step",
-      "word_count": 61,
+      "word_count": 46,
       "assets_used": [
         "Booking link"
       ],
       "automation_notes": "Mark owns the contact before this note goes out. Keep all Marketing automation stopped and suppress every other cycle. If the prospect already booked, remove the calendar line and confirm the scheduled conversation.",
-      "guardrail_notes": "r2 changes: The personal note no longer depends on an unapproved context placeholder or assumes a written note. It uses only the known earlier LUCI encounter, adds one dry line about skipping slide one, and makes reply the sole primary CTA with the calendar secondary. The retention claim stays out because it would sound scripted here. No fabricated personalization, product recap, date or availability claim, named account, price, percentage, or passive construction appears."
+      "guardrail_notes": "r3 changes: Skipped the client-retention claim because a personal Mark note should not carry a campaign proof line. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language."
     }
   ]
 }

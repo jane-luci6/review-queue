@@ -3,13 +3,13 @@
 - **Audience:** Cold net-new prospects who received NET-ACQ-01 and have not replied, booked, or entered an active sales conversation
 - **Cycle:** Acquisition
 - **Timing:** 5 days after email 1
-- **Purpose:** Show what consolidation looks like in practice.
+- **Purpose:** One approved property count shows how LUCI brings varied rooms and hardware into one operating interface.
 - **CTA:** See the consolidation proof.
-- **Status:** draft r2 for Jane review
+- **Status:** draft r3 for Jane review
 
 ## Strategy
 
-### What we’re writing and why
+### What we're writing and why
 Move from a familiar problem to concrete proof, using one approved count and one destination.
 
 ### For whom
@@ -19,7 +19,7 @@ Operations and IT leaders who need evidence that consolidation can work across v
 Send five days after NET-ACQ-01 from the same sender. Put the approved count first and use the proof URL as the only CTA.
 
 ### How to make impact while staying professional
-Make the ballroom changeover the practical consequence of a shorter list.
+Make a mixed-era back-of-house rack the practical consequence of a shorter operating list.
 
 ### Primary message
 One approved property count shows how LUCI brings varied rooms and hardware into one operating interface.
@@ -27,19 +27,23 @@ One approved property count shows how LUCI brings varied rooms and hardware into
 ## Three directions
 
 ### Direction 1 — Count before claim
+_The selected direction, revised for whole-campaign consistency._
+
 Dear #Name#,
 
 What does consolidation look like after the diagram?
 
-At one operating property: [APPROVED PROOF POINT]. LUCI runs those screens, rooms, and controls from one interface while the underlying hardware stays varied.
+At one operating property: [APPROVED PROOF POINT]. LUCI brings those screens, rooms, and controls into a shared operating view while the underlying hardware stays varied.
 
-The rack can remain complicated. A ballroom changeover does not have to.
+In the back-of-house rack, equipment can still come from several eras. Staff should not inherit a different control path for each one.
 
-That is the practical proof: fewer control paths and vendor handoffs between the request and the room.
+That is the practical proof: fewer paths and handoffs between the request and the room.
 
 See the consolidation proof: [PROOF URL]
 
 ### Direction 2 — Ballroom reset
+_Use a room turnover to turn consolidation into an observable workflow._
+
 Dear #Name#,
 
 A ballroom flips from a general session to dinner. Screens, sources, and audio all need to move together, but the equipment behind them may come from several eras.
@@ -51,6 +55,8 @@ Staff get one path through the change instead of a scavenger hunt across control
 See how the operation came together: [PROOF URL]
 
 ### Direction 3 — Keep the hardware mix
+_Answer the concern that a consistent operation demands uniform equipment._
+
 Dear #Name#,
 
 A consistent A/V workflow does not require identical hardware in every room.
@@ -64,16 +70,16 @@ Hardware can vary. The hunt for the right control should not.
 See the consolidation proof: [PROOF URL]
 
 ## Why the final won
-**Direction 1 — Count before claim**
+**Count before claim**
 
-It gives proof before interpretation, defines LUCI for a reader who skipped the opener, and lands the benefit in a ballroom changeover instead of an abstract framework. It borrows the hardware reassurance from Direction 3.
+It gives proof before interpretation and turns hardware variety into a back-of-house operating point. The r3 final removes the repeated ballroom changeover.
 
 ## Final copy
 
 ### Subject lines
-1. **Practical:** What consolidation looks like in one property
-2. **Scene-led:** A smoother ballroom changeover
-3. **Curious:** Can varied A/V run from one place?
+1. **Practical:** What consolidation looks like on property
+2. **Scene-led:** The rack can span eras; control should not
+3. **Curious:** Can varied A/V share one operating view?
 
 ### Preheader
 One approved count shows what fewer control paths look like in practice.
@@ -83,16 +89,16 @@ Dear #Name#,
 
 What does consolidation look like after the diagram?
 
-At one operating property: [APPROVED PROOF POINT]. LUCI runs those screens, rooms, and controls from one interface while the underlying hardware stays varied.
+At one operating property: [APPROVED PROOF POINT]. LUCI brings those screens, rooms, and controls into a shared operating view while the underlying hardware stays varied.
 
-The rack can remain complicated. A ballroom changeover does not have to.
+In the back-of-house rack, equipment can still come from several eras. Staff should not inherit a different control path for each one.
 
-That is the practical proof: fewer control paths and vendor handoffs between the request and the room.
+That is the practical proof: fewer paths and handoffs between the request and the room.
 
 See the consolidation proof: [PROOF URL]
 
 ### Word count
-**68 words** from greeting through CTA, excluding the signature.
+**78 words** from greeting through CTA, excluding the signature.
 
 ### Signature
 [NAME]
@@ -101,17 +107,19 @@ LUCI Systems
 [EMAIL] · [PHONE]
 
 ## Automation notes
-- Send only if NET-ACQ-01 produced no reply, booking, or active opportunity.
-- A reply or booked meeting stops automation and moves the contact to Sales.
-- The proof click alone does not trigger a sales handoff.
+Do not send until [APPROVED PROOF POINT] contains one sourced, project-true count approved for prospect use and [PROOF URL] is final. Send only if NET-ACQ-01 produced no reply, booking, or active opportunity. A reply or booked meeting stops automation and moves the contact to Sales. The proof click alone does not trigger a sales handoff.
 
 ## Guardrail audit
-r2 changes: Put the approved count before the platform claim, tied the result to a ballroom changeover, and removed abstract framework language. The client-retention claim is skipped so the project count remains the only proof.
+r3 changes: Skipped the client-retention claim so the approved project count remains the only proof. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.
+
+## r3 changes:
+- Whole-campaign scene: mixed-era back-of-house rack.
+- Sender story, product-definition cadence, partnership language, claim use, subjects, preheader, and count were checked against the other 26 finals.
 
 ## Placeholders to fill
-- `[APPROVED PROOF POINT]`
-- `[PROOF URL]`
-- `[NAME]`
-- `[TITLE]`
-- `[EMAIL]`
-- `[PHONE]`
+- [APPROVED PROOF POINT]
+- [EMAIL]
+- [NAME]
+- [PHONE]
+- [PROOF URL]
+- [TITLE]

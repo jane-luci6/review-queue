@@ -3,13 +3,13 @@
 - **Audience:** Net-new prospects explicitly handed back to Marketing after a demo and personal Sales follow-up
 - **Cycle:** Post-demo recovery after Sales handback
 - **Timing:** Provisional: 10–14 days after the final personal attempt and explicit handback
-- **Purpose:** Reopen with one workflow tied to what the prospect cared about.
+- **Purpose:** One verified workflow from the demo deserves a concrete second look if it remains an active priority.
 - **CTA:** Reply with what still needs to work.
-- **Status:** draft r2 for Jane review
+- **Status:** draft r3 for Jane review
 
 ## Strategy
 
-### What we’re writing and why
+### What we're writing and why
 Reopen one verified workflow instead of replaying the demo.
 
 ### For whom
@@ -19,7 +19,7 @@ Prospects who completed a demo, received personal follow-up, and then went quiet
 Send only after explicit handback and only after Sales fills the workflow placeholder from notes. Use reply as the sole CTA.
 
 ### How to make impact while staying professional
-Connect the workflow to one A/V interface and to continuing monitoring, diagnosis, and support.
+Use the Monday-morning handover to test one verified workflow without replaying the presentation.
 
 ### Primary message
 One verified workflow from the demo deserves a concrete second look if it remains an active priority.
@@ -27,17 +27,21 @@ One verified workflow from the demo deserves a concrete second look if it remain
 ## Three directions
 
 ### Direction 1 — Real rooms decide
+_The selected direction, revised for whole-campaign consistency._
+
 Dear #Name#,
 
-You spent time with LUCI, which runs a property's A/V from one interface. One point may still deserve a second look: [WORKFLOW THEY CARED ABOUT].
+One point from your LUCI walkthrough may still deserve a second look: [WORKFLOW THEY CARED ABOUT].
 
-Real rooms have a way of overruling slide decks.
+By the Monday-morning handover, the useful question is whether that workflow fits the operating plan.
 
-LUCI can bring that workflow into the same view as the screens, sources, and activity behind it. The LUCI team continues to monitor, diagnose, and support the environment.
+LUCI can connect the task to the rooms, screens, sources, and activity behind it. If support is needed, the request arrives with the relevant endpoint history.
 
 If the priority is still active, reply with what still needs to work.
 
 ### Direction 2 — Priority check
+_Ask whether the recorded workflow still matters before explaining anything else._
+
 Dear #Name#,
 
 Is [WORKFLOW THEY CARED ABOUT] still active?
@@ -49,6 +53,8 @@ No need to recap the whole demo.
 Reply with the part that still needs an answer.
 
 ### Direction 3 — One scene
+_Turn the verified workflow into the smallest possible operating scene._
+
 Dear #Name#,
 
 One scene from your LUCI conversation is worth keeping concrete: [WORKFLOW THEY CARED ABOUT].
@@ -60,9 +66,9 @@ Slides close. The wall still has to behave.
 Reply if that priority still matters.
 
 ## Why the final won
-**Direction 1 — Real rooms decide**
+**Real rooms decide**
 
-It reminds the reader what LUCI does, uses one verified workflow rather than generic personalization, and makes the continuing team's role concrete. The lightly witty line reinforces the operational stakes instead of decorating them.
+It returns to one verified workflow and grounds the reconsideration in the Monday-morning operating handover. The r3 final removes slide-deck language and varies the support phrasing.
 
 ## Final copy
 
@@ -72,21 +78,21 @@ It reminds the reader what LUCI does, uses one verified workflow rather than gen
 3. **Direct:** What still needs to work?
 
 ### Preheader
-Return to one workflow from the demo, not the whole presentation.
+Return to one workflow from the demo and test it against the operating plan.
 
 ### Body
 Dear #Name#,
 
-You spent time with LUCI, which runs a property's A/V from one interface. One point may still deserve a second look: [WORKFLOW THEY CARED ABOUT].
+One point from your LUCI walkthrough may still deserve a second look: [WORKFLOW THEY CARED ABOUT].
 
-Real rooms have a way of overruling slide decks.
+By the Monday-morning handover, the useful question is whether that workflow fits the operating plan.
 
-LUCI can bring that workflow into the same view as the screens, sources, and activity behind it. The LUCI team continues to monitor, diagnose, and support the environment.
+LUCI can connect the task to the rooms, screens, sources, and activity behind it. If support is needed, the request arrives with the relevant endpoint history.
 
 If the priority is still active, reply with what still needs to work.
 
 ### Word count
-**77 words** from greeting through CTA, excluding the signature.
+**72 words** from greeting through CTA, excluding the signature.
 
 ### Signature
 [NAME]
@@ -95,18 +101,18 @@ LUCI Systems
 [EMAIL] · [PHONE]
 
 ## Automation notes
-- Send only after the final personal Sales attempt, explicit handback, and a verified demo note for the workflow placeholder.
-- A reply, booking, or active opportunity stops all marketing automation and returns the contact to the assigned sales owner.
-- Opens and ordinary clicks remain reporting signals only.
-- Do not activate while the placeholder is unpopulated.
-- Timing remains provisional.
+Send only after the final personal Sales attempt, explicit handback, and a verified demo note for the workflow placeholder. A reply, booking, or active opportunity stops all marketing automation and returns the contact to the assigned sales owner. Opens and ordinary clicks remain reporting signals only. Do not activate while the placeholder is unpopulated. Timing remains provisional.
 
 ## Guardrail audit
-r2 changes: Rebuilt the note around one verified workflow, added a varied LUCI definition and a concrete continuing-team sentence, and made reply the only CTA. Approved workflow options for Sales are: stage screens, sources, and audio before applying them on cue; confirm what a TV or LED wall is playing without walking the floor; or trace who changed what and when while managing roles and sessions. Use one only. The client-retention claim is skipped because it sounded bolted onto a quiet-prospect recovery note.
+r3 changes: Skipped the client-retention claim because it would feel added onto a quiet-prospect recovery note. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.
+
+## r3 changes:
+- Whole-campaign scene: Monday-morning operating handover.
+- Sender story, product-definition cadence, partnership language, claim use, subjects, preheader, and count were checked against the other 26 finals.
 
 ## Placeholders to fill
-- `[WORKFLOW THEY CARED ABOUT]`
-- `[NAME]`
-- `[TITLE]`
-- `[EMAIL]`
-- `[PHONE]`
+- [EMAIL]
+- [NAME]
+- [PHONE]
+- [TITLE]
+- [WORKFLOW THEY CARED ABOUT]

@@ -3,13 +3,13 @@
 - **Audience:** Broader warm contacts who need approved scale and relationship proof
 - **Cycle:** Broader warm re-engagement
 - **Timing:** 4–5 days after email 2
-- **Purpose:** Establish scale with approved counts before drawing the one-interface conclusion.
+- **Purpose:** Approved counts establish scale before LUCI draws the one-interface conclusion.
 - **CTA:** See the approved proof.
-- **Status:** draft r2 for Jane review
+- **Status:** draft r3 for Jane review
 
 ## Strategy
 
-### What we’re writing and why
+### What we're writing and why
 A proof email grounded in approved counts and relationship continuity.
 
 ### For whom
@@ -27,17 +27,21 @@ Approved counts establish scale before LUCI draws the one-interface conclusion.
 ## Three directions
 
 ### Direction 1 — The denominator is the story
-_Lead with approved counts and let the conclusion follow._
+_The selected direction, revised for whole-campaign consistency._
 
 Dear #Name#,
 
-“One interface” is easy to claim. The denominator is the interesting part.
+“One operating view” is easy to claim. The denominator is the interesting part.
 
 [APPROVED PROOF POINT]
-[APPROVED PROOF POINT]
+
 [APPROVED PROOF POINT]
 
-LUCI consolidates a property’s A/V, its endpoints, and its workflows into one interface and a shorter list to manage. Scale is half the proof. Continuity is the other: we've never lost a client.
+[APPROVED PROOF POINT]
+
+Together, those approved counts show the screens, zones, walls, and workflows LUCI brings into a shorter list to manage.
+
+Scale is half the proof. Continuity is the other: we've never lost a client.
 
 See the approved proof: [PROOF URL]
 
@@ -74,7 +78,7 @@ See the proof: [PROOF URL]
 ## Why the final won
 **The denominator is the story**
 
-It puts approved evidence ahead of the claim, defines LUCI in one line, and gives the retention statement a natural proof context instead of bolting it onto an invitation.
+It puts approved evidence ahead of interpretation and gives the retention statement a natural continuity context. The r3 final avoids repeating the cycle's LUCI definition.
 
 ## Final copy
 
@@ -89,7 +93,7 @@ Approved counts establish the scale before the conclusion.
 ### Body
 Dear #Name#,
 
-“One interface” is easy to claim. The denominator is the interesting part.
+“One operating view” is easy to claim. The denominator is the interesting part.
 
 [APPROVED PROOF POINT]
 
@@ -97,14 +101,14 @@ Dear #Name#,
 
 [APPROVED PROOF POINT]
 
-LUCI consolidates a property’s A/V, its endpoints, and its workflows into one interface and a shorter list to manage.
+Together, those approved counts show the screens, zones, walls, and workflows LUCI brings into a shorter list to manage.
 
 Scale is half the proof. Continuity is the other: we've never lost a client.
 
 See the approved proof: [PROOF URL]
 
 ### Word count
-**62 words** from greeting through CTA, excluding the signature.
+**63 words** from greeting through CTA, excluding the signature.
 
 ### Signature
 [NAME]
@@ -113,21 +117,19 @@ LUCI Systems
 [EMAIL] · [PHONE]
 
 ## Automation notes
-Do not advance this email until every proof placeholder contains one sourced, project-true count approved for prospect use. Suppress active opportunities and active Mark or Mike conversations. A reply or booking stops automation; proof clicks remain reporting signals.
+Do not advance this email until every proof placeholder contains one sourced, project-true count approved for prospect use. Send only to eligible broader-warm contacts who did not receive the selected preview. Suppress active opportunities and active Mark or Mike conversations. A reply or booking stops automation; proof clicks remain reporting signals.
 
 ## Guardrail audit
-r2 changes: The proof now opens with one sharp human observation, defines LUCI after the approved counts, and uses the exact line “we've never lost a client” where scale and continuity meet. The proof link is the sole primary CTA. No unapproved figure, date or availability claim, named account, price, percentage, or passive construction appears.
+r3 changes: Kept the exact client-retention claim because this email's sole job is operating and relationship proof; selected-preview recipients are excluded from this cycle, and no other email in this cycle uses it. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.
 
-## r2 changes:
-- Re-edited for light, sharp human voice and one earned human line.
-- Added cold-reader product context where the product appears.
-- Reduced the message to one primary CTA and kept any secondary link quiet or conditional.
-- Recounted the final body with whitespace splitting and synchronized this scaffold to the JSON source.
+## r3 changes:
+- Whole-campaign scene: approved proof denominator.
+- Sender story, product-definition cadence, partnership language, claim use, subjects, preheader, and count were checked against the other 26 finals.
 
 ## Placeholders to fill
 - [APPROVED PROOF POINT]
-- [PROOF URL]
-- [NAME]
-- [TITLE]
 - [EMAIL]
+- [NAME]
 - [PHONE]
+- [PROOF URL]
+- [TITLE]

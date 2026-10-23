@@ -3,13 +3,13 @@
 - **Audience:** Broader warm contacts who continue after the first re-engagement email
 - **Cycle:** Broader warm re-engagement
 - **Timing:** 4–5 days after email 1
-- **Purpose:** Show the beta’s map workflow in a short reel before any meeting.
+- **Purpose:** The short reel shows the map workflow in motion; the full recording remains a quiet deeper option.
 - **CTA:** Watch the feature reel.
-- **Status:** draft r2 for Jane review
+- **Status:** draft r3 for Jane review
 
 ## Strategy
 
-### What we’re writing and why
+### What we're writing and why
 A visual step focused on the map and live device view, distinct from the preceding wrong-screen problem.
 
 ### For whom
@@ -27,13 +27,15 @@ The short reel shows the map workflow in motion; the full recording remains a qu
 ## Three directions
 
 ### Direction 1 — Let the map explain
-_Use one visual workflow that benefits from video._
+_The selected direction, revised for whole-campaign consistency._
 
 Dear #Name#,
 
 A map explains this better than another paragraph.
 
-LUCI brings a property’s A/V into one map-based interface; the New LUCI beta lets staff load a floor plan, move through the property view, see live device state, and confirm what a TV or LED wall displays while our team keeps monitoring and supporting.
+The short reel moves from property view to floor plan, then to live device state and screen content. Staff can find the endpoint, confirm what it shows, and inspect recent activity without walking the floor.
+
+The LUCI team works from the same current context when support is needed.
 
 Watch the feature reel: [FEATURE HIGHLIGHT REEL URL]
 
@@ -68,7 +70,7 @@ Full recording: [FULL RECORDING URL]
 ## Why the final won
 **Let the map explain**
 
-It gives the visual email its own job, uses a workflow that video can prove quickly, and keeps the short reel clearly dominant over the deeper recording.
+It gives the visual email one job and lets the map prove it quickly. The r3 final removes the repeated one-interface definition because email 01 already established LUCI.
 
 ## Final copy
 
@@ -85,14 +87,16 @@ Dear #Name#,
 
 A map explains this better than another paragraph.
 
-LUCI brings a property’s A/V into one map-based interface; the New LUCI beta lets staff load a floor plan, move through the property view, see live device state, and confirm what a TV or LED wall displays while our team keeps monitoring and supporting.
+The short reel moves from property view to floor plan, then to live device state and screen content. Staff can find the endpoint, confirm what it shows, and inspect recent activity without walking the floor.
+
+The LUCI team works from the same current context when support is needed.
 
 Watch the feature reel: [FEATURE HIGHLIGHT REEL URL]
 
 Deeper option: [FULL RECORDING URL]
 
 ### Word count
-**67 words** from greeting through CTA, excluding the signature.
+**71 words** from greeting through CTA, excluding the signature.
 
 ### Signature
 [NAME]
@@ -101,21 +105,19 @@ LUCI Systems
 [EMAIL] · [PHONE]
 
 ## Automation notes
-Continue only for eligible warm contacts. Suppress active opportunities and active Mark or Mike conversations. A reply or booking stops automation; opens and video clicks remain reporting signals. Present the full recording as a secondary text link.
+Continue only for eligible broader-warm contacts who did not receive the selected preview. Suppress active opportunities and active Mark or Mike conversations. A reply or booking stops automation; opens and video clicks remain reporting signals. Present the full recording as a secondary text link.
 
 ## Guardrail audit
-r2 changes: The visual email now owns a distinct map workflow instead of repeating the preceding wrong-screen incident. It defines LUCI and the beta change, adds one restrained human line, and makes the feature reel the sole primary CTA; the full recording stays secondary. The retention claim stays out because the map provides the proof. No date or availability claim, named account, price, percentage, or passive construction appears.
+r3 changes: Skipped the client-retention claim because the map workflow is the proof and this is the second email in the cycle. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.
 
-## r2 changes:
-- Re-edited for light, sharp human voice and one earned human line.
-- Added cold-reader product context where the product appears.
-- Reduced the message to one primary CTA and kept any secondary link quiet or conditional.
-- Recounted the final body with whitespace splitting and synchronized this scaffold to the JSON source.
+## r3 changes:
+- Whole-campaign scene: map-to-endpoint visual path.
+- Sender story, product-definition cadence, partnership language, claim use, subjects, preheader, and count were checked against the other 26 finals.
 
 ## Placeholders to fill
+- [EMAIL]
 - [FEATURE HIGHLIGHT REEL URL]
 - [FULL RECORDING URL]
 - [NAME]
-- [TITLE]
-- [EMAIL]
 - [PHONE]
+- [TITLE]

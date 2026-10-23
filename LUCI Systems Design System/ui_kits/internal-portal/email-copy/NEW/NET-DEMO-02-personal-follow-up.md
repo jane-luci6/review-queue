@@ -3,13 +3,13 @@
 - **Audience:** Net-new prospects who submitted a demo request
 - **Cycle:** After a demo request
 - **Timing:** Same or next business day
-- **Purpose:** Add a human response while interest is current.
+- **Purpose:** A real person wants one concrete priority so the LUCI walkthrough starts with the prospect's operation.
 - **CTA:** Reply with one priority.
-- **Status:** draft r2 for Jane review
+- **Status:** draft r3 for Jane review
 
 ## Strategy
 
-### What we’re writing and why
+### What we're writing and why
 Show that Mike or Mark saw the request and collect one useful input.
 
 ### For whom
@@ -27,15 +27,19 @@ A real person wants one concrete priority so the LUCI walkthrough starts with th
 ## Three directions
 
 ### Direction 1 — One thing
+_The selected direction, revised for whole-campaign consistency._
+
 Dear #Name#,
 
-I saw your request. LUCI runs a property's A/V from one interface, and I want the walkthrough to start with your operation, not our slide order.
+I saw your request, and I want the walkthrough to start with your operation rather than a generic tour.
 
-What is the one thing you want to see: a bartender's controls, a ballroom changeover, or a screen that never shows what it should? One line is plenty. I promise not to turn it into homework.
+What is the one room, screen, or workflow you want us to cover? One line is enough.
 
-Reply with the one priority we should cover.
+Reply with the priority, and I will build around it.
 
 ### Direction 2 — Skip the tour
+_Promise a focused session instead of a generic product tour._
+
 Dear #Name#,
 
 I have your request to see LUCI, the platform that brings a property's A/V into one interface.
@@ -45,6 +49,8 @@ Rather than run every screen in order, tell me where the operation gets stuck. A
 Reply with the problem you want the walkthrough to answer.
 
 ### Direction 3 — Thirty-second note
+_Keep the note especially brief and let the reply set the agenda._
+
 Dear #Name#,
 
 Saw your LUCI request. It runs a property's A/V from one interface, but the useful demo starts with your room, wall, or workflow.
@@ -54,9 +60,9 @@ Send me the one thing that should work better. A sentence is plenty; a novel cre
 Reply with the priority, and I will build around it.
 
 ## Why the final won
-**Direction 1 — One thing**
+**One thing**
 
-It reads like a genuine personal note, defines LUCI without restarting the pitch, and makes the requested input concrete. The three examples help the prospect answer quickly, while the homework line supplies the light touch.
+It reads like a genuine personal note and asks for one useful input. The r3 final removes the repeated bartender, ballroom, wrong-screen, slide-order, and homework material.
 
 ## Final copy
 
@@ -66,19 +72,19 @@ It reads like a genuine personal note, defines LUCI without restarting the pitch
 3. **Warm:** One quick question before the walkthrough
 
 ### Preheader
-Give me one room, wall, or workflow and I will start there.
+Give me one room, screen, or workflow and I will start there.
 
 ### Body
 Dear #Name#,
 
-I saw your request. LUCI runs a property's A/V from one interface, and I want the walkthrough to start with your operation, not our slide order.
+I saw your request, and I want the walkthrough to start with your operation rather than a generic tour.
 
-What is the one thing you want to see: a bartender's controls, a ballroom changeover, or a screen that never shows what it should? One line is plenty. I promise not to turn it into homework.
+What is the one room, screen, or workflow you want us to cover? One line is enough.
 
-Reply with the one priority we should cover.
+Reply with the priority, and I will build around it.
 
 ### Word count
-**72 words** from greeting through CTA, excluding the signature.
+**48 words** from greeting through CTA, excluding the signature.
 
 ### Signature
 [NAME]
@@ -87,15 +93,17 @@ LUCI Systems
 [EMAIL] · [PHONE]
 
 ## Automation notes
-- Send personally from Mike or Mark while Sales ownership is active.
-- Keep all marketing automation stopped.
-- If the prospect remains quiet, do not begin recovery until Mike or Mark explicitly hands the contact back to Marketing.
+Send personally from Mike or Mark while Sales ownership is active. Keep all marketing automation stopped. If the prospect remains quiet, do not begin recovery until Mike or Mark explicitly hands the contact back to Marketing.
 
 ## Guardrail audit
-r2 changes: Removed calendar branching, made reply the sole CTA, defined LUCI in one quick line, and rewrote the note around three concrete examples. The client-retention claim is skipped because a personal response should focus on the prospect.
+r3 changes: Skipped the client-retention claim because a personal Mike or Mark note should focus on the prospect. Recounted the final body, rechecked three distinct subject moods and the preheader, and confirmed the customer-facing copy uses A/V, active voice, and no prohibited timing, product, pricing, client, or partner language.
+
+## r3 changes:
+- Whole-campaign scene: personal priority question.
+- Sender story, product-definition cadence, partnership language, claim use, subjects, preheader, and count were checked against the other 26 finals.
 
 ## Placeholders to fill
-- `[NAME]`
-- `[TITLE]`
-- `[EMAIL]`
-- `[PHONE]`
+- [EMAIL]
+- [NAME]
+- [PHONE]
+- [TITLE]
