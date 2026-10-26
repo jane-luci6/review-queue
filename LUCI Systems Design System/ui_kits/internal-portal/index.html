@@ -3712,7 +3712,7 @@
     function renderStatus() {
       $('stat-review').textContent = String(allReviewItems().length);
       $('stat-comments').textContent = String(portal.comments.length);
-      $('stat-soon').textContent = String(13); // In Progress card count (curated list)
+      $('stat-soon').textContent = String(14); // In Progress card count (curated list)
       updateReviewUnreadBadges();
     }
 
@@ -4111,6 +4111,13 @@
           href: 'http://10.10.1.17:8081/content-marketing/email-1a-welcome-revision-review.html',
           external: true,
           pill: 'Email'
+        },
+        {
+          title: 'Jane personal LinkedIn · AI has a terrible sense of humor',
+          note: 'Draft for Jane, Oct 26, 2026. Three personal-profile post drafts and an optional chart concept, each resting on a checked insight. Nothing posted.',
+          href: 'http://10.10.1.17:8081/content-marketing/jane-ai-humor-post-options-review.html',
+          external: true,
+          pill: 'Social'
         },
         {
           title: 'New LUCI · Prospect emails (warm, net-new, nurture)',

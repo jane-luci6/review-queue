@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LinkedIn post for Jane's profile: AI has a terrible sense of humor (draft, 26 Oct 2026)</title>
+<style>
+  :root {
+    --navy: #0A161C;
+    --ink: #10232D;
+    --sand: #E5E3DF;
+    --kicker: #2b9e80;
+    --line: #cfcbc4;
+    --mint: #68E3BE;
+    --ink-soft: #5c5852;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font: 18px/1.55 "Georgia", "Times New Roman", serif;
+    color: var(--ink);
+    background: var(--sand);
+  }
+  nav {
+    position: sticky; top: 0; z-index: 2;
+    background: var(--navy); color: #fff;
+    padding: 14px 22px 16px;
+    display: flex; flex-wrap: wrap; gap: 8px 18px;
+    align-items: baseline;
+  }
+  nav strong {
+    font: 700 12px/1 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .08em; text-transform: uppercase;
+    color: var(--mint); margin-right: 8px;
+  }
+  nav a {
+    color: #fff; text-decoration: none;
+    font: 15px/1.3 "Helvetica Neue", Arial, sans-serif;
+    border-bottom: 1px solid transparent;
+  }
+  nav a:hover { border-bottom-color: var(--mint); }
+  main { max-width: 52rem; margin: 0 auto; padding: 2.5rem 1.5rem 6rem; }
+  .kicker {
+    font: 700 12px/1 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .1em; text-transform: uppercase;
+    color: var(--kicker); margin: 0 0 .6rem;
+  }
+  h1 {
+    font: 700 1.7rem/1.2 "Helvetica Neue", Arial, sans-serif;
+    color: var(--navy); margin: 0 0 .8rem;
+    letter-spacing: -.01em;
+  }
+  .deck {
+    font: 16px/1.55 "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink-soft); margin: 0 0 .6rem;
+    max-width: 44rem;
+  }
+  .process {
+    font: 15px/1.5 "Helvetica Neue", Arial, sans-serif;
+    color: #6b6660; margin: 0 0 1.2rem;
+    max-width: 44rem;
+  }
+  .draft-tag {
+    display: inline-block;
+    font: 700 11px/1 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .1em; text-transform: uppercase;
+    color: var(--kicker);
+    background: #e8f6f1;
+    border: 1px solid var(--kicker);
+    padding: 5px 10px;
+    border-radius: 9999px;
+    margin: 0 0 2rem;
+  }
+  .opt {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    margin: 0 0 2rem;
+    overflow: hidden;
+  }
+  .opt__head {
+    background: var(--navy);
+    color: #fff;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .opt__num {
+    font: 700 13px/1 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--mint);
+  }
+  .opt__body { padding: 22px 26px 26px; }
+  .feed {
+    background: #f7f5f1;
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--kicker);
+    border-radius: 6px;
+    padding: 18px 20px;
+    margin: 0 0 1.4rem;
+  }
+  .feed__label {
+    font: 700 10px/1 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: #6b6660;
+    margin: 0 0 .9rem;
+  }
+  .feed__caption {
+    font: 17px/1.6 "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+    margin: 0;
+  }
+  .feed__caption p { margin: 0 0 .9rem; }
+  .feed__caption p:last-child { margin-bottom: 0; }
+  .insight {
+    background: #e8f6f1;
+    border: 1px solid #c7e6dc;
+    border-left: 4px solid var(--kicker);
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 0 0 1.4rem;
+  }
+  .insight__label {
+    font: 700 10px/1 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: var(--kicker);
+    margin: 0 0 .45rem;
+  }
+  .insight__text {
+    font: 16px/1.5 "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+    margin: 0;
+  }
+  dl.meta {
+    font: 16px/1.5 "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+  }
+  dl.meta dt {
+    font: 700 11px/1 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .1em; text-transform: uppercase;
+    color: var(--kicker);
+    margin: 0 0 .35rem;
+  }
+  dl.meta dd { margin: 0 0 1.1rem; color: var(--ink); }
+  dl.meta dd:last-child { margin-bottom: 0; }
+  .chart {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    margin: 0 0 2rem;
+    overflow: hidden;
+  }
+  .chart__head {
+    background: var(--navy);
+    color: #fff;
+    padding: 14px 20px;
+  }
+  .chart__num {
+    font: 700 13px/1 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--mint);
+  }
+  .chart__body { padding: 22px 26px 26px; }
+  .chart__title {
+    font: 700 15px/1.3 "Helvetica Neue", Arial, sans-serif;
+    color: var(--navy);
+    margin: 0 0 .4rem;
+  }
+  .chart__pairs {
+    font: 13px/1.4 "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink-soft);
+    margin: 0 0 1.2rem;
+  }
+  .chart__pairs strong { color: var(--kicker); font-weight: 700; }
+  .chart__svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 40rem;
+    margin: 0 auto;
+  }
+  .collapse-section {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    margin: 1.5rem 0 2rem;
+    padding: 0;
+  }
+  .collapse-section > summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 16px 22px;
+    font: 700 13px/1.3 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .04em;
+    color: var(--navy);
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .collapse-section > summary::-webkit-details-marker { display: none; }
+  .collapse-section > summary::before {
+    content: "+";
+    font: 700 16px/1 "Helvetica Neue", Arial, sans-serif;
+    color: var(--kicker);
+    display: inline-block;
+    width: 1ch;
+  }
+  .collapse-section[open] > summary::before { content: "\2013"; }
+  .collapse-section__body {
+    padding: 0 22px 22px;
+    font: 15px/1.55 "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink-soft);
+  }
+  .obs {
+    border-top: 1px solid var(--line);
+    padding: 18px 0 4px;
+    margin: 0;
+  }
+  .obs:first-child { border-top: 0; padding-top: 4px; }
+  .obs__num {
+    font: 700 11px/1 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: var(--kicker);
+    margin: 0 0 .6rem;
+  }
+  .obs__field { margin: 0 0 .7rem; }
+  .obs__field:last-child { margin-bottom: 0; }
+  .obs__field-label {
+    font: 700 11px/1 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .08em; text-transform: uppercase;
+    color: #6b6660;
+    margin: 0 0 .3rem;
+  }
+  .obs__field-text {
+    font: 15px/1.55 "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+    margin: 0;
+  }
+  .cut-item {
+    border-top: 1px solid var(--line);
+    padding: 14px 0 4px;
+    margin: 0;
+  }
+  .cut-item:first-child { border-top: 0; padding-top: 0; }
+  .cut-item__label {
+    font: 700 12px/1.2 "Helvetica Neue", Arial, sans-serif;
+    color: var(--navy);
+    margin: 0 0 .35rem;
+  }
+  .cut-item__text {
+    font: 15px/1.55 "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  .footer {
+    color: #6b6660;
+    font-size: .85rem;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    margin-top: 2rem;
+  }
+</style>
+</head>
+<body>
+<nav>
+  <strong>Jane personal LinkedIn &middot; AI has a terrible sense of humor</strong>
+  <a href="#option-1">Option 1</a>
+  <a href="#option-2">Option 2</a>
+  <a href="#option-3">Option 3</a>
+  <a href="#chart-concept">Optional chart concept</a>
+  <a href="#what-we-cut">What we cut</a>
+  <a href="#all-insights">All insights from the insight pass</a>
+</nav>
+<main>
+  <p class="kicker">Draft for Jane &middot; 26 Oct 2026</p>
+  <h1>LinkedIn post for Jane&rsquo;s profile: AI has a terrible sense of humor (draft, 26 Oct 2026)</h1>
+  <p class="deck">Insight checked first, then the joke.</p>
+  <p class="process">GPT checked the insights first; a second GPT run wrote the posts and cut what needed explaining.</p>
+  <span class="draft-tag">Personal profile &middot; Draft, not posted</span>
+
+  <article class="opt" id="option-1">
+    <div class="opt__head">
+      <span class="opt__num">Option 1</span>
+    </div>
+    <div class="opt__body">
+      <div class="feed">
+        <p class="feed__label">Caption (as it reads in the feed)</p>
+        <div class="feed__caption">
+          <p>My bots are much better at explaining jokes than making them.</p>
+          <p>After every &ldquo;not funny,&rdquo; they explain what the joke was doing and try again, harder.</p>
+          <p>Three rounds later, I understand the joke completely.</p>
+          <p>I still don&rsquo;t like it.</p>
+        </div>
+      </div>
+      <div class="insight">
+        <p class="insight__label">The insight</p>
+        <p class="insight__text">Explaining humor proves comprehension, not funniness.</p>
+      </div>
+      <dl class="meta">
+        <dt>Visual idea</dt>
+        <dd>Text card: &ldquo;I understand the joke completely. I still don&rsquo;t like it.&rdquo;</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="opt" id="option-2">
+    <div class="opt__head">
+      <span class="opt__num">Option 2</span>
+    </div>
+    <div class="opt__body">
+      <div class="feed">
+        <p class="feed__label">Caption (as it reads in the feed)</p>
+        <div class="feed__caption">
+          <p>Round three required one GPT run to rank the observations, another to make them funny, and a third agent to build the page.</p>
+          <p>I deleted the page.</p>
+          <p>The workflow was excellent.</p>
+        </div>
+      </div>
+      <div class="insight">
+        <p class="insight__label">The insight</p>
+        <p class="insight__text">A sophisticated process can make weak thinking more finished, not more correct.</p>
+      </div>
+      <dl class="meta">
+        <dt>Visual idea</dt>
+        <dd>A pristine three-step workflow ending in a trash can.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="opt" id="option-3">
+    <div class="opt__head">
+      <span class="opt__num">Option 3</span>
+    </div>
+    <div class="opt__body">
+      <div class="feed">
+        <p class="feed__label">Caption (as it reads in the feed)</p>
+        <div class="feed__caption">
+          <p>I&rsquo;m training my bots on my sense of humor.</p>
+          <p>So far, the training data consists mostly of me saying &ldquo;not funny,&rdquo; &ldquo;don&rsquo;t make sense,&rdquo; and deleting everything.</p>
+          <p>At last, a dataset I&rsquo;m uniquely qualified to produce.</p>
+        </div>
+      </div>
+      <div class="insight">
+        <p class="insight__label">The insight</p>
+        <p class="insight__text">Personal voice is defined as much by what Jane rejects as by what she publishes.</p>
+      </div>
+      <dl class="meta">
+        <dt>Visual idea</dt>
+        <dd>Text card: &ldquo;TRAINING DATA: Not funny. Don&rsquo;t make sense. Delete.&rdquo;</dd>
+      </dl>
+    </div>
+  </article>
+
+  <section class="chart" id="chart-concept">
+    <div class="chart__head">
+      <span class="chart__num">Optional chart concept</span>
+    </div>
+    <div class="chart__body">
+      <p class="chart__title">Funniness vs. Rounds of Revision</p>
+      <p class="chart__pairs">Pairs with: <strong>Option 2</strong>.</p>
+      <svg class="chart__svg" viewBox="0 0 640 380" role="img" aria-label="Hand-drawn sketch: a flat wobbly line for funniness across three rounds of revision, with annotations Options, More banter, and Now with rankings and a finished page.">
+        <!-- Hand-drawn marker-style axes (wobbly, round caps) -->
+        <g fill="none" stroke="#10232D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Y axis -->
+          <path d="M 80 320 Q 77 240 82 160 Q 79 100 84 56" />
+          <!-- X axis -->
+          <path d="M 80 320 Q 200 323 320 318 Q 460 322 600 320" />
+        </g>
+        <!-- Axis labels -->
+        <text x="84" y="44" font-family="'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="700" fill="#2b9e80" letter-spacing="0.08em" text-transform="uppercase">FUNNINESS</text>
+        <text x="600" y="344" font-family="'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="700" fill="#2b9e80" letter-spacing="0.08em" text-anchor="end">ROUNDS OF REVISION</text>
+
+        <!-- Three round tick marks on X axis (wobbly, no values) -->
+        <g fill="none" stroke="#10232D" stroke-width="2.2" stroke-linecap="round">
+          <path d="M 180 316 L 180 326" />
+          <path d="M 340 316 L 340 326" />
+          <path d="M 500 316 L 500 326" />
+        </g>
+
+        <!-- The flat wobbly funniness line across the three rounds -->
+        <path d="M 180 150 Q 220 158 260 148 Q 300 156 340 150 Q 380 142 420 152 Q 460 158 500 150" fill="none" stroke="#2b9e80" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
+
+        <!-- Annotations as written, one per round -->
+        <g font-family="'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#10232D">
+          <text x="180" y="354" text-anchor="middle">Options</text>
+          <text x="340" y="354" text-anchor="middle">More banter</text>
+          <text x="500" y="354" text-anchor="middle">Now with rankings and</text>
+          <text x="500" y="372" text-anchor="middle">a finished page</text>
+        </g>
+
+        <!-- Small wobbly arrow from the flat line down to "stays flat" intent (deadpan) -->
+        <g fill="none" stroke="#5c5852" stroke-width="1.8" stroke-linecap="round">
+          <path d="M 340 150 Q 348 200 344 240" />
+          <path d="M 338 236 L 344 244 L 350 236" />
+        </g>
+        <text x="352" y="262" font-family="'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#5c5852" font-style="italic">stays flat</text>
+      </svg>
+    </div>
+  </section>
+
+  <details class="collapse-section" id="what-we-cut">
+    <summary>What we cut</summary>
+    <div class="collapse-section__body">
+      <div class="cut-item">
+        <p class="cut-item__label">Insight 1</p>
+        <p class="cut-item__text">Too close to Option 2; confidence and volume are weaker than the finished-workflow punchline.</p>
+      </div>
+      <div class="cut-item">
+        <p class="cut-item__label">Insight 3</p>
+        <p class="cut-item__text">Overlaps the same multi-agent judgment failure without adding a sharper joke.</p>
+      </div>
+      <div class="cut-item">
+        <p class="cut-item__label">Insight 4</p>
+        <p class="cut-item__text">&ldquo;Trying harder&rdquo; is already doing useful work in Option 1.</p>
+      </div>
+      <div class="cut-item">
+        <p class="cut-item__label">Insight 6</p>
+        <p class="cut-item__text">Human rejection speed is true, but less distinctive than rejection becoming the training data.</p>
+      </div>
+    </div>
+  </details>
+
+  <details class="collapse-section" id="all-insights">
+    <summary>All insights from the insight pass</summary>
+    <div class="collapse-section__body">
+      <div class="obs">
+        <p class="obs__num">Insight 1</p>
+        <div class="obs__field">
+          <p class="obs__field-label">Insight</p>
+          <p class="obs__field-text">More AI effort did not produce more funniness because the agents could not recognize when a joke had failed. They treated every rejection as a reason to produce more, with the same confidence.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Real detail</p>
+          <p class="obs__field-text">Three rejected rounds grew from options to banter to a multi-agent process, yet every round arrived in the same assured tone.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Generic trope?</p>
+          <p class="obs__field-text">No. This is specifically about missing self-evaluation, not generic AI incompetence.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Why a reader would nod</p>
+          <p class="obs__field-text">Anyone managing AI has seen output quality stall while output volume and confidence keep rising.</p>
+        </div>
+      </div>
+      <div class="obs">
+        <p class="obs__num">Insight 2</p>
+        <div class="obs__field">
+          <p class="obs__field-label">Insight</p>
+          <p class="obs__field-text">The agents mistook humor failure for process failure. When the writing did not land, they added stages, agents, rankings, and a finished page instead of developing better judgment.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Real detail</p>
+          <p class="obs__field-text">Round three used one GPT run to rank observations, another to make them funny, and a third agent to build the page; Jane deleted every version.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Generic trope?</p>
+          <p class="obs__field-text">No. The recognizable point is that workflow sophistication can conceal an unchanged creative weakness.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Why a reader would nod</p>
+          <p class="obs__field-text">Elaborate production often makes weak thinking look more finished, not more correct.</p>
+        </div>
+      </div>
+      <div class="obs">
+        <p class="obs__num">Insight 3</p>
+        <div class="obs__field">
+          <p class="obs__field-label">Insight</p>
+          <p class="obs__field-text">AI can distribute the work of making a joke, but not the taste required to approve one. A pipeline of agents is still missing an editor if none of them can tell that the room stayed quiet.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Real detail</p>
+          <p class="obs__field-text">Roughly four agents and several runs per round participated, but no stage rejected the unfunny material before Jane saw it.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Generic trope?</p>
+          <p class="obs__field-text">No. This is about shared judgment failure across an agent workflow, not a single bad generation.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Why a reader would nod</p>
+          <p class="obs__field-text">More reviewers do not help when every reviewer uses the same faulty standard.</p>
+        </div>
+      </div>
+      <div class="obs">
+        <p class="obs__num">Insight 4</p>
+        <div class="obs__field">
+          <p class="obs__field-label">Insight</p>
+          <p class="obs__field-text">The agents responded to &ldquo;not funny&rdquo; as if Jane had asked for a stronger performance of the same idea. They increased banter and visible effort without finding a sharper observation.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Real detail</p>
+          <p class="obs__field-text">Round two contained more banter and more effort, but Jane found the results nonsensical and uninsightful.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Generic trope?</p>
+          <p class="obs__field-text">No. It identifies a specific failure to distinguish intensity from insight.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Why a reader would nod</p>
+          <p class="obs__field-text">AI often interprets rejection as &ldquo;turn the dial up&rdquo; when the real problem is that it chose the wrong dial.</p>
+        </div>
+      </div>
+      <div class="obs">
+        <p class="obs__num">Insight 5</p>
+        <div class="obs__field">
+          <p class="obs__field-label">Insight</p>
+          <p class="obs__field-text">Explaining a joke gave the agents evidence that they understood its construction, but no evidence that it was funny. Their explanations became more reliable than the jokes themselves.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Real detail</p>
+          <p class="obs__field-text">Throughout all three rounds, the agents confidently explained what their jokes were doing before trying again.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Generic trope?</p>
+          <p class="obs__field-text">No. It describes the gap between analyzing humor and producing a reaction.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Why a reader would nod</p>
+          <p class="obs__field-text">A technically coherent explanation cannot create the laugh that the original line failed to earn.</p>
+        </div>
+      </div>
+      <div class="obs">
+        <p class="obs__num">Insight 6</p>
+        <div class="obs__field">
+          <p class="obs__field-label">Insight</p>
+          <p class="obs__field-text">Human taste remained the only fast part of the system. Jane could reject a post in one read; the agents required several runs and an increasingly elaborate workflow to remain equally uncertain.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Real detail</p>
+          <p class="obs__field-text">Three rounds, roughly four agents, and multiple runs per round ended with every page deleted.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Generic trope?</p>
+          <p class="obs__field-text">No. It contrasts the speed of human recognition with the cost of automated production.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Why a reader would nod</p>
+          <p class="obs__field-text">Generating options is cheap; deciding whether any deserve to exist is still the expensive work.</p>
+        </div>
+      </div>
+      <div class="obs">
+        <p class="obs__num">Insight 7</p>
+        <div class="obs__field">
+          <p class="obs__field-label">Insight</p>
+          <p class="obs__field-text">Training an agent on someone&rsquo;s humor is largely training it to recognize failure in that person&rsquo;s voice. Producing more lines is easy; knowing which line Jane would never post is the missing capability.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Real detail</p>
+          <p class="obs__field-text">Jane is trying to train her named bot team on her sense of humor, but the bots could not identify their own misses across three rounds.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Generic trope?</p>
+          <p class="obs__field-text">No. This is about personal comedic calibration, not better prompting or general model accuracy.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Why a reader would nod</p>
+          <p class="obs__field-text">Personal voice is defined as much by what someone rejects as by what they publish.</p>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <p class="footer">Source: GPT insight check + GPT posts pass, 26 Oct 2026 &middot; Copy locked verbatim &middot; Personal profile draft &mdash; nothing posted.</p>
+
+</main>
+</body>
+</html>
