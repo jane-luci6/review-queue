@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Chart for Jane's LinkedIn post (draft, 26 Oct 2026)</title>
+<title>Chart and post copy for Jane's LinkedIn post (draft, 26 Oct 2026)</title>
 <style>
   :root {
     --navy: #0A161C;
@@ -14,6 +14,9 @@
     --line: #cfcbc4;
     --mint: #68E3BE;
     --ink-soft: #5c5852;
+    --amber: #b8841a;
+    --amber-bg: #fbf3e0;
+    --amber-border: #e3c878;
   }
   * { box-sizing: border-box; }
   body {
@@ -44,6 +47,11 @@
     font: 700 1.7rem/1.2 "Helvetica Neue", Arial, sans-serif;
     color: var(--navy); margin: 0 0 .8rem;
     letter-spacing: -.01em;
+  }
+  h2 {
+    font: 700 1.25rem/1.3 "Helvetica Neue", Arial, sans-serif;
+    color: var(--navy); margin: 2.6rem 0 1rem;
+    letter-spacing: -.005em;
   }
   .draft-tag {
     display: inline-block;
@@ -90,6 +98,148 @@
     font-family: "Helvetica Neue", Arial, sans-serif;
     margin-top: 2rem;
   }
+
+  /* Post copy options */
+  .options { margin: 0 0 1rem; }
+  .option {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--paper);
+    padding: 1.4rem 1.5rem 1.3rem;
+    margin: 0 0 1.2rem;
+  }
+  .option__head {
+    font: 700 12px/1 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .1em; text-transform: uppercase;
+    color: var(--kicker);
+    margin: 0 0 .8rem;
+  }
+  .option__post {
+    font: 18px/1.6 "Georgia", "Times New Roman", serif;
+    color: var(--ink);
+    white-space: pre-wrap;
+    margin: 0 0 1rem;
+  }
+  .insight {
+    border-left: 4px solid var(--kicker);
+    background: #eef7f3;
+    padding: .7rem 1rem;
+    margin: 0 0 .8rem;
+    font: 600 14px/1.5 "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+  }
+  .insight strong {
+    font: 700 11px/1 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .08em; text-transform: uppercase;
+    color: var(--kicker);
+    display: block;
+    margin-bottom: .3rem;
+  }
+  .check-jane {
+    border: 1px solid var(--amber-border);
+    background: var(--amber-bg);
+    color: var(--amber);
+    border-radius: 6px;
+    padding: .6rem .9rem;
+    font: 700 12px/1.5 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .02em;
+  }
+  .check-jane strong {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    margin-right: .4rem;
+  }
+
+  /* Collapsed sections */
+  details {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--paper);
+    margin: 0 0 1.2rem;
+  }
+  summary {
+    cursor: pointer;
+    padding: .9rem 1.2rem;
+    font: 700 14px/1.3 "Helvetica Neue", Arial, sans-serif;
+    color: var(--navy);
+    list-style: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::before {
+    content: "+";
+    display: inline-block;
+    width: 1.1rem;
+    color: var(--kicker);
+    font-weight: 700;
+    margin-right: .4rem;
+  }
+  details[open] summary::before { content: "\2212"; }
+  .details-body {
+    padding: 0 1.2rem 1.2rem;
+    border-top: 1px solid var(--line);
+    margin-top: -.1rem;
+    padding-top: 1rem;
+  }
+  .alt-group { margin: 0 0 1rem; }
+  .alt-group h3 {
+    font: 700 11px/1 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .1em; text-transform: uppercase;
+    color: var(--kicker);
+    margin: 0 0 .5rem;
+  }
+  .alt-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font: 17px/1.55 "Georgia", "Times New Roman", serif;
+    color: var(--ink);
+  }
+  .alt-list li {
+    padding: .35rem 0 .35rem 1.6rem;
+    position: relative;
+  }
+  .alt-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: .85em;
+    width: .7rem;
+    height: 2px;
+    background: var(--kicker);
+  }
+  .alt-list li.best {
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .alt-list li.best::after {
+    content: " \2014 BEST PICK";
+    font: 700 10px/1 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .1em;
+    color: var(--kicker);
+  }
+  .cut-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font: 17px/1.6 "Georgia", "Times New Roman", serif;
+    color: var(--ink-soft);
+  }
+  .cut-list li {
+    padding: .4rem 0 .4rem 1.4rem;
+    position: relative;
+    border-bottom: 1px solid var(--line);
+  }
+  .cut-list li:last-child { border-bottom: none; }
+  .cut-list li::before {
+    content: "\2715";
+    position: absolute;
+    left: 0;
+    top: .4rem;
+    color: #b5503a;
+    font-size: 13px;
+    font-weight: 700;
+  }
 </style>
 </head>
 <body>
@@ -98,34 +248,113 @@
 </nav>
 <main>
   <p class="kicker">Draft for Jane &middot; 26 Oct 2026</p>
-  <h1>Chart for Jane&rsquo;s LinkedIn post (draft, 26 Oct 2026)</h1>
+  <h1>Chart and post copy for Jane&rsquo;s LinkedIn post (draft, 26 Oct 2026)</h1>
   <span class="draft-tag">Personal profile &middot; Draft, not posted</span>
 
-  <section class="chart" id="chart" aria-label="Hand-drawn sketch chart: funniness stays flat across time spent prompting or refining the result.">
+  <section class="chart" id="chart" aria-label="Hand-drawn sketch chart: more prompting, same funniness &mdash; a flat line stays below the x-axis across time wasted telling my bots hilarious jokes.">
     <div class="chart__body">
-      <svg class="chart__svg" viewBox="0 0 1200 627" role="img" aria-label="Hand-drawn sketch: a flat straight line for funniness across time spent prompting or refining the result, with axis labels Funniness and Time spent prompting or refining the result.">
+      <svg class="chart__svg" viewBox="0 0 1200 627" role="img" aria-label="Hand-drawn sketch chart with header 'More prompting. Same funniness.' A flat straight line sits below the x-axis in negative territory. Y-axis label: AI's ability to make me laugh. X-axis label: Time wasted telling my bots hilarious jokes.">
         <!-- Paper-feel background -->
         <rect x="0" y="0" width="1200" height="627" fill="#F7F5F1" />
+
+        <!-- Header / chart title -->
+        <text x="600" y="74" font-family="'Helvetica Neue', Arial, sans-serif" font-size="48" font-weight="700" fill="#10232D" letter-spacing="-0.01em" text-anchor="middle">More prompting. Same funniness.</text>
+
+        <!-- Y-axis label (top of axis) -->
+        <text x="150" y="140" font-family="'Helvetica Neue', Arial, sans-serif" font-size="24" font-weight="700" fill="#2b9e80" letter-spacing="0.04em">AI&rsquo;s ability to make me laugh</text>
 
         <!-- Hand-drawn marker-style axes (wobbly, round caps) -->
         <g fill="none" stroke="#10232D" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round">
           <!-- Y axis -->
-          <path d="M 132 552 Q 128 420 134 280 Q 129 160 138 76" />
+          <path d="M 150 388 Q 146 288 152 188 Q 147 168 156 150" />
           <!-- X axis -->
-          <path d="M 132 552 Q 360 556 600 548 Q 840 554 1088 550" />
+          <path d="M 150 388 Q 380 392 600 384 Q 820 390 1090 386" />
         </g>
 
-        <!-- Axis labels (marker-style lettering) -->
-        <text x="138" y="58" font-family="'Helvetica Neue', Arial, sans-serif" font-size="26" font-weight="700" fill="#2b9e80" letter-spacing="0.06em">Funniness</text>
-        <text x="1080" y="600" font-family="'Helvetica Neue', Arial, sans-serif" font-size="26" font-weight="700" fill="#2b9e80" letter-spacing="0.02em" text-anchor="end">Time spent prompting or refining the result</text>
+        <!-- ONE straight, flat line BELOW the x-axis in negative territory -->
+        <path d="M 232 498 L 1008 498" fill="none" stroke="#2b9e80" stroke-width="6" stroke-linecap="round" />
 
-        <!-- ONE straight, flat line (no wobble; stays flat) -->
-        <path d="M 220 300 L 1020 300" fill="none" stroke="#2b9e80" stroke-width="6" stroke-linecap="round" />
+        <!-- X-axis label (below the flat line) -->
+        <text x="1090" y="574" font-family="'Helvetica Neue', Arial, sans-serif" font-size="24" font-weight="700" fill="#2b9e80" letter-spacing="0.02em" text-anchor="end">Time wasted telling my bots hilarious jokes</text>
       </svg>
     </div>
   </section>
 
   <a class="download" href="assets/jane-ai-humor-chart.png" download="jane-ai-humor-chart.png">Download PNG</a>
+
+  <h2>Post copy options</h2>
+  <div class="options">
+
+    <div class="option" id="option-1">
+      <p class="option__head">Option 1</p>
+      <div class="option__post">More prompting. Same funniness.
+
+I know they&rsquo;re bots. But are we not training them to have a sense of humor over at Anthropic? Do the gods of AI not need a little levity every now and then?
+
+I don&rsquo;t need much. A chicken-crossing-the-road joke. A &ldquo;bruh.&rdquo; The line stayed flat anyway.</div>
+      <div class="insight"><strong>The insight</strong>More prompting and refining time did not raise funniness; the line stayed flat, and her bar was already a chicken joke or a &ldquo;bruh.&rdquo;</div>
+      <div class="check-jane"><strong>Check with Jane</strong>Yes &mdash; keeps her exact &ldquo;over at Anthropic&rdquo; wording, names a specific AI company.</div>
+    </div>
+
+    <div class="option" id="option-2">
+      <p class="option__head">Option 2</p>
+      <div class="option__post">This graph is flat.
+
+Today the effort grew &mdash; options, then banter, then rankings, then a finished page, with several agents per round. The funniness stayed where it started.
+
+I don&rsquo;t need much. A chicken-crossing-the-road joke. A &ldquo;bruh.&rdquo; They explained their jokes after each miss and tried harder. Explaining proves comprehension, not funniness.</div>
+      <div class="insight"><strong>The insight</strong>Effort grew across rounds while funniness stayed flat; the agents explained and retried but could not tell the jokes were not funny.</div>
+    </div>
+
+    <div class="option" id="option-3">
+      <p class="option__head">Option 3</p>
+      <div class="option__post">I know they&rsquo;re bots. But do the gods of AI not need a little levity every now and then? Are the people training these models not teaching them a single chicken-crossing-the-road joke?
+
+This graph is the answer. The line is flat. It is below the axis. I asked for a &ldquo;bruh.&rdquo;</div>
+      <div class="insight"><strong>The insight</strong>Her bar is a chicken joke or a &ldquo;bruh,&rdquo; and the flat line below the axis shows even that went unmet.</div>
+    </div>
+
+  </div>
+
+  <details>
+    <summary>Header and axis alternates</summary>
+    <div class="details-body">
+      <div class="alt-group">
+        <h3>Headers (3)</h3>
+        <ul class="alt-list">
+          <li class="best">More prompting. Same funniness.</li>
+          <li>I kept trying. The line stayed flat.</li>
+          <li>Effort up. Funniness unchanged.</li>
+        </ul>
+      </div>
+      <div class="alt-group">
+        <h3>Y-axis</h3>
+        <ul class="alt-list">
+          <li class="best">AI&rsquo;s ability to make me laugh</li>
+          <li>Laughability</li>
+        </ul>
+      </div>
+      <div class="alt-group">
+        <h3>X-axis</h3>
+        <ul class="alt-list">
+          <li class="best">Time wasted telling my bots hilarious jokes</li>
+          <li>Time spent prompting and refining the result</li>
+        </ul>
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>What we cut</summary>
+    <div class="details-body">
+      <ul class="cut-list">
+        <li>A post that opened with &ldquo;AI humor is hard&rdquo; &mdash; generic AI-at-work trope, no joke in the first line.</li>
+        <li>A post ending on &ldquo;Maybe tomorrow.&rdquo; &mdash; a sigh, not a punchline; reads as a lesson.</li>
+        <li>A post with a closing question &ldquo;Who&rsquo;s training them?&rdquo; &mdash; setup, not a joke; cut.</li>
+        <li>A post that named a bot (Cornelius, Weatherby) by name &mdash; invents a quote-attributable detail not in the brief.</li>
+      </ul>
+    </div>
+  </details>
 
   <p class="footer">Personal profile draft &mdash; nothing posted &middot; 26 Oct 2026.</p>
 </main>
