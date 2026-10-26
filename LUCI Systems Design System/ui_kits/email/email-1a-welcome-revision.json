@@ -139,19 +139,19 @@
   "final": {
     "header": {
       "headline": "Welcome to the LUCI family.",
-      "subline": "A note from Mike about the team behind your LUCI project."
+      "subline": "A personal hello from Mike."
     },
     "body": [
       "Dear #Name#,",
-      "I wanted to personally welcome you to the LUCI family. You chose us to bring your property’s A/V operation into one interface, and we’re glad to be part of your team.",
-      "The engineers you work with aren’t a handoff team. They’re the people who will learn your operation, build the system with you, and stay involved throughout the relationship.",
-      "We’ve never lost a client. I believe that comes down to something simple: we stay."
+      "I wanted to welcome you to the LUCI family. You chose LUCI to bring your property’s A/V operation into one interface, and we’re glad to join your team.",
+      "The engineers you work with aren’t a handoff team. They learn your operation, build the system with you, and stay involved throughout the relationship.",
+      "We’ve never lost a client. I believe the reason is simple: we stay."
     ],
-    "process_lead_in": "For a simple overview, here’s how a LUCI project generally takes shape:",
+    "process_lead_in": "Here’s how a LUCI project generally takes shape:",
     "steps": [
       {
         "name": "Planning",
-        "descriptor": "Align project scope, technical requirements, and responsibilities."
+        "descriptor": "Align on scope, technical requirements, and responsibilities."
       },
       {
         "name": "System design",
@@ -166,12 +166,12 @@
         "descriptor": "Connect A/V endpoints and validate system operation."
       },
       {
-        "name": "Handoff",
-        "descriptor": "Train your team and continue with ongoing support."
+        "name": "Go live",
+        "descriptor": "Put the controls in your team’s hands and keep the same engineers involved."
       }
     ],
     "closing": [
-      "If anything comes up, reply to me. I’m always happy to help.",
+      "If anything comes up, just reply. No formalities required.",
       "Welcome aboard."
     ],
     "signoff": "Michael Epstein\nCEO",
@@ -184,7 +184,7 @@
       "note": "Sign-up form: https://app.smartsheet.com/b/form/3c05a169bfa14ae4ab834018381bc3a1. Portal: https://lucisystems.atlassian.net/servicedesk/customer/portals. This block is optional because Emails 5 and 8 already offer portal access, while Email 2 refers to “the LUCI support site.”"
     }
   },
-  "word_count": 105,
+  "word_count": 89,
   "subject_lines": [
     {
       "mood": "Warm",
@@ -192,16 +192,16 @@
     },
     {
       "mood": "Personal",
-      "text": "A quick welcome from Mike"
+      "text": "A note from Mike"
     },
     {
-      "mood": "Partnership",
-      "text": "We’re glad to be on your team"
+      "mood": "Curious",
+      "text": "Meet the team that sticks around"
     }
   ],
-  "preheader": "A personal welcome from Mike, plus a simple look at how LUCI projects take shape.",
+  "preheader": "A quick look at the people and process behind every LUCI project.",
   "property_merge_decision": "Use “your property” and “your team” in the final. %PROPERTY% adds merge risk without making this short personal note warmer.",
-  "guardrail_audit": "Pass. The final is warm, personal, active, and cold-reader clear; it contains one light benefit line, no checklist, no schedule or recipient-stage cue, and a neutral five-part process. It uses A/V correctly, mentions only a single LUCI appliance in the process, does not describe LUCI as a layer or claim broad technology replacement, and makes ongoing team support explicit. It includes no release language, named partner or customer, pricing, duration, or stacked exclamation. The retention claim is tied directly to the warm “we stay” idea. The optional portal block stands alone and makes no call or stage reference.",
+  "guardrail_audit": "Pass. R2 changes: renamed the final step “Go live,” rewrote its descriptor to keep the same engineers present, shortened and warmed the header subline, tightened the final to 89 words, added one dry human touch in the close, and separated the three subject-line moods with a curious option. The five final descriptors are plain, neutral, and parallel, with no recipient-stage or timeline cue. The final uses A/V correctly, keeps “LUCI appliance” singular, includes one light benefit line and no checklist, does not describe LUCI as a layer or claim broad technology replacement, and makes ongoing team support explicit. It includes no release language, named partner or customer, pricing, duration, or exclamation mark. The optional portal block stands alone and makes no call or stage reference. The scripted banned-term check returned no hits in the final, subjects, or preheader.",
   "open_questions": [
     "Greeting merge tag: the requested copy uses “Dear #Name#,” but the ActiveCampaign template currently uses %FIRSTNAME%. Jane needs to confirm the production merge tag.",
     "Property merge field: the final intentionally uses “your property.” Jane can choose %PROPERTY% if she prefers personalization despite the merge-field risk.",

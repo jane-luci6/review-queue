@@ -154,44 +154,48 @@ It is the warmest and most credible welcome because it makes “family” mean s
 
 ## Final
 
+### R2 changes
+
+Renamed the final step **Go live** and made the same-engineer continuity explicit; shortened and warmed the header subline; tightened the final; added one dry human touch in the close; and separated the subject-line moods with a curious option.
+
 ### Header
 
 **Headline**
 Welcome to the LUCI family.
 
 **Subline**
-A note from Mike about the team behind your LUCI project.
+A personal hello from Mike.
 
 ### Body
 
 Dear #Name#,
 
-I wanted to personally welcome you to the LUCI family. You chose us to bring your property’s A/V operation into one interface, and we’re glad to be part of your team.
+I wanted to welcome you to the LUCI family. You chose LUCI to bring your property’s A/V operation into one interface, and we’re glad to join your team.
 
-The engineers you work with aren’t a handoff team. They’re the people who will learn your operation, build the system with you, and stay involved throughout the relationship.
+The engineers you work with aren’t a handoff team. They learn your operation, build the system with you, and stay involved throughout the relationship.
 
-We’ve never lost a client. I believe that comes down to something simple: we stay.
+We’ve never lost a client. I believe the reason is simple: we stay.
 
 ### Process walk-through
 
-For a simple overview, here’s how a LUCI project generally takes shape:
+Here’s how a LUCI project generally takes shape:
 
-1. **Planning** — Align project scope, technical requirements, and responsibilities.
+1. **Planning** — Align on scope, technical requirements, and responsibilities.
 2. **System design** — Confirm network architecture and equipment requirements.
 3. **Preparation** — Configure the LUCI appliance and coordinate site logistics.
 4. **Onsite integration** — Connect A/V endpoints and validate system operation.
-5. **Handoff** — Train your team and continue with ongoing support.
+5. **Go live** — Put the controls in your team’s hands and keep the same engineers involved.
 
 ### Closing
 
-If anything comes up, reply to me. I’m always happy to help.
+If anything comes up, just reply. No formalities required.
 
 Welcome aboard.
 
 Michael Epstein<br>
 CEO
 
-**Body word count:** 105 words. Count includes greeting, body, process lead-in, closing, and sign-off; it excludes step names/descriptors and the optional portal block.
+**Body word count:** 89 words. Count includes greeting, body, process lead-in, closing, and sign-off; it excludes step names/descriptors and the optional portal block.
 
 ### Optional portal block
 
@@ -210,17 +214,17 @@ Placement is optional because Emails 5 and 8 already offer portal access, while 
 ## Inbox copy
 
 1. **Warm:** Welcome to the LUCI family
-2. **Personal:** A quick welcome from Mike
-3. **Partnership:** We’re glad to be on your team
+2. **Personal:** A note from Mike
+3. **Curious:** Meet the team that sticks around
 
 **Preheader**
-A personal welcome from Mike, plus a simple look at how LUCI projects take shape.
+A quick look at the people and process behind every LUCI project.
 
 Character counts:
 - Subject 1: 26
-- Subject 2: 25
-- Subject 3: 29
-- Preheader: 81
+- Subject 2: 16
+- Subject 3: 32
+- Preheader: 65
 
 ---
 
@@ -231,9 +235,10 @@ Character counts:
 - **Hardware:** Pass. The process mentions one `LUCI appliance`; no other LUCI hardware label appears.
 - **Claims:** Pass with Jane confirmation noted below. No broad technology-replacement claim, release language, named partner or customer, pricing, or unsupported performance outcome.
 - **Support:** Pass. The same team stays involved throughout the relationship, and the process ends with ongoing support.
-- **Tone:** Pass. Warm and light without cuteness, hype, or stacked exclamation.
+- **Tone:** Pass. Warm and light without cuteness, hype, or exclamation marks. “No formalities required” is the one dry human touch.
 - **Stage neutrality:** Pass. The final does not locate the reader within the process, promise a schedule, or make the optional portal block dependent on another event.
-- **Mechanical check:** Valid JSON; exactly three directions, five steps per direction, five final steps, and three subject lines. All subject lines are 55 characters or fewer; the preheader is 90 characters or fewer. The required prohibited-term scan returned no hits in the final, subjects, or preheader.
+- **R2:** Pass. The final step is now “Go live,” its descriptor keeps the same engineers involved, all five descriptors are plain and parallel, the header subline is shorter and warmer, and the three subject lines carry warm, personal, and curious moods.
+- **Mechanical check:** Valid JSON; exactly three directions, five steps per direction, five final steps, and three subject lines. The final count is exactly 89 words. All subject lines are 55 characters or fewer; the preheader is 90 characters or fewer. The required prohibited-term scan returned no hits in the final, subjects, or preheader.
 
 ## Tensions and Jane-only decisions
 
