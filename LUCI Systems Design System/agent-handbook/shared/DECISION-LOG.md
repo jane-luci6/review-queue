@@ -10,6 +10,8 @@
 
 ## 2026-10-26
 
+- **AI-humor review page revised: chart carries a header and the flat line sits below the x-axis; three post copy options added below the chart.** Chart header is "More prompting. Same funniness." with y-axis "AI's ability to make me laugh" and x-axis "Time wasted telling my bots hilarious jokes"; the straight flat line is in negative territory beneath the axis. Page keeps chart + Download PNG on top, adds "Post copy options" (three verbatim options with insight lines and an amber "Check with Jane" note on Option 1 only — names Anthropic), plus collapsed "Header and axis alternates" and "What we cut" sections. Wording is GLM-drafted (GPT was rate-limited) and Jane-approved. PNG re-exported at 2400x1254. Jane.
+
 - **Jane's personal LinkedIn AI-humor post is built from the chart, not the three post options.** The review page is reduced to the chart only (two axis labels + one straight flat line, marker-sketch look) plus a Download PNG; she explains everything in the post copy. Jane.
 
 ## 2026-10-12
