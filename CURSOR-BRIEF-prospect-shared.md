@@ -1,0 +1,53 @@
+# Shared brief: New LUCI PROSPECT email campaign (warm + net-new + Prospect Pulse)
+
+You are the senior B2B email copywriter for LUCI Systems (A/V orchestration for casinos, resorts, venues, enterprise). This shared brief applies to EVERY prospect chunk brief. Read it fully, then the chunk brief you were pointed to.
+
+Work only inside `LUCI Systems Design System/ui_kits/internal-portal/email-copy/` (scaffolds live in `WARM/`, `NEW/`, `PULSE/`; format reference = the already-written customer emails in `CUST/CUST-WEBINAR-0N-*.md` and `CUST/CUST-WEBINAR-chunk1.json`, plus `_INDEX.md`). Do not edit anything in `CUST/` and do not edit any file outside `email-copy/`. Also read `LUCI Systems Design System/agent-handbook/canon/messaging-voice.md` and `channel-playbooks.md`.
+
+## Whole-campaign picture (keep it in mind for every email)
+Source of truth is the plan at `ui_kits/internal-portal/new-luci-email-comms.json` (read it). Four audiences: existing customers (already drafted, not your job), warm prospects, net-new prospects, and Prospect Pulse.
+- WARM, selected pre-launch preview (5 emails): only high-intent past-demo / serious-request people get a private preview webinar (around late November, after beta). It is a PRIVATE PREVIEW, not a sales demo. Mark (Sales) sends the personal follow-ups.
+- WARM, launch re-engagement (4): the broader warm list is reopened once New LUCI is ready for them. Private-preview recipients get a shorter follow-up instead.
+- WARM, after a response (2): acknowledgement then personal outreach from Mark.
+- NET-NEW, acquisition (4): problem first, then proof, then a visual walkthrough, then an invitation to book a demo. Mark or Mike own every hand-raiser.
+- NET-NEW, after a demo request (2), unbooked recovery (2), post-demo recovery (2): recovery emails go out only after Mark/Mike explicitly hand the prospect back to Marketing.
+- PROSPECT PULSE (6, every 4-6 weeks): shared six-month nurture for warm and net-new prospects who finished their cycle without entering sales. Each email opens on a recognizable property problem, connects it to a LUCI benefit, and proves it with a workflow, capability, or operating result.
+- Shared rules: a reply, booked meeting, or active opportunity stops marketing automation; anyone in an active Mark/Mike conversation is suppressed from automated nurture; opens/ordinary clicks never trigger a sales handoff; one cycle per person per stage. Record these in each email's `automation_notes`.
+Plan tension to handle (do not "fix" the plan, just obey the guardrails): some plan lines say "launch day", "recent New LUCI release", or "state when New LUCI becomes available". Our locked rule overrides: NO release or availability date, and beta framing only. Write those emails so they work without a date ("New LUCI is in beta", "a new version of LUCI is on its way"). Never write "launch", "launched", "now available", "is here", "release", "released", or "go live" in customer-facing copy. Put each such conflict honestly into `guardrail_notes` and `open_questions`.
+
+## Product facts you may use (from the LUCI Upgrade Guide, the only product asset to link)
+Theme: "Putting the power of programming in your hands." A new version of LUCI is on its way (in beta). More day-to-day programming control in your hands, on a faster, more responsive foundation. Guide line to echo in spirit: "do more on your own without being left on your own": direct control over rooms, views, data and access while the LUCI team stays alongside to monitor, diagnose and support.
+01 Greater control of the room: Venue panels (tablets show only approved controls for that space), Staging (prepare screens, sources, audio behind the scenes, apply on cue), Audio group control.
+02 Flexible control of your view: Customizable interface (property photography, marks, colors), Live map flexibility (load/replace floor plans, live device state on the same map), Live screen view (confirm what any TV or LED wall is playing without walking the floor), Calendar Gantt view.
+03 Informed control of operations: Audit trails (who/what/when), Live monitoring, Reporting & analytics, Sign-in & session control (roles, ending sessions).
+Plus in-product support: raise a request with context and logs; when something goes down the LUCI team is alerted. LUCI also has an embedded team that stays with the property.
+Platform worldview (canon): complexity is solved by subtraction, a shorter list of systems, vendors, interfaces, workarounds. LUCI orchestrates, integrates, consolidates. Lead with the prospect's problem; LUCI is the means, not the subject. LUCI works with and absorbs the existing A/V; hardware choice is preserved; uniform hardware is not required.
+Prospects may not know LUCI at all. Define LUCI in one plain line when first named in an email (for example: "LUCI runs a property's A/V from one interface"). Warm prospects have seen LUCI before, but never assume they use it.
+
+## LOCKED guardrails (violating any = fail)
+- Theme "Putting the power of programming in your hands" (or a close natural version) is the campaign through-line; use it where it fits, not stamped on all.
+- More control in the reader's hands, with LUCI's partnership still behind them. NEVER imply reduced support.
+- NO release or availability date anywhere. Webinar timing placeholders are OK. Beta framing only; never "launched".
+- Asset links: all upgrade/product-detail links go to the LUCI Upgrade Guide, NEVER the Upgrade Overview. There is no confirmed public URL yet (planned path /luci-upgrade-guide, noindex, not live). Use the placeholder `[LUCI UPGRADE GUIDE URL]` and always label the link "LUCI Upgrade Guide". Use it where a written product view genuinely helps the reader; do not force it into logistics, personal notes, or transactional emails.
+- Other placeholders to use exactly: `[WEBINAR DATE]`, `[WEBINAR TIME]`, `[WEBINAR PLATFORM]`, `[REGISTRATION LINK]`, `[AGENDA LINK]`, `[CALENDAR LINK]`, `[JOIN LINK]`, `[RECORDING LINK]`, `[FEATURE HIGHLIGHT REEL URL]`, `[FULL RECORDING URL]`, `[BOOKING URL]`, `[PROOF URL]`, `[APPROVED PROOF POINT]` (a single approved, project-true count such as systems or racks consolidated; never invent a number, never a percentage), `[MARK EMAIL]`, `[NAME]`, `[TITLE]`, `[EMAIL]`, `[PHONE]`.
+- Hardware is a single "LUCI appliance" (only if needed). NEVER mention a support box.
+- LUCI works with and absorbs other tech. NEVER say it replaces anything. The words "replace", "replaces", "replacement", "replacing" must not appear anywhere in customer copy, including when describing a competitor-style refresh; say "refresh cycle" or "starting over" instead. NEVER call LUCI a "layer". Do not name partners, vendors, or products (no Q-SYS etc.).
+- NEVER "property-by-property". Do not lead with "operational precision" (the phrase must not appear).
+- Do not name customers or deals. No pricing, no deal status, no costs, no percentage claims. Proof only as `[APPROVED PROOF POINT]` placeholders or generic project-true framing ("counts of what LUCI runs").
+- "We've never lost a client": Mike wants it prominent. Use it where it fits NATURALLY (best in trust, proof, relationship, or invitation moments, and as reassurance when an email is about change). Do NOT force it into every email: aim for roughly one in four to one in three across your chunk, say per email where/why you used or skipped it, and never use it in transactional or logistics emails. Exact wording: "we've never lost a client".
+- Voice: light-hearted but sharp; human, not corporate hype. Active voice. Cold-reader context (the reader may have skipped every earlier email). Spell it "A/V". No exclamation stacks, no em-dash chains, no "revolutionize/transform/empower/game-changing/best-in-class".
+- Body copy (greeting through CTA, signature excluded) max 150 words; count precisely. Personal Mark/Mike emails should be much shorter and read like a person wrote them.
+- Greeting is `Dear #Name#,` and the signature is the placeholder block `[NAME] / [TITLE] / LUCI Systems / [EMAIL] · [PHONE]` as in the customer scaffolds (for personal emails note the sender, e.g. Mark, in `sender`).
+
+## Process (genuinely, per email; take it seriously)
+1. Strategy: what we are writing and why; for whom (which prospect, what they know, what they fear); the best way to reach them (sender, length, structure, timing); how to make an impact while staying professional; the PRIMARY MESSAGE in one sentence. Keep the whole campaign in mind: each email has ONE job and must not repeat its neighbours.
+2. Three DISTINCT draft directions (different angle or structure, not word swaps), each a full short draft (about 60-120 words).
+3. Pick the final and explain why it won (and what it borrowed).
+4. Final copy (150 words max, report exact count), one preheader (90 characters max, complementing rather than repeating the subject), three subject lines of clearly DIFFERENT moods (label each truthfully, for example warm / curious / direct / playful / practical; each 55 characters max; do not start all three the same way).
+5. Self-audit against every guardrail; list any tension honestly in `guardrail_notes`.
+
+## Output files (per your chunk brief)
+For each email, overwrite its scaffold `.md` (keep the header metadata, set Status to `draft v1 for Jane review`, then write: Strategy, Three directions, Why the final won, Final copy with word count, Preheader, Subject lines, Automation notes, Guardrail audit; keep a short "Placeholders to fill" list). Also write the JSON file named in the chunk brief, valid JSON, exactly this shape:
+{"track":"...","track_strategy":"...","open_questions":["..."],"emails":[{"id":"WARM-PREVIEW-01","cycle":"...","title":"...","timing":"...","sender":"...","audience":"...","primary_message":"...","strategy":{"what_why":"...","for_whom":"...","reach":"...","impact":"..."},"directions":[{"name":"...","summary":"...","draft":"..."}],"winner":"name","why_won":"...","subject_lines":[{"mood":"...","text":"..."}],"preheader":"...","body":["Dear #Name#,","..."],"cta_label":"...","word_count":0,"assets_used":["..."],"automation_notes":"...","guardrail_notes":"..."}]}
+`body` is an array of paragraphs including the greeting and CTA line(s), no signature. `word_count` = whitespace-split word count of the body array. `directions` has exactly 3 items. Plain text only, no markdown inside strings.
+Finally, run a quick scripted check (in your own shell if allowed, otherwise by careful reading) that no banned word appears: layer, replace, replaces, replacement, replacing, launch, launched, release, "now available", property-by-property, "operational precision", Overview, "support box", and that every word_count is correct and <= 150.
