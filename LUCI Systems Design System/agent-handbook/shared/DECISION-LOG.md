@@ -8,6 +8,10 @@
 
 ---
 
+## 2026-10-26
+
+- **Jane's personal LinkedIn AI-humor post is built from the chart, not the three post options.** The review page is reduced to the chart only (two axis labels + one straight flat line, marker-sketch look) plus a Download PNG; she explains everything in the post copy. Jane.
+
 ## 2026-10-12
 
 - **LUCI copy names the specific system, place, and action instead of relying on vague shorthand.** Avoid dead-end phrases such as “what’s already there”; readers should not have to infer what LUCI supports, integrates, or expands. Jane.
