@@ -3712,7 +3712,7 @@
     function renderStatus() {
       $('stat-review').textContent = String(allReviewItems().length);
       $('stat-comments').textContent = String(portal.comments.length);
-      $('stat-soon').textContent = String(15); // In Progress card count (curated list)
+      $('stat-soon').textContent = String(16); // In Progress card count (curated list)
       updateReviewUnreadBadges();
     }
 
@@ -4135,8 +4135,15 @@
         },
         {
           title: 'Jane personal LinkedIn · 3 funny options',
-          note: 'Draft for Jane, Oct 26, 2026. Three personal-profile post drafts with locked caption copy, angle, and visual idea (text only). Nothing posted — Jane picks one; Svetlana does final assets.',
+          note: 'SUPERSEDED Oct 26, 2026 by the round 2 set below. Three personal-profile post drafts with locked caption copy, angle, and visual idea (text only). Nothing posted.',
           href: 'http://10.10.1.17:8081/content-marketing/jane-personal-funny-post-options-review.html',
+          external: true,
+          pill: 'Social'
+        },
+        {
+          title: 'Jane personal LinkedIn · funny round 2',
+          note: 'Draft for Jane, Oct 26, 2026. Five personal-profile post drafts (observational and silly, no lessons) with locked caption copy, angle, visual idea, and screenshot test (text only). Nothing posted — Jane picks one; Svetlana does final assets.',
+          href: 'http://10.10.1.17:8081/content-marketing/jane-funny-r2-post-options-review.html',
           external: true,
           pill: 'Social'
         },
