@@ -3712,7 +3712,7 @@
     function renderStatus() {
       $('stat-review').textContent = String(allReviewItems().length);
       $('stat-comments').textContent = String(portal.comments.length);
-      $('stat-soon').textContent = String(16); // In Progress card count (curated list)
+      $('stat-soon').textContent = String(17); // In Progress card count (curated list)
       updateReviewUnreadBadges();
     }
 
@@ -4142,8 +4142,15 @@
         },
         {
           title: 'Jane personal LinkedIn · funny round 2',
-          note: 'Draft for Jane, Oct 26, 2026. Five personal-profile post drafts (observational and silly, no lessons) with locked caption copy, angle, visual idea, and screenshot test (text only). Nothing posted — Jane picks one; Svetlana does final assets.',
+          note: 'SUPERSEDED Oct 26, 2026 by the round 3 set below. Five personal-profile post drafts (observational and silly, no lessons) with locked caption copy, angle, visual idea, and screenshot test (text only). Nothing posted.',
           href: 'http://10.10.1.17:8081/content-marketing/jane-funny-r2-post-options-review.html',
+          external: true,
+          pill: 'Social'
+        },
+        {
+          title: 'Jane personal LinkedIn · round 3 (insight first)',
+          note: 'Draft for Jane, Oct 26, 2026. Four personal-profile post drafts built insight-first: a GPT pass extracted and ranked real observations, a second GPT pass made the top five funny and cut what didn&rsquo;t land. Locked caption copy, insight line, and visual idea (text only). Nothing posted &mdash; Jane picks one; Svetlana does final assets.',
+          href: 'http://10.10.1.17:8081/content-marketing/jane-funny-r3-post-options-review.html',
           external: true,
           pill: 'Social'
         },

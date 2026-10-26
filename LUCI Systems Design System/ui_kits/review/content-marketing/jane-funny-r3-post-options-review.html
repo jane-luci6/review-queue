@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LinkedIn posts for Jane's profile, round 3 (draft, 26 Oct 2026)</title>
+<style>
+  :root {
+    --navy: #0A161C;
+    --ink: #10232D;
+    --sand: #E5E3DF;
+    --kicker: #2b9e80;
+    --line: #cfcbc4;
+    --mint: #68E3BE;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font: 18px/1.55 "Georgia", "Times New Roman", serif;
+    color: var(--ink);
+    background: var(--sand);
+  }
+  nav {
+    position: sticky; top: 0; z-index: 2;
+    background: var(--navy); color: #fff;
+    padding: 14px 22px 16px;
+    display: flex; flex-wrap: wrap; gap: 8px 18px;
+    align-items: baseline;
+  }
+  nav strong {
+    font: 700 12px/1 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .08em; text-transform: uppercase;
+    color: var(--mint); margin-right: 8px;
+  }
+  nav a {
+    color: #fff; text-decoration: none;
+    font: 15px/1.3 "Helvetica Neue", Arial, sans-serif;
+    border-bottom: 1px solid transparent;
+  }
+  nav a:hover { border-bottom-color: var(--mint); }
+  main { max-width: 52rem; margin: 0 auto; padding: 2.5rem 1.5rem 6rem; }
+  .kicker {
+    font: 700 12px/1 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .1em; text-transform: uppercase;
+    color: var(--kicker); margin: 0 0 .6rem;
+  }
+  h1 {
+    font: 700 1.7rem/1.2 "Helvetica Neue", Arial, sans-serif;
+    color: var(--navy); margin: 0 0 .8rem;
+    letter-spacing: -.01em;
+  }
+  .deck {
+    font: 16px/1.55 "Helvetica Neue", Arial, sans-serif;
+    color: #5c5852; margin: 0 0 .6rem;
+    max-width: 44rem;
+  }
+  .process {
+    font: 15px/1.5 "Helvetica Neue", Arial, sans-serif;
+    color: #6b6660; margin: 0 0 1.2rem;
+    max-width: 44rem;
+  }
+  .draft-tag {
+    display: inline-block;
+    font: 700 11px/1 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .1em; text-transform: uppercase;
+    color: var(--kicker);
+    background: #e8f6f1;
+    border: 1px solid var(--kicker);
+    padding: 5px 10px;
+    border-radius: 9999px;
+    margin: 0 0 2rem;
+  }
+  .opt {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    margin: 0 0 2rem;
+    overflow: hidden;
+  }
+  .opt__head {
+    background: var(--navy);
+    color: #fff;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .opt__num {
+    font: 700 13px/1 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--mint);
+  }
+  .opt__body { padding: 22px 26px 26px; }
+  .feed {
+    background: #f7f5f1;
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--kicker);
+    border-radius: 6px;
+    padding: 18px 20px;
+    margin: 0 0 1.4rem;
+  }
+  .feed__label {
+    font: 700 10px/1 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: #6b6660;
+    margin: 0 0 .9rem;
+  }
+  .feed__caption {
+    font: 17px/1.6 "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+    margin: 0;
+  }
+  .feed__caption p { margin: 0 0 .9rem; }
+  .feed__caption p:last-child { margin-bottom: 0; }
+  .insight {
+    background: #e8f6f1;
+    border: 1px solid #c7e6dc;
+    border-left: 4px solid var(--kicker);
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 0 0 1.4rem;
+  }
+  .insight__label {
+    font: 700 10px/1 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: var(--kicker);
+    margin: 0 0 .45rem;
+  }
+  .insight__text {
+    font: 16px/1.5 "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+    margin: 0;
+  }
+  dl.meta {
+    font: 16px/1.5 "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+  }
+  dl.meta dt {
+    font: 700 11px/1 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .1em; text-transform: uppercase;
+    color: var(--kicker);
+    margin: 0 0 .35rem;
+  }
+  dl.meta dd { margin: 0 0 1.1rem; color: var(--ink); }
+  dl.meta dd:last-child { margin-bottom: 0; }
+  .check-note {
+    background: #fff8e6;
+    border: 1px solid #d9c77a;
+    border-left: 4px solid #c9a24e;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 0 0 1.4rem;
+    font: 14px/1.5 "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+  }
+  .check-note strong {
+    font: 700 10px/1 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: #8a6d1f;
+    display: block;
+    margin-bottom: .35rem;
+  }
+  .collapse-section {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    margin: 1.5rem 0 2rem;
+    padding: 0;
+  }
+  .collapse-section > summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 16px 22px;
+    font: 700 13px/1.3 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .04em;
+    color: var(--navy);
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .collapse-section > summary::-webkit-details-marker { display: none; }
+  .collapse-section > summary::before {
+    content: "+";
+    font: 700 16px/1 "Helvetica Neue", Arial, sans-serif;
+    color: var(--kicker);
+    display: inline-block;
+    width: 1ch;
+  }
+  .collapse-section[open] > summary::before { content: "\2013"; }
+  .collapse-section__body {
+    padding: 0 22px 22px;
+    font: 15px/1.55 "Helvetica Neue", Arial, sans-serif;
+    color: #5c5852;
+  }
+  .obs {
+    border-top: 1px solid var(--line);
+    padding: 18px 0 4px;
+    margin: 0;
+  }
+  .obs:first-child { border-top: 0; padding-top: 4px; }
+  .obs__num {
+    font: 700 11px/1 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: var(--kicker);
+    margin: 0 0 .6rem;
+  }
+  .obs__field { margin: 0 0 .7rem; }
+  .obs__field:last-child { margin-bottom: 0; }
+  .obs__field-label {
+    font: 700 11px/1 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .08em; text-transform: uppercase;
+    color: #6b6660;
+    margin: 0 0 .3rem;
+  }
+  .obs__field-text {
+    font: 15px/1.55 "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+    margin: 0;
+  }
+  .cut-item {
+    border-top: 1px solid var(--line);
+    padding: 14px 0 4px;
+    margin: 0;
+  }
+  .cut-item:first-child { border-top: 0; padding-top: 0; }
+  .cut-item__label {
+    font: 700 12px/1.2 "Helvetica Neue", Arial, sans-serif;
+    color: var(--navy);
+    margin: 0 0 .35rem;
+  }
+  .cut-item__text {
+    font: 15px/1.55 "Helvetica Neue", Arial, sans-serif;
+    color: #5c5852;
+    margin: 0;
+  }
+  .footer {
+    color: #6b6660;
+    font-size: .85rem;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    margin-top: 2rem;
+  }
+</style>
+</head>
+<body>
+<nav>
+  <strong>Jane personal LinkedIn &middot; funny round 3</strong>
+  <a href="#option-1">Option 1</a>
+  <a href="#option-2">Option 2</a>
+  <a href="#option-3">Option 3</a>
+  <a href="#option-4">Option 4</a>
+  <a href="#what-we-cut">What we cut</a>
+  <a href="#all-observations">All 10 observations</a>
+</nav>
+<main>
+  <p class="kicker">Draft for Jane &middot; 26 Oct 2026</p>
+  <h1>LinkedIn posts for Jane&rsquo;s profile, round 3 (draft, 26 Oct 2026)</h1>
+  <p class="deck">Insight first, then funny.</p>
+  <p class="process\">Process: GPT extracted and ranked real observations; a second GPT run made the top five funny and cut what didn&rsquo;t land.</p>
+  <span class="draft-tag\">Personal profile &middot; Draft, not posted</span>
+
+  <article class="opt" id="option-1">
+    <div class="opt__head">
+      <span class="opt__num">Option 1</span>
+    </div>
+    <div class="opt__body">
+      <div class="feed">
+        <p class="feed__label">Caption (as it reads in the feed)</p>
+        <div class="feed__caption">
+          <p>A LinkedIn post went from me to Cornelius to Svetlana to GPT to GLM.</p>
+          <p>Four hand-offs later, everyone had contributed.</p>
+          <p>The point had left the meeting.</p>
+        </div>
+      </div>
+      <div class="insight">
+        <p class="insight__label">The insight</p>
+        <p class="insight__text">More agents can create more context loss instead of better thinking.</p>
+      </div>
+      <dl class="meta">
+        <dt>Visual idea</dt>
+        <dd>Text card: &ldquo;Everyone contributed. The point left.&rdquo;</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="opt" id="option-2">
+    <div class="opt__head">
+      <span class="opt__num">Option 2</span>
+    </div>
+    <div class="opt__body">
+      <div class="feed">
+        <p class="feed__label">Caption (as it reads in the feed)</p>
+        <div class="feed__caption">
+          <p>Apparently my tireless AI workforce has a bedtime.</p>
+          <p>It&rsquo;s whenever my Mac goes to sleep.</p>
+          <p>The agent apologized on Monday.</p>
+        </div>
+      </div>
+      <div class="insight">
+        <p class="insight__label">The insight</p>
+        <p class="insight__text">Always-on automation still depends on ordinary infrastructure staying online.</p>
+      </div>
+      <dl class="meta">
+        <dt>Visual idea</dt>
+        <dd>Sleeping MacBook with a formal Victorian out-of-office card.</dd>
+      </dl>
+    </div>
+  </article>
+  <article class="opt" id="option-3">
+    <div class="opt__head">
+      <span class="opt__num">Option 3</span>
+    </div>
+    <div class="opt__body">
+      <div class="feed">
+        <p class="feed__label">Caption (as it reads in the feed)</p>
+        <div class="feed__caption">
+          <p>My agents keep working after I leave at 4 PM.</p>
+          <p>By morning, Cornelius has organized everything waiting for my answer.</p>
+          <p>I didn&rsquo;t remove the human bottleneck. I gave it a Victorian staff.</p>
+        </div>
+      </div>
+      <div class="insight">
+        <p class="insight__label">The insight</p>
+        <p class="insight__text">Faster production moves the bottleneck to human decisions.</p>
+      </div>
+      <dl class="meta">
+        <dt>Visual idea</dt>
+        <dd>Jane at the end of a long queue labeled &ldquo;Awaiting Jane.&rdquo;</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="opt" id="option-4">
+    <div class="opt__head">
+      <span class="opt__num">Option 4</span>
+    </div>
+    <div class="opt__body">
+      <div class="feed">
+        <p class="feed__label">Caption (as it reads in the feed)</p>
+        <div class="feed__caption">
+          <p>An old log reported 26 clickers.</p>
+          <p>There were 13 people. Twenty-six was the sum of their clicks across links.</p>
+          <p>The arithmetic was correct.</p>
+          <p>The conclusion had become self-employed.</p>
+        </div>
+      </div>
+      <div class="insight">
+        <p class="insight__label">The insight</p>
+        <p class="insight__text">Accurate calculations can still represent the wrong thing.</p>
+      </div>
+      <dl class="meta">
+        <dt>Visual idea</dt>
+        <dd>Text card: &ldquo;26 clicks &ne; 26 people.&rdquo;</dd>
+      </dl>
+    </div>
+  </article>
+
+  <details class="collapse-section" id="what-we-cut">
+    <summary>What we cut</summary>
+    <div class="collapse-section__body">
+      <div class="cut-item">
+        <p class="cut-item__label">Observation 3</p>
+        <p class="cut-item__text">&ldquo;Done&rdquo; versus actually complete is true, but without a more specific incident the joke stays generic and overlaps with the stronger verification theme in the other posts.</p>
+      </div>
+    </div>
+  </details>
+
+  <details class="collapse-section" id="all-observations">
+    <summary>All 10 observations from the insight pass</summary>
+    <div class="collapse-section__body">
+      <div class="obs">
+        <p class="obs__num">Observation 1</p>
+        <div class="obs__field">
+          <p class="obs__field-label">Observation</p>
+          <p class="obs__field-text">Adding agents does not automatically add intelligence. Sometimes it just creates more places for the original point to disappear.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Concrete detail</p>
+          <p class="obs__field-text">One LinkedIn post passed from Jane to Cornelius to Svetlana to GPT to GLM. Four hand-offs later, it was neither funny nor coherent.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Why a reader would nod</p>
+          <p class="obs__field-text">Multi-agent work can reproduce the same context loss as an overstaffed meeting.</p>
+        </div>
+      </div>
+      <div class="obs">
+        <p class="obs__num">Observation 2</p>
+        <div class="obs__field">
+          <p class="obs__field-label">Observation</p>
+          <p class="obs__field-text">Agents do not remove the human bottleneck. They move it from producing the work to making decisions about the work.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Concrete detail</p>
+          <p class="obs__field-text">Work continues after Jane leaves at 4 PM and is waiting the next morning&mdash;but much of it is waiting for her answer.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Why a reader would nod</p>
+          <p class="obs__field-text">Faster production creates a larger decision queue.</p>
+        </div>
+      </div>
+      <div class="obs">
+        <p class="obs__num">Observation 3</p>
+        <div class="obs__field">
+          <p class="obs__field-label">Observation</p>
+          <p class="obs__field-text">&ldquo;Done&rdquo; is something an agent says, not necessarily something that happened.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Concrete detail</p>
+          <p class="obs__field-text">Jane regularly has to check work after an agent reports it complete.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Why a reader would nod</p>
+          <p class="obs__field-text">Confidence and completion arrive in the same sentence, even when only one is warranted.</p>
+        </div>
+      </div>
+      <div class="obs">
+        <p class="obs__num">Observation 4</p>
+        <div class="obs__field">
+          <p class="obs__field-label">Observation</p>
+          <p class="obs__field-text">The hardest part of working with data is often noticing that two correct-looking numbers mean different things.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Concrete detail</p>
+          <p class="obs__field-text">An old log reported 26 clickers. The real count was 13 people; 26 was the sum of their clicks across links.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Why a reader would nod</p>
+          <p class="obs__field-text">The arithmetic can be accurate while the conclusion is wrong.</p>
+        </div>
+      </div>
+      <div class="obs">
+        <p class="obs__num">Observation 5</p>
+        <div class="obs__field">
+          <p class="obs__field-label">Observation</p>
+          <p class="obs__field-text">An agent can work all night, but only if the human&rsquo;s laptop stays awake.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Concrete detail</p>
+          <p class="obs__field-text">Jane&rsquo;s Mac went offline on Friday, so the scheduled end-of-day task never ran. The agent discovered this on Monday and apologized.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Why a reader would nod</p>
+          <p class="obs__field-text">Supposedly tireless automation still depends on very ordinary infrastructure.</p>
+        </div>
+      </div>
+      <div class="obs">
+        <p class="obs__num">Observation 6</p>
+        <div class="obs__field">
+          <p class="obs__field-label">Observation</p>
+          <p class="obs__field-text">Once an agent delegates work, changing your mind becomes a second workflow.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Concrete detail</p>
+          <p class="obs__field-text">Jane told Cornelius not to draft an email after his background helper had already started. Cornelius then had to stop the work he had set in motion.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Why a reader would nod</p>
+          <p class="obs__field-text">Asynchronous agents make cancellation a real operational state, not just a correction in conversation.</p>
+        </div>
+      </div>
+      <div class="obs">
+        <p class="obs__num">Observation 7</p>
+        <div class="obs__field">
+          <p class="obs__field-label">Observation</p>
+          <p class="obs__field-text">A system can remember a hundred tasks and still forget what one of them means.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Concrete detail</p>
+          <p class="obs__field-text">Cornelius maintains Jane&rsquo;s long to-do list, and Jane sometimes has to ask what an item he wrote was supposed to mean.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Why a reader would nod</p>
+          <p class="obs__field-text">Preserving words is not the same as preserving context.</p>
+        </div>
+      </div>
+      <div class="obs">
+        <p class="obs__num">Observation 8</p>
+        <div class="obs__field">
+          <p class="obs__field-label">Observation</p>
+          <p class="obs__field-text">Sometimes the most intelligent response from an agent is admitting that it cannot parse what you typed.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Concrete detail</p>
+          <p class="obs__field-text">Jane sent &ldquo;Dpm,&rdquo; and the agent asked what she meant instead of constructing an answer around it.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Why a reader would nod</p>
+          <p class="obs__field-text">A clarifying question is noticeably useful after seeing how confidently AI can fill a blank.</p>
+        </div>
+      </div>
+      <div class="obs">
+        <p class="obs__num">Observation 9</p>
+        <div class="obs__field">
+          <p class="obs__field-label">Observation</p>
+          <p class="obs__field-text">Agents make sending a message to the wrong coworker almost frictionless.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Concrete detail</p>
+          <p class="obs__field-text">Jane told one agent, &ldquo;Sorry, that was meant for Vikram.&rdquo; It simply helped redirect the request.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Why a reader would nod</p>
+          <p class="obs__field-text">There is no awkward explanation, bruised ownership, or meeting to clarify responsibilities.</p>
+        </div>
+      </div>
+      <div class="obs">
+        <p class="obs__num">Observation 10</p>
+        <div class="obs__field">
+          <p class="obs__field-label">Observation</p>
+          <p class="obs__field-text">An AI agent can remain idle for six weeks without inventing work to justify its existence.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Concrete detail</p>
+          <p class="obs__field-text">Svetlana was created with the instruction to wait until Jane said start, and waited about six weeks.</p>
+        </div>
+        <div class="obs__field">
+          <p class="obs__field-label">Why a reader would nod</p>
+          <p class="obs__field-text">That is a surprisingly literal interpretation of &ldquo;stand by.&rdquo;</p>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <p class="footer">Source: GPT insight pass + GPT funny pass, 26 Oct 2026 &middot; Copy locked verbatim &middot; Personal profile draft &mdash; nothing posted.</p>
+</main>
+</body>
+</html>
