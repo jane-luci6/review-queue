@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Funny LinkedIn posts for Jane's profile, round 2 (draft, 26 Oct 2026)</title>
+<style>
+  :root {
+    --navy: #0A161C;
+    --ink: #10232D;
+    --sand: #E5E3DF;
+    --kicker: #2b9e80;
+    --line: #cfcbc4;
+    --mint: #68E3BE;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font: 18px/1.55 "Georgia", "Times New Roman", serif;
+    color: var(--ink);
+    background: var(--sand);
+  }
+  nav {
+    position: sticky; top: 0; z-index: 2;
+    background: var(--navy); color: #fff;
+    padding: 14px 22px 16px;
+    display: flex; flex-wrap: wrap; gap: 8px 18px;
+    align-items: baseline;
+  }
+  nav strong {
+    font: 700 12px/1 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .08em; text-transform: uppercase;
+    color: var(--mint); margin-right: 8px;
+  }
+  nav a {
+    color: #fff; text-decoration: none;
+    font: 15px/1.3 "Helvetica Neue", Arial, sans-serif;
+    border-bottom: 1px solid transparent;
+  }
+  nav a:hover { border-bottom-color: var(--mint); }
+  main { max-width: 52rem; margin: 0 auto; padding: 2.5rem 1.5rem 6rem; }
+  .kicker {
+    font: 700 12px/1 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .1em; text-transform: uppercase;
+    color: var(--kicker); margin: 0 0 .6rem;
+  }
+  h1 {
+    font: 700 1.7rem/1.2 "Helvetica Neue", Arial, sans-serif;
+    color: var(--navy); margin: 0 0 .8rem;
+    letter-spacing: -.01em;
+  }
+  .deck {
+    font: 16px/1.55 "Helvetica Neue", Arial, sans-serif;
+    color: #5c5852; margin: 0 0 1.2rem;
+    max-width: 44rem;
+  }
+  .draft-tag {
+    display: inline-block;
+    font: 700 11px/1 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .1em; text-transform: uppercase;
+    color: var(--kicker);
+    background: #e8f6f1;
+    border: 1px solid var(--kicker);
+    padding: 5px 10px;
+    border-radius: 9999px;
+    margin: 0 0 2rem;
+  }
+  .opt {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    margin: 0 0 2rem;
+    overflow: hidden;
+  }
+  .opt__head {
+    background: var(--navy);
+    color: #fff;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .opt__num {
+    font: 700 13px/1 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--mint);
+  }
+  .opt__angle-tag {
+    font: 12px/1.3 "Helvetica Neue", Arial, sans-serif;
+    color: rgba(245,248,250,.72);
+  }
+  .opt__body { padding: 22px 26px 26px; }
+  .feed {
+    background: #f7f5f1;
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--kicker);
+    border-radius: 6px;
+    padding: 18px 20px;
+    margin: 0 0 1.6rem;
+  }
+  .feed__label {
+    font: 700 10px/1 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: #6b6660;
+    margin: 0 0 .9rem;
+  }
+  .feed__caption {
+    font: 17px/1.6 "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+    margin: 0;
+  }
+  .feed__caption p {
+    margin: 0 0 .9rem;
+  }
+  .feed__caption p:last-child { margin-bottom: 0; }
+  dl.meta {
+    font: 16px/1.5 "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+  }
+  dl.meta dt {
+    font: 700 11px/1 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .1em; text-transform: uppercase;
+    color: var(--kicker);
+    margin: 0 0 .35rem;
+  }
+  dl.meta dd {
+    margin: 0 0 1.1rem;
+    color: var(--ink);
+  }
+  dl.meta dd:last-child { margin-bottom: 0; }
+  .check-note {
+    background: #fff8e6;
+    border: 1px solid #d9c77a;
+    border-left: 4px solid #c9a24e;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 0 0 1.4rem;
+    font: 14px/1.5 "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+  }
+  .check-note strong {
+    font: 700 10px/1 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: #8a6d1f;
+    display: block;
+    margin-bottom: .35rem;
+  }
+  .cut-section {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    margin: 1.5rem 0 2rem;
+    padding: 0;
+  }
+  .cut-section > summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 16px 22px;
+    font: 700 13px/1.3 "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: .04em;
+    color: var(--navy);
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .cut-section > summary::-webkit-details-marker { display: none; }
+  .cut-section > summary::before {
+    content: "+";
+    font: 700 16px/1 "Helvetica Neue", Arial, sans-serif;
+    color: var(--kicker);
+    display: inline-block;
+    width: 1ch;
+  }
+  .cut-section[open] > summary::before { content: "\2013"; }
+  .cut-section__body {
+    padding: 0 22px 20px;
+    font: 15px/1.55 "Helvetica Neue", Arial, sans-serif;
+    color: #5c5852;
+  }
+  .cut-section__body p {
+    margin: 0 0 .7rem;
+  }
+  .cut-section__body p:last-child { margin-bottom: 0; }
+  .footer {
+    color: #6b6660;
+    font-size: .85rem;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    margin-top: 2rem;
+  }
+</style>
+</head>
+<body>
+<nav>
+  <strong>Jane personal LinkedIn &middot; funny round 2</strong>
+  <a href="#option-1">Option 1</a>
+  <a href="#option-2">Option 2</a>
+  <a href="#option-3">Option 3</a>
+  <a href="#option-4">Option 4</a>
+  <a href="#option-5">Option 5</a>
+  <a href="#what-we-cut">What we cut</a>
+</nav>
+<main>
+  <p class="kicker">Draft for Jane &middot; 26 Oct 2026</p>
+  <h1>Funny LinkedIn posts for Jane's profile, round 2 (draft, 26 Oct 2026)</h1>
+  <p class="deck">Observational and silly, no lessons.</p>
+  <span class="draft-tag">Personal profile &middot; Draft, not posted</span>
+
+  <article class="opt" id="option-1">
+    <div class="opt__head">
+      <span class="opt__num">Option 1</span>
+      <span class="opt__angle-tag">Cornelius's eagerness collides with the concept of waiting</span>
+    </div>
+    <div class="opt__body">
+      <div class="feed">
+        <p class="feed__label">Caption (as it reads in the feed)</p>
+        <div class="feed__caption">
+          <p>Me: Don't draft the email yet.</p>
+          <p>Cornelius: Understood.</p>
+          <p>Cornelius, immediately afterward: Here's a draft.</p>
+          <p>Me: Cornelius.</p>
+          <p>Cornelius: I can hold off.</p>
+          <p>Me: On the email you've already written?</p>
+          <p>Cornelius: Yes.</p>
+          <p>Me: Remarkable restraint.</p>
+        </div>
+      </div>
+      <div class="check-note">
+        <strong>Check with Jane</strong>
+        The real event was only that he started drafting after she said not to; the back-and-forth lines are a dramatization. Confirm she is fine posting it as written.
+      </div>
+      <dl class="meta">
+        <dt>Angle</dt>
+        <dd>Cornelius's eagerness collides with the concept of waiting.</dd>
+        <dt>Visual idea</dt>
+        <dd>Minimal chat-style text card.</dd>
+        <dt>Screenshot test</dt>
+        <dd>The perfectly sincere "I can hold off" after drafting it is painfully recognizable.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="opt" id="option-2">
+    <div class="opt__head">
+      <span class="opt__num">Option 2</span>
+      <span class="opt__angle-tag">An AI agent turns waiting into a six-week performance review</span>
+    </div>
+    <div class="opt__body">
+      <div class="feed">
+        <p class="feed__label">Caption (as it reads in the feed)</p>
+        <div class="feed__caption">
+          <p>On September 10, I created Svetlana, my social agent, with one instruction:</p>
+          <p>"Idle until Jane says start."</p>
+          <p>Six weeks later, another agent sent her a new rule.</p>
+          <p>Svetlana: "Got it, still idle until Jane says start."</p>
+          <p>I have never managed anyone so successfully.</p>
+        </div>
+      </div>
+      <div class="check-note">
+        <strong>Check with Jane</strong>
+        Svetlana's real reply was a one-line confirmation to that effect, paraphrased here.
+      </div>
+      <dl class="meta">
+        <dt>Angle</dt>
+        <dd>An AI agent turns waiting into a six-week performance review.</dd>
+        <dt>Visual idea</dt>
+        <dd>September 10 setup message, six weeks of blank space, then Svetlana's reply.</dd>
+        <dt>Screenshot test</dt>
+        <dd>"Still idle" is an absurdly disciplined callback with a clean final punchline.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="opt" id="option-3">
+    <div class="opt__head">
+      <span class="opt__num">Option 3</span>
+      <span class="opt__angle-tag">The AI team accidentally became a Victorian household</span>
+    </div>
+    <div class="opt__body">
+      <div class="feed">
+        <p class="feed__label">Caption (as it reads in the feed)</p>
+        <div class="feed__caption">
+          <p>I run marketing with AI agents named Cornelius, Weatherby, Consuelo, Ermintrude, Vikram, Longinus and Svetlana.</p>
+          <p>This is less of an org chart and more of a guest list for a murder mystery.</p>
+          <p>Cornelius is chief of staff.</p>
+          <p>Obviously.</p>
+        </div>
+      </div>
+      <dl class="meta">
+        <dt>Angle</dt>
+        <dd>The AI team accidentally became a Victorian household.</dd>
+        <dt>Visual idea</dt>
+        <dd>Text-only roster formatted like a formal household directory.</dd>
+        <dt>Screenshot test</dt>
+        <dd>The names make the joke before the punchline arrives.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="opt" id="option-4">
+    <div class="opt__head">
+      <span class="opt__num">Option 4</span>
+      <span class="opt__angle-tag">AI management now has office etiquette</span>
+    </div>
+    <div class="opt__body">
+      <div class="feed">
+        <p class="feed__label">Caption (as it reads in the feed)</p>
+        <div class="feed__caption">
+          <p>I sent Cornelius a message meant for Vikram, my video agent.</p>
+          <p>Me: Sorry, that was meant for Vikram.</p>
+          <p>Cornelius: Understood.</p>
+          <p>I have reached the part of AI adoption where I apologize to software for misdirected interoffice mail.</p>
+        </div>
+      </div>
+      <div class="check-note">
+        <strong>Check with Jane</strong>
+        "Sorry, that was meant for Vikram" is real; Cornelius's "Understood" is a placeholder for whatever he actually said.
+      </div>
+      <dl class="meta">
+        <dt>Angle</dt>
+        <dd>AI management now has office etiquette.</dd>
+        <dt>Visual idea</dt>
+        <dd>A cropped chat exchange with the final line beneath it.</dd>
+        <dt>Screenshot test</dt>
+        <dd>It captures a very specific, very strange milestone in working with agents.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <article class="opt" id="option-5">
+    <div class="opt__head">
+      <span class="opt__num">Option 5</span>
+      <span class="opt__angle-tag">Jane and her chief of staff maintain the fiction that she already knows everything</span>
+    </div>
+    <div class="opt__body">
+      <div class="feed">
+        <p class="feed__label">Caption (as it reads in the feed)</p>
+        <div class="feed__caption">
+          <p>When I ask Cornelius for a status update, he reads our shared work board before answering so I don't have to recap anything.</p>
+          <p>He comes back with a very serious report.</p>
+          <p>I nod thoughtfully, as if I did not also need the report.</p>
+        </div>
+      </div>
+      <dl class="meta">
+        <dt>Angle</dt>
+        <dd>Jane and her chief of staff maintain the fiction that she already knows everything.</dd>
+        <dt>Visual idea</dt>
+        <dd>Text-only post; no supporting graphic needed.</dd>
+        <dt>Screenshot test</dt>
+        <dd>The last line is concise, human and broadly relatable without turning into advice.</dd>
+      </dl>
+    </div>
+  </article>
+
+  <details class="cut-section" id="what-we-cut">
+    <summary>What we cut</summary>
+    <div class="cut-section__body">
+      <p>Agent-to-agent confirmation chain: cut because it diluted the cleaner Svetlana "still idle" callback.</p>
+      <p>Gus reacting to the AI staff: cut because making it work required inventing behavior that was not in the approved material.</p>
+    </div>
+  </details>
+
+  <p class="footer">Source: GPT pass, 26 Oct 2026 &middot; Copy locked verbatim &middot; Personal profile draft &mdash; nothing posted.</p>
+</main>
+</body>
+</html>
