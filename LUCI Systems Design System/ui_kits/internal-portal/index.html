@@ -3712,7 +3712,7 @@
     function renderStatus() {
       $('stat-review').textContent = String(allReviewItems().length);
       $('stat-comments').textContent = String(portal.comments.length);
-      $('stat-soon').textContent = String(12); // In Progress card count (curated list)
+      $('stat-soon').textContent = String(15); // In Progress card count (curated list)
       updateReviewUnreadBadges();
     }
 
@@ -4103,6 +4103,13 @@
           note: 'In progress. Email communications &amp; outlines for the upgrade tracks (webinar → readiness → launch → post).',
           href: '#new-luci-launch/strategy/email-comms',
           external: false,
+          pill: 'Email'
+        },
+        {
+          title: 'Customer journey · Email 1 Welcome revision',
+          note: 'Draft for Jane, Oct 26, 2026. Warmer welcome from Mike with no kick-off call and a neutral project walk-through. Three copy directions, subject lines, and a redesigned preview. Nothing sent.',
+          href: 'http://10.10.1.17:8081/content-marketing/email-1a-welcome-revision-review.html',
+          external: true,
           pill: 'Email'
         },
         {
