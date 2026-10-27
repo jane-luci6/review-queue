@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-26",
+  "updated": "2026-10-27",
   "publishNote": "Build (npm run build:review) outputs to ui_kits/review. Bump reviewVersion + versionNote for new uploads (version history shown in portal). Set dueForReview for first-time review. Comments/approvals sync server-side via the comments_api container (proxied at /api/comments); Jane sees Mike/Mark's feedback on refresh. Archive with scripts/pull-review-comments.mjs.",
   "previewBaseUrl": "",
   "commentsApiUrl": "http://10.10.1.17:8081/api/comments",
@@ -8,17 +8,17 @@
     {
       "title": "Messaging guide",
       "url": "messaging/messaging-guide.html",
-      "note": "Updated Oct 26, 2026"
+      "note": "Updated Oct 27, 2026"
     },
     {
       "title": "LUCI philosophy",
       "url": "messaging/philosophy.html",
-      "note": "Updated Oct 26, 2026"
+      "note": "Updated Oct 27, 2026"
     },
     {
       "title": "Personas",
       "url": "messaging/personas.html",
-      "note": "Updated Oct 26, 2026"
+      "note": "Updated Oct 27, 2026"
     }
   ],
   "inProgress": [],
@@ -748,7 +748,7 @@
     }
   ],
   "finalized": [],
-  "messagingDocsUpdated": "2026-10-26",
+  "messagingDocsUpdated": "2026-10-27",
   "parkedFromReviewQueue": [
     {
       "id": "signal-issue-05-choices",
@@ -876,20 +876,25 @@
     {
       "id": "email-1a-welcome-revision-review",
       "title": "Customer journey · Email 1 Welcome revision",
-      "summary": "Customer journey Email 1 “Welcome to the LUCI family”: warmer welcome with no kick-off call, a neutral project walk-through, three copy directions and a redesigned preview.",
+      "summary": "Customer journey Email 1 “Welcome to the LUCI family”: Jane’s Oct 27 copy laid out in the existing shell with her Installation Journey graphic; earlier GPT directions kept as history.",
       "hubPreviewPath": "ui_kits/content-marketing/email-1a-welcome-revision-review.html",
       "previewUrl": "content-marketing/email-1a-welcome-revision-review.html",
-      "reviewVersion": 1,
-      "versionNote": "Draft for Jane (Oct 26, 2026). ActiveCampaign read only; nothing sent.",
+      "reviewVersion": 2,
+      "versionNote": "Jane’s copy (Oct 27, 2026) laid out. ActiveCampaign read only; nothing sent.",
       "reviewBrief": {
-        "description": "Customer journey Email 1 “Welcome to the LUCI family”: warmer welcome with no kick-off call, a neutral project walk-through, three copy directions and a redesigned preview.",
-        "reviewAsk": "Jane picks the copy direction, subject line, and whether the portal block stays."
+        "description": "Customer journey Email 1 “Welcome to the LUCI family”: Jane’s Oct 27 copy laid out in the existing shell with her Installation Journey graphic; earlier GPT directions kept as history.",
+        "reviewAsk": "Jane picks the subject line and confirms the %PROPERTY% field and the kept header/sign-off."
       },
       "versionHistory": [
         {
           "version": 1,
           "published": "2026-10-26",
           "note": "In Progress card; review page under content-marketing on .17."
+        },
+        {
+          "version": 2,
+          "published": "2026-10-27",
+          "note": "Jane’s copy and graphic laid out in the Email 1 shell (email-1a-welcome-v3-jane.html)."
         }
       ]
     }
