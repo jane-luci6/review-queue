@@ -7,6 +7,31 @@ alwaysApply: true
 
 Items blocked on something (VPN, user action, etc.) that we'll revisit when the blocker clears. When an item is done, delete it from this list and commit the removal.
 
+## PARKED — Services page orbit nav: pick a direction  (blocked on Jane reviewing in the morning)
+
+Redesigning the `/platform/services` "The Services that Make Up LUCI Systems" section. Jane wants the orbit to read as a **reference** (not the primary nav) with the six services presented below as **cards or tabs** — click one to read that benefit. Five preview variants are live on `.37` for comparison; Jane will look again in the morning and pick.
+
+**Live preview URLs** (hard-refresh Cmd+Shift+R):
+- A — Numbered & tightened: `http://10.10.1.37/previews/services-orbit-a/`  (rejected direction, kept for reference)
+- B — Spoke connection: `http://10.10.1.37/previews/services-orbit-b/`  (closest of the first round; Jane's "ideal" brief came from this)
+- D — Sticky orbit index: `http://10.10.1.37/previews/services-orbit-d/`
+- **E — Tabs** (current frontrunners): `http://10.10.1.37/previews/services-orbit-e/`  — orbit reference + 01–06 tab strip + single detail panel
+- **F — Cards** (current frontrunners): `http://10.10.1.37/previews/services-orbit-f/`  — orbit reference + 3×2 summary-card grid + detail panel
+
+**Status:** Jane said "B is the closest" of A/B/D, then asked to redesign as cards/tabs with the orbit as reference → built E and F. She's undecided between E and F (and may still want iteration) and will revisit in the morning.
+
+**When Jane picks:**
+1. Merge the winner into the live Services page: replace `ServicesCapabilityIndex`'s orbit+stack with the chosen tab/card pattern (orbit reference + selector + `ServicesDetail` panel). The shared `ServicesSections` (numbered flat list) and `ServicesDetail` (single-service panel) components already exist.
+2. Delete the losing preview pages (`src/pages/previews/services-orbit-*.astro`) — keep only the winner if useful as a reference, otherwise remove all five.
+3. Commit + `./deploy.sh` → verify `.37`, hard-refresh note.
+
+**Files in play** (all in `luci-website`, committed on `persona-hero-subhead-gold`):
+- `src/components/ServicesSections.astro` — shared 6-section list (numbered option)
+- `src/components/ServicesDetail.astro` — shared single-service detail panel (used by E/F)
+- `src/components/ServicesOrbitNav.astro` — orbit nav (variant/size/hint props; used by A/B/D)
+- `src/components/ServicesCapabilityIndex.astro` — live page composition (currently orbit + ServicesSections, numbered=false)
+- `src/pages/previews/services-orbit-{a,b,d,e,f}.astro` — the five variants
+
 ## PARKED — Disable old portal on .37:8080  (blocked on VPN)
 
 The old Internal Marketing Portal is still live at `http://10.10.1.37:8080` (`/var/www/luci-hub`, built Jul 7), superseded by the current portal at `http://10.10.1.17:8081`. It's harmless but stale — disabling it is cleanup, not urgency.
