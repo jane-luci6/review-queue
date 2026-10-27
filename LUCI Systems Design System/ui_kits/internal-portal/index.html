@@ -562,6 +562,10 @@
     .row h3 { font-size: 18px; }
     .row p { margin: 6px 0 0; line-height: 1.5; color: var(--muted); font-size: 14px; }
 
+    .ip-sub { list-style: none; margin: 12px 0 0; padding: 0 0 0 16px; border-left: 2px solid var(--rule); display: grid; gap: 8px; }
+    .ip-sub li { display: grid; gap: 2px; }
+    .ip-sub a { font-weight: 600; color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+    .ip-sub span { font-size: 13px; opacity: .75; }
     /* ---------- Downloads folder tree ---------- */
     .folders { display: grid; gap: 16px; }
 
@@ -3712,7 +3716,7 @@
     function renderStatus() {
       $('stat-review').textContent = String(allReviewItems().length);
       $('stat-comments').textContent = String(portal.comments.length);
-      $('stat-soon').textContent = String(15); // In Progress card count (curated list)
+      $('stat-soon').textContent = String(9); // In Progress card count (curated list)
       updateReviewUnreadBadges();
     }
 
@@ -4103,7 +4107,11 @@
           note: 'In progress. Email communications &amp; outlines for the upgrade tracks (webinar → readiness → launch → post).',
           href: '#new-luci-launch/strategy/email-comms',
           external: false,
-          pill: 'Email'
+          pill: 'Email',
+          children: [
+            { title: 'New LUCI · Prospect emails (warm, net-new, nurture)', note: 'Draft v1, Oct 23, 2026. 27 emails. Nothing sent.', href: 'http://10.10.1.17:8081/content-marketing/new-luci-prospect-emails-review.html' },
+            { title: 'New LUCI · Customer webinar emails (Chunk 1)', note: 'Draft, Oct 13, 2026. Four pre-launch webinar emails. Nothing sent.', href: 'http://10.10.1.17:8081/content-marketing/new-luci-cust-webinar-chunk1-review.html' }
+          ]
         },
         {
           title: 'Prospecting with New LUCI',
@@ -4113,57 +4121,11 @@
           pill: 'Email'
         },
         {
-          title: 'Customer journey · Email 1 Welcome revision',
-          note: 'Updated Oct 27, 2026: Jane\'s copy laid out in the Email 1 shell with her Installation Journey graphic. Subject lines, preheader, and the Oct 26 GPT directions kept as history. Nothing sent.',
-          href: 'http://10.10.1.17:8081/content-marketing/email-1a-welcome-revision-review.html',
-          external: true,
-          pill: 'Email'
-        },
-        {
-          title: 'Jane personal LinkedIn · AI humor chart',
-          note: 'Draft for Jane, Oct 26, 2026. One chart with PNG and three post copy options for her personal-profile post. Nothing posted.',
-          href: 'http://10.10.1.17:8081/content-marketing/jane-ai-humor-post-options-review.html',
-          external: true,
-          pill: 'Social'
-        },
-        {
-          title: 'New LUCI · Prospect emails (warm, net-new, nurture)',
-          note: 'Draft v1 for Jane, Oct 23, 2026. 27 emails with strategy, three directions, final copy, preheader and subject lines. Nothing sent.',
-          href: 'http://10.10.1.17:8081/content-marketing/new-luci-prospect-emails-review.html',
-          external: true,
-          pill: 'Email'
-        },
-        {
-          title: 'New LUCI · Customer webinar emails (Chunk 1)',
-          note: 'Draft for Jane, Oct 13, 2026. Four pre-launch webinar emails for existing customers. Nothing sent.',
-          href: 'http://10.10.1.17:8081/content-marketing/new-luci-cust-webinar-chunk1-review.html',
-          external: true,
-          pill: 'Email'
-        },
-        {
           title: 'Upgrade Guide',
           note: 'Also on Review Queue (inProgress). Customer-facing walkthrough on .37.',
           href: 'http://10.10.1.37/luci-upgrade-guide/',
           external: true,
           pill: 'Guide'
-        },
-        {
-          title: 'The Signal · Issue 05 (October 2026)',
-          note: 'Shell + locks on .17. Open picks: Theme, Quick Tip, Advice, Happenings, What’s coming, Minute with Mike. Send ~Oct 15.',
-          href: 'http://10.10.1.17:8081/newsletter/the-signal-issue-05-october-2026.html',
-          external: true,
-          secondaryHref: 'http://10.10.1.17:8081/newsletter/the-signal-issue-05-choices.html',
-          secondaryLabel: 'Choices',
-          pill: 'Newsletter'
-        },
-        {
-          title: 'Osage Ponca City web case study',
-          note: 'In progress. Full web case study on .37 (Ballroom, Swallows, Swigs).',
-          href: 'http://10.10.1.37/resources/case-studies/osage-ponca-swigs/',
-          external: true,
-          secondaryHref: 'http://10.10.1.37/previews/osage-swigs-web-cs-draft-options.html',
-          secondaryLabel: 'Draft review',
-          pill: 'Case study'
         },
         {
           title: 'Wave 1 · Revert preset',
@@ -4208,6 +4170,7 @@
             <h3>${item.title}</h3>
             <p>${item.note || ''}</p>
             ${meta}
+            ${(item.children || []).length ? `<ul class="ip-sub">${item.children.map((c) => `<li><a href="${c.href}" target="_blank" rel="noopener">${c.title}</a>${c.note ? `<span>${c.note}</span>` : ''}</li>`).join('')}</ul>` : ''}
           </div>
           ${actions}
         </article>`;

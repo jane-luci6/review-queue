@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-11",
+  "updated": "2026-10-27",
   "note": "Two-level folder tree for the portal Downloads tab: folders -> groups -> items. Items link to review-queue.json via queueId (title, summary, dates, preview and live URLs come from the queue). Items without a queueId carry their own label/path. Legacy top-level `groups` is still read by the portal for backward compatibility.",
   "folders": [
     {
@@ -44,6 +44,11 @@
               "id": "case-study-aliante",
               "label": "Aliante Casino + Hotel + Spa",
               "queueId": "case-study-aliante"
+            },
+            {
+              "id": "case-study-osage-ponca-swigs",
+              "label": "Osage Casino Hotel — Ponca City",
+              "queueId": "case-study-osage-ponca-swigs"
             }
           ]
         },
@@ -76,6 +81,11 @@
               "id": "signal-issue-04",
               "label": "The Signal · Issue 04 (September 2026)",
               "queueId": "signal-issue-04"
+            },
+            {
+              "id": "signal-issue-05",
+              "label": "The Signal · Issue 05 (October 2026)",
+              "queueId": "signal-issue-05"
             },
             {
               "id": "newsletter-email-teaser",
