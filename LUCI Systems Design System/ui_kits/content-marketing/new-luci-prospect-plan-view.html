@@ -1,89 +1,128 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>New LUCI prospect email plan: one-page view</title><style>:root{--navy:#0A161C;--ink:#10232D;--sand:#E5E3DF;--kicker:#2b9e80;--mint:#68E3BE;--line:#cfcbc4;--muted:#535559;--card:#fff;--hl:#FFE45C}
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>New LUCI prospect email plan: simple view</title>
+<style>
+:root{--navy:#0A161C;--ink:#10232D;--sand:#E5E3DF;--kicker:#2b9e80;--mint:#68E3BE;--line:#cfcbc4;--muted:#535559;--card:#fff}
 *{box-sizing:border-box}
-body{margin:0;background:var(--sand);color:var(--ink);font:13px/1.4 "Helvetica Neue",Arial,sans-serif}
-nav{background:var(--navy);color:#fff;padding:10px 22px;display:flex;gap:18px;align-items:baseline;flex-wrap:wrap}
+body{margin:0;background:var(--sand);color:var(--ink);font:14px/1.4 "Helvetica Neue",Arial,sans-serif}
+nav{background:var(--navy);color:#fff;padding:10px 24px;display:flex;gap:18px;align-items:baseline;flex-wrap:wrap}
 nav strong{font:700 12px/1 "Helvetica Neue",Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--mint)}
 nav span{font-size:13px;color:#c9d2d6}
-main{max-width:1500px;margin:0 auto;padding:16px 22px 24px}
-header{display:grid;grid-template-columns:1.35fr 1fr;gap:18px;align-items:start;margin-bottom:12px}
+main{max-width:1400px;margin:0 auto;padding:18px 24px 18px}
 .kicker{font:700 11px/1 "Helvetica Neue",Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--kicker);margin:0 0 6px}
-h1{font:400 26px/1.15 Georgia,"Times New Roman",serif;margin:0 0 6px}
-.lede{font:15px/1.45 Georgia,serif;margin:0;color:var(--ink);max-width:48rem}
-.acbox{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--ink);border-radius:6px;padding:9px 12px;font-size:12px}
-.acbox ul{margin:5px 0 0;padding-left:16px}.acbox li{margin:2px 0}
-.open{background:var(--hl);padding:0 3px;border-radius:2px}
-.flow{display:grid;grid-template-columns:1.05fr 1.2fr .85fr .85fr 1.15fr;gap:0;position:relative}
-.stage{background:var(--card);border:1px solid var(--line);padding:10px 12px 10px 14px;position:relative;margin-right:14px;border-radius:6px}
-.stage:not(:last-child)::after{content:"";position:absolute;right:-14px;top:22px;border:7px solid transparent;border-left:10px solid var(--kicker)}
-.sh{display:flex;align-items:center;gap:8px;margin-bottom:8px}
-.sh b{font:700 14px/1.2 "Helvetica Neue",Arial,sans-serif}
-.num{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--ink);color:var(--mint);font:700 11px/1 Arial,sans-serif;flex:none}
-.s5 .num{background:var(--kicker);color:#fff}
-.steps{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px}
-.step{display:flex;flex-direction:column;gap:3px;background:#F2F5F6;border:1px solid #dfe4e6;border-radius:5px;padding:4px 5px 5px;position:relative}
-.sn{font:700 9px/1 Arial;color:var(--kicker);letter-spacing:.06em}
-.id{display:inline-block;font:600 9.5px/1.2 "SF Mono",Menlo,Consolas,monospace;background:var(--ink);color:#fff;border-radius:3px;padding:2px 4px;white-space:nowrap}
-.stage dl{display:grid;grid-template-columns:58px 1fr;gap:2px 6px;margin:0;font-size:11.5px}
-.stage dt{color:var(--kicker);font-weight:700;text-transform:uppercase;font-size:9.5px;letter-spacing:.06em;padding-top:2px}
-.stage dd{margin:0}
-.rules{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center;margin:10px 0;background:var(--ink);color:#fff;border-radius:6px;padding:7px 12px;font-size:12px}
-.rules b{color:var(--mint);text-transform:uppercase;font-size:10.5px;letter-spacing:.08em;margin-right:4px}
-.rules span{background:rgba(255,255,255,.08);border:1px solid rgba(104,227,190,.35);border-radius:12px;padding:2px 9px}
-.grid{display:grid;grid-template-columns:1.05fr 1.2fr .85fr .85fr 1.15fr;gap:14px}
-.col{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:8px 10px}
-.col h3{display:flex;gap:7px;align-items:center;font:700 12px/1.2 "Helvetica Neue",Arial;margin:0 0 6px;text-transform:uppercase;letter-spacing:.05em}
-.col ul{list-style:none;margin:0;padding:0}
-.col li{padding:5px 0;border-top:1px solid #eceae6;display:flex;flex-direction:column;gap:2px}
-.col li:first-child{border-top:0}
-.col .m{font-size:12px;line-height:1.35}
-.col .sj{font:italic 11px/1.3 Georgia,serif;color:var(--muted)}
-.bottom{display:grid;grid-template-columns:2.1fr 1fr;gap:14px;margin-top:12px}
-h2{font:700 12px/1.2 "Helvetica Neue",Arial;text-transform:uppercase;letter-spacing:.08em;margin:0 0 4px;color:var(--ink)}
-.note{margin:0 0 6px;color:var(--muted);font-size:11.5px}
-.channels,.opend{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:9px 12px}
-.chs{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
-.ch{border:1px solid #e3e0da;border-radius:5px;padding:6px 7px;background:#FBFAF8}
-.ch:first-child{border-color:var(--kicker);background:#EEF9F5}
-.ch.out{opacity:.55}
-.ch b{display:block;font-size:12px}
-.ch .st{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--kicker);margin:2px 0}
-.ch .st.open{color:var(--ink)}
-.ch p{margin:2px 0 3px;font-size:11px;line-height:1.3}
-.ch small{display:block;font-size:9px;color:#8a8d91}
-.opend{border-left:4px solid #E5B800}
-.opend ul{margin:0;padding-left:15px;font-size:11.5px}.opend li{margin:3px 0}
-.hl{background:#FFF3A6}
-.foot{font-size:10px;color:var(--muted);margin:10px 0 0}
-@media screen and (max-width:1100px){header,.bottom{grid-template-columns:1fr}.flow,.grid{grid-template-columns:1fr 1fr}.chs{grid-template-columns:repeat(2,1fr)}.stage::after{display:none}}
+h1{font:400 28px/1.15 Georgia,"Times New Roman",serif;margin:0 0 14px}
+section{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 18px;margin-bottom:14px}
+h2{display:flex;align-items:center;gap:9px;font:700 13px/1 "Helvetica Neue",Arial;letter-spacing:.08em;text-transform:uppercase;margin:0 0 14px}
+.n{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--ink);color:var(--mint);font:700 12px/1 Arial}
+/* timeline */
+.tl{position:relative;display:flex;align-items:stretch;gap:0;padding:6px 0 0}
+.tl::before{content:"";position:absolute;left:0;right:0;top:50%;height:3px;background:linear-gradient(90deg,#cfe9e0,var(--kicker),#cfe9e0);z-index:0}
+.beat{position:relative;z-index:1;flex:1;margin:0 7px;background:#F2F5F6;border:1px solid #d7dee1;border-radius:8px;padding:12px 10px;text-align:center;display:flex;flex-direction:column;justify-content:center;min-height:78px}
+.beat b{font:700 15px/1.2 "Helvetica Neue",Arial}
+.beat small{display:block;margin-top:5px;color:var(--muted);font-size:11.5px}
+.beat.mid{flex:0 0 150px;background:var(--ink);border-color:var(--ink);color:#fff}
+.beat.mid b{color:var(--mint);font-size:16px}
+.beat.mid small{color:#c9d2d6}
+.beat.after{background:#EEF9F5;border-color:#bfe6d8}
+.tlabels{display:flex;justify-content:space-between;margin:8px 7px 0;font:700 10.5px/1 Arial;letter-spacing:.08em;text-transform:uppercase;color:var(--kicker)}
+.rule{margin:12px 0 0;font-size:12.5px;color:var(--muted)}
+.rule b{color:var(--ink)}
+/* outreach */
+.out{display:grid;grid-template-columns:1.15fr auto 1.25fr auto 1.1fr;align-items:center;gap:14px}
+.box{border-radius:8px;padding:14px 16px}
+.lead{background:var(--ink);color:#fff}
+.lead p.kicker{color:var(--mint);font:700 11px/1 "Helvetica Neue",Arial,sans-serif;margin:0 0 8px}
+.lead p{margin:0 0 6px;font:17px/1.35 Georgia,serif}
+.lead p:last-child{margin:0}
+.arrow{font:700 26px/1 Arial;color:var(--kicker)}
+.proof{background:#F2F5F6;border:1px solid #d7dee1}
+.proof ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.proof li{display:flex;gap:8px;align-items:baseline;font-size:13.5px}
+.proof li::before{content:"✓";color:var(--kicker);font-weight:700}
+.li{background:#EEF9F5;border:2px solid var(--kicker);text-align:center}
+.li .big{font:700 30px/1 "Helvetica Neue",Arial;color:var(--ink);letter-spacing:-.01em}
+.li .tag{display:inline-block;margin-top:6px;font:700 10.5px/1 Arial;letter-spacing:.1em;text-transform:uppercase;background:var(--kicker);color:#fff;border-radius:10px;padding:4px 9px}
+.li p{margin:8px 0 0;font-size:12.5px;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;align-items:center}
+.chips .lbl{font:700 10.5px/1 Arial;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-right:4px}
+.chip{border:1px solid var(--line);background:#FBFAF8;border-radius:14px;padding:4px 10px;font-size:12.5px;white-space:nowrap}
+.chip i{font-style:normal;font:700 9.5px/1 Arial;letter-spacing:.06em;text-transform:uppercase;color:var(--kicker);margin-left:6px}
+.chip.tbd i{color:#9a7b00}
+/* nurture + open */
+.row{display:grid;grid-template-columns:1.6fr 1fr;gap:14px}
+.row section{margin-bottom:0}
+.pulse{display:flex;align-items:center;gap:16px}
+.pulse .badge{flex:none;background:var(--kicker);color:#fff;border-radius:8px;padding:10px 14px;text-align:center}
+.pulse .badge b{display:block;font:700 22px/1 "Helvetica Neue",Arial}
+.pulse .badge span{font-size:11px}
+.pulse p{margin:0;font:16px/1.4 Georgia,serif}
+.pulse small{display:block;margin-top:4px;color:var(--muted);font:12px/1.3 "Helvetica Neue",Arial}
+.open{font-size:12.5px}
+.open h2{margin-bottom:8px}
+.open ul{margin:0;padding-left:16px}.open li{margin:3px 0}
+.hl{background:#FFF3A6;padding:0 3px;border-radius:2px}
+.foot{font-size:10.5px;color:var(--muted);margin:10px 0 0}
+@media screen and (max-width:1000px){.out,.row{grid-template-columns:1fr}.arrow{transform:rotate(90deg);justify-self:center}.tl{flex-wrap:wrap;gap:8px}.tl::before{display:none}.beat.mid{flex:1 1 100%}}
 @page{size:landscape;margin:7mm}
-@media print{.chs{grid-template-columns:repeat(7,1fr)}body{-webkit-print-color-adjust:exact;print-color-adjust:exact;background:#fff}main{max-width:none;padding:6px 0}.stage::after{display:block}}
-.flow,.grid{grid-template-columns:1fr 1.6fr .95fr .95fr 1.5fr}
-.col.c2 ul,.col.c5 ul{display:grid;grid-template-columns:1fr 1fr;column-gap:12px}
-.col.c2 li:nth-child(2),.col.c5 li:nth-child(2){border-top:0}
-@media print{html{zoom:.52}}
+@media print{html{zoom:.62}body{background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}main{max-width:none;padding:6px 0}}
 </style></head><body>
-<nav><strong>New LUCI · Prospect email plan</strong><span>Internal view for Jane · Oct 27, 2026 · draft, nothing built or sent</span></nav>
+<nav><strong>New LUCI · Prospect email plan</strong><span>Simplified view for Jane · Oct 27, 2026 · draft, nothing built or sent</span></nav>
 <main>
-<header><div><p class="kicker">One prospect journey · 5 stages · 27 emails</p><h1>Every prospect, one path. The wiring comes next.</h1>
-<p class="lede">Each prospect gets the stage that fits where they are. A reply beats any automation: the moment a human conversation starts, the emails step aside. Ids stay on every chip so you can trace each email back to the Oct 23 drafts.</p></div>
-<div class="acbox"><b>ActiveCampaign today (read Oct 27)</b><ul>
-<li><span class="open">No prospect automation, campaign or template exists.</span> Automations are the customer journey (CJ 2026) plus two inactive 2025 Upgrade Center flows.</li>
-<li>Lists: Master Contact List (1,740), Existing Clients (189), LUCI Interest (4), staff and test lists. <span class="open">No prospect list or segment.</span></li>
-<li>Tags: “Booked Demo” exists (0 contacts, from 2025). <span class="open">No prospect or stage tags.</span></li></ul></div></header>
-<section class="flow"><div class="stage s1"><div class="sh"><span class="num">1</span><b>Private preview</b></div>
-<div class="steps"><div class="step"><span class="sn">1</span><span class="id">WARM-PREVIEW-01</span></div><div class="step"><span class="sn">2</span><span class="id">WARM-PREVIEW-02</span></div><div class="step"><span class="sn">3</span><span class="id">WARM-PREVIEW-03</span></div><div class="step"><span class="sn">4</span><span class="id">WARM-PREVIEW-04</span></div><div class="step"><span class="sn">5</span><span class="id">WARM-PREVIEW-05</span></div></div>
-<dl><dt>Who</dt><dd>High-intent prospects only: completed a demo or seriously pursued one</dd><dt>Trigger</dt><dd><span class="open">Preview webinar date</span></dd><dt>Cadence</dt><dd>Invite 2–3 wks before the preview webinar · then 7–10 days, 2 days before, day after, 2–3 days after</dd><dt>Sender</dt><dd>Mark</dd><dt>AC today</dt><dd><span class="open">Not built</span></dd></dl></div><div class="stage s2"><div class="sh"><span class="num">2</span><b>Introduce &amp; engage</b></div>
-<div class="steps"><div class="step"><span class="sn">1</span><span class="id">NET-ACQ-01</span><span class="id">WARM-REENGAGE-01</span></div><div class="step"><span class="sn">2</span><span class="id">NET-ACQ-02</span><span class="id">WARM-REENGAGE-02</span></div><div class="step"><span class="sn">3</span><span class="id">NET-ACQ-03</span><span class="id">WARM-REENGAGE-03</span></div><div class="step"><span class="sn">4</span><span class="id">NET-ACQ-04</span><span class="id">WARM-REENGAGE-04</span></div></div>
-<dl><dt>Who</dt><dd>Every other prospect, first contact or a second look; version follows what they already know</dd><dt>Trigger</dt><dd><span class="open">Cycle start: no launch trigger (no release date)</span></dd><dt>Cadence</dt><dd>4 emails, about 5 days apart (second-look version 4–7 days)</dd><dt>Sender</dt><dd>Marketing, from a named LUCI lead</dd><dt>AC today</dt><dd><span class="open">Not built</span></dd></dl></div><div class="stage s3"><div class="sh"><span class="num">3</span><b>Respond / demo</b></div>
-<div class="steps"><div class="step"><span class="sn">1</span><span class="id">NET-DEMO-01</span><span class="id">WARM-RESPONSE-01</span></div><div class="step"><span class="sn">2</span><span class="id">NET-DEMO-02</span><span class="id">WARM-RESPONSE-02</span></div></div>
-<dl><dt>Who</dt><dd>Anyone who replies, books or requests a demo</dd><dt>Trigger</dt><dd>Reply, booking or demo request</dd><dt>Cadence</dt><dd>Instant confirmation · personal note same or next business day</dd><dt>Sender</dt><dd>Marketing for Mark, then Mike or Mark personally</dd><dt>AC today</dt><dd><span class="open">Not built</span></dd></dl></div><div class="stage s4"><div class="sh"><span class="num">4</span><b>Recover</b></div>
-<div class="steps"><div class="step"><span class="sn">1</span><span class="id">NET-UNBOOKED-01</span><span class="id">NET-POSTDEMO-01</span></div><div class="step"><span class="sn">2</span><span class="id">NET-UNBOOKED-02</span><span class="id">NET-POSTDEMO-02</span></div></div>
-<dl><dt>Who</dt><dd>Only after Mark or Mike explicitly hands the prospect back</dd><dt>Trigger</dt><dd><span class="open">Sales handback (not yet defined)</span></dd><dt>Cadence</dt><dd>Provisional: 7–14 days after the last personal attempt, then 7–10 days</dd><dt>Sender</dt><dd>Marketing, from a named LUCI lead; replies go to the sales owner</dd><dt>AC today</dt><dd><span class="open">Not built</span></dd></dl></div><div class="stage s5"><div class="sh"><span class="num">5</span><b>Nurture: Prospect Pulse</b></div>
-<div class="steps"><div class="step"><span class="sn">1</span><span class="id">PULSE-01</span></div><div class="step"><span class="sn">2</span><span class="id">PULSE-02</span></div><div class="step"><span class="sn">3</span><span class="id">PULSE-03</span></div><div class="step"><span class="sn">4</span><span class="id">PULSE-04</span></div><div class="step"><span class="sn">5</span><span class="id">PULSE-05</span></div><div class="step"><span class="sn">6</span><span class="id">PULSE-06</span></div></div>
-<dl><dt>Who</dt><dd>Anyone who finished a cycle without entering sales</dd><dt>Trigger</dt><dd>Cycle complete, no sales conversation</dd><dt>Cadence</dt><dd>Every 4–6 weeks for 6 months</dd><dt>Sender</dt><dd>Marketing, from a named LUCI lead</dd><dt>AC today</dt><dd><span class="open">Not built</span></dd></dl></div></section>
-<section class="rules"><b>Shared rules</b><span>A reply, booked meeting or active opportunity stops automation.</span><span>Anyone in an active Mark or Mike conversation is suppressed.</span><span>Opens and clicks are reporting only; they never trigger a sales handoff.</span><span>One cycle per person, matched to their current stage.</span><span>Recovery starts only after an explicit Sales handback.</span></section>
-<section class="grid"><div class="col c1"><h3><span class="num">1</span>Private preview</h3><ul><li><span class="id">WARM-PREVIEW-01</span><span class="m">You looked at LUCI before, so you get a private first look at the beta and its new daily controls.</span><span class="sj">“A private look, because you looked before”</span></li><li><span class="id">WARM-PREVIEW-02</span><span class="m">What the preview covers: three real workflows that put more control in staff hands, with LUCI still behind them.</span><span class="sj">“Three workflows in the private preview”</span></li><li><span class="id">WARM-PREVIEW-03</span><span class="m">Registrants only: date, calendar button and join link in one short note.</span><span class="sj">“Your private preview details”</span></li><li><span class="id">WARM-PREVIEW-04</span><span class="m">Mark asks for one honest reaction and offers a conversation only if it helps.</span><span class="sj">“What looked useful this time?”</span></li><li><span class="id">WARM-PREVIEW-05</span><span class="m">Missed it? The recording, on your own time, no second commitment.</span><span class="sj">“Your private-preview recording”</span></li></ul></div><div class="col c2"><h3><span class="num">2</span>Introduce &amp; engage</h3><ul><li><span class="id">NET-ACQ-01</span><span class="m">Routine A/V changes turn into relay races across separate controls and vendors. Sound familiar?</span><span class="sj">“How many steps does one display change take?”</span></li><li><span class="id">WARM-REENGAGE-01</span><span class="m">Problem first: one wrong screen should not need several interfaces and an off-site expert.</span><span class="sj">“When dinner inherits yesterday&#x27;s brunch menu”</span></li><li><span class="id">NET-ACQ-02</span><span class="m">One approved property count shows varied rooms and hardware running from one interface.</span><span class="sj">“What consolidation looks like on property”</span></li><li><span class="id">WARM-REENGAGE-02</span><span class="m">A short reel of the live map in motion; the full recording stays a quiet option.</span><span class="sj">“Let the live map explain”</span></li><li><span class="id">NET-ACQ-03</span><span class="m">A short reel: staff changing rooms, checking screens and reading activity history themselves.</span><span class="sj">“Watch one access sequence in New LUCI”</span></li><li><span class="id">WARM-REENGAGE-03</span><span class="m">Approved counts show scale, then the one-interface point, and the team that has never lost a client.</span><span class="sj">“The denominator behind one interface”</span></li><li><span class="id">NET-ACQ-04</span><span class="m">One interface plus a team that monitors and supports it. Bring your knottiest A/V problem to a demo.</span><span class="sj">“What stays after the walkthrough”</span></li><li><span class="id">WARM-REENGAGE-04</span><span class="m">Test the beta against one real room, wall or workflow in a focused conversation.</span><span class="sj">“Want to test one real LUCI workflow?”</span></li></ul></div><div class="col c3"><h3><span class="num">3</span>Respond / demo</h3><ul><li><span class="id">NET-DEMO-01</span><span class="m">Request received; pick a time, no extra pitch.</span><span class="sj">“We received your LUCI demo request”</span></li><li><span class="id">WARM-RESPONSE-01</span><span class="m">Mark has your reply or booking; you will not need to repeat yourself.</span><span class="sj">“Mark has your response”</span></li><li><span class="id">NET-DEMO-02</span><span class="m">Mike or Mark asks for one priority so the walkthrough starts with your operation.</span><span class="sj">“I saw your LUCI request”</span></li><li><span class="id">WARM-RESPONSE-02</span><span class="m">Mark picks up from your earlier LUCI context and asks which next step helps now.</span><span class="sj">“I&#x27;ll start with what matters now”</span></li></ul></div><div class="col c4"><h3><span class="num">4</span>Recover</h3><ul><li><span class="id">NET-UNBOOKED-01</span><span class="m">Your walkthrough request is still open: one calendar link, nothing to repeat.</span><span class="sj">“Did the calendar win?”</span></li><li><span class="id">NET-POSTDEMO-01</span><span class="m">One workflow from your demo, worth a second look if it is still a priority.</span><span class="sj">“Is this workflow still active?”</span></li><li><span class="id">NET-UNBOOKED-02</span><span class="m">Active scheduling stops here; the link stays open for when timing improves.</span><span class="sj">“No explanation required”</span></li><li><span class="id">NET-POSTDEMO-02</span><span class="m">We close the follow-up but keep the context; a reply picks it back up.</span><span class="sj">“Closing the follow-up here”</span></li></ul></div><div class="col c5"><h3><span class="num">5</span>Nurture: Prospect Pulse</h3><ul><li><span class="id">PULSE-01</span><span class="m">A time-sensitive screen change, handled from one interface, with the team still behind you.</span><span class="sj">“Why is one screen change a scavenger hunt?”</span></li><li><span class="id">PULSE-02</span><span class="m">A refresh can consolidate control and keep the useful hardware in service.</span><span class="sj">“Can a refresh keep useful hardware?”</span></li><li><span class="id">PULSE-03</span><span class="m">One shared map so marketing, IT, operations and leadership see the same screen status.</span><span class="sj">“What is actually playing in the lobby?”</span></li><li><span class="id">PULSE-04</span><span class="m">Audit history plus LUCI monitoring keeps a visible A/V issue connected from report to fix.</span><span class="sj">“The wall is dark and doors open in 20”</span></li><li><span class="id">PULSE-05</span><span class="m">Stage a ballroom changeover quietly and run it in one coordinated cue.</span><span class="sj">“The ballroom changes in ten minutes”</span></li><li><span class="id">PULSE-06</span><span class="m">A new spa joins the same A/V operation, and the platform keeps gaining practical control.</span><span class="sj">“Will the new spa need another control path?”</span></li></ul></div></section>
-<section class="bottom"><div class="channels"><h2>Other prospecting channels</h2><p class="note">Only channels actually discussed. Email is one route; these run alongside it.</p><div class="chs"><div class="ch"><b>LinkedIn</b><span class="st">Primary</span><p>Distribution, ideas and proof, plus a targeted paid test. Company-page posting is held until Jane opens it.</p><small>Launch plan brief; Current Work Board</small></div><div class="ch"><b>Outbound support for Mark</b><span class="st">Idea, not a commitment</span><p>Content and sequences that back up Mark’s own prospecting; Mark owns cold outbound.</p><small>Launch plan brief; campaign plan</small></div><div class="ch"><b>Demo seminar / webinar</b><span class="st">Date, platform, speaker TBD</span><p>The New LUCI demo session (also the private preview for Stage 1).</p><small>COS task calendar</small></div><div class="ch"><b>Treasure Chest case study</b><span class="st">Requested by Mike, Oct 22</span><p>A retrofit story for prospecting: support, programming know-how and cost. Photos/video likely exist; review with Jane this week.</p><small>Teams, Oct 22 (Cornelius journal)</small></div><div class="ch"><b>Prospecting campaigns</b><span class="st">Idea, not a commitment</span><p>Mike wants to start thinking about prospecting campaigns; “not pressing”.</p><small>Teams, Oct 22</small></div><div class="ch"><b>Penn campaign</b><span class="st">Target EOY 2026; messaging TBD</span><p>After the Blackhawk close, a larger campaign to Mark’s Penn contacts.</p><small>COS task calendar</small></div><div class="ch"><b>Indian Gaming Tradeshow 2027</b><span class="st">Pending final go (Mike, Oct 8)</span><p>Apr 19–22, 2027, Las Vegas Convention Center.</p><small>events.json</small></div><div class="ch"><b>TribalNet 2027</b><span class="st">Pending final go (Mike, Oct 8)</span><p>Sep 19–23, 2027, South Point, Las Vegas.</p><small>events.json</small></div><div class="ch"><b>Native Nation Events, June</b><span class="st open">Status conflict: OPEN</span><p>19th Tribal Casino &amp; Hotel Development Conference, Jun 7–8, 2027. events.json says Passed (Mike, Oct 8); COS calendar says under evaluation.</p><small>events.json; COS task calendar</small></div><div class="ch out"><b>InfoComm 2027</b><span class="st">Out</span><p>On hold; revisit for 2028 (Mike, Oct 8).</p><small>events.json</small></div><div class="ch"><b>Directories</b><span class="st">Idea, not a commitment</span><p>AVIXA and industry directories for consistent listings and referral discovery.</p><small>Launch plan brief</small></div><div class="ch"><b>2026 tactics</b><span class="st">Idea, not a commitment</span><p>Be the answer (AI search + entity), YouTube how-to videos, a shareable buying-committee packet, a six-page industry read.</p><small>luci-tactics-2026.md</small></div><div class="ch"><b>Partner development + 2027 events</b><span class="st">Idea, not a commitment</span><p>Longer-term programs named in the launch plan.</p><small>Launch plan brief</small></div></div></div>
-<div class="opend"><h2>Open decisions</h2><ul><li><b>Launch trigger:</b> <span class="hl">No release date, so nothing starts Stage 2 or Pulse yet. The plan still says invitations “state when New LUCI becomes available”; the lock says no date. Decide what opens the cycle.</span></li><li><b>Preview webinar:</b> <span class="hl">Date, platform and speaker TBD; Stage 1 timing hangs on it.</span></li><li><b>Upgrade Guide URL:</b> <span class="hl">Planned /luci-upgrade-guide returns 404 today; drafts use [LUCI UPGRADE GUIDE URL].</span></li><li><b>Sender + signature:</b> <span class="hl">Mark vs a named LUCI lead per stage; [NAME] / [TITLE] / [EMAIL] / [PHONE] block.</span></li><li><b>Merge tag:</b> <span class="hl">Drafts use #Name#; confirm the real AC field.</span></li><li><b>Recovery timing:</b> <span class="hl">Handback rule with Mark and Mike; demo-note field for [WORKFLOW THEY CARED ABOUT].</span></li><li><b>Proof points:</b> <span class="hl">[APPROVED PROOF POINT] / [PROOF URL] need approved counts (no percentages, no customer names).</span></li><li><b>Demo ask:</b> <span class="hl">NET-ACQ-04 asks for a demo; confirm that fits first-contact prospects (the preview is deliberately not a demo).</span></li><li><b>Preview attendees:</b> <span class="hl">The plan wants a short follow-up for them instead of WARM-REENGAGE-01; not written yet.</span></li><li><b>AC audience:</b> <span class="hl">No prospect list, segment or tag exists to send to (see AC status).</span></li></ul></div></section>
-<p class="foot">Sources: prospect email drafts (content-marketing/new-luci-prospect-emails-review.html, ui_kits/internal-portal/email-copy/PROSPECT-*.json, Oct 23), New LUCI email plan (new-luci-email-comms.json), ActiveCampaign read-only (automations, lists, tags, templates, campaigns, Oct 27). Message lines are plain summaries of each draft’s primary message; subjects are each draft’s first option. No release date appears anywhere by design.</p>
+<p class="kicker">All prospects · one path · 27 emails</p>
+<h1>Invite them in, keep it human, never let it go quiet.</h1>
+
+<section>
+<h2><span class="n">1</span>Email cadence, centered on the New LUCI preview</h2>
+<div class="tl">
+ <div class="beat"><b>Preview invitation</b><small>2 emails</small></div>
+ <div class="beat"><b>Seminar reminder</b><small>1 email</small></div>
+ <div class="beat mid"><b>Preview seminar</b><small>New LUCI beta, live</small></div>
+ <div class="beat after"><b>Follow-up + recording</b><small>2 emails</small></div>
+ <div class="beat after"><b>Introduce &amp; engage nudges</b><small>8 emails</small></div>
+ <div class="beat after"><b>Respond / demo</b><small>4 emails</small></div>
+ <div class="beat after"><b>Recovery after Sales handback</b><small>4 emails</small></div>
+</div>
+<div class="tlabels"><span>Before</span><span>The seminar</span><span>After</span></div>
+<p class="rule"><b>Rule:</b> a reply, or an active Mark or Mike conversation, stops the automation.</p>
+</section>
+
+<section>
+<h2><span class="n">2</span>Net-new prospect outreach</h2>
+<div class="out">
+ <div class="box lead"><p class="kicker">Lead with</p><p>One interface for the whole A/V operation.</p><p>More control in your team’s hands, with LUCI’s team still behind you.</p></div>
+ <div class="arrow">+</div>
+ <div class="box proof"><p class="kicker">Back it with proof</p><ul>
+  <li>New LUCI beta: staff change rooms, check screens and read activity history themselves</li>
+  <li>We’ve never lost a client</li>
+  <li>Scale and variety: many rooms and hardware generations run from one interface</li>
+  <li>The same engineers stay involved, and a team monitors and supports the system</li></ul></div>
+ <div class="arrow">→</div>
+ <div class="box li"><div class="big">LinkedIn</div><span class="tag">Main channel</span><p>Where net-new prospects meet LUCI first.</p></div>
+</div>
+<div class="chips"><span class="lbl">Also discussed</span>
+ <span class="chip">Outbound support for Mark<i>idea</i></span>
+ <span class="chip">Demo seminar / webinar<i>idea</i></span>
+ <span class="chip">Treasure Chest case study<i>idea</i></span>
+ <span class="chip">Penn campaign<i>idea</i></span>
+ <span class="chip">IGA Tradeshow<i>idea</i></span>
+ <span class="chip">TribalNet<i>idea</i></span>
+ <span class="chip">AVIXA / industry directories<i>idea</i></span>
+ <span class="chip">AI-search answers<i>idea</i></span>
+ <span class="chip">YouTube how-tos<i>idea</i></span>
+ <span class="chip tbd">Native Nation Events<i>tbd</i></span>
+</div>
+</section>
+
+<div class="row">
+<section>
+<h2><span class="n">3</span>Nurture</h2>
+<div class="pulse"><div class="badge"><b>6</b><span>emails</span></div>
+<div><p><b>Prospect Pulse:</b> a steady, useful note that keeps LUCI in front of prospects who aren’t ready yet.</p><small>About every 4–6 weeks, for anyone who finishes a cycle without a sales conversation.</small></div></div>
+</section>
+<section class="open">
+<h2>Still open</h2>
+<ul><li><span class="hl">What starts the seminar sequence, with no release date and no seminar date yet.</span></li>
+<li><span class="hl">No prospect audience is built in ActiveCampaign yet.</span></li></ul>
+</section>
+</div>
+<p class="foot">From the Oct 23 prospect email drafts and the New LUCI email plan. ActiveCampaign checked read-only Oct 27. Draft for internal review.</p>
 </main></body></html>
