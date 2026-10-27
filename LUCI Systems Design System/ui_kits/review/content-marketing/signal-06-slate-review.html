@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Signal Issue 06 (Nov) slate</title>
+  <style>
+    :root {
+      --navy: #0A161C;
+      --ink: #10232D;
+      --sand: #E5E3DF;
+      --paper: #F3F1ED;
+      --white: #FFFFFF;
+      --kicker: #2b9e80;
+      --mint: #68E3BE;
+      --line: #cfcbc4;
+      --muted: #5c5852;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font: 18px/1.55 Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background: var(--sand);
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+      align-items: baseline;
+      padding: 14px 22px 16px;
+      color: var(--white);
+      background: var(--navy);
+    }
+    nav strong {
+      margin-right: 8px;
+      color: var(--mint);
+      font: 700 12px/1 "Helvetica Neue", Arial, sans-serif;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    nav a {
+      color: var(--white);
+      border-bottom: 1px solid transparent;
+      font: 15px/1.3 "Helvetica Neue", Arial, sans-serif;
+      text-decoration: none;
+    }
+    nav a:hover,
+    nav a:focus-visible { border-bottom-color: var(--mint); }
+    main {
+      max-width: 52rem;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 6rem;
+    }
+    section { padding: 1rem 0 2rem; }
+    .kicker {
+      margin: 0 0 .6rem;
+      color: var(--kicker);
+      font: 700 12px/1 "Helvetica Neue", Arial, sans-serif;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0 0 1rem;
+      color: var(--navy);
+      font: 700 1.7rem/1.2 "Helvetica Neue", Arial, sans-serif;
+    }
+    h2 {
+      margin: 2.5rem 0 .8rem;
+      padding-top: 1rem;
+      border-top: 3px solid var(--navy);
+      color: var(--navy);
+      font: 700 1.5rem/1.2 "Helvetica Neue", Arial, sans-serif;
+    }
+    h3 {
+      margin: 0;
+      color: var(--navy);
+      font: 700 1.15rem/1.3 "Helvetica Neue", Arial, sans-serif;
+    }
+    p { margin: 0 0 1rem; }
+    .intro {
+      max-width: 60ch;
+      color: var(--muted);
+      font: 16px/1.55 "Helvetica Neue", Arial, sans-serif;
+    }
+    .cards {
+      display: grid;
+      gap: 12px;
+    }
+    .themes {
+      grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    }
+    .card {
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+    }
+    .card--piece {
+      padding: 0;
+      overflow: hidden;
+      background: var(--white);
+    }
+    .card__head {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--line);
+      background: var(--paper);
+    }
+    .card__body {
+      padding: 16px 18px 18px;
+      font: 16px/1.5 "Helvetica Neue", Arial, sans-serif;
+    }
+    .card__body p:last-child,
+    .card > p:last-child { margin-bottom: 0; }
+    .pick {
+      display: inline-flex;
+      flex: 0 0 auto;
+      gap: 7px;
+      align-items: center;
+      min-height: 24px;
+      color: var(--muted);
+      font: 700 10px/1 "Helvetica Neue", Arial, sans-serif;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .pick input {
+      width: 17px;
+      height: 17px;
+      margin: 0;
+      accent-color: var(--kicker);
+    }
+    .theme-title { margin: 0 0 .5rem; }
+    .theme-copy {
+      margin: 0;
+      color: var(--muted);
+      font: 14px/1.45 "Helvetica Neue", Arial, sans-serif;
+    }
+    .section-label {
+      margin: 0 0 4px;
+      color: var(--kicker);
+      font: 700 11px/1.2 "Helvetica Neue", Arial, sans-serif;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+    dl { margin: 0; }
+    dt {
+      margin-top: .7rem;
+      color: var(--navy);
+      font-weight: 700;
+    }
+    dt:first-child { margin-top: 0; }
+    dd { margin: 0; }
+    .status {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 3px;
+      color: var(--white);
+      background: var(--navy);
+      font: 700 11px/1.2 "Helvetica Neue", Arial, sans-serif;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+    .ph {
+      padding: 0 3px;
+      border-radius: 2px;
+      background: #fff3c4;
+      font: .85em/1.4 "Helvetica Neue", Arial, sans-serif;
+    }
+    .note {
+      padding: 1rem 1.2rem;
+      border-left: 4px solid var(--kicker);
+      background: var(--white);
+      color: var(--muted);
+      font: 15px/1.5 "Helvetica Neue", Arial, sans-serif;
+    }
+    .note p:last-child { margin-bottom: 0; }
+    .footer {
+      color: #6b6660;
+      font: .85rem/1.5 "Helvetica Neue", Arial, sans-serif;
+    }
+    @media (max-width: 560px) {
+      nav { position: static; }
+      .themes { grid-template-columns: 1fr; }
+      .card__head { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <strong>Signal Issue 06 · Slate</strong>
+    <a href="#themes">Theme titles</a>
+    <a href="#pieces">Piece options</a>
+    <a href="#notes">Planning notes</a>
+  </nav>
+
+  <main>
+    <section id="overview">
+      <p class="kicker">November 2026 · Draft options for Jane</p>
+      <h1>Signal Issue 06 (Nov) slate</h1>
+      <p class="intro">This is a slate, not full copy. Check the options you want to carry into drafting.</p>
+    </section>
+
+    <section id="themes">
+      <h2>Theme title options</h2>
+      <div class="cards themes">
+        <article class="card">
+          <label class="pick"><input type="checkbox" aria-label="Pick Built Together"> Pick</label>
+          <h3 class="theme-title">Built Together</h3>
+          <p class="theme-copy">Makes the client relationship the issue’s center: the clients who have stayed with LUCI have helped the company grow and the product improve.</p>
+        </article>
+
+        <article class="card">
+          <label class="pick"><input type="checkbox" aria-label="Pick The Relationship Keeps Building"> Pick</label>
+          <h3 class="theme-title">The Relationship Keeps Building</h3>
+          <p class="theme-copy">Connects years of shared work to what comes next, from expanding properties to a new version shaped by what clients need.</p>
+        </article>
+
+        <article class="card">
+          <label class="pick"><input type="checkbox" aria-label="Pick More Control. Same Partnership."> Pick</label>
+          <h3 class="theme-title">More Control. Same Partnership.</h3>
+          <p class="theme-copy">Brings the relationship story directly into the beta promise: more control in clients’ hands, with LUCI still behind them.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="pieces">
+      <h2>Piece options</h2>
+      <div class="cards">
+        <article class="card card--piece">
+          <header class="card__head">
+            <label class="pick"><input type="checkbox" aria-label="Pick Built together, still building"> Pick</label>
+            <div>
+              <p class="section-label">1 · Welcome</p>
+              <h3>Built together, still building</h3>
+            </div>
+          </header>
+          <div class="card__body">
+            <dl>
+              <dt>Angle</dt>
+              <dd>Open with the approved proof that we’ve never lost a client, then make the point behind it: clients have been part of the LUCI family from the beginning. Their continued trust has made the company stronger and helped shape a better product, setting up the rest of the issue.</dd>
+              <dt>Needs</dt>
+              <dd>Jane’s theme-title pick; Mike’s voice for the final welcome sign-off.</dd>
+              <dt>Status</dt>
+              <dd><span class="status">Needs Jane decision</span></dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="card card--piece">
+          <header class="card__head">
+            <label class="pick"><input type="checkbox" aria-label="Pick Thirty days of forward motion"> Pick</label>
+            <div>
+              <p class="section-label">2 · LUCI Project Update</p>
+              <h3>Thirty days of forward motion</h3>
+            </div>
+          </header>
+          <div class="card__body">
+            <dl>
+              <dt>Angle</dt>
+              <dd>A compact three-client update that shows both enterprise reach and fast field execution. Boyd is now at 25 of 26 properties on LUCI—proof that another enterprise can build toward the same operating standard. Caesars continues to expand while LUCI supports its integrator remotely. At Treasure Chest, the team stood up LUCI, redid the sportsbook for the move to Boyd Gaming, added switches and TVs, and finished audio in two days. Keep Treasure Chest as a positive new-client highlight, not a case study.</dd>
+              <dt>Needs</dt>
+              <dd>Mike’s remaining project bullets and confirmation of any final details. <mark class="ph">[MIKE'S BULLETS NEEDED]</mark></dd>
+              <dt>Status</dt>
+              <dd><span class="status">Needs Mike’s bullets</span></dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="card card--piece">
+          <header class="card__head">
+            <label class="pick"><input type="checkbox" aria-label="Pick A forum for the people who run LUCI"> Pick</label>
+            <div>
+              <p class="section-label">3 · Beyond the platform</p>
+              <h3>A forum for the people who run LUCI</h3>
+            </div>
+          </header>
+          <div class="card__body">
+            <dl>
+              <dt>Angle</dt>
+              <dd>Offer the client-forum idea as a practical extension of the relationship: brief introductions, examples of how clients use LUCI, and a place to exchange tips and tricks. The value is shared operating knowledge, not another promotional channel.</dd>
+              <dt>Needs</dt>
+              <dd>Jane’s decision on whether to introduce the forum now; owner and format if selected.</dd>
+              <dt>Status</dt>
+              <dd><span class="status">Needs Jane decision</span></dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="card card--piece">
+          <header class="card__head">
+            <label class="pick"><input type="checkbox" aria-label="Pick Make the routine repeatable"> Pick</label>
+            <div>
+              <p class="section-label">4 · Inside LUCI</p>
+              <h3>Make the routine repeatable</h3>
+            </div>
+          </header>
+          <div class="card__body">
+            <dl>
+              <dt>Angle</dt>
+              <dd>Use scripting as the operational topic. Explain at a high level how a repeated A/V sequence can become a consistent action instead of a list staff rebuild each time; save detailed steps for the full draft once the example is chosen.</dd>
+              <dt>Needs</dt>
+              <dd>Mike’s choice of one accurate, customer-facing scripting example.</dd>
+              <dt>Status</dt>
+              <dd><span class="status">Needs Mike’s bullets</span></dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="card card--piece">
+          <header class="card__head">
+            <label class="pick"><input type="checkbox" aria-label="Pick Putting the power of programming in your hands"> Pick</label>
+            <div>
+              <p class="section-label">5 · What’s coming</p>
+              <h3>Putting the power of programming in your hands</h3>
+            </div>
+          </header>
+          <div class="card__body">
+            <dl>
+              <dt>Angle</dt>
+              <dd>Share a little more of New LUCI while keeping the framing firmly in beta. The promise is direct: clients gain more control over day-to-day programming and operation, while LUCI’s partnership remains behind them.</dd>
+              <dt>Needs</dt>
+              <dd>Jane’s beta workflow or screen pick for the final version; the first copy pass can stay workflow-neutral.</dd>
+              <dt>Status</dt>
+              <dd><span class="status">Ready to draft</span></dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="card card--piece">
+          <header class="card__head">
+            <label class="pick"><input type="checkbox" aria-label="Pick Why the relationship lasts"> Pick</label>
+            <div>
+              <p class="section-label">6 · A Minute with Mike</p>
+              <h3>Why the relationship lasts</h3>
+            </div>
+          </header>
+          <div class="card__body">
+            <dl>
+              <dt>Angle</dt>
+              <dd>Give Mike the long-term-relationship argument: we’ve never lost a client because the work continues after turn-on. Client feedback improves the product, each expansion deepens the operating standard, and more client control strengthens the partnership rather than reducing it.</dd>
+              <dt>Needs</dt>
+              <dd>Mike’s personal bullets or one relationship example he wants to tell in his own voice.</dd>
+              <dt>Status</dt>
+              <dd><span class="status">Needs Mike’s bullets</span></dd>
+            </dl>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="notes">
+      <h2>Planning notes</h2>
+      <div class="note">
+        <p>The later email teaser will reuse the Issue 05 email shell. It is not part of this slate.</p>
+        <p><strong>December issue plan:</strong> Holiday thank-you to long-term clients, plus the office-closed and holiday-coverage notice from Mike’s template. Target send: around December 15.</p>
+      </div>
+    </section>
+
+    <p class="footer">Draft slate only. No campaign, send, or publishing work is included.</p>
+  </main>
+</body>
+</html>

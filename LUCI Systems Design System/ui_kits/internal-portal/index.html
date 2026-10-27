@@ -3716,7 +3716,7 @@
     function renderStatus() {
       $('stat-review').textContent = String(allReviewItems().length);
       $('stat-comments').textContent = String(portal.comments.length);
-      $('stat-soon').textContent = String(9); // In Progress card count (curated list)
+      $('stat-soon').textContent = String(10); // In Progress card count (curated list)
       updateReviewUnreadBadges();
     }
 
@@ -4119,6 +4119,13 @@
           href: 'http://10.10.1.17:8081/content-marketing/new-luci-prospect-plan-view.html',
           external: true,
           pill: 'Email'
+        },
+        {
+          title: 'Signal Issue 06 (Nov) slate',
+          note: 'Options for Jane to pick. Draft; nothing sent.',
+          href: 'http://10.10.1.17:8081/content-marketing/signal-06-slate-review.html',
+          external: true,
+          pill: 'Newsletter'
         },
         {
           title: 'Upgrade Guide',
