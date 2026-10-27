@@ -64,6 +64,14 @@ h2{display:flex;align-items:center;gap:9px;font:700 13px/1 "Helvetica Neue",Aria
 @media screen and (max-width:1000px){.out,.row{grid-template-columns:1fr}.arrow{transform:rotate(90deg);justify-self:center}.tl{flex-wrap:wrap;gap:8px}.tl::before{display:none}.beat.mid{flex:1 1 100%}}
 @page{size:landscape;margin:7mm}
 @media print{html{zoom:.62}body{background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}main{max-width:none;padding:6px 0}}
+.chans{display:grid;gap:8px}
+.chans .li{padding:10px 14px}.chans .li .big{font-size:26px}.chans .li p{margin-top:5px}
+.mains{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.mc{border:2px solid var(--kicker);background:#EEF9F5;border-radius:8px;padding:8px 8px;text-align:center;display:flex;flex-direction:column;justify-content:center;gap:4px}
+.mc b{font:700 13.5px/1.2 "Helvetica Neue",Arial}
+.mc .ph{background:#FFE45C;border-radius:2px;padding:1px 4px;font-size:11.5px}
+.mc small{font-size:10.5px;color:var(--muted)}
+.out{grid-template-columns:1.05fr auto 1.15fr auto 1.4fr}
 </style></head><body>
 <nav><strong>New LUCI · Prospect email plan</strong><span>Simplified view for Jane · Oct 27, 2026 · draft, nothing built or sent</span></nav>
 <main>
@@ -96,18 +104,25 @@ h2{display:flex;align-items:center;gap:9px;font:700 13px/1 "Helvetica Neue",Aria
   <li>Scale and variety: many rooms and hardware generations run from one interface</li>
   <li>The same engineers stay involved, and a team monitors and supports the system</li></ul></div>
  <div class="arrow">→</div>
- <div class="box li"><div class="big">LinkedIn</div><span class="tag">Main channel</span><p>Where net-new prospects meet LUCI first.</p></div>
+ <div class="chans">
+  <div class="box li"><div class="big">LinkedIn</div><span class="tag">Main channel</span><p>Where net-new prospects meet LUCI first.</p></div>
+  <div class="mains">
+   <div class="mc"><b>Industry directories</b></div>
+   <div class="mc"><b>YouTube how-tos</b></div>
+   <div class="mc web"><b>Website visibility</b>
+    <!-- WEBSITE-VISIBILITY-PLACEHOLDER: swap this one span for Cornelius's 2026 strategy line -->
+    <span class="ph" id="website-visibility-line">how we get found: strategy coming</span>
+    <small>incl. AI-search answers</small></div>
+  </div>
+ </div>
 </div>
-<div class="chips"><span class="lbl">Also discussed</span>
+<div class="chips"><span class="lbl">Ideas</span>
  <span class="chip">Outbound support for Mark<i>idea</i></span>
  <span class="chip">Demo seminar / webinar<i>idea</i></span>
  <span class="chip">Treasure Chest case study<i>idea</i></span>
  <span class="chip">Penn campaign<i>idea</i></span>
  <span class="chip">IGA Tradeshow<i>idea</i></span>
  <span class="chip">TribalNet<i>idea</i></span>
- <span class="chip">AVIXA / industry directories<i>idea</i></span>
- <span class="chip">AI-search answers<i>idea</i></span>
- <span class="chip">YouTube how-tos<i>idea</i></span>
  <span class="chip tbd">Native Nation Events<i>tbd</i></span>
 </div>
 </section>
