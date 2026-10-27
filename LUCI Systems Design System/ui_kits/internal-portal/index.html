@@ -3712,7 +3712,7 @@
     function renderStatus() {
       $('stat-review').textContent = String(allReviewItems().length);
       $('stat-comments').textContent = String(portal.comments.length);
-      $('stat-soon').textContent = String(14); // In Progress card count (curated list)
+      $('stat-soon').textContent = String(15); // In Progress card count (curated list)
       updateReviewUnreadBadges();
     }
 
@@ -4103,6 +4103,13 @@
           note: 'In progress. Email communications &amp; outlines for the upgrade tracks (webinar → readiness → launch → post).',
           href: '#new-luci-launch/strategy/email-comms',
           external: false,
+          pill: 'Email'
+        },
+        {
+          title: 'New LUCI · Prospect email plan (one-page view)',
+          note: 'Draft for Jane, Oct 27, 2026. One prospect journey in five stages with all 27 emails, setup and ActiveCampaign status today, other prospecting channels, and open decisions. Nothing built or sent.',
+          href: 'http://10.10.1.17:8081/content-marketing/new-luci-prospect-plan-view.html',
+          external: true,
           pill: 'Email'
         },
         {
