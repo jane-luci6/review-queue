@@ -3712,7 +3712,7 @@
     function renderStatus() {
       $('stat-review').textContent = String(allReviewItems().length);
       $('stat-comments').textContent = String(portal.comments.length);
-      $('stat-soon').textContent = String(16); // In Progress card count (curated list)
+      $('stat-soon').textContent = String(15); // In Progress card count (curated list)
       updateReviewUnreadBadges();
     }
 
@@ -4106,15 +4106,8 @@
           pill: 'Email'
         },
         {
-          title: 'Follow up with Mike',
-          note: 'Six items to cover with Mike. Draft; nothing sent.',
-          href: 'http://10.10.1.17:8081/content-marketing/follow-up-with-mike.html',
-          external: true,
-          pill: 'Plan'
-        },
-        {
           title: 'Prospecting with New LUCI',
-          note: 'Updated Oct 27 (simplified). Email cadence around the New LUCI preview, net-new outreach channels, and Prospect Pulse nurture. Draft; nothing sent.',
+          note: 'Updated Oct 27 (with follow-up list). Email cadence around the New LUCI preview, net-new outreach channels, Prospect Pulse nurture, and the Follow up with Mike checklist. Draft; nothing sent.',
           href: 'http://10.10.1.17:8081/content-marketing/new-luci-prospect-plan-view.html',
           external: true,
           pill: 'Email'
