@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-27",
+  "updated": "2026-10-28",
   "publishNote": "Build (npm run build:review) outputs to ui_kits/review. Bump reviewVersion + versionNote for new uploads (version history shown in portal). Set dueForReview for first-time review. Comments/approvals sync server-side via the comments_api container (proxied at /api/comments); Jane sees Mike/Mark's feedback on refresh. Archive with scripts/pull-review-comments.mjs.",
   "previewBaseUrl": "",
   "commentsApiUrl": "http://10.10.1.17:8081/api/comments",
@@ -8,17 +8,17 @@
     {
       "title": "Messaging guide",
       "url": "messaging/messaging-guide.html",
-      "note": "Updated Oct 27, 2026"
+      "note": "Updated Oct 28, 2026"
     },
     {
       "title": "LUCI philosophy",
       "url": "messaging/philosophy.html",
-      "note": "Updated Oct 27, 2026"
+      "note": "Updated Oct 28, 2026"
     },
     {
       "title": "Personas",
       "url": "messaging/personas.html",
-      "note": "Updated Oct 27, 2026"
+      "note": "Updated Oct 28, 2026"
     }
   ],
   "inProgress": [],
@@ -748,7 +748,7 @@
     }
   ],
   "finalized": [],
-  "messagingDocsUpdated": "2026-10-27",
+  "messagingDocsUpdated": "2026-10-28",
   "parkedFromReviewQueue": [
     {
       "id": "signal-issue-05-choices",
@@ -939,13 +939,18 @@
       "summary": "Theme title and piece options for The Signal Issue 06 (November 2026), proposed by GPT for Jane to pick. Draft; nothing sent.",
       "hubPreviewPath": "ui_kits/content-marketing/signal-06-slate-review.html",
       "previewUrl": "content-marketing/signal-06-slate-review.html",
-      "reviewVersion": 1,
-      "versionNote": "Options for Jane to pick. Draft; nothing sent.",
+      "reviewVersion": 2,
+      "versionNote": "Updated Oct 28 (Mike's draft folded in). Draft; nothing sent.",
       "versionHistory": [
         {
           "version": 1,
           "published": "2026-10-27",
           "note": "GPT slate: 3 theme titles, 6 pieces; highlight pieces wait on Mike's bullets."
+        },
+        {
+          "version": 2,
+          "published": "2026-10-28",
+          "note": "Mike's Nov material folded in (claims marked confirm with Mike); December held in a separate section; theme pick still open."
         }
       ]
     }
