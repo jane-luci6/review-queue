@@ -181,6 +181,66 @@
       font: 15px/1.5 "Helvetica Neue", Arial, sans-serif;
     }
     .note p:last-child { margin-bottom: 0; }
+    .status-line {
+      margin: 0 0 1rem;
+      color: var(--muted);
+      font: 700 12px/1.5 "Helvetica Neue", Arial, sans-serif;
+      letter-spacing: .03em;
+    }
+    .changed {
+      margin: 0 0 1rem;
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      background: var(--white);
+      font: 15px/1.5 "Helvetica Neue", Arial, sans-serif;
+    }
+    .changed h2 {
+      margin: 0 0 .7rem;
+      padding: 0;
+      border: 0;
+      font-size: 1.05rem;
+    }
+    .changed ul,
+    .needs-list,
+    .held-list {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+    .changed li,
+    .needs-list li,
+    .held-list li { margin-bottom: .55rem; }
+    .changed li:last-child,
+    .needs-list li:last-child,
+    .held-list li:last-child { margin-bottom: 0; }
+    .recommendation {
+      padding: 18px 20px;
+      border-left: 4px solid var(--kicker);
+      background: var(--white);
+      font: 15px/1.55 "Helvetica Neue", Arial, sans-serif;
+    }
+    .recommendation p:last-child { margin-bottom: 0; }
+    .held {
+      margin-top: 2.5rem;
+      padding: 22px;
+      border: 2px dashed #aaa39a;
+      background: #ebe8e2;
+    }
+    .held h2 {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: 0;
+    }
+    .held-label {
+      display: inline-block;
+      margin-bottom: .75rem;
+      padding: 4px 8px;
+      color: var(--navy);
+      background: #ddd8d0;
+      font: 700 11px/1.2 "Helvetica Neue", Arial, sans-serif;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .held-list strong { color: var(--navy); }
     .footer {
       color: #6b6660;
       font: .85rem/1.5 "Helvetica Neue", Arial, sans-serif;
@@ -195,8 +255,11 @@
 <body>
   <nav>
     <strong>Signal Issue 06 · Slate</strong>
+    <a href="#changed">What changed</a>
     <a href="#themes">Theme titles</a>
-    <a href="#pieces">Piece options</a>
+    <a href="#pieces">November pieces</a>
+    <a href="#confirm">Needs confirming</a>
+    <a href="#december">December held</a>
     <a href="#notes">Planning notes</a>
   </nav>
 
@@ -204,91 +267,102 @@
     <section id="overview">
       <p class="kicker">November 2026 · Draft options for Jane</p>
       <h1>Signal Issue 06 (Nov) slate</h1>
-      <p class="intro">This is a slate, not full copy. Check the options you want to carry into drafting.</p>
+      <p class="status-line">November issue · target send on the 1st (usual process) · draft/target only, nothing built or sent</p>
+      <p class="intro">This is a slate, not full copy. Check the options you want to carry into drafting. Jane’s theme pick remains open.</p>
+    </section>
+
+    <section id="changed" class="changed" aria-labelledby="changed-title">
+      <h2 id="changed-title">What changed since the last slate</h2>
+      <ul>
+        <li>Mike’s November milestones, recent retrofits, enterprise relationships, and upcoming work are now folded into the piece options.</li>
+        <li>Customer names are framed as evidence of what a long LUCI relationship can do for casinos of different sizes and types—not as a popularity list.</li>
+        <li>The project update no longer waits on Mike’s general highlights. The scripting example is the only remaining item waiting on him.</li>
+        <li>December’s client-gratitude and holiday material is separated and held. One pending signing remains intentionally unnamed.</li>
+      </ul>
     </section>
 
     <section id="themes">
       <h2>Theme title options</h2>
       <div class="cards themes">
         <article class="card">
+          <label class="pick"><input type="checkbox" aria-label="Pick What Lasting Relationships Build"> Pick</label>
+          <h3 class="theme-title">What Lasting Relationships Build</h3>
+          <p class="theme-copy">Uses the milestones as evidence of continuity: clients can start with one need, keep the same accountable team, and extend the same operating foundation over time.</p>
+        </article>
+
+        <article class="card">
           <label class="pick"><input type="checkbox" aria-label="Pick Built Together"> Pick</label>
           <h3 class="theme-title">Built Together</h3>
-          <p class="theme-copy">Makes the client relationship the issue’s center: the clients who have stayed with LUCI have helped the company grow and the product improve.</p>
+          <p class="theme-copy">Keeps November warm without turning it into December’s thank-you issue: the accomplishment is not the list of names, but what LUCI and its clients have kept building together.</p>
         </article>
 
         <article class="card">
-          <label class="pick"><input type="checkbox" aria-label="Pick The Relationship Keeps Building"> Pick</label>
-          <h3 class="theme-title">The Relationship Keeps Building</h3>
-          <p class="theme-copy">Connects years of shared work to what comes next, from expanding properties to a new version shaped by what clients need.</p>
-        </article>
-
-        <article class="card">
-          <label class="pick"><input type="checkbox" aria-label="Pick More Control. Same Partnership."> Pick</label>
-          <h3 class="theme-title">More Control. Same Partnership.</h3>
-          <p class="theme-copy">Brings the relationship story directly into the beta promise: more control in clients’ hands, with LUCI still behind them.</p>
+          <label class="pick"><input type="checkbox" aria-label="Pick Growth That Stays Connected"> Pick</label>
+          <h3 class="theme-title">Growth That Stays Connected</h3>
+          <p class="theme-copy">Links completed retrofits, enterprise expansion, and the beta story through one reader benefit: growth without losing the operating standard or the team behind it.</p>
         </article>
       </div>
     </section>
 
     <section id="pieces">
-      <h2>Piece options</h2>
+      <h2>November piece options</h2>
       <div class="cards">
         <article class="card card--piece">
           <header class="card__head">
-            <label class="pick"><input type="checkbox" aria-label="Pick Built together, still building"> Pick</label>
+            <label class="pick"><input type="checkbox" aria-label="Pick What lasting growth looks like"> Pick</label>
             <div>
               <p class="section-label">1 · Welcome</p>
-              <h3>Built together, still building</h3>
+              <h3>What lasting growth looks like</h3>
             </div>
           </header>
           <div class="card__body">
             <dl>
               <dt>Angle</dt>
-              <dd>Open with the approved proof that we’ve never lost a client, then make the point behind it: clients have been part of the LUCI family from the beginning. Their continued trust has made the company stronger and helped shape a better product, setting up the rest of the issue.</dd>
+              <dd>Open with LUCI passing 100+ deployments <mark class="ph">confirm with Mike</mark>, then move immediately from the number to what it means for the reader: clients have been able to keep one accountable relationship as their A/V needs expand. November celebrates the work without reading like a scoreboard.</dd>
               <dt>Needs</dt>
-              <dd>Jane’s theme-title pick; Mike’s voice for the final welcome sign-off.</dd>
+              <dd>Jane’s theme-title pick; Mike’s confirmation of the deployment count and final welcome sign-off.</dd>
               <dt>Status</dt>
-              <dd><span class="status">Needs Jane decision</span></dd>
+              <dd><span class="status">Claim to confirm</span></dd>
             </dl>
           </div>
         </article>
 
         <article class="card card--piece">
           <header class="card__head">
-            <label class="pick"><input type="checkbox" aria-label="Pick Thirty days of forward motion"> Pick</label>
+            <label class="pick"><input type="checkbox" aria-label="Pick Recent work, different starting points"> Pick</label>
             <div>
               <p class="section-label">2 · LUCI Project Update</p>
-              <h3>Thirty days of forward motion</h3>
+              <h3>Recent work, different starting points</h3>
             </div>
           </header>
           <div class="card__body">
             <dl>
               <dt>Angle</dt>
-              <dd>A compact three-client update that shows both enterprise reach and fast field execution. Boyd is now at 25 of 26 properties on LUCI—proof that another enterprise can build toward the same operating standard. Caesars continues to expand while LUCI supports its integrator remotely. At Treasure Chest, the team stood up LUCI, redid the sportsbook for the move to Boyd Gaming, added switches and TVs, and finished audio in two days. Keep Treasure Chest as a positive new-client highlight, not a case study.</dd>
+              <dd>Use Valley Forge, Treasure Chest, Blue Chip, and Belterra Park Phase 1 as a compact retrofit update, with Treasure Chest kept to the same weight as the other three—not a case study. Then look ahead to Four Winds work spanning two of its four properties, an IP Biloxi retrofit, and a Chumash LED feature to show that a client can begin with an enterprise plan, a retrofit, or one focused need.</dd>
               <dt>Needs</dt>
-              <dd>Mike’s remaining project bullets and confirmation of any final details. <mark class="ph">[MIKE'S BULLETS NEEDED]</mark></dd>
+              <dd>Confirm the exact Belterra Park phase, Four Winds scope and signed status, and the customer-safe detail available for IP Biloxi and Chumash.</dd>
               <dt>Status</dt>
-              <dd><span class="status">Needs Mike’s bullets</span></dd>
+              <dd><span class="status">Ready after scope check</span></dd>
             </dl>
           </div>
         </article>
 
         <article class="card card--piece">
           <header class="card__head">
-            <label class="pick"><input type="checkbox" aria-label="Pick A forum for the people who run LUCI"> Pick</label>
+            <label class="pick"><input type="checkbox" aria-label="Pick A long relationship can scale"> Pick</label>
             <div>
-              <p class="section-label">3 · Beyond the platform</p>
-              <h3>A forum for the people who run LUCI</h3>
+              <p class="section-label">3 · In the field</p>
+              <h3>A long relationship can scale</h3>
             </div>
           </header>
           <div class="card__body">
             <dl>
               <dt>Angle</dt>
-              <dd>Offer the client-forum idea as a practical extension of the relationship: brief introductions, examples of how clients use LUCI, and a place to exchange tips and tricks. The value is shared operating knowledge, not another promotional channel.</dd>
+              <dd>Use Yaamava’s enterprise expansion alongside Boyd at all but one property <mark class="ph">confirm with Mike</mark>, Caesars at 15+ properties <mark class="ph">confirm with Mike</mark> with installations completed by its own teams, Choctaw at 5+ properties <mark class="ph">confirm with Mike</mark>, and Osage at 5+ properties <mark class="ph">confirm with Mike</mark>. The point is useful to the reader: LUCI can support a smaller casino, a large enterprise, and the steps between without changing the promise of one operating standard and a team that stays.</dd>
               <dt>Needs</dt>
-              <dd>Jane’s decision on whether to introduce the forum now; owner and format if selected.</dd>
+              <dd>Confirm every figure and the customer-safe details of the Yaamava expansion; decide whether this is one enterprise pattern or two shorter examples.</dd>
               <dt>Status</dt>
-              <dd><span class="status">Needs Jane decision</span></dd>
+              <dd><span class="status">Claims to confirm</span></dd>
             </dl>
           </div>
         </article>
@@ -306,7 +380,7 @@
               <dt>Angle</dt>
               <dd>Use scripting as the operational topic. Explain at a high level how a repeated A/V sequence can become a consistent action instead of a list staff rebuild each time; save detailed steps for the full draft once the example is chosen.</dd>
               <dt>Needs</dt>
-              <dd>Mike’s choice of one accurate, customer-facing scripting example.</dd>
+              <dd>Mike’s choice of one accurate, customer-facing scripting example. <mark class="ph">[MIKE'S BULLETS NEEDED]</mark></dd>
               <dt>Status</dt>
               <dd><span class="status">Needs Mike’s bullets</span></dd>
             </dl>
@@ -335,31 +409,72 @@
 
         <article class="card card--piece">
           <header class="card__head">
-            <label class="pick"><input type="checkbox" aria-label="Pick Why the relationship lasts"> Pick</label>
+            <label class="pick"><input type="checkbox" aria-label="Pick We’ve never lost a client since 2019"> Pick</label>
             <div>
               <p class="section-label">6 · A Minute with Mike</p>
-              <h3>Why the relationship lasts</h3>
+              <h3>We’ve never lost a client since 2019</h3>
             </div>
           </header>
           <div class="card__body">
             <dl>
               <dt>Angle</dt>
-              <dd>Give Mike the long-term-relationship argument: we’ve never lost a client because the work continues after turn-on. Client feedback improves the product, each expansion deepens the operating standard, and more client control strengthens the partnership rather than reducing it.</dd>
+              <dd>Make Mike’s retention statement prominent, then explain it from the client’s side: the relationship continues after turn-on, through support, changes, and expansion. Close on the promise that putting more control in the client’s hands strengthens the partnership; it does not reduce LUCI’s accountability or support.</dd>
               <dt>Needs</dt>
-              <dd>Mike’s personal bullets or one relationship example he wants to tell in his own voice.</dd>
+              <dd>Confirm the support for the since-2019 statement and choose one long-running relationship example Mike can tell in his own voice.</dd>
               <dt>Status</dt>
-              <dd><span class="status">Needs Mike’s bullets</span></dd>
+              <dd><span class="status">Ready after claim check</span></dd>
             </dl>
           </div>
         </article>
       </div>
     </section>
 
+    <section id="section-four">
+      <h2>Mike’s section 4 recommendation</h2>
+      <div class="recommendation">
+        <p><strong>Recommendation: fold it into “A Minute with Mike,” not a standalone piece.</strong></p>
+        <p><strong>Reason:</strong> On its own, the section repeats the issue’s relationship argument and shifts the tone from reader benefit toward comparison.</p>
+        <p><strong>Softened angle:</strong> When the same team stays involved after deployment, clients can keep improving their A/V operation without restarting the relationship for every change. The benefit is continuity: one operating foundation, ongoing modernization, and support that remains accountable as the property grows.</p>
+      </div>
+    </section>
+
+    <section id="confirm">
+      <h2>Needs confirming</h2>
+      <ul class="needs-list">
+        <li>100+ deployments — confirm with Mike.</li>
+        <li>Boyd is deployed at all but one property — confirm with Mike.</li>
+        <li>Caesars has 15+ properties on LUCI, with installations completed by Caesars’ own teams — confirm with Mike.</li>
+        <li>Choctaw has 5+ properties on LUCI — confirm with Mike.</li>
+        <li>Osage has 5+ properties on LUCI — confirm with Mike.</li>
+        <li>Exact support for “we’ve never lost a client since 2019” before full copy.</li>
+        <li>Yaamava enterprise expansion details that are approved for this customer newsletter.</li>
+        <li>Whether “Belterra Park Phase 1” is the exact completed scope and phase label.</li>
+        <li>Four Winds signed status and two-of-four scope; customer-safe scope for the IP Biloxi retrofit and Chumash LED feature.</li>
+        <li>Winter break start <mark class="ph">[Friday, December 18th]</mark>.</li>
+        <li>One pending signing is intentionally left out until Jane confirms it signed.</li>
+      </ul>
+    </section>
+
+    <section id="december" class="held">
+      <span class="held-label">Held for December — not part of the November issue</span>
+      <h2>December issue (held)</h2>
+      <p class="intro">Target send: around December 15. December carries the personal client-gratitude story; none of these pieces should be mixed into the November slate.</p>
+      <ul class="held-list">
+        <li><strong>Client-driven innovation:</strong> Show how client ideas, requests, and operating challenges shape LUCI’s development priorities.</li>
+        <li><strong>Loyalty that fuels development:</strong> Explain how long relationships create room for sustained engineering, support, and product improvement.</li>
+        <li><strong>A partnership, not a vendor relationship:</strong> Describe what it means for the LUCI team to stay involved and accountable as part of the client’s team.</li>
+        <li><strong>Collective benefits:</strong> Show how a feature requested in one client’s operation can become useful across the LUCI client community.</li>
+        <li><strong>A personal thank-you:</strong> Recognize that client trust, feedback, and willingness to build differently made LUCI’s progress possible.</li>
+        <li><strong>Holiday message:</strong> Thank clients, note the winter break from <mark class="ph">[Friday, December 18th]</mark> <mark class="ph">needs confirmation</mark> to Monday, January 4th, 2027, invite advance coordination for planned changes, and state that our team remains available for urgent support.</li>
+      </ul>
+    </section>
+
     <section id="notes">
       <h2>Planning notes</h2>
       <div class="note">
         <p>The later email teaser will reuse the Issue 05 email shell. It is not part of this slate.</p>
-        <p><strong>December issue plan:</strong> Holiday thank-you to long-term clients, plus the office-closed and holiday-coverage notice from Mike’s template. Target send: around December 15.</p>
+        <p>November is the accomplishments issue, told warmly. December is the client-gratitude issue. Keep the arguments connected, but do not collapse them into one issue.</p>
+        <p>No ActiveCampaign, send, Webflow, or production build is included in this slate.</p>
       </div>
     </section>
 
