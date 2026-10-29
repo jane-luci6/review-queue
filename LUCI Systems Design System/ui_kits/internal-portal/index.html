@@ -3751,7 +3751,7 @@
     function renderStatus() {
       $('stat-review').textContent = String(allReviewItems().length);
       $('stat-comments').textContent = String(portal.comments.length);
-      $('stat-soon').textContent = String(10); // In Progress card count (curated list)
+      $('stat-soon').textContent = String(11); // In Progress card count (curated list)
       updateReviewUnreadBadges();
     }
 
@@ -4173,6 +4173,13 @@
           href: 'http://10.10.1.17:8081/content-marketing/new-luci-prospect-plan-view.html',
           external: true,
           pill: 'Email'
+        },
+        {
+          title: 'New Messaging Guide (draft)',
+          note: 'Draft for Jane. Old guide stays until you approve.',
+          href: 'http://10.10.1.17:8081/messaging/messaging-guide-2026.html',
+          external: true,
+          pill: 'Messaging'
         },
         {
           title: 'Signal Issue 06 (Nov) slate',
