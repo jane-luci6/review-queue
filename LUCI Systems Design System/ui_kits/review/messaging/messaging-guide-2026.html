@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>LUCI Messaging Guide (2026 draft)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="messaging-docs.css">
+  <style>
+    .tag-jane,
+    .tag-mike {
+      display: inline-block;
+      margin-left: 0.35em;
+      padding: 0.08em 0.45em;
+      font-size: 0.72em;
+      font-weight: 700;
+      line-height: 1.45;
+      white-space: nowrap;
+      vertical-align: 0.08em;
+    }
+    .tag-jane {
+      color: var(--navy-deep);
+      background: #FFE9A8;
+    }
+    .tag-mike {
+      color: var(--navy);
+      background: transparent;
+      border: 1px solid var(--rule-light);
+    }
+    .tag-note {
+      display: inline;
+      font-size: 0.85em;
+      color: var(--navy-muted);
+    }
+    .guide-table-wrap {
+      max-width: 100%;
+      margin: 16px 0 20px;
+      overflow-x: auto;
+    }
+    .guide-table {
+      width: 100%;
+      min-width: 680px;
+      border-collapse: collapse;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .guide-table th,
+    .guide-table td {
+      padding: 12px 14px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--rule-light);
+    }
+    .guide-table th {
+      color: var(--navy);
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .guide-table th:last-child,
+    .guide-table td:last-child {
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="resource">
+    <header class="resource__masthead">
+      <div class="resource__masthead-row">
+        <a href="https://lucisystems.com" class="resource__logo"><img src="data:image/png;base64,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" alt="LUCI Systems" width="120" height="24"></a>
+        <span class="resource__badge">Brand resources</span>
+      </div>
+      <h1 class="resource__hero-title">LUCI Messaging Guide (2026 draft)</h1>
+      <p class="resource__hero-deck">The current internal reference for LUCI brand, product, proof, and channel language.</p>
+      <p class="resource__meta">Draft for Jane · Oct 29, 2026 · old guide stays live until approved</p>
+      <nav class="resource__crumbs" aria-label="Breadcrumb">
+        <a href="../index.html">Review queue</a>
+        <span>/</span>
+        <span aria-current="page">LUCI Messaging Guide</span>
+      </nav>
+    </header>
+    <div class="resource__layout">
+      <aside class="resource__sidebar">
+        <p class="resource__nav-kicker">Library</p>
+        <ul class="resource__library">
+          <li><a href="messaging-guide-2026.html" class="is-current">Messaging guide 2026 (draft)</a><span>Draft Oct 29, 2026</span></li>
+          <li><a href="messaging-guide.html">Messaging guide</a><span>Updated Jun 11, 2026</span></li>
+          <li><a href="luci-system-diagram.html">LUCI system diagram</a></li>
+          <li><a href="philosophy.html">LUCI philosophy</a><span>Updated May 7, 2026</span></li>
+          <li><a href="personas.html">Personas</a><span>Updated May 6, 2026</span></li>
+        </ul>
+        <p class="resource__nav-kicker">On this page</p>
+        <nav aria-label="On this page">
+          <ul class="resource__toc">
+            <li><a href="#how-to-use-this-guide">HOW TO USE THIS GUIDE</a></li>
+            <li><a href="#what-changed-vs-the-old-guide">WHAT CHANGED VS THE OLD GUIDE</a></li>
+            <li><a href="#locked-rules-at-a-glance">LOCKED RULES AT A GLANCE</a></li>
+            <li><a href="#tagline-and-value-proposition">TAGLINE AND VALUE PROPOSITION</a></li>
+            <li><a href="#the-luci-worldview">THE LUCI WORLDVIEW</a></li>
+            <li><a href="#the-offering">THE OFFERING</a></li>
+            <li><a href="#message-pillars-brand-permanent">MESSAGE PILLARS</a></li>
+            <li><a href="#the-services-that-make-up-luci-systems">THE SERVICES</a></li>
+            <li><a href="#our-commitments">OUR COMMITMENTS</a></li>
+            <li><a href="#who-hears-what">WHO HEARS WHAT</a></li>
+            <li><a href="#key-features-platform-today">KEY FEATURES</a></li>
+            <li><a href="#what-luci-is-and-isnt">WHAT LUCI IS AND ISN’T</a></li>
+            <li><a href="#proof-and-weve-never-lost-a-client">PROOF AND RETENTION</a></li>
+            <li><a href="#new-luci-beta-time-bound">NEW LUCI (BETA)</a></li>
+            <li><a href="#voice-and-tone">VOICE AND TONE</a></li>
+            <li><a href="#needs-janes-call">NEEDS JANE’S CALL</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <main class="resource__article">
+        <section class="doc-section">
+          <h2 class="doc-chapter" id="how-to-use-this-guide">How to use this guide</h2>
+          <p class="doc-prose">LUCI is the orchestration engine that brings a property’s A/V operation into one interface, backed by an embedded team that stays. This guide gives Marketing, Sales, leadership, and every client-facing writer one current source for the brand argument, approved language, proof posture, and the New LUCI beta story.</p>
+          <p class="doc-prose">The June guide remains live until Jane approves this draft. The Philosophy and Personas pages are also stale; updating them is outside this draft.</p>
+        </section>
+
+        <section class="doc-section">
+          <h2 class="doc-chapter" id="what-changed-vs-the-old-guide">What changed vs the old guide</h2>
+          <p class="doc-prose doc-prose--kicker"><i>The ten changes that affect the most copy.</i></p>
+          <ul class="doc-stack">
+            <li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">01</span><b>The guide now separates permanent brand messaging from the time-bound New LUCI beta story.</b></p></li>
+            <li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">02</span><b>The opening definition gives a cold reader the product and team in one line.</b></p></li>
+            <li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">03</span><b>The value proposition uses A/V, works with existing technology, and describes LUCI as an engine—not another component in the client’s stack.</b></p></li>
+            <li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">04</span><b>The offering is one inseparable platform-and-partnership model, delivered with a LUCI appliance.</b></p></li>
+            <li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">05</span><b>The six services use their current names, including Embedded Partnership, and appear as one continuous relationship.</b></p></li>
+            <li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">06</span><b>Audience guidance covers six roles: General management, Operations, Technology, Finance, Marketing, and A/V &amp; Facilities.</b></p></li>
+            <li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">07</span><b>Proof now leads with “we’ve never lost a client,” while unverified enterprise counts remain marked for confirmation.</b></p></li>
+            <li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">08</span><b>New LUCI stays in beta, carries no public date, and promises more client control without less LUCI support.</b></p></li>
+            <li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">09</span><b>Voice guidance now requires cold-reader context, specific nouns, active voice, varied sentence length, and channel-specific register.</b></p></li>
+            <li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">10</span><b>Open conflicts are visible and tagged instead of being mistaken for settled policy.</b></p></li>
+          </ul>
+
+          <h3 class="doc-subsection__title">Fourteen stale points: old guide said → now</h3>
+          <ul class="doc-rows">
+            <li><span class="doc-rows__label">Value proposition</span><span class="doc-rows__value"><p class="doc-prose"><b>Old:</b> <q class="never">orchestrates every layer of technology</q> and <q class="never">AV</q>. <b>Now:</b> A/V always; LUCI works with the technology the property runs and coordinates the layers in the client’s accumulated environment.</p></span></li>
+            <li><span class="doc-rows__label">Client stack</span><span class="doc-rows__value"><p class="doc-prose"><b>Old:</b> “Rather than adding layers to your stack.” <b>Now:</b> The thought remains valid because the layers belong to the client’s stack; use the shorter subtraction argument when possible.</p></span></li>
+            <li><span class="doc-rows__label">Service name</span><span class="doc-rows__value"><p class="doc-prose"><b>Old:</b> <q class="never">Owner’s-Rep Partnership</q>. <b>Now:</b> Embedded Partnership.</p></span></li>
+            <li><span class="doc-rows__label">Website guidance</span><span class="doc-rows__value"><p class="doc-prose"><b>Old:</b> name systems LUCI replaces. <b>Now:</b> say LUCI works with, absorbs, coordinates, or consolidates existing technology; use “replace” only for a literal physical substitution.</p></span></li>
+            <li><span class="doc-rows__label">Feature set</span><span class="doc-rows__value"><p class="doc-prose"><b>Old:</b> six broad capabilities with PIN control as a headline feature. <b>Now:</b> keep the current platform facts here and put the beta feature set in its own time-bound section.</p></span></li>
+            <li><span class="doc-rows__label">Expansion</span><span class="doc-rows__value"><p class="doc-prose"><b>Old:</b> add venues without replacing the core. <b>Now:</b> extend the same operating platform into added venues, rooms, and properties.</p></span></li>
+            <li><span class="doc-rows__label">Sibling pages</span><span class="doc-rows__value"><p class="doc-prose"><b>Old:</b> Philosophy describes an <q class="never">operating layer</q>, claims one platform replaces the stack, and names a NUC or VM. <b>Now:</b> orchestration engine, LUCI appliance, and literal substitution only. Philosophy and Personas remain a later update.</p></span></li>
+            <li><span class="doc-rows__label">Sentence rhythm</span><span class="doc-rows__value"><p class="doc-prose"><b>Old:</b> short sentences and short paragraphs as a blanket rule. <b>Now:</b> write lean copy, but vary sentence length and use narrative when it carries the argument.</p></span></li>
+            <li><span class="doc-rows__label">Proof</span><span class="doc-rows__value"><p class="doc-prose"><b>Old:</b> general trust frames only. <b>Now:</b> lead with “we’ve never lost a client”; use approved project counts in named case studies and keep unverified enterprise counts internal.</p></span></li>
+            <li><span class="doc-rows__label">Support</span><span class="doc-rows__value"><p class="doc-prose"><b>Old:</b> no ticket queue and no escalation path. <b>Now:</b> no tiered vendor queue; the property can open a contextual request, and the same LUCI team owns diagnosis through resolution. <span class="tag-jane" title="Alternative: preserve the old no-escalation language.">needs Jane's call</span></p></span></li>
+            <li><span class="doc-rows__label">Audiences</span><span class="doc-rows__value"><p class="doc-prose"><b>Old:</b> four executive roles. <b>Now:</b> six operating and buying roles aligned to the website.</p></span></li>
+            <li><span class="doc-rows__label">Mechanics</span><span class="doc-rows__value"><p class="doc-prose"><b>Old:</b> <q class="never">AV / FACILITIES MANAGER</q>. <b>Now:</b> A/V &amp; Facilities.</p></span></li>
+            <li><span class="doc-rows__label">New rules</span><span class="doc-rows__value"><p class="doc-prose"><b>Old:</b> no guidance for beta posture, the LUCI appliance, cold-reader openings, varied intros, or specific nouns. <b>Now:</b> all five are explicit.</p></span></li>
+            <li><span class="doc-rows__label">Publishing path</span><span class="doc-rows__value"><p class="doc-prose"><b>Old:</b> the page is regenerated from the June Word file. <b>Now:</b> this draft lives on a separate page so the old guide remains intact. <span class="tag-jane" title="Alternative: replace the synced page and change its build path.">needs Jane's call</span></p></span></li>
+          </ul>
+        </section>
+
+        <section class="doc-section">
+          <h2 class="doc-chapter" id="locked-rules-at-a-glance">Locked rules at a glance</h2>
+          <div class="guide-table-wrap">
+            <table class="guide-table">
+              <thead><tr><th>Rule</th><th>Say / Don’t say</th><th>Locked date</th></tr></thead>
+              <tbody>
+                <tr><td>A/V</td><td>Write “A/V” in every channel, label, caption, and diagram.</td><td>Jul 22</td></tr>
+                <tr><td>Engine, not component</td><td>LUCI is never a <q class="never">layer</q>. Coordinating the layers of a client’s technology is allowed.</td><td>Oct 26</td></tr>
+                <tr><td>Literal substitution only</td><td>Use “replace” only when one item physically takes the place of another. Never say LUCI <q class="never">replaces your</q> technology.</td><td>Oct 26</td></tr>
+                <tr><td>Hardware name</td><td>Say “LUCI appliance.” Do not describe multiple boxes or call the appliance a <q class="never">laptop</q> or <q class="never">support box</q>.</td><td>Oct 9</td></tr>
+                <tr><td>New LUCI theme</td><td>“Putting the power of programming in your hands.”</td><td>Sep 9</td></tr>
+                <tr><td>Support remains</td><td>More client control, with LUCI alongside. Never imply that the client needs less support.</td><td>Sep 9</td></tr>
+                <tr><td>Retired lead</td><td>Do not lead with <q class="never">operational precision</q>.</td><td>Sep 9</td></tr>
+                <tr><td>Beta sequence</td><td>Do not use <q class="never">property-by-property</q> in external marketing.</td><td>Sep 16</td></tr>
+                <tr><td>No public calendar</td><td>No public date and no “Coming soon.”</td><td>Oct 9</td></tr>
+                <tr><td>Beta only</td><td>Say “in beta.” Never say <q class="never">launched</q>.</td><td>Sep 15</td></tr>
+                <tr><td>Asset name</td><td>“LUCI Upgrade Guide,” never “Upgrade Overview.”</td><td>Oct 23</td></tr>
+                <tr><td>Retention claim</td><td>Use “we’ve never lost a client” exactly where the relationship argument makes it natural.</td><td>Oct 9</td></tr>
+                <tr><td>Naming discretion</td><td>No partner, product, competitor, or unsigned-client names in public brand copy.</td><td>Sep–Oct</td></tr>
+                <tr><td>Retired promotion</td><td>Do not use <q class="never">easy</q>, <q class="never">intuitive</q>, <q class="never">transform</q>, <q class="never">empower</q>, <q class="never">revolutionize</q>, <q class="never">best-in-class</q>, or <q class="never">game-changing</q>.</td><td>Jun 11</td></tr>
+                <tr><td>Claims</td><td>No percentages, invented statistics, revenue lift, payback, or unsupported outcome numbers.</td><td>Aug 28</td></tr>
+                <tr><td>Wall dimensions</td><td>Write <code>106' x 20'</code> or “2,000 square feet,” never <q class="never">106-foot</q>.</td><td>Sep 15</td></tr>
+                <tr><td>Varied openings</td><td>Start with the actual place, system, or decision. Do not reuse “In a casino…” openings.</td><td>Sep 29</td></tr>
+                <tr><td>Cold-reader context</td><td>Define LUCI in one plain line when the reader may not know the company.</td><td>Sep 18</td></tr>
+                <tr><td>Specific, active copy</td><td>Name the system, place, actor, and action. Avoid vague shorthand.</td><td>Oct 12</td></tr>
+                <tr><td>Service name</td><td>Use “Embedded Partnership,” not <q class="never">owner’s rep</q>.</td><td>Oct 1</td></tr>
+                <tr><td>Asset format</td><td>Call the New LUCI leave-behind a “two-pager,” not a “one-pager.”</td><td>Sep 24</td></tr>
+                <tr><td>Tagline</td><td>“The Orchestration Engine for Enterprise Multimedia.” Do not paraphrase.</td><td>Verbatim</td></tr>
+                <tr><td>Sub-tagline</td><td>“One interface to control, automate, and execute the entire guest experience.” Do not paraphrase.</td><td>Verbatim</td></tr>
+                <tr><td>One offering</td><td>Platform + partnership. Do not split the software from the embedded team.</td><td>Aug 28</td></tr>
+                <tr><td>Services</td><td>Use the six current service names, unnumbered; state once that all six are included in the subscription.</td><td>Oct 1</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="doc-section">
+          <h2 class="doc-chapter" id="tagline-and-value-proposition">Tagline and value proposition</h2>
+          <aside class="doc-callout doc-callout--key">
+            <p class="doc-prose"><b>The Orchestration Engine for Enterprise Multimedia</b><br>One interface to control, automate, and execute the entire guest experience.</p>
+          </aside>
+          <h3 class="doc-subsection__title">Value proposition</h3>
+          <p class="doc-prose">Separate A/V, signage, building, and operating systems create a longer list of vendors, interfaces, and handoffs. LUCI brings that technology into one operating platform and gives the property team one interface to control, automate, and execute the guest experience, backed by an embedded team that stays. The result is fewer variables, less dedicated hardware, and one accountable operation that can extend as the property changes.</p>
+          <h3 class="doc-subsection__title">Draft boilerplate</h3>
+          <p class="doc-prose">Use the rewritten boilerplate as the draft default. <span class="tag-jane" title="Alternative: retain the old verbatim boilerplate and correct A/V only.">needs Jane's call</span></p>
+          <aside class="doc-callout doc-callout--key">
+            <p class="doc-prose">LUCI Systems is the orchestration engine for enterprise multimedia. It works with the A/V, signage, building, and operational technology a property already runs, bringing control, automation, and execution into one interface while the embedded LUCI team plans, deploys, supports, and continuously refines the environment. The property keeps its hardware choices and gains a shorter list of systems, vendors, and workflows to manage.</p>
+          </aside>
+          <p class="doc-stack__note"><b>Old boilerplate for comparison:</b> <q class="never">LUCI Systems orchestrates every layer of technology running your property — AV, signage, building, and operational infrastructure — from a single interface your team controls from anywhere. Rather than adding layers to your stack, LUCI reduces the variables, hardware, and interfaces your team has to manage. When onsite experience and operational continuity are non-negotiable, LUCI delivers coordinated, real-time execution, end to end.</q></p>
+        </section>
+
+        <section class="doc-section">
+          <h2 class="doc-chapter" id="the-luci-worldview">The LUCI worldview</h2>
+          <p class="doc-prose">Complex A/V environments rarely fail because they lack another feature. They fail because each renovation, vendor, processor, control interface, and workaround adds another decision the property must carry.</p>
+          <p class="doc-prose">LUCI applies subtraction. One operating interface consolidates duplicate control paths. A common standard reduces the vendors, logins, rack equipment, and workflows that operations and IT must coordinate.</p>
+          <p class="doc-prose">The software is only half of the answer. The embedded team learns the property, carries design intent into deployment, supports the live environment, and returns field experience to the platform. The client gets a shorter list of things to manage and a team that stays.</p>
+        </section>
+
+        <section class="doc-section">
+          <h2 class="doc-chapter" id="the-offering">The offering</h2>
+          <p class="doc-prose">LUCI Systems is one offering: the orchestration platform and the embedded partnership that plans, deploys, supports, and refines it. Never sell the software as if the team were an add-on, and never describe the team as a separate consulting engagement.</p>
+          <ul class="doc-rows">
+            <li><span class="doc-rows__label">The platform</span><span class="doc-rows__value"><p class="doc-prose">Software that connects the property’s A/V, signage, building, and content systems through one interface on standard network infrastructure.</p></span></li>
+            <li><span class="doc-rows__label">The partnership</span><span class="doc-rows__value"><p class="doc-prose">The LUCI FDE and embedded team carry context from early planning through deployment, training, support, and continuous refinement.</p></span></li>
+            <li><span class="doc-rows__label">The hardware</span><span class="doc-rows__value"><p class="doc-prose">A preconfigured LUCI appliance supports the platform. Do not turn the appliance into the product story.</p></span></li>
+            <li><span class="doc-rows__label">Where people work</span><span class="doc-rows__value"><p class="doc-prose">Most users run LUCI on an iPad; administrators complete setup on a computer. <span class="tag-jane" title="Alternative: keep device language general until this usage pattern is formally locked.">needs Jane's call</span> <span class="tag-note">Reported in current materials, not a written lock.</span></p></span></li>
+          </ul>
+        </section>
+
+        <section class="doc-section">
+          <h2 class="doc-chapter" id="message-pillars-brand-permanent">Message pillars (brand, permanent)</h2>
+          <p class="doc-prose doc-prose--kicker"><i>These four pillars anchor the brand. The three New LUCI pillars organize the beta story and belong in that time-bound section.</i></p>
+          <ul class="doc-stack">
+            <li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">01</span><b>Complete visibility and control across the property</b></p><p class="doc-stack__body">Bring displays, LED walls, audio zones, signage, lighting, sources, and their current state into one operating view. Teams see the same property and act from the same interface.</p></li>
+            <li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">02</span><b>Align teams by default</b></p><p class="doc-stack__body">Operations, IT, Marketing, A/V, and leadership work from shared schedules, device state, permissions, and incident context. The system keeps the evidence connected while each team keeps its role.</p></li>
+            <li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">03</span><b>Fully activate the guest experience</b></p><p class="doc-stack__body">Coordinate screens, sources, sound, signage, and lighting around the moment the property needs to deliver—from a scheduled morning reset to a live event change.</p></li>
+            <li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">04</span><b>Invest in A/V that scales and improves</b></p><p class="doc-stack__body">Extend one operating standard into added rooms, venues, and properties. Continuous refinement adds capability without forcing the organization to rebuild its operating model around each project.</p></li>
+          </ul>
+        </section>
+
+        <section class="doc-section">
+          <h2 class="doc-chapter" id="the-services-that-make-up-luci-systems">The Services that Make Up LUCI Systems</h2>
+          <p class="doc-prose">All six services are included in the LUCI subscription. They are not separate packages; each comes forward when the work requires it, while the same team carries property context from one stage to the next.</p>
+          <ul class="doc-stack">
+            <li class="doc-stack__item"><p class="doc-stack__head"><b>LUCI FDE</b></p><p class="doc-stack__body">Forward-deployed engineers learn the property early, build production systems in its real operating environment, and remain accountable after go-live.</p></li>
+            <li class="doc-stack__item"><p class="doc-stack__head"><b>Design &amp; Deployment</b></p><p class="doc-stack__body">Plans, budgets, technical coordination, commissioning, and go-live are organized around how the property must operate—not around separate vendor scopes.</p></li>
+            <li class="doc-stack__item"><p class="doc-stack__head"><b>Embedded Partnership</b></p><p class="doc-stack__body">The LUCI team acts as a standing extension of the enterprise for roadmaps, vendor decisions, capital planning, and technical standards.</p></li>
+            <li class="doc-stack__item"><p class="doc-stack__head"><b>Training &amp; Enablement</b></p><p class="doc-stack__body">Role-aware training and property-specific documentation give operators, administrators, and technical leads a standard that survives staff turnover.</p></li>
+            <li class="doc-stack__item"><p class="doc-stack__head"><b>Support &amp; Operations</b></p><p class="doc-stack__body">The team begins diagnosis with the design, configuration, vendors, and operating intent already understood, then coordinates the path to resolution.</p></li>
+            <li class="doc-stack__item"><p class="doc-stack__head"><b>Continuous Refinement</b></p><p class="doc-stack__body">Incidents, recurring friction, and operator needs become inputs to the platform, so field learning improves the standard clients run.</p></li>
+          </ul>
+        </section>
+
+        <section class="doc-section">
+          <h2 class="doc-chapter" id="our-commitments">Our commitments</h2>
+          <ul class="doc-stack">
+            <li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">01</span><b>Support begins before deployment.</b></p><p class="doc-stack__body">The LUCI team builds support context while it maps the property, coordinates the design, and prepares the operating standard.</p></li>
+            <li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">02</span><b>The team that builds the environment supports it.</b></p><p class="doc-stack__body">The people who understand the design intent remain connected after commissioning, so the property does not reconstruct context at the first incident.</p></li>
+            <li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">03</span><b>One team owns the incident from diagnosis through resolution.</b></p><p class="doc-stack__body">There is no tiered vendor queue. The property can open a support request from an incident, and the same LUCI team owns the response through resolution. <span class="tag-jane" title="Alternative: retain the old absolute statement that there is no escalation path.">needs Jane's call</span></p></li>
+            <li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">04</span><b>Field learning returns to the platform.</b></p><p class="doc-stack__body">Recurring incidents and operating needs become inputs to continuous refinement, so the standard gets more capable over time.</p></li>
+          </ul>
+        </section>
+
+        <section class="doc-section">
+          <h2 class="doc-chapter" id="who-hears-what">Who hears what</h2>
+          <p class="doc-prose doc-prose--kicker"><i>Lead with the permanent brand pillar closest to the work each person owns.</i></p>
+          <ul class="doc-rows">
+            <li><span class="doc-rows__label">General management</span><span class="doc-rows__value"><p class="doc-prose"><b>Lead with pillar 01.</b> One current view of the property, one accountable team, and a clear path from operating decision to guest-facing result.</p></span></li>
+            <li><span class="doc-rows__label">Operations</span><span class="doc-rows__value"><p class="doc-prose"><b>Lead with pillar 02.</b> Routine work follows one standard, live changes keep their context, and every team acts from the same operating picture.</p></span></li>
+            <li><span class="doc-rows__label">Technology</span><span class="doc-rows__value"><p class="doc-prose"><b>Lead with pillar 01.</b> Standard network infrastructure, open integration, role-based access, live system context, and one accountable support path.</p></span></li>
+            <li><span class="doc-rows__label">Finance</span><span class="doc-rows__value"><p class="doc-prose"><b>Lead with pillar 04.</b> One subscription supports an operating standard that extends into future projects and gains capability over time.</p></span></li>
+            <li><span class="doc-rows__label">Marketing</span><span class="doc-rows__value"><p class="doc-prose"><b>Lead with pillar 03.</b> Coordinate content, screens, sound, signage, and lighting around the right guest moment without routing every change through another team.</p></span></li>
+            <li><span class="doc-rows__label">A/V &amp; Facilities</span><span class="doc-rows__value"><p class="doc-prose"><b>Lead with pillar 01.</b> See endpoint state, control approved zones, schedule repeatable work, and give support the device context behind an incident.</p></span></li>
+          </ul>
+        </section>
+
+        <section class="doc-section">
+          <h2 class="doc-chapter" id="key-features-platform-today">Key features (platform today)</h2>
+          <p class="doc-prose">Use these capabilities when describing the platform clients run now. Keep beta capabilities in the New LUCI section.</p>
+          <ul class="doc-rows">
+            <li><span class="doc-rows__label">Map-based control</span><span class="doc-rows__value"><p class="doc-prose">A live property map gives authorized users one place to find and operate displays, LED walls, audio zones, signage, lighting, and connected endpoints.</p></span></li>
+            <li><span class="doc-rows__label">Open integration</span><span class="doc-rows__value"><p class="doc-prose">LUCI connects to A/V, signage, building, and content systems through open protocols and APIs while preserving the property’s hardware choices.</p></span></li>
+            <li><span class="doc-rows__label">Presets &amp; scheduling</span><span class="doc-rows__value"><p class="doc-prose">Teams save repeatable room and property states, schedule routine changes, and return screens, sources, and audio to a known baseline.</p></span></li>
+            <li><span class="doc-rows__label">Automation &amp; triggers</span><span class="doc-rows__value"><p class="doc-prose">External events and schedules can trigger coordinated responses across selected endpoints and zones.</p></span></li>
+            <li><span class="doc-rows__label">Role-based control</span><span class="doc-rows__value"><p class="doc-prose">Permissions give each user access to the locations and actions required for the job without exposing the entire property.</p></span></li>
+            <li><span class="doc-rows__label">Browser access</span><span class="doc-rows__value"><p class="doc-prose">Authorized users can operate LUCI from supported browser devices on or off the floor, subject to the property’s access model.</p></span></li>
+            <li><span class="doc-rows__label">Scalable standard</span><span class="doc-rows__value"><p class="doc-prose">Added rooms, endpoints, and sister properties extend the same interface, operating logic, and support relationship.</p></span></li>
+          </ul>
+        </section>
+
+        <section class="doc-section">
+          <h2 class="doc-chapter" id="what-luci-is-and-isnt">What LUCI is and isn’t</h2>
+          <div class="doc-compare">
+            <div class="doc-compare__col">
+              <p class="doc-prose"><b>LUCI IS</b></p>
+              <ul class="doc-list">
+                <li>The orchestration engine for enterprise multimedia</li>
+                <li>One offering made of software, a LUCI appliance, an operating standard, and an embedded team</li>
+                <li>A platform that works with the A/V and operational technology a property already runs</li>
+                <li>One interface for control, automation, execution, and shared operating context</li>
+                <li>A continuing relationship from planning through support and refinement</li>
+              </ul>
+            </div>
+            <div class="doc-compare__col">
+              <p class="doc-prose"><b>LUCI IS NOT</b></p>
+              <ul class="doc-list">
+                <li>An <q class="never">orchestration layer</q> or middleware category</li>
+                <li>A room-by-room control panel</li>
+                <li>A reporting dashboard that stops at visibility</li>
+                <li>A point solution that creates another integration problem</li>
+                <li>A wholesale technology swap or a substitute for the client’s A/V team</li>
+                <li>A vendor that hands the property off after deployment</li>
+              </ul>
+            </div>
+          </div>
+          <p class="doc-prose">When a physical wall, projector, rack, or headend is literally removed and another item takes its place, say so. When the property keeps its technology and LUCI brings it into one operating standard, use “works with,” “connects,” “absorbs,” “integrates,” “consolidates,” or “orchestrates.”</p>
+        </section>
+
+        <section class="doc-section">
+          <h2 class="doc-chapter" id="proof-and-weve-never-lost-a-client">Proof and “We’ve never lost a client”</h2>
+          <aside class="doc-callout doc-callout--key">
+            <p class="doc-prose"><b>We’ve never lost a client.</b></p>
+          </aside>
+          <p class="doc-prose">Lead with the message when the subject is trust, continuity, support, or the value of the embedded relationship. Follow it with the operating reason: LUCI stays through changes, incidents, expansions, and years of platform refinement.</p>
+          <p class="doc-prose">Frame customer longevity as long relationships with casinos of all sizes, never as a brag list. <span class="tag-jane" title="Alternative: omit the all-sizes claim until it becomes a written lock.">needs Jane's call</span> <span class="tag-note">“All sizes” is reported, not locked.</span></p>
+
+          <h3 class="doc-subsection__title">Mike’s counts—internal until confirmed</h3>
+          <ul class="doc-rows">
+            <li><span class="doc-rows__label">Deployments</span><span class="doc-rows__value"><p class="doc-prose">100+ deployments. <span class="tag-mike">confirm with Mike</span></p></span></li>
+            <li><span class="doc-rows__label">Boyd</span><span class="doc-rows__value"><p class="doc-prose">All but one enterprise property: 25 of 26. <span class="tag-mike">confirm with Mike</span></p></span></li>
+            <li><span class="doc-rows__label">Caesars</span><span class="doc-rows__value"><p class="doc-prose">15+ properties; installations completed by Caesars’ own teams, with LUCI supporting remotely. <span class="tag-mike">confirm with Mike</span></p></span></li>
+            <li><span class="doc-rows__label">Choctaw</span><span class="doc-rows__value"><p class="doc-prose">Five or more properties. <span class="tag-mike">confirm with Mike</span></p></span></li>
+            <li><span class="doc-rows__label">Osage</span><span class="doc-rows__value"><p class="doc-prose">Five or more properties; the decision log identifies six. <span class="tag-mike">confirm with Mike</span></p></span></li>
+            <li><span class="doc-rows__label">Retention date</span><span class="doc-rows__value"><p class="doc-prose">“Never lost a client since 2019.” <span class="tag-mike">confirm with Mike</span></p></span></li>
+          </ul>
+          <p class="doc-prose">The dating needs resolution: LUCI records describe a 10+ year Osage relationship and nine years at Ponca City, which do not align cleanly with “since 2019.” Until Mike confirms what the year measures, use “we’ve never lost a client” without a date. <span class="tag-jane" title="Alternative: publish the since-2019 qualifier after Mike defines it.">needs Jane's call</span></p>
+
+          <h3 class="doc-subsection__title">Approved project-true figures</h3>
+          <ul class="doc-list">
+            <li>Osage Ponca City: 98 endpoints.</li>
+            <li>Aliante: <code>106' x 20'</code> curved LED wall, or 2,000 square feet.</li>
+          </ul>
+          <p class="doc-prose">Named enterprise counts should appear only in The Signal and approved case studies after Mike confirms them. <span class="tag-jane" title="Alternative: also permit confirmed counts on the website and in sales collateral.">needs Jane's call</span></p>
+        </section>
+
+        <section class="doc-section">
+          <h2 class="doc-chapter" id="new-luci-beta-time-bound">New LUCI (beta), time-bound</h2>
+          <aside class="doc-callout">
+            <p><b>Time-bound:</b> applies while New LUCI is in beta; review when Jane changes the beta posture.</p>
+          </aside>
+
+          <h3 class="doc-subsection__title">Theme and promise</h3>
+          <p class="doc-prose"><b>Primary theme:</b> Putting the power of programming in your hands.</p>
+          <p class="doc-prose"><b>Two-pager variant:</b> The power of programming is in your hands.</p>
+          <p class="doc-prose">New LUCI gives the client more direct control over rooms, views, data, and access while the LUCI team remains alongside the property to monitor, diagnose, and support the system. Never turn client control into a reduced-support claim.</p>
+
+          <h3 class="doc-subsection__title">The three beta pillars</h3>
+          <p class="doc-prose">Use the Upgrade Guide names as the canonical feature labels in this draft. <span class="tag-jane" title="Alternative: use the shorter labels from the two-pager.">needs Jane's call</span></p>
+          <ul class="doc-stack">
+            <li class="doc-stack__item">
+              <p class="doc-stack__head"><span class="doc-stack__num">01</span><b>Greater control of the room</b></p>
+              <p class="doc-stack__body"><b>Venue panels.</b> Show only the controls, sources, presets, and venues approved for a panel, while keeping users out of the administrative application.</p>
+              <p class="doc-stack__body"><b>Staging.</b> Prepare screens, sources, and audio behind the scenes; review the pending set; apply it on cue; save or schedule it; add a timed return or lockout when required.</p>
+              <p class="doc-stack__body"><b>Audio group control.</b> Move selected zones together while preserving their differences, set them to one shared level, or adjust one zone alone.</p>
+            </li>
+            <li class="doc-stack__item">
+              <p class="doc-stack__head"><span class="doc-stack__num">02</span><b>Flexible control of your view</b></p>
+              <p class="doc-stack__body"><b>Customizable interface.</b> Apply property photography, marks, colors, approved typography, and consistent status colors to sign-in, splash, panel, and operating surfaces.</p>
+              <p class="doc-stack__body"><b>Live map flexibility.</b> Load the property’s floor plans, keep them current, return to the last map position across sessions and devices, and move from a property view to a broader geographic view.</p>
+              <p class="doc-stack__body"><b>Calendar Gantt view.</b> Review past and upcoming presets and schedules on a timeline, then narrow the record to one display.</p>
+              <p class="doc-stack__body"><b>Live screen view.</b> Confirm what a TV or LED wall is showing from an iPad or browser, including processor-synced wall geometry and live feeds.</p>
+            </li>
+            <li class="doc-stack__item">
+              <p class="doc-stack__head"><span class="doc-stack__num">03</span><b>Informed control of your operation</b> <span class="tag-jane" title="Alternative: the Oct 6 decision log and live assets say “Informed control of operations.”">needs Jane's call</span></p>
+              <p class="doc-stack__body"><b>Audit trails.</b> Trace actions by time, user, device, and trigger; filter the record; export it; and capture supported changes made outside LUCI.</p>
+              <p class="doc-stack__body"><b>Live monitoring.</b> See current device state and incidents on the map and in system health, then choose whether to handle an incident on property or open a support request.</p>
+              <p class="doc-stack__body"><b>Reporting &amp; Analytics.</b> Review incident volume and duration, command results, latency, automation, and preset activity across 24-hour, 7-day, and 30-day views.</p>
+              <p class="doc-stack__body"><b>Sign-in &amp; session control.</b> Use email, PIN, or your existing work sign-in; see and end active sessions; post a site-wide banner; and create roles with precise permissions. <span class="tag-jane" title="Alternative: allow the official integration name in technical detail.">needs Jane's call</span> <span class="tag-note">The Upgrade Guide names a product in the official sign-in copy.</span></p>
+            </li>
+          </ul>
+
+          <h3 class="doc-subsection__title">Cross-pillar: In-product support (Plus)</h3>
+          <p class="doc-prose">Start a request from the device, incident, or error in front of you with context and relevant logs attached. Use this recommended reconciliation: <b>LUCI is alerted when an issue appears and starts triage from the available context; your team decides when to open a support request.</b> <span class="tag-jane" title="Alternative: lead either with automatic triage or with the property’s escalation choice.">needs Jane's call</span></p>
+
+          <h3 class="doc-subsection__title">Also in this upgrade</h3>
+          <ul class="doc-rows">
+            <li><span class="doc-rows__label">One encrypted connection</span><span class="doc-rows__value"><p class="doc-prose">IT approves and maintains one encrypted outbound connection instead of a long list of exceptions.</p></span></li>
+            <li><span class="doc-rows__label">Bulk endpoint setup</span><span class="doc-rows__value"><p class="doc-prose">Add multiple TVs or endpoints by IP block instead of configuring each one separately.</p></span></li>
+            <li><span class="doc-rows__label">Central display model catalog</span><span class="doc-rows__value"><p class="doc-prose">Maintain supported display models centrally and push configurations to the property.</p></span></li>
+            <li><span class="doc-rows__label">Interface sound profiles</span><span class="doc-rows__value"><p class="doc-prose">Choose the sounds used for different interface actions.</p></span></li>
+            <li><span class="doc-rows__label">Automatic license updates</span><span class="doc-rows__value"><p class="doc-prose">Push license updates and endpoint limits to the site without manual key management.</p></span></li>
+            <li><span class="doc-rows__label">Endpoint search and filter</span><span class="doc-rows__value"><p class="doc-prose">Find an endpoint by name or filter the map by floor, venue, device type, or status.</p></span></li>
+            <li><span class="doc-rows__label">Command bar</span><span class="doc-rows__value"><p class="doc-prose">Keep power, mute, volume, and source controls in one consistent interface pattern.</p></span></li>
+            <li><span class="doc-rows__label">Audio zone coverage boundaries</span><span class="doc-rows__value"><p class="doc-prose">Draw a zone’s coverage area in two- or three-dimensional space.</p></span></li>
+            <li><span class="doc-rows__label">Display walls</span><span class="doc-rows__value"><p class="doc-prose">Group a grid of TVs as one wall object in LUCI.</p></span></li>
+            <li><span class="doc-rows__label">Connected device reporting</span><span class="doc-rows__value"><p class="doc-prose">See connected-device status, model, and network identity in one view.</p></span></li>
+            <li><span class="doc-rows__label">Announcements and paging</span><span class="doc-rows__value"><p class="doc-prose">Strengthen support for announcements, paging, and audio levels. <span class="tag-jane" title="Alternative: permit the official integration name in technical feature copy.">needs Jane's call</span> <span class="tag-note">The Upgrade Guide names a product in the feature title.</span></p></span></li>
+            <li><span class="doc-rows__label">Closed captioning per TV</span><span class="doc-rows__value"><p class="doc-prose">Turn closed captioning on or off at the individual-TV level.</p></span></li>
+            <li><span class="doc-rows__label">In-app staff messaging</span><span class="doc-rows__value"><p class="doc-prose">Send direct messages to staff using LUCI without leaving the platform.</p></span></li>
+          </ul>
+
+          <h3 class="doc-subsection__title">How to talk about beta</h3>
+          <ul class="doc-list">
+            <li>Say “New LUCI is in beta” or “a new version of LUCI is on its way.”</li>
+            <li>Do not publish a calendar date.</li>
+            <li>Never say <q class="never">launched</q>, <q class="never">Coming soon</q>, or <q class="never">property-by-property</q>.</li>
+            <li>Avoid <q class="never">release</q>, <q class="never">is coming</q>, and <q class="never">account-by-account</q> in customer-facing marketing until Jane locks the boundary. <span class="tag-jane" title="Alternative: allow one or more of these terms in customer copy.">needs Jane's call</span></li>
+          </ul>
+
+          <h3 class="doc-subsection__title">Upgrade path</h3>
+          <p class="doc-prose">LUCI fulfills the upgrade directly; it is not self-serve. A preconfigured LUCI appliance ships prepared for the site. The current system stays online during connection and verification, then LUCI completes the cutover with the property in about one to two hours. The upgrade is included under the current contract.</p>
+          <p class="doc-prose">When the private asset is available, label the link <b>LUCI Upgrade Guide</b>. Do not publish a public URL until Jane opens access.</p>
+
+          <h3 class="doc-subsection__title">Proof in the New LUCI story</h3>
+          <aside class="doc-callout doc-callout--key">
+            <p class="doc-prose"><b>The only A/V that scales and improves just got better.</b></p>
+            <p class="doc-prose">We’ve never lost a client.</p>
+          </aside>
+
+          <h3 class="doc-subsection__title">What not to say</h3>
+          <ul class="doc-list">
+            <li><q class="never">less need of the LUCI team</q></li>
+            <li><q class="never">operational precision</q></li>
+            <li><q class="never">property-by-property</q></li>
+            <li><q class="never">Coming soon</q></li>
+            <li><q class="never">launched</q></li>
+            <li><q class="never">LUCI replaces your existing technology</q></li>
+            <li><q class="never">support box</q> or <q class="never">laptop</q> for the LUCI appliance</li>
+            <li><q class="never">CoreX</q> or <q class="never">Hub</q></li>
+            <li><q class="never">Crestron</q> or any competitor name</li>
+            <li><q class="never">Table Mountain</q> or any unsigned client</li>
+          </ul>
+        </section>
+
+        <section class="doc-section">
+          <h2 class="doc-chapter" id="voice-and-tone">Voice and tone</h2>
+          <p class="doc-prose">A property leader may meet LUCI through a search result, a forwarded deck, or one email with no prior context. Give that reader the operating problem first, define LUCI in one plain line, and name the room, screen, source, user, or decision that makes the problem real.</p>
+
+          <h3 class="doc-subsection__title">The rules in practice</h3>
+          <ul class="doc-stack">
+            <li class="doc-stack__item"><p class="doc-stack__head"><b>Lead with accumulation, then subtraction.</b></p><p class="doc-stack__body">Name the separate controls, vendors, rack equipment, and handoffs the property carries. Then show the shorter operating list LUCI creates.</p></li>
+            <li class="doc-stack__item"><p class="doc-stack__head"><b>Use active voice and specific nouns.</b></p><p class="doc-stack__body">“The banquet manager stages the ballroom screens and audio” tells the reader who acts, where, and on what. “The experience is optimized” tells them nothing.</p></li>
+            <li class="doc-stack__item"><p class="doc-stack__head"><b>Describe institutions, not feelings.</b></p><p class="doc-stack__body">State what the platform, team, access model, or operating standard does. Do not rely on adjectives about how the software feels.</p></li>
+            <li class="doc-stack__item"><p class="doc-stack__head"><b>Write lean copy with rhythm.</b></p><p class="doc-stack__body">Cut modifiers that prop up weak claims. Keep a short sentence when it lands; use a longer sentence when sequence or cause matters.</p></li>
+            <li class="doc-stack__item"><p class="doc-stack__head"><b>Keep the stakes operational.</b></p><p class="doc-stack__body">The room opens, the wall changes, the incident keeps its context, and the team remains accountable. Avoid abstract aspiration.</p></li>
+            <li class="doc-stack__item"><p class="doc-stack__head"><b>Use “replace” only for a literal substitution.</b></p><p class="doc-stack__body">The house rule permits literal use; the prospect email campaign bans the word in every form. <span class="tag-jane" title="Alternative: expand the prospect campaign’s total ban to every LUCI channel.">needs Jane's call</span></p></li>
+          </ul>
+
+          <h3 class="doc-subsection__title">Say this / not this</h3>
+          <div class="doc-compare">
+            <div class="doc-compare__col">
+              <p class="doc-prose"><b>SAY THIS</b></p>
+              <ul class="doc-list">
+                <li>LUCI runs the property’s A/V from one interface.</li>
+                <li>The bartender changes the bar screens without opening controls for the rest of the floor.</li>
+                <li>The request reaches the LUCI team with device context and logs attached.</li>
+                <li>The new room joins the operating standard already in place.</li>
+                <li>The embedded team stays through planning, commissioning, support, and refinement.</li>
+              </ul>
+            </div>
+            <div class="doc-compare__col">
+              <p class="doc-prose"><b>NOT THIS</b></p>
+              <ul class="doc-list">
+                <li><q class="never">LUCI is an easy, intuitive orchestration layer.</q></li>
+                <li><q class="never">We transform and empower the guest experience.</q></li>
+                <li><q class="never">LUCI replaces your current technology.</q></li>
+                <li><q class="never">Best-in-class control for every property.</q></li>
+                <li><q class="never">In a casino, operational precision is everything.</q></li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 class="doc-subsection__title">Register by medium</h3>
+          <ul class="doc-rows">
+            <li><span class="doc-rows__label">Website</span><span class="doc-rows__value"><p class="doc-prose">Start with a recognizable property problem, define LUCI quickly, and support the claim with a workflow, scope count, or operating result. Second person is allowed.</p></span></li>
+            <li><span class="doc-rows__label">Executive / proposal</span><span class="doc-rows__value"><p class="doc-prose">Frame accumulation, risk, ownership, standardization, and the continuing operating model. Keep the argument factual and useful to the full buying group.</p></span></li>
+            <li><span class="doc-rows__label">Email</span><span class="doc-rows__value"><p class="doc-prose">One idea, one scene, one action. Define LUCI for a cold reader when list memory cannot be assumed. Keep prospect emails under 150 words.</p></span></li>
+            <li><span class="doc-rows__label">Social</span><span class="doc-rows__value"><p class="doc-prose">Use a wall, rack, room, or before-and-after as the hook; close on one interface, one operating view, or one accountable team.</p></span></li>
+            <li><span class="doc-rows__label">Video</span><span class="doc-rows__value"><p class="doc-prose">Let the property scene and action carry the explanation. Use conversational delivery without slang or unsupported superlatives.</p></span></li>
+            <li><span class="doc-rows__label">SOW</span><span class="doc-rows__value"><p class="doc-prose">Use third person, specific scope, factual obligations, and no marketing register.</p></span></li>
+          </ul>
+
+          <h3 class="doc-subsection__title">Retired words and patterns</h3>
+          <p class="doc-prose">Retire <q class="never">absurdly simple</q>, <q class="never">easy</q>, <q class="never">intuitive</q>, <q class="never">revolutionize</q>, <q class="never">transform</q>, <q class="never">empower</q>, <q class="never">best-in-class</q>, <q class="never">game-changing</q>, <q class="never">owner’s rep</q>, percentage claims, unnamed superlatives, repeated “In a casino…” openings, and any use of <q class="never">layer</q> that names LUCI.</p>
+        </section>
+
+        <section class="doc-section">
+          <h2 class="doc-chapter" id="needs-janes-call">Needs Jane’s call</h2>
+          <p class="doc-prose">Each recommended default below is the choice used in this draft.</p>
+          <ol class="doc-stack">
+            <li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">01</span><b>Pillar 03 wording</b> <span class="tag-jane" title="Oct 5 and Oct 6 conflict.">needs Jane's call</span></p><p class="doc-stack__body"><b>Option A:</b> “Informed control of your operation.” <b>Option B:</b> “Informed control of operations.” <b>Recommended default:</b> Option A, following Jane’s direct Oct 5 instruction.</p></li>
+            <li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">02</span><b>Pillar order on the website</b></p><p class="doc-stack__body"><b>Option A:</b> control-first, matching the Upgrade Guide and two-pager. <b>Option B:</b> visibility-first, matching the readiness brief. <b>Recommended default:</b> Option A.</p></li>
+            <li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">03</span><b>Canonical feature names</b></p><p class="doc-stack__body"><b>Option A:</b> Upgrade Guide names. <b>Option B:</b> two-pager short labels. <b>Recommended default:</b> Option A.</p></li>
+            <li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">04</span><b>Product and integration names in feature copy</b></p><p class="doc-stack__body"><b>Option A:</b> allow Q-SYS and Microsoft Entra ID in IT or technical detail only. <b>Option B:</b> never name them. <b>Recommended default:</b> no names in customer-facing copy; permit them only in an IT companion after approval.</p></li>
+            <li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">05</span><b>“Replace”</b></p><p class="doc-stack__body"><b>Option A:</b> literal use is allowed as the house rule. <b>Option B:</b> ban every form everywhere. <b>Recommended default:</b> Option A house-wide; keep the prospect email campaign’s stricter ban.</p></li>
+            <li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">06</span><b>“Release,” “is coming,” and “account-by-account”</b></p><p class="doc-stack__body"><b>Option A:</b> allow them in customer copy. <b>Option B:</b> avoid them. <b>Recommended default:</b> say “a new version of LUCI is on its way” or “in beta”; avoid “release” in marketing copy and avoid “account-by-account.”</p></li>
+            <li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">07</span><b>Support sentence</b></p><p class="doc-stack__body"><b>Option A:</b> lead with automatic triage. <b>Option B:</b> lead with the property’s choice to escalate. <b>Recommended default:</b> one sentence covering both: LUCI is alerted and starts triage; the property decides when to open a request.</p></li>
+            <li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">08</span><b>Retention dating</b></p><p class="doc-stack__body"><b>Option A:</b> “Never lost a client since 2019.” <b>Option B:</b> drop the year. <b>Recommended default:</b> “we’ve never lost a client” until Mike confirms how the date relates to the 10+ year Osage relationship.</p></li>
+            <li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">09</span><b>Named proof after Mike confirms it</b></p><p class="doc-stack__body"><b>Option A:</b> The Signal and approved case studies only. <b>Option B:</b> also use it on the website and in sales materials. <b>Recommended default:</b> Option A.</p></li>
+            <li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">10</span><b>Guide scope</b></p><p class="doc-stack__body"><b>Option A:</b> one brand guide with a time-bound New LUCI section. <b>Option B:</b> separate brand and beta documents. <b>Recommended default:</b> Option A; update Philosophy and Personas later.</p></li>
+            <li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">11</span><b>Value-prop boilerplate</b></p><p class="doc-stack__body"><b>Option A:</b> keep the old verbatim text and correct A/V. <b>Option B:</b> adopt the rewritten boilerplate in this draft. <b>Recommended default:</b> Option B.</p></li>
+            <li class="doc-stack__item"><p class="doc-stack__head"><span class="doc-stack__num">12</span><b>Publishing path</b></p><p class="doc-stack__body"><b>Option A:</b> keep this as a new page and retire the Word sync for the guide. <b>Option B:</b> replace the synced page. <b>Recommended default:</b> Option A; keep the old guide live until Jane approves.</p></li>
+          </ol>
+          <aside class="doc-callout">
+            <p><b>For the team:</b> the live .37 homepage still says <q class="never">one orchestration layer runs them all</q>. That belongs with Weatherby; this draft does not change the website.</p>
+          </aside>
+        </section>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
