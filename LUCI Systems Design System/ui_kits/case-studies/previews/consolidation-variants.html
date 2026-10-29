@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Consolidation section — before/after variants (Yaamava)</title>
+<link rel="stylesheet" href="../../assets/fonts/luci-brand-fonts.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy-deep: #0a161c; --navy: #10232d; --navy-mid: #314955;
+    --mint: #68e3be; --mint-rgb: 104, 227, 190; --gold: #edd086; --gold-deep: #ceb06e;
+    --off-white: #f5f8fa;
+    --font-display: 'Syncopate', sans-serif;
+    --font-body: 'Space Grotesk', system-ui, sans-serif;
+    --font-copy: 'Inter', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: var(--font-body); background: #000; color: var(--off-white); -webkit-font-smoothing: antialiased; }
+
+  .intro { max-width: 880px; margin: 0 auto; padding: 56px 24px 24px; }
+  .intro h1 { font-family: var(--font-body); font-weight: 700; font-size: clamp(26px, 4vw, 36px); letter-spacing: -0.025em; margin: 0 0 12px; color: var(--off-white); }
+  .intro h1 em { font-style: normal; color: var(--gold); }
+  .intro p { font-family: var(--font-copy); font-size: 16px; line-height: 1.6; color: rgba(235,245,248,0.78); max-width: 64ch; margin: 0 0 8px; }
+  .intro .note { font-size: 13px; color: rgba(235,245,248,0.55); border-left: 2px solid var(--mint); padding-left: 14px; margin-top: 16px; max-width: 64ch; }
+  .intro code { font-family: var(--font-copy); background: rgba(104,227,190,0.12); padding: 1px 6px; border-radius: 3px; }
+
+  .variant-label { max-width: 880px; margin: 64px auto 0; padding: 0 24px 18px; }
+  .variant-label__tag { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--mint); margin-bottom: 10px; }
+  .variant-label__tag::before { content: ''; width: 28px; height: 2px; background: var(--mint); }
+  .variant-label__name { font-family: var(--font-body); font-weight: 700; font-size: 22px; letter-spacing: -0.02em; color: var(--off-white); margin: 0 0 6px; }
+  .variant-label__desc { font-family: var(--font-copy); font-size: 14px; line-height: 1.55; color: rgba(235,245,248,0.7); max-width: 70ch; margin: 0; }
+
+  /* Shared section + content styling (matches the live case study) */
+  .cs-consolidation { position: relative; isolation: isolate; overflow: hidden; background-color: var(--navy-deep); border-bottom: 1px solid rgba(104,227,190,0.2); }
+  .cs-consolidation__inner { position: relative; z-index: 2; max-width: 880px; margin: 0 auto; padding: clamp(44px, 6vw, 72px) clamp(28px, 6vw, 64px); }
+  .cs-consolidation__title { margin: 0 0 32px; font-family: var(--font-body); font-weight: 700; font-size: clamp(24px, 4vw, 34px); line-height: 1.12; letter-spacing: -0.025em; color: var(--off-white); max-width: 28ch; }
+  .cs-consolidation__title em { font-style: normal; color: var(--gold); }
+  .cs-consolidation__list { list-style: none; margin: 0; padding: 0; max-width: 56ch; border-top: 1px solid rgba(235,245,248,0.18); }
+  .cs-consolidation__item { padding: 22px 0; border-bottom: 1px solid rgba(235,245,248,0.18); }
+  .cs-consolidation__item-title { margin: 0 0 8px; font-family: var(--font-body); font-weight: 700; font-size: 17px; line-height: 1.35; display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; }
+  .cs-consolidation__problem, .cs-consolidation__solution { color: var(--mint); }
+  .cs-consolidation__arrow { color: var(--off-white); font-weight: 400; }
+  .cs-consolidation__item-text { margin: 0; font-family: var(--font-copy); font-size: 17px; line-height: 1.65; color: rgba(235,245,248,0.84); }
+
+  .ba-tag { position: absolute; z-index: 3; font-family: var(--font-display); font-size: 9px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; padding: 7px 12px; border: 1px solid rgba(104,227,190,0.4); background: rgba(10,22,28,0.78); backdrop-filter: blur(4px); }
+  .ba-tag--before { color: rgba(235,245,248,0.72); }
+  .ba-tag--after { color: var(--mint); border-color: rgba(104,227,190,0.6); }
+
+  /* VARIANT A — Vertical split, labeled halves */
+  .vA .cs-consolidation__bg { position: absolute; inset: 0; z-index: 0; display: grid; grid-template-columns: 1fr 1fr; }
+  .vA .cs-consolidation__bg-before, .vA .cs-consolidation__bg-after { position: relative; overflow: hidden; }
+  .vA .cs-consolidation__bg-before { background: #000; }
+  .vA .cs-consolidation__bg-after { background: var(--navy); }
+  .vA .cs-consolidation__bg-before img, .vA .cs-consolidation__bg-after img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .vA .cs-consolidation__bg-before img { filter: grayscale(0.5) brightness(0.42) contrast(1.05); }
+  .vA .cs-consolidation__bg-after img { filter: brightness(0.62) contrast(1.05); }
+  .vA .cs-consolidation__bg-before::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(10,22,28,0.55), rgba(10,22,28,0.78)); }
+  .vA .cs-consolidation__bg-after::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(16,35,45,0.78), rgba(16,35,45,0.4)); }
+  .vA .cs-consolidation__seam { position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: var(--mint); z-index: 1; box-shadow: 0 0 18px rgba(104,227,190,0.5); }
+  .vA .cs-consolidation__inner { background: linear-gradient(to right, rgba(10,22,28,0.92) 0%, rgba(10,22,28,0.88) 100%); }
+  .vA .ba-tag--before { top: 24px; left: 24px; }
+  .vA .ba-tag--after { top: 24px; right: 24px; }
+
+  /* VARIANT B — Horizontal bands (before top, after bottom) */
+  .vB .cs-consolidation__bg { position: absolute; inset: 0; z-index: 0; }
+  .vB .cs-consolidation__band { position: absolute; left: 0; right: 0; overflow: hidden; }
+  .vB .cs-consolidation__band--before { top: 0; height: 30%; background: #000; }
+  .vB .cs-consolidation__band--after { bottom: 0; height: 30%; background: var(--navy); }
+  .vB .cs-consolidation__band img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .vB .cs-consolidation__band--before img { filter: grayscale(0.5) brightness(0.4); }
+  .vB .cs-consolidation__band--after img { filter: brightness(0.6); }
+  .vB .cs-consolidation__band--before::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,22,28,0.2), rgba(10,22,28,0.85)); }
+  .vB .cs-consolidation__band--after::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(16,35,45,0.2), rgba(16,35,45,0.85)); }
+  .vB .cs-consolidation__inner { background: rgba(10,22,28,0.94); }
+  .vB .ba-tag--before { top: 16px; left: 50%; transform: translateX(-50%); }
+  .vB .ba-tag--after { bottom: 16px; left: 50%; transform: translateX(-50%); }
+  /* VARIANT C — Ghost before + bright after window */
+  .vC .cs-consolidation__bg { position: absolute; inset: 0; z-index: 0; }
+  .vC .cs-consolidation__bg img { width: 100%; height: 100%; object-fit: cover; object-position: right center; display: block; filter: grayscale(0.7) brightness(0.32); opacity: 0.5; }
+  .vC .cs-consolidation__bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(10,22,28,0.92) 0%, rgba(10,22,28,0.82) 55%, rgba(10,22,28,0.5) 100%); }
+  .vC .cs-consolidation__after { position: absolute; z-index: 1; right: clamp(28px, 6vw, 64px); top: 50%; transform: translateY(-50%); width: clamp(220px, 26vw, 320px); border: 1px solid rgba(104,227,190,0.5); box-shadow: 0 24px 48px rgba(0,0,0,0.5); }
+  .vC .cs-consolidation__after img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; filter: brightness(0.85) contrast(1.05); }
+  .vC .cs-consolidation__after-cap { padding: 12px 14px; background: rgba(10,22,28,0.9); border-top: 1px solid rgba(104,227,190,0.4); }
+  .vC .cs-consolidation__after-cap span { font-family: var(--font-display); font-size: 9px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--mint); display: block; margin-bottom: 4px; }
+  .vC .cs-consolidation__after-cap p { margin: 0; font-family: var(--font-copy); font-size: 12px; line-height: 1.4; color: rgba(235,245,248,0.78); }
+  .vC .ba-tag--before { top: 24px; right: clamp(28px, 6vw, 64px); }
+  .vC .cs-consolidation__list { max-width: 50ch; }
+
+  /* VARIANT D — Before/after thumbnail chips (minimal change) */
+  .vD .cs-consolidation__bg { position: absolute; inset: 0; z-index: 0; background-image: linear-gradient(to right, var(--navy-deep) 0%, var(--navy-deep) 42%, rgba(7,15,20,0.92) 58%, rgba(7,15,20,0.62) 100%), url('../assets/yaamava/legacy-rack-before-web.jpg'); background-size: cover, cover; background-position: left top, right -2.5in center; background-repeat: no-repeat; }
+  .vD .cs-consolidation__chips { position: absolute; z-index: 2; right: clamp(28px, 6vw, 64px); top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 14px; }
+  .vD .chip-wrap { position: relative; width: clamp(150px, 18vw, 200px); }
+  .vD .chip { border: 1px solid rgba(235,245,248,0.16); background: rgba(10,22,28,0.86); backdrop-filter: blur(4px); }
+  .vD .chip img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+  .vD .chip--before img { filter: grayscale(0.5) brightness(0.55); }
+  .vD .chip--after img { filter: brightness(0.8); }
+  .vD .chip__label { padding: 8px 12px; display: flex; align-items: center; gap: 8px; font-family: var(--font-display); font-size: 9px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; border-top: 1px solid rgba(104,227,190,0.25); }
+  .vD .chip--before .chip__label { color: rgba(235,245,248,0.6); }
+  .vD .chip--after .chip__label { color: var(--mint); }
+  .vD .chip__arrow { position: absolute; left: 50%; transform: translateX(-50%); top: -22px; font-size: 18px; color: var(--mint); }
+  .vD .cs-consolidation__list { max-width: 50ch; }
+
+  /* VARIANT E — Drag-to-reveal slider in background */
+  .vE .cs-consolidation__bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+  .vE .cs-consolidation__bg-before, .vE .cs-consolidation__bg-after { position: absolute; inset: 0; }
+  .vE .cs-consolidation__bg-after img, .vE .cs-consolidation__bg-before img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .vE .cs-consolidation__bg-before img { filter: grayscale(0.5) brightness(0.45); }
+  .vE .cs-consolidation__bg-after img { filter: brightness(0.6); }
+  .vE .cs-consolidation__bg-after { clip-path: inset(0 0 0 50%); transition: clip-path 0.1s linear; }
+  .vE .cs-consolidation__handle { position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: var(--mint); z-index: 1; box-shadow: 0 0 18px rgba(104,227,190,0.5); cursor: ew-resize; transform: translateX(-50%); }
+  .vE .cs-consolidation__handle::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 44px; height: 44px; border-radius: 9999px; background: var(--mint); border: 3px solid var(--navy-deep); box-shadow: 0 6px 18px rgba(0,0,0,0.5); }
+  .vE .cs-consolidation__inner { background: linear-gradient(to right, rgba(10,22,28,0.96) 0%, rgba(10,22,28,0.9) 38%, rgba(10,22,28,0.35) 56%, rgba(10,22,28,0.2) 100%); }
+  .vE .ba-tag--before { top: 24px; left: 24px; }
+  .vE .ba-tag--after { top: 24px; right: 24px; }
+  .vE .cs-consolidation__hint { position: absolute; z-index: 3; bottom: 24px; left: 50%; transform: translateX(-50%); font-family: var(--font-copy); font-size: 12px; letter-spacing: 0.04em; color: rgba(235,245,248,0.6); }
+
+  /* VARIANT F — Labeled before with mint "AFTER" reveal strip */
+  .vF .cs-consolidation__bg { position: absolute; inset: 0; z-index: 0; }
+  .vF .cs-consolidation__bg img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; filter: grayscale(0.5) brightness(0.34); }
+  .vF .cs-consolidation__bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(10,22,28,0.92) 0%, rgba(10,22,28,0.82) 60%, rgba(10,22,28,0.55) 100%); }
+  .vF .cs-consolidation__strip { position: absolute; z-index: 1; right: 0; top: 0; bottom: 0; width: clamp(180px, 24vw, 300px); border-left: 2px solid var(--mint); box-shadow: -24px 0 48px rgba(0,0,0,0.4); overflow: hidden; }
+  .vF .cs-consolidation__strip img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.7) contrast(1.05); }
+  .vF .cs-consolidation__strip::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(16,35,45,0.5), rgba(16,35,45,0.15)); }
+  .vF .cs-consolidation__inner { background: linear-gradient(to right, rgba(10,22,28,0.94) 0%, rgba(10,22,28,0.7) 100%); }
+  .vF .ba-tag--before { top: 24px; left: 24px; }
+  .vF .ba-tag--after { top: 24px; right: clamp(28px, 6vw, 64px); }
+  .vF .cs-consolidation__list { max-width: 52ch; }
+</style>
+</head>
+<body>
+
+<div class="intro">
+  <h1>Consolidation section — <em>before/after</em> variants</h1>
+  <p>Six directions for making the &ldquo;before&rdquo; rack read clearly as the problem, not the result. All keep imagery in the background and reuse the same four before&rarr;after rows. The &ldquo;after&rdquo; image here is a stand-in (the install head-end photo); the real &ldquo;after&rdquo; can be a clean LUCI rack, a finished venue, or an interface screenshot &mdash; flagged below each variant where it matters.</p>
+  <p class="note">Scroll down to compare A&ndash;F. Each is a full-width section at realistic size. Pick a direction (or ask for iteration) and I&rsquo;ll implement it in the canonical <code>yaamava.html</code>, the review mirror, and the website Astro component &mdash; then propagate the pattern to Ameristar and any other case study using the rack-background treatment.</p>
+</div>
+<!-- ============ VARIANT A ============ -->
+<div class="variant-label">
+  <span class="variant-label__tag">Variant A</span>
+  <p class="variant-label__name">Vertical split, labeled halves</p>
+  <p class="variant-label__desc">Background split down the middle &mdash; before rack on the left (darkened, desaturated), after on the right (brighter). A 2px mint seam marks the transformation. Text rides a navy scrim over the seam so both halves read. &ldquo;Before&rdquo; / &ldquo;After&rdquo; tags in the corners remove the ambiguity. Best when you have a strong rack-to-rack &ldquo;after.&rdquo;</p>
+</div>
+<section class="cs-consolidation vA">
+  <div class="cs-consolidation__bg">
+    <div class="cs-consolidation__bg-before"><img src="../assets/yaamava/legacy-rack-before-web.jpg" alt="Legacy rack before LUCI"></div>
+    <div class="cs-consolidation__bg-after"><img src="../assets/yaamava/install-head-end-web.jpg" alt="LUCI head-end after consolidation"></div>
+  </div>
+  <span class="cs-consolidation__seam" aria-hidden="true"></span>
+  <span class="ba-tag ba-tag--before">Before</span>
+  <span class="ba-tag ba-tag--after">After</span>
+  <div class="cs-consolidation__inner">
+    <h2 class="cs-consolidation__title"><em>Consolidation</em> you can see</h2>
+    <ul class="cs-consolidation__list">
+      <li class="cs-consolidation__item"><p class="cs-consolidation__item-title"><span class="cs-consolidation__problem">Five technology silos</span><span class="cs-consolidation__arrow" aria-hidden="true">&rarr;</span><span class="cs-consolidation__solution">one platform</span></p><p class="cs-consolidation__item-text">Broadcast, signage, data, audio and paging, and displays now operate through LUCI.</p></li>
+      <li class="cs-consolidation__item"><p class="cs-consolidation__item-title"><span class="cs-consolidation__problem">34 new LED walls</span><span class="cs-consolidation__arrow" aria-hidden="true">&rarr;</span><span class="cs-consolidation__solution">same interface</span></p><p class="cs-consolidation__item-text">Walls across seven venues joined the property&rsquo;s existing A/V and signage control instead of creating another control environment.</p></li>
+      <li class="cs-consolidation__item"><p class="cs-consolidation__item-title"><span class="cs-consolidation__problem">Dedicated hardware</span><span class="cs-consolidation__arrow" aria-hidden="true">&rarr;</span><span class="cs-consolidation__solution">network distribution</span></p><p class="cs-consolidation__item-text">Audio and video run over the property network, reducing the processors, players, and rack equipment to power, cool, and maintain.</p></li>
+      <li class="cs-consolidation__item"><p class="cs-consolidation__item-title"><span class="cs-consolidation__problem">Coordinated interfaces</span><span class="cs-consolidation__arrow" aria-hidden="true">&rarr;</span><span class="cs-consolidation__solution">one operating view</span></p><p class="cs-consolidation__item-text">Staff select content or channels, choose the destinations, and send them across the floor, signage, and video walls from LUCI.</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ VARIANT B ============ -->
+<div class="variant-label">
+  <span class="variant-label__tag">Variant B</span>
+  <p class="variant-label__name">Horizontal bands — before on top, after on bottom</p>
+  <p class="variant-label__desc">Two thin full-bleed bands frame the section: the messy rack runs across the top (labeled &ldquo;Before&rdquo;), the clean after across the bottom (labeled &ldquo;After&rdquo;). The four rows sit on solid navy between them. Keeps text legibility high because the photos never sit behind the copy &mdash; they bracket it. Works well even with a weaker &ldquo;after&rdquo; photo, since the bands read as atmosphere, not proof.</p>
+</div>
+<section class="cs-consolidation vB">
+  <div class="cs-consolidation__bg">
+    <div class="cs-consolidation__band cs-consolidation__band--before"><img src="../assets/yaamava/legacy-rack-before-web.jpg" alt="Legacy rack before LUCI"></div>
+    <div class="cs-consolidation__band cs-consolidation__band--after"><img src="../assets/yaamava/install-head-end-web.jpg" alt="LUCI head-end after consolidation"></div>
+  </div>
+  <span class="ba-tag ba-tag--before">Before</span>
+  <span class="ba-tag ba-tag--after">After</span>
+  <div class="cs-consolidation__inner">
+    <h2 class="cs-consolidation__title"><em>Consolidation</em> you can see</h2>
+    <ul class="cs-consolidation__list">
+      <li class="cs-consolidation__item"><p class="cs-consolidation__item-title"><span class="cs-consolidation__problem">Five technology silos</span><span class="cs-consolidation__arrow" aria-hidden="true">&rarr;</span><span class="cs-consolidation__solution">one platform</span></p><p class="cs-consolidation__item-text">Broadcast, signage, data, audio and paging, and displays now operate through LUCI.</p></li>
+      <li class="cs-consolidation__item"><p class="cs-consolidation__item-title"><span class="cs-consolidation__problem">34 new LED walls</span><span class="cs-consolidation__arrow" aria-hidden="true">&rarr;</span><span class="cs-consolidation__solution">same interface</span></p><p class="cs-consolidation__item-text">Walls across seven venues joined the property&rsquo;s existing A/V and signage control instead of creating another control environment.</p></li>
+      <li class="cs-consolidation__item"><p class="cs-consolidation__item-title"><span class="cs-consolidation__problem">Dedicated hardware</span><span class="cs-consolidation__arrow" aria-hidden="true">&rarr;</span><span class="cs-consolidation__solution">network distribution</span></p><p class="cs-consolidation__item-text">Audio and video run over the property network, reducing the processors, players, and rack equipment to power, cool, and maintain.</p></li>
+      <li class="cs-consolidation__item"><p class="cs-consolidation__item-title"><span class="cs-consolidation__problem">Coordinated interfaces</span><span class="cs-consolidation__arrow" aria-hidden="true">&rarr;</span><span class="cs-consolidation__solution">one operating view</span></p><p class="cs-consolidation__item-text">Staff select content or channels, choose the destinations, and send them across the floor, signage, and video walls from LUCI.</p></li>
+    </ul>
+  </div>
+</section>
+<!-- ============ VARIANT C ============ -->
+<div class="variant-label">
+  <span class="variant-label__tag">Variant C</span>
+  <p class="variant-label__name">Ghost before + bright after window</p>
+  <p class="variant-label__desc">The messy rack becomes a faint, desaturated ghost across the whole background (atmosphere, not proof). A single bright &ldquo;after&rdquo; image sits in a framed window on the right, captioned &ldquo;After &mdash; LUCI head-end.&rdquo; The contrast does the storytelling: the mess recedes, the fix is the focal point. Text stays on the left over the ghost. Good when the &ldquo;after&rdquo; is one strong photo you want to feature.</p>
+</div>
+<section class="cs-consolidation vC">
+  <div class="cs-consolidation__bg"><img src="../assets/yaamava/legacy-rack-before-web.jpg" alt="Legacy rack before LUCI"></div>
+  <span class="ba-tag ba-tag--before">Before</span>
+  <div class="cs-consolidation__after">
+    <img src="../assets/yaamava/install-head-end-web.jpg" alt="LUCI head-end after consolidation">
+    <div class="cs-consolidation__after-cap"><span>After</span><p>LUCI head-end &mdash; one standardized stack.</p></div>
+  </div>
+  <div class="cs-consolidation__inner">
+    <h2 class="cs-consolidation__title"><em>Consolidation</em> you can see</h2>
+    <ul class="cs-consolidation__list">
+      <li class="cs-consolidation__item"><p class="cs-consolidation__item-title"><span class="cs-consolidation__problem">Five technology silos</span><span class="cs-consolidation__arrow" aria-hidden="true">&rarr;</span><span class="cs-consolidation__solution">one platform</span></p><p class="cs-consolidation__item-text">Broadcast, signage, data, audio and paging, and displays now operate through LUCI.</p></li>
+      <li class="cs-consolidation__item"><p class="cs-consolidation__item-title"><span class="cs-consolidation__problem">34 new LED walls</span><span class="cs-consolidation__arrow" aria-hidden="true">&rarr;</span><span class="cs-consolidation__solution">same interface</span></p><p class="cs-consolidation__item-text">Walls across seven venues joined the property&rsquo;s existing A/V and signage control instead of creating another control environment.</p></li>
+      <li class="cs-consolidation__item"><p class="cs-consolidation__item-title"><span class="cs-consolidation__problem">Dedicated hardware</span><span class="cs-consolidation__arrow" aria-hidden="true">&rarr;</span><span class="cs-consolidation__solution">network distribution</span></p><p class="cs-consolidation__item-text">Audio and video run over the property network, reducing the processors, players, and rack equipment to power, cool, and maintain.</p></li>
+      <li class="cs-consolidation__item"><p class="cs-consolidation__item-title"><span class="cs-consolidation__problem">Coordinated interfaces</span><span class="cs-consolidation__arrow" aria-hidden="true">&rarr;</span><span class="cs-consolidation__solution">one operating view</span></p><p class="cs-consolidation__item-text">Staff select content or channels, choose the destinations, and send them across the floor, signage, and video walls from LUCI.</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ VARIANT D ============ -->
+<div class="variant-label">
+  <span class="variant-label__tag">Variant D</span>
+  <p class="variant-label__name">Before/after thumbnail chips (minimal change)</p>
+  <p class="variant-label__desc">Keeps the current design almost as-is &mdash; rack bleeding in from the right, text on the left &mdash; but adds two small labeled thumbnail chips pinned to the right edge: a &ldquo;Before&rdquo; chip (the rack) and an &ldquo;After&rdquo; chip (the clean stack), with a mint arrow between them. The chips do the explicit before/after work without restructuring the section. Lowest-effort fix; the ambient rack stays, but it&rsquo;s now captioned as the &ldquo;before.&rdquo;</p>
+</div>
+<section class="cs-consolidation vD">
+  <div class="cs-consolidation__bg"></div>
+  <div class="cs-consolidation__chips">
+    <div class="chip-wrap"><div class="chip chip--before"><img src="../assets/yaamava/legacy-rack-before-web.jpg" alt="Legacy rack before LUCI"><div class="chip__label">Before</div></div></div>
+    <div class="chip-wrap"><span class="chip__arrow" aria-hidden="true">&darr;</span><div class="chip chip--after"><img src="../assets/yaamava/install-head-end-web.jpg" alt="LUCI head-end after consolidation"><div class="chip__label">After</div></div></div>
+  </div>
+  <div class="cs-consolidation__inner">
+    <h2 class="cs-consolidation__title"><em>Consolidation</em> you can see</h2>
+    <ul class="cs-consolidation__list">
+      <li class="cs-consolidation__item"><p class="cs-consolidation__item-title"><span class="cs-consolidation__problem">Five technology silos</span><span class="cs-consolidation__arrow" aria-hidden="true">&rarr;</span><span class="cs-consolidation__solution">one platform</span></p><p class="cs-consolidation__item-text">Broadcast, signage, data, audio and paging, and displays now operate through LUCI.</p></li>
+      <li class="cs-consolidation__item"><p class="cs-consolidation__item-title"><span class="cs-consolidation__problem">34 new LED walls</span><span class="cs-consolidation__arrow" aria-hidden="true">&rarr;</span><span class="cs-consolidation__solution">same interface</span></p><p class="cs-consolidation__item-text">Walls across seven venues joined the property&rsquo;s existing A/V and signage control instead of creating another control environment.</p></li>
+      <li class="cs-consolidation__item"><p class="cs-consolidation__item-title"><span class="cs-consolidation__problem">Dedicated hardware</span><span class="cs-consolidation__arrow" aria-hidden="true">&rarr;</span><span class="cs-consolidation__solution">network distribution</span></p><p class="cs-consolidation__item-text">Audio and video run over the property network, reducing the processors, players, and rack equipment to power, cool, and maintain.</p></li>
+      <li class="cs-consolidation__item"><p class="cs-consolidation__item-title"><span class="cs-consolidation__problem">Coordinated interfaces</span><span class="cs-consolidation__arrow" aria-hidden="true">&rarr;</span><span class="cs-consolidation__solution">one operating view</span></p><p class="cs-consolidation__item-text">Staff select content or channels, choose the destinations, and send them across the floor, signage, and video walls from LUCI.</p></li>
+    </ul>
+  </div>
+</section>
+<!-- ============ VARIANT E ============ -->
+<div class="variant-label">
+  <span class="variant-label__tag">Variant E</span>
+  <p class="variant-label__name">Drag-to-reveal slider in the background</p>
+  <p class="variant-label__desc">A before/after slider lives in the background plane &mdash; before rack on the left, clean after on the right, with a draggable mint handle. Text sits in a solid navy panel on the left third so it&rsquo;s always legible no matter where the slider sits. The most literal &ldquo;before/after,&rdquo; and interactive. Needs a static fallback for print/PDF (the slider parks at 50%). Best when the &ldquo;after&rdquo; is a strong rack-to-rack counterpart.</p>
+</div>
+<section class="cs-consolidation vE" id="vE">
+  <div class="cs-consolidation__bg">
+    <div class="cs-consolidation__bg-before"><img src="../assets/yaamava/legacy-rack-before-web.jpg" alt="Legacy rack before LUCI"></div>
+    <div class="cs-consolidation__bg-after"><img src="../assets/yaamava/install-head-end-web.jpg" alt="LUCI head-end after consolidation"></div>
+  </div>
+  <span class="cs-consolidation__handle" aria-hidden="true"></span>
+  <span class="ba-tag ba-tag--before">Before</span>
+  <span class="ba-tag ba-tag--after">After</span>
+  <span class="cs-consolidation__hint">Drag to compare</span>
+  <div class="cs-consolidation__inner">
+    <h2 class="cs-consolidation__title"><em>Consolidation</em> you can see</h2>
+    <ul class="cs-consolidation__list">
+      <li class="cs-consolidation__item"><p class="cs-consolidation__item-title"><span class="cs-consolidation__problem">Five technology silos</span><span class="cs-consolidation__arrow" aria-hidden="true">&rarr;</span><span class="cs-consolidation__solution">one platform</span></p><p class="cs-consolidation__item-text">Broadcast, signage, data, audio and paging, and displays now operate through LUCI.</p></li>
+      <li class="cs-consolidation__item"><p class="cs-consolidation__item-title"><span class="cs-consolidation__problem">34 new LED walls</span><span class="cs-consolidation__arrow" aria-hidden="true">&rarr;</span><span class="cs-consolidation__solution">same interface</span></p><p class="cs-consolidation__item-text">Walls across seven venues joined the property&rsquo;s existing A/V and signage control instead of creating another control environment.</p></li>
+      <li class="cs-consolidation__item"><p class="cs-consolidation__item-title"><span class="cs-consolidation__problem">Dedicated hardware</span><span class="cs-consolidation__arrow" aria-hidden="true">&rarr;</span><span class="cs-consolidation__solution">network distribution</span></p><p class="cs-consolidation__item-text">Audio and video run over the property network, reducing the processors, players, and rack equipment to power, cool, and maintain.</p></li>
+      <li class="cs-consolidation__item"><p class="cs-consolidation__item-title"><span class="cs-consolidation__problem">Coordinated interfaces</span><span class="cs-consolidation__arrow" aria-hidden="true">&rarr;</span><span class="cs-consolidation__solution">one operating view</span></p><p class="cs-consolidation__item-text">Staff select content or channels, choose the destinations, and send them across the floor, signage, and video walls from LUCI.</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ VARIANT F ============ -->
+<div class="variant-label">
+  <span class="variant-label__tag">Variant F</span>
+  <p class="variant-label__name">Labeled before with mint &ldquo;After&rdquo; reveal strip</p>
+  <p class="variant-label__desc">The messy rack is the full-bleed background (darkened, labeled &ldquo;Before&rdquo;). A bright mint-edged vertical strip on the right ~25% reveals the &ldquo;after&rdquo; image, labeled &ldquo;After &mdash; LUCI head-end.&rdquo; It reads as the fix arriving into the frame. Text on the left over the before. A middle-ground between C (ghost + window) and A (split): the before stays present as atmosphere, the after is a deliberate reveal, not a faint ghost.</p>
+</div>
+<section class="cs-consolidation vF">
+  <div class="cs-consolidation__bg"><img src="../assets/yaamava/legacy-rack-before-web.jpg" alt="Legacy rack before LUCI"></div>
+  <div class="cs-consolidation__strip"><img src="../assets/yaamava/install-head-end-web.jpg" alt="LUCI head-end after consolidation"></div>
+  <span class="ba-tag ba-tag--before">Before</span>
+  <span class="ba-tag ba-tag--after">After &middot; LUCI head-end</span>
+  <div class="cs-consolidation__inner">
+    <h2 class="cs-consolidation__title"><em>Consolidation</em> you can see</h2>
+    <ul class="cs-consolidation__list">
+      <li class="cs-consolidation__item"><p class="cs-consolidation__item-title"><span class="cs-consolidation__problem">Five technology silos</span><span class="cs-consolidation__arrow" aria-hidden="true">&rarr;</span><span class="cs-consolidation__solution">one platform</span></p><p class="cs-consolidation__item-text">Broadcast, signage, data, audio and paging, and displays now operate through LUCI.</p></li>
+      <li class="cs-consolidation__item"><p class="cs-consolidation__item-title"><span class="cs-consolidation__problem">34 new LED walls</span><span class="cs-consolidation__arrow" aria-hidden="true">&rarr;</span><span class="cs-consolidation__solution">same interface</span></p><p class="cs-consolidation__item-text">Walls across seven venues joined the property&rsquo;s existing A/V and signage control instead of creating another control environment.</p></li>
+      <li class="cs-consolidation__item"><p class="cs-consolidation__item-title"><span class="cs-consolidation__problem">Dedicated hardware</span><span class="cs-consolidation__arrow" aria-hidden="true">&rarr;</span><span class="cs-consolidation__solution">network distribution</span></p><p class="cs-consolidation__item-text">Audio and video run over the property network, reducing the processors, players, and rack equipment to power, cool, and maintain.</p></li>
+      <li class="cs-consolidation__item"><p class="cs-consolidation__item-title"><span class="cs-consolidation__problem">Coordinated interfaces</span><span class="cs-consolidation__arrow" aria-hidden="true">&rarr;</span><span class="cs-consolidation__solution">one operating view</span></p><p class="cs-consolidation__item-text">Staff select content or channels, choose the destinations, and send them across the floor, signage, and video walls from LUCI.</p></li>
+    </ul>
+  </div>
+</section>
+
+<div style="max-width:880px;margin:0 auto;padding:48px 24px 80px;">
+  <p style="font-family:var(--font-copy);font-size:14px;line-height:1.6;color:rgba(235,245,248,0.5);border-top:1px solid rgba(235,245,248,0.12);padding-top:24px;">End of variants. Tell me which letter (or blend) and I&rsquo;ll build it into the live case study.</p>
+</div>
+
+<script>
+  // Variant E slider — drag the handle to reveal before/after
+  (function(){
+    var sec = document.getElementById('vE');
+    if(!sec) return;
+    var handle = sec.querySelector('.cs-consolidation__handle');
+    var after = sec.querySelector('.cs-consolidation__bg-after');
+    var dragging = false;
+    function setPct(pct){ pct = Math.max(0, Math.min(100, pct)); handle.style.left = pct + '%'; after.style.clipPath = 'inset(0 0 0 ' + pct + '%)'; }
+    function onMove(e){ if(!dragging) return; var r = sec.getBoundingClientRect(); var x = (e.touches ? e.touches[0].clientX : e.clientX) - r.left; setPct(x / r.width * 100); }
+    handle.addEventListener('mousedown', function(){ dragging = true; });
+    handle.addEventListener('touchstart', function(){ dragging = true; }, {passive:true});
+    window.addEventListener('mouseup', function(){ dragging = false; });
+    window.addEventListener('touchend', function(){ dragging = false; });
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('touchmove', onMove, {passive:true});
+    // Click anywhere on the section background to move the handle
+    sec.addEventListener('click', function(e){ if(e.target === handle) return; var r = sec.getBoundingClientRect(); var x = e.clientX - r.left; setPct(x / r.width * 100); });
+  })();
+</script>
+</body>
+</html>
+
