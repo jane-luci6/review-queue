@@ -10,6 +10,8 @@
 
 ## 2026-10-29
 
+- **Shared clean LUCI rack is the "Consolidation you can see" background on every case study that has the section.** Replaces each property's own installation photo with one shared LUCI rack photo (the rack doesn't change client-to-client), unified to the dark rack-background treatment across Yaamava, Ameristar, Tachi, Aliante, and Osage. Sam's Town has no such section. Print PDFs stay light per print guidelines (no full-bleed dark) but drop the section hairlines so the layout matches. Jane.
+
 - **Case-study "Consolidation you can see" background is a clean LUCI rack photo, shared across properties.** Replaces the messy legacy "before" rack, which read ambiguously (could be mistaken for LUCI's work). One shared image (`assets/luci-rack-web.jpg`) for Yaamava and Ameristar — the rack doesn't change client-to-client. Jane.
 
 - **Yaamava case-study copy separates LUCI’s LED delivery from interface control.** LUCI designed and built 34 LED walls and supports the architectural installations’ ambient-art signage players; the 909 Sportsbar walls are looped into LUCI, and more than 1,000 property endpoints are consolidated into one LUCI interface. Mike and Jane.
