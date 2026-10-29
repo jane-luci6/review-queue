@@ -221,26 +221,39 @@
     .cs-plan strong { font-weight: 700; color: var(--navy); }
     .cs-bottom-line { margin-top: 4px; padding-top: 26px; border-top: 1px solid var(--rule-light); font-size: 18px; line-height: 1.6; color: var(--navy); }
 
-    /* Consolidation you can see (canonical) */
-    .cs-consolidation__header { margin-bottom: 32px; }
-    .cs-consolidation__rule {
-      display: block; width: 40px; height: 3px; background: var(--accent-light); margin-bottom: 16px;
+    /* Consolidation you can see — dark section, clean LUCI rack on the right side. */
+    .cs-consolidation {
+      position: relative; isolation: isolate; overflow: hidden;
+      background-color: var(--navy-deep);
+      background-image:
+        linear-gradient(to right,
+          var(--navy-deep) 0%,
+          var(--navy-deep) 42%,
+          rgba(7, 15, 20, 0.92) 58%,
+          rgba(7, 15, 20, 0.62) 100%),
+        url('assets/luci-rack-web.jpg');
+      background-size: cover, auto 100%;
+      background-position: left top, right center;
+      background-repeat: no-repeat;
+      border-bottom: none;
     }
+    .cs-consolidation__header { margin-bottom: 32px; position: relative; z-index: 1; }
     .cs-consolidation__title {
       margin: 0; font-family: var(--font-body); font-weight: 700;
       font-size: clamp(24px, 4vw, 34px); line-height: 1.12; letter-spacing: -0.025em;
-      color: var(--navy); max-width: 28ch;
+      color: var(--off-white); max-width: 28ch;
     }
+    .cs-consolidation__title em { font-style: normal; color: var(--gold); }
     .cs-consolidation__list {
-      list-style: none; margin: 0; padding: 0; max-width: 64ch;
-      border-top: 1px solid var(--rule-light);
+      list-style: none; margin: 0; padding: 0; max-width: 56ch;
+      position: relative; z-index: 1;
     }
-    .cs-consolidation__item { padding: 22px 0; border-bottom: 1px solid var(--rule-light); }
+    .cs-consolidation__item { padding: 22px 0; }
     .cs-consolidation__item-title {
-      margin: 0 0 8px; font-weight: 700; font-size: 17px; line-height: 1.35; color: var(--ink-strong);
+      margin: 0 0 8px; font-weight: 700; font-size: 17px; line-height: 1.35; color: var(--mint);
     }
     .cs-consolidation__item-text {
-      margin: 0; font-size: 17px; line-height: 1.65; color: var(--ink);
+      margin: 0; font-size: 17px; line-height: 1.65; color: rgba(235, 245, 248, 0.84);
     }
 
     /* Quote */
@@ -359,10 +372,9 @@
       </ul>
     </section>
 
-    <section class="cs-sec cs-sec--light cs-consolidation" aria-labelledby="cs-consolidation-title">
+    <section class="cs-sec cs-consolidation" aria-labelledby="cs-consolidation-title">
       <header class="cs-consolidation__header">
-        <span class="cs-consolidation__rule" aria-hidden="true"></span>
-        <h2 id="cs-consolidation-title" class="cs-consolidation__title">Consolidation you can see</h2>
+        <h2 id="cs-consolidation-title" class="cs-consolidation__title"><em>Consolidation</em> you can see</h2>
       </header>
       <ul class="cs-consolidation__list">
         <li class="cs-consolidation__item">
