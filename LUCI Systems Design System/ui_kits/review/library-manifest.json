@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-27",
+  "updated": "2026-10-29",
   "note": "Two-level folder tree for the portal Downloads tab: folders -> groups -> items. Items link to review-queue.json via queueId (title, summary, dates, preview and live URLs come from the queue). Items without a queueId carry their own label/path. Legacy top-level `groups` is still read by the portal for backward compatibility.",
   "folders": [
     {
@@ -217,7 +217,13 @@
         {
           "id": "sales",
           "label": "Sales",
-          "items": []
+          "items": [
+            {
+              "id": "new-luci-whats-new-onepager",
+              "label": "New LUCI · What's New two-pager",
+              "queueId": "new-luci-whats-new-onepager"
+            }
+          ]
         },
         {
           "id": "other",
