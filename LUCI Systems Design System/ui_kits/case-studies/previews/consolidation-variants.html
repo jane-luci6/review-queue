@@ -58,26 +58,26 @@
   .vA .cs-consolidation__bg-before img, .vA .cs-consolidation__bg-after img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .vA .cs-consolidation__bg-before img { filter: grayscale(0.5) brightness(0.42) contrast(1.05); }
   .vA .cs-consolidation__bg-after img { filter: brightness(0.62) contrast(1.05); }
-  .vA .cs-consolidation__bg-before::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(10,22,28,0.55), rgba(10,22,28,0.78)); }
-  .vA .cs-consolidation__bg-after::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(16,35,45,0.78), rgba(16,35,45,0.4)); }
+  .vA .cs-consolidation__bg-before::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(10,22,28,0.7), rgba(10,22,28,0.85)); }
+  .vA .cs-consolidation__bg-after::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(16,35,45,0.85), rgba(16,35,45,0.55)); }
   .vA .cs-consolidation__seam { position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: var(--mint); z-index: 1; box-shadow: 0 0 18px rgba(104,227,190,0.5); }
-  .vA .cs-consolidation__inner { background: linear-gradient(to right, rgba(10,22,28,0.92) 0%, rgba(10,22,28,0.88) 100%); }
+  .vA .cs-consolidation__inner { background: rgba(10,22,28,0.45); }
   .vA .ba-tag--before { top: 24px; left: 24px; }
   .vA .ba-tag--after { top: 24px; right: 24px; }
 
   /* VARIANT B — Horizontal bands (before top, after bottom) */
-  .vB .cs-consolidation__bg { position: absolute; inset: 0; z-index: 0; }
-  .vB .cs-consolidation__band { position: absolute; left: 0; right: 0; overflow: hidden; }
-  .vB .cs-consolidation__band--before { top: 0; height: 30%; background: #000; }
-  .vB .cs-consolidation__band--after { bottom: 0; height: 30%; background: var(--navy); }
+  .vB.cs-consolidation { display: flex; flex-direction: column; }
+  .vB .cs-consolidation__band { position: relative; overflow: hidden; height: clamp(110px, 15vw, 180px); flex: none; }
+  .vB .cs-consolidation__band--before { background: #000; }
+  .vB .cs-consolidation__band--after { background: var(--navy); }
   .vB .cs-consolidation__band img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .vB .cs-consolidation__band--before img { filter: grayscale(0.5) brightness(0.4); }
   .vB .cs-consolidation__band--after img { filter: brightness(0.6); }
-  .vB .cs-consolidation__band--before::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,22,28,0.2), rgba(10,22,28,0.85)); }
-  .vB .cs-consolidation__band--after::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(16,35,45,0.2), rgba(16,35,45,0.85)); }
-  .vB .cs-consolidation__inner { background: rgba(10,22,28,0.94); }
-  .vB .ba-tag--before { top: 16px; left: 50%; transform: translateX(-50%); }
-  .vB .ba-tag--after { bottom: 16px; left: 50%; transform: translateX(-50%); }
+  .vB .cs-consolidation__band--before::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,22,28,0.2), rgba(10,22,28,0.55)); }
+  .vB .cs-consolidation__band--after::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(16,35,45,0.2), rgba(16,35,45,0.55)); }
+  .vB .cs-consolidation__inner { background: var(--navy-deep); flex: 1; }
+  .vB .ba-tag--before { top: 14px; left: 50%; transform: translateX(-50%); }
+  .vB .ba-tag--after { bottom: 14px; left: 50%; transform: translateX(-50%); }
   /* VARIANT C — Ghost before + bright after window */
   .vC .cs-consolidation__bg { position: absolute; inset: 0; z-index: 0; }
   .vC .cs-consolidation__bg img { width: 100%; height: 100%; object-fit: cover; object-position: right center; display: block; filter: grayscale(0.7) brightness(0.32); opacity: 0.5; }
@@ -170,12 +170,10 @@
   <p class="variant-label__desc">Two thin full-bleed bands frame the section: the messy rack runs across the top (labeled &ldquo;Before&rdquo;), the clean after across the bottom (labeled &ldquo;After&rdquo;). The four rows sit on solid navy between them. Keeps text legibility high because the photos never sit behind the copy &mdash; they bracket it. Works well even with a weaker &ldquo;after&rdquo; photo, since the bands read as atmosphere, not proof.</p>
 </div>
 <section class="cs-consolidation vB">
-  <div class="cs-consolidation__bg">
-    <div class="cs-consolidation__band cs-consolidation__band--before"><img src="../assets/yaamava/legacy-rack-before-web.jpg" alt="Legacy rack before LUCI"></div>
-    <div class="cs-consolidation__band cs-consolidation__band--after"><img src="../assets/yaamava/install-head-end-web.jpg" alt="LUCI head-end after consolidation"></div>
+  <div class="cs-consolidation__band cs-consolidation__band--before">
+    <span class="ba-tag ba-tag--before">Before</span>
+    <img src="../assets/yaamava/legacy-rack-before-web.jpg" alt="Legacy rack before LUCI">
   </div>
-  <span class="ba-tag ba-tag--before">Before</span>
-  <span class="ba-tag ba-tag--after">After</span>
   <div class="cs-consolidation__inner">
     <h2 class="cs-consolidation__title"><em>Consolidation</em> you can see</h2>
     <ul class="cs-consolidation__list">
@@ -184,6 +182,10 @@
       <li class="cs-consolidation__item"><p class="cs-consolidation__item-title"><span class="cs-consolidation__problem">Dedicated hardware</span><span class="cs-consolidation__arrow" aria-hidden="true">&rarr;</span><span class="cs-consolidation__solution">network distribution</span></p><p class="cs-consolidation__item-text">Audio and video run over the property network, reducing the processors, players, and rack equipment to power, cool, and maintain.</p></li>
       <li class="cs-consolidation__item"><p class="cs-consolidation__item-title"><span class="cs-consolidation__problem">Coordinated interfaces</span><span class="cs-consolidation__arrow" aria-hidden="true">&rarr;</span><span class="cs-consolidation__solution">one operating view</span></p><p class="cs-consolidation__item-text">Staff select content or channels, choose the destinations, and send them across the floor, signage, and video walls from LUCI.</p></li>
     </ul>
+  </div>
+  <div class="cs-consolidation__band cs-consolidation__band--after">
+    <span class="ba-tag ba-tag--after">After</span>
+    <img src="../assets/yaamava/install-head-end-web.jpg" alt="LUCI head-end after consolidation">
   </div>
 </section>
 <!-- ============ VARIANT C ============ -->
