@@ -104,19 +104,16 @@
     .luci-cs .cs-inline-photo--ui img { aspect-ratio: auto; height: auto; object-fit: contain; object-position: center; }
     .luci-cs .cs-inline-photo__caption { margin: 12px 0 0; padding: 0 4px; font-family: var(--font-copy); font-size: 13px; line-height: 1.5; letter-spacing: 0.02em; color: var(--ink); opacity: 0.78; }
 
-    .luci-cs .cs-consolidation-band { position: relative; overflow: hidden; min-height: clamp(480px, 62vw, 640px); background-color: var(--navy-deep); }
-    .luci-cs .cs-consolidation-band__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center center; display: block; filter: brightness(0.32); }
-    .luci-cs .cs-consolidation-band__scrim { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(to right, rgba(10,22,28,0.98) 0%, rgba(10,22,28,0.94) 35%, rgba(10,22,28,0.60) 58%, rgba(10,22,28,0.12) 80%, rgba(10,22,28,0) 100%); }
+    .luci-cs .cs-consolidation-band { position: relative; isolation: isolate; overflow: hidden; background-color: var(--navy-deep); background-image: linear-gradient(to right, var(--navy-deep) 0%, var(--navy-deep) 42%, rgba(7, 15, 20, 0.92) 58%, rgba(7, 15, 20, 0.62) 100%), url('REPLACE-luci-rack-web-jpg'); background-size: cover, auto 100%; background-position: left top, right center; background-repeat: no-repeat; border-bottom: none; }
     .luci-cs .cs-consolidation-band__content { position: relative; z-index: 2; padding: clamp(48px, 7vw, 80px) clamp(28px, 6vw, 64px); max-width: 74ch; }
-    .luci-cs .cs-consolidation__header { margin-bottom: 0; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .luci-cs .cs-consolidation__header { margin-bottom: 32px; position: relative; z-index: 1; }
     .luci-cs .cs-consolidation__title { margin: 0; font-family: var(--font-body); font-weight: 700; font-size: clamp(24px, 4vw, 34px); line-height: 1.12; letter-spacing: -0.025em; color: var(--off-white); max-width: 28ch; }
     .luci-cs .cs-consolidation__title-accent { color: var(--gold); }
-    .luci-cs .cs-consolidation__list { list-style: none; margin: 0; padding: 0; }
+    .luci-cs .cs-consolidation__list { list-style: none; margin: 0; padding: 0; position: relative; z-index: 1; }
     .luci-cs .cs-consolidation__item { padding: 22px 0; }
-    .luci-cs .cs-consolidation__item:not(:last-child) { border-bottom: 1px solid rgba(255,255,255,0.08); }
     .luci-cs .cs-consolidation__item-title { margin: 0 0 8px; font-family: var(--font-body); font-weight: 700; font-size: 19px; line-height: 1.35; color: var(--mint); }
     .luci-cs .cs-consolidation__item-text { margin: 0; font-family: var(--font-copy); font-size: 17px; line-height: 1.65; color: rgba(235,245,248,0.82); }
-    @media (max-width: 640px) { .luci-cs .cs-consolidation-band__scrim { background: linear-gradient(to bottom, rgba(10,22,28,0.95) 0%, rgba(10,22,28,0.88) 50%, rgba(10,22,28,0.45) 78%, rgba(10,22,28,0) 100%); } .luci-cs .cs-consolidation-band__content { max-width: none; } }
+    @media (max-width: 640px) { .luci-cs .cs-consolidation-band { background-image: linear-gradient(to bottom, var(--navy-deep) 0%, var(--navy-deep) 42%, rgba(7, 15, 20, 0.92) 58%, rgba(7, 15, 20, 0.62) 100%), url('REPLACE-luci-rack-web-jpg'); background-position: left top, center bottom; } .luci-cs .cs-consolidation-band__content { max-width: none; } }
         .luci-cs .cs-results-block .cs-ba { background: transparent; padding: 8px 0 32px; border-bottom: 0; margin: 0; }
     .luci-cs .cs-ba { background: var(--navy-deep); padding: clamp(36px, 6vw, 60px) clamp(28px, 6vw, 64px); border-bottom: 1px solid rgba(104,227,190,0.12); }
     .luci-cs .cs-ba__slider { position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; user-select: none; touch-action: none; border-radius: 14px; border: 1px solid rgba(104,227,190,0.18); --pos: 50%; }
@@ -318,8 +315,6 @@
       </figure>
     </section>
     <section class="cs-consolidation-band" aria-labelledby="cs-consolidation-title">
-      <img class="cs-consolidation-band__img" src="https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/REPLACE-aliante-rack-room-before-web-jpg" alt="Row of legacy server racks with dense, color-coded cabling in Aliante&rsquo;s rack room before LUCI consolidation &mdash; the infrastructure pulled and replaced" width="1600" height="900" loading="lazy" />
-      <div class="cs-consolidation-band__scrim" aria-hidden="true"></div>
       <div class="cs-consolidation-band__content">
         <header class="cs-consolidation__header">
           <h2 id="cs-consolidation-title" class="cs-consolidation__title"><span class="cs-consolidation__title-accent">Consolidation</span> you can see</h2>

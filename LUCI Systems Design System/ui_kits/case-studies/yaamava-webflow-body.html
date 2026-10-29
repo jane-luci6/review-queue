@@ -347,7 +347,7 @@
     .luci-cs .cs-plan strong{ font-family: var(--font-body); font-weight: 700; color: var(--navy); }
     .luci-cs .cs-bottom-line{ margin-top: 4px; padding-top: 26px; border-top: 1px solid var(--rule-light); font-family: var(--font-copy); font-size: 18px; line-height: 1.6; color: var(--navy); }
 
-    /* Consolidation you can see — dark section, before rack on the right side only. */
+    /* Consolidation you can see — dark section, clean LUCI rack on the right side. */
     .luci-cs .cs-consolidation{
       position: relative; isolation: isolate; overflow: hidden;
       background-color: var(--navy-deep);
@@ -357,11 +357,11 @@
           var(--navy-deep) 42%,
           rgba(7, 15, 20, 0.92) 58%,
           rgba(7, 15, 20, 0.62) 100%),
-        url('https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a876c0c90378da95b862695_yaamava-legacy-rack-before-web.jpg');
-      background-size: cover, cover;
-      background-position: left top, right -2.5in center;
+        url('REPLACE-luci-rack-web-jpg');
+      background-size: cover, auto 100%;
+      background-position: left top, right center;
       background-repeat: no-repeat;
-      border-bottom-color: rgba(104, 227, 190, 0.2);
+      border-bottom: none;
     }
     .luci-cs .cs-consolidation__header{ margin-bottom: 32px; position: relative; z-index: 1; }
     .luci-cs .cs-consolidation__title{
@@ -372,10 +372,9 @@
     .luci-cs .cs-consolidation__title em { font-style: normal; color: var(--gold); }
     .luci-cs .cs-consolidation__list{
       list-style: none; margin: 0; padding: 0; max-width: 56ch;
-      border-top: 1px solid rgba(235, 245, 248, 0.18);
       position: relative; z-index: 1;
     }
-    .luci-cs .cs-consolidation__item{ padding: 22px 0; border-bottom: 1px solid rgba(235, 245, 248, 0.18); }
+    .luci-cs .cs-consolidation__item{ padding: 22px 0; }
     .luci-cs .cs-consolidation__item-title{
       margin: 0 0 8px; font-family: var(--font-body); font-weight: 700;
       font-size: 17px; line-height: 1.35;
