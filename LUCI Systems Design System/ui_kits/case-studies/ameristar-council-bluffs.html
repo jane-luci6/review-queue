@@ -329,10 +329,10 @@
           rgba(7, 15, 20, 0.92) 58%,
           rgba(7, 15, 20, 0.62) 100%),
         url('assets/luci-rack-web.jpg');
-      background-size: cover, cover;
+      background-size: cover, auto;
       background-position: left top, right center;
       background-repeat: no-repeat;
-      border-bottom-color: rgba(104, 227, 190, 0.2);
+      border-bottom: none;
     }
     .cs-consolidation__header { margin-bottom: 32px; position: relative; z-index: 1; }
     .cs-consolidation__title {
@@ -343,10 +343,9 @@
     .cs-consolidation__title em { font-style: normal; color: var(--gold); }
     .cs-consolidation__list {
       list-style: none; margin: 0; padding: 0; max-width: 56ch;
-      border-top: 1px solid rgba(235, 245, 248, 0.18);
       position: relative; z-index: 1;
     }
-    .cs-consolidation__item { padding: 22px 0; border-bottom: 1px solid rgba(235, 245, 248, 0.18); }
+    .cs-consolidation__item { padding: 22px 0; }
     .cs-consolidation__item-title {
       margin: 0 0 8px; font-family: var(--font-body); font-weight: 700;
       font-size: 17px; line-height: 1.35;
