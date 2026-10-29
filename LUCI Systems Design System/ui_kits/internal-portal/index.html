@@ -434,6 +434,47 @@
     }
     .review-row__approver strong { color: var(--ink-strong); }
 
+    /* ---------- Review list cards (simplified) ---------- */
+    .review-list .review-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: center;
+      padding: 24px 4px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .review-list .review-card:first-child { border-top: 1px solid var(--rule); }
+    .review-list .review-card__text {
+      display: grid;
+      gap: 6px;
+      min-width: 0;
+    }
+    .review-list .review-card__title {
+      display: block;
+      font-family: var(--font);
+      font-weight: 600;
+      font-size: 17px;
+      color: var(--ink-strong);
+    }
+    .review-list .review-card__sub {
+      display: block;
+      font-size: 14px;
+      line-height: 1.45;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .review-list .review-card__cta { white-space: nowrap; }
+    @media (max-width: 720px) {
+      .review-list .review-card {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        align-items: start;
+      }
+      .review-list .review-card__cta { justify-self: start; }
+    }
+
     /* ---------- Review detail ---------- */
     .detail { display: grid; gap: 0; }
     .detail__back {
@@ -2392,15 +2433,9 @@
         <header class="page-head">
           <p class="kicker">Review</p>
           <h2>Review Queue</h2>
-          <p>What needs Mike's sign-off, and where each piece stands. Click an item to read the brief, see the content, and check off or comment.</p>
+          <p>What Mike needs to review.</p>
         </header>
         <div class="page-body">
-          <div class="review-viewer" id="review-viewer">
-            <label for="review-viewer-select">Viewing badges as</label>
-            <select id="review-viewer-select" aria-label="Viewer identity for unread badges"></select>
-            <button type="button" class="review-viewer__reset" id="review-reset-unread" title="Clear last-seen for this viewer so existing non-you comments badge again (testing / after a bad seed)">Reset unread</button>
-            <span class="review-viewer__hint">Unread = comments/approvals from everyone except this person after their last-seen. Opening an item clears it for the current viewer only. Use Reset unread if a prior seed hid Mark/Mike&rsquo;s posts.</span>
-          </div>
           <div class="review-list" id="review-list"></div>
         </div>
       </div>
@@ -3792,8 +3827,34 @@
       });
     }
 
+    // Per-id overrides for the simplified Review Queue list. Data files stay
+    // untouched — titles and one-liners here win over item.title / item.summary.
+    const REVIEW_LIST_OVERRIDES = {
+      'new-luci-upgrade-guide': {
+        title: 'Upgrade Guide',
+        oneLiner: "Customer walkthrough for moving to New LUCI (on the review site).",
+      },
+      'case-study-yaamava-review': {
+        title: "Yaamava' case study",
+        oneLiner: "Yaamava' case study: five systems on one LUCI platform.",
+      },
+      'events-overview-2026-10': {
+        title: 'Events overview',
+        oneLiner: '2027 events: at-a-glance table, docs and membership options.',
+      },
+    };
+
+    function reviewListTitleFor(item) {
+      const o = item && REVIEW_LIST_OVERRIDES[item.id];
+      return (o && o.title) || (item && item.title) || '';
+    }
+
+    function reviewListOneLinerFor(item) {
+      const o = item && REVIEW_LIST_OVERRIDES[item.id];
+      return (o && o.oneLiner) || (item && (item.oneLiner || item.summary)) || '';
+    }
+
     function renderReviewList() {
-      bindReviewViewerSelect();
       const items = allReviewItems();
       const list = $('review-list');
       if (!items.length) {
@@ -3803,24 +3864,17 @@
       }
       list.innerHTML = '';
       items.forEach((item) => {
-        const status = reviewStatus(item);
-        const unread = unreadBadgeCountFor(item.id);
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'review-row' + (unread ? ' has-unread' : '');
-        btn.innerHTML = `
-          <span>
-            <span class="review-row__title">${item.title}${unread ? ` <span class="review-row__unread" title="${unread} unread">${unread}</span>` : ''}</span>
-            <span class="review-row__sub">${item.summary || item.versionNote || ''}</span>
-          </span>
-          <span class="review-row__meta">
-            <span class="pill pill--${status.tone}">${status.label}</span>
-            ${item.due ? `<span class="pill">Due ${formatDate(item.due)}</span>` : ''}
-            ${item.reference ? '' : '<span class="review-row__approver">Approver: <strong>Mike</strong></span>'}
-          </span>
+        const url = item.liveUrl || previewUrl(item) || '';
+        const card = document.createElement('div');
+        card.className = 'review-card';
+        card.innerHTML = `
+          <div class="review-card__text">
+            <span class="review-card__title">${escapeHtml(reviewListTitleFor(item))}</span>
+            <span class="review-card__sub">${escapeHtml(reviewListOneLinerFor(item))}</span>
+          </div>
+          ${url ? `<a class="btn btn--mint review-card__cta" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">Review</a>` : ''}
         `;
-        btn.addEventListener('click', () => { location.hash = '#review/' + item.id; });
-        list.appendChild(btn);
+        list.appendChild(card);
       });
       updateReviewUnreadBadges();
     }
