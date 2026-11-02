@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-29",
+  "updated": "2026-11-02",
   "publishNote": "Build (npm run build:review) outputs to ui_kits/review. Bump reviewVersion + versionNote for new uploads (version history shown in portal). Set dueForReview for first-time review. Comments/approvals sync server-side via the comments_api container (proxied at /api/comments); Jane sees Mike/Mark's feedback on refresh. Archive with scripts/pull-review-comments.mjs.",
   "previewBaseUrl": "",
   "commentsApiUrl": "http://10.10.1.17:8081/api/comments",
@@ -8,17 +8,17 @@
     {
       "title": "Messaging guide",
       "url": "messaging/messaging-guide.html",
-      "note": "Updated Oct 29, 2026"
+      "note": "Updated Nov 2, 2026"
     },
     {
       "title": "LUCI philosophy",
       "url": "messaging/philosophy.html",
-      "note": "Updated Oct 29, 2026"
+      "note": "Updated Nov 2, 2026"
     },
     {
       "title": "Personas",
       "url": "messaging/personas.html",
-      "note": "Updated Oct 29, 2026"
+      "note": "Updated Nov 2, 2026"
     }
   ],
   "inProgress": [],
@@ -68,7 +68,7 @@
     {
       "id": "events-overview-2026-10",
       "title": "Events · Conferences under review",
-      "summary": "Events overview after the Oct 8 Jane + Mike meeting: TribalNet (Sept 2027, top priority, IT-focused) and the IGA Tradeshow (Apr 2027, gaming/operations) are the two 2027 shows to plan for. InfoComm is on hold until 2028; the June Tribal Casino & Hotel conference and NALF-West are passed.",
+      "summary": "Events overview after the Oct 8 Jane + Mike meeting: TribalNet (Sept 2027, top priority, IT-focused) and the IGA Tradeshow (Apr 2027, gaming/operations) are the two 2027 shows to plan for. InfoComm: no booth, AVIXA membership under consideration; the June Tribal Casino & Hotel conference and NALF-West are passed.",
       "hubPreviewPath": "ui_kits/events/overview.html",
       "previewUrl": "events/overview.html",
       "embedPreview": true,
@@ -781,7 +781,7 @@
     }
   ],
   "finalized": [],
-  "messagingDocsUpdated": "2026-10-29",
+  "messagingDocsUpdated": "2026-11-02",
   "parkedFromReviewQueue": [
     {
       "id": "signal-issue-05-choices",
