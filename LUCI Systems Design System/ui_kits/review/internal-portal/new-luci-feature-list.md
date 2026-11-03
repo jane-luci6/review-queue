@@ -1,0 +1,288 @@
+# New LUCI — Preliminary Feature List
+
+> **Source:** Internal Marketing Portal → New LUCI Launch → Strategy → Preliminary Feature List
+> (`LUCI Systems Design System/ui_kits/internal-portal/new-luci-feature-list.json`, rendered in `index.html` view `#view-feature-list`)
+>
+> **Exported:** 2026-11-02. This is a faithful export of the portal content — no rewriting or summarizing.
+
+---
+
+## Deck
+
+Restructured into release pillars per 2026 messaging-hierarchy best practice. Features that carry the campaign argument sit under a pillar; the rest sit as technical detail for the IT or A/V lead. In-product support moved to Operate (keeps the boat moving). Sign-in and session control promoted to See and secure alongside audit trails and live monitoring.
+
+## Campaign theme
+
+**Putting the power of programming in your hands**
+
+---
+
+## Pillars
+
+The three release pillars, each with its argument and the features that carry it. Rendered in the portal as a three-column visual — a dark "capital" band (pillar name + argument) above a light "shaft" (the feature list).
+
+### Operate
+
+**Argument:** Control now lives in the venue, not just the back office.
+
+Features:
+
+1. Venue panels
+2. Staging
+3. In-product support
+
+### Make it yours
+
+**Argument:** Your maps, your look — the system belongs to the property.
+
+Features:
+
+1. Customizable interface
+2. Live map flexibility
+
+### See and secure
+
+**Argument:** What's happening now, what happened, and who's in the system.
+
+Features:
+
+1. Audit trails
+2. Live monitoring
+3. Sign-in and session control
+
+---
+
+## Feature briefs (by pillar)
+
+A one-line brief for each feature, grouped by pillar.
+
+### Operate
+
+| Feature | Brief |
+|---|---|
+| Venue panels | Control lives in the venue — a tablet in the space puts it in the hands of the person who runs it. |
+| Staging | Build the next look while the current one keeps running. Apply on cue. |
+| In-product support | Raise a support request from the device, incident, or error itself — context and logs already attached. |
+
+### Make it yours
+
+| Feature | Brief |
+|---|---|
+| Customizable interface | Sign-in and splash screens carry the property's own photography, marks, and colors. |
+| Live map flexibility | Load the property's own floor plans, oriented to match the physical space. |
+
+### See and secure
+
+| Feature | Brief |
+|---|---|
+| Audit trails | Every action recorded against a person and a time — what triggered it, who did it, when. |
+| Live monitoring | Real-time state of every device, display, and audio zone — what's on, what's off, what has a fault. |
+| Sign-in and session control | Email, PIN, or Entra sign-in. Administrators control who is active and can sign users out. |
+
+---
+
+## Honorable mentions (Technical detail)
+
+> For the IT or A/V lead who asks. Not mapped to a campaign pillar — these features support the platform but don't carry the release argument.
+
+| Feature | Brief |
+|---|---|
+| Audio group control | Move several zones proportionally, set every zone to the same level, or move one alone. |
+| Add any endpoint from LUCI | Every device type added through the interface — one at a time or twenty at once. |
+| Video wall layout sync | Wall layouts pulled from the processor with per-pixel geometry, not rebuilt by hand. |
+| Central display model catalog | New display models added centrally and pushed to the property — no on-site config edits. |
+
+---
+
+## Feature details
+
+> Full descriptions for copy review.
+
+### Operate
+
+#### Venue panels
+
+- Control lives in the venue. A tablet in the space puts control in the hands of the person who runs it — an events manager at a ballroom panel, a guest at a pool cabana panel.
+- Assign a panel to a venue and it adopts every endpoint already assigned to that venue. No hand-built device list.
+- Control is localized and scoped: the panel shows that one space, and only the controls the administrator allows — volume but not power, source but not volume, whatever fits the room.
+- The person at the panel never sees the main LUCI application and cannot reach anything outside the designated space. A public-facing panel can be opened without a PIN; a staff panel can require one.
+- Presets can be made available at the panel, so a room can be set to a saved look without leaving the space.
+- A panel can also be scoped across several venues — a tablet that travels with the manager who covers four ballrooms.
+
+**Brief:** Control lives in the venue — a tablet in the space puts it in the hands of the person who runs it.
+
+#### Staging
+
+- Build the next look while the current one is still running: choose screens, set sources, set volumes, set content. Nothing changes in the room until Apply.
+- Apply on cue. The change lands at the moment the event actually starts, not the moment it was scheduled to.
+- Save any staged set as a preset to run it again. Give a preset a time and it becomes a scheduled preset.
+- Scroll forward and back through days across new chart views to see what already ran and what is coming.
+- Look at one display and see every preset and schedule due to touch it, and when.
+
+**Brief:** Build the next look while the current one keeps running. Apply on cue.
+
+#### In-product support
+
+- Raise a support request from the device, incident, or error itself. The request arrives with what happened, what changed, and the relevant logs already attached.
+- A person chooses what to escalate, so the property stays in control.
+
+**Brief:** Raise a support request from the device, incident, or error itself — context and logs already attached.
+
+### Make it yours
+
+#### Customizable interface
+
+- Sign-in and splash screens carry the property's own photography and marks.
+- Light or dark mode, with curated themes matched to the property's colors and typography selected from an approved set.
+- Background image blur, opacity, and positioning are adjustable.
+- Endpoint status colors arrive as operators already know them and can be changed across the whole install.
+- LUCI can design the theme for a property, or the property can build and adjust it.
+
+**Brief:** Sign-in and splash screens carry the property's own photography, marks, and colors.
+
+#### Live map flexibility
+
+- Load the property's own floor plans — not a built-in generic layout.
+- Rotate and orient the map to match the physical space.
+- Live connection to devices means what is on screen matches what is in the room — not a periodic poll.
+- The map is also the monitoring surface — see every device's state at a glance.
+
+**Brief:** Load the property's own floor plans, oriented to match the physical space.
+
+### See and secure
+
+#### Audit trails
+
+- Every action is recorded against a person and a time, including what triggered it — a person, a preset, or a schedule.
+- Search by device or user, filter by action type, and download the results as a CSV.
+- Changes made outside LUCI are noticed and recorded for most third-party device types. Device incidents open when a device stops responding and close when it returns, so a fault has a duration.
+
+**Brief:** Every action recorded against a person and a time — what triggered it, who did it, when.
+
+#### Live monitoring
+
+- See the real-time state of every device, display, and audio zone from one view — what is on, what is off, what has a fault.
+- Device incidents surface as they happen, not on the next poll. A device that stops responding opens an incident; recovery closes it.
+- Filter by venue, device type, or status to find what needs attention without leaving the map.
+- Raise a support request from the monitoring view itself — the incident context and logs are already attached.
+
+**Brief:** Real-time state of every device, display, and audio zone — what's on, what's off, what has a fault.
+
+#### Sign-in and session control
+
+- Users sign in by email or PIN, or with the Microsoft credentials they already use at work through Entra ID.
+- Administrators can sign a user out of the system and post a site-wide message banner to everyone using LUCI.
+- Session control means the property decides who is in the system and when — not just who has a login, but who is active right now.
+- The private tunnel consolidates every outbound connection into one encrypted link, so IT reviews one pairing instead of a list of firewall exceptions.
+
+**Brief:** Email, PIN, or Entra sign-in. Administrators control who is active and can sign users out.
+
+---
+
+## Technical detail (full descriptions)
+
+> For the IT or A/V lead who asks. Not mapped to a campaign pillar — these features support the platform but don't carry the release argument.
+
+### Audio group control
+
+Move several zones proportionally so their tuned balance survives, set every zone to the same level, or move one zone alone.
+
+**Brief:** Move several zones proportionally, set every zone to the same level, or move one alone.
+
+### Add any endpoint from LUCI
+
+Every device type can be added through the interface. Add one from the map or twenty at once with addresses incrementing, and get a warning when a record already exists.
+
+**Brief:** Every device type added through the interface — one at a time or twenty at once.
+
+### Video wall layout sync
+
+Wall layouts and window assignments are pulled from the video wall processor with per-pixel geometry instead of being rebuilt by hand. Multi-window templates can be assigned to a player and changed live.
+
+**Brief:** Wall layouts pulled from the processor with per-pixel geometry, not rebuilt by hand.
+
+### Central display model catalog
+
+New hospitality display models are added centrally and pushed out to the property, so buying a new model no longer means editing configuration files on site.
+
+**Brief:** New display models added centrally and pushed to the property — no on-site config edits.
+
+---
+
+## IT-facing detail (additional)
+
+> IT-facing detail for pillar features — the deeper version an IT or A/V lead will want. The merged upgrade guide and IT companion uses this block.
+
+### Venue panels
+
+- A panel is a scoped control surface tied to a point in the site hierarchy — site, building, floor, venue.
+- On creation it inherits every endpoint assigned to that venue. Administrators then narrow it per control surface (power, source, volume, mute) rather than per device.
+- The panel loads a pared-down interface with no route into the administrative application, and returns to its paired configuration on every boot.
+
+### Staging, presets, and schedules
+
+- A staged set, a preset, and a scheduled preset are the same object at different stages: a set of commands, optionally named, optionally timed.
+- The staged set is visible as a roster before anything is sent, and can be cleared or edited item by item. It can also be seeded from what the room is doing right now.
+- Editing a saved preset shows the difference against the saved values before the change is committed.
+- A scheduled preset can carry a lockout window, enforced at the control engine, so the devices it touched cannot be changed for a set period. A lock indicator appears on the device, and administrators can override.
+
+### Audit trails, incidents, and support
+
+- Commands sent to devices are grouped by the event that triggered them, so one entry resolves to a user, a preset, or a schedule.
+- Administrative actions such as permission changes are recorded alongside device commands.
+- Visibility of out-of-band changes depends on what each device driver reports. Devices that do not report their own state changes will not surface them.
+- A device incident opens automatically when a device stops responding and closes when it recovers, producing measured downtime.
+- Incidents are distinct from support tickets. A person decides which incident becomes a ticket, and the ticket carries the incident context and relevant logs.
+
+### Endpoint management
+
+- All device types can be created through the interface, including LUCI-supplied hardware, with bulk creation, incrementing addresses, and duplicate detection.
+
+### Identity and sessions
+
+- Federated sign-in uses a standard Microsoft Entra ID app registration with a callback to the property's LUCI server. A profile is created on first sign-in, and a PIN can be assigned for floor use.
+- Administrators can terminate active sessions and communicate to all signed-in users through a site-wide banner.
+
+### Private tunnel
+
+Today a LUCI system on property needs a long list of outbound destinations opened by the property's IT team. That consolidates into a single encrypted outbound connection between the on-property system and LUCI. Credentials no longer sit unrotated on the local machine — keys rotate on a schedule. For IT it is one paired connection to review instead of a list of exceptions, with no standing inbound access to the property network.
+
+### Scoped diagnostic capture
+
+Debug-level logging can be aimed at a single endpoint, driver, or module for a defined window — capture three minutes while reproducing a fault — instead of turning up logging across the system. The output can be reviewed on site or sent to LUCI with a support request.
+
+---
+
+## Visual assets and screenshots
+
+The feature list itself is text-only (no embedded screenshots). The following New LUCI visual assets live in the design system and illustrate the features described above. They are not part of the portal feature-list view but are referenced here for completeness.
+
+### Map-based dashboard screenshots
+
+These show the live map interface — the "Live map flexibility" and "One interface runs every endpoint" features in operation.
+
+- `LUCI Systems Design System/ui_kits/sales/assets/new-luci-map-light.png` — LUCI map-based control, light mode
+- `LUCI Systems Design System/ui_kits/sales/assets/new-luci-map-dark.png` — LUCI map-based control, dark mode
+- `LUCI Systems Design System/ui_kits/sales/assets/new-luci-look-dark.png` — LUCI customizable interface, dark mode
+
+### Map screenshot variants (design exploration)
+
+- `LUCI Systems Design System/ui_kits/sales/_variants/assets/new-luci-map-light-v2.png`
+- `LUCI Systems Design System/ui_kits/sales/_variants/assets/new-luci-map-light-v3.png`
+- `LUCI Systems Design System/ui_kits/sales/_variants/assets/new-luci-map-light-v4.png`
+- `LUCI Systems Design System/ui_kits/sales/_variants/assets/new-luci-map-light-v5.png`
+- `LUCI Systems Design System/ui_kits/sales/_variants/assets/new-luci-map-light-v6.png`
+- `LUCI Systems Design System/ui_kits/sales/_variants/assets/new-luci-map-light-v7.png`
+
+### Sales one-pager (references the map screenshot)
+
+- `LUCI Systems Design System/ui_kits/sales/new-luci-whats-new-onepager.html` — New LUCI "what's new" one-pager; uses `assets/map_v7_lshape.png` as the hero map image
+- Flow-C variants: `new-luci-whats-new-onepager-flow-c-a.html`, `-flow-c-b.html`, `-flow-c-c.html`, `-flow-c-compare.html`
+
+### Portal background mesh
+
+- `LUCI Systems Design System/ui_kits/internal-portal/assets/mesh/luci-bg-hero-1920x1080.svg` — hero background mesh used across the portal
+
+---
+
+*End of export. Content sourced from `new-luci-feature-list.json` (version `?v=20260916b`) and the rendering logic in `index.html` function `renderFeatureList()`.*
