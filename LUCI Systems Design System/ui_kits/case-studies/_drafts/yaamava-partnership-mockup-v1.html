@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yaamava' Partnership Case Study — Mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+--navy-deep:#0a161c;--navy:#10232d;--navy-mid:#314955;--navy-muted:#49616e;
+--mint:#68e3be;--mint-rgb:104,227,190;--accent-light:#2b9e80;
+--gold:#edd086;--gold-rgb:237,208,134;--gold-deep:#ceb06e;
+--sand:#e5e3df;--off-white:#f5f8fa;--rule-light:#dbe1e4;
+--ink:#354f5c;--ink-strong:#1c2b33;
+--font-display:'Syncopate',sans-serif;
+--font-body:'Space Grotesk',system-ui,sans-serif;
+--font-copy:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:var(--font-body);font-size:17px;line-height:1.6;color:var(--ink);background:var(--navy-deep);-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+.cs-page{background:var(--navy-deep);padding-bottom:clamp(48px,8vw,96px)}
+.cs-page__sheet{max-width:880px;margin:0 auto;background:#fff}
+.mockup-flag{background:#ceb06e;color:#1c2b33;font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;text-align:center;padding:8px 16px}
+
+/* Hero */
+.cs-hero{
+background-color:var(--navy-deep);
+background-image:
+linear-gradient(to right,rgba(8,18,24,0.82) 0%,rgba(8,18,24,0.74) 50%,rgba(8,18,24,0.30) 100%),
+url('https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a876c0d5b1c8be92b7bf83b_yaamava-gaming-floor-led-web.jpg');
+background-size:cover,cover;background-position:center,center right;background-repeat:no-repeat;
+padding:clamp(40px,8vw,84px) clamp(28px,6vw,64px) clamp(40px,7vw,72px);
+overflow:hidden;position:relative;
+}
+.cs-hero::after{content:'';position:absolute;left:0;right:0;bottom:0;height:4px;background:linear-gradient(to right,var(--mint) 0 62%,var(--gold) 62% 100%)}
+.cs-hero__kicker{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.cs-hero__kicker::before{content:'';width:28px;height:2px;background:var(--mint)}
+.cs-hero__kicker span{font-family:var(--font-display);font-size:10px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--mint)}
+.cs-hero__title{margin:0 0 26px;font-family:var(--font-body);font-weight:700;font-size:clamp(34px,6.5vw,60px);line-height:1.04;letter-spacing:-0.03em;color:var(--off-white);max-width:16ch}
+.cs-hero__leadin{display:block;font-family:var(--font-body);font-size:clamp(17px,2.2vw,24px);font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(235,245,248,0.82);margin-bottom:14px}
+.cs-hero__title em{display:block;font-family:var(--font-display);font-style:normal;font-size:clamp(26px,5.2vw,48px);line-height:1.16;letter-spacing:0;color:var(--mint);text-transform:uppercase;max-width:12ch}
+.cs-hero__dek{margin:0 0 18px;font-family:var(--font-copy);font-size:clamp(17px,2.2vw,20px);line-height:1.6;color:rgba(235,245,248,0.82);max-width:58ch}
+.cs-hero__property{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:0;padding-top:24px;border-top:1px solid rgba(104,227,190,0.15);font-size:13px;font-weight:600;letter-spacing:0.04em;color:var(--gold)}
+.cs-hero__property span{color:rgba(165,179,188,0.7);font-weight:500}
+
+/* Sections */
+.cs-sec{padding:clamp(44px,6vw,72px) clamp(28px,6vw,64px);border-bottom:1px solid var(--rule-light)}
+.cs-sec--white{background:#fff}
+.cs-sec--light{background:var(--off-white)}
+.cs-sec--mid{position:relative;isolation:isolate;background-color:var(--navy-mid);border-bottom-color:rgba(0,0,0,0.2);overflow:hidden}
+.cs-sec--mid::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 95% 100% at 0% 35%,rgba(104,227,190,0.28) 0%,transparent 68%),radial-gradient(ellipse 60% 75% at 15% 100%,rgba(104,227,190,0.14) 0%,transparent 58%)}
+.cs-sec--mid>*{position:relative;z-index:1}
+.cs-sec--dark{background:var(--navy);border-bottom-color:rgba(0,0,0,0.3)}
+.cs-sec__title{margin:0 0 22px;font-family:var(--font-body);font-weight:700;font-size:clamp(24px,4vw,34px);line-height:1.12;letter-spacing:-0.025em;max-width:24ch}
+.cs-sec--white .cs-sec__title,.cs-sec--light .cs-sec__title{color:var(--navy)}
+.cs-sec--mid .cs-sec__title,.cs-sec--dark .cs-sec__title{color:var(--off-white)}
+.cs-sec__title-accent{color:var(--gold)}
+.cs-sec--white .cs-sec__title-accent,.cs-sec--light .cs-sec__title-accent{color:var(--accent-light)}
+.cs-copy p{margin:0 0 18px;font-family:var(--font-copy);font-size:17px;line-height:1.72;max-width:64ch}
+.cs-copy p:last-child{margin-bottom:0}
+.cs-sec--white .cs-copy p,.cs-sec--light .cs-copy p{color:var(--ink)}
+.cs-sec--mid .cs-copy p{color:rgba(235,245,248,0.88)}
+.cs-sec--dark .cs-copy p{color:rgba(235,245,248,0.92)}
+/* Timeline */
+.cs-tl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.cs-tl__node{display:grid;grid-template-columns:120px 1fr;gap:24px;padding:22px 0;border-bottom:1px solid var(--rule-light);position:relative}
+.cs-tl__node:last-child{border-bottom:none}
+.cs-tl__year{font-family:var(--font-display);font-size:13px;font-weight:700;letter-spacing:0.04em;color:var(--accent-light);padding-top:2px}
+.cs-tl__body{display:flex;flex-direction:column;gap:6px}
+.cs-tl__milestone{margin:0;font-family:var(--font-body);font-weight:700;font-size:18px;line-height:1.3;color:var(--navy)}
+.cs-tl__desc{margin:0;font-family:var(--font-copy);font-size:15px;line-height:1.5;color:var(--ink);max-width:52ch}
+.cs-tl__role{margin:8px 0 0;font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:0.04em;color:var(--gold-deep)}
+.cs-tl__bar{grid-column:1/-1;height:6px;border-radius:3px;background:rgba(43,158,128,0.10);margin-top:14px;overflow:hidden;position:relative}
+.cs-tl__bar::after{content:'';position:absolute;left:0;top:0;bottom:0;border-radius:3px;background:linear-gradient(to right,var(--accent-light),var(--mint))}
+.cs-tl__node:nth-child(1) .cs-tl__bar::after{width:18%}
+.cs-tl__node:nth-child(2) .cs-tl__bar::after{width:40%}
+.cs-tl__node:nth-child(3) .cs-tl__bar::after{width:74%}
+.cs-tl__node:nth-child(4) .cs-tl__bar::after{width:88%}
+.cs-tl__node:nth-child(5) .cs-tl__bar::after{width:100%}
+@media(max-width:620px){.cs-tl__node{grid-template-columns:1fr;gap:8px}.cs-tl__year{padding-top:0}}
+
+/* Two-column editorial */
+.cs-two{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(28px,4vw,48px);align-items:start;margin-bottom:32px}
+@media(max-width:680px){.cs-two{grid-template-columns:1fr;gap:24px}}
+.cs-two__media img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:2px}
+.cs-two__media--logo img{object-fit:contain;aspect-ratio:auto;background:var(--navy-deep);padding:32px}
+
+/* Callout */
+.cs-callout{display:flex;flex-direction:column;gap:8px;padding:24px 28px;border-left:4px solid var(--accent-light);background:#fff;border-top:1px solid var(--rule-light);border-right:1px solid var(--rule-light);border-bottom:1px solid var(--rule-light)}
+.cs-callout__num{font-family:var(--font-body);font-weight:700;font-size:clamp(20px,2.4vw,26px);line-height:1.2;letter-spacing:-0.02em;color:var(--navy)}
+.cs-callout__text{margin:0;font-family:var(--font-copy);font-size:15px;line-height:1.55;color:var(--ink);max-width:56ch}
+.cs-callout--dark{background:rgba(8,18,24,0.4);border-color:var(--mint);border-top-color:rgba(104,227,190,0.2);border-right-color:rgba(104,227,190,0.2);border-bottom-color:rgba(104,227,190,0.2)}
+.cs-callout--dark .cs-callout__num{color:var(--mint)}
+.cs-callout--dark .cs-callout__text{color:rgba(235,245,248,0.84)}
+
+/* Metrics grid */
+.cs-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule-light);border:1px solid var(--rule-light);margin:8px 0 0}
+@media(max-width:680px){.cs-metrics{grid-template-columns:repeat(2,1fr)}}
+.cs-metrics__cell{background:#fff;padding:24px 18px;display:flex;flex-direction:column;gap:10px}
+.cs-metrics__num{font-family:var(--font-body);font-weight:700;font-size:clamp(26px,3.4vw,36px);line-height:1;letter-spacing:-0.03em;color:var(--accent-light)}
+.cs-metrics__label{font-family:var(--font-copy);font-size:13px;line-height:1.35;color:var(--ink);font-weight:500}
+
+/* Quote */
+.cs-quote{background:#fff;padding:clamp(44px,7vw,76px) clamp(28px,6vw,64px);border-bottom:1px solid rgba(8,24,34,0.08)}
+.cs-quote__text{margin:0 0 20px;font-family:var(--font-copy);font-size:clamp(19px,2.6vw,24px);font-style:italic;line-height:1.45;color:var(--navy);border-left:5px solid var(--accent-light);padding:6px 0 6px 26px;max-width:52ch}
+.cs-quote__attrib{margin:0;padding-left:31px;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;line-height:1.6;color:var(--navy-muted)}
+.cs-quote__attrib span{display:block;color:var(--accent-light)}
+
+/* Photo + annotation */
+.cs-photo{margin:0;background:var(--navy-deep);padding:0 0 clamp(16px,2vw,22px);border-bottom:1px solid rgba(104,227,190,0.12)}
+.cs-photo img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.cs-anno{margin:18px 0 0;font-family:var(--font-copy);font-style:italic;font-size:clamp(17px,2vw,20px);line-height:1.4;color:var(--accent-light);max-width:48ch}
+.cs-sec--mid .cs-anno{color:var(--mint)}
+
+/* CTA */
+.cs-cta{background-color:var(--navy-deep);background-image:linear-gradient(to right,rgba(8,18,24,0.86) 0%,rgba(8,18,24,0.80) 52%,rgba(8,18,24,0.44) 80%,rgba(8,18,24,0.12) 100%),url('https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a876c0d5b1c8be92b7bf83b_yaamava-gaming-floor-led-web.jpg');background-size:cover,cover;background-position:center,center right;background-repeat:no-repeat;padding:clamp(44px,7vw,76px) clamp(28px,6vw,64px);border-top:4px solid var(--mint)}
+.cs-cta__body{margin:0 0 24px;font-weight:700;font-size:clamp(22px,3vw,30px);line-height:1.2;letter-spacing:-0.02em;color:var(--off-white);max-width:28ch}
+.cs-cta__btn{display:inline-flex;align-items:center;gap:12px;font-size:15px;font-weight:700;letter-spacing:0.04em;text-decoration:none;color:var(--navy);background:var(--mint);padding:16px 28px;transition:background 0.15s}
+.cs-cta__btn:hover{background:#7aedc8}
+.cs-cta__btn__arrow{font-size:18px;font-weight:700;line-height:1}
+/* Timeline visual (SVG) */
+.cs-tl-vis{margin:32px 0 8px;padding:0}
+.cs-tl-vis svg{display:block;width:100%;height:auto;max-width:820px;margin:0 auto}
+@media(max-width:620px){.cs-tl-vis{overflow-x:auto;-webkit-overflow-scrolling:touch}.cs-tl-vis svg{min-width:560px}}
+/* Vertical timeline — one continuous tapered line, nodes connected on it */
+.cs-vtl{list-style:none;margin:24px 0 0;padding:0;position:relative}
+.cs-vtl::before{
+content:'';position:absolute;left:28px;top:10px;bottom:10px;width:16px;
+transform:translateX(-50%);z-index:0;
+background:linear-gradient(to bottom,rgba(16,35,45,0.40),var(--navy));
+clip-path:polygon(44% 0,56% 0,100% 100%,0 100%);
+}
+.cs-vtl__row{display:grid;grid-template-columns:56px 1fr;gap:22px;padding:0 0 30px;position:relative}
+.cs-vtl__row:last-child{padding-bottom:0}
+.cs-vtl__rail{position:relative;display:flex;align-items:flex-start;justify-content:center;z-index:1}
+.cs-vtl__node{border-radius:50%;background:var(--navy);flex:none;margin-top:2px;box-shadow:0 0 0 4px #fff}
+.cs-vtl__body{padding-top:0}
+.cs-vtl__year{margin:0 0 4px;font-family:var(--font-display);font-size:12px;font-weight:700;letter-spacing:0.04em;color:var(--accent-light)}
+.cs-vtl__milestone{margin:0 0 6px;font-family:var(--font-body);font-weight:700;font-size:18px;line-height:1.3;color:var(--navy)}
+.cs-vtl__desc{margin:0;font-family:var(--font-copy);font-size:15px;line-height:1.55;color:var(--ink);max-width:54ch}
+.cs-vtl__row:nth-child(1) .cs-vtl__node{width:10px;height:10px}
+.cs-vtl__row:nth-child(2) .cs-vtl__node{width:16px;height:16px}
+.cs-vtl__row:nth-child(3) .cs-vtl__node{width:24px;height:24px}
+.cs-vtl__row:nth-child(4) .cs-vtl__node{width:24px;height:24px}
+.cs-vtl__row:nth-child(5) .cs-vtl__node{width:36px;height:36px;background:var(--accent-light);box-shadow:0 0 0 4px #fff,0 0 0 10px rgba(43,158,128,0.14)}
+@media(max-width:620px){.cs-vtl__row{grid-template-columns:44px 1fr;gap:14px}.cs-vtl__milestone{font-size:17px}}
+/* Partnership stats (primary, 3-line) */
+.cs-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,4vw,48px);margin:12px 0 0}
+@media(max-width:680px){.cs-stats{grid-template-columns:1fr;gap:30px}}
+.cs-stats__num{display:block;font-family:var(--font-body);font-weight:700;font-size:clamp(30px,4.4vw,46px);line-height:1;letter-spacing:-0.03em;color:var(--navy)}
+.cs-stats__sub{display:block;margin-top:12px;font-family:var(--font-body);font-weight:600;font-size:clamp(16px,1.8vw,19px);line-height:1.3;color:var(--ink-strong)}
+.cs-stats__foot{display:block;margin-top:6px;font-family:var(--font-copy);font-size:13px;line-height:1.4;color:var(--navy-muted)}
+/* Scope stats (secondary, supporting) */
+.cs-scope{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule-light);border:1px solid var(--rule-light);margin:30px 0 0}
+@media(max-width:680px){.cs-scope{grid-template-columns:1fr}}
+.cs-scope__cell{background:#fff;padding:20px 18px}
+.cs-scope__num{display:block;font-family:var(--font-body);font-weight:700;font-size:clamp(22px,2.8vw,28px);line-height:1;letter-spacing:-0.03em;color:var(--accent-light)}
+.cs-scope__label{display:block;margin-top:8px;font-family:var(--font-copy);font-size:13px;line-height:1.35;color:var(--ink);font-weight:500}
+/* Scope stats (lightweight row, towards end) */
+.cs-stats--scope{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,36px);margin:36px 0 0;padding-top:28px;border-top:1px solid var(--rule-light)}
+@media(max-width:680px){.cs-stats--scope{grid-template-columns:1fr;gap:24px}}
+.cs-stats--scope .cs-stats__num{font-size:clamp(22px,2.8vw,28px);color:var(--accent-light)}
+.cs-stats--scope .cs-stats__sub{margin-top:8px;font-size:14px;font-weight:500;color:var(--ink);line-height:1.4}
+.cs-stats-top__kicker{margin:0 0 20px;font-family:var(--font-display);font-size:10px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent-light)}
+/* Stats bar (matches original cs-inventory treatment) */
+.cs-inventory{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule-light);border:1px solid var(--rule-light);list-style:none;margin:0;padding:0}
+@media(max-width:620px){.cs-inventory{grid-template-columns:repeat(2,1fr)}}
+.cs-inventory__item{background:#fff;padding:22px 20px;text-align:left}
+.cs-inventory__num{margin:0 0 8px;font-family:var(--font-body);font-size:clamp(26px,3.6vw,34px);font-weight:700;line-height:1;letter-spacing:-0.03em;color:var(--accent-light)}
+.cs-inventory__sub{margin:0 0 4px;font-family:var(--font-body);font-size:15px;font-weight:600;line-height:1.3;color:var(--ink-strong)}
+.cs-inventory__foot{margin:0;font-family:var(--font-copy);font-size:12px;line-height:1.4;color:var(--navy-muted)}
+/* Photo band — text on a left scrim, photo fading in on the right */
+.cs-photo-band{position:relative;overflow:hidden;min-height:clamp(420px,56vw,560px);border-bottom:none;background:var(--off-white)}
+.cs-photo-band__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block}
+.cs-photo-band__scrim{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(to right,rgba(245,248,250,0.97) 0%,rgba(245,248,250,0.94) 42%,rgba(245,248,250,0.55) 62%,rgba(245,248,250,0.12) 84%,rgba(245,248,250,0) 100%)}
+.cs-photo-band__content{position:relative;z-index:2;padding:clamp(44px,6vw,72px) clamp(28px,6vw,64px);max-width:62ch}
+.cs-photo-band .cs-sec__title{color:var(--navy)}
+.cs-photo-band .cs-sec__title-accent{color:var(--accent-light)}
+.cs-photo-band .cs-copy p{color:var(--ink)}
+.cs-copy--wide p{max-width:none}
+@media(max-width:640px){
+.cs-photo-band{min-height:0}
+.cs-photo-band__scrim{background:linear-gradient(to bottom,rgba(245,248,250,0.97) 0%,rgba(245,248,250,0.9) 55%,rgba(245,248,250,0.35) 78%,rgba(245,248,250,0) 100%)}
+.cs-photo-band__content{max-width:none}
+}
+</style>
+</head>
+<body>
+<div class="mockup-flag">Mockup for evaluation — not a committed file</div>
+<article class="cs-page">
+<div class="cs-page__sheet">
+<header class="cs-hero">
+<div class="cs-hero__kicker"><span>Case Study</span></div>
+<h1 class="cs-hero__title">
+<span class="cs-hero__leadin">A technology partnership built to grow with</span>
+<em>Yaamava&rsquo;</em>
+</h1>
+<p class="cs-hero__dek">Since 2018, LUCI has partnered with San Manuel to modernize and orchestrate the multimedia systems powering its casino operations and guest experiences.</p>
+<p class="cs-hero__property">
+Yaamava&rsquo; Resort &amp; Casino
+<span>Highland, California &middot; San Manuel Band of Mission Indians</span>
+</p>
+</header>
+<section class="cs-sec cs-sec--light">
+<p class="cs-stats-top__kicker">The partnership at a glance</p>
+<ul class="cs-inventory">
+<li class="cs-inventory__item">
+<p class="cs-inventory__num">8 years</p>
+<p class="cs-inventory__sub">Of partnership</p>
+<p class="cs-inventory__foot">Since 2018</p>
+</li>
+<li class="cs-inventory__item">
+<p class="cs-inventory__num">17-story</p>
+<p class="cs-inventory__sub">Hotel expansion</p>
+<p class="cs-inventory__foot">Supported by LUCI</p>
+</li>
+<li class="cs-inventory__item">
+<p class="cs-inventory__num">10+</p>
+<p class="cs-inventory__sub">Venues &amp; locations</p>
+<p class="cs-inventory__foot">Across the San Manuel enterprise</p>
+</li>
+</ul>
+</section>
+<section class="cs-sec cs-sec--white">
+<h2 class="cs-sec__title">The partnership <span class="cs-sec__title-accent">from start to today</span></h2>
+<p class="cs-copy" style="margin-top:0;max-width:64ch;">As San Manuel&rsquo;s resorts has expanded, LUCI has reinforced the partnership by providing the engineering, design, implementation, and ongoing support each phase required.</p>
+
+<ul class="cs-vtl">
+<li class="cs-vtl__row">
+<div class="cs-vtl__rail"><span class="cs-vtl__node" aria-hidden="true"></span></div>
+<div class="cs-vtl__body">
+<p class="cs-vtl__year">2018</p>
+<p class="cs-vtl__milestone">LUCI foundation installed</p>
+<p class="cs-vtl__desc">Network-based multimedia integration across the property&rsquo;s existing systems.</p>
+</div>
+</li>
+<li class="cs-vtl__row">
+<div class="cs-vtl__rail"><span class="cs-vtl__node" aria-hidden="true"></span></div>
+<div class="cs-vtl__body">
+<p class="cs-vtl__year">2020</p>
+<p class="cs-vtl__milestone">Infrastructure overhaul</p>
+<p class="cs-vtl__desc">Casino-wide audio system replacement during the COVID closure window.</p>
+</div>
+</li>
+<li class="cs-vtl__row">
+<div class="cs-vtl__rail"><span class="cs-vtl__node" aria-hidden="true"></span></div>
+<div class="cs-vtl__body">
+<p class="cs-vtl__year">2021</p>
+<p class="cs-vtl__milestone">Major resort expansion</p>
+<p class="cs-vtl__desc">Casino, hotel, spa, pool deck, dining, retail, and meeting spaces.</p>
+</div>
+</li>
+<li class="cs-vtl__row">
+<div class="cs-vtl__rail"><span class="cs-vtl__node" aria-hidden="true"></span></div>
+<div class="cs-vtl__body">
+<p class="cs-vtl__year">2022</p>
+<p class="cs-vtl__milestone">The 909 sports bar</p>
+<p class="cs-vtl__desc">Large-scale LED and multimedia expansion for a world-class sports bar and food hall.</p>
+</div>
+</li>
+<li class="cs-vtl__row">
+<div class="cs-vtl__rail"><span class="cs-vtl__node" aria-hidden="true"></span></div>
+<div class="cs-vtl__body">
+<p class="cs-vtl__year">2023&ndash;Today</p>
+<p class="cs-vtl__milestone">Enterprise-wide support</p>
+<p class="cs-vtl__desc">Yaamava&rsquo;, Palms, corporate offices, and other facilities across the San Manuel enterprise.</p>
+</div>
+</li>
+</ul>
+</section>
+<section class="cs-photo-band" aria-labelledby="cs-foundation-title">
+<img class="cs-photo-band__img" src="https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a876c0d1e3192a8919364b4_yaamava-event-entry-led-web.jpg" alt="LED-clad columns and soffit at the Yaamava&rsquo; event center entrance">
+<div class="cs-photo-band__scrim" aria-hidden="true"></div>
+<div class="cs-photo-band__content">
+<h2 id="cs-foundation-title" class="cs-sec__title">A new foundation <span class="cs-sec__title-accent">for a growing property</span></h2>
+<div class="cs-copy">
+<p>When LUCI partnered with San Manuel Casino in 2018, the property operated six separate audio systems and four video systems, each managed independently. This patchwork of equipment and controls made even routine operations unnecessarily complex, with no single way to manage the property as a whole.</p>
+<p>LUCI&rsquo;s platform integrated the property&rsquo;s existing endpoints and systems, unifying them over the property&rsquo;s network under one control interface. Suddenly, what had been a collection of disconnected systems became a coordinated environment that was easier to manage and ready to grow. The project also helped drive LUCI&rsquo;s move away from restrictive proprietary control systems toward the open, software-based orchestration approach it uses today.</p>
+</div>
+</div>
+</section>
+<section class="cs-sec cs-sec--light">
+<div class="cs-copy cs-copy--wide">
+<p>When COVID temporarily closed the casino in 2020, San Manuel and LUCI used the opportunity to overhaul its audio infrastructure. LUCI designed the new system, procured equipment, and coordinated installation partners&mdash;expanding its role in engineering and project management ahead of the property&rsquo;s major resort expansion.</p>
+</div>
+<div class="cs-callout">
+<span class="cs-callout__num">1,000+ speakers replaced in eight months</span>
+<p class="cs-callout__text">New cabling, redesigned audio zones, and improved sound tuning and volume control throughout the casino.</p>
+</div>
+</section>
+<figure class="cs-photo">
+<img src="https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a876c0da50825a3a4311d36_yaamava-sportsbook-led-web.jpg" alt="The curved LED ribbon wrapping the 909 Sportsbar at Yaamava&rsquo;, carrying live games and odds above the bar">
+</figure>
+<section class="cs-sec cs-sec--white">
+<h2 class="cs-sec__title">Engineering alongside <span class="cs-sec__title-accent">Yaamava&rsquo;s expansion</span></h2>
+<div class="cs-copy">
+<p>As San Manuel advanced its major resort expansion, LUCI worked alongside the property&rsquo;s design and construction teams, architects, and other technical disciplines to ensure its A/V systems were engineered to work seamlessly from the start. The multi-year development added expanded gaming space, a 17-story hotel tower, spa, pool deck, restaurants, bars, retail, and meeting spaces, transforming San Manuel Casino into Yaamava&rsquo; Resort &amp; Casino.</p>
+<p>LUCI contributed design, technical planning, construction coordination, and implementation throughout the project. The existing LUCI architecture scaled to accommodate new amplifiers, televisions, and control points without requiring separate audio, video, or control systems for each new space. The property continued to grow while maintaining a coordinated multimedia environment across the resort.</p>
+</div>
+<p class="cs-anno">One A/V backbone. Expanded across the resort.</p>
+</section>
+<figure class="cs-photo">
+<img src="https://cdn.prod.website-files.com/62d7d68d14611c2a31d863cd/6a876c0d5b1c8be92b7bf83b_yaamava-gaming-floor-led-web.jpg" alt="A wall-sized LED display on the Yaamava&rsquo; gaming floor, behind a bank of machines">
+</figure>
+<section class="cs-sec cs-sec--mid">
+<h2 class="cs-sec__title">New venues. <span class="cs-sec__title-accent">The same foundation.</span></h2>
+<div class="cs-copy">
+<p>The next major development brought LUCI&rsquo;s expertise to The 909, a world-class sports bar and food hall. Working with the architect of record and project teams, LUCI helped create an extensive LED environment featuring a 50-foot-wide Game Day display, an LED archway, and more than 150 screens throughout the venue.</p>
+<p>Rather than introduce another standalone A/V system, LUCI expanded the backbone already in place at Yaamava&rsquo;. The 909 joined the same multimedia management environment serving the rest of the property, extending centralized control to an entirely new guest experience.</p>
+</div>
+<div class="cs-callout cs-callout--dark">
+<span class="cs-callout__num">34 LED walls across seven venues</span>
+<p class="cs-callout__text">Over the course of the partnership, LUCI designed and installed LED walls throughout the property, integrating each addition into the existing LUCI environment.</p>
+</div>
+</section>
+<section class="cs-sec cs-sec--white">
+<h2 class="cs-sec__title">What eight years of partnership <span class="cs-sec__title-accent">has built</span></h2>
+<div class="cs-copy">
+<p>Across these projects, LUCI worked as part of Yaamava&rsquo;s extended technology organization.</p>
+<p>That continuity matters. The LUCI engineers supporting the next project already understand the systems in place, the decisions behind them, and the property&rsquo;s broader operational goals. They can move directly into each new phase of development, solve new technical challenges, and maintain the infrastructure already supporting its guests.</p>
+</div>
+<div class="cs-stats cs-stats--scope">
+<div>
+<span class="cs-stats__num">290,000 sq. ft.</span>
+<span class="cs-stats__sub">Gaming floor under management</span>
+</div>
+<div>
+<span class="cs-stats__num">1,000+</span>
+<span class="cs-stats__sub">Endpoints managed through LUCI</span>
+</div>
+<div>
+<span class="cs-stats__num">34</span>
+<span class="cs-stats__sub">LED walls across seven venues</span>
+</div>
+</div>
+<blockquote class="cs-quote__text" style="margin-top:36px;">&ldquo;What I love about LUCI&rsquo;s approach is that they really focus on how to make the operations easier for the business, and they do it in a really cost-effective manner. They look for ways to implement solutions that are easy to administer, have a reasonable cost point, and are easy to use.&rdquo;</blockquote>
+<p class="cs-quote__attrib" style="padding-left:31px;"><span>Toni Pepper</span>CITO, San Manuel Band of Mission Indians</p>
+</section>
+<section class="cs-sec cs-sec--light">
+<h2 class="cs-sec__title">A partnership built <span class="cs-sec__title-accent">for what&rsquo;s next</span></h2>
+<div class="cs-two">
+<div class="cs-copy">
+<p>The relationship that began at San Manuel Casino now extends throughout the broader San Manuel enterprise &mdash; Palms Casino Resort in Las Vegas, corporate offices and conference rooms, firehouses, schools, and banquet spaces. Each environment brings its own requirements, but LUCI applies the same approach everywhere: understand the operation, develop the right solution, coordinate the work, and remain accountable for the technology long after installation.</p>
+<p>Eight years in, the foundation has only grown stronger. The LUCI engineers who built it already understand the systems in place, the decisions behind them, and the property&rsquo;s broader operational goals. As Yaamava&rsquo; and the San Manuel enterprise take on whatever comes next, LUCI is already part of the team &mdash; ready to move directly into each new phase, solve new technical challenges, and keep the infrastructure supporting its guests running.</p>
+</div>
+<div class="cs-two__media">
+<img src="https://placehold.co/800x600/0a161c/edd086?text=The+partnership%0Agoing+forward" alt="Placeholder — the partnership going forward">
+</div>
+</div>
+</section>
+<section class="cs-cta">
+<p class="cs-cta__body">Your property&rsquo;s technology needs will change. Your technology partner should be prepared to meet them.</p>
+<a class="cs-cta__btn" href="https://www.lucisystems.com/contact" target="_blank" rel="noopener noreferrer">Talk to LUCI<span class="cs-cta__btn__arrow" aria-hidden="true">&rarr;</span></a>
+</section>
+
+</div>
+</article>
+</body>
+</html>
