@@ -8,6 +8,10 @@
 
 ---
 
+## 2026-11-04
+
+- **Yaamava partnership case study: no rack photography; expansion dated 2021–22; no enterprise photos.** The foundation section gets a designed "patchwork → one interface" graphic instead of a rack photo (the project is bigger than the rack). The expansion timeline row reads 2021–22 (The 909 stays 2022); "10+ venues & locations" stands; Palms, corporate, and other enterprise sites have no photography and the closing section is type-led. Jane.
+
 ## 2026-10-29
 
 - **Shared clean LUCI rack is the "Consolidation you can see" background on every case study that has the section.** Replaces each property's own installation photo with one shared LUCI rack photo (the rack doesn't change client-to-client), unified to the dark rack-background treatment across Yaamava, Ameristar, Tachi, Aliante, and Osage. Sam's Town has no such section. Print PDFs stay light per print guidelines (no full-bleed dark) but drop the section hairlines so the layout matches. Jane.

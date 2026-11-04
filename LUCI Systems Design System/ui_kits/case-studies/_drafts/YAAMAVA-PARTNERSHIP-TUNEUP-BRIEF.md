@@ -28,9 +28,9 @@ The page must work for three readers. Build every section so all three get somet
 
 | # | Finding | Fix (see §4) |
 |---|---|---|
-| F1 | **Photos don't match the copy.** The 909 sportsbook photo sits under the 2018/COVID section; the gaming-floor photo sits above the 909 section; the 2018 foundation band shows a 2021 LED column. | Re-map every photo (§5). |
+| F1 | **Photos don't match the copy.** The 909 sportsbook photo sits under the 2018/COVID section; the gaming-floor photo sits above the 909 section; the 2018 foundation band shows a 2021 LED column. No photo exists for 2018/2020 (and rack photos are ruled out). | Re-map every photo (§5); give the foundation section a designed graphic instead of a photo (§4.3). |
 | F2 | **A paragraph appears twice.** "…the LUCI engineers supporting the next project already understand the systems in place, the decisions behind them…" is in both *What eight years has built* and *A partnership built for what's next* (the latter was reworded during the last round and duplicated it). | Keep it once, in "eight years." Fix "what's next" per §4.9. |
-| F3 | **Placeholder image** still in the last section. No Palms/corporate/firehouse/school photography exists in the library. | Use staged lobby/909 photo + enterprise chip list (§4.9). Request Palms/corporate photos from Mike (⚑). |
+| F3 | **Placeholder image** still in the last section. No Palms/corporate/firehouse/school photography exists (confirmed by Jane). | Type-led closing: enterprise scan strip + lobby photo (§4.9). |
 | F4 | **The required "Consolidation you can see" section and the "Yaamava' on LUCI to date" ledger were dropped** by the rewrite. The case-study rule makes the former mandatory (verbatim H2, rack background Jane just had shipped). The page also lost its dark mid-page rhythm and its strongest subtraction proof. | Restore both as a "proof tier" (§4.7–4.8). Jane to confirm (⚑1). |
 | F5 | **Hero lead-in is 7 words** and orphans "WITH" onto a second line. Rule: lead-in ≤ ~5 words. | Split title: lead-in "Built to grow with" + Syncopate `Yaamava'` (§4.0). |
 | F6 | **No visual evidence of LUCI's role.** The story is "LUCI engineered alongside construction," yet there's no construction/before-after imagery. The library has a full shell → design → installed sequence. | Triptych + install pair (§4.4). |
@@ -98,15 +98,21 @@ Final order (zones in brackets). Backgrounds follow the case-study rhythm rule (
 - `<ol>`, not `<ul>`. Headline must not orphan (F7).
 - Row = `node rail | body | role chip`. Body = year (Syncopate 12px label), milestone (Space Grotesk 700 18px), desc (Inter 15px, **no 54ch cap** — let it use the width). Role chip right-aligned (§3.4), dropping under the desc on mobile. Chip text is Jane's v1.1 wording: *Integration · Engineering & project management · Design & construction collaboration · New venue development · Enterprise technology partnership.*
 - **Growth, per Jane's doc:** the 2021 milestone is the **strongest visual increase**; the line stays substantial afterward. Node diameters ≈ 10 / 16 / 30 / 32 / 36px; line width steps ≈ 3 / 5 / 12 / 14 / 16px, one continuous tapered stroke behind the nodes (white 4px ring on each node). Final "2023–Today" node is `--accent-light` with a soft ring. Thickness is qualitative — no axis, no numbers.
+- **Dates:** 2018 · 2020 · **2021–22** · 2022 · 2023–Today (Jane approved "2021–22" for the expansion row; the 909 row stays "2022").
 - Keep Jane's intro sentence ("As San Manuel's resorts has expanded…") directly under the H2 (⚑3: grammar).
 - Reduced motion: static. Optional: line draws on scroll (≤400ms, one easing curve) behind `prefers-reduced-motion`.
 
 ### 4.3 A new foundation (2018–2020)
-- Keep Jane's layout: photo band with left scrim, paras 1–2 on the left; para 3 (COVID) full width below. **Change the photo** — the LED column is a 2021 artifact.
-  - Band image: `legacy-rack-before-web.jpg` (existing asset) **if Jane confirms it's Yaamava (⚑4)**; otherwise `partnership/p-headend-idf.jpg`.
-  - Caption (only if the rack is confirmed): one factual line, no LUCI branding in the "before" image (before/after discipline).
-- COVID paragraph full width → **big-number callout "1,000+ / speakers replaced in eight months"** (§3.2), with Jane's detail line. Optional soft-icon speaker tile.
-- No photo exists of the speaker replacement — don't force one.
+**Decided by Jane: no rack photo anywhere in this section.** The project is bigger than the rack and the page doesn't call the rack out. No photo exists of the 2018 integration or the speaker replacement either, so **this section's visual is a designed graphic, not a photo.**
+
+- **Visual: the "patchwork → one interface" graphic** (HTML/CSS component `cs-patchwork`, not an image file; no canonical-diagram propagation needed). It illustrates Jane's first sentence exactly — the numbers are hers: **6 audio systems + 4 video systems, each managed independently → one control interface.**
+  - Left: a loose cluster of 10 small, slightly staggered labeled tiles — six "Audio" and four "Video" (soft-icon duotone, hairline outline, muted ink; deliberately uneven so it reads as patchwork).
+  - Center: hairline lines converge to a single point (same funnel language as the ledger's `cs-ledger__converge`: gold→mint gradient, mint arrowhead).
+  - Right: one solid tile — **"One control interface"** (mint-dark fill, off-white text, soft ring like the timeline's "today" node).
+  - Desktop: horizontal, sits under the H2 across the full 880px sheet. Mobile: stacks vertically (cluster → arrow down → single tile). Static; optional ≤400ms converge-in on scroll behind `prefers-reduced-motion`.
+  - No LUCI wordmark/logo in the "before" cluster; LUCI appears only on the right (before/after discipline).
+- **Layout:** H2 → graphic → Jane's paragraphs 1–2 at full readable width (≤64ch, left-aligned) → paragraph 3 (COVID) → big-number callout. Drop the photo-band-with-scrim for this section; the photo band treatment is used elsewhere on the page where a real photo exists. Light canvas (`cs-sec--light`).
+- COVID paragraph → **big-number callout "1,000+ / speakers replaced in eight months"** (§3.2) with Jane's detail line. Optional soft-icon speaker tile beside the numeral. Do **not** force a photo here.
 
 ### 4.4 Engineering alongside the expansion (2021)
 This is where LUCI's role is proven. Lead with the pictures.
@@ -138,7 +144,7 @@ Take the ledger block (`cs-ledger`: 420 displays / 34 LED walls / 284 audio zone
 ### 4.9 A partnership built for what's next
 - Jane approved this heading. **Fix F2:** paragraph 2 currently duplicates "eight years." Replace it with Jane's own v1.1 sentence: *"Through ongoing maintenance, system improvements, and planning for future projects, LUCI continues supporting the enterprise as its needs evolve."* (⚑ Jane to confirm.)
 - Add the **enterprise scan strip** (§3.5): Yaamava' Resort & Casino · Palms Casino Resort · Corporate offices · Conference rooms · Firehouses · Schools · Banquet halls. Every item is already in the copy.
-- Photo: `partnership/p-lobby-2-installed.jpg` (the finished YAAMAVA' lobby LED) until Palms/corporate photography is supplied (⚑9). **No placeholder images may ship.**
+- Photo: `partnership/p-lobby-2-installed.jpg` (the finished YAAMAVA' lobby LED) as the section's single image. No Palms/corporate/other photography exists and none is coming (⚑9) — make the **scan strip the hero of this section**: larger tiles, one per site type, so the enterprise breadth reads at a glance without photos. **No placeholder images may ship.**
 
 ### 4.10 CTA
 - Photo: a *different* image from the hero — `partnership/p-909-archway.jpg` under the standard CTA scrim.
@@ -152,7 +158,7 @@ All staged in `assets/yaamava/partnership/` unless noted ("existing" = already i
 | Slot | File | Source (OneDrive `Project Media/Yaamava/…`) | Note |
 |---|---|---|---|
 | Hero bg | existing `gaming-floor-led-web.jpg` | — | keep |
-| Foundation band | existing `legacy-rack-before-web.jpg` **or** `p-headend-idf.jpg` | `IDF/AV4 IDF/IMG_2696.jpg` | ⚑4 provenance |
+| Foundation visual | **no photo** — `cs-patchwork` CSS graphic (§4.3) | — | rack photos ruled out by Jane |
 | Triptych 1 (structure) | `p-entry-1-structure.jpg` | `YEV LED/photos/Event Entry 4.jpg` (HEIC) | bare shell, cones |
 | Triptych 2 (design) | `p-entry-2-design.jpg` | `YEV LED/photos/Event Entry 4 proposed.jpg` | LED overlay in magenta — it's a design visualization; caption says "Design" |
 | Triptych 3 (installed) | existing `event-entry-led-web.jpg` | — | |
@@ -172,12 +178,12 @@ All staged in `assets/yaamava/partnership/` unless noted ("existing" = already i
 1. **Restore "Consolidation you can see" + ledger?** Recommended yes (rule-required; strongest proof; restores dark rhythm). Default if no answer: build them, keep behind a clearly-marked block so they can be removed in one edit.
 2. **Hero title.** Her full title exceeds the canonical lead-in length. Recommendation: split title in the hero + full title in SEO/`<title>`.
 3. **Grammar:** "As San Manuel's resorts **has** expanded" → "resort has" / "resorts have." Left as written.
-4. **Is `legacy-rack-before-web.jpg` a Yaamava photo?** (Carried from the earlier rack-background round; unconfirmed.)
-5. **2021 expansion date.** File timestamps suggest a 2021–22 build: bar LED shots June 2021, event-entry LED factory photos Jan 2022, The 909 opened **Nov 17, 2022**. The timeline's "2021" may want to read **2021–22**. Mike to confirm.
-6. **"10+ venues & locations"** needs Mike's count (the copy lists ~7 named kinds of site).
+4. ~~Legacy rack photo~~ **RESOLVED (Jane):** do **not** use `legacy-rack-before-web.jpg`, and no rack photo in the foundation section. Remove it from this page entirely. (Note for ⚑1: the restored "Consolidation you can see" section keeps the **locked shared clean-rack background** (DECISION-LOG 2026-10-29). That is an ambient section treatment, separate from this ruling about the foundation section's imagery — leave it as is.)
+5. ~~2021 expansion date~~ **RESOLVED (Jane approved):** timeline row 3 reads **"2021–22"** (milestone text unchanged: "Major resort expansion"). Also use "2021–22" anywhere the expansion is dated (the section H2 has no date — leave it). Row 4 stays "2022" (The 909, opened Nov 17, 2022).
+6. ~~"10+ venues & locations"~~ **RESOLVED (Jane):** keep as written.
 7. **Resolved:** The 909 facts in the doc's verification note (50′×12′ Game Day display, 150+ screens, Nov 2022 opening) match the public press release/fact sheet. Still unconfirmed: individual LED-wall install dates; the 290,000 sq ft vs. wider resort footprint; endpoint total.
 8. **Press-photo rights.** `SBS-L-909HALL-…` are client-supplied PR photos. Fine for the review mockup; confirm usage with Yaamava marketing before publishing, or swap to the LUCI-shot `p-909-archway` / `p-909-ceiling`.
-9. **No Palms / corporate / firehouse / school photography** in the library. Ask Mike. Until then the closer uses the lobby shot.
+9. ~~No Palms / corporate / firehouse / school photography~~ **CONFIRMED (Jane): none exists and none is coming.** Don't wait on it. The closing section is **type-led** (enterprise scan strip, §4.9) with the lobby shot as its one photo; no placeholder, no "photo needed" note.
 10. **New-claim option:** a "0 new control systems" tile on the 909 band (derived from Mike's statement and Jane's copy). Not built unless Jane okays it.
 
 ## 7. Brand-standard delta checklist (mockup → canonical)
