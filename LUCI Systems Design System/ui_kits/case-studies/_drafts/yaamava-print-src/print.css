@@ -198,7 +198,7 @@ html, body { margin: 0; padding: 0; background: #fff; }
 .pg--2 .cs-sec > * { max-width: 4.7in; }
 .pg--2 .cs-sec__title { font-size: 32px; margin-bottom: 20px; }
 .pg--2 .cs-copy p { font-size: 15px; line-height: 1.68; margin-bottom: 14px; max-width: none; }
-.pg--2 .cs-bignum { margin-top: 32px; }
+.pg--2 .cs-bignum { margin-top: 32px; background: rgba(255,255,255,.94) !important; padding: 20px 24px 20px 20px !important; }
 .pg--2 .cs-bignum__num { font-size: 64px; }
 .pg--2 .cs-sec__title { max-width: 4.7in !important; }
 .pg--2 .cs-copy { margin-top: 4px; }
@@ -213,7 +213,7 @@ html, body { margin: 0; padding: 0; background: #fff; }
 .pg--1 .cs-vtl__row:last-child { padding-bottom: 0; }
 .pg--5 .cs-quote--dark__text { font-size: 17px; line-height: 1.5; }
 .pg--5 .cs-quote--dark { margin-top: 30px; }
-.pg--2 .cs-sec--photo-fade { background-image: linear-gradient(to right, rgba(245,248,250,.97) 0%, rgba(245,248,250,.93) 48%, rgba(245,248,250,.55) 66%, rgba(245,248,250,.1) 84%, rgba(245,248,250,0) 100%), url('../assets/yaamava/partnership/p-entry-arch-print.jpg?v=3') !important; background-size: cover, cover !important; background-position: center, center right !important; background-repeat: no-repeat !important; }
+.pg--2 .cs-sec--photo-fade { background-image: linear-gradient(to bottom, rgba(245,248,250,1) 0%, rgba(245,248,250,1) 5%, rgba(245,248,250,0) 14%), linear-gradient(to right, rgba(245,248,250,1) 0%, rgba(245,248,250,1) 5%, rgba(245,248,250,1) 50%, rgba(245,248,250,.67) 80%, rgba(245,248,250,0) 96%), url('../assets/yaamava/partnership/p-event-center-water-web.jpg') !important; background-size: cover, cover, cover !important; background-position: right bottom, right bottom, right bottom !important; background-repeat: no-repeat !important; }
 .pg--5 .cs-quote--dark { margin-top: 26px; }
 
 /* ===== Anti-blink: bake gradients into photos, flatten small gradients ===== */
@@ -227,8 +227,8 @@ html, body { margin: 0; padding: 0; background: #fff; }
   background-size: cover !important;
 }
 .pg--2 .cs-sec--photo-fade {
-  background-image: url('../assets/yaamava/partnership/p-entry-arch-baked.jpg') !important;
-  background-position: center right !important;
+  background-image: url('../assets/yaamava/partnership/p-event-center-water-baked.jpg') !important;
+  background-position: right bottom !important;
   background-size: cover !important;
 }
 .pg .cs-sec--quote-photo {
