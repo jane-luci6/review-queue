@@ -505,13 +505,18 @@
 .cs-vtl__desc{margin:0;font-family:var(--font-copy);font-size:16px;line-height:1.6;color:var(--ink);max-width:72ch}
 @media(max-width:680px){.cs-vtl__row{grid-template-columns:44px 1fr;gap:16px}.cs-vtl::before{left:22px}}
 
-/* Foundation: faded Yaamava photo behind light text */
+/* Foundation: dark navy over Yaamava water photo, light text */
 .cs-sec--photo-fade{
-  background-color:var(--off-white);
-  background-image:linear-gradient(to right,rgba(245,248,250,.97) 0%,rgba(245,248,250,.92) 38%,rgba(245,248,250,.35) 68%,rgba(245,248,250,0) 100%),url('../assets/yaamava/partnership/p-event-center-water-web.jpg');
+  background-color:var(--navy-deep);
+  background-image:linear-gradient(to right,rgba(10,22,28,.94) 0%,rgba(10,22,28,.85) 45%,rgba(10,22,28,.5) 80%,rgba(10,22,28,.25) 100%),url('../assets/yaamava/partnership/p-event-center-water-web.jpg');
   background-position:center right;background-size:cover;background-repeat:no-repeat}
-.cs-sec--photo-fade .cs-sec__title{color:var(--navy)}
-.cs-sec--photo-fade .cs-sec__title-accent{color:var(--accent-light)}
+.cs-sec--photo-fade .cs-sec__title{color:var(--off-white)}
+.cs-sec--photo-fade .cs-sec__title-accent{color:var(--mint)}
+.cs-sec--photo-fade .cs-copy p{color:rgba(235,245,248,.86)}
+.cs-sec--photo-fade .cs-bignum{border-left-color:var(--mint)}
+.cs-sec--photo-fade .cs-bignum__num{color:var(--mint)}
+.cs-sec--photo-fade .cs-bignum__label{color:var(--off-white)}
+.cs-sec--photo-fade .cs-bignum__text{color:rgba(235,245,248,.84)}
 .cs-cols2{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,48px)}
 @media(max-width:680px){.cs-cols2{grid-template-columns:1fr}}
 .cs-cols2 p{margin:0;font-family:var(--font-copy);font-size:17px;line-height:1.72;color:var(--ink)}
