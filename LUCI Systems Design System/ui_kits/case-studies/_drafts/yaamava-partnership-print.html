@@ -1,0 +1,314 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8">
+<title>Yaamava&rsquo; Partnership &mdash; Case Study (Print)</title>
+<link rel="stylesheet" href="../../../assets/fonts/luci-brand-fonts.css">
+<style>
+/* ===== Print: US Letter, embedded fonts, color-adjust ===== */
+@page { size: 8.5in 11in; margin: 0; }
+*{ -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+:root{
+  --navy-deep:#0A161C; --navy:#102330; --navy-mid:#16273A;
+  --mint:#68E3BE; --mint-rgb:104,227,190; --gold:#CEB06E; --gold-deep:#B8995A;
+  --accent-light:#2b9e80; --off-white:#F5F8FA; --ink:#354F5C; --ink-strong:#1A2A33;
+  --navy-muted:#5A7080; --rule-light:#D4D9DC;
+  --display:'Syncopate','Arial Black',sans-serif;
+  --body:'Space Grotesk',sans-serif;
+  --copy:'Inter',sans-serif;
+  --px:0.5in;
+}
+html,body{margin:0;padding:0;background:#fff;font-family:var(--copy);color:var(--ink);font-size:11pt;line-height:1.55}
+.page{position:relative;width:8.5in;height:11in;overflow:hidden;page-break-after:always;background:#fff}
+.page:last-child{page-break-after:auto}
+.pg-num{position:absolute;bottom:0.35in;right:var(--px);font-family:var(--display);font-size:8pt;font-weight:700;letter-spacing:.14em;color:var(--navy-muted)}
+
+/* Headings */
+h1,h2,h3{margin:0;font-family:var(--body);font-weight:700;letter-spacing:-.02em;line-height:1.1;color:var(--ink-strong)}
+.cs-title{font-size:26pt;line-height:1.05;letter-spacing:-.03em}
+.cs-title-accent{color:var(--accent-light)}
+.cs-leadin{display:block;font-family:var(--body);font-size:12pt;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--navy-muted);margin-bottom:10px}
+.cs-title em{font-family:var(--display);font-style:normal;color:var(--accent-light);text-transform:uppercase}
+
+/* Body copy */
+p{margin:0 0 10px;font-family:var(--copy);font-size:10.5pt;line-height:1.6;color:var(--ink)}
+.copy--tight p{margin-bottom:6px}
+
+/* Hero (print: dark band, no full-bleed photo — solid navy with mint bottom border) */
+.cs-hero{background:var(--navy-deep);color:var(--off-white);padding:0.55in var(--px) 0.4in;border-bottom:4px solid var(--mint)}
+.cs-hero .cs-leadin{color:rgba(235,245,248,.82)}
+.cs-hero .cs-title{color:var(--off-white);max-width:18ch}
+.cs-hero .cs-title em{color:var(--mint)}
+.cs-hero__dek{margin:0 0 20px;font-family:var(--copy);font-size:10.5pt;line-height:1.55;color:rgba(235,245,248,.82);max-width:54ch}
+.cs-hero__property{margin:0;padding-top:14px;border-top:1px solid rgba(104,227,190,.18);font-family:var(--body);font-size:9pt;font-weight:600;color:var(--gold)}
+.cs-hero__property span{display:block;color:rgba(165,179,188,.7);font-weight:500}
+
+/* Glance bar */
+.cs-glance{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:1px;background:var(--rule-light);border-bottom:1px solid var(--rule-light)}
+.cs-glance__cell{background:#fff;padding:16px 18px}
+.cs-glance__num{margin:0 0 4px;font-family:var(--body);font-size:20pt;font-weight:700;line-height:1;letter-spacing:-.03em;color:var(--accent-light)}
+.cs-glance__sub{margin:0 0 2px;font-family:var(--body);font-size:9pt;font-weight:600;color:var(--ink-strong)}
+.cs-glance__foot{margin:0;font-family:var(--copy);font-size:8pt;color:var(--navy-muted)}
+
+/* Timeline (compact horizontal) */
+.cs-vtl-h{list-style:none;margin:0;padding:24px var(--px);display:flex;gap:0;align-items:flex-start}
+.cs-vtl-h__item{flex:1;padding:0 12px;border-left:2px solid var(--rule-light);position:relative}
+.cs-vtl-h__item:first-child{border-left:none;padding-left:0}
+.cs-vtl-h__year{margin:0 0 4px;font-family:var(--display);font-size:8pt;font-weight:700;letter-spacing:.04em;color:var(--accent-light)}
+.cs-vtl-h__milestone{margin:0 0 4px;font-family:var(--body);font-weight:700;font-size:10pt;color:var(--ink-strong);line-height:1.2}
+.cs-vtl-h__desc{margin:0;font-family:var(--copy);font-size:8.5pt;line-height:1.45;color:var(--ink)}
+
+/* Bignum callout */
+.cs-bignum{display:flex;align-items:center;gap:24px;margin:20px 0 0;padding:16px 0 16px 20px;border-left:4px solid var(--accent-light)}
+.cs-bignum__num{font-family:var(--body);font-weight:700;font-size:42pt;line-height:.9;letter-spacing:-.03em;color:var(--accent-light);flex:none}
+.cs-bignum__label{margin:0 0 4px;font-family:var(--body);font-weight:700;font-size:12pt;color:var(--ink-strong)}
+.cs-bignum__text{margin:0;font-family:var(--copy);font-size:9.5pt;line-height:1.5;color:var(--ink);max-width:48ch}
+
+/* Triptych */
+.cs-tri{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:16px 0 0}
+.cs-tri__item{margin:0;position:relative}
+.cs-tri__item img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.cs-tri__item figcaption{margin:4px 0 0;font-family:var(--display);font-size:7.5pt;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-light)}
+.cs-tri__item:not(:last-child)::after{content:'\2192';position:absolute;right:-10px;top:calc(37.5% - 9px);z-index:2;width:18px;height:18px;line-height:18px;text-align:center;background:#000;border:1px solid rgba(104,227,190,.45);color:var(--mint);font-weight:700;font-size:11px}
+
+/* Scope box (dark) */
+.cs-scope{margin:18px 0 0;padding:18px 22px;background:rgba(255,255,255,.04);border:1px solid rgba(104,227,190,.22);border-radius:2px}
+.cs-scope__label{margin:0 0 12px;font-family:var(--display);font-size:8pt;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--mint)}
+.cs-scope__list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:0 20px}
+.cs-scope__list li{padding:8px 0 8px 22px;position:relative;font-family:var(--body);font-weight:600;font-size:9.5pt;color:var(--off-white)}
+
+/* Backbone pull line */
+.cs-backbone{margin:18px 0 0;padding:14px 0 14px 22px;border-left:4px solid var(--mint);font-family:var(--body);font-weight:700;font-size:16pt;line-height:1.2;letter-spacing:-.02em;color:var(--off-white);max-width:34ch}
+
+/* Dark section */
+.cs-dark{background:var(--navy-deep);color:var(--off-white);padding:0.45in var(--px)}
+.cs-dark h2{color:var(--off-white)}
+.cs-dark h2 .cs-title-accent{color:var(--gold)}
+.cs-dark p{color:rgba(235,245,248,.86)}
+
+/* Spec tiles (dark) */
+.cs-spec{list-style:none;margin:0 0 16px;padding:0;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(104,227,190,.28)}
+.cs-spec li{padding:16px 16px 16px 0}
+.cs-spec li+li{padding-left:16px;border-left:1px solid rgba(104,227,190,.18)}
+.cs-spec__num{display:block;font-family:var(--body);font-weight:700;font-size:22pt;line-height:1;letter-spacing:-.03em;color:var(--mint)}
+.cs-spec__label{display:block;margin-top:4px;font-family:var(--copy);font-size:8.5pt;line-height:1.4;color:rgba(235,245,248,.84)}
+
+/* Quote (dark, compact) */
+.cs-quote{margin:20px 0 0;padding:8px 0 8px 22px;border-left:4px solid var(--mint);max-width:56ch}
+.cs-quote__text{margin:0;font-family:var(--copy);font-style:italic;font-size:11pt;line-height:1.5;color:rgba(235,245,248,.94)}
+.cs-quote__attrib{margin:10px 0 0;font-family:var(--display);font-size:8pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(235,245,248,.6)}
+.cs-quote__attrib span{display:block;color:var(--mint);margin-bottom:2px}
+
+/* Ledger (dark, compact) */
+.cs-ledger{background:var(--navy-deep);padding:0.4in var(--px);text-align:center}
+.cs-ledger__title{margin:0 0 18px;font-family:var(--body);font-weight:700;font-size:18pt;color:var(--off-white)}
+.cs-ledger__title em{font-style:normal;color:var(--mint)}
+.cs-ledger__stats{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:1px}
+.cs-ledger__stats li{padding:12px 8px;text-align:center}
+.cs-ledger__num{display:block;font-family:var(--body);font-weight:700;font-size:20pt;line-height:1;color:var(--mint)}
+.cs-ledger__label{display:block;margin-top:4px;font-family:var(--copy);font-size:7.5pt;color:rgba(235,245,248,.6)}
+
+/* Scope box (light) */
+.cs-scope--light{background:linear-gradient(135deg,rgba(230,245,239,.5) 0%,rgba(243,250,248,.35) 100%);border:1px solid rgba(43,158,128,.22);border-left:4px solid var(--accent-light);border-radius:2px}
+.cs-scope--light .cs-scope__label{color:var(--accent-light)}
+.cs-scope--light .cs-scope__list li{color:var(--ink-strong);border-top:none;padding-top:6px;padding-bottom:6px}
+
+/* Footer */
+.cs-footer{padding:16px var(--px);background:var(--navy-deep);border-top:4px solid var(--mint)}
+.cs-footer__tag{margin:0;font-family:var(--display);font-size:7.5pt;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mint)}
+.cs-footer__legal{margin:6px 0 0;font-family:var(--copy);font-size:7.5pt;color:rgba(235,245,248,.4)}
+
+/* Section spacing */
+.cs-sec{padding:0.4in var(--px)}
+.cs-sec--light{background:var(--off-white)}
+.cs-sec h2{font-size:16pt;margin-bottom:12px}
+</style>
+</head><body>
+
+<!-- ═══ PAGE 1: Hero + Glance + Timeline ═══ -->
+<div class="page">
+  <div class="cs-hero">
+    <span class="cs-leadin">Building a strong A/V foundation with</span>
+    <h1 class="cs-title"><em>Yaamava&rsquo;</em></h1>
+    <p class="cs-hero__dek">Since 2018, LUCI has partnered with San Manuel to modernize and orchestrate the multimedia systems powering its casino operations and guest experiences.</p>
+    <p class="cs-hero__property">Yaamava&rsquo; Resort &amp; Casino<span>Highland, California &middot; San Manuel Band of Mission Indians</span></p>
+  </div>
+
+  <div class="cs-glance">
+    <div class="cs-glance__cell">
+      <p class="cs-glance__num">8 years</p>
+      <p class="cs-glance__sub">Of partnership</p>
+      <p class="cs-glance__foot">Since 2018</p>
+    </div>
+    <div class="cs-glance__cell">
+      <p class="cs-glance__num">17-story</p>
+      <p class="cs-glance__sub">Hotel expansion</p>
+      <p class="cs-glance__foot">Supported by LUCI</p>
+    </div>
+    <div class="cs-glance__cell">
+      <p class="cs-glance__num">10+</p>
+      <p class="cs-glance__sub">Venues &amp; locations</p>
+      <p class="cs-glance__foot">Across the San Manuel enterprise</p>
+    </div>
+    <div class="cs-glance__cell">
+      <p class="cs-glance__sub" style="font-size:10pt">The partnership</p>
+      <p class="cs-glance__foot">From start to today</p>
+    </div>
+  </div>
+
+  <div class="cs-sec cs-sec--light">
+    <h2>The partnership <span class="cs-title-accent">from start to today</span></h2>
+    <p style="margin-bottom:16px">As San Manuel&rsquo;s resorts has expanded, LUCI has reinforced the partnership by providing the engineering, design, implementation, and ongoing support each phase required.</p>
+    <ol class="cs-vtl-h">
+      <li class="cs-vtl-h__item">
+        <p class="cs-vtl-h__year">2018</p>
+        <p class="cs-vtl-h__milestone">LUCI foundation installed</p>
+        <p class="cs-vtl-h__desc">Network-based multimedia integration across the property&rsquo;s existing systems.</p>
+      </li>
+      <li class="cs-vtl-h__item">
+        <p class="cs-vtl-h__year">2020</p>
+        <p class="cs-vtl-h__milestone">Infrastructure overhaul</p>
+        <p class="cs-vtl-h__desc">Casino-wide audio system replacement during the COVID closure window.</p>
+      </li>
+      <li class="cs-vtl-h__item">
+        <p class="cs-vtl-h__year">2021&ndash;22</p>
+        <p class="cs-vtl-h__milestone">Major resort expansion</p>
+        <p class="cs-vtl-h__desc">Casino, hotel, spa, pool deck, dining, retail, and meeting spaces.</p>
+      </li>
+      <li class="cs-vtl-h__item">
+        <p class="cs-vtl-h__year">2022</p>
+        <p class="cs-vtl-h__milestone">The 909 sports bar</p>
+        <p class="cs-vtl-h__desc">Large-scale LED and multimedia expansion for a world-class sports bar and food hall.</p>
+      </li>
+      <li class="cs-vtl-h__item">
+        <p class="cs-vtl-h__year">2023&ndash;TODAY</p>
+        <p class="cs-vtl-h__milestone">Enterprise-wide support</p>
+        <p class="cs-vtl-h__desc">Yaamava&rsquo;, Palms, corporate offices, and other facilities across the San Manuel enterprise.</p>
+      </li>
+    </ol>
+  </div>
+  <div class="pg-num">01</div>
+</div>
+
+<!-- ═══ PAGE 2: Foundation + Expansion ═══ -->
+<div class="page">
+  <div class="cs-sec cs-sec--light">
+    <h2>A new foundation <span class="cs-title-accent">for a growing property</span></h2>
+    <div class="copy--tight">
+      <p>When LUCI partnered with San Manuel Casino in 2018, the property operated six separate audio systems and four video systems, each managed independently. This patchwork of equipment and controls made even routine operations unnecessarily complex, with no single way to manage the property as a whole.</p>
+      <p>LUCI&rsquo;s platform integrated the property&rsquo;s existing endpoints and systems, unifying them over the property&rsquo;s network under one control interface. What had been a collection of disconnected systems became a coordinated environment that was easier to manage and ready to grow. The project also helped drive LUCI&rsquo;s move toward the open, software-based orchestration approach it uses today.</p>
+      <p>When COVID temporarily closed the casino in 2020, San Manuel and LUCI used the opportunity to overhaul its audio infrastructure. LUCI designed the new system, procured equipment, and coordinated installation partners&mdash;expanding its role in engineering and project management ahead of the property&rsquo;s major resort expansion.</p>
+    </div>
+    <div class="cs-bignum">
+      <span class="cs-bignum__num">1,000+</span>
+      <div>
+        <p class="cs-bignum__label">speakers replaced in eight months</p>
+        <p class="cs-bignum__text">New cabling, redesigned audio zones, and improved sound tuning and volume control throughout the casino.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-dark">
+    <h2>Engineering alongside <span class="cs-title-accent">Yaamava&rsquo;s expansion</span></h2>
+    <div class="cs-tri">
+      <figure class="cs-tri__item">
+        <img src="../assets/yaamava/partnership/p-entry-1-structure.jpg" alt="Event center entry as bare structure">
+        <figcaption>Structure</figcaption>
+      </figure>
+      <figure class="cs-tri__item">
+        <img src="../assets/yaamava/partnership/p-entry-2-design.jpg" alt="LUCI LED design overlaid">
+        <figcaption>Design</figcaption>
+      </figure>
+      <figure class="cs-tri__item">
+        <img src="../assets/yaamava/event-entry-led-web.jpg" alt="Finished event center entry with LED">
+        <figcaption>Installed</figcaption>
+      </figure>
+    </div>
+    <p style="margin-top:14px">As San Manuel advanced its major resort expansion, LUCI worked alongside the property&rsquo;s design and construction teams, architects, and other technical disciplines to ensure its A/V systems were engineered to work seamlessly from the start. The multi-year development added expanded gaming space, a 17-story hotel tower, spa, pool deck, restaurants, bars, retail, and meeting spaces, transforming San Manuel Casino into Yaamava&rsquo; Resort &amp; Casino.</p>
+    <div class="cs-scope">
+      <p class="cs-scope__label">What the expansion added</p>
+      <ul class="cs-scope__list">
+        <li>Expanded gaming space</li>
+        <li>17-story hotel tower</li>
+        <li>Spa</li>
+        <li>Pool deck</li>
+        <li>Restaurants &amp; bars</li>
+        <li>Retail</li>
+        <li>Meeting spaces</li>
+      </ul>
+    </div>
+    <p class="cs-backbone">LUCI is the A/V backbone of the expanded resort.</p>
+  </div>
+  <div class="pg-num">02</div>
+</div>
+
+<!-- ═══ PAGE 3: 909 + Eight Years + Quote ═══ -->
+<div class="page">
+  <div class="cs-dark">
+    <h2>New venues. <span class="cs-title-accent">The same foundation.</span></h2>
+    <ul class="cs-spec">
+      <li><span class="cs-spec__num">50&prime; &times; 12&prime;</span><span class="cs-spec__label">Game Day display in the 909 sports bar</span></li>
+      <li><span class="cs-spec__num">150+</span><span class="cs-spec__label">Screens across the 909 food hall and sports bar</span></li>
+      <li><span class="cs-spec__num">LED archway</span><span class="cs-spec__label">Wrapping the entrance to the food hall</span></li>
+    </ul>
+    <p>The 909 sports bar and food hall opened in 2022 as a world-class sports venue. LUCI designed and installed the LED video walls, the archway entrance, and the multimedia systems throughout&mdash;every screen integrated into the same platform already running the rest of the property.</p>
+    <div class="cs-bignum" style="border-left-color:var(--mint)">
+      <span class="cs-bignum__num" style="color:var(--mint)">34</span>
+      <div>
+        <p class="cs-bignum__label" style="color:var(--off-white)">LED walls across the property</p>
+        <p class="cs-bignum__text" style="color:rgba(235,245,248,.84)">Over the course of the partnership, LUCI designed and installed LED walls throughout the property, integrating each addition into the existing LUCI environment.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-dark" style="border-top:1px solid rgba(104,227,190,.14)">
+    <h2>What eight years of partnership <span class="cs-title-accent">has built</span></h2>
+    <p>Across these projects, LUCI worked as part of Yaamava&rsquo;s extended technology organization.</p>
+    <p>That continuity matters. The LUCI engineers supporting the next project already understand the systems in place, the decisions behind them, and the property&rsquo;s broader operational goals. They can move directly into each new phase of development, solve new technical challenges, and maintain the infrastructure already supporting its guests.</p>
+    <blockquote class="cs-quote">
+      <p class="cs-quote__text">&ldquo;What I love about LUCI&rsquo;s approach is that they really focus on how to make the operations easier for the business, and they do it in a really cost-effective manner. They look for ways to implement solutions that are easy to administer, have a reasonable cost point, and are easy to use.&rdquo;</p>
+      <p class="cs-quote__attrib"><span>Toni Pepper</span> CITO, San Manuel Band of Mission Indians</p>
+    </blockquote>
+  </div>
+  <div class="pg-num">03</div>
+</div>
+
+<!-- ═══ PAGE 4: Ledger + What's Next + Footer ═══ -->
+<div class="page">
+  <div class="cs-ledger">
+    <h2 class="cs-ledger__title">Yaamava&rsquo; on LUCI <em>to date</em></h2>
+    <ul class="cs-ledger__stats">
+      <li><span class="cs-ledger__num">1,000+</span><span class="cs-ledger__label">Property endpoints</span></li>
+      <li><span class="cs-ledger__num">34</span><span class="cs-ledger__label">LED walls</span></li>
+      <li><span class="cs-ledger__num">284</span><span class="cs-ledger__label">Audio zones</span></li>
+      <li><span class="cs-ledger__num">220</span><span class="cs-ledger__label">Digital signage endpoints</span></li>
+      <li><span class="cs-ledger__num">14</span><span class="cs-ledger__label">Technologies orchestrated</span></li>
+    </ul>
+    <p style="margin:18px 0 0;font-family:var(--body);font-weight:700;font-size:13pt;color:var(--off-white)">One <em style="font-style:normal;color:var(--mint)">LUCI</em> platform</p>
+    <p style="margin:4px 0 0;font-family:var(--copy);font-size:9pt;color:rgba(235,245,248,.6)">Every endpoint, every zone, every wall, every channel &mdash; one interface.</p>
+  </div>
+
+  <div class="cs-sec cs-sec--light">
+    <h2>A foundation <span class="cs-title-accent">for the future</span></h2>
+    <p>The relationship that began at San Manuel Casino now extends throughout the broader San Manuel enterprise. Each environment brings its own requirements, but LUCI applies the same approach everywhere: understand the operation, develop the right solution, coordinate the work, and remain accountable for the technology long after installation.</p>
+    <p>Through ongoing maintenance, system improvements, and planning for future projects, LUCI continues supporting the enterprise as its needs evolve.</p>
+    <div class="cs-scope cs-scope--light">
+      <p class="cs-scope__label">Where LUCI supports San Manuel today</p>
+      <ul class="cs-scope__list">
+        <li>Yaamava&rsquo; Resort &amp; Casino</li>
+        <li>Palms Casino Resort</li>
+        <li>Corporate offices</li>
+        <li>Conference rooms</li>
+        <li>Firehouses</li>
+        <li>Schools</li>
+        <li>Banquet spaces</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer class="cs-footer">
+    <p class="cs-footer__tag">The Orchestration Engine for Enterprise Multimedia</p>
+    <p class="cs-footer__legal">&copy; 2026 LUCI Systems &middot; lucisystems.com &middot; +1 (833) 333-5868</p>
+  </footer>
+  <div class="pg-num">04</div>
+</div>
+
+</body></html>
