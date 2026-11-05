@@ -174,3 +174,31 @@ html, body { margin: 0; padding: 0; background: #fff; }
 .pg--5 .cs-sec { padding: 28px 64px; }
 .pg--5 .cs-ledger__dest-sub { max-width: none; }
 .pg--5 .cs-quote--dark { max-width: 64ch; }
+
+/* ===== Round: Jane 12:24 ===== */
+/* Hero bottom rule: all mint */
+.cs-hero::after { background: var(--mint) !important; }
+
+/* Copy runs to the right margin (page 2 excepted below) */
+.pg .cs-copy p, .pg .cs-cols2 p, .pg .cs-vtl__desc, .pg .cs-bignum__text,
+.pg .cs-hero__dek, .pg .cs-cta__about, .pg .cs-ledger__dest-sub, .pg .cs-quote--dark,
+.pg .cs-sec__title, .pg .cs-pull { max-width: none !important; }
+
+/* Page 1 timeline: open up year / milestone / description rhythm */
+.pg--1 .cs-vtl { margin-top: 20px; }
+.pg--1 .cs-vtl__row { padding-bottom: 18px; }
+.pg--1 .cs-vtl__row:last-child { padding-bottom: 0; }
+.pg--1 .cs-vtl__year { margin-bottom: 6px; line-height: 1; }
+.pg--1 .cs-vtl__milestone { margin-bottom: 4px; line-height: 1.25; }
+.pg--1 .cs-vtl__desc { line-height: 1.5; }
+
+/* Page 2: content from the top, smaller type, narrower column so the photo shows on the right */
+.pg--2 .cs-sec { justify-content: flex-start; padding: 56px 64px 48px; }
+.pg--2 .cs-sec--photo-fade { background-image: linear-gradient(to right, rgba(245,248,250,.97) 0%, rgba(245,248,250,.93) 48%, rgba(245,248,250,.6) 68%, rgba(245,248,250,.15) 88%, rgba(245,248,250,0) 100%), url('../assets/yaamava/gaming-floor-led-web.jpg'); background-position: center right; background-size: cover; }
+.pg--2 .cs-sec > * { max-width: 4.7in; }
+.pg--2 .cs-sec__title { font-size: 32px; margin-bottom: 20px; }
+.pg--2 .cs-copy p { font-size: 15px; line-height: 1.68; margin-bottom: 14px; max-width: none; }
+.pg--2 .cs-bignum { margin-top: 32px; }
+.pg--2 .cs-bignum__num { font-size: 64px; }
+.pg--2 .cs-sec__title { max-width: 4.7in !important; }
+.pg--2 .cs-copy { margin-top: 4px; }

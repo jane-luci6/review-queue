@@ -22,7 +22,7 @@ for i, names in enumerate(pages, 1):
     inner = "\n".join(frag(n) for n in names).replace("<!--ABOUT-->", about)
     foot = (f'<footer class="pg-foot"><img src="yaamava-mockup-assets/logos/luci-full-white-small.png" alt="LUCI Systems" width="720" height="168">'
             f'<span class="pg-foot__mid">Case Study &middot; Yaamava&rsquo; Resort &amp; Casino</span>'
-            f'<span class="pg-foot__right">lucisystems.com<span class="pg-foot__num">{i:02d} / {len(pages):02d}</span></span></footer>')
+            f'<span class="pg-foot__right">lucisystems.com<span class="pg-foot__num">{i:02d}</span></span></footer>')
     body.append(f'<div class="pg pg--{i}">\n{inner}\n{foot}\n</div>')
 
 html = f"""<!DOCTYPE html>
