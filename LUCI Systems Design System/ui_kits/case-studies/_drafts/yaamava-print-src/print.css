@@ -202,3 +202,15 @@ html, body { margin: 0; padding: 0; background: #fff; }
 .pg--2 .cs-bignum__num { font-size: 64px; }
 .pg--2 .cs-sec__title { max-width: 4.7in !important; }
 .pg--2 .cs-copy { margin-top: 4px; }
+
+/* ===== Round: Jane 12:28 ===== */
+.pg--1 .cs-vtl__desc { font-size: 13px; line-height: 1.5; }
+.pg--1 .cs-vtl__milestone { font-size: 16px; }
+.pg--5 .cs-quote--dark { max-width: none !important; margin-left: 96px; margin-right: 96px; }
+.pg--2 .cs-sec--photo-fade { background-image: linear-gradient(to right, rgba(245,248,250,.97) 0%, rgba(245,248,250,.93) 48%, rgba(245,248,250,.55) 66%, rgba(245,248,250,.1) 84%, rgba(245,248,250,0) 100%), var(--p2-photo, url('../assets/yaamava/partnership/p-entry-arch-print.jpg')); background-position: center right; }
+.pg--5 .cs-quote--dark { margin-top: 36px; }
+.pg--1 .cs-vtl__row { padding-bottom: 22px; }
+.pg--1 .cs-vtl__row:last-child { padding-bottom: 0; }
+.pg--5 .cs-quote--dark__text { font-size: 17px; line-height: 1.5; }
+.pg--5 .cs-quote--dark { margin-top: 30px; }
+.pg--2 .cs-sec--photo-fade { background-image: linear-gradient(to right, rgba(245,248,250,.97) 0%, rgba(245,248,250,.93) 48%, rgba(245,248,250,.55) 66%, rgba(245,248,250,.1) 84%, rgba(245,248,250,0) 100%), url('../assets/yaamava/partnership/p-entry-arch-print.jpg?v=3') !important; background-size: cover, cover !important; background-position: center, center right !important; background-repeat: no-repeat !important; }
