@@ -215,3 +215,49 @@ html, body { margin: 0; padding: 0; background: #fff; }
 .pg--5 .cs-quote--dark { margin-top: 30px; }
 .pg--2 .cs-sec--photo-fade { background-image: linear-gradient(to right, rgba(245,248,250,.97) 0%, rgba(245,248,250,.93) 48%, rgba(245,248,250,.55) 66%, rgba(245,248,250,.1) 84%, rgba(245,248,250,0) 100%), url('../assets/yaamava/partnership/p-entry-arch-print.jpg?v=3') !important; background-size: cover, cover !important; background-position: center, center right !important; background-repeat: no-repeat !important; }
 .pg--5 .cs-quote--dark { margin-top: 26px; }
+
+/* ===== Anti-blink: bake gradients into photos, flatten small gradients ===== */
+/* Chrome turns CSS linear-gradient overlays into PDF Shading objects that
+   repaint lazily (blink) in Preview/Acrobat. Baking the gradient into the
+   photo as a single flat JPEG eliminates the Shading object. */
+
+.pg .cs-hero--photo {
+  background-image: url('../assets/yaamava/partnership/p-hero-baked.jpg') !important;
+  background-position: center 42% !important;
+  background-size: cover !important;
+}
+.pg--2 .cs-sec--photo-fade {
+  background-image: url('../assets/yaamava/partnership/p-entry-arch-baked.jpg') !important;
+  background-position: center right !important;
+  background-size: cover !important;
+}
+.pg .cs-sec--quote-photo {
+  background-image: url('../assets/yaamava/partnership/p-quote-baked.jpg') !important;
+  background-position: center !important;
+  background-size: cover !important;
+}
+.pg .cs-sec--mid {
+  background-image: url('../assets/yaamava/partnership/p-909-mid-baked.jpg') !important;
+  background-position: center !important;
+  background-size: cover !important;
+}
+
+/* Flatten small gradients to solid fills */
+.pg .cs-vtl::before { background: rgba(16,35,45,.4) !important; }
+.pg .cs-scope-box--light { background: #F3FAF8 !important; }
+.pg .cs-hero::after { background: var(--mint) !important; }
+
+/* CTA section (page 6): same gradient+photo as 909 mid, reuse baked image */
+.pg .cs-cta--photo {
+  background-image: url('../assets/yaamava/partnership/p-909-mid-baked.jpg') !important;
+  background-position: center right !important;
+  background-size: cover !important;
+}
+
+/* Flatten radial-gradient pseudo-elements to solid fills */
+.pg .cs-sec--mid::before {
+  background: rgba(104, 227, 190, 0.08) !important;
+}
+.pg .cs-ledger::after {
+  background: rgba(7, 15, 20, 0.55) !important;
+}
