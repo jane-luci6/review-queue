@@ -231,16 +231,48 @@ html, body { margin: 0; padding: 0; background: #fff; }
   background-position: right bottom !important;
   background-size: cover !important;
 }
-.pg .cs-sec--quote-photo {
-  background-image: url('../assets/yaamava/partnership/p-quote-baked.jpg') !important;
-  background-position: center !important;
-  background-size: cover !important;
+/* .cs-sec--mid (page 4, 909): a real <img> behind the content (always a
+   direct Image XObject, never pattern-wrapped) replaces the CSS
+   background-image Chrome was wrapping in a PDF Pattern (TilingType 1) —
+   macOS Preview flickers badly on tiling patterns. */
+.pg .cs-sec--mid { background-image: none !important; position: relative; }
+.pg .cs-sec__print-bg {
+  position: absolute; inset: 0; z-index: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  display: block;
 }
-.pg .cs-sec--mid {
-  background-image: url('../assets/yaamava/partnership/p-909-mid-baked.jpg') !important;
-  background-position: center !important;
-  background-size: cover !important;
+.pg .cs-sec__print-scrim { position: absolute; inset: 0; z-index: 0; }
+.pg .cs-sec--mid .cs-sec__print-scrim { background: rgba(8, 14, 18, .5); }
+.pg .cs-sec--mid > *:not(.cs-sec__print-bg):not(.cs-sec__print-scrim) {
+  position: relative; z-index: 1;
 }
+
+/* .cs-sec--quote-photo (page 5, eight-years quote): same <img>-behind-scrim
+   treatment as .cs-sec--mid — now safe to restore since the real Pattern
+   source (the SVG gradient-stroke funnel lines below) is fixed. */
+.pg .cs-sec--quote-photo { background-image: none !important; position: relative; }
+.pg .cs-sec--quote-photo .cs-sec__print-scrim { background: rgba(10, 22, 28, .74); }
+.pg .cs-sec--quote-photo > *:not(.cs-sec__print-bg):not(.cs-sec__print-scrim) {
+  position: relative; z-index: 1;
+}
+
+/* The real page-5 culprit: .cs-ledger__arrow::after uses a CSS `filter:
+   drop-shadow(...)`. `filter` forces Chrome/Skia to rasterize that whole
+   compositing layer when exporting to PDF, and the raster + its alpha
+   mask get wrapped in a Pattern spanning the page region — the actual
+   Preview flicker source. box-shadow is a vector PDF op, never rasterized. */
+.pg .cs-ledger__arrow::after {
+  filter: none !important;
+  -webkit-filter: none !important;
+}
+
+/* cs-ledger__converge funnel lines use an SVG linearGradient on stroke —
+   Skia can't vectorize a multi-line gradient stroke cleanly for PDF print
+   and rasterizes the whole SVG into an image+mask, wrapped in a Pattern
+   that spans the page region (the real flicker source). Flatten to a
+   solid mint stroke — no gradient, no rasterization. */
+.pg .cs-ledger__converge line { stroke: var(--mint) !important; }
 
 /* Flatten small gradients to solid fills */
 .pg .cs-vtl::before { background: rgba(16,35,45,.4) !important; }
@@ -260,4 +292,11 @@ html, body { margin: 0; padding: 0; background: #fff; }
 }
 .pg .cs-ledger::after {
   background: rgba(7, 15, 20, 0.55) !important;
+}
+
+/* Ledger mesh SVG (canon .cs-ledger::before) uses mix-blend-mode: screen +
+   2 radialGradients → PDF Shading object (blink) + washed/bright colors.
+   Drop the mesh entirely in print; ledger stays solid navy-deep. */
+.pg .cs-ledger::before {
+  content: none !important;
 }
