@@ -123,3 +123,54 @@ html, body { margin: 0; padding: 0; background: #fff; }
 .pg--1 .cs-glancebar__cell { padding: 10px 20px; }
 .pg--1 .cs-vtl__row { padding-bottom: 6px; }
 .pg--1 .cs-sec { padding-bottom: 32px; }
+
+/* Sections fill the page but never squash their own contents */
+.pg > .cs-sec > *, .pg > .cs-ledger > *, .pg > .cs-cta > * { flex-shrink: 0; }
+.pg .cs-ledger__ticker { overflow: visible; }
+
+/* Running footer: logo, document line, page number */
+.pg-foot { flex: 0 0 auto; height: 36px; display: flex; align-items: center; gap: 16px; padding: 0 64px; background: var(--navy-deep); border-top: 1px solid rgba(104,227,190,.28); }
+.pg-foot img { height: 13px; width: auto; display: block; }
+.pg-foot__mid { flex: 1; font-family: var(--font-copy); font-size: 9px; letter-spacing: .04em; color: rgba(235,245,248,.62); }
+.pg-foot__right { display: flex; align-items: center; gap: 16px; font-family: var(--font-copy); font-size: 9px; letter-spacing: .04em; color: rgba(235,245,248,.62); }
+.pg-foot__num { font-family: var(--font-display); font-size: 9px; font-weight: 700; letter-spacing: .14em; color: var(--mint); }
+
+/* ---- refit with footer ---- */
+.pg--1 .cs-hero { padding-bottom: 16px; }
+.pg--1 .cs-vtl__row { padding-bottom: 4px; }
+.pg--1 .cs-sec { padding-bottom: 28px; }
+
+.pg--3 .cs-sec { padding: 32px 64px; }
+.pg--3 .cs-backbone { margin-top: 20px; }
+.pg--3 .cs-scope-box__list li { padding-top: 8px; padding-bottom: 8px; }
+.pg--3 .cs-scope-box__list li::before { top: 11px; }
+
+.pg--4 .cs-sec { padding: 24px 64px; }
+.pg--4 .cs-figure img { height: 2.05in; }
+.pg--4 .cs-bignum { margin-top: 16px; }
+
+.pg--5 .cs-sec { padding: 32px 64px; }
+.pg--5 .cs-quote--dark { margin-top: 24px; }
+.pg--5 .cs-ledger__title { padding-top: 32px; }
+.pg--5 .cs-ledger__dest-head { font-size: 40px; }
+.pg--5 .cs-ledger__converge { height: 56px; }
+
+.pg--6 .cs-sec, .pg--6 .cs-cta { padding: 24px 64px; }
+
+/* ---- refit 2 ---- */
+.pg--4 .cs-figure img { height: 2in; }
+.pg--4 .cs-pair img, .pg--4 .cs-figure__pair img { height: 1.35in; }
+
+.pg--5 .cs-quote--dark__text { font-size: 18px; }
+.pg--5 .cs-ledger__stats { padding: 16px 0; }
+.pg--5 .cs-ledger__ticker { margin-bottom: 16px; }
+.pg--5 .cs-ledger__dest { margin-top: 12px; gap: 8px; }
+
+/* ---- refit 3 ---- */
+.pg--4 .cs-spec li { padding-top: 8px; padding-bottom: 8px; }
+.pg--5 .cs-ledger__title { font-size: 30px; margin-bottom: 20px; }
+.pg--5 .cs-ledger__num { font-size: 36px; }
+.pg--5 .cs-ledger { padding-bottom: 24px; }
+.pg--5 .cs-sec { padding: 28px 64px; }
+.pg--5 .cs-ledger__dest-sub { max-width: none; }
+.pg--5 .cs-quote--dark { max-width: 64ch; }
