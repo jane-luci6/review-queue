@@ -8,6 +8,10 @@
 
 ---
 
+## 2026-11-05
+
+- **Yaamava partnership case study: visual direction locked.** The mockup at `_drafts/yaamava-partnership-mockup-v2.html` is the approved design for the new Yaamava' case study. Sportsbook LED bar is the hero photo; "Consolidation you can see" is cut (the ledger carries the proof); ledger reads 1,000+ endpoints (not 420 displays) with DTV channels removed; foundation section is plain text on a faded gaming-floor photo with the 1,000+ callout; expansion section is dark with a scope box + "LUCI is the A/V backbone" pull line; quote is on a dark faded photo, centered; triptych arrows are small dark squares with mint border. Not yet published — implementation into `yaamava.html` → review mirror → Webflow → website Astro → deploy to `.37` is on hold until Jane says go. Jane.
+
 ## 2026-11-04
 
 - **Yaamava partnership case study: no rack photography; expansion dated 2021–22; no enterprise photos.** The foundation section gets a designed "patchwork → one interface" graphic instead of a rack photo (the project is bigger than the rack). The expansion timeline row reads 2021–22 (The 909 stays 2022); "10+ venues & locations" stands; Palms, corporate, and other enterprise sites have no photography and the closing section is type-led. Jane.
