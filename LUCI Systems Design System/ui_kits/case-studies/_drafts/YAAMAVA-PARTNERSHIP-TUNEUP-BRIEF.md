@@ -1,7 +1,7 @@
 # Yaamava' partnership case study — design tune-up brief (for GLM)
 
 **From:** Claude design pass, reviewed with Jane · **Date:** 2026-11-04
-**Build from:** `_drafts/yaamava-partnership-mockup-v1.html` (the approved-in-spirit mockup) → implement in canonical `ui_kits/case-studies/yaamava.html`, **not** as a new file.
+**Build from:** `_drafts/yaamava-partnership-mockup-v2.html` (the brief applied — **v2 supersedes v1 and is the visual target**; v1 kept for history) → implement in canonical `ui_kits/case-studies/yaamava.html`, **not** as a new file.
 **Photos are pre-staged** (web-ready, ≤1600px) in `assets/yaamava/partnership/`. Do not re-pull from OneDrive unless a slot below says so.
 
 ## 0. Ground rules (read first)
@@ -211,3 +211,9 @@ All staged in `assets/yaamava/partnership/` unless noted ("existing" = already i
 
 ## 9. Handoff note GLM should return
 Short list: what shipped, screenshots, any ⚑ item you hit, any image you had to substitute, and anything in this brief you couldn't do.
+
+## 10. v2 mockup notes (what was built vs. this brief)
+- v2 is built on the canonical page CSS plus new `cs-` components (`cs-glancebar`, `cs-vtl`, `cs-patch`, `cs-bignum`, `cs-tri`, `cs-pair`, `cs-scan`, `cs-spec`, `cs-pull`). **Lift these into `yaamava.html`**; don't re-derive them.
+- Consolidation section, ledger, and About LUCI are **verbatim from the live page** (restored per §4.7–4.8, pending Jane's ⚑1 yes).
+- Copy deltas vs. Jane's approved text (flag in handoff): (a) the enterprise-sites list sentence was removed from the *what's next* paragraph because the scan strip now carries it; (b) that section's second paragraph is Jane's v1.1 sentence instead of the duplicate; (c) hero lead-in shortened per §4.0; (d) timeline row 3 reads 2021–22.
+- Not built: hero video loop, scroll animations, the optional "0 new control systems" tile.
