@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-03",
+  "updated": "2026-11-06",
   "publishNote": "Build (npm run build:review) outputs to ui_kits/review. Bump reviewVersion + versionNote for new uploads (version history shown in portal). Set dueForReview for first-time review. Comments/approvals sync server-side via the comments_api container (proxied at /api/comments); Jane sees Mike/Mark's feedback on refresh. Archive with scripts/pull-review-comments.mjs.",
   "previewBaseUrl": "",
   "commentsApiUrl": "http://10.10.1.17:8081/api/comments",
@@ -8,21 +8,46 @@
     {
       "title": "Messaging guide",
       "url": "messaging/messaging-guide.html",
-      "note": "Updated Nov 3, 2026"
+      "note": "Updated Nov 5, 2026"
     },
     {
       "title": "LUCI philosophy",
       "url": "messaging/philosophy.html",
-      "note": "Updated Nov 3, 2026"
+      "note": "Updated Nov 5, 2026"
     },
     {
       "title": "Personas",
       "url": "messaging/personas.html",
-      "note": "Updated Nov 3, 2026"
+      "note": "Updated Nov 5, 2026"
     }
   ],
   "inProgress": [],
   "dueForReview": [
+    {
+      "id": "jackson-rancheria-rfp",
+      "title": "Jackson Rancheria · RFP",
+      "summary": "RFP response for Jackson Rancheria Casino Resort — 24 pages: cover letter, scope of work (§1–§12), equipment list, warranty, and the Yaamava' case study. Built from Mike's source .docx; cost/pricing words flagged for review.",
+      "liveUrl": "/assets/sales/Jackson-Rancheria-RFP.pdf",
+      "reviewVersion": 1,
+      "versionNote": "First draft — ready for Mike's review. PDF in Downloads.",
+      "reviewBrief": {
+        "description": "Full RFP response for Jackson Rancheria Casino Resort. Cover letter (Mike's words verbatim), scope of work sections 1–12 from Mike's source, equipment list (no pricing), warranty and ongoing support, inclusions/exclusions/assumptions, and the Yaamava' case study as proof of work. 24 pages, print-ready.",
+        "reviewAsk": "whether the scope of work sections read accurately, the equipment list is complete, the Yaamava' case study integration works, and any cost/pricing language needs adjustment before this goes to Jackson Rancheria."
+      },
+      "versionHistory": [
+        {
+          "version": 1,
+          "published": "2026-11-05",
+          "note": "First draft — built from Mike's source .docx; PDF rendered and added to Downloads."
+        }
+      ],
+      "downloads": [
+        {
+          "label": "PDF",
+          "path": "assets/sales/Jackson-Rancheria-RFP.pdf"
+        }
+      ]
+    },
     {
       "id": "new-luci-upgrade-guide",
       "title": "New LUCI · Upgrade Guide",
@@ -781,7 +806,7 @@
     }
   ],
   "finalized": [],
-  "messagingDocsUpdated": "2026-11-03",
+  "messagingDocsUpdated": "2026-11-06",
   "parkedFromReviewQueue": [
     {
       "id": "signal-issue-05-choices",
