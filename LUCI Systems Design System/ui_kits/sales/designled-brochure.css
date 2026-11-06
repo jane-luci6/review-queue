@@ -1,0 +1,245 @@
+/* ============================================================================
+   DesignLED COB Brochure — asset-specific styles
+   Pair with sales-document.css (doc- prefix). Prefix here: dl-.
+   US Letter · Track C · PDF-first. Two sheets: COB advantage + spec compare.
+   ========================================================================== */
+
+.dl { /* article scope */ }
+
+/* ── Page 1 · opener band tweaks ──────────────────────────────────────────── */
+.dl .doc-opener-hero__title { font-size: 24px; max-width: 100%; }
+.dl .doc-opener-hero__deck { max-width: 60ch; }
+
+/* ── Photo row (two photos side by side, de-boxed, captioned) ─────────────── */
+.dl-photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin: 4px 0 6px;
+}
+.dl-photo { display: flex; flex-direction: column; gap: 8px; }
+.dl-photo__img {
+  width: 100%;
+  height: 2.05in;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+}
+.dl-photo__cap {
+  font-family: var(--font-recede);
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--navy-muted);
+}
+.dl-photo__cap strong { color: var(--ink-strong); font-weight: 600; }
+
+/* ── Three pillars (co-equal, icon-led, 2 benefits each) ──────────────────── */
+.dl-pillars {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 22px 0 0;
+  border-top: 1px solid var(--rule-light);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0 26px;
+}
+.dl-pillar { display: flex; flex-direction: column; gap: 10px; }
+.dl-pillar + .dl-pillar { border-left: 1px solid var(--rule-light); padding-left: 26px; }
+
+.dl-pillar__head { display: flex; align-items: center; gap: 12px; }
+.dl-pillar__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: var(--navy);
+  color: var(--mint);
+  flex: none;
+}
+.dl-pillar__icon svg { width: 18px; height: 18px; display: block; }
+.dl-pillar__name {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--ink-strong);
+}
+.dl-pillar__name em { font-style: normal; color: var(--accent-light); }
+.dl-pillar__def {
+  font-family: var(--font-recede);
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.dl-pillar__benefits { list-style: none; margin-top: 2px; display: grid; gap: 8px; }
+.dl-pillar__benefits li {
+  position: relative;
+  padding-left: 18px;
+  font-family: var(--font-recede);
+  font-size: 12px;
+  line-height: 1.42;
+  color: var(--ink);
+}
+.dl-pillar__benefits li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.3em;
+  width: 11px;
+  height: 11px;
+  flex: none;
+  background-color: var(--accent-light);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") no-repeat center / contain;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+.dl-pillar__benefits li strong { color: var(--ink-strong); font-weight: 600; }
+
+/* ── Closing lead-in (Day One / Day Two) ──────────────────────────────────── */
+.dl-close-line {
+  margin: 18px 0 0;
+  border-left: 4px solid var(--accent-light);
+  padding: 4px 0 4px 20px;
+}
+.dl-close-line__text {
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.28;
+  letter-spacing: -0.02em;
+  color: var(--ink-strong);
+}
+.dl-close-line__text em { font-style: normal; color: var(--accent-light); }
+
+/* ── Page 2 · spec comparison (de-boxed hairline rows, 3 value columns) ───── */
+.dl-specwrap {
+  display: grid;
+  grid-template-columns: 1.5fr 2fr;
+  gap: 30px;
+  margin-top: 4px;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+/* Left column: visual anchor + pitch */
+.dl-spec-aside { display: flex; flex-direction: column; gap: 16px; }
+.dl-spec-aside__img {
+  width: 100%;
+  height: 2.5in;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+}
+.dl-spec-aside__cap {
+  font-family: var(--font-recede);
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--navy-muted);
+}
+.dl-spec-aside__cap strong { color: var(--ink-strong); font-weight: 600; }
+.dl-spec-guide {
+  margin-top: auto;
+  padding: 14px 16px;
+  background: var(--tint);
+  border-left: 4px solid var(--accent-light);
+}
+.dl-spec-guide__label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+  margin-bottom: 8px;
+}
+.dl-spec-guide__text {
+  font-family: var(--font-recede);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.dl-spec-guide__text strong { color: var(--ink-strong); font-weight: 600; }
+
+/* Right column: the comparison table (de-boxed, hairline rows) */
+.dl-spec {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+.dl-spec colgroup .dl-spec__col-pitch { width: 30%; }
+.dl-spec colgroup .dl-spec__col-val { width: 23.33%; }
+
+.dl-spec thead th {
+  padding: 0 0 12px;
+  text-align: left;
+  border-bottom: 2px solid var(--accent-light);
+  vertical-align: bottom;
+}
+.dl-spec thead th:first-child {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--navy-muted);
+}
+.dl-spec__pitch {
+  font-family: var(--font);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink-strong);
+  line-height: 1;
+}
+.dl-spec__pitch em { font-style: normal; color: var(--accent-light); font-size: 13px; font-weight: 600; margin-left: 4px; }
+.dl-spec thead th .dl-spec__pitch-sub {
+  display: block;
+  margin-top: 5px;
+  font-family: var(--font-recede);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--navy-muted);
+}
+
+.dl-spec tbody td {
+  padding: 11px 0;
+  border-bottom: 1px solid var(--rule-light);
+  font-family: var(--font-recede);
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: var(--ink);
+  vertical-align: top;
+}
+.dl-spec tbody tr:last-child td { border-bottom: 0; }
+.dl-spec tbody td:first-child {
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--ink-strong);
+  letter-spacing: -0.005em;
+}
+.dl-spec tbody td:first-child .dl-spec__row-sub {
+  display: block;
+  font-family: var(--font-recede);
+  font-weight: 400;
+  font-size: 10.5px;
+  color: var(--navy-muted);
+  margin-top: 2px;
+  letter-spacing: 0;
+}
+.dl-spec tbody td strong { color: var(--ink-strong); font-weight: 600; }
+
+/* Footnote under the table */
+.dl-spec-note {
+  margin-top: 14px;
+  font-family: var(--font-recede);
+  font-size: 10.5px;
+  line-height: 1.5;
+  color: var(--navy-muted);
+}
+.dl-spec-note strong { color: var(--ink-strong); font-weight: 600; }
+
+@media print {
+  .dl-spec-aside__img, .dl-photo__img, .dl-spec-guide { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
